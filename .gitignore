@@ -24,6 +24,7 @@ project.xcworkspace
 
 # Android/IntelliJ
 #
+coverage
 build/
 .idea
 .gradle
