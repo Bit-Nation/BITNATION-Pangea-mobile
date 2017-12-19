@@ -6,7 +6,7 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
     "test:coverage": "jest --coverage",
-    "test:coveralls": "yarn test:coverage && node_modules/.bin/coveralls < ./coverage/lcov.info",
+    "test:coveralls": "yarn test:coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "ios": "node_modules/.bin/react-native run-ios",
     "android": "node_modules/.bin/react-native run-android"
   },
