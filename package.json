@@ -7,10 +7,11 @@
     "test": "jest",
     "test:coverage": "jest --coverage",
     "test:coveralls": "yarn test:coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
-    "ios": "node_modules/.bin/react-native run-ios",
-    "android": "node_modules/.bin/react-native run-android"
+    "ios": "flow && node_modules/.bin/react-native run-ios",
+    "android": "flow && node_modules/.bin/react-native run-android"
   },
   "dependencies": {
+    "BITNATION-Panthalassa": "https://github.com/Bit-Nation/Panthalassa",
     "native-base": "^2.3.5",
     "react": "16.0.0",
     "react-native": "0.51.0"
