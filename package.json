@@ -11,7 +11,7 @@
     "android": "flow && node_modules/.bin/react-native run-android"
   },
   "dependencies": {
-    "BITNATION-Panthalassa": "https://github.com/Bit-Nation/Panthalassa",
+    "BITNATION-Panthalassa": "https://github.com/Bit-Nation/Panthalassa#develop",
     "native-base": "^2.3.5",
     "react": "16.0.0",
     "react-native": "0.51.0",
