@@ -11,6 +11,9 @@
 - PLEASE prefix your commit's with a topic like this: `[git] blacklisted .idea`
 - Write test's for your code
 
+### Tools & Framework's
+- We are using [Native Base](https://nativebase.io/) to build an UI that has the native design of Android and IOS (depending on where you use the app). If you plan to contribute make sure to checkout what they are providing to avoid unnecessary work. 
+
 ### Run the project
 
 1. We are using yarn for the development so run `yarn` to install the dependencies
