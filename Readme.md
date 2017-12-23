@@ -7,9 +7,19 @@
 
 ### Git & best practice
 
-- We use [this](http://nvie.com/posts/a-successful-git-branching-model/) workflow
+- We use [this](http://nvie.com/posts/a-successful-git-branching-model/) branching model. Make sure to read it.
 - PLEASE prefix your commit's with a topic like this: `[git] blacklisted .idea`
 - Write test's for your code
+
+### Workflow
+1. A github issue is created and tagged with "Needs Review". Needs Review mean that the issue need's to be reviewed by a teammeber. E.g. If it's about design by David. If it's about backend by Florian and so on. 
+2. After the issue is reviewed and ready to get solved remove the "Need's review" label and add the "Reviewed" label. That show's an dev's that the issue is ready to get solved. 
+3. When you decide to work on an specific reviewed issue assign it your self and start working on it.
+4. After you worked on the issue and it's done create a pull request and place a reference to the issue in the pull request body. Make sure that the CI is passing and select someone who reviews the pull request. 
+5. After you created the pull request you are almost done. The reviewer will ping you if there is a problem with the pull request.  
+
+### Tools & Framework's
+- We are using [Native Base](https://nativebase.io/) to build an UI that has the native design of Android and IOS (depending on where you use the app). If you plan to contribute make sure to checkout what they are providing to avoid unnecessary work. 
 
 ### Run the project
 
