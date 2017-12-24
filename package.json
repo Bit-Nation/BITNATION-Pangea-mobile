@@ -13,7 +13,8 @@
   "dependencies": {
     "native-base": "^2.3.5",
     "react": "16.0.0",
-    "react-native": "0.51.0"
+    "react-native": "0.51.0",
+    "react-native-navigation": "^1.1.316"
   },
   "devDependencies": {
     "babel-jest": "22.0.3",
