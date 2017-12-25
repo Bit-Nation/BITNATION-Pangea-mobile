@@ -1,7 +1,16 @@
+import Colors from './Colors';
+
+export const tabsStyle = {
+  tabBarButtonColor: '#FFFFFF',
+  tabBarSelectedButtonColor: '#FFFFFF',
+  tabBarBackgroundColor: 'rgba(17,39,110,0.9)',
+};
+
 export default {
   DASHBOARD_SCREEN: {
     screen: 'app.DashboardScreen',
     label: 'Dashboard',
+    icon: require('../../resources/images/dashboard.png'),
   },
   CHAT_SCREEN: {
     screen: 'app.ChatScreen',
