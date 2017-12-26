@@ -16,10 +16,8 @@
 
 "BITNATION-Panthalassa@https://github.com/Bit-Nation/Panthalassa#develop":
   version "1.0.0"
-  resolved "https://github.com/Bit-Nation/Panthalassa#3d8febb122d0987067bc901e01902804b8361d04"
+  resolved "https://github.com/Bit-Nation/Panthalassa#db77c414c254ec2fba1779aedda99b184791ee8e"
   dependencies:
-    awilix "^3.0.0-rc.3"
-    babel-plugin-es6-promise "^1.1.1"
     crypto-js "^3.1.9-1"
     es6-promise "^4.1.1"
     ethereumjs-tx "^1.3.3"
