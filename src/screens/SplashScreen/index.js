@@ -6,19 +6,23 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { resetRoute } from '../../actions/nav';
+import { Navigation } from 'react-native-navigation';
 import Images from '../../global/AssetsImages';
 import styles from './styles';
 
 class SplashScreen extends Component {
   componentWillMount() {
-    if (this.props.resetRoute) {
       setTimeout(() => {
-        this.props.resetRoute({ routeName: 'MainScreen' });
+      // TODO: Replace navigation with redux actions
+        Navigation.startSingleScreenApp({
+          screen: {
+            screen: 'Pangea.MainScreen',
+            title: 'Main',
+            navigatorStyle
+          },
+        });
       }, 3000);
     }
-  }
-
   render() {
     return (
       <View style={styles.container}>
@@ -31,11 +35,18 @@ class SplashScreen extends Component {
 }
 
 SplashScreen.propTypes = {
-  resetRoute: PropTypes.func,
+  navigator: PropTypes.object
+};
+
+navigatorStyle = {
+	statusBarColor: 'black',
+	statusBarTextColorScheme: 'light',
+	navBarBackgroundColor: '#0a0a0a',
+	navBarTextColor: 'white',
+	navBarButtonColor: 'white'
 };
 
 SplashScreen.defaultProps = {
-  resetRoute: () => null,
 };
 
 const mapStateToProps = state => ({
@@ -43,7 +54,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  resetRoute: route => dispatch(resetRoute(route)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SplashScreen);
