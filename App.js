@@ -1,10 +1,10 @@
 import { Provider } from 'react-redux';
 import React, { Component } from 'react';
+import {View} from 'react-native'
 import configureStore from './src/config/configureStore';
 import { Navigation } from 'react-native-navigation';
 import { registerScreens } from './src/screens/screens';
 
-const App = () => {
 const store = configureStore();
 registerScreens(store, Provider);
 
@@ -27,5 +27,10 @@ Navigation.startSingleScreenApp({
   },
 });
 
+class App extends Component {
+  render()
+  {
+    return(null);
+  }
 }
-export default App();
+export default App;

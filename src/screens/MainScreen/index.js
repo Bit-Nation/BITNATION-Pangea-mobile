@@ -3,13 +3,9 @@ import {
   View,
   Text,
 } from 'react-native';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 class MainScreen extends Component {
-  componentWillMount() {
-  }
-
   render() {
     return (
       <View>
