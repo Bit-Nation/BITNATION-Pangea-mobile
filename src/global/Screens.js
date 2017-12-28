@@ -1,8 +1,11 @@
 import AssetsImages from './AssetsImages';
+import Colors from './Colors';
 
 export const tabsStyle = {
-  tabBarButtonColor: '#FFFFFF',
-  tabBarSelectedButtonColor: '#FFFFFF',
+  tabBarButtonColor: Colors.white,
+  tabBarLabelColor: Colors.BitNationLightBlue,
+  tabBarSelectedLabelColor: Colors.white,
+  tabBarSelectedButtonColor: Colors.white,
   tabBarBackgroundColor: 'rgba(17,39,110,0.9)',
 };
 
