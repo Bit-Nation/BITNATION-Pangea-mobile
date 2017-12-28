@@ -1,4 +1,12 @@
 import secureStorage from '../../../../src/services/panthalassa/secureStorage';
+import SInfo from 'react-native-sensitive-info';
+
+//Mock react native sensetive information
+jest.mock('react-native-sensitive-info', () => ({
+    setItem: jest.fn(),
+    getItem: jest.fn(),
+    getAllItems: jest.fn()
+}));
 
 describe('secureStorage', () => {
 
@@ -6,84 +14,26 @@ describe('secureStorage', () => {
 
         test('should return a void promise when set is successfully', () => {
 
-            //mock of react-native-sensitive-info
-            const si = {
-                set: jest.fn((key, value) => {
+            //Mock setItem
+            SInfo.setItem.mockImplementation((key, value) => {
+                expect(key).toBe('private_eth_key');
+                expect(value).toBe('0x....');
 
-                    expect(key).toBe('private_eth_key');
-                    expect(value).toBe('0x....');
+                return new Promise((res, rej) => res('0x....'));
+            });
 
-                    return new Promise((res, rej) => res('0x....'));
-
-                })
-            };
-
-            const ss = secureStorage(si);
-
-            return expect(ss.set('private_eth_key', '0x....')).resolves.toBeUndefined();
+            return expect(secureStorage.set('private_eth_key', '0x....')).resolves.toBeUndefined();
 
         });
 
-        test('should reject on error in react-native-sensitive-info', () => {
+        test('should reject when os fail to save', () => {
 
-            const error = {};
+            //Mock set Item to rej
+            SInfo.setItem.mockImplementation(() => new Promise((res, rej) => rej("I am an error")));
 
-            //mock of react-native-sensitive-info
-            const si = {
-                set: jest.fn(() => {
-
-                    return new Promise((res, rej) => rej(error));
-
-                })
-            };
-
-            const ss = secureStorage(si);
-
-            return expect(ss.set('', '')).resolves.toBe(error);
+            return expect(secureStorage.set('my_key', 'my_password')).rejects.toBe('I am an error');
 
         })
-
-    });
-
-    describe('get', () => {
-
-        test('fetch item successfully', () => {
-
-            //mock of react-native-sensitive-info
-            const si = {
-                get: jest.fn((key) => {
-
-                    expect(key).toBe('private_eth_key');
-
-                    return new Promise((res, rej) => res('0x....'));
-
-                })
-            };
-
-            const ss = secureStorage(si);
-
-            return expect(ss.get('private_eth_key')).resolves.toBe('0x....');
-
-        });
-
-        test('should reject on error in get of react-native-sensitive-info', () => {
-
-            const error = {};
-
-            //mock of react-native-sensitive-info
-            const si = {
-                get: jest.fn(() => {
-
-                    return new Promise((res, rej) => rej(error));
-
-                })
-            };
-
-            const ss = secureStorage(si);
-
-            return expect(ss.get('private_eth_key')).rejects.toBe(error);
-
-        });
 
     });
 
