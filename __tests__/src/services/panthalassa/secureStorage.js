@@ -37,4 +37,30 @@ describe('secureStorage', () => {
 
     });
 
+    describe('get', () => {
+
+        test('success - should return the value for the key', () => {
+
+            SInfo.getItem.mockImplementation((key) => {
+
+                expect(key).toBe('private_eth_key');
+
+                return new Promise((res, rej) => res('0x....'));
+
+            });
+
+            return expect(secureStorage.get('private_eth_key')).resolves.toBe('0x....');
+
+        });
+
+        test('fail - should reject on system error', () => {
+
+            SInfo.getItem.mockImplementation(() => new Promise((res, rej) => rej('Could not fetch')));
+
+            return expect(secureStorage.get('private_eth_key')).rejects.toBe('Could not fetch');
+
+        });
+
+    });
+
 });
