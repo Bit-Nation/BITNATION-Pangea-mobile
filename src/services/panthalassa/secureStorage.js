@@ -14,7 +14,21 @@ const sSImplementation:SecureStorage = {
     ),
     get: (key:string) => SInfo.getItem(key),
     has: (key:string) => new Promise((res, rej) => SInfo.getItem(key)
-        .then(value => rej(!!value))
+        .then(value => {
+
+            //Using if for exact comparison
+
+            if(value === '' || value === null || value === undefined){
+                return res(false)
+            }
+
+            if('string' === typeof value || 'number' === typeof value){
+                return res(true);
+            }
+
+            rej(new Error(`Couldn't handle type: '${typeof value}'`));
+
+        })
         .catch(error => rej(error))
     ),
     remove: (key:string) => SInfo.deleteItem(key),
