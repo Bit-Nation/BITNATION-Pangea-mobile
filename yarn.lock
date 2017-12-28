@@ -274,7 +274,7 @@ asynckit@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
 
-awilix@^3.0.0, awilix@^3.0.0-rc.3:
+awilix@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/awilix/-/awilix-3.0.0.tgz#58662dc32b9834ecebfb0970e1b2a9958d532c30"
   dependencies:
@@ -465,13 +465,6 @@ babel-plugin-check-es2015-constants@^6.22.0, babel-plugin-check-es2015-constants
   resolved "https://registry.yarnpkg.com/babel-plugin-check-es2015-constants/-/babel-plugin-check-es2015-constants-6.22.0.tgz#35157b101426fd2ffd3da3f75c7d1e91835bbf8a"
   dependencies:
     babel-runtime "^6.22.0"
-
-babel-plugin-es6-promise@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/babel-plugin-es6-promise/-/babel-plugin-es6-promise-1.1.1.tgz#0202f0929705f2fdcdda8ffd1222246c2cb9d6ae"
-  dependencies:
-    babel-template "^6.7.0"
-    babel-types "^6.7.2"
 
 babel-plugin-external-helpers@^6.18.0:
   version "6.22.0"
@@ -926,7 +919,7 @@ babel-runtime@^6.0.0, babel-runtime@^6.18.0, babel-runtime@^6.22.0, babel-runtim
     core-js "^2.4.0"
     regenerator-runtime "^0.11.0"
 
-babel-template@^6.16.0, babel-template@^6.24.1, babel-template@^6.26.0, babel-template@^6.7.0:
+babel-template@^6.16.0, babel-template@^6.24.1, babel-template@^6.26.0:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-template/-/babel-template-6.26.0.tgz#de03e2d16396b069f46dd9fff8521fb1a0e35e02"
   dependencies:
@@ -950,7 +943,7 @@ babel-traverse@^6.18.0, babel-traverse@^6.24.1, babel-traverse@^6.26.0:
     invariant "^2.2.2"
     lodash "^4.17.4"
 
-babel-types@^6.18.0, babel-types@^6.19.0, babel-types@^6.24.1, babel-types@^6.26.0, babel-types@^6.7.2:
+babel-types@^6.18.0, babel-types@^6.19.0, babel-types@^6.24.1, babel-types@^6.26.0:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-types/-/babel-types-6.26.0.tgz#a3b073f94ab49eb6fa55cd65227a334380632497"
   dependencies:
