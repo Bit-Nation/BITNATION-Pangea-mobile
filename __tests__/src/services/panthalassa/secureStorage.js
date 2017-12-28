@@ -8,6 +8,9 @@ jest.mock('react-native-sensitive-info', () => ({
     getAllItems: jest.fn()
 }));
 
+//Reset all function mock's
+beforeEach(() => Object.keys(SInfo).map(key => SInfo[key] = jest.fn()));
+
 describe('secureStorage', () => {
 
     describe('set', () => {
@@ -62,5 +65,98 @@ describe('secureStorage', () => {
         });
 
     });
+
+    describe('has', () => {
+
+        const P = Promise;
+
+        /**
+         * It makes only sense to test primitive scala types
+         */
+
+        test('string', () => {
+
+            SInfo.getItem.mockImplementation(() => new P((res, rej) => res('i_am_an_str_value')));
+
+            return expect(secureStorage.has('pk')).resolves.toBe(true);
+
+        });
+
+        test('number', () => {
+
+            SInfo.getItem.mockImplementation(() => new P((res, rej) => res(4)));
+
+            return expect(secureStorage.has('pk')).resolves.toBe(true);
+
+        });
+
+        test('null', () => {
+
+            SInfo.getItem.mockImplementation(() => new P((res, rej) => res(null)));
+
+            return expect(secureStorage.has('pk')).resolves.toBe(false);
+
+        });
+
+        test('undefined', () => {
+
+            SInfo.getItem.mockImplementation(() => new P((res, rej) => res(undefined)));
+
+            return expect(secureStorage.has('pk')).resolves.toBe(false);
+
+        });
+
+        test('0', () => {
+
+            SInfo.getItem.mockImplementation(() => new P((res, rej) => res(0)));
+
+            return expect(secureStorage.has('pk')).resolves.toBe(true);
+
+        });
+
+        test('empty string', () => {
+
+            SInfo.getItem.mockImplementation(() => new P((res, rej) => res('')));
+
+            return expect(secureStorage.has('pk')).resolves.toBe(false);
+
+        });
+
+        test('system error', () => {
+
+            SInfo.getItem.mockImplementation(() => new P((res, rej) => rej('I am an error message')));
+
+            return expect(secureStorage.has('pk')).rejects.toBe('I am an error message');
+
+        });
+
+        test('unknown type', (done) => {
+
+            //Test what happen's when we resolve with function
+            SInfo.getItem.mockImplementation(() => new P((res, rej) => res(() => {})));
+
+            secureStorage
+                .has('pk')
+                .catch(function(e){
+
+                    /**
+                     * @todo report to jest team
+                     * I have to put the expect in an try catch.
+                     * Somehow a failed expect don't break the test
+                     */
+                    try{
+                        expect(e).toBeInstanceOf(Error);
+                        expect(e.message).toBe(`Couldn't handle type: 'function'`);
+                    }catch(e) {
+                        done.fail(e);
+                    }
+
+                    done();
+
+                });
+
+        });
+
+    })
 
 });
