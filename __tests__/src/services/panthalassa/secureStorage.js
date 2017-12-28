@@ -5,7 +5,8 @@ import SInfo from 'react-native-sensitive-info';
 jest.mock('react-native-sensitive-info', () => ({
     setItem: jest.fn(),
     getItem: jest.fn(),
-    getAllItems: jest.fn()
+    getAllItems: jest.fn(),
+    deleteItem: jest.fn()
 }));
 
 //Reset all function mock's
@@ -157,6 +158,26 @@ describe('secureStorage', () => {
 
         });
 
-    })
+    });
+
+    describe('delete', function () {
+
+        test('success', () => {
+
+            SInfo.deleteItem.mockImplementation(() => new Promise((res, rej) => res()));
+
+            return expect(secureStorage.remove('pk')).resolves.toBeUndefined();
+
+        });
+
+        test('system fail', () => {
+
+            SInfo.deleteItem.mockImplementation(() => new Promise((res, rej) => res('Could not delete element')));
+
+            return expect(secureStorage.remove('pk')).resolves.toBe('Could not delete element');
+
+        });
+
+    });
 
 });
