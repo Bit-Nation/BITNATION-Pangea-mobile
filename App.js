@@ -4,7 +4,7 @@ import { Navigation } from 'react-native-navigation';
 
 import configureStore from './src/config/configureStore';
 import { registerScreens } from './src/screens/screens';
-import Screens, { tabsStyle } from './src/global/Screens';
+import Screens, { appStyle, tabsStyle } from './src/global/Screens';
 
 const store = configureStore();
 registerScreens(store, Provider);
@@ -18,6 +18,7 @@ Navigation.startTabBasedApp({
     Screens.PROFILE_SCREEN,
   ],
   tabsStyle,
+  appStyle,
 });
 
 class App extends Component {

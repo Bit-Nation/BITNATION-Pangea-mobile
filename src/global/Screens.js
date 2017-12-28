@@ -6,6 +6,10 @@ export const tabsStyle = {
   tabBarBackgroundColor: 'rgba(17,39,110,0.9)',
 };
 
+export const appStyle = {
+  ...tabsStyle
+};
+
 export const navigatorStyle = {
   statusBarColor: 'black',
   statusBarTextColorScheme: 'light',
