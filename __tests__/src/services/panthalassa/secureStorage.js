@@ -189,7 +189,7 @@ describe('secureStorage', () => {
                 'key_2' : 'hi'
             })));
             
-            return expect(secureStorage.fetchItems((key, items) => typeof items[key] === 'string'))
+            return expect(secureStorage.fetchItems((key, item) => typeof item === 'string'))
                 .resolves
                 .toEqual({
                     'key_2' : 'hi'
