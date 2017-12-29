@@ -13,6 +13,7 @@
   "dependencies": {
     "BITNATION-Panthalassa": "https://github.com/Bit-Nation/Panthalassa#develop",
     "awilix": "^3.0.0",
+    "buffer": "^5.0.8",
     "native-base": "^2.3.5",
     "react": "16.0.0",
     "react-native": "0.51.0",
