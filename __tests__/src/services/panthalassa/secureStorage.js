@@ -209,4 +209,14 @@ describe('secureStorage', () => {
 
     });
 
+    describe('destroyStorage', () => {
+
+        test('error since not implemented', () => {
+
+            return expect(secureStorage.destroyStorage()).rejects.toBeInstanceOf(Error);
+
+        })
+
+    });
+
 });
