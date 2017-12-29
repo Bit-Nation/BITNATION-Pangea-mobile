@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest",
-    "test:coverage": "jest --coverage",
+    "test": "flow && jest",
+    "test:coverage": "flow && jest --coverage",
     "test:coveralls": "yarn test:coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "ios": "flow && node_modules/.bin/react-native run-ios",
     "android": "flow && node_modules/.bin/react-native run-android"
@@ -27,7 +27,8 @@
   },
   "jest": {
     "preset": "react-native",
-    "transformIgnorePatterns" : [
-      "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|BITNATION-Panthalassa|react-native-sensitive-info)"    ]
+    "transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|BITNATION-Panthalassa|react-native-sensitive-info)"
+    ]
   }
 }

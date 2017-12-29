@@ -16,7 +16,7 @@
 
 "BITNATION-Panthalassa@https://github.com/Bit-Nation/Panthalassa#develop":
   version "1.0.0"
-  resolved "https://github.com/Bit-Nation/Panthalassa#db77c414c254ec2fba1779aedda99b184791ee8e"
+  resolved "https://github.com/Bit-Nation/Panthalassa#42573ac8336a8a0350a04309212ae1d75585841f"
   dependencies:
     crypto-js "^3.1.9-1"
     es6-promise "^4.1.1"
@@ -275,8 +275,8 @@ asynckit@^0.4.0:
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
 
 awilix@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/awilix/-/awilix-3.0.0.tgz#58662dc32b9834ecebfb0970e1b2a9958d532c30"
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/awilix/-/awilix-3.0.1.tgz#51dad5f51710943096e106eb3a56ca173ba19f74"
   dependencies:
     camel-case "^3.0.0"
     glob "^7.1.2"
@@ -4439,8 +4439,8 @@ react-native-easy-grid@0.1.15:
     react-timer-mixin "^0.13.3"
 
 react-native-sensitive-info@^5.1.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/react-native-sensitive-info/-/react-native-sensitive-info-5.1.0.tgz#1655c482f99c80023a23b2d9adab1ae260b1988a"
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-sensitive-info/-/react-native-sensitive-info-5.2.0.tgz#57d1c8b7bee7a6b73bacce6f90d40c072cc76103"
 
 react-native-vector-icons@~4.4.2:
   version "4.4.2"
