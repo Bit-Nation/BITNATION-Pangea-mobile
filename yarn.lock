@@ -16,7 +16,7 @@
 
 "BITNATION-Panthalassa@https://github.com/Bit-Nation/Panthalassa#develop":
   version "1.0.0"
-  resolved "https://github.com/Bit-Nation/Panthalassa#42573ac8336a8a0350a04309212ae1d75585841f"
+  resolved "https://github.com/Bit-Nation/Panthalassa#4126f0f009726f9a07883cebc6cda42ff920e089"
   dependencies:
     crypto-js "^3.1.9-1"
     es6-promise "^4.1.1"
