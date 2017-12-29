@@ -11,8 +11,8 @@ export default class Chat extends Component {
     return (
 
       <Image
-      source={require("./staticChat.png")}
-      resizeMode="cover"
+      source={require("./src/assets/images/staticChat.png")}
+      resizeMode="contain"
       style="{styles}"
       />
 
@@ -20,4 +20,4 @@ export default class Chat extends Component {
   }
 }
 
-const styles = {};
+const styles = {{flex:1, height: undefined, width: undefined}};
