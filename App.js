@@ -1,7 +1,9 @@
+import React, { Component } from 'react';
 import {View} from 'react-native'
 import configureStore from './src/config/configureStore';
 import { Navigation } from 'react-native-navigation';
 import { registerScreens } from './src/screens/screens';
+import { Provider } from 'react-redux';
 
 const store = configureStore();
 registerScreens(store, Provider);
