@@ -16,6 +16,7 @@
     "native-base": "^2.3.5",
     "react": "16.0.0",
     "react-native": "0.51.0",
+    "react-native-randombytes": "^3.0.0",
     "react-native-sensitive-info": "^5.1.0"
   },
   "devDependencies": {
