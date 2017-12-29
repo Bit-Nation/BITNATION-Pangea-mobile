@@ -180,4 +180,33 @@ describe('secureStorage', () => {
 
     });
 
+    describe('fetchItems', function () {
+
+        test('success', () => {
+
+            SInfo.getAllItems.mockImplementation(() => new Promise((res, rej) => res({
+                'key_1' : 2,
+                'key_2' : 'hi'
+            })));
+            
+            return expect(secureStorage.fetchItems((key, items) => typeof items[key] === 'string'))
+                .resolves
+                .toEqual({
+                    'key_2' : 'hi'
+                });
+
+        });
+
+        test('system fail', () => {
+
+            SInfo.getAllItems.mockImplementation(() => new Promise((res, rej) => rej('can not fatch all items')));
+
+            return expect(secureStorage.fetchItems())
+                .rejects
+                .toBe('can not fatch all items');
+
+        });
+
+    });
+
 });
