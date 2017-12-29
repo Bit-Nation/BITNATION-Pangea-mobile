@@ -137,6 +137,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-randombytes')
     compile project(':realm')
     compile project(':react-native-sensitive-info')
     compile fileTree(dir: "libs", include: ["*.jar"])
