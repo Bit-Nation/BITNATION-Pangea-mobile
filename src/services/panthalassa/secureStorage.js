@@ -32,10 +32,24 @@ const sSImplementation:SecureStorage = {
         .catch(error => rej(error))
     ),
     remove: (key:string) => SInfo.deleteItem(key),
-    fetchItems: (filter: (key:string, value:any) => boolean) : Promise<Array<{key:string, value:any}>> => new Promise((res, rej) => {
+    fetchItems: (filter: (key:string, value:any) => boolean) : Promise<{key:string, value:mixed}> => new Promise((res, rej) => {
 
         SInfo.getAllItems()
-            .then(items => res(items.filter(filter)))
+            .then(items => {
+
+                const filteredItems = {};
+
+                Object
+                    //Get all key's of the items
+                    .keys(items)
+                    //Filter them based on provided filter
+                    .filter(key => filter(key, items))
+                    //Push filtered item's
+                    .map(key => filteredItems[key]  = items[key]);
+
+                res(filteredItems);
+
+            })
             .catch(rej);
 
     }),
