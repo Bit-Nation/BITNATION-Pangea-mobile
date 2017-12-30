@@ -58,6 +58,9 @@
   },
   "jest": {
     "preset": "react-native",
+    "transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|BITNATION-Panthalassa|react-native-sensitive-info)"
+    ],
     "moduleNameMapper": {
       "^image![a-zA-Z0-9$_-]+$": "GlobalImageStub",
       "^[@./a-zA-Z0-9$_-]+\\.(png|gif)$": "RelativeImageStub"
