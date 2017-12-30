@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -228,6 +227,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = BF8FCF941BFFB184000FCD37;
 			remoteInfo = RNSensitiveInfo;
+		};
+		17084FCA1FF8024B00CB17F5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AEBAAD419E4D47BB9275AE52 /* RNRandomBytes.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 73EEC9391BFE4B1D00D468EB;
+			remoteInfo = RNRandomBytes;
 		};
 		2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -655,6 +661,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		17084FC71FF8024B00CB17F5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				17084FCB1FF8024B00CB17F5 /* libRNRandomBytes.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		5E91572E1DD0AC6500FF2AA8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -940,6 +954,10 @@
 					ProjectRef = D79892370E244ED9B184CD50 /* RNEthDaemon.xcodeproj */;
 				},
 				{
+					ProductGroup = 17084FC71FF8024B00CB17F5 /* Products */;
+					ProjectRef = AEBAAD419E4D47BB9275AE52 /* RNRandomBytes.xcodeproj */;
+				},
+				{
 					ProductGroup = 17084FC21FF801B100CB17F5 /* Products */;
 					ProjectRef = 9B29C53248DB4D7CBB403C9B /* RNSensitiveInfo.xcodeproj */;
 				},
@@ -1111,6 +1129,13 @@
 			fileType = archive.ar;
 			path = libRNSensitiveInfo.a;
 			remoteRef = 17084FC51FF801B100CB17F5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		17084FCB1FF8024B00CB17F5 /* libRNRandomBytes.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNRandomBytes.a;
+			remoteRef = 17084FCA1FF8024B00CB17F5 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		3DAD3E841DF850E9000B6D8A /* libRCTImage-tvOS.a */ = {
