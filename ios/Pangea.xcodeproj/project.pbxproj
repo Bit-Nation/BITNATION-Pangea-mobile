@@ -53,6 +53,7 @@
 		F40591AE93904DC9B413C988 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 088CFD9EB2C642F4BFF34F5D /* libc++.tbd */; };
 		D9937A693DB04299BE70D3FF /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F2BF85135E0640AF91B52032 /* libz.tbd */; };
 		61E43C18310741D59ADD0BD0 /* libRNRandomBytes.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F7E5624D20E54AC3AA66D2FE /* libRNRandomBytes.a */; };
+		63ACC84D6F824BB0BAE32B0A /* libRNEthDaemon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CA1A2179AAD436394CB62B2 /* libRNEthDaemon.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -300,6 +301,8 @@
 		F2BF85135E0640AF91B52032 /* libz.tbd */ = {isa = PBXFileReference; name = "libz.tbd"; path = "usr/lib/libz.tbd"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = sourcecode.text-based-dylib-definition; explicitFileType = undefined; includeInIndex = 0; };
 		13EAF532A47D4995B2B340EE /* RNRandomBytes.xcodeproj */ = {isa = PBXFileReference; name = "RNRandomBytes.xcodeproj"; path = "../node_modules/react-native-randombytes/RNRandomBytes.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		F7E5624D20E54AC3AA66D2FE /* libRNRandomBytes.a */ = {isa = PBXFileReference; name = "libRNRandomBytes.a"; path = "libRNRandomBytes.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		C6053043DB614EE78623A7AF /* RNEthDaemon.xcodeproj */ = {isa = PBXFileReference; name = "RNEthDaemon.xcodeproj"; path = "../node_modules/react-native-eth-daemon/ios/RNEthDaemon.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		2CA1A2179AAD436394CB62B2 /* libRNEthDaemon.a */ = {isa = PBXFileReference; name = "libRNEthDaemon.a"; path = "libRNEthDaemon.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -333,6 +336,7 @@
 				F40591AE93904DC9B413C988 /* libc++.tbd in Frameworks */,
 				D9937A693DB04299BE70D3FF /* libz.tbd in Frameworks */,
 				61E43C18310741D59ADD0BD0 /* libRNRandomBytes.a in Frameworks */,
+				63ACC84D6F824BB0BAE32B0A /* libRNEthDaemon.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,6 +508,7 @@
 				51A294D4C3474443903A0F54 /* RNSensitiveInfo.xcodeproj */,
 				7EFF0FDBC2834DD6A04A801D /* RealmReact.xcodeproj */,
 				13EAF532A47D4995B2B340EE /* RNRandomBytes.xcodeproj */,
+				C6053043DB614EE78623A7AF /* RNEthDaemon.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1098,12 +1103,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-sensitive-info/ios/RNSensitiveInfo/**",
 					"$(SRCROOT)/../node_modules/realm/src/**",
 					"$(SRCROOT)/../node_modules/react-native-randombytes",
+					"$(SRCROOT)/../node_modules/react-native-eth-daemon/ios/**",
 				);
 			};
 			name = Debug;
@@ -1127,12 +1134,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-sensitive-info/ios/RNSensitiveInfo/**",
 					"$(SRCROOT)/../node_modules/realm/src/**",
 					"$(SRCROOT)/../node_modules/react-native-randombytes",
+					"$(SRCROOT)/../node_modules/react-native-eth-daemon/ios/**",
 				);
 			};
 			name = Release;
@@ -1157,6 +1166,7 @@
 					"$(SRCROOT)/../node_modules/react-native-sensitive-info/ios/RNSensitiveInfo/**",
 					"$(SRCROOT)/../node_modules/realm/src/**",
 					"$(SRCROOT)/../node_modules/react-native-randombytes",
+					"$(SRCROOT)/../node_modules/react-native-eth-daemon/ios/**",
 				);
 			};
 			name = Debug;
@@ -1180,6 +1190,7 @@
 					"$(SRCROOT)/../node_modules/react-native-sensitive-info/ios/RNSensitiveInfo/**",
 					"$(SRCROOT)/../node_modules/realm/src/**",
 					"$(SRCROOT)/../node_modules/react-native-randombytes",
+					"$(SRCROOT)/../node_modules/react-native-eth-daemon/ios/**",
 				);
 			};
 			name = Release;
@@ -1212,12 +1223,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-sensitive-info/ios/RNSensitiveInfo/**",
 					"$(SRCROOT)/../node_modules/realm/src/**",
 					"$(SRCROOT)/../node_modules/react-native-randombytes",
+					"$(SRCROOT)/../node_modules/react-native-eth-daemon/ios/**",
 				);
 			};
 			name = Debug;
@@ -1250,12 +1263,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-sensitive-info/ios/RNSensitiveInfo/**",
 					"$(SRCROOT)/../node_modules/realm/src/**",
 					"$(SRCROOT)/../node_modules/react-native-randombytes",
+					"$(SRCROOT)/../node_modules/react-native-eth-daemon/ios/**",
 				);
 			};
 			name = Release;
@@ -1283,6 +1298,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
 			name = Debug;
@@ -1307,6 +1323,7 @@
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",

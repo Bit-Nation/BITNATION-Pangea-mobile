@@ -1,4 +1,6 @@
 rootProject.name = 'Pangea'
+include ':react-native-eth-daemon'
+project(':react-native-eth-daemon').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-eth-daemon/android/app')
 include ':react-native-randombytes'
 project(':react-native-randombytes').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-randombytes/android')
 include ':realm'

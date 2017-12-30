@@ -3,6 +3,7 @@ package com.pangea;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.reactlibrary.RNEthDaemonPackage;
 import com.bitgo.randombytes.RandomBytesPackage;
 import io.realm.react.RealmReactPackage;
 import br.com.classapp.RNSensitiveInfo.RNSensitiveInfoPackage;
@@ -26,6 +27,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNEthDaemonPackage(),
             new RandomBytesPackage(),
             new RealmReactPackage(),
             new RNSensitiveInfoPackage()
