@@ -7,19 +7,13 @@ var {height, width} = Dimensions.get('window');
 const styles = MediaQueryStyleSheet.create(
   {
 
-
-    Ncontainer : {
-      //  marginBottom:5,
-
-    },
-
-    container2: {
+    container: {
         flex: 1,
         flexDirection: 'row',
         alignItems: 'center',
 
       },
-      text2: {
+      text: {
         marginLeft: '3%',
         fontSize: 16,
         color:'white',

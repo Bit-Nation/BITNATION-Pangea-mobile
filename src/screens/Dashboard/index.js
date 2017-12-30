@@ -74,11 +74,10 @@ class Dashboard extends Component {
         </View>
         <View style = {styles.listContainer}>  
         <ListView
-        style={styles.Ncontainer}
         dataSource={this.state.dataSource}
         renderRow={(data) =>
-        <TouchableOpacity style={styles.container2}>
-              <Text style={styles.text2}>
+        <TouchableOpacity style={styles.container}>
+              <Text style={styles.text}>
                     {data.name} 
                 </Text>
                 <Image source={ data.avatar_url} style={styles.photo2} />

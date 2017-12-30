@@ -17,7 +17,6 @@ class SplashScreen extends Component {
         Navigation.startSingleScreenApp({
           screen: {
             screen: 'Pangea.Dashboard',
-            // title: 'Dashboard',
              navigatorStyle
           },
         });
@@ -38,13 +37,7 @@ SplashScreen.propTypes = {
   navigator: PropTypes.object
 };
 
-navigatorStyle = {
-	statusBarColor: 'black',
-	statusBarTextColorScheme: 'light',
-	navBarBackgroundColor: '#0a0a0a',
-	navBarTextColor: 'white',
-	navBarButtonColor: 'white'
-};
+const navigatorStyle = { navBarHidden: true }
 
 SplashScreen.defaultProps = {
 };
