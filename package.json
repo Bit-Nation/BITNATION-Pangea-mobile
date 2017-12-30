@@ -8,7 +8,8 @@
     "test:coverage": "flow && jest --coverage",
     "test:coveralls": "yarn test:coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "ios": "flow && node_modules/.bin/react-native run-ios",
-    "android": "flow && node_modules/.bin/react-native run-android"
+    "android": "flow && node_modules/.bin/react-native run-android",
+    "postinstall": "./node_modules/.bin/rn-nodeify --install \"buffer,crypto,stream,vm\" --hack"
   },
   "dependencies": {
     "BITNATION-Panthalassa": "https://github.com/Bit-Nation/Panthalassa#develop",
@@ -18,7 +19,9 @@
     "react": "16.0.0",
     "react-native": "0.51.0",
     "react-native-randombytes": "^3.0.0",
-    "react-native-sensitive-info": "^5.1.0"
+    "react-native-sensitive-info": "^5.1.0",
+    "rn-nodeify": "^8.3.0",
+    "web3": "^1.0.0-beta.27"
   },
   "devDependencies": {
     "babel-jest": "22.0.3",
