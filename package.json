@@ -20,6 +20,7 @@
     "react": "16.0.0",
     "react-native": "0.51.0",
     "react-native-crypto": "^2.1.2",
+    "react-native-eth-daemon": "git+https://github.com/Bit-Nation/react-native-eth-daemon.git#development",
     "react-native-randombytes": "^3.0.0",
     "react-native-sensitive-info": "^5.2.0",
     "rn-nodeify": "^8.3.0",
