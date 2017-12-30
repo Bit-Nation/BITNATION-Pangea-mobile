@@ -140,6 +140,7 @@ android {
 }
 
 dependencies {
+    compile project(':realm')
     compile project(':react-native-sensitive-info')
     compile project(':react-native-eth-daemon')
     compile project(':react-native-config')
