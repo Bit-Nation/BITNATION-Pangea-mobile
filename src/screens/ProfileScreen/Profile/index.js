@@ -10,8 +10,33 @@ import PropTypes from 'prop-types';
 import styles from './styles';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import AssetsImage from '../../../global/AssetsImages';
+import NavigatorComponent from '../../../components/common/NavigatorComponent';
+import Colors from '../../../global/Colors';
 
-class ProfileScreen extends Component {
+const EDIT_BUTTON = 'EDIT_BUTTON';
+
+class ProfileScreen extends NavigatorComponent {
+
+  constructor(props) {
+    super(props);
+
+    this.props.navigator.setButtons(
+      {
+        leftButtons: [],
+        rightButtons: [{
+          title: 'Edit',
+          id: EDIT_BUTTON,
+          buttonColor: Colors.navigationColor,
+        }],
+      }
+    );
+  }
+
+  onNavBarButtonPress(id) {
+    if (id === EDIT_BUTTON) {
+      this.props.onStartEditing();
+    }
+  }
 
   render() {
     return (
@@ -64,7 +89,9 @@ class ProfileScreen extends Component {
 }
 
 ProfileScreen.propTypes = {
-  user: PropTypes.object.isRequired
+  navigator: PropTypes.object,
+  user: PropTypes.object.isRequired,
+  onStartEditing: PropTypes.func.isRequired,
 };
 
 

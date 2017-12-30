@@ -1,5 +1,6 @@
 import AssetsImages from './AssetsImages';
 import Colors from './Colors';
+import { Platform } from 'react-native';
 
 export const tabsStyle = {
   tabBarButtonColor: Colors.white,
@@ -15,13 +16,12 @@ export const appStyle = {
 
 export const navigatorStyle = {
   statusBarTextColorScheme: 'light',
-  statusBarColor: 'transparent',
+  statusBarColor: Platform.OS === 'ios' ? 'transparent' : 'black',
   navBarTransparent: true,
   navBarTranslucent: true,
   navBarNoBorder: true,
   drawUnderNavBar: true,
-  drawUnderStatusBar: true,
-  navBarTitleTextCentered: true,
+  drawUnderStatusBar: false,
   navBarTextColor: Colors.white,
 };
 
