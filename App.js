@@ -1,6 +1,5 @@
 import { Provider } from 'react-redux';
 import React, { Component } from 'react';
-import {View} from 'react-native'
 import configureStore from './src/config/configureStore';
 import { Navigation } from 'react-native-navigation';
 import { registerScreens } from './src/screens/screens';
