@@ -5,17 +5,20 @@
  */
 
 import {JsonRpcNodeInterface} from 'BITNATION-Panthalassa/src/specification/jsonRpcNode'
+import daemon from 'react-native-eth-daemon';
+import config from 'react-native-config';
 
-//@todo Change this to work with the real daemon
-export default function () : JsonRpcNodeInterface {
+const imp:JsonRpcNodeInterface = {
+    name: 'Local Ethereum node',
+    url: 'localhost:8545',
+    start: () => daemon.startDaemon({
+        enabledEthereum:true,
+        networkID: config.ETH_DAEMON_NETWORK_ID,
+        enodesNumber:16,
+        maxPeers:25,
+        enabledWhisper:false
+    }),
+    stop: () => daemon.stopDaemon()
+};
 
-    const imp:JsonRpcNodeInterface = {
-        name: 'Ethereum Daemon',
-        url: '',
-        start: () => new Promise((res, rej) => res()),
-        stop: () => new Promise((res, rej) => res())
-    };
-
-    return imp;
-
-}
+export default imp;
