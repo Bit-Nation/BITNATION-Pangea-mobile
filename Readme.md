@@ -32,3 +32,5 @@
 
 - `./src/components/common` contain's all common components like e.g. a "header" component.
 - `./__tests__` contain's all the test's
+
+### [Docs](./docs.md)
