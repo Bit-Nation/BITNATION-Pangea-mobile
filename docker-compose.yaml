@@ -1,0 +1,11 @@
+version: '3.3'
+
+services:
+  node:
+    image: node:8.9.3
+    volumes:
+      - ./:/app
+    tty: true
+    working_dir: /app
+    environment:
+      - COVERALLS_REPO_TOKEN
