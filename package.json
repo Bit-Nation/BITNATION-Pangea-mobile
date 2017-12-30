@@ -8,37 +8,46 @@
     "test:coverage": "flow && jest --coverage",
     "test:coveralls": "yarn test:coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "ios": "flow && node_modules/.bin/react-native run-ios",
-    "android": "flow && node_modules/.bin/react-native run-android"
+    "android": "flow && node_modules/.bin/react-native run-android",
+    "postinstall": "./node_modules/.bin/rn-nodeify --install 'stream,buffer,vm,crypto,string_decoder,events,assert' --hack"
   },
   "dependencies": {
+    "BITNATION-Panthalassa": "https://github.com/Bit-Nation/Panthalassa#develop",
+    "assert": "^1.4.1",
+    "buffer": "^4.9.1",
     "es6-promise": "^4.1.1",
     "eslint": "^4.13.1",
     "eslint-plugin-react": "^7.5.1",
     "eslint-plugin-react-native": "^3.2.0",
+    "events": "^1.1.1",
     "fetch-everywhere": "^1.0.5",
     "hoist-non-react-statics": "^2.3.1",
-    "BITNATION-Panthalassa": "https://github.com/Bit-Nation/Panthalassa#develop",
     "native-base": "^2.3.5",
     "prop-types": "^15.6.0",
     "react": "16.0.0",
     "react-native": "0.51.0",
+    "react-native-crypto": "^2.1.2",
     "react-native-dropdownalert": "^3.1.2",
     "react-native-modal": "^4.1.1",
     "react-native-navigation": "^1.1.319",
+    "react-native-randombytes": "^3.0.0",
     "react-native-responsive": "^1.0.2",
     "react-native-vector-icons": "^4.4.2",
     "react-navigation": "^1.0.0-beta.22",
     "react-redux": "^5.0.6",
+    "readable-stream": "^1.0.33",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
     "redux-persist": "^5.4.0",
     "redux-saga": "^0.16.0",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "rn-nodeify": "^8.3.0",
+    "stream-browserify": "^1.0.0",
+    "vm-browserify": "0.0.4"
   },
   "devDependencies": {
     "babel-jest": "22.0.3",
     "babel-preset-react-native": "4.0.0",
-
     "coveralls": "^3.0.0",
     "jest": "22.0.3",
     "react-test-renderer": "16.0.0"
@@ -49,5 +58,25 @@
       "^image![a-zA-Z0-9$_-]+$": "GlobalImageStub",
       "^[@./a-zA-Z0-9$_-]+\\.(png|gif)$": "RelativeImageStub"
     }
+  },
+  "react-native": {
+    "crypto": "react-native-crypto",
+    "_stream_transform": "readable-stream/transform",
+    "_stream_readable": "readable-stream/readable",
+    "_stream_writable": "readable-stream/writable",
+    "_stream_duplex": "readable-stream/duplex",
+    "_stream_passthrough": "readable-stream/passthrough",
+    "stream": "stream-browserify",
+    "vm": "vm-browserify"
+  },
+  "browser": {
+    "crypto": "react-native-crypto",
+    "_stream_transform": "readable-stream/transform",
+    "_stream_readable": "readable-stream/readable",
+    "_stream_writable": "readable-stream/writable",
+    "_stream_duplex": "readable-stream/duplex",
+    "_stream_passthrough": "readable-stream/passthrough",
+    "stream": "stream-browserify",
+    "vm": "vm-browserify"
   }
 }
