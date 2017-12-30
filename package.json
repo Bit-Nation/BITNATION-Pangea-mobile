@@ -9,10 +9,11 @@
     "test:coveralls": "yarn test:coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "ios": "flow && node_modules/.bin/react-native run-ios",
     "android": "flow && node_modules/.bin/react-native run-android",
-    "postinstall": "./node_modules/.bin/rn-nodeify --install 'stream,buffer,vm,crypto,string_decoder,events' --hack"
+    "postinstall": "./node_modules/.bin/rn-nodeify --install 'stream,buffer,vm,crypto,string_decoder,events,assert' --hack"
   },
   "dependencies": {
     "BITNATION-Panthalassa": "git+https://github.com/Bit-Nation/Panthalassa.git#develop",
+    "assert": "^1.4.1",
     "awilix": "^3.0.0",
     "buffer": "^5.0.8",
     "eventemitter3": "^3.0.0",
@@ -44,6 +45,7 @@
     ]
   },
   "react-native": {
+    "assert": "assert",
     "crypto": "react-native-crypto",
     "_stream_transform": "readable-stream/transform",
     "_stream_readable": "readable-stream/readable",
@@ -54,6 +56,7 @@
     "vm": "vm-browserify"
   },
   "browser": {
+    "assert": "assert",
     "crypto": "react-native-crypto",
     "_stream_transform": "readable-stream/transform",
     "_stream_readable": "readable-stream/readable",
