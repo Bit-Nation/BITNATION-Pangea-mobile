@@ -140,6 +140,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-sensitive-info')
     compile project(':react-native-eth-daemon')
     compile project(':react-native-config')
     compile project(':react-native-randombytes')
