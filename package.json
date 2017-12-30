@@ -12,7 +12,7 @@
     "postinstall": "./node_modules/.bin/rn-nodeify --install 'stream,buffer,vm,crypto,string_decoder,events' --hack"
   },
   "dependencies": {
-    "BITNATION-Panthalassa": "https://github.com/Bit-Nation/Panthalassa#develop",
+    "BITNATION-Panthalassa": "git+https://github.com/Bit-Nation/Panthalassa.git#develop",
     "awilix": "^3.0.0",
     "buffer": "^5.0.8",
     "events": "^1.1.1",
@@ -21,7 +21,7 @@
     "react-native": "0.51.0",
     "react-native-crypto": "^2.1.2",
     "react-native-randombytes": "^3.0.0",
-    "react-native-sensitive-info": "^5.1.0",
+    "react-native-sensitive-info": "^5.2.0",
     "rn-nodeify": "^8.3.0",
     "stream-browserify": "^1.0.0",
     "string_decoder": "^0.10.31",
