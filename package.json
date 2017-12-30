@@ -14,6 +14,7 @@
   "dependencies": {
     "BITNATION-Panthalassa": "https://github.com/Bit-Nation/Panthalassa#develop",
     "assert": "^1.4.1",
+    "awilix": "^3.0.1",
     "buffer": "^4.9.1",
     "es6-promise": "^4.1.1",
     "eslint": "^4.13.1",
