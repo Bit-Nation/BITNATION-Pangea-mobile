@@ -16,8 +16,12 @@ const styles = MediaQueryStyleSheet.create({
     backgroundColor: Colors.getBitNationBlue(0.2),
     alignItems: 'center',
   },
-  holonsContainer: {
-    marginTop: 20,
+  header: {
+    backgroundColor: 'transparent',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    marginBottom: 20,
   },
   achievementsContainer: {
     marginTop: 8,
@@ -25,6 +29,38 @@ const styles = MediaQueryStyleSheet.create({
   },
   placeholder: {
     resizeMode: 'contain',
+  },
+  avatar: {
+    height: 100,
+    width: 100,
+    borderRadius: 50,
+  },
+  nameText: {
+    fontSize: 28,
+    color: Colors.titleColor,
+    letterSpacing: -1.13,
+    textAlign: 'center',
+    backgroundColor: 'transparent'
+  },
+  infoText: {
+    fontSize: 16,
+    color: Colors.BitNationLightBlue,
+    letterSpacing: -0.65,
+    lineHeight: 20.8,
+    textAlign: 'center',
+    backgroundColor: 'transparent'
+  },
+  ethAddress: {
+    fontSize: 14,
+    color: Colors.BitNationLightBlue,
+    letterSpacing: -0.65,
+    lineHeight: 20.8,
+    textAlign: 'center',
+    backgroundColor: 'transparent'
+  },
+  fakeNavigationBar: {
+    height: 64,
+    backgroundColor: 'transparent',
   }
 });
 

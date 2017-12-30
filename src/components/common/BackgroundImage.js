@@ -19,9 +19,9 @@ export default class BackgroundImage extends React.Component {
 const styles = MediaQueryStyleSheet.create({
   background: {
     position: 'absolute',
-    marginLeft: 0,
-    marginBottom: 0,
-    marginRight: 0,
-    marginTop: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
+    top: 0,
   }
 });

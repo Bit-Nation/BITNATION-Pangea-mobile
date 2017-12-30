@@ -3,39 +3,51 @@ import {
   Image,
   View,
   ScrollView,
+  Text,
 } from 'react-native';
 import PropTypes from 'prop-types';
 
 import styles from './styles';
 import BackgroundImage from '../../../components/common/BackgroundImage';
-import Text from '../../../components/common/Text';
-import Button from '../../../components/common/Button';
 import AssetsImage from '../../../global/AssetsImages';
 
 class ProfileScreen extends Component {
 
   render() {
     return (
-      <ScrollView contentContainerStyle={styles.container}>
+      <View style={styles.container}>
         <BackgroundImage/>
+        <View style={styles.fakeNavigationBar}/>
         {this._buildHeader()}
-        {this._buildHolonsView()}
-        {this._buildAchievemntsView()}
-      </ScrollView>
+        <ScrollView>
+          {this._buildHolonsView()}
+          {this._buildAchievemntsView()}
+        </ScrollView>
+      </View>
     );
   }
 
   _buildHeader() {
-    return (
-      <View>
+    const { user } = this.props;
 
+    const avatarSource = user.avatar ?
+      { uri: `data:image/gif;base64,${user.avatar}` } :
+      AssetsImage.logo;
+
+    return (
+      <View style={styles.header}>
+        <Image source={avatarSource} style={styles.avatar}/>
+        <Text style={styles.nameText}>{user.name}</Text>
+        <Text style={styles.infoText}>{user.location}</Text>
+        <Text style={styles.infoText}>{user.latitude + ', ' + user.longitude}</Text>
+        <Text style={styles.ethAddress}>{user.ethAddress}</Text>
       </View>
     );
   }
 
   _buildHolonsView() {
     return (
-      <View style={[styles.infoContainer, styles.holonsContainer]}>
+      <View style={styles.infoContainer}>
         <Image style={styles.placeholder} source={AssetsImage.Placeholder.holons}/>
       </View>
     );
