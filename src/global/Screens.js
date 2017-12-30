@@ -54,7 +54,7 @@ export default {
     screen: 'Pangea.ProfileScreen',
     label: 'Profile',
     icon: AssetsImages.TabIcons.profile,
-    title: 'Profile',
+    title: 'Profile & Settings',
     navigatorStyle
   },
 };
