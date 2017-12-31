@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.reactnativenavigation.NavigationApplication;
 import com.reactnative.ivpusic.imagepicker.PickerPackage;
+import com.reactlibrary.RNEthDaemonPackage;
 
 public class MainApplication extends NavigationApplication {
 
@@ -18,7 +19,8 @@ public class MainApplication extends NavigationApplication {
 
     protected List<ReactPackage> getPackages() {
         return Arrays.<ReactPackage>asList(
-                new PickerPackage()
+                new PickerPackage(),
+                new RNEthDaemonPackage()
         );
     }
 
