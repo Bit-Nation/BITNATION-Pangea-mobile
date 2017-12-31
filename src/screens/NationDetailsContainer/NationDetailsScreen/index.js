@@ -11,6 +11,7 @@ import { resolveNation } from '../../../utils/nations';
 import NationActionButton from '../../../components/common/NationActionButton';
 import AssetsImage from '../../../global/AssetsImages';
 import MessageView from '../../../components/common/MessageView';
+import DemoImage from '../../../components/common/DemoImage';
 
 class NationDetailsScreen extends Component {
 
@@ -28,14 +29,14 @@ class NationDetailsScreen extends Component {
         <Text style={styles.title}>{nation.name}</Text>
         {this._buildButtonsView()}
         <ScrollView style={styles.scrollView}>
-          <MessageView style={[styles.messageView, { height: 256 }]}>
+          <MessageView style={[styles.messageView]}>
             <Image source={AssetsImage.Placeholder.map} resizeMode='contain'/>
           </MessageView>
-          <MessageView style={[styles.messageView, { height: 301 }]}>
+          <MessageView style={[styles.messageView]}>
             <Image source={AssetsImage.Placeholder.achievements} resizeMode='contain'/>
           </MessageView>
           {this._buildAboutView(nation)}
-          {this._buildGovermentalStructureView(nation)}
+          {this._buildGovernmentalStructureView(nation)}
           {this._buildFactsView(nation)}
         </ScrollView>
       </View>
@@ -67,15 +68,17 @@ class NationDetailsScreen extends Component {
     );
   }
 
-  _buildGovermentalStructureView(nation) {
+  _buildGovernmentalStructureView(nation) {
     return (
       <MessageView style={styles.messageView}>
+        <DemoImage/>
         <Text style={styles.infoTitle}>
           Governmental Structure
         </Text>
         <Text style={styles.infoText}>
           {nation.name + ' '}
-          uses the Kanun legal code, and laws are enforced with a Reputation System (using the threat of public shaming
+          uses the Kanun legal code, and laws are enforced with a Reputation System (using the threat of public
+          shaming
           and shunning). The government is a Holocracy. The nation is managed as a non-profit entity
         </Text>
       </MessageView>
@@ -85,6 +88,7 @@ class NationDetailsScreen extends Component {
   _buildFactsView(nation) {
     return (
       <MessageView style={styles.messageView}>
+        <DemoImage/>
         <Text style={styles.infoTitle}>
           Fun Facts
         </Text>
