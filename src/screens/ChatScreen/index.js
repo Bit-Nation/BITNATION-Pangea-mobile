@@ -5,15 +5,19 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-
+import styles from './styles';
 import { GiftedChat } from 'react-native-gifted-chat';
 import AssetsImages from "../../global/AssetsImages";
+
+import BackgroundImage from '../../components/common/BackgroundImage';
+
 
 class ChatScreen extends React.Component {
 
     state = {
         messages: [],
     };
+
 
     componentWillMount() {
         this.setState({
@@ -63,7 +67,11 @@ class ChatScreen extends React.Component {
 
     render() {
         return (
-
+          <View style={styles.container}>
+            <BackgroundImage/>
+            <View style={styles.topSpacer}/>
+//          <View style={{backgroundColor: 'blue', flex: 1 }} >
+            </View>
             <GiftedChat
                 messages={this.state.messages}
                 onSend={(messages) => this.onSend(messages)}
@@ -71,16 +79,9 @@ class ChatScreen extends React.Component {
                     _id: 1,
                 }}
             />
-
-        );
-        return (
-          <View
-            style={{
-              flexDirection: 'row',
-              height: 100,
-              padding: 20,
-            }}>
-              <View style={{backgroundColor: 'blue', flex: 0.3}} />
+            <View style={styles.bottomSpacer}>
+              <Image source={AssetsImage.logo} opacity={0.3}/>
+            </View>
           </View>
         );
     }
