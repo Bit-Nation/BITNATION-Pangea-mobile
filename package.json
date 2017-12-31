@@ -10,12 +10,13 @@
     "ios": "flow && node_modules/.bin/react-native run-ios",
     "android": "flow && node_modules/.bin/react-native run-android",
     "postinstall": "./node_modules/.bin/rn-nodeify --install 'stream,buffer,vm,crypto,string_decoder,events,assert' --hack",
-    "docs" : "node_modules/.bin/documentation build src/services/container.js -f md > docs/main.md"
+    "docs": "node_modules/.bin/documentation build src/services/container.js -f md > docs/main.md"
   },
   "dependencies": {
     "BITNATION-Panthalassa": "https://github.com/Bit-Nation/Panthalassa#develop",
     "assert": "^1.4.1",
     "awilix": "^3.0.1",
+    "babel-polyfill": "^6.26.0",
     "buffer": "^4.9.1",
     "es6-promise": "^4.1.1",
     "eslint": "^4.13.1",
@@ -31,7 +32,7 @@
     "react-native-config": "^0.11.2",
     "react-native-crypto": "^2.1.2",
     "react-native-dropdownalert": "^3.1.2",
-    "react-native-eth-daemon": "git+https://github.com/Bit-Nation/react-native-eth-daemon.git#development",
+    "react-native-eth-daemon": "^1.0.0",
     "react-native-modal": "^4.1.1",
     "react-native-navigation": "^1.1.319",
     "react-native-randombytes": "^3.0.0",
