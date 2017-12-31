@@ -28,6 +28,10 @@ class App extends Component {
   }
 }
 
+// THis needs to be implemented in xcode so it occurs without latency and in a manner that doesn't
+// defeat the nav render. It's here for now as a placeholder.
+/**
+
 const navigatorStyle = {
   statusBarColor: 'black',
   statusBarTextColorScheme: 'light',
@@ -40,6 +44,8 @@ const navigatorStyle = {
   tabBarBackgroundColor: 'white'
 };
 
+
+
 Navigation.startSingleScreenApp({
   screen: {
     screen: 'Pangea.SplashScreen',
@@ -47,7 +53,7 @@ Navigation.startSingleScreenApp({
     navigatorStyle
   },
 });
-
+**/
 
 
 export default App;
