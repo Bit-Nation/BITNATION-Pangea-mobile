@@ -6,12 +6,14 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
+import ImagePicker from 'react-native-image-crop-picker';
 
 import styles from './styles';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import AssetsImage from '../../../global/AssetsImages';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import Colors from '../../../global/Colors';
+import { ActionSheet } from 'native-base';
 
 const DONE_BUTTON = 'DONE_BUTTON';
 
@@ -20,6 +22,7 @@ class EditProfile extends NavigatorComponent {
   constructor(props) {
     super(props);
 
+    this.actionSheet = null;
     this._setNavigationButtons(false);
   }
 
@@ -122,6 +125,9 @@ class EditProfile extends NavigatorComponent {
           </View>
 
         </View>
+        <ActionSheet ref={(c) => {
+          this.actionSheet = c;
+        }}/>
       </View>
     );
   }
@@ -131,7 +137,51 @@ class EditProfile extends NavigatorComponent {
   };
 
   _onEditAvatar = () => {
+    const PHOTO_LIBRARY = 0;
+    const CAMERA = 1;
 
+    if (this.actionSheet !== null) {
+      this.actionSheet._root.showActionSheet(
+        {
+          options: ['Photo Library', 'Take Photo', 'Cancel'],
+          cancelButtonIndex: 2,
+          title: 'Edit your profile picture.'
+        },
+        buttonIndex => {
+          switch (buttonIndex) {
+            case PHOTO_LIBRARY:
+              this._openPicker(false);
+              break;
+            case CAMERA:
+              this._openPicker(true);
+              break;
+          }
+        }
+      );
+    }
+  };
+
+  _openPicker = async (isCamera) => {
+    const options = {
+      cropping: true,
+      mediaType: 'photo',
+      cropperCircleOverlay: true,
+      compressImageQuality: 0.4,
+      includeBase64: true,
+    };
+
+    try {
+      const result = isCamera ?
+        await ImagePicker.openCamera(options)
+        :
+        await ImagePicker.openPicker(options);
+
+      if (result.data) {
+        this.props.onUserChanged('avatar', result.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   _userIsValid(user) {
