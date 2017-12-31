@@ -14,7 +14,7 @@ const EventEmitter = require('eventemitter3');
 
 
 /**
- * @alias container
+ * @alias src/services/container.js
  * @desc DI - Container. The exported container it self is NOT exported as a singleton. You need to take care about that your self.
  * @example
  *
