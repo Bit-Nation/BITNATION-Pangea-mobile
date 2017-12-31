@@ -3,17 +3,28 @@
 ### Table of Contents
 
 -   [src/services/container.js](#srcservicescontainerjs)
+-   [secureStorage](#securestorage)
+-   [osDependencies](#osdependencies)
+-   [ethDaemon](#ethdaemon)
 
 ## src/services/container.js
 
-DI - Container. The exported container it self is NOT exported as a singleton. You need to take care about that your self.
+An object holding all available services
 
-**Examples**
+## secureStorage
 
-```javascript
-//Import the container
- import container from 'src/services/container'
+Implementation of the secure storage Panthalassa specification and is used to save sensitive data. You are unlikely to use this. It's required by Panthalassa modules.
 
- //Fetch a service from it
- const myService = container.resolve('myServiceName');
-```
+Type: SecureStorage
+
+## osDependencies
+
+This module provides some functionality for Panthalassa such as crypto functions
+
+Type: OsDependenciesInterface
+
+## ethDaemon
+
+Implementation of the JsonRpcNodeInterface which is used to communicate with the ethereum chain
+
+Type: JsonRpcNodeInterface
