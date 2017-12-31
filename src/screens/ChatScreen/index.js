@@ -13,11 +13,11 @@ export default class Chat extends Component {
       <Image
       source={require("../../assets/images/staticChat.png")}
       resizeMode="contain"
-      style="{styles}"
+      style={{flex:1, height: undefined, width: undefined}}
       />
 
     );
   }
 }
 
-const styles = {flex:1, height: undefined, width: undefined};
+//const styles = {flex:1, height: undefined, width: undefined};
