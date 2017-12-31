@@ -16,7 +16,7 @@ class SplashScreen extends Component {
       // TODO: Replace navigation with redux actions
         Navigation.startSingleScreenApp({
           screen: {
-            screen: 'Screens.MainScreen',
+            screen: 'Pangea.MainScreen',
             title: 'Main',
             navigatorStyle
           },

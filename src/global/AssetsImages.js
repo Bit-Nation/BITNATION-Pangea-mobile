@@ -1,4 +1,4 @@
-const logo = require('../assets/images/logo.png');
+const logo = require('../assets/images/SplashImage.jpg');
 const background = require('../assets/images/background.jpg');
 
 const dashboardTabIcon = require('../assets/images/dashboardTabIcon.png');

@@ -5,6 +5,8 @@ import {
   Image
 } from 'react-native';
 
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 export default class Chat extends Component {
   render() {
