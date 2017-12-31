@@ -49,6 +49,7 @@ export default {
   },
   NATION_DETAILS_SCREEN: {
     screen: 'Pangea.NationDetailsScreen',
+    title: 'Nation',
     navigatorStyle,
   },
   WALLET_SCREEN: {

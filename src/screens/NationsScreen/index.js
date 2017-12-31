@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import _ from 'lodash';
 
 import NationsListScreen from './NationsListScreen';
 import { switchNationTab, openNation } from '../../actions/nations';
 import Screens from '../../global/Screens';
+import { resolveNation } from '../../utils/nations';
 
 class NationsScreen extends Component {
 
@@ -16,17 +16,16 @@ class NationsScreen extends Component {
   }
 
   _onSelectItem = (id) => {
-    openNation(id);
-
-    const nation = _.find(this.props.nations, (nation) => nation.id === id);
+    const nation = resolveNation(this.props.nations, id);
 
     if (!nation) {
       return;
     }
 
+    this.props.openNation(id);
+
     this.props.navigator.push({
       ...Screens.NATION_DETAILS_SCREEN,
-      title: nation.name,
     });
   };
 

@@ -7,27 +7,40 @@ const styles = MediaQueryStyleSheet.create({
     justifyContent: 'center',
     alignItems: 'stretch',
   },
-  sectionList: {
+  title: {
+    fontSize: 30,
+    backgroundColor: 'transparent',
+    color: Colors.BitNationLightBlue,
+    textAlign: 'center',
+  },
+  buttonsView: {
+    marginTop: 10,
+    marginBottom: 10,
+    backgroundColor: Colors.getBitNationLightBlue(0.1),
+    flexDirection: 'row',
+    alignItems: 'stretch',
+    justifyContent: 'space-around',
+  },
+  scrollView: {
     flex: 1,
   },
-  segmentedControlContainer: {
-    height: 44,
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: 'rgba(27,57,92,0.50)',
+  messageView: {
+    marginBottom: 8,
+    marginLeft: 8,
+    marginRight: 8,
   },
-  tabsContainerStyle: {
-    backgroundColor: 'transparent',
-  },
-  tabStyle: {
-    backgroundColor: 'transparent',
-  },
-  tabTextStyle: {
+  infoTitle: {
+    fontSize: 22,
     backgroundColor: 'transparent',
     color: Colors.white,
+    textAlign: 'center',
+    marginBottom: 10,
   },
-  activeTabStyle: {
-    backgroundColor: Colors.getBitNationLightBlue(0.8),
+  infoText: {
+    fontSize: 14,
+    backgroundColor: 'transparent',
+    color: Colors.BitNationLightBlue,
+    textAlign: 'center',
   },
   fakeNavigationBar: {
     height: 64,

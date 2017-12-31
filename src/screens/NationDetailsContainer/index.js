@@ -26,9 +26,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   onSelectTab(index) {
     dispatch(switchNationTab(index));
-  },
-  openNation(id) {
-    dispatch(openNation(id));
   }
 });
 
