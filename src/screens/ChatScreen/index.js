@@ -13,6 +13,7 @@ import AssetsImages from "../../global/AssetsImages";
 import BackgroundImage from '../../components/common/BackgroundImage';
 
 
+
 class ChatScreen extends React.Component {
 
     state = {
@@ -68,11 +69,10 @@ class ChatScreen extends React.Component {
 
     render() {
         return (
-          <View style={styles.container}>
+          <View style={{ flex: 1 }}>
             <BackgroundImage/>
-            <View style={styles.topSpacer}/>
-//          <View style={{backgroundColor: 'blue', flex: 1 }} >
-            </View>
+
+
             <GiftedChat
                 messages={this.state.messages}
                 onSend={(messages) => this.onSend(messages)}
@@ -80,9 +80,6 @@ class ChatScreen extends React.Component {
                     _id: 1,
                 }}
             />
-            <View style={styles.bottomSpacer}>
-              <Image source={AssetsImage.logo} opacity={0.3}/>
-            </View>
           </View>
         );
     }
