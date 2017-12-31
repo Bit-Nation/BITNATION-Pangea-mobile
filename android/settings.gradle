@@ -1,16 +1,20 @@
 rootProject.name = 'Pangea'
+include ':react-native-eth-daemon'
+project(':react-native-eth-daemon').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-eth-daemon/android')
 include ':realm'
 project(':realm').projectDir = new File(rootProject.projectDir, '../node_modules/realm/android')
 include ':react-native-sensitive-info'
 project(':react-native-sensitive-info').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-sensitive-info/android')
 include ':react-native-eth-daemon'
-project(':react-native-eth-daemon').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-eth-daemon/android')
+project(':react-native-eth-daemon').projectDir = new File(rootProject.projectDir, 	'../node_modules/react-native-eth-daemon/android')
 include ':react-native-config'
 project(':react-native-config').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-config/android')
 include ':react-native-randombytes'
 project(':react-native-randombytes').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-randombytes/android')
 include ':react-native-navigation'
 project(':react-native-navigation').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-navigation/android/app/')
+include ':react-native-image-crop-picker'
+project(':react-native-image-crop-picker').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-image-crop-picker/android')
 include ':react-native-vector-icons'
 project(':react-native-vector-icons').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-vector-icons/android')
 
