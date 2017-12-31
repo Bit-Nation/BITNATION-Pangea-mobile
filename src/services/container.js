@@ -18,15 +18,11 @@ const EventEmitter = require('eventemitter3');
  * @desc DI - Container. The exported container it self is NOT exported as a singleton. You need to take care about that your self.
  * @example
  *
- *   //Import the container
- *  `import container from 'src/services/container'`
+ *  //Import the container
+ *  import container from 'src/services/container'
  *
- *   //Fetch a service from it
- *  `const myService = container.resolve('myServiceName');`
- *
- *  Available services are:
- *  * `eventEmitter`            (an instance of {@link https://www.npmjs.com/package/eventemitter3 EventEmitter3})
- *
+ *  //Fetch a service from it
+ *  const myService = container.resolve('myServiceName');
  */
 const container = createContainer();
 
