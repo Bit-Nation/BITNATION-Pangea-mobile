@@ -1,19 +1,18 @@
+/*eslint-disable */
 import React, { Component } from 'react';
 import {
   View,
   Text,
-  TextInput,
   Image,
   ListView,
-  TouchableOpacity
+  TouchableOpacity,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Images from '../../global/AssetsImages';
 import styles from './styles';
-import WalletCard from '../../components/WalletCard';
-
-
+import TextBox from '../../components/TextBox';
+import ListModal from '../../components/ListModal';
 
 class Dashboard extends Component {
   constructor(props) {
@@ -22,39 +21,39 @@ class Dashboard extends Component {
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
       dataSource: ds.cloneWithRows([{
-        name: 'Amy Farha',
+        name: 'Label',
         avatar_url: Images.rightArrow,
         subtitle: 'Vice President'
       },
       {
-        name: 'Chris Jackson',
-        avatar_url:  Images.rightArrow,
+        name: 'Label',
+        avatar_url: Images.rightArrow,
         subtitle: 'Vice Chairman'
       },
       {
-        name: 'Waleed ',
+        name: 'Label',
         avatar_url:  Images.rightArrow,
          subtitle: 'Vice Chairman'
       },
       {
-        name: 'Saad Maqbool',
+        name: 'Label',
         avatar_url: Images.rightArrow,
          subtitle: 'Vice Chairman'
       },
       {
-        name: 'Ans' ,
+        name: 'Label' ,
         avatar_url: Images.rightArrow,
         subtitle: 'Vice Chairman'
       }, {
-        name: 'Ans' ,
+        name: 'Label' ,
         avatar_url: Images.rightArrow,
         subtitle: 'Vice Chairman'
       }, {
-        name: 'Ans' ,
+        name: 'Label' ,
         avatar_url: Images.rightArrow,
         subtitle: 'Vice Chairman'
       }, {
-        name: 'Ans' ,
+        name: 'Label' ,
         avatar_url: Images.rightArrow,
         subtitle: 'Vice Chairman'
       },
@@ -65,37 +64,36 @@ class Dashboard extends Component {
 
   listDemo() {
     return (
-      <View style = {styles.cnFlex}>
+      <View style = {styles.cFlex}>
 
-        <View style = {styles.chatNationTextContainer}>
-        <Text style = {styles.nationsText}>Nations  </Text>
-        <Text style = {styles.nationsDescription}>25 new Natioons founded</Text>
-     
+        <View style = {styles.chatTextContainer}>
+        <Text style = {styles.chatsText}>Chats</Text>
+        
         </View>
         <View style = {styles.listContainer}>  
         <ListView
         dataSource={this.state.dataSource}
         renderRow={(data) =>
-        <TouchableOpacity style={styles.container}>
+        <TouchableOpacity style={styles.containerList}>
+          <View style= {styles.listName}>
               <Text style={styles.text}>
                     {data.name} 
                 </Text>
-                <Image source={ data.avatar_url} style={styles.photo2} />
+                </View>  
+                <View style= {styles.listIcon}>
+                <Image source={ data.avatar_url} style={styles.photo2} /> 
+                </View>
                
        </TouchableOpacity> }
 
-       renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator}/>
-      }
+      // renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator}/>}
        />
        </View>
 
        </View>
     );
   }
-
-
-  onMain() {
-}
+  
   render() {
     return(
         
@@ -106,56 +104,93 @@ class Dashboard extends Component {
           />
             <View style = {styles.firstContainer}> 
 
-                <View style = {styles.NWCContainer}>
-                    <View style = {styles.NationsContainer}>
-                      {this.listDemo()}
-                    </View>
+                <View style = {styles.NWContainer}>
+                  
+                  
+                    <ListModal 
+                    title="Nations"
+                    flexNumber = {2}
+                    marginBottom = {3}
+                    marginLeft ={2.5}
+                    data = {this.state.dataSource} />
 
-                    <View style = {styles.WalletContainer}>
-                      <WalletCard
-                      title = "Wallet"
-                      description= "1,120.00 mETH 143 PAT" />
+                    <ListModal 
+                    title="Wallet"
+                    flexNumber = {1}
+                    marginLeft ={2.5}
+                    data = {this.state.dataSource} />
 
-                    </View>
-
-                    <View style = {styles.ChatContainer}>
-                    {this.listDemo()}
-
-                  </View>
+                   
             </View>
 
 
-              <View style = {styles.CNContainer}>
-              <View style = {styles.contractsContainer}>
-              <WalletCard
-              title = "Contracts"
-              description= "3 Contracts that need your atention " />
+                    <ListModal 
+                    title="Activity"
+                    flexNumber = {1.5}
+                    marginRight ={2.6}
+                    marginLeft ={0}
+                    marginBottom = {0}
+                    data = {this.state.dataSource} />
+            </View>
 
-              </View>
 
-              <View style = {styles.NewsContainer}>
-                <WalletCard
-                title = "News"
-                description= "Lorem lpsum is simply dummy text of teh printing and typesetting industry." />
-              </View>
-          </View>
-        </View>
 
-          <View style = {styles.secondContainer}>
-            <View>
+                <View style = {styles.ChatNationContainer}> 
+                  <View style = {styles.chatContainer}>
+
+                    <Image  style = {styles.demo}
+                      source = {Images.demo}
+                      resizeMode= "contain"
+                      />
+                    {this.listDemo()}
+
+                  </View>
+                  <View style = {styles.contractsContainer}>
+                  <Image  style = {styles.demoContracts}
+                      source = {Images.demo}
+                      resizeMode= "contain"
+                      />
+                      <ListModal 
+                      title="Contracts"
+                      flexNumber = {1}
+                      marginRight ={0}
+                      marginLeft ={0}
+                      marginBottom = {0}
+                      data = {this.state.dataSource} />
+                  </View>
+
+                </View>
+
+        <View style = {styles.secondContainer}>
+
+     
+                    <Image  style = {styles.demoWorld}
+                      source = {Images.demo}
+                      resizeMode= "contain"
+                      />
+
+
                 <Text style = {styles.secondText} >Around the World
                 </Text>
-           </View>
 
-          <View style = {styles.sImage}>
-          <Image
-            style = {styles.secondImageContainer}
-            source= {Images.world}
-            source= "contain"
-              />
-          </View>
-    </View>
-  </View>);
+                <View style ={styles.sImage}>
+                <Image
+                    style = {styles.secondImageContainer}
+                    source= {Images.logo}
+                    resizeMode= "contain"
+                      />
+                  </View>
+         
+
+       
+          
+      </View>
+
+
+    
+  </View>
+  
+);
       }
         
   }

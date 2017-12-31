@@ -22,6 +22,7 @@ module.exports = {
   Grey: '#9E9E9E',
   LightGrey: '#EEEEEE',
   BlueGrey: '#607D8B',
+  BlueMed:'#72A4DE',
   BitnationBlue:'#4A90E2',
 
   Transparent: 'transparent',
@@ -62,4 +63,20 @@ module.exports = {
   grey_300 : '#DADCE5',
   grey_200 : '#F1F2F6',
   grey_100 : '#F9F9FC',
+
+  // Colors from Invasion App
+
+  // Document Colors
+  panelBoxColor:'#1b395c',
+  instuctionTextColor:'#72a4de',
+  navButtonTextColor:'#007aff',
+  Color1:'#bcdcff',
+  Color1:'#275284',
+
+  //Screen Colors
+  Color1:'#f9f9f9',
+  Color1:'#8e8e93',
+  Color1:'#1c3250',
+  Color1:'#bcdcff',
+  Color1:'#1c497e',
 };

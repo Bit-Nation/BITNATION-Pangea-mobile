@@ -25,6 +25,7 @@
     "react-native-modal": "^4.1.1",
     "react-native-navigation": "^1.1.319",
     "react-native-responsive": "^1.0.2",
+    "react-native-simple-dialogs": "^0.3.1",
     "react-native-vector-icons": "^4.4.2",
     "react-navigation": "^1.0.0-beta.22",
     "react-redux": "^5.0.6",

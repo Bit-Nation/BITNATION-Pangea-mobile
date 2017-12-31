@@ -7,10 +7,17 @@ var {height, width} = Dimensions.get('window');
 const styles = MediaQueryStyleSheet.create(
   {
 
-    container: {
+    containerList: {
         flex: 1,
         flexDirection: 'row',
-        alignItems: 'center',
+        //alignItems: 'center',
+
+      },
+      listName: {
+          marginRight:'10%',
+          width:'80%',
+          justifyContent:'center',
+ 
 
       },
       text: {
@@ -19,7 +26,12 @@ const styles = MediaQueryStyleSheet.create(
         color:'white',
         marginTop:'3%',
         marginBottom:'4%',
-        marginRight:'40%'
+      },
+
+      listIcon: {
+          
+        justifyContent:'flex-start',
+
       },
       photo2: {
         height: 10,
@@ -39,96 +51,135 @@ const styles = MediaQueryStyleSheet.create(
         height: 1,
         backgroundColor:Colors.GraySilver,
       },
-    
+
     container: {
       flexDirection:'column',
       flex:1,
+
     },
     backImage : {
         position: 'absolute',
         zIndex:-1,
+
     },
     firstContainer:
     {
-        flex:3,
+        flex:2,
         flexDirection:'row',
         marginBottom:'1.6%',
-        
-      opacity:0.6,
+        opacity:0.6,
     },
 
 
-    //Nation, Wallet, CHat
-    NWCContainer:
+    //Nation, Wallet
+    NWContainer:
     {
-        flex:1.5,
+        flex:1,
         flexDirection:'column',
         marginRight:'1.7%',
-        //backgroundColor:'red'
 
     },
     NationsContainer: {
         flex:2,
         backgroundColor:Colors.BitnationBlue,
-        marginBottom: '3%',
+        marginBottom: '5%',
+        marginLeft:'5%',
         borderRadius:8,
 
     },
-    nationsText: {
-        color:'white',
-        fontWeight:'bold',
-        textAlign:'center'
-    },
-    nationsDescription: {
-        color:'white',
-        marginLeft:'3%',
 
-    },
+
   
     WalletContainer: {
         flex:1,
         backgroundColor:Colors.BitnationBlue,
-        marginBottom: '3%',
+        marginBottom: '1%',
+        marginLeft:'5%',
         borderRadius:6
 
     },
-    ChatContainer: {
-        flex:2,
-        backgroundColor:Colors.BitnationBlue,
-        borderRadius:6,
-       // tintColor:'blue'
 
-    },
-    cnFlex: {
+    cFlex: {
 
         flex:1,
     },
-    chatNationTextContainer :
+    chatTextContainer :
     {
         flex:1,
+    },
+    chatsText: {
+        color:'white',
+        fontWeight:'bold',
+        textAlign:'center',
+        marginTop:'1%'
     },
 
     listContainer: {
-        flex:2
+        flex:3
     },
-    //Contract,News
-    CNContainer:
+    //Activity
+    ActivityContainer:
     {
-        flex:1,
-        flexDirection:'column',
-
-    },
-    contractsContainer: {
-        flex:1,
+        flex:1.5,
+        flexDirection:'row',
         backgroundColor:Colors.BitnationBlue,
-        marginBottom:'4%',
+        marginRight:'2%',
         borderRadius:8
 
     },
-    NewsContainer: {
-        flex:2,
+
+
+    
+    ChatNationContainer: {
+        flex:1,
+        flexDirection:'row',
+        opacity:0.6,
+    },
+
+    chatContainer: {
+        flex:1.5,
         backgroundColor:Colors.BitnationBlue,
-        borderRadius:6
+        borderRadius:6,
+        marginLeft:'2%',
+        marginRight:'2%',
+        marginBottom:'2%'
+      
+
+    },
+    demo: {
+        position:'absolute',
+        marginLeft:'20%',
+        marginTop:'10%',
+        width:80,
+        height:60,
+        zIndex:10
+
+    },
+    demoContracts: {
+        position:'absolute',
+        marginLeft:'20%',
+        marginTop:'10%',
+        width:100,
+        height:80,
+        zIndex:10,
+
+    },
+
+    logoW: {
+        backgroundColor:'red',
+        width:'100%',
+        height:'90%',
+        zIndex:20,
+        position:'absolute'
+
+    },
+
+    contractsContainer:{
+        flex:1,
+        backgroundColor:Colors.BitnationBlue,
+        borderRadius:6,
+        marginRight:'2%',
+        marginBottom:'2%'
 
     },
 
@@ -142,27 +193,39 @@ const styles = MediaQueryStyleSheet.create(
         paddingTop:'3%',
         flexDirection:'column',
         opacity:0.6,
+        marginLeft:'2%',
+        marginRight:'2%',
     },  
+
     secondText: {
         textAlign:'center',
         fontWeight:'bold',
         color:'white'
     },
+    demoWorld: {
+        position:'absolute',
+        marginLeft:'30%',
+        marginTop:'10%',
+        width:100,
+        height:80,
+        zIndex:10
+    
+    },
     sImage: {
-        width:'100%',
-        height:'100%',
+       
         //backgroundColor: 'black'
-         backgroundColor:Colors.Transparent,
+         //backgroundColor:'red'
          //position:'absolute'
-
     },
     secondImageContainer: {
-        backgroundColor: Colors.Transparent,
-        width: 160,
-        height: 52
+        //backgroundColor: Colors.Transparent,
+        marginTop:'5%',
+        marginLeft:'5%',
+        marginRight:'5%',
+       
+       // position:'absolute',
+
      },
 
-
-
-  });
+});
 export default styles;
