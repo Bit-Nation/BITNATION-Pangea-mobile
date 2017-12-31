@@ -14,6 +14,7 @@ export const appStyle = {
 };
 
 export const navigatorStyle = {
+<<<<<<< HEAD
   statusBarTextColorScheme: 'light',
   statusBarColor: 'transparent',
   navBarTransparent: true,
@@ -23,6 +24,17 @@ export const navigatorStyle = {
   drawUnderStatusBar: true,
   navBarTitleTextCentered: true,
   navBarTextColor: Colors.white,
+=======
+  statusBarColor: 'black',
+  statusBarTextColorScheme: 'light',
+  navigationBarColor: 'black',
+  navBarBackgroundColor: '#0a0a0a',
+  navBarTextColor: 'white',
+  navBarButtonColor: 'white',
+  tabBarButtonColor: 'red',
+  tabBarSelectedButtonColor: 'red',
+  tabBarBackgroundColor: 'white',
+>>>>>>> develop
 };
 
 export default {
@@ -54,7 +66,12 @@ export default {
     screen: 'Pangea.ProfileScreen',
     label: 'Profile',
     icon: AssetsImages.TabIcons.profile,
+<<<<<<< HEAD
     title: 'Profile',
     navigatorStyle
   },
 };
+=======
+  },
+};
+>>>>>>> develop

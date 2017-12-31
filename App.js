@@ -1,11 +1,18 @@
 import { Provider } from 'react-redux';
 import React, { Component } from 'react';
 import { Navigation } from 'react-native-navigation';
+<<<<<<< HEAD
 import {View} from 'react-native'
 import configureStore from './src/config/configureStore';
 import { registerScreens } from './src/screens/screens';
 import Screens, { appStyle, tabsStyle } from './src/global/Screens';
 
+=======
+
+import configureStore from './src/config/configureStore';
+import { registerScreens } from './src/screens/screens';
+import Screens, { appStyle, tabsStyle } from './src/global/Screens';
+>>>>>>> develop
 
 const store = configureStore();
 registerScreens(store, Provider);
@@ -20,6 +27,7 @@ Navigation.startTabBasedApp({
   ],
   tabsStyle,
   appStyle,
+<<<<<<< HEAD
 });
 
 class App extends Component {
@@ -52,8 +60,20 @@ Navigation.startSingleScreenApp({
     title: 'Splash',
     navigatorStyle
   },
+=======
+>>>>>>> develop
 });
 **/
 
+<<<<<<< HEAD
 
 export default App;
+=======
+class App extends Component {
+  render() {
+    return null;
+  }
+}
+
+export default App;
+>>>>>>> develop

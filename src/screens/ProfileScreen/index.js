@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
 import {
+<<<<<<< HEAD
   Image,
   View,
+=======
+  View,
+  Text,
+>>>>>>> develop
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+<<<<<<< HEAD
 import styles from './styles';
 import BackgroundImage from '../../components/common/BackgroundImage';
 import Text from '../../components/common/Text';
@@ -51,12 +57,30 @@ class ProfileScreen extends Component {
   _onCreateUserProfile = () => {
   };
 
+=======
+class ProfileScreen extends Component {
+  componentWillMount() {
+  }
+
+  render() {
+    return (
+      <View>
+        <Text>Profile Screen</Text>
+      </View>
+    );
+  }
+>>>>>>> develop
 }
 
 const mapStateToProps = state => ({
   ...state,
 });
 
+<<<<<<< HEAD
 const mapDispatchToProps = dispatch => ({});
+=======
+const mapDispatchToProps = dispatch => ({
+});
+>>>>>>> develop
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfileScreen);

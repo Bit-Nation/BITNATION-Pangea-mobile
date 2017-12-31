@@ -1,6 +1,7 @@
 /*!
  * Theme colours
  */
+<<<<<<< HEAD
 
 getBitNationBlue = (alpha) => {
   return 'rgba(188, 220, 255, ' + alpha + ')';
@@ -23,4 +24,14 @@ module.exports = {
   borderColor: '#275284',
   navigationColor: '#007AFF',
 
+=======
+module.exports = {
+
+  white: '#FFFFFF',
+
+  BitNationBlue: '#1B395C',
+  BitNationLightBlue: '#72A4DE',
+  BitNationVeryLightBlue: '#BCDCFF',
+
+>>>>>>> develop
 };

@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import {
     View,
@@ -8,6 +9,10 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+
+import './shim';
+import { AppRegistry } from 'react-native';
+
 import App from './App';
 
 
