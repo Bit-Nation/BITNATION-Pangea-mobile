@@ -1,13 +1,14 @@
 //@flow
 
-/**
- * Ethereum daemon implementation
- */
-
 import {JsonRpcNodeInterface} from 'BITNATION-Panthalassa/src/specification/jsonRpcNode'
 import daemon from 'react-native-eth-daemon';
 import config from 'react-native-config';
 
+/**
+ * @desc Implementation of the JsonRpcNodeInterface which is used to communicate with the ethereum chain
+ * @type {{name: string, url: string, start: function(): *, stop: function(): *}}
+ * @alias ethDaemon
+ */
 const imp:JsonRpcNodeInterface = {
     name: 'Local Ethereum node',
     url: 'localhost:8545',

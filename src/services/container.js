@@ -9,40 +9,33 @@ import ethDaemon from './panthalassa/ethDaemon'
 import wallet from 'BITNATION-Panthalassa/src/ethereum/wallet';
 import profile from 'BITNATION-Panthalassa/src/profile/profile';
 
-const {asFunction, createContainer} = require('awilix/lib/awilix.browser');
 const EventEmitter = require('eventemitter3');
 
-const container = createContainer();
+const ee = new EventEmitter();
+const dbInstance = db();
+const ethUtilsInstance = ethUtils(secureStorage, ee, osDeps);
+const ethWeb3Instance = web3(ethDaemon, ee, ethUtilsInstance);
+const ethWallet = wallet(ethUtilsInstance, ethWeb3Instance, dbInstance);
+const profileInstance = profile(db, ethUtilsInstance);
 
-container.register({
+/**
+ * @alias src/services/container.js
+ * @desc An object holding all available services
+ * @type {{eventEmitter, panthalassa: {database: DB, ethereum: {utils: EthUtilsInterface, web3: function(), wallet: WalletInterface}, profile: Profile}}}
+ */
+const container = {
+    eventEmitter: ee,
+    panthalassa: {
+        database: dbInstance,
+        ethereum: {
+            utils: ethUtilsInstance,
+            web3: ethWeb3Instance,
+            wallet: ethWallet
+        },
+        profile: profileInstance
+    }
+};
 
-    'eventEmitter' : asFunction(_ => new EventEmitter()),
-
-    'panthalassa:database:db' : asFunction(_ => db()),
-
-    'panthalassa:ethereum:utils' : asFunction(container => ethUtils(
-        secureStorage,
-        container['eventEmitter'],
-        osDeps
-    )),
-
-    'panthalassa:ethereum:web3' : asFunction(container => web3(
-        ethDaemon,
-        container['eventEmitter'],
-        container['panthalassa:ethereum:utils'])
-    ),
-
-    'panthalassa:ethereum:wallet' : asFunction(container => wallet(
-        container['panthalassa:ethereum:utils'],
-        container['panthalassa:ethereum:web3'],
-        container['panthalassa:database:db']
-    )),
-
-    'panthalassa:profile:profile' : asFunction(container => profile(
-        container['panthalassa:database:db'],
-        container['panthalassa:ethereum:utils']
-    ))
-
-});
+Object.freeze(container);
 
 export default container;

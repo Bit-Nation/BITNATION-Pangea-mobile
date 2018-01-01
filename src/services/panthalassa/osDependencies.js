@@ -29,6 +29,11 @@ const cryptoImpl:Crypto = {
 
 };
 
+/**
+ * @desc This module provides some functionality for Panthalassa such as crypto functions
+ * @alias osDependencies
+ * @type {{crypto: Crypto}}
+ */
 const osDepsImpl:OsDependenciesInterface = {
     crypto: cryptoImpl
 };
