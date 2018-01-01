@@ -1,5 +1,6 @@
 import AssetsImages from './AssetsImages';
 import Colors from './Colors';
+import { Platform } from 'react-native';
 
 export const tabsStyle = {
   tabBarButtonColor: Colors.white,
@@ -14,15 +15,14 @@ export const appStyle = {
 };
 
 export const navigatorStyle = {
-  statusBarColor: 'black',
   statusBarTextColorScheme: 'light',
-  navigationBarColor: 'black',
-  navBarBackgroundColor: '#0a0a0a',
-  navBarTextColor: 'white',
-  navBarButtonColor: 'white',
-  tabBarButtonColor: 'red',
-  tabBarSelectedButtonColor: 'red',
-  tabBarBackgroundColor: 'white',
+  statusBarColor: Platform.OS === 'ios' ? 'transparent' : 'black',
+  navBarTransparent: true,
+  navBarTranslucent: true,
+  navBarNoBorder: true,
+  drawUnderNavBar: true,
+  drawUnderStatusBar: false,
+  navBarTextColor: Colors.white,
 };
 
 export default {
@@ -44,6 +44,13 @@ export default {
     screen: 'Pangea.NationsScreen',
     label: 'Nations',
     icon: AssetsImages.TabIcons.nations,
+    title: '  Nations  ', // Spaces here are to fix title truncating
+    navigatorStyle,
+  },
+  NATION_DETAILS_SCREEN: {
+    screen: 'Pangea.NationDetailsScreen',
+    title: 'Nation',
+    navigatorStyle,
   },
   WALLET_SCREEN: {
     screen: 'Pangea.WalletScreen',
@@ -54,5 +61,7 @@ export default {
     screen: 'Pangea.ProfileScreen',
     label: 'Profile',
     icon: AssetsImages.TabIcons.profile,
+    title: 'Profile & Settings',
+    navigatorStyle,
   },
 };
