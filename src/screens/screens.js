@@ -6,6 +6,7 @@ import ChatScreen from './ChatScreen';
 import NationsScreen from './NationsScreen';
 import WalletScreen from './WalletScreen';
 import ProfileScreen from './ProfileScreen';
+import NationDetailsScreen from './NationDetailsContainer';
 import Screens from '../global/Screens';
 
 export function registerScreens(store, Provider) {
@@ -15,4 +16,5 @@ export function registerScreens(store, Provider) {
   Navigation.registerComponent(Screens.NATIONS_SCREEN.screen, () => NationsScreen, store, Provider);
   Navigation.registerComponent(Screens.WALLET_SCREEN.screen, () => WalletScreen, store, Provider);
   Navigation.registerComponent(Screens.PROFILE_SCREEN.screen, () => ProfileScreen, store, Provider);
+  Navigation.registerComponent(Screens.NATION_DETAILS_SCREEN.screen, () => NationDetailsScreen, store, Provider);
 }
