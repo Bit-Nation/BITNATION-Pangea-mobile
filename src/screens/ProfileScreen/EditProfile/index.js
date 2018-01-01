@@ -76,7 +76,7 @@ class EditProfile extends NavigatorComponent {
 
     const avatarSource = editingUser.avatar ?
       { uri: `data:image/gif;base64,${editingUser.avatar}` } :
-      AssetsImage.logo;
+      AssetsImage.Placeholder.avatar;
 
     return (
       <View style={[styles.row, styles.header]}>

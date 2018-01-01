@@ -8,6 +8,7 @@ import {
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 
+
 import styles from './styles';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import AssetsImage from '../../../global/AssetsImages';
@@ -58,7 +59,7 @@ class ProfileScreen extends NavigatorComponent {
 
     const avatarSource = user.avatar ?
       { uri: `data:image/gif;base64,${user.avatar}` } :
-      AssetsImage.logo;
+      AssetsImage.Placeholder.avatar;
 
     return (
       <View style={styles.header}>

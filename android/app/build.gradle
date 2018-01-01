@@ -141,12 +141,12 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-image-crop-picker')
     compile project(':realm')
     compile project(':react-native-vector-icons')
     compile project(':react-native-sensitive-info')
     compile project(':react-native-randombytes')
     compile project(':react-native-navigation')
-    compile project(':react-native-image-crop-picker')
     compile project(':react-native-eth-daemon')
     compile project(':react-native-config')
     compile fileTree(dir: "libs", include: ["*.jar"])

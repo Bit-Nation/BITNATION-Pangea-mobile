@@ -5,7 +5,7 @@ import { MediaQueryStyleSheet } from 'react-native-responsive';
 import Text from './Text';
 import Colors from '../../global/Colors';
 
-export default class _Button extends React.Component {
+export default class _Button extends Component {
 
   render() {
     const { style, children, onPress, ...props } = this.props;

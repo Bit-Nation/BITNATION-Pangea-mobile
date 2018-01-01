@@ -44,6 +44,13 @@ export default {
     screen: 'Pangea.NationsScreen',
     label: 'Nations',
     icon: AssetsImages.TabIcons.nations,
+    title: '  Nations  ', // Spaces here are to fix title truncating
+    navigatorStyle,
+  },
+  NATION_DETAILS_SCREEN: {
+    screen: 'Pangea.NationDetailsScreen',
+    title: 'Nation',
+    navigatorStyle,
   },
   WALLET_SCREEN: {
     screen: 'Pangea.WalletScreen',
@@ -55,6 +62,6 @@ export default {
     label: 'Profile',
     icon: AssetsImages.TabIcons.profile,
     title: 'Profile & Settings',
-    navigatorStyle
+    navigatorStyle,
   },
 };
