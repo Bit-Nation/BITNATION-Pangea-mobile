@@ -898,7 +898,8 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = Q4CTKBWU28;
+						DevelopmentTeam = W63599SJEC;
+						ProvisioningStyle = Manual;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -1535,9 +1536,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = Q4CTKBWU28;
+				DEVELOPMENT_TEAM = W63599SJEC;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../node_modules/react-native-eth-daemon/ios/Frameworks/**";
 				HEADER_SEARCH_PATHS = (
@@ -1563,6 +1566,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = co.bitnation.pangea;
 				PRODUCT_NAME = Pangea;
+				PROVISIONING_PROFILE = "986f7fe0-7c4b-4fb9-ab87-a9bfe95118e9";
+				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc co.bitnation.pangea";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1571,8 +1576,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Q4CTKBWU28;
+				DEVELOPMENT_TEAM = W63599SJEC;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../node_modules/react-native-eth-daemon/ios/Frameworks/**";
 				HEADER_SEARCH_PATHS = (
@@ -1598,6 +1605,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = co.bitnation.pangea;
 				PRODUCT_NAME = Pangea;
+				PROVISIONING_PROFILE = "986f7fe0-7c4b-4fb9-ab87-a9bfe95118e9";
+				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc co.bitnation.pangea";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
