@@ -10,7 +10,7 @@
     "ios": "flow && node_modules/.bin/react-native run-ios",
     "android": "flow && node_modules/.bin/react-native run-android",
     "postinstall": "./node_modules/.bin/rn-nodeify --install 'stream,buffer,vm,crypto,string_decoder,events,assert' --hack",
-    "docs" : "node_modules/.bin/documentation build src/services/container.js -f md > docs/main.md"
+    "docs": "node_modules/.bin/documentation build src/services/container.js -f md > docs/main.md"
   },
   "dependencies": {
     "BITNATION-Panthalassa": "https://github.com/Bit-Nation/Panthalassa#develop",
