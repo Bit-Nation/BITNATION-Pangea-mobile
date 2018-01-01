@@ -14,20 +14,17 @@ class SplashScreen extends Component {
   componentWillMount() {
       setTimeout(() => {
       // TODO: Replace navigation with redux actions
-        Navigation.startSingleScreenApp({
-          screen: {
-            screen: 'Pangea.MainScreen',
-            title: 'Main',
-            navigatorStyle
-          },
+        this.props.navigator.push({
+          screen: 'Pangea.Intro',
         });
       }, 3000);
     }
   render() {
     return (
-      <View style={styles.container}>
-        <View style={styles.logo}>
-          <Image source={Images.logo} resizeMode="contain" />
+      <View style={{ flex: 1 }}>
+        <Image source={Images.background} style={styles.background} />
+        <View style={styles.container}>
+          <Image source={Images.bitLogoBig} style={styles.logo} />
         </View>
       </View>
     );
@@ -38,13 +35,7 @@ SplashScreen.propTypes = {
   navigator: PropTypes.object
 };
 
-navigatorStyle = {
-	statusBarColor: 'black',
-	statusBarTextColorScheme: 'light',
-	navBarBackgroundColor: '#0a0a0a',
-	navBarTextColor: 'white',
-	navBarButtonColor: 'white'
-};
+const navigatorStyle = { navBarHidden: true }
 
 SplashScreen.defaultProps = {
 };

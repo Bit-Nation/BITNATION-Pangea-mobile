@@ -10,11 +10,13 @@ import Button from './Button';
 export default class MessageView extends Component {
 
   render() {
+
     const { style, children } = this.props;
 
     return (
       <View style={[styles.messageView, style]}>
         <View style={styles.messageContainer}>
+
           {children}
           {
             this.props.title &&

@@ -4,6 +4,7 @@
 
 # Xcode
 #
+fastlane
 build/
 *.pbxuser
 !default.pbxuser
