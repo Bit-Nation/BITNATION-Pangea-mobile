@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import {
     Text, Image, FlatList, Button, ListItem,
@@ -97,3 +98,12 @@ export default class WalletScreen extends Component{
     }
 
 }
+
+const mapStateToProps = state => ({
+  ...state,
+});
+
+const mapDispatchToProps = dispatch => ({
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(WalletScreen);

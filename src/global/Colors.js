@@ -25,26 +25,11 @@ module.exports = {
   BlueMed:'#72A4DE',
   BitnationBlue:'#4A90E2',
 
-  Transparent: 'transparent',
-  Silver: '#EAEAEA',  // opacity plain button background
+  white: '#FFFFFF',
 
-  // RGB values
-  RGBIndigo: '63,81,181',
-  RGBPink: '255,64,129',
-  RGBPurple: '156,39,176',
-  RGBTeal: '0,150,136',
-
-  // MDL palette (subset)
-  palette_blue_400: 'rgb(66,165,245)',
-  palette_red_500: 'rgb(244,67,54)',
-  palette_yellow_600: 'rgb(253,216,53)',
-  palette_green_500: 'rgb(76,175,80)',
-
-  // Theme
-  Background: "#FFFFFF",
-  ThemeLight: "#b0b4be",
-  ThemeDark: "#75777f",
-  FBBlue: "#3b5998",
+  BitNationBlue: '#1B395C',
+  BitNationLightBlue: '#72A4DE',
+  BitNationVeryLightBlue: '#BCDCFF',
 
   textColor: "#444A64",
   textPlaceholder: "#9B9B9B",
@@ -74,11 +59,4 @@ module.exports = {
   disabledTextColor:'#275284',
   actionButtonColor:'#1c497e',
 
-
-  //Screen Colors
-  // Color1:'#f9f9f9',
-  // Color1:'#8e8e93',
-  // Color1:'#1c3250',
-  // Color1:'#bcdcff',
-  // Color1:'#1c497e',
 };

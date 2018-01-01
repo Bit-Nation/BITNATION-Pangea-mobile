@@ -5,6 +5,13 @@
 
 ## Development
 
+### Project setup
+
+1. Clone the repo
+2. Run `npm install`
+3. copy `.env.dev.example` to `.env`
+4. Run `npm run android` or `npm run ios`
+
 ### Git & best practice
 
 - We use [this](http://nvie.com/posts/a-successful-git-branching-model/) branching model. Make sure to read it.
@@ -21,16 +28,9 @@
 ### Tools & Framework's
 - We are using [Native Base](https://nativebase.io/) to build an UI that has the native design of Android and IOS (depending on where you use the app). If you plan to contribute make sure to checkout what they are providing to avoid unnecessary work. 
 
-### Run the project
-
-1. We are using yarn for the development so run `yarn` to install the dependencies
-2. Run `yarn run ios` or `yarn run android` to start the emulator
-
-### Available commands: 
-
-Run yarn to see all command's
-
 ### Project structure
 
 - `./src/components/common` contain's all common components like e.g. a "header" component.
 - `./__tests__` contain's all the test's
+
+### [Docs](./docs/main.md)
