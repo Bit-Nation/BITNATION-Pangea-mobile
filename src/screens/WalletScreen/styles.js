@@ -12,13 +12,14 @@ export default styles = StyleSheet.create({
         zIndex : -1,
     },
     header:{
-        fontSize:36,
-        color:'#fff',
-        marginTop:'20%',
+        fontSize:30,
+        fontWeight: 'bold',
+        color: Colors.white,
+        marginTop:'5%',
         marginLeft:'5%',
         opacity:1,
+        backgroundColor: Colors.Transparent,
         paddingBottom:'10%',
-        backgroundColor:Colors.Transparent,
     },
     cardMain:{
         backgroundColor:'#3d75ad',
@@ -28,16 +29,28 @@ export default styles = StyleSheet.create({
         borderRadius : 5,
         marginTop:height*0.03,
     },
+    card:{
+        height:'30%',
+        marginLeft:'2.4%',
+        marginRight:'2.4%',
+    },
+    firstCard:{  // strange issue when use %
+        marginTop: 40,
+        marginBottom: 10,
+    },
+    cardContainer:{
+        justifyContent:'space-around',
+        position:'absolute'
+    },
     discpHeading:{
         fontSize:24,
-        color:'#3d75ad',
+        color:Colors.white,
         textAlign:'center',
         opacity:1,
-
     },
 
     discpText:{
-        color:'#5881a7',
+        color:Colors.white,
         fontSize:16,
         textAlign:'center',
         marginLeft:'3%',
@@ -46,7 +59,7 @@ export default styles = StyleSheet.create({
     },
 
     discpButton:{
-        backgroundColor:'#1b4a7a',
+        backgroundColor: Colors.BitnationBlue,
         opacity:1,
         height:height*.05,
         marginBottom:height*.02,
@@ -57,15 +70,12 @@ export default styles = StyleSheet.create({
     },
 
     discpButtonText:{
-        color:'#fff',
+        color: Colors.white,
         fontSize:16,
         opacity:1,
         paddingLeft:width*.05,
         paddingRight:width*.05,
     },
-
-    flatListStyle:{
-    }
 
   });
   

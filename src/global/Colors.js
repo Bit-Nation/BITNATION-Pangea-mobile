@@ -1,7 +1,17 @@
 /*!
  * Theme colours
  */
+
+
 module.exports = {
+
+    getBitNationBlue  (alpha) {
+    return 'rgba(188, 220, 255, ' + alpha + ')';
+  },
+   getBitNationLightBlue (alpha) {
+    return 'rgba(114, 164, 222, ' + alpha + ')';
+  },
+
   Red: '#FF5252',
   Pink: '#FF4081',
   Purple: '#9C27B0',
@@ -21,15 +31,18 @@ module.exports = {
   Brown: '#795548',
   Grey: '#9E9E9E',
   LightGrey: '#EEEEEE',
+  Transparent: 'transparent',
   BlueGrey: '#607D8B',
   BlueMed:'#72A4DE',
   BitnationBlue:'#4A90E2',
+
 
   white: '#FFFFFF',
 
   BitNationBlue: '#1B395C',
   BitNationLightBlue: '#72A4DE',
   BitNationVeryLightBlue: '#BCDCFF',
+
 
   textColor: "#444A64",
   textPlaceholder: "#9B9B9B",

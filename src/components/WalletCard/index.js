@@ -37,11 +37,6 @@ const WalletCard = (props) => {
                             <Text style={styles.buttonText}>Receive</Text>
                         </View>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttonBoxStyle}>
-                        <View style={styles.buttonStyle}>
-                            <Text style={styles.buttonText}>Ledger</Text>
-                        </View>
-                    </TouchableOpacity>
                 </View>
             </View>
             <View style={styles.descriptionContainer}>

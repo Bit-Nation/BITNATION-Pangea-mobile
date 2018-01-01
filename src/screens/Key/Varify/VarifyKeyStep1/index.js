@@ -19,7 +19,7 @@ class VarifyKeyStep1 extends Component {
   onNextButtonPressed() {
   
     this.props.navigator.push({
-      screen: 'Pangea.CreateKeyStep1',
+      screen: 'Pangea.VarifyKeyStep3',
     });
   }
   
