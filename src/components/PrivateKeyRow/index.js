@@ -18,8 +18,9 @@ const PrivateKeyRow = (props) => {
 
     getTextColor = () => {
 
-        if (props.disabled == true)
-            return Colors.grey_400;
+//        return Colors.Background;
+        if (props.disabled == true) //  disabled
+            return Colors.Yellow;
         else
             return Colors.Background;
     }

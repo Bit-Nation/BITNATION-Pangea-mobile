@@ -70,13 +70,15 @@ module.exports = {
   panelBoxColor:'#1b395c',
   instuctionTextColor:'#72a4de',
   navButtonTextColor:'#007aff',
-  Color1:'#bcdcff',
-  Color1:'#275284',
+  disabledBoxColor :'#bcdcff',
+  disabledTextColor:'#275284',
+  actionButtonColor:'#1c497e',
+
 
   //Screen Colors
-  Color1:'#f9f9f9',
-  Color1:'#8e8e93',
-  Color1:'#1c3250',
-  Color1:'#bcdcff',
-  Color1:'#1c497e',
+  // Color1:'#f9f9f9',
+  // Color1:'#8e8e93',
+  // Color1:'#1c3250',
+  // Color1:'#bcdcff',
+  // Color1:'#1c497e',
 };

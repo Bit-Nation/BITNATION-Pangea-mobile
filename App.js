@@ -10,7 +10,7 @@ registerScreens(store, Provider);
 const navigatorStyle = { navBarHidden: true }
 Navigation.startSingleScreenApp({
   screen: {
-    screen: 'Pangea.EnterPrivateKeyScreen',
+    screen: 'Pangea.SplashScreen',
      navigatorStyle
   },
 });

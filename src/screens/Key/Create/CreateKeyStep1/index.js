@@ -1,4 +1,3 @@
-/*eslint-disable*/
 import React, { Component } from 'react';
 import {
   View,
@@ -9,21 +8,23 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { resetRoute, goBack } from '../../actions/nav';
-import Images from '../../global/AssetsImages';
+import { Navigation } from 'react-native-navigation';
+import Images from '../../../../global/AssetsImages';
 import styles from './styles';
-import Colors from '../../global/Colors';
-import { Container, Header, Left, Body, Right, Button, Icon, Title, Subtitle } from 'native-base';
-
+import Colors from '../../../../global/Colors';
+import Header from '../../../../components/Header';
 
 class CreateKeyStep1 extends Component {
-  componentWillMount() {
+ 
+  onNextButtonPressed() {
+    this.props.navigator.push({
+      screen: 'Pangea.CreateKeyStep2',
+    });
   }
-  onNext() {
-      this.props.resetRoute({routeName:'CreateKey2'});
-      alert('next');
+  
+  onCancelButtonPressed(){
+      alert('cancel');
   }
-
 
   render() {
     return(
@@ -32,21 +33,9 @@ class CreateKeyStep1 extends Component {
                 <Image
                     style ={styles.backgroundImage}
                     source ={Images.background}
-                
                 />
 
-              
-                <Header style = {styles.header}>
-                    <Left>
-                       <Text style ={styles.cancel} >Cancel</Text>
-                    </Left>
-                    <Body/>
-                    <Right> 
-                        <TouchableOpacity  onPress ={()=> this.onNext()} >
-                    <Text style ={styles.next}>Next</Text> 
-                    </TouchableOpacity>
-                    </Right>
-                </Header>
+                <Header headerTitle="Create Private Key" onLeftButtonPress={()=> this.onCancelButtonPressed()} onRightButtonPress={() => this.onNextButtonPressed()}></Header>
 
                 <Text style ={styles.title}>Create a Private Key</Text>
 
@@ -60,10 +49,9 @@ class CreateKeyStep1 extends Component {
 
               </View>
 
-                </View>
+            </View>
         );
     }
-
 }
 
 CreateKeyStep1.propTypes = {

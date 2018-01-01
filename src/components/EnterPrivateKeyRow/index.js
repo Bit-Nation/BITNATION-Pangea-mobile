@@ -15,18 +15,23 @@ const EnterPrivateKeyRow = (props) => {
             text3Enabled : false,
         };
     getBoxColor = () => {
-        if (props.disabled == true)
-            return Colors.Blue;
-        else
-            return Colors.Background;
+
+        
+         if (props.disabled == true)
+             return Colors.Blue;
+         else
+             return Colors.disabledBoxColor;
     }
 
     getTextColor = () => {
 
-        if (props.disabled == true)
-            return Colors.disabledTextColor;
-        else
-            return Colors.Background;
+
+        return '#f9f9f9';
+        
+        // if (props.disabled == true)
+        //     return Colors.Background;  // enabled
+        // else
+        //     return Colors.panelBoxColor;
     }
 
     dataSubmitted = (val) => {
@@ -34,16 +39,16 @@ const EnterPrivateKeyRow = (props) => {
 
     getNumberColor = () => {
         if (props.disabled == true)
-            return Colors.disabledTextColor;
+            return Colors.navButtonTextColor;    //  enabled
         else
-            return Colors.Background;
+            return Colors.grey_300;       //disabled
     }
 
     return(
         <View style={styles.container}>
              <View style={styles.rowStyle}>
                  <View style={[styles.textBox, {backgroundColor:getBoxColor()}]}>
-                        <TextInput editable={props.disabled} style={[styles.textKey, {color:getTextColor()}]} onSubmitEditing={() => this.dataSubmitted(1)}></TextInput>
+                        <TextInput underlineColorAndroid='transparent' editable={props.disabled} autoCorrect={false} style={[styles.textKey, {color:getTextColor()}]} onSubmitEditing={() => this.dataSubmitted(1)}></TextInput>
                 </View>
                  <View style={[styles.textBox, {backgroundColor:getBoxColor()}]}>
                     <TextInput underlineColorAndroid='transparent' editable={props.disabled} autoCorrect={false} style={[styles.textKey, {color:getTextColor()}]} onSubmitEditing={() => this.dataSubmitted(2)}></TextInput>

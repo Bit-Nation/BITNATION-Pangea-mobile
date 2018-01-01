@@ -1,59 +1,64 @@
-/*eslint-disable*/
-import { MediaQueryStyleSheet } from 'react-native-responsive';
-import Colors from '../../global/Colors';
-const styles = MediaQueryStyleSheet.create(
-  {
-    container: {
-      flexDirection:'column',
-      flex:1,
-      
+import {StyleSheet} from 'react-native';
+import { Dimensions,} from 'react-native';
+import Colors from '../../../../global/Colors';
+
+var {height, width} = Dimensions.get('window');
+
+export default styles = StyleSheet.create({
+    panel:{
+        width:width*.95,
+        marginLeft:width*.025,
+        backgroundColor : Colors.panelBoxColor,
+        paddingBottom:height*.04,
+        borderRadius:10,
+        opacity:.4,
     },
-    backgroundImage: {
-        width:'100%',
+    instructionBox:{
+        marginTop:height*.08,
+        marginLeft:width*.03,
+        paddingBottom : height*.05,
+        backgroundColor : Colors.Transparent,
+    },
+    instructionDetailsBox:{
+        paddingLeft:'4%',
+        paddingRight:'4%',
+        paddingBottom:'3%',
+        paddingTop:'3%',
+        backgroundColor : Colors.Transparent,
+    },
+    instructionBoxText:{
+        textAlign:'left',
+        color:Colors.instuctionTextColor,
+    },
+
+    renderScreenOverlay:{
+        width:width,
+        height:height,
+        backgroundColor:Colors.Black,
+        opacity:.9,
+        zIndex:1,
         position:'absolute',
     },
-  
-    header: {
-        backgroundColor:'transparent',
-
-
+    buttonBoxStyle:{
+        width:width*.4,
+        marginLeft:'3%',
+        marginTop:'2%',
     },
-    cancel: {
-        color:Colors.Blue
+    buttonStyle:{
+        backgroundColor:Colors.actionButtonColor,
+        opacity:1,
+        height:height*.05,
+        borderRadius:16,
+        justifyContent:'center',
+        width:width*.4,
+    },
 
-    },
-    next: {
-        color:Colors.Blue   
-    },
-    title: {
-        color:Colors.Background,
-        fontSize:16,
-        //fontWeight:'400',
+    buttonText:{
+        color:'#fff',
         textAlign:'center',
-        width:'150%',
-        marginLeft:'20%'
-       // backgroundColor:'red',
-    },
-    right: {
-       // backgroundColor:'red',
-        marginLeft:'20%'
-    },
-    left: {
-       // backgroundColor:'red',
-    },
-    wholeText: {
-        margin:'3%',
-        marginTop:'6%',
-        marginRight:'2%'
-       
-    },
-    description: {
-        color:Colors.Blue,
         fontSize:16,
-        marginBottom:'6%',
-
+        opacity:1,
+        backgroundColor:Colors.Transparent,
     },
-
 
 });
-export default styles;

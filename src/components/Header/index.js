@@ -44,7 +44,7 @@ Header.defaultProps = {
 
     leftButtonTitle : 'Cancel',
     rightButtonTitle : 'Next',
-    headerTitle : 'Default Screen',
+    headerTitle : '',
     onLeftButtonPress : () => {console.log("onLeftButtonPressed();")},
     onRightButtonPress : () => {console.log("onRightButtonPressed();")},
     leftButtonDisabled : false,
