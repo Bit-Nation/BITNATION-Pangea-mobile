@@ -5,14 +5,14 @@ import { MediaQueryStyleSheet } from 'react-native-responsive';
 import Text from './Text';
 import Colors from '../../global/Colors';
 
-export default class _Button extends React.Component {
+export default class _Button extends Component {
 
   render() {
-    const { style, children, ...props } = this.props;
+    const { style, children, onPress, ...props } = this.props;
 
     return (
       <View style={[styles.button, style]} {...props}>
-        <TouchableOpacity style={[styles.container]}>
+        <TouchableOpacity style={[styles.container]} onPress={onPress}>
           {children || this._renderTitle()}
         </TouchableOpacity>
       </View>
