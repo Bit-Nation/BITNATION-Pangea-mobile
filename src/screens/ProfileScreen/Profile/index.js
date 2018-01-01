@@ -6,6 +6,7 @@ import {
   Text,
 } from 'react-native';
 import PropTypes from 'prop-types';
+import _ from 'lodash';
 
 
 import styles from './styles';
@@ -58,14 +59,16 @@ class ProfileScreen extends NavigatorComponent {
 
     const avatarSource = user.avatar ?
       { uri: `data:image/gif;base64,${user.avatar}` } :
-      AssetsImage.logo;
+      AssetsImage.Placeholder.avatar;
 
     return (
       <View style={styles.header}>
         <Image source={avatarSource} style={styles.avatar}/>
         <Text style={styles.nameText}>{user.name}</Text>
         <Text style={styles.infoText}>{user.location}</Text>
-        <Text style={styles.infoText}>{user.latitude + ', ' + user.longitude}</Text>
+        <Text style={styles.infoText}>
+          {!_.isEmpty(user.latitude) && !_.isEmpty(user.longitude) && (user.latitude + ', ' + user.longitude)}
+        </Text>
         <Text style={styles.ethAddress}>{user.ethAddress}</Text>
       </View>
     );

@@ -23,6 +23,7 @@ const holonsPlaceholder = require('../assets/images/holonsPlaceholder.png');
 const achievementsPlaceholder = require('../assets/images/achievementsPlaceholder.png');
 const mapPlaceholder = require('../assets/images/mapPlaceholder.png');
 const demoPlaceholder = require('../assets/images/demoImage.png');
+const avatarPlaceholder = require('../assets/images/avatarPlaceholder.png');
 
 const chatActionIcon = require('../assets/images/chatIcon.png');
 const mapActionIcon = require('../assets/images/mapIcon.png');
@@ -55,6 +56,7 @@ const Images = {
     achievements: achievementsPlaceholder,
     map: mapPlaceholder,
     demo: demoPlaceholder,
+    avatar: avatarPlaceholder,
   },
   Actions: {
     chat: chatActionIcon,

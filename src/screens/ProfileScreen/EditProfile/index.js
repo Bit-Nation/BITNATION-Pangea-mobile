@@ -76,7 +76,7 @@ class EditProfile extends NavigatorComponent {
 
     const avatarSource = editingUser.avatar ?
       { uri: `data:image/gif;base64,${editingUser.avatar}` } :
-      AssetsImage.logo;
+      AssetsImage.Placeholder.avatar;
 
     return (
       <View style={[styles.row, styles.header]}>
@@ -95,6 +95,9 @@ class EditProfile extends NavigatorComponent {
               value={this.props.editingUser.name}
               onChangeText={(text) => this._onChange('name', text)}
               style={styles.textInput}
+              placeholder='Name'
+              placeholderTextColor='rgba(255,255,255,0.3)'
+              keyboardType='default'
             />
           </View>
 
@@ -103,24 +106,29 @@ class EditProfile extends NavigatorComponent {
               value={this.props.editingUser.location}
               onChangeText={(text) => this._onChange('location', text)}
               style={styles.textInput}
+              placeholder='Location'
+              placeholderTextColor='rgba(255,255,255,0.3)'
+              keyboardType='default'
             />
           </View>
 
           <View style={styles.row}>
             <Text style={styles.labelText}>Lat.</Text>
             <TextInput
-              value={this.props.editingUser.latitude.toString()}
+              value={this.props.editingUser.latitude}
               onChangeText={(text) => this._onChange('latitude', text)}
               style={styles.textInput}
+              keyboardType='numeric'
             />
           </View>
 
           <View style={styles.row}>
             <Text style={styles.labelText}>Long.</Text>
             <TextInput
-              value={this.props.editingUser.longitude.toString()}
+              value={this.props.editingUser.longitude}
               onChangeText={(text) => this._onChange('longitude', text)}
               style={styles.textInput}
+              keyboardType='numeric'
             />
           </View>
 
