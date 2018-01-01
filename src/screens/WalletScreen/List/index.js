@@ -1,15 +1,13 @@
-
 import React, { Component } from 'react';
 import {
     Text, Image, FlatList, Button, ListItem,
     View, TouchableOpacity
 } from 'react-native';
 import styles from './styles';
-import Images from '../../global/AssetsImages';
-import WalletCard from '../../components/WalletCard';
-import WalletList from '../WalletScreen/List';
+import Images from '../../../global/AssetsImages';
+import WalletCard from '../../../components/WalletCard';
 
-export default class WalletScreen extends Component{
+export default class WalletList extends Component{
     
     Variables = [
         heading1 = "Create a Wallet",
@@ -89,21 +87,12 @@ export default class WalletScreen extends Component{
                 
                 <Text style={styles.header}>Wallet</Text>
                 <View style={styles.flatListStyle}>
-                    {/* {this.renderWalletList()} */}
-                    {this.renderWalletDiscription(this.Variables[0],this.Variables[1])}
-                    {this.renderWalletDiscription(this.Variables[2],this.Variables[3])}
+                    {this.renderWalletList()}
+                    {/* {this.renderWalletDiscription(this.Variables[0],this.Variables[1])}
+                    {this.renderWalletDiscription(this.Variables[2],this.Variables[3])} */}
                 </View>
             </View>
         );
     }
 
 }
-
-const mapStateToProps = state => ({
-  ...state,
-});
-
-const mapDispatchToProps = dispatch => ({
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(WalletScreen);

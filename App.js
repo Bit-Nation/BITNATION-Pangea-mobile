@@ -1,7 +1,6 @@
 import { Provider } from 'react-redux';
 import React, { Component } from 'react';
 import { Navigation } from 'react-native-navigation';
-
 import configureStore from './src/config/configureStore';
 import { registerScreens } from './src/screens/screens';
 import Screens, { appStyle, tabsStyle } from './src/global/Screens';
