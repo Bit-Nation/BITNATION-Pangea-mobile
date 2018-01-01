@@ -12,6 +12,10 @@ import MessageView from '../../../components/common/MessageView';
 
 class EmptyProfileScreen extends Component {
 
+  componentWillMount() {
+    this.props.navigator.setButtons({ leftButtons: [], rightButtons: [] });
+  }
+
   render() {
     return (
       <View style={styles.container}>

@@ -10,7 +10,9 @@
 1. Clone the repo
 2. Run `npm install`
 3. copy `.env.dev.example` to `.env`
-4. Run `npm run android` or `npm run ios`
+4. Run cd ios
+5. Run pod install
+6. Run `npm run android` or `npm run ios`
 
 ### Git & best practice
 

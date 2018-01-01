@@ -10,7 +10,7 @@ import {
   startUserEditing,
   changeEditingUser,
   cancelUserEditing,
-  doneUserEditing,
+  doneUserEditing, startUserCreating,
 } from '../../actions/profile';
 import BackgroundImage from '../../components/common/BackgroundImage';
 
@@ -34,14 +34,15 @@ class ProfileContainer extends Component {
                              navigator={this.props.navigator}
                              onStartEditing={this.props.onStartUserEditing}/>
               :
-              <EmptyProfileScreen onCreateUserProfile={this._onCreateUserProfile}/>
+              <EmptyProfileScreen onCreateUserProfile={this._onCreateUserProfile}
+                                  navigator={this.props.navigator}/>
         }
       </View>
     );
   }
 
   _onCreateUserProfile = () => {
-
+    this.props.onStartUserCreating();
   };
 
   _onUserFieldChanged = (field, value) => {
@@ -63,6 +64,9 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = dispatch => ({
+  onStartUserCreating() {
+    dispatch(startUserCreating());
+  },
   onStartUserEditing() {
     dispatch(startUserEditing());
   },
