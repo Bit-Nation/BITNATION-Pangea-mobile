@@ -16,7 +16,7 @@ const dbInstance = db();
 const ethUtilsInstance = ethUtils(secureStorage, ee, osDeps);
 const ethWeb3Instance = web3(ethDaemon, ee, ethUtilsInstance);
 const ethWallet = wallet(ethUtilsInstance, ethWeb3Instance, dbInstance);
-const profileInstance = profile(db, ethUtilsInstance);
+const profileInstance = profile(dbInstance, ethUtilsInstance);
 
 /**
  * @alias src/services/container.js
