@@ -28,11 +28,7 @@ const styles = MediaQueryStyleSheet.create({
   },
   activeTabStyle: {
     backgroundColor: Colors.getBitNationLightBlue(0.8),
-  },
-  fakeNavigationBar: {
-    height: 64,
-    backgroundColor: 'transparent',
-  },
+  }
 });
 
 export default styles;

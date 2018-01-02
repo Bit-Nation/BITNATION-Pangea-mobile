@@ -14,6 +14,7 @@ import AssetsImage from '../../../global/AssetsImages';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import Colors from '../../../global/Colors';
 import { ActionSheet } from 'native-base';
+import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 
 const DONE_BUTTON = 'DONE_BUTTON';
 
@@ -65,7 +66,7 @@ class EditProfile extends NavigatorComponent {
     return (
       <View style={styles.container}>
         <BackgroundImage/>
-        <View style={styles.fakeNavigationBar}/>
+        <FakeNavigationBar/>
         {this._buildHeader()}
       </View>
     );

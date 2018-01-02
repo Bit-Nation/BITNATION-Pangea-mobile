@@ -11,13 +11,6 @@ getBitNationLightBlue = (alpha) => {
 
 module.exports = {
 
-    getBitNationBlue  (alpha) {
-    return 'rgba(188, 220, 255, ' + alpha + ')';
-  },
-   getBitNationLightBlue (alpha) {
-    return 'rgba(114, 164, 222, ' + alpha + ')';
-  },
-
   Red: '#FF5252',
   Pink: '#FF4081',
   Purple: '#9C27B0',
@@ -61,7 +54,6 @@ module.exports = {
   textPrimary: "#4A4A4A",
   textSecondary: "#9094A3",
   textLight: "#DADCE5",
-  buttonColor: "#80E5CF",
   buttonPrimary: "#80E5CF",
   bestOptionBackground: "#BDF4E9",
 

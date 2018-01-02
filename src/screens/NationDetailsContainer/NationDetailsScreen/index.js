@@ -12,6 +12,7 @@ import NationActionButton from '../../../components/common/NationActionButton';
 import AssetsImage from '../../../global/AssetsImages';
 import MessageView from '../../../components/common/MessageView';
 import DemoImage from '../../../components/common/DemoImage';
+import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 
 class NationDetailsScreen extends Component {
 
@@ -25,7 +26,7 @@ class NationDetailsScreen extends Component {
     return (
       <View style={styles.container}>
         <BackgroundImage/>
-        <View style={styles.fakeNavigationBar}/>
+        <FakeNavigationBar/>
         <Text style={styles.title}>{nation.name}</Text>
         {this._buildButtonsView()}
         <ScrollView style={styles.scrollView}>
