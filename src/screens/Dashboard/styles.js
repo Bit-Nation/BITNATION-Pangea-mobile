@@ -59,12 +59,12 @@ const styles = MediaQueryStyleSheet.create(
     container: {
       flexDirection:'column',
       flex:1,
+      paddingTop:20,
 
     },
     backImage : {
         position: 'absolute',
         zIndex:-1,
-
     },
     firstContainer:
     {
