@@ -12,7 +12,6 @@ import VarifyKeyStep3 from './Key/Varify/VarifyKeyStep3';
 import Intro from './Intro/RNSwiper';
 import SendMoney from './WalletScreen/SendMoney';
 import ReceiveMoneyScreen from './WalletScreen/ReceiveMoney';
-import WalletListScreen from './WalletScreen/List';
 import ChatScreen from './ChatScreen';
 import NationsScreen from './NationsScreen';
 import ProfileScreen from './ProfileScreen';
@@ -37,7 +36,6 @@ export function registerScreens(store, Provider) {
     Navigation.registerComponent(Screens.WALLET_SCREEN.screen, () => WalletScreen, store, Provider);
     Navigation.registerComponent(Screens.PROFILE_SCREEN.screen, () => ProfileScreen, store, Provider);
     Navigation.registerComponent(Screens.RECEIVE_MONEY_SCREEN.screen, () => ReceiveMoneyScreen, store, Provider);
-    Navigation.registerComponent(Screens.WALLET_LIST_SCREEN.screen, () => WalletListScreen, store, Provider);
     Navigation.registerComponent(Screens.NATION_DETAILS_SCREEN.screen, () => NationDetailsScreen, store, Provider);
 
 }
