@@ -118,19 +118,16 @@ export default {
   },
   INTRO_SCREEN: {
     screen: 'Pangea.Intro',
-    hiddenNavigatorStyle,
+    navigatorStyle: hiddenNavigatorStyle,
   },
   RECEIVE_MONEY_SCREEN: {
     screen: 'Pangea.ReceiveMoneyScreen',
-    label: 'Recieve Money',
+    title: 'Receive Money',
+    navigatorStyle,
   },
-  WALLET_LIST_SCREEN: {
-    screen: 'Pangea.WalletListScreen',
-    label: 'List',
-  },
-
-  VarifyKeyStep3: {
-    screen: 'Pangea.VarifyKeyStep3',
-    label: 'Recieve Money',
+  SEND_MONEY_SCREEN: {
+    screen: 'Pangea.SendMoneyScreen',
+    title: 'Send money',
+    navigatorStyle,
   },
 };
