@@ -23,6 +23,9 @@ export const navigatorStyle = {
   drawUnderNavBar: true,
   drawUnderStatusBar: false,
   navBarTextColor: Colors.white,
+  screenBackgroundColor: 'transparent',
+  rootBackgroundImageName: 'background',
+};
 };
 
 export default {
