@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -22,6 +23,10 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
+		172769051FFB316400AD076B /* RSKImageCropper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68C2C3681FFAD2970031480B /* RSKImageCropper.framework */; };
+		172769061FFB316400AD076B /* RSKImageCropper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 68C2C3681FFAD2970031480B /* RSKImageCropper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		172769081FFB317300AD076B /* QBImagePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68C2C33B1FFAD2910031480B /* QBImagePicker.framework */; };
+		172769091FFB317300AD076B /* QBImagePicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 68C2C33B1FFAD2910031480B /* QBImagePicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1A10D1C64DC74CB0808B2ED9 /* rubicon-icon-font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5FF472D77A4B4F61AE22DBF8 /* rubicon-icon-font.ttf */; };
 		222174D549BD4E7F84A49BE7 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E2AB770A0B7C41D89C27F046 /* libz.tbd */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
@@ -384,6 +389,21 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		172769071FFB316400AD076B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				172769061FFB316400AD076B /* RSKImageCropper.framework in Embed Frameworks */,
+				172769091FFB317300AD076B /* QBImagePicker.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTActionSheet.xcodeproj; path = "../node_modules/react-native/Libraries/ActionSheetIOS/RCTActionSheet.xcodeproj"; sourceTree = "<group>"; };
@@ -466,6 +486,7 @@
 				68C2C3671FFAD2970031480B /* RSKImageCropper.framework in Frameworks */,
 				68C2C33A1FFAD2910031480B /* QBImagePicker.framework in Frameworks */,
 				68D5E9E91FFA7559006E0D0D /* Geth.framework in Frameworks */,
+				172769051FFB316400AD076B /* RSKImageCropper.framework in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
@@ -481,6 +502,7 @@
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				D2742E32332B4672BBDFB2F6 /* libRNVectorIcons.a in Frameworks */,
 				7E9302F27F4143A0AD66FC3F /* libReactNativeNavigation.a in Frameworks */,
+				172769081FFB317300AD076B /* QBImagePicker.framework in Frameworks */,
 				934EB16E1B6644B3A1AF8412 /* libRNRandomBytes.a in Frameworks */,
 				CC05049FF02246CDB2E2CCDF /* libReactNativeConfig.a in Frameworks */,
 				B563421F608146FEBA99DA2C /* libRNSensitiveInfo.a in Frameworks */,
@@ -877,11 +899,11 @@
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				3A28178AF6F0A88FB445C51A /* [CP] Embed Pods Frameworks */,
 				29461E77F15976B43EDDE297 /* [CP] Copy Pods Resources */,
+				172769071FFB316400AD076B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				17084F881FF800FD00CB17F5 /* PBXTargetDependency */,
 			);
 			name = Pangea;
 			productName = "Hello World";
@@ -1532,10 +1554,6 @@
 			isa = PBXTargetDependency;
 			target = 13B07F861A680F5B00A75B9A /* Pangea */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
-		};
-		17084F881FF800FD00CB17F5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = RNEthDaemon;
 		};
 		2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
