@@ -8,6 +8,7 @@ import Background from '../../components/common/BackgroundImage';
 import Images from '../../global/AssetsImages';
 import MessageView from '../../components/common/MessageView';
 import Screens from '../../global/Screens';
+import FakeNavigationBar from '../../components/common/FakeNavigationBar';
 
 export default class WalletScreen extends Component {
 
@@ -53,7 +54,7 @@ export default class WalletScreen extends Component {
     return (
       <View>
         <Background/>
-        <Text style={styles.header}>Wallet</Text>
+        <FakeNavigationBar/>
         {/* {this.renderWalletDiscription(this.Variables[0], this.Variables[1],this.createWallet)} */}
         <View style={styles.cardContainer}>
           <View style={[styles.card, styles.firstCard]}>
