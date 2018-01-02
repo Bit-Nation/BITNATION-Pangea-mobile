@@ -11,10 +11,12 @@ const styles = MediaQueryStyleSheet.create({
     borderColor: Colors.borderColor,
     color: Colors.white,
     paddingLeft: 4,
+    marginRight: 5,
   },
   inputToolbar: {
     backgroundColor: 'transparent',
     borderTopWidth: 0,
+    paddingRight: 5,
   },
 });
 
