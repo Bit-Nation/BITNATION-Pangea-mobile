@@ -1,86 +1,84 @@
 import React, { Component } from 'react';
-import {
-<<<<<<< HEAD
-  Image,
-  View,
-=======
-  View,
-  Text,
->>>>>>> develop
-} from 'react-native';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { View } from 'react-native';
 
-<<<<<<< HEAD
-import styles from './styles';
+import EmptyProfileScreen from './EmptyProfile';
+import ProfileScreen from './Profile';
+import EditProfile from './EditProfile/index';
+import {
+  startUserEditing,
+  changeEditingUser,
+  cancelUserEditing,
+  doneUserEditing, startUserCreating,
+} from '../../actions/profile';
 import BackgroundImage from '../../components/common/BackgroundImage';
-import Text from '../../components/common/Text';
-import Button from '../../components/common/Button';
-import AssetsImage from '../../global/AssetsImages';
 
-class ProfileScreen extends Component {
+class ProfileContainer extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={{ flex: 1 }}>
         <BackgroundImage/>
-        <View style={styles.topSpacer}/>
-
-        {this.buildMessageView()}
-
-        <View style={styles.bottomSpacer}>
-          <Image source={AssetsImage.logo} opacity={0.3}/>
-        </View>
-      </View>
-    );
-  }
-
-  buildMessageView() {
-    return (
-      <View style={styles.messageView}>
-        <View style={styles.messageContainer}>
-          <Text messageTitle>
-            Become a world citizen.
-          </Text>
-          <Text messageText style={styles.messageText}>
-            Bitnation is a decentralized, open-source movement, powered by the Bitcoin blockchain 2.0 technology, in an
-            attempt to foster a peer-to-peer voluntary governance system, rather than the current ‘top-down’,
-            ‘one-size-fits-all’ model, restrained by the current nation-state-engineered geographical apartheid, where
-            your quality of life is defined by where you were arbitrarily born.
-          </Text>
-          <Button style={styles.button} title="Create a User Profile" onPress={this._onCreateUserProfile}/>
-        </View>
+        {
+          this.props.editingUser ?
+            <EditProfile user={this.props.user}
+                         editingUser={this.props.editingUser}
+                         navigator={this.props.navigator}
+                         onUserChanged={this._onUserFieldChanged}
+                         onCancelEditing={this.props.onCancelUserEditing}
+                         onDoneEditing={this.props.onDoneUserEditing}/>
+            :
+            this.props.user ?
+              <ProfileScreen user={this.props.user}
+                             navigator={this.props.navigator}
+                             onStartEditing={this.props.onStartUserEditing}/>
+              :
+              <EmptyProfileScreen onCreateUserProfile={this._onCreateUserProfile}
+                                  navigator={this.props.navigator}/>
+        }
       </View>
     );
   }
 
   _onCreateUserProfile = () => {
+    this.props.onStartUserCreating();
   };
 
-=======
-class ProfileScreen extends Component {
-  componentWillMount() {
-  }
+  _onUserFieldChanged = (field, value) => {
+    this.props.onChangeEditingUser(Object.assign({}, this.props.editingUser, { [field]: value }));
+  };
 
-  render() {
-    return (
-      <View>
-        <Text>Profile Screen</Text>
-      </View>
-    );
-  }
->>>>>>> develop
 }
 
-const mapStateToProps = state => ({
-  ...state,
-});
+ProfileContainer.propTypes = {
+  user: PropTypes.object,
+  editingUser: PropTypes.object,
+};
 
-<<<<<<< HEAD
-const mapDispatchToProps = dispatch => ({});
-=======
+const mapStateToProps = (state) => {
+  return {
+    user: state.profile.user,
+    editingUser: state.profile.editingUser,
+  };
+};
+
 const mapDispatchToProps = dispatch => ({
+  onStartUserCreating() {
+    dispatch(startUserCreating());
+  },
+  onStartUserEditing() {
+    dispatch(startUserEditing());
+  },
+  onCancelUserEditing() {
+    dispatch(cancelUserEditing());
+  },
+  onChangeEditingUser(user) {
+    dispatch(changeEditingUser(user));
+  },
+  onDoneUserEditing() {
+    dispatch(doneUserEditing());
+  }
 });
->>>>>>> develop
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProfileScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileContainer);

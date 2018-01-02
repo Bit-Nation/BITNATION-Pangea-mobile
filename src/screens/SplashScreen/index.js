@@ -9,25 +9,22 @@ import { connect } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 import Images from '../../global/AssetsImages';
 import styles from './styles';
+import Screens from '../../global/Screens';
 
 class SplashScreen extends Component {
   componentWillMount() {
-      setTimeout(() => {
+    setTimeout(() => {
       // TODO: Replace navigation with redux actions
-        Navigation.startSingleScreenApp({
-          screen: {
-            screen: 'Pangea.MainScreen',
-            title: 'Main',
-            navigatorStyle
-          },
-        });
-      }, 3000);
-    }
+      this.props.navigator.showModal(Screens.INTRO_SCREEN);
+    }, 3000);
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        <View style={styles.logo}>
-          <Image source={Images.logo} resizeMode="contain" />
+      <View style={{ flex: 1 }}>
+        <Image source={Images.background} style={styles.background}/>
+        <View style={styles.container}>
+          <Image source={Images.bitLogoBig} style={styles.logo}/>
         </View>
       </View>
     );
@@ -38,22 +35,14 @@ SplashScreen.propTypes = {
   navigator: PropTypes.object
 };
 
-navigatorStyle = {
-	statusBarColor: 'black',
-	statusBarTextColorScheme: 'light',
-	navBarBackgroundColor: '#0a0a0a',
-	navBarTextColor: 'white',
-	navBarButtonColor: 'white'
-};
+const navigatorStyle = { navBarHidden: true };
 
-SplashScreen.defaultProps = {
-};
+SplashScreen.defaultProps = {};
 
 const mapStateToProps = state => ({
   ...state,
 });
 
-const mapDispatchToProps = dispatch => ({
-});
+const mapDispatchToProps = dispatch => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(SplashScreen);

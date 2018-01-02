@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import initialState from './initialState';
+import profile from './profile';
+import nations from './nations';
 
 const rootReducer = {
-  initialState,
+  profile,
+  nations,
 };
 
 export default combineReducers(rootReducer);
