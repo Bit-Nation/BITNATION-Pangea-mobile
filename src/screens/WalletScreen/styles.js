@@ -40,7 +40,7 @@ export default styles = StyleSheet.create({
   },
   cardContainer: {
     justifyContent: 'space-around',
-    position: 'absolute'
+    position: 'absolute',
   },
   discpHeading: {
     fontSize: 24,

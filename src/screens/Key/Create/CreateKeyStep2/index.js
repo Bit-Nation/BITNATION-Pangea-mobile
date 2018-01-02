@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {
   ListView, Text, Image, Button,
-  View, TouchableOpacity, Alert, Platform
+  View, TouchableOpacity, Alert, Platform, ScrollView
 } from 'react-native';
 import styles from './styles';
 import PropTypes from 'prop-types';
@@ -18,7 +18,7 @@ var { height, width } = Dimensions.get('window');
 
 export default class CreateKeyStep2 extends Component {
 
-  instruction = 'We will show you a group of 12 words that is the private key that unlocks your wallet.';
+  instruction = 'We will show you a group of 24 words that is the private key that unlocks your wallet.';
   instructionDetails = 'Write the words on paper, in order. Store the paper in very safe place. If your device is lost, stolen, broken, or upgraded, you must have this key to restore or unlock your wallet.';
 
   onNextButtonPressed() {
@@ -32,12 +32,16 @@ export default class CreateKeyStep2 extends Component {
         <View style={styles.instructionBox}>
           <Text style={styles.instructionBoxText}>{this.instruction}</Text>
         </View>
-        <View style={styles.panel}>
+        <ScrollView style={styles.panel}>
           <PrivateKeyRow firstIndex={1} values={['word', 'word', 'word']}></PrivateKeyRow>
           <PrivateKeyRow firstIndex={4} values={['word', 'word', 'word']}></PrivateKeyRow>
           <PrivateKeyRow firstIndex={7} values={['word', 'word', 'word']}></PrivateKeyRow>
           <PrivateKeyRow firstIndex={10} values={['word', 'word', 'word']}></PrivateKeyRow>
-        </View>
+          <PrivateKeyRow firstIndex={13} values={['word', 'word', 'word']}></PrivateKeyRow>
+          <PrivateKeyRow firstIndex={16} values={['word', 'word', 'word']}></PrivateKeyRow>
+          <PrivateKeyRow firstIndex={19} values={['word', 'word', 'word']}></PrivateKeyRow>
+          <PrivateKeyRow firstIndex={22} values={['word', 'word', 'word']}></PrivateKeyRow>
+        </ScrollView>
         <View style={{ marginTop: height * .05, width: width }}>
           <View style={{ alignItems: 'center' }}>
 

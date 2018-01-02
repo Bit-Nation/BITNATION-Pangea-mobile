@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  ListView, Text, Image, Button, TextInput, View, Alert, Platform, TouchableOpacity, ScrollView
+  ListView, Text, Image, Button, TextInput, View, Alert, Platform, TouchableOpacity, ScrollView,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import EnterPrivateKeyRow from '../../../../components/EnterPrivateKeyRow';
@@ -29,7 +29,7 @@ export default class EnterPrivateKeyScreen extends Component {
     this.getPrivateKeys = this.getPrivateKeys.bind(this);
   }
 
-  instruction = 'Enter in the correct order the 12 words that you wrote down as your paper key. Tap a box to begin.';
+  instruction = 'Enter in the correct order the 24 words that you wrote down as your paper key. Tap a box to begin.';
 
   getRowState = (i) => {
     return (this.state.currIndex !== i);
@@ -53,15 +53,15 @@ export default class EnterPrivateKeyScreen extends Component {
       index++;
       this.setState({ currIndex: index });
 
-      if (this.state.currIndex === 4) {
-        this.state.rowDisabled[0] = true;
-        this.state.rowDisabled[1] = false;
-        this.state.rowDisabled[2] = false;
-        this.state.rowDisabled[3] = false;
+      // if (this.state.currIndex === 4) {
+      //   this.state.rowDisabled[0] = true;
+      //   this.state.rowDisabled[1] = false;
+      //   this.state.rowDisabled[2] = false;
+      //   this.state.rowDisabled[3] = false;
 
-        this.ShowAlertDialog();
-        this.setState({ dialogVisible: true });
-      }
+      //   this.ShowAlertDialog();
+      //   this.setState({ dialogVisible: true });
+      // }
     }
   };
 
@@ -156,8 +156,8 @@ export default class EnterPrivateKeyScreen extends Component {
       this.setState({ currIndex: index });
 
     }
-    else
-      alert('Back finished');
+   // else
+   //   alert('Back finished');
 
 
   }
@@ -170,7 +170,7 @@ export default class EnterPrivateKeyScreen extends Component {
         <View style={styles.instructionBox}>
           <Text style={styles.instructionBoxText}>{this.instruction}</Text>
         </View>
-        <View style={styles.panel}>
+        <ScrollView style={styles.panel}>
           <EnterPrivateKeyRow disabled={this.getRowState(1)} firstIndex={1} getPrivateKeys={this.getPrivateKeys}
                               disabled={this.state.rowDisabled[0]}></EnterPrivateKeyRow>
           <EnterPrivateKeyRow disabled={this.getRowState(2)} firstIndex={4} getPrivateKeys={this.getPrivateKeys}
@@ -179,7 +179,15 @@ export default class EnterPrivateKeyScreen extends Component {
                               disabled={this.state.rowDisabled[2]}></EnterPrivateKeyRow>
           <EnterPrivateKeyRow disabled={this.getRowState(4)} firstIndex={10} getPrivateKeys={this.getPrivateKeys}
                               disabled={this.state.rowDisabled[3]}></EnterPrivateKeyRow>
-        </View>
+          <EnterPrivateKeyRow disabled={this.getRowState(5)} firstIndex={13} getPrivateKeys={this.getPrivateKeys}
+                              disabled={this.state.rowDisabled[4]}></EnterPrivateKeyRow>
+          <EnterPrivateKeyRow disabled={this.getRowState(6)} firstIndex={16} getPrivateKeys={this.getPrivateKeys}
+                              disabled={this.state.rowDisabled[5]}></EnterPrivateKeyRow>
+          <EnterPrivateKeyRow disabled={this.getRowState(7)} firstIndex={19} getPrivateKeys={this.getPrivateKeys}
+                              disabled={this.state.rowDisabled[6]}></EnterPrivateKeyRow>
+          <EnterPrivateKeyRow disabled={this.getRowState(8)} firstIndex={22} getPrivateKeys={this.getPrivateKeys}
+                              disabled={this.state.rowDisabled[7]}></EnterPrivateKeyRow>                                                                       
+        </ScrollView>
 
         <View style={{ marginTop: height * .1, alignItems: 'center' }}>
           <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', width: width * .7, }}>

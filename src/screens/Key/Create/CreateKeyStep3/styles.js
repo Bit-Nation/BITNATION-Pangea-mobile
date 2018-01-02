@@ -8,6 +8,7 @@ export default styles = StyleSheet.create({
 
   panel: {
     width: width * .95,
+    height: height * 0.45,
     marginLeft: width * .025,
     backgroundColor: Colors.panelBoxColor,
     paddingBottom: height * .04,

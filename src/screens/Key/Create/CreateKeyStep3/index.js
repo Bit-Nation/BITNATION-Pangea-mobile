@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  ListView, Text, Image, Button,
+  ListView, Text, Image, Button, ScrollView,
   View, TouchableOpacity, Alert, Platform
 } from 'react-native';
 import styles from './styles';
@@ -24,11 +24,15 @@ export default class CreateKeyStep3 extends Component {
     row2Data: [' ', ' ', ' '],
     row3Data: [' ', ' ', ' '],
     row4Data: [' ', ' ', ' '],
-    rowDisabled: [true, false, false, false],
+    row5Data: [' ', ' ', ' '],
+    row6Data: [' ', ' ', ' '],
+    row7Data: [' ', ' ', ' '],
+    row8Data: [' ', ' ', ' '],
+    rowDisabled: [true, false, false, false, false, false, false, false],
     renderHelper: 0,
   };
 
-  instruction = 'We will show you a group of 12 words that is the private key that unlocks your wallet.';
+  instruction = 'We will show you a group of 24 words that is the private key that unlocks your wallet.';
 
   getRowState = (i) => {
     return (this.state.currIndex !== i);
@@ -37,19 +41,19 @@ export default class CreateKeyStep3 extends Component {
   onNextButtonPressed = () => {
 
 
-    if (this.state.currIndex < 5) {
+    if (this.state.currIndex < 9) {
       index = this.state.currIndex;
       index++;
       this.setState({ currIndex: index });
-      if (this.state.currIndex === 4) {
-        this.ShowAlertDialog();
-        this.setState({ dialogVisible: true });
-      }
+      // if (this.state.currIndex === 4) {
+      //   this.ShowAlertDialog();
+      //   this.setState({ dialogVisible: true });
+      // }
     }
   };
 
   componentWillMount() {
-    let obj = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l'];
+    let obj = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
     this.dataEntryPoint(obj);
   }
 
@@ -57,7 +61,7 @@ export default class CreateKeyStep3 extends Component {
 
     size = 3;
 
-    for (i = 0, j = 0; i < 12; i++, j++) {
+    for (i = 0, j = 0; i < 24; i++, j++) {
       if (j % 3 === 0)
         j = 0;
       if (i < 3) {
@@ -71,6 +75,18 @@ export default class CreateKeyStep3 extends Component {
       }
       else if (i > 8 && i < 12) {
         this.state.row4Data[j] = dataObj[i];
+      }
+      else if (i > 11 && i < 15) {
+        this.state.row5Data[j] = dataObj[i];
+      }
+      else if (i > 14 && i < 17) {
+        this.state.row6Data[j] = dataObj[i];
+      }
+      else if (i > 16 && i < 19) {
+        this.state.row7Data[j] = dataObj[i];
+      }
+      else if (i > 18 && i < 22) {
+        this.state.row8Data[j] = dataObj[i];
       }
 
     }
@@ -157,7 +173,7 @@ export default class CreateKeyStep3 extends Component {
 
     }
     else
-      alert('Back finished');
+        this.ShowAlertDialog();
 
 
   }
@@ -215,12 +231,16 @@ export default class CreateKeyStep3 extends Component {
         <View style={styles.instructionBox}>
           <Text style={styles.instructionBoxText}>{this.instruction}</Text>
         </View>
-        <View style={styles.panel}>
+        <ScrollView style={styles.panel}>
           <PrivateKeyRow disabled={this.getRowState(1)} firstIndex={1} values={this.state.row1Data}></PrivateKeyRow>
           <PrivateKeyRow disabled={this.getRowState(2)} firstIndex={4} values={this.state.row2Data}></PrivateKeyRow>
           <PrivateKeyRow disabled={this.getRowState(3)} firstIndex={7} values={this.state.row3Data}></PrivateKeyRow>
           <PrivateKeyRow disabled={this.getRowState(4)} firstIndex={10} values={this.state.row4Data}></PrivateKeyRow>
-        </View>
+          <PrivateKeyRow disabled={this.getRowState(5)} firstIndex={13} values={this.state.row5Data}></PrivateKeyRow>
+          <PrivateKeyRow disabled={this.getRowState(6)} firstIndex={16} values={this.state.row6Data}></PrivateKeyRow>
+          <PrivateKeyRow disabled={this.getRowState(7)} firstIndex={19} values={this.state.row7Data}></PrivateKeyRow>
+          <PrivateKeyRow disabled={this.getRowState(8)} firstIndex={22} values={this.state.row88Data}></PrivateKeyRow>
+        </ScrollView>
 
         <View style={{ marginTop: height * .1, alignItems: 'center' }}>
           <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', width: width * .7, }}>
