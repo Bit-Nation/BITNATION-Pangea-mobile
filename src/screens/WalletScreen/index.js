@@ -3,6 +3,7 @@ import {
   View
 } from 'react-native';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 
 import Background from '../../components/common/BackgroundImage';
 import Screens from '../../global/Screens';
@@ -19,16 +20,28 @@ class WalletScreen extends Component {
     this.props.navigator.push(Screens.VERIFY_KEY_SCREEN_STEP_1);
   };
 
+  sendMoney = (wallet) => {
+    this.props.navigator.push(Screens.CREATE_KEY_SCREEN_STEP_1);
+  };
+
+  receiveMoney = (wallet) => {
+    this.props.navigator.push(Screens.CREATE_KEY_SCREEN_STEP_1);
+  };
+
   render() {
     return (
-      <View>
+      <View style={{ flex: 1 }}>
         <Background/>
-        {this.props.ethAddress ?
-          <List/>
-          :
+        {_.isEmpty(this.props.wallets) ?
           <EmptyWalletScreen
             onCreateWallet={this.createWallet}
             onRestoreWallet={this.restoreWallet}
+          />
+          :
+          <List
+            {...this.props}
+            onSendPress={this.sendMoney}
+            onReceivePress={this.receiveMoney}
           />
         }
       </View>

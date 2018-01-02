@@ -5,7 +5,14 @@ import {
 } from '../actions/wallet';
 
 const initialState = {
-  ethAddress: null,
+  wallets: [
+    {
+      ethAddress: '0xEfdFc89Eb3630b4d99844126E15a72e685a80508',
+      balance: 1.7534,
+      currency: 'ETH',
+      name: 'Ethereum',
+    }
+  ],
   walletCreatingInProgress: false,
   walletRestoreInProgress: false,
   createdMnemonic: null,
