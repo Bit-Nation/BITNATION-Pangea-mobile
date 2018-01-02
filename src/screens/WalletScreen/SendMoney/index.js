@@ -12,6 +12,8 @@ import Images from '../../../global/AssetsImages';
 import Colors from '../../../global/Colors';
 import styles from './styles';
 import { Container, Header, Content, Button, StyleProvider } from 'native-base';
+import BackgroundImage from '../../../components/common/BackgroundImage';
+import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 
 class SendMoney extends Component {
 
@@ -22,16 +24,9 @@ class SendMoney extends Component {
 
   render() {
     return (
-
       <View style={styles.container}>
-        <Image style={styles.backImage}
-               source={Images.background}
-               resizeMode="contain"
-        />
-
-        <View style={styles.sendMoneyContainer}>
-          <Text style={styles.sendMoneyText}>Send Money</Text>
-        </View>
+        <BackgroundImage/>
+        <FakeNavigationBar/>
 
         <View style={styles.fromContainer}>
           <View style={styles.fromTextContainer}>

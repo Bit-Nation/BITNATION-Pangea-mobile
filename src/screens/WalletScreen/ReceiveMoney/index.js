@@ -4,13 +4,13 @@ import {
   View, TouchableOpacityn, Alert, Platform, TouchableOpacity, ScrollView
 } from 'react-native';
 import PropTypes from 'prop-types';
-import BackgroundScreen from '../../../components/common/BackgroundImage';
-import Header from '../../../components/Header';
 import styles from './styles';
 import AssetsImages from '../../../global/AssetsImages';
 
 import { Dimensions, } from 'react-native';
 import Colors from '../../../global/Colors';
+import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
+import BackgroundImage from '../../../components/common/BackgroundImage';
 
 var { height, width } = Dimensions.get('window');
 
@@ -26,10 +26,9 @@ export default class WalletSendAddressScreen extends Component {
     return (
 
       <ScrollView>
+        <BackgroundImage/>
+        <FakeNavigationBar/>
 
-        <BackgroundScreen/>
-        <Header></Header>
-        <Text style={styles.header}>Recieve Money</Text>
         <View style={styles.mainContainer}>
           {/* <View style={styles.panelBox}>
                             <Text style={styles.panelHeader}>Send Address by Email</Text>
