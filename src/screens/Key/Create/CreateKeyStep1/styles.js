@@ -40,5 +40,11 @@ const styles = MediaQueryStyleSheet.create(
       marginBottom: '6%',
       backgroundColor: Colors.Transparent,
     },
+    buttonContainer: {
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginTop: 50,
+    },
   });
 export default styles;

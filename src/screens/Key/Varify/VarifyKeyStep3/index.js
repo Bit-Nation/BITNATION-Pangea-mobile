@@ -168,7 +168,6 @@ export default class EnterPrivateKeyScreen extends Component {
 
       <View style={styles.container}>
         <BackgroundScreen></BackgroundScreen>
-        <Header headerTitle="Verify Private Key" onRightButtonPress={() => this.onNextButtonPressed()}></Header>
         <View style={styles.instructionBox}>
           <Text style={styles.instructionBoxText}>{this.instruction}</Text>
         </View>

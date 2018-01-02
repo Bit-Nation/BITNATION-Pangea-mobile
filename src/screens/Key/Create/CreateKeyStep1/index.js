@@ -14,6 +14,7 @@ import styles from './styles';
 import Colors from '../../../../global/Colors';
 import Header from '../../../../components/Header';
 import Screens from '../../../../global/Screens';
+import Button from '../../../../components/common/Button';
 
 class CreateKeyStep1 extends Component {
 
@@ -34,9 +35,6 @@ class CreateKeyStep1 extends Component {
           source={Images.background}
         />
 
-        <Header headerTitle="Create Private Key" onLeftButtonPress={() => this.onCancelButtonPressed()}
-                onRightButtonPress={() => this.onNextButtonPressed()}></Header>
-
         <Text style={styles.title}>Create a Private Key</Text>
 
         <View style={styles.wholeText}>
@@ -52,6 +50,11 @@ class CreateKeyStep1 extends Component {
           <Text style={styles.description}>Your private key protects everything in Bitnation, so be sure to put your
             paper with with your private key in a safe place.</Text>
 
+        </View>
+
+        <View style={styles.buttonContainer}>
+          <Button title='Begin'
+                  onPress={() => this.onNextButtonPressed()}/>
         </View>
 
       </View>

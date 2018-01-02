@@ -29,8 +29,6 @@ export default class CreateKeyStep2 extends Component {
     return (
       <View style={styles.container}>
         <BackgroundScreen></BackgroundScreen>
-        <Header headerTitle="Create Private Key" onLeftButtonPress={() => this.onCancelButtonPressed()}
-                onRightButtonPress={() => this.onNextButtonPressed()}></Header>
         <View style={styles.instructionBox}>
           <Text style={styles.instructionBoxText}>{this.instruction}</Text>
         </View>

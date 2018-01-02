@@ -47,24 +47,6 @@ const styles = MediaQueryStyleSheet.create(
       alignItems: 'center',
       marginTop: '55%',
     },
-    buttonStyle: {
-      backgroundColor: Colors.actionButtonColor,
-      opacity: 1,
-      height: height * .05,
-      borderRadius: 16,
-      justifyContent: 'center',
-      width: width * .4,
-      width: 87,
-      height: 25,
-    },
-
-    buttonText: {
-      color: '#ffff',
-      textAlign: 'center',
-      fontSize: 14,
-      opacity: 1,
-      backgroundColor: Colors.Transparent,
-    },
 
   });
 export default styles;

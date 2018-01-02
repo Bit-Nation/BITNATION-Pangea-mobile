@@ -14,6 +14,7 @@ import styles from './styles';
 import Colors from '../../../../global/Colors';
 import Header from '../../../../components/Header';
 import Screens from '../../../../global/Screens';
+import Button from '../../../../components/common/Button';
 
 class VarifyKeyStep1 extends Component {
 
@@ -34,8 +35,6 @@ class VarifyKeyStep1 extends Component {
           source={Images.background}
         />
 
-        <Header leftButtonDisabled rightButtonTitle='New'
-                onRightButtonPress={() => this.onNextButtonPressed()}></Header>
         <Text style={styles.title}>Verify Private Key</Text>
         <View style={styles.wholeText}>
 
@@ -49,11 +48,8 @@ class VarifyKeyStep1 extends Component {
         </View>
 
         <View style={styles.buttonContainer}>
-          <TouchableOpacity onPress={() => this.onNextButtonPressed()}>
-            <View style={styles.buttonStyle}>
-              <Text style={styles.buttonText}>Begin</Text>
-            </View>
-          </TouchableOpacity>
+          <Button title='Begin'
+                  onPress={() => this.onNextButtonPressed()}/>
         </View>
       </View>
     );
