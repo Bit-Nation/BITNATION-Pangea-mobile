@@ -12,12 +12,13 @@ export default styles = StyleSheet.create({
         zIndex : -1,
     },
     header:{
-        fontSize:36,
-        color:'#fff',
-        marginTop:'20%',
-        marginLeft:'5%',
+        fontSize:30,
+        fontWeight: 'bold',
+        color: Colors.white,
+        marginTop:'10%',
+        marginLeft:'4.27%',
         opacity:1,
-        paddingBottom:'10%',
+        paddingBottom:'7.5%',
         backgroundColor:Colors.Transparent,
     },
     cardMain:{

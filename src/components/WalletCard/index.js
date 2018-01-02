@@ -14,7 +14,7 @@ const WalletCard = (props) => {
 
             <View style={styles.titleContainer}>
 
-                <View style={{flexDirection:'row'}}>
+                <View style={{flexDirection:'row',justifyContent:'flex-end'}}>
                     <Image style={styles.avatar} source={props.imagePath}/>
 
                     <View style={styles.discriptionColumn}>
@@ -27,12 +27,12 @@ const WalletCard = (props) => {
             </View>
             <View style={styles.buttonContainer}>
                 <View style={{flexDirection:'row', width:'90%', height:'90%'}}>
-                    <TouchableOpacity style={styles.buttonBoxStyle}>
+                    <TouchableOpacity style={styles.buttonBoxStyle} onPress={props.onSendPress}>
                         <View style={styles.buttonStyle}>
                             <Text style={styles.buttonText}>Send</Text>
                         </View>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttonBoxStyle}>
+                    <TouchableOpacity style={styles.buttonBoxStyle} onPress={props.onRecievePress}>
                         <View style={styles.buttonStyle}>
                             <Text style={styles.buttonText}>Receive</Text>
                         </View>
@@ -53,6 +53,8 @@ WalletCard.propTypes = {
     nameHeading : PropTypes.string,
     nameSubheading : PropTypes.string,
     messageText : PropTypes.string,
+    onSendPress : PropTypes.func,
+    onRecievePress : PropTypes.func,
 };
     
 WalletCard.defaultProps = {
@@ -60,6 +62,8 @@ WalletCard.defaultProps = {
     nameHeading : "Ethernum",
     nameSubheading : "173324 Enum",
     messageText : "Message goes here",
+    onSendPress : () => null,
+    onRecievePress : () => null,
 };
 
 

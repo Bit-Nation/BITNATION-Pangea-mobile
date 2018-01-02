@@ -8,6 +8,13 @@ import Images from '../../../global/AssetsImages';
 import WalletCard from '../../../components/WalletCard';
 
 export default class WalletList extends Component{
+
+    constructor(props)
+    {
+        super(props);
+        this.onSendPress = this.onSendPress.bind(this);
+        this.onRecievePress = this.onRecievePress.bind(this);
+    }
     
     Variables = [
         heading1 = "Create a Wallet",
@@ -25,44 +32,37 @@ export default class WalletList extends Component{
         );
     }
 
-    renderWalletDiscription(heading, discp){
-        return(
-            <View style={styles.cardMain}>
-                <Text style={styles.discpHeading}>{heading}</Text>
-                <Text style={styles.discpText}>{discp}</Text>
-                <TouchableOpacity style={{alignItems:'center'}}>
-                    <View style={styles.discpButton}>
-                            <Text style={styles.discpButtonText}>{heading}</Text>
-                    </View>
-                </TouchableOpacity>
-            </View>
+    onSendPress(key){
+        console.log("on Send press ", key);
+    }
 
-        );
+    onRecievePress(key){
+        console.log("on recieve press", key);
     }
 
     renderWalletList(){
         
         var items = [
-            {key: 'Devin'},
-            {key: 'Jackson'},
-            {key: 'James'},
-            {key: 'Joel'},
-            {key: 'John'},
-            {key: 'Jillian'},
-            {key: 'Waleed'},
-            {key: 'Farooqi'},
-            {key: 'Mehmood'},
-            {key: 'Mutahar'},
-            {key: 'Maqbool'},
-            {key: 'Saad'},
-            {key: 'Waneed'},
-            {key: 'Parkash'},
-            {key: 'Dhawan'},
-            {key: 'Raja'},
-            {key: 'Rola'},
-            {key: 'Ali'},
-            {key: 'Raza'},
-            {key: 'Jadu'},
+            {key: 'Devin',url:'david url'},
+            {key: 'Jackson',url:'jakson url'},
+            {key: 'James',url:'James url'},
+            {key: 'Joel',url:'Joel url'},
+            {key: 'John',url:'John url'},
+            {key: 'Jillian',url:'Jillian url'},
+            {key: 'Waleed',url:'Waleed url'},
+            {key: 'Farooqi',url:'Farooqi url'},
+            {key: 'Mehmood',url:'jakson url'},
+            {key: 'Mutahar',url:'jakson url'},
+            {key: 'Maqbool',url:'jakson url'},
+            {key: 'Saad',url:'jakson url'},
+            {key: 'Waneed',url:'jakson url'},
+            {key: 'Parkash',url:'jakson url'},
+            {key: 'Dhawan',url:'jakson url'},
+            {key: 'Raja',url:'jakson url'},
+            {key: 'Rola',url:'jakson url'},
+            {key: 'Ali',url:'jakson url'},
+            {key: 'Raza',url:'jakson url'},
+            {key: 'Jadu',url:'jakson url'},
         ];
  
         items.push('');
@@ -74,8 +74,10 @@ export default class WalletList extends Component{
                         data={items}
                         keyExtractor={item => item.key}
                         renderItem={({item}) => <WalletCard
-                            imagePath={Images.ethereumLogo}
-                            nameHeading={item.key}>
+                        imagePath={Images.ethereumLogo}
+                        onSendPress={() => this.onSendPress(item)}
+                        onRecievePress = {() => this.onRecievePress(item)}
+                        nameHeading={item.key}>
                         </WalletCard>}/>
                 );
     }
@@ -88,8 +90,6 @@ export default class WalletList extends Component{
                 <Text style={styles.header}>Wallet</Text>
                 <View style={styles.flatListStyle}>
                     {this.renderWalletList()}
-                    {/* {this.renderWalletDiscription(this.Variables[0],this.Variables[1])}
-                    {this.renderWalletDiscription(this.Variables[2],this.Variables[3])} */}
                 </View>
             </View>
         );

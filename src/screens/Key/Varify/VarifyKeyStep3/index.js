@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {
     ListView, Text, Image, Button, TextInput,
-    View, TouchableOpacityn, Alert, Platform, TouchableOpacity
+    View, TouchableOpacityn, Alert, Platform, TouchableOpacity, ScrollView
 } from 'react-native';
 import PropTypes from 'prop-types';
 import EnterPrivateKeyRow from '../../../../components/EnterPrivateKeyRow';
@@ -176,12 +176,18 @@ export default class EnterPrivateKeyScreen extends Component{
                 <View style={styles.instructionBox}>
                     <Text style={styles.instructionBoxText}>{this.instruction}</Text>
                 </View>
-                 <View style={styles.panel}>
-                     <EnterPrivateKeyRow disabled={this.getRowState(1)} firstIndex={1} getPrivateKeys = {this.getPrivateKeys} disabled={this.state.rowDisabled[0]}></EnterPrivateKeyRow>
-                     <EnterPrivateKeyRow disabled={this.getRowState(2)} firstIndex={4} getPrivateKeys = {this.getPrivateKeys} disabled={this.state.rowDisabled[1]}></EnterPrivateKeyRow>
-                     <EnterPrivateKeyRow disabled={this.getRowState(3)} firstIndex={7} getPrivateKeys = {this.getPrivateKeys} disabled={this.state.rowDisabled[2]}></EnterPrivateKeyRow>
-                     <EnterPrivateKeyRow disabled={this.getRowState(4)} firstIndex={10} getPrivateKeys = {this.getPrivateKeys} disabled={this.state.rowDisabled[3]}></EnterPrivateKeyRow>
-                 </View>
+                <ScrollView>
+                    <View style={styles.panel}>
+                        <EnterPrivateKeyRow disabled={this.getRowState(1)} firstIndex={1} getPrivateKeys = {this.getPrivateKeys} disabled={this.state.rowDisabled[0]}></EnterPrivateKeyRow>
+                        <EnterPrivateKeyRow disabled={this.getRowState(2)} firstIndex={4} getPrivateKeys = {this.getPrivateKeys} disabled={this.state.rowDisabled[1]}></EnterPrivateKeyRow>
+                        <EnterPrivateKeyRow disabled={this.getRowState(3)} firstIndex={7} getPrivateKeys = {this.getPrivateKeys} disabled={this.state.rowDisabled[2]}></EnterPrivateKeyRow>
+                        <EnterPrivateKeyRow disabled={this.getRowState(4)} firstIndex={10} getPrivateKeys = {this.getPrivateKeys} disabled={this.state.rowDisabled[3]}></EnterPrivateKeyRow>
+                        <EnterPrivateKeyRow disabled={this.getRowState(5)} firstIndex={13} getPrivateKeys = {this.getPrivateKeys} disabled={this.state.rowDisabled[3]}></EnterPrivateKeyRow>
+                        <EnterPrivateKeyRow disabled={this.getRowState(6)} firstIndex={16} getPrivateKeys = {this.getPrivateKeys} disabled={this.state.rowDisabled[3]}></EnterPrivateKeyRow>
+                        <EnterPrivateKeyRow disabled={this.getRowState(7)} firstIndex={19} getPrivateKeys = {this.getPrivateKeys} disabled={this.state.rowDisabled[3]}></EnterPrivateKeyRow>
+                        <EnterPrivateKeyRow disabled={this.getRowState(8)} firstIndex={22} getPrivateKeys = {this.getPrivateKeys} disabled={this.state.rowDisabled[3]}></EnterPrivateKeyRow>
+                    </View>
+                 </ScrollView>
 
             <View style={{marginTop:height*.1, alignItems:'center'}}>
                  <View style={{flex:1, flexDirection:'row', justifyContent:'space-between', width:width*.7, }}>

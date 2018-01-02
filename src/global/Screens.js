@@ -55,4 +55,17 @@ export default {
     label: 'Profile',
     icon: AssetsImages.TabIcons.profile,
   },
+  RECEIVE_MONEY_SCREEN: {
+    screen: 'Pangea.ReceiveMoneyScreen',
+    label: 'Recieve Money',
+  },
+  WALLET_LIST_SCREEN: {
+    screen: 'Pangea.WalletListScreen',
+    label: 'List',
+  },
+
+  VarifyKeyStep3: {
+    screen: 'Pangea.VarifyKeyStep3',
+    label: 'Recieve Money',
+  },
 };

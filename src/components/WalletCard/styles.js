@@ -8,8 +8,8 @@ export default styles = StyleSheet.create({
     
     container:{
         height:height*0.25,
-        width:width*.9,
-        marginLeft:'5%',
+        width:width*.95,
+       // marginLeft:'5%',
         backgroundColor:Colors.Transparent,
     },
 
@@ -22,7 +22,7 @@ export default styles = StyleSheet.create({
 
     buttonContainer:{
         flex:1,
-        width:'80%',
+        width:'60%',
         marginLeft:'20%',
         backgroundColor:Colors.Transparent,
     },
@@ -72,7 +72,7 @@ export default styles = StyleSheet.create({
         marginTop:'2%',
     },
     buttonStyle:{
-        backgroundColor:Colors.BlueMed,
+        backgroundColor:Colors.actionButtonColor,
         opacity:1,
         height:'80%',
         borderRadius:16,

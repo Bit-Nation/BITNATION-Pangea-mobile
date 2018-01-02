@@ -11,6 +11,8 @@ import VarifyKeyStep2 from './Key/Varify/VarifyKeyStep2';
 import VarifyKeyStep3 from './Key/Varify/VarifyKeyStep3';
 import Intro from './Intro/RNSwiper';
 import SendMoney from './WalletScreen/SendMoney';
+import ReceiveMoneyScreen from './WalletScreen/ReceiveMoney';
+import WalletListScreen from './WalletScreen/List';
 
 import ChatScreen from './ChatScreen';
 import NationsScreen from './NationsScreen';
@@ -18,7 +20,7 @@ import ProfileScreen from './ProfileScreen';
 import Screens from '../global/Screens';
 
 export function registerScreens(store, Provider) {
-  //  Navigation.registerComponent('Pangea.Dashboard', () => Dashboard, store, Provider);
+
     Navigation.registerComponent('Pangea.CreateKeyStep1', () => CreateKeyStep1, store, Provider);
     Navigation.registerComponent('Pangea.CreateKeyStep2', () => CreateKeyStep2, store, Provider);
     Navigation.registerComponent('Pangea.CreateKeyStep3', () => CreateKeyStep3, store, Provider);
@@ -34,4 +36,7 @@ export function registerScreens(store, Provider) {
     Navigation.registerComponent(Screens.NATIONS_SCREEN.screen, () => NationsScreen, store, Provider);
     Navigation.registerComponent(Screens.WALLET_SCREEN.screen, () => WalletScreen, store, Provider);
     Navigation.registerComponent(Screens.PROFILE_SCREEN.screen, () => ProfileScreen, store, Provider);
+    Navigation.registerComponent(Screens.RECEIVE_MONEY_SCREEN.screen, () => ReceiveMoneyScreen, store, Provider);
+    Navigation.registerComponent(Screens.WALLET_LIST_SCREEN.screen, () => WalletListScreen, store, Provider);
+
 }
