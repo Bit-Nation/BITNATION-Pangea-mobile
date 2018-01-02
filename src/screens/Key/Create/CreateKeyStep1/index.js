@@ -13,13 +13,12 @@ import Images from '../../../../global/AssetsImages';
 import styles from './styles';
 import Colors from '../../../../global/Colors';
 import Header from '../../../../components/Header';
+import Screens from '../../../../global/Screens';
 
 class CreateKeyStep1 extends Component {
 
   onNextButtonPressed() {
-    this.props.navigator.push({
-      screen: 'Pangea.CreateKeyStep2',
-    });
+    this.props.navigator.push(Screens.CREATE_KEY_SCREEN_STEP_2);
   }
 
   onCancelButtonPressed() {

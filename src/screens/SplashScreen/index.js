@@ -9,14 +9,13 @@ import { connect } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 import Images from '../../global/AssetsImages';
 import styles from './styles';
+import Screens from '../../global/Screens';
 
 class SplashScreen extends Component {
   componentWillMount() {
     setTimeout(() => {
       // TODO: Replace navigation with redux actions
-      this.props.navigator.push({
-        screen: 'Pangea.Intro',
-      });
+      this.props.navigator.showModal(Screens.INTRO_SCREEN);
     }, 3000);
   }
 

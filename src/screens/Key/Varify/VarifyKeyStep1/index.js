@@ -13,14 +13,12 @@ import Images from '../../../../global/AssetsImages';
 import styles from './styles';
 import Colors from '../../../../global/Colors';
 import Header from '../../../../components/Header';
+import Screens from '../../../../global/Screens';
 
 class VarifyKeyStep1 extends Component {
 
   onNextButtonPressed() {
-
-    this.props.navigator.push({
-      screen: 'Pangea.VarifyKeyStep3',
-    });
+    this.props.navigator.push(Screens.VERIFY_KEY_SCREEN_STEP_3);
   }
 
   onCancelButtonPressed() {

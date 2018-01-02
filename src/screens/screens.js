@@ -19,14 +19,13 @@ import Screens from '../global/Screens';
 
 export function registerScreens(store, Provider) {
 
-  //  Navigation.registerComponent('Pangea.Dashboard', () => Dashboard, store, Provider);
-    Navigation.registerComponent('Pangea.CreateKeyStep1', () => CreateKeyStep1, store, Provider);
-    Navigation.registerComponent('Pangea.CreateKeyStep2', () => CreateKeyStep2, store, Provider);
-    Navigation.registerComponent('Pangea.CreateKeyStep3', () => CreateKeyStep3, store, Provider);
-    Navigation.registerComponent('Pangea.VarifyKeyStep1', () => VarifyKeyStep1, store, Provider);
-    Navigation.registerComponent('Pangea.VarifyKeyStep2', () => VarifyKeyStep2, store, Provider);
-    Navigation.registerComponent('Pangea.VarifyKeyStep3', () => VarifyKeyStep3, store, Provider);
-    Navigation.registerComponent('Pangea.Intro', () => Intro, store, Provider);
+    Navigation.registerComponent(Screens.CREATE_KEY_SCREEN_STEP_1.screen, () => CreateKeyStep1, store, Provider);
+    Navigation.registerComponent(Screens.CREATE_KEY_SCREEN_STEP_2.screen, () => CreateKeyStep2, store, Provider);
+    Navigation.registerComponent(Screens.CREATE_KEY_SCREEN_STEP_3.screen, () => CreateKeyStep3, store, Provider);
+    Navigation.registerComponent(Screens.VERIFY_KEY_SCREEN_STEP_1.screen, () => VarifyKeyStep1, store, Provider);
+    Navigation.registerComponent(Screens.VERIFY_KEY_SCREEN_STEP_2.screen, () => VarifyKeyStep2, store, Provider);
+    Navigation.registerComponent(Screens.VERIFY_KEY_SCREEN_STEP_3.screen, () => VarifyKeyStep3, store, Provider);
+    Navigation.registerComponent(Screens.INTRO_SCREEN.screen, () => Intro, store, Provider);
     Navigation.registerComponent('Pangea.SendMoney', () => SendMoney, store, Provider);
 
     Navigation.registerComponent(Screens.DASHBOARD_SCREEN.screen, () => Dashboard, store, Provider);

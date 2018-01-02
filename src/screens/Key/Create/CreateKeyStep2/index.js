@@ -12,6 +12,7 @@ import { Dialog } from 'react-native-simple-dialogs';
 
 import { Dimensions, } from 'react-native';
 import Colors from '../../../../global/Colors';
+import Screens from '../../../../global/Screens';
 
 var { height, width } = Dimensions.get('window');
 
@@ -21,9 +22,7 @@ export default class CreateKeyStep2 extends Component {
   instructionDetails = 'Write the words on paper, in order. Store the paper in very safe place. If your device is lost, stolen, broken, or upgraded, you must have this key to restore or unlock your wallet.';
 
   onNextButtonPressed() {
-    this.props.navigator.push({
-      screen: 'Pangea.CreateKeyStep3',
-    });
+    this.props.navigator.push(Screens.CREATE_KEY_SCREEN_STEP_3);
   }
 
   render() {
