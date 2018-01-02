@@ -14,6 +14,7 @@ import styles from './styles';
 import TextBox from '../../components/TextBox';
 import ListModal from '../../components/ListModal';
 import BackgroundScreen from '../../components/BackgroundScreen/index';
+import FakeNavigationBar from '../../components/common/FakeNavigationBar';
 
 class Dashboard extends Component {
   constructor(props) {
@@ -99,6 +100,7 @@ class Dashboard extends Component {
     return (
 
       <View style={styles.container}>
+        <FakeNavigationBar navBarHidden/>
         <BackgroundScreen/>
         <View style={styles.firstContainer}>
 
