@@ -13,6 +13,7 @@ import Images from '../../global/AssetsImages';
 import styles from './styles';
 import TextBox from '../../components/TextBox';
 import ListModal from '../../components/ListModal';
+import BackgroundScreen from '../../components/BackgroundScreen/index';
 
 class Dashboard extends Component {
   constructor(props) {
@@ -98,10 +99,7 @@ class Dashboard extends Component {
     return (
 
       <View style={styles.container}>
-        <Image style={styles.backImage}
-               source={Images.background}
-               resizeMode="contain"
-        />
+        <BackgroundScreen/>
         <View style={styles.firstContainer}>
 
           <View style={styles.NWContainer}>
