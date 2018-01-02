@@ -29,7 +29,6 @@ const styles = MediaQueryStyleSheet.create({
       justifyContent: 'flex-start',
       alignItems: 'center',
     },
-    
 });
 
 export default styles;

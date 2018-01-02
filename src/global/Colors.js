@@ -2,15 +2,14 @@
  * Theme colours
  */
 
+getBitNationBlue = (alpha) => {
+  return 'rgba(188, 220, 255, ' + alpha + ')';
+};
+getBitNationLightBlue = (alpha) => {
+  return 'rgba(114, 164, 222, ' + alpha + ')';
+};
 
 module.exports = {
-
-    getBitNationBlue  (alpha) {
-    return 'rgba(188, 220, 255, ' + alpha + ')';
-  },
-   getBitNationLightBlue (alpha) {
-    return 'rgba(114, 164, 222, ' + alpha + ')';
-  },
 
   Red: '#FF5252',
   Pink: '#FF4081',
@@ -39,9 +38,15 @@ module.exports = {
 
   white: '#FFFFFF',
 
-  BitNationBlue: '#1B395C',
-  BitNationLightBlue: '#72A4DE',
+  BitNationBlue: getBitNationBlue(1),
+  BitNationLightBlue: getBitNationLightBlue(1),
   BitNationVeryLightBlue: '#BCDCFF',
+  getBitNationBlue,
+  getBitNationLightBlue,
+  titleColor: '#4A90E2',
+  buttonColor: '#1C497E',
+  borderColor: '#275284',
+  navigationColor: '#007AFF',
 
 
   textColor: "#444A64",
@@ -49,7 +54,6 @@ module.exports = {
   textPrimary: "#4A4A4A",
   textSecondary: "#9094A3",
   textLight: "#DADCE5",
-  buttonColor: "#80E5CF",
   buttonPrimary: "#80E5CF",
   bestOptionBackground: "#BDF4E9",
 

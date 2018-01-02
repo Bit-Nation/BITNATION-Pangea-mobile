@@ -7,6 +7,8 @@ import styles from './styles';
 import Background from '../../components/common/BackgroundImage';
 import Images from '../../global/AssetsImages';
 import MessageView from '../../components/common/MessageView';
+import Screens from '../../global/Screens';
+import FakeNavigationBar from '../../components/common/FakeNavigationBar';
 
 export default class WalletScreen extends Component {
 
@@ -27,15 +29,11 @@ export default class WalletScreen extends Component {
   items = ['Simon Mignolet', 'Nathaniel Clyne', 'Dejan Lovren', 'Mama Sakho', 'Emre Can'];
 
   createWallet() {
-    this.props.navigator.push({
-      screen: 'Pangea.CreateKeyStep1',
-    });
+    this.props.navigator.push(Screens.CREATE_KEY_SCREEN_STEP_1);
   };
 
   restoreWallet() {
-    this.props.navigator.push({
-      screen: 'Pangea.VarifyKeyStep1',
-    });
+    this.props.navigator.push(Screens.VERIFY_KEY_SCREEN_STEP_1);
   }
 
   renderWalletDiscription(heading, discp, onClick) {
@@ -56,7 +54,7 @@ export default class WalletScreen extends Component {
     return (
       <View>
         <Background/>
-        <Text style={styles.header}>Wallet</Text>
+        <FakeNavigationBar/>
         {/* {this.renderWalletDiscription(this.Variables[0], this.Variables[1],this.createWallet)} */}
         <View style={styles.cardContainer}>
           <View style={[styles.card, styles.firstCard]}>
