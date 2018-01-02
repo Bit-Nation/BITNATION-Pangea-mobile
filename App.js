@@ -11,11 +11,11 @@ registerScreens(store, Provider);
 // const navigatorStyle = { navBarHidden: true }
 Navigation.startTabBasedApp({
   tabs: [
-     Screens.DASHBOARD_SCREEN,
-    Screens.CHAT_SCREEN,
-    Screens.NATIONS_SCREEN,
-   Screens.WALLET_SCREEN,
-   Screens.PROFILE_SCREEN,
+      Screens.DASHBOARD_SCREEN,
+      Screens.CHAT_SCREEN,
+      Screens.NATIONS_SCREEN,
+      Screens.WALLET_SCREEN,
+      Screens.PROFILE_SCREEN,
   ],
   tabsStyle,
   appStyle,
