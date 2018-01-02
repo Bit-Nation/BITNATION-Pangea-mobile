@@ -61,7 +61,6 @@ module.exports = {
   textPrimary: "#4A4A4A",
   textSecondary: "#9094A3",
   textLight: "#DADCE5",
-  buttonColor: "#80E5CF",
   buttonPrimary: "#80E5CF",
   bestOptionBackground: "#BDF4E9",
 
