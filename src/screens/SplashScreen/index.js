@@ -12,19 +12,20 @@ import styles from './styles';
 
 class SplashScreen extends Component {
   componentWillMount() {
-      setTimeout(() => {
+    setTimeout(() => {
       // TODO: Replace navigation with redux actions
-        this.props.navigator.push({
-          screen: 'Pangea.Intro',
-        });
-      }, 3000);
-    }
+      this.props.navigator.push({
+        screen: 'Pangea.Intro',
+      });
+    }, 3000);
+  }
+
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <Image source={Images.background} style={styles.background} />
+        <Image source={Images.background} style={styles.background}/>
         <View style={styles.container}>
-          <Image source={Images.bitLogoBig} style={styles.logo} />
+          <Image source={Images.bitLogoBig} style={styles.logo}/>
         </View>
       </View>
     );
@@ -35,16 +36,14 @@ SplashScreen.propTypes = {
   navigator: PropTypes.object
 };
 
-const navigatorStyle = { navBarHidden: true }
+const navigatorStyle = { navBarHidden: true };
 
-SplashScreen.defaultProps = {
-};
+SplashScreen.defaultProps = {};
 
 const mapStateToProps = state => ({
   ...state,
 });
 
-const mapDispatchToProps = dispatch => ({
-});
+const mapDispatchToProps = dispatch => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(SplashScreen);
