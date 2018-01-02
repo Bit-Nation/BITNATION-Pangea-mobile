@@ -42,10 +42,6 @@ const styles = MediaQueryStyleSheet.create({
     color: Colors.BitNationLightBlue,
     textAlign: 'center',
   },
-  fakeNavigationBar: {
-    height: 64,
-    backgroundColor: 'transparent',
-  },
 });
 
 export default styles;

@@ -57,10 +57,6 @@ const styles = MediaQueryStyleSheet.create({
     lineHeight: 20.8,
     textAlign: 'center',
     backgroundColor: 'transparent'
-  },
-  fakeNavigationBar: {
-    height: 64,
-    backgroundColor: 'transparent',
   }
 });
 

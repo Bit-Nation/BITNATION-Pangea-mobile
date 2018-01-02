@@ -14,6 +14,7 @@ import BackgroundImage from '../../../components/common/BackgroundImage';
 import AssetsImage from '../../../global/AssetsImages';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import Colors from '../../../global/Colors';
+import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 
 const EDIT_BUTTON = 'EDIT_BUTTON';
 
@@ -44,7 +45,7 @@ class ProfileScreen extends NavigatorComponent {
     return (
       <View style={styles.container}>
         <BackgroundImage/>
-        <View style={styles.fakeNavigationBar}/>
+        <FakeNavigationBar/>
         {this._buildHeader()}
         <ScrollView>
           {this._buildHolonsView()}

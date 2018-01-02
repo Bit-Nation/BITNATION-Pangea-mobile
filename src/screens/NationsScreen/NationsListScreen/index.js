@@ -12,6 +12,7 @@ import styles from './styles';
 import NationListItem from '../../../components/common/NationListItem';
 import NationListHeader from '../../../components/common/NationListHeader';
 import { ALL_NATIONS } from '../../../reducers/nations';
+import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 
 class NationsListScreen extends Component {
 
@@ -31,7 +32,7 @@ class NationsListScreen extends Component {
     return (
       <View style={styles.container}>
         <BackgroundImage/>
-        <View style={styles.fakeNavigationBar}/>
+        <FakeNavigationBar/>
         <View style={styles.segmentedControlContainer}>
           <SegmentedControl
             values={['All Nations', 'My Nations']}
