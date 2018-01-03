@@ -4,17 +4,20 @@ import {
   Text,
   TextInput,
   Image,
-  TouchableOpacity
+  Alert,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+
 import Images from '../../../global/AssetsImages';
 import Colors from '../../../global/Colors';
 import styles from './styles';
-import { Container, Header, Content, Button, StyleProvider } from 'native-base';
+import Button from '../../../components/common/Button';
+import { Container, Header, Content, StyleProvider } from 'native-base';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import { resolveWallet } from '../../../utils/wallet';
+import { sendMoney } from '../../../actions/wallet';
 
 class SendMoney extends Component {
 
@@ -24,13 +27,52 @@ class SendMoney extends Component {
     this.state = { amountString: '', toEthAddress: '', message: '', fee: 0.5 };
   }
 
+  _resolveWallet() {
+    return resolveWallet(this.props.wallets, this.props.selectedWalletAddress);
+  }
+
+  _parseAmount() {
+    return parseFloat(this.state.amountString) || 0;
+  }
+
+  _validateSendData() {
+    const wallet = this._resolveWallet();
+    const sendAmount = this._parseAmount();
+    const totalSendAmount = sendAmount + this.state.fee;
+    const currentAmount = wallet.balance;
+
+    return sendAmount > 0.01 && totalSendAmount <= currentAmount;
+  }
+
+  onSendPress = () => {
+    if (!this._validateSendData()) {
+      return;
+    }
+
+    this._showConfirmationAlert();
+  };
+
+  _showConfirmationAlert() {
+    const wallet = this._resolveWallet();
+    const amount = this._parseAmount();
+    const currency = wallet.currency;
+    const totalAmount = amount + this.state.fee;
+
+    Alert.alert(
+      `Send ${amount} ${currency}?`,
+      `Send ${amount} ${currency} + fee\nSpend a total of ${totalAmount} ${currency}`,
+      [
+        { text: 'Cancel', style: 'cancel' },
+        { text: 'Send', onPress: () => this.props.onSendMoney(wallet, amount, this.state.toEthAddress, this.state.message) },
+      ],
+      { cancelable: true });
+  }
+
   render() {
-    const wallet = resolveWallet(this.props.wallets, this.props.selectedWalletAddress);
+    const wallet = this._resolveWallet();
     if (!wallet) {
       return <View/>;
     }
-
-    console.log(JSON.stringify(wallet));
 
     return (
       <View style={styles.container}>
@@ -136,7 +178,7 @@ class SendMoney extends Component {
             </View>
 
             <View style={styles.calculatedNumberContainer}>
-              <Text style={styles.CalculatedText}>{parseFloat(this.state.amountString) || 0}</Text>
+              <Text style={styles.CalculatedText}>{this._parseAmount()}</Text>
               <Text style={styles.CalculatedText}>{this.state.fee}</Text>
             </View>
 
@@ -147,10 +189,13 @@ class SendMoney extends Component {
           </View>
         </View>
 
-        <View style={styles.nextContainer}>
-          <Button style={styles.nextButton}>
-            <Text style={styles.nextButtonText}>Next</Text>
-          </Button>
+        <View style={styles.sendContainer}>
+          <Button
+            title='Send'
+            onPress={this.onSendPress}
+            enabled={this._validateSendData()}
+            style={styles.sendButton}
+          />
         </View>
 
       </View>
@@ -167,7 +212,11 @@ const mapStateToProps = state => ({
   ...state.wallet,
 });
 
-const mapDispatchToProps = dispatch => ({});
+const mapDispatchToProps = dispatch => ({
+  onSendMoney(wallet, amount, toEthAddress, message) {
+    dispatch(sendMoney(wallet, amount, toEthAddress, message));
+  }
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(SendMoney);
 

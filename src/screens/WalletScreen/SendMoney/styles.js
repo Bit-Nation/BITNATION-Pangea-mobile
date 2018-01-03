@@ -268,28 +268,14 @@ const styles = MediaQueryStyleSheet.create(
     },
 
     //7th
-    nextContainer: {
+    sendContainer: {
       flex: 4,
       justifyContent: 'center',
-      flexDirection: 'row',
-    },
-    nextButton: {
-      height: 30,
-      width: 128.27,
-      borderRadius: 14,
-      backgroundColor: '#1C497E',
       alignItems: 'center',
-      justifyContent: 'center',
-      marginTop: '10%'
     },
-    nextButtonText: {
-      height: 19,
-      width: 103.27,
-      color: '#BCDCFF',
-      //    fontFamily: "SF Pro Display",
-      fontSize: 14,
-      lineHeight: 19,
-      textAlign: 'center',
+    sendButton: {
+      width: 130,
     },
+
   });
 export default styles;
