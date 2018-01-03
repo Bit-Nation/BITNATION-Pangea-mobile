@@ -1,6 +1,7 @@
 export const CREATE_WALLET = 'CREATE_WALLET';
 export const CREATE_MNEMONIC = 'CREATE_MNEMONIC';
 export const RESTORE_WALLET = 'RESTORE_WALLET';
+export const SELECT_WALLET = 'SELECT_WALLET';
 
 export function createWallet(privateKey) {
   return {
@@ -20,5 +21,12 @@ export function restoreWallet(privateKey) {
   return {
     type: RESTORE_WALLET,
     privateKey,
+  };
+}
+
+export function selectWallet(wallet) {
+  return {
+    type: SELECT_WALLET,
+    wallet,
   };
 }

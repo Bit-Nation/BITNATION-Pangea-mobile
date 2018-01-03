@@ -2,6 +2,7 @@ import {
   CREATE_WALLET,
   RESTORE_WALLET,
   CREATE_MNEMONIC,
+  SELECT_WALLET,
 } from '../actions/wallet';
 
 const initialState = {
@@ -13,6 +14,7 @@ const initialState = {
       name: 'Ethereum',
     }
   ],
+  selectedWalletAddress: null,
   walletCreatingInProgress: false,
   walletRestoreInProgress: false,
   createdMnemonic: null,
@@ -26,6 +28,8 @@ export default function (state = initialState, action) {
       return Object.assign({}, state, { walletRestoreInProgress: true });
     case CREATE_MNEMONIC:
       return Object.assign({}, state, { createdMnemonic: action.mnemonic });
+    case SELECT_WALLET:
+      return Object.assign({}, state, { selectedWalletAddress: action.wallet.ethAddress });
   }
   return state;
 }

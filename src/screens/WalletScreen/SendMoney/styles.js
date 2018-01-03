@@ -14,6 +14,14 @@ const styles = MediaQueryStyleSheet.create(
       position: 'absolute',
       zIndex: -1,
     },
+    baseTextInput: {
+      flex: 1,
+      paddingLeft: 4,
+      paddingRight: 4,
+      paddingTop: 4,
+      paddingBottom: 4,
+      backgroundColor: Colors.getBitNationLightBlue(0.2),
+    },
 
     //1st
     sendMoneyContainer: {
@@ -75,29 +83,27 @@ const styles = MediaQueryStyleSheet.create(
     ethereumDetailsContainer: {
       flex: 6,
       flexDirection: 'column',
-      alignItems: 'center',
+      alignItems: 'stretch',
       justifyContent: 'center',
       backgroundColor: Colors.Transparent,
-      marginRight: '17%',
+      marginLeft: 20,
     },
     ethereumTextContainer: {
       height: 20,
-      width: 120,
       color: '#FFFFFF',
       backgroundColor: Colors.Transparent,
-      // fontFamily:"SF Pro Text",
       fontSize: 17,
       lineHeight: 20,
-      marginBottom: '1%'
+      marginBottom: '1%',
+      textAlign: 'left',
     },
     ethereumNumberContainer: {
       height: 16,
-      width: 141.08,
       color: '#72A4DE',
       backgroundColor: Colors.Transparent,
-      // fontFamily:"SF Pro Text",
       fontSize: 14,
       lineHeight: 16,
+      textAlign: 'left',
     },
 
     //3rd
@@ -127,10 +133,9 @@ const styles = MediaQueryStyleSheet.create(
     },
     amountTextInput: {
       color: '#FFFFFF',
-      // fontFamily: "SF Pro Text",
       fontSize: 16,
       lineHeight: 10,
-      textAlign: 'right'
+      textAlign: 'right',
     },
     amountCurrencyContainer: {
       flex: 1.8,
@@ -213,8 +218,6 @@ const styles = MediaQueryStyleSheet.create(
     },
     descriptionTextInput: {
       color: 'white',
-      //  fontFamily: "SF Pro Text",
-      backgroundColor: Colors.Transparent,
       fontSize: 16,
     },
 
@@ -235,7 +238,7 @@ const styles = MediaQueryStyleSheet.create(
       alignItems: 'center',
       borderWidth: 1,
       borderColor: Colors.BitnationBlue,
-      backgroundColor: Colors.Transparent,
+      backgroundColor: 'rgba(27,57,92,0.5)',
     },
     calculatedTextContainer: {
       flexDirection: 'column',

@@ -39,8 +39,7 @@ const WalletCard = (props) => {
 };
 
 WalletCard.propTypes = {
-
-  imagePath: PropTypes.string,
+  imagePath: PropTypes.number,
   nameHeading: PropTypes.string,
   nameSubheading: PropTypes.string,
   messageText: PropTypes.string,
@@ -54,7 +53,7 @@ WalletCard.defaultProps = {
   nameSubheading: '173324 Enum',
   messageText: 'Message goes here',
   onSendPress: () => null,
-  onRecievePress: () => null,
+  onReceivePress: () => null,
 };
 
 

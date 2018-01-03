@@ -14,15 +14,24 @@ import styles from './styles';
 import { Container, Header, Content, Button, StyleProvider } from 'native-base';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
+import { resolveWallet } from '../../../utils/wallet';
 
 class SendMoney extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { text: '1.02', ethAddress: 'Enter ETH Address', description: '' };
+
+    this.state = { amountString: '', toEthAddress: '', message: '', fee: 0.5 };
   }
 
   render() {
+    const wallet = resolveWallet(this.props.wallets, this.props.selectedWalletAddress);
+    if (!wallet) {
+      return <View/>;
+    }
+
+    console.log(JSON.stringify(wallet));
+
     return (
       <View style={styles.container}>
         <BackgroundImage/>
@@ -42,8 +51,8 @@ class SendMoney extends Component {
             </View>
 
             <View style={styles.ethereumDetailsContainer}>
-              <Text style={styles.ethereumTextContainer}>Ethereum</Text>
-              <Text style={styles.ethereumNumberContainer}>1.7534 ETH available</Text>
+              <Text style={styles.ethereumTextContainer}>{wallet.name}</Text>
+              <Text style={styles.ethereumNumberContainer}>{`${wallet.balance} ${wallet.currency} available`}</Text>
             </View>
           </View>
         </View>
@@ -55,15 +64,18 @@ class SendMoney extends Component {
 
           <View style={styles.amountBoxContainer}>
             <TextInput
-              style={styles.amountTextInput}
-              value={this.state.text}
-              onChangeText={(text) => this.setState({ text })}
+              style={[styles.baseTextInput, styles.amountTextInput]}
+              placeholder='1.02'
+              placeholderTextColor='rgba(255,255,255,0.5)'
+              value={this.state.amountString}
+              onChangeText={(amountString) => this.setState({ amountString })}
               underlineColorAndroid={Colors.Transparent}
+              keyboardType='numeric'
             />
           </View>
 
           <View style={styles.amountCurrencyContainer}>
-            <Text style={styles.amountCurrency}>ETH </Text>
+            <Text style={styles.amountCurrency}>{wallet.currency}</Text>
           </View>
         </View>
 
@@ -75,10 +87,11 @@ class SendMoney extends Component {
 
           <View style={styles.ethAddressBoxContainer}>
             <TextInput
-              style={styles.ethTextInput}
-              placeholder='Enter ETH Address'
-              placeholderTextColor='white'
-              onChangeText={(ethAddress) => this.setState({ ethAddress })}
+              style={[styles.baseTextInput, styles.ethTextInput]}
+              placeholder='Enter ETH address'
+              placeholderTextColor='rgba(255,255,255,0.5)'
+              value={this.state.toEthAddress}
+              onChangeText={(toEthAddress) => this.setState({ toEthAddress })}
               underlineColorAndroid={Colors.Transparent}
             />
           </View>
@@ -100,11 +113,13 @@ class SendMoney extends Component {
 
           <View style={styles.noteBoxContainer}>
             <TextInput
-              style={styles.descriptionTextInput}
-              placeholder='Optional Message'
-              placeholderTextColor='white'
-              onChangeText={(ethAddress) => this.setState({ ethAddress })}
+              style={[styles.baseTextInput, styles.descriptionTextInput]}
+              placeholder='Optional message...'
+              placeholderTextColor='rgba(255,255,255,0.5)'
+              value={this.state.message}
+              onChangeText={(message) => this.setState({ message })}
               underlineColorAndroid={Colors.Transparent}
+              multiline={true}
             />
           </View>
         </View>
@@ -121,13 +136,13 @@ class SendMoney extends Component {
             </View>
 
             <View style={styles.calculatedNumberContainer}>
-              <Text style={styles.CalculatedText}>1.020000</Text>
-              <Text style={styles.CalculatedText}>0.050000</Text>
+              <Text style={styles.CalculatedText}>{parseFloat(this.state.amountString) || 0}</Text>
+              <Text style={styles.CalculatedText}>{this.state.fee}</Text>
             </View>
 
             <View style={styles.calculatedCurrencyContainer}>
-              <Text style={styles.CalculatedText}>ETH</Text>
-              <Text style={styles.CalculatedText}>ETH</Text>
+              <Text style={styles.CalculatedText}>{wallet.currency}</Text>
+              <Text style={styles.CalculatedText}>{wallet.currency}</Text>
             </View>
           </View>
         </View>
@@ -149,7 +164,7 @@ SendMoney.propTypes = {};
 SendMoney.defaultProps = {};
 
 const mapStateToProps = state => ({
-  ...state,
+  ...state.wallet,
 });
 
 const mapDispatchToProps = dispatch => ({});

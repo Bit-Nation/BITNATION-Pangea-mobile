@@ -9,6 +9,7 @@ import Background from '../../components/common/BackgroundImage';
 import Screens from '../../global/Screens';
 import List from './List';
 import EmptyWalletScreen from './EmptyState/index';
+import { selectWallet } from '../../actions/wallet';
 
 class WalletScreen extends Component {
 
@@ -21,10 +22,12 @@ class WalletScreen extends Component {
   };
 
   sendMoney = (wallet) => {
+    this.props.selectWallet(wallet);
     this.props.navigator.push(Screens.SEND_MONEY_SCREEN);
   };
 
   receiveMoney = (wallet) => {
+    this.props.selectWallet(wallet);
     this.props.navigator.push(Screens.RECEIVE_MONEY_SCREEN);
   };
 
@@ -53,6 +56,10 @@ const mapStateToProps = state => ({
   ...state.wallet
 });
 
-const mapDispatchToProps = dispatch => ({});
+const mapDispatchToProps = dispatch => ({
+  selectWallet(wallet) {
+    dispatch(selectWallet(wallet));
+  },
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(WalletScreen);
