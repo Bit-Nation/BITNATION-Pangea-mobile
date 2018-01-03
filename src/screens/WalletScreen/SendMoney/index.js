@@ -81,7 +81,7 @@ class SendMoney extends Component {
       <View style={styles.container}>
         <BackgroundImage/>
         <FakeNavigationBar/>
-        <ScrollView>
+        <ScrollView style={styles.scrollView}>
 
           <View style={styles.fromContainer}>
             <View style={styles.fromTextContainer}>

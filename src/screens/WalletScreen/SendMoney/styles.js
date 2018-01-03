@@ -6,13 +6,12 @@ const styles = MediaQueryStyleSheet.create(
     container: {
       flexDirection: 'column',
       flex: 1,
-      paddingLeft: '4%',
-      paddingRight: '6%',
       paddingTop: 20,
     },
-    backImage: {
-      position: 'absolute',
-      zIndex: -1,
+    scrollView: {
+      flex: 1,
+      paddingLeft: 15,
+      paddingRight: 15,
     },
     baseTextInput: {
       flex: 1,
