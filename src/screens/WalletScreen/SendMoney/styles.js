@@ -1,4 +1,5 @@
 import { MediaQueryStyleSheet } from 'react-native-responsive';
+import { Dimensions } from 'react-native';
 import Colors from '../../../global/Colors';
 
 const styles = MediaQueryStyleSheet.create(
@@ -6,12 +7,15 @@ const styles = MediaQueryStyleSheet.create(
     container: {
       flexDirection: 'column',
       flex: 1,
-      paddingTop: 20,
     },
     scrollView: {
       flex: 1,
       paddingLeft: 15,
       paddingRight: 15,
+      height: 555,
+    },
+    scrollViewContentContainer: {
+      flex: 1,
     },
     baseTextInput: {
       flex: 1,
@@ -39,15 +43,14 @@ const styles = MediaQueryStyleSheet.create(
 
     //2nd
     fromContainer: {
-      flex: 2,
+      // flex: 2,
       flexDirection: 'row',
       alignItems: 'center',
-      marginTop: '5%',
       //backgroundColor:'red',
       backgroundColor: Colors.Transparent,
     },
     fromTextContainer: {
-      flex: 1.5,
+      width: '24%',
       backgroundColor: Colors.Transparent,
     },
     fromText: {
@@ -107,13 +110,14 @@ const styles = MediaQueryStyleSheet.create(
 
     //3rd
     amountContainer: {
-      flex: 1.4,
+      // flex: 1.4,
       flexDirection: 'row',
       backgroundColor: Colors.Transparent,
-      marginTop: '5%'
+      marginTop: 20,
+      height: 32,
     },
     amountTextContainer: {
-      flex: 1.2,
+      width: '24%',
       backgroundColor: Colors.Transparent,
     },
     amountText: {
@@ -127,7 +131,7 @@ const styles = MediaQueryStyleSheet.create(
       flex: 2.2,
       borderWidth: 1,
       backgroundColor: Colors.Transparent,
-      borderColor: Colors.BitnationBlue,
+      borderColor: Colors.borderColor,
       justifyContent: 'center',
     },
     amountTextInput: {
@@ -139,24 +143,25 @@ const styles = MediaQueryStyleSheet.create(
     amountCurrencyContainer: {
       flex: 1.8,
       backgroundColor: Colors.Transparent,
+      justifyContent: 'center',
     },
     amountCurrency: {
       color: '#4A90E2',
       //    fontFamily: "SF Pro Display",
       fontSize: 17,
-      marginLeft: '5%',
-      marginTop: '4%'
+      marginLeft: 17,
     },
 
     //4th
     toContainer: {
-      flex: 1.4,
+      // flex: 1.4,
       flexDirection: 'row',
-      marginTop: '5%',
+      marginTop: 20,
       backgroundColor: Colors.Transparent,
+      height: 32,
     },
     toTextContainer: {
-      flex: 1.5,
+      width: '24%',
       backgroundColor: Colors.Transparent,
     },
     toText: {
@@ -169,7 +174,7 @@ const styles = MediaQueryStyleSheet.create(
     ethAddressBoxContainer: {
       flex: 4.35,
       borderWidth: 1,
-      borderColor: Colors.BitnationBlue,
+      borderColor: Colors.borderColor,
       backgroundColor: Colors.Transparent,
       justifyContent: 'center'
     },
@@ -180,26 +185,25 @@ const styles = MediaQueryStyleSheet.create(
     },
     qrCodeContainer: {
       flex: 0.7,
-      marginLeft: '2%',
-      width: 35,
-      height: 37,
+      marginLeft: 5,
       backgroundColor: Colors.Transparent,
+      alignSelf: 'center',
     },
     qrLogo: {
-      width: 35,
-      height: 37,
-      borderRadius: 10
+      width: 38,
+      height: 38,
+      borderRadius: 8
     },
 
     //5th
     noteContainer: {
-      flex: 3,
+      flex: 1,
       flexDirection: 'row',
-      marginTop: '5%',
+      marginTop: 20,
       backgroundColor: Colors.Transparent,
     },
     noteTextContainer: {
-      flex: 2,
+      width: '24%',
       backgroundColor: Colors.Transparent,
     },
     noteText: {
@@ -211,7 +215,7 @@ const styles = MediaQueryStyleSheet.create(
     noteBoxContainer: {
       flex: 7,
       borderWidth: 1,
-      borderColor: Colors.BitnationBlue,
+      borderColor: Colors.borderColor,
       justifyContent: 'flex-start',
       backgroundColor: Colors.Transparent,
     },
@@ -222,55 +226,43 @@ const styles = MediaQueryStyleSheet.create(
 
     //6th
     calculatedEmptyContainer: {
-      flex: 3,
+      // flex: 3,
       flexDirection: 'row',
-      marginTop: '5%',
+      marginTop: 20,
       backgroundColor: Colors.Transparent,
     },
     empty: {
-      flex: 1.16,
+      width: '24%',
     },
     calculatedContainer: {
-      flex: 4,
-      flexDirection: 'row',
-      justifyContent: 'space-around',
-      alignItems: 'center',
+      flex: 1,
       borderWidth: 1,
-      borderColor: Colors.BitnationBlue,
+      borderColor: Colors.borderColor,
       backgroundColor: 'rgba(27,57,92,0.5)',
+      paddingLeft: 8,
+      paddingRight: 8,
+      justifyContent: 'space-around',
+      height: 81,
     },
-    calculatedTextContainer: {
-      flexDirection: 'column',
-      marginLeft: '22%',
-      backgroundColor: Colors.Transparent,
-    },
-    CalculatedText: {
+    calculatedText: {
       height: 20,
-      width: 110,
       color: '#007AFF',
-      //  fontFamily: "SF Pro Text",
       fontSize: 17,
-      fontWeight: 'bold',
       lineHeight: 20,
-      marginBottom: '5%',
-      marginTop: '5%'
+    },
+    sendAmountContainer: {
+      flexDirection: 'row',
 
     },
-    calculatedNumberContainer: {
-      flexDirection: 'column',
-      marginLeft: '43%',
-      backgroundColor: Colors.Transparent,
-    },
-    calculatedCurrencyContainer: {
-      flexDirection: 'column',
-      marginLeft: '31%',
+    feeContainer: {
+      flexDirection: 'row',
     },
 
     //7th
     sendContainer: {
       marginTop: 20,
       marginBottom: 20,
-      flex: 4,
+      // flex: 4,
       justifyContent: 'center',
       alignItems: 'center',
     },

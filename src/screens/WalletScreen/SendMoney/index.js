@@ -81,7 +81,8 @@ class SendMoney extends Component {
       <View style={styles.container}>
         <BackgroundImage/>
         <FakeNavigationBar/>
-        <ScrollView style={styles.scrollView}>
+        <ScrollView style={styles.scrollView}
+                    contentContainerStyle={styles.scrollViewContentContainer}>
 
           <View style={styles.fromContainer}>
             <View style={styles.fromTextContainer}>
@@ -176,19 +177,15 @@ class SendMoney extends Component {
             </View>
 
             <View style={styles.calculatedContainer}>
-              <View style={styles.calculatedTextContainer}>
-                <Text style={styles.CalculatedText}>Send Amount:</Text>
-                <Text style={styles.CalculatedText}>Transfer Fee:</Text>
+              <View style={styles.sendAmountContainer}>
+                <Text style={[styles.calculatedText, { flex: 1 }]}>Send Amount:</Text>
+                <Text style={[styles.calculatedText, { fontWeight: 'bold' }]}>{this._parseAmount()}</Text>
+                <Text style={[styles.calculatedText, { marginLeft: 8 }]}>{wallet.currency}</Text>
               </View>
-
-              <View style={styles.calculatedNumberContainer}>
-                <Text style={styles.CalculatedText}>{this._parseAmount()}</Text>
-                <Text style={styles.CalculatedText}>{this.state.fee}</Text>
-              </View>
-
-              <View style={styles.calculatedCurrencyContainer}>
-                <Text style={styles.CalculatedText}>{wallet.currency}</Text>
-                <Text style={styles.CalculatedText}>{wallet.currency}</Text>
+              <View style={styles.feeContainer}>
+                <Text style={[styles.calculatedText, { flex: 1 }]}>Transfer Fee:</Text>
+                <Text style={[styles.calculatedText, { fontWeight: 'bold' }]}>{this.state.fee}</Text>
+                <Text style={[styles.calculatedText, { marginLeft: 8 }]}>{wallet.currency}</Text>
               </View>
             </View>
           </View>

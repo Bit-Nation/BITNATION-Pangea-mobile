@@ -11,12 +11,12 @@ import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import { resolveWallet } from '../../../utils/wallet';
 import Button from '../../../components/common/Button';
+import MessageView from '../../../components/common/MessageView';
 
 class ReceiveMoneyScreen extends Component {
 
-  instruction = 'Send our wallet address and scannable QR code in an email. Do not try to enter this address by hand.';
-  instruction2 = 'The sender can scan this QR code with a phone or computer camera to get your wallet address.';
-  instruction3 = 'You can copy your wallet address and send any way you choose, e.g. SMS or email. Do not try to type your address by hand!';
+  qrCodeText = 'The sender can scan this QR code with a phone or computer camera to get your wallet address.';
+  copyAddressText = 'You can copy your wallet address and send any way you choose, e.g. SMS or email. Do not try to type your address by hand!';
 
   onCopyWalletAddressPress = () => {
     Clipboard.setString(this.props.selectedWalletAddress);
@@ -24,36 +24,35 @@ class ReceiveMoneyScreen extends Component {
 
   render() {
     return (
-      <ScrollView>
+      <View style={{ flex: 1 }}>
         <BackgroundImage/>
         <FakeNavigationBar/>
+        <ScrollView style={styles.mainContainer} contentContainerStyle={styles.scrollViewContentContainer}>
+          <MessageView
+            title='Scan QR Code'
+            messageText={this.qrCodeText}
+            style={styles.messageView}
+            renderBottom={() =>
+              <View style={styles.QRCodeContainer}>
+                <Image source={AssetsImages.QR} style={styles.QRcode} resizeMode="stretch"/>
+              </View>
+            }/>
 
-        <View style={styles.mainContainer}>
-          <View style={styles.panelBox}>
-            <Text style={styles.panelHeader}>Scan QR Code</Text>
-            <Text style={styles.panelText}>{this.instruction2}</Text>
-            <View style={styles.QRCodeContainer}>
-              <Image source={AssetsImages.QR} style={styles.QRcode} resizeMode="center"/>
-            </View>
-          </View>
+          <MessageView
+            title='Copy Address'
+            messageText={this.copyAddressText}
+            style={[styles.messageView]}
+            renderAdditionalInfo={() =>
+              <Text style={styles.codeText}>{this.props.selectedWalletAddress}</Text>
+            }
+            onButtonClick={this.onCopyWalletAddressPress}
+            buttonTitle='Copy Wallet Address'/>
 
-          <View style={styles.panelBox}>
-            <Text style={styles.panelHeader}>Copy Address</Text>
-            <Text style={styles.panelText}>{this.instruction3}</Text>
+        </ScrollView>
 
-            <Text style={styles.codeText}>{this.props.selectedWalletAddress}</Text>
-
-            <View style={styles.buttonContainer}>
-              <Button
-                onPress={this.onCopyWalletAddressPress}
-                title='Copy Wallet Address'
-              />
-            </View>
-          </View>
-        </View>
-
-      </ScrollView>
-    );
+      </View>
+    )
+      ;
   }
 }
 
