@@ -15,11 +15,9 @@ export default styles = StyleSheet.create({
     color: Colors.white,
     backgroundColor: Colors.Transparent,
   },
-
   mainContainer: {
     flexDirection: 'column',
   },
-
   panelBox: {
     backgroundColor: Colors.getBitNationBlue(0.2),
     width: width * .9,
@@ -28,7 +26,6 @@ export default styles = StyleSheet.create({
     opacity: 1,
     marginTop: height * .03,
   },
-
   panelHeader: {
     color: Colors.BitnationBlue,
     fontSize: 22,
@@ -36,7 +33,6 @@ export default styles = StyleSheet.create({
     marginTop: height * .02,
     opacity: 1,
   },
-
   panelText: {
     marginTop: height * .01,
     textAlign: 'left',
@@ -46,14 +42,12 @@ export default styles = StyleSheet.create({
     marginRight: width * .03,
     opacity: 1,
   },
-
   emailTextBox: {
     width: '90%',
     marginLeft: '5%',
     backgroundColor: 'yellow',
     height: height * .04,
   },
-
   emailTextInput: {
     fontSize: 20,
     color: Colors.Background,
@@ -66,7 +60,6 @@ export default styles = StyleSheet.create({
     borderRadius: 2,
     paddingLeft: width * .03,
   },
-
   buttonBoxStyle: {
     width: width * .7,
     height: height * .05,
@@ -81,7 +74,6 @@ export default styles = StyleSheet.create({
     justifyContent: 'center',
     width: width * .6,
   },
-
   buttonText: {
     color: '#ffff',
     textAlign: 'center',
@@ -89,22 +81,28 @@ export default styles = StyleSheet.create({
     opacity: 1,
     backgroundColor: Colors.Transparent,
   },
-
   QRCodeContainer: {
     alignItems: 'center',
   },
-
   QRcode: {
     height: height * .3,
     width: width * .3,
     alignItems: 'center',
     justifyContent: 'center',
   },
-
   codeText: {
     fontSize: 14,
     color: Colors.navButtonTextColor,
     textAlign: 'center',
-  }
+    marginTop: 20,
+    marginBottom: 20,
+    marginLeft: 10,
+    marginRight: 10,
+  },
+  buttonContainer: {
+    alignItems: 'center',
+    flex: 1,
+    marginBottom: 10,
+  },
 
 });
