@@ -134,5 +134,12 @@ export default {
     backButtonTitle: 'Cancel',
     navigatorStyle,
   },
+
+  VERIFY_KEY_SUCCESS_SCREEN: {
+    screen: 'Pangea.VarifyKeySuccess',
+    title: 'Varify Private Key',
+    backButtonTitle: 'Cancel',
+    navigatorStyle,
+  },
   
 };

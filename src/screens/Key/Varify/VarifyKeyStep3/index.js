@@ -8,7 +8,7 @@ import BackgroundScreen from '../../../../components/BackgroundScreen';
 import Header from '../../../../components/Header';
 import { Dialog } from 'react-native-simple-dialogs';
 import styles from './styles';
-
+import Screens from '../../../../global/Screens';
 import { Dimensions, } from 'react-native';
 import Colors from '../../../../global/Colors';
 
@@ -23,7 +23,7 @@ export default class EnterPrivateKeyScreen extends Component {
     this.state = {
       currIndex: 1,
       dialogVisible: false,
-      rowDisabled: [true, false, false, false],
+      rowDisabled: [true, false, false, false, false, false, false, false],
     };
 
     this.getPrivateKeys = this.getPrivateKeys.bind(this);
@@ -42,14 +42,21 @@ export default class EnterPrivateKeyScreen extends Component {
   onNextButtonPressed = () => {
     // this.setState({row2Disabled:true, row1Disabled:false});
 
-    if (this.state.currIndex < 5) {
+    if (this.state.currIndex < 9) {
       index = this.state.currIndex;
 
       this.state.rowDisabled[index - 1] = false;
 
-      if (index < 4)
-        this.state.rowDisabled[index] = true;
+      if (index < 8)
+       {
+          this.state.rowDisabled[index] = true;
+       }
+       if(index===8)
+       {
+        this.ShowAlertDialog();
+        this.setState({ dialogVisible: true });
 
+       }
       index++;
       this.setState({ currIndex: index });
 
@@ -80,16 +87,16 @@ export default class EnterPrivateKeyScreen extends Component {
         return (
           Alert.alert(
             // This is Alert Dialog Title
-            'Delete Private Key',
+            'Continue Key Varification ?',
 
             // This is Alert Dialog Message.
-            'Are you sure that you want to stop creating this private key?',
+            'Are you sure that you entered correct pattern of your private key?',
             [
               // First Text Button in Alert Dialog.
               { text: 'Cancel', onPress: () => this.cancelAlertDialouge(), style: 'cancel' },
 
               // Second Cancel Button in Alert Dialog.
-              { text: 'Delete Key', onPress: () => this.deleteKey(), },
+              { text: 'Continue', onPress: () => this.deleteKey(), },
             ]
           ));
       }
@@ -128,6 +135,10 @@ export default class EnterPrivateKeyScreen extends Component {
     this.state.rowDisabled[1] = false;
     this.state.rowDisabled[2] = false;
     this.state.rowDisabled[3] = false;
+    this.state.rowDisabled[4] = false;
+    this.state.rowDisabled[5] = false;
+    this.state.rowDisabled[6] = false;
+    this.state.rowDisabled[7] = false;
 
     this.setState({ dialogVisible: false, currIndex: 1 });
   }
@@ -139,9 +150,13 @@ export default class EnterPrivateKeyScreen extends Component {
     this.state.rowDisabled[1] = false;
     this.state.rowDisabled[2] = false;
     this.state.rowDisabled[3] = false;
+    this.state.rowDisabled[4] = false;
+    this.state.rowDisabled[5] = false;
+    this.state.rowDisabled[6] = false;
+    this.state.rowDisabled[7] = false;
 
-    alert('Key Deleted');
     this.setState({ dialogVisible: false, currIndex: 1 });
+    this.props.navigator.push(Screens.VERIFY_KEY_SUCCESS_SCREEN);
   }
 
   onBackButtonPressed() {
