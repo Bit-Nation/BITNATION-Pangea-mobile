@@ -269,6 +269,8 @@ const styles = MediaQueryStyleSheet.create(
 
     //7th
     sendContainer: {
+      marginTop: 20,
+      marginBottom: 20,
       flex: 4,
       justifyContent: 'center',
       alignItems: 'center',

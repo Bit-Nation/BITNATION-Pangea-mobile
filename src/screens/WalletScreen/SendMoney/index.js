@@ -4,7 +4,7 @@ import {
   Text,
   TextInput,
   Image,
-  Alert,
+  Alert, ScrollView,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -63,7 +63,10 @@ class SendMoney extends Component {
       `Send ${amount} ${currency} + fee\nSpend a total of ${totalAmount} ${currency}`,
       [
         { text: 'Cancel', style: 'cancel' },
-        { text: 'Send', onPress: () => this.props.onSendMoney(wallet, amount, this.state.toEthAddress, this.state.message) },
+        {
+          text: 'Send',
+          onPress: () => this.props.onSendMoney(wallet, amount, this.state.toEthAddress, this.state.message)
+        },
       ],
       { cancelable: true });
   }
@@ -78,126 +81,128 @@ class SendMoney extends Component {
       <View style={styles.container}>
         <BackgroundImage/>
         <FakeNavigationBar/>
+        <ScrollView>
 
-        <View style={styles.fromContainer}>
-          <View style={styles.fromTextContainer}>
-            <Text style={styles.fromText}>From</Text>
+          <View style={styles.fromContainer}>
+            <View style={styles.fromTextContainer}>
+              <Text style={styles.fromText}>From</Text>
+            </View>
+
+            <View style={styles.ethereumContainer}>
+              <View style={styles.ethereumLogoContainer}>
+                <Image
+                  style={styles.ethereumLogo}
+                  source={Images.eth}
+                  resizeMode="contain"/>
+              </View>
+
+              <View style={styles.ethereumDetailsContainer}>
+                <Text style={styles.ethereumTextContainer}>{wallet.name}</Text>
+                <Text style={styles.ethereumNumberContainer}>{`${wallet.balance} ${wallet.currency} available`}</Text>
+              </View>
+            </View>
           </View>
 
-          <View style={styles.ethereumContainer}>
-            <View style={styles.ethereumLogoContainer}>
+          <View style={styles.amountContainer}>
+            <View style={styles.amountTextContainer}>
+              <Text style={styles.amountText}>Amount</Text>
+            </View>
+
+            <View style={styles.amountBoxContainer}>
+              <TextInput
+                style={[styles.baseTextInput, styles.amountTextInput]}
+                placeholder='1.02'
+                placeholderTextColor='rgba(255,255,255,0.5)'
+                value={this.state.amountString}
+                onChangeText={(amountString) => this.setState({ amountString })}
+                underlineColorAndroid={Colors.Transparent}
+                keyboardType='numeric'
+              />
+            </View>
+
+            <View style={styles.amountCurrencyContainer}>
+              <Text style={styles.amountCurrency}>{wallet.currency}</Text>
+            </View>
+          </View>
+
+
+          <View style={styles.toContainer}>
+            <View style={styles.toTextContainer}>
+              <Text style={styles.toText}>To</Text>
+            </View>
+
+            <View style={styles.ethAddressBoxContainer}>
+              <TextInput
+                style={[styles.baseTextInput, styles.ethTextInput]}
+                placeholder='Enter ETH address'
+                placeholderTextColor='rgba(255,255,255,0.5)'
+                value={this.state.toEthAddress}
+                onChangeText={(toEthAddress) => this.setState({ toEthAddress })}
+                underlineColorAndroid={Colors.Transparent}
+              />
+            </View>
+
+            <View style={styles.qrCodeContainer}>
               <Image
-                style={styles.ethereumLogo}
-                source={Images.eth}
-                resizeMode="contain"/>
+                style={styles.qrLogo}
+                source={Images.qrColor}
+                resizeMode="cover"/>
             </View>
 
-            <View style={styles.ethereumDetailsContainer}>
-              <Text style={styles.ethereumTextContainer}>{wallet.name}</Text>
-              <Text style={styles.ethereumNumberContainer}>{`${wallet.balance} ${wallet.currency} available`}</Text>
+          </View>
+
+
+          <View style={styles.noteContainer}>
+            <View style={styles.noteTextContainer}>
+              <Text style={styles.noteText}>Note</Text>
+            </View>
+
+            <View style={styles.noteBoxContainer}>
+              <TextInput
+                style={[styles.baseTextInput, styles.descriptionTextInput]}
+                placeholder='Optional message...'
+                placeholderTextColor='rgba(255,255,255,0.5)'
+                value={this.state.message}
+                onChangeText={(message) => this.setState({ message })}
+                underlineColorAndroid={Colors.Transparent}
+                multiline={true}
+              />
             </View>
           </View>
-        </View>
 
-        <View style={styles.amountContainer}>
-          <View style={styles.amountTextContainer}>
-            <Text style={styles.amountText}>Amount</Text>
+          <View style={styles.calculatedEmptyContainer}>
+            <View style={styles.empty}>
+              <Text> </Text>
+            </View>
+
+            <View style={styles.calculatedContainer}>
+              <View style={styles.calculatedTextContainer}>
+                <Text style={styles.CalculatedText}>Send Amount:</Text>
+                <Text style={styles.CalculatedText}>Transfer Fee:</Text>
+              </View>
+
+              <View style={styles.calculatedNumberContainer}>
+                <Text style={styles.CalculatedText}>{this._parseAmount()}</Text>
+                <Text style={styles.CalculatedText}>{this.state.fee}</Text>
+              </View>
+
+              <View style={styles.calculatedCurrencyContainer}>
+                <Text style={styles.CalculatedText}>{wallet.currency}</Text>
+                <Text style={styles.CalculatedText}>{wallet.currency}</Text>
+              </View>
+            </View>
           </View>
 
-          <View style={styles.amountBoxContainer}>
-            <TextInput
-              style={[styles.baseTextInput, styles.amountTextInput]}
-              placeholder='1.02'
-              placeholderTextColor='rgba(255,255,255,0.5)'
-              value={this.state.amountString}
-              onChangeText={(amountString) => this.setState({ amountString })}
-              underlineColorAndroid={Colors.Transparent}
-              keyboardType='numeric'
+          <View style={styles.sendContainer}>
+            <Button
+              title='Send'
+              onPress={this.onSendPress}
+              enabled={this._validateSendData()}
+              style={styles.sendButton}
             />
           </View>
 
-          <View style={styles.amountCurrencyContainer}>
-            <Text style={styles.amountCurrency}>{wallet.currency}</Text>
-          </View>
-        </View>
-
-
-        <View style={styles.toContainer}>
-          <View style={styles.toTextContainer}>
-            <Text style={styles.toText}>To</Text>
-          </View>
-
-          <View style={styles.ethAddressBoxContainer}>
-            <TextInput
-              style={[styles.baseTextInput, styles.ethTextInput]}
-              placeholder='Enter ETH address'
-              placeholderTextColor='rgba(255,255,255,0.5)'
-              value={this.state.toEthAddress}
-              onChangeText={(toEthAddress) => this.setState({ toEthAddress })}
-              underlineColorAndroid={Colors.Transparent}
-            />
-          </View>
-
-          <View style={styles.qrCodeContainer}>
-            <Image
-              style={styles.qrLogo}
-              source={Images.qrColor}
-              resizeMode="cover"/>
-          </View>
-
-        </View>
-
-
-        <View style={styles.noteContainer}>
-          <View style={styles.noteTextContainer}>
-            <Text style={styles.noteText}>Note</Text>
-          </View>
-
-          <View style={styles.noteBoxContainer}>
-            <TextInput
-              style={[styles.baseTextInput, styles.descriptionTextInput]}
-              placeholder='Optional message...'
-              placeholderTextColor='rgba(255,255,255,0.5)'
-              value={this.state.message}
-              onChangeText={(message) => this.setState({ message })}
-              underlineColorAndroid={Colors.Transparent}
-              multiline={true}
-            />
-          </View>
-        </View>
-
-        <View style={styles.calculatedEmptyContainer}>
-          <View style={styles.empty}>
-            <Text> </Text>
-          </View>
-
-          <View style={styles.calculatedContainer}>
-            <View style={styles.calculatedTextContainer}>
-              <Text style={styles.CalculatedText}>Send Amount:</Text>
-              <Text style={styles.CalculatedText}>Transfer Fee:</Text>
-            </View>
-
-            <View style={styles.calculatedNumberContainer}>
-              <Text style={styles.CalculatedText}>{this._parseAmount()}</Text>
-              <Text style={styles.CalculatedText}>{this.state.fee}</Text>
-            </View>
-
-            <View style={styles.calculatedCurrencyContainer}>
-              <Text style={styles.CalculatedText}>{wallet.currency}</Text>
-              <Text style={styles.CalculatedText}>{wallet.currency}</Text>
-            </View>
-          </View>
-        </View>
-
-        <View style={styles.sendContainer}>
-          <Button
-            title='Send'
-            onPress={this.onSendPress}
-            enabled={this._validateSendData()}
-            style={styles.sendButton}
-          />
-        </View>
-
+        </ScrollView>
       </View>
     );
   }
