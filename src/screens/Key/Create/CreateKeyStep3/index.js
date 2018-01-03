@@ -12,6 +12,7 @@ import { Dialog } from 'react-native-simple-dialogs';
 
 import { Dimensions, } from 'react-native';
 import Colors from '../../../../global/Colors';
+import Screens from '../../../../global/Screens';
 
 var { height, width } = Dimensions.get('window');
 
@@ -49,6 +50,11 @@ export default class CreateKeyStep3 extends Component {
       //   this.ShowAlertDialog();
       //   this.setState({ dialogVisible: true });
       // }
+      if(this.state.currIndex === 8)
+      {  
+        this.ShowAlertDialog();
+        this.setState({ dialogVisible: true });
+      }
     }
   };
 
@@ -109,16 +115,16 @@ export default class CreateKeyStep3 extends Component {
         return (
           Alert.alert(
             // This is Alert Dialog Title
-            'Delete Private Key',
+            'Save Private Key',
 
             // This is Alert Dialog Message.
-            'Are you sure that you want to stop creating this private key?',
+            'Are you sure that you write down your private key?',
             [
               // First Text Button in Alert Dialog.
               { text: 'Cancel', onPress: () => this.cancelAlertDialouge(), style: 'cancel' },
 
               // Second Cancel Button in Alert Dialog.
-              { text: 'Delete Key', onPress: () => this.deleteKey(), },
+              { text: 'Continue', onPress: () => this.deleteKey(), },
             ]
           ));
       }
@@ -156,8 +162,9 @@ export default class CreateKeyStep3 extends Component {
   }
 
   deleteKey() {
-    alert('Key Deleted');
-    this.setState({ dialogVisible: false, currIndex: 1 });
+   // alert('Key Created');
+    this.props.navigator.push(Screens.CREATE_KEY_SUCCESS_SCREEN);
+   // this.setState({ dialogVisible: false, currIndex: 1 });
   }
 
   onBackButtonPressed() {

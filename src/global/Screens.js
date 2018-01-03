@@ -128,9 +128,11 @@ export default {
     screen: 'Pangea.WalletListScreen',
     label: 'List',
   },
-
-  VarifyKeyStep3: {
-    screen: 'Pangea.VarifyKeyStep3',
-    label: 'Recieve Money',
+  CREATE_KEY_SUCCESS_SCREEN: {
+    screen: 'Pangea.CreateKeySuccessScreen',
+    title: 'Create Private Key',
+    backButtonTitle: 'Cancel',
+    navigatorStyle,
   },
+  
 };

@@ -18,6 +18,7 @@ import NationsScreen from './NationsScreen';
 import ProfileScreen from './ProfileScreen';
 import NationDetailsScreen from './NationDetailsContainer';
 import Screens from '../global/Screens';
+import CreateKeySuccessScreen from './Key/Create/CreateKeySuccessScreen';
 
 export function registerScreens(store, Provider) {
 
@@ -39,5 +40,6 @@ export function registerScreens(store, Provider) {
     Navigation.registerComponent(Screens.RECEIVE_MONEY_SCREEN.screen, () => ReceiveMoneyScreen, store, Provider);
     Navigation.registerComponent(Screens.WALLET_LIST_SCREEN.screen, () => WalletListScreen, store, Provider);
     Navigation.registerComponent(Screens.NATION_DETAILS_SCREEN.screen, () => NationDetailsScreen, store, Provider);
+    Navigation.registerComponent(Screens.CREATE_KEY_SUCCESS_SCREEN.screen, () => CreateKeySuccessScreen, store, Provider);
 
 }
