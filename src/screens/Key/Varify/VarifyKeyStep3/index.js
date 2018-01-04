@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {
-  ListView, Text, Image, Button, TextInput,
-  View, TouchableOpacityn, Alert, Platform, TouchableOpacity
+  ListView, Text, Image, Button, TextInput, View, Alert, Platform, TouchableOpacity, ScrollView
 } from 'react-native';
 import PropTypes from 'prop-types';
 import EnterPrivateKeyRow from '../../../../components/EnterPrivateKeyRow';

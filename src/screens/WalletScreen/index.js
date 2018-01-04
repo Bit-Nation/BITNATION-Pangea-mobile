@@ -1,81 +1,65 @@
 import React, { Component } from 'react';
 import {
-  Text, Image, FlatList, Button, ListItem,
-  View, TouchableOpacity
+  View
 } from 'react-native';
-import styles from './styles';
+import { connect } from 'react-redux';
+import _ from 'lodash';
+
 import Background from '../../components/common/BackgroundImage';
-import Images from '../../global/AssetsImages';
-import MessageView from '../../components/common/MessageView';
 import Screens from '../../global/Screens';
-import FakeNavigationBar from '../../components/common/FakeNavigationBar';
+import List from './List';
+import EmptyWalletScreen from './EmptyState/index';
+import { selectWallet } from '../../actions/wallet';
 
-export default class WalletScreen extends Component {
+class WalletScreen extends Component {
 
-  constructor(props) {
-    super(props);
-    this.createWallet = this.createWallet.bind(this);
-    this.restoreWallet = this.restoreWallet.bind(this);
-  }
-
-
-  Variables = [
-    heading1 = 'Create a Wallet',
-    discp1 = 'A wallet is a small, flat case that can be used to carry such personal items as cash, credit cards, and identification documents (driver\'s license, identification card, club card, etc.',
-    heading2 = 'Restore a Wallet',
-    discp2 = 'In addition to money or currency, a wallet would also be used for carrying dried meat, victuals, treasures, and things not to be exposed. Wallets originally were used by early Industrial Americans',
-  ];
-
-  items = ['Simon Mignolet', 'Nathaniel Clyne', 'Dejan Lovren', 'Mama Sakho', 'Emre Can'];
-
-  createWallet() {
+  createWallet = () => {
     this.props.navigator.push(Screens.CREATE_KEY_SCREEN_STEP_1);
   };
 
-  restoreWallet() {
+  restoreWallet = () => {
     this.props.navigator.push(Screens.VERIFY_KEY_SCREEN_STEP_1);
-  }
+  };
 
-  renderWalletDiscription(heading, discp, onClick) {
-    return (
-      <View style={styles.cardMain}>
-        <Text style={styles.discpHeading}>{heading}</Text>
-        <Text style={styles.discpText}>{discp}</Text>
-        <TouchableOpacity style={{ alignItems: 'center' }} onPress={onClick}>
-          <View style={styles.discpButton}>
-            <Text style={styles.discpButtonText}>{heading}</Text>
-          </View>
-        </TouchableOpacity>
-      </View>
-    );
-  }
+  sendMoney = (wallet) => {
+    this.props.selectWallet(wallet);
+    this.props.navigator.push(Screens.SEND_MONEY_SCREEN);
+  };
+
+  receiveMoney = (wallet) => {
+    this.props.selectWallet(wallet);
+    this.props.navigator.push(Screens.RECEIVE_MONEY_SCREEN);
+  };
 
   render() {
     return (
-      <View>
+      <View style={{ flex: 1 }}>
         <Background/>
-        <FakeNavigationBar/>
-        {/* {this.renderWalletDiscription(this.Variables[0], this.Variables[1],this.createWallet)} */}
-        <View style={styles.cardContainer}>
-          <View style={[styles.card, styles.firstCard]}>
-            <MessageView
-              title={this.Variables[0]}
-              messageText={this.Variables[1]}
-              buttonTitle='Create a Wallet'
-              onButtonClick={this.createWallet}
-            />
-          </View>
-
-          <View style={styles.card}>
-            <MessageView
-              title={this.Variables[2]}
-              messageText={this.Variables[3]}
-              buttonTitle='Restore a Wallet'
-              onButtonClick={this.restoreWallet}
-            />
-          </View>
-        </View>
+        {_.isEmpty(this.props.wallets) ?
+          <EmptyWalletScreen
+            onCreateWallet={this.createWallet}
+            onRestoreWallet={this.restoreWallet}
+          />
+          :
+          <List
+            {...this.props}
+            onSendPress={this.sendMoney}
+            onReceivePress={this.receiveMoney}
+          />
+        }
       </View>
     );
   }
 }
+
+const mapStateToProps = state => ({
+  ...state.wallet
+});
+
+const mapDispatchToProps = dispatch => ({
+  selectWallet(wallet) {
+    dispatch(selectWallet(wallet));
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(WalletScreen);

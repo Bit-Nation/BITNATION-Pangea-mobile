@@ -45,6 +45,8 @@ module.exports = {
   getBitNationLightBlue,
   titleColor: '#4A90E2',
   buttonColor: '#1C497E',
+  disabledButtonColor: '#37393C',
+  disabledButtonTitleColor: '#5F6D7D',
   borderColor: '#275284',
   navigationColor: '#007AFF',
 

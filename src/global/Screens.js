@@ -118,6 +118,16 @@ export default {
   },
   INTRO_SCREEN: {
     screen: 'Pangea.Intro',
-    hiddenNavigatorStyle,
+    navigatorStyle: hiddenNavigatorStyle,
+  },
+  RECEIVE_MONEY_SCREEN: {
+    screen: 'Pangea.ReceiveMoneyScreen',
+    title: 'Receive Money',
+    navigatorStyle,
+  },
+  SEND_MONEY_SCREEN: {
+    screen: 'Pangea.SendMoneyScreen',
+    title: 'Send money',
+    navigatorStyle,
   },
 };

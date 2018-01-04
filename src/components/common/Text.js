@@ -15,6 +15,7 @@ export default class _Text extends React.Component {
           props.messageTitle && styles.messageTitle,
           props.messageText && styles.messageText,
           props.buttonTitle && styles.buttonTitle,
+          props.disabledButtonTitle && styles.disabledButtonTitle,
           style,
         ]}
         {...props}>
@@ -46,5 +47,12 @@ const styles = MediaQueryStyleSheet.create({
     letterSpacing: -0.02,
     lineHeight: 19,
     textAlign: 'center',
-  }
+  },
+  disabledButtonTitle: {
+    fontSize: 14,
+    color: Colors.disabledButtonTitleColor,
+    letterSpacing: -0.02,
+    lineHeight: 19,
+    textAlign: 'center',
+  },
 });
