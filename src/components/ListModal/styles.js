@@ -55,7 +55,7 @@ const styles = MediaQueryStyleSheet.create(
             backgroundColor:Colors.BitnationBlue,
             marginBottom: '5%',
             marginLeft:'5%',
-            borderRadius:8,
+            borderRadius:4,
 
         },
 

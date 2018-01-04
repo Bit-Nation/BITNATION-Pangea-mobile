@@ -7,18 +7,22 @@ var {height, width} = Dimensions.get('window');
 const styles = MediaQueryStyleSheet.create(
   {
 
+    scrollContainer: {
+        paddingTop: 20,
+        backgroundColor: Colors.background
+      
+
+    },
+
     containerList: {
         flex: 1,
         flexDirection: 'row',
         //alignItems: 'center',
-
       },
       listName: {
           marginRight:'10%',
           width:'80%',
           justifyContent:'center',
- 
-
       },
       text: {
         marginLeft: '3%',
@@ -55,12 +59,12 @@ const styles = MediaQueryStyleSheet.create(
     container: {
       flexDirection:'column',
       flex:1,
+      paddingTop:20,
 
     },
     backImage : {
         position: 'absolute',
         zIndex:-1,
-
     },
     firstContainer:
     {
@@ -74,7 +78,7 @@ const styles = MediaQueryStyleSheet.create(
     //Nation, Wallet
     NWContainer:
     {
-        flex:1,
+        flex:1.2,
         flexDirection:'column',
         marginRight:'1.7%',
 
@@ -84,7 +88,7 @@ const styles = MediaQueryStyleSheet.create(
         backgroundColor:Colors.BitnationBlue,
         marginBottom: '5%',
         marginLeft:'5%',
-        borderRadius:8,
+      //  borderRadius:3,
 
     },
 
@@ -95,7 +99,7 @@ const styles = MediaQueryStyleSheet.create(
         backgroundColor:Colors.BitnationBlue,
         marginBottom: '1%',
         marginLeft:'5%',
-        borderRadius:6
+    //    borderRadius:4
 
     },
 
@@ -124,7 +128,7 @@ const styles = MediaQueryStyleSheet.create(
         flexDirection:'row',
         backgroundColor:Colors.BitnationBlue,
         marginRight:'2%',
-        borderRadius:8
+        borderRadius:4
 
     },
 
@@ -139,7 +143,7 @@ const styles = MediaQueryStyleSheet.create(
     chatContainer: {
         flex:1.5,
         backgroundColor:Colors.BitnationBlue,
-        borderRadius:6,
+        borderRadius:4,
         marginLeft:'2%',
         marginRight:'2%',
         marginBottom:'2%'
@@ -177,7 +181,7 @@ const styles = MediaQueryStyleSheet.create(
     contractsContainer:{
         flex:1,
         backgroundColor:Colors.BitnationBlue,
-        borderRadius:6,
+        borderRadius:4,
         marginRight:'2%',
         marginBottom:'2%'
 
@@ -187,7 +191,7 @@ const styles = MediaQueryStyleSheet.create(
     secondContainer: {
         flex:1,
         backgroundColor:Colors.BitnationBlue,
-        borderRadius:8,
+        borderRadius:4,
         paddingRight:'4%',
         paddingLeft:'4%',
         paddingTop:'3%',
