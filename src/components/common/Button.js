@@ -43,7 +43,7 @@ export default class Button extends Component {
 }
 
 Button.propTypes = {
-  enabled: PropTypes.boolean
+  enabled: PropTypes.bool
 };
 
 Button.defaultProps = {
