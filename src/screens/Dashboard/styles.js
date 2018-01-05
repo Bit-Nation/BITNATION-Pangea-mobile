@@ -143,12 +143,10 @@ const styles = MediaQueryStyleSheet.create(
     chatContainer: {
         flex:1.5,
         backgroundColor:Colors.BitnationBlue,
-        borderRadius:4,
+        borderRadius:5,
         marginLeft:'2%',
         marginRight:'2%',
         marginBottom:'2%'
-      
-
     },
     demo: {
         position:'absolute',
@@ -191,7 +189,7 @@ const styles = MediaQueryStyleSheet.create(
     secondContainer: {
         flex:1,
         backgroundColor:Colors.BitnationBlue,
-        borderRadius:4,
+        borderRadius:8,
         paddingRight:'4%',
         paddingLeft:'4%',
         paddingTop:'3%',
@@ -217,17 +215,15 @@ const styles = MediaQueryStyleSheet.create(
     },
     sImage: {
        
-        //backgroundColor: 'black'
-         //backgroundColor:'red'
-         //position:'absolute'
+        alignItems: 'center',
+        height:height*0.30,
+        width: width*0.90,
+        
     },
     secondImageContainer: {
-        //backgroundColor: Colors.Transparent,
-        marginTop:'5%',
-        marginLeft:'5%',
-        marginRight:'5%',
-       
-       // position:'absolute',
+       height:height*0.20,
+        width: width*.30,
+        paddingBottom:5,
 
      },
 
