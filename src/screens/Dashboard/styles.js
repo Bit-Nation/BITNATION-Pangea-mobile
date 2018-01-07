@@ -117,20 +117,7 @@ const styles = MediaQueryStyleSheet.create(
 
     listContainer: {
         flex:3
-    },
-    //Activity
-    ActivityContainer:
-    {
-        flex:1.5,
-        flexDirection:'row',
-        backgroundColor:Colors.BitnationBlue,
-        marginRight:'2%',
-        borderRadius:4
-
-    },
-
-
-    
+    },    
     ChatNationContainer: {
         flex:1,
         flexDirection:'row',
@@ -140,7 +127,7 @@ const styles = MediaQueryStyleSheet.create(
     chatContainer: {
         flex:1.5,
         backgroundColor:Colors.BitnationBlue,
-        borderRadius:5,
+        borderRadius:8,
         marginLeft:'2%',
         marginRight:'2%',
         marginBottom:'2%'
@@ -176,7 +163,7 @@ const styles = MediaQueryStyleSheet.create(
     contractsContainer:{
         flex:1,
         backgroundColor:Colors.BitnationBlue,
-        borderRadius:4,
+        borderRadius:8,
         marginRight:'2%',
         marginBottom:'2%'
 
@@ -213,12 +200,12 @@ const styles = MediaQueryStyleSheet.create(
     sImage: {
        
         alignItems: 'center',
-        height:height*0.30,
+        height:height*0.20,
         width: width*0.90,
         
     },
     secondImageContainer: {
-       height:height*0.20,
+       height:height*0.18,
         width: width*.30,
 
      },

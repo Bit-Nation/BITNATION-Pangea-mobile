@@ -17,7 +17,7 @@ const ListModal = (props) => {
                       }]}>
     
             <View style = {styles.textContainer}>
-            <Text style = {styles.text}>{props.title}</Text>
+            <Text style = {styles.textStyle}>{props.title}</Text>
             
             </View>
             <View style = {styles.listContainer}>  

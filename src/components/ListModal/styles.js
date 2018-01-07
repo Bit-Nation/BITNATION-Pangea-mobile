@@ -11,6 +11,12 @@ const styles = MediaQueryStyleSheet.create(
           width:'80%',
           justifyContent:'center',
       },
+      textStyle: {
+        color:'white',
+        fontWeight:'bold',
+        textAlign:'center',
+        marginTop:'1%'
+    },
       text: {
         marginLeft: '10%',
         fontSize: 16,
@@ -24,19 +30,12 @@ const styles = MediaQueryStyleSheet.create(
           flex:1,
           backgroundColor:'transparent',
       },
-      text: {
-        color:'white',
-        fontWeight:'bold',
-        textAlign:'center',
-        marginTop:'1%'
-    },
-
         container: {
             flex:1,
             backgroundColor:Colors.BitnationBlue,
             marginBottom: '5%',
             marginLeft:'5%',
-            borderRadius:10,
+            borderRadius:8,
 
         },
 
