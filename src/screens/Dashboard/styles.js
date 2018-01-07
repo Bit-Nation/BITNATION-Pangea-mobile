@@ -10,8 +10,6 @@ const styles = MediaQueryStyleSheet.create(
     scrollContainer: {
         paddingTop: 20,
         backgroundColor: Colors.background
-      
-
     },
 
     containerList: {
@@ -33,9 +31,7 @@ const styles = MediaQueryStyleSheet.create(
       },
 
       listIcon: {
-          
         justifyContent:'flex-start',
-
       },
       photo2: {
         height: 10,
@@ -110,6 +106,7 @@ const styles = MediaQueryStyleSheet.create(
     chatTextContainer :
     {
         flex:1,
+        backgroundColor:Colors.Transparent
     },
     chatsText: {
         color:'white',
@@ -223,7 +220,6 @@ const styles = MediaQueryStyleSheet.create(
     secondImageContainer: {
        height:height*0.20,
         width: width*.30,
-        paddingBottom:5,
 
      },
 

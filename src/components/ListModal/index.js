@@ -9,15 +9,15 @@ import Images from '../../global/AssetsImages';
 const ListModal = (props) => {
 
   return (
-    <View style = {[styles.cFlex,
+    <View style = {[styles.container,
                      {flex:props.flexNumber,
                       marginRight:props.marginRight*props.marginRight,
                       marginLeft:props.marginLeft*props.marginLeft,
                       marginBottom:props.marginBottom*props.marginBottom,
                       }]}>
     
-            <View style = {styles.chatTextContainer}>
-            <Text style = {styles.chatsText}>{props.title}</Text>
+            <View style = {styles.textContainer}>
+            <Text style = {styles.text}>{props.title}</Text>
             
             </View>
             <View style = {styles.listContainer}>  
