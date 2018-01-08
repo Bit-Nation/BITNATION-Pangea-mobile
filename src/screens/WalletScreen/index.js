@@ -14,21 +14,21 @@ import { selectWallet } from '../../actions/wallet';
 class WalletScreen extends Component {
 
   createWallet = () => {
-    this.props.navigator.push(Screens.CREATE_KEY_SCREEN_STEP_1);
+    this.props.navigator.push({ ...Screens.CREATE_KEY_SCREEN_STEP_1 });
   };
 
   restoreWallet = () => {
-    this.props.navigator.push(Screens.VERIFY_KEY_SCREEN_STEP_1);
+    this.props.navigator.push({ ...Screens.VERIFY_KEY_SCREEN_STEP_1 });
   };
 
   sendMoney = (wallet) => {
     this.props.selectWallet(wallet);
-    this.props.navigator.push(Screens.SEND_MONEY_SCREEN);
+    this.props.navigator.push({ ...Screens.SEND_MONEY_SCREEN });
   };
 
   receiveMoney = (wallet) => {
     this.props.selectWallet(wallet);
-    this.props.navigator.push(Screens.RECEIVE_MONEY_SCREEN);
+    this.props.navigator.push({ ...Screens.RECEIVE_MONEY_SCREEN });
   };
 
   render() {

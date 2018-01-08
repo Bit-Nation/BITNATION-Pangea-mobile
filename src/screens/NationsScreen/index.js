@@ -24,9 +24,7 @@ class NationsScreen extends Component {
 
     this.props.openNation(id);
 
-    this.props.navigator.push({
-      ...Screens.NATION_DETAILS_SCREEN,
-    });
+    this.props.navigator.push({ ...Screens.NATION_DETAILS_SCREEN });
   };
 
 }

@@ -12,11 +12,13 @@ import { Dialog } from 'react-native-simple-dialogs';
 
 import { Dimensions, } from 'react-native';
 import Colors from '../../../../global/Colors';
-import Screens from '../../../../global/Screens';
+import Screens, { androidNavigationButtons } from '../../../../global/Screens';
 
 var { height, width } = Dimensions.get('window');
 
 export default class CreateKeyStep3 extends Component {
+
+  static navigatorButtons = { ...androidNavigationButtons };
 
   state = {
     currIndex: 1,
@@ -162,9 +164,9 @@ export default class CreateKeyStep3 extends Component {
   }
 
   deleteKey() {
-   // alert('Key Created');
-    this.props.navigator.push(Screens.CREATE_KEY_SUCCESS_SCREEN);
-   // this.setState({ dialogVisible: false, currIndex: 1 });
+    // alert('Key Created');
+    this.props.navigator.push({ ...Screens.CREATE_KEY_SUCCESS_SCREEN });
+    // this.setState({ dialogVisible: false, currIndex: 1 });
   }
 
   onBackButtonPressed() {

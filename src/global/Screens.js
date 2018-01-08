@@ -14,6 +14,13 @@ export const appStyle = {
   ...tabsStyle
 };
 
+export const androidNavigationButtons = Platform.OS === 'android' ? {
+  leftButtons: [{
+    id: 'back',
+    buttonColor: Colors.white,
+  }],
+} : {};
+
 export const navigatorStyle = {
   statusBarTextColorScheme: 'light',
   statusBarColor: Platform.OS === 'ios' ? 'transparent' : 'black',

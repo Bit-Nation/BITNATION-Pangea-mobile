@@ -12,17 +12,19 @@ import { Dialog } from 'react-native-simple-dialogs';
 
 import { Dimensions, } from 'react-native';
 import Colors from '../../../../global/Colors';
-import Screens from '../../../../global/Screens';
+import Screens, { androidNavigationButtons } from '../../../../global/Screens';
 
 var { height, width } = Dimensions.get('window');
 
 export default class CreateKeyStep2 extends Component {
 
+  static navigatorButtons = { ...androidNavigationButtons };
+
   instruction = 'We will show you a group of 24 words that is the private key that unlocks your wallet.';
   instructionDetails = 'Write the words on paper, in order. Store the paper in very safe place. If your device is lost, stolen, broken, or upgraded, you must have this key to restore or unlock your wallet.';
 
   onNextButtonPressed() {
-    this.props.navigator.push(Screens.CREATE_KEY_SCREEN_STEP_3);
+    this.props.navigator.push({ ...Screens.CREATE_KEY_SCREEN_STEP_3 });
   }
 
   render() {

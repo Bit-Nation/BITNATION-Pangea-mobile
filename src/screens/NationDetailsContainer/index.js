@@ -4,8 +4,11 @@ import { connect } from 'react-redux';
 
 import NationDetailsScreen from './NationDetailsScreen';
 import { switchNationTab, openNation } from '../../actions/nations';
+import { androidNavigationButtons } from '../../global/Screens';
 
 class NationDetailsContainer extends Component {
+
+  static navigatorButtons = { ...androidNavigationButtons }
 
   render() {
     return (

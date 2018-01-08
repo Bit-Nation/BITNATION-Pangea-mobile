@@ -18,8 +18,11 @@ import BackgroundImage from '../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import { resolveWallet } from '../../../utils/wallet';
 import { sendMoney } from '../../../actions/wallet';
+import { androidNavigationButtons } from '../../../global/Screens';
 
 class SendMoney extends Component {
+
+  static navigatorButtons = { ...androidNavigationButtons };
 
   constructor(props) {
     super(props);
