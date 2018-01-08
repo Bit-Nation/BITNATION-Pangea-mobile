@@ -9,43 +9,21 @@ const styles = MediaQueryStyleSheet.create(
       flexDirection: 'column',
       flex: 1,
     },
-    backgroundImage: {
-      width: '100%',
-      position: 'absolute',
-    },
-
-    header: {
-      backgroundColor: Colors.Transparent,
-    },
-    cancel: {
-      color: Colors.Blue
-    },
-    next: {
-      color: Colors.Blue,
-    },
-    title: {
-      color: Colors.Background,
-      fontSize: 30,
-      fontWeight: 'bold',
-      marginLeft: '3%',
-      backgroundColor: Colors.Transparent,
-    },
     wholeText: {
       margin: '3%',
       marginTop: '8%',
       marginRight: '2%'
     },
     description: {
-      color: Colors.Blue,
-      fontSize: 16,
+      textAlign: 'left',
       marginBottom: '6%',
-      backgroundColor: Colors.Transparent,
     },
     buttonContainer: {
+      flex: 1,
       flexDirection: 'row',
       justifyContent: 'center',
-      alignItems: 'center',
-      marginTop: '55%',
+      alignItems: 'flex-end',
+      marginBottom: 40,
     },
 
   });
