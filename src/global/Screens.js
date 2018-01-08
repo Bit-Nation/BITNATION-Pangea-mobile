@@ -132,8 +132,8 @@ export default {
     navigatorStyle,
   },
   VERIFY_KEY_SUCCESS_SCREEN: {
-    screen: 'Pangea.VarifyKeySuccess',
-    title: 'Varify Private Key',
+    screen: 'Pangea.VerifyKeySuccess',
+    title: 'Verify Private Key',
     backButtonTitle: 'Cancel',
     navigatorStyle,
   },
