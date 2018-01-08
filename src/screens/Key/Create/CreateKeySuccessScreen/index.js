@@ -19,7 +19,7 @@ import Button from '../../../../components/common/Button';
 class CreateKeySuccessScreen extends Component {
 
   onNextButtonPressed() {
-    this.props.navigator.push(Screens.WALLET_LIST_SCREEN);
+    this.props.navigator.popToRoot();
   }
 
   onCancelButtonPressed() {
