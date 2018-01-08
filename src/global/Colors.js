@@ -1,6 +1,7 @@
 /*!
  * Theme colours
  */
+import { Platform } from 'react-native';
 
 getBitNationBlue = (alpha) => {
   return 'rgba(188, 220, 255, ' + alpha + ')';
@@ -49,7 +50,7 @@ module.exports = {
   disabledButtonTitleColor: '#5F6D7D',
   borderColor: '#275284',
   navigationColor: '#007AFF',
-
+  navigationButtonColor: Platform.OS === 'ios' ? '#007AFF' : '#FFFFFF',
 
   textColor: "#444A64",
   textPlaceholder: "#9B9B9B",
