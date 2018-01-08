@@ -11,12 +11,11 @@ export default class MessageView extends Component {
 
   render() {
 
-    const { style, children } = this.props;
+    const { style, renderBottom, renderAdditionalInfo, children } = this.props;
 
     return (
       <View style={[styles.messageView, style]}>
         <View style={styles.messageContainer}>
-
           {children}
           {
             this.props.title &&
@@ -30,10 +29,12 @@ export default class MessageView extends Component {
               {this.props.messageText}
             </Text>
           }
+          {renderAdditionalInfo && renderAdditionalInfo()}
           {
             this.props.onButtonClick &&
             <Button style={styles.button} title={this.props.buttonTitle} onPress={this.props.onButtonClick}/>
           }
+          {renderBottom && renderBottom()}
         </View>
       </View>
     );

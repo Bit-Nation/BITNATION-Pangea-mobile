@@ -57,3 +57,5 @@ buck-out/
 */fastlane/screenshots
 
 .env
+yarn.lock
+src.zip

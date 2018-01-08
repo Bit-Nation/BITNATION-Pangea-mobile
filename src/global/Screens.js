@@ -118,15 +118,12 @@ export default {
   },
   INTRO_SCREEN: {
     screen: 'Pangea.Intro',
-    hiddenNavigatorStyle,
+    navigatorStyle: hiddenNavigatorStyle,
   },
   RECEIVE_MONEY_SCREEN: {
     screen: 'Pangea.ReceiveMoneyScreen',
-    label: 'Recieve Money',
-  },
-  WALLET_LIST_SCREEN: {
-    screen: 'Pangea.WalletListScreen',
-    label: 'List',
+    title: 'Receive Money',
+    navigatorStyle,
   },
   CREATE_KEY_SUCCESS_SCREEN: {
     screen: 'Pangea.CreateKeySuccessScreen',
@@ -134,11 +131,15 @@ export default {
     backButtonTitle: 'Cancel',
     navigatorStyle,
   },
-
   VERIFY_KEY_SUCCESS_SCREEN: {
     screen: 'Pangea.VarifyKeySuccess',
     title: 'Varify Private Key',
     backButtonTitle: 'Cancel',
+    navigatorStyle,
+  },
+  SEND_MONEY_SCREEN: {
+    screen: 'Pangea.SendMoneyScreen',
+    title: 'Send money',
     navigatorStyle,
   },
   
