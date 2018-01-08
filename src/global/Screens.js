@@ -110,12 +110,6 @@ export default {
     backButtonTitle: 'Back',
     navigatorStyle,
   },
-  VERIFY_KEY_SCREEN_STEP_3: {
-    screen: 'Pangea.VerifyKeyStep3',
-    title: 'Verify Private Key',
-    backButtonTitle: 'Back',
-    navigatorStyle,
-  },
   INTRO_SCREEN: {
     screen: 'Pangea.Intro',
     navigatorStyle: hiddenNavigatorStyle,

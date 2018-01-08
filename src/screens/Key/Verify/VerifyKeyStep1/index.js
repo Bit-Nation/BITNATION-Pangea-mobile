@@ -19,7 +19,7 @@ import Button from '../../../../components/common/Button';
 class VerifyKeyStep1 extends Component {
 
   onNextButtonPressed() {
-    this.props.navigator.push(Screens.VERIFY_KEY_SCREEN_STEP_3);
+    this.props.navigator.push(Screens.VERIFY_KEY_SCREEN_STEP_2);
   }
 
   onCancelButtonPressed() {
