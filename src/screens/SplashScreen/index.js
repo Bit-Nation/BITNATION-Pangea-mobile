@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 import Images from '../../global/AssetsImages';
 import styles from './styles';
-import Screens from '../../global/Screens';
+import { screen } from '../../global/Screens';
 
 class SplashScreen extends Component {
   componentWillMount() {

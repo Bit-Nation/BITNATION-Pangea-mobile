@@ -8,7 +8,7 @@ import BackgroundScreen from '../../../../components/BackgroundScreen';
 import Header from '../../../../components/Header';
 import { Dialog } from 'react-native-simple-dialogs';
 import styles from './styles';
-import Screens, { androidNavigationButtons } from '../../../../global/Screens';
+import { screen, androidNavigationButtons } from '../../../../global/Screens';
 import { Dimensions, } from 'react-native';
 import Colors from '../../../../global/Colors';
 
@@ -158,7 +158,7 @@ export default class EnterPrivateKeyScreen extends Component {
     this.state.rowDisabled[7] = false;
 
     this.setState({ dialogVisible: false, currIndex: 1 });
-    this.props.navigator.push({ ...Screens.VERIFY_KEY_SUCCESS_SCREEN });
+    this.props.navigator.push(screen('VERIFY_KEY_SUCCESS_SCREEN'));
   }
 
   onBackButtonPressed() {

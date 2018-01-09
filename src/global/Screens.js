@@ -43,7 +43,7 @@ export const hiddenNavigatorStyle = {
   rootBackgroundImageName: 'background',
 };
 
-export default {
+const Screens = {
   SPLASH_SCREEN: {
     screen: 'Pangea.SplashScreen',
     title: 'Splash',
@@ -143,5 +143,9 @@ export default {
     title: 'Send money',
     navigatorStyle,
   },
-  
+
 };
+
+export function screen(name) {
+  return { ...Screens[name] };
+}

@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import styles from './styles';
-import Screens, { androidNavigationButtons } from '../../../../global/Screens';
+import { screen, androidNavigationButtons } from '../../../../global/Screens';
 import Button from '../../../../components/common/Button';
 import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
 import BackgroundImage from '../../../../components/common/BackgroundImage';
@@ -17,7 +17,7 @@ class VerifyKeyStep1 extends Component {
   static navigatorButtons = { ...androidNavigationButtons };
 
   onNextButtonPressed() {
-    this.props.navigator.push({ ...Screens.VERIFY_KEY_SCREEN_STEP_2 });
+    this.props.navigator.push(screen('VERIFY_KEY_SCREEN_STEP_2'));
   }
 
   render() {

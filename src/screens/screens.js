@@ -17,27 +17,27 @@ import ChatScreen from './ChatScreen';
 import NationsScreen from './NationsScreen';
 import ProfileScreen from './ProfileScreen';
 import NationDetailsScreen from './NationDetailsContainer';
-import Screens from '../global/Screens';
+import { screen } from '../global/Screens';
 
 export function registerScreens(store, Provider) {
 
-  Navigation.registerComponent(Screens.CREATE_KEY_SCREEN_STEP_1.screen, () => CreateKeyStep1, store, Provider);
-  Navigation.registerComponent(Screens.CREATE_KEY_SCREEN_STEP_2.screen, () => CreateKeyStep2, store, Provider);
-  Navigation.registerComponent(Screens.CREATE_KEY_SCREEN_STEP_3.screen, () => CreateKeyStep3, store, Provider);
-  Navigation.registerComponent(Screens.CREATE_KEY_SUCCESS_SCREEN.screen, () => CreateKeySuccessScreen, store, Provider);
-  Navigation.registerComponent(Screens.VERIFY_KEY_SCREEN_STEP_1.screen, () => VerifyKeyStep1, store, Provider);
-  Navigation.registerComponent(Screens.VERIFY_KEY_SCREEN_STEP_2.screen, () => VerifyKeyStep2, store, Provider);
-  Navigation.registerComponent(Screens.VERIFY_KEY_SUCCESS_SCREEN.screen, () => VerifyKeySuccess, store, Provider);
-  Navigation.registerComponent(Screens.INTRO_SCREEN.screen, () => Intro, store, Provider);
-  Navigation.registerComponent(Screens.DASHBOARD_SCREEN.screen, () => Dashboard, store, Provider);
-  Navigation.registerComponent(Screens.SPLASH_SCREEN.screen, () => SplashScreen, store, Provider);
-  Navigation.registerComponent(Screens.CHAT_SCREEN.screen, () => ChatScreen, store, Provider);
-  Navigation.registerComponent(Screens.NATIONS_SCREEN.screen, () => NationsScreen, store, Provider);
-  Navigation.registerComponent(Screens.NATION_DETAILS_SCREEN.screen, () => NationDetailsScreen, store, Provider);
-  Navigation.registerComponent(Screens.WALLET_SCREEN.screen, () => WalletScreen, store, Provider);
-  Navigation.registerComponent(Screens.PROFILE_SCREEN.screen, () => ProfileScreen, store, Provider);
-  Navigation.registerComponent(Screens.RECEIVE_MONEY_SCREEN.screen, () => ReceiveMoneyScreen, store, Provider);
-  Navigation.registerComponent(Screens.SEND_MONEY_SCREEN.screen, () => SendMoney, store, Provider);
+  Navigation.registerComponent(screen('CREATE_KEY_SCREEN_STEP_1').screen, () => CreateKeyStep1, store, Provider);
+  Navigation.registerComponent(screen('CREATE_KEY_SCREEN_STEP_2').screen, () => CreateKeyStep2, store, Provider);
+  Navigation.registerComponent(screen('CREATE_KEY_SCREEN_STEP_3').screen, () => CreateKeyStep3, store, Provider);
+  Navigation.registerComponent(screen('CREATE_KEY_SUCCESS_SCREEN').screen, () => CreateKeySuccessScreen, store, Provider);
+  Navigation.registerComponent(screen('VERIFY_KEY_SCREEN_STEP_1').screen, () => VerifyKeyStep1, store, Provider);
+  Navigation.registerComponent(screen('VERIFY_KEY_SCREEN_STEP_2').screen, () => VerifyKeyStep2, store, Provider);
+  Navigation.registerComponent(screen('VERIFY_KEY_SUCCESS_SCREEN').screen, () => VerifyKeySuccess, store, Provider);
+  Navigation.registerComponent(screen('INTRO_SCREEN').screen, () => Intro, store, Provider);
+  Navigation.registerComponent(screen('DASHBOARD_SCREEN').screen, () => Dashboard, store, Provider);
+  Navigation.registerComponent(screen('SPLASH_SCREEN').screen, () => SplashScreen, store, Provider);
+  Navigation.registerComponent(screen('CHAT_SCREEN').screen, () => ChatScreen, store, Provider);
+  Navigation.registerComponent(screen('NATIONS_SCREEN').screen, () => NationsScreen, store, Provider);
+  Navigation.registerComponent(screen('NATION_DETAILS_SCREEN').screen, () => NationDetailsScreen, store, Provider);
+  Navigation.registerComponent(screen('WALLET_SCREEN').screen, () => WalletScreen, store, Provider);
+  Navigation.registerComponent(screen('PROFILE_SCREEN').screen, () => ProfileScreen, store, Provider);
+  Navigation.registerComponent(screen('RECEIVE_MONEY_SCREEN').screen, () => ReceiveMoneyScreen, store, Provider);
+  Navigation.registerComponent(screen('SEND_MONEY_SCREEN').screen, () => SendMoney, store, Provider);
 
 
 }

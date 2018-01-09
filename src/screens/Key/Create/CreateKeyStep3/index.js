@@ -12,7 +12,7 @@ import { Dialog } from 'react-native-simple-dialogs';
 
 import { Dimensions, } from 'react-native';
 import Colors from '../../../../global/Colors';
-import Screens, { androidNavigationButtons } from '../../../../global/Screens';
+import { screen, androidNavigationButtons } from '../../../../global/Screens';
 
 var { height, width } = Dimensions.get('window');
 
@@ -165,7 +165,7 @@ export default class CreateKeyStep3 extends Component {
 
   deleteKey() {
     // alert('Key Created');
-    this.props.navigator.push({ ...Screens.CREATE_KEY_SUCCESS_SCREEN });
+    this.props.navigator.push(screen('CREATE_KEY_SUCCESS_SCREEN'));
     // this.setState({ dialogVisible: false, currIndex: 1 });
   }
 

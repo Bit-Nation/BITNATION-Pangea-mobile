@@ -13,7 +13,6 @@ import Images from '../../../../global/AssetsImages';
 import styles from './styles';
 import Colors from '../../../../global/Colors';
 import Header from '../../../../components/Header';
-import Screens from '../../../../global/Screens';
 import Button from '../../../../components/common/Button';
 
 class VarifyKeySuccess extends Component {

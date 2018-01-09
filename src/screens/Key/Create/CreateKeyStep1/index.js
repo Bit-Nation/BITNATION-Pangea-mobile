@@ -13,7 +13,7 @@ import Images from '../../../../global/AssetsImages';
 import styles from './styles';
 import Colors from '../../../../global/Colors';
 import Header from '../../../../components/Header';
-import Screens, { androidNavigationButtons } from '../../../../global/Screens';
+import { screen, androidNavigationButtons } from '../../../../global/Screens';
 import Button from '../../../../components/common/Button';
 
 class CreateKeyStep1 extends Component {
@@ -21,7 +21,7 @@ class CreateKeyStep1 extends Component {
   static navigatorButtons = { ...androidNavigationButtons };
 
   onNextButtonPressed() {
-    this.props.navigator.push({ ...Screens.CREATE_KEY_SCREEN_STEP_2 });
+    this.props.navigator.push(screen('CREATE_KEY_SCREEN_STEP_2'));
   }
 
   onCancelButtonPressed() {
