@@ -17,7 +17,11 @@ export class GridView extends Component {
   _renderRows(count) {
     return _.map(_.range(0, count), (index) => {
       return (
-        <View style={[styles.row, (index > 0) && { marginTop: 14, }]} key={index}>
+        <View style={[
+          styles.row,
+          (index > 0) && styles.rowMargin,
+          this.props.disableInactiveRows && this.props.activeRow !== index && styles.rowInactive
+        ]} key={index}>
           {
             this._renderItems(index * this.props.itemsPerRow, this.props.itemsPerRow)
           }
@@ -42,6 +46,7 @@ GridView.propTypes = {
   rowsCount: PropTypes.number,
   itemsPerRow: PropTypes.number,
   disableInactiveRows: PropTypes.bool,
+  activeRow: PropTypes.number,
   renderItem: PropTypes.func,
 };
 

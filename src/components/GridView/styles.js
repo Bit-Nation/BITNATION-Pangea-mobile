@@ -10,5 +10,11 @@ export default styles = StyleSheet.create({
     alignItems: 'center',
     flex: 1,
   },
+  rowMargin: {
+    marginTop: 14,
+  },
+  rowInactive: {
+    opacity: 0.1,
+  }
 
 });
