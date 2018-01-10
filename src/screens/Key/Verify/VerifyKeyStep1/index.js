@@ -3,7 +3,6 @@ import {
   View,
 } from 'react-native';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
 import styles from './styles';
 import { screen } from '../../../../global/Screens';
@@ -66,10 +65,4 @@ VerifyKeyStep1.propTypes = {};
 
 VerifyKeyStep1.defaultProps = {};
 
-const mapStateToProps = state => ({
-  ...state,
-});
-
-const mapDispatchToProps = dispatch => ({});
-
-export default connect(mapStateToProps, mapDispatchToProps)(VerifyKeyStep1);
+export default VerifyKeyStep1;
