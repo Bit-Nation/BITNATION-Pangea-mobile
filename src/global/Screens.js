@@ -89,7 +89,7 @@ const Screens = {
   },
   CREATE_KEY_SCREEN_STEP_1: {
     screen: 'Pangea.CreateKeyStep1',
-    title: 'Create Private Key',
+    title: ' Create Private Key ',
     backButtonTitle: 'Back',
     navigatorStyle,
   },
