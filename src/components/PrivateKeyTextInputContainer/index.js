@@ -3,6 +3,7 @@ import {
   Text,
   TextInput,
   View,
+  findNodeHandle,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import styles, { cursorColor } from './styles';
@@ -29,6 +30,7 @@ export class PrivateKeyTextInputContainer extends Component {
           value={this.props.value}
           blurOnSubmit={this.props.isLast}
           selectionColor={cursorColor}
+          onFocus={(event) => this.props.onFocus(findNodeHandle(event.target))}
           onChangeText={(text) => this.props.onChange(this.props.index, text)}
           onSubmitEditing={() => this.props.onSubmit(this.props.index)}
           ref={(textInput) => this.textInput = textInput}/>
@@ -47,6 +49,7 @@ PrivateKeyTextInputContainer.propTypes = {
   onChange: PropTypes.func,
   onSubmit: PropTypes.func,
   editable: PropTypes.bool,
+  onFocus: PropTypes.func,
 };
 
 PrivateKeyTextInputContainer.defaultProps = {
