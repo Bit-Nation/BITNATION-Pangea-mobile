@@ -4,19 +4,21 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
-
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+
 import styles from './styles';
 import { screen, androidNavigationButtons } from '../../../../global/Screens';
-import Colors from '../../../../global/Colors';
 import BackgroundImage from '../../../../components/common/BackgroundImage';
 import Text from '../../../../components/common/Text';
 import GridView from '../../../../components/GridView/index';
 import PrivateKeyTextInputContainer from '../../../../components/PrivateKeyTextInputContainer/index';
 import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
 import { KEY_LENGTH, KEY_COLUMN_COUNT, KEY_ROW_COUNT } from '../../../../global/Constants';
+import NavigatorComponent from '../../../../components/common/NavigatorComponent';
 
-export default class EnterPrivateKeyScreen extends Component {
+const DONE_BUTTON = 'DONE_BUTTON';
+
+export default class EnterPrivateKeyScreen extends NavigatorComponent {
 
   static navigatorButtons = { ...androidNavigationButtons };
 
@@ -27,6 +29,33 @@ export default class EnterPrivateKeyScreen extends Component {
       values: _.fill(new Array(KEY_LENGTH), ''),
     };
     this.keyTextInputContainers = [];
+    this._configureNavigation(this.state);
+  }
+
+  doneShouldBeEnabled(state) {
+    return _.reduce(state.values, (prev, next) => prev && !_.isEmpty(next), true);
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    if (this.doneShouldBeEnabled(this.state) !== this.doneShouldBeEnabled(nextState)) {
+      this._configureNavigation(nextState);
+    }
+  }
+
+  _configureNavigation(state) {
+    this.props.navigator.setButtons({
+      rightButtons: [{
+        id: DONE_BUTTON,
+        title: 'Done',
+        disabled: !this.doneShouldBeEnabled(state),
+      }],
+    });
+  }
+
+  onNavBarButtonPress(id) {
+    if (id === DONE_BUTTON) {
+      this.props.navigator.push(screen('VERIFY_KEY_SUCCESS_SCREEN'));
+    }
   }
 
   _showIncorrectCodeAlert = () => {
