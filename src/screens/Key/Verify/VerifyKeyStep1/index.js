@@ -37,7 +37,6 @@ class VerifyKeyStep1 extends NavigatorComponent {
 
   render() {
     return (
-
       <View style={styles.container}>
         <BackgroundImage/>
         <FakeNavigationBar/>

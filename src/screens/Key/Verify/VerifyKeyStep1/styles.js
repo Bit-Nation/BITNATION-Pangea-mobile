@@ -1,8 +1,5 @@
 import { MediaQueryStyleSheet } from 'react-native-responsive';
-import { Dimensions, } from 'react-native';
-import Colors from '../../../../global/Colors';
 
-var { height, width } = Dimensions.get('window');
 const styles = MediaQueryStyleSheet.create(
   {
     container: {
@@ -25,6 +22,7 @@ const styles = MediaQueryStyleSheet.create(
       alignItems: 'flex-end',
       marginBottom: 40,
     },
+  }
+);
 
-  });
 export default styles;
