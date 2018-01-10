@@ -6,14 +6,18 @@ import NavigatorComponent from '../../../../components/common/NavigatorComponent
 
 class CreateKeyBaseScreen extends NavigatorComponent {
 
-  static navigatorButtons = {
-    leftButtons: [{
-      id: 'cancel',
-      title: 'Cancel',
-      buttonColor: Colors.navigationButtonColor,
-    }],
-    rightButtons: [],
-  };
+  constructor(props) {
+    super(props);
+
+    this.props.navigator.setButtons({
+      leftButtons: [{
+        id: 'cancel',
+        title: 'Cancel',
+        buttonColor: Colors.navigationButtonColor,
+      }],
+      rightButtons: [],
+    });
+  }
 
   onNavigatorEvent(event) {
     if (event.id === 'backPress') {
