@@ -10,7 +10,7 @@ getBitNationLightBlue = (alpha) => {
   return 'rgba(114, 164, 222, ' + alpha + ')';
 };
 
-module.exports = {
+export default {
 
   Red: '#FF5252',
   Pink: '#FF4081',
@@ -33,8 +33,8 @@ module.exports = {
   LightGrey: '#EEEEEE',
   Transparent: 'transparent',
   BlueGrey: '#607D8B',
-  BlueMed:'#72A4DE',
-  BitnationBlue:'#4A90E2',
+  BlueMed: '#72A4DE',
+  BitnationBlue: '#4A90E2',
 
 
   white: '#FFFFFF',
@@ -52,31 +52,31 @@ module.exports = {
   navigationColor: '#007AFF',
   navigationButtonColor: Platform.OS === 'ios' ? '#007AFF' : '#FFFFFF',
 
-  textColor: "#444A64",
-  textPlaceholder: "#9B9B9B",
-  textPrimary: "#4A4A4A",
-  textSecondary: "#9094A3",
-  textLight: "#DADCE5",
-  buttonPrimary: "#80E5CF",
-  bestOptionBackground: "#BDF4E9",
+  textColor: '#444A64',
+  textPlaceholder: '#9B9B9B',
+  textPrimary: '#4A4A4A',
+  textSecondary: '#9094A3',
+  textLight: '#DADCE5',
+  buttonPrimary: '#80E5CF',
+  bestOptionBackground: '#BDF4E9',
 
-  primary_green : '#A5D6A7',
-  secondary_green : '#BDF4E9',
-  primary_blue : '#444A64',
+  primary_green: '#A5D6A7',
+  secondary_green: '#BDF4E9',
+  primary_blue: '#444A64',
   primary_red: '#FF5469',
-  grey_400 : '#9094A3',
-  grey_300 : '#DADCE5',
-  grey_200 : '#F1F2F6',
-  grey_100 : '#F9F9FC',
+  grey_400: '#9094A3',
+  grey_300: '#DADCE5',
+  grey_200: '#F1F2F6',
+  grey_100: '#F9F9FC',
 
   // Colors from Invasion App
 
   // Document Colors
-  panelBoxColor:'#1b395c',
-  instuctionTextColor:'#72a4de',
-  navButtonTextColor:'#007aff',
-  disabledBoxColor :'#bcdcff',
-  disabledTextColor:'#275284',
-  actionButtonColor:'#1c497e',
+  panelBoxColor: '#1b395c',
+  instuctionTextColor: '#72a4de',
+  navButtonTextColor: '#007aff',
+  disabledBoxColor: '#bcdcff',
+  disabledTextColor: '#275284',
+  actionButtonColor: '#1c497e',
 
 };
