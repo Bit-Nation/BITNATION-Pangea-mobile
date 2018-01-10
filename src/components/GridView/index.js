@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import {
-  ListView, Text, Image, Button, TextInput,
-  View, TouchableOpacity
+  View
 } from 'react-native';
 import PropTypes from 'prop-types';
-import Colors from '../../global/Colors';
 import styles from './styles';
-import PrivateKeyTextInput from '../PrivateKeyTextInput/index';
 import _ from 'lodash';
 
 export class GridView extends Component {
