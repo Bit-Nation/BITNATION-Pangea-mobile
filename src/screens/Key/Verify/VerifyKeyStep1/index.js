@@ -6,15 +6,30 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import styles from './styles';
-import { screen, androidNavigationButtons } from '../../../../global/Screens';
+import { screen } from '../../../../global/Screens';
 import Button from '../../../../components/common/Button';
 import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
 import BackgroundImage from '../../../../components/common/BackgroundImage';
 import Text from '../../../../components/common/Text';
+import NavigatorComponent from '../../../../components/common/NavigatorComponent';
+import Colors from '../../../../global/Colors';
 
-class VerifyKeyStep1 extends Component {
+class VerifyKeyStep1 extends NavigatorComponent {
 
-  static navigatorButtons = { ...androidNavigationButtons };
+  static navigatorButtons = {
+    leftButtons: [{
+      id: 'cancel',
+      title: 'Cancel',
+      buttonColor: Colors.navigationButtonColor,
+    }],
+    rightButtons: [],
+  };
+
+  onNavBarButtonPress(id) {
+    if (id === 'cancel') {
+      this.props.navigator.dismissModal();
+    }
+  }
 
   onNextButtonPressed() {
     this.props.navigator.push(screen('VERIFY_KEY_SCREEN_STEP_2'));
