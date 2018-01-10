@@ -14,11 +14,7 @@ import Text from '../../../../components/common/Text';
 import GridView from '../../../../components/GridView/index';
 import PrivateKeyTextInputContainer from '../../../../components/PrivateKeyTextInputContainer/index';
 import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
-
-
-const KEY_ROW_COUNT = 8;
-const KEY_COLUMN_COUNT = 3;
-const KEY_LENGTH = KEY_COLUMN_COUNT * KEY_ROW_COUNT;
+import { KEY_LENGTH, KEY_COLUMN_COUNT, KEY_ROW_COUNT } from '../../../../global/Constants';
 
 export default class EnterPrivateKeyScreen extends Component {
 

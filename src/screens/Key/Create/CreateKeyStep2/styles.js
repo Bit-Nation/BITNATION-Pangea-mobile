@@ -2,64 +2,43 @@ import { StyleSheet } from 'react-native';
 import { Dimensions, } from 'react-native';
 import Colors from '../../../../global/Colors';
 
-var { height, width } = Dimensions.get('window');
 
 export default styles = StyleSheet.create({
-  panel: {
-    width: width * .95,
-    height: height * 0.45,
-    marginLeft: width * .025,
-    backgroundColor: Colors.panelBoxColor,
-    paddingBottom: height * .04,
-    borderRadius: 10,
-    opacity: .4,
+
+  container: {
+    flex: 1,
   },
-  instructionBox: {
-    marginTop: height * .08,
-    marginLeft: width * .03,
-    paddingBottom: height * .05,
+  scrollViewContentContainer: {
+    paddingLeft: 15,
+    paddingRight: 15,
+    paddingBottom: 20,
+  },
+  instructionContainer: {
+    marginTop: 14,
     backgroundColor: Colors.Transparent,
+    marginBottom: 20,
   },
-  instructionDetailsBox: {
-    paddingLeft: '4%',
-    paddingRight: '4%',
-    paddingBottom: '3%',
-    paddingTop: '3%',
-    backgroundColor: Colors.Transparent,
-  },
-  instructionBoxText: {
+  instruction: {
     textAlign: 'left',
-    color: Colors.instuctionTextColor,
   },
-
-  renderScreenOverlay: {
-    width: width,
-    height: height,
-    backgroundColor: Colors.Black,
-    opacity: .9,
-    zIndex: 1,
-    position: 'absolute',
+  gridView: {
+    flex: 1,
   },
-  buttonBoxStyle: {
-    width: width * .4,
-    marginLeft: '3%',
-    marginTop: '2%',
+  gridContainer: {
+    flex: 1,
+    borderRadius: 8,
+    backgroundColor: 'rgba(27,57,92,0.7)',
+    paddingTop: 20,
+    paddingBottom: 3,
+    paddingLeft: 12,
+    paddingRight: 12,
   },
-  buttonStyle: {
-    backgroundColor: Colors.actionButtonColor,
-    opacity: 1,
-    height: height * .05,
-    borderRadius: 16,
+  buttonContainer: {
+    flex: 1,
+    flexDirection: 'row',
     justifyContent: 'center',
-    width: width * .4,
-  },
-
-  buttonText: {
-    color: '#fff',
-    textAlign: 'center',
-    fontSize: 16,
-    opacity: 1,
-    backgroundColor: Colors.Transparent,
+    alignItems: 'flex-end',
+    marginBottom: 40,
   },
 
 });
