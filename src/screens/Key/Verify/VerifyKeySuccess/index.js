@@ -1,44 +1,37 @@
 import React, { Component } from 'react';
 import {
   View,
-  Text,
-  Image,
-  StatusBar,
-  TouchableOpacity
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Navigation } from 'react-native-navigation';
+
 import Images from '../../../../global/AssetsImages';
 import styles from './styles';
-import Colors from '../../../../global/Colors';
-import Header from '../../../../components/Header';
 import Button from '../../../../components/common/Button';
+import BackgroundImage from '../../../../components/common/BackgroundImage';
+import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
+import Text from '../../../../components/common/Text';
 
-class VarifyKeySuccess extends Component {
+class VerifyKeySuccess extends Component {
 
   onNextButtonPressed() {
-    this.props.navigator.popToRoot();
-  }
-
-  onCancelButtonPressed() {
-    alert('cancel');
+    this.props.navigator.dismissModal();
   }
 
   render() {
     return (
 
       <View style={styles.container}>
-        <Image
-          style={styles.backgroundImage}
-          source={Images.background}
-        />
+        <BackgroundImage/>
+        <FakeNavigationBar/>
 
         <View style={styles.wholeText}>
-
-          <Text style={styles.description}>Congratulations, you correctly entered your private key.</Text>
-          <Text style={[styles.description, styles.applyBold]}>Now, put your paper with your private key in a safe place.</Text>
-
+          <Text messageText style={styles.description}>
+            Congratulations, you correctly entered your private key.
+          </Text>
+          <Text messageText style={[styles.description, styles.applyBold]}>
+            Now, put your paper with your private key in a safe place.
+          </Text>
         </View>
 
         <View style={styles.buttonContainer}>
@@ -51,9 +44,9 @@ class VarifyKeySuccess extends Component {
   }
 }
 
-VarifyKeySuccess.propTypes = {};
+VerifyKeySuccess.propTypes = {};
 
-VarifyKeySuccess.defaultProps = {};
+VerifyKeySuccess.defaultProps = {};
 
 const mapStateToProps = state => ({
   ...state,
@@ -61,4 +54,4 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({});
 
-export default connect(mapStateToProps, mapDispatchToProps)(VarifyKeySuccess);
+export default connect(mapStateToProps, mapDispatchToProps)(VerifyKeySuccess);
