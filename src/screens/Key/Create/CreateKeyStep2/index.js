@@ -18,6 +18,10 @@ import CreateKeyBaseScreen from '../CreateKeyBaseScreen/index';
 
 export default class CreateKeyStep2 extends CreateKeyBaseScreen {
 
+  get shouldShowAlert() {
+    return false;
+  }
+
   onNextButtonPressed() {
     this.props.navigator.push(screen('CREATE_KEY_SCREEN_STEP_3'));
   }
