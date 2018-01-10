@@ -5,9 +5,15 @@ import {
   View,
 } from 'react-native';
 import PropTypes from 'prop-types';
-import styles from './styles';
+import styles, { cursorColor } from './styles';
 
-export class PrivateKeyTextInput extends Component {
+export class PrivateKeyTextInputContainer extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.textInput = null;
+  }
 
   render() {
     const { style } = this.props;
@@ -21,17 +27,21 @@ export class PrivateKeyTextInput extends Component {
           returnKeyType={this.props.isLast ? 'done' : 'next'}
           style={styles.textInput}
           value={this.props.value}
-          onValueChange={(text) => this.props.onChange(this.props.index, text)}
-          onSubmitEditing={() => this.props.onSubmit(this.props.index)}/>
-        <Text style={styles.text}>{this.props.index}</Text>
+          blurOnSubmit={this.props.isLast}
+          selectionColor={cursorColor}
+          onChangeText={(text) => this.props.onChange(this.props.index, text)}
+          onSubmitEditing={() => this.props.onSubmit(this.props.index)}
+          ref={(textInput) => this.textInput = textInput}/>
+        <Text style={styles.text}>{this.props.label}</Text>
       </View>
     );
   }
 
 };
 
-PrivateKeyTextInput.propTypes = {
+PrivateKeyTextInputContainer.propTypes = {
   index: PropTypes.number,
+  label: PropTypes.string,
   value: PropTypes.string,
   isLast: PropTypes.bool,
   onChange: PropTypes.func,
@@ -39,11 +49,11 @@ PrivateKeyTextInput.propTypes = {
   editable: PropTypes.bool,
 };
 
-PrivateKeyTextInput.defaultProps = {
+PrivateKeyTextInputContainer.defaultProps = {
   editable: true,
   value: '',
   isLast: true,
   index: 0,
 };
 
-export default PrivateKeyTextInput;
+export default PrivateKeyTextInputContainer;
