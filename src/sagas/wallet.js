@@ -1,4 +1,4 @@
-import { takeEvery } from 'redux-saga';
+import { takeEvery, call, put } from 'redux-saga/effects';
 
 import { CREATE_WALLET, CREATE_MNEMONIC, createMnemonic } from '../actions/wallet';
 
@@ -7,13 +7,13 @@ async function createPrivateKey() {
 }
 
 async function privateKeyToMnemonic(privateKey) {
-  return ['word', 'word', 'word', 'word', 'word', 'word', 'word', 'word', 'word', 'word', 'word', 'word', 'word',
+  return ['a', 'b', 'c', 'test', 'word', 'word', 'word', 'word', 'word', 'word', 'word', 'word', 'word',
     'word', 'word', 'word', 'word', 'word', 'word', 'word', 'word', 'word', 'word', 'word'];
 }
 
 function* createWallet() {
   const privateKey = yield call(createPrivateKey);
-  const mnemonic = yield call(privateKeyToMnemonic(privateKey));
+  const mnemonic = yield call(privateKeyToMnemonic, privateKey);
   yield put(createMnemonic(mnemonic));
 }
 
