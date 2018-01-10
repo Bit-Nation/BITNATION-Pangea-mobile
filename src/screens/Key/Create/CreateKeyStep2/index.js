@@ -5,7 +5,6 @@ import {
 import styles from './styles';
 import PropTypes from 'prop-types';
 
-import Colors from '../../../../global/Colors';
 import { screen, androidNavigationButtons } from '../../../../global/Screens';
 import BackgroundImage from '../../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
@@ -14,11 +13,10 @@ import GridView from '../../../../components/GridView';
 import Button from '../../../../components/common/Button';
 import PrivateKeyTextInputContainer from '../../../../components/PrivateKeyTextInputContainer';
 import { KEY_ROW_COUNT, KEY_COLUMN_COUNT } from '../../../../global/Constants';
+import CreateKeyBaseScreen from '../CreateKeyBaseScreen/index';
 
 
-export default class CreateKeyStep2 extends Component {
-
-  static navigatorButtons = { ...androidNavigationButtons };
+export default class CreateKeyStep2 extends CreateKeyBaseScreen {
 
   onNextButtonPressed() {
     this.props.navigator.push(screen('CREATE_KEY_SCREEN_STEP_3'));

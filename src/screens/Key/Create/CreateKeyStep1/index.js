@@ -11,25 +11,10 @@ import { screen } from '../../../../global/Screens';
 import Button from '../../../../components/common/Button';
 import BackgroundImage from '../../../../components/common/BackgroundImage';
 import Text from '../../../../components/common/Text';
-import NavigatorComponent from '../../../../components/common/NavigatorComponent';
 import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
+import CreateKeyBaseScreen from '../CreateKeyBaseScreen';
 
-class CreateKeyStep1 extends NavigatorComponent {
-
-  static navigatorButtons = {
-    leftButtons: [{
-      id: 'cancel',
-      title: 'Cancel',
-      buttonColor: Colors.navigationButtonColor,
-    }],
-    rightButtons: [],
-  };
-
-  onNavBarButtonPress(id) {
-    if (id === 'cancel') {
-      this.props.navigator.dismissModal();
-    }
-  }
+class CreateKeyStep1 extends CreateKeyBaseScreen {
 
   onNextButtonPressed() {
     this.props.navigator.push(screen('CREATE_KEY_SCREEN_STEP_2'));
