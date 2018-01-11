@@ -37,7 +37,7 @@ function* watchCreateWallet() {
 
 function* savePrivateKeySaga() {
   const state = yield select();
-  const mnemonicArray = state.wallet.createdMnemonic;
+  const mnemonicArray = state.key.createdMnemonic;
   if (!mnemonicArray) {
     return;
   }
