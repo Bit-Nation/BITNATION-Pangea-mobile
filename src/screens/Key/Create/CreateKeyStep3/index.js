@@ -4,6 +4,7 @@ import {
 } from 'react-native';
 import styles from './styles';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import { screen } from '../../../../global/Screens';
 import BackgroundImage from '../../../../components/common/BackgroundImage';
@@ -14,8 +15,6 @@ import Button from '../../../../components/common/Button';
 import PrivateKeyTextInputContainer from '../../../../components/PrivateKeyTextInputContainer';
 import { KEY_ROW_COUNT, KEY_COLUMN_COUNT } from '../../../../global/Constants';
 import CreateKeyBaseScreen from '../CreateKeyBaseScreen/index';
-import { connect } from 'react-redux';
-
 
 const DONE_BUTTON = 'DONE_BUTTON';
 
