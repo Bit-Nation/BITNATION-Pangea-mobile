@@ -25,14 +25,14 @@ async function savePrivateKey(privateKey) {
   return await container.panthalassa.ethereum.utils.savePrivateKey(privateKey);
 }
 
-function* createPrivateKey() {
+function* createPrivateKeySaga() {
   const privateKey = yield call(createPrivateKey);
   const mnemonic = yield call(privateKeyToMnemonic, privateKey);
   yield put(mnemonicCreated(mnemonic));
 }
 
 function* watchCreateWallet() {
-  yield takeEvery(CREATE_PRIVATE_KEY, createPrivateKey);
+  yield takeEvery(CREATE_PRIVATE_KEY, createPrivateKeySaga);
 }
 
 function* savePrivateKeySaga() {
@@ -45,7 +45,7 @@ function* savePrivateKeySaga() {
   const privateKey = yield call(mnemonicToPrivateKey, mnemonic);
   yield call(savePrivateKey, privateKey);
 
-  yield put(updateWalletList);
+  yield put(updateWalletList());
 }
 
 function* watchSavePrivateKey() {
