@@ -38,23 +38,36 @@ const sSImplementation:SecureStorage = {
         SInfo
             .getAllItems({})
             .then(itemsArray => {
-
-                const items = itemsArray[0];
-
+                // @todo Remove that after issue fixed (https://github.com/mCodex/react-native-sensitive-info/issues/8)
+                const isIOS = Array.isArray(itemsArray[0]);
                 const filteredItems = {};
 
-                items
+                if (isIOS) {
+                  const items = itemsArray[0];
+
+                  items
                   // Convert array to key value objects
-                  .map(item => {
-                    return {
-                      key: item.key,
-                      value: item.value,
-                    };
-                  })
-                  //Filter them based on provided filter
-                  .filter(object => filter(object.key, object.value))
-                  //Combine keys into one object
-                  .forEach(object => filteredItems[object.key] = object.value);
+                    .map(item => {
+                      return {
+                        key: item.key,
+                        value: item.value,
+                      };
+                    })
+                    //Filter them based on provided filter
+                    .filter(object => filter(object.key, object.value))
+                    //Combine keys into one object
+                    .forEach(object => filteredItems[object.key] = object.value);
+                } else {
+                  const items = itemsArray;
+
+                  Object
+                    // Convert to keys array
+                    .keys(items)
+                    //Filter them based on provided filter
+                    .filter(key => filter(key, items[key]))
+                    //Combine keys into one object
+                    .forEach(key => filteredItems[key] = items[key]);
+                }
 
                 res(filteredItems);
 
