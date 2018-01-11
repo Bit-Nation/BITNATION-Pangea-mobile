@@ -13,8 +13,8 @@ const sSImplementation:SecureStorage = {
         .then(_ => res())
         .catch(rej)
     ),
-    get: (key:string) => SInfo.getItem(key),
-    has: (key:string) => new Promise((res, rej) => SInfo.getItem(key)
+    get: (key:string) => SInfo.getItem(key, {}),
+    has: (key:string) => new Promise((res, rej) => SInfo.getItem(key, {})
         .then(value => {
 
             //Using if for exact comparison
@@ -32,7 +32,7 @@ const sSImplementation:SecureStorage = {
         })
         .catch(error => rej(error))
     ),
-    remove: (key:string) => SInfo.deleteItem(key),
+    remove: (key:string) => SInfo.deleteItem(key, {}),
     fetchItems: (filter: (key:string, value:any) => boolean) : Promise<{}> => new Promise((res, rej) => {
 
         SInfo
