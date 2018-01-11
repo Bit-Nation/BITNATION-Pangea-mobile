@@ -25,7 +25,7 @@ export class PrivateKeyTextInputContainer extends Component {
           underlineColorAndroid='transparent'
           editable={this.props.editable}
           autoCorrect={false}
-          autoCapitalize={false}
+          autoCapitalize='none'
           returnKeyType={this.props.isLast ? 'done' : 'next'}
           style={styles.textInput}
           value={this.props.value}
