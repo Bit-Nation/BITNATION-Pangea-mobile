@@ -2,13 +2,14 @@ import { takeEvery, call, put } from 'redux-saga/effects';
 
 import { CREATE_WALLET, CREATE_MNEMONIC, createMnemonic } from '../actions/wallet';
 
+import container from '../services/container';
+
 async function createPrivateKey() {
-  return 'privateKey_privateKey';
+  return await container.panthalassa.ethereum.utils.createPrivateKey();
 }
 
 async function privateKeyToMnemonic(privateKey) {
-  return ['a', 'b', 'c', 'test', 'word', 'word', 'word', 'word', 'word', 'word', 'word', 'word', 'word',
-    'word', 'word', 'word', 'word', 'word', 'word', 'word', 'word', 'word', 'word', 'word'];
+  return await container.panthalassa.ethereum.utils.privateKeyToMnemonic(privateKey);
 }
 
 function* createWallet() {
