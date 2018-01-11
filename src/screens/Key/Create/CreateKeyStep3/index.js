@@ -131,7 +131,7 @@ class CreateKeyStep3 extends CreateKeyBaseScreen {
 }
 
 const mapStateToProps = state => ({
-  ...state.wallet,
+  ...state.key,
 });
 
 const mapDispatchToProps = dispatch => ({});

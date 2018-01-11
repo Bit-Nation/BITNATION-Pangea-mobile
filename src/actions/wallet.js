@@ -1,35 +1,7 @@
-export const CREATE_WALLET = 'CREATE_WALLET';
-export const CREATE_MNEMONIC = 'CREATE_MNEMONIC';
-export const SAVE_PRIVATE_KEY = 'SAVE_PRIVATE_KEY';
-export const RESTORE_WALLET = 'RESTORE_WALLET';
 export const SELECT_WALLET = 'SELECT_WALLET';
 export const SEND_MONEY = 'SEND_MONEY';
-
-export function createWallet() {
-  return {
-    type: CREATE_WALLET,
-  };
-}
-
-export function createMnemonic(mnemonic) {
-  return {
-    type: CREATE_MNEMONIC,
-    mnemonic,
-  };
-}
-
-export function restoreWallet(privateKey) {
-  return {
-    type: RESTORE_WALLET,
-    privateKey,
-  };
-}
-
-export function savePrivateKey() {
-  return {
-    type: SAVE_PRIVATE_KEY,
-  };
-}
+export const WALLETS_LIST_UPDATED = 'WALLETS_LIST_UPDATED';
+export const UPDATE_WALLET_LIST = 'UPDATE_WALLET_LIST';
 
 export function selectWallet(wallet) {
   return {
@@ -45,5 +17,18 @@ export function sendMoney(wallet, amount, toEthAddress, message) {
     amount,
     toEthAddress,
     message,
+  };
+}
+
+export function walletsListUpdated(wallets) {
+  return {
+    type: WALLETS_LIST_UPDATED,
+    wallets,
+  };
+}
+
+export function updateWalletList() {
+  return {
+    type: UPDATE_WALLET_LIST,
   };
 }

@@ -15,7 +15,7 @@ import Button from '../../../../components/common/Button';
 import PrivateKeyTextInputContainer from '../../../../components/PrivateKeyTextInputContainer';
 import { KEY_ROW_COUNT, KEY_COLUMN_COUNT } from '../../../../global/Constants';
 import CreateKeyBaseScreen from '../CreateKeyBaseScreen/index';
-import { createWallet } from '../../../../actions/wallet';
+import { createPrivateKey } from '../../../../actions/key';
 
 
 class CreateKeyStep2 extends CreateKeyBaseScreen {
@@ -25,7 +25,7 @@ class CreateKeyStep2 extends CreateKeyBaseScreen {
   }
 
   onNextButtonPressed() {
-    this.props.createWallet();
+    this.props.createPrivateKey();
     this.props.navigator.push(screen('CREATE_KEY_SCREEN_STEP_3'));
   }
 
@@ -83,8 +83,8 @@ class CreateKeyStep2 extends CreateKeyBaseScreen {
 const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch => ({
-  createWallet() {
-    dispatch(createWallet())
+  createPrivateKey() {
+    dispatch(createPrivateKey())
   }
 });
 

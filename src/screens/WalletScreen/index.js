@@ -9,9 +9,15 @@ import Background from '../../components/common/BackgroundImage';
 import { screen } from '../../global/Screens';
 import List from './List';
 import EmptyWalletScreen from './EmptyState/index';
-import { selectWallet } from '../../actions/wallet';
+import { selectWallet, updateWalletList } from '../../actions/wallet';
 
 class WalletScreen extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.props.updateWalletList();
+  }
 
   createWallet = () => {
     this.props.navigator.showModal(screen('CREATE_KEY_SCREEN_STEP_1'));
@@ -60,6 +66,9 @@ const mapDispatchToProps = dispatch => ({
   selectWallet(wallet) {
     dispatch(selectWallet(wallet));
   },
+  updateWalletList() {
+    dispatch(updateWalletList());
+  }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(WalletScreen);

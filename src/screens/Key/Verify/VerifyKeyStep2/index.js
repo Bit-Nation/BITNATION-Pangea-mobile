@@ -16,7 +16,7 @@ import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
 import { KEY_LENGTH, KEY_COLUMN_COUNT, KEY_ROW_COUNT } from '../../../../global/Constants';
 import NavigatorComponent from '../../../../components/common/NavigatorComponent';
 import container from '../../../../services/container';
-import { compressMnemonic } from '../../../../utils/wallet';
+import { compressMnemonic } from '../../../../utils/key';
 
 const DONE_BUTTON = 'DONE_BUTTON';
 

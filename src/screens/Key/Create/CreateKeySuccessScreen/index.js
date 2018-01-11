@@ -11,7 +11,7 @@ import BackgroundImage from '../../../../components/common/BackgroundImage';
 import Text from '../../../../components/common/Text';
 import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
 import CreateKeyBaseScreen from '../CreateKeyBaseScreen/index';
-import { savePrivateKey } from '../../../../actions/wallet';
+import { savePrivateKey } from '../../../../actions/key';
 
 class CreateKeySuccessScreen extends CreateKeyBaseScreen {
 
