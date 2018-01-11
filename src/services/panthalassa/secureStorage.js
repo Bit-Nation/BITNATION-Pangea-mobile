@@ -36,18 +36,25 @@ const sSImplementation:SecureStorage = {
     fetchItems: (filter: (key:string, value:any) => boolean) : Promise<{}> => new Promise((res, rej) => {
 
         SInfo
-            .getAllItems()
-            .then(items => {
+            .getAllItems({})
+            .then(itemsArray => {
+
+                const items = itemsArray[0];
 
                 const filteredItems = {};
 
-                Object
-                    //Get all key's of the items
-                    .keys(items)
-                    //Filter them based on provided filter
-                    .filter(key => filter(key, items[key]))
-                    //Push filtered item's
-                    .map(key => filteredItems[key]  = items[key]);
+                items
+                  // Convert array to key value objects
+                  .map(item => {
+                    return {
+                      key: item.key,
+                      value: item.value,
+                    };
+                  })
+                  //Filter them based on provided filter
+                  .filter(object => filter(object.key, object.value))
+                  //Combine keys into one object
+                  .forEach(object => filteredItems[object.key] = object.value);
 
                 res(filteredItems);
 
