@@ -15,6 +15,7 @@ import PrivateKeyTextInputContainer from '../../../../components/PrivateKeyTextI
 import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
 import { KEY_LENGTH, KEY_COLUMN_COUNT, KEY_ROW_COUNT } from '../../../../global/Constants';
 import NavigatorComponent from '../../../../components/common/NavigatorComponent';
+import container from '../../../../services/container';
 
 const DONE_BUTTON = 'DONE_BUTTON';
 
@@ -54,20 +55,25 @@ export default class EnterPrivateKeyScreen extends NavigatorComponent {
 
   onNavBarButtonPress(id) {
     if (id === DONE_BUTTON) {
-      this.props.navigator.push(screen('VERIFY_KEY_SUCCESS_SCREEN'));
+      this._verifyMnemonic(this.state.values)
+        .then(() => this.onSuccess())
+        .catch(() => this._showIncorrectCodeAlert());
     }
   }
 
-  _showIncorrectCodeAlert = () => {
-    return (
-      Alert.alert(
-        'Incorrect: Check all the words.',
-        '',
-        [{ text: 'OK', onPress: () => null }]
-      ));
+  _verifyMnemonic = async (mnemonic) => {
+    return await container.panthalassa.ethereum.utils.mnemonicValid(_.join(mnemonic, ' '));
   };
 
-  onSucess() {
+  _showIncorrectCodeAlert = () => {
+    Alert.alert(
+      'Incorrect: Check all the words.',
+      '',
+      [{ text: 'OK', onPress: () => null }]
+    );
+  };
+
+  onSuccess() {
     this.props.navigator.push(screen('VERIFY_KEY_SUCCESS_SCREEN'));
   }
 
