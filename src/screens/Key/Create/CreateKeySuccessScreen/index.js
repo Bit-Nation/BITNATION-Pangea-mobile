@@ -11,10 +11,12 @@ import BackgroundImage from '../../../../components/common/BackgroundImage';
 import Text from '../../../../components/common/Text';
 import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
 import CreateKeyBaseScreen from '../CreateKeyBaseScreen/index';
+import { savePrivateKey } from '../../../../actions/wallet';
 
 class CreateKeySuccessScreen extends CreateKeyBaseScreen {
 
   onNextButtonPressed() {
+    this.props.savePrivateKey();
     this.props.navigator.dismissModal();
   }
 
@@ -56,6 +58,10 @@ const mapStateToProps = state => ({
   ...state,
 });
 
-const mapDispatchToProps = dispatch => ({});
+const mapDispatchToProps = dispatch => ({
+  savePrivateKey() {
+    dispatch(savePrivateKey());
+  }
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateKeySuccessScreen);

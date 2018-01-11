@@ -16,6 +16,7 @@ import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
 import { KEY_LENGTH, KEY_COLUMN_COUNT, KEY_ROW_COUNT } from '../../../../global/Constants';
 import NavigatorComponent from '../../../../components/common/NavigatorComponent';
 import container from '../../../../services/container';
+import { compressMnemonic } from '../../../../utils/wallet';
 
 const DONE_BUTTON = 'DONE_BUTTON';
 
@@ -62,7 +63,7 @@ export default class EnterPrivateKeyScreen extends NavigatorComponent {
   }
 
   _verifyMnemonic = async (mnemonic) => {
-    return await container.panthalassa.ethereum.utils.mnemonicValid(_.join(mnemonic, ' '));
+    return await container.panthalassa.ethereum.utils.mnemonicValid(compressMnemonic(mnemonic));
   };
 
   _showIncorrectCodeAlert = () => {
