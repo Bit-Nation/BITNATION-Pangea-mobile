@@ -113,6 +113,8 @@ class EditProfile extends NavigatorComponent {
             />
           </View>
 
+          {/*  Commented for Sprint 0.3.1  */}
+          {/*
           <View style={styles.row}>
             <Text style={styles.labelText}>Lat.</Text>
             <TextInput
@@ -132,6 +134,7 @@ class EditProfile extends NavigatorComponent {
               keyboardType='numeric'
             />
           </View>
+          */}
 
         </View>
         <ActionSheet ref={(c) => {

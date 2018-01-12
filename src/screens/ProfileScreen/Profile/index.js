@@ -48,8 +48,9 @@ class ProfileScreen extends NavigatorComponent {
         <FakeNavigationBar/>
         {this._buildHeader()}
         <ScrollView>
-          {this._buildHolonsView()}
-          {this._buildAchievemntsView()}
+          {/*  Commented for Sprint 0.3.1  */}
+          {/*this._buildHolonsView()*/}
+          {/*this._buildAchievemntsView()*/}
         </ScrollView>
       </View>
     );
@@ -68,7 +69,8 @@ class ProfileScreen extends NavigatorComponent {
         <Text style={styles.nameText}>{user.name}</Text>
         <Text style={styles.infoText}>{user.location}</Text>
         <Text style={styles.infoText}>
-          {!_.isEmpty(user.latitude) && !_.isEmpty(user.longitude) && (user.latitude + ', ' + user.longitude)}
+          {/*  Commented for Sprint 0.3.1  */}
+          {/*!_.isEmpty(user.latitude) && !_.isEmpty(user.longitude) && (user.latitude + ', ' + user.longitude)*/}
         </Text>
         <Text style={styles.ethAddress}>{user.ethAddress}</Text>
       </View>
