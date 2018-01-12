@@ -1,5 +1,6 @@
 package com.pangea;
 
+import com.bitgo.randombytes.RandomBytesPackage;
 import com.facebook.react.ReactPackage;
 
 import java.util.Arrays;
@@ -8,6 +9,9 @@ import java.util.List;
 import com.reactnativenavigation.NavigationApplication;
 import com.reactnative.ivpusic.imagepicker.PickerPackage;
 import com.reactlibrary.RNEthDaemonPackage;
+
+import br.com.classapp.RNSensitiveInfo.RNSensitiveInfoPackage;
+import io.realm.react.RealmReactPackage;
 
 public class MainApplication extends NavigationApplication {
 
@@ -20,7 +24,10 @@ public class MainApplication extends NavigationApplication {
     protected List<ReactPackage> getPackages() {
         return Arrays.<ReactPackage>asList(
                 new PickerPackage(),
-                new RNEthDaemonPackage()
+                new RNEthDaemonPackage(),
+                new RealmReactPackage(),
+                new RNSensitiveInfoPackage(),
+                new RandomBytesPackage()
         );
     }
 
