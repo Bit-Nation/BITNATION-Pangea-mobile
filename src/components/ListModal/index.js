@@ -11,11 +11,10 @@ const ListModal = (props) => {
   return (
     <View style = {[styles.container,
                      {flex:props.flexNumber,
-                      marginRight:props.marginRight*props.marginRight,
-                      marginLeft:props.marginLeft*props.marginLeft,
-                      marginBottom:props.marginBottom*props.marginBottom,
+                      marginRight:props.marginRight * props.marginRight,
+                      marginLeft:props.marginLeft * props.marginLeft,
+                      marginBottom:props.marginBottom * props.marginBottom,
                       }]}>
-    
             <View style = {styles.textContainer}>
             <Text style = {styles.textStyle}>{props.title}</Text>
             
@@ -28,13 +27,10 @@ const ListModal = (props) => {
                   <Text style={styles.text}>
                         {data.name} 
                     </Text>
-                </TouchableOpacity>  
- }
-
-           />
+                </TouchableOpacity>  }
+          />
            </View>
-    
-           </View>
+    </View>
   )
 }
 
@@ -55,7 +51,6 @@ ListModal.propTypes = {
     marginLeft:0,
     marginBottom:0,
     data: null,
-
   };
 
 export default ListModal;

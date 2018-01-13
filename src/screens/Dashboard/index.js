@@ -1,4 +1,3 @@
-/*eslint-disable */
 import React, { Component } from 'react';
 import {
   View,
@@ -51,24 +50,20 @@ class Dashboard extends Component {
 
 
 dataSourceChats: ds.cloneWithRows([{
-  name: 'Label',
-  avatar_url: Images.rightArrow,
-  subtitle: 'Vice President'
+  name: 'John',
+  listItemIcon: Images.rightArrow,
 },
 {
-  name: 'Label',
-  avatar_url: Images.rightArrow,
-  subtitle: 'Vice Chairman'
+  name: 'Wave',
+  listItemIcon: Images.rightArrow,
 },
 {
-  name: 'Label',
-  avatar_url:  Images.rightArrow,
-   subtitle: 'Vice Chairman'
+  name: 'Ahsn',
+  listItemIcon:  Images.rightArrow,
 },
 {
-  name: 'Label',
-  avatar_url: Images.rightArrow,
-   subtitle: 'Vice Chairman'
+  name: 'Akbar',
+  listItemIcon: Images.rightArrow,
 },
 
 ]),
@@ -80,12 +75,12 @@ dataSourceContracts: ds.cloneWithRows([{
 },
 ]),
     };
-  }
+}
 
   listDemo() {
     return (
      
-      <View style = {styles.cFlex}>
+      <View style = {{ flex:1 }}>
 
         <View style = {styles.chatTextContainer}>
         <Text style = {styles.chatsText}>Chats</Text>
@@ -98,16 +93,14 @@ dataSourceContracts: ds.cloneWithRows([{
         <TouchableOpacity style={styles.containerList}>
           <View style= {styles.listName}>
               <Text style={styles.text}>
-                    {data.name} 
+                    {data.name}
                 </Text>
-                </View>  
-                <View style= {styles.listIcon}>
-                <Image source={ data.avatar_url} style={styles.photo2} /> 
+                </View>
+                <View style= {styles.listItemIconContainer}>
+                <Image source={ data.listItemIcon} style={styles.listItemIcon} /> 
                 </View>
                
        </TouchableOpacity> }
-
-      // renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator}/>}
        />
        </View>
 
@@ -205,13 +198,7 @@ dataSourceContracts: ds.cloneWithRows([{
                     resizeMode= "contain"
                       />
                   </View>
-         
-
-       
-          
       </View>
-
-
       </ScrollView>
 
     

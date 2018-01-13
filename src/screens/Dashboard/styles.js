@@ -1,4 +1,3 @@
-/*eslint-disable*/
 import { MediaQueryStyleSheet } from 'react-native-responsive';
 import Colors from '../../global/Colors';
 import {Dimensions} from 'react-native';
@@ -15,7 +14,6 @@ const styles = MediaQueryStyleSheet.create(
     containerList: {
         flex: 1,
         flexDirection: 'row',
-        //alignItems: 'center',
       },
       listName: {
           marginRight:'10%',
@@ -30,26 +28,13 @@ const styles = MediaQueryStyleSheet.create(
         marginBottom:'4%',
       },
 
-      listIcon: {
+      listItemIconContainer: {
         justifyContent:'flex-start',
       },
-      photo2: {
+      listItemIcon: {
         height: 10,
         width: 10,
         borderRadius: 20,
-      },
-      line2: {
-          backgroundColor:'black',
-          width:'100%',
-          marginLeft:'2%',
-          height:1
-
-      },
-      separator: {
-        width:'100%',
-        marginLeft:'3%',
-        height: 1,
-        backgroundColor:Colors.GraySilver,
       },
 
     container: {
@@ -84,8 +69,6 @@ const styles = MediaQueryStyleSheet.create(
         backgroundColor:Colors.BitnationBlue,
         marginBottom: '5%',
         marginLeft:'5%',
-      //  borderRadius:3,
-
     },
 
 
@@ -95,14 +78,8 @@ const styles = MediaQueryStyleSheet.create(
         backgroundColor:Colors.BitnationBlue,
         marginBottom: '1%',
         marginLeft:'5%',
-    //    borderRadius:4
-
     },
-
-    cFlex: {
-
-        flex:1,
-    },
+    
     chatTextContainer :
     {
         flex:1,
