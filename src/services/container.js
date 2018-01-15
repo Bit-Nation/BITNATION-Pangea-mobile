@@ -11,8 +11,10 @@ import profile from 'BITNATION-Panthalassa/src/profile/profile';
 
 const EventEmitter = require('eventemitter3');
 
+const DB_PATH = 'panthalassa';
+
 const ee = new EventEmitter();
-const dbInstance = db();
+const dbInstance = db(DB_PATH);
 const ethUtilsInstance = ethUtils(secureStorage, ee, osDeps);
 const ethWeb3Instance = web3(ethDaemon, ee, ethUtilsInstance);
 const ethWallet = wallet(ethUtilsInstance, ethWeb3Instance, dbInstance);
