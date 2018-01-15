@@ -6,9 +6,9 @@ import {
 import PropTypes from 'prop-types';
 
 import styles from './styles';
-import BackgroundImage from '../../../components/common/BackgroundImage';
+import BackgroundImage from '../../../components/BackgroundImage';
 import AssetsImage from '../../../global/AssetsImages';
-import MessageView from '../../../components/common/MessageView';
+import MessageView from '../../../components/MessageView';
 
 class EmptyProfileScreen extends Component {
 

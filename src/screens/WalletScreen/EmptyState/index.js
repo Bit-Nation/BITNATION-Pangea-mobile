@@ -5,9 +5,9 @@ import {
 import PropTypes from 'prop-types';
 
 import styles from './styles';
-import BackgroundImage from '../../../components/common/BackgroundImage';
-import MessageView from '../../../components/common/MessageView';
-import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
+import BackgroundImage from '../../../components/BackgroundImage';
+import MessageView from '../../../components/MessageView';
+import FakeNavigationBar from '../../../components/FakeNavigationBar';
 
 export default class EmptyWalletScreen extends Component {
 

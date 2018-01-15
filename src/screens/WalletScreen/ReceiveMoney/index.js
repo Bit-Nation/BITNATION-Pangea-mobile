@@ -7,11 +7,11 @@ import { connect } from 'react-redux';
 
 import styles from './styles';
 import AssetsImages from '../../../global/AssetsImages';
-import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
-import BackgroundImage from '../../../components/common/BackgroundImage';
+import FakeNavigationBar from '../../../components/FakeNavigationBar';
+import BackgroundImage from '../../../components/BackgroundImage';
 import { resolveWallet } from '../../../utils/wallet';
-import Button from '../../../components/common/Button';
-import MessageView from '../../../components/common/MessageView';
+import Button from '../../../components/Button';
+import MessageView from '../../../components/MessageView';
 
 class ReceiveMoneyScreen extends Component {
 

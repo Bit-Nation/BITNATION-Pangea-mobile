@@ -10,11 +10,11 @@ import _ from 'lodash';
 
 
 import styles from './styles';
-import BackgroundImage from '../../../components/common/BackgroundImage';
+import BackgroundImage from '../../../components/BackgroundImage';
 import AssetsImage from '../../../global/AssetsImages';
-import NavigatorComponent from '../../../components/common/NavigatorComponent';
+import NavigatorComponent from '../../../components/NavigatorComponent';
 import Colors from '../../../global/Colors';
-import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
+import FakeNavigationBar from '../../../components/FakeNavigationBar';
 
 const EDIT_BUTTON = 'EDIT_BUTTON';
 

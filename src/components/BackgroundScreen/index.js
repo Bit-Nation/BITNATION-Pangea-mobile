@@ -1,5 +1,5 @@
 import React from 'react';
-import BackgroundImage from '../common/BackgroundImage';
+import BackgroundImage from '../BackgroundImage';
 
 const BackgroundScreen = () => {
     return(

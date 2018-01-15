@@ -5,14 +5,14 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 
-import BackgroundImage from '../../../components/common/BackgroundImage';
+import BackgroundImage from '../../../components/BackgroundImage';
 import styles from './styles';
 import { resolveNation } from '../../../utils/nations';
-import NationActionButton from '../../../components/common/NationActionButton';
+import NationActionButton from '../../../components/NationActionButton';
 import AssetsImage from '../../../global/AssetsImages';
-import MessageView from '../../../components/common/MessageView';
-import DemoImage from '../../../components/common/DemoImage';
-import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
+import MessageView from '../../../components/MessageView';
+import DemoImage from '../../../components/DemoImage';
+import FakeNavigationBar from '../../../components/FakeNavigationBar';
 
 class NationDetailsScreen extends Component {
 

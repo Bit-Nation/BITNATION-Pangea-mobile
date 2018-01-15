@@ -14,7 +14,7 @@ import styles from './styles';
 import TextBox from '../../components/TextBox';
 import ListModal from '../../components/ListModal';
 import BackgroundScreen from '../../components/BackgroundScreen/index';
-import FakeNavigationBar from '../../components/common/FakeNavigationBar';
+import FakeNavigationBar from '../../components/FakeNavigationBar';
 
 class Dashboard extends Component {
   constructor(props) {

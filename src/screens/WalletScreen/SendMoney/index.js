@@ -12,10 +12,10 @@ import { connect } from 'react-redux';
 import Images from '../../../global/AssetsImages';
 import Colors from '../../../global/Colors';
 import styles from './styles';
-import Button from '../../../components/common/Button';
+import Button from '../../../components/Button';
 import { Container, Header, Content, StyleProvider } from 'native-base';
-import BackgroundImage from '../../../components/common/BackgroundImage';
-import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
+import BackgroundImage from '../../../components/BackgroundImage';
+import FakeNavigationBar from '../../../components/FakeNavigationBar';
 import { resolveWallet } from '../../../utils/wallet';
 import { sendMoney } from '../../../actions/wallet';
 
