@@ -28,7 +28,11 @@
 5. After you created the pull request you are almost done. The reviewer will ping you if there is a problem with the pull request.  
 
 ### Tools & Framework's
-- We are using [Native Base](https://nativebase.io/) to build an UI that has the native design of Android and IOS (depending on where you use the app). If you plan to contribute make sure to checkout what they are providing to avoid unnecessary work. 
+We are using:
+- [Redux](https://github.com/reactjs/react-redux) for state management.
+- [Redux-Saga](https://github.com/redux-saga/redux-saga) for handling asynchronous state changes.
+- [React Native Navigation](https://github.com/wix/react-native-navigation) for truly native navigation.
+- [Jest](https://facebook.github.io/jest/) for testing.
 
 ### Project structure
 
