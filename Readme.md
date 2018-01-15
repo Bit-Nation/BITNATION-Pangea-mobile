@@ -37,7 +37,15 @@ We are using:
 
 ### Project structure
 
-- `./src/components/common` contain's all common components like e.g. a "header" component.
-- `./__tests__` contain's all the test's
+- `./src/actions` contains actions contants and action creator functions.
+- `./src/assets/images` contains all images. It's preferred to keep @2x and @3x files for iOS devices with different scale factor.
+- `./src/components` contains all common components.
+- `./src/global` contains constans like images, colors and screens.
+- `./src/reducers` contains reducers and initial states.
+- `./src/sagas` contains sagas (see [Redux-Saga](https://github.com/redux-saga/redux-saga)).
+- `./src/screens` contains screen components.
+- `./src/services` contains services.
+- `./src/utils` contains functions that is useful in different parts of the app.
+- `./__tests__` contains all the tests
 
 ### [Docs](./docs/main.md)
