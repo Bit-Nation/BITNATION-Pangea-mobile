@@ -9,12 +9,12 @@ import _ from 'lodash';
 import ImagePicker from 'react-native-image-crop-picker';
 
 import styles from './styles';
-import BackgroundImage from '../../../components/BackgroundImage';
+import BackgroundImage from '../../../components/common/BackgroundImage';
 import AssetsImage from '../../../global/AssetsImages';
-import NavigatorComponent from '../../../components/NavigatorComponent';
+import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import Colors from '../../../global/Colors';
 import { ActionSheet } from 'native-base';
-import FakeNavigationBar from '../../../components/FakeNavigationBar';
+import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 
 const DONE_BUTTON = 'DONE_BUTTON';
 

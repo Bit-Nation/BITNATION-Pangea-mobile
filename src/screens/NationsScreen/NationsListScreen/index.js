@@ -7,12 +7,12 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 import SegmentedControl from 'react-native-segmented-control-tab';
 
-import BackgroundImage from '../../../components/BackgroundImage';
+import BackgroundImage from '../../../components/common/BackgroundImage';
 import styles from './styles';
-import NationListItem from '../../../components/NationListItem';
-import NationListHeader from '../../../components/NationListHeader';
+import NationListItem from '../../../components/common/NationListItem';
+import NationListHeader from '../../../components/common/NationListHeader';
 import { ALL_NATIONS } from '../../../reducers/nations';
-import FakeNavigationBar from '../../../components/FakeNavigationBar';
+import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 
 class NationsListScreen extends Component {
 

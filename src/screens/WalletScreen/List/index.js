@@ -8,8 +8,8 @@ import PropTypes from 'prop-types';
 import styles from './styles';
 import Images from '../../../global/AssetsImages';
 import WalletCard from '../../../components/WalletCard';
-import BackgroundImage from '../../../components/BackgroundImage';
-import FakeNavigationBar from '../../../components/FakeNavigationBar';
+import BackgroundImage from '../../../components/common/BackgroundImage';
+import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 
 export default class WalletList extends Component {
 

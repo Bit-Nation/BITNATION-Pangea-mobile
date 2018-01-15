@@ -14,7 +14,7 @@ import styles from './styles';
 import Colors from '../../../../global/Colors';
 import Header from '../../../../components/Header';
 import Screens from '../../../../global/Screens';
-import Button from '../../../../components/Button';
+import Button from '../../../../components/common/Button';
 
 class VarifyKeyStep1 extends Component {
 

@@ -12,7 +12,7 @@ import {
   cancelUserEditing,
   doneUserEditing, startUserCreating,
 } from '../../actions/profile';
-import BackgroundImage from '../../components/BackgroundImage';
+import BackgroundImage from '../../components/common/BackgroundImage';
 
 class ProfileContainer extends Component {
 

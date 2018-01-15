@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Image, View } from 'react-native';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
 
-import AssetsImages from '../global/AssetsImages';
+import AssetsImages from '../../global/AssetsImages';
 
 export default class FakeNavigationBar extends Component {
 

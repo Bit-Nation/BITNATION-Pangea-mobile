@@ -4,7 +4,7 @@ import { MediaQueryStyleSheet } from 'react-native-responsive';
 import PropTypes from 'prop-types';
 
 import Text from './Text';
-import Colors from '../global/Colors';
+import Colors from '../../global/Colors';
 import Button from './Button';
 
 export default class MessageView extends Component {

@@ -5,7 +5,7 @@ import {
 import { connect } from 'react-redux';
 import _ from 'lodash';
 
-import Background from '../../components/BackgroundImage';
+import Background from '../../components/common/BackgroundImage';
 import Screens from '../../global/Screens';
 import List from './List';
 import EmptyWalletScreen from './EmptyState/index';

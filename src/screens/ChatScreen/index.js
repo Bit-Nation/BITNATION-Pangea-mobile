@@ -11,8 +11,8 @@ import styles from './styles';
 import { GiftedChat, Composer, InputToolbar } from 'react-native-gifted-chat';
 import AssetsImages from '../../global/AssetsImages';
 
-import BackgroundImage from '../../components/BackgroundImage';
-import FakeNavigationBar from '../../components/FakeNavigationBar';
+import BackgroundImage from '../../components/common/BackgroundImage';
+import FakeNavigationBar from '../../components/common/FakeNavigationBar';
 
 
 class ChatScreen extends React.Component {

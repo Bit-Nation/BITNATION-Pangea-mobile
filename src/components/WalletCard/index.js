@@ -6,7 +6,7 @@ import {
 import styles from './styles';
 import PropTypes from 'prop-types';
 import Images from '../../global/AssetsImages';
-import Button from '../Button';
+import Button from '../common/Button';
 
 const WalletCard = (props) => {
 
