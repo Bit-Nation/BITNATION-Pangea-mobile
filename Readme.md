@@ -10,9 +10,15 @@
 1. Clone the repo
 2. Run `npm install`
 3. copy `.env.dev.example` to `.env`
-4. Run cd ios
-5. Run pod install
-6. Run `npm run android` or `npm run ios`
+
+#### IOS specific
+1. Get [cocoapods](https://cocoapods.org/)
+2. Go to the `ios` folder
+3. Run `pod install`
+4. Go back to the project root and run `npm run ios`
+
+#### Android specific
+1. Run `npm run android`
 
 ### Git & best practice
 
