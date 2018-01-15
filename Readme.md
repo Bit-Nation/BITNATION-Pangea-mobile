@@ -28,11 +28,24 @@
 5. After you created the pull request you are almost done. The reviewer will ping you if there is a problem with the pull request.  
 
 ### Tools & Framework's
-- We are using [Native Base](https://nativebase.io/) to build an UI that has the native design of Android and IOS (depending on where you use the app). If you plan to contribute make sure to checkout what they are providing to avoid unnecessary work. 
+We are using:
+- [Redux](https://github.com/reactjs/react-redux) for state management.
+- [Redux-Saga](https://github.com/redux-saga/redux-saga) for handling asynchronous state changes.
+- [React Native Navigation](https://github.com/wix/react-native-navigation) for truly native navigation.
+- [Lodash](https://lodash.com) for great preset of utility functions on data structures.
+- [Jest](https://facebook.github.io/jest/) for testing.
 
 ### Project structure
 
-- `./src/components/common` contain's all common components like e.g. a "header" component.
-- `./__tests__` contain's all the test's
+- `./src/actions` contains actions contants and action creator functions.
+- `./src/assets/images` contains all images. It's preferred to keep @2x and @3x files for iOS devices with different scale factor.
+- `./src/components` contains all common components.
+- `./src/global` contains constans like images, colors and screens.
+- `./src/reducers` contains reducers and initial states.
+- `./src/sagas` contains sagas (see [Redux-Saga](https://github.com/redux-saga/redux-saga)).
+- `./src/screens` contains screen components.
+- `./src/services` contains services.
+- `./src/utils` contains functions that is useful in different parts of the app.
+- `./__tests__` contains all the tests
 
 ### [Docs](./docs/main.md)
