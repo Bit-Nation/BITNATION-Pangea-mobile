@@ -32,6 +32,7 @@ We are using:
 - [Redux](https://github.com/reactjs/react-redux) for state management.
 - [Redux-Saga](https://github.com/redux-saga/redux-saga) for handling asynchronous state changes.
 - [React Native Navigation](https://github.com/wix/react-native-navigation) for truly native navigation.
+- [Lodash](https://lodash.com) for great preset of utility functions on data structures.
 - [Jest](https://facebook.github.io/jest/) for testing.
 
 ### Project structure
