@@ -113,8 +113,6 @@ class EditProfile extends NavigatorComponent {
             />
           </View>
 
-          {/*  Commented for Sprint 0.3.1  */}
-          {/*
           <View style={styles.row}>
             <Text style={styles.labelText}>Lat.</Text>
             <TextInput
@@ -122,6 +120,8 @@ class EditProfile extends NavigatorComponent {
               onChangeText={(text) => this._onChange('latitude', text)}
               style={styles.textInput}
               keyboardType='numeric'
+              placeholderTextColor='rgba(255,255,255,0.3)'
+              placeholder = "(Optional)"
             />
           </View>
 
@@ -132,9 +132,11 @@ class EditProfile extends NavigatorComponent {
               onChangeText={(text) => this._onChange('longitude', text)}
               style={styles.textInput}
               keyboardType='numeric'
+              placeholderTextColor='rgba(255,255,255,0.3)'
+              placeholder = "(Optional)"
             />
           </View>
-          */}
+
 
         </View>
         <ActionSheet ref={(c) => {

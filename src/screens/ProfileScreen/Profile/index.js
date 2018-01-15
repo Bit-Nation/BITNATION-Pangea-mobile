@@ -70,7 +70,7 @@ class ProfileScreen extends NavigatorComponent {
         <Text style={styles.infoText}>{user.location}</Text>
         <Text style={styles.infoText}>
           {/*  Commented for Sprint 0.3.1  */}
-          {/*!_.isEmpty(user.latitude) && !_.isEmpty(user.longitude) && (user.latitude + ', ' + user.longitude)*/}
+          {!_.isEmpty(user.latitude) && !_.isEmpty(user.longitude) && (user.latitude + ', ' + user.longitude)}
         </Text>
         <Text style={styles.ethAddress}>{user.ethAddress}</Text>
       </View>
