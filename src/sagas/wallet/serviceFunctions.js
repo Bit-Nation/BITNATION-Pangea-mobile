@@ -11,7 +11,8 @@ export async function syncWallet(wallet) {
 
 export async function resolveBalance(wallet) {
   const container = await containerPromise;
-  let balance = await container.panthalassa.ethereum.wallet.ethBalance(wallet.ethAddress);
+  // @todo Add ethBalance method, once fixed
+  let balance = 0;
   if (!balance) {
     await syncWallet(wallet);
     return await resolveBalance(wallet);
