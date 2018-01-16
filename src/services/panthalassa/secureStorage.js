@@ -13,8 +13,8 @@ const sSImplementation:SecureStorage = {
         .then(_ => res())
         .catch(rej)
     ),
-    get: (key:string) => SInfo.getItem(key),
-    has: (key:string) => new Promise((res, rej) => SInfo.getItem(key)
+    get: (key:string) => SInfo.getItem(key, {}),
+    has: (key:string) => new Promise((res, rej) => SInfo.getItem(key, {})
         .then(value => {
 
             //Using if for exact comparison
@@ -32,22 +32,42 @@ const sSImplementation:SecureStorage = {
         })
         .catch(error => rej(error))
     ),
-    remove: (key:string) => SInfo.deleteItem(key),
+    remove: (key:string) => SInfo.deleteItem(key, {}),
     fetchItems: (filter: (key:string, value:any) => boolean) : Promise<{}> => new Promise((res, rej) => {
 
         SInfo
-            .getAllItems()
-            .then(items => {
-
+            .getAllItems({})
+            .then(itemsArray => {
+                // @todo Remove that after issue fixed (https://github.com/mCodex/react-native-sensitive-info/issues/8)
+                const isIOS = Array.isArray(itemsArray[0]);
                 const filteredItems = {};
 
-                Object
-                    //Get all key's of the items
+                if (isIOS) {
+                  const items = itemsArray[0];
+
+                  items
+                  // Convert array to key value objects
+                    .map(item => {
+                      return {
+                        key: item.key,
+                        value: item.value,
+                      };
+                    })
+                    //Filter them based on provided filter
+                    .filter(object => filter(object.key, object.value))
+                    //Combine keys into one object
+                    .forEach(object => filteredItems[object.key] = object.value);
+                } else {
+                  const items = itemsArray;
+
+                  Object
+                    // Convert to keys array
                     .keys(items)
                     //Filter them based on provided filter
                     .filter(key => filter(key, items[key]))
-                    //Push filtered item's
-                    .map(key => filteredItems[key]  = items[key]);
+                    //Combine keys into one object
+                    .forEach(key => filteredItems[key] = items[key]);
+                }
 
                 res(filteredItems);
 
