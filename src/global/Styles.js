@@ -3,7 +3,8 @@ import Colors from './Colors';
 
 const styles = {
 
-  /* Lists Layout */
+  // ========================================
+  // Lists Layout
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -12,6 +13,35 @@ const styles = {
   sectionList: {
     flex: 1,
   },
+
+  // e.g. NationListItem Text
+  listItemText: {
+    color: 'white',
+    flex: 1,
+    marginLeft: 15,
+  },
+
+  // e.g. NationListItem
+  sectionListTouchable: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+    // e.g. NationListItem
+  sectionListItemContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    height: 44,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(255,255,255,0.1)',
+  },
+
+
+  // ========================================
+  // Tab Bar with text
   segmentedControlContainer: {
     height: 44,
     flexDirection: 'row',
@@ -33,6 +63,8 @@ const styles = {
   activeTabStyle: {
     backgroundColor: Colors.getBitNationLightBlue(0.8),
   },
+
+
 
 };
 

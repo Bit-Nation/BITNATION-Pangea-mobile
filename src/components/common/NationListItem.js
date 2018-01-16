@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, } from 'react-native';
 import PropTypes from 'prop-types';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
-import { nationListItemText } from '../../global/Styles';
+
+import GlobalStyles from '../../global/Styles';
 
 export default class NationListItem extends Component {
 
@@ -20,24 +21,19 @@ export default class NationListItem extends Component {
 
 }
 
+
 const styles = MediaQueryStyleSheet.create({
+  ...GlobalStyles,
+
   container: {
-    flex: 1,
-    flexDirection: 'row',
-    height: 44,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'rgba(255,255,255,0.1)',
+    ...GlobalStyles.sectionListItemContainer,
   },
+
   touchable: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
+    ...GlobalStyles.sectionListTouchable,
   },
+
   text: {
-    ...nationListItemText,
-    flex: 1,
-    marginLeft: 15,
+    ...GlobalStyles.listItemText,
   },
 });

@@ -7,10 +7,12 @@ const styles = MediaQueryStyleSheet.create({
   ...GlobalStyles,
 
   /* Example of over-writing a global style sheet value */
+  /*
   tabTextStyle: {
     color: Colors.Red,
   },
-  
+  */
+
 });
 
 export default styles;
