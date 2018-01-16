@@ -6,10 +6,10 @@ export default styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  scrollViewContentContainer: {
+  contentContainer: {
     paddingLeft: 15,
     paddingRight: 15,
-    paddingBottom: 20,
+    flex: 1,
   },
   instructionContainer: {
     marginTop: 14,
@@ -23,7 +23,7 @@ export default styles = StyleSheet.create({
     flex: 1,
   },
   gridContainer: {
-    flex: 1,
+    height: 241,
     borderRadius: 8,
     backgroundColor: 'rgba(27,57,92,0.7)',
     paddingTop: 20,
@@ -36,12 +36,12 @@ export default styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'flex-end',
-    marginBottom: 40,
+    marginBottom: '12%',
     paddingLeft: 10,
     paddingRight: 10,
   },
   button: {
     width: 90,
-  }
+  },
 
 });

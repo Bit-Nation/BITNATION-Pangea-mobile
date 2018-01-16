@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  View, TouchableOpacity, Alert, Platform, ScrollView
+  View, TouchableOpacity, Alert, Platform, ScrollView,
 } from 'react-native';
 import styles from './styles';
 import PropTypes from 'prop-types';
@@ -13,7 +13,7 @@ import Text from '../../../../components/common/Text';
 import GridView from '../../../../components/GridView';
 import Button from '../../../../components/common/Button';
 import PrivateKeyTextInputContainer from '../../../../components/PrivateKeyTextInputContainer';
-import { KEY_ROW_COUNT, KEY_COLUMN_COUNT } from '../../../../global/Constants';
+import { KEY_ROW_COUNT, KEY_COLUMN_COUNT, KEY_PAGE_ROW_COUNT } from '../../../../global/Constants';
 import CreateKeyBaseScreen from '../CreateKeyBaseScreen/index';
 
 const DONE_BUTTON = 'DONE_BUTTON';
@@ -91,39 +91,31 @@ class CreateKeyStep3 extends CreateKeyBaseScreen {
       <View style={styles.container}>
         <BackgroundImage/>
         <FakeNavigationBar/>
-        <ScrollView contentContainerStyle={styles.scrollViewContentContainer}>
-          <View>
-            <View style={styles.instructionContainer}>
-              <Text messageText style={styles.instruction}>
-                We will show you a group of 24 words that is the private key that unlocks your wallet.
-              </Text>
-            </View>
-            <View style={styles.gridContainer}>
-              <GridView
-                itemsPerRow={KEY_COLUMN_COUNT}
-                rowsCount={4}
-                renderItem={this._renderText}
-                activeRow={this.state.activeRow}
-                disableInactiveRows
-                style={styles.gridView}
-              />
-            </View>
-            <View style={styles.instructionContainer}>
-              <Text messageText style={styles.instruction}>
-                Write the words on paper, in order. Store the paper in very safe place. If your device is lost, stolen,
-                broken, or upgraded, you must have this key to restore or unlock your wallet.
-              </Text>
-            </View>
-            <View style={styles.buttonContainer}>
-              <Button title='Previous'
-                      onPress={this.onPreviousPressed}
-                      style={styles.button}/>
-              <Button title='Next'
-                      onPress={this.onNextPressed}
-                      style={styles.button}/>
-            </View>
+        <View style={styles.contentContainer}>
+          <View style={styles.instructionContainer}>
+            <Text messageText style={styles.instruction}>
+              Write each row of words on the piece of paper. Press “Next” when you have written the row.
+            </Text>
           </View>
-        </ScrollView>
+          <View style={styles.gridContainer}>
+            <GridView
+              itemsPerRow={KEY_COLUMN_COUNT}
+              rowsCount={KEY_PAGE_ROW_COUNT}
+              renderItem={this._renderText}
+              activeRow={this.state.activeRow}
+              disableInactiveRows
+              style={styles.gridView}
+            />
+          </View>
+          <View style={styles.buttonContainer}>
+            <Button title='Previous'
+                    onPress={this.onPreviousPressed}
+                    style={styles.button}/>
+            <Button title='Next'
+                    onPress={this.onNextPressed}
+                    style={styles.button}/>
+          </View>
+        </View>
       </View>
     );
   }

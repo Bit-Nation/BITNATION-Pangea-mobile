@@ -19,6 +19,7 @@ export default styles = StyleSheet.create({
   },
   text: {
     color: '#8E8E93',
+    opacity: 0.5,
     fontSize: 12,
     textAlign: 'center',
     marginTop: 4,

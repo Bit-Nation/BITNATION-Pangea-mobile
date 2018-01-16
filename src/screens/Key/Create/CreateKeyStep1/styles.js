@@ -20,7 +20,7 @@ const styles = MediaQueryStyleSheet.create(
       flexDirection: 'row',
       justifyContent: 'center',
       alignItems: 'flex-end',
-      marginBottom: 40,
+      marginBottom: '12%',
     },
   }
 );
