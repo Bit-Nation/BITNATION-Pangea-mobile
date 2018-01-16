@@ -28,7 +28,7 @@ const styles = {
   },
   tabTextStyle: {
     backgroundColor: 'transparent',
-    color: Colors.Red,
+    color: Colors.white,
   },
   activeTabStyle: {
     backgroundColor: Colors.getBitNationLightBlue(0.8),

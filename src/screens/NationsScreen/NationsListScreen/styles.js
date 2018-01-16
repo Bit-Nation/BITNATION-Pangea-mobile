@@ -6,10 +6,11 @@ import GlobalStyles from '../../../global/Styles';
 const styles = MediaQueryStyleSheet.create({
   ...GlobalStyles,
 
-  segmentedControlContainer: {
-    ...GlobalStyles.segmentedControlContainer,
-    height: 44,
+  /* Example of over-writing a global style sheet value */
+  tabTextStyle: {
+    color: Colors.Red,
   },
+  
 });
 
 export default styles;

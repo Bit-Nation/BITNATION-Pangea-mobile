@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, } from 'react-native';
 import PropTypes from 'prop-types';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
-import { nationListItemText } from '../../global/styles';
+import { nationListItemText } from '../../global/Styles';
 
 export default class NationListItem extends Component {
 
