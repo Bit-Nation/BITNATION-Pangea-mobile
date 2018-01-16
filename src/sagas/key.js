@@ -6,22 +6,26 @@ import {
 import {
   updateWalletList
 } from '../actions/wallet';
-import container from '../services/container';
+import containerPromise from '../services/container';
 import { compressMnemonic } from '../utils/key';
 
 async function createPrivateKey() {
+  const container = await containerPromise;
   return await container.panthalassa.ethereum.utils.createPrivateKey();
 }
 
 async function privateKeyToMnemonic(privateKey) {
+  const container = await containerPromise;
   return await container.panthalassa.ethereum.utils.privateKeyToMnemonic(privateKey);
 }
 
 async function mnemonicToPrivateKey(mnemonic) {
+  const container = await containerPromise;
   return await container.panthalassa.ethereum.utils.mnemonicToPrivateKey(mnemonic);
 }
 
 async function savePrivateKey(privateKey) {
+  const container = await containerPromise;
   return await container.panthalassa.ethereum.utils.savePrivateKey(privateKey);
 }
 
