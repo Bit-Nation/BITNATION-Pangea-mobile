@@ -17,9 +17,7 @@ async function createContainer() {
   const ee = new EventEmitter();
   const dbInstance = db(DB_PATH);
   const ethUtilsInstance = ethUtils(secureStorage, ee, osDeps);
-  console.log('WEB3');
   const ethWeb3Instance = await web3(ethDaemon, ee, ethUtilsInstance);
-  console.log('WEB3 FINISHED');
   const ethWallet = wallet(ethUtilsInstance, ethWeb3Instance, dbInstance);
   const profileInstance = profile(dbInstance, ethUtilsInstance);
 
