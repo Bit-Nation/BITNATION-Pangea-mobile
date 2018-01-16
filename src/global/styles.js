@@ -1,4 +1,4 @@
 export const nationListItemText = {
   color: 'white',
-  fontSize: 30,
+  fontSize: 17,
 };
