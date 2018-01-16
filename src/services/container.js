@@ -17,8 +17,8 @@ async function createContainer() {
   const ee = new EventEmitter();
   const dbInstance = db(DB_PATH);
   const ethUtilsInstance = ethUtils(secureStorage, ee, osDeps);
-  const ethWeb3Instance = await web3(ethDaemon, ee, ethUtilsInstance);
-  const ethWallet = wallet(ethUtilsInstance, ethWeb3Instance, dbInstance);
+  // const ethWeb3Instance = await web3(ethDaemon, ee, ethUtilsInstance);
+  // const ethWallet = wallet(ethUtilsInstance, ethWeb3Instance, dbInstance);
   const profileInstance = profile(dbInstance, ethUtilsInstance);
 
   return {
@@ -27,8 +27,8 @@ async function createContainer() {
       database: dbInstance,
       ethereum: {
         utils: ethUtilsInstance,
-        web3: ethWeb3Instance,
-        wallet: ethWallet,
+        // web3: ethWeb3Instance,
+        // wallet: ethWallet,
       },
       profile: profileInstance,
     },
