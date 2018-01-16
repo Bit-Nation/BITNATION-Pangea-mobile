@@ -107,7 +107,7 @@ class EditProfile extends NavigatorComponent {
               value={this.props.editingUser.location}
               onChangeText={(text) => this._onChange('location', text)}
               style={styles.textInput}
-              placeholder='Location'
+              placeholder='Location (Optional)'
               placeholderTextColor='rgba(255,255,255,0.3)'
               keyboardType='default'
             />
@@ -120,6 +120,8 @@ class EditProfile extends NavigatorComponent {
               onChangeText={(text) => this._onChange('latitude', text)}
               style={styles.textInput}
               keyboardType='numeric'
+              placeholderTextColor='rgba(255,255,255,0.3)'
+              placeholder = "(Optional)"
             />
           </View>
 
@@ -130,8 +132,11 @@ class EditProfile extends NavigatorComponent {
               onChangeText={(text) => this._onChange('longitude', text)}
               style={styles.textInput}
               keyboardType='numeric'
+              placeholderTextColor='rgba(255,255,255,0.3)'
+              placeholder = "(Optional)"
             />
           </View>
+
 
         </View>
         <ActionSheet ref={(c) => {
@@ -194,7 +199,7 @@ class EditProfile extends NavigatorComponent {
   };
 
   _userIsValid(user) {
-    return !_.isEmpty(user.name) && !_.isEmpty(user.location);
+    return !_.isEmpty(user.name); {/* Commented for Sprint 0.3.1 requiriments && !_.isEmpty(user.location); */}
   }
 
   _saveShouldBeEnabled(props) {
