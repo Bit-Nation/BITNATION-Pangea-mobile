@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, } from 'react-native';
 import PropTypes from 'prop-types';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
+import { nationListItemText } from '../../global/styles';
 
 export default class NationListItem extends Component {
 
@@ -35,9 +36,8 @@ const styles = MediaQueryStyleSheet.create({
     alignItems: 'center',
   },
   text: {
+    ...nationListItemText,
     flex: 1,
     marginLeft: 15,
-    color: 'white',
-    fontSize: 17,
   },
 });
