@@ -14,7 +14,7 @@ const imp:JsonRpcNodeInterface = {
     url: 'localhost:8545',
     start: () => daemon.startDaemon({
         enabledEthereum:true,
-        networkID: config.ETH_DAEMON_NETWORK_ID,
+        networkID: parseInt(config.ETH_DAEMON_NETWORK_ID),
         enodesNumber:16,
         maxPeers:25,
         enabledWhisper:false

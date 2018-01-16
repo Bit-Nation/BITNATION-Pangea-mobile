@@ -13,7 +13,7 @@
     "docs": "node_modules/.bin/documentation build src/services/container.js -f md > docs/main.md"
   },
   "dependencies": {
-    "BITNATION-Panthalassa": "https://github.com/Bit-Nation/Panthalassa#develop",
+    "BITNATION-Panthalassa": "git+https://github.com/Bit-Nation/BITNATION-Pangea-libs.git#8f664cbf42c44be020ca95b3de643ebff703959a",
     "assert": "^1.4.1",
     "awilix": "^3.0.1",
     "buffer": "^4.9.1",
