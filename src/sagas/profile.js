@@ -10,28 +10,35 @@ function getPangeaLibrary() {
 }
 
 function* updateProfile() {
-	let pangeaLib = yield call(getPangeaLibrary);
-	let user = yield select(state => state.profile);
-	const profile:ProfileType = {
-		...user.editingUser,
-    id: 0,
-    description: '',
-    version: '0',
-    image: user.editingUser.avatar ? user.editingUser.avatar : ''
-  };
-	let result = yield call(pangeaLib.profile.profile.setProfile, profile);
-  yield put({ type: DONE_USER_EDITING });
+	try {
+		let pangeaLib = yield call(getPangeaLibrary);
+		let user = yield select(state => state.profile);
+		const profile:ProfileType = {
+			...user.editingUser,
+	    id: 0,
+	    description: '',
+	    version: '0',
+	    image: user.editingUser.avatar ? user.editingUser.avatar : ''
+	  };
+		let result = yield call(pangeaLib.profile.profile.setProfile, profile);
+	  yield put({ type: DONE_USER_EDITING });
+	} catch(e) {
+		console.log('get profile error: ', e);
+	}
 }
 
 function* getProfile() {
-	let pangeaLib = yield call(getPangeaLibrary);
-	console.log('pangea: ', pangeaLib);
-	let profile = yield call(pangeaLib.profile.profile.getProfile);
-	const user = {
-		...profile,
-    avatar: profile.image
-  };
-  yield put({ type: SET_USER_PROFILE, user: user });
+	try {
+		let pangeaLib = yield call(getPangeaLibrary);	
+		let profile = yield call(pangeaLib.profile.profile.getProfile);
+		const user = {
+			...profile,
+	    avatar: profile.image
+	  };
+	  yield put({ type: SET_USER_PROFILE, user: user });
+	} catch (e) {
+		console.log('get profile error: ', e);
+	}
 }
 
 export default function* watchProfileUpdate() {	
