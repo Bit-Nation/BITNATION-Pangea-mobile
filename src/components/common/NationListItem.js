@@ -9,9 +9,9 @@ export default class NationListItem extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <TouchableOpacity onPress={() => this.props.onPress(this.props.item.id)} style={styles.touchable}>
-          <Text style={styles.text}>
+      <View style={styles.sectionListItemContainer}>
+        <TouchableOpacity onPress={() => this.props.onPress(this.props.item.id)} style={styles.sectionListTouchable}>
+          <Text style={styles.listItemText}>
             {this.props.text}
           </Text>
         </TouchableOpacity>
@@ -25,15 +25,15 @@ export default class NationListItem extends Component {
 const styles = MediaQueryStyleSheet.create({
   ...GlobalStyles,
 
-  container: {
+  sectionListItemContainer: {
     ...GlobalStyles.sectionListItemContainer,
   },
 
-  touchable: {
+  sectionListTouchable: {
     ...GlobalStyles.sectionListTouchable,
   },
 
-  text: {
+  listItemText: {
     ...GlobalStyles.listItemText,
   },
 });
