@@ -4,12 +4,92 @@ import Colors from './Colors';
 const styles = {
 
   // ========================================
-  // Lists Layout
-  container: {
+  // Common Layout Elements
+
+  // General screen container
+  screenContainer: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
+    flexDirection: 'column',
     alignItems: 'stretch',
   },
+
+  // From Profile Screen:
+  profilesScreenContainer: {
+    flex: 1,
+    justifyContent: 'flex-start',
+    flexDirection: 'column',
+    alignItems: 'stretch',
+  },
+
+    // From Nations Screen:
+  nationsScreenContainer: {
+    flex: 1,
+    //justifyContent: 'center',
+    justifyContent: 'flex-start',
+    flexDirection: 'column',
+    alignItems: 'stretch',
+  },
+
+
+  // ========================================
+  // Forms
+  // Example: Profile Edit Screen
+
+  // Holds an input field in a form, e.g. Profile Edit
+  fieldsContainer: {
+    alignItems: 'stretch',
+    flex: 1,
+  },
+
+  formRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+
+  textInput: {
+    backgroundColor: Colors.getBitNationLightBlue(0.2),
+    borderColor: Colors.borderColor,
+    borderWidth: 1,
+    color: Colors.white,
+    flex: 1,
+    marginTop: 4,
+    marginBottom: 4,
+    marginRight: 16,
+    marginLeft: 16,
+    fontSize: 16,
+    paddingLeft: 4,
+    paddingTop: 6,
+    paddingBottom: 6,
+  },
+
+  editItemLabel: {
+    backgroundColor: 'transparent',
+    color: Colors.titleColor,
+    fontSize: 15,
+    margin: 5,
+  },
+
+  labelText: {
+    backgroundColor: 'transparent',
+    color: Colors.titleColor,
+    fontSize: 17,
+  },
+
+
+
+  // ========================================
+  // Panel Lists Layout
+  // These are lists of rectangular panels which contain different kinds of content.
+  // Example: Nations Details screen
+
+
+
+  // ========================================
+  // Section Lists Layout
+  // These are lists with rows divided by section headers, e.g. "A"
+  // Example: Nations List screen
+
   sectionList: {
     flex: 1,
   },
@@ -187,6 +267,29 @@ const styles = {
 
   button: {
     marginTop: 13,
+  },
+
+
+
+
+  // ========================================
+  // Profile Screen
+  // e.g. components/common/MessageView.js
+
+
+  avatarContainer: {
+    width: 100,
+    alignItems: 'center',
+  },
+
+  avatarChangeContainer: {
+    alignItems: 'center',
+  },
+
+  avatar: {
+    height: 50,
+    width: 50,
+    borderRadius: 25,
   },
 
 

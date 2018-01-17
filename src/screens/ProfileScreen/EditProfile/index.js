@@ -80,18 +80,18 @@ class EditProfile extends NavigatorComponent {
       AssetsImage.Placeholder.avatar;
 
     return (
-      <View style={[styles.row, styles.header]}>
+      <View style={[styles.formRow, styles.header]}>
         <View style={styles.avatarContainer}>
           <TouchableOpacity onPress={this._onEditAvatar}>
             <View style={styles.avatarChangeContainer}>
               <Image source={avatarSource} style={styles.avatar}/>
-              <Text style={styles.editText}>edit</Text>
+              <Text style={styles.editItemLabel}>edit</Text>
             </View>
           </TouchableOpacity>
         </View>
         <View style={styles.fieldsContainer}>
 
-          <View style={styles.row}>
+          <View style={styles.formRow}>
             <TextInput
               value={this.props.editingUser.name}
               onChangeText={(text) => this._onChange('name', text)}
@@ -102,7 +102,7 @@ class EditProfile extends NavigatorComponent {
             />
           </View>
 
-          <View style={styles.row}>
+          <View style={styles.formRow}>
             <TextInput
               value={this.props.editingUser.location}
               onChangeText={(text) => this._onChange('location', text)}
@@ -113,7 +113,7 @@ class EditProfile extends NavigatorComponent {
             />
           </View>
 
-          <View style={styles.row}>
+          <View style={styles.formRow}>
             <Text style={styles.labelText}>Lat.</Text>
             <TextInput
               value={this.props.editingUser.latitude}
@@ -125,7 +125,7 @@ class EditProfile extends NavigatorComponent {
             />
           </View>
 
-          <View style={styles.row}>
+          <View style={styles.formRow}>
             <Text style={styles.labelText}>Long.</Text>
             <TextInput
               value={this.props.editingUser.longitude}
