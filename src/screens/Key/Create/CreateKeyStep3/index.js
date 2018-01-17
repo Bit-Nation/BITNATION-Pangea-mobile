@@ -13,7 +13,9 @@ import Text from '../../../../components/common/Text';
 import GridView from '../../../../components/GridView';
 import Button from '../../../../components/common/Button';
 import PrivateKeyTextInputContainer from '../../../../components/PrivateKeyTextInputContainer';
-import { KEY_ROW_COUNT, KEY_COLUMN_COUNT, KEY_PAGE_ROW_COUNT } from '../../../../global/Constants';
+import {
+  KEY_ROW_COUNT, KEY_COLUMN_COUNT, KEY_PAGE_ROW_COUNT, KEY_PAGE_LENGTH,
+} from '../../../../global/Constants';
 import CreateKeyBaseScreen from '../CreateKeyBaseScreen/index';
 
 const DONE_BUTTON = 'DONE_BUTTON';
@@ -47,13 +49,21 @@ class CreateKeyStep3 extends CreateKeyBaseScreen {
     });
   }
 
+  get activePage() {
+    return Math.floor(this.state.activeRow / KEY_PAGE_ROW_COUNT);
+  }
+
   onNavBarButtonPress(id) {
     super.onNavBarButtonPress(id);
 
     if (id === DONE_BUTTON) {
-      this.props.navigator.push(screen('CREATE_KEY_SUCCESS_SCREEN'));
+      this.onDone();
     }
   }
+
+  onDone = () => {
+    this.props.navigator.push(screen('CREATE_KEY_SUCCESS_SCREEN'));
+  };
 
   onNextPressed = () => {
     this.setState((prevState) => {
@@ -62,7 +72,7 @@ class CreateKeyStep3 extends CreateKeyBaseScreen {
       return {
         ...prevState,
         activeRow: nextRow,
-        lastRowReached: nextRow === KEY_ROW_COUNT - 1,
+        lastRowReached: prevState.lastRowReached || nextRow === KEY_ROW_COUNT - 1,
       };
     });
   };
@@ -74,6 +84,7 @@ class CreateKeyStep3 extends CreateKeyBaseScreen {
   };
 
   _renderText = (index) => {
+    index += this.activePage * KEY_PAGE_LENGTH;
     return (
       <PrivateKeyTextInputContainer
         editable={false}
@@ -102,7 +113,7 @@ class CreateKeyStep3 extends CreateKeyBaseScreen {
               itemsPerRow={KEY_COLUMN_COUNT}
               rowsCount={KEY_PAGE_ROW_COUNT}
               renderItem={this._renderText}
-              activeRow={this.state.activeRow}
+              activeRow={this.state.activeRow % KEY_PAGE_ROW_COUNT}
               disableInactiveRows
               style={styles.gridView}
             />
