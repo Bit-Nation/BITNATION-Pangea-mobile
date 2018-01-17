@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { Alert } from 'react-native';
+import { BackHandler, Alert } from 'react-native';
 
 import Colors from '../../../global/Colors';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
-import { removePrivateKey } from '../../../actions/key';
 
 export default class KeyBaseScreen extends NavigatorComponent {
 
@@ -15,6 +14,17 @@ export default class KeyBaseScreen extends NavigatorComponent {
     }],
     rightButtons: [],
   };
+
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress');
+  }
+
+  componentDidMount() {
+    BackHandler.addEventListener('hardwareBackPress', () => {
+      this.onCancel();
+      return false;
+    });
+  }
 
   onNavigatorEvent(event) {
     if (event.id === 'backPress') {

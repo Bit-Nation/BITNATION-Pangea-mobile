@@ -43,9 +43,12 @@ export const hiddenNavigatorStyle = {
   rootBackgroundImageName: 'background',
 };
 
-const keyFlowNavigatorStyle = {
-  ...navigatorStyle,
-  disabledBackGesture: true,
+const baseKeyScreen = {
+  navigatorStyle: {
+    ...navigatorStyle,
+    disabledBackGesture: true,
+  },
+  overrideBackPress: true,
 }
 
 const Screens = {
@@ -95,37 +98,32 @@ const Screens = {
   CREATE_KEY_SCREEN_STEP_1: {
     screen: 'Pangea.CreateKeyStep1',
     title: ' Create Private Key ',
-    backButtonTitle: 'Back',
-    navigatorStyle: keyFlowNavigatorStyle,
+    ...baseKeyScreen,
   },
   CREATE_KEY_SCREEN_STEP_2: {
     screen: 'Pangea.CreateKeyStep2',
     title: 'Create Private Key',
-    backButtonTitle: 'Back',
-    navigatorStyle: keyFlowNavigatorStyle,
+    ...baseKeyScreen,
   },
   CREATE_KEY_SCREEN_STEP_3: {
     screen: 'Pangea.CreateKeyStep3',
     title: 'Create Private Key',
-    backButtonTitle: 'Back',
-    navigatorStyle: keyFlowNavigatorStyle,
+    ...baseKeyScreen,
   },
   VERIFY_KEY_SCREEN_STEP_1: {
     screen: 'Pangea.VerifyKeyStep1',
     title: 'Verify Private Key',
-    backButtonTitle: 'Back',
-    navigatorStyle: keyFlowNavigatorStyle,
+    ...baseKeyScreen,
   },
   VERIFY_KEY_SCREEN_STEP_2: {
     screen: 'Pangea.VerifyKeyStep2',
     title: 'Verify Private Key',
-    backButtonTitle: 'Back',
-    navigatorStyle: keyFlowNavigatorStyle,
+    ...baseKeyScreen,
   },
   LOAD_WALLET_SCREEN: {
     screen: 'Pangea.LoadWalletScreen',
     title: ' Load wallet ',
-    navigatorStyle: keyFlowNavigatorStyle,
+    ...baseKeyScreen,
   },
   INTRO_SCREEN: {
     screen: 'Pangea.Intro',
@@ -139,8 +137,7 @@ const Screens = {
   CREATE_KEY_SUCCESS_SCREEN: {
     screen: 'Pangea.CreateKeySuccessScreen',
     title: 'Create Private Key',
-    backButtonTitle: 'Cancel',
-    navigatorStyle,
+    ...baseKeyScreen,
   },
   VERIFY_KEY_SUCCESS_SCREEN: {
     screen: 'Pangea.VerifyKeySuccess',
