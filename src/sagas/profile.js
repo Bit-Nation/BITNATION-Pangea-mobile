@@ -1,12 +1,16 @@
 import { takeEvery } from 'redux-saga';
 import { call, put, select } from 'redux-saga/effects';
-import { createPangeaLibsFactory } from '../services/container';
+import PangeaContainer from '../services/container';
 import type {ProfileType} from 'BITNATION-Pangea-libs/src/database/schemata';
 
 import { REQUEST_PROFILE_UPDATE, DONE_USER_EDITING, SET_USER_PROFILE, REQUEST_GET_PROFILE } from '../actions/profile';
 
+function getPangeaLibrary() {
+	return PangeaContainer;
+}
+
 function* updateProfile() {
-	let pangeaLib = yield call(createPangeaLibsFactory);
+	let pangeaLib = yield call(getPangeaLibrary);
 	let user = yield select(state => state.profile);
 	const profile:ProfileType = {
 		...user.editingUser,
@@ -20,7 +24,8 @@ function* updateProfile() {
 }
 
 function* getProfile() {
-	let pangeaLib = yield call(createPangeaLibsFactory);
+	let pangeaLib = yield call(getPangeaLibrary);
+	console.log('pangea: ', pangeaLib);
 	let profile = yield call(pangeaLib.profile.profile.getProfile);
 	const user = {
 		...profile,
