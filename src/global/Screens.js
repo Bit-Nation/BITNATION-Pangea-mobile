@@ -122,6 +122,11 @@ const Screens = {
     backButtonTitle: 'Back',
     navigatorStyle: keyFlowNavigatorStyle,
   },
+  LOAD_WALLET_SCREEN: {
+    screen: 'Pangea.LoadWalletScreen',
+    title: ' Load wallet ',
+    navigatorStyle: keyFlowNavigatorStyle,
+  },
   INTRO_SCREEN: {
     screen: 'Pangea.Intro',
     navigatorStyle: hiddenNavigatorStyle,

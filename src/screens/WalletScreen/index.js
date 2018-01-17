@@ -24,7 +24,7 @@ class WalletScreen extends Component {
   };
 
   restoreWallet = () => {
-    this.props.navigator.showModal(screen('VERIFY_KEY_SCREEN_STEP_1'));
+    this.props.navigator.showModal(screen('LOAD_WALLET_SCREEN'));
   };
 
   sendMoney = (wallet) => {
