@@ -3,7 +3,6 @@ import {
   View,
 } from 'react-native';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
 import styles from './styles';
 import Button from '../../../../components/common/Button';
@@ -11,14 +10,12 @@ import BackgroundImage from '../../../../components/common/BackgroundImage';
 import Text from '../../../../components/common/Text';
 import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
 import CreateKeyBaseScreen from '../CreateKeyBaseScreen/index';
-import { savePrivateKey } from '../../../../actions/key';
 
-class CreateKeySuccessScreen extends CreateKeyBaseScreen {
+export default class CreateKeySuccessScreen extends CreateKeyBaseScreen {
 
-  onNextButtonPressed() {
-    this.props.savePrivateKey();
+  onStartVerifyPress = () => {
     this.props.navigator.dismissModal();
-  }
+  };
 
   render() {
     return (
@@ -38,11 +35,14 @@ class CreateKeySuccessScreen extends CreateKeyBaseScreen {
           <Text messageText style={[styles.description, styles.applyBold]}>
             Put your paper with your private key in a safe place.
           </Text>
+          <Text messageText style={styles.description}>
+            Next, you must verify that you wrote your private key correctly by entering the words.
+          </Text>
         </View>
 
         <View style={styles.buttonContainer}>
-          <Button title='Done'
-                  onPress={() => this.onNextButtonPressed()}/>
+          <Button title='Begin'
+                  onPress={this.onStartVerifyPress}/>
         </View>
 
       </View>
@@ -53,15 +53,3 @@ class CreateKeySuccessScreen extends CreateKeyBaseScreen {
 CreateKeySuccessScreen.propTypes = {};
 
 CreateKeySuccessScreen.defaultProps = {};
-
-const mapStateToProps = state => ({
-  ...state,
-});
-
-const mapDispatchToProps = dispatch => ({
-  savePrivateKey() {
-    dispatch(savePrivateKey());
-  }
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(CreateKeySuccessScreen);
