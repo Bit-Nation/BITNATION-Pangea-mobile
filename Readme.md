@@ -9,7 +9,8 @@
 
 1. Clone the repo
 2. Run `npm install`
-3. copy `.env.dev.example` to `.env`
+3. Copy `.env.dev.example` to `.env`
+4. Set `ETH_HTTP_ENDPOINT` to your ethereum node json rpc endpoint (Mainnet: https://mainnet.infura.io/btn_dev | Ropsten: https://ropsten.infura.io/btn_dev | Rinkeby: 	https://rinkeby.infura.io/btn_dev)
 
 #### IOS specific
 1. Get [cocoapods](https://cocoapods.org/)
