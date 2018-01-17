@@ -6,6 +6,7 @@ import com.facebook.react.ReactPackage;
 import java.util.Arrays;
 import java.util.List;
 
+import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 import com.reactnativenavigation.NavigationApplication;
 import com.reactnative.ivpusic.imagepicker.PickerPackage;
 import com.reactlibrary.RNEthDaemonPackage;
@@ -26,7 +27,8 @@ public class MainApplication extends NavigationApplication {
                 new RNEthDaemonPackage(),
                 new RealmReactPackage(),
                 new RNSensitiveInfoPackage(),
-                new RandomBytesPackage()
+                new RandomBytesPackage(),
+                new ReactNativeConfigPackage()
         );
     }
 
