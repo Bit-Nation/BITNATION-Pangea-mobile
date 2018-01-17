@@ -13,12 +13,9 @@ import BackgroundImage from '../../../../components/common/BackgroundImage';
 import Text from '../../../../components/common/Text';
 import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
 import KeyBaseScreen from '../../KeyBaseScreen';
+import { removePrivateKey } from '../../../../actions/key';
 
 class CreateKeyStep1 extends KeyBaseScreen {
-
-  get shouldShowAlert() {
-    return false;
-  }
 
   onNextButtonPressed() {
     this.props.navigator.push(screen('CREATE_KEY_SCREEN_STEP_2'));
@@ -70,6 +67,10 @@ const mapStateToProps = state => ({
   ...state,
 });
 
-const mapDispatchToProps = dispatch => ({});
+const mapDispatchToProps = dispatch => ({
+  removePrivateKey() {
+    dispatch(removePrivateKey());
+  },
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateKeyStep1);

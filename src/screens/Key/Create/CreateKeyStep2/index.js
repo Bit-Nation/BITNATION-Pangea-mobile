@@ -15,14 +15,10 @@ import Button from '../../../../components/common/Button';
 import PrivateKeyTextInputContainer from '../../../../components/PrivateKeyTextInputContainer';
 import { KEY_COLUMN_COUNT, KEY_PAGE_ROW_COUNT, KEY_LENGTH } from '../../../../global/Constants';
 import KeyBaseScreen from '../../KeyBaseScreen/index';
-import { createPrivateKey } from '../../../../actions/key';
+import { createPrivateKey, removePrivateKey } from '../../../../actions/key';
 
 
 class CreateKeyStep2 extends KeyBaseScreen {
-
-  get shouldShowAlert() {
-    return false;
-  }
 
   onNextButtonPressed() {
     this.props.createPrivateKey();
@@ -83,6 +79,9 @@ const mapStateToProps = state => ({});
 const mapDispatchToProps = dispatch => ({
   createPrivateKey() {
     dispatch(createPrivateKey());
+  },
+  removePrivateKey() {
+    dispatch(removePrivateKey());
   },
 });
 

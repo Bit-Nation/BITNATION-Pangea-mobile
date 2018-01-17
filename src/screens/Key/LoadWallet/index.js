@@ -3,6 +3,7 @@ import {
   View,
 } from 'react-native';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import styles from './styles';
 import { screen } from '../../../global/Screens';
@@ -11,14 +12,12 @@ import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import Text from '../../../components/common/Text';
 import KeyBaseScreen from '../KeyBaseScreen';
-import { connect } from 'react-redux';
-import { startRestoreKey } from '../../../actions/key';
+import { removePrivateKey } from '../../../actions/key';
 
 class LoadWalletScreen extends KeyBaseScreen {
 
   onNextButtonPressed() {
-    this.props.startRestoreKey();
-    this.props.navigator.push(screen('VERIFY_KEY_SCREEN_STEP_1'));
+    this.props.navigator.push(screen('VERIFY_KEY_SCREEN_STEP_2'));
   }
 
   render() {
@@ -59,8 +58,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  startRestoreKey() {
-    dispatch(startRestoreKey());
+  removePrivateKey() {
+    dispatch(removePrivateKey());
   },
 });
 

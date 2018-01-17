@@ -17,6 +17,7 @@ import {
   KEY_ROW_COUNT, KEY_COLUMN_COUNT, KEY_PAGE_ROW_COUNT, KEY_PAGE_LENGTH,
 } from '../../../../global/Constants';
 import KeyBaseScreen from '../../KeyBaseScreen/index';
+import { removePrivateKey } from '../../../../actions/key';
 
 const DONE_BUTTON = 'DONE_BUTTON';
 
@@ -136,6 +137,10 @@ const mapStateToProps = state => ({
   ...state.key,
 });
 
-const mapDispatchToProps = dispatch => ({});
+const mapDispatchToProps = dispatch => ({
+  removePrivateKey() {
+    dispatch(removePrivateKey());
+  },
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateKeyStep3);

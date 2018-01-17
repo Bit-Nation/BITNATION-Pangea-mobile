@@ -3,8 +3,9 @@ import { Alert } from 'react-native';
 
 import Colors from '../../../global/Colors';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
+import { removePrivateKey } from '../../../actions/key';
 
-class KeyBaseScreen extends NavigatorComponent {
+export default class KeyBaseScreen extends NavigatorComponent {
 
   static navigatorButtons = {
     leftButtons: [{
@@ -29,12 +30,12 @@ class KeyBaseScreen extends NavigatorComponent {
     }
   }
 
-  get shouldShowAlert() {
-    return true;
+  get shouldShowCancelAlert() {
+    return this.props.createdMnemonic !== null && this.props.createdMnemonic !== undefined;
   }
 
   onCancel() {
-    if (!this.shouldShowAlert) {
+    if (!this.shouldShowCancelAlert) {
       this.onCancelConfirmed();
     } else {
       Alert.alert(
@@ -44,18 +45,19 @@ class KeyBaseScreen extends NavigatorComponent {
           { text: 'Cancel', style: 'cancel' },
           {
             text: 'Delete Key', style: 'destructive',
-            onPress: () => this.onCancelConfirmed()
+            onPress: () => this.onCancelConfirmed(),
           },
         ],
-        { cancelable: true }
+        { cancelable: true },
       );
     }
   }
 
   onCancelConfirmed() {
+    if (this.props.removePrivateKey) {
+      this.props.removePrivateKey();
+    }
     this.props.navigator.dismissModal();
   }
 
 }
-
-export default KeyBaseScreen;

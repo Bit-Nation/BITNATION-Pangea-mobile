@@ -19,7 +19,7 @@ import {
 } from '../../../../global/Constants';
 import KeyBaseScreen from '../../KeyBaseScreen';
 import Button from '../../../../components/common/Button';
-import { validateMnemonic } from '../../../../actions/key';
+import { removePrivateKey, validateMnemonic } from '../../../../actions/key';
 
 const DONE_BUTTON = 'DONE_BUTTON';
 
@@ -29,7 +29,7 @@ class EnterPrivateKeyScreen extends KeyBaseScreen {
     super(props);
 
     this.state = {
-      values: _.fill(new Array(KEY_LENGTH), 'a'),
+      values: _.fill(new Array(KEY_LENGTH), ''),
       currentPage: 0,
       selectedInputIndex: null,
     };
@@ -214,6 +214,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   validateMnemonic(mnemonic) {
     dispatch(validateMnemonic(mnemonic));
+  },
+  removePrivateKey() {
+    dispatch(removePrivateKey());
   },
 });
 

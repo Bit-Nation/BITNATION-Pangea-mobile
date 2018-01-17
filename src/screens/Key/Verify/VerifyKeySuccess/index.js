@@ -11,7 +11,7 @@ import Button from '../../../../components/common/Button';
 import BackgroundImage from '../../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
 import Text from '../../../../components/common/Text';
-import { savePrivateKey } from '../../../../actions/key';
+import { removePrivateKey, savePrivateKey } from '../../../../actions/key';
 
 class VerifyKeySuccess extends Component {
 
@@ -57,6 +57,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   savePrivateKey() {
     dispatch(savePrivateKey());
+  },
+  removePrivateKey() {
+    dispatch(removePrivateKey());
   },
 });
 

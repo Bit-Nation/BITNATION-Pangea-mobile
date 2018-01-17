@@ -3,6 +3,7 @@ import {
   View,
 } from 'react-native';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import styles from './styles';
 import { screen } from '../../../../global/Screens';
@@ -12,6 +13,7 @@ import BackgroundImage from '../../../../components/common/BackgroundImage';
 import Text from '../../../../components/common/Text';
 import KeyBaseScreen from '../../KeyBaseScreen';
 import { KEY_LENGTH } from '../../../../global/Constants';
+import { removePrivateKey } from '../../../../actions/key';
 
 class VerifyKeyStep1 extends KeyBaseScreen {
 
@@ -30,7 +32,8 @@ class VerifyKeyStep1 extends KeyBaseScreen {
             Now that you have written down your private key, we will ask you to verify it.
           </Text>
           <Text messageText style={styles.description}>
-            You will type the {KEY_LENGTH} words of your private key into the app, and we will check that your written private key
+            You will type the {KEY_LENGTH} words of your private key into the app, and we will check that your written
+            private key
             is correct.
           </Text>
           <Text messageText style={styles.description}>
@@ -52,4 +55,14 @@ VerifyKeyStep1.propTypes = {};
 
 VerifyKeyStep1.defaultProps = {};
 
-export default VerifyKeyStep1;
+const mapStateToProps = state => ({
+  ...state.key,
+});
+
+const mapDispatchToProps = dispatch => ({
+  removePrivateKey(){
+    dispatch(removePrivateKey());
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(VerifyKeyStep1);

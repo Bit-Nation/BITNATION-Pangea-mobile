@@ -1,4 +1,5 @@
 export const CREATE_PRIVATE_KEY = 'CREATE_PRIVATE_KEY';
+export const REMOVE_PRIVATE_KEY = 'REMOVE_PRIVATE_KEY';
 export const MNEMONIC_CREATED = 'CREATE_MNEMONIC';
 export const SAVE_PRIVATE_KEY = 'SAVE_PRIVATE_KEY';
 export const VALIDATE_MNEMONIC = 'VALIDATE_MNEMONIC';
@@ -7,6 +8,12 @@ export const CHANGE_MNEMONIC_VALID = 'CHANGE_MNEMONIC_VALID';
 export function createPrivateKey() {
   return {
     type: CREATE_PRIVATE_KEY,
+  };
+}
+
+export function removePrivateKey() {
+  return {
+    type: REMOVE_PRIVATE_KEY,
   };
 }
 

@@ -3,6 +3,7 @@ import {
   View,
 } from 'react-native';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import styles from './styles';
 import Button from '../../../../components/common/Button';
@@ -11,8 +12,9 @@ import Text from '../../../../components/common/Text';
 import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
 import KeyBaseScreen from '../../KeyBaseScreen/index';
 import { screen } from '../../../../global/Screens';
+import { removePrivateKey } from '../../../../actions/key';
 
-export default class CreateKeySuccessScreen extends KeyBaseScreen {
+class CreateKeySuccessScreen extends KeyBaseScreen {
 
   onStartVerifyPress = () => {
     this.props.navigator.push(screen('VERIFY_KEY_SCREEN_STEP_1'));
@@ -54,3 +56,15 @@ export default class CreateKeySuccessScreen extends KeyBaseScreen {
 CreateKeySuccessScreen.propTypes = {};
 
 CreateKeySuccessScreen.defaultProps = {};
+
+const mapStateToProps = state => ({
+  ...state.key,
+});
+
+const mapDispatchToProps = dispatch => ({
+  removePrivateKey() {
+    dispatch(removePrivateKey());
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreateKeySuccessScreen);
