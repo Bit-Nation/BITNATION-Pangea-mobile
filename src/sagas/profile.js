@@ -14,8 +14,11 @@ function* updateProfile() {
 		let pangeaLib = yield call(getPangeaLibrary);
 		let user = yield select(state => state.profile);
 		const profile:ProfileType = {
-			...user.editingUser,
 	    id: 0,
+	    name: user.editingUser.name ? user.editingUser.name : '',
+	    location: user.editingUser.location ? user.editingUser.location : '',
+	    latitude: user.editingUser.latitude ? user.editingUser.latitude : '',
+	    longitude: user.editingUser.longitude ? user.editingUser.longitude : '',
 	    description: '',
 	    version: '0',
 	    image: user.editingUser.avatar ? user.editingUser.avatar : ''
@@ -23,7 +26,7 @@ function* updateProfile() {
 		let result = yield call(pangeaLib.profile.profile.setProfile, profile);
 	  yield put({ type: DONE_USER_EDITING });
 	} catch(e) {
-		console.log('get profile error: ', e);
+		console.log('Update profile error: ', e);
 	}
 }
 
@@ -37,7 +40,7 @@ function* getProfile() {
 	  };
 	  yield put({ type: SET_USER_PROFILE, user: user });
 	} catch (e) {
-		console.log('get profile error: ', e);
+		console.log('Get profile error: ', e);
 	}
 }
 
