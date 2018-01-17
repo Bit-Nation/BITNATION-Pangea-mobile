@@ -11,11 +11,17 @@ import {
   changeEditingUser,
   cancelUserEditing,
   doneUserEditing, startUserCreating,
-  requestProfileUpdate
+  requestProfileUpdate,
+  getUserProfile
 } from '../../actions/profile';
 import BackgroundImage from '../../components/common/BackgroundImage';
 
 class ProfileContainer extends Component {
+
+  constructor(props) {
+    super(props);
+    this.props.getUserProfile();
+  }
 
   render() {
     return (
@@ -79,6 +85,9 @@ const mapDispatchToProps = dispatch => ({
   },
   onDoneUserEditing() {
     dispatch(requestProfileUpdate());
+  },
+  getUserProfile() {
+    dispatch(getUserProfile());
   }
 });
 

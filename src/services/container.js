@@ -18,3 +18,14 @@ export default pangeaLibsFactory(
     ee,
     false
 );
+
+export function createPangeaLibsFactory() {
+  return pangeaLibsFactory(
+    secureStorage,
+    DB_PATH,
+    ethDaemon,
+    osDeps,
+    ee,
+    false
+  );
+}
