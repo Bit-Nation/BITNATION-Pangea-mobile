@@ -16,6 +16,7 @@ if(!config.ETH_HTTP_ENDPOINT){
 }
 
 const PangeaLibFactory:Promise<*> = new Promise((res, rej) => {
+
     const ee = new EventEmitter();
 
     /**
@@ -49,3 +50,4 @@ const PangeaLibFactory:Promise<*> = new Promise((res, rej) => {
 });
 
 export default PangeaLibFactory;
+
