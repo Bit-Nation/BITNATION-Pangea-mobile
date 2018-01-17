@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  View, Alert, Platform
+  View, Alert, Platform,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
@@ -13,22 +13,25 @@ import Text from '../../../../components/common/Text';
 import GridView from '../../../../components/GridView/index';
 import PrivateKeyTextInputContainer from '../../../../components/PrivateKeyTextInputContainer/index';
 import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
-import { KEY_LENGTH, KEY_COLUMN_COUNT, KEY_ROW_COUNT } from '../../../../global/Constants';
-import NavigatorComponent from '../../../../components/common/NavigatorComponent';
+import {
+  KEY_LENGTH, KEY_COLUMN_COUNT, KEY_ROW_COUNT, KEY_PAGE_ROW_COUNT, KEY_PAGE_LENGTH,
+} from '../../../../global/Constants';
 import containerPromise from '../../../../services/container';
 import { compressMnemonic } from '../../../../utils/key';
+import KeyBaseScreen from '../../KeyBaseScreen';
+import Button from '../../../../components/common/Button';
 
 const DONE_BUTTON = 'DONE_BUTTON';
 
-export default class EnterPrivateKeyScreen extends NavigatorComponent {
-
-  static navigatorButtons = { ...androidNavigationButtons };
+export default class EnterPrivateKeyScreen extends KeyBaseScreen {
 
   constructor(props) {
     super(props);
 
     this.state = {
       values: _.fill(new Array(KEY_LENGTH), ''),
+      currentPage: 0,
+      selectedInputIndex: null,
     };
     this.keyTextInputContainers = [];
     this._configureNavigation(this.state);
@@ -44,6 +47,15 @@ export default class EnterPrivateKeyScreen extends NavigatorComponent {
     }
   }
 
+  componentDidUpdate() {
+    if (this.state.selectedInputIndex !== null) {
+      const input = this.keyTextInputContainers[this.state.selectedInputIndex].textInput;
+      if (!input.isFocused()) {
+        input.focus();
+      }
+    }
+  }
+
   _configureNavigation(state) {
     this.props.navigator.setButtons({
       rightButtons: [{
@@ -55,6 +67,7 @@ export default class EnterPrivateKeyScreen extends NavigatorComponent {
   }
 
   onNavBarButtonPress(id) {
+    super.onNavBarButtonPress(id);
     if (id === DONE_BUTTON) {
       this._verifyMnemonic(this.state.values)
         .then(() => this.onSuccess())
@@ -71,13 +84,34 @@ export default class EnterPrivateKeyScreen extends NavigatorComponent {
     Alert.alert(
       'Incorrect: Check all the words.',
       '',
-      [{ text: 'OK', onPress: () => null }]
+      [{ text: 'OK', onPress: () => null }],
     );
   };
 
   onSuccess() {
     this.props.navigator.push(screen('VERIFY_KEY_SUCCESS_SCREEN'));
   }
+
+  onNextPressed = () => {
+    this._changeSelectedInputIndex(1);
+  };
+
+  onPreviousPressed = () => {
+    this._changeSelectedInputIndex(-1);
+  };
+
+  _changeSelectedInputIndex = (diff) => {
+    if (this.state.selectedInputIndex === null) return;
+
+    this.setState(prevState => {
+      const nextIndex = Math.min(Math.max(prevState.selectedInputIndex + diff, 0), KEY_LENGTH - 1);
+
+      return {
+        selectedInputIndex: nextIndex,
+        currentPage: Math.floor(nextIndex / KEY_PAGE_LENGTH),
+      };
+    });
+  };
 
   _onValueChange = (index, value) => {
     this.setState((prevState) => {
@@ -94,16 +128,21 @@ export default class EnterPrivateKeyScreen extends NavigatorComponent {
   };
 
   _onFieldSubmit = (index) => {
-    if (index < KEY_LENGTH - 1) {
-      this.keyTextInputContainers[index + 1].textInput.focus();
-    }
+    this.onNextPressed();
   };
 
-  _onFocus = (field) => {
+  _onFocus = (index, field) => {
+    if (this.state.selectedInputIndex !== index) {
+      this.setState({
+        selectedInputIndex: index,
+      });
+    }
     this.scrollView.scrollToFocusedInput(field);
   };
 
   _renderTextInput = (index) => {
+    index += this.state.currentPage * KEY_PAGE_LENGTH;
+
     return (
       <PrivateKeyTextInputContainer
         editable={true}
@@ -133,20 +172,30 @@ export default class EnterPrivateKeyScreen extends NavigatorComponent {
           enableAutoAutomaticScroll={false}
           extraHeight={48.5 + 44 + (Platform.OS === 'android' ? 22 : 0)}
           enableOnAndroid
+          keyboardShouldPersistTaps='handled'
           ref={(scrollView) => this.scrollView = scrollView}>
           <View>
             <View style={styles.instructionContainer}>
               <Text messageText style={styles.instruction}>
-                Enter in the correct order the 24 words that you wrote down as your paper key. Tap a box to begin.
+                Enter in the correct order the {KEY_LENGTH} words that you wrote down as your paper key. Tap a box to
+                begin.
               </Text>
             </View>
             <View style={styles.gridContainer}>
               <GridView
                 itemsPerRow={KEY_COLUMN_COUNT}
-                rowsCount={KEY_ROW_COUNT}
+                rowsCount={KEY_PAGE_ROW_COUNT}
                 renderItem={this._renderTextInput}
                 style={styles.gridView}
               />
+            </View>
+            <View style={styles.buttonContainer}>
+              <Button title='Previous'
+                      onPress={this.onPreviousPressed}
+                      style={styles.button}/>
+              <Button title='Next'
+                      onPress={this.onNextPressed}
+                      style={styles.button}/>
             </View>
           </View>
         </KeyboardAwareScrollView>

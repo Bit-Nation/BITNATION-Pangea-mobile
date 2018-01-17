@@ -30,6 +30,18 @@ export default styles = StyleSheet.create({
     paddingBottom: 3,
     paddingLeft: 12,
     paddingRight: 12,
-  }
+  },
+  buttonContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-end',
+    marginTop: 20,
+    paddingLeft: 10,
+    paddingRight: 10,
+  },
+  button: {
+    width: 90,
+  },
 
 });
