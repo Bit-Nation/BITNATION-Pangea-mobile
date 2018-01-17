@@ -11,10 +11,12 @@ import Button from '../../../../components/common/Button';
 import BackgroundImage from '../../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
 import Text from '../../../../components/common/Text';
+import { savePrivateKey } from '../../../../actions/key';
 
 class VerifyKeySuccess extends Component {
 
   onNextButtonPressed() {
+    this.props.savePrivateKey();
     this.props.navigator.dismissModal();
   }
 
@@ -52,6 +54,10 @@ const mapStateToProps = state => ({
   ...state,
 });
 
-const mapDispatchToProps = dispatch => ({});
+const mapDispatchToProps = dispatch => ({
+  savePrivateKey() {
+    dispatch(savePrivateKey());
+  },
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(VerifyKeySuccess);

@@ -10,11 +10,12 @@ import BackgroundImage from '../../../../components/common/BackgroundImage';
 import Text from '../../../../components/common/Text';
 import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
 import KeyBaseScreen from '../../KeyBaseScreen/index';
+import { screen } from '../../../../global/Screens';
 
 export default class CreateKeySuccessScreen extends KeyBaseScreen {
 
   onStartVerifyPress = () => {
-    this.props.navigator.dismissModal();
+    this.props.navigator.push(screen('VERIFY_KEY_SCREEN_STEP_1'));
   };
 
   render() {
