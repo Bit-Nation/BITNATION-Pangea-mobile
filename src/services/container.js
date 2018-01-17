@@ -15,7 +15,7 @@ if(!config.ETH_HTTP_ENDPOINT){
     throw new Error(`Please set the "ETH_HTTP_ENDPOINT" env variable (checkout the Readme)`);
 }
 
-export default new Promise((res, rej) => {
+const PangeaLibFactory:Promise<*> = new Promise((res, rej) => {
 
     const ee = new EventEmitter();
 
@@ -47,4 +47,7 @@ export default new Promise((res, rej) => {
         .then(res)
         .catch(rej);
 
-})
+});
+
+export default PangeaLibFactory;
+

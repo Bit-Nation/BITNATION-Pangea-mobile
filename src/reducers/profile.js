@@ -3,6 +3,7 @@ import {
   CHANGE_EDITING_USER,
   DONE_USER_EDITING,
   CANCEL_USER_EDITING, START_USER_CREATING,
+  SET_USER_PROFILE
 } from '../actions/profile';
 
 const initialState = {
@@ -22,6 +23,11 @@ export default function (state = initialState, action) {
       return Object.assign({}, state, { user: state.editingUser, editingUser: null });
     case START_USER_CREATING:
       return Object.assign({}, state, { editingUser: {} });
+    case SET_USER_PROFILE:
+      return {
+        ...state,
+        user: action.user
+      };
   }
   return state;
 }
