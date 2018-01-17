@@ -20,6 +20,7 @@ import {
 import KeyBaseScreen from '../../KeyBaseScreen';
 import Button from '../../../../components/common/Button';
 import { removePrivateKey, validateMnemonic } from '../../../../actions/key';
+import Colors from '../../../../global/Colors';
 
 const DONE_BUTTON = 'DONE_BUTTON';
 
@@ -71,6 +72,7 @@ class EnterPrivateKeyScreen extends KeyBaseScreen {
       rightButtons: [{
         id: DONE_BUTTON,
         title: 'Done',
+        buttonColor: Colors.navigationButtonColor,
         disabled: !this.doneShouldBeEnabled(props, state),
       }],
     });

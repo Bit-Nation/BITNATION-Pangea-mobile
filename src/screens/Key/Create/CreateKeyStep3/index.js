@@ -18,6 +18,7 @@ import {
 } from '../../../../global/Constants';
 import KeyBaseScreen from '../../KeyBaseScreen/index';
 import { removePrivateKey } from '../../../../actions/key';
+import Colors from '../../../../global/Colors';
 
 const DONE_BUTTON = 'DONE_BUTTON';
 
@@ -45,6 +46,7 @@ class CreateKeyStep3 extends KeyBaseScreen {
       rightButtons: [{
         id: DONE_BUTTON,
         title: 'Done',
+        buttonColor: Colors.navigationButtonColor,
         disabled: !enabled,
       }],
     });
