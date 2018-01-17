@@ -52,21 +52,5 @@ MessageView.PropTypes = {
 };
 
 const styles = MediaQueryStyleSheet.create({
-  messageView: {
-    borderRadius: 8,
-    backgroundColor: Colors.getBitNationBlue(0.2),
-  },
-  messageContainer: {
-    paddingTop: 12,
-    paddingBottom: 22,
-    paddingLeft: 15,
-    paddingRight: 15,
-    alignItems: 'center'
-  },
-  messageText: {
-    marginTop: 5,
-  },
-  button: {
-    marginTop: 13,
-  }
+  ...GlobalStyles,
 });
