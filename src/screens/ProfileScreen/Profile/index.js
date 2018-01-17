@@ -48,8 +48,9 @@ class ProfileScreen extends NavigatorComponent {
         <FakeNavigationBar/>
         {this._buildHeader()}
         <ScrollView>
-          {this._buildHolonsView()}
-          {this._buildAchievemntsView()}
+          {/*  Commented for Sprint 0.3.1  */}
+          {/*this._buildHolonsView()*/}
+          {/*this._buildAchievemntsView()*/}
         </ScrollView>
       </View>
     );

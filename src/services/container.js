@@ -1,38 +1,20 @@
 //@flow
 
-import db from 'BITNATION-Panthalassa/src/database/db';
+import pangeaLibsFactory from 'BITNATION-Pangea-libs'
 import secureStorage from './panthalassa/secureStorage';
-import ethUtils from 'BITNATION-Panthalassa/src/ethereum/utils';
-import web3 from 'BITNATION-Panthalassa/src/ethereum/web3';
 import osDeps from './panthalassa/osDependencies';
 import ethDaemon from './panthalassa/ethDaemon';
-import wallet from 'BITNATION-Panthalassa/src/ethereum/wallet';
-import profile from 'BITNATION-Panthalassa/src/profile/profile';
+const EventEmitter = require('eventemitter3');
 
-async function createContainer() {
-  const EventEmitter = require('eventemitter3');
+const DB_PATH = 'pangea';
 
-  const DB_PATH = 'panthalassa';
+const ee = new EventEmitter();
 
-  const ee = new EventEmitter();
-  const dbInstance = db(DB_PATH);
-  const ethUtilsInstance = ethUtils(secureStorage, ee, osDeps);
-  // const ethWeb3Instance = await web3(ethDaemon, ee, ethUtilsInstance);
-  // const ethWallet = wallet(ethUtilsInstance, ethWeb3Instance, dbInstance);
-  const profileInstance = profile(dbInstance, ethUtilsInstance);
-
-  return {
-    eventEmitter: ee,
-    panthalassa: {
-      database: dbInstance,
-      ethereum: {
-        utils: ethUtilsInstance,
-        // web3: ethWeb3Instance,
-        // wallet: ethWallet,
-      },
-      profile: profileInstance,
-    },
-  };
-}
-
-export default createContainer();
+export default pangeaLibsFactory(
+    secureStorage,
+    DB_PATH,
+    ethDaemon,
+    osDeps,
+    ee,
+    false
+);

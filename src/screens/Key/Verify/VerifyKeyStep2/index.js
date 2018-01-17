@@ -64,7 +64,7 @@ export default class EnterPrivateKeyScreen extends NavigatorComponent {
 
   _verifyMnemonic = async (mnemonic) => {
     const container = await containerPromise;
-    return await container.panthalassa.ethereum.utils.mnemonicValid(compressMnemonic(mnemonic));
+    return await container.eth.utils.mnemonicValid(compressMnemonic(mnemonic));
   };
 
   _showIncorrectCodeAlert = () => {

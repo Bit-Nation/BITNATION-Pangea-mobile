@@ -5,12 +5,14 @@ export function resolveWallet(wallets, address) {
 }
 
 export function convertWallets(wallets) {
-  const walletsArray = _.map(Object.keys(wallets), (key) => {
-    return {
+  const walletsArray = [];
+  wallets.forEach((value, key) =>
+    walletsArray.push({
       key: key,
-      value: wallets[key],
-    };
-  });
+      value: value,
+    }),
+  );
+
   return _.map(walletsArray, (wallet) => {
     return {
       ethAddress: wallet.key,

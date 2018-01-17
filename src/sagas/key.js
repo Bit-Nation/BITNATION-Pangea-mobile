@@ -11,22 +11,22 @@ import { compressMnemonic } from '../utils/key';
 
 async function createPrivateKey() {
   const container = await containerPromise;
-  return await container.panthalassa.ethereum.utils.createPrivateKey();
+  return await container.eth.utils.createPrivateKey();
 }
 
 async function privateKeyToMnemonic(privateKey) {
   const container = await containerPromise;
-  return await container.panthalassa.ethereum.utils.privateKeyToMnemonic(privateKey);
+  return await container.eth.utils.privateKeyToMnemonic(privateKey);
 }
 
 async function mnemonicToPrivateKey(mnemonic) {
   const container = await containerPromise;
-  return await container.panthalassa.ethereum.utils.mnemonicToPrivateKey(mnemonic);
+  return await container.eth.utils.mnemonicToPrivateKey(mnemonic);
 }
 
 async function savePrivateKey(privateKey) {
   const container = await containerPromise;
-  return await container.panthalassa.ethereum.utils.savePrivateKey(privateKey);
+  return await container.eth.utils.savePrivateKey(privateKey);
 }
 
 function* createPrivateKeySaga() {
