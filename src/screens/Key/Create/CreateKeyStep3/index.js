@@ -70,7 +70,6 @@ class CreateKeyStep3 extends KeyBaseScreen {
       const nextRow = Math.min(prevState.activeRow + 1, KEY_ROW_COUNT - 1);
 
       return {
-        ...prevState,
         activeRow: nextRow,
         lastRowReached: prevState.lastRowReached || nextRow === KEY_ROW_COUNT - 1,
       };
@@ -79,7 +78,7 @@ class CreateKeyStep3 extends KeyBaseScreen {
 
   onPreviousPressed = () => {
     this.setState((prevState) => {
-      return { ...prevState, activeRow: Math.max(prevState.activeRow - 1, 0) };
+      return { activeRow: Math.max(prevState.activeRow - 1, 0) };
     });
   };
 
