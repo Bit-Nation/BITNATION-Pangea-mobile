@@ -9,9 +9,9 @@ import Button from '../../../../components/common/Button';
 import BackgroundImage from '../../../../components/common/BackgroundImage';
 import Text from '../../../../components/common/Text';
 import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
-import CreateKeyBaseScreen from '../CreateKeyBaseScreen/index';
+import KeyBaseScreen from '../../KeyBaseScreen/index';
 
-export default class CreateKeySuccessScreen extends CreateKeyBaseScreen {
+export default class CreateKeySuccessScreen extends KeyBaseScreen {
 
   onStartVerifyPress = () => {
     this.props.navigator.dismissModal();

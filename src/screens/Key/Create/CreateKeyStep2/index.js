@@ -14,11 +14,11 @@ import GridView from '../../../../components/GridView';
 import Button from '../../../../components/common/Button';
 import PrivateKeyTextInputContainer from '../../../../components/PrivateKeyTextInputContainer';
 import { KEY_COLUMN_COUNT, KEY_PAGE_ROW_COUNT, KEY_LENGTH } from '../../../../global/Constants';
-import CreateKeyBaseScreen from '../CreateKeyBaseScreen/index';
+import KeyBaseScreen from '../../KeyBaseScreen/index';
 import { createPrivateKey } from '../../../../actions/key';
 
 
-class CreateKeyStep2 extends CreateKeyBaseScreen {
+class CreateKeyStep2 extends KeyBaseScreen {
 
   get shouldShowAlert() {
     return false;

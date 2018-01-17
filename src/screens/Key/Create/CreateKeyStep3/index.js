@@ -16,11 +16,11 @@ import PrivateKeyTextInputContainer from '../../../../components/PrivateKeyTextI
 import {
   KEY_ROW_COUNT, KEY_COLUMN_COUNT, KEY_PAGE_ROW_COUNT, KEY_PAGE_LENGTH,
 } from '../../../../global/Constants';
-import CreateKeyBaseScreen from '../CreateKeyBaseScreen/index';
+import KeyBaseScreen from '../../KeyBaseScreen/index';
 
 const DONE_BUTTON = 'DONE_BUTTON';
 
-class CreateKeyStep3 extends CreateKeyBaseScreen {
+class CreateKeyStep3 extends KeyBaseScreen {
 
   constructor(props) {
     super(props);

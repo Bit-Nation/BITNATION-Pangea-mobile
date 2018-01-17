@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Alert } from 'react-native';
 
-import Colors from '../../../../global/Colors';
-import NavigatorComponent from '../../../../components/common/NavigatorComponent';
+import Colors from '../../../global/Colors';
+import NavigatorComponent from '../../../components/common/NavigatorComponent';
 
-class CreateKeyBaseScreen extends NavigatorComponent {
+class KeyBaseScreen extends NavigatorComponent {
 
   static navigatorButtons = {
     leftButtons: [{
@@ -58,4 +58,4 @@ class CreateKeyBaseScreen extends NavigatorComponent {
 
 }
 
-export default CreateKeyBaseScreen;
+export default KeyBaseScreen;

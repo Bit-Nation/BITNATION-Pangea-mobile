@@ -12,9 +12,9 @@ import Button from '../../../../components/common/Button';
 import BackgroundImage from '../../../../components/common/BackgroundImage';
 import Text from '../../../../components/common/Text';
 import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
-import CreateKeyBaseScreen from '../CreateKeyBaseScreen';
+import KeyBaseScreen from '../../KeyBaseScreen';
 
-class CreateKeyStep1 extends CreateKeyBaseScreen {
+class CreateKeyStep1 extends KeyBaseScreen {
 
   get shouldShowAlert() {
     return false;
