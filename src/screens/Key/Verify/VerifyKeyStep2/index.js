@@ -5,6 +5,7 @@ import {
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { connect } from 'react-redux';
 
 import styles from './styles';
 import { screen, androidNavigationButtons } from '../../../../global/Screens';
@@ -16,52 +17,61 @@ import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
 import {
   KEY_LENGTH, KEY_COLUMN_COUNT, KEY_ROW_COUNT, KEY_PAGE_ROW_COUNT, KEY_PAGE_LENGTH,
 } from '../../../../global/Constants';
-import containerPromise from '../../../../services/container';
-import { compressMnemonic } from '../../../../utils/key';
 import KeyBaseScreen from '../../KeyBaseScreen';
 import Button from '../../../../components/common/Button';
+import { validateMnemonic } from '../../../../actions/key';
 
 const DONE_BUTTON = 'DONE_BUTTON';
 
-export default class EnterPrivateKeyScreen extends KeyBaseScreen {
+class EnterPrivateKeyScreen extends KeyBaseScreen {
 
   constructor(props) {
     super(props);
 
     this.state = {
-      values: _.fill(new Array(KEY_LENGTH), ''),
+      values: _.fill(new Array(KEY_LENGTH), 'a'),
       currentPage: 0,
       selectedInputIndex: null,
     };
     this.keyTextInputContainers = [];
-    this._configureNavigation(this.state);
+    this._configureNavigation(this.props, this.state);
   }
 
-  doneShouldBeEnabled(state) {
-    return _.reduce(state.values, (prev, next) => prev && !_.isEmpty(next), true);
+  doneShouldBeEnabled(props, state) {
+    const inputFilled = _.reduce(state.values, (prev, next) => prev && !_.isEmpty(next), true);
+    return inputFilled && !props.mnemonicValidationInProgress;
   }
 
   componentWillUpdate(nextProps, nextState) {
-    if (this.doneShouldBeEnabled(this.state) !== this.doneShouldBeEnabled(nextState)) {
-      this._configureNavigation(nextState);
+    if (this.doneShouldBeEnabled(this.props, this.state) !== this.doneShouldBeEnabled(nextProps, nextState)) {
+      this._configureNavigation(nextProps, nextState);
     }
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     if (this.state.selectedInputIndex !== null) {
       const input = this.keyTextInputContainers[this.state.selectedInputIndex].textInput;
       if (!input.isFocused()) {
         input.focus();
       }
     }
+
+    if (this.props.mnemonicValid !== prevProps.mnemonicValid
+      && this.props.mnemonicValid !== null) {
+      if (!this.props.mnemonicValid) {
+        this._showIncorrectMnemonicAlert();
+      } else {
+        this._onSuccess();
+      }
+    }
   }
 
-  _configureNavigation(state) {
+  _configureNavigation(props, state) {
     this.props.navigator.setButtons({
       rightButtons: [{
         id: DONE_BUTTON,
         title: 'Done',
-        disabled: !this.doneShouldBeEnabled(state),
+        disabled: !this.doneShouldBeEnabled(props, state),
       }],
     });
   }
@@ -69,18 +79,11 @@ export default class EnterPrivateKeyScreen extends KeyBaseScreen {
   onNavBarButtonPress(id) {
     super.onNavBarButtonPress(id);
     if (id === DONE_BUTTON) {
-      this._verifyMnemonic(this.state.values)
-        .then(() => this.onSuccess())
-        .catch(() => this._showIncorrectCodeAlert());
+      this.props.validateMnemonic(this.state.values);
     }
   }
 
-  _verifyMnemonic = async (mnemonic) => {
-    const container = await containerPromise;
-    return await container.eth.utils.mnemonicValid(compressMnemonic(mnemonic));
-  };
-
-  _showIncorrectCodeAlert = () => {
+  _showIncorrectMnemonicAlert = () => {
     Alert.alert(
       'Incorrect: Check all the words.',
       '',
@@ -88,7 +91,7 @@ export default class EnterPrivateKeyScreen extends KeyBaseScreen {
     );
   };
 
-  onSuccess() {
+  _onSuccess() {
     this.props.navigator.push(screen('VERIFY_KEY_SUCCESS_SCREEN'));
   }
 
@@ -204,4 +207,14 @@ export default class EnterPrivateKeyScreen extends KeyBaseScreen {
   }
 }
 
-    
+const mapStateToProps = state => ({
+  ...state.key,
+});
+
+const mapDispatchToProps = dispatch => ({
+  validateMnemonic(mnemonic) {
+    dispatch(validateMnemonic(mnemonic));
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(EnterPrivateKeyScreen);
