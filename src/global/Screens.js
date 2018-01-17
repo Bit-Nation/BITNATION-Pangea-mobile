@@ -43,6 +43,11 @@ export const hiddenNavigatorStyle = {
   rootBackgroundImageName: 'background',
 };
 
+const keyFlowNavigatorStyle = {
+  ...navigatorStyle,
+  disabledBackGesture: true,
+}
+
 const Screens = {
   SPLASH_SCREEN: {
     screen: 'Pangea.SplashScreen',
@@ -91,31 +96,31 @@ const Screens = {
     screen: 'Pangea.CreateKeyStep1',
     title: ' Create Private Key ',
     backButtonTitle: 'Back',
-    navigatorStyle,
+    navigatorStyle: keyFlowNavigatorStyle,
   },
   CREATE_KEY_SCREEN_STEP_2: {
     screen: 'Pangea.CreateKeyStep2',
     title: 'Create Private Key',
     backButtonTitle: 'Back',
-    navigatorStyle,
+    navigatorStyle: keyFlowNavigatorStyle,
   },
   CREATE_KEY_SCREEN_STEP_3: {
     screen: 'Pangea.CreateKeyStep3',
     title: 'Create Private Key',
     backButtonTitle: 'Back',
-    navigatorStyle,
+    navigatorStyle: keyFlowNavigatorStyle,
   },
   VERIFY_KEY_SCREEN_STEP_1: {
     screen: 'Pangea.VerifyKeyStep1',
     title: 'Verify Private Key',
     backButtonTitle: 'Back',
-    navigatorStyle,
+    navigatorStyle: keyFlowNavigatorStyle,
   },
   VERIFY_KEY_SCREEN_STEP_2: {
     screen: 'Pangea.VerifyKeyStep2',
     title: 'Verify Private Key',
     backButtonTitle: 'Back',
-    navigatorStyle,
+    navigatorStyle: keyFlowNavigatorStyle,
   },
   INTRO_SCREEN: {
     screen: 'Pangea.Intro',
