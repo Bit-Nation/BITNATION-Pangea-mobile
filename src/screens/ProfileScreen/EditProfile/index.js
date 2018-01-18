@@ -84,7 +84,7 @@ class EditProfile extends NavigatorComponent {
         <View style={styles.avatarContainer}>
           <TouchableOpacity onPress={this._onEditAvatar}>
             <View style={styles.avatarChangeContainer}>
-              <Image source={avatarSource} style={styles.avatar}/>
+              <Image source={avatarSource} style={styles.avatarMedium}/>
               <Text style={styles.editItemLabel}>edit</Text>
             </View>
           </TouchableOpacity>
