@@ -13,7 +13,7 @@
     "docs": "node_modules/.bin/documentation build src/services/container.js -f md > docs/main.md"
   },
   "dependencies": {
-    "BITNATION-Pangea-libs": "git+https://github.com/Bit-Nation/BITNATION-Pangea-libs.git#81238f3d5f7a34b0b909713516f7d68b9e9f301f",
+    "BITNATION-Pangea-libs": "git+https://github.com/Bit-Nation/BITNATION-Pangea-libs.git#1a974aaffbeca50948840739992b9cab36a2b030",
     "BITNATION-Pangea-utils": "git+https://github.com/Bit-Nation/BITNATION-Pangea-libs.git#368dd06818a9a8a5932b7d9b762e96af20110b1c",
     "BITNATION-Panthalassa": "git+https://github.com/Bit-Nation/BITNATION-Pangea-libs.git#8f664cbf42c44be020ca95b3de643ebff703959a",
     "assert": "^1.4.1",
