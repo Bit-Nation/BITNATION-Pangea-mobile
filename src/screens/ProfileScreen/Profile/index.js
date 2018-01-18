@@ -66,8 +66,8 @@ class ProfileScreen extends NavigatorComponent {
     return (
       <View style={styles.header}>
         <Image source={avatarSource} style={styles.avatar}/>
-        <Text style={styles.nameText}>{user.name}</Text>
-        <Text style={styles.infoText}>{user.location}</Text>
+        <Text style={styles.nameText}>{user.name.trim()}</Text>
+        <Text style={styles.infoText}>{user.location.trim()}</Text>
         <Text style={styles.infoText}>
           {!_.isEmpty(user.latitude) && !_.isEmpty(user.longitude) && (user.latitude + ', ' + user.longitude)}
         </Text>

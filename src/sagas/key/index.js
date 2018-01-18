@@ -1,6 +1,6 @@
 import { all, takeEvery } from 'redux-saga/effects';
 
-import { CREATE_PRIVATE_KEY, SAVE_PRIVATE_KEY, VALIDATE_MNEMONIC } from '../../actions/key';
+import { CREATE_PRIVATE_KEY, SAVE_PRIVATE_KEY, VALIDATE_ENTERED_MNEMONIC } from '../../actions/key';
 import { createPrivateKeySaga, savePrivateKeySaga, verifyMnemonicSaga } from './sagas';
 
 function* watchCreateWallet() {
@@ -12,7 +12,7 @@ function* watchSavePrivateKey() {
 }
 
 function* watchVerifyMnemonic() {
-  yield takeEvery(VALIDATE_MNEMONIC, verifyMnemonicSaga);
+  yield takeEvery(VALIDATE_ENTERED_MNEMONIC, verifyMnemonicSaga);
 }
 
 export default function* rootSaga() {

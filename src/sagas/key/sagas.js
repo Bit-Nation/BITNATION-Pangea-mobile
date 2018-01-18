@@ -17,7 +17,7 @@ export function* createPrivateKeySaga() {
 
 export function* savePrivateKeySaga() {
   const state = yield select();
-  const mnemonic = state.key.createdMnemonic;
+  const mnemonic = state.key.enteredMnemonic;
   if (!mnemonic) return;
   const privateKey = yield call(mnemonicToPrivateKey, mnemonic);
   yield call(savePrivateKey, privateKey);
@@ -25,16 +25,22 @@ export function* savePrivateKeySaga() {
   yield put(updateWalletList());
 }
 
-export function* verifyMnemonicSaga(action) {
-  const enteredMnemonic = action.mnemonic;
+export function* verifyMnemonicSaga() {
+  const state = yield select();
+
+  const enteredMnemonic = state.key.enteredMnemonic;
   const mnemonicCorrect = yield verifyMnemonic(enteredMnemonic);
   if (!mnemonicCorrect) {
     yield put(changeMnemonicValid(false));
     return;
   }
 
-  const state = yield select();
   const createdMnemonic = state.key.createdMnemonic;
+  if (!createdMnemonic) {
+    yield put(changeMnemonicValid(true));
+    return;
+  }
+
   const mnemonicAreTheSame = _.isEqual(enteredMnemonic, createdMnemonic);
   yield put(changeMnemonicValid(mnemonicAreTheSame));
 }

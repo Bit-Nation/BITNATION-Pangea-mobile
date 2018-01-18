@@ -19,7 +19,7 @@ import {
 } from '../../../../global/Constants';
 import KeyBaseScreen from '../../KeyBaseScreen';
 import Button from '../../../../components/common/Button';
-import { removePrivateKey, validateMnemonic } from '../../../../actions/key';
+import { changeEnteredMnemonic, removePrivateKey, validateEnteredMnemonic } from '../../../../actions/key';
 import Colors from '../../../../global/Colors';
 
 const DONE_BUTTON = 'DONE_BUTTON';
@@ -30,22 +30,21 @@ class VerifyKeyProcessScreen extends KeyBaseScreen {
     super(props);
 
     this.state = {
-      values: _.fill(new Array(KEY_LENGTH), ''),
       currentPage: 0,
       selectedInputIndex: null,
     };
     this.keyTextInputContainers = [];
-    this._configureNavigation(this.props, this.state);
+    this._configureNavigation(this.props);
   }
 
-  doneShouldBeEnabled(props, state) {
-    const inputFilled = _.reduce(state.values, (prev, next) => prev && !_.isEmpty(next), true);
+  doneShouldBeEnabled(props) {
+    const inputFilled = _.reduce(props.enteredMnemonic, (prev, next) => prev && !_.isEmpty(next), true);
     return inputFilled && !props.mnemonicValidationInProgress;
   }
 
-  componentWillUpdate(nextProps, nextState) {
-    if (this.doneShouldBeEnabled(this.props, this.state) !== this.doneShouldBeEnabled(nextProps, nextState)) {
-      this._configureNavigation(nextProps, nextState);
+  componentWillUpdate(nextProps) {
+    if (this.doneShouldBeEnabled(this.props) !== this.doneShouldBeEnabled(nextProps)) {
+      this._configureNavigation(nextProps);
     }
   }
 
@@ -119,17 +118,12 @@ class VerifyKeyProcessScreen extends KeyBaseScreen {
   };
 
   _onValueChange = (index, value) => {
-    this.setState((prevState) => {
-      const { values, ...state } = prevState;
-      return {
-        ...state,
-        values: [
-          ...values.slice(0, index),
-          value,
-          ...values.slice(index + 1),
-        ],
-      };
-    });
+    const values = this.props.enteredMnemonic;
+    this.props.changeMnemonic([
+      ...values.slice(0, index),
+      value,
+      ...values.slice(index + 1),
+    ]);
   };
 
   _onFieldSubmit = (index) => {
@@ -154,7 +148,7 @@ class VerifyKeyProcessScreen extends KeyBaseScreen {
         index={index}
         isLast={index === KEY_LENGTH - 1}
         onChange={this._onValueChange}
-        value={this.state.values[index]}
+        value={this.props.enteredMnemonic[index]}
         label={(index + 1).toString()}
         onSubmit={this._onFieldSubmit}
         key={index}
@@ -214,11 +208,14 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  validateMnemonic(mnemonic) {
-    dispatch(validateMnemonic(mnemonic));
+  validateMnemonic() {
+    dispatch(validateEnteredMnemonic());
   },
   removePrivateKey() {
     dispatch(removePrivateKey());
+  },
+  changeMnemonic(mnemonic) {
+    dispatch(changeEnteredMnemonic(mnemonic));
   },
 });
 
