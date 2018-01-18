@@ -18,7 +18,7 @@ import KeyBaseScreen from '../../KeyBaseScreen/index';
 import { createPrivateKey, removePrivateKey } from '../../../../actions/key';
 
 
-class CreateKeyStep2 extends KeyBaseScreen {
+class CreateKeyInstructionScreen extends KeyBaseScreen {
 
   onNextButtonPressed() {
     this.props.createPrivateKey();
@@ -85,4 +85,4 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateKeyStep2);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateKeyInstructionScreen);

@@ -18,7 +18,7 @@ import { removePrivateKey } from '../../../../actions/key';
 class CreateKeyIntroductionScreen extends KeyBaseScreen {
 
   onNextButtonPressed() {
-    this.props.navigator.push(screen('CREATE_KEY_SCREEN_STEP_2'));
+    this.props.navigator.push(screen('CREATE_KEY_INSTRUCTION_SCREEN'));
   }
 
   render() {
