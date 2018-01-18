@@ -110,8 +110,8 @@ const Screens = {
     title: 'Create Private Key',
     ...baseKeyScreen,
   },
-  VERIFY_KEY_SCREEN_STEP_1: {
-    screen: 'Pangea.VerifyKeyStep1',
+  VERIFY_KEY_INSTRUCTION_SCREEN: {
+    screen: 'Pangea.VerifyKeyInstructionScreen',
     title: 'Verify Private Key',
     ...baseKeyScreen,
   },

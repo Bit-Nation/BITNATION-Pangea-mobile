@@ -17,7 +17,7 @@ import { removePrivateKey } from '../../../../actions/key';
 class CreateKeySuccessScreen extends KeyBaseScreen {
 
   onStartVerifyPress = () => {
-    this.props.navigator.push(screen('VERIFY_KEY_SCREEN_STEP_1'));
+    this.props.navigator.push(screen('VERIFY_KEY_INSTRUCTION_SCREEN'));
   };
 
   render() {

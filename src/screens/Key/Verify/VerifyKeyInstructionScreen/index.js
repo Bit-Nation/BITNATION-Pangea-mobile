@@ -15,7 +15,7 @@ import KeyBaseScreen from '../../KeyBaseScreen';
 import { KEY_LENGTH } from '../../../../global/Constants';
 import { removePrivateKey } from '../../../../actions/key';
 
-class VerifyKeyStep1 extends KeyBaseScreen {
+class VerifyKeyInstructionScreen extends KeyBaseScreen {
 
   onNextButtonPressed() {
     this.props.navigator.push(screen('VERIFY_KEY_SCREEN_STEP_2'));
@@ -51,9 +51,9 @@ class VerifyKeyStep1 extends KeyBaseScreen {
   }
 }
 
-VerifyKeyStep1.propTypes = {};
+VerifyKeyInstructionScreen.propTypes = {};
 
-VerifyKeyStep1.defaultProps = {};
+VerifyKeyInstructionScreen.defaultProps = {};
 
 const mapStateToProps = state => ({
   ...state.key,
@@ -65,4 +65,4 @@ const mapDispatchToProps = dispatch => ({
   }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(VerifyKeyStep1);
+export default connect(mapStateToProps, mapDispatchToProps)(VerifyKeyInstructionScreen);
