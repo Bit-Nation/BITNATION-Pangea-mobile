@@ -1,8 +1,10 @@
 import containerPromise from '../../services/container';
+import { convertWallets } from '../../utils/wallet';
 
 export async function getWallets() {
   const container = await containerPromise;
-  return await container.eth.utils.allKeyPairs();
+  const walletsObject = await container.eth.utils.allKeyPairs();
+  return convertWallets(walletsObject);
 }
 
 export async function syncWallet(wallet) {
