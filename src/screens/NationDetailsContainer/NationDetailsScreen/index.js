@@ -68,15 +68,13 @@ class NationDetailsScreen extends Component {
     );
   }
 
-  // THIS NEEDS FIXING!!!
-  // MESSAGEVIEW SHOULD FORMAT AND PRESENT THE PANEL INFORMATION ALL BY ITSELF, WITH ALL THE FORMATTING BUILT INTO IT.
-  // WE CAN PASS IT CHUNKS OF STUFF, TEXT AND TITLES AND SUCH.
+  // Useful Notes:
+  // MessageView Props: title = text, messageText = text, style, renderBottom = method, renderAdditionalInfo = method, children = main text of the display
+  // DemoImage overlays a message telling user this is a demonstration
 
-// MessageView Props: title = text, messageText = text, style, renderBottom = method, renderAdditionalInfo = method, children = obj
   _buildAboutView(nation) {
     return (
       <MessageView style={styles.messageView} title={`About ${nation.name}...`} >
-        {/* Children are shown at the top of the panel */}
         <Text style={styles.panelBody}>
           Ethereum Address:
           {nation.ethAddress}
@@ -86,29 +84,10 @@ class NationDetailsScreen extends Component {
   }
 
 
-  // THIS IS NOT THE RIGHT WAY TO BUILD THESE WITH MESSAGE VIEW!
-
-  _buildAboutViewXXXX(nation) {
-    return (
-      <MessageView style={styles.messageView}>
-        <Text style={styles.panelTitle}>
-          {`About ${nation.name}...`}
-        </Text>
-        <Text style={styles.panelBody}>
-          Ethereum Address:
-          {nation.ethAddress}
-        </Text>
-      </MessageView>
-    );
-  }
-
   _buildGovernmentalStructureView(nation) {
     return (
-      <MessageView style={styles.messageView}>
+      <MessageView style={styles.messageView} title='Governmental Structure'>
         <DemoImage/>
-        <Text style={styles.panelTitle}>
-          Governmental Structure
-        </Text>
         <Text style={styles.panelBody}>
           {nation.name + ' '}
           uses the Kanun legal code, and laws are enforced with a Reputation System (using the threat of public
@@ -121,11 +100,8 @@ class NationDetailsScreen extends Component {
 
   _buildFactsView(nation) {
     return (
-      <MessageView style={styles.messageView}>
+      <MessageView style={styles.messageView} title={'Fun Facts'}>
         <DemoImage/>
-        <Text style={styles.panelTitle}>
-          Fun Facts
-        </Text>
         <Text style={styles.panelBody}>
           {`${nation.name} is seeking diplomatic recognition from Earth governments as a sovereign entity.
 
