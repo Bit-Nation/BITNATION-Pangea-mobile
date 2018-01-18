@@ -1,5 +1,7 @@
 import containerPromise from '../../services/container';
 import { convertWallets } from '../../utils/wallet';
+import { waitConnect } from '../../utils/connectivity';
+import { CONNECTION_TIMEOUT } from '../../global/Constants';
 
 export async function getWallets() {
   const container = await containerPromise;
@@ -8,14 +10,15 @@ export async function getWallets() {
 }
 
 export async function syncWallet(wallet) {
-  // @todo Add ethSync method, once fixed
+  const container = await containerPromise;
+  await waitConnect(CONNECTION_TIMEOUT);
+  return await container.eth.wallet.ethSync(wallet.ethAddress);
 }
 
 export async function resolveBalance(wallet) {
   const container = await containerPromise;
-  // @todo Add ethBalance method, once fixed
-  let balance = 0;
-  if (balance === undefined) {
+  let balance = await container.eth.wallet.ethBalance(wallet.ethAddress);
+  if (balance === null) {
     await syncWallet(wallet);
     return await resolveBalance(wallet);
   }
