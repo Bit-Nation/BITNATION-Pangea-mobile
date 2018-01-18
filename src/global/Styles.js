@@ -120,7 +120,7 @@ const defaultTextStyles = {
     fontWeight: 'bold',
     fontSize: 34,
     lineHeight: 41,
-    letterSpacing: -1,
+    letterSpacing: 0,
     color: Colors.BitNationLightBlue,
   },
 
@@ -129,7 +129,7 @@ const defaultTextStyles = {
     fontWeight: 'bold',
     fontSize: 28,
     lineHeight: 34,
-    letterSpacing: 13,
+    letterSpacing: 0,
     color: Colors.BitNationLightBlue,
   },
 
@@ -147,7 +147,7 @@ const defaultTextStyles = {
     fontWeight: 'normal',
     fontSize: 20,
     lineHeight: 25,
-    letterSpacing: 19,
+    letterSpacing: 0,
   },
 
 
@@ -156,7 +156,7 @@ const defaultTextStyles = {
     fontWeight: 'bold',
     fontSize: 17,
     lineHeight: 22,
-    letterSpacing: -24,
+    letterSpacing: 0,
   },
 
 
@@ -165,7 +165,7 @@ const defaultTextStyles = {
     fontWeight: 'normal',
     fontSize: 17,
     lineHeight: 22,
-    letterSpacing: -24,
+    letterSpacing: 0,
   },
 
 
@@ -174,7 +174,7 @@ const defaultTextStyles = {
     fontWeight: 'normal',
     fontSize: 16,
     lineHeight: 21,
-    letterSpacing: -20,
+    letterSpacing: 0,
   },
 
 
@@ -183,7 +183,7 @@ const defaultTextStyles = {
     fontWeight: 'normal',
     fontSize: 15,
     lineHeight: 20,
-    letterSpacing: -16,
+    letterSpacing: 0,
   },
 
 
@@ -192,7 +192,7 @@ const defaultTextStyles = {
     fontWeight: 'normal',
     fontSize: 13,
     lineHeight: 18,
-    letterSpacing: -6,
+    letterSpacing: 0,
   },
 
 
@@ -210,7 +210,7 @@ const defaultTextStyles = {
     fontWeight: 'normal',
     fontSize: 11,
     lineHeight: 13,
-    letterSpacing: 6,
+    letterSpacing: 0,
   },
 
 }
@@ -373,11 +373,22 @@ const styles = {
     color: Colors.white,
   },
 
-  messageTitleContainer: {
+  panelBody: {
+    ...defaultTextStyles.body,
+    color: Colors.BitNationLightBlue,
+  },
 
+  messageTitleContainer: {
+    paddingBottom: 10,
   },
 
   messageTextContainer: {
+
+  },
+  messageAdditionalInfoContainer: {
+
+  },
+  messageBottomContainer: {
 
   },
 
