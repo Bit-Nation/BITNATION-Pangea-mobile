@@ -6,8 +6,37 @@ import NationsListScreen from './NationsListScreen';
 import { switchNationTab, openNation } from '../../actions/nations';
 import Screens from '../../global/Screens';
 import { resolveNation } from '../../utils/nations';
+import Colors from "../../global/Colors";
+import NavigatorComponent from "../../components/common/NavigatorComponent";
 
-class NationsScreen extends Component {
+const NEW_BUTTON = 'NEW_BUTTON';
+
+class NationsScreen extends NavigatorComponent {
+
+  constructor(props) {
+    super(props);
+
+    this.props.navigator.setButtons(
+      {
+        leftButtons: [],
+        rightButtons: [{
+          title: 'New',
+          id: NEW_BUTTON,
+          buttonColor: Colors.navigationColor,
+        }],
+      }
+    );
+  }
+
+  onNavBarButtonPress(id) {
+    if (id === NEW_BUTTON) {
+      return (
+        this.props.navigator.push({
+          ...Screens.NATION_CREATE_SCREEN,
+        })
+      );
+    }
+  }
 
   render() {
     return (

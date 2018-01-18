@@ -1,4 +1,9 @@
-import { SWITCH_NATIONS_TAB, OPEN_NATION } from '../actions/nations';
+import {
+  SWITCH_NATIONS_TAB,
+  OPEN_NATION,
+  CANCEL_NATION_CREATE,
+  DONE_NATION_CREATE,
+} from '../actions/nations';
 
 export const ALL_NATIONS = 0;
 export const MY_NATIONS = 1;
@@ -40,6 +45,8 @@ const initialState = {
   searchString: null,
   selectedTab: ALL_NATIONS,
   openedNationId: null,
+  nation: null,
+  creatingNation: null,
 };
 
 export default function (state = initialState, action) {
@@ -48,6 +55,10 @@ export default function (state = initialState, action) {
       return Object.assign({}, state, { selectedTab: action.tab });
     case OPEN_NATION:
       return Object.assign({}, state, { openedNationId: action.nationId });
+    case CANCEL_NATION_CREATE:
+      return Object.assign({}, state, { creatingNation: null });
+    case DONE_NATION_CREATE:
+      return Object.assign({}, state, { nation: state.creatingNation, creatingNation: null });
   }
   return state;
 }

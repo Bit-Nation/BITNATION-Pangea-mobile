@@ -66,6 +66,11 @@ export default {
     title: 'Nation',
     navigatorStyle,
   },
+  NATION_CREATE_SCREEN: {
+    screen: 'Pangea.NationCreateScreen',
+    title: 'Create a Nation',
+    navigatorStyle,
+  },
   WALLET_SCREEN: {
     screen: 'Pangea.WalletScreen',
     label: 'Wallet',
