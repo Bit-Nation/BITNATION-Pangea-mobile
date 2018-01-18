@@ -3,8 +3,10 @@ import { View } from 'react-native';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
 import PropTypes from 'prop-types';
 
-import Text from './Text';
 import Colors from '../../global/Colors';
+import GlobalStyles from '../../global/Styles';
+
+import Text from './Text';
 import Button from './Button';
 
 export default class MessageView extends Component {
@@ -16,25 +18,41 @@ export default class MessageView extends Component {
     return (
       <View style={[styles.messageView, style]}>
         <View style={styles.messageContainer}>
+
+          {/* TITLE */}
+
+            {
+              this.props.title &&
+              <View style={styles.messageTitleContainer}>
+                <Text style={styles.panelTitle}>
+                {this.props.title}
+              </Text>
+              </View>
+            }
+
+            {/* MAIN DISPLAY AREA */}
+
           {children}
-          {
-            this.props.title &&
-            <Text messageTitle>
-              {this.props.title}
-            </Text>
-          }
+
           {
             this.props.messageText &&
-            <Text messageText style={styles.messageText}>
+            <View style={styles.messageTextContainer}>
+              <Text style={styles.messageText}>
               {this.props.messageText}
             </Text>
+            </View>
           }
+
+          <View style={styles.messageAdditionalInfoContainer}>
           {renderAdditionalInfo && renderAdditionalInfo()}
+          </View>
           {
             this.props.onButtonClick &&
             <Button style={styles.button} title={this.props.buttonTitle} onPress={this.props.onButtonClick}/>
           }
+          <View style={styles.messageBottomContainer}>
           {renderBottom && renderBottom()}
+          </View>
         </View>
       </View>
     );
@@ -50,21 +68,5 @@ MessageView.PropTypes = {
 };
 
 const styles = MediaQueryStyleSheet.create({
-  messageView: {
-    borderRadius: 8,
-    backgroundColor: Colors.getBitNationBlue(0.2),
-  },
-  messageContainer: {
-    paddingTop: 12,
-    paddingBottom: 22,
-    paddingLeft: 15,
-    paddingRight: 15,
-    alignItems: 'center'
-  },
-  messageText: {
-    marginTop: 5,
-  },
-  button: {
-    marginTop: 13,
-  }
+  ...GlobalStyles,
 });

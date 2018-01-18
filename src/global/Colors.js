@@ -11,6 +11,7 @@ getBitNationLightBlue = (alpha) => {
 
 module.exports = {
 
+  // Why do we have these definitions?
   Red: '#FF5252',
   Pink: '#FF4081',
   Purple: '#9C27B0',
@@ -31,12 +32,16 @@ module.exports = {
   Grey: '#9E9E9E',
   LightGrey: '#EEEEEE',
   Transparent: 'transparent',
+
+  // Why do we have this?
+  white: '#FFFFFF',
+
+  // Custom BitNation Colors
   BlueGrey: '#607D8B',
   BlueMed:'#72A4DE',
   BitnationBlue:'#4A90E2',
 
-
-  white: '#FFFFFF',
+  BlueGrayMed: '#6D6D72',
 
   BitNationBlue: getBitNationBlue(1),
   BitNationLightBlue: getBitNationLightBlue(1),
@@ -49,7 +54,6 @@ module.exports = {
   disabledButtonTitleColor: '#5F6D7D',
   borderColor: '#275284',
   navigationColor: '#007AFF',
-
 
   textColor: "#444A64",
   textPlaceholder: "#9B9B9B",

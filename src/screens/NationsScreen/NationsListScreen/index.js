@@ -30,7 +30,7 @@ class NationsListScreen extends Component {
     });
 
     return (
-      <View style={styles.container}>
+      <View style={styles.nationsScreenContainer}>
         <BackgroundImage/>
         <FakeNavigationBar/>
         <View style={styles.segmentedControlContainer}>
