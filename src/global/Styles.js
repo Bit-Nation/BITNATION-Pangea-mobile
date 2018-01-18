@@ -1,18 +1,301 @@
 import { MediaQueryStyleSheet } from 'react-native-responsive';
 import Colors from './Colors';
 
+// ========================================
+// DEFAULT TEXT STYLES
+// ========================================
+
+const defaultTextStyles = {
+
+  // ========================================
+  // Default Text Styles
+  // From Apple Human Interface Guidelines
+  // https://developer.apple.com/ios/human-interface-guidelines/visual-design/typography/
+
+  // Apple Defaults (Do not change):
+  /*
+  largeTitle: {
+    fontFamily: 'SF Pro Text',
+    fontWeight: 'bold',
+    fontSize: 34,
+    lineHeight: 41,
+    letterSpacing: 11,
+  },
+
+  title1: {
+    fontFamily: 'SF Pro Text',
+    fontWeight: 'bold',
+    fontSize: 28,
+    lineHeight: 34,
+    letterSpacing: 13,
+  },
+
+  title2: {
+    fontFamily: 'SF Pro Text',
+    fontWeight: 'normal',
+    fontSize: 22,
+    lineHeight: 28,
+    letterSpacing: 16,
+  },
+
+
+  title3: {
+    fontFamily: 'SF Pro Text',
+    fontWeight: 'normal',
+    fontSize: 20,
+    lineHeight: 25,
+    letterSpacing: 19,
+  },
+
+
+  headline: {
+    fontFamily: 'SF Pro Text',
+    fontWeight: 'bold',
+    fontSize: 17,
+    lineHeight: 22,
+    letterSpacing: -24,
+  },
+
+
+  body: {
+    fontFamily: 'SF Pro Text',
+    fontWeight: 'normal',
+    fontSize: 17,
+    lineHeight: 22,
+    letterSpacing: -24,
+  },
+
+
+  callout: {
+    fontFamily: 'SF Pro Text',
+    fontWeight: 'normal',
+    fontSize: 16,
+    lineHeight: 21,
+    letterSpacing: -20,
+  },
+
+
+  subhead: {
+    fontFamily: 'SF Pro Text',
+    fontWeight: 'normal',
+    fontSize: 15,
+    lineHeight: 20,
+    letterSpacing: -16,
+  },
+
+
+  footnote: {
+    fontFamily: 'SF Pro Text',
+    fontWeight: 'normal',
+    fontSize: 13,
+    lineHeight: 18,
+    letterSpacing: -6,
+  },
+
+
+  caption1: {
+    fontFamily: 'SF Pro Text',
+    fontWeight: 'normal',
+    fontSize: 12,
+    lineHeight: 16,
+    letterSpacing: 0,
+  },
+
+
+  caption2: {
+    fontFamily: 'SF Pro Text',
+    fontWeight: 'normal',
+    fontSize: 11,
+    lineHeight: 13,
+    letterSpacing: 6,
+  },
+  */
+
+  // ========================================
+  // Bitnation App Default Text Styles
+  // Derived from Apple Defaults (above)
+
+  largeTitle: {
+    fontFamily: 'Source Code Pro',
+    fontWeight: 'bold',
+    fontSize: 34,
+    lineHeight: 41,
+    letterSpacing: -1,
+    color: Colors.BitNationLightBlue,
+  },
+
+  title1: {
+    fontFamily: 'Roboto',
+    fontWeight: 'bold',
+    fontSize: 28,
+    lineHeight: 34,
+    letterSpacing: 13,
+    color: Colors.BitNationLightBlue,
+  },
+
+  title2: {
+    fontFamily: 'Roboto',
+    fontWeight: 'normal',
+    fontSize: 22,
+    lineHeight: 28,
+    letterSpacing: 0,
+  },
+
+
+  title3: {
+    fontFamily: 'Roboto',
+    fontWeight: 'normal',
+    fontSize: 20,
+    lineHeight: 25,
+    letterSpacing: 19,
+  },
+
+
+  headline: {
+    fontFamily: 'Roboto',
+    fontWeight: 'bold',
+    fontSize: 17,
+    lineHeight: 22,
+    letterSpacing: -24,
+  },
+
+
+  body: {
+    fontFamily: 'Roboto',
+    fontWeight: 'normal',
+    fontSize: 17,
+    lineHeight: 22,
+    letterSpacing: -24,
+  },
+
+
+  callout: {
+    fontFamily: 'Roboto',
+    fontWeight: 'normal',
+    fontSize: 16,
+    lineHeight: 21,
+    letterSpacing: -20,
+  },
+
+
+  subhead: {
+    fontFamily: 'Roboto',
+    fontWeight: 'normal',
+    fontSize: 15,
+    lineHeight: 20,
+    letterSpacing: -16,
+  },
+
+
+  footnote: {
+    fontFamily: 'Roboto',
+    fontWeight: 'normal',
+    fontSize: 13,
+    lineHeight: 18,
+    letterSpacing: -6,
+  },
+
+
+  caption1: {
+    fontFamily: 'Roboto',
+    fontWeight: 'normal',
+    fontSize: 12,
+    lineHeight: 16,
+    letterSpacing: 0,
+  },
+
+
+  caption2: {
+    fontFamily: 'Roboto',
+    fontWeight: 'normal',
+    fontSize: 11,
+    lineHeight: 13,
+    letterSpacing: 6,
+  },
+
+}
+
+
+// ========================================
+// MAIN STYLES
+// ========================================
+
 const styles = {
+
+  // Use the default text styles
+  ...defaultTextStyles,
 
   // ========================================
   // Common Layout Elements
 
-  // General screen container
+  // General screen container for ALL elements
+  // Derived from Apple Human Interface Guidelines
+  // and https://ivomynttinen.com/blog/ios-design-guidelines
+
   screenContainer: {
     flex: 1,
     justifyContent: 'flex-start',
     flexDirection: 'column',
     alignItems: 'stretch',
   },
+
+  statusBar: {
+    height: 20,
+    backgroundColor: 'transparent',
+  },
+
+  statusBariPhoneX: {
+    height: 44,
+    backgroundColor: 'transparent',
+  },
+
+  // Navigation area that shows a normal ("largeTitle" style) title
+  navigationBar: {
+    marginTop:20, // force below the status bar !!! THIS IS WRONG
+    marginLeft: 8,
+    marginRight: 8,
+    height: 44,
+    backgroundColor: 'transparent',
+  },
+
+  // Normal left/right margins for the body area (not navigation or status)
+  layoutMargin: {
+    marginLeft: 16,
+    marginRight: 16,
+  },
+
+  // Tab bar at the bottom of the screen
+  tabBar: {
+    height: 49,
+    marginTop: 10,
+    marginBottom: 10,
+    backgroundColor: Colors.getBitNationLightBlue(0.1),
+    flexDirection: 'row',
+    alignItems: 'stretch',
+    justifyContent: 'space-around',
+  },
+
+  // iPhone X? Not sure what this is.
+  homeIndicator: {
+    height: 34,
+  },
+
+  titleBarLarge: {
+    height: 52,
+    marginLeft: 16,
+    marginRight: 16,
+  },
+
+  // Container for the main area, below navigation but above the bottom tab bar (if existing)
+  bodyContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    marginLeft: 15,
+    marginRight: 15,
+  },
+
+
+  // Variations:
 
   // From Profile Screen:
   profilesScreenContainer: {
@@ -30,6 +313,7 @@ const styles = {
     flexDirection: 'column',
     alignItems: 'stretch',
   },
+
 
 
   // ========================================
@@ -83,6 +367,19 @@ const styles = {
   // These are lists of rectangular panels which contain different kinds of content.
   // Example: Nations Details screen
 
+  panelTitle: {
+    ...defaultTextStyles.title2,
+    textAlign: 'center',
+    color: Colors.white,
+  },
+
+  messageTitleContainer: {
+
+  },
+
+  messageTextContainer: {
+
+  },
 
 
   // ========================================
@@ -286,10 +583,17 @@ const styles = {
     alignItems: 'center',
   },
 
-  avatar: {
+  avatarMedium: {
     height: 50,
     width: 50,
     borderRadius: 25,
+  },
+
+  // Profile View screen
+  avatarLarge: {
+    height: 100,
+    width: 100,
+    borderRadius: 50,
   },
 
 
