@@ -13,7 +13,7 @@ export async function privateKeyToMnemonic(privateKey) {
 
 export async function mnemonicToPrivateKey(mnemonic) {
   const container = await containerPromise;
-  return await container.eth.utils.mnemonicToPrivateKey(mnemonic);
+  return await container.eth.utils.mnemonicToPrivateKey(compressMnemonic(mnemonic));
 }
 
 export async function savePrivateKey(privateKey) {

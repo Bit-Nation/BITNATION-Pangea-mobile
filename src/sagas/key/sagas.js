@@ -1,7 +1,6 @@
 import { call, put, select } from 'redux-saga/effects';
 import _ from 'lodash';
 
-import { compressMnemonic } from '../../utils/key';
 import { changeMnemonicValid, mnemonicCreated } from '../../actions/key';
 import { updateWalletList } from '../../actions/wallet';
 import {
@@ -18,11 +17,8 @@ export function* createPrivateKeySaga() {
 
 export function* savePrivateKeySaga() {
   const state = yield select();
-  const mnemonicArray = state.key.createdMnemonic;
-  if (!mnemonicArray) {
-    return;
-  }
-  const mnemonic = compressMnemonic(mnemonicArray);
+  const mnemonic = state.key.createdMnemonic;
+  if (!mnemonic) return;
   const privateKey = yield call(mnemonicToPrivateKey, mnemonic);
   yield call(savePrivateKey, privateKey);
 
