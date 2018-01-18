@@ -13,11 +13,12 @@ import BackgroundImage from '../../../../components/common/BackgroundImage';
 import Text from '../../../../components/common/Text';
 import KeyBaseScreen from '../../KeyBaseScreen';
 import { KEY_LENGTH } from '../../../../global/Constants';
-import { removePrivateKey } from '../../../../actions/key';
+import { changeEnteredMnemonic, removePrivateKey } from '../../../../actions/key';
 
 class VerifyKeyInstructionScreen extends KeyBaseScreen {
 
   onNextButtonPressed() {
+    this.props.changeMnemonic(_.fill(new Array(KEY_LENGTH), ''));
     this.props.navigator.push(screen('VERIFY_KEY_PROCESS_SCREEN'));
   }
 
@@ -60,9 +61,12 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  removePrivateKey(){
+  removePrivateKey() {
     dispatch(removePrivateKey());
-  }
+  },
+  changeMnemonic(mnemonic) {
+    dispatch(changeEnteredMnemonic(mnemonic));
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(VerifyKeyInstructionScreen);
