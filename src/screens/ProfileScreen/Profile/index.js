@@ -29,7 +29,7 @@ class ProfileScreen extends NavigatorComponent {
         rightButtons: [{
           title: 'Edit',
           id: EDIT_BUTTON,
-          buttonColor: Colors.navigationColor,
+          buttonColor: Colors.navigationButtonColor,
         }],
       }
     );

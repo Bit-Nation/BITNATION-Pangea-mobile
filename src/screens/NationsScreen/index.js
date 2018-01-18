@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import NationsListScreen from './NationsListScreen';
 import { switchNationTab, openNation } from '../../actions/nations';
-import Screens from '../../global/Screens';
+import { screen } from '../../global/Screens';
 import { resolveNation } from '../../utils/nations';
 
 class NationsScreen extends Component {
@@ -24,9 +24,7 @@ class NationsScreen extends Component {
 
     this.props.openNation(id);
 
-    this.props.navigator.push({
-      ...Screens.NATION_DETAILS_SCREEN,
-    });
+    this.props.navigator.push(screen('NATION_DETAILS_SCREEN'));
   };
 
 }

@@ -2,7 +2,10 @@ import React from 'react';
 import {
   Image,
   View,
-  Text, TouchableOpacity, TextInput,
+  Text,
+  TouchableOpacity,
+  TextInput,
+  Platform,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
@@ -33,13 +36,13 @@ class EditProfile extends NavigatorComponent {
         leftButtons: [{
           title: 'Cancel',
           id: 'cancel',
-          buttonColor: Colors.navigationColor,
+          buttonColor: Colors.navigationButtonColor,
         }],
         rightButtons: [{
           title: 'Done',
           id: DONE_BUTTON,
           disabled: !saveEnabled,
-          buttonColor: Colors.navigationColor,
+          buttonColor: Colors.navigationButtonColor,
         }],
       }
     );

@@ -6,29 +6,35 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 
 import Background from '../../components/common/BackgroundImage';
-import Screens from '../../global/Screens';
+import { screen } from '../../global/Screens';
 import List from './List';
 import EmptyWalletScreen from './EmptyState/index';
-import { selectWallet } from '../../actions/wallet';
+import { selectWallet, updateWalletList } from '../../actions/wallet';
 
 class WalletScreen extends Component {
 
+  constructor(props) {
+    super(props);
+
+    this.props.updateWalletList();
+  }
+
   createWallet = () => {
-    this.props.navigator.push(Screens.CREATE_KEY_SCREEN_STEP_1);
+    this.props.navigator.showModal(screen('CREATE_KEY_INTRODUCTION_SCREEN'));
   };
 
   restoreWallet = () => {
-    this.props.navigator.push(Screens.VERIFY_KEY_SCREEN_STEP_1);
+    this.props.navigator.showModal(screen('LOAD_WALLET_SCREEN'));
   };
 
   sendMoney = (wallet) => {
     this.props.selectWallet(wallet);
-    this.props.navigator.push(Screens.SEND_MONEY_SCREEN);
+    this.props.navigator.push(screen('SEND_MONEY_SCREEN'));
   };
 
   receiveMoney = (wallet) => {
     this.props.selectWallet(wallet);
-    this.props.navigator.push(Screens.RECEIVE_MONEY_SCREEN);
+    this.props.navigator.push(screen('RECEIVE_MONEY_SCREEN'));
   };
 
   render() {
@@ -60,6 +66,9 @@ const mapDispatchToProps = dispatch => ({
   selectWallet(wallet) {
     dispatch(selectWallet(wallet));
   },
+  updateWalletList() {
+    dispatch(updateWalletList());
+  }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(WalletScreen);
