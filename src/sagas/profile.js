@@ -15,10 +15,10 @@ function* updateProfile() {
 		let user = yield select(state => state.profile);
 		const profile:ProfileType = {
 	    id: 0,
-	    name: user.editingUser.name ? user.editingUser.name : '',
-	    location: user.editingUser.location ? user.editingUser.location : '',
-	    latitude: user.editingUser.latitude ? user.editingUser.latitude : '',
-	    longitude: user.editingUser.longitude ? user.editingUser.longitude : '',
+	    name: user.editingUser.name ? user.editingUser.name.trim() : '',
+	    location: user.editingUser.location ? user.editingUser.location.trim() : '',
+	    latitude: user.editingUser.latitude ? user.editingUser.latitude.trim() : '',
+	    longitude: user.editingUser.longitude ? user.editingUser.longitude.trim() : '',
 	    description: '',
 	    version: '0',
 	    image: user.editingUser.avatar ? user.editingUser.avatar : ''
