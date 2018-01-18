@@ -22,7 +22,7 @@ import Colors from '../../../../global/Colors';
 
 const DONE_BUTTON = 'DONE_BUTTON';
 
-class CreateKeyStep3 extends KeyBaseScreen {
+class CreateKeyProcessScreen extends KeyBaseScreen {
 
   constructor(props) {
     super(props);
@@ -145,4 +145,4 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateKeyStep3);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateKeyProcessScreen);

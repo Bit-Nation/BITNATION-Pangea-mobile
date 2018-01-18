@@ -105,8 +105,8 @@ const Screens = {
     title: 'Create Private Key',
     ...baseKeyScreen,
   },
-  CREATE_KEY_SCREEN_STEP_3: {
-    screen: 'Pangea.CreateKeyStep3',
+  CREATE_KEY_PROCESS_SCREEN: {
+    screen: 'Pangea.CreateKeyProcessScreen',
     title: 'Create Private Key',
     ...baseKeyScreen,
   },

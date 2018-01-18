@@ -22,7 +22,7 @@ class CreateKeyInstructionScreen extends KeyBaseScreen {
 
   onNextButtonPressed() {
     this.props.createPrivateKey();
-    this.props.navigator.push(screen('CREATE_KEY_SCREEN_STEP_3'));
+    this.props.navigator.push(screen('CREATE_KEY_PROCESS_SCREEN'));
   }
 
   _renderText = (index) => {
