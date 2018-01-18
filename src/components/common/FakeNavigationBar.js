@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import { Image, View } from 'react-native';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
 
-//import Colors from '../../global/Colors';
-//import AssetsImages from '../../global/AssetsImages';
-
 import GlobalStyles from '../../global/Styles';
 
 export default class FakeNavigationBar extends Component {
