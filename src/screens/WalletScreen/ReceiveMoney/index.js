@@ -12,8 +12,11 @@ import BackgroundImage from '../../../components/common/BackgroundImage';
 import { resolveWallet } from '../../../utils/wallet';
 import Button from '../../../components/common/Button';
 import MessageView from '../../../components/common/MessageView';
+import { androidNavigationButtons } from '../../../global/Screens';
 
 class ReceiveMoneyScreen extends Component {
+
+  static navigatorButtons = { ...androidNavigationButtons };
 
   qrCodeText = 'The sender can scan this QR code with a phone or computer camera to get your wallet address.';
   copyAddressText = 'You can copy your wallet address and send any way you choose, e.g. SMS or email. Do not try to type your address by hand!';

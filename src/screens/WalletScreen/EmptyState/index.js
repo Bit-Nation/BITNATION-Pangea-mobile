@@ -20,7 +20,7 @@ export default class EmptyWalletScreen extends Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <BackgroundImage/>
         <FakeNavigationBar/>
         <View style={styles.cardContainer}>

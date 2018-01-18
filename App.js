@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Navigation } from 'react-native-navigation';
 import configureStore from './src/config/configureStore';
 import { registerScreens } from './src/screens/screens';
-import Screens, { appStyle, tabsStyle } from './src/global/Screens';
+import { screen, appStyle, tabsStyle } from './src/global/Screens';
 
 const store = configureStore();
 registerScreens(store, Provider);
@@ -11,11 +11,11 @@ registerScreens(store, Provider);
 // const navigatorStyle = { navBarHidden: true }
 Navigation.startTabBasedApp({
   tabs: [
-      Screens.DASHBOARD_SCREEN,
-      Screens.CHAT_SCREEN,
-      Screens.NATIONS_SCREEN,
-      Screens.WALLET_SCREEN,
-      Screens.PROFILE_SCREEN,
+      screen('DASHBOARD_SCREEN'),
+      screen('CHAT_SCREEN'),
+      screen('NATIONS_SCREEN'),
+      screen('WALLET_SCREEN'),
+      screen('PROFILE_SCREEN'),
   ],
   tabsStyle,
   appStyle,
