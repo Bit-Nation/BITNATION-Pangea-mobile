@@ -45,7 +45,7 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSExceptionDomains</key>
@@ -73,6 +73,12 @@
 		<string>rubicon-icon-font.ttf</string>
 		<string>Feather.ttf</string>
 		<string>MaterialCommunityIcons.ttf</string>
+		<string>SourceCodePro-Black.ttf</string>
+		<string>SourceCodePro-Bold.ttf</string>
+		<string>SourceCodePro-ExtraLight.ttf</string>
+		<string>SourceCodePro-Light.ttf</string>
+		<string>SourceCodePro-Regular.ttf</string>
+		<string>SourceCodePro-Semibold.ttf</string>
 	</array>
 </dict>
 </plist>

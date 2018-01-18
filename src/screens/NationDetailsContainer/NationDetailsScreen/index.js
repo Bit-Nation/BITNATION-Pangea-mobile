@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import {
   View,
-  Text, ScrollView, Image,
-} from 'react-native';
+  Text, ScrollView, Image, StatusBar,
+} from 'react-native'
 import PropTypes from 'prop-types';
 
 import BackgroundImage from '../../../components/common/BackgroundImage';
@@ -14,6 +14,7 @@ import MessageView from '../../../components/common/MessageView';
 import DemoImage from '../../../components/common/DemoImage';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 
+
 class NationDetailsScreen extends Component {
 
   render() {
@@ -23,30 +24,42 @@ class NationDetailsScreen extends Component {
       return <BackgroundImage/>;
     }
 
-    return (
-      <View style={styles.container}>
+
+   return (
+      <View style={styles.screenContainer}>
         <BackgroundImage/>
-        <FakeNavigationBar/>
-        <Text style={styles.title}>{nation.name}</Text>
-        {this._buildButtonsView()}
-        <ScrollView style={styles.scrollView}>
-          <MessageView style={[styles.messageView]}>
-            <Image source={AssetsImage.Placeholder.map} resizeMode='contain'/>
-          </MessageView>
-          <MessageView style={[styles.messageView]}>
-            <Image source={AssetsImage.Placeholder.achievements} resizeMode='contain'/>
-          </MessageView>
-          {this._buildAboutView(nation)}
-          {this._buildGovernmentalStructureView(nation)}
-          {this._buildFactsView(nation)}
-        </ScrollView>
+        <FakeNavigationBar navBarHidden='' />
+        <View style={styles.titleBarLarge}>
+          <Text style={styles.title}>{nation.name}</Text>
+        </View>
+        {this._buildTabBar()}
+        <View style={styles.bodyContainer}>
+          <ScrollView style={styles.scrollView}>
+{/* Fake Map panel */}
+{/*
+            <MessageView style={[styles.messageView]}>
+              <Image source={AssetsImage.Placeholder.map} resizeMode='contain'/>
+            </MessageView>
+*/}
+
+{/* Fake Achievements Panel */}
+{/*
+            <MessageView style={[styles.messageView]}>
+              <Image source={AssetsImage.Placeholder.achievements} resizeMode='contain'/>
+            </MessageView>
+*/}
+            {this._buildAboutView(nation)}
+            {this._buildGovernmentalStructureView(nation)}
+            {this._buildFactsView(nation)}
+          </ScrollView>
+        </View>
       </View>
     );
   }
 
-  _buildButtonsView() {
+  _buildTabBar() {
     return (
-      <View style={styles.buttonsView}>
+      <View style={styles.tabBar}>
         <NationActionButton iconSource={AssetsImage.Actions.chat} title='Chat'/>
         <NationActionButton iconSource={AssetsImage.Actions.map} title='Map'/>
         <NationActionButton iconSource={AssetsImage.Actions.join} title='Join'/>
@@ -55,13 +68,33 @@ class NationDetailsScreen extends Component {
     );
   }
 
+  // THIS NEEDS FIXING!!!
+  // MESSAGEVIEW SHOULD FORMAT AND PRESENT THE PANEL INFORMATION ALL BY ITSELF, WITH ALL THE FORMATTING BUILT INTO IT.
+  // WE CAN PASS IT CHUNKS OF STUFF, TEXT AND TITLES AND SUCH.
+
+// MessageView Props: title = text, messageText = text, style, renderBottom = method, renderAdditionalInfo = method, children = obj
   _buildAboutView(nation) {
     return (
+      <MessageView style={styles.messageView} title={`About ${nation.name}...`} >
+        {/* Children are shown at the top of the panel */}
+        <Text style={styles.panelBody}>
+          Ethereum Address:
+          {nation.ethAddress}
+        </Text>
+    </MessageView>
+    );
+  }
+
+
+  // THIS IS NOT THE RIGHT WAY TO BUILD THESE WITH MESSAGE VIEW!
+
+  _buildAboutViewXXXX(nation) {
+    return (
       <MessageView style={styles.messageView}>
-        <Text style={styles.infoTitle}>
+        <Text style={styles.panelTitle}>
           {`About ${nation.name}...`}
         </Text>
-        <Text style={styles.infoText}>
+        <Text style={styles.panelBody}>
           Ethereum Address:
           {nation.ethAddress}
         </Text>
@@ -73,10 +106,10 @@ class NationDetailsScreen extends Component {
     return (
       <MessageView style={styles.messageView}>
         <DemoImage/>
-        <Text style={styles.infoTitle}>
+        <Text style={styles.panelTitle}>
           Governmental Structure
         </Text>
-        <Text style={styles.infoText}>
+        <Text style={styles.panelBody}>
           {nation.name + ' '}
           uses the Kanun legal code, and laws are enforced with a Reputation System (using the threat of public
           shaming
@@ -90,10 +123,10 @@ class NationDetailsScreen extends Component {
     return (
       <MessageView style={styles.messageView}>
         <DemoImage/>
-        <Text style={styles.infoTitle}>
+        <Text style={styles.panelTitle}>
           Fun Facts
         </Text>
-        <Text style={styles.infoText}>
+        <Text style={styles.panelBody}>
           {`${nation.name} is seeking diplomatic recognition from Earth governments as a sovereign entity.
 
 Non-citizens may not use national services.
