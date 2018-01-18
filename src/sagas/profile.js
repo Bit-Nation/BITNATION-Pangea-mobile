@@ -17,8 +17,8 @@ function* updateProfile() {
 	    id: 0,
 	    name: user.editingUser.name ? user.editingUser.name.trim() : '',
 	    location: user.editingUser.location ? user.editingUser.location.trim() : '',
-	    latitude: user.editingUser.latitude ? user.editingUser.latitude.trim() : '',
-	    longitude: user.editingUser.longitude ? user.editingUser.longitude.trim() : '',
+	    latitude: user.editingUser.latitude ? user.editingUser.latitude : '',
+	    longitude: user.editingUser.longitude ? user.editingUser.longitude : '',
 	    description: '',
 	    version: '0',
 	    image: user.editingUser.avatar ? user.editingUser.avatar : ''
