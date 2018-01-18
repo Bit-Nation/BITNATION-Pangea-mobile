@@ -3,7 +3,7 @@ import { Navigation } from 'react-native-navigation';
 import SplashScreen from './SplashScreen';
 import Dashboard from './Dashboard';
 import WalletScreen from './WalletScreen';
-import CreateKeyStep1 from './Key/Create/CreateKeyStep1';
+import CreateKeyIntroductionScreen from './Key/Create/CreateKeyIntroductionScreen';
 import CreateKeyStep2 from './Key/Create/CreateKeyStep2';
 import CreateKeyStep3 from './Key/Create/CreateKeyStep3';
 import CreateKeySuccessScreen from './Key/Create/CreateKeySuccessScreen';
@@ -22,7 +22,7 @@ import { screen } from '../global/Screens';
 
 export function registerScreens(store, Provider) {
 
-  Navigation.registerComponent(screen('CREATE_KEY_SCREEN_STEP_1').screen, () => CreateKeyStep1, store, Provider);
+  Navigation.registerComponent(screen('CREATE_KEY_INTRODUCTION_SCREEN').screen, () => CreateKeyIntroductionScreen, store, Provider);
   Navigation.registerComponent(screen('CREATE_KEY_SCREEN_STEP_2').screen, () => CreateKeyStep2, store, Provider);
   Navigation.registerComponent(screen('CREATE_KEY_SCREEN_STEP_3').screen, () => CreateKeyStep3, store, Provider);
   Navigation.registerComponent(screen('CREATE_KEY_SUCCESS_SCREEN').screen, () => CreateKeySuccessScreen, store, Provider);

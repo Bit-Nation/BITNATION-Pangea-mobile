@@ -15,7 +15,7 @@ import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
 import KeyBaseScreen from '../../KeyBaseScreen';
 import { removePrivateKey } from '../../../../actions/key';
 
-class CreateKeyStep1 extends KeyBaseScreen {
+class CreateKeyIntroductionScreen extends KeyBaseScreen {
 
   onNextButtonPressed() {
     this.props.navigator.push(screen('CREATE_KEY_SCREEN_STEP_2'));
@@ -59,9 +59,9 @@ class CreateKeyStep1 extends KeyBaseScreen {
   }
 }
 
-CreateKeyStep1.propTypes = {};
+CreateKeyIntroductionScreen.propTypes = {};
 
-CreateKeyStep1.defaultProps = {};
+CreateKeyIntroductionScreen.defaultProps = {};
 
 const mapStateToProps = state => ({
   ...state,
@@ -73,4 +73,4 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateKeyStep1);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateKeyIntroductionScreen);

@@ -95,8 +95,8 @@ const Screens = {
     title: 'Profile & Settings',
     navigatorStyle,
   },
-  CREATE_KEY_SCREEN_STEP_1: {
-    screen: 'Pangea.CreateKeyStep1',
+  CREATE_KEY_INTRODUCTION_SCREEN: {
+    screen: 'Pangea.CreateKeyIntroductionScreen',
     title: ' Create Private Key ',
     ...baseKeyScreen,
   },

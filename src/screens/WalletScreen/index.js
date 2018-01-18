@@ -20,7 +20,7 @@ class WalletScreen extends Component {
   }
 
   createWallet = () => {
-    this.props.navigator.showModal(screen('CREATE_KEY_SCREEN_STEP_1'));
+    this.props.navigator.showModal(screen('CREATE_KEY_INTRODUCTION_SCREEN'));
   };
 
   restoreWallet = () => {
