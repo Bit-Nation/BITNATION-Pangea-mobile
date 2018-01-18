@@ -24,7 +24,7 @@ import Colors from '../../../../global/Colors';
 
 const DONE_BUTTON = 'DONE_BUTTON';
 
-class EnterPrivateKeyScreen extends KeyBaseScreen {
+class VerifyKeyProcessScreen extends KeyBaseScreen {
 
   constructor(props) {
     super(props);
@@ -222,4 +222,4 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(EnterPrivateKeyScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(VerifyKeyProcessScreen);

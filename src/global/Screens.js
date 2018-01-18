@@ -115,8 +115,8 @@ const Screens = {
     title: 'Verify Private Key',
     ...baseKeyScreen,
   },
-  VERIFY_KEY_SCREEN_STEP_2: {
-    screen: 'Pangea.VerifyKeyStep2',
+  VERIFY_KEY_PROCESS_SCREEN: {
+    screen: 'Pangea.VerifyKeyProcessScreen',
     title: 'Verify Private Key',
     ...baseKeyScreen,
   },
