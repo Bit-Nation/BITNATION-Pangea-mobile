@@ -37,7 +37,6 @@ export default class PanelView extends Component {
 			<View style={[styles.panelView, style]}>
 				
 				{/* TITLE + ICON */}
-				{/*
 				<View style={styles.panelTitleRowContainer}>
 					{
 						this.props.title &&
@@ -56,7 +55,7 @@ export default class PanelView extends Component {
 						</View>
 					}
 				</View>
-				*/}
+				
 				{/* MAIN DISPLAY AREA */}
 				<View style={styles.panelTextContainer}>
 					{children}
@@ -70,7 +69,7 @@ export default class PanelView extends Component {
 						</Text>
 					</View>
 				}
-				{/*
+				
 				<View style={styles.messageAdditionalInfoContainer}>
 					{renderAdditionalInfo && renderAdditionalInfo()}
 				</View>
@@ -83,7 +82,6 @@ export default class PanelView extends Component {
 				<View style={styles.messageBottomContainer}>
 					{renderBottom && renderBottom()}
 				</View>
-				*/}
 			</View>
 		)
 	}
