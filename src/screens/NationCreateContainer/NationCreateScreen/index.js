@@ -125,7 +125,7 @@ class CreateNation extends NavigatorComponent {
   _buildLocationView() {
     return (
 
-      <MessageView style={styles.messageView} title='Location' >
+      <MessageView style={styles.messageView} title='Location' icon='?'>
 
         <View style={[styles.formRow, styles.formRow]}>
           <View style={styles.fieldsContainer}>

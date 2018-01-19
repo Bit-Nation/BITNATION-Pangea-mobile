@@ -333,8 +333,9 @@ const styles = {
 
   panelTitle: {
     ...defaultTextStyles.title2,
-    textAlign: 'center',
+    fontWeight: 'bold',
     color: Colors.white,
+    textAlign: 'left',
   },
 
   panelBody: {
@@ -342,8 +343,25 @@ const styles = {
     color: Colors.BitNationLightBlue,
   },
 
+  messageTitleRowContainer: {
+    flex:1,
+    flexDirection: 'row',
+    backgroundColor: 'transparent',
+    paddingBottom: 4,
+    borderBottomColor: Colors.BlueGrey,
+    borderStyle: 'solid',
+    borderBottomWidth: 1,
+  },
+
   messageTitleContainer: {
-    paddingBottom: 10,
+    flex:4,
+    backgroundColor: 'transparent',
+  },
+
+  messageTitleIcon: {
+    flex:1,
+    backgroundColor: 'transparent',
+    alignItems: 'flex-end',
   },
 
   messageTextContainer: {
@@ -370,12 +388,6 @@ const styles = {
   formRow: {
     flexDirection: 'row',
     alignItems: 'center',
-  },
-
-  indentedFormRow: {
-    paddingLeft: '10%',
-    flexDirection: 'row',
-    alignItems: 'flex-end',
   },
 
   textInput: {

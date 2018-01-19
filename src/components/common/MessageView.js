@@ -19,18 +19,27 @@ export default class MessageView extends Component {
       <View style={[styles.messageView, style]}>
         <View style={styles.messageContainer}>
 
-          {/* TITLE */}
-
+          {/* TITLE + ICON */}
+          <View style={styles.messageTitleRowContainer}>
             {
               this.props.title &&
-              <View style={styles.messageTitleContainer}>
+                <View style={styles.messageTitleContainer}>
+                 <Text style={styles.panelTitle}>
+                  {this.props.title}
+                </Text>
+                </View>
+            }
+            {
+              this.props.icon &&
+              <View style={styles.messageTitleIcon}>
                 <Text style={styles.panelTitle}>
-                {this.props.title}
-              </Text>
+                  {this.props.icon}
+                </Text>
               </View>
             }
+          </View>
 
-            {/* MAIN DISPLAY AREA */}
+          {/* MAIN DISPLAY AREA */}
 
           {children}
 
