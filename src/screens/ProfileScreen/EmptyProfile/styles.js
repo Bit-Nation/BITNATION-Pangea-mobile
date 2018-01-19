@@ -8,19 +8,14 @@ const styles = MediaQueryStyleSheet.create({
     ...GlobalStyles.screenContainer,
   },
 
-  messageView: {
-    marginLeft: 8,
-    marginRight: 8,
-  },
-  
-  topSpacer: {
-    flex: 3,
-  },
+    topSpacer: {
+      flex: 3,
+    },
 
   bottomSpacer: {
-    flex: 4,
-    alignItems: 'center',
-    justifyContent: 'center',
+      flex: 4,
+      alignItems: 'center',
+      justifyContent: 'center',
   },
 
 });

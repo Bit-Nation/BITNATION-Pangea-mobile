@@ -46,7 +46,7 @@ export default class MessageView extends Component {
           {
             this.props.messageText &&
             <View style={styles.messageTextContainer}>
-              <Text style={styles.messageText}>
+              <Text style={styles.body}>
               {this.props.messageText}
             </Text>
             </View>
