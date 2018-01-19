@@ -357,17 +357,7 @@ const styles = {
 		paddingRight: 15,
 	},
 	
-	// View inside the messageView container
-	// panelContainer: {
-	// 	paddingTop: 12,
-	// 	paddingBottom: 22,
-	// 	paddingLeft: 15,
-	// 	paddingRight: 15,
-	// 	alignItems: 'center',
-	// },
-	
-	
-	// Message Title Container for the Title and Icon, below
+	// Panel Title Container for the Title and Icon, below
 	panelTitleRowContainer: {
 		flex: 1,
 		flexDirection: 'row',
@@ -380,21 +370,21 @@ const styles = {
 	
 	panelTitleContainer: {
 		flex: 1,
-		backgroundColor: 'steelblue',
+		//backgroundColor: 'steelblue',
 	},
 	
 	panelTitleIconContainer: {
 		flex: 1,
-		backgroundColor: 'powderblue',
+		//backgroundColor: 'powderblue',
 	},
 	
 	panelTitleIcon: {
 		flex: 1,
-		backgroundColor: 'powderblue',
 		alignItems: 'flex-end',
+		//backgroundColor: 'powderblue',
 	},
 	
-	// Text style for the Message Title
+	// Text style for the Panel Title
 	panelTitle: {
 		...defaultTextStyles.title2,
 		fontWeight: 'bold',
@@ -402,11 +392,10 @@ const styles = {
 		textAlign: 'left',
 	},
 	
-	// Text style for the Message Icon
+	// Text style for the Panel Icon
 	panelIcon: {
 		...defaultTextStyles.title2,
 		fontWeight: 'bold',
-		color: 'red',
 		textAlign: 'right',
 	},
 	
@@ -420,6 +409,13 @@ const styles = {
 		...defaultTextStyles.body,
 		color: Colors.BitNationLightBlue,
 	},
+
+
+// ========================================
+	// Panels in a vertical list.
+	// These are lists of rectangular panels which contain different kinds of content.
+	// These don't have margin left/right, so they won't work for dashboard.
+	// Used in:  components/common/MessageView.js
 	
 	
 	// View that holds a message
@@ -439,15 +435,6 @@ const styles = {
 		paddingLeft: 15,
 		paddingRight: 15,
 	},
-	
-	// View inside the messageView container
-	// messageContainer: {
-	// 	paddingTop: 12,
-	// 	paddingBottom: 22,
-	// 	paddingLeft: 15,
-	// 	paddingRight: 15,
-	// 	alignItems: 'center',
-	// },
 	
 	// Message Title Container for the Title and Icon, below
 	messageTitleRowContainer: {
