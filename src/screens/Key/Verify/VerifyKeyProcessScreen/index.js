@@ -33,6 +33,7 @@ class VerifyKeyProcessScreen extends KeyBaseScreen {
       currentPage: 0,
       selectedInputIndex: null,
     };
+    this.props.changeMnemonic(_.fill(new Array(KEY_LENGTH), ''));
     this.keyTextInputContainers = [];
     this._configureNavigation(this.props);
   }
@@ -148,7 +149,7 @@ class VerifyKeyProcessScreen extends KeyBaseScreen {
         index={index}
         isLast={index === KEY_LENGTH - 1}
         onChange={this._onValueChange}
-        value={this.props.enteredMnemonic[index]}
+        value={(this.props.enteredMnemonic && this.props.enteredMnemonic[index]) || ''}
         label={(index + 1).toString()}
         onSubmit={this._onFieldSubmit}
         key={index}

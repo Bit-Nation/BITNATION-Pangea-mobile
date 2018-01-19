@@ -18,7 +18,6 @@ import { changeEnteredMnemonic, removePrivateKey } from '../../../../actions/key
 class VerifyKeyInstructionScreen extends KeyBaseScreen {
 
   onNextButtonPressed() {
-    this.props.changeMnemonic(_.fill(new Array(KEY_LENGTH), ''));
     this.props.navigator.push(screen('VERIFY_KEY_PROCESS_SCREEN'));
   }
 
