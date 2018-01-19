@@ -86,14 +86,14 @@ class NationDetailsScreen extends Component {
 
   _buildGovernmentalStructureView(nation) {
     return (
-      <MessageView style={styles.messageView} title='Governmental Structure'>
-        <DemoImage/>
+      <MessageView style={styles.messageViewDemo} title='Governmental Structure'>
         <Text style={styles.panelBody}>
           {nation.name + ' '}
           uses the Kanun legal code, and laws are enforced with a Reputation System (using the threat of public
           shaming
           and shunning). The government is a Holocracy. The nation is managed as a non-profit entity
         </Text>
+	      <DemoImage/>
       </MessageView>
     );
   }
@@ -101,7 +101,6 @@ class NationDetailsScreen extends Component {
   _buildFactsView(nation) {
     return (
       <MessageView style={styles.messageView} title={'Fun Facts'}>
-        <DemoImage/>
         <Text style={styles.panelBody}>
           {`${nation.name} is seeking diplomatic recognition from Earth governments as a sovereign entity.
 
@@ -109,6 +108,7 @@ Non-citizens may not use national services.
 
 Citizens of ${nation.name} are allowed to be members of other nations.`}
         </Text>
+	      <DemoImage/>
       </MessageView>
     );
   }
