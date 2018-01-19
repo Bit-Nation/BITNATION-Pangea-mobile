@@ -7,3 +7,5 @@ export const KEY_LENGTH = KEY_COLUMN_COUNT * KEY_ROW_COUNT;
 
 
 export const CONNECTION_TIMEOUT = 30 * 1000;
+// @todo Select right interval
+export const BALANCE_EXPIRATION_INTERVAL = 10 * 1000;

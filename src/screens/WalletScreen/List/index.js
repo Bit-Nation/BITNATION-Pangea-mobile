@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {
   Text, Image, FlatList, Button, ListItem,
-  View, TouchableOpacity
+  View, TouchableOpacity,
 } from 'react-native';
 import PropTypes from 'prop-types';
 
@@ -23,7 +23,12 @@ export default class WalletList extends Component {
             data={this.props.wallets}
             keyExtractor={item => item.ethAddress}
             renderItem={({ item }) => {
-              const balance = (item.balance && item.balance.toString()) + ' ' + item.currency;
+              let balance;
+              if (item.balance !== undefined) {
+                balance = item.balance.toString() + ' ' + item.currency;
+              } else {
+                balance = 'Updating';
+              }
 
               return (<WalletCard
                 imagePath={Images.ethereumLogo}
