@@ -231,6 +231,11 @@ const styles = {
 	screenContainer: {
 		flex: 1,
 		flexDirection: 'column',
+		justifyContent: 'space-between',
+		alignItems: 'stretch',
+	},
+	
+	screenContainerScrolling: {
 		justifyContent: 'flex-start',
 		alignItems: 'stretch',
 	},
@@ -239,6 +244,9 @@ const styles = {
 	bodyContainer: {
 		flex: 1,
 		flexDirection: 'column',
+		justifyContent: 'space-between',
+		alignItems: 'flex-start',
+		alignContent: 'flex-start',
 		marginLeft: 15,
 		marginRight: 15,
 	},
@@ -331,28 +339,118 @@ const styles = {
 	// These don't have margin left/right, so they won't work for dashboard.
 	// Used in:  components/common/MessageView.js
 	
+	
+	
 	// View that holds a message
-	messageView: {
+	panelView: {
+		flexDirection: 'column',
+		alignItems: 'center',
 		borderRadius: 8,
 		backgroundColor: Colors.getBitNationBlue(0.2),
 		marginTop: 8,
 		marginBottom: 8,
 		marginLeft: 0,
 		marginRight: 0,
-	},
-	
-	// View inside the messageView container
-	messageContainer: {
 		paddingTop: 12,
 		paddingBottom: 22,
 		paddingLeft: 15,
 		paddingRight: 15,
-		alignItems: 'center',
 	},
+	
+	// View inside the messageView container
+	// panelContainer: {
+	// 	paddingTop: 12,
+	// 	paddingBottom: 22,
+	// 	paddingLeft: 15,
+	// 	paddingRight: 15,
+	// 	alignItems: 'center',
+	// },
+	
+	
+	// Message Title Container for the Title and Icon, below
+	panelTitleRowContainer: {
+		flex: 1,
+		flexDirection: 'row',
+		backgroundColor: 'transparent',
+		paddingBottom: 4,
+		borderBottomColor: Colors.BlueGrey,
+		borderStyle: 'solid',
+		borderBottomWidth: 1,
+	},
+	
+	panelTitleContainer: {
+		flex: 1,
+		backgroundColor: 'steelblue',
+	},
+	
+	panelTitleIconContainer: {
+		flex: 1,
+		backgroundColor: 'powderblue',
+	},
+	
+	panelTitleIcon: {
+		flex: 1,
+		backgroundColor: 'powderblue',
+		alignItems: 'flex-end',
+	},
+	
+	// Text style for the Message Title
+	panelTitle: {
+		...defaultTextStyles.title2,
+		fontWeight: 'bold',
+		color: Colors.white,
+		textAlign: 'left',
+	},
+	
+	// Text style for the Message Icon
+	panelIcon: {
+		...defaultTextStyles.title2,
+		fontWeight: 'bold',
+		color: 'red',
+		textAlign: 'right',
+	},
+	
+	panelTextContainer: {
+		flex:1,
+		paddingBottom: 4,
+	},
+	
+	
+	panelBody: {
+		...defaultTextStyles.body,
+		color: Colors.BitNationLightBlue,
+	},
+	
+	
+	// View that holds a message
+	// Size changes to fit contents, so we do not use flex for size
+	messageView: {
+		flexDirection: 'column',
+		justifyContent: 'space-between',
+		flexShrink: 1,
+		borderRadius: 8,
+		backgroundColor: Colors.getBitNationBlue(0.2),
+		marginTop: 8,
+		marginBottom: 8,
+		marginLeft: 0,
+		marginRight: 0,
+		paddingTop: 12,
+		paddingBottom: 22,
+		paddingLeft: 15,
+		paddingRight: 15,
+	},
+	
+	// View inside the messageView container
+	// messageContainer: {
+	// 	paddingTop: 12,
+	// 	paddingBottom: 22,
+	// 	paddingLeft: 15,
+	// 	paddingRight: 15,
+	// 	alignItems: 'center',
+	// },
 	
 	// Message Title Container for the Title and Icon, below
 	messageTitleRowContainer: {
-		flex: 1,
 		flexDirection: 'row',
 		backgroundColor: 'transparent',
 		paddingBottom: 4,
@@ -365,30 +463,16 @@ const styles = {
 		flex: 4,
 		backgroundColor: 'transparent',
 	},
-	
+
 	messageTitleIcon: {
 		flex: 1,
 		backgroundColor: 'transparent',
 		alignItems: 'flex-end',
 	},
 	
-	// Text style for the Message Title
-	panelTitle: {
-		...defaultTextStyles.title2,
-		fontWeight: 'bold',
-		color: Colors.white,
-		textAlign: 'left',
-	},
-	
 	// Message Text
 	messageTextContainer: {
-		backgroundColor: 'transparent',
-		paddingBottom: 4,
-	},
-	
-	panelBody: {
-		...defaultTextStyles.body,
-		color: Colors.BitNationLightBlue,
+		marginBottom: 8,
 	},
 	
 	messageAdditionalInfoContainer: {},
