@@ -139,6 +139,7 @@ const defaultTextStyles = {
     fontSize: 22,
     lineHeight: 28,
     letterSpacing: 0,
+    color: Colors.BitNationLightBlue,
   },
 
 
@@ -166,6 +167,7 @@ const defaultTextStyles = {
     fontSize: 17,
     lineHeight: 22,
     letterSpacing: 0,
+    color: Colors.BitNationLightBlue,
   },
 
 
@@ -193,6 +195,7 @@ const defaultTextStyles = {
     fontSize: 13,
     lineHeight: 18,
     letterSpacing: 0,
+    color: Colors.BitNationLightBlue,
   },
 
 
@@ -202,6 +205,7 @@ const defaultTextStyles = {
     fontSize: 12,
     lineHeight: 16,
     letterSpacing: 0,
+    color: Colors.BitNationLightBlue,
   },
 
 
@@ -211,6 +215,7 @@ const defaultTextStyles = {
     fontSize: 11,
     lineHeight: 13,
     letterSpacing: 0,
+    color: Colors.BitNationLightBlue,
   },
 
 }
@@ -237,6 +242,19 @@ const styles = {
     justifyContent: 'flex-start',
     flexDirection: 'column',
     alignItems: 'stretch',
+  },
+
+  // Container for the main area, below navigation but above the bottom tab bar (if existing)
+  bodyContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    marginLeft: 15,
+    marginRight: 15,
+  },
+
+  // A block of text in the body area
+  bodyParagraph: {
+    paddingBottom: 15,
   },
 
   statusBar: {
@@ -286,14 +304,6 @@ const styles = {
     marginRight: 16,
   },
 
-  // Container for the main area, below navigation but above the bottom tab bar (if existing)
-  bodyContainer: {
-    flex: 1,
-    flexDirection: 'column',
-    marginLeft: 15,
-    marginRight: 15,
-  },
-
 
   // Variations:
 
@@ -316,6 +326,37 @@ const styles = {
 
 
 
+   // ========================================
+  // Panel Lists Layout
+  // These are lists of rectangular panels which contain different kinds of content.
+  // Example: Nations Details screen
+
+  panelTitle: {
+    ...defaultTextStyles.title2,
+    textAlign: 'center',
+    color: Colors.white,
+  },
+
+  panelBody: {
+    ...defaultTextStyles.body,
+    color: Colors.BitNationLightBlue,
+  },
+
+  messageTitleContainer: {
+    paddingBottom: 10,
+  },
+
+  messageTextContainer: {
+
+  },
+  messageAdditionalInfoContainer: {
+
+  },
+  messageBottomContainer: {
+
+  },
+
+
   // ========================================
   // Forms
   // Example: Profile Edit Screen
@@ -329,6 +370,12 @@ const styles = {
   formRow: {
     flexDirection: 'row',
     alignItems: 'center',
+  },
+
+  indentedFormRow: {
+    paddingLeft: '10%',
+    flexDirection: 'row',
+    alignItems: 'flex-end',
   },
 
   textInput: {
@@ -362,38 +409,7 @@ const styles = {
 
 
 
-  // ========================================
-  // Panel Lists Layout
-  // These are lists of rectangular panels which contain different kinds of content.
-  // Example: Nations Details screen
-
-  panelTitle: {
-    ...defaultTextStyles.title2,
-    textAlign: 'center',
-    color: Colors.white,
-  },
-
-  panelBody: {
-    ...defaultTextStyles.body,
-    color: Colors.BitNationLightBlue,
-  },
-
-  messageTitleContainer: {
-    paddingBottom: 10,
-  },
-
-  messageTextContainer: {
-
-  },
-  messageAdditionalInfoContainer: {
-
-  },
-  messageBottomContainer: {
-
-  },
-
-
-  // ========================================
+// ========================================
   // Section Lists Layout
   // These are lists with rows divided by section headers, e.g. "A"
   // Example: Nations List screen
@@ -553,12 +569,21 @@ const styles = {
 
 
   // ========================================
-  // Messages
+  // Panels in a vertical list.
+  // These don't have margin left/right, so they won't work for dashboard.
   // e.g. components/common/MessageView.js
 
   messageView: {
     borderRadius: 8,
     backgroundColor: Colors.getBitNationBlue(0.2),
+    marginTop: 8,
+    marginBottom: 8,
+    marginLeft:0,
+    marginRight:0,
+  },
+
+  messageViewNoBackground: {
+    backgroundColor: 'transparent',
   },
 
   messageContainer: {
