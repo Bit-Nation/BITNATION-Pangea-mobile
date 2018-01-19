@@ -235,17 +235,12 @@ const styles = {
 		alignItems: 'stretch',
 	},
 	
-	screenContainerScrolling: {
-		justifyContent: 'flex-start',
-		alignItems: 'stretch',
-	},
-	
 	// Container for the main area, below navigation but above the bottom tab bar (if existing)
 	bodyContainer: {
 		flex: 1,
 		flexDirection: 'column',
-		justifyContent: 'space-between',
-		alignItems: 'flex-start',
+		justifyContent: 'flex-start',
+		//alignItems: 'stretch',
 		alignContent: 'flex-start',
 		marginLeft: 15,
 		marginRight: 15,
@@ -421,6 +416,7 @@ const styles = {
 	// View that holds a message
 	// Size changes to fit contents, so we do not use flex for size
 	messageView: {
+//		flex: 1,
 		flexDirection: 'column',
 		justifyContent: 'space-between',
 		flexShrink: 1,
@@ -671,7 +667,13 @@ const styles = {
 	// e.g. components/common/MessageView.js
 	
 	avatarContainer: {
+		flexDirection: 'row',
 		width: 100,
+		alignItems: 'center',
+	},
+	
+	avatarContainerLarge: {
+		flex: 1,
 		alignItems: 'center',
 	},
 	
@@ -690,6 +692,7 @@ const styles = {
 		height: 100,
 		width: 100,
 		borderRadius: 50,
+		margin: 15,
 	},
 	
 }

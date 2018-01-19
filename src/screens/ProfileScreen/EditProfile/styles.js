@@ -1,14 +1,14 @@
-import { MediaQueryStyleSheet } from 'react-native-responsive';
-import Colors from '../../../global/Colors';
-import GlobalStyles from '../../../global/Styles';
+import { MediaQueryStyleSheet } from 'react-native-responsive'
+import Colors from '../../../global/Colors'
+import GlobalStyles from '../../../global/Styles'
 
 const styles = MediaQueryStyleSheet.create({
-  ...GlobalStyles,
+	...GlobalStyles,
+	
+	scrollView: {
+		flex: 1,
+	},
+	
+})
 
-  container: {
-    ...GlobalStyles.screenContainer,
-  },
-
-});
-
-export default styles;
+export default styles
