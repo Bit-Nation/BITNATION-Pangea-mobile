@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  View,
+  View, Image,
   Text, ScrollView, TextInput,
 } from 'react-native';
 import PropTypes from 'prop-types';
@@ -11,6 +11,8 @@ import { ActionSheet } from 'native-base';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import styles from './styles';
 import MessageView from '../../../components/common/MessageView';
+import SwitchLabeled from '../../../components/common/SwitchLabeled';
+import Images from "../../../global/AssetsImages";
 
 const DONE_BUTTON = 'DONE_BUTTON';
 
@@ -77,6 +79,8 @@ class CreateNation extends NavigatorComponent {
             {this._buildLocationView()}
             {this._buildGovernmentalView()}
             {this._buildOptionsView()}
+            {this._buildFeesView()}
+            {this._buildBottomView()}
           </ScrollView>
         </View>
       </View>
@@ -124,9 +128,7 @@ class CreateNation extends NavigatorComponent {
 
   _buildLocationView() {
     return (
-
       <MessageView style={styles.messageView} title='Location' icon='?'>
-
         <View style={[styles.formRow, styles.formRow]}>
           <View style={styles.fieldsContainer}>
             <TextInput
@@ -187,33 +189,48 @@ class CreateNation extends NavigatorComponent {
 
   _buildGovernmentalView() {
     return (
-      <MessageView style={styles.messageView}>
-        <Text style={styles.panelTitle}>Governmental Structure</Text>
-        <TextInput
-          style={styles.textInput}
-          placeholder='Legal Code'
-          placeholderTextColor='rgba(255,255,255,0.3)'
-          keyboardType='default'
-        />
-        <TextInput
-          style={styles.textInput}
-          placeholder='Law Enforcement Mechanisms'
-          placeholderTextColor='rgba(255,255,255,0.3)'
-          keyboardType='default'
-        />
-        <TextInput
-          style={styles.textInput}
-          placeholder='Type of Government'
-          placeholderTextColor='rgba(255,255,255,0.3)'
-          keyboardType='default'
-        />
-        <TextInput
-          style={styles.textInput}
-          placeholder='For-Profit or Non-Profit'
-          placeholderTextColor='rgba(255,255,255,0.3)'
-          keyboardType='default'
-        />
-        <Text style={styles.infoText}>
+      <MessageView style={styles.messageView} title='Governmental Structure' icon='?'>
+        <View style={styles.formRow}>
+          <View style={styles.fieldsContainer}>
+            <TextInput
+              style={styles.textInput}
+              placeholder='Legal Code'
+              placeholderTextColor='rgba(255,255,255,0.3)'
+              keyboardType='default'
+            />
+          </View>
+        </View>
+        <View style={styles.formRow}>
+          <View style={styles.fieldsContainer}>
+            <TextInput
+              style={styles.textInput}
+              placeholder='Law Enforcement Mechanisms'
+              placeholderTextColor='rgba(255,255,255,0.3)'
+              keyboardType='default'
+            />
+          </View>
+        </View>
+        <View style={styles.formRow}>
+          <View style={styles.fieldsContainer}>
+            <TextInput
+              style={styles.textInput}
+              placeholder='Type of Government'
+              placeholderTextColor='rgba(255,255,255,0.3)'
+              keyboardType='default'
+            />
+          </View>
+        </View>
+        <View style={styles.formRow}>
+          <View style={styles.fieldsContainer}>
+            <TextInput
+              style={styles.textInput}
+              placeholder='For-Profit or Non-Profit'
+              placeholderTextColor='rgba(255,255,255,0.3)'
+              keyboardType='default'
+            />
+          </View>
+        </View>
+        <Text style={styles.footnote}>
           Here is some text. Here is some text. Here is some text. Here is some text. Here is some text. Here is some text. Here is some text. Here is some text.
         </Text>
       </MessageView>
@@ -222,36 +239,80 @@ class CreateNation extends NavigatorComponent {
 
   _buildOptionsView() {
     return (
-      <MessageView style={styles.messageView}>
-        <Text style={styles.panelTitle}>Options</Text>
-        <TextInput
-          style={styles.textInput}
-          placeholder='Legal Code'
-          placeholderTextColor='rgba(255,255,255,0.3)'
-          keyboardType='default'
-        />
-        <TextInput
-          style={styles.textInput}
-          placeholder='Law Enforcement Mechanisms'
-          placeholderTextColor='rgba(255,255,255,0.3)'
-          keyboardType='default'
-        />
-        <TextInput
-          style={styles.textInput}
-          placeholder='Type of Government'
-          placeholderTextColor='rgba(255,255,255,0.3)'
-          keyboardType='default'
-        />
-        <TextInput
-          style={styles.textInput}
-          placeholder='For-Profit or Non-Profit'
-          placeholderTextColor='rgba(255,255,255,0.3)'
-          keyboardType='default'
-        />
-        <Text style={styles.infoText}>
-          Here is some text. Here is some text. Here is some text. Here is some text. Here is some text. Here is some text. Here is some text. Here is some text.
+      <MessageView style={styles.messageView} title='Options' icon='?'>
+        <View style={styles.formRow}>
+          <View style={styles.fieldsContainer}>
+            <SwitchLabeled
+              label= "I plan to seek diplomatic recognition of my nation as a sovereign entity."
+              value= {false}
+            />
+          </View>
+        </View>
+        <View style={styles.formRow}>
+          <View style={styles.fieldsContainer}>
+            <SwitchLabeled
+              label= "I plan to seek diplomatic recognition of my nation as a sovereign entity."
+              value= {true}
+            />
+          </View>
+        </View>
+        <View style={styles.formRow}>
+          <View style={styles.fieldsContainer}>
+            <SwitchLabeled
+              label= "I plan to seek diplomatic recognition of my nation as a sovereign entity."
+              value= {false}
+            />
+          </View>
+        </View>
+        <View style={styles.formRow}>
+          <View style={styles.fieldsContainer}>
+            <SwitchLabeled
+              label= "I plan to seek diplomatic recognition of my nation as a sovereign entity."
+              value= {true}
+            />
+          </View>
+        </View>
+        <View style={styles.formRow}>
+          <View style={styles.fieldsContainer}>
+            <TextInput
+              style={styles.textInput}
+              placeholder='Estonia'
+              placeholderTextColor='rgba(255,255,255,0.3)'
+              keyboardType='default'
+            />
+          </View>
+        </View>
+      </MessageView>
+    );
+  }
+
+  _buildFeesView() {
+    return (
+      <MessageView style={styles.messageView} title='Fees' icon='?'>
+        <View style={styles.formRow}>
+          <View style={styles.fieldsContainer}>
+            <SwitchLabeled
+              label= "I agree to pay 1.232 mETH to create this nation."
+              value= {true}
+            />
+          </View>
+        </View>
+        <Text style={styles.footnote}>
+          The fee to register a new nation on the blockchain is 1.00 mETH. We will deduct the fee from your wallet. You have 1.2 ETH  in your wallet.
         </Text>
       </MessageView>
+    );
+  }
+
+  _buildBottomView() {
+    return (
+      <View style={styles.nationsScreenImageContainer}>
+        <Image
+          style={styles.secondImageContainer}
+          source={Images.logo}
+          resizeMode="contain"
+        />
+      </View>
     );
   }
 }

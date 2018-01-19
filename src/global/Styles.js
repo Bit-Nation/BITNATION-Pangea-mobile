@@ -313,6 +313,17 @@ const styles = {
 		flexDirection: 'column',
 		alignItems: 'stretch',
 	},
+
+  // From Create Nations Screen:
+  nationsScreenImageContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    //justifyContent: 'flex-start',
+    flexDirection: 'row',
+    alignItems: 'stretch',
+		marginTop: 30,
+		marginBottom: 20,
+  },
 	
 	// ========================================
 	// Panels in a vertical list.
