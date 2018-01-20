@@ -510,6 +510,30 @@ const styles = {
 		fontSize: 17,
 	},
 
+  dropDown: {
+    backgroundColor: Colors.getBitNationLightBlue(0.2),
+    borderColor: Colors.borderColor,
+    borderWidth: 1,
+    flex: 1,
+    marginTop: 4,
+    marginBottom: 4,
+    marginRight: 0,
+    marginLeft: 0,
+    paddingLeft: 4,
+    paddingTop: 6,
+    paddingBottom: 6,
+  },
+
+  dropDownTextDefault: {
+    color: Colors.white,
+    fontSize: 16,
+  },
+
+  dropDownTextList: {
+    color: Colors.primary_blue,
+    fontSize: 16,
+  },
+
 // ========================================
 	// Section Lists Layout
 	// These are lists with rows divided by section headers, e.g. "A"
