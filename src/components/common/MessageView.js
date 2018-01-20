@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-import { View, Text} from 'react-native'
+import { View, Text } from 'react-native'
 import { MediaQueryStyleSheet } from 'react-native-responsive'
 import PropTypes from 'prop-types'
 
-import Colors from '../../global/Colors'
 import GlobalStyles from '../../global/Styles'
 
 //import Text from './Text'
@@ -19,30 +18,35 @@ export default class MessageView extends Component {
 			<View style={[styles.messageView, style]}>
 				
 				{/* TITLE + ICON */}
-				<View style={styles.messageTitleRowContainer}>
-					{
-						this.props.title &&
-						<View style={styles.messageTitleContainer}>
-							<Text style={styles.panelTitle}>
-								{this.props.title}
-							</Text>
-						</View>
-					}
-					{
-						this.props.icon &&
-						<View style={styles.messageTitleIcon}>
-							<Text style={styles.panelTitle}>
-								{this.props.icon}
-							</Text>
-						</View>
-					}
-				</View>
+				{/* Hide this view if no title or icon to avoid line below it. */}
+				{
+					( _isNotEmpty(this.props.title) || _isNotEmpty(this.props.icon )) &&
+					<View style={styles.messageTitleRowContainer}>
+						{
+							this.props.title &&
+							<View style={styles.messageTitleContainer}>
+								<Text style={styles.panelTitle}>
+									{this.props.title}
+								</Text>
+							</View>
+						}
+						{
+							this.props.icon &&
+							<View style={styles.messageTitleIcon}>
+								<Text style={styles.panelTitle}>
+									{this.props.icon}
+								</Text>
+							</View>
+						}
+					</View>
+				}
+				
 				
 				{/* MAIN DISPLAY AREA */}
 				<View style={styles.messageTextContainer}>
 					{children}
 				</View>
-
+				
 				{
 					this.props.messageText &&
 					<View style={styles.messageTextContainer}>
@@ -63,15 +67,20 @@ export default class MessageView extends Component {
 				<View style={styles.messageBottomContainer}>
 					{renderBottom && renderBottom()}
 				</View>
-				
+			
 			</View>
 		)
 	}
 	
 }
 
+function _isNotEmpty (v) {
+	return (typeof(v) !== 'undefined' && v)
+}
+
 MessageView.PropTypes = {
 	title: PropTypes.string,
+	icon: PropTypes.string,
 	messageText: PropTypes.string,
 	buttonTitle: PropTypes.string,
 	onButtonClick: PropTypes.function,

@@ -37,24 +37,29 @@ export default class PanelView extends Component {
 			<View style={[styles.panelView, style]}>
 				
 				{/* TITLE + ICON */}
-				<View style={styles.panelTitleRowContainer}>
-					{
-						this.props.title &&
-						<View style={styles.panelTitleContainer}>
-							<Text style={styles.panelTitle}>
-								{this.props.title}
-							</Text>
-						</View>
-					}
-					{
-						this.props.icon &&
-						<View style={styles.panelTitleIconContainer}>
-							<Text style={styles.panelIcon}>
-								{this.props.icon}
-							</Text>
-						</View>
-					}
-				</View>
+				{/* Hide this view if no title or icon to avoid line below it. */}
+				{
+					(_isNotEmpty(this.props.title) ||
+						_isNotEmpty(this.props.icon)) &&
+					<View style={styles.panelTitleRowContainer}>
+						{
+							this.props.title &&
+							<View style={styles.panelTitleContainer}>
+								<Text style={styles.panelTitle}>
+									{this.props.title}
+								</Text>
+							</View>
+						}
+						{
+							this.props.icon &&
+							<View style={styles.panelTitleIconContainer}>
+								<Text style={styles.panelIcon}>
+									{this.props.icon}
+								</Text>
+							</View>
+						}
+					</View>
+				}
 				
 				{/* MAIN DISPLAY AREA */}
 				<View style={styles.panelTextContainer}>
@@ -88,8 +93,13 @@ export default class PanelView extends Component {
 	
 }
 
+function _isNotEmpty (v) {
+	return (typeof(v) !== 'undefined' && v)
+}
+
 PanelView.PropTypes = {
 	title: PropTypes.string,
+	icon: PropTypes.string,
 	body: PropTypes.string,
 	renderAdditionalInfo: PropTypes.function,
 	onButtonClick: PropTypes.function,
