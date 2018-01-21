@@ -3,6 +3,7 @@ import {
   OPEN_NATION,
   CANCEL_NATION_CREATE,
   DONE_NATION_CREATE,
+  DONE_FETCH_NATIONS
 } from '../actions/nations';
 
 export const ALL_NATIONS = 0;
@@ -47,18 +48,37 @@ const initialState = {
   openedNationId: null,
   nation: null,
   creatingNation: null,
+  nations: []
 };
 
 export default function (state = initialState, action) {
   switch (action.type) {
     case SWITCH_NATIONS_TAB:
-      return Object.assign({}, state, { selectedTab: action.tab });
+      return {
+        ...state,
+        selectedTab: action.tab
+      };
     case OPEN_NATION:
-      return Object.assign({}, state, { openedNationId: action.nationId });
+      return {
+        ...state,
+        openedNationId: action.nationId
+      };
     case CANCEL_NATION_CREATE:
-      return Object.assign({}, state, { creatingNation: null });
+      return {
+        ...state,
+        creatingNation: null
+      };
     case DONE_NATION_CREATE:
-      return Object.assign({}, state, { nation: state.creatingNation, creatingNation: null });
+      return {
+        ...state,
+        nation: state.creatingNation,
+        creatingNation: null
+      };
+    case DONE_FETCH_NATIONS:
+      return {
+        ...state,
+        nations: action.payload
+      }
   }
   return state;
 }

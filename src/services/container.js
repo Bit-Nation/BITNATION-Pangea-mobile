@@ -51,3 +51,6 @@ const PangeaLibFactory:Promise<*> = new Promise((res, rej) => {
 
 export default PangeaLibFactory;
 
+export function getPangeaLibrary() {
+  return PangeaLibFactory;
+}
