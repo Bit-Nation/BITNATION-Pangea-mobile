@@ -121,7 +121,7 @@ const defaultTextStyles = {
 		fontSize: 34,
 		lineHeight: 41,
 		letterSpacing: 0,
-		color: Colors.BitNationLightBlue,
+		color: Colors.BitnationLightColor,
 	},
 	
 	title1: {
@@ -130,7 +130,7 @@ const defaultTextStyles = {
 		fontSize: 28,
 		lineHeight: 34,
 		letterSpacing: 0,
-		color: Colors.BitNationLightBlue,
+		color: Colors.BitnationLightColor,
 	},
 	
 	title2: {
@@ -139,7 +139,7 @@ const defaultTextStyles = {
 		fontSize: 22,
 		lineHeight: 28,
 		letterSpacing: 0,
-		color: Colors.BitNationLightBlue,
+		color: Colors.BitnationLightColor,
 	},
 	
 	title3: {
@@ -164,7 +164,7 @@ const defaultTextStyles = {
 		fontSize: 17,
 		lineHeight: 22,
 		letterSpacing: 0,
-		color: Colors.BitNationLightBlue,
+		color: Colors.BitnationLightColor,
 	},
 	
 	callout: {
@@ -189,7 +189,7 @@ const defaultTextStyles = {
 		fontSize: 13,
 		lineHeight: 18,
 		letterSpacing: 0,
-		color: Colors.BitNationLightBlue,
+		color: Colors.BitnationLightColor,
 	},
 	
 	caption1: {
@@ -198,7 +198,7 @@ const defaultTextStyles = {
 		fontSize: 12,
 		lineHeight: 16,
 		letterSpacing: 0,
-		color: Colors.BitNationLightBlue,
+		color: Colors.BitnationLightColor,
 	},
 	
 	caption2: {
@@ -207,7 +207,7 @@ const defaultTextStyles = {
 		fontSize: 11,
 		lineHeight: 13,
 		letterSpacing: 0,
-		color: Colors.BitNationLightBlue,
+		color: Colors.BitnationLightColor,
 	},
 	
 }
@@ -231,7 +231,7 @@ const styles = {
 	screenContainer: {
 		flex: 1,
 		flexDirection: 'column',
-		justifyContent: 'flex-start',
+		justifyContent: 'space-between',
 		alignItems: 'stretch',
 	},
 	
@@ -239,6 +239,9 @@ const styles = {
 	bodyContainer: {
 		flex: 1,
 		flexDirection: 'column',
+		justifyContent: 'flex-start',
+		//alignItems: 'stretch',
+		alignContent: 'flex-start',
 		marginLeft: 15,
 		marginRight: 15,
 	},
@@ -278,7 +281,7 @@ const styles = {
 		height: 49,
 		marginTop: 10,
 		marginBottom: 10,
-		backgroundColor: Colors.getBitNationLightBlue(0.1),
+		backgroundColor: Colors.shadeOfBitnationLightColor(0.1),
 		flexDirection: 'row',
 		alignItems: 'stretch',
 		justifyContent: 'space-around',
@@ -313,17 +316,17 @@ const styles = {
 		flexDirection: 'column',
 		alignItems: 'stretch',
 	},
-
-  // From Create Nations Screen:
-  nationsScreenImageContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    //justifyContent: 'flex-start',
-    flexDirection: 'row',
-    alignItems: 'stretch',
+	
+	// From Create Nations Screen:
+	nationsScreenImageContainer: {
+		flex: 1,
+		justifyContent: 'center',
+		//justifyContent: 'flex-start',
+		flexDirection: 'row',
+		alignItems: 'stretch',
 		marginTop: 30,
 		marginBottom: 20,
-  },
+	},
 	
 	// ========================================
 	// Panels in a vertical list.
@@ -332,27 +335,100 @@ const styles = {
 	// Used in:  components/common/MessageView.js
 	
 	// View that holds a message
-	messageView: {
+	panelView: {
+		flexDirection: 'column',
+		alignItems: 'center',
 		borderRadius: 8,
-		backgroundColor: Colors.getBitNationBlue(0.2),
+		backgroundColor: Colors.shadeOfBitnationColor(0.2),
 		marginTop: 8,
 		marginBottom: 8,
 		marginLeft: 0,
 		marginRight: 0,
-	},
-	
-	// View inside the messageView container
-	messageContainer: {
 		paddingTop: 12,
 		paddingBottom: 22,
 		paddingLeft: 15,
 		paddingRight: 15,
-		alignItems: 'center',
+	},
+	
+	// Panel Title Container for the Title and Icon, below
+	panelTitleRowContainer: {
+		flex: 1,
+		flexDirection: 'row',
+		backgroundColor: 'transparent',
+		paddingBottom: 4,
+		borderBottomColor: Colors.BlueGrey,
+		borderStyle: 'solid',
+		borderBottomWidth: 1,
+	},
+	
+	panelTitleContainer: {
+		flex: 1,
+		//backgroundColor: 'steelblue',
+	},
+	
+	panelTitleIconContainer: {
+		flex: 1,
+		//backgroundColor: 'powderblue',
+	},
+	
+	panelTitleIcon: {
+		flex: 1,
+		alignItems: 'flex-end',
+		//backgroundColor: 'powderblue',
+	},
+	
+	// Text style for the Panel Title
+	panelTitle: {
+		...defaultTextStyles.title2,
+		fontWeight: 'bold',
+		color: Colors.white,
+		textAlign: 'left',
+	},
+	
+	// Text style for the Panel Icon
+	panelIcon: {
+		...defaultTextStyles.title2,
+		fontWeight: 'bold',
+		textAlign: 'right',
+	},
+	
+	panelTextContainer: {
+		flex: 1,
+		paddingBottom: 4,
+	},
+	
+	panelBody: {
+		...defaultTextStyles.body,
+		color: Colors.BitnationLightColor,
+	},
+
+// ========================================
+	// Panels in a vertical list.
+	// These are lists of rectangular panels which contain different kinds of content.
+	// These don't have margin left/right, so they won't work for dashboard.
+	// Used in:  components/common/MessageView.js
+	
+	// View that holds a message
+	// Size changes to fit contents, so we do not use flex for size
+	messageView: {
+//		flex: 1,
+		flexDirection: 'column',
+		justifyContent: 'space-between',
+		flexShrink: 1,
+		borderRadius: 8,
+		backgroundColor: Colors.shadeOfBitnationColor(0.2),
+		marginTop: 8,
+		marginBottom: 8,
+		marginLeft: 0,
+		marginRight: 0,
+		paddingTop: 12,
+		paddingBottom: 22,
+		paddingLeft: 15,
+		paddingRight: 15,
 	},
 	
 	// Message Title Container for the Title and Icon, below
 	messageTitleRowContainer: {
-		flex: 1,
 		flexDirection: 'row',
 		backgroundColor: 'transparent',
 		paddingBottom: 4,
@@ -372,23 +448,9 @@ const styles = {
 		alignItems: 'flex-end',
 	},
 	
-	// Text style for the Message Title
-	panelTitle: {
-		...defaultTextStyles.title2,
-		fontWeight: 'bold',
-		color: Colors.white,
-		textAlign: 'left',
-	},
-	
 	// Message Text
 	messageTextContainer: {
-		backgroundColor: 'transparent',
-		paddingBottom: 4,
-	},
-	
-	panelBody: {
-		...defaultTextStyles.body,
-		color: Colors.BitNationLightBlue,
+		marginBottom: 8,
 	},
 	
 	messageAdditionalInfoContainer: {},
@@ -413,9 +475,23 @@ const styles = {
 		flexDirection: 'row',
 		alignItems: 'center',
 	},
+
+	// Labels on forms, e.g. for a switch
+	formLabelText: {
+		...defaultTextStyles.body,
+		color: 'white',
+	},
+
+  formSwitchLabelText: {
+    ...defaultTextStyles.body,
+    color: 'white',
+		marginRight: 60,
+		fontSize: 16,
+  },
 	
+	// TextInput component
 	textInput: {
-		backgroundColor: Colors.getBitNationLightBlue(0.2),
+		backgroundColor: Colors.shadeOfBitnationLightColor(0.2),
 		borderColor: Colors.borderColor,
 		borderWidth: 1,
 		color: Colors.white,
@@ -441,6 +517,45 @@ const styles = {
 		backgroundColor: 'transparent',
 		color: Colors.titleColor,
 		fontSize: 17,
+	},
+	
+	dropDown: {
+		backgroundColor: Colors.shadeOfBitnationLightColor(0.2),
+		borderColor: Colors.borderColor,
+		borderWidth: 1,
+		flex: 1,
+		marginTop: 4,
+		marginBottom: 4,
+		marginRight: 0,
+		marginLeft: 0,
+		paddingLeft: 4,
+		paddingTop: 6,
+		paddingBottom: 6,
+	},
+	
+	dropDownTextDefault: {
+		color: Colors.white,
+		fontSize: 16,
+	},
+	
+	dropDownTextList: {
+		color: Colors.primary_blue,
+		fontSize: 16,
+	},
+	
+	switchContainer: {
+		flex: 1,
+		flexDirection: 'row',
+		alignItems: 'center',
+		marginTop: 5,
+		marginBottom: 10,
+		// for testing
+		borderWidth:0,
+		
+	},
+	
+	switchObject: {
+		marginRight: 10,
 	},
 
 // ========================================
@@ -516,7 +631,7 @@ const styles = {
 		color: Colors.white,
 	},
 	activeTabStyle: {
-		backgroundColor: Colors.getBitNationLightBlue(0.8),
+		backgroundColor: Colors.shadeOfBitnationLightColor(0.8),
 	},
 	
 	// ========================================
@@ -552,14 +667,14 @@ const styles = {
 	},
 	messageText: {
 		fontSize: 16,
-		color: Colors.BitNationLightBlue,
+		color: Colors.BitnationLightColor,
 		letterSpacing: -0.65,
 		lineHeight: 20.8,
 		textAlign: 'center',
 	},
 	buttonTitle: {
 		fontSize: 14,
-		color: Colors.BitNationLightBlue,
+		color: Colors.BitnationLightColor,
 		letterSpacing: -0.02,
 		lineHeight: 19,
 		textAlign: 'center',
@@ -600,7 +715,13 @@ const styles = {
 	// e.g. components/common/MessageView.js
 	
 	avatarContainer: {
+		flexDirection: 'row',
 		width: 100,
+		alignItems: 'center',
+	},
+	
+	avatarContainerLarge: {
+		flex: 1,
 		alignItems: 'center',
 	},
 	
@@ -619,6 +740,7 @@ const styles = {
 		height: 100,
 		width: 100,
 		borderRadius: 50,
+		margin: 15,
 	},
 	
 }

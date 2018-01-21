@@ -4,7 +4,7 @@ import { Platform } from 'react-native';
 
 export const tabsStyle = {
   tabBarButtonColor: Colors.white,
-  tabBarLabelColor: Colors.BitNationLightBlue,
+  tabBarLabelColor: Colors.BitnationLightColor,
   tabBarSelectedLabelColor: Colors.white,
   tabBarSelectedButtonColor: Colors.white,
   tabBarBackgroundColor: 'rgba(17,39,110,0.9)',

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Text } from 'react-native';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
 
-import Colors from '../../global/Colors';
 import GlobalStyles from '../../global/Styles';
 
 export default class _Text extends React.Component {

@@ -15,7 +15,7 @@ const styles = MediaQueryStyleSheet.create({
     marginLeft: 8,
     marginRight: 8,
     borderRadius: 8,
-    backgroundColor: Colors.getBitNationBlue(0.2),
+    backgroundColor: Colors.shadeOfBitnationColor(0.2),
     alignItems: 'center',
   },
   header: {
@@ -45,7 +45,7 @@ const styles = MediaQueryStyleSheet.create({
 
   infoText: {
     fontSize: 16,
-    color: Colors.BitNationLightBlue,
+    color: Colors.BitnationLightColor,
     letterSpacing: -0.65,
     lineHeight: 20.8,
     textAlign: 'center',
@@ -54,7 +54,7 @@ const styles = MediaQueryStyleSheet.create({
 
   ethAddress: {
     fontSize: 14,
-    color: Colors.BitNationLightBlue,
+    color: Colors.BitnationLightColor,
     letterSpacing: -0.65,
     lineHeight: 20.8,
     textAlign: 'center',

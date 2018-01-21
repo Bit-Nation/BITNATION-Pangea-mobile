@@ -58,7 +58,7 @@ export default styles = StyleSheet.create({
     opacity: 1,
   },
   discpButton: {
-    backgroundColor: Colors.BitnationBlue,
+    backgroundColor: Colors.BitnationColor,
     opacity: 1,
     height: height * .05,
     marginBottom: height * .02,

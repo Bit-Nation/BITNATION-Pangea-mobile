@@ -52,7 +52,7 @@ const styles = MediaQueryStyleSheet.create(
         cFlex: {
 
             flex:1,
-            backgroundColor:Colors.BitnationBlue,
+            backgroundColor:Colors.BitnationColor,
             marginBottom: '5%',
             marginLeft:'5%',
             borderRadius:8,
