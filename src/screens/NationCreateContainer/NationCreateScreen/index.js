@@ -1,20 +1,29 @@
+/*
+	Nation Create Screen
+	Version 0.3.1
+	
+	For usage of ModalDropdown see: https://github.com/sohobloo/react-native-modal-dropdown/blob/master/README.md
+ */
+
 import React from 'react'
 import {
 	View, Image,
 	Text, ScrollView, TextInput,
+	Picker,
 } from 'react-native'
 
 import PropTypes from 'prop-types'
 import BackgroundImage from '../../../components/common/BackgroundImage'
 import NavigatorComponent from '../../../components/common/NavigatorComponent'
-import Colors from '../../../global/Colors'
 import { ActionSheet } from 'native-base'
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar'
-import styles from './styles'
 import MessageView from '../../../components/common/MessageView'
 import SwitchLabeled from '../../../components/common/SwitchLabeled'
 import Images from '../../../global/AssetsImages'
-import ModalDropdown from 'react-native-modal-dropdown';
+import ModalDropdown from 'react-native-modal-dropdown'
+
+import Colors from '../../../global/Colors'
+import styles from './styles'
 
 const DONE_BUTTON = 'DONE_BUTTON'
 
@@ -70,21 +79,20 @@ class CreateNation extends NavigatorComponent {
 				<BackgroundImage/>
 				<FakeNavigationBar/>
 				
-				{/* TITLE OF SCREEN */}
-				<View style={styles.titleBarLarge}>
-					<Text style={styles.largeTitle}>Create a Nation</Text>
-				</View>
-				
 				<View style={styles.bodyContainer}>
 					{/* SCROLLING PANELS FOR DATA ENTRY */}
 					<ScrollView style={styles.scrollView}>
+						{/* TITLE OF SCREEN */}
+						<View style={styles.titleBarLarge}>
+							<Text style={styles.largeTitle}>Create a Nation</Text>
+						</View>
+						
 						{this._buildIntroPanel()}
-						{this._buildNameView()}
-						{this._buildLocationView()}
+						{this._buildCoreNationView()}
 						{this._buildGovernmentalView()}
 						{this._buildOptionsView()}
 						{this._buildFeesView()}
-						{this._buildBottomView()}
+						{/*{this._buildBottomView()}*/}
 					</ScrollView>
 				</View>
 			</View>
@@ -103,7 +111,7 @@ class CreateNation extends NavigatorComponent {
 		)
 	}
 	
-	_buildNameView () {
+	_buildCoreNationView () {
 		return (
 			<MessageView style={styles.messageView}>
 				<View style={styles.formRow}>
@@ -116,46 +124,41 @@ class CreateNation extends NavigatorComponent {
 								keyboardType='default'
 							/>
 						</View>
-            <View style={styles.formRow}>
-              <TextInput
-                style={styles.textInput}
-                placeholder='Short description'
-                placeholderTextColor='rgba(255,255,255,0.3)'
-                keyboardType='default'
-              />
-            </View>
+						<View style={styles.formRow}>
+							<TextInput
+								style={styles.textInput}
+								placeholder='Short Description'
+								multiline={true}
+								numberOfLines={4}
+								placeholderTextColor={Colors.placeholderTextColor}
+								keyboardType='default'
+							/>
+						</View>
 					</View>
 				</View>
-			</MessageView>
-		)
-	}
-	
-	_buildLocationView () {
-		return (
-			<MessageView style={styles.messageView} title='Location' icon='?'>
-        <View style={styles.formRow}>
-          <View style={styles.fieldsContainer}>
-            <ModalDropdown
-              style={styles.dropDown}
-              textStyle={styles.dropDownTextDefault}
-              dropdownTextStyle={styles.dropDownTextList}
-              defaultValue={'Is your nation virtual or geographical?...'}
-              options={['Virtual', 'Geographical']}
-            />
-          </View>
-        </View>
-				<View style={[styles.formRow, styles.formRow]}>
+				<View style={styles.formRow}>
 					<View style={styles.fieldsContainer}>
-            <SwitchLabeled
-              label="Whether your nation exists (represents a real life country)"
-              value={false}
-            />
+						<ModalDropdown
+							style={styles.dropDown}
+							textStyle={styles.dropDownTextDefault}
+							dropdownTextStyle={styles.dropDownTextList}
+							defaultValue={'Choose Nation Location...'}
+							options={['Virtual Nation', 'Geographical Nation']}
+						/>
 					</View>
 				</View>
+				<View style={styles.formRow}>
+					<View style={styles.fieldsContainer}>
+						<SwitchLabeled
+							label="Nation represents an existing Earth country."
+							value={false}
+						/>
+					</View>
+				</View>
+				
 				<Text style={styles.footnote}>
-					Virtual locations are in the Pangea cloud and do not have
-					fixed addresses. Geographic locations are on Earth and have
-					addresses.
+					Virtual nations exist only in Pangea. Geographic nations are
+					on Earth.
 				</Text>
 			</MessageView>
 		)
@@ -164,49 +167,76 @@ class CreateNation extends NavigatorComponent {
 	_buildGovernmentalView () {
 		return (
 			<MessageView style={styles.messageView}
-			             title='Governmental Structure' icon='?'>
-        <View style={styles.formRow}>
-          <View style={styles.fieldsContainer}>
-            <ModalDropdown
-              style={styles.dropDown}
-              textStyle={styles.dropDownTextDefault}
-              dropdownTextStyle={styles.dropDownTextList}
-              defaultValue={'Legal Code...'}
-              options={['None', 'Transnational/SupranationalLaw (EU,UN,etc)', 'Multiple (Competing) LegalCodes', 'UNIDROIT Principles', 'Computer Code', 'Common Law', 'Civil Law']}
-            />
-          </View>
-        </View>
+			             title='Governmental Structure' icon=' '>
 				<View style={styles.formRow}>
 					<View style={styles.fieldsContainer}>
-            <ModalDropdown
-              style={styles.dropDown}
-              textStyle={styles.dropDownTextDefault}
-              dropdownTextStyle={styles.dropDownTextList}
-              defaultValue={'Law Enforcement Mechanism...'}
-              options={['ID & Reputation', 'Physical & Digital Private or Cooperative Security', 'Nation State Law Enforcement', 'International Law Enforcement (if/when feasible)']}
-            />
+						<ModalDropdown
+							style={styles.dropDown}
+							textStyle={styles.dropDownTextDefault}
+							dropdownTextStyle={styles.dropDownTextList}
+							defaultValue={'Legal Code...'}
+							options={[
+								'None',
+								'Transnational/Supranational Law',
+								'Multiple Legal Codes',
+								'UNIDROIT Principles',
+								'Computer Code',
+								'Common Law',
+								'Civil Law',
+							]}
+						/>
 					</View>
 				</View>
 				<View style={styles.formRow}>
 					<View style={styles.fieldsContainer}>
-            <ModalDropdown
-              style={styles.dropDown}
-              textStyle={styles.dropDownTextDefault}
-              dropdownTextStyle={styles.dropDownTextList}
-              defaultValue={'Type of Government...'}
-              options={['Democracy', 'Holocracy', 'Autocracy', 'Meritocracy', 'Theocracy']}
-            />
+						<ModalDropdown
+							style={styles.dropDown}
+							textStyle={styles.dropDownTextDefault}
+							dropdownTextStyle={styles.dropDownTextList}
+							defaultValue={'Law Enforcement Mechanism...'}
+							options={[
+								'No Law Enforcement',
+								'ID & Reputation Law Enforcement',
+								'Private or Cooperative Security',
+								'Nation State Law Enforcement',
+								'International Law Enforcement']}
+						/>
 					</View>
 				</View>
 				<View style={styles.formRow}>
 					<View style={styles.fieldsContainer}>
-            <ModalDropdown
-              style={styles.dropDown}
-              textStyle={styles.dropDownTextDefault}
-              dropdownTextStyle={styles.dropDownTextList}
-              defaultValue={'Type of Services...'}
-              options={['Legal Services', 'Insurance Services', 'Social Services', 'Security Services', 'Diplomatic Services', 'Physical Residency']}
-            />
+						<ModalDropdown
+							style={styles.dropDown}
+							textStyle={styles.dropDownTextDefault}
+							dropdownTextStyle={styles.dropDownTextList}
+							defaultValue={'Type of Government...'}
+							options={[
+								'Other Type of Government',
+								'Holocracy',
+								'Democracy',
+								'Autocracy',
+								'Meritocracy',
+								'Theocracy',
+							]}
+						/>
+					</View>
+				</View>
+				<View style={styles.formRow}>
+					<View style={styles.fieldsContainer}>
+						<ModalDropdown
+							style={styles.dropDown}
+							textStyle={styles.dropDownTextDefault}
+							dropdownTextStyle={styles.dropDownTextList}
+							defaultValue={'Services Offered...'}
+							options={[
+								'Legal Services',
+								'Insurance Services',
+								'Social Services',
+								'Security Services',
+								'Diplomatic Services',
+								'Physical Residency',
+							]}
+						/>
 					</View>
 				</View>
 				<Text style={styles.footnote}>
@@ -220,11 +250,11 @@ class CreateNation extends NavigatorComponent {
 	
 	_buildOptionsView () {
 		return (
-			<MessageView style={styles.messageView} title='Options' icon='?'>
+			<MessageView style={styles.messageView} title='Options' icon=' '>
 				<View style={styles.formRow}>
 					<View style={styles.fieldsContainer}>
 						<SwitchLabeled
-							label="I plan to seek diplomatic recognition of my nation as a sovereign entity."
+							label="Seeking diplomatic recognition as a sovereign entity."
 							value={false}
 						/>
 					</View>
@@ -232,26 +262,26 @@ class CreateNation extends NavigatorComponent {
 				<View style={styles.formRow}>
 					<View style={styles.fieldsContainer}>
 						<SwitchLabeled
-							label="Will you let non-citizens of your nation use your governance services?"
+							label="Non-citizens may use governance services."
 							value={true}
 						/>
 					</View>
 				</View>
-        <View style={styles.formRow}>
-          <View style={styles.fieldsContainer}>
-            <SwitchLabeled
-              label="Is your nation for profit?"
-              value={false}
-            />
-          </View>
-        </View>
+				<View style={styles.formRow}>
+					<View style={styles.fieldsContainer}>
+						<SwitchLabeled
+							label="For-profit nation"
+							value={false}
+						/>
+					</View>
+				</View>
 			</MessageView>
 		)
 	}
 	
 	_buildFeesView () {
 		return (
-			<MessageView style={styles.messageView} title='Fees' icon='?'>
+			<MessageView style={styles.messageView} title='Fees' icon=' '>
 				<View style={styles.formRow}>
 					<View style={styles.fieldsContainer}>
 						<SwitchLabeled

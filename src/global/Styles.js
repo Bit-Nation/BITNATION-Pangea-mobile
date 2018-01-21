@@ -316,25 +316,23 @@ const styles = {
 		flexDirection: 'column',
 		alignItems: 'stretch',
 	},
-
-  // From Create Nations Screen:
-  nationsScreenImageContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    //justifyContent: 'flex-start',
-    flexDirection: 'row',
-    alignItems: 'stretch',
+	
+	// From Create Nations Screen:
+	nationsScreenImageContainer: {
+		flex: 1,
+		justifyContent: 'center',
+		//justifyContent: 'flex-start',
+		flexDirection: 'row',
+		alignItems: 'stretch',
 		marginTop: 30,
 		marginBottom: 20,
-  },
+	},
 	
 	// ========================================
 	// Panels in a vertical list.
 	// These are lists of rectangular panels which contain different kinds of content.
 	// These don't have margin left/right, so they won't work for dashboard.
 	// Used in:  components/common/MessageView.js
-	
-	
 	
 	// View that holds a message
 	panelView: {
@@ -395,23 +393,20 @@ const styles = {
 	},
 	
 	panelTextContainer: {
-		flex:1,
+		flex: 1,
 		paddingBottom: 4,
 	},
-	
 	
 	panelBody: {
 		...defaultTextStyles.body,
 		color: Colors.BitnationLightColor,
 	},
 
-
 // ========================================
 	// Panels in a vertical list.
 	// These are lists of rectangular panels which contain different kinds of content.
 	// These don't have margin left/right, so they won't work for dashboard.
 	// Used in:  components/common/MessageView.js
-	
 	
 	// View that holds a message
 	// Size changes to fit contents, so we do not use flex for size
@@ -446,7 +441,7 @@ const styles = {
 		flex: 4,
 		backgroundColor: 'transparent',
 	},
-
+	
 	messageTitleIcon: {
 		flex: 1,
 		backgroundColor: 'transparent',
@@ -481,6 +476,13 @@ const styles = {
 		alignItems: 'center',
 	},
 	
+	// Labels on forms, e.g. for a switch
+	formLabelText: {
+		...defaultTextStyles.body,
+		color: 'white',
+	},
+	
+	// TextInput component
 	textInput: {
 		backgroundColor: Colors.shadeOfBitnationLightColor(0.2),
 		borderColor: Colors.borderColor,
@@ -509,30 +511,45 @@ const styles = {
 		color: Colors.titleColor,
 		fontSize: 17,
 	},
-
-  dropDown: {
-    backgroundColor: Colors.shadeOfBitnationLightColor(0.2),
-    borderColor: Colors.borderColor,
-    borderWidth: 1,
-    flex: 1,
-    marginTop: 4,
-    marginBottom: 4,
-    marginRight: 0,
-    marginLeft: 0,
-    paddingLeft: 4,
-    paddingTop: 6,
-    paddingBottom: 6,
-  },
-
-  dropDownTextDefault: {
-    color: Colors.white,
-    fontSize: 16,
-  },
-
-  dropDownTextList: {
-    color: Colors.primary_blue,
-    fontSize: 16,
-  },
+	
+	dropDown: {
+		backgroundColor: Colors.shadeOfBitnationLightColor(0.2),
+		borderColor: Colors.borderColor,
+		borderWidth: 1,
+		flex: 1,
+		marginTop: 4,
+		marginBottom: 4,
+		marginRight: 0,
+		marginLeft: 0,
+		paddingLeft: 4,
+		paddingTop: 6,
+		paddingBottom: 6,
+	},
+	
+	dropDownTextDefault: {
+		color: Colors.white,
+		fontSize: 16,
+	},
+	
+	dropDownTextList: {
+		color: Colors.primary_blue,
+		fontSize: 16,
+	},
+	
+	switchContainer: {
+		flex: 1,
+		flexDirection: 'row',
+		alignItems: 'center',
+		marginTop: 5,
+		marginBottom: 10,
+		// for testing
+		borderWidth:1,
+		
+	},
+	
+	switchObject: {
+		marginRight: 10,
+	},
 
 // ========================================
 	// Section Lists Layout
