@@ -475,12 +475,19 @@ const styles = {
 		flexDirection: 'row',
 		alignItems: 'center',
 	},
-	
+
 	// Labels on forms, e.g. for a switch
 	formLabelText: {
 		...defaultTextStyles.body,
 		color: 'white',
 	},
+
+  formSwitchLabelText: {
+    ...defaultTextStyles.body,
+    color: 'white',
+		marginRight: 60,
+		fontSize: 16,
+  },
 	
 	// TextInput component
 	textInput: {
@@ -543,7 +550,7 @@ const styles = {
 		marginTop: 5,
 		marginBottom: 10,
 		// for testing
-		borderWidth:1,
+		borderWidth:0,
 		
 	},
 	

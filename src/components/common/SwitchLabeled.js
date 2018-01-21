@@ -18,7 +18,7 @@ export default class SwitchLabeled extends Component {
 					        onValueChange={onValueChange}
 					        value={this.props.value}
 					/>
-					<Text style={styles.formLabelText}>{this.props.label}</Text>
+					<Text style={styles.formSwitchLabelText}>{this.props.label}</Text>
 				</View>
 			</View>
 		)
