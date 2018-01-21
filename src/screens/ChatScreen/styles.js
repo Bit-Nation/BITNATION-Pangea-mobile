@@ -6,7 +6,7 @@ const styles = MediaQueryStyleSheet.create({
     flex: 1,
   },
   composer: {
-    backgroundColor: Colors.getBitNationLightBlue(0.2),
+    backgroundColor: Colors.shadeOfBitnationLightColor(0.2),
     borderWidth: 1,
     borderColor: Colors.borderColor,
     color: Colors.white,

@@ -121,7 +121,7 @@ const defaultTextStyles = {
 		fontSize: 34,
 		lineHeight: 41,
 		letterSpacing: 0,
-		color: Colors.BitNationLightBlue,
+		color: Colors.BitnationLightColor,
 	},
 	
 	title1: {
@@ -130,7 +130,7 @@ const defaultTextStyles = {
 		fontSize: 28,
 		lineHeight: 34,
 		letterSpacing: 0,
-		color: Colors.BitNationLightBlue,
+		color: Colors.BitnationLightColor,
 	},
 	
 	title2: {
@@ -139,7 +139,7 @@ const defaultTextStyles = {
 		fontSize: 22,
 		lineHeight: 28,
 		letterSpacing: 0,
-		color: Colors.BitNationLightBlue,
+		color: Colors.BitnationLightColor,
 	},
 	
 	title3: {
@@ -164,7 +164,7 @@ const defaultTextStyles = {
 		fontSize: 17,
 		lineHeight: 22,
 		letterSpacing: 0,
-		color: Colors.BitNationLightBlue,
+		color: Colors.BitnationLightColor,
 	},
 	
 	callout: {
@@ -189,7 +189,7 @@ const defaultTextStyles = {
 		fontSize: 13,
 		lineHeight: 18,
 		letterSpacing: 0,
-		color: Colors.BitNationLightBlue,
+		color: Colors.BitnationLightColor,
 	},
 	
 	caption1: {
@@ -198,7 +198,7 @@ const defaultTextStyles = {
 		fontSize: 12,
 		lineHeight: 16,
 		letterSpacing: 0,
-		color: Colors.BitNationLightBlue,
+		color: Colors.BitnationLightColor,
 	},
 	
 	caption2: {
@@ -207,7 +207,7 @@ const defaultTextStyles = {
 		fontSize: 11,
 		lineHeight: 13,
 		letterSpacing: 0,
-		color: Colors.BitNationLightBlue,
+		color: Colors.BitnationLightColor,
 	},
 	
 }
@@ -281,7 +281,7 @@ const styles = {
 		height: 49,
 		marginTop: 10,
 		marginBottom: 10,
-		backgroundColor: Colors.getBitNationLightBlue(0.1),
+		backgroundColor: Colors.shadeOfBitnationLightColor(0.1),
 		flexDirection: 'row',
 		alignItems: 'stretch',
 		justifyContent: 'space-around',
@@ -341,7 +341,7 @@ const styles = {
 		flexDirection: 'column',
 		alignItems: 'center',
 		borderRadius: 8,
-		backgroundColor: Colors.getBitNationBlue(0.2),
+		backgroundColor: Colors.shadeOfBitnationColor(0.2),
 		marginTop: 8,
 		marginBottom: 8,
 		marginLeft: 0,
@@ -402,7 +402,7 @@ const styles = {
 	
 	panelBody: {
 		...defaultTextStyles.body,
-		color: Colors.BitNationLightBlue,
+		color: Colors.BitnationLightColor,
 	},
 
 
@@ -421,7 +421,7 @@ const styles = {
 		justifyContent: 'space-between',
 		flexShrink: 1,
 		borderRadius: 8,
-		backgroundColor: Colors.getBitNationBlue(0.2),
+		backgroundColor: Colors.shadeOfBitnationColor(0.2),
 		marginTop: 8,
 		marginBottom: 8,
 		marginLeft: 0,
@@ -482,7 +482,7 @@ const styles = {
 	},
 	
 	textInput: {
-		backgroundColor: Colors.getBitNationLightBlue(0.2),
+		backgroundColor: Colors.shadeOfBitnationLightColor(0.2),
 		borderColor: Colors.borderColor,
 		borderWidth: 1,
 		color: Colors.white,
@@ -511,7 +511,7 @@ const styles = {
 	},
 
   dropDown: {
-    backgroundColor: Colors.getBitNationLightBlue(0.2),
+    backgroundColor: Colors.shadeOfBitnationLightColor(0.2),
     borderColor: Colors.borderColor,
     borderWidth: 1,
     flex: 1,
@@ -607,7 +607,7 @@ const styles = {
 		color: Colors.white,
 	},
 	activeTabStyle: {
-		backgroundColor: Colors.getBitNationLightBlue(0.8),
+		backgroundColor: Colors.shadeOfBitnationLightColor(0.8),
 	},
 	
 	// ========================================
@@ -643,14 +643,14 @@ const styles = {
 	},
 	messageText: {
 		fontSize: 16,
-		color: Colors.BitNationLightBlue,
+		color: Colors.BitnationLightColor,
 		letterSpacing: -0.65,
 		lineHeight: 20.8,
 		textAlign: 'center',
 	},
 	buttonTitle: {
 		fontSize: 14,
-		color: Colors.BitNationLightBlue,
+		color: Colors.BitnationLightColor,
 		letterSpacing: -0.02,
 		lineHeight: 19,
 		textAlign: 'center',

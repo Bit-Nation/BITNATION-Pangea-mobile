@@ -13,7 +13,7 @@ const PrivateKeyRow = (props) => {
         if (props.disabled == true)
             return Colors.grey_400;
         else
-            return Colors.BitnationBlue;
+            return Colors.BitnationColor;
     }
 
     getTextColor = () => {

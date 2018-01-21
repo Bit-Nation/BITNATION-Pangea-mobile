@@ -78,7 +78,7 @@ const styles = MediaQueryStyleSheet.create(
 			},
 		NationsContainer: {
 			flex: 2,
-			backgroundColor: Colors.BitnationBlue,
+			backgroundColor: Colors.BitnationColor,
 			marginBottom: '5%',
 			marginLeft: '5%',
 			borderRadius: 8,
@@ -87,7 +87,7 @@ const styles = MediaQueryStyleSheet.create(
 		
 		WalletContainer: {
 			flex: 1,
-			backgroundColor: Colors.BitnationBlue,
+			backgroundColor: Colors.BitnationColor,
 			marginBottom: '1%',
 			marginLeft: '5%',
 			borderRadius: 6,
@@ -117,7 +117,7 @@ const styles = MediaQueryStyleSheet.create(
 			{
 				flex: 1.5,
 				flexDirection: 'row',
-				backgroundColor: Colors.BitnationBlue,
+				backgroundColor: Colors.BitnationColor,
 				marginRight: '2%',
 				borderRadius: 8,
 				
@@ -131,7 +131,7 @@ const styles = MediaQueryStyleSheet.create(
 		
 		chatContainer: {
 			flex: 1.5,
-			backgroundColor: Colors.BitnationBlue,
+			backgroundColor: Colors.BitnationColor,
 			borderRadius: 6,
 			marginLeft: '2%',
 			marginRight: '2%',
@@ -168,7 +168,7 @@ const styles = MediaQueryStyleSheet.create(
 		
 		contractsContainer: {
 			flex: 1,
-			backgroundColor: Colors.BitnationBlue,
+			backgroundColor: Colors.BitnationColor,
 			borderRadius: 6,
 			marginRight: '2%',
 			marginBottom: '2%',
@@ -177,7 +177,7 @@ const styles = MediaQueryStyleSheet.create(
 		
 		secondContainer: {
 			flex: 1,
-			backgroundColor: Colors.BitnationBlue,
+			backgroundColor: Colors.BitnationColor,
 			borderRadius: 8,
 			paddingRight: '4%',
 			paddingLeft: '4%',

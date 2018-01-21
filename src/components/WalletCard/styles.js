@@ -35,17 +35,17 @@ export default styles = StyleSheet.create({
   },
   nameSubheading: {
     fontSize: 14,
-    color: Colors.BitNationLightBlue,
+    color: Colors.BitnationLightColor,
   },
   button: {
-    backgroundColor: Colors.getBitNationLightBlue(0.3),
+    backgroundColor: Colors.shadeOfBitnationLightColor(0.3),
     height: 25,
     borderRadius: 14,
     width: 80,
 
   },
   messageText: {
-    color: Colors.BitNationLightBlue,
+    color: Colors.BitnationLightColor,
     fontSize: 14,
     marginBottom: 10,
   },
