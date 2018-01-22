@@ -8,6 +8,7 @@ import {
 	Image,
 	View,
 } from 'react-native'
+import TextBox from '../TextBox'
 
 
 class Mosaic extends Component {
@@ -67,12 +68,17 @@ class Mosaic extends Component {
 	
 	createImage (index, uri, width, height) {
 		return (
+			<Text>
+				This is an image or something:
+				index = {index}, source = {source}, width = {width}, height = {height}
+{/*
 			<Image
 				key={index}
 				source={uri}
 				width={width}
 				height={height}
 			/>
+*/}
 		)
 	}
 	

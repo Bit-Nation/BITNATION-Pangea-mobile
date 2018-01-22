@@ -1,4 +1,10 @@
-/*eslint-disable */
+/*
+Dashboard
+Version 0.3.1
+
+ */
+
+
 import React, { Component } from 'react'
 import {
 	View,
@@ -17,6 +23,9 @@ import ListModal from '../../components/ListModal'
 import BackgroundScreen from '../../components/BackgroundScreen/index'
 import FakeNavigationBar from '../../components/common/FakeNavigationBar'
 import PanelView from '../../components/common/PanelView'
+
+import Mosaic from '../../components/common/Mosaic'
+
 
 class Dashboard extends Component {
 	constructor (props) {
@@ -70,7 +79,15 @@ class Dashboard extends Component {
 	
 	listDemo () {
 		return (
-			<View style={styles.cFlex}>
+			
+			<View>
+				<Mosaic>
+				
+				</Mosaic>
+			</View>
+			
+			
+			<View style={styles.screenContainer}>
 				
 				<View style={styles.chatTextContainer}>
 					<Text style={styles.chatsText}>Chats</Text>
