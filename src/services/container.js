@@ -1,41 +1,53 @@
 //@flow
 
-import db from 'BITNATION-Panthalassa/src/database/db'
-import secureStorage from './panthalassa/secureStorage'
-import ethUtils from 'BITNATION-Panthalassa/src/ethereum/utils'
-import web3 from 'BITNATION-Panthalassa/src/ethereum/web3'
-import osDeps from './panthalassa/osDependencies'
-import ethDaemon from './panthalassa/ethDaemon'
-import wallet from 'BITNATION-Panthalassa/src/ethereum/wallet';
-import profile from 'BITNATION-Panthalassa/src/profile/profile';
-
+import pangeaLibsFactory from 'BITNATION-Pangea-libs'
+import secureStorage from './panthalassa/secureStorage';
+import osDeps from './panthalassa/osDependencies';
+import ethDaemon from './panthalassa/ethDaemon';
+import {NetInfo} from 'react-native';
+import {APP_ONLINE, APP_OFFLINE} from 'BITNATION-Pangea-libs/src/events'
+import config from 'react-native-config';
 const EventEmitter = require('eventemitter3');
 
-const ee = new EventEmitter();
-const dbInstance = db();
-const ethUtilsInstance = ethUtils(secureStorage, ee, osDeps);
-const ethWeb3Instance = web3(ethDaemon, ee, ethUtilsInstance);
-const ethWallet = wallet(ethUtilsInstance, ethWeb3Instance, dbInstance);
-const profileInstance = profile(dbInstance, ethUtilsInstance);
+const DB_PATH = 'pangea';
 
-/**
- * @alias src/services/container.js
- * @desc An object holding all available services
- * @type {{eventEmitter, panthalassa: {database: DB, ethereum: {utils: EthUtilsInterface, web3: function(), wallet: WalletInterface}, profile: Profile}}}
- */
-const container = {
-    eventEmitter: ee,
-    panthalassa: {
-        database: dbInstance,
-        ethereum: {
-            utils: ethUtilsInstance,
-            web3: ethWeb3Instance,
-            wallet: ethWallet
-        },
-        profile: profileInstance
-    }
-};
+if(!config.ETH_HTTP_ENDPOINT){
+    throw new Error(`Please set the "ETH_HTTP_ENDPOINT" env variable (checkout the Readme)`);
+}
 
-Object.freeze(container);
+const PangeaLibFactory:Promise<*> = new Promise((res, rej) => {
 
-export default container;
+    const ee = new EventEmitter();
+
+    /**
+     * @desc Inform pangea utils about connectivity change
+     */
+    NetInfo.isConnected.addEventListener('connectionChange', isConnected => {
+
+        if(false === isConnected){
+            ee.emit(APP_OFFLINE);
+            return;
+        }
+
+        ee.emit(APP_ONLINE);
+
+    });
+
+    NetInfo
+        .isConnected
+        .fetch()
+        .then(isConnected => pangeaLibsFactory(
+            secureStorage,
+            DB_PATH,
+            ethDaemon,
+            osDeps,
+            ee,
+            isConnected
+        ))
+        .then(res)
+        .catch(rej);
+
+});
+
+export default PangeaLibFactory;
+

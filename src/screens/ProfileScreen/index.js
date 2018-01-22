@@ -5,16 +5,23 @@ import { View } from 'react-native';
 
 import EmptyProfileScreen from './EmptyProfile';
 import ProfileScreen from './Profile';
-import EditProfile from './EditProfile/index';
+import EditProfile from './EditProfile';
 import {
   startUserEditing,
   changeEditingUser,
   cancelUserEditing,
   doneUserEditing, startUserCreating,
+  requestProfileUpdate,
+  getUserProfile
 } from '../../actions/profile';
 import BackgroundImage from '../../components/common/BackgroundImage';
 
 class ProfileContainer extends Component {
+
+  constructor(props) {
+    super(props);
+    this.props.getUserProfile();
+  }
 
   render() {
     return (
@@ -77,7 +84,10 @@ const mapDispatchToProps = dispatch => ({
     dispatch(changeEditingUser(user));
   },
   onDoneUserEditing() {
-    dispatch(doneUserEditing());
+    dispatch(requestProfileUpdate());
+  },
+  getUserProfile() {
+    dispatch(getUserProfile());
   }
 });
 

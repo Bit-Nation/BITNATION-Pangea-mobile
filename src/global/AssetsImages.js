@@ -18,6 +18,7 @@ const chatTabIcon = require('../assets/images/chatTabIcon.png');
 const nationsTabIcon = require('../assets/images/nationsTabIcon.png');
 const walletTabIcon = require('../assets/images/walletTabIcon.png');
 const profileTabIcon = require('../assets/images/profileTabIcon.png');
+const QR = require('../assets/images/QR.png');
 
 const holonsPlaceholder = require('../assets/images/holonsPlaceholder.png');
 const achievementsPlaceholder = require('../assets/images/achievementsPlaceholder.png');
@@ -44,6 +45,7 @@ const Images = {
   fern,
   moon,
   bitLogoBig,
+  QR,
   TabIcons: {
     dashboard: dashboardTabIcon,
     chat: chatTabIcon,

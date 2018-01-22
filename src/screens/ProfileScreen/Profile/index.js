@@ -29,7 +29,7 @@ class ProfileScreen extends NavigatorComponent {
         rightButtons: [{
           title: 'Edit',
           id: EDIT_BUTTON,
-          buttonColor: Colors.navigationColor,
+          buttonColor: Colors.navigationButtonColor,
         }],
       }
     );
@@ -48,8 +48,9 @@ class ProfileScreen extends NavigatorComponent {
         <FakeNavigationBar/>
         {this._buildHeader()}
         <ScrollView>
-          {this._buildHolonsView()}
-          {this._buildAchievemntsView()}
+          {/*  Commented for Sprint 0.3.1  */}
+          {/*this._buildHolonsView()*/}
+          {/*this._buildAchievemntsView()*/}
         </ScrollView>
       </View>
     );
@@ -65,8 +66,8 @@ class ProfileScreen extends NavigatorComponent {
     return (
       <View style={styles.header}>
         <Image source={avatarSource} style={styles.avatar}/>
-        <Text style={styles.nameText}>{user.name}</Text>
-        <Text style={styles.infoText}>{user.location}</Text>
+        <Text style={styles.nameText}>{user.name.trim()}</Text>
+        <Text style={styles.infoText}>{user.location.trim()}</Text>
         <Text style={styles.infoText}>
           {!_.isEmpty(user.latitude) && !_.isEmpty(user.longitude) && (user.latitude + ', ' + user.longitude)}
         </Text>
