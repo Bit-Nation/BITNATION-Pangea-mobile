@@ -30,11 +30,13 @@ function* getProfile() {
 	try {
 		let pangeaLib = yield call(getPangeaLibrary);	
 		let profile = yield call(pangeaLib.profile.profile.getProfile);
-		const user = {
-			...profile,
-		    avatar: profile.image
-		};
-	  	yield put({ type: SET_USER_PROFILE, user: user });
+		if (profile) {
+			const user = {
+				...profile,
+			    avatar: profile.image
+			};
+		  	yield put({ type: SET_USER_PROFILE, user: user });
+		}
 	} catch (e) {
 		console.log('Get profile error: ', e);
 	}

@@ -9,7 +9,6 @@ function* doneNationCreation(action) {
 		try {
 			let pangeaLib = yield call(getPangeaLibrary);
 			let result = yield call(pangeaLib.eth.nation.create, action.payload);
-			console.log('nation create result: ', result);
   		yield put({ type: DONE_NATION_CREATE });
   	} catch (e) {
   		console.log('Create profile error: ', e);
@@ -21,8 +20,8 @@ function* fetchNations() {
   try {
 		let pangeaLib = yield call(getPangeaLibrary);
 		let result = yield call(pangeaLib.eth.nation.all);
-		console.log('nations: ', result);
-	  	yield put({ type: DONE_FETCH_NATIONS, payload: [] });
+		console.log('nations: ', result[0]);
+	  yield put({ type: DONE_FETCH_NATIONS, payload: [...result] });
 	} catch(e) {
 		console.log('Update profile error: ', e);
 	}

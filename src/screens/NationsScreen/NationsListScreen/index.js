@@ -21,7 +21,7 @@ class NationsListScreen extends Component {
       this.props.nations
       :
       _.filter(this.props.nations, (nation) => _.indexOf(this.props.myNations, nation.id) !== -1);
-    const groups = _.groupBy(nations, (nation) => nation.name.charAt(0));
+    const groups = _.groupBy(nations, (nation) => nation.nationName.charAt(0));
     const sections = _.map(groups, (group, key) => {
       return {
         title: key,
@@ -47,7 +47,7 @@ class NationsListScreen extends Component {
         <SectionList
           renderItem={(item) => {
             const nation = item.item;
-            return (<NationListItem text={nation.name} onPress={this.props.onSelectItem} item={nation}/>);
+            return (<NationListItem text={nation.nationName} onPress={this.props.onSelectItem} item={nation}/>);
           }}
           keyExtractor={(item) => item.id}
           renderSectionHeader={({ section }) => <NationListHeader title={section.title}/>}
