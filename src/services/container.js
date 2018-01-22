@@ -1,6 +1,7 @@
 //@flow
 
-import pangeaLibsFactory from 'BITNATION-Pangea-libs'
+import pangeaLibsFactory from 'BITNATION-Pangea-libs';
+import {roundEth, shortEthAddress} from '../utils/formatters'
 import secureStorage from './panthalassa/secureStorage';
 import osDeps from './panthalassa/osDependencies';
 import ethDaemon from './panthalassa/ethDaemon';
@@ -38,7 +39,7 @@ const PangeaLibFactory:Promise<*> = new Promise((res, rej) => {
     ee.on(ETH_TX_SIGN, function (data) {
         Alert.alert(
             `Sign Transaction`,
-            `Send ${data.value} ETH from ${data.from} to ${data.to} (${data.transactionFee} ETH transaction fee)`,
+            `Send ${roundEth(data.value)} ETH from ${shortEthAddress(data.from)} to ${shortEthAddress(data.to)} (${roundEth(data.transactionFee)} ETH transaction fee)`,
             [
                 {text: 'Cancel', onPress: data.abort, style: 'cancel'},
                 {text: 'OK', onPress: data.confirm},
