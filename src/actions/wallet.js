@@ -6,7 +6,6 @@ export const WALLETS_LIST_UPDATED = 'WALLETS_LIST_UPDATED';
 export const WALLET_SYNC_FAILED = 'WALLET_SYNC_FAILED';
 export const UPDATE_WALLET_LIST = 'UPDATE_WALLET_LIST';
 export const UPDATE_WALLET_BALANCE = 'UPDATE_WALLET_BALANCE';
-export const REQUEST_TRANSACTION_CONFIRMATION = 'REQUEST_TRANSACTION_CONFIRMATION';
 
 export function selectWallet(wallet) {
   return {
@@ -54,13 +53,6 @@ export function sendMoneyFailed(error) {
   return {
     type: SEND_MONEY_FAILED,
     error,
-  };
-}
-
-export function requestTransactionConfirmation(transaction) {
-  return {
-    type: REQUEST_TRANSACTION_CONFIRMATION,
-    transaction,
   };
 }
 

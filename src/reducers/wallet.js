@@ -11,7 +11,6 @@ const initialState = {
   selectedWalletAddress: null,
   moneySendingInProgress: false,
   moneySendingError: null,
-  transactionToConfirm: null,
 };
 
 export default function (state = initialState, action) {
@@ -38,8 +37,6 @@ export default function (state = initialState, action) {
       return { ...state, moneySendingInProgress: false, moneySendingError: null };
     case SEND_MONEY_FAILED:
       return { ...state, moneySendingInProgress: false, moneySendingError: action.error };
-    case REQUEST_TRANSACTION_CONFIRMATION:
-      return { ...state, transactionToConfirm: action.transaction };
   }
   return state;
 }

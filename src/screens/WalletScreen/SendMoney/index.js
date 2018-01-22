@@ -37,10 +37,6 @@ class SendMoney extends Component {
     if (this.props.moneySendingError !== prevProps.moneySendingError && this.props.moneySendingError !== null) {
       this._showErrorAlert(this.props.moneySendingError);
     }
-
-    if (this.props.transactionToConfirm !== prevProps.transactionToConfirm && this.props.transactionToConfirm !== null) {
-      this._showConfirmationAlert(this.props.transactionToConfirm);
-    }
   }
 
   showQRCodeScanner = () => {
@@ -84,28 +80,6 @@ class SendMoney extends Component {
     const amount = this._parseAmount();
     this.props.onSendMoney(amount, this.state.toEthAddress, this.state.message);
   };
-
-  _showConfirmationAlert(transaction) {
-    const wallet = this._resolveWallet();
-    const amount = this._parseAmount();
-    const currency = wallet.currency;
-    const totalAmount = amount + transaction.transactionFee;
-
-    Alert.alert(
-      `Send ${amount} ${currency}?`,
-      `Send ${amount} ${currency} + fee\nSpend a total of ${totalAmount} ${currency}`,
-      [
-        {
-          text: 'Cancel',
-          style: 'cancel',
-          onPress: () => transaction.abort(),
-        },
-        {
-          text: 'Send',
-          onPress: () => transaction.confirm(),
-        },
-      ]);
-  }
 
   _showErrorAlert(error) {
     Alert.alert(error.toString());

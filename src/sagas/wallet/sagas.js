@@ -1,11 +1,10 @@
-import { all, call, put, fork, select, cancel } from 'redux-saga/effects';
+import { all, call, put, select } from 'redux-saga/effects';
 import _ from 'lodash';
 
 import {
-  requestTransactionConfirmation, sendMoneyFailed, sendMoneySuccess,
-  walletsListUpdated, walletSyncFailed,
+  sendMoneyFailed, sendMoneySuccess, walletsListUpdated, walletSyncFailed,
 } from '../../actions/wallet';
-import { getWallets, resolveBalance, sendMoney, syncWallet, waitSendConfirmation } from './serviceFunctions';
+import { getWallets, resolveBalance, sendMoney, syncWallet } from './serviceFunctions';
 
 export function* sendMoneySaga(action) {
   const state = yield select();
@@ -14,22 +13,15 @@ export function* sendMoneySaga(action) {
   const amount = action.amount;
   const message = action.message;
 
-  const confirmationTask = yield fork(waitConfirmation);
   try {
     // @todo Send message to receiver
     yield call(sendMoney, fromAddress, toAddress, amount);
     yield put(sendMoneySuccess());
   } catch (error) {
     console.log(error);
-    yield cancel(confirmationTask);
     yield put(sendMoneyFailed(error));
   }
 
-}
-
-export function* waitConfirmation() {
-  const transaction = yield call(waitSendConfirmation);
-  yield put(requestTransactionConfirmation(transaction));
 }
 
 function* resolveWalletBalance(walletWithoutBalance) {

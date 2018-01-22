@@ -38,7 +38,7 @@ const PangeaLibFactory:Promise<*> = new Promise((res, rej) => {
     ee.on(ETH_TX_SIGN, function (data) {
         Alert.alert(
             `Sign Transaction`,
-            `Send ${data.value} ETH from ${data.from} to ${data.to} (${data.eth} ETH transaction fee)`,
+            `Send ${data.value} ETH from ${data.from} to ${data.to} (${data.transactionFee} ETH transaction fee)`,
             [
                 {text: 'Cancel', onPress: data.abort, style: 'cancel'},
                 {text: 'OK', onPress: data.confirm},
