@@ -6,12 +6,17 @@ var {height, width} = Dimensions.get('window');
 const styles = MediaQueryStyleSheet.create(
   {
 
- 
       listName: {
           marginRight:'10%',
           width:'80%',
           justifyContent:'center',
       },
+      textStyle: {
+        color:'white',
+        fontWeight:'bold',
+        textAlign:'center',
+        marginTop:'1%'
+    },
       text: {
         marginLeft: '10%',
         fontSize: 16,
@@ -19,38 +24,13 @@ const styles = MediaQueryStyleSheet.create(
         marginTop:'1%',
         marginBottom:'7%',
       },
- 
-      photo2: {
-        height: 10,
-        width: 10,
-        borderRadius: 20,
-      },
-      line2: {
-          backgroundColor:'black',
-          width:'100%',
-          marginLeft:'2%',
-          height:1
-      },
-      separator: {
-        width:'100%',
-        marginLeft:'3%',
-        height: 1,
-        backgroundColor:Colors.GraySilver,
-      },
 
-      chatTextContainer :
+      textContainer :
       {
           flex:1,
+          backgroundColor:'transparent',
       },
-      chatsText: {
-        color:'white',
-        fontWeight:'bold',
-        textAlign:'center',
-        marginTop:'1%'
-    },
-
-        cFlex: {
-
+        container: {
             flex:1,
             backgroundColor:Colors.BitnationBlue,
             marginBottom: '5%',
@@ -63,7 +43,5 @@ const styles = MediaQueryStyleSheet.create(
             flex:5
         },
 
-
-
-  });
+    });
 export default styles;
