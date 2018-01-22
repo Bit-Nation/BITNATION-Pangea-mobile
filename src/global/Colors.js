@@ -1,5 +1,5 @@
 /*
-	BIT NATION COLORS
+	BITNATION COLORS
 */
 
 // ========================================
