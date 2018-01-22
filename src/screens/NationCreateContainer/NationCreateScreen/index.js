@@ -23,7 +23,10 @@ import Images from '../../../global/AssetsImages'
 import ModalDropdown from 'react-native-modal-dropdown'
 
 import Colors from '../../../global/Colors'
+import Strings from '../../../global/Strings'
+
 import styles from './styles'
+
 
 const DONE_BUTTON = 'DONE_BUTTON'
 
@@ -104,7 +107,7 @@ class CreateNation extends NavigatorComponent {
 					<ScrollView style={styles.scrollView}>
 						{/* TITLE OF SCREEN */}
 						<View style={styles.titleBarLarge}>
-							<Text style={styles.largeTitle}>Create a Nation</Text>
+							<Text style={styles.largeTitle}>{Strings.createNationTitle}</Text>
 						</View>
 						
 						{this._buildIntroPanel()}
