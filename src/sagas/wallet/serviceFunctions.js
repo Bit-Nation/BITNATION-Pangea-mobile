@@ -1,4 +1,4 @@
-import containerPromise from '../../services/container';
+import containerPromise, { ETH_TX_SIGN } from '../../services/container';
 import { convertWallets } from '../../utils/wallet';
 import { waitConnect } from '../../utils/connectivity';
 import { BALANCE_EXPIRATION_INTERVAL, CONNECTION_TIMEOUT } from '../../global/Constants';
@@ -41,10 +41,7 @@ export async function sendMoney(fromAddress, toAddress, amount) {
 export async function waitSendConfirmation() {
   const container = await containerPromise;
   return await new Promise((res, rej) => {
-    container.eventEmitter.on('eth:tx:sign', (transaction) => {
-      console.log('RESOLVE');
-      console.log(transaction);
-
+    container.eventEmitter.on(ETH_TX_SIGN, (transaction) => {
       res(transaction);
     });
   });

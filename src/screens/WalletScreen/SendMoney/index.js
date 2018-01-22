@@ -86,25 +86,17 @@ class SendMoney extends Component {
   };
 
   _showConfirmationAlert(transaction) {
-    const wallet = this._resolveWallet();
-    const amount = this._parseAmount();
-    const currency = wallet.currency;
-    const totalAmount = amount + transaction.transactionFee;
-
+    const amount = formatETH(transaction.value);
+    const fee = formatETH(transaction.transactionFee);
     Alert.alert(
-      `Send ${amount} ${currency}?`,
-      `Send ${amount} ${currency} + fee\nSpend a total of ${totalAmount} ${currency}`,
+      `Sign Transaction`,
+      `Send ${amount} (${fee} transaction fee)`,
       [
-        {
-          text: 'Cancel',
-          style: 'cancel',
-          onPress: () => transaction.abort(),
-        },
-        {
-          text: 'Send',
-          onPress: () => transaction.confirm(),
-        },
-      ]);
+        { text: 'Cancel', onPress: transaction.abort, style: 'cancel' },
+        { text: 'OK', onPress: transaction.confirm },
+      ],
+      { cancelable: false },
+    );
   }
 
   _showErrorAlert(error) {
