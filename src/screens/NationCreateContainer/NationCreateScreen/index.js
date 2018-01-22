@@ -77,7 +77,7 @@ class CreateNation extends NavigatorComponent {
 	
 	onNavBarButtonPress (id) {
 		if (id === 'cancel') {
-			this.props.navigator.pop()
+			this.props.navigator.dismissModal()
 		}
 		if (id === DONE_BUTTON) {
 			this.props.onDoneNationCreation(this.state)
@@ -109,7 +109,8 @@ class CreateNation extends NavigatorComponent {
 						<View style={styles.titleBarLarge}>
 							<Text style={styles.largeTitle}>{Strings.createNationTitle}</Text>
 						</View>
-						
+
+            {/* CONSTRUCTIONS OF THE SECTIONS IN THE SCREEN */}
 						{this._buildIntroPanel()}
 						{this._buildCoreNationView()}
 						{this._buildGovernmentalView()}
