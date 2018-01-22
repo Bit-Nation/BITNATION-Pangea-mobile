@@ -31,3 +31,21 @@ export async function resolveBalance(wallet) {
 
   return { ...wallet, balance: walletObject.amount };
 }
+
+export async function sendMoney(fromAddress, toAddress, amount) {
+  const container = await containerPromise;
+  await waitConnect(CONNECTION_TIMEOUT);
+  return await container.eth.wallet.ethSend(fromAddress, toAddress, amount);
+}
+
+export async function waitSendConfirmation() {
+  const container = await containerPromise;
+  return await new Promise((res, rej) => {
+    container.eventEmitter.on('eth:tx:sign', (transaction) => {
+      console.log('RESOLVE');
+      console.log(transaction);
+
+      res(transaction);
+    });
+  });
+}

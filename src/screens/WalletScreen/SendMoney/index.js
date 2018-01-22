@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 
 import Images from '../../../global/AssetsImages';
 import Colors from '../../../global/Colors';
@@ -19,6 +20,8 @@ import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import { resolveWallet } from '../../../utils/wallet';
 import { sendMoney } from '../../../actions/wallet';
 import { androidNavigationButtons, screen } from '../../../global/Screens';
+import { formatETH } from '../../../utils/formatters/amountFormatter';
+import Loading from '../../../components/common/Loading';
 
 class SendMoney extends Component {
 
@@ -28,6 +31,16 @@ class SendMoney extends Component {
     super(props);
 
     this.state = { amountString: '', toEthAddress: '', message: '', fee: 0.5 };
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.moneySendingError !== prevProps.moneySendingError && this.props.moneySendingError !== null) {
+      this._showErrorAlert(this.props.moneySendingError);
+    }
+
+    if (this.props.transactionToConfirm !== prevProps.transactionToConfirm && this.props.transactionToConfirm !== null) {
+      this._showConfirmationAlert(this.props.transactionToConfirm);
+    }
   }
 
   showQRCodeScanner = () => {
@@ -58,7 +71,9 @@ class SendMoney extends Component {
     const totalSendAmount = sendAmount + this.state.fee;
     const currentAmount = wallet.balance;
 
-    return sendAmount > 0.01 && totalSendAmount <= currentAmount;
+    return sendAmount > 0.00000000000000001
+      && totalSendAmount <= currentAmount
+      && !_.isEmpty(this.state.toEthAddress);
   }
 
   onSendPress = () => {
@@ -66,26 +81,34 @@ class SendMoney extends Component {
       return;
     }
 
-    this._showConfirmationAlert();
+    const amount = this._parseAmount();
+    this.props.onSendMoney(amount, this.state.toEthAddress, this.state.message);
   };
 
-  _showConfirmationAlert() {
+  _showConfirmationAlert(transaction) {
     const wallet = this._resolveWallet();
     const amount = this._parseAmount();
     const currency = wallet.currency;
-    const totalAmount = amount + this.state.fee;
+    const totalAmount = amount + transaction.transactionFee;
 
     Alert.alert(
       `Send ${amount} ${currency}?`,
       `Send ${amount} ${currency} + fee\nSpend a total of ${totalAmount} ${currency}`,
       [
-        { text: 'Cancel', style: 'cancel' },
+        {
+          text: 'Cancel',
+          style: 'cancel',
+          onPress: () => transaction.abort(),
+        },
         {
           text: 'Send',
-          onPress: () => this.props.onSendMoney(wallet, amount, this.state.toEthAddress, this.state.message),
+          onPress: () => transaction.confirm(),
         },
-      ],
-      { cancelable: true });
+      ]);
+  }
+
+  _showErrorAlert(error) {
+    Alert.alert(error.toString());
   }
 
   render() {
@@ -93,6 +116,7 @@ class SendMoney extends Component {
     if (!wallet) {
       return <View/>;
     }
+    const balance = formatETH(wallet.balance, 'Updating', ' available');
 
     return (
       <View style={styles.container}>
@@ -116,7 +140,7 @@ class SendMoney extends Component {
 
               <View style={styles.ethereumDetailsContainer}>
                 <Text style={styles.ethereumTextContainer}>{wallet.name}</Text>
-                <Text style={styles.ethereumNumberContainer}>{`${wallet.balance} ${wallet.currency} available`}</Text>
+                <Text style={styles.ethereumNumberContainer}>{balance}</Text>
               </View>
             </View>
           </View>
@@ -219,6 +243,7 @@ class SendMoney extends Component {
           </View>
 
         </ScrollView>
+        {this.props.moneySendingInProgress ? <Loading/> : null}
       </View>
     );
   }
@@ -234,8 +259,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onSendMoney(wallet, amount, toEthAddress, message) {
-    dispatch(sendMoney(wallet, amount, toEthAddress, message));
+  onSendMoney(amount, toEthAddress, message) {
+    dispatch(sendMoney(amount, toEthAddress, message));
   },
 });
 
