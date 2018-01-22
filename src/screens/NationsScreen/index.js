@@ -32,7 +32,7 @@ class NationsScreen extends NavigatorComponent {
   onNavBarButtonPress(id) {
     if (id === NEW_BUTTON) {
       return (
-        this.props.navigator.push({
+        this.props.navigator.showModal({
           ...Screens.NATION_CREATE_SCREEN,
         })
       );
