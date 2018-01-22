@@ -203,13 +203,13 @@ class CreateNation extends NavigatorComponent {
 							dropdownTextStyle={styles.dropDownTextList}
 							defaultValue={'Legal Code...'}
 							options={[
-								'None',
-								'Transnational/Supranational Law',
-								'Multiple Legal Codes',
-								'UNIDROIT Principles',
-								'Computer Code',
-								'Common Law',
-								'Civil Law',
+								Strings.createNationNoLegalCode,
+								Strings.legalCodeTransSupra,
+								Strings.legalCodeMultiple,
+								Strings.legalCodeUNIDROIT,
+								Strings.legalCodeComputer,
+								Strings.legalCodeCommon,
+								Strings.legalCodeCivil,
 							]}
 							onSelect={(index, value) => this.setFieldValue('nationCode', value)}
 						/>
@@ -271,9 +271,7 @@ class CreateNation extends NavigatorComponent {
 					</View>
 				</View>
 				<Text style={styles.footnote}>
-					Here is some text. Here is some text. Here is some text.
-					Here is some text. Here is some text. Here is some text.
-					Here is some text. Here is some text.
+					{Strings.governmentalStructureFootnote}
 				</Text>
 			</MessageView>
 		)
@@ -326,8 +324,7 @@ class CreateNation extends NavigatorComponent {
 					</View>
 				</View>
 				<Text style={styles.footnote}>
-					We will deduct the fee from your wallet. You have 1.22001
-					ETH in your wallet.
+					We will deduct the fee from your wallet. You have {Strings.showCurrency('ETH', 1.22, true)} in your wallet.
 				</Text>
 			</MessageView>
 		)

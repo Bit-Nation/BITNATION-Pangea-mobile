@@ -34,11 +34,23 @@ const defaultStrings = {
 	createNationLocationPrompt: 'Nation location',
 	createNationRepresentsPrompt: 'Nation represents an existing Earth country',
 	createNationCoreFootnote: 'Virtual nations exist only in Pangea. Geographic nations are on Earth.',
+	createNationNoLegalCode: 'No legal code',
+	
+	governmentalStructureFootnote: '',
 	
 	// Nations generic strings
 	governmentalStructure: 'Governmental structure',
 	governmentalStructureTitle: 'Governmental Structure',
 	legalCode: 'Legal code',
+	
+	// Legal Codes
+	legalCodeTransSupra: 'Transnational/Supranational Law',
+	legalCodeMultiple: 'Multiple Legal Codes',
+	legalCodeUNIDROIT: 'UNIDROIT Principles',
+	legalCodeComputer: 'Computer Code',
+	legalCodeCommon: 'Common Law',
+	legalCodeCivil: 'Civil Law',
+	
 	
 	// Nations Fields
 	virtualNationTrue: 'Virtual nation',
@@ -89,7 +101,7 @@ const FR = {
 // amount (real) The amount of currency to show, e.g. 0.21495893984
 // addCurrency (bool) True = format the display string with the currency name (might be different from 'currency', above!)
 //                      false = return rounded currency without the name
-var showCurrency = (currency, amount, addCurrency) => {
+const showCurrency = (currency, amount, addCurrency) => {
 	if (!amount) {
 		amount = 0
 	}
