@@ -29,5 +29,5 @@ export async function resolveBalance(wallet) {
     }
   }
 
-  return { ...wallet, balance: parseInt(walletObject.amount) };
+  return { ...wallet, balance: walletObject.amount };
 }

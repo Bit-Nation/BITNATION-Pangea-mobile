@@ -10,6 +10,7 @@ import Images from '../../../global/AssetsImages';
 import WalletCard from '../../../components/WalletCard';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
+import { formatETH } from '../../../utils/formatters/amountFormatter';
 
 export default class WalletList extends Component {
 
@@ -25,7 +26,7 @@ export default class WalletList extends Component {
             renderItem={({ item }) => {
               let balance;
               if (item.balance !== undefined) {
-                balance = item.balance.toString() + ' ' + item.currency;
+                balance = formatETH(item.balance);
               } else {
                 balance = 'Updating';
               }
