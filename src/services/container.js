@@ -11,8 +11,6 @@ import {Alert} from 'react-native';
 import {ETH_TX_SIGN} from 'BITNATION-Pangea-libs/src/events'
 const EventEmitter = require('eventemitter3');
 
-export { ETH_TX_SIGN };
-
 const DB_PATH = 'pangea';
 
 if(!config.ETH_HTTP_ENDPOINT){
@@ -36,6 +34,18 @@ if(production){
 const PangeaLibFactory:Promise<*> = new Promise((res, rej) => {
 
     const ee = new EventEmitter();
+
+    ee.on(ETH_TX_SIGN, function (data) {
+        Alert.alert(
+            `Sign Transaction`,
+            `Send ${data.value} ETH from ${data.from} to ${data.to} (${data.eth} ETH transaction fee)`,
+            [
+                {text: 'Cancel', onPress: data.abort, style: 'cancel'},
+                {text: 'OK', onPress: data.confirm},
+            ],
+            { cancelable: false }
+        )
+    });
 
     /**
      * @desc Inform pangea utils about connectivity change
