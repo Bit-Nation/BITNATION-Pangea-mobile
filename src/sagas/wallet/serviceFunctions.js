@@ -25,7 +25,7 @@ export async function resolveBalance(wallet) {
       await syncWallet(wallet);
       return await resolveBalance(wallet);
     } catch (error) {
-      return { ...wallet, balance: undefined };
+      throw error;
     }
   }
 

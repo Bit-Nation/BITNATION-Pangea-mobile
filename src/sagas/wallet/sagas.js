@@ -3,7 +3,7 @@ import _ from 'lodash';
 
 import {
   requestTransactionConfirmation, sendMoneyFailed, sendMoneySuccess,
-  walletsListUpdated,
+  walletsListUpdated, walletSyncFailed,
 } from '../../actions/wallet';
 import { getWallets, resolveBalance, sendMoney, syncWallet, waitSendConfirmation } from './serviceFunctions';
 
@@ -32,11 +32,26 @@ export function* waitConfirmation() {
   yield put(requestTransactionConfirmation(transaction));
 }
 
+function* resolveWalletBalance(walletWithoutBalance) {
+  try {
+    const wallet = yield call(resolveBalance, walletWithoutBalance);
+    console.log(wallet);
+    return wallet;
+  } catch (error) {
+    yield put(walletSyncFailed(walletWithoutBalance.ethAddress, error));
+    throw error;
+  }
+}
+
 export function* updateWalletList() {
   const walletsWithoutBalance = yield call(getWallets);
   yield put(walletsListUpdated(walletsWithoutBalance));
-  const wallets = yield all(_.map(walletsWithoutBalance, (wallet) => call(resolveBalance, wallet)));
-  yield put(walletsListUpdated(wallets));
+  // @todo Don't fail if only one fail
+  try {
+    const wallets = yield all(_.map(walletsWithoutBalance, (wallet) => call(resolveWalletBalance, wallet)));
+    yield put(walletsListUpdated(wallets));
+  } catch (error) {
+  }
 }
 
 export function* updateWalletBalance(wallet) {

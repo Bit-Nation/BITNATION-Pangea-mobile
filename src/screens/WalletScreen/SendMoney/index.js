@@ -116,7 +116,11 @@ class SendMoney extends Component {
     if (!wallet) {
       return <View/>;
     }
-    const balance = formatETH(wallet.balance, 'Updating', ' available');
+    const balance = formatETH(
+      wallet.balance,
+      !wallet.synchronizationError ? 'Updating' : 'Update failed',
+      ' available',
+    );
 
     return (
       <View style={styles.container}>

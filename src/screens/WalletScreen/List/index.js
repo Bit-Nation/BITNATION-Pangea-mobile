@@ -24,7 +24,7 @@ export default class WalletList extends Component {
             data={this.props.wallets}
             keyExtractor={item => item.ethAddress}
             renderItem={({ item }) => {
-              const balance = formatETH(item.balance, 'Updating');
+              const balance = formatETH(item.balance, !item.synchronizationError ? 'Updating' : 'Update failed');
 
               return (<WalletCard
                 imagePath={Images.ethereumLogo}
