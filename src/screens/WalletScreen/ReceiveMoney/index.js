@@ -33,19 +33,6 @@ class ReceiveMoneyScreen extends Component {
         <FakeNavigationBar/>
         <ScrollView style={styles.mainContainer} contentContainerStyle={styles.scrollViewContentContainer}>
           <MessageView
-            title='Scan QR Code'
-            messageText={this.qrCodeText}
-            style={styles.messageView}
-            renderBottom={() =>
-              <View style={styles.QRCodeContainer}>
-                <QRCode
-                  value={this.props.selectedWalletAddress}
-                  size={165}
-                />
-              </View>
-            }/>
-
-          <MessageView
             title='Copy Address'
             messageText={this.copyAddressText}
             style={[styles.messageView]}
