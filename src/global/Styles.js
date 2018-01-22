@@ -292,10 +292,21 @@ const styles = {
 		height: 34,
 	},
 	
+	// Put the large title inside the body of the screen, so it scrolls up and away.
+	// The margins are set in the body container. If the body has no margins (bars that go edge to edge)
+	// then use the style below.
 	titleBarLarge: {
+		height: 52,
+		alignItems: 'flex-start',
+	},
+	
+	// Used as part of the body of a screen, but if the body area goes to the edges
+	// (e.g. a scrolling body with a table) you  might need margins.
+	titleBarLargeMargins: {
 		height: 52,
 		marginLeft: 16,
 		marginRight: 16,
+		textAlign: 'left',
 	},
 	
 	// Variations:
@@ -494,7 +505,6 @@ const styles = {
 		backgroundColor: Colors.shadeOfBitnationLightColor(0.2),
 		borderColor: Colors.borderColor,
 		borderWidth: 1,
-		color: Colors.white,
 		flex: 1,
 		marginTop: 4,
 		marginBottom: 4,
@@ -504,6 +514,15 @@ const styles = {
 		paddingLeft: 4,
 		paddingTop: 6,
 		paddingBottom: 6,
+		// font settings
+		color: Colors.placeholderTextColor,
+	},
+	
+	// text inside of text input fields prompting user to enter information,
+	// e.g. 'Name' or 'Country'
+	placeHolderText: {
+		...defaultTextStyles.body,
+		color: Colors.placeholderTextColor
 	},
 	
 	editItemLabel: {
@@ -535,12 +554,12 @@ const styles = {
 	
 	dropDownTextDefault: {
 		color: Colors.white,
-		fontSize: 16,
+		fontSize: 17,
 	},
 	
 	dropDownTextList: {
 		color: Colors.primary_blue,
-		fontSize: 16,
+		fontSize: 17,
 	},
 	
 	switchContainer: {
@@ -666,7 +685,7 @@ const styles = {
 		textAlign: 'center',
 	},
 	messageText: {
-		fontSize: 16,
+		fontSize: 17,
 		color: Colors.BitnationLightColor,
 		letterSpacing: -0.65,
 		lineHeight: 20.8,

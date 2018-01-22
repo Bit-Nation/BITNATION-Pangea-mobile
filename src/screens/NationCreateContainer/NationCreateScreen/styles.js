@@ -4,15 +4,7 @@ import GlobalStyles from '../../../global/Styles';
 
 const styles = MediaQueryStyleSheet.create({
   ...GlobalStyles,
-
-  container: {
-    ...GlobalStyles.screenContainer,
-  },
-
-  infoText: {
-    ...GlobalStyles.body,
-  },
-
+  
 });
 
 export default styles;

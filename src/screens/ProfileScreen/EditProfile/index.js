@@ -74,14 +74,14 @@ class EditProfile extends NavigatorComponent {
 				<BackgroundImage/>
 				<FakeNavigationBar hidenavigation />
 				
-				{/* TITLE OF SCREEN */}
-				<View style={styles.titleBarLarge}>
-					<Text style={styles.largeTitle}>Profile</Text>
-				</View>
-				
 				<View style={styles.bodyContainer}>
 					{/* SCROLLING PANELS FOR DATA ENTRY */}
 					<ScrollView style={styles.scrollView}>
+						{/* TITLE OF SCREEN */}
+						<View style={styles.titleBarLarge}>
+							<Text style={styles.largeTitle}>Profile</Text>
+						</View>
+						
 						{this._buildPicturePanel()}
 						{this._buildProfileForm()}
 					</ScrollView>

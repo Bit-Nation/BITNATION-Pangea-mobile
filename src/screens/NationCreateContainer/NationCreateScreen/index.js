@@ -127,9 +127,7 @@ class CreateNation extends NavigatorComponent {
 		return (
 			<View style={styles.bodyParagraph}>
 				<Text style={styles.body}>
-					Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-					sed diam nonummy nibh euismod tincidunt ut laoreet dolore
-					magna aliquam erat volutpat.
+					{Strings.createNationIntroText}
 				</Text>
 			</View>
 		)
@@ -143,8 +141,8 @@ class CreateNation extends NavigatorComponent {
 						<View style={styles.formRow}>
 							<TextInput
 								style={styles.textInput}
-								placeholder='Name of your Nation'
-								placeholderTextColor='rgba(255,255,255,0.3)'
+								placeholder={Strings.createNationNationNamePrompt}
+								placeholderTextColor={Colors.placeholderTextColor}
 								keyboardType='default'
 								onChangeText={(text) => this.setFieldValue('nationName', text)}
         						value={this.state.nationName}
@@ -153,7 +151,7 @@ class CreateNation extends NavigatorComponent {
 						<View style={styles.formRow}>
 							<TextInput
 								style={styles.textInput}
-								placeholder='Short Description'
+								placeholder={Strings.createNationShortDescPrompt}
 								multiline={true}
 								numberOfLines={4}
 								placeholderTextColor={Colors.placeholderTextColor}
@@ -167,11 +165,11 @@ class CreateNation extends NavigatorComponent {
 				<View style={styles.formRow}>
 					<View style={styles.fieldsContainer}>
 						<ModalDropdown
-							style={styles.dropDown}
-							textStyle={styles.dropDownTextDefault}
+							style={styles.textInput}
+							textStyle={styles.placeHolderText}
 							dropdownTextStyle={styles.dropDownTextList}
-							defaultValue={'Choose Nation Location...'}
-							options={['Virtual Nation', 'Geographical Nation']}
+							defaultValue={Strings.createNationLocationPrompt}
+							options={[Strings.virtualNationTrue, Strings.virtualNationFalse]}
 							onSelect={(index, value) => this.setFieldValue('virtualNation', value === 'Virtual Nation' ? true : false)}
 						/>
 					</View>
@@ -179,7 +177,7 @@ class CreateNation extends NavigatorComponent {
 				<View style={styles.formRow}>
 					<View style={styles.fieldsContainer}>
 						<SwitchLabeled
-							label="Nation represents an existing Earth country."
+							label={Strings.createNationRepresentsPrompt}
 							value={this.state.exists}
 							onValueChange={(value) => this.setFieldValue('exists', value)}
 						/>
@@ -187,8 +185,7 @@ class CreateNation extends NavigatorComponent {
 				</View>
 				
 				<Text style={styles.footnote}>
-					Virtual nations exist only in Pangea. Geographic nations are
-					on Earth.
+					{Strings.createNationCoreFootnote}
 				</Text>
 			</MessageView>
 		)
@@ -322,15 +319,14 @@ class CreateNation extends NavigatorComponent {
 				<View style={styles.formRow}>
 					<View style={styles.fieldsContainer}>
 						<SwitchLabeled
-							label="I agree to pay 1.232 mETH to create this nation."
+							label={'I agree to pay ' + Strings.showCurrency('ETH', 0.001, true) + ' to create this nation.'}
 							value={this.state.agreeFees}
 							onValueChange={(value) => this.setFieldValue('agreeFees', value)}
 						/>
 					</View>
 				</View>
 				<Text style={styles.footnote}>
-					The fee to register a new nation on the blockchain is 1.00
-					mETH. We will deduct the fee from your wallet. You have 1.2
+					We will deduct the fee from your wallet. You have 1.22001
 					ETH in your wallet.
 				</Text>
 			</MessageView>
