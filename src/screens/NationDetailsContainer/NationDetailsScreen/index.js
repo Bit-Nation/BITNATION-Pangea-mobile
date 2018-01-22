@@ -74,7 +74,7 @@ class NationDetailsScreen extends Component {
 
   _buildAboutView(nation) {
     return (
-      <MessageView style={styles.messageView} title={`About ${nation.name}...`} >
+      <MessageView style={styles.messageView} title={`About ${nation.nationName}...`} >
         <Text style={styles.panelBody}>
           Ethereum Address:
           {nation.ethAddress}
@@ -88,7 +88,7 @@ class NationDetailsScreen extends Component {
     return (
       <MessageView style={styles.messageViewDemo} title='Governmental Structure'>
         <Text style={styles.panelBody}>
-          {nation.name + ' '}
+          {nation.nationName + ' '}
           uses the Kanun legal code, and laws are enforced with a Reputation System (using the threat of public
           shaming
           and shunning). The government is a Holocracy. The nation is managed as a non-profit entity
@@ -102,11 +102,11 @@ class NationDetailsScreen extends Component {
     return (
       <MessageView style={styles.messageView} title={'Fun Facts'}>
         <Text style={styles.panelBody}>
-          {`${nation.name} is seeking diplomatic recognition from Earth governments as a sovereign entity.
+          {`${nation.nationName} is seeking diplomatic recognition from Earth governments as a sovereign entity.
 
 Non-citizens may not use national services.
 
-Citizens of ${nation.name} are allowed to be members of other nations.`}
+Citizens of ${nation.nationName} are allowed to be members of other nations.`}
         </Text>
 	      <DemoImage/>
       </MessageView>
