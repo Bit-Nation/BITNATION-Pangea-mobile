@@ -162,15 +162,6 @@ class SendMoney extends Component {
               />
             </View>
 
-            <View style={styles.qrCodeContainer}>
-              <TouchableOpacity onPress={this.showQRCodeScanner}>
-                <Image
-                  style={styles.qrLogo}
-                  source={Images.qrColor}
-                  resizeMode="cover"/>
-              </TouchableOpacity>
-            </View>
-
           </View>
 
           <View style={styles.calculatedEmptyContainer}>
