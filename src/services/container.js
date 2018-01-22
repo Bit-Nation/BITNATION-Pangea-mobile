@@ -15,6 +15,10 @@ if(!config.ETH_HTTP_ENDPOINT){
     throw new Error(`Please set the "ETH_HTTP_ENDPOINT" env variable (checkout the Readme)`);
 }
 
+if(typeof config.PRODUCTION !== 'boolean'){
+    throw new Error(`Please set the "PRODUCTION" env variable to an boolean value (checkout the readme)`);
+}
+
 const PangeaLibFactory:Promise<*> = new Promise((res, rej) => {
 
     const ee = new EventEmitter();
@@ -42,7 +46,8 @@ const PangeaLibFactory:Promise<*> = new Promise((res, rej) => {
             ethDaemon,
             osDeps,
             ee,
-            isConnected
+            isConnected,
+            config.PRODUCTION
         ))
         .then(res)
         .catch(rej);
