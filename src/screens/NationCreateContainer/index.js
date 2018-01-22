@@ -27,8 +27,8 @@ const mapDispatchToProps = dispatch => ({
   onCancelNationCreation() {
     dispatch(cancelNationCreation());
   },
-  onDoneNationCreation() {
-    dispatch(doneNationCreation());
+  onDoneNationCreation(nationData) {
+    dispatch(doneNationCreation(nationData));
   }
 });
 

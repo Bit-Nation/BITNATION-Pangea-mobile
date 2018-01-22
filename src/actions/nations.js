@@ -25,8 +25,15 @@ export function cancelNationCreation() {
   };
 }
 
-export function doneNationCreation() {
+export function doneNationCreation(nationData) {
   return {
     type: DONE_NATION_CREATE,
+    payload: nationData
+  };
+}
+
+export function requestFetchNations() {
+  return {
+    type: START_NATIONS_FETCH
   };
 }

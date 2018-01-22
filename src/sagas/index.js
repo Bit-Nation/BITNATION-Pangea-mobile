@@ -6,6 +6,7 @@ import nations from './nations';
 export default function* rootSaga() {
   yield all([
     wallet(),
-    profile()
+    profile(),
+    nations()
   ]);
 }

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import NationsListScreen from './NationsListScreen';
-import { switchNationTab, openNation } from '../../actions/nations';
+import { switchNationTab, openNation, requestFetchNations } from '../../actions/nations';
 import Screens from '../../global/Screens';
 import { resolveNation } from '../../utils/nations';
 import Colors from "../../global/Colors";
@@ -26,6 +26,7 @@ class NationsScreen extends NavigatorComponent {
         }],
       }
     );
+    this.props.fetchNations();
   }
 
   onNavBarButtonPress(id) {
@@ -74,6 +75,9 @@ const mapDispatchToProps = dispatch => ({
   },
   openNation(id) {
     dispatch(openNation(id));
+  },
+  fetchNations() {
+    dispatch(requestFetchNations());
   }
 });
 

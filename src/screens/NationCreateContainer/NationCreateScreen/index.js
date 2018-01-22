@@ -34,6 +34,22 @@ class CreateNation extends NavigatorComponent {
 		
 		this.actionSheet = null
 		this._setNavigationButtons(false)
+
+		this.state = {
+			nationName: '',
+			nationDescription: '',
+			exists: false,
+			virtualNation: false,
+			nationCode: '',
+			nationCodeLink: '',
+			lawEnforcementMechanism: '',
+			profit: false,
+			decisionMakingProcess: '',
+			diplomaticRecognition: false,
+			governanceService: '',
+			nonCitizenUse: false,
+			agreeFees: false
+		}
 	}
 	
 	_setNavigationButtons (saveEnabled) {
@@ -56,21 +72,25 @@ class CreateNation extends NavigatorComponent {
 		)
 	}
 	
-	componentWillReceiveProps (nextProps) {
-		const saveWasEnabled = this._saveShouldBeEnabled(this.props)
-		const saveWillBeEnabled = this._saveShouldBeEnabled(nextProps)
-		if (saveWasEnabled !== saveWillBeEnabled) {
-			this._setNavigationButtons(saveWillBeEnabled)
-		}
-	};
-	
 	onNavBarButtonPress (id) {
 		if (id === 'cancel') {
 			this.props.navigator.pop()
 		}
 		if (id === DONE_BUTTON) {
-			this.props.onDoneNationCreation()
+			this.props.onDoneNationCreation(this.state)
 		}
+	}
+
+	_saveShouldBeEnabled () {
+		let enabled = true;
+		if (!this.state.nationName || this.state.nationName == '')
+			enabled = false;
+		enabled = enabled && this.state.agreeFees;
+		this._setNavigationButtons(enabled);
+	}
+
+	setFieldValue(field, value) {
+		this.setState({[field]: value}, this._saveShouldBeEnabled)		
 	}
 	
 	render () {
@@ -122,6 +142,8 @@ class CreateNation extends NavigatorComponent {
 								placeholder='Name of your Nation'
 								placeholderTextColor='rgba(255,255,255,0.3)'
 								keyboardType='default'
+								onChangeText={(text) => this.setFieldValue('nationName', text)}
+        						value={this.state.nationName}
 							/>
 						</View>
 						<View style={styles.formRow}>
@@ -132,6 +154,8 @@ class CreateNation extends NavigatorComponent {
 								numberOfLines={4}
 								placeholderTextColor={Colors.placeholderTextColor}
 								keyboardType='default'
+								onChangeText={(text) => this.setFieldValue('nationDescription', text)}
+        						value={this.state.nationDescription}
 							/>
 						</View>
 					</View>
@@ -144,6 +168,7 @@ class CreateNation extends NavigatorComponent {
 							dropdownTextStyle={styles.dropDownTextList}
 							defaultValue={'Choose Nation Location...'}
 							options={['Virtual Nation', 'Geographical Nation']}
+							onSelect={(index, value) => this.setFieldValue('virtualNation', value === 'Virtual Nation' ? true : false)}
 						/>
 					</View>
 				</View>
@@ -151,7 +176,8 @@ class CreateNation extends NavigatorComponent {
 					<View style={styles.fieldsContainer}>
 						<SwitchLabeled
 							label="Nation represents an existing Earth country."
-							value={false}
+							value={this.state.exists}
+							onValueChange={(value) => this.setFieldValue('exists', value)}
 						/>
 					</View>
 				</View>
@@ -184,6 +210,7 @@ class CreateNation extends NavigatorComponent {
 								'Common Law',
 								'Civil Law',
 							]}
+							onSelect={(index, value) => this.setFieldValue('nationCode', value)}
 						/>
 					</View>
 				</View>
@@ -200,6 +227,7 @@ class CreateNation extends NavigatorComponent {
 								'Private or Cooperative Security',
 								'Nation State Law Enforcement',
 								'International Law Enforcement']}
+							onSelect={(index, value) => this.setFieldValue('lawEnforcementMechanism', value)}
 						/>
 					</View>
 				</View>
@@ -218,6 +246,7 @@ class CreateNation extends NavigatorComponent {
 								'Meritocracy',
 								'Theocracy',
 							]}
+							onSelect={(index, value) => this.setFieldValue('decisionMakingProcess', value)}
 						/>
 					</View>
 				</View>
@@ -236,6 +265,7 @@ class CreateNation extends NavigatorComponent {
 								'Diplomatic Services',
 								'Physical Residency',
 							]}
+							onSelect={(index, value) => this.setFieldValue('governanceService', value)}
 						/>
 					</View>
 				</View>
@@ -255,7 +285,8 @@ class CreateNation extends NavigatorComponent {
 					<View style={styles.fieldsContainer}>
 						<SwitchLabeled
 							label="Seeking diplomatic recognition as a sovereign entity."
-							value={false}
+							value={this.state.diplomaticRecognition}
+							onValueChange={(value) => this.setFieldValue('diplomaticRecognition', value)}
 						/>
 					</View>
 				</View>
@@ -263,7 +294,8 @@ class CreateNation extends NavigatorComponent {
 					<View style={styles.fieldsContainer}>
 						<SwitchLabeled
 							label="Non-citizens may use governance services."
-							value={true}
+							value={this.state.nonCitizenUse}
+							onValueChange={(value) => this.setFieldValue('nonCitizenUse', value)}
 						/>
 					</View>
 				</View>
@@ -271,7 +303,8 @@ class CreateNation extends NavigatorComponent {
 					<View style={styles.fieldsContainer}>
 						<SwitchLabeled
 							label="For-profit nation"
-							value={false}
+							value={this.state.profit}
+							onValueChange={(value) => this.setFieldValue('profit', value)}
 						/>
 					</View>
 				</View>
@@ -286,7 +319,8 @@ class CreateNation extends NavigatorComponent {
 					<View style={styles.fieldsContainer}>
 						<SwitchLabeled
 							label="I agree to pay 1.232 mETH to create this nation."
-							value={true}
+							value={this.state.agreeFees}
+							onValueChange={(value) => this.setFieldValue('agreeFees', value)}
 						/>
 					</View>
 				</View>
