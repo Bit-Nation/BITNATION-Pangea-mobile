@@ -4,7 +4,7 @@ import {
   Text,
   TextInput,
   Image,
-  Alert, ScrollView,
+  Alert, ScrollView, TouchableOpacity,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -18,7 +18,7 @@ import BackgroundImage from '../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import { resolveWallet } from '../../../utils/wallet';
 import { sendMoney } from '../../../actions/wallet';
-import { androidNavigationButtons } from '../../../global/Screens';
+import { androidNavigationButtons, screen } from '../../../global/Screens';
 
 class SendMoney extends Component {
 
@@ -29,6 +29,20 @@ class SendMoney extends Component {
 
     this.state = { amountString: '', toEthAddress: '', message: '', fee: 0.5 };
   }
+
+  showQRCodeScanner = () => {
+    this.props.navigator.showModal({
+      ...screen('QR_CODE_SCANNER_SCREEN'),
+      passProps: {
+        onReadCode: this._onReadCode,
+      },
+    });
+  };
+
+  _onReadCode = (event) => {
+    this.props.navigator.dismissModal();
+    this.setState({ toEthAddress: event.data });
+  };
 
   _resolveWallet() {
     return resolveWallet(this.props.wallets, this.props.selectedWalletAddress);
@@ -68,7 +82,7 @@ class SendMoney extends Component {
         { text: 'Cancel', style: 'cancel' },
         {
           text: 'Send',
-          onPress: () => this.props.onSendMoney(wallet, amount, this.state.toEthAddress, this.state.message)
+          onPress: () => this.props.onSendMoney(wallet, amount, this.state.toEthAddress, this.state.message),
         },
       ],
       { cancelable: true });
@@ -147,10 +161,12 @@ class SendMoney extends Component {
             </View>
 
             <View style={styles.qrCodeContainer}>
-              <Image
-                style={styles.qrLogo}
-                source={Images.qrColor}
-                resizeMode="cover"/>
+              <TouchableOpacity onPress={this.showQRCodeScanner}>
+                <Image
+                  style={styles.qrLogo}
+                  source={Images.qrColor}
+                  resizeMode="cover"/>
+              </TouchableOpacity>
             </View>
 
           </View>
@@ -220,7 +236,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   onSendMoney(wallet, amount, toEthAddress, message) {
     dispatch(sendMoney(wallet, amount, toEthAddress, message));
-  }
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SendMoney);
