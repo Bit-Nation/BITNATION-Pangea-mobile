@@ -191,25 +191,6 @@ class SendMoney extends Component {
 
           </View>
 
-
-          <View style={styles.noteContainer}>
-            <View style={styles.noteTextContainer}>
-              <Text style={styles.noteText}>Note</Text>
-            </View>
-
-            <View style={styles.noteBoxContainer}>
-              <TextInput
-                style={[styles.baseTextInput, styles.descriptionTextInput]}
-                placeholder='Optional message...'
-                placeholderTextColor='rgba(255,255,255,0.5)'
-                value={this.state.message}
-                onChangeText={(message) => this.setState({ message })}
-                underlineColorAndroid={Colors.Transparent}
-                multiline={true}
-              />
-            </View>
-          </View>
-
           <View style={styles.calculatedEmptyContainer}>
             <View style={styles.empty}>
               <Text> </Text>
