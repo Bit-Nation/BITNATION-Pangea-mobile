@@ -18,6 +18,7 @@
     "BITNATION-Panthalassa": "git+https://github.com/Bit-Nation/BITNATION-Pangea-libs.git#8f664cbf42c44be020ca95b3de643ebff703959a",
     "assert": "^1.4.1",
     "awilix": "^3.0.1",
+    "bignumber.js": "^5.0.0",
     "buffer": "^4.9.1",
     "es6-promise": "^4.1.1",
     "eslint": "^4.13.1",
