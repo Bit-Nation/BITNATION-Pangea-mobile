@@ -14,12 +14,11 @@ export function selectWallet(wallet) {
   };
 }
 
-export function sendMoney(amount, toEthAddress, message) {
+export function sendMoney(amount, toEthAddress) {
   return {
     type: SEND_MONEY,
     amount,
     toEthAddress,
-    message,
   };
 }
 

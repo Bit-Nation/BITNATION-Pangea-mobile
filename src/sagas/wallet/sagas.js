@@ -11,10 +11,8 @@ export function* sendMoneySaga(action) {
   const fromAddress = state.wallet.selectedWalletAddress;
   const toAddress = action.toEthAddress;
   const amount = action.amount;
-  const message = action.message;
 
   try {
-    // @todo Send message to receiver
     yield call(sendMoney, fromAddress, toAddress, amount);
     yield put(sendMoneySuccess());
   } catch (error) {

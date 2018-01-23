@@ -30,7 +30,7 @@ class SendMoney extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { amountString: '', toEthAddress: '', message: '', fee: 0.5 };
+    this.state = { amountString: '', toEthAddress: '', fee: 0.5 };
   }
 
   componentDidUpdate(prevProps) {
@@ -78,7 +78,7 @@ class SendMoney extends Component {
     }
 
     const amount = this._parseAmount();
-    this.props.onSendMoney(amount, this.state.toEthAddress, this.state.message);
+    this.props.onSendMoney(amount, this.state.toEthAddress);
   };
 
   _showErrorAlert(error) {
@@ -210,8 +210,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onSendMoney(amount, toEthAddress, message) {
-    dispatch(sendMoney(amount, toEthAddress, message));
+  onSendMoney(amount, toEthAddress) {
+    dispatch(sendMoney(amount, toEthAddress));
   },
 });
 
