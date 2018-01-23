@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import NationCreateScreen from './NationCreateScreen';
-import { cancelNationCreation, doneNationCreation } from '../../actions/nations';
+import { cancelNationCreation, createNation } from '../../actions/nations';
 
 class NationCreateContainer extends Component {
 
@@ -27,8 +27,8 @@ const mapDispatchToProps = dispatch => ({
   onCancelNationCreation() {
     dispatch(cancelNationCreation());
   },
-  onDoneNationCreation(nationData) {
-    dispatch(doneNationCreation(nationData));
+  onCreateNation(nationData, navigator) {
+    dispatch(createNation(nationData, navigator));
   }
 });
 

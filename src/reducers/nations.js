@@ -2,6 +2,7 @@ import {
   SWITCH_NATIONS_TAB,
   OPEN_NATION,
   CANCEL_NATION_CREATE,
+  NATION_CREATE,
   DONE_NATION_CREATE,
   DONE_FETCH_NATIONS
 } from '../actions/nations';
@@ -66,6 +67,11 @@ export default function (state = initialState, action) {
       return {
         ...state,
         creatingNation: null
+      };
+    case NATION_CREATE:
+      return {
+        ...state,
+        creatingNation: action.payload
       };
     case DONE_NATION_CREATE:
       return {

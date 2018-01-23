@@ -45,16 +45,15 @@ class CreateNation extends NavigatorComponent {
 			nationDescription: '',
 			exists: false,
 			virtualNation: false,
-			nationCode: '',
+			nationCode: [],
 			nationCodeLink: '',
-			lawEnforcementMechanism: '',
+			lawEnforcementMechanism: [],
 			profit: false,
-			decisionMakingProcess: '',
+			decisionMakingProcess: [],
 			diplomaticRecognition: false,
-			governanceService: '',
+			governanceService: [],
 			nonCitizenUse: false,
-			agreeFees: false,
-			selectedServicesItems: [],
+			agreeFees: false
 		}
 	}
 	
@@ -83,7 +82,21 @@ class CreateNation extends NavigatorComponent {
 			this.props.navigator.dismissModal()
 		}
 		if (id === DONE_BUTTON) {
-			this.props.onDoneNationCreation(this.state)
+			let nation = {
+				nationName: this.state.nationName,
+				nationDescription: this.state.nationDescription,
+				exists: this.state.exists,
+				virtualNation: this.state.virtualNation,
+				nationCode: this.state.nationCode.join(', '),
+				nationCodeLink: this.state.nationCodeLink,
+				lawEnforcementMechanism: this.state.lawEnforcementMechanism.join(', '),
+				profit: this.state.profit,
+				decisionMakingProcess: this.state.decisionMakingProcess.join(', '),
+				diplomaticRecognition: this.state.diplomaticRecognition,
+				governanceService: this.state.governanceService.join(', '),
+				nonCitizenUse: this.state.nonCitizenUse
+			}
+			this.props.onCreateNation(nation, this.props.navigator)
 		}
 	}
 
@@ -233,9 +246,9 @@ class CreateNation extends NavigatorComponent {
                 id: 'UNIDROIT Principles',
                 name: 'UNIDROIT Principles',
               }]}
-              uniqueKey="idLegalCode"
-              onSelectedItemsChange={(index, value) => this.setFieldValue('selectedServicesItems', value)}
-              selectedItems={this.state.selectedServicesItems}
+              uniqueKey="id"
+              onSelectedItemsChange={(selectedItems) => this.setFieldValue('nationCode', selectedItems)}
+              selectedItems={this.state.nationCode}
               selectText="Legal Code..."
               onChangeInput={ (text)=> console.log(text)}
               tagRemoveIconColor="#CCC"
@@ -283,9 +296,9 @@ class CreateNation extends NavigatorComponent {
                 id: 'International Law Enforcement',
                 name: 'International Law Enforcement',
               }]}
-              uniqueKey="idEnforcement"
-              onSelectedItemsChange={(index, value) => this.setFieldValue('selectedServicesItems', value)}
-              selectedItems={this.state.selectedServicesItems}
+              uniqueKey="id"
+              onSelectedItemsChange={(selectedItems) => this.setFieldValue('lawEnforcementMechanism', selectedItems)}
+              selectedItems={this.state.lawEnforcementMechanism}
               selectText="Law Enforcement Mechanism..."
               onChangeInput={ (text)=> console.log(text)}
               tagRemoveIconColor="#CCC"
@@ -338,9 +351,9 @@ class CreateNation extends NavigatorComponent {
                 id: 'Theocracy',
                 name: 'Theocracy',
               }]}
-              uniqueKey="idTypeGov"
-              onSelectedItemsChange={(index, value) => this.setFieldValue('selectedServicesItems', value)}
-              selectedItems={this.state.selectedServicesItems}
+              uniqueKey="id"
+              onSelectedItemsChange={(selectedItems) => this.setFieldValue('decisionMakingProcess', selectedItems)}
+              selectedItems={this.state.decisionMakingProcess}
               selectText="Type of Government..."
               onChangeInput={ (text)=> console.log(text)}
               tagRemoveIconColor="#CCC"
@@ -373,10 +386,10 @@ class CreateNation extends NavigatorComponent {
                 id: 'Physical Services',
                 name: 'Physical Services',
               }]}
-              uniqueKey="idLegalServices"
+              uniqueKey="id"
               ref={(component) => this.multiSelect = component }
-              onSelectedItemsChange={(index, value) => this.setFieldValue('selectedServicesItems', value)}
-              selectedItems={this.state.selectedServicesItems}
+              onSelectedItemsChange={(selectedItems) => this.setFieldValue('governanceService', selectedItems)}
+              selectedItems={this.state.governanceService}
               selectText="Services Offered..."
               onChangeInput={ (text)=> console.log(text)}
               tagRemoveIconColor="#CCC"
@@ -464,7 +477,7 @@ class CreateNation extends NavigatorComponent {
 
 CreateNation.propTypes = {
 	onCancelNationCreation: PropTypes.func.isRequired,
-	onDoneNationCreation: PropTypes.func.isRequired,
+	onCreateNation: PropTypes.func.isRequired,
 }
 
 export default CreateNation
