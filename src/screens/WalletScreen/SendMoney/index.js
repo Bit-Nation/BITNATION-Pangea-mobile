@@ -4,10 +4,11 @@ import {
   Text,
   TextInput,
   Image,
-  Alert, ScrollView,
+  Alert, ScrollView, TouchableOpacity,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 
 import Images from '../../../global/AssetsImages';
 import Colors from '../../../global/Colors';
@@ -18,14 +19,39 @@ import BackgroundImage from '../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import { resolveWallet } from '../../../utils/wallet';
 import { sendMoney } from '../../../actions/wallet';
+import { androidNavigationButtons, screen } from '../../../global/Screens';
+import Loading from '../../../components/common/Loading';
+import { roundEth } from '../../../utils/formatters';
 
 class SendMoney extends Component {
+
+  static navigatorButtons = { ...androidNavigationButtons };
 
   constructor(props) {
     super(props);
 
-    this.state = { amountString: '', toEthAddress: '', message: '', fee: 0.5 };
+    this.state = { amountString: '', toEthAddress: '', fee: 0.5 };
   }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.moneySendingError !== prevProps.moneySendingError && this.props.moneySendingError !== null) {
+      this._showErrorAlert(this.props.moneySendingError);
+    }
+  }
+
+  showQRCodeScanner = () => {
+    this.props.navigator.showModal({
+      ...screen('QR_CODE_SCANNER_SCREEN'),
+      passProps: {
+        onReadCode: this._onReadCode,
+      },
+    });
+  };
+
+  _onReadCode = (event) => {
+    this.props.navigator.dismissModal();
+    this.setState({ toEthAddress: event.data });
+  };
 
   _resolveWallet() {
     return resolveWallet(this.props.wallets, this.props.selectedWalletAddress);
@@ -41,7 +67,9 @@ class SendMoney extends Component {
     const totalSendAmount = sendAmount + this.state.fee;
     const currentAmount = wallet.balance;
 
-    return sendAmount > 0.01 && totalSendAmount <= currentAmount;
+    return sendAmount > 0.00000000000000001
+      && totalSendAmount <= currentAmount
+      && !_.isEmpty(this.state.toEthAddress);
   }
 
   onSendPress = () => {
@@ -49,26 +77,12 @@ class SendMoney extends Component {
       return;
     }
 
-    this._showConfirmationAlert();
+    const amount = this._parseAmount();
+    this.props.onSendMoney(amount, this.state.toEthAddress);
   };
 
-  _showConfirmationAlert() {
-    const wallet = this._resolveWallet();
-    const amount = this._parseAmount();
-    const currency = wallet.currency;
-    const totalAmount = amount + this.state.fee;
-
-    Alert.alert(
-      `Send ${amount} ${currency}?`,
-      `Send ${amount} ${currency} + fee\nSpend a total of ${totalAmount} ${currency}`,
-      [
-        { text: 'Cancel', style: 'cancel' },
-        {
-          text: 'Send',
-          onPress: () => this.props.onSendMoney(wallet, amount, this.state.toEthAddress, this.state.message)
-        },
-      ],
-      { cancelable: true });
+  _showErrorAlert(error) {
+    Alert.alert(error.toString());
   }
 
   render() {
@@ -76,6 +90,12 @@ class SendMoney extends Component {
     if (!wallet) {
       return <View/>;
     }
+    const balance = ((wallet) => {
+      if (wallet.balance !== null && wallet.balance !== undefined) {
+        return roundEth(wallet.balance) + ' ETH available';
+      }
+      return !wallet.synchronizationError ? 'Updating' : 'Update failed';
+    })(wallet);
 
     return (
       <View style={styles.container}>
@@ -99,7 +119,7 @@ class SendMoney extends Component {
 
               <View style={styles.ethereumDetailsContainer}>
                 <Text style={styles.ethereumTextContainer}>{wallet.name}</Text>
-                <Text style={styles.ethereumNumberContainer}>{`${wallet.balance} ${wallet.currency} available`}</Text>
+                <Text style={styles.ethereumNumberContainer}>{balance}</Text>
               </View>
             </View>
           </View>
@@ -143,32 +163,6 @@ class SendMoney extends Component {
               />
             </View>
 
-            <View style={styles.qrCodeContainer}>
-              <Image
-                style={styles.qrLogo}
-                source={Images.qrColor}
-                resizeMode="cover"/>
-            </View>
-
-          </View>
-
-
-          <View style={styles.noteContainer}>
-            <View style={styles.noteTextContainer}>
-              <Text style={styles.noteText}>Note</Text>
-            </View>
-
-            <View style={styles.noteBoxContainer}>
-              <TextInput
-                style={[styles.baseTextInput, styles.descriptionTextInput]}
-                placeholder='Optional message...'
-                placeholderTextColor='rgba(255,255,255,0.5)'
-                value={this.state.message}
-                onChangeText={(message) => this.setState({ message })}
-                underlineColorAndroid={Colors.Transparent}
-                multiline={true}
-              />
-            </View>
           </View>
 
           <View style={styles.calculatedEmptyContainer}>
@@ -200,6 +194,7 @@ class SendMoney extends Component {
           </View>
 
         </ScrollView>
+        {this.props.moneySendingInProgress ? <Loading/> : null}
       </View>
     );
   }
@@ -215,9 +210,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onSendMoney(wallet, amount, toEthAddress, message) {
-    dispatch(sendMoney(wallet, amount, toEthAddress, message));
-  }
+  onSendMoney(amount, toEthAddress) {
+    dispatch(sendMoney(amount, toEthAddress));
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SendMoney);

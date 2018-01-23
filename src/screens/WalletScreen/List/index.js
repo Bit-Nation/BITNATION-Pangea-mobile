@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {
   Text, Image, FlatList, Button, ListItem,
-  View, TouchableOpacity
+  View, TouchableOpacity,
 } from 'react-native';
 import PropTypes from 'prop-types';
 
@@ -10,6 +10,7 @@ import Images from '../../../global/AssetsImages';
 import WalletCard from '../../../components/WalletCard';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
+import { roundEth } from '../../../utils/formatters';
 
 export default class WalletList extends Component {
 
@@ -23,7 +24,12 @@ export default class WalletList extends Component {
             data={this.props.wallets}
             keyExtractor={item => item.ethAddress}
             renderItem={({ item }) => {
-              const balance = (item.balance && item.balance.toString()) + ' ' + item.currency;
+              const balance = ((wallet) => {
+                if (wallet.balance !== null && wallet.balance !== undefined) {
+                  return roundEth(wallet.balance) + ' ETH';
+                }
+                return !wallet.synchronizationError ? 'Updating' : 'Update failed';
+              })(item);
 
               return (<WalletCard
                 imagePath={Images.ethereumLogo}

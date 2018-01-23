@@ -14,6 +14,13 @@ export const appStyle = {
   ...tabsStyle
 };
 
+export const androidNavigationButtons = Platform.OS === 'android' ? {
+  leftButtons: [{
+    id: 'back',
+    buttonColor: Colors.white,
+  }],
+} : {};
+
 export const navigatorStyle = {
   statusBarTextColorScheme: 'light',
   statusBarColor: Platform.OS === 'ios' ? 'transparent' : 'black',
@@ -36,7 +43,15 @@ export const hiddenNavigatorStyle = {
   rootBackgroundImageName: 'background',
 };
 
-export default {
+const baseKeyScreen = {
+  navigatorStyle: {
+    ...navigatorStyle,
+    disabledBackGesture: true,
+  },
+  overrideBackPress: true,
+}
+
+const Screens = {
   SPLASH_SCREEN: {
     screen: 'Pangea.SplashScreen',
     title: 'Splash',
@@ -85,41 +100,35 @@ export default {
     title: 'Profile & Settings',
     navigatorStyle,
   },
-  CREATE_KEY_SCREEN_STEP_1: {
-    screen: 'Pangea.CreateKeyStep1',
+  CREATE_KEY_INTRODUCTION_SCREEN: {
+    screen: 'Pangea.CreateKeyIntroductionScreen',
+    title: ' Create Private Key ',
+    ...baseKeyScreen,
+  },
+  CREATE_KEY_INSTRUCTION_SCREEN: {
+    screen: 'Pangea.CreateKeyInstructionScreen',
     title: 'Create Private Key',
-    backButtonTitle: 'Back',
-    navigatorStyle,
+    ...baseKeyScreen,
   },
-  CREATE_KEY_SCREEN_STEP_2: {
-    screen: 'Pangea.CreateKeyStep2',
+  CREATE_KEY_PROCESS_SCREEN: {
+    screen: 'Pangea.CreateKeyProcessScreen',
     title: 'Create Private Key',
-    backButtonTitle: 'Back',
-    navigatorStyle,
+    ...baseKeyScreen,
   },
-  CREATE_KEY_SCREEN_STEP_3: {
-    screen: 'Pangea.CreateKeyStep3',
-    title: 'Create Private Key',
-    backButtonTitle: 'Back',
-    navigatorStyle,
-  },
-  VERIFY_KEY_SCREEN_STEP_1: {
-    screen: 'Pangea.VerifyKeyStep1',
+  VERIFY_KEY_INSTRUCTION_SCREEN: {
+    screen: 'Pangea.VerifyKeyInstructionScreen',
     title: 'Verify Private Key',
-    backButtonTitle: 'Back',
-    navigatorStyle,
+    ...baseKeyScreen,
   },
-  VERIFY_KEY_SCREEN_STEP_2: {
-    screen: 'Pangea.VerifyKeyStep2',
+  VERIFY_KEY_PROCESS_SCREEN: {
+    screen: 'Pangea.VerifyKeyProcessScreen',
     title: 'Verify Private Key',
-    backButtonTitle: 'Back',
-    navigatorStyle,
+    ...baseKeyScreen,
   },
-  VERIFY_KEY_SCREEN_STEP_3: {
-    screen: 'Pangea.VerifyKeyStep3',
-    title: 'Verify Private Key',
-    backButtonTitle: 'Back',
-    navigatorStyle,
+  LOAD_WALLET_SCREEN: {
+    screen: 'Pangea.LoadWalletScreen',
+    title: ' Load wallet ',
+    ...baseKeyScreen,
   },
   INTRO_SCREEN: {
     screen: 'Pangea.Intro',
@@ -130,9 +139,30 @@ export default {
     title: 'Receive Money',
     navigatorStyle,
   },
+  CREATE_KEY_SUCCESS_SCREEN: {
+    screen: 'Pangea.CreateKeySuccessScreen',
+    title: 'Create Private Key',
+    ...baseKeyScreen,
+  },
+  VERIFY_KEY_SUCCESS_SCREEN: {
+    screen: 'Pangea.VerifyKeySuccess',
+    title: 'Verify Private Key',
+    backButtonTitle: 'Cancel',
+    navigatorStyle,
+  },
   SEND_MONEY_SCREEN: {
     screen: 'Pangea.SendMoneyScreen',
     title: 'Send money',
     navigatorStyle,
   },
+  QR_CODE_SCANNER_SCREEN: {
+    screen: 'Pangea.QRCodeScannerScreen',
+    title: 'Scan QR code',
+    navigatorStyle,
+  },
+
 };
+
+export function screen(name) {
+  return { ...Screens[name] };
+}

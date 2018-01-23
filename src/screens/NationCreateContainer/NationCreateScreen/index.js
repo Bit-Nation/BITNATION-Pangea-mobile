@@ -65,14 +65,14 @@ class CreateNation extends NavigatorComponent {
 					{
 						title: 'Cancel',
 						id: 'cancel',
-						buttonColor: Colors.navigationColor,
+						buttonColor: Colors.navigationButtonColor,
 					}],
 				rightButtons: [
 					{
 						title: 'Done',
 						id: DONE_BUTTON,
 						disabled: !saveEnabled,
-						buttonColor: Colors.navigationColor,
+						buttonColor: Colors.navigationButtonColor,
 					}],
 			},
 		)

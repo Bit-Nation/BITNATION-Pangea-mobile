@@ -141,7 +141,7 @@ const styles = MediaQueryStyleSheet.create(
       textAlign: 'right',
     },
     amountCurrencyContainer: {
-      flex: 1.8,
+      marginRight: 8,
       backgroundColor: Colors.Transparent,
       justifyContent: 'center',
     },

@@ -1,3 +1,5 @@
+import { Platform } from 'react-native';
+
 /*
 	BITNATION COLORS
 */
@@ -57,7 +59,7 @@ var shadeOfBitnationLightColor = (opacity) => {
 // ========================================
 // COLOR DEFINITIONS
 
-module.exports = {
+export default {
 	
 	// Functions for getting shades of other colors, e.g. Colors.shadeOf(Colors.BitnationColor, '0.2')
 	// See comments above the functions, below.
@@ -70,7 +72,7 @@ module.exports = {
 	BitnationLightColor: BitnationLightColor,
 	BitnationVeryLightColor: BitnationVeryLightColor,
 	
-	// Custom BitNation Colors
+	// Custom Bitnation Colors
 	BlueGrey: '#607D8B',
 	BlueMed: '#72A4DE',
 	
@@ -81,7 +83,7 @@ module.exports = {
 	disabledButtonColor: '#37393C',
 	disabledButtonTitleColor: '#5F6D7D',
 	borderColor: '#275284',
-	navigationColor: '#007AFF',
+	navigationButtonColor: Platform.OS === 'ios' ? '#007AFF' : '#FFFFFF',
 	
 	// FORMS
 	placeholderTextColor: 'rgba(255,255,255,0.4)',

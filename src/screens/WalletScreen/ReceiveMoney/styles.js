@@ -16,6 +16,11 @@ export default styles = StyleSheet.create({
   QRCodeContainer: {
     marginTop: 8,
     alignItems: 'stretch',
+    paddingLeft: 2,
+    paddingRight: 2,
+    paddingBottom: 2,
+    paddingTop: 2,
+    backgroundColor: 'white',
   },
   QRcode: {
     aspectRatio: 1,

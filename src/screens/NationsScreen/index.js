@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import NationsListScreen from './NationsListScreen';
 import { switchNationTab, openNation, requestFetchNations } from '../../actions/nations';
-import Screens from '../../global/Screens';
+import { screen } from '../../global/Screens';
 import { resolveNation } from '../../utils/nations';
 import Colors from "../../global/Colors";
 import NavigatorComponent from "../../components/common/NavigatorComponent";
@@ -22,7 +22,7 @@ class NationsScreen extends NavigatorComponent {
         rightButtons: [{
           title: 'New',
           id: NEW_BUTTON,
-          buttonColor: Colors.navigationColor,
+          buttonColor: Colors.navigationButtonColor,
         }],
       }
     );
@@ -32,9 +32,7 @@ class NationsScreen extends NavigatorComponent {
   onNavBarButtonPress(id) {
     if (id === NEW_BUTTON) {
       return (
-        this.props.navigator.showModal({
-          ...Screens.NATION_CREATE_SCREEN,
-        })
+        this.props.navigator.showModal(screen('NATION_CREATE_SCREEN'))
       );
     }
   }
@@ -54,9 +52,7 @@ class NationsScreen extends NavigatorComponent {
 
     this.props.openNation(id);
 
-    this.props.navigator.push({
-      ...Screens.NATION_DETAILS_SCREEN,
-    });
+    this.props.navigator.push(screen('NATION_DETAILS_SCREEN'));
   };
 
 }

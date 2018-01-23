@@ -11,23 +11,45 @@ const initialState = {
   editingUser: null,
 };
 
-export default function (state = initialState, action) {
+export default (state = initialState, action) => {
   switch (action.type) {
     case START_USER_EDITING:
-      return Object.assign({}, state, { editingUser: state.user });
+      return {
+        ...state,
+        editingUser: state.user
+      };
     case CHANGE_EDITING_USER:
-      return Object.assign({}, state, { editingUser: action.user });
+      return {
+        ...state,
+        editingUser: action.user
+      };
     case CANCEL_USER_EDITING:
-      return Object.assign({}, state, { editingUser: null });
+      return {
+        ...state,
+        editingUser: null 
+      };
     case DONE_USER_EDITING:
-      return Object.assign({}, state, { user: state.editingUser, editingUser: null });
+      let newUser = {
+        ...state.editingUser,
+        name: state.editingUser.name ? state.editingUser.name.trim() : '',
+        location: state.editingUser.location ? state.editingUser.location.trim() : '',
+      };
+      return {
+        ...state,
+        user: newUser,
+        editingUser: null 
+      };
     case START_USER_CREATING:
-      return Object.assign({}, state, { editingUser: {} });
+      return {
+        ...state,
+        editingUser: {}
+      };
     case SET_USER_PROFILE:
       return {
         ...state,
         user: action.user
       };
+    default:
+      return state;
   }
-  return state;
 }
