@@ -38,6 +38,7 @@ class CreateNation extends NavigatorComponent {
 		super(props)
 		
 		this.actionSheet = null
+		this.multiGovernanceService = null
 		this._setNavigationButtons(false)
 
 		this.state = {
@@ -387,7 +388,7 @@ class CreateNation extends NavigatorComponent {
                 name: 'Physical Services',
               }]}
               uniqueKey="id"
-              ref={(component) => this.multiSelect = component }
+              ref={(component) => this.multiGovernanceService = component}
               onSelectedItemsChange={(selectedItems) => this.setFieldValue('governanceService', selectedItems)}
               selectedItems={this.state.governanceService}
               selectText="Services Offered..."
@@ -401,6 +402,9 @@ class CreateNation extends NavigatorComponent {
               submitButtonText="Submit"
             />
 					</View>
+					<View>
+	          {this.multiGovernanceService && this.multiGovernanceService.getSelectedItemsExt(this.state.governanceService)}
+	        </View>
 				</View>
 				<Text style={styles.footnote}>
 					{Strings.governmentalStructureFootnote}
