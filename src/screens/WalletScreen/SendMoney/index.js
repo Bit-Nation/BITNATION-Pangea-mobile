@@ -20,8 +20,8 @@ import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import { resolveWallet } from '../../../utils/wallet';
 import { sendMoney } from '../../../actions/wallet';
 import { androidNavigationButtons, screen } from '../../../global/Screens';
-import { formatETH } from '../../../utils/formatters/amountFormatter';
 import Loading from '../../../components/common/Loading';
+import { roundEth } from '../../../utils/formatters';
 
 class SendMoney extends Component {
 
@@ -90,11 +90,12 @@ class SendMoney extends Component {
     if (!wallet) {
       return <View/>;
     }
-    const balance = formatETH(
-      wallet.balance,
-      !wallet.synchronizationError ? 'Updating' : 'Update failed',
-      ' available',
-    );
+    const balance = ((wallet) => {
+      if (wallet.balance !== null && wallet.balance !== undefined) {
+        return roundEth(wallet.balance) + ' ETH available';
+      }
+      return !wallet.synchronizationError ? 'Updating' : 'Update failed';
+    })(wallet);
 
     return (
       <View style={styles.container}>
