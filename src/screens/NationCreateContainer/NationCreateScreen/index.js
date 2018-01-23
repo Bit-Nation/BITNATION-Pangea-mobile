@@ -401,10 +401,10 @@ class CreateNation extends NavigatorComponent {
               submitButtonColor={Colors.panelBoxColor}
               submitButtonText="Submit"
             />
+            <View>
+              {this.multiGovernanceService && this.multiGovernanceService.getSelectedItemsExt(this.state.governanceService)}
+            </View>
 					</View>
-					<View>
-	          {this.multiGovernanceService && this.multiGovernanceService.getSelectedItemsExt(this.state.governanceService)}
-	        </View>
 				</View>
 				<Text style={styles.footnote}>
 					{Strings.governmentalStructureFootnote}
