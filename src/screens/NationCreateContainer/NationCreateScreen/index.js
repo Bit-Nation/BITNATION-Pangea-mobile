@@ -3,13 +3,14 @@
 	Version 0.3.1
 	
 	For usage of ModalDropdown see: https://github.com/sohobloo/react-native-modal-dropdown/blob/master/README.md
+
+	For usage of MultiSelect see: https://github.com/toystars/react-native-multiple-select (We are using a custom UI version)
  */
 
 import React from 'react'
 import {
 	View, Image,
 	Text, ScrollView, TextInput,
-	Picker,
 } from 'react-native'
 
 import PropTypes from 'prop-types'
@@ -19,6 +20,7 @@ import { ActionSheet } from 'native-base'
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar'
 import MessageView from '../../../components/common/MessageView'
 import SwitchLabeled from '../../../components/common/SwitchLabeled'
+import MultiSelect from '../../../components/MultiSelect'
 import Images from '../../../global/AssetsImages'
 import ModalDropdown from 'react-native-modal-dropdown'
 
@@ -51,7 +53,8 @@ class CreateNation extends NavigatorComponent {
 			diplomaticRecognition: false,
 			governanceService: '',
 			nonCitizenUse: false,
-			agreeFees: false
+			agreeFees: false,
+			selectedServicesItems: [],
 		}
 	}
 	
@@ -165,7 +168,7 @@ class CreateNation extends NavigatorComponent {
 				<View style={styles.formRow}>
 					<View style={styles.fieldsContainer}>
 						<ModalDropdown
-							style={styles.textInput}
+							style={styles.dropDown}
 							textStyle={styles.placeHolderText}
 							dropdownTextStyle={styles.dropDownTextList}
 							defaultValue={Strings.createNationLocationPrompt}
@@ -253,21 +256,38 @@ class CreateNation extends NavigatorComponent {
 				</View>
 				<View style={styles.formRow}>
 					<View style={styles.fieldsContainer}>
-						<ModalDropdown
-							style={styles.dropDown}
-							textStyle={styles.dropDownTextDefault}
-							dropdownTextStyle={styles.dropDownTextList}
-							defaultValue={'Services Offered...'}
-							options={[
-								'Legal Services',
-								'Insurance Services',
-								'Social Services',
-								'Security Services',
-								'Diplomatic Services',
-								'Physical Residency',
-							]}
-							onSelect={(index, value) => this.setFieldValue('governanceService', value)}
-						/>
+            <MultiSelect
+              hideTags
+              items={[{
+                id: 'Legal Services',
+                name: 'Legal Services',
+              }, {
+                id: 'Insurance Services',
+                name: 'Insurance Services',
+              }, {
+                id: 'Social Services',
+                name: 'Social Services',
+              }, {
+                id: 'Diplomatic Services',
+                name: 'Diplomatic Services',
+              }, {
+                id: 'Physical Services',
+                name: 'Physical Services',
+              }]}
+              uniqueKey="id"
+              ref={(component) => this.multiSelect = component }
+              onSelectedItemsChange={(index, value) => this.setFieldValue('selectedServicesItems', value)}
+              selectedItems={this.state.selectedServicesItems}
+              selectText="Services Offered..."
+              onChangeInput={ (text)=> console.log(text)}
+              tagRemoveIconColor="#CCC"
+              tagBorderColor="#CCC"
+              tagTextColor="#CCC"
+              itemTextColor={Colors.textSecondary}
+              displayKey="name"
+              submitButtonColor={Colors.panelBoxColor}
+              submitButtonText="Submit"
+            />
 					</View>
 				</View>
 				<Text style={styles.footnote}>
