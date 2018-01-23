@@ -200,6 +200,7 @@ class CreateNation extends NavigatorComponent {
 			             title='Governmental Structure' icon=' '>
 				<View style={styles.formRow}>
 					<View style={styles.fieldsContainer}>
+						{/*
 						<ModalDropdown
 							style={styles.dropDown}
 							textStyle={styles.dropDownTextDefault}
@@ -215,11 +216,41 @@ class CreateNation extends NavigatorComponent {
 								Strings.legalCodeCivil,
 							]}
 							onSelect={(index, value) => this.setFieldValue('nationCode', value)}
-						/>
+						/> */}
+            <MultiSelect
+							single
+              hideTags
+              items={[{
+                id: 'No legal code',
+                name: 'No legal code',
+              }, {
+                id: 'Transnational/Supranational Law',
+                name: 'Transnational/Supranational Law',
+              }, {
+                id: 'Multiple Legal Codes',
+                name: 'Multiple Legal Codes',
+              }, {
+                id: 'UNIDROIT Principles',
+                name: 'UNIDROIT Principles',
+              }]}
+              uniqueKey="idLegalCode"
+              onSelectedItemsChange={(index, value) => this.setFieldValue('selectedServicesItems', value)}
+              selectedItems={this.state.selectedServicesItems}
+              selectText="Legal Code..."
+              onChangeInput={ (text)=> console.log(text)}
+              tagRemoveIconColor="#CCC"
+              tagBorderColor="#CCC"
+              tagTextColor="#CCC"
+              itemTextColor={Colors.textSecondary}
+              displayKey="name"
+              submitButtonColor={Colors.panelBoxColor}
+              submitButtonText="Submit"
+            />
 					</View>
 				</View>
 				<View style={styles.formRow}>
 					<View style={styles.fieldsContainer}>
+						{/*
 						<ModalDropdown
 							style={styles.dropDown}
 							textStyle={styles.dropDownTextDefault}
@@ -232,11 +263,44 @@ class CreateNation extends NavigatorComponent {
 								'Nation State Law Enforcement',
 								'International Law Enforcement']}
 							onSelect={(index, value) => this.setFieldValue('lawEnforcementMechanism', value)}
-						/>
+						/> */}
+            <MultiSelect
+              single
+              hideTags
+              items={[{
+                id: 'No Law Enforcement',
+                name: 'No Law Enforcement',
+              }, {
+                id: 'ID & Reputation Law Enforcement',
+                name: 'ID & Reputation Law Enforcement',
+              }, {
+                id: 'Private or Cooperative Security',
+                name: 'Private or Cooperative Security',
+              }, {
+                id: 'Nation State Law Enforcement',
+                name: 'Nation State Law Enforcement',
+              }, {
+                id: 'International Law Enforcement',
+                name: 'International Law Enforcement',
+              }]}
+              uniqueKey="idEnforcement"
+              onSelectedItemsChange={(index, value) => this.setFieldValue('selectedServicesItems', value)}
+              selectedItems={this.state.selectedServicesItems}
+              selectText="Law Enforcement Mechanism..."
+              onChangeInput={ (text)=> console.log(text)}
+              tagRemoveIconColor="#CCC"
+              tagBorderColor="#CCC"
+              tagTextColor="#CCC"
+              itemTextColor={Colors.textSecondary}
+              displayKey="name"
+              submitButtonColor={Colors.panelBoxColor}
+              submitButtonText="Submit"
+            />
 					</View>
 				</View>
 				<View style={styles.formRow}>
 					<View style={styles.fieldsContainer}>
+						{/*
 						<ModalDropdown
 							style={styles.dropDown}
 							textStyle={styles.dropDownTextDefault}
@@ -251,7 +315,42 @@ class CreateNation extends NavigatorComponent {
 								'Theocracy',
 							]}
 							onSelect={(index, value) => this.setFieldValue('decisionMakingProcess', value)}
-						/>
+						/> */}
+            <MultiSelect
+              single
+              hideTags
+              items={[{
+                id: 'Other Type of Government',
+                name: 'Other Type of Government',
+              }, {
+                id: 'Holocracy',
+                name: 'Holocracy',
+              }, {
+                id: 'Democracy',
+                name: 'Democracy',
+              }, {
+                id: 'Autocracy',
+                name: 'Autocracy',
+              }, {
+                id: 'Meritocracy',
+                name: 'Meritocracy',
+              }, {
+                id: 'Theocracy',
+                name: 'Theocracy',
+              }]}
+              uniqueKey="idTypeGov"
+              onSelectedItemsChange={(index, value) => this.setFieldValue('selectedServicesItems', value)}
+              selectedItems={this.state.selectedServicesItems}
+              selectText="Type of Government..."
+              onChangeInput={ (text)=> console.log(text)}
+              tagRemoveIconColor="#CCC"
+              tagBorderColor="#CCC"
+              tagTextColor="#CCC"
+              itemTextColor={Colors.textSecondary}
+              displayKey="name"
+              submitButtonColor={Colors.panelBoxColor}
+              submitButtonText="Submit"
+            />
 					</View>
 				</View>
 				<View style={styles.formRow}>
@@ -274,7 +373,7 @@ class CreateNation extends NavigatorComponent {
                 id: 'Physical Services',
                 name: 'Physical Services',
               }]}
-              uniqueKey="id"
+              uniqueKey="idLegalServices"
               ref={(component) => this.multiSelect = component }
               onSelectedItemsChange={(index, value) => this.setFieldValue('selectedServicesItems', value)}
               selectedItems={this.state.selectedServicesItems}
