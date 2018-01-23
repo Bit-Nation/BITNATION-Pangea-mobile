@@ -24,8 +24,6 @@ import BackgroundScreen from '../../components/BackgroundScreen/index'
 import FakeNavigationBar from '../../components/common/FakeNavigationBar'
 import PanelView from '../../components/common/PanelView'
 
-//import Mosaic from '../../components/common/Mosaic'
-
 
 class Dashboard extends Component {
 	constructor (props) {
@@ -83,10 +81,6 @@ class Dashboard extends Component {
 			
 			
 			<View style={styles.screenContainer}>
-				<View>
-					{/*<Mosaic />*/}
-				</View>
-				
 				<View style={styles.chatTextContainer}>
 					<Text style={styles.chatsText}>Chats</Text>
 				
