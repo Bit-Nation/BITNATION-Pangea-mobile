@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  View
+  View,
 } from 'react-native';
 import { connect } from 'react-redux';
 import _ from 'lodash';
@@ -68,7 +68,7 @@ const mapDispatchToProps = dispatch => ({
   },
   updateWalletList() {
     dispatch(updateWalletList());
-  }
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(WalletScreen);

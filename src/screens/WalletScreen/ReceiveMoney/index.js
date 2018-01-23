@@ -4,6 +4,7 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import QRCode from 'react-native-qrcode';
 
 import styles from './styles';
 import AssetsImages from '../../../global/AssetsImages';
@@ -31,16 +32,6 @@ class ReceiveMoneyScreen extends Component {
         <BackgroundImage/>
         <FakeNavigationBar/>
         <ScrollView style={styles.mainContainer} contentContainerStyle={styles.scrollViewContentContainer}>
-          <MessageView
-            title='Scan QR Code'
-            messageText={this.qrCodeText}
-            style={styles.messageView}
-            renderBottom={() =>
-              <View style={styles.QRCodeContainer}>
-                <Image source={AssetsImages.QR} style={styles.QRcode} resizeMode="stretch"/>
-              </View>
-            }/>
-
           <MessageView
             title='Copy Address'
             messageText={this.copyAddressText}

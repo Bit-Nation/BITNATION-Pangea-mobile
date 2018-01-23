@@ -1,3 +1,4 @@
+import { Platform } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 
 import SplashScreen from './SplashScreen';
@@ -14,6 +15,7 @@ import VerifyKeySuccess from './Key/Verify/VerifyKeySuccess';
 import Intro from './Intro/RNSwiper';
 import SendMoney from './WalletScreen/SendMoney';
 import ReceiveMoneyScreen from './WalletScreen/ReceiveMoney';
+import QRCodeScannerScreen from './WalletScreen/QRCodeScanner';
 import ChatScreen from './ChatScreen';
 import NationsScreen from './NationsScreen';
 import ProfileScreen from './ProfileScreen';
@@ -40,6 +42,7 @@ export function registerScreens(store, Provider) {
   Navigation.registerComponent(screen('PROFILE_SCREEN').screen, () => ProfileScreen, store, Provider);
   Navigation.registerComponent(screen('RECEIVE_MONEY_SCREEN').screen, () => ReceiveMoneyScreen, store, Provider);
   Navigation.registerComponent(screen('SEND_MONEY_SCREEN').screen, () => SendMoney, store, Provider);
+  Navigation.registerComponent(screen('QR_CODE_SCANNER_SCREEN').screen, () => QRCodeScannerScreen, store, Provider);
 
 
 }
