@@ -18,7 +18,6 @@ import { KEY_LENGTH } from '../../../global/Constants';
 class LoadWalletScreen extends KeyBaseScreen {
 
   onNextButtonPressed() {
-    this.props.changeMnemonic(_.fill(new Array(KEY_LENGTH), ''));
     this.props.navigator.push(screen('VERIFY_KEY_PROCESS_SCREEN'));
   }
 

@@ -150,6 +150,11 @@ const Screens = {
     title: 'Send money',
     navigatorStyle,
   },
+  QR_CODE_SCANNER_SCREEN: {
+    screen: 'Pangea.QRCodeScannerScreen',
+    title: 'Scan QR code',
+    navigatorStyle,
+  },
 
 };
 
