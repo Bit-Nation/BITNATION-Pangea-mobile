@@ -84,8 +84,8 @@ class CreateNation extends NavigatorComponent {
 		}
 		if (id === DONE_BUTTON) {
 			let nation = {
-				nationName: this.state.nationName,
-				nationDescription: this.state.nationDescription,
+				nationName: this.state.nationName.trim(),
+				nationDescription: this.state.nationDescription.trim(),
 				exists: this.state.exists,
 				virtualNation: this.state.virtualNation,
 				nationCode: this.state.nationCode.join(', '),
