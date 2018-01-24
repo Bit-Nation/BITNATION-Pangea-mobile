@@ -15,7 +15,7 @@ import GridView from '../../../../components/GridView/index';
 import PrivateKeyTextInputContainer from '../../../../components/PrivateKeyTextInputContainer/index';
 import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
 import {
-  KEY_LENGTH, KEY_COLUMN_COUNT, KEY_ROW_COUNT, KEY_PAGE_ROW_COUNT, KEY_PAGE_LENGTH,
+  KEY_LENGTH, KEY_COLUMN_COUNT, KEY_ROW_COUNT, KEY_PAGE_ROW_COUNT, KEY_PAGE_LENGTH, KEY_PAGE_COUNT,
 } from '../../../../global/Constants';
 import KeyBaseScreen from '../../KeyBaseScreen';
 import Button from '../../../../components/common/Button';
@@ -69,12 +69,11 @@ class VerifyKeyProcessScreen extends KeyBaseScreen {
 
   _configureNavigation(props, state) {
     this.props.navigator.setButtons({
-      rightButtons: [{
+      rightButtons: this.doneShouldBeEnabled(props, state) ? [{
         id: DONE_BUTTON,
         title: 'Done',
         buttonColor: Colors.navigationButtonColor,
-        disabled: !this.doneShouldBeEnabled(props, state),
-      }],
+      }] : [],
     });
   }
 
@@ -98,23 +97,19 @@ class VerifyKeyProcessScreen extends KeyBaseScreen {
   }
 
   onNextPressed = () => {
-    this._changeSelectedInputIndex(1);
+    this._setSelectedInputIndex((this.state.currentPage + 1) * KEY_PAGE_LENGTH);
   };
 
   onPreviousPressed = () => {
-    this._changeSelectedInputIndex(-1);
+    this._setSelectedInputIndex(0);
   };
 
-  _changeSelectedInputIndex = (diff) => {
-    if (this.state.selectedInputIndex === null) return;
+  _setSelectedInputIndex = (index) => {
+    const nextIndex = Math.min(Math.max(index, 0), KEY_LENGTH - 1);
 
-    this.setState(prevState => {
-      const nextIndex = Math.min(Math.max(prevState.selectedInputIndex + diff, 0), KEY_LENGTH - 1);
-
-      return {
-        selectedInputIndex: nextIndex,
-        currentPage: Math.floor(nextIndex / KEY_PAGE_LENGTH),
-      };
+    this.setState({
+      selectedInputIndex: nextIndex,
+      currentPage: Math.floor(nextIndex / KEY_PAGE_LENGTH),
     });
   };
 
@@ -128,7 +123,7 @@ class VerifyKeyProcessScreen extends KeyBaseScreen {
   };
 
   _onFieldSubmit = (index) => {
-    this.onNextPressed();
+    this._setSelectedInputIndex(index + 1);
   };
 
   _onFocus = (index, field) => {
