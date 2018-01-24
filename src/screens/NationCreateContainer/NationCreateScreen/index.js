@@ -22,6 +22,7 @@ import MessageView from '../../../components/common/MessageView'
 import SwitchLabeled from '../../../components/common/SwitchLabeled'
 import MultiSelect from '../../../components/MultiSelect'
 import Images from '../../../global/AssetsImages'
+import Loading from '../../../components/common/Loading';
 import ModalDropdown from 'react-native-modal-dropdown'
 
 import Colors from '../../../global/Colors'
@@ -45,7 +46,7 @@ class CreateNation extends NavigatorComponent {
 			nationName: '',
 			nationDescription: '',
 			exists: false,
-			virtualNation: false,
+			virtualNation: [Strings.virtualNationFalse],
 			nationCode: [],
 			nationCodeLink: '',
 			lawEnforcementMechanism: [],
@@ -87,7 +88,7 @@ class CreateNation extends NavigatorComponent {
 				nationName: this.state.nationName.trim(),
 				nationDescription: this.state.nationDescription.trim(),
 				exists: this.state.exists,
-				virtualNation: this.state.virtualNation,
+				virtualNation: this.state.virtualNation[0] == Strings.virtualNationTrue ? true : false,
 				nationCode: this.state.nationCode.join(', '),
 				nationCodeLink: this.state.nationCodeLink,
 				lawEnforcementMechanism: this.state.lawEnforcementMechanism.join(', '),
@@ -136,6 +137,7 @@ class CreateNation extends NavigatorComponent {
 						{/*{this._buildBottomView()}*/}
 					</ScrollView>
 				</View>
+				{this.props.inProgress ? <Loading/> : null}
 			</View>
 		)
 	}
@@ -181,15 +183,6 @@ class CreateNation extends NavigatorComponent {
 				</View>
 				<View style={styles.formRow}>
 					<View style={styles.fieldsContainer}>
-						<ModalDropdown
-							style={styles.dropDown}
-							textStyle={styles.placeHolderText}
-							dropdownTextStyle={styles.dropDownTextList}
-							defaultValue={Strings.createNationLocationPrompt}
-							options={[Strings.virtualNationTrue, Strings.virtualNationFalse]}
-							onSelect={(index, value) => this.setFieldValue('virtualNation', value === 'Virtual Nation' ? true : false)}
-						/>
-						{/*
             <MultiSelect
               single
               hideTags
@@ -201,7 +194,7 @@ class CreateNation extends NavigatorComponent {
                 name: Strings.virtualNationFalse,
               }]}
               uniqueKey="id"
-              onSelectedItemsChange={(selectedItems) => this.setFieldValue('virtualNation', selectedItems === 'Virtual Nation')}
+              onSelectedItemsChange={(selectedItems) => this.setFieldValue('virtualNation', selectedItems)}
               selectedItems={this.state.virtualNation}
               selectText={Strings.createNationLocationPrompt}
               onChangeInput={ (text)=> console.log(text)}
@@ -212,7 +205,7 @@ class CreateNation extends NavigatorComponent {
               displayKey="name"
               submitButtonColor={Colors.panelBoxColor}
               submitButtonText={Strings.ok}
-            /> */}
+            />
 					</View>
 				</View>
 				<View style={styles.formRow}>
