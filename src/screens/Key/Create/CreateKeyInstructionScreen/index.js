@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  View, TouchableOpacity, Alert, Platform, ScrollView,
+  View, TouchableOpacity, Alert, Platform, ScrollView, Image,
 } from 'react-native';
 import styles from './styles';
 import PropTypes from 'prop-types';
@@ -16,6 +16,7 @@ import PrivateKeyTextInputContainer from '../../../../components/PrivateKeyTextI
 import { KEY_COLUMN_COUNT, KEY_PAGE_ROW_COUNT, KEY_LENGTH } from '../../../../global/Constants';
 import KeyBaseScreen from '../../KeyBaseScreen/index';
 import { createPrivateKey, removePrivateKey } from '../../../../actions/key';
+import AssetsImages from '../../../../global/AssetsImages';
 
 
 class CreateKeyInstructionScreen extends KeyBaseScreen {
@@ -50,12 +51,7 @@ class CreateKeyInstructionScreen extends KeyBaseScreen {
             </Text>
           </View>
           <View style={styles.gridContainer}>
-            <GridView
-              itemsPerRow={KEY_COLUMN_COUNT}
-              rowsCount={KEY_PAGE_ROW_COUNT}
-              renderItem={this._renderText}
-              style={styles.gridView}
-            />
+            <Image style={styles.privateKeyDemoImage} resizeMode='contain' source={AssetsImages.privateKeyDemo} />
           </View>
           <View style={styles.instructionContainer}>
             <Text messageText style={styles.instruction}>

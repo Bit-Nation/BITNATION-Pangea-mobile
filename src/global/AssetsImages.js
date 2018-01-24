@@ -12,6 +12,7 @@ const build = require('../assets/images/Chrysler_Building.png');
 const monroe = require('../assets/images/monroe.png');
 const fern = require('../assets/images/fern.png');
 const moon = require('../assets/images/moon.png');
+const privateKeyDemo = require('../assets/images/privateKeyDemo.png');
 
 const dashboardTabIcon = require('../assets/images/dashboardTabIcon.png');
 const chatTabIcon = require('../assets/images/chatTabIcon.png');
@@ -46,6 +47,7 @@ const Images = {
   moon,
   bitLogoBig,
   QR,
+  privateKeyDemo,
   TabIcons: {
     dashboard: dashboardTabIcon,
     chat: chatTabIcon,
@@ -65,7 +67,7 @@ const Images = {
     map: mapActionIcon,
     join: joinActionIcon,
     leave: leaveActionIcon,
-  }
+  },
 };
 
 export default Images;
