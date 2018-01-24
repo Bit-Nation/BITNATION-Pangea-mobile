@@ -6,7 +6,9 @@ import {
   DONE_NATION_CREATE,
   DONE_FETCH_NATIONS,
   CANCEL_LOADING,
-  START_NATIONS_FETCH
+  START_NATIONS_FETCH,
+  REQUEST_JOIN_NATION,
+  REQUEST_LEAVE_NATION
 } from '../actions/nations';
 
 export const ALL_NATIONS = 0;
@@ -59,10 +61,27 @@ export default function (state = initialState, action) {
         inProgress: true
       };
     case DONE_FETCH_NATIONS:
+      let myNations = [];
+      action.payload.map((nation) => {
+        if (nation.joined) {
+          myNations.push(nation);
+        }
+      })
       return {
         ...state,
         nations: action.payload,
+        myNations: myNations,
         inProgress: false
+      };
+    case REQUEST_JOIN_NATION:
+      return {
+        ...state,
+        inProgress: true
+      };
+    case REQUEST_LEAVE_NATION:
+      return {
+        ...state,
+        inProgress: true
       };
     case CANCEL_LOADING: 
       return {
