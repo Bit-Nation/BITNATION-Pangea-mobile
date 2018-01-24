@@ -133,7 +133,7 @@ class CreateNation extends NavigatorComponent {
 						{this._buildCoreNationView()}
 						{this._buildGovernmentalView()}
 						{this._buildOptionsView()}
-						{this._buildFeesView()}
+						{/* {this._buildFeesView()} */}
 						{/*{this._buildBottomView()}*/}
 					</ScrollView>
 				</View>

@@ -66,7 +66,7 @@ export default class MultiSelect extends Component {
     itemFontFamily: '',
     itemTextColor: colorPack.textPrimary,
     selectedItemIconColor: colorPack.primary,
-    searchInputPlaceholderText: 'Search',
+    searchInputPlaceholderText: '',
     searchInputStyle: { color: colorPack.textPrimary },
     textColor: colorPack.textPrimary,
     selectText: 'Select',
@@ -401,17 +401,25 @@ export default class MultiSelect extends Component {
             ?
             <View style={styles.selectorView(fixedHeight)}>
               <View style={styles.inputGroup}>
+                {/*
+                 ********** Added to hide SEARCH field in Component
+                 *   editable={false}
+                 *   selectTextOnFocus={false}
+                 */}
+                {/*
                 <IconIonic
                   name="ios-search"
                   size={20}
                   color={colorPack.placeholderTextColor}
                   style={{ marginRight: 10 }}
-                />
+                /> */}
                 <TextInput
                   onChangeText={searchTerm => this.setState({ searchTerm })}
                   placeholder={searchInputPlaceholderText}
                   placeholderTextColor={colorPack.placeholderTextColor}
                   underlineColorAndroid="transparent"
+                  editable={false}
+                  selectTextOnFocus={false}
                   style={[searchInputStyle, { flex: 1 }]}
                 />
                 {hideSubmitButton &&

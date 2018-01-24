@@ -32,7 +32,7 @@ class NationDetailsScreen extends Component {
         <View style={styles.titleBarLarge}>
           <Text style={styles.title}>{nation.name}</Text>
         </View>
-        {this._buildTabBar()}
+        {this._buildTabBar(nation.joined)}
         <View style={styles.bodyContainer}>
           <ScrollView style={styles.scrollView}>
 {/* Fake Map panel */}
@@ -50,20 +50,20 @@ class NationDetailsScreen extends Component {
 */}
             {this._buildAboutView(nation)}
             {this._buildGovernmentalStructureView(nation)}
-            {this._buildFactsView(nation)}
+            {this._buildFactsView(nation) }
           </ScrollView>
         </View>
       </View>
     );
   }
 
-  _buildTabBar() {
+  _buildTabBar(joined) {
     return (
       <View style={styles.tabBar}>
         <NationActionButton iconSource={AssetsImage.Actions.chat} title='Chat' disable ={true}/>
         <NationActionButton iconSource={AssetsImage.Actions.map} title='Map' disable ={true}/>
-        <NationActionButton iconSource={AssetsImage.Actions.join} title='Join' disable ={false}/>
-        <NationActionButton iconSource={AssetsImage.Actions.leave} title='Leave' disable ={false}/>
+        <NationActionButton iconSource={AssetsImage.Actions.join} title='Join' disable ={joined} onPress={this.props.joinNation} />
+        <NationActionButton iconSource={AssetsImage.Actions.leave} title='Leave' disable ={!joined} onPress={this.props.leaveNation} />
       </View>
     );
   }
