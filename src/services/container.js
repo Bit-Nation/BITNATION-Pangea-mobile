@@ -20,16 +20,16 @@ if(!config.ETH_HTTP_ENDPOINT){
 
 let production = config.PRODUCTION;
 
+if(!production){
+    throw new Error(`Please set the "PRODUCTION" env variable to an boolean value (checkout the readme)`);
+}
+
 if(production === 'false'){
     production = false;
 }
 
 if(production === 'true'){
     production = true;
-}
-
-if(production){
-    throw new Error(`Please set the "PRODUCTION" env variable to an boolean value (checkout the readme)`);
 }
 
 const PangeaLibFactory:Promise<*> = new Promise((res, rej) => {
@@ -72,7 +72,7 @@ const PangeaLibFactory:Promise<*> = new Promise((res, rej) => {
             osDeps,
             ee,
             isConnected,
-            config.PRODUCTION
+            production
         ))
         .then(res)
         .catch(rej);
