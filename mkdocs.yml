@@ -1,0 +1,7 @@
+site_name: Bitnation Pangea
+site_url: https://bitnation.co
+repo_url: https://github.com/Bit-Nation/BITNATION-Pangea-mobile
+site_dir: docs_build
+pages:
+
+theme: readthedocs
