@@ -122,7 +122,7 @@ class VerifyKeyProcessScreen extends KeyBaseScreen {
     const values = this.props.enteredMnemonic;
     this.props.changeMnemonic([
       ...values.slice(0, index),
-      value,
+      value.toLowerCase(),
       ...values.slice(index + 1),
     ]);
   };
