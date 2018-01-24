@@ -18,6 +18,7 @@ const defaultStrings = {
 	optional: 'Optional',
 	options: 'Options',
 	fees: 'Fees',
+	ok: 'OK',
 	
 	// Navigation
 	dashboard: 'Dashboard',
@@ -35,7 +36,31 @@ const defaultStrings = {
 	createNationRepresentsPrompt: 'Nation represents an existing Earth country',
 	createNationCoreFootnote: 'Virtual nations exist only in Pangea. Geographic nations are on Earth.',
 	createNationNoLegalCode: 'No legal code',
-	
+	createNationLegalCode: 'Legal Code...',
+  createNationGovernmentalStructure: 'Governmental Structure',
+  createNationLawEnforcementMechanism: 'Law Enforcement Mechanism...',
+  createNationNoLawEnforcement: 'No Law Enforcement',
+	createNationIDReputationLawEnforcement: 'ID & Reputation Law Enforcement',
+	createNationPrivateOrCooperativeSecurity: 'Private or Cooperative Security',
+	createNationNationStateLawEnforcement: 'Nation State Law Enforcement',
+	createNationInternationalLawEnforcement: 'International Law Enforcement',
+	createNationTypeOfGovernment: 'Type of Government...',
+	createNationOtherTypeOfGovernment: 'Other Type of Government',
+	createNationHolocracy: 'Holocracy',
+  createNationDemocracy: 'Democracy',
+  createNationAutocracy: 'Autocracy',
+  createNationTheocracy: 'Theocracy',
+  createNationMeritocracy: 'Meritocracy',
+	createNationsServicesOffered: 'Services Offered...',
+	createNationsLegalServices: 'Legal Services',
+	createNationsInsuranceServices: 'Insurance Services',
+	createNationsSocialServices: 'Social Services',
+	createNationsDiplomaticServices: 'Diplomatic Services',
+	createNationsPhysicalServices: 'Physical Services',
+	createNationsSeekingDiplomaticRecognition: 'Seeking diplomatic recognition as a sovereign entity.',
+	createNationsNonCitizensMayUseGovernanceServices: 'Non-citizens may use governance services.',
+	createNationForProfitNation: 'For-profit nation.',
+
 	governmentalStructureFootnote: '',
 	
 	// Nations generic strings
