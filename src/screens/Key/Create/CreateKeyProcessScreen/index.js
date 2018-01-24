@@ -14,7 +14,7 @@ import GridView from '../../../../components/GridView';
 import Button from '../../../../components/common/Button';
 import PrivateKeyTextInputContainer from '../../../../components/PrivateKeyTextInputContainer';
 import {
-  KEY_ROW_COUNT, KEY_COLUMN_COUNT, KEY_PAGE_ROW_COUNT, KEY_PAGE_LENGTH,
+  KEY_ROW_COUNT, KEY_COLUMN_COUNT, KEY_PAGE_ROW_COUNT, KEY_PAGE_LENGTH, KEY_PAGE_COUNT,
 } from '../../../../global/Constants';
 import KeyBaseScreen from '../../KeyBaseScreen/index';
 import { removePrivateKey } from '../../../../actions/key';
@@ -29,52 +29,58 @@ class CreateKeyProcessScreen extends KeyBaseScreen {
 
     this.state = {
       activeRow: 0,
-      lastRowReached: false,
+      completedPages: [],
     };
-
-    this._configureNavigation();
   }
 
-  componentWillUpdate(nextProps, nextState) {
-    if (this.state.lastRowReached !== nextState.lastRowReached) {
-      this._configureNavigation(nextState.lastRowReached);
+  componentDidUpdate(prevProps, prevState) {
+    const prevPage = this.activePage(prevState);
+    const currentPage = this.activePage(this.state);
+    if (prevPage < currentPage && this.state.completedPages.indexOf(prevPage) === -1) {
+      this._showPageCompletedAlert(prevPage, this.isDone(this.state));
     }
   }
 
-  _configureNavigation(enabled) {
-    this.props.navigator.setButtons({
-      rightButtons: [{
-        id: DONE_BUTTON,
-        title: 'Done',
-        buttonColor: Colors.navigationButtonColor,
-        disabled: !enabled,
-      }],
-    });
+  _showPageCompletedAlert(completedPage, done) {
+    Alert.alert(
+      `Group ${completedPage + 1} finished!`,
+      done ? '' : `Good work! Now, write down next group of ${KEY_PAGE_LENGTH} words.`,
+      [
+        {
+          text: 'OK',
+          onPress: () => {
+            this.setState(prevState => {
+              return {
+                completedPages: [...prevState.completedPages, completedPage],
+              };
+            });
+            if (done) {
+              this.onDone();
+            }
+          },
+        },
+      ],
+      { cancelable: false });
   }
 
-  get activePage() {
-    return Math.floor(this.state.activeRow / KEY_PAGE_ROW_COUNT);
-  }
+  activePage = (state) => {
+    return Math.floor(state.activeRow / KEY_PAGE_ROW_COUNT);
+  };
 
-  onNavBarButtonPress(id) {
-    super.onNavBarButtonPress(id);
-
-    if (id === DONE_BUTTON) {
-      this.onDone();
-    }
-  }
+  isDone = (state) => {
+    return this.activePage(state) === KEY_PAGE_COUNT;
+  };
 
   onDone = () => {
-    this.props.navigator.push(screen('CREATE_KEY_SUCCESS_SCREEN'));
+    this.props.navigator.push(screen('VERIFY_KEY_INSTRUCTION_SCREEN'));
   };
 
   onNextPressed = () => {
     this.setState((prevState) => {
-      const nextRow = Math.min(prevState.activeRow + 1, KEY_ROW_COUNT - 1);
+      const nextRow = prevState.activeRow + 1;
 
       return {
         activeRow: nextRow,
-        lastRowReached: prevState.lastRowReached || nextRow === KEY_ROW_COUNT - 1,
       };
     });
   };
@@ -86,7 +92,7 @@ class CreateKeyProcessScreen extends KeyBaseScreen {
   };
 
   _renderText = (index) => {
-    index += this.activePage * KEY_PAGE_LENGTH;
+    index += this.activePage(this.state) * KEY_PAGE_LENGTH;
     return (
       <PrivateKeyTextInputContainer
         editable={false}
@@ -115,7 +121,7 @@ class CreateKeyProcessScreen extends KeyBaseScreen {
               itemsPerRow={KEY_COLUMN_COUNT}
               rowsCount={KEY_PAGE_ROW_COUNT}
               renderItem={this._renderText}
-              activeRow={this.state.activeRow % KEY_PAGE_ROW_COUNT}
+              activeRow={this.isDone(this.state) ? -1 : this.state.activeRow % KEY_PAGE_ROW_COUNT}
               disableInactiveRows
               style={styles.gridView}
             />
