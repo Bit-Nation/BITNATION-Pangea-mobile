@@ -60,10 +60,10 @@ class NationDetailsScreen extends Component {
   _buildTabBar() {
     return (
       <View style={styles.tabBar}>
-        <NationActionButton iconSource={AssetsImage.Actions.chat} title='Chat'/>
-        <NationActionButton iconSource={AssetsImage.Actions.map} title='Map'/>
-        <NationActionButton iconSource={AssetsImage.Actions.join} title='Join'/>
-        <NationActionButton iconSource={AssetsImage.Actions.leave} title='Leave'/>
+        <NationActionButton iconSource={AssetsImage.Actions.chat} title='Chat' disable ={true}/>
+        <NationActionButton iconSource={AssetsImage.Actions.map} title='Map' disable ={true}/>
+        <NationActionButton iconSource={AssetsImage.Actions.join} title='Join' disable ={false}/>
+        <NationActionButton iconSource={AssetsImage.Actions.leave} title='Leave' disable ={false}/>
       </View>
     );
   }
