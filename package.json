@@ -13,14 +13,11 @@
     "docs": "node_modules/.bin/documentation build src/services/container.js -f md > docs/main.md"
   },
   "dependencies": {
-    "BITNATION-Pangea-libs": "git+https://github.com/Bit-Nation/BITNATION-Pangea-libs.git#feature/es6_promise_fix",
-    "BITNATION-Pangea-utils": "git+https://github.com/Bit-Nation/BITNATION-Pangea-libs.git#368dd06818a9a8a5932b7d9b762e96af20110b1c",
-    "BITNATION-Panthalassa": "git+https://github.com/Bit-Nation/BITNATION-Pangea-libs.git#8f664cbf42c44be020ca95b3de643ebff703959a",
+    "BITNATION-Pangea-libs": "git+https://github.com/Bit-Nation/BITNATION-Pangea-libs.git#dcf99e8e85ef0612da7d7d3e478721416284c77b",
     "assert": "^1.4.1",
     "awilix": "^3.0.1",
     "bignumber.js": "^5.0.0",
     "buffer": "^4.9.1",
-    "es6-promise": "^4.1.1",
     "eslint": "^4.13.1",
     "eslint-plugin-react": "^7.5.1",
     "eslint-plugin-react-native": "^3.2.0",
