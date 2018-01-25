@@ -73,7 +73,8 @@
   "jest": {
     "preset": "react-native",
     "transformIgnorePatterns": [
-      "<root-dir>/node_modules"
+      "<root-dir>/node_modules",
+      "node_modules/(realm)/"
     ],
     "moduleNameMapper": {
       "^image![a-zA-Z0-9$_-]+$": "GlobalImageStub",
