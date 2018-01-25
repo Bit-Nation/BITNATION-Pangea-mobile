@@ -17,5 +17,13 @@ const styles = MediaQueryStyleSheet.create(
       marginLeft: 8,
       marginRight: 8,
     },
+    logoContainer: {
+      justifyContent: 'space-around',
+      alignItems: 'center',
+      flex: 1,
+    },
+    logo: {
+      width: '40%',
+    }
   });
 export default styles;

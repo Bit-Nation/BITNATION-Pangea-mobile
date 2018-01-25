@@ -25,7 +25,11 @@ class Dashboard extends Component {
     return (
       <View style={styles.screenContainer}>
         <BackgroundImage/>
+        <FakeNavigationBar navBarHidden/>
         <View style={styles.stackView}>
+          <View style={styles.logoContainer}>
+            <Image style={styles.logo} source={Images.bitLogoBig} resizeMode='contain'/>
+          </View>
           <MessageView
             title='Wallet'
             messageText={
