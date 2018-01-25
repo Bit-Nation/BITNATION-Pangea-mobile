@@ -33,7 +33,7 @@ class NationDetailsScreen extends Component {
         <View style={styles.layoutMargin}>
           <View style={styles.titleBarLarge}>
             <Text style={styles.largeTitle}>{nation.nationName}</Text>
-            {console.log('Nation prop: ', nation)}
+            {console.log('joined nation: ', nation.joined)}
           </View>
         </View>
         {this._buildTabBar(nation.joined)}

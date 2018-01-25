@@ -22,6 +22,10 @@ function* createNation(action) {
   		yield put({ type: START_NATIONS_FETCH });
   	} catch (e) {
   		console.log('Create nation error: ', e);
+  		let errorStr = JSON.stringify(e);
+  		if (errorStr.indexOf('invalid address') >= 0) {
+  			Alert.alert('It appears that you don\'t have a wallet. Please create a wallet first.');
+  		}
   		yield put({ type: CANCEL_LOADING });
   	}
 	}
@@ -29,8 +33,12 @@ function* createNation(action) {
 
 function* fetchNations() {
   try {
+  	console.log('fetching nations')
 		let pangeaLib = yield call(getPangeaLibrary);
 		yield call(checkConnection);
+		console.log('start syncing with blockchain');
+		// yield call(pangeaLib.eth.nation.index);
+		console.log('synced with blockchain');
 		let result = yield call(pangeaLib.eth.nation.all);
 	  yield put({ type: DONE_FETCH_NATIONS, payload: [...result] });
 	} catch(e) {
@@ -46,11 +54,15 @@ function* joinNation() {
 		const currentNation = resolveNation(nationsState.nations, nationsState.openedNationId);
 		yield call(checkConnection);
 		let result = yield call(pangeaLib.eth.nation.joinNation, currentNation.id);
-		console.log('joined nation: ', result);
+		// console.log('joined nation: ', result);
 	  yield put({ type: CANCEL_LOADING });
 	  yield put({ type: START_NATIONS_FETCH });
 	} catch(e) {
 		console.log('Join nation error: ', e);
+		let errorStr = JSON.stringify(e);
+		if (errorStr.indexOf('invalid address') >= 0) {
+			Alert.alert('It appears that you don\'t have a wallet. Please create a wallet first.');
+		}
 		yield put({ type: CANCEL_LOADING });
 	}
 }
@@ -62,11 +74,15 @@ function* leaveNation() {
 		const currentNation = resolveNation(nationsState.nations, nationsState.openedNationId);
 		yield call(checkConnection);
 		let result = yield call(pangeaLib.eth.nation.leaveNation, currentNation.id);
-		console.log('leave nation: ', result);
+		// console.log('leave nation: ', result);
 	  yield put({ type: CANCEL_LOADING });
 	  yield put({ type: START_NATIONS_FETCH });
 	} catch(e) {
 		console.log('Leave nation error: ', e);
+		let errorStr = JSON.stringify(e);
+		if (errorStr.indexOf('invalid address') >= 0) {
+			Alert.alert('It appears that you don\'t have a wallet. Please create a wallet first.');
+		}
 		yield put({ type: CANCEL_LOADING });
 	}
 }
