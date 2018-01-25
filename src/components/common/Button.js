@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 
 import Text from './Text';
 import Colors from '../../global/Colors';
+import GlobalStyles from '../../global/Styles';
 
 export default class Button extends Component {
 
@@ -19,11 +20,11 @@ export default class Button extends Component {
       } {...props}>
         {
           enabled ?
-            <TouchableOpacity style={[styles.container]} onPress={onPress}>
+            <TouchableOpacity style={[styles.buttonContainer]} onPress={onPress}>
               {children || this._renderTitle()}
             </TouchableOpacity>
             :
-            <View style={styles.container}>
+            <View style={styles.buttonContainer}>
               {children || this._renderTitle()}
             </View>
         }
@@ -51,19 +52,6 @@ Button.defaultProps = {
 };
 
 const styles = MediaQueryStyleSheet.create({
-  baseButton: {
-    borderRadius: 15,
-    height: 30,
-    justifyContent: 'center',
-  },
-  enabledButton: {
-    backgroundColor: Colors.buttonColor,
-  },
-  disabledButton: {
-    backgroundColor: Colors.disabledButtonColor,
-  },
-  container: {
-    marginLeft: 13,
-    marginRight: 13,
-  }
+  ...GlobalStyles,
+
 });

@@ -1,19 +1,21 @@
 import { MediaQueryStyleSheet } from 'react-native-responsive';
 import Colors from '../../../global/Colors';
+import GlobalStyles from '../../../global/Styles';
 
 const styles = MediaQueryStyleSheet.create({
+  ...GlobalStyles,
+
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'stretch',
+    ...GlobalStyles.screenContainer,
   },
+
   infoContainer: {
     paddingBottom: 20,
     paddingTop: 10,
     marginLeft: 8,
     marginRight: 8,
     borderRadius: 8,
-    backgroundColor: Colors.getBitNationBlue(0.2),
+    backgroundColor: Colors.shadeOfBitnationColor(0.2),
     alignItems: 'center',
   },
   header: {
@@ -30,29 +32,29 @@ const styles = MediaQueryStyleSheet.create({
   placeholder: {
     resizeMode: 'contain',
   },
-  avatar: {
-    height: 100,
-    width: 100,
-    borderRadius: 50,
-  },
-  nameText: {
+
+   nameText: {
     fontSize: 28,
     color: Colors.titleColor,
     letterSpacing: -1.13,
     textAlign: 'center',
-    backgroundColor: 'transparent'
+    backgroundColor: 'transparent',
+     ...GlobalStyles.Title1,
+
   },
+
   infoText: {
     fontSize: 16,
-    color: Colors.BitNationLightBlue,
+    color: Colors.BitnationLightColor,
     letterSpacing: -0.65,
     lineHeight: 20.8,
     textAlign: 'center',
     backgroundColor: 'transparent'
   },
+
   ethAddress: {
     fontSize: 14,
-    color: Colors.BitNationLightBlue,
+    color: Colors.BitnationLightColor,
     letterSpacing: -0.65,
     lineHeight: 20.8,
     textAlign: 'center',
