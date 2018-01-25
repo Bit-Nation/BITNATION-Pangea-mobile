@@ -199,10 +199,10 @@ class CreateNation extends NavigatorComponent {
               hideTags
               items={[{
                 id: Strings.virtualNationTrue,
-                name: Strings.virtualNationTrue,
+                name: Strings.virtualNationTrue + ' ' + Strings.nation,
               }, {
                 id: Strings.virtualNationFalse,
-                name: Strings.virtualNationFalse,
+                name: Strings.virtualNationFalse + ' ' + Strings.nation,
               }]}
               uniqueKey="id"
               onSelectedItemsChange={(selectedItems) => this.setFieldValue('virtualNation', selectedItems)}

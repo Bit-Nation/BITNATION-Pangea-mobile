@@ -20,6 +20,9 @@ const defaultStrings = {
 	fees: 'Fees',
 	ok: 'OK',
 	
+	nation: 'nation',
+	nations: 'nations',
+	
 	// Navigation
 	dashboard: 'Dashboard',
 	nations: 'Nations',
@@ -37,20 +40,22 @@ const defaultStrings = {
 	createNationCoreFootnote: 'Virtual nations exist only in Pangea. Geographic nations are on Earth.',
 	createNationNoLegalCode: 'No legal code',
 	createNationLegalCode: 'Legal Code...',
-  createNationGovernmentalStructure: 'Governmental Structure',
-  createNationLawEnforcementMechanism: 'Law Enforcement Mechanism...',
-  createNationNoLawEnforcement: 'No Law Enforcement',
+	createNationGovernmentalStructure: 'Governmental Structure',
+	
+	createNationLawEnforcementMechanism: 'Law Enforcement Mechanism...',
+	createNationNoLawEnforcement: 'No Law Enforcement',
 	createNationIDReputationLawEnforcement: 'ID & Reputation Law Enforcement',
 	createNationPrivateOrCooperativeSecurity: 'Private or Cooperative Security',
 	createNationNationStateLawEnforcement: 'Nation State Law Enforcement',
 	createNationInternationalLawEnforcement: 'International Law Enforcement',
+	
 	createNationTypeOfGovernment: 'Type of Government...',
 	createNationOtherTypeOfGovernment: 'Other Type of Government',
 	createNationHolocracy: 'Holocracy',
-  createNationDemocracy: 'Democracy',
-  createNationAutocracy: 'Autocracy',
-  createNationTheocracy: 'Theocracy',
-  createNationMeritocracy: 'Meritocracy',
+	createNationDemocracy: 'Democracy',
+	createNationAutocracy: 'Autocracy',
+	createNationTheocracy: 'Theocracy',
+	createNationMeritocracy: 'Meritocracy',
 	createNationsServicesOffered: 'Services Offered...',
 	createNationsLegalServices: 'Legal Services',
 	createNationsInsuranceServices: 'Insurance Services',
@@ -60,7 +65,10 @@ const defaultStrings = {
 	createNationsSeekingDiplomaticRecognition: 'Seeking diplomatic recognition as a sovereign entity.',
 	createNationsNonCitizensMayUseGovernanceServices: 'Non-citizens may use governance services.',
 	createNationForProfitNation: 'For-profit nation.',
-
+	
+	// Nation View Detail
+	nationDetailLocationMsg: '[[nationName]] is a [[locationType]] nation.',
+	
 	governmentalStructureFootnote: '',
 	
 	// Nations generic strings
@@ -76,10 +84,9 @@ const defaultStrings = {
 	legalCodeCommon: 'Common Law',
 	legalCodeCivil: 'Civil Law',
 	
-	
 	// Nations Fields
-	virtualNationTrue: 'Virtual nation',
-	virtualNationFalse: 'Geographical nation',
+	virtualNationTrue: 'Virtual',
+	virtualNationFalse: 'Geographical',
 	
 	// Wallet strings
 	send: 'Send',
@@ -131,23 +138,23 @@ const showCurrency = (currency, amount, addCurrency) => {
 		amount = 0
 	}
 	// pow is the
-	var precision, pattern;
+	var precision, pattern
 	
 	switch (currency) {
 		case 'ETH':
-			precision = 5;
-			pattern = '{amount} ETH';
-			break;
+			precision = 5
+			pattern = '{amount} ETH'
+			break
 		default:
-			precision = 5;
+			precision = 5
 	}
 	// Current default is ETH, round to 1/10,000
 	var factor = Math.pow(10, precision)
 	amount = Math.round(amount * factor) / factor
 	
-	var displayAmount = amount.toFixed(precision);
+	var displayAmount = amount.toFixed(precision)
 	if (addCurrency) {
-		displayAmount = pattern.replace('{amount}', displayAmount);
+		displayAmount = pattern.replace('{amount}', displayAmount)
 	}
 	return displayAmount
 }

@@ -167,6 +167,15 @@ const defaultTextStyles = {
 		color: Colors.BitnationLightColor,
 	},
 	
+	bodyBold: {
+		fontFamily: 'Roboto',
+		fontWeight: 'bold',
+		fontSize: 17,
+		lineHeight: 22,
+		letterSpacing: 0,
+		color: Colors.BitnationLightColor,
+	},
+	
 	callout: {
 		fontFamily: 'Roboto',
 		fontWeight: 'normal',
