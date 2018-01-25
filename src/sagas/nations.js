@@ -48,6 +48,7 @@ function* joinNation() {
 		let result = yield call(pangeaLib.eth.nation.joinNation, currentNation.id);
 		console.log('joined nation: ', result);
 	  yield put({ type: CANCEL_LOADING });
+	  yield put({ type: START_NATIONS_FETCH });
 	} catch(e) {
 		console.log('Join nation error: ', e);
 		yield put({ type: CANCEL_LOADING });
@@ -61,8 +62,9 @@ function* leaveNation() {
 		const currentNation = resolveNation(nationsState.nations, nationsState.openedNationId);
 		yield call(checkConnection);
 		let result = yield call(pangeaLib.eth.nation.leaveNation, currentNation.id);
-		console.log('cancel joined nation: ', result);
+		console.log('leave nation: ', result);
 	  yield put({ type: CANCEL_LOADING });
+	  yield put({ type: START_NATIONS_FETCH });
 	} catch(e) {
 		console.log('Leave nation error: ', e);
 		yield put({ type: CANCEL_LOADING });

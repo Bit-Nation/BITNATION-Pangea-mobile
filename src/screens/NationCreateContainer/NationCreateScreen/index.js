@@ -112,8 +112,6 @@ class CreateNation extends NavigatorComponent {
 			enabled = false;
 		if (!this.state.nationCode || !this.state.nationCode.length > 0)
 			enabled = false;
-		if (!this.state.nationCodeLink || this.state.nationCodeLink == '')
-			enabled = false;
 		if (!this.state.lawEnforcementMechanism || !this.state.lawEnforcementMechanism.length > 0)
 			enabled = false;
 		if (!this.state.decisionMakingProcess || !this.state.decisionMakingProcess.length > 0)
