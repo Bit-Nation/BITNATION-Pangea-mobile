@@ -12,8 +12,9 @@ import BackgroundImage from '../../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
 import Text from '../../../../components/common/Text';
 import { removePrivateKey, savePrivateKey } from '../../../../actions/key';
+import KeyBaseScreen from '../../KeyBaseScreen';
 
-class VerifyKeySuccess extends Component {
+class VerifyKeySuccess extends KeyBaseScreen {
 
   onNextButtonPressed() {
     this.props.savePrivateKey();
@@ -51,7 +52,7 @@ VerifyKeySuccess.propTypes = {};
 VerifyKeySuccess.defaultProps = {};
 
 const mapStateToProps = state => ({
-  ...state,
+  ...state.key,
 });
 
 const mapDispatchToProps = dispatch => ({

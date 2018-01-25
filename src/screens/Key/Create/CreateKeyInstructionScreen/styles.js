@@ -2,11 +2,16 @@ import { StyleSheet } from 'react-native';
 import { Dimensions, } from 'react-native';
 import Colors from '../../../../global/Colors';
 
+const { height, width } = Dimensions.get('window');
 
 export default styles = StyleSheet.create({
 
   container: {
     flex: 1,
+  },
+  privateKeyDemoImage: {
+    width: width - 30,
+    height: (width - 30) / 500 * 386,
   },
   contentContainer: {
     paddingLeft: 15,
@@ -25,13 +30,8 @@ export default styles = StyleSheet.create({
     flex: 1,
   },
   gridContainer: {
-    borderRadius: 8,
-    backgroundColor: 'rgba(27,57,92,0.7)',
-    paddingTop: 20,
-    paddingBottom: 3,
-    paddingLeft: 12,
-    paddingRight: 12,
-    height: 241,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   buttonContainer: {
     flex: 1,
