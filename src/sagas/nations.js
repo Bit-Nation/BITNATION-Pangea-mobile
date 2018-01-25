@@ -37,7 +37,7 @@ function* fetchNations() {
 		let pangeaLib = yield call(getPangeaLibrary);
 		yield call(checkConnection);
 		console.log('start syncing with blockchain');
-		// yield call(pangeaLib.eth.nation.index);
+		yield call(pangeaLib.eth.nation.index);
 		console.log('synced with blockchain');
 		let result = yield call(pangeaLib.eth.nation.all);
 	  yield put({ type: DONE_FETCH_NATIONS, payload: [...result] });
