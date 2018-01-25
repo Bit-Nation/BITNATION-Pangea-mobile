@@ -106,7 +106,7 @@ class CreateNation extends NavigatorComponent {
 		let enabled = true;
 		if (!this.state.nationName || this.state.nationName == '')
 			enabled = false;
-		enabled = enabled && this.state.agreeFees;
+		{/* enabled = enabled && this.state.agreeFees;  */}
 		this._setNavigationButtons(enabled);
 	}
 
