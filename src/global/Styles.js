@@ -395,7 +395,16 @@ const styles = {
 		color: Colors.white,
 		textAlign: 'left',
 	},
-	
+
+  // Text style for the Panel Title
+  panelSubTitle: {
+    ...defaultTextStyles.title2,
+    fontWeight: 'bold',
+    color: Colors.white,
+    textAlign: 'left',
+		fontSize: 18,
+  },
+
 	// Text style for the Panel Icon
 	panelIcon: {
 		...defaultTextStyles.title2,

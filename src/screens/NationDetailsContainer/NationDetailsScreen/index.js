@@ -13,6 +13,7 @@ import AssetsImage from '../../../global/AssetsImages';
 import MessageView from '../../../components/common/MessageView';
 import DemoImage from '../../../components/common/DemoImage';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
+import Strings from "../../../global/Strings";
 
 
 class NationDetailsScreen extends Component {
@@ -29,8 +30,11 @@ class NationDetailsScreen extends Component {
       <View style={styles.screenContainer}>
         <BackgroundImage/>
         <FakeNavigationBar navBarHidden='' />
-        <View style={styles.titleBarLarge}>
-          <Text style={styles.title}>{nation.name}</Text>
+        <View style={styles.layoutMargin}>
+          <View style={styles.titleBarLarge}>
+            <Text style={styles.largeTitle}>{nation.nationName}</Text>
+            {console.log('Nation prop: ', nation)}
+          </View>
         </View>
         {this._buildTabBar(nation.joined)}
         <View style={styles.bodyContainer}>
@@ -74,9 +78,18 @@ class NationDetailsScreen extends Component {
 
   _buildAboutView(nation) {
     return (
-      <MessageView style={styles.messageView} title={`About ${nation.nationName}...`} >
+      <MessageView style={styles.messageView} title={`About ${nation.nationName}`} >
+        <Text style={styles.panelSubTitle}>
+          Description:
+        </Text>
         <Text style={styles.panelBody}>
+          {nation.nationDescription + '.\n'}
+          {nation.nationName} is a {nation.exists ? ' Geographical ' : ' Virtual '} nation.{'\n'}
+        </Text>
+        <Text style={styles.panelSubTitle}>
           Ethereum Address:
+        </Text>
+        <Text style={styles.panelBody}>
           {nation.ethAddress}
         </Text>
     </MessageView>
@@ -86,14 +99,15 @@ class NationDetailsScreen extends Component {
 
   _buildGovernmentalStructureView(nation) {
     return (
-      <MessageView style={styles.messageViewDemo} title='Governmental Structure'>
+      <MessageView style={styles.messageView} title='Governmental Structure'>
         <Text style={styles.panelBody}>
           {nation.nationName + ' '}
-          uses the Kanun legal code, and laws are enforced with a Reputation System (using the threat of public
-          shaming
-          and shunning). The government is a Holocracy. The nation is managed as a non-profit entity
+          uses as legal code: {nation.nationCode +'.\n\n'}
+          The laws are enforced with a {' ' + nation.lawEnforcementMechanism + ' '} System{'.\n\n'}
+          The government is a { ' ' + nation.decisionMakingProcess  +'.\n\n'}
+          The nation is managed as a {nation.profit ? ' profit ' : ' non-profit '} entity{'.\n\n'}
+          {nation.nationName} offers: {nation.governanceService + '.'}
         </Text>
-	      <DemoImage/>
       </MessageView>
     );
   }
