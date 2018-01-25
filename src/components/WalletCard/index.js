@@ -51,7 +51,7 @@ WalletCard.defaultProps = {
   imagePath: 'https://facebook.github.io/react-native/docs/assets/favicon.png',
   nameHeading: 'Ethernum',
   nameSubheading: '173324 Enum',
-  messageText: 'Message goes here',
+  messageText: '',
   onSendPress: () => null,
   onReceivePress: () => null,
 };
