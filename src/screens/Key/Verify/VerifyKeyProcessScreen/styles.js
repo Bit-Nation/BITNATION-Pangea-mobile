@@ -43,8 +43,5 @@ export default styles = StyleSheet.create({
   button: {
     width: 90,
   },
-  hidden: {
-    opacity: 0,
-  },
 
 });

@@ -187,10 +187,12 @@ class VerifyKeyProcessScreen extends KeyBaseScreen {
             <View style={styles.buttonContainer}>
               <Button title='Previous'
                       onPress={this.onPreviousPressed}
-                      style={[styles.button, (this.state.currentPage === 0) && styles.hidden]}/>
+                      style={styles.button}
+                      enabled={this.state.currentPage > 0}/>
               <Button title='Next'
                       onPress={this.onNextPressed}
-                      style={[styles.button, (this.state.currentPage === KEY_PAGE_COUNT - 1) && styles.hidden]}/>
+                      style={styles.button}
+                      enabled={this.state.currentPage < KEY_PAGE_COUNT - 1}/>
             </View>
           </View>
         </KeyboardAwareScrollView>
