@@ -91,7 +91,7 @@ class SendMoney extends Component {
       return <View/>;
     }
 
-    const balance = prettyETHWalletBalance(wallet, 'available');
+    const balance = prettyETHWalletBalance(wallet, ' available');
 
     return (
       <View style={styles.container}>

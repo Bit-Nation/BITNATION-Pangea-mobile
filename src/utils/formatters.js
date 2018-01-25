@@ -22,6 +22,7 @@ export function roundEth(eth:string) : string {
  * @return {string} Formatted balance + successful suffix if balance defined, corresponding string if not defined.
  */
 export function prettyETHWalletBalance(wallet, successfulSuffix) {
+  successfulSuffix = successfulSuffix || '';
   if (wallet.balance !== null && wallet.balance !== undefined) {
     return roundEth(wallet.balance) + ' ETH' + successfulSuffix;
   }
