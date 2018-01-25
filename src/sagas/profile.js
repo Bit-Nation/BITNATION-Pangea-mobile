@@ -1,8 +1,7 @@
-import { takeEvery } from 'redux-saga';
-import { call, put, select } from 'redux-saga/effects';
-import PangeaContainer from '../services/container';
+import { call, put, select, takeEvery } from 'redux-saga/effects';
 import type { ProfileType } from 'BITNATION-Pangea-libs/src/database/schemata';
 
+import PangeaContainer from '../services/container';
 import { REQUEST_PROFILE_UPDATE, DONE_USER_EDITING, SET_USER_PROFILE, REQUEST_GET_PROFILE } from '../actions/profile';
 
 function getPangeaLibrary() {
