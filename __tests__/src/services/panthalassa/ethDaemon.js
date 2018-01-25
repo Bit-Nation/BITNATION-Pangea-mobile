@@ -8,15 +8,16 @@ jest.mock('react-native-eth-daemon', () => ({
 }));
 
 jest.mock('react-native-config', () => ({
-    ETH_DAEMON_NETWORK_ID: 2
+    ETH_DAEMON_NETWORK_ID: 2,
+    ETH_HTTP_ENDPOINT: 'url_from_config'
 }));
 
 describe('ethDaemon', () => {
 
     test('name', () => expect(ethDaemonImplementation.name).toBe('Local Ethereum node'));
-    test('url', () => expect(ethDaemonImplementation.url).toBe('localhost:8545'));
+    test('url', () => expect(ethDaemonImplementation.url).toBe('url_from_config'));
 
-    test('start', () => {
+    test('start', (done) => {
 
         ethDaemon.startDaemon.mockImplementation(() => new Promise((res, rej) => res()));
 
@@ -24,13 +25,8 @@ describe('ethDaemon', () => {
             .start()
             .then(_ => {
 
-                expect(ethDaemon.startDaemon).toHaveBeenCalledWith({
-                    enabledEthereum:true,
-                    networkID: 2,
-                    enodesNumber:16,
-                    maxPeers:25,
-                    enabledWhisper:false
-                })
+                expect(_).toBeUndefined();
+                done();
 
             })
 

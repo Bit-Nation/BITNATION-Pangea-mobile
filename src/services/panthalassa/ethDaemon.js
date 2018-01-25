@@ -1,6 +1,6 @@
 //@flow
 
-import {JsonRpcNodeInterface} from 'BITNATION-Panthalassa/src/specification/jsonRpcNode'
+import {JsonRpcNodeInterface} from 'BITNATION-Pangea-libs/src/specification/jsonRpcNode'
 import config from 'react-native-config';
 
 /**
