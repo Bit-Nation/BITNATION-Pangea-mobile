@@ -9,7 +9,7 @@ import {NativeModules} from 'react-native';
 
 const { RNRandomBytes } = NativeModules;
 
-import {OsDependenciesInterface, Crypto} from 'BITNATION-Panthalassa/src/specification/osDependencies'
+import {OsDependenciesInterface, Crypto} from 'BITNATION-Pangea-libs/src/specification/osDependencies'
 
 const cryptoImpl:Crypto = {
 

@@ -1,14 +1,14 @@
 //@flow
 
 import SInfo from 'react-native-sensitive-info';
-import {SecureStorage} from 'BITNATION-Panthalassa/src/specification/secureStorageInterface';
+import {SecureStorageInterface} from 'BITNATION-Pangea-libs/src/specification/secureStorageInterface';
 
 /**
  * @desc Implementation of the secure storage Panthalassa specification and is used to save sensitive data. You are unlikely to use this. It's required by Panthalassa modules.
  * @type {{set: function(string, any): Promise<any>, get: function(string), has: function(string): Promise<any>, remove: function(string): *, fetchItems: function(*): Promise<any>, destroyStorage: function(): Promise<any>}}
  * @alias secureStorage
  */
-const sSImplementation:SecureStorage = {
+const sSImplementation:SecureStorageInterface = {
     set: (key:string, value:any) : Promise<void> => new Promise((res, rej) => SInfo.setItem(key, value, {})
         .then(_ => res())
         .catch(rej)
