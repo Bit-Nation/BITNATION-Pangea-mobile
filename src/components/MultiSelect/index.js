@@ -205,7 +205,7 @@ export default class MultiSelect extends Component {
   };
 
   _toggleSelector = () => {
-    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.AndroidTopTabs);
     this.setState({
       selector: !this.state.selector,
     });
