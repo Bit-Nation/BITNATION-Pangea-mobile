@@ -32,6 +32,9 @@ export default class NavigatorComponent extends Component {
       case 'willCommitPreview':
         this.onWillCommitPreview();
         break;
+      case 'bottomTabReselected':
+        this.onBottomTabReselected();
+        break;
     }
   };
 
@@ -51,6 +54,9 @@ export default class NavigatorComponent extends Component {
   }
 
   onWillCommitPreview() {
+  }
+
+  onBottomTabReselected() {
   }
 
 }

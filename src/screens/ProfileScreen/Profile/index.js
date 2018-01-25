@@ -4,6 +4,7 @@ import {
   View,
   ScrollView,
   Text,
+  Alert,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
@@ -31,13 +32,29 @@ class ProfileScreen extends NavigatorComponent {
           id: EDIT_BUTTON,
           buttonColor: Colors.navigationButtonColor,
         }],
-      }
+      },
     );
   }
 
   onNavBarButtonPress(id) {
     if (id === EDIT_BUTTON) {
       this.props.onStartEditing();
+    }
+  }
+
+  onBottomTabReselected() {
+    this.props.makeStepForTestingMode();
+  }
+
+  onDidDisappear() {
+    this.props.resetStepsForTestingMode();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.testingModeActive !== this.props.testingModeActive) {
+      Alert.alert(
+        `You have turned ${this.props.testingModeActive ? 'on' : 'off'} testing mode!`,
+      );
     }
   }
 
