@@ -110,6 +110,8 @@ const walletStrings = {
 	scanQRCodeMsg: 'The sender can scan this QR code with a phone or computer camera to get your wallet address.',
 	copyAddressMsg: 'You can copy your wallet address and send any way you choose, e.g. SMS or email. Do not try to type your address by hand!',
 	
+  walletUpdating: 'Updating',
+  walletUpdateFailed: 'Update failed',
 }
 
 // ========================================
@@ -118,6 +120,15 @@ const walletStrings = {
 const nationStrings = {
 	scanQRCodeMsg: 'The sender can scan this QR code with a phone or computer camera to get your wallet address.',
 	copyAddressMsg: 'You can copy your wallet address and send any way you choose, e.g. SMS or email. Do not try to type your address by hand!',
+}
+
+// ========================================
+// Dashboard Strings
+// ========================================
+const dashboardStrings = {
+  warningBody: 'Pangea is in an early development stage, use with caution and at your own risk.',
+	warningTitle: 'Warning',
+	walletEmptyState: 'Begin using Pangea by creating your wallet.',
 }
 
 // ========================================
@@ -168,6 +179,7 @@ const strings = {
 	...walletStrings,
 	...nationStrings,
 	...stringFunctions,
+	dashboard: dashboardStrings,
 }
 
 export default strings

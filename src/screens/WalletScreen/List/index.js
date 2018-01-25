@@ -10,7 +10,7 @@ import Images from '../../../global/AssetsImages';
 import WalletCard from '../../../components/WalletCard';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
-import { roundEth } from '../../../utils/formatters';
+import { prettyETHWalletBalance, roundEth } from '../../../utils/formatters';
 
 export default class WalletList extends Component {
 
@@ -24,12 +24,7 @@ export default class WalletList extends Component {
             data={this.props.wallets}
             keyExtractor={item => item.ethAddress}
             renderItem={({ item }) => {
-              const balance = ((wallet) => {
-                if (wallet.balance !== null && wallet.balance !== undefined) {
-                  return roundEth(wallet.balance) + ' ETH';
-                }
-                return !wallet.synchronizationError ? 'Updating' : 'Update failed';
-              })(item);
+              const balance = prettyETHWalletBalance(item);
 
               return (<WalletCard
                 imagePath={Images.ethereumLogo}
