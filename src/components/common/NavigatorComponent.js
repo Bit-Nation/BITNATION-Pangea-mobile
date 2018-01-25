@@ -29,8 +29,8 @@ export default class NavigatorComponent extends Component {
       case 'didDisappear':
         this.onDidDisappear();
         break;
-      case 'willCommitPreview':
-        this.onWillCommitPreview();
+      case 'bottomTabReselected':
+        this.onBottomTabReselected();
         break;
     }
   };
@@ -50,7 +50,7 @@ export default class NavigatorComponent extends Component {
   onDidDisappear() {
   }
 
-  onWillCommitPreview() {
+  onBottomTabReselected() {
   }
 
 }

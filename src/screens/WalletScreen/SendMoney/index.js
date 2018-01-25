@@ -21,7 +21,7 @@ import { resolveWallet } from '../../../utils/wallet';
 import { sendMoney } from '../../../actions/wallet';
 import { androidNavigationButtons, screen } from '../../../global/Screens';
 import Loading from '../../../components/common/Loading';
-import { roundEth } from '../../../utils/formatters';
+import { prettyETHWalletBalance, roundEth } from '../../../utils/formatters';
 
 class SendMoney extends Component {
 
@@ -90,12 +90,8 @@ class SendMoney extends Component {
     if (!wallet) {
       return <View/>;
     }
-    const balance = ((wallet) => {
-      if (wallet.balance !== null && wallet.balance !== undefined) {
-        return roundEth(wallet.balance) + ' ETH available';
-      }
-      return !wallet.synchronizationError ? 'Updating' : 'Update failed';
-    })(wallet);
+
+    const balance = prettyETHWalletBalance(wallet, ' available');
 
     return (
       <View style={styles.container}>

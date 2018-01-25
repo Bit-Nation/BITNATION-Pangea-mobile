@@ -1,11 +1,11 @@
-import { call, put, select } from 'redux-saga/effects';
+import { call, put, select, all } from 'redux-saga/effects';
 import _ from 'lodash';
 
 import { changeMnemonicValid, mnemonicCreated } from '../../actions/key';
 import { updateWalletList } from '../../actions/wallet';
 import {
   createPrivateKey, privateKeyToMnemonic, mnemonicToPrivateKey, savePrivateKey,
-  verifyMnemonic,
+  verifyMnemonic, removePrivateKey,
 } from './serviceFunctions';
 
 
@@ -43,4 +43,13 @@ export function* verifyMnemonicSaga() {
 
   const mnemonicAreTheSame = _.isEqual(enteredMnemonic, createdMnemonic);
   yield put(changeMnemonicValid(mnemonicAreTheSame));
+}
+
+export function* removeAllPrivateKeysSaga() {
+  const state = yield select();
+
+  yield all(_.map(state.wallet.wallets, (wallet) => {
+    return removePrivateKey(wallet.ethAddress);
+  }));
+  yield put(updateWalletList());
 }

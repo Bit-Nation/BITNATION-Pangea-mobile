@@ -12,9 +12,10 @@ import {
   cancelUserEditing,
   doneUserEditing, startUserCreating,
   requestProfileUpdate,
-  getUserProfile
+  getUserProfile,
 } from '../../actions/profile';
 import BackgroundImage from '../../components/common/BackgroundImage';
+import { makeStep, resetSteps } from '../../actions/testingMode';
 
 class ProfileContainer extends Component {
 
@@ -39,7 +40,10 @@ class ProfileContainer extends Component {
             this.props.user ?
               <ProfileScreen user={this.props.user}
                              navigator={this.props.navigator}
-                             onStartEditing={this.props.onStartUserEditing}/>
+                             onStartEditing={this.props.onStartUserEditing}
+                             makeStepForTestingMode={this.props.makeStepForTestingMode}
+                             resetStepsForTestingMode={this.props.resetStepsForTestingMode}
+                             testingModeActive={this.props.testingModeActive}/>
               :
               <EmptyProfileScreen onCreateUserProfile={this._onCreateUserProfile}
                                   navigator={this.props.navigator}/>
@@ -67,6 +71,7 @@ const mapStateToProps = (state) => {
   return {
     user: state.profile.user,
     editingUser: state.profile.editingUser,
+    testingModeActive: state.testingMode.isActive,
   };
 };
 
@@ -88,7 +93,13 @@ const mapDispatchToProps = dispatch => ({
   },
   getUserProfile() {
     dispatch(getUserProfile());
-  }
+  },
+  makeStepForTestingMode() {
+    dispatch(makeStep());
+  },
+  resetStepsForTestingMode() {
+    dispatch(resetSteps());
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfileContainer);

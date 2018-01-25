@@ -33,7 +33,11 @@ class VerifyKeyProcessScreen extends KeyBaseScreen {
       currentPage: 0,
       selectedInputIndex: null,
     };
+
     this.props.changeMnemonic(_.fill(new Array(KEY_LENGTH), ''));
+    if (this.props.testingModeActive && this.props.createdMnemonic) {
+      this.props.changeMnemonic(this.props.createdMnemonic);
+    }
     this.keyTextInputContainers = [];
     this._configureNavigation(this.props);
   }
@@ -206,6 +210,7 @@ class VerifyKeyProcessScreen extends KeyBaseScreen {
 
 const mapStateToProps = state => ({
   ...state.key,
+  testingModeActive: state.testingMode.isActive,
 });
 
 const mapDispatchToProps = dispatch => ({
