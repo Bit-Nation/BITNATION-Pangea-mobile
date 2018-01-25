@@ -16,7 +16,7 @@ export default class EmptyWalletScreen extends Component {
     createWalletTitle: 'Create a Wallet',
     createWalletText: 'A wallet holds money, such as Ethereum. You will need a wallet to pay for services, such as creating and editing nations, notarizing documents, and other useful services.',
     restoreWalletTitle: 'Restore a Wallet',
-    restoreWalletText: 'If you need to restore your wallet (because you lost or upgraded your phone) use the button below.\nYou will need your Paper Key to restore your wallet.',
+    restoreWalletText: 'If you need to restore your wallet (because you lost or upgraded your phone) use the button below.\nYou will need your private key to restore your wallet.',
   };
 
   render() {
