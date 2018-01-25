@@ -20,6 +20,7 @@ import Colors from '../../../global/Colors';
 import { ActionSheet } from 'native-base';
 import MessageView from '../../../components/common/MessageView';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 const DONE_BUTTON = 'DONE_BUTTON';
 
@@ -77,7 +78,7 @@ class EditProfile extends NavigatorComponent {
 				
 				<View style={styles.bodyContainer}>
 					{/* SCROLLING PANELS FOR DATA ENTRY */}
-					<ScrollView style={styles.scrollView}>
+					<KeyboardAwareScrollView style={styles.scrollView}>
 						{/* TITLE OF SCREEN */}
 						<View style={styles.titleBarLarge}>
 							<Text style={styles.largeTitle}>Profile</Text>
@@ -85,7 +86,7 @@ class EditProfile extends NavigatorComponent {
 						
 						{this._buildPicturePanel()}
 						{this._buildProfileForm()}
-					</ScrollView>
+					</KeyboardAwareScrollView>
 				</View>
 			</View>
 		)
