@@ -161,25 +161,6 @@ class SendMoney extends Component {
 
           </View>
 
-          <View style={styles.calculatedEmptyContainer}>
-            <View style={styles.empty}>
-              <Text> </Text>
-            </View>
-
-            <View style={styles.calculatedContainer}>
-              <View style={styles.sendAmountContainer}>
-                <Text style={[styles.calculatedText, { flex: 1 }]}>Send Amount:</Text>
-                <Text style={[styles.calculatedText, { fontWeight: 'bold' }]}>{this._parseAmount()}</Text>
-                <Text style={[styles.calculatedText, { marginLeft: 8 }]}>{wallet.currency}</Text>
-              </View>
-              <View style={styles.feeContainer}>
-                <Text style={[styles.calculatedText, { flex: 1 }]}>Transfer Fee:</Text>
-                <Text style={[styles.calculatedText, { fontWeight: 'bold' }]}>{this.state.fee}</Text>
-                <Text style={[styles.calculatedText, { marginLeft: 8 }]}>{wallet.currency}</Text>
-              </View>
-            </View>
-          </View>
-
           <View style={styles.sendContainer}>
             <Button
               title='Send'
