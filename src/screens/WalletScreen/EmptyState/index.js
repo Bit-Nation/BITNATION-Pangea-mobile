@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {
-  View
+  ScrollView,
+  View,
 } from 'react-native';
 import PropTypes from 'prop-types';
 
@@ -23,25 +24,27 @@ export default class EmptyWalletScreen extends Component {
       <View style={styles.container}>
         <BackgroundImage/>
         <FakeNavigationBar/>
-        <View style={styles.cardContainer}>
-          <View style={[styles.card, styles.firstCard]}>
-            <MessageView
-              title={this.texts.createWalletTitle}
-              messageText={this.texts.createWalletText}
-              buttonTitle='Create a Wallet'
-              onButtonClick={this.props.onCreateWallet}
-            />
-          </View>
+        <ScrollView>
+          <View style={styles.cardContainer}>
+            <View style={[styles.card, styles.firstCard]}>
+              <MessageView
+                title={this.texts.createWalletTitle}
+                messageText={this.texts.createWalletText}
+                buttonTitle='Create a Wallet'
+                onButtonClick={this.props.onCreateWallet}
+              />
+            </View>
 
-          <View style={styles.card}>
-            <MessageView
-              title={this.texts.restoreWalletTitle}
-              messageText={this.texts.restoreWalletText}
-              buttonTitle='Restore a Wallet'
-              onButtonClick={this.props.onRestoreWallet}
-            />
+            <View style={styles.card}>
+              <MessageView
+                title={this.texts.restoreWalletTitle}
+                messageText={this.texts.restoreWalletText}
+                buttonTitle='Restore a Wallet'
+                onButtonClick={this.props.onRestoreWallet}
+              />
+            </View>
           </View>
-        </View>
+        </ScrollView>
       </View>
     );
   }
