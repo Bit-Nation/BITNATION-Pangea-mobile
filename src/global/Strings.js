@@ -110,6 +110,8 @@ const walletStrings = {
 	scanQRCodeMsg: 'The sender can scan this QR code with a phone or computer camera to get your wallet address.',
 	copyAddressMsg: 'You can copy your wallet address and send any way you choose, e.g. SMS or email. Do not try to type your address by hand!',
 	
+  walletUpdating: 'Updating',
+  walletUpdateFailed: 'Update failed',
 }
 
 // ========================================

@@ -1,3 +1,5 @@
+import Strings from '../global/Strings';
+
 const BN = require('bignumber.js');
 
 /**
@@ -11,6 +13,19 @@ export function roundEth(eth:string) : string {
 
     return ethBn.round(5).toString(10);
 
+}
+
+/**
+ * @desc Provide string for wallet balance even if it is undefined
+ * @param {object} wallet Wallet object
+ * @param {object} successfulSuffix Suffix to add if balance is present
+ * @return {string} Formatted balance + successful suffix if balance defined, corresponding string if not defined.
+ */
+export function prettyETHWalletBalance(wallet, successfulSuffix) {
+  if (wallet.balance !== null && wallet.balance !== undefined) {
+    return roundEth(wallet.balance) + ' ETH' + successfulSuffix;
+  }
+  return !wallet.synchronizationError ? Strings.walletUpdating : Strings.walletUpdateFailed;
 }
 
 /**
