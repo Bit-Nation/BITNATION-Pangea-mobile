@@ -3,11 +3,39 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import NationsListScreen from './NationsListScreen';
-import { switchNationTab, openNation } from '../../actions/nations';
+import { switchNationTab, openNation, requestFetchNations } from '../../actions/nations';
 import { screen } from '../../global/Screens';
 import { resolveNation } from '../../utils/nations';
+import Colors from "../../global/Colors";
+import NavigatorComponent from "../../components/common/NavigatorComponent";
 
-class NationsScreen extends Component {
+const NEW_BUTTON = 'NEW_BUTTON';
+
+class NationsScreen extends NavigatorComponent {
+
+  constructor(props) {
+    super(props);
+
+    this.props.navigator.setButtons(
+      {
+        leftButtons: [],
+        rightButtons: [{
+          title: 'New',
+          id: NEW_BUTTON,
+          buttonColor: Colors.navigationButtonColor,
+        }],
+      }
+    );
+    this.props.fetchNations();
+  }
+
+  onNavBarButtonPress(id) {
+    if (id === NEW_BUTTON) {
+      return (
+        this.props.navigator.showModal(screen('NATION_CREATE_SCREEN'))
+      );
+    }
+  }
 
   render() {
     return (
@@ -43,6 +71,9 @@ const mapDispatchToProps = dispatch => ({
   },
   openNation(id) {
     dispatch(openNation(id));
+  },
+  fetchNations() {
+    dispatch(requestFetchNations());
   }
 });
 
