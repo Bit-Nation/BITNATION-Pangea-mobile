@@ -24,10 +24,6 @@ function* createNation(action) {
       yield put({ type: START_NATIONS_FETCH });
     } catch (e) {
       console.log('Create nation error: ', e);
-      let errorStr = JSON.stringify(e);
-      if (errorStr.indexOf('invalid address') >= 0) {
-        Alert.alert('It appears that you don\'t have a wallet. Please create a wallet first.');
-      }
       yield put({ type: CANCEL_LOADING });
     }
   }
@@ -65,10 +61,6 @@ function* joinNation() {
     yield put({ type: START_NATIONS_FETCH });
   } catch (e) {
     console.log('Join nation error: ', e);
-    let errorStr = JSON.stringify(e);
-    if (errorStr.indexOf('invalid address') >= 0) {
-      Alert.alert('It appears that you don\'t have a wallet. Please create a wallet first.');
-    }
     yield put({ type: CANCEL_LOADING });
   }
 }
@@ -85,10 +77,6 @@ function* leaveNation() {
     yield put({ type: START_NATIONS_FETCH });
   } catch (e) {
     console.log('Leave nation error: ', e);
-    let errorStr = JSON.stringify(e);
-    if (errorStr.indexOf('invalid address') >= 0) {
-      Alert.alert('It appears that you don\'t have a wallet. Please create a wallet first.');
-    }
     yield put({ type: CANCEL_LOADING });
   }
 }

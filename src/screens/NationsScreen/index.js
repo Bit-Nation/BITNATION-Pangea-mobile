@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
+import { Alert } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 
 import NationsListScreen from './NationsListScreen';
 import { switchNationTab, openNation, requestFetchNations } from '../../actions/nations';
 import { screen } from '../../global/Screens';
 import { resolveNation } from '../../utils/nations';
-import Colors from "../../global/Colors";
-import NavigatorComponent from "../../components/common/NavigatorComponent";
+import Colors from '../../global/Colors';
+import NavigatorComponent from '../../components/common/NavigatorComponent';
 
 const NEW_BUTTON = 'NEW_BUTTON';
 
@@ -24,17 +26,31 @@ class NationsScreen extends NavigatorComponent {
           id: NEW_BUTTON,
           buttonColor: Colors.navigationButtonColor,
         }],
-      }
+      },
     );
     this.props.fetchNations();
   }
 
   onNavBarButtonPress(id) {
     if (id === NEW_BUTTON) {
-      return (
-        this.props.navigator.showModal(screen('NATION_CREATE_SCREEN'))
-      );
+      if (_.isEmpty(this.props.wallets)) {
+        this._showCreatePrivateKeyAlert();
+      } else {
+        this.props.navigator.showModal(screen('NATION_CREATE_SCREEN'));
+      }
     }
+  }
+
+  _showCreatePrivateKeyAlert() {
+    Alert.alert(
+      'No wallet',
+      'You need a wallet to create a nation.',
+      [
+        {text: 'Cancel', style: 'cancel'},
+        {text: 'OK', onPress: () => this.props.navigator.switchToTab({tabIndex: 3})},
+      ],
+      { cancelable: false }
+    )
   }
 
   render() {
@@ -62,7 +78,8 @@ NationsScreen.PropTypes = {
 };
 
 const mapStateToProps = state => ({
-  ...state.nations
+  ...state.nations,
+  ...state.wallet,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -74,7 +91,7 @@ const mapDispatchToProps = dispatch => ({
   },
   fetchNations() {
     dispatch(requestFetchNations());
-  }
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NationsScreen);
