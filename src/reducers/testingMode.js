@@ -10,10 +10,10 @@ const initialState = {
 };
 
 export default function (state = initialState, action) {
+  if (config.PRODUCTION === 'true') return state;
+
   switch (action.type) {
     case MAKE_STEP:
-      if (config.PRODUCTION === 'true') return state;
-
       if (state.stepsLeftToToggle === 1) {
         return { ...state, stepsLeftToToggle: stepsCountToToggle, isActive: !state.isActive };
       }
