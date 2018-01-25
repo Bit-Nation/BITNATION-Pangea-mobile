@@ -142,8 +142,7 @@ const Screens = {
   VERIFY_KEY_SUCCESS_SCREEN: {
     screen: 'Pangea.VerifyKeySuccess',
     title: 'Verify Private Key',
-    backButtonTitle: 'Cancel',
-    navigatorStyle,
+    ...baseKeyScreen,
   },
   SEND_MONEY_SCREEN: {
     screen: 'Pangea.SendMoneyScreen',
