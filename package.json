@@ -39,6 +39,7 @@
     "react-native-image-crop-picker": "^0.19.1",
     "react-native-keyboard-aware-scroll-view": "^0.4.1",
     "react-native-modal": "^4.1.1",
+    "react-native-modal-dropdown": "^0.6.0",
     "react-native-navigation": "^1.1.319",
     "react-native-qrcode": "^0.2.6",
     "react-native-qrcode-scanner": "0.0.29",

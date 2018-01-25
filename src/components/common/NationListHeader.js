@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
-import {
-  View,
-  Text,
-} from 'react-native';
+import { View, Text, } from 'react-native';
 import PropTypes from 'prop-types';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
+import Colors from '../../global/Colors';
+import GlobalStyles from '../../global/Styles';
 
 export default class NationListHeader extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.text}>
+      <View style={styles.sectionListHeaderContainer}>
+        <Text style={styles.sectionListHeaderText}>
           {this.props.title}
         </Text>
       </View>
@@ -21,19 +20,6 @@ export default class NationListHeader extends Component {
 }
 
 const styles = MediaQueryStyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'row',
-    height: 30,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#EFEFF4',
-    opacity: 0.5,
-  },
-  text: {
-    flex: 1,
-    marginLeft: 15,
-    color: '#6D6D72',
-    fontSize: 13,
-  },
+  ...GlobalStyles,
+
 });

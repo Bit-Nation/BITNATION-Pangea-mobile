@@ -82,7 +82,7 @@ class ProfileScreen extends NavigatorComponent {
 
     return (
       <View style={styles.header}>
-        <Image source={avatarSource} style={styles.avatar}/>
+        <Image source={avatarSource} style={styles.avatarLarge}/>
         <Text style={styles.nameText}>{user.name.trim()}</Text>
         <Text style={styles.infoText}>{user.location.trim()}</Text>
         <Text style={styles.infoText}>

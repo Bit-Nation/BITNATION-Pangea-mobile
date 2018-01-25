@@ -4,7 +4,7 @@ import { Platform } from 'react-native';
 
 export const tabsStyle = {
   tabBarButtonColor: Colors.white,
-  tabBarLabelColor: Colors.BitNationLightBlue,
+  tabBarLabelColor: Colors.BitnationLightColor,
   tabBarSelectedLabelColor: Colors.white,
   tabBarSelectedButtonColor: Colors.white,
   tabBarBackgroundColor: 'rgba(17,39,110,0.9)',
@@ -79,6 +79,11 @@ const Screens = {
   NATION_DETAILS_SCREEN: {
     screen: 'Pangea.NationDetailsScreen',
     title: 'Nation',
+    navigatorStyle,
+  },
+  NATION_CREATE_SCREEN: {
+    screen: 'Pangea.NationCreateScreen',
+    title: '',
     navigatorStyle,
   },
   WALLET_SCREEN: {

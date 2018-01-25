@@ -3,13 +3,15 @@ import { View, Text, TouchableOpacity, } from 'react-native';
 import PropTypes from 'prop-types';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
 
+import GlobalStyles from '../../global/Styles';
+
 export default class NationListItem extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <TouchableOpacity onPress={() => this.props.onPress(this.props.item.id)} style={styles.touchable}>
-          <Text style={styles.text}>
+      <View style={styles.sectionListItemContainer}>
+        <TouchableOpacity onPress={() => this.props.onPress(this.props.item.id)} style={styles.sectionListTouchable}>
+          <Text style={styles.listItemText}>
             {this.props.text}
           </Text>
         </TouchableOpacity>
@@ -19,25 +21,19 @@ export default class NationListItem extends Component {
 
 }
 
+
 const styles = MediaQueryStyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'row',
-    height: 44,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'rgba(255,255,255,0.1)',
+  ...GlobalStyles,
+
+  sectionListItemContainer: {
+    ...GlobalStyles.sectionListItemContainer,
   },
-  touchable: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
+
+  sectionListTouchable: {
+    ...GlobalStyles.sectionListTouchable,
   },
-  text: {
-    flex: 1,
-    marginLeft: 15,
-    color: 'white',
-    fontSize: 17,
+
+  listItemText: {
+    ...GlobalStyles.listItemText,
   },
 });
