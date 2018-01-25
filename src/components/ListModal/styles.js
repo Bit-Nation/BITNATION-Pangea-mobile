@@ -32,7 +32,6 @@ const styles = MediaQueryStyleSheet.create(
       },
         container: {
             flex:1,
-            backgroundColor:Colors.BitnationBlue,
             marginBottom: '5%',
             marginLeft:'5%',
             borderRadius:8,

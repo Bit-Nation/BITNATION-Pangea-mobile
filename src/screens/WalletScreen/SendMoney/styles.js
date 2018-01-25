@@ -23,7 +23,7 @@ const styles = MediaQueryStyleSheet.create(
       paddingRight: 4,
       paddingTop: 4,
       paddingBottom: 4,
-      backgroundColor: Colors.getBitNationLightBlue(0.2),
+      backgroundColor: Colors.shadeOfBitnationLightColor(0.2),
     },
 
     //1st

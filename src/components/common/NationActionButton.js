@@ -3,6 +3,14 @@ import { Image, Text, TouchableOpacity, View } from 'react-native';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
 
 import Colors from '../../global/Colors';
+import GlobalStyles from '../../global/Styles';
+
+{/*  *************************
+  NationActionButton parameters:
+    iconSource = image to render
+    title = Title of the Button
+    disable = State of the Button
+    ****************************  */}
 
 export default class NationActionButton extends Component {
 
@@ -10,10 +18,12 @@ export default class NationActionButton extends Component {
     const { style, children, ...props } = this.props;
 
     return (
-      <View style={[styles.button, style]} {...props}>
-        <TouchableOpacity style={[styles.container]} onPress={this.props.onPress}>
+      <View style={[styles.tabBarButton, style]} {...props} opacity={this.props.disable ? 0.4 : 1}>
+        <TouchableOpacity style={[styles.tabBarContainer]}
+                          onPress={this.props.onPress} disable={this.props.disable}
+                          activeOpacity={this.props.disable ? 1 : 0.4}>
           <Image source={this.props.iconSource}/>
-          <Text style={styles.title}>{this.props.title}</Text>
+          <Text style={styles.tabBarTitle}>{this.props.title}</Text>
         </TouchableOpacity>
       </View>
     );
@@ -22,21 +32,6 @@ export default class NationActionButton extends Component {
 }
 
 const styles = MediaQueryStyleSheet.create({
-  button: {
-    borderRadius: 15,
-    backgroundColor: 'transparent',
-    height: 48,
-    width: 48,
-    justifyContent: 'center',
-  },
-  container: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  title: {
-    marginTop: 4,
-    color: '#8E8E93',
-    backgroundColor: 'transparent',
-    fontSize: 10,
-  },
+  ...GlobalStyles,
+
 });

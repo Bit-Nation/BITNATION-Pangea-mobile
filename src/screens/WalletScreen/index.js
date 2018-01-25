@@ -10,13 +10,33 @@ import { screen } from '../../global/Screens';
 import List from './List';
 import EmptyWalletScreen from './EmptyState/index';
 import { selectWallet, updateWalletList } from '../../actions/wallet';
+import NavigatorComponent from '../../components/common/NavigatorComponent';
+import { removeAllPrivateKeys } from '../../actions/key';
 
-class WalletScreen extends Component {
+const REMOVE_WALLETS_BUTTON = 'REMOVE_WALLETS_BUTTON';
+
+class WalletScreen extends NavigatorComponent {
 
   constructor(props) {
     super(props);
 
     this.props.updateWalletList();
+  }
+
+  componentDidUpdate() {
+    this.props.navigator.setButtons({
+      leftButtons: this.props.testingModeActive ? [{
+        id: REMOVE_WALLETS_BUTTON,
+        title: 'Remove wallets',
+      }] : [],
+      rightButtons: [],
+    });
+  }
+
+  onNavBarButtonPress(id) {
+    if (id === REMOVE_WALLETS_BUTTON) {
+      this.props.removeWallets();
+    }
   }
 
   createWallet = () => {
@@ -59,7 +79,8 @@ class WalletScreen extends Component {
 }
 
 const mapStateToProps = state => ({
-  ...state.wallet
+  ...state.wallet,
+  testingModeActive: state.testingMode.isActive,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -68,6 +89,9 @@ const mapDispatchToProps = dispatch => ({
   },
   updateWalletList() {
     dispatch(updateWalletList());
+  },
+  removeWallets() {
+    dispatch(removeAllPrivateKeys());
   },
 });
 

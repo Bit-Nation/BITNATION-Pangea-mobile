@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Image,
   View,
+  ScrollView,
   Text,
   TouchableOpacity,
   TextInput,
@@ -17,6 +18,7 @@ import AssetsImage from '../../../global/AssetsImages';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import Colors from '../../../global/Colors';
 import { ActionSheet } from 'native-base';
+import MessageView from '../../../components/common/MessageView';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 
 const DONE_BUTTON = 'DONE_BUTTON';
@@ -65,16 +67,123 @@ class EditProfile extends NavigatorComponent {
     }
   }
 
-  render() {
-    return (
-      <View style={styles.container}>
-        <BackgroundImage/>
-        <FakeNavigationBar/>
-        {this._buildHeader()}
-      </View>
-    );
-  }
+	// ========================================
+	// MAIN SCREEN
+	render () {
+		return (
+			<View style={styles.screenContainer}>
+				<BackgroundImage/>
+				<FakeNavigationBar hidenavigation />
+				
+				<View style={styles.bodyContainer}>
+					{/* SCROLLING PANELS FOR DATA ENTRY */}
+					<ScrollView style={styles.scrollView}>
+						{/* TITLE OF SCREEN */}
+						<View style={styles.titleBarLarge}>
+							<Text style={styles.largeTitle}>Profile</Text>
+						</View>
+						
+						{this._buildPicturePanel()}
+						{this._buildProfileForm()}
+					</ScrollView>
+				</View>
+			</View>
+		)
+	}
+	
+	// ========================================
+	_buildPicturePanel () {
+		const {editingUser} = this.props
+		
+		const avatarSource = editingUser.avatar
+			? {uri: `data:image/gif;base64,${editingUser.avatar}`}
+			: AssetsImage.Placeholder.avatar
+		
+		return (
+			<View style={styles.avatarContainerLarge}>
+				<TouchableOpacity onPress={this._onEditAvatar}>
+					<View style={styles.avatarChangeContainer}>
+						<Image source={avatarSource}
+						       style={styles.avatarLarge}/>
+						<Text
+							style={styles.editItemLabel}>edit</Text>
+					</View>
+				</TouchableOpacity>
+			</View>
+		
+		)
+	}
+	
 
+	// ========================================
+	_buildProfileForm () {
+		return (
+			<MessageView style={styles.messageView} title='Personal Information'>
+				<View style={styles.formRow}>
+					<View style={styles.fieldsContainer}>
+						<View style={styles.formRow}>
+							<TextInput
+								value={this.props.editingUser.name}
+								onChangeText={(text) => this._onChange(
+									'name',
+									text)}
+								style={styles.textInput}
+								placeholder='Name'
+								placeholderTextColor='rgba(255,255,255,0.3)'
+								keyboardType='default'
+							/>
+						</View>
+						<View style={styles.formRow}>
+							<TextInput
+								value={this.props.editingUser.location}
+								onChangeText={(text) => this._onChange(
+									'location',
+									text)}
+								style={styles.textInput}
+								placeholder='Location (Optional)'
+								placeholderTextColor='rgba(255,255,255,0.3)'
+								keyboardType='default'
+							/>
+						</View>
+						<View style={styles.formRow}>
+							<TextInput
+								value={this.props.editingUser.latitude}
+								onChangeText={(text) => this._onChange(
+									'latitude',
+									text)}
+								style={styles.textInput}
+								keyboardType='numeric'
+								placeholderTextColor='rgba(255,255,255,0.3)'
+								placeholder="Latitude (Optional)"
+							/>
+						</View>
+						<View style={styles.formRow}>
+							<TextInput
+								value={this.props.editingUser.longitude}
+								onChangeText={(text) => this._onChange(
+									'longitude',
+									text)}
+								style={styles.textInput}
+								keyboardType='numeric'
+								placeholderTextColor='rgba(255,255,255,0.3)'
+								placeholder="Longitude (Optional)"
+							/>
+						</View>
+					</View>
+					<
+						ActionSheet
+						ref={(c) => {
+							this.actionSheet = c
+						}
+						}
+					/>
+				
+				</View>
+			</MessageView>
+		)
+	}
+
+/*
   _buildHeader() {
     const { editingUser } = this.props;
 
@@ -148,9 +257,10 @@ class EditProfile extends NavigatorComponent {
       </View>
     );
   }
+*/
 
   _onChange = (field, value) => {
-    this.props.onUserChanged(field, value);
+    this.props.onUserChanged(field, value );
   };
 
   _onEditAvatar = () => {
@@ -212,11 +322,11 @@ class EditProfile extends NavigatorComponent {
 }
 
 EditProfile.propTypes = {
-  user: PropTypes.object,
-  editingUser: PropTypes.object,
-  onUserChanged: PropTypes.func.isRequired,
-  onCancelEditing: PropTypes.func.isRequired,
-  onDoneEditing: PropTypes.func.isRequired,
-};
+	user: PropTypes.object,
+	editingUser: PropTypes.object,
+	onUserChanged: PropTypes.func.isRequired,
+	onCancelEditing: PropTypes.func.isRequired,
+	onDoneEditing: PropTypes.func.isRequired,
+}
 
 export default EditProfile;
