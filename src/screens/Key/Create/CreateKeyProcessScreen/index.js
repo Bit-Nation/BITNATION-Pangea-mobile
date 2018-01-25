@@ -129,7 +129,8 @@ class CreateKeyProcessScreen extends KeyBaseScreen {
           <View style={styles.buttonContainer}>
             <Button title='Previous'
                     onPress={this.onPreviousPressed}
-                    style={styles.button}/>
+                    style={styles.button}
+                    enabled={this.state.activeRow > 0}/>
             <Button title='Next'
                     onPress={this.onNextPressed}
                     style={styles.button}/>
