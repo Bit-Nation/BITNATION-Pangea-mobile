@@ -1,7 +1,9 @@
 import { take, takeEvery } from 'redux-saga';
 import { call, put, select } from 'redux-saga/effects';
-import { CANCEL_NATION_CREATE, DONE_NATION_CREATE, START_NATIONS_FETCH, DONE_FETCH_NATIONS, 
-	NATION_CREATE, CANCEL_LOADING, REQUEST_JOIN_NATION, REQUEST_LEAVE_NATION } from '../actions/nations';
+import {
+  CANCEL_NATION_CREATE, DONE_NATION_CREATE, START_NATIONS_FETCH, DONE_FETCH_NATIONS,
+  NATION_CREATE, CANCEL_LOADING, REQUEST_JOIN_NATION, REQUEST_LEAVE_NATION,
+} from '../actions/nations';
 import { getPangeaLibrary } from '../services/container';
 import { waitConnect } from '../utils/connectivity';
 import { CONNECTION_TIMEOUT } from '../global/Constants';
@@ -12,79 +14,79 @@ export async function checkConnection() {
 }
 
 function* createNation(action) {
-	if (action.payload) {
-		try {
-			let pangeaLib = yield call(getPangeaLibrary);
-		  yield call(checkConnection);
-  		let result = yield call(pangeaLib.eth.nation.create, action.payload);
-  		yield put({ type: DONE_NATION_CREATE });
-  		yield call([action.navigator, 'dismissModal']);
-  		yield put({ type: START_NATIONS_FETCH });
-  	} catch (e) {
-  		console.log('Create nation error: ', e);
-  		let errorStr = JSON.stringify(e);
-  		if (errorStr.indexOf('invalid address') >= 0) {
-  			Alert.alert('It appears that you don\'t have a wallet. Please create a wallet first.');
-  		}
-  		yield put({ type: CANCEL_LOADING });
-  	}
-	}
+  if (action.payload) {
+    try {
+      let pangeaLib = yield call(getPangeaLibrary);
+      yield call(checkConnection);
+      let result = yield call(pangeaLib.eth.nation.create, action.payload);
+      yield put({ type: DONE_NATION_CREATE });
+      yield call([action.navigator, 'dismissModal']);
+      yield put({ type: START_NATIONS_FETCH });
+    } catch (e) {
+      console.log('Create nation error: ', e);
+      let errorStr = JSON.stringify(e);
+      if (errorStr.indexOf('invalid address') >= 0) {
+        Alert.alert('It appears that you don\'t have a wallet. Please create a wallet first.');
+      }
+      yield put({ type: CANCEL_LOADING });
+    }
+  }
 }
 
 function* fetchNations() {
   try {
-  	console.log('fetching nations')
-		let pangeaLib = yield call(getPangeaLibrary);
-		yield call(checkConnection);
-		console.log('start syncing with blockchain');
-		// yield call(pangeaLib.eth.nation.index);
-		console.log('synced with blockchain');
-		let result = yield call(pangeaLib.eth.nation.all);
-	  yield put({ type: DONE_FETCH_NATIONS, payload: [...result] });
-	} catch(e) {
-		console.log('Update nation error: ', e);
-		yield put({ type: CANCEL_LOADING });
-	}
+    console.log('fetching nations');
+    let pangeaLib = yield call(getPangeaLibrary);
+    yield call(checkConnection);
+    console.log('start syncing with blockchain');
+    // yield call(pangeaLib.eth.nation.index);
+    console.log('synced with blockchain');
+    let result = yield call(pangeaLib.eth.nation.all);
+    yield put({ type: DONE_FETCH_NATIONS, payload: [...result] });
+  } catch (e) {
+    console.log('Update nation error: ', e);
+    yield put({ type: CANCEL_LOADING });
+  }
 }
 
 function* joinNation() {
-	try {
-		let pangeaLib = yield call(getPangeaLibrary);
-		let nationsState = yield select(state => state.nations);
-		const currentNation = resolveNation(nationsState.nations, nationsState.openedNationId);
-		yield call(checkConnection);
-		let result = yield call(pangeaLib.eth.nation.joinNation, currentNation.id);
-		// console.log('joined nation: ', result);
-	  yield put({ type: CANCEL_LOADING });
-	  yield put({ type: START_NATIONS_FETCH });
-	} catch(e) {
-		console.log('Join nation error: ', e);
-		let errorStr = JSON.stringify(e);
-		if (errorStr.indexOf('invalid address') >= 0) {
-			Alert.alert('It appears that you don\'t have a wallet. Please create a wallet first.');
-		}
-		yield put({ type: CANCEL_LOADING });
-	}
+  try {
+    let pangeaLib = yield call(getPangeaLibrary);
+    let nationsState = yield select(state => state.nations);
+    const currentNation = resolveNation(nationsState.nations, nationsState.openedNationId);
+    yield call(checkConnection);
+    let result = yield call(pangeaLib.eth.nation.joinNation, currentNation.id);
+    // console.log('joined nation: ', result);
+    yield put({ type: CANCEL_LOADING });
+    yield put({ type: START_NATIONS_FETCH });
+  } catch (e) {
+    console.log('Join nation error: ', e);
+    let errorStr = JSON.stringify(e);
+    if (errorStr.indexOf('invalid address') >= 0) {
+      Alert.alert('It appears that you don\'t have a wallet. Please create a wallet first.');
+    }
+    yield put({ type: CANCEL_LOADING });
+  }
 }
 
 function* leaveNation() {
-	try {
-		let pangeaLib = yield call(getPangeaLibrary);
-		let nationsState = yield select(state => state.nations);
-		const currentNation = resolveNation(nationsState.nations, nationsState.openedNationId);
-		yield call(checkConnection);
-		let result = yield call(pangeaLib.eth.nation.leaveNation, currentNation.id);
-		// console.log('leave nation: ', result);
-	  yield put({ type: CANCEL_LOADING });
-	  yield put({ type: START_NATIONS_FETCH });
-	} catch(e) {
-		console.log('Leave nation error: ', e);
-		let errorStr = JSON.stringify(e);
-		if (errorStr.indexOf('invalid address') >= 0) {
-			Alert.alert('It appears that you don\'t have a wallet. Please create a wallet first.');
-		}
-		yield put({ type: CANCEL_LOADING });
-	}
+  try {
+    let pangeaLib = yield call(getPangeaLibrary);
+    let nationsState = yield select(state => state.nations);
+    const currentNation = resolveNation(nationsState.nations, nationsState.openedNationId);
+    yield call(checkConnection);
+    let result = yield call(pangeaLib.eth.nation.leaveNation, currentNation.id);
+    // console.log('leave nation: ', result);
+    yield put({ type: CANCEL_LOADING });
+    yield put({ type: START_NATIONS_FETCH });
+  } catch (e) {
+    console.log('Leave nation error: ', e);
+    let errorStr = JSON.stringify(e);
+    if (errorStr.indexOf('invalid address') >= 0) {
+      Alert.alert('It appears that you don\'t have a wallet. Please create a wallet first.');
+    }
+    yield put({ type: CANCEL_LOADING });
+  }
 }
 
 export default function* watchProfileUpdate() {
