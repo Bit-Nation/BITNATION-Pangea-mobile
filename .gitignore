@@ -59,4 +59,5 @@ buck-out/
 .env
 yarn.lock
 src.zip
+docs_build
 /.eslintrc

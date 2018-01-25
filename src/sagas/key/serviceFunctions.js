@@ -25,3 +25,8 @@ export async function verifyMnemonic(mnemonic) {
   const container = await containerPromise;
   return container.eth.utils.mnemonicValid(compressMnemonic(mnemonic));
 }
+
+export async function removePrivateKey(address) {
+  const container = await containerPromise;
+  return container.eth.utils.deletePrivateKey(address);
+}

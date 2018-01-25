@@ -9,3 +9,10 @@ services:
     working_dir: /app
     environment:
       - COVERALLS_REPO_TOKEN
+
+  docs:
+    build: ./docker/mkdocs
+    volumes:
+      - ./:/app
+    working_dir: /app
+    tty: true

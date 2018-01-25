@@ -3,6 +3,9 @@
 [![Build Status](https://semaphoreci.com/api/v1/florianlenz/bitnation-pangea-mobile/branches/master/badge.svg)](https://semaphoreci.com/florianlenz/bitnation-pangea-mobile)
 [![Coverage Status](https://coveralls.io/repos/github/Bit-Nation/BITNATION-Pangea-mobile/badge.svg?branch=master)](https://coveralls.io/github/Bit-Nation/BITNATION-Pangea-mobile?branch=master)
 
+## Docs
+You can find the docs [here](http://bitnation-pangea-mobile.readthedocs.io/)
+
 ## Development
 
 ### Project setup
