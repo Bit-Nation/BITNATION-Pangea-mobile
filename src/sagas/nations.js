@@ -37,12 +37,16 @@ function* fetchNations() {
   try {
     console.log('fetching nations');
     let pangeaLib = yield call(getPangeaLibrary);
+    const nationsCache = yield call(pangeaLib.eth.nation.all);
+    yield put({ type: DONE_FETCH_NATIONS, payload: [...nationsCache] });
+
     yield call(checkConnection);
     console.log('start syncing with blockchain');
-    // yield call(pangeaLib.eth.nation.index);
+    yield call(pangeaLib.eth.nation.index);
     console.log('synced with blockchain');
-    let result = yield call(pangeaLib.eth.nation.all);
-    yield put({ type: DONE_FETCH_NATIONS, payload: [...result] });
+
+    const updatedNations = yield call(pangeaLib.eth.nation.all);
+    yield put({ type: DONE_FETCH_NATIONS, payload: [...updatedNations] });
   } catch (e) {
     console.log('Update nation error: ', e);
     yield put({ type: CANCEL_LOADING });
