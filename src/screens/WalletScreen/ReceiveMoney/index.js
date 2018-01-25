@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  Text, Image, View, TouchableOpacity, ScrollView, Clipboard,
+  Text, Image, View, TouchableOpacity, ScrollView, Clipboard, Share,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -22,8 +22,10 @@ class ReceiveMoneyScreen extends Component {
   qrCodeText = 'The sender can scan this QR code with a phone or computer camera to get your wallet address.';
   copyAddressText = 'You can copy your wallet address and send any way you choose, e.g. SMS or email. Do not try to type your address by hand!';
 
-  onCopyWalletAddressPress = () => {
-    Clipboard.setString(this.props.selectedWalletAddress);
+  onShareWalletAddressPress = () => {
+    Share.share({
+      message: this.props.selectedWalletAddress,
+    });
   };
 
   render() {
@@ -39,9 +41,8 @@ class ReceiveMoneyScreen extends Component {
             renderAdditionalInfo={() =>
               <Text style={styles.codeText}>{this.props.selectedWalletAddress}</Text>
             }
-            onButtonClick={this.onCopyWalletAddressPress}
-            buttonTitle='Copy Wallet Address'/>
-
+            onButtonClick={this.onShareWalletAddressPress}
+            buttonTitle='Share Wallet Address'/>
         </ScrollView>
 
       </View>
