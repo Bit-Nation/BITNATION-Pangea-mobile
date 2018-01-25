@@ -123,6 +123,15 @@ const nationStrings = {
 }
 
 // ========================================
+// Dashboard Strings
+// ========================================
+const dashboardStrings = {
+  warningBody: 'Pangea is in an early development stage, use with caution and at your own risk.',
+	warningTitle: 'Warning',
+	walletEmptyState: 'Begin using Pangea by creating your wallet.',
+}
+
+// ========================================
 // LANGUAGE LOCALIZATION STRINGS
 // ========================================
 
@@ -170,6 +179,7 @@ const strings = {
 	...walletStrings,
 	...nationStrings,
 	...stringFunctions,
+	dashboard: dashboardStrings,
 }
 
 export default strings

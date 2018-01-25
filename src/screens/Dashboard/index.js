@@ -17,6 +17,7 @@ import BackgroundImage from '../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../components/common/FakeNavigationBar';
 import MessageView from '../../components/common/MessageView';
 import { prettyETHWalletBalance, roundEth } from '../../utils/formatters';
+import Strings from '../../global/Strings';
 
 class Dashboard extends Component {
 
@@ -29,15 +30,15 @@ class Dashboard extends Component {
             title='Wallet'
             messageText={
               _.isEmpty(this.props.wallets) ?
-                'Begin using Pangea by creating your wallet.'
+                Strings.dashboard.walletEmptyState
                 :
                 prettyETHWalletBalance(this.props.wallets[0])
             }
           />
 
           <MessageView
-            title='Warning'
-            messageText='Use the Pangea app at your own risk.'
+            title={Strings.dashboard.warningTitle}
+            messageText={Strings.dashboard.warningBody}
           />
         </View>
       </View>
