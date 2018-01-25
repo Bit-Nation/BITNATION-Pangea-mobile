@@ -106,7 +106,20 @@ class CreateNation extends NavigatorComponent {
 		let enabled = true;
 		if (!this.state.nationName || this.state.nationName == '')
 			enabled = false;
-		{/* enabled = enabled && this.state.agreeFees;  */}
+		if (!this.state.nationDescription || this.state.nationDescription == '')
+			enabled = false;
+		if (!this.state.virtualNation || !this.state.virtualNation.length > 0)
+			enabled = false;
+		if (!this.state.nationCode || !this.state.nationCode.length > 0)
+			enabled = false;
+		if (!this.state.nationCodeLink || this.state.nationCodeLink == '')
+			enabled = false;
+		if (!this.state.lawEnforcementMechanism || !this.state.lawEnforcementMechanism.length > 0)
+			enabled = false;
+		if (!this.state.decisionMakingProcess || !this.state.decisionMakingProcess.length > 0)
+			enabled = false;
+		if (!this.state.governanceService || !this.state.governanceService.length > 0)
+			enabled = false;
 		this._setNavigationButtons(enabled);
 	}
 
