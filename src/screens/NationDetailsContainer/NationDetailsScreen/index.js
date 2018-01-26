@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import {
-	View,
-	Text, ScrollView, Image, StatusBar,
-} from 'react-native'
+  View,
+  Text, ScrollView, Image, StatusBar, Alert,
+} from 'react-native';
 import PropTypes from 'prop-types'
 
 import BackgroundImage from '../../../components/common/BackgroundImage'
@@ -16,7 +16,7 @@ import FakeNavigationBar from '../../../components/common/FakeNavigationBar'
 import Strings from '../../../global/Strings'
 
 class NationDetailsScreen extends Component {
-	
+
 	render () {
 		const nation = resolveNation(this.props.nations,
 			this.props.openedNationId)

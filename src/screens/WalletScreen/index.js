@@ -33,6 +33,12 @@ class WalletScreen extends NavigatorComponent {
     });
   }
 
+  onWillAppear() {
+    super.onWillAppear();
+
+    this.props.updateWalletList();
+  }
+
   onNavBarButtonPress(id) {
     if (id === REMOVE_WALLETS_BUTTON) {
       this.props.removeWallets();

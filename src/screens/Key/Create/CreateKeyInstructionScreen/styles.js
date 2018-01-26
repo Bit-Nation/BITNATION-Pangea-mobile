@@ -19,7 +19,7 @@ export default styles = StyleSheet.create({
     flex: 1,
   },
   instructionContainer: {
-    marginTop: 14,
+    marginTop: 8,
     backgroundColor: Colors.Transparent,
     marginBottom: 20,
   },

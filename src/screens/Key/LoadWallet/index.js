@@ -36,7 +36,7 @@ class LoadWalletScreen extends KeyBaseScreen {
             one.
           </Text>
           <Text messageText style={styles.description}>
-            To load your wallet, we will ask you for the 12 words of your private key. You should have these on a piece
+            To load your wallet, we will ask you for the {KEY_LENGTH} words of your private key. You should have these on a piece
             of paper you store in a safe and secure place.
           </Text>
         </View>
