@@ -1,4 +1,5 @@
 import { call, put, select, takeEvery } from 'redux-saga/effects';
+import { Alert } from 'react-native';
 
 import {
   CANCEL_NATION_CREATE, DONE_NATION_CREATE, START_NATIONS_FETCH, DONE_FETCH_NATIONS,
@@ -13,6 +14,13 @@ export async function checkConnection() {
   return await waitConnect(CONNECTION_TIMEOUT);
 }
 
+const extractMessage = (error) => {
+  if (error.toString().indexOf('insufficient') !== -1) {
+    return 'Insufficient funds. Please check your wallet';
+  }
+  return error.toString();
+};
+
 function* createNation(action) {
   if (action.payload) {
     try {
@@ -24,6 +32,7 @@ function* createNation(action) {
       yield put({ type: START_NATIONS_FETCH });
     } catch (e) {
       console.log('Create nation error: ', e);
+      Alert.alert(extractMessage(e));
       yield put({ type: CANCEL_LOADING });
     }
   }
@@ -45,6 +54,7 @@ function* fetchNations() {
     yield put({ type: DONE_FETCH_NATIONS, payload: [...updatedNations] });
   } catch (e) {
     console.log('Update nation error: ', e);
+    Alert.alert(extractMessage(e));
     yield put({ type: CANCEL_LOADING });
   }
 }
@@ -61,6 +71,7 @@ function* joinNation() {
     yield put({ type: START_NATIONS_FETCH });
   } catch (e) {
     console.log('Join nation error: ', e);
+    Alert.alert(extractMessage(e));
     yield put({ type: CANCEL_LOADING });
   }
 }
@@ -77,6 +88,7 @@ function* leaveNation() {
     yield put({ type: START_NATIONS_FETCH });
   } catch (e) {
     console.log('Leave nation error: ', e);
+    Alert.alert(extractMessage(e));
     yield put({ type: CANCEL_LOADING });
   }
 }
