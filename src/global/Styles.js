@@ -1,12 +1,13 @@
 import { MediaQueryStyleSheet } from 'react-native-responsive'
 import Colors from './Colors'
+import { normalizer} from '../utils/normalizer'
 
 // ========================================
 // DEFAULT TEXT STYLES
 // ========================================
 
 const defaultTextStyles = {
-	
+
 	// ========================================
 	// Default Text Styles
 	// From Apple Human Interface Guidelines
@@ -305,7 +306,7 @@ const styles = {
 	// The margins are set in the body container. If the body has no margins (bars that go edge to edge)
 	// then use the style below.
 	titleBarLarge: {
-		height: 52,
+		height: normalizer(52),
 		alignItems: 'flex-start',
 	},
 	
