@@ -99,8 +99,9 @@ def enableProguardInReleaseBuilds = false
 android {
     compileSdkVersion 25
     buildToolsVersion '25.0.1'
+
     defaultConfig {
-        applicationId 'co.bitnation'
+        applicationId "com.pangea"
         minSdkVersion 16
         targetSdkVersion 22
         versionCode 1
@@ -129,15 +130,13 @@ android {
         variant.outputs.each { output ->
             // For each separate APK per architecture, set a unique version code as described here:
             // http://tools.android.com/tech-docs/new-build-system/user-guide/apk-splits
-            def versionCodes = ["armeabi-v7a": 1, "x86": 2]
+            def versionCodes = ["armeabi-v7a":1, "x86":2]
             def abi = output.getFilter(OutputFile.ABI)
             if (abi != null) {  // null for the universal-debug, universal-release variants
                 output.versionCodeOverride =
                         versionCodes.get(abi) * 1048576 + defaultConfig.versionCode
             }
         }
-    }
-    productFlavors {
     }
 }
 
@@ -150,9 +149,9 @@ dependencies {
     compile project(':react-native-navigation')
     compile project(':react-native-eth-daemon')
     compile project(':react-native-config')
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:25.0.1'
-    compile 'com.facebook.react:react-native:+'
+    compile fileTree(dir: "libs", include: ["*.jar"])
+    compile "com.android.support:appcompat-v7:25.0.1"
+    compile "com.facebook.react:react-native:+"
 }
 
 
