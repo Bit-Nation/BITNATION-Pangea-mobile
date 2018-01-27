@@ -1,4 +1,4 @@
-package com.pangea;
+package co.bitnation;
 
 import com.bitgo.randombytes.RandomBytesPackage;
 import com.facebook.react.ReactPackage;
