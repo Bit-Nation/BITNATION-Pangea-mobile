@@ -45,7 +45,7 @@ We are using:
 - [React Native Navigation](https://github.com/wix/react-native-navigation) for truly native navigation.
 - [Lodash](https://lodash.com) for great preset of utility functions on data structures.
 - [Jest](https://facebook.github.io/jest/) for testing.
-- [Detox](https://github.com/wix/detox) for end-to-end testing.
+- [Detox](https://github.com/wix/detox) for end-to-end testing. Checkout [docs](./docs/detox_usage.md) for more infromation.
 
 ### Project structure
 
