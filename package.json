@@ -81,7 +81,13 @@
     "moduleNameMapper": {
       "^image![a-zA-Z0-9$_-]+$": "GlobalImageStub",
       "^[@./a-zA-Z0-9$_-]+\\.(png|gif)$": "RelativeImageStub"
-    }
+    },
+    "collectCoverageFrom": [
+      "!**/styles.js",
+      "**/**/**/**/*.{js,jsx}",
+      "!**/node_modules/**",
+      "!**/coverage/**"
+    ]
   },
   "react-native": {
     "crypto": "react-native-crypto",
