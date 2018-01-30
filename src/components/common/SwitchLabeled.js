@@ -1,3 +1,10 @@
+/**
+ * @desc Generates a standar native Switch with a Label at the right
+ * @type React.Component
+ * @param props.label {String} Text for the label
+ * @param props.value {Boolean} State for the switch
+ */
+
 import React, { Component } from 'react'
 import { Switch, View, Text } from 'react-native'
 import { MediaQueryStyleSheet } from 'react-native-responsive'
