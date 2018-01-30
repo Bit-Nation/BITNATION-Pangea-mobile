@@ -25,5 +25,5 @@ const styles = MediaQueryStyleSheet.create({
     top: 0,
     justifyContent: 'center',
     alignItems: 'center',
-  }
+  },
 });
