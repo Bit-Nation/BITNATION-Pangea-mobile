@@ -9,8 +9,7 @@
     "test:e2e:debug:build": "detox build -c ios.sim.debug && detox build -c android.emu.debug",
     "test:e2e:release": "detox test -c ios.sim.release && detox test -c android.emu.release",
     "test:e2e:release:build": "detox build -c ios.sim.release && detox build -c android.emu.release",
-    "test:coverage": "flow && jest --coverage",
-    "test:coveralls": "npm run test:coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "test:coveralls": "npm run test && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "ios": "flow && node_modules/.bin/react-native run-ios",
     "android": "flow && node_modules/.bin/react-native run-android",
     "postinstall": "./node_modules/.bin/rn-nodeify --install 'stream,buffer,vm,crypto,string_decoder,events,assert' --hack",
@@ -92,7 +91,8 @@
       "**/**/**/**/*.{js,jsx}",
       "!**/node_modules/**",
       "!**/coverage/**"
-    ]
+    ],
+    "collectCoverage": true
   },
   "react-native": {
     "crypto": "react-native-crypto",
