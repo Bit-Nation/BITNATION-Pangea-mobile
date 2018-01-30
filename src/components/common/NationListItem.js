@@ -21,19 +21,11 @@ export default class NationListItem extends Component {
 
 }
 
+NationListItem.propTypes = {
+  text: PropTypes.string,
+  item: PropTypes.object,
+};
 
 const styles = MediaQueryStyleSheet.create({
   ...GlobalStyles,
-
-  sectionListItemContainer: {
-    ...GlobalStyles.sectionListItemContainer,
-  },
-
-  sectionListTouchable: {
-    ...GlobalStyles.sectionListTouchable,
-  },
-
-  listItemText: {
-    ...GlobalStyles.listItemText,
-  },
 });
