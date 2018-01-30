@@ -45,11 +45,13 @@ export default class Button extends Component {
 Button.propTypes = {
   enabled: PropTypes.bool,
   onPress: PropTypes.func,
+  title: PropTypes.string,
 };
 
 Button.defaultProps = {
   enabled: true,
   onPress: () => null,
+  title: '',
 };
 
 const styles = MediaQueryStyleSheet.create({
