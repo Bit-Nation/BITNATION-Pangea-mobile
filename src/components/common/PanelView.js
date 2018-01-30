@@ -7,6 +7,10 @@ import _ from 'lodash';
 import GlobalStyles from '../../global/Styles';
 import Button from './Button';
 
+/**
+ * @desc Component that renders common panel view. It is used to provide list or mosaic layout.
+ * @type React.Component
+ */
 export default class PanelView extends Component {
 
   render() {
@@ -80,11 +84,42 @@ export default class PanelView extends Component {
 }
 
 PanelView.PropTypes = {
+  /**
+   * @desc Title of panel
+   * @type string
+   */
   title: PropTypes.string,
+  /**
+   * @desc Icon of panel
+   * @type string
+   * @todo Fix icon to be the icon. Currently it's just a text.
+   */
   icon: PropTypes.string,
-  buttonTitle: PropTypes.string,
+  /**
+   * @desc Body text of panel
+   * @type string
+   */
   body: PropTypes.string,
+  /**
+   * @desc Renders content between panel body and panel button
+   * @type function
+   */
+  renderAdditionalInfo: PropTypes.function,
+  /**
+   * @desc Callback on panel button click. Button appears only if this one is passed.
+   * @type function
+   */
   onButtonClick: PropTypes.function,
+  /**
+   * @desc Title of panel button.
+   * @type function
+   */
+  buttonTitle: PropTypes.string,
+  /**
+   * @desc Renders content below panel button.
+   * @type function
+   */
+  renderBottom: PropTypes.function,
 };
 
 const styles = MediaQueryStyleSheet.create({
