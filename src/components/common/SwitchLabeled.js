@@ -1,5 +1,5 @@
 /**
- * @desc Generates a standar native Switch with a Label at the right
+ * @desc Generates a standard native Switch with a Label at the right
  * @type React.Component
  * @param props.label {String} Text for the label
  * @param props.value {Boolean} State for the switch
