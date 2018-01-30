@@ -1,0 +1,430 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PanelView rendering Panel view with title and body 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "rgba(74,144,226,0.2)",
+        "borderRadius": 8,
+        "flexDirection": "column",
+        "flexShrink": 1,
+        "justifyContent": "space-between",
+        "marginBottom": 8,
+        "marginLeft": 0,
+        "marginRight": 0,
+        "marginTop": 8,
+        "paddingBottom": 15,
+        "paddingLeft": 15,
+        "paddingRight": 15,
+        "paddingTop": 12,
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "transparent",
+        "borderBottomColor": "#607D8B",
+        "borderBottomWidth": 1,
+        "borderStyle": "solid",
+        "flexDirection": "row",
+        "paddingBottom": 4,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "transparent",
+          "flex": 4,
+        }
+      }
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "color": "#FFFFFF",
+            "fontFamily": "Roboto",
+            "fontSize": 22,
+            "fontWeight": "bold",
+            "letterSpacing": 0,
+            "lineHeight": 28,
+            "textAlign": "left",
+          }
+        }
+      >
+        Test panel title
+      </Text>
+    </View>
+  </View>
+  <View
+    style={
+      Object {
+        "marginBottom": 8,
+      }
+    }
+  />
+  <View
+    style={
+      Object {
+        "marginBottom": 8,
+      }
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "color": "#72A4DE",
+          "fontFamily": "Roboto",
+          "fontSize": 17,
+          "fontWeight": "normal",
+          "letterSpacing": 0,
+          "lineHeight": 22,
+        }
+      }
+    >
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+    </Text>
+  </View>
+  <View
+    style={Object {}}
+  />
+  <View
+    style={Object {}}
+  />
+</View>
+`;
+
+exports[`PanelView rendering Panel view with title and button 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "rgba(74,144,226,0.2)",
+        "borderRadius": 8,
+        "flexDirection": "column",
+        "flexShrink": 1,
+        "justifyContent": "space-between",
+        "marginBottom": 8,
+        "marginLeft": 0,
+        "marginRight": 0,
+        "marginTop": 8,
+        "paddingBottom": 15,
+        "paddingLeft": 15,
+        "paddingRight": 15,
+        "paddingTop": 12,
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "transparent",
+        "borderBottomColor": "#607D8B",
+        "borderBottomWidth": 1,
+        "borderStyle": "solid",
+        "flexDirection": "row",
+        "paddingBottom": 4,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "transparent",
+          "flex": 4,
+        }
+      }
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "color": "#FFFFFF",
+            "fontFamily": "Roboto",
+            "fontSize": 22,
+            "fontWeight": "bold",
+            "letterSpacing": 0,
+            "lineHeight": 28,
+            "textAlign": "left",
+          }
+        }
+      >
+        Test panel title
+      </Text>
+    </View>
+  </View>
+  <View
+    style={
+      Object {
+        "marginBottom": 8,
+      }
+    }
+  />
+  <View
+    style={Object {}}
+  />
+  <View
+    style={
+      Array [
+        Object {
+          "borderRadius": 15,
+          "height": 30,
+          "justifyContent": "center",
+        },
+        Object {
+          "backgroundColor": "#1C497E",
+        },
+        Object {
+          "marginTop": 13,
+        },
+      ]
+    }
+    title="Test panel button"
+  >
+    <View
+      accessibilityComponentType={undefined}
+      accessibilityLabel={undefined}
+      accessibilityTraits={undefined}
+      accessible={true}
+      collapsable={undefined}
+      hasTVPreferredFocus={undefined}
+      hitSlop={undefined}
+      isTVSelectable={true}
+      nativeID={undefined}
+      onLayout={undefined}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "marginLeft": 13,
+          "marginRight": 13,
+          "opacity": 1,
+        }
+      }
+      testID={undefined}
+      tvParallaxProperties={undefined}
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        buttonTitle={true}
+        disabledButtonTitle={false}
+        ellipsizeMode="tail"
+        style={
+          Array [
+            undefined,
+            undefined,
+            Object {
+              "color": "#72A4DE",
+              "fontSize": 14,
+              "letterSpacing": -0.02,
+              "lineHeight": 19,
+              "textAlign": "center",
+            },
+            false,
+            undefined,
+          ]
+        }
+      >
+        Test panel button
+      </Text>
+    </View>
+  </View>
+  <View
+    style={Object {}}
+  />
+</View>
+`;
+
+exports[`PanelView rendering Panel view with title, body and button 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "rgba(74,144,226,0.2)",
+        "borderRadius": 8,
+        "flexDirection": "column",
+        "flexShrink": 1,
+        "justifyContent": "space-between",
+        "marginBottom": 8,
+        "marginLeft": 0,
+        "marginRight": 0,
+        "marginTop": 8,
+        "paddingBottom": 15,
+        "paddingLeft": 15,
+        "paddingRight": 15,
+        "paddingTop": 12,
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "transparent",
+        "borderBottomColor": "#607D8B",
+        "borderBottomWidth": 1,
+        "borderStyle": "solid",
+        "flexDirection": "row",
+        "paddingBottom": 4,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "transparent",
+          "flex": 4,
+        }
+      }
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "color": "#FFFFFF",
+            "fontFamily": "Roboto",
+            "fontSize": 22,
+            "fontWeight": "bold",
+            "letterSpacing": 0,
+            "lineHeight": 28,
+            "textAlign": "left",
+          }
+        }
+      >
+        Test panel title
+      </Text>
+    </View>
+  </View>
+  <View
+    style={
+      Object {
+        "marginBottom": 8,
+      }
+    }
+  />
+  <View
+    style={
+      Object {
+        "marginBottom": 8,
+      }
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "color": "#72A4DE",
+          "fontFamily": "Roboto",
+          "fontSize": 17,
+          "fontWeight": "normal",
+          "letterSpacing": 0,
+          "lineHeight": 22,
+        }
+      }
+    >
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+    </Text>
+  </View>
+  <View
+    style={Object {}}
+  />
+  <View
+    style={
+      Array [
+        Object {
+          "borderRadius": 15,
+          "height": 30,
+          "justifyContent": "center",
+        },
+        Object {
+          "backgroundColor": "#1C497E",
+        },
+        Object {
+          "marginTop": 13,
+        },
+      ]
+    }
+    title="Test panel button"
+  >
+    <View
+      accessibilityComponentType={undefined}
+      accessibilityLabel={undefined}
+      accessibilityTraits={undefined}
+      accessible={true}
+      collapsable={undefined}
+      hasTVPreferredFocus={undefined}
+      hitSlop={undefined}
+      isTVSelectable={true}
+      nativeID={undefined}
+      onLayout={undefined}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "marginLeft": 13,
+          "marginRight": 13,
+          "opacity": 1,
+        }
+      }
+      testID={undefined}
+      tvParallaxProperties={undefined}
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        buttonTitle={true}
+        disabledButtonTitle={false}
+        ellipsizeMode="tail"
+        style={
+          Array [
+            undefined,
+            undefined,
+            Object {
+              "color": "#72A4DE",
+              "fontSize": 14,
+              "letterSpacing": -0.02,
+              "lineHeight": 19,
+              "textAlign": "center",
+            },
+            false,
+            undefined,
+          ]
+        }
+      >
+        Test panel button
+      </Text>
+    </View>
+  </View>
+  <View
+    style={Object {}}
+  />
+</View>
+`;
