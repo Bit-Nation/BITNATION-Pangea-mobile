@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 
 import styles from './styles';
 import BackgroundImage from '../../../components/common/BackgroundImage';
-import MessageView from '../../../components/common/MessageView';
+import PanelView from '../../../components/common/PanelView';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 
 export default class EmptyWalletScreen extends Component {
@@ -27,7 +27,7 @@ export default class EmptyWalletScreen extends Component {
         <ScrollView>
           <View style={styles.cardContainer}>
             <View style={[styles.card, styles.firstCard]}>
-              <MessageView
+              <PanelView
                 title={this.texts.createWalletTitle}
                 messageText={this.texts.createWalletText}
                 buttonTitle='Create a Wallet'
@@ -36,7 +36,7 @@ export default class EmptyWalletScreen extends Component {
             </View>
 
             <View style={styles.card}>
-              <MessageView
+              <PanelView
                 title={this.texts.restoreWalletTitle}
                 messageText={this.texts.restoreWalletText}
                 buttonTitle='Restore a Wallet'

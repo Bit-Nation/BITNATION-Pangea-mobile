@@ -353,7 +353,7 @@ const styles = {
 	// Panels in a vertical list.
 	// These are lists of rectangular panels which contain different kinds of content.
 	// These don't have margin left/right, so they won't work for dashboard.
-	// Used in:  components/common/MessageView.js
+	// Used in:  components/common/PanelView.js
 	
 	// View that holds a message
 	panelView: {
@@ -436,7 +436,7 @@ const styles = {
 	// Panels in a vertical list.
 	// These are lists of rectangular panels which contain different kinds of content.
 	// These don't have margin left/right, so they won't work for dashboard.
-	// Used in:  components/common/MessageView.js
+	// Used in:  components/common/PanelView.js
 	
 	// View that holds a message
 	// Size changes to fit contents, so we do not use flex for size
@@ -750,7 +750,7 @@ const styles = {
 	
 	// ========================================
 	// Profile Screen
-	// e.g. components/common/MessageView.js
+	// e.g. components/common/PanelView.js
 	
 	avatarContainer: {
 		flexDirection: 'row',

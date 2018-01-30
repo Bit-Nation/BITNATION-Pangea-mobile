@@ -18,7 +18,7 @@ import BackgroundImage from '../../../components/common/BackgroundImage'
 import NavigatorComponent from '../../../components/common/NavigatorComponent'
 import { ActionSheet } from 'native-base'
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar'
-import MessageView from '../../../components/common/MessageView'
+import PanelView from '../../../components/common/PanelView'
 import SwitchLabeled from '../../../components/common/SwitchLabeled'
 import MultiSelect from '../../../components/MultiSelect'
 import Images from '../../../global/AssetsImages'
@@ -165,7 +165,7 @@ class CreateNation extends NavigatorComponent {
 	
 	_buildCoreNationView () {
 		return (
-			<MessageView style={styles.messageView}>
+			<PanelView style={styles.messageView}>
 				<View style={styles.formRow}>
 					<View style={styles.fieldsContainer}>
 						<View style={styles.formRow}>
@@ -232,13 +232,13 @@ class CreateNation extends NavigatorComponent {
 				<Text style={styles.footnote}>
 					{Strings.createNationCoreFootnote}
 				</Text>
-			</MessageView>
+			</PanelView>
 		)
 	}
 	
 	_buildGovernmentalView () {
 		return (
-			<MessageView style={styles.messageView}
+			<PanelView style={styles.messageView}
 			             title={Strings.createNationGovernmentalStructure} icon=' '>
 				<View style={styles.formRow}>
 					<View style={styles.fieldsContainer}>
@@ -399,13 +399,13 @@ class CreateNation extends NavigatorComponent {
 				<Text style={styles.footnote}>
 					{Strings.governmentalStructureFootnote}
 				</Text>
-			</MessageView>
+			</PanelView>
 		)
 	}
 	
 	_buildOptionsView () {
 		return (
-			<MessageView style={styles.messageView} title={Strings.options} icon=' '>
+			<PanelView style={styles.messageView} title={Strings.options} icon=' '>
 				<View style={styles.formRow}>
 					<View style={styles.fieldsContainer}>
 						<SwitchLabeled
@@ -433,13 +433,13 @@ class CreateNation extends NavigatorComponent {
 						/>
 					</View>
 				</View>
-			</MessageView>
+			</PanelView>
 		)
 	}
 	
 	_buildFeesView () {
 		return (
-			<MessageView style={styles.messageView} title={Strings.fees} icon=' '>
+			<PanelView style={styles.messageView} title={Strings.fees} icon=' '>
 				<View style={styles.formRow}>
 					<View style={styles.fieldsContainer}>
 						<SwitchLabeled
@@ -452,7 +452,7 @@ class CreateNation extends NavigatorComponent {
 				<Text style={styles.footnote}>
 					We will deduct the fee from your wallet. You have {Strings.showCurrency('ETH', 1.22, true)} in your wallet.
 				</Text>
-			</MessageView>
+			</PanelView>
 		)
 	}
 	

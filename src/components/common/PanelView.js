@@ -7,7 +7,7 @@ import _ from 'lodash';
 import GlobalStyles from '../../global/Styles';
 import Button from './Button';
 
-export default class MessageView extends Component {
+export default class PanelView extends Component {
 
   render() {
     const { style, renderBottom, renderAdditionalInfo, children } = this.props;
@@ -79,7 +79,7 @@ export default class MessageView extends Component {
 
 }
 
-MessageView.PropTypes = {
+PanelView.PropTypes = {
   title: PropTypes.string,
   icon: PropTypes.string,
   messageText: PropTypes.string,

@@ -18,7 +18,7 @@ import AssetsImage from '../../../global/AssetsImages';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import Colors from '../../../global/Colors';
 import { ActionSheet } from 'native-base';
-import MessageView from '../../../components/common/MessageView';
+import PanelView from '../../../components/common/PanelView';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
@@ -119,7 +119,7 @@ class EditProfile extends NavigatorComponent {
 	// ========================================
 	_buildProfileForm () {
 		return (
-			<MessageView style={styles.messageView} title='Personal Information'>
+			<PanelView style={styles.messageView} title='Personal Information'>
 				<View style={styles.formRow}>
 					<View style={styles.fieldsContainer}>
 						<View style={styles.formRow}>
@@ -180,7 +180,7 @@ class EditProfile extends NavigatorComponent {
 					/>
 				
 				</View>
-			</MessageView>
+			</PanelView>
 		)
 	}
 

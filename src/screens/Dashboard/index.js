@@ -15,7 +15,7 @@ import Images from '../../global/AssetsImages';
 import styles from './styles';
 import BackgroundImage from '../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../components/common/FakeNavigationBar';
-import MessageView from '../../components/common/MessageView';
+import PanelView from '../../components/common/PanelView';
 import { prettyETHWalletBalance, roundEth } from '../../utils/formatters';
 import Strings from '../../global/Strings';
 
@@ -30,7 +30,7 @@ class Dashboard extends Component {
           <View style={styles.logoContainer}>
             <Image style={styles.logo} source={Images.bitLogoBig} resizeMode='contain'/>
           </View>
-          <MessageView
+          <PanelView
             title='Wallet'
             messageText={
               _.isEmpty(this.props.wallets) ?
@@ -40,7 +40,7 @@ class Dashboard extends Component {
             }
           />
 
-          <MessageView
+          <PanelView
             title={Strings.dashboard.warningTitle}
             messageText={Strings.dashboard.warningBody}
           />
