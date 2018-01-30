@@ -29,7 +29,7 @@ export default class EmptyWalletScreen extends Component {
             <View style={[styles.card, styles.firstCard]}>
               <PanelView
                 title={this.texts.createWalletTitle}
-                messageText={this.texts.createWalletText}
+                body={this.texts.createWalletText}
                 buttonTitle='Create a Wallet'
                 onButtonClick={this.props.onCreateWallet}
               />
@@ -38,7 +38,7 @@ export default class EmptyWalletScreen extends Component {
             <View style={styles.card}>
               <PanelView
                 title={this.texts.restoreWalletTitle}
-                messageText={this.texts.restoreWalletText}
+                body={this.texts.restoreWalletText}
                 buttonTitle='Restore a Wallet'
                 onButtonClick={this.props.onRestoreWallet}
               />

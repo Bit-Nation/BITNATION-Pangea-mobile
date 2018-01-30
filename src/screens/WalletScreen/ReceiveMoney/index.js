@@ -36,7 +36,7 @@ class ReceiveMoneyScreen extends Component {
         <ScrollView style={styles.mainContainer} contentContainerStyle={styles.scrollViewContentContainer}>
           <PanelView
             title='Copy Address'
-            messageText={this.copyAddressText}
+            body={this.copyAddressText}
             style={[styles.messageView]}
             renderAdditionalInfo={() =>
               <Text style={styles.codeText}>{this.props.selectedWalletAddress}</Text>

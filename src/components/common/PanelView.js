@@ -13,7 +13,7 @@ export default class PanelView extends Component {
     const { style, renderBottom, renderAdditionalInfo, children } = this.props;
 
     return (
-      <View style={[styles.messageView, style]}>
+      <View style={[styles.panelView, style]}>
 
         {/* TITLE + ICON */}
         {/* Hide this view if no title or icon to avoid line below it. */}
@@ -23,15 +23,15 @@ export default class PanelView extends Component {
         }
 
         {/* MAIN DISPLAY AREA */}
-        <View style={styles.messageTextContainer}>
+        <View style={styles.panelTextContainer}>
           {children}
         </View>
 
         {
-          this.props.messageText &&
-          <View style={styles.messageTextContainer}>
+          this.props.body &&
+          <View style={styles.panelTextContainer}>
             <Text style={styles.body}>
-              {this.props.messageText}
+              {this.props.body}
             </Text>
           </View>
         }
@@ -42,7 +42,7 @@ export default class PanelView extends Component {
 
         {
           this.props.onButtonClick &&
-          <Button style={styles.button} title={this.props.buttonTitle}
+          <Button style={styles.panelButton} title={this.props.buttonTitle}
                   onPress={this.props.onButtonClick}/>
         }
 
@@ -56,10 +56,10 @@ export default class PanelView extends Component {
 
   _renderHeader(title, icon) {
     return (
-      <View style={styles.messageTitleRowContainer}>
+      <View style={styles.panelTitleRowContainer}>
         {
           title &&
-          <View style={styles.messageTitleContainer}>
+          <View style={styles.panelTitleContainer}>
             <Text style={styles.panelTitle}>
               {title}
             </Text>
@@ -67,7 +67,7 @@ export default class PanelView extends Component {
         }
         {
           icon &&
-          <View style={styles.messageTitleIcon}>
+          <View style={styles.panelTitleIcon}>
             <Text style={styles.panelTitle}>
               {icon}
             </Text>
@@ -82,8 +82,8 @@ export default class PanelView extends Component {
 PanelView.PropTypes = {
   title: PropTypes.string,
   icon: PropTypes.string,
-  messageText: PropTypes.string,
   buttonTitle: PropTypes.string,
+  body: PropTypes.string,
   onButtonClick: PropTypes.function,
 };
 

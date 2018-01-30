@@ -32,7 +32,7 @@ class Dashboard extends Component {
           </View>
           <PanelView
             title='Wallet'
-            messageText={
+            body={
               _.isEmpty(this.props.wallets) ?
                 Strings.dashboard.walletEmptyState
                 :
@@ -42,7 +42,7 @@ class Dashboard extends Component {
 
           <PanelView
             title={Strings.dashboard.warningTitle}
-            messageText={Strings.dashboard.warningBody}
+            body={Strings.dashboard.warningBody}
           />
         </View>
       </View>
