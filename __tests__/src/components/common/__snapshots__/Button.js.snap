@@ -1,0 +1,270 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button rendering Button with title 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "borderRadius": 15,
+        "height": 30,
+        "justifyContent": "center",
+      },
+      Object {
+        "backgroundColor": "#1C497E",
+      },
+      undefined,
+    ]
+  }
+  title="Test title"
+>
+  <View
+    accessibilityComponentType={undefined}
+    accessibilityLabel={undefined}
+    accessibilityTraits={undefined}
+    accessible={true}
+    collapsable={undefined}
+    hasTVPreferredFocus={undefined}
+    hitSlop={undefined}
+    isTVSelectable={true}
+    nativeID={undefined}
+    onLayout={undefined}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "marginLeft": 13,
+        "marginRight": 13,
+        "opacity": 1,
+      }
+    }
+    testID={undefined}
+    tvParallaxProperties={undefined}
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      buttonTitle={true}
+      disabledButtonTitle={false}
+      ellipsizeMode="tail"
+      style={
+        Array [
+          undefined,
+          undefined,
+          Object {
+            "color": "#72A4DE",
+            "fontSize": 14,
+            "letterSpacing": -0.02,
+            "lineHeight": 19,
+            "textAlign": "center",
+          },
+          false,
+          undefined,
+        ]
+      }
+    >
+      Test title
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`Button rendering Default button 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "borderRadius": 15,
+        "height": 30,
+        "justifyContent": "center",
+      },
+      Object {
+        "backgroundColor": "#1C497E",
+      },
+      undefined,
+    ]
+  }
+  title=""
+>
+  <View
+    accessibilityComponentType={undefined}
+    accessibilityLabel={undefined}
+    accessibilityTraits={undefined}
+    accessible={true}
+    collapsable={undefined}
+    hasTVPreferredFocus={undefined}
+    hitSlop={undefined}
+    isTVSelectable={true}
+    nativeID={undefined}
+    onLayout={undefined}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "marginLeft": 13,
+        "marginRight": 13,
+        "opacity": 1,
+      }
+    }
+    testID={undefined}
+    tvParallaxProperties={undefined}
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      buttonTitle={true}
+      disabledButtonTitle={false}
+      ellipsizeMode="tail"
+      style={
+        Array [
+          undefined,
+          undefined,
+          Object {
+            "color": "#72A4DE",
+            "fontSize": 14,
+            "letterSpacing": -0.02,
+            "lineHeight": 19,
+            "textAlign": "center",
+          },
+          false,
+          undefined,
+        ]
+      }
+    >
+      
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`Button rendering Disabled button with title 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "borderRadius": 15,
+        "height": 30,
+        "justifyContent": "center",
+      },
+      Object {
+        "backgroundColor": "#37393C",
+      },
+      undefined,
+    ]
+  }
+  title="Test title"
+>
+  <View
+    style={
+      Object {
+        "marginLeft": 13,
+        "marginRight": 13,
+      }
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      buttonTitle={false}
+      disabledButtonTitle={true}
+      ellipsizeMode="tail"
+      style={
+        Array [
+          undefined,
+          undefined,
+          false,
+          Object {
+            "color": "#5F6D7D",
+            "fontSize": 14,
+            "letterSpacing": -0.02,
+            "lineHeight": 19,
+            "textAlign": "center",
+          },
+          undefined,
+        ]
+      }
+    >
+      Test title
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`Button rendering Enabled button with title 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "borderRadius": 15,
+        "height": 30,
+        "justifyContent": "center",
+      },
+      Object {
+        "backgroundColor": "#1C497E",
+      },
+      undefined,
+    ]
+  }
+  title="Test title"
+>
+  <View
+    accessibilityComponentType={undefined}
+    accessibilityLabel={undefined}
+    accessibilityTraits={undefined}
+    accessible={true}
+    collapsable={undefined}
+    hasTVPreferredFocus={undefined}
+    hitSlop={undefined}
+    isTVSelectable={true}
+    nativeID={undefined}
+    onLayout={undefined}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "marginLeft": 13,
+        "marginRight": 13,
+        "opacity": 1,
+      }
+    }
+    testID={undefined}
+    tvParallaxProperties={undefined}
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      buttonTitle={true}
+      disabledButtonTitle={false}
+      ellipsizeMode="tail"
+      style={
+        Array [
+          undefined,
+          undefined,
+          Object {
+            "color": "#72A4DE",
+            "fontSize": 14,
+            "letterSpacing": -0.02,
+            "lineHeight": 19,
+            "textAlign": "center",
+          },
+          false,
+          undefined,
+        ]
+      }
+    >
+      Test title
+    </Text>
+  </View>
+</View>
+`;
