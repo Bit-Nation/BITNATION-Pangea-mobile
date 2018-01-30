@@ -1,0 +1,276 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WalletCard renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "stretch",
+      "backgroundColor": "transparent",
+      "flex": 1,
+      "height": 130,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "stretch",
+        "flex": 1,
+        "flexDirection": "row",
+        "justifyContent": "flex-start",
+      }
+    }
+  >
+    <Image
+      source={1}
+      style={
+        Object {
+          "marginRight": 10,
+          "width": 55,
+        }
+      }
+    />
+    <View
+      style={
+        Object {
+          "flex": 1,
+          "justifyContent": "flex-start",
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "flex": 1,
+          }
+        }
+      />
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "color": "#FFFFFF",
+            "fontSize": 17,
+            "fontWeight": "bold",
+            "marginBottom": 4,
+          }
+        }
+      >
+        Testing Wallet
+      </Text>
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "color": "#72A4DE",
+            "fontSize": 14,
+          }
+        }
+      >
+        Testing Balance
+      </Text>
+      <View
+        style={
+          Object {
+            "flex": 1,
+          }
+        }
+      />
+      <View
+        style={
+          Object {
+            "flexDirection": "row",
+            "justifyContent": "flex-start",
+          }
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "borderRadius": 15,
+                "height": 30,
+                "justifyContent": "center",
+              },
+              Object {
+                "backgroundColor": "#1C497E",
+              },
+              Array [
+                Object {
+                  "backgroundColor": "rgba(114,164,222,0.3)",
+                  "borderRadius": 14,
+                  "height": 25,
+                  "width": 80,
+                },
+                Object {
+                  "marginRight": 8,
+                },
+              ],
+            ]
+          }
+          title="Send"
+        >
+          <View
+            accessibilityComponentType={undefined}
+            accessibilityLabel={undefined}
+            accessibilityTraits={undefined}
+            accessible={true}
+            collapsable={undefined}
+            hasTVPreferredFocus={undefined}
+            hitSlop={undefined}
+            isTVSelectable={true}
+            nativeID={undefined}
+            onLayout={undefined}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "marginLeft": 13,
+                "marginRight": 13,
+                "opacity": 1,
+              }
+            }
+            testID={undefined}
+            tvParallaxProperties={undefined}
+          >
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              buttonTitle={true}
+              disabledButtonTitle={false}
+              ellipsizeMode="tail"
+              style={
+                Array [
+                  undefined,
+                  undefined,
+                  Object {
+                    "color": "#72A4DE",
+                    "fontSize": 14,
+                    "letterSpacing": -0.02,
+                    "lineHeight": 19,
+                    "textAlign": "center",
+                  },
+                  false,
+                  undefined,
+                ]
+              }
+            >
+              Send
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "borderRadius": 15,
+                "height": 30,
+                "justifyContent": "center",
+              },
+              Object {
+                "backgroundColor": "#1C497E",
+              },
+              Object {
+                "backgroundColor": "rgba(114,164,222,0.3)",
+                "borderRadius": 14,
+                "height": 25,
+                "width": 80,
+              },
+            ]
+          }
+          title="Receive"
+        >
+          <View
+            accessibilityComponentType={undefined}
+            accessibilityLabel={undefined}
+            accessibilityTraits={undefined}
+            accessible={true}
+            collapsable={undefined}
+            hasTVPreferredFocus={undefined}
+            hitSlop={undefined}
+            isTVSelectable={true}
+            nativeID={undefined}
+            onLayout={undefined}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "marginLeft": 13,
+                "marginRight": 13,
+                "opacity": 1,
+              }
+            }
+            testID={undefined}
+            tvParallaxProperties={undefined}
+          >
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              buttonTitle={true}
+              disabledButtonTitle={false}
+              ellipsizeMode="tail"
+              style={
+                Array [
+                  undefined,
+                  undefined,
+                  Object {
+                    "color": "#72A4DE",
+                    "fontSize": 14,
+                    "letterSpacing": -0.02,
+                    "lineHeight": 19,
+                    "textAlign": "center",
+                  },
+                  false,
+                  undefined,
+                ]
+              }
+            >
+              Receive
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            Object {
+              "flex": 1,
+            }
+          }
+        />
+      </View>
+      <View
+        style={
+          Object {
+            "flex": 1,
+          }
+        }
+      />
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "color": "#72A4DE",
+            "fontSize": 14,
+            "marginBottom": 10,
+          }
+        }
+      >
+        
+      </Text>
+    </View>
+  </View>
+</View>
+`;

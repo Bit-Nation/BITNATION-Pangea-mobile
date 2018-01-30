@@ -1,3 +1,12 @@
+/**
+ * @desc Generates a "Card" for display a Wallet on screen with Name, Balance and Send/Receive buttons
+ * @type React.Component
+ *
+ * @param props.nameHeading {String} Name for the wallet
+ * @param props.balance {String} Balance of the wallet
+ * @param props.icon {String} Path to image to be displayed
+ */
+
 import React, { Component } from 'react';
 import {
   ListView, Text, Image,
