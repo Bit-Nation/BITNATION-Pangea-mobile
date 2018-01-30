@@ -2,6 +2,7 @@
 
 [![Build Status](https://semaphoreci.com/api/v1/florianlenz/bitnation-pangea-mobile/branches/master/badge.svg)](https://semaphoreci.com/florianlenz/bitnation-pangea-mobile)
 [![Coverage Status](https://coveralls.io/repos/github/Bit-Nation/BITNATION-Pangea-mobile/badge.svg?branch=master)](https://coveralls.io/github/Bit-Nation/BITNATION-Pangea-mobile?branch=master)
+[Docs](http://bitnation-pangea-mobile.readthedocs.io/)
 
 ## Docs
 You can find the docs [here](http://bitnation-pangea-mobile.readthedocs.io/)
@@ -45,6 +46,7 @@ We are using:
 - [React Native Navigation](https://github.com/wix/react-native-navigation) for truly native navigation.
 - [Lodash](https://lodash.com) for great preset of utility functions on data structures.
 - [Jest](https://facebook.github.io/jest/) for testing.
+- [Detox](https://github.com/wix/detox) for end-to-end testing. Checkout [docs](./docs/detox_usage.md) for more infromation.
 
 ### Project structure
 
