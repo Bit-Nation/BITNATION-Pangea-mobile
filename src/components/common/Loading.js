@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { ActivityIndicator, View } from 'react-native';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
 
+/**
+ * @desc Component to render loading indicator on top of a container.
+ * @type React.Component
+ */
 export default class Loading extends Component {
 
   render() {
