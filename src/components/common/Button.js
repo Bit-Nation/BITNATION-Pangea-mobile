@@ -6,6 +6,10 @@ import PropTypes from 'prop-types';
 import Text from './Text';
 import GlobalStyles from '../../global/Styles';
 
+/**
+ * @desc Component that renders common button.
+ * @type React.Component
+ */
 export default class Button extends Component {
 
   render() {
@@ -43,8 +47,20 @@ export default class Button extends Component {
 }
 
 Button.propTypes = {
+  /**
+   * @desc Flag that determines if button is enabled.
+   * @type bool
+   */
   enabled: PropTypes.bool,
+  /**
+   * @desc Callback to be called on button press.
+   * @type func
+   */
   onPress: PropTypes.func,
+  /**
+   * @desc Title to show on button.
+   * @type string
+   */
   title: PropTypes.string,
 };
 
