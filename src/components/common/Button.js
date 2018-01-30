@@ -4,7 +4,6 @@ import { MediaQueryStyleSheet } from 'react-native-responsive';
 import PropTypes from 'prop-types';
 
 import Text from './Text';
-import Colors from '../../global/Colors';
 import GlobalStyles from '../../global/Styles';
 
 export default class Button extends Component {
@@ -16,8 +15,8 @@ export default class Button extends Component {
       <View style={[
         styles.baseButton,
         enabled ? styles.enabledButton : styles.disabledButton,
-        style]
-      } {...props}>
+        style]} {...props}>
+
         {
           enabled ?
             <TouchableOpacity style={[styles.buttonContainer]} onPress={onPress}>
@@ -44,14 +43,15 @@ export default class Button extends Component {
 }
 
 Button.propTypes = {
-  enabled: PropTypes.bool
+  enabled: PropTypes.bool,
+  onPress: PropTypes.func,
 };
 
 Button.defaultProps = {
   enabled: true,
+  onPress: () => null,
 };
 
 const styles = MediaQueryStyleSheet.create({
   ...GlobalStyles,
-
 });
