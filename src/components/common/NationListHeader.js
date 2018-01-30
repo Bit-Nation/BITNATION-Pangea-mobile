@@ -5,6 +5,10 @@ import { MediaQueryStyleSheet } from 'react-native-responsive';
 
 import GlobalStyles from '../../global/Styles';
 
+/**
+ * @desc Component for section header in nations list.
+ * @type React.Component
+ */
 export default class NationListHeader extends Component {
 
   render() {
@@ -20,6 +24,10 @@ export default class NationListHeader extends Component {
 }
 
 NationListHeader.propTypes = {
+  /**
+   * @desc Title of header
+   * @type string
+   */
   title: PropTypes.string,
 };
 
