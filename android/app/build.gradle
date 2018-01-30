@@ -101,7 +101,7 @@ android {
     buildToolsVersion '25.0.1'
     defaultConfig {
         applicationId 'co.bitnation'
-        minSdkVersion 16
+        minSdkVersion 18
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
@@ -109,6 +109,9 @@ android {
             abiFilters "armeabi-v7a", "x86"
         }
         vectorDrawables.useSupportLibrary = true
+        testBuildType System.getProperty('testBuildType', 'debug')  //this will later be used to control the test apk build type
+        missingDimensionStrategy "minReactNative", "minReactNative46" //read note
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     splits {
         abi {
@@ -151,8 +154,12 @@ dependencies {
     compile project(':react-native-eth-daemon')
     compile project(':react-native-config')
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:25.0.1'
+    compile 'com.android.support:appcompat-v7:25.4.0'
     compile 'com.facebook.react:react-native:+'
+    androidTestImplementation(project(path: ":detox"))
+    androidTestImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test:rules:1.0.1'
 }
 
 
