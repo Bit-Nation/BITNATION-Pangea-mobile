@@ -5,6 +5,10 @@ import { MediaQueryStyleSheet } from 'react-native-responsive';
 
 import GlobalStyles from '../../global/Styles';
 
+/**
+ * @desc Component that renders nations list item.
+ * @type React.Component
+ */
 export default class NationListItem extends Component {
 
   render() {
@@ -22,8 +26,26 @@ export default class NationListItem extends Component {
 }
 
 NationListItem.propTypes = {
+  /**
+   * @desc Text to display on item
+   * @type string
+   */
   text: PropTypes.string,
+  /**
+   * @desc Id that will be passed in onPress callback.
+   * @type string
+   */
   id: PropTypes.any,
+  /**
+   * @desc Callback on press item.
+   * @type string
+   */
+  onPress: PropTypes.func,
+};
+
+NationListItem.defaultProps = {
+  text: '',
+  onPress: () => null,
 };
 
 const styles = MediaQueryStyleSheet.create({
