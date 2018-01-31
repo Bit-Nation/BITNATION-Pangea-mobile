@@ -47,7 +47,7 @@ class NationsListScreen extends Component {
         <SectionList
           renderItem={(item) => {
             const nation = item.item;
-            return (<NationListItem text={nation.nationName} onPress={this.props.onSelectItem} item={nation}/>);
+            return (<NationListItem text={nation.nationName} onPress={this.props.onSelectItem} id={nation.id}/>);
           }}
           keyExtractor={(item) => item.id}
           renderSectionHeader={({ section }) => <NationListHeader title={section.title}/>}

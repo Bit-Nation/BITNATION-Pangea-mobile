@@ -23,7 +23,7 @@ export default class NationListItem extends Component {
 
 NationListItem.propTypes = {
   text: PropTypes.string,
-  item: PropTypes.object,
+  id: PropTypes.any,
 };
 
 const styles = MediaQueryStyleSheet.create({
