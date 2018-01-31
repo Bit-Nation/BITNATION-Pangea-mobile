@@ -21,7 +21,7 @@ const extractMessage = (error) => {
   return error.toString();
 };
 
-function* createNation(action) {
+export function* createNation(action) {
   if (action.payload) {
     try {
       let pangeaLib = yield call(getPangeaLibrary);
@@ -38,7 +38,7 @@ function* createNation(action) {
   }
 }
 
-function* fetchNations() {
+export function* fetchNations() {
   try {
     console.log('fetching nations');
     let pangeaLib = yield call(getPangeaLibrary);
@@ -59,7 +59,7 @@ function* fetchNations() {
   }
 }
 
-function* joinNation() {
+export function* joinNation() {
   try {
     let pangeaLib = yield call(getPangeaLibrary);
     let nationsState = yield select(state => state.nations);
@@ -76,7 +76,7 @@ function* joinNation() {
   }
 }
 
-function* leaveNation() {
+export function* leaveNation() {
   try {
     let pangeaLib = yield call(getPangeaLibrary);
     let nationsState = yield select(state => state.nations);

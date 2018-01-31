@@ -1,7 +1,7 @@
 import { switchNationTab, openNation, cancelNationCreation, createNation, doneNationCreation, requestFetchNations, joinNation, leaveNation } from '../../../src/actions/nations';
 import { SWITCH_NATIONS_TAB, OPEN_NATION, CANCEL_NATION_CREATE, NATION_CREATE, DONE_NATION_CREATE, START_NATIONS_FETCH, REQUEST_JOIN_NATION, REQUEST_LEAVE_NATION } from '../../../src/actions/nations';
 
-test('switchNationTab should return an action to switch between tabs', (done) => {
+test('actions - switchNationTab', (done) => {
 	const tab = 1;
 	expect(switchNationTab(tab)).toEqual({
     type: SWITCH_NATIONS_TAB,
@@ -10,7 +10,7 @@ test('switchNationTab should return an action to switch between tabs', (done) =>
   done()
 })
 
-test('openNation should return an action to open a nation', (done) => {
+test('actions - openNation', (done) => {
 	const id = 123;
 	expect(openNation(id)).toEqual({
     type: OPEN_NATION,
@@ -19,14 +19,14 @@ test('openNation should return an action to open a nation', (done) => {
   done()
 })
 
-test('cancelNationCreation should return an action to cancel creating nation', (done) => {
+test('actions - cancelNationCreation', (done) => {
 	expect(cancelNationCreation()).toEqual({
     type: CANCEL_NATION_CREATE
   })
   done()
 })
 
-test('createNation should return an action to create a nation', (done) => {
+test('actions - createNation', (done) => {
 	const nationData = {
 		name: 'test nation',
 		description: 'test'
@@ -40,28 +40,28 @@ test('createNation should return an action to create a nation', (done) => {
   done()
 })
 
-test('doneNationCreation should return an action to finalize nation creation', (done) => {
+test('actions - doneNationCreation', (done) => {
 	expect(doneNationCreation()).toEqual({
     type: DONE_NATION_CREATE
   })
   done()
 })
 
-test('requestFetchNations should return an action to trigger nation fetch request', (done) => {
+test('actions - requestFetchNations', (done) => {
 	expect(requestFetchNations()).toEqual({
     type: START_NATIONS_FETCH,
   })
   done()
 })
 
-test('joinNation should return an action to join a nation', (done) => {
+test('actions - joinNation', (done) => {
 	expect(joinNation()).toEqual({
     type: REQUEST_JOIN_NATION
   })
   done()
 })
 
-test('leaveNation should return an action to leave a nation', (done) => {
+test('actions - leaveNation', (done) => {
 	expect(leaveNation()).toEqual({
     type: REQUEST_LEAVE_NATION
   })
