@@ -1,5 +1,7 @@
-import { switchNationTab, openNation, cancelNationCreation, createNation, doneNationCreation, requestFetchNations, joinNation, leaveNation } from '../../../src/actions/nations';
-import { SWITCH_NATIONS_TAB, OPEN_NATION, CANCEL_NATION_CREATE, NATION_CREATE, DONE_NATION_CREATE, START_NATIONS_FETCH, REQUEST_JOIN_NATION, REQUEST_LEAVE_NATION } from '../../../src/actions/nations';
+import { 
+	switchNationTab, openNation, cancelNationCreation, createNation, doneNationCreation, requestFetchNations, joinNation, leaveNation,
+	SWITCH_NATIONS_TAB, OPEN_NATION, CANCEL_NATION_CREATE, NATION_CREATE, DONE_NATION_CREATE, START_NATIONS_FETCH, REQUEST_JOIN_NATION, REQUEST_LEAVE_NATION
+} from '../../../src/actions/nations';
 import reducer, { initialState } from '../../../src/reducers/nations';
 
 test('reducer - switchNationTab', (done) => {

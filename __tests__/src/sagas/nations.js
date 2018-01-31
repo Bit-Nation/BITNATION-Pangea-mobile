@@ -1,4 +1,3 @@
-global.XMLHttpRequest = require('w3c-xmlhttprequest').XMLHttpRequest;
 import { call, put } from 'redux-saga/effects'
 import { delay } from 'redux-saga'
 import { checkConnection, createNation, fetchNations, joinNation, leaveNation } from '../../../src/sagas/nations'
