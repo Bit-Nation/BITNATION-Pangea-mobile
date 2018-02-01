@@ -1,12 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button component tests Press works 1`] = `
+exports[`Button component tests Behaviour Press does not work when button is disabled 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Button
-    enabled={true}
+    enabled={false}
     onPress={[MockFunction]}
+    title=""
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -22,6 +23,7 @@ ShallowWrapper {
     "props": Object {
       "children": <TouchableOpacity
         activeOpacity={0.2}
+        disable={true}
         onPress={[MockFunction]}
         style={
           Array [
@@ -31,11 +33,14 @@ ShallowWrapper {
             },
           ]
         }
+        testID="Touchable"
       >
         <_Text
-          buttonTitle={true}
-          disabledButtonTitle={false}
-        />
+          buttonTitle={false}
+          disabledButtonTitle={true}
+        >
+          
+        </_Text>
       </TouchableOpacity>,
       "style": Array [
         Object {
@@ -44,10 +49,11 @@ ShallowWrapper {
           "justifyContent": "center",
         },
         Object {
-          "backgroundColor": "#1C497E",
+          "backgroundColor": "#37393C",
         },
         undefined,
       ],
+      "title": "",
     },
     "ref": null,
     "rendered": Object {
@@ -57,9 +63,12 @@ ShallowWrapper {
       "props": Object {
         "activeOpacity": 0.2,
         "children": <_Text
-          buttonTitle={true}
-          disabledButtonTitle={false}
-        />,
+          buttonTitle={false}
+          disabledButtonTitle={true}
+        >
+          
+        </_Text>,
+        "disable": true,
         "onPress": [MockFunction],
         "style": Array [
           Object {
@@ -67,6 +76,7 @@ ShallowWrapper {
             "marginRight": 13,
           },
         ],
+        "testID": "Touchable",
       },
       "ref": null,
       "rendered": Object {
@@ -74,12 +84,12 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "buttonTitle": true,
-          "children": undefined,
-          "disabledButtonTitle": false,
+          "buttonTitle": false,
+          "children": "",
+          "disabledButtonTitle": true,
         },
         "ref": null,
-        "rendered": null,
+        "rendered": "",
         "type": [Function],
       },
       "type": [Function],
@@ -94,6 +104,7 @@ ShallowWrapper {
       "props": Object {
         "children": <TouchableOpacity
           activeOpacity={0.2}
+          disable={true}
           onPress={[MockFunction]}
           style={
             Array [
@@ -103,11 +114,14 @@ ShallowWrapper {
               },
             ]
           }
+          testID="Touchable"
         >
           <_Text
-            buttonTitle={true}
-            disabledButtonTitle={false}
-          />
+            buttonTitle={false}
+            disabledButtonTitle={true}
+          >
+            
+          </_Text>
         </TouchableOpacity>,
         "style": Array [
           Object {
@@ -116,10 +130,11 @@ ShallowWrapper {
             "justifyContent": "center",
           },
           Object {
-            "backgroundColor": "#1C497E",
+            "backgroundColor": "#37393C",
           },
           undefined,
         ],
+        "title": "",
       },
       "ref": null,
       "rendered": Object {
@@ -129,9 +144,12 @@ ShallowWrapper {
         "props": Object {
           "activeOpacity": 0.2,
           "children": <_Text
-            buttonTitle={true}
-            disabledButtonTitle={false}
-          />,
+            buttonTitle={false}
+            disabledButtonTitle={true}
+          >
+            
+          </_Text>,
+          "disable": true,
           "onPress": [MockFunction],
           "style": Array [
             Object {
@@ -139,6 +157,7 @@ ShallowWrapper {
               "marginRight": 13,
             },
           ],
+          "testID": "Touchable",
         },
         "ref": null,
         "rendered": Object {
@@ -146,12 +165,12 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "buttonTitle": true,
-            "children": undefined,
-            "disabledButtonTitle": false,
+            "buttonTitle": false,
+            "children": "",
+            "disabledButtonTitle": true,
           },
           "ref": null,
-          "rendered": null,
+          "rendered": "",
           "type": [Function],
         },
         "type": [Function],
@@ -169,71 +188,1534 @@ ShallowWrapper {
 }
 `;
 
-exports[`Button component tests Renders correctly 1`] = `
-<View
-  style={
-    Array [
-      Object {
-        "borderRadius": 15,
-        "height": 30,
-        "justifyContent": "center",
+exports[`Button component tests Behaviour Press works 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Button
+    enabled={true}
+    onPress={[MockFunction]}
+    title=""
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": <TouchableOpacity
+        activeOpacity={0.2}
+        disable={false}
+        onPress={[MockFunction]}
+        style={
+          Array [
+            Object {
+              "marginLeft": 13,
+              "marginRight": 13,
+            },
+          ]
+        }
+        testID="Touchable"
+      >
+        <_Text
+          buttonTitle={true}
+          disabledButtonTitle={false}
+        >
+          
+        </_Text>
+      </TouchableOpacity>,
+      "style": Array [
+        Object {
+          "borderRadius": 15,
+          "height": 30,
+          "justifyContent": "center",
+        },
+        Object {
+          "backgroundColor": "#1C497E",
+        },
+        undefined,
+      ],
+      "title": "",
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "activeOpacity": 0.2,
+        "children": <_Text
+          buttonTitle={true}
+          disabledButtonTitle={false}
+        >
+          
+        </_Text>,
+        "disable": false,
+        "onPress": [MockFunction],
+        "style": Array [
+          Object {
+            "marginLeft": 13,
+            "marginRight": 13,
+          },
+        ],
+        "testID": "Touchable",
       },
-      Object {
-        "backgroundColor": "#1C497E",
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "buttonTitle": true,
+          "children": "",
+          "disabledButtonTitle": false,
+        },
+        "ref": null,
+        "rendered": "",
+        "type": [Function],
       },
-      undefined,
-    ]
-  }
->
-  <View
-    accessibilityComponentType={undefined}
-    accessibilityLabel={undefined}
-    accessibilityTraits={undefined}
-    accessible={true}
-    collapsable={undefined}
-    hasTVPreferredFocus={undefined}
-    hitSlop={undefined}
-    isTVSelectable={true}
-    nativeID={undefined}
-    onLayout={undefined}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    style={
-      Object {
-        "marginLeft": 13,
-        "marginRight": 13,
-        "opacity": 1,
-      }
-    }
-    testID={undefined}
-    tvParallaxProperties={undefined}
+      "type": [Function],
+    },
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": <TouchableOpacity
+          activeOpacity={0.2}
+          disable={false}
+          onPress={[MockFunction]}
+          style={
+            Array [
+              Object {
+                "marginLeft": 13,
+                "marginRight": 13,
+              },
+            ]
+          }
+          testID="Touchable"
+        >
+          <_Text
+            buttonTitle={true}
+            disabledButtonTitle={false}
+          >
+            
+          </_Text>
+        </TouchableOpacity>,
+        "style": Array [
+          Object {
+            "borderRadius": 15,
+            "height": 30,
+            "justifyContent": "center",
+          },
+          Object {
+            "backgroundColor": "#1C497E",
+          },
+          undefined,
+        ],
+        "title": "",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "activeOpacity": 0.2,
+          "children": <_Text
+            buttonTitle={true}
+            disabledButtonTitle={false}
+          >
+            
+          </_Text>,
+          "disable": false,
+          "onPress": [MockFunction],
+          "style": Array [
+            Object {
+              "marginLeft": 13,
+              "marginRight": 13,
+            },
+          ],
+          "testID": "Touchable",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "buttonTitle": true,
+            "children": "",
+            "disabledButtonTitle": false,
+          },
+          "ref": null,
+          "rendered": "",
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`Button component tests Rendering Default 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Button
+    enabled={true}
+    onPress={[Function]}
+    title=""
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": <TouchableOpacity
+        activeOpacity={0.2}
+        disable={false}
+        onPress={[Function]}
+        style={
+          Array [
+            Object {
+              "marginLeft": 13,
+              "marginRight": 13,
+            },
+          ]
+        }
+        testID="Touchable"
+      >
+        <_Text
+          buttonTitle={true}
+          disabledButtonTitle={false}
+        >
+          
+        </_Text>
+      </TouchableOpacity>,
+      "style": Array [
+        Object {
+          "borderRadius": 15,
+          "height": 30,
+          "justifyContent": "center",
+        },
+        Object {
+          "backgroundColor": "#1C497E",
+        },
+        undefined,
+      ],
+      "title": "",
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "activeOpacity": 0.2,
+        "children": <_Text
+          buttonTitle={true}
+          disabledButtonTitle={false}
+        >
+          
+        </_Text>,
+        "disable": false,
+        "onPress": [Function],
+        "style": Array [
+          Object {
+            "marginLeft": 13,
+            "marginRight": 13,
+          },
+        ],
+        "testID": "Touchable",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "buttonTitle": true,
+          "children": "",
+          "disabledButtonTitle": false,
+        },
+        "ref": null,
+        "rendered": "",
+        "type": [Function],
+      },
+      "type": [Function],
+    },
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": <TouchableOpacity
+          activeOpacity={0.2}
+          disable={false}
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "marginLeft": 13,
+                "marginRight": 13,
+              },
+            ]
+          }
+          testID="Touchable"
+        >
+          <_Text
+            buttonTitle={true}
+            disabledButtonTitle={false}
+          >
+            
+          </_Text>
+        </TouchableOpacity>,
+        "style": Array [
+          Object {
+            "borderRadius": 15,
+            "height": 30,
+            "justifyContent": "center",
+          },
+          Object {
+            "backgroundColor": "#1C497E",
+          },
+          undefined,
+        ],
+        "title": "",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "activeOpacity": 0.2,
+          "children": <_Text
+            buttonTitle={true}
+            disabledButtonTitle={false}
+          >
+            
+          </_Text>,
+          "disable": false,
+          "onPress": [Function],
+          "style": Array [
+            Object {
+              "marginLeft": 13,
+              "marginRight": 13,
+            },
+          ],
+          "testID": "Touchable",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "buttonTitle": true,
+            "children": "",
+            "disabledButtonTitle": false,
+          },
+          "ref": null,
+          "rendered": "",
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`Button component tests Rendering Disabled 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Button
+    enabled={false}
+    onPress={[Function]}
+    title=""
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": <TouchableOpacity
+        activeOpacity={0.2}
+        disable={true}
+        onPress={[Function]}
+        style={
+          Array [
+            Object {
+              "marginLeft": 13,
+              "marginRight": 13,
+            },
+          ]
+        }
+        testID="Touchable"
+      >
+        <_Text
+          buttonTitle={false}
+          disabledButtonTitle={true}
+        >
+          
+        </_Text>
+      </TouchableOpacity>,
+      "style": Array [
+        Object {
+          "borderRadius": 15,
+          "height": 30,
+          "justifyContent": "center",
+        },
+        Object {
+          "backgroundColor": "#37393C",
+        },
+        undefined,
+      ],
+      "title": "",
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "activeOpacity": 0.2,
+        "children": <_Text
+          buttonTitle={false}
+          disabledButtonTitle={true}
+        >
+          
+        </_Text>,
+        "disable": true,
+        "onPress": [Function],
+        "style": Array [
+          Object {
+            "marginLeft": 13,
+            "marginRight": 13,
+          },
+        ],
+        "testID": "Touchable",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "buttonTitle": false,
+          "children": "",
+          "disabledButtonTitle": true,
+        },
+        "ref": null,
+        "rendered": "",
+        "type": [Function],
+      },
+      "type": [Function],
+    },
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": <TouchableOpacity
+          activeOpacity={0.2}
+          disable={true}
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "marginLeft": 13,
+                "marginRight": 13,
+              },
+            ]
+          }
+          testID="Touchable"
+        >
+          <_Text
+            buttonTitle={false}
+            disabledButtonTitle={true}
+          >
+            
+          </_Text>
+        </TouchableOpacity>,
+        "style": Array [
+          Object {
+            "borderRadius": 15,
+            "height": 30,
+            "justifyContent": "center",
+          },
+          Object {
+            "backgroundColor": "#37393C",
+          },
+          undefined,
+        ],
+        "title": "",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "activeOpacity": 0.2,
+          "children": <_Text
+            buttonTitle={false}
+            disabledButtonTitle={true}
+          >
+            
+          </_Text>,
+          "disable": true,
+          "onPress": [Function],
+          "style": Array [
+            Object {
+              "marginLeft": 13,
+              "marginRight": 13,
+            },
+          ],
+          "testID": "Touchable",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "buttonTitle": false,
+            "children": "",
+            "disabledButtonTitle": true,
+          },
+          "ref": null,
+          "rendered": "",
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`Button component tests Rendering Disabled with children 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Button
+    enabled={false}
+    onPress={[Function]}
+    title=""
   >
     <Text
       accessible={true}
       allowFontScaling={true}
-      buttonTitle={true}
-      disabledButtonTitle={false}
       ellipsizeMode="tail"
-      style={
-        Array [
-          undefined,
-          undefined,
+    >
+      Custom text inside button
+    </Text>
+  </Button>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": <TouchableOpacity
+        activeOpacity={0.2}
+        disable={true}
+        onPress={[Function]}
+        style={
+          Array [
+            Object {
+              "marginLeft": 13,
+              "marginRight": 13,
+            },
+          ]
+        }
+        testID="Touchable"
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+        >
+          Custom text inside button
+        </Text>
+      </TouchableOpacity>,
+      "style": Array [
+        Object {
+          "borderRadius": 15,
+          "height": 30,
+          "justifyContent": "center",
+        },
+        Object {
+          "backgroundColor": "#37393C",
+        },
+        undefined,
+      ],
+      "title": "",
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "activeOpacity": 0.2,
+        "children": <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+        >
+          Custom text inside button
+        </Text>,
+        "disable": true,
+        "onPress": [Function],
+        "style": Array [
           Object {
-            "color": "#72A4DE",
-            "fontSize": 14,
-            "letterSpacing": -0.02,
-            "lineHeight": 19,
-            "textAlign": "center",
+            "marginLeft": 13,
+            "marginRight": 13,
           },
-          false,
+        ],
+        "testID": "Touchable",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "accessible": true,
+          "allowFontScaling": true,
+          "children": "Custom text inside button",
+          "ellipsizeMode": "tail",
+        },
+        "ref": null,
+        "rendered": "Custom text inside button",
+        "type": [Function],
+      },
+      "type": [Function],
+    },
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": <TouchableOpacity
+          activeOpacity={0.2}
+          disable={true}
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "marginLeft": 13,
+                "marginRight": 13,
+              },
+            ]
+          }
+          testID="Touchable"
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+          >
+            Custom text inside button
+          </Text>
+        </TouchableOpacity>,
+        "style": Array [
+          Object {
+            "borderRadius": 15,
+            "height": 30,
+            "justifyContent": "center",
+          },
+          Object {
+            "backgroundColor": "#37393C",
+          },
           undefined,
-        ]
-      }
-    />
-  </View>
-</View>
+        ],
+        "title": "",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "activeOpacity": 0.2,
+          "children": <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+          >
+            Custom text inside button
+          </Text>,
+          "disable": true,
+          "onPress": [Function],
+          "style": Array [
+            Object {
+              "marginLeft": 13,
+              "marginRight": 13,
+            },
+          ],
+          "testID": "Touchable",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "accessible": true,
+            "allowFontScaling": true,
+            "children": "Custom text inside button",
+            "ellipsizeMode": "tail",
+          },
+          "ref": null,
+          "rendered": "Custom text inside button",
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`Button component tests Rendering Disabled with title 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Button
+    enabled={false}
+    onPress={[Function]}
+    title="Testing title"
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": <TouchableOpacity
+        activeOpacity={0.2}
+        disable={true}
+        onPress={[Function]}
+        style={
+          Array [
+            Object {
+              "marginLeft": 13,
+              "marginRight": 13,
+            },
+          ]
+        }
+        testID="Touchable"
+      >
+        <_Text
+          buttonTitle={false}
+          disabledButtonTitle={true}
+        >
+          Testing title
+        </_Text>
+      </TouchableOpacity>,
+      "style": Array [
+        Object {
+          "borderRadius": 15,
+          "height": 30,
+          "justifyContent": "center",
+        },
+        Object {
+          "backgroundColor": "#37393C",
+        },
+        undefined,
+      ],
+      "title": "Testing title",
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "activeOpacity": 0.2,
+        "children": <_Text
+          buttonTitle={false}
+          disabledButtonTitle={true}
+        >
+          Testing title
+        </_Text>,
+        "disable": true,
+        "onPress": [Function],
+        "style": Array [
+          Object {
+            "marginLeft": 13,
+            "marginRight": 13,
+          },
+        ],
+        "testID": "Touchable",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "buttonTitle": false,
+          "children": "Testing title",
+          "disabledButtonTitle": true,
+        },
+        "ref": null,
+        "rendered": "Testing title",
+        "type": [Function],
+      },
+      "type": [Function],
+    },
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": <TouchableOpacity
+          activeOpacity={0.2}
+          disable={true}
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "marginLeft": 13,
+                "marginRight": 13,
+              },
+            ]
+          }
+          testID="Touchable"
+        >
+          <_Text
+            buttonTitle={false}
+            disabledButtonTitle={true}
+          >
+            Testing title
+          </_Text>
+        </TouchableOpacity>,
+        "style": Array [
+          Object {
+            "borderRadius": 15,
+            "height": 30,
+            "justifyContent": "center",
+          },
+          Object {
+            "backgroundColor": "#37393C",
+          },
+          undefined,
+        ],
+        "title": "Testing title",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "activeOpacity": 0.2,
+          "children": <_Text
+            buttonTitle={false}
+            disabledButtonTitle={true}
+          >
+            Testing title
+          </_Text>,
+          "disable": true,
+          "onPress": [Function],
+          "style": Array [
+            Object {
+              "marginLeft": 13,
+              "marginRight": 13,
+            },
+          ],
+          "testID": "Touchable",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "buttonTitle": false,
+            "children": "Testing title",
+            "disabledButtonTitle": true,
+          },
+          "ref": null,
+          "rendered": "Testing title",
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`Button component tests Rendering Enabled 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Button
+    enabled={true}
+    onPress={[Function]}
+    title=""
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": <TouchableOpacity
+        activeOpacity={0.2}
+        disable={false}
+        onPress={[Function]}
+        style={
+          Array [
+            Object {
+              "marginLeft": 13,
+              "marginRight": 13,
+            },
+          ]
+        }
+        testID="Touchable"
+      >
+        <_Text
+          buttonTitle={true}
+          disabledButtonTitle={false}
+        >
+          
+        </_Text>
+      </TouchableOpacity>,
+      "style": Array [
+        Object {
+          "borderRadius": 15,
+          "height": 30,
+          "justifyContent": "center",
+        },
+        Object {
+          "backgroundColor": "#1C497E",
+        },
+        undefined,
+      ],
+      "title": "",
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "activeOpacity": 0.2,
+        "children": <_Text
+          buttonTitle={true}
+          disabledButtonTitle={false}
+        >
+          
+        </_Text>,
+        "disable": false,
+        "onPress": [Function],
+        "style": Array [
+          Object {
+            "marginLeft": 13,
+            "marginRight": 13,
+          },
+        ],
+        "testID": "Touchable",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "buttonTitle": true,
+          "children": "",
+          "disabledButtonTitle": false,
+        },
+        "ref": null,
+        "rendered": "",
+        "type": [Function],
+      },
+      "type": [Function],
+    },
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": <TouchableOpacity
+          activeOpacity={0.2}
+          disable={false}
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "marginLeft": 13,
+                "marginRight": 13,
+              },
+            ]
+          }
+          testID="Touchable"
+        >
+          <_Text
+            buttonTitle={true}
+            disabledButtonTitle={false}
+          >
+            
+          </_Text>
+        </TouchableOpacity>,
+        "style": Array [
+          Object {
+            "borderRadius": 15,
+            "height": 30,
+            "justifyContent": "center",
+          },
+          Object {
+            "backgroundColor": "#1C497E",
+          },
+          undefined,
+        ],
+        "title": "",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "activeOpacity": 0.2,
+          "children": <_Text
+            buttonTitle={true}
+            disabledButtonTitle={false}
+          >
+            
+          </_Text>,
+          "disable": false,
+          "onPress": [Function],
+          "style": Array [
+            Object {
+              "marginLeft": 13,
+              "marginRight": 13,
+            },
+          ],
+          "testID": "Touchable",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "buttonTitle": true,
+            "children": "",
+            "disabledButtonTitle": false,
+          },
+          "ref": null,
+          "rendered": "",
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`Button component tests Rendering Enabled with children 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Button
+    enabled={true}
+    onPress={[Function]}
+    title=""
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+    >
+      Custom text inside button
+    </Text>
+  </Button>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": <TouchableOpacity
+        activeOpacity={0.2}
+        disable={false}
+        onPress={[Function]}
+        style={
+          Array [
+            Object {
+              "marginLeft": 13,
+              "marginRight": 13,
+            },
+          ]
+        }
+        testID="Touchable"
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+        >
+          Custom text inside button
+        </Text>
+      </TouchableOpacity>,
+      "style": Array [
+        Object {
+          "borderRadius": 15,
+          "height": 30,
+          "justifyContent": "center",
+        },
+        Object {
+          "backgroundColor": "#1C497E",
+        },
+        undefined,
+      ],
+      "title": "",
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "activeOpacity": 0.2,
+        "children": <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+        >
+          Custom text inside button
+        </Text>,
+        "disable": false,
+        "onPress": [Function],
+        "style": Array [
+          Object {
+            "marginLeft": 13,
+            "marginRight": 13,
+          },
+        ],
+        "testID": "Touchable",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "accessible": true,
+          "allowFontScaling": true,
+          "children": "Custom text inside button",
+          "ellipsizeMode": "tail",
+        },
+        "ref": null,
+        "rendered": "Custom text inside button",
+        "type": [Function],
+      },
+      "type": [Function],
+    },
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": <TouchableOpacity
+          activeOpacity={0.2}
+          disable={false}
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "marginLeft": 13,
+                "marginRight": 13,
+              },
+            ]
+          }
+          testID="Touchable"
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+          >
+            Custom text inside button
+          </Text>
+        </TouchableOpacity>,
+        "style": Array [
+          Object {
+            "borderRadius": 15,
+            "height": 30,
+            "justifyContent": "center",
+          },
+          Object {
+            "backgroundColor": "#1C497E",
+          },
+          undefined,
+        ],
+        "title": "",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "activeOpacity": 0.2,
+          "children": <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+          >
+            Custom text inside button
+          </Text>,
+          "disable": false,
+          "onPress": [Function],
+          "style": Array [
+            Object {
+              "marginLeft": 13,
+              "marginRight": 13,
+            },
+          ],
+          "testID": "Touchable",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "accessible": true,
+            "allowFontScaling": true,
+            "children": "Custom text inside button",
+            "ellipsizeMode": "tail",
+          },
+          "ref": null,
+          "rendered": "Custom text inside button",
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`Button component tests Rendering Enabled with title 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Button
+    enabled={true}
+    onPress={[Function]}
+    title="Testing title"
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": <TouchableOpacity
+        activeOpacity={0.2}
+        disable={false}
+        onPress={[Function]}
+        style={
+          Array [
+            Object {
+              "marginLeft": 13,
+              "marginRight": 13,
+            },
+          ]
+        }
+        testID="Touchable"
+      >
+        <_Text
+          buttonTitle={true}
+          disabledButtonTitle={false}
+        >
+          Testing title
+        </_Text>
+      </TouchableOpacity>,
+      "style": Array [
+        Object {
+          "borderRadius": 15,
+          "height": 30,
+          "justifyContent": "center",
+        },
+        Object {
+          "backgroundColor": "#1C497E",
+        },
+        undefined,
+      ],
+      "title": "Testing title",
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "activeOpacity": 0.2,
+        "children": <_Text
+          buttonTitle={true}
+          disabledButtonTitle={false}
+        >
+          Testing title
+        </_Text>,
+        "disable": false,
+        "onPress": [Function],
+        "style": Array [
+          Object {
+            "marginLeft": 13,
+            "marginRight": 13,
+          },
+        ],
+        "testID": "Touchable",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "buttonTitle": true,
+          "children": "Testing title",
+          "disabledButtonTitle": false,
+        },
+        "ref": null,
+        "rendered": "Testing title",
+        "type": [Function],
+      },
+      "type": [Function],
+    },
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": <TouchableOpacity
+          activeOpacity={0.2}
+          disable={false}
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "marginLeft": 13,
+                "marginRight": 13,
+              },
+            ]
+          }
+          testID="Touchable"
+        >
+          <_Text
+            buttonTitle={true}
+            disabledButtonTitle={false}
+          >
+            Testing title
+          </_Text>
+        </TouchableOpacity>,
+        "style": Array [
+          Object {
+            "borderRadius": 15,
+            "height": 30,
+            "justifyContent": "center",
+          },
+          Object {
+            "backgroundColor": "#1C497E",
+          },
+          undefined,
+        ],
+        "title": "Testing title",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "activeOpacity": 0.2,
+          "children": <_Text
+            buttonTitle={true}
+            disabledButtonTitle={false}
+          >
+            Testing title
+          </_Text>,
+          "disable": false,
+          "onPress": [Function],
+          "style": Array [
+            Object {
+              "marginLeft": 13,
+              "marginRight": 13,
+            },
+          ],
+          "testID": "Touchable",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "buttonTitle": true,
+            "children": "Testing title",
+            "disabledButtonTitle": false,
+          },
+          "ref": null,
+          "rendered": "Testing title",
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
 `;

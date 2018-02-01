@@ -1,5 +1,17 @@
 import React, { Component } from 'react';
 
+/**
+ * @desc Component that handles events from react-native-navigation and passes it as functions to override.
+ * @example
+ * class ScreenComponent extends NavigatorComponent {
+ *
+ *   onDidAppear() {
+ *     console.log('Screen appears on screen!');
+ *   }
+ *
+ * }
+ * @note Don't forget to call super if you override constructor or onNavigatorEvent method of that class.
+ */
 export default class NavigatorComponent extends Component {
 
   constructor(props) {
@@ -35,21 +47,40 @@ export default class NavigatorComponent extends Component {
     }
   };
 
+  /**
+   * @desc Method that is called when navigation button is pressed.
+   * @param id ID of pressed button
+   */
   onNavBarButtonPress(id: string) {
   }
 
+  /**
+   * @desc Method that is called when component is about to appear on screen.
+   */
   onWillAppear() {
   }
 
+  /**
+   * @desc Method that is called when component appears on screen.
+   */
   onDidAppear() {
   }
 
+  /**
+   * @desc Method that is called when component is about to disappear from screen.
+   */
   onWillDisappear() {
   }
 
+  /**
+   * @desc Method that is called when component disappears from screen.
+   */
   onDidDisappear() {
   }
 
+  /**
+   * @desc Method that is called when tab of bottom bar is selected twice or more time.
+   */
   onBottomTabReselected() {
   }
 

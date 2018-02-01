@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NationListHeader renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#EEEEEE",
+      "flex": 1,
+      "flexDirection": "row",
+      "height": 30,
+      "justifyContent": "center",
+      "opacity": 0.5,
+    }
+  }
+>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "color": "#6D6D72",
+        "flex": 1,
+        "fontSize": 13,
+        "marginLeft": 15,
+      }
+    }
+  >
+    Test header title
+  </Text>
+</View>
+`;
