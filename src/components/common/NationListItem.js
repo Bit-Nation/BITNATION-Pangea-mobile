@@ -14,7 +14,9 @@ export default class NationListItem extends Component {
   render() {
     return (
       <View style={styles.sectionListItemContainer}>
-        <TouchableOpacity onPress={() => this.props.onPress(this.props.item.id)} style={styles.sectionListTouchable}>
+        <TouchableOpacity testID='Touchable'
+                          onPress={() => this.props.onPress(this.props.id)}
+                          style={styles.sectionListTouchable}>
           <Text style={styles.listItemText}>
             {this.props.text}
           </Text>
