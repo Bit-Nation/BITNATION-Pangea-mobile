@@ -7,7 +7,7 @@ import {
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
-import Images from '../../global/AssetsImages';
+import Images from '../../global/assetsImages';
 import styles from './styles';
 import { screen } from '../../global/Screens';
 

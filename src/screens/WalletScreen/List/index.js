@@ -6,7 +6,7 @@ import {
 import PropTypes from 'prop-types';
 
 import styles from './styles';
-import Images from '../../../global/AssetsImages';
+import Images from '../../../global/assetsImages';
 import WalletCard from '../../../components/WalletCard';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';

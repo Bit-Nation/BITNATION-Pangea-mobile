@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styles from './styles';
 import { GiftedChat, Composer, InputToolbar } from 'react-native-gifted-chat';
-import AssetsImages from '../../global/AssetsImages';
+import AssetsImages from '../../global/assetsImages';
 
 import BackgroundImage from '../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../components/common/FakeNavigationBar';

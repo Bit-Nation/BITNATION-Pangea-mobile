@@ -1,4 +1,4 @@
-import AssetsImages from './AssetsImages';
+import AssetsImages from './assetsImages';
 import Colors from './Colors';
 import { Platform } from 'react-native';
 

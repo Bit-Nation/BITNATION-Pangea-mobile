@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 
-import Images from '../../../global/AssetsImages';
+import Images from '../../../global/assetsImages';
 import Colors from '../../../global/Colors';
 import styles from './styles';
 import Button from '../../../components/common/Button';

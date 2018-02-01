@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 import styles from './styles';
 import PropTypes from 'prop-types';
-import Images from '../../global/AssetsImages';
+import Images from '../../global/assetsImages';
 import Button from '../common/Button';
 
 const WalletCard = (props) => {

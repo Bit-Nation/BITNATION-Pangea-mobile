@@ -21,7 +21,7 @@ import FakeNavigationBar from '../../../components/common/FakeNavigationBar'
 import MessageView from '../../../components/common/MessageView'
 import SwitchLabeled from '../../../components/common/SwitchLabeled'
 import MultiSelect from '../../../components/MultiSelect'
-import Images from '../../../global/AssetsImages'
+import Images from '../../../global/assetsImages'
 import Loading from '../../../components/common/Loading';
 import ModalDropdown from 'react-native-modal-dropdown'
 

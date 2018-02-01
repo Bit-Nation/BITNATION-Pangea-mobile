@@ -5,7 +5,7 @@ import {
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import Images from '../../../../global/AssetsImages';
+import Images from '../../../../global/assetsImages';
 import styles from './styles';
 import Button from '../../../../components/common/Button';
 import BackgroundImage from '../../../../components/common/BackgroundImage';

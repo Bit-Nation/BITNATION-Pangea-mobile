@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Text,Image,View, StyleSheet,ListView, TouchableOpacity} from 'react-native';
 import styles from './styles';
 import PropTypes from 'prop-types';
-import Images from '../../global/AssetsImages';
+import Images from '../../global/assetsImages';
 
 
 

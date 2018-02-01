@@ -16,7 +16,7 @@ import PrivateKeyTextInputContainer from '../../../../components/PrivateKeyTextI
 import { KEY_COLUMN_COUNT, KEY_PAGE_ROW_COUNT, KEY_LENGTH } from '../../../../global/Constants';
 import KeyBaseScreen from '../../KeyBaseScreen/index';
 import { createPrivateKey, removePrivateKey } from '../../../../actions/key';
-import AssetsImages from '../../../../global/AssetsImages';
+import AssetsImages from '../../../../global/assetsImages';
 
 
 class CreateKeyInstructionScreen extends KeyBaseScreen {

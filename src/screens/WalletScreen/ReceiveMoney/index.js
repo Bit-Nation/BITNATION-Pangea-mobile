@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import QRCode from 'react-native-qrcode';
 
 import styles from './styles';
-import AssetsImages from '../../../global/AssetsImages';
+import AssetsImages from '../../../global/assetsImages';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import { resolveWallet } from '../../../utils/wallet';
