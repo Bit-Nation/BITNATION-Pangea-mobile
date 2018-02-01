@@ -12,7 +12,7 @@ import _ from 'lodash';
 
 import styles from './styles';
 import BackgroundImage from '../../../components/common/BackgroundImage';
-import AssetsImage from '../../../global/assetsImages';
+import AssetsImage from '../../../global/assetsImagesResources';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import Colors from '../../../global/Colors';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';

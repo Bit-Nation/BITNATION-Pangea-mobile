@@ -2,7 +2,7 @@ import React from 'react';
 import { Image } from 'react-native';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
 
-import AssetsImages from '../../global/assetsImages';
+import AssetsImages from '../../global/assetsImagesResources';
 
 export default class BackgroundImage extends React.Component {
 

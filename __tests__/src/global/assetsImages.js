@@ -1,4 +1,4 @@
-import Images from "../../../src/global/assetsImages";
+import Images from "../../../src/global/assetsImagesResources";
 
 
 test('Image Assets', () => {

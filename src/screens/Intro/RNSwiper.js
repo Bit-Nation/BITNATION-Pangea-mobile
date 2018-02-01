@@ -6,7 +6,7 @@ import {
   Image
 } from 'react-native'
 import Swiper from 'react-native-swiper'
-import Images from '../../global/assetsImages';
+import Images from '../../global/assetsImagesResources';
 import Colors from '../../global/Colors';
 
 var styles = {
