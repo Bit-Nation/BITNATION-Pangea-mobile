@@ -1,11 +1,35 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { shallow } from 'enzyme';
 
 import NationListItem from '../../../../src/components/common/NationListItem';
 
-test('NationListItem renders correctly', () => {
-  const tree = renderer
-    .create(<NationListItem text='Test list item'/>)
-    .toJSON();
-  expect(tree).toMatchSnapshot();
+describe('NationListItem tests', () => {
+
+  describe('Rendering', () => {
+
+    test('With text', () => {
+      const wrapper = shallow(<NationListItem text='Test list item'/>);
+      expect(wrapper).toMatchSnapshot();
+    });
+
+  });
+
+  describe('Behaviour', () => {
+
+    test('Press', () => {
+      const mockFunc = jest.fn();
+      const id = 'Test id';
+      const wrapper = shallow(<NationListItem text='Test list item' onPress={mockFunc} id={id}/>);
+      expect(wrapper).toMatchSnapshot();
+      const render = wrapper.dive();
+      const touchables = render.find('[testID="Touchable"]');
+      expect(touchables).toHaveLength(1);
+      touchables.props().onPress();
+      expect(mockFunc).toHaveBeenCalledTimes(1);
+      expect(mockFunc).toHaveBeenCalledWith(id);
+    });
+
+  });
+
 });
+
