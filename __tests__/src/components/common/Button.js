@@ -1,7 +1,6 @@
 import React from 'react';
 import { Text } from 'react-native';
 import { shallow } from 'enzyme';
-import renderer from 'react-test-renderer';
 
 import Button from '../../../../src/components/common/Button';
 
