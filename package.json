@@ -5,6 +5,7 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "flow && jest",
+    "test:update": "jest -u",
     "test:coverage": "flow && jest --coverage",
     "test:coveralls": "yarn test:coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "ios": "flow && node_modules/.bin/react-native run-ios",
