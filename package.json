@@ -9,6 +9,7 @@
     "test:e2e:debug:build": "detox build -c ios.sim.debug && detox build -c android.emu.debug",
     "test:e2e:release": "detox test -c ios.sim.release && detox test -c android.emu.release",
     "test:e2e:release:build": "detox build -c ios.sim.release && detox build -c android.emu.release",
+    "test:e2e:bitrise:build": "detox build -c ios.sim.release.bitrise && detox build -c android.emu.release.bitrise",
     "test:e2e:bitrise": "detox test -c ios.sim.release.bitrise && detox test -c android.emu.release.bitrise",
     "test:coveralls": "npm run test && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "ios": "flow && node_modules/.bin/react-native run-ios",
