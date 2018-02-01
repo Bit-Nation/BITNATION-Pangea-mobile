@@ -55,25 +55,29 @@ describe('Button component tests', () => {
 
   });
 
-  test('Press works', () => {
-    const onPress = jest.fn();
-    const wrapper = shallow(<Button onPress={onPress} enabled={true}/>);
-    expect(wrapper).toMatchSnapshot();
-    const render = wrapper.dive();
-    const touchables = render.find('[testID="Touchable"]');
-    expect(touchables).toHaveLength(1);
-    touchables.simulate('press');
-    expect(onPress).toHaveBeenCalledTimes(1);
-  });
+  describe('Behaviour', () => {
 
-  test('Press does not work when button is disabled', () => {
-    const onPress = jest.fn();
-    const wrapper = shallow(<Button onPress={onPress} enabled={false}/>);
-    expect(wrapper).toMatchSnapshot();
-    const render = wrapper.dive();
-    const touchables = render.find('[testID="Touchable"]');
-    expect(touchables).toHaveLength(1);
-    expect(touchables.props()).toEqual(expect.objectContaining({ disable: true }));
+    test('Press works', () => {
+      const onPress = jest.fn();
+      const wrapper = shallow(<Button onPress={onPress} enabled={true}/>);
+      expect(wrapper).toMatchSnapshot();
+      const render = wrapper.dive();
+      const touchables = render.find('[testID="Touchable"]');
+      expect(touchables).toHaveLength(1);
+      touchables.simulate('press');
+      expect(onPress).toHaveBeenCalledTimes(1);
+    });
+
+    test('Press does not work when button is disabled', () => {
+      const onPress = jest.fn();
+      const wrapper = shallow(<Button onPress={onPress} enabled={false}/>);
+      expect(wrapper).toMatchSnapshot();
+      const render = wrapper.dive();
+      const touchables = render.find('[testID="Touchable"]');
+      expect(touchables).toHaveLength(1);
+      expect(touchables.props()).toEqual(expect.objectContaining({ disable: true }));
+    });
+
   });
 
 });

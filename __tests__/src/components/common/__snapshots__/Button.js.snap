@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button component tests Press does not work when button is disabled 1`] = `
+exports[`Button component tests Behaviour Press does not work when button is disabled 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
@@ -188,7 +188,7 @@ ShallowWrapper {
 }
 `;
 
-exports[`Button component tests Press works 1`] = `
+exports[`Button component tests Behaviour Press works 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
