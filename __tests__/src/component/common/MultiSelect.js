@@ -15,7 +15,7 @@ test('MultiSelect renders correctly', () => {
         id: 'id2',
         name: 'Testing Opt 2',
       }]}
-      uniqueKey="id"
+      uniqueKey='id'
       submitButtonText={Strings.ok}
     />
   ).toJSON();
@@ -33,12 +33,12 @@ test('MultiSelect renders correctly with customized colors', () => {
         id: 'id2',
         name: 'Testing Opt 2',
       }]}
-      uniqueKey="id"
-      tagRemoveIconColor="#CCC"
-      tagBorderColor="#CCC"
-      tagTextColor="#CCC"
+      uniqueKey='id'
+      tagRemoveIconColor='#CCC'
+      tagBorderColor='#CCC'
+      tagTextColor='#CCC'
       itemTextColor={Colors.textSecondary}
-      displayKey="name"
+      displayKey='name'
       submitButtonColor={Colors.panelBoxColor}
       submitButtonText={Strings.ok}
     />
