@@ -1,7 +1,7 @@
 # Bitnation Pangea Mobile Client
 
 [![Build Status](https://semaphoreci.com/api/v1/florianlenz/bitnation-pangea-mobile/branches/master/badge.svg)](https://semaphoreci.com/florianlenz/bitnation-pangea-mobile)
-[![Coverage Status](https://coveralls.io/repos/github/Bit-Nation/BITNATION-Pangea-mobile/badge.svg?branch=master)](https://coveralls.io/github/Bit-Nation/BITNATION-Pangea-mobile?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/Bit-Nation/BITNATION-Pangea-mobile/badge.svg?branch=master)](https://coveralls.io/github/Bit-Nation/BITNATION-Pangea-mobile?branch=develop)
 [Docs](http://bitnation-pangea-mobile.readthedocs.io/)
 
 ## Docs
