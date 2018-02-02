@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import styles from './styles';
-import Colors from '../../../../global/Colors';
+import Colors from '../../../../global/colors';
 import { screen } from '../../../../global/Screens';
 import Button from '../../../../components/common/Button';
 import BackgroundImage from '../../../../components/common/BackgroundImage';

@@ -20,7 +20,7 @@ import {
 import KeyBaseScreen from '../../KeyBaseScreen';
 import Button from '../../../../components/common/Button';
 import { changeEnteredMnemonic, removePrivateKey, validateEnteredMnemonic } from '../../../../actions/key';
-import Colors from '../../../../global/Colors';
+import Colors from '../../../../global/colors';
 
 const DONE_BUTTON = 'DONE_BUTTON';
 

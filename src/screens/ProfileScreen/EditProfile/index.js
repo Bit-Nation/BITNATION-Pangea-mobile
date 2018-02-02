@@ -16,7 +16,7 @@ import styles from './styles';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import AssetsImage from '../../../global/AssetsImages';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
-import Colors from '../../../global/Colors';
+import Colors from '../../../global/colors';
 import { ActionSheet } from 'native-base';
 import PanelView from '../../../components/common/PanelView';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';

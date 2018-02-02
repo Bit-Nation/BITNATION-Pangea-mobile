@@ -1,4 +1,4 @@
-import Colors, {convertHex} from '../../../src/global/Colors';
+import Colors, {convertHex} from '../../../src/global/colors';
 
 test('convert hex to rgba', () => {
 	expect(convertHex('#FF120AE')).toBe('rgb(255,18,10)')

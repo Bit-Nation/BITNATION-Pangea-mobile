@@ -1,5 +1,5 @@
 import { MediaQueryStyleSheet } from 'react-native-responsive';
-import Colors from '../../global/Colors';
+import Colors from '../../global/colors';
 import {Dimensions} from 'react-native';
 
 var {height, width} = Dimensions.get('window');

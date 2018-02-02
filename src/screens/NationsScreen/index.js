@@ -8,7 +8,7 @@ import NationsListScreen from './NationsListScreen';
 import { switchNationTab, openNation, requestFetchNations } from '../../actions/nations';
 import { screen } from '../../global/Screens';
 import { resolveNation } from '../../utils/nations';
-import Colors from '../../global/Colors';
+import Colors from '../../global/colors';
 import NavigatorComponent from '../../components/common/NavigatorComponent';
 
 const NEW_BUTTON = 'NEW_BUTTON';

@@ -18,7 +18,7 @@ import {
 } from '../../../../global/Constants';
 import KeyBaseScreen from '../../KeyBaseScreen/index';
 import { removePrivateKey } from '../../../../actions/key';
-import Colors from '../../../../global/Colors';
+import Colors from '../../../../global/colors';
 
 const DONE_BUTTON = 'DONE_BUTTON';
 
