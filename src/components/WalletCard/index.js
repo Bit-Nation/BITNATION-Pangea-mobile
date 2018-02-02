@@ -2,9 +2,12 @@
  * @desc Generates a "Card" for display a Wallet on screen with Name, Balance and Send/Receive buttons
  * @type React.Component
  *
- * @param props.nameHeading {String} Name for the wallet
- * @param props.balance {String} Balance of the wallet
- * @param props.icon {String} Path to image to be displayed
+ * @param props.nameHeading     {String} Name for the wallet
+ * @param props.balance         {String} Balance of the wallet
+ * @param props.imagePath       {String} Path to image to be displayed
+ * @param props.messageText     {String} Text to be displayed below the wallet
+ * @param props.onSendPress     {Button} Button to send ETH transactions
+ * @param props.onReceivePress  {Button} Button to receive ETH transactions
  */
 
 import React, { Component } from 'react';
