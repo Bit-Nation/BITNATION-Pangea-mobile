@@ -2,12 +2,16 @@ import React, { Component } from 'react';
 import { ActivityIndicator, View } from 'react-native';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
 
+/**
+ * @desc Component to render loading indicator on top of a container.
+ * @type React.Component
+ */
 export default class Loading extends Component {
 
   render() {
     return (
       <View style={styles.container}>
-        <ActivityIndicator style={styles.activityIndicator}/>
+        <ActivityIndicator/>
       </View>
     );
   }
@@ -25,5 +29,4 @@ const styles = MediaQueryStyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  activityIndicator: {},
 });

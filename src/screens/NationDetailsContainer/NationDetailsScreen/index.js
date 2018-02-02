@@ -10,7 +10,7 @@ import styles from './styles'
 import { resolveNation } from '../../../utils/nations'
 import NationActionButton from '../../../components/common/NationActionButton'
 import AssetsImage from '../../../global/AssetsImages'
-import MessageView from '../../../components/common/MessageView'
+import PanelView from '../../../components/common/PanelView'
 import DemoImage from '../../../components/common/DemoImage'
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar'
 import Strings from '../../../global/Strings'
@@ -41,16 +41,16 @@ class NationDetailsScreen extends Component {
 					<ScrollView style={styles.scrollView}>
 						{/* Fake Map panel */}
 						{/*
-            <MessageView style={[styles.messageView]}>
+            <PanelView style={[styles.messageView]}>
               <Image source={AssetsImage.Placeholder.map} resizeMode='contain'/>
-            </MessageView>
+            </PanelView>
 */}
 						
 						{/* Fake Achievements Panel */}
 						{/*
-            <MessageView style={[styles.messageView]}>
+            <PanelView style={[styles.messageView]}>
               <Image source={AssetsImage.Placeholder.achievements} resizeMode='contain'/>
-            </MessageView>
+            </PanelView>
 */}
 						{this._buildAboutView(nation)}
 						{this._buildGovernmentalStructureView(nation)}
@@ -79,12 +79,12 @@ class NationDetailsScreen extends Component {
 	}
 	
 	// Useful Notes:
-	// MessageView Props: title = text, messageText = text, style, renderBottom = method, renderAdditionalInfo = method, children = main text of the display
+	// PanelView Props: title = text, messageText = text, style, renderBottom = method, renderAdditionalInfo = method, children = main text of the display
 	// DemoImage overlays a message telling user this is a demonstration
 	
 	_buildAboutView (nation) {
 		return (
-			<MessageView style={styles.messageView}
+			<PanelView style={styles.messageView}
 			             title={`About ${nation.nationName}`}>
 				<Text style={styles.panelSubTitle}>
 					Description:
@@ -101,13 +101,13 @@ class NationDetailsScreen extends Component {
 				<Text style={styles.footnote}>
 					{nation.ethAddress}
 				</Text>
-			</MessageView>
+			</PanelView>
 		)
 	}
 	
 	_buildGovernmentalStructureView (nation) {
 		return (
-			<MessageView style={styles.messageView}
+			<PanelView style={styles.messageView}
 			             title='Governmental Structure'>
 				<Text style={styles.panelBody}>
 					{nation.nationName + ' '}
@@ -117,13 +117,13 @@ class NationDetailsScreen extends Component {
 					The government is a <Text style={styles.bodyBold}>{' ' + nation.decisionMakingProcess +
 				'. '}</Text>
 				</Text>
-			</MessageView>
+			</PanelView>
 		)
 	}
 	
 	_buildFactsView (nation) {
 		return (
-			<MessageView style={styles.messageView} title={'Fun Facts'}>
+			<PanelView style={styles.messageView} title={'Fun Facts'}>
 				<Text style={styles.panelBody}>
 					{nation.diplomaticRecognition ? nation.nationName + ' is seeking diplomatic recognition from Earth governments as a sovereign entity.\n\n'
 							:  ''}
@@ -132,7 +132,7 @@ class NationDetailsScreen extends Component {
 					
 					The nation is managed as a {nation.profit ? 'for-profit' : 'non-profit'} entity.
 				</Text>
-			</MessageView>
+			</PanelView>
 		)
 	}
 	

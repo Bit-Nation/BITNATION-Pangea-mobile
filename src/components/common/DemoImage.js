@@ -4,6 +4,10 @@ import { MediaQueryStyleSheet } from 'react-native-responsive';
 
 import AssetsImages from '../../global/AssetsImages';
 
+/**
+ * @desc Component to place "demo" icon on top of a component.
+ * @type React.Component
+ */
 export default class DemoImage extends Component {
 
   render() {
@@ -25,5 +29,5 @@ const styles = MediaQueryStyleSheet.create({
     top: 0,
     justifyContent: 'center',
     alignItems: 'center',
-  }
+  },
 });
