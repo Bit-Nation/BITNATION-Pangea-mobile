@@ -1,23 +1,54 @@
 import SwitchLabeled from '../../../../src/components/common/SwitchLabeled';
 import React from 'react';
 import renderer from 'react-test-renderer'
-import Strings from "../../../../src/global/Strings";
 
-test('SwitchLabeled renders correctly', () => {
-  const tree = renderer.create(
-    <SwitchLabeled
-      label={'Testing SwitchLabeled'}
-    />
-  ).toJSON();
-  expect(tree).toMatchSnapshot();
-});
+describe('SwitchLabeled component tests', () => {
 
-test('SwitchLabeled renders correctly with set value', () => {
-  const tree = renderer.create(
-    <SwitchLabeled
-      label={'Testing SwitchLabeled'}
-      value={true}
-    />
-  ).toJSON();
-  expect(tree).toMatchSnapshot();
+  describe('SwitchLabeled rendering', () => {
+
+    test('SwitchLabeled renders correctly', () => {
+      const tree = renderer.create(
+        <SwitchLabeled
+          label={'Testing SwitchLabeled'}
+        />
+      ).toJSON();
+      expect(tree).toMatchSnapshot();
+    });
+
+    test('SwitchLabeled renders correctly with set value', () => {
+      const tree = renderer.create(
+        <SwitchLabeled
+          label={'Testing SwitchLabeled'}
+          value={true}
+        />
+      ).toJSON();
+      expect(tree).toMatchSnapshot();
+    });
+
+  });
+
+  describe('SwitchLabeled behaviour', () => {
+
+    test('SwitchLabeled setup to be true', () => {
+      const tree = renderer.create(
+        <SwitchLabeled
+          label={'Testing SwitchLabeled'}
+          value={true}
+        />
+      ).toJSON();
+      expect(tree).toBeTruthy();
+    });
+
+    test('SwitchLabeled setup to be false', () => {
+      const tree = renderer.create(
+        <SwitchLabeled
+          label={'Testing SwitchLabeled'}
+          value={false}
+        />
+      ).toJSON();
+      expect(tree.value).toBeFalsy();
+    });
+
+  });
+
 });

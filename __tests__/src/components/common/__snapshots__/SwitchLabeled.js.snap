@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SwitchLabeled renders correctly 1`] = `
+exports[`SwitchLabeled component tests SwitchLabeled rendering SwitchLabeled renders correctly 1`] = `
 <View
   style={
     Object {
@@ -63,7 +63,7 @@ exports[`SwitchLabeled renders correctly 1`] = `
 </View>
 `;
 
-exports[`SwitchLabeled renders correctly with set value 1`] = `
+exports[`SwitchLabeled component tests SwitchLabeled rendering SwitchLabeled renders correctly with set value 1`] = `
 <View
   style={
     Object {
