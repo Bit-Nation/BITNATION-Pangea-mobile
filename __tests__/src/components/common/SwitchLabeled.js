@@ -1,6 +1,7 @@
 import SwitchLabeled from '../../../../src/components/common/SwitchLabeled';
 import React from 'react';
 import renderer from 'react-test-renderer'
+import {shallow} from "enzyme/build/index";
 
 describe('SwitchLabeled component tests', () => {
 
@@ -47,6 +48,22 @@ describe('SwitchLabeled component tests', () => {
         />
       ).toJSON();
       expect(tree.value).toBeFalsy();
+    });
+
+    test('SwitchLabeled change of value', () => {
+      const onValueChange = jest.fn();
+      const wrapper  = shallow(<SwitchLabeled
+        onValueChange={onValueChange}
+        label={'Testing for change value'}
+        value={false}
+      />);
+
+      const render = wrapper.dive();
+      const value = render.find('Switch');
+      render.find('Switch').forEach(child => {
+        child.simulate('valueChange');
+      });
+      expect(onValueChange).toBeCalled();
     });
 
   });
