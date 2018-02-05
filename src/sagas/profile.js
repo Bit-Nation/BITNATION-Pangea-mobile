@@ -1,17 +1,13 @@
 import { call, put, select, takeEvery } from 'redux-saga/effects';
 import type { ProfileType } from 'BITNATION-Pangea-libs/src/database/schemata';
-
-import PangeaContainer from '../services/container';
+import { getPangeaLibrary } from '../services/container';
 import { REQUEST_PROFILE_UPDATE, DONE_USER_EDITING, SET_USER_PROFILE, REQUEST_GET_PROFILE } from '../actions/profile';
 
-function getPangeaLibrary() {
-  return PangeaContainer;
-}
-
-function* updateProfile() {
+export const getProfileState = state => state.profile
+export function* updateProfile() {
   try {
     let pangeaLib = yield call(getPangeaLibrary);
-    let user = yield select(state => state.profile);
+    let user = yield select(getProfileState);
     const profile: ProfileType = {
       id: 0,
       name: user.editingUser.name ? user.editingUser.name.trim() : '',
@@ -29,7 +25,7 @@ function* updateProfile() {
   }
 }
 
-function* getProfile() {
+export function* getProfile() {
   try {
     let pangeaLib = yield call(getPangeaLibrary);
     let profile = yield call(pangeaLib.profile.profile.getProfile);

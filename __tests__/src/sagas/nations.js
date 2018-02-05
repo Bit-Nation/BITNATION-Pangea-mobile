@@ -1,5 +1,4 @@
 import { call, put, select } from 'redux-saga/effects'
-import { delay } from 'redux-saga'
 import { checkConnection, createNation, fetchNations, joinNation, leaveNation, getNations } from '../../../src/sagas/nations'
 import {
   CANCEL_NATION_CREATE, DONE_NATION_CREATE, START_NATIONS_FETCH, DONE_FETCH_NATIONS,
