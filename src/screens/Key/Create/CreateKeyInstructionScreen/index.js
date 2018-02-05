@@ -1,22 +1,28 @@
 import React, { Component } from 'react';
 import {
-  View, TouchableOpacity, Alert, Platform, ScrollView, Image,
+  View, ScrollView, Image, Text,
 } from 'react-native';
 import styles from './styles';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { screen, androidNavigationButtons } from '../../../../global/Screens';
+import { screen } from '../../../../global/Screens';
 import BackgroundImage from '../../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
-import Text from '../../../../components/common/Text';
-import GridView from '../../../../components/GridView';
 import Button from '../../../../components/common/Button';
-import PrivateKeyTextInputContainer from '../../../../components/PrivateKeyTextInputContainer';
-import { KEY_COLUMN_COUNT, KEY_PAGE_ROW_COUNT, KEY_LENGTH } from '../../../../global/Constants';
+import { KEY_LENGTH } from '../../../../global/Constants';
 import KeyBaseScreen from '../../KeyBaseScreen/index';
 import { createPrivateKey, removePrivateKey } from '../../../../actions/key';
 import AssetsImages from '../../../../global/AssetsImages';
+import BodyParagraphs from '../../../../components/common/BodyParagraphs';
+
+const topParagraphs = [
+  `We will show you a group of ${KEY_LENGTH} words that is the private key that unlocks your wallet.`,
+];
+
+const bottomParagraphs = [
+  'Write the words on paper, in order. Store the paper in very safe place. If your device is lost, stolen, broken, or upgraded, you must have this key to restore or unlock your wallet.',
+];
 
 
 class CreateKeyInstructionScreen extends KeyBaseScreen {
@@ -26,44 +32,22 @@ class CreateKeyInstructionScreen extends KeyBaseScreen {
     this.props.navigator.push(screen('CREATE_KEY_PROCESS_SCREEN'));
   }
 
-  _renderText = (index) => {
-    return (
-      <PrivateKeyTextInputContainer
-        editable={false}
-        index={index}
-        value='word'
-        label={(index + 1).toString()}
-        key={index}
-        style={{ marginLeft: (index % KEY_COLUMN_COUNT === 0) ? 0 : 10 }}
-      />
-    );
-  };
-
   render() {
     return (
-      <View style={styles.container}>
+      <View style={styles.screenContainer}>
         <BackgroundImage/>
         <FakeNavigationBar/>
-        <View style={styles.contentContainer}>
-          <View style={styles.instructionContainer}>
-            <Text messageText style={styles.instruction}>
-              We will show you a group of {KEY_LENGTH} words that is the private key that unlocks your wallet.
-            </Text>
-          </View>
+        <ScrollView contentContainerStyle={styles.bodyContainer}>
+          <BodyParagraphs paragraphs={topParagraphs}/>
           <View style={styles.gridContainer}>
-            <Image style={styles.privateKeyDemoImage} resizeMode='contain' source={AssetsImages.privateKeyDemo} />
+            <Image style={styles.privateKeyDemoImage} resizeMode='contain' source={AssetsImages.privateKeyDemo}/>
           </View>
-          <View style={styles.instructionContainer}>
-            <Text messageText style={styles.instruction}>
-              Write the words on paper, in order. Store the paper in very safe place. If your device is lost, stolen,
-              broken, or upgraded, you must have this key to restore or unlock your wallet.
-            </Text>
-          </View>
+          <BodyParagraphs paragraphs={bottomParagraphs}/>
           <View style={styles.buttonContainer}>
             <Button title='Begin'
                     onPress={() => this.onNextButtonPressed()}/>
           </View>
-        </View>
+        </ScrollView>
       </View>
     );
   }

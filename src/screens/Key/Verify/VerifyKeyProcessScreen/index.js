@@ -8,21 +8,25 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import { connect } from 'react-redux';
 
 import styles from './styles';
-import { screen, androidNavigationButtons } from '../../../../global/Screens';
+import { screen } from '../../../../global/Screens';
 import BackgroundImage from '../../../../components/common/BackgroundImage';
-import Text from '../../../../components/common/Text';
 import GridView from '../../../../components/GridView/index';
 import PrivateKeyTextInputContainer from '../../../../components/PrivateKeyTextInputContainer/index';
 import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
 import {
-  KEY_LENGTH, KEY_COLUMN_COUNT, KEY_ROW_COUNT, KEY_PAGE_ROW_COUNT, KEY_PAGE_LENGTH, KEY_PAGE_COUNT,
+  KEY_LENGTH, KEY_COLUMN_COUNT, KEY_PAGE_ROW_COUNT, KEY_PAGE_LENGTH, KEY_PAGE_COUNT,
 } from '../../../../global/Constants';
 import KeyBaseScreen from '../../KeyBaseScreen';
 import Button from '../../../../components/common/Button';
 import { changeEnteredMnemonic, removePrivateKey, validateEnteredMnemonic } from '../../../../actions/key';
 import Colors from '../../../../global/colors';
+import BodyParagraphs from '../../../../components/common/BodyParagraphs';
 
 const DONE_BUTTON = 'DONE_BUTTON';
+
+const paragraphs = [
+  `Enter in the correct order the ${KEY_LENGTH} words that you wrote down as your paper key. Tap a box to begin.`,
+];
 
 class VerifyKeyProcessScreen extends KeyBaseScreen {
 
@@ -163,41 +167,34 @@ class VerifyKeyProcessScreen extends KeyBaseScreen {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={styles.screenContainer}>
         <BackgroundImage/>
         <FakeNavigationBar/>
         <KeyboardAwareScrollView
-          contentContainerStyle={styles.scrollViewContentContainer}
+          contentContainerStyle={styles.bodyContainer}
           enableAutoAutomaticScroll={false}
           extraHeight={48.5 + 44 + (Platform.OS === 'android' ? 22 : 0)}
           enableOnAndroid
           keyboardShouldPersistTaps='handled'
           ref={(scrollView) => this.scrollView = scrollView}>
-          <View>
-            <View style={styles.instructionContainer}>
-              <Text messageText style={styles.instruction}>
-                Enter in the correct order the {KEY_LENGTH} words that you wrote down as your paper key. Tap a box to
-                begin.
-              </Text>
-            </View>
-            <View style={styles.gridContainer}>
-              <GridView
-                itemsPerRow={KEY_COLUMN_COUNT}
-                rowsCount={KEY_PAGE_ROW_COUNT}
-                renderItem={this._renderTextInput}
-                style={styles.gridView}
-              />
-            </View>
-            <View style={styles.buttonContainer}>
-              <Button title='Previous'
-                      onPress={this.onPreviousPressed}
-                      style={styles.button}
-                      enabled={this.state.currentPage > 0}/>
-              <Button title='Next'
-                      onPress={this.onNextPressed}
-                      style={styles.button}
-                      enabled={this.state.currentPage < KEY_PAGE_COUNT - 1}/>
-            </View>
+          <BodyParagraphs paragraphs={paragraphs}/>
+          <View style={styles.gridContainer}>
+            <GridView
+              itemsPerRow={KEY_COLUMN_COUNT}
+              rowsCount={KEY_PAGE_ROW_COUNT}
+              renderItem={this._renderTextInput}
+              style={styles.gridView}
+            />
+          </View>
+          <View style={styles.buttonContainer}>
+            <Button title='Previous'
+                    onPress={this.onPreviousPressed}
+                    style={styles.button}
+                    enabled={this.state.currentPage > 0}/>
+            <Button title='Next'
+                    onPress={this.onNextPressed}
+                    style={styles.button}
+                    enabled={this.state.currentPage < KEY_PAGE_COUNT - 1}/>
           </View>
         </KeyboardAwareScrollView>
       </View>
