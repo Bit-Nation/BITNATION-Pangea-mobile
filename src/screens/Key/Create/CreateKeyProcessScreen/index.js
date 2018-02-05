@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
-  View, TouchableOpacity, Alert, Platform, ScrollView,
+  View, Alert, Text,
 } from 'react-native';
 import styles from './styles';
 import PropTypes from 'prop-types';
@@ -9,16 +9,14 @@ import { connect } from 'react-redux';
 import { screen } from '../../../../global/Screens';
 import BackgroundImage from '../../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
-import Text from '../../../../components/common/Text';
 import GridView from '../../../../components/GridView';
 import Button from '../../../../components/common/Button';
 import PrivateKeyTextInputContainer from '../../../../components/PrivateKeyTextInputContainer';
 import {
-  KEY_ROW_COUNT, KEY_COLUMN_COUNT, KEY_PAGE_ROW_COUNT, KEY_PAGE_LENGTH, KEY_PAGE_COUNT,
+  KEY_COLUMN_COUNT, KEY_PAGE_ROW_COUNT, KEY_PAGE_LENGTH, KEY_PAGE_COUNT,
 } from '../../../../global/Constants';
 import KeyBaseScreen from '../../KeyBaseScreen/index';
 import { removePrivateKey } from '../../../../actions/key';
-import Colors from '../../../../global/Colors';
 
 const DONE_BUTTON = 'DONE_BUTTON';
 
@@ -107,12 +105,12 @@ class CreateKeyProcessScreen extends KeyBaseScreen {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={styles.screenContainer}>
         <BackgroundImage/>
         <FakeNavigationBar/>
-        <View style={styles.contentContainer}>
-          <View style={styles.instructionContainer}>
-            <Text messageText style={styles.instruction}>
+        <View style={styles.bodyContainer}>
+          <View style={styles.bodyParagraph}>
+            <Text style={styles.body}>
               Write each row of words on the piece of paper. Press “Next” when you have written the row.
             </Text>
           </View>

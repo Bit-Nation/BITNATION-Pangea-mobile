@@ -1,31 +1,17 @@
 import { StyleSheet } from 'react-native';
+
 import Colors from '../../../../global/Colors';
+import GlobalStyles from '../../../../global/Styles';
 
 export default styles = StyleSheet.create({
-
-  container: {
-    flex: 1,
-  },
-  contentContainer: {
-    paddingLeft: 15,
-    paddingRight: 15,
-    flex: 1,
-  },
-  instructionContainer: {
-    marginTop: 14,
-    backgroundColor: Colors.Transparent,
-    marginBottom: 20,
-  },
-  instruction: {
-    textAlign: 'left',
-  },
+  ...GlobalStyles,
   gridView: {
     flex: 1,
   },
   gridContainer: {
     height: 241,
     borderRadius: 8,
-    backgroundColor: 'rgba(27,57,92,0.7)',
+    backgroundColor: Colors.shadeOf(Colors.BitnationDarkColor, 0.7),
     paddingTop: 20,
     paddingBottom: 3,
     paddingLeft: 12,
