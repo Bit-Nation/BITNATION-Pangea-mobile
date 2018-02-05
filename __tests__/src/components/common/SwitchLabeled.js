@@ -36,8 +36,8 @@ describe('SwitchLabeled component tests', () => {
           label={'Testing SwitchLabeled'}
           value={true}
         />
-      ).toJSON();
-      expect(tree).toBeTruthy();
+      );
+      expect(tree.root.props.value).toBeTruthy();
     });
 
     test('SwitchLabeled setup to be false', () => {
@@ -46,8 +46,8 @@ describe('SwitchLabeled component tests', () => {
           label={'Testing SwitchLabeled'}
           value={false}
         />
-      ).toJSON();
-      expect(tree.value).toBeFalsy();
+      );
+      expect(tree.root.props.value).toBeFalsy();
     });
 
     test('SwitchLabeled change of value', () => {
