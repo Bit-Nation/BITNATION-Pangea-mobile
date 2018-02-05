@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-import { TouchableOpacity, View } from 'react-native';
+import {
+  TouchableOpacity,
+  View,
+  Text,
+} from 'react-native';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
 import PropTypes from 'prop-types';
 
-import Text from './Text';
 import GlobalStyles from '../../global/Styles';
 
 /**
@@ -33,7 +36,7 @@ export default class Button extends Component {
 
   _renderTitle() {
     return (
-      <Text buttonTitle={this.props.enabled} disabledButtonTitle={!this.props.enabled}>
+      <Text style={this.props.enabled ? styles.buttonTitle : styles.disabledButtonTitle}>
         {this.props.title}
       </Text>
     );

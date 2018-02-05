@@ -41,7 +41,6 @@ const WalletCard = (props) => {
           </View>
 
           <View style={styles.spacer}/>
-          <Text style={styles.messageText}>{props.messageText}</Text>
         </View>
 
       </View>
@@ -54,7 +53,6 @@ WalletCard.propTypes = {
   imagePath: PropTypes.number,
   nameHeading: PropTypes.string,
   nameSubheading: PropTypes.string,
-  messageText: PropTypes.string,
   onSendPress: PropTypes.func,
   onReceivePress: PropTypes.func,
 };
@@ -63,7 +61,6 @@ WalletCard.defaultProps = {
   imagePath: 'https://facebook.github.io/react-native/docs/assets/favicon.png',
   nameHeading: 'Ethernum',
   nameSubheading: '173324 Enum',
-  messageText: '',
   onSendPress: () => null,
   onReceivePress: () => null,
 };
