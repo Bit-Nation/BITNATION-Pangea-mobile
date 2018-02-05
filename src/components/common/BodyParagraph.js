@@ -6,7 +6,7 @@ import { MediaQueryStyleSheet } from 'react-native-responsive';
 import GlobalStyles from '../../global/Styles';
 
 /**
- * @desc Component to create a paragraph of body text.
+ * @desc Component to render a paragraph of body text.
  * @type React.Component
  */
 export default class BodyParagraph extends Component {
@@ -24,6 +24,10 @@ export default class BodyParagraph extends Component {
 }
 
 BodyParagraph.propTypes = {
+  /**
+   * @desc Text to be rendered
+   * @type string
+   */
   text: PropTypes.string,
 };
 
