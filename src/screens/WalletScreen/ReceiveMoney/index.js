@@ -12,7 +12,7 @@ import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import { resolveWallet } from '../../../utils/wallet';
 import Button from '../../../components/common/Button';
-import MessageView from '../../../components/common/MessageView';
+import PanelView from '../../../components/common/PanelView';
 import { androidNavigationButtons } from '../../../global/Screens';
 
 class ReceiveMoneyScreen extends Component {
@@ -34,9 +34,9 @@ class ReceiveMoneyScreen extends Component {
         <BackgroundImage/>
         <FakeNavigationBar/>
         <ScrollView style={styles.mainContainer} contentContainerStyle={styles.scrollViewContentContainer}>
-          <MessageView
+          <PanelView
             title='Copy Address'
-            messageText={this.copyAddressText}
+            body={this.copyAddressText}
             style={[styles.messageView]}
             renderAdditionalInfo={() =>
               <Text style={styles.codeText}>{this.props.selectedWalletAddress}</Text>
