@@ -689,6 +689,13 @@ const styles = {
 		marginLeft: 13,
 		marginRight: 13,
 	},
+
+  buttonContainerMultiple: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginLeft: 13,
+    marginRight: 13,
+  },
 	
 	// ========================================
 	// Profile Screen
@@ -722,7 +729,17 @@ const styles = {
 		borderRadius: 50,
 		margin: 15,
 	},
-	
+
+  privateKeyGridViewContainer: {
+    height: 241,
+    borderRadius: 8,
+    backgroundColor: Colors.shadeOf(Colors.BitnationDarkColor, 0.7),
+    paddingTop: 20,
+    paddingBottom: 3,
+    paddingLeft: 12,
+    paddingRight: 12,
+  },
+
 }
 
 export default styles
