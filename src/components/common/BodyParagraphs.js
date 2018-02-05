@@ -22,5 +22,9 @@ export default class BodyParagraphs extends Component {
 }
 
 BodyParagraphs.propTypes = {
+  /**
+   * @desc Paragraphs to be rendered
+   * @type array of strings
+   */
   paragraphs: PropTypes.array,
 };
