@@ -14,6 +14,15 @@ import { KEY_LENGTH } from '../../../../global/Constants';
 import KeyBaseScreen from '../../KeyBaseScreen/index';
 import { createPrivateKey, removePrivateKey } from '../../../../actions/key';
 import AssetsImages from '../../../../global/AssetsImages';
+import BodyParagraphs from '../../../../components/common/BodyParagraphs';
+
+const topParagraphs = [
+  `We will show you a group of ${KEY_LENGTH} words that is the private key that unlocks your wallet.`,
+];
+
+const bottomParagraphs = [
+  'Write the words on paper, in order. Store the paper in very safe place. If your device is lost, stolen, broken, or upgraded, you must have this key to restore or unlock your wallet.',
+];
 
 
 class CreateKeyInstructionScreen extends KeyBaseScreen {
@@ -29,20 +38,11 @@ class CreateKeyInstructionScreen extends KeyBaseScreen {
         <BackgroundImage/>
         <FakeNavigationBar/>
         <ScrollView contentContainerStyle={styles.bodyContainer}>
-          <View style={styles.bodyParagraph}>
-            <Text style={styles.body}>
-              We will show you a group of {KEY_LENGTH} words that is the private key that unlocks your wallet.
-            </Text>
-          </View>
+          <BodyParagraphs paragraphs={topParagraphs}/>
           <View style={styles.gridContainer}>
             <Image style={styles.privateKeyDemoImage} resizeMode='contain' source={AssetsImages.privateKeyDemo}/>
           </View>
-          <View style={styles.bodyParagraph}>
-            <Text messageText style={styles.body}>
-              Write the words on paper, in order. Store the paper in very safe place. If your device is lost, stolen,
-              broken, or upgraded, you must have this key to restore or unlock your wallet.
-            </Text>
-          </View>
+          <BodyParagraphs paragraphs={bottomParagraphs}/>
           <View style={styles.buttonContainer}>
             <Button title='Begin'
                     onPress={() => this.onNextButtonPressed()}/>
