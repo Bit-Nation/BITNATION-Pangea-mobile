@@ -4,7 +4,8 @@ import {
   Text,
   TextInput,
   Image,
-  Alert, ScrollView, TouchableOpacity,
+  Alert,
+  ScrollView,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -21,7 +22,7 @@ import { resolveWallet } from '../../../utils/wallet';
 import { sendMoney } from '../../../actions/wallet';
 import { androidNavigationButtons, screen } from '../../../global/Screens';
 import Loading from '../../../components/common/Loading';
-import { prettyETHWalletBalance, roundEth } from '../../../utils/formatters';
+import { prettyETHWalletBalance } from '../../../utils/formatters';
 
 class SendMoney extends Component {
 
@@ -30,7 +31,7 @@ class SendMoney extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { amountString: '', toEthAddress: ''};
+    this.state = { amountString: '', toEthAddress: '' };
   }
 
   componentDidUpdate(prevProps) {
@@ -93,15 +94,14 @@ class SendMoney extends Component {
     const balance = prettyETHWalletBalance(wallet, ' available');
 
     return (
-      <View style={styles.container}>
+      <View style={styles.screenContainer}>
         <BackgroundImage/>
         <FakeNavigationBar/>
-        <ScrollView style={styles.scrollView}
-                    contentContainerStyle={styles.scrollViewContentContainer}>
+        <ScrollView contentContainerStyle={styles.bodyContainer}>
 
           <View style={styles.fromContainer}>
             <View style={styles.fromTextContainer}>
-              <Text style={styles.fromText}>From</Text>
+              <Text style={styles.body}>From</Text>
             </View>
 
             <View style={styles.ethereumContainer}>
@@ -121,7 +121,7 @@ class SendMoney extends Component {
 
           <View style={styles.amountContainer}>
             <View style={styles.amountTextContainer}>
-              <Text style={styles.amountText}>Amount</Text>
+              <Text style={styles.body}>Amount</Text>
             </View>
 
             <View style={styles.amountBoxContainer}>
@@ -137,14 +137,14 @@ class SendMoney extends Component {
             </View>
 
             <View style={styles.amountCurrencyContainer}>
-              <Text style={styles.amountCurrency}>{wallet.currency}</Text>
+              <Text style={styles.body}>{wallet.currency}</Text>
             </View>
           </View>
 
 
           <View style={styles.toContainer}>
             <View style={styles.toTextContainer}>
-              <Text style={styles.toText}>To</Text>
+              <Text style={styles.body}>To</Text>
             </View>
 
             <View style={styles.ethAddressBoxContainer}>
@@ -160,12 +160,12 @@ class SendMoney extends Component {
 
           </View>
 
-          <View style={styles.sendContainer}>
+          <View style={styles.buttonContainer}>
             <Button
               title='Send'
               onPress={this.onSendPress}
               enabled={this._validateSendData()}
-              style={styles.sendButton}
+              style={styles.button}
             />
           </View>
 

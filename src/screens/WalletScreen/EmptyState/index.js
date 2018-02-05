@@ -21,29 +21,22 @@ export default class EmptyWalletScreen extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={styles.screenContainer}>
         <BackgroundImage/>
         <FakeNavigationBar/>
-        <ScrollView>
-          <View style={styles.cardContainer}>
-            <View style={[styles.card, styles.firstCard]}>
-              <PanelView
-                title={this.texts.createWalletTitle}
-                body={this.texts.createWalletText}
-                buttonTitle='Create a Wallet'
-                onButtonClick={this.props.onCreateWallet}
-              />
-            </View>
-
-            <View style={styles.card}>
-              <PanelView
-                title={this.texts.restoreWalletTitle}
-                body={this.texts.restoreWalletText}
-                buttonTitle='Restore a Wallet'
-                onButtonClick={this.props.onRestoreWallet}
-              />
-            </View>
-          </View>
+        <ScrollView contentContainerStyle={styles.bodyContainer}>
+          <PanelView
+            title={this.texts.createWalletTitle}
+            body={this.texts.createWalletText}
+            buttonTitle='Create a Wallet'
+            onButtonClick={this.props.onCreateWallet}
+          />
+          <PanelView
+            title={this.texts.restoreWalletTitle}
+            body={this.texts.restoreWalletText}
+            buttonTitle='Restore a Wallet'
+            onButtonClick={this.props.onRestoreWallet}
+          />
         </ScrollView>
       </View>
     );
