@@ -22,7 +22,7 @@ export default class Button extends Component {
         style]} {...props}>
 
         {
-          <TouchableOpacity testID='Touchable' disable={!enabled} style={[styles.buttonContainer]} onPress={onPress}>
+          <TouchableOpacity testID='Touchable' disabled={!enabled} style={[styles.buttonContainer]} onPress={onPress}>
             {children || this._renderTitle()}
           </TouchableOpacity>
         }
