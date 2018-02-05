@@ -40,16 +40,9 @@ export function* createNation(action) {
 
 export function* fetchNations() {
   try {
-    console.log('fetching nations');
     let pangeaLib = yield call(getPangeaLibrary);
-    const nationsCache = yield call(pangeaLib.eth.nation.all);
-    yield put({ type: DONE_FETCH_NATIONS, payload: [...nationsCache] });
-
     yield call(checkConnection);
-    console.log('start syncing with blockchain');
     yield call(pangeaLib.eth.nation.index);
-    console.log('synced with blockchain');
-
     const updatedNations = yield call(pangeaLib.eth.nation.all);
     yield put({ type: DONE_FETCH_NATIONS, payload: [...updatedNations] });
   } catch (e) {
@@ -59,10 +52,12 @@ export function* fetchNations() {
   }
 }
 
+export const getNations = state => state.nations
+
 export function* joinNation() {
   try {
     let pangeaLib = yield call(getPangeaLibrary);
-    let nationsState = yield select(state => state.nations);
+    let nationsState = yield select(getNations);
     const currentNation = resolveNation(nationsState.nations, nationsState.openedNationId);
     yield call(checkConnection);
     let result = yield call(pangeaLib.eth.nation.joinNation, currentNation.id);
@@ -79,7 +74,7 @@ export function* joinNation() {
 export function* leaveNation() {
   try {
     let pangeaLib = yield call(getPangeaLibrary);
-    let nationsState = yield select(state => state.nations);
+    let nationsState = yield select(getNations);
     const currentNation = resolveNation(nationsState.nations, nationsState.openedNationId);
     yield call(checkConnection);
     let result = yield call(pangeaLib.eth.nation.leaveNation, currentNation.id);
