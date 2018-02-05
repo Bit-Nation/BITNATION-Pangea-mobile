@@ -13,7 +13,7 @@ import BackgroundImage from '../../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
 import KeyBaseScreen from '../../KeyBaseScreen';
 import { removePrivateKey } from '../../../../actions/key';
-import BodyParagraph from '../../../../components/common/BodyParagraph';
+import BodyParagraphs from '../../../../components/common/BodyParagraphs';
 
 const paragraphs = [
   'To use a secure blockchain, you need a "private key". We will make your private key for you.',
@@ -35,7 +35,7 @@ class CreateKeyIntroductionScreen extends KeyBaseScreen {
         <BackgroundImage/>
         <FakeNavigationBar/>
         <ScrollView contentContainerStyle={styles.bodyContainer}>
-          {_.map(paragraphs, (text, index) => <BodyParagraph text={text} key={index}/>)}
+          <BodyParagraphs paragraphs={paragraphs}/>
 
           <View style={styles.buttonContainer}>
             <Button title='Begin'
