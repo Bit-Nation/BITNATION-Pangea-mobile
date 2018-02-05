@@ -21,7 +21,7 @@ export default class EmptyWalletScreen extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={styles.screenContainer}>
         <BackgroundImage/>
         <FakeNavigationBar/>
         <ScrollView>

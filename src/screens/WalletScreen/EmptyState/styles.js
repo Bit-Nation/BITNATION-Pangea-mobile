@@ -1,10 +1,9 @@
 import { MediaQueryStyleSheet } from 'react-native-responsive';
-import Colors from '../../../global/Colors';
+
+import GlobalStyles from '../../../global/Styles';
 
 export default styles = MediaQueryStyleSheet.create({
-  container: {
-    flex: 1,
-  },
+  ...GlobalStyles,
   card: {
     marginLeft: 8,
     marginRight: 8,
