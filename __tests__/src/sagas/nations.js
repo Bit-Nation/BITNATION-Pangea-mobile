@@ -7,6 +7,19 @@ import {
 } from '../../../src/actions/nations';
 import { getPangeaLibrary } from '../../../src/services/container';
 
+jest.mock('BITNATION-Pangea-libs', () => ({
+  eth: {
+    nation: {
+      create: jest.fn()
+    }
+  }
+}));
+
+jest.mock('react-native-config', () => ({
+  ETH_HTTP_ENDPOINT: 'https://rinkeby.infura.io/metamask',
+  PRODUCTION: 'false'
+}));
+
 const stepper = (fn) => (mock) => fn.next(mock).value
 
 test('sagas - createNation', (done) => {
@@ -27,11 +40,8 @@ test('sagas - createNation', (done) => {
       }
     }
   }
-  console.error('==============:::::::::::')
   const step = stepper(createNation(mockAction))
-console.error('==============')
   expect(step()).toEqual(call(getPangeaLibrary))
-  console.error('-==============')
   expect(step(pangeaLibrary)).toEqual(call(checkConnection))
   expect(step()).toEqual(call(pangeaLibrary.eth.nation.create, mockAction.payload))
   expect(step().PUT.action.type).toEqual(DONE_NATION_CREATE)
