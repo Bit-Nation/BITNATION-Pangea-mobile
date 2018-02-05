@@ -10,10 +10,18 @@ import styles from './styles';
 import { screen } from '../../../../global/Screens';
 import Button from '../../../../components/common/Button';
 import BackgroundImage from '../../../../components/common/BackgroundImage';
-import Text from '../../../../components/common/Text';
 import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
 import KeyBaseScreen from '../../KeyBaseScreen';
 import { removePrivateKey } from '../../../../actions/key';
+import BodyParagraph from '../../../../components/common/BodyParagraph';
+
+const paragraphs = [
+  'To use a secure blockchain, you need a "private key". We will make your private key for you.',
+  'We require you to write down your private key on paper. This process only takes a few minutes.',
+  'If your phone is lost, stolen, broken, or upgraded, the only way to restore your wallet is by entering your private key!',
+  'We recommend writing on paper because if your key is on your computer or phone, someone might steal it.',
+  'Your private key protects everything in Bitnation, so be sure to put your paper with with your private key in a safe place.',
+];
 
 class CreateKeyIntroductionScreen extends KeyBaseScreen {
 
@@ -27,36 +35,7 @@ class CreateKeyIntroductionScreen extends KeyBaseScreen {
         <BackgroundImage/>
         <FakeNavigationBar/>
         <ScrollView contentContainerStyle={styles.bodyContainer}>
-          <View style={styles.bodyParagraph}>
-            <Text style={styles.body}>
-              To use a secure blockchain, you need a "private key". We will make your
-              private key for you.
-            </Text>
-          </View>
-          <View style={styles.bodyParagraph}>
-            <Text style={styles.body}>
-              We require you to write down your private key on paper. This process only
-              takes a few minutes.
-            </Text>
-          </View>
-          <View style={styles.bodyParagraph}>
-            <Text style={styles.body}>
-              If your phone is lost, stolen, broken, or upgraded, the only way to restore
-              your wallet is by entering your private key!
-            </Text>
-          </View>
-          <View style={styles.bodyParagraph}>
-            <Text style={styles.body}>
-              We recommend writing on paper because if your key is on your computer or
-              phone, someone might steal it.
-            </Text>
-          </View>
-          <View style={styles.bodyParagraph}>
-            <Text style={styles.body}>
-              Your private key protects everything in Bitnation, so be sure to put your
-              paper with with your private key in a safe place.
-            </Text>
-          </View>
+          {_.map(paragraphs, (text, index) => <BodyParagraph text={text} key={index}/>)}
 
           <View style={styles.buttonContainer}>
             <Button title='Begin'
