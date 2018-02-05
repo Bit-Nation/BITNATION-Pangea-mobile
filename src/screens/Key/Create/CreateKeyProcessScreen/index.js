@@ -17,8 +17,13 @@ import {
 } from '../../../../global/Constants';
 import KeyBaseScreen from '../../KeyBaseScreen/index';
 import { removePrivateKey } from '../../../../actions/key';
+import BodyParagraphs from '../../../../components/common/BodyParagraphs';
 
 const DONE_BUTTON = 'DONE_BUTTON';
+
+const paragraphs = [
+  'Write each row of words on the piece of paper. Press “Next” when you have written the row.',
+];
 
 class CreateKeyProcessScreen extends KeyBaseScreen {
 
@@ -109,11 +114,7 @@ class CreateKeyProcessScreen extends KeyBaseScreen {
         <BackgroundImage/>
         <FakeNavigationBar/>
         <View style={styles.bodyContainer}>
-          <View style={styles.bodyParagraph}>
-            <Text style={styles.body}>
-              Write each row of words on the piece of paper. Press “Next” when you have written the row.
-            </Text>
-          </View>
+          <BodyParagraphs paragraphs={paragraphs}/>
           <View style={styles.gridContainer}>
             <GridView
               itemsPerRow={KEY_COLUMN_COUNT}
