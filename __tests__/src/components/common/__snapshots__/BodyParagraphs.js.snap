@@ -1,0 +1,138 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BodyParagraphs rendering Empty 1`] = `<View />`;
+
+exports[`BodyParagraphs rendering With multiple paragraphs 1`] = `
+<View>
+  <View
+    style={
+      Object {
+        "paddingBottom": 15,
+      }
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "color": "#72A4DE",
+          "fontFamily": "Roboto",
+          "fontSize": 17,
+          "fontWeight": "normal",
+          "letterSpacing": 0,
+          "lineHeight": 22,
+        }
+      }
+    >
+      Test text1
+    </Text>
+  </View>
+  <View
+    style={
+      Object {
+        "paddingBottom": 15,
+      }
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "color": "#72A4DE",
+          "fontFamily": "Roboto",
+          "fontSize": 17,
+          "fontWeight": "normal",
+          "letterSpacing": 0,
+          "lineHeight": 22,
+        }
+      }
+    >
+      Test text2
+    </Text>
+  </View>
+  <View
+    style={
+      Object {
+        "paddingBottom": 15,
+      }
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "color": "#72A4DE",
+          "fontFamily": "Roboto",
+          "fontSize": 17,
+          "fontWeight": "normal",
+          "letterSpacing": 0,
+          "lineHeight": 22,
+        }
+      }
+    >
+      Test text3
+    </Text>
+  </View>
+  <View
+    style={
+      Object {
+        "paddingBottom": 15,
+      }
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "color": "#72A4DE",
+          "fontFamily": "Roboto",
+          "fontSize": 17,
+          "fontWeight": "normal",
+          "letterSpacing": 0,
+          "lineHeight": 22,
+        }
+      }
+    >
+      Test text4
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`BodyParagraphs rendering With one paragraph 1`] = `
+<View>
+  <View
+    style={
+      Object {
+        "paddingBottom": 15,
+      }
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "color": "#72A4DE",
+          "fontFamily": "Roboto",
+          "fontSize": 17,
+          "fontWeight": "normal",
+          "letterSpacing": 0,
+          "lineHeight": 22,
+        }
+      }
+    >
+      Test text
+    </Text>
+  </View>
+</View>
+`;

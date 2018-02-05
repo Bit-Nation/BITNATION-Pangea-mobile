@@ -49,7 +49,7 @@ const baseKeyScreen = {
     disabledBackGesture: true,
   },
   overrideBackPress: true,
-}
+};
 
 const Screens = {
   SPLASH_SCREEN: {
@@ -138,11 +138,6 @@ const Screens = {
     screen: 'Pangea.ReceiveMoneyScreen',
     title: 'Receive Money',
     navigatorStyle,
-  },
-  CREATE_KEY_SUCCESS_SCREEN: {
-    screen: 'Pangea.CreateKeySuccessScreen',
-    title: 'Create Private Key',
-    ...baseKeyScreen,
   },
   VERIFY_KEY_SUCCESS_SCREEN: {
     screen: 'Pangea.VerifyKeySuccess',
