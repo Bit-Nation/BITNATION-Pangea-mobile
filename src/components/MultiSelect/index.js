@@ -1,3 +1,9 @@
+/**
+ * @desc Generates a customized Single/Multiselect component used in Create a Nation
+ * @type React.Component
+ *
+ */
+
 import React, { Component } from 'react';
 import {
   Text,
