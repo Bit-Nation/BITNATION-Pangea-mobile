@@ -20,6 +20,9 @@ export default class NationListItem extends Component {
           <Text style={styles.listItemText}>
             {this.props.text}
           </Text>
+          <Text style={styles.listItemTextState}>
+            Draft
+          </Text>
         </TouchableOpacity>
       </View>
     );

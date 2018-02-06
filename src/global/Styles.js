@@ -255,6 +255,11 @@ const styles = {
 		marginLeft: 15,
 		marginRight: 15,
 	},
+
+  titleContainer: {
+    marginLeft: 15,
+    marginRight: 15,
+  },
 	
 	// A block of text in the body area
 	bodyParagraph: {
@@ -553,6 +558,14 @@ const styles = {
 		flex: 1,
 		marginLeft: 15,
 	},
+
+  // e.g. NationListItemState Text
+  listItemTextState: {
+    color: 'gray',
+    flex: 1,
+    textAlign: 'right',
+    marginRight: 50,
+  },
 	
 	// e.g. NationListItem
 	sectionListTouchable: {
@@ -589,6 +602,13 @@ const styles = {
 		color: '#6D6D72',
 		fontSize: 13,
 	},
+
+  sectionListSeparator: {
+    flex: 1,
+    marginLeft: 10,
+    height:1,
+    backgroundColor: Colors.grey_400,
+  },
 	
 	// ========================================
 	// Tab Bar with text

@@ -73,7 +73,7 @@ const Screens = {
     screen: 'Pangea.NationsScreen',
     label: 'Nations',
     icon: AssetsImages.TabIcons.nations,
-    title: '  Nations  ', // Spaces here are to fix title truncating
+    title: '', // Spaces here are to fix title truncating
     navigatorStyle,
   },
   NATION_DETAILS_SCREEN: {
