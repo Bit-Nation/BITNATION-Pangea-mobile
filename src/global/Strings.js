@@ -23,7 +23,7 @@ const defaultStrings = {
 	nation: 'nation',
 	nations: 'nations',
 	
-	// Navigation
+	// Navigation terminology
 	dashboard: 'Dashboard',
 	nations: 'Nations',
 	chat: 'Chat',
@@ -103,6 +103,19 @@ const defaultStrings = {
 }
 
 // ========================================
+// Navigation Bar Display Strings
+// ALL CAPS by design!
+// ========================================
+const navbarStrings = {
+	dashboard: 'DASHBOARD',
+	nations: 'NATIONS',
+	chat: 'CHAT',
+	wallet: 'WALLET',
+	profile: 'PROFILE',
+}
+
+
+// ========================================
 // Nation Strings
 // ========================================
 const walletStrings = {
@@ -179,6 +192,7 @@ const strings = {
 	...walletStrings,
 	...nationStrings,
 	...stringFunctions,
+	navbar: navbarStrings,
 	dashboard: dashboardStrings,
 }
 
