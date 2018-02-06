@@ -22,7 +22,7 @@ function* updateProfile() {
       version: '0',
       image: user.editingUser.avatar ? user.editingUser.avatar : '',
     };
-    let result = yield call(pangeaLib.profile.profile.setProfile, profile);
+    //let result = yield call(pangeaLib.profile.profile.setProfile, profile);
     yield put({ type: DONE_USER_EDITING });
   } catch (e) {
     console.log('Update profile error: ', e);
