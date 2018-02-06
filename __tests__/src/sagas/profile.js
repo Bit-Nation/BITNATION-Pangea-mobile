@@ -1,5 +1,5 @@
-import { call, put, select } from 'redux-saga/effects'
-import { updateProfile, getProfile, getProfileState } from '../../../src/sagas/profile'
+import { call, put, select, takeEvery } from 'redux-saga/effects'
+import watchProfileUpdate, { updateProfile, getProfile, getProfileState } from '../../../src/sagas/profile'
 import { REQUEST_PROFILE_UPDATE, DONE_USER_EDITING, SET_USER_PROFILE, REQUEST_GET_PROFILE } from '../../../src/actions/profile';
 import { getPangeaLibrary } from '../../../src/services/container';
 
@@ -26,6 +26,13 @@ const pangeaLibrary = {
   }
 }
 const stepper = (fn) => (mock) => fn.next(mock).value
+
+test('sagas - profile watcher', (done) => {
+  const step = stepper(watchProfileUpdate())
+  expect(step()).toEqual(takeEvery(REQUEST_PROFILE_UPDATE, updateProfile))
+  expect(step()).toEqual(takeEvery(REQUEST_GET_PROFILE, getProfile))
+  done()
+})
 
 test('sagas - updateProfile', (done) => {
   const mockAction = {
