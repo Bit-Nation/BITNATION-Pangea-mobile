@@ -1,13 +1,15 @@
 import AssetsImages from './AssetsImages';
 import Colors from './Colors';
+import Strings from './Strings';
 import { Platform } from 'react-native';
 
+// Styles for Navigation Bar
 export const tabsStyle = {
-  tabBarButtonColor: Colors.white,
-  tabBarLabelColor: Colors.BitnationLightColor,
-  tabBarSelectedLabelColor: Colors.white,
-  tabBarSelectedButtonColor: Colors.white,
-  tabBarBackgroundColor: 'rgba(17,39,110,0.9)',
+  tabBarButtonColor: Colors.tabBarButtonColor,
+  tabBarLabelColor: Colors.tabBarLabelColor,
+  tabBarSelectedLabelColor: Colors.tabBarSelectedLabelColor,
+  tabBarSelectedButtonColor: Colors.tabBarSelectedButtonColor,
+  tabBarBackgroundColor: Colors.tabBarBackgroundColor,
 };
 
 export const appStyle = {
@@ -21,6 +23,7 @@ export const androidNavigationButtons = Platform.OS === 'android' ? {
   }],
 } : {};
 
+// Navigation Bar Style
 export const navigatorStyle = {
   statusBarTextColorScheme: 'light',
   statusBarColor: Platform.OS === 'ios' ? 'transparent' : 'black',
@@ -51,6 +54,12 @@ const baseKeyScreen = {
   overrideBackPress: true,
 };
 
+/*
+  label : this text string appears in the navigation bar at the bottom of the screen
+  icon  : icon for navigation bar
+  title : ???
+ */
+
 const Screens = {
   SPLASH_SCREEN: {
     screen: 'Pangea.SplashScreen',
@@ -58,20 +67,20 @@ const Screens = {
   },
   DASHBOARD_SCREEN: {
     screen: 'Pangea.DashboardScreen',
-    label: 'Dashboard',
+    label: Strings.navbar.dashboard,
     icon: AssetsImages.TabIcons.dashboard,
     navigatorStyle: hiddenNavigatorStyle,
   },
   CHAT_SCREEN: {
     screen: 'Pangea.ChatScreen',
-    label: 'Chat',
+    label: Strings.navbar.chat,
     icon: AssetsImages.TabIcons.chat,
     title: 'Chat',
     navigatorStyle: hiddenNavigatorStyle,
   },
   NATIONS_SCREEN: {
     screen: 'Pangea.NationsScreen',
-    label: 'Nations',
+    label: Strings.navbar.nations,
     icon: AssetsImages.TabIcons.nations,
     title: '  Nations  ', // Spaces here are to fix title truncating
     navigatorStyle,
@@ -88,14 +97,14 @@ const Screens = {
   },
   WALLET_SCREEN: {
     screen: 'Pangea.WalletScreen',
-    label: 'Wallet',
+    label: Strings.navbar.wallet,
     icon: AssetsImages.TabIcons.wallet,
     title: 'Wallet',
     navigatorStyle,
   },
   PROFILE_SCREEN: {
     screen: 'Pangea.ProfileScreen',
-    label: 'Profile',
+    label: Strings.navbar.profile,
     icon: AssetsImages.TabIcons.profile,
     title: 'Profile & Settings',
     navigatorStyle,

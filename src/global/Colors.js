@@ -72,13 +72,30 @@ export default {
 	BitnationLightColor: BitnationLightColor,
 	BitnationVeryLightColor: BitnationVeryLightColor,
 	
+	
+	// Colors for common Text Styles, e.g. titles on screens
+	titleColor: '#4A90E2',
+	
+	
+	
+	
+	// Navigation Bar (for the app)
+	tabBarBackgroundColor: '#3e9eff',
+	tabBarSelectedLabelColor: 'white',
+	tabBarSelectedButtonColor: 'white',
+	tabBarLabelColor: '#a6c5e5',
+	tabBarButtonColor: '#a6c5e5',
+	
+	// Toolbars (e.g. Create Nation)
+	toolBarBackgroundColor: '#3e9eff',
+	
 	// Custom Bitnation Colors
 	BlueGrey: '#607D8B',
 	BlueMed: '#72A4DE',
 	
 	BlueGrayMed: '#6D6D72',
 	
-	titleColor: '#4A90E2',
+	
 	buttonColor: '#1C497E',
 	disabledButtonColor: '#37393C',
 	disabledButtonTitleColor: '#5F6D7D',
@@ -114,8 +131,9 @@ export default {
 	actionButtonColor: '#1c497e',
 	
 	
-	// Why do we have this?
-	white: '#FFFFFF',
+	// Why do we have this? So we can redefine white to something just a little darker
+	// because pure white can be hard...sometimes better to use 98% white.
+	white: 'white',
 	
 	// Why do we have these definitions?
 	Red: '#FF5252',
