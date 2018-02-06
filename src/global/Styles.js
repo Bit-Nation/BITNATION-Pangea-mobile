@@ -1,6 +1,6 @@
 import { MediaQueryStyleSheet } from 'react-native-responsive'
 import Colors from './Colors'
-import { normalizer} from '../utils/normalizer'
+import { normalizer, normalWidthMargin } from '../utils/normalizer'
 
 // ========================================
 // DEFAULT TEXT STYLES
@@ -122,7 +122,7 @@ const defaultTextStyles = {
 		fontSize: 34,
 		lineHeight: 41,
 		letterSpacing: 0,
-		color: Colors.BitnationLightColor,
+		color: Colors.Amber,
 	},
 	
 	title1: {
@@ -564,7 +564,7 @@ const styles = {
     color: 'gray',
     flex: 1,
     textAlign: 'right',
-    marginRight: 50,
+    marginRight: 15,
   },
 	
 	// e.g. NationListItem
@@ -609,11 +609,19 @@ const styles = {
     height:1,
     backgroundColor: Colors.grey_400,
   },
-	
+
+  sectionListDisclosure: {
+		marginRight:15,
+		width: 8,
+		height: 15,
+  },
+
 	// ========================================
 	// Tab Bar with text
 	segmentedControlContainer: {
 		height: 44,
+		marginLeft: normalWidthMargin(),
+		marginRight: normalWidthMargin(),
 		flexDirection: 'row',
 		alignItems: 'center',
 	},
