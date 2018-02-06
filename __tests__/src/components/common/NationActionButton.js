@@ -26,7 +26,7 @@ describe('NationActionButton component tests', () => {
     expect(onPress).toHaveBeenCalledTimes(1);
   });
 
-  test('NationActionButton press disbled', () => {
+  test('NationActionButton press disabled', () => {
     const onPress = jest.fn();
     const wrapper = shallow(
       <NationActionButton onPress={onPress} disable={true}/>
@@ -34,7 +34,7 @@ describe('NationActionButton component tests', () => {
     expect(wrapper).toMatchSnapshot();
     const render = wrapper.dive();
     render.find(TouchableOpacity).simulate('press');
-    expect(render.find(TouchableOpacity).props()).toEqual(expect.objectContaining({ "activeOpacity": 1 }));
+    expect(render.props().disable).toBeTruthy();
   });
 
   test('NationActionButton press enabled', () => {
@@ -50,7 +50,7 @@ describe('NationActionButton component tests', () => {
     expect(wrapper).toMatchSnapshot();
     const render = wrapper.dive();
     render.find(TouchableOpacity).simulate('press');
-    expect(render.find(TouchableOpacity).props()).toEqual(expect.objectContaining({ "activeOpacity": 0.4 }));
+    expect(render.props().disable).toBeFalsy();
   });
 
 });

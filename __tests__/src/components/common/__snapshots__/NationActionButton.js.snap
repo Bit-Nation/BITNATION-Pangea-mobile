@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NationActionButton component tests NationActionButton press disbled 1`] = `
+exports[`NationActionButton component tests NationActionButton press disabled 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
