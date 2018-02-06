@@ -1,22 +1,12 @@
 import { MediaQueryStyleSheet } from 'react-native-responsive';
-import { Dimensions } from 'react-native';
+
+import GlobalStyles from '../../../global/Styles';
 import Colors from '../../../global/Colors';
 
 const styles = MediaQueryStyleSheet.create(
   {
-    container: {
-      flexDirection: 'column',
-      flex: 1,
-    },
-    scrollView: {
-      flex: 1,
-      paddingLeft: 15,
-      paddingRight: 15,
-      height: 555,
-    },
-    scrollViewContentContainer: {
-      flex: 1,
-    },
+    ...GlobalStyles,
+
     baseTextInput: {
       flex: 1,
       paddingLeft: 4,
@@ -31,15 +21,6 @@ const styles = MediaQueryStyleSheet.create(
       flex: 1.2,
       backgroundColor: Colors.Transparent,
     },
-    sendMoneyText: {
-      height: 41,
-      width: 174,
-      color: '#FFFFFF',
-      //  fontFamily:"SF Pro Display",
-      fontSize: 30,
-      fontWeight: 'bold',
-      lineHeight: 41,
-    },
 
     //2nd
     fromContainer: {
@@ -53,15 +34,6 @@ const styles = MediaQueryStyleSheet.create(
       width: '24%',
       backgroundColor: Colors.Transparent,
     },
-    fromText: {
-      height: 20,
-      width: 40,
-      color: '#4A90E2',
-      //    fontFamily: "SF Pro Display",
-      fontSize: 17,
-      lineHeight: 20,
-      marginRight: '5%'
-    },
     ethereumContainer: {
       flex: 5,
       flexDirection: 'row',
@@ -74,7 +46,7 @@ const styles = MediaQueryStyleSheet.create(
       alignItems: 'center',
       backgroundColor: Colors.Transparent,
       justifyContent: 'center',
-      marginLeft: '4%'
+      marginLeft: '4%',
     },
     ethereumLogo: {
       position: 'absolute',
@@ -120,13 +92,6 @@ const styles = MediaQueryStyleSheet.create(
       width: '24%',
       backgroundColor: Colors.Transparent,
     },
-    amountText: {
-      color: '#4A90E2',
-      //    fontFamily: "SF Pro Display",
-      fontSize: 17,
-      //lineHeight: 20,
-      marginRight: '8%'
-    },
     amountBoxContainer: {
       flex: 2.2,
       borderWidth: 1,
@@ -141,15 +106,10 @@ const styles = MediaQueryStyleSheet.create(
       textAlign: 'right',
     },
     amountCurrencyContainer: {
+      marginLeft: 8,
       marginRight: 8,
       backgroundColor: Colors.Transparent,
       justifyContent: 'center',
-    },
-    amountCurrency: {
-      color: '#4A90E2',
-      //    fontFamily: "SF Pro Display",
-      fontSize: 17,
-      marginLeft: 17,
     },
 
     //4th
@@ -159,24 +119,18 @@ const styles = MediaQueryStyleSheet.create(
       marginTop: 20,
       backgroundColor: Colors.Transparent,
       height: 32,
+      marginBottom: 20,
     },
     toTextContainer: {
       width: '24%',
       backgroundColor: Colors.Transparent,
-    },
-    toText: {
-      color: '#4A90E2',
-      //    fontFamily: "SF Pro Display",
-      fontSize: 17,
-      //lineHeight: 20,
-      marginRight: '8%',
     },
     ethAddressBoxContainer: {
       flex: 4.35,
       borderWidth: 1,
       borderColor: Colors.borderColor,
       backgroundColor: Colors.Transparent,
-      justifyContent: 'center'
+      justifyContent: 'center',
     },
     ethTextInput: {
       color: '#FFFFFF',
@@ -192,82 +146,7 @@ const styles = MediaQueryStyleSheet.create(
     qrLogo: {
       width: 38,
       height: 38,
-      borderRadius: 8
-    },
-
-    //5th
-    noteContainer: {
-      flex: 1,
-      flexDirection: 'row',
-      marginTop: 20,
-      backgroundColor: Colors.Transparent,
-    },
-    noteTextContainer: {
-      width: '24%',
-      backgroundColor: Colors.Transparent,
-    },
-    noteText: {
-      color: '#4A90E2',
-      //    fontFamily: "SF Pro Display",
-      fontSize: 17,
-      marginRight: '6%'
-    },
-    noteBoxContainer: {
-      flex: 7,
-      borderWidth: 1,
-      borderColor: Colors.borderColor,
-      justifyContent: 'flex-start',
-      backgroundColor: Colors.Transparent,
-    },
-    descriptionTextInput: {
-      color: 'white',
-      fontSize: 16,
-    },
-
-    //6th
-    calculatedEmptyContainer: {
-      // flex: 3,
-      flexDirection: 'row',
-      marginTop: 20,
-      backgroundColor: Colors.Transparent,
-    },
-    empty: {
-      width: '24%',
-    },
-    calculatedContainer: {
-      flex: 1,
-      borderWidth: 1,
-      borderColor: Colors.borderColor,
-      backgroundColor: 'rgba(27,57,92,0.5)',
-      paddingLeft: 8,
-      paddingRight: 8,
-      justifyContent: 'space-around',
-      height: 81,
-    },
-    calculatedText: {
-      height: 20,
-      color: '#007AFF',
-      fontSize: 17,
-      lineHeight: 20,
-    },
-    sendAmountContainer: {
-      flexDirection: 'row',
-
-    },
-    feeContainer: {
-      flexDirection: 'row',
-    },
-
-    //7th
-    sendContainer: {
-      marginTop: 20,
-      marginBottom: 20,
-      // flex: 4,
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    sendButton: {
-      width: 130,
+      borderRadius: 8,
     },
 
   });

@@ -1,0 +1,1608 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WalletCard component tests Press on Send/Receive Buttons 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <WalletCard
+    balance="Testing balance"
+    imagePath={1}
+    messageText=""
+    nameHeading="Testing Press"
+    nameSubheading="173324 Enum"
+    onReceivePress={[Function]}
+    onSendPress={[Function]}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": <View
+        style={
+          Object {
+            "alignItems": "stretch",
+            "flex": 1,
+            "flexDirection": "row",
+            "justifyContent": "flex-start",
+          }
+        }
+      >
+        <Image
+          source={1}
+          style={
+            Object {
+              "marginRight": 10,
+              "width": 55,
+            }
+          }
+        />
+        <View
+          style={
+            Object {
+              "flex": 1,
+              "justifyContent": "flex-start",
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "flex": 1,
+              }
+            }
+          />
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "#FFFFFF",
+                "fontSize": 17,
+                "fontWeight": "bold",
+                "marginBottom": 4,
+              }
+            }
+          >
+            Testing Press
+          </Text>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "#72A4DE",
+                "fontSize": 14,
+              }
+            }
+          >
+            Testing balance
+          </Text>
+          <View
+            style={
+              Object {
+                "flex": 1,
+              }
+            }
+          />
+          <View
+            style={
+              Object {
+                "flexDirection": "row",
+                "justifyContent": "flex-start",
+              }
+            }
+          >
+            <Button
+              enabled={true}
+              onPress={[Function]}
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "rgba(114,164,222,0.3)",
+                    "borderRadius": 14,
+                    "height": 25,
+                    "width": 80,
+                  },
+                  Object {
+                    "marginRight": 8,
+                  },
+                ]
+              }
+              title="Send"
+            />
+            <Button
+              enabled={true}
+              onPress={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "rgba(114,164,222,0.3)",
+                  "borderRadius": 14,
+                  "height": 25,
+                  "width": 80,
+                }
+              }
+              title="Receive"
+            />
+            <View
+              style={
+                Object {
+                  "flex": 1,
+                }
+              }
+            />
+          </View>
+          <View
+            style={
+              Object {
+                "flex": 1,
+              }
+            }
+          />
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "#72A4DE",
+                "fontSize": 14,
+                "marginBottom": 10,
+              }
+            }
+          >
+            
+          </Text>
+        </View>
+      </View>,
+      "style": Object {
+        "alignItems": "stretch",
+        "backgroundColor": "transparent",
+        "flex": 1,
+        "height": 130,
+      },
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <Image
+            source={1}
+            style={
+              Object {
+                "marginRight": 10,
+                "width": 55,
+              }
+            }
+          />,
+          <View
+            style={
+              Object {
+                "flex": 1,
+                "justifyContent": "flex-start",
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "flex": 1,
+                }
+              }
+            />
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Object {
+                  "color": "#FFFFFF",
+                  "fontSize": 17,
+                  "fontWeight": "bold",
+                  "marginBottom": 4,
+                }
+              }
+            >
+              Testing Press
+            </Text>
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Object {
+                  "color": "#72A4DE",
+                  "fontSize": 14,
+                }
+              }
+            >
+              Testing balance
+            </Text>
+            <View
+              style={
+                Object {
+                  "flex": 1,
+                }
+              }
+            />
+            <View
+              style={
+                Object {
+                  "flexDirection": "row",
+                  "justifyContent": "flex-start",
+                }
+              }
+            >
+              <Button
+                enabled={true}
+                onPress={[Function]}
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "rgba(114,164,222,0.3)",
+                      "borderRadius": 14,
+                      "height": 25,
+                      "width": 80,
+                    },
+                    Object {
+                      "marginRight": 8,
+                    },
+                  ]
+                }
+                title="Send"
+              />
+              <Button
+                enabled={true}
+                onPress={[Function]}
+                style={
+                  Object {
+                    "backgroundColor": "rgba(114,164,222,0.3)",
+                    "borderRadius": 14,
+                    "height": 25,
+                    "width": 80,
+                  }
+                }
+                title="Receive"
+              />
+              <View
+                style={
+                  Object {
+                    "flex": 1,
+                  }
+                }
+              />
+            </View>
+            <View
+              style={
+                Object {
+                  "flex": 1,
+                }
+              }
+            />
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Object {
+                  "color": "#72A4DE",
+                  "fontSize": 14,
+                  "marginBottom": 10,
+                }
+              }
+            >
+              
+            </Text>
+          </View>,
+        ],
+        "style": Object {
+          "alignItems": "stretch",
+          "flex": 1,
+          "flexDirection": "row",
+          "justifyContent": "flex-start",
+        },
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "source": 1,
+            "style": Object {
+              "marginRight": 10,
+              "width": 55,
+            },
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <View
+                style={
+                  Object {
+                    "flex": 1,
+                  }
+                }
+              />,
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={
+                  Object {
+                    "color": "#FFFFFF",
+                    "fontSize": 17,
+                    "fontWeight": "bold",
+                    "marginBottom": 4,
+                  }
+                }
+              >
+                Testing Press
+              </Text>,
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={
+                  Object {
+                    "color": "#72A4DE",
+                    "fontSize": 14,
+                  }
+                }
+              >
+                Testing balance
+              </Text>,
+              <View
+                style={
+                  Object {
+                    "flex": 1,
+                  }
+                }
+              />,
+              <View
+                style={
+                  Object {
+                    "flexDirection": "row",
+                    "justifyContent": "flex-start",
+                  }
+                }
+              >
+                <Button
+                  enabled={true}
+                  onPress={[Function]}
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "rgba(114,164,222,0.3)",
+                        "borderRadius": 14,
+                        "height": 25,
+                        "width": 80,
+                      },
+                      Object {
+                        "marginRight": 8,
+                      },
+                    ]
+                  }
+                  title="Send"
+                />
+                <Button
+                  enabled={true}
+                  onPress={[Function]}
+                  style={
+                    Object {
+                      "backgroundColor": "rgba(114,164,222,0.3)",
+                      "borderRadius": 14,
+                      "height": 25,
+                      "width": 80,
+                    }
+                  }
+                  title="Receive"
+                />
+                <View
+                  style={
+                    Object {
+                      "flex": 1,
+                    }
+                  }
+                />
+              </View>,
+              <View
+                style={
+                  Object {
+                    "flex": 1,
+                  }
+                }
+              />,
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={
+                  Object {
+                    "color": "#72A4DE",
+                    "fontSize": 14,
+                    "marginBottom": 10,
+                  }
+                }
+              >
+                
+              </Text>,
+            ],
+            "style": Object {
+              "flex": 1,
+              "justifyContent": "flex-start",
+            },
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "style": Object {
+                  "flex": 1,
+                },
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "accessible": true,
+                "allowFontScaling": true,
+                "children": "Testing Press",
+                "ellipsizeMode": "tail",
+                "style": Object {
+                  "color": "#FFFFFF",
+                  "fontSize": 17,
+                  "fontWeight": "bold",
+                  "marginBottom": 4,
+                },
+              },
+              "ref": null,
+              "rendered": "Testing Press",
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "accessible": true,
+                "allowFontScaling": true,
+                "children": "Testing balance",
+                "ellipsizeMode": "tail",
+                "style": Object {
+                  "color": "#72A4DE",
+                  "fontSize": 14,
+                },
+              },
+              "ref": null,
+              "rendered": "Testing balance",
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "style": Object {
+                  "flex": 1,
+                },
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  <Button
+                    enabled={true}
+                    onPress={[Function]}
+                    style={
+                      Array [
+                        Object {
+                          "backgroundColor": "rgba(114,164,222,0.3)",
+                          "borderRadius": 14,
+                          "height": 25,
+                          "width": 80,
+                        },
+                        Object {
+                          "marginRight": 8,
+                        },
+                      ]
+                    }
+                    title="Send"
+                  />,
+                  <Button
+                    enabled={true}
+                    onPress={[Function]}
+                    style={
+                      Object {
+                        "backgroundColor": "rgba(114,164,222,0.3)",
+                        "borderRadius": 14,
+                        "height": 25,
+                        "width": 80,
+                      }
+                    }
+                    title="Receive"
+                  />,
+                  <View
+                    style={
+                      Object {
+                        "flex": 1,
+                      }
+                    }
+                  />,
+                ],
+                "style": Object {
+                  "flexDirection": "row",
+                  "justifyContent": "flex-start",
+                },
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "enabled": true,
+                    "onPress": [Function],
+                    "style": Array [
+                      Object {
+                        "backgroundColor": "rgba(114,164,222,0.3)",
+                        "borderRadius": 14,
+                        "height": 25,
+                        "width": 80,
+                      },
+                      Object {
+                        "marginRight": 8,
+                      },
+                    ],
+                    "title": "Send",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "enabled": true,
+                    "onPress": [Function],
+                    "style": Object {
+                      "backgroundColor": "rgba(114,164,222,0.3)",
+                      "borderRadius": 14,
+                      "height": 25,
+                      "width": 80,
+                    },
+                    "title": "Receive",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "style": Object {
+                      "flex": 1,
+                    },
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+              ],
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "style": Object {
+                  "flex": 1,
+                },
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "accessible": true,
+                "allowFontScaling": true,
+                "children": "",
+                "ellipsizeMode": "tail",
+                "style": Object {
+                  "color": "#72A4DE",
+                  "fontSize": 14,
+                  "marginBottom": 10,
+                },
+              },
+              "ref": null,
+              "rendered": "",
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": <View
+          style={
+            Object {
+              "alignItems": "stretch",
+              "flex": 1,
+              "flexDirection": "row",
+              "justifyContent": "flex-start",
+            }
+          }
+        >
+          <Image
+            source={1}
+            style={
+              Object {
+                "marginRight": 10,
+                "width": 55,
+              }
+            }
+          />
+          <View
+            style={
+              Object {
+                "flex": 1,
+                "justifyContent": "flex-start",
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "flex": 1,
+                }
+              }
+            />
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Object {
+                  "color": "#FFFFFF",
+                  "fontSize": 17,
+                  "fontWeight": "bold",
+                  "marginBottom": 4,
+                }
+              }
+            >
+              Testing Press
+            </Text>
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Object {
+                  "color": "#72A4DE",
+                  "fontSize": 14,
+                }
+              }
+            >
+              Testing balance
+            </Text>
+            <View
+              style={
+                Object {
+                  "flex": 1,
+                }
+              }
+            />
+            <View
+              style={
+                Object {
+                  "flexDirection": "row",
+                  "justifyContent": "flex-start",
+                }
+              }
+            >
+              <Button
+                enabled={true}
+                onPress={[Function]}
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "rgba(114,164,222,0.3)",
+                      "borderRadius": 14,
+                      "height": 25,
+                      "width": 80,
+                    },
+                    Object {
+                      "marginRight": 8,
+                    },
+                  ]
+                }
+                title="Send"
+              />
+              <Button
+                enabled={true}
+                onPress={[Function]}
+                style={
+                  Object {
+                    "backgroundColor": "rgba(114,164,222,0.3)",
+                    "borderRadius": 14,
+                    "height": 25,
+                    "width": 80,
+                  }
+                }
+                title="Receive"
+              />
+              <View
+                style={
+                  Object {
+                    "flex": 1,
+                  }
+                }
+              />
+            </View>
+            <View
+              style={
+                Object {
+                  "flex": 1,
+                }
+              }
+            />
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Object {
+                  "color": "#72A4DE",
+                  "fontSize": 14,
+                  "marginBottom": 10,
+                }
+              }
+            >
+              
+            </Text>
+          </View>
+        </View>,
+        "style": Object {
+          "alignItems": "stretch",
+          "backgroundColor": "transparent",
+          "flex": 1,
+          "height": 130,
+        },
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <Image
+              source={1}
+              style={
+                Object {
+                  "marginRight": 10,
+                  "width": 55,
+                }
+              }
+            />,
+            <View
+              style={
+                Object {
+                  "flex": 1,
+                  "justifyContent": "flex-start",
+                }
+              }
+            >
+              <View
+                style={
+                  Object {
+                    "flex": 1,
+                  }
+                }
+              />
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={
+                  Object {
+                    "color": "#FFFFFF",
+                    "fontSize": 17,
+                    "fontWeight": "bold",
+                    "marginBottom": 4,
+                  }
+                }
+              >
+                Testing Press
+              </Text>
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={
+                  Object {
+                    "color": "#72A4DE",
+                    "fontSize": 14,
+                  }
+                }
+              >
+                Testing balance
+              </Text>
+              <View
+                style={
+                  Object {
+                    "flex": 1,
+                  }
+                }
+              />
+              <View
+                style={
+                  Object {
+                    "flexDirection": "row",
+                    "justifyContent": "flex-start",
+                  }
+                }
+              >
+                <Button
+                  enabled={true}
+                  onPress={[Function]}
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "rgba(114,164,222,0.3)",
+                        "borderRadius": 14,
+                        "height": 25,
+                        "width": 80,
+                      },
+                      Object {
+                        "marginRight": 8,
+                      },
+                    ]
+                  }
+                  title="Send"
+                />
+                <Button
+                  enabled={true}
+                  onPress={[Function]}
+                  style={
+                    Object {
+                      "backgroundColor": "rgba(114,164,222,0.3)",
+                      "borderRadius": 14,
+                      "height": 25,
+                      "width": 80,
+                    }
+                  }
+                  title="Receive"
+                />
+                <View
+                  style={
+                    Object {
+                      "flex": 1,
+                    }
+                  }
+                />
+              </View>
+              <View
+                style={
+                  Object {
+                    "flex": 1,
+                  }
+                }
+              />
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={
+                  Object {
+                    "color": "#72A4DE",
+                    "fontSize": 14,
+                    "marginBottom": 10,
+                  }
+                }
+              >
+                
+              </Text>
+            </View>,
+          ],
+          "style": Object {
+            "alignItems": "stretch",
+            "flex": 1,
+            "flexDirection": "row",
+            "justifyContent": "flex-start",
+          },
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "source": 1,
+              "style": Object {
+                "marginRight": 10,
+                "width": 55,
+              },
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [
+                <View
+                  style={
+                    Object {
+                      "flex": 1,
+                    }
+                  }
+                />,
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  ellipsizeMode="tail"
+                  style={
+                    Object {
+                      "color": "#FFFFFF",
+                      "fontSize": 17,
+                      "fontWeight": "bold",
+                      "marginBottom": 4,
+                    }
+                  }
+                >
+                  Testing Press
+                </Text>,
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  ellipsizeMode="tail"
+                  style={
+                    Object {
+                      "color": "#72A4DE",
+                      "fontSize": 14,
+                    }
+                  }
+                >
+                  Testing balance
+                </Text>,
+                <View
+                  style={
+                    Object {
+                      "flex": 1,
+                    }
+                  }
+                />,
+                <View
+                  style={
+                    Object {
+                      "flexDirection": "row",
+                      "justifyContent": "flex-start",
+                    }
+                  }
+                >
+                  <Button
+                    enabled={true}
+                    onPress={[Function]}
+                    style={
+                      Array [
+                        Object {
+                          "backgroundColor": "rgba(114,164,222,0.3)",
+                          "borderRadius": 14,
+                          "height": 25,
+                          "width": 80,
+                        },
+                        Object {
+                          "marginRight": 8,
+                        },
+                      ]
+                    }
+                    title="Send"
+                  />
+                  <Button
+                    enabled={true}
+                    onPress={[Function]}
+                    style={
+                      Object {
+                        "backgroundColor": "rgba(114,164,222,0.3)",
+                        "borderRadius": 14,
+                        "height": 25,
+                        "width": 80,
+                      }
+                    }
+                    title="Receive"
+                  />
+                  <View
+                    style={
+                      Object {
+                        "flex": 1,
+                      }
+                    }
+                  />
+                </View>,
+                <View
+                  style={
+                    Object {
+                      "flex": 1,
+                    }
+                  }
+                />,
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  ellipsizeMode="tail"
+                  style={
+                    Object {
+                      "color": "#72A4DE",
+                      "fontSize": 14,
+                      "marginBottom": 10,
+                    }
+                  }
+                >
+                  
+                </Text>,
+              ],
+              "style": Object {
+                "flex": 1,
+                "justifyContent": "flex-start",
+              },
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "style": Object {
+                    "flex": 1,
+                  },
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "accessible": true,
+                  "allowFontScaling": true,
+                  "children": "Testing Press",
+                  "ellipsizeMode": "tail",
+                  "style": Object {
+                    "color": "#FFFFFF",
+                    "fontSize": 17,
+                    "fontWeight": "bold",
+                    "marginBottom": 4,
+                  },
+                },
+                "ref": null,
+                "rendered": "Testing Press",
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "accessible": true,
+                  "allowFontScaling": true,
+                  "children": "Testing balance",
+                  "ellipsizeMode": "tail",
+                  "style": Object {
+                    "color": "#72A4DE",
+                    "fontSize": 14,
+                  },
+                },
+                "ref": null,
+                "rendered": "Testing balance",
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "style": Object {
+                    "flex": 1,
+                  },
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": Array [
+                    <Button
+                      enabled={true}
+                      onPress={[Function]}
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "rgba(114,164,222,0.3)",
+                            "borderRadius": 14,
+                            "height": 25,
+                            "width": 80,
+                          },
+                          Object {
+                            "marginRight": 8,
+                          },
+                        ]
+                      }
+                      title="Send"
+                    />,
+                    <Button
+                      enabled={true}
+                      onPress={[Function]}
+                      style={
+                        Object {
+                          "backgroundColor": "rgba(114,164,222,0.3)",
+                          "borderRadius": 14,
+                          "height": 25,
+                          "width": 80,
+                        }
+                      }
+                      title="Receive"
+                    />,
+                    <View
+                      style={
+                        Object {
+                          "flex": 1,
+                        }
+                      }
+                    />,
+                  ],
+                  "style": Object {
+                    "flexDirection": "row",
+                    "justifyContent": "flex-start",
+                  },
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "enabled": true,
+                      "onPress": [Function],
+                      "style": Array [
+                        Object {
+                          "backgroundColor": "rgba(114,164,222,0.3)",
+                          "borderRadius": 14,
+                          "height": 25,
+                          "width": 80,
+                        },
+                        Object {
+                          "marginRight": 8,
+                        },
+                      ],
+                      "title": "Send",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "enabled": true,
+                      "onPress": [Function],
+                      "style": Object {
+                        "backgroundColor": "rgba(114,164,222,0.3)",
+                        "borderRadius": 14,
+                        "height": 25,
+                        "width": 80,
+                      },
+                      "title": "Receive",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "style": Object {
+                        "flex": 1,
+                      },
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                ],
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "style": Object {
+                    "flex": 1,
+                  },
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "accessible": true,
+                  "allowFontScaling": true,
+                  "children": "",
+                  "ellipsizeMode": "tail",
+                  "style": Object {
+                    "color": "#72A4DE",
+                    "fontSize": 14,
+                    "marginBottom": 10,
+                  },
+                },
+                "ref": null,
+                "rendered": "",
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`WalletCard component tests Rendering 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "stretch",
+      "backgroundColor": "transparent",
+      "flex": 1,
+      "height": 130,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "stretch",
+        "flex": 1,
+        "flexDirection": "row",
+        "justifyContent": "flex-start",
+      }
+    }
+  >
+    <Image
+      source={1}
+      style={
+        Object {
+          "marginRight": 10,
+          "width": 55,
+        }
+      }
+    />
+    <View
+      style={
+        Object {
+          "flex": 1,
+          "justifyContent": "flex-start",
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "flex": 1,
+          }
+        }
+      />
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "color": "#FFFFFF",
+            "fontSize": 17,
+            "fontWeight": "bold",
+            "marginBottom": 4,
+          }
+        }
+      >
+        Testing Wallet
+      </Text>
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "color": "#72A4DE",
+            "fontSize": 14,
+          }
+        }
+      >
+        Testing Balance
+      </Text>
+      <View
+        style={
+          Object {
+            "flex": 1,
+          }
+        }
+      />
+      <View
+        style={
+          Object {
+            "flexDirection": "row",
+            "justifyContent": "flex-start",
+          }
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "borderRadius": 15,
+                "height": 30,
+                "justifyContent": "center",
+              },
+              Object {
+                "backgroundColor": "#1C497E",
+              },
+              Array [
+                Object {
+                  "backgroundColor": "rgba(114,164,222,0.3)",
+                  "borderRadius": 14,
+                  "height": 25,
+                  "width": 80,
+                },
+                Object {
+                  "marginRight": 8,
+                },
+              ],
+            ]
+          }
+          title="Send"
+        >
+          <View
+            accessibilityComponentType={undefined}
+            accessibilityLabel={undefined}
+            accessibilityTraits={undefined}
+            accessible={true}
+            collapsable={undefined}
+            hasTVPreferredFocus={undefined}
+            hitSlop={undefined}
+            isTVSelectable={true}
+            nativeID={undefined}
+            onLayout={undefined}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "marginLeft": 13,
+                "marginRight": 13,
+                "opacity": 1,
+              }
+            }
+            testID="Touchable"
+            tvParallaxProperties={undefined}
+          >
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              buttonTitle={true}
+              disabledButtonTitle={false}
+              ellipsizeMode="tail"
+              style={
+                Array [
+                  undefined,
+                  undefined,
+                  Object {
+                    "color": "#72A4DE",
+                    "fontSize": 14,
+                    "letterSpacing": -0.02,
+                    "lineHeight": 19,
+                    "textAlign": "center",
+                  },
+                  false,
+                  undefined,
+                ]
+              }
+            >
+              Send
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "borderRadius": 15,
+                "height": 30,
+                "justifyContent": "center",
+              },
+              Object {
+                "backgroundColor": "#1C497E",
+              },
+              Object {
+                "backgroundColor": "rgba(114,164,222,0.3)",
+                "borderRadius": 14,
+                "height": 25,
+                "width": 80,
+              },
+            ]
+          }
+          title="Receive"
+        >
+          <View
+            accessibilityComponentType={undefined}
+            accessibilityLabel={undefined}
+            accessibilityTraits={undefined}
+            accessible={true}
+            collapsable={undefined}
+            hasTVPreferredFocus={undefined}
+            hitSlop={undefined}
+            isTVSelectable={true}
+            nativeID={undefined}
+            onLayout={undefined}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "marginLeft": 13,
+                "marginRight": 13,
+                "opacity": 1,
+              }
+            }
+            testID="Touchable"
+            tvParallaxProperties={undefined}
+          >
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              buttonTitle={true}
+              disabledButtonTitle={false}
+              ellipsizeMode="tail"
+              style={
+                Array [
+                  undefined,
+                  undefined,
+                  Object {
+                    "color": "#72A4DE",
+                    "fontSize": 14,
+                    "letterSpacing": -0.02,
+                    "lineHeight": 19,
+                    "textAlign": "center",
+                  },
+                  false,
+                  undefined,
+                ]
+              }
+            >
+              Receive
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            Object {
+              "flex": 1,
+            }
+          }
+        />
+      </View>
+      <View
+        style={
+          Object {
+            "flex": 1,
+          }
+        }
+      />
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "color": "#72A4DE",
+            "fontSize": 14,
+            "marginBottom": 10,
+          }
+        }
+      >
+        Testing Message
+      </Text>
+    </View>
+  </View>
+</View>
+`;

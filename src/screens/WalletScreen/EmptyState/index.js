@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 
 import styles from './styles';
 import BackgroundImage from '../../../components/common/BackgroundImage';
-import MessageView from '../../../components/common/MessageView';
+import PanelView from '../../../components/common/PanelView';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 
 export default class EmptyWalletScreen extends Component {
@@ -21,29 +21,22 @@ export default class EmptyWalletScreen extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={styles.screenContainer}>
         <BackgroundImage/>
         <FakeNavigationBar/>
-        <ScrollView>
-          <View style={styles.cardContainer}>
-            <View style={[styles.card, styles.firstCard]}>
-              <MessageView
-                title={this.texts.createWalletTitle}
-                messageText={this.texts.createWalletText}
-                buttonTitle='Create a Wallet'
-                onButtonClick={this.props.onCreateWallet}
-              />
-            </View>
-
-            <View style={styles.card}>
-              <MessageView
-                title={this.texts.restoreWalletTitle}
-                messageText={this.texts.restoreWalletText}
-                buttonTitle='Restore a Wallet'
-                onButtonClick={this.props.onRestoreWallet}
-              />
-            </View>
-          </View>
+        <ScrollView contentContainerStyle={styles.bodyContainer}>
+          <PanelView
+            title={this.texts.createWalletTitle}
+            body={this.texts.createWalletText}
+            buttonTitle='Create a Wallet'
+            onButtonClick={this.props.onCreateWallet}
+          />
+          <PanelView
+            title={this.texts.restoreWalletTitle}
+            body={this.texts.restoreWalletText}
+            buttonTitle='Restore a Wallet'
+            onButtonClick={this.props.onRestoreWallet}
+          />
         </ScrollView>
       </View>
     );

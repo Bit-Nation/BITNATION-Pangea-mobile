@@ -9,7 +9,7 @@ import PropTypes from 'prop-types'
 import styles from './styles'
 import BackgroundImage from '../../../components/common/BackgroundImage'
 import AssetsImage from '../../../global/AssetsImages'
-import MessageView from '../../../components/common/MessageView'
+import PanelView from '../../../components/common/PanelView'
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar'
 
 class EmptyProfileScreen extends Component {
@@ -25,9 +25,9 @@ class EmptyProfileScreen extends Component {
 				<FakeNavigationBar  />
 				<View style={styles.bodyContainer}>
 					
-					<MessageView
+					<PanelView
 						title="Become a world citizen."
-						messageText="Bitnation is a decentralized, open-source movement, powered by the Bitcoin blockchain 2.0 technology, in an
+						body="Bitnation is a decentralized, open-source movement, powered by the Bitcoin blockchain 2.0 technology, in an
             attempt to foster a peer-to-peer voluntary governance system, rather than the current ‘top-down’,
             ‘one-size-fits-all’ model, restrained by the current nation-state-engineered geographical apartheid, where
             your quality of life is defined by where you were arbitrarily born."

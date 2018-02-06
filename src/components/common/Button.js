@@ -4,9 +4,12 @@ import { MediaQueryStyleSheet } from 'react-native-responsive';
 import PropTypes from 'prop-types';
 
 import Text from './Text';
-import Colors from '../../global/Colors';
 import GlobalStyles from '../../global/Styles';
 
+/**
+ * @desc Component that renders common button.
+ * @type React.Component
+ */
 export default class Button extends Component {
 
   render() {
@@ -16,17 +19,12 @@ export default class Button extends Component {
       <View style={[
         styles.baseButton,
         enabled ? styles.enabledButton : styles.disabledButton,
-        style]
-      } {...props}>
+        style]} {...props}>
+
         {
-          enabled ?
-            <TouchableOpacity style={[styles.buttonContainer]} onPress={onPress}>
-              {children || this._renderTitle()}
-            </TouchableOpacity>
-            :
-            <View style={styles.buttonContainer}>
-              {children || this._renderTitle()}
-            </View>
+          <TouchableOpacity testID='Touchable' disable={!enabled} style={[styles.buttonContainer]} onPress={onPress}>
+            {children || this._renderTitle()}
+          </TouchableOpacity>
         }
 
       </View>
@@ -44,14 +42,29 @@ export default class Button extends Component {
 }
 
 Button.propTypes = {
-  enabled: PropTypes.bool
+  /**
+   * @desc Flag that determines if button is enabled.
+   * @type bool
+   */
+  enabled: PropTypes.bool,
+  /**
+   * @desc Callback to be called on button press.
+   * @type func
+   */
+  onPress: PropTypes.func,
+  /**
+   * @desc Title to show on button.
+   * @type string
+   */
+  title: PropTypes.string,
 };
 
 Button.defaultProps = {
   enabled: true,
+  onPress: () => null,
+  title: '',
 };
 
 const styles = MediaQueryStyleSheet.create({
   ...GlobalStyles,
-
 });

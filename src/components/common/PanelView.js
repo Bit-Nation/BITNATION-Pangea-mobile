@@ -1,113 +1,127 @@
+import React, { Component } from 'react';
+import { View, Text } from 'react-native';
+import { MediaQueryStyleSheet } from 'react-native-responsive';
+import PropTypes from 'prop-types';
+import _ from 'lodash';
+
+import GlobalStyles from '../../global/Styles';
+import Button from './Button';
+
 /**
- * Generate a panel for a grid of panels.
- * The grid might be a mosaic, or list.
- * @param {Object} props
- - props.title {string} Title of the panel
- - props.body {string} Body text of the panel
- - props.renderAdditionalInfo {function} A function that renders a View
- - props.onButtonClick {function} If set, a button appears that calls onButtonClick(), using styles.button
- - props.buttonTitle {string} Text for the button
- - props.renderBottom {function} A function that renders a View at the bottom of the panel
- - props.children {string} A view to be shown in the body of the panel. A complex panel gets its contents through the children of the <panel> element.
- * @return {Array} the plotted axis components
+ * @desc Component that renders common panel view. It is used to provide list or mosaic layout.
+ * @type React.Component
  */
-
-import React, { Component } from 'react'
-import { View, Text } from 'react-native'
-import { MediaQueryStyleSheet } from 'react-native-responsive'
-import PropTypes from 'prop-types'
-
-// Global color definitions
-import Colors from '../../global/Colors'
-// Global styles
-import GlobalStyles from '../../global/Styles'
-
-// What is this?
-//import Text from './Text'
-
-import Button from './Button'
-
 export default class PanelView extends Component {
-	
-	render () {
-		
-		const {style, renderBottom, renderAdditionalInfo, children} = this.props
-		
-		return (
-			<View style={[styles.panelView, style]}>
-				
-				{/* TITLE + ICON */}
-				{/* Hide this view if no title or icon to avoid line below it. */}
-				{
-					(_isNotEmpty(this.props.title) ||
-						_isNotEmpty(this.props.icon)) &&
-					<View style={styles.panelTitleRowContainer}>
-						{
-							this.props.title &&
-							<View style={styles.panelTitleContainer}>
-								<Text style={styles.panelTitle}>
-									{this.props.title}
-								</Text>
-							</View>
-						}
-						{
-							this.props.icon &&
-							<View style={styles.panelTitleIconContainer}>
-								<Text style={styles.panelIcon}>
-									{this.props.icon}
-								</Text>
-							</View>
-						}
-					</View>
-				}
-				
-				{/* MAIN DISPLAY AREA */}
-				<View style={styles.panelTextContainer}>
-					{children}
-				</View>
-				
-				{
-					this.props.body &&
-					<View style={styles.panelTextContainer}>
-						<Text style={styles.body}>
-							{this.props.body}
-						</Text>
-					</View>
-				}
-				
-				<View style={styles.messageAdditionalInfoContainer}>
-					{renderAdditionalInfo && renderAdditionalInfo()}
-				</View>
-				{
-					this.props.onButtonClick &&
-					<Button style={styles.button}
-					        title={this.props.buttonTitle}
-					        onPress={this.props.onButtonClick}/>
-				}
-				<View style={styles.messageBottomContainer}>
-					{renderBottom && renderBottom()}
-				</View>
-			</View>
-		)
-	}
-	
-}
 
-function _isNotEmpty (v) {
-	return (typeof(v) !== 'undefined' && v)
+  render() {
+    const { style, renderBottom, renderAdditionalInfo, children } = this.props;
+
+    return (
+      <View style={[styles.panelView, style]}>
+
+        {/* TITLE + ICON */}
+        {/* Hide this view if no title or icon to avoid line below it. */}
+        {
+          (!_.isEmpty(this.props.title) || !_.isEmpty(this.props.icon)) &&
+          this._renderHeader(this.props.title, this.props.icon)
+        }
+
+        {/* MAIN DISPLAY AREA */}
+        <View style={styles.panelTextContainer}>
+          {children}
+        </View>
+
+        {
+          this.props.body &&
+          <View style={styles.panelTextContainer}>
+            <Text style={styles.body}>
+              {this.props.body}
+            </Text>
+          </View>
+        }
+
+        <View style={styles.messageAdditionalInfoContainer}>
+          {renderAdditionalInfo && renderAdditionalInfo()}
+        </View>
+
+        {
+          this.props.onButtonClick &&
+          <Button style={styles.panelButton} title={this.props.buttonTitle}
+                  onPress={this.props.onButtonClick}/>
+        }
+
+        <View style={styles.messageBottomContainer}>
+          {renderBottom && renderBottom()}
+        </View>
+
+      </View>
+    );
+  }
+
+  _renderHeader(title, icon) {
+    return (
+      <View style={styles.panelTitleRowContainer}>
+        {
+          title &&
+          <View style={styles.panelTitleContainer}>
+            <Text style={styles.panelTitle}>
+              {title}
+            </Text>
+          </View>
+        }
+        {
+          icon &&
+          <View style={styles.panelTitleIcon}>
+            <Text style={styles.panelTitle}>
+              {icon}
+            </Text>
+          </View>
+        }
+      </View>
+    );
+  }
+
 }
 
 PanelView.PropTypes = {
-	title: PropTypes.string,
-	icon: PropTypes.string,
-	body: PropTypes.string,
-	renderAdditionalInfo: PropTypes.function,
-	onButtonClick: PropTypes.function,
-	buttonTitle: PropTypes.string,
-	renderBottom: PropTypes.function,
-}
+  /**
+   * @desc Title of panel
+   * @type string
+   */
+  title: PropTypes.string,
+  /**
+   * @desc Icon of panel
+   * @type string
+   * @todo Fix icon to be the icon. Currently it's just a text.
+   */
+  icon: PropTypes.string,
+  /**
+   * @desc Body text of panel
+   * @type string
+   */
+  body: PropTypes.string,
+  /**
+   * @desc Renders content between panel body and panel button
+   * @type function
+   */
+  renderAdditionalInfo: PropTypes.function,
+  /**
+   * @desc Callback on panel button click. Button appears only if this one is passed.
+   * @type function
+   */
+  onButtonClick: PropTypes.function,
+  /**
+   * @desc Title of panel button.
+   * @type function
+   */
+  buttonTitle: PropTypes.string,
+  /**
+   * @desc Renders content below panel button.
+   * @type function
+   */
+  renderBottom: PropTypes.function,
+};
 
-// Set styles using the global Styles
 const styles = MediaQueryStyleSheet.create({
-	...GlobalStyles,
-})
+  ...GlobalStyles,
+});
