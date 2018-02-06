@@ -13,18 +13,18 @@ import AssetsImage from '../../../global/AssetsImages'
 import PanelView from '../../../components/common/PanelView'
 import DemoImage from '../../../components/common/DemoImage'
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar'
-import Strings from '../../../global/Strings'
+import i18n from '../../../global/i18n';
 
 class NationDetailsScreen extends Component {
 
 	render () {
 		const nation = resolveNation(this.props.nations,
 			this.props.openedNationId)
-		
+
 		if (!nation) {
 			return <BackgroundImage/>
 		}
-		
+
 		return (
 			<View style={styles.screenContainer}>
 				<BackgroundImage/>
@@ -45,7 +45,7 @@ class NationDetailsScreen extends Component {
               <Image source={AssetsImage.Placeholder.map} resizeMode='contain'/>
             </PanelView>
 */}
-						
+
 						{/* Fake Achievements Panel */}
 						{/*
             <PanelView style={[styles.messageView]}>
@@ -60,43 +60,46 @@ class NationDetailsScreen extends Component {
 			</View>
 		)
 	}
-	
+
 	_buildTabBar (joined) {
 		return (
 			<View style={styles.tabBar}>
 				<NationActionButton iconSource={AssetsImage.Actions.chat}
-				                    title='Chat' disable={true}/>
+				                    title={i18n.t('screens.nationDetails.chatButton')} disable={true}/>
 				<NationActionButton iconSource={AssetsImage.Actions.map}
-				                    title='Map' disable={true}/>
+				                    title={i18n.t('screens.nationDetails.mapButton')} disable={true}/>
 				<NationActionButton iconSource={AssetsImage.Actions.join}
-				                    title='Join' disable={joined}
+				                    title={i18n.t('screens.nationDetails.joinButton')} disable={joined}
 				                    onPress={this.props.joinNation}/>
 				<NationActionButton iconSource={AssetsImage.Actions.leave}
-				                    title='Leave' disable={!joined}
+				                    title={i18n.t('screens.nationDetails.leaveButton')} disable={!joined}
 				                    onPress={this.props.leaveNation}/>
 			</View>
 		)
 	}
-	
+
 	// Useful Notes:
 	// PanelView Props: title = text, messageText = text, style, renderBottom = method, renderAdditionalInfo = method, children = main text of the display
 	// DemoImage overlays a message telling user this is a demonstration
-	
+
 	_buildAboutView (nation) {
 		return (
 			<PanelView style={styles.messageView}
-			             title={`About ${nation.nationName}`}>
+			             title={i18n.t('screens.nationDetails.aboutInfo', { name: nation.nationName })}>
 				<Text style={styles.panelSubTitle}>
 					Description:
 				</Text>
 				<Text style={styles.panelBody}>
 					{nation.nationDescription ? nation.nationDescription + '\n': ''}
-					{nation.nationName} is a{nation.exists
-					? ' Geographical '
-					: ' Virtual ' + Strings.nation + '\n'}
+					{i18n.t('screens.nationDetails.locationInfo', {
+						name: nation.nationName,
+						locationType: nation.exists ?
+							i18n.t('enums.nation.locationType.geographical') :
+              i18n.t('enums.nation.locationType.virtual')
+					}) + '\n'}
 				</Text>
 				<Text style={styles.panelSubTitle}>
-					Ethereum Address:
+					{i18n.t('screens.nationDetails.ethereumAddress')}
 				</Text>
 				<Text style={styles.footnote}>
 					{nation.ethAddress}
@@ -104,38 +107,48 @@ class NationDetailsScreen extends Component {
 			</PanelView>
 		)
 	}
-	
+
 	_buildGovernmentalStructureView (nation) {
 		return (
 			<PanelView style={styles.messageView}
-			             title='Governmental Structure'>
+			             title={i18n.t('common.governmentalStructure')}>
 				<Text style={styles.panelBody}>
-					{nation.nationName + ' '}
-					uses <Text style={styles.bodyBold}>{nation.nationCode}</Text> as its legal system.
-					The laws are enforced with <Text style={styles.bodyBold}>{' ' +
-				nation.lawEnforcementMechanism + ' '}</Text>{'. '}
-					The government is a <Text style={styles.bodyBold}>{' ' + nation.decisionMakingProcess +
-				'. '}</Text>
+          {i18n.t('screens.nationDetails.legalSystemInfo', {
+          	name: nation.nationName,
+            code: nation.nationCode
+					})}
+					{' '}
+          {i18n.t('screens.nationDetails.lawEnforcementInfo', {
+            lawEnforcementMechanism: nation.lawEnforcementMechanism,
+          })}
+          {' '}
+          {i18n.t('screens.nationDetails.governmentInfo', {
+            decisionMakingProcess: nation.decisionMakingProcess,
+          })}
 				</Text>
 			</PanelView>
 		)
 	}
-	
+
 	_buildFactsView (nation) {
 		return (
-			<PanelView style={styles.messageView} title={'Fun Facts'}>
+			<PanelView style={styles.messageView} title={i18n.t('screens.nationDetails.funFacts')}>
 				<Text style={styles.panelBody}>
-					{nation.diplomaticRecognition ? nation.nationName + ' is seeking diplomatic recognition from Earth governments as a sovereign entity.\n\n'
-							:  ''}
-					
-					Non-citizens { nation.createNationsNonCitizensMayUseGovernanceServices ? 'may' :  'may not' } use national services.{"\n\n"}
-					
-					The nation is managed as a {nation.profit ? 'for-profit' : 'non-profit'} entity.
+					{nation.diplomaticRecognition ? (i18n.t('screens.nationDetails.diplomaticRecognitionInfo', { name: nation.nationName }) + '\n\n') : ''}
+
+          {i18n.t('screens.nationDetails.serviceUsageInfo', {
+            allowance: nation.createNationsNonCitizensMayUseGovernanceServices ? i18n.t('enums.nation.usageAllowance.may') : i18n.t('enums.nation.usageAllowance.mayNot')
+          })}
+					{'\n\n'}
+
+          {i18n.t('screens.nationDetails.profitInfo', {
+            profit: nation.profit ? i18n.t('enums.nation.profit.for') : i18n.t('enums.nation.profit.non')
+          })}
 				</Text>
 			</PanelView>
 		)
 	}
-	
+
 }
 
 
