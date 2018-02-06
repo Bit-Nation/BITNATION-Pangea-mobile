@@ -73,7 +73,7 @@
         "privateOrCooperativeSecurity": "Private or Cooperative Security",
         "nationState": "Nation State Law Enforcement",
         "international": "International Law Enforcement"
-      },
+      }
     },
     "onOff": {
       "on": "on",
