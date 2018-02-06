@@ -1,5 +1,5 @@
-import { call, put, select } from 'redux-saga/effects'
-import { checkConnection, createNation, fetchNations, joinNation, leaveNation, getNations } from '../../../src/sagas/nations'
+import { call, put, select, takeEvery } from 'redux-saga/effects'
+import watchProfileUpdate, { checkConnection, createNation, fetchNations, joinNation, leaveNation, getNations } from '../../../src/sagas/nations'
 import {
   CANCEL_NATION_CREATE, DONE_NATION_CREATE, START_NATIONS_FETCH, DONE_FETCH_NATIONS,
   NATION_CREATE, CANCEL_LOADING, REQUEST_JOIN_NATION, REQUEST_LEAVE_NATION,
@@ -35,6 +35,15 @@ const pangeaLibrary = {
   }
 }
 const stepper = (fn) => (mock) => fn.next(mock).value
+
+test('sagas - nation watcher', (done) => {
+  const step = stepper(watchProfileUpdate())
+  expect(step()).toEqual(takeEvery(NATION_CREATE, createNation))
+  expect(step()).toEqual(takeEvery(START_NATIONS_FETCH, fetchNations))
+  expect(step()).toEqual(takeEvery(REQUEST_JOIN_NATION, joinNation))
+  expect(step()).toEqual(takeEvery(REQUEST_LEAVE_NATION, leaveNation))
+  done()
+})
 
 test('sagas - createNation', (done) => {
   const mockAction = {
@@ -73,9 +82,7 @@ test('sagas - fetchNations', (done) => {
       id: '12345'
     }
   ]
-  console.log('call fetch now')
   const fetchAction = step(mockNations)
-  console.log('fetch resolved')
   expect(fetchAction.PUT.action.type).toEqual(DONE_FETCH_NATIONS)
   expect(fetchAction.PUT.action.payload).toEqual(mockNations)
   done()

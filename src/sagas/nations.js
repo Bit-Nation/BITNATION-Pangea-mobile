@@ -88,7 +88,7 @@ export function* leaveNation() {
   }
 }
 
-export default function* watchProfileUpdate() {
+export default function* watchNationsUpdate() {
   yield takeEvery(NATION_CREATE, createNation);
   yield takeEvery(START_NATIONS_FETCH, fetchNations);
   yield takeEvery(REQUEST_JOIN_NATION, joinNation);
