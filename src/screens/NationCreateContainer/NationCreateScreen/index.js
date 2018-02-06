@@ -29,6 +29,7 @@ import Colors from '../../../global/Colors'
 import Strings from '../../../global/Strings'
 
 import styles from './styles'
+import i18n from '../../../global/i18n';
 
 
 const DONE_BUTTON = 'DONE_BUTTON'
@@ -64,13 +65,13 @@ class CreateNation extends NavigatorComponent {
 			{
 				leftButtons: [
 					{
-						title: 'Cancel',
+						title: i18n.t('screens.createNation.cancelButton'),
 						id: 'cancel',
 						buttonColor: Colors.navigationButtonColor,
 					}],
 				rightButtons: [
 					{
-						title: 'Done',
+						title: i18n.t('screens.createNation.doneButton'),
 						id: DONE_BUTTON,
 						disabled: !saveEnabled,
 						buttonColor: Colors.navigationButtonColor,
@@ -433,25 +434,6 @@ class CreateNation extends NavigatorComponent {
 						/>
 					</View>
 				</View>
-			</PanelView>
-		)
-	}
-	
-	_buildFeesView () {
-		return (
-			<PanelView style={styles.messageView} title={Strings.fees} icon=' '>
-				<View style={styles.formRow}>
-					<View style={styles.fieldsContainer}>
-						<SwitchLabeled
-							label={'I agree to pay ' + Strings.showCurrency('ETH', 0.001, true) + ' to create this nation.'}
-							value={this.state.agreeFees}
-							onValueChange={(value) => this.setFieldValue('agreeFees', value)}
-						/>
-					</View>
-				</View>
-				<Text style={styles.footnote}>
-					We will deduct the fee from your wallet. You have {Strings.showCurrency('ETH', 1.22, true)} in your wallet.
-				</Text>
 			</PanelView>
 		)
 	}

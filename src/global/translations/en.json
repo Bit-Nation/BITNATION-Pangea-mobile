@@ -1,0 +1,315 @@
+{
+  "common": {
+    "send": "Send",
+    "receive": "Receive",
+    "ok": "OK",
+    "previous": "Previous",
+    "next": "Next",
+    "cancel": "Cancel",
+    "begin": "Begin",
+    "done": "Done",
+    "edit": "Edit",
+    "from": "From",
+    "to": "To",
+    "address": "Address",
+    "amount": "Amount",
+    "wallet": "Wallet",
+    "map": "Map",
+    "join": "Join",
+    "leave": "Leave",
+    "new": "New",
+    "optional": "Optional",
+    "available": "available",
+    "options": "Options",
+    "fees": "Fees",
+    "chat": "Chat",
+    "nations": "Nations",
+    "governmentalStructure": "Governmental Structure",
+    "updating": "Updating",
+    "updateFailed": "Update failed",
+    "ethereum": "Ethereum"
+  },
+  "enums": {
+    "nation": {
+      "locationType": {
+        "virtual": "Virtual",
+        "geographical": "Geographical"
+      },
+      "usageAllowance": {
+        "may": "may",
+        "mayNot": "may not"
+      },
+      "profit": {
+        "for": "for-profit",
+        "non": "non-profit"
+      },
+      "legalCode": {
+        "no": "No legal code",
+        "transSupra": "Transnational/Supranational Law",
+        "multiple": "Multiple Legal Codes",
+        "unidroit": "UNIDROIT Principles",
+        "computer": "Computer Code",
+        "common": "Common Law",
+        "civil": "Civil Law"
+      },
+      "services": {
+        "legal": "Legal Services",
+        "insurance": "Insurance Services",
+        "social": "Social Services",
+        "diplomatic": "Diplomatic Services",
+        "physical": "Physical Services"
+      },
+      "governmentType": {
+        "other": "Other Type of Government",
+        "holocracy": "Holocracy",
+        "democracy": "Democracy",
+        "autocracy": "Autocracy",
+        "theocracy": "Theocracy",
+        "meritocracy": "Meritocracy"
+      },
+      "lawEnforcementMechanism": {
+        "no": "No Law Enforcement",
+        "idReputation": "ID & Reputation Law Enforcement",
+        "privateOrCooperativeSecurity": "Private or Cooperative Security",
+        "nationState": "Nation State Law Enforcement",
+        "international": "International Law Enforcement"
+      },
+    },
+    "onOff": {
+      "on": "on",
+      "off": "off"
+    }
+  },
+  "alerts": {
+    "abortKeyCreateProcess": {
+      "title": "Delete Private Key",
+      "subtitle": "Are you sure that you want to stop creating this private key?",
+      "confirm": "Delete Key",
+      "cancel": "$t(common.cancel)"
+    },
+    "privateKeyGroupCompleted": {
+      "title": "Group {{number}} finished!",
+      "subtitle": "Good work! Now, write down next group of {{KEY_PAGE_LENGTH}} words.",
+      "confirm": "$t(common.ok)"
+    },
+    "incorrectKeyEntered": {
+      "title": "Incorrect: Check all the words.",
+      "subtitle": "",
+      "confirm": "$t(common.ok)"
+    },
+    "walletRequired": {
+      "title": "No wallet",
+      "subtitle": "You need to setup a wallet first",
+      "confirm": "$t(common.ok)",
+      "cancel": "$t(common.cancel)"
+    }
+  },
+  "screens": {
+    "splash": {
+      "title": "Splash"
+    },
+    "intro": {
+      "freeSpeech": {
+        "title": "Free Speech",
+        "text": "She uses Bitnation to speak privately with clients. He uses Bitnation to speak privately with victims."
+      },
+      "refugeeEmergencyResponse": {
+        "title": "Refugee      Emergency     Response",
+        "text": "He can show his documents from home. She can get a fair wage for her work."
+      },
+      "education": {
+        "title": "Bitnation        Education        Network",
+        "text": "She can get her high school diploma. He can study the languages he needs."
+      },
+      "nations": {
+        "title": "Borderless       Decentralized      Nations",
+        "text": "They can form a nation to get a fair deal, enforce contracts, and share working knowledge."
+      }
+    },
+    "dashboard": {
+      "tabTitle": "Dashboard",
+      "walletPanel": {
+        "title": "$t(common.wallet)",
+        "empty": "Begin using Pangea by creating your wallet."
+      },
+      "warningPanel": {
+        "title": "Warning",
+        "body": "Pangea is in an early development stage, use with caution and at your own risk."
+      }
+    },
+    "chat": {
+      "title": "$t(common.chat)",
+      "tabTitle": "$t(common.chat)"
+    },
+    "nations": {
+      "title": "$t(common.nations)",
+      "tabTitle": "$t(common.nations)",
+      "allNations": "All Nations",
+      "myNations": "My Nations"
+    },
+    "nationDetails": {
+      "title": "Nation",
+      "aboutInfo": "About {{name}}",
+      "locationInfo": "{{name}} is a {{locationType}} nation",
+      "legalSystemInfo": "{{name}} uses {{code}} as its legal system.",
+      "lawEnforcementInfo": "The laws are enforced with {{lawEnforcementMechanism}}.",
+      "governmentInfo": "The government is a {{decisionMakingProcess}}.",
+      "funFacts": "Fun Facts",
+      "diplomaticRecognitionInfo": "{{name}} is seeking diplomatic recognition from Earth governments as a sovereign entity.",
+      "serviceUsageInfo": "Non-citizens {{allowance}} use national services.",
+      "profitInfo": "The nation is managed as a {{profit}} entity.",
+      "ethereumAddress": "Ethereum Address:",
+      "chatButton": "$t(common.chat)",
+      "mapButton": "$t(common.map)",
+      "joinButton": "$t(common.join)",
+      "leaveButton": "$t(common.leave)"
+    },
+    "createNation": {
+      "title": "Create A Nation",
+      "introduction": "Reclaim your sovereignty by creating your own decentralized borderless voluntary nation(DBVN).",
+      "prompt": {
+        "name": "Nation name",
+        "description": "Short description",
+        "location": "Nation location",
+        "represents": "Nation represents an existing Earth country",
+        "legalCode": "Legal Code...",
+        "lawEnforcementMechanism": "Law Enforcement Mechanism...",
+        "typeOfGovernment": "Type of Government...",
+        "servicesOffered": "Services Offered...",
+        "diplomaticRecognition": "Seeking diplomatic recognition as a sovereign entity.",
+        "servicesUsage": "Non-citizens may use governance services.",
+        "profit": "For-profit nation."
+      },
+      "locationTypeHint": "Virtual nations exist only in Pangea. Geographic nations are on Earth.",
+      "cancelButton": "$t(common.cancel)",
+      "doneButton": "$t(common.done)"
+    },
+    "wallet": {
+      "title": "$t(common.wallet)",
+      "tabTitle": "$t(common.wallet)",
+      "empty": {
+        "createWallet": "Create a Wallet",
+        "restoreWallet": "Restore a Wallet",
+        "createWalletPanel": {
+          "title": "$t(screens.wallet.empty.createWallet)",
+          "text": "A wallet holds money, such as Ethereum. You will need a wallet to pay for services, such as creating and editing nations, notarizing documents, and other useful services.",
+          "button": "$t(screens.wallet.empty.createWallet)"
+        },
+        "restoreWalletPanel": {
+          "title": "$t(screens.wallet.empty.restoreWallet)",
+          "text": "If you need to restore your wallet (because you lost or upgraded your phone) use the button below.\nYou will need your private key to restore your wallet.",
+          "button": "$t(screens.wallet.empty.restoreWallet)"
+        }
+      }
+    },
+    "profile": {
+      "title": "Profile & Settings",
+      "tabTitle": "Profile",
+      "empty": {
+        "createProfilePanel": {
+          "title": "Become a world citizen.",
+          "text": "Bitnation is a decentralized, open-source movement, powered by the Bitcoin blockchain 2.0 technology, in an attempt to foster a peer-to-peer voluntary governance system, rather than the current ‘top-down’, ‘one-size-fits-all’ model, restrained by the current nation-state-engineered geographical apartheid, where your quality of life is defined by where you were arbitrarily born.",
+          "button": "Create a User Profile"
+        }
+      },
+      "editButton": "$t(common.edit)",
+      "edit": {
+        "cancelButton": "$t(common.cancel)",
+        "doneButton": "$t(common.done)",
+        "personalInformation": "Personal Information",
+        "name": "Name",
+        "location": "Location ($t(common.optional))",
+        "latitude": "Latitude ($t(common.optional))",
+        "longitude": "Longitude ($t(common.optional))",
+        "editPhoto": "$t(common.edit)",
+        "editPhotoActionSheet": {
+          "title": "Edit your profile picture.",
+          "photoLibrary": "Photo Library",
+          "takePhoto": "Take Photo",
+          "cancel": "$t(common.cancel)"
+        }
+      }
+    },
+    "createKey": {
+      "title": "Create Private Key",
+      "introduction": [
+        "To use a secure blockchain, you need a \"private key\". We will make your private key for you.",
+        "We require you to write down your private key on paper. This process only takes a few minutes.",
+        "If your phone is lost, stolen, broken, or upgraded, the only way to restore your wallet is by entering your private key!",
+        "We recommend writing on paper because if your key is on your computer or phone, someone might steal it.",
+        "Your private key protects everything in Bitnation, so be sure to put your paper with with your private key in a safe place."
+      ],
+      "instructions": {
+        "beforeGrid": [
+          "We will show you a group of {{KEY_LENGTH}} words that is the private key that unlocks your wallet."
+        ],
+        "afterGrid": [
+          "Write the words on paper, in order. Store the paper in very safe place. If your device is lost, stolen, broken, or upgraded, you must have this key to restore or unlock your wallet."
+        ]
+      },
+      "process": {
+        "instructions": [
+          "Write each row of words on the piece of paper. Press “Next” when you have written the row."
+        ],
+        "nextButton": "$t(common.next)",
+        "previousButton": "$t(common.previous)"
+      },
+      "startButton": "$t(common.begin)"
+    },
+    "verifyKey": {
+      "title": "Verify Private Key",
+      "instructions": [
+        "Now that you have written down your private key, we will ask you to verify it.",
+        "You will type the {{KEY_LENGTH}} words of your private key into the app, and we will check that your written private key is correct.",
+        "Your private key protects everything in Bitnation, so be sure to put your paper with your private key in a safe place."
+      ],
+      "process": {
+        "instructions": [
+          "Enter in the correct order the {{KEY_LENGTH}} words that you wrote down as your paper key. Tap a box to begin."
+        ],
+        "nextButton": "$t(common.next)",
+        "previousButton": "$t(common.previous)",
+        "doneButton": "$t(common.done)"
+      },
+      "success": {
+        "instructions": [
+          "Congratulations, you correctly entered your private key.",
+          "Now, put your paper with your private key in a safe place."
+        ],
+        "doneButton": "$t(common.done)"
+      },
+      "startButton": "$t(common.begin)"
+    },
+    "loadWallet": {
+      "title": "Load wallet",
+      "instructions": [
+        "If you have a private key from another Bitnation wallet, you can use it here to add that wallet to this app.",
+        "For example, if you lost or upgraded your device, you will have to transfer wallets from that device to this one.",
+        "To load your wallet, we will ask you for the {{KEY_LENGTH}} words of your private key. You should have these on a piece of paper you store in a safe and secure place."
+      ],
+      "startButton": "$t(common.begin)"
+    },
+    "sendMoney": {
+      "title": "Send money",
+      "enterAddress": "Enter ETH address",
+      "available": "available"
+    },
+    "receiveMoney": {
+      "title": "Receive Money",
+      "shareAddressPanel": {
+        "title": "Copy Address",
+        "text": "You can copy your wallet address and send any way you choose, e.g. SMS or email. Do not try to type your address by hand!",
+        "button": "Share Wallet Address"
+      }
+    },
+    "qrCodeScanner": {
+      "title": "Scan QR code"
+    }
+  },
+  "testingMode": {
+    "changeActiveAlert": {
+      "title": "You have turned {{onOff}} testing mode"
+    },
+    "removeWallets": "Remove wallets"
+  }
+}

@@ -18,6 +18,7 @@ import FakeNavigationBar from '../../components/common/FakeNavigationBar';
 import PanelView from '../../components/common/PanelView';
 import { prettyETHWalletBalance, roundEth } from '../../utils/formatters';
 import Strings from '../../global/Strings';
+import i18n from '../../global/i18n';
 
 class Dashboard extends Component {
 
@@ -31,18 +32,18 @@ class Dashboard extends Component {
             <Image style={styles.logo} source={Images.bitLogoBig} resizeMode='contain'/>
           </View>
           <PanelView
-            title='Wallet'
+            title={i18n.t('screens.dashboard.walletPanel.title')}
             body={
               _.isEmpty(this.props.wallets) ?
-                Strings.dashboard.walletEmptyState
+                i18n.t('screens.dashboard.walletPanel.empty')
                 :
                 prettyETHWalletBalance(this.props.wallets[0])
             }
           />
 
           <PanelView
-            title={Strings.dashboard.warningTitle}
-            body={Strings.dashboard.warningBody}
+            title={i18n.t('screens.dashboard.warningPanel.title')}
+            body={i18n.t('screens.dashboard.warningPanel.body')}
           />
         </View>
       </View>

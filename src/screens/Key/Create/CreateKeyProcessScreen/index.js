@@ -18,12 +18,9 @@ import {
 import KeyBaseScreen from '../../KeyBaseScreen/index';
 import { removePrivateKey } from '../../../../actions/key';
 import BodyParagraphs from '../../../../components/common/BodyParagraphs';
+import i18n from '../../../../global/i18n';
 
 const DONE_BUTTON = 'DONE_BUTTON';
-
-const paragraphs = [
-  'Write each row of words on the piece of paper. Press “Next” when you have written the row.',
-];
 
 class CreateKeyProcessScreen extends KeyBaseScreen {
 
@@ -46,11 +43,11 @@ class CreateKeyProcessScreen extends KeyBaseScreen {
 
   _showPageCompletedAlert(completedPage, done) {
     Alert.alert(
-      `Group ${completedPage + 1} finished!`,
-      done ? '' : `Good work! Now, write down next group of ${KEY_PAGE_LENGTH} words.`,
+      i18n.t('alerts.privateKeyGroupCompleted.title', { number: completedPage + 1 }),
+      done ? '' : i18n.t('alerts.privateKeyGroupCompleted.subtitle', { KEY_PAGE_LENGTH }),
       [
         {
-          text: 'OK',
+          text: i18n.t('alerts.privateKeyGroupCompleted.confirm'),
           onPress: () => {
             this.setState(prevState => {
               return {
@@ -114,7 +111,7 @@ class CreateKeyProcessScreen extends KeyBaseScreen {
         <BackgroundImage/>
         <FakeNavigationBar/>
         <View style={styles.bodyContainer}>
-          <BodyParagraphs paragraphs={paragraphs}/>
+          <BodyParagraphs paragraphs={i18n.t('screens.createKey.process.instructions')}/>
           <View style={styles.gridContainer}>
             <GridView
               itemsPerRow={KEY_COLUMN_COUNT}
@@ -126,11 +123,11 @@ class CreateKeyProcessScreen extends KeyBaseScreen {
             />
           </View>
           <View style={styles.buttonContainer}>
-            <Button title='Previous'
+            <Button title={i18n.t('screens.createKey.process.previousButton')}
                     onPress={this.onPreviousPressed}
                     style={styles.button}
                     enabled={this.state.activeRow > 0}/>
-            <Button title='Next'
+            <Button title={i18n.t('screens.createKey.process.nextButton')}
                     onPress={this.onNextPressed}
                     style={styles.button}/>
           </View>
