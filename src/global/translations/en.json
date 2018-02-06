@@ -32,8 +32,8 @@
   "enums": {
     "nation": {
       "locationType": {
-        "virtual": "Virtual",
-        "geographical": "Geographical"
+        "virtual": "Virtual nation",
+        "geographical": "Geographical nation"
       },
       "usageAllowance": {
         "may": "may",

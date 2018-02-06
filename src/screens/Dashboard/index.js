@@ -17,7 +17,6 @@ import BackgroundImage from '../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../components/common/FakeNavigationBar';
 import PanelView from '../../components/common/PanelView';
 import { prettyETHWalletBalance, roundEth } from '../../utils/formatters';
-import Strings from '../../global/Strings';
 import i18n from '../../global/i18n';
 
 class Dashboard extends Component {

@@ -13,7 +13,6 @@ import AssetsImage from '../../../global/AssetsImages'
 import PanelView from '../../../components/common/PanelView'
 import DemoImage from '../../../components/common/DemoImage'
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar'
-import Strings from '../../../global/Strings'
 import i18n from '../../../global/i18n';
 
 class NationDetailsScreen extends Component {

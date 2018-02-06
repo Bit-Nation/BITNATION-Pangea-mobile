@@ -2,7 +2,6 @@ import MultiSelect from '../../../../src/components/MultiSelect';
 import React from 'react';
 import renderer from 'react-test-renderer'
 import Colors from "../../../../src/global/Colors";
-import Strings from '../../../../src/global/Strings'
 
 test('MultiSelect renders correctly', () => {
   const tree = renderer.create(
@@ -16,7 +15,7 @@ test('MultiSelect renders correctly', () => {
         name: 'Testing Opt 2',
       }]}
       uniqueKey='id'
-      submitButtonText={Strings.ok}
+      submitButtonText={'OK'}
     />
   ).toJSON();
   expect(tree).toMatchSnapshot();
@@ -40,7 +39,7 @@ test('MultiSelect renders correctly with customized colors', () => {
       itemTextColor={Colors.textSecondary}
       displayKey='name'
       submitButtonColor={Colors.panelBoxColor}
-      submitButtonText={Strings.ok}
+      submitButtonText={'OK'}
     />
   ).toJSON();
   expect(tree).toMatchSnapshot();
