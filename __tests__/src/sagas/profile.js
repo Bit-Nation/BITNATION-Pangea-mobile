@@ -1,8 +1,8 @@
 import { call, put, select, takeEvery } from 'redux-saga/effects'
-import { cloneableGenerator } from 'redux-saga/utils';
+import { cloneableGenerator } from 'redux-saga/utils'
 import watchProfileUpdate, { updateProfile, getProfile, getProfileState } from '../../../src/sagas/profile'
-import { REQUEST_PROFILE_UPDATE, DONE_USER_EDITING, SET_USER_PROFILE, REQUEST_GET_PROFILE, CANCEL_USER_EDITING } from '../../../src/actions/profile';
-import { getPangeaLibrary } from '../../../src/services/container';
+import { REQUEST_PROFILE_UPDATE, DONE_USER_EDITING, SET_USER_PROFILE, REQUEST_GET_PROFILE, CANCEL_USER_EDITING } from '../../../src/actions/profile'
+import { getPangeaLibrary } from '../../../src/services/container'
 
 jest.mock('BITNATION-Pangea-libs', () => ({
   profile: {
@@ -11,12 +11,12 @@ jest.mock('BITNATION-Pangea-libs', () => ({
       getProfile: jest.fn()
     }
   }
-}));
+}))
 
 jest.mock('react-native-config', () => ({
   ETH_HTTP_ENDPOINT: 'https://rinkeby.infura.io/metamask',
   PRODUCTION: 'false'
-}));
+}))
 
 const pangeaLibrary = {
   profile: {
@@ -90,7 +90,7 @@ test('sagas - getProfile', (done) => {
     location: 'NYC',
     image: null
   }
-  expect(successIterator.next(mockProfile).value).toEqual(put({ type: SET_USER_PROFILE, user: {...mockProfile, avatar: null }}));
+  expect(successIterator.next(mockProfile).value).toEqual(put({ type: SET_USER_PROFILE, user: {...mockProfile, avatar: null }}))
   
   // clone and test the failure case
   const failureIterator = iterator.clone()
