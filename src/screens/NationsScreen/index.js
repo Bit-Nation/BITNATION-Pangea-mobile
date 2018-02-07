@@ -10,6 +10,7 @@ import { screen } from '../../global/Screens';
 import { resolveNation } from '../../utils/nations';
 import Colors from '../../global/colors';
 import NavigatorComponent from '../../components/common/NavigatorComponent';
+import i18n from '../../global/i18n';
 
 const NEW_BUTTON = 'NEW_BUTTON';
 
@@ -43,14 +44,14 @@ class NationsScreen extends NavigatorComponent {
 
   _showCreatePrivateKeyAlert() {
     Alert.alert(
-      'No wallet',
-      'You need a wallet to create a nation.',
+      i18n.t('alerts.walletRequired.title'),
+      i18n.t('alerts.walletRequired.subtitle'),
       [
-        {text: 'Cancel', style: 'cancel'},
-        {text: 'OK', onPress: () => this.props.navigator.switchToTab({tabIndex: 3})},
+        { text: i18n.t('alerts.walletRequired.cancel'), style: 'cancel' },
+        { text: i18n.t('alerts.walletRequired.confirm'), onPress: () => this.props.navigator.switchToTab({ tabIndex: 3 }) },
       ],
-      { cancelable: false }
-    )
+      { cancelable: false },
+    );
   }
 
   render() {

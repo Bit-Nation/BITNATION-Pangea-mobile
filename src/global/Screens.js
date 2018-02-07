@@ -1,6 +1,7 @@
 import AssetsImages from './AssetsImages';
 import Colors from './colors';
 import { Platform } from 'react-native';
+import i18n from './i18n';
 
 export const tabsStyle = {
   tabBarButtonColor: Colors.white,
@@ -54,31 +55,31 @@ const baseKeyScreen = {
 const Screens = {
   SPLASH_SCREEN: {
     screen: 'Pangea.SplashScreen',
-    title: 'Splash',
+    title: i18n.t('screens.splash.title'),
   },
   DASHBOARD_SCREEN: {
     screen: 'Pangea.DashboardScreen',
-    label: 'Dashboard',
+    label: i18n.t('screens.dashboard.tabTitle'),
     icon: AssetsImages.TabIcons.dashboard,
     navigatorStyle: hiddenNavigatorStyle,
   },
   CHAT_SCREEN: {
     screen: 'Pangea.ChatScreen',
-    label: 'Chat',
+    label: i18n.t('screens.chat.tabTitle'),
     icon: AssetsImages.TabIcons.chat,
-    title: 'Chat',
+    title: i18n.t('screens.chat.title'),
     navigatorStyle: hiddenNavigatorStyle,
   },
   NATIONS_SCREEN: {
     screen: 'Pangea.NationsScreen',
-    label: 'Nations',
+    label: i18n.t('screens.nations.tabTitle'),
     icon: AssetsImages.TabIcons.nations,
-    title: '  Nations  ', // Spaces here are to fix title truncating
+    title: i18n.t('screens.nations.title'),
     navigatorStyle,
   },
   NATION_DETAILS_SCREEN: {
     screen: 'Pangea.NationDetailsScreen',
-    title: 'Nation',
+    title: i18n.t('screens.nationDetails.title'),
     navigatorStyle,
   },
   NATION_CREATE_SCREEN: {
@@ -88,46 +89,46 @@ const Screens = {
   },
   WALLET_SCREEN: {
     screen: 'Pangea.WalletScreen',
-    label: 'Wallet',
+    label: i18n.t('screens.wallet.tabTitle'),
     icon: AssetsImages.TabIcons.wallet,
-    title: 'Wallet',
+    title: i18n.t('screens.wallet.title'),
     navigatorStyle,
   },
   PROFILE_SCREEN: {
     screen: 'Pangea.ProfileScreen',
-    label: 'Profile',
+    label: i18n.t('screens.profile.tabTitle'),
     icon: AssetsImages.TabIcons.profile,
-    title: 'Profile & Settings',
+    title: i18n.t('screens.profile.title'),
     navigatorStyle,
   },
   CREATE_KEY_INTRODUCTION_SCREEN: {
     screen: 'Pangea.CreateKeyIntroductionScreen',
-    title: ' Create Private Key ',
+    title: i18n.t('screens.createKey.title'),
     ...baseKeyScreen,
   },
   CREATE_KEY_INSTRUCTION_SCREEN: {
     screen: 'Pangea.CreateKeyInstructionScreen',
-    title: 'Create Private Key',
+    title: i18n.t('screens.createKey.title'),
     ...baseKeyScreen,
   },
   CREATE_KEY_PROCESS_SCREEN: {
     screen: 'Pangea.CreateKeyProcessScreen',
-    title: 'Create Private Key',
+    title: i18n.t('screens.createKey.title'),
     ...baseKeyScreen,
   },
   VERIFY_KEY_INSTRUCTION_SCREEN: {
     screen: 'Pangea.VerifyKeyInstructionScreen',
-    title: 'Verify Private Key',
+    title: i18n.t('screens.verifyKey.title'),
     ...baseKeyScreen,
   },
   VERIFY_KEY_PROCESS_SCREEN: {
     screen: 'Pangea.VerifyKeyProcessScreen',
-    title: 'Verify Private Key',
+    title: i18n.t('screens.verifyKey.title'),
     ...baseKeyScreen,
   },
   LOAD_WALLET_SCREEN: {
     screen: 'Pangea.LoadWalletScreen',
-    title: ' Load wallet ',
+    title: i18n.t('screens.loadWallet.title'),
     ...baseKeyScreen,
   },
   INTRO_SCREEN: {
@@ -136,22 +137,22 @@ const Screens = {
   },
   RECEIVE_MONEY_SCREEN: {
     screen: 'Pangea.ReceiveMoneyScreen',
-    title: 'Receive Money',
+    title: i18n.t('screens.receiveMoney.title'),
     navigatorStyle,
   },
   VERIFY_KEY_SUCCESS_SCREEN: {
     screen: 'Pangea.VerifyKeySuccess',
-    title: 'Verify Private Key',
+    title: i18n.t('screens.verifyKey.title'),
     ...baseKeyScreen,
   },
   SEND_MONEY_SCREEN: {
     screen: 'Pangea.SendMoneyScreen',
-    title: 'Send money',
+    title: i18n.t('screens.sendMoney.title'),
     navigatorStyle,
   },
   QR_CODE_SCANNER_SCREEN: {
     screen: 'Pangea.QRCodeScannerScreen',
-    title: 'Scan QR code',
+    title: i18n.t('screens.scanQRCode.title'),
     navigatorStyle,
   },
 

@@ -21,6 +21,7 @@ import { ActionSheet } from 'native-base';
 import PanelView from '../../../components/common/PanelView';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import i18n from '../../../global/i18n';
 
 const DONE_BUTTON = 'DONE_BUTTON';
 
@@ -37,12 +38,12 @@ class EditProfile extends NavigatorComponent {
     this.props.navigator.setButtons(
       {
         leftButtons: [{
-          title: 'Cancel',
+          title: i18n.t('screens.profile.edit.cancelButton'),
           id: 'cancel',
           buttonColor: Colors.navigationButtonColor,
         }],
         rightButtons: [{
-          title: 'Done',
+          title: i18n.t('screens.profile.edit.doneButton'),
           id: DONE_BUTTON,
           disabled: !saveEnabled,
           buttonColor: Colors.navigationButtonColor,
@@ -107,7 +108,7 @@ class EditProfile extends NavigatorComponent {
 						<Image source={avatarSource}
 						       style={styles.avatarLarge}/>
 						<Text
-							style={styles.editItemLabel}>edit</Text>
+							style={styles.editItemLabel}>{i18n.t('screens.profile.edit.editPhoto')}</Text>
 					</View>
 				</TouchableOpacity>
 			</View>
@@ -119,7 +120,7 @@ class EditProfile extends NavigatorComponent {
 	// ========================================
 	_buildProfileForm () {
 		return (
-			<PanelView style={styles.messageView} title='Personal Information'>
+			<PanelView style={styles.messageView} title={i18n.t('screens.profile.edit.personalInformation')}>
 				<View style={styles.formRow}>
 					<View style={styles.fieldsContainer}>
 						<View style={styles.formRow}>
@@ -129,7 +130,7 @@ class EditProfile extends NavigatorComponent {
 									'name',
 									text)}
 								style={styles.textInput}
-								placeholder='Name'
+								placeholder={i18n.t('screens.profile.edit.name')}
 								placeholderTextColor='rgba(255,255,255,0.3)'
 								keyboardType='default'
 							/>
@@ -141,7 +142,7 @@ class EditProfile extends NavigatorComponent {
 									'location',
 									text)}
 								style={styles.textInput}
-								placeholder='Location (Optional)'
+								placeholder={i18n.t('screens.profile.edit.location')}
 								placeholderTextColor='rgba(255,255,255,0.3)'
 								keyboardType='default'
 							/>
@@ -155,7 +156,7 @@ class EditProfile extends NavigatorComponent {
 								style={styles.textInput}
 								keyboardType='numeric'
 								placeholderTextColor='rgba(255,255,255,0.3)'
-								placeholder="Latitude (Optional)"
+								placeholder={i18n.t('screens.profile.edit.latitude')}
 							/>
 						</View>
 						<View style={styles.formRow}>
@@ -167,7 +168,7 @@ class EditProfile extends NavigatorComponent {
 								style={styles.textInput}
 								keyboardType='numeric'
 								placeholderTextColor='rgba(255,255,255,0.3)'
-								placeholder="Longitude (Optional)"
+								placeholder={i18n.t('screens.profile.edit.longitude')}
 							/>
 						</View>
 					</View>
@@ -271,9 +272,13 @@ class EditProfile extends NavigatorComponent {
     if (this.actionSheet !== null) {
       this.actionSheet._root.showActionSheet(
         {
-          options: ['Photo Library', 'Take Photo', 'Cancel'],
+          options: [
+            i18n.t('screens.profile.edit.editPhotoActionSheet.photoLibrary'),
+            i18n.t('screens.profile.edit.editPhotoActionSheet.takePhoto'),
+            i18n.t('screens.profile.edit.editPhotoActionSheet.cancel'),
+					],
           cancelButtonIndex: 2,
-          title: 'Edit your profile picture.'
+          title: i18n.t('screens.profile.edit.editPhotoActionSheet.title')
         },
         buttonIndex => {
           switch (buttonIndex) {

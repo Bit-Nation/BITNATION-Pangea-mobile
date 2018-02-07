@@ -16,6 +16,7 @@ import AssetsImage from '../../../global/AssetsImages';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import Colors from '../../../global/colors';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
+import i18n from '../../../global/i18n';
 
 const EDIT_BUTTON = 'EDIT_BUTTON';
 
@@ -28,7 +29,7 @@ class ProfileScreen extends NavigatorComponent {
       {
         leftButtons: [],
         rightButtons: [{
-          title: 'Edit',
+          title: i18n.t('screens.profile.editButton'),
           id: EDIT_BUTTON,
           buttonColor: Colors.navigationButtonColor,
         }],
@@ -53,7 +54,11 @@ class ProfileScreen extends NavigatorComponent {
   componentDidUpdate(prevProps) {
     if (prevProps.testingModeActive !== this.props.testingModeActive) {
       Alert.alert(
-        `You have turned ${this.props.testingModeActive ? 'on' : 'off'} testing mode!`,
+        i18n.t('testingMode.changeActiveAlert.title', {
+          onOff: this.props.testingModeActive ?
+            i18n.t('enums.onOff.on') :
+            i18n.t('enums.onOff.off')
+        })
       );
     }
   }

@@ -1,4 +1,4 @@
-import Strings from '../global/Strings';
+import i18n from '../global/i18n';
 
 const BN = require('bignumber.js');
 
@@ -26,7 +26,7 @@ export function prettyETHWalletBalance(wallet, successfulSuffix) {
   if (wallet.balance !== null && wallet.balance !== undefined) {
     return roundEth(wallet.balance) + ' ETH' + successfulSuffix;
   }
-  return !wallet.synchronizationError ? Strings.walletUpdating : Strings.walletUpdateFailed;
+  return !wallet.synchronizationError ? i18n.t('common.updating') : i18n.t('common.updateFailed');
 }
 
 /**

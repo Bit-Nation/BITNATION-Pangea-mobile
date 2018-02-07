@@ -21,12 +21,9 @@ import Button from '../../../../components/common/Button';
 import { changeEnteredMnemonic, removePrivateKey, validateEnteredMnemonic } from '../../../../actions/key';
 import Colors from '../../../../global/colors';
 import BodyParagraphs from '../../../../components/common/BodyParagraphs';
+import i18n from '../../../../global/i18n';
 
 const DONE_BUTTON = 'DONE_BUTTON';
-
-const paragraphs = [
-  `Enter in the correct order the ${KEY_LENGTH} words that you wrote down as your paper key. Tap a box to begin.`,
-];
 
 class VerifyKeyProcessScreen extends KeyBaseScreen {
 
@@ -94,9 +91,9 @@ class VerifyKeyProcessScreen extends KeyBaseScreen {
 
   _showIncorrectMnemonicAlert = () => {
     Alert.alert(
-      'Incorrect: Check all the words.',
-      '',
-      [{ text: 'OK', onPress: () => null }],
+      i18n.t('alerts.incorrectKeyEntered.title'),
+      i18n.t('alerts.incorrectKeyEntered.subtitle'),
+      [{ text: i18n.t('alerts.incorrectKeyEntered.confirm'), onPress: () => null }],
     );
   };
 
@@ -177,7 +174,7 @@ class VerifyKeyProcessScreen extends KeyBaseScreen {
           enableOnAndroid
           keyboardShouldPersistTaps='handled'
           ref={(scrollView) => this.scrollView = scrollView}>
-          <BodyParagraphs paragraphs={paragraphs}/>
+          <BodyParagraphs paragraphs={i18n.t('screens.verifyKey.process.instructions', { KEY_LENGTH })}/>
           <View style={styles.gridContainer}>
             <GridView
               itemsPerRow={KEY_COLUMN_COUNT}
@@ -187,11 +184,11 @@ class VerifyKeyProcessScreen extends KeyBaseScreen {
             />
           </View>
           <View style={styles.buttonContainer}>
-            <Button title='Previous'
+            <Button title={i18n.t('screens.verifyKey.process.previousButton')}
                     onPress={this.onPreviousPressed}
                     style={styles.button}
                     enabled={this.state.currentPage > 0}/>
-            <Button title='Next'
+            <Button title={i18n.t('screens.verifyKey.process.nextButton')}
                     onPress={this.onNextPressed}
                     style={styles.button}
                     enabled={this.state.currentPage < KEY_PAGE_COUNT - 1}/>

@@ -7,7 +7,8 @@ import {
 } from 'react-native'
 import Swiper from 'react-native-swiper'
 import Images from '../../global/AssetsImages';
-import Colors from '../../global/colors';
+import Colors from '../../global/Colors';
+import i18n from '../../global/i18n';
 
 var styles = {
   wrapper: {
@@ -103,7 +104,7 @@ export default () => <Swiper style={styles.wrapper} >
 
               <View style ={styles.freeSpeechContainer}>
           
-                <Text style={styles.text}>Free Speech</Text>
+                <Text style={styles.text}>{i18n.t('screens.intro.freeSpeech.title')}</Text>
 
             </View>
           </View>
@@ -111,7 +112,7 @@ export default () => <Swiper style={styles.wrapper} >
 
               <View style ={styles.bitnation}>
             
-                 <Text style={styles.textBitnation}>She uses Bitnation to speak privately with clients. He uses Bitnation to speak privately with victims.</Text>
+                 <Text style={styles.textBitnation}>{i18n.t('screens.intro.freeSpeech.text')}</Text>
 
             </View>
         </View>
@@ -136,7 +137,7 @@ export default () => <Swiper style={styles.wrapper} >
 
               <View style ={styles.freeSpeechContainer}>
             
-                <Text style={styles.text}>Refugee      Emergency     Response</Text>
+                <Text style={styles.text}>{i18n.t('screens.intro.refugeeEmergencyResponse.title')}</Text>
 
               </View>
           </View>
@@ -144,7 +145,7 @@ export default () => <Swiper style={styles.wrapper} >
 
             <View style ={styles.bitnation}>
             
-                <Text style={styles.textBitnation}>He can show his documents from home. She can get a fair wage for her work.</Text>
+                <Text style={styles.textBitnation}>{i18n.t('screens.intro.refugeeEmergencyResponse.text')}</Text>
 
             </View>
           </View>
@@ -168,7 +169,7 @@ export default () => <Swiper style={styles.wrapper} >
 
               <View style ={styles.freeSpeechContainer}>
           
-                 <Text style={styles.text}>Bitnation        Education        Network</Text>
+                 <Text style={styles.text}>{i18n.t('screens.intro.education.title')}</Text>
 
               </View>
           </View>
@@ -176,7 +177,7 @@ export default () => <Swiper style={styles.wrapper} >
 
               <View style ={styles.bitnation}>
             
-                <Text style={styles.textBitnation}>She can get her high school diploma. He can study the languages he needs.</Text>
+                <Text style={styles.textBitnation}>{i18n.t('screens.intro.education.text')}</Text>
 
             </View>
           </View>
@@ -202,7 +203,7 @@ export default () => <Swiper style={styles.wrapper} >
 
                 <View style ={styles.freeSpeechContainer}>
           
-                  <Text style={styles.text}>Borderless       Decentralized      Nations</Text>
+                  <Text style={styles.text}>{i18n.t('screens.intro.nations.title')}</Text>
 
                 </View>
             </View>
@@ -210,7 +211,7 @@ export default () => <Swiper style={styles.wrapper} >
 
                 <View style ={styles.bitnation}>
             
-                  <Text style={styles.textBitnation}>They can form a nation to get a fair deal, enforce contracts, and share working knowledge.</Text>
+                  <Text style={styles.textBitnation}>{i18n.t('screens.intro.nations.text')}</Text>
 
                 </View>
             </View>
