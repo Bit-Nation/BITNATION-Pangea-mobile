@@ -1,7 +1,7 @@
 import { call, put, select, takeEvery } from 'redux-saga/effects';
 import type { ProfileType } from 'BITNATION-Pangea-libs/src/database/schemata';
 import { getPangeaLibrary } from '../services/container';
-import { REQUEST_PROFILE_UPDATE, DONE_USER_EDITING, SET_USER_PROFILE, REQUEST_GET_PROFILE } from '../actions/profile';
+import { REQUEST_PROFILE_UPDATE, DONE_USER_EDITING, SET_USER_PROFILE, REQUEST_GET_PROFILE, CANCEL_USER_EDITING } from '../actions/profile';
 
 export const getProfileState = state => state.profile
 export function* updateProfile() {
@@ -21,6 +21,7 @@ export function* updateProfile() {
     let result = yield call(pangeaLib.profile.profile.setProfile, profile);
     yield put({ type: DONE_USER_EDITING });
   } catch (e) {
+    yield put({ type: CANCEL_USER_EDITING });
     console.log('Update profile error: ', e);
   }
 }
@@ -35,6 +36,7 @@ export function* getProfile() {
     };
     yield put({ type: SET_USER_PROFILE, user: user });
   } catch (e) {
+    yield put({ type: SET_USER_PROFILE, user: null });
     console.log('Get profile error: ', e);
   }
 }
