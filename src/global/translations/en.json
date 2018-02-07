@@ -138,8 +138,9 @@
         "newNations": "NEW NATIONS"
       },
       "warningPanel": {
-        "title": "Warning",
-        "body": "Pangea is in an early development stage, use with caution and at your own risk."
+        "title": "Notice",
+        "body": "The smart contracts created by this app may be changed or upgraded in the near future.",
+        "button": "More"
       }
     },
     "chat": {
