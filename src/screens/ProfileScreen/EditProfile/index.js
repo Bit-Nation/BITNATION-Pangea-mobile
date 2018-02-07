@@ -82,7 +82,7 @@ class EditProfile extends NavigatorComponent {
 					<KeyboardAwareScrollView style={styles.scrollView}>
 						{/* TITLE OF SCREEN */}
 						<View style={styles.titleBarLarge}>
-							<Text style={styles.largeTitle}>Profile</Text>
+							<Text style={styles.largeTitle}>{i18n.t('screens.profile.edit.editPhoto')}</Text>
 						</View>
 						
 						{this._buildPicturePanel()}

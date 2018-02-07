@@ -220,7 +220,7 @@
       }
     },
     "profile": {
-      "title": "Profile & Settings",
+      "title": "Profile",
       "tabTitle": "$t(tabbar.profile)",
       "empty": {
         "createProfilePanel": {
