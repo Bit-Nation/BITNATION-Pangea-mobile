@@ -13,6 +13,7 @@ import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
 import { removePrivateKey, savePrivateKey } from '../../../../actions/key';
 import KeyBaseScreen from '../../KeyBaseScreen';
 import BodyParagraphs from '../../../../components/common/BodyParagraphs';
+import i18n from '../../../../global/i18n';
 
 const paragraphs = [
   'Congratulations, you correctly entered your private key.',
@@ -33,10 +34,10 @@ class VerifyKeySuccess extends KeyBaseScreen {
         <FakeNavigationBar/>
 
         <ScrollView contentContainerStyle={styles.bodyContainer}>
-          <BodyParagraphs paragraphs={paragraphs}/>
+          <BodyParagraphs paragraphs={i18n.t('screens.verifyKey.success.instructions')}/>
 
           <View style={styles.buttonContainer}>
-            <Button title='Done'
+            <Button title={i18n.t('screens.verifyKey.success.doneButton')}
                     onPress={() => this.onNextButtonPressed()}/>
           </View>
         </ScrollView>
