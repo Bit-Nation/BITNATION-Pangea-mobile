@@ -14,14 +14,7 @@ import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
 import KeyBaseScreen from '../../KeyBaseScreen';
 import { removePrivateKey } from '../../../../actions/key';
 import BodyParagraphs from '../../../../components/common/BodyParagraphs';
-
-const paragraphs = [
-  'To use a secure blockchain, you need a "private key". We will make your private key for you.',
-  'We require you to write down your private key on paper. This process only takes a few minutes.',
-  'If your phone is lost, stolen, broken, or upgraded, the only way to restore your wallet is by entering your private key!',
-  'We recommend writing on paper because if your key is on your computer or phone, someone might steal it.',
-  'Your private key protects everything in Bitnation, so be sure to put your paper with with your private key in a safe place.',
-];
+import i18n from '../../../../global/i18n';
 
 class CreateKeyIntroductionScreen extends KeyBaseScreen {
 
@@ -35,10 +28,10 @@ class CreateKeyIntroductionScreen extends KeyBaseScreen {
         <BackgroundImage/>
         <FakeNavigationBar/>
         <ScrollView contentContainerStyle={styles.bodyContainer}>
-          <BodyParagraphs paragraphs={paragraphs}/>
+          <BodyParagraphs paragraphs={i18n.t('screens.createKey.introduction')}/>
 
           <View style={styles.buttonContainer}>
-            <Button title='Begin'
+            <Button title={i18n.t('screens.createKey.startButton')}
                     onPress={() => this.onNextButtonPressed()}/>
           </View>
         </ScrollView>
