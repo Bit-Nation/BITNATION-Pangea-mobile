@@ -1,6 +1,5 @@
 import AssetsImages from './AssetsImages';
 import Colors from './Colors';
-import Strings from './Strings';
 import { Platform } from 'react-native';
 import i18n from './i18n';
 
