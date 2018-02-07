@@ -18,11 +18,11 @@ const moon = require('../assets/images/moon.png');
 const privateKeyDemo = require('../assets/images/privateKeyDemo.png');
 
 // Main Navigation Icons
-const dashboardTabIcon = require('../assets/images/dashboardTabIcon.png');
-const chatTabIcon = require('../assets/images/chatTabIcon.png');
-const nationsTabIcon = require('../assets/images/nationsTabIcon.png');
-const walletTabIcon = require('../assets/images/walletTabIcon.png');
-const profileTabIcon = require('../assets/images/profileTabIcon.png');
+const dashboardTabIcon = require('../assets/images/tabIconDashboard.png');
+const chatTabIcon = require('../assets/images/tabIconChat.png');
+const nationsTabIcon = require('../assets/images/tabIconNations.png');
+const walletTabIcon = require('../assets/images/tabIconWallet.png');
+const profileTabIcon = require('../assets/images/tabIconProfile.png');
 const QR = require('../assets/images/QR.png');
 
 // DEMO placeholders
@@ -33,8 +33,8 @@ const demoPlaceholder = require('../assets/images/demoImage.png');
 const avatarPlaceholder = require('../assets/images/avatarPlaceholder.png');
 
 // Tool Bar Icons
-const chatActionIcon = require('../assets/images/toolbarIconChatTool.png');
-const mapActionIcon = require('../assets/images/toolbarIconMapTool.png');
+const chatActionIcon = require('../assets/images/toolbarIconChat.png');
+const mapActionIcon = require('../assets/images/toolbarIconMap.png');
 const joinActionIcon = require('../assets/images/toolbarIconJoin.png');
 const leaveActionIcon = require('../assets/images/toolbarIconLeave.png');
 
