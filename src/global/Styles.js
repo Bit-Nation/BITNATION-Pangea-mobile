@@ -574,7 +574,6 @@ const styles = {
 	
 	// e.g. NationListHeader
 	sectionListHeaderContainer: {
-		flex: 1,
 		flexDirection: 'row',
 		height: 30,
 		justifyContent: 'center',
