@@ -12,6 +12,7 @@ import EmptyWalletScreen from './EmptyState/index';
 import { selectWallet, updateWalletList } from '../../actions/wallet';
 import NavigatorComponent from '../../components/common/NavigatorComponent';
 import { removeAllPrivateKeys } from '../../actions/key';
+import i18n from '../../global/i18n';
 
 const REMOVE_WALLETS_BUTTON = 'REMOVE_WALLETS_BUTTON';
 
@@ -27,7 +28,7 @@ class WalletScreen extends NavigatorComponent {
     this.props.navigator.setButtons({
       leftButtons: this.props.testingModeActive ? [{
         id: REMOVE_WALLETS_BUTTON,
-        title: 'Remove wallets',
+        title: i18n.t('testingMode.removeWallets'),
       }] : [],
       rightButtons: [],
     });

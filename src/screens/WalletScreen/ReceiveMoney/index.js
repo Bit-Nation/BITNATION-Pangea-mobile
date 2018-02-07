@@ -14,8 +14,7 @@ import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import PanelView from '../../../components/common/PanelView';
 import { androidNavigationButtons } from '../../../global/Screens';
-
-const shareAddressText = 'You can copy your wallet address and send any way you choose, e.g. SMS or email. Do not try to type your address by hand!';
+import i18n from '../../../global/i18n';
 
 class ReceiveMoneyScreen extends Component {
 
@@ -34,14 +33,14 @@ class ReceiveMoneyScreen extends Component {
         <FakeNavigationBar/>
         <ScrollView contentContainerStyle={styles.bodyContainer}>
           <PanelView
-            title='Copy Address'
-            body={shareAddressText}
+            title={i18n.t('screens.receiveMoney.shareAddressPanel.title')}
+            body={i18n.t('screens.receiveMoney.shareAddressPanel.text')}
             style={[styles.messageView]}
             renderAdditionalInfo={() =>
               <Text style={styles.codeText}>{this.props.selectedWalletAddress}</Text>
             }
             onButtonClick={this.onShareWalletAddressPress}
-            buttonTitle='Share Wallet Address'/>
+            buttonTitle={i18n.t('screens.receiveMoney.shareAddressPanel.button')}/>
         </ScrollView>
       </View>
     );
