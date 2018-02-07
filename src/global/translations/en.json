@@ -1,4 +1,11 @@
 {
+  "tabbar": {
+    "nations": "NATIONS",
+    "chat": "CHAT",
+    "dashboard": "DASHBOARD",
+    "wallet": "WALLET",
+    "profile": "PROFILE"
+  },
   "common": {
     "send": "Send",
     "receive": "Receive",
@@ -127,7 +134,7 @@
       }
     },
     "dashboard": {
-      "tabTitle": "Dashboard",
+      "tabTitle": "$t(tabbar.dashboard)",
       "walletPanel": {
         "title": "$t(common.wallet)",
         "empty": "Begin using Pangea by creating your wallet."
@@ -139,11 +146,21 @@
     },
     "chat": {
       "title": "$t(common.chat)",
-      "tabTitle": "$t(common.chat)"
+      "tabTitle": "$t(tabbar.chat)"
     },
     "nations": {
+      "toolbar": {
+        "chat": "CHAT",
+        "map": "MAP",
+        "join": "JOIN",
+        "submit": "SUBMIT",
+        "delete": "DELETE",
+        "reset": "RESET",
+        "save": "SAVE",
+        "leave": "LEAVE"
+      },
       "title": "$t(common.nations)",
-      "tabTitle": "$t(common.nations)",
+      "tabTitle": "$t(tabbar.nations)",
       "allNations": "All Nations",
       "myNations": "My Nations"
     },
@@ -186,7 +203,7 @@
     },
     "wallet": {
       "title": "$t(common.wallet)",
-      "tabTitle": "$t(common.wallet)",
+      "tabTitle": "$t(tabbar.wallet)",
       "empty": {
         "createWallet": "Create a Wallet",
         "restoreWallet": "Restore a Wallet",
@@ -204,7 +221,7 @@
     },
     "profile": {
       "title": "Profile & Settings",
-      "tabTitle": "Profile",
+      "tabTitle": "$t(tabbar.profile)",
       "empty": {
         "createProfilePanel": {
           "title": "Become a world citizen.",
