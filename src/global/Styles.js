@@ -124,6 +124,15 @@ const defaultTextStyles = {
 		letterSpacing: 0,
 		color: Colors.Amber,
 	},
+
+  largeSubTitle: {
+    fontFamily: 'Source Code Pro',
+    fontWeight: 'bold',
+    fontSize: 24,
+    lineHeight: 41,
+    letterSpacing: 0,
+    color: Colors.Amber,
+  },
 	
 	title1: {
 		fontFamily: 'Roboto',
@@ -314,6 +323,11 @@ const styles = {
 		height: normalizer(52),
 		alignItems: 'flex-start',
 	},
+
+  titleBarLargeNationDetail: {
+    height: normalizer(92),
+    alignItems: 'flex-start',
+  },
 	
 	// Used as part of the body of a screen, but if the body area goes to the edges
 	// (e.g. a scrolling body with a table) you  might need margins.
