@@ -38,6 +38,8 @@ const mapActionIcon = require('../assets/images/toolbarIconMap.png');
 const joinActionIcon = require('../assets/images/toolbarIconJoin.png');
 const leaveActionIcon = require('../assets/images/toolbarIconLeave.png');
 
+const disclosureRowIcon = require('../assets/images/disclosure.png');
+
 const Images = {
   logo,
   background,
@@ -54,6 +56,7 @@ const Images = {
   bitLogoBig,
   QR,
   privateKeyDemo,
+  disclosureRowIcon,
   TabIcons: {
     dashboard: dashboardTabIcon,
     chat: chatTabIcon,

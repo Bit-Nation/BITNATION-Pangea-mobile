@@ -34,6 +34,12 @@ class NationsListScreen extends Component {
       <View style={styles.nationsScreenContainer}>
         <BackgroundImage/>
         <FakeNavigationBar/>
+        <View style={styles.titleContainer}>
+          {/* TITLE OF SCREEN */}
+          <View style={styles.titleBarLarge}>
+            <Text style={styles.largeTitle}>Nations</Text>
+          </View>
+        </View>
         <View style={styles.segmentedControlContainer}>
           <SegmentedControl
             values={[i18n.t('screens.nations.allNations'), i18n.t('screens.nations.myNations')]}
@@ -53,6 +59,7 @@ class NationsListScreen extends Component {
           keyExtractor={(item) => item.id}
           renderSectionHeader={({ section }) => <NationListHeader title={section.title}/>}
           sections={sections}
+          ItemSeparatorComponent={ () => <View style={styles.sectionListSeparator} /> }
           style={styles.sectionList}
         />
       </View>
