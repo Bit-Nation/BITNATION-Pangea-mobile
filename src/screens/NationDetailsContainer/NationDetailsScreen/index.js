@@ -18,8 +18,7 @@ import i18n from '../../../global/i18n';
 class NationDetailsScreen extends Component {
 
 	render () {
-		const nation = resolveNation(this.props.nations,
-			this.props.openedNationId)
+		const nation = resolveNation(this.props.nations, this.props.openedNationId)
 
 		if (!nation) {
 			return <BackgroundImage/>
@@ -36,7 +35,7 @@ class NationDetailsScreen extends Component {
 						{console.log('joined nation: ', nation.joined)}
 					</View>
 				</View>
-				{this._buildTabBar(nation.joined)}
+				{this._buildTabBar(nation.joined, nation.idInSmartContract >= 0)}
 				<View style={styles.bodyContainer}>
 					<ScrollView style={styles.scrollView}>
 						{/* Fake Map panel */}
@@ -61,7 +60,7 @@ class NationDetailsScreen extends Component {
 		)
 	}
 
-	_buildTabBar (joined) {
+	_buildTabBar (joined, created) {
 		return (
 			<View style={styles.tabBar}>
 				<NationActionButton iconSource={AssetsImage.Actions.chat}
@@ -69,7 +68,7 @@ class NationDetailsScreen extends Component {
 				<NationActionButton iconSource={AssetsImage.Actions.map}
 				                    title={i18n.t('screens.nationDetails.mapButton')} disable={true}/>
 				<NationActionButton iconSource={AssetsImage.Actions.join}
-				                    title={i18n.t('screens.nationDetails.joinButton')} disable={joined}
+				                    title={i18n.t('screens.nationDetails.joinButton')} disable={joined || !created}
 				                    onPress={this.props.joinNation}/>
 				<NationActionButton iconSource={AssetsImage.Actions.leave}
 				                    title={i18n.t('screens.nationDetails.leaveButton')} disable={!joined}
