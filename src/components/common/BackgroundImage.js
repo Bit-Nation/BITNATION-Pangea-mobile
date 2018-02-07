@@ -4,6 +4,10 @@ import { MediaQueryStyleSheet } from 'react-native-responsive';
 
 import AssetsImages from '../../global/assetsImagesResources';
 
+/**
+ * @desc Component that renders common background image. You should use it instead of placing background image on your own.
+ * @type React.Component
+ */
 export default class BackgroundImage extends React.Component {
 
   render() {

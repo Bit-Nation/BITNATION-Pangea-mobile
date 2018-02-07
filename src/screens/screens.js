@@ -7,7 +7,6 @@ import WalletScreen from './WalletScreen';
 import CreateKeyIntroductionScreen from './Key/Create/CreateKeyIntroductionScreen';
 import CreateKeyInstructionScreen from './Key/Create/CreateKeyInstructionScreen';
 import CreateKeyProcessScreen from './Key/Create/CreateKeyProcessScreen';
-import CreateKeySuccessScreen from './Key/Create/CreateKeySuccessScreen';
 import LoadWalletScreeen from './Key/LoadWallet';
 import VerifyKeyInstructionScreen from './Key/Verify/VerifyKeyInstructionScreen';
 import VerifyKeyProcessScreen from './Key/Verify/VerifyKeyProcessScreen';
@@ -28,7 +27,6 @@ export function registerScreens(store, Provider) {
   Navigation.registerComponent(screen('CREATE_KEY_INTRODUCTION_SCREEN').screen, () => CreateKeyIntroductionScreen, store, Provider);
   Navigation.registerComponent(screen('CREATE_KEY_INSTRUCTION_SCREEN').screen, () => CreateKeyInstructionScreen, store, Provider);
   Navigation.registerComponent(screen('CREATE_KEY_PROCESS_SCREEN').screen, () => CreateKeyProcessScreen, store, Provider);
-  Navigation.registerComponent(screen('CREATE_KEY_SUCCESS_SCREEN').screen, () => CreateKeySuccessScreen, store, Provider);
   Navigation.registerComponent(screen('LOAD_WALLET_SCREEN').screen, () => LoadWalletScreeen, store, Provider);
   Navigation.registerComponent(screen('VERIFY_KEY_INSTRUCTION_SCREEN').screen, () => VerifyKeyInstructionScreen, store, Provider);
   Navigation.registerComponent(screen('VERIFY_KEY_PROCESS_SCREEN').screen, () => VerifyKeyProcessScreen, store, Provider);

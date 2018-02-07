@@ -1,18 +1,24 @@
 import React, { Component } from 'react';
 import {
+  ScrollView,
   View,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import Images from '../../../../global/assetsImagesResources';
 import styles from './styles';
 import Button from '../../../../components/common/Button';
 import BackgroundImage from '../../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
-import Text from '../../../../components/common/Text';
 import { removePrivateKey, savePrivateKey } from '../../../../actions/key';
 import KeyBaseScreen from '../../KeyBaseScreen';
+import BodyParagraphs from '../../../../components/common/BodyParagraphs';
+import i18n from '../../../../global/i18n';
+
+const paragraphs = [
+  'Congratulations, you correctly entered your private key.',
+  'Now, put your paper with your private key in a safe place.',
+];
 
 class VerifyKeySuccess extends KeyBaseScreen {
 
@@ -23,24 +29,18 @@ class VerifyKeySuccess extends KeyBaseScreen {
 
   render() {
     return (
-
-      <View style={styles.container}>
+      <View style={styles.screenContainer}>
         <BackgroundImage/>
         <FakeNavigationBar/>
 
-        <View style={styles.wholeText}>
-          <Text messageText style={styles.description}>
-            Congratulations, you correctly entered your private key.
-          </Text>
-          <Text messageText style={[styles.description, styles.applyBold]}>
-            Now, put your paper with your private key in a safe place.
-          </Text>
-        </View>
+        <ScrollView contentContainerStyle={styles.bodyContainer}>
+          <BodyParagraphs paragraphs={i18n.t('screens.verifyKey.success.instructions')}/>
 
-        <View style={styles.buttonContainer}>
-          <Button title='Done'
-                  onPress={() => this.onNextButtonPressed()}/>
-        </View>
+          <View style={styles.buttonContainer}>
+            <Button title={i18n.t('screens.verifyKey.success.doneButton')}
+                    onPress={() => this.onNextButtonPressed()}/>
+          </View>
+        </ScrollView>
 
       </View>
     );

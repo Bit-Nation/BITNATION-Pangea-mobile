@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
-  View, TouchableOpacity, Alert, Platform, ScrollView,
+  View, Alert, Text,
 } from 'react-native';
 import styles from './styles';
 import PropTypes from 'prop-types';
@@ -9,16 +9,16 @@ import { connect } from 'react-redux';
 import { screen } from '../../../../global/Screens';
 import BackgroundImage from '../../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
-import Text from '../../../../components/common/Text';
 import GridView from '../../../../components/GridView';
 import Button from '../../../../components/common/Button';
 import PrivateKeyTextInputContainer from '../../../../components/PrivateKeyTextInputContainer';
 import {
-  KEY_ROW_COUNT, KEY_COLUMN_COUNT, KEY_PAGE_ROW_COUNT, KEY_PAGE_LENGTH, KEY_PAGE_COUNT,
+  KEY_COLUMN_COUNT, KEY_PAGE_ROW_COUNT, KEY_PAGE_LENGTH, KEY_PAGE_COUNT,
 } from '../../../../global/Constants';
 import KeyBaseScreen from '../../KeyBaseScreen/index';
 import { removePrivateKey } from '../../../../actions/key';
-import Colors from '../../../../global/Colors';
+import BodyParagraphs from '../../../../components/common/BodyParagraphs';
+import i18n from '../../../../global/i18n';
 
 const DONE_BUTTON = 'DONE_BUTTON';
 
@@ -43,11 +43,11 @@ class CreateKeyProcessScreen extends KeyBaseScreen {
 
   _showPageCompletedAlert(completedPage, done) {
     Alert.alert(
-      `Group ${completedPage + 1} finished!`,
-      done ? '' : `Good work! Now, write down next group of ${KEY_PAGE_LENGTH} words.`,
+      i18n.t('alerts.privateKeyGroupCompleted.title', { number: completedPage + 1 }),
+      done ? '' : i18n.t('alerts.privateKeyGroupCompleted.subtitle', { KEY_PAGE_LENGTH }),
       [
         {
-          text: 'OK',
+          text: i18n.t('alerts.privateKeyGroupCompleted.confirm'),
           onPress: () => {
             this.setState(prevState => {
               return {
@@ -107,15 +107,11 @@ class CreateKeyProcessScreen extends KeyBaseScreen {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={styles.screenContainer}>
         <BackgroundImage/>
         <FakeNavigationBar/>
-        <View style={styles.contentContainer}>
-          <View style={styles.instructionContainer}>
-            <Text messageText style={styles.instruction}>
-              Write each row of words on the piece of paper. Press “Next” when you have written the row.
-            </Text>
-          </View>
+        <View style={styles.bodyContainer}>
+          <BodyParagraphs paragraphs={i18n.t('screens.createKey.process.instructions')}/>
           <View style={styles.gridContainer}>
             <GridView
               itemsPerRow={KEY_COLUMN_COUNT}
@@ -127,11 +123,11 @@ class CreateKeyProcessScreen extends KeyBaseScreen {
             />
           </View>
           <View style={styles.buttonContainer}>
-            <Button title='Previous'
+            <Button title={i18n.t('screens.createKey.process.previousButton')}
                     onPress={this.onPreviousPressed}
                     style={styles.button}
                     enabled={this.state.activeRow > 0}/>
-            <Button title='Next'
+            <Button title={i18n.t('screens.createKey.process.nextButton')}
                     onPress={this.onNextPressed}
                     style={styles.button}/>
           </View>

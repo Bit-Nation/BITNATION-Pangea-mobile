@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {
-  Text, Image, FlatList, Button, ListItem,
-  View, TouchableOpacity,
+  FlatList,
+  View,
 } from 'react-native';
 import PropTypes from 'prop-types';
 
@@ -10,16 +10,16 @@ import Images from '../../../global/assetsImagesResources';
 import WalletCard from '../../../components/WalletCard';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
-import { prettyETHWalletBalance, roundEth } from '../../../utils/formatters';
+import { prettyETHWalletBalance } from '../../../utils/formatters';
 
 export default class WalletList extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={styles.screenContainer}>
         <BackgroundImage/>
         <FakeNavigationBar/>
-        <View style={styles.flatListStyle}>
+        <View style={styles.walletListContainer}>
           <FlatList
             data={this.props.wallets}
             keyExtractor={item => item.ethAddress}
@@ -33,8 +33,7 @@ export default class WalletList extends Component {
                 nameHeading={item.name}
                 balance={balance}>
               </WalletCard>);
-            }
-            }
+            }}
           />
         </View>
       </View>

@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BodyParagraph renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "paddingBottom": 15,
+    }
+  }
+>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "color": "#72A4DE",
+        "fontFamily": "Roboto",
+        "fontSize": 17,
+        "fontWeight": "normal",
+        "letterSpacing": 0,
+        "lineHeight": 22,
+      }
+    }
+  >
+    Test text
+  </Text>
+</View>
+`;

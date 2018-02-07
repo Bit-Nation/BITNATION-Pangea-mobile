@@ -353,50 +353,44 @@ const styles = {
 	// Panels in a vertical list.
 	// These are lists of rectangular panels which contain different kinds of content.
 	// These don't have margin left/right, so they won't work for dashboard.
-	// Used in:  components/common/MessageView.js
-	
-	// View that holds a message
-	panelView: {
-		flexDirection: 'column',
-		alignItems: 'center',
-		borderRadius: 8,
-		backgroundColor: Colors.shadeOfBitnationColor(0.2),
-		marginTop: 8,
-		marginBottom: 8,
-		marginLeft: 0,
-		marginRight: 0,
-		paddingTop: 12,
-		paddingBottom: 15,
-		paddingLeft: 15,
-		paddingRight: 15,
-	},
-	
+	// Used in:  components/common/PanelView.js
+
+  panelView: {
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    flexShrink: 1,
+    borderRadius: 8,
+    backgroundColor: Colors.shadeOfBitnationColor(0.2),
+    marginTop: 8,
+    marginBottom: 8,
+    marginLeft: 0,
+    marginRight: 0,
+    paddingTop: 12,
+    paddingBottom: 15,
+    paddingLeft: 15,
+    paddingRight: 15,
+  },
+
 	// Panel Title Container for the Title and Icon, below
 	panelTitleRowContainer: {
-		flex: 1,
-		flexDirection: 'row',
-		backgroundColor: 'transparent',
-		paddingBottom: 4,
-		borderBottomColor: Colors.BlueGrey,
-		borderStyle: 'solid',
-		borderBottomWidth: 1,
+    flexDirection: 'row',
+    backgroundColor: 'transparent',
+    paddingBottom: 4,
+    borderBottomColor: Colors.BlueGrey,
+    borderStyle: 'solid',
+    borderBottomWidth: 1,
 	},
-	
-	panelTitleContainer: {
-		flex: 1,
-		//backgroundColor: 'steelblue',
-	},
-	
-	panelTitleIconContainer: {
-		flex: 1,
-		//backgroundColor: 'powderblue',
-	},
-	
-	panelTitleIcon: {
-		flex: 1,
-		alignItems: 'flex-end',
-		//backgroundColor: 'powderblue',
-	},
+
+  panelTitleContainer: {
+    flex: 4,
+    backgroundColor: 'transparent',
+  },
+
+  panelTitleIcon: {
+    flex: 1,
+    backgroundColor: 'transparent',
+    alignItems: 'flex-end',
+  },
 	
 	// Text style for the Panel Title
 	panelTitle: {
@@ -423,71 +417,19 @@ const styles = {
 	},
 	
 	panelTextContainer: {
-		flex: 1,
-		paddingBottom: 4,
+    marginBottom: 8,
 	},
 	
 	panelBody: {
 		...defaultTextStyles.body,
 		color: Colors.BitnationLightColor,
 	},
-
-// ========================================
-	// Panels in a vertical list.
-	// These are lists of rectangular panels which contain different kinds of content.
-	// These don't have margin left/right, so they won't work for dashboard.
-	// Used in:  components/common/MessageView.js
-	
-	// View that holds a message
-	// Size changes to fit contents, so we do not use flex for size
-	messageView: {
-//		flex: 1,
-		flexDirection: 'column',
-		justifyContent: 'space-between',
-		flexShrink: 1,
-		borderRadius: 8,
-		backgroundColor: Colors.shadeOfBitnationColor(0.2),
-		marginTop: 8,
-		marginBottom: 8,
-		marginLeft: 0,
-		marginRight: 0,
-		paddingTop: 12,
-		paddingBottom: 15,
-		paddingLeft: 15,
-		paddingRight: 15,
-	},
-	
-	// Message Title Container for the Title and Icon, below
-	messageTitleRowContainer: {
-		flexDirection: 'row',
-		backgroundColor: 'transparent',
-		paddingBottom: 4,
-		borderBottomColor: Colors.BlueGrey,
-		borderStyle: 'solid',
-		borderBottomWidth: 1,
-	},
-	
-	messageTitleContainer: {
-		flex: 4,
-		backgroundColor: 'transparent',
-	},
-	
-	messageTitleIcon: {
-		flex: 1,
-		backgroundColor: 'transparent',
-		alignItems: 'flex-end',
-	},
-	
-	// Message Text
-	messageTextContainer: {
-		marginBottom: 8,
-	},
 	
 	messageAdditionalInfoContainer: {},
 	messageBottomContainer: {},
 	
-	// Button in Message View
-	button: {
+	// Button in Panel View
+	panelButton: {
 		marginTop: 13,
 	},
 	
@@ -747,10 +689,17 @@ const styles = {
 		marginLeft: 13,
 		marginRight: 13,
 	},
+
+  buttonContainerMultiple: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginLeft: 13,
+    marginRight: 13,
+  },
 	
 	// ========================================
 	// Profile Screen
-	// e.g. components/common/MessageView.js
+	// e.g. components/common/PanelView.js
 	
 	avatarContainer: {
 		flexDirection: 'row',
@@ -780,7 +729,17 @@ const styles = {
 		borderRadius: 50,
 		margin: 15,
 	},
-	
+
+  privateKeyGridViewContainer: {
+    height: 241,
+    borderRadius: 8,
+    backgroundColor: Colors.shadeOf(Colors.BitnationDarkColor, 0.7),
+    paddingTop: 20,
+    paddingBottom: 3,
+    paddingLeft: 12,
+    paddingRight: 12,
+  },
+
 }
 
 export default styles

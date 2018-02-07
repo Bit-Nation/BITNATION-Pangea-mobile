@@ -1,3 +1,15 @@
+/**
+ * @desc Generates a "Card" for display a Wallet on screen with Name, Balance and Send/Receive buttons
+ * @type React.Component
+ *
+ * @param props.nameHeading     {String} Name for the wallet
+ * @param props.balance         {String} Balance of the wallet
+ * @param props.imagePath       {String} Path to image to be displayed
+ * @param props.messageText     {String} Text to be displayed below the wallet
+ * @param props.onSendPress     {Button} Button to send ETH transactions
+ * @param props.onReceivePress  {Button} Button to receive ETH transactions
+ */
+
 import React, { Component } from 'react';
 import {
   ListView, Text, Image,
@@ -7,6 +19,7 @@ import styles from './styles';
 import PropTypes from 'prop-types';
 import Images from '../../global/assetsImagesResources';
 import Button from '../common/Button';
+import i18n from '../../global/i18n';
 
 const WalletCard = (props) => {
 
@@ -23,8 +36,8 @@ const WalletCard = (props) => {
           <View style={styles.spacer}/>
 
           <View style={{ flexDirection: 'row', justifyContent: 'flex-start' }}>
-            <Button title='Send' onPress={props.onSendPress} style={[styles.button, { marginRight: 8 }]}/>
-            <Button title='Receive' onPress={props.onReceivePress} style={styles.button}/>
+            <Button title={i18n.t('common.send')} onPress={props.onSendPress} style={[styles.button, { marginRight: 8 }]}/>
+            <Button title={i18n.t('common.receive')} onPress={props.onReceivePress} style={styles.button}/>
             <View style={styles.spacer}/>
           </View>
 
@@ -49,7 +62,7 @@ WalletCard.propTypes = {
 
 WalletCard.defaultProps = {
   imagePath: 'https://facebook.github.io/react-native/docs/assets/favicon.png',
-  nameHeading: 'Ethernum',
+  nameHeading: i18n.t('common.ethereum'),
   nameSubheading: '173324 Enum',
   messageText: '',
   onSendPress: () => null,
