@@ -658,10 +658,21 @@ const styles = {
 	},
 	tabBarTitle: {
 		marginTop: 4,
-		color: '#8E8E93',
+		color: Colors.white,
 		backgroundColor: 'transparent',
 		fontSize: 10,
 	},
+
+	//=========================================
+	// Styles for the custom Tool Bar replacing the Tab Bar
+  fakeBottomBar: {
+    paddingTop:5,
+    height: 55,
+    backgroundColor: Colors.LightBlue,
+    flexDirection: 'row',
+    alignItems: 'stretch',
+    justifyContent: 'space-around',
+  },
 	
 	// ========================================
 	// Basic Text Styles, e.g. components/common/Text.js

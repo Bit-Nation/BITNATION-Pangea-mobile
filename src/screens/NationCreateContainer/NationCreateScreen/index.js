@@ -28,7 +28,10 @@ import ModalDropdown from 'react-native-modal-dropdown'
 import Colors from '../../../global/Colors'
 import styles from './styles'
 import i18n from '../../../global/i18n';
-
+import GlobalStyles from "../../../global/Styles";
+import {MediaQueryStyleSheet} from "react-native-responsive";
+import NationActionButton from '../../../components/common/NationActionButton'
+import AssetsImage from '../../../global/AssetsImages'
 
 const DONE_BUTTON = 'DONE_BUTTON'
 
@@ -67,13 +70,7 @@ class CreateNation extends NavigatorComponent {
 						id: 'cancel',
 						buttonColor: Colors.navigationButtonColor,
 					}],
-				rightButtons: [
-					{
-						title: i18n.t('screens.createNation.doneButton'),
-						id: DONE_BUTTON,
-						disabled: !saveEnabled,
-						buttonColor: Colors.navigationButtonColor,
-					}],
+				rightButtons: [],
 			},
 		)
 	}
@@ -147,7 +144,24 @@ class CreateNation extends NavigatorComponent {
 						{/*{this._buildBottomView()}*/}
 					</ScrollView>
 				</View>
+        {this._buildBottomBar()}
 				{this.props.inProgress ? <Loading/> : null}
+			</View>
+		)
+	}
+
+// * New fake bottom Tab Bar / 0.3.2 Sprint design
+	_buildBottomBar() {
+		return (
+			<View style={ styles.fakeBottomBar }>
+        <NationActionButton iconSource={AssetsImage.Actions.chat}
+                            title={i18n.t('screens.createNation.reset')} disable={false}/>
+        <NationActionButton iconSource={AssetsImage.Actions.chat}
+                            title={i18n.t('screens.createNation.save')} disable={false}/>
+        <NationActionButton iconSource={AssetsImage.Actions.chat}
+                            title={i18n.t('screens.createNation.delete')} disable={false}/>
+        <NationActionButton iconSource={AssetsImage.Actions.chat}
+                            title={i18n.t('screens.createNation.submit')} disable={false}/>
 			</View>
 		)
 	}

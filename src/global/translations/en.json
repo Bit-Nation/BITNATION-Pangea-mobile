@@ -182,7 +182,11 @@
       },
       "locationTypeHint": "Virtual nations exist only in Pangea. Geographic nations are on Earth.",
       "cancelButton": "$t(common.cancel)",
-      "doneButton": "$t(common.done)"
+      "doneButton": "$t(common.done)",
+      "reset": "Reset",
+      "submit": "Submit",
+      "save": "Save",
+      "delete": "Delete"
     },
     "wallet": {
       "title": "$t(common.wallet)",
