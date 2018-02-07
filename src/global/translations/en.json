@@ -132,6 +132,11 @@
         "title": "$t(common.wallet)",
         "empty": "Begin using Pangea by creating your wallet."
       },
+      "nationsPanel": {
+        "title": "$t(common.nations)",
+        "nationsCount": "{{count}} in Pangea",
+        "newNations": "NEW NATIONS"
+      },
       "warningPanel": {
         "title": "Warning",
         "body": "Pangea is in an early development stage, use with caution and at your own risk."
