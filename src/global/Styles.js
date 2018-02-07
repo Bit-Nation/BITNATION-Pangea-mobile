@@ -117,7 +117,7 @@ const defaultTextStyles = {
 	// Derived from Apple Defaults (above)
 	
 	largeTitle: {
-		fontFamily: 'Source Code Pro',
+		fontFamily: 'Roboto',
 		fontWeight: 'bold',
 		fontSize: 34,
 		lineHeight: 41,
@@ -375,7 +375,23 @@ const styles = {
     paddingLeft: 15,
     paddingRight: 15,
   },
-
+	
+	panelViewTransparent: {
+		flexDirection: 'column',
+		justifyContent: 'space-between',
+		flexShrink: 1,
+		borderRadius: 8,
+		backgroundColor: 'transparent',
+		marginTop: 8,
+		marginBottom: 8,
+		marginLeft: 0,
+		marginRight: 0,
+		paddingTop: 0,
+		paddingBottom: 0,
+		paddingLeft: 0,
+		paddingRight: 0,
+	},
+	
 	// Panel Title Container for the Title and Icon, below
 	panelTitleRowContainer: {
     flexDirection: 'row',
@@ -561,7 +577,7 @@ const styles = {
 
   // e.g. NationListItemState Text
   listItemTextState: {
-    color: 'gray',
+    color: Colors.listItemTextState,
     flex: 1,
     textAlign: 'right',
     marginRight: 15,
@@ -582,7 +598,7 @@ const styles = {
 		height: 44,
 		justifyContent: 'center',
 		alignItems: 'center',
-		backgroundColor: 'rgba(255,255,255,0.1)',
+		backgroundColor: Colors.sectionListItemContainerBkgd,
 	},
 	
 	// e.g. NationListHeader
@@ -592,29 +608,29 @@ const styles = {
 		height: 30,
 		justifyContent: 'center',
 		alignItems: 'center',
-		backgroundColor: Colors.LightGrey,
-		opacity: 0.5,
+		backgroundColor: Colors.sectionListHeaderContainer,
+		//opacity: 0.5,
 	},
 	
 	sectionListHeaderText: {
+		...defaultTextStyles.body,
 		flex: 1,
 		marginLeft: 15,
-		color: '#6D6D72',
-		fontSize: 13,
+		color: Colors.sectionListHeaderText,
 	},
 
-  sectionListSeparator: {
-    flex: 1,
-    marginLeft: 10,
-    height:1,
-    backgroundColor: Colors.grey_400,
-  },
+	sectionListSeparator: {
+		flex: 1,
+		marginLeft: 10,
+		height:1,
+		backgroundColor: Colors.sectionListSeparator,
+	},
 
-  sectionListDisclosure: {
+	sectionListDisclosure: {
 		marginRight:15,
 		width: 8,
 		height: 15,
-  },
+	},
 
 	// ========================================
 	// Tab Bar with text
@@ -626,7 +642,7 @@ const styles = {
 		alignItems: 'center',
 	},
 	segmentedControlContainerBackground: {
-		backgroundColor: 'rgba(27,57,92,0.50)',
+		backgroundColor: 'transparent',
 	},
 	tabsContainerStyle: {
 		backgroundColor: 'transparent',
@@ -636,10 +652,10 @@ const styles = {
 	},
 	tabTextStyle: {
 		backgroundColor: 'transparent',
-		color: Colors.white,
+		color: Colors.tabTextStyle,
 	},
 	activeTabStyle: {
-		backgroundColor: Colors.shadeOfBitnationLightColor(0.8),
+		backgroundColor: Colors.activeTabStyle,
 	},
 	
 	// ========================================

@@ -10,7 +10,7 @@ const BitnationColor = '#4A90E2';         /* rgb(74, 144, 226) */
 const BitnationDarkColor = "#1B395C";    /* rgb(27, 57, 92) */
 const BitnationLightColor = "#72A4DE";   /* rgb(114, 164, 222) */
 const BitnationVeryLightColor = "#BCDCFF"; /* rgb(188, 220, 255) */
-
+const BitnationBackgroundColor = '#3e9eff'; /* rgb(62, 158, 255) */
 
 // ========================================
 // FUNCTIONS
@@ -71,7 +71,7 @@ export default {
 	BitnationDarkColor: BitnationDarkColor,
 	BitnationLightColor: BitnationLightColor,
 	BitnationVeryLightColor: BitnationVeryLightColor,
-	
+	BitnationBackgroundColor: BitnationBackgroundColor,
 	
 	// Colors for common Text Styles, e.g. titles on screens
 	titleColor: '#4A90E2',
@@ -80,16 +80,21 @@ export default {
 	
 	
 	// Navigation Bar (for the app)
-	tabBarBackgroundColor: '#3e9eff',
+	tabBarBackgroundColor: BitnationBackgroundColor,
 	tabBarSelectedLabelColor: 'white',
 	tabBarSelectedButtonColor: 'white',
 	tabBarLabelColor: '#a6c5e5',
 	tabBarButtonColor: '#a6c5e5',
 	
 	// Toolbars (e.g. Create Nation)
-	toolBarBackgroundColor: '#3e9eff',
+	toolBarBackgroundColor: BitnationBackgroundColor,
 	
-	// Custom Bitnation Colors
+	// Segmented Control
+	activeTabStyle: BitnationBackgroundColor,
+	tabTextStyle: BitnationBackgroundColor,
+	
+	
+	// Other Custom Bitnation Colors
 	BlueGrey: '#607D8B',
 	BlueMed: '#72A4DE',
 	
@@ -121,6 +126,17 @@ export default {
 	grey_300: '#DADCE5',
 	grey_200: '#F1F2F6',
 	grey_100: '#F9F9FC',
+	
+	// Section Lists
+	// Separator (title rows, e.g. "A")
+	// Separator (thin line between rows)
+	// 20% white (v0.3.2)
+	sectionListSeparator: 'rgba(255,255,255,0.2)',
+	sectionListHeaderText: 'white',
+	sectionListHeaderContainer: '#3a3a3a',//'rgba(255,255,255,0.15)',
+	sectionListItemContainerBkgd: 'transparent',
+	// In a list of nations, default color for the far-right text near the ">"
+	listItemTextState: 'gray',
 	
 	// Document Colors
 	panelBoxColor: '#1b395c',
