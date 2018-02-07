@@ -74,7 +74,7 @@ const Screens = {
     screen: 'Pangea.NationsScreen',
     label: i18n.t('screens.nations.tabTitle'),
     icon: AssetsImages.TabIcons.nations,
-    title: i18n.t('screens.nations.title'),
+    title: '',
     navigatorStyle,
   },
   NATION_DETAILS_SCREEN: {
