@@ -6,6 +6,6 @@ import GlobalStyles from '../../../global/Styles';
 const styles = MediaQueryStyleSheet.create(
   {
     ...GlobalStyles,
-    list: { height: 44*5 },
+    flex: { flex: 1 },
   });
 export default styles;

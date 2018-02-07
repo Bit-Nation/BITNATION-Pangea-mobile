@@ -11,6 +11,7 @@ import styles from './styles';
 import PanelView from '../../../components/common/PanelView';
 import i18n from '../../../global/i18n';
 import NationListItem from '../../../components/common/NationListItem';
+import NationListHeader from '../../../components/common/NationListHeader';
 
 const NEWEST_NATION_COUNT = 5;
 
@@ -26,12 +27,15 @@ export default class NationsPanel extends Component {
 
     return (
       <View style={style}>
-        <PanelView title={i18n.t('screens.dashboard.nationsPanel.title')}>
+        <PanelView style={styles.flex}
+                   childrenContainerStyle={styles.flex}
+                   title={i18n.t('screens.dashboard.nationsPanel.title')}>
           <View>
             <Text style={styles.headline}>
               {i18n.t('screens.dashboard.nationsPanel.nationsCount', { count: this.props.nations.length })}
             </Text>
           </View>
+          <NationListHeader title={i18n.t('screens.dashboard.nationsPanel.newNations')}/>
           <FlatList
             renderItem={(item) => {
               console.log(item);
@@ -40,8 +44,7 @@ export default class NationsPanel extends Component {
             }}
             keyExtractor={(item) => item.id}
             data={newestNations}
-            style={styles.list}
-            scrollEnabled={false}
+            style={styles.flex}
           />
         </PanelView>
       </View>
