@@ -4,19 +4,8 @@ import watchProfileUpdate, { updateProfile, getProfile, getProfileState } from '
 import { REQUEST_PROFILE_UPDATE, DONE_USER_EDITING, SET_USER_PROFILE, REQUEST_GET_PROFILE, CANCEL_USER_EDITING } from '../../../src/actions/profile'
 import { getPangeaLibrary } from '../../../src/services/container'
 
-jest.mock('BITNATION-Pangea-libs', () => ({
-  profile: {
-    profile: {
-      setProfile: jest.fn(),
-      getProfile: jest.fn()
-    }
-  }
-}))
-
-jest.mock('react-native-config', () => ({
-  ETH_HTTP_ENDPOINT: 'https://rinkeby.infura.io/metamask',
-  PRODUCTION: 'false'
-}))
+jest.mock('BITNATION-Pangea-libs')
+jest.mock('react-native-config')
 
 const pangeaLibrary = {
   profile: {
@@ -26,12 +15,11 @@ const pangeaLibrary = {
     }
   }
 }
-const stepper = (fn) => (mock) => fn.next(mock).value
 
 test('sagas - profile watcher', (done) => {
-  const step = stepper(watchProfileUpdate())
-  expect(step()).toEqual(takeEvery(REQUEST_PROFILE_UPDATE, updateProfile))
-  expect(step()).toEqual(takeEvery(REQUEST_GET_PROFILE, getProfile))
+  const iterator = watchProfileUpdate()
+  expect(iterator.next().value).toEqual(takeEvery(REQUEST_PROFILE_UPDATE, updateProfile))
+  expect(iterator.next().value).toEqual(takeEvery(REQUEST_GET_PROFILE, getProfile))
   done()
 })
 

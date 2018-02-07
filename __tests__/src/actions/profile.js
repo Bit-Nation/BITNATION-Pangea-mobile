@@ -4,14 +4,14 @@ import {
 } from '../../../src/actions/profile';
 
 test('actions - startUserCreating', (done) => {
-	expect(startUserCreating()).toEqual({
+  expect(startUserCreating()).toEqual({
     type: START_USER_CREATING
   })
   done()
 })
 
 test('actions - startUserEditing', (done) => {
-	expect(startUserEditing()).toEqual({
+  expect(startUserEditing()).toEqual({
     type: START_USER_EDITING
   })
   done()
@@ -22,7 +22,7 @@ test('actions - changeEditingUser', (done) => {
     name: 'Jack',
     location: 'NYC'
   }
-	expect(changeEditingUser(user)).toEqual({
+  expect(changeEditingUser(user)).toEqual({
     type: CHANGE_EDITING_USER,
     user: user
   })
@@ -34,7 +34,7 @@ test('actions - setUserProfile', (done) => {
     name: 'Jack',
     location: 'NYC'
   }
-	expect(setUserProfile(user)).toEqual({
+  expect(setUserProfile(user)).toEqual({
     type: SET_USER_PROFILE,
     user: user
   })
@@ -42,28 +42,28 @@ test('actions - setUserProfile', (done) => {
 })
 
 test('actions - cancelUserEditing', (done) => {
-	expect(cancelUserEditing()).toEqual({
+  expect(cancelUserEditing()).toEqual({
     type: CANCEL_USER_EDITING
   })
   done()
 })
 
 test('actions - doneUserEditing', (done) => {
-	expect(doneUserEditing()).toEqual({
+  expect(doneUserEditing()).toEqual({
     type: DONE_USER_EDITING,
   })
   done()
 })
 
 test('actions - requestProfileUpdate', (done) => {
-	expect(requestProfileUpdate()).toEqual({
+  expect(requestProfileUpdate()).toEqual({
     type: REQUEST_PROFILE_UPDATE
   })
   done()
 })
 
 test('actions - getUserProfile', (done) => {
-	expect(getUserProfile()).toEqual({
+  expect(getUserProfile()).toEqual({
     type: REQUEST_GET_PROFILE
   })
   done()

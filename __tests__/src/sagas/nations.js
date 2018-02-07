@@ -1,28 +1,14 @@
 import { call, put, select, takeEvery } from 'redux-saga/effects'
 import { cloneableGenerator } from 'redux-saga/utils'
-import watchProfileUpdate, { checkConnection, createNation, fetchNations, joinNation, leaveNation, getNations } from '../../../src/sagas/nations'
+import watchNationsUpdate, { checkConnection, createNation, fetchNations, joinNation, leaveNation, getNations } from '../../../src/sagas/nations'
 import {
   CANCEL_NATION_CREATE, DONE_NATION_CREATE, START_NATIONS_FETCH, DONE_FETCH_NATIONS,
   NATION_CREATE, CANCEL_LOADING, REQUEST_JOIN_NATION, REQUEST_LEAVE_NATION,
 } from '../../../src/actions/nations'
 import { getPangeaLibrary } from '../../../src/services/container'
 
-jest.mock('BITNATION-Pangea-libs', () => ({
-  eth: {
-    nation: {
-      create: jest.fn(),
-      index: jest.fn(),
-      all: jest.fn(),
-      joinNation: jest.fn(),
-      leaveNation: jest.fn()
-    }
-  }
-}));
-
-jest.mock('react-native-config', () => ({
-  ETH_HTTP_ENDPOINT: 'https://rinkeby.infura.io/metamask',
-  PRODUCTION: 'false'
-}));
+jest.mock('BITNATION-Pangea-libs')
+jest.mock('react-native-config')
 
 const pangeaLibrary = {
   eth: {
@@ -35,14 +21,13 @@ const pangeaLibrary = {
     }
   }
 }
-const stepper = (fn) => (mock) => fn.next(mock).value
 
 test('sagas - nation watcher', (done) => {
-  const step = stepper(watchProfileUpdate())
-  expect(step()).toEqual(takeEvery(NATION_CREATE, createNation))
-  expect(step()).toEqual(takeEvery(START_NATIONS_FETCH, fetchNations))
-  expect(step()).toEqual(takeEvery(REQUEST_JOIN_NATION, joinNation))
-  expect(step()).toEqual(takeEvery(REQUEST_LEAVE_NATION, leaveNation))
+  const iterator = watchNationsUpdate()
+  expect(iterator.next().value).toEqual(takeEvery(NATION_CREATE, createNation))
+  expect(iterator.next().value).toEqual(takeEvery(START_NATIONS_FETCH, fetchNations))
+  expect(iterator.next().value).toEqual(takeEvery(REQUEST_JOIN_NATION, joinNation))
+  expect(iterator.next().value).toEqual(takeEvery(REQUEST_LEAVE_NATION, leaveNation))
   done()
 })
 
