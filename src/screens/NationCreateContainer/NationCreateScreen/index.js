@@ -1,8 +1,6 @@
 /*
 	Nation Create Screen
 	Version 0.3.1
-	
-	For usage of ModalDropdown see: https://github.com/sohobloo/react-native-modal-dropdown/blob/master/README.md
 
 	For usage of MultiSelect see: https://github.com/toystars/react-native-multiple-select (We are using a custom UI version)
  */
@@ -23,7 +21,6 @@ import SwitchLabeled from '../../../components/common/SwitchLabeled'
 import MultiSelect from '../../../components/MultiSelect'
 import Images from '../../../global/AssetsImages'
 import Loading from '../../../components/common/Loading';
-import ModalDropdown from 'react-native-modal-dropdown'
 
 import Colors from '../../../global/Colors'
 import styles from './styles'
@@ -155,7 +152,8 @@ class CreateNation extends NavigatorComponent {
 		return (
 			<View style={ styles.fakeBottomBar }>
         <NationActionButton iconSource={AssetsImage.Actions.chat}
-                            title={i18n.t('screens.createNation.reset')} disable={false}/>
+                            title={i18n.t('screens.createNation.reset')} disable={false}
+                            onPress={this.props.onResetNation}/>
         <NationActionButton iconSource={AssetsImage.Actions.chat}
                             title={i18n.t('screens.createNation.save')} disable={false}/>
         <NationActionButton iconSource={AssetsImage.Actions.chat}

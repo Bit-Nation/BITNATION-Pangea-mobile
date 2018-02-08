@@ -8,7 +8,8 @@ import {
   CANCEL_LOADING,
   START_NATIONS_FETCH,
   REQUEST_JOIN_NATION,
-  REQUEST_LEAVE_NATION
+  REQUEST_LEAVE_NATION,
+  RESET_NATION
 } from '../actions/nations';
 
 export const ALL_NATIONS = 0;
@@ -84,6 +85,11 @@ export default function (state = initialState, action) {
         inProgress: true
       };
     case CANCEL_LOADING: 
+      return {
+        ...state,
+        inProgress: false
+      };
+    case RESET_NATION:
       return {
         ...state,
         inProgress: false

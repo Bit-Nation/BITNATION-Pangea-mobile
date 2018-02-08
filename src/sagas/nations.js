@@ -3,7 +3,7 @@ import { Alert } from 'react-native';
 
 import {
   CANCEL_NATION_CREATE, DONE_NATION_CREATE, START_NATIONS_FETCH, DONE_FETCH_NATIONS,
-  NATION_CREATE, CANCEL_LOADING, REQUEST_JOIN_NATION, REQUEST_LEAVE_NATION,
+  NATION_CREATE, CANCEL_LOADING, REQUEST_JOIN_NATION, REQUEST_LEAVE_NATION, RESET_NATION,
 } from '../actions/nations';
 import { getPangeaLibrary } from '../services/container';
 import { waitConnect } from '../utils/connectivity';
@@ -93,9 +93,20 @@ function* leaveNation() {
   }
 }
 
+function* resetNationCreation() {
+  try {
+    console.log('reset nation: ');
+  } catch (e) {
+    console.log('Leave nation error: ', e);
+    Alert.alert(extractMessage(e));
+    yield put({ type: CANCEL_LOADING });
+  }
+}
+
 export default function* watchProfileUpdate() {
   yield takeEvery(NATION_CREATE, createNation);
   yield takeEvery(START_NATIONS_FETCH, fetchNations);
   yield takeEvery(REQUEST_JOIN_NATION, joinNation);
   yield takeEvery(REQUEST_LEAVE_NATION, leaveNation);
+  yield takeEvery(RESET_NATION, resetNationCreation);
 }

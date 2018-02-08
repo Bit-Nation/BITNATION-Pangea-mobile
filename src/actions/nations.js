@@ -8,6 +8,7 @@ export const DONE_FETCH_NATIONS = 'DONE_FETCH_NATIONS';
 export const CANCEL_LOADING = 'CANCEL_LOADING';
 export const REQUEST_JOIN_NATION = 'REQUEST_JOIN_NATION';
 export const REQUEST_LEAVE_NATION = 'REQUEST_LEAVE_NATION';
+export const RESET_NATION = 'RESET_NATION';
 
 export function switchNationTab(tab) {
   return {
@@ -26,6 +27,12 @@ export function openNation(id) {
 export function cancelNationCreation() {
   return {
     type: CANCEL_NATION_CREATE,
+  };
+}
+
+export function resetNationCreation() {
+  return {
+    type: RESET_NATION,
   };
 }
 

@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import NationCreateScreen from './NationCreateScreen';
-import { cancelNationCreation, createNation } from '../../actions/nations';
+import { cancelNationCreation, createNation, resetNationCreation } from '../../actions/nations';
+import i18n from "../../global/i18n";
 
 class NationCreateContainer extends Component {
 
@@ -29,7 +30,11 @@ const mapDispatchToProps = dispatch => ({
   },
   onCreateNation(nationData, navigator) {
     dispatch(createNation(nationData, navigator));
-  }
+  },
+  onResetNationCreation() {
+    console.log('reset nation: ');
+    dispatch(resetNationCreation());
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NationCreateContainer);
