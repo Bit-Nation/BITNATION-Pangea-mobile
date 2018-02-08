@@ -22,6 +22,7 @@ NationCreateContainer.PropTypes = {
 
 const mapStateToProps = state => ({
   ...state.nations,
+  /// PUT ...state.createNation there
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -23,7 +23,7 @@ const initialState = {
   openedNationId: null,
   nation: null,
   creatingNation: null,
-  inProgress: false
+  inProgress: false,
 };
 
 export default function (state = initialState, action) {
@@ -91,8 +91,7 @@ export default function (state = initialState, action) {
       };
     case RESET_NATION:
       return {
-        ...state,
-        inProgress: false
+        initialState,
       };
   }
   return state;

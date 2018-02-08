@@ -36,26 +36,10 @@ class CreateNation extends NavigatorComponent {
 	
 	constructor (props) {
 		super(props)
-		
+
 		this.actionSheet = null
 		this.multiGovernanceService = null
 		this._setNavigationButtons(false)
-
-		this.state = {
-			nationName: '',
-			nationDescription: '',
-			exists: false,
-			virtualNation: [i18n.t('enums.nation.locationType.geographical')],
-			nationCode: [],
-			nationCodeLink: '',
-			lawEnforcementMechanism: [],
-			profit: false,
-			decisionMakingProcess: [],
-			diplomaticRecognition: false,
-			governanceService: [],
-			nonCitizenUse: false,
-			agreeFees: false
-		}
 	}
 	
 	_setNavigationButtons (saveEnabled) {
@@ -78,18 +62,18 @@ class CreateNation extends NavigatorComponent {
 		}
 		if (id === DONE_BUTTON) {
 			let nation = {
-				nationName: this.state.nationName.trim(),
-				nationDescription: this.state.nationDescription.trim(),
-				exists: this.state.exists,
-				virtualNation: this.state.virtualNation[0] === i18n.t('enums.nation.locationType.geographical'),
-				nationCode: this.state.nationCode.join(', '),
-				nationCodeLink: this.state.nationCodeLink,
-				lawEnforcementMechanism: this.state.lawEnforcementMechanism.join(', '),
-				profit: this.state.profit,
-				decisionMakingProcess: this.state.decisionMakingProcess.join(', '),
-				diplomaticRecognition: this.state.diplomaticRecognition,
-				governanceService: this.state.governanceService.join(', '),
-				nonCitizenUse: this.state.nonCitizenUse
+				nationName: this.props.nationName.trim(),
+				nationDescription: this.props.nationDescription.trim(),
+				exists: this.props.exists,
+				virtualNation: this.props.virtualNation[0] === i18n.t('enums.nation.locationType.geographical'),
+				nationCode: this.props.nationCode.join(', '),
+				nationCodeLink: this.props.nationCodeLink,
+				lawEnforcementMechanism: this.props.lawEnforcementMechanism.join(', '),
+				profit: this.props.profit,
+				decisionMakingProcess: this.props.decisionMakingProcess.join(', '),
+				diplomaticRecognition: this.props.diplomaticRecognition,
+				governanceService: this.props.governanceService.join(', '),
+				nonCitizenUse: this.props.nonCitizenUse
 			}
 			this.props.onCreateNation(nation, this.props.navigator)
 		}
@@ -97,24 +81,25 @@ class CreateNation extends NavigatorComponent {
 
 	_saveShouldBeEnabled () {
 		let enabled = true;
-		if (!this.state.nationName || this.state.nationName == '')
+		if (!this.props.nationName || this.props.nationName == '')
 			enabled = false;
-		if (!this.state.nationDescription || this.state.nationDescription == '')
+		if (!this.props.nationDescription || this.props.nationDescription == '')
 			enabled = false;
-		if (!this.state.virtualNation || !this.state.virtualNation.length > 0)
+		if (!this.props.virtualNation || !this.props.virtualNation.length > 0)
 			enabled = false;
-		if (!this.state.nationCode || !this.state.nationCode.length > 0)
+		if (!this.props.nationCode || !this.props.nationCode.length > 0)
 			enabled = false;
-		if (!this.state.lawEnforcementMechanism || !this.state.lawEnforcementMechanism.length > 0)
+		if (!this.props.lawEnforcementMechanism || !this.props.lawEnforcementMechanism.length > 0)
 			enabled = false;
-		if (!this.state.decisionMakingProcess || !this.state.decisionMakingProcess.length > 0)
+		if (!this.props.decisionMakingProcess || !this.props.decisionMakingProcess.length > 0)
 			enabled = false;
-		if (!this.state.governanceService || !this.state.governanceService.length > 0)
+		if (!this.props.governanceService || !this.props.governanceService.length > 0)
 			enabled = false;
 		this._setNavigationButtons(enabled);
 	}
 
 	setFieldValue(field, value) {
+		this.props.onNationChange()
 		this.setState({[field]: value}, this._saveShouldBeEnabled)		
 	}
 	
@@ -153,7 +138,7 @@ class CreateNation extends NavigatorComponent {
 			<View style={ styles.fakeBottomBar }>
         <NationActionButton iconSource={AssetsImage.Actions.chat}
                             title={i18n.t('screens.createNation.reset')} disable={false}
-                            onPress={this.props.onResetNation}/>
+                            onPress={this.props.onResetNationCreation}/>
         <NationActionButton iconSource={AssetsImage.Actions.chat}
                             title={i18n.t('screens.createNation.save')} disable={false}/>
         <NationActionButton iconSource={AssetsImage.Actions.chat}
@@ -186,7 +171,7 @@ class CreateNation extends NavigatorComponent {
 								placeholderTextColor={Colors.placeholderTextColor}
 								keyboardType='default'
 								onChangeText={(text) => this.setFieldValue('nationName', text)}
-        						value={this.state.nationName}
+        						value={this.props.nationName}
 							/>
 						</View>
 						<View style={styles.formRow}>
@@ -198,7 +183,7 @@ class CreateNation extends NavigatorComponent {
 								placeholderTextColor={Colors.placeholderTextColor}
 								keyboardType='default'
 								onChangeText={(text) => this.setFieldValue('nationDescription', text)}
-        						value={this.state.nationDescription}
+        						value={this.props.nationDescription}
 							/>
 						</View>
 					</View>
@@ -217,7 +202,7 @@ class CreateNation extends NavigatorComponent {
               }]}
               uniqueKey="id"
               onSelectedItemsChange={(selectedItems) => this.setFieldValue('virtualNation', selectedItems)}
-              selectedItems={this.state.virtualNation}
+              selectedItems={this.props.virtualNation}
               selectText={i18n.t('screens.createNation.prompt.location')}
               onChangeInput={ (text)=> console.log(text)}
               tagRemoveIconColor="#CCC"
@@ -234,7 +219,7 @@ class CreateNation extends NavigatorComponent {
 					<View style={styles.fieldsContainer}>
 						<SwitchLabeled
 							label={i18n.t('screens.createNation.prompt.represents')}
-							value={this.state.exists}
+							value={this.props.exists}
 							onValueChange={(value) => this.setFieldValue('exists', value)}
 						/>
 					</View>
@@ -280,7 +265,7 @@ class CreateNation extends NavigatorComponent {
               }]}
               uniqueKey="id"
               onSelectedItemsChange={(selectedItems) => this.setFieldValue('nationCode', selectedItems)}
-              selectedItems={this.state.nationCode}
+              selectedItems={this.props.nationCode}
               selectText={i18n.t('screens.createNation.prompt.legalCode')}
               onChangeInput={ (text)=> console.log(text)}
               tagRemoveIconColor="#CCC"
@@ -316,7 +301,7 @@ class CreateNation extends NavigatorComponent {
               }]}
               uniqueKey="id"
               onSelectedItemsChange={(selectedItems) => this.setFieldValue('lawEnforcementMechanism', selectedItems)}
-              selectedItems={this.state.lawEnforcementMechanism}
+              selectedItems={this.props.lawEnforcementMechanism}
               selectText={i18n.t('screens.createNation.prompt.lawEnforcementMechanism')}
               onChangeInput={ (text)=> console.log(text)}
               tagRemoveIconColor="#CCC"
@@ -355,7 +340,7 @@ class CreateNation extends NavigatorComponent {
               }]}
               uniqueKey="id"
               onSelectedItemsChange={(selectedItems) => this.setFieldValue('decisionMakingProcess', selectedItems)}
-              selectedItems={this.state.decisionMakingProcess}
+              selectedItems={this.props.decisionMakingProcess}
               selectText={i18n.t('screens.createNation.prompt.typeOfGovernment')}
               onChangeInput={ (text)=> console.log(text)}
               tagRemoveIconColor="#CCC"
@@ -391,7 +376,7 @@ class CreateNation extends NavigatorComponent {
               uniqueKey="id"
               ref={(component) => this.multiGovernanceService = component}
               onSelectedItemsChange={(selectedItems) => this.setFieldValue('governanceService', selectedItems)}
-              selectedItems={this.state.governanceService}
+              selectedItems={this.props.governanceService}
               selectText={i18n.t('screens.createNation.prompt.servicesOffered')}
               onChangeInput={ (text)=> console.log(text)}
               tagRemoveIconColor="#CCC"
@@ -403,7 +388,7 @@ class CreateNation extends NavigatorComponent {
               submitButtonText={i18n.t('common.ok')}
             />
             <View>
-              {this.multiGovernanceService && this.multiGovernanceService.getSelectedItemsExt(this.state.governanceService)}
+              {this.multiGovernanceService && this.multiGovernanceService.getSelectedItemsExt(this.props.governanceService)}
             </View>
 					</View>
 				</View>
@@ -418,7 +403,7 @@ class CreateNation extends NavigatorComponent {
 					<View style={styles.fieldsContainer}>
 						<SwitchLabeled
 							label={i18n.t('screens.createNation.prompt.diplomaticRecognition')}
-							value={this.state.diplomaticRecognition}
+							value={this.props.diplomaticRecognition}
 							onValueChange={(value) => this.setFieldValue('diplomaticRecognition', value)}
 						/>
 					</View>
@@ -427,7 +412,7 @@ class CreateNation extends NavigatorComponent {
 					<View style={styles.fieldsContainer}>
 						<SwitchLabeled
 							label={i18n.t('screens.createNation.prompt.servicesUsage')}
-							value={this.state.nonCitizenUse}
+							value={this.props.nonCitizenUse}
 							onValueChange={(value) => this.setFieldValue('nonCitizenUse', value)}
 						/>
 					</View>
@@ -436,7 +421,7 @@ class CreateNation extends NavigatorComponent {
 					<View style={styles.fieldsContainer}>
 						<SwitchLabeled
 							label={i18n.t('screens.createNation.prompt.profit')}
-							value={this.state.profit}
+							value={this.props.profit}
 							onValueChange={(value) => this.setFieldValue('profit', value)}
 						/>
 					</View>
