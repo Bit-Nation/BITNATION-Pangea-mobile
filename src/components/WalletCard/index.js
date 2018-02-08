@@ -17,7 +17,7 @@ import {
 } from 'react-native';
 import styles from './styles';
 import PropTypes from 'prop-types';
-import Images from '../../global/AssetsImages';
+import Images from '../../global/assetsImagesResources';
 import Button from '../common/Button';
 import i18n from '../../global/i18n';
 

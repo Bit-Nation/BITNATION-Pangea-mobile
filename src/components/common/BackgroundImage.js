@@ -2,7 +2,7 @@ import React from 'react';
 import { Image } from 'react-native';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
 
-import AssetsImages from '../../global/AssetsImages';
+import AssetsImages from '../../global/assetsImagesResources';
 
 /**
  * @desc Component that renders common background image. You should use it instead of placing background image on your own.

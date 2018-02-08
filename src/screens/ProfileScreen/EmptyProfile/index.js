@@ -8,7 +8,7 @@ import PropTypes from 'prop-types'
 
 import styles from './styles'
 import BackgroundImage from '../../../components/common/BackgroundImage'
-import AssetsImage from '../../../global/AssetsImages'
+import AssetsImage from '../../../global/assetsImagesResources'
 import PanelView from '../../../components/common/PanelView'
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar'
 import i18n from '../../../global/i18n';

@@ -14,7 +14,7 @@ import ImagePicker from 'react-native-image-crop-picker';
 
 import styles from './styles';
 import BackgroundImage from '../../../components/common/BackgroundImage';
-import AssetsImage from '../../../global/AssetsImages';
+import AssetsImage from '../../../global/assetsImagesResources';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import Colors from '../../../global/Colors';
 import { ActionSheet } from 'native-base';

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Image, View } from 'react-native';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
 
-import AssetsImages from '../../global/AssetsImages';
+import AssetsImages from '../../global/assetsImagesResources';
 
 /**
  * @desc Component to place "demo" icon on top of a component.
