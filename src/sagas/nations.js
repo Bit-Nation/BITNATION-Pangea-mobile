@@ -21,7 +21,7 @@ const extractMessage = (error) => {
   return error.toString();
 };
 
-function* createNation(action) {
+export function* createNation(action) {
   if (action.payload) {
     try {
       let pangeaLib = yield call(getPangeaLibrary);
@@ -38,18 +38,11 @@ function* createNation(action) {
   }
 }
 
-function* fetchNations() {
+export function* fetchNations() {
   try {
-    console.log('fetching nations');
     let pangeaLib = yield call(getPangeaLibrary);
-    const nationsCache = yield call(pangeaLib.eth.nation.all);
-    yield put({ type: DONE_FETCH_NATIONS, payload: [...nationsCache] });
-
     yield call(checkConnection);
-    console.log('start syncing with blockchain');
     yield call(pangeaLib.eth.nation.index);
-    console.log('synced with blockchain');
-
     const updatedNations = yield call(pangeaLib.eth.nation.all);
     yield put({ type: DONE_FETCH_NATIONS, payload: [...updatedNations] });
   } catch (e) {
@@ -59,10 +52,12 @@ function* fetchNations() {
   }
 }
 
-function* joinNation() {
+export const getNations = state => state.nations
+
+export function* joinNation() {
   try {
     let pangeaLib = yield call(getPangeaLibrary);
-    let nationsState = yield select(state => state.nations);
+    let nationsState = yield select(getNations);
     const currentNation = resolveNation(nationsState.nations, nationsState.openedNationId);
     yield call(checkConnection);
     let result = yield call(pangeaLib.eth.nation.joinNation, currentNation.id);
@@ -76,10 +71,10 @@ function* joinNation() {
   }
 }
 
-function* leaveNation() {
+export function* leaveNation() {
   try {
     let pangeaLib = yield call(getPangeaLibrary);
-    let nationsState = yield select(state => state.nations);
+    let nationsState = yield select(getNations);
     const currentNation = resolveNation(nationsState.nations, nationsState.openedNationId);
     yield call(checkConnection);
     let result = yield call(pangeaLib.eth.nation.leaveNation, currentNation.id);
@@ -93,7 +88,7 @@ function* leaveNation() {
   }
 }
 
-export default function* watchProfileUpdate() {
+export default function* watchNationsUpdate() {
   yield takeEvery(NATION_CREATE, createNation);
   yield takeEvery(START_NATIONS_FETCH, fetchNations);
   yield takeEvery(REQUEST_JOIN_NATION, joinNation);
