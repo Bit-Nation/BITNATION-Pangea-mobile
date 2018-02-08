@@ -1,15 +1,12 @@
 import {
   SWITCH_NATIONS_TAB,
   OPEN_NATION,
-  CANCEL_NATION_CREATE,
-  NATION_CREATE,
   DONE_NATION_CREATE,
   DONE_FETCH_NATIONS,
   CANCEL_LOADING,
   START_NATIONS_FETCH,
   REQUEST_JOIN_NATION,
   REQUEST_LEAVE_NATION,
-  RESET_NATION
 } from '../actions/nations';
 
 export const ALL_NATIONS = 0;
@@ -37,17 +34,6 @@ export default function (state = initialState, action) {
       return {
         ...state,
         openedNationId: action.nationId
-      };
-    case CANCEL_NATION_CREATE:
-      return {
-        ...state,
-        creatingNation: null
-      };
-    case NATION_CREATE:
-      return {
-        ...state,
-        creatingNation: action.payload,
-        inProgress: true
       };
     case DONE_NATION_CREATE:
       return {
@@ -88,10 +74,6 @@ export default function (state = initialState, action) {
       return {
         ...state,
         inProgress: false
-      };
-    case RESET_NATION:
-      return {
-        initialState,
       };
   }
   return state;

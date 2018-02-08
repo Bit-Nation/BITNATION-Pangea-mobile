@@ -27,7 +27,8 @@
     "governmentalStructure": "Governmental Structure",
     "updating": "Updating",
     "updateFailed": "Update failed",
-    "ethereum": "Ethereum"
+    "ethereum": "Ethereum",
+    "continue": "Continue"
   },
   "enums": {
     "nation": {
@@ -101,6 +102,30 @@
       "title": "No wallet",
       "subtitle": "You need to setup a wallet first",
       "confirm": "$t(common.ok)",
+      "cancel": "$t(common.cancel)"
+    },
+    "resetForm": {
+      "title": "Reset",
+      "subtitle": "Reset this form to default values?",
+      "confirm": "$t(common.ok)",
+      "cancel": "$t(common.cancel)"
+    },
+    "deleteForm": {
+      "title": "Delete Draft",
+      "subtitle": "Delete this draft nation?",
+      "confirm": "$t(common.ok)",
+      "cancel": "$t(common.cancel)"
+    },
+    "saveForm": {
+      "title": "Save Draft",
+      "subtitle": "This draft nation has been saved to your device.",
+      "confirm": "$t(common.continue)",
+      "cancel": "$t(common.cancel)"
+    },
+    "submitForm": {
+      "title": "Submit Nation",
+      "subtitle": "Submit this nation to the blockchain?",
+      "confirm": "$t(common.continue)",
       "cancel": "$t(common.cancel)"
     }
   },

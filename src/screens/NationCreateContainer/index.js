@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import NationCreateScreen from './NationCreateScreen';
-import { cancelNationCreation, createNation, resetNationCreation } from '../../actions/nations';
+import { resetNationCreation, nationFieldChange, cancelNationCreation, createNation } from '../../actions/createNation';
 import i18n from "../../global/i18n";
 
 class NationCreateContainer extends Component {
@@ -22,7 +22,7 @@ NationCreateContainer.PropTypes = {
 
 const mapStateToProps = state => ({
   ...state.nations,
-  /// PUT ...state.createNation there
+  ...state.createNation
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -33,8 +33,11 @@ const mapDispatchToProps = dispatch => ({
     dispatch(createNation(nationData, navigator));
   },
   onResetNationCreation() {
-    console.log('reset nation: ');
     dispatch(resetNationCreation());
+  },
+  onNationChange(field, data) {
+    console.log('nationFieldChange: ');
+    dispatch(nationFieldChange(field, data));
   },
 });
 
