@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-import { DONE_FETCH_MESSAGES, MESSAGE_ADDED, START_FETCH_MESSAGES } from '../actions/activity';
+import { ADD_DUMMY_MESSAGE, DONE_FETCH_MESSAGES, MESSAGE_ADDED, START_FETCH_MESSAGES } from '../actions/activity';
 import { ACTIVITY_MESSAGES_LIMIT } from '../global/Constants';
 
 export const initialState = {
@@ -9,10 +9,10 @@ export const initialState = {
 };
 
 export function mergeMessages(currentMessages, newMessages, limit = ACTIVITY_MESSAGES_LIMIT) {
-  const getId = message => message.id;
+  const getId = message => -message.id;
   const allMessages = _.concat(currentMessages, newMessages);
   const uniqueMessages = _.sortedUniqBy(_.sortBy(allMessages, getId), getId);
-  return _.takeRight(uniqueMessages, limit);
+  return _.take(uniqueMessages, limit);
 }
 
 export default function (state = initialState, action) {

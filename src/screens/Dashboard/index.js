@@ -21,7 +21,7 @@ import ActivityPanel from './ActivityPanel';
 import NationsPanel from './NationsPanel';
 import { openNation } from '../../actions/nations';
 import { screen } from '../../global/Screens';
-import { startFetchMessages } from '../../actions/activity';
+import { addDummyMessage, startFetchMessages } from '../../actions/activity';
 
 class Dashboard extends Component {
 
@@ -47,7 +47,10 @@ class Dashboard extends Component {
         <FakeNavigationBar navBarHidden/>
         <View style={styles.stackView}>
           <View style={styles.activityPanelContainer}>
-            <ActivityPanel style={styles.activityPanel} messages={this.props.activity.messages}/>
+            <ActivityPanel style={styles.activityPanel}
+                           messages={this.props.activity.messages}
+                           testingMode={this.props.testingMode}
+                           onAddDummyMessage={this.props.onAddDummyMessage}/>
           </View>
           <View style={styles.bottomContainer}>
             <NationsPanel nations={this.props.nations.nations}
@@ -86,7 +89,10 @@ const mapDispatchToProps = dispatch => ({
   },
   startFetchMessages() {
     dispatch(startFetchMessages());
-  }
+  },
+  onAddDummyMessage() {
+    dispatch(addDummyMessage());
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

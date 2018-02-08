@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 import styles from './styles';
 import PanelView from '../../../components/common/PanelView';
 import i18n from '../../../global/i18n';
+import Button from '../../../components/common/Button';
 
 /**
  * @desc Component to render nation panel on dashboard
@@ -34,6 +35,11 @@ export default class ActivityPanel extends Component {
             data={this.props.messages}
             style={styles.flex}
           />
+          {
+            this.props.testingMode.isActive &&
+            <Button title='Add dummy log' onPress={this.props.onAddDummyMessage}/>
+          }
+
         </PanelView>
       </View>
     );
@@ -46,6 +52,14 @@ ActivityPanel.propTypes = {
    * @desc Array of messages objects to display
    */
   messages: PropTypes.array,
+  /**
+   * @desc State of testing mode. For testing only.
+   */
+  testingMode: PropTypes.object,
+  /**
+   * @desc Callback to add dummy message. For testing only.
+   */
+  onAddDummyMessage: PropTypes.func,
 };
 
 ActivityPanel.defaultProps = {
