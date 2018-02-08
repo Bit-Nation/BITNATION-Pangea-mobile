@@ -583,7 +583,7 @@ const styles = {
     marginRight: 15,
   },
 	
-	// e.g. NationListItem
+	// e.g. NationListItem, a row in a list of Nations
 	sectionListTouchable: {
 		flex: 1,
 		flexDirection: 'row',
