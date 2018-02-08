@@ -17,6 +17,9 @@ const styles = MediaQueryStyleSheet.create(
       marginLeft: 8,
       marginRight: 8,
     },
+    activityPanelContainer: {
+      flex: 1,
+    },
     activityPanel: {
       flex: 1,
     },

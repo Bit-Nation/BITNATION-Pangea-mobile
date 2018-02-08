@@ -128,6 +128,9 @@
     },
     "dashboard": {
       "tabTitle": "Dashboard",
+      "activityPanel": {
+        "title": "Activity"
+      },
       "walletPanel": {
         "title": "$t(common.wallet)",
         "empty": "Begin using Pangea by creating your wallet."

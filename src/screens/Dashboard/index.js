@@ -16,12 +16,20 @@ import BackgroundImage from '../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../components/common/FakeNavigationBar';
 import PanelView from '../../components/common/PanelView';
 import i18n from '../../global/i18n';
+import WalletPanel from './WalletPanel';
+import ActivityPanel from './ActivityPanel';
 import NationsPanel from './NationsPanel';
 import { openNation } from '../../actions/nations';
 import { screen } from '../../global/Screens';
-import WalletPanel from './WalletPanel';
+import { startFetchMessages } from '../../actions/activity';
 
 class Dashboard extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.props.startFetchMessages();
+  }
 
   _onSelectNation = (id) => {
     this.props.onSelectNation(id);
@@ -38,7 +46,8 @@ class Dashboard extends Component {
         <BackgroundImage/>
         <FakeNavigationBar navBarHidden/>
         <View style={styles.stackView}>
-          <View style={styles.activityPanel}>
+          <View style={styles.activityPanelContainer}>
+            <ActivityPanel style={styles.activityPanel} messages={this.props.activity.messages}/>
           </View>
           <View style={styles.bottomContainer}>
             <NationsPanel nations={this.props.nations.nations}
@@ -75,6 +84,9 @@ const mapDispatchToProps = dispatch => ({
   onSelectNation(id) {
     dispatch(openNation(id));
   },
+  startFetchMessages() {
+    dispatch(startFetchMessages());
+  }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
