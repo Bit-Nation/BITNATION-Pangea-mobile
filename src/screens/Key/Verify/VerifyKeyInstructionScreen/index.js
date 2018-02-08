@@ -15,12 +15,7 @@ import KeyBaseScreen from '../../KeyBaseScreen';
 import { KEY_LENGTH } from '../../../../global/Constants';
 import { changeEnteredMnemonic, removePrivateKey } from '../../../../actions/key';
 import BodyParagraphs from '../../../../components/common/BodyParagraphs';
-
-const paragraphs = [
-  'Now that you have written down your private key, we will ask you to verify it.',
-  `You will type the ${KEY_LENGTH} words of your private key into the app, and we will check that your written private key is correct.`,
-  'Your private key protects everything in Bitnation, so be sure to put your paper with your private key in a safe place.',
-];
+import i18n from '../../../../global/i18n';
 
 class VerifyKeyInstructionScreen extends KeyBaseScreen {
 
@@ -35,9 +30,9 @@ class VerifyKeyInstructionScreen extends KeyBaseScreen {
         <FakeNavigationBar/>
 
         <ScrollView contentContainerStyle={styles.bodyContainer}>
-          <BodyParagraphs paragraphs={paragraphs}/>
+          <BodyParagraphs paragraphs={i18n.t('screens.verifyKey.instructions', { KEY_LENGTH })}/>
           <View style={styles.buttonContainer}>
-            <Button title='Begin'
+            <Button title={i18n.t('screens.verifyKey.startButton')}
                     onPress={() => this.onNextButtonPressed()}/>
           </View>
         </ScrollView>

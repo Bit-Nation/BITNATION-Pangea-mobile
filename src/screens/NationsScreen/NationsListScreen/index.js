@@ -13,6 +13,7 @@ import NationListItem from '../../../components/common/NationListItem';
 import NationListHeader from '../../../components/common/NationListHeader';
 import { ALL_NATIONS } from '../../../reducers/nations';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
+import i18n from '../../../global/i18n';
 
 class NationsListScreen extends Component {
 
@@ -35,7 +36,7 @@ class NationsListScreen extends Component {
         <FakeNavigationBar/>
         <View style={styles.segmentedControlContainer}>
           <SegmentedControl
-            values={['All Nations', 'My Nations']}
+            values={[i18n.t('screens.nations.allNations'), i18n.t('screens.nations.myNations')]}
             selectedIndex={this.props.selectedTab}
             onTabPress={this.props.onSelectTab}
             tabsContainerStyle={styles.tabsContainerStyle}

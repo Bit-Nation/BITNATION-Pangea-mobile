@@ -15,12 +15,7 @@ import KeyBaseScreen from '../KeyBaseScreen';
 import { changeEnteredMnemonic, removePrivateKey } from '../../../actions/key';
 import { KEY_LENGTH } from '../../../global/Constants';
 import BodyParagraphs from '../../../components/common/BodyParagraphs';
-
-const paragraphs = [
-  'If you have a private key from another Bitnation wallet, you can use it here to add that wallet to this app.',
-  'For example, if you lost or upgraded your device, you will have to transfer wallets from that device to this one.',
-  `To load your wallet, we will ask you for the ${KEY_LENGTH} words of your private key. You should have these on a piece of paper you store in a safe and secure place.`,
-];
+import i18n from '../../../global/i18n';
 
 class LoadWalletScreen extends KeyBaseScreen {
 
@@ -35,10 +30,10 @@ class LoadWalletScreen extends KeyBaseScreen {
         <FakeNavigationBar/>
 
         <ScrollView contentContainerStyle={styles.bodyContainer}>
-          <BodyParagraphs paragraphs={paragraphs}/>
+          <BodyParagraphs paragraphs={i18n.t('screens.loadWallet.instructions', { KEY_LENGTH })}/>
 
           <View style={styles.buttonContainer}>
-            <Button title='Begin'
+            <Button title={i18n.t('screens.loadWallet.startButton')}
                     onPress={() => this.onNextButtonPressed()}/>
           </View>
         </ScrollView>
