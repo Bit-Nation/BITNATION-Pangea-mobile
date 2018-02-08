@@ -11,6 +11,7 @@ import BackgroundImage from '../../../components/common/BackgroundImage'
 import AssetsImage from '../../../global/AssetsImages'
 import PanelView from '../../../components/common/PanelView'
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar'
+import i18n from '../../../global/i18n';
 
 class EmptyProfileScreen extends Component {
 	
@@ -26,12 +27,9 @@ class EmptyProfileScreen extends Component {
 				<View style={styles.bodyContainer}>
 					
 					<PanelView
-						title="Become a world citizen."
-						body="Bitnation is a decentralized, open-source movement, powered by the Bitcoin blockchain 2.0 technology, in an
-            attempt to foster a peer-to-peer voluntary governance system, rather than the current ‘top-down’,
-            ‘one-size-fits-all’ model, restrained by the current nation-state-engineered geographical apartheid, where
-            your quality of life is defined by where you were arbitrarily born."
-						buttonTitle="Create a User Profile"
+						title={i18n.t('screens.profile.empty.createProfilePanel.title')}
+						body={i18n.t('screens.profile.empty.createProfilePanel.text')}
+						buttonTitle={i18n.t('screens.profile.empty.createProfilePanel.button')}
 						onButtonClick={this.props.onCreateUserProfile}
 						style={styles.messageView}
 					/>

@@ -23,6 +23,7 @@ import { sendMoney } from '../../../actions/wallet';
 import { androidNavigationButtons, screen } from '../../../global/Screens';
 import Loading from '../../../components/common/Loading';
 import { prettyETHWalletBalance } from '../../../utils/formatters';
+import i18n from '../../../global/i18n';
 
 class SendMoney extends Component {
 
@@ -91,7 +92,7 @@ class SendMoney extends Component {
       return <View/>;
     }
 
-    const balance = prettyETHWalletBalance(wallet, ' available');
+    const balance = prettyETHWalletBalance(wallet, ' ' + i18n.t('screens.sendMoney.available'));
 
     return (
       <View style={styles.screenContainer}>
@@ -101,7 +102,7 @@ class SendMoney extends Component {
 
           <View style={styles.fromContainer}>
             <View style={styles.fromTextContainer}>
-              <Text style={styles.body}>From</Text>
+              <Text style={styles.body}>{i18n.t('common.from')}</Text>
             </View>
 
             <View style={styles.ethereumContainer}>
@@ -121,7 +122,7 @@ class SendMoney extends Component {
 
           <View style={styles.amountContainer}>
             <View style={styles.amountTextContainer}>
-              <Text style={styles.body}>Amount</Text>
+              <Text style={styles.body}>{i18n.t('common.amount')}</Text>
             </View>
 
             <View style={styles.amountBoxContainer}>
@@ -144,13 +145,13 @@ class SendMoney extends Component {
 
           <View style={styles.toContainer}>
             <View style={styles.toTextContainer}>
-              <Text style={styles.body}>To</Text>
+              <Text style={styles.body}>{i18n.t('common.to')}</Text>
             </View>
 
             <View style={styles.ethAddressBoxContainer}>
               <TextInput
                 style={[styles.baseTextInput, styles.ethTextInput]}
-                placeholder='Enter ETH address'
+                placeholder={i18n.t('screens.sendMoney.enterAddress')}
                 placeholderTextColor='rgba(255,255,255,0.5)'
                 value={this.state.toEthAddress}
                 onChangeText={(toEthAddress) => this.setState({ toEthAddress })}
@@ -162,7 +163,7 @@ class SendMoney extends Component {
 
           <View style={styles.buttonContainer}>
             <Button
-              title='Send'
+              title={i18n.t('common.send')}
               onPress={this.onSendPress}
               enabled={this._validateSendData()}
               style={styles.button}

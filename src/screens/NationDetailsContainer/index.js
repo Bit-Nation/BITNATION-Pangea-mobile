@@ -6,6 +6,7 @@ import NationDetailsScreen from './NationDetailsScreen';
 import { switchNationTab, openNation, joinNation, leaveNation } from '../../actions/nations';
 import { androidNavigationButtons } from '../../global/Screens';
 import { Alert } from 'react-native';
+import i18n from '../../global/i18n';
 
 class NationDetailsContainer extends Component {
 
@@ -13,11 +14,11 @@ class NationDetailsContainer extends Component {
 
   _showCreatePrivateKeyAlert() {
     Alert.alert(
-      'No wallet',
-      'You need a wallet to change your citizenship.',
+      i18n.t('alerts.walletRequired.title'),
+      i18n.t('alerts.walletRequired.subtitle'),
       [
-        { text: 'Cancel', style: 'cancel' },
-        { text: 'OK', onPress: () => this.props.navigator.switchToTab({ tabIndex: 3 }) },
+        { text: i18n.t('alerts.walletRequired.cancel'), style: 'cancel' },
+        { text: i18n.t('alerts.walletRequired.confirm'), onPress: () => this.props.navigator.switchToTab({ tabIndex: 3 }) },
       ],
       { cancelable: false },
     );

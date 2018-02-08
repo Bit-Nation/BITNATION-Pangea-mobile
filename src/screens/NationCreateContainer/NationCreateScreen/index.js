@@ -26,9 +26,8 @@ import Loading from '../../../components/common/Loading';
 import ModalDropdown from 'react-native-modal-dropdown'
 
 import Colors from '../../../global/Colors'
-import Strings from '../../../global/Strings'
-
 import styles from './styles'
+import i18n from '../../../global/i18n';
 
 
 const DONE_BUTTON = 'DONE_BUTTON'
@@ -46,7 +45,7 @@ class CreateNation extends NavigatorComponent {
 			nationName: '',
 			nationDescription: '',
 			exists: false,
-			virtualNation: [Strings.virtualNationFalse],
+			virtualNation: [i18n.t('enums.nation.locationType.geographical')],
 			nationCode: [],
 			nationCodeLink: '',
 			lawEnforcementMechanism: [],
@@ -64,13 +63,13 @@ class CreateNation extends NavigatorComponent {
 			{
 				leftButtons: [
 					{
-						title: 'Cancel',
+						title: i18n.t('screens.createNation.cancelButton'),
 						id: 'cancel',
 						buttonColor: Colors.navigationButtonColor,
 					}],
 				rightButtons: [
 					{
-						title: 'Done',
+						title: i18n.t('screens.createNation.doneButton'),
 						id: DONE_BUTTON,
 						disabled: !saveEnabled,
 						buttonColor: Colors.navigationButtonColor,
@@ -88,7 +87,7 @@ class CreateNation extends NavigatorComponent {
 				nationName: this.state.nationName.trim(),
 				nationDescription: this.state.nationDescription.trim(),
 				exists: this.state.exists,
-				virtualNation: this.state.virtualNation[0] == Strings.virtualNationTrue ? true : false,
+				virtualNation: this.state.virtualNation[0] === i18n.t('enums.nation.locationType.geographical'),
 				nationCode: this.state.nationCode.join(', '),
 				nationCodeLink: this.state.nationCodeLink,
 				lawEnforcementMechanism: this.state.lawEnforcementMechanism.join(', '),
@@ -136,7 +135,7 @@ class CreateNation extends NavigatorComponent {
 					<ScrollView style={styles.scrollView}>
 						{/* TITLE OF SCREEN */}
 						<View style={styles.titleBarLarge}>
-							<Text style={styles.largeTitle}>{Strings.createNationTitle}</Text>
+							<Text style={styles.largeTitle}>{i18n.t('screens.createNation.title')}</Text>
 						</View>
 
             {/* CONSTRUCTIONS OF THE SECTIONS IN THE SCREEN */}
@@ -157,7 +156,7 @@ class CreateNation extends NavigatorComponent {
 		return (
 			<View style={styles.bodyParagraph}>
 				<Text style={styles.body}>
-					{Strings.createNationIntroText}
+          {i18n.t('screens.createNation.introduction')}
 				</Text>
 			</View>
 		)
@@ -171,7 +170,7 @@ class CreateNation extends NavigatorComponent {
 						<View style={styles.formRow}>
 							<TextInput
 								style={styles.textInput}
-								placeholder={Strings.createNationNationNamePrompt}
+								placeholder={i18n.t('screens.createNation.prompt.name')}
 								placeholderTextColor={Colors.placeholderTextColor}
 								keyboardType='default'
 								onChangeText={(text) => this.setFieldValue('nationName', text)}
@@ -181,7 +180,7 @@ class CreateNation extends NavigatorComponent {
 						<View style={styles.formRow}>
 							<TextInput
 								style={styles.textInput}
-								placeholder={Strings.createNationShortDescPrompt}
+								placeholder={i18n.t('screens.createNation.prompt.description')}
 								multiline={true}
 								numberOfLines={4}
 								placeholderTextColor={Colors.placeholderTextColor}
@@ -198,16 +197,16 @@ class CreateNation extends NavigatorComponent {
               single
               hideTags
               items={[{
-                id: Strings.virtualNationTrue,
-                name: Strings.virtualNationTrue + ' ' + Strings.nation,
+                id: i18n.t('enums.nation.locationType.virtual'),
+                name: i18n.t('enums.nation.locationType.virtual'),
               }, {
-                id: Strings.virtualNationFalse,
-                name: Strings.virtualNationFalse + ' ' + Strings.nation,
+                id: i18n.t('enums.nation.locationType.geographical'),
+                name: i18n.t('enums.nation.locationType.geographical'),
               }]}
               uniqueKey="id"
               onSelectedItemsChange={(selectedItems) => this.setFieldValue('virtualNation', selectedItems)}
               selectedItems={this.state.virtualNation}
-              selectText={Strings.createNationLocationPrompt}
+              selectText={i18n.t('screens.createNation.prompt.location')}
               onChangeInput={ (text)=> console.log(text)}
               tagRemoveIconColor="#CCC"
               tagBorderColor="#CCC"
@@ -215,14 +214,14 @@ class CreateNation extends NavigatorComponent {
               itemTextColor={Colors.textSecondary}
               displayKey="name"
               submitButtonColor={Colors.panelBoxColor}
-              submitButtonText={Strings.ok}
+              submitButtonText={i18n.t('common.ok')}
             />
 					</View>
 				</View>
 				<View style={styles.formRow}>
 					<View style={styles.fieldsContainer}>
 						<SwitchLabeled
-							label={Strings.createNationRepresentsPrompt}
+							label={i18n.t('screens.createNation.prompt.represents')}
 							value={this.state.exists}
 							onValueChange={(value) => this.setFieldValue('exists', value)}
 						/>
@@ -230,7 +229,7 @@ class CreateNation extends NavigatorComponent {
 				</View>
 				
 				<Text style={styles.footnote}>
-					{Strings.createNationCoreFootnote}
+					{i18n.t('screens.createNation.locationTypeHint')}
 				</Text>
 			</PanelView>
 		)
@@ -239,38 +238,38 @@ class CreateNation extends NavigatorComponent {
 	_buildGovernmentalView () {
 		return (
 			<PanelView style={styles.messageView}
-			             title={Strings.createNationGovernmentalStructure} icon=' '>
+			             title={i18n.t('common.governmentalStructure')} icon=' '>
 				<View style={styles.formRow}>
 					<View style={styles.fieldsContainer}>
             <MultiSelect
 							single
               hideTags
               items={[{
-                id: Strings.createNationNoLegalCode,
-                name: Strings.createNationNoLegalCode,
+                id: i18n.t('enums.nation.legalCode.no'),
+                name: i18n.t('enums.nation.legalCode.no'),
               }, {
-                id: Strings.legalCodeTransSupra,
-                name: Strings.legalCodeTransSupra,
+                id: i18n.t('enums.nation.legalCode.transSupra'),
+                name: i18n.t('enums.nation.legalCode.transSupra'),
               }, {
-                id: Strings.legalCodeMultiple,
-                name: Strings.legalCodeMultiple,
+                id: i18n.t('enums.nation.legalCode.multiple'),
+                name: i18n.t('enums.nation.legalCode.multiple'),
               }, {
-                id: Strings.legalCodeUNIDROIT,
-                name: Strings.legalCodeUNIDROIT,
+                id: i18n.t('enums.nation.legalCode.unidroit'),
+                name: i18n.t('enums.nation.legalCode.unidroit'),
               }, {
-                id: Strings.legalCodeComputer,
-                name: Strings.legalCodeComputer,
+                id: i18n.t('enums.nation.legalCode.computer'),
+                name: i18n.t('enums.nation.legalCode.computer'),
               }, {
-                id: Strings.legalCodeCommon,
-                name: Strings.legalCodeCommon,
+                id: i18n.t('enums.nation.legalCode.common'),
+                name: i18n.t('enums.nation.legalCode.common'),
               }, {
-                id: Strings.legalCodeCivil,
-                name: Strings.legalCodeCivil,
+                id: i18n.t('enums.nation.legalCode.civil'),
+                name: i18n.t('enums.nation.legalCode.civil'),
               }]}
               uniqueKey="id"
               onSelectedItemsChange={(selectedItems) => this.setFieldValue('nationCode', selectedItems)}
               selectedItems={this.state.nationCode}
-              selectText={Strings.createNationLegalCode}
+              selectText={i18n.t('screens.createNation.prompt.legalCode')}
               onChangeInput={ (text)=> console.log(text)}
               tagRemoveIconColor="#CCC"
               tagBorderColor="#CCC"
@@ -278,7 +277,7 @@ class CreateNation extends NavigatorComponent {
               itemTextColor={Colors.textSecondary}
               displayKey="name"
               submitButtonColor={Colors.panelBoxColor}
-              submitButtonText={Strings.ok}
+              submitButtonText={i18n.t('common.ok')}
             />
 					</View>
 				</View>
@@ -288,25 +287,25 @@ class CreateNation extends NavigatorComponent {
               single
               hideTags
               items={[{
-                id: Strings.createNationNoLawEnforcement,
-                name: Strings.createNationNoLawEnforcement,
+                id: i18n.t('enums.nation.lawEnforcementMechanism.no'),
+                name: i18n.t('enums.nation.lawEnforcementMechanism.no'),
               }, {
-                id: Strings.createNationIDReputationLawEnforcement,
-                name: Strings.createNationIDReputationLawEnforcement,
+                id: i18n.t('enums.nation.lawEnforcementMechanism.idReputation'),
+                name: i18n.t('enums.nation.lawEnforcementMechanism.idReputation'),
               }, {
-                id: Strings.createNationPrivateOrCooperativeSecurity,
-                name: Strings.createNationPrivateOrCooperativeSecurity,
+                id: i18n.t('enums.nation.lawEnforcementMechanism.privateOrCooperativeSecurity'),
+                name: i18n.t('enums.nation.lawEnforcementMechanism.privateOrCooperativeSecurity'),
               }, {
-                id: Strings.createNationNationStateLawEnforcement,
-                name: Strings.createNationNationStateLawEnforcement,
+                id: i18n.t('enums.nation.lawEnforcementMechanism.nationState'),
+                name: i18n.t('enums.nation.lawEnforcementMechanism.nationState'),
               }, {
-                id: Strings.createNationInternationalLawEnforcement,
-                name: Strings.createNationInternationalLawEnforcement,
+                id: i18n.t('enums.nation.lawEnforcementMechanism.international'),
+                name: i18n.t('enums.nation.lawEnforcementMechanism.international'),
               }]}
               uniqueKey="id"
               onSelectedItemsChange={(selectedItems) => this.setFieldValue('lawEnforcementMechanism', selectedItems)}
               selectedItems={this.state.lawEnforcementMechanism}
-              selectText={Strings.createNationLawEnforcementMechanism}
+              selectText={i18n.t('screens.createNation.prompt.lawEnforcementMechanism')}
               onChangeInput={ (text)=> console.log(text)}
               tagRemoveIconColor="#CCC"
               tagBorderColor="#CCC"
@@ -314,7 +313,7 @@ class CreateNation extends NavigatorComponent {
               itemTextColor={Colors.textSecondary}
               displayKey="name"
               submitButtonColor={Colors.panelBoxColor}
-              submitButtonText={Strings.ok}
+              submitButtonText={i18n.t('common.ok')}
             />
 					</View>
 				</View>
@@ -324,28 +323,28 @@ class CreateNation extends NavigatorComponent {
               single
               hideTags
               items={[{
-                id: Strings.createNationOtherTypeOfGovernment,
-                name: Strings.createNationOtherTypeOfGovernment,
+                id: i18n.t('enums.nation.governmentType.other'),
+                name: i18n.t('enums.nation.governmentType.other'),
               }, {
-                id: Strings.createNationHolocracy,
-                name: Strings.createNationHolocracy,
+                id: i18n.t('enums.nation.governmentType.holocracy'),
+                name: i18n.t('enums.nation.governmentType.holocracy'),
               }, {
-                id: Strings.createNationDemocracy,
-                name: Strings.createNationDemocracy,
+                id: i18n.t('enums.nation.governmentType.democracy'),
+                name: i18n.t('enums.nation.governmentType.democracy'),
               }, {
-                id: Strings.createNationAutocracy,
-                name: Strings.createNationAutocracy,
+                id: i18n.t('enums.nation.governmentType.autocracy'),
+                name: i18n.t('enums.nation.governmentType.autocracy'),
               }, {
-                id: Strings.createNationMeritocracy,
-                name: Strings.createNationMeritocracy,
+                id: i18n.t('enums.nation.governmentType.meritocracy'),
+                name: i18n.t('enums.nation.governmentType.meritocracy'),
               }, {
-                id: Strings.createNationTheocracy,
-                name: Strings.createNationTheocracy,
+                id: i18n.t('enums.nation.governmentType.theocracy'),
+                name: i18n.t('enums.nation.governmentType.theocracy'),
               }]}
               uniqueKey="id"
               onSelectedItemsChange={(selectedItems) => this.setFieldValue('decisionMakingProcess', selectedItems)}
               selectedItems={this.state.decisionMakingProcess}
-              selectText={Strings.createNationTypeOfGovernment}
+              selectText={i18n.t('screens.createNation.prompt.typeOfGovernment')}
               onChangeInput={ (text)=> console.log(text)}
               tagRemoveIconColor="#CCC"
               tagBorderColor="#CCC"
@@ -353,7 +352,7 @@ class CreateNation extends NavigatorComponent {
               itemTextColor={Colors.textSecondary}
               displayKey="name"
               submitButtonColor={Colors.panelBoxColor}
-              submitButtonText={Strings.ok}
+              submitButtonText={i18n.t('common.ok')}
             />
 					</View>
 				</View>
@@ -362,26 +361,26 @@ class CreateNation extends NavigatorComponent {
             <MultiSelect
               hideTags
               items={[{
-                id: Strings.createNationsLegalServices,
-                name: Strings.createNationsLegalServices,
+                id: i18n.t('enums.nation.services.legal'),
+                name: i18n.t('enums.nation.services.legal'),
               }, {
-                id: Strings.createNationsInsuranceServices,
-                name: Strings.createNationsInsuranceServices,
+                id: i18n.t('enums.nation.services.insurance'),
+                name: i18n.t('enums.nation.services.insurance'),
               }, {
-                id: Strings.createNationsSocialServices,
-                name: Strings.createNationsSocialServices,
+                id: i18n.t('enums.nation.services.social'),
+                name: i18n.t('enums.nation.services.social'),
               }, {
-                id: Strings.createNationsDiplomaticServices,
-                name: Strings.createNationsDiplomaticServices,
+                id: i18n.t('enums.nation.services.diplomatic'),
+                name: i18n.t('enums.nation.services.diplomatic'),
               }, {
-                id: Strings.createNationsPhysicalServices,
-                name: Strings.createNationsPhysicalServices,
+                id: i18n.t('enums.nation.services.physical'),
+                name: i18n.t('enums.nation.services.physical'),
               }]}
               uniqueKey="id"
               ref={(component) => this.multiGovernanceService = component}
               onSelectedItemsChange={(selectedItems) => this.setFieldValue('governanceService', selectedItems)}
               selectedItems={this.state.governanceService}
-              selectText={Strings.createNationsServicesOffered}
+              selectText={i18n.t('screens.createNation.prompt.servicesOffered')}
               onChangeInput={ (text)=> console.log(text)}
               tagRemoveIconColor="#CCC"
               tagBorderColor="#CCC"
@@ -389,27 +388,24 @@ class CreateNation extends NavigatorComponent {
               itemTextColor={Colors.textSecondary}
               displayKey="name"
               submitButtonColor={Colors.panelBoxColor}
-              submitButtonText={Strings.ok}
+              submitButtonText={i18n.t('common.ok')}
             />
             <View>
               {this.multiGovernanceService && this.multiGovernanceService.getSelectedItemsExt(this.state.governanceService)}
             </View>
 					</View>
 				</View>
-				<Text style={styles.footnote}>
-					{Strings.governmentalStructureFootnote}
-				</Text>
 			</PanelView>
 		)
 	}
 	
 	_buildOptionsView () {
 		return (
-			<PanelView style={styles.messageView} title={Strings.options} icon=' '>
+			<PanelView style={styles.messageView} title={i18n.t('common.options')} icon=' '>
 				<View style={styles.formRow}>
 					<View style={styles.fieldsContainer}>
 						<SwitchLabeled
-							label={Strings.createNationsSeekingDiplomaticRecognition}
+							label={i18n.t('screens.createNation.prompt.diplomaticRecognition')}
 							value={this.state.diplomaticRecognition}
 							onValueChange={(value) => this.setFieldValue('diplomaticRecognition', value)}
 						/>
@@ -418,7 +414,7 @@ class CreateNation extends NavigatorComponent {
 				<View style={styles.formRow}>
 					<View style={styles.fieldsContainer}>
 						<SwitchLabeled
-							label={Strings.createNationsNonCitizensMayUseGovernanceServices}
+							label={i18n.t('screens.createNation.prompt.servicesUsage')}
 							value={this.state.nonCitizenUse}
 							onValueChange={(value) => this.setFieldValue('nonCitizenUse', value)}
 						/>
@@ -427,31 +423,12 @@ class CreateNation extends NavigatorComponent {
 				<View style={styles.formRow}>
 					<View style={styles.fieldsContainer}>
 						<SwitchLabeled
-							label={Strings.createNationForProfitNation}
+							label={i18n.t('screens.createNation.prompt.profit')}
 							value={this.state.profit}
 							onValueChange={(value) => this.setFieldValue('profit', value)}
 						/>
 					</View>
 				</View>
-			</PanelView>
-		)
-	}
-	
-	_buildFeesView () {
-		return (
-			<PanelView style={styles.messageView} title={Strings.fees} icon=' '>
-				<View style={styles.formRow}>
-					<View style={styles.fieldsContainer}>
-						<SwitchLabeled
-							label={'I agree to pay ' + Strings.showCurrency('ETH', 0.001, true) + ' to create this nation.'}
-							value={this.state.agreeFees}
-							onValueChange={(value) => this.setFieldValue('agreeFees', value)}
-						/>
-					</View>
-				</View>
-				<Text style={styles.footnote}>
-					We will deduct the fee from your wallet. You have {Strings.showCurrency('ETH', 1.22, true)} in your wallet.
-				</Text>
 			</PanelView>
 		)
 	}
