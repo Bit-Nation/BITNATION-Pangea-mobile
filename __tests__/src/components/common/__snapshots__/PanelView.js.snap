@@ -56,7 +56,7 @@ ShallowWrapper {
               ellipsizeMode="tail"
               style={
                 Object {
-                  "color": "white",
+                  "color": "#F5A623",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -140,7 +140,7 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "white",
+                    "color": "#F5A623",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -174,7 +174,7 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "white",
+                    "color": "#F5A623",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -202,7 +202,7 @@ ShallowWrapper {
                 "children": "Test panel title",
                 "ellipsizeMode": "tail",
                 "style": Object {
-                  "color": "white",
+                  "color": "#F5A623",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -318,7 +318,7 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "white",
+                    "color": "#F5A623",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -402,7 +402,7 @@ ShallowWrapper {
                   ellipsizeMode="tail"
                   style={
                     Object {
-                      "color": "white",
+                      "color": "#F5A623",
                       "fontFamily": "Roboto",
                       "fontSize": 22,
                       "fontWeight": "bold",
@@ -436,7 +436,7 @@ ShallowWrapper {
                   ellipsizeMode="tail"
                   style={
                     Object {
-                      "color": "white",
+                      "color": "#F5A623",
                       "fontFamily": "Roboto",
                       "fontSize": 22,
                       "fontWeight": "bold",
@@ -464,7 +464,7 @@ ShallowWrapper {
                   "children": "Test panel title",
                   "ellipsizeMode": "tail",
                   "style": Object {
-                    "color": "white",
+                    "color": "#F5A623",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -605,7 +605,7 @@ ShallowWrapper {
               ellipsizeMode="tail"
               style={
                 Object {
-                  "color": "white",
+                  "color": "#F5A623",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -703,7 +703,7 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "white",
+                    "color": "#F5A623",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -737,7 +737,7 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "white",
+                    "color": "#F5A623",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -765,7 +765,7 @@ ShallowWrapper {
                 "children": "Test panel title",
                 "ellipsizeMode": "tail",
                 "style": Object {
-                  "color": "white",
+                  "color": "#F5A623",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -910,7 +910,7 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "white",
+                    "color": "#F5A623",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -1008,7 +1008,7 @@ ShallowWrapper {
                   ellipsizeMode="tail"
                   style={
                     Object {
-                      "color": "white",
+                      "color": "#F5A623",
                       "fontFamily": "Roboto",
                       "fontSize": 22,
                       "fontWeight": "bold",
@@ -1042,7 +1042,7 @@ ShallowWrapper {
                   ellipsizeMode="tail"
                   style={
                     Object {
-                      "color": "white",
+                      "color": "#F5A623",
                       "fontFamily": "Roboto",
                       "fontSize": 22,
                       "fontWeight": "bold",
@@ -1070,7 +1070,7 @@ ShallowWrapper {
                   "children": "Test panel title",
                   "ellipsizeMode": "tail",
                   "style": Object {
-                    "color": "white",
+                    "color": "#F5A623",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -1241,7 +1241,7 @@ ShallowWrapper {
               ellipsizeMode="tail"
               style={
                 Object {
-                  "color": "white",
+                  "color": "#F5A623",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -1324,7 +1324,7 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "white",
+                    "color": "#F5A623",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -1358,7 +1358,7 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "white",
+                    "color": "#F5A623",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -1386,7 +1386,7 @@ ShallowWrapper {
                 "children": "Test panel title",
                 "ellipsizeMode": "tail",
                 "style": Object {
-                  "color": "white",
+                  "color": "#F5A623",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -1496,7 +1496,7 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "white",
+                    "color": "#F5A623",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -1579,7 +1579,7 @@ ShallowWrapper {
                   ellipsizeMode="tail"
                   style={
                     Object {
-                      "color": "white",
+                      "color": "#F5A623",
                       "fontFamily": "Roboto",
                       "fontSize": 22,
                       "fontWeight": "bold",
@@ -1613,7 +1613,7 @@ ShallowWrapper {
                   ellipsizeMode="tail"
                   style={
                     Object {
-                      "color": "white",
+                      "color": "#F5A623",
                       "fontFamily": "Roboto",
                       "fontSize": 22,
                       "fontWeight": "bold",
@@ -1641,7 +1641,7 @@ ShallowWrapper {
                   "children": "Test panel title",
                   "ellipsizeMode": "tail",
                   "style": Object {
-                    "color": "white",
+                    "color": "#F5A623",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -1779,7 +1779,7 @@ ShallowWrapper {
               ellipsizeMode="tail"
               style={
                 Object {
-                  "color": "white",
+                  "color": "#F5A623",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -1892,7 +1892,7 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "white",
+                    "color": "#F5A623",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -1926,7 +1926,7 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "white",
+                    "color": "#F5A623",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -1954,7 +1954,7 @@ ShallowWrapper {
                 "children": "Test panel title",
                 "ellipsizeMode": "tail",
                 "style": Object {
-                  "color": "white",
+                  "color": "#F5A623",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -2130,7 +2130,7 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "white",
+                    "color": "#F5A623",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -2243,7 +2243,7 @@ ShallowWrapper {
                   ellipsizeMode="tail"
                   style={
                     Object {
-                      "color": "white",
+                      "color": "#F5A623",
                       "fontFamily": "Roboto",
                       "fontSize": 22,
                       "fontWeight": "bold",
@@ -2277,7 +2277,7 @@ ShallowWrapper {
                   ellipsizeMode="tail"
                   style={
                     Object {
-                      "color": "white",
+                      "color": "#F5A623",
                       "fontFamily": "Roboto",
                       "fontSize": 22,
                       "fontWeight": "bold",
@@ -2305,7 +2305,7 @@ ShallowWrapper {
                   "children": "Test panel title",
                   "ellipsizeMode": "tail",
                   "style": Object {
-                    "color": "white",
+                    "color": "#F5A623",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -2509,7 +2509,7 @@ ShallowWrapper {
               ellipsizeMode="tail"
               style={
                 Object {
-                  "color": "white",
+                  "color": "#F5A623",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -2622,7 +2622,7 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "white",
+                    "color": "#F5A623",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -2656,7 +2656,7 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "white",
+                    "color": "#F5A623",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -2684,7 +2684,7 @@ ShallowWrapper {
                 "children": "Test panel title",
                 "ellipsizeMode": "tail",
                 "style": Object {
-                  "color": "white",
+                  "color": "#F5A623",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -2860,7 +2860,7 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "white",
+                    "color": "#F5A623",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -2973,7 +2973,7 @@ ShallowWrapper {
                   ellipsizeMode="tail"
                   style={
                     Object {
-                      "color": "white",
+                      "color": "#F5A623",
                       "fontFamily": "Roboto",
                       "fontSize": 22,
                       "fontWeight": "bold",
@@ -3007,7 +3007,7 @@ ShallowWrapper {
                   ellipsizeMode="tail"
                   style={
                     Object {
-                      "color": "white",
+                      "color": "#F5A623",
                       "fontFamily": "Roboto",
                       "fontSize": 22,
                       "fontWeight": "bold",
@@ -3035,7 +3035,7 @@ ShallowWrapper {
                   "children": "Test panel title",
                   "ellipsizeMode": "tail",
                   "style": Object {
-                    "color": "white",
+                    "color": "#F5A623",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -3238,7 +3238,7 @@ ShallowWrapper {
               ellipsizeMode="tail"
               style={
                 Object {
-                  "color": "white",
+                  "color": "#F5A623",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -3345,7 +3345,7 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "white",
+                    "color": "#F5A623",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -3379,7 +3379,7 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "white",
+                    "color": "#F5A623",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -3407,7 +3407,7 @@ ShallowWrapper {
                 "children": "Test panel title",
                 "ellipsizeMode": "tail",
                 "style": Object {
-                  "color": "white",
+                  "color": "#F5A623",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -3567,7 +3567,7 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "white",
+                    "color": "#F5A623",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -3674,7 +3674,7 @@ ShallowWrapper {
                   ellipsizeMode="tail"
                   style={
                     Object {
-                      "color": "white",
+                      "color": "#F5A623",
                       "fontFamily": "Roboto",
                       "fontSize": 22,
                       "fontWeight": "bold",
@@ -3708,7 +3708,7 @@ ShallowWrapper {
                   ellipsizeMode="tail"
                   style={
                     Object {
-                      "color": "white",
+                      "color": "#F5A623",
                       "fontFamily": "Roboto",
                       "fontSize": 22,
                       "fontWeight": "bold",
@@ -3736,7 +3736,7 @@ ShallowWrapper {
                   "children": "Test panel title",
                   "ellipsizeMode": "tail",
                   "style": Object {
-                    "color": "white",
+                    "color": "#F5A623",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
