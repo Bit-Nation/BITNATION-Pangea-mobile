@@ -80,6 +80,7 @@ class CreateNation extends NavigatorComponent {
 	}
 
 	_saveShouldBeEnabled () {
+    console.log('nationFieldChange: ENTER _saveShouldBeEnabled');
 		let enabled = true;
 		if (!this.props.nationName || this.props.nationName == '')
 			enabled = false;
@@ -96,12 +97,13 @@ class CreateNation extends NavigatorComponent {
 		if (!this.props.governanceService || !this.props.governanceService.length > 0)
 			enabled = false;
 		this._setNavigationButtons(enabled);
+    this._buildBottomBar(enabled, false);
 	}
 
 	setFieldValue(field, value) {
-		//this.props.onNationChange()
-		this.props.onNationChange(field, value)
     this._saveShouldBeEnabled
+    console.log('nationFieldChange: GOTO _saveShouldBeEnabled');
+		this.props.onNationChange(field, value)
 	}
 	
 	render () {
@@ -127,27 +129,27 @@ class CreateNation extends NavigatorComponent {
 						{/*{this._buildBottomView()}*/}
 					</ScrollView>
 				</View>
-        {this._buildBottomBar()}
+        {this._buildBottomBar(false, false)}
 				{this.props.inProgress ? <Loading/> : null}
 			</View>
 		)
 	}
 
 // * New fake bottom Tab Bar / 0.3.2 Sprint design
-	_buildBottomBar() {
+	_buildBottomBar(isModified, canSubmit ) {
 		return (
 			<View style={ styles.fakeBottomBar }>
         <NationActionButton iconSource={AssetsImage.Actions.chat}
                             title={i18n.t('screens.createNation.reset')} disable={false}
-                            onPress= { () => this._resetForm()} />
+                            onPress= { this.props.onResetNationCreation } />
         <NationActionButton iconSource={AssetsImage.Actions.chat}
-                            title={i18n.t('screens.createNation.save')} disable={false}
-                            onPress= { () => this._saveForm()}/>
+                            title={i18n.t('screens.createNation.save')} disable={!isModified}
+                            onPress= { this.props.onResetNationCreation }/>
         <NationActionButton iconSource={AssetsImage.Actions.chat}
-                            title={i18n.t('screens.createNation.delete')} disable={false}
+                            title={i18n.t('screens.createNation.delete')} disable={!isModified}
                             onPress= { () => this._deleteForm()}/>
         <NationActionButton iconSource={AssetsImage.Actions.chat}
-                            title={i18n.t('screens.createNation.submit')} disable={false}
+                            title={i18n.t('screens.createNation.submit')} disable={!canSubmit}
                             onPress= { () => this._submitForm()}/>
 			</View>
 		)
@@ -445,54 +447,6 @@ class CreateNation extends NavigatorComponent {
 			</View>
 		)
 	}
-
-	_resetForm () {
-    Alert.alert(
-      i18n.t('alerts.resetForm.title'),
-      i18n.t('alerts.resetForm.subtitle'),
-      [
-        {text: i18n.t('alerts.resetForm.cancel'), style: 'cancel'},
-        {text: i18n.t('alerts.resetForm.confirm'), onPress: () => this.props.onResetNationCreation},
-      ],
-      { cancelable: false },
-    )
-	}
-
-  _deleteForm () {
-    Alert.alert(
-      i18n.t('alerts.deleteForm.title'),
-      i18n.t('alerts.deleteForm.subtitle'),
-      [
-        {text: i18n.t('alerts.deleteForm.cancel'), style: 'cancel'},
-        {text: i18n.t('alerts.deleteForm.confirm'), onPress: () => this.props.onResetNationCreation},
-      ],
-      { cancelable: false },
-    )
-  }
-
-  _saveForm () {
-    Alert.alert(
-      i18n.t('alerts.saveForm.title'),
-      i18n.t('alerts.saveForm.subtitle'),
-      [
-        {text: i18n.t('alerts.saveForm.cancel'), style: 'cancel'},
-        {text: i18n.t('alerts.saveForm.confirm'), onPress: () => this.props.onResetNationCreation},
-      ],
-      { cancelable: false },
-    )
-  }
-
-  _submitForm () {
-    Alert.alert(
-      i18n.t('alerts.submitForm.title'),
-      i18n.t('alerts.submitForm.subtitle'),
-      [
-        {text: i18n.t('alerts.submitForm.cancel'), style: 'cancel'},
-        {text: i18n.t('alerts.submitForm.confirm'), onPress: () => this.props.onResetNationCreation},
-      ],
-      { cancelable: false },
-    )
-  }
 }
 
 CreateNation.propTypes = {
