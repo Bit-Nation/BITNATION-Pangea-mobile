@@ -3,7 +3,7 @@
  * Copyright(c) 2017 Mustapha Babatunde Oluwaleke
  * MIT Licensed
  */
-import Colors from '../../global/Colors'
+import Colors from '../../global/colors'
 
 export const colorPack = {
   primary: '#00A5FF',

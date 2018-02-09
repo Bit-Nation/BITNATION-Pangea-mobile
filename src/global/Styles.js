@@ -1,5 +1,5 @@
 import { MediaQueryStyleSheet } from 'react-native-responsive'
-import Colors from './Colors'
+import Colors from './colors'
 import { normalizer, normalWidthMargin } from '../utils/normalizer'
 
 // ========================================
