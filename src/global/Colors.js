@@ -6,11 +6,23 @@ import { Platform } from 'react-native';
 
 // ========================================
 // BASE COLORS
+
+// Grayish
 const BitnationColor = '#4A90E2';         /* rgb(74, 144, 226) */
 const BitnationDarkColor = "#1B395C";    /* rgb(27, 57, 92) */
-const BitnationLightColor = "#72A4DE";   /* rgb(114, 164, 222) */
-const BitnationVeryLightColor = "#BCDCFF"; /* rgb(188, 220, 255) */
+const BitnationLightColor = "#C0C0C0";   /* rgb(114, 164, 222) */
+const BitnationVeryLightColor = "#FFFFFF"; /* rgb(188, 220, 255) */
 const BitnationBackgroundColor = '#3e9eff'; /* rgb(62, 158, 255) */
+
+// Highlight Color
+const BitnationHighlightColor = '#F5A623'; /* rgb(245, 166, 35) */
+
+// Blue Color
+//const BitnationColor = '#4A90E2';         /* rgb(74, 144, 226) */
+//const BitnationDarkColor = "#1B395C";    /* rgb(27, 57, 92) */
+//const BitnationLightColor = "#72A4DE";   /* rgb(114, 164, 222) */
+//const BitnationVeryLightColor = "#BCDCFF"; /* rgb(188, 220, 255) */
+//const BitnationBackgroundColor = '#3e9eff'; /* rgb(62, 158, 255) */
 
 // ========================================
 // FUNCTIONS
@@ -72,14 +84,14 @@ export default {
 	BitnationLightColor: BitnationLightColor,
 	BitnationVeryLightColor: BitnationVeryLightColor,
 	BitnationBackgroundColor: BitnationBackgroundColor,
+	BitnationHighlightColor: BitnationHighlightColor,
 	
-	// Colors for common Text Styles, e.g. titles on screens
-	titleColor: '#4A90E2',
+	// Colors for common Text Styles
+	// e.g. very large titles on screens
+	titleColor: BitnationHighlightColor,
 	
 	
-	
-	
-	// Navigation Bar (for the app)
+	// Tab Bar (Navigation Bar for the app)
 	tabBarBackgroundColor: BitnationBackgroundColor,
 	tabBarSelectedLabelColor: 'white',
 	tabBarSelectedButtonColor: 'white',
@@ -92,6 +104,9 @@ export default {
 	// Segmented Control
 	activeTabStyle: BitnationBackgroundColor,
 	tabTextStyle: BitnationBackgroundColor,
+	
+	// Panel background color
+	panelView: 'rgba(255,255,255,0.2)',
 	
 	
 	// Other Custom Bitnation Colors

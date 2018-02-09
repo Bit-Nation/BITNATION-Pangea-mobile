@@ -81,8 +81,10 @@ class EditProfile extends NavigatorComponent {
 					{/* SCROLLING PANELS FOR DATA ENTRY */}
 					<KeyboardAwareScrollView style={styles.scrollView}>
 						{/* TITLE OF SCREEN */}
-						<View style={styles.titleBarLarge}>
-							<Text style={styles.largeTitle}>{i18n.t('screens.profile.edit.editPhoto')}</Text>
+						<View style={styles.titleContainer}>
+							<View style={styles.titleBarLarge}>
+								<Text style={styles.largeTitle}>{i18n.t('screens.profile.edit.editPhoto')}</Text>
+							</View>
 						</View>
 						
 						{this._buildPicturePanel()}
@@ -120,7 +122,7 @@ class EditProfile extends NavigatorComponent {
 	// ========================================
 	_buildProfileForm () {
 		return (
-			<PanelView style={styles.messageView} title={i18n.t('screens.profile.edit.personalInformation')}>
+			<PanelView style={styles.panelViewTransparent} title={i18n.t('screens.profile.edit.personalInformation')}>
 				<View style={styles.formRow}>
 					<View style={styles.fieldsContainer}>
 						<View style={styles.formRow}>

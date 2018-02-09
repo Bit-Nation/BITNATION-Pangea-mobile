@@ -28,26 +28,27 @@ class NationDetailsScreen extends Component {
 			<View style={styles.screenContainer}>
 				<BackgroundImage/>
 				<FakeNavigationBar navBarHidden=''/>
-				<View style={styles.layoutMargin}>
+				<View style={styles.titleContainer}>
 					<View style={styles.titleBarLarge}>
 						<Text
 							style={styles.largeTitle}>{nation.nationName}</Text>
 						{console.log('joined nation: ', nation.joined)}
 					</View>
 				</View>
+
 				{this._buildTabBar(nation.joined, nation.idInSmartContract >= 0)}
 				<View style={styles.bodyContainer}>
 					<ScrollView style={styles.scrollView}>
 						{/* Fake Map panel */}
 						{/*
-            <PanelView style={[styles.messageView]}>
+            <PanelView style={[styles.panelView]}>
               <Image source={AssetsImage.Placeholder.map} resizeMode='contain'/>
             </PanelView>
 */}
 
 						{/* Fake Achievements Panel */}
 						{/*
-            <PanelView style={[styles.messageView]}>
+            <PanelView style={[styles.panelView]}>
               <Image source={AssetsImage.Placeholder.achievements} resizeMode='contain'/>
             </PanelView>
 */}
@@ -83,12 +84,12 @@ class NationDetailsScreen extends Component {
 
 	_buildAboutView (nation) {
 		return (
-			<PanelView style={styles.messageView}
+			<PanelView style={styles.panelView}
 			             title={i18n.t('screens.nationDetails.aboutInfo', { name: nation.nationName })}>
 				<Text style={styles.panelSubTitle}>
-					Description:
+					{i18n.t('screens.nationDetails.description') + ':'}
 				</Text>
-				<Text style={styles.panelBody}>
+				<Text style={styles.body}>
 					{nation.nationDescription ? nation.nationDescription + '\n': ''}
 					{i18n.t('screens.nationDetails.locationInfo', {
 						name: nation.nationName,
@@ -109,9 +110,9 @@ class NationDetailsScreen extends Component {
 
 	_buildGovernmentalStructureView (nation) {
 		return (
-			<PanelView style={styles.messageView}
+			<PanelView style={styles.panelView}
 			             title={i18n.t('common.governmentalStructure')}>
-				<Text style={styles.panelBody}>
+				<Text style={styles.body}>
           {i18n.t('screens.nationDetails.legalSystemInfo', {
           	name: nation.nationName,
             code: nation.nationCode
@@ -131,8 +132,8 @@ class NationDetailsScreen extends Component {
 
 	_buildFactsView (nation) {
 		return (
-			<PanelView style={styles.messageView} title={i18n.t('screens.nationDetails.funFacts')}>
-				<Text style={styles.panelBody}>
+			<PanelView style={styles.panelView} title={i18n.t('screens.nationDetails.funFacts')}>
+				<Text style={styles.body}>
 					{nation.diplomaticRecognition ? (i18n.t('screens.nationDetails.diplomaticRecognitionInfo', { name: nation.nationName }) + '\n\n') : ''}
 
           {i18n.t('screens.nationDetails.serviceUsageInfo', {
