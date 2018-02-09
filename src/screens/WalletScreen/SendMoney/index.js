@@ -12,7 +12,7 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 
 import Images from '../../../global/AssetsImages';
-import Colors from '../../../global/Colors';
+import Colors from '../../../global/colors';
 import styles from './styles';
 import Button from '../../../components/common/Button';
 import { Container, Header, Content, StyleProvider } from 'native-base';
