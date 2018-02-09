@@ -12,11 +12,14 @@ export function* updateProfile() {
       id: 0,
       name: user.editingUser.name ? user.editingUser.name.trim() : '',
       location: user.editingUser.location ? user.editingUser.location.trim() : '',
+      // @todo Remove latitude once it becomes not a required field in Pangea libs.
+      latitude: '',
+      longitude: '',
       description: '',
       version: '0',
       image: user.editingUser.avatar ? user.editingUser.avatar : '',
     };
-    //let result = yield call(pangeaLib.profile.profile.setProfile, profile);
+    let result = yield call(pangeaLib.profile.profile.setProfile, profile);
     yield put({ type: DONE_USER_EDITING });
   } catch (e) {
     yield put({ type: CANCEL_USER_EDITING });
