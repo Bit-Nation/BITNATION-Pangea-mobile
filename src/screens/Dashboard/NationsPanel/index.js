@@ -24,23 +24,32 @@ export default class NationsPanel extends Component {
   render() {
     const { style } = this.props;
     const newestNations = _.take(_.sortBy(this.props.nations, nation => -nation.id), NEWEST_NATION_COUNT);
+    const nationsCountStrings = i18n.t('screens.dashboard.nationsPanel.nationsCount', { count: this.props.nations.length });
+    console.log(nationsCountStrings);
 
     return (
       <View style={style}>
         <PanelView style={styles.flex}
-                   childrenContainerStyle={styles.flex}
+                   childrenContainerStyle={styles.childrenContainer}
                    title={i18n.t('screens.dashboard.nationsPanel.title')}>
-          <View>
-            <Text style={styles.headline}>
-              {i18n.t('screens.dashboard.nationsPanel.nationsCount', { count: this.props.nations.length })}
+          <View style={styles.nationsCountContainer}>
+            <Text style={styles.callout}>
+              {nationsCountStrings.prefix}
+              <Text style={styles.nationsCountNumber}>
+                {nationsCountStrings.main}
+              </Text>
+              {nationsCountStrings.suffix}
             </Text>
           </View>
-          <NationListHeader title={i18n.t('screens.dashboard.nationsPanel.newNations')}/>
+          <View style={styles.nationsHeader}>
+            <Text style={styles.nationsHeaderText}>{i18n.t('screens.dashboard.nationsPanel.newNations')}</Text>
+          </View>
           <FlatList
             renderItem={(item) => {
-              console.log(item);
               const nation = item.item;
-              return (<NationListItem text={nation.nationName} onPress={this.props.onSelectNation} id={nation.id}/>);
+              return (<NationListItem text={nation.nationName}
+                                      onPress={this.props.onSelectNation}
+                                      id={nation.id}/>);
             }}
             keyExtractor={(item) => item.id}
             data={newestNations}

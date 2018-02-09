@@ -144,7 +144,11 @@
       },
       "nationsPanel": {
         "title": "$t(common.nations)",
-        "nationsCount": "{{count}} in Pangea",
+        "nationsCount": {
+          "prefix": "",
+          "main": "{{count}}",
+          "suffix": " in Pangea"
+        },
         "newNations": "NEW NATIONS"
       },
       "warningPanel": {
