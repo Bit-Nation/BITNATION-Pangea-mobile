@@ -4,13 +4,9 @@ import {
   RESET_NATION,
   NATION_FIELD_CHANGE,
   CANCEL_NATION_CREATE,
-  NATION_CREATE,
-  EDITING_NATION_FIELD,
-} from '../actions/createNation';
+} from '../actions/modifyNation';
 
-export const initialState = {
-  editingNation: null,
-  initialNation: null,
+export const emptyNation = {
   nationName: '',
   nationDescription: '',
   exists: false,
@@ -23,37 +19,40 @@ export const initialState = {
   diplomaticRecognition: false,
   governanceService: [],
   nonCitizenUse: false,
-  agreeFees: false
+  agreeFees: false,
+};
+
+export const initialState = {
+  editingNation: null,
+  initialNation: null,
 };
 
 export default function (state = initialState, action) {
-  switch(action.type) {
+  switch (action.type) {
     case START_NATION_CREATION:
-      return initialState;
+      return {
+        ...state,
+        initialNation: emptyNation,
+        editingNation: emptyNation,
+      };
     case RESET_NATION:
       return {
-        initialState,
+        ...state,
+        editingNation: state.initialNation,
       };
     case NATION_FIELD_CHANGE:
       return {
         ...state,
-        [action.field]:action.payload,
+        editingNation: {
+          ...state.editingNation,
+          [action.field]: action.payload,
+        },
       };
     case CANCEL_NATION_CREATE:
       return {
         ...state,
-        creatingNation: null
-      };
-    case NATION_CREATE:
-      return {
-        ...state,
-        creatingNation: action.payload,
-        inProgress: true
-      };
-    case EDITING_NATION_FIELD:
-      return {
-        ...state,
-        editingNation: {...initialNation},
+        editingNation: null,
+        initialNation: null,
       };
   }
 

@@ -11,7 +11,7 @@ import { resolveNation } from '../../utils/nations';
 import Colors from '../../global/Colors';
 import NavigatorComponent from '../../components/common/NavigatorComponent';
 import i18n from '../../global/i18n';
-import { startNationCreation } from '../../actions/createNation';
+import { startNationCreation } from '../../actions/modifyNation';
 
 const NEW_BUTTON = 'NEW_BUTTON';
 

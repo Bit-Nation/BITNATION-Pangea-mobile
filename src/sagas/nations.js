@@ -5,7 +5,7 @@ import {
   DONE_NATION_CREATE, START_NATIONS_FETCH, DONE_FETCH_NATIONS,
   CANCEL_LOADING, REQUEST_JOIN_NATION, REQUEST_LEAVE_NATION,
 } from '../actions/nations';
-import { CANCEL_NATION_CREATE, NATION_CREATE } from '../actions/createNation';
+import { CANCEL_NATION_CREATE, NATION_CREATE } from '../actions/modifyNation';
 import { getPangeaLibrary } from '../services/container';
 import { waitConnect } from '../utils/connectivity';
 import { CONNECTION_TIMEOUT } from '../global/Constants';

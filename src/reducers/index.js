@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import profile from './profile';
 import nations from './nations';
-import createNation from './createNation';
+import modifyNation from './modifyNation';
 import wallet from './wallet';
 import key from './key';
 import testingMode from './testingMode';
@@ -9,7 +9,7 @@ import testingMode from './testingMode';
 const rootReducer = {
   profile,
   nations,
-  createNation,
+  modifyNation,
   wallet,
   key,
   testingMode,
