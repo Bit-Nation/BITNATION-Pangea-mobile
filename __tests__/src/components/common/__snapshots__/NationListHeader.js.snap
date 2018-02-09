@@ -6,7 +6,6 @@ exports[`NationListHeader renders correctly 1`] = `
     Object {
       "alignItems": "center",
       "backgroundColor": "#3a3a3a",
-      "flex": 1,
       "flexDirection": "row",
       "height": 30,
       "justifyContent": "center",

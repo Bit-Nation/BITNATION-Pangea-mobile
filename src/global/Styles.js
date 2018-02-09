@@ -185,6 +185,7 @@ const defaultTextStyles = {
 		fontSize: 16,
 		lineHeight: 21,
 		letterSpacing: 0,
+		color: Colors.BitnationLightColor,
 	},
 	
 	subhead: {
@@ -370,15 +371,14 @@ const styles = {
 	panelView: {
 		flexDirection: 'column',
 		justifyContent: 'space-between',
-		//flexShrink: 1,
 		borderRadius: 8,
 		backgroundColor: Colors.panelView,
 		marginTop: 4,
 		marginBottom: 4,
 		marginLeft: 0,
 		marginRight: 0,
-		paddingTop: 12,
-		paddingBottom: 15,
+		paddingTop: normalizer(15),
+		paddingBottom: normalizer(15),
 		paddingLeft: 15,
 		paddingRight: 15,
 	},
@@ -386,7 +386,6 @@ const styles = {
 	panelViewTransparent: {
 		flexDirection: 'column',
 		justifyContent: 'space-between',
-		//flexShrink: 1,
 		borderRadius: 8,
 		backgroundColor: 'transparent',
 		marginTop: 8,
@@ -422,7 +421,7 @@ const styles = {
 	panelTitle: {
 		...defaultTextStyles.title2,
 		fontWeight: 'bold',
-		color: Colors.white,
+		color: Colors.titleColor,
 		textAlign: 'left',
 	},
 
@@ -579,14 +578,12 @@ const styles = {
 		...defaultTextStyles.body,
 		color: 'white',
 		flex: 1,
-		marginLeft: 15,
 	},
 
   // e.g. NationListItemState Text
   listItemTextState: {
 		...defaultTextStyles.body,
 	    color: Colors.listItemTextState,
-	    flex: 1,
 	    textAlign: 'right',
 	    marginRight: 15,
 	  },
@@ -607,11 +604,11 @@ const styles = {
 		justifyContent: 'center',
 		alignItems: 'center',
 		backgroundColor: Colors.sectionListItemContainerBkgd,
+		marginLeft: 15,
 	},
 	
 	// e.g. NationListHeader
 	sectionListHeaderContainer: {
-		flex: 1,
 		flexDirection: 'row',
 		height: 30,
 		justifyContent: 'center',

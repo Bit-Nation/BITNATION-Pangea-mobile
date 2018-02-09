@@ -17,13 +17,26 @@ const styles = MediaQueryStyleSheet.create(
       marginLeft: 8,
       marginRight: 8,
     },
-    logoContainer: {
-      justifyContent: 'space-around',
-      alignItems: 'center',
+    activityPanelContainer: {
       flex: 1,
     },
-    logo: {
-      width: '40%',
-    }
+    activityPanel: {
+      flex: 1,
+    },
+    bottomContainer: {
+      flex: 2,
+      flexDirection: 'row',
+    },
+    nationsPanel: {
+      flex: 1,
+    },
+    rightContainer: {
+      marginLeft: 8,
+      flex: 1,
+    },
+    walletPanel: {},
+    warningPanel: {
+      flex: 1,
+    },
   });
 export default styles;

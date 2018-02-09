@@ -13,7 +13,7 @@ const deviceWidth = Dimensions.get('window').width;
  */
 export function normalizer (size) {
   if(deviceHeight === 568) {
-    return size / 0.65
+    return size * 0.65
   } else if(deviceHeight === 667) {
     return size
   } else if(deviceHeight === 736) {

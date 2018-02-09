@@ -135,13 +135,26 @@
     },
     "dashboard": {
       "tabTitle": "$t(tabbar.dashboard)",
+      "activityPanel": {
+        "title": "Activity"
+      },
       "walletPanel": {
         "title": "$t(common.wallet)",
         "empty": "Begin using Pangea by creating your wallet."
       },
+      "nationsPanel": {
+        "title": "$t(common.nations)",
+        "nationsCount": {
+          "prefix": "",
+          "main": "{{count}}",
+          "suffix": " in Pangea"
+        },
+        "newNations": "NEW NATIONS"
+      },
       "warningPanel": {
-        "title": "Warning",
-        "body": "Pangea is in an early development stage, use with caution and at your own risk."
+        "title": "Notice",
+        "body": "The smart contracts created by this app may be changed or upgraded in the near future.",
+        "button": "More"
       }
     },
     "chat": {
