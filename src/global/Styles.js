@@ -1,6 +1,6 @@
 import { MediaQueryStyleSheet } from 'react-native-responsive'
 import Colors from './Colors'
-import { normalizer} from '../utils/normalizer'
+import { normalizer, normalWidthMargin } from '../utils/normalizer'
 
 // ========================================
 // DEFAULT TEXT STYLES
@@ -117,12 +117,12 @@ const defaultTextStyles = {
 	// Derived from Apple Defaults (above)
 	
 	largeTitle: {
-		fontFamily: 'Source Code Pro',
+		fontFamily: 'Roboto',
 		fontWeight: 'bold',
 		fontSize: 34,
 		lineHeight: 41,
 		letterSpacing: 0,
-		color: Colors.BitnationLightColor,
+		color: Colors.BitnationHighlightColor,
 	},
 	
 	title1: {
@@ -149,6 +149,7 @@ const defaultTextStyles = {
 		fontSize: 20,
 		lineHeight: 25,
 		letterSpacing: 0,
+		color: Colors.BitnationLightColor,
 	},
 	
 	headline: {
@@ -157,6 +158,7 @@ const defaultTextStyles = {
 		fontSize: 17,
 		lineHeight: 22,
 		letterSpacing: 0,
+		color: Colors.BitnationLightColor,
 	},
 	
 	body: {
@@ -252,13 +254,20 @@ const styles = {
 		justifyContent: 'flex-start',
 		//alignItems: 'stretch',
 		alignContent: 'flex-start',
-		marginLeft: 15,
-		marginRight: 15,
+		// these narrow left/right margins are for panels, which have their own indents.
+		marginLeft: 8,
+		marginRight: 8,
+	},
+
+	// Contains a title for a screen, e.g. Nations or Wallet
+	titleContainer: {
+		marginLeft: 8,
+		marginRight: 8,
 	},
 	
 	// A block of text in the body area
 	bodyParagraph: {
-		paddingBottom: 15,
+		paddingBottom: 16,
 	},
 	
 	statusBar: {
@@ -281,6 +290,7 @@ const styles = {
 	},
 	
 	// Normal left/right margins for the body area (not navigation or status)
+	// Use for text-only views, NOT for panels (which have built-in margins)
 	layoutMargin: {
 		marginLeft: 16,
 		marginRight: 16,
@@ -308,6 +318,8 @@ const styles = {
 	titleBarLarge: {
 		height: normalizer(52),
 		alignItems: 'flex-start',
+		marginLeft: 8,
+		marginRight: 8,
 	},
 	
 	// Used as part of the body of a screen, but if the body area goes to the edges
@@ -355,30 +367,44 @@ const styles = {
 	// These don't have margin left/right, so they won't work for dashboard.
 	// Used in:  components/common/PanelView.js
 
-  panelView: {
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    flexShrink: 1,
-    borderRadius: 8,
-    backgroundColor: Colors.shadeOfBitnationColor(0.2),
-    marginTop: 8,
-    marginBottom: 8,
-    marginLeft: 0,
-    marginRight: 0,
-    paddingTop: 12,
-    paddingBottom: 15,
-    paddingLeft: 15,
-    paddingRight: 15,
-  },
-
+	panelView: {
+		flexDirection: 'column',
+		justifyContent: 'space-between',
+		flexShrink: 1,
+		borderRadius: 8,
+		backgroundColor: Colors.panelView,
+		marginTop: 4,
+		marginBottom: 4,
+		marginLeft: 0,
+		marginRight: 0,
+		paddingTop: 12,
+		paddingBottom: 15,
+		paddingLeft: 15,
+		paddingRight: 15,
+	},
+	
+	panelViewTransparent: {
+		flexDirection: 'column',
+		justifyContent: 'space-between',
+		flexShrink: 1,
+		borderRadius: 8,
+		backgroundColor: 'transparent',
+		marginTop: 8,
+		marginBottom: 8,
+		marginLeft: 0,
+		marginRight: 0,
+		paddingTop: 8,
+	},
+	
 	// Panel Title Container for the Title and Icon, below
 	panelTitleRowContainer: {
-    flexDirection: 'row',
-    backgroundColor: 'transparent',
-    paddingBottom: 4,
-    borderBottomColor: Colors.BlueGrey,
-    borderStyle: 'solid',
-    borderBottomWidth: 1,
+	    flexDirection: 'row',
+	    backgroundColor: 'transparent',
+	    paddingBottom: 8,
+		// Line below the title:
+		//borderBottomColor: Colors.BlueGrey,
+		//borderStyle: 'solid',
+		//borderBottomWidth: 1,
 	},
 
   panelTitleContainer: {
@@ -400,13 +426,10 @@ const styles = {
 		textAlign: 'left',
 	},
 
-  // Text style for the Panel Title
+  // Text style for the sub-titles in Panels
   panelSubTitle: {
-    ...defaultTextStyles.title2,
-    fontWeight: 'bold',
-    color: Colors.white,
+    ...defaultTextStyles.title3,
     textAlign: 'left',
-		fontSize: 18,
   },
 
 	// Text style for the Panel Icon
@@ -422,7 +445,7 @@ const styles = {
 	
 	panelBody: {
 		...defaultTextStyles.body,
-		color: Colors.BitnationLightColor,
+		//color: 'white',
 	},
 	
 	messageAdditionalInfoContainer: {},
@@ -437,17 +460,17 @@ const styles = {
 	// Forms
 	// Example: Profile Edit Screen
 	
+	formRow: {
+		flexDirection: 'row',
+		alignItems: 'center',
+	},
+	
 	// Holds an input field in a form, e.g. Profile Edit
 	fieldsContainer: {
 		alignItems: 'stretch',
 		flex: 1,
 	},
 	
-	formRow: {
-		flexDirection: 'row',
-		alignItems: 'center',
-	},
-
 	// Labels on forms, e.g. for a switch
 	formLabelText: {
 		...defaultTextStyles.body,
@@ -463,9 +486,11 @@ const styles = {
 	
 	// TextInput component
 	textInput: {
-		backgroundColor: Colors.shadeOfBitnationLightColor(0.2),
+		...defaultTextStyles.body,
+		
+		//backgroundColor: Colors.shadeOfBitnationLightColor(0.2),
 		borderColor: Colors.borderColor,
-		borderWidth: 1,
+		borderBottomWidth: 1,
 		flex: 1,
 		marginTop: 4,
 		marginBottom: 4,
@@ -476,7 +501,7 @@ const styles = {
 		paddingTop: 6,
 		paddingBottom: 6,
 		// font settings
-		color: Colors.placeholderTextColor,
+		//color: Colors.placeholderTextColor,
 	},
 	
 	// text inside of text input fields prompting user to enter information,
@@ -487,16 +512,17 @@ const styles = {
 	},
 	
 	editItemLabel: {
+		...defaultTextStyles.body,
 		backgroundColor: 'transparent',
 		color: Colors.titleColor,
-		fontSize: 15,
+		fontWeight: 'bold',
 		margin: 5,
 	},
 	
 	labelText: {
+		...defaultTextStyles.body,
 		backgroundColor: 'transparent',
 		color: Colors.titleColor,
-		fontSize: 17,
 	},
 	
 	dropDown: {
@@ -514,13 +540,14 @@ const styles = {
 	},
 	
 	dropDownTextDefault: {
-		color: Colors.white,
-		fontSize: 17,
+		...defaultTextStyles.body,
+		//color: Colors.BitnationLightColor,
+		//fontSize: 17,
 	},
 	
 	dropDownTextList: {
-		color: Colors.primary_blue,
-		fontSize: 17,
+		...defaultTextStyles.body,
+		color: Colors.BitnationHighlightColor,
 	},
 	
 	switchContainer: {
@@ -549,12 +576,22 @@ const styles = {
 	
 	// e.g. NationListItem Text
 	listItemText: {
+		...defaultTextStyles.body,
 		color: 'white',
 		flex: 1,
 		marginLeft: 15,
 	},
+
+  // e.g. NationListItemState Text
+  listItemTextState: {
+		...defaultTextStyles.body,
+	    color: Colors.listItemTextState,
+	    flex: 1,
+	    textAlign: 'right',
+	    marginRight: 15,
+	  },
 	
-	// e.g. NationListItem
+	// e.g. NationListItem, a row in a list of Nations
 	sectionListTouchable: {
 		flex: 1,
 		flexDirection: 'row',
@@ -569,7 +606,7 @@ const styles = {
 		height: 44,
 		justifyContent: 'center',
 		alignItems: 'center',
-		backgroundColor: 'rgba(255,255,255,0.1)',
+		backgroundColor: Colors.sectionListItemContainerBkgd,
 	},
 	
 	// e.g. NationListHeader
@@ -578,26 +615,41 @@ const styles = {
 		height: 30,
 		justifyContent: 'center',
 		alignItems: 'center',
-		backgroundColor: Colors.LightGrey,
-		opacity: 0.5,
+		backgroundColor: Colors.sectionListHeaderContainer,
+		//opacity: 0.5,
 	},
 	
 	sectionListHeaderText: {
+		...defaultTextStyles.body,
 		flex: 1,
 		marginLeft: 15,
-		color: '#6D6D72',
-		fontSize: 13,
+		color: Colors.sectionListHeaderText,
 	},
-	
+
+	sectionListSeparator: {
+		flex: 1,
+		marginLeft: 10,
+		height:1,
+		backgroundColor: Colors.sectionListSeparator,
+	},
+
+	sectionListDisclosure: {
+		marginRight:15,
+		width: 8,
+		height: 15,
+	},
+
 	// ========================================
 	// Tab Bar with text
 	segmentedControlContainer: {
 		height: 44,
+		marginLeft: normalWidthMargin(),
+		marginRight: normalWidthMargin(),
 		flexDirection: 'row',
 		alignItems: 'center',
 	},
 	segmentedControlContainerBackground: {
-		backgroundColor: 'rgba(27,57,92,0.50)',
+		backgroundColor: 'transparent',
 	},
 	tabsContainerStyle: {
 		backgroundColor: 'transparent',
@@ -607,10 +659,10 @@ const styles = {
 	},
 	tabTextStyle: {
 		backgroundColor: 'transparent',
-		color: Colors.white,
+		color: Colors.tabTextStyle,
 	},
 	activeTabStyle: {
-		backgroundColor: Colors.shadeOfBitnationLightColor(0.8),
+		backgroundColor: Colors.activeTabStyle,
 	},
 	
 	// ========================================
@@ -640,7 +692,7 @@ const styles = {
 	messageTitle: {
 		fontSize: 22,
 		color: Colors.titleColor,
-		letterSpacing: -0.89,
+		letterSpacing: 0,
 		lineHeight: 28,
 		textAlign: 'center',
 	},

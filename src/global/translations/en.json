@@ -1,4 +1,11 @@
 {
+  "tabbar": {
+    "nations": "NATIONS",
+    "chat": "CHAT",
+    "dashboard": "DASHBOARD",
+    "wallet": "WALLET",
+    "profile": "PROFILE"
+  },
   "common": {
     "send": "Send",
     "receive": "Receive",
@@ -127,7 +134,7 @@
       }
     },
     "dashboard": {
-      "tabTitle": "Dashboard",
+      "tabTitle": "$t(tabbar.dashboard)",
       "activityPanel": {
         "title": "Activity"
       },
@@ -148,17 +155,28 @@
     },
     "chat": {
       "title": "$t(common.chat)",
-      "tabTitle": "$t(common.chat)"
+      "tabTitle": "$t(tabbar.chat)"
     },
     "nations": {
+      "toolbar": {
+        "chat": "CHAT",
+        "map": "MAP",
+        "join": "JOIN",
+        "submit": "SUBMIT",
+        "delete": "DELETE",
+        "reset": "RESET",
+        "save": "SAVE",
+        "leave": "LEAVE"
+      },
       "title": "$t(common.nations)",
-      "tabTitle": "$t(common.nations)",
+      "tabTitle": "$t(tabbar.nations)",
       "allNations": "All Nations",
       "myNations": "My Nations"
     },
     "nationDetails": {
       "title": "Nation",
       "aboutInfo": "About {{name}}",
+      "description": "Description",
       "locationInfo": "{{name}} is a {{locationType}} nation",
       "legalSystemInfo": "{{name}} uses {{code}} as its legal system.",
       "lawEnforcementInfo": "The laws are enforced with {{lawEnforcementMechanism}}.",
@@ -195,7 +213,7 @@
     },
     "wallet": {
       "title": "$t(common.wallet)",
-      "tabTitle": "$t(common.wallet)",
+      "tabTitle": "$t(tabbar.wallet)",
       "empty": {
         "createWallet": "Create a Wallet",
         "restoreWallet": "Restore a Wallet",
@@ -212,8 +230,8 @@
       }
     },
     "profile": {
-      "title": "Profile & Settings",
-      "tabTitle": "Profile",
+      "title": "Profile",
+      "tabTitle": "$t(tabbar.profile)",
       "empty": {
         "createProfilePanel": {
           "title": "Become a world citizen.",
@@ -228,8 +246,6 @@
         "personalInformation": "Personal Information",
         "name": "Name",
         "location": "Location ($t(common.optional))",
-        "latitude": "Latitude ($t(common.optional))",
-        "longitude": "Longitude ($t(common.optional))",
         "editPhoto": "$t(common.edit)",
         "editPhotoActionSheet": {
           "title": "Edit your profile picture.",

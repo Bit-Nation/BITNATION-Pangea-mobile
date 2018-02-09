@@ -8,29 +8,37 @@ const eth = require('../assets/images/ethereum_logo.png');
 const qrColor = require('../assets/images/QR_icon.png');
 const bitLogo = require('../assets/images/bitnation_logo.png');
 const bitLogoBig = require('../assets/images/bitnation_logo_big.png');
+
+// Photos and Graphics for Introduction Screens
 const build = require('../assets/images/Chrysler_Building.png');
 const monroe = require('../assets/images/monroe.png');
 const fern = require('../assets/images/fern.png');
 const moon = require('../assets/images/moon.png');
+
 const privateKeyDemo = require('../assets/images/privateKeyDemo.png');
 
-const dashboardTabIcon = require('../assets/images/dashboardTabIcon.png');
-const chatTabIcon = require('../assets/images/chatTabIcon.png');
-const nationsTabIcon = require('../assets/images/nationsTabIcon.png');
-const walletTabIcon = require('../assets/images/walletTabIcon.png');
-const profileTabIcon = require('../assets/images/profileTabIcon.png');
+// Main Navigation Icons
+const dashboardTabIcon = require('../assets/images/tabIconDashboard.png');
+const chatTabIcon = require('../assets/images/tabIconChat.png');
+const nationsTabIcon = require('../assets/images/tabIconNations.png');
+const walletTabIcon = require('../assets/images/tabIconWallet.png');
+const profileTabIcon = require('../assets/images/tabIconProfile.png');
 const QR = require('../assets/images/QR.png');
 
+// DEMO placeholders
 const holonsPlaceholder = require('../assets/images/holonsPlaceholder.png');
 const achievementsPlaceholder = require('../assets/images/achievementsPlaceholder.png');
 const mapPlaceholder = require('../assets/images/mapPlaceholder.png');
 const demoPlaceholder = require('../assets/images/demoImage.png');
 const avatarPlaceholder = require('../assets/images/avatarPlaceholder.png');
 
-const chatActionIcon = require('../assets/images/chatIcon.png');
-const mapActionIcon = require('../assets/images/mapIcon.png');
-const joinActionIcon = require('../assets/images/joinIcon.png');
-const leaveActionIcon = require('../assets/images/leaveIcon.png');
+// Tool Bar Icons
+const chatActionIcon = require('../assets/images/toolbarIconChat.png');
+const mapActionIcon = require('../assets/images/toolbarIconMap.png');
+const joinActionIcon = require('../assets/images/toolbarIconJoin.png');
+const leaveActionIcon = require('../assets/images/toolbarIconLeave.png');
+
+const disclosureRowIcon = require('../assets/images/disclosure.png');
 
 const Images = {
   logo,
@@ -48,6 +56,7 @@ const Images = {
   bitLogoBig,
   QR,
   privateKeyDemo,
+  disclosureRowIcon,
   TabIcons: {
     dashboard: dashboardTabIcon,
     chat: chatTabIcon,

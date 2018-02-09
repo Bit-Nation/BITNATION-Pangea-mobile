@@ -1,23 +1,20 @@
 import { call, put, select, takeEvery } from 'redux-saga/effects';
 import type { ProfileType } from 'BITNATION-Pangea-libs/src/database/schemata';
+import { getPangeaLibrary } from '../services/container';
+import { REQUEST_PROFILE_UPDATE, DONE_USER_EDITING, SET_USER_PROFILE, REQUEST_GET_PROFILE, CANCEL_USER_EDITING } from '../actions/profile';
 
-import PangeaContainer from '../services/container';
-import { REQUEST_PROFILE_UPDATE, DONE_USER_EDITING, SET_USER_PROFILE, REQUEST_GET_PROFILE } from '../actions/profile';
-
-function getPangeaLibrary() {
-  return PangeaContainer;
-}
-
-function* updateProfile() {
+export const getProfileState = state => state.profile
+export function* updateProfile() {
   try {
     let pangeaLib = yield call(getPangeaLibrary);
-    let user = yield select(state => state.profile);
+    let user = yield select(getProfileState);
     const profile: ProfileType = {
       id: 0,
       name: user.editingUser.name ? user.editingUser.name.trim() : '',
       location: user.editingUser.location ? user.editingUser.location.trim() : '',
-      latitude: user.editingUser.latitude ? user.editingUser.latitude : '',
-      longitude: user.editingUser.longitude ? user.editingUser.longitude : '',
+      // @todo Remove latitude once it becomes not a required field in Pangea libs.
+      latitude: '',
+      longitude: '',
       description: '',
       version: '0',
       image: user.editingUser.avatar ? user.editingUser.avatar : '',
@@ -25,11 +22,12 @@ function* updateProfile() {
     let result = yield call(pangeaLib.profile.profile.setProfile, profile);
     yield put({ type: DONE_USER_EDITING });
   } catch (e) {
+    yield put({ type: CANCEL_USER_EDITING });
     console.log('Update profile error: ', e);
   }
 }
 
-function* getProfile() {
+export function* getProfile() {
   try {
     let pangeaLib = yield call(getPangeaLibrary);
     let profile = yield call(pangeaLib.profile.profile.getProfile);
@@ -39,6 +37,7 @@ function* getProfile() {
     };
     yield put({ type: SET_USER_PROFILE, user: user });
   } catch (e) {
+    yield put({ type: SET_USER_PROFILE, user: null });
     console.log('Get profile error: ', e);
   }
 }

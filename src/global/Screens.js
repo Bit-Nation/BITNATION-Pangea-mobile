@@ -3,12 +3,13 @@ import Colors from './Colors';
 import { Platform } from 'react-native';
 import i18n from './i18n';
 
+// Styles for Navigation Bar
 export const tabsStyle = {
-  tabBarButtonColor: Colors.white,
-  tabBarLabelColor: Colors.BitnationLightColor,
-  tabBarSelectedLabelColor: Colors.white,
-  tabBarSelectedButtonColor: Colors.white,
-  tabBarBackgroundColor: 'rgba(17,39,110,0.9)',
+  tabBarButtonColor: Colors.tabBarButtonColor,
+  tabBarLabelColor: Colors.tabBarLabelColor,
+  tabBarSelectedLabelColor: Colors.tabBarSelectedLabelColor,
+  tabBarSelectedButtonColor: Colors.tabBarSelectedButtonColor,
+  tabBarBackgroundColor: Colors.tabBarBackgroundColor,
 };
 
 export const appStyle = {
@@ -22,6 +23,7 @@ export const androidNavigationButtons = Platform.OS === 'android' ? {
   }],
 } : {};
 
+// Navigation Bar Style
 export const navigatorStyle = {
   statusBarTextColorScheme: 'light',
   statusBarColor: Platform.OS === 'ios' ? 'transparent' : 'black',
@@ -52,6 +54,12 @@ const baseKeyScreen = {
   overrideBackPress: true,
 };
 
+/*
+  label : this text string appears in the navigation bar at the bottom of the screen
+  icon  : icon for navigation bar
+  title : ???
+ */
+
 const Screens = {
   SPLASH_SCREEN: {
     screen: 'Pangea.SplashScreen',
@@ -74,7 +82,7 @@ const Screens = {
     screen: 'Pangea.NationsScreen',
     label: i18n.t('screens.nations.tabTitle'),
     icon: AssetsImages.TabIcons.nations,
-    title: i18n.t('screens.nations.title'),
+    title: '',
     navigatorStyle,
   },
   NATION_DETAILS_SCREEN: {
