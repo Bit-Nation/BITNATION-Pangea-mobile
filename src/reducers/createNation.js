@@ -5,9 +5,12 @@ import {
   NATION_FIELD_CHANGE,
   CANCEL_NATION_CREATE,
   NATION_CREATE,
+  EDITING_NATION_FIELD,
 } from '../actions/createNation';
 
 export const initialState = {
+  editingNation: null,
+  initialNation: null,
   nationName: '',
   nationDescription: '',
   exists: false,
@@ -46,6 +49,11 @@ export default function (state = initialState, action) {
         ...state,
         creatingNation: action.payload,
         inProgress: true
+      };
+    case EDITING_NATION_FIELD:
+      return {
+        ...state,
+        editingNation: {...initialNation},
       };
   }
 

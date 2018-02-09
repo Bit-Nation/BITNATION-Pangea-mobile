@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import NationCreateScreen from './NationCreateScreen';
-import { resetNationCreation, nationFieldChange, cancelNationCreation, createNation } from '../../actions/createNation';
+import { resetNationCreation, nationFieldChange,
+  cancelNationCreation, createNation, editingNation } from '../../actions/createNation';
 import i18n from "../../global/i18n";
 import {Alert} from "react-native";
 
@@ -76,8 +77,10 @@ const mapDispatchToProps = dispatch => ({
     );
   },
   onNationChange(field, data) {
-    console.log('nationFieldChange: ');
     dispatch(nationFieldChange(field, data));
+  },
+  onEditingNation(field, data) {
+    dispatch(editingNation(data));
   },
 });
 
