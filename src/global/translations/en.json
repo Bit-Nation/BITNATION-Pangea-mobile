@@ -167,6 +167,7 @@
     "nationDetails": {
       "title": "Nation",
       "aboutInfo": "About {{name}}",
+      "description": "Description",
       "locationInfo": "{{name}} is a {{locationType}} nation",
       "legalSystemInfo": "{{name}} uses {{code}} as its legal system.",
       "lawEnforcementInfo": "The laws are enforced with {{lawEnforcementMechanism}}.",
