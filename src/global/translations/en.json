@@ -237,8 +237,6 @@
         "personalInformation": "Personal Information",
         "name": "Name",
         "location": "Location ($t(common.optional))",
-        "latitude": "Latitude ($t(common.optional))",
-        "longitude": "Longitude ($t(common.optional))",
         "editPhoto": "$t(common.edit)",
         "editPhotoActionSheet": {
           "title": "Edit your profile picture.",

@@ -204,32 +204,6 @@ class EditProfile extends NavigatorComponent {
               keyboardType='default'
             />
           </View>
-
-          <View style={styles.row}>
-            <Text style={styles.labelText}>Lat.</Text>
-            <TextInput
-              value={this.props.editingUser.latitude}
-              onChangeText={(text) => this._onChange('latitude', text)}
-              style={styles.textInput}
-              keyboardType='numeric'
-              placeholderTextColor={Colors.placeholderTextColor}
-              placeholder = "(Optional)"
-            />
-          </View>
-
-          <View style={styles.row}>
-            <Text style={styles.labelText}>Long.</Text>
-            <TextInput
-              value={this.props.editingUser.longitude}
-              onChangeText={(text) => this._onChange('longitude', text)}
-              style={styles.textInput}
-              keyboardType='numeric'
-              placeholderTextColor={Colors.placeholderTextColor}
-              placeholder = "(Optional)"
-            />
-          </View>
-
-
         </View>
         <ActionSheet ref={(c) => {
           this.actionSheet = c;
