@@ -90,9 +90,12 @@ class ProfileScreen extends NavigatorComponent {
         <Image source={avatarSource} style={styles.avatarLarge}/>
         <Text style={styles.nameText}>{user.name.trim()}</Text>
         <Text style={styles.infoText}>{user.location.trim()}</Text>
+/*
+// DO NOT USE LATITUDE & LONGITUDE
         <Text style={styles.infoText}>
           {!_.isEmpty(user.latitude) && !_.isEmpty(user.longitude) && (user.latitude + ', ' + user.longitude)}
         </Text>
+*/
         <Text style={styles.ethAddress}>{user.ethAddress}</Text>
       </View>
     );

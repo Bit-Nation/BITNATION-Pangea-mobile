@@ -154,17 +154,19 @@ class CreateNation extends NavigatorComponent {
 	
 	_buildIntroPanel () {
 		return (
-			<View style={styles.bodyParagraph}>
-				<Text style={styles.body}>
-          {i18n.t('screens.createNation.introduction')}
-				</Text>
+			<View style={styles.bodyContainer}>
+				<View style={styles.bodyParagraph}>
+					<Text style={styles.body}>
+	          {i18n.t('screens.createNation.introduction')}
+					</Text>
+				</View>
 			</View>
 		)
 	}
 	
 	_buildCoreNationView () {
 		return (
-			<PanelView style={styles.messageView}>
+			<PanelView style={styles.panelViewTransparent}>
 				<View style={styles.formRow}>
 					<View style={styles.fieldsContainer}>
 						<View style={styles.formRow}>
@@ -210,7 +212,7 @@ class CreateNation extends NavigatorComponent {
               onChangeInput={ (text)=> console.log(text)}
               tagRemoveIconColor="#CCC"
               tagBorderColor="#CCC"
-              tagTextColor="#CCC"
+              tagTextColor={Colors.textSecondary}
               itemTextColor={Colors.textSecondary}
               displayKey="name"
               submitButtonColor={Colors.panelBoxColor}
@@ -237,7 +239,7 @@ class CreateNation extends NavigatorComponent {
 	
 	_buildGovernmentalView () {
 		return (
-			<PanelView style={styles.messageView}
+			<PanelView style={styles.panelViewTransparent}
 			             title={i18n.t('common.governmentalStructure')} icon=' '>
 				<View style={styles.formRow}>
 					<View style={styles.fieldsContainer}>
@@ -401,7 +403,7 @@ class CreateNation extends NavigatorComponent {
 	
 	_buildOptionsView () {
 		return (
-			<PanelView style={styles.messageView} title={i18n.t('common.options')} icon=' '>
+			<PanelView style={styles.panelViewTransparent} title={i18n.t('common.options')} icon=' '>
 				<View style={styles.formRow}>
 					<View style={styles.fieldsContainer}>
 						<SwitchLabeled

@@ -133,7 +133,7 @@ class EditProfile extends NavigatorComponent {
 									text)}
 								style={styles.textInput}
 								placeholder={i18n.t('screens.profile.edit.name')}
-								placeholderTextColor='rgba(255,255,255,0.3)'
+								placeholderTextColor={Colors.placeholderTextColor}
 								keyboardType='default'
 							/>
 						</View>
@@ -145,32 +145,8 @@ class EditProfile extends NavigatorComponent {
 									text)}
 								style={styles.textInput}
 								placeholder={i18n.t('screens.profile.edit.location')}
-								placeholderTextColor='rgba(255,255,255,0.3)'
+								placeholderTextColor={Colors.placeholderTextColor}
 								keyboardType='default'
-							/>
-						</View>
-						<View style={styles.formRow}>
-							<TextInput
-								value={this.props.editingUser.latitude}
-								onChangeText={(text) => this._onChange(
-									'latitude',
-									text)}
-								style={styles.textInput}
-								keyboardType='numeric'
-								placeholderTextColor='rgba(255,255,255,0.3)'
-								placeholder={i18n.t('screens.profile.edit.latitude')}
-							/>
-						</View>
-						<View style={styles.formRow}>
-							<TextInput
-								value={this.props.editingUser.longitude}
-								onChangeText={(text) => this._onChange(
-									'longitude',
-									text)}
-								style={styles.textInput}
-								keyboardType='numeric'
-								placeholderTextColor='rgba(255,255,255,0.3)'
-								placeholder={i18n.t('screens.profile.edit.longitude')}
 							/>
 						</View>
 					</View>
@@ -213,7 +189,7 @@ class EditProfile extends NavigatorComponent {
               onChangeText={(text) => this._onChange('name', text)}
               style={styles.textInput}
               placeholder='Name'
-              placeholderTextColor='rgba(255,255,255,0.3)'
+              placeholderTextColor={Colors.placeholderTextColor}
               keyboardType='default'
             />
           </View>
@@ -224,7 +200,7 @@ class EditProfile extends NavigatorComponent {
               onChangeText={(text) => this._onChange('location', text)}
               style={styles.textInput}
               placeholder='Location (Optional)'
-              placeholderTextColor='rgba(255,255,255,0.3)'
+              placeholderTextColor={Colors.placeholderTextColor}
               keyboardType='default'
             />
           </View>
@@ -236,7 +212,7 @@ class EditProfile extends NavigatorComponent {
               onChangeText={(text) => this._onChange('latitude', text)}
               style={styles.textInput}
               keyboardType='numeric'
-              placeholderTextColor='rgba(255,255,255,0.3)'
+              placeholderTextColor={Colors.placeholderTextColor}
               placeholder = "(Optional)"
             />
           </View>
@@ -248,7 +224,7 @@ class EditProfile extends NavigatorComponent {
               onChangeText={(text) => this._onChange('longitude', text)}
               style={styles.textInput}
               keyboardType='numeric'
-              placeholderTextColor='rgba(255,255,255,0.3)'
+              placeholderTextColor={Colors.placeholderTextColor}
               placeholder = "(Optional)"
             />
           </View>

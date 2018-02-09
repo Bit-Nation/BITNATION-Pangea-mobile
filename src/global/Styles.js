@@ -267,7 +267,7 @@ const styles = {
 	
 	// A block of text in the body area
 	bodyParagraph: {
-		paddingBottom: 15,
+		paddingBottom: 16,
 	},
 	
 	statusBar: {
@@ -460,17 +460,17 @@ const styles = {
 	// Forms
 	// Example: Profile Edit Screen
 	
+	formRow: {
+		flexDirection: 'row',
+		alignItems: 'center',
+	},
+	
 	// Holds an input field in a form, e.g. Profile Edit
 	fieldsContainer: {
 		alignItems: 'stretch',
 		flex: 1,
 	},
 	
-	formRow: {
-		flexDirection: 'row',
-		alignItems: 'center',
-	},
-
 	// Labels on forms, e.g. for a switch
 	formLabelText: {
 		...defaultTextStyles.body,
@@ -486,9 +486,11 @@ const styles = {
 	
 	// TextInput component
 	textInput: {
-		backgroundColor: Colors.shadeOfBitnationLightColor(0.2),
+		...defaultTextStyles.body,
+		
+		//backgroundColor: Colors.shadeOfBitnationLightColor(0.2),
 		borderColor: Colors.borderColor,
-		borderWidth: 1,
+		borderBottomWidth: 1,
 		flex: 1,
 		marginTop: 4,
 		marginBottom: 4,
@@ -499,7 +501,7 @@ const styles = {
 		paddingTop: 6,
 		paddingBottom: 6,
 		// font settings
-		color: Colors.placeholderTextColor,
+		//color: Colors.placeholderTextColor,
 	},
 	
 	// text inside of text input fields prompting user to enter information,
@@ -538,13 +540,14 @@ const styles = {
 	},
 	
 	dropDownTextDefault: {
-		color: Colors.white,
-		fontSize: 17,
+		...defaultTextStyles.body,
+		//color: Colors.BitnationLightColor,
+		//fontSize: 17,
 	},
 	
 	dropDownTextList: {
-		color: Colors.primary_blue,
-		fontSize: 17,
+		...defaultTextStyles.body,
+		color: Colors.BitnationHighlightColor,
 	},
 	
 	switchContainer: {

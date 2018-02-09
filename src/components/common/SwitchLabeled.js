@@ -21,7 +21,7 @@ export default class SwitchLabeled extends Component {
 			<View style={styles.formRow}>
 				<View style={styles.switchContainer}>
 					<Switch style={styles.switchObject}
-					        onTintColor={Colors.BitnationColor}
+					        onTintColor={Colors.BitnationHighlightColor}
 					        onValueChange={onValueChange}
 					        value={this.props.value}
 					/>

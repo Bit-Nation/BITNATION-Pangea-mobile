@@ -108,25 +108,22 @@ export default {
 	// Panel background color
 	panelView: 'rgba(255,255,255,0.2)',
 	
-	
 	// Other Custom Bitnation Colors
 	BlueGrey: '#607D8B',
 	BlueMed: '#72A4DE',
-	
 	BlueGrayMed: '#6D6D72',
 	
-	
+	// FORMS
 	buttonColor: '#1C497E',
 	disabledButtonColor: '#37393C',
 	disabledButtonTitleColor: '#5F6D7D',
-	borderColor: '#275284',
+	// border of a text field
+	borderColor: shadeOf(BitnationLightColor, 0.4),
 	navigationButtonColor: Platform.OS === 'ios' ? '#007AFF' : '#FFFFFF',
-	
-	// FORMS
-	placeholderTextColor: 'rgba(255,255,255,0.4)',
+
+	placeholderTextColor: shadeOf(BitnationVeryLightColor, 0.4),
 	
 	textColor: '#444A64',
-	textPlaceholder: '#9B9B9B',
 	textPrimary: '#4A4A4A',
 	textSecondary: '#9094A3',
 	textLight: '#DADCE5',
@@ -155,7 +152,7 @@ export default {
 	
 	// Document Colors
 	panelBoxColor: '#1b395c',
-	instuctionTextColor: '#72a4de',
+	instructionTextColor: '#72a4de',
 	navButtonTextColor: '#007aff',
 	disabledBoxColor: '#bcdcff',
 	disabledTextColor: '#275284',
