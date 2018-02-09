@@ -29,7 +29,7 @@ export default class ActivityPanel extends Component {
             renderItem={(item) => {
               const message = item.item;
               const messageText = message.interpret ? i18n.t(message.msg) : message.msg;
-              return (<Text style={styles.body}>{messageText}</Text>);
+              return (<Text style={styles.listItemText}>{messageText}</Text>);
             }}
             keyExtractor={(item) => item.id}
             data={this.props.messages}

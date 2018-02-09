@@ -61,11 +61,12 @@ class Dashboard extends Component {
                            style={styles.walletPanel}/>
               <PanelView
                 title={i18n.t('screens.dashboard.warningPanel.title')}
-                body={i18n.t('screens.dashboard.warningPanel.body')}
                 buttonTitle={i18n.t('screens.dashboard.warningPanel.button')}
                 onButtonClick={this._onSelectMore}
                 style={styles.warningPanel}
-              />
+              >
+                <Text style={styles.footnote}>{i18n.t('screens.dashboard.warningPanel.body')}</Text>
+              </PanelView>
             </View>
           </View>
         </View>

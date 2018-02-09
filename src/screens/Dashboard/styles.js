@@ -24,7 +24,6 @@ const styles = MediaQueryStyleSheet.create(
       flex: 1,
     },
     bottomContainer: {
-      marginTop: 8,
       flex: 2,
       flexDirection: 'row',
     },
@@ -38,7 +37,6 @@ const styles = MediaQueryStyleSheet.create(
     walletPanel: {},
     warningPanel: {
       flex: 1,
-      marginTop: 8,
     },
   });
 export default styles;
