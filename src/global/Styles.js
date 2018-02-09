@@ -1,3 +1,13 @@
+/*
+========================================
+
+	GLOBAL STYLES
+
+========================================
+ */
+
+
+
 import { MediaQueryStyleSheet } from 'react-native-responsive'
 import Colors from './colors'
 import { normalizer, normalWidthMargin } from '../utils/normalizer'
@@ -6,224 +16,7 @@ import { normalizer, normalWidthMargin } from '../utils/normalizer'
 // DEFAULT TEXT STYLES
 // ========================================
 
-const defaultTextStyles = {
-
-	// ========================================
-	// Default Text Styles
-	// From Apple Human Interface Guidelines
-	// https://developer.apple.com/ios/human-interface-guidelines/visual-design/typography/
-	
-	// Apple Defaults (Do not change):
-	/*
-	largeTitle: {
-	  fontFamily: 'SF Pro Text',
-	  fontWeight: 'bold',
-	  fontSize: 34,
-	  lineHeight: 41,
-	  letterSpacing: 11,
-	},
- 
-	title1: {
-	  fontFamily: 'SF Pro Text',
-	  fontWeight: 'bold',
-	  fontSize: 28,
-	  lineHeight: 34,
-	  letterSpacing: 13,
-	},
- 
-	title2: {
-	  fontFamily: 'SF Pro Text',
-	  fontWeight: 'normal',
-	  fontSize: 22,
-	  lineHeight: 28,
-	  letterSpacing: 16,
-	},
- 
- 
-	title3: {
-	  fontFamily: 'SF Pro Text',
-	  fontWeight: 'normal',
-	  fontSize: 20,
-	  lineHeight: 25,
-	  letterSpacing: 19,
-	},
- 
- 
-	headline: {
-	  fontFamily: 'SF Pro Text',
-	  fontWeight: 'bold',
-	  fontSize: 17,
-	  lineHeight: 22,
-	  letterSpacing: -24,
-	},
- 
- 
-	body: {
-	  fontFamily: 'SF Pro Text',
-	  fontWeight: 'normal',
-	  fontSize: 17,
-	  lineHeight: 22,
-	  letterSpacing: -24,
-	},
- 
- 
-	callout: {
-	  fontFamily: 'SF Pro Text',
-	  fontWeight: 'normal',
-	  fontSize: 16,
-	  lineHeight: 21,
-	  letterSpacing: -20,
-	},
- 
- 
-	subhead: {
-	  fontFamily: 'SF Pro Text',
-	  fontWeight: 'normal',
-	  fontSize: 15,
-	  lineHeight: 20,
-	  letterSpacing: -16,
-	},
- 
- 
-	footnote: {
-	  fontFamily: 'SF Pro Text',
-	  fontWeight: 'normal',
-	  fontSize: 13,
-	  lineHeight: 18,
-	  letterSpacing: -6,
-	},
- 
- 
-	caption1: {
-	  fontFamily: 'SF Pro Text',
-	  fontWeight: 'normal',
-	  fontSize: 12,
-	  lineHeight: 16,
-	  letterSpacing: 0,
-	},
- 
- 
-	caption2: {
-	  fontFamily: 'SF Pro Text',
-	  fontWeight: 'normal',
-	  fontSize: 11,
-	  lineHeight: 13,
-	  letterSpacing: 6,
-	},
-	*/
-	
-	// ========================================
-	// Bitnation App Default Text Styles
-	// Derived from Apple Defaults (above)
-	
-	largeTitle: {
-		fontFamily: 'Roboto',
-		fontWeight: 'bold',
-		fontSize: 34,
-		lineHeight: 41,
-		letterSpacing: 0,
-		color: Colors.BitnationHighlightColor,
-	},
-	
-	title1: {
-		fontFamily: 'Roboto',
-		fontWeight: 'bold',
-		fontSize: 28,
-		lineHeight: 34,
-		letterSpacing: 0,
-		color: Colors.BitnationLightColor,
-	},
-	
-	title2: {
-		fontFamily: 'Roboto',
-		fontWeight: 'normal',
-		fontSize: 22,
-		lineHeight: 28,
-		letterSpacing: 0,
-		color: Colors.BitnationLightColor,
-	},
-	
-	title3: {
-		fontFamily: 'Roboto',
-		fontWeight: 'normal',
-		fontSize: 20,
-		lineHeight: 25,
-		letterSpacing: 0,
-		color: Colors.BitnationLightColor,
-	},
-	
-	headline: {
-		fontFamily: 'Roboto',
-		fontWeight: 'bold',
-		fontSize: 17,
-		lineHeight: 22,
-		letterSpacing: 0,
-		color: Colors.BitnationLightColor,
-	},
-	
-	body: {
-		fontFamily: 'Roboto',
-		fontWeight: 'normal',
-		fontSize: 17,
-		lineHeight: 22,
-		letterSpacing: 0,
-		color: Colors.BitnationLightColor,
-	},
-	
-	bodyBold: {
-		fontFamily: 'Roboto',
-		fontWeight: 'bold',
-		fontSize: 17,
-		lineHeight: 22,
-		letterSpacing: 0,
-		color: Colors.BitnationLightColor,
-	},
-	
-	callout: {
-		fontFamily: 'Roboto',
-		fontWeight: 'normal',
-		fontSize: 16,
-		lineHeight: 21,
-		letterSpacing: 0,
-		color: Colors.BitnationLightColor,
-	},
-	
-	subhead: {
-		fontFamily: 'Roboto',
-		fontWeight: 'normal',
-		fontSize: 15,
-		lineHeight: 20,
-		letterSpacing: 0,
-	},
-	
-	footnote: {
-		fontFamily: 'Roboto',
-		fontWeight: 'normal',
-		fontSize: 13,
-		lineHeight: 18,
-		letterSpacing: 0,
-		color: Colors.BitnationLightColor,
-	},
-	
-	caption1: {
-		fontFamily: 'Roboto',
-		fontWeight: 'normal',
-		fontSize: 12,
-		lineHeight: 16,
-		letterSpacing: 0,
-		color: Colors.BitnationLightColor,
-	},
-	
-	caption2: {
-		fontFamily: 'Roboto',
-		fontWeight: 'normal',
-		fontSize: 11,
-		lineHeight: 13,
-		letterSpacing: 0,
-		color: Colors.BitnationLightColor,
-	},
-	
-}
+import defaultTextStyles from './styles/defaultTextStyles'
 
 // ========================================
 // MAIN STYLES
@@ -249,6 +42,7 @@ const styles = {
 	},
 	
 	// Container for the main area, below navigation but above the bottom tab bar (if existing)
+	// Used for wallet, nation create, etc.
 	bodyContainer: {
 		flex: 1,
 		flexDirection: 'column',
@@ -259,7 +53,21 @@ const styles = {
 		marginLeft: 8,
 		marginRight: 8,
 	},
-
+	
+	// Container for a grid of panels (or a mosaic).
+	// Similar to bodyContainer but we stretch fill all space
+	// Used for dashboard
+	gridContainer: {
+		flexDirection: 'column',
+		justifyContent: 'flex-start',
+		alignItems: 'stretch',
+		alignContent: 'flex-start',
+		flex: 1,
+		// these narrow left/right margins are for panels, which have their own indents.
+		marginLeft: 8,
+		marginRight: 8,
+	},
+	
 	// Contains a title for a screen, e.g. Nations or Wallet
 	titleContainer: {
 		marginLeft: 8,
