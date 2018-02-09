@@ -371,7 +371,6 @@ const styles = {
 	panelView: {
 		flexDirection: 'column',
 		justifyContent: 'space-between',
-		flexShrink: 1,
 		borderRadius: 8,
 		backgroundColor: Colors.panelView,
 		marginTop: 4,
@@ -387,7 +386,6 @@ const styles = {
 	panelViewTransparent: {
 		flexDirection: 'column',
 		justifyContent: 'space-between',
-		flexShrink: 1,
 		borderRadius: 8,
 		backgroundColor: 'transparent',
 		marginTop: 8,
