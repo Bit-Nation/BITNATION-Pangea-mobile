@@ -22,7 +22,7 @@ export default class NationListItem extends Component {
             {this.props.text}
           </Text>
           <Text style={styles.listItemTextState}>
-            Draft
+            {this.props.status}
           </Text>
           <Image source={AssetsImages.disclosureRowIcon} style={styles.sectionListDisclosure}/>
         </TouchableOpacity>
