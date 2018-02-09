@@ -100,6 +100,13 @@ class CreateNation extends NavigatorComponent {
     this._buildBottomBar(enabled, false);
 	}
 
+  componentWillReceiveProps(nextProps) {
+    //const saveWasEnabled = this._saveShouldBeEnabled(this.props);
+    //const saveWillBeEnabled = this._saveShouldBeEnabled(nextProps);
+    console.log('componentWillReceiveProps: ENTER ');
+    this._buildBottomBar(true, false);
+  };
+
 	setFieldValue(field, value) {
     this._saveShouldBeEnabled
     console.log('nationFieldChange: GOTO _saveShouldBeEnabled');
@@ -137,21 +144,22 @@ class CreateNation extends NavigatorComponent {
 
 // * New fake bottom Tab Bar / 0.3.2 Sprint design
 	_buildBottomBar(isModified, canSubmit ) {
+    console.log('_buildBottomBar: ENTER ');
 		return (
-			<View style={ styles.fakeBottomBar }>
+      <View style={styles.fakeBottomBar}>
         <NationActionButton iconSource={AssetsImage.Actions.chat}
                             title={i18n.t('screens.createNation.reset')} disable={false}
-                            onPress= { this.props.onResetNationCreation } />
+                            onPress={this.props.onResetNationCreation}/>
         <NationActionButton iconSource={AssetsImage.Actions.chat}
                             title={i18n.t('screens.createNation.save')} disable={!isModified}
-                            onPress= { this.props.onResetNationCreation }/>
+                            onPress={this.props.onResetNationCreation}/>
         <NationActionButton iconSource={AssetsImage.Actions.chat}
                             title={i18n.t('screens.createNation.delete')} disable={!isModified}
-                            onPress= { () => this._deleteForm()}/>
+                            onPress={() => this._deleteForm()}/>
         <NationActionButton iconSource={AssetsImage.Actions.chat}
                             title={i18n.t('screens.createNation.submit')} disable={!canSubmit}
-                            onPress= { () => this._submitForm()}/>
-			</View>
+                            onPress={() => this._submitForm()}/>
+      </View>
 		)
 	}
 	
