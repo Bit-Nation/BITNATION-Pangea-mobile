@@ -14,7 +14,7 @@ import {
 export const ALL_NATIONS = 0;
 export const MY_NATIONS = 1;
 
-const initialState = {
+export const initialState = {
   nations: [],
   myNations: [],
   searchString: null,
@@ -40,7 +40,8 @@ export default function (state = initialState, action) {
     case CANCEL_NATION_CREATE:
       return {
         ...state,
-        creatingNation: null
+        creatingNation: null,
+        inProgress: false
       };
     case NATION_CREATE:
       return {
