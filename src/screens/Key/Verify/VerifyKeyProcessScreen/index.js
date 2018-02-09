@@ -19,7 +19,7 @@ import {
 import KeyBaseScreen from '../../KeyBaseScreen';
 import Button from '../../../../components/common/Button';
 import { changeEnteredMnemonic, removePrivateKey, validateEnteredMnemonic } from '../../../../actions/key';
-import Colors from '../../../../global/Colors';
+import Colors from '../../../../global/colors';
 import BodyParagraphs from '../../../../components/common/BodyParagraphs';
 import i18n from '../../../../global/i18n';
 
