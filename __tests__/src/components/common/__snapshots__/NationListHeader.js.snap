@@ -5,12 +5,11 @@ exports[`NationListHeader renders correctly 1`] = `
   style={
     Object {
       "alignItems": "center",
-      "backgroundColor": "#EEEEEE",
+      "backgroundColor": "#3a3a3a",
       "flex": 1,
       "flexDirection": "row",
       "height": 30,
       "justifyContent": "center",
-      "opacity": 0.5,
     }
   }
 >
@@ -20,9 +19,13 @@ exports[`NationListHeader renders correctly 1`] = `
     ellipsizeMode="tail"
     style={
       Object {
-        "color": "#6D6D72",
+        "color": "white",
         "flex": 1,
-        "fontSize": 13,
+        "fontFamily": "Roboto",
+        "fontSize": 17,
+        "fontWeight": "normal",
+        "letterSpacing": 0,
+        "lineHeight": 22,
         "marginLeft": 15,
       }
     }
