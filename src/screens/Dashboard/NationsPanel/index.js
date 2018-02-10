@@ -12,7 +12,7 @@ import PanelView from '../../../components/common/PanelView'
 import i18n from '../../../global/i18n'
 import NationListItem from '../../../components/common/NationListItem'
 import NationListHeader from '../../../components/common/NationListHeader'
-import GlobalStyles from '../../../global/Styles'
+//import GlobalStyles from '../../../global/Styles'
 
 const NEWEST_NATION_COUNT = 5
 
@@ -53,6 +53,7 @@ export default class NationsPanel extends Component {
 							renderItem={(item) => {
 								const nation = item.item
 								return (<NationListItem text={nation.nationName}
+								                        textStyle={styles.nationsListText}
 								                        onPress={this.props.onSelectNation}
 								                        id={nation.id}/>)
 							}}
