@@ -113,14 +113,14 @@
     "deleteForm": {
       "title": "Delete Draft",
       "subtitle": "Delete this draft nation?",
-      "confirm": "$t(common.ok)",
+      "delete": "Delete",
       "cancel": "$t(common.cancel)"
     },
     "saveForm": {
       "title": "Save Draft",
       "subtitle": "This draft nation has been saved to your device.",
-      "confirm": "$t(common.continue)",
-      "cancel": "$t(common.cancel)"
+      "continue": "$t(common.continue)",
+      "close": "Close"
     },
     "submitForm": {
       "title": "Submit Nation",

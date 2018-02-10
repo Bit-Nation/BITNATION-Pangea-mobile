@@ -4,6 +4,9 @@ import {
   RESET_NATION,
   NATION_FIELD_CHANGE,
   CANCEL_NATION_CREATE,
+  SAVE_NATION_DRAFT,
+  DELETE_NATION_DRAFT,
+  SUBMIT_NATION,
 } from '../actions/modifyNation';
 
 export const emptyNation = {
@@ -54,6 +57,21 @@ export default function (state = initialState, action) {
         editingNation: null,
         initialNation: null,
       };
+    case SAVE_NATION_DRAFT:
+      return {
+        ...state,
+        editingNation: action.payload
+      };
+    case DELETE_NATION_DRAFT:
+      return {
+        ...state,
+        editingNation: action.payload
+      };
+    case SUBMIT_NATION:
+      return {
+        ...state,
+        editingNation: action.payload
+      }
   }
 
   return state;
