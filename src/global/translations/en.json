@@ -149,7 +149,7 @@
           "main": "{{count}}",
           "suffix": " in Pangea"
         },
-        "newNations": "NEW NATIONS"
+        "newNations": "Newest Nations"
       },
       "warningPanel": {
         "title": "Notice",

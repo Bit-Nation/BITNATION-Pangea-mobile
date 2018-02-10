@@ -1,37 +1,51 @@
-import { MediaQueryStyleSheet } from 'react-native-responsive';
-import { Dimensions } from 'react-native';
+import { MediaQueryStyleSheet } from 'react-native-responsive'
+import { Dimensions } from 'react-native'
 
-import GlobalStyles from '../../../global/Styles';
-import Colors from '../../../global/colors';
+import GlobalStyles from '../../../global/Styles'
+import Colors from '../../../global/colors'
 
 const styles = MediaQueryStyleSheet.create(
-  {
-    ...GlobalStyles,
-    flex: { flex: 1 },
-    childrenContainer: {
-      flex: 1,
-      marginLeft: -15,
-      marginRight: -15,
-    },
-    nationsCountContainer: {
-      paddingLeft: 15,
-      height: 40,
-      alignItems: 'flex-start',
-    },
-    nationsCountNumber: {
-      fontSize: 21,
-      fontWeight: '800',
-      color: Colors.white,
-    },
-    nationsHeader: {
-      backgroundColor: Colors.shadeOf(Colors.BitnationDarkColor, 0.5),
-      paddingLeft: 15,
-      height: 30,
-      justifyContent: 'center',
-    },
-    nationsHeaderText: {
-      ...GlobalStyles.footnote,
-      color: Colors.white,
-    },
-  });
-export default styles;
+	{
+		...GlobalStyles,
+		
+		/*
+		// For lists inside the panels
+		childrenContainer: {
+			flex: 1,
+			marginLeft: -16,
+			marginRight: -16,
+		},
+		*/
+		
+		nationsPanel: {
+			...GlobalStyles.gridPanelView,
+		},
+		
+		// Shows XXX in Pangea
+		nationsCountContainer: {
+			marginBottom: 16,
+			alignItems: 'flex-end',
+		},
+		
+		// Header item for the list of nations
+		nationsListHeader: {
+			...GlobalStyles.panelFlatlistHeader,
+			/*
+			backgroundColor: Colors.shadeOf(Colors.BitnationDarkColor, 0.5),
+			paddingLeft: 16,
+			height: 30,
+			justifyContent: 'center',
+			*/
+		},
+		
+		nationsListHeaderText: {
+			...GlobalStyles.bodyBlack,
+			//color: Colors.BitnationHighlightColor,
+		},
+		
+		nationsCountString: {
+			...GlobalStyles.bodyBlack,
+			color: 'white',//Colors.BitnationHighlightColor,
+		},
+	})
+export default styles

@@ -9,14 +9,7 @@ const { height, width } = Dimensions.get('window');
 const styles = MediaQueryStyleSheet.create(
   {
     ...GlobalStyles,
-    stackView: {
-      flexDirection: 'column',
-      justifyContent: 'flex-end',
-      alignItems: 'stretch',
-      flex: 1,
-      marginLeft: 8,
-      marginRight: 8,
-    },
+
     activityPanelContainer: {
       flex: 1,
     },

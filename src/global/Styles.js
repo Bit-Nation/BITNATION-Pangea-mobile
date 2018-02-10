@@ -98,13 +98,6 @@ const styles = {
 		backgroundColor: 'transparent',
 	},
 	
-	// Normal left/right margins for the body area (not navigation or status)
-	// Use for text-only views, NOT for panels (which have built-in margins)
-	layoutMargin: {
-		marginLeft: 16,
-		marginRight: 16,
-	},
-	
 	// Tab bar at the bottom of the screen
 	tabBar: {
 		height: 49,
@@ -171,6 +164,32 @@ const styles = {
 	},
 	
 	// ========================================
+	// Panels in a grid.
+	// These are lists of rectangular panels which contain different kinds of content.
+	// These don't have margin left/right, so they won't work for dashboard.
+	// Used in:  components/common/PanelView.js
+	
+	gridPanelView: {
+		flex: 1,
+		flexDirection: 'column',
+		justifyContent: 'space-between',
+		margin: 4,
+		//paddingTop: normalizer(16),
+		//paddingBottom: normalizer(16),
+		padding: normalizer(16),
+		borderRadius: 8,
+		backgroundColor: Colors.panelView,
+	},
+	
+	// Make an element inside a gridPanel flush left/right by
+	// removing the LR margin indents
+	gridPanelNoLeftRightPadding: {
+		marginLeft: -16,
+		marginRight: -16,
+		
+	},
+	
+	// ========================================
 	// Panels in a vertical list.
 	// These are lists of rectangular panels which contain different kinds of content.
 	// These don't have margin left/right, so they won't work for dashboard.
@@ -185,10 +204,10 @@ const styles = {
 		marginBottom: 4,
 		marginLeft: 0,
 		marginRight: 0,
-		paddingTop: normalizer(15),
-		paddingBottom: normalizer(15),
-		paddingLeft: 15,
-		paddingRight: 15,
+		paddingTop: normalizer(16),
+		paddingBottom: normalizer(16),
+		paddingLeft: 16,
+		paddingRight: 16,
 	},
 	
 	panelViewTransparent: {
@@ -247,7 +266,7 @@ const styles = {
 	},
 	
 	panelTextContainer: {
-    marginBottom: 8,
+        marginBottom: 8,
 	},
 	
 	panelBody: {
@@ -262,6 +281,22 @@ const styles = {
 	panelButton: {
 		marginTop: 13,
 	},
+	
+	// ------------------------
+	// Flatlist in a Panel View
+	
+	// Header Container for a flatList in a panel (not using ListHeaderComponent)
+	// Should be similar to sectionListItemContainer
+	panelFlatlistHeader: {
+		backgroundColor: Colors.shadeOf(Colors.BitnationDarkColor, 0.5),
+		// Matches the marginLeft:16 of sectionListItemContainer
+		paddingLeft: 16,
+		// Standard row height for an iOS list item:
+		height: 30,
+		justifyContent: 'center',
+	},
+	
+	
 	
 	// ========================================
 	// Forms
@@ -393,7 +428,7 @@ const styles = {
 		...defaultTextStyles.body,
 	    color: Colors.listItemTextState,
 	    textAlign: 'right',
-	    marginRight: 15,
+	    marginRight: 16,
 	  },
 	
 	// e.g. NationListItem, a row in a list of Nations
@@ -412,7 +447,7 @@ const styles = {
 		justifyContent: 'center',
 		alignItems: 'center',
 		backgroundColor: Colors.sectionListItemContainerBkgd,
-		marginLeft: 15,
+		marginLeft: 16,
 	},
 	
 	// e.g. NationListHeader
@@ -428,7 +463,7 @@ const styles = {
 	sectionListHeaderText: {
 		...defaultTextStyles.body,
 		flex: 1,
-		marginLeft: 15,
+		marginLeft: 16,
 		color: Colors.sectionListHeaderText,
 	},
 
@@ -440,7 +475,7 @@ const styles = {
 	},
 
 	sectionListDisclosure: {
-		marginRight:15,
+		marginRight:16,
 		width: 8,
 		height: 15,
 	},
@@ -584,7 +619,7 @@ const styles = {
 		height: 100,
 		width: 100,
 		borderRadius: 50,
-		margin: 15,
+		margin: 16,
 	},
 
   privateKeyGridViewContainer: {

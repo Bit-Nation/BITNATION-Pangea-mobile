@@ -3,7 +3,23 @@
 import Colors from '../colors'
 
 const defaultTextStyles = {
+
+/*
+
+	// CHEAT SHEET: values for font weights
 	
+	{ fontWeight: '100' }, // Thin
+	{ fontWeight: '200' }, // Ultra Light
+	{ fontWeight: '300' }, // Light
+	{ fontWeight: '400' }, // Regular
+	{ fontWeight: '500' }, // Medium
+	{ fontWeight: '600' }, // Semibold
+	{ fontWeight: '700' }, // Bold
+	{ fontWeight: '800' }, // Heavy
+	{ fontWeight: '900' }, // Black
+	
+	*/
+
 	// ========================================
 	// Default Text Styles
 	// From Apple Human Interface Guidelines
@@ -132,7 +148,7 @@ const defaultTextStyles = {
 	
 	title2: {
 		fontFamily: 'Roboto',
-		fontWeight: 'normal',
+		fontWeight: 'bold',
 		fontSize: 22,
 		lineHeight: 28,
 		letterSpacing: 0,
@@ -169,6 +185,15 @@ const defaultTextStyles = {
 	bodyBold: {
 		fontFamily: 'Roboto',
 		fontWeight: 'bold',
+		fontSize: 17,
+		lineHeight: 22,
+		letterSpacing: 0,
+		color: Colors.BitnationLightColor,
+	},
+	
+	bodyBlack: {
+		fontFamily: 'Roboto',
+		fontWeight: '900',
 		fontSize: 17,
 		lineHeight: 22,
 		letterSpacing: 0,
@@ -218,6 +243,10 @@ const defaultTextStyles = {
 		letterSpacing: 0,
 		color: Colors.BitnationLightColor,
 	},
+	
+	
+	
+	
 	
 }
 export default defaultTextStyles

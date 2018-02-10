@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  View,
+  View, Text
 } from 'react-native';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
@@ -20,15 +20,15 @@ export default class WalletPanel extends Component {
 
     return (
       <View style={style}>
-        <PanelView
-          title={i18n.t('screens.dashboard.walletPanel.title')}
-          body={
-            _.isEmpty(this.props.wallets) ?
+        <PanelView title={i18n.t('screens.dashboard.walletPanel.title')}>
+	        <Text>
+	        {_.isEmpty(this.props.wallets) ?
               i18n.t('screens.dashboard.walletPanel.empty')
               :
               prettyETHWalletBalance(this.props.wallets[0])
           }
-        />
+	        </Text>
+        </PanelView>
       </View>
     );
   }
