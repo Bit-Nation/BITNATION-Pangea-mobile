@@ -16,8 +16,10 @@ const styles = {
 		},
 		*/
 		
-		nationsPanel: {
+		// Make the contents align to top
+		nationsGridPanel: {
 			...GlobalStyles.gridPanelView,
+			justifyContent: 'flex-start',
 		},
 		
 		// Shows XXX in Pangea
@@ -43,8 +45,7 @@ const styles = {
 		},
 		
 		nationsListText: {
-			...GlobalStyles.bodyBlack,
-			color: 'white',
+			...GlobalStyles.listItemTextVeryBold,
 		},
 		
 		nationsCountString: {

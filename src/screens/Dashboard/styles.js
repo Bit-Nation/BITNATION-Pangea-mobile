@@ -22,9 +22,10 @@ const styles = MediaQueryStyleSheet.create(
     },
     nationsPanel: {
       flex: 1,
+        marginRight:4,
     },
     rightContainer: {
-      marginLeft: 8,
+      marginLeft: 4,
       flex: 1,
     },
     walletPanel: {},

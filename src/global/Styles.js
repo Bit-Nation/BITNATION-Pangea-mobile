@@ -166,8 +166,7 @@ const styles = {
 	// ========================================
 	// Panels in a grid.
 	// These are lists of rectangular panels which contain different kinds of content.
-	// These don't have margin left/right, so they won't work for dashboard.
-	// Used in:  components/common/PanelView.js
+	// Example: screens/dashboard/NationsPanel/index.js
 	
 	gridPanelView: {
 		flex: 1,
@@ -422,8 +421,15 @@ const styles = {
 		color: 'white',
 		flex: 1,
 	},
-
-  // e.g. NationListItemState Text
+	
+	// e.g. NationListItem Text very BOLD
+	listItemTextVeryBold: {
+		...defaultTextStyles.bodyBlack,
+		color: 'white',
+		flex: 1,
+	},
+	
+	// e.g. NationListItemState Text
   listItemTextState: {
 		...defaultTextStyles.body,
 	    color: Colors.listItemTextState,
