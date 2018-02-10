@@ -30,9 +30,25 @@ class NationCreateContainer extends Component {
   }
 
   _cancelNationCreation = () => {
-    this.props.navigator.dismissModal().then(() => {
-      this.props.onCancelNationCreation();
-    });
+    const isModified = !_.isEqual(this.props.editingNation, this.props.initialNation);
+
+    if (isModified) {
+      Alert.alert(
+        i18n.t('alerts.saveFormOnCancel.title'), i18n.t('alerts.saveFormOnCancel.subtitle'),
+        [
+          { text: i18n.t('alerts.saveFormOnCancel.cancel'), style: 'cancel', onPress: () => this.props.navigator.dismissModal() },
+          {
+            text: i18n.t('alerts.saveFormOnCancel.save'),
+            onPress: () => this.props.navigator.dismissModal().then(() => {
+              this.props.onSaveNationDraft();
+            }),
+          },
+        ],
+        { cancelable: false },
+      );
+    } else {
+      this.props.navigator.dismissModal();
+    }
   };
 
   _resetNationCreation = () => {

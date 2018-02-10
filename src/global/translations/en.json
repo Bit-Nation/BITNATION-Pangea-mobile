@@ -127,6 +127,12 @@
       "subtitle": "Submit this nation to the blockchain?",
       "confirm": "$t(common.continue)",
       "cancel": "$t(common.cancel)"
+    },
+    "saveFormOnCancel": {
+      "title": "Save Draft",
+      "subtitle": "Do you want to save this nations as a draft on your device?",
+      "save": "Save",
+      "cancel": "$t(common.cancel)"
     }
   },
   "screens": {
