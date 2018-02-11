@@ -89,7 +89,7 @@ class NationCreateContainer extends Component {
         return;
       }
 
-      alert('deleteForm', [
+      alert('saveForm', [
         {
           name: 'continue',
         }, {
@@ -101,7 +101,7 @@ class NationCreateContainer extends Component {
   };
 
   _submitForm = () => {
-    alert('deleteForm', [
+    alert('submitForm', [
       {
         name: 'cancel',
         style: 'cancel',
