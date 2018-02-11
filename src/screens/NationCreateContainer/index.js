@@ -11,8 +11,7 @@ import {
   deleteNationDraft,
   submitNation,
 } from '../../actions/modifyNation';
-import i18n from '../../global/i18n';
-import { Alert } from 'react-native';
+import { errorAlert, alert } from '../../global/alerts';
 
 class NationCreateContainer extends Component {
 
@@ -32,75 +31,84 @@ class NationCreateContainer extends Component {
   _cancelNationCreation = () => {
     const isModified = !_.isEqual(this.props.editingNation, this.props.initialNation);
 
-    if (isModified) {
-      Alert.alert(
-        i18n.t('alerts.saveFormOnCancel.title'), i18n.t('alerts.saveFormOnCancel.subtitle'),
-        [
-          { text: i18n.t('alerts.saveFormOnCancel.cancel'), style: 'cancel', onPress: () => this.props.navigator.dismissModal() },
-          {
-            text: i18n.t('alerts.saveFormOnCancel.save'),
-            onPress: () => this.props.navigator.dismissModal().then(() => {
-              this.props.onSaveNationDraft();
-            }),
-          },
-        ],
-        { cancelable: false },
-      );
-    } else {
+    if (!isModified) {
       this.props.navigator.dismissModal();
+      return;
     }
+
+    alert('saveFormOnCancel', [
+      {
+        name: 'cancel',
+        style: 'cancel',
+        onPress: () => this.props.navigator.dismissModal(),
+      }, {
+        name: 'save',
+        onPress: () => {
+          this.props.onSaveNationDraft(this.props.editingNation, () => {
+            if (this.props.latestError) {
+              errorAlert(this.props.latestError);
+              return;
+            }
+
+            this.props.navigator.dismissModal();
+          });
+        },
+      }],
+    );
   };
 
   _resetNationCreation = () => {
-    Alert.alert(
-      i18n.t('alerts.resetForm.title'), i18n.t('alerts.resetForm.subtitle'),
-      [
-        { text: i18n.t('alerts.resetForm.cancel'), style: 'cancel' },
-        {
-          text: i18n.t('alerts.resetForm.confirm'),
-          onPress: () => this.props.onResetNationCreation(),
-        },
-      ],
-      { cancelable: false },
+    alert('resetForm', [
+      {
+        name: 'cancel',
+        style: 'cancel',
+      }, {
+        name: 'confirm',
+        onPress: () => this.props.onResetNationCreation(),
+      }],
     );
   };
 
   _deleteForm = () => {
-    Alert.alert(
-      i18n.t('alerts.deleteForm.title'),
-      i18n.t('alerts.deleteForm.subtitle'),
-      [
-        { text: i18n.t('alerts.deleteForm.cancel'), style: 'cancel' },
-        { text: i18n.t('alerts.deleteForm.delete'), onPress: () => this.props.navigator.dismissModal().then(() => {
-            this.props.onDeleteNationDraft();
-          }) },
-      ],
-      { cancelable: false },
+    alert('deleteForm', [
+      {
+        name: 'cancel',
+        style: 'cancel',
+      }, {
+        name: 'delete',
+        style: 'destructive',
+        onPress: () => this.props.onDeleteNationDraft() //  this.props.navigator.dismissModal()
+      }],
     );
   };
 
   _saveForm = () => {
-    //TODO Need to execute onSaveNationDraft action before show the Alert
-    Alert.alert(
-      i18n.t('alerts.saveForm.title'),
-      i18n.t('alerts.saveForm.subtitle'),
-      [
-        { text: i18n.t('alerts.saveForm.continue'), style: 'cancel' },
-        { text: i18n.t('alerts.saveForm.close'), onPress: () => this.props.navigator.dismissModal() },
-      ],
-      { cancelable: false },
-    );
+    this.props.onSaveNationDraft(this.props.editingNation, () => {
+      if (this.props.latestError) {
+        errorAlert(this.props.latestError);
+        return;
+      }
+
+      alert('deleteForm', [
+        {
+          name: 'continue',
+        }, {
+          name: 'close',
+          onPress: () => this.props.navigator.dismissModal(),
+        }],
+      );
+    });
   };
 
   _submitForm = () => {
-    Alert.alert(
-      i18n.t('alerts.submitForm.title'),
-      i18n.t('alerts.submitForm.subtitle'),
-      [
-        { text: i18n.t('alerts.submitForm.cancel'), style: 'cancel' },
-        { text: i18n.t('alerts.submitForm.confirm'), onPress: () => this.props.onSubmitNation },
-      ],
-      { cancelable: false },
+    alert('deleteForm', [
+      {
+        name: 'cancel',
+        style: 'cancel',
+      }, {
+        name: 'confirm',
+        onPress: () => this.props.onSubmitNation(),
+      }],
     );
   };
 }
@@ -123,8 +131,8 @@ const mapDispatchToProps = dispatch => ({
   onNationChange(field, data) {
     dispatch(editingNationFieldChange(field, data));
   },
-  onSaveNationDraft(data) {
-    dispatch(saveNationDraft(data));
+  onSaveNationDraft(data, callback) {
+    dispatch(saveNationDraft(data, callback));
   },
   onDeleteNationDraft() {
     dispatch(deleteNationDraft(data));
