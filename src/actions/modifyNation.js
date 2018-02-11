@@ -35,10 +35,11 @@ export function cancelNationCreation() {
   };
 }
 
-export function saveNationDraft(nation) {
+export function saveNationDraft(nation, callback) {
   return {
     type: SAVE_NATION_DRAFT,
     nation,
+    callback,
   };
 }
 
