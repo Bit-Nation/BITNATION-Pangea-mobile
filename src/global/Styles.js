@@ -166,26 +166,29 @@ const styles = {
 	// ========================================
 	// Panels in a grid.
 	// These are lists of rectangular panels which contain different kinds of content.
+	// Fill the panel with flex views and the alignItems: stretch will make sure they fill it up.
 	// Example: screens/dashboard/NationsPanel/index.js
 	
 	gridPanelView: {
 		flex: 1,
 		flexDirection: 'column',
 		justifyContent: 'space-between',
+		alignItems: 'stretch',
 		margin: 4,
-		//paddingTop: normalizer(16),
-		//paddingBottom: normalizer(16),
+		paddingTop: normalizer(16),
+		paddingBottom: normalizer(16),
 		padding: normalizer(16),
 		borderRadius: 8,
 		backgroundColor: Colors.panelView,
+		overflow: 'hidden',
 	},
 	
 	// Make an element inside a gridPanel flush left/right by
 	// removing the LR margin indents
-	gridPanelNoLeftRightPadding: {
+	// Use on a View inside a gridPanelView.
+	removeGridPanelMarginsLR: {
 		marginLeft: -16,
 		marginRight: -16,
-		
 	},
 	
 	// ========================================
@@ -207,6 +210,7 @@ const styles = {
 		paddingBottom: normalizer(16),
 		paddingLeft: 16,
 		paddingRight: 16,
+		overflow: 'hidden',
 	},
 	
 	panelViewTransparent: {
@@ -219,6 +223,7 @@ const styles = {
 		marginLeft: 0,
 		marginRight: 0,
 		paddingTop: 8,
+		overflow: 'hidden',
 	},
 	
 	// Panel Title Container for the Title and Icon, below
@@ -226,16 +231,17 @@ const styles = {
 	    flexDirection: 'row',
 	    backgroundColor: 'transparent',
 	    paddingBottom: 8,
-		// Line below the title:
+		// Uncomment to show a LINE below the title:
 		//borderBottomColor: Colors.BlueGrey,
 		//borderStyle: 'solid',
 		//borderBottomWidth: 1,
 	},
-
+	
+	// Contains the title of the panel view, inside the title row
   panelTitleContainer: {
-    flex: 4,
     backgroundColor: 'transparent',
   },
+	
 
   panelTitleIcon: {
     flex: 1,
@@ -264,8 +270,20 @@ const styles = {
 		textAlign: 'right',
 	},
 	
-	panelTextContainer: {
+	// View: children passed to panel
+	// Hint: don't set overflow to 'hidden' because that will defeat
+	// negative margins that are used to go to the edge of the panel (e.g. by a list).
+	panelChildrenContainer: {
+		marginBottom: 8,
+		//flexShrink: 1,
+		flex: 1,
+	},
+
+	// View: Text block passed to panel. Similar to children, but more limited.
+	panelBodyContainer: {
         marginBottom: 8,
+		flexShrink: 1,
+		overflow: 'hidden',
 	},
 	
 	panelBody: {
@@ -287,12 +305,12 @@ const styles = {
 	// Header Container for a flatList in a panel (not using ListHeaderComponent)
 	// Should be similar to sectionListItemContainer
 	panelFlatlistHeader: {
+		justifyContent: 'center',
 		backgroundColor: Colors.shadeOf(Colors.BitnationDarkColor, 0.5),
 		// Matches the marginLeft:16 of sectionListItemContainer
 		paddingLeft: 16,
 		// Standard row height for an iOS list item:
 		height: 30,
-		justifyContent: 'center',
 	},
 	
 	
@@ -411,6 +429,16 @@ const styles = {
 	// These are lists with rows divided by section headers, e.g. "A"
 	// Example: Nations List screen
 	
+	// View: Use views inside to fill the space. A FlatList inside this will be sized
+	// to fit the space available.
+	listContainer: {
+		flex: 1,
+		flexDirection: 'column',
+		justifyContent: 'space-between',
+		alignItems: 'stretch',
+	},
+	
+	// Used for SectionList on Nation List screen
 	sectionList: {
 		flex: 1,
 	},

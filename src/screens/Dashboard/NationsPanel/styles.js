@@ -5,52 +5,46 @@ import GlobalStyles from '../../../global/Styles'
 import Colors from '../../../global/colors'
 
 const styles = {
-		...GlobalStyles,
-		
-		/*
-		// For lists inside the panels
-		childrenContainer: {
-			flex: 1,
-			marginLeft: -16,
-			marginRight: -16,
-		},
-		*/
-		
-		// Make the contents align to top
-		nationsGridPanel: {
-			...GlobalStyles.gridPanelView,
-			justifyContent: 'flex-start',
-		},
-		
-		// Shows XXX in Pangea
-		nationsCountContainer: {
-			marginBottom: 16,
-			alignItems: 'flex-end',
-		},
-		
-		// Header item for the list of nations
-		nationsListHeader: {
-			...GlobalStyles.panelFlatlistHeader,
-			/*
-			backgroundColor: Colors.shadeOf(Colors.BitnationDarkColor, 0.5),
-			paddingLeft: 16,
-			height: 30,
-			justifyContent: 'center',
-			*/
-		},
-		
-		nationsListHeaderText: {
-			...GlobalStyles.body,
-			//color: Colors.BitnationHighlightColor,
-		},
-		
-		nationsListText: {
-			...GlobalStyles.listItemTextVeryBold,
-		},
-		
-		nationsCountString: {
-			...GlobalStyles.bodyBlack,
-			color: 'white',//Colors.BitnationHighlightColor,
-		},
-	}
+	...GlobalStyles,
+	
+	// View: The panel holding the nations info.
+	// Make the contents align to top.
+	nationsGridPanel: {
+		...GlobalStyles.gridPanelView,
+		justifyContent: 'flex-start',
+	},
+	
+	// View: Shows "XXX in Pangea"
+	nationsCountContainer: {
+		marginBottom: 16,
+		alignItems: 'flex-end',
+	},
+
+	// Text: Number of nations, shown in the text above the list.
+	nationsCountString: {
+		...GlobalStyles.bodyBlack,
+		color: 'white',//Colors.BitnationHighlightColor,
+	},
+	
+	
+	// LIST OF NATIONS
+	
+	// use the listContainer, but bring edge to edge of the containing View.
+	listContainer: {
+		...GlobalStyles.listContainer,
+		...GlobalStyles.removeGridPanelMarginsLR,
+	},
+	
+	// Text: Header bar across the top of the list of nations in the panel
+	nationsListHeaderText: {
+		...GlobalStyles.body,
+		//color: Colors.BitnationHighlightColor,
+	},
+	
+	// Text: Name of a nation in the list, e.g. "My Country"
+	nationsListText: {
+		...GlobalStyles.listItemTextVeryBold,
+	},
+	
+}
 export default styles
