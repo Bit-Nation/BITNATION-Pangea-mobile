@@ -1,10 +1,13 @@
 export const START_NATION_CREATION = 'START_NATION_CREATION';
 export const CANCEL_NATION_CREATE = 'CANCEL_NATION_CREATE';
-export const RESET_NATION = 'RESET_NATION';
-export const NATION_FIELD_CHANGE = 'NATION_FIELD_CHANGE';
+export const RESET_NATION_CREATION = 'RESET_NATION_CREATION';
+export const EDITING_NATION_FIELD_CHANGE = 'EDITING_NATION_FIELD_CHANGE';
 export const SAVE_NATION_DRAFT = 'SAVE_NATION_DRAFT';
 export const DELETE_NATION_DRAFT = 'DELETE_NATION_DRAFT';
 export const SUBMIT_NATION = 'SUBMIT_NATION';
+export const NATION_DRAFT_SAVE_FINISHED = 'NATION_DRAFT_SAVE_FINISHED';
+export const NATION_DRAFT_DELETE_FINISHED = 'NATION_DRAFT_DELETE_FINISHED';
+export const NATION_SUBMIT_FINISHED = 'NATION_SUBMIT_FINISHED';
 
 export function startNationCreation() {
   return {
@@ -14,13 +17,13 @@ export function startNationCreation() {
 
 export function resetNationCreation() {
   return {
-    type: RESET_NATION,
+    type: RESET_NATION_CREATION,
   };
 }
 
-export function nationFieldChange(field, data) {
+export function editingNationFieldChange(field, data) {
   return {
-    type: NATION_FIELD_CHANGE,
+    type: EDITING_NATION_FIELD_CHANGE,
     payload: data,
     field: field,
   };
@@ -32,23 +35,49 @@ export function cancelNationCreation() {
   };
 }
 
-export function saveNationDraft(data) {
+export function saveNationDraft(nation) {
   return {
     type: SAVE_NATION_DRAFT,
-    payload: data,
+    nation,
   };
 }
 
-export function deleteNationDraft(data) {
+export function deleteNationDraft(nationId) {
   return {
     type: DELETE_NATION_DRAFT,
-    payload: data,
+    nationId,
   };
 }
 
-export function submitNation(data) {
+export function submitNation(nation) {
   return {
     type: SUBMIT_NATION,
-    payload: data,
+    nation,
+  };
+}
+
+export function nationDraftSaveResult(nationId, error) {
+  return {
+    type: NATION_DRAFT_SAVE_FINISHED,
+    nationId,
+    error,
+  };
+}
+
+
+export function nationDraftDeleteResult(nationId, error) {
+  return {
+    type: NATION_DRAFT_DELETE_FINISHED,
+    nationId,
+    error,
+  };
+}
+
+
+export function nationSubmitResult(nationId, error) {
+  return {
+    type: NATION_SUBMIT_FINISHED,
+    nationId,
+    error,
   };
 }

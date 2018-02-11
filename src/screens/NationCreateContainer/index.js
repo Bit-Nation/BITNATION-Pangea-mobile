@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import NationCreateScreen from './NationCreateScreen';
 import {
   resetNationCreation,
-  nationFieldChange,
+  editingNationFieldChange,
   cancelNationCreation,
   saveNationDraft,
   deleteNationDraft,
@@ -121,7 +121,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(resetNationCreation());
   },
   onNationChange(field, data) {
-    dispatch(nationFieldChange(field, data));
+    dispatch(editingNationFieldChange(field, data));
   },
   onSaveNationDraft(data) {
     dispatch(saveNationDraft(data));

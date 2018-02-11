@@ -1,12 +1,12 @@
 import i18n from '../global/i18n';
 import {
   START_NATION_CREATION,
-  RESET_NATION,
-  NATION_FIELD_CHANGE,
+  RESET_NATION_CREATION,
+  EDITING_NATION_FIELD_CHANGE,
   CANCEL_NATION_CREATE,
   SAVE_NATION_DRAFT,
   DELETE_NATION_DRAFT,
-  SUBMIT_NATION,
+  SUBMIT_NATION, NATION_SUBMIT_FINISHED, NATION_DRAFT_SAVE_FINISHED, NATION_DRAFT_DELETE_FINISHED,
 } from '../actions/modifyNation';
 
 export const emptyNation = {
@@ -28,6 +28,8 @@ export const emptyNation = {
 export const initialState = {
   editingNation: null,
   initialNation: null,
+  inProgress: false,
+  latestError: null,
 };
 
 export default function (state = initialState, action) {
@@ -38,12 +40,12 @@ export default function (state = initialState, action) {
         initialNation: emptyNation,
         editingNation: emptyNation,
       };
-    case RESET_NATION:
+    case RESET_NATION_CREATION:
       return {
         ...state,
         editingNation: state.initialNation,
       };
-    case NATION_FIELD_CHANGE:
+    case EDITING_NATION_FIELD_CHANGE:
       return {
         ...state,
         editingNation: {
@@ -60,18 +62,36 @@ export default function (state = initialState, action) {
     case SAVE_NATION_DRAFT:
       return {
         ...state,
-        editingNation: action.payload
+        inProgress: true,
       };
     case DELETE_NATION_DRAFT:
       return {
         ...state,
-        editingNation: action.payload
+        inProgress: true,
       };
     case SUBMIT_NATION:
       return {
         ...state,
-        editingNation: action.payload
-      }
+        inProgress: true,
+      };
+    case NATION_SUBMIT_FINISHED:
+      return {
+        ...state,
+        inProgress: false,
+        latestError: action.error,
+      };
+    case NATION_DRAFT_SAVE_FINISHED:
+      return {
+        ...state,
+        inProgress: false,
+        latestError: action.error,
+      };
+    case NATION_DRAFT_DELETE_FINISHED:
+      return {
+        ...state,
+        inProgress: false,
+        latestError: action.error,
+      };
   }
 
   return state;
