@@ -4,13 +4,37 @@ import { connect } from 'react-redux';
 
 import NationDetailsScreen from './NationDetailsScreen';
 import { switchNationTab, openNation, joinNation, leaveNation } from '../../actions/nations';
-import { androidNavigationButtons } from '../../global/Screens';
+import {androidNavigationButtons, screen} from '../../global/Screens';
 import { Alert } from 'react-native';
 import i18n from '../../global/i18n';
+import Colors from "../../global/Colors";
+
+const EDIT_BUTTON = 'EDIT_BUTTON';
 
 class NationDetailsContainer extends Component {
 
   static navigatorButtons = { ...androidNavigationButtons };
+
+  constructor(props) {
+    super(props);
+
+    this.props.navigator.setButtons(
+      {
+        leftButtons: [],
+        rightButtons: [{
+          title: 'Edit',
+          id: EDIT_BUTTON,
+          buttonColor: Colors.navigationButtonColor,
+        }],
+      },
+    );
+  }
+
+  onNavBarButtonPress(id) {
+    if (id === EDIT_BUTTON) {
+      this.props.navigator.showModal(screen('NATION_CREATE_SCREEN'));
+    }
+  }
 
   _showCreatePrivateKeyAlert() {
     Alert.alert(
