@@ -1,13 +1,17 @@
-import i18n from '../global/i18n';
 import {
   START_NATION_CREATION,
+  START_NATION_EDITING,
   RESET_NATION_CREATION,
   EDITING_NATION_FIELD_CHANGE,
   CANCEL_NATION_CREATE,
   SAVE_NATION_DRAFT,
   DELETE_NATION_DRAFT,
-  SUBMIT_NATION, NATION_SUBMIT_FINISHED, NATION_DRAFT_SAVE_FINISHED, NATION_DRAFT_DELETE_FINISHED,
+  SUBMIT_NATION,
+  NATION_SUBMIT_FINISHED,
+  NATION_DRAFT_SAVE_FINISHED,
+  NATION_DRAFT_DELETE_FINISHED,
 } from '../actions/modifyNation';
+import { resolveNation } from '../utils/nations';
 
 export const emptyNation = {
   nationName: '',
@@ -38,6 +42,11 @@ export default function (state = initialState, action) {
         ...state,
         initialNation: emptyNation,
         editingNation: emptyNation,
+      };
+    case START_NATION_EDITING:
+      return {
+        initialNation: action.nation,
+        editingNation: action.nation,
       };
     case RESET_NATION_CREATION:
       return {

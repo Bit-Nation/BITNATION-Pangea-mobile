@@ -5,6 +5,9 @@ import {} from '../../actions/modifyNation';
 import {} from './serviceFunctions';
 import { createDraft, updateDraft } from './serviceFunctions';
 import { nationDraftSaveResult } from '../../actions/modifyNation';
+import { deleteDraft } from './serviceFunctions';
+import { nationDraftDeleteResult } from '../../actions/modifyNation';
+import { startNationEditing } from '../../actions/modifyNation';
 
 export function* saveDraftSaga(action) {
   const nationData = action.nation;
@@ -15,10 +18,24 @@ export function* saveDraftSaga(action) {
     } else {
       nation = yield call(updateDraft, nationData.id, nationData);
     }
-    console.log(nation);
     yield put(nationDraftSaveResult(nation.id));
+    yield put(startNationEditing(nation));
   } catch (error) {
     yield put(nationDraftSaveResult(nationData.id, error));
+  } finally {
+    if (action.callback) {
+      yield call(action.callback);
+    }
+  }
+}
+
+export function* deleteDraftSaga(action) {
+  const nationId = action.nationId;
+  try {
+    yield call(deleteDraft, nationId);
+    yield put(nationDraftDeleteResult(nationId));
+  } catch (error) {
+    yield put(nationDraftDeleteResult(nationId, error));
   } finally {
     if (action.callback) {
       yield call(action.callback);

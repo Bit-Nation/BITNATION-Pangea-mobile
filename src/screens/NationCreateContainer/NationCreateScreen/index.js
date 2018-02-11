@@ -114,7 +114,7 @@ class CreateNation extends NavigatorComponent {
                             title={i18n.t('screens.createNation.save')} disable={!isModified}
                             onPress={this.props.onSaveNationDraft}/>
         <NationActionButton iconSource={AssetsImage.Actions.chat}
-                            title={i18n.t('screens.createNation.delete')} disable={isSavedDraft}
+                            title={i18n.t('screens.createNation.delete')} disable={!isSavedDraft}
                             onPress={this.props.onDeleteNationDraft}/>
         <NationActionButton iconSource={AssetsImage.Actions.chat}
                             title={i18n.t('screens.createNation.submit')} disable={!canSubmit}

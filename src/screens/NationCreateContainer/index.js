@@ -77,7 +77,14 @@ class NationCreateContainer extends Component {
       }, {
         name: 'delete',
         style: 'destructive',
-        onPress: () => this.props.onDeleteNationDraft() //  this.props.navigator.dismissModal()
+        onPress: () => this.props.onDeleteNationDraft(this.props.initialNation.id, () => {
+          if (this.props.latestError) {
+            errorAlert(this.props.latestError);
+            return;
+          }
+
+          this.props.navigator.dismissModal();
+        }),
       }],
     );
   };
@@ -134,8 +141,8 @@ const mapDispatchToProps = dispatch => ({
   onSaveNationDraft(data, callback) {
     dispatch(saveNationDraft(data, callback));
   },
-  onDeleteNationDraft() {
-    dispatch(deleteNationDraft(data));
+  onDeleteNationDraft(nationId, callback) {
+    dispatch(deleteNationDraft(nationId, callback));
   },
   onSubmitNation() {
     dispatch(submitNation(data));

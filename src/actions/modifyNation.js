@@ -1,4 +1,5 @@
 export const START_NATION_CREATION = 'START_NATION_CREATION';
+export const START_NATION_EDITING = 'START_NATION_EDITING';
 export const CANCEL_NATION_CREATE = 'CANCEL_NATION_CREATE';
 export const RESET_NATION_CREATION = 'RESET_NATION_CREATION';
 export const EDITING_NATION_FIELD_CHANGE = 'EDITING_NATION_FIELD_CHANGE';
@@ -12,6 +13,13 @@ export const NATION_SUBMIT_FINISHED = 'NATION_SUBMIT_FINISHED';
 export function startNationCreation() {
   return {
     type: START_NATION_CREATION,
+  };
+}
+
+export function startNationEditing(nation) {
+  return {
+    type: START_NATION_EDITING,
+    nation,
   };
 }
 
@@ -43,10 +51,11 @@ export function saveNationDraft(nation, callback) {
   };
 }
 
-export function deleteNationDraft(nationId) {
+export function deleteNationDraft(nationId, callback) {
   return {
     type: DELETE_NATION_DRAFT,
     nationId,
+    callback,
   };
 }
 
