@@ -103,6 +103,7 @@ class CreateNation extends NavigatorComponent {
   _buildBottomBar() {
     const isModified = !_.isEqual(this.props.editingNation, this.props.initialNation);
     const canSubmit = isModified && this._nationIsValid(this.props.editingNation);
+    const isSavedDraft = this.props.initialNation.id !== undefined;
 
     return (
       <View style={styles.fakeBottomBar}>
@@ -113,7 +114,7 @@ class CreateNation extends NavigatorComponent {
                             title={i18n.t('screens.createNation.save')} disable={!isModified}
                             onPress={this.props.onSaveNationDraft}/>
         <NationActionButton iconSource={AssetsImage.Actions.chat}
-                            title={i18n.t('screens.createNation.delete')} disable={false}
+                            title={i18n.t('screens.createNation.delete')} disable={isSavedDraft}
                             onPress={this.props.onDeleteNationDraft}/>
         <NationActionButton iconSource={AssetsImage.Actions.chat}
                             title={i18n.t('screens.createNation.submit')} disable={!canSubmit}
