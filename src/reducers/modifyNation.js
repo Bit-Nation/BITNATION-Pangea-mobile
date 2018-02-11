@@ -13,16 +13,15 @@ export const emptyNation = {
   nationName: '',
   nationDescription: '',
   exists: false,
-  virtualNation: [],
-  nationCode: [],
+  virtualNation: null,
+  nationCode: '',
   nationCodeLink: '',
-  lawEnforcementMechanism: [],
+  lawEnforcementMechanism: '',
   profit: false,
-  decisionMakingProcess: [],
+  decisionMakingProcess: '',
   diplomaticRecognition: false,
   governanceService: [],
   nonCitizenUse: false,
-  agreeFees: false,
 };
 
 export const initialState = {

@@ -55,7 +55,7 @@ class CreateNation extends NavigatorComponent {
   _nationIsValid(nation) {
     if (_.isEmpty(nation.nationName)) return false;
     if (_.isEmpty(nation.nationDescription)) return false;
-    if (_.isEmpty(nation.virtualNation)) return false;
+    if (nation.virtual === null || nation.virtual === undefined) return false;
     if (_.isEmpty(nation.nationCode)) return false;
     if (_.isEmpty(nation.lawEnforcementMechanism)) return false;
     if (_.isEmpty(nation.decisionMakingProcess)) return false;
@@ -167,15 +167,15 @@ class CreateNation extends NavigatorComponent {
               single
               hideTags
               items={[{
-                id: i18n.t('enums.nation.locationType.virtual'),
+                id: true,
                 name: i18n.t('enums.nation.locationType.virtual'),
               }, {
-                id: i18n.t('enums.nation.locationType.geographical'),
+                id: false,
                 name: i18n.t('enums.nation.locationType.geographical'),
               }]}
               uniqueKey="id"
-              onSelectedItemsChange={(selectedItems) => this.setFieldValue('virtualNation', selectedItems)}
-              selectedItems={this.props.editingNation.virtualNation}
+              onSelectedItemsChange={(selectedItems) => this.setFieldValue('virtualNation', selectedItems[0])}
+              selectedItems={[this.props.editingNation.virtualNation]}
               selectText={i18n.t('screens.createNation.prompt.location')}
               onChangeInput={(text) => console.log(text)}
               tagRemoveIconColor="#CCC"
@@ -237,8 +237,8 @@ class CreateNation extends NavigatorComponent {
                 name: i18n.t('enums.nation.legalCode.civil'),
               }]}
               uniqueKey="id"
-              onSelectedItemsChange={(selectedItems) => this.setFieldValue('nationCode', selectedItems)}
-              selectedItems={this.props.editingNation.nationCode}
+              onSelectedItemsChange={(selectedItems) => this.setFieldValue('nationCode', selectedItems[0])}
+              selectedItems={[this.props.editingNation.nationCode]}
               selectText={i18n.t('screens.createNation.prompt.legalCode')}
               onChangeInput={(text) => console.log(text)}
               tagRemoveIconColor="#CCC"
@@ -273,8 +273,8 @@ class CreateNation extends NavigatorComponent {
                 name: i18n.t('enums.nation.lawEnforcementMechanism.international'),
               }]}
               uniqueKey="id"
-              onSelectedItemsChange={(selectedItems) => this.setFieldValue('lawEnforcementMechanism', selectedItems)}
-              selectedItems={this.props.editingNation.lawEnforcementMechanism}
+              onSelectedItemsChange={(selectedItems) => this.setFieldValue('lawEnforcementMechanism', selectedItems[0])}
+              selectedItems={[this.props.editingNation.lawEnforcementMechanism]}
               selectText={i18n.t('screens.createNation.prompt.lawEnforcementMechanism')}
               onChangeInput={(text) => console.log(text)}
               tagRemoveIconColor="#CCC"
@@ -312,8 +312,8 @@ class CreateNation extends NavigatorComponent {
                 name: i18n.t('enums.nation.governmentType.theocracy'),
               }]}
               uniqueKey="id"
-              onSelectedItemsChange={(selectedItems) => this.setFieldValue('decisionMakingProcess', selectedItems)}
-              selectedItems={this.props.editingNation.decisionMakingProcess}
+              onSelectedItemsChange={(selectedItems) => this.setFieldValue('decisionMakingProcess', selectedItems[0])}
+              selectedItems={[this.props.editingNation.decisionMakingProcess]}
               selectText={i18n.t('screens.createNation.prompt.typeOfGovernment')}
               onChangeInput={(text) => console.log(text)}
               tagRemoveIconColor="#CCC"
