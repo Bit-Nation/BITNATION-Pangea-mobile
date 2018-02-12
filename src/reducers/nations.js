@@ -72,3 +72,5 @@ export default function (state = initialState, action) {
 }
 
 export const openedNation = state => resolveNation(state.nations, state.openedNationId);
+// @todo Add correct implementation;
+export const isDraft = nation => nation.idInSmartContract === undefined || nation.idInSmartContract < 0;

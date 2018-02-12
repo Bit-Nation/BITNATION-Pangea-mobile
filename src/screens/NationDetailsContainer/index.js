@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -8,10 +8,13 @@ import { androidNavigationButtons, screen } from '../../global/Screens';
 import { Alert } from 'react-native';
 import i18n from '../../global/i18n';
 import Colors from '../../global/Colors';
+import { startNationEditing } from '../../actions/modifyNation';
+import { isDraft, openedNation } from '../../reducers/nations';
+import NavigatorComponent from '../../components/common/NavigatorComponent';
 
 const EDIT_BUTTON = 'EDIT_BUTTON';
 
-class NationDetailsContainer extends Component {
+class NationDetailsContainer extends NavigatorComponent {
 
   static navigatorButtons = { ...androidNavigationButtons };
 
@@ -32,6 +35,7 @@ class NationDetailsContainer extends Component {
 
   onNavBarButtonPress(id) {
     if (id === EDIT_BUTTON) {
+      this.props.onStartNationEditing(openedNation(this.props));
       this.props.navigator.showModal(screen('NATION_CREATE_SCREEN'));
     }
   }
@@ -83,6 +87,7 @@ NationDetailsContainer.PropTypes = {
 const mapStateToProps = state => ({
   ...state.nations,
   ...state.wallet,
+  isDraft: isDraft(openedNation(state)),
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -94,6 +99,9 @@ const mapDispatchToProps = dispatch => ({
   },
   leaveNation() {
     dispatch(leaveNation());
+  },
+  onStartNationEditing(nation) {
+    dispatch(startNationEditing(nation));
   },
 });
 
