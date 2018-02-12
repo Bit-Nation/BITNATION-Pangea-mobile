@@ -8,7 +8,7 @@ import {
 import { getPangeaLibrary } from '../services/container';
 import { waitConnect } from '../utils/connectivity';
 import { CONNECTION_TIMEOUT } from '../global/Constants';
-import { resolveNation } from '../utils/nations';
+import { openedNation } from '../reducers/nations';
 
 export async function checkConnection() {
   return await waitConnect(CONNECTION_TIMEOUT);
@@ -46,7 +46,7 @@ function* joinNation() {
   try {
     let pangeaLib = yield call(getPangeaLibrary);
     let nationsState = yield select(state => state.nations);
-    const currentNation = resolveNation(nationsState.nations, nationsState.openedNationId);
+    const currentNation = openedNation(nationsState);
     yield call(checkConnection);
     let result = yield call(pangeaLib.eth.nation.joinNation, currentNation.id);
     // console.log('joined nation: ', result);
@@ -63,7 +63,7 @@ function* leaveNation() {
   try {
     let pangeaLib = yield call(getPangeaLibrary);
     let nationsState = yield select(state => state.nations);
-    const currentNation = resolveNation(nationsState.nations, nationsState.openedNationId);
+    const currentNation = openedNation(nationsState);
     yield call(checkConnection);
     let result = yield call(pangeaLib.eth.nation.leaveNation, currentNation.id);
     // console.log('leave nation: ', result);

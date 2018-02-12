@@ -7,18 +7,18 @@ import PropTypes from 'prop-types';
 
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import styles from './styles';
-import { resolveNation } from '../../../utils/nations';
 import NationActionButton from '../../../components/common/NationActionButton';
 import AssetsImage from '../../../global/AssetsImages';
 import PanelView from '../../../components/common/PanelView';
 import DemoImage from '../../../components/common/DemoImage';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import i18n from '../../../global/i18n';
+import { openedNation } from '../../../reducers/nations';
 
 class NationDetailsScreen extends Component {
 
   render() {
-    const nation = resolveNation(this.props.nations, this.props.openedNationId);
+    const nation = openedNation(this.props);
 
     if (!nation) {
       return <BackgroundImage/>;
