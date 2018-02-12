@@ -14,7 +14,7 @@ import Button from './Button'
 export default class PanelView extends Component {
 	
 	render () {
-		const {style, childrenContainerStyle, renderBottom, renderAdditionalInfo, children} = this.props
+		const {style, childrenContainerStyle, renderBottom, renderAdditionalInfo, children } = this.props
 		
 		return (
 			<View style={[styles.panelView, style]}>
@@ -24,7 +24,7 @@ export default class PanelView extends Component {
 				{
 					(!_.isEmpty(this.props.title) ||
 						!_.isEmpty(this.props.icon)) &&
-					this._renderHeader(this.props.title, this.props.icon)
+					this._renderHeader(this.props.title, this.props.icon, this.props.titleStyle)
 				}
 				
 				{/* CHILDREN (MAIN) DISPLAY AREA */}
@@ -62,13 +62,16 @@ export default class PanelView extends Component {
 		)
 	}
 	
-	_renderHeader (title, icon) {
+	_renderHeader (title, icon, titleStyle) {
+		
+		titleStyle = titleStyle || styles.panelViewTitle
+		
 		return (
 			<View style={styles.panelTitleRowContainer}>
 				{
 					title &&
 					<View style={styles.panelTitleContainer}>
-						<Text style={styles.panelTitle}>
+						<Text style={titleStyle}>
 							{title}
 						</Text>
 					</View>
@@ -76,7 +79,7 @@ export default class PanelView extends Component {
 				{
 					icon &&
 					<View style={styles.panelTitleIcon}>
-						<Text style={styles.panelTitle}>
+						<Text style={styles.panelIcon}>
 							{icon}
 						</Text>
 					</View>
@@ -93,11 +96,19 @@ PanelView.PropTypes = {
 	 * @type string
 	 */
 	title: PropTypes.string,
+	
+	/**
+	 * @desc Style object of the title
+	 * @type object
+	 */
+	titleStyle: PropTypes.object,
+	
 	/**
 	 * @desc Icon of panel
 	 * @type string
 	 * @todo Fix icon to be the icon. Currently it's just a text.
 	 */
+	
 	icon: PropTypes.string,
 	/**
 	 * @desc Body text of panel
