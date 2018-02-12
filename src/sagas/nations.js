@@ -9,6 +9,7 @@ import { getPangeaLibrary } from '../services/container';
 import { waitConnect } from '../utils/connectivity';
 import { CONNECTION_TIMEOUT } from '../global/Constants';
 import { openedNation } from '../reducers/nations';
+import { convertFromDatabase } from '../utils/nations';
 
 export async function checkConnection() {
   return await waitConnect(CONNECTION_TIMEOUT);
@@ -26,7 +27,8 @@ function* fetchNations() {
     console.log('fetching nations');
     let pangeaLib = yield call(getPangeaLibrary);
     const nationsCache = yield call(pangeaLib.eth.nation.all);
-    yield put({ type: DONE_FETCH_NATIONS, payload: [...nationsCache] });
+    const mappedCache = nationsCache.map(convertFromDatabase)
+    yield put({ type: DONE_FETCH_NATIONS, payload: [...mappedCache] });
 
     yield call(checkConnection);
     console.log('start syncing with blockchain');
@@ -34,7 +36,8 @@ function* fetchNations() {
     console.log('synced with blockchain');
 
     const updatedNations = yield call(pangeaLib.eth.nation.all);
-    yield put({ type: DONE_FETCH_NATIONS, payload: [...updatedNations] });
+    const mappedNations = updatedNations.map(convertFromDatabase)
+    yield put({ type: DONE_FETCH_NATIONS, payload: [...mappedNations] });
   } catch (e) {
     console.log('Update nation error: ', e);
     Alert.alert(extractMessage(e));
