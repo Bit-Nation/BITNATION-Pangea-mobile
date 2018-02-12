@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 
 import NationDetailsScreen from './NationDetailsScreen';
 import { switchNationTab, openNation, joinNation, leaveNation } from '../../actions/nations';
-import {androidNavigationButtons, screen} from '../../global/Screens';
+import { androidNavigationButtons, screen } from '../../global/Screens';
 import { Alert } from 'react-native';
 import i18n from '../../global/i18n';
-import Colors from "../../global/Colors";
+import Colors from '../../global/Colors';
 
 const EDIT_BUTTON = 'EDIT_BUTTON';
 
@@ -18,25 +18,16 @@ class NationDetailsContainer extends Component {
   constructor(props) {
     super(props);
 
-    if (this.props.isDraft) {
-      this.props.navigator.setButtons(
-        {
-          leftButtons: [],
-          rightButtons: [{
-            title: 'Edit',
-            id: EDIT_BUTTON,
-            buttonColor: Colors.navigationButtonColor,
-          }],
-        },
-      );
-    } else {
-      this.props.navigator.setButtons(
-        {
-          leftButtons: [],
-          rightButtons: [],
-        },
-      );
-    }
+    this.props.navigator.setButtons(
+      {
+        leftButtons: [],
+        rightButtons: this.props.isDraft ? [{
+          title: 'Edit',
+          id: EDIT_BUTTON,
+          buttonColor: Colors.navigationButtonColor,
+        }] : [],
+      },
+    );
   }
 
   onNavBarButtonPress(id) {
@@ -51,7 +42,10 @@ class NationDetailsContainer extends Component {
       i18n.t('alerts.walletRequired.subtitle'),
       [
         { text: i18n.t('alerts.walletRequired.cancel'), style: 'cancel' },
-        { text: i18n.t('alerts.walletRequired.confirm'), onPress: () => this.props.navigator.switchToTab({ tabIndex: 3 }) },
+        {
+          text: i18n.t('alerts.walletRequired.confirm'),
+          onPress: () => this.props.navigator.switchToTab({ tabIndex: 3 }),
+        },
       ],
       { cancelable: false },
     );
@@ -69,7 +63,7 @@ class NationDetailsContainer extends Component {
     if (_.isEmpty(this.props.wallets)) {
       this._showCreatePrivateKeyAlert();
     } else {
-      fn()
+      fn();
     }
   }
 
@@ -83,6 +77,7 @@ class NationDetailsContainer extends Component {
 
 NationDetailsContainer.PropTypes = {
   navigator: PropTypes.object,
+  isDraft: PropTypes.bool,
 };
 
 const mapStateToProps = state => ({
