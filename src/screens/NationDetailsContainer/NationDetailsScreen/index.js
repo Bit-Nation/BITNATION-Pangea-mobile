@@ -67,20 +67,31 @@ class NationDetailsScreen extends Component {
 	}
 
 	_buildTabBar (joined, created) {
-		return (
-			<View style={styles.fakeBottomBar}>
-				<NationActionButton iconSource={AssetsImage.Actions.chat}
-				                    title={i18n.t('screens.nationDetails.chatButton')} disable={true}/>
-				<NationActionButton iconSource={AssetsImage.Actions.map}
-				                    title={i18n.t('screens.nationDetails.mapButton')} disable={true}/>
-				<NationActionButton iconSource={AssetsImage.Actions.join}
-				                    title={i18n.t('screens.nationDetails.joinButton')} disable={joined || !created}
-				                    onPress={this.props.joinNation}/>
-				<NationActionButton iconSource={AssetsImage.Actions.leave}
-				                    title={i18n.t('screens.nationDetails.leaveButton')} disable={!joined}
-				                    onPress={this.props.leaveNation}/>
-			</View>
-		)
+    if ( this.props.isOwner ) {
+    	return (
+        <View style={styles.fakeBottomBar}>
+          <NationActionButton iconSource={AssetsImage.Actions.chat}
+                              title={i18n.t('screens.createNation.delete')} disable={false}/>
+          <NationActionButton iconSource={AssetsImage.Actions.map}
+                              title={i18n.t('screens.createNation.submit')} disable={false}/>
+        </View>
+			)
+    } else {
+    	return (
+        <View style={styles.fakeBottomBar}>
+          <NationActionButton iconSource={AssetsImage.Actions.chat}
+                              title={i18n.t('screens.nationDetails.chatButton')} disable={true}/>
+          <NationActionButton iconSource={AssetsImage.Actions.map}
+                              title={i18n.t('screens.nationDetails.mapButton')} disable={true}/>
+          <NationActionButton iconSource={AssetsImage.Actions.join}
+                              title={i18n.t('screens.nationDetails.joinButton')} disable={joined || !created}
+                              onPress={this.props.joinNation}/>
+          <NationActionButton iconSource={AssetsImage.Actions.leave}
+                              title={i18n.t('screens.nationDetails.leaveButton')} disable={!joined}
+                              onPress={this.props.leaveNation}/>
+        </View>
+			)
+		}
 	}
 
 	// Useful Notes:

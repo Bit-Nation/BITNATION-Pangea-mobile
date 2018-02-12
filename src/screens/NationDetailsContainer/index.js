@@ -18,16 +18,25 @@ class NationDetailsContainer extends Component {
   constructor(props) {
     super(props);
 
-    this.props.navigator.setButtons(
-      {
-        leftButtons: [],
-        rightButtons: [{
-          title: 'Edit',
-          id: EDIT_BUTTON,
-          buttonColor: Colors.navigationButtonColor,
-        }],
-      },
-    );
+    if (this.props.isOwner) {
+      this.props.navigator.setButtons(
+        {
+          leftButtons: [],
+          rightButtons: [{
+            title: 'Edit',
+            id: EDIT_BUTTON,
+            buttonColor: Colors.navigationButtonColor,
+          }],
+        },
+      );
+    } else {
+      this.props.navigator.setButtons(
+        {
+          leftButtons: [],
+          rightButtons: [],
+        },
+      );
+    }
   }
 
   onNavBarButtonPress(id) {
