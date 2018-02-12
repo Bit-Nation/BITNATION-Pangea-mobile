@@ -55,7 +55,7 @@ class CreateNation extends NavigatorComponent {
   _nationIsValid(nation) {
     if (_.isEmpty(nation.nationName)) return false;
     if (_.isEmpty(nation.nationDescription)) return false;
-    if (nation.virtual === null || nation.virtual === undefined) return false;
+    if (nation.virtualNation === null || nation.virtualNation === undefined) return false;
     if (_.isEmpty(nation.nationCode)) return false;
     if (_.isEmpty(nation.lawEnforcementMechanism)) return false;
     if (_.isEmpty(nation.decisionMakingProcess)) return false;
