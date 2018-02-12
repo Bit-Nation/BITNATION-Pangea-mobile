@@ -2,8 +2,8 @@ import { call, put, select, takeEvery } from 'redux-saga/effects';
 import { Alert } from 'react-native';
 
 import {
-  CANCEL_NATION_CREATE, DONE_NATION_CREATE, START_NATIONS_FETCH, DONE_FETCH_NATIONS,
-  NATION_CREATE, CANCEL_LOADING, REQUEST_JOIN_NATION, REQUEST_LEAVE_NATION,
+  START_NATIONS_FETCH, DONE_FETCH_NATIONS,
+  CANCEL_LOADING, REQUEST_JOIN_NATION, REQUEST_LEAVE_NATION,
 } from '../actions/nations';
 import { getPangeaLibrary } from '../services/container';
 import { waitConnect } from '../utils/connectivity';
@@ -20,23 +20,6 @@ const extractMessage = (error) => {
   }
   return error.toString();
 };
-
-function* createNation(action) {
-  if (action.payload) {
-    try {
-      let pangeaLib = yield call(getPangeaLibrary);
-      yield call(checkConnection);
-      let result = yield call(pangeaLib.eth.nation.create, action.payload);
-      yield put({ type: DONE_NATION_CREATE });
-      yield call([action.navigator, 'dismissModal']);
-      yield put({ type: START_NATIONS_FETCH });
-    } catch (e) {
-      console.log('Create nation error: ', e);
-      Alert.alert(extractMessage(e));
-      yield put({ type: CANCEL_LOADING });
-    }
-  }
-}
 
 function* fetchNations() {
   try {
@@ -93,8 +76,7 @@ function* leaveNation() {
   }
 }
 
-export default function* watchProfileUpdate() {
-  yield takeEvery(NATION_CREATE, createNation);
+export default function* watchNatUpdate() {
   yield takeEvery(START_NATIONS_FETCH, fetchNations);
   yield takeEvery(REQUEST_JOIN_NATION, joinNation);
   yield takeEvery(REQUEST_LEAVE_NATION, leaveNation);

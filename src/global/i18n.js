@@ -13,4 +13,6 @@ i18n.init({
   },
 });
 
+i18n.ifExists = key => i18n.exists(key) ? i18n.t(key) : '';
+
 export default i18n;
