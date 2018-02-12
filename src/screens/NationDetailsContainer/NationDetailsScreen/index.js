@@ -67,7 +67,7 @@ class NationDetailsScreen extends Component {
 	}
 
 	_buildTabBar (joined, created) {
-    if ( this.props.isOwner ) {
+    if ( this.props.isDraft ) {
     	return (
         <View style={styles.fakeBottomBar}>
           <NationActionButton iconSource={AssetsImage.Actions.chat}

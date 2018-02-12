@@ -18,7 +18,7 @@ class NationDetailsContainer extends Component {
   constructor(props) {
     super(props);
 
-    if (this.props.isOwner) {
+    if (this.props.isDraft) {
       this.props.navigator.setButtons(
         {
           leftButtons: [],
