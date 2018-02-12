@@ -6,7 +6,11 @@ import GlobalStyles from '../../../global/Styles'
 const styles = MediaQueryStyleSheet.create(
 	{
 		...GlobalStyles,
-		// What is this?
-		//list: { height: 44*5 },
+		
+		walletGridPanel: {
+			...GlobalStyles.gridPanelView,
+			flex: 0,
+			justifyContent: 'flex-start',
+		},
 	})
 export default styles

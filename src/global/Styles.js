@@ -30,6 +30,13 @@ const styles = {
 	// ========================================
 	// Common Layout Elements
 	
+	// Easy style reference to turn off flex, for objects that should
+	// keep their normal size.
+	noflex: {
+		flex: 0,
+	},
+
+	
 	// General screen container for ALL elements
 	// Derived from Apple Human Interface Guidelines
 	// and https://ivomynttinen.com/blog/ios-design-guidelines
@@ -175,15 +182,13 @@ const styles = {
 		justifyContent: 'space-between',
 		alignItems: 'stretch',
 		margin: 4,
-		paddingTop: normalizer(16),
-		paddingBottom: normalizer(16),
 		padding: normalizer(16),
 		borderRadius: 8,
 		backgroundColor: Colors.panelView,
 		overflow: 'hidden',
 	},
 	
-	// Make an element inside a gridPanel flush left/right by
+	// Make an element inside a gridPanelView (e.g. style=listContainer) flush left/right by
 	// removing the LR margin indents
 	// Use on a View inside a gridPanelView.
 	removeGridPanelMarginsLR: {
@@ -208,8 +213,8 @@ const styles = {
 		marginRight: 0,
 		paddingTop: normalizer(16),
 		paddingBottom: normalizer(16),
-		paddingLeft: 16,
-		paddingRight: 16,
+		paddingLeft: normalizer(16),
+		paddingRight: normalizer(16),
 		overflow: 'hidden',
 	},
 	
@@ -222,13 +227,13 @@ const styles = {
 		marginBottom: 8,
 		marginLeft: 0,
 		marginRight: 0,
-		paddingTop: 8,
+		paddingTop: normalizer(8),
 		overflow: 'hidden',
 	},
 	
 	// Panel Title Container for the Title and Icon, below
 	panelTitleRowContainer: {
-	    flexDirection: 'row',
+	   flexDirection: 'row',
 	    backgroundColor: 'transparent',
 	    paddingBottom: 8,
 		// Uncomment to show a LINE below the title:
@@ -275,7 +280,6 @@ const styles = {
 	// negative margins that are used to go to the edge of the panel (e.g. by a list).
 	panelChildrenContainer: {
 		marginBottom: 8,
-		//flexShrink: 1,
 		flex: 1,
 	},
 
@@ -578,6 +582,19 @@ const styles = {
 		lineHeight: 20.8,
 		textAlign: 'center',
 	},
+	
+	currencyLarge: {
+		...defaultTextStyles.largeTitle,
+		fontFamily: 'Roboto',
+		fontWeight: '300',
+		fontSize: 30,
+		lineHeight: 36,
+		letterSpacing: 0,
+		color: Colors.currency,
+	},
+	
+	
+	
 	buttonTitle: {
 		fontSize: 14,
 		color: Colors.BitnationLightColor,

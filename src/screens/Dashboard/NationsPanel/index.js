@@ -39,8 +39,7 @@ export default class NationsPanel extends Component {
 					           'screens.dashboard.nationsPanel.title')}>
 					<View style={styles.nationsCountContainer}>
 						<Text style={styles.body}>{nationsCountStrings.prefix}
-							<Text
-								style={styles.nationsCountString}>{nationsCountStrings.main}</Text>
+							<Text style={styles.nationsCountString}>{nationsCountStrings.main}</Text>
 							{nationsCountStrings.suffix}
 						</Text>
 					</View>
