@@ -19,7 +19,7 @@ export const appStyle = {
 export const androidNavigationButtons = Platform.OS === 'android' ? {
   leftButtons: [{
     id: 'back',
-    buttonColor: Colors.white,
+    buttonColor: Colors.androidNavigationButtons,
   }],
 } : {};
 
@@ -32,7 +32,7 @@ export const navigatorStyle = {
   navBarNoBorder: true,
   drawUnderNavBar: true,
   drawUnderStatusBar: false,
-  navBarTextColor: Colors.white,
+  navBarTextColor: Colors.navBarTextColor,
   screenBackgroundColor: 'transparent',
   rootBackgroundImageName: 'background',
 };

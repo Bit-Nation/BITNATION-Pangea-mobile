@@ -143,7 +143,7 @@ const defaultTextStyles = {
 		fontSize: 28,
 		lineHeight: 34,
 		letterSpacing: 0,
-		color: Colors.BitnationLightColor,
+		color: Colors.BitnationVeryLightColor,
 	},
 	
 	title2: {
@@ -152,7 +152,7 @@ const defaultTextStyles = {
 		fontSize: 22,
 		lineHeight: 28,
 		letterSpacing: 0,
-		color: Colors.BitnationLightColor,
+		color: Colors.BitnationVeryLightColor,
 	},
 	
 	title3: {
@@ -161,7 +161,7 @@ const defaultTextStyles = {
 		fontSize: 20,
 		lineHeight: 25,
 		letterSpacing: 0,
-		color: Colors.BitnationLightColor,
+		color: Colors.BitnationVeryLightColor,
 	},
 	
 	headline: {
@@ -170,7 +170,7 @@ const defaultTextStyles = {
 		fontSize: 17,
 		lineHeight: 22,
 		letterSpacing: 0,
-		color: Colors.BitnationLightColor,
+		color: Colors.BitnationVeryLightColor,
 	},
 	
 	body: {
@@ -179,7 +179,7 @@ const defaultTextStyles = {
 		fontSize: 17,
 		lineHeight: 22,
 		letterSpacing: 0,
-		color: Colors.BitnationLightColor,
+		color: Colors.BitnationVeryLightColor,
 	},
 	
 	bodyBold: {
@@ -188,7 +188,7 @@ const defaultTextStyles = {
 		fontSize: 17,
 		lineHeight: 22,
 		letterSpacing: 0,
-		color: Colors.BitnationLightColor,
+		color: Colors.BitnationVeryLightColor,
 	},
 	
 	bodyBlack: {
@@ -197,7 +197,7 @@ const defaultTextStyles = {
 		fontSize: 17,
 		lineHeight: 22,
 		letterSpacing: 0,
-		color: Colors.BitnationLightColor,
+		color: Colors.BitnationVeryLightColor,
 	},
 	
 	callout: {
@@ -206,7 +206,7 @@ const defaultTextStyles = {
 		fontSize: 16,
 		lineHeight: 21,
 		letterSpacing: 0,
-		color: Colors.BitnationLightColor,
+		color: Colors.BitnationVeryLightColor,
 	},
 	
 	subhead: {
@@ -223,7 +223,7 @@ const defaultTextStyles = {
 		fontSize: 13,
 		lineHeight: 18,
 		letterSpacing: 0,
-		color: Colors.BitnationLightColor,
+		color: Colors.BitnationVeryLightColor,
 	},
 	
 	caption1: {
@@ -232,7 +232,7 @@ const defaultTextStyles = {
 		fontSize: 12,
 		lineHeight: 16,
 		letterSpacing: 0,
-		color: Colors.BitnationLightColor,
+		color: Colors.BitnationVeryLightColor,
 	},
 	
 	caption2: {
@@ -241,7 +241,7 @@ const defaultTextStyles = {
 		fontSize: 11,
 		lineHeight: 13,
 		letterSpacing: 0,
-		color: Colors.BitnationLightColor,
+		color: Colors.BitnationVeryLightColor,
 	},
 	
 	

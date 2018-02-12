@@ -3,7 +3,7 @@ const {
   Dimensions
 } = React
 
-const disabledForDebugging = true;
+const disabledForDebugging = false;
 
 const deviceHeight = Dimensions.get('window').height;
 const deviceWidth = Dimensions.get('window').width;
