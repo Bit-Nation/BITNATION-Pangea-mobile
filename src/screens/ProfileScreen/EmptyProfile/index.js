@@ -10,7 +10,6 @@ import styles from './styles'
 import BackgroundImage from '../../../components/common/BackgroundImage'
 import AssetsImage from '../../../global/AssetsImages'
 import PanelView from '../../../components/common/PanelView'
-import FakeNavigationBar from '../../../components/common/FakeNavigationBar'
 import i18n from '../../../global/i18n';
 
 class EmptyProfileScreen extends Component {
@@ -21,30 +20,19 @@ class EmptyProfileScreen extends Component {
 	
 	render () {
 		return (
-			<View style={styles.screenContainer}>
-				<BackgroundImage/>
-				<FakeNavigationBar  />
-				<View style={styles.bodyContainer}>
-					
-					{/* TITLE OF SCREEN */}
-					<View style={styles.titleBarLarge}>
-						<Text style={styles.largeTitle}>{i18n.t('screens.profile.title')}</Text>
-					</View>
-					
-					<PanelView
-						title={i18n.t('screens.profile.empty.createProfilePanel.title')}
-						body={i18n.t('screens.profile.empty.createProfilePanel.text')}
-						buttonTitle={i18n.t('screens.profile.empty.createProfilePanel.button')}
-						onButtonClick={this.props.onCreateUserProfile}
-						style={styles.panelViewTransparent}
-					/>
-					
-					<View style={styles.bottomSpacer}>
-						<Image source={AssetsImage.logo} opacity={0.3} />
-					</View>
-					
-					
+			<View style={styles.bodyContainer}>
+				{/* TITLE OF SCREEN */}
+				<View style={styles.titleBarLarge}>
+					<Text style={styles.largeTitle}>{i18n.t('screens.profile.title')}</Text>
 				</View>
+				
+				<PanelView
+					title={i18n.t('screens.profile.empty.createProfilePanel.title')}
+					body={i18n.t('screens.profile.empty.createProfilePanel.text')}
+					buttonTitle={i18n.t('screens.profile.empty.createProfilePanel.button')}
+					onButtonClick={this.props.onCreateUserProfile}
+					style={styles.panelViewTransparent}
+				/>
 			</View>
 		)
 	}

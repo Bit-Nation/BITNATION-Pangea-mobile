@@ -73,24 +73,19 @@ class EditProfile extends NavigatorComponent {
 	// MAIN SCREEN
 	render () {
 		return (
-			<View style={styles.screenContainer}>
-				<BackgroundImage/>
-				<FakeNavigationBar hidenavigation />
-				
-				<View style={styles.bodyContainer}>
-					{/* SCROLLING PANELS FOR DATA ENTRY */}
-					<KeyboardAwareScrollView style={styles.scrollView}>
-						{/* TITLE OF SCREEN */}
-						<View style={styles.titleContainer}>
-							<View style={styles.titleBarLarge}>
-								<Text style={styles.largeTitle}>{i18n.t('screens.profile.edit.editPhoto')}</Text>
-							</View>
+			<View style={styles.bodyContainer}>
+				{/* SCROLLING PANELS FOR DATA ENTRY */}
+				<KeyboardAwareScrollView style={styles.scrollView}>
+					{/* TITLE OF SCREEN */}
+					<View style={styles.titleContainer}>
+						<View style={styles.titleBarLarge}>
+							<Text style={styles.largeTitle}>{i18n.t('screens.profile.edit.editPhoto')}</Text>
 						</View>
-						
-						{this._buildPicturePanel()}
-						{this._buildProfileForm()}
-					</KeyboardAwareScrollView>
-				</View>
+					</View>
+					
+					{this._buildPicturePanel()}
+					{this._buildProfileForm()}
+				</KeyboardAwareScrollView>
 			</View>
 		)
 	}
@@ -121,8 +116,12 @@ class EditProfile extends NavigatorComponent {
 
 	// ========================================
 	_buildProfileForm () {
+  	    // When more panels appear, we will use
+		// i18n.t('screens.profile.edit.personalInformation')
+		const panelTitle = ''
+		
 		return (
-			<PanelView style={styles.panelViewTransparent} title={i18n.t('screens.profile.edit.personalInformation')}>
+			<PanelView style={styles.panelViewTransparent} title={panelTitle}>
 				<View style={styles.formRow}>
 					<View style={styles.fieldsContainer}>
 						<View style={styles.formRow}>

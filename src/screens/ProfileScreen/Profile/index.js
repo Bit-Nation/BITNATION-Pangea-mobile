@@ -65,15 +65,19 @@ class ProfileScreen extends NavigatorComponent {
 
   render() {
     return (
-      <View style={styles.container}>
-        <BackgroundImage/>
-        <FakeNavigationBar/>
-        {this._buildHeader()}
+	    <View style={styles.bodyContainer}>
+		    <View style={styles.titleBarLarge}>
+			    <Text style={styles.largeTitle}>{i18n.t('screens.profile.title')}</Text>
+		    </View>
+		
+		    {this._buildHeader()}
+
+            {/*   Future use:
         <ScrollView>
-          {/*  Commented for Sprint 0.3.1  */}
-          {/*this._buildHolonsView()*/}
-          {/*this._buildAchievemntsView()*/}
+          this._buildHolonsView()
+          this._buildAchievemntsView()
         </ScrollView>
+*/}
       </View>
     );
   }
