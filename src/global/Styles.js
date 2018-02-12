@@ -259,11 +259,11 @@ const styles = {
     alignItems: 'flex-end',
   },
 	
-	// Text style for the Panel Title
-	panelTitle: {
+	// Text style for the Panel Vi
+	panelViewTitle: {
 		...defaultTextStyles.title2,
 		fontWeight: 'bold',
-		color: Colors.titleColor,
+		color: Colors.panelViewTitleColor,
 		textAlign: 'left',
 	},
 

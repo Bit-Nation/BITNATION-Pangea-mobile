@@ -175,7 +175,7 @@
       },
       "walletPanel": {
         "title": "$t(common.wallet)",
-        "empty": "Begin using Pangea by creating your wallet."
+        "empty": "Create a wallet to use Pangea."
       },
       "nationsPanel": {
         "title": "$t(common.nations)",

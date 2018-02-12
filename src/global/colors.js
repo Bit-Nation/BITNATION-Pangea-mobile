@@ -89,8 +89,10 @@ export default {
 	BitnationHighlightColor: BitnationHighlightColor,
 	
 	// Colors for common Text Styles
-	// e.g. very large titles on screens
+	// e.g. large titles on screens
 	titleColor: BitnationHighlightColor,
+	panelViewTitleColor: 'white',
+	
 	currency: '#FFDD15',
 	
 	// Tab Bar (Navigation Bar for the app)

@@ -146,7 +146,7 @@ const Screens = {
     screen: 'Pangea.ProfileScreen',
     label: i18n.t('screens.profile.tabTitle'),
     icon: AssetsImages.TabIcons.profile,
-    title: i18n.t('screens.profile.title'),
+    title: '',//i18n.t('screens.profile.title'),
     navigatorStyle,
   },
   CREATE_KEY_INTRODUCTION_SCREEN: {
