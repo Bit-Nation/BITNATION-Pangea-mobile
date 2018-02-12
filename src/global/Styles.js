@@ -130,6 +130,11 @@ const styles = {
 		marginLeft: 8,
 		marginRight: 8,
 	},
+
+  titleBarLargeNationDetail: {
+    height: normalizer(92),
+    alignItems: 'flex-start',
+  },
 	
 	// Used as part of the body of a screen, but if the body area goes to the edges
 	// (e.g. a scrolling body with a table) you  might need margins.
@@ -560,10 +565,21 @@ const styles = {
 	},
 	tabBarTitle: {
 		marginTop: 4,
-		color: '#8E8E93',
+		color: Colors.white,
 		backgroundColor: 'transparent',
 		fontSize: 10,
 	},
+
+	//=========================================
+	// Styles for the custom Tool Bar replacing the Tab Bar
+  fakeBottomBar: {
+    paddingTop:5,
+    height: 55,
+    backgroundColor: Colors.LightBlue,
+    flexDirection: 'row',
+    alignItems: 'stretch',
+    justifyContent: 'space-around',
+  },
 	
 	// ========================================
 	// Basic Text Styles, e.g. components/common/Text.js

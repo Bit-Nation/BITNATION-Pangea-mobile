@@ -11,6 +11,7 @@ import { resolveNation } from '../../utils/nations';
 import Colors from '../../global/colors';
 import NavigatorComponent from '../../components/common/NavigatorComponent';
 import i18n from '../../global/i18n';
+import { startNationCreation } from '../../actions/modifyNation';
 
 const NEW_BUTTON = 'NEW_BUTTON';
 
@@ -37,6 +38,7 @@ class NationsScreen extends NavigatorComponent {
       if (_.isEmpty(this.props.wallets)) {
         this._showCreatePrivateKeyAlert();
       } else {
+        this.props.startNationCreation();
         this.props.navigator.showModal(screen('NATION_CREATE_SCREEN'));
       }
     }
@@ -93,6 +95,9 @@ const mapDispatchToProps = dispatch => ({
   fetchNations() {
     dispatch(requestFetchNations());
   },
+  startNationCreation() {
+    dispatch(startNationCreation());
+  }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NationsScreen);

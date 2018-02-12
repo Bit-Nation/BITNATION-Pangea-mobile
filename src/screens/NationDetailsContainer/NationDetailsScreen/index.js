@@ -35,8 +35,6 @@ class NationDetailsScreen extends Component {
 						{console.log('joined nation: ', nation.joined)}
 					</View>
 				</View>
-
-				{this._buildTabBar(nation.joined, nation.idInSmartContract >= 0)}
 				<View style={styles.bodyContainer}>
 					<ScrollView style={styles.scrollView}>
 						{/* Fake Map panel */}
@@ -57,13 +55,14 @@ class NationDetailsScreen extends Component {
 						{this._buildFactsView(nation)}
 					</ScrollView>
 				</View>
+        {this._buildTabBar(nation.joined, nation.idInSmartContract >= 0)}
 			</View>
 		)
 	}
 
 	_buildTabBar (joined, created) {
 		return (
-			<View style={styles.tabBar}>
+			<View style={styles.fakeBottomBar}>
 				<NationActionButton iconSource={AssetsImage.Actions.chat}
 				                    title={i18n.t('screens.nationDetails.chatButton')} disable={true}/>
 				<NationActionButton iconSource={AssetsImage.Actions.map}

@@ -81,6 +81,11 @@ export const hiddenNavigatorStyle = {
   rootBackgroundImageName: 'background-gray.jpg',
 };
 
+export const navigatorStyleModal = {
+  ...navigatorStyle,
+  tabBarHidden: true,
+};
+
 const baseKeyScreen = {
   navigatorStyle: {
     ...navigatorStyle,
@@ -122,8 +127,8 @@ const Screens = {
   },
   NATION_DETAILS_SCREEN: {
     screen: 'Pangea.NationDetailsScreen',
-    title: i18n.t('screens.nationDetails.title'),
-    navigatorStyle,
+    title: '',
+    navigatorStyle: navigatorStyleModal,
   },
   NATION_CREATE_SCREEN: {
     screen: 'Pangea.NationCreateScreen',
