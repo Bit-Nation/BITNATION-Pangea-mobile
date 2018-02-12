@@ -23,6 +23,7 @@ export default class ActivityPanel extends Component {
     return (
       <View style={style}>
         <PanelView style={styles.flex}
+                   titleStyle={styles.panelViewTitle}
                    childrenContainerStyle={styles.flex}
                    title={i18n.t('screens.dashboard.activityPanel.title')}>
           <FlatList

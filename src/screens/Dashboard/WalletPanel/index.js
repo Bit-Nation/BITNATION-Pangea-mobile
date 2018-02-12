@@ -26,9 +26,10 @@ export default class WalletPanel extends Component {
 					style={styles.walletGridPanel}
 					childrenContainerStyle={styles.noflex}
 					title={i18n.t('screens.dashboard.walletPanel.title')}
+					titleStyle={styles.panelViewTitle}
 					>
 						{_.isEmpty(this.props.wallets) ?
-							<Text>{i18n.t('screens.dashboard.walletPanel.empty')}</Text>
+							<Text style={styles.body}>{i18n.t('screens.dashboard.walletPanel.empty')}</Text>
 							: <View><Text style={styles.footnote}>ETH</Text>
 								<Text style={styles.currencyLarge}>{prettyWalletBalance(this.props.wallets[0], ' ')}</Text></View>
 						}

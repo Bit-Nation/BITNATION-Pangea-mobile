@@ -7,6 +7,12 @@ import Colors from '../../../global/colors'
 const styles = {
 	...GlobalStyles,
 	
+	
+	panelViewTitle: {
+		...GlobalStyles.panelViewTitle,
+		color: Colors.BitnationHighlightColor,
+	},
+	
 	// View: The panel holding the nations info.
 	// Make the contents align to top.
 	nationsGridPanel: {

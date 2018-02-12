@@ -66,6 +66,7 @@ class Dashboard extends Component {
 									'screens.dashboard.warningPanel.button')}
 								onButtonClick={this._onSelectMore}
 								style={styles.warningPanel}
+								titleStyle={styles.panelViewTitle}
 							>
 								<Text style={styles.warningPanelBody}>{i18n.t(
 									'screens.dashboard.warningPanel.body')}</Text>

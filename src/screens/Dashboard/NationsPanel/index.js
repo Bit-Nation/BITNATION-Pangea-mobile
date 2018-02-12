@@ -35,6 +35,7 @@ export default class NationsPanel extends Component {
 		return (
 			<View style={style}>
 				<PanelView style={styles.nationsGridPanel}
+				           titleStyle={styles.panelViewTitle}
 				           title={i18n.t(
 					           'screens.dashboard.nationsPanel.title')}>
 					<View style={styles.nationsCountContainer}>
