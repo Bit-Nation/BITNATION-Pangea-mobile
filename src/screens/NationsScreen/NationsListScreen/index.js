@@ -37,7 +37,7 @@ class NationsListScreen extends Component {
         <View style={styles.titleContainer}>
           {/* TITLE OF SCREEN */}
           <View style={styles.titleBarLarge}>
-            <Text style={styles.largeTitle}>Nations</Text>
+            <Text style={styles.largeTitle}>{i18n.t('screens.nations.title')}</Text>
           </View>
         </View>
         <View style={styles.segmentedControlContainer}>

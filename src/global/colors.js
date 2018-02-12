@@ -166,6 +166,19 @@ export default {
 	
 	// NAVIGATOR COLORS (in SCREENS.JS)
 	navBarTextColor: 'white',
+	navBarButtonColor: 'white',
+	navBarBackgroundColor: 'transparent',
+	
+	disabledButtonColor: '#F1F2F6', // gray_200
+	
+	// If navBarTranslucent=false, the FakeNavigationBar pushes everything down below!
+	navBarTranslucent: true,
+	navBarTransparent: true,
+	
+	navBarNoBorder: true,
+	
+	statusBarColorOther: 'black',
+	statusBarColorIOS: 'black',
 	
 	
 	// PLATFORM SPECIFIC COLORS

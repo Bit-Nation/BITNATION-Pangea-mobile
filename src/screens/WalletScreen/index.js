@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  View,
+  View, Text,
 } from 'react-native';
 import { connect } from 'react-redux';
 import _ from 'lodash';
@@ -13,6 +13,8 @@ import { selectWallet, updateWalletList } from '../../actions/wallet';
 import NavigatorComponent from '../../components/common/NavigatorComponent';
 import { removeAllPrivateKeys } from '../../actions/key';
 import i18n from '../../global/i18n';
+import styles from '../NationsScreen/NationsListScreen/styles'
+import FakeNavigationBar from '../../components/common/FakeNavigationBar';
 
 const REMOVE_WALLETS_BUTTON = 'REMOVE_WALLETS_BUTTON';
 
@@ -68,6 +70,13 @@ class WalletScreen extends NavigatorComponent {
     return (
       <View style={{ flex: 1 }}>
         <Background/>
+	      <FakeNavigationBar/>
+	      <View style={styles.titleContainer}>
+		      {/* TITLE OF SCREEN */}
+		      <View style={styles.titleBarLarge}>
+			      <Text style={styles.largeTitle}>{i18n.t('screens.wallet.title')}</Text>
+		      </View>
+	      </View>
         {_.isEmpty(this.props.wallets) ?
           <EmptyWalletScreen
             onCreateWallet={this.createWallet}
