@@ -8,6 +8,10 @@ import { nationDraftSaveResult } from '../../actions/modifyNation';
 import { deleteDraft } from './serviceFunctions';
 import { nationDraftDeleteResult } from '../../actions/modifyNation';
 import { startNationEditing } from '../../actions/modifyNation';
+import { saveAndSubmit } from './serviceFunctions';
+import { submitDraft } from './serviceFunctions';
+import { nationIsModified } from '../../reducers/modifyNation';
+import { nationSubmitResult } from '../../actions/modifyNation';
 
 export function* saveDraftSaga(action) {
   const nationData = action.nation;
@@ -36,6 +40,30 @@ export function* deleteDraftSaga(action) {
     yield put(nationDraftDeleteResult(nationId));
   } catch (error) {
     yield put(nationDraftDeleteResult(nationId, error));
+  } finally {
+    if (action.callback) {
+      yield call(action.callback);
+    }
+  }
+}
+
+export function* submitNationSaga(action) {
+  const nationData = action.nation;
+  try {
+    let nation;
+    if (nationData.id === undefined) {
+      nation = yield call(saveAndSubmit, nationData);
+    } else {
+      const state = yield select();
+      const isModified = nationIsModified(state.modifyNation);
+      if (isModified) {
+        yield call(updateDraft, nationData.id, nationData);
+      }
+      nation = yield call(submitDraft, nationData.id);
+    }
+    yield put(nationSubmitResult(nation.id));
+  } catch (error) {
+    yield put(nationSubmitResult(nationData.id, error));
   } finally {
     if (action.callback) {
       yield call(action.callback);

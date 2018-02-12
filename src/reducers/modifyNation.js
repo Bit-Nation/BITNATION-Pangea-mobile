@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 import {
   START_NATION_CREATION,
   START_NATION_EDITING,
@@ -11,7 +13,6 @@ import {
   NATION_DRAFT_SAVE_FINISHED,
   NATION_DRAFT_DELETE_FINISHED,
 } from '../actions/modifyNation';
-import { resolveNation } from '../utils/nations';
 
 export const emptyNation = {
   nationName: '',
@@ -103,4 +104,8 @@ export default function (state = initialState, action) {
   }
 
   return state;
+}
+
+export function nationIsModified(state) {
+  return !_.isEqual(state.initialNation, state.editingNation);
 }

@@ -12,6 +12,7 @@ import {
   submitNation,
 } from '../../actions/modifyNation';
 import { errorAlert, alert } from '../../global/alerts';
+import { nationIsModified } from '../../reducers/modifyNation';
 
 class NationCreateContainer extends Component {
 
@@ -114,7 +115,14 @@ class NationCreateContainer extends Component {
         style: 'cancel',
       }, {
         name: 'confirm',
-        onPress: () => this.props.onSubmitNation(),
+        onPress: () => this.props.onSubmitNation(this.props.editingNation, () => {
+          if (this.props.latestError) {
+            errorAlert(this.props.latestError);
+            return;
+          }
+
+          this.props.navigator.dismissModal();
+        }),
       }],
     );
   };
@@ -144,8 +152,8 @@ const mapDispatchToProps = dispatch => ({
   onDeleteNationDraft(nationId, callback) {
     dispatch(deleteNationDraft(nationId, callback));
   },
-  onSubmitNation() {
-    dispatch(submitNation(data));
+  onSubmitNation(data, callback) {
+    dispatch(submitNation(data, callback));
   },
 });
 

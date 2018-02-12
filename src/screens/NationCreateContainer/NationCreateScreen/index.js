@@ -26,6 +26,7 @@ import Colors from '../../../global/Colors';
 import styles from './styles';
 import i18n from '../../../global/i18n';
 import AssetsImage from '../../../global/AssetsImages';
+import { nationIsModified } from '../../../reducers/modifyNation';
 
 const DONE_BUTTON = 'DONE_BUTTON';
 
@@ -101,9 +102,9 @@ class CreateNation extends NavigatorComponent {
 
 // * New fake bottom Tab Bar / 0.3.2 Sprint design
   _buildBottomBar() {
-    const isModified = !_.isEqual(this.props.editingNation, this.props.initialNation);
-    const canSubmit = isModified && this._nationIsValid(this.props.editingNation);
+    const isModified = nationIsModified(this.props);
     const isSavedDraft = this.props.initialNation.id !== undefined;
+    const canSubmit = this._nationIsValid(this.props.editingNation);
 
     return (
       <View style={styles.fakeBottomBar}>

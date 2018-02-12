@@ -59,10 +59,11 @@ export function deleteNationDraft(nationId, callback) {
   };
 }
 
-export function submitNation(nation) {
+export function submitNation(nation, callback) {
   return {
     type: SUBMIT_NATION,
     nation,
+    callback,
   };
 }
 
