@@ -6,7 +6,7 @@ import {
   SET_USER_PROFILE
 } from '../actions/profile';
 
-export const initialState = {
+const initialState = {
   user: null,
   editingUser: null,
 };

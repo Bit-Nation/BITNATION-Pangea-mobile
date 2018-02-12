@@ -1,10 +1,8 @@
 /*
-	Nation Create Screen
-	Version 0.3.1
-	
-	For usage of ModalDropdown see: https://github.com/sohobloo/react-native-modal-dropdown/blob/master/README.md
+  Nation Create Screen
+  Version 0.3.1
 
-	For usage of MultiSelect see: https://github.com/toystars/react-native-multiple-select (We are using a custom UI version)
+  For usage of MultiSelect see: https://github.com/toystars/react-native-multiple-select (We are using a custom UI version)
  */
 
 import React from 'react';
@@ -23,12 +21,13 @@ import SwitchLabeled from '../../../components/common/SwitchLabeled';
 import MultiSelect from '../../../components/MultiSelect';
 import Images from '../../../global/AssetsImages';
 import Loading from '../../../components/common/Loading';
+import NationActionButton from '../../../components/common/NationActionButton';
 import ModalDropdown from 'react-native-modal-dropdown';
-
 import Colors from '../../../global/colors';
 import styles from './styles';
 import i18n from '../../../global/i18n';
-
+import AssetsImage from '../../../global/AssetsImages';
+import { nationIsModified } from '../../../reducers/modifyNation';
 
 const DONE_BUTTON = 'DONE_BUTTON';
 
@@ -39,92 +38,43 @@ class CreateNation extends NavigatorComponent {
 
     this.actionSheet = null;
     this.multiGovernanceService = null;
-    this._setNavigationButtons(false);
-
-    this.state = {
-      nationName: '',
-      nationDescription: '',
-      exists: false,
-      virtualNation: [i18n.t('enums.nation.locationType.geographical')],
-      nationCode: [],
-      nationCodeLink: '',
-      lawEnforcementMechanism: [],
-      profit: false,
-      decisionMakingProcess: [],
-      diplomaticRecognition: false,
-      governanceService: [],
-      nonCitizenUse: false,
-      agreeFees: false,
-    };
-  }
-
-  _setNavigationButtons(saveEnabled) {
-    this.props.navigator.setButtons(
-      {
-        leftButtons: [
-          {
-            title: i18n.t('screens.createNation.cancelButton'),
-            id: 'cancel',
-            buttonColor: Colors.navigationButtonColor,
-          }],
-        rightButtons: [
-          {
-            title: i18n.t('screens.createNation.doneButton'),
-            id: DONE_BUTTON,
-            disabled: !saveEnabled,
-            buttonColor: Colors.navigationButtonColor,
-          }],
-      },
-    );
+    this.props.navigator.setButtons({
+      leftButtons: [{
+        title: i18n.t('screens.createNation.cancelButton'),
+        id: 'cancel',
+        buttonColor: Colors.navigationButtonColor,
+      }],
+      rightButtons: [],
+    });
   }
 
   onNavBarButtonPress(id) {
     if (id === 'cancel') {
-      this.props.navigator.dismissModal();
-    }
-    if (id === DONE_BUTTON) {
-      let nation = {
-        nationName: this.state.nationName.trim(),
-        nationDescription: this.state.nationDescription.trim(),
-        exists: this.state.exists,
-        virtualNation: this.state.virtualNation[0] === i18n.t('enums.nation.locationType.geographical'),
-        nationCode: this.state.nationCode.join(', '),
-        nationCodeLink: this.state.nationCodeLink,
-        lawEnforcementMechanism: this.state.lawEnforcementMechanism.join(', '),
-        profit: this.state.profit,
-        decisionMakingProcess: this.state.decisionMakingProcess.join(', '),
-        diplomaticRecognition: this.state.diplomaticRecognition,
-        governanceService: this.state.governanceService.join(', '),
-        nonCitizenUse: this.state.nonCitizenUse,
-      };
-      this.props.onCreateNation(nation, this.props.navigator);
+      this.props.onCancelNationCreation();
     }
   }
 
-  _saveShouldBeEnabled() {
-    let enabled = true;
-    if (!this.state.nationName || this.state.nationName == '')
-      enabled = false;
-    if (!this.state.nationDescription || this.state.nationDescription == '')
-      enabled = false;
-    if (!this.state.virtualNation || !this.state.virtualNation.length > 0)
-      enabled = false;
-    if (!this.state.nationCode || !this.state.nationCode.length > 0)
-      enabled = false;
-    if (!this.state.lawEnforcementMechanism || !this.state.lawEnforcementMechanism.length > 0)
-      enabled = false;
-    if (!this.state.decisionMakingProcess || !this.state.decisionMakingProcess.length > 0)
-      enabled = false;
-    if (!this.state.governanceService || !this.state.governanceService.length > 0)
-      enabled = false;
-    this._setNavigationButtons(enabled);
+  _nationIsValid(nation) {
+    if (_.isEmpty(nation.nationName)) return false;
+    if (_.isEmpty(nation.nationDescription)) return false;
+    if (nation.virtualNation === null || nation.virtualNation === undefined) return false;
+    if (_.isEmpty(nation.nationCode)) return false;
+    if (_.isEmpty(nation.lawEnforcementMechanism)) return false;
+    if (_.isEmpty(nation.decisionMakingProcess)) return false;
+    if (_.isEmpty(nation.governanceService)) return false;
+
+    return true;
   }
 
   setFieldValue(field, value) {
-    this.setState({ [field]: value }, this._saveShouldBeEnabled);
+    this.props.onNationChange(field, value);
   }
 
   render() {
+    if (!this.props.editingNation) {
+      return <View/>;
+    }
+
     return (
       <View style={styles.screenContainer}>
         <BackgroundImage/>
@@ -143,10 +93,9 @@ class CreateNation extends NavigatorComponent {
             {this._buildCoreNationView()}
             {this._buildGovernmentalView()}
             {this._buildOptionsView()}
-            {/* {this._buildFeesView()} */}
-            {/*{this._buildBottomView()}*/}
           </ScrollView>
         </View>
+        {this._buildBottomBar()}
         {this.props.inProgress ? <Loading/> : null}
       </View>
     );
@@ -164,6 +113,31 @@ class CreateNation extends NavigatorComponent {
     );
   }
 
+// * New fake bottom Tab Bar / 0.3.2 Sprint design
+  _buildBottomBar() {
+    const isModified = nationIsModified(this.props);
+    const isSavedDraft = this.props.initialNation.id !== undefined;
+    const canSubmit = this._nationIsValid(this.props.editingNation);
+
+    return (
+      <View style={styles.fakeBottomBar}>
+        <NationActionButton iconSource={AssetsImage.Actions.chat}
+                            title={i18n.t('screens.createNation.reset')} disable={!isModified}
+                            onPress={this.props.onResetNationCreation}/>
+        <NationActionButton iconSource={AssetsImage.Actions.chat}
+                            title={i18n.t('screens.createNation.save')} disable={!isModified}
+                            onPress={this.props.onSaveNationDraft}/>
+        <NationActionButton iconSource={AssetsImage.Actions.chat}
+                            title={i18n.t('screens.createNation.delete')} disable={!isSavedDraft}
+                            onPress={this.props.onDeleteNationDraft}/>
+        <NationActionButton iconSource={AssetsImage.Actions.chat}
+                            title={i18n.t('screens.createNation.submit')} disable={!canSubmit}
+                            onPress={this.props.onSubmitNation}/>
+      </View>
+    );
+  }
+      
+
   _buildCoreNationView() {
     return (
       <PanelView style={styles.panelViewTransparent}>
@@ -176,7 +150,7 @@ class CreateNation extends NavigatorComponent {
                 placeholderTextColor={Colors.placeholderTextColor}
                 keyboardType='default'
                 onChangeText={(text) => this.setFieldValue('nationName', text)}
-                value={this.state.nationName}
+                value={this.props.editingNation.nationName}
               />
             </View>
             <View style={styles.formRow}>
@@ -188,7 +162,7 @@ class CreateNation extends NavigatorComponent {
                 placeholderTextColor={Colors.placeholderTextColor}
                 keyboardType='default'
                 onChangeText={(text) => this.setFieldValue('nationDescription', text)}
-                value={this.state.nationDescription}
+                value={this.props.editingNation.nationDescription}
               />
             </View>
           </View>
@@ -199,15 +173,15 @@ class CreateNation extends NavigatorComponent {
               single
               hideTags
               items={[{
-                id: i18n.t('enums.nation.locationType.virtual'),
+                id: true,
                 name: i18n.t('enums.nation.locationType.virtual'),
               }, {
-                id: i18n.t('enums.nation.locationType.geographical'),
+                id: false,
                 name: i18n.t('enums.nation.locationType.geographical'),
               }]}
               uniqueKey="id"
-              onSelectedItemsChange={(selectedItems) => this.setFieldValue('virtualNation', selectedItems)}
-              selectedItems={this.state.virtualNation}
+              onSelectedItemsChange={(selectedItems) => this.setFieldValue('virtualNation', selectedItems[0])}
+              selectedItems={[this.props.editingNation.virtualNation]}
               selectText={i18n.t('screens.createNation.prompt.location')}
               onChangeInput={(text) => console.log(text)}
               tagRemoveIconColor="#CCC"
@@ -224,7 +198,7 @@ class CreateNation extends NavigatorComponent {
           <View style={styles.fieldsContainer}>
             <SwitchLabeled
               label={i18n.t('screens.createNation.prompt.represents')}
-              value={this.state.exists}
+              value={this.props.editingNation.exists}
               onValueChange={(value) => this.setFieldValue('exists', value)}
             />
           </View>
@@ -269,8 +243,8 @@ class CreateNation extends NavigatorComponent {
                 name: i18n.t('enums.nation.legalCode.civil'),
               }]}
               uniqueKey="id"
-              onSelectedItemsChange={(selectedItems) => this.setFieldValue('nationCode', selectedItems)}
-              selectedItems={this.state.nationCode}
+              onSelectedItemsChange={(selectedItems) => this.setFieldValue('nationCode', selectedItems[0])}
+              selectedItems={[this.props.editingNation.nationCode]}
               selectText={i18n.t('screens.createNation.prompt.legalCode')}
               onChangeInput={(text) => console.log(text)}
               tagRemoveIconColor="#CCC"
@@ -305,8 +279,8 @@ class CreateNation extends NavigatorComponent {
                 name: i18n.t('enums.nation.lawEnforcementMechanism.international'),
               }]}
               uniqueKey="id"
-              onSelectedItemsChange={(selectedItems) => this.setFieldValue('lawEnforcementMechanism', selectedItems)}
-              selectedItems={this.state.lawEnforcementMechanism}
+              onSelectedItemsChange={(selectedItems) => this.setFieldValue('lawEnforcementMechanism', selectedItems[0])}
+              selectedItems={[this.props.editingNation.lawEnforcementMechanism]}
               selectText={i18n.t('screens.createNation.prompt.lawEnforcementMechanism')}
               onChangeInput={(text) => console.log(text)}
               tagRemoveIconColor="#CCC"
@@ -344,8 +318,8 @@ class CreateNation extends NavigatorComponent {
                 name: i18n.t('enums.nation.governmentType.theocracy'),
               }]}
               uniqueKey="id"
-              onSelectedItemsChange={(selectedItems) => this.setFieldValue('decisionMakingProcess', selectedItems)}
-              selectedItems={this.state.decisionMakingProcess}
+              onSelectedItemsChange={(selectedItems) => this.setFieldValue('decisionMakingProcess', selectedItems[0])}
+              selectedItems={[this.props.editingNation.decisionMakingProcess]}
               selectText={i18n.t('screens.createNation.prompt.typeOfGovernment')}
               onChangeInput={(text) => console.log(text)}
               tagRemoveIconColor="#CCC"
@@ -381,7 +355,7 @@ class CreateNation extends NavigatorComponent {
               uniqueKey="id"
               ref={(component) => this.multiGovernanceService = component}
               onSelectedItemsChange={(selectedItems) => this.setFieldValue('governanceService', selectedItems)}
-              selectedItems={this.state.governanceService}
+              selectedItems={this.props.editingNation.governanceService}
               selectText={i18n.t('screens.createNation.prompt.servicesOffered')}
               onChangeInput={(text) => console.log(text)}
               tagRemoveIconColor="#CCC"
@@ -393,7 +367,7 @@ class CreateNation extends NavigatorComponent {
               submitButtonText={i18n.t('common.ok')}
             />
             <View>
-              {this.multiGovernanceService && this.multiGovernanceService.getSelectedItemsExt(this.state.governanceService)}
+              {this.multiGovernanceService && this.multiGovernanceService.getSelectedItemsExt(this.props.editingNation.governanceService)}
             </View>
           </View>
         </View>
@@ -408,7 +382,7 @@ class CreateNation extends NavigatorComponent {
           <View style={styles.fieldsContainer}>
             <SwitchLabeled
               label={i18n.t('screens.createNation.prompt.diplomaticRecognition')}
-              value={this.state.diplomaticRecognition}
+              value={this.props.editingNation.diplomaticRecognition}
               onValueChange={(value) => this.setFieldValue('diplomaticRecognition', value)}
             />
           </View>
@@ -417,7 +391,7 @@ class CreateNation extends NavigatorComponent {
           <View style={styles.fieldsContainer}>
             <SwitchLabeled
               label={i18n.t('screens.createNation.prompt.servicesUsage')}
-              value={this.state.nonCitizenUse}
+              value={this.props.editingNation.nonCitizenUse}
               onValueChange={(value) => this.setFieldValue('nonCitizenUse', value)}
             />
           </View>
@@ -426,7 +400,7 @@ class CreateNation extends NavigatorComponent {
           <View style={styles.fieldsContainer}>
             <SwitchLabeled
               label={i18n.t('screens.createNation.prompt.profit')}
-              value={this.state.profit}
+              value={this.props.editingNation.profit}
               onValueChange={(value) => this.setFieldValue('profit', value)}
             />
           </View>
@@ -435,22 +409,14 @@ class CreateNation extends NavigatorComponent {
     );
   }
 
-  _buildBottomView() {
-    return (
-      <View style={styles.nationsScreenImageContainer}>
-        <Image
-          style={styles.secondImageContainer}
-          source={Images.logo}
-          resizeMode="contain"
-        />
-      </View>
-    );
-  }
 }
 
 CreateNation.propTypes = {
   onCancelNationCreation: PropTypes.func.isRequired,
-  onCreateNation: PropTypes.func.isRequired,
+  onResetNationCreation: PropTypes.func.isRequired,
+  onSaveNationDraft: PropTypes.func.isRequired,
+  onDeleteNationDraft: PropTypes.func.isRequired,
+  onSubmitNation: PropTypes.func.isRequired,
 };
 
 export default CreateNation;
