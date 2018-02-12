@@ -133,6 +133,10 @@
       "subtitle": "Do you want to save this nations as a draft on your device?",
       "save": "Save",
       "cancel": "$t(common.cancel)"
+    },
+    "error": {
+      "title": "Error",
+      "confirm": "$t(common.ok)"
     }
   },
   "screens": {

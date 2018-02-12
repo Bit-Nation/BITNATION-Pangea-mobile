@@ -3,10 +3,10 @@ import i18n from './i18n';
 
 export function errorAlert(error) {
   Alert.alert(
-    'ERROR',
-    error.transKey,
+    i18n.t('alerts.error.title'),
+    i18n.t(error.transKey),
     [
-      { text: 'OK' },
+      { text: i18n.t('alerts.error.confirm') },
     ],
     { cancelable: false },
   );
