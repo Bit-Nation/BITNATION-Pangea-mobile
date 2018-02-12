@@ -1,7 +1,6 @@
 import {
   SWITCH_NATIONS_TAB,
   OPEN_NATION,
-  DONE_NATION_CREATE,
   DONE_FETCH_NATIONS,
   CANCEL_LOADING,
   START_NATIONS_FETCH,
@@ -18,7 +17,6 @@ const initialState = {
   searchString: null,
   selectedTab: ALL_NATIONS,
   openedNationId: null,
-  nation: null,
   creatingNation: null,
   inProgress: false,
 };
@@ -34,13 +32,6 @@ export default function (state = initialState, action) {
       return {
         ...state,
         openedNationId: action.nationId
-      };
-    case DONE_NATION_CREATE:
-      return {
-        ...state,
-        nation: state.creatingNation,
-        creatingNation: null,
-        inProgress: false
       };
     case START_NATIONS_FETCH:
       return {

@@ -2,7 +2,7 @@ import { call, put, select, takeEvery } from 'redux-saga/effects';
 import { Alert } from 'react-native';
 
 import {
-  DONE_NATION_CREATE, START_NATIONS_FETCH, DONE_FETCH_NATIONS,
+  START_NATIONS_FETCH, DONE_FETCH_NATIONS,
   CANCEL_LOADING, REQUEST_JOIN_NATION, REQUEST_LEAVE_NATION,
 } from '../actions/nations';
 import { getPangeaLibrary } from '../services/container';
