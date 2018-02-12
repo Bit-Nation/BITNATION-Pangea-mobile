@@ -47,16 +47,7 @@ export const hiddenNavigatorStyle = {
 };
 
 export const navigatorStyleModal = {
-  statusBarTextColorScheme: 'light',
-  statusBarColor: Platform.OS === 'ios' ? 'transparent' : 'black',
-  navBarTransparent: true,
-  navBarTranslucent: true,
-  navBarNoBorder: true,
-  drawUnderNavBar: true,
-  drawUnderStatusBar: false,
-  navBarTextColor: Colors.white,
-  screenBackgroundColor: 'transparent',
-  rootBackgroundImageName: 'background',
+  ...navigatorStyle,
   tabBarHidden: true,
 };
 
