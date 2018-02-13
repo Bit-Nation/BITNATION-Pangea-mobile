@@ -8,7 +8,7 @@ import {
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styles from './styles';
-import { GiftedChat, Composer, InputToolbar } from 'react-native-gifted-chat';
+import { GiftedChat, Composer, InputToolbar, Bubble } from 'react-native-gifted-chat';
 import AssetsImages from '../../global/AssetsImages';
 
 import BackgroundImage from '../../components/common/BackgroundImage';
@@ -28,30 +28,31 @@ class ChatScreen extends React.Component {
         {
           _id: 1,
           text: 'Hello, David what\'s cracking?',
-          createdAt: new Date(),
+          // createdAt: new Date(),
+          createdAt: new Date(Date.UTC(2018, 1, 14, 20, 20, 0)),
           user: {
             _id: 2,
             name: 'Girl',
-            avatar: 'https://image.flaticon.com/icons/png/128/220/220126.png',
+            // avatar: 'https://image.flaticon.com/icons/png/128/220/220126.png',
           },
-          showUserAvatar: true,
+          // showUserAvatar: true,
         },
         {
           _id: 2,
           text: 'What\'s the status of our agreement? Can we schedule a call for later this week?',
-          createdAt: new Date(Date.UTC(2016, 5, 11, 17, 20, 0)),
+          createdAt: new Date(Date.UTC(2018, 1, 14, 17, 20, 0)),
           user: {
             _id: 3,
             name: 'Piggie',
-            avatar: 'https://image.flaticon.com/icons/png/128/220/220127.png',
+            // avatar: 'https://image.flaticon.com/icons/png/128/220/220127.png',
           },
-          showUserAvatar: true,
+          // showUserAvatar: true,
           // Any additional custom parameters are passed through
         },
         {
           _id: 3,
           text: 'My message ',
-          createdAt: new Date(Date.UTC(2016, 5, 11, 17, 20, 0)),
+          createdAt: new Date(Date.UTC(2018, 1, 14, 17, 20, 0)),
           user: {
             _id: 1,
             name: 'David',
@@ -87,6 +88,10 @@ class ChatScreen extends React.Component {
           renderInputToolbar={(props) =>
             <InputToolbar {...props} containerStyle={styles.inputToolbar}/>
           }
+          renderBubble={(props) =>
+            <Bubble {...props} customTextStyle={ styles.customTextStyle } />
+          }
+          renderAvatar={null}
         />
       </View>
     );
