@@ -22,7 +22,7 @@ import MultiSelect from '../../../components/MultiSelect';
 import Images from '../../../global/AssetsImages';
 import Loading from '../../../components/common/Loading';
 import NationActionButton from '../../../components/common/NationActionButton';
-import Colors from '../../../global/Colors';
+import Colors from '../../../global/сolors';
 import styles from './styles';
 import i18n from '../../../global/i18n';
 import AssetsImage from '../../../global/AssetsImages';

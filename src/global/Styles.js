@@ -1,6 +1,6 @@
 import { MediaQueryStyleSheet } from 'react-native-responsive'
-import Colors from './Colors'
-import { normalizer, normalWidthMargin } from '../utils/normalizer'
+import Colors from './colors'
+import { normalizer} from '../utils/normalizer'
 
 // ========================================
 // DEFAULT TEXT STYLES

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
 
-import Colors from '../../global/Colors';
+import Colors from '../../global/colors';
 import GlobalStyles from '../../global/Styles';
 
 {/*  *************************

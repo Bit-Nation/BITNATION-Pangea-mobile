@@ -1,7 +1,7 @@
 import MultiSelect from '../../../../src/components/MultiSelect';
 import React from 'react';
 import renderer from 'react-test-renderer'
-import Colors from "../../../../src/global/Colors";
+import Colors from "../../../../src/global/colors";
 
 test('MultiSelect renders correctly', () => {
   const tree = renderer.create(
