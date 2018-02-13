@@ -9,7 +9,7 @@ export function convertToDatabase(nationData) {
     ...nationData,
     // @todo Fix virtual nation save unselected state
     virtualNation: nationData.virtualNation === null ? true : nationData.virtualNation,
-    governanceService: nationData.governanceService.join(' '),
+    governanceService: nationData.governanceService.join(', '),
   };
 }
 
@@ -17,6 +17,6 @@ export function convertFromDatabase(nation) {
   return {
     ...nation,
     // @todo Fix virtual nation save unselected state
-    governanceService: nation.governanceService.split(' '),
+    governanceService: nation.governanceService.split(', '),
   };
 }
