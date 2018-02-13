@@ -14,6 +14,7 @@ import { removePrivateKey, savePrivateKey } from '../../../../actions/key';
 import KeyBaseScreen from '../../KeyBaseScreen';
 import BodyParagraphs from '../../../../components/common/BodyParagraphs';
 import i18n from '../../../../global/i18n';
+import PanelView from '../../../../components/common/PanelView';
 
 const paragraphs = [
   'Congratulations, you correctly entered your private key.',
