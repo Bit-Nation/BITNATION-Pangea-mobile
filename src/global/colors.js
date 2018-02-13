@@ -99,8 +99,8 @@ export default {
 	tabBarBackgroundColor: BitnationBackgroundColor,
 	tabBarSelectedLabelColor: 'white',
 	tabBarSelectedButtonColor: 'white',
-	tabBarLabelColor: '#a6c5e5',
-	tabBarButtonColor: '#a6c5e5',
+	tabBarLabelColor: 'white',
+	tabBarButtonColor: '#9fc9fa',
 	
 	// Toolbars (e.g. Create Nation)
 	toolBarBackgroundColor: BitnationBackgroundColor,

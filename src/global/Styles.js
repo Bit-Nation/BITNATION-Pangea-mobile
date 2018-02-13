@@ -50,6 +50,7 @@ const styles = {
 	
 	// Container for the main area, below navigation but above the bottom tab bar (if existing)
 	// Used for wallet, nation create, etc.
+	// This container requires the contents to add additional left/right margins!
 	bodyContainer: {
 		flex: 1,
 		flexDirection: 'column',
@@ -75,10 +76,24 @@ const styles = {
 		marginRight: 8,
 	},
 	
+	// ScrollView default container style
+	scrollView: {
+		flex: 1,
+	},
+	
+	// Extra space for the top of a page of text, to distinguish from nav.
+	bodyTopSpacer: {
+		height: normalizer(18),
+	},
+	
 	// Contains a title for a screen, e.g. Nations or Wallet
+	// Margins position correctly INSIDE a bodyContainer View
 	titleContainer: {
 		marginLeft: 8,
 		marginRight: 8,
+
+		// borderWidth:1,
+		// borderColor:'red',
 	},
 	
 	// A block of text in the body area
@@ -127,8 +142,8 @@ const styles = {
 	titleBarLarge: {
 		height: normalizer(52),
 		alignItems: 'flex-start',
-		marginLeft: 8,
-		marginRight: 8,
+		// marginLeft: 8,
+		// marginRight: 8,
 	},
 
   titleBarLargeNationDetail: {
@@ -163,7 +178,7 @@ const styles = {
 		flexDirection: 'column',
 		alignItems: 'stretch',
 	},
-	
+
 	// From Create Nations Screen:
 	nationsScreenImageContainer: {
 		flex: 1,
@@ -187,18 +202,19 @@ const styles = {
 		justifyContent: 'space-between',
 		alignItems: 'stretch',
 		margin: 4,
-		padding: normalizer(16),
 		borderRadius: 8,
 		backgroundColor: Colors.panelView,
 		overflow: 'hidden',
+		// INDENTS
+		padding: normalizer(16),
 	},
 	
 	// Make an element inside a gridPanelView (e.g. style=listContainer) flush left/right by
 	// removing the LR margin indents
 	// Use on a View inside a gridPanelView.
 	removeGridPanelMarginsLR: {
-		marginLeft: -16,
-		marginRight: -16,
+		marginLeft: normalizer(-16),
+		marginRight: normalizer(-16),
 	},
 	
 	// ========================================
@@ -216,11 +232,17 @@ const styles = {
 		marginBottom: 4,
 		marginLeft: 0,
 		marginRight: 0,
-		paddingTop: normalizer(16),
-		paddingBottom: normalizer(16),
-		paddingLeft: normalizer(16),
-		paddingRight: normalizer(16),
 		overflow: 'hidden',
+		// INDENTS:
+		// paddingLeft: 8,
+		// paddingRight: 8,
+		// paddingTop: 4,
+		// paddingBottom: 4,
+		
+		padding: normalizer(16),
+		
+		// borderWidth:5,
+		// borderColor:'yellow',
 	},
 	
 	panelViewTransparent: {
@@ -232,15 +254,21 @@ const styles = {
 		marginBottom: 8,
 		marginLeft: 0,
 		marginRight: 0,
-		paddingTop: normalizer(8),
-		overflow: 'hidden',
+		//overflow: 'hidden',
+		paddingLeft: 8,
+		paddingRight: 8,
+		paddingTop: 4,
+		paddingBottom: 4,
+		
+		// borderWidth:1,
+		// borderColor:'green',
 	},
 	
 	// Panel Title Container for the Title and Icon, below
 	panelTitleRowContainer: {
 	   flexDirection: 'row',
 	    backgroundColor: 'transparent',
-	    paddingBottom: 8,
+	    paddingBottom: 4,
 		// Uncomment to show a LINE below the title:
 		//borderBottomColor: Colors.BlueGrey,
 		//borderStyle: 'solid',
@@ -284,15 +312,22 @@ const styles = {
 	// Hint: don't set overflow to 'hidden' because that will defeat
 	// negative margins that are used to go to the edge of the panel (e.g. by a list).
 	panelChildrenContainer: {
-		marginBottom: 8,
 		flex: 1,
+		marginBottom: 4,
+
+		// borderWidth:2,
+		// borderColor:'magenta',
 	},
 
 	// View: Text block passed to panel. Similar to children, but more limited.
+	// Indented left/right
 	panelBodyContainer: {
         marginBottom: 8,
 		flexShrink: 1,
 		overflow: 'hidden',
+
+		// borderWidth:1,
+		// borderColor:'#888',
 	},
 	
 	panelBody: {
@@ -316,7 +351,7 @@ const styles = {
 	panelFlatlistHeader: {
 		justifyContent: 'center',
 		backgroundColor: Colors.shadeOf(Colors.BitnationDarkColor, 0.5),
-		// Matches the marginLeft:16 of sectionListItemContainer
+		// Matches the marginLeft: 16 of sectionListItemContainer
 		paddingLeft: 16,
 		// Standard row height for an iOS list item:
 		height: 30,
@@ -518,7 +553,7 @@ const styles = {
 	},
 
 	sectionListDisclosure: {
-		marginRight:16,
+		marginRight: 16,
 		width: 8,
 		height: 15,
 	},

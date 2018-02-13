@@ -22,8 +22,10 @@ class EmptyProfileScreen extends Component {
 		return (
 			<View style={styles.bodyContainer}>
 				{/* TITLE OF SCREEN */}
-				<View style={styles.titleBarLarge}>
-					<Text style={styles.largeTitle}>{i18n.t('screens.profile.title')}</Text>
+				<View style={styles.titleContainer}>
+					<View style={styles.titleBarLarge}>
+						<Text style={styles.largeTitle}>{i18n.t('screens.profile.title')}</Text>
+					</View>
 				</View>
 				
 				<PanelView

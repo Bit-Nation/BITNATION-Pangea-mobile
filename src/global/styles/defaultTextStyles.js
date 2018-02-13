@@ -130,9 +130,9 @@ const defaultTextStyles = {
 	
 	largeTitle: {
 		fontFamily: 'Roboto',
-		fontWeight: 'bold',
-		fontSize: 34,
-		lineHeight: 41,
+		fontWeight: '900',
+		fontSize: 22,
+		lineHeight: 30,
 		letterSpacing: 0,
 		color: Colors.BitnationHighlightColor,
 	},
@@ -206,7 +206,7 @@ const defaultTextStyles = {
 		fontSize: 16,
 		lineHeight: 21,
 		letterSpacing: 0,
-		color: Colors.BitnationVeryLightColor,
+		color: Colors.BitnationLightColor,
 	},
 	
 	subhead: {
@@ -223,7 +223,7 @@ const defaultTextStyles = {
 		fontSize: 13,
 		lineHeight: 18,
 		letterSpacing: 0,
-		color: Colors.BitnationVeryLightColor,
+		color: Colors.BitnationLightColor,
 	},
 	
 	caption1: {
@@ -232,7 +232,7 @@ const defaultTextStyles = {
 		fontSize: 12,
 		lineHeight: 16,
 		letterSpacing: 0,
-		color: Colors.BitnationVeryLightColor,
+		color: Colors.BitnationLightColor,
 	},
 	
 	caption2: {
@@ -241,7 +241,7 @@ const defaultTextStyles = {
 		fontSize: 11,
 		lineHeight: 13,
 		letterSpacing: 0,
-		color: Colors.BitnationVeryLightColor,
+		color: Colors.BitnationLightColor,
 	},
 	
 	

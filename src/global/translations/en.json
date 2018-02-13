@@ -258,16 +258,16 @@
       "title": "$t(common.wallet)",
       "tabTitle": "$t(tabbar.wallet)",
       "empty": {
-        "createWallet": "Create a Wallet",
-        "restoreWallet": "Restore a Wallet",
+        "createWallet": "Create Wallet",
+        "restoreWallet": "Restore Wallet",
         "createWalletPanel": {
           "title": "$t(screens.wallet.empty.createWallet)",
-          "text": "A wallet holds money, such as Ethereum. You will need a wallet to pay for services, such as creating and editing nations, notarizing documents, and other useful services.",
+          "text": "You need an Ethereum wallet to pay for payments, creating nations, and other useful services.",
           "button": "$t(screens.wallet.empty.createWallet)"
         },
         "restoreWalletPanel": {
           "title": "$t(screens.wallet.empty.restoreWallet)",
-          "text": "If you need to restore your wallet (because you lost or upgraded your phone) use the button below.\nYou will need your private key to restore your wallet.",
+          "text": "You can restore your wallet if lost or changed your phone. You will need your private key to restore your wallet.",
           "button": "$t(screens.wallet.empty.restoreWallet)"
         }
       }
@@ -299,13 +299,12 @@
       }
     },
     "createKey": {
-      "title": "Create Private Key",
+      "title": "Create Wallet",
       "introduction": [
-        "To use a secure blockchain, you need a \"private key\". We will make your private key for you.",
-        "We require you to write down your private key on paper. This process only takes a few minutes.",
-        "If your phone is lost, stolen, broken, or upgraded, the only way to restore your wallet is by entering your private key!",
-        "We recommend writing on paper because if your key is on your computer or phone, someone might steal it.",
-        "Your private key protects everything in Bitnation, so be sure to put your paper with with your private key in a safe place."
+        "To secure your wallet, you first need a \"private key\".",
+        "You must write down your private key on paper. This process only takes a few minutes.",
+        "If change your phone, the only way to recover your wallet is by entering your private key!",
+        "Your private key protects everything in Bitnation, so save your written private key in a safe place."
       ],
       "instructions": {
         "beforeGrid": [

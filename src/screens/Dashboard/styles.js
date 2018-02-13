@@ -40,7 +40,10 @@ const styles = {
 		//flex: 2,
 	},
 	
+	// This is a panel, unlike the other styles above, which are views
+	// which hold panelViews.
 	warningPanel: {
+		...GlobalStyles.gridPanelView,
 		flex: 1,
 	},
 	warningPanelBody: {
