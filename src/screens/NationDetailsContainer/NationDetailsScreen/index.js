@@ -28,17 +28,28 @@ class NationDetailsScreen extends Component {
 			<View style={styles.screenContainer}>
 				<BackgroundImage/>
 				<FakeNavigationBar navBarHidden=''/>
-				
-				{/* TITLE OF SCREEN */}
 				<View style={styles.titleContainer}>
 					<View style={styles.titleBarLarge}>
-						<Text style={styles.largeTitle}>{nation.nationName}</Text>
+						<Text
+							style={styles.largeTitle}>{nation.nationName}</Text>
 						{console.log('joined nation: ', nation.joined)}
 					</View>
 				</View>
-
 				<View style={styles.bodyContainer}>
-					<ScrollView>
+					<ScrollView contentContainerStyle={styles.scrollView}>
+						{/* Fake Map panel */}
+						{/*
+            <PanelView style={[styles.panelView]}>
+              <Image source={AssetsImage.Placeholder.map} resizeMode='contain'/>
+            </PanelView>
+*/}
+
+						{/* Fake Achievements Panel */}
+						{/*
+            <PanelView style={[styles.panelView]}>
+              <Image source={AssetsImage.Placeholder.achievements} resizeMode='contain'/>
+            </PanelView>
+*/}
 						{this._buildAboutView(nation)}
 						{this._buildGovernmentalStructureView(nation)}
 						{this._buildFactsView(nation)}
@@ -69,25 +80,21 @@ class NationDetailsScreen extends Component {
 	// Useful Notes:
 	// PanelView Props: title = text, messageText = text, style, renderBottom = method, renderAdditionalInfo = method, children = main text of the display
 	// DemoImage overlays a message telling user this is a demonstration
-	
+
 	_buildAboutView (nation) {
 		return (
 			<PanelView style={styles.panelView}
-			           childrenContainerStyle={{flex: 0,}}
-			           title={i18n.t('screens.nationDetails.aboutInfo',
-				           {name: nation.nationName})}>
+			             title={i18n.t('screens.nationDetails.aboutInfo', { name: nation.nationName })}>
 				<Text style={styles.panelSubTitle}>
 					{i18n.t('screens.nationDetails.description') + ':'}
 				</Text>
 				<Text style={styles.body}>
-					{nation.nationDescription
-						? nation.nationDescription + '\n'
-						: ''}
+					{nation.nationDescription ? nation.nationDescription + '\n': ''}
 					{i18n.t('screens.nationDetails.locationInfo', {
 						name: nation.nationName,
-						locationType: nation.exists ? i18n.t(
-							'enums.nation.locationType.geographical') : i18n.t(
-							'enums.nation.locationType.virtual'),
+						locationType: nation.exists ?
+							i18n.t('enums.nation.locationType.geographical') :
+              i18n.t('enums.nation.locationType.virtual')
 					}) + '\n'}
 				</Text>
 				<Text style={styles.panelSubTitle}>
@@ -103,7 +110,6 @@ class NationDetailsScreen extends Component {
 	_buildGovernmentalStructureView (nation) {
 		return (
 			<PanelView style={styles.panelView}
-			           childrenContainerStyle={{flex: 0,}}
 			             title={i18n.t('common.governmentalStructure')}>
 				<Text style={styles.body}>
           {i18n.t('screens.nationDetails.legalSystemInfo', {
@@ -125,9 +131,7 @@ class NationDetailsScreen extends Component {
 
 	_buildFactsView (nation) {
 		return (
-			<PanelView style={styles.panelView}
-			           childrenContainerStyle={{flex: 0,}}
-			           title={i18n.t('screens.nationDetails.funFacts')}>
+			<PanelView style={styles.panelView} title={i18n.t('screens.nationDetails.funFacts')}>
 				<Text style={styles.body}>
 					{nation.diplomaticRecognition ? (i18n.t('screens.nationDetails.diplomaticRecognitionInfo', { name: nation.nationName }) + '\n\n') : ''}
 
