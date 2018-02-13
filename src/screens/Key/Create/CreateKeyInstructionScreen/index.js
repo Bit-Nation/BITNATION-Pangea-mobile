@@ -32,7 +32,7 @@ class CreateKeyInstructionScreen extends KeyBaseScreen {
 		
 		    <View style={styles.bodyContainer}>
 				
-			    <ScrollView contentContainerStyle={styles.scrollView}>
+			    <ScrollView style={{flex: 1}} contentContainerStyle={{flex: 0}}>
 				    <PanelView style={styles.panelViewTransparent}
 				               buttonTitle={i18n.t('screens.createKey.startButton')}
 				               onButtonClick={() => this.onNextButtonPressed()}
