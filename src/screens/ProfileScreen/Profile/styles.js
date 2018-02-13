@@ -34,31 +34,15 @@ const styles = MediaQueryStyleSheet.create({
   },
 
    nameText: {
-    fontSize: 28,
-    color: Colors.titleColor,
-    letterSpacing: -1.13,
-    textAlign: 'center',
-    backgroundColor: 'transparent',
-     ...GlobalStyles.Title1,
-
+	   ...GlobalStyles.title1,
   },
 
   infoText: {
-    fontSize: 16,
-    color: Colors.BitnationLightColor,
-    letterSpacing: -0.65,
-    lineHeight: 20.8,
-    textAlign: 'center',
-    backgroundColor: 'transparent'
+      ...GlobalStyles.body,
   },
 
   ethAddress: {
-    fontSize: 14,
-    color: Colors.BitnationLightColor,
-    letterSpacing: -0.65,
-    lineHeight: 20.8,
-    textAlign: 'center',
-    backgroundColor: 'transparent'
+      ...GlobalStyles.footnote,
   }
 });
 

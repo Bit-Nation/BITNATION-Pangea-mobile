@@ -4,9 +4,15 @@ import createSagaMiddleware from 'redux-saga';
 import thunk from 'redux-thunk';
 import reducers from '../reducers';
 import rootSaga from '../sagas';
+import createSagaMonitor from 'saga-monitor';
 
 export default function configureStore() {
-  const sagaMiddleware = createSagaMiddleware();
+
+  const sagaMonitor = createSagaMonitor({
+    level: 'log',
+    actionDispatch: true,
+  });
+  const sagaMiddleware = createSagaMiddleware({ sagaMonitor });
   const enhancer = compose(
     applyMiddleware(thunk),
     applyMiddleware(logger),

@@ -3,22 +3,22 @@ import {
   View,
   Text, ScrollView, Image, StatusBar, Alert,
 } from 'react-native';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
-import BackgroundImage from '../../../components/common/BackgroundImage'
-import styles from './styles'
-import { resolveNation } from '../../../utils/nations'
-import NationActionButton from '../../../components/common/NationActionButton'
-import AssetsImage from '../../../global/AssetsImages'
-import PanelView from '../../../components/common/PanelView'
-import DemoImage from '../../../components/common/DemoImage'
-import FakeNavigationBar from '../../../components/common/FakeNavigationBar'
+import BackgroundImage from '../../../components/common/BackgroundImage';
+import styles from './styles';
+import NationActionButton from '../../../components/common/NationActionButton';
+import AssetsImage from '../../../global/AssetsImages';
+import PanelView from '../../../components/common/PanelView';
+import DemoImage from '../../../components/common/DemoImage';
+import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import i18n from '../../../global/i18n';
+import { openedNation } from '../../../reducers/nations';
 
 class NationDetailsScreen extends Component {
 
 	render () {
-		const nation = resolveNation(this.props.nations, this.props.openedNationId)
+    const nation = openedNation(this.props);
 
 		if (!nation) {
 			return <BackgroundImage/>
@@ -28,41 +28,29 @@ class NationDetailsScreen extends Component {
 			<View style={styles.screenContainer}>
 				<BackgroundImage/>
 				<FakeNavigationBar navBarHidden=''/>
-				<View style={styles.layoutMargin}>
-					<View style={styles.titleBarLarge}>
-						<Text
-							style={styles.largeTitle}>{nation.nationName}</Text>
-						{console.log('joined nation: ', nation.joined)}
-					</View>
-				</View>
-				{this._buildTabBar(nation.joined, nation.idInSmartContract >= 0)}
 				<View style={styles.bodyContainer}>
-					<ScrollView style={styles.scrollView}>
-						{/* Fake Map panel */}
-						{/*
-            <PanelView style={[styles.messageView]}>
-              <Image source={AssetsImage.Placeholder.map} resizeMode='contain'/>
-            </PanelView>
-*/}
+					{/* TITLE OF SCREEN */}
+					<View style={styles.titleContainer}>
+						<View style={styles.titleBarLarge}>
+							<Text style={styles.largeTitle}>{nation.nationName}</Text>
+							{console.log('joined nation: ', nation.joined)}
+						</View>
+					</View>
 
-						{/* Fake Achievements Panel */}
-						{/*
-            <PanelView style={[styles.messageView]}>
-              <Image source={AssetsImage.Placeholder.achievements} resizeMode='contain'/>
-            </PanelView>
-*/}
+					<ScrollView>
 						{this._buildAboutView(nation)}
 						{this._buildGovernmentalStructureView(nation)}
 						{this._buildFactsView(nation)}
 					</ScrollView>
 				</View>
+        {this._buildTabBar(nation.joined, nation.idInSmartContract >= 0)}
 			</View>
 		)
 	}
 
 	_buildTabBar (joined, created) {
 		return (
-			<View style={styles.tabBar}>
+			<View style={styles.fakeBottomBar}>
 				<NationActionButton iconSource={AssetsImage.Actions.chat}
 				                    title={i18n.t('screens.nationDetails.chatButton')} disable={true}/>
 				<NationActionButton iconSource={AssetsImage.Actions.map}
@@ -83,12 +71,13 @@ class NationDetailsScreen extends Component {
 
 	_buildAboutView (nation) {
 		return (
-			<PanelView style={styles.messageView}
+			<PanelView style={styles.panelView}
+			           childrenContainerStyle={{flex: 0,}}
 			             title={i18n.t('screens.nationDetails.aboutInfo', { name: nation.nationName })}>
 				<Text style={styles.panelSubTitle}>
-					Description:
+					{i18n.t('screens.nationDetails.description') + ':'}
 				</Text>
-				<Text style={styles.panelBody}>
+				<Text style={styles.body}>
 					{nation.nationDescription ? nation.nationDescription + '\n': ''}
 					{i18n.t('screens.nationDetails.locationInfo', {
 						name: nation.nationName,
@@ -109,9 +98,10 @@ class NationDetailsScreen extends Component {
 
 	_buildGovernmentalStructureView (nation) {
 		return (
-			<PanelView style={styles.messageView}
+			<PanelView style={styles.panelView}
+			           childrenContainerStyle={{flex: 0,}}
 			             title={i18n.t('common.governmentalStructure')}>
-				<Text style={styles.panelBody}>
+				<Text style={styles.body}>
           {i18n.t('screens.nationDetails.legalSystemInfo', {
           	name: nation.nationName,
             code: nation.nationCode
@@ -131,8 +121,10 @@ class NationDetailsScreen extends Component {
 
 	_buildFactsView (nation) {
 		return (
-			<PanelView style={styles.messageView} title={i18n.t('screens.nationDetails.funFacts')}>
-				<Text style={styles.panelBody}>
+			<PanelView style={styles.panelView}
+			           childrenContainerStyle={{flex: 0,}}
+			           title={i18n.t('screens.nationDetails.funFacts')}>
+				<Text style={styles.body}>
 					{nation.diplomaticRecognition ? (i18n.t('screens.nationDetails.diplomaticRecognitionInfo', { name: nation.nationName }) + '\n\n') : ''}
 
           {i18n.t('screens.nationDetails.serviceUsageInfo', {

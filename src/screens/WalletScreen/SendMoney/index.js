@@ -22,7 +22,7 @@ import { resolveWallet } from '../../../utils/wallet';
 import { sendMoney } from '../../../actions/wallet';
 import { androidNavigationButtons, screen } from '../../../global/Screens';
 import Loading from '../../../components/common/Loading';
-import { prettyETHWalletBalance } from '../../../utils/formatters';
+import { prettyWalletBalance } from '../../../utils/formatters';
 import i18n from '../../../global/i18n';
 
 class SendMoney extends Component {
@@ -92,7 +92,7 @@ class SendMoney extends Component {
       return <View/>;
     }
 
-    const balance = prettyETHWalletBalance(wallet, ' ' + i18n.t('screens.sendMoney.available'));
+    const balance = prettyWalletBalance(wallet, 'ETH', ' ' + i18n.t('screens.sendMoney.available'));
 
     return (
       <View style={styles.screenContainer}>
@@ -129,7 +129,7 @@ class SendMoney extends Component {
               <TextInput
                 style={[styles.baseTextInput, styles.amountTextInput]}
                 placeholder='1.02'
-                placeholderTextColor='rgba(255,255,255,0.5)'
+                placeholderTextColor={Colors.placeholderTextColor}
                 value={this.state.amountString}
                 onChangeText={(amountString) => this.setState({ amountString })}
                 underlineColorAndroid={Colors.Transparent}
@@ -152,7 +152,7 @@ class SendMoney extends Component {
               <TextInput
                 style={[styles.baseTextInput, styles.ethTextInput]}
                 placeholder={i18n.t('screens.sendMoney.enterAddress')}
-                placeholderTextColor='rgba(255,255,255,0.5)'
+                placeholderTextColor={Colors.placeholderTextColor}
                 value={this.state.toEthAddress}
                 onChangeText={(toEthAddress) => this.setState({ toEthAddress })}
                 underlineColorAndroid={Colors.Transparent}
