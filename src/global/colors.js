@@ -111,6 +111,7 @@ export default {
 	
 	// Panel background color
 	panelView: 'rgba(255,255,255,0.2)',
+	panelViewAlert: 'rgba(245, 166, 35, 0.2)',
 	
 	// Other Custom Bitnation Colors
 	BlueGrey: '#607D8B',

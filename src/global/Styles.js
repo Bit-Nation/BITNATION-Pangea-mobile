@@ -356,9 +356,37 @@ const styles = {
 		// Standard row height for an iOS list item:
 		height: 30,
 	},
-	
-	
-	
+
+	//Panel used for Alert about the Status of the Nation in Detail Screen
+  panelViewAlert: {
+    flexDirection: 'row',
+    borderRadius: 8,
+    backgroundColor: Colors.panelViewAlert,
+    marginTop: 4,
+    marginBottom: 4,
+    marginLeft: 0,
+    marginRight: 0,
+    overflow: 'hidden',
+    // INDENTS:
+    paddingLeft: 10,
+    padding: normalizer(5),
+  },
+
+  //Label in panel used for Alert about the Status of the Nation in Detail Screen
+  panelAlertBold: {
+    ...defaultTextStyles.body,
+    color: Colors.BitnationHighlightColor,
+    fontSize: 13,
+    fontWeight: 'bold',
+  },
+
+  //Status string in panel used for Alert about the Status of the Nation in Detail Screen
+  panelAlertStatus: {
+    ...defaultTextStyles.body,
+    color: Colors.BitnationHighlightColor,
+    fontSize: 13,
+  },
+
 	// ========================================
 	// Forms
 	// Example: Profile Edit Screen

@@ -14,6 +14,7 @@ import DemoImage from '../../../components/common/DemoImage';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import i18n from '../../../global/i18n';
 import { openedNation } from '../../../reducers/nations';
+import PanelViewAlert from "../../../components/common/PanelViewAlert";
 
 class NationDetailsScreen extends Component {
 
@@ -38,6 +39,9 @@ class NationDetailsScreen extends Component {
 					</View>
 
 					<ScrollView>
+						{/*  TODO: Logic for NATION'S STATUS in STATUS PANEL  */}
+						{this._buildStatusPanel('Submitted to the blockchain.')}
+
 						{this._buildAboutView(nation)}
 						{this._buildGovernmentalStructureView(nation)}
 						{this._buildFactsView(nation)}
@@ -139,6 +143,14 @@ class NationDetailsScreen extends Component {
 			</PanelView>
 		)
 	}
+
+  _buildStatusPanel (status) {
+    return (
+      <PanelViewAlert
+				style={styles.panelViewAlert}
+				status={status} />
+    )
+  }
 
 }
 
