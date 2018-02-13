@@ -1,3 +1,23 @@
+/*
+  
+  Demonstration Chat system
+
+  Elizabot : https://github.com/brandongmwong/elizabot-js/blob/master/README.md
+  
+  Eliza JS bot based on www.masswerk.at/elizabot and http://en.wikipedia.org/wiki/ELIZA
+  
+  Usage:
+  
+  var elizabot = require('./elizabot.js');
+  
+  elizabot.start() // initializes eliza and returns a greeting message
+  
+  elizabot.reply(msgtext) // returns a eliza-like reply based on the message text passed into it
+  
+  elizabot.bye() // returns a farewell message
+ */
+
+
 import React, { Component } from 'react';
 import {
   View,
@@ -13,7 +33,9 @@ import AssetsImages from '../../global/AssetsImages';
 
 import BackgroundImage from '../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../components/common/FakeNavigationBar';
+import i18n from '../../global/i18n'
 
+import elizabot from '../../components/common/elizabot';
 
 class ChatScreen extends React.Component {
 
@@ -25,47 +47,51 @@ class ChatScreen extends React.Component {
   componentWillMount() {
     this.setState({
       messages: [
-        {
-          _id: 1,
-          text: 'Hello, David what\'s cracking?',
-          createdAt: new Date(),
-          user: {
-            _id: 2,
-            name: 'Girl',
-            avatar: 'https://image.flaticon.com/icons/png/128/220/220126.png',
-          },
-          showUserAvatar: true,
-        },
-        {
-          _id: 2,
-          text: 'What\'s the status of our agreement? Can we schedule a call for later this week?',
-          createdAt: new Date(Date.UTC(2016, 5, 11, 17, 20, 0)),
-          user: {
-            _id: 3,
-            name: 'Piggie',
-            avatar: 'https://image.flaticon.com/icons/png/128/220/220127.png',
-          },
-          showUserAvatar: true,
-          // Any additional custom parameters are passed through
-        },
-        {
-          _id: 3,
-          text: 'My message ',
-          createdAt: new Date(Date.UTC(2016, 5, 11, 17, 20, 0)),
-          user: {
-            _id: 1,
-            name: 'David',
-          },
-          // Any additional custom parameters are passed through
-        },
+ 
+  	      {
+		      _id: 1,
+		      text: elizabot.start(),
+		      createdAt: new Date(),
+		      user: {
+			      _id: 2,
+			      name: 'Eliza',
+		      },
+		      // Any additional custom parameters are passed through
+	      },
+
+
+       
       ],
     });
   }
 
   onSend(messages = []) {
-    this.setState((previousState) => ({
-      messages: GiftedChat.append(previousState.messages, messages),
-    }));
+	
+    /*
+    // Alternative method: Random answers from paragraphs:
+    const answers = i18n.t('screens.createKey.introduction')
+	const answer = answers[Math.floor(Math.random() * answers.length)];
+    */
+	
+	  const m = [
+		  {
+			  _id: this.state.messages.length + 1,
+			  text: elizabot.reply(messages[0].text),
+			  createdAt: new Date(),
+			  user: {
+				  _id: 2,
+				  name: 'Eliza',
+				 // avatar: AssetsImages.Placeholder.avatar,
+			  },
+			  //showUserAvatar: true,
+		  },
+      ]
+	  
+      // Add user's message
+	  this.setState((previousState) => ({ messages: GiftedChat.append(previousState.messages, messages), }));
+	  
+	  // Add Eliza's response
+	  this.setState((previousState) => ({ messages: GiftedChat.append(previousState.messages, m), }));
   }
 
   render() {
