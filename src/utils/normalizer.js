@@ -1,9 +1,10 @@
-var React = require('react-native')
-var {
+const React = require('react-native')
+const {
   Dimensions
 } = React
 
-var deviceHeight = Dimensions.get('window').height;
+const deviceHeight = Dimensions.get('window').height;
+const deviceWidth = Dimensions.get('window').width;
 
 /**
  * Funtion to normalize Font sizes depending on screen size
@@ -19,4 +20,12 @@ export function normalizer (size) {
     return size * 1.4
   }
   return size
+}
+
+/**
+ * Function to calculate the margin of a component using 2/3 of screen
+ * @returns {number} The margin to be applied in each side
+ */
+export function normalWidthMargin() {
+  return (deviceWidth / 3) / 2
 }
