@@ -1,26 +1,24 @@
 import React, { Component } from 'react';
 import {
-  Text, Image, View, TouchableOpacity, ScrollView, Clipboard, Share,
+  Text,
+  View,
+  ScrollView,
+  Share,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import QRCode from 'react-native-qrcode';
 
 import styles from './styles';
-import AssetsImages from '../../../global/AssetsImages';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import BackgroundImage from '../../../components/common/BackgroundImage';
-import { resolveWallet } from '../../../utils/wallet';
-import Button from '../../../components/common/Button';
 import PanelView from '../../../components/common/PanelView';
 import { androidNavigationButtons } from '../../../global/Screens';
+import i18n from '../../../global/i18n';
 
 class ReceiveMoneyScreen extends Component {
 
   static navigatorButtons = { ...androidNavigationButtons };
-
-  qrCodeText = 'The sender can scan this QR code with a phone or computer camera to get your wallet address.';
-  copyAddressText = 'You can copy your wallet address and send any way you choose, e.g. SMS or email. Do not try to type your address by hand!';
 
   onShareWalletAddressPress = () => {
     Share.share({
@@ -30,24 +28,22 @@ class ReceiveMoneyScreen extends Component {
 
   render() {
     return (
-      <View style={{ flex: 1 }}>
+      <View style={styles.screenContainer}>
         <BackgroundImage/>
         <FakeNavigationBar/>
-        <ScrollView style={styles.mainContainer} contentContainerStyle={styles.scrollViewContentContainer}>
+        <ScrollView contentContainerStyle={styles.bodyContainer}>
           <PanelView
-            title='Copy Address'
-            body={this.copyAddressText}
+            title={i18n.t('screens.receiveMoney.shareAddressPanel.title')}
+            body={i18n.t('screens.receiveMoney.shareAddressPanel.text')}
             style={[styles.messageView]}
             renderAdditionalInfo={() =>
               <Text style={styles.codeText}>{this.props.selectedWalletAddress}</Text>
             }
             onButtonClick={this.onShareWalletAddressPress}
-            buttonTitle='Share Wallet Address'/>
+            buttonTitle={i18n.t('screens.receiveMoney.shareAddressPanel.button')}/>
         </ScrollView>
-
       </View>
-    )
-      ;
+    );
   }
 }
 

@@ -1,9 +1,16 @@
+/**
+ * @desc Generates a standard native Switch with a Label at the right
+ * @type React.Component
+ * @param props.label {String} Text for the label
+ * @param props.value {Boolean} State for the switch
+ */
+
 import React, { Component } from 'react'
 import { Switch, View, Text } from 'react-native'
 import { MediaQueryStyleSheet } from 'react-native-responsive'
 import PropTypes from 'prop-types'
 import GlobalStyles from '../../global/Styles'
-import Colors from '../../global/Colors'
+import Colors from '../../global/colors'
 
 export default class SwitchLabeled extends Component {
 	

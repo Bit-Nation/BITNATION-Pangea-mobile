@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import { BackHandler, Alert } from 'react-native';
 
-import Colors from '../../../global/Colors';
+import Colors from '../../../global/colors';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
+import i18n from '../../../global/i18n';
 
 export default class KeyBaseScreen extends NavigatorComponent {
 
   static navigatorButtons = {
     leftButtons: [{
       id: 'cancel',
-      title: 'Cancel',
+      title: i18n.t('common.cancel'),
       buttonColor: Colors.navigationButtonColor,
     }],
     rightButtons: [],
@@ -49,12 +50,12 @@ export default class KeyBaseScreen extends NavigatorComponent {
       this.onCancelConfirmed();
     } else {
       Alert.alert(
-        'Delete Private Key',
-        'Are you sure that you want to stop creating this private key?',
+        i18n.t('alerts.abortKeyCreateProcess.title'),
+        i18n.t('alerts.abortKeyCreateProcess.subtitle'),
         [
-          { text: 'Cancel', style: 'cancel' },
+          { text: i18n.t('alerts.abortKeyCreateProcess.cancel'), style: 'cancel' },
           {
-            text: 'Delete Key', style: 'destructive',
+            text: i18n.t('alerts.abortKeyCreateProcess.confirm'), style: 'destructive',
             onPress: () => this.onCancelConfirmed(),
           },
         ],

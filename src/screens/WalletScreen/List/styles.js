@@ -1,11 +1,10 @@
 import { StyleSheet } from 'react-native';
-import Colors from '../../../global/Colors';
+
+import GlobalStyles from '../../../global/Styles';
 
 export default styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  flatListStyle: {
+  ...GlobalStyles,
+  walletListContainer: {
     flex: 1,
   },
 });

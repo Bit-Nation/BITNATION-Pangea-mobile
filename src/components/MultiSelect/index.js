@@ -1,3 +1,9 @@
+/**
+ * @desc Generates a customized Single/Multiselect component used in Create a Nation
+ * @type React.Component
+ *
+ */
+
 import React, { Component } from 'react';
 import {
   Text,
@@ -15,7 +21,7 @@ import find from 'lodash/find';
 import get from 'lodash/get';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import IconIonic from 'react-native-vector-icons/Ionicons';
-import Colors from '../../global/Colors'
+import Colors from '../../global/colors'
 
 // set UIManager LayoutAnimationEnabledExperimental
 UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);

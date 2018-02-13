@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
 
-import Colors from '../../../global/Colors';
+import Colors from '../../../global/colors';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import Text from '../../../components/common/Text';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
