@@ -82,14 +82,14 @@ class CreateNation extends NavigatorComponent {
 
         <View style={styles.bodyContainer}>
           {/* SCROLLING PANELS FOR DATA ENTRY */}
-          <ScrollView contentContainerStyle={styles.scrollView}>
+          <ScrollView style={{flex: 1}} contentContainerStyle={{flex: 0}}>
             {/* TITLE OF SCREEN */}
-	          <View style={styles.titleContainer}>
-		          <View style={styles.titleBarLarge}>
-			          <Text style={styles.largeTitle}>{i18n.t(
-				          'screens.createNation.title')}</Text>
-		          </View>
-	          </View>
+            <View style={styles.titleContainer}>
+              <View style={styles.titleBarLarge}>
+                <Text style={styles.largeTitle}>{i18n.t(
+                  'screens.createNation.title')}</Text>
+              </View>
+            </View>
 
             {/* CONSTRUCTIONS OF THE SECTIONS IN THE SCREEN */}
             {this._buildIntroPanel()}
@@ -139,14 +139,12 @@ class CreateNation extends NavigatorComponent {
       </View>
     );
   }
-      
+
 
   _buildCoreNationView() {
     return (
       <PanelView
-          style={styles.panelViewTransparent}
-          childrenContainerStyle={{flex:0,}}
-      >
+        style={styles.panelViewTransparent}>
         <View style={styles.formRow}>
           <View style={styles.fieldsContainer}>
             <View style={styles.formRow}>
@@ -219,10 +217,9 @@ class CreateNation extends NavigatorComponent {
 
   _buildGovernmentalView() {
     return (
-	    <PanelView
-		    style={styles.panelViewTransparent}
-		    childrenContainerStyle={{flex:0,}}
-            title={i18n.t('common.governmentalStructure')} icon=' '>
+      <PanelView
+        style={styles.panelViewTransparent}
+        title={i18n.t('common.governmentalStructure')} icon=' '>
         <View style={styles.formRow}>
           <View style={styles.fieldsContainer}>
             <MultiSelect
@@ -386,11 +383,9 @@ class CreateNation extends NavigatorComponent {
   _buildOptionsView() {
     return (
       <PanelView
-          style={styles.panelViewTransparent}
-          childrenContainerStyle={{flex:0,}}
-          title={i18n.t('common.options')}
-          icon=' '
-      >
+        style={styles.panelViewTransparent}
+        title={i18n.t('common.options')}
+        icon=' '>
         <View style={styles.formRow}>
           <View style={styles.fieldsContainer}>
             <SwitchLabeled
