@@ -20,7 +20,7 @@ export default class NationActionButton extends Component {
     return (
       <View style={[styles.tabBarButton, style]} {...props} opacity={this.props.disable ? 0.4 : 1}>
         <TouchableOpacity style={[styles.tabBarContainer]}
-                          onPress={this.props.onPress} disabled={this.props.disable}
+                          onPress={this.props.onPress} disable={this.props.disable}
                           activeOpacity={this.props.disable ? 1 : 0.4}>
           <Image source={this.props.iconSource}/>
           <Text style={styles.tabBarTitle}>{this.props.title}</Text>
