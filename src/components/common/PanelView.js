@@ -17,7 +17,7 @@ export default class PanelView extends Component {
 		const {style, childrenContainerStyle, renderBottom, renderAdditionalInfo, children } = this.props
 		
 		return (
-			<View style={[styles.panelView, style]}>
+			<View style={style}>
 				
 				{/* TITLE + ICON */}
 				{/* Hide this view if no title or icon to avoid line below it. */}
@@ -90,6 +90,15 @@ export default class PanelView extends Component {
 	
 }
 
+
+const styles = MediaQueryStyleSheet.create({
+	...GlobalStyles,
+})
+
+PanelView.defaultProps = {
+	style : styles.panelView,
+}
+
 PanelView.PropTypes = {
 	/**
 	 * @desc Title of panel
@@ -141,7 +150,3 @@ PanelView.PropTypes = {
 	 */
 	childrenContainerStyle: PropTypes.object,
 }
-
-const styles = MediaQueryStyleSheet.create({
-	...GlobalStyles,
-})

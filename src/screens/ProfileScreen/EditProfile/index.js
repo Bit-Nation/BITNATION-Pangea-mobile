@@ -121,7 +121,10 @@ class EditProfile extends NavigatorComponent {
 		const panelTitle = ''
 		
 		return (
-			<PanelView style={styles.panelViewTransparent} title={panelTitle}>
+			<PanelView
+				style={styles.panelViewTransparent}
+				title={panelTitle}
+			>
 				<View style={styles.formRow}>
 					<View style={styles.fieldsContainer}>
 						<View style={styles.formRow}>

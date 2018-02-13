@@ -151,7 +151,7 @@ const Screens = {
   },
   CREATE_KEY_INTRODUCTION_SCREEN: {
     screen: 'Pangea.CreateKeyIntroductionScreen',
-    title: i18n.t('screens.createKey.title'),
+    title: '',  //i18n.t('screens.createKey.title'),
     ...baseKeyScreen,
   },
   CREATE_KEY_INSTRUCTION_SCREEN: {

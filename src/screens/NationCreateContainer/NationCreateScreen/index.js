@@ -82,11 +82,14 @@ class CreateNation extends NavigatorComponent {
 
         <View style={styles.bodyContainer}>
           {/* SCROLLING PANELS FOR DATA ENTRY */}
-          <ScrollView style={styles.scrollView}>
+          <ScrollView contentContainerStyle={styles.scrollView}>
             {/* TITLE OF SCREEN */}
-            <View style={styles.titleBarLarge}>
-              <Text style={styles.largeTitle}>{i18n.t('screens.createNation.title')}</Text>
-            </View>
+	          <View style={styles.titleContainer}>
+		          <View style={styles.titleBarLarge}>
+			          <Text style={styles.largeTitle}>{i18n.t(
+				          'screens.createNation.title')}</Text>
+		          </View>
+	          </View>
 
             {/* CONSTRUCTIONS OF THE SECTIONS IN THE SCREEN */}
             {this._buildIntroPanel()}

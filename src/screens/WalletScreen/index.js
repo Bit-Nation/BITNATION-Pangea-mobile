@@ -65,32 +65,35 @@ class WalletScreen extends NavigatorComponent {
     this.props.selectWallet(wallet);
     this.props.navigator.push(screen('RECEIVE_MONEY_SCREEN'));
   };
-
-  render() {
-    return (
-      <View style={{ flex: 1 }}>
-        <Background/>
-	      <FakeNavigationBar/>
-	      <View style={styles.titleContainer}>
-		      {/* TITLE OF SCREEN */}
-		      <View style={styles.titleBarLarge}>
-			      <Text style={styles.largeTitle}>{i18n.t('screens.wallet.title')}</Text>
-		      </View>
-	      </View>
-        {_.isEmpty(this.props.wallets) ?
-          <EmptyWalletScreen
-            onCreateWallet={this.createWallet}
-            onRestoreWallet={this.restoreWallet}
-          />
-          :
-          <List
-            {...this.props}
-            onSendPress={this.sendMoney}
-            onReceivePress={this.receiveMoney}
-          />
-        }
-      </View>
-    );
+	
+  render () {
+      return (
+          <View style={styles.screenContainer}>
+              <Background/>
+              <FakeNavigationBar/>
+              
+              <View style={styles.bodyContainer}>
+                  
+                  {/* TITLE OF SCREEN */}
+                  <View style={styles.titleContainer}>
+                      <View style={styles.titleBarLarge}>
+                          <Text style={styles.largeTitle}>{i18n.t(
+                              'screens.wallet.title')}</Text>
+                      </View>
+                  </View>
+                  {_.isEmpty(this.props.wallets) ? <EmptyWalletScreen
+                          onCreateWallet={this.createWallet}
+                          onRestoreWallet={this.restoreWallet}
+                      />
+                      : <List
+                          {...this.props}
+                          onSendPress={this.sendMoney}
+                          onReceivePress={this.receiveMoney}
+                      />
+                  }
+              </View>
+          </View>
+      )
   }
 }
 

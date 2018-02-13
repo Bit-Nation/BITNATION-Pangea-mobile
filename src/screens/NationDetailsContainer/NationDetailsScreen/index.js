@@ -36,7 +36,7 @@ class NationDetailsScreen extends Component {
 					</View>
 				</View>
 				<View style={styles.bodyContainer}>
-					<ScrollView style={styles.scrollView}>
+					<ScrollView contentContainerStyle={styles.scrollView}>
 						{/* Fake Map panel */}
 						{/*
             <PanelView style={[styles.panelView]}>
