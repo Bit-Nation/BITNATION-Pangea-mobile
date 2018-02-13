@@ -1,6 +1,6 @@
 const React = require('react-native')
 const {
-  Dimensions
+  Dimensions, Platform,
 } = React
 
 const disabledForDebugging = false;
@@ -33,4 +33,30 @@ export function normalizer (size) {
  */
 export function normalWidthMargin() {
   return (deviceWidth / 3) / 2
+}
+
+/**
+ * Function to fix the height of Status Bar ONLY in the iPhoneX
+ * @param size
+ * @returns {number} The correct size for the Status Bar
+ */
+export function isiPhoneXStatusBar (size) {
+  if (Platform.OS === 'ios' && (deviceHeight === 812 || deviceWidth === 812)) {
+    return size+24;
+  } else {
+    return size;
+  }
+}
+
+/**
+ * Function to fix the height of Fake Tab Bar ONLY in the iPhoneX
+ * @param size
+ * @returns {number} The correct size for the Fake Tab Bar
+ */
+export function isiPhoneXTabBar (size) {
+  if (Platform.OS === 'ios' && (deviceHeight === 812 || deviceWidth === 812)) {
+    return size+29;
+  } else {
+    return size;
+  }
 }

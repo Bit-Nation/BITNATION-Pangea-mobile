@@ -10,7 +10,7 @@
 
 import { MediaQueryStyleSheet } from 'react-native-responsive'
 import Colors from './colors'
-import { normalizer, normalWidthMargin } from '../utils/normalizer'
+import { normalizer, normalWidthMargin, isiPhoneXStatusBar, isiPhoneXTabBar } from '../utils/normalizer'
 
 // ========================================
 // DEFAULT TEXT STYLES
@@ -102,7 +102,7 @@ const styles = {
 	},
 	
 	statusBar: {
-		height: 20,
+		height: isiPhoneXStatusBar(20),
 		backgroundColor: 'transparent',
 	},
 	
@@ -113,7 +113,7 @@ const styles = {
 	
 	// Navigation area that shows a normal ("largeTitle" style) title
 	navigationBar: {
-		marginTop: 20, // force below the status bar !!! THIS IS WRONG
+		marginTop: isiPhoneXStatusBar(20), // force below the status bar !!! THIS IS WRONG
 		marginLeft: 8,
 		marginRight: 8,
 		height: 44,
@@ -609,7 +609,7 @@ const styles = {
 	// Styles for the custom Tool Bar replacing the Tab Bar
   fakeBottomBar: {
     paddingTop:5,
-    height: 55,
+    height: isiPhoneXTabBar(55),
     backgroundColor: Colors.LightBlue,
     flexDirection: 'row',
     alignItems: 'stretch',
