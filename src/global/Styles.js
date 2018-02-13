@@ -1,6 +1,6 @@
 import { MediaQueryStyleSheet } from 'react-native-responsive'
 import Colors from './Colors'
-import { normalizer, normalWidthMargin } from '../utils/normalizer'
+import { normalizer} from '../utils/normalizer'
 
 // ========================================
 // DEFAULT TEXT STYLES
@@ -122,17 +122,8 @@ const defaultTextStyles = {
 		fontSize: 34,
 		lineHeight: 41,
 		letterSpacing: 0,
-		color: Colors.Amber,
+		color: Colors.BitnationLightColor,
 	},
-
-  largeSubTitle: {
-    fontFamily: 'Source Code Pro',
-    fontWeight: 'bold',
-    fontSize: 24,
-    lineHeight: 41,
-    letterSpacing: 0,
-    color: Colors.Amber,
-  },
 	
 	title1: {
 		fontFamily: 'Roboto',
@@ -264,11 +255,6 @@ const styles = {
 		marginLeft: 15,
 		marginRight: 15,
 	},
-
-  titleContainer: {
-    marginLeft: 15,
-    marginRight: 15,
-  },
 	
 	// A block of text in the body area
 	bodyParagraph: {
@@ -323,11 +309,6 @@ const styles = {
 		height: normalizer(52),
 		alignItems: 'flex-start',
 	},
-
-  titleBarLargeNationDetail: {
-    height: normalizer(92),
-    alignItems: 'flex-start',
-  },
 	
 	// Used as part of the body of a screen, but if the body area goes to the edges
 	// (e.g. a scrolling body with a table) you  might need margins.
@@ -572,14 +553,6 @@ const styles = {
 		flex: 1,
 		marginLeft: 15,
 	},
-
-  // e.g. NationListItemState Text
-  listItemTextState: {
-    color: 'gray',
-    flex: 1,
-    textAlign: 'right',
-    marginRight: 15,
-  },
 	
 	// e.g. NationListItem
 	sectionListTouchable: {
@@ -616,26 +589,11 @@ const styles = {
 		color: '#6D6D72',
 		fontSize: 13,
 	},
-
-  sectionListSeparator: {
-    flex: 1,
-    marginLeft: 10,
-    height:1,
-    backgroundColor: Colors.grey_400,
-  },
-
-  sectionListDisclosure: {
-		marginRight:15,
-		width: 8,
-		height: 15,
-  },
-
+	
 	// ========================================
 	// Tab Bar with text
 	segmentedControlContainer: {
 		height: 44,
-		marginLeft: normalWidthMargin(),
-		marginRight: normalWidthMargin(),
 		flexDirection: 'row',
 		alignItems: 'center',
 	},
@@ -672,21 +630,10 @@ const styles = {
 	},
 	tabBarTitle: {
 		marginTop: 4,
-		color: Colors.white,
+		color: '#8E8E93',
 		backgroundColor: 'transparent',
 		fontSize: 10,
 	},
-
-	//=========================================
-	// Styles for the custom Tool Bar replacing the Tab Bar
-  fakeBottomBar: {
-    paddingTop:5,
-    height: 55,
-    backgroundColor: Colors.LightBlue,
-    flexDirection: 'row',
-    alignItems: 'stretch',
-    justifyContent: 'space-around',
-  },
 	
 	// ========================================
 	// Basic Text Styles, e.g. components/common/Text.js

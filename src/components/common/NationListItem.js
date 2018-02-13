@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, Image, } from 'react-native';
+import { View, Text, TouchableOpacity, } from 'react-native';
 import PropTypes from 'prop-types';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
 
 import GlobalStyles from '../../global/Styles';
-import AssetsImages from '../../global/AssetsImages';
 
 /**
  * @desc Component that renders nations list item.
@@ -21,10 +20,6 @@ export default class NationListItem extends Component {
           <Text style={styles.listItemText}>
             {this.props.text}
           </Text>
-          <Text style={styles.listItemTextState}>
-            Draft
-          </Text>
-          <Image source={AssetsImages.disclosureRowIcon} style={styles.sectionListDisclosure}/>
         </TouchableOpacity>
       </View>
     );
@@ -38,11 +33,6 @@ NationListItem.propTypes = {
    * @type string
    */
   text: PropTypes.string,
-  /**
-   * @desc Status of the Nation to display on item
-   * @type string
-   */
-  status: PropTypes.string,
   /**
    * @desc Id that will be passed in onPress callback.
    * @type string

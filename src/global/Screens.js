@@ -44,20 +44,6 @@ export const hiddenNavigatorStyle = {
   rootBackgroundImageName: 'background',
 };
 
-export const navigatorStyleModal = {
-  statusBarTextColorScheme: 'light',
-  statusBarColor: Platform.OS === 'ios' ? 'transparent' : 'black',
-  navBarTransparent: true,
-  navBarTranslucent: true,
-  navBarNoBorder: true,
-  drawUnderNavBar: true,
-  drawUnderStatusBar: false,
-  navBarTextColor: Colors.white,
-  screenBackgroundColor: 'transparent',
-  rootBackgroundImageName: 'background',
-  tabBarHidden: true,
-};
-
 const baseKeyScreen = {
   navigatorStyle: {
     ...navigatorStyle,
@@ -88,13 +74,13 @@ const Screens = {
     screen: 'Pangea.NationsScreen',
     label: i18n.t('screens.nations.tabTitle'),
     icon: AssetsImages.TabIcons.nations,
-    title: '',
+    title: i18n.t('screens.nations.title'),
     navigatorStyle,
   },
   NATION_DETAILS_SCREEN: {
     screen: 'Pangea.NationDetailsScreen',
-    title: '',
-    navigatorStyle: navigatorStyleModal,
+    title: i18n.t('screens.nationDetails.title'),
+    navigatorStyle,
   },
   NATION_CREATE_SCREEN: {
     screen: 'Pangea.NationCreateScreen',
