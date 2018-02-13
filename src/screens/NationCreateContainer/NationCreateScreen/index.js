@@ -143,7 +143,10 @@ class CreateNation extends NavigatorComponent {
 
   _buildCoreNationView() {
     return (
-      <PanelView style={styles.panelViewTransparent}>
+      <PanelView
+          style={styles.panelViewTransparent}
+          childrenContainerStyle={{flex:0,}}
+      >
         <View style={styles.formRow}>
           <View style={styles.fieldsContainer}>
             <View style={styles.formRow}>
@@ -216,8 +219,10 @@ class CreateNation extends NavigatorComponent {
 
   _buildGovernmentalView() {
     return (
-      <PanelView style={styles.panelViewTransparent}
-                 title={i18n.t('common.governmentalStructure')} icon=' '>
+	    <PanelView
+		    style={styles.panelViewTransparent}
+		    childrenContainerStyle={{flex:0,}}
+            title={i18n.t('common.governmentalStructure')} icon=' '>
         <View style={styles.formRow}>
           <View style={styles.fieldsContainer}>
             <MultiSelect
@@ -380,7 +385,12 @@ class CreateNation extends NavigatorComponent {
 
   _buildOptionsView() {
     return (
-      <PanelView style={styles.panelViewTransparent} title={i18n.t('common.options')} icon=' '>
+      <PanelView
+          style={styles.panelViewTransparent}
+          childrenContainerStyle={{flex:0,}}
+          title={i18n.t('common.options')}
+          icon=' '
+      >
         <View style={styles.formRow}>
           <View style={styles.fieldsContainer}>
             <SwitchLabeled
