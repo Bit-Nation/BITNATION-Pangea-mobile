@@ -12,7 +12,7 @@ import { resolveNation } from '../utils/nations';
 export const ALL_NATIONS = 0;
 export const MY_NATIONS = 1;
 
-const initialState = {
+export const initialState = {
   nations: [],
   myNations: [],
   searchString: null,

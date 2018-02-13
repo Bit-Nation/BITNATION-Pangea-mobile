@@ -22,7 +22,9 @@ const extractMessage = (error) => {
   return error.toString();
 };
 
-function* fetchNations() {
+export const getNations = state => state.nations;
+
+export function* fetchNations() {
   try {
     console.log('fetching nations');
     let pangeaLib = yield call(getPangeaLibrary);
@@ -45,10 +47,10 @@ function* fetchNations() {
   }
 }
 
-function* joinNation() {
+export function* joinNation() {
   try {
     let pangeaLib = yield call(getPangeaLibrary);
-    let nationsState = yield select(state => state.nations);
+    let nationsState = yield select(getNations);
     const currentNation = openedNation(nationsState);
     yield call(checkConnection);
     let result = yield call(pangeaLib.eth.nation.joinNation, currentNation.id);
@@ -62,10 +64,10 @@ function* joinNation() {
   }
 }
 
-function* leaveNation() {
+export function* leaveNation() {
   try {
     let pangeaLib = yield call(getPangeaLibrary);
-    let nationsState = yield select(state => state.nations);
+    let nationsState = yield select(getNations);
     const currentNation = openedNation(nationsState);
     yield call(checkConnection);
     let result = yield call(pangeaLib.eth.nation.leaveNation, currentNation.id);
