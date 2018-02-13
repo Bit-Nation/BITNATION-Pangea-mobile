@@ -8,6 +8,7 @@ import asyncToGenerator from 'async-to-generator'
 
 // Fix for https://github.com/Bit-Nation/BITNATION-Pangea-mobile/issues/166
 // Related with https://github.com/facebook/react-native/issues/4844
+// @todo Change that to more appropriate solution
 babelHelpers.asyncToGenerator = asyncToGenerator;
 
 const store = configureStore();
