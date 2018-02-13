@@ -38,6 +38,12 @@ const mapActionIcon = require('../assets/images/toolbarIconMap.png');
 const joinActionIcon = require('../assets/images/toolbarIconJoin.png');
 const leaveActionIcon = require('../assets/images/toolbarIconLeave.png');
 
+// Nations Create Tool Bar Icons
+const resetActionIcon = require('../assets/images/toolbarIconReset.png');
+const saveActionIcon = require('../assets/images/toolbarIconSave.png');
+const deleteActionIcon = require('../assets/images/toolbarIconDelete.png');
+const submitActionIcon = require('../assets/images/toolbarIconSubmit.png');
+
 const disclosureRowIcon = require('../assets/images/disclosure.png');
 
 const Images = {
@@ -76,6 +82,11 @@ const Images = {
     map: mapActionIcon,
     join: joinActionIcon,
     leave: leaveActionIcon,
+    
+    reset: resetActionIcon,
+    save: saveActionIcon,
+    delete: deleteActionIcon,
+    submit: submitActionIcon,
   },
 };
 

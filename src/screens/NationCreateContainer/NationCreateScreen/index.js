@@ -124,16 +124,16 @@ class CreateNation extends NavigatorComponent {
 
     return (
       <View style={styles.fakeBottomBar}>
-        <NationActionButton iconSource={AssetsImage.Actions.chat}
+        <NationActionButton iconSource={AssetsImage.Actions.reset}
                             title={i18n.t('screens.createNation.reset')} disable={!isModified}
                             onPress={this.props.onResetNationCreation}/>
-        <NationActionButton iconSource={AssetsImage.Actions.chat}
+        <NationActionButton iconSource={AssetsImage.Actions.save}
                             title={i18n.t('screens.createNation.save')} disable={!isModified}
                             onPress={this.props.onSaveNationDraft}/>
-        <NationActionButton iconSource={AssetsImage.Actions.chat}
+        <NationActionButton iconSource={AssetsImage.Actions.delete}
                             title={i18n.t('screens.createNation.delete')} disable={!isSavedDraft}
                             onPress={this.props.onDeleteNationDraft}/>
-        <NationActionButton iconSource={AssetsImage.Actions.chat}
+        <NationActionButton iconSource={AssetsImage.Actions.submit}
                             title={i18n.t('screens.createNation.submit')} disable={!canSubmit}
                             onPress={this.props.onSubmitNation}/>
       </View>
