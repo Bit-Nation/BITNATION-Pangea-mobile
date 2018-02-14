@@ -36,6 +36,7 @@ class CreateNation extends NavigatorComponent {
   constructor(props) {
     super(props);
 
+    this.shouldSwitchApper = false;
     this.actionSheet = null;
     this.multiGovernanceService = null;
     this.props.navigator.setButtons({
@@ -68,6 +69,10 @@ class CreateNation extends NavigatorComponent {
 
   setFieldValue(field, value) {
     this.props.onNationChange(field, value);
+    console.log('field: ', field)
+    if ( field==="virtualNation") {
+      this.shouldSwitchApper = this.props.editingNation.virtualNation;
+    }
   }
 
   render() {
@@ -208,15 +213,17 @@ class CreateNation extends NavigatorComponent {
             />
           </View>
         </View>
-        <View style={styles.formRow}>
-          <View style={styles.fieldsContainer}>
-            <SwitchLabeled
-              label={i18n.t('screens.createNation.prompt.represents')}
-              value={this.props.editingNation.exists}
-              onValueChange={(value) => this.setFieldValue('exists', value)}
-            />
+        { this.shouldSwitchApper &&
+          <View style={styles.formRow}>
+            <View style={styles.fieldsContainer}>
+              <SwitchLabeled
+                label={i18n.t('screens.createNation.prompt.represents')}
+                value={this.props.editingNation.exists}
+                onValueChange={(value) => this.setFieldValue('exists', value)}
+              />
+            </View>
           </View>
-        </View>
+        }
 
         <Text style={styles.footnote}>
           {i18n.t('screens.createNation.locationTypeHint')}
