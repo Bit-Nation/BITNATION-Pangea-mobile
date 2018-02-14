@@ -114,6 +114,12 @@ class SendMoney extends NavigatorComponent {
         <FakeNavigationBar/>
         <View style={styles.bodyContainer}>
 
+          <View style={styles.titleContainer}>
+            <View style={styles.titleBarLarge}>
+              <Text style={styles.largeTitle}>{i18n.t('screens.sendMoney.title')}</Text>
+            </View>
+          </View>
+
           <PanelView
             style={styles.panelView}
             childrenContainerStyle={styles.noflex}>
@@ -133,14 +139,19 @@ class SendMoney extends NavigatorComponent {
               <View style={styles.fieldsContainer}>
                 <Text style={[styles.footnote, { marginLeft: 5 }]}>{i18n.t('common.amount')}</Text>
                 <View style={styles.formRow}>
-                  <TextInput
-                    style={[styles.textInput, styles.currencyLarge, { marginTop: 0 }]}
-                    placeholder='1.02'
-                    placeholderTextColor={Colors.placeholderTextColor}
-                    keyboardType='numeric'
-                    onChangeText={(amountString) => this.setState({ amountString })}
-                    value={this.state.amountString}
-                  />
+                  <View style={styles.textInputContainer}>
+                    <TextInput
+                      style={[styles.textInputInContainer, styles.currencyLarge]}
+                      placeholder='1.02'
+                      placeholderTextColor={Colors.placeholderTextColor}
+                      keyboardType='numeric'
+                      onChangeText={(amountString) => this.setState({ amountString })}
+                      value={this.state.amountString}
+                    />
+                    <Text style={styles.currencyPlaceholder}>
+                      {wallet.currency}
+                    </Text>
+                  </View>
                 </View>
                 <Text style={[styles.footnote, { marginLeft: 5, marginTop: 10 }]}>{i18n.t('common.to')}</Text>
                 <View style={styles.formRow}>

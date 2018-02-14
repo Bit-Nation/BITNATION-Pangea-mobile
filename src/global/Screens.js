@@ -195,7 +195,7 @@ const Screens = {
   },
   SEND_MONEY_SCREEN: {
     screen: 'Pangea.SendMoneyScreen',
-    title: i18n.t('screens.sendMoney.title'),
+    title: '',
     navigatorStyle,
   },
   QR_CODE_SCANNER_SCREEN: {
