@@ -6,17 +6,17 @@ import { Platform } from 'react-native';
 
 // ========================================
 // BASE COLORS
-const BitnationColor = '#4A90E2';         /* rgb(74, 144, 226) */
-const BitnationDarkColor = "#1B395C";    /* rgb(27, 57, 92) */
-const BitnationLightColor = "#72A4DE";   /* rgb(114, 164, 222) */
-const BitnationVeryLightColor = "#BCDCFF"; /* rgb(188, 220, 255) */
+const BitnationColor = '#4A90E2';         	/* rgb(74, 144, 226)  */
+const BitnationDarkColor = '#1B395C';    	/* rgb(27, 57, 92) 	  */
+const BitnationLightColor = '#72A4DE';   	/* rgb(114, 164, 222) */
+const BitnationVeryLightColor = '#BCDCFF'; 	/* rgb(188, 220, 255) */
 
 
 // ========================================
 // FUNCTIONS
 
-function isEmpty (v) {
-	return !(typeof(v) !== 'undefined' && v)
+export const isEmpty = (v) => {
+	return !(typeof(v) !== 'undefined' && v);
 }
 
 // Convert a hex color and an opacity to an rgb or rgba color string
@@ -24,34 +24,36 @@ function isEmpty (v) {
 // example: convertHex("#FF120AE")
 // example: convertHex("#FF120AE",0.3)
 // example: convertHex("#FF120AE",30)
-function convertHex(hex,opacity){
+export const convertHex = (hex, opacity) => {
 	hex = hex.replace('#','');
-	var r = parseInt(hex.substring(0,2), 16);
-	var g = parseInt(hex.substring(2,4), 16);
-	var b = parseInt(hex.substring(4,6), 16);
+	const r = parseInt(hex.substring(0,2), 16);
+	const g = parseInt(hex.substring(2,4), 16);
+	const b = parseInt(hex.substring(4,6), 16);
 	
-	var result
+	let result;
 	if (isEmpty(opacity)) {
 		result = 'rgb('+r+','+g+','+b + ')';
 	} else {
-		if (opacity > 1) {opacity = opacity / 100}
+		if (opacity > 1) {
+			opacity = opacity / 100;
+		}
 		result = 'rgba('+r+','+g+','+b+','+ opacity +')';
 	}
 	return result;
 }
 
 // Return the string for a shade of an RGBa color, based on an hex RGB color
-// newshade = shadeOf("#12CCAA", "01") returns "#12CCAA01"
-var shadeOf = (c, opacity) => {
+// newshade = shadeOf("#12CCAA", 10) returns rgba(18,204,170,0.1)
+const shadeOf = (c, opacity) => {
 	return convertHex(c,opacity);
 }
 
 // a : alpha (number)
 // example: shadeOfBitnationColor(opacity) returns an rgba string.
-var shadeOfBitnationColor = (opacity) => {
+const shadeOfBitnationColor = (opacity) => {
 	return convertHex(BitnationColor,opacity);
 };
-var shadeOfBitnationLightColor = (opacity) => {
+const shadeOfBitnationLightColor = (opacity) => {
 	return convertHex(BitnationLightColor,opacity);
 };
 

@@ -5,7 +5,7 @@ import {
   View,
 } from 'react-native';
 
-import Colors from '../../../global/Colors';
+import Colors from '../../../global/colors';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 
