@@ -75,7 +75,7 @@ describe('Button component tests', () => {
       const render = wrapper.dive();
       const touchables = render.find('[testID="Touchable"]');
       expect(touchables).toHaveLength(1);
-      expect(touchables.props()).toEqual(expect.objectContaining({ disable: true }));
+      expect(touchables.props()).toEqual(expect.objectContaining({ disabled: true }));
     });
 
   });

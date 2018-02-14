@@ -688,23 +688,6 @@ const styles = {
     justifyContent: 'space-around',
   },
 	
-	// ========================================
-	// Basic Text Styles, e.g. components/common/Text.js
-	
-	messageTitle: {
-		fontSize: 22,
-		color: Colors.titleColor,
-		letterSpacing: -0.89,
-		lineHeight: 28,
-		textAlign: 'center',
-	},
-	messageText: {
-		fontSize: 17,
-		color: Colors.BitnationLightColor,
-		letterSpacing: -0.65,
-		lineHeight: 20.8,
-		textAlign: 'center',
-	},
 	buttonTitle: {
 		fontSize: 14,
 		color: Colors.BitnationLightColor,

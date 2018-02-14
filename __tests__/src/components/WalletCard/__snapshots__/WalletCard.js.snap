@@ -7,7 +7,6 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <WalletCard
     balance="Testing balance"
     imagePath={1}
-    messageText=""
     nameHeading="Testing Press"
     nameSubheading="173324 Enum"
     onReceivePress={[Function]}
@@ -148,20 +147,6 @@ ShallowWrapper {
               }
             }
           />
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "color": "#72A4DE",
-                "fontSize": 14,
-                "marginBottom": 10,
-              }
-            }
-          >
-            
-          </Text>
         </View>
       </View>,
       "style": Object {
@@ -291,20 +276,6 @@ ShallowWrapper {
                 }
               }
             />
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={
-                Object {
-                  "color": "#72A4DE",
-                  "fontSize": 14,
-                  "marginBottom": 10,
-                }
-              }
-            >
-              
-            </Text>
           </View>,
         ],
         "style": Object {
@@ -433,20 +404,6 @@ ShallowWrapper {
                   }
                 }
               />,
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                ellipsizeMode="tail"
-                style={
-                  Object {
-                    "color": "#72A4DE",
-                    "fontSize": 14,
-                    "marginBottom": 10,
-                  }
-                }
-              >
-                
-              </Text>,
             ],
             "style": Object {
               "flex": 1,
@@ -643,25 +600,6 @@ ShallowWrapper {
               "rendered": null,
               "type": [Function],
             },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "accessible": true,
-                "allowFontScaling": true,
-                "children": "",
-                "ellipsizeMode": "tail",
-                "style": Object {
-                  "color": "#72A4DE",
-                  "fontSize": 14,
-                  "marginBottom": 10,
-                },
-              },
-              "ref": null,
-              "rendered": "",
-              "type": [Function],
-            },
           ],
           "type": [Function],
         },
@@ -799,20 +737,6 @@ ShallowWrapper {
                 }
               }
             />
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={
-                Object {
-                  "color": "#72A4DE",
-                  "fontSize": 14,
-                  "marginBottom": 10,
-                }
-              }
-            >
-              
-            </Text>
           </View>
         </View>,
         "style": Object {
@@ -942,20 +866,6 @@ ShallowWrapper {
                   }
                 }
               />
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                ellipsizeMode="tail"
-                style={
-                  Object {
-                    "color": "#72A4DE",
-                    "fontSize": 14,
-                    "marginBottom": 10,
-                  }
-                }
-              >
-                
-              </Text>
             </View>,
           ],
           "style": Object {
@@ -1084,20 +994,6 @@ ShallowWrapper {
                     }
                   }
                 />,
-                <Text
-                  accessible={true}
-                  allowFontScaling={true}
-                  ellipsizeMode="tail"
-                  style={
-                    Object {
-                      "color": "#72A4DE",
-                      "fontSize": 14,
-                      "marginBottom": 10,
-                    }
-                  }
-                >
-                  
-                </Text>,
               ],
               "style": Object {
                 "flex": 1,
@@ -1294,25 +1190,6 @@ ShallowWrapper {
                 "rendered": null,
                 "type": [Function],
               },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "class",
-                "props": Object {
-                  "accessible": true,
-                  "allowFontScaling": true,
-                  "children": "",
-                  "ellipsizeMode": "tail",
-                  "style": Object {
-                    "color": "#72A4DE",
-                    "fontSize": 14,
-                    "marginBottom": 10,
-                  },
-                },
-                "ref": null,
-                "rendered": "",
-                "type": [Function],
-              },
             ],
             "type": [Function],
           },
@@ -1476,23 +1353,15 @@ exports[`WalletCard component tests Rendering 1`] = `
             <Text
               accessible={true}
               allowFontScaling={true}
-              buttonTitle={true}
-              disabledButtonTitle={false}
               ellipsizeMode="tail"
               style={
-                Array [
-                  undefined,
-                  undefined,
-                  Object {
-                    "color": "#72A4DE",
-                    "fontSize": 14,
-                    "letterSpacing": -0.02,
-                    "lineHeight": 19,
-                    "textAlign": "center",
-                  },
-                  false,
-                  undefined,
-                ]
+                Object {
+                  "color": "#72A4DE",
+                  "fontSize": 14,
+                  "letterSpacing": -0.02,
+                  "lineHeight": 19,
+                  "textAlign": "center",
+                }
               }
             >
               Send
@@ -1550,23 +1419,15 @@ exports[`WalletCard component tests Rendering 1`] = `
             <Text
               accessible={true}
               allowFontScaling={true}
-              buttonTitle={true}
-              disabledButtonTitle={false}
               ellipsizeMode="tail"
               style={
-                Array [
-                  undefined,
-                  undefined,
-                  Object {
-                    "color": "#72A4DE",
-                    "fontSize": 14,
-                    "letterSpacing": -0.02,
-                    "lineHeight": 19,
-                    "textAlign": "center",
-                  },
-                  false,
-                  undefined,
-                ]
+                Object {
+                  "color": "#72A4DE",
+                  "fontSize": 14,
+                  "letterSpacing": -0.02,
+                  "lineHeight": 19,
+                  "textAlign": "center",
+                }
               }
             >
               Receive
@@ -1588,20 +1449,6 @@ exports[`WalletCard component tests Rendering 1`] = `
           }
         }
       />
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-        style={
-          Object {
-            "color": "#72A4DE",
-            "fontSize": 14,
-            "marginBottom": 10,
-          }
-        }
-      >
-        Testing Message
-      </Text>
     </View>
   </View>
 </View>
