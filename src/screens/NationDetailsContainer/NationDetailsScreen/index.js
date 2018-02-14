@@ -57,11 +57,11 @@ class NationDetailsScreen extends Component {
     if (this.props.isDraft) {
       return (
         <View style={styles.fakeBottomBar}>
-          <NationActionButton iconSource={AssetsImage.Actions.chat}
+          <NationActionButton iconSource={AssetsImage.Actions.delete}
                               title={i18n.t('screens.createNation.delete')}
                               disable={false}
                               onPress={this.props.deleteDraft}/>
-          <NationActionButton iconSource={AssetsImage.Actions.map}
+          <NationActionButton iconSource={AssetsImage.Actions.submit}
                               title={i18n.t('screens.createNation.submit')}
                               disable={!nationIsValid(nation)}
                               onPress={this.props.submitDraft}/>
