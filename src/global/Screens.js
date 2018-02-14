@@ -185,7 +185,7 @@ const Screens = {
   },
   RECEIVE_MONEY_SCREEN: {
     screen: 'Pangea.ReceiveMoneyScreen',
-    title: i18n.t('screens.receiveMoney.title'),
+    title: '',
     navigatorStyle,
   },
   VERIFY_KEY_SUCCESS_SCREEN: {
