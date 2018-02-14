@@ -176,7 +176,7 @@ const Screens = {
   },
   LOAD_WALLET_SCREEN: {
     screen: 'Pangea.LoadWalletScreen',
-    title: i18n.t('screens.loadWallet.title'),
+    title: '',
     ...baseKeyScreen,
   },
   INTRO_SCREEN: {
