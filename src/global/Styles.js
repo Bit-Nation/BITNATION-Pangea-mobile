@@ -387,6 +387,27 @@ const styles = {
     fontSize: 13,
   },
 
+  //Panel used for showing the citizenship of a User in Detail Screen
+  panelViewCitizen: {
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    borderRadius: 8,
+    backgroundColor: Colors.panelView,
+    marginTop: 4,
+    marginBottom: 4,
+    marginLeft: 0,
+    marginRight: 0,
+    overflow: 'hidden',
+    // INDENTS:
+    paddingLeft: 10,
+    padding: normalizer(7),
+  },
+
+  panelViewCitizenIcon: {
+    width: 25,
+    height: 25,
+  },
+
 	// ========================================
 	// Forms
 	// Example: Profile Edit Screen

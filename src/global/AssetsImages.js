@@ -43,6 +43,7 @@ const resetActionIcon = require('../assets/images/toolbarIconReset.png');
 const saveActionIcon = require('../assets/images/toolbarIconSave.png');
 const deleteActionIcon = require('../assets/images/toolbarIconDelete.png');
 const submitActionIcon = require('../assets/images/toolbarIconSubmit.png');
+const userCitizenIcon = require('../assets/images/avatarCitizen.png');
 
 const disclosureRowIcon = require('../assets/images/disclosure.png');
 
@@ -62,6 +63,7 @@ const Images = {
   bitLogoBig,
   QR,
   privateKeyDemo,
+  userCitizenIcon,
   disclosureRowIcon,
   TabIcons: {
     dashboard: dashboardTabIcon,

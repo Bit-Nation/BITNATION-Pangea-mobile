@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import _ from 'lodash'
 
 import GlobalStyles from '../../global/Styles'
-import Button from './Button'
+import i18n from "../../global/i18n";
 
 /**
  * @desc Component that renders an alert panel view for Nations Status
@@ -19,7 +19,7 @@ export default class PanelViewAlert extends Component {
     return (
       <View style={style}>
         <Text style={styles.panelAlertBold}>
-          Status:
+          {i18n.t('screens.nationDetails.status')}
         </Text>
         <Text style={styles.panelAlertStatus}>
           {' ' + this.props.status}
