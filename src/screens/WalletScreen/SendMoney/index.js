@@ -1,11 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
   View,
   Text,
   TextInput,
   Image,
-  Alert,
-  ScrollView,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -14,8 +12,6 @@ import _ from 'lodash';
 import Images from '../../../global/AssetsImages';
 import Colors from '../../../global/colors';
 import styles from './styles';
-import Button from '../../../components/common/Button';
-import { Container, Header, Content, StyleProvider } from 'native-base';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import { resolveWallet } from '../../../utils/wallet';
@@ -24,21 +20,45 @@ import { androidNavigationButtons, screen } from '../../../global/Screens';
 import Loading from '../../../components/common/Loading';
 import { prettyWalletBalance } from '../../../utils/formatters';
 import i18n from '../../../global/i18n';
+import { errorAlert } from '../../../global/alerts';
+import PanelView from '../../../components/common/PanelView';
+import NavigatorComponent from '../../../components/common/NavigatorComponent';
 
-class SendMoney extends Component {
+const SEND_BUTTON = 'SEND_BUTTON';
+
+class SendMoney extends NavigatorComponent {
 
   static navigatorButtons = { ...androidNavigationButtons };
+
+  onNavBarButtonPress(id) {
+    if (id === SEND_BUTTON) {
+      this.onSendPress();
+    }
+  }
 
   constructor(props) {
     super(props);
 
     this.state = { amountString: '', toEthAddress: '' };
+    this.updateNavigation();
+  }
+
+  updateNavigation() {
+    this.props.navigator.setButtons({
+      rightButtons: [{
+        title: i18n.t('common.send'),
+        id: SEND_BUTTON,
+        buttonColor: Colors.navigationButtonColor,
+        disabled: !this._validateSendData(),
+      }],
+    });
   }
 
   componentDidUpdate(prevProps) {
     if (this.props.moneySendingError !== prevProps.moneySendingError && this.props.moneySendingError !== null) {
-      this._showErrorAlert(this.props.moneySendingError);
+      errorAlert(this.props.moneySendingError);
     }
+    this.updateNavigation();
   }
 
   showQRCodeScanner = () => {
@@ -82,95 +102,64 @@ class SendMoney extends Component {
     this.props.onSendMoney(amount, this.state.toEthAddress);
   };
 
-  _showErrorAlert(error) {
-    Alert.alert(error.toString());
-  }
-
   render() {
     const wallet = this._resolveWallet();
     if (!wallet) {
       return <View/>;
     }
 
-    const balance = prettyWalletBalance(wallet, 'ETH', ' ' + i18n.t('screens.sendMoney.available'));
-
     return (
       <View style={styles.screenContainer}>
         <BackgroundImage/>
         <FakeNavigationBar/>
-        <ScrollView contentContainerStyle={styles.bodyContainer}>
+        <View style={styles.bodyContainer}>
 
-          <View style={styles.fromContainer}>
-            <View style={styles.fromTextContainer}>
-              <Text style={styles.body}>{i18n.t('common.from')}</Text>
-            </View>
-
-            <View style={styles.ethereumContainer}>
-              <View style={styles.ethereumLogoContainer}>
-                <Image
-                  style={styles.ethereumLogo}
-                  source={Images.eth}
-                  resizeMode="contain"/>
-              </View>
-
-              <View style={styles.ethereumDetailsContainer}>
-                <Text style={styles.ethereumTextContainer}>{wallet.name}</Text>
-                <Text style={styles.ethereumNumberContainer}>{balance}</Text>
+          <PanelView
+            style={styles.panelView}
+            childrenContainerStyle={styles.noflex}>
+            <View style={styles.row}>
+              <Image style={styles.icon} source={Images.eth} resizeMode="contain"/>
+              <View style={styles.textColumn}>
+                <Text style={styles.bodyBold}>{i18n.t('common.ethereum')}</Text>
+                <Text style={styles.currencyLarge}>{prettyWalletBalance(wallet, wallet.currency)}</Text>
               </View>
             </View>
-          </View>
+          </PanelView>
 
-          <View style={styles.amountContainer}>
-            <View style={styles.amountTextContainer}>
-              <Text style={styles.body}>{i18n.t('common.amount')}</Text>
+          <PanelView
+            style={styles.panelViewTransparent}
+            childrenContainerStyle={styles.noflex}>
+            <View style={styles.formRow}>
+              <View style={styles.fieldsContainer}>
+                <Text style={[styles.footnote, { marginLeft: 5 }]}>{i18n.t('common.amount')}</Text>
+                <View style={styles.formRow}>
+                  <TextInput
+                    style={[styles.textInput, styles.currencyLarge, { marginTop: 0 }]}
+                    placeholder='1.02'
+                    placeholderTextColor={Colors.placeholderTextColor}
+                    keyboardType='numeric'
+                    onChangeText={(amountString) => this.setState({ amountString })}
+                    value={this.state.amountString}
+                  />
+                </View>
+                <Text style={[styles.footnote, { marginLeft: 5, marginTop: 10 }]}>{i18n.t('common.to')}</Text>
+                <View style={styles.formRow}>
+                  <TextInput
+                    style={[styles.textInput, { marginTop: 0 }]}
+                    placeholder='0x'
+                    placeholderTextColor={Colors.placeholderTextColor}
+                    keyboardType='default'
+                    autoCapitalize='none'
+                    onChangeText={(toEthAddress) => this.setState({ toEthAddress })}
+                    value={this.state.toEthAddress}
+                  />
+                </View>
+              </View>
             </View>
 
-            <View style={styles.amountBoxContainer}>
-              <TextInput
-                style={[styles.baseTextInput, styles.amountTextInput]}
-                placeholder='1.02'
-                placeholderTextColor={Colors.placeholderTextColor}
-                value={this.state.amountString}
-                onChangeText={(amountString) => this.setState({ amountString })}
-                underlineColorAndroid={Colors.Transparent}
-                keyboardType='numeric'
-              />
-            </View>
+          </PanelView>
 
-            <View style={styles.amountCurrencyContainer}>
-              <Text style={styles.body}>{wallet.currency}</Text>
-            </View>
-          </View>
-
-
-          <View style={styles.toContainer}>
-            <View style={styles.toTextContainer}>
-              <Text style={styles.body}>{i18n.t('common.to')}</Text>
-            </View>
-
-            <View style={styles.ethAddressBoxContainer}>
-              <TextInput
-                style={[styles.baseTextInput, styles.ethTextInput]}
-                placeholder={i18n.t('screens.sendMoney.enterAddress')}
-                placeholderTextColor={Colors.placeholderTextColor}
-                value={this.state.toEthAddress}
-                onChangeText={(toEthAddress) => this.setState({ toEthAddress })}
-                underlineColorAndroid={Colors.Transparent}
-              />
-            </View>
-
-          </View>
-
-          <View style={styles.buttonContainer}>
-            <Button
-              title={i18n.t('common.send')}
-              onPress={this.onSendPress}
-              enabled={this._validateSendData()}
-              style={styles.button}
-            />
-          </View>
-
-        </ScrollView>
+        </View>
         {this.props.moneySendingInProgress ? <Loading/> : null}
       </View>
     );

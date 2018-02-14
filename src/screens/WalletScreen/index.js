@@ -13,7 +13,7 @@ import { selectWallet, updateWalletList } from '../../actions/wallet';
 import NavigatorComponent from '../../components/common/NavigatorComponent';
 import { removeAllPrivateKeys } from '../../actions/key';
 import i18n from '../../global/i18n';
-import styles from '../NationsScreen/NationsListScreen/styles'
+import styles from '../NationsScreen/NationsListScreen/styles';
 import FakeNavigationBar from '../../components/common/FakeNavigationBar';
 
 const REMOVE_WALLETS_BUTTON = 'REMOVE_WALLETS_BUTTON';
@@ -26,7 +26,7 @@ class WalletScreen extends NavigatorComponent {
     this.props.updateWalletList();
   }
 
-  componentDidUpdate() {
+  updateNavigation() {
     this.props.navigator.setButtons({
       leftButtons: this.props.testingModeActive ? [{
         id: REMOVE_WALLETS_BUTTON,
@@ -36,10 +36,15 @@ class WalletScreen extends NavigatorComponent {
     });
   }
 
-  onWillAppear() {
-    super.onWillAppear();
+  componentDidUpdate() {
+    this.updateNavigation();
+  }
+
+  onDidAppear() {
+    super.onDidAppear();
 
     this.props.updateWalletList();
+    this.updateNavigation();
   }
 
   onNavBarButtonPress(id) {
