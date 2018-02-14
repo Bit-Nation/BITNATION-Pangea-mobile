@@ -1,6 +1,6 @@
 import { MediaQueryStyleSheet } from 'react-native-responsive'
-import Colors from './Colors'
-import { normalizer, normalWidthMargin } from '../utils/normalizer'
+import Colors from './colors'
+import { fontSizeNormalizer, normalWidthMargin } from '../utils/normalizer'
 
 // ========================================
 // DEFAULT TEXT STYLES
@@ -122,7 +122,7 @@ const defaultTextStyles = {
 		fontSize: 34,
 		lineHeight: 41,
 		letterSpacing: 0,
-		color: Colors.Amber,
+		color: Colors.BitnationLightColor,
 	},
 
   largeSubTitle: {
@@ -320,12 +320,12 @@ const styles = {
 	// The margins are set in the body container. If the body has no margins (bars that go edge to edge)
 	// then use the style below.
 	titleBarLarge: {
-		height: normalizer(52),
+		height: fontSizeNormalizer(52),
 		alignItems: 'flex-start',
 	},
 
   titleBarLargeNationDetail: {
-    height: normalizer(92),
+    height: fontSizeNormalizer(92),
     alignItems: 'flex-start',
   },
 	

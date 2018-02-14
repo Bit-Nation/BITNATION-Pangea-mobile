@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BackHandler, Alert } from 'react-native';
 
-import Colors from '../../../global/Colors';
+import Colors from '../../../global/colors';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import i18n from '../../../global/i18n';
 

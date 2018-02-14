@@ -10,7 +10,7 @@ import { Switch, View, Text } from 'react-native'
 import { MediaQueryStyleSheet } from 'react-native-responsive'
 import PropTypes from 'prop-types'
 import GlobalStyles from '../../global/Styles'
-import Colors from '../../global/Colors'
+import Colors from '../../global/colors'
 
 export default class SwitchLabeled extends Component {
 	

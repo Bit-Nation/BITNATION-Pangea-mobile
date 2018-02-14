@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import NationDetailsScreen from './NationDetailsScreen';
-import { switchNationTab, openNation, joinNation, leaveNation } from '../../actions/nations';
+import { switchNationTab, joinNation, leaveNation } from '../../actions/nations';
 import { androidNavigationButtons, screen } from '../../global/Screens';
 import { Alert } from 'react-native';
 import i18n from '../../global/i18n';
-import Colors from '../../global/Colors';
+import Colors from '../../global/colors';
 import { startNationEditing } from '../../actions/modifyNation';
 import { isDraft, openedNation } from '../../reducers/nations';
 import NavigatorComponent from '../../components/common/NavigatorComponent';

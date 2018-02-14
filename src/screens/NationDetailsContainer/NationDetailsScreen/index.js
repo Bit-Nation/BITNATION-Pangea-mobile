@@ -13,10 +13,9 @@ import PanelView from '../../../components/common/PanelView';
 import DemoImage from '../../../components/common/DemoImage';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import i18n from '../../../global/i18n';
-import Colors from '../../../global/Colors';
+import Colors from '../../../global/colors';
 import { screen } from '../../../global/Screens';
 import { openedNation } from '../../../reducers/nations';
-
 
 class NationDetailsScreen extends Component {
 
