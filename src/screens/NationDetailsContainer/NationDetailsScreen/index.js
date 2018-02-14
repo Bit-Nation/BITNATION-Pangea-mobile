@@ -59,14 +59,14 @@ class NationDetailsScreen extends Component {
 		return (
 			<View style={styles.fakeBottomBar}>
 				<NationActionButton iconSource={AssetsImage.Actions.chat}
-				                    title={i18n.t('screens.nationDetails.chatButton')} disable={true}/>
+				                    title={i18n.t('screens.nations.toolbar.chat')} disable={true}/>
 				<NationActionButton iconSource={AssetsImage.Actions.map}
-				                    title={i18n.t('screens.nationDetails.mapButton')} disable={true}/>
+				                    title={i18n.t('screens.nations.toolbar.map')} disable={true}/>
 				<NationActionButton iconSource={AssetsImage.Actions.join}
-				                    title={i18n.t('screens.nationDetails.joinButton')} disable={joined || !created}
+				                    title={i18n.t('screens.nations.toolbar.join')} disable={joined || !created}
 				                    onPress={this.props.joinNation}/>
 				<NationActionButton iconSource={AssetsImage.Actions.leave}
-				                    title={i18n.t('screens.nationDetails.leaveButton')} disable={!joined}
+				                    title={i18n.t('screens.nations.toolbar.leave')} disable={!joined}
 				                    onPress={this.props.leaveNation}/>
 			</View>
 		)

@@ -226,10 +226,6 @@
       "serviceUsageInfo": "Non-citizens {{allowance}} use national services.",
       "profitInfo": "The nation is managed as a {{profit}} entity.",
       "ethereumAddress": "Ethereum Address:",
-      "chatButton": "$t(common.chat)",
-      "mapButton": "$t(common.map)",
-      "joinButton": "$t(common.join)",
-      "leaveButton": "$t(common.leave)",
       "status": "Status: ",
       "citizen": "You are citizen of "
     },
@@ -251,11 +247,7 @@
       },
       "locationTypeHint": "Virtual nations exist only in Pangea. Geographic nations are on Earth.",
       "cancelButton": "$t(common.cancel)",
-      "doneButton": "$t(common.done)",
-      "reset": "Reset",
-      "submit": "Submit",
-      "save": "Save",
-      "delete": "Delete"
+      "doneButton": "$t(common.done)"
     },
     "wallet": {
       "title": "$t(common.wallet)",
