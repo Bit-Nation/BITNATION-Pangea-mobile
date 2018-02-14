@@ -35,7 +35,7 @@ import BackgroundImage from '../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../components/common/FakeNavigationBar';
 import i18n from '../../global/i18n'
 
-import elizabot from '../../components/common/elizabot';
+import elizabot from '../../../vendor/elizabot';
 
 class ChatScreen extends React.Component {
 
