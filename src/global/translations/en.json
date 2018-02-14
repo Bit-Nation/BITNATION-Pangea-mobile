@@ -35,7 +35,8 @@
     "updating": "Updating",
     "updateFailed": "Update failed",
     "ethereum": "Ethereum",
-    "continue": "Continue"
+    "continue": "Continue",
+    "location": "Location"
   },
   "enums": {
     "nation": {
@@ -238,7 +239,7 @@
       "prompt": {
         "name": "Nation name",
         "description": "Short description",
-        "location": "Nation location",
+        "location": "Nation location type...",
         "represents": "Nation represents an existing Earth country",
         "legalCode": "Legal Code...",
         "lawEnforcementMechanism": "Law Enforcement Mechanism...",
