@@ -94,6 +94,7 @@ class CreateNation extends NavigatorComponent {
             {/* CONSTRUCTIONS OF THE SECTIONS IN THE SCREEN */}
             {this._buildIntroPanel()}
             {this._buildCoreNationView()}
+            {this._buildLocationNationView()}
             {this._buildGovernmentalView()}
             {this._buildOptionsView()}
           </ScrollView>
@@ -171,6 +172,15 @@ class CreateNation extends NavigatorComponent {
             </View>
           </View>
         </View>
+      </PanelView>
+    );
+  }
+
+  _buildLocationNationView() {
+    return (
+      <PanelView
+        style={styles.panelViewTransparent}
+        title={i18n.t('common.location')} icon=' '>
         <View style={styles.formRow}>
           <View style={styles.fieldsContainer}>
             <MultiSelect
