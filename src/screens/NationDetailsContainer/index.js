@@ -8,9 +8,10 @@ import { androidNavigationButtons, screen } from '../../global/Screens';
 import { Alert } from 'react-native';
 import i18n from '../../global/i18n';
 import Colors from '../../global/colors';
-import { startNationEditing } from '../../actions/modifyNation';
+import { deleteNationDraft, startNationEditing, submitNation } from '../../actions/modifyNation';
 import { isDraft, openedNation } from '../../reducers/nations';
 import NavigatorComponent from '../../components/common/NavigatorComponent';
+import { alert, errorAlert } from '../../global/alerts';
 
 const EDIT_BUTTON = 'EDIT_BUTTON';
 
@@ -55,6 +56,45 @@ class NationDetailsContainer extends NavigatorComponent {
     );
   }
 
+  _onDeleteDraft = () => {
+    alert('deleteForm', [
+      {
+        name: 'cancel',
+        style: 'cancel',
+      }, {
+        name: 'delete',
+        style: 'destructive',
+        onPress: () => this.props.onDeleteDraft(openedNation(this.props).id, () => {
+          if (this.props.latestError) {
+            errorAlert(this.props.latestError);
+            return;
+          }
+
+          this.props.navigator.pop();
+        }),
+      }],
+    );
+  };
+
+  _onSubmitDraft = () => {
+    alert('submitForm', [
+      {
+        name: 'cancel',
+        style: 'cancel',
+      }, {
+        name: 'confirm',
+        onPress: () => this.props.onSubmitDraft(openedNation(this.props), () => {
+          if (this.props.latestError) {
+            errorAlert(this.props.latestError);
+            return;
+          }
+
+          this.props.navigator.pop();
+        }),
+      }],
+    );
+  };
+
   onJoinNation = () => {
     this.performIfHasWallet(this.props.joinNation);
   };
@@ -73,7 +113,11 @@ class NationDetailsContainer extends NavigatorComponent {
 
   render() {
     return (
-      <NationDetailsScreen {...this.props} joinNation={this.onJoinNation} leaveNation={this.onLeaveNation}/>
+      <NationDetailsScreen {...this.props}
+                           joinNation={this.onJoinNation}
+                           leaveNation={this.onLeaveNation}
+                           deleteDraft={this._onDeleteDraft}
+                           submitDraft={this._onSubmitDraft}/>
     );
   }
 
@@ -87,7 +131,7 @@ NationDetailsContainer.PropTypes = {
 const mapStateToProps = state => ({
   ...state.nations,
   ...state.wallet,
-  isDraft: isDraft(openedNation(state.nations)),
+  isDraft: isDraft(openedNation(state.nations) || {}),
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -102,6 +146,12 @@ const mapDispatchToProps = dispatch => ({
   },
   onStartNationEditing(nation) {
     dispatch(startNationEditing(nation));
+  },
+  onDeleteDraft(nationId, callback) {
+    dispatch(deleteNationDraft(nationId, callback));
+  },
+  onSubmitDraft(data, callback) {
+    dispatch(submitNation(data, callback));
   },
 });
 
