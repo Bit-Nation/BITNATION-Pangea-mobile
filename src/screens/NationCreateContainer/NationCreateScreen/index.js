@@ -22,7 +22,6 @@ import MultiSelect from '../../../components/MultiSelect';
 import Images from '../../../global/AssetsImages';
 import Loading from '../../../components/common/Loading';
 import NationActionButton from '../../../components/common/NationActionButton';
-import ModalDropdown from 'react-native-modal-dropdown';
 import Colors from '../../../global/colors';
 import styles from './styles';
 import i18n from '../../../global/i18n';
