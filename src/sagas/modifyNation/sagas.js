@@ -12,6 +12,7 @@ import { saveAndSubmit } from './serviceFunctions';
 import { submitDraft } from './serviceFunctions';
 import { nationIsModified } from '../../reducers/modifyNation';
 import { nationSubmitResult } from '../../actions/modifyNation';
+import { requestFetchNations } from '../../actions/nations';
 
 export function* saveDraftSaga(action) {
   const nationData = action.nation;
@@ -24,6 +25,7 @@ export function* saveDraftSaga(action) {
     }
     yield put(nationDraftSaveResult(nation.id));
     yield put(startNationEditing(nation));
+    yield put(requestFetchNations());
   } catch (error) {
     yield put(nationDraftSaveResult(nationData.id, error));
   } finally {
@@ -38,6 +40,7 @@ export function* deleteDraftSaga(action) {
   try {
     yield call(deleteDraft, nationId);
     yield put(nationDraftDeleteResult(nationId));
+    yield put(requestFetchNations());
   } catch (error) {
     yield put(nationDraftDeleteResult(nationId, error));
   } finally {
@@ -62,6 +65,7 @@ export function* submitNationSaga(action) {
       nation = yield call(submitDraft, nationData.id);
     }
     yield put(nationSubmitResult(nation.id));
+    yield put(requestFetchNations());
   } catch (error) {
     yield put(nationSubmitResult(nationData.id, error));
   } finally {
