@@ -6,9 +6,9 @@
 import Colors from '../../global/colors'
 
 export const colorPack = {
-  primary: '#00A5FF',
+  primary: Colors.BitnationHighlightColor,//'#00A5FF',
   primaryDark: '#215191',
-  light: Colors.shadeOfBitnationLightColor(0.2),
+  light: 'transparent',//Colors.shadeOfBitnationLightColor(0.2),
   textPrimary: Colors.white,
   placeholderTextColor: Colors.white,
   danger: Colors.primary_red,
@@ -30,7 +30,7 @@ export default {
     backgroundColor: colorPack.light,
     borderBottomWidth: 1,
     borderColor: colorPack.borderColor,
-    paddingLeft: 20,
+    paddingLeft: 0,
     paddingRight: 20,
     flex: 1,
     flexDirection: 'row',
@@ -70,7 +70,7 @@ export default {
   selectorView: (fixedHeight) => {
     const style = {
       flexDirection: 'column',
-      marginBottom: 10,
+      marginBottom: 0,
       elevation: 2,
     }
     if (fixedHeight) {
@@ -87,7 +87,7 @@ export default {
   dropdownView: {
     flexDirection: 'row',
     alignItems: 'center',
-    height: 40,
-    marginBottom: 10,
+    height: 43,
+    marginBottom: 0,
   },
 };
