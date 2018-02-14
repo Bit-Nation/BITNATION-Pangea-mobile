@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import {
   View,
   Text, ScrollView, Image, StatusBar, Alert,
@@ -17,109 +17,96 @@ import { openedNation } from '../../../reducers/nations';
 
 class NationDetailsScreen extends Component {
 
-  render() {
+	render () {
     const nation = openedNation(this.props);
 
-    if (!nation) {
-      return <BackgroundImage/>;
-    }
+		if (!nation) {
+			return <BackgroundImage/>
+		}
 
-    return (
-      <View style={styles.screenContainer}>
-        <BackgroundImage/>
-        <FakeNavigationBar navBarHidden=''/>
-        <View style={styles.layoutMargin}>
-          <View style={styles.titleBarLargeNationDetail}>
-            <Text style={styles.largeSubTitle}>
-              {i18n.t('screens.nationDetails.title')}
-            </Text>
-            <Text
-              style={styles.largeTitle}>{nation.nationName}</Text>
-            {console.log('joined nation: ', nation.joined)}
-          </View>
-        </View>
-        <View style={styles.bodyContainer}>
-          <ScrollView style={styles.scrollView}>
-            {/* Fake Map panel */}
-            {/*
-            <PanelView style={[styles.messageView]}>
-              <Image source={AssetsImage.Placeholder.map} resizeMode='contain'/>
-            </PanelView>
-*/}
+		return (
+			<View style={styles.screenContainer}>
+				<BackgroundImage/>
+				<FakeNavigationBar navBarHidden=''/>
+				<View style={styles.bodyContainer}>
+					{/* TITLE OF SCREEN */}
+					<View style={styles.titleContainer}>
+						<View style={styles.titleBarLarge}>
+							<Text style={styles.largeTitle}>{nation.nationName}</Text>
+							{console.log('joined nation: ', nation.joined)}
+						</View>
+					</View>
 
-            {/* Fake Achievements Panel */}
-            {/*
-            <PanelView style={[styles.messageView]}>
-              <Image source={AssetsImage.Placeholder.achievements} resizeMode='contain'/>
-            </PanelView>
-*/}
-            {this._buildAboutView(nation)}
-            {this._buildGovernmentalStructureView(nation)}
-            {this._buildFactsView(nation)}
-          </ScrollView>
-        </View>
+					<ScrollView>
+						{this._buildAboutView(nation)}
+						{this._buildGovernmentalStructureView(nation)}
+						{this._buildFactsView(nation)}
+					</ScrollView>
+				</View>
         {this._buildTabBar(nation.joined, nation.idInSmartContract >= 0)}
-      </View>
-    );
-  }
+			</View>
+		)
+	}
 
-  _buildTabBar(joined, created) {
-    return (
-      <View style={styles.fakeBottomBar}>
-        <NationActionButton iconSource={AssetsImage.Actions.chat}
-                            title={i18n.t('screens.nationDetails.chatButton')} disable={true}/>
-        <NationActionButton iconSource={AssetsImage.Actions.map}
-                            title={i18n.t('screens.nationDetails.mapButton')} disable={true}/>
-        <NationActionButton iconSource={AssetsImage.Actions.join}
-                            title={i18n.t('screens.nationDetails.joinButton')} disable={joined || !created}
-                            onPress={this.props.joinNation}/>
-        <NationActionButton iconSource={AssetsImage.Actions.leave}
-                            title={i18n.t('screens.nationDetails.leaveButton')} disable={!joined}
-                            onPress={this.props.leaveNation}/>
-      </View>
-    );
-  }
+	_buildTabBar (joined, created) {
+		return (
+			<View style={styles.fakeBottomBar}>
+				<NationActionButton iconSource={AssetsImage.Actions.chat}
+				                    title={i18n.t('screens.nationDetails.chatButton')} disable={true}/>
+				<NationActionButton iconSource={AssetsImage.Actions.map}
+				                    title={i18n.t('screens.nationDetails.mapButton')} disable={true}/>
+				<NationActionButton iconSource={AssetsImage.Actions.join}
+				                    title={i18n.t('screens.nationDetails.joinButton')} disable={joined || !created}
+				                    onPress={this.props.joinNation}/>
+				<NationActionButton iconSource={AssetsImage.Actions.leave}
+				                    title={i18n.t('screens.nationDetails.leaveButton')} disable={!joined}
+				                    onPress={this.props.leaveNation}/>
+			</View>
+		)
+	}
 
-  // Useful Notes:
-  // PanelView Props: title = text, messageText = text, style, renderBottom = method, renderAdditionalInfo = method, children = main text of the display
-  // DemoImage overlays a message telling user this is a demonstration
+	// Useful Notes:
+	// PanelView Props: title = text, messageText = text, style, renderBottom = method, renderAdditionalInfo = method, children = main text of the display
+	// DemoImage overlays a message telling user this is a demonstration
 
-  _buildAboutView(nation) {
-    return (
-      <PanelView style={styles.messageView}
-                 title={i18n.t('screens.nationDetails.aboutInfo', { name: nation.nationName })}>
-        <Text style={styles.panelSubTitle}>
-          Description:
-        </Text>
-        <Text style={styles.panelBody}>
-          {nation.nationDescription ? nation.nationDescription + '\n' : ''}
-          {i18n.t('screens.nationDetails.locationInfo', {
-            name: nation.nationName,
-            locationType: nation.exists ?
-              i18n.t('enums.nation.locationType.geographical') :
-              i18n.t('enums.nation.locationType.virtual'),
-          }) + '\n'}
-        </Text>
-        <Text style={styles.panelSubTitle}>
-          {i18n.t('screens.nationDetails.ethereumAddress')}
-        </Text>
-        <Text style={styles.footnote}>
-          {nation.ethAddress}
-        </Text>
-      </PanelView>
-    );
-  }
+	_buildAboutView (nation) {
+		return (
+			<PanelView style={styles.panelView}
+			           childrenContainerStyle={{flex: 0,}}
+			             title={i18n.t('screens.nationDetails.aboutInfo', { name: nation.nationName })}>
+				<Text style={styles.panelSubTitle}>
+					{i18n.t('screens.nationDetails.description') + ':'}
+				</Text>
+				<Text style={styles.body}>
+					{nation.nationDescription ? nation.nationDescription + '\n': ''}
+					{i18n.t('screens.nationDetails.locationInfo', {
+						name: nation.nationName,
+						locationType: nation.exists ?
+							i18n.t('enums.nation.locationType.geographical') :
+              i18n.t('enums.nation.locationType.virtual')
+					}) + '\n'}
+				</Text>
+				<Text style={styles.panelSubTitle}>
+					{i18n.t('screens.nationDetails.ethereumAddress')}
+				</Text>
+				<Text style={styles.footnote}>
+					{nation.ethAddress}
+				</Text>
+			</PanelView>
+		)
+	}
 
-  _buildGovernmentalStructureView(nation) {
-    return (
-      <PanelView style={styles.messageView}
-                 title={i18n.t('common.governmentalStructure')}>
-        <Text style={styles.panelBody}>
+	_buildGovernmentalStructureView (nation) {
+		return (
+			<PanelView style={styles.panelView}
+			           childrenContainerStyle={{flex: 0,}}
+			             title={i18n.t('common.governmentalStructure')}>
+				<Text style={styles.body}>
           {i18n.t('screens.nationDetails.legalSystemInfo', {
-            name: nation.nationName,
-            code: nation.nationCode,
-          })}
-          {' '}
+          	name: nation.nationName,
+            code: nation.nationCode
+					})}
+					{' '}
           {i18n.t('screens.nationDetails.lawEnforcementInfo', {
             lawEnforcementMechanism: nation.lawEnforcementMechanism,
           })}
@@ -127,31 +114,33 @@ class NationDetailsScreen extends Component {
           {i18n.t('screens.nationDetails.governmentInfo', {
             decisionMakingProcess: nation.decisionMakingProcess,
           })}
-        </Text>
-      </PanelView>
-    );
-  }
+				</Text>
+			</PanelView>
+		)
+	}
 
-  _buildFactsView(nation) {
-    return (
-      <PanelView style={styles.messageView} title={i18n.t('screens.nationDetails.funFacts')}>
-        <Text style={styles.panelBody}>
-          {nation.diplomaticRecognition ? (i18n.t('screens.nationDetails.diplomaticRecognitionInfo', { name: nation.nationName }) + '\n\n') : ''}
+	_buildFactsView (nation) {
+		return (
+			<PanelView style={styles.panelView}
+			           childrenContainerStyle={{flex: 0,}}
+			           title={i18n.t('screens.nationDetails.funFacts')}>
+				<Text style={styles.body}>
+					{nation.diplomaticRecognition ? (i18n.t('screens.nationDetails.diplomaticRecognitionInfo', { name: nation.nationName }) + '\n\n') : ''}
 
           {i18n.t('screens.nationDetails.serviceUsageInfo', {
-            allowance: nation.createNationsNonCitizensMayUseGovernanceServices ? i18n.t('enums.nation.usageAllowance.may') : i18n.t('enums.nation.usageAllowance.mayNot'),
+            allowance: nation.createNationsNonCitizensMayUseGovernanceServices ? i18n.t('enums.nation.usageAllowance.may') : i18n.t('enums.nation.usageAllowance.mayNot')
           })}
-          {'\n\n'}
+					{'\n\n'}
 
           {i18n.t('screens.nationDetails.profitInfo', {
-            profit: nation.profit ? i18n.t('enums.nation.profit.for') : i18n.t('enums.nation.profit.non'),
+            profit: nation.profit ? i18n.t('enums.nation.profit.for') : i18n.t('enums.nation.profit.non')
           })}
-        </Text>
-      </PanelView>
-    );
-  }
+				</Text>
+			</PanelView>
+		)
+	}
 
 }
 
 
-export default NationDetailsScreen;
+export default NationDetailsScreen

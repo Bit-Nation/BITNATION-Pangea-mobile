@@ -27,7 +27,7 @@ const WalletCard = (props) => {
     <View style={styles.container}>
 
       <View style={styles.row}>
-        <Image style={styles.icon} source={props.imagePath}/>
+        <Image style={styles.icon} source={props.imagePath} resizeMode='contain'/>
 
         <View style={styles.textColumn}>
           <View style={styles.spacer}/>
