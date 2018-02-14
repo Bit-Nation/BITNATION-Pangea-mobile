@@ -10,7 +10,7 @@
 
 import { MediaQueryStyleSheet } from 'react-native-responsive'
 import Colors from './colors'
-import { fontSizeNormalizer, normalWidthMargin } from '../utils/normalizer'
+import { normalizer, normalWidthMargin, isiPhoneXStatusBar, isiPhoneXTabBar } from '../utils/normalizer'
 
 // ========================================
 // DEFAULT TEXT STYLES
@@ -83,7 +83,7 @@ const styles = {
 	
 	// Extra space for the top of a page of text, to distinguish from nav.
 	bodyTopSpacer: {
-		height: fontSizeNormalizer(18),
+		height: normalizer(18),
 	},
 	
 	// Contains a title for a screen, e.g. Nations or Wallet
@@ -102,7 +102,7 @@ const styles = {
 	},
 	
 	statusBar: {
-		height: 20,
+		height: isiPhoneXStatusBar(20),
 		backgroundColor: 'transparent',
 	},
 	
@@ -113,7 +113,7 @@ const styles = {
 	
 	// Navigation area that shows a normal ("largeTitle" style) title
 	navigationBar: {
-		marginTop: 20, // force below the status bar !!! THIS IS WRONG
+		marginTop: isiPhoneXStatusBar(20), // force below the status bar !!! THIS IS WRONG
 		marginLeft: 8,
 		marginRight: 8,
 		height: 44,
@@ -140,14 +140,14 @@ const styles = {
 	// The margins are set in the body container. If the body has no margins (bars that go edge to edge)
 	// then use the style below.
 	titleBarLarge: {
-		height: fontSizeNormalizer(52),
+		height: normalizer(52),
 		alignItems: 'flex-start',
 		// marginLeft: 8,
 		// marginRight: 8,
 	},
 
   titleBarLargeNationDetail: {
-    height: fontSizeNormalizer(92),
+    height: normalizer(92),
     alignItems: 'flex-start',
   },
 	
@@ -206,15 +206,15 @@ const styles = {
 		backgroundColor: Colors.panelView,
 		overflow: 'hidden',
 		// INDENTS
-		padding: fontSizeNormalizer(16),
+		padding: normalizer(16),
 	},
 	
 	// Make an element inside a gridPanelView (e.g. style=listContainer) flush left/right by
 	// removing the LR margin indents
 	// Use on a View inside a gridPanelView.
 	removeGridPanelMarginsLR: {
-		marginLeft: fontSizeNormalizer(-16),
-		marginRight: fontSizeNormalizer(-16),
+		marginLeft: normalizer(-16),
+		marginRight: normalizer(-16),
 	},
 	
 	// ========================================
@@ -239,7 +239,7 @@ const styles = {
 		// paddingTop: 4,
 		// paddingBottom: 4,
 		
-		padding: fontSizeNormalizer(16),
+		padding: normalizer(16),
 		
 		// borderWidth:5,
 		// borderColor:'yellow',
@@ -356,9 +356,58 @@ const styles = {
 		// Standard row height for an iOS list item:
 		height: 30,
 	},
-	
-	
-	
+
+	//Panel used for Alert about the Status of the Nation in Detail Screen
+  panelViewAlert: {
+    flexDirection: 'row',
+    borderRadius: 8,
+    backgroundColor: Colors.panelViewAlert,
+    marginTop: 4,
+    marginBottom: 4,
+    marginLeft: 0,
+    marginRight: 0,
+    overflow: 'hidden',
+    // INDENTS:
+    paddingLeft: 10,
+    padding: normalizer(5),
+  },
+
+  //Label in panel used for Alert about the Status of the Nation in Detail Screen
+  panelAlertBold: {
+    ...defaultTextStyles.body,
+    color: Colors.BitnationHighlightColor,
+    fontSize: 13,
+    fontWeight: 'bold',
+  },
+
+  //Status string in panel used for Alert about the Status of the Nation in Detail Screen
+  panelAlertStatus: {
+    ...defaultTextStyles.body,
+    color: Colors.BitnationHighlightColor,
+    fontSize: 13,
+  },
+
+  //Panel used for showing the citizenship of a User in Detail Screen
+  panelViewCitizen: {
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    borderRadius: 8,
+    backgroundColor: Colors.panelView,
+    marginTop: 4,
+    marginBottom: 4,
+    marginLeft: 0,
+    marginRight: 0,
+    overflow: 'hidden',
+    // INDENTS:
+    paddingLeft: 10,
+    padding: normalizer(7),
+  },
+
+  panelViewCitizenIcon: {
+    width: 25,
+    height: 25,
+  },
+
 	// ========================================
 	// Forms
 	// Example: Profile Edit Screen
@@ -609,7 +658,7 @@ const styles = {
 	// Styles for the custom Tool Bar replacing the Tab Bar
   fakeBottomBar: {
     paddingTop:5,
-    height: 55,
+    height: isiPhoneXTabBar(55),
     backgroundColor: Colors.LightBlue,
     flexDirection: 'row',
     alignItems: 'stretch',

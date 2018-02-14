@@ -228,7 +228,9 @@
       "chatButton": "$t(common.chat)",
       "mapButton": "$t(common.map)",
       "joinButton": "$t(common.join)",
-      "leaveButton": "$t(common.leave)"
+      "leaveButton": "$t(common.leave)",
+      "status": "Status: ",
+      "citizen": "You are citizen of "
     },
     "createNation": {
       "title": "Create A Nation",

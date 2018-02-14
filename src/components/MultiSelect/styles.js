@@ -6,7 +6,7 @@
 import Colors from '../../global/colors'
 
 export const colorPack = {
-  primary: Colors.BitnationHighlightColor,//'#00A5FF',
+  primary: Colors.BitnationHighlightColor,
   primaryDark: '#215191',
   light: 'transparent',//Colors.shadeOfBitnationLightColor(0.2),
   textPrimary: Colors.white,

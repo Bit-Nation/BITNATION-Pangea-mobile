@@ -14,6 +14,8 @@ import DemoImage from '../../../components/common/DemoImage';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import i18n from '../../../global/i18n';
 import { openedNation } from '../../../reducers/nations';
+import PanelViewAlert from "../../../components/common/PanelViewAlert";
+import PanelViewCitizen from "../../../components/common/PanelViewCitizen";
 
 class NationDetailsScreen extends Component {
 
@@ -38,7 +40,12 @@ class NationDetailsScreen extends Component {
 					</View>
 
 					<ScrollView>
+						{/*  TODO: Logic for NATION'S STATUS in STATUS PANEL  */}
+						{this._buildStatusPanel('Submitted to the blockchain.')}
+
 						{this._buildAboutView(nation)}
+						{/*  Will show Panel of Citizenship if nation.joinend == true */}
+						{this._buildCitizenPanel(nation)}
 						{this._buildGovernmentalStructureView(nation)}
 						{this._buildFactsView(nation)}
 					</ScrollView>
@@ -140,6 +147,23 @@ class NationDetailsScreen extends Component {
 		)
 	}
 
+  _buildStatusPanel (status) {
+    return (
+      <PanelViewAlert
+				style={styles.panelViewAlert}
+				status={status} />
+    )
+  }
+
+  _buildCitizenPanel (nation) {
+    if (nation.joined) {
+      return (
+					<PanelViewCitizen
+						style={styles.panelViewCitizen}
+						nationName={nation.nationName} />
+      	)
+    	}
+		}
 }
 
 
