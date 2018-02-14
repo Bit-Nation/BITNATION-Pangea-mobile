@@ -87,7 +87,7 @@ NationDetailsContainer.PropTypes = {
 const mapStateToProps = state => ({
   ...state.nations,
   ...state.wallet,
-  isDraft: isDraft(openedNation(state)),
+  isDraft: isDraft(openedNation(state.nations)),
 });
 
 const mapDispatchToProps = dispatch => ({
