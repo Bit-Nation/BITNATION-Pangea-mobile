@@ -33,8 +33,7 @@ class VerifyKeyInstructionScreen extends KeyBaseScreen {
         <View style={styles.bodyContainer}>
           <PanelView style={styles.panelViewTransparent}
                      childrenContainerStyle={{ flex: 0, }}
-                     buttonTitle={i18n.t(
-                       'screens.verifyKey.startButton')}
+                     buttonTitle={i18n.t('screens.verifyKey.startButton')}
                      onButtonClick={() => this.onNextButtonPressed()}
           >
             <BodyParagraphs

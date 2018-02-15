@@ -32,8 +32,7 @@ class CreateKeyIntroductionScreen extends KeyBaseScreen {
           <View style={styles.titleContainer}>
             {/* TITLE OF SCREEN */}
             <View style={styles.titleBarLarge}>
-              <Text style={styles.largeTitle}>{i18n.t(
-                'screens.createKey.title')}</Text>
+              <Text style={styles.largeTitle}>{i18n.t('screens.createKey.title')}</Text>
             </View>
           </View>
 
@@ -42,8 +41,7 @@ class CreateKeyIntroductionScreen extends KeyBaseScreen {
                      buttonTitle={i18n.t('screens.createKey.startButton')}
                      onButtonClick={() => this.onNextButtonPressed()}
           >
-            <BodyParagraphs paragraphs={i18n.t(
-              'screens.createKey.introduction')}/>
+            <BodyParagraphs paragraphs={i18n.t('screens.createKey.introduction')}/>
 
           </PanelView>
         </View>

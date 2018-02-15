@@ -60,16 +60,13 @@ class Dashboard extends Component {
               <WalletPanel wallets={this.props.wallet.wallets}
                            style={styles.walletPanel}/>
               <PanelView
-                title={i18n.t(
-                  'screens.dashboard.warningPanel.title')}
-                buttonTitle={i18n.t(
-                  'screens.dashboard.warningPanel.button')}
+                title={i18n.t('screens.dashboard.warningPanel.title')}
+                buttonTitle={i18n.t('screens.dashboard.warningPanel.button')}
                 onButtonClick={this._onSelectMore}
                 style={styles.warningPanel}
                 titleStyle={styles.panelViewTitle}
               >
-                <Text style={styles.warningPanelBody}>{i18n.t(
-                  'screens.dashboard.warningPanel.body')}</Text>
+                <Text style={styles.warningPanelBody}>{i18n.t('screens.dashboard.warningPanel.body')}</Text>
               </PanelView>
             </View>
           </View>

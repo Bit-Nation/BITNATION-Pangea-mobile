@@ -35,15 +35,12 @@ export default class WalletList extends Component {
           data={this.props.wallets}
           keyExtractor={item => item.ethAddress}
           renderItem={({ item }) => {
-            const balance = prettyWalletBalance(item,
-              'ETH');
+            const balance = prettyWalletBalance(item, 'ETH');
 
             return (<WalletCard
               imagePath={Images.ethereumLogo}
-              onSendPress={() => this.props.onSendPress(
-                item)}
-              onReceivePress={() => this.props.onReceivePress(
-                item)}
+              onSendPress={() => this.props.onSendPress(item)}
+              onReceivePress={() => this.props.onReceivePress(item)}
               nameHeading={item.name}
               balance={balance}>
             </WalletCard>);

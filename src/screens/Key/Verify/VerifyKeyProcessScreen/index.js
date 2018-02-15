@@ -186,9 +186,7 @@ class VerifyKeyProcessScreen extends KeyBaseScreen {
                        childrenContainerStyle={{ flex: 0, }}
             >
 
-              <BodyParagraphs paragraphs={i18n.t(
-                'screens.verifyKey.process.instructions',
-                { KEY_LENGTH })}/>
+              <BodyParagraphs paragraphs={i18n.t('screens.verifyKey.process.instructions', { KEY_LENGTH })}/>
               <View style={styles.gridContainer}>
                 <GridView
                   itemsPerRow={KEY_COLUMN_COUNT}
@@ -198,13 +196,11 @@ class VerifyKeyProcessScreen extends KeyBaseScreen {
                 />
               </View>
               <View style={styles.buttonContainer}>
-                <Button title={i18n.t(
-                  'screens.verifyKey.process.previousButton')}
+                <Button title={i18n.t('screens.verifyKey.process.previousButton')}
                         onPress={this.onPreviousPressed}
                         style={styles.button}
                         enabled={this.state.currentPage > 0}/>
-                <Button title={i18n.t(
-                  'screens.verifyKey.process.nextButton')}
+                <Button title={i18n.t('screens.verifyKey.process.nextButton')}
                         onPress={this.onNextPressed}
                         style={styles.button}
                         enabled={this.state.currentPage <

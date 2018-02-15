@@ -12,7 +12,6 @@ import PanelView from '../../../components/common/PanelView';
 import i18n from '../../../global/i18n';
 import NationListItem from '../../../components/common/NationListItem';
 import NationListHeader from '../../../components/common/NationListHeader';
-//import GlobalStyles from '../../../global/Styles'
 
 const NEWEST_NATION_COUNT = 5;
 
@@ -24,20 +23,15 @@ export default class NationsPanel extends Component {
 
   render() {
     const { style } = this.props;
-    const newestNations = _.take(
-      _.sortBy(this.props.nations, nation => -nation.id),
-      NEWEST_NATION_COUNT);
-    const nationsCountStrings = i18n.t(
-      'screens.dashboard.nationsPanel.nationsCount',
-      { count: this.props.nations.length });
+    const newestNations = _.take(_.sortBy(this.props.nations, nation => -nation.id), NEWEST_NATION_COUNT);
+    const nationsCountStrings = i18n.t('screens.dashboard.nationsPanel.nationsCount', { count: this.props.nations.length });
     console.log(nationsCountStrings);
 
     return (
       <View style={style}>
         <PanelView style={styles.nationsGridPanel}
                    titleStyle={styles.panelViewTitle}
-                   title={i18n.t(
-                     'screens.dashboard.nationsPanel.title')}>
+                   title={i18n.t('screens.dashboard.nationsPanel.title')}>
           <View style={styles.nationsCountContainer}>
             <Text style={styles.body}>{nationsCountStrings.prefix}
               <Text style={styles.nationsCountString}>{nationsCountStrings.main}</Text>
@@ -50,8 +44,8 @@ export default class NationsPanel extends Component {
 
             <View style={styles.panelFlatlistHeader}>
               <Text
-                style={styles.nationsListHeaderText}>{i18n.t(
-                'screens.dashboard.nationsPanel.newNations')}</Text>
+                style={styles.nationsListHeaderText}>{i18n.t('screens.dashboard.nationsPanel.newNations')}
+              </Text>
             </View>
 
             <FlatList

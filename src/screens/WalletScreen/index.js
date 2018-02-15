@@ -77,8 +77,7 @@ class WalletScreen extends NavigatorComponent {
           {/* TITLE OF SCREEN */}
           <View style={styles.titleContainer}>
             <View style={styles.titleBarLarge}>
-              <Text style={styles.largeTitle}>{i18n.t(
-                'screens.wallet.title')}</Text>
+              <Text style={styles.largeTitle}>{i18n.t('screens.wallet.title')}</Text>
             </View>
           </View>
           {_.isEmpty(this.props.wallets) ? <EmptyWalletScreen

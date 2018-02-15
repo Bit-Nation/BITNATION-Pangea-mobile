@@ -37,12 +37,10 @@ class VerifyKeySuccess extends KeyBaseScreen {
         <View style={styles.bodyContainer}>
           <PanelView style={styles.panelViewTransparent}
                      childrenContainerStyle={{ flex: 0, }}
-                     buttonTitle={i18n.t(
-                       'screens.verifyKey.success.doneButton')}
+                     buttonTitle={i18n.t('screens.verifyKey.success.doneButton')}
                      onButtonClick={() => this.onNextButtonPressed()}
           >
-            <BodyParagraphs paragraphs={i18n.t(
-              'screens.verifyKey.success.instructions')}/>
+            <BodyParagraphs paragraphs={i18n.t('screens.verifyKey.success.instructions')}/>
           </PanelView>
 
         </View>

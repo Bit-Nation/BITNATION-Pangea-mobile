@@ -37,16 +37,13 @@ class CreateKeyInstructionScreen extends KeyBaseScreen {
                        buttonTitle={i18n.t('screens.createKey.startButton')}
                        onButtonClick={() => this.onNextButtonPressed()}
             >
-              <BodyParagraphs paragraphs={i18n.t(
-                'screens.createKey.instructions.beforeGrid',
-                { KEY_LENGTH })}/>
+              <BodyParagraphs paragraphs={i18n.t('screens.createKey.instructions.beforeGrid', { KEY_LENGTH })}/>
               <View style={styles.gridContainer}>
                 <Image style={styles.privateKeyDemoImage}
                        resizeMode='contain'
                        source={AssetsImages.privateKeyDemo}/>
               </View>
-              <BodyParagraphs paragraphs={i18n.t(
-                'screens.createKey.instructions.afterGrid')}/>
+              <BodyParagraphs paragraphs={i18n.t('screens.createKey.instructions.afterGrid')}/>
 
             </PanelView>
           </ScrollView>

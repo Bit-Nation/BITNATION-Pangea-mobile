@@ -125,8 +125,7 @@ class CreateKeyProcessScreen extends KeyBaseScreen {
             childrenContainerStyle={{ flex: 0, }}
           >
 
-            <BodyParagraphs paragraphs={i18n.t(
-              'screens.createKey.process.instructions')}/>
+            <BodyParagraphs paragraphs={i18n.t('screens.createKey.process.instructions')}/>
 
             <View style={styles.gridContainer}>
               <GridView
@@ -142,13 +141,11 @@ class CreateKeyProcessScreen extends KeyBaseScreen {
               />
             </View>
             <View style={styles.buttonContainer}>
-              <Button title={i18n.t(
-                'screens.createKey.process.previousButton')}
+              <Button title={i18n.t('screens.createKey.process.previousButton')}
                       onPress={this.onPreviousPressed}
                       style={styles.button}
                       enabled={this.state.activeRow > 0}/>
-              <Button title={i18n.t(
-                'screens.createKey.process.nextButton')}
+              <Button title={i18n.t('screens.createKey.process.nextButton')}
                       onPress={this.onNextPressed}
                       style={styles.button}/>
             </View>
