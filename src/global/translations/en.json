@@ -86,7 +86,7 @@
         "draft": "Draft",
         "rejected": "Rejected",
         "pending": "Pending",
-        "accepted": "Accepted",
+        "accepted": "Accepted"
       }
     },
     "onOff": {
