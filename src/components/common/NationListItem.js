@@ -13,23 +13,18 @@ import AssetsImages from '../../global/AssetsImages';
 export default class NationListItem extends Component {
 
   render() {
-
-    const { text, textStyle, status, id, onPress } = this.props;
-
     return (
       <View style={styles.sectionListItemContainer}>
         <TouchableOpacity testID='Touchable'
-                          onPress={() => this.props.onPress(
-                            this.props.id)}
+                          onPress={() => this.props.onPress(this.props.id)}
                           style={styles.sectionListTouchable}>
-          <Text style={[styles.listItemText, textStyle]} numberOfLines={1}>
+          <Text style={[styles.listItemText, this.props.textStyle]} numberOfLines={1}>
             {this.props.text}
           </Text>
           <Text style={styles.listItemTextState}>
             {this.props.status}
           </Text>
-          <Image source={AssetsImages.disclosureRowIcon}
-                 style={styles.sectionListDisclosure}/>
+          <Image source={AssetsImages.disclosureRowIcon} style={styles.sectionListDisclosure}/>
         </TouchableOpacity>
       </View>
     );

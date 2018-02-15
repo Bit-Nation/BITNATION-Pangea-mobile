@@ -22,15 +22,12 @@ export default class PanelView extends Component {
         {/* TITLE + ICON */}
         {/* Hide this view if no title or icon to avoid line below it. */}
         {
-          (!_.isEmpty(this.props.title) ||
-            !_.isEmpty(this.props.icon)) &&
+          (!_.isEmpty(this.props.title) || !_.isEmpty(this.props.icon)) &&
           this._renderHeader(this.props.title, this.props.icon, this.props.titleStyle)
         }
 
         {/* CHILDREN (MAIN) DISPLAY AREA */}
-        <View style={[
-          styles.panelChildrenContainer,
-          childrenContainerStyle]}>
+        <View style={[styles.panelChildrenContainer, childrenContainerStyle]}>
           {children}
         </View>
 

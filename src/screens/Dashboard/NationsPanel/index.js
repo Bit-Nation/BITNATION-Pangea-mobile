@@ -57,8 +57,7 @@ export default class NationsPanel extends Component {
                                   onPress={this.props.onSelectNation}
                                   id={nation.id}/>);
               }}
-              ItemSeparatorComponent={() => <View
-                style={styles.sectionListSeparator}/>}
+              ItemSeparatorComponent={() => <View style={styles.sectionListSeparator}/>}
               keyExtractor={(item) => item.id}
               data={newestNations}
             />

@@ -64,5 +64,4 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(
-  CreateKeyIntroductionScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateKeyIntroductionScreen);
