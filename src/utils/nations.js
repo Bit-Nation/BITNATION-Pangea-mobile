@@ -20,3 +20,15 @@ export function convertFromDatabase(nation) {
     governanceService: nation.governanceService.split(', '),
   };
 }
+
+export function nationIsValid(nation) {
+  if (_.isEmpty(nation.nationName)) return false;
+  if (_.isEmpty(nation.nationDescription)) return false;
+  if (nation.virtualNation === null || nation.virtualNation === undefined) return false;
+  if (_.isEmpty(nation.nationCode)) return false;
+  if (_.isEmpty(nation.lawEnforcementMechanism)) return false;
+  if (_.isEmpty(nation.decisionMakingProcess)) return false;
+  if (_.isEmpty(nation.governanceService)) return false;
+
+  return true;
+}
