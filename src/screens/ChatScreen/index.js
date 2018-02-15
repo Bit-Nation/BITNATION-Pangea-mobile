@@ -46,51 +46,38 @@ class ChatScreen extends React.Component {
   componentWillMount() {
     this.setState({
       messages: [
- 
-  	      {
-		      _id: 1,
-		      text: elizabot.start(),
-		      createdAt: new Date(),
-		      user: {
-			      _id: 2,
-			      name: 'Eliza',
-		      },
-		      // Any additional custom parameters are passed through
-	      },
-
-
-       
+        {
+          _id: 1,
+          text: elizabot.start(),
+          createdAt: new Date(),
+          user: {
+            _id: 2,
+            name: 'Eliza',
+          },
+          // Any additional custom parameters are passed through
+        },
       ],
     });
   }
 
   onSend(messages = []) {
-	
-    /*
-    // Alternative method: Random answers from paragraphs:
-    const answers = i18n.t('screens.createKey.introduction')
-	const answer = answers[Math.floor(Math.random() * answers.length)];
-    */
-	
-	  const m = [
-		  {
-			  _id: this.state.messages.length + 1,
-			  text: elizabot.reply(messages[0].text),
-			  createdAt: new Date(),
-			  user: {
-				  _id: 2,
-				  name: 'Eliza',
-				 // avatar: AssetsImages.Placeholder.avatar,
-			  },
-			  //showUserAvatar: true,
-		  },
-      ]
-	  
-      // Add user's message
-	  this.setState((previousState) => ({ messages: GiftedChat.append(previousState.messages, messages), }));
-	  
-	  // Add Eliza's response
-	  this.setState((previousState) => ({ messages: GiftedChat.append(previousState.messages, m), }));
+    const m = [
+      {
+        _id: this.state.messages.length + 1,
+        text: elizabot.reply(messages[0].text),
+        createdAt: new Date(),
+        user: {
+          _id: 2,
+          name: 'Eliza',
+        },
+      },
+    ];
+
+    // Add user's message
+    this.setState((previousState) => ({ messages: GiftedChat.append(previousState.messages, messages), }));
+
+    // Add Eliza's response
+    this.setState((previousState) => ({ messages: GiftedChat.append(previousState.messages, m), }));
   }
 
   render() {
@@ -105,7 +92,7 @@ class ChatScreen extends React.Component {
           user={{
             _id: 1,
           }}
-          bottomOffset={Platform.OS == 'ios' ? 48.5 : 0}
+          bottomOffset={Platform.OS === 'ios' ? 48.5 : 0}
           renderComposer={(props) =>
             <Composer {...props} textInputStyle={styles.composer}/>
           }
@@ -113,7 +100,7 @@ class ChatScreen extends React.Component {
             <InputToolbar {...props} containerStyle={styles.inputToolbar}/>
           }
           renderBubble={(props) =>
-            <Bubble {...props} customTextStyle={ styles.customTextStyle } />
+            <Bubble {...props} customTextStyle={styles.customTextStyle}/>
           }
         />
       </View>
