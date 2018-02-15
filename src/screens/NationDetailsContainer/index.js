@@ -106,9 +106,10 @@ class NationDetailsContainer extends NavigatorComponent {
   performIfHasWallet(functionToPerform) {
     if (_.isEmpty(this.props.wallets)) {
       this._showCreatePrivateKeyAlert();
-    } else {
-      functionToPerform();
+      return;
     }
+
+    functionToPerform();
   }
 
   render() {
