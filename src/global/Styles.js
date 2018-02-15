@@ -1,6 +1,6 @@
 import { MediaQueryStyleSheet } from 'react-native-responsive'
 import Colors from './colors'
-import { normalizer, normalWidthMargin } from '../utils/normalizer'
+import { fontSizeNormalizer, normalWidthMargin } from '../utils/normalizer'
 
 // ========================================
 // DEFAULT TEXT STYLES
@@ -122,8 +122,17 @@ const defaultTextStyles = {
 		fontSize: 34,
 		lineHeight: 41,
 		letterSpacing: 0,
-		color: Colors.BitnationHighlightColor,
+		color: Colors.BitnationLightColor,
 	},
+
+  largeSubTitle: {
+    fontFamily: 'Source Code Pro',
+    fontWeight: 'bold',
+    fontSize: 24,
+    lineHeight: 41,
+    letterSpacing: 0,
+    color: Colors.Amber,
+  },
 	
 	title1: {
 		fontFamily: 'Roboto',
@@ -317,11 +326,16 @@ const styles = {
 	// The margins are set in the body container. If the body has no margins (bars that go edge to edge)
 	// then use the style below.
 	titleBarLarge: {
-		height: normalizer(52),
+		height: fontSizeNormalizer(52),
 		alignItems: 'flex-start',
 		marginLeft: 8,
 		marginRight: 8,
 	},
+
+  titleBarLargeNationDetail: {
+    height: fontSizeNormalizer(92),
+    alignItems: 'flex-start',
+  },
 	
 	// Used as part of the body of a screen, but if the body area goes to the edges
 	// (e.g. a scrolling body with a table) you  might need margins.
@@ -377,8 +391,8 @@ const styles = {
 		marginBottom: 4,
 		marginLeft: 0,
 		marginRight: 0,
-		paddingTop: normalizer(15),
-		paddingBottom: normalizer(15),
+		paddingTop: fontSizeNormalizer(15),
+		paddingBottom: fontSizeNormalizer(15),
 		paddingLeft: 15,
 		paddingRight: 15,
 	},
@@ -679,28 +693,22 @@ const styles = {
 	},
 	tabBarTitle: {
 		marginTop: 4,
-		color: '#8E8E93',
+		color: Colors.white,
 		backgroundColor: 'transparent',
 		fontSize: 10,
 	},
+
+	//=========================================
+	// Styles for the custom Tool Bar replacing the Tab Bar
+  fakeBottomBar: {
+    paddingTop:5,
+    height: 55,
+    backgroundColor: Colors.LightBlue,
+    flexDirection: 'row',
+    alignItems: 'stretch',
+    justifyContent: 'space-around',
+  },
 	
-	// ========================================
-	// Basic Text Styles, e.g. components/common/Text.js
-	
-	messageTitle: {
-		fontSize: 22,
-		color: Colors.titleColor,
-		letterSpacing: 0,
-		lineHeight: 28,
-		textAlign: 'center',
-	},
-	messageText: {
-		fontSize: 17,
-		color: Colors.BitnationLightColor,
-		letterSpacing: -0.65,
-		lineHeight: 20.8,
-		textAlign: 'center',
-	},
 	buttonTitle: {
 		fontSize: 14,
 		color: Colors.BitnationLightColor,

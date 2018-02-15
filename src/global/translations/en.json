@@ -34,7 +34,8 @@
     "governmentalStructure": "Governmental Structure",
     "updating": "Updating",
     "updateFailed": "Update failed",
-    "ethereum": "Ethereum"
+    "ethereum": "Ethereum",
+    "continue": "Continue"
   },
   "enums": {
     "nation": {
@@ -109,6 +110,40 @@
       "subtitle": "You need to setup a wallet first",
       "confirm": "$t(common.ok)",
       "cancel": "$t(common.cancel)"
+    },
+    "resetForm": {
+      "title": "Reset",
+      "subtitle": "Reset this form to default values?",
+      "confirm": "$t(common.ok)",
+      "cancel": "$t(common.cancel)"
+    },
+    "deleteForm": {
+      "title": "Delete Draft",
+      "subtitle": "Delete this draft nation?",
+      "delete": "Delete",
+      "cancel": "$t(common.cancel)"
+    },
+    "saveForm": {
+      "title": "Save Draft",
+      "subtitle": "This draft nation has been saved to your device.",
+      "continue": "$t(common.continue)",
+      "close": "Close"
+    },
+    "submitForm": {
+      "title": "Submit Nation",
+      "subtitle": "Submit this nation to the blockchain?",
+      "confirm": "$t(common.continue)",
+      "cancel": "$t(common.cancel)"
+    },
+    "saveFormOnCancel": {
+      "title": "Save Draft",
+      "subtitle": "Do you want to save this nations as a draft on your device?",
+      "save": "Save",
+      "cancel": "$t(common.cancel)"
+    },
+    "error": {
+      "title": "Error",
+      "confirm": "$t(common.ok)"
     }
   },
   "screens": {
@@ -213,7 +248,11 @@
       },
       "locationTypeHint": "Virtual nations exist only in Pangea. Geographic nations are on Earth.",
       "cancelButton": "$t(common.cancel)",
-      "doneButton": "$t(common.done)"
+      "doneButton": "$t(common.done)",
+      "reset": "Reset",
+      "submit": "Submit",
+      "save": "Save",
+      "delete": "Delete"
     },
     "wallet": {
       "title": "$t(common.wallet)",

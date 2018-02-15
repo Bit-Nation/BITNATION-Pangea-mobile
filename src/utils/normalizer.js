@@ -11,7 +11,7 @@ const deviceWidth = Dimensions.get('window').width;
  * @param size The Font Size
  * @returns {integer} The new font size depending the current screen
  */
-export function normalizer (size) {
+export function fontSizeNormalizer (size) {
   if(deviceHeight === 568) {
     return size * 0.65
   } else if(deviceHeight === 667) {

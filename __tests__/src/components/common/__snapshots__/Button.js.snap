@@ -23,7 +23,7 @@ ShallowWrapper {
     "props": Object {
       "children": <TouchableOpacity
         activeOpacity={0.2}
-        disable={true}
+        disabled={true}
         onPress={[MockFunction]}
         style={
           Array [
@@ -35,12 +35,22 @@ ShallowWrapper {
         }
         testID="Touchable"
       >
-        <_Text
-          buttonTitle={false}
-          disabledButtonTitle={true}
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "color": "#5F6D7D",
+              "fontSize": 14,
+              "letterSpacing": -0.02,
+              "lineHeight": 19,
+              "textAlign": "center",
+            }
+          }
         >
           
-        </_Text>
+        </Text>
       </TouchableOpacity>,
       "style": Array [
         Object {
@@ -62,13 +72,23 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "activeOpacity": 0.2,
-        "children": <_Text
-          buttonTitle={false}
-          disabledButtonTitle={true}
+        "children": <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "color": "#5F6D7D",
+              "fontSize": 14,
+              "letterSpacing": -0.02,
+              "lineHeight": 19,
+              "textAlign": "center",
+            }
+          }
         >
           
-        </_Text>,
-        "disable": true,
+        </Text>,
+        "disabled": true,
         "onPress": [MockFunction],
         "style": Array [
           Object {
@@ -84,9 +104,17 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "buttonTitle": false,
+          "accessible": true,
+          "allowFontScaling": true,
           "children": "",
-          "disabledButtonTitle": true,
+          "ellipsizeMode": "tail",
+          "style": Object {
+            "color": "#5F6D7D",
+            "fontSize": 14,
+            "letterSpacing": -0.02,
+            "lineHeight": 19,
+            "textAlign": "center",
+          },
         },
         "ref": null,
         "rendered": "",
@@ -104,7 +132,7 @@ ShallowWrapper {
       "props": Object {
         "children": <TouchableOpacity
           activeOpacity={0.2}
-          disable={true}
+          disabled={true}
           onPress={[MockFunction]}
           style={
             Array [
@@ -116,12 +144,22 @@ ShallowWrapper {
           }
           testID="Touchable"
         >
-          <_Text
-            buttonTitle={false}
-            disabledButtonTitle={true}
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "#5F6D7D",
+                "fontSize": 14,
+                "letterSpacing": -0.02,
+                "lineHeight": 19,
+                "textAlign": "center",
+              }
+            }
           >
             
-          </_Text>
+          </Text>
         </TouchableOpacity>,
         "style": Array [
           Object {
@@ -143,13 +181,23 @@ ShallowWrapper {
         "nodeType": "class",
         "props": Object {
           "activeOpacity": 0.2,
-          "children": <_Text
-            buttonTitle={false}
-            disabledButtonTitle={true}
+          "children": <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "#5F6D7D",
+                "fontSize": 14,
+                "letterSpacing": -0.02,
+                "lineHeight": 19,
+                "textAlign": "center",
+              }
+            }
           >
             
-          </_Text>,
-          "disable": true,
+          </Text>,
+          "disabled": true,
           "onPress": [MockFunction],
           "style": Array [
             Object {
@@ -165,9 +213,17 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "buttonTitle": false,
+            "accessible": true,
+            "allowFontScaling": true,
             "children": "",
-            "disabledButtonTitle": true,
+            "ellipsizeMode": "tail",
+            "style": Object {
+              "color": "#5F6D7D",
+              "fontSize": 14,
+              "letterSpacing": -0.02,
+              "lineHeight": 19,
+              "textAlign": "center",
+            },
           },
           "ref": null,
           "rendered": "",
@@ -211,7 +267,7 @@ ShallowWrapper {
     "props": Object {
       "children": <TouchableOpacity
         activeOpacity={0.2}
-        disable={false}
+        disabled={false}
         onPress={[MockFunction]}
         style={
           Array [
@@ -223,12 +279,22 @@ ShallowWrapper {
         }
         testID="Touchable"
       >
-        <_Text
-          buttonTitle={true}
-          disabledButtonTitle={false}
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "color": "#C0C0C0",
+              "fontSize": 14,
+              "letterSpacing": -0.02,
+              "lineHeight": 19,
+              "textAlign": "center",
+            }
+          }
         >
           
-        </_Text>
+        </Text>
       </TouchableOpacity>,
       "style": Array [
         Object {
@@ -250,13 +316,23 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "activeOpacity": 0.2,
-        "children": <_Text
-          buttonTitle={true}
-          disabledButtonTitle={false}
+        "children": <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "color": "#C0C0C0",
+              "fontSize": 14,
+              "letterSpacing": -0.02,
+              "lineHeight": 19,
+              "textAlign": "center",
+            }
+          }
         >
           
-        </_Text>,
-        "disable": false,
+        </Text>,
+        "disabled": false,
         "onPress": [MockFunction],
         "style": Array [
           Object {
@@ -272,9 +348,17 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "buttonTitle": true,
+          "accessible": true,
+          "allowFontScaling": true,
           "children": "",
-          "disabledButtonTitle": false,
+          "ellipsizeMode": "tail",
+          "style": Object {
+            "color": "#C0C0C0",
+            "fontSize": 14,
+            "letterSpacing": -0.02,
+            "lineHeight": 19,
+            "textAlign": "center",
+          },
         },
         "ref": null,
         "rendered": "",
@@ -292,7 +376,7 @@ ShallowWrapper {
       "props": Object {
         "children": <TouchableOpacity
           activeOpacity={0.2}
-          disable={false}
+          disabled={false}
           onPress={[MockFunction]}
           style={
             Array [
@@ -304,12 +388,22 @@ ShallowWrapper {
           }
           testID="Touchable"
         >
-          <_Text
-            buttonTitle={true}
-            disabledButtonTitle={false}
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "#C0C0C0",
+                "fontSize": 14,
+                "letterSpacing": -0.02,
+                "lineHeight": 19,
+                "textAlign": "center",
+              }
+            }
           >
             
-          </_Text>
+          </Text>
         </TouchableOpacity>,
         "style": Array [
           Object {
@@ -331,13 +425,23 @@ ShallowWrapper {
         "nodeType": "class",
         "props": Object {
           "activeOpacity": 0.2,
-          "children": <_Text
-            buttonTitle={true}
-            disabledButtonTitle={false}
+          "children": <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "#C0C0C0",
+                "fontSize": 14,
+                "letterSpacing": -0.02,
+                "lineHeight": 19,
+                "textAlign": "center",
+              }
+            }
           >
             
-          </_Text>,
-          "disable": false,
+          </Text>,
+          "disabled": false,
           "onPress": [MockFunction],
           "style": Array [
             Object {
@@ -353,9 +457,17 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "buttonTitle": true,
+            "accessible": true,
+            "allowFontScaling": true,
             "children": "",
-            "disabledButtonTitle": false,
+            "ellipsizeMode": "tail",
+            "style": Object {
+              "color": "#C0C0C0",
+              "fontSize": 14,
+              "letterSpacing": -0.02,
+              "lineHeight": 19,
+              "textAlign": "center",
+            },
           },
           "ref": null,
           "rendered": "",
@@ -399,7 +511,7 @@ ShallowWrapper {
     "props": Object {
       "children": <TouchableOpacity
         activeOpacity={0.2}
-        disable={false}
+        disabled={false}
         onPress={[Function]}
         style={
           Array [
@@ -411,12 +523,22 @@ ShallowWrapper {
         }
         testID="Touchable"
       >
-        <_Text
-          buttonTitle={true}
-          disabledButtonTitle={false}
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "color": "#C0C0C0",
+              "fontSize": 14,
+              "letterSpacing": -0.02,
+              "lineHeight": 19,
+              "textAlign": "center",
+            }
+          }
         >
           
-        </_Text>
+        </Text>
       </TouchableOpacity>,
       "style": Array [
         Object {
@@ -438,13 +560,23 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "activeOpacity": 0.2,
-        "children": <_Text
-          buttonTitle={true}
-          disabledButtonTitle={false}
+        "children": <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "color": "#C0C0C0",
+              "fontSize": 14,
+              "letterSpacing": -0.02,
+              "lineHeight": 19,
+              "textAlign": "center",
+            }
+          }
         >
           
-        </_Text>,
-        "disable": false,
+        </Text>,
+        "disabled": false,
         "onPress": [Function],
         "style": Array [
           Object {
@@ -460,9 +592,17 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "buttonTitle": true,
+          "accessible": true,
+          "allowFontScaling": true,
           "children": "",
-          "disabledButtonTitle": false,
+          "ellipsizeMode": "tail",
+          "style": Object {
+            "color": "#C0C0C0",
+            "fontSize": 14,
+            "letterSpacing": -0.02,
+            "lineHeight": 19,
+            "textAlign": "center",
+          },
         },
         "ref": null,
         "rendered": "",
@@ -480,7 +620,7 @@ ShallowWrapper {
       "props": Object {
         "children": <TouchableOpacity
           activeOpacity={0.2}
-          disable={false}
+          disabled={false}
           onPress={[Function]}
           style={
             Array [
@@ -492,12 +632,22 @@ ShallowWrapper {
           }
           testID="Touchable"
         >
-          <_Text
-            buttonTitle={true}
-            disabledButtonTitle={false}
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "#C0C0C0",
+                "fontSize": 14,
+                "letterSpacing": -0.02,
+                "lineHeight": 19,
+                "textAlign": "center",
+              }
+            }
           >
             
-          </_Text>
+          </Text>
         </TouchableOpacity>,
         "style": Array [
           Object {
@@ -519,13 +669,23 @@ ShallowWrapper {
         "nodeType": "class",
         "props": Object {
           "activeOpacity": 0.2,
-          "children": <_Text
-            buttonTitle={true}
-            disabledButtonTitle={false}
+          "children": <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "#C0C0C0",
+                "fontSize": 14,
+                "letterSpacing": -0.02,
+                "lineHeight": 19,
+                "textAlign": "center",
+              }
+            }
           >
             
-          </_Text>,
-          "disable": false,
+          </Text>,
+          "disabled": false,
           "onPress": [Function],
           "style": Array [
             Object {
@@ -541,9 +701,17 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "buttonTitle": true,
+            "accessible": true,
+            "allowFontScaling": true,
             "children": "",
-            "disabledButtonTitle": false,
+            "ellipsizeMode": "tail",
+            "style": Object {
+              "color": "#C0C0C0",
+              "fontSize": 14,
+              "letterSpacing": -0.02,
+              "lineHeight": 19,
+              "textAlign": "center",
+            },
           },
           "ref": null,
           "rendered": "",
@@ -587,7 +755,7 @@ ShallowWrapper {
     "props": Object {
       "children": <TouchableOpacity
         activeOpacity={0.2}
-        disable={true}
+        disabled={true}
         onPress={[Function]}
         style={
           Array [
@@ -599,12 +767,22 @@ ShallowWrapper {
         }
         testID="Touchable"
       >
-        <_Text
-          buttonTitle={false}
-          disabledButtonTitle={true}
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "color": "#5F6D7D",
+              "fontSize": 14,
+              "letterSpacing": -0.02,
+              "lineHeight": 19,
+              "textAlign": "center",
+            }
+          }
         >
           
-        </_Text>
+        </Text>
       </TouchableOpacity>,
       "style": Array [
         Object {
@@ -626,13 +804,23 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "activeOpacity": 0.2,
-        "children": <_Text
-          buttonTitle={false}
-          disabledButtonTitle={true}
+        "children": <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "color": "#5F6D7D",
+              "fontSize": 14,
+              "letterSpacing": -0.02,
+              "lineHeight": 19,
+              "textAlign": "center",
+            }
+          }
         >
           
-        </_Text>,
-        "disable": true,
+        </Text>,
+        "disabled": true,
         "onPress": [Function],
         "style": Array [
           Object {
@@ -648,9 +836,17 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "buttonTitle": false,
+          "accessible": true,
+          "allowFontScaling": true,
           "children": "",
-          "disabledButtonTitle": true,
+          "ellipsizeMode": "tail",
+          "style": Object {
+            "color": "#5F6D7D",
+            "fontSize": 14,
+            "letterSpacing": -0.02,
+            "lineHeight": 19,
+            "textAlign": "center",
+          },
         },
         "ref": null,
         "rendered": "",
@@ -668,7 +864,7 @@ ShallowWrapper {
       "props": Object {
         "children": <TouchableOpacity
           activeOpacity={0.2}
-          disable={true}
+          disabled={true}
           onPress={[Function]}
           style={
             Array [
@@ -680,12 +876,22 @@ ShallowWrapper {
           }
           testID="Touchable"
         >
-          <_Text
-            buttonTitle={false}
-            disabledButtonTitle={true}
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "#5F6D7D",
+                "fontSize": 14,
+                "letterSpacing": -0.02,
+                "lineHeight": 19,
+                "textAlign": "center",
+              }
+            }
           >
             
-          </_Text>
+          </Text>
         </TouchableOpacity>,
         "style": Array [
           Object {
@@ -707,13 +913,23 @@ ShallowWrapper {
         "nodeType": "class",
         "props": Object {
           "activeOpacity": 0.2,
-          "children": <_Text
-            buttonTitle={false}
-            disabledButtonTitle={true}
+          "children": <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "#5F6D7D",
+                "fontSize": 14,
+                "letterSpacing": -0.02,
+                "lineHeight": 19,
+                "textAlign": "center",
+              }
+            }
           >
             
-          </_Text>,
-          "disable": true,
+          </Text>,
+          "disabled": true,
           "onPress": [Function],
           "style": Array [
             Object {
@@ -729,9 +945,17 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "buttonTitle": false,
+            "accessible": true,
+            "allowFontScaling": true,
             "children": "",
-            "disabledButtonTitle": true,
+            "ellipsizeMode": "tail",
+            "style": Object {
+              "color": "#5F6D7D",
+              "fontSize": 14,
+              "letterSpacing": -0.02,
+              "lineHeight": 19,
+              "textAlign": "center",
+            },
           },
           "ref": null,
           "rendered": "",
@@ -783,7 +1007,7 @@ ShallowWrapper {
     "props": Object {
       "children": <TouchableOpacity
         activeOpacity={0.2}
-        disable={true}
+        disabled={true}
         onPress={[Function]}
         style={
           Array [
@@ -830,7 +1054,7 @@ ShallowWrapper {
         >
           Custom text inside button
         </Text>,
-        "disable": true,
+        "disabled": true,
         "onPress": [Function],
         "style": Array [
           Object {
@@ -867,7 +1091,7 @@ ShallowWrapper {
       "props": Object {
         "children": <TouchableOpacity
           activeOpacity={0.2}
-          disable={true}
+          disabled={true}
           onPress={[Function]}
           style={
             Array [
@@ -914,7 +1138,7 @@ ShallowWrapper {
           >
             Custom text inside button
           </Text>,
-          "disable": true,
+          "disabled": true,
           "onPress": [Function],
           "style": Array [
             Object {
@@ -977,7 +1201,7 @@ ShallowWrapper {
     "props": Object {
       "children": <TouchableOpacity
         activeOpacity={0.2}
-        disable={true}
+        disabled={true}
         onPress={[Function]}
         style={
           Array [
@@ -989,12 +1213,22 @@ ShallowWrapper {
         }
         testID="Touchable"
       >
-        <_Text
-          buttonTitle={false}
-          disabledButtonTitle={true}
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "color": "#5F6D7D",
+              "fontSize": 14,
+              "letterSpacing": -0.02,
+              "lineHeight": 19,
+              "textAlign": "center",
+            }
+          }
         >
           Testing title
-        </_Text>
+        </Text>
       </TouchableOpacity>,
       "style": Array [
         Object {
@@ -1016,13 +1250,23 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "activeOpacity": 0.2,
-        "children": <_Text
-          buttonTitle={false}
-          disabledButtonTitle={true}
+        "children": <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "color": "#5F6D7D",
+              "fontSize": 14,
+              "letterSpacing": -0.02,
+              "lineHeight": 19,
+              "textAlign": "center",
+            }
+          }
         >
           Testing title
-        </_Text>,
-        "disable": true,
+        </Text>,
+        "disabled": true,
         "onPress": [Function],
         "style": Array [
           Object {
@@ -1038,9 +1282,17 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "buttonTitle": false,
+          "accessible": true,
+          "allowFontScaling": true,
           "children": "Testing title",
-          "disabledButtonTitle": true,
+          "ellipsizeMode": "tail",
+          "style": Object {
+            "color": "#5F6D7D",
+            "fontSize": 14,
+            "letterSpacing": -0.02,
+            "lineHeight": 19,
+            "textAlign": "center",
+          },
         },
         "ref": null,
         "rendered": "Testing title",
@@ -1058,7 +1310,7 @@ ShallowWrapper {
       "props": Object {
         "children": <TouchableOpacity
           activeOpacity={0.2}
-          disable={true}
+          disabled={true}
           onPress={[Function]}
           style={
             Array [
@@ -1070,12 +1322,22 @@ ShallowWrapper {
           }
           testID="Touchable"
         >
-          <_Text
-            buttonTitle={false}
-            disabledButtonTitle={true}
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "#5F6D7D",
+                "fontSize": 14,
+                "letterSpacing": -0.02,
+                "lineHeight": 19,
+                "textAlign": "center",
+              }
+            }
           >
             Testing title
-          </_Text>
+          </Text>
         </TouchableOpacity>,
         "style": Array [
           Object {
@@ -1097,13 +1359,23 @@ ShallowWrapper {
         "nodeType": "class",
         "props": Object {
           "activeOpacity": 0.2,
-          "children": <_Text
-            buttonTitle={false}
-            disabledButtonTitle={true}
+          "children": <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "#5F6D7D",
+                "fontSize": 14,
+                "letterSpacing": -0.02,
+                "lineHeight": 19,
+                "textAlign": "center",
+              }
+            }
           >
             Testing title
-          </_Text>,
-          "disable": true,
+          </Text>,
+          "disabled": true,
           "onPress": [Function],
           "style": Array [
             Object {
@@ -1119,9 +1391,17 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "buttonTitle": false,
+            "accessible": true,
+            "allowFontScaling": true,
             "children": "Testing title",
-            "disabledButtonTitle": true,
+            "ellipsizeMode": "tail",
+            "style": Object {
+              "color": "#5F6D7D",
+              "fontSize": 14,
+              "letterSpacing": -0.02,
+              "lineHeight": 19,
+              "textAlign": "center",
+            },
           },
           "ref": null,
           "rendered": "Testing title",
@@ -1165,7 +1445,7 @@ ShallowWrapper {
     "props": Object {
       "children": <TouchableOpacity
         activeOpacity={0.2}
-        disable={false}
+        disabled={false}
         onPress={[Function]}
         style={
           Array [
@@ -1177,12 +1457,22 @@ ShallowWrapper {
         }
         testID="Touchable"
       >
-        <_Text
-          buttonTitle={true}
-          disabledButtonTitle={false}
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "color": "#C0C0C0",
+              "fontSize": 14,
+              "letterSpacing": -0.02,
+              "lineHeight": 19,
+              "textAlign": "center",
+            }
+          }
         >
           
-        </_Text>
+        </Text>
       </TouchableOpacity>,
       "style": Array [
         Object {
@@ -1204,13 +1494,23 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "activeOpacity": 0.2,
-        "children": <_Text
-          buttonTitle={true}
-          disabledButtonTitle={false}
+        "children": <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "color": "#C0C0C0",
+              "fontSize": 14,
+              "letterSpacing": -0.02,
+              "lineHeight": 19,
+              "textAlign": "center",
+            }
+          }
         >
           
-        </_Text>,
-        "disable": false,
+        </Text>,
+        "disabled": false,
         "onPress": [Function],
         "style": Array [
           Object {
@@ -1226,9 +1526,17 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "buttonTitle": true,
+          "accessible": true,
+          "allowFontScaling": true,
           "children": "",
-          "disabledButtonTitle": false,
+          "ellipsizeMode": "tail",
+          "style": Object {
+            "color": "#C0C0C0",
+            "fontSize": 14,
+            "letterSpacing": -0.02,
+            "lineHeight": 19,
+            "textAlign": "center",
+          },
         },
         "ref": null,
         "rendered": "",
@@ -1246,7 +1554,7 @@ ShallowWrapper {
       "props": Object {
         "children": <TouchableOpacity
           activeOpacity={0.2}
-          disable={false}
+          disabled={false}
           onPress={[Function]}
           style={
             Array [
@@ -1258,12 +1566,22 @@ ShallowWrapper {
           }
           testID="Touchable"
         >
-          <_Text
-            buttonTitle={true}
-            disabledButtonTitle={false}
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "#C0C0C0",
+                "fontSize": 14,
+                "letterSpacing": -0.02,
+                "lineHeight": 19,
+                "textAlign": "center",
+              }
+            }
           >
             
-          </_Text>
+          </Text>
         </TouchableOpacity>,
         "style": Array [
           Object {
@@ -1285,13 +1603,23 @@ ShallowWrapper {
         "nodeType": "class",
         "props": Object {
           "activeOpacity": 0.2,
-          "children": <_Text
-            buttonTitle={true}
-            disabledButtonTitle={false}
+          "children": <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "#C0C0C0",
+                "fontSize": 14,
+                "letterSpacing": -0.02,
+                "lineHeight": 19,
+                "textAlign": "center",
+              }
+            }
           >
             
-          </_Text>,
-          "disable": false,
+          </Text>,
+          "disabled": false,
           "onPress": [Function],
           "style": Array [
             Object {
@@ -1307,9 +1635,17 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "buttonTitle": true,
+            "accessible": true,
+            "allowFontScaling": true,
             "children": "",
-            "disabledButtonTitle": false,
+            "ellipsizeMode": "tail",
+            "style": Object {
+              "color": "#C0C0C0",
+              "fontSize": 14,
+              "letterSpacing": -0.02,
+              "lineHeight": 19,
+              "textAlign": "center",
+            },
           },
           "ref": null,
           "rendered": "",
@@ -1361,7 +1697,7 @@ ShallowWrapper {
     "props": Object {
       "children": <TouchableOpacity
         activeOpacity={0.2}
-        disable={false}
+        disabled={false}
         onPress={[Function]}
         style={
           Array [
@@ -1408,7 +1744,7 @@ ShallowWrapper {
         >
           Custom text inside button
         </Text>,
-        "disable": false,
+        "disabled": false,
         "onPress": [Function],
         "style": Array [
           Object {
@@ -1445,7 +1781,7 @@ ShallowWrapper {
       "props": Object {
         "children": <TouchableOpacity
           activeOpacity={0.2}
-          disable={false}
+          disabled={false}
           onPress={[Function]}
           style={
             Array [
@@ -1492,7 +1828,7 @@ ShallowWrapper {
           >
             Custom text inside button
           </Text>,
-          "disable": false,
+          "disabled": false,
           "onPress": [Function],
           "style": Array [
             Object {
@@ -1555,7 +1891,7 @@ ShallowWrapper {
     "props": Object {
       "children": <TouchableOpacity
         activeOpacity={0.2}
-        disable={false}
+        disabled={false}
         onPress={[Function]}
         style={
           Array [
@@ -1567,12 +1903,22 @@ ShallowWrapper {
         }
         testID="Touchable"
       >
-        <_Text
-          buttonTitle={true}
-          disabledButtonTitle={false}
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "color": "#C0C0C0",
+              "fontSize": 14,
+              "letterSpacing": -0.02,
+              "lineHeight": 19,
+              "textAlign": "center",
+            }
+          }
         >
           Testing title
-        </_Text>
+        </Text>
       </TouchableOpacity>,
       "style": Array [
         Object {
@@ -1594,13 +1940,23 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "activeOpacity": 0.2,
-        "children": <_Text
-          buttonTitle={true}
-          disabledButtonTitle={false}
+        "children": <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "color": "#C0C0C0",
+              "fontSize": 14,
+              "letterSpacing": -0.02,
+              "lineHeight": 19,
+              "textAlign": "center",
+            }
+          }
         >
           Testing title
-        </_Text>,
-        "disable": false,
+        </Text>,
+        "disabled": false,
         "onPress": [Function],
         "style": Array [
           Object {
@@ -1616,9 +1972,17 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "buttonTitle": true,
+          "accessible": true,
+          "allowFontScaling": true,
           "children": "Testing title",
-          "disabledButtonTitle": false,
+          "ellipsizeMode": "tail",
+          "style": Object {
+            "color": "#C0C0C0",
+            "fontSize": 14,
+            "letterSpacing": -0.02,
+            "lineHeight": 19,
+            "textAlign": "center",
+          },
         },
         "ref": null,
         "rendered": "Testing title",
@@ -1636,7 +2000,7 @@ ShallowWrapper {
       "props": Object {
         "children": <TouchableOpacity
           activeOpacity={0.2}
-          disable={false}
+          disabled={false}
           onPress={[Function]}
           style={
             Array [
@@ -1648,12 +2012,22 @@ ShallowWrapper {
           }
           testID="Touchable"
         >
-          <_Text
-            buttonTitle={true}
-            disabledButtonTitle={false}
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "#C0C0C0",
+                "fontSize": 14,
+                "letterSpacing": -0.02,
+                "lineHeight": 19,
+                "textAlign": "center",
+              }
+            }
           >
             Testing title
-          </_Text>
+          </Text>
         </TouchableOpacity>,
         "style": Array [
           Object {
@@ -1675,13 +2049,23 @@ ShallowWrapper {
         "nodeType": "class",
         "props": Object {
           "activeOpacity": 0.2,
-          "children": <_Text
-            buttonTitle={true}
-            disabledButtonTitle={false}
+          "children": <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "#C0C0C0",
+                "fontSize": 14,
+                "letterSpacing": -0.02,
+                "lineHeight": 19,
+                "textAlign": "center",
+              }
+            }
           >
             Testing title
-          </_Text>,
-          "disable": false,
+          </Text>,
+          "disabled": false,
           "onPress": [Function],
           "style": Array [
             Object {
@@ -1697,9 +2081,17 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "buttonTitle": true,
+            "accessible": true,
+            "allowFontScaling": true,
             "children": "Testing title",
-            "disabledButtonTitle": false,
+            "ellipsizeMode": "tail",
+            "style": Object {
+              "color": "#C0C0C0",
+              "fontSize": 14,
+              "letterSpacing": -0.02,
+              "lineHeight": 19,
+              "textAlign": "center",
+            },
           },
           "ref": null,
           "rendered": "Testing title",

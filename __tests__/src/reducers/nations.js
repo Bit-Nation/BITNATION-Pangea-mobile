@@ -1,5 +1,5 @@
 import { 
-  switchNationTab, openNation, cancelNationCreation, createNation, doneNationCreation, requestFetchNations, joinNation, leaveNation, DONE_FETCH_NATIONS
+  switchNationTab, openNation, requestFetchNations, joinNation, leaveNation, DONE_FETCH_NATIONS
 } from '../../../src/actions/nations';
 import reducer, { initialState } from '../../../src/reducers/nations';
 
@@ -14,36 +14,6 @@ test('reducer - openNation', (done) => {
   const id = 123
   const state = reducer(initialState, openNation(id))
   expect(state).toEqual({...initialState, openedNationId: id})
-  done()
-})
-
-test('reducer - createNation', (done) => {
-  const nationData = {
-    name: 'test nation',
-    description: 'test'
-  };
-  const navigator = null;
-  const state = reducer(initialState, createNation(nationData, navigator))
-  expect(state).toEqual({
-    ...initialState,
-    creatingNation: nationData,
-    inProgress: true
-  })
-  
-  const state2 = reducer(state, doneNationCreation())
-  expect(state2).toEqual({
-    ...state,
-    nation: nationData,
-    creatingNation: null,
-    inProgress: false
-  })
-  
-  const state3 = reducer(state, cancelNationCreation())
-  expect(state3).toEqual({
-    ...state,
-    creatingNation: null,
-    inProgress: false
-  })
   done()
 })
 
