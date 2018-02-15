@@ -7,7 +7,7 @@ import {
   REQUEST_JOIN_NATION,
   REQUEST_LEAVE_NATION,
 } from '../actions/nations';
-import { resolveNation } from '../utils/nations';
+import { resolveNation, resolveStatus } from '../utils/nations';
 
 export const ALL_NATIONS = 0;
 export const MY_NATIONS = 1;
@@ -72,3 +72,4 @@ export default function (state = initialState, action) {
 }
 
 export const openedNation = state => resolveNation(state.nations, state.openedNationId);
+export const isDraft = nation => resolveStatus(nation) === 'draft';

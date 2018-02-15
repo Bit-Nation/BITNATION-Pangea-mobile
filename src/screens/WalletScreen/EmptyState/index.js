@@ -26,24 +26,24 @@ export default class EmptyWalletScreen extends Component {
 
   render() {
     return (
-	    <View>
-		    {/*<ScrollView contentContainerStyle={styles.scrollView}>*/}
-              <PanelView
-                style={styles.panelViewTransparent}
-                title={i18n.t('screens.wallet.empty.createWalletPanel.title')}
-                body={i18n.t('screens.wallet.empty.createWalletPanel.text')}
-                buttonTitle={i18n.t('screens.wallet.empty.createWalletPanel.button')}
-                onButtonClick={this.props.onCreateWallet}
-              />
-              <PanelView
-	              style={styles.panelViewTransparent}
-                title={i18n.t('screens.wallet.empty.restoreWalletPanel.title')}
-                body={i18n.t('screens.wallet.empty.restoreWalletPanel.text')}
-                buttonTitle={i18n.t('screens.wallet.empty.restoreWalletPanel.button')}
-                onButtonClick={this.props.onRestoreWallet}
-              />
-            {/*</ScrollView>*/}
-        </View>
+      <View>
+        {/*<ScrollView contentContainerStyle={styles.scrollView}>*/}
+        <PanelView
+          style={styles.panelViewTransparent}
+          title={i18n.t('screens.wallet.empty.createWalletPanel.title')}
+          body={i18n.t('screens.wallet.empty.createWalletPanel.text')}
+          buttonTitle={i18n.t('screens.wallet.empty.createWalletPanel.button')}
+          onButtonClick={this.props.onCreateWallet}
+        />
+        <PanelView
+          style={styles.panelViewTransparent}
+          title={i18n.t('screens.wallet.empty.restoreWalletPanel.title')}
+          body={i18n.t('screens.wallet.empty.restoreWalletPanel.text')}
+          buttonTitle={i18n.t('screens.wallet.empty.restoreWalletPanel.button')}
+          onButtonClick={this.props.onRestoreWallet}
+        />
+        {/*</ScrollView>*/}
+      </View>
     );
   }
 }

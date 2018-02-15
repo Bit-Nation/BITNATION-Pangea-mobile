@@ -82,6 +82,12 @@
         "privateOrCooperativeSecurity": "Private or Cooperative Security",
         "nationState": "Nation State Law Enforcement",
         "international": "International Law Enforcement"
+      },
+      "status": {
+        "draft": "Draft",
+        "rejected": "Rejected",
+        "pending": "Pending",
+        "accepted": "Accepted"
       }
     },
     "onOff": {

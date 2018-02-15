@@ -13,7 +13,7 @@ import { selectWallet, updateWalletList } from '../../actions/wallet';
 import NavigatorComponent from '../../components/common/NavigatorComponent';
 import { removeAllPrivateKeys } from '../../actions/key';
 import i18n from '../../global/i18n';
-import styles from '../NationsScreen/NationsListScreen/styles'
+import styles from '../NationsScreen/NationsListScreen/styles';
 import FakeNavigationBar from '../../components/common/FakeNavigationBar';
 
 const REMOVE_WALLETS_BUTTON = 'REMOVE_WALLETS_BUTTON';
@@ -65,35 +65,34 @@ class WalletScreen extends NavigatorComponent {
     this.props.selectWallet(wallet);
     this.props.navigator.push(screen('RECEIVE_MONEY_SCREEN'));
   };
-	
-  render () {
-      return (
-          <View style={styles.screenContainer}>
-              <Background/>
-              <FakeNavigationBar/>
-              
-              <View style={styles.bodyContainer}>
-                  
-                  {/* TITLE OF SCREEN */}
-                  <View style={styles.titleContainer}>
-                      <View style={styles.titleBarLarge}>
-                          <Text style={styles.largeTitle}>{i18n.t(
-                              'screens.wallet.title')}</Text>
-                      </View>
-                  </View>
-                  {_.isEmpty(this.props.wallets) ? <EmptyWalletScreen
-                          onCreateWallet={this.createWallet}
-                          onRestoreWallet={this.restoreWallet}
-                      />
-                      : <List
-                          {...this.props}
-                          onSendPress={this.sendMoney}
-                          onReceivePress={this.receiveMoney}
-                      />
-                  }
-              </View>
+
+  render() {
+    return (
+      <View style={styles.screenContainer}>
+        <Background/>
+        <FakeNavigationBar/>
+
+        <View style={styles.bodyContainer}>
+
+          {/* TITLE OF SCREEN */}
+          <View style={styles.titleContainer}>
+            <View style={styles.titleBarLarge}>
+              <Text style={styles.largeTitle}>{i18n.t('screens.wallet.title')}</Text>
+            </View>
           </View>
-      )
+          {_.isEmpty(this.props.wallets) ? <EmptyWalletScreen
+              onCreateWallet={this.createWallet}
+              onRestoreWallet={this.restoreWallet}
+            />
+            : <List
+              {...this.props}
+              onSendPress={this.sendMoney}
+              onReceivePress={this.receiveMoney}
+            />
+          }
+        </View>
+      </View>
+    );
   }
 }
 

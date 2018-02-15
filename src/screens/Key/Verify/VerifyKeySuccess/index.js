@@ -28,27 +28,25 @@ class VerifyKeySuccess extends KeyBaseScreen {
     this.props.navigator.dismissModal();
   }
 
-  render () {
-	  return (
-		  <View style={styles.screenContainer}>
-			  <BackgroundImage/>
-			  <FakeNavigationBar/>
-			
-			  <View style={styles.bodyContainer}>
-				  <PanelView style={styles.panelViewTransparent}
-				             childrenContainerStyle={{flex: 0,}}
-				             buttonTitle={i18n.t(
-					             'screens.verifyKey.success.doneButton')}
-				             onButtonClick={() => this.onNextButtonPressed()}
-				  >
-					  <BodyParagraphs paragraphs={i18n.t(
-						  'screens.verifyKey.success.instructions')}/>
-				  </PanelView>
-			
-			  </View>
-		
-		  </View>
-	  )
+  render() {
+    return (
+      <View style={styles.screenContainer}>
+        <BackgroundImage/>
+        <FakeNavigationBar/>
+
+        <View style={styles.bodyContainer}>
+          <PanelView style={styles.panelViewTransparent}
+                     childrenContainerStyle={{ flex: 0, }}
+                     buttonTitle={i18n.t('screens.verifyKey.success.doneButton')}
+                     onButtonClick={() => this.onNextButtonPressed()}
+          >
+            <BodyParagraphs paragraphs={i18n.t('screens.verifyKey.success.instructions')}/>
+          </PanelView>
+
+        </View>
+
+      </View>
+    );
   }
 }
 

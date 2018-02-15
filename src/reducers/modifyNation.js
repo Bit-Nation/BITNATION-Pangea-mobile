@@ -46,6 +46,7 @@ export default function (state = initialState, action) {
       };
     case START_NATION_EDITING:
       return {
+        ...state,
         initialNation: action.nation,
         editingNation: action.nation,
       };

@@ -13,7 +13,7 @@ import BackgroundImage from '../../../../components/common/BackgroundImage';
 import GridView from '../../../../components/GridView/index';
 import PrivateKeyTextInputContainer from '../../../../components/PrivateKeyTextInputContainer/index';
 import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
-import PanelView from '../../../../components/common/PanelView'
+import PanelView from '../../../../components/common/PanelView';
 import {
   KEY_LENGTH, KEY_COLUMN_COUNT, KEY_PAGE_ROW_COUNT, KEY_PAGE_LENGTH, KEY_PAGE_COUNT,
 } from '../../../../global/Constants';
@@ -166,56 +166,50 @@ class VerifyKeyProcessScreen extends KeyBaseScreen {
   /*
   MAIN SCREEN
    */
-	
-	render () {
-		return (
-			<View style={styles.screenContainer}>
-				<BackgroundImage/>
-				<FakeNavigationBar/>
-				<View style={styles.bodyContainer}>
-					<KeyboardAwareScrollView
-						contentContainerStyle={styles.bodyContainer}
-						enableAutoAutomaticScroll={false}
-						extraHeight={48.5 + 44 +
-						(Platform.OS === 'android' ? 22 : 0)}
-						enableOnAndroid
-						keyboardShouldPersistTaps='handled'
-						ref={(scrollView) => this.scrollView = scrollView}>
-						
-						<PanelView style={styles.panelViewTransparent}
-						           childrenContainerStyle={{flex:0,}}
-						>
-      
-						<BodyParagraphs paragraphs={i18n.t(
-							'screens.verifyKey.process.instructions',
-							{KEY_LENGTH})}/>
-						<View style={styles.gridContainer}>
-							<GridView
-								itemsPerRow={KEY_COLUMN_COUNT}
-								rowsCount={KEY_PAGE_ROW_COUNT}
-								renderItem={this._renderTextInput}
-								style={styles.gridView}
-							/>
-						</View>
-						<View style={styles.buttonContainer}>
-							<Button title={i18n.t(
-								'screens.verifyKey.process.previousButton')}
-							        onPress={this.onPreviousPressed}
-							        style={styles.button}
-							        enabled={this.state.currentPage > 0}/>
-							<Button title={i18n.t(
-								'screens.verifyKey.process.nextButton')}
-							        onPress={this.onNextPressed}
-							        style={styles.button}
-							        enabled={this.state.currentPage <
-							        KEY_PAGE_COUNT - 1}/>
-						</View>
-						</PanelView>
-					</KeyboardAwareScrollView>
-				</View>
-			</View>
-		)
-	}
+
+  render() {
+    return (
+      <View style={styles.screenContainer}>
+        <BackgroundImage/>
+        <FakeNavigationBar/>
+        <View style={styles.bodyContainer}>
+          <KeyboardAwareScrollView
+            contentContainerStyle={styles.bodyContainer}
+            enableAutoAutomaticScroll={false}
+            extraHeight={48.5 + 44 + (Platform.OS === 'android' ? 22 : 0)}
+            enableOnAndroid
+            keyboardShouldPersistTaps='handled'
+            ref={(scrollView) => this.scrollView = scrollView}>
+
+            <PanelView style={styles.panelViewTransparent}
+                       childrenContainerStyle={{ flex: 0, }}
+            >
+
+              <BodyParagraphs paragraphs={i18n.t('screens.verifyKey.process.instructions', { KEY_LENGTH })}/>
+              <View style={styles.gridContainer}>
+                <GridView
+                  itemsPerRow={KEY_COLUMN_COUNT}
+                  rowsCount={KEY_PAGE_ROW_COUNT}
+                  renderItem={this._renderTextInput}
+                  style={styles.gridView}
+                />
+              </View>
+              <View style={styles.buttonContainer}>
+                <Button title={i18n.t('screens.verifyKey.process.previousButton')}
+                        onPress={this.onPreviousPressed}
+                        style={styles.button}
+                        enabled={this.state.currentPage > 0}/>
+                <Button title={i18n.t('screens.verifyKey.process.nextButton')}
+                        onPress={this.onNextPressed}
+                        style={styles.button}
+                        enabled={this.state.currentPage < KEY_PAGE_COUNT - 1}/>
+              </View>
+            </PanelView>
+          </KeyboardAwareScrollView>
+        </View>
+      </View>
+    );
+  }
 }
 
 const mapStateToProps = state => ({
