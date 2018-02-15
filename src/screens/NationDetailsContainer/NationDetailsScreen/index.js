@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import {
   View,
   Text, ScrollView, Image, StatusBar, Alert,
@@ -14,106 +14,106 @@ import DemoImage from '../../../components/common/DemoImage';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import i18n from '../../../global/i18n';
 import { openedNation } from '../../../reducers/nations';
-import PanelViewAlert from "../../../components/common/PanelViewAlert";
-import PanelViewCitizen from "../../../components/common/PanelViewCitizen";
+import PanelViewAlert from '../../../components/common/PanelViewAlert';
+import PanelViewCitizen from '../../../components/common/PanelViewCitizen';
 
 class NationDetailsScreen extends Component {
 
-	render () {
+  render() {
     const nation = openedNation(this.props);
 
-		if (!nation) {
-			return <BackgroundImage/>
-		}
+    if (!nation) {
+      return <BackgroundImage/>;
+    }
 
-		return (
-			<View style={styles.screenContainer}>
-				<BackgroundImage/>
-				<FakeNavigationBar navBarHidden=''/>
-				<View style={styles.bodyContainer}>
-					{/* TITLE OF SCREEN */}
-					<View style={styles.titleContainer}>
-						<View style={styles.titleBarLarge}>
-							<Text style={styles.largeTitle}>{nation.nationName}</Text>
-							{console.log('joined nation: ', nation.joined)}
-						</View>
-					</View>
+    return (
+      <View style={styles.screenContainer}>
+        <BackgroundImage/>
+        <FakeNavigationBar navBarHidden=''/>
+        <View style={styles.bodyContainer}>
+          {/* TITLE OF SCREEN */}
+          <View style={styles.titleContainer}>
+            <View style={styles.titleBarLarge}>
+              <Text style={styles.largeTitle}>{nation.nationName}</Text>
+              {console.log('joined nation: ', nation.joined)}
+            </View>
+          </View>
 
-					<ScrollView>
-						{/*  TODO: Logic for NATION'S STATUS in STATUS PANEL  */}
-						{this._buildStatusPanel('Submitted to the blockchain.')}
+          <ScrollView>
+            {/*  TODO: Logic for NATION'S STATUS in STATUS PANEL  */}
+            {this._buildStatusPanel('Submitted to the blockchain.')}
 
-						{this._buildAboutView(nation)}
-						{/*  Will show Panel of Citizenship if nation.joinend == true */}
-						{this._buildCitizenPanel(nation)}
-						{this._buildGovernmentalStructureView(nation)}
-						{this._buildFactsView(nation)}
-					</ScrollView>
-				</View>
+            {this._buildAboutView(nation)}
+            {/*  Will show Panel of Citizenship if nation.joinend == true */}
+            {this._buildCitizenPanel(nation)}
+            {this._buildGovernmentalStructureView(nation)}
+            {this._buildFactsView(nation)}
+          </ScrollView>
+        </View>
         {this._buildTabBar(nation.joined, nation.idInSmartContract >= 0)}
-			</View>
-		)
-	}
+      </View>
+    );
+  }
 
-	_buildTabBar (joined, created) {
-		return (
-			<View style={styles.fakeBottomBar}>
-				<NationActionButton iconSource={AssetsImage.Actions.chat}
-				                    title={i18n.t('screens.nations.toolbar.chat')} disable={true}/>
-				<NationActionButton iconSource={AssetsImage.Actions.map}
-				                    title={i18n.t('screens.nations.toolbar.map')} disable={true}/>
-				<NationActionButton iconSource={AssetsImage.Actions.join}
-				                    title={i18n.t('screens.nations.toolbar.join')} disable={joined || !created}
-				                    onPress={this.props.joinNation}/>
-				<NationActionButton iconSource={AssetsImage.Actions.leave}
-				                    title={i18n.t('screens.nations.toolbar.leave')} disable={!joined}
-				                    onPress={this.props.leaveNation}/>
-			</View>
-		)
-	}
+  _buildTabBar(joined, created) {
+    return (
+      <View style={styles.fakeBottomBar}>
+        <NationActionButton iconSource={AssetsImage.Actions.chat}
+                            title={i18n.t('screens.nations.toolbar.chat')} disable={true}/>
+        <NationActionButton iconSource={AssetsImage.Actions.map}
+                            title={i18n.t('screens.nations.toolbar.map')} disable={true}/>
+        <NationActionButton iconSource={AssetsImage.Actions.join}
+                            title={i18n.t('screens.nations.toolbar.join')} disable={joined || !created}
+                            onPress={this.props.joinNation}/>
+        <NationActionButton iconSource={AssetsImage.Actions.leave}
+                            title={i18n.t('screens.nations.toolbar.leave')} disable={!joined}
+                            onPress={this.props.leaveNation}/>
+      </View>
+    );
+  }
 
-	// Useful Notes:
-	// PanelView Props: title = text, messageText = text, style, renderBottom = method, renderAdditionalInfo = method, children = main text of the display
-	// DemoImage overlays a message telling user this is a demonstration
+  // Useful Notes:
+  // PanelView Props: title = text, messageText = text, style, renderBottom = method, renderAdditionalInfo = method, children = main text of the display
+  // DemoImage overlays a message telling user this is a demonstration
 
-	_buildAboutView (nation) {
-		return (
-			<PanelView style={styles.panelView}
-			           childrenContainerStyle={{flex: 0,}}
-			             title={i18n.t('screens.nationDetails.aboutInfo', { name: nation.nationName })}>
-				<Text style={styles.panelSubTitle}>
-					{i18n.t('screens.nationDetails.description') + ':'}
-				</Text>
-				<Text style={styles.body}>
-					{nation.nationDescription ? nation.nationDescription + '\n': ''}
-					{i18n.t('screens.nationDetails.locationInfo', {
-						name: nation.nationName,
-						locationType: nation.exists ?
-							i18n.t('enums.nation.locationType.geographical') :
-              i18n.t('enums.nation.locationType.virtual')
-					}) + '\n'}
-				</Text>
-				<Text style={styles.panelSubTitle}>
-					{i18n.t('screens.nationDetails.ethereumAddress')}
-				</Text>
-				<Text style={styles.footnote}>
-					{nation.ethAddress}
-				</Text>
-			</PanelView>
-		)
-	}
+  _buildAboutView(nation) {
+    return (
+      <PanelView style={styles.panelView}
+                 childrenContainerStyle={{ flex: 0, }}
+                 title={i18n.t('screens.nationDetails.aboutInfo', { name: nation.nationName })}>
+        <Text style={styles.panelSubTitle}>
+          {i18n.t('screens.nationDetails.description') + ':'}
+        </Text>
+        <Text style={styles.body}>
+          {nation.nationDescription ? nation.nationDescription + '\n' : ''}
+          {i18n.t('screens.nationDetails.locationInfo', {
+            name: nation.nationName,
+            locationType: nation.exists ?
+              i18n.t('enums.nation.locationType.geographical') :
+              i18n.t('enums.nation.locationType.virtual'),
+          }) + '\n'}
+        </Text>
+        <Text style={styles.panelSubTitle}>
+          {i18n.t('screens.nationDetails.ethereumAddress')}
+        </Text>
+        <Text style={styles.footnote}>
+          {nation.ethAddress}
+        </Text>
+      </PanelView>
+    );
+  }
 
-	_buildGovernmentalStructureView (nation) {
-		return (
-			<PanelView style={styles.panelView}
-			           childrenContainerStyle={{flex: 0,}}
-			             title={i18n.t('common.governmentalStructure')}>
-				<Text style={styles.body}>
+  _buildGovernmentalStructureView(nation) {
+    return (
+      <PanelView style={styles.panelView}
+                 childrenContainerStyle={{ flex: 0, }}
+                 title={i18n.t('common.governmentalStructure')}>
+        <Text style={styles.body}>
           {i18n.t('screens.nationDetails.legalSystemInfo', {
-          	name: nation.nationName,
-            code: nation.nationCode
-					})}
-					{' '}
+            name: nation.nationName,
+            code: nation.nationCode,
+          })}
+          {' '}
           {i18n.t('screens.nationDetails.lawEnforcementInfo', {
             lawEnforcementMechanism: nation.lawEnforcementMechanism,
           })}
@@ -121,50 +121,50 @@ class NationDetailsScreen extends Component {
           {i18n.t('screens.nationDetails.governmentInfo', {
             decisionMakingProcess: nation.decisionMakingProcess,
           })}
-				</Text>
-			</PanelView>
-		)
-	}
-
-	_buildFactsView (nation) {
-		return (
-			<PanelView style={styles.panelView}
-			           childrenContainerStyle={{flex: 0,}}
-			           title={i18n.t('screens.nationDetails.funFacts')}>
-				<Text style={styles.body}>
-					{nation.diplomaticRecognition ? (i18n.t('screens.nationDetails.diplomaticRecognitionInfo', { name: nation.nationName }) + '\n\n') : ''}
-
-          {i18n.t('screens.nationDetails.serviceUsageInfo', {
-            allowance: nation.createNationsNonCitizensMayUseGovernanceServices ? i18n.t('enums.nation.usageAllowance.may') : i18n.t('enums.nation.usageAllowance.mayNot')
-          })}
-					{'\n\n'}
-
-          {i18n.t('screens.nationDetails.profitInfo', {
-            profit: nation.profit ? i18n.t('enums.nation.profit.for') : i18n.t('enums.nation.profit.non')
-          })}
-				</Text>
-			</PanelView>
-		)
-	}
-
-  _buildStatusPanel (status) {
-    return (
-      <PanelViewAlert
-				style={styles.panelViewAlert}
-				status={status} />
-    )
+        </Text>
+      </PanelView>
+    );
   }
 
-  _buildCitizenPanel (nation) {
+  _buildFactsView(nation) {
+    return (
+      <PanelView style={styles.panelView}
+                 childrenContainerStyle={{ flex: 0, }}
+                 title={i18n.t('screens.nationDetails.funFacts')}>
+        <Text style={styles.body}>
+          {nation.diplomaticRecognition ? (i18n.t('screens.nationDetails.diplomaticRecognitionInfo', { name: nation.nationName }) + '\n\n') : ''}
+
+          {i18n.t('screens.nationDetails.serviceUsageInfo', {
+            allowance: nation.createNationsNonCitizensMayUseGovernanceServices ? i18n.t('enums.nation.usageAllowance.may') : i18n.t('enums.nation.usageAllowance.mayNot'),
+          })}
+          {'\n\n'}
+
+          {i18n.t('screens.nationDetails.profitInfo', {
+            profit: nation.profit ? i18n.t('enums.nation.profit.for') : i18n.t('enums.nation.profit.non'),
+          })}
+        </Text>
+      </PanelView>
+    );
+  }
+
+  _buildStatusPanel(status) {
+    return (
+      <PanelViewAlert
+        style={styles.panelViewAlert}
+        status={status}/>
+    );
+  }
+
+  _buildCitizenPanel(nation) {
     if (nation.joined) {
       return (
-					<PanelViewCitizen
-						style={styles.panelViewCitizen}
-						nationName={nation.nationName} />
-      	)
-    	}
-		}
+        <PanelViewCitizen
+          style={styles.panelViewCitizen}
+          nationName={nation.nationName}/>
+      );
+    }
+  }
 }
 
 
-export default NationDetailsScreen
+export default NationDetailsScreen;
