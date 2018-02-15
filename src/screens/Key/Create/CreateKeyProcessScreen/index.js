@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import { screen } from '../../../../global/Screens';
 import BackgroundImage from '../../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
+import PanelView from '../../../../components/common/PanelView';
 import GridView from '../../../../components/GridView';
 import Button from '../../../../components/common/Button';
 import PrivateKeyTextInputContainer from '../../../../components/PrivateKeyTextInputContainer';
@@ -105,32 +106,50 @@ class CreateKeyProcessScreen extends KeyBaseScreen {
     );
   };
 
+
+  /*
+  MAIN SCREEN CODE
+   */
+
   render() {
     return (
       <View style={styles.screenContainer}>
         <BackgroundImage/>
         <FakeNavigationBar/>
+
         <View style={styles.bodyContainer}>
-          <BodyParagraphs paragraphs={i18n.t('screens.createKey.process.instructions')}/>
-          <View style={styles.gridContainer}>
-            <GridView
-              itemsPerRow={KEY_COLUMN_COUNT}
-              rowsCount={KEY_PAGE_ROW_COUNT}
-              renderItem={this._renderText}
-              activeRow={this.isDone(this.state) ? -1 : this.state.activeRow % KEY_PAGE_ROW_COUNT}
-              disableInactiveRows
-              style={styles.gridView}
-            />
-          </View>
-          <View style={styles.buttonContainer}>
-            <Button title={i18n.t('screens.createKey.process.previousButton')}
-                    onPress={this.onPreviousPressed}
-                    style={styles.button}
-                    enabled={this.state.activeRow > 0}/>
-            <Button title={i18n.t('screens.createKey.process.nextButton')}
-                    onPress={this.onNextPressed}
-                    style={styles.button}/>
-          </View>
+          <View style={styles.bodyTopSpacer}/>
+
+          <PanelView
+            style={styles.panelViewTransparent}
+            childrenContainerStyle={{ flex: 0, }}
+          >
+
+            <BodyParagraphs paragraphs={i18n.t('screens.createKey.process.instructions')}/>
+
+            <View style={styles.gridContainer}>
+              <GridView
+                itemsPerRow={KEY_COLUMN_COUNT}
+                rowsCount={KEY_PAGE_ROW_COUNT}
+                renderItem={this._renderText}
+                activeRow={this.isDone(this.state)
+                  ? -1
+                  : this.state.activeRow % KEY_PAGE_ROW_COUNT}
+                disableInactiveRows
+                style={styles.gridView}
+              />
+            </View>
+            <View style={styles.buttonContainer}>
+              <Button title={i18n.t('screens.createKey.process.previousButton')}
+                      onPress={this.onPreviousPressed}
+                      style={styles.button}
+                      enabled={this.state.activeRow > 0}/>
+              <Button title={i18n.t('screens.createKey.process.nextButton')}
+                      onPress={this.onNextPressed}
+                      style={styles.button}/>
+            </View>
+
+          </PanelView>
         </View>
       </View>
     );

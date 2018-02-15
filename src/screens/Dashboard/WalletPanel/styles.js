@@ -2,10 +2,21 @@ import { MediaQueryStyleSheet } from 'react-native-responsive';
 import { Dimensions } from 'react-native';
 
 import GlobalStyles from '../../../global/Styles';
+import Colors from '../../../global/colors';
 
 const styles = MediaQueryStyleSheet.create(
   {
     ...GlobalStyles,
-    list: { height: 44*5 },
+
+    panelViewTitle: {
+      ...GlobalStyles.panelViewTitle,
+      color: Colors.BitnationHighlightColor,
+    },
+
+    walletGridPanel: {
+      ...GlobalStyles.gridPanelView,
+      flex: 0,
+      justifyContent: 'flex-start',
+    },
   });
 export default styles;

@@ -4,34 +4,53 @@ import { Dimensions } from 'react-native';
 import GlobalStyles from '../../../global/Styles';
 import Colors from '../../../global/colors';
 
-const styles = MediaQueryStyleSheet.create(
-  {
-    ...GlobalStyles,
-    flex: { flex: 1 },
-    childrenContainer: {
-      flex: 1,
-      marginLeft: -15,
-      marginRight: -15,
-    },
-    nationsCountContainer: {
-      paddingLeft: 15,
-      height: 40,
-      alignItems: 'flex-start',
-    },
-    nationsCountNumber: {
-      fontSize: 21,
-      fontWeight: '800',
-      color: Colors.white,
-    },
-    nationsHeader: {
-      backgroundColor: Colors.shadeOf(Colors.BitnationDarkColor, 0.5),
-      paddingLeft: 15,
-      height: 30,
-      justifyContent: 'center',
-    },
-    nationsHeaderText: {
-      ...GlobalStyles.footnote,
-      color: Colors.white,
-    },
-  });
+const styles = {
+  ...GlobalStyles,
+
+
+  panelViewTitle: {
+    ...GlobalStyles.panelViewTitle,
+    color: Colors.BitnationHighlightColor,
+  },
+
+  // View: The panel holding the nations info.
+  // Make the contents align to top.
+  nationsGridPanel: {
+    ...GlobalStyles.gridPanelView,
+    justifyContent: 'flex-start',
+  },
+
+  // View: Shows "XXX in Pangea"
+  nationsCountContainer: {
+    marginBottom: 16,
+    alignItems: 'flex-end',
+  },
+
+  // Text: Number of nations, shown in the text above the list.
+  nationsCountString: {
+    ...GlobalStyles.bodyBlack,
+    color: 'white',//Colors.BitnationHighlightColor,
+  },
+
+
+  // LIST OF NATIONS
+
+  // use the listContainer, but bring edge to edge of the containing View.
+  listContainer: {
+    ...GlobalStyles.listContainer,
+    ...GlobalStyles.removeGridPanelMarginsLR,
+  },
+
+  // Text: Header bar across the top of the list of nations in the panel
+  nationsListHeaderText: {
+    ...GlobalStyles.body,
+    //color: Colors.BitnationHighlightColor,
+  },
+
+  // Text: Name of a nation in the list, e.g. "My Country"
+  nationsListText: {
+    ...GlobalStyles.listItemTextVeryBold,
+  },
+
+};
 export default styles;

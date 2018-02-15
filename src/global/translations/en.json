@@ -35,7 +35,8 @@
     "updating": "Updating",
     "updateFailed": "Update failed",
     "ethereum": "Ethereum",
-    "continue": "Continue"
+    "continue": "Continue",
+    "location": "Location"
   },
   "enums": {
     "nation": {
@@ -181,7 +182,7 @@
       },
       "walletPanel": {
         "title": "$t(common.wallet)",
-        "empty": "Begin using Pangea by creating your wallet."
+        "empty": "Create a wallet to use Pangea."
       },
       "nationsPanel": {
         "title": "$t(common.nations)",
@@ -190,11 +191,11 @@
           "main": "{{count}}",
           "suffix": " in Pangea"
         },
-        "newNations": "NEW NATIONS"
+        "newNations": "Newest Nations"
       },
       "warningPanel": {
         "title": "Notice",
-        "body": "The smart contracts created by this app may be changed or upgraded in the near future.",
+        "body": "Smart contracts will be upgraded in the near future.",
         "button": "More"
       }
     },
@@ -231,10 +232,8 @@
       "serviceUsageInfo": "Non-citizens {{allowance}} use national services.",
       "profitInfo": "The nation is managed as a {{profit}} entity.",
       "ethereumAddress": "Ethereum Address:",
-      "chatButton": "$t(common.chat)",
-      "mapButton": "$t(common.map)",
-      "joinButton": "$t(common.join)",
-      "leaveButton": "$t(common.leave)"
+      "status": "Status: ",
+      "citizen": "You are citizen of "
     },
     "createNation": {
       "title": "Create A Nation",
@@ -242,7 +241,7 @@
       "prompt": {
         "name": "Nation name",
         "description": "Short description",
-        "location": "Nation location",
+        "location": "Nation location type...",
         "represents": "Nation represents an existing Earth country",
         "legalCode": "Legal Code...",
         "lawEnforcementMechanism": "Law Enforcement Mechanism...",
@@ -254,26 +253,22 @@
       },
       "locationTypeHint": "Virtual nations exist only in Pangea. Geographic nations are on Earth.",
       "cancelButton": "$t(common.cancel)",
-      "doneButton": "$t(common.done)",
-      "reset": "Reset",
-      "submit": "Submit",
-      "save": "Save",
-      "delete": "Delete"
+      "doneButton": "$t(common.done)"
     },
     "wallet": {
       "title": "$t(common.wallet)",
       "tabTitle": "$t(tabbar.wallet)",
       "empty": {
-        "createWallet": "Create a Wallet",
-        "restoreWallet": "Restore a Wallet",
+        "createWallet": "Create Wallet",
+        "restoreWallet": "Restore Wallet",
         "createWalletPanel": {
           "title": "$t(screens.wallet.empty.createWallet)",
-          "text": "A wallet holds money, such as Ethereum. You will need a wallet to pay for services, such as creating and editing nations, notarizing documents, and other useful services.",
+          "text": "You need an Ethereum wallet to pay for payments, creating nations, and other useful services.",
           "button": "$t(screens.wallet.empty.createWallet)"
         },
         "restoreWalletPanel": {
           "title": "$t(screens.wallet.empty.restoreWallet)",
-          "text": "If you need to restore your wallet (because you lost or upgraded your phone) use the button below.\nYou will need your private key to restore your wallet.",
+          "text": "You can restore your wallet if lost or changed your phone. You will need your private key to restore your wallet.",
           "button": "$t(screens.wallet.empty.restoreWallet)"
         }
       }
@@ -305,13 +300,12 @@
       }
     },
     "createKey": {
-      "title": "Create Private Key",
+      "title": "Create Wallet",
       "introduction": [
-        "To use a secure blockchain, you need a \"private key\". We will make your private key for you.",
-        "We require you to write down your private key on paper. This process only takes a few minutes.",
-        "If your phone is lost, stolen, broken, or upgraded, the only way to restore your wallet is by entering your private key!",
-        "We recommend writing on paper because if your key is on your computer or phone, someone might steal it.",
-        "Your private key protects everything in Bitnation, so be sure to put your paper with with your private key in a safe place."
+        "To secure your wallet, you first need a \"private key\".",
+        "You must write down your private key on paper. This process only takes a few minutes.",
+        "If change your phone, the only way to recover your wallet is by entering your private key!",
+        "Your private key protects everything in Bitnation, so save your written private key in a safe place."
       ],
       "instructions": {
         "beforeGrid": [

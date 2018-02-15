@@ -6,14 +6,14 @@
 import Colors from '../../global/colors'
 
 export const colorPack = {
-  primary: '#00A5FF',
+  primary: Colors.BitnationHighlightColor,
   primaryDark: '#215191',
-  light: Colors.shadeOfBitnationLightColor(0.2),
+  light: 'transparent',//Colors.shadeOfBitnationLightColor(0.2),
   textPrimary: Colors.white,
   placeholderTextColor: Colors.white,
   danger: Colors.primary_red,
   borderColor: Colors.borderColor,
-  backgroundColor: Colors.shadeOfBitnationLightColor(0.2),
+  backgroundColor: 'transparent',
 };
 
 export default {
@@ -27,10 +27,10 @@ export default {
     flexDirection: 'column',
   },
   subSection: {
-    backgroundColor: colorPack.light,
+    backgroundColor: 'transparent',
     borderBottomWidth: 1,
     borderColor: colorPack.borderColor,
-    paddingLeft: 20,
+    paddingLeft: 0,
     paddingRight: 20,
     flex: 1,
     flexDirection: 'row',
@@ -43,7 +43,7 @@ export default {
     backgroundColor: colorPack.actionButtonColor,
   },
   indicator: {
-    fontSize: 30,
+    fontSize: 15,
     color: colorPack.placeholderTextColor,
   },
   selectedItem: {
@@ -58,7 +58,7 @@ export default {
     borderWidth: 2,
   },
   button: {
-    height: 35,
+    height: 25,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
@@ -70,7 +70,7 @@ export default {
   selectorView: (fixedHeight) => {
     const style = {
       flexDirection: 'column',
-      marginBottom: 10,
+      marginBottom: 0,
       elevation: 2,
     }
     if (fixedHeight) {
@@ -81,13 +81,13 @@ export default {
   inputGroup: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingLeft: 16,
-    backgroundColor: colorPack.light,
+    paddingLeft: 6,
+    backgroundColor: 'transparent',
   },
   dropdownView: {
     flexDirection: 'row',
     alignItems: 'center',
-    height: 40,
-    marginBottom: 10,
+    height: 43,
+    marginBottom: 0,
   },
 };

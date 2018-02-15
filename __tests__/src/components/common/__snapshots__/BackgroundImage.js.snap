@@ -5,7 +5,7 @@ exports[`BackgroundImage renders correctly 1`] = `
   resizeMode="cover"
   source={
     Object {
-      "testUri": "../../../src/assets/images/background-gray.jpg",
+      "testUri": "../../../src/assets/images/background.jpg",
     }
   }
   style={

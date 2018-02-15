@@ -14,7 +14,7 @@ exports[`BodyParagraph renders correctly 1`] = `
     ellipsizeMode="tail"
     style={
       Object {
-        "color": "#C0C0C0",
+        "color": "#FFFFFF",
         "fontFamily": "Roboto",
         "fontSize": 17,
         "fontWeight": "normal",
