@@ -4,6 +4,7 @@ import nations from './nations';
 import modifyNation from './modifyNation';
 import wallet from './wallet';
 import key from './key';
+import activity from './activity';
 import testingMode from './testingMode';
 
 const rootReducer = {
@@ -12,6 +13,7 @@ const rootReducer = {
   modifyNation,
   wallet,
   key,
+  activity,
   testingMode,
 };
 

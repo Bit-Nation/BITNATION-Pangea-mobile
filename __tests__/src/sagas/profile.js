@@ -35,8 +35,8 @@ test('sagas - updateProfile', (done) => {
     editingUser: {
       name: 'Jack',
       location: 'NYC',
-      latitude: '42',
-      longitude: '24'
+//      latitude: '42',
+//      longitude: '24'
     }
   }
 

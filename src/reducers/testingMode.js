@@ -1,12 +1,13 @@
 import config from 'react-native-config';
 
-import { MAKE_STEP, RESET_STEPS } from '../actions/testingMode';
+import { MAKE_STEP, RESET_STEPS, EMPTY_WALLET } from '../actions/testingMode';
 
 const stepsCountToToggle = 5;
 
 const initialState = {
   isActive: false,
   stepsLeftToToggle: stepsCountToToggle,
+  walletEmpty: false,
 };
 
 export default function (state = initialState, action) {
@@ -20,6 +21,8 @@ export default function (state = initialState, action) {
       return { ...state, stepsLeftToToggle: state.stepsLeftToToggle - 1 };
     case RESET_STEPS:
       return { ...state, stepsLeftToToggle: stepsCountToToggle };
+    case EMPTY_WALLET:
+      return { ...state, walletEmpty: !state.walletEmpty };
   }
   return state;
 }

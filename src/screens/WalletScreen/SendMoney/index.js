@@ -129,7 +129,7 @@ class SendMoney extends Component {
               <TextInput
                 style={[styles.baseTextInput, styles.amountTextInput]}
                 placeholder='1.02'
-                placeholderTextColor='rgba(255,255,255,0.5)'
+                placeholderTextColor={Colors.placeholderTextColor}
                 value={this.state.amountString}
                 onChangeText={(amountString) => this.setState({ amountString })}
                 underlineColorAndroid={Colors.Transparent}
@@ -152,7 +152,7 @@ class SendMoney extends Component {
               <TextInput
                 style={[styles.baseTextInput, styles.ethTextInput]}
                 placeholder={i18n.t('screens.sendMoney.enterAddress')}
-                placeholderTextColor='rgba(255,255,255,0.5)'
+                placeholderTextColor={Colors.placeholderTextColor}
                 value={this.state.toEthAddress}
                 onChangeText={(toEthAddress) => this.setState({ toEthAddress })}
                 underlineColorAndroid={Colors.Transparent}

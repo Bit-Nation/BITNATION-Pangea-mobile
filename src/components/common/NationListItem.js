@@ -18,11 +18,11 @@ export default class NationListItem extends Component {
         <TouchableOpacity testID='Touchable'
                           onPress={() => this.props.onPress(this.props.id)}
                           style={styles.sectionListTouchable}>
-          <Text style={styles.listItemText}>
+          <Text style={styles.listItemText} numberOfLines={1}>
             {this.props.text}
           </Text>
           <Text style={styles.listItemTextState}>
-            Draft
+            {this.props.status}
           </Text>
           <Image source={AssetsImages.disclosureRowIcon} style={styles.sectionListDisclosure}/>
         </TouchableOpacity>

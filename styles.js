@@ -38,7 +38,7 @@ const styles = MediaQueryStyleSheet.create({
 	nameText: {
 		fontSize: 28,
 		color: Colors.titleColor,
-		letterSpacing: -1.13,
+		letterSpacing: 0,
 		textAlign: 'center',
 		backgroundColor: 'transparent',
 	},
