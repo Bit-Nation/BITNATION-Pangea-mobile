@@ -1,6 +1,6 @@
 const logo = require('../assets/images/logo.png');
 
-const background = require('../assets/images/background-gray.jpg');
+const background = require('../assets/images/background.jpg');
 const rightArrow = require('../assets/images/right_arrow.png');
 const ethereumLogo = require('../assets/images/ethereum_logo.png');
 const demo = require('../assets/images/demoImage.png');
@@ -38,6 +38,13 @@ const mapActionIcon = require('../assets/images/toolbarIconMap.png');
 const joinActionIcon = require('../assets/images/toolbarIconJoin.png');
 const leaveActionIcon = require('../assets/images/toolbarIconLeave.png');
 
+// Nations Create Tool Bar Icons
+const resetActionIcon = require('../assets/images/toolbarIconReset.png');
+const saveActionIcon = require('../assets/images/toolbarIconSave.png');
+const deleteActionIcon = require('../assets/images/toolbarIconDelete.png');
+const submitActionIcon = require('../assets/images/toolbarIconSubmit.png');
+const userCitizenIcon = require('../assets/images/avatarCitizen.png');
+
 const disclosureRowIcon = require('../assets/images/disclosure.png');
 
 const Images = {
@@ -56,6 +63,7 @@ const Images = {
   bitLogoBig,
   QR,
   privateKeyDemo,
+  userCitizenIcon,
   disclosureRowIcon,
   TabIcons: {
     dashboard: dashboardTabIcon,
@@ -76,6 +84,11 @@ const Images = {
     map: mapActionIcon,
     join: joinActionIcon,
     leave: leaveActionIcon,
+    
+    reset: resetActionIcon,
+    save: saveActionIcon,
+    delete: deleteActionIcon,
+    submit: submitActionIcon,
   },
 };
 

@@ -6,37 +6,50 @@ import GlobalStyles from '../../global/Styles';
 
 const { height, width } = Dimensions.get('window');
 
-const styles = MediaQueryStyleSheet.create(
-  {
-    ...GlobalStyles,
-    stackView: {
-      flexDirection: 'column',
-      justifyContent: 'flex-end',
-      alignItems: 'stretch',
-      flex: 1,
-      marginLeft: 8,
-      marginRight: 8,
-    },
-    activityPanelContainer: {
-      flex: 1,
-    },
-    activityPanel: {
-      flex: 1,
-    },
-    bottomContainer: {
-      flex: 2,
-      flexDirection: 'row',
-    },
-    nationsPanel: {
-      flex: 1,
-    },
-    rightContainer: {
-      marginLeft: 8,
-      flex: 1,
-    },
-    walletPanel: {},
-    warningPanel: {
-      flex: 1,
-    },
-  });
+const styles = {
+  ...GlobalStyles,
+
+  panelViewTitle: {
+    ...GlobalStyles.panelViewTitle,
+    color: Colors.BitnationHighlightColor,
+  },
+
+  activityPanelContainer: {
+    flex: 1,
+  },
+  activityPanel: {
+    flex: 1,
+  },
+  bottomContainer: {
+    flex: 2,
+    flexDirection: 'row',
+  },
+  nationsPanel: {
+    flex: 1,
+    marginRight: 4,
+  },
+  rightContainer: {
+    marginLeft: 4,
+    flex: 1,
+    //flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'stretch',
+
+  },
+  walletPanel: {
+    //flex: 2,
+  },
+
+  // This is a panel, unlike the other styles above, which are views
+  // which hold panelViews.
+  warningPanel: {
+    ...GlobalStyles.gridPanelView,
+    flex: 1,
+  },
+  warningPanelBody: {
+    ...GlobalStyles.body,
+    fontWeight: '300',
+
+  },
+};
 export default styles;

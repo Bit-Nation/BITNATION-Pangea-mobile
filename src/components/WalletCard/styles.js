@@ -13,6 +13,7 @@ export default styles = StyleSheet.create({
   icon: {
     width: 55,
     marginRight: 10,
+    marginTop: 10,
   },
   row: {
     flex: 1,

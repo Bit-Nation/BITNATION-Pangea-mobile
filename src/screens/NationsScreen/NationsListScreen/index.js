@@ -35,6 +35,12 @@ class NationsListScreen extends Component {
       <View style={styles.nationsScreenContainer}>
         <BackgroundImage/>
         <FakeNavigationBar/>
+        {/* TITLE OF SCREEN */}
+        <View style={styles.titleContainer}>
+          <View style={styles.titleBarLarge}>
+            <Text style={styles.largeTitle}>{i18n.t('screens.nations.title')}</Text>
+          </View>
+        </View>
         <View style={styles.segmentedControlContainer}>
           <SegmentedControl
             values={[i18n.t('screens.nations.allNations'), i18n.t('screens.nations.myNations')]}

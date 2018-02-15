@@ -11,6 +11,7 @@ import { screen } from '../../../../global/Screens';
 import Button from '../../../../components/common/Button';
 import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
 import BackgroundImage from '../../../../components/common/BackgroundImage';
+import PanelView from '../../../../components/common/PanelView';
 import KeyBaseScreen from '../../KeyBaseScreen';
 import { KEY_LENGTH } from '../../../../global/Constants';
 import { changeEnteredMnemonic, removePrivateKey } from '../../../../actions/key';
@@ -29,13 +30,15 @@ class VerifyKeyInstructionScreen extends KeyBaseScreen {
         <BackgroundImage/>
         <FakeNavigationBar/>
 
-        <ScrollView contentContainerStyle={styles.bodyContainer}>
-          <BodyParagraphs paragraphs={i18n.t('screens.verifyKey.instructions', { KEY_LENGTH })}/>
-          <View style={styles.buttonContainer}>
-            <Button title={i18n.t('screens.verifyKey.startButton')}
-                    onPress={() => this.onNextButtonPressed()}/>
-          </View>
-        </ScrollView>
+        <View style={styles.bodyContainer}>
+          <PanelView style={styles.panelViewTransparent}
+                     childrenContainerStyle={{ flex: 0, }}
+                     buttonTitle={i18n.t('screens.verifyKey.startButton')}
+                     onButtonClick={() => this.onNextButtonPressed()}
+          >
+            <BodyParagraphs paragraphs={i18n.t('screens.verifyKey.instructions', { KEY_LENGTH })}/>
+          </PanelView>
+        </View>
       </View>
     );
   }

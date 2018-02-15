@@ -1,238 +1,12 @@
 import { MediaQueryStyleSheet } from 'react-native-responsive';
 import Colors from './colors';
-import { fontSizeNormalizer, normalWidthMargin } from '../utils/normalizer';
+import { fontSizeNormalizer, normalWidthMargin, isiPhoneXStatusBar, isiPhoneXTabBar } from '../utils/normalizer';
 
 // ========================================
 // DEFAULT TEXT STYLES
 // ========================================
 
-const defaultTextStyles = {
-
-  // ========================================
-  // Default Text Styles
-  // From Apple Human Interface Guidelines
-  // https://developer.apple.com/ios/human-interface-guidelines/visual-design/typography/
-
-  // Apple Defaults (Do not change):
-  /*
-  largeTitle: {
-    fontFamily: 'SF Pro Text',
-    fontWeight: 'bold',
-    fontSize: 34,
-    lineHeight: 41,
-    letterSpacing: 11,
-  },
-
-  title1: {
-    fontFamily: 'SF Pro Text',
-    fontWeight: 'bold',
-    fontSize: 28,
-    lineHeight: 34,
-    letterSpacing: 13,
-  },
-
-  title2: {
-    fontFamily: 'SF Pro Text',
-    fontWeight: 'normal',
-    fontSize: 22,
-    lineHeight: 28,
-    letterSpacing: 16,
-  },
-
-
-  title3: {
-    fontFamily: 'SF Pro Text',
-    fontWeight: 'normal',
-    fontSize: 20,
-    lineHeight: 25,
-    letterSpacing: 19,
-  },
-
-
-  headline: {
-    fontFamily: 'SF Pro Text',
-    fontWeight: 'bold',
-    fontSize: 17,
-    lineHeight: 22,
-    letterSpacing: -24,
-  },
-
-
-  body: {
-    fontFamily: 'SF Pro Text',
-    fontWeight: 'normal',
-    fontSize: 17,
-    lineHeight: 22,
-    letterSpacing: -24,
-  },
-
-
-  callout: {
-    fontFamily: 'SF Pro Text',
-    fontWeight: 'normal',
-    fontSize: 16,
-    lineHeight: 21,
-    letterSpacing: -20,
-  },
-
-
-  subhead: {
-    fontFamily: 'SF Pro Text',
-    fontWeight: 'normal',
-    fontSize: 15,
-    lineHeight: 20,
-    letterSpacing: -16,
-  },
-
-
-  footnote: {
-    fontFamily: 'SF Pro Text',
-    fontWeight: 'normal',
-    fontSize: 13,
-    lineHeight: 18,
-    letterSpacing: -6,
-  },
-
-
-  caption1: {
-    fontFamily: 'SF Pro Text',
-    fontWeight: 'normal',
-    fontSize: 12,
-    lineHeight: 16,
-    letterSpacing: 0,
-  },
-
-
-  caption2: {
-    fontFamily: 'SF Pro Text',
-    fontWeight: 'normal',
-    fontSize: 11,
-    lineHeight: 13,
-    letterSpacing: 6,
-  },
-  */
-
-  // ========================================
-  // Bitnation App Default Text Styles
-  // Derived from Apple Defaults (above)
-
-  largeTitle: {
-    fontFamily: 'Roboto',
-    fontWeight: 'bold',
-    fontSize: 34,
-    lineHeight: 41,
-    letterSpacing: 0,
-    color: Colors.BitnationLightColor,
-  },
-
-  largeSubTitle: {
-    fontFamily: 'Source Code Pro',
-    fontWeight: 'bold',
-    fontSize: 24,
-    lineHeight: 41,
-    letterSpacing: 0,
-    color: Colors.Amber,
-  },
-
-  title1: {
-    fontFamily: 'Roboto',
-    fontWeight: 'bold',
-    fontSize: 28,
-    lineHeight: 34,
-    letterSpacing: 0,
-    color: Colors.BitnationLightColor,
-  },
-
-  title2: {
-    fontFamily: 'Roboto',
-    fontWeight: 'normal',
-    fontSize: 22,
-    lineHeight: 28,
-    letterSpacing: 0,
-    color: Colors.BitnationLightColor,
-  },
-
-  title3: {
-    fontFamily: 'Roboto',
-    fontWeight: 'normal',
-    fontSize: 20,
-    lineHeight: 25,
-    letterSpacing: 0,
-    color: Colors.BitnationLightColor,
-  },
-
-  headline: {
-    fontFamily: 'Roboto',
-    fontWeight: 'bold',
-    fontSize: 17,
-    lineHeight: 22,
-    letterSpacing: 0,
-    color: Colors.BitnationLightColor,
-  },
-
-  body: {
-    fontFamily: 'Roboto',
-    fontWeight: 'normal',
-    fontSize: 17,
-    lineHeight: 22,
-    letterSpacing: 0,
-    color: Colors.BitnationLightColor,
-  },
-
-  bodyBold: {
-    fontFamily: 'Roboto',
-    fontWeight: 'bold',
-    fontSize: 17,
-    lineHeight: 22,
-    letterSpacing: 0,
-    color: Colors.BitnationLightColor,
-  },
-
-  callout: {
-    fontFamily: 'Roboto',
-    fontWeight: 'normal',
-    fontSize: 16,
-    lineHeight: 21,
-    letterSpacing: 0,
-    color: Colors.BitnationLightColor,
-  },
-
-  subhead: {
-    fontFamily: 'Roboto',
-    fontWeight: 'normal',
-    fontSize: 15,
-    lineHeight: 20,
-    letterSpacing: 0,
-  },
-
-  footnote: {
-    fontFamily: 'Roboto',
-    fontWeight: 'normal',
-    fontSize: 13,
-    lineHeight: 18,
-    letterSpacing: 0,
-    color: Colors.BitnationLightColor,
-  },
-
-  caption1: {
-    fontFamily: 'Roboto',
-    fontWeight: 'normal',
-    fontSize: 12,
-    lineHeight: 16,
-    letterSpacing: 0,
-    color: Colors.BitnationLightColor,
-  },
-
-  caption2: {
-    fontFamily: 'Roboto',
-    fontWeight: 'normal',
-    fontSize: 11,
-    lineHeight: 13,
-    letterSpacing: 0,
-    color: Colors.BitnationLightColor,
-  },
-
-};
+import defaultTextStyles from './styles/defaultTextStyles';
 
 // ========================================
 // MAIN STYLES
@@ -246,6 +20,12 @@ const styles = {
   // ========================================
   // Common Layout Elements
 
+  // Easy style reference to turn off flex, for objects that should
+  // keep their normal size.
+  noflex: {
+    flex: 0,
+  },
+
   // General screen container for ALL elements
   // Derived from Apple Human Interface Guidelines
   // and https://ivomynttinen.com/blog/ios-design-guidelines
@@ -258,6 +38,8 @@ const styles = {
   },
 
   // Container for the main area, below navigation but above the bottom tab bar (if existing)
+  // Used for wallet, nation create, etc.
+  // This container requires the contents to add additional left/right margins!
   bodyContainer: {
     flex: 1,
     flexDirection: 'column',
@@ -269,7 +51,32 @@ const styles = {
     marginRight: 8,
   },
 
+  // Container for a grid of panels (or a mosaic).
+  // Similar to bodyContainer but we stretch fill all space
+  // Used for dashboard
+  gridContainer: {
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'stretch',
+    alignContent: 'flex-start',
+    flex: 1,
+    // these narrow left/right margins are for panels, which have their own indents.
+    marginLeft: 8,
+    marginRight: 8,
+  },
+
+  // ScrollView default container style
+  scrollView: {
+    flex: 1,
+  },
+
+  // Extra space for the top of a page of text, to distinguish from nav.
+  bodyTopSpacer: {
+    height: fontSizeNormalizer(18),
+  },
+
   // Contains a title for a screen, e.g. Nations or Wallet
+  // Margins position correctly INSIDE a bodyContainer View
   titleContainer: {
     marginLeft: 8,
     marginRight: 8,
@@ -281,7 +88,7 @@ const styles = {
   },
 
   statusBar: {
-    height: 20,
+    height: isiPhoneXStatusBar(20),
     backgroundColor: 'transparent',
   },
 
@@ -292,18 +99,11 @@ const styles = {
 
   // Navigation area that shows a normal ("largeTitle" style) title
   navigationBar: {
-    marginTop: 20, // force below the status bar !!! THIS IS WRONG
+    marginTop: isiPhoneXStatusBar(20), // force below the status bar !!! THIS IS WRONG
     marginLeft: 8,
     marginRight: 8,
     height: 44,
     backgroundColor: 'transparent',
-  },
-
-  // Normal left/right margins for the body area (not navigation or status)
-  // Use for text-only views, NOT for panels (which have built-in margins)
-  layoutMargin: {
-    marginLeft: 16,
-    marginRight: 16,
   },
 
   // Tab bar at the bottom of the screen
@@ -328,8 +128,8 @@ const styles = {
   titleBarLarge: {
     height: fontSizeNormalizer(52),
     alignItems: 'flex-start',
-    marginLeft: 8,
-    marginRight: 8,
+    // marginLeft: 8,
+    // marginRight: 8,
   },
 
   titleBarLargeNationDetail: {
@@ -377,6 +177,33 @@ const styles = {
   },
 
   // ========================================
+  // Panels in a grid.
+  // These are lists of rectangular panels which contain different kinds of content.
+  // Fill the panel with flex views and the alignItems: stretch will make sure they fill it up.
+  // Example: screens/dashboard/NationsPanel/index.js
+
+  gridPanelView: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    alignItems: 'stretch',
+    margin: 4,
+    borderRadius: 8,
+    backgroundColor: Colors.panelView,
+    overflow: 'hidden',
+    // INDENTS
+    padding: fontSizeNormalizer(16),
+  },
+
+  // Make an element inside a gridPanelView (e.g. style=listContainer) flush left/right by
+  // removing the LR margin indents
+  // Use on a View inside a gridPanelView.
+  removeGridPanelMarginsLR: {
+    marginLeft: fontSizeNormalizer(-16),
+    marginRight: fontSizeNormalizer(-16),
+  },
+
+  // ========================================
   // Panels in a vertical list.
   // These are lists of rectangular panels which contain different kinds of content.
   // These don't have margin left/right, so they won't work for dashboard.
@@ -391,10 +218,17 @@ const styles = {
     marginBottom: 4,
     marginLeft: 0,
     marginRight: 0,
-    paddingTop: fontSizeNormalizer(15),
-    paddingBottom: fontSizeNormalizer(15),
-    paddingLeft: 15,
-    paddingRight: 15,
+    overflow: 'hidden',
+    // INDENTS:
+    // paddingLeft: 8,
+    // paddingRight: 8,
+    // paddingTop: 4,
+    // paddingBottom: 4,
+
+    padding: fontSizeNormalizer(16),
+
+    // borderWidth:5,
+    // borderColor:'yellow',
   },
 
   panelViewTransparent: {
@@ -406,24 +240,32 @@ const styles = {
     marginBottom: 8,
     marginLeft: 0,
     marginRight: 0,
-    paddingTop: 8,
+    //overflow: 'hidden',
+    paddingLeft: 8,
+    paddingRight: 8,
+    paddingTop: 4,
+    paddingBottom: 4,
+
+    // borderWidth:1,
+    // borderColor:'green',
   },
 
   // Panel Title Container for the Title and Icon, below
   panelTitleRowContainer: {
     flexDirection: 'row',
     backgroundColor: 'transparent',
-    paddingBottom: 8,
-    // Line below the title:
+    paddingBottom: 4,
+    // Uncomment to show a LINE below the title:
     //borderBottomColor: Colors.BlueGrey,
     //borderStyle: 'solid',
     //borderBottomWidth: 1,
   },
 
+  // Contains the title of the panel view, inside the title row
   panelTitleContainer: {
-    flex: 4,
     backgroundColor: 'transparent',
   },
+
 
   panelTitleIcon: {
     flex: 1,
@@ -431,11 +273,11 @@ const styles = {
     alignItems: 'flex-end',
   },
 
-  // Text style for the Panel Title
-  panelTitle: {
+  // Text style for the Panel Vi
+  panelViewTitle: {
     ...defaultTextStyles.title2,
     fontWeight: 'bold',
-    color: Colors.titleColor,
+    color: Colors.panelViewTitleColor,
     textAlign: 'left',
   },
 
@@ -452,8 +294,26 @@ const styles = {
     textAlign: 'right',
   },
 
-  panelTextContainer: {
+  // View: children passed to panel
+  // Hint: don't set overflow to 'hidden' because that will defeat
+  // negative margins that are used to go to the edge of the panel (e.g. by a list).
+  panelChildrenContainer: {
+    flex: 1,
+    marginBottom: 4,
+
+    // borderWidth:2,
+    // borderColor:'magenta',
+  },
+
+  // View: Text block passed to panel. Similar to children, but more limited.
+  // Indented left/right
+  panelBodyContainer: {
     marginBottom: 8,
+    flexShrink: 1,
+    overflow: 'hidden',
+
+    // borderWidth:1,
+    // borderColor:'#888',
   },
 
   panelBody: {
@@ -467,6 +327,71 @@ const styles = {
   // Button in Panel View
   panelButton: {
     marginTop: 13,
+  },
+
+  // ------------------------
+  // Flatlist in a Panel View
+
+  // Header Container for a flatList in a panel (not using ListHeaderComponent)
+  // Should be similar to sectionListItemContainer
+  panelFlatlistHeader: {
+    justifyContent: 'center',
+    backgroundColor: Colors.shadeOf(Colors.BitnationDarkColor, 0.5),
+    // Matches the marginLeft: 16 of sectionListItemContainer
+    paddingLeft: 16,
+    // Standard row height for an iOS list item:
+    height: 30,
+  },
+
+  //Panel used for Alert about the Status of the Nation in Detail Screen
+  panelViewAlert: {
+    flexDirection: 'row',
+    borderRadius: 8,
+    backgroundColor: Colors.panelViewAlert,
+    marginTop: 4,
+    marginBottom: 4,
+    marginLeft: 0,
+    marginRight: 0,
+    overflow: 'hidden',
+    // INDENTS:
+    paddingLeft: 10,
+    padding: fontSizeNormalizer(5),
+  },
+
+  //Label in panel used for Alert about the Status of the Nation in Detail Screen
+  panelAlertBold: {
+    ...defaultTextStyles.body,
+    color: Colors.BitnationHighlightColor,
+    fontSize: 13,
+    fontWeight: 'bold',
+  },
+
+  //Status string in panel used for Alert about the Status of the Nation in Detail Screen
+  panelAlertStatus: {
+    ...defaultTextStyles.body,
+    color: Colors.BitnationHighlightColor,
+    fontSize: 13,
+  },
+
+  //Panel used for showing the citizenship of a User in Detail Screen
+  panelViewCitizen: {
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    borderRadius: 8,
+    backgroundColor: Colors.panelView,
+    marginTop: 4,
+    marginBottom: 4,
+    marginLeft: 0,
+    marginRight: 0,
+    overflow: 'hidden',
+    // INDENTS:
+    paddingLeft: 10,
+    padding: fontSizeNormalizer(7),
+  },
+
+  panelViewCitizenIcon: {
+    width: 25,
+    height: 25,
   },
 
   // ========================================
@@ -583,6 +508,16 @@ const styles = {
   // These are lists with rows divided by section headers, e.g. "A"
   // Example: Nations List screen
 
+  // View: Use views inside to fill the space. A FlatList inside this will be sized
+  // to fit the space available.
+  listContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    alignItems: 'stretch',
+  },
+
+  // Used for SectionList on Nation List screen
   sectionList: {
     flex: 1,
   },
@@ -594,12 +529,19 @@ const styles = {
     flex: 1,
   },
 
+  // e.g. NationListItem Text very BOLD
+  listItemTextVeryBold: {
+    ...defaultTextStyles.bodyBlack,
+    color: 'white',
+    flex: 1,
+  },
+
   // e.g. NationListItemState Text
   listItemTextState: {
     ...defaultTextStyles.body,
     color: Colors.listItemTextState,
     textAlign: 'right',
-    marginRight: 15,
+    marginRight: 16,
   },
 
   // e.g. NationListItem, a row in a list of Nations
@@ -618,7 +560,7 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: Colors.sectionListItemContainerBkgd,
-    marginLeft: 15,
+    marginLeft: 16,
   },
 
   // e.g. NationListHeader
@@ -634,7 +576,7 @@ const styles = {
   sectionListHeaderText: {
     ...defaultTextStyles.body,
     flex: 1,
-    marginLeft: 15,
+    marginLeft: 16,
     color: Colors.sectionListHeaderText,
   },
 
@@ -646,7 +588,7 @@ const styles = {
   },
 
   sectionListDisclosure: {
-    marginRight: 15,
+    marginRight: 16,
     width: 8,
     height: 15,
   },
@@ -702,11 +644,21 @@ const styles = {
   // Styles for the custom Tool Bar replacing the Tab Bar
   fakeBottomBar: {
     paddingTop: 5,
-    height: 55,
+    height: isiPhoneXTabBar(55),
     backgroundColor: Colors.LightBlue,
     flexDirection: 'row',
     alignItems: 'stretch',
     justifyContent: 'space-around',
+  },
+
+  currencyLarge: {
+    ...defaultTextStyles.largeTitle,
+    fontFamily: 'Roboto',
+    fontWeight: '300',
+    fontSize: 30,
+    lineHeight: 36,
+    letterSpacing: 0,
+    color: Colors.currency,
   },
 
   buttonTitle: {
@@ -784,7 +736,7 @@ const styles = {
     height: 100,
     width: 100,
     borderRadius: 50,
-    margin: 15,
+    margin: 16,
   },
 
   privateKeyGridViewContainer: {

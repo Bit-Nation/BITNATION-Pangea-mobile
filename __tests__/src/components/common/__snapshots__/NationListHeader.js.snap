@@ -25,7 +25,7 @@ exports[`NationListHeader renders correctly 1`] = `
         "fontWeight": "normal",
         "letterSpacing": 0,
         "lineHeight": 22,
-        "marginLeft": 15,
+        "marginLeft": 16,
       }
     }
   >

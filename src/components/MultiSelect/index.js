@@ -80,7 +80,7 @@ export default class MultiSelect extends Component {
     hideSubmitButton: false,
     submitButtonColor: Colors.white,
     submitButtonText: 'Submit',
-    fontSize: 17,
+    fontSize: 15,
     fixedHeight: false,
     hideTags: false,
   };
@@ -398,8 +398,8 @@ export default class MultiSelect extends Component {
         style={{
           flex: 1,
           flexDirection: 'column',
-          marginBottom: 10,
-          marginTop: 10,
+          marginBottom: 1,
+          marginTop: 1,
         }}
       >
         {
@@ -440,7 +440,7 @@ export default class MultiSelect extends Component {
               <View
                 style={{
                   flexDirection: 'column',
-                  backgroundColor: Colors.shadeOfBitnationLightColor(0.2),
+                  backgroundColor: Colors.shadeOfBitnationLightColor(0.1),
                 }}
               >
                 <View>

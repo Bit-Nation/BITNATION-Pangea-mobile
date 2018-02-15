@@ -1,8 +1,8 @@
 /*
-	Nation Create Screen
-	Version 0.3.1
+  Nation Create Screen
+  Version 0.3.1
 
-	For usage of MultiSelect see: https://github.com/toystars/react-native-multiple-select (We are using a custom UI version)
+  For usage of MultiSelect see: https://github.com/toystars/react-native-multiple-select (We are using a custom UI version)
  */
 
 import React from 'react';
@@ -70,21 +70,37 @@ class CreateNation extends NavigatorComponent {
 
         <View style={styles.bodyContainer}>
           {/* SCROLLING PANELS FOR DATA ENTRY */}
-          <ScrollView style={styles.scrollView}>
+          <ScrollView style={{ flex: 1 }} contentContainerStyle={{ flex: 0 }}>
             {/* TITLE OF SCREEN */}
-            <View style={styles.titleBarLarge}>
-              <Text style={styles.largeTitle}>{i18n.t('screens.createNation.title')}</Text>
+            <View style={styles.titleContainer}>
+              <View style={styles.titleBarLarge}>
+                <Text style={styles.largeTitle}>{i18n.t(
+                  'screens.createNation.title')}</Text>
+              </View>
             </View>
 
             {/* CONSTRUCTIONS OF THE SECTIONS IN THE SCREEN */}
             {this._buildIntroPanel()}
             {this._buildCoreNationView()}
+            {this._buildLocationNationView()}
             {this._buildGovernmentalView()}
             {this._buildOptionsView()}
           </ScrollView>
         </View>
         {this._buildBottomBar()}
         {this.props.inProgress ? <Loading/> : null}
+      </View>
+    );
+  }
+
+  _buildIntroPanel() {
+    return (
+      <View style={styles.bodyContainer}>
+        <View style={styles.bodyParagraph}>
+          <Text style={styles.body}>
+            {i18n.t('screens.createNation.introduction')}
+          </Text>
+        </View>
       </View>
     );
   }
@@ -97,35 +113,27 @@ class CreateNation extends NavigatorComponent {
 
     return (
       <View style={styles.fakeBottomBar}>
-        <NationActionButton iconSource={AssetsImage.Actions.chat}
+        <NationActionButton iconSource={AssetsImage.Actions.reset}
                             title={i18n.t('screens.createNation.reset')} disable={!isModified}
                             onPress={this.props.onResetNationCreation}/>
-        <NationActionButton iconSource={AssetsImage.Actions.chat}
+        <NationActionButton iconSource={AssetsImage.Actions.save}
                             title={i18n.t('screens.createNation.save')} disable={!isModified}
                             onPress={this.props.onSaveNationDraft}/>
-        <NationActionButton iconSource={AssetsImage.Actions.chat}
+        <NationActionButton iconSource={AssetsImage.Actions.delete}
                             title={i18n.t('screens.createNation.delete')} disable={!isSavedDraft}
                             onPress={this.props.onDeleteNationDraft}/>
-        <NationActionButton iconSource={AssetsImage.Actions.chat}
+        <NationActionButton iconSource={AssetsImage.Actions.submit}
                             title={i18n.t('screens.createNation.submit')} disable={!canSubmit}
                             onPress={this.props.onSubmitNation}/>
       </View>
     );
   }
 
-  _buildIntroPanel() {
-    return (
-      <View style={styles.bodyParagraph}>
-        <Text style={styles.body}>
-          {i18n.t('screens.createNation.introduction')}
-        </Text>
-      </View>
-    );
-  }
 
   _buildCoreNationView() {
     return (
-      <PanelView style={styles.messageView}>
+      <PanelView
+        style={styles.panelViewTransparent}>
         <View style={styles.formRow}>
           <View style={styles.fieldsContainer}>
             <View style={styles.formRow}>
@@ -152,6 +160,15 @@ class CreateNation extends NavigatorComponent {
             </View>
           </View>
         </View>
+      </PanelView>
+    );
+  }
+
+  _buildLocationNationView() {
+    return (
+      <PanelView
+        style={styles.panelViewTransparent}
+        title={i18n.t('common.location')} icon=' '>
         <View style={styles.formRow}>
           <View style={styles.fieldsContainer}>
             <MultiSelect
@@ -198,8 +215,9 @@ class CreateNation extends NavigatorComponent {
 
   _buildGovernmentalView() {
     return (
-      <PanelView style={styles.messageView}
-                 title={i18n.t('common.governmentalStructure')} icon=' '>
+      <PanelView
+        style={styles.panelViewTransparent}
+        title={i18n.t('common.governmentalStructure')} icon=' '>
         <View style={styles.formRow}>
           <View style={styles.fieldsContainer}>
             <MultiSelect
@@ -362,7 +380,10 @@ class CreateNation extends NavigatorComponent {
 
   _buildOptionsView() {
     return (
-      <PanelView style={styles.messageView} title={i18n.t('common.options')} icon=' '>
+      <PanelView
+        style={styles.panelViewTransparent}
+        title={i18n.t('common.options')}
+        icon=' '>
         <View style={styles.formRow}>
           <View style={styles.fieldsContainer}>
             <SwitchLabeled

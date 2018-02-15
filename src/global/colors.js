@@ -89,16 +89,18 @@ export default {
 	BitnationHighlightColor: BitnationHighlightColor,
 	
 	// Colors for common Text Styles
-	// e.g. very large titles on screens
+	// e.g. large titles on screens
 	titleColor: BitnationHighlightColor,
+	panelViewTitleColor: 'white',
 	
+	currency: '#FFDD15',
 	
 	// Tab Bar (Navigation Bar for the app)
 	tabBarBackgroundColor: BitnationBackgroundColor,
 	tabBarSelectedLabelColor: 'white',
 	tabBarSelectedButtonColor: 'white',
-	tabBarLabelColor: '#a6c5e5',
-	tabBarButtonColor: '#a6c5e5',
+	tabBarLabelColor: 'white',
+	tabBarButtonColor: '#9fc9fa',
 	
 	// Toolbars (e.g. Create Nation)
 	toolBarBackgroundColor: BitnationBackgroundColor,
@@ -109,6 +111,7 @@ export default {
 	
 	// Panel background color
 	panelView: 'rgba(255,255,255,0.2)',
+	panelViewAlert: 'rgba(245, 166, 35, 0.2)',
 	
 	// Other Custom Bitnation Colors
 	BlueGrey: '#607D8B',
@@ -125,17 +128,21 @@ export default {
 
 	placeholderTextColor: shadeOf(BitnationVeryLightColor, 0.4),
 	
+	// Used in multiselect, e.g. Nation Create form
 	textColor: '#444A64',
 	textPrimary: '#4A4A4A',
 	textSecondary: '#9094A3',
 	textLight: '#DADCE5',
 	buttonPrimary: '#80E5CF',
 	bestOptionBackground: '#BDF4E9',
+	Grey: '#9E9E9E',
+	primary_red: '#FF5469', // "danger" color
+
 	
-	primary_green: '#A5D6A7',
-	secondary_green: '#BDF4E9',
-	primary_blue: '#444A64',
-	primary_red: '#FF5469',
+	// MATERIAL DESIGN COLORS FROM MaterialUI
+	// https://www.materialui.co
+	
+	grey_900: '#212121',
 	grey_400: '#9094A3',
 	grey_300: '#DADCE5',
 	grey_200: '#F1F2F6',
@@ -160,12 +167,32 @@ export default {
 	disabledTextColor: '#275284',
 	actionButtonColor: '#1c497e',
 	
+	// NAVIGATOR COLORS (in SCREENS.JS)
+	navBarTextColor: 'white',
+	navBarButtonColor: 'white',
+	navBarBackgroundColor: 'transparent',
+	
+	disabledButtonColor: '#F1F2F6', // gray_200
+	
+	// If navBarTranslucent=false, the FakeNavigationBar pushes everything down below!
+	navBarTranslucent: true,
+	navBarTransparent: true,
+	
+	navBarNoBorder: true,
+	
+	statusBarColorOther: 'black',
+	statusBarColorIOS: 'black',
+	
+	
+	// PLATFORM SPECIFIC COLORS
+	androidNavigationButtons: 'white',  //in Screens.js
 	
 	// Why do we have this? So we can redefine white to something just a little darker
 	// because pure white can be hard...sometimes better to use 98% white.
 	white: 'white',
 	
-	// Why do we have these definitions?
+	// Standard HTML/CSS color definitions.
+	// Not used in general.
 	Red: '#FF5252',
 	Pink: '#FF4081',
 	Purple: '#9C27B0',
@@ -183,8 +210,9 @@ export default {
 	Orange: '#FF9800',
 	DeepOrange: '#FF5722',
 	Brown: '#795548',
-	Grey: '#9E9E9E',
 	LightGrey: '#EEEEEE',
+	
+	// Used in many places, e.g. Wallet code, identical to 'transparent'
 	Transparent: 'transparent',
 	
 }

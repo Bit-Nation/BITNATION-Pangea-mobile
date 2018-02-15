@@ -51,8 +51,8 @@ const styles = MediaQueryStyleSheet.create(
     ethereumLogo: {
       position: 'absolute',
       zIndex: -1,
-      height: 80,
-      width: 50,
+      height: 48,
+      width: 24,
     },
     ethereumDetailsContainer: {
       flex: 6,

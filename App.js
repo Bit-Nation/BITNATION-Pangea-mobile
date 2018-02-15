@@ -23,8 +23,8 @@ Navigation.startTabBasedApp({
       screen('WALLET_SCREEN'),
       screen('PROFILE_SCREEN'),
   ],
-  tabsStyle,
-  appStyle,
+  tabsStyle: { ...tabsStyle },
+  appStyle: { ...appStyle },
 });
 
 class App extends Component {

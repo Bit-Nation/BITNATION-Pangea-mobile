@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import {
   ScrollView,
-  View,
+  View, Text,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import styles from './styles';
 import { screen } from '../../../../global/Screens';
-import Button from '../../../../components/common/Button';
+import PanelView from '../../../../components/common/PanelView';
 import BackgroundImage from '../../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
 import KeyBaseScreen from '../../KeyBaseScreen';
@@ -27,14 +27,24 @@ class CreateKeyIntroductionScreen extends KeyBaseScreen {
       <View style={styles.screenContainer}>
         <BackgroundImage/>
         <FakeNavigationBar/>
-        <ScrollView contentContainerStyle={styles.bodyContainer}>
-          <BodyParagraphs paragraphs={i18n.t('screens.createKey.introduction')}/>
 
-          <View style={styles.buttonContainer}>
-            <Button title={i18n.t('screens.createKey.startButton')}
-                    onPress={() => this.onNextButtonPressed()}/>
+        <View style={styles.bodyContainer}>
+          <View style={styles.titleContainer}>
+            {/* TITLE OF SCREEN */}
+            <View style={styles.titleBarLarge}>
+              <Text style={styles.largeTitle}>{i18n.t('screens.createKey.title')}</Text>
+            </View>
           </View>
-        </ScrollView>
+
+          <PanelView style={styles.panelViewTransparent}
+                     childrenContainerStyle={{ flex: 0, }}
+                     buttonTitle={i18n.t('screens.createKey.startButton')}
+                     onButtonClick={() => this.onNextButtonPressed()}
+          >
+            <BodyParagraphs paragraphs={i18n.t('screens.createKey.introduction')}/>
+
+          </PanelView>
+        </View>
       </View>
     );
   }
