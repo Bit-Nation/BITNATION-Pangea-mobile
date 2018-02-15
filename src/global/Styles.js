@@ -645,7 +645,7 @@ const styles = {
   fakeBottomBar: {
     paddingTop: 5,
     height: isiPhoneXTabBar(55),
-    backgroundColor: Colors.LightBlue,
+    backgroundColor: Colors.BitnationBackgroundColor,
     flexDirection: 'row',
     alignItems: 'stretch',
     justifyContent: 'space-around',
