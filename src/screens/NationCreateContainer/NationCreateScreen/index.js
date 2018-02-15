@@ -36,7 +36,6 @@ class CreateNation extends NavigatorComponent {
   constructor(props) {
     super(props);
 
-    this.shouldSwitchApper = false;
     this.actionSheet = null;
     this.multiGovernanceService = null;
     this.props.navigator.setButtons({
@@ -57,10 +56,6 @@ class CreateNation extends NavigatorComponent {
 
   setFieldValue(field, value) {
     this.props.onNationChange(field, value);
-    console.log('field: ', field)
-    if ( field==="virtualNation") {
-      this.shouldSwitchApper = this.props.editingNation.virtualNation;
-    }
   }
 
   render() {
@@ -180,15 +175,19 @@ class CreateNation extends NavigatorComponent {
               single
               hideTags
               items={[{
-                id: true,
+                id: 'true',
                 name: i18n.t('enums.nation.locationType.virtual'),
               }, {
-                id: false,
+                id: 'false',
                 name: i18n.t('enums.nation.locationType.geographical'),
               }]}
               uniqueKey="id"
-              onSelectedItemsChange={(selectedItems) => this.setFieldValue('virtualNation', selectedItems[0])}
-              selectedItems={[this.props.editingNation.virtualNation]}
+              onSelectedItemsChange={(selectedItems) => this.setFieldValue('virtualNation', selectedItems[0] === 'true')}
+              selectedItems={
+                this.props.editingNation.virtualNation === null
+                  ? []
+                  : [this.props.editingNation.virtualNation ? 'true' : 'false']
+              }
               selectText={i18n.t('screens.createNation.prompt.location')}
               onChangeInput={(text) => console.log(text)}
               tagRemoveIconColor="#CCC"
@@ -201,7 +200,8 @@ class CreateNation extends NavigatorComponent {
             />
           </View>
         </View>
-        { this.shouldSwitchApper &&
+        {
+          this.props.editingNation.virtualNation === false &&
           <View style={styles.formRow}>
             <View style={styles.fieldsContainer}>
               <SwitchLabeled
