@@ -70,7 +70,7 @@ class CreateNation extends NavigatorComponent {
 
         <View style={styles.bodyContainer}>
           {/* SCROLLING PANELS FOR DATA ENTRY */}
-          <ScrollView style={{flex: 1}} contentContainerStyle={{flex: 0}}>
+          <ScrollView style={{ flex: 1 }} contentContainerStyle={{ flex: 0 }}>
             {/* TITLE OF SCREEN */}
             <View style={styles.titleContainer}>
               <View style={styles.titleBarLarge}>

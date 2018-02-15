@@ -57,24 +57,24 @@ class ProfileScreen extends NavigatorComponent {
         i18n.t('testingMode.changeActiveAlert.title', {
           onOff: this.props.testingModeActive ?
             i18n.t('enums.onOff.on') :
-            i18n.t('enums.onOff.off')
-        })
+            i18n.t('enums.onOff.off'),
+        }),
       );
     }
   }
 
   render() {
     return (
-	    <View style={styles.bodyContainer}>
-		    {/* TITLE OF SCREEN */}
-		    <View style={styles.titleContainer}>
-              <View style={styles.titleBarLarge}>
-                  <Text style={styles.largeTitle}>{i18n.t('screens.profile.title')}</Text>
-              </View>
-            </View>
-		    {this._buildHeader()}
+      <View style={styles.bodyContainer}>
+        {/* TITLE OF SCREEN */}
+        <View style={styles.titleContainer}>
+          <View style={styles.titleBarLarge}>
+            <Text style={styles.largeTitle}>{i18n.t('screens.profile.title')}</Text>
+          </View>
+        </View>
+        {this._buildHeader()}
 
-            {/*   Future use:
+        {/*   Future use:
         <ScrollView>
           this._buildHolonsView()
           this._buildAchievemntsView()

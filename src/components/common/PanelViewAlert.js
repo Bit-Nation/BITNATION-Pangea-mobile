@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
-import { View, Text } from 'react-native'
-import { MediaQueryStyleSheet } from 'react-native-responsive'
-import PropTypes from 'prop-types'
-import _ from 'lodash'
+import React, { Component } from 'react';
+import { View, Text } from 'react-native';
+import { MediaQueryStyleSheet } from 'react-native-responsive';
+import PropTypes from 'prop-types';
+import _ from 'lodash';
 
-import GlobalStyles from '../../global/Styles'
-import i18n from "../../global/i18n";
+import GlobalStyles from '../../global/Styles';
+import i18n from '../../global/i18n';
 
 /**
  * @desc Component that renders an alert panel view for Nations Status
@@ -13,8 +13,8 @@ import i18n from "../../global/i18n";
  */
 export default class PanelViewAlert extends Component {
 
-  render () {
-    const {style} = this.props
+  render() {
+    const { style } = this.props;
 
     return (
       <View style={style}>
@@ -25,7 +25,7 @@ export default class PanelViewAlert extends Component {
           {' ' + this.props.status}
         </Text>
       </View>
-    )
+    );
   }
 
 }
@@ -33,11 +33,11 @@ export default class PanelViewAlert extends Component {
 
 const styles = MediaQueryStyleSheet.create({
   ...GlobalStyles,
-})
+});
 
 PanelViewAlert.defaultProps = {
-  style : styles.panelViewAlert,
-}
+  style: styles.panelViewAlert,
+};
 
 PanelViewAlert.PropTypes = {
   /**
@@ -45,4 +45,4 @@ PanelViewAlert.PropTypes = {
    * @type string
    */
   status: PropTypes.string,
-}
+};

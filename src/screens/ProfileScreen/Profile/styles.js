@@ -33,17 +33,17 @@ const styles = MediaQueryStyleSheet.create({
     resizeMode: 'contain',
   },
 
-   nameText: {
-	   ...GlobalStyles.title1,
+  nameText: {
+    ...GlobalStyles.title1,
   },
 
   infoText: {
-      ...GlobalStyles.body,
+    ...GlobalStyles.body,
   },
 
   ethAddress: {
-      ...GlobalStyles.footnote,
-  }
+    ...GlobalStyles.footnote,
+  },
 });
 
 export default styles;

@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
-import { View, Text, Image } from 'react-native'
-import { MediaQueryStyleSheet } from 'react-native-responsive'
-import PropTypes from 'prop-types'
-import _ from 'lodash'
+import React, { Component } from 'react';
+import { View, Text, Image } from 'react-native';
+import { MediaQueryStyleSheet } from 'react-native-responsive';
+import PropTypes from 'prop-types';
+import _ from 'lodash';
 
-import GlobalStyles from '../../global/Styles'
-import i18n from "../../global/i18n";
-import AssetsImages from "../../global/AssetsImages";
+import GlobalStyles from '../../global/Styles';
+import i18n from '../../global/i18n';
+import AssetsImages from '../../global/AssetsImages';
 
 /**
  * @desc Component that renders the panel indicating the user is Citizen of a Nation
@@ -14,8 +14,8 @@ import AssetsImages from "../../global/AssetsImages";
  */
 export default class PanelViewCitizen extends Component {
 
-  render () {
-    const {style} = this.props
+  render() {
+    const { style } = this.props;
 
     return (
       <View style={style}>
@@ -24,7 +24,7 @@ export default class PanelViewCitizen extends Component {
         </Text>
         <Image source={AssetsImages.userCitizenIcon} style={styles.panelViewCitizenIcon}/>
       </View>
-    )
+    );
   }
 
 }
@@ -32,11 +32,11 @@ export default class PanelViewCitizen extends Component {
 
 const styles = MediaQueryStyleSheet.create({
   ...GlobalStyles,
-})
+});
 
 PanelViewCitizen.defaultProps = {
-  style : styles.panelViewCitizen,
-}
+  style: styles.panelViewCitizen,
+};
 
 PanelViewCitizen.PropTypes = {
   /**
@@ -44,4 +44,4 @@ PanelViewCitizen.PropTypes = {
    * @type string
    */
   nationName: PropTypes.string,
-}
+};
