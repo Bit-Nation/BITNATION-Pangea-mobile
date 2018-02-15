@@ -233,7 +233,11 @@
       "profitInfo": "The nation is managed as a {{profit}} entity.",
       "ethereumAddress": "Ethereum Address:",
       "status": "Status: ",
-      "citizen": "You are citizen of "
+      "citizen": "You are citizen of ",
+      "statusDescription": {
+        "accepted": "Submitted to blockhain.",
+        "pending": "Submission in progress..."
+      }
     },
     "createNation": {
       "title": "Create A Nation",

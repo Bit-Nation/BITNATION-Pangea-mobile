@@ -18,7 +18,7 @@ import { screen } from '../../../global/Screens';
 import { openedNation } from '../../../reducers/nations';
 import PanelViewAlert from '../../../components/common/PanelViewAlert';
 import PanelViewCitizen from '../../../components/common/PanelViewCitizen';
-import { nationIsValid } from '../../../utils/nations';
+import { nationIsValid, resolveStatus } from '../../../utils/nations';
 
 class NationDetailsScreen extends Component {
 
@@ -29,6 +29,8 @@ class NationDetailsScreen extends Component {
       this.props.navigator.pop();
       return <BackgroundImage/>;
     }
+
+    const status = resolveStatus(nation);
 
     return (
       <View style={styles.screenContainer}>
@@ -44,8 +46,7 @@ class NationDetailsScreen extends Component {
           </View>
 
           <ScrollView>
-            {/*  TODO: Logic for NATION'S STATUS in STATUS PANEL  */}
-            {this._buildStatusPanel('Submitted to the blockchain.')}
+            {status !== 'draft' && this._buildStatusPanel(i18n.t(`screens.nationDetails.statusDescription.${status}`))}
 
             {this._buildAboutView(nation)}
             {/*  Will show Panel of Citizenship if nation.joinend == true */}
