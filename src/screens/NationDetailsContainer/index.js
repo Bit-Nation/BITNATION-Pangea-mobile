@@ -103,12 +103,13 @@ class NationDetailsContainer extends NavigatorComponent {
     this.performIfHasWallet(this.props.leaveNation);
   };
 
-  performIfHasWallet(fn) {
+  performIfHasWallet(functionToPerform) {
     if (_.isEmpty(this.props.wallets)) {
       this._showCreatePrivateKeyAlert();
-    } else {
-      fn();
+      return;
     }
+
+    functionToPerform();
   }
 
   render() {

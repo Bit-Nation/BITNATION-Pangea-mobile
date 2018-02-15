@@ -70,7 +70,7 @@ class CreateNation extends NavigatorComponent {
 
         <View style={styles.bodyContainer}>
           {/* SCROLLING PANELS FOR DATA ENTRY */}
-          <ScrollView style={{flex: 1}} contentContainerStyle={{flex: 0}}>
+          <ScrollView style={{ flex: 1 }} contentContainerStyle={{ flex: 0 }}>
             {/* TITLE OF SCREEN */}
             <View style={styles.titleContainer}>
               <View style={styles.titleBarLarge}>
@@ -82,6 +82,7 @@ class CreateNation extends NavigatorComponent {
             {/* CONSTRUCTIONS OF THE SECTIONS IN THE SCREEN */}
             {this._buildIntroPanel()}
             {this._buildCoreNationView()}
+            {this._buildLocationNationView()}
             {this._buildGovernmentalView()}
             {this._buildOptionsView()}
           </ScrollView>
@@ -113,16 +114,16 @@ class CreateNation extends NavigatorComponent {
     return (
       <View style={styles.fakeBottomBar}>
         <NationActionButton iconSource={AssetsImage.Actions.reset}
-                            title={i18n.t('screens.createNation.reset')} disable={!isModified}
+                            title={i18n.t('screens.nations.toolbar.reset')} disable={!isModified}
                             onPress={this.props.onResetNationCreation}/>
         <NationActionButton iconSource={AssetsImage.Actions.save}
-                            title={i18n.t('screens.createNation.save')} disable={!isModified}
+                            title={i18n.t('screens.nations.toolbar.save')} disable={!isModified}
                             onPress={this.props.onSaveNationDraft}/>
         <NationActionButton iconSource={AssetsImage.Actions.delete}
-                            title={i18n.t('screens.createNation.delete')} disable={!isSavedDraft}
+                            title={i18n.t('screens.nations.toolbar.delete')} disable={!isSavedDraft}
                             onPress={this.props.onDeleteNationDraft}/>
         <NationActionButton iconSource={AssetsImage.Actions.submit}
-                            title={i18n.t('screens.createNation.submit')} disable={!canSubmit}
+                            title={i18n.t('screens.nations.toolbar.submit')} disable={!canSubmit}
                             onPress={this.props.onSubmitNation}/>
       </View>
     );
@@ -159,26 +160,39 @@ class CreateNation extends NavigatorComponent {
             </View>
           </View>
         </View>
+      </PanelView>
+    );
+  }
+
+  _buildLocationNationView() {
+    return (
+      <PanelView
+        style={styles.panelViewTransparent}
+        title={i18n.t('common.location')} icon=' '>
         <View style={styles.formRow}>
           <View style={styles.fieldsContainer}>
             <MultiSelect
               single
               hideTags
               items={[{
-                id: true,
+                id: 'true',
                 name: i18n.t('enums.nation.locationType.virtual'),
               }, {
-                id: false,
+                id: 'false',
                 name: i18n.t('enums.nation.locationType.geographical'),
               }]}
               uniqueKey="id"
-              onSelectedItemsChange={(selectedItems) => this.setFieldValue('virtualNation', selectedItems[0])}
-              selectedItems={[this.props.editingNation.virtualNation]}
+              onSelectedItemsChange={(selectedItems) => this.setFieldValue('virtualNation', selectedItems[0] === 'true')}
+              selectedItems={
+                this.props.editingNation.virtualNation === null
+                  ? []
+                  : [this.props.editingNation.virtualNation ? 'true' : 'false']
+              }
               selectText={i18n.t('screens.createNation.prompt.location')}
               onChangeInput={(text) => console.log(text)}
               tagRemoveIconColor="#CCC"
               tagBorderColor="#CCC"
-              tagTextColor={Colors.textSecondary}
+              tagTextColor="#CCC"
               itemTextColor={Colors.textSecondary}
               displayKey="name"
               submitButtonColor={Colors.panelBoxColor}
@@ -186,15 +200,18 @@ class CreateNation extends NavigatorComponent {
             />
           </View>
         </View>
-        <View style={styles.formRow}>
-          <View style={styles.fieldsContainer}>
-            <SwitchLabeled
-              label={i18n.t('screens.createNation.prompt.represents')}
-              value={this.props.editingNation.exists}
-              onValueChange={(value) => this.setFieldValue('exists', value)}
-            />
+        {
+          this.props.editingNation.virtualNation === false &&
+          <View style={styles.formRow}>
+            <View style={styles.fieldsContainer}>
+              <SwitchLabeled
+                label={i18n.t('screens.createNation.prompt.represents')}
+                value={this.props.editingNation.exists}
+                onValueChange={(value) => this.setFieldValue('exists', value)}
+              />
+            </View>
           </View>
-        </View>
+        }
 
         <Text style={styles.footnote}>
           {i18n.t('screens.createNation.locationTypeHint')}

@@ -1,12 +1,12 @@
 import { StyleSheet } from 'react-native';
 
 import Colors from '../../../global/colors';
-import GlobalStyles from '../../../global/Styles'
+import GlobalStyles from '../../../global/Styles';
 
 export default styles = StyleSheet.create({
   ...GlobalStyles,
- 
-   codeText: {
+
+  codeText: {
     fontSize: 14,
     color: Colors.navButtonTextColor,
     textAlign: 'center',

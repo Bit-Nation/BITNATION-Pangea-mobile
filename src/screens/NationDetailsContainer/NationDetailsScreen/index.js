@@ -16,6 +16,8 @@ import i18n from '../../../global/i18n';
 import Colors from '../../../global/colors';
 import { screen } from '../../../global/Screens';
 import { openedNation } from '../../../reducers/nations';
+import PanelViewAlert from '../../../components/common/PanelViewAlert';
+import PanelViewCitizen from '../../../components/common/PanelViewCitizen';
 import { nationIsValid } from '../../../utils/nations';
 
 class NationDetailsScreen extends Component {
@@ -41,7 +43,12 @@ class NationDetailsScreen extends Component {
           </View>
 
           <ScrollView>
+            {/*  TODO: Logic for NATION'S STATUS in STATUS PANEL  */}
+            {this._buildStatusPanel('Submitted to the blockchain.')}
+
             {this._buildAboutView(nation)}
+            {/*  Will show Panel of Citizenship if nation.joinend == true */}
+            {this._buildCitizenPanel(nation)}
             {this._buildGovernmentalStructureView(nation)}
             {this._buildFactsView(nation)}
           </ScrollView>
@@ -58,11 +65,11 @@ class NationDetailsScreen extends Component {
       return (
         <View style={styles.fakeBottomBar}>
           <NationActionButton iconSource={AssetsImage.Actions.delete}
-                              title={i18n.t('screens.createNation.delete')}
+                              title={i18n.t('screens.nations.toolbar.delete')}
                               disable={false}
                               onPress={this.props.deleteDraft}/>
           <NationActionButton iconSource={AssetsImage.Actions.submit}
-                              title={i18n.t('screens.createNation.submit')}
+                              title={i18n.t('screens.nations.toolbar.submit')}
                               disable={!nationIsValid(nation)}
                               onPress={this.props.submitDraft}/>
         </View>
@@ -71,14 +78,14 @@ class NationDetailsScreen extends Component {
       return (
         <View style={styles.fakeBottomBar}>
           <NationActionButton iconSource={AssetsImage.Actions.chat}
-                              title={i18n.t('screens.nationDetails.chatButton')} disable={true}/>
+                              title={i18n.t('screens.nations.toolbar.chat')} disable={true}/>
           <NationActionButton iconSource={AssetsImage.Actions.map}
-                              title={i18n.t('screens.nationDetails.mapButton')} disable={true}/>
+                              title={i18n.t('screens.nations.toolbar.map')} disable={true}/>
           <NationActionButton iconSource={AssetsImage.Actions.join}
-                              title={i18n.t('screens.nationDetails.joinButton')} disable={joined || !created}
+                              title={i18n.t('screens.nations.toolbar.join')} disable={joined || !created}
                               onPress={this.props.joinNation}/>
           <NationActionButton iconSource={AssetsImage.Actions.leave}
-                              title={i18n.t('screens.nationDetails.leaveButton')} disable={!joined}
+                              title={i18n.t('screens.nations.toolbar.leave')} disable={!joined}
                               onPress={this.props.leaveNation}/>
         </View>
       );
@@ -160,6 +167,23 @@ class NationDetailsScreen extends Component {
     );
   }
 
+  _buildStatusPanel(status) {
+    return (
+      <PanelViewAlert
+        style={styles.panelViewAlert}
+        status={status}/>
+    );
+  }
+
+  _buildCitizenPanel(nation) {
+    if (nation.joined) {
+      return (
+        <PanelViewCitizen
+          style={styles.panelViewCitizen}
+          nationName={nation.nationName}/>
+      );
+    }
+  }
 }
 
 NationDetailsScreen.propTypes = {

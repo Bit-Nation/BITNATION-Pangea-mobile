@@ -35,7 +35,8 @@
     "updating": "Updating",
     "updateFailed": "Update failed",
     "ethereum": "Ethereum",
-    "continue": "Continue"
+    "continue": "Continue",
+    "location": "Location"
   },
   "enums": {
     "nation": {
@@ -81,6 +82,12 @@
         "privateOrCooperativeSecurity": "Private or Cooperative Security",
         "nationState": "Nation State Law Enforcement",
         "international": "International Law Enforcement"
+      },
+      "status": {
+        "draft": "Draft",
+        "rejected": "Rejected",
+        "pending": "Pending",
+        "accepted": "Accepted"
       }
     },
     "onOff": {
@@ -225,10 +232,8 @@
       "serviceUsageInfo": "Non-citizens {{allowance}} use national services.",
       "profitInfo": "The nation is managed as a {{profit}} entity.",
       "ethereumAddress": "Ethereum Address:",
-      "chatButton": "$t(common.chat)",
-      "mapButton": "$t(common.map)",
-      "joinButton": "$t(common.join)",
-      "leaveButton": "$t(common.leave)"
+      "status": "Status: ",
+      "citizen": "You are citizen of "
     },
     "createNation": {
       "title": "Create A Nation",
@@ -236,7 +241,7 @@
       "prompt": {
         "name": "Nation name",
         "description": "Short description",
-        "location": "Nation location",
+        "location": "Nation location type...",
         "represents": "Nation represents an existing Earth country",
         "legalCode": "Legal Code...",
         "lawEnforcementMechanism": "Law Enforcement Mechanism...",
@@ -248,11 +253,7 @@
       },
       "locationTypeHint": "Virtual nations exist only in Pangea. Geographic nations are on Earth.",
       "cancelButton": "$t(common.cancel)",
-      "doneButton": "$t(common.done)",
-      "reset": "Reset",
-      "submit": "Submit",
-      "save": "Save",
-      "delete": "Delete"
+      "doneButton": "$t(common.done)"
     },
     "wallet": {
       "title": "$t(common.wallet)",

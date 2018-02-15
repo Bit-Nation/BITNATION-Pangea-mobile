@@ -1,10 +1,10 @@
-import { MediaQueryStyleSheet } from 'react-native-responsive'
-import Colors from '../../../global/colors'
-import GlobalStyles from '../../../global/Styles'
+import { MediaQueryStyleSheet } from 'react-native-responsive';
+import Colors from '../../../global/colors';
+import GlobalStyles from '../../../global/Styles';
 
 const styles = MediaQueryStyleSheet.create({
-	...GlobalStyles,
-	
-})
+  ...GlobalStyles,
 
-export default styles
+});
+
+export default styles;

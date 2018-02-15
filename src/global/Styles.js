@@ -1,15 +1,6 @@
-/*
-========================================
-
-	GLOBAL STYLES
-
-========================================
- */
-
-
 import { MediaQueryStyleSheet } from 'react-native-responsive';
 import Colors from './colors';
-import { fontSizeNormalizer, normalWidthMargin } from '../utils/normalizer';
+import { fontSizeNormalizer, normalWidthMargin, isiPhoneXStatusBar, isiPhoneXTabBar } from '../utils/normalizer';
 
 // ========================================
 // DEFAULT TEXT STYLES
@@ -34,7 +25,6 @@ const styles = {
   noflex: {
     flex: 0,
   },
-
 
   // General screen container for ALL elements
   // Derived from Apple Human Interface Guidelines
@@ -90,9 +80,6 @@ const styles = {
   titleContainer: {
     marginLeft: 8,
     marginRight: 8,
-
-    // borderWidth:1,
-    // borderColor:'red',
   },
 
   // A block of text in the body area
@@ -101,7 +88,7 @@ const styles = {
   },
 
   statusBar: {
-    height: 20,
+    height: isiPhoneXStatusBar(20),
     backgroundColor: 'transparent',
   },
 
@@ -112,7 +99,7 @@ const styles = {
 
   // Navigation area that shows a normal ("largeTitle" style) title
   navigationBar: {
-    marginTop: 20, // force below the status bar !!! THIS IS WRONG
+    marginTop: isiPhoneXStatusBar(20), // force below the status bar !!! THIS IS WRONG
     marginLeft: 8,
     marginRight: 8,
     height: 44,
@@ -356,6 +343,56 @@ const styles = {
     height: 30,
   },
 
+  //Panel used for Alert about the Status of the Nation in Detail Screen
+  panelViewAlert: {
+    flexDirection: 'row',
+    borderRadius: 8,
+    backgroundColor: Colors.panelViewAlert,
+    marginTop: 4,
+    marginBottom: 4,
+    marginLeft: 0,
+    marginRight: 0,
+    overflow: 'hidden',
+    // INDENTS:
+    paddingLeft: 10,
+    padding: fontSizeNormalizer(5),
+  },
+
+  //Label in panel used for Alert about the Status of the Nation in Detail Screen
+  panelAlertBold: {
+    ...defaultTextStyles.body,
+    color: Colors.BitnationHighlightColor,
+    fontSize: 13,
+    fontWeight: 'bold',
+  },
+
+  //Status string in panel used for Alert about the Status of the Nation in Detail Screen
+  panelAlertStatus: {
+    ...defaultTextStyles.body,
+    color: Colors.BitnationHighlightColor,
+    fontSize: 13,
+  },
+
+  //Panel used for showing the citizenship of a User in Detail Screen
+  panelViewCitizen: {
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    borderRadius: 8,
+    backgroundColor: Colors.panelView,
+    marginTop: 4,
+    marginBottom: 4,
+    marginLeft: 0,
+    marginRight: 0,
+    overflow: 'hidden',
+    // INDENTS:
+    paddingLeft: 10,
+    padding: fontSizeNormalizer(7),
+  },
+
+  panelViewCitizenIcon: {
+    width: 25,
+    height: 25,
+  },
 
   // ========================================
   // Forms
@@ -607,15 +644,12 @@ const styles = {
   // Styles for the custom Tool Bar replacing the Tab Bar
   fakeBottomBar: {
     paddingTop: 5,
-    height: 55,
-    backgroundColor: Colors.LightBlue,
+    height: isiPhoneXTabBar(55),
+    backgroundColor: Colors.BitnationBackgroundColor,
     flexDirection: 'row',
     alignItems: 'stretch',
     justifyContent: 'space-around',
   },
-
-  // ========================================
-  // Basic Text Styles, e.g. components/common/Text.js
 
   currencyLarge: {
     ...defaultTextStyles.largeTitle,

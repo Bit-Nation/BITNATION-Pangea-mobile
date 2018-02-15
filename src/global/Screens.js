@@ -97,7 +97,7 @@ const baseKeyScreen = {
 /*
   label : this text string appears in the navigation bar at the bottom of the screen
   icon  : icon for navigation bar
-  title : ???
+  title : title in navigation bar
  */
 
 const Screens = {
