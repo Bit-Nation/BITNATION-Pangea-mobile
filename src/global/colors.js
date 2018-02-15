@@ -6,11 +6,23 @@ import { Platform } from 'react-native';
 
 // ========================================
 // BASE COLORS
-const BitnationColor = '#4A90E2';         	/* rgb(74, 144, 226)  */
-const BitnationDarkColor = '#1B395C';    	/* rgb(27, 57, 92) 	  */
-const BitnationLightColor = '#72A4DE';   	/* rgb(114, 164, 222) */
-const BitnationVeryLightColor = '#BCDCFF'; 	/* rgb(188, 220, 255) */
 
+// Grayish
+const BitnationColor = '#4A90E2';         /* rgb(74, 144, 226) */
+const BitnationDarkColor = "#1B395C";    /* rgb(27, 57, 92) */
+const BitnationLightColor = "#C0C0C0";   /* rgb(114, 164, 222) */
+const BitnationVeryLightColor = "#FFFFFF"; /* rgb(188, 220, 255) */
+const BitnationBackgroundColor = '#3e9eff'; /* rgb(62, 158, 255) */
+
+// Highlight Color
+const BitnationHighlightColor = '#F5A623'; /* rgb(245, 166, 35) */
+
+// Blue Color
+//const BitnationColor = '#4A90E2';         /* rgb(74, 144, 226) */
+//const BitnationDarkColor = "#1B395C";    /* rgb(27, 57, 92) */
+//const BitnationLightColor = "#72A4DE";   /* rgb(114, 164, 222) */
+//const BitnationVeryLightColor = "#BCDCFF"; /* rgb(188, 220, 255) */
+//const BitnationBackgroundColor = '#3e9eff'; /* rgb(62, 158, 255) */
 
 // ========================================
 // FUNCTIONS
@@ -73,25 +85,47 @@ export default {
 	BitnationDarkColor: BitnationDarkColor,
 	BitnationLightColor: BitnationLightColor,
 	BitnationVeryLightColor: BitnationVeryLightColor,
+	BitnationBackgroundColor: BitnationBackgroundColor,
+	BitnationHighlightColor: BitnationHighlightColor,
 	
-	// Custom Bitnation Colors
+	// Colors for common Text Styles
+	// e.g. very large titles on screens
+	titleColor: BitnationHighlightColor,
+	
+	
+	// Tab Bar (Navigation Bar for the app)
+	tabBarBackgroundColor: BitnationBackgroundColor,
+	tabBarSelectedLabelColor: 'white',
+	tabBarSelectedButtonColor: 'white',
+	tabBarLabelColor: '#a6c5e5',
+	tabBarButtonColor: '#a6c5e5',
+	
+	// Toolbars (e.g. Create Nation)
+	toolBarBackgroundColor: BitnationBackgroundColor,
+	
+	// Segmented Control
+	activeTabStyle: BitnationBackgroundColor,
+	tabTextStyle: BitnationBackgroundColor,
+	
+	// Panel background color
+	panelView: 'rgba(255,255,255,0.2)',
+	
+	// Other Custom Bitnation Colors
 	BlueGrey: '#607D8B',
 	BlueMed: '#72A4DE',
-	
 	BlueGrayMed: '#6D6D72',
 	
-	titleColor: '#4A90E2',
+	// FORMS
 	buttonColor: '#1C497E',
 	disabledButtonColor: '#37393C',
 	disabledButtonTitleColor: '#5F6D7D',
-	borderColor: '#275284',
+	// border of a text field
+	borderColor: shadeOf(BitnationLightColor, 0.4),
 	navigationButtonColor: Platform.OS === 'ios' ? '#007AFF' : '#FFFFFF',
-	
-	// FORMS
-	placeholderTextColor: 'rgba(255,255,255,0.4)',
+
+	placeholderTextColor: shadeOf(BitnationVeryLightColor, 0.4),
 	
 	textColor: '#444A64',
-	textPlaceholder: '#9B9B9B',
 	textPrimary: '#4A4A4A',
 	textSecondary: '#9094A3',
 	textLight: '#DADCE5',
@@ -107,17 +141,29 @@ export default {
 	grey_200: '#F1F2F6',
 	grey_100: '#F9F9FC',
 	
+	// Section Lists
+	// Separator (title rows, e.g. "A")
+	// Separator (thin line between rows)
+	// 20% white (v0.3.2)
+	sectionListSeparator: 'rgba(255,255,255,0.2)',
+	sectionListHeaderText: 'white',
+	sectionListHeaderContainer: '#3a3a3a',//'rgba(255,255,255,0.15)',
+	sectionListItemContainerBkgd: 'transparent',
+	// In a list of nations, default color for the far-right text near the ">"
+	listItemTextState: 'gray',
+	
 	// Document Colors
 	panelBoxColor: '#1b395c',
-	instuctionTextColor: '#72a4de',
+	instructionTextColor: '#72a4de',
 	navButtonTextColor: '#007aff',
 	disabledBoxColor: '#bcdcff',
 	disabledTextColor: '#275284',
 	actionButtonColor: '#1c497e',
 	
 	
-	// Why do we have this?
-	white: '#FFFFFF',
+	// Why do we have this? So we can redefine white to something just a little darker
+	// because pure white can be hard...sometimes better to use 98% white.
+	white: 'white',
 	
 	// Why do we have these definitions?
 	Red: '#FF5252',

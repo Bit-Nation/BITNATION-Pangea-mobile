@@ -48,6 +48,14 @@ describe('PanelView tests', () => {
       expect(wrapper).toMatchSnapshot();
     });
 
+    test('With children and custom container style', () => {
+      const wrapper = shallow(
+        <PanelView title='Test panel title' childrenContainerStyle={{ flex: 1 }}>
+          <Text>Test children</Text>
+        </PanelView>);
+      expect(wrapper).toMatchSnapshot();
+    });
+
   });
 
   describe('Behaviour', () => {

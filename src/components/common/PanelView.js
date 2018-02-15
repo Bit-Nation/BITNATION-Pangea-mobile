@@ -14,7 +14,7 @@ import Button from './Button';
 export default class PanelView extends Component {
 
   render() {
-    const { style, renderBottom, renderAdditionalInfo, children } = this.props;
+    const { style, childrenContainerStyle, renderBottom, renderAdditionalInfo, children } = this.props;
 
     return (
       <View style={[styles.panelView, style]}>
@@ -27,7 +27,7 @@ export default class PanelView extends Component {
         }
 
         {/* MAIN DISPLAY AREA */}
-        <View style={styles.panelTextContainer}>
+        <View style={[styles.panelTextContainer, childrenContainerStyle]}>
           {children}
         </View>
 
@@ -120,6 +120,11 @@ PanelView.PropTypes = {
    * @type function
    */
   renderBottom: PropTypes.function,
+  /**
+   * @desc Style object to be passed into children container
+   * @type object
+   */
+  childrenContainerStyle: PropTypes.object,
 };
 
 const styles = MediaQueryStyleSheet.create({

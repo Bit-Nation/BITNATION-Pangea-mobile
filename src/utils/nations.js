@@ -7,6 +7,8 @@ export function resolveNation(nations, id) {
 }
 
 type nationStatus = 'draft' | 'pending' | 'rejected' | 'accepted'
+
+// @todo Use Pangea libs implementation.
 export function resolveStatus(nation): nationStatus {
   if (nation.created) {
     return 'accepted';

@@ -1,4 +1,11 @@
 {
+  "tabbar": {
+    "nations": "NATIONS",
+    "chat": "CHAT",
+    "dashboard": "DASHBOARD",
+    "wallet": "WALLET",
+    "profile": "PROFILE"
+  },
   "common": {
     "send": "Send",
     "receive": "Receive",
@@ -168,29 +175,53 @@
       }
     },
     "dashboard": {
-      "tabTitle": "Dashboard",
+      "tabTitle": "$t(tabbar.dashboard)",
+      "activityPanel": {
+        "title": "Activity"
+      },
       "walletPanel": {
         "title": "$t(common.wallet)",
         "empty": "Begin using Pangea by creating your wallet."
       },
+      "nationsPanel": {
+        "title": "$t(common.nations)",
+        "nationsCount": {
+          "prefix": "",
+          "main": "{{count}}",
+          "suffix": " in Pangea"
+        },
+        "newNations": "NEW NATIONS"
+      },
       "warningPanel": {
-        "title": "Warning",
-        "body": "Pangea is in an early development stage, use with caution and at your own risk."
+        "title": "Notice",
+        "body": "The smart contracts created by this app may be changed or upgraded in the near future.",
+        "button": "More"
       }
     },
     "chat": {
       "title": "$t(common.chat)",
-      "tabTitle": "$t(common.chat)"
+      "tabTitle": "$t(tabbar.chat)"
     },
     "nations": {
+      "toolbar": {
+        "chat": "CHAT",
+        "map": "MAP",
+        "join": "JOIN",
+        "submit": "SUBMIT",
+        "delete": "DELETE",
+        "reset": "RESET",
+        "save": "SAVE",
+        "leave": "LEAVE"
+      },
       "title": "$t(common.nations)",
-      "tabTitle": "$t(common.nations)",
+      "tabTitle": "$t(tabbar.nations)",
       "allNations": "All Nations",
       "myNations": "My Nations"
     },
     "nationDetails": {
       "title": "Nation",
       "aboutInfo": "About {{name}}",
+      "description": "Description",
       "locationInfo": "{{name}} is a {{locationType}} nation",
       "legalSystemInfo": "{{name}} uses {{code}} as its legal system.",
       "lawEnforcementInfo": "The laws are enforced with {{lawEnforcementMechanism}}.",
@@ -231,7 +262,7 @@
     },
     "wallet": {
       "title": "$t(common.wallet)",
-      "tabTitle": "$t(common.wallet)",
+      "tabTitle": "$t(tabbar.wallet)",
       "empty": {
         "createWallet": "Create a Wallet",
         "restoreWallet": "Restore a Wallet",
@@ -248,8 +279,8 @@
       }
     },
     "profile": {
-      "title": "Profile & Settings",
-      "tabTitle": "Profile",
+      "title": "Profile",
+      "tabTitle": "$t(tabbar.profile)",
       "empty": {
         "createProfilePanel": {
           "title": "Become a world citizen.",
@@ -264,8 +295,6 @@
         "personalInformation": "Personal Information",
         "name": "Name",
         "location": "Location ($t(common.optional))",
-        "latitude": "Latitude ($t(common.optional))",
-        "longitude": "Longitude ($t(common.optional))",
         "editPhoto": "$t(common.edit)",
         "editPhotoActionSheet": {
           "title": "Edit your profile picture.",

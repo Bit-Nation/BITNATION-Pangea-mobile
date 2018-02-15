@@ -7,7 +7,7 @@ exports[`BodyParagraphs rendering With multiple paragraphs 1`] = `
   <View
     style={
       Object {
-        "paddingBottom": 15,
+        "paddingBottom": 16,
       }
     }
   >
@@ -17,7 +17,7 @@ exports[`BodyParagraphs rendering With multiple paragraphs 1`] = `
       ellipsizeMode="tail"
       style={
         Object {
-          "color": "#72A4DE",
+          "color": "#C0C0C0",
           "fontFamily": "Roboto",
           "fontSize": 17,
           "fontWeight": "normal",
@@ -32,7 +32,7 @@ exports[`BodyParagraphs rendering With multiple paragraphs 1`] = `
   <View
     style={
       Object {
-        "paddingBottom": 15,
+        "paddingBottom": 16,
       }
     }
   >
@@ -42,7 +42,7 @@ exports[`BodyParagraphs rendering With multiple paragraphs 1`] = `
       ellipsizeMode="tail"
       style={
         Object {
-          "color": "#72A4DE",
+          "color": "#C0C0C0",
           "fontFamily": "Roboto",
           "fontSize": 17,
           "fontWeight": "normal",
@@ -57,7 +57,7 @@ exports[`BodyParagraphs rendering With multiple paragraphs 1`] = `
   <View
     style={
       Object {
-        "paddingBottom": 15,
+        "paddingBottom": 16,
       }
     }
   >
@@ -67,7 +67,7 @@ exports[`BodyParagraphs rendering With multiple paragraphs 1`] = `
       ellipsizeMode="tail"
       style={
         Object {
-          "color": "#72A4DE",
+          "color": "#C0C0C0",
           "fontFamily": "Roboto",
           "fontSize": 17,
           "fontWeight": "normal",
@@ -82,7 +82,7 @@ exports[`BodyParagraphs rendering With multiple paragraphs 1`] = `
   <View
     style={
       Object {
-        "paddingBottom": 15,
+        "paddingBottom": 16,
       }
     }
   >
@@ -92,7 +92,7 @@ exports[`BodyParagraphs rendering With multiple paragraphs 1`] = `
       ellipsizeMode="tail"
       style={
         Object {
-          "color": "#72A4DE",
+          "color": "#C0C0C0",
           "fontFamily": "Roboto",
           "fontSize": 17,
           "fontWeight": "normal",
@@ -112,7 +112,7 @@ exports[`BodyParagraphs rendering With one paragraph 1`] = `
   <View
     style={
       Object {
-        "paddingBottom": 15,
+        "paddingBottom": 16,
       }
     }
   >
@@ -122,7 +122,7 @@ exports[`BodyParagraphs rendering With one paragraph 1`] = `
       ellipsizeMode="tail"
       style={
         Object {
-          "color": "#72A4DE",
+          "color": "#C0C0C0",
           "fontFamily": "Roboto",
           "fontSize": 17,
           "fontWeight": "normal",

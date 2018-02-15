@@ -26,12 +26,17 @@ class EmptyProfileScreen extends Component {
 				<FakeNavigationBar  />
 				<View style={styles.bodyContainer}>
 					
+					{/* TITLE OF SCREEN */}
+					<View style={styles.titleBarLarge}>
+						<Text style={styles.largeTitle}>{i18n.t('screens.profile.title')}</Text>
+					</View>
+					
 					<PanelView
 						title={i18n.t('screens.profile.empty.createProfilePanel.title')}
 						body={i18n.t('screens.profile.empty.createProfilePanel.text')}
 						buttonTitle={i18n.t('screens.profile.empty.createProfilePanel.button')}
 						onButtonClick={this.props.onCreateUserProfile}
-						style={styles.messageView}
+						style={styles.panelViewTransparent}
 					/>
 					
 					<View style={styles.bottomSpacer}>

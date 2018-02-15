@@ -38,11 +38,16 @@ ShallowWrapper {
           accessible={true}
           allowFontScaling={true}
           ellipsizeMode="tail"
+          numberOfLines={1}
           style={
             Object {
               "color": "white",
               "flex": 1,
-              "marginLeft": 15,
+              "fontFamily": "Roboto",
+              "fontSize": 17,
+              "fontWeight": "normal",
+              "letterSpacing": 0,
+              "lineHeight": 22,
             }
           }
         >
@@ -55,14 +60,16 @@ ShallowWrapper {
           style={
             Object {
               "color": "gray",
-              "flex": 1,
+              "fontFamily": "Roboto",
+              "fontSize": 17,
+              "fontWeight": "normal",
+              "letterSpacing": 0,
+              "lineHeight": 22,
               "marginRight": 15,
               "textAlign": "right",
             }
           }
-        >
-          Draft
-        </Text>
+        />
         <Image
           source={1}
           style={
@@ -76,11 +83,12 @@ ShallowWrapper {
       </TouchableOpacity>,
       "style": Object {
         "alignItems": "center",
-        "backgroundColor": "rgba(255,255,255,0.1)",
+        "backgroundColor": "transparent",
         "flex": 1,
         "flexDirection": "row",
         "height": 44,
         "justifyContent": "center",
+        "marginLeft": 15,
       },
     },
     "ref": null,
@@ -95,11 +103,16 @@ ShallowWrapper {
             accessible={true}
             allowFontScaling={true}
             ellipsizeMode="tail"
+            numberOfLines={1}
             style={
               Object {
                 "color": "white",
                 "flex": 1,
-                "marginLeft": 15,
+                "fontFamily": "Roboto",
+                "fontSize": 17,
+                "fontWeight": "normal",
+                "letterSpacing": 0,
+                "lineHeight": 22,
               }
             }
           >
@@ -112,14 +125,16 @@ ShallowWrapper {
             style={
               Object {
                 "color": "gray",
-                "flex": 1,
+                "fontFamily": "Roboto",
+                "fontSize": 17,
+                "fontWeight": "normal",
+                "letterSpacing": 0,
+                "lineHeight": 22,
                 "marginRight": 15,
                 "textAlign": "right",
               }
             }
-          >
-            Draft
-          </Text>,
+          />,
           <Image
             source={1}
             style={
@@ -151,10 +166,15 @@ ShallowWrapper {
             "allowFontScaling": true,
             "children": "Test list item",
             "ellipsizeMode": "tail",
+            "numberOfLines": 1,
             "style": Object {
               "color": "white",
               "flex": 1,
-              "marginLeft": 15,
+              "fontFamily": "Roboto",
+              "fontSize": 17,
+              "fontWeight": "normal",
+              "letterSpacing": 0,
+              "lineHeight": 22,
             },
           },
           "ref": null,
@@ -168,17 +188,21 @@ ShallowWrapper {
           "props": Object {
             "accessible": true,
             "allowFontScaling": true,
-            "children": "Draft",
+            "children": undefined,
             "ellipsizeMode": "tail",
             "style": Object {
               "color": "gray",
-              "flex": 1,
+              "fontFamily": "Roboto",
+              "fontSize": 17,
+              "fontWeight": "normal",
+              "letterSpacing": 0,
+              "lineHeight": 22,
               "marginRight": 15,
               "textAlign": "right",
             },
           },
           "ref": null,
-          "rendered": "Draft",
+          "rendered": null,
           "type": [Function],
         },
         Object {
@@ -225,11 +249,16 @@ ShallowWrapper {
             accessible={true}
             allowFontScaling={true}
             ellipsizeMode="tail"
+            numberOfLines={1}
             style={
               Object {
                 "color": "white",
                 "flex": 1,
-                "marginLeft": 15,
+                "fontFamily": "Roboto",
+                "fontSize": 17,
+                "fontWeight": "normal",
+                "letterSpacing": 0,
+                "lineHeight": 22,
               }
             }
           >
@@ -242,14 +271,16 @@ ShallowWrapper {
             style={
               Object {
                 "color": "gray",
-                "flex": 1,
+                "fontFamily": "Roboto",
+                "fontSize": 17,
+                "fontWeight": "normal",
+                "letterSpacing": 0,
+                "lineHeight": 22,
                 "marginRight": 15,
                 "textAlign": "right",
               }
             }
-          >
-            Draft
-          </Text>
+          />
           <Image
             source={1}
             style={
@@ -263,11 +294,12 @@ ShallowWrapper {
         </TouchableOpacity>,
         "style": Object {
           "alignItems": "center",
-          "backgroundColor": "rgba(255,255,255,0.1)",
+          "backgroundColor": "transparent",
           "flex": 1,
           "flexDirection": "row",
           "height": 44,
           "justifyContent": "center",
+          "marginLeft": 15,
         },
       },
       "ref": null,
@@ -282,11 +314,16 @@ ShallowWrapper {
               accessible={true}
               allowFontScaling={true}
               ellipsizeMode="tail"
+              numberOfLines={1}
               style={
                 Object {
                   "color": "white",
                   "flex": 1,
-                  "marginLeft": 15,
+                  "fontFamily": "Roboto",
+                  "fontSize": 17,
+                  "fontWeight": "normal",
+                  "letterSpacing": 0,
+                  "lineHeight": 22,
                 }
               }
             >
@@ -299,14 +336,16 @@ ShallowWrapper {
               style={
                 Object {
                   "color": "gray",
-                  "flex": 1,
+                  "fontFamily": "Roboto",
+                  "fontSize": 17,
+                  "fontWeight": "normal",
+                  "letterSpacing": 0,
+                  "lineHeight": 22,
                   "marginRight": 15,
                   "textAlign": "right",
                 }
               }
-            >
-              Draft
-            </Text>,
+            />,
             <Image
               source={1}
               style={
@@ -338,10 +377,15 @@ ShallowWrapper {
               "allowFontScaling": true,
               "children": "Test list item",
               "ellipsizeMode": "tail",
+              "numberOfLines": 1,
               "style": Object {
                 "color": "white",
                 "flex": 1,
-                "marginLeft": 15,
+                "fontFamily": "Roboto",
+                "fontSize": 17,
+                "fontWeight": "normal",
+                "letterSpacing": 0,
+                "lineHeight": 22,
               },
             },
             "ref": null,
@@ -355,17 +399,21 @@ ShallowWrapper {
             "props": Object {
               "accessible": true,
               "allowFontScaling": true,
-              "children": "Draft",
+              "children": undefined,
               "ellipsizeMode": "tail",
               "style": Object {
                 "color": "gray",
-                "flex": 1,
+                "fontFamily": "Roboto",
+                "fontSize": 17,
+                "fontWeight": "normal",
+                "letterSpacing": 0,
+                "lineHeight": 22,
                 "marginRight": 15,
                 "textAlign": "right",
               },
             },
             "ref": null,
-            "rendered": "Draft",
+            "rendered": null,
             "type": [Function],
           },
           Object {
@@ -437,11 +485,16 @@ ShallowWrapper {
           accessible={true}
           allowFontScaling={true}
           ellipsizeMode="tail"
+          numberOfLines={1}
           style={
             Object {
               "color": "white",
               "flex": 1,
-              "marginLeft": 15,
+              "fontFamily": "Roboto",
+              "fontSize": 17,
+              "fontWeight": "normal",
+              "letterSpacing": 0,
+              "lineHeight": 22,
             }
           }
         >
@@ -454,14 +507,16 @@ ShallowWrapper {
           style={
             Object {
               "color": "gray",
-              "flex": 1,
+              "fontFamily": "Roboto",
+              "fontSize": 17,
+              "fontWeight": "normal",
+              "letterSpacing": 0,
+              "lineHeight": 22,
               "marginRight": 15,
               "textAlign": "right",
             }
           }
-        >
-          Draft
-        </Text>
+        />
         <Image
           source={1}
           style={
@@ -475,11 +530,12 @@ ShallowWrapper {
       </TouchableOpacity>,
       "style": Object {
         "alignItems": "center",
-        "backgroundColor": "rgba(255,255,255,0.1)",
+        "backgroundColor": "transparent",
         "flex": 1,
         "flexDirection": "row",
         "height": 44,
         "justifyContent": "center",
+        "marginLeft": 15,
       },
     },
     "ref": null,
@@ -494,11 +550,16 @@ ShallowWrapper {
             accessible={true}
             allowFontScaling={true}
             ellipsizeMode="tail"
+            numberOfLines={1}
             style={
               Object {
                 "color": "white",
                 "flex": 1,
-                "marginLeft": 15,
+                "fontFamily": "Roboto",
+                "fontSize": 17,
+                "fontWeight": "normal",
+                "letterSpacing": 0,
+                "lineHeight": 22,
               }
             }
           >
@@ -511,14 +572,16 @@ ShallowWrapper {
             style={
               Object {
                 "color": "gray",
-                "flex": 1,
+                "fontFamily": "Roboto",
+                "fontSize": 17,
+                "fontWeight": "normal",
+                "letterSpacing": 0,
+                "lineHeight": 22,
                 "marginRight": 15,
                 "textAlign": "right",
               }
             }
-          >
-            Draft
-          </Text>,
+          />,
           <Image
             source={1}
             style={
@@ -550,10 +613,15 @@ ShallowWrapper {
             "allowFontScaling": true,
             "children": "Test list item",
             "ellipsizeMode": "tail",
+            "numberOfLines": 1,
             "style": Object {
               "color": "white",
               "flex": 1,
-              "marginLeft": 15,
+              "fontFamily": "Roboto",
+              "fontSize": 17,
+              "fontWeight": "normal",
+              "letterSpacing": 0,
+              "lineHeight": 22,
             },
           },
           "ref": null,
@@ -567,17 +635,21 @@ ShallowWrapper {
           "props": Object {
             "accessible": true,
             "allowFontScaling": true,
-            "children": "Draft",
+            "children": undefined,
             "ellipsizeMode": "tail",
             "style": Object {
               "color": "gray",
-              "flex": 1,
+              "fontFamily": "Roboto",
+              "fontSize": 17,
+              "fontWeight": "normal",
+              "letterSpacing": 0,
+              "lineHeight": 22,
               "marginRight": 15,
               "textAlign": "right",
             },
           },
           "ref": null,
-          "rendered": "Draft",
+          "rendered": null,
           "type": [Function],
         },
         Object {
@@ -624,11 +696,16 @@ ShallowWrapper {
             accessible={true}
             allowFontScaling={true}
             ellipsizeMode="tail"
+            numberOfLines={1}
             style={
               Object {
                 "color": "white",
                 "flex": 1,
-                "marginLeft": 15,
+                "fontFamily": "Roboto",
+                "fontSize": 17,
+                "fontWeight": "normal",
+                "letterSpacing": 0,
+                "lineHeight": 22,
               }
             }
           >
@@ -641,14 +718,16 @@ ShallowWrapper {
             style={
               Object {
                 "color": "gray",
-                "flex": 1,
+                "fontFamily": "Roboto",
+                "fontSize": 17,
+                "fontWeight": "normal",
+                "letterSpacing": 0,
+                "lineHeight": 22,
                 "marginRight": 15,
                 "textAlign": "right",
               }
             }
-          >
-            Draft
-          </Text>
+          />
           <Image
             source={1}
             style={
@@ -662,11 +741,12 @@ ShallowWrapper {
         </TouchableOpacity>,
         "style": Object {
           "alignItems": "center",
-          "backgroundColor": "rgba(255,255,255,0.1)",
+          "backgroundColor": "transparent",
           "flex": 1,
           "flexDirection": "row",
           "height": 44,
           "justifyContent": "center",
+          "marginLeft": 15,
         },
       },
       "ref": null,
@@ -681,11 +761,16 @@ ShallowWrapper {
               accessible={true}
               allowFontScaling={true}
               ellipsizeMode="tail"
+              numberOfLines={1}
               style={
                 Object {
                   "color": "white",
                   "flex": 1,
-                  "marginLeft": 15,
+                  "fontFamily": "Roboto",
+                  "fontSize": 17,
+                  "fontWeight": "normal",
+                  "letterSpacing": 0,
+                  "lineHeight": 22,
                 }
               }
             >
@@ -698,14 +783,16 @@ ShallowWrapper {
               style={
                 Object {
                   "color": "gray",
-                  "flex": 1,
+                  "fontFamily": "Roboto",
+                  "fontSize": 17,
+                  "fontWeight": "normal",
+                  "letterSpacing": 0,
+                  "lineHeight": 22,
                   "marginRight": 15,
                   "textAlign": "right",
                 }
               }
-            >
-              Draft
-            </Text>,
+            />,
             <Image
               source={1}
               style={
@@ -737,10 +824,15 @@ ShallowWrapper {
               "allowFontScaling": true,
               "children": "Test list item",
               "ellipsizeMode": "tail",
+              "numberOfLines": 1,
               "style": Object {
                 "color": "white",
                 "flex": 1,
-                "marginLeft": 15,
+                "fontFamily": "Roboto",
+                "fontSize": 17,
+                "fontWeight": "normal",
+                "letterSpacing": 0,
+                "lineHeight": 22,
               },
             },
             "ref": null,
@@ -754,17 +846,21 @@ ShallowWrapper {
             "props": Object {
               "accessible": true,
               "allowFontScaling": true,
-              "children": "Draft",
+              "children": undefined,
               "ellipsizeMode": "tail",
               "style": Object {
                 "color": "gray",
-                "flex": 1,
+                "fontFamily": "Roboto",
+                "fontSize": 17,
+                "fontWeight": "normal",
+                "letterSpacing": 0,
+                "lineHeight": 22,
                 "marginRight": 15,
                 "textAlign": "right",
               },
             },
             "ref": null,
-            "rendered": "Draft",
+            "rendered": null,
             "type": [Function],
           },
           Object {
