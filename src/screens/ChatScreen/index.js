@@ -28,12 +28,11 @@ import {
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styles from './styles';
-import { GiftedChat, Composer, InputToolbar } from 'react-native-gifted-chat';
+import { GiftedChat, Composer, InputToolbar, Bubble } from 'react-native-gifted-chat';
 import AssetsImages from '../../global/AssetsImages';
 
 import BackgroundImage from '../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../components/common/FakeNavigationBar';
-import i18n from '../../global/i18n'
 
 import elizabot from '../../../vendor/elizabot';
 
@@ -112,6 +111,9 @@ class ChatScreen extends React.Component {
           }
           renderInputToolbar={(props) =>
             <InputToolbar {...props} containerStyle={styles.inputToolbar}/>
+          }
+          renderBubble={(props) =>
+            <Bubble {...props} customTextStyle={ styles.customTextStyle } />
           }
         />
       </View>
