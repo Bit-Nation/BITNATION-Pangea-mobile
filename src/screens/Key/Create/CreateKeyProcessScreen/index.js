@@ -134,8 +134,7 @@ class CreateKeyProcessScreen extends KeyBaseScreen {
                 renderItem={this._renderText}
                 activeRow={this.isDone(this.state)
                   ? -1
-                  : this.state.activeRow %
-                  KEY_PAGE_ROW_COUNT}
+                  : this.state.activeRow % KEY_PAGE_ROW_COUNT}
                 disableInactiveRows
                 style={styles.gridView}
               />

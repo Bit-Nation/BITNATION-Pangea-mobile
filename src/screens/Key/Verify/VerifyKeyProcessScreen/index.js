@@ -176,8 +176,7 @@ class VerifyKeyProcessScreen extends KeyBaseScreen {
           <KeyboardAwareScrollView
             contentContainerStyle={styles.bodyContainer}
             enableAutoAutomaticScroll={false}
-            extraHeight={48.5 + 44 +
-            (Platform.OS === 'android' ? 22 : 0)}
+            extraHeight={48.5 + 44 + (Platform.OS === 'android' ? 22 : 0)}
             enableOnAndroid
             keyboardShouldPersistTaps='handled'
             ref={(scrollView) => this.scrollView = scrollView}>
@@ -203,8 +202,7 @@ class VerifyKeyProcessScreen extends KeyBaseScreen {
                 <Button title={i18n.t('screens.verifyKey.process.nextButton')}
                         onPress={this.onNextPressed}
                         style={styles.button}
-                        enabled={this.state.currentPage <
-                        KEY_PAGE_COUNT - 1}/>
+                        enabled={this.state.currentPage < KEY_PAGE_COUNT - 1}/>
               </View>
             </PanelView>
           </KeyboardAwareScrollView>

@@ -73,13 +73,6 @@ class ProfileScreen extends NavigatorComponent {
           </View>
         </View>
         {this._buildHeader()}
-
-        {/*   Future use:
-        <ScrollView>
-          this._buildHolonsView()
-          this._buildAchievemntsView()
-        </ScrollView>
-*/}
       </View>
     );
   }
@@ -97,22 +90,6 @@ class ProfileScreen extends NavigatorComponent {
         <Text style={styles.nameText}>{user.name.trim()}</Text>
         <Text style={styles.infoText}>{user.location.trim()}</Text>
         <Text style={styles.ethAddress}>{user.ethAddress}</Text>
-      </View>
-    );
-  }
-
-  _buildHolonsView() {
-    return (
-      <View style={styles.infoContainer}>
-        <Image style={styles.placeholder} source={AssetsImage.Placeholder.holons}/>
-      </View>
-    );
-  }
-
-  _buildAchievemntsView() {
-    return (
-      <View style={[styles.infoContainer, styles.achievementsContainer]}>
-        <Image style={styles.placeholder} source={AssetsImage.Placeholder.achievements}/>
       </View>
     );
   }

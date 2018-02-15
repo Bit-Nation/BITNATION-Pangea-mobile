@@ -156,64 +156,13 @@ class EditProfile extends NavigatorComponent {
             ActionSheet
             ref={(c) => {
               this.actionSheet = c;
-            }
-            }
+            }}
           />
 
         </View>
       </PanelView>
     );
   }
-
-  /*
-    _buildHeader() {
-      const { editingUser } = this.props;
-
-      const avatarSource = editingUser.avatar ?
-        { uri: `data:image/gif;base64,${editingUser.avatar}` } :
-        AssetsImage.Placeholder.avatar;
-
-      return (
-        <View style={[styles.row, styles.header]}>
-          <View style={styles.avatarContainer}>
-            <TouchableOpacity onPress={this._onEditAvatar}>
-              <View style={styles.avatarChangeContainer}>
-                <Image source={avatarSource} style={styles.avatar}/>
-                <Text style={styles.editText}>edit</Text>
-              </View>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.fieldsContainer}>
-
-            <View style={styles.row}>
-              <TextInput
-                value={this.props.editingUser.name}
-                onChangeText={(text) => this._onChange('name', text)}
-                style={styles.textInput}
-                placeholder='Name'
-                placeholderTextColor={Colors.placeholderTextColor}
-                keyboardType='default'
-              />
-            </View>
-
-            <View style={styles.row}>
-              <TextInput
-                value={this.props.editingUser.location}
-                onChangeText={(text) => this._onChange('location', text)}
-                style={styles.textInput}
-                placeholder='Location (Optional)'
-                placeholderTextColor={Colors.placeholderTextColor}
-                keyboardType='default'
-              />
-            </View>
-          </View>
-          <ActionSheet ref={(c) => {
-            this.actionSheet = c;
-          }}/>
-        </View>
-      );
-    }
-  */
 
   _onChange = (field, value) => {
     this.props.onUserChanged(field, value);
@@ -273,8 +222,6 @@ class EditProfile extends NavigatorComponent {
 
   _userIsValid(user) {
     return !_.isEmpty(user.name);
-    {/* Commented for Sprint 0.3.1 requiriments && !_.isEmpty(user.location); */
-    }
   }
 
   _saveShouldBeEnabled(props) {

@@ -36,9 +36,7 @@ class VerifyKeyInstructionScreen extends KeyBaseScreen {
                      buttonTitle={i18n.t('screens.verifyKey.startButton')}
                      onButtonClick={() => this.onNextButtonPressed()}
           >
-            <BodyParagraphs
-              paragraphs={i18n.t('screens.verifyKey.instructions',
-                { KEY_LENGTH })}/>
+            <BodyParagraphs paragraphs={i18n.t('screens.verifyKey.instructions', { KEY_LENGTH })}/>
           </PanelView>
         </View>
       </View>

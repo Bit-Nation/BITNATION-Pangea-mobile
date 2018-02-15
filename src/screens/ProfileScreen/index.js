@@ -61,8 +61,7 @@ class ProfileContainer extends Component {
   };
 
   _onUserFieldChanged = (field, value) => {
-    this.props.onChangeEditingUser(
-      Object.assign({}, this.props.editingUser, { [field]: value }));
+    this.props.onChangeEditingUser(Object.assign({}, this.props.editingUser, { [field]: value }));
   };
 
 }
