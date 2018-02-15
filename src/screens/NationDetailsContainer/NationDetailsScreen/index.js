@@ -26,6 +26,7 @@ class NationDetailsScreen extends Component {
     const nation = openedNation(this.props);
 
     if (!nation) {
+      this.props.navigator.pop();
       return <BackgroundImage/>;
     }
 
