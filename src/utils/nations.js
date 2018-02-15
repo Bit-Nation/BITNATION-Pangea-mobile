@@ -1,5 +1,3 @@
-//@flow
-
 import _ from 'lodash';
 
 export function resolveNation(nations, id) {
