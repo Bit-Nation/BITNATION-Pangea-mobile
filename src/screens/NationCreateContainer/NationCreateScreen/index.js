@@ -27,6 +27,7 @@ import styles from './styles';
 import i18n from '../../../global/i18n';
 import AssetsImage from '../../../global/AssetsImages';
 import { nationIsModified } from '../../../reducers/modifyNation';
+import { nationIsValid } from '../../../utils/nations';
 
 const DONE_BUTTON = 'DONE_BUTTON';
 
@@ -51,18 +52,6 @@ class CreateNation extends NavigatorComponent {
     if (id === 'cancel') {
       this.props.onCancelNationCreation();
     }
-  }
-
-  _nationIsValid(nation) {
-    if (_.isEmpty(nation.nationName)) return false;
-    if (_.isEmpty(nation.nationDescription)) return false;
-    if (nation.virtualNation === null || nation.virtualNation === undefined) return false;
-    if (_.isEmpty(nation.nationCode)) return false;
-    if (_.isEmpty(nation.lawEnforcementMechanism)) return false;
-    if (_.isEmpty(nation.decisionMakingProcess)) return false;
-    if (_.isEmpty(nation.governanceService)) return false;
-
-    return true;
   }
 
   setFieldValue(field, value) {
@@ -120,7 +109,7 @@ class CreateNation extends NavigatorComponent {
   _buildBottomBar() {
     const isModified = nationIsModified(this.props);
     const isSavedDraft = this.props.initialNation.id !== undefined;
-    const canSubmit = this._nationIsValid(this.props.editingNation);
+    const canSubmit = nationIsValid(this.props.editingNation);
 
     return (
       <View style={styles.fakeBottomBar}>
@@ -199,7 +188,7 @@ class CreateNation extends NavigatorComponent {
               onChangeInput={(text) => console.log(text)}
               tagRemoveIconColor="#CCC"
               tagBorderColor="#CCC"
-              tagTextColor={Colors.textSecondary}
+              tagTextColor="#CCC"
               itemTextColor={Colors.textSecondary}
               displayKey="name"
               submitButtonColor={Colors.panelBoxColor}

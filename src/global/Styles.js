@@ -1,15 +1,6 @@
-/*
-========================================
-
-	GLOBAL STYLES
-
-========================================
- */
-
-
 import { MediaQueryStyleSheet } from 'react-native-responsive';
 import Colors from './colors';
-import { normalizer, normalWidthMargin, isiPhoneXStatusBar, isiPhoneXTabBar } from '../utils/normalizer';
+import { fontSizeNormalizer, normalWidthMargin, isiPhoneXStatusBar, isiPhoneXTabBar } from '../utils/normalizer';
 
 // ========================================
 // DEFAULT TEXT STYLES
@@ -34,7 +25,6 @@ const styles = {
   noflex: {
     flex: 0,
   },
-
 
   // General screen container for ALL elements
   // Derived from Apple Human Interface Guidelines
@@ -82,7 +72,7 @@ const styles = {
 
   // Extra space for the top of a page of text, to distinguish from nav.
   bodyTopSpacer: {
-    height: normalizer(18),
+    height: fontSizeNormalizer(18),
   },
 
   // Contains a title for a screen, e.g. Nations or Wallet
@@ -90,9 +80,6 @@ const styles = {
   titleContainer: {
     marginLeft: 8,
     marginRight: 8,
-
-    // borderWidth:1,
-    // borderColor:'red',
   },
 
   // A block of text in the body area
@@ -139,14 +126,14 @@ const styles = {
   // The margins are set in the body container. If the body has no margins (bars that go edge to edge)
   // then use the style below.
   titleBarLarge: {
-    height: normalizer(52),
+    height: fontSizeNormalizer(52),
     alignItems: 'flex-start',
     // marginLeft: 8,
     // marginRight: 8,
   },
 
   titleBarLargeNationDetail: {
-    height: normalizer(92),
+    height: fontSizeNormalizer(92),
     alignItems: 'flex-start',
   },
 
@@ -205,15 +192,15 @@ const styles = {
     backgroundColor: Colors.panelView,
     overflow: 'hidden',
     // INDENTS
-    padding: normalizer(16),
+    padding: fontSizeNormalizer(16),
   },
 
   // Make an element inside a gridPanelView (e.g. style=listContainer) flush left/right by
   // removing the LR margin indents
   // Use on a View inside a gridPanelView.
   removeGridPanelMarginsLR: {
-    marginLeft: normalizer(-16),
-    marginRight: normalizer(-16),
+    marginLeft: fontSizeNormalizer(-16),
+    marginRight: fontSizeNormalizer(-16),
   },
 
   // ========================================
@@ -238,7 +225,7 @@ const styles = {
     // paddingTop: 4,
     // paddingBottom: 4,
 
-    padding: normalizer(16),
+    padding: fontSizeNormalizer(16),
 
     // borderWidth:5,
     // borderColor:'yellow',
@@ -368,7 +355,7 @@ const styles = {
     overflow: 'hidden',
     // INDENTS:
     paddingLeft: 10,
-    padding: normalizer(5),
+    padding: fontSizeNormalizer(5),
   },
 
   //Label in panel used for Alert about the Status of the Nation in Detail Screen
@@ -399,7 +386,7 @@ const styles = {
     overflow: 'hidden',
     // INDENTS:
     paddingLeft: 10,
-    padding: normalizer(7),
+    padding: fontSizeNormalizer(7),
   },
 
   panelViewCitizenIcon: {
@@ -664,24 +651,6 @@ const styles = {
     justifyContent: 'space-around',
   },
 
-  // ========================================
-  // Basic Text Styles, e.g. components/common/Text.js
-
-  messageTitle: {
-    fontSize: 22,
-    color: Colors.titleColor,
-    letterSpacing: 0,
-    lineHeight: 28,
-    textAlign: 'center',
-  },
-  messageText: {
-    fontSize: 17,
-    color: Colors.BitnationLightColor,
-    letterSpacing: -0.65,
-    lineHeight: 20.8,
-    textAlign: 'center',
-  },
-
   currencyLarge: {
     ...defaultTextStyles.largeTitle,
     fontFamily: 'Roboto',
@@ -691,7 +660,6 @@ const styles = {
     letterSpacing: 0,
     color: Colors.currency,
   },
-
 
   buttonTitle: {
     fontSize: 14,

@@ -1,4 +1,4 @@
-import { call, put, select, takeEvery } from 'redux-saga/effects';
+import { call, put, select, takeEvery, all } from 'redux-saga/effects';
 import { Alert } from 'react-native';
 
 import {
@@ -81,8 +81,10 @@ export function* leaveNation() {
   }
 }
 
-export default function* watchNatUpdate() {
-  yield takeEvery(START_NATIONS_FETCH, fetchNations);
-  yield takeEvery(REQUEST_JOIN_NATION, joinNation);
-  yield takeEvery(REQUEST_LEAVE_NATION, leaveNation);
+export default function* watchNationUpdate() {
+  yield all([
+    yield takeEvery(START_NATIONS_FETCH, fetchNations),
+    yield takeEvery(REQUEST_JOIN_NATION, joinNation),
+    yield takeEvery(REQUEST_LEAVE_NATION, leaveNation),
+  ]);
 }

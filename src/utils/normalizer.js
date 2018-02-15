@@ -1,3 +1,5 @@
+import { __DEV__ } from 'react-native';
+
 const React = require('react-native')
 const {
   Dimensions, Platform,
@@ -13,7 +15,7 @@ const deviceWidth = Dimensions.get('window').width;
  * @param size The Font Size
  * @returns {number} The new font size depending the current screen
  */
-export function normalizer (size) {
+export function fontSizeNormalizer (size) {
   if (disabledForDebugging && __DEV__) {
     return size;
   }
