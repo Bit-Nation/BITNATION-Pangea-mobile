@@ -22,6 +22,7 @@ class NationDetailsScreen extends Component {
 
   render() {
     const nation = openedNation(this.props);
+    console.log('nation opened: ', nation);
 
     if (!nation) {
       return <BackgroundImage/>;
@@ -38,7 +39,6 @@ class NationDetailsScreen extends Component {
             </Text>
             <Text
               style={styles.largeTitle}>{nation.nationName}</Text>
-            {console.log('joined nation: ', nation.joined)}
           </View>
         </View>
         <View style={styles.bodyContainer}>
