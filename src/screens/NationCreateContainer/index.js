@@ -30,7 +30,7 @@ class NationCreateContainer extends Component {
   }
 
   _cancelNationCreation = () => {
-    const isModified = !_.isEqual(this.props.editingNation, this.props.initialNation);
+    const isModified = nationIsModified(this.props);
 
     if (!isModified) {
       this.props.navigator.dismissModal();

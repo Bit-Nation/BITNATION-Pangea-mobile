@@ -13,7 +13,10 @@ import PanelView from '../../../components/common/PanelView';
 import DemoImage from '../../../components/common/DemoImage';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import i18n from '../../../global/i18n';
+import Colors from '../../../global/colors';
+import { screen } from '../../../global/Screens';
 import { openedNation } from '../../../reducers/nations';
+import { nationIsValid } from '../../../utils/nations';
 
 class NationDetailsScreen extends Component {
 
@@ -64,20 +67,37 @@ class NationDetailsScreen extends Component {
   }
 
   _buildTabBar(joined, created) {
-    return (
-      <View style={styles.fakeBottomBar}>
-        <NationActionButton iconSource={AssetsImage.Actions.chat}
-                            title={i18n.t('screens.nationDetails.chatButton')} disable={true}/>
-        <NationActionButton iconSource={AssetsImage.Actions.map}
-                            title={i18n.t('screens.nationDetails.mapButton')} disable={true}/>
-        <NationActionButton iconSource={AssetsImage.Actions.join}
-                            title={i18n.t('screens.nationDetails.joinButton')} disable={joined || !created}
-                            onPress={this.props.joinNation}/>
-        <NationActionButton iconSource={AssetsImage.Actions.leave}
-                            title={i18n.t('screens.nationDetails.leaveButton')} disable={!joined}
-                            onPress={this.props.leaveNation}/>
-      </View>
-    );
+    const nation = openedNation(this.props);
+
+    if (this.props.isDraft) {
+      return (
+        <View style={styles.fakeBottomBar}>
+          <NationActionButton iconSource={AssetsImage.Actions.chat}
+                              title={i18n.t('screens.createNation.delete')}
+                              disable={false}
+                              onPress={this.props.deleteDraft}/>
+          <NationActionButton iconSource={AssetsImage.Actions.map}
+                              title={i18n.t('screens.createNation.submit')}
+                              disable={!nationIsValid(nation)}
+                              onPress={this.props.submitDraft}/>
+        </View>
+      );
+    } else {
+      return (
+        <View style={styles.fakeBottomBar}>
+          <NationActionButton iconSource={AssetsImage.Actions.chat}
+                              title={i18n.t('screens.nationDetails.chatButton')} disable={true}/>
+          <NationActionButton iconSource={AssetsImage.Actions.map}
+                              title={i18n.t('screens.nationDetails.mapButton')} disable={true}/>
+          <NationActionButton iconSource={AssetsImage.Actions.join}
+                              title={i18n.t('screens.nationDetails.joinButton')} disable={joined || !created}
+                              onPress={this.props.joinNation}/>
+          <NationActionButton iconSource={AssetsImage.Actions.leave}
+                              title={i18n.t('screens.nationDetails.leaveButton')} disable={!joined}
+                              onPress={this.props.leaveNation}/>
+        </View>
+      );
+    }
   }
 
   // Useful Notes:
@@ -153,5 +173,12 @@ class NationDetailsScreen extends Component {
 
 }
 
+NationDetailsScreen.propTypes = {
+  isDraft: PropTypes.bool,
+  joinNation: PropTypes.func,
+  leaveNation: PropTypes.func,
+  deleteDraft: PropTypes.func,
+  submitDraft: PropTypes.func,
+};
 
 export default NationDetailsScreen;
