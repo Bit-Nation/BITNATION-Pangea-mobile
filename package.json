@@ -95,7 +95,8 @@
       "!**/styles.js",
       "**/**/**/**/*.{js,jsx}",
       "!**/node_modules/**",
-      "!**/coverage/**"
+      "!**/coverage/**",
+      "!**/vendor/**"
     ]
   },
   "react-native": {
