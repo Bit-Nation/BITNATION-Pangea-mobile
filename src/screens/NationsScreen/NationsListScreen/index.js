@@ -14,6 +14,7 @@ import NationListHeader from '../../../components/common/NationListHeader';
 import { ALL_NATIONS } from '../../../reducers/nations';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import i18n from '../../../global/i18n';
+import { resolveStatus } from '../../../utils/nations';
 
 class NationsListScreen extends Component {
 
@@ -22,7 +23,8 @@ class NationsListScreen extends Component {
       this.props.nations
       :
       _.filter(this.props.nations, (nation) => _.indexOf(this.props.myNations, nation.id) !== -1);
-    const groups = _.groupBy(nations, (nation) => nation.nationName.charAt(0));
+    const sortedNations = _.sortBy(nations, (nation) => nation.nationName);
+    const groups = _.groupBy(sortedNations, (nation) => nation.nationName.charAt(0));
     const sections = _.map(groups, (group, key) => {
       return {
         title: key,
@@ -34,6 +36,12 @@ class NationsListScreen extends Component {
       <View style={styles.nationsScreenContainer}>
         <BackgroundImage/>
         <FakeNavigationBar/>
+        {/* TITLE OF SCREEN */}
+        <View style={styles.titleContainer}>
+          <View style={styles.titleBarLarge}>
+            <Text style={styles.largeTitle}>{i18n.t('screens.nations.title')}</Text>
+          </View>
+        </View>
         <View style={styles.segmentedControlContainer}>
           <SegmentedControl
             values={[i18n.t('screens.nations.allNations'), i18n.t('screens.nations.myNations')]}
@@ -48,7 +56,10 @@ class NationsListScreen extends Component {
         <SectionList
           renderItem={(item) => {
             const nation = item.item;
-            return (<NationListItem text={nation.nationName} onPress={this.props.onSelectItem} id={nation.id}/>);
+            return (<NationListItem text={nation.nationName}
+                                    onPress={this.props.onSelectItem}
+                                    status={i18n.t(`enums.nation.status.${resolveStatus(nation)}`)}
+                                    id={nation.id}/>);
           }}
           keyExtractor={(item) => item.id}
           renderSectionHeader={({ section }) => <NationListHeader title={section.title}/>}

@@ -6,8 +6,8 @@ exports[`MultiSelect renders correctly 1`] = `
     Object {
       "flex": 1,
       "flexDirection": "column",
-      "marginBottom": 10,
-      "marginTop": 10,
+      "marginBottom": 1,
+      "marginTop": 1,
     }
   }
 >
@@ -17,8 +17,8 @@ exports[`MultiSelect renders correctly 1`] = `
         Object {
           "alignItems": "center",
           "flexDirection": "row",
-          "height": 40,
-          "marginBottom": 10,
+          "height": 43,
+          "marginBottom": 0,
         }
       }
     >
@@ -27,12 +27,12 @@ exports[`MultiSelect renders correctly 1`] = `
           Array [
             Object {
               "alignItems": "center",
-              "backgroundColor": "rgba(114,164,222,0.2)",
+              "backgroundColor": "transparent",
               "borderBottomWidth": 1,
-              "borderColor": "#275284",
+              "borderColor": "rgba(192,192,192,0.4)",
               "flex": 1,
               "flexDirection": "row",
-              "paddingLeft": 20,
+              "paddingLeft": 0,
               "paddingRight": 20,
             },
             Object {
@@ -73,9 +73,9 @@ exports[`MultiSelect renders correctly 1`] = `
             style={
               Array [
                 Object {
-                  "color": "#FFFFFF",
+                  "color": "white",
                   "flex": 1,
-                  "fontSize": 17,
+                  "fontSize": 15,
                 },
                 Object {},
               ]
@@ -94,8 +94,8 @@ exports[`MultiSelect renders correctly 1`] = `
                   "fontSize": 12,
                 },
                 Object {
-                  "color": "#FFFFFF",
-                  "fontSize": 30,
+                  "color": "white",
+                  "fontSize": 15,
                 },
                 Object {
                   "fontFamily": "Ionicons",
@@ -120,8 +120,8 @@ exports[`MultiSelect renders correctly with customized colors 1`] = `
     Object {
       "flex": 1,
       "flexDirection": "column",
-      "marginBottom": 10,
-      "marginTop": 10,
+      "marginBottom": 1,
+      "marginTop": 1,
     }
   }
 >
@@ -131,8 +131,8 @@ exports[`MultiSelect renders correctly with customized colors 1`] = `
         Object {
           "alignItems": "center",
           "flexDirection": "row",
-          "height": 40,
-          "marginBottom": 10,
+          "height": 43,
+          "marginBottom": 0,
         }
       }
     >
@@ -141,12 +141,12 @@ exports[`MultiSelect renders correctly with customized colors 1`] = `
           Array [
             Object {
               "alignItems": "center",
-              "backgroundColor": "rgba(114,164,222,0.2)",
+              "backgroundColor": "transparent",
               "borderBottomWidth": 1,
-              "borderColor": "#275284",
+              "borderColor": "rgba(192,192,192,0.4)",
               "flex": 1,
               "flexDirection": "row",
-              "paddingLeft": 20,
+              "paddingLeft": 0,
               "paddingRight": 20,
             },
             Object {
@@ -187,9 +187,9 @@ exports[`MultiSelect renders correctly with customized colors 1`] = `
             style={
               Array [
                 Object {
-                  "color": "#FFFFFF",
+                  "color": "white",
                   "flex": 1,
-                  "fontSize": 17,
+                  "fontSize": 15,
                 },
                 Object {},
               ]
@@ -208,8 +208,8 @@ exports[`MultiSelect renders correctly with customized colors 1`] = `
                   "fontSize": 12,
                 },
                 Object {
-                  "color": "#FFFFFF",
-                  "fontSize": 30,
+                  "color": "white",
+                  "fontSize": 15,
                 },
                 Object {
                   "fontFamily": "Ionicons",

@@ -1,11 +1,586 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`PanelView tests Rendering With children and custom container style 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <PanelView
+    childrenContainerStyle={
+      Object {
+        "flex": 1,
+      }
+    }
+    style={
+      Object {
+        "backgroundColor": "rgba(255,255,255,0.2)",
+        "borderRadius": 8,
+        "flexDirection": "column",
+        "justifyContent": "space-between",
+        "marginBottom": 4,
+        "marginLeft": 0,
+        "marginRight": 0,
+        "marginTop": 4,
+        "overflow": "hidden",
+        "padding": 16,
+      }
+    }
+    title="Test panel title"
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+    >
+      Test children
+    </Text>
+  </PanelView>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <View
+          style={
+            Object {
+              "backgroundColor": "transparent",
+              "flexDirection": "row",
+              "paddingBottom": 4,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "backgroundColor": "transparent",
+              }
+            }
+          >
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Object {
+                  "color": "white",
+                  "fontFamily": "Roboto",
+                  "fontSize": 22,
+                  "fontWeight": "bold",
+                  "letterSpacing": 0,
+                  "lineHeight": 28,
+                  "textAlign": "left",
+                }
+              }
+            >
+              Test panel title
+            </Text>
+          </View>
+        </View>,
+        <View
+          style={
+            Array [
+              Object {
+                "flex": 1,
+                "marginBottom": 4,
+              },
+              Object {
+                "flex": 1,
+              },
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+          >
+            Test children
+          </Text>
+        </View>,
+        undefined,
+        <View
+          style={Object {}}
+        />,
+        undefined,
+        <View
+          style={Object {}}
+        />,
+      ],
+      "style": Object {
+        "backgroundColor": "rgba(255,255,255,0.2)",
+        "borderRadius": 8,
+        "flexDirection": "column",
+        "justifyContent": "space-between",
+        "marginBottom": 4,
+        "marginLeft": 0,
+        "marginRight": 0,
+        "marginTop": 4,
+        "overflow": "hidden",
+        "padding": 16,
+      },
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <View
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                }
+              }
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={
+                  Object {
+                    "color": "white",
+                    "fontFamily": "Roboto",
+                    "fontSize": 22,
+                    "fontWeight": "bold",
+                    "letterSpacing": 0,
+                    "lineHeight": 28,
+                    "textAlign": "left",
+                  }
+                }
+              >
+                Test panel title
+              </Text>
+            </View>,
+            undefined,
+          ],
+          "style": Object {
+            "backgroundColor": "transparent",
+            "flexDirection": "row",
+            "paddingBottom": 4,
+          },
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={
+                  Object {
+                    "color": "white",
+                    "fontFamily": "Roboto",
+                    "fontSize": 22,
+                    "fontWeight": "bold",
+                    "letterSpacing": 0,
+                    "lineHeight": 28,
+                    "textAlign": "left",
+                  }
+                }
+              >
+                Test panel title
+              </Text>,
+              "style": Object {
+                "backgroundColor": "transparent",
+              },
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "accessible": true,
+                "allowFontScaling": true,
+                "children": "Test panel title",
+                "ellipsizeMode": "tail",
+                "style": Object {
+                  "color": "white",
+                  "fontFamily": "Roboto",
+                  "fontSize": 22,
+                  "fontWeight": "bold",
+                  "letterSpacing": 0,
+                  "lineHeight": 28,
+                  "textAlign": "left",
+                },
+              },
+              "ref": null,
+              "rendered": "Test panel title",
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          undefined,
+        ],
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+          >
+            Test children
+          </Text>,
+          "style": Array [
+            Object {
+              "flex": 1,
+              "marginBottom": 4,
+            },
+            Object {
+              "flex": 1,
+            },
+          ],
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "accessible": true,
+            "allowFontScaling": true,
+            "children": "Test children",
+            "ellipsizeMode": "tail",
+          },
+          "ref": null,
+          "rendered": "Test children",
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+      undefined,
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": undefined,
+          "style": Object {},
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      undefined,
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": undefined,
+          "style": Object {},
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <View
+            style={
+              Object {
+                "backgroundColor": "transparent",
+                "flexDirection": "row",
+                "paddingBottom": 4,
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                }
+              }
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={
+                  Object {
+                    "color": "white",
+                    "fontFamily": "Roboto",
+                    "fontSize": 22,
+                    "fontWeight": "bold",
+                    "letterSpacing": 0,
+                    "lineHeight": 28,
+                    "textAlign": "left",
+                  }
+                }
+              >
+                Test panel title
+              </Text>
+            </View>
+          </View>,
+          <View
+            style={
+              Array [
+                Object {
+                  "flex": 1,
+                  "marginBottom": 4,
+                },
+                Object {
+                  "flex": 1,
+                },
+              ]
+            }
+          >
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+            >
+              Test children
+            </Text>
+          </View>,
+          undefined,
+          <View
+            style={Object {}}
+          />,
+          undefined,
+          <View
+            style={Object {}}
+          />,
+        ],
+        "style": Object {
+          "backgroundColor": "rgba(255,255,255,0.2)",
+          "borderRadius": 8,
+          "flexDirection": "column",
+          "justifyContent": "space-between",
+          "marginBottom": 4,
+          "marginLeft": 0,
+          "marginRight": 0,
+          "marginTop": 4,
+          "overflow": "hidden",
+          "padding": 16,
+        },
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <View
+                style={
+                  Object {
+                    "backgroundColor": "transparent",
+                  }
+                }
+              >
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  ellipsizeMode="tail"
+                  style={
+                    Object {
+                      "color": "white",
+                      "fontFamily": "Roboto",
+                      "fontSize": 22,
+                      "fontWeight": "bold",
+                      "letterSpacing": 0,
+                      "lineHeight": 28,
+                      "textAlign": "left",
+                    }
+                  }
+                >
+                  Test panel title
+                </Text>
+              </View>,
+              undefined,
+            ],
+            "style": Object {
+              "backgroundColor": "transparent",
+              "flexDirection": "row",
+              "paddingBottom": 4,
+            },
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  ellipsizeMode="tail"
+                  style={
+                    Object {
+                      "color": "white",
+                      "fontFamily": "Roboto",
+                      "fontSize": 22,
+                      "fontWeight": "bold",
+                      "letterSpacing": 0,
+                      "lineHeight": 28,
+                      "textAlign": "left",
+                    }
+                  }
+                >
+                  Test panel title
+                </Text>,
+                "style": Object {
+                  "backgroundColor": "transparent",
+                },
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "accessible": true,
+                  "allowFontScaling": true,
+                  "children": "Test panel title",
+                  "ellipsizeMode": "tail",
+                  "style": Object {
+                    "color": "white",
+                    "fontFamily": "Roboto",
+                    "fontSize": 22,
+                    "fontWeight": "bold",
+                    "letterSpacing": 0,
+                    "lineHeight": 28,
+                    "textAlign": "left",
+                  },
+                },
+                "ref": null,
+                "rendered": "Test panel title",
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            undefined,
+          ],
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+            >
+              Test children
+            </Text>,
+            "style": Array [
+              Object {
+                "flex": 1,
+                "marginBottom": 4,
+              },
+              Object {
+                "flex": 1,
+              },
+            ],
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "accessible": true,
+              "allowFontScaling": true,
+              "children": "Test children",
+              "ellipsizeMode": "tail",
+            },
+            "ref": null,
+            "rendered": "Test children",
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+        undefined,
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": undefined,
+            "style": Object {},
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        undefined,
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": undefined,
+            "style": Object {},
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
 exports[`PanelView tests Rendering With title and body 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <PanelView
     body="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
+    style={
+      Object {
+        "backgroundColor": "rgba(255,255,255,0.2)",
+        "borderRadius": 8,
+        "flexDirection": "column",
+        "justifyContent": "space-between",
+        "marginBottom": 4,
+        "marginLeft": 0,
+        "marginRight": 0,
+        "marginTop": 4,
+        "overflow": "hidden",
+        "padding": 16,
+      }
+    }
     title="Test panel title"
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -25,9 +600,6 @@ ShallowWrapper {
           style={
             Object {
               "backgroundColor": "transparent",
-              "borderBottomColor": "#607D8B",
-              "borderBottomWidth": 1,
-              "borderStyle": "solid",
               "flexDirection": "row",
               "paddingBottom": 4,
             }
@@ -37,7 +609,6 @@ ShallowWrapper {
             style={
               Object {
                 "backgroundColor": "transparent",
-                "flex": 4,
               }
             }
           >
@@ -47,7 +618,7 @@ ShallowWrapper {
               ellipsizeMode="tail"
               style={
                 Object {
-                  "color": "#FFFFFF",
+                  "color": "white",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -63,15 +634,21 @@ ShallowWrapper {
         </View>,
         <View
           style={
-            Object {
-              "marginBottom": 8,
-            }
+            Array [
+              Object {
+                "flex": 1,
+                "marginBottom": 4,
+              },
+              undefined,
+            ]
           }
         />,
         <View
           style={
             Object {
+              "flexShrink": 1,
               "marginBottom": 8,
+              "overflow": "hidden",
             }
           }
         >
@@ -81,7 +658,7 @@ ShallowWrapper {
             ellipsizeMode="tail"
             style={
               Object {
-                "color": "#72A4DE",
+                "color": "#FFFFFF",
                 "fontFamily": "Roboto",
                 "fontSize": 17,
                 "fontWeight": "normal",
@@ -101,24 +678,18 @@ ShallowWrapper {
           style={Object {}}
         />,
       ],
-      "style": Array [
-        Object {
-          "backgroundColor": "rgba(74,144,226,0.2)",
-          "borderRadius": 8,
-          "flexDirection": "column",
-          "flexShrink": 1,
-          "justifyContent": "space-between",
-          "marginBottom": 8,
-          "marginLeft": 0,
-          "marginRight": 0,
-          "marginTop": 8,
-          "paddingBottom": 15,
-          "paddingLeft": 15,
-          "paddingRight": 15,
-          "paddingTop": 12,
-        },
-        undefined,
-      ],
+      "style": Object {
+        "backgroundColor": "rgba(255,255,255,0.2)",
+        "borderRadius": 8,
+        "flexDirection": "column",
+        "justifyContent": "space-between",
+        "marginBottom": 4,
+        "marginLeft": 0,
+        "marginRight": 0,
+        "marginTop": 4,
+        "overflow": "hidden",
+        "padding": 16,
+      },
     },
     "ref": null,
     "rendered": Array [
@@ -132,7 +703,6 @@ ShallowWrapper {
               style={
                 Object {
                   "backgroundColor": "transparent",
-                  "flex": 4,
                 }
               }
             >
@@ -142,7 +712,7 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "#FFFFFF",
+                    "color": "white",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -159,9 +729,6 @@ ShallowWrapper {
           ],
           "style": Object {
             "backgroundColor": "transparent",
-            "borderBottomColor": "#607D8B",
-            "borderBottomWidth": 1,
-            "borderStyle": "solid",
             "flexDirection": "row",
             "paddingBottom": 4,
           },
@@ -179,7 +746,7 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "#FFFFFF",
+                    "color": "white",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -193,7 +760,6 @@ ShallowWrapper {
               </Text>,
               "style": Object {
                 "backgroundColor": "transparent",
-                "flex": 4,
               },
             },
             "ref": null,
@@ -207,7 +773,7 @@ ShallowWrapper {
                 "children": "Test panel title",
                 "ellipsizeMode": "tail",
                 "style": Object {
-                  "color": "#FFFFFF",
+                  "color": "white",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -232,9 +798,13 @@ ShallowWrapper {
         "nodeType": "class",
         "props": Object {
           "children": undefined,
-          "style": Object {
-            "marginBottom": 8,
-          },
+          "style": Array [
+            Object {
+              "flex": 1,
+              "marginBottom": 4,
+            },
+            undefined,
+          ],
         },
         "ref": null,
         "rendered": null,
@@ -251,7 +821,7 @@ ShallowWrapper {
             ellipsizeMode="tail"
             style={
               Object {
-                "color": "#72A4DE",
+                "color": "#FFFFFF",
                 "fontFamily": "Roboto",
                 "fontSize": 17,
                 "fontWeight": "normal",
@@ -263,7 +833,9 @@ ShallowWrapper {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
           </Text>,
           "style": Object {
+            "flexShrink": 1,
             "marginBottom": 8,
+            "overflow": "hidden",
           },
         },
         "ref": null,
@@ -277,7 +849,7 @@ ShallowWrapper {
             "children": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
             "ellipsizeMode": "tail",
             "style": Object {
-              "color": "#72A4DE",
+              "color": "#FFFFFF",
               "fontFamily": "Roboto",
               "fontSize": 17,
               "fontWeight": "normal",
@@ -330,9 +902,6 @@ ShallowWrapper {
             style={
               Object {
                 "backgroundColor": "transparent",
-                "borderBottomColor": "#607D8B",
-                "borderBottomWidth": 1,
-                "borderStyle": "solid",
                 "flexDirection": "row",
                 "paddingBottom": 4,
               }
@@ -342,7 +911,6 @@ ShallowWrapper {
               style={
                 Object {
                   "backgroundColor": "transparent",
-                  "flex": 4,
                 }
               }
             >
@@ -352,7 +920,7 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "#FFFFFF",
+                    "color": "white",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -368,15 +936,21 @@ ShallowWrapper {
           </View>,
           <View
             style={
-              Object {
-                "marginBottom": 8,
-              }
+              Array [
+                Object {
+                  "flex": 1,
+                  "marginBottom": 4,
+                },
+                undefined,
+              ]
             }
           />,
           <View
             style={
               Object {
+                "flexShrink": 1,
                 "marginBottom": 8,
+                "overflow": "hidden",
               }
             }
           >
@@ -386,7 +960,7 @@ ShallowWrapper {
               ellipsizeMode="tail"
               style={
                 Object {
-                  "color": "#72A4DE",
+                  "color": "#FFFFFF",
                   "fontFamily": "Roboto",
                   "fontSize": 17,
                   "fontWeight": "normal",
@@ -406,24 +980,18 @@ ShallowWrapper {
             style={Object {}}
           />,
         ],
-        "style": Array [
-          Object {
-            "backgroundColor": "rgba(74,144,226,0.2)",
-            "borderRadius": 8,
-            "flexDirection": "column",
-            "flexShrink": 1,
-            "justifyContent": "space-between",
-            "marginBottom": 8,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 8,
-            "paddingBottom": 15,
-            "paddingLeft": 15,
-            "paddingRight": 15,
-            "paddingTop": 12,
-          },
-          undefined,
-        ],
+        "style": Object {
+          "backgroundColor": "rgba(255,255,255,0.2)",
+          "borderRadius": 8,
+          "flexDirection": "column",
+          "justifyContent": "space-between",
+          "marginBottom": 4,
+          "marginLeft": 0,
+          "marginRight": 0,
+          "marginTop": 4,
+          "overflow": "hidden",
+          "padding": 16,
+        },
       },
       "ref": null,
       "rendered": Array [
@@ -437,7 +1005,6 @@ ShallowWrapper {
                 style={
                   Object {
                     "backgroundColor": "transparent",
-                    "flex": 4,
                   }
                 }
               >
@@ -447,7 +1014,7 @@ ShallowWrapper {
                   ellipsizeMode="tail"
                   style={
                     Object {
-                      "color": "#FFFFFF",
+                      "color": "white",
                       "fontFamily": "Roboto",
                       "fontSize": 22,
                       "fontWeight": "bold",
@@ -464,9 +1031,6 @@ ShallowWrapper {
             ],
             "style": Object {
               "backgroundColor": "transparent",
-              "borderBottomColor": "#607D8B",
-              "borderBottomWidth": 1,
-              "borderStyle": "solid",
               "flexDirection": "row",
               "paddingBottom": 4,
             },
@@ -484,7 +1048,7 @@ ShallowWrapper {
                   ellipsizeMode="tail"
                   style={
                     Object {
-                      "color": "#FFFFFF",
+                      "color": "white",
                       "fontFamily": "Roboto",
                       "fontSize": 22,
                       "fontWeight": "bold",
@@ -498,7 +1062,6 @@ ShallowWrapper {
                 </Text>,
                 "style": Object {
                   "backgroundColor": "transparent",
-                  "flex": 4,
                 },
               },
               "ref": null,
@@ -512,7 +1075,7 @@ ShallowWrapper {
                   "children": "Test panel title",
                   "ellipsizeMode": "tail",
                   "style": Object {
-                    "color": "#FFFFFF",
+                    "color": "white",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -537,9 +1100,13 @@ ShallowWrapper {
           "nodeType": "class",
           "props": Object {
             "children": undefined,
-            "style": Object {
-              "marginBottom": 8,
-            },
+            "style": Array [
+              Object {
+                "flex": 1,
+                "marginBottom": 4,
+              },
+              undefined,
+            ],
           },
           "ref": null,
           "rendered": null,
@@ -556,7 +1123,7 @@ ShallowWrapper {
               ellipsizeMode="tail"
               style={
                 Object {
-                  "color": "#72A4DE",
+                  "color": "#FFFFFF",
                   "fontFamily": "Roboto",
                   "fontSize": 17,
                   "fontWeight": "normal",
@@ -568,7 +1135,9 @@ ShallowWrapper {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
             </Text>,
             "style": Object {
+              "flexShrink": 1,
               "marginBottom": 8,
+              "overflow": "hidden",
             },
           },
           "ref": null,
@@ -582,7 +1151,7 @@ ShallowWrapper {
               "children": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
               "ellipsizeMode": "tail",
               "style": Object {
-                "color": "#72A4DE",
+                "color": "#FFFFFF",
                 "fontFamily": "Roboto",
                 "fontSize": 17,
                 "fontWeight": "normal",
@@ -642,6 +1211,20 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <PanelView
     buttonTitle="Test panel button"
     onButtonClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "rgba(255,255,255,0.2)",
+        "borderRadius": 8,
+        "flexDirection": "column",
+        "justifyContent": "space-between",
+        "marginBottom": 4,
+        "marginLeft": 0,
+        "marginRight": 0,
+        "marginTop": 4,
+        "overflow": "hidden",
+        "padding": 16,
+      }
+    }
     title="Test panel title"
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -661,9 +1244,6 @@ ShallowWrapper {
           style={
             Object {
               "backgroundColor": "transparent",
-              "borderBottomColor": "#607D8B",
-              "borderBottomWidth": 1,
-              "borderStyle": "solid",
               "flexDirection": "row",
               "paddingBottom": 4,
             }
@@ -673,7 +1253,6 @@ ShallowWrapper {
             style={
               Object {
                 "backgroundColor": "transparent",
-                "flex": 4,
               }
             }
           >
@@ -683,7 +1262,7 @@ ShallowWrapper {
               ellipsizeMode="tail"
               style={
                 Object {
-                  "color": "#FFFFFF",
+                  "color": "white",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -699,9 +1278,13 @@ ShallowWrapper {
         </View>,
         <View
           style={
-            Object {
-              "marginBottom": 8,
-            }
+            Array [
+              Object {
+                "flex": 1,
+                "marginBottom": 4,
+              },
+              undefined,
+            ]
           }
         />,
         undefined,
@@ -722,24 +1305,18 @@ ShallowWrapper {
           style={Object {}}
         />,
       ],
-      "style": Array [
-        Object {
-          "backgroundColor": "rgba(74,144,226,0.2)",
-          "borderRadius": 8,
-          "flexDirection": "column",
-          "flexShrink": 1,
-          "justifyContent": "space-between",
-          "marginBottom": 8,
-          "marginLeft": 0,
-          "marginRight": 0,
-          "marginTop": 8,
-          "paddingBottom": 15,
-          "paddingLeft": 15,
-          "paddingRight": 15,
-          "paddingTop": 12,
-        },
-        undefined,
-      ],
+      "style": Object {
+        "backgroundColor": "rgba(255,255,255,0.2)",
+        "borderRadius": 8,
+        "flexDirection": "column",
+        "justifyContent": "space-between",
+        "marginBottom": 4,
+        "marginLeft": 0,
+        "marginRight": 0,
+        "marginTop": 4,
+        "overflow": "hidden",
+        "padding": 16,
+      },
     },
     "ref": null,
     "rendered": Array [
@@ -753,7 +1330,6 @@ ShallowWrapper {
               style={
                 Object {
                   "backgroundColor": "transparent",
-                  "flex": 4,
                 }
               }
             >
@@ -763,7 +1339,7 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "#FFFFFF",
+                    "color": "white",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -780,9 +1356,6 @@ ShallowWrapper {
           ],
           "style": Object {
             "backgroundColor": "transparent",
-            "borderBottomColor": "#607D8B",
-            "borderBottomWidth": 1,
-            "borderStyle": "solid",
             "flexDirection": "row",
             "paddingBottom": 4,
           },
@@ -800,7 +1373,7 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "#FFFFFF",
+                    "color": "white",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -814,7 +1387,6 @@ ShallowWrapper {
               </Text>,
               "style": Object {
                 "backgroundColor": "transparent",
-                "flex": 4,
               },
             },
             "ref": null,
@@ -828,7 +1400,7 @@ ShallowWrapper {
                 "children": "Test panel title",
                 "ellipsizeMode": "tail",
                 "style": Object {
-                  "color": "#FFFFFF",
+                  "color": "white",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -853,9 +1425,13 @@ ShallowWrapper {
         "nodeType": "class",
         "props": Object {
           "children": undefined,
-          "style": Object {
-            "marginBottom": 8,
-          },
+          "style": Array [
+            Object {
+              "flex": 1,
+              "marginBottom": 4,
+            },
+            undefined,
+          ],
         },
         "ref": null,
         "rendered": null,
@@ -916,9 +1492,6 @@ ShallowWrapper {
             style={
               Object {
                 "backgroundColor": "transparent",
-                "borderBottomColor": "#607D8B",
-                "borderBottomWidth": 1,
-                "borderStyle": "solid",
                 "flexDirection": "row",
                 "paddingBottom": 4,
               }
@@ -928,7 +1501,6 @@ ShallowWrapper {
               style={
                 Object {
                   "backgroundColor": "transparent",
-                  "flex": 4,
                 }
               }
             >
@@ -938,7 +1510,7 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "#FFFFFF",
+                    "color": "white",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -954,9 +1526,13 @@ ShallowWrapper {
           </View>,
           <View
             style={
-              Object {
-                "marginBottom": 8,
-              }
+              Array [
+                Object {
+                  "flex": 1,
+                  "marginBottom": 4,
+                },
+                undefined,
+              ]
             }
           />,
           undefined,
@@ -977,24 +1553,18 @@ ShallowWrapper {
             style={Object {}}
           />,
         ],
-        "style": Array [
-          Object {
-            "backgroundColor": "rgba(74,144,226,0.2)",
-            "borderRadius": 8,
-            "flexDirection": "column",
-            "flexShrink": 1,
-            "justifyContent": "space-between",
-            "marginBottom": 8,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 8,
-            "paddingBottom": 15,
-            "paddingLeft": 15,
-            "paddingRight": 15,
-            "paddingTop": 12,
-          },
-          undefined,
-        ],
+        "style": Object {
+          "backgroundColor": "rgba(255,255,255,0.2)",
+          "borderRadius": 8,
+          "flexDirection": "column",
+          "justifyContent": "space-between",
+          "marginBottom": 4,
+          "marginLeft": 0,
+          "marginRight": 0,
+          "marginTop": 4,
+          "overflow": "hidden",
+          "padding": 16,
+        },
       },
       "ref": null,
       "rendered": Array [
@@ -1008,7 +1578,6 @@ ShallowWrapper {
                 style={
                   Object {
                     "backgroundColor": "transparent",
-                    "flex": 4,
                   }
                 }
               >
@@ -1018,7 +1587,7 @@ ShallowWrapper {
                   ellipsizeMode="tail"
                   style={
                     Object {
-                      "color": "#FFFFFF",
+                      "color": "white",
                       "fontFamily": "Roboto",
                       "fontSize": 22,
                       "fontWeight": "bold",
@@ -1035,9 +1604,6 @@ ShallowWrapper {
             ],
             "style": Object {
               "backgroundColor": "transparent",
-              "borderBottomColor": "#607D8B",
-              "borderBottomWidth": 1,
-              "borderStyle": "solid",
               "flexDirection": "row",
               "paddingBottom": 4,
             },
@@ -1055,7 +1621,7 @@ ShallowWrapper {
                   ellipsizeMode="tail"
                   style={
                     Object {
-                      "color": "#FFFFFF",
+                      "color": "white",
                       "fontFamily": "Roboto",
                       "fontSize": 22,
                       "fontWeight": "bold",
@@ -1069,7 +1635,6 @@ ShallowWrapper {
                 </Text>,
                 "style": Object {
                   "backgroundColor": "transparent",
-                  "flex": 4,
                 },
               },
               "ref": null,
@@ -1083,7 +1648,7 @@ ShallowWrapper {
                   "children": "Test panel title",
                   "ellipsizeMode": "tail",
                   "style": Object {
-                    "color": "#FFFFFF",
+                    "color": "white",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -1108,9 +1673,13 @@ ShallowWrapper {
           "nodeType": "class",
           "props": Object {
             "children": undefined,
-            "style": Object {
-              "marginBottom": 8,
-            },
+            "style": Array [
+              Object {
+                "flex": 1,
+                "marginBottom": 4,
+              },
+              undefined,
+            ],
           },
           "ref": null,
           "rendered": null,
@@ -1180,6 +1749,20 @@ ShallowWrapper {
     buttonTitle="Test panel button"
     onButtonClick={[Function]}
     renderAdditionalInfo={[Function]}
+    style={
+      Object {
+        "backgroundColor": "rgba(255,255,255,0.2)",
+        "borderRadius": 8,
+        "flexDirection": "column",
+        "justifyContent": "space-between",
+        "marginBottom": 4,
+        "marginLeft": 0,
+        "marginRight": 0,
+        "marginTop": 4,
+        "overflow": "hidden",
+        "padding": 16,
+      }
+    }
     title="Test panel title"
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -1199,9 +1782,6 @@ ShallowWrapper {
           style={
             Object {
               "backgroundColor": "transparent",
-              "borderBottomColor": "#607D8B",
-              "borderBottomWidth": 1,
-              "borderStyle": "solid",
               "flexDirection": "row",
               "paddingBottom": 4,
             }
@@ -1211,7 +1791,6 @@ ShallowWrapper {
             style={
               Object {
                 "backgroundColor": "transparent",
-                "flex": 4,
               }
             }
           >
@@ -1221,7 +1800,7 @@ ShallowWrapper {
               ellipsizeMode="tail"
               style={
                 Object {
-                  "color": "#FFFFFF",
+                  "color": "white",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -1237,15 +1816,21 @@ ShallowWrapper {
         </View>,
         <View
           style={
-            Object {
-              "marginBottom": 8,
-            }
+            Array [
+              Object {
+                "flex": 1,
+                "marginBottom": 4,
+              },
+              undefined,
+            ]
           }
         />,
         <View
           style={
             Object {
+              "flexShrink": 1,
               "marginBottom": 8,
+              "overflow": "hidden",
             }
           }
         >
@@ -1255,7 +1840,7 @@ ShallowWrapper {
             ellipsizeMode="tail"
             style={
               Object {
-                "color": "#72A4DE",
+                "color": "#FFFFFF",
                 "fontFamily": "Roboto",
                 "fontSize": 17,
                 "fontWeight": "normal",
@@ -1290,24 +1875,18 @@ ShallowWrapper {
           style={Object {}}
         />,
       ],
-      "style": Array [
-        Object {
-          "backgroundColor": "rgba(74,144,226,0.2)",
-          "borderRadius": 8,
-          "flexDirection": "column",
-          "flexShrink": 1,
-          "justifyContent": "space-between",
-          "marginBottom": 8,
-          "marginLeft": 0,
-          "marginRight": 0,
-          "marginTop": 8,
-          "paddingBottom": 15,
-          "paddingLeft": 15,
-          "paddingRight": 15,
-          "paddingTop": 12,
-        },
-        undefined,
-      ],
+      "style": Object {
+        "backgroundColor": "rgba(255,255,255,0.2)",
+        "borderRadius": 8,
+        "flexDirection": "column",
+        "justifyContent": "space-between",
+        "marginBottom": 4,
+        "marginLeft": 0,
+        "marginRight": 0,
+        "marginTop": 4,
+        "overflow": "hidden",
+        "padding": 16,
+      },
     },
     "ref": null,
     "rendered": Array [
@@ -1321,7 +1900,6 @@ ShallowWrapper {
               style={
                 Object {
                   "backgroundColor": "transparent",
-                  "flex": 4,
                 }
               }
             >
@@ -1331,7 +1909,7 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "#FFFFFF",
+                    "color": "white",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -1348,9 +1926,6 @@ ShallowWrapper {
           ],
           "style": Object {
             "backgroundColor": "transparent",
-            "borderBottomColor": "#607D8B",
-            "borderBottomWidth": 1,
-            "borderStyle": "solid",
             "flexDirection": "row",
             "paddingBottom": 4,
           },
@@ -1368,7 +1943,7 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "#FFFFFF",
+                    "color": "white",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -1382,7 +1957,6 @@ ShallowWrapper {
               </Text>,
               "style": Object {
                 "backgroundColor": "transparent",
-                "flex": 4,
               },
             },
             "ref": null,
@@ -1396,7 +1970,7 @@ ShallowWrapper {
                 "children": "Test panel title",
                 "ellipsizeMode": "tail",
                 "style": Object {
-                  "color": "#FFFFFF",
+                  "color": "white",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -1421,9 +1995,13 @@ ShallowWrapper {
         "nodeType": "class",
         "props": Object {
           "children": undefined,
-          "style": Object {
-            "marginBottom": 8,
-          },
+          "style": Array [
+            Object {
+              "flex": 1,
+              "marginBottom": 4,
+            },
+            undefined,
+          ],
         },
         "ref": null,
         "rendered": null,
@@ -1440,7 +2018,7 @@ ShallowWrapper {
             ellipsizeMode="tail"
             style={
               Object {
-                "color": "#72A4DE",
+                "color": "#FFFFFF",
                 "fontFamily": "Roboto",
                 "fontSize": 17,
                 "fontWeight": "normal",
@@ -1452,7 +2030,9 @@ ShallowWrapper {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
           </Text>,
           "style": Object {
+            "flexShrink": 1,
             "marginBottom": 8,
+            "overflow": "hidden",
           },
         },
         "ref": null,
@@ -1466,7 +2046,7 @@ ShallowWrapper {
             "children": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
             "ellipsizeMode": "tail",
             "style": Object {
-              "color": "#72A4DE",
+              "color": "#FFFFFF",
               "fontFamily": "Roboto",
               "fontSize": 17,
               "fontWeight": "normal",
@@ -1550,9 +2130,6 @@ ShallowWrapper {
             style={
               Object {
                 "backgroundColor": "transparent",
-                "borderBottomColor": "#607D8B",
-                "borderBottomWidth": 1,
-                "borderStyle": "solid",
                 "flexDirection": "row",
                 "paddingBottom": 4,
               }
@@ -1562,7 +2139,6 @@ ShallowWrapper {
               style={
                 Object {
                   "backgroundColor": "transparent",
-                  "flex": 4,
                 }
               }
             >
@@ -1572,7 +2148,7 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "#FFFFFF",
+                    "color": "white",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -1588,15 +2164,21 @@ ShallowWrapper {
           </View>,
           <View
             style={
-              Object {
-                "marginBottom": 8,
-              }
+              Array [
+                Object {
+                  "flex": 1,
+                  "marginBottom": 4,
+                },
+                undefined,
+              ]
             }
           />,
           <View
             style={
               Object {
+                "flexShrink": 1,
                 "marginBottom": 8,
+                "overflow": "hidden",
               }
             }
           >
@@ -1606,7 +2188,7 @@ ShallowWrapper {
               ellipsizeMode="tail"
               style={
                 Object {
-                  "color": "#72A4DE",
+                  "color": "#FFFFFF",
                   "fontFamily": "Roboto",
                   "fontSize": 17,
                   "fontWeight": "normal",
@@ -1641,24 +2223,18 @@ ShallowWrapper {
             style={Object {}}
           />,
         ],
-        "style": Array [
-          Object {
-            "backgroundColor": "rgba(74,144,226,0.2)",
-            "borderRadius": 8,
-            "flexDirection": "column",
-            "flexShrink": 1,
-            "justifyContent": "space-between",
-            "marginBottom": 8,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 8,
-            "paddingBottom": 15,
-            "paddingLeft": 15,
-            "paddingRight": 15,
-            "paddingTop": 12,
-          },
-          undefined,
-        ],
+        "style": Object {
+          "backgroundColor": "rgba(255,255,255,0.2)",
+          "borderRadius": 8,
+          "flexDirection": "column",
+          "justifyContent": "space-between",
+          "marginBottom": 4,
+          "marginLeft": 0,
+          "marginRight": 0,
+          "marginTop": 4,
+          "overflow": "hidden",
+          "padding": 16,
+        },
       },
       "ref": null,
       "rendered": Array [
@@ -1672,7 +2248,6 @@ ShallowWrapper {
                 style={
                   Object {
                     "backgroundColor": "transparent",
-                    "flex": 4,
                   }
                 }
               >
@@ -1682,7 +2257,7 @@ ShallowWrapper {
                   ellipsizeMode="tail"
                   style={
                     Object {
-                      "color": "#FFFFFF",
+                      "color": "white",
                       "fontFamily": "Roboto",
                       "fontSize": 22,
                       "fontWeight": "bold",
@@ -1699,9 +2274,6 @@ ShallowWrapper {
             ],
             "style": Object {
               "backgroundColor": "transparent",
-              "borderBottomColor": "#607D8B",
-              "borderBottomWidth": 1,
-              "borderStyle": "solid",
               "flexDirection": "row",
               "paddingBottom": 4,
             },
@@ -1719,7 +2291,7 @@ ShallowWrapper {
                   ellipsizeMode="tail"
                   style={
                     Object {
-                      "color": "#FFFFFF",
+                      "color": "white",
                       "fontFamily": "Roboto",
                       "fontSize": 22,
                       "fontWeight": "bold",
@@ -1733,7 +2305,6 @@ ShallowWrapper {
                 </Text>,
                 "style": Object {
                   "backgroundColor": "transparent",
-                  "flex": 4,
                 },
               },
               "ref": null,
@@ -1747,7 +2318,7 @@ ShallowWrapper {
                   "children": "Test panel title",
                   "ellipsizeMode": "tail",
                   "style": Object {
-                    "color": "#FFFFFF",
+                    "color": "white",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -1772,9 +2343,13 @@ ShallowWrapper {
           "nodeType": "class",
           "props": Object {
             "children": undefined,
-            "style": Object {
-              "marginBottom": 8,
-            },
+            "style": Array [
+              Object {
+                "flex": 1,
+                "marginBottom": 4,
+              },
+              undefined,
+            ],
           },
           "ref": null,
           "rendered": null,
@@ -1791,7 +2366,7 @@ ShallowWrapper {
               ellipsizeMode="tail"
               style={
                 Object {
-                  "color": "#72A4DE",
+                  "color": "#FFFFFF",
                   "fontFamily": "Roboto",
                   "fontSize": 17,
                   "fontWeight": "normal",
@@ -1803,7 +2378,9 @@ ShallowWrapper {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
             </Text>,
             "style": Object {
+              "flexShrink": 1,
               "marginBottom": 8,
+              "overflow": "hidden",
             },
           },
           "ref": null,
@@ -1817,7 +2394,7 @@ ShallowWrapper {
               "children": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
               "ellipsizeMode": "tail",
               "style": Object {
-                "color": "#72A4DE",
+                "color": "#FFFFFF",
                 "fontFamily": "Roboto",
                 "fontSize": 17,
                 "fontWeight": "normal",
@@ -1910,6 +2487,20 @@ ShallowWrapper {
     buttonTitle="Test panel button"
     onButtonClick={[Function]}
     renderBottom={[Function]}
+    style={
+      Object {
+        "backgroundColor": "rgba(255,255,255,0.2)",
+        "borderRadius": 8,
+        "flexDirection": "column",
+        "justifyContent": "space-between",
+        "marginBottom": 4,
+        "marginLeft": 0,
+        "marginRight": 0,
+        "marginTop": 4,
+        "overflow": "hidden",
+        "padding": 16,
+      }
+    }
     title="Test panel title"
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -1929,9 +2520,6 @@ ShallowWrapper {
           style={
             Object {
               "backgroundColor": "transparent",
-              "borderBottomColor": "#607D8B",
-              "borderBottomWidth": 1,
-              "borderStyle": "solid",
               "flexDirection": "row",
               "paddingBottom": 4,
             }
@@ -1941,7 +2529,6 @@ ShallowWrapper {
             style={
               Object {
                 "backgroundColor": "transparent",
-                "flex": 4,
               }
             }
           >
@@ -1951,7 +2538,7 @@ ShallowWrapper {
               ellipsizeMode="tail"
               style={
                 Object {
-                  "color": "#FFFFFF",
+                  "color": "white",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -1967,15 +2554,21 @@ ShallowWrapper {
         </View>,
         <View
           style={
-            Object {
-              "marginBottom": 8,
-            }
+            Array [
+              Object {
+                "flex": 1,
+                "marginBottom": 4,
+              },
+              undefined,
+            ]
           }
         />,
         <View
           style={
             Object {
+              "flexShrink": 1,
               "marginBottom": 8,
+              "overflow": "hidden",
             }
           }
         >
@@ -1985,7 +2578,7 @@ ShallowWrapper {
             ellipsizeMode="tail"
             style={
               Object {
-                "color": "#72A4DE",
+                "color": "#FFFFFF",
                 "fontFamily": "Roboto",
                 "fontSize": 17,
                 "fontWeight": "normal",
@@ -2020,24 +2613,18 @@ ShallowWrapper {
           />
         </View>,
       ],
-      "style": Array [
-        Object {
-          "backgroundColor": "rgba(74,144,226,0.2)",
-          "borderRadius": 8,
-          "flexDirection": "column",
-          "flexShrink": 1,
-          "justifyContent": "space-between",
-          "marginBottom": 8,
-          "marginLeft": 0,
-          "marginRight": 0,
-          "marginTop": 8,
-          "paddingBottom": 15,
-          "paddingLeft": 15,
-          "paddingRight": 15,
-          "paddingTop": 12,
-        },
-        undefined,
-      ],
+      "style": Object {
+        "backgroundColor": "rgba(255,255,255,0.2)",
+        "borderRadius": 8,
+        "flexDirection": "column",
+        "justifyContent": "space-between",
+        "marginBottom": 4,
+        "marginLeft": 0,
+        "marginRight": 0,
+        "marginTop": 4,
+        "overflow": "hidden",
+        "padding": 16,
+      },
     },
     "ref": null,
     "rendered": Array [
@@ -2051,7 +2638,6 @@ ShallowWrapper {
               style={
                 Object {
                   "backgroundColor": "transparent",
-                  "flex": 4,
                 }
               }
             >
@@ -2061,7 +2647,7 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "#FFFFFF",
+                    "color": "white",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -2078,9 +2664,6 @@ ShallowWrapper {
           ],
           "style": Object {
             "backgroundColor": "transparent",
-            "borderBottomColor": "#607D8B",
-            "borderBottomWidth": 1,
-            "borderStyle": "solid",
             "flexDirection": "row",
             "paddingBottom": 4,
           },
@@ -2098,7 +2681,7 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "#FFFFFF",
+                    "color": "white",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -2112,7 +2695,6 @@ ShallowWrapper {
               </Text>,
               "style": Object {
                 "backgroundColor": "transparent",
-                "flex": 4,
               },
             },
             "ref": null,
@@ -2126,7 +2708,7 @@ ShallowWrapper {
                 "children": "Test panel title",
                 "ellipsizeMode": "tail",
                 "style": Object {
-                  "color": "#FFFFFF",
+                  "color": "white",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -2151,9 +2733,13 @@ ShallowWrapper {
         "nodeType": "class",
         "props": Object {
           "children": undefined,
-          "style": Object {
-            "marginBottom": 8,
-          },
+          "style": Array [
+            Object {
+              "flex": 1,
+              "marginBottom": 4,
+            },
+            undefined,
+          ],
         },
         "ref": null,
         "rendered": null,
@@ -2170,7 +2756,7 @@ ShallowWrapper {
             ellipsizeMode="tail"
             style={
               Object {
-                "color": "#72A4DE",
+                "color": "#FFFFFF",
                 "fontFamily": "Roboto",
                 "fontSize": 17,
                 "fontWeight": "normal",
@@ -2182,7 +2768,9 @@ ShallowWrapper {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
           </Text>,
           "style": Object {
+            "flexShrink": 1,
             "marginBottom": 8,
+            "overflow": "hidden",
           },
         },
         "ref": null,
@@ -2196,7 +2784,7 @@ ShallowWrapper {
             "children": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
             "ellipsizeMode": "tail",
             "style": Object {
-              "color": "#72A4DE",
+              "color": "#FFFFFF",
               "fontFamily": "Roboto",
               "fontSize": 17,
               "fontWeight": "normal",
@@ -2280,9 +2868,6 @@ ShallowWrapper {
             style={
               Object {
                 "backgroundColor": "transparent",
-                "borderBottomColor": "#607D8B",
-                "borderBottomWidth": 1,
-                "borderStyle": "solid",
                 "flexDirection": "row",
                 "paddingBottom": 4,
               }
@@ -2292,7 +2877,6 @@ ShallowWrapper {
               style={
                 Object {
                   "backgroundColor": "transparent",
-                  "flex": 4,
                 }
               }
             >
@@ -2302,7 +2886,7 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "#FFFFFF",
+                    "color": "white",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -2318,15 +2902,21 @@ ShallowWrapper {
           </View>,
           <View
             style={
-              Object {
-                "marginBottom": 8,
-              }
+              Array [
+                Object {
+                  "flex": 1,
+                  "marginBottom": 4,
+                },
+                undefined,
+              ]
             }
           />,
           <View
             style={
               Object {
+                "flexShrink": 1,
                 "marginBottom": 8,
+                "overflow": "hidden",
               }
             }
           >
@@ -2336,7 +2926,7 @@ ShallowWrapper {
               ellipsizeMode="tail"
               style={
                 Object {
-                  "color": "#72A4DE",
+                  "color": "#FFFFFF",
                   "fontFamily": "Roboto",
                   "fontSize": 17,
                   "fontWeight": "normal",
@@ -2371,24 +2961,18 @@ ShallowWrapper {
             />
           </View>,
         ],
-        "style": Array [
-          Object {
-            "backgroundColor": "rgba(74,144,226,0.2)",
-            "borderRadius": 8,
-            "flexDirection": "column",
-            "flexShrink": 1,
-            "justifyContent": "space-between",
-            "marginBottom": 8,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 8,
-            "paddingBottom": 15,
-            "paddingLeft": 15,
-            "paddingRight": 15,
-            "paddingTop": 12,
-          },
-          undefined,
-        ],
+        "style": Object {
+          "backgroundColor": "rgba(255,255,255,0.2)",
+          "borderRadius": 8,
+          "flexDirection": "column",
+          "justifyContent": "space-between",
+          "marginBottom": 4,
+          "marginLeft": 0,
+          "marginRight": 0,
+          "marginTop": 4,
+          "overflow": "hidden",
+          "padding": 16,
+        },
       },
       "ref": null,
       "rendered": Array [
@@ -2402,7 +2986,6 @@ ShallowWrapper {
                 style={
                   Object {
                     "backgroundColor": "transparent",
-                    "flex": 4,
                   }
                 }
               >
@@ -2412,7 +2995,7 @@ ShallowWrapper {
                   ellipsizeMode="tail"
                   style={
                     Object {
-                      "color": "#FFFFFF",
+                      "color": "white",
                       "fontFamily": "Roboto",
                       "fontSize": 22,
                       "fontWeight": "bold",
@@ -2429,9 +3012,6 @@ ShallowWrapper {
             ],
             "style": Object {
               "backgroundColor": "transparent",
-              "borderBottomColor": "#607D8B",
-              "borderBottomWidth": 1,
-              "borderStyle": "solid",
               "flexDirection": "row",
               "paddingBottom": 4,
             },
@@ -2449,7 +3029,7 @@ ShallowWrapper {
                   ellipsizeMode="tail"
                   style={
                     Object {
-                      "color": "#FFFFFF",
+                      "color": "white",
                       "fontFamily": "Roboto",
                       "fontSize": 22,
                       "fontWeight": "bold",
@@ -2463,7 +3043,6 @@ ShallowWrapper {
                 </Text>,
                 "style": Object {
                   "backgroundColor": "transparent",
-                  "flex": 4,
                 },
               },
               "ref": null,
@@ -2477,7 +3056,7 @@ ShallowWrapper {
                   "children": "Test panel title",
                   "ellipsizeMode": "tail",
                   "style": Object {
-                    "color": "#FFFFFF",
+                    "color": "white",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -2502,9 +3081,13 @@ ShallowWrapper {
           "nodeType": "class",
           "props": Object {
             "children": undefined,
-            "style": Object {
-              "marginBottom": 8,
-            },
+            "style": Array [
+              Object {
+                "flex": 1,
+                "marginBottom": 4,
+              },
+              undefined,
+            ],
           },
           "ref": null,
           "rendered": null,
@@ -2521,7 +3104,7 @@ ShallowWrapper {
               ellipsizeMode="tail"
               style={
                 Object {
-                  "color": "#72A4DE",
+                  "color": "#FFFFFF",
                   "fontFamily": "Roboto",
                   "fontSize": 17,
                   "fontWeight": "normal",
@@ -2533,7 +3116,9 @@ ShallowWrapper {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
             </Text>,
             "style": Object {
+              "flexShrink": 1,
               "marginBottom": 8,
+              "overflow": "hidden",
             },
           },
           "ref": null,
@@ -2547,7 +3132,7 @@ ShallowWrapper {
               "children": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
               "ellipsizeMode": "tail",
               "style": Object {
-                "color": "#72A4DE",
+                "color": "#FFFFFF",
                 "fontFamily": "Roboto",
                 "fontSize": 17,
                 "fontWeight": "normal",
@@ -2639,6 +3224,20 @@ ShallowWrapper {
     body="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
     buttonTitle="Test panel button"
     onButtonClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "rgba(255,255,255,0.2)",
+        "borderRadius": 8,
+        "flexDirection": "column",
+        "justifyContent": "space-between",
+        "marginBottom": 4,
+        "marginLeft": 0,
+        "marginRight": 0,
+        "marginTop": 4,
+        "overflow": "hidden",
+        "padding": 16,
+      }
+    }
     title="Test panel title"
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -2658,9 +3257,6 @@ ShallowWrapper {
           style={
             Object {
               "backgroundColor": "transparent",
-              "borderBottomColor": "#607D8B",
-              "borderBottomWidth": 1,
-              "borderStyle": "solid",
               "flexDirection": "row",
               "paddingBottom": 4,
             }
@@ -2670,7 +3266,6 @@ ShallowWrapper {
             style={
               Object {
                 "backgroundColor": "transparent",
-                "flex": 4,
               }
             }
           >
@@ -2680,7 +3275,7 @@ ShallowWrapper {
               ellipsizeMode="tail"
               style={
                 Object {
-                  "color": "#FFFFFF",
+                  "color": "white",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -2696,15 +3291,21 @@ ShallowWrapper {
         </View>,
         <View
           style={
-            Object {
-              "marginBottom": 8,
-            }
+            Array [
+              Object {
+                "flex": 1,
+                "marginBottom": 4,
+              },
+              undefined,
+            ]
           }
         />,
         <View
           style={
             Object {
+              "flexShrink": 1,
               "marginBottom": 8,
+              "overflow": "hidden",
             }
           }
         >
@@ -2714,7 +3315,7 @@ ShallowWrapper {
             ellipsizeMode="tail"
             style={
               Object {
-                "color": "#72A4DE",
+                "color": "#FFFFFF",
                 "fontFamily": "Roboto",
                 "fontSize": 17,
                 "fontWeight": "normal",
@@ -2743,24 +3344,18 @@ ShallowWrapper {
           style={Object {}}
         />,
       ],
-      "style": Array [
-        Object {
-          "backgroundColor": "rgba(74,144,226,0.2)",
-          "borderRadius": 8,
-          "flexDirection": "column",
-          "flexShrink": 1,
-          "justifyContent": "space-between",
-          "marginBottom": 8,
-          "marginLeft": 0,
-          "marginRight": 0,
-          "marginTop": 8,
-          "paddingBottom": 15,
-          "paddingLeft": 15,
-          "paddingRight": 15,
-          "paddingTop": 12,
-        },
-        undefined,
-      ],
+      "style": Object {
+        "backgroundColor": "rgba(255,255,255,0.2)",
+        "borderRadius": 8,
+        "flexDirection": "column",
+        "justifyContent": "space-between",
+        "marginBottom": 4,
+        "marginLeft": 0,
+        "marginRight": 0,
+        "marginTop": 4,
+        "overflow": "hidden",
+        "padding": 16,
+      },
     },
     "ref": null,
     "rendered": Array [
@@ -2774,7 +3369,6 @@ ShallowWrapper {
               style={
                 Object {
                   "backgroundColor": "transparent",
-                  "flex": 4,
                 }
               }
             >
@@ -2784,7 +3378,7 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "#FFFFFF",
+                    "color": "white",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -2801,9 +3395,6 @@ ShallowWrapper {
           ],
           "style": Object {
             "backgroundColor": "transparent",
-            "borderBottomColor": "#607D8B",
-            "borderBottomWidth": 1,
-            "borderStyle": "solid",
             "flexDirection": "row",
             "paddingBottom": 4,
           },
@@ -2821,7 +3412,7 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "#FFFFFF",
+                    "color": "white",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -2835,7 +3426,6 @@ ShallowWrapper {
               </Text>,
               "style": Object {
                 "backgroundColor": "transparent",
-                "flex": 4,
               },
             },
             "ref": null,
@@ -2849,7 +3439,7 @@ ShallowWrapper {
                 "children": "Test panel title",
                 "ellipsizeMode": "tail",
                 "style": Object {
-                  "color": "#FFFFFF",
+                  "color": "white",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -2874,9 +3464,13 @@ ShallowWrapper {
         "nodeType": "class",
         "props": Object {
           "children": undefined,
-          "style": Object {
-            "marginBottom": 8,
-          },
+          "style": Array [
+            Object {
+              "flex": 1,
+              "marginBottom": 4,
+            },
+            undefined,
+          ],
         },
         "ref": null,
         "rendered": null,
@@ -2893,7 +3487,7 @@ ShallowWrapper {
             ellipsizeMode="tail"
             style={
               Object {
-                "color": "#72A4DE",
+                "color": "#FFFFFF",
                 "fontFamily": "Roboto",
                 "fontSize": 17,
                 "fontWeight": "normal",
@@ -2905,7 +3499,9 @@ ShallowWrapper {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
           </Text>,
           "style": Object {
+            "flexShrink": 1,
             "marginBottom": 8,
+            "overflow": "hidden",
           },
         },
         "ref": null,
@@ -2919,7 +3515,7 @@ ShallowWrapper {
             "children": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
             "ellipsizeMode": "tail",
             "style": Object {
-              "color": "#72A4DE",
+              "color": "#FFFFFF",
               "fontFamily": "Roboto",
               "fontSize": 17,
               "fontWeight": "normal",
@@ -2987,9 +3583,6 @@ ShallowWrapper {
             style={
               Object {
                 "backgroundColor": "transparent",
-                "borderBottomColor": "#607D8B",
-                "borderBottomWidth": 1,
-                "borderStyle": "solid",
                 "flexDirection": "row",
                 "paddingBottom": 4,
               }
@@ -2999,7 +3592,6 @@ ShallowWrapper {
               style={
                 Object {
                   "backgroundColor": "transparent",
-                  "flex": 4,
                 }
               }
             >
@@ -3009,7 +3601,7 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "#FFFFFF",
+                    "color": "white",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -3025,15 +3617,21 @@ ShallowWrapper {
           </View>,
           <View
             style={
-              Object {
-                "marginBottom": 8,
-              }
+              Array [
+                Object {
+                  "flex": 1,
+                  "marginBottom": 4,
+                },
+                undefined,
+              ]
             }
           />,
           <View
             style={
               Object {
+                "flexShrink": 1,
                 "marginBottom": 8,
+                "overflow": "hidden",
               }
             }
           >
@@ -3043,7 +3641,7 @@ ShallowWrapper {
               ellipsizeMode="tail"
               style={
                 Object {
-                  "color": "#72A4DE",
+                  "color": "#FFFFFF",
                   "fontFamily": "Roboto",
                   "fontSize": 17,
                   "fontWeight": "normal",
@@ -3072,24 +3670,18 @@ ShallowWrapper {
             style={Object {}}
           />,
         ],
-        "style": Array [
-          Object {
-            "backgroundColor": "rgba(74,144,226,0.2)",
-            "borderRadius": 8,
-            "flexDirection": "column",
-            "flexShrink": 1,
-            "justifyContent": "space-between",
-            "marginBottom": 8,
-            "marginLeft": 0,
-            "marginRight": 0,
-            "marginTop": 8,
-            "paddingBottom": 15,
-            "paddingLeft": 15,
-            "paddingRight": 15,
-            "paddingTop": 12,
-          },
-          undefined,
-        ],
+        "style": Object {
+          "backgroundColor": "rgba(255,255,255,0.2)",
+          "borderRadius": 8,
+          "flexDirection": "column",
+          "justifyContent": "space-between",
+          "marginBottom": 4,
+          "marginLeft": 0,
+          "marginRight": 0,
+          "marginTop": 4,
+          "overflow": "hidden",
+          "padding": 16,
+        },
       },
       "ref": null,
       "rendered": Array [
@@ -3103,7 +3695,6 @@ ShallowWrapper {
                 style={
                   Object {
                     "backgroundColor": "transparent",
-                    "flex": 4,
                   }
                 }
               >
@@ -3113,7 +3704,7 @@ ShallowWrapper {
                   ellipsizeMode="tail"
                   style={
                     Object {
-                      "color": "#FFFFFF",
+                      "color": "white",
                       "fontFamily": "Roboto",
                       "fontSize": 22,
                       "fontWeight": "bold",
@@ -3130,9 +3721,6 @@ ShallowWrapper {
             ],
             "style": Object {
               "backgroundColor": "transparent",
-              "borderBottomColor": "#607D8B",
-              "borderBottomWidth": 1,
-              "borderStyle": "solid",
               "flexDirection": "row",
               "paddingBottom": 4,
             },
@@ -3150,7 +3738,7 @@ ShallowWrapper {
                   ellipsizeMode="tail"
                   style={
                     Object {
-                      "color": "#FFFFFF",
+                      "color": "white",
                       "fontFamily": "Roboto",
                       "fontSize": 22,
                       "fontWeight": "bold",
@@ -3164,7 +3752,6 @@ ShallowWrapper {
                 </Text>,
                 "style": Object {
                   "backgroundColor": "transparent",
-                  "flex": 4,
                 },
               },
               "ref": null,
@@ -3178,7 +3765,7 @@ ShallowWrapper {
                   "children": "Test panel title",
                   "ellipsizeMode": "tail",
                   "style": Object {
-                    "color": "#FFFFFF",
+                    "color": "white",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -3203,9 +3790,13 @@ ShallowWrapper {
           "nodeType": "class",
           "props": Object {
             "children": undefined,
-            "style": Object {
-              "marginBottom": 8,
-            },
+            "style": Array [
+              Object {
+                "flex": 1,
+                "marginBottom": 4,
+              },
+              undefined,
+            ],
           },
           "ref": null,
           "rendered": null,
@@ -3222,7 +3813,7 @@ ShallowWrapper {
               ellipsizeMode="tail"
               style={
                 Object {
-                  "color": "#72A4DE",
+                  "color": "#FFFFFF",
                   "fontFamily": "Roboto",
                   "fontSize": 17,
                   "fontWeight": "normal",
@@ -3234,7 +3825,9 @@ ShallowWrapper {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
             </Text>,
             "style": Object {
+              "flexShrink": 1,
               "marginBottom": 8,
+              "overflow": "hidden",
             },
           },
           "ref": null,
@@ -3248,7 +3841,7 @@ ShallowWrapper {
               "children": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
               "ellipsizeMode": "tail",
               "style": Object {
-                "color": "#72A4DE",
+                "color": "#FFFFFF",
                 "fontFamily": "Roboto",
                 "fontSize": 17,
                 "fontWeight": "normal",

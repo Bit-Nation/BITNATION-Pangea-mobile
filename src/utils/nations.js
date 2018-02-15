@@ -4,6 +4,20 @@ export function resolveNation(nations, id) {
   return _.find(nations, (nation) => nation.id === id);
 }
 
+type nationStatus = 'draft' | 'pending' | 'rejected' | 'accepted'
+
+// @todo Use Pangea libs implementation.
+export function resolveStatus(nation): nationStatus {
+  if (nation.created) {
+    return 'accepted';
+  }
+  if (nation.txHash) {
+    return 'pending';
+  }
+
+  return 'draft';
+}
+
 export function convertToDatabase(nationData) {
   return {
     ...nationData,
@@ -17,7 +31,7 @@ export function convertFromDatabase(nation) {
   return {
     ...nation,
     // @todo Fix virtual nation save unselected state
-    governanceService: nation.governanceService.split(', '),
+    governanceService: nation.governanceService.split(', ').filter(value => !_.isEmpty(value)),
   };
 }
 

@@ -59,7 +59,7 @@ ShallowWrapper {
           "justifyContent": "center",
         },
         Object {
-          "backgroundColor": "#37393C",
+          "backgroundColor": "#F1F2F6",
         },
         undefined,
       ],
@@ -168,7 +168,7 @@ ShallowWrapper {
             "justifyContent": "center",
           },
           Object {
-            "backgroundColor": "#37393C",
+            "backgroundColor": "#F1F2F6",
           },
           undefined,
         ],
@@ -285,7 +285,7 @@ ShallowWrapper {
           ellipsizeMode="tail"
           style={
             Object {
-              "color": "#72A4DE",
+              "color": "#C0C0C0",
               "fontSize": 14,
               "letterSpacing": -0.02,
               "lineHeight": 19,
@@ -322,7 +322,7 @@ ShallowWrapper {
           ellipsizeMode="tail"
           style={
             Object {
-              "color": "#72A4DE",
+              "color": "#C0C0C0",
               "fontSize": 14,
               "letterSpacing": -0.02,
               "lineHeight": 19,
@@ -353,7 +353,7 @@ ShallowWrapper {
           "children": "",
           "ellipsizeMode": "tail",
           "style": Object {
-            "color": "#72A4DE",
+            "color": "#C0C0C0",
             "fontSize": 14,
             "letterSpacing": -0.02,
             "lineHeight": 19,
@@ -394,7 +394,7 @@ ShallowWrapper {
             ellipsizeMode="tail"
             style={
               Object {
-                "color": "#72A4DE",
+                "color": "#C0C0C0",
                 "fontSize": 14,
                 "letterSpacing": -0.02,
                 "lineHeight": 19,
@@ -431,7 +431,7 @@ ShallowWrapper {
             ellipsizeMode="tail"
             style={
               Object {
-                "color": "#72A4DE",
+                "color": "#C0C0C0",
                 "fontSize": 14,
                 "letterSpacing": -0.02,
                 "lineHeight": 19,
@@ -462,7 +462,7 @@ ShallowWrapper {
             "children": "",
             "ellipsizeMode": "tail",
             "style": Object {
-              "color": "#72A4DE",
+              "color": "#C0C0C0",
               "fontSize": 14,
               "letterSpacing": -0.02,
               "lineHeight": 19,
@@ -529,7 +529,7 @@ ShallowWrapper {
           ellipsizeMode="tail"
           style={
             Object {
-              "color": "#72A4DE",
+              "color": "#C0C0C0",
               "fontSize": 14,
               "letterSpacing": -0.02,
               "lineHeight": 19,
@@ -566,7 +566,7 @@ ShallowWrapper {
           ellipsizeMode="tail"
           style={
             Object {
-              "color": "#72A4DE",
+              "color": "#C0C0C0",
               "fontSize": 14,
               "letterSpacing": -0.02,
               "lineHeight": 19,
@@ -597,7 +597,7 @@ ShallowWrapper {
           "children": "",
           "ellipsizeMode": "tail",
           "style": Object {
-            "color": "#72A4DE",
+            "color": "#C0C0C0",
             "fontSize": 14,
             "letterSpacing": -0.02,
             "lineHeight": 19,
@@ -638,7 +638,7 @@ ShallowWrapper {
             ellipsizeMode="tail"
             style={
               Object {
-                "color": "#72A4DE",
+                "color": "#C0C0C0",
                 "fontSize": 14,
                 "letterSpacing": -0.02,
                 "lineHeight": 19,
@@ -675,7 +675,7 @@ ShallowWrapper {
             ellipsizeMode="tail"
             style={
               Object {
-                "color": "#72A4DE",
+                "color": "#C0C0C0",
                 "fontSize": 14,
                 "letterSpacing": -0.02,
                 "lineHeight": 19,
@@ -706,7 +706,7 @@ ShallowWrapper {
             "children": "",
             "ellipsizeMode": "tail",
             "style": Object {
-              "color": "#72A4DE",
+              "color": "#C0C0C0",
               "fontSize": 14,
               "letterSpacing": -0.02,
               "lineHeight": 19,
@@ -791,7 +791,7 @@ ShallowWrapper {
           "justifyContent": "center",
         },
         Object {
-          "backgroundColor": "#37393C",
+          "backgroundColor": "#F1F2F6",
         },
         undefined,
       ],
@@ -900,7 +900,7 @@ ShallowWrapper {
             "justifyContent": "center",
           },
           Object {
-            "backgroundColor": "#37393C",
+            "backgroundColor": "#F1F2F6",
           },
           undefined,
         ],
@@ -1034,7 +1034,7 @@ ShallowWrapper {
           "justifyContent": "center",
         },
         Object {
-          "backgroundColor": "#37393C",
+          "backgroundColor": "#F1F2F6",
         },
         undefined,
       ],
@@ -1118,7 +1118,7 @@ ShallowWrapper {
             "justifyContent": "center",
           },
           Object {
-            "backgroundColor": "#37393C",
+            "backgroundColor": "#F1F2F6",
           },
           undefined,
         ],
@@ -1237,7 +1237,7 @@ ShallowWrapper {
           "justifyContent": "center",
         },
         Object {
-          "backgroundColor": "#37393C",
+          "backgroundColor": "#F1F2F6",
         },
         undefined,
       ],
@@ -1346,7 +1346,7 @@ ShallowWrapper {
             "justifyContent": "center",
           },
           Object {
-            "backgroundColor": "#37393C",
+            "backgroundColor": "#F1F2F6",
           },
           undefined,
         ],
@@ -1463,7 +1463,7 @@ ShallowWrapper {
           ellipsizeMode="tail"
           style={
             Object {
-              "color": "#72A4DE",
+              "color": "#C0C0C0",
               "fontSize": 14,
               "letterSpacing": -0.02,
               "lineHeight": 19,
@@ -1500,7 +1500,7 @@ ShallowWrapper {
           ellipsizeMode="tail"
           style={
             Object {
-              "color": "#72A4DE",
+              "color": "#C0C0C0",
               "fontSize": 14,
               "letterSpacing": -0.02,
               "lineHeight": 19,
@@ -1531,7 +1531,7 @@ ShallowWrapper {
           "children": "",
           "ellipsizeMode": "tail",
           "style": Object {
-            "color": "#72A4DE",
+            "color": "#C0C0C0",
             "fontSize": 14,
             "letterSpacing": -0.02,
             "lineHeight": 19,
@@ -1572,7 +1572,7 @@ ShallowWrapper {
             ellipsizeMode="tail"
             style={
               Object {
-                "color": "#72A4DE",
+                "color": "#C0C0C0",
                 "fontSize": 14,
                 "letterSpacing": -0.02,
                 "lineHeight": 19,
@@ -1609,7 +1609,7 @@ ShallowWrapper {
             ellipsizeMode="tail"
             style={
               Object {
-                "color": "#72A4DE",
+                "color": "#C0C0C0",
                 "fontSize": 14,
                 "letterSpacing": -0.02,
                 "lineHeight": 19,
@@ -1640,7 +1640,7 @@ ShallowWrapper {
             "children": "",
             "ellipsizeMode": "tail",
             "style": Object {
-              "color": "#72A4DE",
+              "color": "#C0C0C0",
               "fontSize": 14,
               "letterSpacing": -0.02,
               "lineHeight": 19,
@@ -1909,7 +1909,7 @@ ShallowWrapper {
           ellipsizeMode="tail"
           style={
             Object {
-              "color": "#72A4DE",
+              "color": "#C0C0C0",
               "fontSize": 14,
               "letterSpacing": -0.02,
               "lineHeight": 19,
@@ -1946,7 +1946,7 @@ ShallowWrapper {
           ellipsizeMode="tail"
           style={
             Object {
-              "color": "#72A4DE",
+              "color": "#C0C0C0",
               "fontSize": 14,
               "letterSpacing": -0.02,
               "lineHeight": 19,
@@ -1977,7 +1977,7 @@ ShallowWrapper {
           "children": "Testing title",
           "ellipsizeMode": "tail",
           "style": Object {
-            "color": "#72A4DE",
+            "color": "#C0C0C0",
             "fontSize": 14,
             "letterSpacing": -0.02,
             "lineHeight": 19,
@@ -2018,7 +2018,7 @@ ShallowWrapper {
             ellipsizeMode="tail"
             style={
               Object {
-                "color": "#72A4DE",
+                "color": "#C0C0C0",
                 "fontSize": 14,
                 "letterSpacing": -0.02,
                 "lineHeight": 19,
@@ -2055,7 +2055,7 @@ ShallowWrapper {
             ellipsizeMode="tail"
             style={
               Object {
-                "color": "#72A4DE",
+                "color": "#C0C0C0",
                 "fontSize": 14,
                 "letterSpacing": -0.02,
                 "lineHeight": 19,
@@ -2086,7 +2086,7 @@ ShallowWrapper {
             "children": "Testing title",
             "ellipsizeMode": "tail",
             "style": Object {
-              "color": "#72A4DE",
+              "color": "#C0C0C0",
               "fontSize": 14,
               "letterSpacing": -0.02,
               "lineHeight": 19,

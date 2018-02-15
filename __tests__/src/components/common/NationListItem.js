@@ -12,6 +12,11 @@ describe('NationListItem tests', () => {
       expect(wrapper).toMatchSnapshot();
     });
 
+    test('Default has onPress', () => {
+      const wrapper = shallow(<NationListItem/>);
+      expect(wrapper.instance().props.onPress).toBeDefined();
+    });
+
   });
 
   describe('Behaviour', () => {

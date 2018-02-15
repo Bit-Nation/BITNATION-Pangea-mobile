@@ -1,0 +1,220 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PanelViewCitizen tests Rendering Testing correct rendering 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <PanelViewCitizen
+    status="Test of Nation Name"
+    style={
+      Object {
+        "backgroundColor": "rgba(255,255,255,0.2)",
+        "borderRadius": 8,
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+        "marginBottom": 4,
+        "marginLeft": 0,
+        "marginRight": 0,
+        "marginTop": 4,
+        "overflow": "hidden",
+        "padding": 7,
+        "paddingLeft": 10,
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "color": "#FFFFFF",
+              "fontFamily": "Roboto",
+              "fontSize": 17,
+              "fontWeight": "normal",
+              "letterSpacing": 0,
+              "lineHeight": 22,
+            }
+          }
+        >
+          You are citizen of  undefined
+        </Text>,
+        <Image
+          source={1}
+          style={
+            Object {
+              "height": 25,
+              "width": 25,
+            }
+          }
+        />,
+      ],
+      "style": Object {
+        "backgroundColor": "rgba(255,255,255,0.2)",
+        "borderRadius": 8,
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+        "marginBottom": 4,
+        "marginLeft": 0,
+        "marginRight": 0,
+        "marginTop": 4,
+        "overflow": "hidden",
+        "padding": 7,
+        "paddingLeft": 10,
+      },
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "accessible": true,
+          "allowFontScaling": true,
+          "children": "You are citizen of  undefined",
+          "ellipsizeMode": "tail",
+          "style": Object {
+            "color": "#FFFFFF",
+            "fontFamily": "Roboto",
+            "fontSize": 17,
+            "fontWeight": "normal",
+            "letterSpacing": 0,
+            "lineHeight": 22,
+          },
+        },
+        "ref": null,
+        "rendered": "You are citizen of  undefined",
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "source": 1,
+          "style": Object {
+            "height": 25,
+            "width": 25,
+          },
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "#FFFFFF",
+                "fontFamily": "Roboto",
+                "fontSize": 17,
+                "fontWeight": "normal",
+                "letterSpacing": 0,
+                "lineHeight": 22,
+              }
+            }
+          >
+            You are citizen of  undefined
+          </Text>,
+          <Image
+            source={1}
+            style={
+              Object {
+                "height": 25,
+                "width": 25,
+              }
+            }
+          />,
+        ],
+        "style": Object {
+          "backgroundColor": "rgba(255,255,255,0.2)",
+          "borderRadius": 8,
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "marginBottom": 4,
+          "marginLeft": 0,
+          "marginRight": 0,
+          "marginTop": 4,
+          "overflow": "hidden",
+          "padding": 7,
+          "paddingLeft": 10,
+        },
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "accessible": true,
+            "allowFontScaling": true,
+            "children": "You are citizen of  undefined",
+            "ellipsizeMode": "tail",
+            "style": Object {
+              "color": "#FFFFFF",
+              "fontFamily": "Roboto",
+              "fontSize": 17,
+              "fontWeight": "normal",
+              "letterSpacing": 0,
+              "lineHeight": 22,
+            },
+          },
+          "ref": null,
+          "rendered": "You are citizen of  undefined",
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "source": 1,
+            "style": Object {
+              "height": 25,
+              "width": 25,
+            },
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

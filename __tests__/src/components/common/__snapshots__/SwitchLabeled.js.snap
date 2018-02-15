@@ -26,7 +26,7 @@ exports[`SwitchLabeled component tests SwitchLabeled rendering SwitchLabeled ren
       onChange={[Function]}
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
-      onTintColor="#4A90E2"
+      onTintColor="#F5A623"
       onValueChange={undefined}
       style={
         Array [
@@ -89,7 +89,7 @@ exports[`SwitchLabeled component tests SwitchLabeled rendering SwitchLabeled ren
       onChange={[Function]}
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
-      onTintColor="#4A90E2"
+      onTintColor="#F5A623"
       onValueChange={undefined}
       style={
         Array [

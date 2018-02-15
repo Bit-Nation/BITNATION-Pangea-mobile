@@ -14,26 +14,26 @@ import Button from './Button';
 export default class PanelView extends Component {
 
   render() {
-    const { style, renderBottom, renderAdditionalInfo, children } = this.props;
+    const { style, childrenContainerStyle, renderBottom, renderAdditionalInfo, children } = this.props;
 
     return (
-      <View style={[styles.panelView, style]}>
+      <View style={style}>
 
         {/* TITLE + ICON */}
         {/* Hide this view if no title or icon to avoid line below it. */}
         {
           (!_.isEmpty(this.props.title) || !_.isEmpty(this.props.icon)) &&
-          this._renderHeader(this.props.title, this.props.icon)
+          this._renderHeader(this.props.title, this.props.icon, this.props.titleStyle)
         }
 
-        {/* MAIN DISPLAY AREA */}
-        <View style={styles.panelTextContainer}>
+        {/* CHILDREN (MAIN) DISPLAY AREA */}
+        <View style={[styles.panelChildrenContainer, childrenContainerStyle]}>
           {children}
         </View>
 
         {
           this.props.body &&
-          <View style={styles.panelTextContainer}>
+          <View style={styles.panelBodyContainer}>
             <Text style={styles.body}>
               {this.props.body}
             </Text>
@@ -46,7 +46,8 @@ export default class PanelView extends Component {
 
         {
           this.props.onButtonClick &&
-          <Button style={styles.panelButton} title={this.props.buttonTitle}
+          <Button style={styles.panelButton}
+                  title={this.props.buttonTitle}
                   onPress={this.props.onButtonClick}/>
         }
 
@@ -58,13 +59,16 @@ export default class PanelView extends Component {
     );
   }
 
-  _renderHeader(title, icon) {
+  _renderHeader(title, icon, titleStyle) {
+
+    titleStyle = titleStyle || styles.panelViewTitle;
+
     return (
       <View style={styles.panelTitleRowContainer}>
         {
           title &&
           <View style={styles.panelTitleContainer}>
-            <Text style={styles.panelTitle}>
+            <Text style={titleStyle}>
               {title}
             </Text>
           </View>
@@ -72,7 +76,7 @@ export default class PanelView extends Component {
         {
           icon &&
           <View style={styles.panelTitleIcon}>
-            <Text style={styles.panelTitle}>
+            <Text style={styles.panelIcon}>
               {icon}
             </Text>
           </View>
@@ -83,17 +87,34 @@ export default class PanelView extends Component {
 
 }
 
+
+const styles = MediaQueryStyleSheet.create({
+  ...GlobalStyles,
+});
+
+PanelView.defaultProps = {
+  style: styles.panelView,
+};
+
 PanelView.PropTypes = {
   /**
    * @desc Title of panel
    * @type string
    */
   title: PropTypes.string,
+
+  /**
+   * @desc Style object of the title
+   * @type object
+   */
+  titleStyle: PropTypes.object,
+
   /**
    * @desc Icon of panel
    * @type string
    * @todo Fix icon to be the icon. Currently it's just a text.
    */
+
   icon: PropTypes.string,
   /**
    * @desc Body text of panel
@@ -120,8 +141,9 @@ PanelView.PropTypes = {
    * @type function
    */
   renderBottom: PropTypes.function,
+  /**
+   * @desc Style object to be passed into children container
+   * @type object
+   */
+  childrenContainerStyle: PropTypes.object,
 };
-
-const styles = MediaQueryStyleSheet.create({
-  ...GlobalStyles,
-});

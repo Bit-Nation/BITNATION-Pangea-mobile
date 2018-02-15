@@ -6,11 +6,23 @@ import { Platform } from 'react-native';
 
 // ========================================
 // BASE COLORS
-const BitnationColor = '#4A90E2';         	/* rgb(74, 144, 226)  */
-const BitnationDarkColor = '#1B395C';    	/* rgb(27, 57, 92) 	  */
-const BitnationLightColor = '#72A4DE';   	/* rgb(114, 164, 222) */
-const BitnationVeryLightColor = '#BCDCFF'; 	/* rgb(188, 220, 255) */
 
+// Grayish
+const BitnationColor = '#4A90E2';         /* rgb(74, 144, 226) */
+const BitnationDarkColor = "#1B395C";    /* rgb(27, 57, 92) */
+const BitnationLightColor = "#C0C0C0";   /* rgb(114, 164, 222) */
+const BitnationVeryLightColor = "#FFFFFF"; /* rgb(188, 220, 255) */
+const BitnationBackgroundColor = '#3e9eff'; /* rgb(62, 158, 255) */
+
+// Highlight Color
+const BitnationHighlightColor = '#F5A623'; /* rgb(245, 166, 35) */
+
+// Blue Color
+//const BitnationColor = '#4A90E2';         /* rgb(74, 144, 226) */
+//const BitnationDarkColor = "#1B395C";    /* rgb(27, 57, 92) */
+//const BitnationLightColor = "#72A4DE";   /* rgb(114, 164, 222) */
+//const BitnationVeryLightColor = "#BCDCFF"; /* rgb(188, 220, 255) */
+//const BitnationBackgroundColor = '#3e9eff'; /* rgb(62, 158, 255) */
 
 // ========================================
 // FUNCTIONS
@@ -73,53 +85,114 @@ export default {
 	BitnationDarkColor: BitnationDarkColor,
 	BitnationLightColor: BitnationLightColor,
 	BitnationVeryLightColor: BitnationVeryLightColor,
+	BitnationBackgroundColor: BitnationBackgroundColor,
+	BitnationHighlightColor: BitnationHighlightColor,
 	
-	// Custom Bitnation Colors
+	// Colors for common Text Styles
+	// e.g. large titles on screens
+	titleColor: BitnationHighlightColor,
+	panelViewTitleColor: 'white',
+	
+	currency: '#FFDD15',
+	
+	// Tab Bar (Navigation Bar for the app)
+	tabBarBackgroundColor: BitnationBackgroundColor,
+	tabBarSelectedLabelColor: 'white',
+	tabBarSelectedButtonColor: 'white',
+	tabBarLabelColor: 'white',
+	tabBarButtonColor: '#9fc9fa',
+	
+	// Toolbars (e.g. Create Nation)
+	toolBarBackgroundColor: BitnationBackgroundColor,
+	
+	// Segmented Control
+	activeTabStyle: BitnationBackgroundColor,
+	tabTextStyle: BitnationBackgroundColor,
+	
+	// Panel background color
+	panelView: 'rgba(255,255,255,0.2)',
+	panelViewAlert: 'rgba(245, 166, 35, 0.2)',
+	
+	// Other Custom Bitnation Colors
 	BlueGrey: '#607D8B',
 	BlueMed: '#72A4DE',
-	
 	BlueGrayMed: '#6D6D72',
 	
-	titleColor: '#4A90E2',
+	// FORMS
 	buttonColor: '#1C497E',
 	disabledButtonColor: '#37393C',
 	disabledButtonTitleColor: '#5F6D7D',
-	borderColor: '#275284',
+	// border of a text field
+	borderColor: shadeOf(BitnationLightColor, 0.4),
 	navigationButtonColor: Platform.OS === 'ios' ? '#007AFF' : '#FFFFFF',
+
+	placeholderTextColor: shadeOf(BitnationVeryLightColor, 0.4),
 	
-	// FORMS
-	placeholderTextColor: 'rgba(255,255,255,0.4)',
-	
+	// Used in multiselect, e.g. Nation Create form
 	textColor: '#444A64',
-	textPlaceholder: '#9B9B9B',
 	textPrimary: '#4A4A4A',
 	textSecondary: '#9094A3',
 	textLight: '#DADCE5',
 	buttonPrimary: '#80E5CF',
 	bestOptionBackground: '#BDF4E9',
+	Grey: '#9E9E9E',
+	primary_red: '#FF5469', // "danger" color
+
 	
-	primary_green: '#A5D6A7',
-	secondary_green: '#BDF4E9',
-	primary_blue: '#444A64',
-	primary_red: '#FF5469',
+	// MATERIAL DESIGN COLORS FROM MaterialUI
+	// https://www.materialui.co
+	
+	grey_900: '#212121',
 	grey_400: '#9094A3',
 	grey_300: '#DADCE5',
 	grey_200: '#F1F2F6',
 	grey_100: '#F9F9FC',
 	
+	// Section Lists
+	// Separator (title rows, e.g. "A")
+	// Separator (thin line between rows)
+	// 20% white (v0.3.2)
+	sectionListSeparator: 'rgba(255,255,255,0.2)',
+	sectionListHeaderText: 'white',
+	sectionListHeaderContainer: '#3a3a3a',//'rgba(255,255,255,0.15)',
+	sectionListItemContainerBkgd: 'transparent',
+	// In a list of nations, default color for the far-right text near the ">"
+	listItemTextState: 'gray',
+	
 	// Document Colors
 	panelBoxColor: '#1b395c',
-	instuctionTextColor: '#72a4de',
+	instructionTextColor: '#72a4de',
 	navButtonTextColor: '#007aff',
 	disabledBoxColor: '#bcdcff',
 	disabledTextColor: '#275284',
 	actionButtonColor: '#1c497e',
 	
+	// NAVIGATOR COLORS (in SCREENS.JS)
+	navBarTextColor: 'white',
+	navBarButtonColor: 'white',
+	navBarBackgroundColor: 'transparent',
 	
-	// Why do we have this?
-	white: '#FFFFFF',
+	disabledButtonColor: '#F1F2F6', // gray_200
 	
-	// Why do we have these definitions?
+	// If navBarTranslucent=false, the FakeNavigationBar pushes everything down below!
+	navBarTranslucent: true,
+	navBarTransparent: true,
+	
+	navBarNoBorder: true,
+	
+	statusBarColorOther: 'black',
+	statusBarColorIOS: 'black',
+	
+	
+	// PLATFORM SPECIFIC COLORS
+	androidNavigationButtons: 'white',  //in Screens.js
+	
+	// Why do we have this? So we can redefine white to something just a little darker
+	// because pure white can be hard...sometimes better to use 98% white.
+	white: 'white',
+	
+	// Standard HTML/CSS color definitions.
+	// Not used in general.
 	Red: '#FF5252',
 	Pink: '#FF4081',
 	Purple: '#9C27B0',
@@ -137,8 +210,9 @@ export default {
 	Orange: '#FF9800',
 	DeepOrange: '#FF5722',
 	Brown: '#795548',
-	Grey: '#9E9E9E',
 	LightGrey: '#EEEEEE',
+	
+	// Used in many places, e.g. Wallet code, identical to 'transparent'
 	Transparent: 'transparent',
 	
 }
