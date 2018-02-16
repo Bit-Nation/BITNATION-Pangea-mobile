@@ -61,16 +61,21 @@ ShallowWrapper {
           allowFontScaling={true}
           ellipsizeMode="tail"
           style={
-            Object {
-              "color": "gray",
-              "fontFamily": "Roboto",
-              "fontSize": 17,
-              "fontWeight": "normal",
-              "letterSpacing": 0,
-              "lineHeight": 22,
-              "marginRight": 16,
-              "textAlign": "right",
-            }
+            Array [
+              Object {
+                "color": "gray",
+                "fontFamily": "Roboto",
+                "fontSize": 17,
+                "fontWeight": "normal",
+                "letterSpacing": 0,
+                "lineHeight": 22,
+                "marginRight": 16,
+                "textAlign": "right",
+              },
+              Object {
+                "color": undefined,
+              },
+            ]
           }
         />
         <Image
@@ -129,16 +134,21 @@ ShallowWrapper {
             allowFontScaling={true}
             ellipsizeMode="tail"
             style={
-              Object {
-                "color": "gray",
-                "fontFamily": "Roboto",
-                "fontSize": 17,
-                "fontWeight": "normal",
-                "letterSpacing": 0,
-                "lineHeight": 22,
-                "marginRight": 16,
-                "textAlign": "right",
-              }
+              Array [
+                Object {
+                  "color": "gray",
+                  "fontFamily": "Roboto",
+                  "fontSize": 17,
+                  "fontWeight": "normal",
+                  "letterSpacing": 0,
+                  "lineHeight": 22,
+                  "marginRight": 16,
+                  "textAlign": "right",
+                },
+                Object {
+                  "color": undefined,
+                },
+              ]
             }
           />,
           <Image
@@ -199,16 +209,21 @@ ShallowWrapper {
             "allowFontScaling": true,
             "children": undefined,
             "ellipsizeMode": "tail",
-            "style": Object {
-              "color": "gray",
-              "fontFamily": "Roboto",
-              "fontSize": 17,
-              "fontWeight": "normal",
-              "letterSpacing": 0,
-              "lineHeight": 22,
-              "marginRight": 16,
-              "textAlign": "right",
-            },
+            "style": Array [
+              Object {
+                "color": "gray",
+                "fontFamily": "Roboto",
+                "fontSize": 17,
+                "fontWeight": "normal",
+                "letterSpacing": 0,
+                "lineHeight": 22,
+                "marginRight": 16,
+                "textAlign": "right",
+              },
+              Object {
+                "color": undefined,
+              },
+            ],
           },
           "ref": null,
           "rendered": null,
@@ -281,16 +296,21 @@ ShallowWrapper {
             allowFontScaling={true}
             ellipsizeMode="tail"
             style={
-              Object {
-                "color": "gray",
-                "fontFamily": "Roboto",
-                "fontSize": 17,
-                "fontWeight": "normal",
-                "letterSpacing": 0,
-                "lineHeight": 22,
-                "marginRight": 16,
-                "textAlign": "right",
-              }
+              Array [
+                Object {
+                  "color": "gray",
+                  "fontFamily": "Roboto",
+                  "fontSize": 17,
+                  "fontWeight": "normal",
+                  "letterSpacing": 0,
+                  "lineHeight": 22,
+                  "marginRight": 16,
+                  "textAlign": "right",
+                },
+                Object {
+                  "color": undefined,
+                },
+              ]
             }
           />
           <Image
@@ -349,16 +369,21 @@ ShallowWrapper {
               allowFontScaling={true}
               ellipsizeMode="tail"
               style={
-                Object {
-                  "color": "gray",
-                  "fontFamily": "Roboto",
-                  "fontSize": 17,
-                  "fontWeight": "normal",
-                  "letterSpacing": 0,
-                  "lineHeight": 22,
-                  "marginRight": 16,
-                  "textAlign": "right",
-                }
+                Array [
+                  Object {
+                    "color": "gray",
+                    "fontFamily": "Roboto",
+                    "fontSize": 17,
+                    "fontWeight": "normal",
+                    "letterSpacing": 0,
+                    "lineHeight": 22,
+                    "marginRight": 16,
+                    "textAlign": "right",
+                  },
+                  Object {
+                    "color": undefined,
+                  },
+                ]
               }
             />,
             <Image
@@ -419,16 +444,21 @@ ShallowWrapper {
               "allowFontScaling": true,
               "children": undefined,
               "ellipsizeMode": "tail",
-              "style": Object {
-                "color": "gray",
-                "fontFamily": "Roboto",
-                "fontSize": 17,
-                "fontWeight": "normal",
-                "letterSpacing": 0,
-                "lineHeight": 22,
-                "marginRight": 16,
-                "textAlign": "right",
-              },
+              "style": Array [
+                Object {
+                  "color": "gray",
+                  "fontFamily": "Roboto",
+                  "fontSize": 17,
+                  "fontWeight": "normal",
+                  "letterSpacing": 0,
+                  "lineHeight": 22,
+                  "marginRight": 16,
+                  "textAlign": "right",
+                },
+                Object {
+                  "color": undefined,
+                },
+              ],
             },
             "ref": null,
             "rendered": null,
@@ -526,16 +556,21 @@ ShallowWrapper {
           allowFontScaling={true}
           ellipsizeMode="tail"
           style={
-            Object {
-              "color": "gray",
-              "fontFamily": "Roboto",
-              "fontSize": 17,
-              "fontWeight": "normal",
-              "letterSpacing": 0,
-              "lineHeight": 22,
-              "marginRight": 16,
-              "textAlign": "right",
-            }
+            Array [
+              Object {
+                "color": "gray",
+                "fontFamily": "Roboto",
+                "fontSize": 17,
+                "fontWeight": "normal",
+                "letterSpacing": 0,
+                "lineHeight": 22,
+                "marginRight": 16,
+                "textAlign": "right",
+              },
+              Object {
+                "color": undefined,
+              },
+            ]
           }
         />
         <Image
@@ -594,16 +629,21 @@ ShallowWrapper {
             allowFontScaling={true}
             ellipsizeMode="tail"
             style={
-              Object {
-                "color": "gray",
-                "fontFamily": "Roboto",
-                "fontSize": 17,
-                "fontWeight": "normal",
-                "letterSpacing": 0,
-                "lineHeight": 22,
-                "marginRight": 16,
-                "textAlign": "right",
-              }
+              Array [
+                Object {
+                  "color": "gray",
+                  "fontFamily": "Roboto",
+                  "fontSize": 17,
+                  "fontWeight": "normal",
+                  "letterSpacing": 0,
+                  "lineHeight": 22,
+                  "marginRight": 16,
+                  "textAlign": "right",
+                },
+                Object {
+                  "color": undefined,
+                },
+              ]
             }
           />,
           <Image
@@ -664,16 +704,21 @@ ShallowWrapper {
             "allowFontScaling": true,
             "children": undefined,
             "ellipsizeMode": "tail",
-            "style": Object {
-              "color": "gray",
-              "fontFamily": "Roboto",
-              "fontSize": 17,
-              "fontWeight": "normal",
-              "letterSpacing": 0,
-              "lineHeight": 22,
-              "marginRight": 16,
-              "textAlign": "right",
-            },
+            "style": Array [
+              Object {
+                "color": "gray",
+                "fontFamily": "Roboto",
+                "fontSize": 17,
+                "fontWeight": "normal",
+                "letterSpacing": 0,
+                "lineHeight": 22,
+                "marginRight": 16,
+                "textAlign": "right",
+              },
+              Object {
+                "color": undefined,
+              },
+            ],
           },
           "ref": null,
           "rendered": null,
@@ -746,16 +791,21 @@ ShallowWrapper {
             allowFontScaling={true}
             ellipsizeMode="tail"
             style={
-              Object {
-                "color": "gray",
-                "fontFamily": "Roboto",
-                "fontSize": 17,
-                "fontWeight": "normal",
-                "letterSpacing": 0,
-                "lineHeight": 22,
-                "marginRight": 16,
-                "textAlign": "right",
-              }
+              Array [
+                Object {
+                  "color": "gray",
+                  "fontFamily": "Roboto",
+                  "fontSize": 17,
+                  "fontWeight": "normal",
+                  "letterSpacing": 0,
+                  "lineHeight": 22,
+                  "marginRight": 16,
+                  "textAlign": "right",
+                },
+                Object {
+                  "color": undefined,
+                },
+              ]
             }
           />
           <Image
@@ -814,16 +864,21 @@ ShallowWrapper {
               allowFontScaling={true}
               ellipsizeMode="tail"
               style={
-                Object {
-                  "color": "gray",
-                  "fontFamily": "Roboto",
-                  "fontSize": 17,
-                  "fontWeight": "normal",
-                  "letterSpacing": 0,
-                  "lineHeight": 22,
-                  "marginRight": 16,
-                  "textAlign": "right",
-                }
+                Array [
+                  Object {
+                    "color": "gray",
+                    "fontFamily": "Roboto",
+                    "fontSize": 17,
+                    "fontWeight": "normal",
+                    "letterSpacing": 0,
+                    "lineHeight": 22,
+                    "marginRight": 16,
+                    "textAlign": "right",
+                  },
+                  Object {
+                    "color": undefined,
+                  },
+                ]
               }
             />,
             <Image
@@ -884,16 +939,21 @@ ShallowWrapper {
               "allowFontScaling": true,
               "children": undefined,
               "ellipsizeMode": "tail",
-              "style": Object {
-                "color": "gray",
-                "fontFamily": "Roboto",
-                "fontSize": 17,
-                "fontWeight": "normal",
-                "letterSpacing": 0,
-                "lineHeight": 22,
-                "marginRight": 16,
-                "textAlign": "right",
-              },
+              "style": Array [
+                Object {
+                  "color": "gray",
+                  "fontFamily": "Roboto",
+                  "fontSize": 17,
+                  "fontWeight": "normal",
+                  "letterSpacing": 0,
+                  "lineHeight": 22,
+                  "marginRight": 16,
+                  "textAlign": "right",
+                },
+                Object {
+                  "color": undefined,
+                },
+              ],
             },
             "ref": null,
             "rendered": null,
