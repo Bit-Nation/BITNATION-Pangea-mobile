@@ -57,23 +57,22 @@ class ProfileScreen extends NavigatorComponent {
         i18n.t('testingMode.changeActiveAlert.title', {
           onOff: this.props.testingModeActive ?
             i18n.t('enums.onOff.on') :
-            i18n.t('enums.onOff.off')
-        })
+            i18n.t('enums.onOff.off'),
+        }),
       );
     }
   }
 
   render() {
     return (
-      <View style={styles.container}>
-        <BackgroundImage/>
-        <FakeNavigationBar/>
+      <View style={styles.bodyContainer}>
+        {/* TITLE OF SCREEN */}
+        <View style={styles.titleContainer}>
+          <View style={styles.titleBarLarge}>
+            <Text style={styles.largeTitle}>{i18n.t('screens.profile.title')}</Text>
+          </View>
+        </View>
         {this._buildHeader()}
-        <ScrollView>
-          {/*  Commented for Sprint 0.3.1  */}
-          {/*this._buildHolonsView()*/}
-          {/*this._buildAchievemntsView()*/}
-        </ScrollView>
       </View>
     );
   }
@@ -91,22 +90,6 @@ class ProfileScreen extends NavigatorComponent {
         <Text style={styles.nameText}>{user.name.trim()}</Text>
         <Text style={styles.infoText}>{user.location.trim()}</Text>
         <Text style={styles.ethAddress}>{user.ethAddress}</Text>
-      </View>
-    );
-  }
-
-  _buildHolonsView() {
-    return (
-      <View style={styles.infoContainer}>
-        <Image style={styles.placeholder} source={AssetsImage.Placeholder.holons}/>
-      </View>
-    );
-  }
-
-  _buildAchievemntsView() {
-    return (
-      <View style={[styles.infoContainer, styles.achievementsContainer]}>
-        <Image style={styles.placeholder} source={AssetsImage.Placeholder.achievements}/>
       </View>
     );
   }

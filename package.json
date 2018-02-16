@@ -95,7 +95,8 @@
       "!**/styles.js",
       "**/**/**/**/*.{js,jsx}",
       "!**/node_modules/**",
-      "!**/coverage/**"
+      "!**/coverage/**",
+      "!**/vendor/**"
     ]
   },
   "react-native": {
@@ -117,5 +118,10 @@
     "_stream_passthrough": "readable-stream/passthrough",
     "stream": "stream-browserify",
     "vm": "vm-browserify"
+  },
+  "rnpm": {
+    "assets": [
+      "assets/fonts/Roboto"
+    ]
   }
 }

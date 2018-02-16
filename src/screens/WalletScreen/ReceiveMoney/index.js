@@ -31,17 +31,24 @@ class ReceiveMoneyScreen extends Component {
       <View style={styles.screenContainer}>
         <BackgroundImage/>
         <FakeNavigationBar/>
-        <ScrollView contentContainerStyle={styles.bodyContainer}>
+        <View style={styles.bodyContainer}>
+
+          <View style={styles.titleContainer}>
+            <View style={styles.titleBarLarge}>
+              <Text style={styles.largeTitle}>{i18n.t('screens.receiveMoney.title')}</Text>
+            </View>
+          </View>
+
           <PanelView
             title={i18n.t('screens.receiveMoney.shareAddressPanel.title')}
             body={i18n.t('screens.receiveMoney.shareAddressPanel.text')}
-            style={[styles.messageView]}
+            style={styles.panelViewTransparent}
             renderAdditionalInfo={() =>
-              <Text style={styles.codeText}>{this.props.selectedWalletAddress}</Text>
+              <Text style={[styles.footnote, { textAlign: 'center' }]}>{this.props.selectedWalletAddress}</Text>
             }
             onButtonClick={this.onShareWalletAddressPress}
             buttonTitle={i18n.t('screens.receiveMoney.shareAddressPanel.button')}/>
-        </ScrollView>
+        </View>
       </View>
     );
   }

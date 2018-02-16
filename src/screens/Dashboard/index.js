@@ -45,7 +45,7 @@ class Dashboard extends Component {
       <View style={styles.screenContainer}>
         <BackgroundImage/>
         <FakeNavigationBar navBarHidden/>
-        <View style={styles.stackView}>
+        <View style={styles.gridContainer}>
           <View style={styles.activityPanelContainer}>
             <ActivityPanel style={styles.activityPanel}
                            messages={this.props.activity.messages}
@@ -64,8 +64,9 @@ class Dashboard extends Component {
                 buttonTitle={i18n.t('screens.dashboard.warningPanel.button')}
                 onButtonClick={this._onSelectMore}
                 style={styles.warningPanel}
+                titleStyle={styles.panelViewTitle}
               >
-                <Text style={styles.footnote}>{i18n.t('screens.dashboard.warningPanel.body')}</Text>
+                <Text style={styles.warningPanelBody}>{i18n.t('screens.dashboard.warningPanel.body')}</Text>
               </PanelView>
             </View>
           </View>

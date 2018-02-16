@@ -6,8 +6,8 @@ exports[`MultiSelect renders correctly 1`] = `
     Object {
       "flex": 1,
       "flexDirection": "column",
-      "marginBottom": 10,
-      "marginTop": 10,
+      "marginBottom": 1,
+      "marginTop": 1,
     }
   }
 >
@@ -17,8 +17,8 @@ exports[`MultiSelect renders correctly 1`] = `
         Object {
           "alignItems": "center",
           "flexDirection": "row",
-          "height": 40,
-          "marginBottom": 10,
+          "height": 43,
+          "marginBottom": 0,
         }
       }
     >
@@ -27,12 +27,12 @@ exports[`MultiSelect renders correctly 1`] = `
           Array [
             Object {
               "alignItems": "center",
-              "backgroundColor": "rgba(192,192,192,0.2)",
+              "backgroundColor": "transparent",
               "borderBottomWidth": 1,
               "borderColor": "rgba(192,192,192,0.4)",
               "flex": 1,
               "flexDirection": "row",
-              "paddingLeft": 20,
+              "paddingLeft": 0,
               "paddingRight": 20,
             },
             Object {
@@ -75,7 +75,7 @@ exports[`MultiSelect renders correctly 1`] = `
                 Object {
                   "color": "white",
                   "flex": 1,
-                  "fontSize": 17,
+                  "fontSize": 15,
                 },
                 Object {},
               ]
@@ -95,7 +95,7 @@ exports[`MultiSelect renders correctly 1`] = `
                 },
                 Object {
                   "color": "white",
-                  "fontSize": 30,
+                  "fontSize": 15,
                 },
                 Object {
                   "fontFamily": "Ionicons",
@@ -120,8 +120,8 @@ exports[`MultiSelect renders correctly with customized colors 1`] = `
     Object {
       "flex": 1,
       "flexDirection": "column",
-      "marginBottom": 10,
-      "marginTop": 10,
+      "marginBottom": 1,
+      "marginTop": 1,
     }
   }
 >
@@ -131,8 +131,8 @@ exports[`MultiSelect renders correctly with customized colors 1`] = `
         Object {
           "alignItems": "center",
           "flexDirection": "row",
-          "height": 40,
-          "marginBottom": 10,
+          "height": 43,
+          "marginBottom": 0,
         }
       }
     >
@@ -141,12 +141,12 @@ exports[`MultiSelect renders correctly with customized colors 1`] = `
           Array [
             Object {
               "alignItems": "center",
-              "backgroundColor": "rgba(192,192,192,0.2)",
+              "backgroundColor": "transparent",
               "borderBottomWidth": 1,
               "borderColor": "rgba(192,192,192,0.4)",
               "flex": 1,
               "flexDirection": "row",
-              "paddingLeft": 20,
+              "paddingLeft": 0,
               "paddingRight": 20,
             },
             Object {
@@ -189,7 +189,7 @@ exports[`MultiSelect renders correctly with customized colors 1`] = `
                 Object {
                   "color": "white",
                   "flex": 1,
-                  "fontSize": 17,
+                  "fontSize": 15,
                 },
                 Object {},
               ]
@@ -209,7 +209,7 @@ exports[`MultiSelect renders correctly with customized colors 1`] = `
                 },
                 Object {
                   "color": "white",
-                  "fontSize": 30,
+                  "fontSize": 15,
                 },
                 Object {
                   "fontFamily": "Ionicons",

@@ -1,3 +1,16 @@
+/*
+    EmptyState (Wallet)
+    
+    Return a ScrollView with panels for creating or restoring a wallet, to fit
+    inside a normal screen view.
+    
+    It does NOT need a bodyContainer.
+    This does not return a complete screen.
+    There is no navigation, etc.
+    
+    
+ */
+
 import React, { Component } from 'react';
 import {
   ScrollView,
@@ -6,32 +19,30 @@ import {
 import PropTypes from 'prop-types';
 
 import styles from './styles';
-import BackgroundImage from '../../../components/common/BackgroundImage';
 import PanelView from '../../../components/common/PanelView';
-import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import i18n from '../../../global/i18n';
 
 export default class EmptyWalletScreen extends Component {
 
   render() {
     return (
-      <View style={styles.screenContainer}>
-        <BackgroundImage/>
-        <FakeNavigationBar/>
-        <ScrollView contentContainerStyle={styles.bodyContainer}>
-          <PanelView
-            title={i18n.t('screens.wallet.empty.createWalletPanel.title')}
-            body={i18n.t('screens.wallet.empty.createWalletPanel.text')}
-            buttonTitle={i18n.t('screens.wallet.empty.createWalletPanel.button')}
-            onButtonClick={this.props.onCreateWallet}
-          />
-          <PanelView
-            title={i18n.t('screens.wallet.empty.restoreWalletPanel.title')}
-            body={i18n.t('screens.wallet.empty.restoreWalletPanel.text')}
-            buttonTitle={i18n.t('screens.wallet.empty.restoreWalletPanel.button')}
-            onButtonClick={this.props.onRestoreWallet}
-          />
-        </ScrollView>
+      <View>
+        {/*<ScrollView contentContainerStyle={styles.scrollView}>*/}
+        <PanelView
+          style={styles.panelViewTransparent}
+          title={i18n.t('screens.wallet.empty.createWalletPanel.title')}
+          body={i18n.t('screens.wallet.empty.createWalletPanel.text')}
+          buttonTitle={i18n.t('screens.wallet.empty.createWalletPanel.button')}
+          onButtonClick={this.props.onCreateWallet}
+        />
+        <PanelView
+          style={styles.panelViewTransparent}
+          title={i18n.t('screens.wallet.empty.restoreWalletPanel.title')}
+          body={i18n.t('screens.wallet.empty.restoreWalletPanel.text')}
+          buttonTitle={i18n.t('screens.wallet.empty.restoreWalletPanel.button')}
+          onButtonClick={this.props.onRestoreWallet}
+        />
+        {/*</ScrollView>*/}
       </View>
     );
   }

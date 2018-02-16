@@ -29,32 +29,40 @@ export default class NationsPanel extends Component {
 
     return (
       <View style={style}>
-        <PanelView style={styles.flex}
-                   childrenContainerStyle={styles.childrenContainer}
+        <PanelView style={styles.nationsGridPanel}
+                   titleStyle={styles.panelViewTitle}
                    title={i18n.t('screens.dashboard.nationsPanel.title')}>
           <View style={styles.nationsCountContainer}>
-            <Text style={styles.callout}>
-              {nationsCountStrings.prefix}
-              <Text style={styles.nationsCountNumber}>
-                {nationsCountStrings.main}
-              </Text>
+            <Text style={styles.body}>{nationsCountStrings.prefix}
+              <Text style={styles.nationsCountString}>{nationsCountStrings.main}</Text>
               {nationsCountStrings.suffix}
             </Text>
           </View>
-          <View style={styles.nationsHeader}>
-            <Text style={styles.nationsHeaderText}>{i18n.t('screens.dashboard.nationsPanel.newNations')}</Text>
+
+          {/* Nations list. This view extends the margins to edges */}
+          <View style={styles.listContainer}>
+
+            <View style={styles.panelFlatlistHeader}>
+              <Text
+                style={styles.nationsListHeaderText}>{i18n.t('screens.dashboard.nationsPanel.newNations')}
+              </Text>
+            </View>
+
+            <FlatList
+              renderItem={(item) => {
+                const nation = item.item;
+                return (
+                  <NationListItem text={nation.nationName}
+                                  textStyle={styles.nationsListText}
+                                  onPress={this.props.onSelectNation}
+                                  id={nation.id}/>);
+              }}
+              ItemSeparatorComponent={() => <View style={styles.sectionListSeparator}/>}
+              keyExtractor={(item) => item.id}
+              data={newestNations}
+            />
+
           </View>
-          <FlatList
-            renderItem={(item) => {
-              const nation = item.item;
-              return (<NationListItem text={nation.nationName}
-                                      onPress={this.props.onSelectNation}
-                                      id={nation.id}/>);
-            }}
-            keyExtractor={(item) => item.id}
-            data={newestNations}
-            style={styles.flex}
-          />
         </PanelView>
       </View>
     );

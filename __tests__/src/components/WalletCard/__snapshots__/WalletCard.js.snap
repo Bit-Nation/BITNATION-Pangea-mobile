@@ -35,10 +35,12 @@ ShallowWrapper {
         }
       >
         <Image
+          resizeMode="contain"
           source={1}
           style={
             Object {
               "marginRight": 10,
+              "marginTop": 10,
               "width": 55,
             }
           }
@@ -164,10 +166,12 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <Image
+            resizeMode="contain"
             source={1}
             style={
               Object {
                 "marginRight": 10,
+                "marginTop": 10,
                 "width": 55,
               }
             }
@@ -292,9 +296,11 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
+            "resizeMode": "contain",
             "source": 1,
             "style": Object {
               "marginRight": 10,
+              "marginTop": 10,
               "width": 55,
             },
           },
@@ -625,10 +631,12 @@ ShallowWrapper {
           }
         >
           <Image
+            resizeMode="contain"
             source={1}
             style={
               Object {
                 "marginRight": 10,
+                "marginTop": 10,
                 "width": 55,
               }
             }
@@ -754,10 +762,12 @@ ShallowWrapper {
         "props": Object {
           "children": Array [
             <Image
+              resizeMode="contain"
               source={1}
               style={
                 Object {
                   "marginRight": 10,
+                  "marginTop": 10,
                   "width": 55,
                 }
               }
@@ -882,9 +892,11 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "class",
             "props": Object {
+              "resizeMode": "contain",
               "source": 1,
               "style": Object {
                 "marginRight": 10,
+                "marginTop": 10,
                 "width": 55,
               },
             },
@@ -1231,10 +1243,12 @@ exports[`WalletCard component tests Rendering 1`] = `
     }
   >
     <Image
+      resizeMode="contain"
       source={1}
       style={
         Object {
           "marginRight": 10,
+          "marginTop": 10,
           "width": 55,
         }
       }
