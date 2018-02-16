@@ -51,7 +51,7 @@ class NationsListScreen extends Component {
             const nation = item.item;
             return (<NationListItem text={nation.nationName}
                                     onPress={this.props.onSelectItem}
-                                    status={i18n.t(`enums.nation.status.${resolveStatus(nation)}`)}
+                                    status={i18n.t(`enums.nation.status.${resolveStatus(nation).key}`)}
                                     id={nation.id}/>);
           }}
           keyExtractor={(item) => item.id}
