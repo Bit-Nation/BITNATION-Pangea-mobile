@@ -1,7 +1,4 @@
 import _ from 'lodash';
-import GlobalStyles from '../global/Styles';
-import {MediaQueryStyleSheet} from "react-native-responsive";
-import defaultTextStyles from "../global/styles/defaultTextStyles";
 import Colors from "../global/colors";
 
 export function resolveNation(nations, id) {
@@ -52,17 +49,13 @@ export function nationIsValid(nation) {
 }
 
 // @todo Use Pangea libs implementation.
-export function resolveListStyle(nation): nationStatus {
-  if (nation.created) {
-    return Colors.Green;
+export function statusColor(nation) {
+  switch (resolveStatus(nation)) {
+    case 'accepted':
+      return Colors.Green;
+    case 'pending':
+      return Colors.Amber;
+    default:
+      return Colors.listItemTextState;
   }
-  if (nation.txHash) {
-    return Colors.Amber;
-  }
-
-  return Colors.listItemTextState;
 }
-
-const styles = MediaQueryStyleSheet.create({
-  ...GlobalStyles,
-});

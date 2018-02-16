@@ -14,7 +14,7 @@ import NationListHeader from '../../../components/common/NationListHeader';
 import { ALL_NATIONS } from '../../../reducers/nations';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import i18n from '../../../global/i18n';
-import { resolveStatus, resolveListStyle } from '../../../utils/nations';
+import { resolveStatus, statusColor } from '../../../utils/nations';
 
 class NationsListScreen extends Component {
 
@@ -58,7 +58,7 @@ class NationsListScreen extends Component {
             return (<NationListItem text={nation.nationName}
                                     onPress={this.props.onSelectItem}
                                     status={i18n.t(`enums.nation.status.${resolveStatus(nation)}`)}
-                                    statusColor={resolveListStyle(nation)}
+                                    statusColor={statusColor(nation)}
                                     id={nation.id}/>);
           }}
           keyExtractor={(item) => item.id}
