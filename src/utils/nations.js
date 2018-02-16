@@ -1,24 +1,53 @@
+//@flow
 import _ from 'lodash';
+import type {NationType} from 'BITNATION-Pangea-libs/src/database/schemata'
 
-export function resolveNation(nations, id) {
+/**
+ *
+ * @param nations {Array<NationType>} an list of nations
+ * @param id {number} the id of the nation
+ * @returns {*|ReactWrapper|ConfigT|ShallowWrapper}
+ */
+export function resolveNation(nations:Array<NationType>, id:number) {
   return _.find(nations, (nation) => nation.id === id);
 }
 
-type nationStatus = 'draft' | 'pending' | 'rejected' | 'accepted'
-
-// @todo Use Pangea libs implementation.
-export function resolveStatus(nation): nationStatus {
-  if (nation.created) {
-    return 'accepted';
-  }
-  if (nation.txHash) {
-    return 'pending';
-  }
-
-  return 'draft';
+/**
+ * @define NationStatus
+ * @property {string} key the translation key of the status
+ * @property {number} the type of the status 0 = unknown | 200 = success | 300 = failed | 400 = succeed (take a look at the transaction queue for the status codes)
+ */
+type NationStatus = {
+  key: string,
+  type: 0 | 200 | 300 | 400
 }
 
-export function convertToDatabase(nationData) {
+/**
+ * @desc Takes a nation and return's the status that should be displayed to the user
+ * @param nation
+ * @returns {Object}
+ */
+export function resolveStatus(nation: NationType): NationStatus {
+  if(!nation.tx){
+    return {
+      key: 'draft',
+      type: 0
+    };
+  }
+
+  return {
+    key: `${nation.tx.type}.${nation.tx.status}`,
+    type: nation.tx.status
+  }
+
+}
+
+/**
+ * @todo need's rewrite of the param's
+ * @param nationData
+ * @returns {{virtualNation: *, governanceService: (*|string|undefined|JoinEffectDescriptor)}}
+ */
+export function convertToDatabase(nationData:any) {
   return {
     ...nationData,
     // @todo Fix virtual nation save unselected state
@@ -27,7 +56,12 @@ export function convertToDatabase(nationData) {
   };
 }
 
-export function convertFromDatabase(nation) {
+/**
+ * @todo need's rewrite of the param's
+ * @param nation
+ * @returns {{governanceService: (Array|*)}}
+ */
+export function convertFromDatabase(nation:any) {
   return {
     ...nation,
     // @todo Fix virtual nation save unselected state
@@ -35,7 +69,12 @@ export function convertFromDatabase(nation) {
   };
 }
 
-export function nationIsValid(nation) {
+/**
+ * @todo need's rewrite of the param's
+ * @param nation
+ * @returns {boolean}
+ */
+export function nationIsValid(nation:any) {
   if (_.isEmpty(nation.nationName)) return false;
   if (_.isEmpty(nation.nationDescription)) return false;
   if (nation.virtualNation === null || nation.virtualNation === undefined) return false;
