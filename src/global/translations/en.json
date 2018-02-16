@@ -86,7 +86,22 @@
         "draft": "Draft",
         "rejected": "Rejected",
         "pending": "Pending",
-        "accepted": "Accepted"
+        "accepted": "Accepted",
+        "NATION_JOIN": {
+          "200": "Join | Pending",
+          "300": "Join | Accepted",
+          "400": "Join | Rejected"
+        },
+        "NATION_CREATE": {
+          "200": "Submit | Pending",
+          "300": "Submit | Accepted",
+          "400": "Submit | Rejected"
+        },
+        "NATION_LEAVE": {
+          "200": "Leave | Pending",
+          "300": "Leave | Accepted",
+          "400": "Leave | Rejected"
+        }
       }
     },
     "onOff": {
