@@ -26,7 +26,7 @@ class WalletScreen extends NavigatorComponent {
     this.props.updateWalletList();
   }
 
-  componentDidUpdate() {
+  updateNavigation() {
     this.props.navigator.setButtons({
       leftButtons: this.props.testingModeActive ? [{
         id: REMOVE_WALLETS_BUTTON,
@@ -36,10 +36,15 @@ class WalletScreen extends NavigatorComponent {
     });
   }
 
-  onWillAppear() {
-    super.onWillAppear();
+  componentDidUpdate() {
+    this.updateNavigation();
+  }
+
+  onDidAppear() {
+    super.onDidAppear();
 
     this.props.updateWalletList();
+    this.updateNavigation();
   }
 
   onNavBarButtonPress(id) {

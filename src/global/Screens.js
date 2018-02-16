@@ -176,7 +176,7 @@ const Screens = {
   },
   LOAD_WALLET_SCREEN: {
     screen: 'Pangea.LoadWalletScreen',
-    title: i18n.t('screens.loadWallet.title'),
+    title: '',
     ...baseKeyScreen,
   },
   INTRO_SCREEN: {
@@ -185,7 +185,7 @@ const Screens = {
   },
   RECEIVE_MONEY_SCREEN: {
     screen: 'Pangea.ReceiveMoneyScreen',
-    title: i18n.t('screens.receiveMoney.title'),
+    title: '',
     navigatorStyle,
   },
   VERIFY_KEY_SUCCESS_SCREEN: {
@@ -195,7 +195,7 @@ const Screens = {
   },
   SEND_MONEY_SCREEN: {
     screen: 'Pangea.SendMoneyScreen',
-    title: i18n.t('screens.sendMoney.title'),
+    title: '',
     navigatorStyle,
   },
   QR_CODE_SCANNER_SCREEN: {
