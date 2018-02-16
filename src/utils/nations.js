@@ -17,9 +17,12 @@ export function resolveNation(nations:Array<NationType>, id:number) {
  * @property {string} key the translation key of the status
  * @property {number} the type of the status 0 = unknown | 200 = success | 300 = failed | 400 = succeed (take a look at the transaction queue for the status codes)
  */
+type NationStatusCode = 0 | 200 | 300 | 400;
+
+
 type NationStatus = {
   key: string,
-  type: 0 | 200 | 300 | 400
+  type: NationStatusCode
 }
 
 /**
@@ -37,7 +40,7 @@ export function resolveStatus(nation: NationType): NationStatus {
 
   return {
     key: `${nation.tx.type}.${nation.tx.status}`,
-    type: nation.tx.status
+    type: ((nation.tx.status: any): NationStatusCode)
   }
 
 }
