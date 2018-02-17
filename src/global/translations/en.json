@@ -250,8 +250,11 @@
       "status": "Status: ",
       "citizen": "You are citizen of ",
       "statusDescription": {
-        "accepted": "Submitted to blockhain.",
-        "pending": "Submission in progress..."
+        "NATION_CREATE": {
+          "200": "Submission in progress...",
+          "300": "Submission failed.",
+          "400": "Submitted to blockhain."
+        }
       }
     },
     "createNation": {

@@ -32,6 +32,7 @@ class NationDetailsScreen extends Component {
     }
 
     const status = resolveStatus(nation);
+    const statusDescription = i18n.ifExists(`screens.nationDetails.statusDescription.${status.key}`);
 
     return (
       <View style={styles.screenContainer}>
@@ -47,7 +48,7 @@ class NationDetailsScreen extends Component {
           </View>
 
           <ScrollView>
-            {status.key !== 'draft' && this._buildStatusPanel(i18n.t(`screens.nationDetails.statusDescription.${status.key}`))}
+            {statusDescription && this._buildStatusPanel(statusDescription)}
 
             {this._buildAboutView(nation)}
             {/*  Will show Panel of Citizenship if nation.joinend == true */}
