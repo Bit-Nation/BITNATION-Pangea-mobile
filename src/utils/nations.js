@@ -13,16 +13,27 @@ export function resolveNation(nations:Array<NationType>, id:number) {
 }
 
 /**
- * @define NationStatus
- * @property {string} key the translation key of the status
- * @property {number} the type of the status 0 = unknown | 200 = success | 300 = failed | 400 = succeed (take a look at the transaction queue for the status codes)
+ * @define NationStatusCode
+ * @desc 0 = unknown | 200 = success | 300 = failed | 400 = succeed (take a look at the transaction queue for the status codes)
  */
 type NationStatusCode = 0 | 200 | 300 | 400;
 
+/**
+ * @define NationStatusType
+ * @desc Describes type of operation that status is related to, e.g. join, leave, create, etc.
+ */
+type NationStatusType = 'NONE' | 'NATION_JOIN' | 'NATION_LEAVE' | 'NATION_CREATE';
 
+/**
+ * @define NationStatus
+ * @property {string} key the translation key of the status
+ * @property {NationStatusType} type the type of the status
+ * @property {NationStatusCode} code the code of the status
+ */
 type NationStatus = {
   key: string,
-  type: NationStatusCode
+  type: NationStatusType,
+  code: NationStatusCode
 }
 
 /**
@@ -34,13 +45,15 @@ export function resolveStatus(nation: NationType): NationStatus {
   if(!nation.tx){
     return {
       key: 'draft',
-      type: 0
+      type: 'NONE',
+      code: 0
     };
   }
 
   return {
     key: `${nation.tx.type}.${nation.tx.status}`,
-    type: ((nation.tx.status: any): NationStatusCode)
+    type: ((nation.tx.type: any): NationStatusType),
+    code: ((nation.tx.status: any): NationStatusCode)
   }
 
 }
