@@ -41,13 +41,19 @@ type NationStatus = {
  * @param nation
  * @returns {Object}
  */
-export function resolveStatus(nation: NationType): NationStatus {
-  if(!nation.tx){
+export function resolveStatus(nation: NationType): NationStatus | null {
+
+  //idInSmartContract only exist when the nation was created
+  if(nation.idInSmartContract === -1){
     return {
       key: 'draft',
       type: 'NONE',
       code: 0
     };
+  }
+
+  if(nation.tx === null){
+    return null;
   }
 
   return {
