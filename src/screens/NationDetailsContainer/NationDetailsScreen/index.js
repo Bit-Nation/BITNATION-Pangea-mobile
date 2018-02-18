@@ -19,8 +19,31 @@ import { openedNation } from '../../../reducers/nations';
 import PanelViewAlert from '../../../components/common/PanelViewAlert';
 import PanelViewCitizen from '../../../components/common/PanelViewCitizen';
 import { nationIsValid, resolveStatus } from '../../../utils/nations';
+import pangeaLibs from '../../../services/container';
 
 class NationDetailsScreen extends Component {
+
+    /**
+     * @todo this need's to be refactored
+     */
+    constructor(){
+
+        super();
+
+        pangeaLibs
+            .then(container => {
+
+                container
+                    .queue
+                    .txQueue
+                    .startProcessing();
+
+                console.log("Started tx queue worker")
+
+            })
+            .catch(console.log);
+
+    }
 
   render() {
     const nation = openedNation(this.props);
@@ -62,6 +85,26 @@ class NationDetailsScreen extends Component {
     );
   }
 
+  _showJoinButton(nation){
+
+      if(nation.tx && nation.tx.status === 200){
+          return false;
+      }
+
+      return nation.joined;
+
+  }
+
+  _showLeaveButton(nation){
+
+      if(nation.tx && nation.tx.status === 200){
+          return false;
+      }
+
+      return nation.joined;
+
+  }
+
   _buildTabBar(joined, created) {
     const nation = openedNation(this.props);
 
@@ -86,10 +129,10 @@ class NationDetailsScreen extends Component {
           <NationActionButton iconSource={AssetsImage.Actions.map}
                               title={i18n.t('screens.nations.toolbar.map')} disable={true}/>
           <NationActionButton iconSource={AssetsImage.Actions.join}
-                              title={i18n.t('screens.nations.toolbar.join')} disable={joined || !created}
+                              title={i18n.t('screens.nations.toolbar.join')} disable={false === this._showJoinButton(nation)}
                               onPress={this.props.joinNation}/>
           <NationActionButton iconSource={AssetsImage.Actions.leave}
-                              title={i18n.t('screens.nations.toolbar.leave')} disable={!joined}
+                              title={i18n.t('screens.nations.toolbar.leave')} disable={false === this._showLeaveButton(nation)}
                               onPress={this.props.leaveNation}/>
         </View>
       );
