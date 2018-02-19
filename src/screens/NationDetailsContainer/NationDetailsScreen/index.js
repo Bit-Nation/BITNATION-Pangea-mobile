@@ -55,7 +55,7 @@ class NationDetailsScreen extends Component {
     }
 
     const status = resolveStatus(nation);
-    const statusDescription = i18n.ifExists(`screens.nationDetails.statusDescription.${status.key}`);
+    const statusDescription = (status !== null ? i18n.ifExists(`screens.nationDetails.statusDescription.${status.key}`) : '');
 
     return (
       <View style={styles.screenContainer}>
@@ -85,23 +85,31 @@ class NationDetailsScreen extends Component {
     );
   }
 
-  _showJoinButton(nation){
+  _disableJoinButton(nation){
 
       if(nation.tx && nation.tx.status === 200){
-          return false;
+          return true;
       }
 
-      return nation.joined;
+      if(nation.joined === true){
+          return true;
+      }
+
+      return false;
 
   }
 
-  _showLeaveButton(nation){
+  _disableLeaveButton(nation){
 
       if(nation.tx && nation.tx.status === 200){
-          return false;
+          return true;
       }
 
-      return nation.joined;
+      if(nation.joined === false){
+          return true;
+      }
+
+      return false;
 
   }
 
@@ -129,10 +137,10 @@ class NationDetailsScreen extends Component {
           <NationActionButton iconSource={AssetsImage.Actions.map}
                               title={i18n.t('screens.nations.toolbar.map')} disable={true}/>
           <NationActionButton iconSource={AssetsImage.Actions.join}
-                              title={i18n.t('screens.nations.toolbar.join')} disable={false === this._showJoinButton(nation)}
+                              title={i18n.t('screens.nations.toolbar.join')} disable={this._disableJoinButton(nation)}
                               onPress={this.props.joinNation}/>
           <NationActionButton iconSource={AssetsImage.Actions.leave}
-                              title={i18n.t('screens.nations.toolbar.leave')} disable={false === this._showLeaveButton(nation)}
+                              title={i18n.t('screens.nations.toolbar.leave')} disable={this._disableLeaveButton(nation)}
                               onPress={this.props.leaveNation}/>
         </View>
       );
