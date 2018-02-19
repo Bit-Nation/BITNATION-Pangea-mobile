@@ -66,12 +66,11 @@ class NationDetailsScreen extends Component {
           <View style={styles.titleContainer}>
             <View style={styles.titleBarLarge}>
               <Text style={styles.largeTitle}>{nation.nationName}</Text>
-              {console.log('joined nation: ', nation.joined)}
             </View>
           </View>
 
           <ScrollView>
-            {statusDescription && this._buildStatusPanel(statusDescription)}
+            {statusDescription != '' && this._buildStatusPanel(statusDescription)}
 
             {this._buildAboutView(nation)}
             {/*  Will show Panel of Citizenship if nation.joinend == true */}
