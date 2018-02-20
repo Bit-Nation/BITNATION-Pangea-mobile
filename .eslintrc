@@ -1,0 +1,20 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "react-native/react-native": true,
+    "jest/globals": true
+  },
+  "plugins": [
+    "react",
+    "react-native",
+    "jest"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-native/all",
+    "plugin:jest/recommended"
+  ],
+  "rules": {
+  }
+}
