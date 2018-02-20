@@ -3,7 +3,7 @@
   "extends": [
     "airbnb",
     "plugin:react-native/all",
-    "plugin:jest/recommended",
+    "plugin:jest/recommended"
   ],
   "plugins": [
     "jest",
@@ -16,6 +16,7 @@
   },
   "rules": {
     "require-jsdoc": 2,
-    "valid-jsdoc": 2
+    "valid-jsdoc": 2,
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
   }
 }
