@@ -10,15 +10,13 @@ import BodyParagraph from './BodyParagraph';
  * @type React.Component
  */
 export default class BodyParagraphs extends Component {
-
   render() {
     return (
       <View>
-        {_.map(this.props.paragraphs, (text, index) => <BodyParagraph text={text} key={index}/>)}
+        {_.map(this.props.paragraphs, (text, index) => <BodyParagraph text={text} key={index} />)}
       </View>
     );
   }
-
 }
 
 BodyParagraphs.propTypes = {

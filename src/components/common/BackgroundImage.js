@@ -9,16 +9,16 @@ import AssetsImages from '../../global/AssetsImages';
  * @type React.Component
  */
 export default class BackgroundImage extends React.Component {
-
   render() {
     return (
-      <Image style={[styles.background, this.props.style]}
-             source={this.props.source || AssetsImages.background}
-             resizeMode='cover'
-             {...this.props} />
+      <Image
+        style={[styles.background, this.props.style]}
+        source={this.props.source || AssetsImages.background}
+        resizeMode='cover'
+        {...this.props}
+      />
     );
   }
-
 }
 
 const styles = MediaQueryStyleSheet.create({
@@ -31,5 +31,5 @@ const styles = MediaQueryStyleSheet.create({
     width: '100%',
     height: '100%',
     zIndex: -1,
-  }
+  },
 });

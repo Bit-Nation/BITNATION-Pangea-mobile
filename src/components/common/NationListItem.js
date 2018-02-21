@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, Image, } from 'react-native';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
 import PropTypes from 'prop-types';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
 
@@ -11,25 +11,25 @@ import AssetsImages from '../../global/AssetsImages';
  * @type React.Component
  */
 export default class NationListItem extends Component {
-
   render() {
     return (
       <View style={styles.sectionListItemContainer}>
-        <TouchableOpacity testID='Touchable'
-                          onPress={() => this.props.onPress(this.props.id)}
-                          style={styles.sectionListTouchable}>
+        <TouchableOpacity
+          testID='Touchable'
+          onPress={() => this.props.onPress(this.props.id)}
+          style={styles.sectionListTouchable}
+        >
           <Text style={[styles.listItemText, this.props.textStyle]} numberOfLines={1}>
             {this.props.text}
           </Text>
           <Text style={styles.listItemTextState}>
             {this.props.status}
           </Text>
-          <Image source={AssetsImages.disclosureRowIcon} style={styles.sectionListDisclosure}/>
+          <Image source={AssetsImages.disclosureRowIcon} style={styles.sectionListDisclosure} />
         </TouchableOpacity>
       </View>
     );
   }
-
 }
 
 NationListItem.propTypes = {

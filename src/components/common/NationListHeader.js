@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, } from 'react-native';
+import { View, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
 
@@ -10,7 +10,6 @@ import GlobalStyles from '../../global/Styles';
  * @type React.Component
  */
 export default class NationListHeader extends Component {
-
   render() {
     return (
       <View style={styles.sectionListHeaderContainer}>
@@ -20,7 +19,6 @@ export default class NationListHeader extends Component {
       </View>
     );
   }
-
 }
 
 NationListHeader.propTypes = {

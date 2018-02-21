@@ -12,7 +12,6 @@ import i18n from '../../global/i18n';
  * @type React.Component
  */
 export default class PanelViewAlert extends Component {
-
   render() {
     const { style } = this.props;
 
@@ -22,12 +21,11 @@ export default class PanelViewAlert extends Component {
           {i18n.t('screens.nationDetails.status')}
         </Text>
         <Text style={styles.panelAlertStatus}>
-          {' ' + this.props.status}
+          {` ${this.props.status}`}
         </Text>
       </View>
     );
   }
-
 }
 
 

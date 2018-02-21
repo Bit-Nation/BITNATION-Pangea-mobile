@@ -8,11 +8,9 @@ const BN = require('bignumber.js');
  * @return {string}
  */
 export function roundEth(eth:string) : string {
+  const ethBn = new BN(eth);
 
-    const ethBn = new BN(eth);
-
-    return ethBn.round(5).toString(10);
-
+  return ethBn.round(5).toString(10);
 }
 
 /**
@@ -26,7 +24,7 @@ export function prettyWalletBalance(wallet, currency, successfulSuffix) {
   successfulSuffix = successfulSuffix || '';
   currency = currency.trim();
   if (wallet.balance !== null && wallet.balance !== undefined) {
-    return roundEth(wallet.balance) + ' ' + currency + successfulSuffix;
+    return `${roundEth(wallet.balance)} ${currency}${successfulSuffix}`;
   }
   return !wallet.synchronizationError ? i18n.t('common.updating') : i18n.t('common.updateFailed');
 }
@@ -42,7 +40,5 @@ export function prettyWalletBalance(wallet, currency, successfulSuffix) {
  * @return {string}
  */
 export function shortEthAddress(address:string) : string {
-
-    return `${address.substring(0, 5)}...${address.slice(-5)}`
-
+  return `${address.substring(0, 5)}...${address.slice(-5)}`;
 }

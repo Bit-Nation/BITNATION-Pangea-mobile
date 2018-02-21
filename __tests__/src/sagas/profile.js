@@ -1,44 +1,44 @@
-import { call, put, select, takeEvery } from 'redux-saga/effects'
-import { cloneableGenerator } from 'redux-saga/utils'
-import watchProfileUpdate, { updateProfile, getProfile, getProfileState } from '../../../src/sagas/profile'
-import { REQUEST_PROFILE_UPDATE, DONE_USER_EDITING, SET_USER_PROFILE, REQUEST_GET_PROFILE, CANCEL_USER_EDITING } from '../../../src/actions/profile'
-import { getPangeaLibrary } from '../../../src/services/container'
+import { call, put, select, takeEvery } from 'redux-saga/effects';
+import { cloneableGenerator } from 'redux-saga/utils';
+import watchProfileUpdate, { updateProfile, getProfile, getProfileState } from '../../../src/sagas/profile';
+import { REQUEST_PROFILE_UPDATE, DONE_USER_EDITING, SET_USER_PROFILE, REQUEST_GET_PROFILE, CANCEL_USER_EDITING } from '../../../src/actions/profile';
+import { getPangeaLibrary } from '../../../src/services/container';
 
-jest.mock('BITNATION-Pangea-libs')
-jest.mock('react-native-config')
+jest.mock('BITNATION-Pangea-libs');
+jest.mock('react-native-config');
 
 const pangeaLibrary = {
   profile: {
     profile: {
       setProfile: jest.fn(),
-      getProfile: jest.fn()
-    }
-  }
-}
+      getProfile: jest.fn(),
+    },
+  },
+};
 
 test('sagas - profile watcher', (done) => {
-  const iterator = watchProfileUpdate()
-  expect(iterator.next().value).toEqual(takeEvery(REQUEST_PROFILE_UPDATE, updateProfile))
-  expect(iterator.next().value).toEqual(takeEvery(REQUEST_GET_PROFILE, getProfile))
-  done()
-})
+  const iterator = watchProfileUpdate();
+  expect(iterator.next().value).toEqual(takeEvery(REQUEST_PROFILE_UPDATE, updateProfile));
+  expect(iterator.next().value).toEqual(takeEvery(REQUEST_GET_PROFILE, getProfile));
+  done();
+});
 
 test('sagas - updateProfile', (done) => {
   const mockAction = {
-    type: REQUEST_PROFILE_UPDATE
-  }
-  
-  const iterator = cloneableGenerator(updateProfile)(mockAction)
-  expect(iterator.next().value).toEqual(call(getPangeaLibrary))
-  expect(iterator.next(pangeaLibrary).value).toEqual(select(getProfileState))
+    type: REQUEST_PROFILE_UPDATE,
+  };
+
+  const iterator = cloneableGenerator(updateProfile)(mockAction);
+  expect(iterator.next().value).toEqual(call(getPangeaLibrary));
+  expect(iterator.next(pangeaLibrary).value).toEqual(select(getProfileState));
   const mockUser = {
     editingUser: {
       name: 'Jack',
       location: 'NYC',
-//      latitude: '42',
-//      longitude: '24'
-    }
-  }
+      //      latitude: '42',
+      //      longitude: '24'
+    },
+  };
 
   const profile = {
     id: 0,
@@ -49,40 +49,40 @@ test('sagas - updateProfile', (done) => {
     description: '',
     version: '0',
     image: mockUser.editingUser.avatar ? mockUser.editingUser.avatar : '',
-  }
-  expect(iterator.next(mockUser).value).toEqual(call(pangeaLibrary.profile.profile.setProfile, profile))
+  };
+  expect(iterator.next(mockUser).value).toEqual(call(pangeaLibrary.profile.profile.setProfile, profile));
 
   // clone and test the success case
-  const successIterator = iterator.clone()
-  expect(successIterator.next().value).toEqual(put({ type: DONE_USER_EDITING }))
-  
+  const successIterator = iterator.clone();
+  expect(successIterator.next().value).toEqual(put({ type: DONE_USER_EDITING }));
+
   // clone and test the failure case
-  const failureIterator = iterator.clone()
-  expect(failureIterator.throw('error').value).toEqual(put({ type: CANCEL_USER_EDITING }))
-  
-  done()
-})
+  const failureIterator = iterator.clone();
+  expect(failureIterator.throw('error').value).toEqual(put({ type: CANCEL_USER_EDITING }));
+
+  done();
+});
 
 test('sagas - getProfile', (done) => {
   const mockAction = {
-    type: REQUEST_GET_PROFILE
-  }
-  const iterator = cloneableGenerator(getProfile)(mockAction)
-  expect(iterator.next().value).toEqual(call(getPangeaLibrary))
-  expect(iterator.next(pangeaLibrary).value).toEqual(call(pangeaLibrary.profile.profile.getProfile))
-  
+    type: REQUEST_GET_PROFILE,
+  };
+  const iterator = cloneableGenerator(getProfile)(mockAction);
+  expect(iterator.next().value).toEqual(call(getPangeaLibrary));
+  expect(iterator.next(pangeaLibrary).value).toEqual(call(pangeaLibrary.profile.profile.getProfile));
+
   // clone and test the success case
-  const successIterator = iterator.clone()
+  const successIterator = iterator.clone();
   const mockProfile = {
     name: 'Jack',
     location: 'NYC',
-    image: null
-  }
-  expect(successIterator.next(mockProfile).value).toEqual(put({ type: SET_USER_PROFILE, user: {...mockProfile, avatar: null }}))
-  
-  // clone and test the failure case
-  const failureIterator = iterator.clone()
-  expect(failureIterator.throw('error').value).toEqual(put({ type: SET_USER_PROFILE, user: null }))
+    image: null,
+  };
+  expect(successIterator.next(mockProfile).value).toEqual(put({ type: SET_USER_PROFILE, user: { ...mockProfile, avatar: null } }));
 
-  done()
-})
+  // clone and test the failure case
+  const failureIterator = iterator.clone();
+  expect(failureIterator.throw('error').value).toEqual(put({ type: SET_USER_PROFILE, user: null }));
+
+  done();
+});

@@ -24,13 +24,12 @@ import {
 } from '../../../src/actions/modifyNation';
 
 describe('modify nation action creators', () => {
-
   const mockNation = {
     id: '12345',
     name: 'Test nation',
   };
   const mockCallback = jest.fn();
-  const mockError = { 'error': 'ERROR' };
+  const mockError = { error: 'ERROR' };
 
   test('startNationCreation', () => {
     expect(startNationCreation()).toEqual({
@@ -57,7 +56,7 @@ describe('modify nation action creators', () => {
     expect(editingNationFieldChange(field, value)).toEqual({
       type: EDITING_NATION_FIELD_CHANGE,
       payload: value,
-      field: field,
+      field,
     });
   });
 
@@ -114,5 +113,4 @@ describe('modify nation action creators', () => {
       error: mockError,
     });
   });
-
 });

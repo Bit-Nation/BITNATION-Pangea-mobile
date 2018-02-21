@@ -12,9 +12,10 @@ import Button from './Button';
  * @type React.Component
  */
 export default class PanelView extends Component {
-
   render() {
-    const { style, childrenContainerStyle, renderBottom, renderAdditionalInfo, children } = this.props;
+    const {
+      style, childrenContainerStyle, renderBottom, renderAdditionalInfo, children,
+    } = this.props;
 
     return (
       <View style={style}>
@@ -46,9 +47,11 @@ export default class PanelView extends Component {
 
         {
           this.props.onButtonClick &&
-          <Button style={styles.panelButton}
-                  title={this.props.buttonTitle}
-                  onPress={this.props.onButtonClick}/>
+          <Button
+            style={styles.panelButton}
+            title={this.props.buttonTitle}
+            onPress={this.props.onButtonClick}
+          />
         }
 
         <View style={styles.messageBottomContainer}>
@@ -60,7 +63,6 @@ export default class PanelView extends Component {
   }
 
   _renderHeader(title, icon, titleStyle) {
-
     titleStyle = titleStyle || styles.panelViewTitle;
 
     return (
@@ -84,7 +86,6 @@ export default class PanelView extends Component {
       </View>
     );
   }
-
 }
 
 

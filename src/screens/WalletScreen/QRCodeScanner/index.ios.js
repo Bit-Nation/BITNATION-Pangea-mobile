@@ -5,7 +5,6 @@ import Colors from '../../../global/colors';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 
 export default class QRCodeScannerScreen extends NavigatorComponent {
-
   static navigatorButtons = {
     leftButtons: [{
       id: 'cancel',
@@ -28,7 +27,6 @@ export default class QRCodeScannerScreen extends NavigatorComponent {
       />
     );
   }
-
 }
 
 QRCodeScannerScreen.propTypes = {

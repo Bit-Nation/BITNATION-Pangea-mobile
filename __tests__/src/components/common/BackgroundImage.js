@@ -5,7 +5,7 @@ import BackgroundImage from '../../../../src/components/common/BackgroundImage';
 
 test('BackgroundImage renders correctly', () => {
   const tree = renderer
-    .create(<BackgroundImage/>)
+    .create(<BackgroundImage />)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });
