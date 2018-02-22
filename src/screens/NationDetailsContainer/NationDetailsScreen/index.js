@@ -112,6 +112,12 @@ class NationDetailsScreen extends Component {
 
   }
 
+  _showDisabledAlert() {
+    Alert.alert(
+      i18n.t('alerts.nationsDisabled.title')
+    );
+  }
+
   _buildTabBar(joined, created) {
     const nation = openedNation(this.props);
 
@@ -136,10 +142,10 @@ class NationDetailsScreen extends Component {
           <NationActionButton iconSource={AssetsImage.Actions.map}
                               title={i18n.t('screens.nations.toolbar.map')} disable={true}/>
           <NationActionButton iconSource={AssetsImage.Actions.join}
-                              title={i18n.t('screens.nations.toolbar.join')} disable={this._disableJoinButton(nation)}
-                              onPress={this.props.joinNation}/>
+                              title={i18n.t('screens.nations.toolbar.join')} disable={false}
+                              onPress={this._showDisabledAlert}/>
           <NationActionButton iconSource={AssetsImage.Actions.leave}
-                              title={i18n.t('screens.nations.toolbar.leave')} disable={this._disableLeaveButton(nation)}
+                              title={i18n.t('screens.nations.toolbar.leave')} disable={true}
                               onPress={this.props.leaveNation}/>
         </View>
       );

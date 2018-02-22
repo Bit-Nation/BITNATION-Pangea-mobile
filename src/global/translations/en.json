@@ -176,6 +176,10 @@
     "error": {
       "title": "Error",
       "confirm": "$t(common.ok)"
+    },
+    "nationsDisabled": {
+      "title": "This function is disabled in this release. It will be re-enabled on March 3.",
+      "confirm": "$t(common.ok)"
     }
   },
   "screens": {
