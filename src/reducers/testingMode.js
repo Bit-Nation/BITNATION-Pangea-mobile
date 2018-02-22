@@ -2,9 +2,9 @@ import config from 'react-native-config';
 
 import { MAKE_STEP, RESET_STEPS, EMPTY_WALLET } from '../actions/testingMode';
 
-const stepsCountToToggle = 5;
+export const stepsCountToToggle = 5;
 
-const initialState = {
+export const initialState = {
   isActive: false,
   stepsLeftToToggle: stepsCountToToggle,
   walletEmpty: false,
