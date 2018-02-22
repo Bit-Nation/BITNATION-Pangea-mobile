@@ -2,11 +2,12 @@ import {
   CHANGE_ENTERED_MNEMONIC,
   CHANGE_MNEMONIC_VALID,
   CREATE_PRIVATE_KEY,
-  MNEMONIC_CREATED, REMOVE_ALL_PRIVATE_KEYS, REMOVE_PRIVATE_KEY, VALIDATE_ENTERED_MNEMONIC,
+  MNEMONIC_CREATED,
+  REMOVE_PRIVATE_KEY,
+  VALIDATE_ENTERED_MNEMONIC,
 } from '../actions/key';
 
-const initialState = {
-  walletCreatingInProgress: false,
+export const initialState = {
   createdMnemonic: null,
   enteredMnemonic: null,
   mnemonicValid: null,
@@ -16,7 +17,7 @@ const initialState = {
 export default function (state = initialState, action) {
   switch (action.type) {
     case CREATE_PRIVATE_KEY:
-      return { ...state, walletCreatingInProgress: true, createdMnemonic: null, enteredMnemonic: null };
+      return { ...state, createdMnemonic: null, enteredMnemonic: null };
     case REMOVE_PRIVATE_KEY:
       return { ...state, createdMnemonic: null, enteredMnemonic: null };
     case MNEMONIC_CREATED:
