@@ -23,22 +23,13 @@
 
 
 //This export declaration must contain each type specified in the latest schema
-export { 
-    AccountBalanceSchema,
-    AccountBalanceType,
-
-    MessageJobSchema,
-    MessageJobType,
-
-    NationSchema,
-    NationType,
-
-    ProfileSchema,
-    ProfileType,
-
-    TransactionJobSchema,
-    TransactionJobType,
-} from './schema/v1.js'; //Must be literal hard-coded path, for flow to work
+export {
+    Profile,
+    AccountBalance,
+    MessageJob,
+    TransactionJob,
+    Nation
+} from './schema/v2'; //Must be literal hard-coded path, for flow to work
 
  //This must be bumped each time a new file is added
 /** The latest schema version present in this codebase. */
@@ -47,16 +38,17 @@ export const LatestSchemaVersion : number = 1;
 const schemaModules = [
     require("./schema/v0.js"), //Path must be hard-coded
     require("./schema/v1.js"),
+    require("./schema/v2.js")
 ];
 
 /** An array containing each schema from version 0 up to LatestSchemaVersion. */
 export const Schemas = [];
 
 // Each schema file is located sequentially in src/database/schema/v<number>.js
-// The file must contain a schemata export, and a migration export. 
+// The file must contain a schemata export, and a migration export.
 // For more information, see https://realm.io/docs/javascript/latest/#migrations (See Linear Migrations)
 for(let i = 0; i <= LatestSchemaVersion; i++) {
-    Schemas[i] = { 
+    Schemas[i] = {
         schema: schemaModules[i].schemata,
         schemaVersion: i,
         migration: schemaModules[i].migration
