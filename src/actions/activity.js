@@ -14,6 +14,11 @@ export type Action =
   | DoneFetchMessagesAction
   | AddDummyMessageAction;
 
+export const MESSAGE_ADDED = 'MESSAGE_ADDED';
+export const START_FETCH_MESSAGES = 'START_FETCH_MESSAGES';
+export const DONE_FETCH_MESSAGES = 'DONE_FETCH_MESSAGES';
+export const ADD_DUMMY_MESSAGE = 'ADD_DUMMY_MESSAGE';
+
 /**
  * @desc Action creator for an action that should be called once new activity log message added.
  * @param {ActivityLogMessage} message Activity log message that is added.
@@ -21,7 +26,7 @@ export type Action =
  */
 export function messageAdded(message: ActivityLogMessage): MessageAddedAction {
   return {
-    type: 'MESSAGE_ADDED',
+    type: MESSAGE_ADDED,
     message,
   };
 }
@@ -33,7 +38,7 @@ export function messageAdded(message: ActivityLogMessage): MessageAddedAction {
  */
 export function startFetchMessages(limit: number = ACTIVITY_MESSAGES_LIMIT): StartFetchMessagesAction {
   return {
-    type: 'START_FETCH_MESSAGES',
+    type: START_FETCH_MESSAGES,
     limit,
   };
 }
@@ -45,7 +50,7 @@ export function startFetchMessages(limit: number = ACTIVITY_MESSAGES_LIMIT): Sta
  */
 export function doneFetchMessages(messages: Array<ActivityLogMessage>): DoneFetchMessagesAction {
   return {
-    type: 'DONE_FETCH_MESSAGES',
+    type: DONE_FETCH_MESSAGES,
     messages,
   };
 }
@@ -56,6 +61,6 @@ export function doneFetchMessages(messages: Array<ActivityLogMessage>): DoneFetc
  */
 export function addDummyMessage(): AddDummyMessageAction {
   return {
-    type: 'ADD_DUMMY_MESSAGE',
+    type: ADD_DUMMY_MESSAGE,
   };
 }

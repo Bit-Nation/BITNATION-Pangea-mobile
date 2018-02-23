@@ -2,7 +2,12 @@
 
 import _ from 'lodash';
 
-import { type Action } from '../actions/activity';
+import {
+  type Action,
+  DONE_FETCH_MESSAGES,
+  MESSAGE_ADDED,
+  START_FETCH_MESSAGES,
+} from '../actions/activity';
 import type { ActivityLogMessage } from '../types/ActivityLogMessage';
 import { ACTIVITY_MESSAGES_LIMIT } from '../global/Constants';
 
@@ -43,17 +48,17 @@ export function mergeMessages(
  */
 export default function (state: State = initialState, action: Action): State {
   switch (action.type) {
-    case 'MESSAGE_ADDED':
+    case MESSAGE_ADDED:
       return {
         ...state,
         messages: mergeMessages(state.messages, [action.message]),
       };
-    case 'START_FETCH_MESSAGES':
+    case START_FETCH_MESSAGES:
       return {
         ...state,
         isFetching: true,
       };
-    case 'DONE_FETCH_MESSAGES':
+    case DONE_FETCH_MESSAGES:
       return {
         ...state,
         messages: mergeMessages(state.messages, action.messages),
