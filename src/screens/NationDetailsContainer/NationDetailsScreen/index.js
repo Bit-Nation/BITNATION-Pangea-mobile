@@ -21,21 +21,20 @@ import PanelViewCitizen from '../../../components/common/PanelViewCitizen';
 import { nationIsValid, resolveStatus } from '../../../utils/nations';
 
 class NationDetailsScreen extends Component {
-
   render() {
     const nation = openedNation(this.props);
 
     if (!nation) {
       this.props.navigator.pop();
-      return <BackgroundImage/>;
+      return <BackgroundImage />;
     }
 
     const status = resolveStatus(nation);
 
     return (
       <View style={styles.screenContainer}>
-        <BackgroundImage/>
-        <FakeNavigationBar navBarHidden=''/>
+        <BackgroundImage />
+        <FakeNavigationBar navBarHidden='' />
         <View style={styles.bodyContainer}>
           {/* TITLE OF SCREEN */}
           <View style={styles.titleContainer}>
@@ -66,32 +65,47 @@ class NationDetailsScreen extends Component {
     if (this.props.isDraft) {
       return (
         <View style={styles.fakeBottomBar}>
-          <NationActionButton iconSource={AssetsImage.Actions.delete}
-                              title={i18n.t('screens.nations.toolbar.delete')}
-                              disable={false}
-                              onPress={this.props.deleteDraft}/>
-          <NationActionButton iconSource={AssetsImage.Actions.submit}
-                              title={i18n.t('screens.nations.toolbar.submit')}
-                              disable={!nationIsValid(nation)}
-                              onPress={this.props.submitDraft}/>
-        </View>
-      );
-    } else {
-      return (
-        <View style={styles.fakeBottomBar}>
-          <NationActionButton iconSource={AssetsImage.Actions.chat}
-                              title={i18n.t('screens.nations.toolbar.chat')} disable={true}/>
-          <NationActionButton iconSource={AssetsImage.Actions.map}
-                              title={i18n.t('screens.nations.toolbar.map')} disable={true}/>
-          <NationActionButton iconSource={AssetsImage.Actions.join}
-                              title={i18n.t('screens.nations.toolbar.join')} disable={joined || !created}
-                              onPress={this.props.joinNation}/>
-          <NationActionButton iconSource={AssetsImage.Actions.leave}
-                              title={i18n.t('screens.nations.toolbar.leave')} disable={!joined}
-                              onPress={this.props.leaveNation}/>
+          <NationActionButton
+            iconSource={AssetsImage.Actions.delete}
+            title={i18n.t('screens.nations.toolbar.delete')}
+            disable={false}
+            onPress={this.props.deleteDraft}
+          />
+          <NationActionButton
+            iconSource={AssetsImage.Actions.submit}
+            title={i18n.t('screens.nations.toolbar.submit')}
+            disable={!nationIsValid(nation)}
+            onPress={this.props.submitDraft}
+          />
         </View>
       );
     }
+    return (
+      <View style={styles.fakeBottomBar}>
+        <NationActionButton
+          iconSource={AssetsImage.Actions.chat}
+          title={i18n.t('screens.nations.toolbar.chat')}
+          disable
+        />
+        <NationActionButton
+          iconSource={AssetsImage.Actions.map}
+          title={i18n.t('screens.nations.toolbar.map')}
+          disable
+        />
+        <NationActionButton
+          iconSource={AssetsImage.Actions.join}
+          title={i18n.t('screens.nations.toolbar.join')}
+          disable={joined || !created}
+          onPress={this.props.joinNation}
+        />
+        <NationActionButton
+          iconSource={AssetsImage.Actions.leave}
+          title={i18n.t('screens.nations.toolbar.leave')}
+          disable={!joined}
+          onPress={this.props.leaveNation}
+        />
+      </View>
+    );
   }
 
   // Useful Notes:
@@ -100,20 +114,22 @@ class NationDetailsScreen extends Component {
 
   _buildAboutView(nation) {
     return (
-      <PanelView style={styles.panelView}
-                 childrenContainerStyle={{ flex: 0, }}
-                 title={i18n.t('screens.nationDetails.aboutInfo', { name: nation.nationName })}>
+      <PanelView
+        style={styles.panelView}
+        childrenContainerStyle={{ flex: 0 }}
+        title={i18n.t('screens.nationDetails.aboutInfo', { name: nation.nationName })}
+      >
         <Text style={styles.panelSubTitle}>
-          {i18n.t('screens.nationDetails.description') + ':'}
+          {`${i18n.t('screens.nationDetails.description')}:`}
         </Text>
         <Text style={styles.body}>
-          {nation.nationDescription ? nation.nationDescription + '\n' : ''}
-          {i18n.t('screens.nationDetails.locationInfo', {
+          {nation.nationDescription ? `${nation.nationDescription}\n` : ''}
+          {`${i18n.t('screens.nationDetails.locationInfo', {
             name: nation.nationName,
             locationType: nation.exists ?
               i18n.t('enums.nation.locationType.geographical') :
               i18n.t('enums.nation.locationType.virtual'),
-          }) + '\n'}
+          })}\n`}
         </Text>
         <Text style={styles.panelSubTitle}>
           {i18n.t('screens.nationDetails.ethereumAddress')}
@@ -127,9 +143,11 @@ class NationDetailsScreen extends Component {
 
   _buildGovernmentalStructureView(nation) {
     return (
-      <PanelView style={styles.panelView}
-                 childrenContainerStyle={{ flex: 0, }}
-                 title={i18n.t('common.governmentalStructure')}>
+      <PanelView
+        style={styles.panelView}
+        childrenContainerStyle={{ flex: 0 }}
+        title={i18n.t('common.governmentalStructure')}
+      >
         <Text style={styles.body}>
           {i18n.t('screens.nationDetails.legalSystemInfo', {
             name: nation.nationName,
@@ -150,11 +168,13 @@ class NationDetailsScreen extends Component {
 
   _buildFactsView(nation) {
     return (
-      <PanelView style={styles.panelView}
-                 childrenContainerStyle={{ flex: 0, }}
-                 title={i18n.t('screens.nationDetails.funFacts')}>
+      <PanelView
+        style={styles.panelView}
+        childrenContainerStyle={{ flex: 0 }}
+        title={i18n.t('screens.nationDetails.funFacts')}
+      >
         <Text style={styles.body}>
-          {nation.diplomaticRecognition ? (i18n.t('screens.nationDetails.diplomaticRecognitionInfo', { name: nation.nationName }) + '\n\n') : ''}
+          {nation.diplomaticRecognition ? (`${i18n.t('screens.nationDetails.diplomaticRecognitionInfo', { name: nation.nationName })}\n\n`) : ''}
 
           {i18n.t('screens.nationDetails.serviceUsageInfo', {
             allowance: nation.createNationsNonCitizensMayUseGovernanceServices ? i18n.t('enums.nation.usageAllowance.may') : i18n.t('enums.nation.usageAllowance.mayNot'),
@@ -173,7 +193,8 @@ class NationDetailsScreen extends Component {
     return (
       <PanelViewAlert
         style={styles.panelViewAlert}
-        status={status}/>
+        status={status}
+      />
     );
   }
 
@@ -182,7 +203,8 @@ class NationDetailsScreen extends Component {
       return (
         <PanelViewCitizen
           style={styles.panelViewCitizen}
-          nationName={nation.nationName}/>
+          nationName={nation.nationName}
+        />
       );
     }
   }

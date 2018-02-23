@@ -29,7 +29,7 @@ const styles = {
   // Text: Number of nations, shown in the text above the list.
   nationsCountString: {
     ...GlobalStyles.bodyBlack,
-    color: 'white',//Colors.BitnationHighlightColor,
+    color: 'white', // Colors.BitnationHighlightColor,
   },
 
 
@@ -44,7 +44,7 @@ const styles = {
   // Text: Header bar across the top of the list of nations in the panel
   nationsListHeaderText: {
     ...GlobalStyles.body,
-    //color: Colors.BitnationHighlightColor,
+    // color: Colors.BitnationHighlightColor,
   },
 
   // Text: Name of a nation in the list, e.g. "My Country"

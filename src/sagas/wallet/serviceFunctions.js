@@ -17,7 +17,7 @@ export async function syncWallet(wallet) {
 
 export async function resolveBalance(wallet) {
   const container = await containerPromise;
-  let walletObject = await container.eth.wallet.ethBalance(wallet.ethAddress);
+  const walletObject = await container.eth.wallet.ethBalance(wallet.ethAddress);
 
   if (walletObject === null ||
     (new Date()).getTime() - walletObject.synced_at.getTime() > BALANCE_EXPIRATION_INTERVAL) {

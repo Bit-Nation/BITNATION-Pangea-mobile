@@ -10,13 +10,11 @@ import GlobalStyles from '../../global/Styles';
  * @todo Create component for global screen margins handling and deprecate this one.
  */
 export default class FakeNavigationBar extends Component {
-
   render() {
     return (
-      <View style={this.props.navBarHidden ? styles.fakeStatusBar : styles.fakeNavigationBar}/>
+      <View style={this.props.navBarHidden ? styles.fakeStatusBar : styles.fakeNavigationBar} />
     );
   }
-
 }
 
 const styles = MediaQueryStyleSheet.create({

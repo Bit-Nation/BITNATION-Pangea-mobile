@@ -19,7 +19,6 @@ import i18n from '../../../global/i18n';
 import PanelView from '../../../components/common/PanelView';
 
 class LoadWalletScreen extends KeyBaseScreen {
-
   onNextButtonPressed() {
     this.props.navigator.push(screen('VERIFY_KEY_PROCESS_SCREEN'));
   }
@@ -27,24 +26,27 @@ class LoadWalletScreen extends KeyBaseScreen {
   render() {
     return (
       <View style={styles.screenContainer}>
-        <BackgroundImage/>
-        <FakeNavigationBar/>
+        <BackgroundImage />
+        <FakeNavigationBar />
 
         <View style={styles.bodyContainer}>
           <View style={styles.titleContainer}>
             {/* TITLE OF SCREEN */}
             <View style={styles.titleBarLarge}>
-              <Text style={styles.largeTitle}>{i18n.t(
-                'screens.loadWallet.title')}</Text>
+              <Text style={styles.largeTitle}>
+                {i18n.t('screens.loadWallet.title')}
+              </Text>
             </View>
           </View>
 
 
-          <PanelView style={styles.panelViewTransparent}
-                     childrenContainerStyle={styles.noflex}
-                     buttonTitle={i18n.t('screens.loadWallet.startButton')}
-                     onButtonClick={() => this.onNextButtonPressed()}>
-            <BodyParagraphs paragraphs={i18n.t('screens.loadWallet.instructions', { KEY_LENGTH })}/>
+          <PanelView
+            style={styles.panelViewTransparent}
+            childrenContainerStyle={styles.noflex}
+            buttonTitle={i18n.t('screens.loadWallet.startButton')}
+            onButtonClick={() => this.onNextButtonPressed()}
+          >
+            <BodyParagraphs paragraphs={i18n.t('screens.loadWallet.instructions', { KEY_LENGTH })} />
 
           </PanelView>
         </View>

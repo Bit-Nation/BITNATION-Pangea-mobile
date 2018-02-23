@@ -5,7 +5,7 @@ import FakeNavigationBar from '../../../../src/components/common/FakeNavigationB
 
 test('FakeNavigationBar renders correctly', () => {
   const tree = renderer
-    .create(<FakeNavigationBar/>)
+    .create(<FakeNavigationBar />)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });
