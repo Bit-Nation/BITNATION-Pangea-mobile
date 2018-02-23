@@ -125,7 +125,7 @@ export class Nation {
     stateMutateAllowed: boolean;
     resetStateMutateAllowed: boolean;
     tx: TransactionJob | null;
-    
+
     schema: {
         name: 'Nation',
         primaryKey: 'id',
@@ -139,7 +139,6 @@ export class Nation {
                 type: 'TransactionJob',
                 optional: true,
             },
-            created: 'bool',
             nationName: 'string',
             nationDescription: 'string',
             exists: 'bool',
@@ -181,5 +180,7 @@ export const schemata =
     ];
 
 export const migration = (oldRealm: any, newRealm: any) => {
+
+    //@todo 0.3.3 remove `created` prop from nation schema
 
 };
