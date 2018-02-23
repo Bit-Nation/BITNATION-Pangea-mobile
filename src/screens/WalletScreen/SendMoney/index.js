@@ -27,7 +27,6 @@ import NavigatorComponent from '../../../components/common/NavigatorComponent';
 const SEND_BUTTON = 'SEND_BUTTON';
 
 class SendMoney extends NavigatorComponent {
-
   static navigatorButtons = { ...androidNavigationButtons };
 
   onNavBarButtonPress(id) {
@@ -105,13 +104,13 @@ class SendMoney extends NavigatorComponent {
   render() {
     const wallet = this._resolveWallet();
     if (!wallet) {
-      return <View/>;
+      return <View />;
     }
 
     return (
       <View style={styles.screenContainer}>
-        <BackgroundImage/>
-        <FakeNavigationBar/>
+        <BackgroundImage />
+        <FakeNavigationBar />
         <View style={styles.bodyContainer}>
 
           <View style={styles.titleContainer}>
@@ -122,9 +121,10 @@ class SendMoney extends NavigatorComponent {
 
           <PanelView
             style={styles.panelView}
-            childrenContainerStyle={styles.noflex}>
+            childrenContainerStyle={styles.noflex}
+          >
             <View style={styles.row}>
-              <Image style={styles.icon} source={Images.eth} resizeMode="contain"/>
+              <Image style={styles.icon} source={Images.eth} resizeMode='contain' />
               <View style={styles.textColumn}>
                 <Text style={styles.bodyBold}>{i18n.t('common.ethereum')}</Text>
                 <Text style={styles.currencyLarge}>{prettyWalletBalance(wallet, wallet.currency)}</Text>
@@ -134,7 +134,8 @@ class SendMoney extends NavigatorComponent {
 
           <PanelView
             style={styles.panelViewTransparent}
-            childrenContainerStyle={styles.noflex}>
+            childrenContainerStyle={styles.noflex}
+          >
             <View style={styles.formRow}>
               <View style={styles.fieldsContainer}>
                 <Text style={[styles.footnote, { marginLeft: 5 }]}>{i18n.t('common.amount')}</Text>
@@ -145,7 +146,7 @@ class SendMoney extends NavigatorComponent {
                       placeholder='1.02'
                       placeholderTextColor={Colors.placeholderTextColor}
                       keyboardType='numeric'
-                      onChangeText={(amountString) => this.setState({ amountString })}
+                      onChangeText={amountString => this.setState({ amountString })}
                       value={this.state.amountString}
                     />
                     <Text style={styles.currencyPlaceholder}>
@@ -161,7 +162,7 @@ class SendMoney extends NavigatorComponent {
                     placeholderTextColor={Colors.placeholderTextColor}
                     keyboardType='default'
                     autoCapitalize='none'
-                    onChangeText={(toEthAddress) => this.setState({ toEthAddress })}
+                    onChangeText={toEthAddress => this.setState({ toEthAddress })}
                     value={this.state.toEthAddress}
                   />
                 </View>
@@ -171,11 +172,10 @@ class SendMoney extends NavigatorComponent {
           </PanelView>
 
         </View>
-        {this.props.moneySendingInProgress ? <Loading/> : null}
+        {this.props.moneySendingInProgress ? <Loading /> : null}
       </View>
     );
   }
-
 }
 
 SendMoney.propTypes = {};
@@ -193,5 +193,4 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SendMoney);
-
 

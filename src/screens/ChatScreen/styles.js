@@ -20,8 +20,8 @@ const styles = MediaQueryStyleSheet.create({
   },
   customTextStyle: {
     fontFamily: 'Roboto',
-    fontWeight: 'normal'
-  }
+    fontWeight: 'normal',
+  },
 });
 
 export default styles;

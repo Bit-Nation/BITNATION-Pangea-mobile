@@ -21,20 +21,17 @@ import i18n from '../../../global/i18n';
 const EDIT_BUTTON = 'EDIT_BUTTON';
 
 class ProfileScreen extends NavigatorComponent {
-
   constructor(props) {
     super(props);
 
-    this.props.navigator.setButtons(
-      {
-        leftButtons: [],
-        rightButtons: [{
-          title: i18n.t('screens.profile.editButton'),
-          id: EDIT_BUTTON,
-          buttonColor: Colors.navigationButtonColor,
-        }],
-      },
-    );
+    this.props.navigator.setButtons({
+      leftButtons: [],
+      rightButtons: [{
+        title: i18n.t('screens.profile.editButton'),
+        id: EDIT_BUTTON,
+        buttonColor: Colors.navigationButtonColor,
+      }],
+    });
   }
 
   onNavBarButtonPress(id) {
@@ -53,13 +50,11 @@ class ProfileScreen extends NavigatorComponent {
 
   componentDidUpdate(prevProps) {
     if (prevProps.testingModeActive !== this.props.testingModeActive) {
-      Alert.alert(
-        i18n.t('testingMode.changeActiveAlert.title', {
-          onOff: this.props.testingModeActive ?
-            i18n.t('enums.onOff.on') :
-            i18n.t('enums.onOff.off'),
-        }),
-      );
+      Alert.alert(i18n.t('testingMode.changeActiveAlert.title', {
+        onOff: this.props.testingModeActive ?
+          i18n.t('enums.onOff.on') :
+          i18n.t('enums.onOff.off'),
+      }));
     }
   }
 
@@ -86,14 +81,13 @@ class ProfileScreen extends NavigatorComponent {
 
     return (
       <View style={styles.header}>
-        <Image source={avatarSource} style={styles.avatarLarge}/>
+        <Image source={avatarSource} style={styles.avatarLarge} />
         <Text style={styles.nameText}>{user.name.trim()}</Text>
         <Text style={styles.infoText}>{user.location.trim()}</Text>
         <Text style={styles.ethAddress}>{user.ethAddress}</Text>
       </View>
     );
   }
-
 }
 
 ProfileScreen.propTypes = {

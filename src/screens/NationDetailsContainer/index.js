@@ -16,22 +16,19 @@ import { alert, errorAlert } from '../../global/alerts';
 const EDIT_BUTTON = 'EDIT_BUTTON';
 
 class NationDetailsContainer extends NavigatorComponent {
-
   static navigatorButtons = { ...androidNavigationButtons };
 
   constructor(props) {
     super(props);
 
-    this.props.navigator.setButtons(
-      {
-        leftButtons: [],
-        rightButtons: this.props.isDraft ? [{
-          title: 'Edit',
-          id: EDIT_BUTTON,
-          buttonColor: Colors.navigationButtonColor,
-        }] : [],
-      },
-    );
+    this.props.navigator.setButtons({
+      leftButtons: [],
+      rightButtons: this.props.isDraft ? [{
+        title: 'Edit',
+        id: EDIT_BUTTON,
+        buttonColor: Colors.navigationButtonColor,
+      }] : [],
+    });
   }
 
   onNavBarButtonPress(id) {
@@ -72,8 +69,7 @@ class NationDetailsContainer extends NavigatorComponent {
 
           this.props.navigator.pop();
         }),
-      }],
-    );
+      }]);
   };
 
   _onSubmitDraft = () => {
@@ -91,8 +87,7 @@ class NationDetailsContainer extends NavigatorComponent {
 
           this.props.navigator.pop();
         }),
-      }],
-    );
+      }]);
   };
 
   onJoinNation = () => {
@@ -114,14 +109,15 @@ class NationDetailsContainer extends NavigatorComponent {
 
   render() {
     return (
-      <NationDetailsScreen {...this.props}
-                           joinNation={this.onJoinNation}
-                           leaveNation={this.onLeaveNation}
-                           deleteDraft={this._onDeleteDraft}
-                           submitDraft={this._onSubmitDraft}/>
+      <NationDetailsScreen
+        {...this.props}
+        joinNation={this.onJoinNation}
+        leaveNation={this.onLeaveNation}
+        deleteDraft={this._onDeleteDraft}
+        submitDraft={this._onSubmitDraft}
+      />
     );
   }
-
 }
 
 NationDetailsContainer.PropTypes = {
