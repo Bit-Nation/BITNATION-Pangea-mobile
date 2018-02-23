@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import Colors from "../global/colors";
 
 export function resolveNation(nations, id) {
   return _.find(nations, (nation) => nation.id === id);
@@ -45,4 +46,16 @@ export function nationIsValid(nation) {
   if (_.isEmpty(nation.governanceService)) return false;
 
   return true;
+}
+
+// @todo Use Pangea libs implementation.
+export function statusColor(nation) {
+  switch (resolveStatus(nation)) {
+    case 'accepted':
+      return Colors.Green;
+    case 'pending':
+      return Colors.Amber;
+    default:
+      return Colors.listItemTextState;
+  }
 }
