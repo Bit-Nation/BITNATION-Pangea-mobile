@@ -1,3 +1,5 @@
+// @flow
+
 import _ from 'lodash';
 
 import {
@@ -13,8 +15,18 @@ import {
   NATION_DRAFT_SAVE_FINISHED,
   NATION_DRAFT_DELETE_FINISHED,
 } from '../actions/modifyNation';
+import type { EditingNationType } from '../types/Nation';
+import type { Action } from '../actions/modifyNation';
 
-export const emptyNation = {
+type State = {
+  editingNation: EditingNationType | null,
+  initialNation: EditingNationType | null,
+  inProgress: boolean,
+  latestError: ?Error,
+};
+
+// $FlowFixMe
+export const emptyNation: EditingNationType = {
   nationName: '',
   nationDescription: '',
   exists: false,
@@ -29,14 +41,20 @@ export const emptyNation = {
   nonCitizenUse: false,
 };
 
-export const initialState = {
+export const initialState: State = {
   editingNation: null,
   initialNation: null,
   inProgress: false,
   latestError: null,
 };
 
-export default function (state = initialState, action) {
+/**
+ * @desc Modify nation reducer.
+ * @param {State} state Current state.
+ * @param {Action} action Performed Action.
+ * @returns {State} Next state.
+ */
+export default function (state: State = initialState, action: Action): State {
   switch (action.type) {
     case START_NATION_CREATION:
       return {
@@ -102,11 +120,16 @@ export default function (state = initialState, action) {
         inProgress: false,
         latestError: action.error,
       };
+    default:
+      return state;
   }
-
-  return state;
 }
 
-export function nationIsModified(state) {
+/**
+ * @desc Selector that checks if editing nation is modified compared to initial nation.
+ * @param {State} state Current state.
+ * @returns {boolean} Result.
+ */
+export function nationIsModified(state: State): boolean {
   return !_.isEqual(state.initialNation, state.editingNation);
 }
