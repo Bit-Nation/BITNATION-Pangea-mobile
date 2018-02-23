@@ -2,7 +2,6 @@
 // Schema v2: Effective from 0.3.3 to Current
 
 export class Profile {
-
     id: number;
     name:string;
     location:string;
@@ -26,11 +25,9 @@ export class Profile {
             version: 'string',
         }
     };
-
 }
 
 export class AccountBalance {
-
     id:string;
     address:string;
     amount:string;
@@ -48,11 +45,9 @@ export class AccountBalance {
             currency: 'string',
         }
     }
-
 }
 
 export class MessageJob {
-
     id:number;
     heading:string | null;
     interpret: boolean;
@@ -79,11 +74,9 @@ export class MessageJob {
             created_at: 'date',
         }
     }
-
 }
 
 export class TransactionJob {
-
     txHash: string;
     status: number;
     type: string;
@@ -105,7 +98,6 @@ export class TransactionJob {
 }
 
 export class Nation {
-
     id: number;
     idInSmartContract: number;
     created: boolean;
@@ -172,15 +164,15 @@ export class Nation {
 
 export const schemata =
     [
-        Profile,
-        AccountBalance,
-        MessageJob,
-        TransactionJob,
-        Nation,
+      Profile,
+      AccountBalance,
+      MessageJob,
+      TransactionJob,
+      Nation,
     ];
 
 export const migration = (oldRealm: any, newRealm: any) => {
 
-    //@todo 0.3.3 remove `created` prop from nation schema
+  // @todo 0.3.3 remove `created` prop from nation schema
 
 };

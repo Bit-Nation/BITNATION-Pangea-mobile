@@ -1,5 +1,5 @@
 // @flow
-// Schema v0: Effective from app beginning to 0.3.1 
+// Schema v0: Effective from app beginning to 0.3.1
 
 /**
  * @typedef ProfileType
@@ -21,18 +21,18 @@ export type ProfileType = {
 }
 
 export const ProfileSchema = {
-    name: 'Profile',
-    primaryKey: 'id',
-    properties: {
-        id: 'int',
-        name: 'string',
-        location: 'string',
-        latitude: 'string',
-        longitude: 'string',
-        description: 'string',
-        image: 'string',
-        version: 'string',
-    },
+  name: 'Profile',
+  primaryKey: 'id',
+  properties: {
+    id: 'int',
+    name: 'string',
+    location: 'string',
+    latitude: 'string',
+    longitude: 'string',
+    description: 'string',
+    image: 'string',
+    version: 'string',
+  },
 };
 
 /**
@@ -53,15 +53,15 @@ export type AccountBalanceType = {
 }
 
 export const AccountBalanceSchema = {
-    name: 'AccountBalance',
-    primaryKey: 'id',
-    properties: {
-        id: 'string',
-        address: 'string',
-        amount: 'string',
-        synced_at: 'date',
-        currency: 'string',
-    },
+  name: 'AccountBalance',
+  primaryKey: 'id',
+  properties: {
+    id: 'string',
+    address: 'string',
+    amount: 'string',
+    synced_at: 'date',
+    currency: 'string',
+  },
 };
 
 /**
@@ -81,15 +81,15 @@ export type MessageJobType = {
 }
 
 export const MessageJobSchema = {
-    name: 'MessageJob',
-    primaryKey: 'id',
-    properties: {
-        id: 'int',
-        heading: 'string',
-        text: 'string',
-        version: 'int',
-        created_at: 'date',
-    },
+  name: 'MessageJob',
+  primaryKey: 'id',
+  properties: {
+    id: 'int',
+    heading: 'string',
+    text: 'string',
+    version: 'int',
+    created_at: 'date',
+  },
 };
 
 /**
@@ -119,23 +119,23 @@ export type TransactionJobType = {
 }
 
 export const TransactionJobSchema = {
-    name: 'TransactionJob',
-    primaryKey: 'id',
-    properties: {
-        id: 'int',
-        timeout: 'int',
-        processor: 'string',
-        data: {
-            type: 'string',
-            optional: true,
-        },
-        successHeading: 'string',
-        successBody: 'string',
-        failHeading: 'string',
-        failBody: 'string',
-        status: 'string',
-        version: 'int',
+  name: 'TransactionJob',
+  primaryKey: 'id',
+  properties: {
+    id: 'int',
+    timeout: 'int',
+    processor: 'string',
+    data: {
+      type: 'string',
+      optional: true,
     },
+    successHeading: 'string',
+    successBody: 'string',
+    failHeading: 'string',
+    failBody: 'string',
+    status: 'string',
+    version: 'int',
+  },
 };
 
 /**
@@ -176,48 +176,48 @@ export type NationType = {
 }
 
 export const NationSchema = {
-    name: 'Nation',
-    primaryKey: 'id',
-    properties: {
-        id: 'int',
-        idInSmartContract: {
-            default: -1,
-            type: 'int',
-        },
-        txHash: {
-            type: 'string',
-            optional: true,
-        },
-        created: 'bool',
-        nationName: 'string',
-        nationDescription: 'string',
-        exists: 'bool',
-        virtualNation: 'bool',
-        nationCode: 'string',
-        lawEnforcementMechanism: 'string',
-        profit: 'bool',
-        nonCitizenUse: 'bool',
-        diplomaticRecognition: 'bool',
-        decisionMakingProcess: 'string',
-        governanceService: 'string',
-        citizens: {
-            type: 'int',
-            default: 0,
-        },
-        joined: {
-            type: 'bool',
-            default: false,
-        },
+  name: 'Nation',
+  primaryKey: 'id',
+  properties: {
+    id: 'int',
+    idInSmartContract: {
+      default: -1,
+      type: 'int',
     },
+    txHash: {
+      type: 'string',
+      optional: true,
+    },
+    created: 'bool',
+    nationName: 'string',
+    nationDescription: 'string',
+    exists: 'bool',
+    virtualNation: 'bool',
+    nationCode: 'string',
+    lawEnforcementMechanism: 'string',
+    profit: 'bool',
+    nonCitizenUse: 'bool',
+    diplomaticRecognition: 'bool',
+    decisionMakingProcess: 'string',
+    governanceService: 'string',
+    citizens: {
+      type: 'int',
+      default: 0,
+    },
+    joined: {
+      type: 'bool',
+      default: false,
+    },
+  },
 };
 
-export const schemata = 
+export const schemata =
 [
-    ProfileSchema,
-    AccountBalanceSchema,
-    MessageJobSchema,
-    TransactionJobSchema,
-    NationSchema,
+  ProfileSchema,
+  AccountBalanceSchema,
+  MessageJobSchema,
+  TransactionJobSchema,
+  NationSchema,
 ];
 
 export const migration = () => {};
