@@ -1,0 +1,13 @@
+export const TX_JOB_TYPE_NATION_CREATE = 'NATION_CREATE';
+
+export const TX_JOB_TYPE_NATION_JOIN = 'NATION_JOIN';
+
+export const TX_JOB_TYPE_NATION_LEAVE = 'NATION_LEAVE';
+
+export const TX_JOB_TYPE_ETH_SEND = 'ETH_SEND';
+
+export const TX_JOB_STATUS_PENDING = 200;
+
+export const TX_JOB_STATUS_SUCCESS = 300;
+
+export const TX_JOB_STATUS_FAILED = 400;

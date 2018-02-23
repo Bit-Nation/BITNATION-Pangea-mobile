@@ -1,7 +1,7 @@
 // @flow
 // Schema v1: Effective from 0.3.2 to Current
 
-import {TX_JOB_STATUS_PENDING, TX_JOB_TYPE_NATION_CREATE} from '../../../src/queues/transaction';
+import {TX_JOB_STATUS_PENDING, TX_JOB_TYPE_NATION_CREATE} from '../../constants';
 
 /**
  * @typedef ProfileType
