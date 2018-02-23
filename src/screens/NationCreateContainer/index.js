@@ -15,7 +15,6 @@ import { errorAlert, alert } from '../../global/alerts';
 import { nationIsModified } from '../../reducers/modifyNation';
 
 class NationCreateContainer extends Component {
-
   render() {
     return (
       <NationCreateScreen
@@ -54,8 +53,7 @@ class NationCreateContainer extends Component {
             this.props.navigator.dismissModal();
           });
         },
-      }],
-    );
+      }]);
   };
 
   _resetNationCreation = () => {
@@ -66,8 +64,7 @@ class NationCreateContainer extends Component {
       }, {
         name: 'confirm',
         onPress: () => this.props.onResetNationCreation(),
-      }],
-    );
+      }]);
   };
 
   _deleteForm = () => {
@@ -86,8 +83,7 @@ class NationCreateContainer extends Component {
 
           this.props.navigator.dismissModal();
         }),
-      }],
-    );
+      }]);
   };
 
   _saveForm = () => {
@@ -103,8 +99,7 @@ class NationCreateContainer extends Component {
         }, {
           name: 'close',
           onPress: () => this.props.navigator.dismissModal(),
-        }],
-      );
+        }]);
     });
   };
 
@@ -123,8 +118,7 @@ class NationCreateContainer extends Component {
 
           this.props.navigator.dismissModal();
         }),
-      }],
-    );
+      }]);
   };
 }
 
@@ -133,7 +127,7 @@ NationCreateContainer.PropTypes = {
 };
 
 const mapStateToProps = state => ({
-  ...state.modifyNation
+  ...state.modifyNation,
 });
 
 const mapDispatchToProps = dispatch => ({

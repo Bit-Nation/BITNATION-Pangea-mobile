@@ -13,20 +13,18 @@ import AssetsImages from '../../global/AssetsImages';
  * @type React.Component
  */
 export default class PanelViewCitizen extends Component {
-
   render() {
     const { style } = this.props;
 
     return (
       <View style={style}>
         <Text style={styles.body}>
-          {i18n.t('screens.nationDetails.citizen') + ' ' + this.props.nationName}
+          {`${i18n.t('screens.nationDetails.citizen')} ${this.props.nationName}`}
         </Text>
-        <Image source={AssetsImages.userCitizenIcon} style={styles.panelViewCitizenIcon}/>
+        <Image source={AssetsImages.userCitizenIcon} style={styles.panelViewCitizenIcon} />
       </View>
     );
   }
-
 }
 
 

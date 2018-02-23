@@ -9,15 +9,13 @@ import AssetsImages from '../../global/AssetsImages';
  * @type React.Component
  */
 export default class DemoImage extends Component {
-
   render() {
     return (
       <View style={styles.container}>
-        <Image source={AssetsImages.Placeholder.demo}/>
+        <Image source={AssetsImages.Placeholder.demo} />
       </View>
     );
   }
-
 }
 
 const styles = MediaQueryStyleSheet.create({

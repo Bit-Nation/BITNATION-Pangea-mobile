@@ -13,7 +13,6 @@ import PanelView from '../../../components/common/PanelView';
 import i18n from '../../../global/i18n';
 
 class EmptyProfileScreen extends Component {
-
   componentWillMount() {
     this.props.navigator.setButtons({ leftButtons: [], rightButtons: [] });
   }
@@ -38,7 +37,6 @@ class EmptyProfileScreen extends Component {
       </View>
     );
   }
-
 }
 
 EmptyProfileScreen.propTypes = {

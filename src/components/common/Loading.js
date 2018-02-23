@@ -7,15 +7,13 @@ import { MediaQueryStyleSheet } from 'react-native-responsive';
  * @type React.Component
  */
 export default class Loading extends Component {
-
   render() {
     return (
       <View style={styles.container}>
-        <ActivityIndicator/>
+        <ActivityIndicator />
       </View>
     );
   }
-
 }
 
 const styles = MediaQueryStyleSheet.create({

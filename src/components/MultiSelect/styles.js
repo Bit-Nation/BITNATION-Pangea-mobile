@@ -3,12 +3,12 @@
  * Copyright(c) 2017 Mustapha Babatunde Oluwaleke
  * MIT Licensed
  */
-import Colors from '../../global/colors'
+import Colors from '../../global/colors';
 
 export const colorPack = {
   primary: Colors.BitnationHighlightColor,
   primaryDark: '#215191',
-  light: 'transparent',//Colors.shadeOfBitnationLightColor(0.2),
+  light: 'transparent', // Colors.shadeOfBitnationLightColor(0.2),
   textPrimary: Colors.white,
   placeholderTextColor: Colors.white,
   danger: Colors.primary_red,
@@ -72,7 +72,7 @@ export default {
       flexDirection: 'column',
       marginBottom: 0,
       elevation: 2,
-    }
+    };
     if (fixedHeight) {
       style.height = 250;
     }

@@ -16,7 +16,9 @@ const initialState = {
 export default function (state = initialState, action) {
   switch (action.type) {
     case CREATE_PRIVATE_KEY:
-      return { ...state, walletCreatingInProgress: true, createdMnemonic: null, enteredMnemonic: null };
+      return {
+        ...state, walletCreatingInProgress: true, createdMnemonic: null, enteredMnemonic: null,
+      };
     case REMOVE_PRIVATE_KEY:
       return { ...state, createdMnemonic: null, enteredMnemonic: null };
     case MNEMONIC_CREATED:
@@ -24,11 +26,10 @@ export default function (state = initialState, action) {
     case CHANGE_ENTERED_MNEMONIC:
       return { ...state, enteredMnemonic: action.mnemonic };
     case VALIDATE_ENTERED_MNEMONIC:
-      return { ...state, mnemonicValid: null, mnemonicValidationInProgress: true, };
+      return { ...state, mnemonicValid: null, mnemonicValidationInProgress: true };
     case CHANGE_MNEMONIC_VALID:
-      return { ...state, mnemonicValid: action.mnemonicValid, mnemonicValidationInProgress: false, };
+      return { ...state, mnemonicValid: action.mnemonicValid, mnemonicValidationInProgress: false };
   }
   return state;
 }
-
 

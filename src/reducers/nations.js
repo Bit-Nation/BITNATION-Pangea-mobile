@@ -40,7 +40,7 @@ export default function (state = initialState, action) {
         inProgress: true,
       };
     case DONE_FETCH_NATIONS:
-      let myNations = [];
+      const myNations = [];
       action.payload.map((nation) => {
         if (nation.joined) {
           myNations.push(nation);
@@ -49,7 +49,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         nations: action.payload,
-        myNations: myNations,
+        myNations,
         inProgress: false,
       };
     case REQUEST_JOIN_NATION:
