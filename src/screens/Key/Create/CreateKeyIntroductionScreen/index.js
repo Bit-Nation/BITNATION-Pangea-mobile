@@ -17,7 +17,6 @@ import BodyParagraphs from '../../../../components/common/BodyParagraphs';
 import i18n from '../../../../global/i18n';
 
 class CreateKeyIntroductionScreen extends KeyBaseScreen {
-
   onNextButtonPressed() {
     this.props.navigator.push(screen('CREATE_KEY_INSTRUCTION_SCREEN'));
   }
@@ -25,8 +24,8 @@ class CreateKeyIntroductionScreen extends KeyBaseScreen {
   render() {
     return (
       <View style={styles.screenContainer}>
-        <BackgroundImage/>
-        <FakeNavigationBar/>
+        <BackgroundImage />
+        <FakeNavigationBar />
 
         <View style={styles.bodyContainer}>
           <View style={styles.titleContainer}>
@@ -36,12 +35,13 @@ class CreateKeyIntroductionScreen extends KeyBaseScreen {
             </View>
           </View>
 
-          <PanelView style={styles.panelViewTransparent}
-                     childrenContainerStyle={{ flex: 0, }}
-                     buttonTitle={i18n.t('screens.createKey.startButton')}
-                     onButtonClick={() => this.onNextButtonPressed()}
+          <PanelView
+            style={styles.panelViewTransparent}
+            childrenContainerStyle={{ flex: 0 }}
+            buttonTitle={i18n.t('screens.createKey.startButton')}
+            onButtonClick={() => this.onNextButtonPressed()}
           >
-            <BodyParagraphs paragraphs={i18n.t('screens.createKey.introduction')}/>
+            <BodyParagraphs paragraphs={i18n.t('screens.createKey.introduction')} />
 
           </PanelView>
         </View>

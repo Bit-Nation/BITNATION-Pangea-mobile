@@ -5,7 +5,6 @@ import { Navigator } from 'react-native-navigation';
 import NavigatorComponent from '../../../../src/components/common/NavigatorComponent';
 
 describe('NavigatorComponent tests', () => {
-
   test('NavigatorComponent passes navigation button press event', () => {
     const navigator = new Navigator();
     const component = new NavigatorComponent({ navigator });
@@ -48,5 +47,4 @@ describe('NavigatorComponent tests', () => {
   test('NavigatorComponent passes bottom bar tab reselected event', () => {
     componentPassesEvent('onBottomTabReselected', 'bottomTabReselected');
   });
-
 });

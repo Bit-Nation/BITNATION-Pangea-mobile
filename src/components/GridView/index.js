@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import {
-  View,
-} from 'react-native';
+import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import styles from './styles';
 import _ from 'lodash';
@@ -11,27 +9,25 @@ import _ from 'lodash';
  * @type React.Component
  */
 export class GridView extends Component {
-
   _renderItems(firstIndex, count) {
-    return _.map(_.range(0, count), (index) => {
-      return this.props.renderItem(firstIndex + index);
-    });
+    return _.map(_.range(0, count), index => this.props.renderItem(firstIndex + index));
   }
 
   _renderRows(count) {
-    return _.map(_.range(0, count), (index) => {
-      return (
-        <View style={[
+    return _.map(_.range(0, count), index => (
+      <View
+        style={[
           styles.row,
           (index > 0) && styles.rowMargin,
           this.props.disableInactiveRows && this.props.activeRow !== index && styles.rowInactive,
-        ]} key={index}>
-          {
+        ]}
+        key={index}
+      >
+        {
             this._renderItems(index * this.props.itemsPerRow, this.props.itemsPerRow)
           }
-        </View>
-      );
-    });
+      </View>
+    ));
   }
 
   render() {
@@ -43,7 +39,6 @@ export class GridView extends Component {
       </View>
     );
   }
-
 }
 
 GridView.propTypes = {

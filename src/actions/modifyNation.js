@@ -33,7 +33,7 @@ export function editingNationFieldChange(field, data) {
   return {
     type: EDITING_NATION_FIELD_CHANGE,
     payload: data,
-    field: field,
+    field,
   };
 }
 

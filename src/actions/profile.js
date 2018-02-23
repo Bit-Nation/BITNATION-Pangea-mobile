@@ -9,27 +9,27 @@ export const REQUEST_PROFILE_UPDATE = 'REQUEST_PROFILE_UPDATE';
 
 export function startUserCreating() {
   return {
-    type: START_USER_CREATING
+    type: START_USER_CREATING,
   };
 }
 
 export function startUserEditing() {
   return {
-    type: START_USER_EDITING
+    type: START_USER_EDITING,
   };
 }
 
 export function changeEditingUser(user) {
   return {
     type: CHANGE_EDITING_USER,
-    user: user,
+    user,
   };
 }
 
 export function setUserProfile(user) {
   return {
     type: SET_USER_PROFILE,
-    user: user,
+    user,
   };
 }
 
@@ -53,6 +53,6 @@ export function requestProfileUpdate() {
 
 export function getUserProfile() {
   return {
-    type: REQUEST_GET_PROFILE
+    type: REQUEST_GET_PROFILE,
   };
 }

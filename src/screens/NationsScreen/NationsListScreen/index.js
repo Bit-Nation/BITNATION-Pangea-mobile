@@ -17,25 +17,22 @@ import i18n from '../../../global/i18n';
 import { resolveStatus } from '../../../utils/nations';
 
 class NationsListScreen extends Component {
-
   render() {
     const nations = this.props.selectedTab === ALL_NATIONS ?
       this.props.nations
       :
-      _.filter(this.props.nations, (nation) => _.indexOf(this.props.myNations, nation.id) !== -1);
-    const sortedNations = _.sortBy(nations, (nation) => nation.nationName);
-    const groups = _.groupBy(sortedNations, (nation) => nation.nationName.charAt(0));
-    const sections = _.map(groups, (group, key) => {
-      return {
-        title: key,
-        data: group,
-      };
-    });
+      _.filter(this.props.nations, nation => _.indexOf(this.props.myNations, nation.id) !== -1);
+    const sortedNations = _.sortBy(nations, nation => nation.nationName);
+    const groups = _.groupBy(sortedNations, nation => nation.nationName.charAt(0));
+    const sections = _.map(groups, (group, key) => ({
+      title: key,
+      data: group,
+    }));
 
     return (
       <View style={styles.nationsScreenContainer}>
-        <BackgroundImage/>
-        <FakeNavigationBar/>
+        <BackgroundImage />
+        <FakeNavigationBar />
         {/* TITLE OF SCREEN */}
         <View style={styles.titleContainer}>
           <View style={styles.titleBarLarge}>
@@ -56,20 +53,21 @@ class NationsListScreen extends Component {
         <SectionList
           renderItem={(item) => {
             const nation = item.item;
-            return (<NationListItem text={nation.nationName}
-                                    onPress={this.props.onSelectItem}
-                                    status={i18n.t(`enums.nation.status.${resolveStatus(nation)}`)}
-                                    id={nation.id}/>);
+            return (<NationListItem
+              text={nation.nationName}
+              onPress={this.props.onSelectItem}
+              status={i18n.t(`enums.nation.status.${resolveStatus(nation)}`)}
+              id={nation.id}
+            />);
           }}
-          keyExtractor={(item) => item.id}
-          renderSectionHeader={({ section }) => <NationListHeader title={section.title}/>}
+          keyExtractor={item => item.id}
+          renderSectionHeader={({ section }) => <NationListHeader title={section.title} />}
           sections={sections}
           style={styles.sectionList}
         />
       </View>
     );
   }
-
 }
 
 export default NationsListScreen;

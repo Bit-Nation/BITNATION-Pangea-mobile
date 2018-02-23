@@ -8,14 +8,13 @@ import {
 } from '../../../src/actions/modifyNation';
 
 describe('modify nation reducer action handling', () => {
-
   const mockNation = {
     id: '12345',
     name: 'Mock nation',
   };
 
   const mockError = {
-    'error': 'ERROR',
+    error: 'ERROR',
   };
 
   test('startNationCreation', () => {
@@ -56,7 +55,7 @@ describe('modify nation reducer action handling', () => {
       ...stateBefore,
       editingNation: {
         ...stateBefore.editingNation,
-        'name': value,
+        name: value,
       },
     });
   });
@@ -127,5 +126,4 @@ describe('modify nation reducer action handling', () => {
       latestError: mockError,
     });
   });
-
 });
