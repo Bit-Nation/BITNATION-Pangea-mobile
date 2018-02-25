@@ -45,7 +45,8 @@ test('sagas - fetchNations', (done) => {
   const iterator = cloneableGenerator(fetchNations)(mockAction);
   expect(iterator.next().value).toEqual(call(getPangeaLibrary));
   expect(iterator.next(pangeaLibrary).value).toEqual(call(pangeaLibrary.eth.nation.all));
-  expect(iterator.next(mockNations).value).toEqual(put({ type: DONE_FETCH_NATIONS, payload: mockNations.map(convertFromDatabase) }));
+  expect(iterator.next(mockNations).value)
+    .toEqual(put({ type: DONE_FETCH_NATIONS, payload: mockNations.map(convertFromDatabase) }));
   expect(iterator.next().value).toEqual(call(checkConnection));
   expect(iterator.next().value).toEqual(call(pangeaLibrary.eth.nation.index));
   expect(iterator.next().value).toEqual(call(pangeaLibrary.eth.nation.all));
@@ -53,7 +54,8 @@ test('sagas - fetchNations', (done) => {
   // mock success case
   const successIterator = iterator.clone();
 
-  expect(successIterator.next(mockNations).value).toEqual(put({ type: DONE_FETCH_NATIONS, payload: mockNations.map(convertFromDatabase) }));
+  expect(successIterator.next(mockNations).value)
+    .toEqual(put({ type: DONE_FETCH_NATIONS, payload: mockNations.map(convertFromDatabase) }));
 
   // clone and test the failure case
   const failureIterator = iterator.clone();
@@ -80,7 +82,8 @@ test('sagas - joinNation', (done) => {
     ],
   };
   expect(iterator.next(mockNations).value).toEqual(call(checkConnection));
-  expect(iterator.next().value).toEqual(call(pangeaLibrary.eth.nation.joinNation, mockNations.openedNationId));
+  expect(iterator.next().value)
+    .toEqual(call(pangeaLibrary.eth.nation.joinNation, mockNations.openedNationId));
 
   // mock success case
   const successIterator = iterator.clone();
@@ -112,7 +115,8 @@ test('sagas - leaveNation', (done) => {
     ],
   };
   expect(iterator.next(mockNations).value).toEqual(call(checkConnection));
-  expect(iterator.next().value).toEqual(call(pangeaLibrary.eth.nation.leaveNation, mockNations.openedNationId));
+  expect(iterator.next().value)
+    .toEqual(call(pangeaLibrary.eth.nation.leaveNation, mockNations.openedNationId));
 
   // mock success case
   const successIterator = iterator.clone();
