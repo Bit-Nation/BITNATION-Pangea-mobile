@@ -21,7 +21,7 @@ class NationsListScreen extends Component {
     const nations = this.props.selectedTab === ALL_NATIONS ?
       this.props.nations
       :
-      _.filter(this.props.nations, nation => _.indexOf(this.props.myNations, nation.id) !== -1);
+      _.filter(this.props.nations, nation => _.indexOf(this.props.myNationIds, nation.id) !== -1);
     const sortedNations = _.sortBy(nations, nation => nation.nationName);
     const groups = _.groupBy(sortedNations, nation => nation.nationName.charAt(0));
     const sections = _.map(groups, (group, key) => ({

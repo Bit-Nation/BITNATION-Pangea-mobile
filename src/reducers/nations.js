@@ -1,4 +1,9 @@
+// @flow
+import _ from 'lodash';
+
 import {
+  type Action,
+  type NationTab,
   SWITCH_NATIONS_TAB,
   OPEN_NATION,
   DONE_FETCH_NATIONS,
@@ -7,22 +12,36 @@ import {
   REQUEST_JOIN_NATION,
   REQUEST_LEAVE_NATION,
 } from '../actions/nations';
+import type { NationType, NationIdType, EditingNationType } from '../types/Nation';
 import { resolveNation, resolveStatus } from '../utils/nations';
 
-export const ALL_NATIONS = 0;
-export const MY_NATIONS = 1;
+type State = {
+  nations: Array<NationType>,
+  myNationIds: Array<NationIdType>,
+  searchString: string | null,
+  selectedTab: NationTab,
+  openedNationId: NationIdType | null,
+  creatingNation: EditingNationType | null,
+  inProgress: boolean,
+}
 
-export const initialState = {
+export const initialState: State = {
   nations: [],
-  myNations: [],
+  myNationIds: [],
   searchString: null,
-  selectedTab: ALL_NATIONS,
+  selectedTab: 'ALL_NATIONS',
   openedNationId: null,
   creatingNation: null,
   inProgress: false,
 };
 
-export default function (state = initialState, action) {
+/**
+ * @desc Modify nation reducer.
+ * @param {State} state Current state.
+ * @param {Action} action Performed Action.
+ * @returns {State} Next state.
+ */
+export default function (state: State = initialState, action: Action): State {
   switch (action.type) {
     case SWITCH_NATIONS_TAB:
       return {
@@ -39,19 +58,18 @@ export default function (state = initialState, action) {
         ...state,
         inProgress: true,
       };
-    case DONE_FETCH_NATIONS:
-      const myNations = [];
-      action.payload.map((nation) => {
-        if (nation.joined) {
-          myNations.push(nation);
-        }
-      });
+    case DONE_FETCH_NATIONS: {
+      const myNationIds = _(action.payload)
+        .filter(nation => nation.joined)
+        .map(nation => nation.id)
+        .value();
       return {
         ...state,
         nations: action.payload,
-        myNations,
+        myNationIds,
         inProgress: false,
       };
+    }
     case REQUEST_JOIN_NATION:
       return {
         ...state,
@@ -67,9 +85,10 @@ export default function (state = initialState, action) {
         ...state,
         inProgress: false,
       };
+    default:
+      return state;
   }
-  return state;
 }
 
-export const openedNation = state => resolveNation(state.nations, state.openedNationId);
-export const isDraft = nation => resolveStatus(nation) === 'draft';
+export const openedNation = (state: State) => resolveNation(state.nations, state.openedNationId);
+export const isDraft = (nation: NationType) => resolveStatus(nation) === 'draft';
