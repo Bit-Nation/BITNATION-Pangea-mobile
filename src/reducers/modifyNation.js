@@ -123,7 +123,7 @@ export default (state: State = initialState, action: Action): State => {
     default:
       return state;
   }
-}
+};
 
 /**
  * @desc Selector that checks if editing nation is modified compared to initial nation.

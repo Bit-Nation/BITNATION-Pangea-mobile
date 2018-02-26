@@ -88,7 +88,7 @@ export default (state: State = initialState, action: Action): State => {
     default:
       return state;
   }
-}
+};
 
 export const openedNation = (state: State) => resolveNation(state.nations, state.openedNationId);
 export const isDraft = (nation: NationType) => resolveStatus(nation) === 'draft';

@@ -36,7 +36,8 @@ export function messageAdded(message: ActivityLogMessage): MessageAddedAction {
  * @param {number} limit Limit of count of messages to fetch.
  * @returns {{type: string, limit: number}} An action.
  */
-export function startFetchMessages(limit: number = ACTIVITY_MESSAGES_LIMIT): StartFetchMessagesAction {
+export function startFetchMessages(limit:
+                                     number = ACTIVITY_MESSAGES_LIMIT): StartFetchMessagesAction {
   return {
     type: START_FETCH_MESSAGES,
     limit,
