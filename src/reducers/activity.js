@@ -46,7 +46,7 @@ export function mergeMessages(
  * @param {Action} action Performed action.
  * @returns {State} Next state.
  */
-export default function (state: State = initialState, action: Action): State {
+export default (state: State = initialState, action: Action): State => {
   switch (action.type) {
     case MESSAGE_ADDED:
       return {

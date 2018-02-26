@@ -26,6 +26,12 @@ export const initialState: State = {
   editingUser: null,
 };
 
+/**
+ * @desc Profile reducer.
+ * @param {State} state Current state.
+ * @param {Action} action Performed action.
+ * @returns {State} Next state.
+ */
 export default (state: State = initialState, action: Action): State => {
   switch (action.type) {
     case START_USER_EDITING:

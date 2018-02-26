@@ -51,10 +51,10 @@ export const initialState: State = {
 /**
  * @desc Modify nation reducer.
  * @param {State} state Current state.
- * @param {Action} action Performed Action.
+ * @param {Action} action Performed action.
  * @returns {State} Next state.
  */
-export default function (state: State = initialState, action: Action): State {
+export default (state: State = initialState, action: Action): State => {
   switch (action.type) {
     case START_NATION_CREATION:
       return {
