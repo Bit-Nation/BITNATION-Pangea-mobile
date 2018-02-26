@@ -14,9 +14,10 @@ import Colors from '../../global/colors';
 
 export default class SwitchLabeled extends Component {
   render() {
-    const {
-      onValueChange,
-    } = this.props;
+    const { onValueChange } = this.props;
+    const styles = MediaQueryStyleSheet.create({
+      ...GlobalStyles,
+    });
     return (
       <View style={styles.formRow}>
         <View style={styles.switchContainer}>
@@ -37,14 +38,10 @@ SwitchLabeled.propTypes = {
   value: PropTypes.bool,
   label: PropTypes.string,
   onValueChange: PropTypes.func,
-}
+};
 
 SwitchLabeled.defaultProps = {
   value: false,
   label: '',
   onValueChange: () => null,
 };
-
-const styles = MediaQueryStyleSheet.create({
-  ...GlobalStyles,
-});
