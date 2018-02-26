@@ -181,7 +181,6 @@ class NationDetailsScreen extends Component {
     if (nation.joined) {
       return (
         <PanelViewCitizen
-          style={styles.panelViewCitizen}
           nationName={nation.nationName}/>
       );
     }
