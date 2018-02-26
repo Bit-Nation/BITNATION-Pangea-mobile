@@ -12,10 +12,10 @@ import {
 import type { Mnemonic } from '../types/Mnemonic';
 
 type State = {
-  createdMnemonic: Mnemonic | null,
-  enteredMnemonic: Mnemonic | null,
-  mnemonicValid: boolean | null,
-  mnemonicValidationInProgress: boolean,
+  +createdMnemonic: Mnemonic | null,
+  +enteredMnemonic: Mnemonic | null,
+  +mnemonicValid: boolean | null,
+  +mnemonicValidationInProgress: boolean,
 }
 
 const initialState: State = {

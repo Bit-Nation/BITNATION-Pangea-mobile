@@ -19,10 +19,10 @@ import type { EditingNationType } from '../types/Nation';
 import type { Action } from '../actions/modifyNation';
 
 type State = {
-  editingNation: EditingNationType | null,
-  initialNation: EditingNationType | null,
-  inProgress: boolean,
-  latestError: ?Error,
+  +editingNation: EditingNationType | null,
+  +initialNation: EditingNationType | null,
+  +inProgress: boolean,
+  +latestError: ?Error,
 };
 
 // $FlowFixMe

@@ -11,8 +11,8 @@ import {
 import { type ProfileType } from '../types/Profile';
 
 type State = {
-  user: ProfileType | null,
-  editingUser: ProfileType | null,
+  +user: ProfileType | null,
+  +editingUser: ProfileType | null,
 }
 
 export const emptyProfile: ProfileType = {

@@ -2,14 +2,14 @@
 
 import { type Mnemonic } from '../types/Mnemonic';
 
-type CreatePrivateKeyAction = { type: 'CREATE_PRIVATE_KEY' };
-type RemoveAllPrivateKeysAction = { type: 'REMOVE_ALL_PRIVATE_KEYS' };
-type RemovePrivateKeyAction = { type: 'REMOVE_PRIVATE_KEY' };
-type MnemonicCreatedAction = { type: 'MNEMONIC_CREATED', mnemonic: Mnemonic };
-type SavePrivateKeyAction = { type: 'SAVE_PRIVATE_KEY' };
-type ValidateEnteredMnemonicAction = { type: 'VALIDATE_ENTERED_MNEMONIC' };
-type ChangeMnemonicValidAction = { type: 'CHANGE_MNEMONIC_VALID', mnemonicValid: boolean | null };
-type ChangeEnteredMnemonicAction = { type: 'CHANGE_ENTERED_MNEMONIC', mnemonic: Mnemonic };
+type CreatePrivateKeyAction = { +type: 'CREATE_PRIVATE_KEY' };
+type RemoveAllPrivateKeysAction = { +type: 'REMOVE_ALL_PRIVATE_KEYS' };
+type RemovePrivateKeyAction = { +type: 'REMOVE_PRIVATE_KEY' };
+type MnemonicCreatedAction = { +type: 'MNEMONIC_CREATED', +mnemonic: Mnemonic };
+type SavePrivateKeyAction = { +type: 'SAVE_PRIVATE_KEY' };
+type ValidateEnteredMnemonicAction = { +type: 'VALIDATE_ENTERED_MNEMONIC' };
+type ChangeMnemonicValidAction = { +type: 'CHANGE_MNEMONIC_VALID', +mnemonicValid: boolean | null };
+type ChangeEnteredMnemonicAction = { +type: 'CHANGE_ENTERED_MNEMONIC', +mnemonic: Mnemonic };
 
 export type Action =
   | CreatePrivateKeyAction

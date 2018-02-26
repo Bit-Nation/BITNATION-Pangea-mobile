@@ -16,13 +16,13 @@ import type { NationType, NationIdType, EditingNationType } from '../types/Natio
 import { resolveNation, resolveStatus } from '../utils/nations';
 
 type State = {
-  nations: Array<NationType>,
-  myNationIds: Array<NationIdType>,
-  searchString: string | null,
-  selectedTab: NationTab,
-  openedNationId: NationIdType | null,
-  creatingNation: EditingNationType | null,
-  inProgress: boolean,
+  +nations: Array<NationType>,
+  +myNationIds: Array<NationIdType>,
+  +searchString: string | null,
+  +selectedTab: NationTab,
+  +openedNationId: NationIdType | null,
+  +creatingNation: EditingNationType | null,
+  +inProgress: boolean,
 }
 
 export const initialState: State = {

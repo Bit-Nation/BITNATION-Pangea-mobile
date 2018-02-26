@@ -3,44 +3,44 @@
 import { type NationType, type EditingNationType } from '../types/Nation';
 import type { NationIdType } from '../types/Nation';
 
-type StartNationCreationAction = { type: 'START_NATION_CREATION' };
-type StartNationEditingAction = { type: 'START_NATION_EDITING', nation: NationType };
-type ResetNationCreationAction = { type: 'RESET_NATION_CREATION' };
+type StartNationCreationAction = { +type: 'START_NATION_CREATION' };
+type StartNationEditingAction = { +type: 'START_NATION_EDITING', +nation: NationType };
+type ResetNationCreationAction = { +type: 'RESET_NATION_CREATION' };
 type EditingNationFieldChangeAction = {
-  type: 'EDITING_NATION_FIELD_CHANGE',
-  field: string,
-  payload: any,
+  +type: 'EDITING_NATION_FIELD_CHANGE',
+  +field: string,
+  +payload: any,
 };
-type CancelNationCreationAction = { type: 'CANCEL_NATION_CREATE' };
+type CancelNationCreationAction = { +type: 'CANCEL_NATION_CREATE' };
 type SaveNationDraftAction = {
-  type: 'SAVE_NATION_DRAFT',
-  nation: EditingNationType,
-  callback: () => void,
+  +type: 'SAVE_NATION_DRAFT',
+  +nation: EditingNationType,
+  +callback: () => void,
 };
 type DeleteNationDraftAction = {
-  type: 'DELETE_NATION_DRAFT',
-  nationId: NationIdType,
-  callback: () => void,
+  +type: 'DELETE_NATION_DRAFT',
+  +nationId: NationIdType,
+  +callback: () => void,
 };
 type SubmitNationAction = {
-  type: 'SUBMIT_NATION',
-  nation: EditingNationType,
-  callback: () => void,
+  +type: 'SUBMIT_NATION',
+  +nation: EditingNationType,
+  +callback: () => void,
 };
 type NationDraftSaveResultAction = {
-  type: 'NATION_DRAFT_SAVE_FINISHED',
-  nationId: NationIdType,
-  error: ?Error,
+  +type: 'NATION_DRAFT_SAVE_FINISHED',
+  +nationId: NationIdType,
+  +error: ?Error,
 };
 type NationDraftDeleteResultAction = {
-  type: 'NATION_DRAFT_DELETE_FINISHED',
-  nationId: NationIdType,
-  error: ?Error,
+  +type: 'NATION_DRAFT_DELETE_FINISHED',
+  +nationId: NationIdType,
+  +error: ?Error,
 };
 type NationSubmitResultAction = {
-  type: 'NATION_SUBMIT_FINISHED',
-  nationId: NationIdType,
-  error: ?Error,
+  +type: 'NATION_SUBMIT_FINISHED',
+  +nationId: NationIdType,
+  +error: ?Error,
 };
 
 export type Action =

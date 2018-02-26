@@ -2,14 +2,14 @@
 
 import { type ProfileType } from '../types/Profile';
 
-type StartUserCreatingAction = { type: 'START_USER_CREATING' };
-type StartUserEditingAction = { type: 'START_USER_EDITING' };
-type ChangeEditingUserAction = { type: 'CHANGE_EDITING_USER', user: ProfileType };
-type SetUserProfileAction = { type: 'SET_USER_PROFILE', user: ProfileType };
-type CancelUserEditingAction = { type: 'CANCEL_USER_EDITING' };
-type DoneUserEditingAction = { type: 'DONE_USER_EDITING' };
-type RequestProfileUpdateAction = { type: 'REQUEST_PROFILE_UPDATE' };
-type GetUserProfileAction = { type: 'REQUEST_GET_PROFILE' };
+type StartUserCreatingAction = { +type: 'START_USER_CREATING' };
+type StartUserEditingAction = { +type: 'START_USER_EDITING' };
+type ChangeEditingUserAction = { +type: 'CHANGE_EDITING_USER', +user: ProfileType };
+type SetUserProfileAction = { +type: 'SET_USER_PROFILE', +user: ProfileType };
+type CancelUserEditingAction = { +type: 'CANCEL_USER_EDITING' };
+type DoneUserEditingAction = { +type: 'DONE_USER_EDITING' };
+type RequestProfileUpdateAction = { +type: 'REQUEST_PROFILE_UPDATE' };
+type GetUserProfileAction = { +type: 'REQUEST_GET_PROFILE' };
 
 export type Action =
   | StartUserCreatingAction

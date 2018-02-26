@@ -4,11 +4,11 @@ import type { NationIdType } from '../types/Nation';
 
 export type NationTab = 'ALL_NATIONS' | 'MY_NATIONS';
 
-type SwitchNationTabAction = { type: 'SWITCH_NATIONS_TAB', tab: NationTab };
-type OpenNationAction = { type: 'OPEN_NATION', nationId: NationIdType };
-type RequestFetchNationsAction = { type: 'START_NATIONS_FETCH' };
-type JoinNationAction = { type: 'REQUEST_JOIN_NATION' };
-type LeaveNationAction = { type: 'REQUEST_LEAVE_NATION' };
+type SwitchNationTabAction = { +type: 'SWITCH_NATIONS_TAB', +tab: NationTab };
+type OpenNationAction = { +type: 'OPEN_NATION', +nationId: NationIdType };
+type RequestFetchNationsAction = { +type: 'START_NATIONS_FETCH' };
+type JoinNationAction = { +type: 'REQUEST_JOIN_NATION' };
+type LeaveNationAction = { +type: 'REQUEST_LEAVE_NATION' };
 
 export type Action =
   | SwitchNationTabAction

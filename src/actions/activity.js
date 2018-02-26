@@ -3,10 +3,10 @@
 import { ACTIVITY_MESSAGES_LIMIT } from '../global/Constants';
 import { type ActivityLogMessage } from '../types/ActivityLogMessage';
 
-type MessageAddedAction = { type: 'MESSAGE_ADDED', message: ActivityLogMessage };
-type StartFetchMessagesAction = { type: 'START_FETCH_MESSAGES', limit: number };
-type DoneFetchMessagesAction = { type: 'DONE_FETCH_MESSAGES', messages: Array<ActivityLogMessage> };
-type AddDummyMessageAction = { type: 'ADD_DUMMY_MESSAGE' };
+type MessageAddedAction = { +type: 'MESSAGE_ADDED', +message: ActivityLogMessage };
+type StartFetchMessagesAction = { +type: 'START_FETCH_MESSAGES', +limit: number };
+type DoneFetchMessagesAction = { +type: 'DONE_FETCH_MESSAGES', +messages: Array<ActivityLogMessage> };
+type AddDummyMessageAction = { +type: 'ADD_DUMMY_MESSAGE' };
 
 export type Action =
   | MessageAddedAction

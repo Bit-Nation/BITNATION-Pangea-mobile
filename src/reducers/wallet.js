@@ -15,10 +15,10 @@ import {
 import type { WalletType } from '../types/Wallet';
 
 type State = {
-  wallets: Array<WalletType> | null,
-  selectedWalletAddress: string | null,
-  moneySendingInProgress: boolean,
-  moneySendingError: ?Error,
+  +wallets: Array<WalletType> | null,
+  +selectedWalletAddress: string | null,
+  +moneySendingInProgress: boolean,
+  +moneySendingError: ?Error,
 };
 
 const initialState: State = {
