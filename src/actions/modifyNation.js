@@ -1,6 +1,7 @@
 // @flow
 
 import { type NationType, type EditingNationType } from '../types/Nation';
+import type { NationIdType } from '../types/Nation';
 
 type StartNationCreationAction = { type: 'START_NATION_CREATION' };
 type StartNationEditingAction = { type: 'START_NATION_EDITING', nation: NationType };
@@ -18,7 +19,7 @@ type SaveNationDraftAction = {
 };
 type DeleteNationDraftAction = {
   type: 'DELETE_NATION_DRAFT',
-  nationId: number,
+  nationId: NationIdType,
   callback: () => void,
 };
 type SubmitNationAction = {
@@ -28,17 +29,17 @@ type SubmitNationAction = {
 };
 type NationDraftSaveResultAction = {
   type: 'NATION_DRAFT_SAVE_FINISHED',
-  nationId: number,
+  nationId: NationIdType,
   error: ?Error,
 };
 type NationDraftDeleteResultAction = {
   type: 'NATION_DRAFT_DELETE_FINISHED',
-  nationId: number,
+  nationId: NationIdType,
   error: ?Error,
 };
 type NationSubmitResultAction = {
   type: 'NATION_SUBMIT_FINISHED',
-  nationId: number,
+  nationId: NationIdType,
   error: ?Error,
 };
 
@@ -80,7 +81,7 @@ export function startNationCreation(): StartNationCreationAction {
 /**
  * @desc Action creator for an action that should be called on start of nation editing process.
  * @param {NationType} nation Nation to edit.
- * @returns {StartNationEditingAction} An aciton.
+ * @returns {StartNationEditingAction} An action.
  */
 export function startNationEditing(nation: NationType): StartNationEditingAction {
   return {
