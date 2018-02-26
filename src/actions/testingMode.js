@@ -1,3 +1,5 @@
+// @flow
+
 type MakeStepAction = { +type: 'MAKE_STEP' };
 type ResetStepsAction = { +type: 'RESET_STEPS' };
 type EmptyWalletAction = { +type: 'EMPTY_WALLET' };
