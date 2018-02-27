@@ -15,20 +15,7 @@ import { errorAlert, alert } from '../../global/alerts';
 import { nationIsModified } from '../../reducers/modifyNation';
 
 class NationCreateContainer extends Component {
-  render() {
-    return (
-      <NationCreateScreen
-        {...this.props}
-        onCancelNationCreation={this._cancelNationCreation}
-        onResetNationCreation={this._resetNationCreation}
-        onSaveNationDraft={this._saveForm}
-        onDeleteNationDraft={this._deleteForm}
-        onSubmitNation={this._submitForm}
-      />
-    );
-  }
-
-  _cancelNationCreation = () => {
+  cancelNationCreation = () => {
     const isModified = nationIsModified(this.props);
 
     if (!isModified) {
@@ -56,7 +43,7 @@ class NationCreateContainer extends Component {
       }]);
   };
 
-  _resetNationCreation = () => {
+  resetNationCreation = () => {
     alert('resetForm', [
       {
         name: 'cancel',
@@ -67,7 +54,7 @@ class NationCreateContainer extends Component {
       }]);
   };
 
-  _deleteForm = () => {
+  deleteForm = () => {
     alert('deleteForm', [
       {
         name: 'cancel',
@@ -86,7 +73,7 @@ class NationCreateContainer extends Component {
       }]);
   };
 
-  _saveForm = () => {
+  saveForm = () => {
     this.props.onSaveNationDraft(this.props.editingNation, () => {
       if (this.props.latestError) {
         errorAlert(this.props.latestError);
@@ -103,7 +90,7 @@ class NationCreateContainer extends Component {
     });
   };
 
-  _submitForm = () => {
+  submitForm = () => {
     alert('submitForm', [
       {
         name: 'cancel',
@@ -120,10 +107,41 @@ class NationCreateContainer extends Component {
         }),
       }]);
   };
+
+  render() {
+    return (
+      <NationCreateScreen
+        {...this.props}
+        onCancelNationCreation={this.cancelNationCreation}
+        onResetNationCreation={this.resetNationCreation}
+        onSaveNationDraft={this.saveForm}
+        onDeleteNationDraft={this.deleteForm}
+        onSubmitNation={this.submitForm}
+      />
+    );
+  }
 }
 
-NationCreateContainer.PropTypes = {
-  navigator: PropTypes.object,
+NationCreateContainer.propTypes = {
+  navigator: PropTypes.shape({}),
+  onSaveNationDraft: PropTypes.func,
+  editingNation: PropTypes.shape({}),
+  latestError: PropTypes.shape({}),
+  onResetNationCreation: PropTypes.func,
+  onDeleteNationDraft: PropTypes.func,
+  initialNation: PropTypes.shape({}),
+  onSubmitNation: PropTypes.func,
+};
+
+NationCreateContainer.defaultProps = {
+  navigator: null,
+  latestError: null,
+  initialNation: null,
+  onSaveNationDraft: () => null,
+  editingNation: null,
+  onResetNationCreation: () => null,
+  onDeleteNationDraft: () => null,
+  onSubmitNation: () => null,
 };
 
 const mapStateToProps = state => ({
