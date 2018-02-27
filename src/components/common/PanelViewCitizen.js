@@ -38,4 +38,3 @@ PanelViewCitizen.defaultProps = {
 };
 
 export default PanelViewCitizen;
-

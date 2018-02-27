@@ -172,8 +172,8 @@ class NationDetailsScreen extends Component {
   _buildStatusPanel(status) {
     return (
       <PanelViewAlert
-        style={styles.panelViewAlert}
-        status={status}/>
+        status={status}
+      />
     );
   }
 

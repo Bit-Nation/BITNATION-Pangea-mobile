@@ -7,21 +7,6 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <PanelViewCitizen
     nationName=""
     status="Test of Nation Name"
-    style={
-      Object {
-        "backgroundColor": "rgba(255,255,255,0.2)",
-        "borderRadius": 8,
-        "flexDirection": "row",
-        "justifyContent": "space-between",
-        "marginBottom": 4,
-        "marginLeft": 0,
-        "marginRight": 0,
-        "marginTop": 4,
-        "overflow": "hidden",
-        "padding": 7,
-        "paddingLeft": 10,
-      }
-    }
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -52,7 +37,7 @@ ShallowWrapper {
           }
         >
           You are citizen of 
-           $
+           
           
         </Text>,
         <Image
@@ -90,7 +75,7 @@ ShallowWrapper {
           "allowFontScaling": true,
           "children": Array [
             "You are citizen of ",
-            " $",
+            " ",
             "",
           ],
           "ellipsizeMode": "tail",
@@ -106,7 +91,7 @@ ShallowWrapper {
         "ref": null,
         "rendered": Array [
           "You are citizen of ",
-          " $",
+          " ",
           "",
         ],
         "type": [Function],
@@ -152,7 +137,7 @@ ShallowWrapper {
             }
           >
             You are citizen of 
-             $
+             
             
           </Text>,
           <Image
@@ -190,7 +175,7 @@ ShallowWrapper {
             "allowFontScaling": true,
             "children": Array [
               "You are citizen of ",
-              " $",
+              " ",
               "",
             ],
             "ellipsizeMode": "tail",
@@ -206,7 +191,7 @@ ShallowWrapper {
           "ref": null,
           "rendered": Array [
             "You are citizen of ",
-            " $",
+            " ",
             "",
           ],
           "type": [Function],
