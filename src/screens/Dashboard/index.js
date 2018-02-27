@@ -24,7 +24,6 @@ import { screen } from '../../global/Screens';
 import { addDummyMessage, startFetchMessages } from '../../actions/activity';
 
 class Dashboard extends Component {
-
   constructor(props) {
     super(props);
 
@@ -43,22 +42,28 @@ class Dashboard extends Component {
   render() {
     return (
       <View style={styles.screenContainer}>
-        <BackgroundImage/>
-        <FakeNavigationBar navBarHidden/>
+        <BackgroundImage />
+        <FakeNavigationBar navBarHidden />
         <View style={styles.gridContainer}>
           <View style={styles.activityPanelContainer}>
-            <ActivityPanel style={styles.activityPanel}
-                           messages={this.props.activity.messages}
-                           testingMode={this.props.testingMode}
-                           onAddDummyMessage={this.props.onAddDummyMessage}/>
+            <ActivityPanel
+              style={styles.activityPanel}
+              messages={this.props.activity.messages}
+              testingMode={this.props.testingMode}
+              onAddDummyMessage={this.props.onAddDummyMessage}
+            />
           </View>
           <View style={styles.bottomContainer}>
-            <NationsPanel nations={this.props.nations.nations}
-                          onSelectNation={this._onSelectNation}
-                          style={styles.nationsPanel}/>
+            <NationsPanel
+              nations={this.props.nations.nations}
+              onSelectNation={this._onSelectNation}
+              style={styles.nationsPanel}
+            />
             <View style={styles.rightContainer}>
-              <WalletPanel wallets={this.props.wallet.wallets}
-                           style={styles.walletPanel}/>
+              <WalletPanel
+                wallets={this.props.wallet.wallets}
+                style={styles.walletPanel}
+              />
               <PanelView
                 title={i18n.t('screens.dashboard.warningPanel.title')}
                 buttonTitle={i18n.t('screens.dashboard.warningPanel.button')}
@@ -74,7 +79,6 @@ class Dashboard extends Component {
       </View>
     );
   }
-
 }
 
 Dashboard.propTypes = {};

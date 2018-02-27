@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-  View, Alert, Text,
-} from 'react-native';
+import { View, Alert, Text } from 'react-native';
 import styles from './styles';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -13,9 +11,7 @@ import PanelView from '../../../../components/common/PanelView';
 import GridView from '../../../../components/GridView';
 import Button from '../../../../components/common/Button';
 import PrivateKeyTextInputContainer from '../../../../components/PrivateKeyTextInputContainer';
-import {
-  KEY_COLUMN_COUNT, KEY_PAGE_ROW_COUNT, KEY_PAGE_LENGTH, KEY_PAGE_COUNT,
-} from '../../../../global/Constants';
+import { KEY_COLUMN_COUNT, KEY_PAGE_ROW_COUNT, KEY_PAGE_LENGTH, KEY_PAGE_COUNT } from '../../../../global/Constants';
 import KeyBaseScreen from '../../KeyBaseScreen/index';
 import { removePrivateKey } from '../../../../actions/key';
 import BodyParagraphs from '../../../../components/common/BodyParagraphs';
@@ -24,7 +20,6 @@ import i18n from '../../../../global/i18n';
 const DONE_BUTTON = 'DONE_BUTTON';
 
 class CreateKeyProcessScreen extends KeyBaseScreen {
-
   constructor(props) {
     super(props);
 
@@ -50,27 +45,22 @@ class CreateKeyProcessScreen extends KeyBaseScreen {
         {
           text: i18n.t('alerts.privateKeyGroupCompleted.confirm'),
           onPress: () => {
-            this.setState(prevState => {
-              return {
-                completedPages: [...prevState.completedPages, completedPage],
-              };
-            });
+            this.setState(prevState => ({
+              completedPages: [...prevState.completedPages, completedPage],
+            }));
             if (done) {
               this.onDone();
             }
           },
         },
       ],
-      { cancelable: false });
+      { cancelable: false },
+    );
   }
 
-  activePage = (state) => {
-    return Math.floor(state.activeRow / KEY_PAGE_ROW_COUNT);
-  };
+  activePage = state => Math.floor(state.activeRow / KEY_PAGE_ROW_COUNT);
 
-  isDone = (state) => {
-    return this.activePage(state) === KEY_PAGE_COUNT;
-  };
+  isDone = state => this.activePage(state) === KEY_PAGE_COUNT;
 
   onDone = () => {
     this.props.navigator.push(screen('VERIFY_KEY_INSTRUCTION_SCREEN'));
@@ -87,9 +77,7 @@ class CreateKeyProcessScreen extends KeyBaseScreen {
   };
 
   onPreviousPressed = () => {
-    this.setState((prevState) => {
-      return { activeRow: Math.max(prevState.activeRow - 1, 0) };
-    });
+    this.setState(prevState => ({ activeRow: Math.max(prevState.activeRow - 1, 0) }));
   };
 
   _renderText = (index) => {
@@ -114,18 +102,18 @@ class CreateKeyProcessScreen extends KeyBaseScreen {
   render() {
     return (
       <View style={styles.screenContainer}>
-        <BackgroundImage/>
-        <FakeNavigationBar/>
+        <BackgroundImage />
+        <FakeNavigationBar />
 
         <View style={styles.bodyContainer}>
-          <View style={styles.bodyTopSpacer}/>
+          <View style={styles.bodyTopSpacer} />
 
           <PanelView
             style={styles.panelViewTransparent}
-            childrenContainerStyle={{ flex: 0, }}
+            childrenContainerStyle={{ flex: 0 }}
           >
 
-            <BodyParagraphs paragraphs={i18n.t('screens.createKey.process.instructions')}/>
+            <BodyParagraphs paragraphs={i18n.t('screens.createKey.process.instructions')} />
 
             <View style={styles.gridContainer}>
               <GridView
@@ -140,13 +128,17 @@ class CreateKeyProcessScreen extends KeyBaseScreen {
               />
             </View>
             <View style={styles.buttonContainer}>
-              <Button title={i18n.t('screens.createKey.process.previousButton')}
-                      onPress={this.onPreviousPressed}
-                      style={styles.button}
-                      enabled={this.state.activeRow > 0}/>
-              <Button title={i18n.t('screens.createKey.process.nextButton')}
-                      onPress={this.onNextPressed}
-                      style={styles.button}/>
+              <Button
+                title={i18n.t('screens.createKey.process.previousButton')}
+                onPress={this.onPreviousPressed}
+                style={styles.button}
+                enabled={this.state.activeRow > 0}
+              />
+              <Button
+                title={i18n.t('screens.createKey.process.nextButton')}
+                onPress={this.onNextPressed}
+                style={styles.button}
+              />
             </View>
 
           </PanelView>
@@ -154,7 +146,6 @@ class CreateKeyProcessScreen extends KeyBaseScreen {
       </View>
     );
   }
-
 }
 
 const mapStateToProps = state => ({

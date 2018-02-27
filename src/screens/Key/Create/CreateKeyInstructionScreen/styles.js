@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { Dimensions, } from 'react-native';
+import { Dimensions } from 'react-native';
 import Colors from '../../../../global/colors';
 import GlobalStyles from '../../../../global/Styles';
 

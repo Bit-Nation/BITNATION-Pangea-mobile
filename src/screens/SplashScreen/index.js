@@ -22,9 +22,9 @@ class SplashScreen extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <Image source={Images.background} style={styles.background}/>
+        <Image source={Images.background} style={styles.background} />
         <View style={styles.container}>
-          <Image source={Images.bitLogoBig} style={styles.logo}/>
+          <Image source={Images.bitLogoBig} style={styles.logo} />
         </View>
       </View>
     );
@@ -32,7 +32,7 @@ class SplashScreen extends Component {
 }
 
 SplashScreen.propTypes = {
-  navigator: PropTypes.object
+  navigator: PropTypes.object,
 };
 
 const navigatorStyle = { navBarHidden: true };

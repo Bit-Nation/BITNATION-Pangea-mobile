@@ -1,25 +1,23 @@
 import NationActionButton from '../../../../src/components/common/NationActionButton';
 import React from 'react';
-import renderer from 'react-test-renderer'
-import AssetsImage from "../../../../src/global/AssetsImages";
-import {shallow} from "enzyme/build/index";
-import {TouchableOpacity} from "react-native";
+import renderer from 'react-test-renderer';
+import AssetsImage from '../../../../src/global/AssetsImages';
+import { shallow } from 'enzyme/build/index';
+import { TouchableOpacity } from 'react-native';
 
 describe('NationActionButton component tests', () => {
-
   test('NationActionButton renders correctly', () => {
     const tree = renderer.create(<NationActionButton
       iconSource={AssetsImage.Actions.chat}
-      title='Chat' disable={true}/>
-    ).toJSON();
+      title='Chat'
+      disable
+    />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   test('NationActionButton press works', () => {
     const onPress = jest.fn();
-    const wrapper = shallow(
-      <NationActionButton onPress={onPress} enabled={true}/>
-    );
+    const wrapper = shallow(<NationActionButton onPress={onPress} enabled />);
     expect(wrapper).toMatchSnapshot();
     const render = wrapper.dive();
     render.find(TouchableOpacity).simulate('press');
@@ -28,9 +26,7 @@ describe('NationActionButton component tests', () => {
 
   test('NationActionButton press disabled', () => {
     const onPress = jest.fn();
-    const wrapper = shallow(
-      <NationActionButton onPress={onPress} disable={true}/>
-    );
+    const wrapper = shallow(<NationActionButton onPress={onPress} disable />);
     expect(wrapper).toMatchSnapshot();
     const render = wrapper.dive();
     render.find(TouchableOpacity).simulate('press');
@@ -39,18 +35,15 @@ describe('NationActionButton component tests', () => {
 
   test('NationActionButton press enabled', () => {
     const onPress = jest.fn();
-    const wrapper = shallow(
-      <NationActionButton
-        onPress={onPress}
-        disable={false}
-        iconSource={AssetsImage.Actions.chat}
-        title='TEST'
-      />
-    );
+    const wrapper = shallow(<NationActionButton
+      onPress={onPress}
+      disable={false}
+      iconSource={AssetsImage.Actions.chat}
+      title='TEST'
+    />);
     expect(wrapper).toMatchSnapshot();
     const render = wrapper.dive();
     render.find(TouchableOpacity).simulate('press');
     expect(render.props().disable).toBeFalsy();
   });
-
 });

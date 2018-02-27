@@ -14,15 +14,19 @@ import GlobalStyles from '../../global/Styles';
  * @type React.Component
  */
 export default class Button extends Component {
-
   render() {
-    const { style, children, onPress, enabled, ...props } = this.props;
+    const {
+      style, children, onPress, enabled, ...props
+    } = this.props;
 
     return (
-      <View style={[
+      <View
+        style={[
         styles.baseButton,
         enabled ? styles.enabledButton : styles.disabledButton,
-        style]} {...props}>
+        style]}
+        {...props}
+      >
 
         {
           <TouchableOpacity testID='Touchable' disabled={!enabled} style={[styles.buttonContainer]} onPress={onPress}>
@@ -41,7 +45,6 @@ export default class Button extends Component {
       </Text>
     );
   }
-
 }
 
 Button.propTypes = {

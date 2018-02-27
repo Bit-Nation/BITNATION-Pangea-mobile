@@ -27,9 +27,9 @@ export const getNations = state => state.nations;
 export function* fetchNations() {
   try {
     console.log('fetching nations');
-    let pangeaLib = yield call(getPangeaLibrary);
+    const pangeaLib = yield call(getPangeaLibrary);
     const nationsCache = yield call(pangeaLib.eth.nation.all);
-    const mappedCache = nationsCache.map(convertFromDatabase)
+    const mappedCache = nationsCache.map(convertFromDatabase);
     yield put({ type: DONE_FETCH_NATIONS, payload: [...mappedCache] });
 
     yield call(checkConnection);
@@ -38,7 +38,7 @@ export function* fetchNations() {
     console.log('synced with blockchain');
 
     const updatedNations = yield call(pangeaLib.eth.nation.all);
-    const mappedNations = updatedNations.map(convertFromDatabase)
+    const mappedNations = updatedNations.map(convertFromDatabase);
     yield put({ type: DONE_FETCH_NATIONS, payload: [...mappedNations] });
   } catch (e) {
     console.log('Update nation error: ', e);
@@ -49,11 +49,11 @@ export function* fetchNations() {
 
 export function* joinNation() {
   try {
-    let pangeaLib = yield call(getPangeaLibrary);
-    let nationsState = yield select(getNations);
+    const pangeaLib = yield call(getPangeaLibrary);
+    const nationsState = yield select(getNations);
     const currentNation = openedNation(nationsState);
     yield call(checkConnection);
-    let result = yield call(pangeaLib.eth.nation.joinNation, currentNation);
+    yield call(pangeaLib.eth.nation.joinNation, currentNation);
     // console.log('joined nation: ', result);
     yield put({ type: CANCEL_LOADING });
     yield put({ type: START_NATIONS_FETCH });
@@ -66,11 +66,11 @@ export function* joinNation() {
 
 export function* leaveNation() {
   try {
-    let pangeaLib = yield call(getPangeaLibrary);
-    let nationsState = yield select(getNations);
+    const pangeaLib = yield call(getPangeaLibrary);
+    const nationsState = yield select(getNations);
     const currentNation = openedNation(nationsState);
     yield call(checkConnection);
-    let result = yield call(pangeaLib.eth.nation.leaveNation, currentNation);
+    yield call(pangeaLib.eth.nation.leaveNation, currentNation);
     // console.log('leave nation: ', result);
     yield put({ type: CANCEL_LOADING });
     yield put({ type: START_NATIONS_FETCH });

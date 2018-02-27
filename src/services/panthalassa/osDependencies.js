@@ -1,31 +1,27 @@
-//@flow
+// @flow
 
-//Make buffer available
-if(!global.Buffer){
-    global.Buffer = require('buffer/').Buffer
+// Make buffer available
+if (!global.Buffer) {
+  global.Buffer = require('buffer/').Buffer;
 }
 
-import {NativeModules} from 'react-native';
+import { NativeModules } from 'react-native';
 
 const { RNRandomBytes } = NativeModules;
 
-import {OsDependenciesInterface, Crypto} from 'BITNATION-Pangea-libs/src/specification/osDependencies'
+import { OsDependenciesInterface, Crypto } from 'BITNATION-Pangea-libs/src/specification/osDependencies';
 
 const cryptoImpl:Crypto = {
 
-    randomBytes: (length:number) => new Promise((res, rej) => {
+  randomBytes: (length:number) => new Promise((res, rej) => {
+    RNRandomBytes.randomBytes(length, (err, base64String) => {
+      if (err) {
+        return rej(err);
+      }
 
-        RNRandomBytes.randomBytes(length, (err, base64String) => {
-
-            if(err){
-                return rej(err);
-            }
-
-            res(Buffer.from(base64String, 'base64').toString('hex'));
-
-        })
-
-    })
+      res(Buffer.from(base64String, 'base64').toString('hex'));
+    });
+  }),
 
 };
 
@@ -35,7 +31,7 @@ const cryptoImpl:Crypto = {
  * @type {{crypto: Crypto}}
  */
 const osDepsImpl:OsDependenciesInterface = {
-    crypto: cryptoImpl
+  crypto: cryptoImpl,
 };
 
 export default osDepsImpl;

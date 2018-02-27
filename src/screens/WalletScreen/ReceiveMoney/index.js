@@ -17,7 +17,6 @@ import { androidNavigationButtons } from '../../../global/Screens';
 import i18n from '../../../global/i18n';
 
 class ReceiveMoneyScreen extends Component {
-
   static navigatorButtons = { ...androidNavigationButtons };
 
   onShareWalletAddressPress = () => {
@@ -29,8 +28,8 @@ class ReceiveMoneyScreen extends Component {
   render() {
     return (
       <View style={styles.screenContainer}>
-        <BackgroundImage/>
-        <FakeNavigationBar/>
+        <BackgroundImage />
+        <FakeNavigationBar />
         <View style={styles.bodyContainer}>
 
           <View style={styles.titleContainer}>
@@ -47,7 +46,8 @@ class ReceiveMoneyScreen extends Component {
               <Text style={[styles.footnote, { textAlign: 'center' }]}>{this.props.selectedWalletAddress}</Text>
             }
             onButtonClick={this.onShareWalletAddressPress}
-            buttonTitle={i18n.t('screens.receiveMoney.shareAddressPanel.button')}/>
+            buttonTitle={i18n.t('screens.receiveMoney.shareAddressPanel.button')}
+          />
         </View>
       </View>
     );

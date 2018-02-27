@@ -5,7 +5,7 @@ import DemoImage from '../../../../src/components/common/DemoImage';
 
 test('DemoImage renders correctly', () => {
   const tree = renderer
-    .create(<DemoImage/>)
+    .create(<DemoImage />)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

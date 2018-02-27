@@ -10,7 +10,6 @@ import GlobalStyles from '../../global/Styles';
  * @type React.Component
  */
 export default class BodyParagraph extends Component {
-
   render() {
     return (
       <View style={styles.bodyParagraph}>
@@ -20,7 +19,6 @@ export default class BodyParagraph extends Component {
       </View>
     );
   }
-
 }
 
 BodyParagraph.propTypes = {
@@ -32,5 +30,5 @@ BodyParagraph.propTypes = {
 };
 
 const styles = MediaQueryStyleSheet.create({
-  ...GlobalStyles
+  ...GlobalStyles,
 });

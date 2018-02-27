@@ -48,8 +48,6 @@ export function* verifyMnemonicSaga() {
 export function* removeAllPrivateKeysSaga() {
   const state = yield select();
 
-  yield all(_.map(state.wallet.wallets, (wallet) => {
-    return removePrivateKey(wallet.ethAddress);
-  }));
+  yield all(_.map(state.wallet.wallets, wallet => removePrivateKey(wallet.ethAddress)));
   yield put(updateWalletList());
 }

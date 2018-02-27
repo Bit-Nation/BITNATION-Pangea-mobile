@@ -16,36 +16,36 @@ import Button from '../../../components/common/Button';
  * @type React.Component
  */
 export default class ActivityPanel extends Component {
-
   render() {
     const { style } = this.props;
 
     return (
       <View style={style}>
-        <PanelView style={styles.gridPanelView}
-                   titleStyle={styles.panelViewTitle}
-                   childrenContainerStyle={styles.flex}
-                   title={i18n.t('screens.dashboard.activityPanel.title')}>
+        <PanelView
+          style={styles.gridPanelView}
+          titleStyle={styles.panelViewTitle}
+          childrenContainerStyle={styles.flex}
+          title={i18n.t('screens.dashboard.activityPanel.title')}
+        >
           <FlatList
             renderItem={(item) => {
               const message = item.item;
               const messageText = message.interpret ? i18n.t(`activityLog.${message.msg}`, JSON.parse(message.params)) : message.msg;
               return (<Text style={styles.listItemText}>{messageText}</Text>);
             }}
-            keyExtractor={(item) => item.id}
+            keyExtractor={item => item.id}
             data={this.props.messages}
             style={styles.flex}
           />
           {
             this.props.testingMode.isActive &&
-            <Button title='Add dummy log' onPress={this.props.onAddDummyMessage}/>
+            <Button title='Add dummy log' onPress={this.props.onAddDummyMessage} />
           }
 
         </PanelView>
       </View>
     );
   }
-
 }
 
 ActivityPanel.propTypes = {
