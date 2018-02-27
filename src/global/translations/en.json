@@ -6,7 +6,7 @@
     "wallet": "WALLET",
     "profile": "PROFILE"
   },
-  "activity_log": {
+  "activityLog": {
     "nation": {
       "join": {
         "succeed": "Joined nation: {{nationName}}"
