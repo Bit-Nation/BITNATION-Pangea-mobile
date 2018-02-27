@@ -22,28 +22,23 @@ import { nationIsValid, resolveStatus } from '../../../utils/nations';
 import pangeaLibs from '../../../services/container';
 
 class NationDetailsScreen extends Component {
-
-    /**
+  /**
      * @todo this need's to be refactored
      */
-    constructor(){
+  constructor() {
+    super();
 
-        super();
+    pangeaLibs
+      .then((container) => {
+        container
+          .queue
+          .txQueue
+          .startProcessing();
 
-        pangeaLibs
-            .then(container => {
-
-                container
-                    .queue
-                    .txQueue
-                    .startProcessing();
-
-                console.log("Started tx queue worker")
-
-            })
-            .catch(console.log);
-
-    }
+        console.log('Started tx queue worker');
+      })
+      .catch(console.log);
+  }
 
   render() {
     const nation = openedNation(this.props);
@@ -84,38 +79,32 @@ class NationDetailsScreen extends Component {
     );
   }
 
-  _disableJoinButton(nation){
+  _disableJoinButton(nation) {
+    if (nation.tx && nation.tx.status === 200) {
+      return true;
+    }
 
-      if(nation.tx && nation.tx.status === 200){
-          return true;
-      }
+    if (nation.joined === true) {
+      return true;
+    }
 
-      if(nation.joined === true){
-          return true;
-      }
-
-      return false;
-
+    return false;
   }
 
-  _disableLeaveButton(nation){
+  _disableLeaveButton(nation) {
+    if (nation.tx && nation.tx.status === 200) {
+      return true;
+    }
 
-      if(nation.tx && nation.tx.status === 200){
-          return true;
-      }
+    if (nation.joined === false) {
+      return true;
+    }
 
-      if(nation.joined === false){
-          return true;
-      }
-
-      return false;
-
+    return false;
   }
 
   _showDisabledAlert() {
-    Alert.alert(
-      i18n.t('alerts.nationsDisabled.title')
-    );
+    Alert.alert(i18n.t('alerts.nationsDisabled.title'));
   }
 
   _buildTabBar(joined, created) {
@@ -125,47 +114,62 @@ class NationDetailsScreen extends Component {
       return (
         <View style={styles.fakeBottomBar}>
 
-          <NationActionButton iconSource={AssetsImage.Actions.delete}
-                              title={i18n.t('screens.nations.toolbar.delete')}
-                              disable={false}
-                              onPress={this.props.deleteDraft}/>
-          <NationActionButton iconSource={AssetsImage.Actions.submit}
-                              title={i18n.t('screens.nations.toolbar.submit')}
-                              disable={!nationIsValid(nation)}
-                              onPress={this.props.submitDraft}/>
+          <NationActionButton
+            iconSource={AssetsImage.Actions.delete}
+            title={i18n.t('screens.nations.toolbar.delete')}
+            disable={false}
+            onPress={this.props.deleteDraft}
+          />
+          <NationActionButton
+            iconSource={AssetsImage.Actions.submit}
+            title={i18n.t('screens.nations.toolbar.submit')}
+            disable={!nationIsValid(nation)}
+            onPress={this.props.submitDraft}
+          />
         </View>
       );
     }
 
-      return (
-          <View style={styles.fakeBottomBar}>
-              <NationActionButton iconSource={AssetsImage.Actions.chat}
-                                  title={i18n.t('screens.nations.toolbar.chat')} disable={true}/>
-              <NationActionButton iconSource={AssetsImage.Actions.map}
-                                  title={i18n.t('screens.nations.toolbar.map')} disable={true}/>
-              <NationActionButton iconSource={AssetsImage.Actions.join}
-                                  title={i18n.t('screens.nations.toolbar.join')} disable={false}
-                                  onPress={this._showDisabledAlert}/>
-              <NationActionButton iconSource={AssetsImage.Actions.leave}
-                                  title={i18n.t('screens.nations.toolbar.leave')} disable={true}
-                                  onPress={this.props.leaveNation}/>
+    return (
+      <View style={styles.fakeBottomBar}>
+        <NationActionButton
+          iconSource={AssetsImage.Actions.chat}
+          title={i18n.t('screens.nations.toolbar.chat')}
+          disable
+        />
+        <NationActionButton
+          iconSource={AssetsImage.Actions.map}
+          title={i18n.t('screens.nations.toolbar.map')}
+          disable
+        />
+        <NationActionButton
+          iconSource={AssetsImage.Actions.join}
+          title={i18n.t('screens.nations.toolbar.join')}
+          disable={false}
+          onPress={this._showDisabledAlert}
+        />
+        <NationActionButton
+          iconSource={AssetsImage.Actions.leave}
+          title={i18n.t('screens.nations.toolbar.leave')}
+          disable
+          onPress={this.props.leaveNation}
+        />
 
-              <NationActionButton
-                  iconSource={AssetsImage.Actions.delete}
-                  title={i18n.t('screens.nations.toolbar.delete')}
-                  disable={false}
-                  onPress={this.props.deleteDraft}
-              />
-              <NationActionButton
-                  iconSource={AssetsImage.Actions.submit}
-                  title={i18n.t('screens.nations.toolbar.submit')}
-                  disable={!nationIsValid(nation)}
-                  onPress={this.props.submitDraft}
-              />
+        <NationActionButton
+          iconSource={AssetsImage.Actions.delete}
+          title={i18n.t('screens.nations.toolbar.delete')}
+          disable={false}
+          onPress={this.props.deleteDraft}
+        />
+        <NationActionButton
+          iconSource={AssetsImage.Actions.submit}
+          title={i18n.t('screens.nations.toolbar.submit')}
+          disable={!nationIsValid(nation)}
+          onPress={this.props.submitDraft}
+        />
 
-          </View>
-      );
-
+      </View>
+    );
   }
 
   // Useful Notes:

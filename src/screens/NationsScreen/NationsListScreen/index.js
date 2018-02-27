@@ -62,7 +62,6 @@ class NationsListScreen extends Component {
               status={(nationStatus === null ? '' : i18n.t(`enums.nation.status.${nationStatus}`))}
               id={nation.id}
             />);
-
           }}
           keyExtractor={item => item.id}
           renderSectionHeader={({ section }) => <NationListHeader title={section.title} />}

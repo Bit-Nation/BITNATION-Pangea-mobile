@@ -1,6 +1,6 @@
-//@flow
+// @flow
 import _ from 'lodash';
-import type {NationType} from 'BITNATION-Pangea-libs/src/database/schemata'
+import type { NationType } from 'BITNATION-Pangea-libs/src/database/schemata';
 
 /**
  *
@@ -9,7 +9,7 @@ import type {NationType} from 'BITNATION-Pangea-libs/src/database/schemata'
  * @returns {*|ReactWrapper|ConfigT|ShallowWrapper}
  */
 export function resolveNation(nations:Array<NationType>, id:number) {
-  return _.find(nations, (nation) => nation.id === id);
+  return _.find(nations, nation => nation.id === id);
 }
 
 /**
@@ -42,26 +42,24 @@ type NationStatus = {
  * @returns {Object}
  */
 export function resolveStatus(nation: NationType): NationStatus | null {
-
-  //idInSmartContract only exist when the nation was created
-  if(nation.idInSmartContract === -1){
+  // idInSmartContract only exist when the nation was created
+  if (nation.idInSmartContract === -1) {
     return {
       key: 'draft',
       type: 'NONE',
-      code: 0
+      code: 0,
     };
   }
 
-  if(nation.tx === null){
+  if (nation.tx === null) {
     return null;
   }
 
   return {
     key: `${nation.tx.type}.${nation.tx.status}`,
     type: ((nation.tx.type: any): NationStatusType),
-    code: ((nation.tx.status: any): NationStatusCode)
-  }
-
+    code: ((nation.tx.status: any): NationStatusCode),
+  };
 }
 
 /**
