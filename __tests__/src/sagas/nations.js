@@ -81,8 +81,6 @@ test('sagas - joinNation', (done) => {
   };
   expect(iterator.next(mockNations).value).toEqual(call(checkConnection));
   expect(iterator.next().value).toEqual(call(pangeaLibrary.eth.nation.joinNation, resolveNation(mockNations.nations, mockNations.openedNationId)));
-  expect(iterator.next(mockNations).value).toEqual(call(checkConnection));
-  expect(iterator.next().value).toEqual(call(pangeaLibrary.eth.nation.joinNation, mockNations.openedNationId));
 
   // mock success case
   const successIterator = iterator.clone();
@@ -116,9 +114,6 @@ test('sagas - leaveNation', (done) => {
 
   expect(iterator.next(mockNations).value).toEqual(call(checkConnection));
   expect(iterator.next().value).toEqual(call(pangeaLibrary.eth.nation.leaveNation, resolveNation(mockNations.nations, mockNations.openedNationId)));
-
-  expect(iterator.next(mockNations).value).toEqual(call(checkConnection));
-  expect(iterator.next().value).toEqual(call(pangeaLibrary.eth.nation.leaveNation, mockNations.openedNationId));
 
   // mock success case
   const successIterator = iterator.clone();
