@@ -6,6 +6,16 @@
     "wallet": "WALLET",
     "profile": "PROFILE"
   },
+  "activityLog": {
+    "nation": {
+      "join": {
+        "succeed": "Joined nation: {{nationName}}"
+      },
+      "create": {
+        "succeed": "Created Nation {{nationName}}"
+      }
+    }
+  },
   "common": {
     "send": "Send",
     "receive": "Receive",
@@ -87,7 +97,22 @@
         "draft": "Draft",
         "rejected": "Rejected",
         "pending": "Pending",
-        "accepted": "Accepted"
+        "accepted": "Accepted",
+        "NATION_JOIN": {
+          "200": "Join | Pending",
+          "300": "Join | Accepted",
+          "400": "Join | Rejected"
+        },
+        "NATION_CREATE": {
+          "200": "Submit | Pending",
+          "300": "Submit | Accepted",
+          "400": "Submit | Rejected"
+        },
+        "NATION_LEAVE": {
+          "200": "Leave | Pending",
+          "300": "Leave | Accepted",
+          "400": "Leave | Rejected"
+        }
       }
     },
     "onOff": {
@@ -150,6 +175,10 @@
     },
     "error": {
       "title": "Error",
+      "confirm": "$t(common.ok)"
+    },
+    "nationsDisabled": {
+      "title": "This function is disabled in this release. It will be re-enabled on March 3.",
       "confirm": "$t(common.ok)"
     }
   },
@@ -235,8 +264,21 @@
       "status": "Status: ",
       "citizen": "You are citizen of ",
       "statusDescription": {
-        "accepted": "Submitted to blockhain.",
-        "pending": "Submission in progress..."
+        "NATION_CREATE": {
+          "200": "Submission in progress...",
+          "300": "Submitted to blockchain.",
+          "400": "Submission failed."
+        },
+        "NATION_JOIN": {
+          "200": "Join nation in progress...",
+          "300": "Join nation succeed.",
+          "400": "Join nation failed"
+        },
+        "NATION_LEAVE": {
+          "200": "Leave nation in progress...",
+          "300": "Leave nation succeed.",
+          "400": "Leave nation failed"
+        }
       }
     },
     "createNation": {
