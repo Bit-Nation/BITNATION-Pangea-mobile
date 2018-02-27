@@ -1,37 +1,67 @@
-import React, { Component } from 'react';
-import { Image, Text, TouchableOpacity, View } from 'react-native';
-import { MediaQueryStyleSheet } from 'react-native-responsive';
+/**
+ * @desc Component that renders the panel indicating the user is Citizen of a Nation
+ * @type React.Component
+ * @param props.title {String} Title of the Button
+ * @param props.iconSource {String} Image to render in the button
+ * @param props.disable {boolean} Boolean to enable/disable the button
+ */
 
-import Colors from '../../global/colors';
+import React from 'react';
+import { Image, Text, TouchableOpacity, View } from 'react-native';
+import PropTypes from 'prop-types';
+import { MediaQueryStyleSheet } from 'react-native-responsive';
 import GlobalStyles from '../../global/Styles';
 
-{/*  *************************
-  NationActionButton parameters:
-    iconSource = image to render
-    title = Title of the Button
-    disable = State of the Button
-    ****************************  */}
+const NationActionButton = ({
+  title, disable, iconSource, onPress,
+}) => {
+  const styles = MediaQueryStyleSheet.create({
+    ...GlobalStyles,
+  });
 
-export default class NationActionButton extends Component {
+  return (
+    <View style={styles.tabBarButton} opacity={disable ? 0.4 : 1}>
+      <TouchableOpacity
+        style={[styles.tabBarContainer]}
+        onPress={onPress}
+        disabled={disable}
+        activeOpacity={disable ? 1 : 0.4}
+      >
+        <Image source={iconSource} />
+        <Text style={styles.tabBarTitle}>{title}</Text>
+      </TouchableOpacity>
+    </View>
+  );
+};
 
-  render() {
-    const { style, children, ...props } = this.props;
+NationActionButton.propTypes = {
+  /**
+   * @desc Value to enable/disable the button.
+   * @type boolean
+   */
+  disable: PropTypes.bool,
+  /**
+   * @desc Text label of the button.
+   * @type string
+   */
+  title: PropTypes.string,
+  /**
+   * @desc Callback to be called when button is pressed.
+   * @type func
+   */
+  onPress: PropTypes.func,
+  /**
+   * @desc Callback to be called on Switch when changes value.
+   * @type number
+   */
+  iconSource: PropTypes.number,
+};
 
-    return (
-      <View style={[styles.tabBarButton, style]} {...props} opacity={this.props.disable ? 0.4 : 1}>
-        <TouchableOpacity style={[styles.tabBarContainer]}
-                          onPress={this.props.onPress} disabled={this.props.disable}
-                          activeOpacity={this.props.disable ? 1 : 0.4}>
-          <Image source={this.props.iconSource}/>
-          <Text style={styles.tabBarTitle}>{this.props.title}</Text>
-        </TouchableOpacity>
-      </View>
-    );
-  }
+NationActionButton.defaultProps = {
+  disable: true,
+  title: '',
+  iconSource: '',
+  onPress: () => null,
+};
 
-}
-
-const styles = MediaQueryStyleSheet.create({
-  ...GlobalStyles,
-
-});
+export default NationActionButton;
