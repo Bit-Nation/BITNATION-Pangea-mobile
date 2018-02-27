@@ -70,7 +70,7 @@ class NationDetailsScreen extends Component {
           </View>
 
           <ScrollView>
-            {statusDescription != '' && this._buildStatusPanel(statusDescription)}
+            {statusDescription !== '' && this._buildStatusPanel(statusDescription)}
 
             {this._buildAboutView(nation)}
             {/*  Will show Panel of Citizenship if nation.joinend == true */}
