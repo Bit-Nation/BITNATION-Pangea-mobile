@@ -230,7 +230,9 @@
     },
     "chat": {
       "title": "$t(common.chat)",
-      "tabTitle": "$t(tabbar.chat)"
+      "tabTitle": "$t(tabbar.chat)",
+      "allChats": "All Chats",
+      "myChats": "My Chats"
     },
     "nations": {
       "toolbar": {
