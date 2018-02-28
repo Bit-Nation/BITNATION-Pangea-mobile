@@ -123,13 +123,13 @@ class NationCreateContainer extends Component {
 }
 
 NationCreateContainer.propTypes = {
-  navigator: PropTypes.shape({}),
+  navigator: PropTypes.shape({ dismissModal: {} }),
   onSaveNationDraft: PropTypes.func,
   editingNation: PropTypes.shape({}),
   latestError: PropTypes.shape({}),
   onResetNationCreation: PropTypes.func,
   onDeleteNationDraft: PropTypes.func,
-  initialNation: PropTypes.shape({}),
+  initialNation: PropTypes.shape({ id: {} }),
   onSubmitNation: PropTypes.func,
 };
 
