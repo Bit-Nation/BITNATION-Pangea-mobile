@@ -1,6 +1,7 @@
 // @flow
 import _ from 'lodash';
 import type { NationType } from 'BITNATION-Pangea-libs/src/database/schemata';
+import Colors from '../global/colors';
 
 /**
  *
@@ -104,4 +105,20 @@ export function nationIsValid(nation:any) {
   if (_.isEmpty(nation.governanceService)) return false;
 
   return true;
+}
+
+/**
+ * @desc Takes a nation's key status and returns the corresponding color
+ * @param status
+ * @returns {Color}
+ */
+export function statusColor(status) {
+  switch (status) {
+    case 200:
+      return Colors.Green;
+    case 300:
+      return Colors.Amber;
+    default:
+      return Colors.listItemTextState;
+  }
 }
