@@ -22,7 +22,7 @@ export default class NationListItem extends Component {
           <Text style={[styles.listItemText, this.props.textStyle]} numberOfLines={1}>
             {this.props.text}
           </Text>
-          <Text style={styles.listItemTextState}>
+          <Text style={[styles.listItemTextState, { color: this.props.statusColor }]}>
             {this.props.status}
           </Text>
           <Image source={AssetsImages.disclosureRowIcon} style={styles.sectionListDisclosure} />
@@ -60,6 +60,11 @@ NationListItem.propTypes = {
    * @type string
    */
   onPress: PropTypes.func,
+  /**
+   * @desc Color Status of the Nation's label to display on item
+   * @type string
+   */
+  statusColor: PropTypes.string,
 };
 
 NationListItem.defaultProps = {
