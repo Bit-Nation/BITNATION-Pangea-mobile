@@ -14,7 +14,7 @@ import NationListHeader from '../../../components/common/NationListHeader';
 import { ALL_NATIONS } from '../../../reducers/nations';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import i18n from '../../../global/i18n';
-import { resolveStatus } from '../../../utils/nations';
+import { resolveStatus, statusColor } from '../../../utils/nations';
 
 class NationsListScreen extends Component {
   render() {
@@ -53,13 +53,13 @@ class NationsListScreen extends Component {
         <SectionList
           renderItem={(item) => {
             const nation = item.item;
-
             const nationStatus = resolveStatus(nation);
 
             return (<NationListItem
               text={nation.nationName}
               onPress={this.props.onSelectItem}
-              status={(nationStatus === null ? '' : i18n.t(`enums.nation.status.${nationStatus}`))}
+              status={(nationStatus === null ? '' : i18n.t(`enums.nation.status.${nationStatus.key}`))}
+              statusColor={(nationStatus === null ? statusColor(0) : statusColor(nationStatus.code))}
               id={nation.id}
             />);
           }}
