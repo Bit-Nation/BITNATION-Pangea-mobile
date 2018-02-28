@@ -112,7 +112,7 @@ export function nationIsValid(nation:any) {
  * @param status
  * @returns {Color}
  */
-export function statusColor(status) {
+export function statusColor(status:number) {
   switch (status) {
     case 200:
       return Colors.Green;
