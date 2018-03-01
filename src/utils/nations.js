@@ -64,6 +64,15 @@ export function resolveStatus(nation: NationType): NationStatus | null {
 }
 
 /**
+ * @desc Returns true if nation is a draft, false otherwise.
+ * @param nation
+ * @returns {boolean}
+ */
+export function nationIsDraft(nation: NationType): boolean {
+  return nation.idInSmartContract === -1 && nation.tx === null;
+}
+
+/**
  * @todo need's rewrite of the param's
  * @param nationData
  * @returns {{virtualNation: *, governanceService: (*|string|undefined|JoinEffectDescriptor)}}

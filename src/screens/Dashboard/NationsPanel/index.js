@@ -12,6 +12,7 @@ import PanelView from '../../../components/common/PanelView';
 import i18n from '../../../global/i18n';
 import NationListItem from '../../../components/common/NationListItem';
 import NationListHeader from '../../../components/common/NationListHeader';
+import { nationIsDraft } from '../../../utils/nations';
 
 const NEWEST_NATION_COUNT = 5;
 
@@ -22,8 +23,9 @@ const NEWEST_NATION_COUNT = 5;
 export default class NationsPanel extends Component {
   render() {
     const { style } = this.props;
-    const newestNations = _.take(_.sortBy(this.props.nations, nation => -nation.id), NEWEST_NATION_COUNT);
-    const nationsCountStrings = i18n.t('screens.dashboard.nationsPanel.nationsCount', { count: this.props.nations.length });
+    const existedNations = _.filter(this.props.nations, nation => nationIsDraft(nation) === false);
+    const newestNations = _.take(_.sortBy(existedNations, nation => -nation.id), NEWEST_NATION_COUNT);
+    const nationsCountStrings = i18n.t('screens.dashboard.nationsPanel.nationsCount', { count: existedNations.length });
     console.log(nationsCountStrings);
 
     return (
