@@ -72,4 +72,12 @@ export default function (state = initialState, action) {
 }
 
 export const openedNation = state => resolveNation(state.nations, state.openedNationId);
-export const isDraft = nation => resolveStatus(nation) === 'draft';
+export const isDraft = (nation) => {
+  const status = resolveStatus(nation);
+
+  if (status === null) {
+    return false;
+  }
+
+  return status.key === 'draft';
+};
