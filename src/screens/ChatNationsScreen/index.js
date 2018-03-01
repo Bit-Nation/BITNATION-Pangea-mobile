@@ -41,7 +41,7 @@ class ChatNationsScreen extends NavigatorComponent {
 
     this.props.openNation(id);
 
-    this.props.navigator.push(screen('NATION_DETAILS_SCREEN'));
+    this.props.navigator.push(screen('CHAT_SCREEN'));
   };
 }
 

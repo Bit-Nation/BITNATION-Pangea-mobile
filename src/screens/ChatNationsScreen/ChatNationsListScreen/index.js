@@ -40,7 +40,7 @@ class ChatNationsListScreen extends Component {
         </View>
         <View style={styles.segmentedControlContainer}>
           <SegmentedControl
-            values={[i18n.t('screens.chat.allChats'), i18n.t('screens.chats.myChats')]}
+            values={[i18n.t('screens.chat.allChats'), i18n.t('screens.chat.myChats')]}
             selectedIndex={this.props.selectedTab}
             onTabPress={this.props.onSelectTab}
             tabsContainerStyle={styles.tabsContainerStyle}
