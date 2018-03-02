@@ -1,7 +1,7 @@
 // @flow
 import _ from 'lodash';
 import type { NationType } from 'BITNATION-Pangea-libs/src/database/schemata';
-import { TX_JOB_STATUS_FAILED, TX_JOB_STATUS_SUCCESS } from 'BITNATION-Pangea-libs/src/queues/transaction';
+import { TX_JOB_STATUS_PENDING, TX_JOB_STATUS_FAILED, TX_JOB_STATUS_SUCCESS } from 'BITNATION-Pangea-libs/src/queues/transaction';
 import Colors from '../global/colors';
 
 /**
@@ -125,10 +125,12 @@ export function nationIsValid(nation:any) {
 export function statusColor(status:number) {
   switch (status) {
     case TX_JOB_STATUS_SUCCESS:
-      return Colors.Green;
+      return Colors.listItemTextState.accepted;
     case TX_JOB_STATUS_FAILED:
-      return Colors.Amber;
+      return Colors.listItemTextState.rejected;
+    case TX_JOB_STATUS_PENDING:
+      return Colors.listItemTextState.pending;
     default:
-      return Colors.listItemTextState;
+      return Colors.listItemTextState.default;
   }
 }
