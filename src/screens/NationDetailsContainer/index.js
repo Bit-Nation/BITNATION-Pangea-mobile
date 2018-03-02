@@ -131,7 +131,10 @@ const mapStateToProps = state => ({
   ...state.wallet,
   isDraft: (() => {
     const nation = openedNation(state.nations);
-    return nation !== null ? nationIsDraft(nation) : true;
+    if (nation === null || nation === undefined) {
+      return true;
+    }
+    return nationIsDraft(nation);
   })(),
 });
 
