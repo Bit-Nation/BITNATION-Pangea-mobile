@@ -27,6 +27,8 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import config from 'react-native-config';
+import SocketIOClient from 'socket.io-client';
 import styles from './styles';
 import { GiftedChat, Composer, InputToolbar, Bubble } from 'react-native-gifted-chat';
 import AssetsImages from '../../global/AssetsImages';
@@ -37,10 +39,37 @@ import FakeNavigationBar from '../../components/common/FakeNavigationBar';
 import elizabot from '../../../vendor/elizabot';
 
 class ChatScreen extends React.Component {
-  state = {
-    messages: [],
-  };
+  
+  constructor(props) {
+    super(props);
+  
+    // Creating the socket-client instance will automatically connect to the server.
+    this.connection = SocketIOClient(config.CHAT_URL);
+    console.log('connection open: ', this.connection);
+    this.connection.on('connect', () => {
+      console.log('connection established');
+      this.connection.emit('room:join', {
+        nation_id: props.nationId
+      });
+    });
 
+    this.state = {
+      messages: [],
+      joined: false
+    };
+  }
+
+  componentDidMount() {
+    this.connection.on('room:joined', (data) => {
+      console.log('nation id: ', data.nation_id);
+      if (data.nation_id >= 0) {
+        this.setState({joined: true});
+      }
+      this.connection.on('msg', (messageData) => {
+        console.log('got message: ', messageData);
+      });
+    });
+  }
 
   componentWillMount() {
     this.setState({
@@ -57,26 +86,44 @@ class ChatScreen extends React.Component {
         },
       ],
     });
+
+    const URL = `${config.CHAT_URL}/${this.props.nationId}?auth_token=${config.AUTH_TOKEN}`;
+    // fetch(URL)
+    // .then(function(response) {
+    //   return response.json();
+    // })
+    // .then(function(json) {
+    //   console.log('response: ', json);
+    // });
   }
 
   onSend(messages = []) {
-    const m = [
-      {
-        _id: this.state.messages.length + 1,
-        text: elizabot.reply(messages[0].text),
-        createdAt: new Date(),
-        user: {
-          _id: 2,
-          name: 'Eliza',
-        },
-      },
-    ];
+    // const m = [
+    //   {
+    //     _id: this.state.messages.length + 1,
+    //     text: elizabot.reply(messages[0].text),
+    //     createdAt: new Date(),
+    //     user: {
+    //       _id: 2,
+    //       name: 'Eliza',
+    //     },
+    //   },
+    // ];
 
-    // Add user's message
-    this.setState(previousState => ({ messages: GiftedChat.append(previousState.messages, messages) }));
+    // // Add user's message
+    // this.setState(previousState => ({ messages: GiftedChat.append(previousState.messages, messages) }));
 
-    // Add Eliza's response
-    this.setState(previousState => ({ messages: GiftedChat.append(previousState.messages, m) }));
+    // // Add Eliza's response
+    // this.setState(previousState => ({ messages: GiftedChat.append(previousState.messages, m) }));
+    if (this.state.joined) {
+      this.connection.emit('room:msg', {
+        nation_id: this.props.nationId,
+        msg: messages[0].text,
+        from: this.props.username
+      });
+    } else {
+
+    }
   }
 
   render() {
@@ -109,7 +156,8 @@ class ChatScreen extends React.Component {
 
 
 const mapStateToProps = state => ({
-  ...state,
+  nationId: state.nations.openedNationId,
+  username: state.profile.user.name
 });
 
 const mapDispatchToProps = dispatch => ({});

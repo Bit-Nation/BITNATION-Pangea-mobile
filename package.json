@@ -62,6 +62,7 @@
     "redux-saga": "^0.16.0",
     "redux-thunk": "^2.2.0",
     "rn-nodeify": "^8.3.0",
+    "socket.io-client": "^2.0.4",
     "stream-browserify": "^1.0.0",
     "string_decoder": "^0.10.31",
     "vm-browserify": "0.0.4"
