@@ -4,6 +4,7 @@ import {
   Text, ScrollView, Image, StatusBar, Alert,
 } from 'react-native';
 import PropTypes from 'prop-types';
+import { XmlEntities as Entities } from 'html-entities';
 
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import styles from './styles';
@@ -192,6 +193,7 @@ class NationDetailsScreen extends Component {
   }
 
   _buildGovernmentalStructureView(nation) {
+    const entities = new Entities();
     return (
       <PanelView
         style={styles.panelView}
@@ -199,24 +201,25 @@ class NationDetailsScreen extends Component {
         title={i18n.t('common.governmentalStructure')}
       >
         <Text style={styles.body}>
-          {i18n.t('screens.nationDetails.legalSystemInfo', {
+          {entities.decode(i18n.t('screens.nationDetails.legalSystemInfo', {
             name: nation.nationName,
             code: nation.nationCode,
-          })}
+          }))}
           {' '}
-          {i18n.t('screens.nationDetails.lawEnforcementInfo', {
+          {entities.decode(i18n.t('screens.nationDetails.lawEnforcementInfo', {
             lawEnforcementMechanism: nation.lawEnforcementMechanism,
-          })}
+          }))}
           {' '}
-          {i18n.t('screens.nationDetails.governmentInfo', {
-            decisionMakingProcess: nation.decisionMakingProcess,
-          })}
+          {entities.decode(i18n.t('screens.nationDetails.governmentInfo', {
+            decisionMakingProcess: entities.decode(nation.decisionMakingProcess),
+          }))}
         </Text>
       </PanelView>
     );
   }
 
   _buildFactsView(nation) {
+    const entities = new Entities();
     return (
       <PanelView
         style={styles.panelView}
@@ -224,16 +227,16 @@ class NationDetailsScreen extends Component {
         title={i18n.t('screens.nationDetails.funFacts')}
       >
         <Text style={styles.body}>
-          {nation.diplomaticRecognition ? (`${i18n.t('screens.nationDetails.diplomaticRecognitionInfo', { name: nation.nationName })}\n\n`) : ''}
+          {nation.diplomaticRecognition ? (`${entities.decode(i18n.t('screens.nationDetails.diplomaticRecognitionInfo', { name: nation.nationName }))}\n\n`) : ''}
 
-          {i18n.t('screens.nationDetails.serviceUsageInfo', {
+          {entities.decode(i18n.t('screens.nationDetails.serviceUsageInfo', {
             allowance: nation.createNationsNonCitizensMayUseGovernanceServices ? i18n.t('enums.nation.usageAllowance.may') : i18n.t('enums.nation.usageAllowance.mayNot'),
-          })}
+          }))}
           {'\n\n'}
 
-          {i18n.t('screens.nationDetails.profitInfo', {
+          {entities.decode(i18n.t('screens.nationDetails.profitInfo', {
             profit: nation.profit ? i18n.t('enums.nation.profit.for') : i18n.t('enums.nation.profit.non'),
-          })}
+          }))}
         </Text>
       </PanelView>
     );
