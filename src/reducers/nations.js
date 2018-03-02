@@ -72,4 +72,3 @@ export default function (state = initialState, action) {
 }
 
 export const openedNation = state => resolveNation(state.nations, state.openedNationId);
-export const isDraft = nation => resolveStatus(nation) === 'draft';

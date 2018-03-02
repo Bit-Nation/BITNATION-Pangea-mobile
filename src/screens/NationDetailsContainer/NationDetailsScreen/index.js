@@ -154,20 +154,6 @@ class NationDetailsScreen extends Component {
           disable
           onPress={this.props.leaveNation}
         />
-
-        <NationActionButton
-          iconSource={AssetsImage.Actions.delete}
-          title={i18n.t('screens.nations.toolbar.delete')}
-          disable={false}
-          onPress={this.props.deleteDraft}
-        />
-        <NationActionButton
-          iconSource={AssetsImage.Actions.submit}
-          title={i18n.t('screens.nations.toolbar.submit')}
-          disable={!nationIsValid(nation)}
-          onPress={this.props.submitDraft}
-        />
-
       </View>
     );
   }
