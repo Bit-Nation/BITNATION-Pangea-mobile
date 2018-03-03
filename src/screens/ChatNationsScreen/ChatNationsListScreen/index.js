@@ -8,7 +8,7 @@ import SegmentedControl from 'react-native-segmented-control-tab';
 
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import styles from './styles';
-import NationListItem from '../../../components/common/NationListItem';
+import ChatListItem from '../../../components/common/ChatListItem';
 import NationListHeader from '../../../components/common/NationListHeader';
 import { ALL_NATIONS } from '../../../reducers/nations';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
@@ -54,7 +54,7 @@ class ChatNationsListScreen extends Component {
             const nation = item.item;
             const nationStatus = resolveStatus(nation);
 
-            return (<NationListItem
+            return (<ChatListItem
               text={nation.nationName}
               onPress={this.props.onSelectItem}
               status={(nationStatus === null ? '' : i18n.t(`enums.nation.status.${nationStatus.key}`))}
