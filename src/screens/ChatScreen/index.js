@@ -44,7 +44,11 @@ class ChatScreen extends React.Component {
     super(props);
   
     // Creating the socket-client instance will automatically connect to the server.
-    this.connection = SocketIOClient(config.CHAT_URL);
+    this.connection = SocketIOClient(config.CHAT_URL, {
+      transports: ['websocket'], 
+      upgrade: false, 
+      query: `token=${config.AUTH_TOKEN}`
+    });
     console.log('connection open: ', this.connection);
     this.connection.on('connect', () => {
       console.log('connection established');
