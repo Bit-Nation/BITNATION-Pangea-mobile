@@ -12,6 +12,11 @@ import GlobalStyles from '../../global/Styles';
 import i18n from '../../global/i18n';
 import AssetsImages from '../../global/AssetsImages';
 
+/**
+ * @desc Component that renders the panel indicating the user is Citizen of a Nation
+ * @type React.Component
+ */
+
 const styles = MediaQueryStyleSheet.create({
   ...GlobalStyles,
 });

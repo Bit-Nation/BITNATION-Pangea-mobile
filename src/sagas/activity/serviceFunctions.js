@@ -17,6 +17,6 @@ export async function getEventEmitter() {
 
 export async function addDummyMessage() {
   const container = await containerPromise;
-  const messageText = 'Dummy message ' + Math.floor(Math.random() * 100) + '(random number)';
+  const messageText = `Dummy message ${Math.floor(Math.random() * 100)}(random number)`;
   return await container.queue.msgQueue.addJob(new Msg(messageText, {}, false));
 }

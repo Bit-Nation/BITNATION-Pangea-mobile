@@ -5,7 +5,7 @@ import Loading from '../../../../src/components/common/Loading';
 
 test('Loading renders correctly', () => {
   const tree = renderer
-    .create(<Loading/>)
+    .create(<Loading />)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

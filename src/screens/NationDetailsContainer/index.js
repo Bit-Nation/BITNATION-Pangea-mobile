@@ -9,29 +9,27 @@ import { Alert } from 'react-native';
 import i18n from '../../global/i18n';
 import Colors from '../../global/colors';
 import { deleteNationDraft, startNationEditing, submitNation } from '../../actions/modifyNation';
-import { isDraft, openedNation } from '../../reducers/nations';
+import { openedNation } from '../../reducers/nations';
 import NavigatorComponent from '../../components/common/NavigatorComponent';
 import { alert, errorAlert } from '../../global/alerts';
+import { nationIsDraft } from '../../utils/nations';
 
 const EDIT_BUTTON = 'EDIT_BUTTON';
 
 class NationDetailsContainer extends NavigatorComponent {
-
   static navigatorButtons = { ...androidNavigationButtons };
 
   constructor(props) {
     super(props);
 
-    this.props.navigator.setButtons(
-      {
-        leftButtons: [],
-        rightButtons: this.props.isDraft ? [{
-          title: 'Edit',
-          id: EDIT_BUTTON,
-          buttonColor: Colors.navigationButtonColor,
-        }] : [],
-      },
-    );
+    this.props.navigator.setButtons({
+      leftButtons: [],
+      rightButtons: this.props.isDraft ? [{
+        title: 'Edit',
+        id: EDIT_BUTTON,
+        buttonColor: Colors.navigationButtonColor,
+      }] : [],
+    });
   }
 
   onNavBarButtonPress(id) {
@@ -72,8 +70,7 @@ class NationDetailsContainer extends NavigatorComponent {
 
           this.props.navigator.pop();
         }),
-      }],
-    );
+      }]);
   };
 
   _onSubmitDraft = () => {
@@ -91,8 +88,7 @@ class NationDetailsContainer extends NavigatorComponent {
 
           this.props.navigator.pop();
         }),
-      }],
-    );
+      }]);
   };
 
   onJoinNation = () => {
@@ -114,14 +110,15 @@ class NationDetailsContainer extends NavigatorComponent {
 
   render() {
     return (
-      <NationDetailsScreen {...this.props}
-                           joinNation={this.onJoinNation}
-                           leaveNation={this.onLeaveNation}
-                           deleteDraft={this._onDeleteDraft}
-                           submitDraft={this._onSubmitDraft}/>
+      <NationDetailsScreen
+        {...this.props}
+        joinNation={this.onJoinNation}
+        leaveNation={this.onLeaveNation}
+        deleteDraft={this._onDeleteDraft}
+        submitDraft={this._onSubmitDraft}
+      />
     );
   }
-
 }
 
 NationDetailsContainer.PropTypes = {
@@ -132,7 +129,13 @@ NationDetailsContainer.PropTypes = {
 const mapStateToProps = state => ({
   ...state.nations,
   ...state.wallet,
-  isDraft: isDraft(openedNation(state.nations) || {}),
+  isDraft: (() => {
+    const nation = openedNation(state.nations);
+    if (nation === null || nation === undefined) {
+      return true;
+    }
+    return nationIsDraft(nation);
+  })(),
 });
 
 const mapDispatchToProps = dispatch => ({

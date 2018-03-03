@@ -5,20 +5,18 @@ import { Text } from 'react-native';
 import GridView from '../../../../src/components/GridView';
 
 describe('GridView rendering', () => {
-
   test('Default renders without error', () => {
-    renderer.create(<GridView/>);
+    renderer.create(<GridView />);
   });
 
   function renderGridViewWithTestItems(rowCount, columnCount, props) {
-    const renderItem = (index) => <Text key={index}>Test item {index}</Text>;
-    const tree = renderer.create(
-      <GridView
-        rowsCount={rowCount}
-        itemsPerRow={columnCount}
-        renderItem={renderItem}
-        {...props}
-      />);
+    const renderItem = index => <Text key={index}>Test item {index}</Text>;
+    const tree = renderer.create(<GridView
+      rowsCount={rowCount}
+      itemsPerRow={columnCount}
+      renderItem={renderItem}
+      {...props}
+    />);
     expect(tree.toJSON()).toMatchSnapshot();
 
     return tree;
@@ -26,12 +24,11 @@ describe('GridView rendering', () => {
 
   function renderMockedGridView(rowCount, columnCount) {
     const mockFunc = jest.fn();
-    const tree = renderer.create(
-      <GridView
-        rowsCount={rowCount}
-        itemsPerRow={columnCount}
-        renderItem={mockFunc}
-      />);
+    const tree = renderer.create(<GridView
+      rowsCount={rowCount}
+      itemsPerRow={columnCount}
+      renderItem={mockFunc}
+    />);
     const itemCount = rowCount * columnCount;
     expect(tree.toJSON()).toMatchSnapshot();
 
@@ -75,5 +72,4 @@ describe('GridView rendering', () => {
   test('Renders with set custom style', () => {
     renderGridViewWithTestItems(4, 3, { style: { height: 100, width: 50 } });
   });
-
 });

@@ -9,7 +9,7 @@ export const REQUEST_LEAVE_NATION = 'REQUEST_LEAVE_NATION';
 export function switchNationTab(tab) {
   return {
     type: SWITCH_NATIONS_TAB,
-    tab: tab,
+    tab,
   };
 }
 
@@ -22,18 +22,18 @@ export function openNation(id) {
 
 export function requestFetchNations() {
   return {
-    type: START_NATIONS_FETCH
+    type: START_NATIONS_FETCH,
   };
 }
 
 export function joinNation() {
   return {
-    type: REQUEST_JOIN_NATION
+    type: REQUEST_JOIN_NATION,
   };
 }
 
 export function leaveNation() {
   return {
-    type: REQUEST_LEAVE_NATION
+    type: REQUEST_LEAVE_NATION,
   };
 }

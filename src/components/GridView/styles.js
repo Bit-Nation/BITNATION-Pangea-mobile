@@ -15,6 +15,6 @@ export default styles = StyleSheet.create({
   },
   rowInactive: {
     opacity: 0.1,
-  }
+  },
 
 });

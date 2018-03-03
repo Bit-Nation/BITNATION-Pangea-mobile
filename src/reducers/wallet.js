@@ -21,13 +21,13 @@ export default function (state = initialState, action) {
       return Object.assign({}, state, { wallets: action.wallets });
     case WALLET_SYNC_FAILED: {
       const walletIndex = _.findIndex(state.wallets, wallet => wallet.ethAddress === action.walletAddress);
-      let newWallets = _.cloneDeep(state.wallets);
+      const newWallets = _.cloneDeep(state.wallets);
       newWallets[walletIndex].synchronizationError = action.error;
       return Object.assign({}, state, { wallets: newWallets });
     }
     case UPDATE_WALLET_BALANCE: {
       const walletIndex = _.findIndex(state.wallets, wallet => wallet.ethAddress === action.walletAddress);
-      let newWallets = _.cloneDeep(state.wallets);
+      const newWallets = _.cloneDeep(state.wallets);
       newWallets[walletIndex].synchronizationError = undefined;
       return Object.assign({}, state, { wallets: newWallets });
     }

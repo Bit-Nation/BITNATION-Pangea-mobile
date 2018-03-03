@@ -20,6 +20,7 @@ describe('NationActionButton component tests', () => {
     const onPress = jest.fn();
     const wrapper =
       shallow(<NationActionButton
+        iconSource={AssetsImage.Actions.chat}
         onPress={onPress}
         enabled
       />);

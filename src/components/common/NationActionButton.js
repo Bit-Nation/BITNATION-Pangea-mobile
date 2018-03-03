@@ -12,6 +12,7 @@ import PropTypes from 'prop-types';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
 import GlobalStyles from '../../global/Styles';
 
+
 const NationActionButton = ({
   title, disable, iconSource, onPress,
 }) => {

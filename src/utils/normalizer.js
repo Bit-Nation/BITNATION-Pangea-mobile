@@ -1,6 +1,7 @@
 import { __DEV__ } from 'react-native';
 
 const React = require('react-native');
+
 const {
   Dimensions, Platform,
 } = React;
@@ -45,9 +46,8 @@ export function normalWidthMargin() {
 export function isiPhoneXStatusBar(size) {
   if (Platform.OS === 'ios' && (deviceHeight === 812 || deviceWidth === 812)) {
     return size + 24;
-  } else {
-    return size;
   }
+  return size;
 }
 
 /**
@@ -58,7 +58,6 @@ export function isiPhoneXStatusBar(size) {
 export function isiPhoneXTabBar(size) {
   if (Platform.OS === 'ios' && (deviceHeight === 812 || deviceWidth === 812)) {
     return size + 29;
-  } else {
-    return size;
   }
+  return size;
 }

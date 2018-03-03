@@ -13,7 +13,6 @@ import React, { Component } from 'react';
  * @note Don't forget to call super if you override constructor or onNavigatorEvent method of that class.
  */
 export default class NavigatorComponent extends Component {
-
   constructor(props) {
     super(props);
 
@@ -45,7 +44,7 @@ export default class NavigatorComponent extends Component {
         this.onBottomTabReselected();
         break;
     }
-  };
+  }
 
   /**
    * @desc Method that is called when navigation button is pressed.
@@ -83,5 +82,4 @@ export default class NavigatorComponent extends Component {
    */
   onBottomTabReselected() {
   }
-
 }
