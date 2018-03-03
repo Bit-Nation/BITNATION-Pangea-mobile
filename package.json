@@ -26,7 +26,6 @@
     "events": "^1.1.1",
     "fetch-everywhere": "^1.0.5",
     "hoist-non-react-statics": "^2.3.1",
-    "html-entities": "^1.2.1",
     "i18next": "^10.3.0",
     "lodash": "^4.17.4",
     "native-base": "^2.3.5",
