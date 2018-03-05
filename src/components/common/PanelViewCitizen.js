@@ -32,7 +32,7 @@ const PanelViewCitizen = ({ nationName }) => (
 
 PanelViewCitizen.propTypes = {
   /**
-   * @desc Name of the Nation
+   * @desc Name of the Nation of citizenship
    * @type string
    */
   nationName: PropTypes.string,
