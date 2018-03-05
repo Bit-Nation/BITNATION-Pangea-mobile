@@ -90,4 +90,9 @@ export default (state: State = initialState, action: Action): State => {
   }
 };
 
-export const openedNation = (state: State) => resolveNation(state.nations, state.openedNationId);
+export const openedNation = (state: State): NationType | null => {
+  if (state.openedNationId !== null) {
+    return resolveNation(state.nations, state.openedNationId);
+  }
+  return null;
+};
