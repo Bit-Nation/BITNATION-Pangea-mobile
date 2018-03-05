@@ -5,8 +5,8 @@ import {
   START_NATIONS_FETCH, DONE_FETCH_NATIONS,
   CANCEL_LOADING, REQUEST_JOIN_NATION, REQUEST_LEAVE_NATION,
 } from '../../../src/actions/nations';
+import { convertFromDatabase, resolveNation } from '../../../src/utils/nations';
 import { getPangeaLibrary } from '../../../src/services/container';
-import { convertFromDatabase } from '../../../src/utils/nations';
 
 jest.mock('BITNATION-Pangea-libs');
 jest.mock('react-native-config');
@@ -80,7 +80,7 @@ test('sagas - joinNation', (done) => {
     ],
   };
   expect(iterator.next(mockNations).value).toEqual(call(checkConnection));
-  expect(iterator.next().value).toEqual(call(pangeaLibrary.eth.nation.joinNation, mockNations.openedNationId));
+  expect(iterator.next().value).toEqual(call(pangeaLibrary.eth.nation.joinNation, resolveNation(mockNations.nations, mockNations.openedNationId)));
 
   // mock success case
   const successIterator = iterator.clone();
@@ -111,8 +111,9 @@ test('sagas - leaveNation', (done) => {
       },
     ],
   };
+
   expect(iterator.next(mockNations).value).toEqual(call(checkConnection));
-  expect(iterator.next().value).toEqual(call(pangeaLibrary.eth.nation.leaveNation, mockNations.openedNationId));
+  expect(iterator.next().value).toEqual(call(pangeaLibrary.eth.nation.leaveNation, resolveNation(mockNations.nations, mockNations.openedNationId)));
 
   // mock success case
   const successIterator = iterator.clone();

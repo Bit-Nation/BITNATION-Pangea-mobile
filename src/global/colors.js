@@ -149,7 +149,12 @@ export default {
   sectionListHeaderContainer: '#3a3a3a', // 'rgba(255,255,255,0.15)',
   sectionListItemContainerBkgd: 'transparent',
   // In a list of nations, default color for the far-right text near the ">"
-  listItemTextState: 'gray',
+  listItemTextState: {
+    default: 'gray',
+    accepted: '#4CAF50',
+    pending: '#DADCE5',
+    rejected: '#FFC107',
+  },
 
   // Document Colors
   panelBoxColor: '#1b395c',
