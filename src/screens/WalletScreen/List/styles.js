@@ -8,4 +8,4 @@ export default styles = StyleSheet.create({
     flex: 1,
   },
 });
-  
+

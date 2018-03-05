@@ -16,20 +16,17 @@ import { startNationCreation } from '../../actions/modifyNation';
 const NEW_BUTTON = 'NEW_BUTTON';
 
 class NationsScreen extends NavigatorComponent {
-
   constructor(props) {
     super(props);
 
-    this.props.navigator.setButtons(
-      {
-        leftButtons: [],
-        rightButtons: [{
-          title: 'New',
-          id: NEW_BUTTON,
-          buttonColor: Colors.navigationButtonColor,
-        }],
-      },
-    );
+    this.props.navigator.setButtons({
+      leftButtons: [],
+      rightButtons: [{
+        title: 'New',
+        id: NEW_BUTTON,
+        buttonColor: Colors.navigationButtonColor,
+      }],
+    });
   }
 
   onWillAppear() {
@@ -63,7 +60,7 @@ class NationsScreen extends NavigatorComponent {
 
   render() {
     return (
-      <NationsListScreen onSelectItem={this._onSelectItem} {...this.props}/>
+      <NationsListScreen onSelectItem={this._onSelectItem} {...this.props} />
     );
   }
 
@@ -78,7 +75,6 @@ class NationsScreen extends NavigatorComponent {
 
     this.props.navigator.push(screen('NATION_DETAILS_SCREEN'));
   };
-
 }
 
 NationsScreen.PropTypes = {
@@ -102,7 +98,7 @@ const mapDispatchToProps = dispatch => ({
   },
   startNationCreation() {
     dispatch(startNationCreation());
-  }
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NationsScreen);

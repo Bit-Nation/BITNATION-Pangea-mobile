@@ -5,8 +5,8 @@ import { fetchMessages, getEventEmitter, addDummyMessage, MESSAGING_QUEUE_JOB_AD
 import { doneFetchMessages, messageAdded } from '../../actions/activity';
 
 function createMessagesQueueChannel(eventEmitter) {
-  return eventChannel(emit => {
-    const handler = data => {
+  return eventChannel((emit) => {
+    const handler = (data) => {
       console.log('HANDLER');
       console.log(data);
       emit(data);

@@ -36,15 +36,15 @@ class PrivateKeyTextInputContainer extends Component {
           value={this.props.value}
           blurOnSubmit={this.props.isLast}
           selectionColor={cursorColor}
-          onFocus={(event) => this.props.onFocus(this.props.index, findNodeHandle(event.target))}
-          onChangeText={(text) => this.props.onChange(this.props.index, text)}
+          onFocus={event => this.props.onFocus(this.props.index, findNodeHandle(event.target))}
+          onChangeText={text => this.props.onChange(this.props.index, text)}
           onSubmitEditing={() => this.props.onSubmit(this.props.index)}
-          ref={(textInput) => this.textInput = textInput}/>
+          ref={textInput => this.textInput = textInput}
+        />
         <Text style={styles.text}>{this.props.label}</Text>
       </View>
     );
   }
-
 }
 
 PrivateKeyTextInputContainer.propTypes = {

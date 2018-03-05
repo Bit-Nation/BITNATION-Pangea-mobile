@@ -19,7 +19,6 @@ import BodyParagraphs from '../../../../components/common/BodyParagraphs';
 import i18n from '../../../../global/i18n';
 
 class VerifyKeyInstructionScreen extends KeyBaseScreen {
-
   onNextButtonPressed() {
     this.props.navigator.push(screen('VERIFY_KEY_PROCESS_SCREEN'));
   }
@@ -27,16 +26,17 @@ class VerifyKeyInstructionScreen extends KeyBaseScreen {
   render() {
     return (
       <View style={styles.screenContainer}>
-        <BackgroundImage/>
-        <FakeNavigationBar/>
+        <BackgroundImage />
+        <FakeNavigationBar />
 
         <View style={styles.bodyContainer}>
-          <PanelView style={styles.panelViewTransparent}
-                     childrenContainerStyle={{ flex: 0, }}
-                     buttonTitle={i18n.t('screens.verifyKey.startButton')}
-                     onButtonClick={() => this.onNextButtonPressed()}
+          <PanelView
+            style={styles.panelViewTransparent}
+            childrenContainerStyle={{ flex: 0 }}
+            buttonTitle={i18n.t('screens.verifyKey.startButton')}
+            onButtonClick={() => this.onNextButtonPressed()}
           >
-            <BodyParagraphs paragraphs={i18n.t('screens.verifyKey.instructions', { KEY_LENGTH })}/>
+            <BodyParagraphs paragraphs={i18n.t('screens.verifyKey.instructions', { KEY_LENGTH })} />
           </PanelView>
         </View>
       </View>

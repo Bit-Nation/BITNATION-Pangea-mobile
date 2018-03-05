@@ -1,14 +1,14 @@
 /*
     Wallet List (Wallet)
-    
+
     Return a ScrollView with panels for creating or restoring a wallet, to fit
     inside a normal screen view.
-    
+
     It does NOT need a bodyContainer.
     This does not return a complete screen.
     There is no navigation, etc.
-    
-    
+
+
  */
 
 import React, { Component } from 'react';
@@ -27,7 +27,6 @@ import { prettyWalletBalance } from '../../../utils/formatters';
 import i18n from '../../../global/i18n';
 
 export default class WalletList extends Component {
-
   render() {
     return (
       <View style={styles.walletListContainer}>
@@ -42,14 +41,13 @@ export default class WalletList extends Component {
               onSendPress={() => this.props.onSendPress(item)}
               onReceivePress={() => this.props.onReceivePress(item)}
               nameHeading={item.name}
-              balance={balance}>
-            </WalletCard>);
+              balance={balance}
+            />);
           }}
         />
       </View>
     );
   }
-
 }
 
 WalletList.PropTypes = {

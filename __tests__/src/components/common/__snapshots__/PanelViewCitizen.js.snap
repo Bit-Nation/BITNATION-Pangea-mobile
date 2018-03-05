@@ -50,7 +50,7 @@ ShallowWrapper {
             }
           }
         >
-          You are citizen of  undefined
+          You are citizen of undefined
         </Text>,
         <Image
           source={1}
@@ -85,7 +85,7 @@ ShallowWrapper {
         "props": Object {
           "accessible": true,
           "allowFontScaling": true,
-          "children": "You are citizen of  undefined",
+          "children": "You are citizen of undefined",
           "ellipsizeMode": "tail",
           "style": Object {
             "color": "#FFFFFF",
@@ -97,7 +97,7 @@ ShallowWrapper {
           },
         },
         "ref": null,
-        "rendered": "You are citizen of  undefined",
+        "rendered": "You are citizen of undefined",
         "type": [Function],
       },
       Object {
@@ -140,7 +140,7 @@ ShallowWrapper {
               }
             }
           >
-            You are citizen of  undefined
+            You are citizen of undefined
           </Text>,
           <Image
             source={1}
@@ -175,7 +175,7 @@ ShallowWrapper {
           "props": Object {
             "accessible": true,
             "allowFontScaling": true,
-            "children": "You are citizen of  undefined",
+            "children": "You are citizen of undefined",
             "ellipsizeMode": "tail",
             "style": Object {
               "color": "#FFFFFF",
@@ -187,7 +187,7 @@ ShallowWrapper {
             },
           },
           "ref": null,
-          "rendered": "You are citizen of  undefined",
+          "rendered": "You are citizen of undefined",
           "type": [Function],
         },
         Object {

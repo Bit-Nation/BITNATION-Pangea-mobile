@@ -6,7 +6,6 @@ import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import i18n from '../../../global/i18n';
 
 export default class KeyBaseScreen extends NavigatorComponent {
-
   static navigatorButtons = {
     leftButtons: [{
       id: 'cancel',
@@ -55,7 +54,8 @@ export default class KeyBaseScreen extends NavigatorComponent {
         [
           { text: i18n.t('alerts.abortKeyCreateProcess.cancel'), style: 'cancel' },
           {
-            text: i18n.t('alerts.abortKeyCreateProcess.confirm'), style: 'destructive',
+            text: i18n.t('alerts.abortKeyCreateProcess.confirm'),
+            style: 'destructive',
             onPress: () => this.onCancelConfirmed(),
           },
         ],
@@ -70,5 +70,4 @@ export default class KeyBaseScreen extends NavigatorComponent {
     }
     this.props.navigator.dismissModal();
   }
-
 }

@@ -10,7 +10,6 @@ import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 
 export default class QRCodeScannerScreen extends NavigatorComponent {
-
   static navigatorButtons = {
     leftButtons: [{
       id: 'cancel',
@@ -29,14 +28,13 @@ export default class QRCodeScannerScreen extends NavigatorComponent {
   render() {
     return (
       <View style={{ flex: 1, backgroundColor: 'black' }}>
-        <FakeNavigationBar/>
+        <FakeNavigationBar />
         <Text>
           Android QR code scanner is not supported yet.
         </Text>
       </View>
     );
   }
-
 }
 
 QRCodeScannerScreen.propTypes = {

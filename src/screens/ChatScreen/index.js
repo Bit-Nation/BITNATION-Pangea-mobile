@@ -1,19 +1,19 @@
 /*
-  
+
   Demonstration Chat system
 
   Elizabot : https://github.com/brandongmwong/elizabot-js/blob/master/README.md
-  
+
   Eliza JS bot based on www.masswerk.at/elizabot and http://en.wikipedia.org/wiki/ELIZA
-  
+
   Usage:
-  
+
   var elizabot = require('./elizabot.js');
-  
+
   elizabot.start() // initializes eliza and returns a greeting message
-  
+
   elizabot.reply(msgtext) // returns a eliza-like reply based on the message text passed into it
-  
+
   elizabot.bye() // returns a farewell message
  */
 
@@ -37,7 +37,6 @@ import FakeNavigationBar from '../../components/common/FakeNavigationBar';
 import elizabot from '../../../vendor/elizabot';
 
 class ChatScreen extends React.Component {
-
   state = {
     messages: [],
   };
@@ -74,39 +73,38 @@ class ChatScreen extends React.Component {
     ];
 
     // Add user's message
-    this.setState((previousState) => ({ messages: GiftedChat.append(previousState.messages, messages), }));
+    this.setState(previousState => ({ messages: GiftedChat.append(previousState.messages, messages) }));
 
     // Add Eliza's response
-    this.setState((previousState) => ({ messages: GiftedChat.append(previousState.messages, m), }));
+    this.setState(previousState => ({ messages: GiftedChat.append(previousState.messages, m) }));
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <BackgroundImage/>
-        <FakeNavigationBar navBarHidden/>
+        <BackgroundImage />
+        <FakeNavigationBar navBarHidden />
 
         <GiftedChat
           messages={this.state.messages}
-          onSend={(messages) => this.onSend(messages)}
+          onSend={messages => this.onSend(messages)}
           user={{
             _id: 1,
           }}
           bottomOffset={Platform.OS === 'ios' ? 48.5 : 0}
-          renderComposer={(props) =>
-            <Composer {...props} textInputStyle={styles.composer}/>
+          renderComposer={props =>
+            <Composer {...props} textInputStyle={styles.composer} />
           }
-          renderInputToolbar={(props) =>
-            <InputToolbar {...props} containerStyle={styles.inputToolbar}/>
+          renderInputToolbar={props =>
+            <InputToolbar {...props} containerStyle={styles.inputToolbar} />
           }
-          renderBubble={(props) =>
-            <Bubble {...props} customTextStyle={styles.customTextStyle}/>
+          renderBubble={props =>
+            <Bubble {...props} customTextStyle={styles.customTextStyle} />
           }
         />
       </View>
     );
   }
-
 }
 
 

@@ -84,7 +84,7 @@ const Images = {
     map: mapActionIcon,
     join: joinActionIcon,
     leave: leaveActionIcon,
-    
+
     reset: resetActionIcon,
     save: saveActionIcon,
     delete: deleteActionIcon,

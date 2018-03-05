@@ -5,4 +5,3 @@ import GlobalStyles from '../../../global/Styles';
 export default styles = MediaQueryStyleSheet.create({
   ...GlobalStyles,
 });
-  
