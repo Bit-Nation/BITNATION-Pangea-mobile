@@ -10,16 +10,12 @@ describe('ChatListItem tests', () => {
       expect(wrapper).toMatchSnapshot();
     });
 
-    test('With text colors', () => {
+    test('With different texts', () => {
       const wrapper = shallow(<ChatListItem
         text='Test chat list item'
+        participants='Text'
       />);
       expect(wrapper).toMatchSnapshot();
-    });
-
-    test('Default has onPress', () => {
-      const wrapper = shallow(<ChatListItem />);
-      expect(wrapper.instance().props.onPress).toBeDefined();
     });
   });
 

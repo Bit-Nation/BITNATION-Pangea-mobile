@@ -40,7 +40,7 @@ class ChatNationsListScreen extends Component {
         </View>
         <View style={styles.segmentedControlContainer}>
           <SegmentedControl
-            values={[i18n.t('screens.chat.allChats'), i18n.t('screens.chat.myChats')]}
+            values={[i18n.t('screens.chat.allChats')]}
             selectedIndex={this.props.selectedTab}
             onTabPress={this.props.onSelectTab}
             tabsContainerStyle={styles.tabsContainerStyle}
@@ -56,6 +56,7 @@ class ChatNationsListScreen extends Component {
 
             return (<ChatListItem
               text={nation.nationName}
+              participants='None'
               onPress={this.props.onSelectItem}
               status={(nationStatus === null ? '' : i18n.t(`enums.nation.status.${nationStatus.key}`))}
               id={nation.id}

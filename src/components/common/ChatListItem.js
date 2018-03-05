@@ -1,4 +1,9 @@
-import React, { Component } from 'react';
+/**
+ * @desc Component that renders Chat Nations list item.
+ * @type React.Component
+ */
+
+import React from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 import PropTypes from 'prop-types';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
@@ -6,28 +11,29 @@ import { MediaQueryStyleSheet } from 'react-native-responsive';
 import GlobalStyles from '../../global/Styles';
 import AssetsImages from '../../global/AssetsImages';
 
-/**
- * @desc Component that renders nations list item.
- * @type React.Component
- */
-export default class ChatListItem extends Component {
-  render() {
-    return (
-      <View style={styles.sectionListItemContainer}>
-        <TouchableOpacity
-          testID='Touchable'
-          onPress={() => this.props.onPress(this.props.id)}
-          style={styles.sectionListTouchable}
-        >
-          <Text style={[styles.listItemText, this.props.textStyle]} numberOfLines={1}>
-            {this.props.text}
-          </Text>
-          <Image source={AssetsImages.disclosureRowIcon} style={styles.sectionListDisclosure} />
-        </TouchableOpacity>
-      </View>
-    );
-  }
-}
+const styles = MediaQueryStyleSheet.create({
+  ...GlobalStyles,
+});
+
+const ChatListItem = ({
+  text, participants, id, onPress,
+}) => (
+  <View style={styles.sectionListItemContainer}>
+    <TouchableOpacity
+      testID='Touchable'
+      onPress={() => onPress(id)}
+      style={styles.sectionListTouchable}
+    >
+      <Text style={styles.listItemText} numberOfLines={1}>
+        {text}
+      </Text>
+      <Text style={styles.listItemTextState}>
+        {participants}
+      </Text>
+      <Image source={AssetsImages.disclosureRowIcon} style={styles.sectionListDisclosure} />
+    </TouchableOpacity>
+  </View>
+);
 
 ChatListItem.propTypes = {
   /**
@@ -35,18 +41,11 @@ ChatListItem.propTypes = {
    * @type string
    */
   text: PropTypes.string,
-
-  /**
-   * @desc Style object for basic text style
-   * @type object
-   */
-  textStyle: PropTypes.object,
-
   /**
    * @desc Status of the Nation to display on item
    * @type string
    */
-  status: PropTypes.string,
+  participants: PropTypes.string,
   /**
    * @desc Id that will be passed in onPress callback.
    * @type string
@@ -61,9 +60,9 @@ ChatListItem.propTypes = {
 
 ChatListItem.defaultProps = {
   text: '',
+  participants: '',
+  id: null,
   onPress: () => null,
 };
 
-const styles = MediaQueryStyleSheet.create({
-  ...GlobalStyles,
-});
+export default ChatListItem;
