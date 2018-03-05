@@ -36,7 +36,7 @@ ShallowWrapper {
             }
           }
         >
-          You are citizen of 
+          You are citizen of
            
           
         </Text>,
@@ -74,7 +74,7 @@ ShallowWrapper {
           "accessible": true,
           "allowFontScaling": true,
           "children": Array [
-            "You are citizen of ",
+            "You are citizen of",
             " ",
             "",
           ],
@@ -90,7 +90,7 @@ ShallowWrapper {
         },
         "ref": null,
         "rendered": Array [
-          "You are citizen of ",
+          "You are citizen of",
           " ",
           "",
         ],
@@ -136,7 +136,7 @@ ShallowWrapper {
               }
             }
           >
-            You are citizen of 
+            You are citizen of
              
             
           </Text>,
@@ -174,7 +174,7 @@ ShallowWrapper {
             "accessible": true,
             "allowFontScaling": true,
             "children": Array [
-              "You are citizen of ",
+              "You are citizen of",
               " ",
               "",
             ],
@@ -190,7 +190,7 @@ ShallowWrapper {
           },
           "ref": null,
           "rendered": Array [
-            "You are citizen of ",
+            "You are citizen of",
             " ",
             "",
           ],

@@ -35,7 +35,7 @@ ShallowWrapper {
             }
           }
         >
-          Status: 
+          Status:
         </Text>,
         <Text
           accessible={true}
@@ -77,7 +77,7 @@ ShallowWrapper {
         "props": Object {
           "accessible": true,
           "allowFontScaling": true,
-          "children": "Status: ",
+          "children": "Status:",
           "ellipsizeMode": "tail",
           "style": Object {
             "color": "#F5A623",
@@ -89,7 +89,7 @@ ShallowWrapper {
           },
         },
         "ref": null,
-        "rendered": "Status: ",
+        "rendered": "Status:",
         "type": [Function],
       },
       Object {
@@ -139,7 +139,7 @@ ShallowWrapper {
               }
             }
           >
-            Status: 
+            Status:
           </Text>,
           <Text
             accessible={true}
@@ -181,7 +181,7 @@ ShallowWrapper {
           "props": Object {
             "accessible": true,
             "allowFontScaling": true,
-            "children": "Status: ",
+            "children": "Status:",
             "ellipsizeMode": "tail",
             "style": Object {
               "color": "#F5A623",
@@ -193,7 +193,7 @@ ShallowWrapper {
             },
           },
           "ref": null,
-          "rendered": "Status: ",
+          "rendered": "Status:",
           "type": [Function],
         },
         Object {

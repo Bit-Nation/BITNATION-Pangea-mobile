@@ -261,8 +261,8 @@
       "serviceUsageInfo": "Non-citizens {{allowance}} use national services.",
       "profitInfo": "The nation is managed as a {{profit}} entity.",
       "ethereumAddress": "Ethereum Address:",
-      "status": "Status: ",
-      "citizen": "You are citizen of ",
+      "status": "Status:",
+      "citizen": "You are citizen of",
       "statusDescription": {
         "NATION_CREATE": {
           "200": "Submission in progress...",

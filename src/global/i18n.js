@@ -6,6 +6,9 @@ i18n.init({
   fallbackLng: 'en',
   initImmediate: false,
   returnObjects: true,
+  interpolation: {
+    escapeValue: false,
+  },
   resources: {
     en: {
       translation: en,
