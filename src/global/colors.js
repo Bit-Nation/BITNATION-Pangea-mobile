@@ -154,6 +154,7 @@ export default {
     accepted: '#4CAF50',
     pending: '#DADCE5',
     rejected: '#FFC107',
+    citizensCount: '#DADCE5',
   },
 
   // Document Colors

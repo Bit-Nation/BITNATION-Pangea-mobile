@@ -4,6 +4,8 @@ import type { NationType } from 'BITNATION-Pangea-libs/src/database/schemata';
 import { TX_JOB_STATUS_PENDING, TX_JOB_STATUS_FAILED, TX_JOB_STATUS_SUCCESS } from 'BITNATION-Pangea-libs/src/queues/transaction';
 import Colors from '../global/colors';
 
+export { TX_JOB_STATUS_PENDING, TX_JOB_STATUS_FAILED, TX_JOB_STATUS_SUCCESS } from 'BITNATION-Pangea-libs/src/queues/transaction';
+
 /**
  *
  * @param nations {Array<NationType>} an list of nations

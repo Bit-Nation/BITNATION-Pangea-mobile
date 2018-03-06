@@ -95,23 +95,20 @@
       },
       "status": {
         "draft": "Draft",
-        "rejected": "Rejected",
-        "pending": "Pending",
-        "accepted": "Accepted",
         "NATION_JOIN": {
-          "200": "Join | Pending",
-          "300": "Join | Accepted",
-          "400": "Join | Rejected"
+          "200": "Joining",
+          "300": "",
+          "400": "Banned"
         },
         "NATION_CREATE": {
-          "200": "Submit | Pending",
-          "300": "Submit | Accepted",
-          "400": "Submit | Rejected"
+          "200": "Pending",
+          "300": "",
+          "400": "Rejected"
         },
         "NATION_LEAVE": {
-          "200": "Leave | Pending",
-          "300": "Leave | Accepted",
-          "400": "Leave | Rejected"
+          "200": "Leaving",
+          "300": "",
+          "400": "Leaving rejected"
         }
       }
     },
