@@ -43,17 +43,20 @@ class ChatScreen extends React.Component {
   constructor(props) {
     super(props);
   
-    // Creating the socket-client instance will automatically connect to the server.
-    this.connection = SocketIOClient(config.CHAT_URL, {
-      transports: ['websocket'], 
-      upgrade: false, 
-      query: `token=${config.AUTH_TOKEN}`
-    });
-    this.connection.on('connect', () => {
-      this.connection.emit('room:join', {
-        nation_id: props.nationId
+    if (props.isBot) {
+      // Creating the socket-client instance will automatically connect to the server.
+      this.connection = SocketIOClient(config.CHAT_URL, {
+        transports: ['websocket'], 
+        upgrade: false, 
+        query: `token=${config.AUTH_TOKEN}`
       });
-    });
+      this.connection.on('connect', () => {
+        this.connection.emit('room:join', {
+          nation_id: props.nationId
+        });
+      });
+    }
+
     this.state = {
       messages: [],
       joined: false
@@ -61,81 +64,85 @@ class ChatScreen extends React.Component {
   }
 
   componentWillMount() {
-    // this.setState({
-    //   messages: [
-    //     {
-    //       _id: 1,
-    //       text: elizabot.start(),
-    //       createdAt: new Date(),
-    //       user: {
-    //         _id: 2,
-    //         name: 'Eliza',
-    //       },
-    //       // Any additional custom parameters are passed through
-    //     },
-    //   ],
-    // });
-
-    const URL = `${config.CHAT_URL}/${this.props.nationId}?auth_token=${config.AUTH_TOKEN}`;
-    fetch(URL)
-    .then(function(response) {
-      return response.json();
-    })
-    .then(function(json) {
-      console.log('response: ', json);
-    });
+    if (this.props.isBot) {
+      this.setState({
+        messages: [
+          {
+            _id: 1,
+            text: elizabot.start(),
+            createdAt: new Date(),
+            user: {
+              _id: 2,
+              name: 'Eliza',
+            },
+            // Any additional custom parameters are passed through
+          },
+        ],
+      });
+    } else {
+      const URL = `${config.CHAT_URL}/${this.props.nationId}?auth_token=${config.AUTH_TOKEN}`;
+      fetch(URL)
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(json) {
+        console.log('response: ', json);
+      });
+    }
   }
 
   componentDidMount() {
-    this.connection.on('room:joined', (data) => {
-      if (data.nation_id >= 0) {
-        this.setState({joined: true});
-        this.connection.on('msg', (messageData) => {
-          let messages = this.state.messages.slice();
-          messages.push({
-            _id: messageData._id,
-            text: messageData.msg,
-            createdAt: messageData.createdAt,
-            user: {
-              _id: 3,
-              name: messageData.from
-            }
+    if (!this.props.isBot && this.connection) {
+      this.connection.on('room:joined', (data) => {
+        if (data.nation_id >= 0) {
+          this.setState({joined: true});
+          this.connection.on('msg', (messageData) => {
+            let messages = this.state.messages.slice();
+            messages.push({
+              _id: messageData._id,
+              text: messageData.msg,
+              createdAt: messageData.createdAt,
+              user: {
+                _id: 3,
+                name: messageData.from
+              }
+            });
+            this.setState({messages});
           });
-          this.setState({messages});
-          console.log('got message: ', messageData);
-          console.log('new message list: ', messages);
-        });
-      }
-    });
+        }
+      });
+    }
   }
 
   onSend(messages = []) {
-    // const m = [
-    //   {
-    //     _id: this.state.messages.length + 1,
-    //     text: elizabot.reply(messages[0].text),
-    //     createdAt: new Date(),
-    //     user: {
-    //       _id: 2,
-    //       name: 'Eliza',
-    //     },
-    //   },
-    // ];
+    if (this.props.isBot) {
+      const m = [
+        {
+          _id: this.state.messages.length + 1,
+          text: elizabot.reply(messages[0].text),
+          createdAt: new Date(),
+          user: {
+            _id: 2,
+            name: 'Eliza',
+          },
+        },
+      ];
 
-    // // Add user's message
-    // this.setState(previousState => ({ messages: GiftedChat.append(previousState.messages, messages) }));
+      // Add user's message
+      this.setState(previousState => ({ messages: GiftedChat.append(previousState.messages, messages) }));
 
-    // // Add Eliza's response
-    // this.setState(previousState => ({ messages: GiftedChat.append(previousState.messages, m) }));
-    if (this.state.joined) {
-      console.log('emit message: ', messages);
-      this.connection.emit('room:msg', {
-        nation_id: this.props.nationId,
-        msg: messages[0].text,
-        from: this.props.user ? this.props.user.name : 'anonymous'
-      });
+      // Add Eliza's response
+      this.setState(previousState => ({ messages: GiftedChat.append(previousState.messages, m) }));
     } else {
+      if (this.state.joined) {
+        this.connection.emit('room:msg', {
+          nation_id: this.props.nationId,
+          msg: messages[0].text,
+          from: this.props.user ? this.props.user.name : 'anonymous'
+        });
+      } else {
 
+      }
     }
   }
 
