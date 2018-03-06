@@ -17,7 +17,7 @@
     "build:ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/Pangea/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios'"
   },
   "dependencies": {
-    "BITNATION-Pangea-libs": "git+https://github.com/Bit-Nation/BITNATION-Pangea-libs.git#tags/0.3.2",
+    "BITNATION-Pangea-libs": "git+https://github.com/Bit-Nation/BITNATION-Pangea-libs.git#8302665bd1d5c302649e2a72e19f704d317cc452",
     "assert": "^1.4.1",
     "async-to-generator": "^1.1.0",
     "awilix": "^3.0.1",
