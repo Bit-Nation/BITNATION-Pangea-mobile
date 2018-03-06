@@ -6,7 +6,9 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <ChatListItem
     id="Test id"
+    itemIcon={0}
     onPress={[MockFunction]}
+    participants=""
     text="Test list item"
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -40,21 +42,47 @@ ShallowWrapper {
           ellipsizeMode="tail"
           numberOfLines={1}
           style={
-            Array [
-              Object {
-                "color": "white",
-                "flex": 1,
-                "fontFamily": "Roboto",
-                "fontSize": 17,
-                "fontWeight": "normal",
-                "letterSpacing": 0,
-                "lineHeight": 22,
-              },
-              undefined,
-            ]
+            Object {
+              "color": "white",
+              "flex": 1,
+              "fontFamily": "Roboto",
+              "fontSize": 17,
+              "fontWeight": "normal",
+              "letterSpacing": 0,
+              "lineHeight": 22,
+            }
           }
         >
           Test list item
+        </Text>
+        <Image
+          source={0}
+          style={
+            Object {
+              "height": 15,
+              "marginRight": 14,
+              "width": 20,
+            }
+          }
+        />
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "color": "gray",
+              "fontFamily": "Roboto",
+              "fontSize": 17,
+              "fontWeight": "normal",
+              "letterSpacing": 0,
+              "lineHeight": 22,
+              "marginRight": 16,
+              "textAlign": "right",
+            }
+          }
+        >
+          
         </Text>
         <Image
           source={1}
@@ -91,21 +119,47 @@ ShallowWrapper {
             ellipsizeMode="tail"
             numberOfLines={1}
             style={
-              Array [
-                Object {
-                  "color": "white",
-                  "flex": 1,
-                  "fontFamily": "Roboto",
-                  "fontSize": 17,
-                  "fontWeight": "normal",
-                  "letterSpacing": 0,
-                  "lineHeight": 22,
-                },
-                undefined,
-              ]
+              Object {
+                "color": "white",
+                "flex": 1,
+                "fontFamily": "Roboto",
+                "fontSize": 17,
+                "fontWeight": "normal",
+                "letterSpacing": 0,
+                "lineHeight": 22,
+              }
             }
           >
             Test list item
+          </Text>,
+          <Image
+            source={0}
+            style={
+              Object {
+                "height": 15,
+                "marginRight": 14,
+                "width": 20,
+              }
+            }
+          />,
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "gray",
+                "fontFamily": "Roboto",
+                "fontSize": 17,
+                "fontWeight": "normal",
+                "letterSpacing": 0,
+                "lineHeight": 22,
+                "marginRight": 16,
+                "textAlign": "right",
+              }
+            }
+          >
+            
           </Text>,
           <Image
             source={1}
@@ -139,21 +193,58 @@ ShallowWrapper {
             "children": "Test list item",
             "ellipsizeMode": "tail",
             "numberOfLines": 1,
-            "style": Array [
-              Object {
-                "color": "white",
-                "flex": 1,
-                "fontFamily": "Roboto",
-                "fontSize": 17,
-                "fontWeight": "normal",
-                "letterSpacing": 0,
-                "lineHeight": 22,
-              },
-              undefined,
-            ],
+            "style": Object {
+              "color": "white",
+              "flex": 1,
+              "fontFamily": "Roboto",
+              "fontSize": 17,
+              "fontWeight": "normal",
+              "letterSpacing": 0,
+              "lineHeight": 22,
+            },
           },
           "ref": null,
           "rendered": "Test list item",
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "source": 0,
+            "style": Object {
+              "height": 15,
+              "marginRight": 14,
+              "width": 20,
+            },
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "accessible": true,
+            "allowFontScaling": true,
+            "children": "",
+            "ellipsizeMode": "tail",
+            "style": Object {
+              "color": "gray",
+              "fontFamily": "Roboto",
+              "fontSize": 17,
+              "fontWeight": "normal",
+              "letterSpacing": 0,
+              "lineHeight": 22,
+              "marginRight": 16,
+              "textAlign": "right",
+            },
+          },
+          "ref": null,
+          "rendered": "",
           "type": [Function],
         },
         Object {
@@ -202,21 +293,47 @@ ShallowWrapper {
             ellipsizeMode="tail"
             numberOfLines={1}
             style={
-              Array [
-                Object {
-                  "color": "white",
-                  "flex": 1,
-                  "fontFamily": "Roboto",
-                  "fontSize": 17,
-                  "fontWeight": "normal",
-                  "letterSpacing": 0,
-                  "lineHeight": 22,
-                },
-                undefined,
-              ]
+              Object {
+                "color": "white",
+                "flex": 1,
+                "fontFamily": "Roboto",
+                "fontSize": 17,
+                "fontWeight": "normal",
+                "letterSpacing": 0,
+                "lineHeight": 22,
+              }
             }
           >
             Test list item
+          </Text>
+          <Image
+            source={0}
+            style={
+              Object {
+                "height": 15,
+                "marginRight": 14,
+                "width": 20,
+              }
+            }
+          />
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "gray",
+                "fontFamily": "Roboto",
+                "fontSize": 17,
+                "fontWeight": "normal",
+                "letterSpacing": 0,
+                "lineHeight": 22,
+                "marginRight": 16,
+                "textAlign": "right",
+              }
+            }
+          >
+            
           </Text>
           <Image
             source={1}
@@ -253,21 +370,47 @@ ShallowWrapper {
               ellipsizeMode="tail"
               numberOfLines={1}
               style={
-                Array [
-                  Object {
-                    "color": "white",
-                    "flex": 1,
-                    "fontFamily": "Roboto",
-                    "fontSize": 17,
-                    "fontWeight": "normal",
-                    "letterSpacing": 0,
-                    "lineHeight": 22,
-                  },
-                  undefined,
-                ]
+                Object {
+                  "color": "white",
+                  "flex": 1,
+                  "fontFamily": "Roboto",
+                  "fontSize": 17,
+                  "fontWeight": "normal",
+                  "letterSpacing": 0,
+                  "lineHeight": 22,
+                }
               }
             >
               Test list item
+            </Text>,
+            <Image
+              source={0}
+              style={
+                Object {
+                  "height": 15,
+                  "marginRight": 14,
+                  "width": 20,
+                }
+              }
+            />,
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Object {
+                  "color": "gray",
+                  "fontFamily": "Roboto",
+                  "fontSize": 17,
+                  "fontWeight": "normal",
+                  "letterSpacing": 0,
+                  "lineHeight": 22,
+                  "marginRight": 16,
+                  "textAlign": "right",
+                }
+              }
+            >
+              
             </Text>,
             <Image
               source={1}
@@ -301,7 +444,462 @@ ShallowWrapper {
               "children": "Test list item",
               "ellipsizeMode": "tail",
               "numberOfLines": 1,
-              "style": Array [
+              "style": Object {
+                "color": "white",
+                "flex": 1,
+                "fontFamily": "Roboto",
+                "fontSize": 17,
+                "fontWeight": "normal",
+                "letterSpacing": 0,
+                "lineHeight": 22,
+              },
+            },
+            "ref": null,
+            "rendered": "Test list item",
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "source": 0,
+              "style": Object {
+                "height": 15,
+                "marginRight": 14,
+                "width": 20,
+              },
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "accessible": true,
+              "allowFontScaling": true,
+              "children": "",
+              "ellipsizeMode": "tail",
+              "style": Object {
+                "color": "gray",
+                "fontFamily": "Roboto",
+                "fontSize": 17,
+                "fontWeight": "normal",
+                "letterSpacing": 0,
+                "lineHeight": 22,
+                "marginRight": 16,
+                "textAlign": "right",
+              },
+            },
+            "ref": null,
+            "rendered": "",
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "source": 1,
+              "style": Object {
+                "height": 15,
+                "marginRight": 16,
+                "width": 8,
+              },
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`ChatListItem tests Rendering With different texts and icon 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <ChatListItem
+    id={null}
+    itemIcon={1}
+    onPress={[Function]}
+    participants="Text"
+    text="Test chat list item"
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": <TouchableOpacity
+        activeOpacity={0.2}
+        onPress={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "flexDirection": "row",
+            "justifyContent": "center",
+          }
+        }
+        testID="Touchable"
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          numberOfLines={1}
+          style={
+            Object {
+              "color": "white",
+              "flex": 1,
+              "fontFamily": "Roboto",
+              "fontSize": 17,
+              "fontWeight": "normal",
+              "letterSpacing": 0,
+              "lineHeight": 22,
+            }
+          }
+        >
+          Test chat list item
+        </Text>
+        <Image
+          source={1}
+          style={
+            Object {
+              "height": 15,
+              "marginRight": 14,
+              "width": 20,
+            }
+          }
+        />
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "color": "gray",
+              "fontFamily": "Roboto",
+              "fontSize": 17,
+              "fontWeight": "normal",
+              "letterSpacing": 0,
+              "lineHeight": 22,
+              "marginRight": 16,
+              "textAlign": "right",
+            }
+          }
+        >
+          Text
+        </Text>
+        <Image
+          source={1}
+          style={
+            Object {
+              "height": 15,
+              "marginRight": 16,
+              "width": 8,
+            }
+          }
+        />
+      </TouchableOpacity>,
+      "style": Object {
+        "alignItems": "center",
+        "backgroundColor": "transparent",
+        "flex": 1,
+        "flexDirection": "row",
+        "height": 44,
+        "justifyContent": "center",
+        "marginLeft": 16,
+      },
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "activeOpacity": 0.2,
+        "children": Array [
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            numberOfLines={1}
+            style={
+              Object {
+                "color": "white",
+                "flex": 1,
+                "fontFamily": "Roboto",
+                "fontSize": 17,
+                "fontWeight": "normal",
+                "letterSpacing": 0,
+                "lineHeight": 22,
+              }
+            }
+          >
+            Test chat list item
+          </Text>,
+          <Image
+            source={1}
+            style={
+              Object {
+                "height": 15,
+                "marginRight": 14,
+                "width": 20,
+              }
+            }
+          />,
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "gray",
+                "fontFamily": "Roboto",
+                "fontSize": 17,
+                "fontWeight": "normal",
+                "letterSpacing": 0,
+                "lineHeight": 22,
+                "marginRight": 16,
+                "textAlign": "right",
+              }
+            }
+          >
+            Text
+          </Text>,
+          <Image
+            source={1}
+            style={
+              Object {
+                "height": 15,
+                "marginRight": 16,
+                "width": 8,
+              }
+            }
+          />,
+        ],
+        "onPress": [Function],
+        "style": Object {
+          "alignItems": "center",
+          "flex": 1,
+          "flexDirection": "row",
+          "justifyContent": "center",
+        },
+        "testID": "Touchable",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "accessible": true,
+            "allowFontScaling": true,
+            "children": "Test chat list item",
+            "ellipsizeMode": "tail",
+            "numberOfLines": 1,
+            "style": Object {
+              "color": "white",
+              "flex": 1,
+              "fontFamily": "Roboto",
+              "fontSize": 17,
+              "fontWeight": "normal",
+              "letterSpacing": 0,
+              "lineHeight": 22,
+            },
+          },
+          "ref": null,
+          "rendered": "Test chat list item",
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "source": 1,
+            "style": Object {
+              "height": 15,
+              "marginRight": 14,
+              "width": 20,
+            },
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "accessible": true,
+            "allowFontScaling": true,
+            "children": "Text",
+            "ellipsizeMode": "tail",
+            "style": Object {
+              "color": "gray",
+              "fontFamily": "Roboto",
+              "fontSize": 17,
+              "fontWeight": "normal",
+              "letterSpacing": 0,
+              "lineHeight": 22,
+              "marginRight": 16,
+              "textAlign": "right",
+            },
+          },
+          "ref": null,
+          "rendered": "Text",
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "source": 1,
+            "style": Object {
+              "height": 15,
+              "marginRight": 16,
+              "width": 8,
+            },
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": <TouchableOpacity
+          activeOpacity={0.2}
+          onPress={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "flex": 1,
+              "flexDirection": "row",
+              "justifyContent": "center",
+            }
+          }
+          testID="Touchable"
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            numberOfLines={1}
+            style={
+              Object {
+                "color": "white",
+                "flex": 1,
+                "fontFamily": "Roboto",
+                "fontSize": 17,
+                "fontWeight": "normal",
+                "letterSpacing": 0,
+                "lineHeight": 22,
+              }
+            }
+          >
+            Test chat list item
+          </Text>
+          <Image
+            source={1}
+            style={
+              Object {
+                "height": 15,
+                "marginRight": 14,
+                "width": 20,
+              }
+            }
+          />
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "gray",
+                "fontFamily": "Roboto",
+                "fontSize": 17,
+                "fontWeight": "normal",
+                "letterSpacing": 0,
+                "lineHeight": 22,
+                "marginRight": 16,
+                "textAlign": "right",
+              }
+            }
+          >
+            Text
+          </Text>
+          <Image
+            source={1}
+            style={
+              Object {
+                "height": 15,
+                "marginRight": 16,
+                "width": 8,
+              }
+            }
+          />
+        </TouchableOpacity>,
+        "style": Object {
+          "alignItems": "center",
+          "backgroundColor": "transparent",
+          "flex": 1,
+          "flexDirection": "row",
+          "height": 44,
+          "justifyContent": "center",
+          "marginLeft": 16,
+        },
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "activeOpacity": 0.2,
+          "children": Array [
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              numberOfLines={1}
+              style={
                 Object {
                   "color": "white",
                   "flex": 1,
@@ -310,12 +908,124 @@ ShallowWrapper {
                   "fontWeight": "normal",
                   "letterSpacing": 0,
                   "lineHeight": 22,
-                },
-                undefined,
-              ],
+                }
+              }
+            >
+              Test chat list item
+            </Text>,
+            <Image
+              source={1}
+              style={
+                Object {
+                  "height": 15,
+                  "marginRight": 14,
+                  "width": 20,
+                }
+              }
+            />,
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Object {
+                  "color": "gray",
+                  "fontFamily": "Roboto",
+                  "fontSize": 17,
+                  "fontWeight": "normal",
+                  "letterSpacing": 0,
+                  "lineHeight": 22,
+                  "marginRight": 16,
+                  "textAlign": "right",
+                }
+              }
+            >
+              Text
+            </Text>,
+            <Image
+              source={1}
+              style={
+                Object {
+                  "height": 15,
+                  "marginRight": 16,
+                  "width": 8,
+                }
+              }
+            />,
+          ],
+          "onPress": [Function],
+          "style": Object {
+            "alignItems": "center",
+            "flex": 1,
+            "flexDirection": "row",
+            "justifyContent": "center",
+          },
+          "testID": "Touchable",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "accessible": true,
+              "allowFontScaling": true,
+              "children": "Test chat list item",
+              "ellipsizeMode": "tail",
+              "numberOfLines": 1,
+              "style": Object {
+                "color": "white",
+                "flex": 1,
+                "fontFamily": "Roboto",
+                "fontSize": 17,
+                "fontWeight": "normal",
+                "letterSpacing": 0,
+                "lineHeight": 22,
+              },
             },
             "ref": null,
-            "rendered": "Test list item",
+            "rendered": "Test chat list item",
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "source": 1,
+              "style": Object {
+                "height": 15,
+                "marginRight": 14,
+                "width": 20,
+              },
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "accessible": true,
+              "allowFontScaling": true,
+              "children": "Text",
+              "ellipsizeMode": "tail",
+              "style": Object {
+                "color": "gray",
+                "fontFamily": "Roboto",
+                "fontSize": 17,
+                "fontWeight": "normal",
+                "letterSpacing": 0,
+                "lineHeight": 22,
+                "marginRight": 16,
+                "textAlign": "right",
+              },
+            },
+            "ref": null,
+            "rendered": "Text",
             "type": [Function],
           },
           Object {
@@ -355,7 +1065,10 @@ ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <ChatListItem
+    id={null}
+    itemIcon={0}
     onPress={[Function]}
+    participants=""
     text="Test list item"
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -389,21 +1102,47 @@ ShallowWrapper {
           ellipsizeMode="tail"
           numberOfLines={1}
           style={
-            Array [
-              Object {
-                "color": "white",
-                "flex": 1,
-                "fontFamily": "Roboto",
-                "fontSize": 17,
-                "fontWeight": "normal",
-                "letterSpacing": 0,
-                "lineHeight": 22,
-              },
-              undefined,
-            ]
+            Object {
+              "color": "white",
+              "flex": 1,
+              "fontFamily": "Roboto",
+              "fontSize": 17,
+              "fontWeight": "normal",
+              "letterSpacing": 0,
+              "lineHeight": 22,
+            }
           }
         >
           Test list item
+        </Text>
+        <Image
+          source={0}
+          style={
+            Object {
+              "height": 15,
+              "marginRight": 14,
+              "width": 20,
+            }
+          }
+        />
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "color": "gray",
+              "fontFamily": "Roboto",
+              "fontSize": 17,
+              "fontWeight": "normal",
+              "letterSpacing": 0,
+              "lineHeight": 22,
+              "marginRight": 16,
+              "textAlign": "right",
+            }
+          }
+        >
+          
         </Text>
         <Image
           source={1}
@@ -440,21 +1179,47 @@ ShallowWrapper {
             ellipsizeMode="tail"
             numberOfLines={1}
             style={
-              Array [
-                Object {
-                  "color": "white",
-                  "flex": 1,
-                  "fontFamily": "Roboto",
-                  "fontSize": 17,
-                  "fontWeight": "normal",
-                  "letterSpacing": 0,
-                  "lineHeight": 22,
-                },
-                undefined,
-              ]
+              Object {
+                "color": "white",
+                "flex": 1,
+                "fontFamily": "Roboto",
+                "fontSize": 17,
+                "fontWeight": "normal",
+                "letterSpacing": 0,
+                "lineHeight": 22,
+              }
             }
           >
             Test list item
+          </Text>,
+          <Image
+            source={0}
+            style={
+              Object {
+                "height": 15,
+                "marginRight": 14,
+                "width": 20,
+              }
+            }
+          />,
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "gray",
+                "fontFamily": "Roboto",
+                "fontSize": 17,
+                "fontWeight": "normal",
+                "letterSpacing": 0,
+                "lineHeight": 22,
+                "marginRight": 16,
+                "textAlign": "right",
+              }
+            }
+          >
+            
           </Text>,
           <Image
             source={1}
@@ -488,21 +1253,58 @@ ShallowWrapper {
             "children": "Test list item",
             "ellipsizeMode": "tail",
             "numberOfLines": 1,
-            "style": Array [
-              Object {
-                "color": "white",
-                "flex": 1,
-                "fontFamily": "Roboto",
-                "fontSize": 17,
-                "fontWeight": "normal",
-                "letterSpacing": 0,
-                "lineHeight": 22,
-              },
-              undefined,
-            ],
+            "style": Object {
+              "color": "white",
+              "flex": 1,
+              "fontFamily": "Roboto",
+              "fontSize": 17,
+              "fontWeight": "normal",
+              "letterSpacing": 0,
+              "lineHeight": 22,
+            },
           },
           "ref": null,
           "rendered": "Test list item",
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "source": 0,
+            "style": Object {
+              "height": 15,
+              "marginRight": 14,
+              "width": 20,
+            },
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "accessible": true,
+            "allowFontScaling": true,
+            "children": "",
+            "ellipsizeMode": "tail",
+            "style": Object {
+              "color": "gray",
+              "fontFamily": "Roboto",
+              "fontSize": 17,
+              "fontWeight": "normal",
+              "letterSpacing": 0,
+              "lineHeight": 22,
+              "marginRight": 16,
+              "textAlign": "right",
+            },
+          },
+          "ref": null,
+          "rendered": "",
           "type": [Function],
         },
         Object {
@@ -551,21 +1353,47 @@ ShallowWrapper {
             ellipsizeMode="tail"
             numberOfLines={1}
             style={
-              Array [
-                Object {
-                  "color": "white",
-                  "flex": 1,
-                  "fontFamily": "Roboto",
-                  "fontSize": 17,
-                  "fontWeight": "normal",
-                  "letterSpacing": 0,
-                  "lineHeight": 22,
-                },
-                undefined,
-              ]
+              Object {
+                "color": "white",
+                "flex": 1,
+                "fontFamily": "Roboto",
+                "fontSize": 17,
+                "fontWeight": "normal",
+                "letterSpacing": 0,
+                "lineHeight": 22,
+              }
             }
           >
             Test list item
+          </Text>
+          <Image
+            source={0}
+            style={
+              Object {
+                "height": 15,
+                "marginRight": 14,
+                "width": 20,
+              }
+            }
+          />
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "gray",
+                "fontFamily": "Roboto",
+                "fontSize": 17,
+                "fontWeight": "normal",
+                "letterSpacing": 0,
+                "lineHeight": 22,
+                "marginRight": 16,
+                "textAlign": "right",
+              }
+            }
+          >
+            
           </Text>
           <Image
             source={1}
@@ -602,21 +1430,47 @@ ShallowWrapper {
               ellipsizeMode="tail"
               numberOfLines={1}
               style={
-                Array [
-                  Object {
-                    "color": "white",
-                    "flex": 1,
-                    "fontFamily": "Roboto",
-                    "fontSize": 17,
-                    "fontWeight": "normal",
-                    "letterSpacing": 0,
-                    "lineHeight": 22,
-                  },
-                  undefined,
-                ]
+                Object {
+                  "color": "white",
+                  "flex": 1,
+                  "fontFamily": "Roboto",
+                  "fontSize": 17,
+                  "fontWeight": "normal",
+                  "letterSpacing": 0,
+                  "lineHeight": 22,
+                }
               }
             >
               Test list item
+            </Text>,
+            <Image
+              source={0}
+              style={
+                Object {
+                  "height": 15,
+                  "marginRight": 14,
+                  "width": 20,
+                }
+              }
+            />,
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Object {
+                  "color": "gray",
+                  "fontFamily": "Roboto",
+                  "fontSize": 17,
+                  "fontWeight": "normal",
+                  "letterSpacing": 0,
+                  "lineHeight": 22,
+                  "marginRight": 16,
+                  "textAlign": "right",
+                }
+              }
+            >
+              
             </Text>,
             <Image
               source={1}
@@ -650,18 +1504,15 @@ ShallowWrapper {
               "children": "Test list item",
               "ellipsizeMode": "tail",
               "numberOfLines": 1,
-              "style": Array [
-                Object {
-                  "color": "white",
-                  "flex": 1,
-                  "fontFamily": "Roboto",
-                  "fontSize": 17,
-                  "fontWeight": "normal",
-                  "letterSpacing": 0,
-                  "lineHeight": 22,
-                },
-                undefined,
-              ],
+              "style": Object {
+                "color": "white",
+                "flex": 1,
+                "fontFamily": "Roboto",
+                "fontSize": 17,
+                "fontWeight": "normal",
+                "letterSpacing": 0,
+                "lineHeight": 22,
+              },
             },
             "ref": null,
             "rendered": "Test list item",
@@ -672,323 +1523,17 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "class",
             "props": Object {
-              "source": 1,
+              "source": 0,
               "style": Object {
                 "height": 15,
-                "marginRight": 16,
-                "width": 8,
+                "marginRight": 14,
+                "width": 20,
               },
             },
             "ref": null,
             "rendered": null,
             "type": [Function],
           },
-        ],
-        "type": [Function],
-      },
-      "type": [Function],
-    },
-  ],
-  Symbol(enzyme.__options__): Object {
-    "adapter": ReactSixteenAdapter {
-      "options": Object {
-        "enableComponentDidUpdateOnSetState": true,
-      },
-    },
-  },
-}
-`;
-
-exports[`ChatListItem tests Rendering With text colors 1`] = `
-ShallowWrapper {
-  "length": 1,
-  Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <ChatListItem
-    onPress={[Function]}
-    text="Test chat list item"
-  />,
-  Symbol(enzyme.__renderer__): Object {
-    "batchedUpdates": [Function],
-    "getNode": [Function],
-    "render": [Function],
-    "simulateEvent": [Function],
-    "unmount": [Function],
-  },
-  Symbol(enzyme.__node__): Object {
-    "instance": null,
-    "key": undefined,
-    "nodeType": "class",
-    "props": Object {
-      "children": <TouchableOpacity
-        activeOpacity={0.2}
-        onPress={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "flex": 1,
-            "flexDirection": "row",
-            "justifyContent": "center",
-          }
-        }
-        testID="Touchable"
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          ellipsizeMode="tail"
-          numberOfLines={1}
-          style={
-            Array [
-              Object {
-                "color": "white",
-                "flex": 1,
-                "fontFamily": "Roboto",
-                "fontSize": 17,
-                "fontWeight": "normal",
-                "letterSpacing": 0,
-                "lineHeight": 22,
-              },
-              undefined,
-            ]
-          }
-        >
-          Test chat list item
-        </Text>
-        <Image
-          source={1}
-          style={
-            Object {
-              "height": 15,
-              "marginRight": 16,
-              "width": 8,
-            }
-          }
-        />
-      </TouchableOpacity>,
-      "style": Object {
-        "alignItems": "center",
-        "backgroundColor": "transparent",
-        "flex": 1,
-        "flexDirection": "row",
-        "height": 44,
-        "justifyContent": "center",
-        "marginLeft": 16,
-      },
-    },
-    "ref": null,
-    "rendered": Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "class",
-      "props": Object {
-        "activeOpacity": 0.2,
-        "children": Array [
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
-            numberOfLines={1}
-            style={
-              Array [
-                Object {
-                  "color": "white",
-                  "flex": 1,
-                  "fontFamily": "Roboto",
-                  "fontSize": 17,
-                  "fontWeight": "normal",
-                  "letterSpacing": 0,
-                  "lineHeight": 22,
-                },
-                undefined,
-              ]
-            }
-          >
-            Test chat list item
-          </Text>,
-          <Image
-            source={1}
-            style={
-              Object {
-                "height": 15,
-                "marginRight": 16,
-                "width": 8,
-              }
-            }
-          />,
-        ],
-        "onPress": [Function],
-        "style": Object {
-          "alignItems": "center",
-          "flex": 1,
-          "flexDirection": "row",
-          "justifyContent": "center",
-        },
-        "testID": "Touchable",
-      },
-      "ref": null,
-      "rendered": Array [
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "accessible": true,
-            "allowFontScaling": true,
-            "children": "Test chat list item",
-            "ellipsizeMode": "tail",
-            "numberOfLines": 1,
-            "style": Array [
-              Object {
-                "color": "white",
-                "flex": 1,
-                "fontFamily": "Roboto",
-                "fontSize": 17,
-                "fontWeight": "normal",
-                "letterSpacing": 0,
-                "lineHeight": 22,
-              },
-              undefined,
-            ],
-          },
-          "ref": null,
-          "rendered": "Test chat list item",
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "source": 1,
-            "style": Object {
-              "height": 15,
-              "marginRight": 16,
-              "width": 8,
-            },
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-      ],
-      "type": [Function],
-    },
-    "type": [Function],
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "class",
-      "props": Object {
-        "children": <TouchableOpacity
-          activeOpacity={0.2}
-          onPress={[Function]}
-          style={
-            Object {
-              "alignItems": "center",
-              "flex": 1,
-              "flexDirection": "row",
-              "justifyContent": "center",
-            }
-          }
-          testID="Touchable"
-        >
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
-            numberOfLines={1}
-            style={
-              Array [
-                Object {
-                  "color": "white",
-                  "flex": 1,
-                  "fontFamily": "Roboto",
-                  "fontSize": 17,
-                  "fontWeight": "normal",
-                  "letterSpacing": 0,
-                  "lineHeight": 22,
-                },
-                undefined,
-              ]
-            }
-          >
-            Test chat list item
-          </Text>
-          <Image
-            source={1}
-            style={
-              Object {
-                "height": 15,
-                "marginRight": 16,
-                "width": 8,
-              }
-            }
-          />
-        </TouchableOpacity>,
-        "style": Object {
-          "alignItems": "center",
-          "backgroundColor": "transparent",
-          "flex": 1,
-          "flexDirection": "row",
-          "height": 44,
-          "justifyContent": "center",
-          "marginLeft": 16,
-        },
-      },
-      "ref": null,
-      "rendered": Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "activeOpacity": 0.2,
-          "children": Array [
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              numberOfLines={1}
-              style={
-                Array [
-                  Object {
-                    "color": "white",
-                    "flex": 1,
-                    "fontFamily": "Roboto",
-                    "fontSize": 17,
-                    "fontWeight": "normal",
-                    "letterSpacing": 0,
-                    "lineHeight": 22,
-                  },
-                  undefined,
-                ]
-              }
-            >
-              Test chat list item
-            </Text>,
-            <Image
-              source={1}
-              style={
-                Object {
-                  "height": 15,
-                  "marginRight": 16,
-                  "width": 8,
-                }
-              }
-            />,
-          ],
-          "onPress": [Function],
-          "style": Object {
-            "alignItems": "center",
-            "flex": 1,
-            "flexDirection": "row",
-            "justifyContent": "center",
-          },
-          "testID": "Touchable",
-        },
-        "ref": null,
-        "rendered": Array [
           Object {
             "instance": null,
             "key": undefined,
@@ -996,24 +1541,21 @@ ShallowWrapper {
             "props": Object {
               "accessible": true,
               "allowFontScaling": true,
-              "children": "Test chat list item",
+              "children": "",
               "ellipsizeMode": "tail",
-              "numberOfLines": 1,
-              "style": Array [
-                Object {
-                  "color": "white",
-                  "flex": 1,
-                  "fontFamily": "Roboto",
-                  "fontSize": 17,
-                  "fontWeight": "normal",
-                  "letterSpacing": 0,
-                  "lineHeight": 22,
-                },
-                undefined,
-              ],
+              "style": Object {
+                "color": "gray",
+                "fontFamily": "Roboto",
+                "fontSize": 17,
+                "fontWeight": "normal",
+                "letterSpacing": 0,
+                "lineHeight": 22,
+                "marginRight": 16,
+                "textAlign": "right",
+              },
             },
             "ref": null,
-            "rendered": "Test chat list item",
+            "rendered": "",
             "type": [Function],
           },
           Object {

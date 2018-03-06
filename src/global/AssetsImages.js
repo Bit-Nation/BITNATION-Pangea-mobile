@@ -47,6 +47,14 @@ const userCitizenIcon = require('../assets/images/avatarCitizen.png');
 
 const disclosureRowIcon = require('../assets/images/disclosure.png');
 
+//Chat Nations UI
+const signalIcon0 = require('../assets/images/signal_icon_0.png');
+const signalIcon1 = require('../assets/images/signal_icon_1.png');
+const signalIcon2 = require('../assets/images/signal_icon_2.png');
+const signalIcon3 = require('../assets/images/signal_icon_3.png');
+const signalIcon4 = require('../assets/images/signal_icon_4.png');
+const signalIcon5 = require('../assets/images/signal_icon_5.png');
+
 const Images = {
   logo,
   background,
@@ -89,6 +97,14 @@ const Images = {
     save: saveActionIcon,
     delete: deleteActionIcon,
     submit: submitActionIcon,
+  },
+  ChatUI: {
+    signal0: signalIcon0,
+    signal1: signalIcon1,
+    signal2: signalIcon2,
+    signal3: signalIcon3,
+    signal4: signalIcon4,
+    signal5: signalIcon5,
   },
 };
 
