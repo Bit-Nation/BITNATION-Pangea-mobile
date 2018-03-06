@@ -53,15 +53,6 @@ class ChatScreen extends React.Component {
       this.connection.emit('room:join', {
         nation_id: props.nationId
       });
-
-      this.connection.on('room:joined', (data) => {
-        if (data.nation_id >= 0) {
-          this.setState({joined: true});
-          this.connection.on('msg', (messageData) => {
-            console.log('got message: ', messageData);
-          });
-        }
-      });
     });
     this.state = {
       messages: [],
@@ -70,29 +61,52 @@ class ChatScreen extends React.Component {
   }
 
   componentWillMount() {
-    this.setState({
-      messages: [
-        {
-          _id: 1,
-          text: elizabot.start(),
-          createdAt: new Date(),
-          user: {
-            _id: 2,
-            name: 'Eliza',
-          },
-          // Any additional custom parameters are passed through
-        },
-      ],
-    });
+    // this.setState({
+    //   messages: [
+    //     {
+    //       _id: 1,
+    //       text: elizabot.start(),
+    //       createdAt: new Date(),
+    //       user: {
+    //         _id: 2,
+    //         name: 'Eliza',
+    //       },
+    //       // Any additional custom parameters are passed through
+    //     },
+    //   ],
+    // });
 
     const URL = `${config.CHAT_URL}/${this.props.nationId}?auth_token=${config.AUTH_TOKEN}`;
-    // fetch(URL)
-    // .then(function(response) {
-    //   return response.json();
-    // })
-    // .then(function(json) {
-    //   console.log('response: ', json);
-    // });
+    fetch(URL)
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(json) {
+      console.log('response: ', json);
+    });
+  }
+
+  componentDidMount() {
+    this.connection.on('room:joined', (data) => {
+      if (data.nation_id >= 0) {
+        this.setState({joined: true});
+        this.connection.on('msg', (messageData) => {
+          let messages = this.state.messages.slice();
+          messages.push({
+            _id: messageData._id,
+            text: messageData.msg,
+            createdAt: messageData.createdAt,
+            user: {
+              _id: 3,
+              name: messageData.from
+            }
+          });
+          this.setState({messages});
+          console.log('got message: ', messageData);
+          console.log('new message list: ', messages);
+        });
+      }
+    });
   }
 
   onSend(messages = []) {
@@ -114,7 +128,7 @@ class ChatScreen extends React.Component {
     // // Add Eliza's response
     // this.setState(previousState => ({ messages: GiftedChat.append(previousState.messages, m) }));
     if (this.state.joined) {
-      console.log('emit message: ', this.props.nationId);
+      console.log('emit message: ', messages);
       this.connection.emit('room:msg', {
         nation_id: this.props.nationId,
         msg: messages[0].text,
