@@ -6,6 +6,7 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <ChatListItem
     id="Test id"
+    itemIcon={0}
     onPress={[MockFunction]}
     participants=""
     text="Test list item"
@@ -54,6 +55,16 @@ ShallowWrapper {
         >
           Test list item
         </Text>
+        <Image
+          source={0}
+          style={
+            Object {
+              "height": 15,
+              "marginRight": 14,
+              "width": 20,
+            }
+          }
+        />
         <Text
           accessible={true}
           allowFontScaling={true}
@@ -121,6 +132,16 @@ ShallowWrapper {
           >
             Test list item
           </Text>,
+          <Image
+            source={0}
+            style={
+              Object {
+                "height": 15,
+                "marginRight": 14,
+                "width": 20,
+              }
+            }
+          />,
           <Text
             accessible={true}
             allowFontScaling={true}
@@ -184,6 +205,22 @@ ShallowWrapper {
           },
           "ref": null,
           "rendered": "Test list item",
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "source": 0,
+            "style": Object {
+              "height": 15,
+              "marginRight": 14,
+              "width": 20,
+            },
+          },
+          "ref": null,
+          "rendered": null,
           "type": [Function],
         },
         Object {
@@ -269,6 +306,16 @@ ShallowWrapper {
           >
             Test list item
           </Text>
+          <Image
+            source={0}
+            style={
+              Object {
+                "height": 15,
+                "marginRight": 14,
+                "width": 20,
+              }
+            }
+          />
           <Text
             accessible={true}
             allowFontScaling={true}
@@ -336,6 +383,16 @@ ShallowWrapper {
             >
               Test list item
             </Text>,
+            <Image
+              source={0}
+              style={
+                Object {
+                  "height": 15,
+                  "marginRight": 14,
+                  "width": 20,
+                }
+              }
+            />,
             <Text
               accessible={true}
               allowFontScaling={true}
@@ -406,6 +463,22 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "class",
             "props": Object {
+              "source": 0,
+              "style": Object {
+                "height": 15,
+                "marginRight": 14,
+                "width": 20,
+              },
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
               "accessible": true,
               "allowFontScaling": true,
               "children": "",
@@ -457,12 +530,13 @@ ShallowWrapper {
 }
 `;
 
-exports[`ChatListItem tests Rendering With different texts 1`] = `
+exports[`ChatListItem tests Rendering With different texts and icon 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <ChatListItem
     id={null}
+    itemIcon={1}
     onPress={[Function]}
     participants="Text"
     text="Test chat list item"
@@ -511,6 +585,16 @@ ShallowWrapper {
         >
           Test chat list item
         </Text>
+        <Image
+          source={1}
+          style={
+            Object {
+              "height": 15,
+              "marginRight": 14,
+              "width": 20,
+            }
+          }
+        />
         <Text
           accessible={true}
           allowFontScaling={true}
@@ -578,6 +662,16 @@ ShallowWrapper {
           >
             Test chat list item
           </Text>,
+          <Image
+            source={1}
+            style={
+              Object {
+                "height": 15,
+                "marginRight": 14,
+                "width": 20,
+              }
+            }
+          />,
           <Text
             accessible={true}
             allowFontScaling={true}
@@ -641,6 +735,22 @@ ShallowWrapper {
           },
           "ref": null,
           "rendered": "Test chat list item",
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "source": 1,
+            "style": Object {
+              "height": 15,
+              "marginRight": 14,
+              "width": 20,
+            },
+          },
+          "ref": null,
+          "rendered": null,
           "type": [Function],
         },
         Object {
@@ -726,6 +836,16 @@ ShallowWrapper {
           >
             Test chat list item
           </Text>
+          <Image
+            source={1}
+            style={
+              Object {
+                "height": 15,
+                "marginRight": 14,
+                "width": 20,
+              }
+            }
+          />
           <Text
             accessible={true}
             allowFontScaling={true}
@@ -793,6 +913,16 @@ ShallowWrapper {
             >
               Test chat list item
             </Text>,
+            <Image
+              source={1}
+              style={
+                Object {
+                  "height": 15,
+                  "marginRight": 14,
+                  "width": 20,
+                }
+              }
+            />,
             <Text
               accessible={true}
               allowFontScaling={true}
@@ -863,6 +993,22 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "class",
             "props": Object {
+              "source": 1,
+              "style": Object {
+                "height": 15,
+                "marginRight": 14,
+                "width": 20,
+              },
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
               "accessible": true,
               "allowFontScaling": true,
               "children": "Text",
@@ -920,6 +1066,7 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <ChatListItem
     id={null}
+    itemIcon={0}
     onPress={[Function]}
     participants=""
     text="Test list item"
@@ -968,6 +1115,16 @@ ShallowWrapper {
         >
           Test list item
         </Text>
+        <Image
+          source={0}
+          style={
+            Object {
+              "height": 15,
+              "marginRight": 14,
+              "width": 20,
+            }
+          }
+        />
         <Text
           accessible={true}
           allowFontScaling={true}
@@ -1035,6 +1192,16 @@ ShallowWrapper {
           >
             Test list item
           </Text>,
+          <Image
+            source={0}
+            style={
+              Object {
+                "height": 15,
+                "marginRight": 14,
+                "width": 20,
+              }
+            }
+          />,
           <Text
             accessible={true}
             allowFontScaling={true}
@@ -1098,6 +1265,22 @@ ShallowWrapper {
           },
           "ref": null,
           "rendered": "Test list item",
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "source": 0,
+            "style": Object {
+              "height": 15,
+              "marginRight": 14,
+              "width": 20,
+            },
+          },
+          "ref": null,
+          "rendered": null,
           "type": [Function],
         },
         Object {
@@ -1183,6 +1366,16 @@ ShallowWrapper {
           >
             Test list item
           </Text>
+          <Image
+            source={0}
+            style={
+              Object {
+                "height": 15,
+                "marginRight": 14,
+                "width": 20,
+              }
+            }
+          />
           <Text
             accessible={true}
             allowFontScaling={true}
@@ -1250,6 +1443,16 @@ ShallowWrapper {
             >
               Test list item
             </Text>,
+            <Image
+              source={0}
+              style={
+                Object {
+                  "height": 15,
+                  "marginRight": 14,
+                  "width": 20,
+                }
+              }
+            />,
             <Text
               accessible={true}
               allowFontScaling={true}
@@ -1313,6 +1516,22 @@ ShallowWrapper {
             },
             "ref": null,
             "rendered": "Test list item",
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "source": 0,
+              "style": Object {
+                "height": 15,
+                "marginRight": 14,
+                "width": 20,
+              },
+            },
+            "ref": null,
+            "rendered": null,
             "type": [Function],
           },
           Object {

@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import ChatListItem from '../../../../src/components/common/ChatListItem';
+import AssetsImages from '../../../../src/global/AssetsImages';
 
 describe('ChatListItem tests', () => {
   describe('Rendering', () => {
@@ -10,10 +11,11 @@ describe('ChatListItem tests', () => {
       expect(wrapper).toMatchSnapshot();
     });
 
-    test('With different texts', () => {
+    test('With different texts and icon', () => {
       const wrapper = shallow(<ChatListItem
         text='Test chat list item'
         participants='Text'
+        itemIcon={AssetsImages.ChatUI.signal0}
       />);
       expect(wrapper).toMatchSnapshot();
     });
