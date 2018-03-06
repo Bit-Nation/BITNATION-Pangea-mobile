@@ -23,8 +23,6 @@ class NationsListScreen extends Component {
       this.props.nations
       :
       _.filter(this.props.nations, nation => _.indexOf(this.props.myNations, nation.id) !== -1);
-    console.log('MY NATIONS');
-    console.log(this.props.myNations);
     const sortedNations = _.sortBy(nations, nation => nation.nationName);
     const groups = _.groupBy(sortedNations, nation => nation.nationName.charAt(0));
     const sections = _.map(groups, (group, key) => ({
