@@ -49,30 +49,24 @@ class ChatScreen extends React.Component {
       upgrade: false, 
       query: `token=${config.AUTH_TOKEN}`
     });
-    console.log('connection open: ', this.connection);
     this.connection.on('connect', () => {
-      console.log('connection established');
       this.connection.emit('room:join', {
         nation_id: props.nationId
       });
-    });
 
+      this.connection.on('room:joined', (data) => {
+        if (data.nation_id >= 0) {
+          this.setState({joined: true});
+          this.connection.on('msg', (messageData) => {
+            console.log('got message: ', messageData);
+          });
+        }
+      });
+    });
     this.state = {
       messages: [],
       joined: false
     };
-  }
-
-  componentDidMount() {
-    this.connection.on('room:joined', (data) => {
-      console.log('nation id: ', data.nation_id);
-      if (data.nation_id >= 0) {
-        this.setState({joined: true});
-      }
-      this.connection.on('msg', (messageData) => {
-        console.log('got message: ', messageData);
-      });
-    });
   }
 
   componentWillMount() {
@@ -120,10 +114,11 @@ class ChatScreen extends React.Component {
     // // Add Eliza's response
     // this.setState(previousState => ({ messages: GiftedChat.append(previousState.messages, m) }));
     if (this.state.joined) {
+      console.log('emit message: ', this.props.nationId);
       this.connection.emit('room:msg', {
         nation_id: this.props.nationId,
         msg: messages[0].text,
-        from: this.props.username
+        from: this.props.user ? this.props.user.name : 'anonymous'
       });
     } else {
 
@@ -161,7 +156,7 @@ class ChatScreen extends React.Component {
 
 const mapStateToProps = state => ({
   nationId: state.nations.openedNationId,
-  username: state.profile.user.name
+  user: state.profile.user
 });
 
 const mapDispatchToProps = dispatch => ({});
