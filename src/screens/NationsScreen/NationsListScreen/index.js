@@ -14,7 +14,8 @@ import NationListHeader from '../../../components/common/NationListHeader';
 import { ALL_NATIONS } from '../../../reducers/nations';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import i18n from '../../../global/i18n';
-import { resolveStatus, statusColor } from '../../../utils/nations';
+import { resolveStatus, statusColor, TX_JOB_STATUS_SUCCESS } from '../../../utils/nations';
+import Colors from '../../../global/colors';
 
 class NationsListScreen extends Component {
   render() {
@@ -54,12 +55,30 @@ class NationsListScreen extends Component {
           renderItem={(item) => {
             const nation = item.item;
             const nationStatus = resolveStatus(nation);
+            const shouldShowCitizens = nationStatus === null
+              || nationStatus.code === TX_JOB_STATUS_SUCCESS;
+
+            let statusString = '';
+            if (nationStatus !== null) {
+              statusString = i18n.t(`enums.nation.status.${nationStatus.key}`);
+            }
+            if (shouldShowCitizens) {
+              statusString = `${nation.citizens}`;
+            }
+
+            let statusTextColor = statusColor(0);
+            if (nationStatus !== null) {
+              statusTextColor = statusColor(nationStatus.code);
+            }
+            if (shouldShowCitizens) {
+              statusTextColor = Colors.listItemTextState.citizensCount;
+            }
 
             return (<NationListItem
               text={nation.nationName}
               onPress={this.props.onSelectItem}
-              status={(nationStatus === null ? '' : i18n.t(`enums.nation.status.${nationStatus.key}`))}
-              statusColor={(nationStatus === null ? statusColor(0) : statusColor(nationStatus.code))}
+              status={statusString}
+              statusColor={statusTextColor}
               id={nation.id}
             />);
           }}
