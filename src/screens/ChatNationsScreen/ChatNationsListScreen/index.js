@@ -14,6 +14,7 @@ import { ALL_NATIONS } from '../../../reducers/nations';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import i18n from '../../../global/i18n';
 import { resolveStatus } from '../../../utils/nations';
+import AssetsImages from '../../../global/AssetsImages';
 
 class ChatNationsListScreen extends Component {
   render() {
@@ -38,17 +39,6 @@ class ChatNationsListScreen extends Component {
             <Text style={styles.largeTitle}>{i18n.t('screens.chat.title')}</Text>
           </View>
         </View>
-        <View style={styles.segmentedControlContainer}>
-          <SegmentedControl
-            values={[i18n.t('screens.chat.allChats')]}
-            selectedIndex={this.props.selectedTab}
-            onTabPress={this.props.onSelectTab}
-            tabsContainerStyle={styles.tabsContainerStyle}
-            activeTabStyle={styles.activeTabStyle}
-            tabStyle={styles.tabStyle}
-            tabTextStyle={styles.tabTextStyle}
-          />
-        </View>
         <SectionList
           renderItem={(item) => {
             const nation = item.item;
@@ -57,6 +47,7 @@ class ChatNationsListScreen extends Component {
             return (<ChatListItem
               text={nation.nationName}
               participants='None'
+              itemIcon={AssetsImages.ChatUI.signal0}
               onPress={this.props.onSelectItem}
               status={(nationStatus === null ? '' : i18n.t(`enums.nation.status.${nationStatus.key}`))}
               id={nation.id}

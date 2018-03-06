@@ -16,7 +16,7 @@ const styles = MediaQueryStyleSheet.create({
 });
 
 const ChatListItem = ({
-  text, participants, id, onPress,
+  text,participants, id, onPress, itemIcon,
 }) => (
   <View style={styles.sectionListItemContainer}>
     <TouchableOpacity
@@ -27,6 +27,7 @@ const ChatListItem = ({
       <Text style={styles.listItemText} numberOfLines={1}>
         {text}
       </Text>
+      <Image source={itemIcon} style={styles.sectionListSignal} />
       <Text style={styles.listItemTextState}>
         {participants}
       </Text>
@@ -56,6 +57,11 @@ ChatListItem.propTypes = {
    * @type string
    */
   onPress: PropTypes.func,
+  /**
+   * @desc Callback on press item.
+   * @type string
+   */
+  itemIcon: PropTypes.number,
 };
 
 ChatListItem.defaultProps = {
@@ -63,6 +69,7 @@ ChatListItem.defaultProps = {
   participants: '',
   id: null,
   onPress: () => null,
+  itemIcon: 0,
 };
 
 export default ChatListItem;
