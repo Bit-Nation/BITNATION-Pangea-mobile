@@ -22,23 +22,6 @@ import { nationIsValid, resolveStatus } from '../../../utils/nations';
 import pangeaLibs from '../../../services/container';
 
 class NationDetailsScreen extends Component {
-  /**
-     * @todo this need's to be refactored
-     */
-  constructor() {
-    super();
-
-    pangeaLibs
-      .then((container) => {
-        container
-          .queue
-          .txQueue
-          .startProcessing();
-
-        console.log('Started tx queue worker');
-      })
-      .catch(console.log);
-  }
 
   render() {
     const nation = openedNation(this.props);
