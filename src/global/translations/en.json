@@ -425,5 +425,9 @@
       "title": "You have turned {{onOff}} testing mode"
     },
     "removeWallets": "Remove wallets"
+  },
+  "error": {
+    "noConnection": "Please check your internet connection.",
+    "insufficientFunds": "Insufficient funds. Please check your wallet."
   }
 }

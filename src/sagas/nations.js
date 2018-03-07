@@ -1,5 +1,4 @@
 import { call, put, select, takeEvery, all } from 'redux-saga/effects';
-import { Alert } from 'react-native';
 
 import {
   START_NATIONS_FETCH, CANCEL_LOADING, REQUEST_JOIN_NATION, REQUEST_LEAVE_NATION,
@@ -10,16 +9,20 @@ import { waitConnect } from '../utils/connectivity';
 import { CONNECTION_TIMEOUT } from '../global/Constants';
 import { openedNation } from '../reducers/nations';
 import { convertFromDatabase } from '../utils/nations';
+import { errorAlert } from '../global/alerts';
 
 export async function checkConnection() {
-  return await waitConnect(CONNECTION_TIMEOUT);
+  return waitConnect(CONNECTION_TIMEOUT);
 }
 
 const extractMessage = (error) => {
-  if (error.toString().indexOf('insufficient') !== -1) {
-    return 'Insufficient funds. Please check your wallet';
+  if (error.transKey !== undefined) {
+    return error;
   }
-  return error.toString();
+  if (error.toString().indexOf('insufficient') !== -1) {
+    return { transKey: 'insufficientFunds' };
+  }
+  return error;
 };
 
 export const getNations = state => state.nations;
@@ -56,7 +59,7 @@ export function* fetchNations() {
     yield put(doneFetchNations());
   } catch (e) {
     console.log('Update nation error: ', e);
-    Alert.alert(extractMessage(e));
+    errorAlert(extractMessage(e));
     yield put({ type: CANCEL_LOADING });
   }
 }
@@ -73,7 +76,7 @@ export function* joinNation() {
     yield put({ type: START_NATIONS_FETCH });
   } catch (e) {
     console.log('Join nation error: ', e);
-    Alert.alert(extractMessage(e));
+    errorAlert(extractMessage(e));
     yield put({ type: CANCEL_LOADING });
   }
 }
@@ -90,7 +93,7 @@ export function* leaveNation() {
     yield put({ type: START_NATIONS_FETCH });
   } catch (e) {
     console.log('Leave nation error: ', e);
-    Alert.alert(extractMessage(e));
+    errorAlert(extractMessage(e));
     yield put({ type: CANCEL_LOADING });
   }
 }

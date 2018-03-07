@@ -10,11 +10,11 @@ export async function waitConnect(timeout) {
       if (isConnected) {
         res();
       } else {
-        rej();
+        rej({ transKey: 'noConnection' });
       }
     };
     setTimeout(() => {
-      rej();
+      rej({ transKey: 'noConnection' });
     }, timeout);
     NetInfo.isConnected.addEventListener('connectionChange', _handleChangeConnection);
   });
