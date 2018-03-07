@@ -1,9 +1,9 @@
 import { startUserCreating, startUserEditing, changeEditingUser, setUserProfile, cancelUserEditing, doneUserEditing, requestProfileUpdate, getUserProfile } from '../../../src/actions/profile';
-import reducer, { initialState } from '../../../src/reducers/profile';
+import reducer, { emptyProfile, initialState } from '../../../src/reducers/profile';
 
 test('reducer - user profile creation', (done) => {
   const state = reducer(initialState, startUserCreating());
-  expect(state).toEqual({ ...initialState, editingUser: {} });
+  expect(state).toEqual({ ...initialState, editingUser: emptyProfile });
   done();
 });
 
