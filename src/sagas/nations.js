@@ -2,8 +2,8 @@ import { call, put, select, takeEvery, all } from 'redux-saga/effects';
 import { Alert } from 'react-native';
 
 import {
-  START_NATIONS_FETCH, DONE_FETCH_NATIONS,
-  CANCEL_LOADING, REQUEST_JOIN_NATION, REQUEST_LEAVE_NATION,
+  START_NATIONS_FETCH, CANCEL_LOADING, REQUEST_JOIN_NATION, REQUEST_LEAVE_NATION,
+  doneSyncNations, doneFetchNations,
 } from '../actions/nations';
 import { getPangeaLibrary } from '../services/container';
 import { waitConnect } from '../utils/connectivity';
@@ -24,22 +24,36 @@ const extractMessage = (error) => {
 
 export const getNations = state => state.nations;
 
+/**
+ * @desc Synchronize redux state with database.
+ */
+export function* syncNations() {
+  try {
+    const pangeaLib = yield call(getPangeaLibrary);
+    const nations = yield call(pangeaLib.eth.nation.all);
+    const mappedNations = nations.map(convertFromDatabase);
+    yield put(doneSyncNations([...mappedNations]));
+  } catch (e) {
+    console.log('Sync nation error: ', e);
+  }
+}
+
+/**
+ * @desc Fetch nations from blockchain and synchronize redux state with current database state.
+ */
 export function* fetchNations() {
   try {
     console.log('fetching nations');
-    const pangeaLib = yield call(getPangeaLibrary);
-    const nationsCache = yield call(pangeaLib.eth.nation.all);
-    const mappedCache = nationsCache.map(convertFromDatabase);
-    yield put({ type: DONE_FETCH_NATIONS, payload: [...mappedCache] });
+    yield call(syncNations);
 
+    const pangeaLib = yield call(getPangeaLibrary);
     yield call(checkConnection);
     console.log('start syncing with blockchain');
     yield call(pangeaLib.eth.nation.index);
     console.log('synced with blockchain');
+    yield call(syncNations);
 
-    const updatedNations = yield call(pangeaLib.eth.nation.all);
-    const mappedNations = updatedNations.map(convertFromDatabase);
-    yield put({ type: DONE_FETCH_NATIONS, payload: [...mappedNations] });
+    yield put(doneFetchNations());
   } catch (e) {
     console.log('Update nation error: ', e);
     Alert.alert(extractMessage(e));

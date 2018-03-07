@@ -1,6 +1,6 @@
 // @flow
 
-import type { NationIdType } from '../types/Nation';
+import type { NationIdType, NationType } from '../types/Nation';
 
 export type NationTab = 'ALL_NATIONS' | 'MY_NATIONS';
 
@@ -9,13 +9,17 @@ type OpenNationAction = { +type: 'OPEN_NATION', +nationId: NationIdType };
 type RequestFetchNationsAction = { +type: 'START_NATIONS_FETCH' };
 type JoinNationAction = { +type: 'REQUEST_JOIN_NATION' };
 type LeaveNationAction = { +type: 'REQUEST_LEAVE_NATION' };
+type DoneFetchNationsAction = { +type: 'DONE_FETCH_NATIONS' };
+type DoneSyncNationsAction = { +type: 'DONE_SYNC_NATIONS', +payload: Array<NationType> };
 
 export type Action =
   | SwitchNationTabAction
   | OpenNationAction
   | RequestFetchNationsAction
   | JoinNationAction
-  | LeaveNationAction;
+  | LeaveNationAction
+  | DoneFetchNationsAction
+  | DoneSyncNationsAction;
 
 export const SWITCH_NATIONS_TAB = 'SWITCH_NATIONS_TAB';
 export const OPEN_NATION = 'OPEN_NATION';
@@ -24,6 +28,7 @@ export const DONE_FETCH_NATIONS = 'DONE_FETCH_NATIONS';
 export const CANCEL_LOADING = 'CANCEL_LOADING';
 export const REQUEST_JOIN_NATION = 'REQUEST_JOIN_NATION';
 export const REQUEST_LEAVE_NATION = 'REQUEST_LEAVE_NATION';
+export const DONE_SYNC_NATIONS = 'DONE_SYNC_NATIONS';
 
 /**
  * @desc Action creator for an action that switches nation list filter.
@@ -76,5 +81,27 @@ export function joinNation(): JoinNationAction {
 export function leaveNation(): LeaveNationAction {
   return {
     type: REQUEST_LEAVE_NATION,
+  };
+}
+
+/**
+ * @desc Action creator for an action that is called when nations fetch finished.
+ * @returns {DoneFetchNationsAction} An action
+ */
+export function doneFetchNations(): DoneFetchNationsAction {
+  return {
+    type: DONE_FETCH_NATIONS,
+  };
+}
+
+/**
+ * @desc Action creator for an action that is called when nations sync finished.
+ * @param {NationType[]} nations Nations coming from database.
+ * @returns {DoneSyncNationsAction} An action.
+ */
+export function doneSyncNations(nations: Array<NationType>): DoneSyncNationsAction {
+  return {
+    type: DONE_SYNC_NATIONS,
+    payload: nations,
   };
 }

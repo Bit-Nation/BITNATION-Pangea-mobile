@@ -10,10 +10,10 @@ import {
   CANCEL_LOADING,
   START_NATIONS_FETCH,
   REQUEST_JOIN_NATION,
-  REQUEST_LEAVE_NATION,
+  REQUEST_LEAVE_NATION, DONE_SYNC_NATIONS,
 } from '../actions/nations';
 import type { NationType, NationIdType, EditingNationType } from '../types/Nation';
-import { resolveNation, resolveStatus } from '../utils/nations';
+import { resolveNation } from '../utils/nations';
 
 type State = {
   +nations: Array<NationType>,
@@ -58,7 +58,7 @@ export default (state: State = initialState, action: Action): State => {
         ...state,
         inProgress: true,
       };
-    case DONE_FETCH_NATIONS: {
+    case DONE_SYNC_NATIONS: {
       const myNationIds = _(action.payload)
         .filter(nation => nation.joined)
         .map(nation => nation.id)
@@ -67,9 +67,13 @@ export default (state: State = initialState, action: Action): State => {
         ...state,
         nations: action.payload,
         myNationIds,
-        inProgress: false,
       };
     }
+    case DONE_FETCH_NATIONS:
+      return {
+        ...state,
+        inProgress: false,
+      };
     case REQUEST_JOIN_NATION:
       return {
         ...state,
