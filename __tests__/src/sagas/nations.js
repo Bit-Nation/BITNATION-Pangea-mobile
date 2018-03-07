@@ -1,7 +1,7 @@
 import { call, put, select, takeEvery } from 'redux-saga/effects';
 import { cloneableGenerator } from 'redux-saga/utils';
 import watchNationsUpdate, {
-  checkConnection, joinNation, leaveNation, getNations,
+  joinNation, leaveNation, getNations,
   syncNations, startNationIndexingWorker,
 } from '../../../src/sagas/nations';
 import {
@@ -10,6 +10,7 @@ import {
 } from '../../../src/actions/nations';
 import { convertFromDatabase, resolveNation } from '../../../src/utils/nations';
 import { getPangeaLibrary } from '../../../src/services/container';
+import { checkConnection } from '../../../src/utils/connectivity';
 
 jest.mock('BITNATION-Pangea-libs');
 jest.mock('react-native-config');

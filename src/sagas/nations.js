@@ -6,15 +6,11 @@ import {
   doneSyncNations, doneFetchNations, fetchNationsStarted, requestSyncNations,
 } from '../actions/nations';
 import { getPangeaLibrary } from '../services/container';
-import { waitConnect } from '../utils/connectivity';
-import { CONNECTION_TIMEOUT, NATION_INDEX_PERIOD } from '../global/Constants';
+import { checkConnection } from '../utils/connectivity';
+import { NATION_INDEX_PERIOD } from '../global/Constants';
 import { openedNation } from '../reducers/nations';
 import { convertFromDatabase } from '../utils/nations';
 import { errorAlert } from '../global/alerts';
-
-export async function checkConnection() {
-  return waitConnect(CONNECTION_TIMEOUT);
-}
 
 const extractMessage = (error) => {
   if (error.transKey !== undefined) {
