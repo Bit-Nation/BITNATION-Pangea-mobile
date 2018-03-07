@@ -48,15 +48,15 @@ class ChatNationsListScreen extends Component {
                 text={nation.name}
                 participants=''
                 itemIcon={AssetsImages.ChatUI.botIcon}
-                onPress={(id) => this.props.onSelectItem(id, true)}
+                onPress={id => this.props.onSelectItem(id, true)}
                 id={nation.id}
               />);
             } else {
               return (<ChatListItem
                 text={nation.nationName}
                 participants=''
-                itemIcon={AssetsImages.ChatUI.signal0}
-                onPress={(id) => this.props.onSelectItem(id, false)}
+                itemIcon={0}
+                onPress={id => this.props.onSelectItem(id, false)}
                 id={nation.id}
               />);
             }

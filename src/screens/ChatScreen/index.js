@@ -43,7 +43,7 @@ class ChatScreen extends React.Component {
   constructor(props) {
     super(props);
   
-    if (props.isBot) {
+    if (!props.isBot) {
       // Creating the socket-client instance will automatically connect to the server.
       this.connection = SocketIOClient(config.CHAT_URL, {
         transports: ['websocket'], 
