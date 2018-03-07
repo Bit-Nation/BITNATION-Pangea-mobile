@@ -5,9 +5,9 @@ import {
   CANCEL_LOADING,
   START_NATIONS_FETCH,
   REQUEST_JOIN_NATION,
-  REQUEST_LEAVE_NATION,
+  REQUEST_LEAVE_NATION, DONE_SYNC_NATIONS,
 } from '../actions/nations';
-import { resolveNation, resolveStatus } from '../utils/nations';
+import { resolveNation } from '../utils/nations';
 
 export const ALL_NATIONS = 0;
 export const MY_NATIONS = 1;
@@ -39,7 +39,7 @@ export default function (state = initialState, action) {
         ...state,
         inProgress: true,
       };
-    case DONE_FETCH_NATIONS:
+    case DONE_SYNC_NATIONS:
       const myNations = [];
       action.payload.map((nation) => {
         if (nation.joined) {
@@ -50,6 +50,10 @@ export default function (state = initialState, action) {
         ...state,
         nations: action.payload,
         myNations,
+      };
+    case DONE_FETCH_NATIONS:
+      return {
+        ...state,
         inProgress: false,
       };
     case REQUEST_JOIN_NATION:

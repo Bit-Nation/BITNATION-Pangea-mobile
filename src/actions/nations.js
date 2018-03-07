@@ -5,6 +5,7 @@ export const DONE_FETCH_NATIONS = 'DONE_FETCH_NATIONS';
 export const CANCEL_LOADING = 'CANCEL_LOADING';
 export const REQUEST_JOIN_NATION = 'REQUEST_JOIN_NATION';
 export const REQUEST_LEAVE_NATION = 'REQUEST_LEAVE_NATION';
+export const DONE_SYNC_NATIONS = 'DONE_SYNC_NATIONS';
 
 export function switchNationTab(tab) {
   return {
@@ -35,5 +36,18 @@ export function joinNation() {
 export function leaveNation() {
   return {
     type: REQUEST_LEAVE_NATION,
+  };
+}
+
+export function doneFetchNations() {
+  return {
+    type: DONE_FETCH_NATIONS,
+  };
+}
+
+export function doneSyncNations(nations) {
+  return {
+    type: DONE_SYNC_NATIONS,
+    payload: nations,
   };
 }

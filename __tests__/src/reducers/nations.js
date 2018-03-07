@@ -1,4 +1,7 @@
-import { switchNationTab, openNation, requestFetchNations, joinNation, leaveNation, DONE_FETCH_NATIONS } from '../../../src/actions/nations';
+import {
+  switchNationTab, openNation, requestFetchNations, joinNation, leaveNation, DONE_FETCH_NATIONS,
+  doneSyncNations, doneFetchNations,
+} from '../../../src/actions/nations';
 import reducer, { initialState } from '../../../src/reducers/nations';
 
 test('reducer - switchNationTab', (done) => {
@@ -21,8 +24,8 @@ test('reducer - requestFetchNations', (done) => {
   done();
 });
 
-test('reducer - done fetch nations', (done) => {
-  const fakeNations = [
+test('reducer - done sync nations', (done) => {
+  const mockNations = [
     {
       name: 'Nation1',
       joined: true,
@@ -32,11 +35,20 @@ test('reducer - done fetch nations', (done) => {
       joined: false,
     },
   ];
-  const state = reducer(initialState, { type: DONE_FETCH_NATIONS, payload: fakeNations });
+  const state = reducer(initialState, doneSyncNations(mockNations));
   expect(state).toEqual({
     ...initialState,
-    nations: fakeNations,
-    myNations: [fakeNations[0]],
+    nations: mockNations,
+    myNations: [mockNations[0]],
+  });
+  done();
+});
+
+test('reducer - done fetch nations', (done) => {
+  const stateBefore = { ...initialState, inProgress: true };
+  const stateAfter = reducer(initialState, doneFetchNations());
+  expect(stateAfter).toEqual({
+    ...stateBefore,
     inProgress: false,
   });
   done();
