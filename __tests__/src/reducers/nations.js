@@ -24,11 +24,11 @@ test('reducer - requestFetchNations', (done) => {
 test('reducer - done fetch nations', (done) => {
   const fakeNations = [
     {
-      name: 'Nation1',
+      id: 'Nation1',
       joined: true,
     },
     {
-      name: 'Nation2',
+      id: 'Nation2',
       joined: false,
     },
   ];
@@ -36,7 +36,7 @@ test('reducer - done fetch nations', (done) => {
   expect(state).toEqual({
     ...initialState,
     nations: fakeNations,
-    myNations: [fakeNations[0]],
+    myNationIds: [fakeNations[0].id],
     inProgress: false,
   });
   done();
