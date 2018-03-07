@@ -15,6 +15,7 @@ import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import i18n from '../../../global/i18n';
 import { resolveStatus, statusColor, TX_JOB_STATUS_SUCCESS } from '../../../utils/nations';
 import Colors from '../../../global/colors';
+import Loading from '../../../components/common/Loading';
 
 class NationsListScreen extends Component {
   render() {
@@ -86,6 +87,7 @@ class NationsListScreen extends Component {
           sections={sections}
           style={styles.sectionList}
         />
+        {this.props.inProgress && _.isEmpty(this.props.nations) && <Loading />}
       </View>
     );
   }
