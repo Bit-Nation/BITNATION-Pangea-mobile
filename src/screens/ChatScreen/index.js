@@ -73,7 +73,7 @@ class ChatScreen extends React.Component {
             createdAt: new Date(),
             user: {
               _id: 2,
-              name: 'Eliza',
+              name: 'Dr. FreudBot',
             },
             // Any additional custom parameters are passed through
           },
@@ -123,7 +123,7 @@ class ChatScreen extends React.Component {
           createdAt: new Date(),
           user: {
             _id: 2,
-            name: 'Eliza',
+            name: 'Dr. FreudBot',
           },
         },
       ];
