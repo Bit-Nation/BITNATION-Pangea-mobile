@@ -13,7 +13,6 @@ import NationListHeader from '../../../components/common/NationListHeader';
 import { ALL_NATIONS } from '../../../reducers/nations';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import i18n from '../../../global/i18n';
-import { resolveStatus } from '../../../utils/nations';
 import AssetsImages from '../../../global/AssetsImages';
 
 class ChatNationsListScreen extends Component {
@@ -24,10 +23,12 @@ class ChatNationsListScreen extends Component {
       _.filter(this.props.nations, nation => _.indexOf(this.props.myNations, nation.id) !== -1);
     const sortedNations = _.sortBy(nations, nation => nation.nationName);
     const groups = _.groupBy(sortedNations, nation => nation.nationName.charAt(0));
-    const sections = _.map(groups, (group, key) => ({
+    let sections = _.map(groups, (group, key) => ({
       title: key,
       data: group,
     }));
+    const bots = [{ title: 'Bots', data: [{ name: 'Dr. FreudBot', isBot: true, id: 0 }] }];
+    sections = bots.concat(sections);
 
     return (
       <View style={styles.nationsScreenContainer}>
@@ -42,16 +43,24 @@ class ChatNationsListScreen extends Component {
         <SectionList
           renderItem={(item) => {
             const nation = item.item;
-            const nationStatus = resolveStatus(nation);
-
-            return (<ChatListItem
-              text={nation.nationName}
-              participants='None'
-              itemIcon={AssetsImages.ChatUI.signal0}
-              onPress={this.props.onSelectItem}
-              status={(nationStatus === null ? '' : i18n.t(`enums.nation.status.${nationStatus.key}`))}
-              id={nation.id}
-            />);
+            if (nation.isBot) {
+              this.props.isBot = true;
+              return (<ChatListItem
+                text={nation.name}
+                participants=''
+                itemIcon={AssetsImages.ChatUI.botIcon}
+                onPress={this.props.onSelectItem}
+                id={nation.id}
+              />);
+            } else {
+              return (<ChatListItem
+                text={nation.nationName}
+                participants=''
+                itemIcon={AssetsImages.ChatUI.signal0}
+                onPress={this.props.onSelectItem}
+                id={nation.id}
+              />);
+            }
           }}
           keyExtractor={item => item.id}
           renderSectionHeader={({ section }) => <NationListHeader title={section.title} />}

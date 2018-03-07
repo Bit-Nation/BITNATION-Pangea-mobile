@@ -28,7 +28,7 @@ class ChatNationsScreen extends NavigatorComponent {
 
   render() {
     return (
-      <ChatNationsListScreen onSelectItem={this.onSelectItem} {...this.props} />
+      <ChatNationsListScreen onSelectItem={this.onSelectItem} {...this.props} isBot={false} />
     );
   }
 
@@ -36,6 +36,7 @@ class ChatNationsScreen extends NavigatorComponent {
     const nation = resolveNation(this.props.nations, id);
 
     if (!nation) {
+      console.log('No nation', this.isBot);
       return;
     }
 

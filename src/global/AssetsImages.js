@@ -54,6 +54,7 @@ const signalIcon2 = require('../assets/images/signal_icon_2.png');
 const signalIcon3 = require('../assets/images/signal_icon_3.png');
 const signalIcon4 = require('../assets/images/signal_icon_4.png');
 const signalIcon5 = require('../assets/images/signal_icon_5.png');
+const botIconLucy = require('../assets/images/icon_chatbot.png');
 
 const Images = {
   logo,
@@ -105,6 +106,7 @@ const Images = {
     signal3: signalIcon3,
     signal4: signalIcon4,
     signal5: signalIcon5,
+    botIcon: botIconLucy,
   },
 };
 
