@@ -252,7 +252,7 @@
       "title": "Nation",
       "aboutInfo": "About {{name}}",
       "description": "Description",
-      "locationInfo": "{{name}} is a {{locationType}} nation",
+      "locationInfo": "{{name}} is a {{locationType}}",
       "legalSystemInfo": "{{name}} uses {{code}} as its legal system.",
       "lawEnforcementInfo": "The laws are enforced with {{lawEnforcementMechanism}}.",
       "governmentInfo": "The government is a {{decisionMakingProcess}}.",
