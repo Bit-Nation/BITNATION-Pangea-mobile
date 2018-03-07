@@ -13,6 +13,9 @@
       },
       "create": {
         "succeed": "Created Nation {{nationName}}"
+      },
+      "leave": {
+        "succeed": "Left nation: {{nationName}}"
       }
     }
   },
