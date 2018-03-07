@@ -6,16 +6,18 @@ export type NationTab = 'ALL_NATIONS' | 'MY_NATIONS';
 
 type SwitchNationTabAction = { +type: 'SWITCH_NATIONS_TAB', +tab: NationTab };
 type OpenNationAction = { +type: 'OPEN_NATION', +nationId: NationIdType };
-type RequestFetchNationsAction = { +type: 'START_NATIONS_FETCH' };
+type RequestSyncNationsAction = { +type: 'START_NATIONS_SYNC' };
 type JoinNationAction = { +type: 'REQUEST_JOIN_NATION' };
 type LeaveNationAction = { +type: 'REQUEST_LEAVE_NATION' };
+type FetchNationsStartedAction = { +type: 'NATIONS_FETCH_STARTED' };
 type DoneFetchNationsAction = { +type: 'DONE_FETCH_NATIONS' };
 type DoneSyncNationsAction = { +type: 'DONE_SYNC_NATIONS', +payload: Array<NationType> };
 
 export type Action =
   | SwitchNationTabAction
   | OpenNationAction
-  | RequestFetchNationsAction
+  | FetchNationsStartedAction
+  | RequestSyncNationsAction
   | JoinNationAction
   | LeaveNationAction
   | DoneFetchNationsAction
@@ -23,7 +25,8 @@ export type Action =
 
 export const SWITCH_NATIONS_TAB = 'SWITCH_NATIONS_TAB';
 export const OPEN_NATION = 'OPEN_NATION';
-export const START_NATIONS_FETCH = 'START_NATIONS_FETCH';
+export const START_NATIONS_SYNC = 'START_NATIONS_SYNC';
+export const NATIONS_FETCH_STARTED = 'NATIONS_FETCH_STARTED';
 export const DONE_FETCH_NATIONS = 'DONE_FETCH_NATIONS';
 export const CANCEL_LOADING = 'CANCEL_LOADING';
 export const REQUEST_JOIN_NATION = 'REQUEST_JOIN_NATION';
@@ -55,12 +58,22 @@ export function openNation(id: NationIdType): OpenNationAction {
 }
 
 /**
- * @desc Action creator for an action that starts nations fetch.
- * @returns {RequestFetchNationsAction} An action.
+ * @desc Action creator for an action that starts nations sync with databse.
+ * @returns {RequestSyncNationsAction} An action.
  */
-export function requestFetchNations(): RequestFetchNationsAction {
+export function requestSyncNations(): RequestSyncNationsAction {
   return {
-    type: START_NATIONS_FETCH,
+    type: START_NATIONS_SYNC,
+  };
+}
+
+/**
+ * @desc Action creator for an action that is called when nations fetch started.
+ * @returns {FetchNationsStartedAction} An action.
+ */
+export function fetchNationsStarted(): FetchNationsStartedAction {
+  return {
+    type: NATIONS_FETCH_STARTED,
   };
 }
 

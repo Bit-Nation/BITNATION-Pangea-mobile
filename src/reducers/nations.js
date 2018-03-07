@@ -8,7 +8,7 @@ import {
   OPEN_NATION,
   DONE_FETCH_NATIONS,
   CANCEL_LOADING,
-  START_NATIONS_FETCH,
+  NATIONS_FETCH_STARTED,
   REQUEST_JOIN_NATION,
   REQUEST_LEAVE_NATION, DONE_SYNC_NATIONS,
 } from '../actions/nations';
@@ -53,7 +53,7 @@ export default (state: State = initialState, action: Action): State => {
         ...state,
         openedNationId: action.nationId,
       };
-    case START_NATIONS_FETCH:
+    case NATIONS_FETCH_STARTED:
       return {
         ...state,
         inProgress: true,

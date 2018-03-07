@@ -11,3 +11,5 @@ export const CONNECTION_TIMEOUT = 30 * 1000;
 export const BALANCE_EXPIRATION_INTERVAL = 10 * 1000;
 
 export const ACTIVITY_MESSAGES_LIMIT = 100;
+
+export const NATION_INDEX_PERIOD = 30 * 1000;

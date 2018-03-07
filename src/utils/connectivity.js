@@ -1,6 +1,7 @@
 import { NetInfo } from 'react-native';
+import { CONNECTION_TIMEOUT } from '../global/Constants';
 
-export async function waitConnect(timeout) {
+export async function waitConnect(timeout = CONNECTION_TIMEOUT) {
   const isConnected = await NetInfo.isConnected.fetch();
   if (isConnected) return;
 
