@@ -99,6 +99,7 @@ export function convertFromDatabase(nation:any) {
     ...nation,
     // @todo Fix virtual nation save unselected state
     governanceService: nation.governanceService.split(', ').filter(value => !_.isEmpty(value)),
+    tx: nation.tx === null ? null : { ...nation.tx },
   };
 }
 
