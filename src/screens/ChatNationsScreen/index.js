@@ -28,21 +28,30 @@ class ChatNationsScreen extends NavigatorComponent {
 
   render() {
     return (
-      <ChatNationsListScreen onSelectItem={this.onSelectItem} {...this.props} isBot={false} />
+      <ChatNationsListScreen onSelectItem={this.onSelectItem} {...this.props} />
     );
   }
 
-  onSelectItem = (id) => {
+  onSelectItem = (id, isBot) => {
     const nation = resolveNation(this.props.nations, id);
 
     if (!nation) {
-      console.log('No nation', this.isBot);
+      if (isBot) {
+        console.log('No nation', isBot);
+        this.props.navigator.push({
+          ...screen('CHAT_SCREEN'),
+          passProps: { isBot },
+        });
+      }
       return;
     }
 
     this.props.openNation(id);
 
-    this.props.navigator.push(screen('CHAT_SCREEN'));
+    this.props.navigator.push({
+      ...screen('CHAT_SCREEN'),
+      passProps: { isBot },
+    });
   };
 }
 

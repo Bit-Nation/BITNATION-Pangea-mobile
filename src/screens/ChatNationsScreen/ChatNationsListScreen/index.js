@@ -44,12 +44,11 @@ class ChatNationsListScreen extends Component {
           renderItem={(item) => {
             const nation = item.item;
             if (nation.isBot) {
-              this.props.isBot = true;
               return (<ChatListItem
                 text={nation.name}
                 participants=''
                 itemIcon={AssetsImages.ChatUI.botIcon}
-                onPress={this.props.onSelectItem}
+                onPress={(id) => this.props.onSelectItem(id, true)}
                 id={nation.id}
               />);
             } else {
@@ -57,7 +56,7 @@ class ChatNationsListScreen extends Component {
                 text={nation.nationName}
                 participants=''
                 itemIcon={AssetsImages.ChatUI.signal0}
-                onPress={this.props.onSelectItem}
+                onPress={(id) => this.props.onSelectItem(id, false)}
                 id={nation.id}
               />);
             }
