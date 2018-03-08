@@ -6,7 +6,7 @@ import {
   doneSyncNations, doneFetchNations, fetchNationsStarted, requestSyncNations,
 } from '../actions/nations';
 import { getPangeaLibrary } from '../services/container';
-import { checkConnection } from '../utils/connectivity';
+import { checkConnection } from './connection';
 import { NATION_INDEX_PERIOD } from '../global/Constants';
 import { openedNation } from '../reducers/nations';
 import { convertFromDatabase } from '../utils/nations';
