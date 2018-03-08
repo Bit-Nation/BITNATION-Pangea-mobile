@@ -20,6 +20,7 @@ import NationsScreen from './NationsScreen';
 import ProfileScreen from './ProfileScreen';
 import NationDetailsScreen from './NationDetailsContainer';
 import NationCreateScreen from './NationCreateContainer';
+import ChatNationsScreen from './ChatNationsScreen';
 import { screen } from '../global/Screens';
 
 export function registerScreens(store, Provider) {
@@ -42,4 +43,5 @@ export function registerScreens(store, Provider) {
   Navigation.registerComponent(screen('SEND_MONEY_SCREEN').screen, () => SendMoney, store, Provider);
   Navigation.registerComponent(screen('QR_CODE_SCANNER_SCREEN').screen, () => QRCodeScannerScreen, store, Provider);
   Navigation.registerComponent(screen('NATION_CREATE_SCREEN').screen, () => NationCreateScreen, store, Provider);
+  Navigation.registerComponent(screen('CHAT_NATIONS_SCREEN').screen, () => ChatNationsScreen, store, Provider);
 }
