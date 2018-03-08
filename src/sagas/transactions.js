@@ -1,7 +1,8 @@
 import { call } from 'redux-saga/effects';
+import { delay } from 'redux-saga';
 
 import { getPangeaLibrary } from '../services/container';
-import { checkConnection } from '../utils/connectivity';
+import { TRANSACTIONS_WORKER_RECOVER_DELAY } from '../global/Constants';
 
 /**
  * @desc Starts worker for processing transactions.
@@ -11,10 +12,10 @@ export default function* startProcessing() {
   const pangeaLibs = yield call(getPangeaLibrary);
   while (true) {
     try {
-      yield call(checkConnection);
       const { txQueue } = pangeaLibs.queue;
       yield call([txQueue, txQueue.startProcessing]);
     } catch (e) {
+      yield delay(TRANSACTIONS_WORKER_RECOVER_DELAY);
       console.log(`Processing error: ${e.toString()}`);
     }
   }
