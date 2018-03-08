@@ -33,8 +33,11 @@ import styles from './styles';
 import { GiftedChat, Composer, InputToolbar, Bubble } from 'react-native-gifted-chat';
 import AssetsImages from '../../global/AssetsImages';
 
+import { showSpinner, hideSpinner } from '../../actions/activity';
+
 import BackgroundImage from '../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../components/common/FakeNavigationBar';
+import Loading from '../../components/common/Loading';
 
 import elizabot from '../../../vendor/elizabot';
 
@@ -65,6 +68,7 @@ class ChatScreen extends React.Component {
 
   componentDidMount() {
     if (!this.props.isBot && this.connection) {
+      this.props.showSpinner();
       // load initial messages
       const URL = `${config.CHAT_URL}/messages/${this.props.nationId}?auth_token=${config.AUTH_TOKEN}`;
       fetch(URL)
@@ -83,8 +87,11 @@ class ChatScreen extends React.Component {
               name: msg.from
             }
           });
+          this.props.hideSpinner();
         }
         this.setState(previousState => ({ messages: GiftedChat.append(previousState.messages, messages) }));
+      }, (e) => {
+        this.props.hideSpinner();
       });
 
       // add socket listener
@@ -183,6 +190,7 @@ class ChatScreen extends React.Component {
             <Bubble {...props} customTextStyle={styles.customTextStyle} />
           }
         />
+        {this.props.isFetching && <Loading />}
       </View>
     );
   }
@@ -191,9 +199,13 @@ class ChatScreen extends React.Component {
 
 const mapStateToProps = state => ({
   nationId: state.nations.openedNationId,
-  user: state.profile.user
+  user: state.profile.user,
+  isFetching: state.activity.isFetching
 });
 
-const mapDispatchToProps = dispatch => ({});
+const mapDispatchToProps = dispatch => ({
+  showSpinner: () => dispatch(showSpinner()),
+  hideSpinner: () => dispatch(hideSpinner()),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChatScreen);

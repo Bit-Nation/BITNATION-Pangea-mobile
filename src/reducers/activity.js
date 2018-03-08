@@ -7,6 +7,8 @@ import {
   DONE_FETCH_MESSAGES,
   MESSAGE_ADDED,
   START_FETCH_MESSAGES,
+  SHOW_SPINNER,
+  HIDE_SPINNER
 } from '../actions/activity';
 import type { ActivityLogMessage } from '../types/ActivityLogMessage';
 import { ACTIVITY_MESSAGES_LIMIT } from '../global/Constants';
@@ -14,7 +16,7 @@ import { ACTIVITY_MESSAGES_LIMIT } from '../global/Constants';
 type State = {
   +messages: Array<ActivityLogMessage>,
   +isFetching: boolean,
-}
+};
 
 export const initialState: State = {
   messages: [],
@@ -63,6 +65,16 @@ export default (state: State = initialState, action: Action): State => {
         ...state,
         messages: mergeMessages(state.messages, action.messages),
         isFetching: false,
+      };
+    case SHOW_SPINNER:
+      return {
+        ...state,
+        isFetching: true
+      };
+    case HIDE_SPINNER:
+      return {
+        ...state,
+        isFetching: false
       };
     default:
       return state;
