@@ -1,16 +1,35 @@
+// @flow
+
 import config from 'react-native-config';
 
-import { MAKE_STEP, RESET_STEPS, EMPTY_WALLET } from '../actions/testingMode';
+import {
+  type Action,
+  MAKE_STEP,
+  RESET_STEPS,
+  EMPTY_WALLET,
+} from '../actions/testingMode';
 
 const stepsCountToToggle = 5;
 
-const initialState = {
+type State = {
+  +isActive: boolean,
+  +stepsLeftToToggle: number,
+  +walletEmpty: boolean,
+};
+
+const initialState: State = {
   isActive: false,
   stepsLeftToToggle: stepsCountToToggle,
   walletEmpty: false,
 };
 
-export default function (state = initialState, action) {
+/**
+ * @desc Testing mode reducer.
+ * @param {State} state Current state.
+ * @param {Action} action Performed action.
+ * @returns {State} Next state.
+ */
+export default (state: State = initialState, action: Action): State => {
   if (config.PRODUCTION === 'true') return state;
 
   switch (action.type) {
@@ -23,7 +42,8 @@ export default function (state = initialState, action) {
       return { ...state, stepsLeftToToggle: stepsCountToToggle };
     case EMPTY_WALLET:
       return { ...state, walletEmpty: !state.walletEmpty };
+    default:
+      return state;
   }
-  return state;
-}
+};
 

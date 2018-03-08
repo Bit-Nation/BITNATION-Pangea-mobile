@@ -539,7 +539,7 @@ const styles = {
   // e.g. NationListItemState Text
   listItemTextState: {
     ...defaultTextStyles.body,
-    color: Colors.listItemTextState,
+    color: Colors.listItemTextState.default,
     textAlign: 'right',
     marginRight: 16,
   },
