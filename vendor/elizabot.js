@@ -1,3 +1,5 @@
+import i18n from '../src/global/i18n';
+
 exports.reply = function (r) {
 	if (this.bot == null) {
 		this.bot = new ElizaBot(false)
@@ -22,12 +24,12 @@ exports.bye = function () {
 function ElizaBot (noRandomFlag) {
 	
 	this.elizaInitials = [
-		'Hi, I am Dr. FreudBot, your resident therapist. What is bothering you?',
-		'Herr Professor Doktor FreudBot here, your therapy bot. What has been troubling you?',
-		'I am the Pangea therapy bot, Dr. FreudBot, ready to help. I am not a real therapist, I just play one in this app.',
-		'I\'m here, Dr. FreudBot. Talk to me.',
-		'Talk to me! I am Dr. FreudBot. Tell me about your mother.',
-		'Hallo, Dr. FreudBot here. I am not a real Freudian. I am not real. Are you? Are you sure?',
+    i18n.t('bots.freudbot.initial1'),
+    i18n.t('bots.freudbot.initial2'),
+    i18n.t('bots.freudbot.initial3'),
+    i18n.t('bots.freudbot.initial4'),
+    i18n.t('bots.freudbot.initial5'),
+    i18n.t('bots.freudbot.initial6'),
 	]
 	
 	this.elizaKeywords = [
