@@ -6,7 +6,7 @@ import {
   type Action,
   DONE_FETCH_MESSAGES,
   MESSAGE_ADDED,
-  START_FETCH_MESSAGES
+  START_FETCH_MESSAGES,
 } from '../actions/activity';
 import type { ActivityLogMessage } from '../types/ActivityLogMessage';
 import { ACTIVITY_MESSAGES_LIMIT } from '../global/Constants';
@@ -14,7 +14,7 @@ import { ACTIVITY_MESSAGES_LIMIT } from '../global/Constants';
 type State = {
   +messages: Array<ActivityLogMessage>,
   +isFetching: boolean,
-};
+}
 
 export const initialState: State = {
   messages: [],

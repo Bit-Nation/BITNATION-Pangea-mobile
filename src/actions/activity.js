@@ -3,11 +3,6 @@
 import { ACTIVITY_MESSAGES_LIMIT } from '../global/Constants';
 import { type ActivityLogMessage } from '../types/ActivityLogMessage';
 
-export const MESSAGE_ADDED = 'MESSAGE_ADDED';
-export const START_FETCH_MESSAGES = 'START_FETCH_MESSAGES';
-export const DONE_FETCH_MESSAGES = 'DONE_FETCH_MESSAGES';
-export const ADD_DUMMY_MESSAGE = 'ADD_DUMMY_MESSAGE';
-
 type MessageAddedAction = { +type: 'MESSAGE_ADDED', +message: ActivityLogMessage };
 type StartFetchMessagesAction = { +type: 'START_FETCH_MESSAGES', +limit: number };
 type DoneFetchMessagesAction = { +type: 'DONE_FETCH_MESSAGES', +messages: Array<ActivityLogMessage> };
@@ -18,6 +13,11 @@ export type Action =
   | StartFetchMessagesAction
   | DoneFetchMessagesAction
   | AddDummyMessageAction;
+
+export const MESSAGE_ADDED = 'MESSAGE_ADDED';
+export const START_FETCH_MESSAGES = 'START_FETCH_MESSAGES';
+export const DONE_FETCH_MESSAGES = 'DONE_FETCH_MESSAGES';
+export const ADD_DUMMY_MESSAGE = 'ADD_DUMMY_MESSAGE';
 
 /**
  * @desc Action creator for an action that should be called once new activity log message added.
@@ -65,4 +65,3 @@ export function addDummyMessage(): AddDummyMessageAction {
     type: ADD_DUMMY_MESSAGE,
   };
 }
-
