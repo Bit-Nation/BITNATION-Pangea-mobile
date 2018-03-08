@@ -1,6 +1,5 @@
 import containerPromise from '../../services/container';
 import { convertWallets } from '../../utils/wallet';
-import { checkConnection } from '../../utils/connectivity';
 import { BALANCE_EXPIRATION_INTERVAL } from '../../global/Constants';
 
 export async function getWallets() {
@@ -11,7 +10,6 @@ export async function getWallets() {
 
 export async function syncWallet(wallet) {
   const container = await containerPromise;
-  await checkConnection();
   return await container.eth.wallet.ethSync(wallet.ethAddress);
 }
 
@@ -34,6 +32,5 @@ export async function resolveBalance(wallet) {
 
 export async function sendMoney(fromAddress, toAddress, amount) {
   const container = await containerPromise;
-  await checkConnection();
   return await container.eth.wallet.ethSend(fromAddress, toAddress, amount);
 }

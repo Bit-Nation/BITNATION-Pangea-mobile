@@ -21,7 +21,7 @@ store.dispatch(requestSyncNations());
 Navigation.startTabBasedApp({
   tabs: [
       screen('DASHBOARD_SCREEN'),
-      screen('CHAT_SCREEN'),
+      screen('CHAT_NATIONS_SCREEN'),
       screen('NATIONS_SCREEN'),
       screen('WALLET_SCREEN'),
       screen('PROFILE_SCREEN'),

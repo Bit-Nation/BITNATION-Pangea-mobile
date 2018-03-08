@@ -230,7 +230,9 @@
     },
     "chat": {
       "title": "$t(common.chat)",
-      "tabTitle": "$t(tabbar.chat)"
+      "tabTitle": "$t(tabbar.chat)",
+      "allChats": "All Chats",
+      "myChats": "My Chats"
     },
     "nations": {
       "toolbar": {
@@ -429,5 +431,15 @@
   "error": {
     "noConnection": "Please check your internet connection.",
     "insufficientFunds": "Insufficient funds. Please check your wallet."
+  },
+  "bots": {
+    "freudbot": {
+      "initial1": "Hi, I am Dr. FreudBot, your resident therapist. What is bothering you?",
+      "initial2": "Herr Professor Doktor FreudBot here, your therapy bot. What has been troubling you?",
+      "initial3": "I am the Pangea therapy bot, Dr. FreudBot, ready to help. I am not a real therapist, I just play one in this app.",
+      "initial4": "I'm here, Dr. FreudBot. Talk to me.",
+      "initial5": "Talk to me! I am Dr. FreudBot. Tell me about your mother.",
+      "initial6": "Hallo, Dr. FreudBot here. I am not a real Freudian. I am not real. Are you? Are you sure?"
+    }
   }
 }
