@@ -1,7 +1,10 @@
 // @flow
 import _ from 'lodash';
 import type { NationType } from 'BITNATION-Pangea-libs/src/database/schemata';
+import { TX_JOB_STATUS_PENDING, TX_JOB_STATUS_FAILED, TX_JOB_STATUS_SUCCESS } from 'BITNATION-Pangea-libs/src/queues/transaction';
 import Colors from '../global/colors';
+
+export { TX_JOB_STATUS_PENDING, TX_JOB_STATUS_FAILED, TX_JOB_STATUS_SUCCESS } from 'BITNATION-Pangea-libs/src/queues/transaction';
 
 /**
  *
@@ -15,7 +18,7 @@ export function resolveNation(nations:Array<NationType>, id:number) {
 
 /**
  * @define NationStatusCode
- * @desc 0 = unknown | 200 = success | 300 = failed | 400 = succeed (take a look at the transaction queue for the status codes)
+ * @desc 0 = unknown | 200 = pending | 300 = succeed | 400 = failed (take a look at the transaction queue for the status codes)
  */
 type NationStatusCode = 0 | 200 | 300 | 400;
 
@@ -96,6 +99,7 @@ export function convertFromDatabase(nation:any) {
     ...nation,
     // @todo Fix virtual nation save unselected state
     governanceService: nation.governanceService.split(', ').filter(value => !_.isEmpty(value)),
+    tx: nation.tx === null ? null : { ...nation.tx },
   };
 }
 
@@ -123,11 +127,13 @@ export function nationIsValid(nation:any) {
  */
 export function statusColor(status:number) {
   switch (status) {
-    case 200:
-      return Colors.Green;
-    case 300:
-      return Colors.Amber;
+    case TX_JOB_STATUS_SUCCESS:
+      return Colors.listItemTextState.accepted;
+    case TX_JOB_STATUS_FAILED:
+      return Colors.listItemTextState.rejected;
+    case TX_JOB_STATUS_PENDING:
+      return Colors.listItemTextState.pending;
     default:
-      return Colors.listItemTextState;
+      return Colors.listItemTextState.default;
   }
 }

@@ -63,8 +63,50 @@ class ChatScreen extends React.Component {
     };
   }
 
-  componentWillMount() {
-    if (this.props.isBot) {
+  componentDidMount() {
+    if (!this.props.isBot && this.connection) {
+      // load initial messages
+      const URL = `${config.CHAT_URL}/messages/${this.props.nationId}?auth_token=${config.AUTH_TOKEN}`;
+      fetch(URL)
+      .then((response) => {
+        return response.json();
+      })
+      .then(json => {
+        let messages = [];
+        for (let msg of json.reverse()) {
+          messages.push({
+            _id: msg._id,
+            text: msg.msg,
+            createdAt: msg.createdAt,
+            user: {
+              _id: msg.userId,
+              name: msg.from
+            }
+          });
+        }
+        this.setState(previousState => ({ messages: GiftedChat.append(previousState.messages, messages) }));
+      });
+
+      // add socket listener
+      this.connection.on('room:joined', (data) => {
+        if (data.nation_id >= 0) {
+          this.setState({joined: true});
+          this.connection.on('msg', (messageData) => {
+            const messages = [{
+              _id: messageData._id,
+              text: messageData.msg,
+              createdAt: messageData.createdAt,
+              user: {
+                _id: messageData.userId,
+                name: messageData.from
+              }
+            }];
+            this.setState(previousState => ({ messages: GiftedChat.append(previousState.messages, messages) }));
+          });
+        }
+      });
+    } else {
+      // add initial bot message
       this.setState({
         messages: [
           {
@@ -78,38 +120,6 @@ class ChatScreen extends React.Component {
             // Any additional custom parameters are passed through
           },
         ],
-      });
-    } else {
-      const URL = `${config.CHAT_URL}/${this.props.nationId}?auth_token=${config.AUTH_TOKEN}`;
-      fetch(URL)
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(json) {
-        console.log('response: ', json);
-      });
-    }
-  }
-
-  componentDidMount() {
-    if (!this.props.isBot && this.connection) {
-      this.connection.on('room:joined', (data) => {
-        if (data.nation_id >= 0) {
-          this.setState({joined: true});
-          this.connection.on('msg', (messageData) => {
-            let messages = this.state.messages.slice();
-            messages.push({
-              _id: messageData._id,
-              text: messageData.msg,
-              createdAt: messageData.createdAt,
-              user: {
-                _id: 3,
-                name: messageData.from
-              }
-            });
-            this.setState({messages});
-          });
-        }
       });
     }
   }
@@ -135,11 +145,13 @@ class ChatScreen extends React.Component {
       this.setState(previousState => ({ messages: GiftedChat.append(previousState.messages, m) }));
     } else {
       if (this.state.joined) {
-        this.connection.emit('room:msg', {
+        const newMessage = {
           nation_id: this.props.nationId,
           msg: messages[0].text,
-          from: this.props.user ? this.props.user.name : 'anonymous'
-        });
+          from: this.props.user ? this.props.user.name : 'anonymous',
+          userId: this.props.user ? this.props.user.uid : 'anonymous',
+        }
+        this.connection.emit('room:msg', newMessage);
       } else {
 
       }
@@ -147,6 +159,10 @@ class ChatScreen extends React.Component {
   }
 
   render() {
+    const sendingUser = {
+      _id: this.props.user ? this.props.user.uid : 'anonymous',
+      name: this.props.user ? this.props.user.name : 'anonymous',
+    }
     return (
       <View style={styles.container}>
         <BackgroundImage />
@@ -155,9 +171,7 @@ class ChatScreen extends React.Component {
         <GiftedChat
           messages={this.state.messages}
           onSend={messages => this.onSend(messages)}
-          user={{
-            _id: 1,
-          }}
+          user={sendingUser}
           bottomOffset={Platform.OS === 'ios' ? 48.5 : 0}
           renderComposer={props =>
             <Composer {...props} textInputStyle={styles.composer} />

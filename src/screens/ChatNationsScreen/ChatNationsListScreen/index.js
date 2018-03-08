@@ -10,14 +10,13 @@ import BackgroundImage from '../../../components/common/BackgroundImage';
 import styles from './styles';
 import ChatListItem from '../../../components/common/ChatListItem';
 import NationListHeader from '../../../components/common/NationListHeader';
-import { ALL_NATIONS } from '../../../reducers/nations';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import i18n from '../../../global/i18n';
 import AssetsImages from '../../../global/AssetsImages';
 
 class ChatNationsListScreen extends Component {
   render() {
-    const nations = this.props.selectedTab === ALL_NATIONS ?
+    const nations = this.props.selectedTab === 'ALL_NATIONS' ?
       this.props.nations
       :
       _.filter(this.props.nations, nation => _.indexOf(this.props.myNations, nation.id) !== -1);

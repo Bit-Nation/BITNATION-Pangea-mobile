@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import ChatNationsListScreen from './ChatNationsListScreen';
-import { switchNationTab, openNation, requestFetchNations } from '../../actions/nations';
+import { switchNationTab, openNation, requestSyncNations } from '../../actions/nations';
 import { screen } from '../../global/Screens';
 import { resolveNation } from '../../utils/nations';
 import NavigatorComponent from '../../components/common/NavigatorComponent';
@@ -66,13 +66,13 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   onSelectTab(index) {
-    dispatch(switchNationTab(index));
+    dispatch(switchNationTab(index === 0 ? 'ALL_NATIONS' : 'MY_NATIONS'));
   },
   openNation(id) {
     dispatch(openNation(id));
   },
   fetchNations() {
-    dispatch(requestFetchNations());
+    dispatch(requestSyncNations());
   },
   startNationCreation() {
     dispatch(startNationCreation());
