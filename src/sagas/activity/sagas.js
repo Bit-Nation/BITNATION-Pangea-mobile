@@ -18,8 +18,12 @@ function createMessagesQueueChannel(eventEmitter) {
 }
 
 export function* fetchMessagesSaga(action) {
-  const messages = yield call(fetchMessages, action.limit);
-  yield put(doneFetchMessages(messages));
+  try {
+    const messages = yield call(fetchMessages, action.limit);
+    yield put(doneFetchMessages(messages));
+  } catch (error) {
+    console.log(`Activity messages fetch failed with error: ${error.toString()}`);
+  }
 }
 
 export function* watchNewMessages() {

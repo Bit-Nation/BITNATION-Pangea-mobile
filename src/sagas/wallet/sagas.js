@@ -38,11 +38,16 @@ export function* updateWalletList() {
     const wallets = yield all(_.map(walletsWithoutBalance, wallet => call(resolveWalletBalance, wallet)));
     yield put(walletsListUpdated(wallets));
   } catch (error) {
+    console.log(`Wallet list update failed with error: ${error.toString()}`);
   }
 }
 
 export function* updateWalletBalance(wallet) {
-  yield call(syncWallet, wallet);
-  yield updateWalletList();
+  try {
+    yield call(syncWallet, wallet);
+    yield updateWalletList();
+  } catch (error) {
+    console.log(`Wallet balance update failed with error: ${error.toString()}`);
+  }
 }
 

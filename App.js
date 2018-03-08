@@ -5,7 +5,7 @@ import configureStore from './src/config/configureStore';
 import { registerScreens } from './src/screens/screens';
 import { screen, appStyle, tabsStyle } from './src/global/Screens';
 import asyncToGenerator from 'async-to-generator'
-import { requestFetchNations } from './src/actions/nations';
+import { requestSyncNations } from './src/actions/nations';
 
 // Fix for https://github.com/Bit-Nation/BITNATION-Pangea-mobile/issues/166
 // Related with https://github.com/facebook/react-native/issues/4844
@@ -15,7 +15,7 @@ babelHelpers.asyncToGenerator = asyncToGenerator;
 const store = configureStore();
 registerScreens(store, Provider);
 
-store.dispatch(requestFetchNations());
+store.dispatch(requestSyncNations());
 
 // const navigatorStyle = { navBarHidden: true }
 Navigation.startTabBasedApp({

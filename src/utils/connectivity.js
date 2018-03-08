@@ -1,21 +1,10 @@
 import { NetInfo } from 'react-native';
 
-export async function waitConnect(timeout) {
+export async function checkConnection() {
   const isConnected = await NetInfo.isConnected.fetch();
-  if (isConnected) return;
-
-  return new Promise((res, rej) => {
-    const _handleChangeConnection = (isConnected) => {
-      NetInfo.isConnected.removeEventListener('connectionChange', _handleChangeConnection);
-      if (isConnected) {
-        res();
-      } else {
-        rej();
-      }
-    };
-    setTimeout(() => {
-      rej();
-    }, timeout);
-    NetInfo.isConnected.addEventListener('connectionChange', _handleChangeConnection);
-  });
+  if (isConnected === true) {
+    return;
+  } else {
+    throw { transKey: 'noConnection' };
+  }
 }

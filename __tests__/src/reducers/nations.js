@@ -1,6 +1,6 @@
 import {
-  switchNationTab, openNation, requestFetchNations, joinNation, leaveNation, DONE_FETCH_NATIONS,
-  doneSyncNations, doneFetchNations,
+  switchNationTab, openNation, joinNation, leaveNation,
+  doneSyncNations, doneFetchNations, fetchNationsStarted,
 } from '../../../src/actions/nations';
 import reducer, { initialState } from '../../../src/reducers/nations';
 
@@ -18,8 +18,8 @@ test('reducer - openNation', (done) => {
   done();
 });
 
-test('reducer - requestFetchNations', (done) => {
-  const state = reducer(initialState, requestFetchNations());
+test('reducer - fetchNationsStarted', (done) => {
+  const state = reducer(initialState, fetchNationsStarted());
   expect(state).toEqual({ ...initialState, inProgress: true });
   done();
 });
