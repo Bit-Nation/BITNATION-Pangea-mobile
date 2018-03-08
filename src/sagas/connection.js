@@ -5,6 +5,7 @@ import { getPangeaLibrary } from '../services/container';
 
 let lastIsConnected = false;
 
+// @todo Replace that with React Native NetInfo once https://github.com/facebook/react-native/issues/8615 is fixed.
 export function* checkConnection() {
   const pangeaLibs = yield getPangeaLibrary();
 
