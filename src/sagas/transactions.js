@@ -15,7 +15,7 @@ export default function* startProcessing() {
       const { txQueue } = pangeaLibs.queue;
       yield call([txQueue, txQueue.startProcessing]);
     } catch (e) {
-      yield delay(TRANSACTIONS_WORKER_RECOVER_DELAY);
+      yield call(delay, TRANSACTIONS_WORKER_RECOVER_DELAY);
       console.log(`Processing error: ${e.toString()}`);
     }
   }
