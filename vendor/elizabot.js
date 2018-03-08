@@ -22,13 +22,12 @@ exports.bye = function () {
 function ElizaBot (noRandomFlag) {
 	
 	this.elizaInitials = [
-		'How do you do.  Please tell me your problem.',
-		'Please tell me what\'s been bothering you.',
-		'Is something troubling you ?',
-		'Im here. Talk to me.',
-		'Talk to me',
-		'Top of the morning to you.',
-		'Thanks for waking me up',
+		'Hi, I am Dr. FreudBot, your resident therapist. What is bothering you?',
+		'Herr Professor Doktor FreudBot here, your therapy bot. What has been troubling you?',
+		'I am the Pangea therapy bot, Dr. FreudBot, ready to help. I am not a real therapist, I just play one in this app.',
+		'I\'m here, Dr. FreudBot. Talk to me.',
+		'Talk to me! I am Dr. FreudBot. Tell me about your mother.',
+		'Hallo, Dr. FreudBot here. I am not a real Freudian. I am not real. Are you? Are you sure?',
 	]
 	
 	this.elizaKeywords = [
