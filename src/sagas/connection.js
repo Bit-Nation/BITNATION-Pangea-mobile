@@ -18,12 +18,7 @@ export function* checkConnection() {
     const isConnected = result === 200;
     if (isConnected !== lastIsConnected) {
       lastIsConnected = isConnected;
-      if (isConnected === false) {
-        pangeaLibs.eventEmitter.emit(APP_OFFLINE);
-        return;
-      }
-
-      pangeaLibs.eventEmitter.emit(APP_ONLINE);
+      pangeaLibs.eventEmitter.emit(isConnected === true ? APP_ONLINE, APP_OFFLINE);
     }
     return isConnected;
   }
