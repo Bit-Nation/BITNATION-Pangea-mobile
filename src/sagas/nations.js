@@ -52,7 +52,6 @@ export function* startNationIndexingWorker() {
       yield put(doneFetchNations());
     } catch (e) {
       console.log('Index nation error: ', e);
-      errorAlert(extractMessage(e));
       yield put({ type: CANCEL_LOADING });
     }
     yield delay(NATION_INDEX_PERIOD);
