@@ -10,7 +10,7 @@ import {
 } from '../../../src/actions/nations';
 import { convertFromDatabase, resolveNation } from '../../../src/utils/nations';
 import { getPangeaLibrary } from '../../../src/services/container';
-import { checkConnection } from '../../../src/utils/connectivity';
+import { checkConnection } from '../../../src/sagas/connection';
 
 jest.mock('BITNATION-Pangea-libs');
 jest.mock('react-native-config');
