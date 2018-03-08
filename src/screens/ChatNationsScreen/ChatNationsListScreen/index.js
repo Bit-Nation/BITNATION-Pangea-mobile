@@ -42,7 +42,7 @@ class ChatNationsListScreen extends Component {
         <SectionList
           renderItem={(item) => {
             const nation = item.item;
-            if (nation.isBot) {
+            if (nation.isBot === true) {
               return (<ChatListItem
                 text={nation.name}
                 participants=''

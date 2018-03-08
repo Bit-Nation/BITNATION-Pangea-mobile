@@ -49,7 +49,7 @@ ChatListItem.propTypes = {
   participants: PropTypes.string,
   /**
    * @desc Id that will be passed in onPress callback.
-   * @type string
+   * @type object
    */
   id: PropTypes.any,
   /**
@@ -58,8 +58,8 @@ ChatListItem.propTypes = {
    */
   onPress: PropTypes.func,
   /**
-   * @desc Callback on press item.
-   * @type string
+   * @desc Image resource to be displayed as icon.
+   * @type number
    */
   itemIcon: PropTypes.number,
 };
