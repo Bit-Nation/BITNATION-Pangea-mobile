@@ -33,7 +33,7 @@ import styles from './styles';
 import { GiftedChat, Composer, InputToolbar, Bubble } from 'react-native-gifted-chat';
 import AssetsImages from '../../global/AssetsImages';
 
-import { showSpinner, hideSpinner } from '../../actions/activity';
+import { showSpinner, hideSpinner } from '../../actions/chat';
 
 import BackgroundImage from '../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../components/common/FakeNavigationBar';
@@ -46,7 +46,7 @@ class ChatScreen extends React.Component {
   constructor(props) {
     super(props);
   
-    if (!props.isBot) {
+    if (props.isBot !== true) {
       // Creating the socket-client instance will automatically connect to the server.
       this.connection = SocketIOClient(config.CHAT_URL, {
         transports: ['websocket'], 
@@ -67,7 +67,7 @@ class ChatScreen extends React.Component {
   }
 
   componentDidMount() {
-    if (!this.props.isBot && this.connection) {
+    if (this.props.isBot !== true && this.connection) {
       this.props.showSpinner();
       // load initial messages
       const URL = `${config.CHAT_URL}/messages/${this.props.nationId}?auth_token=${config.AUTH_TOKEN}`;
@@ -76,19 +76,8 @@ class ChatScreen extends React.Component {
         return response.json();
       })
       .then(json => {
-        let messages = [];
-        for (let msg of json.reverse()) {
-          messages.push({
-            _id: msg._id,
-            text: msg.msg,
-            createdAt: msg.createdAt,
-            user: {
-              _id: msg.userId,
-              name: msg.from
-            }
-          });
-          this.props.hideSpinner();
-        }
+        const messages = this._createGiftedChatMessageObject(json.reverse());
+        this.props.hideSpinner();
         this.setState(previousState => ({ messages: GiftedChat.append(previousState.messages, messages) }));
       }, (e) => {
         this.props.hideSpinner();
@@ -99,15 +88,7 @@ class ChatScreen extends React.Component {
         if (data.nation_id >= 0) {
           this.setState({joined: true});
           this.connection.on('msg', (messageData) => {
-            const messages = [{
-              _id: messageData._id,
-              text: messageData.msg,
-              createdAt: messageData.createdAt,
-              user: {
-                _id: messageData.userId,
-                name: messageData.from
-              }
-            }];
+            const messages = this._createGiftedChatMessageObject([messageData]);
             this.setState(previousState => ({ messages: GiftedChat.append(previousState.messages, messages) }));
           });
         }
@@ -131,8 +112,24 @@ class ChatScreen extends React.Component {
     }
   }
 
+  _createGiftedChatMessageObject(messagesData) {
+    let messages = [];
+    for (let data of messagesData) {
+      messages.push({
+        _id: data._id,
+        text: data.msg,
+        createdAt: data.createdAt,
+        user: {
+          _id: data.userId,
+          name: data.from
+        }
+      });
+    }
+    return messages;
+  }
+
   onSend(messages = []) {
-    if (this.props.isBot) {
+    if (this.props.isBot === true) {
       const m = [
         {
           _id: this.state.messages.length + 1,
@@ -151,7 +148,7 @@ class ChatScreen extends React.Component {
       // Add Eliza's response
       this.setState(previousState => ({ messages: GiftedChat.append(previousState.messages, m) }));
     } else {
-      if (this.state.joined) {
+      if (this.state.joined === true && this.props.user) {
         const newMessage = {
           nation_id: this.props.nationId,
           msg: messages[0].text,
@@ -200,7 +197,7 @@ class ChatScreen extends React.Component {
 const mapStateToProps = state => ({
   nationId: state.nations.openedNationId,
   user: state.profile.user,
-  isFetching: state.activity.isFetching
+  isFetching: state.chat.isFetching
 });
 
 const mapDispatchToProps = dispatch => ({
