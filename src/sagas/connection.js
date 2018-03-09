@@ -19,6 +19,8 @@ export function* checkConnection() {
     if (isConnected !== lastIsConnected) {
       lastIsConnected = isConnected;
       pangeaLibs.eventEmitter.emit(isConnected === true ? APP_ONLINE : APP_OFFLINE);
+      // @todo This should be fixed
+      yield call(delay, 2000); // delay to ensure pangeaLibs updated web3
     }
 
     if (isConnected === true) {
