@@ -6,7 +6,7 @@ import {
   doneSyncNations, doneFetchNations, fetchNationsStarted, requestSyncNations,
 } from '../actions/nations';
 import { getPangeaLibrary } from '../services/container';
-import { checkConnection } from '../utils/connectivity';
+import { checkConnection } from './connection';
 import { NATION_INDEX_PERIOD } from '../global/Constants';
 import { openedNation } from '../reducers/nations';
 import { convertFromDatabase } from '../utils/nations';
@@ -52,7 +52,6 @@ export function* startNationIndexingWorker() {
       yield put(doneFetchNations());
     } catch (e) {
       console.log('Index nation error: ', e);
-      errorAlert(extractMessage(e));
       yield put({ type: CANCEL_LOADING });
     }
     yield delay(NATION_INDEX_PERIOD);
