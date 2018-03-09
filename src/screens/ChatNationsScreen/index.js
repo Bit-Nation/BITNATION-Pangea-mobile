@@ -36,7 +36,7 @@ class ChatNationsScreen extends NavigatorComponent {
     const nation = resolveNation(this.props.nations, id);
 
     if (!nation) {
-      if (isBot) {
+      if (isBot === true) {
         console.log('No nation', isBot);
         this.props.navigator.push({
           ...screen('CHAT_SCREEN'),
