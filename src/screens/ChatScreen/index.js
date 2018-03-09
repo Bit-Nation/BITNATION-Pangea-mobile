@@ -114,7 +114,7 @@ class ChatScreen extends React.Component {
   }
 
   componentWillUnmount() {
-    this.connection.disconnect();
+    this.connection && this.connection.disconnect();
   }
 
   _createGiftedChatMessageObject(messagesData) {
