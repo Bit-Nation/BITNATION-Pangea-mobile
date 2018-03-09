@@ -29,23 +29,22 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import config from 'react-native-config';
 import SocketIOClient from 'socket.io-client';
-import styles from './styles';
 import { GiftedChat, Composer, InputToolbar, Bubble } from 'react-native-gifted-chat';
+import styles from './styles';
+
 import AssetsImages from '../../global/AssetsImages';
-
 import { showSpinner, hideSpinner } from '../../actions/chat';
-
 import BackgroundImage from '../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../components/common/FakeNavigationBar';
 import Loading from '../../components/common/Loading';
-
+import { resolveNation } from '../../utils/nations';
 import elizabot from '../../../vendor/elizabot';
 
 class ChatScreen extends React.Component {
   
   constructor(props) {
     super(props);
-  
+
     if (props.isBot !== true) {
       // Creating the socket-client instance will automatically connect to the server.
       this.connection = SocketIOClient(config.CHAT_URL, {
@@ -195,7 +194,7 @@ class ChatScreen extends React.Component {
 
 
 const mapStateToProps = state => ({
-  nationId: state.nations.openedNationId,
+  nationId: resolveNation(state.nations.nations, state.nations.openedNationId).idInSmartContract,
   user: state.profile.user,
   isFetching: state.chat.isFetching
 });
