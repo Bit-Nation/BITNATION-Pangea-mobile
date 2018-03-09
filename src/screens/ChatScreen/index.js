@@ -46,6 +46,8 @@ class ChatScreen extends React.Component {
     super(props);
 
     if (props.isBot !== true) {
+      const selectedNation = resolveNation(props.nations, props.nationId);
+      this.nationId = selectedNation.idInSmartContract;
       // Creating the socket-client instance will automatically connect to the server.
       this.connection = SocketIOClient(config.CHAT_URL, {
         transports: ['websocket'], 
@@ -54,9 +56,9 @@ class ChatScreen extends React.Component {
       });
       this.connection.on('connect', () => {
         this.connection.emit('room:join', {
-          nation_id: props.nationId
+          nation_id: this.nationId
         });
-      });
+      });      
     }
 
     this.state = {
@@ -69,7 +71,7 @@ class ChatScreen extends React.Component {
     if (this.props.isBot !== true && this.connection) {
       this.props.showSpinner();
       // load initial messages
-      const URL = `${config.CHAT_URL}/messages/${this.props.nationId}?auth_token=${config.AUTH_TOKEN}`;
+      const URL = `${config.CHAT_URL}/messages/${this.nationId}?auth_token=${config.AUTH_TOKEN}`;
       fetch(URL)
       .then((response) => {
         return response.json();
@@ -147,9 +149,9 @@ class ChatScreen extends React.Component {
       // Add Eliza's response
       this.setState(previousState => ({ messages: GiftedChat.append(previousState.messages, m) }));
     } else {
-      if (this.state.joined === true && this.props.user) {
+      if (this.state.joined === true) {
         const newMessage = {
-          nation_id: this.props.nationId,
+          nation_id: this.nationId,
           msg: messages[0].text,
           from: this.props.user ? this.props.user.name : 'anonymous',
           userId: this.props.user ? this.props.user.uid : 'anonymous',
@@ -194,7 +196,8 @@ class ChatScreen extends React.Component {
 
 
 const mapStateToProps = state => ({
-  nationId: resolveNation(state.nations.nations, state.nations.openedNationId).idInSmartContract,
+  nations: state.nations.nations,
+  nationId: state.nations.openedNationId,
   user: state.profile.user,
   isFetching: state.chat.isFetching
 });
