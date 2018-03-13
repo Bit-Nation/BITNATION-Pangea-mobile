@@ -1,6 +1,7 @@
 import {
-  switchNationTab, openNation, requestFetchNations, joinNation, leaveNation,
-  SWITCH_NATIONS_TAB, OPEN_NATION, START_NATIONS_FETCH, REQUEST_JOIN_NATION, REQUEST_LEAVE_NATION,
+  switchNationTab, openNation, joinNation, leaveNation, fetchNationsStarted,
+  SWITCH_NATIONS_TAB, OPEN_NATION, REQUEST_JOIN_NATION, REQUEST_LEAVE_NATION,
+  NATIONS_FETCH_STARTED,
 } from '../../../src/actions/nations';
 
 test('actions - switchNationTab', (done) => {
@@ -21,9 +22,9 @@ test('actions - openNation', (done) => {
   done();
 });
 
-test('actions - requestFetchNations', (done) => {
-  expect(requestFetchNations()).toEqual({
-    type: START_NATIONS_FETCH,
+test('actions - fetchNationsStarted', (done) => {
+  expect(fetchNationsStarted()).toEqual({
+    type: NATIONS_FETCH_STARTED,
   });
   done();
 });

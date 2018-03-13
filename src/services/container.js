@@ -48,18 +48,6 @@ const PangeaLibFactory:Promise<*> = new Promise((res, rej) => {
     );
   });
 
-  /**
-     * @desc Inform pangea utils about connectivity change
-     */
-  NetInfo.isConnected.addEventListener('connectionChange', (isConnected) => {
-    if (isConnected === false) {
-      ee.emit(APP_OFFLINE);
-      return;
-    }
-
-    ee.emit(APP_ONLINE);
-  });
-
   NetInfo
     .isConnected
     .fetch()

@@ -593,6 +593,12 @@ const styles = {
     height: 15,
   },
 
+  sectionListSignal: {
+    marginRight: 14,
+    width: 20,
+    height: 15,
+  },
+
   // ========================================
   // Tab Bar with text
   segmentedControlContainer: {

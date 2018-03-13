@@ -22,23 +22,6 @@ import { nationIsValid, resolveStatus } from '../../../utils/nations';
 import pangeaLibs from '../../../services/container';
 
 class NationDetailsScreen extends Component {
-  /**
-     * @todo this need's to be refactored
-     */
-  constructor() {
-    super();
-
-    pangeaLibs
-      .then((container) => {
-        container
-          .queue
-          .txQueue
-          .startProcessing();
-
-        console.log('Started tx queue worker');
-      })
-      .catch(console.log);
-  }
 
   render() {
     const nation = openedNation(this.props);
@@ -74,7 +57,7 @@ class NationDetailsScreen extends Component {
             {this._buildFactsView(nation)}
           </ScrollView>
         </View>
-        {this._buildTabBar(nation.joined, nation.idInSmartContract >= 0)}
+        {this._buildTabBar()}
       </View>
     );
   }
@@ -103,11 +86,7 @@ class NationDetailsScreen extends Component {
     return false;
   }
 
-  _showDisabledAlert() {
-    Alert.alert(i18n.t('alerts.nationsDisabled.title'));
-  }
-
-  _buildTabBar(joined, created) {
+  _buildTabBar() {
     const nation = openedNation(this.props);
 
     if (this.props.isDraft) {
@@ -145,13 +124,13 @@ class NationDetailsScreen extends Component {
         <NationActionButton
           iconSource={AssetsImage.Actions.join}
           title={i18n.t('screens.nations.toolbar.join')}
-          disable={false}
-          onPress={this._showDisabledAlert}
+          disable={this._disableJoinButton(nation)}
+          onPress={this.props.joinNation}
         />
         <NationActionButton
           iconSource={AssetsImage.Actions.leave}
           title={i18n.t('screens.nations.toolbar.leave')}
-          disable
+          disable={this._disableLeaveButton(nation)}
           onPress={this.props.leaveNation}
         />
       </View>

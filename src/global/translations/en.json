@@ -13,6 +13,9 @@
       },
       "create": {
         "succeed": "Created Nation {{nationName}}"
+      },
+      "leave": {
+        "succeed": "Left nation: {{nationName}}"
       }
     }
   },
@@ -95,23 +98,20 @@
       },
       "status": {
         "draft": "Draft",
-        "rejected": "Rejected",
-        "pending": "Pending",
-        "accepted": "Accepted",
         "NATION_JOIN": {
-          "200": "Join | Pending",
-          "300": "Join | Accepted",
-          "400": "Join | Rejected"
+          "200": "Joining",
+          "300": "",
+          "400": "Banned"
         },
         "NATION_CREATE": {
-          "200": "Submit | Pending",
-          "300": "Submit | Accepted",
-          "400": "Submit | Rejected"
+          "200": "Pending",
+          "300": "",
+          "400": "Rejected"
         },
         "NATION_LEAVE": {
-          "200": "Leave | Pending",
-          "300": "Leave | Accepted",
-          "400": "Leave | Rejected"
+          "200": "Leaving",
+          "300": "",
+          "400": "Leaving rejected"
         }
       }
     },
@@ -230,7 +230,9 @@
     },
     "chat": {
       "title": "$t(common.chat)",
-      "tabTitle": "$t(tabbar.chat)"
+      "tabTitle": "$t(tabbar.chat)",
+      "allChats": "All Chats",
+      "myChats": "My Chats"
     },
     "nations": {
       "toolbar": {
@@ -252,7 +254,7 @@
       "title": "Nation",
       "aboutInfo": "About {{name}}",
       "description": "Description",
-      "locationInfo": "{{name}} is a {{locationType}} nation",
+      "locationInfo": "{{name}} is a {{locationType}}",
       "legalSystemInfo": "{{name}} uses {{code}} as its legal system.",
       "lawEnforcementInfo": "The laws are enforced with {{lawEnforcementMechanism}}.",
       "governmentInfo": "The government is a {{decisionMakingProcess}}.",
@@ -425,5 +427,19 @@
       "title": "You have turned {{onOff}} testing mode"
     },
     "removeWallets": "Remove wallets"
+  },
+  "error": {
+    "noConnection": "Please check your internet connection.",
+    "insufficientFunds": "Insufficient funds. Please check your wallet."
+  },
+  "bots": {
+    "freudbot": {
+      "initial1": "Hi, I am Dr. FreudBot, your resident therapist. What is bothering you?",
+      "initial2": "Herr Professor Doktor FreudBot here, your therapy bot. What has been troubling you?",
+      "initial3": "I am the Pangea therapy bot, Dr. FreudBot, ready to help. I am not a real therapist, I just play one in this app.",
+      "initial4": "I'm here, Dr. FreudBot. Talk to me.",
+      "initial5": "Talk to me! I am Dr. FreudBot. Tell me about your mother.",
+      "initial6": "Hallo, Dr. FreudBot here. I am not a real Freudian. I am not real. Are you? Are you sure?"
+    }
   }
 }

@@ -58,6 +58,7 @@ class Dashboard extends Component {
               nations={this.props.nations.nations}
               onSelectNation={this._onSelectNation}
               style={styles.nationsPanel}
+              loadingInProgress={this.props.nations.inProgress}
             />
             <View style={styles.rightContainer}>
               <WalletPanel
