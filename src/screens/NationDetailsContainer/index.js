@@ -9,9 +9,10 @@ import { Alert } from 'react-native';
 import i18n from '../../global/i18n';
 import Colors from '../../global/colors';
 import { deleteNationDraft, startNationEditing, submitNation } from '../../actions/modifyNation';
-import { isDraft, openedNation } from '../../reducers/nations';
+import { openedNation } from '../../reducers/nations';
 import NavigatorComponent from '../../components/common/NavigatorComponent';
 import { alert, errorAlert } from '../../global/alerts';
+import { nationIsDraft } from '../../utils/nations';
 
 const EDIT_BUTTON = 'EDIT_BUTTON';
 
@@ -128,7 +129,13 @@ NationDetailsContainer.PropTypes = {
 const mapStateToProps = state => ({
   ...state.nations,
   ...state.wallet,
-  isDraft: isDraft(openedNation(state.nations) || {}),
+  isDraft: (() => {
+    const nation = openedNation(state.nations);
+    if (nation === null || nation === undefined) {
+      return true;
+    }
+    return nationIsDraft(nation);
+  })(),
 });
 
 const mapDispatchToProps = dispatch => ({

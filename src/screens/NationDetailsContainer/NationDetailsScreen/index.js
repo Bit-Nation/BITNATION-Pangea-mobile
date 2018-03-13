@@ -19,10 +19,13 @@ import { openedNation } from '../../../reducers/nations';
 import PanelViewAlert from '../../../components/common/PanelViewAlert';
 import PanelViewCitizen from '../../../components/common/PanelViewCitizen';
 import { nationIsValid, resolveStatus } from '../../../utils/nations';
+import pangeaLibs from '../../../services/container';
 
 class NationDetailsScreen extends Component {
+
   render() {
     const nation = openedNation(this.props);
+    console.log('nation opened: ', nation);
 
     if (!nation) {
       this.props.navigator.pop();
@@ -30,6 +33,7 @@ class NationDetailsScreen extends Component {
     }
 
     const status = resolveStatus(nation);
+    const statusDescription = (status !== null ? i18n.ifExists(`screens.nationDetails.statusDescription.${status.key}`) : '');
 
     return (
       <View style={styles.screenContainer}>
@@ -40,12 +44,11 @@ class NationDetailsScreen extends Component {
           <View style={styles.titleContainer}>
             <View style={styles.titleBarLarge}>
               <Text style={styles.largeTitle}>{nation.nationName}</Text>
-              {console.log('joined nation: ', nation.joined)}
             </View>
           </View>
 
           <ScrollView>
-            {status !== 'draft' && this._buildStatusPanel(i18n.t(`screens.nationDetails.statusDescription.${status}`))}
+            {statusDescription !== '' && this._buildStatusPanel(statusDescription)}
 
             {this._buildAboutView(nation)}
             {/*  Will show Panel of Citizenship if nation.joinend == true */}
@@ -54,17 +57,42 @@ class NationDetailsScreen extends Component {
             {this._buildFactsView(nation)}
           </ScrollView>
         </View>
-        {this._buildTabBar(nation.joined, nation.idInSmartContract >= 0)}
+        {this._buildTabBar()}
       </View>
     );
   }
 
-  _buildTabBar(joined, created) {
+  _disableJoinButton(nation) {
+    if (nation.tx && nation.tx.status === 200) {
+      return true;
+    }
+
+    if (nation.joined === true) {
+      return true;
+    }
+
+    return false;
+  }
+
+  _disableLeaveButton(nation) {
+    if (nation.tx && nation.tx.status === 200) {
+      return true;
+    }
+
+    if (nation.joined === false) {
+      return true;
+    }
+
+    return false;
+  }
+
+  _buildTabBar() {
     const nation = openedNation(this.props);
 
     if (this.props.isDraft) {
       return (
         <View style={styles.fakeBottomBar}>
+
           <NationActionButton
             iconSource={AssetsImage.Actions.delete}
             title={i18n.t('screens.nations.toolbar.delete')}
@@ -80,6 +108,7 @@ class NationDetailsScreen extends Component {
         </View>
       );
     }
+
     return (
       <View style={styles.fakeBottomBar}>
         <NationActionButton
@@ -95,13 +124,13 @@ class NationDetailsScreen extends Component {
         <NationActionButton
           iconSource={AssetsImage.Actions.join}
           title={i18n.t('screens.nations.toolbar.join')}
-          disable={joined || !created}
+          disable={this._disableJoinButton(nation)}
           onPress={this.props.joinNation}
         />
         <NationActionButton
           iconSource={AssetsImage.Actions.leave}
           title={i18n.t('screens.nations.toolbar.leave')}
-          disable={!joined}
+          disable={this._disableLeaveButton(nation)}
           onPress={this.props.leaveNation}
         />
       </View>

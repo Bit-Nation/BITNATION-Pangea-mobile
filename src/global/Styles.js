@@ -539,7 +539,7 @@ const styles = {
   // e.g. NationListItemState Text
   listItemTextState: {
     ...defaultTextStyles.body,
-    color: Colors.listItemTextState,
+    color: Colors.listItemTextState.default,
     textAlign: 'right',
     marginRight: 16,
   },
@@ -590,6 +590,12 @@ const styles = {
   sectionListDisclosure: {
     marginRight: 16,
     width: 8,
+    height: 15,
+  },
+
+  sectionListSignal: {
+    marginRight: 14,
+    width: 20,
     height: 15,
   },
 
