@@ -6,7 +6,7 @@ import { REQUEST_PROFILE_UPDATE, DONE_USER_EDITING, SET_USER_PROFILE, REQUEST_GE
 export const getProfileState = state => state.profile;
 /**
  * @desc function generator for profile update saga
-  * @return {void}
+ * @return {void}
  */
 export function* updateProfile() {
   try {

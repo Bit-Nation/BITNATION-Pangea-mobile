@@ -35,20 +35,20 @@ export const isEmpty = v => !(typeof (v) !== 'undefined' && v);
 // example: convertHex("#FF120AE",0.3)
 // example: convertHex("#FF120AE",30)
 export const convertHex = (hex, opacity) => {
-  const HEX = hex.replace('#', '');
-  const r = parseInt(HEX.substring(0, 2), 16);
-  const g = parseInt(HEX.substring(2, 4), 16);
-  const b = parseInt(HEX.substring(4, 6), 16);
+  const adjustedHex = hex.replace('#', '');
+  const r = parseInt(adjustedHex.substring(0, 2), 16);
+  const g = parseInt(adjustedHex.substring(2, 4), 16);
+  const b = parseInt(adjustedHex.substring(4, 6), 16);
 
   let result;
   if (isEmpty(opacity)) {
     result = `rgb(${r},${g},${b})`;
   } else {
-    let opacityValue = opacity;
-    if (opacityValue > 1) {
-      opacityValue /= 100;
+    let normalizedOpacity = opacity;
+    if (normalizedOpacity > 1) {
+      normalizedOpacity /= 100;
     }
-    result = `rgba(${r},${g},${b},${opacityValue})`;
+    result = `rgba(${r},${g},${b},${normalizedOpacity})`;
   }
   return result;
 };
