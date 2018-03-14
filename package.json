@@ -14,7 +14,8 @@
     "android": "flow && node_modules/.bin/react-native run-android",
     "postinstall": "./node_modules/.bin/rn-nodeify --install 'stream,buffer,vm,crypto,string_decoder,events,assert' --hack",
     "docs": "node_modules/.bin/documentation build src/services/container.js -f md > docs/main.md",
-    "build:ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/Pangea/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios'"
+    "build:ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/Pangea/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios'",
+    "flow:stip": "node_modules/.bin/flow-remove-types src/ --out-dir raw_js_src"
   },
   "dependencies": {
     "BITNATION-Pangea-libs": "git+https://github.com/Bit-Nation/BITNATION-Pangea-libs.git#b8b59fba089437641e67cd3766dbac25b0216a24",
@@ -83,6 +84,7 @@
     "eslint-plugin-react": "^7.7.0",
     "eslint-plugin-react-native": "^3.2.1",
     "eslint-plugin-require-jsdoc": "^1.0.4",
+    "flow-remove-types": "^1.2.3",
     "jest": "22.0.3",
     "react-dom": "^16.2.0",
     "react-native-mock": "^0.3.1",
