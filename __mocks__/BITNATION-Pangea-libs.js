@@ -1,3 +1,6 @@
+/**
+ * @return {Promise<{eth: {nation: {create, index, all, joinNation, leaveNation}}}>} Pangea lib's mock
+ */
 export default function () {
   return Promise.resolve({
     eth: {
