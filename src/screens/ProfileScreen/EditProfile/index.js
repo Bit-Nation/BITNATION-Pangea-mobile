@@ -26,7 +26,6 @@ import i18n from '../../../global/i18n';
 const DONE_BUTTON = 'DONE_BUTTON';
 
 class EditProfile extends NavigatorComponent {
-
   constructor(props) {
     super(props);
 
@@ -35,21 +34,19 @@ class EditProfile extends NavigatorComponent {
   }
 
   _setNavigationButtons(saveEnabled) {
-    this.props.navigator.setButtons(
-      {
-        leftButtons: [{
-          title: i18n.t('screens.profile.edit.cancelButton'),
-          id: 'cancel',
-          buttonColor: Colors.navigationButtonColor,
-        }],
-        rightButtons: [{
-          title: i18n.t('screens.profile.edit.doneButton'),
-          id: DONE_BUTTON,
-          disabled: !saveEnabled,
-          buttonColor: Colors.navigationButtonColor,
-        }],
-      },
-    );
+    this.props.navigator.setButtons({
+      leftButtons: [{
+        title: i18n.t('screens.profile.edit.cancelButton'),
+        id: 'cancel',
+        buttonColor: Colors.navigationButtonColor,
+      }],
+      rightButtons: [{
+        title: i18n.t('screens.profile.edit.doneButton'),
+        id: DONE_BUTTON,
+        disabled: !saveEnabled,
+        buttonColor: Colors.navigationButtonColor,
+      }],
+    });
   }
 
   componentWillReceiveProps(nextProps) {
@@ -58,7 +55,7 @@ class EditProfile extends NavigatorComponent {
     if (saveWasEnabled !== saveWillBeEnabled) {
       this._setNavigationButtons(saveWillBeEnabled);
     }
-  };
+  }
 
   onNavBarButtonPress(id) {
     if (id === 'cancel') {
@@ -102,10 +99,10 @@ class EditProfile extends NavigatorComponent {
       <View style={styles.avatarContainerLarge}>
         <TouchableOpacity onPress={this._onEditAvatar}>
           <View style={styles.avatarChangeContainer}>
-            <Image source={avatarSource}
-                   style={styles.avatarLarge}/>
-            <Text
-              style={styles.editItemLabel}>{i18n.t('screens.profile.edit.editPhoto')}</Text>
+            <Image source={avatarSource} style={styles.avatarLarge} />
+            <Text style={styles.editItemLabel}>
+              {i18n.t('screens.profile.edit.editPhoto')}
+            </Text>
           </View>
         </TouchableOpacity>
       </View>
@@ -130,9 +127,7 @@ class EditProfile extends NavigatorComponent {
             <View style={styles.formRow}>
               <TextInput
                 value={this.props.editingUser.name}
-                onChangeText={(text) => this._onChange(
-                  'name',
-                  text)}
+                onChangeText={text => this._onChange('name', text)}
                 style={styles.textInput}
                 placeholder={i18n.t('screens.profile.edit.name')}
                 placeholderTextColor={Colors.placeholderTextColor}
@@ -142,9 +137,7 @@ class EditProfile extends NavigatorComponent {
             <View style={styles.formRow}>
               <TextInput
                 value={this.props.editingUser.location}
-                onChangeText={(text) => this._onChange(
-                  'location',
-                  text)}
+                onChangeText={text => this._onChange('location', text)}
                 style={styles.textInput}
                 placeholder={i18n.t('screens.profile.edit.location')}
                 placeholderTextColor={Colors.placeholderTextColor}
@@ -152,8 +145,7 @@ class EditProfile extends NavigatorComponent {
               />
             </View>
           </View>
-          <
-            ActionSheet
+          <ActionSheet
             ref={(c) => {
               this.actionSheet = c;
             }}
@@ -183,7 +175,7 @@ class EditProfile extends NavigatorComponent {
           cancelButtonIndex: 2,
           title: i18n.t('screens.profile.edit.editPhotoActionSheet.title'),
         },
-        buttonIndex => {
+        (buttonIndex) => {
           switch (buttonIndex) {
             case PHOTO_LIBRARY:
               this._openPicker(false);
@@ -227,7 +219,6 @@ class EditProfile extends NavigatorComponent {
   _saveShouldBeEnabled(props) {
     return !_.isEqual(props.user, props.editingUser) && this._userIsValid(props.editingUser);
   }
-
 }
 
 EditProfile.propTypes = {

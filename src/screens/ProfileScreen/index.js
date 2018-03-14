@@ -20,7 +20,6 @@ import FakeNavigationBar from '../../components/common/FakeNavigationBar';
 import styles from './EmptyProfile/styles';
 
 class ProfileContainer extends Component {
-
   constructor(props) {
     super(props);
     this.props.getUserProfile();
@@ -30,26 +29,31 @@ class ProfileContainer extends Component {
     return (
       <View style={{ flex: 1 }}>
         <View style={styles.screenContainer}>
-          <BackgroundImage/>
-          <FakeNavigationBar/>
+          <BackgroundImage />
+          <FakeNavigationBar />
           {
             this.props.editingUser ?
-              <EditProfile user={this.props.user}
-                           editingUser={this.props.editingUser}
-                           navigator={this.props.navigator}
-                           onUserChanged={this._onUserFieldChanged}
-                           onCancelEditing={this.props.onCancelUserEditing}
-                           onDoneEditing={this.props.onDoneUserEditing}/>
+              <EditProfile
+                user={this.props.user}
+                editingUser={this.props.editingUser}
+                navigator={this.props.navigator}
+                onUserChanged={this._onUserFieldChanged}
+                onCancelEditing={this.props.onCancelUserEditing}
+                onDoneEditing={this.props.onDoneUserEditing}
+              />
               : this.props.user ?
-              <ProfileScreen user={this.props.user}
-                             navigator={this.props.navigator}
-                             onStartEditing={this.props.onStartUserEditing}
-                             makeStepForTestingMode={this.props.makeStepForTestingMode}
-                             resetStepsForTestingMode={this.props.resetStepsForTestingMode}
-                             testingModeActive={this.props.testingModeActive}/>
+                <ProfileScreen
+                  user={this.props.user}
+                  navigator={this.props.navigator}
+                  onStartEditing={this.props.onStartUserEditing}
+                  makeStepForTestingMode={this.props.makeStepForTestingMode}
+                  resetStepsForTestingMode={this.props.resetStepsForTestingMode}
+                  testingModeActive={this.props.testingModeActive}
+                />
               : <EmptyProfileScreen
                 onCreateUserProfile={this._onCreateUserProfile}
-                navigator={this.props.navigator}/>
+                navigator={this.props.navigator}
+              />
           }
         </View>
       </View>
@@ -63,7 +67,6 @@ class ProfileContainer extends Component {
   _onUserFieldChanged = (field, value) => {
     this.props.onChangeEditingUser(Object.assign({}, this.props.editingUser, { [field]: value }));
   };
-
 }
 
 ProfileContainer.propTypes = {
@@ -71,13 +74,11 @@ ProfileContainer.propTypes = {
   editingUser: PropTypes.object,
 };
 
-const mapStateToProps = (state) => {
-  return {
-    user: state.profile.user,
-    editingUser: state.profile.editingUser,
-    testingModeActive: state.testingMode.isActive,
-  };
-};
+const mapStateToProps = state => ({
+  user: state.profile.user,
+  editingUser: state.profile.editingUser,
+  testingModeActive: state.testingMode.isActive,
+});
 
 const mapDispatchToProps = dispatch => ({
   onStartUserCreating() {

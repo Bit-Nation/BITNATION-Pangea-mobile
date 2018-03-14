@@ -5,7 +5,7 @@ import NationListHeader from '../../../../src/components/common/NationListHeader
 
 test('NationListHeader renders correctly', () => {
   const tree = renderer
-    .create(<NationListHeader title='Test header title'/>)
+    .create(<NationListHeader title='Test header title' />)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

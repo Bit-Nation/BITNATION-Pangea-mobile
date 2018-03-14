@@ -13,7 +13,7 @@ export const tabsStyle = {
 };
 
 export const appStyle = {
-  ...tabsStyle
+  ...tabsStyle,
 };
 
 export const androidNavigationButtons = Platform.OS === 'android' ? {
@@ -26,7 +26,7 @@ export const androidNavigationButtons = Platform.OS === 'android' ? {
 // Navigation Bar Style
 /*
   Documentation:
-  
+
   navBarTextColor: '#000000', // change the text color of the title (remembered across pushes)
   navBarTextFontSize: 18, // change the font size of the title
   navBarTextFontFamily: 'font-name', // Changes the title font
@@ -53,21 +53,21 @@ export const androidNavigationButtons = Platform.OS === 'android' ? {
   screenBackgroundColor: 'white', // Default screen color, visible before the actual react view is rendered
   orientation: 'portrait' // Sets a specific orientation to a modal and all screens pushed to it. Default: 'auto'. Supported values: 'auto', 'landscape', 'portrait'
   disabledButtonColor: '#ff0000' // chnaged the navigation bar button text color when disabled.
- 
+
  rootBackgroundImageName: '<name of image in Images.xcassets>', // Static while you transition between screens. Works best with screenBackgroundColor: 'transparent'
  */
 export const navigatorStyle = {
   statusBarTextColorScheme: 'light',
-  statusBarColor: Platform.OS === 'ios' ? Colors.statusBarColorIOS : Colors.statusBarColorOther,    // Nativebase variable!
-	navBarBackgroundColor: Colors.navBarBackgroundColor,
+  statusBarColor: Platform.OS === 'ios' ? Colors.statusBarColorIOS : Colors.statusBarColorOther, // Nativebase variable!
+  navBarBackgroundColor: Colors.navBarBackgroundColor,
   navBarTransparent: Colors.navBarTransparent,
-  navBarBlur: false,  // blur is too light
+  navBarBlur: false, // blur is too light
   navBarTranslucent: Colors.navBarTranslucent,
   navBarNoBorder: Colors.navBarNoBorder,
   drawUnderNavBar: true,
-  drawUnderStatusBar: false,  // Apple says, don't do it. So we don't.
+  drawUnderStatusBar: false, // Apple says, don't do it. So we don't.
   navBarTextColor: Colors.navBarTextColor,
-	navBarButtonColor: Colors.navBarButtonColor,
+  navBarButtonColor: Colors.navBarButtonColor,
   screenBackgroundColor: 'transparent',
   rootBackgroundImageName: 'background-gray.jpg',
 };
@@ -76,7 +76,7 @@ export const hiddenNavigatorStyle = {
   statusBarTextColorScheme: 'light',
   statusBarColor: Platform.OS === 'ios' ? Colors.statusBarColorIOS : Colors.statusBarColorOther,
   navBarHidden: true,
-  drawUnderStatusBar: false,  // Apple says, don't do it. So we don't.
+  drawUnderStatusBar: false, // Apple says, don't do it. So we don't.
   screenBackgroundColor: 'transparent',
   rootBackgroundImageName: 'background-gray.jpg',
 };
@@ -116,7 +116,14 @@ const Screens = {
     label: i18n.t('screens.chat.tabTitle'),
     icon: AssetsImages.TabIcons.chat,
     title: i18n.t('screens.chat.title'),
-    navigatorStyle: hiddenNavigatorStyle,
+    navigatorStyle,
+  },
+  CHAT_NATIONS_SCREEN: {
+    screen: 'Pangea.ChatNationsScreen',
+    label: i18n.t('screens.chat.tabTitle'),
+    icon: AssetsImages.TabIcons.chat,
+    title: '',
+    navigatorStyle,
   },
   NATIONS_SCREEN: {
     screen: 'Pangea.NationsScreen',
@@ -139,19 +146,19 @@ const Screens = {
     screen: 'Pangea.WalletScreen',
     label: i18n.t('screens.wallet.tabTitle'),
     icon: AssetsImages.TabIcons.wallet,
-    title: '',    //To show, use i18n.t('screens.wallet.title'),
+    title: '', // To show, use i18n.t('screens.wallet.title'),
     navigatorStyle,
   },
   PROFILE_SCREEN: {
     screen: 'Pangea.ProfileScreen',
     label: i18n.t('screens.profile.tabTitle'),
     icon: AssetsImages.TabIcons.profile,
-    title: '',//i18n.t('screens.profile.title'),
+    title: '', // i18n.t('screens.profile.title'),
     navigatorStyle,
   },
   CREATE_KEY_INTRODUCTION_SCREEN: {
     screen: 'Pangea.CreateKeyIntroductionScreen',
-    title: '',  //i18n.t('screens.createKey.title'),
+    title: '', // i18n.t('screens.createKey.title'),
     ...baseKeyScreen,
   },
   CREATE_KEY_INSTRUCTION_SCREEN: {

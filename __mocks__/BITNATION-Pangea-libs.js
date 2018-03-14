@@ -1,4 +1,8 @@
-export default function() {
+/* eslint-disable */
+/**
+ * @return {Promise<{eth: {nation: {create, index, all, joinNation, leaveNation}}}>} Pangea lib's mock
+ */
+export default function () {
   return Promise.resolve({
     eth: {
       nation: {
@@ -6,8 +10,8 @@ export default function() {
         index: jest.fn(),
         all: jest.fn(),
         joinNation: jest.fn(),
-        leaveNation: jest.fn()
-      }
-    }
+        leaveNation: jest.fn(),
+      },
+    },
   });
 }

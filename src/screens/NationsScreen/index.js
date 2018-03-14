@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 
 import NationsListScreen from './NationsListScreen';
-import { switchNationTab, openNation, requestFetchNations } from '../../actions/nations';
+import { switchNationTab, openNation, requestSyncNations } from '../../actions/nations';
 import { screen } from '../../global/Screens';
 import { resolveNation } from '../../utils/nations';
 import Colors from '../../global/colors';
@@ -16,26 +16,23 @@ import { startNationCreation } from '../../actions/modifyNation';
 const NEW_BUTTON = 'NEW_BUTTON';
 
 class NationsScreen extends NavigatorComponent {
-
   constructor(props) {
     super(props);
 
-    this.props.navigator.setButtons(
-      {
-        leftButtons: [],
-        rightButtons: [{
-          title: 'New',
-          id: NEW_BUTTON,
-          buttonColor: Colors.navigationButtonColor,
-        }],
-      },
-    );
+    this.props.navigator.setButtons({
+      leftButtons: [],
+      rightButtons: [{
+        title: 'New',
+        id: NEW_BUTTON,
+        buttonColor: Colors.navigationButtonColor,
+      }],
+    });
   }
 
   onWillAppear() {
     super.onWillAppear();
 
-    this.props.fetchNations();
+    this.props.syncNations();
   }
 
   onNavBarButtonPress(id) {
@@ -63,7 +60,7 @@ class NationsScreen extends NavigatorComponent {
 
   render() {
     return (
-      <NationsListScreen onSelectItem={this._onSelectItem} {...this.props}/>
+      <NationsListScreen onSelectItem={this._onSelectItem} {...this.props} />
     );
   }
 
@@ -78,7 +75,6 @@ class NationsScreen extends NavigatorComponent {
 
     this.props.navigator.push(screen('NATION_DETAILS_SCREEN'));
   };
-
 }
 
 NationsScreen.PropTypes = {
@@ -92,17 +88,17 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   onSelectTab(index) {
-    dispatch(switchNationTab(index));
+    dispatch(switchNationTab(index === 0 ? 'ALL_NATIONS' : 'MY_NATIONS'));
   },
   openNation(id) {
     dispatch(openNation(id));
   },
-  fetchNations() {
-    dispatch(requestFetchNations());
+  syncNations() {
+    dispatch(requestSyncNations());
   },
   startNationCreation() {
     dispatch(startNationCreation());
-  }
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NationsScreen);

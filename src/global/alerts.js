@@ -4,7 +4,7 @@ import i18n from './i18n';
 export function errorAlert(error) {
   Alert.alert(
     i18n.t('alerts.error.title'),
-    i18n.t(error.transKey),
+    error.transKey !== undefined ? i18n.t(`error.${error.transKey}`) : error.toString(),
     [
       { text: i18n.t('alerts.error.confirm') },
     ],

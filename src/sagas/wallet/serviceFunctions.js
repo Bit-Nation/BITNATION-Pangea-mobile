@@ -1,7 +1,6 @@
 import containerPromise from '../../services/container';
 import { convertWallets } from '../../utils/wallet';
-import { waitConnect } from '../../utils/connectivity';
-import { BALANCE_EXPIRATION_INTERVAL, CONNECTION_TIMEOUT } from '../../global/Constants';
+import { BALANCE_EXPIRATION_INTERVAL } from '../../global/Constants';
 
 export async function getWallets() {
   const container = await containerPromise;
@@ -11,13 +10,12 @@ export async function getWallets() {
 
 export async function syncWallet(wallet) {
   const container = await containerPromise;
-  await waitConnect(CONNECTION_TIMEOUT);
   return await container.eth.wallet.ethSync(wallet.ethAddress);
 }
 
 export async function resolveBalance(wallet) {
   const container = await containerPromise;
-  let walletObject = await container.eth.wallet.ethBalance(wallet.ethAddress);
+  const walletObject = await container.eth.wallet.ethBalance(wallet.ethAddress);
 
   if (walletObject === null ||
     (new Date()).getTime() - walletObject.synced_at.getTime() > BALANCE_EXPIRATION_INTERVAL) {
@@ -34,6 +32,5 @@ export async function resolveBalance(wallet) {
 
 export async function sendMoney(fromAddress, toAddress, amount) {
   const container = await containerPromise;
-  await waitConnect(CONNECTION_TIMEOUT);
   return await container.eth.wallet.ethSend(fromAddress, toAddress, amount);
 }
