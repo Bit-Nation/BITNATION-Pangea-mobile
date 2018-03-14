@@ -6,20 +6,6 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <PanelViewAlert
     status="Test panel status"
-    style={
-      Object {
-        "backgroundColor": "rgba(245, 166, 35, 0.2)",
-        "borderRadius": 8,
-        "flexDirection": "row",
-        "marginBottom": 4,
-        "marginLeft": 0,
-        "marginRight": 0,
-        "marginTop": 4,
-        "overflow": "hidden",
-        "padding": 5,
-        "paddingLeft": 10,
-      }
-    }
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -66,7 +52,7 @@ ShallowWrapper {
             }
           }
         >
-           Test panel status
+          Test panel status
         </Text>,
       ],
       "style": Object {
@@ -113,7 +99,7 @@ ShallowWrapper {
         "props": Object {
           "accessible": true,
           "allowFontScaling": true,
-          "children": " Test panel status",
+          "children": "Test panel status",
           "ellipsizeMode": "tail",
           "style": Object {
             "color": "#F5A623",
@@ -125,7 +111,7 @@ ShallowWrapper {
           },
         },
         "ref": null,
-        "rendered": " Test panel status",
+        "rendered": "Test panel status",
         "type": [Function],
       },
     ],
@@ -170,7 +156,7 @@ ShallowWrapper {
               }
             }
           >
-             Test panel status
+            Test panel status
           </Text>,
         ],
         "style": Object {
@@ -217,7 +203,7 @@ ShallowWrapper {
           "props": Object {
             "accessible": true,
             "allowFontScaling": true,
-            "children": " Test panel status",
+            "children": "Test panel status",
             "ellipsizeMode": "tail",
             "style": Object {
               "color": "#F5A623",
@@ -229,7 +215,7 @@ ShallowWrapper {
             },
           },
           "ref": null,
-          "rendered": " Test panel status",
+          "rendered": "Test panel status",
           "type": [Function],
         },
       ],
