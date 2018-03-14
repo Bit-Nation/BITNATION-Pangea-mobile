@@ -7,6 +7,7 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <Button
     enabled={false}
     onPress={[MockFunction]}
+    style={undefined}
     title=""
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -63,7 +64,6 @@ ShallowWrapper {
         },
         undefined,
       ],
-      "title": "",
     },
     "ref": null,
     "rendered": Object {
@@ -172,7 +172,6 @@ ShallowWrapper {
           },
           undefined,
         ],
-        "title": "",
       },
       "ref": null,
       "rendered": Object {
@@ -251,6 +250,7 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <Button
     enabled={true}
     onPress={[MockFunction]}
+    style={undefined}
     title=""
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -307,7 +307,6 @@ ShallowWrapper {
         },
         undefined,
       ],
-      "title": "",
     },
     "ref": null,
     "rendered": Object {
@@ -416,7 +415,6 @@ ShallowWrapper {
           },
           undefined,
         ],
-        "title": "",
       },
       "ref": null,
       "rendered": Object {
@@ -495,6 +493,7 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <Button
     enabled={true}
     onPress={[Function]}
+    style={undefined}
     title=""
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -551,7 +550,6 @@ ShallowWrapper {
         },
         undefined,
       ],
-      "title": "",
     },
     "ref": null,
     "rendered": Object {
@@ -660,7 +658,6 @@ ShallowWrapper {
           },
           undefined,
         ],
-        "title": "",
       },
       "ref": null,
       "rendered": Object {
@@ -739,6 +736,7 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <Button
     enabled={false}
     onPress={[Function]}
+    style={undefined}
     title=""
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -795,7 +793,6 @@ ShallowWrapper {
         },
         undefined,
       ],
-      "title": "",
     },
     "ref": null,
     "rendered": Object {
@@ -904,7 +901,6 @@ ShallowWrapper {
           },
           undefined,
         ],
-        "title": "",
       },
       "ref": null,
       "rendered": Object {
@@ -983,6 +979,7 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <Button
     enabled={false}
     onPress={[Function]}
+    style={undefined}
     title=""
   >
     <Text
@@ -1038,7 +1035,6 @@ ShallowWrapper {
         },
         undefined,
       ],
-      "title": "",
     },
     "ref": null,
     "rendered": Object {
@@ -1122,7 +1118,6 @@ ShallowWrapper {
           },
           undefined,
         ],
-        "title": "",
       },
       "ref": null,
       "rendered": Object {
@@ -1185,6 +1180,7 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <Button
     enabled={false}
     onPress={[Function]}
+    style={undefined}
     title="Testing title"
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -1241,7 +1237,6 @@ ShallowWrapper {
         },
         undefined,
       ],
-      "title": "Testing title",
     },
     "ref": null,
     "rendered": Object {
@@ -1350,7 +1345,6 @@ ShallowWrapper {
           },
           undefined,
         ],
-        "title": "Testing title",
       },
       "ref": null,
       "rendered": Object {
@@ -1429,6 +1423,7 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <Button
     enabled={true}
     onPress={[Function]}
+    style={undefined}
     title=""
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -1485,7 +1480,6 @@ ShallowWrapper {
         },
         undefined,
       ],
-      "title": "",
     },
     "ref": null,
     "rendered": Object {
@@ -1594,7 +1588,6 @@ ShallowWrapper {
           },
           undefined,
         ],
-        "title": "",
       },
       "ref": null,
       "rendered": Object {
@@ -1673,6 +1666,7 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <Button
     enabled={true}
     onPress={[Function]}
+    style={undefined}
     title=""
   >
     <Text
@@ -1728,7 +1722,6 @@ ShallowWrapper {
         },
         undefined,
       ],
-      "title": "",
     },
     "ref": null,
     "rendered": Object {
@@ -1812,7 +1805,6 @@ ShallowWrapper {
           },
           undefined,
         ],
-        "title": "",
       },
       "ref": null,
       "rendered": Object {
@@ -1875,6 +1867,7 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <Button
     enabled={true}
     onPress={[Function]}
+    style={undefined}
     title="Testing title"
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -1931,7 +1924,6 @@ ShallowWrapper {
         },
         undefined,
       ],
-      "title": "Testing title",
     },
     "ref": null,
     "rendered": Object {
@@ -2040,7 +2032,6 @@ ShallowWrapper {
           },
           undefined,
         ],
-        "title": "Testing title",
       },
       "ref": null,
       "rendered": Object {
