@@ -6,9 +6,15 @@ import {
   findNodeHandle,
 } from 'react-native';
 import PropTypes from 'prop-types';
+
 import styles, { cursorColor } from './styles';
 
-export class PrivateKeyTextInputContainer extends Component {
+/**
+ * Component that renders text input view for private key input process.
+ * @type React.Component
+ */
+class PrivateKeyTextInputContainer extends Component {
+
   constructor(props) {
     super(props);
 
@@ -42,13 +48,37 @@ export class PrivateKeyTextInputContainer extends Component {
 }
 
 PrivateKeyTextInputContainer.propTypes = {
+  /**
+   * @desc Used to identify component among each other.
+   */
   index: PropTypes.number,
+  /**
+   * @desc Text label to be rendered below component. Used to show number of field.
+   */
   label: PropTypes.string,
+  /**
+   * @desc Text value of wrapped text field.
+   */
   value: PropTypes.string,
+  /**
+   * @desc Determines if the field is last. This change behavior of keyboard handling.
+   */
   isLast: PropTypes.bool,
-  onChange: PropTypes.func,
-  onSubmit: PropTypes.func,
+  /**
+   * @desc Determines if text field should be editable.
+   */
   editable: PropTypes.bool,
+  /**
+   * @desc Callback on change text of wrapped text field.
+   */
+  onChange: PropTypes.func,
+  /**
+   * @desc Callback on submit of wrapped text field.
+   */
+  onSubmit: PropTypes.func,
+  /**
+   * @desc Callback on focus of wrapped text field.
+   */
   onFocus: PropTypes.func,
 };
 
