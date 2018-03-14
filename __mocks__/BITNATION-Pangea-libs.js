@@ -1,3 +1,4 @@
+/* eslint-disable */
 /**
  * @return {Promise<{eth: {nation: {create, index, all, joinNation, leaveNation}}}>} Pangea lib's mock
  */
