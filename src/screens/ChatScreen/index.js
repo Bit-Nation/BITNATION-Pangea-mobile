@@ -113,6 +113,10 @@ class ChatScreen extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    this.connection && this.connection.disconnect();
+  }
+
   _createGiftedChatMessageObject(messagesData) {
     let messages = [];
     for (let data of messagesData) {

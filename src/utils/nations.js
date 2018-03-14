@@ -47,7 +47,7 @@ type NationStatus = {
  */
 export function resolveStatus(nation: NationType): NationStatus | null {
   // idInSmartContract only exist when the nation was created
-  if (nation.idInSmartContract === -1) {
+  if (nation.idInSmartContract === -1 && nation.tx === null) {
     return {
       key: 'draft',
       type: 'NONE',
