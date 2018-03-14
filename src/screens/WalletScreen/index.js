@@ -38,8 +38,6 @@ class WalletScreen extends NavigatorComponent {
   }
 
   onDidAppear() {
-    super.onDidAppear();
-
     this.props.updateWalletList();
     this.updateNavigation();
   }
