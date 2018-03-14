@@ -26,6 +26,7 @@ export const getNations = state => state.nations;
 
 /**
  * @desc Synchronize redux state with database.
+ * @return {void}
  */
 export function* syncNations() {
   try {
@@ -40,6 +41,7 @@ export function* syncNations() {
 
 /**
  * @desc Repeat indexing regularly by some period of time.
+ * @return {void}
  */
 export function* startNationIndexingWorker() {
   const pangeaLib = yield call(getPangeaLibrary);
@@ -58,6 +60,11 @@ export function* startNationIndexingWorker() {
   }
 }
 
+
+/**
+ * @desc function generator for nations join saga
+ * @return {void}
+ */
 export function* joinNation() {
   try {
     const pangeaLib = yield call(getPangeaLibrary);
@@ -65,7 +72,6 @@ export function* joinNation() {
     const currentNation = openedNation(nationsState);
     yield call(checkConnection);
     yield call(pangeaLib.eth.nation.joinNation, currentNation);
-    // console.log('joined nation: ', result);
     yield put({ type: CANCEL_LOADING });
     yield put(requestSyncNations());
   } catch (e) {
@@ -75,6 +81,10 @@ export function* joinNation() {
   }
 }
 
+/**
+ * @desc function generator for nations leave saga
+ * @return {void}
+ */
 export function* leaveNation() {
   try {
     const pangeaLib = yield call(getPangeaLibrary);
@@ -82,7 +92,6 @@ export function* leaveNation() {
     const currentNation = openedNation(nationsState);
     yield call(checkConnection);
     yield call(pangeaLib.eth.nation.leaveNation, currentNation);
-    // console.log('leave nation: ', result);
     yield put({ type: CANCEL_LOADING });
     yield put(requestSyncNations());
   } catch (e) {
@@ -92,6 +101,10 @@ export function* leaveNation() {
   }
 }
 
+/**
+ * @desc action watchers for nations saga
+ * @return {void}
+ */
 export default function* watchNationUpdate() {
   yield all([
     yield takeEvery(START_NATIONS_SYNC, syncNations),

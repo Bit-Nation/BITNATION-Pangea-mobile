@@ -1,7 +1,7 @@
 import { Platform } from 'react-native';
 
 /*
-	BITNATION COLORS
+ * BITNATION COLORS
 */
 
 // ========================================
@@ -35,19 +35,20 @@ export const isEmpty = v => !(typeof (v) !== 'undefined' && v);
 // example: convertHex("#FF120AE",0.3)
 // example: convertHex("#FF120AE",30)
 export const convertHex = (hex, opacity) => {
-  hex = hex.replace('#', '');
-  const r = parseInt(hex.substring(0, 2), 16);
-  const g = parseInt(hex.substring(2, 4), 16);
-  const b = parseInt(hex.substring(4, 6), 16);
+  const adjustedHex = hex.replace('#', '');
+  const r = parseInt(adjustedHex.substring(0, 2), 16);
+  const g = parseInt(adjustedHex.substring(2, 4), 16);
+  const b = parseInt(adjustedHex.substring(4, 6), 16);
 
   let result;
   if (isEmpty(opacity)) {
     result = `rgb(${r},${g},${b})`;
   } else {
-    if (opacity > 1) {
-      opacity /= 100;
+    let normalizedOpacity = opacity;
+    if (normalizedOpacity > 1) {
+      normalizedOpacity /= 100;
     }
-    result = `rgba(${r},${g},${b},${opacity})`;
+    result = `rgba(${r},${g},${b},${normalizedOpacity})`;
   }
   return result;
 };
@@ -112,7 +113,6 @@ export default {
 
   // FORMS
   buttonColor: '#1C497E',
-  disabledButtonColor: '#37393C',
   disabledButtonTitleColor: '#5F6D7D',
   // border of a text field
   borderColor: shadeOf(BitnationLightColor, 0.4),
