@@ -62,7 +62,7 @@ class NationDetailsContainer extends NavigatorComponent {
       }, {
         name: 'delete',
         style: 'destructive',
-        onPress: () => this.props.onDeleteDraft(openedNation(this.props).id, () => {
+        onPress: () => this.props.onDeleteDraft(this.props.openedNationId, () => {
           if (this.props.latestError) {
             errorAlert(this.props.latestError);
             return;
@@ -100,7 +100,7 @@ class NationDetailsContainer extends NavigatorComponent {
   };
 
   openNationChat = () => {
-    const id = openedNation(this.props).id;
+    const id = this.props.openedNationId;
     const isBot = false;
 
     this.props.navigator.push({
