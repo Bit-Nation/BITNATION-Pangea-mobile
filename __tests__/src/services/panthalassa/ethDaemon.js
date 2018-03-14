@@ -1,3 +1,4 @@
+/* eslint-disable */
 import ethDaemonImplementation from '../../../../src/services/panthalassa/ethDaemon';
 import config from 'react-native-config';
 

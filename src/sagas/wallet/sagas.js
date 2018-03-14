@@ -3,6 +3,7 @@ import _ from 'lodash';
 
 import { sendMoneyFailed, sendMoneySuccess, walletsListUpdated, walletSyncFailed } from '../../actions/wallet';
 import { getWallets, resolveBalance, sendMoney, syncWallet } from './serviceFunctions';
+import { checkConnection } from '../connection';
 
 export function* sendMoneySaga(action) {
   const state = yield select();
@@ -11,6 +12,7 @@ export function* sendMoneySaga(action) {
   const amount = action.amount;
 
   try {
+    yield call(checkConnection);
     yield call(sendMoney, fromAddress, toAddress, amount);
     yield put(sendMoneySuccess());
   } catch (error) {
@@ -21,6 +23,7 @@ export function* sendMoneySaga(action) {
 
 function* resolveWalletBalance(walletWithoutBalance) {
   try {
+    yield call(checkConnection);
     const wallet = yield call(resolveBalance, walletWithoutBalance);
     console.log(wallet);
     return wallet;
@@ -38,11 +41,17 @@ export function* updateWalletList() {
     const wallets = yield all(_.map(walletsWithoutBalance, wallet => call(resolveWalletBalance, wallet)));
     yield put(walletsListUpdated(wallets));
   } catch (error) {
+    console.log(`Wallet list update failed with error: ${error.toString()}`);
   }
 }
 
 export function* updateWalletBalance(wallet) {
-  yield call(syncWallet, wallet);
-  yield updateWalletList();
+  try {
+    yield call(checkConnection);
+    yield call(syncWallet, wallet);
+    yield updateWalletList();
+  } catch (error) {
+    console.log(`Wallet balance update failed with error: ${error.toString()}`);
+  }
 }
 

@@ -116,7 +116,14 @@ const Screens = {
     label: i18n.t('screens.chat.tabTitle'),
     icon: AssetsImages.TabIcons.chat,
     title: i18n.t('screens.chat.title'),
-    navigatorStyle: hiddenNavigatorStyle,
+    navigatorStyle,
+  },
+  CHAT_NATIONS_SCREEN: {
+    screen: 'Pangea.ChatNationsScreen',
+    label: i18n.t('screens.chat.tabTitle'),
+    icon: AssetsImages.TabIcons.chat,
+    title: '',
+    navigatorStyle,
   },
   NATIONS_SCREEN: {
     screen: 'Pangea.NationsScreen',
