@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { delay } from 'redux-saga';
 import { call, race } from 'redux-saga/effects';
 import { APP_OFFLINE, APP_ONLINE } from 'BITNATION-Pangea-libs/src/events';
