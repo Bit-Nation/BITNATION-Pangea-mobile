@@ -55,8 +55,9 @@ class NationsListScreen extends Component {
           renderItem={(item) => {
             const nation = item.item;
             const nationStatus = resolveStatus(nation);
-            const shouldShowCitizens = nationStatus === null
-              || nationStatus.code === TX_JOB_STATUS_SUCCESS;
+            // const shouldShowCitizens = nationStatus === null
+            //   || nationStatus.code === TX_JOB_STATUS_SUCCESS;
+            const shouldShowCitizens = false;
 
             let statusString = '';
             if (nationStatus !== null) {

@@ -114,7 +114,8 @@ class NationDetailsScreen extends Component {
         <NationActionButton
           iconSource={AssetsImage.Actions.chat}
           title={i18n.t('screens.nations.toolbar.chat')}
-          disable
+          disable={false}
+          onPress={this.props.openNationChat}
         />
         <NationActionButton
           iconSource={AssetsImage.Actions.map}
@@ -245,6 +246,7 @@ NationDetailsScreen.propTypes = {
   leaveNation: PropTypes.func,
   deleteDraft: PropTypes.func,
   submitDraft: PropTypes.func,
+  openNationChat: PropTypes.func,
 };
 
 export default NationDetailsScreen;

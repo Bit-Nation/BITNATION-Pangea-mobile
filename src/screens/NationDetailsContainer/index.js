@@ -99,6 +99,16 @@ class NationDetailsContainer extends NavigatorComponent {
     this.performIfHasWallet(this.props.leaveNation);
   };
 
+  openNationChat = () => {
+    const id = openedNation(this.props).id;
+    const isBot = false;
+
+    this.props.navigator.push({
+      ...screen('CHAT_SCREEN'),
+      passProps: { isBot, id },
+    });
+  }
+
   performIfHasWallet(functionToPerform) {
     if (_.isEmpty(this.props.wallets)) {
       this._showCreatePrivateKeyAlert();
@@ -116,6 +126,7 @@ class NationDetailsContainer extends NavigatorComponent {
         leaveNation={this.onLeaveNation}
         deleteDraft={this._onDeleteDraft}
         submitDraft={this._onSubmitDraft}
+        openNationChat={this.openNationChat}
       />
     );
   }
