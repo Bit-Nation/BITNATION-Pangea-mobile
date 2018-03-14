@@ -32,7 +32,7 @@ export function* updateProfile() {
 
 /**
  * @desc function generator for get profile saga
-  * @return {void}
+ * @return {void}
  */
 export function* getProfile() {
   try {
@@ -50,7 +50,7 @@ export function* getProfile() {
 
 /**
  * @desc action watchers for profile saga
-  * @return {void}
+ * @return {void}
  */
 export default function* watchProfileUpdate() {
   yield takeEvery(REQUEST_PROFILE_UPDATE, updateProfile);
