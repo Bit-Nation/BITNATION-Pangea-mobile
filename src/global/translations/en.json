@@ -311,12 +311,12 @@
         "restoreWallet": "Restore Wallet",
         "createWalletPanel": {
           "title": "$t(screens.wallet.empty.createWallet)",
-          "text": "You need an Ethereum wallet to pay for payments, creating nations, and other useful services.",
+          "text": "You need an Ethereum wallet to make payments, to create nations, and to use other useful services.",
           "button": "$t(screens.wallet.empty.createWallet)"
         },
         "restoreWalletPanel": {
           "title": "$t(screens.wallet.empty.restoreWallet)",
-          "text": "You can restore your wallet if lost or changed your phone. You will need your private key to restore your wallet.",
+          "text": "You can restore your wallet if you lose or change your phone. You will need your private key to restore your wallet.",
           "button": "$t(screens.wallet.empty.restoreWallet)"
         }
       }
@@ -326,8 +326,8 @@
       "tabTitle": "$t(tabbar.profile)",
       "empty": {
         "createProfilePanel": {
-          "title": "Become a world citizen.",
-          "text": "Bitnation is a decentralized, open-source movement, powered by the Bitcoin blockchain 2.0 technology, in an attempt to foster a peer-to-peer voluntary governance system, rather than the current ‘top-down’, ‘one-size-fits-all’ model, restrained by the current nation-state-engineered geographical apartheid, where your quality of life is defined by where you were arbitrarily born.",
+          "title": "Become a World Citizen",
+          "text": "Bitnation is a decentralized, open-source movement powered by blockchain technology. Bitnation offers a peer-to-peer voluntary governance system to compete with the prevailing top-down, one-size-fits-all, geographical apartheid Nation State model wherein your quality of life is arbitrarily defined by where you were born.",
           "button": "Create a User Profile"
         }
       },
@@ -350,9 +350,9 @@
     "createKey": {
       "title": "Create Wallet",
       "introduction": [
-        "To secure your wallet, you first need a \"private key\".",
+        "To secure your wallet, you first need a \"private key.\"",
         "You must write down your private key on paper. This process only takes a few minutes.",
-        "If change your phone, the only way to recover your wallet is by entering your private key!",
+        "If you change your phone, the only way to recover your wallet is by entering your private key!",
         "Your private key protects everything in Bitnation, so save your written private key in a safe place."
       ],
       "instructions": {
@@ -389,7 +389,7 @@
       },
       "success": {
         "instructions": [
-          "Congratulations, you correctly entered your private key.",
+          "Congratulations! You correctly entered your private key.",
           "Now, put your paper with your private key in a safe place."
         ],
         "doneButton": "$t(common.done)"
