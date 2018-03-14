@@ -10,7 +10,7 @@
     "test:e2e:release": "detox test -c ios.sim.release && detox test -c android.emu.release",
     "test:e2e:release:build": "detox build -c ios.sim.release && detox build -c android.emu.release",
     "test:e2e:bitrise:build": "detox build -c ios.sim.release.bitrise && detox build -c android.emu.release.bitrise",
-    "test:e2e:bitrise": "detox test -c ios.sim.release.bitrise && detox test -c android.emu.release.bitrise",
+    "test:e2e:bitrise:android": "detox test -c android.emu.release.bitrise",
     "test:coveralls": "npm run test && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "ios": "flow && node_modules/.bin/react-native run-ios",
     "android": "flow && node_modules/.bin/react-native run-android",
@@ -147,8 +147,8 @@
         "name": "Nexus_5X_API_24"
       },
       "android.emu.release.bitrise": {
-        "binaryPath": "android/app/build/outputs/apk/release/app-release.apk",
-        "build":"cd android && fastlane dev_build && cd ..",
+        "binaryPath": "$BITRISE_APK_PATH",
+        "build":"",
         "type": "android.emulator",
         "name": "Android_ARMv7a_Nougat"
       },
