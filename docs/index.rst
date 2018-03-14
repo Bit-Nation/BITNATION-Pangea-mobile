@@ -10,6 +10,9 @@ Welcome to Pange's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+.. js:autoclass:: MyTestClass
+   :members:
+   :private-members:
 
 
 Indices and tables

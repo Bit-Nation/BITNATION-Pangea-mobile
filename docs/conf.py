@@ -16,6 +16,10 @@
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
+# -- JS doc configuration ----------------------------------------------------
+js_source_path = ['raw_js_src', 'raw_js_src/actions']
+root_for_relative_js_paths = '../raw_js_src'
+primary_domain = 'js'
 
 # -- Project information -----------------------------------------------------
 
@@ -39,7 +43,7 @@ release = u''
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'sphinx.ext.todo',
+    'sphinx.ext.todo', 'sphinx_js',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
