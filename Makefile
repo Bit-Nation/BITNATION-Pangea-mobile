@@ -6,7 +6,7 @@ SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
 SPHINXPROJ    = Pange
 SOURCEDIR     = docs
-BUILDDIR      = build
+BUILDDIR      = docs_build
 
 # Put it first so that "make" without argument is like "make help".
 help:
