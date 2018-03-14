@@ -10,7 +10,6 @@ import styles from './styles';
 import NationActionButton from '../../../components/common/NationActionButton';
 import AssetsImage from '../../../global/AssetsImages';
 import PanelView from '../../../components/common/PanelView';
-import DemoImage from '../../../components/common/DemoImage';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import i18n from '../../../global/i18n';
 import Colors from '../../../global/colors';
@@ -140,7 +139,6 @@ class NationDetailsScreen extends Component {
 
   // Useful Notes:
   // PanelView Props: title = text, messageText = text, style, renderBottom = method, renderAdditionalInfo = method, children = main text of the display
-  // DemoImage overlays a message telling user this is a demonstration
 
   _buildAboutView(nation) {
     return (
