@@ -1,12 +1,21 @@
 import { call, put, select, takeEvery } from 'redux-saga/effects';
 import { cloneableGenerator } from 'redux-saga/utils';
 import watchNationsUpdate, {
-  joinNation, leaveNation, getNations,
-  syncNations, startNationIndexingWorker,
+  joinNation,
+  leaveNation,
+  getNations,
+  syncNations,
+  startNationIndexingWorker,
 } from '../../../src/sagas/nations';
 import {
-  CANCEL_LOADING, REQUEST_JOIN_NATION, REQUEST_LEAVE_NATION, doneSyncNations, doneFetchNations, fetchNationsStarted,
-  START_NATIONS_SYNC, requestSyncNations,
+  CANCEL_LOADING,
+  REQUEST_JOIN_NATION,
+  REQUEST_LEAVE_NATION,
+  doneSyncNations,
+  doneFetchNations,
+  fetchNationsStarted,
+  START_NATIONS_SYNC,
+  requestSyncNations,
 } from '../../../src/actions/nations';
 import { convertFromDatabase, resolveNation } from '../../../src/utils/nations';
 import { getPangeaLibrary } from '../../../src/services/container';
@@ -47,7 +56,8 @@ test('sagas - syncNations', (done) => {
   const iterator = cloneableGenerator(syncNations)();
   expect(iterator.next().value).toEqual(call(getPangeaLibrary));
   expect(iterator.next(pangeaLibrary).value).toEqual(call(pangeaLibrary.eth.nation.all));
-  expect(iterator.next(mockNations).value).toEqual(put(doneSyncNations(mockNations.map(convertFromDatabase))));
+  expect(iterator.next(mockNations).value)
+    .toEqual(put(doneSyncNations(mockNations.map(convertFromDatabase))));
 
   done();
 });
@@ -90,7 +100,10 @@ test('sagas - joinNation', (done) => {
     ],
   };
   expect(iterator.next(mockNations).value).toEqual(call(checkConnection));
-  expect(iterator.next().value).toEqual(call(pangeaLibrary.eth.nation.joinNation, resolveNation(mockNations.nations, mockNations.openedNationId)));
+  expect(iterator.next().value).toEqual(call(
+    pangeaLibrary.eth.nation.joinNation,
+    resolveNation(mockNations.nations, mockNations.openedNationId),
+  ));
 
   // mock success case
   const successIterator = iterator.clone();
@@ -123,7 +136,10 @@ test('sagas - leaveNation', (done) => {
   };
 
   expect(iterator.next(mockNations).value).toEqual(call(checkConnection));
-  expect(iterator.next().value).toEqual(call(pangeaLibrary.eth.nation.leaveNation, resolveNation(mockNations.nations, mockNations.openedNationId)));
+  expect(iterator.next().value).toEqual(call(
+    pangeaLibrary.eth.nation.leaveNation,
+    resolveNation(mockNations.nations, mockNations.openedNationId),
+  ));
 
   // mock success case
   const successIterator = iterator.clone();

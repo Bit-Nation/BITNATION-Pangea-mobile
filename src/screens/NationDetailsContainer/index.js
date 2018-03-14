@@ -62,7 +62,7 @@ class NationDetailsContainer extends NavigatorComponent {
       }, {
         name: 'delete',
         style: 'destructive',
-        onPress: () => this.props.onDeleteDraft(openedNation(this.props).id, () => {
+        onPress: () => this.props.onDeleteDraft(this.props.openedNationId, () => {
           if (this.props.latestError) {
             errorAlert(this.props.latestError);
             return;
@@ -99,6 +99,16 @@ class NationDetailsContainer extends NavigatorComponent {
     this.performIfHasWallet(this.props.leaveNation);
   };
 
+  openNationChat = () => {
+    const id = this.props.openedNationId;
+    const isBot = false;
+
+    this.props.navigator.push({
+      ...screen('CHAT_SCREEN'),
+      passProps: { isBot, id },
+    });
+  }
+
   performIfHasWallet(functionToPerform) {
     if (_.isEmpty(this.props.wallets)) {
       this._showCreatePrivateKeyAlert();
@@ -116,6 +126,7 @@ class NationDetailsContainer extends NavigatorComponent {
         leaveNation={this.onLeaveNation}
         deleteDraft={this._onDeleteDraft}
         submitDraft={this._onSubmitDraft}
+        openNationChat={this.openNationChat}
       />
     );
   }

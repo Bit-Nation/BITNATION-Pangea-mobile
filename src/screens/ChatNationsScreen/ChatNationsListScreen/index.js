@@ -17,9 +17,9 @@ import AssetsImages from '../../../global/AssetsImages';
 class ChatNationsListScreen extends Component {
   render() {
     const nations = this.props.selectedTab === 'ALL_NATIONS' ?
-      this.props.nations
+      _.filter(this.props.nations, nation => nation.idInSmartContract >= 0)
       :
-      _.filter(this.props.nations, nation => _.indexOf(this.props.myNations, nation.id) !== -1);
+      _.filter(this.props.nations, nation => (_.indexOf(this.props.myNations, nation.id) !== -1) && (nation.idInSmartContract >= 0));
     const sortedNations = _.sortBy(nations, nation => nation.nationName);
     const groups = _.groupBy(sortedNations, nation => nation.nationName.charAt(0));
     let sections = _.map(groups, (group, key) => ({

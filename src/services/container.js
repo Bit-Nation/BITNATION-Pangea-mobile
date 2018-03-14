@@ -1,3 +1,4 @@
+/* eslint-disable */
 // @flow
 
 import pangeaLibsFactory from 'BITNATION-Pangea-libs';

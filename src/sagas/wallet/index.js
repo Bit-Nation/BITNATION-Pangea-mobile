@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { all, takeEvery } from 'redux-saga/effects';
 
 import { SEND_MONEY, UPDATE_WALLET_BALANCE, UPDATE_WALLET_LIST } from '../../actions/wallet';

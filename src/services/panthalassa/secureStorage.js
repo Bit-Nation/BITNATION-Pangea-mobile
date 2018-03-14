@@ -1,3 +1,4 @@
+/* eslint-disable */
 // @flow
 
 import SInfo from 'react-native-sensitive-info';

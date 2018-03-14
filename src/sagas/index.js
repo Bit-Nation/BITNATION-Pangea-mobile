@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { all } from 'redux-saga/effects';
 
 import wallet from './wallet';

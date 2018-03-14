@@ -14,7 +14,9 @@ export const RESET_STEPS = 'RESET_STEPS';
 export const EMPTY_WALLET = 'EMPTY_WALLET';
 
 /**
- * @desc Action creator for an action that makes one step of switching testing mode on/off.
+ * @desc Action creator for make step action.
+ * That action is used to toggle activation of testing mode.
+ * Specifically, each toggling requires several (fixed amount of) steps to be made.
  * @returns {MakeStepAction} An action.
  */
 export function makeStep(): MakeStepAction {
@@ -24,7 +26,9 @@ export function makeStep(): MakeStepAction {
 }
 
 /**
- * @desc Action creator for an action that resets steps of switching testing mode on/off.
+ * @desc Action creator for reset steps action.
+ * That action is used to reset activation of testing mode.
+ * Resets number of steps made to initial value.
  * @returns {ResetStepsAction} An action.
  */
 export function resetSteps(): ResetStepsAction {
@@ -34,8 +38,8 @@ export function resetSteps(): ResetStepsAction {
 }
 
 /**
- * @desc Action creator for an action that changes testing flag that means
- * if the wallets list should be considered empty.
+ * @desc Action creator for empty wallet action.
+ * That action is used to toggle walletEmpty prop.
  * @returns {EmptyWalletAction} An action.
  */
 export function emptyWallet(): EmptyWalletAction {

@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import containerPromise from '../../services/container';
 import { compressMnemonic } from '../../utils/key';
 
