@@ -1,1 +1,0 @@
-> This is the mobile client implementation for Pangea. Have a look at the readme in order to setup and development env.
