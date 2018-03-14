@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import containerPromise from '../../services/container';
 import { convertWallets } from '../../utils/wallet';
 import { BALANCE_EXPIRATION_INTERVAL } from '../../global/Constants';
