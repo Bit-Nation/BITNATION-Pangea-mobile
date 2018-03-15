@@ -150,7 +150,7 @@
         "binaryPath": "/Users/vagrant/deploy/app-release.apk",
         "build":"",
         "type": "android.emulator",
-        "name": "Nexus_5X_API_24"
+        "name": "Android_ARMv7a_Nougat"
       },
       "ios.sim.release.bitrise": {
         "binaryPath": "ios/build/Build/Products/Release-iphonesimulator/Pangea.app",
