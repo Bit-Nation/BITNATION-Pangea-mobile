@@ -147,7 +147,7 @@
         "name": "Nexus_5X_API_24"
       },
       "android.emu.release.bitrise": {
-        "binaryPath": "cross-var echo ${$BITRISE_APK_PATH}",
+        "binaryPath": "/Users/vagrant/deploy/app-release.apk",
         "build":"",
         "type": "android.emulator",
         "name": "Android_ARMv7a_Nougat"
