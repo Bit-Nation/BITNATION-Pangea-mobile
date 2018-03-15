@@ -1,4 +1,4 @@
-import MultiSelect from '../../../../src/components/MultiSelect';
+import MultiSelect from '../../../../src/components/MultiSelect/index';
 import React from 'react';
 import renderer from 'react-test-renderer';
 import Colors from '../../../../src/global/colors';
