@@ -46,7 +46,7 @@ type Props = {
   /**
    * @desc Style object to be applied on root view on top of default style.
    */
-  style: any,
+  style?: any,
 }
 
 /**
