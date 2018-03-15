@@ -1,7 +1,8 @@
+// @flow
+
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-
   container: {},
   row: {
     flexDirection: 'row',
@@ -15,7 +16,6 @@ const styles = StyleSheet.create({
   rowInactive: {
     opacity: 0.1,
   },
-
 });
 
 export default styles;
