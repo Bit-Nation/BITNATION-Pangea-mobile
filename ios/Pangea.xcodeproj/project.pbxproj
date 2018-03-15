@@ -1049,7 +1049,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = W63599SJEC;
+						DevelopmentTeam = WF86ZK5LQZ;
 						ProvisioningStyle = Automatic;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
@@ -1786,7 +1786,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = W63599SJEC;
+				DEVELOPMENT_TEAM = WF86ZK5LQZ;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../node_modules/react-native-eth-daemon/ios/Frameworks/**";
 				HEADER_SEARCH_PATHS = (
@@ -1828,7 +1828,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = W63599SJEC;
+				DEVELOPMENT_TEAM = WF86ZK5LQZ;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../node_modules/react-native-eth-daemon/ios/Frameworks/**";
 				HEADER_SEARCH_PATHS = (
