@@ -220,7 +220,6 @@ class NationDetailsScreen extends Component {
   _buildStatusPanel(status) {
     return (
       <PanelViewAlert
-        style={styles.panelViewAlert}
         status={status}
       />
     );
@@ -230,9 +229,7 @@ class NationDetailsScreen extends Component {
     if (nation.joined) {
       return (
         <PanelViewCitizen
-          style={styles.panelViewCitizen}
-          nationName={nation.nationName}
-        />
+          nationName={nation.nationName}/>
       );
     }
   }

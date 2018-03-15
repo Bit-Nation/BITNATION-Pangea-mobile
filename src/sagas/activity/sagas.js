@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { call, put, take, fork } from 'redux-saga/effects';
 import { eventChannel } from 'redux-saga';
 
