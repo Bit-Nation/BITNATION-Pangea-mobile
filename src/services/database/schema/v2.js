@@ -2,7 +2,9 @@
 // Schema v2: Effective from 0.3.3 to Current
 const uString = require('unique-string');
 
-import {TX_JOB_STATUS_PENDING, TX_JOB_TYPE_NATION_CREATE} from '../../../src/queues/transaction';
+// import {TX_JOB_STATUS_PENDING, TX_JOB_TYPE_NATION_CREATE} from '../../../src/queues/transaction';    // Todo
+const TX_JOB_STATUS_PENDING = 200;
+const TX_JOB_TYPE_NATION_CREATE = 'NATION_CREATE';
 
 /**
  * @typedef ProfileType
