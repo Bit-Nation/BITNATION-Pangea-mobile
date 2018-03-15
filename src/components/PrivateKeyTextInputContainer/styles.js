@@ -1,15 +1,17 @@
+// @flow
+
 import { StyleSheet } from 'react-native';
 import Colors from '../../global/colors';
 
 export const cursorColor = Colors.BitnationLightColor;
 
-export default styles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     height: 44,
     flex: 1,
   },
   textInput: {
-    backgroundColor: 'white',
+    backgroundColor: Colors.white,
     color: Colors.BitnationLightColor,
     fontSize: 16,
     paddingTop: 2,
@@ -18,10 +20,11 @@ export default styles = StyleSheet.create({
     height: 24,
   },
   text: {
-    color: '#F1F1F1',
+    color: Colors.privateKeyTextInputLabelColor,
     fontSize: 12,
     textAlign: 'center',
     marginTop: 4,
   },
-
 });
+
+export default styles;

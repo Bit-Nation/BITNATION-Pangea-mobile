@@ -164,6 +164,7 @@ export default {
   disabledBoxColor: '#bcdcff',
   disabledTextColor: '#275284',
   actionButtonColor: '#1c497e',
+  privateKeyTextInputLabelColor: '#F1F1F1',
 
   // NAVIGATOR COLORS (in SCREENS.JS)
   navBarTextColor: 'white',

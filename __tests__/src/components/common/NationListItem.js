@@ -20,8 +20,7 @@ describe('NationListItem tests', () => {
     });
 
     test('Default has onPress', () => {
-      const wrapper = shallow(<NationListItem />);
-      expect(wrapper.instance().props.onPress).toBeDefined();
+      expect(NationListItem.defaultProps.onPress).toBeDefined();
     });
   });
 

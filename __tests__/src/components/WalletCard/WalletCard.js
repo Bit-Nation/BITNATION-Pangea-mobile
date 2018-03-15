@@ -1,9 +1,9 @@
-import WalletCard from '../../../../src/components/WalletCard';
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Images from '../../../../src/global/AssetsImages';
 import { shallow } from 'enzyme';
-import { TouchableOpacity } from 'react-native';
+
+import WalletCard from '../../../../src/components/WalletCard';
+import Images from '../../../../src/global/AssetsImages';
 
 describe('WalletCard component tests', () => {
   test('Rendering', () => {
