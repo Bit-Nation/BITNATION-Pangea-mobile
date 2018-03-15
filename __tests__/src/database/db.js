@@ -1,16 +1,17 @@
 /* eslint-disable */
 
-const sampledbs = require('../sampledb/sampledb');
-const schemata = require('./schemata');
-import database from './db';
 const realm = require('realm');
-const _0Schema = require('./schema/v0.js');
-const _1Schema = require('./schema/v1.js');
-const _2Schema = require('./schema/v2.js');
 const execSync = require('child_process').execSync;
 
-const dbPath = () => 'database/'+Math.random();
+import * as schemata from '../../../src/database/schemata';
+import database from '../../../src/database/db';
+import * as _0Schema from '../../../src/database/schema/v0.js';
+import * as _1Schema from '../../../src/database/schema/v1.js';
+import * as _2Schema from '../../../src/database/schema/v2.js';
+// const sampledbs = require('../sampledb/sampledb');
 
+
+const dbPath = () => 'database/'+Math.random();
 
 describe('write', () => {
     'use strict';
@@ -282,7 +283,7 @@ describe('migrate', () => {
         });
     });
 
-    test('With sampledb', async () => {
-        await sampledbs.BuildSampleDBs();
-    });
+    // test('With sampledb', async () => {
+    //     await sampledbs.BuildSampleDBs();
+    // });
 });

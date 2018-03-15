@@ -18,7 +18,7 @@ export type ProfileType = {
     description: string,
     image: string,
     version: string
-}
+};
 
 export const ProfileSchema = {
     name: 'Profile',
@@ -50,7 +50,7 @@ export type AccountBalanceType = {
     amount: string,
     synced_at: number,
     currency: string
-}
+};
 
 export const AccountBalanceSchema = {
     name: 'AccountBalance',
@@ -78,7 +78,7 @@ export type MessageJobType = {
     text: string,
     version: number,
     created_at: Date
-}
+};
 
 export const MessageJobSchema = {
     name: 'MessageJob',
@@ -116,7 +116,7 @@ export type TransactionJobType = {
     failBody: string,
     status: 'WAITING' | 'DONE' | 'PROCESSING' | 'FAILED',
     version: number
-}
+};
 
 export const TransactionJobSchema = {
     name: 'TransactionJob',
@@ -173,7 +173,7 @@ export type NationType = {
     citizens: number,
     joined: boolean,
     txHash: string
-}
+};
 
 export const NationSchema = {
     name: 'Nation',

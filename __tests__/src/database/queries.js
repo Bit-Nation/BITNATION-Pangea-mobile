@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-import queries from './queries';
+import queries from '../../../src/database/queries';
 
 describe('queries', () => {
     'use strict';
