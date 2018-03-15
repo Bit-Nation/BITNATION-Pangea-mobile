@@ -30,8 +30,6 @@ class NationsScreen extends NavigatorComponent {
   }
 
   onWillAppear() {
-    super.onWillAppear();
-
     this.props.syncNations();
   }
 

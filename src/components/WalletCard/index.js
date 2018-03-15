@@ -1,67 +1,77 @@
-/**
- * @desc Generates a "Card" for display a Wallet on screen with Name, Balance and Send/Receive buttons
- * @type React.Component
- *
- * @param props.nameHeading     {String} Name for the wallet
- * @param props.balance         {String} Balance of the wallet
- * @param props.imagePath       {String} Path to image to be displayed
- * @param props.messageText     {String} Text to be displayed below the wallet
- * @param props.onSendPress     {Button} Button to send ETH transactions
- * @param props.onReceivePress  {Button} Button to receive ETH transactions
- */
+// @flow
 
-import React, { Component } from 'react';
+import React from 'react';
 import {
-  ListView, Text, Image,
-  View, TouchableOpacity,
+  Text,
+  Image,
+  View,
 } from 'react-native';
+
 import styles from './styles';
-import PropTypes from 'prop-types';
 import Images from '../../global/AssetsImages';
 import Button from '../common/Button';
 import i18n from '../../global/i18n';
 
-const WalletCard = props => (
+type Props = {
+  /**
+   * @desc Name for the wallet
+   */
+  nameHeading: string,
+  /**
+   * @desc Balance of the wallet
+   */
+  balance: string,
+  /**
+   * @desc Image to be displayed
+   */
+  imagePath: string,
+  /**
+   * @desc Callback on send money button press
+   */
+  onSendPress: () => void,
+  /**
+   * @desc Callback on receive money button press
+   */
+  onReceivePress: () => void,
+}
+
+/**
+ * @desc Component for rendering wallet details.
+ * @return {React.Component} A component.
+ */
+const WalletCard = ({
+  imagePath, nameHeading, balance, onSendPress, onReceivePress,
+}: Props) => (
   <View style={styles.container}>
 
     <View style={styles.row}>
-      <Image style={styles.icon} source={props.imagePath} resizeMode='contain' />
+      <Image style={styles.icon} source={imagePath} resizeMode='contain' />
 
       <View style={styles.textColumn}>
         <View style={styles.spacer} />
-        <Text style={styles.nameHeading}>{props.nameHeading}</Text>
-        <Text style={styles.nameSubheading}>{props.balance}</Text>
+        <Text style={styles.nameHeading}>{nameHeading}</Text>
+        <Text style={styles.nameSubheading}>{balance}</Text>
         <View style={styles.spacer} />
 
-        <View style={{ flexDirection: 'row', justifyContent: 'flex-start' }}>
-          <Button title={i18n.t('common.send')} onPress={props.onSendPress} style={[styles.button, { marginRight: 8 }]} />
-          <Button title={i18n.t('common.receive')} onPress={props.onReceivePress} style={styles.button} />
+        <View style={styles.buttonsContainer}>
+          <Button title={i18n.t('common.send')} onPress={onSendPress} style={[styles.button, styles.leftButton]} />
+          <Button title={i18n.t('common.receive')} onPress={onReceivePress} style={styles.button} />
           <View style={styles.spacer} />
         </View>
 
         <View style={styles.spacer} />
       </View>
-
     </View>
 
   </View>
 );
 
-WalletCard.propTypes = {
-  imagePath: PropTypes.number,
-  nameHeading: PropTypes.string,
-  nameSubheading: PropTypes.string,
-  onSendPress: PropTypes.func,
-  onReceivePress: PropTypes.func,
-};
-
 WalletCard.defaultProps = {
-  imagePath: 'https://facebook.github.io/react-native/docs/assets/favicon.png',
+  imagePath: Images.ethereumLogo,
   nameHeading: i18n.t('common.ethereum'),
-  nameSubheading: '173324 Enum',
+  balance: '0',
   onSendPress: () => null,
   onReceivePress: () => null,
 };
-
 
 export default WalletCard;

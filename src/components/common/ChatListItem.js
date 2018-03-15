@@ -1,3 +1,5 @@
+// @flow
+
 /**
  * @desc Component that renders Chat Nations list item.
  * @type React.Component
@@ -5,19 +7,41 @@
 
 import React from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
-import PropTypes from 'prop-types';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
 
 import GlobalStyles from '../../global/Styles';
 import AssetsImages from '../../global/AssetsImages';
+
+type Props = {
+  /**
+  * @desc Text to display on item
+  */
+  text: string,
+  /**
+   * @desc Number of participants in the chat to be displayed.
+   */
+  participants: string,
+  /**
+   * @desc Id that will be passed in onPress callback.
+   */
+  id: any,
+  /**
+   * @desc Callback on press item.
+   */
+  onPress: (any) => void,
+  /**
+   * @desc Image resource to be displayed as icon.
+   */
+  itemIcon: number,
+}
 
 const styles = MediaQueryStyleSheet.create({
   ...GlobalStyles,
 });
 
 const ChatListItem = ({
-  text,participants, id, onPress, itemIcon,
-}) => (
+  text, participants, id, onPress, itemIcon,
+}: Props) => (
   <View style={styles.sectionListItemContainer}>
     <TouchableOpacity
       testID='Touchable'
@@ -35,34 +59,6 @@ const ChatListItem = ({
     </TouchableOpacity>
   </View>
 );
-
-ChatListItem.propTypes = {
-  /**
-   * @desc Text to display on item
-   * @type string
-   */
-  text: PropTypes.string,
-  /**
-   * @desc Status of the Nation to display on item
-   * @type string
-   */
-  participants: PropTypes.string,
-  /**
-   * @desc Id that will be passed in onPress callback.
-   * @type object
-   */
-  id: PropTypes.any,
-  /**
-   * @desc Callback on press item.
-   * @type string
-   */
-  onPress: PropTypes.func,
-  /**
-   * @desc Image resource to be displayed as icon.
-   * @type number
-   */
-  itemIcon: PropTypes.number,
-};
 
 ChatListItem.defaultProps = {
   text: '',

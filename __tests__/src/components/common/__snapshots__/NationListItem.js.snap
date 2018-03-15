@@ -7,7 +7,10 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <NationListItem
     id="Test id"
     onPress={[MockFunction]}
+    status={undefined}
+    statusColor="gray"
     text="Test list item"
+    textStyle={undefined}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -73,7 +76,7 @@ ShallowWrapper {
                 "textAlign": "right",
               },
               Object {
-                "color": undefined,
+                "color": "gray",
               },
             ]
           }
@@ -146,7 +149,7 @@ ShallowWrapper {
                   "textAlign": "right",
                 },
                 Object {
-                  "color": undefined,
+                  "color": "gray",
                 },
               ]
             }
@@ -221,7 +224,7 @@ ShallowWrapper {
                 "textAlign": "right",
               },
               Object {
-                "color": undefined,
+                "color": "gray",
               },
             ],
           },
@@ -308,7 +311,7 @@ ShallowWrapper {
                   "textAlign": "right",
                 },
                 Object {
-                  "color": undefined,
+                  "color": "gray",
                 },
               ]
             }
@@ -381,7 +384,7 @@ ShallowWrapper {
                     "textAlign": "right",
                   },
                   Object {
-                    "color": undefined,
+                    "color": "gray",
                   },
                 ]
               }
@@ -456,7 +459,7 @@ ShallowWrapper {
                   "textAlign": "right",
                 },
                 Object {
-                  "color": undefined,
+                  "color": "gray",
                 },
               ],
             },
@@ -501,8 +504,12 @@ ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <NationListItem
+    id={null}
     onPress={[Function]}
+    status={undefined}
+    statusColor="gray"
     text="Test list item"
+    textStyle={undefined}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -568,7 +575,7 @@ ShallowWrapper {
                 "textAlign": "right",
               },
               Object {
-                "color": undefined,
+                "color": "gray",
               },
             ]
           }
@@ -641,7 +648,7 @@ ShallowWrapper {
                   "textAlign": "right",
                 },
                 Object {
-                  "color": undefined,
+                  "color": "gray",
                 },
               ]
             }
@@ -716,7 +723,7 @@ ShallowWrapper {
                 "textAlign": "right",
               },
               Object {
-                "color": undefined,
+                "color": "gray",
               },
             ],
           },
@@ -803,7 +810,7 @@ ShallowWrapper {
                   "textAlign": "right",
                 },
                 Object {
-                  "color": undefined,
+                  "color": "gray",
                 },
               ]
             }
@@ -876,7 +883,7 @@ ShallowWrapper {
                     "textAlign": "right",
                   },
                   Object {
-                    "color": undefined,
+                    "color": "gray",
                   },
                 ]
               }
@@ -951,7 +958,7 @@ ShallowWrapper {
                   "textAlign": "right",
                 },
                 Object {
-                  "color": undefined,
+                  "color": "gray",
                 },
               ],
             },
@@ -996,9 +1003,12 @@ ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <NationListItem
+    id={null}
     onPress={[Function]}
+    status={undefined}
     statusColor="gray"
     text="Test list item"
+    textStyle={undefined}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],

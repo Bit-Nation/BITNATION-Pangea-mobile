@@ -19,6 +19,7 @@
     "valid-jsdoc": 2,
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "jsx-quotes": [2, "prefer-single"],
-    "no-return-assign": [2, "except-parens"]
+    "no-return-assign": [2, "except-parens"],
+    "react/default-props-match-prop-types" : 0
   }
 }

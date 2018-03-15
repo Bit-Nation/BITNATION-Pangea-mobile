@@ -8,7 +8,6 @@ ShallowWrapper {
     balance="Testing balance"
     imagePath={1}
     nameHeading="Testing Press"
-    nameSubheading="173324 Enum"
     onReceivePress={[Function]}
     onSendPress={[Function]}
   />,
@@ -537,8 +536,9 @@ ShallowWrapper {
                 Object {
                   "instance": null,
                   "key": undefined,
-                  "nodeType": "class",
+                  "nodeType": "function",
                   "props": Object {
+                    "children": undefined,
                     "enabled": true,
                     "onPress": [Function],
                     "style": Array [
@@ -561,8 +561,9 @@ ShallowWrapper {
                 Object {
                   "instance": null,
                   "key": undefined,
-                  "nodeType": "class",
+                  "nodeType": "function",
                   "props": Object {
+                    "children": undefined,
                     "enabled": true,
                     "onPress": [Function],
                     "style": Object {
@@ -1133,8 +1134,9 @@ ShallowWrapper {
                   Object {
                     "instance": null,
                     "key": undefined,
-                    "nodeType": "class",
+                    "nodeType": "function",
                     "props": Object {
+                      "children": undefined,
                       "enabled": true,
                       "onPress": [Function],
                       "style": Array [
@@ -1157,8 +1159,9 @@ ShallowWrapper {
                   Object {
                     "instance": null,
                     "key": undefined,
-                    "nodeType": "class",
+                    "nodeType": "function",
                     "props": Object {
+                      "children": undefined,
                       "enabled": true,
                       "onPress": [Function],
                       "style": Object {
@@ -1335,7 +1338,6 @@ exports[`WalletCard component tests Rendering 1`] = `
               ],
             ]
           }
-          title="Send"
         >
           <View
             accessibilityComponentType={undefined}
@@ -1401,7 +1403,6 @@ exports[`WalletCard component tests Rendering 1`] = `
               },
             ]
           }
-          title="Receive"
         >
           <View
             accessibilityComponentType={undefined}
