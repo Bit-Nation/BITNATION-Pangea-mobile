@@ -1,4 +1,3 @@
-import { MediaQueryStyleSheet } from 'react-native-responsive';
 import Colors from './colors';
 import { fontSizeNormalizer, normalWidthMargin, isiPhoneXStatusBar, isiPhoneXTabBar } from '../utils/normalizer';
 
@@ -123,7 +122,8 @@ const styles = {
   },
 
   // Put the large title inside the body of the screen, so it scrolls up and away.
-  // The margins are set in the body container. If the body has no margins (bars that go edge to edge)
+  // The margins are set in the body container.
+  // If the body has no margins (bars that go edge to edge)
   // then use the style below.
   titleBarLarge: {
     height: fontSizeNormalizer(52),
