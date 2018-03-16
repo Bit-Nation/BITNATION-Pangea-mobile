@@ -60,10 +60,10 @@ export const navigatorStyle = {
   statusBarTextColorScheme: 'light',
   statusBarColor: Platform.OS === 'ios' ? Colors.statusBarColorIOS : Colors.statusBarColorOther, // Nativebase variable!
   navBarBackgroundColor: Colors.navBarBackgroundColor,
-  navBarTransparent: Colors.navBarTransparent,
+  navBarTransparent: true,
   navBarBlur: false, // blur is too light
-  navBarTranslucent: Colors.navBarTranslucent,
-  navBarNoBorder: Colors.navBarNoBorder,
+  navBarTranslucent: true,
+  navBarNoBorder: true,
   drawUnderNavBar: true,
   drawUnderStatusBar: false, // Apple says, don't do it. So we don't.
   navBarTextColor: Colors.navBarTextColor,

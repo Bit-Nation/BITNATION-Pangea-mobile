@@ -559,7 +559,7 @@ const styles = {
     height: 44,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: Colors.sectionListItemContainerBkgd,
+    backgroundColor: Colors.sectionListItemContainerBackground,
     marginLeft: 16,
   },
 
