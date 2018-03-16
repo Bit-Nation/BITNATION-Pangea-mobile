@@ -1,18 +1,32 @@
-/**
- * @desc Generates a standard native Switch with a Label at the right
- * @type React.Component
- * @param props.label {String} Text for the label
- * @param props.value {Boolean} State for the switch
- */
+// @flow
 
 import React from 'react';
 import { Switch, View, Text } from 'react-native';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
-import PropTypes from 'prop-types';
 import GlobalStyles from '../../global/Styles';
 import Colors from '../../global/colors';
 
-const SwitchLabeled = ({ onValueChange, value, label }) => {
+type Props = {
+  /**
+   * @desc Value of the Switch.
+   */
+  value?: boolean,
+  /**
+   * @desc Text label at the right of the Switch.
+   */
+  label?: string,
+  /**
+   * @desc Callback to be called on Switch when changes value.
+   */
+  onValueChange?: () => void,
+};
+
+/**
+ * @desc Generates a standard native Switch with a Label at the right
+ * @type {React.Component} A component.
+ */
+
+const SwitchLabeled = ({ onValueChange, value, label }:Props) => {
   const styles = MediaQueryStyleSheet.create({
     ...GlobalStyles,
   });
@@ -31,28 +45,10 @@ const SwitchLabeled = ({ onValueChange, value, label }) => {
   );
 };
 
-SwitchLabeled.propTypes = {
-  /**
-   * @desc Value of the Switch.
-   * @type boolean
-   */
-  value: PropTypes.bool,
-  /**
-   * @desc Text label at the right of the Switch.
-   * @type string
-   */
-  label: PropTypes.string,
-  /**
-   * @desc Callback to be called on Switch when changes value.
-   * @type func
-   */
-  onValueChange: PropTypes.func,
-};
-
 SwitchLabeled.defaultProps = {
   value: false,
   label: '',
-  onValueChange: () => null,
+  onValueChange: () => undefined,
 };
 
 export default SwitchLabeled;
