@@ -1,6 +1,9 @@
+// @flow
+
+import { Platform } from 'react-native';
+
 import AssetsImages from './AssetsImages';
 import Colors from './colors';
-import { Platform } from 'react-native';
 import i18n from './i18n';
 
 // Styles for Navigation Bar
@@ -23,39 +26,6 @@ export const androidNavigationButtons = Platform.OS === 'android' ? {
   }],
 } : {};
 
-// Navigation Bar Style
-/*
-  Documentation:
-
-  navBarTextColor: '#000000', // change the text color of the title (remembered across pushes)
-  navBarTextFontSize: 18, // change the font size of the title
-  navBarTextFontFamily: 'font-name', // Changes the title font
-  navBarBackgroundColor: '#f7f7f7', // change the background color of the nav bar (remembered across pushes)
-  navBarCustomView: 'example.CustomTopBar', // registered component name
-  navBarComponentAlignment: 'center', // center/fill
-  navBarCustomViewInitialProps: {}, // navBar custom component props
-  navBarButtonColor: '#007aff', // Change color of nav bar buttons (eg. the back button) (remembered across pushes)
-  topBarElevationShadowEnabled: false, // (Android - default: true, iOS - default: false). Disables TopBar elevation shadow on Lolipop and above
-  navBarHidden: false, // make the nav bar hidden
-  navBarHideOnScroll: false, // make the nav bar hidden only after the user starts to scroll
-  navBarTranslucent: false, // make the nav bar semi-translucent, works best with drawUnderNavBar:true
-  navBarTransparent: false, // make the nav bar transparent, works best with drawUnderNavBar:true,
-  navBarNoBorder: false, // hide the navigation bar bottom border (hair line). Default false
-  drawUnderNavBar: false, // draw the screen content under the nav bar, works best with navBarTranslucent:true
-  drawUnderTabBar: false, // draw the screen content under the tab bar (the tab bar is always translucent)
-  navBarBlur: false, // blur the entire nav bar, works best with drawUnderNavBar:true
-  tabBarHidden: false, // make the screen content hide the tab bar (remembered across pushes)
-  statusBarHidden: false, // make the status bar hidden regardless of nav bar state
-  statusBarTextColorScheme: 'dark', // text color of status bar, 'dark' / 'light' (remembered across pushes)
-  navBarSubtitleColor: 'red', // subtitle color
-  navBarSubtitleFontFamily: 'font-name', // subtitle font, 'sans-serif-thin' for example
-  navBarSubtitleFontSize: 13, // subtitle font size
-  screenBackgroundColor: 'white', // Default screen color, visible before the actual react view is rendered
-  orientation: 'portrait' // Sets a specific orientation to a modal and all screens pushed to it. Default: 'auto'. Supported values: 'auto', 'landscape', 'portrait'
-  disabledButtonColor: '#ff0000' // chnaged the navigation bar button text color when disabled.
-
- rootBackgroundImageName: '<name of image in Images.xcassets>', // Static while you transition between screens. Works best with screenBackgroundColor: 'transparent'
- */
 export const navigatorStyle = {
   statusBarTextColorScheme: 'light',
   statusBarColor: Platform.OS === 'ios' ? Colors.statusBarColorIOS : Colors.statusBarColorOther, // Nativebase variable!
@@ -211,6 +181,11 @@ const Screens = {
 
 };
 
-export function screen(name) {
+/**
+ * @desc Returns and object that represents a screen in React Native Navigation library.
+ * @param {string} name Name of the screen. Check Screens constant above for possible names.
+ * @return {Object} A screen object.
+ */
+export function screen(name: string): Object {
   return { ...Screens[name] };
 }
