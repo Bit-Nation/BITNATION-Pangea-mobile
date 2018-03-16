@@ -1,40 +1,34 @@
-import Colors, { isEmpty, convertHex } from '../../../src/global/colors';
+import Color from 'color';
 
-test('isEmpty', () => {
-  expect(isEmpty(undefined)).toBe(true);
-  expect(isEmpty(null)).toBe(true);
-  expect(isEmpty(1)).toBe(false);
-  expect(isEmpty(false)).toBe(true);
-  expect(isEmpty('undefined')).toBe(false);
-  expect(isEmpty('null')).toBe(false);
-  expect(isEmpty({})).toBe(false);
-});
+import Colors, { convertHex } from '../../../src/global/colors';
+
+const expectColorsEquality = (lhs, rhs) => {
+  expect(Color(lhs).rgb()).toEqual(Color(rhs).rgb());
+};
 
 test('convert hex to rgba', () => {
-  expect(convertHex('#FF120AE')).toBe('rgb(255,18,10)');
-  expect(convertHex('#FF120AE', 0.3)).toBe('rgba(255,18,10,0.3)');
-  expect(convertHex('#FF120AE', 30)).toBe('rgba(255,18,10,0.3)');
+  expectColorsEquality(convertHex('#FF120A'), 'rgb(255,18,10)');
+  expectColorsEquality(convertHex('#FF120A', 0.3), 'rgba(255,18,10,0.3)');
 });
 
 test('shadeOf', () => {
-  let rgbValue = convertHex('#12CCAA');
-  expect(Colors.shadeOf('#12CCAA')).toBe(rgbValue);
-  rgbValue = convertHex('#12CCAA', 0.2);
-  expect(Colors.shadeOf('#12CCAA', 0.2)).toBe(rgbValue);
-  rgbValue = convertHex('#12CCAA', 50);
-  expect(Colors.shadeOf('#12CCAA', 50)).toBe(rgbValue);
+  expectColorsEquality(Colors.shadeOf('#12CCAA'), '#12CCAA');
+  expectColorsEquality(Colors.shadeOf('#12CCAA', 0.2), 'rgba(18,204,170,0.2)');
+  expectColorsEquality(Colors.shadeOf('#12CCAA', 0.5), 'rgba(18,204,170,0.5)');
 });
 
 test('shadeOfBitnationColor', () => {
-  let rgbValue = convertHex(Colors.BitnationColor);
-  expect(Colors.shadeOfBitnationColor()).toBe(rgbValue);
-  rgbValue = convertHex(Colors.BitnationColor, 30);
-  expect(Colors.shadeOfBitnationColor(30)).toBe(rgbValue);
+  expectColorsEquality(Colors.shadeOfBitnationColor(), Colors.BitnationColor);
+  expectColorsEquality(
+    Colors.shadeOfBitnationColor(0.3),
+    Colors.shadeOf(Colors.BitnationColor, 0.3),
+  );
 });
 
 test('shadeOfBitnationLightColor', () => {
-  let rgbValue = convertHex(Colors.BitnationLightColor);
-  expect(Colors.shadeOfBitnationLightColor()).toBe(rgbValue);
-  rgbValue = convertHex(Colors.BitnationLightColor, 30);
-  expect(Colors.shadeOfBitnationLightColor(30)).toBe(rgbValue);
+  expectColorsEquality(Colors.shadeOfBitnationLightColor(), Colors.BitnationLightColor);
+  expectColorsEquality(
+    Colors.shadeOfBitnationLightColor(0.3),
+    Colors.shadeOf(Colors.BitnationLightColor, 0.3),
+  );
 });

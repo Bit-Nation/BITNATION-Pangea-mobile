@@ -1,3 +1,5 @@
+// @flow
+
 import i18n from 'i18next';
 
 const en = require('./translations/en');

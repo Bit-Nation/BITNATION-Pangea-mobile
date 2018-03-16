@@ -71,6 +71,7 @@
     "babel-eslint": "^8.2.2",
     "babel-jest": "22.0.3",
     "babel-preset-react-native": "4.0.0",
+    "color": "^3.0.0",
     "coveralls": "^3.0.0",
     "documentation": "^5.3.5",
     "enzyme": "^3.3.0",
