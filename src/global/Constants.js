@@ -1,3 +1,5 @@
+// @flow
+
 export const KEY_PAGE_ROW_COUNT = 4;
 export const KEY_PAGE_COUNT = 2;
 export const KEY_COLUMN_COUNT = 3;
