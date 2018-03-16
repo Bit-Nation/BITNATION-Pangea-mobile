@@ -31,12 +31,4 @@ describe('ChatNationsScreen', () => {
   test('requires navigator prop', () => {
     expect(chatScreen.props().navigator).toBeDefined();
   });
-
-  test('initialization', () => {
-    // @todo This won't be true, since propsMock object is not passed directly to component, but it's copy is.
-    // @todo So, this function won't be called on original object.
-    // @todo Probably, you can check that in beforeEach as a post-condition of initialization.
-    expect(propsMock.navigator.setButtons).toBeCalled();
-    expect(propsMock.fetchNations).toBeCalled();
-  });
 });
