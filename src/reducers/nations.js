@@ -1,28 +1,47 @@
+// @flow
+import _ from 'lodash';
+
 import {
+  type Action,
+  type NationTab,
   SWITCH_NATIONS_TAB,
   OPEN_NATION,
   DONE_FETCH_NATIONS,
   CANCEL_LOADING,
-  START_NATIONS_FETCH,
+  NATIONS_FETCH_STARTED,
   REQUEST_JOIN_NATION,
-  REQUEST_LEAVE_NATION,
+  REQUEST_LEAVE_NATION, DONE_SYNC_NATIONS,
 } from '../actions/nations';
-import { resolveNation, resolveStatus } from '../utils/nations';
+import type { NationType, NationIdType, EditingNationType } from '../types/Nation';
+import { resolveNation } from '../utils/nations';
 
-export const ALL_NATIONS = 0;
-export const MY_NATIONS = 1;
+type State = {
+  +nations: Array<NationType>,
+  +myNationIds: Array<NationIdType>,
+  +searchString: string | null,
+  +selectedTab: NationTab,
+  +openedNationId: NationIdType | null,
+  +creatingNation: EditingNationType | null,
+  +inProgress: boolean,
+}
 
-export const initialState = {
+export const initialState: State = {
   nations: [],
-  myNations: [],
+  myNationIds: [],
   searchString: null,
-  selectedTab: ALL_NATIONS,
+  selectedTab: 'ALL_NATIONS',
   openedNationId: null,
   creatingNation: null,
   inProgress: false,
 };
 
-export default function (state = initialState, action) {
+/**
+ * @desc Nations reducer.
+ * @param {State} state Current state.
+ * @param {Action} action Performed action.
+ * @returns {State} Next state.
+ */
+export default (state: State = initialState, action: Action): State => {
   switch (action.type) {
     case SWITCH_NATIONS_TAB:
       return {
@@ -34,22 +53,25 @@ export default function (state = initialState, action) {
         ...state,
         openedNationId: action.nationId,
       };
-    case START_NATIONS_FETCH:
+    case NATIONS_FETCH_STARTED:
       return {
         ...state,
         inProgress: true,
       };
-    case DONE_FETCH_NATIONS:
-      const myNations = [];
-      action.payload.map((nation) => {
-        if (nation.joined) {
-          myNations.push(nation);
-        }
-      });
+    case DONE_SYNC_NATIONS: {
+      const myNationIds = _(action.payload)
+        .filter(nation => nation.joined)
+        .map(nation => nation.id)
+        .value();
       return {
         ...state,
         nations: action.payload,
-        myNations,
+        myNationIds,
+      };
+    }
+    case DONE_FETCH_NATIONS:
+      return {
+        ...state,
         inProgress: false,
       };
     case REQUEST_JOIN_NATION:
@@ -67,9 +89,14 @@ export default function (state = initialState, action) {
         ...state,
         inProgress: false,
       };
+    default:
+      return state;
   }
-  return state;
-}
+};
 
-export const openedNation = state => resolveNation(state.nations, state.openedNationId);
-export const isDraft = nation => resolveStatus(nation) === 'draft';
+export const openedNation = (state: State): NationType | null => {
+  if (state.openedNationId !== null) {
+    return resolveNation(state.nations, state.openedNationId);
+  }
+  return null;
+};

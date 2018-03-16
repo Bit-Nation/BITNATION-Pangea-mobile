@@ -9,9 +9,10 @@ import { Alert } from 'react-native';
 import i18n from '../../global/i18n';
 import Colors from '../../global/colors';
 import { deleteNationDraft, startNationEditing, submitNation } from '../../actions/modifyNation';
-import { isDraft, openedNation } from '../../reducers/nations';
+import { openedNation } from '../../reducers/nations';
 import NavigatorComponent from '../../components/common/NavigatorComponent';
 import { alert, errorAlert } from '../../global/alerts';
+import { nationIsDraft } from '../../utils/nations';
 
 const EDIT_BUTTON = 'EDIT_BUTTON';
 
@@ -61,7 +62,7 @@ class NationDetailsContainer extends NavigatorComponent {
       }, {
         name: 'delete',
         style: 'destructive',
-        onPress: () => this.props.onDeleteDraft(openedNation(this.props).id, () => {
+        onPress: () => this.props.onDeleteDraft(this.props.openedNationId, () => {
           if (this.props.latestError) {
             errorAlert(this.props.latestError);
             return;
@@ -98,6 +99,16 @@ class NationDetailsContainer extends NavigatorComponent {
     this.performIfHasWallet(this.props.leaveNation);
   };
 
+  openNationChat = () => {
+    const id = this.props.openedNationId;
+    const isBot = false;
+
+    this.props.navigator.push({
+      ...screen('CHAT_SCREEN'),
+      passProps: { isBot, id },
+    });
+  }
+
   performIfHasWallet(functionToPerform) {
     if (_.isEmpty(this.props.wallets)) {
       this._showCreatePrivateKeyAlert();
@@ -115,6 +126,7 @@ class NationDetailsContainer extends NavigatorComponent {
         leaveNation={this.onLeaveNation}
         deleteDraft={this._onDeleteDraft}
         submitDraft={this._onSubmitDraft}
+        openNationChat={this.openNationChat}
       />
     );
   }
@@ -128,7 +140,13 @@ NationDetailsContainer.PropTypes = {
 const mapStateToProps = state => ({
   ...state.nations,
   ...state.wallet,
-  isDraft: isDraft(openedNation(state.nations) || {}),
+  isDraft: (() => {
+    const nation = openedNation(state.nations);
+    if (nation === null || nation === undefined) {
+      return true;
+    }
+    return nationIsDraft(nation);
+  })(),
 });
 
 const mapDispatchToProps = dispatch => ({

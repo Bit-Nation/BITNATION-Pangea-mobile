@@ -10,7 +10,6 @@ import styles from './styles';
 import NationActionButton from '../../../components/common/NationActionButton';
 import AssetsImage from '../../../global/AssetsImages';
 import PanelView from '../../../components/common/PanelView';
-import DemoImage from '../../../components/common/DemoImage';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import i18n from '../../../global/i18n';
 import Colors from '../../../global/colors';
@@ -19,10 +18,13 @@ import { openedNation } from '../../../reducers/nations';
 import PanelViewAlert from '../../../components/common/PanelViewAlert';
 import PanelViewCitizen from '../../../components/common/PanelViewCitizen';
 import { nationIsValid, resolveStatus } from '../../../utils/nations';
+import pangeaLibs from '../../../services/container';
 
 class NationDetailsScreen extends Component {
+
   render() {
     const nation = openedNation(this.props);
+    console.log('nation opened: ', nation);
 
     if (!nation) {
       this.props.navigator.pop();
@@ -30,6 +32,7 @@ class NationDetailsScreen extends Component {
     }
 
     const status = resolveStatus(nation);
+    const statusDescription = (status !== null ? i18n.ifExists(`screens.nationDetails.statusDescription.${status.key}`) : '');
 
     return (
       <View style={styles.screenContainer}>
@@ -40,12 +43,11 @@ class NationDetailsScreen extends Component {
           <View style={styles.titleContainer}>
             <View style={styles.titleBarLarge}>
               <Text style={styles.largeTitle}>{nation.nationName}</Text>
-              {console.log('joined nation: ', nation.joined)}
             </View>
           </View>
 
           <ScrollView>
-            {status !== 'draft' && this._buildStatusPanel(i18n.t(`screens.nationDetails.statusDescription.${status}`))}
+            {statusDescription !== '' && this._buildStatusPanel(statusDescription)}
 
             {this._buildAboutView(nation)}
             {/*  Will show Panel of Citizenship if nation.joinend == true */}
@@ -54,17 +56,42 @@ class NationDetailsScreen extends Component {
             {this._buildFactsView(nation)}
           </ScrollView>
         </View>
-        {this._buildTabBar(nation.joined, nation.idInSmartContract >= 0)}
+        {this._buildTabBar()}
       </View>
     );
   }
 
-  _buildTabBar(joined, created) {
+  _disableJoinButton(nation) {
+    if (nation.tx && nation.tx.status === 200) {
+      return true;
+    }
+
+    if (nation.joined === true) {
+      return true;
+    }
+
+    return false;
+  }
+
+  _disableLeaveButton(nation) {
+    if (nation.tx && nation.tx.status === 200) {
+      return true;
+    }
+
+    if (nation.joined === false) {
+      return true;
+    }
+
+    return false;
+  }
+
+  _buildTabBar() {
     const nation = openedNation(this.props);
 
     if (this.props.isDraft) {
       return (
         <View style={styles.fakeBottomBar}>
+
           <NationActionButton
             iconSource={AssetsImage.Actions.delete}
             title={i18n.t('screens.nations.toolbar.delete')}
@@ -80,12 +107,14 @@ class NationDetailsScreen extends Component {
         </View>
       );
     }
+
     return (
       <View style={styles.fakeBottomBar}>
         <NationActionButton
           iconSource={AssetsImage.Actions.chat}
           title={i18n.t('screens.nations.toolbar.chat')}
-          disable
+          disable={false}
+          onPress={this.props.openNationChat}
         />
         <NationActionButton
           iconSource={AssetsImage.Actions.map}
@@ -95,13 +124,13 @@ class NationDetailsScreen extends Component {
         <NationActionButton
           iconSource={AssetsImage.Actions.join}
           title={i18n.t('screens.nations.toolbar.join')}
-          disable={joined || !created}
+          disable={this._disableJoinButton(nation)}
           onPress={this.props.joinNation}
         />
         <NationActionButton
           iconSource={AssetsImage.Actions.leave}
           title={i18n.t('screens.nations.toolbar.leave')}
-          disable={!joined}
+          disable={this._disableLeaveButton(nation)}
           onPress={this.props.leaveNation}
         />
       </View>
@@ -110,7 +139,6 @@ class NationDetailsScreen extends Component {
 
   // Useful Notes:
   // PanelView Props: title = text, messageText = text, style, renderBottom = method, renderAdditionalInfo = method, children = main text of the display
-  // DemoImage overlays a message telling user this is a demonstration
 
   _buildAboutView(nation) {
     return (
@@ -192,7 +220,6 @@ class NationDetailsScreen extends Component {
   _buildStatusPanel(status) {
     return (
       <PanelViewAlert
-        style={styles.panelViewAlert}
         status={status}
       />
     );
@@ -202,9 +229,7 @@ class NationDetailsScreen extends Component {
     if (nation.joined) {
       return (
         <PanelViewCitizen
-          style={styles.panelViewCitizen}
-          nationName={nation.nationName}
-        />
+          nationName={nation.nationName}/>
       );
     }
   }
@@ -216,6 +241,7 @@ NationDetailsScreen.propTypes = {
   leaveNation: PropTypes.func,
   deleteDraft: PropTypes.func,
   submitDraft: PropTypes.func,
+  openNationChat: PropTypes.func,
 };
 
 export default NationDetailsScreen;

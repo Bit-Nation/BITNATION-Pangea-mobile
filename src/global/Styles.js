@@ -1,4 +1,3 @@
-import { MediaQueryStyleSheet } from 'react-native-responsive';
 import Colors from './colors';
 import { fontSizeNormalizer, normalWidthMargin, isiPhoneXStatusBar, isiPhoneXTabBar } from '../utils/normalizer';
 
@@ -123,7 +122,8 @@ const styles = {
   },
 
   // Put the large title inside the body of the screen, so it scrolls up and away.
-  // The margins are set in the body container. If the body has no margins (bars that go edge to edge)
+  // The margins are set in the body container.
+  // If the body has no margins (bars that go edge to edge)
   // then use the style below.
   titleBarLarge: {
     height: fontSizeNormalizer(52),
@@ -539,7 +539,7 @@ const styles = {
   // e.g. NationListItemState Text
   listItemTextState: {
     ...defaultTextStyles.body,
-    color: Colors.listItemTextState,
+    color: Colors.listItemTextState.default,
     textAlign: 'right',
     marginRight: 16,
   },
@@ -559,7 +559,7 @@ const styles = {
     height: 44,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: Colors.sectionListItemContainerBkgd,
+    backgroundColor: Colors.sectionListItemContainerBackground,
     marginLeft: 16,
   },
 
@@ -590,6 +590,12 @@ const styles = {
   sectionListDisclosure: {
     marginRight: 16,
     width: 8,
+    height: 15,
+  },
+
+  sectionListSignal: {
+    marginRight: 14,
+    width: 20,
     height: 15,
   },
 

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 
 import NationsListScreen from './NationsListScreen';
-import { switchNationTab, openNation, requestFetchNations } from '../../actions/nations';
+import { switchNationTab, openNation, requestSyncNations } from '../../actions/nations';
 import { screen } from '../../global/Screens';
 import { resolveNation } from '../../utils/nations';
 import Colors from '../../global/colors';
@@ -30,9 +30,7 @@ class NationsScreen extends NavigatorComponent {
   }
 
   onWillAppear() {
-    super.onWillAppear();
-
-    this.props.fetchNations();
+    this.props.syncNations();
   }
 
   onNavBarButtonPress(id) {
@@ -88,13 +86,13 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   onSelectTab(index) {
-    dispatch(switchNationTab(index));
+    dispatch(switchNationTab(index === 0 ? 'ALL_NATIONS' : 'MY_NATIONS'));
   },
   openNation(id) {
     dispatch(openNation(id));
   },
-  fetchNations() {
-    dispatch(requestFetchNations());
+  syncNations() {
+    dispatch(requestSyncNations());
   },
   startNationCreation() {
     dispatch(startNationCreation());

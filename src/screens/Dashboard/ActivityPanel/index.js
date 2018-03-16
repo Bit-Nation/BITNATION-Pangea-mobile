@@ -30,7 +30,7 @@ export default class ActivityPanel extends Component {
           <FlatList
             renderItem={(item) => {
               const message = item.item;
-              const messageText = message.interpret ? i18n.t(message.msg) : message.msg;
+              const messageText = message.interpret ? i18n.t(`activityLog.${message.msg}`, JSON.parse(message.params)) : message.msg;
               return (<Text style={styles.listItemText}>{messageText}</Text>);
             }}
             keyExtractor={item => item.id}

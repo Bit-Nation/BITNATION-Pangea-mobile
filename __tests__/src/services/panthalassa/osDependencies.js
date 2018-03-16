@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { NativeModules } from 'react-native';
 import osDeps from '../../../../src/services/panthalassa/osDependencies';
 

@@ -1,3 +1,7 @@
+// Disable eslint since it is a third party component.
+// It's copied over directly only because we need to adjust some styles.
+/* eslint-disable */
+
 /**
  * @desc Generates a customized Single/Multiselect component used in Create a Nation
  * @type React.Component
