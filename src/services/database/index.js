@@ -18,7 +18,7 @@ export default function* (customDbPath: string) {
 
   let nextSchemaIndex = Realm.schemaVersion(databasePath);
 
-  while (nextSchemaIndex < schemas.length) {
+  while (nextSchemaIndex < schemas.length - 1) {
     nextSchemaIndex += 1;
     const schema = schemas[nextSchemaIndex];
     const migratedRealm = yield new Realm({
@@ -31,10 +31,9 @@ export default function* (customDbPath: string) {
   }
 
   const schema = schemas[schemas.length - 1];
-
   yield Realm.open({
     path: databasePath,
-    schema: schema.schemata,
+    schema: schema.schema,
     schemaVersion: schema.schemaVersion,
     migration: schema.migration,
   });

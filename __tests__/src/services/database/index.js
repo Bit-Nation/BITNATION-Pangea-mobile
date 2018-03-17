@@ -4,25 +4,31 @@ const randomDbPath = () => `database/${Math.random()}`;
 const Realm = require('realm');
 
 describe('db', () => {
-  test('default path', () => {
+  test('default path', (done) => {
     const databaseGenerator = db();
 
-    const realmInstance = databaseGenerator.next().value;
+    const realmPromise = databaseGenerator.next().value;
 
-    // Last element of the realm path should be "pangea"
-    // since we didn't pass in another path to the db generator
-    expect(realmInstance.path.split('/').slice(-1)[0]).toEqual('pangea');
+    realmPromise
+      .then((realm) => {
+        // Last element of the realm path should be "pangea"
+        // since we didn't pass in another path to the db generator
+        expect(realm.path.split('/').slice(-1)[0]).toEqual('pangea');
+        done();
+      })
+      .catch(done.fail);
   });
   test('custom path', () => {
-    const databaseGenerator = db('database/i_am_the_database_path');
+    const id = Math.random();
+    const databaseGenerator = db(`database/${id}`);
 
     const realmInstance = databaseGenerator.next().value;
 
     // Last element of the realm path should be
     // "i_am_the_database_path" since we passed in a custom path
-    expect(realmInstance.path.split('/').slice(-1)[0]).toEqual('i_am_the_database_path');
+    expect(realmInstance.path.split('/').slice(-1)[0]).toEqual(id.toString());
   });
-  test('open and migrate process', () => {
+  test('open and migrate process', (done) => {
     const dbPath = randomDbPath();
     const databaseGenerator = db(dbPath);
 
@@ -33,8 +39,19 @@ describe('db', () => {
     // Realm need to be passed in so that it can be closed
     const realm1 = databaseGenerator.next(realm0).value;
     expect(Realm.schemaVersion(dbPath)).toBe(1);
+
     // Realm need to be passed in so that it can be closed
-    databaseGenerator.next(realm1);
+    const realm2 = databaseGenerator.next(realm1).value;
     expect(Realm.schemaVersion(dbPath)).toBe(2);
+
+    // The last yield will return the realm open promise
+    databaseGenerator
+      .next(realm2)
+      .value
+      .then((realm) => {
+        expect(Realm.schemaVersion(dbPath)).toBe(2);
+        done();
+      })
+      .catch(done.fail);
   });
 });
