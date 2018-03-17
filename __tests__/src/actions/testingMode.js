@@ -8,7 +8,6 @@ import {
 } from '../../../src/actions/testingMode';
 
 describe('testing mode action creators', () => {
-
   test('makeStep', () => {
     expect(makeStep()).toEqual({
       type: MAKE_STEP,
@@ -26,5 +25,4 @@ describe('testing mode action creators', () => {
       type: EMPTY_WALLET,
     });
   });
-
 });

@@ -1,4 +1,11 @@
-import { startUserCreating, startUserEditing, changeEditingUser, setUserProfile, cancelUserEditing, doneUserEditing, requestProfileUpdate, getUserProfile } from '../../../src/actions/profile';
+import {
+  startUserCreating,
+  startUserEditing,
+  changeEditingUser,
+  setUserProfile,
+  cancelUserEditing,
+  doneUserEditing,
+} from '../../../src/actions/profile';
 import reducer, { emptyProfile, initialState } from '../../../src/reducers/profile';
 
 test('reducer - user profile creation', (done) => {
