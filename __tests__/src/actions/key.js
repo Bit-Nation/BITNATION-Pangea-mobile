@@ -19,7 +19,6 @@ import {
 import { KEY_LENGTH } from '../../../src/global/Constants';
 
 describe('key action creators', () => {
-
   const mockMnemonic = new Array(KEY_LENGTH).fill('abc');
 
   test('createPrivateKey', () => {
@@ -77,5 +76,4 @@ describe('key action creators', () => {
       mnemonic: mockMnemonic,
     });
   });
-
 });

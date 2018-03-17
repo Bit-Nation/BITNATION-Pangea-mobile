@@ -4,15 +4,12 @@ import {
   changeMnemonicValid,
   createPrivateKey,
   mnemonicCreated,
-  removeAllPrivateKeys,
   removePrivateKey,
-  savePrivateKey,
   validateEnteredMnemonic,
 } from '../../../src/actions/key';
 import { KEY_LENGTH } from '../../../src/global/Constants';
 
 describe('key reducer action handling', () => {
-
   const mockMnemonic = new Array(KEY_LENGTH).fill('abc');
 
   test('createPrivateKey', () => {
@@ -83,5 +80,4 @@ describe('key reducer action handling', () => {
       testSetToValue(false);
     });
   });
-
 });
