@@ -1,8 +1,9 @@
+// @flow
+
 import { StyleSheet } from 'react-native';
-import { Dimensions, } from 'react-native';
 import Colors from '../../global/colors';
 
-export default styles = StyleSheet.create({
+const styles = StyleSheet.create({
 
   container: {
     height: 130,
@@ -43,7 +44,13 @@ export default styles = StyleSheet.create({
     height: 25,
     borderRadius: 14,
     width: 80,
-
+  },
+  buttonsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+  },
+  leftButton: {
+    marginRight: 8,
   },
   messageText: {
     color: Colors.BitnationLightColor,
@@ -52,3 +59,5 @@ export default styles = StyleSheet.create({
   },
 
 });
+
+export default styles;

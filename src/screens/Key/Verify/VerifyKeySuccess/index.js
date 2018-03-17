@@ -22,7 +22,6 @@ const paragraphs = [
 ];
 
 class VerifyKeySuccess extends KeyBaseScreen {
-
   onNextButtonPressed() {
     this.props.savePrivateKey();
     this.props.navigator.dismissModal();
@@ -31,16 +30,17 @@ class VerifyKeySuccess extends KeyBaseScreen {
   render() {
     return (
       <View style={styles.screenContainer}>
-        <BackgroundImage/>
-        <FakeNavigationBar/>
+        <BackgroundImage />
+        <FakeNavigationBar />
 
         <View style={styles.bodyContainer}>
-          <PanelView style={styles.panelViewTransparent}
-                     childrenContainerStyle={{ flex: 0, }}
-                     buttonTitle={i18n.t('screens.verifyKey.success.doneButton')}
-                     onButtonClick={() => this.onNextButtonPressed()}
+          <PanelView
+            style={styles.panelViewTransparent}
+            childrenContainerStyle={{ flex: 0 }}
+            buttonTitle={i18n.t('screens.verifyKey.success.doneButton')}
+            onButtonClick={() => this.onNextButtonPressed()}
           >
-            <BodyParagraphs paragraphs={i18n.t('screens.verifyKey.success.instructions')}/>
+            <BodyParagraphs paragraphs={i18n.t('screens.verifyKey.success.instructions')} />
           </PanelView>
 
         </View>

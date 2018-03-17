@@ -5,22 +5,8 @@ ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <PanelViewCitizen
+    nationName=""
     status="Test of Nation Name"
-    style={
-      Object {
-        "backgroundColor": "rgba(255,255,255,0.2)",
-        "borderRadius": 8,
-        "flexDirection": "row",
-        "justifyContent": "space-between",
-        "marginBottom": 4,
-        "marginLeft": 0,
-        "marginRight": 0,
-        "marginTop": 4,
-        "overflow": "hidden",
-        "padding": 7,
-        "paddingLeft": 10,
-      }
-    }
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -50,7 +36,9 @@ ShallowWrapper {
             }
           }
         >
-          You are citizen of  undefined
+          You are citizen of
+           
+          
         </Text>,
         <Image
           source={1}
@@ -85,7 +73,11 @@ ShallowWrapper {
         "props": Object {
           "accessible": true,
           "allowFontScaling": true,
-          "children": "You are citizen of  undefined",
+          "children": Array [
+            "You are citizen of",
+            " ",
+            "",
+          ],
           "ellipsizeMode": "tail",
           "style": Object {
             "color": "#FFFFFF",
@@ -97,7 +89,11 @@ ShallowWrapper {
           },
         },
         "ref": null,
-        "rendered": "You are citizen of  undefined",
+        "rendered": Array [
+          "You are citizen of",
+          " ",
+          "",
+        ],
         "type": [Function],
       },
       Object {
@@ -140,7 +136,9 @@ ShallowWrapper {
               }
             }
           >
-            You are citizen of  undefined
+            You are citizen of
+             
+            
           </Text>,
           <Image
             source={1}
@@ -175,7 +173,11 @@ ShallowWrapper {
           "props": Object {
             "accessible": true,
             "allowFontScaling": true,
-            "children": "You are citizen of  undefined",
+            "children": Array [
+              "You are citizen of",
+              " ",
+              "",
+            ],
             "ellipsizeMode": "tail",
             "style": Object {
               "color": "#FFFFFF",
@@ -187,7 +189,11 @@ ShallowWrapper {
             },
           },
           "ref": null,
-          "rendered": "You are citizen of  undefined",
+          "rendered": Array [
+            "You are citizen of",
+            " ",
+            "",
+          ],
           "type": [Function],
         },
         Object {

@@ -1,36 +1,32 @@
-import React, { Component } from 'react';
-import { View, Text, } from 'react-native';
-import PropTypes from 'prop-types';
+import React from 'react';
+import { View, Text } from 'react-native';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
 
 import GlobalStyles from '../../global/Styles';
 
-/**
- * @desc Component for section header in nations list.
- * @type React.Component
- */
-export default class NationListHeader extends Component {
-
-  render() {
-    return (
-      <View style={styles.sectionListHeaderContainer}>
-        <Text style={styles.sectionListHeaderText}>
-          {this.props.title}
-        </Text>
-      </View>
-    );
-  }
-
-}
-
-NationListHeader.propTypes = {
+type Props = {
   /**
    * @desc Title of header
-   * @type string
    */
-  title: PropTypes.string,
+  title: string
+}
+
+/**
+ * @desc Component for section header in nations list.
+ * @return {React.Component} A component.
+ */
+const NationListHeader = ({ title }: Props) => {
+  const styles = MediaQueryStyleSheet.create({
+    ...GlobalStyles,
+  });
+
+  return (
+    <View style={styles.sectionListHeaderContainer}>
+      <Text style={styles.sectionListHeaderText}>
+        {title}
+      </Text>
+    </View>
+  );
 };
 
-const styles = MediaQueryStyleSheet.create({
-  ...GlobalStyles,
-});
+export default NationListHeader;

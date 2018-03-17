@@ -1,3 +1,5 @@
+import i18n from '../src/global/i18n';
+
 exports.reply = function (r) {
 	if (this.bot == null) {
 		this.bot = new ElizaBot(false)
@@ -22,13 +24,12 @@ exports.bye = function () {
 function ElizaBot (noRandomFlag) {
 	
 	this.elizaInitials = [
-		'How do you do.  Please tell me your problem.',
-		'Please tell me what\'s been bothering you.',
-		'Is something troubling you ?',
-		'Im here. Talk to me.',
-		'Talk to me',
-		'Top of the morning to you.',
-		'Thanks for waking me up',
+    i18n.t('bots.freudbot.initial1'),
+    i18n.t('bots.freudbot.initial2'),
+    i18n.t('bots.freudbot.initial3'),
+    i18n.t('bots.freudbot.initial4'),
+    i18n.t('bots.freudbot.initial5'),
+    i18n.t('bots.freudbot.initial6'),
 	]
 	
 	this.elizaKeywords = [

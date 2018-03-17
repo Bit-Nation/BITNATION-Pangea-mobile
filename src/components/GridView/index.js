@@ -1,83 +1,87 @@
-import React, { Component } from 'react';
-import {
-  View,
-} from 'react-native';
-import PropTypes from 'prop-types';
-import styles from './styles';
+// @flow
+
+import * as React from 'react';
+import { View } from 'react-native';
 import _ from 'lodash';
+
+import styles from './styles';
+
+type Props = {
+  /**
+   * @desc Count of rows in grid view.
+   */
+  rowsCount: number,
+  /**
+   * @desc Count of columns in grid view.
+   */
+  itemsPerRow: number,
+  /**
+   * @desc Flag that specifies, if only one row (specified by activeRow prop)
+   * should be shown as active.
+   */
+  disableInactiveRows: bool,
+  /**
+   * @desc Index of active row.
+   */
+  activeRow: number,
+  /**
+   * @desc Function to render item of the grid. Takes one parameter - index of item (number).
+   */
+  renderItem: (number) => React.Node,
+  /**
+   * @desc Style object to be applied on top of default style.
+   */
+  style: any,
+}
 
 /**
  * @desc Component to draw a grid of similar components.
- * @type React.Component
+ * @type {React.Component}
  */
-export class GridView extends Component {
+class GridView extends React.Component<Props> {
+  static defaultProps: Object;
 
-  _renderItems(firstIndex, count) {
-    return _.map(_.range(0, count), (index) => {
-      return this.props.renderItem(firstIndex + index);
-    });
+  renderItems(firstIndex: number, count: number) {
+    const { renderItem } = this.props;
+
+    return _.map(_.range(0, count), index => renderItem(firstIndex + index));
   }
 
-  _renderRows(count) {
-    return _.map(_.range(0, count), (index) => {
-      return (
-        <View style={[
+  renderRows(count: number) {
+    const { activeRow, disableInactiveRows, itemsPerRow } = this.props;
+
+    return _.map(_.range(0, count), index => (
+      <View
+        style={[
           styles.row,
           (index > 0) && styles.rowMargin,
-          this.props.disableInactiveRows && this.props.activeRow !== index && styles.rowInactive,
-        ]} key={index}>
-          {
-            this._renderItems(index * this.props.itemsPerRow, this.props.itemsPerRow)
+          disableInactiveRows && activeRow !== index && styles.rowInactive,
+        ]}
+        key={index}
+      >
+        {
+            this.renderItems(index * itemsPerRow, itemsPerRow)
           }
-        </View>
-      );
-    });
+      </View>
+    ));
   }
 
   render() {
-    const { style, ...props } = this.props;
+    const { style, rowsCount } = this.props;
 
     return (
       <View style={[styles.container, style]}>
-        {this._renderRows(this.props.rowsCount)}
+        {this.renderRows(rowsCount)}
       </View>
     );
   }
-
 }
-
-GridView.propTypes = {
-  /**
-   * @desc Count of rows in grid view.
-   * @type number
-   */
-  rowsCount: PropTypes.number,
-  /**
-   * @desc Count of columns in grid view.
-   * @type number
-   */
-  itemsPerRow: PropTypes.number,
-  /**
-   * @desc Flag that specifies, if only one row (specified by activeRow prop) should be shown as active.
-   * @type bool
-   */
-  disableInactiveRows: PropTypes.bool,
-  /**
-   * @desc Index of active row.
-   * @type number
-   */
-  activeRow: PropTypes.number,
-  /**
-   * @desc Function to render item of the grid. Takes one parameter - index of item (number).
-   * @type func
-   */
-  renderItem: PropTypes.func,
-};
 
 GridView.defaultProps = {
   rowsCount: 0,
   itemsPerRow: 1,
   disableInactiveRows: false,
+  activeRow: 0,
 };
 
 export default GridView;

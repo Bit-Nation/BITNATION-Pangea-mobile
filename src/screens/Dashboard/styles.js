@@ -31,13 +31,13 @@ const styles = {
   rightContainer: {
     marginLeft: 4,
     flex: 1,
-    //flexDirection: 'column',
+    // flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'stretch',
 
   },
   walletPanel: {
-    //flex: 2,
+    // flex: 2,
   },
 
   // This is a panel, unlike the other styles above, which are views

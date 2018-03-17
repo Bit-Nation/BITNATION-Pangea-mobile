@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import {
-  View, Text,
-} from 'react-native';
+import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 
@@ -19,7 +17,6 @@ import FakeNavigationBar from '../../components/common/FakeNavigationBar';
 const REMOVE_WALLETS_BUTTON = 'REMOVE_WALLETS_BUTTON';
 
 class WalletScreen extends NavigatorComponent {
-
   constructor(props) {
     super(props);
 
@@ -41,8 +38,6 @@ class WalletScreen extends NavigatorComponent {
   }
 
   onDidAppear() {
-    super.onDidAppear();
-
     this.props.updateWalletList();
     this.updateNavigation();
   }
@@ -74,8 +69,8 @@ class WalletScreen extends NavigatorComponent {
   render() {
     return (
       <View style={styles.screenContainer}>
-        <Background/>
-        <FakeNavigationBar/>
+        <Background />
+        <FakeNavigationBar />
 
         <View style={styles.bodyContainer}>
 
@@ -86,9 +81,9 @@ class WalletScreen extends NavigatorComponent {
             </View>
           </View>
           {_.isEmpty(this.props.wallets) ? <EmptyWalletScreen
-              onCreateWallet={this.createWallet}
-              onRestoreWallet={this.restoreWallet}
-            />
+            onCreateWallet={this.createWallet}
+            onRestoreWallet={this.restoreWallet}
+          />
             : <List
               {...this.props}
               onSendPress={this.sendMoney}

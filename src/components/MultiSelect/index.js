@@ -1,3 +1,7 @@
+// Disable eslint since it is a third party component.
+// It's copied over directly only because we need to adjust some styles.
+/* eslint-disable */
+
 /**
  * @desc Generates a customized Single/Multiselect component used in Create a Nation
  * @type React.Component
@@ -21,7 +25,7 @@ import find from 'lodash/find';
 import get from 'lodash/get';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import IconIonic from 'react-native-vector-icons/Ionicons';
-import Colors from '../../global/colors'
+import Colors from '../../global/colors';
 
 // set UIManager LayoutAnimationEnabledExperimental
 UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);
@@ -96,7 +100,7 @@ export default class MultiSelect extends Component {
   shouldComponentUpdate(nextProps, nextState) {
     // console.log('Component Updating: ', nextProps.selectedItems);
     return true;
-  };
+  }
 
   _findItem = (itemKey) => {
     const {
@@ -108,7 +112,7 @@ export default class MultiSelect extends Component {
     )) || {};
   };
 
-  getSelectedItemsExt = (optionalSelctedItems) => (
+  getSelectedItemsExt = optionalSelctedItems => (
     <View
       style={{
         flexDirection: 'row',
@@ -132,7 +136,7 @@ export default class MultiSelect extends Component {
     } else if (single) {
       const item = selectedItems[0];
       const foundItem = this._findItem(item);
-      return get(foundItem, 'name') || selectText
+      return get(foundItem, 'name') || selectText;
     }
     return `${selectText} (${selectedItems.length} selected)`;
   };
@@ -147,7 +151,7 @@ export default class MultiSelect extends Component {
       selectedItems,
     } = this.props;
     const actualSelectedItems = optionalSelctedItems || selectedItems;
-    return actualSelectedItems.map(singleSelectedItem => {
+    return actualSelectedItems.map((singleSelectedItem) => {
       const item = this._findItem(singleSelectedItem);
       if (!item.name) return null;
       return (
@@ -178,7 +182,7 @@ export default class MultiSelect extends Component {
           </Text>
           <TouchableOpacity onPress={() => { this._removeItem(item); }}>
             <Icon
-              name="cancel"
+              name='cancel'
               style={{
                 color: tagRemoveIconColor,
                 fontSize: 22,
@@ -187,7 +191,7 @@ export default class MultiSelect extends Component {
             />
           </TouchableOpacity>
         </View>
-      )
+      );
     });
   };
 
@@ -306,7 +310,7 @@ export default class MultiSelect extends Component {
             {
               this._itemSelected(item) ?
                 <Icon
-                  name="check"
+                  name='check'
                   style={{
                     fontSize: 20,
                     color: selectedItemIconColor,
@@ -405,48 +409,48 @@ export default class MultiSelect extends Component {
         {
           selector
             ?
-            <View style={styles.selectorView(fixedHeight)}>
-              <View style={styles.inputGroup}>
-                {/*
+              <View style={styles.selectorView(fixedHeight)}>
+                <View style={styles.inputGroup}>
+                  {/*
                  ********** Added to hide SEARCH field in Component
                  *   editable={false}
                  *   selectTextOnFocus={false}
                  */}
-                {/*
+                  {/*
                 <IconIonic
                   name="ios-search"
                   size={20}
                   color={colorPack.placeholderTextColor}
                   style={{ marginRight: 10 }}
                 /> */}
-                <TextInput
-                  onChangeText={searchTerm => this.setState({ searchTerm })}
-                  placeholder={searchInputPlaceholderText}
-                  placeholderTextColor={colorPack.placeholderTextColor}
-                  underlineColorAndroid="transparent"
-                  editable={false}
-                  selectTextOnFocus={false}
-                  style={[searchInputStyle, { flex: 1 }]}
-                />
-                {hideSubmitButton &&
-                <TouchableOpacity onPress={this._submitSelection}>
-                  <IconIonic
-                    name="md-arrow-dropdown"
-                    style={[styles.indicator, { paddingLeft: 15, paddingRight: 15 }]}
+                  <TextInput
+                    onChangeText={searchTerm => this.setState({ searchTerm })}
+                    placeholder={searchInputPlaceholderText}
+                    placeholderTextColor={colorPack.placeholderTextColor}
+                    underlineColorAndroid='transparent'
+                    editable={false}
+                    selectTextOnFocus={false}
+                    style={[searchInputStyle, { flex: 1 }]}
                   />
-                </TouchableOpacity>
+                  {hideSubmitButton &&
+                  <TouchableOpacity onPress={this._submitSelection}>
+                    <IconIonic
+                      name='md-arrow-dropdown'
+                      style={[styles.indicator, { paddingLeft: 15, paddingRight: 15 }]}
+                    />
+                  </TouchableOpacity>
                 }
-              </View>
-              <View
-                style={{
+                </View>
+                <View
+                  style={{
                   flexDirection: 'column',
                   backgroundColor: Colors.shadeOfBitnationLightColor(0.1),
                 }}
-              >
-                <View>
-                  {this._renderItems()}
-                </View>
-                {
+                >
+                  <View>
+                    {this._renderItems()}
+                  </View>
+                  {
                   !single && !hideSubmitButton &&
                   <TouchableOpacity
                     onPress={() => this._submitSelection()}
@@ -459,36 +463,36 @@ export default class MultiSelect extends Component {
                     </Text>
                   </TouchableOpacity>
                 }
+                </View>
               </View>
-            </View>
             :
-            <View>
-              <View style={styles.dropdownView}>
-                <View style={[styles.subSection, { paddingTop: 10, paddingBottom: 10 }]}>
-                  <TouchableWithoutFeedback onPress={this._toggleSelector}>
-                    <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
-                      <Text
-                        style={[
+              <View>
+                <View style={styles.dropdownView}>
+                  <View style={[styles.subSection, { paddingTop: 10, paddingBottom: 10 }]}>
+                    <TouchableWithoutFeedback onPress={this._toggleSelector}>
+                      <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+                        <Text
+                          style={[
                           {
                             flex: 1,
                             fontSize: fontSize || 16,
-                            color:  textColor || colorPack.placeholderTextColor,
+                            color: textColor || colorPack.placeholderTextColor,
                           },
                           altFontFamily ? { fontFamily: altFontFamily } : fontFamily ? { fontFamily } : {},
                         ]}
-                        numberOfLines={1}
-                      >
-                        {this._getSelectLabel()}
-                      </Text>
-                      <IconIonic
-                        name={hideSubmitButton ? "md-arrow-dropright" : "md-arrow-dropdown" }
-                        style={styles.indicator}
-                      />
-                    </View>
-                  </TouchableWithoutFeedback>
+                          numberOfLines={1}
+                        >
+                          {this._getSelectLabel()}
+                        </Text>
+                        <IconIonic
+                          name={hideSubmitButton ? 'md-arrow-dropright' : 'md-arrow-dropdown'}
+                          style={styles.indicator}
+                        />
+                      </View>
+                    </TouchableWithoutFeedback>
+                  </View>
                 </View>
-              </View>
-              {
+                {
                 (!single && !hideTags && selectedItems.length) ?
                   <View
                     style={{
@@ -501,7 +505,7 @@ export default class MultiSelect extends Component {
                   :
                   null
               }
-            </View>
+              </View>
         }
       </View>
     );

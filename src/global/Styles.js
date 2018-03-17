@@ -1,4 +1,3 @@
-import { MediaQueryStyleSheet } from 'react-native-responsive';
 import Colors from './colors';
 import { fontSizeNormalizer, normalWidthMargin, isiPhoneXStatusBar, isiPhoneXTabBar } from '../utils/normalizer';
 
@@ -44,7 +43,7 @@ const styles = {
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'flex-start',
-    //alignItems: 'stretch',
+    // alignItems: 'stretch',
     alignContent: 'flex-start',
     // these narrow left/right margins are for panels, which have their own indents.
     marginLeft: 8,
@@ -123,7 +122,8 @@ const styles = {
   },
 
   // Put the large title inside the body of the screen, so it scrolls up and away.
-  // The margins are set in the body container. If the body has no margins (bars that go edge to edge)
+  // The margins are set in the body container.
+  // If the body has no margins (bars that go edge to edge)
   // then use the style below.
   titleBarLarge: {
     height: fontSizeNormalizer(52),
@@ -159,7 +159,7 @@ const styles = {
   // From Nations Screen:
   nationsScreenContainer: {
     flex: 1,
-    //justifyContent: 'center',
+    // justifyContent: 'center',
     justifyContent: 'flex-start',
     flexDirection: 'column',
     alignItems: 'stretch',
@@ -169,7 +169,7 @@ const styles = {
   nationsScreenImageContainer: {
     flex: 1,
     justifyContent: 'center',
-    //justifyContent: 'flex-start',
+    // justifyContent: 'flex-start',
     flexDirection: 'row',
     alignItems: 'stretch',
     marginTop: 30,
@@ -240,7 +240,7 @@ const styles = {
     marginBottom: 8,
     marginLeft: 0,
     marginRight: 0,
-    //overflow: 'hidden',
+    // overflow: 'hidden',
     paddingLeft: 8,
     paddingRight: 8,
     paddingTop: 4,
@@ -256,9 +256,9 @@ const styles = {
     backgroundColor: 'transparent',
     paddingBottom: 4,
     // Uncomment to show a LINE below the title:
-    //borderBottomColor: Colors.BlueGrey,
-    //borderStyle: 'solid',
-    //borderBottomWidth: 1,
+    // borderBottomColor: Colors.BlueGrey,
+    // borderStyle: 'solid',
+    // borderBottomWidth: 1,
   },
 
   // Contains the title of the panel view, inside the title row
@@ -318,7 +318,7 @@ const styles = {
 
   panelBody: {
     ...defaultTextStyles.body,
-    //color: 'white',
+    // color: 'white',
   },
 
   messageAdditionalInfoContainer: {},
@@ -343,7 +343,7 @@ const styles = {
     height: 30,
   },
 
-  //Panel used for Alert about the Status of the Nation in Detail Screen
+  // Panel used for Alert about the Status of the Nation in Detail Screen
   panelViewAlert: {
     flexDirection: 'row',
     borderRadius: 8,
@@ -358,7 +358,7 @@ const styles = {
     padding: fontSizeNormalizer(5),
   },
 
-  //Label in panel used for Alert about the Status of the Nation in Detail Screen
+  // Label in panel used for Alert about the Status of the Nation in Detail Screen
   panelAlertBold: {
     ...defaultTextStyles.body,
     color: Colors.BitnationHighlightColor,
@@ -366,14 +366,14 @@ const styles = {
     fontWeight: 'bold',
   },
 
-  //Status string in panel used for Alert about the Status of the Nation in Detail Screen
+  // Status string in panel used for Alert about the Status of the Nation in Detail Screen
   panelAlertStatus: {
     ...defaultTextStyles.body,
     color: Colors.BitnationHighlightColor,
     fontSize: 13,
   },
 
-  //Panel used for showing the citizenship of a User in Detail Screen
+  // Panel used for showing the citizenship of a User in Detail Screen
   panelViewCitizen: {
     justifyContent: 'space-between',
     flexDirection: 'row',
@@ -426,7 +426,7 @@ const styles = {
   textInput: {
     ...defaultTextStyles.body,
 
-    //backgroundColor: Colors.shadeOfBitnationLightColor(0.2),
+    // backgroundColor: Colors.shadeOfBitnationLightColor(0.2),
     borderColor: Colors.borderColor,
     borderBottomWidth: 1,
     flex: 1,
@@ -439,7 +439,7 @@ const styles = {
     paddingTop: 6,
     paddingBottom: 6,
     // font settings
-    //color: Colors.placeholderTextColor,
+    // color: Colors.placeholderTextColor,
   },
 
   // text inside of text input fields prompting user to enter information,
@@ -479,8 +479,8 @@ const styles = {
 
   dropDownTextDefault: {
     ...defaultTextStyles.body,
-    //color: Colors.BitnationLightColor,
-    //fontSize: 17,
+    // color: Colors.BitnationLightColor,
+    // fontSize: 17,
   },
 
   dropDownTextList: {
@@ -503,7 +503,7 @@ const styles = {
     marginRight: 10,
   },
 
-// ========================================
+  // ========================================
   // Section Lists Layout
   // These are lists with rows divided by section headers, e.g. "A"
   // Example: Nations List screen
@@ -539,7 +539,7 @@ const styles = {
   // e.g. NationListItemState Text
   listItemTextState: {
     ...defaultTextStyles.body,
-    color: Colors.listItemTextState,
+    color: Colors.listItemTextState.default,
     textAlign: 'right',
     marginRight: 16,
   },
@@ -559,7 +559,7 @@ const styles = {
     height: 44,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: Colors.sectionListItemContainerBkgd,
+    backgroundColor: Colors.sectionListItemContainerBackground,
     marginLeft: 16,
   },
 
@@ -570,7 +570,7 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: Colors.sectionListHeaderContainer,
-    //opacity: 0.5,
+    // opacity: 0.5,
   },
 
   sectionListHeaderText: {
@@ -590,6 +590,12 @@ const styles = {
   sectionListDisclosure: {
     marginRight: 16,
     width: 8,
+    height: 15,
+  },
+
+  sectionListSignal: {
+    marginRight: 14,
+    width: 20,
     height: 15,
   },
 
@@ -640,7 +646,7 @@ const styles = {
     fontSize: 10,
   },
 
-  //=========================================
+  //= ========================================
   // Styles for the custom Tool Bar replacing the Tab Bar
   fakeBottomBar: {
     paddingTop: 5,

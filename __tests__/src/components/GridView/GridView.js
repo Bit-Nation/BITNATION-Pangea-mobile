@@ -5,38 +5,48 @@ import { Text } from 'react-native';
 import GridView from '../../../../src/components/GridView';
 
 describe('GridView rendering', () => {
-
   test('Default renders without error', () => {
-    renderer.create(<GridView/>);
+    renderer.create(<GridView />);
   });
 
+  /**
+   * @desc Common function to render grid view with specific size.
+   * @param {number} rowCount Count of rows in grid view.
+   * @param {number} columnCount Count of columns in grid view.
+   * @param {any} props Other props to pass to grid view.
+   * @return {React.Component} Created GridView render tree.
+   */
   function renderGridViewWithTestItems(rowCount, columnCount, props) {
-    const renderItem = (index) => <Text key={index}>Test item {index}</Text>;
-    const tree = renderer.create(
-      <GridView
-        rowsCount={rowCount}
-        itemsPerRow={columnCount}
-        renderItem={renderItem}
-        {...props}
-      />);
+    const renderItem = index => <Text key={index}>Test item {index}</Text>;
+    const tree = renderer.create(<GridView
+      rowsCount={rowCount}
+      itemsPerRow={columnCount}
+      renderItem={renderItem}
+      {...props}
+    />);
     expect(tree.toJSON()).toMatchSnapshot();
 
     return tree;
   }
 
+  /**
+   * @desc Common function to render grid view with specific size with mocked render item function.
+   * @param {number} rowCount Count of rows in grid view.
+   * @param {number} columnCount Count of columns in grid view.
+   * @return {React.Component} Created GridView render tree.
+   */
   function renderMockedGridView(rowCount, columnCount) {
     const mockFunc = jest.fn();
-    const tree = renderer.create(
-      <GridView
-        rowsCount={rowCount}
-        itemsPerRow={columnCount}
-        renderItem={mockFunc}
-      />);
+    const tree = renderer.create(<GridView
+      rowsCount={rowCount}
+      itemsPerRow={columnCount}
+      renderItem={mockFunc}
+    />);
     const itemCount = rowCount * columnCount;
     expect(tree.toJSON()).toMatchSnapshot();
 
     expect(mockFunc).toHaveBeenCalledTimes(itemCount);
-    for (let i = 0; i < itemCount; i++) {
+    for (let i = 0; i < itemCount; i += 1) {
       expect(mockFunc.mock.calls).toContainEqual([i]);
     }
 
@@ -75,5 +85,4 @@ describe('GridView rendering', () => {
   test('Renders with set custom style', () => {
     renderGridViewWithTestItems(4, 3, { style: { height: 100, width: 50 } });
   });
-
 });

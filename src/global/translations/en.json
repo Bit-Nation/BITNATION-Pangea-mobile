@@ -6,6 +6,19 @@
     "wallet": "WALLET",
     "profile": "PROFILE"
   },
+  "activityLog": {
+    "nation": {
+      "join": {
+        "succeed": "Joined nation: {{nationName}}"
+      },
+      "create": {
+        "succeed": "Created Nation {{nationName}}"
+      },
+      "leave": {
+        "succeed": "Left nation: {{nationName}}"
+      }
+    }
+  },
   "common": {
     "send": "Send",
     "receive": "Receive",
@@ -85,9 +98,21 @@
       },
       "status": {
         "draft": "Draft",
-        "rejected": "Rejected",
-        "pending": "Pending",
-        "accepted": "Accepted"
+        "NATION_JOIN": {
+          "200": "Joining",
+          "300": "",
+          "400": "Banned"
+        },
+        "NATION_CREATE": {
+          "200": "Pending",
+          "300": "",
+          "400": "Rejected"
+        },
+        "NATION_LEAVE": {
+          "200": "Leaving",
+          "300": "",
+          "400": "Leaving rejected"
+        }
       }
     },
     "onOff": {
@@ -151,6 +176,10 @@
     "error": {
       "title": "Error",
       "confirm": "$t(common.ok)"
+    },
+    "nationsDisabled": {
+      "title": "This function is disabled in this release. It will be re-enabled on March 3.",
+      "confirm": "$t(common.ok)"
     }
   },
   "screens": {
@@ -201,7 +230,9 @@
     },
     "chat": {
       "title": "$t(common.chat)",
-      "tabTitle": "$t(tabbar.chat)"
+      "tabTitle": "$t(tabbar.chat)",
+      "allChats": "All Chats",
+      "myChats": "My Chats"
     },
     "nations": {
       "toolbar": {
@@ -223,7 +254,7 @@
       "title": "Nation",
       "aboutInfo": "About {{name}}",
       "description": "Description",
-      "locationInfo": "{{name}} is a {{locationType}} nation",
+      "locationInfo": "{{name}} is a {{locationType}}",
       "legalSystemInfo": "{{name}} uses {{code}} as its legal system.",
       "lawEnforcementInfo": "The laws are enforced with {{lawEnforcementMechanism}}.",
       "governmentInfo": "The government is a {{decisionMakingProcess}}.",
@@ -232,11 +263,24 @@
       "serviceUsageInfo": "Non-citizens {{allowance}} use national services.",
       "profitInfo": "The nation is managed as a {{profit}} entity.",
       "ethereumAddress": "Ethereum Address:",
-      "status": "Status: ",
-      "citizen": "You are citizen of ",
+      "status": "Status:",
+      "citizen": "You are citizen of",
       "statusDescription": {
-        "accepted": "Submitted to blockhain.",
-        "pending": "Submission in progress..."
+        "NATION_CREATE": {
+          "200": "Submission in progress...",
+          "300": "Submitted to blockchain.",
+          "400": "Submission failed."
+        },
+        "NATION_JOIN": {
+          "200": "Join nation in progress...",
+          "300": "Join nation succeed.",
+          "400": "Join nation failed"
+        },
+        "NATION_LEAVE": {
+          "200": "Leave nation in progress...",
+          "300": "Leave nation succeed.",
+          "400": "Leave nation failed"
+        }
       }
     },
     "createNation": {
@@ -267,12 +311,12 @@
         "restoreWallet": "Restore Wallet",
         "createWalletPanel": {
           "title": "$t(screens.wallet.empty.createWallet)",
-          "text": "You need an Ethereum wallet to pay for payments, creating nations, and other useful services.",
+          "text": "You need an Ethereum wallet to make payments, to create nations, and to use other useful services.",
           "button": "$t(screens.wallet.empty.createWallet)"
         },
         "restoreWalletPanel": {
           "title": "$t(screens.wallet.empty.restoreWallet)",
-          "text": "You can restore your wallet if lost or changed your phone. You will need your private key to restore your wallet.",
+          "text": "You can restore your wallet if you lose or change your phone. You will need your private key to restore your wallet.",
           "button": "$t(screens.wallet.empty.restoreWallet)"
         }
       }
@@ -282,8 +326,8 @@
       "tabTitle": "$t(tabbar.profile)",
       "empty": {
         "createProfilePanel": {
-          "title": "Become a world citizen.",
-          "text": "Bitnation is a decentralized, open-source movement, powered by the Bitcoin blockchain 2.0 technology, in an attempt to foster a peer-to-peer voluntary governance system, rather than the current ‘top-down’, ‘one-size-fits-all’ model, restrained by the current nation-state-engineered geographical apartheid, where your quality of life is defined by where you were arbitrarily born.",
+          "title": "Become a World Citizen",
+          "text": "Bitnation is a decentralized, open-source movement powered by blockchain technology. Bitnation offers a peer-to-peer voluntary governance system to compete with the prevailing top-down, one-size-fits-all, geographical apartheid Nation State model wherein your quality of life is arbitrarily defined by where you were born.",
           "button": "Create a User Profile"
         }
       },
@@ -306,9 +350,9 @@
     "createKey": {
       "title": "Create Wallet",
       "introduction": [
-        "To secure your wallet, you first need a \"private key\".",
+        "To secure your wallet, you first need a \"private key.\"",
         "You must write down your private key on paper. This process only takes a few minutes.",
-        "If change your phone, the only way to recover your wallet is by entering your private key!",
+        "If you change your phone, the only way to recover your wallet is by entering your private key!",
         "Your private key protects everything in Bitnation, so save your written private key in a safe place."
       ],
       "instructions": {
@@ -345,7 +389,7 @@
       },
       "success": {
         "instructions": [
-          "Congratulations, you correctly entered your private key.",
+          "Congratulations! You correctly entered your private key.",
           "Now, put your paper with your private key in a safe place."
         ],
         "doneButton": "$t(common.done)"
@@ -383,5 +427,19 @@
       "title": "You have turned {{onOff}} testing mode"
     },
     "removeWallets": "Remove wallets"
+  },
+  "error": {
+    "noConnection": "Please check your internet connection.",
+    "insufficientFunds": "Insufficient funds. Please check your wallet."
+  },
+  "bots": {
+    "freudbot": {
+      "initial1": "Hi, I am Dr. FreudBot, your resident therapist. What is bothering you?",
+      "initial2": "Herr Professor Doktor FreudBot here, your therapy bot. What has been troubling you?",
+      "initial3": "I am the Pangea therapy bot, Dr. FreudBot, ready to help. I am not a real therapist, I just play one in this app.",
+      "initial4": "I'm here, Dr. FreudBot. Talk to me.",
+      "initial5": "Talk to me! I am Dr. FreudBot. Tell me about your mother.",
+      "initial6": "Hallo, Dr. FreudBot here. I am not a real Freudian. I am not real. Are you? Are you sure?"
+    }
   }
 }

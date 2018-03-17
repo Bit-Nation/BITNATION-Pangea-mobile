@@ -1,8 +1,8 @@
+// @flow
+
 import { StyleSheet } from 'react-native';
-import Colors from '../../global/colors';
 
-export default styles = StyleSheet.create({
-
+const styles = StyleSheet.create({
   container: {},
   row: {
     flexDirection: 'row',
@@ -15,6 +15,7 @@ export default styles = StyleSheet.create({
   },
   rowInactive: {
     opacity: 0.1,
-  }
-
+  },
 });
+
+export default styles;

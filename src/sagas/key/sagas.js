@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { call, put, select, all } from 'redux-saga/effects';
 import _ from 'lodash';
 
@@ -48,8 +50,6 @@ export function* verifyMnemonicSaga() {
 export function* removeAllPrivateKeysSaga() {
   const state = yield select();
 
-  yield all(_.map(state.wallet.wallets, (wallet) => {
-    return removePrivateKey(wallet.ethAddress);
-  }));
+  yield all(_.map(state.wallet.wallets, wallet => removePrivateKey(wallet.ethAddress)));
   yield put(updateWalletList());
 }

@@ -7,7 +7,6 @@ import rootSaga from '../sagas';
 import createSagaMonitor from 'saga-monitor';
 
 export default function configureStore() {
-
   const sagaMonitor = createSagaMonitor({
     level: 'log',
     actionDispatch: true,

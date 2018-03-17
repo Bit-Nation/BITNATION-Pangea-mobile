@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { Msg } from 'BITNATION-Pangea-libs/src/queues/messaging';
 import { MESSAGING_QUEUE_JOB_ADDED } from 'BITNATION-Pangea-libs/src/events';
 
@@ -17,6 +19,6 @@ export async function getEventEmitter() {
 
 export async function addDummyMessage() {
   const container = await containerPromise;
-  const messageText = 'Dummy message ' + Math.floor(Math.random() * 100) + '(random number)';
+  const messageText = `Dummy message ${Math.floor(Math.random() * 100)}(random number)`;
   return await container.queue.msgQueue.addJob(new Msg(messageText, {}, false));
 }
