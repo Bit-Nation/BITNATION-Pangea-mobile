@@ -1,11 +1,11 @@
-import db from '../../../../src/services/database/index';
+import { factory } from '../../../../src/services/database/index';
 
 const randomDbPath = () => `database/${Math.random()}`;
 const Realm = require('realm');
 
 describe('db', () => {
   test('default path', (done) => {
-    const databaseGenerator = db();
+    const databaseGenerator = factory();
 
     const realmPromise = databaseGenerator.next().value;
 
@@ -20,7 +20,7 @@ describe('db', () => {
   });
   test('custom path', () => {
     const id = Math.random();
-    const databaseGenerator = db(`database/${id}`);
+    const databaseGenerator = factory(`database/${id}`);
 
     const realmInstance = databaseGenerator.next().value;
 
@@ -30,7 +30,7 @@ describe('db', () => {
   });
   test('open and migrate process', (done) => {
     const dbPath = randomDbPath();
-    const databaseGenerator = db(dbPath);
+    const databaseGenerator = factory(dbPath);
 
     // Opened with schema version 0
     const realm0 = databaseGenerator.next().value;

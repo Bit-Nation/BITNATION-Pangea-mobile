@@ -1,6 +1,7 @@
 import schemas from './schemata';
 
 const Realm = require('realm');
+const co = require('co');
 
 const REALM_PATH = 'pangea';
 
@@ -9,7 +10,7 @@ const REALM_PATH = 'pangea';
  * @param {string} customDbPath optional path to the database
  * @return {Iterator} returns an iterator like every generator
  */
-export default function* (customDbPath: string) {
+export function* factory(customDbPath: string) {
   let databasePath = REALM_PATH;
 
   if (customDbPath !== '' && typeof customDbPath === 'string') {
@@ -39,3 +40,5 @@ export default function* (customDbPath: string) {
     migration: schema.migration,
   });
 }
+
+export default co(factory());
