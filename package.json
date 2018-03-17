@@ -89,8 +89,7 @@
     "react-dom": "^16.2.0",
     "react-native-mock": "^0.3.1",
     "react-test-renderer": "16.0.0",
-    "saga-monitor": "git+https://github.com/clarketm/saga-monitor.git",
-    "xmlhttprequest": "^1.8.0"
+    "saga-monitor": "git+https://github.com/clarketm/saga-monitor.git"
   },
   "jest": {
     "preset": "react-native",
