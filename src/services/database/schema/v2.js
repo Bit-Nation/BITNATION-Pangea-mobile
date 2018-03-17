@@ -27,19 +27,19 @@ export type ProfileType = {
 }
 
 export const ProfileSchema = {
-    name: 'Profile',
-    primaryKey: 'id',
-    properties: {
-        id: 'int',
-        name: 'string',
-        location: 'string',
-        latitude: 'string',
-        longitude: 'string',
-        description: 'string',
-        image: 'string',
-        version: 'string',
-        uid: 'string',
-    },
+  name: 'Profile',
+  primaryKey: 'id',
+  properties: {
+    id: 'int',
+    name: 'string',
+    location: 'string',
+    latitude: 'string',
+    longitude: 'string',
+    description: 'string',
+    image: 'string',
+    version: 'string',
+    uid: 'string',
+  },
 };
 
 /**
@@ -60,15 +60,15 @@ export type AccountBalanceType = {
 }
 
 export const AccountBalanceSchema = {
-    name: 'AccountBalance',
-    primaryKey: 'id',
-    properties: {
-        id: 'string',
-        address: 'string',
-        amount: 'string',
-        synced_at: 'date',
-        currency: 'string',
-    },
+  name: 'AccountBalance',
+  primaryKey: 'id',
+  properties: {
+    id: 'string',
+    address: 'string',
+    amount: 'string',
+    synced_at: 'date',
+    currency: 'string',
+  },
 };
 
 /**
@@ -90,21 +90,21 @@ export type MessageJobType = {
 }
 
 export const MessageJobSchema = {
-    name: 'MessageJob',
-    primaryKey: 'id',
-    properties: {
-        id: 'int',
-        heading: {
-            type: 'string',
-            optional: true,
-        },
-        interpret: 'bool',
-        params: 'string',
-        display: 'bool',
-        msg: 'string',
-        version: 'int',
-        created_at: 'date',
+  name: 'MessageJob',
+  primaryKey: 'id',
+  properties: {
+    id: 'int',
+    heading: {
+      type: 'string',
+      optional: true,
     },
+    interpret: 'bool',
+    params: 'string',
+    display: 'bool',
+    msg: 'string',
+    version: 'int',
+    created_at: 'date',
+  },
 };
 
 /**
@@ -122,17 +122,17 @@ export type TransactionJobType = {
 }
 
 export const TransactionJobSchema = {
-    name: 'TransactionJob',
-    properties: {
-        txHash: 'string',
-        status: 'int',
-        type: 'string',
-        nation: {
-            type: 'linkingObjects',
-            objectType: 'Nation',
-            property: 'tx',
-        },
+  name: 'TransactionJob',
+  properties: {
+    txHash: 'string',
+    status: 'int',
+    type: 'string',
+    nation: {
+      type: 'linkingObjects',
+      objectType: 'Nation',
+      property: 'tx',
     },
+  },
 };
 
 /**
@@ -180,65 +180,65 @@ export type NationType = {
 }
 
 export const NationSchema = {
-    name: 'Nation',
-    primaryKey: 'id',
-    properties: {
-        id: 'int',
-        idInSmartContract: {
-            default: -1,
-            type: 'int',
-        },
-        tx: {
-            type: 'TransactionJob',
-            optional: true,
-        },
-        created: 'bool',
-        nationName: 'string',
-        nationDescription: 'string',
-        exists: 'bool',
-        virtualNation: 'bool',
-        nationCode: 'string',
-        lawEnforcementMechanism: 'string',
-        profit: 'bool',
-        nonCitizenUse: 'bool',
-        diplomaticRecognition: 'bool',
-        decisionMakingProcess: 'string',
-        governanceService: 'string',
-        stateMutateAllowed: {
-            type: 'bool',
-            default: true,
-        },
-        resetStateMutateAllowed: {
-            type: 'bool',
-            default: false,
-        },
-        citizens: {
-            type: 'int',
-            default: 0,
-        },
-        joined: {
-            type: 'bool',
-            default: false,
-        },
+  name: 'Nation',
+  primaryKey: 'id',
+  properties: {
+    id: 'int',
+    idInSmartContract: {
+      default: -1,
+      type: 'int',
     },
+    tx: {
+      type: 'TransactionJob',
+      optional: true,
+    },
+    created: 'bool',
+    nationName: 'string',
+    nationDescription: 'string',
+    exists: 'bool',
+    virtualNation: 'bool',
+    nationCode: 'string',
+    lawEnforcementMechanism: 'string',
+    profit: 'bool',
+    nonCitizenUse: 'bool',
+    diplomaticRecognition: 'bool',
+    decisionMakingProcess: 'string',
+    governanceService: 'string',
+    stateMutateAllowed: {
+      type: 'bool',
+      default: true,
+    },
+    resetStateMutateAllowed: {
+      type: 'bool',
+      default: false,
+    },
+    citizens: {
+      type: 'int',
+      default: 0,
+    },
+    joined: {
+      type: 'bool',
+      default: false,
+    },
+  },
 };
 
 export const schemata =
 [
-    ProfileSchema,
-    AccountBalanceSchema,
-    MessageJobSchema,
-    TransactionJobSchema,
-    NationSchema,
+  ProfileSchema,
+  AccountBalanceSchema,
+  MessageJobSchema,
+  TransactionJobSchema,
+  NationSchema,
 ];
 
 export const migration = (oldRealm: any, newRealm: any) => {
-    // Migrate nation's
-    // 1. Create tx job from tx hash with the status pending.
-    //   Pending because an but in 0.3.1 prevented us from submitting the nations
-    oldRealm.objects('Profile').map((oldProfile) => {
-        const newProfile = newRealm.objects('Profile').filtered(`id = ${oldProfile.id}`)[0];
+  // Migrate nation's
+  // 1. Create tx job from tx hash with the status pending.
+  //   Pending because an but in 0.3.1 prevented us from submitting the nations
+  oldRealm.objects('Profile').map((oldProfile) => {
+    const newProfile = newRealm.objects('Profile').filtered(`id = ${oldProfile.id}`)[0];
 
-        newProfile.uid = uString();
-    });
+    newProfile.uid = uString();
+  });
 };
