@@ -33,13 +33,11 @@ export function* factory(customDbPath: string) {
   }
 
   const schema = schemas[schemas.length - 1];
-  return yield new Promise((res, rej) => {
-    Realm.open({
-      path: databasePath,
-      schema: schema.schema,
-      schemaVersion: schema.schemaVersion,
-      migration: schema.migration,
-    }).then(res).catch(rej);
+  return yield Realm.open({
+    path: databasePath,
+    schema: schema.schema,
+    schemaVersion: schema.schemaVersion,
+    migration: schema.migration,
   });
 }
 
