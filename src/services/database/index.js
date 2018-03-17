@@ -18,6 +18,7 @@ export default function* (customDbPath: string) {
 
   let nextSchemaIndex = Realm.schemaVersion(databasePath);
 
+  // We must use -1 since our schemas start by 0 and not by one.
   while (nextSchemaIndex < schemas.length - 1) {
     nextSchemaIndex += 1;
     const schema = schemas[nextSchemaIndex];

@@ -48,7 +48,7 @@ describe('db', () => {
     databaseGenerator
       .next(realm2)
       .value
-      .then((realm) => {
+      .then(() => {
         expect(Realm.schemaVersion(dbPath)).toBe(2);
         done();
       })
