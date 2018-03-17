@@ -5,8 +5,8 @@ type ShowSpinnerAction = { +type: 'SHOW_CHAT_SPINNER' };
 type HideSpinnerAction = { +type: 'HIDE_CHAT_SPINNER' };
 
 export type Action =
-	| ShowSpinnerAction
-	| HideSpinnerAction;
+  | ShowSpinnerAction
+  | HideSpinnerAction;
 
 /**
  * @desc Action for an action that shows spinner while processing in background

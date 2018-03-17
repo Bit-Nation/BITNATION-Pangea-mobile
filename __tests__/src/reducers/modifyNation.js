@@ -1,7 +1,12 @@
 import reducer, { emptyNation, initialState } from '../../../src/reducers/modifyNation';
 import {
-  cancelNationCreation, deleteNationDraft,
-  editingNationFieldChange, nationDraftDeleteResult, nationDraftSaveResult, nationSubmitResult, resetNationCreation,
+  cancelNationCreation,
+  deleteNationDraft,
+  editingNationFieldChange,
+  nationDraftDeleteResult,
+  nationDraftSaveResult,
+  nationSubmitResult,
+  resetNationCreation,
   saveNationDraft,
   startNationCreation,
   startNationEditing, submitNation,
