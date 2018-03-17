@@ -1,4 +1,5 @@
 /* eslint-disable */
+jest.mock("XMLHttpRequest");
 /**
  * @return {Promise<{eth: {nation: {create, index, all, joinNation, leaveNation}}}>} Pangea lib's mock
  */
