@@ -33,7 +33,7 @@ export function* factory(customDbPath: string) {
   }
 
   const schema = schemas[schemas.length - 1];
-  yield Realm.open({
+  return yield Realm.open({
     path: databasePath,
     schema: schema.schema,
     schemaVersion: schema.schemaVersion,
@@ -41,4 +41,4 @@ export function* factory(customDbPath: string) {
   });
 }
 
-export default co(factory());
+export default co(factory);

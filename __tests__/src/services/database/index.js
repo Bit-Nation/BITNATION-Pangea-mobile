@@ -1,18 +1,12 @@
-import { factory } from '../../../../src/services/database/index';
+import db, { factory } from '../../../../src/services/database/index';
 
 const randomDbPath = () => `database/${Math.random()}`;
 const Realm = require('realm');
 
 describe('db', () => {
   test('default path', (done) => {
-    const databaseGenerator = factory();
-
-    const realmPromise = databaseGenerator.next().value;
-
-    realmPromise
+    db
       .then((realm) => {
-        // Last element of the realm path should be "pangea"
-        // since we didn't pass in another path to the db generator
         expect(realm.path.split('/').slice(-1)[0]).toEqual('pangea');
         done();
       })
