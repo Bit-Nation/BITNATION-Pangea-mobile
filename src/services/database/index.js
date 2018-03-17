@@ -23,7 +23,7 @@ export function* factory(customDbPath: string) {
   while (nextSchemaIndex < schemas.length - 1) {
     nextSchemaIndex += 1;
     const schema = schemas[nextSchemaIndex];
-    const migratedRealm = yield new Realm({
+    const migratedRealm = yield Realm.open({
       path: databasePath,
       schema: schema.schema,
       schemaVersion: schema.schemaVersion,
