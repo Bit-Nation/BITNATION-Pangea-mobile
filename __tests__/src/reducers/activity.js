@@ -47,7 +47,7 @@ describe('activity reducer action handling', () => {
 
   test('messageAdded after initial state', () => {
     const stateBefore = initialState;
-    const stateAfter = reducer(initialState, messageAdded(message0));
+    const stateAfter = reducer(stateBefore, messageAdded(message0));
     expect(stateAfter).toEqual({
       ...stateBefore,
       messages: [message0],
@@ -56,7 +56,7 @@ describe('activity reducer action handling', () => {
 
   test('startFetchMessages', () => {
     const stateBefore = initialState;
-    const stateAfter = reducer(initialState, startFetchMessages());
+    const stateAfter = reducer(stateBefore, startFetchMessages());
     expect(stateAfter).toEqual({
       ...stateBefore,
       isFetching: true,
@@ -65,7 +65,7 @@ describe('activity reducer action handling', () => {
 
   test('doneFetchMessages', () => {
     const stateBefore = initialState;
-    const stateAfter = reducer(initialState, doneFetchMessages([message0, message1, message2]));
+    const stateAfter = reducer(stateBefore, doneFetchMessages([message0, message1, message2]));
     expect(stateAfter).toEqual({
       ...stateBefore,
       messages: [message2, message1, message0],
@@ -75,7 +75,7 @@ describe('activity reducer action handling', () => {
 
   test('messageAdded after some messages initially added', () => {
     const stateBefore = initialState;
-    const stateAfterFetch = reducer(initialState, doneFetchMessages([message0, message1]));
+    const stateAfterFetch = reducer(stateBefore, doneFetchMessages([message0, message1]));
     const stateAfter = reducer(stateAfterFetch, messageAdded(message2));
     expect(stateAfter).toEqual({
       ...stateBefore,

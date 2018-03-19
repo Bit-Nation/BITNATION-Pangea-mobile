@@ -14,7 +14,7 @@ describe('key reducer action handling', () => {
 
   test('createPrivateKey', () => {
     const stateBefore = initialState;
-    const stateAfter = reducer(initialState, createPrivateKey());
+    const stateAfter = reducer(stateBefore, createPrivateKey());
     expect(stateAfter).toEqual({
       ...stateBefore,
       createdMnemonic: null,
@@ -24,7 +24,7 @@ describe('key reducer action handling', () => {
 
   test('removePrivateKey', () => {
     const stateBefore = initialState;
-    const stateAfter = reducer(initialState, removePrivateKey());
+    const stateAfter = reducer(stateBefore, removePrivateKey());
     expect(stateAfter).toEqual({
       ...stateBefore,
       createdMnemonic: null,
@@ -34,7 +34,7 @@ describe('key reducer action handling', () => {
 
   test('mnemonicCreated', () => {
     const stateBefore = initialState;
-    const stateAfter = reducer(initialState, mnemonicCreated(mockMnemonic));
+    const stateAfter = reducer(stateBefore, mnemonicCreated(mockMnemonic));
     expect(stateAfter).toEqual({
       ...stateBefore,
       createdMnemonic: mockMnemonic,
@@ -44,7 +44,7 @@ describe('key reducer action handling', () => {
 
   test('changeEnteredMnemonic', () => {
     const stateBefore = initialState;
-    const stateAfter = reducer(initialState, changeEnteredMnemonic(mockMnemonic));
+    const stateAfter = reducer(stateBefore, changeEnteredMnemonic(mockMnemonic));
     expect(stateAfter).toEqual({
       ...stateBefore,
       enteredMnemonic: mockMnemonic,
@@ -53,7 +53,7 @@ describe('key reducer action handling', () => {
 
   test('validateEnteredMnemonic', () => {
     const stateBefore = initialState;
-    const stateAfter = reducer(initialState, validateEnteredMnemonic());
+    const stateAfter = reducer(stateBefore, validateEnteredMnemonic());
     expect(stateAfter).toEqual({
       ...stateBefore,
       mnemonicValid: null,
@@ -64,7 +64,7 @@ describe('key reducer action handling', () => {
   describe('changeMnemonicValid', () => {
     const testSetToValue = (value) => {
       const stateBefore = initialState;
-      const stateAfter = reducer(initialState, changeMnemonicValid(value));
+      const stateAfter = reducer(stateBefore, changeMnemonicValid(value));
       expect(stateAfter).toEqual({
         ...stateBefore,
         mnemonicValid: value,
