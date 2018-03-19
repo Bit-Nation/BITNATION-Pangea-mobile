@@ -21,8 +21,6 @@ class ChatNationsScreen extends NavigatorComponent {
   }
 
   onWillAppear() {
-    super.onWillAppear();
-
     this.props.fetchNations();
   }
 

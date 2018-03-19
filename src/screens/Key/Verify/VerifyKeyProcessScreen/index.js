@@ -79,7 +79,6 @@ class VerifyKeyProcessScreen extends KeyBaseScreen {
   }
 
   onNavBarButtonPress(id) {
-    super.onNavBarButtonPress(id);
     if (id === DONE_BUTTON) {
       this.props.validateMnemonic(this.state.values);
     }

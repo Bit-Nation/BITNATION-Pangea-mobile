@@ -1,6 +1,20 @@
 import {
-  startUserCreating, startUserEditing, changeEditingUser, setUserProfile, cancelUserEditing, doneUserEditing, requestProfileUpdate, getUserProfile,
-  START_USER_CREATING, START_USER_EDITING, CHANGE_EDITING_USER, SET_USER_PROFILE, CANCEL_USER_EDITING, DONE_USER_EDITING, REQUEST_PROFILE_UPDATE, REQUEST_GET_PROFILE,
+  startUserCreating,
+  startUserEditing,
+  changeEditingUser,
+  setUserProfile,
+  cancelUserEditing,
+  doneUserEditing,
+  requestProfileUpdate,
+  getUserProfile,
+  START_USER_CREATING,
+  START_USER_EDITING,
+  CHANGE_EDITING_USER,
+  SET_USER_PROFILE,
+  CANCEL_USER_EDITING,
+  DONE_USER_EDITING,
+  REQUEST_PROFILE_UPDATE,
+  REQUEST_GET_PROFILE,
 } from '../../../src/actions/profile';
 
 test('actions - startUserCreating', (done) => {

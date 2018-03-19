@@ -61,7 +61,7 @@ NationActionButton.propTypes = {
 NationActionButton.defaultProps = {
   disable: true,
   title: '',
-  iconSource: '',
+  iconSource: undefined,
   onPress: () => null,
 };
 
