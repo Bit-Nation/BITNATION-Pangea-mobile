@@ -1,25 +1,18 @@
-/*
-  Nation Create Screen
-  Version 0.3.1
-
-  For usage of MultiSelect see: https://github.com/toystars/react-native-multiple-select (We are using a custom UI version)
- */
-
 import React from 'react';
 import {
-  View, Image,
-  Text, ScrollView, TextInput,
+  View,
+  Text,
+  ScrollView,
+  TextInput,
 } from 'react-native';
 
 import PropTypes from 'prop-types';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
-import { ActionSheet } from 'native-base';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import PanelView from '../../../components/common/PanelView';
 import SwitchLabeled from '../../../components/common/SwitchLabeled';
 import MultiSelect from '../../../components/MultiSelect';
-import Images from '../../../global/AssetsImages';
 import Loading from '../../../components/common/Loading';
 import NationActionButton from '../../../components/common/NationActionButton';
 import Colors from '../../../global/colors';
@@ -28,8 +21,6 @@ import i18n from '../../../global/i18n';
 import AssetsImage from '../../../global/AssetsImages';
 import { nationIsModified } from '../../../reducers/modifyNation';
 import { nationIsValid } from '../../../utils/nations';
-
-const DONE_BUTTON = 'DONE_BUTTON';
 
 class CreateNation extends NavigatorComponent {
   constructor(props) {
@@ -68,9 +59,7 @@ class CreateNation extends NavigatorComponent {
         <FakeNavigationBar />
 
         <View style={styles.bodyContainer}>
-          {/* SCROLLING PANELS FOR DATA ENTRY */}
-          <ScrollView style={{ flex: 1 }} contentContainerStyle={{ flex: 0 }}>
-            {/* TITLE OF SCREEN */}
+          <ScrollView style={styles.scrollView} contentContainerStyle={styles.noflex}>
             <View style={styles.titleContainer}>
               <View style={styles.titleBarLarge}>
                 <Text style={styles.largeTitle}>
@@ -78,22 +67,20 @@ class CreateNation extends NavigatorComponent {
                 </Text>
               </View>
             </View>
-
-            {/* CONSTRUCTIONS OF THE SECTIONS IN THE SCREEN */}
-            {this._buildIntroPanel()}
-            {this._buildCoreNationView()}
-            {this._buildLocationNationView()}
-            {this._buildGovernmentalView()}
-            {this._buildOptionsView()}
+            {CreateNation.buildIntroPanel()}
+            {this.buildCoreNationView()}
+            {this.buildLocationNationView()}
+            {this.buildGovernmentalView()}
+            {this.buildOptionsView()}
           </ScrollView>
         </View>
-        {this._buildBottomBar()}
+        {this.buildBottomBar()}
         {this.props.inProgress ? <Loading /> : null}
       </View>
     );
   }
 
-  _buildIntroPanel() {
+  static buildIntroPanel() {
     return (
       <View style={styles.bodyContainer}>
         <View style={styles.bodyParagraph}>
@@ -105,8 +92,7 @@ class CreateNation extends NavigatorComponent {
     );
   }
 
-  // * New fake bottom Tab Bar / 0.3.2 Sprint design
-  _buildBottomBar() {
+  buildBottomBar() {
     const isModified = nationIsModified(this.props);
     const isSavedDraft = this.props.initialNation.id !== undefined;
     const canSubmit = nationIsValid(this.props.editingNation);
@@ -142,7 +128,7 @@ class CreateNation extends NavigatorComponent {
   }
 
 
-  _buildCoreNationView() {
+  buildCoreNationView() {
     return (
       <PanelView
         style={styles.panelViewTransparent}
@@ -177,7 +163,7 @@ class CreateNation extends NavigatorComponent {
     );
   }
 
-  _buildLocationNationView() {
+  buildLocationNationView() {
     return (
       <PanelView
         style={styles.panelViewTransparent}
@@ -235,7 +221,7 @@ class CreateNation extends NavigatorComponent {
     );
   }
 
-  _buildGovernmentalView() {
+  buildGovernmentalView() {
     return (
       <PanelView
         style={styles.panelViewTransparent}
@@ -380,7 +366,7 @@ class CreateNation extends NavigatorComponent {
                 name: i18n.t('enums.nation.services.physical'),
               }]}
               uniqueKey='id'
-              ref={component => this.multiGovernanceService = component}
+              ref={(component) => { this.multiGovernanceService = component; }}
               onSelectedItemsChange={selectedItems => this.setFieldValue('governanceService', selectedItems)}
               selectedItems={this.props.editingNation.governanceService}
               selectText={i18n.t('screens.createNation.prompt.servicesOffered')}
@@ -394,7 +380,11 @@ class CreateNation extends NavigatorComponent {
               submitButtonText={i18n.t('common.ok')}
             />
             <View>
-              {this.multiGovernanceService && this.multiGovernanceService.getSelectedItemsExt(this.props.editingNation.governanceService)}
+              {
+                this.multiGovernanceService
+              &&
+                this.multiGovernanceService
+                  .getSelectedItemsExt(this.props.editingNation.governanceService)}
             </View>
           </View>
         </View>
@@ -402,7 +392,7 @@ class CreateNation extends NavigatorComponent {
     );
   }
 
-  _buildOptionsView() {
+  buildOptionsView() {
     return (
       <PanelView
         style={styles.panelViewTransparent}
