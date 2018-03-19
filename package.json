@@ -6,7 +6,9 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "lint": "eslint src __tests__ __mocks__",
     "lint:fix": "eslint --fix src __tests__ __mocks__",
-    "test": "flow && jest",
+    "test": "flow && jest __tests__",
+    "test:e2e": "detox test",
+    "test:e2e:build": "detox build",
     "test:update": "jest -u",
     "test:coverage": "flow && jest --coverage",
     "test:coveralls": "yarn test:coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
@@ -72,6 +74,7 @@
     "babel-jest": "22.0.3",
     "babel-preset-react-native": "4.0.0",
     "coveralls": "^3.0.0",
+    "detox": "^7.2.0",
     "documentation": "^5.3.5",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
@@ -127,6 +130,18 @@
     "_stream_passthrough": "readable-stream/passthrough",
     "stream": "stream-browserify",
     "vm": "vm-browserify"
+  },
+  "detox": {
+    "test-runner": "jest",
+    "runner-config": "__e2e__/config.json",
+    "configurations": {
+      "ios.sim.debug": {
+        "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/Pangea.app",
+        "build": "xcodebuild -workspace ios/Pangea.xcworkspace -scheme Pangea -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
+        "type": "ios.simulator",
+        "name": "iPhone 6"
+      }
+    }
   },
   "rnpm": {
     "assets": [
