@@ -1,11 +1,9 @@
 // @flow
 
-import _ from 'lodash';
-
 import {
   type Action,
   SHOW_CHAT_SPINNER,
-  HIDE_CHAT_SPINNER
+  HIDE_CHAT_SPINNER,
 } from '../actions/chat';
 
 type State = {
@@ -27,12 +25,12 @@ export default (state: State = initialState, action: Action): State => {
     case SHOW_CHAT_SPINNER:
       return {
         ...state,
-        isFetching: true
+        isFetching: true,
       };
     case HIDE_CHAT_SPINNER:
       return {
         ...state,
-        isFetching: false
+        isFetching: false,
       };
     default:
       return state;
