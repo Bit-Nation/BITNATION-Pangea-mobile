@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Alert } from 'react-native';
 
 import NationDetailsScreen from './NationDetailsScreen';
 import { switchNationTab, joinNation, leaveNation } from '../../actions/nations';
 import { androidNavigationButtons, screen } from '../../global/Screens';
-import { Alert } from 'react-native';
 import i18n from '../../global/i18n';
 import Colors from '../../global/colors';
 import { deleteNationDraft, startNationEditing, submitNation } from '../../actions/modifyNation';
@@ -39,7 +39,7 @@ class NationDetailsContainer extends NavigatorComponent {
     }
   }
 
-  _showCreatePrivateKeyAlert() {
+  showCreatePrivateKeyAlert() {
     Alert.alert(
       i18n.t('alerts.walletRequired.title'),
       i18n.t('alerts.walletRequired.subtitle'),
@@ -54,7 +54,7 @@ class NationDetailsContainer extends NavigatorComponent {
     );
   }
 
-  _onDeleteDraft = () => {
+  onDeleteDraft = () => {
     alert('deleteForm', [
       {
         name: 'cancel',
@@ -73,7 +73,7 @@ class NationDetailsContainer extends NavigatorComponent {
       }]);
   };
 
-  _onSubmitDraft = () => {
+  onSubmitDraft = () => {
     alert('submitForm', [
       {
         name: 'cancel',
@@ -110,8 +110,9 @@ class NationDetailsContainer extends NavigatorComponent {
   }
 
   performIfHasWallet(functionToPerform) {
+    /* global _ */
     if (_.isEmpty(this.props.wallets)) {
-      this._showCreatePrivateKeyAlert();
+      this.showCreatePrivateKeyAlert();
       return;
     }
 
@@ -124,8 +125,8 @@ class NationDetailsContainer extends NavigatorComponent {
         {...this.props}
         joinNation={this.onJoinNation}
         leaveNation={this.onLeaveNation}
-        deleteDraft={this._onDeleteDraft}
-        submitDraft={this._onSubmitDraft}
+        deleteDraft={this.onDeleteDraft}
+        submitDraft={this.onSubmitDraft}
         openNationChat={this.openNationChat}
       />
     );
