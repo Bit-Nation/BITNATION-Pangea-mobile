@@ -44,7 +44,7 @@ describe('modify nation action creators', () => {
     });
   });
 
-  test('startNationEditing', () => {
+  test('resetNationCreation', () => {
     expect(resetNationCreation()).toEqual({
       type: RESET_NATION_CREATION,
     });

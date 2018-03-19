@@ -18,7 +18,7 @@ type State = {
   +mnemonicValidationInProgress: boolean,
 }
 
-const initialState: State = {
+export const initialState: State = {
   createdMnemonic: null,
   enteredMnemonic: null,
   mnemonicValid: null,

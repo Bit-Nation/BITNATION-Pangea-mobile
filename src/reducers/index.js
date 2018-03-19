@@ -18,7 +18,7 @@ const rootReducer = {
   key,
   activity,
   testingMode,
-  chat
+  chat,
 };
 
 export default combineReducers(rootReducer);

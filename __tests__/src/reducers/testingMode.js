@@ -10,7 +10,6 @@ test('testing mode initial state has isActive set to false', () => {
 });
 
 describe('testing mode reducer action handling', () => {
-
   test('resetSteps', () => {
     const stateBefore = { initialState, stepsLeftToToggle: stepsCountToToggle - 1 };
     const stateAfter = reducer(stateBefore, resetSteps());
@@ -21,7 +20,6 @@ describe('testing mode reducer action handling', () => {
   });
 
   describe('emptyWallet', () => {
-
     const testChangeWalletEmptyTo = (value) => {
       const stateBefore = { ...initialState, walletEmpty: !value };
       const stateAfter = reducer(stateBefore, emptyWallet());
@@ -38,11 +36,9 @@ describe('testing mode reducer action handling', () => {
     test('walletEmpty changed to true', () => {
       testChangeWalletEmptyTo(true);
     });
-
   });
 
   describe('makeStep', () => {
-
     const testChangeIsActiveTo = (value) => {
       const stateBefore = { ...initialState, isActive: !value };
       let stateAfter = stateBefore;
@@ -74,7 +70,5 @@ describe('testing mode reducer action handling', () => {
         stepsLeftToToggle: initialValue - 1,
       });
     });
-
   });
-
 });
