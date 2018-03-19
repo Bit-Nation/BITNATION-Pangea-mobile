@@ -1,6 +1,11 @@
 import reducer, { initialState } from '../../../src/reducers/wallet';
 import {
-  selectWallet, sendMoney, sendMoneyFailed, sendMoneySuccess, updateWalletBalance, walletsListUpdated,
+  selectWallet,
+  sendMoney,
+  sendMoneyFailed,
+  sendMoneySuccess,
+  updateWalletBalance,
+  walletsListUpdated,
   walletSyncFailed,
 } from '../../../src/actions/wallet';
 
