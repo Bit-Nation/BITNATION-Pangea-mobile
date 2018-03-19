@@ -22,7 +22,7 @@ type State = {
   +moneySendingError: ?Error,
 };
 
-const initialState: State = {
+export const initialState: State = {
   wallets: null,
   selectedWalletAddress: null,
   moneySendingInProgress: false,
