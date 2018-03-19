@@ -20,7 +20,7 @@ type Props = {
 
 /**
  * @desc Component that renders an alert panel view for Nations Status
- * @type {React.Component} A component.
+ * @return {React.Component} A component.
  */
 
 const PanelViewAlert = ({ status }: Props) => {

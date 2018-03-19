@@ -23,7 +23,7 @@ type Props = {
 
 /**
  * @desc Generates a standard native Switch with a Label at the right
- * @type {React.Component} A component.
+ * @return {React.Component} A component.
  */
 
 const SwitchLabeled = ({ onValueChange, value, label }:Props) => {

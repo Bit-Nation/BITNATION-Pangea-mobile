@@ -21,7 +21,7 @@ type Props = {
 
 /**
  * @desc Component that renders the panel indicating the user is Citizen of a Nation
- * @type {React.Component} A component.
+ * @return {React.Component} A component.
  */
 
 const styles = MediaQueryStyleSheet.create({
