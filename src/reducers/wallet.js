@@ -13,6 +13,7 @@ import {
   WALLETS_LIST_UPDATED,
 } from '../actions/wallet';
 import type { WalletType } from '../types/Wallet';
+import { getWalletIndex } from '../utils/wallet';
 
 type State = {
   +wallets: Array<WalletType> | null,
@@ -42,20 +43,14 @@ export default (state: State = initialState, action: Action): State => {
       return Object.assign({}, state, { wallets: action.wallets });
     case WALLET_SYNC_FAILED: {
       const { walletAddress } = action;
-      const walletIndex = _.findIndex(
-        state.wallets,
-        wallet => wallet.ethAddress === walletAddress,
-      );
+      const walletIndex = getWalletIndex(state.wallets, walletAddress);
       const newWallets = _.cloneDeep(state.wallets);
       newWallets[walletIndex].synchronizationError = action.error;
       return Object.assign({}, state, { wallets: newWallets });
     }
     case UPDATE_WALLET_BALANCE: {
       const { walletAddress } = action;
-      const walletIndex = _.findIndex(
-        state.wallets,
-        wallet => wallet.ethAddress === walletAddress,
-      );
+      const walletIndex = getWalletIndex(state.wallets, walletAddress);
       const newWallets = _.cloneDeep(state.wallets);
       newWallets[walletIndex].synchronizationError = undefined;
       return Object.assign({}, state, { wallets: newWallets });
