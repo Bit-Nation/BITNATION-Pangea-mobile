@@ -25,13 +25,13 @@ type Props = {
    */
   onPress?: () => void,
   /**
-   * @desc Callback to be called on Switch when changes value.
+   * @desc Resource to be rendered as icon with the button.
    */
   iconSource?: number,
 }
 
 /**
- * @desc Component that renders the panel indicating the user is Citizen of a Nation
+ * @desc Component that renders the buttons used on the Nations Screens (icon + text)
  * @return {React.Component} A component.
  */
 

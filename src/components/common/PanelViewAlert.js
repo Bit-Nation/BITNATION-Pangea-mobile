@@ -13,7 +13,7 @@ import i18n from '../../global/i18n';
 
 type Props = {
   /**
-   * @desc Statue message to show in panel
+   * @desc Status message to show in panel
    */
   status?: string,
 };
