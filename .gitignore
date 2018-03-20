@@ -61,3 +61,4 @@ yarn.lock
 src.zip
 docs_build
 /.eslintrc
+pangea*

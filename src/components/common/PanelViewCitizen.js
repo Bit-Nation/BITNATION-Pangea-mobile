@@ -1,27 +1,34 @@
-/**
- * @desc Component that renders the panel indicating the user is Citizen of a Nation
- * @type React.Component
- * @param props.nationName {String} Name of the Nation of citizenship
- */
+// @flow
 
 import React from 'react';
-import { View, Text, Image } from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+} from 'react-native';
+
 import { MediaQueryStyleSheet } from 'react-native-responsive';
-import PropTypes from 'prop-types';
 import GlobalStyles from '../../global/Styles';
 import i18n from '../../global/i18n';
 import AssetsImages from '../../global/AssetsImages';
 
+type Props = {
+  /**
+   * @desc Name of the Nation of citizenship
+   */
+  nationName?: string,
+};
+
 /**
  * @desc Component that renders the panel indicating the user is Citizen of a Nation
- * @type React.Component
+ * @return {React.Component} A component.
  */
 
 const styles = MediaQueryStyleSheet.create({
   ...GlobalStyles,
 });
 
-const PanelViewCitizen = ({ nationName }) => (
+const PanelViewCitizen = ({ nationName }: Props) => (
   <View style={styles.panelViewCitizen}>
     <Text style={styles.body}>
       {i18n.t('screens.nationDetails.citizen')} {nationName}
@@ -29,14 +36,6 @@ const PanelViewCitizen = ({ nationName }) => (
     <Image source={AssetsImages.userCitizenIcon} style={styles.panelViewCitizenIcon} />
   </View>
 );
-
-PanelViewCitizen.propTypes = {
-  /**
-   * @desc Name of the Nation of citizenship
-   * @type string
-   */
-  nationName: PropTypes.string,
-};
 
 PanelViewCitizen.defaultProps = {
   nationName: '',
