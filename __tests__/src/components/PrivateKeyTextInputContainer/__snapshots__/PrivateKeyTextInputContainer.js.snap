@@ -117,6 +117,9 @@ ShallowWrapper {
     index={0}
     isLast={false}
     label="Test label"
+    onChange={[Function]}
+    onFocus={[Function]}
+    onSubmit={[Function]}
     value="Test value"
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -369,6 +372,9 @@ ShallowWrapper {
     index={0}
     isLast={true}
     label="Test label"
+    onChange={[Function]}
+    onFocus={[Function]}
+    onSubmit={[Function]}
     value="Test value"
   />,
   Symbol(enzyme.__renderer__): Object {

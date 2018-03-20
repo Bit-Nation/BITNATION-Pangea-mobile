@@ -1,5 +1,3 @@
-const logo = require('../assets/images/logo.png');
-
 const background = require('../assets/images/background.jpg');
 const rightArrow = require('../assets/images/right_arrow.png');
 const ethereumLogo = require('../assets/images/ethereum_logo.png');
@@ -26,9 +24,6 @@ const profileTabIcon = require('../assets/images/tabIconProfile.png');
 const QR = require('../assets/images/QR.png');
 
 // DEMO placeholders
-const holonsPlaceholder = require('../assets/images/holonsPlaceholder.png');
-const achievementsPlaceholder = require('../assets/images/achievementsPlaceholder.png');
-const mapPlaceholder = require('../assets/images/mapPlaceholder.png');
 const demoPlaceholder = require('../assets/images/demoImage.png');
 const avatarPlaceholder = require('../assets/images/avatarPlaceholder.png');
 
@@ -47,7 +42,7 @@ const userCitizenIcon = require('../assets/images/avatarCitizen.png');
 
 const disclosureRowIcon = require('../assets/images/disclosure.png');
 
-//Chat Nations UI
+// Chat Nations UI
 const signalIcon0 = require('../assets/images/signal_icon_0.png');
 const signalIcon1 = require('../assets/images/signal_icon_1.png');
 const signalIcon2 = require('../assets/images/signal_icon_2.png');
@@ -57,7 +52,6 @@ const signalIcon5 = require('../assets/images/signal_icon_5.png');
 const botIconLucy = require('../assets/images/icon_chatbot.png');
 
 const Images = {
-  logo,
   background,
   rightArrow,
   ethereumLogo,
@@ -82,9 +76,6 @@ const Images = {
     profile: profileTabIcon,
   },
   Placeholder: {
-    holons: holonsPlaceholder,
-    achievements: achievementsPlaceholder,
-    map: mapPlaceholder,
     demo: demoPlaceholder,
     avatar: avatarPlaceholder,
   },

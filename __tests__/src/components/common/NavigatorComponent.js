@@ -1,5 +1,3 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
 import { Navigator } from 'react-native-navigation';
 
 import NavigatorComponent from '../../../../src/components/common/NavigatorComponent';
@@ -19,6 +17,12 @@ describe('NavigatorComponent tests', () => {
     expect(mockFunc.mock.calls[0][0]).toBe(testButtonID);
   });
 
+  /**
+   * @desc Common test that checks if component called specific function on specific event id.
+   * @param {string} callbackName Name of callback function
+   * @param {string} id Id of event.
+   * @return {void}
+   */
   function componentPassesEvent(callbackName, id) {
     const navigator = new Navigator();
     const component = new NavigatorComponent({ navigator });
