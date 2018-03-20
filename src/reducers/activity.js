@@ -11,7 +11,7 @@ import {
 import type { ActivityLogMessage } from '../types/ActivityLogMessage';
 import { ACTIVITY_MESSAGES_LIMIT } from '../global/Constants';
 
-type State = {
+export type State = {
   +messages: Array<ActivityLogMessage>,
   +isFetching: boolean,
 }

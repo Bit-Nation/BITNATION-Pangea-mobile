@@ -15,7 +15,7 @@ import {
 import type { NationType, NationIdType, EditingNationType } from '../types/Nation';
 import { resolveNation } from '../utils/nations';
 
-type State = {
+export type State = {
   +nations: Array<NationType>,
   +myNationIds: Array<NationIdType>,
   +searchString: string | null,

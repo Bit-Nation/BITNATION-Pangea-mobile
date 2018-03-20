@@ -11,7 +11,7 @@ import {
 
 export const stepsCountToToggle = 5;
 
-type State = {
+export type State = {
   +isActive: boolean,
   +stepsLeftToToggle: number,
   +walletEmpty: boolean,

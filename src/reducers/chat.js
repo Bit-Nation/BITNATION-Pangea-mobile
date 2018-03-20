@@ -6,7 +6,7 @@ import {
   HIDE_CHAT_SPINNER,
 } from '../actions/chat';
 
-type State = {
+export type State = {
   +isFetching: boolean,
 };
 
