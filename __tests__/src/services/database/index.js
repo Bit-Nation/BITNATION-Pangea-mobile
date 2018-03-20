@@ -5,11 +5,13 @@ const randomDbPath = () => `database/${Math.random()}`;
 
 describe('db', () => {
   test('default path', async () => {
+    expect.assertions(1);
     const realm = await db;
     expect(realm.path.split('/').slice(-1)[0]).toEqual('pangea');
     realm.close();
   });
   test('custom path', async () => {
+    expect.assertions(1);
     const id = Math.random();
     const databaseGenerator = factory(`database/${id}`);
     const realm = await databaseGenerator.next().value;
@@ -20,6 +22,7 @@ describe('db', () => {
     realm.close();
   });
   test('open and migrate process', async () => {
+    expect.assertions(4);
     const dbPath = randomDbPath();
     const databaseGenerator = factory(dbPath);
 
