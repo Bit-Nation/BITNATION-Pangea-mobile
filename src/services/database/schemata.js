@@ -1,27 +1,27 @@
 // @flow
 
-const schemaVZero = require('./schema/v0');
-const schemaVOne = require('./schema/v1');
-const schemaVTwo = require('./schema/v2');
+import { schemata as schemaVZero, migration as migrationVZero } from './schema/v0';
+import { schemata as schemaVOne, migration as migrationVOne } from './schema/v1';
+import { schemata as schemaVTwo, migration as migrationVTwo } from './schema/v2';
 
 /**
  * @desc All available schemas. including there version and migration.
  */
 export default [
   {
-    schema: schemaVZero.schemata,
+    schema: schemaVZero,
     schemaVersion: 0,
-    migration: schemaVZero.migration,
+    migration: migrationVZero,
   },
   {
-    schema: schemaVOne.schemata,
+    schema: schemaVOne,
     schemaVersion: 1,
-    migration: schemaVOne.migration,
+    migration: migrationVOne,
   },
   {
-    schema: schemaVTwo.schemata,
+    schema: schemaVTwo,
     schemaVersion: 2,
-    migration: schemaVTwo.migration,
+    migration: migrationVTwo,
   },
 ];
 
