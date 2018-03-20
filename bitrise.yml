@@ -1,0 +1,437 @@
+format_version: "4"
+default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
+project_type: react-native
+app:
+  envs:
+  - GRADLE_BUILD_FILE_PATH: android/build.gradle
+  - GRADLEW_PATH: android/gradlew
+  - BITRISE_PROJECT_PATH: ios/Pangea.xcworkspace
+  - BITRISE_SCHEME: Pangea
+  - BITRISE_EXPORT_METHOD: ad-hoc
+  - COVERALLS_REPO_TOKEN: BvLQhZVwvIZxGPdGYzVFJFcSVQvPaBcUJ
+trigger_map:
+- push_branch: '*'
+  workflow: main
+- push_branch: test_fix
+  workflow: tests
+workflows:
+  Experimental:
+    steps:
+    - activate-ssh-key@3.1.1:
+        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+    - deploy-to-bitrise-io@1.3.10: {}
+    - git-clone@4.0.5: {}
+    - script@1.1.5:
+        title: update fastlane
+        inputs:
+        - content: |
+            set -e
+            set -x
+
+            gem install fastlane -NV
+    - generate-text-file@0.0.3:
+        title: create .env file
+        inputs:
+        - file_content: |-
+            ETH_HTTP_ENDPOINT=https://rinkeby.infura.io/kasdflhuoi4örjfasudofialösdf
+            PRODUCTION=false
+        - file_name: .env
+    - npm@0.9.0:
+        title: npm install
+        inputs:
+        - command: install
+    - npm@0.9.0:
+        title: tests
+        inputs:
+        - command: test
+    - script@1.1.5:
+        inputs:
+        - content: echo $?
+    - npm@0.9.0:
+        title: prebuild js files
+        inputs:
+        - command: run build:ios
+    - set-android-manifest-versions@1.0.5:
+        inputs:
+        - version_name: 1.0.0
+        - manifest_file: $BITRISE_SOURCE_DIR/android/app/src/main/AndroidManifest.xml
+    - script@1.1.5:
+        title: create android build
+        inputs:
+        - content: |-
+            set -e
+            set -x
+
+            cd android
+            git clone git@github.com:florianlenz/pangea_fastlane_android.git fastlane
+            fastlane dev_build
+    - script@1.1.5:
+        title: create ios build
+        inputs:
+        - content: |-
+            set -e
+            set -x
+
+            cd ios
+            git clone git@github.com:florianlenz/pangea_fastlane_ios.git fastlane
+            pod install
+            fastlane adhoc
+    - deploy-to-bitrise-io@1.3.10:
+        title: deploy ipa
+        inputs:
+        - deploy_path: Pangea.ipa
+    - script@1.1.5:
+        title: export ipa install page
+        inputs:
+        - content: |-
+            set -e
+            set -x
+
+            envman add --key IPA_INSTALL_PAGE --value "$BITRISE_PUBLIC_INSTALL_PAGE_URL"
+    - deploy-to-bitrise-io@1.3.10:
+        title: deploy apk
+        inputs:
+        - deploy_path: android/app/build/outputs/apk/app-release.apk
+    - slack@2.6.3:
+        title: report status to slack
+        inputs:
+        - channel: '#dev_bots'
+        - message: 'Build for *$GIT_CLONE_COMMIT_MESSAGE_SUBJECT* (hash: *$GIT_CLONE_COMMIT_HASH*)
+            from: *$GIT_CLONE_COMMIT_AUTHOR_NAME* succeed. Here is the APK: $BITRISE_PUBLIC_INSTALL_PAGE_URL,
+            and here the IPA: $IPA_INSTALL_PAGE'
+        - message_on_error: 'Build for *$GIT_CLONE_COMMIT_MESSAGE_SUBJECT* (hash:
+            *$GIT_CLONE_COMMIT_HASH*) from: *$GIT_CLONE_COMMIT_AUTHOR_NAME* failed.
+            Make sure that the test''s are passing AND the project can be build.'
+        - image_url: ""
+        - image_url_on_error: ""
+        - icon_url_on_error: https://www.bitrise.io/favicon.ico
+        - icon_url: https://www.bitrise.io/favicon.ico
+        - webhook_url: https://hooks.slack.com/services/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
+  detox-android:
+    steps:
+    - avd-manager@0.9.2: {}
+    - activate-ssh-key@3.1.1:
+        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+    - deploy-to-bitrise-io@1.3.10: {}
+    - git-clone@4.0.5: {}
+    - generate-text-file@0.0.3:
+        title: create .env file
+        inputs:
+        - file_content: |-
+            ETH_HTTP_ENDPOINT=rinkeby.infura.io/kasdflhuoi4örjfasudofialösdf
+            PRODUCTION=false
+        - file_name: .env
+    - npm@0.9.0:
+        title: install dependencies
+        inputs:
+        - command: install
+    - file-downloader@1.0.0:
+        inputs:
+        - destination: $HOME/keystores/my_keystore.jks
+        - source: $BITRISEIO_ANDROID_KEYSTORE_URL
+    - gradle-runner@1.8.3:
+        is_always_run: true
+        inputs:
+        - gradle_task: assembleRelease
+    - wait-for-android-emulator@1.0.4: {}
+    - npm@0.9.0:
+        inputs:
+        - command: run test:e2e:bitrise:android
+  detox-ios:
+    steps:
+    - activate-ssh-key@3.1.1:
+        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+    - deploy-to-bitrise-io@1.3.10: {}
+    - git-clone@4.0.5: {}
+    - script@1.1.5:
+        title: update fastlane
+        inputs:
+        - content: |
+            set -e
+            set -x
+
+            gem install fastlane -NV
+    - generate-text-file@0.0.3:
+        title: create .env file
+        inputs:
+        - file_content: |-
+            ETH_HTTP_ENDPOINT=https://rinkeby.infura.io/kasdflhuoi4örjfasudofialösdf
+            PRODUCTION=false
+        - file_name: .env
+    - npm@0.9.0:
+        title: npm install
+        inputs:
+        - command: install
+    - npm@0.9.0:
+        title: prebuild js files
+        inputs:
+        - command: run build:ios
+    - script@1.1.5:
+        title: create ios build
+        inputs:
+        - content: |-
+            set -e
+            set -x
+
+            cd ios
+            git clone git@github.com:florianlenz/pangea_fastlane_ios.git fastlane
+            pod install
+            cd ..
+    - script@1.1.5:
+        title: Tap Wix
+        inputs:
+        - content: |-
+            #!/usr/bin/env bash
+            # fail if any commands fails
+            set -e
+            # debug log
+            set -x
+
+            # write your script here
+            brew tap wix/brew
+
+            # or run a script from your repository, like:
+            # bash ./path/to/script.sh
+            # not just bash, e.g.:
+            # ruby ./path/to/script.rb
+    - brew-install@0.9.0:
+        inputs:
+        - packages: node
+    - brew-install@0.9.0:
+        inputs:
+        - packages: applesimutils
+    - npm@0.9.0:
+        inputs:
+        - command: install -g detox-cli
+    - script@1.1.5:
+        title: Create Detox Build
+        inputs:
+        - content: |-
+            #!/usr/bin/env bash
+            # fail if any commands fails
+            set -e
+            # debug log
+            set -x
+
+            # write your script here
+            detox build
+
+            # or run a script from your repository, like:
+            # bash ./path/to/script.sh
+            # not just bash, e.g.:
+            # ruby ./path/to/script.rb
+    - script@1.1.5:
+        title: Run Detox Tests
+        inputs:
+        - content: |-
+            #!/usr/bin/env bash
+            # fail if any commands fails
+            set -e
+            # debug log
+            set -x
+
+            # write your script here
+            detox test
+
+            # or run a script from your repository, like:
+            # bash ./path/to/script.sh
+            # not just bash, e.g.:
+            # ruby ./path/to/script.rb
+  detox-ios-default:
+    steps:
+    - activate-ssh-key@3.1.1:
+        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+    - deploy-to-bitrise-io@1.3.10: {}
+    - git-clone@4.0.5: {}
+    - generate-text-file@0.0.3:
+        title: create .env file
+        inputs:
+        - file_content: |-
+            ETH_HTTP_ENDPOINT=https://rinkeby.infura.io/kasdflhuoi4örjfasudofialösdf
+            PRODUCTION=false
+        - file_name: .env
+    - npm@0.9.0:
+        title: npm install packages
+        inputs:
+        - command: install
+    - npm@0.9.0:
+        title: Install Detox CLI
+        inputs:
+        - command: install -g detox-cli
+    - npm@0.9.0:
+        title: Install React Native CLI
+        inputs:
+        - command: install -g react-native-cli
+    - script@1.1.5:
+        title: Install Detox Utils
+        inputs:
+        - content: |-
+            #!/usr/bin/env bash
+            # fail if any commands fails
+            set -e
+            # debug log
+            set -x
+
+            # write your script here
+            brew tap wix/brew
+            brew install applesimutils
+
+            # or run a script from your repository, like:
+            # bash ./path/to/script.sh
+            # not just bash, e.g.:
+            # ruby ./path/to/script.rb
+    - script@1.1.5:
+        title: create ios build
+        inputs:
+        - content: |-
+            set -e
+            set -x
+
+            cd ios
+            pod install
+            cd ..
+    - script@1.1.5:
+        title: Detox - Build Release App
+        inputs:
+        - content: |-
+            #!/usr/bin/env bash
+            # fail if any commands fails
+            set -e
+            # debug log
+            set -x
+
+            # write your script here
+            detox build --configuration ios.sim.release
+
+            # or run a script from your repository, like:
+            # bash ./path/to/script.sh
+            # not just bash, e.g.:
+            # ruby ./path/to/script.rb
+    - script@1.1.5:
+        title: Run Detox Tests
+        inputs:
+        - content: |-
+            #!/usr/bin/env bash
+            # fail if any commands fails
+            set -e
+            # debug log
+            set -x
+
+            # write your script here
+            detox test --configuration ios.sim.release --cleanup
+
+            # or run a script from your repository, like:
+            # bash ./path/to/script.sh
+            # not just bash, e.g.:
+            # ruby ./path/to/script.rb
+  main:
+    steps:
+    - activate-ssh-key@3.1.1:
+        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+    - deploy-to-bitrise-io@1.3.10: {}
+    - git-clone@4.0.5: {}
+    - generate-text-file@0.0.3:
+        title: create .env file
+        inputs:
+        - file_content: |-
+            ETH_HTTP_ENDPOINT=https://rinkeby.infura.io/kasdflhuoi4örjfasudofialösdf
+            PRODUCTION=false
+        - file_name: .env
+    - npm@0.9.0:
+        title: npm install
+        inputs:
+        - command: install
+    - npm@0.9.0:
+        title: tests
+        inputs:
+        - command: run test:coveralls
+    - slack@2.6.3:
+        title: report status to slack
+        inputs:
+        - channel: '#dev_bots'
+        - message: 'Build for *$GIT_CLONE_COMMIT_MESSAGE_SUBJECT* (hash: *$GIT_CLONE_COMMIT_HASH*)
+            from: *$GIT_CLONE_COMMIT_AUTHOR_NAME* succeed.'
+        - message_on_error: 'Build for *$GIT_CLONE_COMMIT_MESSAGE_SUBJECT* (hash:
+            *$GIT_CLONE_COMMIT_HASH*) from: *$GIT_CLONE_COMMIT_AUTHOR_NAME* failed.
+            Make sure that the test''s are passing AND the project can be build.'
+        - image_url: ""
+        - image_url_on_error: ""
+        - icon_url_on_error: https://www.bitrise.io/favicon.ico
+        - icon_url: https://www.bitrise.io/favicon.ico
+        - webhook_url: https://hooks.slack.com/services/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
+  test2:
+    steps:
+    - activate-ssh-key@3.1.1:
+        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+    - deploy-to-bitrise-io@1.3.10: {}
+    - git-clone@4.0.5: {}
+    - generate-text-file@0.0.3:
+        title: create .env file
+        inputs:
+        - file_content: |-
+            ETH_HTTP_ENDPOINT=rinkeby.infura.io/kasdflhuoi4örjfasudofialösdf
+            PRODUCTION=false
+        - file_name: .env
+    - npm@0.9.0:
+        title: install dependencies
+        inputs:
+        - command: install
+    - file-downloader@1.0.0:
+        inputs:
+        - destination: $HOME/keystores/my_keystore.jks
+        - source: $BITRISEIO_ANDROID_KEYSTORE_URL
+    - gradle-runner@1.8.3:
+        is_always_run: true
+        inputs:
+        - gradle_task: assembleRelease
+  tests:
+    steps:
+    - avd-manager@0.9.2: {}
+    - activate-ssh-key@3.1.1:
+        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+    - deploy-to-bitrise-io@1.3.10: {}
+    - git-clone@4.0.5: {}
+    - generate-text-file@0.0.3:
+        title: create .env file
+        inputs:
+        - file_content: |-
+            ETH_HTTP_ENDPOINT=rinkeby.infura.io/kasdflhuoi4örjfasudofialösdf
+            PRODUCTION=false
+        - file_name: .env
+    - npm@0.9.0:
+        title: install dependencies
+        inputs:
+        - command: install
+    - npm@0.9.0:
+        title: Install Detox CLI
+        inputs:
+        - command: install -g detox-cli
+    - npm@0.9.0:
+        title: Install React Native CLI
+        inputs:
+        - command: install -g react-native-cli
+    - file-downloader@1.0.0:
+        inputs:
+        - destination: $HOME/keystores/my_keystore.jks
+        - source: $BITRISEIO_ANDROID_KEYSTORE_URL
+    - gradle-runner@1.8.3:
+        is_always_run: true
+        inputs:
+        - gradle_task: assembleRelease
+    - wait-for-android-emulator@1.0.4: {}
+    - script@1.1.5:
+        inputs:
+        - content: |-
+            #!/usr/bin/env bash
+            # fail if any commands fails
+            set -e
+            # debug log
+            set -x
+
+            # write your script here
+            detox test -c android.emu.release
+
+            # or run a script from your repository, like:
+            # bash ./path/to/script.sh
+            # not just bash, e.g.:
+            # ruby ./path/to/script.rb

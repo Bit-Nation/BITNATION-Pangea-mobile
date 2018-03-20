@@ -116,7 +116,7 @@ android {
     signingConfigs {
         release {
             if (project.hasProperty('MYAPP_RELEASE_STORE_FILE')) {
-                storeFile file(System.getenv("HOME") + "/keystores/my_keystore.jks")
+                storeFile file(System.getenv("HOME") + '/bitnation_android_keys_dev')
                 storePassword System.getenv("ANDROID_KEY_STORE_PASSWORD")
                 keyAlias System.getenv("BITRISEIO_ANDROID_KEYSTORE_ALIAS")
                 keyPassword System.getenv("ANDROID_KEY_STORE_PASSWORD")
