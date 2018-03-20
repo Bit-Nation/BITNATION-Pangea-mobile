@@ -22,7 +22,7 @@ type Props = {
   /**
    * @desc Array of all nations objects
    */
-  nations: Array<NationType>,
+  +nations: Array<NationType>,
   /**
    * @desc Callback on select nation to open. Takes one parameter - id of nation.
    */

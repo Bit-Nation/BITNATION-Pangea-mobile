@@ -17,7 +17,7 @@ type Props = {
   /**
    * @desc Array of messages objects to display.
    */
-  messages: Array<ActivityLogMessage>,
+  +messages: Array<ActivityLogMessage>,
   /**
    * @desc Style to be applied to root view.
    */
@@ -29,7 +29,7 @@ type TestingModeProps = {
    * @desc State of testing mode. For testing only.
    */
   testingMode: {
-    isActive: bool,
+    +isActive: bool,
   },
   /**
    * @desc Callback to add dummy message. For testing only.

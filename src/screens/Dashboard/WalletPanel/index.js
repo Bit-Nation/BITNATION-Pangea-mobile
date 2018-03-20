@@ -15,7 +15,7 @@ type Props = {
   /**
    * @desc Array of wallet objects.
    */
-  wallets: Array<WalletType>,
+  +wallets: Array<WalletType>,
   /**
    * @desc Style to be applied to root view.
    */
