@@ -24,7 +24,7 @@ describe('modify nation reducer action handling', () => {
 
   test('startNationCreation', () => {
     const stateBefore = initialState;
-    const stateAfter = reducer(initialState, startNationCreation());
+    const stateAfter = reducer(stateBefore, startNationCreation());
     expect(stateAfter).toEqual({
       ...stateBefore,
       initialNation: emptyNation,
@@ -34,7 +34,7 @@ describe('modify nation reducer action handling', () => {
 
   test('startNationEditing', () => {
     const stateBefore = initialState;
-    const stateAfter = reducer(initialState, startNationEditing(mockNation));
+    const stateAfter = reducer(stateBefore, startNationEditing(mockNation));
     expect(stateAfter).toEqual({
       ...stateBefore,
       initialNation: mockNation,
@@ -44,7 +44,7 @@ describe('modify nation reducer action handling', () => {
 
   test('resetNationCreation', () => {
     const stateBefore = initialState;
-    const stateAfter = reducer(initialState, resetNationCreation());
+    const stateAfter = reducer(stateBefore, resetNationCreation());
     expect(stateAfter).toEqual({
       ...stateBefore,
       editingNation: stateBefore.initialNation,
@@ -55,7 +55,7 @@ describe('modify nation reducer action handling', () => {
     const value = 'NEW NAME';
 
     const stateBefore = initialState;
-    const stateAfter = reducer(initialState, editingNationFieldChange('name', value));
+    const stateAfter = reducer(stateBefore, editingNationFieldChange('name', value));
     expect(stateAfter).toEqual({
       ...stateBefore,
       editingNation: {
@@ -67,7 +67,7 @@ describe('modify nation reducer action handling', () => {
 
   test('cancelNationCreation', () => {
     const stateBefore = initialState;
-    const stateAfter = reducer(initialState, cancelNationCreation());
+    const stateAfter = reducer(stateBefore, cancelNationCreation());
     expect(stateAfter).toEqual({
       ...stateBefore,
       editingNation: null,
@@ -77,7 +77,7 @@ describe('modify nation reducer action handling', () => {
 
   test('saveNationDraft', () => {
     const stateBefore = initialState;
-    const stateAfter = reducer(initialState, saveNationDraft());
+    const stateAfter = reducer(stateBefore, saveNationDraft());
     expect(stateAfter).toEqual({
       ...stateBefore,
       inProgress: true,
@@ -86,7 +86,7 @@ describe('modify nation reducer action handling', () => {
 
   test('deleteNationDraft', () => {
     const stateBefore = initialState;
-    const stateAfter = reducer(initialState, deleteNationDraft());
+    const stateAfter = reducer(stateBefore, deleteNationDraft());
     expect(stateAfter).toEqual({
       ...stateBefore,
       inProgress: true,
@@ -95,7 +95,7 @@ describe('modify nation reducer action handling', () => {
 
   test('submitNation', () => {
     const stateBefore = initialState;
-    const stateAfter = reducer(initialState, submitNation());
+    const stateAfter = reducer(stateBefore, submitNation());
     expect(stateAfter).toEqual({
       ...stateBefore,
       inProgress: true,
@@ -104,7 +104,7 @@ describe('modify nation reducer action handling', () => {
 
   test('nationDraftSaveResult', () => {
     const stateBefore = initialState;
-    const stateAfter = reducer(initialState, nationDraftSaveResult(undefined, mockError));
+    const stateAfter = reducer(stateBefore, nationDraftSaveResult(undefined, mockError));
     expect(stateAfter).toEqual({
       ...stateBefore,
       inProgress: false,
@@ -114,7 +114,7 @@ describe('modify nation reducer action handling', () => {
 
   test('nationDraftDeleteResult', () => {
     const stateBefore = initialState;
-    const stateAfter = reducer(initialState, nationDraftDeleteResult(undefined, mockError));
+    const stateAfter = reducer(stateBefore, nationDraftDeleteResult(undefined, mockError));
     expect(stateAfter).toEqual({
       ...stateBefore,
       inProgress: false,
@@ -124,7 +124,7 @@ describe('modify nation reducer action handling', () => {
 
   test('nationSubmitResult', () => {
     const stateBefore = initialState;
-    const stateAfter = reducer(initialState, nationSubmitResult(undefined, mockError));
+    const stateAfter = reducer(stateBefore, nationSubmitResult(undefined, mockError));
     expect(stateAfter).toEqual({
       ...stateBefore,
       inProgress: false,
