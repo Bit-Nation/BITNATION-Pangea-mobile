@@ -1,7 +1,7 @@
+import Realm from 'realm';
 import db, { factory } from '../../../../src/services/database/index';
 
 const randomDbPath = () => `database/${Math.random()}`;
-const Realm = require('realm');
 
 describe('db', () => {
   test('default path', async () => {
