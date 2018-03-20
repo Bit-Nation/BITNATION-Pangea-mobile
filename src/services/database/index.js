@@ -1,7 +1,6 @@
+import Realm from 'realm';
+import co from 'co';
 import schemas from './schemata';
-
-const Realm = require('realm');
-const co = require('co');
 
 const REALM_PATH = 'pangea';
 
