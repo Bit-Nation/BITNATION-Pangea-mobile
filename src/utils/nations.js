@@ -1,10 +1,18 @@
 // @flow
 import _ from 'lodash';
-import type { NationType } from 'BITNATION-Pangea-libs/src/database/schemata';
-import { TX_JOB_STATUS_PENDING, TX_JOB_STATUS_FAILED, TX_JOB_STATUS_SUCCESS } from 'BITNATION-Pangea-libs/src/queues/transaction';
+import {
+  TX_JOB_STATUS_PENDING,
+  TX_JOB_STATUS_FAILED,
+  TX_JOB_STATUS_SUCCESS,
+} from 'BITNATION-Pangea-libs/src/queues/transaction';
 import Colors from '../global/colors';
+import type { DBNationType, NationType, EditingNationType } from '../types/Nation';
 
-export { TX_JOB_STATUS_PENDING, TX_JOB_STATUS_FAILED, TX_JOB_STATUS_SUCCESS } from 'BITNATION-Pangea-libs/src/queues/transaction';
+export {
+  TX_JOB_STATUS_PENDING,
+  TX_JOB_STATUS_FAILED,
+  TX_JOB_STATUS_SUCCESS,
+} from 'BITNATION-Pangea-libs/src/queues/transaction';
 
 /**
  *
@@ -12,7 +20,7 @@ export { TX_JOB_STATUS_PENDING, TX_JOB_STATUS_FAILED, TX_JOB_STATUS_SUCCESS } fr
  * @param id {number} the id of the nation
  * @returns {*|ReactWrapper|ConfigT|ShallowWrapper}
  */
-export function resolveNation(nations:Array<NationType>, id:number) {
+export function resolveNation(nations: Array<NationType>, id: number) {
   return _.find(nations, nation => nation.id === id);
 }
 
@@ -45,7 +53,7 @@ type NationStatus = {
  * @param nation
  * @returns {Object}
  */
-export function resolveStatus(nation: NationType): NationStatus | null {
+export function resolveStatus(nation: NationType): NationStatus | null {
   // idInSmartContract only exist when the nation was created
   if (nation.idInSmartContract === -1 && nation.tx === null) {
     return {
@@ -78,28 +86,70 @@ export function nationIsDraft(nation: NationType): boolean {
 /**
  * @todo need's rewrite of the param's
  * @param nationData
- * @returns {{virtualNation: *, governanceService: (*|string|undefined|JoinEffectDescriptor)}}
+ * @returns {DBNationType}
  */
-export function convertToDatabase(nationData:any) {
+export function convertToDatabase(nationData: NationType): DBNationType {
   return {
-    ...nationData,
+    id: nationData.id,
+    idInSmartContract: nationData.idInSmartContract,
+    created: nationData.created,
+    nationName: nationData.nationName,
+    nationDescription: nationData.nationDescription,
+    exists: nationData.exists,
     // @todo Fix virtual nation save unselected state
     virtualNation: nationData.virtualNation === null ? true : nationData.virtualNation,
+    nationCode: nationData.nationCode,
+    lawEnforcementMechanism: nationData.lawEnforcementMechanism,
+    profit: nationData.profit,
+    nonCitizenUse: nationData.nonCitizenUse,
+    diplomaticRecognition: nationData.diplomaticRecognition,
+    decisionMakingProcess: nationData.decisionMakingProcess,
     governanceService: nationData.governanceService.join(', '),
+    citizens: nationData.citizens,
+    joined: nationData.joined,
+    stateMutateAllowed: nationData.stateMutateAllowed,
+    resetStateMutateAllowed: nationData.resetStateMutateAllowed,
+    tx: nationData.tx,
   };
 }
 
 /**
  * @todo need's rewrite of the param's
  * @param nation
- * @returns {{governanceService: (Array|*)}}
+ * @returns {NationType}
  */
-export function convertFromDatabase(nation:any) {
+export function convertFromDatabase(nation: DBNationType): NationType {
+  return {
+    id: nation.id,
+    idInSmartContract: nation.idInSmartContract,
+    created: nation.created,
+    nationName: nation.nationName,
+    nationDescription: nation.nationDescription,
+    exists: nation.exists,
+    virtualNation: nation.virtualNation,
+    nationCode: nation.nationCode,
+    lawEnforcementMechanism: nation.lawEnforcementMechanism,
+    profit: nation.profit,
+    nonCitizenUse: nation.nonCitizenUse,
+    diplomaticRecognition: nation.diplomaticRecognition,
+    decisionMakingProcess: nation.decisionMakingProcess,
+    governanceService: nation.governanceService.split(', ').filter(value => !_.isEmpty(value)),
+    citizens: nation.citizens,
+    joined: nation.joined,
+    stateMutateAllowed: nation.stateMutateAllowed,
+    resetStateMutateAllowed: nation.resetStateMutateAllowed,
+    tx: nation.tx === null ? null : { ...nation.tx },
+  };
+}
+
+/**
+ * @desc Convert NationType value to EditingNationType value
+ * @param {NationType} nation Nation to convert
+ * @return {EditingNationType} Convert nation.
+ */
+export function convertToEditingNation(nation: NationType): EditingNationType {
   return {
     ...nation,
-    // @todo Fix virtual nation save unselected state
-    governanceService: nation.governanceService.split(', ').filter(value => !_.isEmpty(value)),
-    tx: nation.tx === null ? null : { ...nation.tx },
   };
 }
 
@@ -108,7 +158,7 @@ export function convertFromDatabase(nation:any) {
  * @param nation
  * @returns {boolean}
  */
-export function nationIsValid(nation:any) {
+export function nationIsValid(nation: any) {
   if (_.isEmpty(nation.nationName)) return false;
   if (_.isEmpty(nation.nationDescription)) return false;
   if (nation.virtualNation === null || nation.virtualNation === undefined) return false;
@@ -125,7 +175,7 @@ export function nationIsValid(nation:any) {
  * @param status
  * @returns {Color}
  */
-export function statusColor(status:number) {
+export function statusColor(status: number) {
   switch (status) {
     case TX_JOB_STATUS_SUCCESS:
       return Colors.listItemTextState.accepted;
