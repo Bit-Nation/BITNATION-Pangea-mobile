@@ -9,8 +9,8 @@ import type { NavigatorEvent } from '../../../types/ReactNativeNavigation';
 import type { Mnemonic } from '../../../types/Mnemonic';
 
 type KeyProps = {
-  removePrivateKey?: () => void,
-  createdMnemonic: Mnemonic,
+  +removePrivateKey?: () => void,
+  +createdMnemonic?: Mnemonic | null,
 };
 
 export default class KeyBaseScreen<Props: KeyProps> extends NavigatorComponent<Props> {

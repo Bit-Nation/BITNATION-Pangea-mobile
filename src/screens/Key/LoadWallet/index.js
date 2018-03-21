@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
+// @flow
+
+import React from 'react';
 import {
   View,
   Text,
 } from 'react-native';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import styles from './styles';
 import { screen } from '../../../global/Screens';
-import Button from '../../../components/common/Button';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import KeyBaseScreen from '../KeyBaseScreen';
@@ -17,10 +17,19 @@ import { KEY_LENGTH } from '../../../global/Constants';
 import BodyParagraphs from '../../../components/common/BodyParagraphs';
 import i18n from '../../../global/i18n';
 import PanelView from '../../../components/common/PanelView';
+import type { State } from '../../../reducers/key';
+import type { Mnemonic } from '../../../types/Mnemonic';
 
-class LoadWalletScreen extends KeyBaseScreen {
+type Actions = {
+  removePrivateKey: () => void,
+  changeMnemonic: (Mnemonic) => void,
+}
+
+class LoadWalletScreen extends KeyBaseScreen<Actions & State> {
   onNextButtonPressed() {
-    this.props.navigator.push(screen('VERIFY_KEY_PROCESS_SCREEN'));
+    if (this.props.navigator) {
+      this.props.navigator.push(screen('VERIFY_KEY_PROCESS_SCREEN'));
+    }
   }
 
   render() {
@@ -39,7 +48,6 @@ class LoadWalletScreen extends KeyBaseScreen {
             </View>
           </View>
 
-
           <PanelView
             style={styles.panelViewTransparent}
             childrenContainerStyle={styles.noflex}
@@ -54,10 +62,6 @@ class LoadWalletScreen extends KeyBaseScreen {
     );
   }
 }
-
-LoadWalletScreen.propTypes = {};
-
-LoadWalletScreen.defaultProps = {};
 
 const mapStateToProps = state => ({
   ...state.key,
