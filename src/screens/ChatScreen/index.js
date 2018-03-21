@@ -57,7 +57,7 @@ type State = {
    */
   messages: Array<any>,
   /**
-   * @desc Flag that indicates wheter the socket connection is established
+   * @desc Flag that indicates whether the socket connection is established
    */
   joined: boolean
 };
@@ -67,7 +67,7 @@ class ChatScreen extends Component<Props, State> {
     super(props);
 
     if (props.isBot !== true) {
-      const selectedNation = resolveNation(props.nations, props.nationId);
+      const selectedNation = resolveNation(props.nations || [], props.nationId);
       this.nationId = selectedNation.idInSmartContract;
       // Creating the socket-client instance will automatically connect to the server.
       this.connection = SocketIOClient(config.CHAT_URL, {
@@ -100,6 +100,7 @@ class ChatScreen extends Component<Props, State> {
             // Any additional custom parameters are passed through
           },
         ],
+        joined: false,
       };
     }
   }
