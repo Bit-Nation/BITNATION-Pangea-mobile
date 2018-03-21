@@ -28,7 +28,7 @@ type Props = {
   /**
    * @desc Function to open a nation
    */
-  openNation: () => void,
+  openNation: (id: number) => void,
 };
 
 class ChatNationsScreen extends NavigatorComponent<Props> {
@@ -52,7 +52,7 @@ class ChatNationsScreen extends NavigatorComponent<Props> {
   }
 
   onSelectItem = (id, isBot) => {
-    const nation = resolveNation(this.props.nations, id);
+    const nation = resolveNation(this.props.nations || [], id);
 
     if (!nation) {
       if (isBot === true) {
@@ -73,10 +73,6 @@ class ChatNationsScreen extends NavigatorComponent<Props> {
     });
   };
 }
-
-ChatNationsScreen.PropTypes = {
-  navigator: PropTypes.object,
-};
 
 const mapStateToProps = state => ({
   ...state.nations,
