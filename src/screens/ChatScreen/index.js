@@ -3,23 +3,20 @@
 import React, { Component } from 'react';
 import {
   View,
-  Text,
-  Image,
   Platform,
 } from 'react-native';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import config from 'react-native-config';
 import SocketIOClient from 'socket.io-client';
 import { GiftedChat, Composer, InputToolbar, Bubble } from 'react-native-gifted-chat';
 import styles from './styles';
 
-import AssetsImages from '../../global/AssetsImages';
 import { showSpinner, hideSpinner } from '../../actions/chat';
 import BackgroundImage from '../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../components/common/FakeNavigationBar';
 import Loading from '../../components/common/Loading';
 import { resolveNation } from '../../utils/nations';
+import createGiftedChatMessageObject from '../../utils/chat';
 import type { NationType } from '../../services/database/schemata';
 import elizabot from '../../../vendor/elizabot';
 
@@ -66,10 +63,6 @@ type State = {
 };
 
 class ChatScreen extends Component<Props, State> {
-
-  nationId: number;
-  connection: any;
-  
   constructor(props: Props) {
     super(props);
 
@@ -78,53 +71,23 @@ class ChatScreen extends Component<Props, State> {
       this.nationId = selectedNation.idInSmartContract;
       // Creating the socket-client instance will automatically connect to the server.
       this.connection = SocketIOClient(config.CHAT_URL, {
-        transports: ['websocket'], 
+        transports: ['websocket'],
         upgrade: false,
-        query: `token=${config.AUTH_TOKEN}`
+        query: `token=${config.AUTH_TOKEN}`,
       });
       this.connection.on('connect', () => {
         this.connection.emit('room:join', {
-          nation_id: this.nationId
+          nation_id: this.nationId,
         });
-      });      
-    }
-
-    this.state = {
-      messages: [],
-      joined: false
-    };
-  }
-
-  componentDidMount() {
-    if (this.props.isBot !== true && this.connection) {
-      this.props.showSpinner();
-      // load initial messages
-      const URL = `${config.CHAT_URL}/messages/${this.nationId}?auth_token=${config.AUTH_TOKEN}`;
-      fetch(URL)
-      .then((response) => {
-        return response.json();
-      })
-      .then(json => {
-        const messages = this._createGiftedChatMessageObject(json.reverse());
-        this.props.hideSpinner();
-        this.setState(previousState => ({ messages: GiftedChat.append(previousState.messages, messages) }));
-      }, (e) => {
-        this.props.hideSpinner();
       });
 
-      // add socket listener
-      this.connection.on('room:joined', (data) => {
-        if (data.nation_id >= 0) {
-          this.setState({joined: true});
-          this.connection.on('msg', (messageData) => {
-            const messages = this._createGiftedChatMessageObject([messageData]);
-            this.setState(previousState => ({ messages: GiftedChat.append(previousState.messages, messages) }));
-          });
-        }
-      });
+      this.state = {
+        messages: [],
+        joined: false,
+      };
     } else {
       // add initial bot message
-      this.setState({
+      this.state = {
         messages: [
           {
             _id: 1,
@@ -137,28 +100,46 @@ class ChatScreen extends Component<Props, State> {
             // Any additional custom parameters are passed through
           },
         ],
+      };
+    }
+  }
+
+  componentDidMount() {
+    if (this.props.isBot !== true && this.connection) {
+      this.props.showSpinner();
+      // load initial messages
+      const URL = `${config.CHAT_URL}/messages/${this.nationId}?auth_token=${config.AUTH_TOKEN}`;
+      fetch(URL)
+        .then(response => response.json())
+        .then((json) => {
+          const messages = createGiftedChatMessageObject(json.reverse());
+          this.props.hideSpinner();
+          this.setState(previousState => ({
+            messages: GiftedChat.append(previousState.messages, messages),
+          }));
+        }, () => {
+          this.props.hideSpinner();
+        });
+
+      // add socket listener
+      this.connection.on('room:joined', (data) => {
+        if (data.nation_id >= 0) {
+          this.setState({ joined: true });
+          this.connection.on('msg', (messageData) => {
+            const messages = createGiftedChatMessageObject([messageData]);
+            this.setState(previousState => ({
+              messages: GiftedChat.append(previousState.messages, messages),
+            }));
+          });
+        }
       });
     }
   }
 
   componentWillUnmount() {
-    this.connection && this.connection.disconnect();
-  }
-
-  _createGiftedChatMessageObject(messagesData: any) {
-    let messages = [];
-    for (let data of messagesData) {
-      messages.push({
-        _id: data._id,
-        text: data.msg,
-        createdAt: data.createdAt,
-        user: {
-          _id: data.userId,
-          name: data.from
-        }
-      });
+    if (this.connection !== null && this.connection !== undefined) {
+      this.connection.disconnect();
     }
-    return messages;
   }
 
   onSend(messages: Array<any> = []) {
@@ -176,30 +157,31 @@ class ChatScreen extends Component<Props, State> {
       ];
 
       // Add user's message
-      this.setState(previousState => ({ messages: GiftedChat.append(previousState.messages, messages) }));
+      this.setState(previousState => ({
+        messages: GiftedChat.append(previousState.messages, messages),
+      }));
 
       // Add Eliza's response
       this.setState(previousState => ({ messages: GiftedChat.append(previousState.messages, m) }));
-    } else {
-      if (this.state.joined === true) {
-        const newMessage = {
-          nation_id: this.nationId,
-          msg: messages[0].text,
-          from: this.props.user ? this.props.user.name : 'anonymous',
-          userId: this.props.user ? this.props.user.uid : 'anonymous',
-        }
-        this.connection.emit('room:msg', newMessage);
-      } else {
-
-      }
+    } else if (this.state.joined === true) {
+      const newMessage = {
+        nation_id: this.nationId,
+        msg: messages[0].text,
+        from: this.props.user ? this.props.user.name : 'anonymous',
+        userId: this.props.user ? this.props.user.uid : 'anonymous',
+      };
+      this.connection.emit('room:msg', newMessage);
     }
   }
+
+  nationId: number;
+  connection: any;
 
   render() {
     const sendingUser = {
       _id: this.props.user ? this.props.user.uid : 'anonymous',
       name: this.props.user ? this.props.user.name : 'anonymous',
-    }
+    };
     return (
       <View style={styles.container}>
         <BackgroundImage />
@@ -231,7 +213,7 @@ const mapStateToProps = state => ({
   nations: state.nations.nations,
   nationId: state.nations.openedNationId,
   user: state.profile.user,
-  isFetching: state.chat.isFetching
+  isFetching: state.chat.isFetching,
 });
 
 const mapDispatchToProps = dispatch => ({
