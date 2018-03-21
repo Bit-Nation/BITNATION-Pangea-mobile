@@ -1,22 +1,4 @@
-/*
-
-  Demonstration Chat system
-
-  Elizabot : https://github.com/brandongmwong/elizabot-js/blob/master/README.md
-
-  Eliza JS bot based on www.masswerk.at/elizabot and http://en.wikipedia.org/wiki/ELIZA
-
-  Usage:
-
-  var elizabot = require('./elizabot.js');
-
-  elizabot.start() // initializes eliza and returns a greeting message
-
-  elizabot.reply(msgtext) // returns a eliza-like reply based on the message text passed into it
-
-  elizabot.bye() // returns a farewell message
- */
-
+// @flow
 
 import React, { Component } from 'react';
 import {
@@ -38,11 +20,57 @@ import BackgroundImage from '../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../components/common/FakeNavigationBar';
 import Loading from '../../components/common/Loading';
 import { resolveNation } from '../../utils/nations';
+import type { NationType } from '../../services/database/schemata';
 import elizabot from '../../../vendor/elizabot';
 
-class ChatScreen extends React.Component {
+type Props = {
+  /**
+   * @desc A boolean prop to indicate whether the channel is a bot or not
+   */
+  isBot: boolean,
+  /**
+   * @desc List of nations
+   */
+  nations?: Array<NationType>,
+  /**
+   * @desc Id of the selected nation
+   */
+  nationId: number,
+  /**
+   * @desc Current user object
+   */
+  user?: any,
+  /**
+   * @desc Flag that indicates the loading status
+   */
+  isFetching?: boolean,
+  /**
+   * @desc Function to show spinner
+   */
+  showSpinner: () => void,
+  /**
+   * @desc Function to hide spinner
+   */
+  hideSpinner: () => void,
+};
+
+type State = {
+  /**
+   * @desc List of messages
+   */
+  messages: Array<any>,
+  /**
+   * @desc Flag that indicates wheter the socket connection is established
+   */
+  joined: boolean
+};
+
+class ChatScreen extends Component<Props, State> {
+
+  nationId: number;
+  connection: any;
   
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
 
     if (props.isBot !== true) {
@@ -117,7 +145,7 @@ class ChatScreen extends React.Component {
     this.connection && this.connection.disconnect();
   }
 
-  _createGiftedChatMessageObject(messagesData) {
+  _createGiftedChatMessageObject(messagesData: any) {
     let messages = [];
     for (let data of messagesData) {
       messages.push({
@@ -133,7 +161,7 @@ class ChatScreen extends React.Component {
     return messages;
   }
 
-  onSend(messages = []) {
+  onSend(messages: Array<any> = []) {
     if (this.props.isBot === true) {
       const m = [
         {
