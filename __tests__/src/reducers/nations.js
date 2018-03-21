@@ -46,7 +46,7 @@ test('reducer - done sync nations', (done) => {
 
 test('reducer - done fetch nations', (done) => {
   const stateBefore = { ...initialState, inProgress: true };
-  const stateAfter = reducer(initialState, doneFetchNations());
+  const stateAfter = reducer(stateBefore, doneFetchNations());
   expect(stateAfter).toEqual({
     ...stateBefore,
     inProgress: false,

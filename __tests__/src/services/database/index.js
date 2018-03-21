@@ -5,10 +5,13 @@ const randomDbPath = () => `database/${Math.random()}`;
 
 describe('db', () => {
   test('default path', async () => {
+    expect.assertions(1);
     const realm = await db;
     expect(realm.path.split('/').slice(-1)[0]).toEqual('pangea');
+    realm.close();
   });
   test('custom path', async () => {
+    expect.assertions(1);
     const id = Math.random();
     const databaseGenerator = factory(`database/${id}`);
     const realm = await databaseGenerator.next().value;
@@ -16,8 +19,10 @@ describe('db', () => {
     // Last element of the realm path should be
     // "i_am_the_database_path" since we passed in a custom path
     expect(realm.path.split('/').slice(-1)[0]).toEqual(id.toString());
+    realm.close();
   });
   test('open and migrate process', async () => {
+    expect.assertions(4);
     const dbPath = randomDbPath();
     const databaseGenerator = factory(dbPath);
 
@@ -34,7 +39,8 @@ describe('db', () => {
     expect(Realm.schemaVersion(dbPath)).toBe(2);
 
     // The last yield will return the realm open promise
-    await databaseGenerator.next(realm2).value;
+    const realm3 = await databaseGenerator.next(realm2).value;
     expect(Realm.schemaVersion(dbPath)).toBe(2);
+    realm3.close();
   });
 });
