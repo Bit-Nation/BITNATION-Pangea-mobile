@@ -23,6 +23,7 @@ type NavigatorProps = {
  * @note Don't forget to call super if you override constructor or onNavigatorEvent method of
  * that class.
  */
+// eslint-disable-next-line max-len
 export default class NavigatorComponent<Props, State> extends Component<Props & NavigatorProps, State> {
   constructor(props: Props & NavigatorProps) {
     super(props);
