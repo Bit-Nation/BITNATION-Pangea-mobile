@@ -18,7 +18,7 @@ import {
 import type { EditingNationType } from '../types/Nation';
 import type { Action } from '../actions/modifyNation';
 
-type State = {
+export type State = {
   +editingNation: EditingNationType | null,
   +initialNation: EditingNationType | null,
   +inProgress: boolean,

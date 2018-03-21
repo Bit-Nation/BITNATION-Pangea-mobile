@@ -13,17 +13,15 @@ import {
   submitNation,
 } from '../../actions/modifyNation';
 import { errorAlert, alert } from '../../global/alerts';
-import { nationIsModified } from '../../reducers/modifyNation';
+import { nationIsModified, type State as ModifyNationState } from '../../reducers/modifyNation';
 import type {
   EditingNationType,
   NationIdType,
+  NationType,
 } from '../../types/Nation';
 
 type Props = {
   navigator: Object,
-  editingNation: EditingNationType,
-  latestError: Error,
-  initialNation: EditingNationType,
 }
 
 type Actions = {
@@ -33,7 +31,7 @@ type Actions = {
   onSubmitNation: (EditingNationType, () => void) => void,
 };
 
-class NationCreateContainer extends Component<Props & Actions> {
+class NationCreateContainer extends Component<Props & Actions & ModifyNationState> {
   static defaultProps: Object;
   cancelNationCreation = () => {
     const isModified = nationIsModified(this.props);
@@ -51,6 +49,8 @@ class NationCreateContainer extends Component<Props & Actions> {
       }, {
         name: 'save',
         onPress: () => {
+          if (this.props.editingNation === null) return;
+
           this.props.onSaveNationDraft(this.props.editingNation, () => {
             if (this.props.latestError) {
               errorAlert(this.props.latestError);
@@ -82,18 +82,25 @@ class NationCreateContainer extends Component<Props & Actions> {
       }, {
         name: 'delete',
         style: 'destructive',
-        onPress: () => this.props.onDeleteNationDraft(this.props.initialNation.id, () => {
-          if (this.props.latestError) {
-            errorAlert(this.props.latestError);
-            return;
-          }
+        onPress: () => {
+          if (this.props.initialNation === null) return;
+          if (typeof this.props.initialNation.id !== 'number') return;
 
-          this.props.navigator.dismissModal();
-        }),
+          this.props.onDeleteNationDraft(this.props.initialNation.id, () => {
+            if (this.props.latestError) {
+              errorAlert(this.props.latestError);
+              return;
+            }
+
+            this.props.navigator.dismissModal();
+          });
+        },
       }]);
   };
 
   saveForm = () => {
+    if (this.props.editingNation === null) return;
+
     this.props.onSaveNationDraft(this.props.editingNation, () => {
       if (this.props.latestError) {
         errorAlert(this.props.latestError);
@@ -117,14 +124,18 @@ class NationCreateContainer extends Component<Props & Actions> {
         style: 'cancel',
       }, {
         name: 'confirm',
-        onPress: () => this.props.onSubmitNation(this.props.editingNation, () => {
-          if (this.props.latestError) {
-            errorAlert(this.props.latestError);
-            return;
-          }
+        onPress: () => {
+          if (this.props.editingNation === null) return;
 
-          this.props.navigator.dismissModal();
-        }),
+          this.props.onSubmitNation(this.props.editingNation, () => {
+            if (this.props.latestError) {
+              errorAlert(this.props.latestError);
+              return;
+            }
+
+            this.props.navigator.dismissModal();
+          });
+        },
       }]);
   };
 
