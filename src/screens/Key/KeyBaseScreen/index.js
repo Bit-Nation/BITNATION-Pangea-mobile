@@ -1,4 +1,3 @@
-import React, { Component } from 'react';
 import { BackHandler, Alert } from 'react-native';
 
 import Colors from '../../../global/colors';
@@ -16,15 +15,17 @@ export default class KeyBaseScreen extends NavigatorComponent {
   };
 
   componentWillUnmount() {
-    BackHandler.removeEventListener('hardwareBackPress');
+    BackHandler.removeEventListener('hardwareBackPress', this.backPressHandler);
   }
 
   componentDidMount() {
-    BackHandler.addEventListener('hardwareBackPress', () => {
-      this.onCancel();
-      return false;
-    });
+    BackHandler.addEventListener('hardwareBackPress', this.backPressHandler);
   }
+
+  backPressHandler = () => {
+    this.onCancel();
+    return false;
+  };
 
   onNavigatorEvent(event) {
     if (event.id === 'backPress') {
