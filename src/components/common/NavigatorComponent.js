@@ -2,7 +2,7 @@
 
 import { Component } from 'react';
 
-type Props = {
+type NavigatorProps = {
   /**
    * @desc React Native Navigation navigator object.
    */
@@ -23,8 +23,8 @@ type Props = {
  * @note Don't forget to call super if you override constructor or onNavigatorEvent method of
  * that class.
  */
-export default class NavigatorComponent extends Component<Props> {
-  constructor(props: Props) {
+export default class NavigatorComponent<Props, State> extends Component<Props & NavigatorProps, State> {
+  constructor(props: Props & NavigatorProps) {
     super(props);
 
     const { navigator } = this.props;
