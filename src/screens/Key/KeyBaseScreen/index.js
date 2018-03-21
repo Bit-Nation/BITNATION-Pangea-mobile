@@ -1,3 +1,4 @@
+import React, { Component } from 'react';
 import { BackHandler, Alert } from 'react-native';
 
 import Colors from '../../../global/colors';
