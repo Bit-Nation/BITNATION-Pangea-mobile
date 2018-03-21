@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import {
   View,
@@ -6,7 +8,6 @@ import {
   TextInput,
 } from 'react-native';
 
-import PropTypes from 'prop-types';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
@@ -19,11 +20,25 @@ import Colors from '../../../global/colors';
 import styles from './styles';
 import i18n from '../../../global/i18n';
 import AssetsImage from '../../../global/AssetsImages';
-import { nationIsModified } from '../../../reducers/modifyNation';
+import { nationIsModified, type State as ModifyNationState } from '../../../reducers/modifyNation';
 import { nationIsValid } from '../../../utils/nations';
+import type { EditingNationType, NationIdType } from '../../../types/Nation';
 
-class CreateNation extends NavigatorComponent {
-  constructor(props) {
+type Props = {
+  navigator?: any,
+}
+
+type Actions = {
+  onCancelNationCreation: () => void,
+  onResetNationCreation: () => void,
+  onSaveNationDraft: (EditingNationType, () => void) => void,
+  onDeleteNationDraft: (NationIdType, () => void) => void,
+  onSubmitNation: (EditingNationType, () => void) => void,
+}
+
+class CreateNation extends NavigatorComponent<Props & Actions & ModifyNationState> {
+  static defaultProps: Object;
+  constructor(props: Props) {
     super(props);
 
     this.actionSheet = null;
@@ -44,7 +59,7 @@ class CreateNation extends NavigatorComponent {
     }
   }
 
-  setFieldValue(field, value) {
+  setFieldValue(field: string, value: Object) {
     this.props.onNationChange(field, value);
   }
 
@@ -382,7 +397,7 @@ class CreateNation extends NavigatorComponent {
             <View>
               {
                 this.multiGovernanceService
-              &&
+                &&
                 this.multiGovernanceService
                   .getSelectedItemsExt(this.props.editingNation.governanceService)}
             </View>
@@ -431,12 +446,13 @@ class CreateNation extends NavigatorComponent {
   }
 }
 
-CreateNation.propTypes = {
-  onCancelNationCreation: PropTypes.func.isRequired,
-  onResetNationCreation: PropTypes.func.isRequired,
-  onSaveNationDraft: PropTypes.func.isRequired,
-  onDeleteNationDraft: PropTypes.func.isRequired,
-  onSubmitNation: PropTypes.func.isRequired,
+CreateNation.defaultProps = {
+  navigator: null,
+  onCancelNationCreation: () => null,
+  onResetNationCreation: () => null,
+  onSaveNationDraft: () => null,
+  onDeleteNationDraft: () => null,
+  onSubmitNation: () => null,
 };
 
 export default CreateNation;

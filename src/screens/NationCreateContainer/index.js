@@ -17,7 +17,6 @@ import { nationIsModified, type State as ModifyNationState } from '../../reducer
 import type {
   EditingNationType,
   NationIdType,
-  NationType,
 } from '../../types/Nation';
 
 type Props = {

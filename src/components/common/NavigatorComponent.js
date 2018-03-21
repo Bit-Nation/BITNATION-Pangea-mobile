@@ -23,7 +23,8 @@ type NavigatorProps = {
  * @note Don't forget to call super if you override constructor or onNavigatorEvent method of
  * that class.
  */
-export default class NavigatorComponent<Props, State> extends Component<Props & NavigatorProps, State> {
+export default class NavigatorComponent<Props, State = void>
+  extends Component<Props & NavigatorProps, State> {
   constructor(props: Props & NavigatorProps) {
     super(props);
 
