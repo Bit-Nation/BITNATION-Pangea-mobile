@@ -33,8 +33,17 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "children": Array [
-        <BackgroundImage />,
-        <FakeNavigationBar />,
+        <BackgroundImage
+          source={
+            Object {
+              "testUri": "../../../src/assets/images/background.jpg",
+            }
+          }
+          style={undefined}
+        />,
+        <FakeNavigationBar
+          navBarHidden={false}
+        />,
         <View
           style={
             Object {
@@ -117,8 +126,13 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "class",
-        "props": Object {},
+        "nodeType": "function",
+        "props": Object {
+          "source": Object {
+            "testUri": "../../../src/assets/images/background.jpg",
+          },
+          "style": undefined,
+        },
         "ref": null,
         "rendered": null,
         "type": [Function],
@@ -126,8 +140,10 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "class",
-        "props": Object {},
+        "nodeType": "function",
+        "props": Object {
+          "navBarHidden": false,
+        },
         "ref": null,
         "rendered": null,
         "type": [Function],
@@ -271,8 +287,17 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "children": Array [
-          <BackgroundImage />,
-          <FakeNavigationBar />,
+          <BackgroundImage
+            source={
+              Object {
+                "testUri": "../../../src/assets/images/background.jpg",
+              }
+            }
+            style={undefined}
+          />,
+          <FakeNavigationBar
+            navBarHidden={false}
+          />,
           <View
             style={
               Object {
@@ -355,8 +380,13 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "class",
-          "props": Object {},
+          "nodeType": "function",
+          "props": Object {
+            "source": Object {
+              "testUri": "../../../src/assets/images/background.jpg",
+            },
+            "style": undefined,
+          },
           "ref": null,
           "rendered": null,
           "type": [Function],
@@ -364,8 +394,10 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "class",
-          "props": Object {},
+          "nodeType": "function",
+          "props": Object {
+            "navBarHidden": false,
+          },
           "ref": null,
           "rendered": null,
           "type": [Function],

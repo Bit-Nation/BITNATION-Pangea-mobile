@@ -33,7 +33,12 @@ ShallowWrapper {
       "isBot": false,
       "isFetching": true,
       "nationId": 1,
-      "nations": Array [],
+      "nations": Array [
+        Object {
+          "_id": 1,
+          "idInSmartContract": 1,
+        },
+      ],
       "showSpinner": [Function],
       "store": Object {
         "clearActions": [Function],
@@ -78,7 +83,12 @@ ShallowWrapper {
         "isBot": false,
         "isFetching": true,
         "nationId": 1,
-        "nations": Array [],
+        "nations": Array [
+          Object {
+            "_id": 1,
+            "idInSmartContract": 1,
+          },
+        ],
         "showSpinner": [Function],
         "store": Object {
           "clearActions": [Function],
