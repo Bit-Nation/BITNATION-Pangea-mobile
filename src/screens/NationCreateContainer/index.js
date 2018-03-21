@@ -1,5 +1,6 @@
+// @flow
+
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import NationCreateScreen from './NationCreateScreen';
@@ -13,8 +14,27 @@ import {
 } from '../../actions/modifyNation';
 import { errorAlert, alert } from '../../global/alerts';
 import { nationIsModified } from '../../reducers/modifyNation';
+import type {
+  EditingNationType,
+  NationIdType,
+} from '../../types/Nation';
 
-class NationCreateContainer extends Component {
+type Props = {
+  navigator: Object,
+  editingNation: EditingNationType,
+  latestError: Error,
+  initialNation: EditingNationType,
+}
+
+type Actions = {
+  onSaveNationDraft: (EditingNationType, () => void) => void,
+  onResetNationCreation: () => void,
+  onDeleteNationDraft: (NationIdType, () => void) => void,
+  onSubmitNation: (EditingNationType, () => void) => void,
+};
+
+class NationCreateContainer extends Component<Props & Actions> {
+  static defaultProps: Object;
   cancelNationCreation = () => {
     const isModified = nationIsModified(this.props);
 
@@ -121,17 +141,6 @@ class NationCreateContainer extends Component {
     );
   }
 }
-
-NationCreateContainer.propTypes = {
-  navigator: PropTypes.shape({ dismissModal: {} }),
-  onSaveNationDraft: PropTypes.func,
-  editingNation: PropTypes.shape({}),
-  latestError: PropTypes.shape({}),
-  onResetNationCreation: PropTypes.func,
-  onDeleteNationDraft: PropTypes.func,
-  initialNation: PropTypes.shape({ id: {} }),
-  onSubmitNation: PropTypes.func,
-};
 
 NationCreateContainer.defaultProps = {
   navigator: null,
