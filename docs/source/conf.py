@@ -44,6 +44,7 @@ extensions = [
     'sphinx.ext.coverage',
     'sphinx.ext.ifconfig',
     'sphinx.ext.githubpages',
+    'sphinx_js',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -166,3 +167,5 @@ texinfo_documents = [
 
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = True
+
+primary_domain = 'js'
