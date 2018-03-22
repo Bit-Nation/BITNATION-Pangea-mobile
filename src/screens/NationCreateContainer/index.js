@@ -18,9 +18,10 @@ import type {
   EditingNationType,
   NationIdType,
 } from '../../types/Nation';
+import type { Navigator } from '../../types/ReactNativeNavigation';
 
 type Props = {
-  navigator: Object,
+  navigator: Navigator,
 }
 
 type Actions = {
@@ -84,7 +85,7 @@ class NationCreateContainer extends Component<Props & Actions & ModifyNationStat
         style: 'destructive',
         onPress: () => {
           if (this.props.initialNation === null) return;
-          if (typeof this.props.initialNation.id !== 'number') return;
+          if (this.props.initialNation.id == null) return;
 
           this.props.onDeleteNationDraft(this.props.initialNation.id, () => {
             if (this.props.latestError) {
@@ -154,7 +155,6 @@ class NationCreateContainer extends Component<Props & Actions & ModifyNationStat
 }
 
 NationCreateContainer.defaultProps = {
-  navigator: null,
   latestError: null,
   initialNation: null,
   onSaveNationDraft: () => null,
