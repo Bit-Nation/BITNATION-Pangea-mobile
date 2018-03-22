@@ -1,9 +1,13 @@
+// @flow
+
 import React from 'react';
-import { View, Alert, Text } from 'react-native';
-import styles from './styles';
-import PropTypes from 'prop-types';
+import {
+  View,
+  Alert,
+} from 'react-native';
 import { connect } from 'react-redux';
 
+import styles from './styles';
 import { screen } from '../../../../global/Screens';
 import BackgroundImage from '../../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
@@ -16,10 +20,18 @@ import KeyBaseScreen from '../../KeyBaseScreen/index';
 import { removePrivateKey } from '../../../../actions/key';
 import BodyParagraphs from '../../../../components/common/BodyParagraphs';
 import i18n from '../../../../global/i18n';
+import type { State as KeyState } from '../../../../reducers/key';
 
-const DONE_BUTTON = 'DONE_BUTTON';
+type Actions = {
+  removePrivateKey: () => void,
+}
 
-class CreateKeyProcessScreen extends KeyBaseScreen {
+type State = {
+  activeRow: number,
+  completedPages: Array<number>,
+}
+
+class CreateKeyProcessScreen extends KeyBaseScreen<Actions & KeyState, State> {
   constructor(props) {
     super(props);
 
@@ -33,11 +45,11 @@ class CreateKeyProcessScreen extends KeyBaseScreen {
     const prevPage = this.activePage(prevState);
     const currentPage = this.activePage(this.state);
     if (prevPage < currentPage && this.state.completedPages.indexOf(prevPage) === -1) {
-      this._showPageCompletedAlert(prevPage, this.isDone(this.state));
+      this.showPageCompletedAlert(prevPage, this.isDone(this.state));
     }
   }
 
-  _showPageCompletedAlert(completedPage, done) {
+  showPageCompletedAlert(completedPage, done) {
     Alert.alert(
       i18n.t('alerts.privateKeyGroupCompleted.title', { number: completedPage + 1 }),
       done ? '' : i18n.t('alerts.privateKeyGroupCompleted.subtitle', { KEY_PAGE_LENGTH }),
@@ -63,7 +75,9 @@ class CreateKeyProcessScreen extends KeyBaseScreen {
   isDone = state => this.activePage(state) === KEY_PAGE_COUNT;
 
   onDone = () => {
-    this.props.navigator.push(screen('VERIFY_KEY_INSTRUCTION_SCREEN'));
+    if (this.props.navigator) {
+      this.props.navigator.push(screen('VERIFY_KEY_INSTRUCTION_SCREEN'));
+    }
   };
 
   onNextPressed = () => {
@@ -80,8 +94,8 @@ class CreateKeyProcessScreen extends KeyBaseScreen {
     this.setState(prevState => ({ activeRow: Math.max(prevState.activeRow - 1, 0) }));
   };
 
-  _renderText = (index) => {
-    index += this.activePage(this.state) * KEY_PAGE_LENGTH;
+  renderText = (biasedIndex) => {
+    const index = biasedIndex + (this.activePage(this.state) * KEY_PAGE_LENGTH);
     return (
       <PrivateKeyTextInputContainer
         editable={false}
@@ -89,15 +103,10 @@ class CreateKeyProcessScreen extends KeyBaseScreen {
         value={this.props.createdMnemonic && this.props.createdMnemonic[index]}
         label={(index + 1).toString()}
         key={index}
-        style={{ marginLeft: (index % KEY_COLUMN_COUNT === 0) ? 0 : 10 }}
+        style={index % KEY_COLUMN_COUNT === 0 ? styles.firstTextInput : styles.textInput}
       />
     );
   };
-
-
-  /*
-  MAIN SCREEN CODE
-   */
 
   render() {
     return (
@@ -110,7 +119,7 @@ class CreateKeyProcessScreen extends KeyBaseScreen {
 
           <PanelView
             style={styles.panelViewTransparent}
-            childrenContainerStyle={{ flex: 0 }}
+            childrenContainerStyle={styles.noflex}
           >
 
             <BodyParagraphs paragraphs={i18n.t('screens.createKey.process.instructions')} />
@@ -119,7 +128,7 @@ class CreateKeyProcessScreen extends KeyBaseScreen {
               <GridView
                 itemsPerRow={KEY_COLUMN_COUNT}
                 rowsCount={KEY_PAGE_ROW_COUNT}
-                renderItem={this._renderText}
+                renderItem={this.renderText}
                 activeRow={this.isDone(this.state)
                   ? -1
                   : this.state.activeRow % KEY_PAGE_ROW_COUNT}
@@ -127,6 +136,7 @@ class CreateKeyProcessScreen extends KeyBaseScreen {
                 style={styles.gridView}
               />
             </View>
+
             <View style={styles.buttonContainer}>
               <Button
                 title={i18n.t('screens.createKey.process.previousButton')}

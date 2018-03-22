@@ -13,7 +13,8 @@ type KeyProps = {
   +createdMnemonic?: Mnemonic | null,
 };
 
-export default class KeyBaseScreen<Props: KeyProps> extends NavigatorComponent<Props> {
+export default class KeyBaseScreen<Props: KeyProps, State = void>
+  extends NavigatorComponent<Props, State> {
   static navigatorButtons = {
     leftButtons: [{
       id: 'cancel',
