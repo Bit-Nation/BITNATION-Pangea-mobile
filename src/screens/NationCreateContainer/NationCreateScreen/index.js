@@ -1,76 +1,85 @@
-/*
-  Nation Create Screen
-  Version 0.3.1
-
-  For usage of MultiSelect see: https://github.com/toystars/react-native-multiple-select (We are using a custom UI version)
- */
+// @flow
 
 import React from 'react';
 import {
-  View, Image,
-  Text, ScrollView, TextInput,
+  View,
+  Text,
+  ScrollView,
+  TextInput,
 } from 'react-native';
 
-import PropTypes from 'prop-types';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
-import { ActionSheet } from 'native-base';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import PanelView from '../../../components/common/PanelView';
 import SwitchLabeled from '../../../components/common/SwitchLabeled';
 import MultiSelect from '../../../components/MultiSelect';
-import Images from '../../../global/AssetsImages';
 import Loading from '../../../components/common/Loading';
 import NationActionButton from '../../../components/common/NationActionButton';
 import Colors from '../../../global/colors';
 import styles from './styles';
 import i18n from '../../../global/i18n';
 import AssetsImage from '../../../global/AssetsImages';
-import { nationIsModified } from '../../../reducers/modifyNation';
+import { emptyNation, nationIsModified, type State as ModifyNationState } from '../../../reducers/modifyNation';
 import { nationIsValid } from '../../../utils/nations';
+import type { EditingNationType } from '../../../types/Nation';
+import type { Navigator } from '../../../types/ReactNativeNavigation';
 
-const DONE_BUTTON = 'DONE_BUTTON';
+type Props = {
+  navigator: Navigator,
+}
 
-class CreateNation extends NavigatorComponent {
-  constructor(props) {
+type Actions = {
+  onCancelNationCreation: () => void,
+  onResetNationCreation: () => void,
+  onSaveNationDraft: () => void,
+  onDeleteNationDraft: () => void,
+  onSubmitNation: () => void,
+  onNationChange: (string, any) => void,
+}
+
+class CreateNation extends NavigatorComponent<Props & Actions & ModifyNationState> {
+  static defaultProps: Object;
+  multiGovernanceService: ?any;
+  constructor(props: Props & Actions & ModifyNationState) {
     super(props);
-
-    this.actionSheet = null;
     this.multiGovernanceService = null;
-    this.props.navigator.setButtons({
-      leftButtons: [{
-        title: i18n.t('screens.createNation.cancelButton'),
-        id: 'cancel',
-        buttonColor: Colors.navigationButtonColor,
-      }],
-      rightButtons: [],
-    });
+
+    if (this.props.navigator) {
+      this.props.navigator.setButtons({
+        leftButtons: [{
+          title: i18n.t('screens.createNation.cancelButton'),
+          id: 'cancel',
+          buttonColor: Colors.navigationButtonColor,
+        }],
+        rightButtons: [],
+      });
+    }
   }
 
-  onNavBarButtonPress(id) {
+  getEditingNation(): EditingNationType {
+    const { editingNation } = this.props;
+    return editingNation || emptyNation;
+  }
+
+  onNavBarButtonPress(id: string) {
     if (id === 'cancel') {
       this.props.onCancelNationCreation();
     }
   }
 
-  setFieldValue(field, value) {
+  setFieldValue(field: any, value: any) {
     this.props.onNationChange(field, value);
   }
 
   render() {
-    if (!this.props.editingNation) {
-      return <View />;
-    }
-
     return (
       <View style={styles.screenContainer}>
         <BackgroundImage />
         <FakeNavigationBar />
 
         <View style={styles.bodyContainer}>
-          {/* SCROLLING PANELS FOR DATA ENTRY */}
-          <ScrollView style={{ flex: 1 }} contentContainerStyle={{ flex: 0 }}>
-            {/* TITLE OF SCREEN */}
+          <ScrollView style={styles.scrollView} contentContainerStyle={styles.noflex}>
             <View style={styles.titleContainer}>
               <View style={styles.titleBarLarge}>
                 <Text style={styles.largeTitle}>
@@ -78,22 +87,20 @@ class CreateNation extends NavigatorComponent {
                 </Text>
               </View>
             </View>
-
-            {/* CONSTRUCTIONS OF THE SECTIONS IN THE SCREEN */}
-            {this._buildIntroPanel()}
-            {this._buildCoreNationView()}
-            {this._buildLocationNationView()}
-            {this._buildGovernmentalView()}
-            {this._buildOptionsView()}
+            {CreateNation.buildIntroPanel()}
+            {this.buildCoreNationView()}
+            {this.buildLocationNationView()}
+            {this.buildGovernmentalView()}
+            {this.buildOptionsView()}
           </ScrollView>
         </View>
-        {this._buildBottomBar()}
+        {this.buildBottomBar()}
         {this.props.inProgress ? <Loading /> : null}
       </View>
     );
   }
 
-  _buildIntroPanel() {
+  static buildIntroPanel() {
     return (
       <View style={styles.bodyContainer}>
         <View style={styles.bodyParagraph}>
@@ -105,11 +112,11 @@ class CreateNation extends NavigatorComponent {
     );
   }
 
-  // * New fake bottom Tab Bar / 0.3.2 Sprint design
-  _buildBottomBar() {
+  buildBottomBar() {
     const isModified = nationIsModified(this.props);
-    const isSavedDraft = this.props.initialNation.id !== undefined;
-    const canSubmit = nationIsValid(this.props.editingNation);
+    const isSavedDraft = this.props.initialNation !== null
+      && this.props.initialNation.id !== undefined;
+    const canSubmit = this.props.editingNation !== null && nationIsValid(this.props.editingNation);
 
     return (
       <View style={styles.fakeBottomBar}>
@@ -142,7 +149,7 @@ class CreateNation extends NavigatorComponent {
   }
 
 
-  _buildCoreNationView() {
+  buildCoreNationView() {
     return (
       <PanelView
         style={styles.panelViewTransparent}
@@ -156,7 +163,7 @@ class CreateNation extends NavigatorComponent {
                 placeholderTextColor={Colors.placeholderTextColor}
                 keyboardType='default'
                 onChangeText={text => this.setFieldValue('nationName', text)}
-                value={this.props.editingNation.nationName}
+                value={this.getEditingNation().nationName}
               />
             </View>
             <View style={styles.formRow}>
@@ -168,7 +175,7 @@ class CreateNation extends NavigatorComponent {
                 placeholderTextColor={Colors.placeholderTextColor}
                 keyboardType='default'
                 onChangeText={text => this.setFieldValue('nationDescription', text)}
-                value={this.props.editingNation.nationDescription}
+                value={this.getEditingNation().nationDescription}
               />
             </View>
           </View>
@@ -177,7 +184,7 @@ class CreateNation extends NavigatorComponent {
     );
   }
 
-  _buildLocationNationView() {
+  buildLocationNationView() {
     return (
       <PanelView
         style={styles.panelViewTransparent}
@@ -199,9 +206,9 @@ class CreateNation extends NavigatorComponent {
               uniqueKey='id'
               onSelectedItemsChange={selectedItems => this.setFieldValue('virtualNation', selectedItems[0] === 'true')}
               selectedItems={
-                this.props.editingNation.virtualNation === null
+                this.getEditingNation().virtualNation === null
                   ? []
-                  : [this.props.editingNation.virtualNation ? 'true' : 'false']
+                  : [this.getEditingNation().virtualNation ? 'true' : 'false']
               }
               selectText={i18n.t('screens.createNation.prompt.location')}
               onChangeInput={text => console.log(text)}
@@ -216,12 +223,12 @@ class CreateNation extends NavigatorComponent {
           </View>
         </View>
         {
-          this.props.editingNation.virtualNation === false &&
+          this.getEditingNation().virtualNation === false &&
           <View style={styles.formRow}>
             <View style={styles.fieldsContainer}>
               <SwitchLabeled
                 label={i18n.t('screens.createNation.prompt.represents')}
-                value={this.props.editingNation.exists}
+                value={this.getEditingNation().exists}
                 onValueChange={value => this.setFieldValue('exists', value)}
               />
             </View>
@@ -235,7 +242,7 @@ class CreateNation extends NavigatorComponent {
     );
   }
 
-  _buildGovernmentalView() {
+  buildGovernmentalView() {
     return (
       <PanelView
         style={styles.panelViewTransparent}
@@ -271,7 +278,7 @@ class CreateNation extends NavigatorComponent {
               }]}
               uniqueKey='id'
               onSelectedItemsChange={selectedItems => this.setFieldValue('nationCode', selectedItems[0])}
-              selectedItems={[this.props.editingNation.nationCode]}
+              selectedItems={[this.getEditingNation().nationCode]}
               selectText={i18n.t('screens.createNation.prompt.legalCode')}
               onChangeInput={text => console.log(text)}
               tagRemoveIconColor='#CCC'
@@ -307,7 +314,7 @@ class CreateNation extends NavigatorComponent {
               }]}
               uniqueKey='id'
               onSelectedItemsChange={selectedItems => this.setFieldValue('lawEnforcementMechanism', selectedItems[0])}
-              selectedItems={[this.props.editingNation.lawEnforcementMechanism]}
+              selectedItems={[this.getEditingNation().lawEnforcementMechanism]}
               selectText={i18n.t('screens.createNation.prompt.lawEnforcementMechanism')}
               onChangeInput={text => console.log(text)}
               tagRemoveIconColor='#CCC'
@@ -346,7 +353,7 @@ class CreateNation extends NavigatorComponent {
               }]}
               uniqueKey='id'
               onSelectedItemsChange={selectedItems => this.setFieldValue('decisionMakingProcess', selectedItems[0])}
-              selectedItems={[this.props.editingNation.decisionMakingProcess]}
+              selectedItems={[this.getEditingNation().decisionMakingProcess]}
               selectText={i18n.t('screens.createNation.prompt.typeOfGovernment')}
               onChangeInput={text => console.log(text)}
               tagRemoveIconColor='#CCC'
@@ -380,9 +387,9 @@ class CreateNation extends NavigatorComponent {
                 name: i18n.t('enums.nation.services.physical'),
               }]}
               uniqueKey='id'
-              ref={component => this.multiGovernanceService = component}
+              ref={(component) => { this.multiGovernanceService = component; }}
               onSelectedItemsChange={selectedItems => this.setFieldValue('governanceService', selectedItems)}
-              selectedItems={this.props.editingNation.governanceService}
+              selectedItems={this.getEditingNation().governanceService}
               selectText={i18n.t('screens.createNation.prompt.servicesOffered')}
               onChangeInput={text => console.log(text)}
               tagRemoveIconColor='#CCC'
@@ -394,7 +401,11 @@ class CreateNation extends NavigatorComponent {
               submitButtonText={i18n.t('common.ok')}
             />
             <View>
-              {this.multiGovernanceService && this.multiGovernanceService.getSelectedItemsExt(this.props.editingNation.governanceService)}
+              {
+                this.multiGovernanceService
+                &&
+                this.multiGovernanceService
+                  .getSelectedItemsExt(this.getEditingNation().governanceService)}
             </View>
           </View>
         </View>
@@ -402,7 +413,7 @@ class CreateNation extends NavigatorComponent {
     );
   }
 
-  _buildOptionsView() {
+  buildOptionsView() {
     return (
       <PanelView
         style={styles.panelViewTransparent}
@@ -413,7 +424,7 @@ class CreateNation extends NavigatorComponent {
           <View style={styles.fieldsContainer}>
             <SwitchLabeled
               label={i18n.t('screens.createNation.prompt.diplomaticRecognition')}
-              value={this.props.editingNation.diplomaticRecognition}
+              value={this.getEditingNation().diplomaticRecognition}
               onValueChange={value => this.setFieldValue('diplomaticRecognition', value)}
             />
           </View>
@@ -422,7 +433,7 @@ class CreateNation extends NavigatorComponent {
           <View style={styles.fieldsContainer}>
             <SwitchLabeled
               label={i18n.t('screens.createNation.prompt.servicesUsage')}
-              value={this.props.editingNation.nonCitizenUse}
+              value={this.getEditingNation().nonCitizenUse}
               onValueChange={value => this.setFieldValue('nonCitizenUse', value)}
             />
           </View>
@@ -431,7 +442,7 @@ class CreateNation extends NavigatorComponent {
           <View style={styles.fieldsContainer}>
             <SwitchLabeled
               label={i18n.t('screens.createNation.prompt.profit')}
-              value={this.props.editingNation.profit}
+              value={this.getEditingNation().profit}
               onValueChange={value => this.setFieldValue('profit', value)}
             />
           </View>
@@ -441,12 +452,12 @@ class CreateNation extends NavigatorComponent {
   }
 }
 
-CreateNation.propTypes = {
-  onCancelNationCreation: PropTypes.func.isRequired,
-  onResetNationCreation: PropTypes.func.isRequired,
-  onSaveNationDraft: PropTypes.func.isRequired,
-  onDeleteNationDraft: PropTypes.func.isRequired,
-  onSubmitNation: PropTypes.func.isRequired,
+CreateNation.defaultProps = {
+  onCancelNationCreation: () => null,
+  onResetNationCreation: () => null,
+  onSaveNationDraft: () => null,
+  onDeleteNationDraft: () => null,
+  onSubmitNation: () => null,
 };
 
 export default CreateNation;
