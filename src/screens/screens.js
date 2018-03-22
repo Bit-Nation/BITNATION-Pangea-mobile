@@ -1,4 +1,5 @@
-import { Platform } from 'react-native';
+// @flow
+
 import { Navigation } from 'react-native-navigation';
 
 import SplashScreen from './SplashScreen';
@@ -14,6 +15,7 @@ import VerifyKeySuccess from './Key/Verify/VerifyKeySuccess';
 import Intro from './Intro/RNSwiper';
 import SendMoney from './WalletScreen/SendMoney';
 import ReceiveMoneyScreen from './WalletScreen/ReceiveMoney';
+// eslint-disable-next-line import/no-unresolved,import/extensions
 import QRCodeScannerScreen from './WalletScreen/QRCodeScanner';
 import ChatScreen from './ChatScreen';
 import NationsScreen from './NationsScreen';
@@ -23,7 +25,13 @@ import NationCreateScreen from './NationCreateContainer';
 import ChatNationsScreen from './ChatNationsScreen';
 import { screen } from '../global/Screens';
 
-export function registerScreens(store, Provider) {
+/**
+ * @desc Registers screens for React Native Navigation.
+ * @param {Object} store Store to pass to screens.
+ * @param {Object} Provider Provider to pass to screens.
+ * @return {void}
+ */
+export default function registerScreens(store: Object, Provider: Object) {
   Navigation.registerComponent(screen('CREATE_KEY_INTRODUCTION_SCREEN').screen, () => CreateKeyIntroductionScreen, store, Provider);
   Navigation.registerComponent(screen('CREATE_KEY_INSTRUCTION_SCREEN').screen, () => CreateKeyInstructionScreen, store, Provider);
   Navigation.registerComponent(screen('CREATE_KEY_PROCESS_SCREEN').screen, () => CreateKeyProcessScreen, store, Provider);
