@@ -15,18 +15,24 @@ export {
 } from 'BITNATION-Pangea-libs/src/queues/transaction';
 
 /**
- *
- * @param nations {Array<NationType>} an list of nations
- * @param id {number} the id of the nation
- * @returns {*|ReactWrapper|ConfigT|ShallowWrapper}
+ * @desc Function to get a nation by id from array.
+ * @param {NationType[]} nations List of nations
+ * @param {number} id Id of the nation
+ * @return {?NationType} Nation or undefined.
  */
-export function resolveNation(nations: Array<NationType>, id: number) {
-  return _.find(nations, nation => nation.id === id);
+export function resolveNation(nations: Array<NationType>, id: number): NationType | null {
+  const resolved = _.find(nations, nation => nation.id === id);
+  if (resolved === undefined) {
+    return null;
+  }
+
+  return resolved;
 }
 
 /**
  * @define NationStatusCode
- * @desc 0 = unknown | 200 = pending | 300 = succeed | 400 = failed (take a look at the transaction queue for the status codes)
+ * @desc 0 = unknown | 200 = pending | 300 = succeed | 400 = failed
+ * (take a look at the transaction queue for the status codes)
  */
 type NationStatusCode = 0 | 200 | 300 | 400;
 
@@ -38,9 +44,9 @@ type NationStatusType = 'NONE' | 'NATION_JOIN' | 'NATION_LEAVE' | 'NATION_CREATE
 
 /**
  * @define NationStatus
- * @property {string} key the translation key of the status
- * @property {NationStatusType} type the type of the status
- * @property {NationStatusCode} code the code of the status
+ * @property {string} key Translation key of the status
+ * @property {NationStatusType} type Type of the status
+ * @property {NationStatusCode} code Code of the status
  */
 type NationStatus = {
   key: string,
@@ -49,11 +55,11 @@ type NationStatus = {
 }
 
 /**
- * @desc Takes a nation and return's the status that should be displayed to the user
- * @param nation
- * @returns {Object}
+ * @desc Takes a nation and returns the status that should be displayed to the user
+ * @param {NationType} nation Nation to get a status for.
+ * @return {?NationStatus} Nation status or null if status is not defined.
  */
-export function resolveStatus(nation: NationType): NationStatus | null {
+export function resolveStatus(nation: NationType): (NationStatus | null) {
   // idInSmartContract only exist when the nation was created
   if (nation.idInSmartContract === -1 && nation.tx === null) {
     return {
@@ -76,17 +82,17 @@ export function resolveStatus(nation: NationType): NationStatus | null {
 
 /**
  * @desc Returns true if nation is a draft, false otherwise.
- * @param nation
- * @returns {boolean}
+ * @param {NationType} nation Nation to be checked.
+ * @return {boolean} True if nation is a draft, false otherwise.
  */
 export function nationIsDraft(nation: NationType): boolean {
   return nation.idInSmartContract === -1 && nation.tx === null;
 }
 
 /**
- * @todo need's rewrite of the param's
- * @param nationData
- * @returns {DBNationType}
+ * @desc Converts app nation model to database model.
+ * @param {NationType} nationData Nation data to be converted.
+ * @return {DBNationType} Database nation model.
  */
 export function convertToDatabase(nationData: NationType): DBNationType {
   return {
@@ -114,9 +120,9 @@ export function convertToDatabase(nationData: NationType): DBNationType {
 }
 
 /**
- * @todo need's rewrite of the param's
- * @param nation
- * @returns {NationType}
+ * @desc Converts nation from database model to app model.
+ * @param {DBNationType} nation Database model of nation to be converted.
+ * @return {NationType} Converted app nation model.
  */
 export function convertFromDatabase(nation: DBNationType): NationType {
   return {
@@ -154,11 +160,11 @@ export function convertToEditingNation(nation: NationType): EditingNationType {
 }
 
 /**
- * @todo need's rewrite of the param's
- * @param nation
- * @returns {boolean}
+ * @desc Validates the nation information.
+ * @param {EditingNationType} nation Nation information to validate.
+ * @return {boolean} Boolean value if the nation is valid.
  */
-export function nationIsValid(nation: any) {
+export function nationIsValid(nation: EditingNationType): boolean {
   if (_.isEmpty(nation.nationName)) return false;
   if (_.isEmpty(nation.nationDescription)) return false;
   if (nation.virtualNation === null || nation.virtualNation === undefined) return false;
@@ -171,9 +177,9 @@ export function nationIsValid(nation: any) {
 }
 
 /**
- * @desc Takes a nation's key status and returns the corresponding color
- * @param status
- * @returns {Color}
+ * @desc Takes a nations status code and returns corresponding color
+ * @param {number} status Nation status code.
+ * @return {Color} Color constant to display the status.
  */
 export function statusColor(status: number) {
   switch (status) {
