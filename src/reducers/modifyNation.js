@@ -17,6 +17,7 @@ import {
 } from '../actions/modifyNation';
 import type { EditingNationType } from '../types/Nation';
 import type { Action } from '../actions/modifyNation';
+import { convertToEditingNation } from '../utils/nations';
 
 export type State = {
   +editingNation: EditingNationType | null,
@@ -25,7 +26,6 @@ export type State = {
   +latestError: ?Error,
 };
 
-// $FlowFixMe
 export const emptyNation: EditingNationType = {
   nationName: '',
   nationDescription: '',
@@ -65,8 +65,8 @@ export default (state: State = initialState, action: Action): State => {
     case START_NATION_EDITING:
       return {
         ...state,
-        initialNation: action.nation,
-        editingNation: action.nation,
+        initialNation: convertToEditingNation(action.nation),
+        editingNation: convertToEditingNation(action.nation),
       };
     case RESET_NATION_CREATION:
       return {
