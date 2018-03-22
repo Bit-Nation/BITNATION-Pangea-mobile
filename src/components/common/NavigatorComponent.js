@@ -1,12 +1,13 @@
 // @flow
 
 import { Component } from 'react';
+import type { NavigatorEvent, Navigator } from '../../types/ReactNativeNavigation';
 
-type Props = {
+type NavigatorProps = {
   /**
    * @desc React Native Navigation navigator object.
    */
-  navigator?: any,
+  navigator: Navigator,
 }
 
 /**
@@ -23,8 +24,9 @@ type Props = {
  * @note Don't forget to call super if you override constructor or onNavigatorEvent method of
  * that class.
  */
-export default class NavigatorComponent extends Component<Props> {
-  constructor(props: Props) {
+export default class NavigatorComponent<Props, State = void>
+  extends Component<Props & NavigatorProps, State> {
+  constructor(props: Props & NavigatorProps) {
     super(props);
 
     const { navigator } = this.props;
@@ -34,7 +36,7 @@ export default class NavigatorComponent extends Component<Props> {
     }
   }
 
-  onNavigatorEvent(event: { type: string, id: string }) {
+  onNavigatorEvent(event: NavigatorEvent) {
     if (event.type === 'NavBarButtonPress') {
       if (typeof this.onNavBarButtonPress === 'function') {
         this.onNavBarButtonPress(event.id);

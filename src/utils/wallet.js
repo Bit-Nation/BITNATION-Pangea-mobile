@@ -4,6 +4,10 @@ export function resolveWallet(wallets, address) {
   return _.find(wallets, wallet => wallet.ethAddress === address);
 }
 
+export function getWalletIndex(wallets, address) {
+  return _.findIndex(wallets, wallet => wallet.ethAddress === address);
+}
+
 export function convertWallets(wallets) {
   const walletsArray = [];
   wallets.forEach((value, key) =>

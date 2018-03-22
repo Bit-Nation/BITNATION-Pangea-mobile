@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// @flow
+
+import React from 'react';
 import { connect } from 'react-redux';
 
 import ChatNationsListScreen from './ChatNationsListScreen';
@@ -8,10 +9,39 @@ import { screen } from '../../global/Screens';
 import { resolveNation } from '../../utils/nations';
 import NavigatorComponent from '../../components/common/NavigatorComponent';
 import { startNationCreation } from '../../actions/modifyNation';
+import type { Navigator } from '../../types/ReactNativeNavigation';
+import type { NationType } from '../../services/database/schemata';
 
+type Props = {
+  /**
+   * @desc React Native Navigation navigator object.
+   */
+  navigator: Navigator,
+  /**
+   * @desc Selected Tab Name
+   */
+  selectedTab: string,
+  /**
+   * @desc List of nations
+   */
+  nations?: Array<NationType>,
+  /**
+   * @desc List of nations that the current user has joined to.
+   */
+  myNations: Array<NationType>,
+  /**
+   * @desc Function to retrieve nations from the database
+   */
+  fetchNations: () => void,
+  /**
+   * @desc Function to open a nation
+   * @param id Id of the nation to be opened
+   */
+  openNation: (id: number) => void,
+};
 
-class ChatNationsScreen extends NavigatorComponent {
-  constructor(props) {
+class ChatNationsScreen extends NavigatorComponent<Props> {
+  constructor(props: Props) {
     super(props);
 
     this.props.navigator.setButtons({
@@ -31,11 +61,10 @@ class ChatNationsScreen extends NavigatorComponent {
   }
 
   onSelectItem = (id, isBot) => {
-    const nation = resolveNation(this.props.nations, id);
+    const nation = resolveNation(this.props.nations || [], id);
 
     if (!nation) {
       if (isBot === true) {
-        console.log('No nation', isBot);
         this.props.navigator.push({
           ...screen('CHAT_SCREEN'),
           passProps: { isBot },
@@ -52,10 +81,6 @@ class ChatNationsScreen extends NavigatorComponent {
     });
   };
 }
-
-ChatNationsScreen.PropTypes = {
-  navigator: PropTypes.object,
-};
 
 const mapStateToProps = state => ({
   ...state.nations,
