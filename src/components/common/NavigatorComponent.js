@@ -1,12 +1,13 @@
 // @flow
 
 import { Component } from 'react';
+import type { NavigatorEvent, Navigator } from '../../types/ReactNativeNavigation';
 
 type NavigatorProps = {
   /**
    * @desc React Native Navigation navigator object.
    */
-  navigator?: any,
+  navigator: Navigator,
 }
 
 /**
@@ -35,7 +36,7 @@ export default class NavigatorComponent<Props, State = void>
     }
   }
 
-  onNavigatorEvent(event: { type: string, id: string }) {
+  onNavigatorEvent(event: NavigatorEvent) {
     if (event.type === 'NavBarButtonPress') {
       if (typeof this.onNavBarButtonPress === 'function') {
         this.onNavBarButtonPress(event.id);
