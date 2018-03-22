@@ -17,10 +17,15 @@ import FakeNavigationBar from '../../components/common/FakeNavigationBar';
 import Loading from '../../components/common/Loading';
 import { resolveNation } from '../../utils/nations';
 import createGiftedChatMessageObject from '../../utils/chat';
-import type { NationType } from '../../services/database/schemata';
+import type { NationType } from '../../types/Nation';
+import type { Navigator } from '../../types/ReactNativeNavigation';
 import elizabot from '../../../vendor/elizabot';
 
 type Props = {
+  /**
+   * @desc React Native Navigation navigator object
+   */
+  navigator: Navigator,
   /**
    * @desc A boolean prop to indicate whether the channel is a bot or not
    */
@@ -68,6 +73,10 @@ class ChatScreen extends Component<Props, State> {
 
     if (props.isBot !== true) {
       const selectedNation = resolveNation(props.nations || [], props.nationId);
+      if (selectedNation === null) {
+        this.props.navigator.pop();
+        return;
+      }
       this.nationId = selectedNation.idInSmartContract;
       // Creating the socket-client instance will automatically connect to the server.
       this.connection = SocketIOClient(config.CHAT_URL, {
