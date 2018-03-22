@@ -1,11 +1,17 @@
+// @flow
+
 import { createStore, applyMiddleware, compose } from 'redux';
 import logger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
 import thunk from 'redux-thunk';
+import createSagaMonitor from 'saga-monitor';
 import reducers from '../reducers';
 import rootSaga from '../sagas';
-import createSagaMonitor from 'saga-monitor';
 
+/**
+ * @desc Configures a Redux store.
+ * @return {Store} Created store object.
+ */
 export default function configureStore() {
   const sagaMonitor = createSagaMonitor({
     level: 'log',
@@ -20,9 +26,5 @@ export default function configureStore() {
 
   const store = createStore(reducers, enhancer);
   sagaMiddleware.run(rootSaga);
-
-  // TO DO : combineReducers was replaced with persistCombineReducers.
-  // persistStore(store, { storage: AsyncStorage }, onCompletion);
-
   return store;
 }
