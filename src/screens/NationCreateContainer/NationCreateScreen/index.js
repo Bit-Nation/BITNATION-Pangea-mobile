@@ -453,7 +453,6 @@ class CreateNation extends NavigatorComponent<Props & Actions & ModifyNationStat
 }
 
 CreateNation.defaultProps = {
-  navigator: null,
   onCancelNationCreation: () => null,
   onResetNationCreation: () => null,
   onSaveNationDraft: () => null,
