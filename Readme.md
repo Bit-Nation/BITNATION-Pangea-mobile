@@ -63,3 +63,34 @@ We are using:
 - `./__tests__` contains all the tests
 
 ### [Docs](./docs/main.md)
+
+### Detox local setup
+You can run the detox tests on your local computer before the CI runs the tests. Currently only iOS testing on your
+local computer is supported. Android support may come at a later time.
+
+Make sure you have installed the Detox CLI and the React Native CLI before running continuing to either iOS or Android.
+`npm install -g detox-cli`
+`npm install -g react-native-cli`
+
+#### Testing on iOS
+Make sure you have the simulator installed and you have used it before. (Eg. You've run the mobile application in ios)
+Make sure you have also followed the project set up for iOS above.
+
+We need to first install the detox Util library for iOS simulators, make sure you can run brew or something of equivalence.
+`brew tap wix/brew`
+`brew install applesimutils`
+
+Then build either the debug or release build of the iOS Application.
+`npm run test:e2e:debug:build`
+or 
+`npm run test:e2e:release:build`
+
+Then run the detox tests with
+`npm run test:e2e:debug`
+or
+`npm run test:e2e:release`
+depending on what you built.
+
+* Note: The tests will work without having the simulator application on your mac open, but to see them in action
+make sure the simulator application is launched. (No emulators need to be on, just the application). To
+open the application, open XCode, go to menu option XCode > Open Developer Tool > Simulator.
