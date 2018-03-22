@@ -34,6 +34,10 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "createPrivateKey": [Function],
+      "createdMnemonic": null,
+      "enteredMnemonic": null,
+      "mnemonicValid": null,
+      "mnemonicValidationInProgress": false,
       "navigator": Object {
         "push": [MockFunction],
       },
@@ -77,6 +81,10 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "createPrivateKey": [Function],
+        "createdMnemonic": null,
+        "enteredMnemonic": null,
+        "mnemonicValid": null,
+        "mnemonicValidationInProgress": false,
         "navigator": Object {
           "push": [MockFunction],
         },
