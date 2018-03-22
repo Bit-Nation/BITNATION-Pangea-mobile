@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+// @flow
+
+import * as React from 'react';
 import { View, Alert, Platform } from 'react-native';
-import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { connect } from 'react-redux';
@@ -12,17 +13,40 @@ import GridView from '../../../../components/GridView/index';
 import PrivateKeyTextInputContainer from '../../../../components/PrivateKeyTextInputContainer/index';
 import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
 import PanelView from '../../../../components/common/PanelView';
-import { KEY_LENGTH, KEY_COLUMN_COUNT, KEY_PAGE_ROW_COUNT, KEY_PAGE_LENGTH, KEY_PAGE_COUNT } from '../../../../global/Constants';
+import {
+  KEY_LENGTH,
+  KEY_COLUMN_COUNT,
+  KEY_PAGE_ROW_COUNT,
+  KEY_PAGE_LENGTH,
+  KEY_PAGE_COUNT,
+} from '../../../../global/Constants';
 import KeyBaseScreen from '../../KeyBaseScreen';
 import Button from '../../../../components/common/Button';
 import { changeEnteredMnemonic, removePrivateKey, validateEnteredMnemonic } from '../../../../actions/key';
 import Colors from '../../../../global/colors';
 import BodyParagraphs from '../../../../components/common/BodyParagraphs';
 import i18n from '../../../../global/i18n';
+import type { State as KeyState } from '../../../../reducers/key';
+import type { Mnemonic } from '../../../../types/Mnemonic';
 
 const DONE_BUTTON = 'DONE_BUTTON';
 
-class VerifyKeyProcessScreen extends KeyBaseScreen {
+type Props = {
+  testingModeActive: boolean,
+}
+
+type Actions = {
+  validateMnemonic: () => void,
+  removePrivateKey: () => void,
+  changeMnemonic: (Mnemonic) => void,
+}
+
+type State = {
+  currentPage: number,
+  selectedInputIndex: number | null,
+}
+
+class VerifyKeyProcessScreen extends KeyBaseScreen<Actions & KeyState & Props, State> {
   constructor(props) {
     super(props);
 
@@ -36,17 +60,25 @@ class VerifyKeyProcessScreen extends KeyBaseScreen {
       this.props.changeMnemonic(this.props.createdMnemonic);
     }
     this.keyTextInputContainers = [];
-    this._configureNavigation(this.props);
+    this.configureNavigation(this.props);
   }
 
-  doneShouldBeEnabled(props) {
-    const inputFilled = _.reduce(props.enteredMnemonic, (prev, next) => prev && !_.isEmpty(next), true);
+  keyTextInputContainers: Array<any>;
+  scrollView: ?any;
+
+  static doneShouldBeEnabled(props) {
+    const inputFilled = _.reduce(
+      props.enteredMnemonic,
+      (prev, next) => prev && !_.isEmpty(next),
+      true,
+    );
     return inputFilled && !props.mnemonicValidationInProgress;
   }
 
   componentWillUpdate(nextProps) {
-    if (this.doneShouldBeEnabled(this.props) !== this.doneShouldBeEnabled(nextProps)) {
-      this._configureNavigation(nextProps);
+    if (VerifyKeyProcessScreen.doneShouldBeEnabled(this.props)
+      !== VerifyKeyProcessScreen.doneShouldBeEnabled(nextProps)) {
+      this.configureNavigation(nextProps);
     }
   }
 
@@ -61,16 +93,18 @@ class VerifyKeyProcessScreen extends KeyBaseScreen {
     if (this.props.mnemonicValid !== prevProps.mnemonicValid
       && this.props.mnemonicValid !== null) {
       if (!this.props.mnemonicValid) {
-        this._showIncorrectMnemonicAlert();
+        this.showIncorrectMnemonicAlert();
       } else {
-        this._onSuccess();
+        this.onSuccess();
       }
     }
   }
 
-  _configureNavigation(props, state) {
+  configureNavigation(props) {
+    if (!this.props.navigator) return;
+
     this.props.navigator.setButtons({
-      rightButtons: this.doneShouldBeEnabled(props, state) ? [{
+      rightButtons: VerifyKeyProcessScreen.doneShouldBeEnabled(props) ? [{
         id: DONE_BUTTON,
         title: 'Done',
         buttonColor: Colors.navigationButtonColor,
@@ -80,11 +114,11 @@ class VerifyKeyProcessScreen extends KeyBaseScreen {
 
   onNavBarButtonPress(id) {
     if (id === DONE_BUTTON) {
-      this.props.validateMnemonic(this.state.values);
+      this.props.validateMnemonic();
     }
   }
 
-  _showIncorrectMnemonicAlert = () => {
+  showIncorrectMnemonicAlert = () => {
     Alert.alert(
       i18n.t('alerts.incorrectKeyEntered.title'),
       i18n.t('alerts.incorrectKeyEntered.subtitle'),
@@ -92,19 +126,21 @@ class VerifyKeyProcessScreen extends KeyBaseScreen {
     );
   };
 
-  _onSuccess() {
-    this.props.navigator.push(screen('VERIFY_KEY_SUCCESS_SCREEN'));
+  onSuccess() {
+    if (this.props.navigator) {
+      this.props.navigator.push(screen('VERIFY_KEY_SUCCESS_SCREEN'));
+    }
   }
 
   onNextPressed = () => {
-    this._setSelectedInputIndex((this.state.currentPage + 1) * KEY_PAGE_LENGTH);
+    this.setSelectedInputIndex((this.state.currentPage + 1) * KEY_PAGE_LENGTH);
   };
 
   onPreviousPressed = () => {
-    this._setSelectedInputIndex(0);
+    this.setSelectedInputIndex(0);
   };
 
-  _setSelectedInputIndex = (index) => {
+  setSelectedInputIndex = (index) => {
     const nextIndex = Math.min(Math.max(index, 0), KEY_LENGTH - 1);
 
     this.setState({
@@ -113,7 +149,9 @@ class VerifyKeyProcessScreen extends KeyBaseScreen {
     });
   };
 
-  _onValueChange = (index, value) => {
+  onValueChange = (index, value) => {
+    if (this.props.enteredMnemonic === null) return;
+
     const values = this.props.enteredMnemonic;
     this.props.changeMnemonic([
       ...values.slice(0, index),
@@ -122,44 +160,42 @@ class VerifyKeyProcessScreen extends KeyBaseScreen {
     ]);
   };
 
-  _onFieldSubmit = (index) => {
-    this._setSelectedInputIndex(index + 1);
+  onFieldSubmit = (index) => {
+    this.setSelectedInputIndex(index + 1);
   };
 
-  _onFocus = (index, field) => {
+  onFocus = (index, field) => {
     if (this.state.selectedInputIndex !== index) {
       this.setState({
         selectedInputIndex: index,
       });
     }
-    this.scrollView.scrollToFocusedInput(field);
+    if (this.scrollView) {
+      this.scrollView.scrollToFocusedInput(field);
+    }
   };
 
-  _renderTextInput = (index) => {
-    index += this.state.currentPage * KEY_PAGE_LENGTH;
+  renderTextInput = (biasedIndex) => {
+    const index = biasedIndex + (this.state.currentPage * KEY_PAGE_LENGTH);
 
     return (
       <PrivateKeyTextInputContainer
         editable
         index={index}
         isLast={index === KEY_LENGTH - 1}
-        onChange={this._onValueChange}
+        onChange={this.onValueChange}
         value={(this.props.enteredMnemonic && this.props.enteredMnemonic[index]) || ''}
         label={(index + 1).toString()}
-        onSubmit={this._onFieldSubmit}
+        onSubmit={this.onFieldSubmit}
         key={index}
-        onFocus={this._onFocus}
+        onFocus={this.onFocus}
         ref={(input) => {
           this.keyTextInputContainers[index] = input;
         }}
-        style={{ marginLeft: (index % KEY_COLUMN_COUNT === 0) ? 0 : 10 }}
+        style={index % KEY_COLUMN_COUNT === 0 ? styles.firstTextInput : styles.textInput}
       />
     );
   };
-
-  /*
-  MAIN SCREEN
-   */
 
   render() {
     return (
@@ -173,20 +209,18 @@ class VerifyKeyProcessScreen extends KeyBaseScreen {
             extraHeight={48.5 + 44 + (Platform.OS === 'android' ? 22 : 0)}
             enableOnAndroid
             keyboardShouldPersistTaps='handled'
-            ref={scrollView => this.scrollView = scrollView}
+            ref={scrollView => (this.scrollView = scrollView)}
           >
-
             <PanelView
               style={styles.panelViewTransparent}
-              childrenContainerStyle={{ flex: 0 }}
+              childrenContainerStyle={styles.noflex}
             >
-
               <BodyParagraphs paragraphs={i18n.t('screens.verifyKey.process.instructions', { KEY_LENGTH })} />
               <View style={styles.gridContainer}>
                 <GridView
                   itemsPerRow={KEY_COLUMN_COUNT}
                   rowsCount={KEY_PAGE_ROW_COUNT}
-                  renderItem={this._renderTextInput}
+                  renderItem={this.renderTextInput}
                   style={styles.gridView}
                 />
               </View>
