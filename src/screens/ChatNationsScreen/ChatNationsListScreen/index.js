@@ -1,3 +1,5 @@
+// @flow
+
 import React, { Component } from 'react';
 import {
   View,
@@ -13,8 +15,28 @@ import NationListHeader from '../../../components/common/NationListHeader';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import i18n from '../../../global/i18n';
 import AssetsImages from '../../../global/AssetsImages';
+import type { NationType } from '../../../services/database/schemata';
 
-class ChatNationsListScreen extends Component {
+type Props = {
+  /**
+   * @desc Selected Tab Name
+   */
+  selectedTab?: string,
+  /**
+   * @desc List of all nations
+   */
+  nations?: Array<NationType>,
+  /**
+   * @desc List of nations that the current user has joined to.
+   */
+  myNations?: Array<NationType>,
+  /**
+   * @desc Function to be called when an item is selected from the list
+   */
+  onSelectItem: (number, boolean) => void,
+};
+
+class ChatNationsListScreen extends Component<Props> {
   render() {
     const nations = this.props.selectedTab === 'ALL_NATIONS' ?
       _.filter(this.props.nations, nation => nation.idInSmartContract >= 0)
