@@ -34,14 +34,13 @@ type Actions = {
   onSaveNationDraft: (EditingNationType, () => void) => void,
   onDeleteNationDraft: (NationIdType, () => void) => void,
   onSubmitNation: (EditingNationType, () => void) => void,
+  onNationChange: (EditingNationType, () => void) => void,
 }
 
 class CreateNation extends NavigatorComponent<Props & Actions & ModifyNationState> {
   static defaultProps: Object;
-  constructor(props: Props) {
+  constructor(props: Props & Actions & ModifyNationState) {
     super(props);
-
-    this.actionSheet = null;
     this.multiGovernanceService = null;
     this.props.navigator.setButtons({
       leftButtons: [{
@@ -53,13 +52,13 @@ class CreateNation extends NavigatorComponent<Props & Actions & ModifyNationStat
     });
   }
 
-  onNavBarButtonPress(id) {
+  onNavBarButtonPress(id: string) {
     if (id === 'cancel') {
       this.props.onCancelNationCreation();
     }
   }
 
-  setFieldValue(field: string, value: Object) {
+  setFieldValue(field: any, value: any) {
     this.props.onNationChange(field, value);
   }
 

@@ -28,6 +28,7 @@ type Actions = {
   onResetNationCreation: () => void,
   onDeleteNationDraft: (NationIdType, () => void) => void,
   onSubmitNation: (EditingNationType, () => void) => void,
+  onNationChange: (EditingNationType, () => void) => void,
 };
 
 class NationCreateContainer extends Component<Props & Actions & ModifyNationState> {
@@ -161,6 +162,7 @@ NationCreateContainer.defaultProps = {
   onResetNationCreation: () => null,
   onDeleteNationDraft: () => null,
   onSubmitNation: () => null,
+  onNationChange: () => null,
 };
 
 const mapStateToProps = state => ({
