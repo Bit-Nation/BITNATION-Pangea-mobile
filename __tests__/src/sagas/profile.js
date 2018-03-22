@@ -50,7 +50,8 @@ test('sagas - updateProfile', (done) => {
     version: '0',
     image: mockUser.editingUser.avatar ? mockUser.editingUser.avatar : '',
   };
-  expect(iterator.next(mockUser).value).toEqual(call(pangeaLibrary.profile.profile.setProfile, profile));
+  expect(iterator.next(mockUser).value)
+    .toEqual(call(pangeaLibrary.profile.profile.setProfile, profile));
 
   // clone and test the success case
   const successIterator = iterator.clone();
@@ -69,7 +70,8 @@ test('sagas - getProfile', (done) => {
   };
   const iterator = cloneableGenerator(getProfile)(mockAction);
   expect(iterator.next().value).toEqual(call(getPangeaLibrary));
-  expect(iterator.next(pangeaLibrary).value).toEqual(call(pangeaLibrary.profile.profile.getProfile));
+  expect(iterator.next(pangeaLibrary).value)
+    .toEqual(call(pangeaLibrary.profile.profile.getProfile));
 
   // clone and test the success case
   const successIterator = iterator.clone();
@@ -78,7 +80,8 @@ test('sagas - getProfile', (done) => {
     location: 'NYC',
     image: null,
   };
-  expect(successIterator.next(mockProfile).value).toEqual(put({ type: SET_USER_PROFILE, user: { ...mockProfile, avatar: null } }));
+  expect(successIterator.next(mockProfile).value)
+    .toEqual(put({ type: SET_USER_PROFILE, user: { ...mockProfile, avatar: null } }));
 
   // clone and test the failure case
   const failureIterator = iterator.clone();

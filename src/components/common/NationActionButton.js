@@ -1,38 +1,67 @@
-import React, { Component } from 'react';
-import { Image, Text, TouchableOpacity, View } from 'react-native';
-import { MediaQueryStyleSheet } from 'react-native-responsive';
+// @flow
 
-import Colors from '../../global/colors';
+import React from 'react';
+import {
+  Image,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+
+import { MediaQueryStyleSheet } from 'react-native-responsive';
 import GlobalStyles from '../../global/Styles';
 
-{ /*  *************************
-  NationActionButton parameters:
-    iconSource = image to render
-    title = Title of the Button
-    disable = State of the Button
-    ****************************  */ }
-
-export default class NationActionButton extends Component {
-  render() {
-    const { style, children, ...props } = this.props;
-
-    return (
-      <View style={[styles.tabBarButton, style]} {...props} opacity={this.props.disable ? 0.4 : 1}>
-        <TouchableOpacity
-          style={[styles.tabBarContainer]}
-          onPress={this.props.onPress}
-          disabled={this.props.disable}
-          activeOpacity={this.props.disable ? 1 : 0.4}
-        >
-          <Image source={this.props.iconSource} />
-          <Text style={styles.tabBarTitle}>{this.props.title}</Text>
-        </TouchableOpacity>
-      </View>
-    );
-  }
+type Props = {
+  /**
+   * @desc Value to enable/disable the button.
+   */
+  disable?: boolean,
+  /**
+   * @desc Text label of the button.
+   */
+  title?: string,
+  /**
+   * @desc Callback to be called when button is pressed.
+   */
+  onPress?: () => void,
+  /**
+   * @desc Resource to be rendered as icon with the button.
+   */
+  iconSource?: number,
 }
 
-const styles = MediaQueryStyleSheet.create({
-  ...GlobalStyles,
+/**
+ * @desc Component that renders the buttons used on the Nations Screens (icon + text)
+ * @return {React.Component} A component.
+ */
 
-});
+const NationActionButton = ({
+  title, disable, iconSource, onPress,
+}: Props) => {
+  const styles = MediaQueryStyleSheet.create({
+    ...GlobalStyles,
+  });
+
+  return (
+    <View style={styles.tabBarButton} opacity={disable ? 0.4 : 1}>
+      <TouchableOpacity
+        style={[styles.tabBarContainer]}
+        onPress={onPress}
+        disabled={disable}
+        activeOpacity={disable ? 1 : 0.4}
+      >
+        <Image source={iconSource} />
+        <Text style={styles.tabBarTitle}>{title}</Text>
+      </TouchableOpacity>
+    </View>
+  );
+};
+
+NationActionButton.defaultProps = {
+  disable: true,
+  title: '',
+  iconSource: undefined,
+  onPress: () => null,
+};
+
+export default NationActionButton;

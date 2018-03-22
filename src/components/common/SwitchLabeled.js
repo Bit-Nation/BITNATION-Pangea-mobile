@@ -1,48 +1,54 @@
-/**
- * @desc Generates a standard native Switch with a Label at the right
- * @type React.Component
- * @param props.label {String} Text for the label
- * @param props.value {Boolean} State for the switch
- */
+// @flow
 
-import React, { Component } from 'react';
+import React from 'react';
 import { Switch, View, Text } from 'react-native';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
-import PropTypes from 'prop-types';
 import GlobalStyles from '../../global/Styles';
 import Colors from '../../global/colors';
 
-export default class SwitchLabeled extends Component {
-  render() {
-    const { onValueChange } = this.props;
+type Props = {
+  /**
+   * @desc Value of the Switch.
+   */
+  value?: boolean,
+  /**
+   * @desc Text label at the right of the Switch.
+   */
+  label?: string,
+  /**
+   * @desc Callback to be called on Switch when changes value.
+   */
+  onValueChange?: () => void,
+};
 
-    return (
-      <View style={styles.formRow}>
-        <View style={styles.switchContainer}>
-          <Switch
-            style={styles.switchObject}
-            onTintColor={Colors.BitnationHighlightColor}
-            onValueChange={onValueChange}
-            value={this.props.value}
-          />
-          <Text style={styles.formSwitchLabelText}>{this.props.label}</Text>
-        </View>
+/**
+ * @desc Generates a standard native Switch with a Label at the right
+ * @return {React.Component} A component.
+ */
+
+const SwitchLabeled = ({ onValueChange, value, label }:Props) => {
+  const styles = MediaQueryStyleSheet.create({
+    ...GlobalStyles,
+  });
+  return (
+    <View style={styles.formRow}>
+      <View style={styles.switchContainer}>
+        <Switch
+          style={styles.switchObject}
+          onTintColor={Colors.BitnationHighlightColor}
+          onValueChange={onValueChange}
+          value={value}
+        />
+        <Text style={styles.formSwitchLabelText}>{label}</Text>
       </View>
-    );
-  }
-}
-
-SwitchLabeled.propTypes = {
-  value: PropTypes.bool,
-  label: PropTypes.string,
+    </View>
+  );
 };
 
 SwitchLabeled.defaultProps = {
   value: false,
   label: '',
+  onValueChange: () => undefined,
 };
 
-const styles = MediaQueryStyleSheet.create({
-  ...GlobalStyles,
-
-});
+export default SwitchLabeled;

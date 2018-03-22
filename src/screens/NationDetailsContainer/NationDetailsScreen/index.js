@@ -10,7 +10,6 @@ import styles from './styles';
 import NationActionButton from '../../../components/common/NationActionButton';
 import AssetsImage from '../../../global/AssetsImages';
 import PanelView from '../../../components/common/PanelView';
-import DemoImage from '../../../components/common/DemoImage';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import i18n from '../../../global/i18n';
 import Colors from '../../../global/colors';
@@ -114,7 +113,8 @@ class NationDetailsScreen extends Component {
         <NationActionButton
           iconSource={AssetsImage.Actions.chat}
           title={i18n.t('screens.nations.toolbar.chat')}
-          disable
+          disable={false}
+          onPress={this.props.openNationChat}
         />
         <NationActionButton
           iconSource={AssetsImage.Actions.map}
@@ -139,7 +139,6 @@ class NationDetailsScreen extends Component {
 
   // Useful Notes:
   // PanelView Props: title = text, messageText = text, style, renderBottom = method, renderAdditionalInfo = method, children = main text of the display
-  // DemoImage overlays a message telling user this is a demonstration
 
   _buildAboutView(nation) {
     return (
@@ -221,7 +220,6 @@ class NationDetailsScreen extends Component {
   _buildStatusPanel(status) {
     return (
       <PanelViewAlert
-        style={styles.panelViewAlert}
         status={status}
       />
     );
@@ -231,9 +229,7 @@ class NationDetailsScreen extends Component {
     if (nation.joined) {
       return (
         <PanelViewCitizen
-          style={styles.panelViewCitizen}
-          nationName={nation.nationName}
-        />
+          nationName={nation.nationName}/>
       );
     }
   }
@@ -245,6 +241,7 @@ NationDetailsScreen.propTypes = {
   leaveNation: PropTypes.func,
   deleteDraft: PropTypes.func,
   submitDraft: PropTypes.func,
+  openNationChat: PropTypes.func,
 };
 
 export default NationDetailsScreen;

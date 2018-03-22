@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { Msg } from 'BITNATION-Pangea-libs/src/queues/messaging';
 import { MESSAGING_QUEUE_JOB_ADDED } from 'BITNATION-Pangea-libs/src/events';
 

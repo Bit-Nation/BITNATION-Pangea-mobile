@@ -1,9 +1,11 @@
+/* eslint-disable */
+
 import { delay } from 'redux-saga';
 import { call, race } from 'redux-saga/effects';
 import { APP_OFFLINE, APP_ONLINE } from 'BITNATION-Pangea-libs/src/events';
 import { getPangeaLibrary } from '../services/container';
 
-let lastIsConnected = false;
+let lastIsConnected = null;
 
 // @todo Replace that with React Native NetInfo once https://github.com/facebook/react-native/issues/8615 is fixed.
 export function* checkConnection() {
@@ -15,17 +17,17 @@ export function* checkConnection() {
   });
 
   if (result) {
-    const isConnected = result === 200;
+    const isConnected = result.status === 200;
     if (isConnected !== lastIsConnected) {
       lastIsConnected = isConnected;
-      if (isConnected === false) {
-        pangeaLibs.eventEmitter.emit(APP_OFFLINE);
-        return;
-      }
-
-      pangeaLibs.eventEmitter.emit(APP_ONLINE);
+      pangeaLibs.eventEmitter.emit(isConnected === true ? APP_ONLINE : APP_OFFLINE);
+      // @todo This should be fixed
+      yield call(delay, 2000); // delay to ensure pangeaLibs updated web3
     }
-    return isConnected;
+
+    if (isConnected === true) {
+      return true;
+    }
   }
 
   throw { transKey: 'noConnection' };

@@ -1,0 +1,619 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PrivateKeyTextInputContainer component tests rendering custom style 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flex": 1,
+        "height": 44,
+      },
+      Object {
+        "flex": 1,
+      },
+    ]
+  }
+>
+  <TextInput
+    allowFontScaling={true}
+    autoCapitalize="none"
+    autoCorrect={false}
+    blurOnSubmit={true}
+    editable={true}
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    onSubmitEditing={[Function]}
+    returnKeyType="done"
+    selectionColor="#C0C0C0"
+    style={
+      Object {
+        "backgroundColor": "white",
+        "color": "#C0C0C0",
+        "fontSize": 16,
+        "height": 24,
+        "paddingBottom": 2,
+        "paddingLeft": 5,
+        "paddingTop": 2,
+      }
+    }
+    underlineColorAndroid="transparent"
+    value=""
+  />
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "color": "#F1F1F1",
+        "fontSize": 12,
+        "marginTop": 4,
+        "textAlign": "center",
+      }
+    }
+  />
+</View>
+`;
+
+exports[`PrivateKeyTextInputContainer component tests rendering default 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flex": 1,
+        "height": 44,
+      },
+      undefined,
+    ]
+  }
+>
+  <TextInput
+    allowFontScaling={true}
+    autoCapitalize="none"
+    autoCorrect={false}
+    blurOnSubmit={true}
+    editable={true}
+    onChangeText={[Function]}
+    onFocus={[Function]}
+    onSubmitEditing={[Function]}
+    returnKeyType="done"
+    selectionColor="#C0C0C0"
+    style={
+      Object {
+        "backgroundColor": "white",
+        "color": "#C0C0C0",
+        "fontSize": 16,
+        "height": 24,
+        "paddingBottom": 2,
+        "paddingLeft": 5,
+        "paddingTop": 2,
+      }
+    }
+    underlineColorAndroid="transparent"
+    value=""
+  />
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "color": "#F1F1F1",
+        "fontSize": 12,
+        "marginTop": 4,
+        "textAlign": "center",
+      }
+    }
+  />
+</View>
+`;
+
+exports[`PrivateKeyTextInputContainer component tests rendering isLast prop 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <PrivateKeyTextInputContainer
+    editable={true}
+    index={0}
+    isLast={false}
+    label="Test label"
+    onChange={[Function]}
+    onFocus={[Function]}
+    onSubmit={[Function]}
+    value="Test value"
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <TextInput
+          allowFontScaling={true}
+          autoCapitalize="none"
+          autoCorrect={false}
+          blurOnSubmit={false}
+          editable={true}
+          onChangeText={[Function]}
+          onFocus={[Function]}
+          onSubmitEditing={[Function]}
+          returnKeyType="next"
+          selectionColor="#C0C0C0"
+          style={
+            Object {
+              "backgroundColor": "white",
+              "color": "#C0C0C0",
+              "fontSize": 16,
+              "height": 24,
+              "paddingBottom": 2,
+              "paddingLeft": 5,
+              "paddingTop": 2,
+            }
+          }
+          underlineColorAndroid="transparent"
+          value="Test value"
+        />,
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "color": "#F1F1F1",
+              "fontSize": 12,
+              "marginTop": 4,
+              "textAlign": "center",
+            }
+          }
+        >
+          Test label
+        </Text>,
+      ],
+      "style": Array [
+        Object {
+          "flex": 1,
+          "height": 44,
+        },
+        undefined,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "allowFontScaling": true,
+          "autoCapitalize": "none",
+          "autoCorrect": false,
+          "blurOnSubmit": false,
+          "editable": true,
+          "onChangeText": [Function],
+          "onFocus": [Function],
+          "onSubmitEditing": [Function],
+          "returnKeyType": "next",
+          "selectionColor": "#C0C0C0",
+          "style": Object {
+            "backgroundColor": "white",
+            "color": "#C0C0C0",
+            "fontSize": 16,
+            "height": 24,
+            "paddingBottom": 2,
+            "paddingLeft": 5,
+            "paddingTop": 2,
+          },
+          "underlineColorAndroid": "transparent",
+          "value": "Test value",
+        },
+        "ref": [Function],
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "accessible": true,
+          "allowFontScaling": true,
+          "children": "Test label",
+          "ellipsizeMode": "tail",
+          "style": Object {
+            "color": "#F1F1F1",
+            "fontSize": 12,
+            "marginTop": 4,
+            "textAlign": "center",
+          },
+        },
+        "ref": null,
+        "rendered": "Test label",
+        "type": [Function],
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <TextInput
+            allowFontScaling={true}
+            autoCapitalize="none"
+            autoCorrect={false}
+            blurOnSubmit={false}
+            editable={true}
+            onChangeText={[Function]}
+            onFocus={[Function]}
+            onSubmitEditing={[Function]}
+            returnKeyType="next"
+            selectionColor="#C0C0C0"
+            style={
+              Object {
+                "backgroundColor": "white",
+                "color": "#C0C0C0",
+                "fontSize": 16,
+                "height": 24,
+                "paddingBottom": 2,
+                "paddingLeft": 5,
+                "paddingTop": 2,
+              }
+            }
+            underlineColorAndroid="transparent"
+            value="Test value"
+          />,
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "#F1F1F1",
+                "fontSize": 12,
+                "marginTop": 4,
+                "textAlign": "center",
+              }
+            }
+          >
+            Test label
+          </Text>,
+        ],
+        "style": Array [
+          Object {
+            "flex": 1,
+            "height": 44,
+          },
+          undefined,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "allowFontScaling": true,
+            "autoCapitalize": "none",
+            "autoCorrect": false,
+            "blurOnSubmit": false,
+            "editable": true,
+            "onChangeText": [Function],
+            "onFocus": [Function],
+            "onSubmitEditing": [Function],
+            "returnKeyType": "next",
+            "selectionColor": "#C0C0C0",
+            "style": Object {
+              "backgroundColor": "white",
+              "color": "#C0C0C0",
+              "fontSize": 16,
+              "height": 24,
+              "paddingBottom": 2,
+              "paddingLeft": 5,
+              "paddingTop": 2,
+            },
+            "underlineColorAndroid": "transparent",
+            "value": "Test value",
+          },
+          "ref": [Function],
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "accessible": true,
+            "allowFontScaling": true,
+            "children": "Test label",
+            "ellipsizeMode": "tail",
+            "style": Object {
+              "color": "#F1F1F1",
+              "fontSize": 12,
+              "marginTop": 4,
+              "textAlign": "center",
+            },
+          },
+          "ref": null,
+          "rendered": "Test label",
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`PrivateKeyTextInputContainer component tests rendering isLast prop 2`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <PrivateKeyTextInputContainer
+    editable={true}
+    index={0}
+    isLast={true}
+    label="Test label"
+    onChange={[Function]}
+    onFocus={[Function]}
+    onSubmit={[Function]}
+    value="Test value"
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <TextInput
+          allowFontScaling={true}
+          autoCapitalize="none"
+          autoCorrect={false}
+          blurOnSubmit={true}
+          editable={true}
+          onChangeText={[Function]}
+          onFocus={[Function]}
+          onSubmitEditing={[Function]}
+          returnKeyType="done"
+          selectionColor="#C0C0C0"
+          style={
+            Object {
+              "backgroundColor": "white",
+              "color": "#C0C0C0",
+              "fontSize": 16,
+              "height": 24,
+              "paddingBottom": 2,
+              "paddingLeft": 5,
+              "paddingTop": 2,
+            }
+          }
+          underlineColorAndroid="transparent"
+          value="Test value"
+        />,
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "color": "#F1F1F1",
+              "fontSize": 12,
+              "marginTop": 4,
+              "textAlign": "center",
+            }
+          }
+        >
+          Test label
+        </Text>,
+      ],
+      "style": Array [
+        Object {
+          "flex": 1,
+          "height": 44,
+        },
+        undefined,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "allowFontScaling": true,
+          "autoCapitalize": "none",
+          "autoCorrect": false,
+          "blurOnSubmit": true,
+          "editable": true,
+          "onChangeText": [Function],
+          "onFocus": [Function],
+          "onSubmitEditing": [Function],
+          "returnKeyType": "done",
+          "selectionColor": "#C0C0C0",
+          "style": Object {
+            "backgroundColor": "white",
+            "color": "#C0C0C0",
+            "fontSize": 16,
+            "height": 24,
+            "paddingBottom": 2,
+            "paddingLeft": 5,
+            "paddingTop": 2,
+          },
+          "underlineColorAndroid": "transparent",
+          "value": "Test value",
+        },
+        "ref": [Function],
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "accessible": true,
+          "allowFontScaling": true,
+          "children": "Test label",
+          "ellipsizeMode": "tail",
+          "style": Object {
+            "color": "#F1F1F1",
+            "fontSize": 12,
+            "marginTop": 4,
+            "textAlign": "center",
+          },
+        },
+        "ref": null,
+        "rendered": "Test label",
+        "type": [Function],
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <TextInput
+            allowFontScaling={true}
+            autoCapitalize="none"
+            autoCorrect={false}
+            blurOnSubmit={true}
+            editable={true}
+            onChangeText={[Function]}
+            onFocus={[Function]}
+            onSubmitEditing={[Function]}
+            returnKeyType="done"
+            selectionColor="#C0C0C0"
+            style={
+              Object {
+                "backgroundColor": "white",
+                "color": "#C0C0C0",
+                "fontSize": 16,
+                "height": 24,
+                "paddingBottom": 2,
+                "paddingLeft": 5,
+                "paddingTop": 2,
+              }
+            }
+            underlineColorAndroid="transparent"
+            value="Test value"
+          />,
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "#F1F1F1",
+                "fontSize": 12,
+                "marginTop": 4,
+                "textAlign": "center",
+              }
+            }
+          >
+            Test label
+          </Text>,
+        ],
+        "style": Array [
+          Object {
+            "flex": 1,
+            "height": 44,
+          },
+          undefined,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "allowFontScaling": true,
+            "autoCapitalize": "none",
+            "autoCorrect": false,
+            "blurOnSubmit": true,
+            "editable": true,
+            "onChangeText": [Function],
+            "onFocus": [Function],
+            "onSubmitEditing": [Function],
+            "returnKeyType": "done",
+            "selectionColor": "#C0C0C0",
+            "style": Object {
+              "backgroundColor": "white",
+              "color": "#C0C0C0",
+              "fontSize": 16,
+              "height": 24,
+              "paddingBottom": 2,
+              "paddingLeft": 5,
+              "paddingTop": 2,
+            },
+            "underlineColorAndroid": "transparent",
+            "value": "Test value",
+          },
+          "ref": [Function],
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "accessible": true,
+            "allowFontScaling": true,
+            "children": "Test label",
+            "ellipsizeMode": "tail",
+            "style": Object {
+              "color": "#F1F1F1",
+              "fontSize": 12,
+              "marginTop": 4,
+              "textAlign": "center",
+            },
+          },
+          "ref": null,
+          "rendered": "Test label",
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

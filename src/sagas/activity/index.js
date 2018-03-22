@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { all, takeEvery } from 'redux-saga/effects';
 
 import { ADD_DUMMY_MESSAGE, START_FETCH_MESSAGES } from '../../actions/activity';

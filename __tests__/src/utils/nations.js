@@ -33,5 +33,5 @@ test('convert governance service to and from database works', () => {
 
 test('get status color', () => {
   const nationStatusColor = statusColor(TX_JOB_STATUS_SUCCESS);
-  expect(nationStatusColor).toEqual(Colors.Green);
+  expect(nationStatusColor).toEqual('#4CAF50');
 });

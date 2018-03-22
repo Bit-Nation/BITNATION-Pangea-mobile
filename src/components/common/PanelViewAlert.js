@@ -1,46 +1,47 @@
-import React, { Component } from 'react';
-import { View, Text } from 'react-native';
-import { MediaQueryStyleSheet } from 'react-native-responsive';
-import PropTypes from 'prop-types';
-import _ from 'lodash';
+// @flow
 
+import React from 'react';
+import {
+  View,
+  Text,
+} from 'react-native';
+
+import { MediaQueryStyleSheet } from 'react-native-responsive';
 import GlobalStyles from '../../global/Styles';
 import i18n from '../../global/i18n';
 
+
+type Props = {
+  /**
+   * @desc Status message to show in panel
+   */
+  status?: string,
+};
+
 /**
  * @desc Component that renders an alert panel view for Nations Status
- * @type React.Component
+ * @return {React.Component} A component.
  */
-export default class PanelViewAlert extends Component {
-  render() {
-    const { style } = this.props;
 
-    return (
-      <View style={style}>
-        <Text style={styles.panelAlertBold}>
-          {i18n.t('screens.nationDetails.status')}
-        </Text>
-        <Text style={styles.panelAlertStatus}>
-          {` ${this.props.status}`}
-        </Text>
-      </View>
-    );
-  }
-}
+const PanelViewAlert = ({ status }: Props) => {
+  const styles = MediaQueryStyleSheet.create({
+    ...GlobalStyles,
+  });
 
-
-const styles = MediaQueryStyleSheet.create({
-  ...GlobalStyles,
-});
+  return (
+    <View style={styles.panelViewAlert}>
+      <Text style={styles.panelAlertBold}>
+        {i18n.t('screens.nationDetails.status')}
+      </Text>
+      <Text style={styles.panelAlertStatus}>
+        {status}
+      </Text>
+    </View>
+  );
+};
 
 PanelViewAlert.defaultProps = {
-  style: styles.panelViewAlert,
+  status: '',
 };
 
-PanelViewAlert.PropTypes = {
-  /**
-   * @desc Title of panel
-   * @type string
-   */
-  status: PropTypes.string,
-};
+export default PanelViewAlert;

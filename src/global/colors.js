@@ -1,12 +1,8 @@
+// @flow
+
 import { Platform } from 'react-native';
 
-/*
-	BITNATION COLORS
-*/
-
-// ========================================
-// BASE COLORS
-
+// Bitnation colors
 // Grayish
 const BitnationColor = '#4A90E2'; /* rgb(74, 144, 226) */
 const BitnationDarkColor = '#1B395C'; /* rgb(27, 57, 92) */
@@ -17,58 +13,48 @@ const BitnationBackgroundColor = '#3e9eff'; /* rgb(62, 158, 255) */
 // Highlight Color
 const BitnationHighlightColor = '#F5A623'; /* rgb(245, 166, 35) */
 
-// Blue Color
-// const BitnationColor = '#4A90E2';         /* rgb(74, 144, 226) */
-// const BitnationDarkColor = "#1B395C";    /* rgb(27, 57, 92) */
-// const BitnationLightColor = "#72A4DE";   /* rgb(114, 164, 222) */
-// const BitnationVeryLightColor = "#BCDCFF"; /* rgb(188, 220, 255) */
-// const BitnationBackgroundColor = '#3e9eff'; /* rgb(62, 158, 255) */
-
-// ========================================
-// FUNCTIONS
-
-export const isEmpty = v => !(typeof (v) !== 'undefined' && v);
-
-// Convert a hex color and an opacity to an rgb or rgba color string
-// The opacity can be either 0-1 or 0-100.
-// example: convertHex("#FF120AE")
-// example: convertHex("#FF120AE",0.3)
-// example: convertHex("#FF120AE",30)
-export const convertHex = (hex, opacity) => {
-  hex = hex.replace('#', '');
-  const r = parseInt(hex.substring(0, 2), 16);
-  const g = parseInt(hex.substring(2, 4), 16);
-  const b = parseInt(hex.substring(4, 6), 16);
-
-  let result;
-  if (isEmpty(opacity)) {
-    result = `rgb(${r},${g},${b})`;
-  } else {
-    if (opacity > 1) {
-      opacity /= 100;
-    }
-    result = `rgba(${r},${g},${b},${opacity})`;
-  }
-  return result;
+/**
+ * @desc Convert a hex color and an opacity to an rgb or rgba color string
+ * @example convertHex("#FF120A")
+ * @example convertHex("#FF120A",0.3)
+ * @example convertHex("#FF120A", 30)
+ * @param {string} hex Hex string of color.
+ * @param {number} opacity Value of desired opacity in range from 0 to 1.
+ * @return {string} rgba color string.
+ */
+export const convertHex = (hex: string, opacity: number = 1): string => {
+  const adjustedHex = hex.replace('#', '');
+  const r = parseInt(adjustedHex.substring(0, 2), 16);
+  const g = parseInt(adjustedHex.substring(2, 4), 16);
+  const b = parseInt(adjustedHex.substring(4, 6), 16);
+  return `rgba(${r},${g},${b},${opacity})`;
 };
 
-// Return the string for a shade of an RGBa color, based on an hex RGB color
-// newshade = shadeOf("#12CCAA", 10) returns rgba(18,204,170,0.1)
-const shadeOf = (c, opacity) => convertHex(c, opacity);
+/**
+ * @desc Calculates a shade of main color with specified opacity.
+ * @example newShade = shadeOf("#12CCAA", 0.1) returns rgba(18,204,170,0.1)
+ * @param {string} color Hex color string.
+ * @param {number} opacity Value of desired opacity in range from 0 to 1.
+ * @return {string} Resulted rgba color string.
+ */
+const shadeOf = (color: string, opacity: number) => convertHex(color, opacity);
 
-// a : alpha (number)
-// example: shadeOfBitnationColor(opacity) returns an rgba string.
-const shadeOfBitnationColor = opacity => convertHex(BitnationColor, opacity);
-const shadeOfBitnationLightColor = opacity => convertHex(BitnationLightColor, opacity);
+/**
+ * @desc Returns a shade of Bitnation color.
+ * @param {number} opacity Value of desired opacity in range from 0 to 1.
+ * @return {string} Resulted rgba color string.
+ */
+const shadeOfBitnationColor = (opacity: number) => convertHex(BitnationColor, opacity);
+/**
+ * @desc Returns a shade of Bitnation light color.
+ * @param {number} opacity Value of desired opacity in range from 0 to 1.
+ * @return {string} Resulted rgba color string.
+ */
+const shadeOfBitnationLightColor = (opacity: number) => convertHex(BitnationLightColor, opacity);
 
-
-// ========================================
-// COLOR DEFINITIONS
 
 export default {
-
-  // Functions for getting shades of other colors, e.g. Colors.shadeOf(Colors.BitnationColor, '0.2')
-  // See comments above the functions, below.
+  // Helper functions, see definitions for more details.
   shadeOf,
   shadeOfBitnationColor,
   shadeOfBitnationLightColor,
@@ -84,8 +70,8 @@ export default {
   // e.g. large titles on screens
   titleColor: BitnationHighlightColor,
   panelViewTitleColor: 'white',
-
   currency: '#FFDD15',
+  placeholderTextColor: shadeOf(BitnationVeryLightColor, 0.4),
 
   // Tab Bar (Navigation Bar for the app)
   tabBarBackgroundColor: BitnationBackgroundColor,
@@ -112,13 +98,11 @@ export default {
 
   // FORMS
   buttonColor: '#1C497E',
-  disabledButtonColor: '#37393C',
   disabledButtonTitleColor: '#5F6D7D',
+  disabledButtonColor: '#F1F2F6', // gray_200
+
   // border of a text field
   borderColor: shadeOf(BitnationLightColor, 0.4),
-  navigationButtonColor: Platform.OS === 'ios' ? '#007AFF' : '#FFFFFF',
-
-  placeholderTextColor: shadeOf(BitnationVeryLightColor, 0.4),
 
   // Used in multiselect, e.g. Nation Create form
   textColor: '#444A64',
@@ -126,28 +110,16 @@ export default {
   textSecondary: '#9094A3',
   textLight: '#DADCE5',
   buttonPrimary: '#80E5CF',
-  bestOptionBackground: '#BDF4E9',
-  Grey: '#9E9E9E',
   primary_red: '#FF5469', // "danger" color
 
-
-  // MATERIAL DESIGN COLORS FROM MaterialUI
-  // https://www.materialui.co
-
-  grey_900: '#212121',
-  grey_400: '#9094A3',
-  grey_300: '#DADCE5',
-  grey_200: '#F1F2F6',
-  grey_100: '#F9F9FC',
-
   // Section Lists
-  // Separator (title rows, e.g. "A")
+  // Header (title rows, e.g. "A")
   // Separator (thin line between rows)
   // 20% white (v0.3.2)
   sectionListSeparator: 'rgba(255,255,255,0.2)',
   sectionListHeaderText: 'white',
   sectionListHeaderContainer: '#3a3a3a', // 'rgba(255,255,255,0.15)',
-  sectionListItemContainerBkgd: 'transparent',
+  sectionListItemContainerBackground: 'transparent',
   // In a list of nations, default color for the far-right text near the ">"
   listItemTextState: {
     default: 'gray',
@@ -164,23 +136,15 @@ export default {
   disabledBoxColor: '#bcdcff',
   disabledTextColor: '#275284',
   actionButtonColor: '#1c497e',
+  privateKeyTextInputLabelColor: '#F1F1F1',
 
   // NAVIGATOR COLORS (in SCREENS.JS)
   navBarTextColor: 'white',
   navBarButtonColor: 'white',
   navBarBackgroundColor: 'transparent',
-
-  disabledButtonColor: '#F1F2F6', // gray_200
-
-  // If navBarTranslucent=false, the FakeNavigationBar pushes everything down below!
-  navBarTranslucent: true,
-  navBarTransparent: true,
-
-  navBarNoBorder: true,
-
+  navigationButtonColor: Platform.OS === 'ios' ? '#007AFF' : '#FFFFFF',
   statusBarColorOther: 'black',
   statusBarColorIOS: 'black',
-
 
   // PLATFORM SPECIFIC COLORS
   androidNavigationButtons: 'white', // in Screens.js
@@ -188,27 +152,6 @@ export default {
   // Why do we have this? So we can redefine white to something just a little darker
   // because pure white can be hard...sometimes better to use 98% white.
   white: 'white',
-
-  // Standard HTML/CSS color definitions.
-  // Not used in general.
-  Red: '#FF5252',
-  Pink: '#FF4081',
-  Purple: '#9C27B0',
-  DeepPurple: '#673AB7',
-  Indigo: '#3F51B5',
-  Blue: '#2196F3',
-  LightBlue: '#03A9F4',
-  Cyan: '#00BCD4',
-  Teal: '#009688',
-  Green: '#4CAF50',
-  LightGreen: '#8BC34A',
-  Lime: '#CDDC39',
-  Yellow: '#FFEB3B',
-  Amber: '#FFC107',
-  Orange: '#FF9800',
-  DeepOrange: '#FF5722',
-  Brown: '#795548',
-  LightGrey: '#EEEEEE',
 
   // Used in many places, e.g. Wallet code, identical to 'transparent'
   Transparent: 'transparent',

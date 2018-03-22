@@ -1,3 +1,4 @@
+/* eslint-disable */
 // @flow
 
 import { JsonRpcNodeInterface } from 'BITNATION-Pangea-libs/src/specification/jsonRpcNode';

@@ -10,7 +10,7 @@ import activity from './activity';
 import testingMode from './testingMode';
 import chat from './chat';
 
-const rootReducer = {
+export const subReducers = {
   profile,
   nations,
   modifyNation,
@@ -18,7 +18,7 @@ const rootReducer = {
   key,
   activity,
   testingMode,
-  chat
+  chat,
 };
 
-export default combineReducers(rootReducer);
+export default combineReducers(subReducers);

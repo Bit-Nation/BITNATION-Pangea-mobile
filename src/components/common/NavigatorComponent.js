@@ -1,7 +1,18 @@
-import React, { Component } from 'react';
+// @flow
+
+import { Component } from 'react';
+import type { NavigatorEvent, Navigator } from '../../types/ReactNativeNavigation';
+
+type NavigatorProps = {
+  /**
+   * @desc React Native Navigation navigator object.
+   */
+  navigator: Navigator,
+}
 
 /**
- * @desc Component that handles events from react-native-navigation and passes it as functions to override.
+ * @desc Component that handles events from react-native-navigation and passes it as functions
+ * to override.
  * @example
  * class ScreenComponent extends NavigatorComponent {
  *
@@ -10,10 +21,12 @@ import React, { Component } from 'react';
  *   }
  *
  * }
- * @note Don't forget to call super if you override constructor or onNavigatorEvent method of that class.
+ * @note Don't forget to call super if you override constructor or onNavigatorEvent method of
+ * that class.
  */
-export default class NavigatorComponent extends Component {
-  constructor(props) {
+export default class NavigatorComponent<Props, State = void>
+  extends Component<Props & NavigatorProps, State> {
+  constructor(props: Props & NavigatorProps) {
     super(props);
 
     const { navigator } = this.props;
@@ -23,63 +36,40 @@ export default class NavigatorComponent extends Component {
     }
   }
 
-  onNavigatorEvent(event) {
+  onNavigatorEvent(event: NavigatorEvent) {
     if (event.type === 'NavBarButtonPress') {
-      this.onNavBarButtonPress(event.id);
+      if (typeof this.onNavBarButtonPress === 'function') {
+        this.onNavBarButtonPress(event.id);
+      }
     }
     switch (event.id) {
       case 'willAppear':
-        this.onWillAppear();
+        if (typeof this.onWillAppear === 'function') {
+          this.onWillAppear();
+        }
         break;
       case 'didAppear':
-        this.onDidAppear();
+        if (typeof this.onDidAppear === 'function') {
+          this.onDidAppear();
+        }
         break;
       case 'willDisappear':
-        this.onWillDisappear();
+        if (typeof this.onWillDisappear === 'function') {
+          this.onWillDisappear();
+        }
         break;
       case 'didDisappear':
-        this.onDidDisappear();
+        if (typeof this.onDidDisappear === 'function') {
+          this.onDidDisappear();
+        }
         break;
       case 'bottomTabReselected':
-        this.onBottomTabReselected();
+        if (typeof this.onBottomTabReselected === 'function') {
+          this.onBottomTabReselected();
+        }
+        break;
+      default:
         break;
     }
-  }
-
-  /**
-   * @desc Method that is called when navigation button is pressed.
-   * @param id ID of pressed button
-   */
-  onNavBarButtonPress(id: string) {
-  }
-
-  /**
-   * @desc Method that is called when component is about to appear on screen.
-   */
-  onWillAppear() {
-  }
-
-  /**
-   * @desc Method that is called when component appears on screen.
-   */
-  onDidAppear() {
-  }
-
-  /**
-   * @desc Method that is called when component is about to disappear from screen.
-   */
-  onWillDisappear() {
-  }
-
-  /**
-   * @desc Method that is called when component disappears from screen.
-   */
-  onDidDisappear() {
-  }
-
-  /**
-   * @desc Method that is called when tab of bottom bar is selected twice or more time.
-   */
-  onBottomTabReselected() {
   }
 }

@@ -27,7 +27,7 @@ exports[`SwitchLabeled component tests SwitchLabeled rendering SwitchLabeled ren
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       onTintColor="#F5A623"
-      onValueChange={undefined}
+      onValueChange={[Function]}
       style={
         Array [
           Object {
@@ -90,7 +90,7 @@ exports[`SwitchLabeled component tests SwitchLabeled rendering SwitchLabeled ren
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       onTintColor="#F5A623"
-      onValueChange={undefined}
+      onValueChange={[Function]}
       style={
         Array [
           Object {

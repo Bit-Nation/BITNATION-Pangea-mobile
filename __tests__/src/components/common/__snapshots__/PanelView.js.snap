@@ -25,6 +25,17 @@ ShallowWrapper {
       }
     }
     title="Test panel title"
+    titleStyle={
+      Object {
+        "color": "white",
+        "fontFamily": "Roboto",
+        "fontSize": 22,
+        "fontWeight": "bold",
+        "letterSpacing": 0,
+        "lineHeight": 28,
+        "textAlign": "left",
+      }
+    }
   >
     <Text
       accessible={true}
@@ -582,6 +593,17 @@ ShallowWrapper {
       }
     }
     title="Test panel title"
+    titleStyle={
+      Object {
+        "color": "white",
+        "fontFamily": "Roboto",
+        "fontSize": 22,
+        "fontWeight": "bold",
+        "letterSpacing": 0,
+        "lineHeight": 28,
+        "textAlign": "left",
+      }
+    }
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -1226,6 +1248,17 @@ ShallowWrapper {
       }
     }
     title="Test panel title"
+    titleStyle={
+      Object {
+        "color": "white",
+        "fontFamily": "Roboto",
+        "fontSize": 22,
+        "fontWeight": "bold",
+        "letterSpacing": 0,
+        "lineHeight": 28,
+        "textAlign": "left",
+      }
+    }
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -1453,8 +1486,9 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "class",
+        "nodeType": "function",
         "props": Object {
+          "children": undefined,
           "enabled": true,
           "onPress": [Function],
           "style": Object {
@@ -1701,8 +1735,9 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "class",
+          "nodeType": "function",
           "props": Object {
+            "children": undefined,
             "enabled": true,
             "onPress": [Function],
             "style": Object {
@@ -1764,6 +1799,17 @@ ShallowWrapper {
       }
     }
     title="Test panel title"
+    titleStyle={
+      Object {
+        "color": "white",
+        "fontFamily": "Roboto",
+        "fontSize": 22,
+        "fontWeight": "bold",
+        "letterSpacing": 0,
+        "lineHeight": 28,
+        "textAlign": "left",
+      }
+    }
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -2091,8 +2137,9 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "class",
+        "nodeType": "function",
         "props": Object {
+          "children": undefined,
           "enabled": true,
           "onPress": [Function],
           "style": Object {
@@ -2439,8 +2486,9 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "class",
+          "nodeType": "function",
           "props": Object {
+            "children": undefined,
             "enabled": true,
             "onPress": [Function],
             "style": Object {
@@ -2502,6 +2550,17 @@ ShallowWrapper {
       }
     }
     title="Test panel title"
+    titleStyle={
+      Object {
+        "color": "white",
+        "fontFamily": "Roboto",
+        "fontSize": 22,
+        "fontWeight": "bold",
+        "letterSpacing": 0,
+        "lineHeight": 28,
+        "textAlign": "left",
+      }
+    }
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -2813,8 +2872,9 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "class",
+        "nodeType": "function",
         "props": Object {
+          "children": undefined,
           "enabled": true,
           "onPress": [Function],
           "style": Object {
@@ -3161,8 +3221,9 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "class",
+          "nodeType": "function",
           "props": Object {
+            "children": undefined,
             "enabled": true,
             "onPress": [Function],
             "style": Object {
@@ -3239,6 +3300,17 @@ ShallowWrapper {
       }
     }
     title="Test panel title"
+    titleStyle={
+      Object {
+        "color": "white",
+        "fontFamily": "Roboto",
+        "fontSize": 22,
+        "fontWeight": "bold",
+        "letterSpacing": 0,
+        "lineHeight": 28,
+        "textAlign": "left",
+      }
+    }
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -3544,8 +3616,9 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "class",
+        "nodeType": "function",
         "props": Object {
+          "children": undefined,
           "enabled": true,
           "onPress": [Function],
           "style": Object {
@@ -3870,8 +3943,9 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "class",
+          "nodeType": "function",
           "props": Object {
+            "children": undefined,
             "enabled": true,
             "onPress": [Function],
             "style": Object {

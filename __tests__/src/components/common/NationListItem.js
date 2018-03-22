@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import NationListItem from '../../../../src/components/common/NationListItem';
-import {statusColor} from '../../../../src/utils/nations';
+import { statusColor } from '../../../../src/utils/nations';
 
 describe('NationListItem tests', () => {
   describe('Rendering', () => {
@@ -20,8 +20,7 @@ describe('NationListItem tests', () => {
     });
 
     test('Default has onPress', () => {
-      const wrapper = shallow(<NationListItem />);
-      expect(wrapper.instance().props.onPress).toBeDefined();
+      expect(NationListItem.defaultProps.onPress).toBeDefined();
     });
   });
 
