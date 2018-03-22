@@ -5,7 +5,7 @@ import configureStore from 'redux-mock-store';
 import { initialState } from '../../../../../../src/reducers/key';
 import CreateKeyInstructionScreen from '../../../../../../src/screens/Key/Create/CreateKeyInstructionScreen';
 
-test('LoadWallet renders correctly', () => {
+test('CreateKeyInstructionScreen renders correctly', () => {
   const initialStateMock = {
     key: initialState,
   };
