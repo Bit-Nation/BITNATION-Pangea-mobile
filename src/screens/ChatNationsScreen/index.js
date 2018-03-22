@@ -17,9 +17,17 @@ type Props = {
    */
   navigator: any,
   /**
+   * @desc Selected Tab Name
+   */
+  selectedTab: string,
+  /**
    * @desc List of nations
    */
-  nations?: Array<NationType>,
+  nations?: Array<NationType>,  
+  /**
+   * @desc List of nations that the current user has joined to.
+   */
+  myNations: Array<NationType>,
   /**
    * @desc Function to retrieve nations from the database
    */
