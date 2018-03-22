@@ -14,7 +14,7 @@ import NationListHeader from '../../../components/common/NationListHeader';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import i18n from '../../../global/i18n';
 import AssetsImages from '../../../global/AssetsImages';
-import type { NationType } from '../../../services/database/schemata';
+import type { NationType } from '../../../types/Nation';
 
 type Props = {
   /**

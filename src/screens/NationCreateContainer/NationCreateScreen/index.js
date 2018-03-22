@@ -23,9 +23,10 @@ import AssetsImage from '../../../global/AssetsImages';
 import { emptyNation, nationIsModified, type State as ModifyNationState } from '../../../reducers/modifyNation';
 import { nationIsValid } from '../../../utils/nations';
 import type { EditingNationType } from '../../../types/Nation';
+import type { Navigator } from '../../../types/ReactNativeNavigation';
 
 type Props = {
-  navigator?: any,
+  navigator: Navigator,
 }
 
 type Actions = {
