@@ -11,15 +11,15 @@ describe('ChatNationsScreen', () => {
     nations: {
       nations: [{
         _id: 1,
-        idInSmartContract: 1
+        idInSmartContract: 1,
       }],
-      openedNationId: 1
+      openedNationId: 1,
     },
     profile: {
       user: {},
     },
     chat: {
-      isFetching: true
+      isFetching: true,
     },
   };
   const storeMock = configureStore([]);

@@ -7,7 +7,7 @@ type NavigatorProps = {
   /**
    * @desc React Native Navigation navigator object.
    */
-  navigator?: Navigator,
+  navigator: Navigator,
 }
 
 /**

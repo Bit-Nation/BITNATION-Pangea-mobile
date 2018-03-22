@@ -1,4 +1,4 @@
-/* eslint no-underscore-dangle: 0 */
+// @flow
 
 /**
  * @desc Function that creates the list of messages to be consumed by GiftedChat

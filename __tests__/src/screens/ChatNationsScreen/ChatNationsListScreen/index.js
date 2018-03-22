@@ -13,15 +13,15 @@ describe('ChatNationsListScreen', () => {
     onSelectItem: jest.fn(),
     selectedTab: 'ALL_NATIONS',
     nations: [],
-    myNations: []
+    myNations: [],
   };
 
   beforeEach(() => {
-    chatListScreen = shallow(<ChatNationsListScreen {...propsMock} store={storeMock(initialStateMock)} />);
+    chatListScreen =
+      shallow(<ChatNationsListScreen {...propsMock} store={storeMock(initialStateMock)} />);
   });
 
   test('Rendering', () => {
     expect(chatListScreen).toMatchSnapshot();
-
   });
 });

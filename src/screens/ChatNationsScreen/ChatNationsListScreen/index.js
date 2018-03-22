@@ -31,8 +31,10 @@ type Props = {
   myNations: Array<NationType>,
   /**
    * @desc Function to be called when an item is selected from the list
+   * @param id ID of the nation to be opened
+   * @param isBot Flag to indicate if the selected channel is bot
    */
-  onSelectItem: (number, boolean) => void,
+  onSelectItem: (id: number, isBot: boolean) => void,
 };
 
 const ChatNationsListScreen = ({

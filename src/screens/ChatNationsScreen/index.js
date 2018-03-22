@@ -9,13 +9,14 @@ import { screen } from '../../global/Screens';
 import { resolveNation } from '../../utils/nations';
 import NavigatorComponent from '../../components/common/NavigatorComponent';
 import { startNationCreation } from '../../actions/modifyNation';
+import type { Navigator } from '../../types/ReactNativeNavigation';
 import type { NationType } from '../../services/database/schemata';
 
 type Props = {
   /**
    * @desc React Native Navigation navigator object.
    */
-  navigator: any,
+  navigator: Navigator,
   /**
    * @desc Selected Tab Name
    */
@@ -23,7 +24,7 @@ type Props = {
   /**
    * @desc List of nations
    */
-  nations?: Array<NationType>,  
+  nations?: Array<NationType>,
   /**
    * @desc List of nations that the current user has joined to.
    */
@@ -34,6 +35,7 @@ type Props = {
   fetchNations: () => void,
   /**
    * @desc Function to open a nation
+   * @param id Id of the nation to be opened
    */
   openNation: (id: number) => void,
 };
