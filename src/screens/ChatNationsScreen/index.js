@@ -10,7 +10,7 @@ import { resolveNation } from '../../utils/nations';
 import NavigatorComponent from '../../components/common/NavigatorComponent';
 import { startNationCreation } from '../../actions/modifyNation';
 import type { Navigator } from '../../types/ReactNativeNavigation';
-import type { NationType } from '../../services/database/schemata';
+import type { NationType } from '../../types/Nation';
 
 type Props = {
   /**
