@@ -18,7 +18,7 @@ export {
  * @desc Function to get a nation by id from array.
  * @param {NationType[]} nations List of nations
  * @param {number} id Id of the nation
- * @return {?NationType} Nation or undefined.
+ * @return {?NationType} Nation or null if there is no nation with that id.
  */
 export function resolveNation(nations: Array<NationType>, id: number): NationType | null {
   const resolved = _.find(nations, nation => nation.id === id);
