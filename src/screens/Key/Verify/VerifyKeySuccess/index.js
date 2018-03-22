@@ -1,13 +1,10 @@
-import React, { Component } from 'react';
-import {
-  ScrollView,
-  View,
-} from 'react-native';
-import PropTypes from 'prop-types';
+// @flow
+
+import React from 'react';
+import { View } from 'react-native';
 import { connect } from 'react-redux';
 
 import styles from './styles';
-import Button from '../../../../components/common/Button';
 import BackgroundImage from '../../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
 import { removePrivateKey, savePrivateKey } from '../../../../actions/key';
@@ -15,16 +12,19 @@ import KeyBaseScreen from '../../KeyBaseScreen';
 import BodyParagraphs from '../../../../components/common/BodyParagraphs';
 import i18n from '../../../../global/i18n';
 import PanelView from '../../../../components/common/PanelView';
+import type { State } from '../../../../reducers/key';
 
-const paragraphs = [
-  'Congratulations, you correctly entered your private key.',
-  'Now, put your paper with your private key in a safe place.',
-];
+type Actions = {
+  savePrivateKey: () => void,
+  removePrivateKey: () => void,
+}
 
-class VerifyKeySuccess extends KeyBaseScreen {
+class VerifyKeySuccess extends KeyBaseScreen<State & Actions> {
   onNextButtonPressed() {
     this.props.savePrivateKey();
-    this.props.navigator.dismissModal();
+    if (this.props.navigator) {
+      this.props.navigator.dismissModal();
+    }
   }
 
   render() {
@@ -36,7 +36,7 @@ class VerifyKeySuccess extends KeyBaseScreen {
         <View style={styles.bodyContainer}>
           <PanelView
             style={styles.panelViewTransparent}
-            childrenContainerStyle={{ flex: 0 }}
+            childrenContainerStyle={styles.noflex}
             buttonTitle={i18n.t('screens.verifyKey.success.doneButton')}
             onButtonClick={() => this.onNextButtonPressed()}
           >
@@ -44,15 +44,10 @@ class VerifyKeySuccess extends KeyBaseScreen {
           </PanelView>
 
         </View>
-
       </View>
     );
   }
 }
-
-VerifyKeySuccess.propTypes = {};
-
-VerifyKeySuccess.defaultProps = {};
 
 const mapStateToProps = state => ({
   ...state.key,
