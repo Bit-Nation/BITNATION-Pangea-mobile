@@ -1,7 +1,6 @@
 // @flow
 
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import { connect } from 'react-redux';
 
 import ChatNationsListScreen from './ChatNationsListScreen';
@@ -56,7 +55,6 @@ class ChatNationsScreen extends NavigatorComponent<Props> {
 
     if (!nation) {
       if (isBot === true) {
-        console.log('No nation', isBot);
         this.props.navigator.push({
           ...screen('CHAT_SCREEN'),
           passProps: { isBot },
