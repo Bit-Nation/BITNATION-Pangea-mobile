@@ -30,9 +30,13 @@ ShallowWrapper {
   },
   Symbol(enzyme.__node__): Object {
     "instance": null,
-    "key": "[object Object]",
+    "key": undefined,
     "nodeType": "class",
     "props": Object {
+      "createdMnemonic": null,
+      "enteredMnemonic": null,
+      "mnemonicValid": null,
+      "mnemonicValidationInProgress": false,
       "navigator": Object {
         "push": [MockFunction],
       },
@@ -72,9 +76,13 @@ ShallowWrapper {
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
-      "key": "[object Object]",
+      "key": undefined,
       "nodeType": "class",
       "props": Object {
+        "createdMnemonic": null,
+        "enteredMnemonic": null,
+        "mnemonicValid": null,
+        "mnemonicValidationInProgress": false,
         "navigator": Object {
           "push": [MockFunction],
         },
