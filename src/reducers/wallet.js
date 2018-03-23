@@ -19,7 +19,7 @@ export type State = {
   +wallets: Array<WalletType> | null,
   +selectedWalletAddress: string | null,
   +moneySendingInProgress: boolean,
-  +moneySendingError: ?Error,
+  +moneySendingError: Error | null,
 };
 
 export const initialState: State = {
