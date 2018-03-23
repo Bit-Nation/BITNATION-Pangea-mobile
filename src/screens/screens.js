@@ -2,7 +2,6 @@
 
 import { Navigation } from 'react-native-navigation';
 
-import SplashScreen from './SplashScreen';
 import Dashboard from './Dashboard';
 import WalletScreen from './WalletScreen';
 import CreateKeyIntroductionScreen from './Key/Create/CreateKeyIntroductionScreen';
@@ -41,7 +40,6 @@ export default function registerScreens(store: Object, Provider: Object) {
   Navigation.registerComponent(screen('VERIFY_KEY_SUCCESS_SCREEN').screen, () => VerifyKeySuccess, store, Provider);
   Navigation.registerComponent(screen('INTRO_SCREEN').screen, () => Intro, store, Provider);
   Navigation.registerComponent(screen('DASHBOARD_SCREEN').screen, () => Dashboard, store, Provider);
-  Navigation.registerComponent(screen('SPLASH_SCREEN').screen, () => SplashScreen, store, Provider);
   Navigation.registerComponent(screen('CHAT_SCREEN').screen, () => ChatScreen, store, Provider);
   Navigation.registerComponent(screen('NATIONS_SCREEN').screen, () => NationsScreen, store, Provider);
   Navigation.registerComponent(screen('NATION_DETAILS_SCREEN').screen, () => NationDetailsScreen, store, Provider);
