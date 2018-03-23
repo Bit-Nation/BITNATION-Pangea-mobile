@@ -1,5 +1,6 @@
+// @flow
+
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import NationCreateScreen from './NationCreateScreen';
@@ -12,23 +13,28 @@ import {
   submitNation,
 } from '../../actions/modifyNation';
 import { errorAlert, alert } from '../../global/alerts';
-import { nationIsModified } from '../../reducers/modifyNation';
+import { nationIsModified, type State as ModifyNationState } from '../../reducers/modifyNation';
+import type {
+  EditingNationType,
+  NationIdType,
+} from '../../types/Nation';
+import type { Navigator } from '../../types/ReactNativeNavigation';
 
-class NationCreateContainer extends Component {
-  render() {
-    return (
-      <NationCreateScreen
-        {...this.props}
-        onCancelNationCreation={this._cancelNationCreation}
-        onResetNationCreation={this._resetNationCreation}
-        onSaveNationDraft={this._saveForm}
-        onDeleteNationDraft={this._deleteForm}
-        onSubmitNation={this._submitForm}
-      />
-    );
-  }
+type Props = {
+  navigator: Navigator,
+}
 
-  _cancelNationCreation = () => {
+type Actions = {
+  onSaveNationDraft: (EditingNationType, () => void) => void,
+  onResetNationCreation: () => void,
+  onDeleteNationDraft: (NationIdType, () => void) => void,
+  onSubmitNation: (EditingNationType, () => void) => void,
+  onNationChange: (EditingNationType, () => void) => void,
+};
+
+class NationCreateContainer extends Component<Props & Actions & ModifyNationState> {
+  static defaultProps: Object;
+  cancelNationCreation = () => {
     const isModified = nationIsModified(this.props);
 
     if (!isModified) {
@@ -44,6 +50,8 @@ class NationCreateContainer extends Component {
       }, {
         name: 'save',
         onPress: () => {
+          if (this.props.editingNation === null) return;
+
           this.props.onSaveNationDraft(this.props.editingNation, () => {
             if (this.props.latestError) {
               errorAlert(this.props.latestError);
@@ -56,7 +64,7 @@ class NationCreateContainer extends Component {
       }]);
   };
 
-  _resetNationCreation = () => {
+  resetNationCreation = () => {
     alert('resetForm', [
       {
         name: 'cancel',
@@ -67,7 +75,7 @@ class NationCreateContainer extends Component {
       }]);
   };
 
-  _deleteForm = () => {
+  deleteForm = () => {
     alert('deleteForm', [
       {
         name: 'cancel',
@@ -75,18 +83,25 @@ class NationCreateContainer extends Component {
       }, {
         name: 'delete',
         style: 'destructive',
-        onPress: () => this.props.onDeleteNationDraft(this.props.initialNation.id, () => {
-          if (this.props.latestError) {
-            errorAlert(this.props.latestError);
-            return;
-          }
+        onPress: () => {
+          if (this.props.initialNation === null) return;
+          if (this.props.initialNation.id == null) return;
 
-          this.props.navigator.dismissModal();
-        }),
+          this.props.onDeleteNationDraft(this.props.initialNation.id, () => {
+            if (this.props.latestError) {
+              errorAlert(this.props.latestError);
+              return;
+            }
+
+            this.props.navigator.dismissModal();
+          });
+        },
       }]);
   };
 
-  _saveForm = () => {
+  saveForm = () => {
+    if (this.props.editingNation === null) return;
+
     this.props.onSaveNationDraft(this.props.editingNation, () => {
       if (this.props.latestError) {
         errorAlert(this.props.latestError);
@@ -103,27 +118,51 @@ class NationCreateContainer extends Component {
     });
   };
 
-  _submitForm = () => {
+  submitForm = () => {
     alert('submitForm', [
       {
         name: 'cancel',
         style: 'cancel',
       }, {
         name: 'confirm',
-        onPress: () => this.props.onSubmitNation(this.props.editingNation, () => {
-          if (this.props.latestError) {
-            errorAlert(this.props.latestError);
-            return;
-          }
+        onPress: () => {
+          if (this.props.editingNation === null) return;
 
-          this.props.navigator.dismissModal();
-        }),
+          this.props.onSubmitNation(this.props.editingNation, () => {
+            if (this.props.latestError) {
+              errorAlert(this.props.latestError);
+              return;
+            }
+
+            this.props.navigator.dismissModal();
+          });
+        },
       }]);
   };
+
+  render() {
+    return (
+      <NationCreateScreen
+        {...this.props}
+        onCancelNationCreation={this.cancelNationCreation}
+        onResetNationCreation={this.resetNationCreation}
+        onSaveNationDraft={this.saveForm}
+        onDeleteNationDraft={this.deleteForm}
+        onSubmitNation={this.submitForm}
+      />
+    );
+  }
 }
 
-NationCreateContainer.PropTypes = {
-  navigator: PropTypes.object,
+NationCreateContainer.defaultProps = {
+  latestError: null,
+  initialNation: null,
+  onSaveNationDraft: () => null,
+  editingNation: null,
+  onResetNationCreation: () => null,
+  onDeleteNationDraft: () => null,
+  onSubmitNation: () => null,
+  onNationChange: () => null,
 };
 
 const mapStateToProps = state => ({

@@ -17,7 +17,7 @@ import FakeNavigationBar from '../../components/common/FakeNavigationBar';
 import Loading from '../../components/common/Loading';
 import { resolveNation } from '../../utils/nations';
 import createGiftedChatMessageObject from '../../utils/chat';
-import type { NationType } from '../../services/database/schemata';
+import type { NationType } from '../../types/Nation';
 import elizabot from '../../../vendor/elizabot';
 
 type Props = {
