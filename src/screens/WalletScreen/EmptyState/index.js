@@ -20,7 +20,7 @@ type Props = {
 
 /**
  * @desc Component that renders wallet screen empty state.
- * It is embedded into parent screen, so don't contain navigation, etc.
+ * It is embedded into parent screen, so doesn't contain navigation, etc.
  * @return {React.Component} A component.
  * @constructor
  */
