@@ -2,15 +2,11 @@
 
 import React, { Component } from 'react';
 import {
-  Image,
   View,
   Text,
 } from 'react-native';
-import PropTypes from 'prop-types';
 
 import styles from './styles';
-import BackgroundImage from '../../../components/common/BackgroundImage';
-import AssetsImage from '../../../global/AssetsImages';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import PanelView from '../../../components/common/PanelView';
 import i18n from '../../../global/i18n';
