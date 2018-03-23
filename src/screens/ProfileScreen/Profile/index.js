@@ -1,22 +1,17 @@
 // @flow
 
-import React, { Component } from 'react';
+import React from 'react';
 import {
   Image,
   View,
-  ScrollView,
   Text,
   Alert,
 } from 'react-native';
-import PropTypes from 'prop-types';
-import _ from 'lodash';
 
 import styles from './styles';
-import BackgroundImage from '../../../components/common/BackgroundImage';
 import AssetsImage from '../../../global/AssetsImages';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import Colors from '../../../global/colors';
-import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import i18n from '../../../global/i18n';
 
