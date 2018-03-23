@@ -33,7 +33,6 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "changeMnemonic": [Function],
       "createdMnemonic": null,
       "enteredMnemonic": null,
       "mnemonicValid": null,
@@ -80,7 +79,6 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "changeMnemonic": [Function],
         "createdMnemonic": null,
         "enteredMnemonic": null,
         "mnemonicValid": null,
