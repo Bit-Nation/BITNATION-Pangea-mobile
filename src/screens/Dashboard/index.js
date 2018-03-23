@@ -20,17 +20,31 @@ import { screen } from '../../global/Screens';
 import { addDummyMessage, startFetchMessages } from '../../actions/activity';
 import type { NationIdType } from '../../types/Nation';
 import type { State } from '../../reducers';
+import type { Navigator } from '../../types/ReactNativeNavigation';
 
 type Props = {
-  navigator: Object,
+  /**
+   * @desc React Native Navigation navigator object.
+   */
+  navigator: Navigator,
 }
 
 type Actions = {
-  onSelectNation: (NationIdType) => void,
+  /**
+   * @desc Callback on nation select.
+   * @param {NationIdType} id Id of selected nation.
+   */
+  onSelectNation: (id: NationIdType) => void,
+  /**
+   * @desc Function to start activity log messages fetch from database.
+   */
   startFetchMessages: () => void,
 }
 
 type TestingModeProps = {
+  /**
+   * @desc Function to add dummy log activity message for testing.
+   */
   onAddDummyMessage: () => void,
 }
 

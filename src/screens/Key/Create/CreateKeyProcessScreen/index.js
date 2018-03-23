@@ -23,11 +23,20 @@ import i18n from '../../../../global/i18n';
 import type { State as KeyState } from '../../../../reducers/key';
 
 type Actions = {
+  /**
+   * @desc Function to abort private key creation process.
+   */
   removePrivateKey: () => void,
 }
 
 type State = {
+  /**
+   * @desc Number of active row in grid row.
+   */
   activeRow: number,
+  /**
+   * @desc Array of completed page numbers.
+   */
   completedPages: Array<number>,
 }
 

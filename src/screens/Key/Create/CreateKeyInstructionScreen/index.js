@@ -22,7 +22,13 @@ import i18n from '../../../../global/i18n';
 import type { State } from '../../../../reducers/key';
 
 type Actions = {
+  /**
+   * @desc Function to start private key creation process.
+   */
   createPrivateKey: () => void,
+  /**
+   * @desc Function to abort private key creation process.
+   */
   removePrivateKey: () => void,
 }
 

@@ -12,17 +12,18 @@ import { screen } from '../../../global/Screens';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import KeyBaseScreen from '../KeyBaseScreen';
-import { changeEnteredMnemonic, removePrivateKey } from '../../../actions/key';
+import { removePrivateKey } from '../../../actions/key';
 import { KEY_LENGTH } from '../../../global/Constants';
 import BodyParagraphs from '../../../components/common/BodyParagraphs';
 import i18n from '../../../global/i18n';
 import PanelView from '../../../components/common/PanelView';
 import type { State } from '../../../reducers/key';
-import type { Mnemonic } from '../../../types/Mnemonic';
 
 type Actions = {
+  /**
+   * @desc Function to abort private key creation process.
+   */
   removePrivateKey: () => void,
-  changeMnemonic: (Mnemonic) => void,
 }
 
 class LoadWalletScreen extends KeyBaseScreen<Actions & State> {
@@ -70,9 +71,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   removePrivateKey() {
     dispatch(removePrivateKey());
-  },
-  changeMnemonic(mnemonic) {
-    dispatch(changeEnteredMnemonic(mnemonic));
   },
 });
 

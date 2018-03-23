@@ -9,7 +9,13 @@ import type { NavigatorEvent } from '../../../types/ReactNativeNavigation';
 import type { Mnemonic } from '../../../types/Mnemonic';
 
 type KeyProps = {
+  /**
+   * @desc Function to abort private key creation process.
+   */
   +removePrivateKey?: () => void,
+  /**
+   * @desc Current mnemonic used in private key creation process.
+   */
   +createdMnemonic?: Mnemonic | null,
 };
 

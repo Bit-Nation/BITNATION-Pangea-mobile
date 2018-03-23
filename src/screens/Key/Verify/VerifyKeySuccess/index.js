@@ -15,7 +15,13 @@ import PanelView from '../../../../components/common/PanelView';
 import type { State } from '../../../../reducers/key';
 
 type Actions = {
+  /**
+   * @desc Function to save private key to database.
+   */
   savePrivateKey: () => void,
+  /**
+   * @desc Function to abort private key creation process.
+   */
   removePrivateKey: () => void,
 }
 

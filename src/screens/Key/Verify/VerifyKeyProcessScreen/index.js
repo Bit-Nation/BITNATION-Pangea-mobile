@@ -32,12 +32,24 @@ import type { Mnemonic } from '../../../../types/Mnemonic';
 const DONE_BUTTON = 'DONE_BUTTON';
 
 type Props = {
+  /**
+   * @desc Flag that shows if testing mode is active.
+   */
   testingModeActive: boolean,
 }
 
 type Actions = {
+  /**
+   * @desc Function to validate entered mnemonic.
+   */
   validateMnemonic: () => void,
+  /**
+   * @desc Function to abort private key creation process.
+   */
   removePrivateKey: () => void,
+  /**
+   * @desc Function to change entered mnemonic.
+   */
   changeMnemonic: (Mnemonic) => void,
 }
 
