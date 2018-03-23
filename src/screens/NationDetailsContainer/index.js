@@ -25,16 +25,44 @@ import type { NationIdType, NationType } from '../../types/Nation';
 const EDIT_BUTTON = 'EDIT_BUTTON';
 
 type Props = {
+  /**
+   * @desc React Native Navigation navigator object.
+   */
   navigator: Navigator,
+  /**
+   * @desc A boolean prop to indicate whether the nation is Draft or not
+   */
   isDraft: boolean,
 }
 
 type Actions = {
+  /**
+   * @desc Function to select the tab on screen
+   * @param index Id of the tab to appear on screen
+   */
   onSelectTab: (number) => void,
+  /**
+   * @desc Function to join a nation
+   */
   joinNation: () => void,
+  /**
+   * @desc Function to leave a nation
+   */
   leaveNation: () => void,
+  /**
+   * @desc Function to start the edition of a nation draft
+   * @param nation The empty nation's draft
+   */
   onStartNationEditing: (NationType) => void,
+  /**
+   * @desc Function to delete a nation draft
+   * @param nationId The Id of the nation to delete
+   */
   onDeleteDraft: (NationIdType, () => void) => void,
+  /**
+   * @desc Function to submit a nation draft to the blockchain
+   * @param nation The selected nation to submit
+   */
   onSubmitDraft: (NationType, () => void) => void,
 };
 

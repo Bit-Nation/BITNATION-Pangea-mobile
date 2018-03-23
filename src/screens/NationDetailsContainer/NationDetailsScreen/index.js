@@ -21,15 +21,36 @@ import type { Navigator } from '../../../types/ReactNativeNavigation';
 import type { NationType } from '../../../types/Nation';
 
 type Props = {
+  /**
+   * @desc React Native Navigation navigator object.
+   */
   navigator: Navigator,
+  /**
+   * @desc A boolean prop to indicate whether the nation is Draft or not
+   */
   isDraft: boolean,
 };
 
 type Actions = {
+  /**
+   * @desc Function to join a nation
+   */
   joinNation: () => void,
+  /**
+   * @desc Function to leave a nation
+   */
   leaveNation: () => void,
+  /**
+   * @desc Function to delete the draft of a nation
+   */
   deleteDraft: () => void,
+  /**
+   * @desc Function to submit a nation to the blockchain
+   */
   submitDraft: () => void,
+  /**
+   * @desc Function to open a nation's chat
+   */
   openNationChat: () => void,
 }
 
@@ -221,7 +242,7 @@ class NationDetailsScreen extends Component<Props & Actions & NationState> {
     return (
       <View style={styles.screenContainer}>
         <BackgroundImage />
-        <FakeNavigationBar navBarHidden />
+        <FakeNavigationBar />
         <View style={styles.bodyContainer}>
           <View style={styles.titleContainer}>
             <View style={styles.titleBarLarge}>
