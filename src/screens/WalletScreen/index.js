@@ -115,12 +115,12 @@ class WalletScreen extends NavigatorComponent<Props & TestingModeProps & Actions
               <Text style={styles.largeTitle}>{i18n.t('screens.wallet.title')}</Text>
             </View>
           </View>
-          {_.isEmpty(this.props.wallets) ? <EmptyWalletScreen
+          {this.props.wallets === null || _.isEmpty(this.props.wallets) ? <EmptyWalletScreen
             onCreateWallet={this.createWallet}
             onRestoreWallet={this.restoreWallet}
           />
             : <List
-              {...this.props}
+              wallets={this.props.wallets}
               onSendPress={this.sendMoney}
               onReceivePress={this.receiveMoney}
             />
