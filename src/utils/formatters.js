@@ -1,9 +1,9 @@
 // @flow
 
+import { BigNumber } from 'bignumber.js';
+
 import i18n from '../global/i18n';
 import type { CurrencyType, WalletType } from '../types/Wallet';
-
-const BN = require('bignumber.js');
 
 /**
  * @desc Round to 5 digits
@@ -11,7 +11,7 @@ const BN = require('bignumber.js');
  * @return {string} Rounded string value that represents eth amount to 5 digits
  */
 export function roundEth(eth: string): string {
-  const ethBn = new BN(eth);
+  const ethBn = new BigNumber(eth);
 
   return ethBn.round(5).toString(10);
 }
@@ -30,7 +30,7 @@ export function prettyWalletBalance(
   successfulSuffix: ?string,
 ) {
   const suffix = successfulSuffix || '';
-  if (wallet.balance !== null && wallet.balance !== undefined) {
+  if (wallet.balance !== null) {
     return `${roundEth(wallet.balance)} ${currency || ''}${suffix}`;
   }
   return !wallet.synchronizationError ? i18n.t('common.updating') : i18n.t('common.updateFailed');
