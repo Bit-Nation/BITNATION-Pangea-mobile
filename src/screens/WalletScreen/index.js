@@ -1,4 +1,6 @@
-import React, { Component } from 'react';
+// @flow
+
+import React from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import _ from 'lodash';
@@ -13,10 +15,27 @@ import { removeAllPrivateKeys } from '../../actions/key';
 import i18n from '../../global/i18n';
 import styles from '../NationsScreen/NationsListScreen/styles';
 import FakeNavigationBar from '../../components/common/FakeNavigationBar';
+import type { State } from '../../reducers/wallet';
+import type { WalletType } from '../../types/Wallet';
+import type { Navigator } from '../../types/ReactNativeNavigation';
 
 const REMOVE_WALLETS_BUTTON = 'REMOVE_WALLETS_BUTTON';
 
-class WalletScreen extends NavigatorComponent {
+type Props = {
+  navigator: Navigator,
+}
+
+type TestingModeProps = {
+  testingModeActive: boolean,
+}
+
+type Actions = {
+  selectWallet: (WalletType) => void,
+  updateWalletList: () => void,
+  removeWallets: () => void,
+}
+
+class WalletScreen extends NavigatorComponent<Props & TestingModeProps & Actions & State> {
   constructor(props) {
     super(props);
 
