@@ -139,6 +139,7 @@ export function convertFromDatabase(nation: DBNationType): NationType {
     stateMutateAllowed: nation.stateMutateAllowed,
     resetStateMutateAllowed: nation.resetStateMutateAllowed,
     tx: nation.tx === null ? null : { ...nation.tx },
+    ethAddress: '',
   };
 }
 

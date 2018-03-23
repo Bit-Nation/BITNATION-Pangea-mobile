@@ -57,8 +57,9 @@ class NationDetailsContainer extends NavigatorComponent<Props & Actions & Nation
 
   onNavBarButtonPress(id) {
     if (id === EDIT_BUTTON) {
-      if (openedNation(this.props) === null) return;
-      this.props.onStartNationEditing(openedNation(this.props));
+      const selectedNation = openedNation(this.props);
+      if (selectedNation === null) return;
+      this.props.onStartNationEditing(selectedNation);
       this.props.navigator.showModal(screen('NATION_CREATE_SCREEN'));
     }
   }
@@ -108,8 +109,9 @@ class NationDetailsContainer extends NavigatorComponent<Props & Actions & Nation
         name: 'confirm',
         onPress: () => {
           if (this.props.openedNationId === null) return;
-          if (openedNation(this.props) === null) return;
-          this.props.onSubmitDraft(openedNation(this.props), () => {
+          const selectedNation = openedNation(this.props);
+          if (selectedNation === null) return;
+          this.props.onSubmitDraft(selectedNation, () => {
             if (this.props.latestError) {
               errorAlert(this.props.latestError);
               return;

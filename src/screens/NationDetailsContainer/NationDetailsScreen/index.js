@@ -1,9 +1,10 @@
+// @flow
+
 import React, { Component } from 'react';
 import {
   View,
   Text, ScrollView,
 } from 'react-native';
-import PropTypes from 'prop-types';
 
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import styles from './styles';
@@ -12,13 +13,29 @@ import AssetsImage from '../../../global/AssetsImages';
 import PanelView from '../../../components/common/PanelView';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import i18n from '../../../global/i18n';
-import { openedNation } from '../../../reducers/nations';
+import { openedNation, type State as NationState } from '../../../reducers/nations';
 import PanelViewAlert from '../../../components/common/PanelViewAlert';
 import PanelViewCitizen from '../../../components/common/PanelViewCitizen';
 import { nationIsValid, resolveStatus } from '../../../utils/nations';
+import type { Navigator } from '../../../types/ReactNativeNavigation';
+import type { NationType } from '../../../types/Nation';
 
-class NationDetailsScreen extends Component {
-  static disableJoinButton(nation) {
+type Props = {
+  navigator: Navigator,
+  isDraft: boolean,
+};
+
+type Actions = {
+  joinNation: () => void,
+  leaveNation: () => void,
+  deleteDraft: () => void,
+  submitDraft: () => void,
+  openNationChat: () => void,
+}
+
+class NationDetailsScreen extends Component<Props & Actions & NationState> {
+  static defaultProps: Object;
+  static disableJoinButton(nation: NationType) {
     if (nation.tx && nation.tx.status === 200) {
       return true;
     }
@@ -30,7 +47,7 @@ class NationDetailsScreen extends Component {
     return false;
   }
 
-  static disableLeaveButton(nation) {
+  static disableLeaveButton(nation: NationType) {
     if (nation.tx && nation.tx.status === 200) {
       return true;
     }
@@ -42,7 +59,7 @@ class NationDetailsScreen extends Component {
     return false;
   }
 
-  static buildAboutView(nation) {
+  static buildAboutView(nation: NationType) {
     return (
       <PanelView
         style={styles.panelView}
@@ -71,7 +88,7 @@ class NationDetailsScreen extends Component {
     );
   }
 
-  static buildGovernmentalStructureView(nation) {
+  static buildGovernmentalStructureView(nation: NationType) {
     return (
       <PanelView
         style={styles.panelView}
@@ -96,7 +113,7 @@ class NationDetailsScreen extends Component {
     );
   }
 
-  static buildFactsView(nation) {
+  static buildFactsView(nation: NationType) {
     return (
       <PanelView
         style={styles.panelView}
@@ -127,7 +144,7 @@ class NationDetailsScreen extends Component {
     );
   }
 
-  static buildCitizenPanel(nation) {
+  static buildCitizenPanel(nation: NationType) {
     if (nation.joined) {
       return (
         <PanelViewCitizen
@@ -140,7 +157,7 @@ class NationDetailsScreen extends Component {
 
   buildTabBar() {
     const nation = openedNation(this.props);
-
+    if (nation === null) return true;
     if (this.props.isDraft) {
       return (
         <View style={styles.fakeBottomBar}>
@@ -173,17 +190,18 @@ class NationDetailsScreen extends Component {
           iconSource={AssetsImage.Actions.map}
           title={i18n.t('screens.nations.toolbar.map')}
           disable
+          onPress={() => {}}
         />
         <NationActionButton
           iconSource={AssetsImage.Actions.join}
           title={i18n.t('screens.nations.toolbar.join')}
-          disable={this.disableJoinButton(nation)}
+          disable={NationDetailsScreen.disableJoinButton(nation)}
           onPress={this.props.joinNation}
         />
         <NationActionButton
           iconSource={AssetsImage.Actions.leave}
           title={i18n.t('screens.nations.toolbar.leave')}
-          disable={this.disableLeaveButton(nation)}
+          disable={NationDetailsScreen.disableLeaveButton(nation)}
           onPress={this.props.leaveNation}
         />
       </View>
@@ -203,7 +221,7 @@ class NationDetailsScreen extends Component {
     return (
       <View style={styles.screenContainer}>
         <BackgroundImage />
-        <FakeNavigationBar navBarHidden='' />
+        <FakeNavigationBar navBarHidden />
         <View style={styles.bodyContainer}>
           <View style={styles.titleContainer}>
             <View style={styles.titleBarLarge}>
@@ -212,12 +230,12 @@ class NationDetailsScreen extends Component {
           </View>
 
           <ScrollView>
-            {statusDescription !== '' && this.buildStatusPanel(statusDescription)}
+            {statusDescription !== '' && NationDetailsScreen.buildStatusPanel(statusDescription)}
 
-            {this.buildAboutView(nation)}
-            {this.buildCitizenPanel(nation)}
-            {this.buildGovernmentalStructureView(nation)}
-            {this.buildFactsView(nation)}
+            {NationDetailsScreen.buildAboutView(nation)}
+            {NationDetailsScreen.buildCitizenPanel(nation)}
+            {NationDetailsScreen.buildGovernmentalStructureView(nation)}
+            {NationDetailsScreen.buildFactsView(nation)}
           </ScrollView>
         </View>
         {this.buildTabBar()}
@@ -226,18 +244,7 @@ class NationDetailsScreen extends Component {
   }
 }
 
-NationDetailsScreen.propTypes = {
-  navigator: PropTypes.shape({ pop: {} }),
-  isDraft: PropTypes.bool,
-  joinNation: PropTypes.func,
-  leaveNation: PropTypes.func,
-  deleteDraft: PropTypes.func,
-  submitDraft: PropTypes.func,
-  openNationChat: PropTypes.func,
-};
-
 NationDetailsScreen.defaultProps = {
-  navigator: null,
   isDraft: null,
   joinNation: () => null,
   leaveNation: () => null,
