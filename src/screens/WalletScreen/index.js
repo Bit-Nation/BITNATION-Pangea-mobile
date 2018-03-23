@@ -22,17 +22,33 @@ import type { Navigator } from '../../types/ReactNativeNavigation';
 const REMOVE_WALLETS_BUTTON = 'REMOVE_WALLETS_BUTTON';
 
 type Props = {
+  /**
+   * @desc React Native Navigation navigator object.
+   */
   navigator: Navigator,
 }
 
 type TestingModeProps = {
+  /**
+   * @desc Flag that shows if testing mode is active.
+   */
   testingModeActive: boolean,
+  /**
+   * @desc Function to remove all wallets.
+   */
+  removeWallets: () => void,
 }
 
 type Actions = {
-  selectWallet: (WalletType) => void,
+  /**
+   * @desc Function to select wallet.
+   * @param {WalletType} wallet Wallet to be selected.
+   */
+  selectWallet: (wallet: WalletType) => void,
+  /**
+   * @desc Function to request wallet list update.
+   */
   updateWalletList: () => void,
-  removeWallets: () => void,
 }
 
 class WalletScreen extends NavigatorComponent<Props & TestingModeProps & Actions & State> {
