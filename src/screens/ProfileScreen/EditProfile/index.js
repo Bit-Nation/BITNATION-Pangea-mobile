@@ -1,39 +1,69 @@
+/* eslint no-underscore-dangle: 0 */
+
 import React from 'react';
 import {
   Image,
   View,
-  ScrollView,
   Text,
   TouchableOpacity,
   TextInput,
-  Platform,
+  Alert,
 } from 'react-native';
-import PropTypes from 'prop-types';
-import _ from 'lodash';
 import ImagePicker from 'react-native-image-crop-picker';
-
-import styles from './styles';
-import BackgroundImage from '../../../components/common/BackgroundImage';
-import AssetsImage from '../../../global/AssetsImages';
-import NavigatorComponent from '../../../components/common/NavigatorComponent';
-import Colors from '../../../global/colors';
-import { ActionSheet } from 'native-base';
-import PanelView from '../../../components/common/PanelView';
-import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { ActionSheet } from 'native-base';
+
+import NavigatorComponent from '../../../components/common/NavigatorComponent';
+import PanelView from '../../../components/common/PanelView';
+import saveShouldBeEnabled from '../../../utils/profile';
+import AssetsImage from '../../../global/AssetsImages';
+import Colors from '../../../global/colors';
+import type { Navigator } from '../../../types/ReactNativeNavigation';
 import i18n from '../../../global/i18n';
+import styles from './styles';
 
 const DONE_BUTTON = 'DONE_BUTTON';
 
-class EditProfile extends NavigatorComponent {
-  constructor(props) {
+export type Props = {
+  /**
+   * @desc React Native Navigation navigator object.
+   */
+  navigator: Navigator,
+  /**
+   * @desc User object that is currently being edited
+   */
+  editingUser: any,
+  /**
+   * @desc Current user object
+   */
+  user: any,
+  /**
+   * @desc Function to modify the editing user
+   * @param field A user field to be modified
+   * @param value Updated value on the UI
+   */
+  onUserChanged: (field: string, value: string) => void,
+  /**
+   * @desc Function to cancel user edit
+   */
+  onCancelEditing: () => void,
+  /**
+   * @desc Function to complete user edit
+   */
+  onDoneEditing: () => void,
+};
+
+class EditProfile extends NavigatorComponent<Props> {
+  actionSheet: any;
+
+  constructor(props: Props) {
     super(props);
 
     this.actionSheet = null;
-    this._setNavigationButtons(false);
+    this.setNavigationButtons(false);
   }
 
-  _setNavigationButtons(saveEnabled) {
+  setNavigationButtons(saveEnabled: boolean): void {
     this.props.navigator.setButtons({
       leftButtons: [{
         title: i18n.t('screens.profile.edit.cancelButton'),
@@ -49,15 +79,15 @@ class EditProfile extends NavigatorComponent {
     });
   }
 
-  componentWillReceiveProps(nextProps) {
-    const saveWasEnabled = this._saveShouldBeEnabled(this.props);
-    const saveWillBeEnabled = this._saveShouldBeEnabled(nextProps);
+  componentWillReceiveProps(nextProps: Props) {
+    const saveWasEnabled = saveShouldBeEnabled(this.props);
+    const saveWillBeEnabled = saveShouldBeEnabled(nextProps);
     if (saveWasEnabled !== saveWillBeEnabled) {
-      this._setNavigationButtons(saveWillBeEnabled);
+      this.setNavigationButtons(saveWillBeEnabled);
     }
   }
 
-  onNavBarButtonPress(id) {
+  onNavBarButtonPress(id: string): void {
     if (id === 'cancel') {
       this.props.onCancelEditing();
     }
@@ -183,6 +213,8 @@ class EditProfile extends NavigatorComponent {
             case CAMERA:
               this._openPicker(true);
               break;
+            default:
+              break;
           }
         },
       );
@@ -208,25 +240,9 @@ class EditProfile extends NavigatorComponent {
         this.props.onUserChanged('avatar', result.data);
       }
     } catch (error) {
-      console.log(error);
+      Alert.alert(i18n.t('error.noCamera'));
     }
   };
-
-  _userIsValid(user) {
-    return !_.isEmpty(user.name);
-  }
-
-  _saveShouldBeEnabled(props) {
-    return !_.isEqual(props.user, props.editingUser) && this._userIsValid(props.editingUser);
-  }
 }
-
-EditProfile.propTypes = {
-  user: PropTypes.object,
-  editingUser: PropTypes.object,
-  onUserChanged: PropTypes.func.isRequired,
-  onCancelEditing: PropTypes.func.isRequired,
-  onDoneEditing: PropTypes.func.isRequired,
-};
 
 export default EditProfile;

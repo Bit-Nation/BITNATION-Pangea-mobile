@@ -430,7 +430,8 @@
   },
   "error": {
     "noConnection": "Please check your internet connection.",
-    "insufficientFunds": "Insufficient funds. Please check your wallet."
+    "insufficientFunds": "Insufficient funds. Please check your wallet.",
+    "noCamera": "Camera Error"
   },
   "bots": {
     "freudbot": {
