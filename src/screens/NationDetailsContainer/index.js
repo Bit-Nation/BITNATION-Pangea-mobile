@@ -1,22 +1,45 @@
+// @flow
+
 import React from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Alert } from 'react-native';
+import _ from 'lodash';
 
 import NationDetailsScreen from './NationDetailsScreen';
 import { switchNationTab, joinNation, leaveNation } from '../../actions/nations';
 import { androidNavigationButtons, screen } from '../../global/Screens';
 import i18n from '../../global/i18n';
 import Colors from '../../global/colors';
-import { deleteNationDraft, startNationEditing, submitNation } from '../../actions/modifyNation';
-import { openedNation } from '../../reducers/nations';
+import {
+  deleteNationDraft,
+  startNationEditing,
+  submitNation,
+} from '../../actions/modifyNation';
+import { openedNation, type State as NationState } from '../../reducers/nations';
 import NavigatorComponent from '../../components/common/NavigatorComponent';
 import { alert, errorAlert } from '../../global/alerts';
 import { nationIsDraft } from '../../utils/nations';
+import type { Navigator } from '../../types/ReactNativeNavigation';
+import type { NationIdType, NationType } from '../../types/Nation';
 
 const EDIT_BUTTON = 'EDIT_BUTTON';
 
-class NationDetailsContainer extends NavigatorComponent {
+type Props = {
+  navigator: Navigator,
+  isDraft: boolean,
+}
+
+type Actions = {
+  onSelectTab: (number) => void,
+  joinNation: () => void,
+  leaveNation: () => void,
+  onStartNationEditing: (NationType) => void,
+  onDeleteDraft: (NationIdType, () => void) => void,
+  onSubmitDraft: (NationType, () => void) => void,
+};
+
+class NationDetailsContainer extends NavigatorComponent<Props & Actions & NationState> {
+  static defaultProps: Object;
   static navigatorButtons = { ...androidNavigationButtons };
 
   constructor(props) {
@@ -34,6 +57,7 @@ class NationDetailsContainer extends NavigatorComponent {
 
   onNavBarButtonPress(id) {
     if (id === EDIT_BUTTON) {
+      if (openedNation(this.props) === null) return;
       this.props.onStartNationEditing(openedNation(this.props));
       this.props.navigator.showModal(screen('NATION_CREATE_SCREEN'));
     }
@@ -62,14 +86,16 @@ class NationDetailsContainer extends NavigatorComponent {
       }, {
         name: 'delete',
         style: 'destructive',
-        onPress: () => this.props.onDeleteDraft(this.props.openedNationId, () => {
-          if (this.props.latestError) {
-            errorAlert(this.props.latestError);
-            return;
-          }
-
-          this.props.navigator.pop();
-        }),
+        onPress: () => {
+          if (this.props.openedNationId === null) return;
+          this.props.onDeleteDraft(this.props.openedNationId, () => {
+            if (this.props.latestError) {
+              errorAlert(this.props.latestError);
+              return;
+            }
+            this.props.navigator.pop();
+          });
+        },
       }]);
   };
 
@@ -80,14 +106,18 @@ class NationDetailsContainer extends NavigatorComponent {
         style: 'cancel',
       }, {
         name: 'confirm',
-        onPress: () => this.props.onSubmitDraft(openedNation(this.props), () => {
-          if (this.props.latestError) {
-            errorAlert(this.props.latestError);
-            return;
-          }
+        onPress: () => {
+          if (this.props.openedNationId === null) return;
+          if (openedNation(this.props) === null) return;
+          this.props.onSubmitDraft(openedNation(this.props), () => {
+            if (this.props.latestError) {
+              errorAlert(this.props.latestError);
+              return;
+            }
 
-          this.props.navigator.pop();
-        }),
+            this.props.navigator.pop();
+          });
+        },
       }]);
   };
 
@@ -110,7 +140,6 @@ class NationDetailsContainer extends NavigatorComponent {
   }
 
   performIfHasWallet(functionToPerform) {
-    /* global _ */
     if (_.isEmpty(this.props.wallets)) {
       this.showCreatePrivateKeyAlert();
       return;
@@ -133,9 +162,15 @@ class NationDetailsContainer extends NavigatorComponent {
   }
 }
 
-NationDetailsContainer.PropTypes = {
-  navigator: PropTypes.object,
-  isDraft: PropTypes.bool,
+NationDetailsContainer.defaultProps = {
+  isDraft: null,
+  latestError: null,
+  onSelectTab: () => null,
+  joinNation: () => null,
+  leaveNation: () => null,
+  onStartNationEditing: () => null,
+  onDeleteDraft: () => null,
+  onSubmitDraft: () => null,
 };
 
 const mapStateToProps = state => ({

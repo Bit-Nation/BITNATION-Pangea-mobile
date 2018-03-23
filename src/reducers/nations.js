@@ -15,7 +15,7 @@ import {
 import type { NationType, NationIdType, EditingNationType } from '../types/Nation';
 import { resolveNation } from '../utils/nations';
 
-type State = {
+export type State = {
   +nations: Array<NationType>,
   +myNationIds: Array<NationIdType>,
   +searchString: string | null,
@@ -23,6 +23,7 @@ type State = {
   +openedNationId: NationIdType | null,
   +creatingNation: EditingNationType | null,
   +inProgress: boolean,
+  +latestError: ?Error,
 }
 
 export const initialState: State = {
@@ -33,6 +34,7 @@ export const initialState: State = {
   openedNationId: null,
   creatingNation: null,
   inProgress: false,
+  latestError: null,
 };
 
 /**
