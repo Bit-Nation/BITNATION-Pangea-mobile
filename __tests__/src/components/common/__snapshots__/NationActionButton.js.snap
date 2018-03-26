@@ -6,7 +6,9 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <NationActionButton
     disable={true}
+    iconSource={undefined}
     onPress={[MockFunction]}
+    title=""
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -48,21 +50,18 @@ ShallowWrapper {
               "marginTop": 4,
             }
           }
-        />
+        >
+          
+        </Text>
       </TouchableOpacity>,
-      "disable": true,
-      "onPress": [MockFunction],
       "opacity": 0.4,
-      "style": Array [
-        Object {
-          "backgroundColor": "transparent",
-          "borderRadius": 15,
-          "height": 48,
-          "justifyContent": "center",
-          "width": 48,
-        },
-        undefined,
-      ],
+      "style": Object {
+        "backgroundColor": "transparent",
+        "borderRadius": 15,
+        "height": 48,
+        "justifyContent": "center",
+        "width": 48,
+      },
     },
     "ref": null,
     "rendered": Object {
@@ -87,7 +86,9 @@ ShallowWrapper {
                 "marginTop": 4,
               }
             }
-          />,
+          >
+            
+          </Text>,
         ],
         "disabled": true,
         "onPress": [MockFunction],
@@ -118,7 +119,7 @@ ShallowWrapper {
           "props": Object {
             "accessible": true,
             "allowFontScaling": true,
-            "children": undefined,
+            "children": "",
             "ellipsizeMode": "tail",
             "style": Object {
               "backgroundColor": "transparent",
@@ -128,7 +129,7 @@ ShallowWrapper {
             },
           },
           "ref": null,
-          "rendered": null,
+          "rendered": "",
           "type": [Function],
         },
       ],
@@ -170,21 +171,18 @@ ShallowWrapper {
                 "marginTop": 4,
               }
             }
-          />
+          >
+            
+          </Text>
         </TouchableOpacity>,
-        "disable": true,
-        "onPress": [MockFunction],
         "opacity": 0.4,
-        "style": Array [
-          Object {
-            "backgroundColor": "transparent",
-            "borderRadius": 15,
-            "height": 48,
-            "justifyContent": "center",
-            "width": 48,
-          },
-          undefined,
-        ],
+        "style": Object {
+          "backgroundColor": "transparent",
+          "borderRadius": 15,
+          "height": 48,
+          "justifyContent": "center",
+          "width": 48,
+        },
       },
       "ref": null,
       "rendered": Object {
@@ -209,7 +207,9 @@ ShallowWrapper {
                   "marginTop": 4,
                 }
               }
-            />,
+            >
+              
+            </Text>,
           ],
           "disabled": true,
           "onPress": [MockFunction],
@@ -240,7 +240,7 @@ ShallowWrapper {
             "props": Object {
               "accessible": true,
               "allowFontScaling": true,
-              "children": undefined,
+              "children": "",
               "ellipsizeMode": "tail",
               "style": Object {
                 "backgroundColor": "transparent",
@@ -250,7 +250,7 @@ ShallowWrapper {
               },
             },
             "ref": null,
-            "rendered": null,
+            "rendered": "",
             "type": [Function],
           },
         ],
@@ -323,21 +323,14 @@ ShallowWrapper {
           TEST
         </Text>
       </TouchableOpacity>,
-      "disable": false,
-      "iconSource": 1,
-      "onPress": [MockFunction],
       "opacity": 1,
-      "style": Array [
-        Object {
-          "backgroundColor": "transparent",
-          "borderRadius": 15,
-          "height": 48,
-          "justifyContent": "center",
-          "width": 48,
-        },
-        undefined,
-      ],
-      "title": "TEST",
+      "style": Object {
+        "backgroundColor": "transparent",
+        "borderRadius": 15,
+        "height": 48,
+        "justifyContent": "center",
+        "width": 48,
+      },
     },
     "ref": null,
     "rendered": Object {
@@ -451,21 +444,14 @@ ShallowWrapper {
             TEST
           </Text>
         </TouchableOpacity>,
-        "disable": false,
-        "iconSource": 1,
-        "onPress": [MockFunction],
         "opacity": 1,
-        "style": Array [
-          Object {
-            "backgroundColor": "transparent",
-            "borderRadius": 15,
-            "height": 48,
-            "justifyContent": "center",
-            "width": 48,
-          },
-          undefined,
-        ],
-        "title": "TEST",
+        "style": Object {
+          "backgroundColor": "transparent",
+          "borderRadius": 15,
+          "height": 48,
+          "justifyContent": "center",
+          "width": 48,
+        },
       },
       "ref": null,
       "rendered": Object {
@@ -557,8 +543,11 @@ ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <NationActionButton
+    disable={true}
     enabled={true}
+    iconSource={1}
     onPress={[MockFunction]}
+    title=""
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -573,8 +562,8 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "children": <TouchableOpacity
-        activeOpacity={0.4}
-        disabled={undefined}
+        activeOpacity={1}
+        disabled={true}
         onPress={[MockFunction]}
         style={
           Array [
@@ -586,7 +575,7 @@ ShallowWrapper {
         }
       >
         <Image
-          source={undefined}
+          source={1}
         />
         <Text
           accessible={true}
@@ -600,21 +589,18 @@ ShallowWrapper {
               "marginTop": 4,
             }
           }
-        />
+        >
+          
+        </Text>
       </TouchableOpacity>,
-      "enabled": true,
-      "onPress": [MockFunction],
-      "opacity": 1,
-      "style": Array [
-        Object {
-          "backgroundColor": "transparent",
-          "borderRadius": 15,
-          "height": 48,
-          "justifyContent": "center",
-          "width": 48,
-        },
-        undefined,
-      ],
+      "opacity": 0.4,
+      "style": Object {
+        "backgroundColor": "transparent",
+        "borderRadius": 15,
+        "height": 48,
+        "justifyContent": "center",
+        "width": 48,
+      },
     },
     "ref": null,
     "rendered": Object {
@@ -622,10 +608,10 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "activeOpacity": 0.4,
+        "activeOpacity": 1,
         "children": Array [
           <Image
-            source={undefined}
+            source={1}
           />,
           <Text
             accessible={true}
@@ -639,9 +625,11 @@ ShallowWrapper {
                 "marginTop": 4,
               }
             }
-          />,
+          >
+            
+          </Text>,
         ],
-        "disabled": undefined,
+        "disabled": true,
         "onPress": [MockFunction],
         "style": Array [
           Object {
@@ -657,7 +645,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "source": undefined,
+            "source": 1,
           },
           "ref": null,
           "rendered": null,
@@ -670,7 +658,7 @@ ShallowWrapper {
           "props": Object {
             "accessible": true,
             "allowFontScaling": true,
-            "children": undefined,
+            "children": "",
             "ellipsizeMode": "tail",
             "style": Object {
               "backgroundColor": "transparent",
@@ -680,7 +668,7 @@ ShallowWrapper {
             },
           },
           "ref": null,
-          "rendered": null,
+          "rendered": "",
           "type": [Function],
         },
       ],
@@ -695,8 +683,8 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "children": <TouchableOpacity
-          activeOpacity={0.4}
-          disabled={undefined}
+          activeOpacity={1}
+          disabled={true}
           onPress={[MockFunction]}
           style={
             Array [
@@ -708,7 +696,7 @@ ShallowWrapper {
           }
         >
           <Image
-            source={undefined}
+            source={1}
           />
           <Text
             accessible={true}
@@ -722,21 +710,18 @@ ShallowWrapper {
                 "marginTop": 4,
               }
             }
-          />
+          >
+            
+          </Text>
         </TouchableOpacity>,
-        "enabled": true,
-        "onPress": [MockFunction],
-        "opacity": 1,
-        "style": Array [
-          Object {
-            "backgroundColor": "transparent",
-            "borderRadius": 15,
-            "height": 48,
-            "justifyContent": "center",
-            "width": 48,
-          },
-          undefined,
-        ],
+        "opacity": 0.4,
+        "style": Object {
+          "backgroundColor": "transparent",
+          "borderRadius": 15,
+          "height": 48,
+          "justifyContent": "center",
+          "width": 48,
+        },
       },
       "ref": null,
       "rendered": Object {
@@ -744,10 +729,10 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "activeOpacity": 0.4,
+          "activeOpacity": 1,
           "children": Array [
             <Image
-              source={undefined}
+              source={1}
             />,
             <Text
               accessible={true}
@@ -761,9 +746,11 @@ ShallowWrapper {
                   "marginTop": 4,
                 }
               }
-            />,
+            >
+              
+            </Text>,
           ],
-          "disabled": undefined,
+          "disabled": true,
           "onPress": [MockFunction],
           "style": Array [
             Object {
@@ -779,7 +766,7 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "class",
             "props": Object {
-              "source": undefined,
+              "source": 1,
             },
             "ref": null,
             "rendered": null,
@@ -792,7 +779,7 @@ ShallowWrapper {
             "props": Object {
               "accessible": true,
               "allowFontScaling": true,
-              "children": undefined,
+              "children": "",
               "ellipsizeMode": "tail",
               "style": Object {
                 "backgroundColor": "transparent",
@@ -802,7 +789,7 @@ ShallowWrapper {
               },
             },
             "ref": null,
-            "rendered": null,
+            "rendered": "",
             "type": [Function],
           },
         ],
@@ -823,22 +810,16 @@ ShallowWrapper {
 
 exports[`NationActionButton component tests NationActionButton renders correctly 1`] = `
 <View
-  disable={true}
-  iconSource={1}
   opacity={0.4}
   style={
-    Array [
-      Object {
-        "backgroundColor": "transparent",
-        "borderRadius": 15,
-        "height": 48,
-        "justifyContent": "center",
-        "width": 48,
-      },
-      undefined,
-    ]
+    Object {
+      "backgroundColor": "transparent",
+      "borderRadius": 15,
+      "height": 48,
+      "justifyContent": "center",
+      "width": 48,
+    }
   }
-  title="Chat"
 >
   <View
     accessibilityComponentType={undefined}

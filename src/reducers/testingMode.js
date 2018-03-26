@@ -9,7 +9,7 @@ import {
   EMPTY_WALLET,
 } from '../actions/testingMode';
 
-const stepsCountToToggle = 5;
+export const stepsCountToToggle = 5;
 
 type State = {
   +isActive: boolean,
@@ -17,7 +17,7 @@ type State = {
   +walletEmpty: boolean,
 };
 
-const initialState: State = {
+export const initialState: State = {
   isActive: false,
   stepsLeftToToggle: stepsCountToToggle,
   walletEmpty: false,

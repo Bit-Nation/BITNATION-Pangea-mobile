@@ -9,6 +9,13 @@ describe('GridView rendering', () => {
     renderer.create(<GridView />);
   });
 
+  /**
+   * @desc Common function to render grid view with specific size.
+   * @param {number} rowCount Count of rows in grid view.
+   * @param {number} columnCount Count of columns in grid view.
+   * @param {any} props Other props to pass to grid view.
+   * @return {React.Component} Created GridView render tree.
+   */
   function renderGridViewWithTestItems(rowCount, columnCount, props) {
     const renderItem = index => <Text key={index}>Test item {index}</Text>;
     const tree = renderer.create(<GridView
@@ -22,6 +29,12 @@ describe('GridView rendering', () => {
     return tree;
   }
 
+  /**
+   * @desc Common function to render grid view with specific size with mocked render item function.
+   * @param {number} rowCount Count of rows in grid view.
+   * @param {number} columnCount Count of columns in grid view.
+   * @return {React.Component} Created GridView render tree.
+   */
   function renderMockedGridView(rowCount, columnCount) {
     const mockFunc = jest.fn();
     const tree = renderer.create(<GridView
@@ -33,7 +46,7 @@ describe('GridView rendering', () => {
     expect(tree.toJSON()).toMatchSnapshot();
 
     expect(mockFunc).toHaveBeenCalledTimes(itemCount);
-    for (let i = 0; i < itemCount; i++) {
+    for (let i = 0; i < itemCount; i += 1) {
       expect(mockFunc.mock.calls).toContainEqual([i]);
     }
 

@@ -1,30 +1,32 @@
-import React, { Component } from 'react';
+// @flow
+
+import React from 'react';
 import { ActivityIndicator, View } from 'react-native';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
 
 /**
  * @desc Component to render loading indicator on top of a container.
- * @type React.Component
+ * @return {React.Component} A component.
  */
-export default class Loading extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <ActivityIndicator />
-      </View>
-    );
-  }
-}
+const Loading = () => {
+  const styles = MediaQueryStyleSheet.create({
+    container: {
+      position: 'absolute',
+      left: 0,
+      right: 0,
+      top: 0,
+      bottom: 0,
+      backgroundColor: 'rgba(0,0,0,0.3)',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+  });
 
-const styles = MediaQueryStyleSheet.create({
-  container: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    top: 0,
-    bottom: 0,
-    backgroundColor: 'rgba(0,0,0,0.3)',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  return (
+    <View style={styles.container}>
+      <ActivityIndicator />
+    </View>
+  );
+};
+
+export default Loading;

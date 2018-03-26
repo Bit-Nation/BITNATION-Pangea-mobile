@@ -55,23 +55,15 @@ class NationsListScreen extends Component {
           renderItem={(item) => {
             const nation = item.item;
             const nationStatus = resolveStatus(nation);
-            const shouldShowCitizens = nationStatus === null
-              || nationStatus.code === TX_JOB_STATUS_SUCCESS;
 
             let statusString = '';
             if (nationStatus !== null) {
               statusString = i18n.t(`enums.nation.status.${nationStatus.key}`);
             }
-            if (shouldShowCitizens) {
-              statusString = `${nation.citizens}`;
-            }
 
             let statusTextColor = statusColor(0);
             if (nationStatus !== null) {
               statusTextColor = statusColor(nationStatus.code);
-            }
-            if (shouldShowCitizens) {
-              statusTextColor = Colors.listItemTextState.citizensCount;
             }
 
             return (<NationListItem

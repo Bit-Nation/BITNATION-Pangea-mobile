@@ -45,7 +45,8 @@ We are using:
 - [Redux-Saga](https://github.com/redux-saga/redux-saga) for handling asynchronous state changes.
 - [React Native Navigation](https://github.com/wix/react-native-navigation) for truly native navigation.
 - [Lodash](https://lodash.com) for great preset of utility functions on data structures.
-- [Jest](https://facebook.github.io/jest/) for testing.
+- [Jest](https://facebook.github.io/jest/) for unit testing.
+- [Enzyme](https://github.com/airbnb/enzyme) for snapshot testing.
 - [Detox](https://github.com/wix/detox) for end-to-end testing. Checkout [docs](./docs/detox_usage.md) for more infromation.
 - [ESLint](https://eslint.org) for checking code style and quality. Checkout [docs](./docs/eslint_usage.md) for more information.
 

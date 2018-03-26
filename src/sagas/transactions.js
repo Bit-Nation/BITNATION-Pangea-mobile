@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { call } from 'redux-saga/effects';
 import { delay } from 'redux-saga';
 
