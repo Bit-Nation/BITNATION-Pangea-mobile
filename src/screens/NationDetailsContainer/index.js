@@ -16,6 +16,8 @@ import {
   submitNation,
 } from '../../actions/modifyNation';
 import { openedNation, type State as NationState } from '../../reducers/nations';
+import { type State as WalletState } from '../../reducers/wallet';
+import { type State as ModifyNationState } from '../../reducers/modifyNation';
 import NavigatorComponent from '../../components/common/NavigatorComponent';
 import { alert, errorAlert } from '../../global/alerts';
 import { nationIsDraft } from '../../utils/nations';
@@ -57,16 +59,18 @@ type Actions = {
   /**
    * @desc Function to delete a nation draft
    * @param nationId The Id of the nation to delete
+   * @param callback Callback to be called when delete is finished
    */
   onDeleteDraft: (NationIdType, () => void) => void,
   /**
    * @desc Function to submit a nation draft to the blockchain
    * @param nation The selected nation to submit
+   * @param callback Callback to be called when submit is finished
    */
   onSubmitDraft: (NationType, () => void) => void,
 };
 
-class NationDetailsContainer extends NavigatorComponent<Props & Actions & NationState> {
+class NationDetailsContainer extends NavigatorComponent<Props & Actions & NationState & WalletState & ModifyNationState> {
   static defaultProps: Object;
   static navigatorButtons = { ...androidNavigationButtons };
 
@@ -193,7 +197,6 @@ class NationDetailsContainer extends NavigatorComponent<Props & Actions & Nation
 }
 
 NationDetailsContainer.defaultProps = {
-  isDraft: null,
   latestError: null,
   onSelectTab: () => null,
   joinNation: () => null,

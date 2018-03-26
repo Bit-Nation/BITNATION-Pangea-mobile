@@ -14,7 +14,6 @@ import {
 } from '../actions/nations';
 import type { NationType, NationIdType, EditingNationType } from '../types/Nation';
 import { resolveNation } from '../utils/nations';
-import type { WalletType } from '../types/Wallet';
 
 export type State = {
   +nations: Array<NationType>,
@@ -24,8 +23,6 @@ export type State = {
   +openedNationId: NationIdType | null,
   +creatingNation: EditingNationType | null,
   +inProgress: boolean,
-  +latestError: ?Error,
-  +wallets: Array<WalletType> | null,
 }
 
 export const initialState: State = {
@@ -36,8 +33,6 @@ export const initialState: State = {
   openedNationId: null,
   creatingNation: null,
   inProgress: false,
-  latestError: null,
-  wallets: null,
 };
 
 /**

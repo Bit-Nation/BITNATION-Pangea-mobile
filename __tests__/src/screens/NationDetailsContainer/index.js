@@ -10,7 +10,7 @@ describe('NationDetailsContainer', () => {
   const initialStateMock = {
     nations: {
       nations: [{
-        _id: 1,
+        id: 1,
         idInSmartContract: 1,
       }],
       openedNationId: 1,

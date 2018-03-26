@@ -266,7 +266,6 @@ class NationDetailsScreen extends Component<Props & Actions & NationState> {
 }
 
 NationDetailsScreen.defaultProps = {
-  isDraft: null,
   joinNation: () => null,
   leaveNation: () => null,
   deleteDraft: () => null,

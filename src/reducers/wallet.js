@@ -15,7 +15,7 @@ import {
 import type { WalletType } from '../types/Wallet';
 import { getWalletIndex } from '../utils/wallet';
 
-type State = {
+export type State = {
   +wallets: Array<WalletType> | null,
   +selectedWalletAddress: string | null,
   +moneySendingInProgress: boolean,
