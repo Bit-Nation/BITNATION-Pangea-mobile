@@ -19,6 +19,7 @@ import saveShouldBeEnabled from '../../../utils/profile';
 import AssetsImage from '../../../global/AssetsImages';
 import Colors from '../../../global/colors';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
+import type { ProfileType } from '../../../types/Profile';
 import i18n from '../../../global/i18n';
 import styles from './styles';
 
@@ -32,11 +33,11 @@ export type Props = {
   /**
    * @desc User object that is currently being edited
    */
-  editingUser: any,
+  editingUser: ProfileType,
   /**
    * @desc Current user object
    */
-  user: any,
+  user: ProfileType,
   /**
    * @desc Function to modify the editing user
    * @param field A user field to be modified
@@ -80,8 +81,8 @@ class EditProfile extends NavigatorComponent<Props> {
   }
 
   componentWillReceiveProps(nextProps: Props) {
-    const saveWasEnabled = saveShouldBeEnabled(this.props);
-    const saveWillBeEnabled = saveShouldBeEnabled(nextProps);
+    const saveWasEnabled = saveShouldBeEnabled(this.props.user, this.props.editingUser);
+    const saveWillBeEnabled = saveShouldBeEnabled(nextProps.user, nextProps.editingUser);
     if (saveWasEnabled !== saveWillBeEnabled) {
       this.setNavigationButtons(saveWillBeEnabled);
     }

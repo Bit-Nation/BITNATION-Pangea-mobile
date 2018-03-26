@@ -1,13 +1,14 @@
 // @flow
 
 import _ from 'lodash';
-import type { Props } from '../screens/ProfileScreen/EditProfile';
+import type { ProfileType } from '../types/Profile';
 
 /**
  * @desc Function that checks for the save enabled status
- * @param {Props} props props that are passed to the component
+ * @param {ProfileType} user User object that is currently saved in the database
+ * @param {ProfileType} editingUser User object that is currently being edited
  * @returns {boolean} Save enabled status
  */
-export default function saveShouldBeEnabled(props: Props): boolean {
-  return !_.isEqual(props.user, props.editingUser) && !_.isEmpty(props.editingUser.name);
+export default function saveShouldBeEnabled(user: ProfileType, editingUser: ProfileType): boolean {
+  return !_.isEqual(user, editingUser) && !_.isEmpty(editingUser.name);
 }
