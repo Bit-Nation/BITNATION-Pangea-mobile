@@ -70,7 +70,8 @@ type Actions = {
   onSubmitDraft: (NationType, () => void) => void,
 };
 
-class NationDetailsContainer extends NavigatorComponent<Props & Actions & NationState & WalletState & ModifyNationState> {
+class NationDetailsContainer extends NavigatorComponent
+  <Props & Actions & NationState & WalletState & ModifyNationState> {
   static defaultProps: Object;
   static navigatorButtons = { ...androidNavigationButtons };
 
