@@ -12,7 +12,7 @@
     "test:e2e:release": "detox test --configuration ios.sim.release --cleanup",
     "test:e2e:release:build": "detox build --configuration ios.sim.release",
     "test:update": "jest -u",
-    "test:coverage": "flow && jest __tests__ --coverage --forceExit",
+    "test:coverage": "flow && jest --coverage --forceExit",
     "test:coveralls": "yarn test:coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "ios": "flow && node_modules/.bin/react-native run-ios",
     "android": "flow && node_modules/.bin/react-native run-android",
