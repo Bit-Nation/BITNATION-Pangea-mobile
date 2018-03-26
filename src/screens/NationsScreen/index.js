@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+// @flow
+
+import React from 'react';
 import { Alert } from 'react-native';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 
@@ -12,10 +13,43 @@ import Colors from '../../global/colors';
 import NavigatorComponent from '../../components/common/NavigatorComponent';
 import i18n from '../../global/i18n';
 import { startNationCreation } from '../../actions/modifyNation';
+import type { Navigator } from '../../types/ReactNativeNavigation';
+import { type State as NationState } from '../../reducers/nations';
+import { type State as WalletState } from '../../reducers/wallet';
+import type { NationIdType } from '../../types/Nation';
+import type { NationTab } from '../../actions/nations';
 
 const NEW_BUTTON = 'NEW_BUTTON';
 
-class NationsScreen extends NavigatorComponent {
+type Props = {
+  /**
+   * @desc React Native Navigation navigator object.
+   */
+  navigator: Navigator,
+}
+
+type Actions = {
+  /**
+   * @desc Function to select the tab on screen
+   * @param index Id of the tab to appear on screen
+   */
+  onSelectTab: (NationTab) => boolean,
+  /**
+   * @desc Function to open a nation
+   * @param id Index of the nation to open
+   */
+  openNation: (NationIdType) => void,
+  /**
+   * @desc Function to sync the nation's list with the blockchain
+   */
+  syncNations: () => void,
+  /**
+   * @desc Function to start the process of create a nation
+   */
+  startNationCreation: () => void,
+}
+
+class NationsScreen extends NavigatorComponent<Props &Actions & WalletState & NationState> {
   constructor(props) {
     super(props);
 
@@ -36,7 +70,7 @@ class NationsScreen extends NavigatorComponent {
   onNavBarButtonPress(id) {
     if (id === NEW_BUTTON) {
       if (_.isEmpty(this.props.wallets)) {
-        this._showCreatePrivateKeyAlert();
+        this.showCreatePrivateKeyAlert();
       } else {
         this.props.startNationCreation();
         this.props.navigator.showModal(screen('NATION_CREATE_SCREEN'));
@@ -44,7 +78,7 @@ class NationsScreen extends NavigatorComponent {
     }
   }
 
-  _showCreatePrivateKeyAlert() {
+  showCreatePrivateKeyAlert() {
     Alert.alert(
       i18n.t('alerts.walletRequired.title'),
       i18n.t('alerts.walletRequired.subtitle'),
@@ -58,11 +92,11 @@ class NationsScreen extends NavigatorComponent {
 
   render() {
     return (
-      <NationsListScreen onSelectItem={this._onSelectItem} {...this.props} />
+      <NationsListScreen onSelectItem={this.onSelectItem} {...this.props} />
     );
   }
 
-  _onSelectItem = (id) => {
+  onSelectItem = (id) => {
     const nation = resolveNation(this.props.nations, id);
 
     if (!nation) {
@@ -74,10 +108,6 @@ class NationsScreen extends NavigatorComponent {
     this.props.navigator.push(screen('NATION_DETAILS_SCREEN'));
   };
 }
-
-NationsScreen.PropTypes = {
-  navigator: PropTypes.object,
-};
 
 const mapStateToProps = state => ({
   ...state.nations,
