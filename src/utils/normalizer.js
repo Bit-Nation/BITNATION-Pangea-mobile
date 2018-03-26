@@ -1,4 +1,4 @@
-import { __DEV__ } from 'react-native';
+// @flow
 
 const React = require('react-native');
 
@@ -13,10 +13,10 @@ const deviceWidth = Dimensions.get('window').width;
 
 /**
  * Funtion to normalize Font sizes depending on screen size
- * @param size The Font Size
+ * @param {number} size The original font size
  * @returns {number} The new font size depending the current screen
  */
-export function fontSizeNormalizer(size) {
+export function fontSizeNormalizer(size: number) {
   if (disabledForDebugging && __DEV__) {
     return size;
   }
@@ -40,10 +40,10 @@ export function normalWidthMargin() {
 
 /**
  * Function to fix the height of Status Bar ONLY in the iPhoneX
- * @param size
+ * @param {number} size The actual device's screen size
  * @returns {number} The correct size for the Status Bar
  */
-export function isiPhoneXStatusBar(size) {
+export function isiPhoneXStatusBar(size: number) {
   if (Platform.OS === 'ios' && (deviceHeight === 812 || deviceWidth === 812)) {
     return size + 24;
   }
@@ -52,10 +52,10 @@ export function isiPhoneXStatusBar(size) {
 
 /**
  * Function to fix the height of Fake Tab Bar ONLY in the iPhoneX
- * @param size
+ * @param {number} size The actual device's screen size
  * @returns {number} The correct size for the Fake Tab Bar
  */
-export function isiPhoneXTabBar(size) {
+export function isiPhoneXTabBar(size: number) {
   if (Platform.OS === 'ios' && (deviceHeight === 812 || deviceWidth === 812)) {
     return size + 29;
   }
