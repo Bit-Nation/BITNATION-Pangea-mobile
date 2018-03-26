@@ -1,9 +1,11 @@
+// @flow
+
 import { StyleSheet } from 'react-native';
 
 import Colors from '../../../global/colors';
 import GlobalStyles from '../../../global/Styles';
 
-export default styles = StyleSheet.create({
+const styles = StyleSheet.create({
   ...GlobalStyles,
 
   codeText: {
@@ -14,5 +16,10 @@ export default styles = StyleSheet.create({
     marginLeft: 10,
     marginRight: 10,
   },
-
+  addressText: {
+    ...GlobalStyles.footnote,
+    textAlign: 'center',
+  },
 });
+
+export default styles;

@@ -11,7 +11,7 @@ import {
 } from '../actions/key';
 import type { Mnemonic } from '../types/Mnemonic';
 
-type State = {
+export type State = {
   +createdMnemonic: Mnemonic | null,
   +enteredMnemonic: Mnemonic | null,
   +mnemonicValid: boolean | null,

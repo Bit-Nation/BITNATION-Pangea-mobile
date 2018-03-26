@@ -183,9 +183,6 @@
     }
   },
   "screens": {
-    "splash": {
-      "title": "Splash"
-    },
     "intro": {
       "freeSpeech": {
         "title": "Free Speech",
