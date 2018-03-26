@@ -173,12 +173,12 @@ class NationDetailsScreen extends Component<Props & Actions & NationState> {
         />
       );
     }
-    return false;
+    return null;
   }
 
   buildTabBar() {
     const nation = openedNation(this.props);
-    if (nation === null) return true;
+    if (nation === null) return null;
     if (this.props.isDraft) {
       return (
         <View style={styles.fakeBottomBar}>
