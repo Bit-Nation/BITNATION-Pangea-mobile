@@ -1,8 +1,10 @@
+// @flow
+
 import { StyleSheet } from 'react-native';
 
 import GlobalStyles from '../../../../global/Styles';
 
-export default styles = StyleSheet.create({
+const styles = StyleSheet.create({
   ...GlobalStyles,
   gridView: {
     flex: 1,
@@ -17,5 +19,12 @@ export default styles = StyleSheet.create({
   button: {
     width: 90,
   },
-
+  textInput: {
+    marginLeft: 10,
+  },
+  firstTextInput: {
+    marginLeft: 0,
+  },
 });
+
+export default styles;
