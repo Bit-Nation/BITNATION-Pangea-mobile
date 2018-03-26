@@ -30,7 +30,7 @@ export type Props = {
   /**
    * @desc Flag that determines if testing mode is activated
    */
-  testingModeActive?: boolean,
+  testingModeActive: boolean,
   /**
    * @desc Function to start user edit
    */
