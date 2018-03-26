@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+// @flow
+
+import React from 'react';
 import { View, Text } from 'react-native';
-import PropTypes from 'prop-types';
 import _ from 'lodash';
 
 import styles from './styles';
@@ -8,42 +9,47 @@ import styles from './styles';
 import PanelView from '../../../components/common/PanelView';
 import i18n from '../../../global/i18n';
 import { prettyWalletBalance } from '../../../utils/formatters';
+import type { WalletType } from '../../../types/Wallet';
 
-/**
- * @desc Component to render wallet panel on dashboard
- * @type React.Component
- */
-export default class WalletPanel extends Component {
-  render() {
-    const { style } = this.props;
-
-    return (
-      <View style={style}>
-        <PanelView
-          style={styles.walletGridPanel}
-          childrenContainerStyle={styles.noflex}
-          title={i18n.t('screens.dashboard.walletPanel.title')}
-          titleStyle={styles.panelViewTitle}
-        >
-          {_.isEmpty(this.props.wallets) ?
-            <Text style={styles.body}>{i18n.t('screens.dashboard.walletPanel.empty')}</Text>
-            : <View><Text style={styles.footnote}>ETH</Text>
-              <Text style={styles.currencyLarge}>{prettyWalletBalance(this.props.wallets[0], ' ')}</Text>
-            </View>
-          }
-        </PanelView>
-      </View>
-    );
-  }
-}
-
-WalletPanel.propTypes = {
+type Props = {
   /**
    * @desc Array of wallet objects.
    */
-  wallets: PropTypes.array,
+  +wallets: Array<WalletType>,
+  /**
+   * @desc Style to be applied to root view.
+   */
+  style: any,
 };
+
+/**
+ * @desc Component to render wallet panel on dashboard
+ * @return {React.Component} A component.
+ */
+const WalletPanel = ({ style, wallets } : Props) => ((
+  <View style={style}>
+    <PanelView
+      style={styles.walletGridPanel}
+      childrenContainerStyle={styles.noflex}
+      title={i18n.t('screens.dashboard.walletPanel.title')}
+      titleStyle={styles.panelViewTitle}
+    >
+      {
+        _.isEmpty(wallets)
+          ?
+            <Text style={styles.body}>{i18n.t('screens.dashboard.walletPanel.empty')}</Text>
+          :
+            <View>
+              <Text style={styles.footnote}>ETH</Text>
+              <Text style={styles.currencyLarge}>{prettyWalletBalance(wallets[0])}</Text>
+            </View>
+      }
+    </PanelView>
+  </View>
+));
 
 WalletPanel.defaultProps = {
   wallets: [],
 };
+
+export default WalletPanel;

@@ -1,11 +1,26 @@
-import React, { Component } from 'react';
+// @flow
+
 import { BackHandler, Alert } from 'react-native';
 
 import Colors from '../../../global/colors';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import i18n from '../../../global/i18n';
+import type { NavigatorEvent } from '../../../types/ReactNativeNavigation';
+import type { Mnemonic } from '../../../types/Mnemonic';
 
-export default class KeyBaseScreen extends NavigatorComponent {
+type KeyProps = {
+  /**
+   * @desc Function to abort private key creation process.
+   */
+  +removePrivateKey?: () => void,
+  /**
+   * @desc Current mnemonic used in private key creation process.
+   */
+  +createdMnemonic?: Mnemonic | null,
+};
+
+export default class KeyBaseScreen<Props: KeyProps, State = void>
+  extends NavigatorComponent<Props, State> {
   static navigatorButtons = {
     leftButtons: [{
       id: 'cancel',
@@ -28,7 +43,7 @@ export default class KeyBaseScreen extends NavigatorComponent {
     return false;
   };
 
-  onNavigatorEvent(event) {
+  onNavigatorEvent(event: NavigatorEvent) {
     if (event.id === 'backPress') {
       this.onCancel();
     }
@@ -36,13 +51,13 @@ export default class KeyBaseScreen extends NavigatorComponent {
     super.onNavigatorEvent(event);
   }
 
-  onNavBarButtonPress(id) {
+  onNavBarButtonPress(id: string) {
     if (id === 'cancel') {
       this.onCancel();
     }
   }
 
-  get shouldShowCancelAlert() {
+  get shouldShowCancelAlert(): boolean {
     return this.props.createdMnemonic !== null && this.props.createdMnemonic !== undefined;
   }
 
@@ -67,9 +82,12 @@ export default class KeyBaseScreen extends NavigatorComponent {
   }
 
   onCancelConfirmed() {
-    if (this.props.removePrivateKey) {
+    if (typeof this.props.removePrivateKey === 'function') {
       this.props.removePrivateKey();
     }
-    this.props.navigator.dismissModal();
+
+    if (this.props.navigator != null) {
+      this.props.navigator.dismissModal();
+    }
   }
 }

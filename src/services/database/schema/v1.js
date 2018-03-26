@@ -1,7 +1,9 @@
+/* eslint-disable max-len */
 // @flow
 // Schema v1: Effective from 0.3.2 to Current
 
-// import {TX_JOB_STATUS_PENDING, TX_JOB_TYPE_NATION_CREATE} from '../../../src/queues/transaction';    // Todo
+// @todo
+// import {TX_JOB_STATUS_PENDING, TX_JOB_TYPE_NATION_CREATE} from '../../../src/queues/transaction';
 
 const TX_JOB_STATUS_PENDING = 200;
 const TX_JOB_TYPE_NATION_CREATE = 'NATION_CREATE';
@@ -105,6 +107,9 @@ export const MessageJobSchema = {
   },
 };
 
+// We need this because of types circular dependencies.
+/* eslint-disable no-use-before-define */
+
 /**
  * @typedef TransactionJobType
  * @property {number} id
@@ -118,6 +123,8 @@ export type TransactionJobType = {
     type: string,
     nation: NationType | null
 }
+
+/* eslint-enable no-use-before-define */
 
 export const TransactionJobSchema = {
   name: 'TransactionJob',
@@ -151,7 +158,7 @@ export const TransactionJobSchema = {
  * @property {string} governanceService
  * @property {number} citizens Number of citizens
  * @property {boolean} joined Did I join the nation?
- * @property {boolean} stateMutateAllowed Hold information about if we can mutate the state of this nation. Since we only support synchronous mutate of the nation state (join/leave nation).
+ * @property {boolean} stateMutateAllowed Hold information about if we can mutate the state of this nation. Since we only support synchronous mutate of the nation state (join/leave nation).
  * @property {boolean} determinants if we should reset (set to true) the  stateMutateAllowed on the next indexing round.
  * @property {TransactionJobType | null} tx A transaction. It can be e.g. a transaction that is responsible for writing the nation to the blockchain.
  */
@@ -234,7 +241,7 @@ export const migration = (oldRealm: any, newRealm: any) => {
   // Migrate nation's
   // 1. Create tx job from tx hash with the status pending.
   //   Pending because an but in 0.3.1 prevented us from submitting the nations
-  oldRealm.objects('Nation').map((oldNation) => {
+  oldRealm.objects('Nation').forEach((oldNation) => {
     const newNation = newRealm.objects('Nation').filtered(`id = "${oldNation.id}"`)[0];
 
     if (!newNation) {

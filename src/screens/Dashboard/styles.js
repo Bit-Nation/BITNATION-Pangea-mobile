@@ -1,10 +1,7 @@
-import { MediaQueryStyleSheet } from 'react-native-responsive';
-import { Dimensions } from 'react-native';
+// @flow
 
 import Colors from '../../global/colors';
 import GlobalStyles from '../../global/Styles';
-
-const { height, width } = Dimensions.get('window');
 
 const styles = {
   ...GlobalStyles,
@@ -13,7 +10,6 @@ const styles = {
     ...GlobalStyles.panelViewTitle,
     color: Colors.BitnationHighlightColor,
   },
-
   activityPanelContainer: {
     flex: 1,
   },
@@ -34,12 +30,10 @@ const styles = {
     // flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'stretch',
-
   },
   walletPanel: {
     // flex: 2,
   },
-
   // This is a panel, unlike the other styles above, which are views
   // which hold panelViews.
   warningPanel: {
@@ -49,7 +43,6 @@ const styles = {
   warningPanelBody: {
     ...GlobalStyles.body,
     fontWeight: '300',
-
   },
 };
 export default styles;
