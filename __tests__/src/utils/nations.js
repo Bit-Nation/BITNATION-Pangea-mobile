@@ -1,7 +1,6 @@
 import { TX_JOB_STATUS_SUCCESS } from 'BITNATION-Pangea-libs/src/queues/transaction';
 
 import { resolveNation, convertToDatabase, convertFromDatabase, statusColor } from '../../../src/utils/nations';
-import Colors from '../../../src/global/colors';
 
 test('resolveNation works', () => {
   const expectedNation = {
@@ -17,6 +16,7 @@ test('resolveNation works', () => {
   ];
 
   expect(resolveNation(nations, expectedNation.id)).toEqual(expectedNation);
+  expect(resolveNation(nations, -1)).toBeNull();
 });
 
 test('convert governance service to and from database works', () => {

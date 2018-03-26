@@ -1,4 +1,6 @@
-import React, { Component } from 'react';
+// @flow
+
+import React from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import _ from 'lodash';
@@ -13,10 +15,43 @@ import { removeAllPrivateKeys } from '../../actions/key';
 import i18n from '../../global/i18n';
 import styles from '../NationsScreen/NationsListScreen/styles';
 import FakeNavigationBar from '../../components/common/FakeNavigationBar';
+import type { State } from '../../reducers/wallet';
+import type { WalletType } from '../../types/Wallet';
+import type { Navigator } from '../../types/ReactNativeNavigation';
 
 const REMOVE_WALLETS_BUTTON = 'REMOVE_WALLETS_BUTTON';
 
-class WalletScreen extends NavigatorComponent {
+type Props = {
+  /**
+   * @desc React Native Navigation navigator object.
+   */
+  navigator: Navigator,
+}
+
+type TestingModeProps = {
+  /**
+   * @desc Flag that shows if testing mode is active.
+   */
+  testingModeActive: boolean,
+  /**
+   * @desc Function to remove all wallets.
+   */
+  removeWallets: () => void,
+}
+
+type Actions = {
+  /**
+   * @desc Function to select wallet.
+   * @param {WalletType} wallet Wallet to be selected.
+   */
+  selectWallet: (wallet: WalletType) => void,
+  /**
+   * @desc Function to request wallet list update.
+   */
+  updateWalletList: () => void,
+}
+
+class WalletScreen extends NavigatorComponent<Props & TestingModeProps & Actions & State> {
   constructor(props) {
     super(props);
 
@@ -80,12 +115,12 @@ class WalletScreen extends NavigatorComponent {
               <Text style={styles.largeTitle}>{i18n.t('screens.wallet.title')}</Text>
             </View>
           </View>
-          {_.isEmpty(this.props.wallets) ? <EmptyWalletScreen
+          {this.props.wallets === null || _.isEmpty(this.props.wallets) ? <EmptyWalletScreen
             onCreateWallet={this.createWallet}
             onRestoreWallet={this.restoreWallet}
           />
             : <List
-              {...this.props}
+              wallets={this.props.wallets}
               onSendPress={this.sendMoney}
               onReceivePress={this.receiveMoney}
             />
