@@ -1,54 +1,46 @@
-/*
-    EmptyState (Wallet)
+// @flow
 
-    Return a ScrollView with panels for creating or restoring a wallet, to fit
-    inside a normal screen view.
-
-    It does NOT need a bodyContainer.
-    This does not return a complete screen.
-    There is no navigation, etc.
-
-
- */
-
-import React, { Component } from 'react';
-import {
-  ScrollView,
-  View,
-} from 'react-native';
-import PropTypes from 'prop-types';
+import React from 'react';
+import { View } from 'react-native';
 
 import styles from './styles';
 import PanelView from '../../../components/common/PanelView';
 import i18n from '../../../global/i18n';
 
-export default class EmptyWalletScreen extends Component {
-  render() {
-    return (
-      <View>
-        {/* <ScrollView contentContainerStyle={styles.scrollView}> */}
-        <PanelView
-          style={styles.panelViewTransparent}
-          title={i18n.t('screens.wallet.empty.createWalletPanel.title')}
-          body={i18n.t('screens.wallet.empty.createWalletPanel.text')}
-          buttonTitle={i18n.t('screens.wallet.empty.createWalletPanel.button')}
-          onButtonClick={this.props.onCreateWallet}
-        />
-        <PanelView
-          style={styles.panelViewTransparent}
-          title={i18n.t('screens.wallet.empty.restoreWalletPanel.title')}
-          body={i18n.t('screens.wallet.empty.restoreWalletPanel.text')}
-          buttonTitle={i18n.t('screens.wallet.empty.restoreWalletPanel.button')}
-          onButtonClick={this.props.onRestoreWallet}
-        />
-        {/* </ScrollView> */}
-      </View>
-    );
-  }
+type Props = {
+  /**
+   * @desc Callback when create wallet action selected.
+   */
+  onCreateWallet: () => void,
+  /**
+   * @desc Callback when restore wallet action selected.
+   */
+  onRestoreWallet: () => void,
 }
 
-EmptyWalletScreen.PropTypes = {
-  onCreateWallet: PropTypes.func.isRequired,
-  onRestoreWallet: PropTypes.func.isRequired,
-};
+/**
+ * @desc Component that renders wallet screen empty state.
+ * It is embedded into parent screen, so doesn't contain navigation, etc.
+ * @return {React.Component} A component.
+ * @constructor
+ */
+const EmptyWalletScreen = ({ onCreateWallet, onRestoreWallet }: Props) => ((
+  <View>
+    <PanelView
+      style={styles.panelViewTransparent}
+      title={i18n.t('screens.wallet.empty.createWalletPanel.title')}
+      body={i18n.t('screens.wallet.empty.createWalletPanel.text')}
+      buttonTitle={i18n.t('screens.wallet.empty.createWalletPanel.button')}
+      onButtonClick={onCreateWallet}
+    />
+    <PanelView
+      style={styles.panelViewTransparent}
+      title={i18n.t('screens.wallet.empty.restoreWalletPanel.title')}
+      body={i18n.t('screens.wallet.empty.restoreWalletPanel.text')}
+      buttonTitle={i18n.t('screens.wallet.empty.restoreWalletPanel.button')}
+      onButtonClick={onRestoreWallet}
+    />
+  </View>
+));
 
+export default EmptyWalletScreen;

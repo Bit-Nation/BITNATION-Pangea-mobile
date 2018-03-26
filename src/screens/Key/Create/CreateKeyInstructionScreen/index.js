@@ -1,9 +1,14 @@
-import React, { Component } from 'react';
-import { View, ScrollView, Image, Text } from 'react-native';
-import styles from './styles';
-import PropTypes from 'prop-types';
+// @flow
+
+import React from 'react';
+import {
+  View,
+  ScrollView,
+  Image,
+} from 'react-native';
 import { connect } from 'react-redux';
 
+import styles from './styles';
 import { screen } from '../../../../global/Screens';
 import BackgroundImage from '../../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
@@ -14,11 +19,25 @@ import { createPrivateKey, removePrivateKey } from '../../../../actions/key';
 import AssetsImages from '../../../../global/AssetsImages';
 import BodyParagraphs from '../../../../components/common/BodyParagraphs';
 import i18n from '../../../../global/i18n';
+import type { State } from '../../../../reducers/key';
 
-class CreateKeyInstructionScreen extends KeyBaseScreen {
+type Actions = {
+  /**
+   * @desc Function to start private key creation process.
+   */
+  createPrivateKey: () => void,
+  /**
+   * @desc Function to abort private key creation process.
+   */
+  removePrivateKey: () => void,
+}
+
+class CreateKeyInstructionScreen extends KeyBaseScreen<Actions & State> {
   onNextButtonPressed() {
     this.props.createPrivateKey();
-    this.props.navigator.push(screen('CREATE_KEY_PROCESS_SCREEN'));
+    if (this.props.navigator) {
+      this.props.navigator.push(screen('CREATE_KEY_PROCESS_SCREEN'));
+    }
   }
 
   render() {
@@ -29,7 +48,7 @@ class CreateKeyInstructionScreen extends KeyBaseScreen {
 
         <View style={styles.bodyContainer}>
 
-          <ScrollView style={{ flex: 1 }} contentContainerStyle={{ flex: 0 }}>
+          <ScrollView style={styles.scrollView} contentContainerStyle={styles.noflex}>
             <PanelView
               style={styles.panelViewTransparent}
               buttonTitle={i18n.t('screens.createKey.startButton')}
@@ -53,7 +72,9 @@ class CreateKeyInstructionScreen extends KeyBaseScreen {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  ...state.key,
+});
 
 const mapDispatchToProps = dispatch => ({
   createPrivateKey() {

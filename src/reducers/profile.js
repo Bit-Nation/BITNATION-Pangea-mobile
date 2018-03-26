@@ -10,7 +10,7 @@ import {
 } from '../actions/profile';
 import { type ProfileType } from '../types/Profile';
 
-type State = {
+export type State = {
   +user: ProfileType | null,
   +editingUser: ProfileType | null,
 }

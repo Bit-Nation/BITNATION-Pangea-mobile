@@ -1,15 +1,11 @@
+// @flow
+
 import React, { Component } from 'react';
 import {
   View,
   Text,
-  Image,
-  ListView,
-  ScrollView,
-  TouchableOpacity,
 } from 'react-native';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import _ from 'lodash';
 
 import styles from './styles';
 import BackgroundImage from '../../components/common/BackgroundImage';
@@ -22,20 +18,49 @@ import NationsPanel from './NationsPanel';
 import { openNation } from '../../actions/nations';
 import { screen } from '../../global/Screens';
 import { addDummyMessage, startFetchMessages } from '../../actions/activity';
+import type { NationIdType } from '../../types/Nation';
+import type { State } from '../../reducers';
+import type { Navigator } from '../../types/ReactNativeNavigation';
 
-class Dashboard extends Component {
+type Props = {
+  /**
+   * @desc React Native Navigation navigator object.
+   */
+  navigator: Navigator,
+}
+
+type Actions = {
+  /**
+   * @desc Callback on nation select.
+   * @param {NationIdType} id Id of selected nation.
+   */
+  onSelectNation: (id: NationIdType) => void,
+  /**
+   * @desc Function to start activity log messages fetch from database.
+   */
+  startFetchMessages: () => void,
+}
+
+type TestingModeProps = {
+  /**
+   * @desc Function to add dummy log activity message for testing.
+   */
+  onAddDummyMessage: () => void,
+}
+
+class Dashboard extends Component<Props & Actions & State & TestingModeProps> {
   constructor(props) {
     super(props);
 
     this.props.startFetchMessages();
   }
 
-  _onSelectNation = (id) => {
+  onSelectNation = (id) => {
     this.props.onSelectNation(id);
     this.props.navigator.push(screen('NATION_DETAILS_SCREEN'));
   };
 
-  _onSelectMore = () => {
+  onSelectMore = () => {
 
   };
 
@@ -56,19 +81,19 @@ class Dashboard extends Component {
           <View style={styles.bottomContainer}>
             <NationsPanel
               nations={this.props.nations.nations}
-              onSelectNation={this._onSelectNation}
+              onSelectNation={this.onSelectNation}
               style={styles.nationsPanel}
               loadingInProgress={this.props.nations.inProgress}
             />
             <View style={styles.rightContainer}>
               <WalletPanel
-                wallets={this.props.wallet.wallets}
+                wallets={this.props.wallet.wallets || []}
                 style={styles.walletPanel}
               />
               <PanelView
                 title={i18n.t('screens.dashboard.warningPanel.title')}
                 buttonTitle={i18n.t('screens.dashboard.warningPanel.button')}
-                onButtonClick={this._onSelectMore}
+                onButtonClick={this.onSelectMore}
                 style={styles.warningPanel}
                 titleStyle={styles.panelViewTitle}
               >
@@ -81,10 +106,6 @@ class Dashboard extends Component {
     );
   }
 }
-
-Dashboard.propTypes = {};
-
-Dashboard.defaultProps = {};
 
 const mapStateToProps = state => ({
   ...state,
