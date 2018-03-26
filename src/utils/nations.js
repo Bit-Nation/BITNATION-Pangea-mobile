@@ -145,6 +145,7 @@ export function convertFromDatabase(nation: DBNationType): NationType {
     stateMutateAllowed: nation.stateMutateAllowed,
     resetStateMutateAllowed: nation.resetStateMutateAllowed,
     tx: nation.tx === null ? null : { ...nation.tx },
+    ethAddress: '',
   };
 }
 
@@ -164,7 +165,7 @@ export function convertToEditingNation(nation: NationType): EditingNationType {
  * @param {EditingNationType} nation Nation information to validate.
  * @return {boolean} Boolean value if the nation is valid.
  */
-export function nationIsValid(nation: EditingNationType): boolean {
+export function nationIsValid(nation: EditingNationType | NationType): boolean {
   if (_.isEmpty(nation.nationName)) return false;
   if (_.isEmpty(nation.nationDescription)) return false;
   if (nation.virtualNation === null || nation.virtualNation === undefined) return false;
