@@ -33,11 +33,18 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
+      "creatingNation": null,
+      "inProgress": false,
+      "myNationIds": Array [],
+      "nations": Array [],
       "navigator": Object {
         "push": [MockFunction],
       },
       "onSelectTab": [Function],
       "openNation": [Function],
+      "openedNationId": null,
+      "searchString": null,
+      "selectedTab": "ALL_NATIONS",
       "startNationCreation": [Function],
       "store": Object {
         "clearActions": [Function],
@@ -78,11 +85,18 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
+        "creatingNation": null,
+        "inProgress": false,
+        "myNationIds": Array [],
+        "nations": Array [],
         "navigator": Object {
           "push": [MockFunction],
         },
         "onSelectTab": [Function],
         "openNation": [Function],
+        "openedNationId": null,
+        "searchString": null,
+        "selectedTab": "ALL_NATIONS",
         "startNationCreation": [Function],
         "store": Object {
           "clearActions": [Function],

@@ -7,7 +7,7 @@ import NationsScreen from '../../../../src/screens/NationsScreen';
 
 test('NationsScreen renders correctly', () => {
   const initialStateMock = {
-    key: initialState,
+    nations: initialState,
   };
   const storeMock = configureStore([]);
   const propsMock = {
