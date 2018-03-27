@@ -25,11 +25,11 @@ export function fontSizeNormalizer(size: number) {
   if (disabledForDebugging && __DEV__) {
     return size;
   }
-  if (deviceHeight <= FOUR_INCHES) {
+  if (deviceHeight === FOUR_INCHES) {
     return size * 0.65;
   } else if (deviceHeight === FOUR_DOT_SEVEN_INCHES) {
     return size;
-  } else if (deviceHeight >= FIVE_DOT_FIVE_INCHES) {
+  } else if (deviceHeight === FIVE_DOT_FIVE_INCHES) {
     return size * 1.4;
   }
   return size;
