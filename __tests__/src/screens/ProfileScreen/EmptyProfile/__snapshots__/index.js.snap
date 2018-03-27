@@ -1,0 +1,486 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProfileScreenContainer Rendering 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <EmptyProfileScreen
+    navigator={
+      Object {
+        "setButtons": [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "leftButtons": Array [],
+                "rightButtons": Array [],
+              },
+            ],
+          ],
+        },
+        "setOnNavigatorEvent": [MockFunction],
+      }
+    }
+    onCreateUserProfile={[MockFunction]}
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <View
+          style={
+            Object {
+              "marginLeft": 8,
+              "marginRight": 8,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "alignItems": "flex-start",
+                "height": 52,
+              }
+            }
+          >
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Object {
+                  "color": "#F5A623",
+                  "fontFamily": "Roboto",
+                  "fontSize": 22,
+                  "fontWeight": "900",
+                  "letterSpacing": 0,
+                  "lineHeight": 30,
+                }
+              }
+            >
+              Profile
+            </Text>
+          </View>
+        </View>,
+        <PanelView
+          body="Bitnation is a decentralized, open-source movement powered by blockchain technology. Bitnation offers a peer-to-peer voluntary governance system to compete with the prevailing top-down, one-size-fits-all, geographical apartheid Nation State model wherein your quality of life is arbitrarily defined by where you were born."
+          buttonTitle="Create a User Profile"
+          onButtonClick={[MockFunction]}
+          style={
+            Object {
+              "backgroundColor": "transparent",
+              "borderRadius": 8,
+              "flexDirection": "column",
+              "justifyContent": "space-between",
+              "marginBottom": 8,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 8,
+              "paddingBottom": 4,
+              "paddingLeft": 8,
+              "paddingRight": 8,
+              "paddingTop": 4,
+            }
+          }
+          title="Become a World Citizen"
+          titleStyle={
+            Object {
+              "color": "white",
+              "fontFamily": "Roboto",
+              "fontSize": 22,
+              "fontWeight": "bold",
+              "letterSpacing": 0,
+              "lineHeight": 28,
+              "textAlign": "left",
+            }
+          }
+        />,
+      ],
+      "style": Object {
+        "alignContent": "flex-start",
+        "flex": 1,
+        "flexDirection": "column",
+        "justifyContent": "flex-start",
+        "marginLeft": 8,
+        "marginRight": 8,
+      },
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <View
+            style={
+              Object {
+                "alignItems": "flex-start",
+                "height": 52,
+              }
+            }
+          >
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Object {
+                  "color": "#F5A623",
+                  "fontFamily": "Roboto",
+                  "fontSize": 22,
+                  "fontWeight": "900",
+                  "letterSpacing": 0,
+                  "lineHeight": 30,
+                }
+              }
+            >
+              Profile
+            </Text>
+          </View>,
+          "style": Object {
+            "marginLeft": 8,
+            "marginRight": 8,
+          },
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Object {
+                  "color": "#F5A623",
+                  "fontFamily": "Roboto",
+                  "fontSize": 22,
+                  "fontWeight": "900",
+                  "letterSpacing": 0,
+                  "lineHeight": 30,
+                }
+              }
+            >
+              Profile
+            </Text>,
+            "style": Object {
+              "alignItems": "flex-start",
+              "height": 52,
+            },
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "accessible": true,
+              "allowFontScaling": true,
+              "children": "Profile",
+              "ellipsizeMode": "tail",
+              "style": Object {
+                "color": "#F5A623",
+                "fontFamily": "Roboto",
+                "fontSize": 22,
+                "fontWeight": "900",
+                "letterSpacing": 0,
+                "lineHeight": 30,
+              },
+            },
+            "ref": null,
+            "rendered": "Profile",
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "body": "Bitnation is a decentralized, open-source movement powered by blockchain technology. Bitnation offers a peer-to-peer voluntary governance system to compete with the prevailing top-down, one-size-fits-all, geographical apartheid Nation State model wherein your quality of life is arbitrarily defined by where you were born.",
+          "buttonTitle": "Create a User Profile",
+          "onButtonClick": [MockFunction],
+          "style": Object {
+            "backgroundColor": "transparent",
+            "borderRadius": 8,
+            "flexDirection": "column",
+            "justifyContent": "space-between",
+            "marginBottom": 8,
+            "marginLeft": 0,
+            "marginRight": 0,
+            "marginTop": 8,
+            "paddingBottom": 4,
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 4,
+          },
+          "title": "Become a World Citizen",
+          "titleStyle": Object {
+            "color": "white",
+            "fontFamily": "Roboto",
+            "fontSize": 22,
+            "fontWeight": "bold",
+            "letterSpacing": 0,
+            "lineHeight": 28,
+            "textAlign": "left",
+          },
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <View
+            style={
+              Object {
+                "marginLeft": 8,
+                "marginRight": 8,
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "alignItems": "flex-start",
+                  "height": 52,
+                }
+              }
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={
+                  Object {
+                    "color": "#F5A623",
+                    "fontFamily": "Roboto",
+                    "fontSize": 22,
+                    "fontWeight": "900",
+                    "letterSpacing": 0,
+                    "lineHeight": 30,
+                  }
+                }
+              >
+                Profile
+              </Text>
+            </View>
+          </View>,
+          <PanelView
+            body="Bitnation is a decentralized, open-source movement powered by blockchain technology. Bitnation offers a peer-to-peer voluntary governance system to compete with the prevailing top-down, one-size-fits-all, geographical apartheid Nation State model wherein your quality of life is arbitrarily defined by where you were born."
+            buttonTitle="Create a User Profile"
+            onButtonClick={[MockFunction]}
+            style={
+              Object {
+                "backgroundColor": "transparent",
+                "borderRadius": 8,
+                "flexDirection": "column",
+                "justifyContent": "space-between",
+                "marginBottom": 8,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 8,
+                "paddingBottom": 4,
+                "paddingLeft": 8,
+                "paddingRight": 8,
+                "paddingTop": 4,
+              }
+            }
+            title="Become a World Citizen"
+            titleStyle={
+              Object {
+                "color": "white",
+                "fontFamily": "Roboto",
+                "fontSize": 22,
+                "fontWeight": "bold",
+                "letterSpacing": 0,
+                "lineHeight": 28,
+                "textAlign": "left",
+              }
+            }
+          />,
+        ],
+        "style": Object {
+          "alignContent": "flex-start",
+          "flex": 1,
+          "flexDirection": "column",
+          "justifyContent": "flex-start",
+          "marginLeft": 8,
+          "marginRight": 8,
+        },
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <View
+              style={
+                Object {
+                  "alignItems": "flex-start",
+                  "height": 52,
+                }
+              }
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={
+                  Object {
+                    "color": "#F5A623",
+                    "fontFamily": "Roboto",
+                    "fontSize": 22,
+                    "fontWeight": "900",
+                    "letterSpacing": 0,
+                    "lineHeight": 30,
+                  }
+                }
+              >
+                Profile
+              </Text>
+            </View>,
+            "style": Object {
+              "marginLeft": 8,
+              "marginRight": 8,
+            },
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={
+                  Object {
+                    "color": "#F5A623",
+                    "fontFamily": "Roboto",
+                    "fontSize": 22,
+                    "fontWeight": "900",
+                    "letterSpacing": 0,
+                    "lineHeight": 30,
+                  }
+                }
+              >
+                Profile
+              </Text>,
+              "style": Object {
+                "alignItems": "flex-start",
+                "height": 52,
+              },
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "accessible": true,
+                "allowFontScaling": true,
+                "children": "Profile",
+                "ellipsizeMode": "tail",
+                "style": Object {
+                  "color": "#F5A623",
+                  "fontFamily": "Roboto",
+                  "fontSize": 22,
+                  "fontWeight": "900",
+                  "letterSpacing": 0,
+                  "lineHeight": 30,
+                },
+              },
+              "ref": null,
+              "rendered": "Profile",
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "body": "Bitnation is a decentralized, open-source movement powered by blockchain technology. Bitnation offers a peer-to-peer voluntary governance system to compete with the prevailing top-down, one-size-fits-all, geographical apartheid Nation State model wherein your quality of life is arbitrarily defined by where you were born.",
+            "buttonTitle": "Create a User Profile",
+            "onButtonClick": [MockFunction],
+            "style": Object {
+              "backgroundColor": "transparent",
+              "borderRadius": 8,
+              "flexDirection": "column",
+              "justifyContent": "space-between",
+              "marginBottom": 8,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 8,
+              "paddingBottom": 4,
+              "paddingLeft": 8,
+              "paddingRight": 8,
+              "paddingTop": 4,
+            },
+            "title": "Become a World Citizen",
+            "titleStyle": Object {
+              "color": "white",
+              "fontFamily": "Roboto",
+              "fontSize": 22,
+              "fontWeight": "bold",
+              "letterSpacing": 0,
+              "lineHeight": 28,
+              "textAlign": "left",
+            },
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
