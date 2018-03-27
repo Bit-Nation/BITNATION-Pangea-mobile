@@ -1,4 +1,9 @@
 // @flow
+import {
+  FOUR_INCHES,
+  FOUR_DOT_SEVEN_INCHES,
+  FIVE_DOT_FIVE_INCHES,
+} from '../global/Constants';
 
 const React = require('react-native');
 
@@ -20,11 +25,11 @@ export function fontSizeNormalizer(size: number) {
   if (disabledForDebugging && __DEV__) {
     return size;
   }
-  if (deviceHeight === 568) {
+  if (deviceHeight <= FOUR_INCHES) {
     return size * 0.65;
-  } else if (deviceHeight === 667) {
+  } else if (deviceHeight === FOUR_DOT_SEVEN_INCHES) {
     return size;
-  } else if (deviceHeight === 736) {
+  } else if (deviceHeight >= FIVE_DOT_FIVE_INCHES) {
     return size * 1.4;
   }
   return size;
