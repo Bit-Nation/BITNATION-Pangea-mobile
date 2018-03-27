@@ -23,3 +23,5 @@ export const FOUR_INCHES = 568;
 export const FOUR_DOT_SEVEN_INCHES = 667;
 
 export const FIVE_DOT_FIVE_INCHES = 736;
+
+export const FIVE_DOT_EIGHT_INCHES = 812;

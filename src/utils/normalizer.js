@@ -1,11 +1,12 @@
 // @flow
+
+import React from 'react-native';
 import {
   FOUR_INCHES,
   FOUR_DOT_SEVEN_INCHES,
   FIVE_DOT_FIVE_INCHES,
+  FIVE_DOT_EIGHT_INCHES,
 } from '../global/Constants';
-
-const React = require('react-native');
 
 const {
   Dimensions, Platform,
@@ -17,7 +18,7 @@ const deviceHeight = Dimensions.get('window').height;
 const deviceWidth = Dimensions.get('window').width;
 
 /**
- * Funtion to normalize Font sizes depending on screen size
+ * Function to normalize Font sizes depending on screen size
  * @param {number} size The original font size
  * @returns {number} The new font size depending the current screen
  */
@@ -42,6 +43,16 @@ export function fontSizeNormalizer(size: number) {
 export function normalWidthMargin() {
   return (deviceWidth / 3) / 2;
 }
+/**
+ * Function to check if the device it's an iPhone X
+ * @returns {boolean} True if it is
+ */
+function isiPhoneX() {
+  if (Platform.OS === 'ios' && (deviceHeight === FIVE_DOT_EIGHT_INCHES || deviceWidth === FIVE_DOT_EIGHT_INCHES)) {
+    return true;
+  }
+  return false;
+}
 
 /**
  * Function to fix the height of Status Bar ONLY in the iPhoneX
@@ -49,7 +60,7 @@ export function normalWidthMargin() {
  * @returns {number} The correct size for the Status Bar
  */
 export function isiPhoneXStatusBar(size: number) {
-  if (Platform.OS === 'ios' && (deviceHeight === 812 || deviceWidth === 812)) {
+  if (isiPhoneX()) {
     return size + 24;
   }
   return size;
@@ -61,7 +72,7 @@ export function isiPhoneXStatusBar(size: number) {
  * @returns {number} The correct size for the Fake Tab Bar
  */
 export function isiPhoneXTabBar(size: number) {
-  if (Platform.OS === 'ios' && (deviceHeight === 812 || deviceWidth === 812)) {
+  if (isiPhoneX()) {
     return size + 29;
   }
   return size;
