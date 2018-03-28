@@ -62,5 +62,6 @@ src.zip
 docs_build
 /.eslintrc
 .bitrise.secrets.yml
+.bitrise.yml
 android/app/bitnation_android_keys_dev
 pangea*
