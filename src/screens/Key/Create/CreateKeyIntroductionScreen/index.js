@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+// @flow
+
+import React from 'react';
 import {
-  ScrollView,
-  View, Text,
+  View,
+  Text,
 } from 'react-native';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import styles from './styles';
@@ -15,10 +16,20 @@ import KeyBaseScreen from '../../KeyBaseScreen';
 import { removePrivateKey } from '../../../../actions/key';
 import BodyParagraphs from '../../../../components/common/BodyParagraphs';
 import i18n from '../../../../global/i18n';
+import type { State } from '../../../../reducers/key';
 
-class CreateKeyIntroductionScreen extends KeyBaseScreen {
+type Actions = {
+  /**
+   * @desc Function to abort private key creation process.
+   */
+  removePrivateKey: () => void,
+}
+
+class CreateKeyIntroductionScreen extends KeyBaseScreen<Actions & State> {
   onNextButtonPressed() {
-    this.props.navigator.push(screen('CREATE_KEY_INSTRUCTION_SCREEN'));
+    if (this.props.navigator) {
+      this.props.navigator.push(screen('CREATE_KEY_INSTRUCTION_SCREEN'));
+    }
   }
 
   render() {
@@ -37,7 +48,7 @@ class CreateKeyIntroductionScreen extends KeyBaseScreen {
 
           <PanelView
             style={styles.panelViewTransparent}
-            childrenContainerStyle={{ flex: 0 }}
+            childrenContainerStyle={styles.noflex}
             buttonTitle={i18n.t('screens.createKey.startButton')}
             onButtonClick={() => this.onNextButtonPressed()}
           >
@@ -50,12 +61,8 @@ class CreateKeyIntroductionScreen extends KeyBaseScreen {
   }
 }
 
-CreateKeyIntroductionScreen.propTypes = {};
-
-CreateKeyIntroductionScreen.defaultProps = {};
-
 const mapStateToProps = state => ({
-  ...state,
+  ...state.key,
 });
 
 const mapDispatchToProps = dispatch => ({

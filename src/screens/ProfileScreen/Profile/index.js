@@ -1,27 +1,52 @@
-import React, { Component } from 'react';
+// @flow
+
+import React from 'react';
 import {
   Image,
   View,
-  ScrollView,
   Text,
   Alert,
 } from 'react-native';
-import PropTypes from 'prop-types';
-import _ from 'lodash';
-
 
 import styles from './styles';
-import BackgroundImage from '../../../components/common/BackgroundImage';
 import AssetsImage from '../../../global/AssetsImages';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import Colors from '../../../global/colors';
-import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
+import type { Navigator } from '../../../types/ReactNativeNavigation';
+import type { ProfileType } from '../../../types/Profile';
 import i18n from '../../../global/i18n';
 
 const EDIT_BUTTON = 'EDIT_BUTTON';
 
-class ProfileScreen extends NavigatorComponent {
-  constructor(props) {
+export type Props = {
+  /**
+   * @desc React Native Navigation navigator object.
+   */
+  navigator: Navigator,
+  /**
+   * @desc Current user object
+   */
+  user: ProfileType,
+  /**
+   * @desc Flag that determines if testing mode is activated
+   */
+  testingModeActive: boolean,
+  /**
+   * @desc Function to start user edit
+   */
+  onStartEditing: () => void,
+  /**
+   * @desc Function to enable testing mode
+   */
+  makeStepForTestingMode: () => void,
+  /**
+   * @desc Function to reset in testing mode
+   */
+  resetStepsForTestingMode: () => void,
+};
+
+class ProfileScreen extends NavigatorComponent<Props> {
+  constructor(props: Props) {
     super(props);
 
     this.props.navigator.setButtons({
@@ -34,7 +59,7 @@ class ProfileScreen extends NavigatorComponent {
     });
   }
 
-  onNavBarButtonPress(id) {
+  onNavBarButtonPress(id: string): void {
     if (id === EDIT_BUTTON) {
       this.props.onStartEditing();
     }
@@ -48,7 +73,7 @@ class ProfileScreen extends NavigatorComponent {
     this.props.resetStepsForTestingMode();
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: Props) {
     if (prevProps.testingModeActive !== this.props.testingModeActive) {
       Alert.alert(i18n.t('testingMode.changeActiveAlert.title', {
         onOff: this.props.testingModeActive ?
@@ -82,19 +107,12 @@ class ProfileScreen extends NavigatorComponent {
     return (
       <View style={styles.header}>
         <Image source={avatarSource} style={styles.avatarLarge} />
-        <Text style={styles.nameText}>{user.name.trim()}</Text>
-        <Text style={styles.infoText}>{user.location.trim()}</Text>
-        <Text style={styles.ethAddress}>{user.ethAddress}</Text>
+        <Text style={styles.nameText}>{user.name && user.name.trim()}</Text>
+        <Text style={styles.infoText}>{user.location && user.location.trim()}</Text>
+        <Text style={styles.ethAddress}>{user && user.ethAddress}</Text>
       </View>
     );
   }
 }
-
-ProfileScreen.propTypes = {
-  navigator: PropTypes.object,
-  user: PropTypes.object.isRequired,
-  onStartEditing: PropTypes.func.isRequired,
-};
-
 
 export default ProfileScreen;

@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import {
   View,
@@ -5,7 +7,6 @@ import {
   TextInput,
   Image,
 } from 'react-native';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 
@@ -16,17 +17,40 @@ import BackgroundImage from '../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import { resolveWallet } from '../../../utils/wallet';
 import { sendMoney } from '../../../actions/wallet';
-import { androidNavigationButtons, screen } from '../../../global/Screens';
+import { androidNavigationButtons } from '../../../global/Screens';
 import Loading from '../../../components/common/Loading';
 import { prettyWalletBalance } from '../../../utils/formatters';
 import i18n from '../../../global/i18n';
 import { errorAlert } from '../../../global/alerts';
 import PanelView from '../../../components/common/PanelView';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
+import type { State as WalletState } from '../../../reducers/wallet';
 
 const SEND_BUTTON = 'SEND_BUTTON';
 
-class SendMoney extends NavigatorComponent {
+type Actions = {
+  /**
+   * @desc Function to send money from selected wallet.
+   * @param {string} amount Amount in ETH to send.
+   * @param {string} toEthAddress Ethereum address to send money to.
+   */
+  onSendMoney: (amount: string, toEthAddress: string) => void,
+}
+
+type Props = Actions & WalletState;
+
+type State = {
+  /**
+   * @desc Currently entered amount string in ETH.
+   */
+  amountString: string,
+  /**
+   * @desc Currently entered Ethereum address to send money to.
+   */
+  toEthAddress: string,
+}
+
+class SendMoney extends NavigatorComponent<Props, State> {
   static navigatorButtons = { ...androidNavigationButtons };
 
   onNavBarButtonPress(id) {
@@ -48,44 +72,32 @@ class SendMoney extends NavigatorComponent {
         title: i18n.t('common.send'),
         id: SEND_BUTTON,
         buttonColor: Colors.navigationButtonColor,
-        disabled: !this._validateSendData(),
+        disabled: !this.validateSendData(),
       }],
     });
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.moneySendingError !== prevProps.moneySendingError && this.props.moneySendingError !== null) {
+  componentDidUpdate(prevProps: Props) {
+    if (this.props.moneySendingError !== prevProps.moneySendingError
+      && this.props.moneySendingError !== null) {
       errorAlert(this.props.moneySendingError);
     }
     this.updateNavigation();
   }
 
-  showQRCodeScanner = () => {
-    this.props.navigator.showModal({
-      ...screen('QR_CODE_SCANNER_SCREEN'),
-      passProps: {
-        onReadCode: this._onReadCode,
-      },
-    });
-  };
-
-  _onReadCode = (event) => {
-    this.props.navigator.dismissModal();
-    this.setState({ toEthAddress: event.data });
-  };
-
-  _resolveWallet() {
-    return resolveWallet(this.props.wallets, this.props.selectedWalletAddress);
+  resolveWallet() {
+    return resolveWallet(this.props.wallets || [], this.props.selectedWalletAddress || '');
   }
 
-  _parseAmount() {
-    return parseFloat(this.state.amountString) || 0;
+  static parseAmount(amountString: string): number {
+    return parseFloat(amountString) || 0;
   }
 
-  _validateSendData() {
-    const wallet = this._resolveWallet();
-    const sendAmount = this._parseAmount();
-    const currentAmount = wallet.balance;
+  validateSendData() {
+    const wallet = this.resolveWallet();
+    if (wallet === null) return false;
+    const sendAmount = SendMoney.parseAmount(this.state.amountString);
+    const currentAmount = SendMoney.parseAmount(wallet.balance || '0');
 
     return sendAmount > 0.00000000000000001
       && sendAmount <= currentAmount
@@ -93,16 +105,15 @@ class SendMoney extends NavigatorComponent {
   }
 
   onSendPress = () => {
-    if (!this._validateSendData()) {
+    if (this.validateSendData() === false) {
       return;
     }
 
-    const amount = this._parseAmount();
-    this.props.onSendMoney(amount, this.state.toEthAddress);
+    this.props.onSendMoney(this.state.amountString, this.state.toEthAddress);
   };
 
   render() {
-    const wallet = this._resolveWallet();
+    const wallet = this.resolveWallet();
     if (!wallet) {
       return <View />;
     }
@@ -127,7 +138,9 @@ class SendMoney extends NavigatorComponent {
               <Image style={styles.icon} source={Images.eth} resizeMode='contain' />
               <View style={styles.textColumn}>
                 <Text style={styles.bodyBold}>{i18n.t('common.ethereum')}</Text>
-                <Text style={styles.currencyLarge}>{prettyWalletBalance(wallet, wallet.currency)}</Text>
+                <Text style={styles.currencyLarge}>
+                  {prettyWalletBalance(wallet, wallet.currency)}
+                </Text>
               </View>
             </View>
           </PanelView>
@@ -138,7 +151,7 @@ class SendMoney extends NavigatorComponent {
           >
             <View style={styles.formRow}>
               <View style={styles.fieldsContainer}>
-                <Text style={[styles.footnote, { marginLeft: 5 }]}>{i18n.t('common.amount')}</Text>
+                <Text style={styles.amountLabelText}>{i18n.t('common.amount')}</Text>
                 <View style={styles.formRow}>
                   <View style={styles.textInputContainer}>
                     <TextInput
@@ -154,10 +167,10 @@ class SendMoney extends NavigatorComponent {
                     </Text>
                   </View>
                 </View>
-                <Text style={[styles.footnote, { marginLeft: 5, marginTop: 10 }]}>{i18n.t('common.to')}</Text>
+                <Text style={styles.toLabelText}>{i18n.t('common.to')}</Text>
                 <View style={styles.formRow}>
                   <TextInput
-                    style={[styles.textInput, { marginTop: 0 }]}
+                    style={styles.toTextInput}
                     placeholder='0x'
                     placeholderTextColor={Colors.placeholderTextColor}
                     keyboardType='default'
@@ -178,10 +191,6 @@ class SendMoney extends NavigatorComponent {
   }
 }
 
-SendMoney.propTypes = {};
-
-SendMoney.defaultProps = {};
-
 const mapStateToProps = state => ({
   ...state.wallet,
 });
@@ -193,4 +202,3 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SendMoney);
-

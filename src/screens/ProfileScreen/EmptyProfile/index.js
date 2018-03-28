@@ -1,18 +1,28 @@
+// @flow
+
 import React, { Component } from 'react';
 import {
-  Image,
   View,
   Text,
 } from 'react-native';
-import PropTypes from 'prop-types';
 
 import styles from './styles';
-import BackgroundImage from '../../../components/common/BackgroundImage';
-import AssetsImage from '../../../global/AssetsImages';
+import type { Navigator } from '../../../types/ReactNativeNavigation';
 import PanelView from '../../../components/common/PanelView';
 import i18n from '../../../global/i18n';
 
-class EmptyProfileScreen extends Component {
+export type Props = {
+  /**
+   * @desc React Native Navigation navigator object.
+   */
+  navigator: Navigator,
+  /**
+   * @desc Function to create a new user
+   */
+  onCreateUserProfile: () => void,
+};
+
+class EmptyProfileScreen extends Component<Props> {
   componentWillMount() {
     this.props.navigator.setButtons({ leftButtons: [], rightButtons: [] });
   }
@@ -38,9 +48,5 @@ class EmptyProfileScreen extends Component {
     );
   }
 }
-
-EmptyProfileScreen.propTypes = {
-  onCreateUserProfile: PropTypes.func.isRequired,
-};
 
 export default EmptyProfileScreen;

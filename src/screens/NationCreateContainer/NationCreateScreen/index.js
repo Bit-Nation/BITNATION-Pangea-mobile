@@ -116,7 +116,7 @@ class CreateNation extends NavigatorComponent<Props & Actions & ModifyNationStat
     const isModified = nationIsModified(this.props);
     const isSavedDraft = this.props.initialNation !== null
       && this.props.initialNation.id !== undefined;
-    const canSubmit = nationIsValid(this.props.editingNation);
+    const canSubmit = this.props.editingNation !== null && nationIsValid(this.props.editingNation);
 
     return (
       <View style={styles.fakeBottomBar}>
