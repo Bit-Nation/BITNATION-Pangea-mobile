@@ -41,5 +41,6 @@ export type NationType = {
   joined: boolean,
   stateMutateAllowed: boolean,
   resetStateMutateAllowed: boolean,
-  tx: TransactionJobType | null
+  tx: TransactionJobType | null,
+  ethAddress: string
 }

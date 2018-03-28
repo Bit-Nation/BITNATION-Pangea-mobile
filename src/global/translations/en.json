@@ -183,9 +183,6 @@
     }
   },
   "screens": {
-    "splash": {
-      "title": "Splash"
-    },
     "intro": {
       "freeSpeech": {
         "title": "Free Speech",
@@ -430,7 +427,8 @@
   },
   "error": {
     "noConnection": "Please check your internet connection.",
-    "insufficientFunds": "Insufficient funds. Please check your wallet."
+    "insufficientFunds": "Insufficient funds. Please check your wallet.",
+    "noCamera": "Camera Error"
   },
   "bots": {
     "freudbot": {

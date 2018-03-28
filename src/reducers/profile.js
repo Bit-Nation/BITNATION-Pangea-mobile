@@ -10,15 +10,16 @@ import {
 } from '../actions/profile';
 import { type ProfileType } from '../types/Profile';
 
-type State = {
+export type State = {
   +user: ProfileType | null,
   +editingUser: ProfileType | null,
-}
+};
 
 export const emptyProfile: ProfileType = {
   name: null,
   location: null,
   avatar: null,
+  ethAddress: null,
 };
 
 export const initialState: State = {

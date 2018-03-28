@@ -1,0 +1,331 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EmptyState renders correctly 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <EmptyWalletScreen />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <PanelView
+          body="You need an Ethereum wallet to make payments, to create nations, and to use other useful services."
+          buttonTitle="Create Wallet"
+          onButtonClick={undefined}
+          style={
+            Object {
+              "backgroundColor": "transparent",
+              "borderRadius": 8,
+              "flexDirection": "column",
+              "justifyContent": "space-between",
+              "marginBottom": 8,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 8,
+              "paddingBottom": 4,
+              "paddingLeft": 8,
+              "paddingRight": 8,
+              "paddingTop": 4,
+            }
+          }
+          title="Create Wallet"
+          titleStyle={
+            Object {
+              "color": "white",
+              "fontFamily": "Roboto",
+              "fontSize": 22,
+              "fontWeight": "bold",
+              "letterSpacing": 0,
+              "lineHeight": 28,
+              "textAlign": "left",
+            }
+          }
+        />,
+        <PanelView
+          body="You can restore your wallet if you lose or change your phone. You will need your private key to restore your wallet."
+          buttonTitle="Restore Wallet"
+          onButtonClick={undefined}
+          style={
+            Object {
+              "backgroundColor": "transparent",
+              "borderRadius": 8,
+              "flexDirection": "column",
+              "justifyContent": "space-between",
+              "marginBottom": 8,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 8,
+              "paddingBottom": 4,
+              "paddingLeft": 8,
+              "paddingRight": 8,
+              "paddingTop": 4,
+            }
+          }
+          title="Restore Wallet"
+          titleStyle={
+            Object {
+              "color": "white",
+              "fontFamily": "Roboto",
+              "fontSize": 22,
+              "fontWeight": "bold",
+              "letterSpacing": 0,
+              "lineHeight": 28,
+              "textAlign": "left",
+            }
+          }
+        />,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "body": "You need an Ethereum wallet to make payments, to create nations, and to use other useful services.",
+          "buttonTitle": "Create Wallet",
+          "onButtonClick": undefined,
+          "style": Object {
+            "backgroundColor": "transparent",
+            "borderRadius": 8,
+            "flexDirection": "column",
+            "justifyContent": "space-between",
+            "marginBottom": 8,
+            "marginLeft": 0,
+            "marginRight": 0,
+            "marginTop": 8,
+            "paddingBottom": 4,
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 4,
+          },
+          "title": "Create Wallet",
+          "titleStyle": Object {
+            "color": "white",
+            "fontFamily": "Roboto",
+            "fontSize": 22,
+            "fontWeight": "bold",
+            "letterSpacing": 0,
+            "lineHeight": 28,
+            "textAlign": "left",
+          },
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "body": "You can restore your wallet if you lose or change your phone. You will need your private key to restore your wallet.",
+          "buttonTitle": "Restore Wallet",
+          "onButtonClick": undefined,
+          "style": Object {
+            "backgroundColor": "transparent",
+            "borderRadius": 8,
+            "flexDirection": "column",
+            "justifyContent": "space-between",
+            "marginBottom": 8,
+            "marginLeft": 0,
+            "marginRight": 0,
+            "marginTop": 8,
+            "paddingBottom": 4,
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 4,
+          },
+          "title": "Restore Wallet",
+          "titleStyle": Object {
+            "color": "white",
+            "fontFamily": "Roboto",
+            "fontSize": 22,
+            "fontWeight": "bold",
+            "letterSpacing": 0,
+            "lineHeight": 28,
+            "textAlign": "left",
+          },
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <PanelView
+            body="You need an Ethereum wallet to make payments, to create nations, and to use other useful services."
+            buttonTitle="Create Wallet"
+            onButtonClick={undefined}
+            style={
+              Object {
+                "backgroundColor": "transparent",
+                "borderRadius": 8,
+                "flexDirection": "column",
+                "justifyContent": "space-between",
+                "marginBottom": 8,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 8,
+                "paddingBottom": 4,
+                "paddingLeft": 8,
+                "paddingRight": 8,
+                "paddingTop": 4,
+              }
+            }
+            title="Create Wallet"
+            titleStyle={
+              Object {
+                "color": "white",
+                "fontFamily": "Roboto",
+                "fontSize": 22,
+                "fontWeight": "bold",
+                "letterSpacing": 0,
+                "lineHeight": 28,
+                "textAlign": "left",
+              }
+            }
+          />,
+          <PanelView
+            body="You can restore your wallet if you lose or change your phone. You will need your private key to restore your wallet."
+            buttonTitle="Restore Wallet"
+            onButtonClick={undefined}
+            style={
+              Object {
+                "backgroundColor": "transparent",
+                "borderRadius": 8,
+                "flexDirection": "column",
+                "justifyContent": "space-between",
+                "marginBottom": 8,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 8,
+                "paddingBottom": 4,
+                "paddingLeft": 8,
+                "paddingRight": 8,
+                "paddingTop": 4,
+              }
+            }
+            title="Restore Wallet"
+            titleStyle={
+              Object {
+                "color": "white",
+                "fontFamily": "Roboto",
+                "fontSize": 22,
+                "fontWeight": "bold",
+                "letterSpacing": 0,
+                "lineHeight": 28,
+                "textAlign": "left",
+              }
+            }
+          />,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "body": "You need an Ethereum wallet to make payments, to create nations, and to use other useful services.",
+            "buttonTitle": "Create Wallet",
+            "onButtonClick": undefined,
+            "style": Object {
+              "backgroundColor": "transparent",
+              "borderRadius": 8,
+              "flexDirection": "column",
+              "justifyContent": "space-between",
+              "marginBottom": 8,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 8,
+              "paddingBottom": 4,
+              "paddingLeft": 8,
+              "paddingRight": 8,
+              "paddingTop": 4,
+            },
+            "title": "Create Wallet",
+            "titleStyle": Object {
+              "color": "white",
+              "fontFamily": "Roboto",
+              "fontSize": 22,
+              "fontWeight": "bold",
+              "letterSpacing": 0,
+              "lineHeight": 28,
+              "textAlign": "left",
+            },
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "body": "You can restore your wallet if you lose or change your phone. You will need your private key to restore your wallet.",
+            "buttonTitle": "Restore Wallet",
+            "onButtonClick": undefined,
+            "style": Object {
+              "backgroundColor": "transparent",
+              "borderRadius": 8,
+              "flexDirection": "column",
+              "justifyContent": "space-between",
+              "marginBottom": 8,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 8,
+              "paddingBottom": 4,
+              "paddingLeft": 8,
+              "paddingRight": 8,
+              "paddingTop": 4,
+            },
+            "title": "Restore Wallet",
+            "titleStyle": Object {
+              "color": "white",
+              "fontFamily": "Roboto",
+              "fontSize": 22,
+              "fontWeight": "bold",
+              "letterSpacing": 0,
+              "lineHeight": 28,
+              "textAlign": "left",
+            },
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

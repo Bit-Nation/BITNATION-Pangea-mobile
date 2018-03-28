@@ -15,11 +15,11 @@ import {
 import type { WalletType } from '../types/Wallet';
 import { getWalletIndex } from '../utils/wallet';
 
-type State = {
+export type State = {
   +wallets: Array<WalletType> | null,
   +selectedWalletAddress: string | null,
   +moneySendingInProgress: boolean,
-  +moneySendingError: ?Error,
+  +moneySendingError: Error | null,
 };
 
 export const initialState: State = {
@@ -43,14 +43,20 @@ export default (state: State = initialState, action: Action): State => {
       return Object.assign({}, state, { wallets: action.wallets });
     case WALLET_SYNC_FAILED: {
       const { walletAddress } = action;
-      const walletIndex = getWalletIndex(state.wallets, walletAddress);
+      const walletIndex = getWalletIndex(state.wallets || [], walletAddress);
       const newWallets = _.cloneDeep(state.wallets);
+      if (walletIndex === null) {
+        return state;
+      }
       newWallets[walletIndex].synchronizationError = action.error;
       return Object.assign({}, state, { wallets: newWallets });
     }
     case UPDATE_WALLET_BALANCE: {
       const { walletAddress } = action;
-      const walletIndex = getWalletIndex(state.wallets, walletAddress);
+      const walletIndex = getWalletIndex(state.wallets || [], walletAddress);
+      if (walletIndex === null) {
+        return state;
+      }
       const newWallets = _.cloneDeep(state.wallets);
       newWallets[walletIndex].synchronizationError = undefined;
       return Object.assign({}, state, { wallets: newWallets });
