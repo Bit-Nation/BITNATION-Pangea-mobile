@@ -67,9 +67,11 @@
     "redux-saga": "^0.16.0",
     "redux-thunk": "^2.2.0",
     "rn-nodeify": "^8.3.0",
+    "saga-monitor": "git+https://github.com/clarketm/saga-monitor.git",
     "socket.io-client": "^2.0.4",
     "stream-browserify": "^1.0.0",
     "string_decoder": "^0.10.31",
+    "unique-string": "^1.0.0",
     "vm-browserify": "0.0.4"
   },
   "devDependencies": {
@@ -95,8 +97,7 @@
     "react-dom": "^16.2.0",
     "react-native-mock": "^0.3.1",
     "react-test-renderer": "16.0.0",
-    "redux-mock-store": "^1.5.1",
-    "saga-monitor": "git+https://github.com/clarketm/saga-monitor.git"
+    "redux-mock-store": "^1.5.1"
   },
   "jest": {
     "preset": "react-native",

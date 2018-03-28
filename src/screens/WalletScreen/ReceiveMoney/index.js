@@ -1,13 +1,12 @@
+// @flow
+
 import React, { Component } from 'react';
 import {
   Text,
   View,
-  ScrollView,
   Share,
 } from 'react-native';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import QRCode from 'react-native-qrcode';
 
 import styles from './styles';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
@@ -15,13 +14,14 @@ import BackgroundImage from '../../../components/common/BackgroundImage';
 import PanelView from '../../../components/common/PanelView';
 import { androidNavigationButtons } from '../../../global/Screens';
 import i18n from '../../../global/i18n';
+import type { State as WalletState } from '../../../reducers/wallet';
 
-class ReceiveMoneyScreen extends Component {
+class ReceiveMoneyScreen extends Component<WalletState> {
   static navigatorButtons = { ...androidNavigationButtons };
 
   onShareWalletAddressPress = () => {
     Share.share({
-      message: this.props.selectedWalletAddress,
+      message: this.props.selectedWalletAddress || '',
     });
   };
 
@@ -43,7 +43,7 @@ class ReceiveMoneyScreen extends Component {
             body={i18n.t('screens.receiveMoney.shareAddressPanel.text')}
             style={styles.panelViewTransparent}
             renderAdditionalInfo={() =>
-              <Text style={[styles.footnote, { textAlign: 'center' }]}>{this.props.selectedWalletAddress}</Text>
+              <Text style={styles.addressText}>{this.props.selectedWalletAddress}</Text>
             }
             onButtonClick={this.onShareWalletAddressPress}
             buttonTitle={i18n.t('screens.receiveMoney.shareAddressPanel.button')}
@@ -58,6 +58,6 @@ const mapStateToProps = state => ({
   ...state.wallet,
 });
 
-const mapDispatchToProps = dispatch => ({});
+const mapDispatchToProps = () => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReceiveMoneyScreen);

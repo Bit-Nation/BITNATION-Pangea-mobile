@@ -1,5 +1,8 @@
 // @flow
 
-import typeof Msg from 'BITNATION-Pangea-libs/src/queues/messaging';
-
-export type ActivityLogMessage = Msg;
+export type ActivityLogMessage = {
+  id: string,
+  msg: string,
+  params: string,
+  interpret: boolean,
+};

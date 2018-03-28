@@ -1,3 +1,5 @@
+// @flow
+
 import { MediaQueryStyleSheet } from 'react-native-responsive';
 
 import Colors from '../../../global/colors';
@@ -39,6 +41,18 @@ const styles = MediaQueryStyleSheet.create({
     color: Colors.placeholderTextColor,
     marginBottom: 6,
   },
-
+  amountLabelText: {
+    ...GlobalStyles.footnote,
+    marginLeft: 5,
+  },
+  toLabelText: {
+    ...GlobalStyles.footnote,
+    marginLeft: 5,
+    marginTop: 10,
+  },
+  toTextInput: {
+    ...GlobalStyles.textInput,
+    marginTop: 0,
+  },
 });
 export default styles;

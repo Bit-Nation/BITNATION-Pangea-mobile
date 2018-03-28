@@ -71,10 +71,6 @@ const baseKeyScreen = {
  */
 
 const Screens = {
-  SPLASH_SCREEN: {
-    screen: 'Pangea.SplashScreen',
-    title: i18n.t('screens.splash.title'),
-  },
   DASHBOARD_SCREEN: {
     screen: 'Pangea.DashboardScreen',
     label: i18n.t('screens.dashboard.tabTitle'),
