@@ -115,7 +115,7 @@ android {
     }
     signingConfigs {
         release {
-            if (project.hasProperty('MYAPP_RELEASE_STORE_FILE')) {
+            if (project.hasProperty(System.getenv("MYAPP_RELEASE_STORE_FILE")) {
                 storeFile file(System.getenv("ANDROID_PANGEA_KEYSTORE_PATH"))
                 storePassword System.getenv("ANDROID_KEY_STORE_PASSWORD")
                 keyAlias System.getenv("ANDROID_KEYSTORE_ALIAS")
