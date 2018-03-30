@@ -13,7 +13,8 @@
     "ios": "flow && node_modules/.bin/react-native run-ios",
     "android": "flow && node_modules/.bin/react-native run-android",
     "postinstall": "./node_modules/.bin/rn-nodeify --install 'stream,buffer,vm,crypto,string_decoder,events,assert' --hack",
-    "docs": "./node_modules/.bin/documentation build src/** -f html -o docs",
+    "docs:html": "cp src/screens/WalletScreen/QRCodeScanner/index.android.js src/screens/WalletScreen/QRCodeScanner/index.js && ./node_modules/.bin/documentation build src/** -f html -o docs/html && rm src/screens/WalletScreen/QRCodeScanner/index.js",
+    "docs:md": "cp src/screens/WalletScreen/QRCodeScanner/index.android.js src/screens/WalletScreen/QRCodeScanner/index.js && ./node_modules/.bin/documentation build src/** -f md -o docs/index.md && rm src/screens/WalletScreen/QRCodeScanner/index.js",
     "build:ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/Pangea/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios'"
   },
   "dependencies": {
