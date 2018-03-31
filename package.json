@@ -13,7 +13,8 @@
     "ios": "flow && node_modules/.bin/react-native run-ios",
     "android": "flow && node_modules/.bin/react-native run-android",
     "postinstall": "./node_modules/.bin/rn-nodeify --install 'stream,buffer,vm,crypto,string_decoder,events,assert' --hack",
-    "docs": "node_modules/.bin/documentation build src/services/container.js -f md > docs/main.md",
+    "docs:html": "cp src/screens/WalletScreen/QRCodeScanner/index.android.js src/screens/WalletScreen/QRCodeScanner/index.js && ./node_modules/.bin/documentation build src/** -f html -o docs/html && rm src/screens/WalletScreen/QRCodeScanner/index.js",
+    "docs:md": "cp src/screens/WalletScreen/QRCodeScanner/index.android.js src/screens/WalletScreen/QRCodeScanner/index.js && ./node_modules/.bin/documentation build src/** -f md -o docs/index.md && rm src/screens/WalletScreen/QRCodeScanner/index.js",
     "build:ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/Pangea/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios'"
   },
   "dependencies": {
@@ -26,6 +27,7 @@
     "co": "^4.6.0",
     "events": "^1.1.1",
     "fetch-everywhere": "^1.0.5",
+    "git-up": "^2.0.10",
     "hoist-non-react-statics": "^2.3.1",
     "i18next": "^10.3.0",
     "lodash": "^4.17.4",
@@ -77,7 +79,7 @@
     "babel-preset-react-native": "4.0.0",
     "color": "^3.0.0",
     "coveralls": "^3.0.0",
-    "documentation": "^5.3.5",
+    "documentation": "^5.5.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^4.18.0",
@@ -110,6 +112,7 @@
       "**/**/**/**/*.{js,jsx}",
       "!**/node_modules/**",
       "!**/coverage/**",
+      "!**/docs/**",
       "!**/vendor/**"
     ]
   },
