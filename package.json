@@ -101,7 +101,8 @@
     "setupTestFrameworkScriptFile": "./enzymeInit.js",
     "transformIgnorePatterns": [
       "<root-dir>/node_modules",
-      "node_modules/(realm)/"
+      "node_modules/(realm)/",
+      "docs/"
     ],
     "moduleNameMapper": {
       "^image![a-zA-Z0-9$_-]+$": "GlobalImageStub",
