@@ -45,7 +45,7 @@ type Props = {
    * @param {any} id Id of selected item.
    */
   onSelectItem: (id: any) => void,
-}
+};
 
 const NationsListScreen = ({
   selectedTab, nations, myNationIds, onSelectTab, inProgress, onSelectItem,
@@ -54,8 +54,8 @@ const NationsListScreen = ({
     nations
     :
     _.filter(nations, nation => _.indexOf(myNationIds, nation.id) !== -1);
-  const sortedNations = _.sortBy(filteredNations, nation => nation.nationName);
-  const groups = _.groupBy(sortedNations, nation => nation.nationName.charAt(0));
+  const sortedNations = _.sortBy(filteredNations, nation => nation.nationName.toUpperCase());
+  const groups = _.groupBy(sortedNations, nation => nation.nationName.toUpperCase().charAt(0));
   const sections = _.map(groups, (group, key) => ({
     title: key,
     data: group,

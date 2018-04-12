@@ -45,8 +45,8 @@ const ChatNationsListScreen = ({
     :
     _.filter(nations, nation => (
       _.indexOf(myNations, nation.id) !== -1) && (nation.idInSmartContract >= 0));
-  const sortedNations = _.sortBy(nationsToDisplay, nation => nation.nationName);
-  const groups = _.groupBy(sortedNations, nation => nation.nationName.charAt(0));
+  const sortedNations = _.sortBy(nationsToDisplay, nation => nation.nationName.toUpperCase());
+  const groups = _.groupBy(sortedNations, nation => nation.nationName.toUpperCase().charAt(0));
   let sections = _.map(groups, (group, key) => ({
     title: key,
     data: group,
