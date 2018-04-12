@@ -11,7 +11,7 @@ import type { CurrencyType, WalletType } from '../types/Wallet';
  * @return {string} Rounded string value that represents eth amount to 5 digits
  */
 export function roundEth(eth: string): string {
-  const ethBn = new BigNumber(eth);
+  const ethBn = new BigNumber(eth || 0);
 
   return ethBn.round(5).toString(10);
 }
