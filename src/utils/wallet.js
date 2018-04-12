@@ -30,18 +30,19 @@ export function getWalletIndex(wallets: Array<WalletType>, address: string): num
  * @param {Object} wallets Dictionary that contains addresses as keys and private keys as values.
  * @return {WalletType[]} Array of converted wallets.
  */
-export function convertWallets(wallets: Array<{value: string, key: string}>): Array<WalletType> {
+export function convertWallets(wallets: Map<string, string>): Array<WalletType> {
   const walletsArray = [];
+
   wallets.forEach((value, key) =>
     walletsArray.push({
       key,
       value,
     }));
 
-  return _.map(walletsArray, wallet => ({
+  return walletsArray.map(wallet => ({
     ethAddress: wallet.key,
     currency: 'ETH',
-    balance: undefined,
+    balance: null,
     name: 'Ethereum',
   }));
 }
