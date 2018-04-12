@@ -1,9 +1,9 @@
 // @flow
 
-import type { TransactionJobType } from 'BITNATION-Pangea-libs/src/database/schema/v2';
+import type { TransactionJobType } from '../services/database/schemata';
 
-export type { NationInputType as DBNationInputType } from 'BITNATION-Pangea-libs/src/ethereum/nation';
-export type { NationType as DBNationType } from 'BITNATION-Pangea-libs/src/database/schemata';
+// eslint-disable-next-line import/prefer-default-export
+export type { NationType as DBNationType } from '../services/database/schemata';
 
 export type NationIdType = number;
 

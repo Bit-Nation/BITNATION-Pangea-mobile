@@ -1,6 +1,10 @@
-import { TX_JOB_STATUS_SUCCESS } from 'BITNATION-Pangea-libs/src/queues/transaction';
-
-import { resolveNation, convertToDatabase, convertFromDatabase, statusColor } from '../../../src/utils/nations';
+import {
+  TX_JOB_STATUS_SUCCESS,
+  resolveNation,
+  convertToDatabase,
+  convertFromDatabase,
+  statusColor,
+} from '../../../src/utils/nations';
 
 test('resolveNation works', () => {
   const expectedNation = {
