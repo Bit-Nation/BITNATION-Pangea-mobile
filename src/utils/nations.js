@@ -1,18 +1,12 @@
 // @flow
 import _ from 'lodash';
-import {
-  TX_JOB_STATUS_PENDING,
-  TX_JOB_STATUS_FAILED,
-  TX_JOB_STATUS_SUCCESS,
-} from 'BITNATION-Pangea-libs/src/queues/transaction';
 import Colors from '../global/colors';
 import type { DBNationType, NationType, EditingNationType } from '../types/Nation';
 
-export {
-  TX_JOB_STATUS_PENDING,
-  TX_JOB_STATUS_FAILED,
-  TX_JOB_STATUS_SUCCESS,
-} from 'BITNATION-Pangea-libs/src/queues/transaction';
+// @todo Import from correct place
+export const TX_JOB_STATUS_PENDING = 200;
+export const TX_JOB_STATUS_SUCCESS = 300;
+export const TX_JOB_STATUS_FAILED = 400;
 
 /**
  * @desc Function to get a nation by id from array.
