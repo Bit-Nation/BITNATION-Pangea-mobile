@@ -26,7 +26,7 @@ export function getWalletIndex(wallets: Array<WalletType>, address: string): num
 }
 
 /**
- * @desc Converts wallet from libs representation.
+ * @desc Converts wallet from database representation.
  * @param {Object} wallets Dictionary that contains addresses as keys and private keys as values.
  * @return {WalletType[]} Array of converted wallets.
  */
