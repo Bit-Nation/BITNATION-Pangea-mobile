@@ -12,12 +12,14 @@
 
 @implementation Panthalassa
 
-RCT_EXPORT_MODULE()
+- (dispatch_queue_t)methodQueue
+{
+  return dispatch_get_main_queue();
+}
 
-RCT_REMAP_METHOD(PanthalassaNewAccountKeys,
-                 params:(NSDictionary *)parameters
-                 resolver:(RCTPromiseResolveBlock)resolve
-                 rejecter:(RCTPromiseRejectBlock)reject) {
+RCT_EXPORT_MODULE();
+
+RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(PanthalassaNewAccountKeys:(NSDictionary *)parameters) {
   
   NSString *newAccount;
   NSError *error = nil;
@@ -26,16 +28,13 @@ RCT_REMAP_METHOD(PanthalassaNewAccountKeys,
                                          &error);
   
   if (error == nil) {
-    resolve(newAccount);
+    return newAccount;
   } else {
-    reject(@"error", error.localizedDescription, error);
+    return(error.localizedDescription);
   }
 }
 
-RCT_REMAP_METHOD(PanthalassaNewPanthalassa,
-                 data:(NSDictionary *)parameters
-                 resolver:(RCTPromiseResolveBlock)resolve
-                 rejecter:(RCTPromiseRejectBlock)reject) {
+RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(PanthalassaNewPanthalassa:(NSDictionary *)parameters) {
   
   PanthalassaPanthalassa *instance;
   NSError *error = nil;
@@ -45,16 +44,13 @@ RCT_REMAP_METHOD(PanthalassaNewPanthalassa,
                                        &error);
   
   if (error == nil) {
-    resolve(instance);
+    return instance;
   } else {
-    reject(@"error", error.localizedDescription, error);
+    return(error.localizedDescription);
   }
 }
 
-RCT_REMAP_METHOD(PanthalassaScryptDecrypt,
-                 dataDecrypt:(NSDictionary *)parameters
-                 resolver:(RCTPromiseResolveBlock)resolve
-                 rejecter:(RCTPromiseRejectBlock)reject) {
+RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(PanthalassaScryptDecrypt:(NSDictionary *)parameters) {
   
   NSString *response;
   NSError *error = nil;
@@ -63,16 +59,13 @@ RCT_REMAP_METHOD(PanthalassaScryptDecrypt,
                                          &error);
   
   if (error == nil) {
-    resolve(response);
+    return response;
   } else {
-    reject(@"error", error.localizedDescription, error);
+    return(error.localizedDescription);
   }
 }
 
-RCT_REMAP_METHOD(PanthalassaScryptEncrypt,
-                 dataEncrypt:(NSDictionary *)parameters
-                 resolver:(RCTPromiseResolveBlock)resolve
-                 rejecter:(RCTPromiseRejectBlock)reject) {
+RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(PanthalassaScryptEncrypt:(NSDictionary *)parameters) {
   
   NSString *response;
   NSError *error = nil;
@@ -82,9 +75,9 @@ RCT_REMAP_METHOD(PanthalassaScryptEncrypt,
                                       &error);
   
   if (error == nil) {
-    resolve(response);
+    return response;
   } else {
-    reject(@"error", error.localizedDescription, error);
+    return(error.localizedDescription);
   }
 }
 
