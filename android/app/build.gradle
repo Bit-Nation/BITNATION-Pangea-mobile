@@ -148,11 +148,11 @@ dependencies {
     compile project(':react-native-sensitive-info')
     compile project(':react-native-randombytes')
     compile project(':react-native-navigation')
-    compile project(':react-native-eth-daemon')
     compile project(':react-native-config')
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:25.0.1'
     compile 'com.facebook.react:react-native:+'
+    compile project(':panthalassa')
 }
 
 
