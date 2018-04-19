@@ -67,11 +67,11 @@ export const Contact = {
   },
 };
 
-export const schemata = {
+export const schemata = [
   Account,
   Contact,
   DHTValue,
-};
+];
 
 export const migration = () => {
 
