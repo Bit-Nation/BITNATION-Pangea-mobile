@@ -49,14 +49,12 @@
 		331BE38CAE55445F96A17588 /* libRealmReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DA898BBC9A649F0B490A468 /* libRealmReact.a */; };
 		339A491DCAB441118F2E292D /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 15CAC7448C5D479481F19ED9 /* FontAwesome.ttf */; };
 		3D2CAA22BF674F90B4C36446 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16C8E5FBB64045E78F84F03F /* Roboto-ThinItalic.ttf */; };
-		42809881715F4FB0A7EF1840 /* libRNEthDaemon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A85B90D42A544BB812E0982 /* libRNEthDaemon.a */; };
 		562F585B4ED9462AA95392E2 /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D5AE107DC4424FB28D3E84AC /* Roboto-BoldItalic.ttf */; };
 		5BB75A8DF0574F7C875B5E11 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 099997F9E42E486BB02DA894 /* MaterialIcons.ttf */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		606D1971B7ED4D60BF9FB420 /* SourceCodePro-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 981AA21F89254D87B1AEFADC /* SourceCodePro-ExtraLight.ttf */; };
 		662B41AE0BD345BCB14881BB /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 17F9F56F840D4E95A4064389 /* Entypo.ttf */; };
 		680BD16F2012976E00F75F2F /* libRCTCamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 680BD1492012975800F75F2F /* libRCTCamera.a */; };
-		68D5E9E91FFA7559006E0D0D /* Geth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17084F8A1FF8012A00CB17F5 /* Geth.framework */; };
 		6C5F84D6DE684EB2BF593903 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F9423C49F9544E8AD6D62C2 /* libc++.tbd */; };
 		75B2060004FA435F84410D41 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DA624BB248114778B42274F2 /* Roboto-Italic.ttf */; };
 		789119028F1A43C89AD3782E /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 641EFC7EF0B4493FAA36FAF0 /* SimpleLineIcons.ttf */; };
@@ -391,13 +389,6 @@
 			remoteGlobalIDString = 4107012F1ACB723B00C6AA39;
 			remoteInfo = RCTCamera;
 		};
-		68D5E9E41FFA7517006E0D0D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0CED5D8B0EA848079710FB8A /* RNEthDaemon.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 134814201AA4EA6300B7C361;
-			remoteInfo = RNEthDaemon;
-		};
 		78C398B81ACF4ADC00677621 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */;
@@ -451,7 +442,6 @@
 		018738D368CA43C1BEB54A3D /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/native-base/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		067F660FC765FB199ABA4128 /* Pods-Pangea.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pangea.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pangea/Pods-Pangea.release.xcconfig"; sourceTree = "<group>"; };
 		099997F9E42E486BB02DA894 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/native-base/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
-		0CED5D8B0EA848079710FB8A /* RNEthDaemon.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNEthDaemon.xcodeproj; path = "../node_modules/react-native-eth-daemon/ios/RNEthDaemon.xcodeproj"; sourceTree = "<group>"; };
 		0EAF57EC11E4404592FB5E81 /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-LightItalic.ttf"; path = "../assets/fonts/Roboto/Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
@@ -465,7 +455,6 @@
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		15CAC7448C5D479481F19ED9 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/native-base/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		16C8E5FBB64045E78F84F03F /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-ThinItalic.ttf"; path = "../assets/fonts/Roboto/Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
-		17084F8A1FF8012A00CB17F5 /* Geth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Geth.framework; path = "../node_modules/react-native-eth-daemon/ios/Frameworks/Geth.framework"; sourceTree = "<group>"; };
 		17F9F56F840D4E95A4064389 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/native-base/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		198F613DD4A7453EA458D327 /* libReactNativeNavigation.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libReactNativeNavigation.a; sourceTree = "<group>"; };
 		1A278AA8274448FFB105C984 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/native-base/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
@@ -544,7 +533,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				680BD16F2012976E00F75F2F /* libRCTCamera.a in Frameworks */,
-				68D5E9E91FFA7559006E0D0D /* Geth.framework in Frameworks */,
 				172769051FFB316400AD076B /* RSKImageCropper.framework in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
@@ -570,7 +558,6 @@
 				6C5F84D6DE684EB2BF593903 /* libc++.tbd in Frameworks */,
 				222174D549BD4E7F84A49BE7 /* libz.tbd in Frameworks */,
 				D4C9EDBC2CE847EE998E38B8 /* libimageCropPicker.a in Frameworks */,
-				42809881715F4FB0A7EF1840 /* libRNEthDaemon.a in Frameworks */,
 				0EEB22BB89D8DB1F0AF929C3 /* libPods-Pangea.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -770,7 +757,6 @@
 				D2F5E40F2087B06700A0B991 /* panthalassa.framework */,
 				68C2C3681FFAD2970031480B /* RSKImageCropper.framework */,
 				68C2C33B1FFAD2910031480B /* QBImagePicker.framework */,
-				17084F8A1FF8012A00CB17F5 /* Geth.framework */,
 				5F9423C49F9544E8AD6D62C2 /* libc++.tbd */,
 				E2AB770A0B7C41D89C27F046 /* libz.tbd */,
 				22DF4321A766C4BF2CAA9AB9 /* libPods-Pangea.a */,
@@ -823,14 +809,6 @@
 			isa = PBXGroup;
 			children = (
 				680BD1492012975800F75F2F /* libRCTCamera.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		68D5E9BA1FFA7516006E0D0D /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				68D5E9E51FFA7517006E0D0D /* libRNEthDaemon.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -912,7 +890,6 @@
 				9B29C53248DB4D7CBB403C9B /* RNSensitiveInfo.xcodeproj */,
 				BF69E689E78D42E198301553 /* RealmReact.xcodeproj */,
 				9BB21DC2FAED4B40BE2D0B74 /* imageCropPicker.xcodeproj */,
-				0CED5D8B0EA848079710FB8A /* RNEthDaemon.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1053,13 +1030,13 @@
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = WF86ZK5LQZ;
+						DevelopmentTeam = W63599SJEC;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = WF86ZK5LQZ;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = W63599SJEC;
+						ProvisioningStyle = Manual;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -1152,10 +1129,6 @@
 				{
 					ProductGroup = 17C557CA1FF8244B00BA5D5E /* Products */;
 					ProjectRef = BF69E689E78D42E198301553 /* RealmReact.xcodeproj */;
-				},
-				{
-					ProductGroup = 68D5E9BA1FFA7516006E0D0D /* Products */;
-					ProjectRef = 0CED5D8B0EA848079710FB8A /* RNEthDaemon.xcodeproj */;
 				},
 				{
 					ProductGroup = 17084FC71FF8024B00CB17F5 /* Products */;
@@ -1461,13 +1434,6 @@
 			remoteRef = 680BD1482012975800F75F2F /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		68D5E9E51FFA7517006E0D0D /* libRNEthDaemon.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRNEthDaemon.a;
-			remoteRef = 68D5E9E41FFA7517006E0D0D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		78C398B91ACF4ADC00677621 /* libRCTLinking.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1716,7 +1682,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WF86ZK5LQZ;
+				DEVELOPMENT_TEAM = W63599SJEC;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1757,7 +1723,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = WF86ZK5LQZ;
+				DEVELOPMENT_TEAM = W63599SJEC;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
@@ -1792,16 +1758,15 @@
 			baseConfigurationReference = AD90FA4C0CF9656416A93031 /* Pods-Pangea.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Alberto Estarrona (73F9WW2ZM8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Alberto Estarrona (73F9WW2ZM8)";
+				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = YES;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = WF86ZK5LQZ;
+				DEVELOPMENT_TEAM = W63599SJEC;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/../node_modules/react-native-eth-daemon/ios/Frameworks/**",
-					"$(PROJECT_DIR)/Frameworks",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Frameworks";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
@@ -1811,8 +1776,6 @@
 					"$(SRCROOT)/../node_modules/react-native-sensitive-info/ios/RNSensitiveInfo/**",
 					"$(SRCROOT)/../node_modules/realm/src/**",
 					"$(SRCROOT)/../node_modules/react-native-image-crop-picker/ios/**",
-					"$(SRCROOT)/../node_modules/react-native-eth-daemon/ios/**",
-					"$(SRCROOT)/../node_modules/react-native-eth-daemon/ios/**",
 				);
 				INFOPLIST_FILE = Pangea/Info.plist;
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = " -traditional";
@@ -1827,8 +1790,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = co.bitnation.pangea;
 				PRODUCT_NAME = Pangea;
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "1d9f7fb0-8e71-411a-bd9d-cbf1af9a8150";
+				PROVISIONING_PROFILE_SPECIFIER = Dev_Pangea_install;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1838,15 +1801,14 @@
 			baseConfigurationReference = 067F660FC765FB199ABA4128 /* Pods-Pangea.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Bitnation Port One Pte. Ltd. (W63599SJEC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Bitnation Port One Pte. Ltd. (W63599SJEC)";
+				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = YES;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = WF86ZK5LQZ;
+				DEVELOPMENT_TEAM = W63599SJEC;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/../node_modules/react-native-eth-daemon/ios/Frameworks/**",
-					"$(PROJECT_DIR)/Frameworks",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Frameworks";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
@@ -1856,8 +1818,6 @@
 					"$(SRCROOT)/../node_modules/react-native-sensitive-info/ios/RNSensitiveInfo/**",
 					"$(SRCROOT)/../node_modules/realm/src/**",
 					"$(SRCROOT)/../node_modules/react-native-image-crop-picker/ios/**",
-					"$(SRCROOT)/../node_modules/react-native-eth-daemon/ios/**",
-					"$(SRCROOT)/../node_modules/react-native-eth-daemon/ios/**",
 				);
 				INFOPLIST_FILE = Pangea/Info.plist;
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = " -traditional";
@@ -1872,8 +1832,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = co.bitnation.pangea;
 				PRODUCT_NAME = Pangea;
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "1d9f7fb0-8e71-411a-bd9d-cbf1af9a8150";
+				PROVISIONING_PROFILE_SPECIFIER = Pangea_Dist_Store;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
