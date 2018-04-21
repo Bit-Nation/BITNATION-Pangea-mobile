@@ -12,7 +12,7 @@ import BackgroundImage from '../../components/common/BackgroundImage';
 import { makeStep, resetSteps } from '../../actions/testingMode';
 import FakeNavigationBar from '../../components/common/FakeNavigationBar';
 import type { Navigator } from '../../types/ReactNativeNavigation';
-import type { ProfileType } from '../../types/Profile';
+import type { EditingAccount, Account } from '../../types/Account';
 import styles from './EmptyProfile/styles';
 
 type Props = {
@@ -23,11 +23,11 @@ type Props = {
   /**
    * @desc User object that is currently being edited
    */
-  editingUser: ProfileType,
+  editingUser: EditingAccount,
   /**
    * @desc Current user object
    */
-  user: ProfileType,
+  user: Account,
   /**
    * @desc Flag that determines if testing mode is activated
    */
@@ -48,7 +48,7 @@ type Props = {
    * @desc Function to update editing user
    * @param user Modified user object
    */
-  onChangeEditingUser: (user: ProfileType) => void,
+  onChangeEditingUser: (user: EditingAccount) => void,
   /**
    * @desc Function to complete user edit
    */
