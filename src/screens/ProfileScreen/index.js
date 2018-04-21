@@ -54,10 +54,6 @@ type Props = {
    */
   onDoneUserEditing: () => void,
   /**
-   * @desc Function to fetch user profile
-   */
-  getUserProfile: () => void,
-  /**
    * @desc Function to enable testing mode
    */
   makeStepForTestingMode: () => void,

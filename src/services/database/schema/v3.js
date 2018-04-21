@@ -1,8 +1,6 @@
 /* eslint-disable no-use-before-define */
 // @flow
 
-import type { Realm } from 'realm';
-
 export const AccountSchema = {
   name: 'Account',
   primaryKey: 'id',
@@ -262,6 +260,6 @@ export const schemata =
     NationSchema,
   ];
 
-export const migration = (oldRealm: Realm, newRealm: Realm) => {
+export const migration = () => {
   // @todo Migration
 };

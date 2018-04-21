@@ -6,9 +6,9 @@ import { factory as dbFactory } from '../../services/database';
 import { createDatabaseUpdateChannel } from '../database';
 import {
   accountListUpdated, CURRENT_ACCOUNT_ID_CHANGED, currentAccountIdChanged,
-  loginTaskUpdated, logoutTaskUpdated,
+  loginTaskUpdated,
 } from '../../actions/accounts';
-import type { LoginAction, LogoutAction } from '../../actions/accounts';
+import type { LoginAction } from '../../actions/accounts';
 import { convertFromDatabase } from '../../utils/mapping/account';
 import TaskBuilder from '../../utils/asyncTask';
 import AccountsService from '../../services/accounts';
@@ -17,12 +17,12 @@ import { InvalidPasswordError } from '../../global/errors/accounts';
 /**
  * @desc That function should be used for listening on information that depends on current account.
  * That way it will automatically be updated once account is switched.
- * @param {function} resultsBuilder A function that takes an account and returns a realm results collection to be listened on.
+ * @param {function} resultsBuilder A function that takes realm and account id and returns a realm results collection to be listened on.
  * @param {function} onChange A function that is called on every change and takes updated collection and changes.
  * @return {void}
  */
 export function* currentAccountBasedUpdate<T>(
-  resultsBuilder: (currentAccountId: string | null) => Realm.Results<T>,
+  resultsBuilder: (realm: Realm, currentAccountId: string | null) => Realm.Results<T>,
   onChange: (Realm.Collection<T>, Realm.CollectionChangeSet<T>) => void,
 ) {
   /**
@@ -31,7 +31,8 @@ export function* currentAccountBasedUpdate<T>(
    */
   function* startListening() {
     const currentAccountId = yield call(getCurrentAccountId);
-    const channel = createDatabaseUpdateChannel(resultsBuilder(currentAccountId));
+    const realm = yield call(dbFactory);
+    const channel = createDatabaseUpdateChannel(resultsBuilder(realm, currentAccountId));
     while (true) {
       const { collection, changes } = yield take(channel);
       onChange(collection, changes);
@@ -60,7 +61,7 @@ export function* getCurrentAccountId() {
  * @returns {void}
  */
 export function* listenForDatabaseUpdates() {
-  const db = yield dbFactory();
+  const db = yield call(dbFactory);
   const results = db.objects('Account');
   const channel = createDatabaseUpdateChannel(results);
   while (true) {
