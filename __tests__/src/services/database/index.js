@@ -22,7 +22,7 @@ describe('db', () => {
     realm.close();
   });
   test('open and migrate process', async () => {
-    expect.assertions(4);
+    expect.assertions(5);
     const dbPath = randomDbPath();
     const databaseGenerator = factory(dbPath);
 
@@ -40,7 +40,11 @@ describe('db', () => {
 
     // The last yield will return the realm open promise
     const realm3 = await databaseGenerator.next(realm2).value;
-    expect(Realm.schemaVersion(dbPath)).toBe(2);
-    realm3.close();
+    expect(Realm.schemaVersion(dbPath)).toBe(3);
+
+    const realm4 = await databaseGenerator.next(realm3).value;
+    expect(Realm.schemaVersion(dbPath)).toBe(3);
+
+    realm4.close();
   });
 });
