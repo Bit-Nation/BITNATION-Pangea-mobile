@@ -33,6 +33,5 @@ export default [
 
 export {
   Account,
-  Contact,
   DHTValue,
 } from './schema/v3';
