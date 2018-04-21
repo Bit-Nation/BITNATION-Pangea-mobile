@@ -1,6 +1,11 @@
 // @flow
 
-import { type Action } from '../actions/accounts';
+import {
+  type Action,
+  ACCOUNTS_LIST_UPDATED,
+  CURRENT_ACCOUNT_ID_CHANGED,
+  LOGIN_TASK_UPDATED,
+} from '../actions/accounts';
 import type { Account, EditingAccount } from '../types/Account';
 import TaskBuilder, { type AsyncTask } from '../utils/asyncTask';
 
@@ -10,6 +15,7 @@ export type State = {
   +currentAccountId: string | null,
   +login: AsyncTask<void>,
   +logout: AsyncTask<void>,
+  +accounts: Array<Account>,
 };
 
 export const emptyProfile: EditingAccount = {
@@ -26,6 +32,7 @@ export const initialState: State = {
   currentAccountId: null,
   login: TaskBuilder.empty(),
   logout: TaskBuilder.empty(),
+  accounts: [],
 };
 
 /**
@@ -36,6 +43,22 @@ export const initialState: State = {
  */
 export default (state: State = initialState, action: Action): State => {
   switch (action.type) {
+    case ACCOUNTS_LIST_UPDATED:
+      return {
+        ...state,
+        accounts: action.accounts,
+      };
+    case CURRENT_ACCOUNT_ID_CHANGED:
+      return {
+        ...state,
+        currentAccountId: null,
+      };
+    case LOGIN_TASK_UPDATED:
+      return {
+        ...state,
+        login: action.asyncTask,
+      };
+
     default:
       return state;
   }
