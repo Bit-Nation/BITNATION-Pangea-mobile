@@ -7,14 +7,7 @@ import { View } from 'react-native';
 import EmptyProfileScreen from './EmptyProfile';
 import ProfileScreen from './Profile';
 import EditProfile from './EditProfile';
-import {
-  startUserEditing,
-  changeEditingUser,
-  cancelUserEditing,
-  startUserCreating,
-  requestProfileUpdate,
-  getUserProfile,
-} from '../../actions/profile';
+import {} from '../../actions/accounts';
 import BackgroundImage from '../../components/common/BackgroundImage';
 import { makeStep, resetSteps } from '../../actions/testingMode';
 import FakeNavigationBar from '../../components/common/FakeNavigationBar';
@@ -75,11 +68,6 @@ type Props = {
 };
 
 class ProfileContainer extends Component<Props> {
-  constructor(props: Props) {
-    super(props);
-    this.props.getUserProfile();
-  }
-
   _onCreateUserProfile = () => {
     this.props.onStartUserCreating();
   };
@@ -124,30 +112,12 @@ class ProfileContainer extends Component<Props> {
 }
 
 const mapStateToProps = state => ({
-  user: state.profile.user,
-  editingUser: state.profile.editingUser,
+  user: state.accounts.user,
+  editingUser: state.accounts.editingUser,
   testingModeActive: state.testingMode.isActive,
 });
 
 const mapDispatchToProps = dispatch => ({
-  onStartUserCreating() {
-    dispatch(startUserCreating());
-  },
-  onStartUserEditing() {
-    dispatch(startUserEditing());
-  },
-  onCancelUserEditing() {
-    dispatch(cancelUserEditing());
-  },
-  onChangeEditingUser(user) {
-    dispatch(changeEditingUser(user));
-  },
-  onDoneUserEditing() {
-    dispatch(requestProfileUpdate());
-  },
-  getUserProfile() {
-    dispatch(getUserProfile());
-  },
   makeStepForTestingMode() {
     dispatch(makeStep());
   },
