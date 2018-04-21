@@ -155,21 +155,6 @@ ShallowWrapper {
           >
             NYC
           </Text>
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "color": "#C0C0C0",
-                "fontFamily": "Roboto",
-                "fontSize": 13,
-                "fontWeight": "normal",
-                "letterSpacing": 0,
-                "lineHeight": 18,
-              }
-            }
-          />
         </View>,
       ],
       "style": Object {
@@ -325,21 +310,6 @@ ShallowWrapper {
             >
               NYC
             </Text>,
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={
-                Object {
-                  "color": "#C0C0C0",
-                  "fontFamily": "Roboto",
-                  "fontSize": 13,
-                  "fontWeight": "normal",
-                  "letterSpacing": 0,
-                  "lineHeight": 18,
-                }
-              }
-            />,
           ],
           "style": Object {
             "alignItems": "center",
@@ -410,28 +380,6 @@ ShallowWrapper {
             },
             "ref": null,
             "rendered": "NYC",
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "accessible": true,
-              "allowFontScaling": true,
-              "children": undefined,
-              "ellipsizeMode": "tail",
-              "style": Object {
-                "color": "#C0C0C0",
-                "fontFamily": "Roboto",
-                "fontSize": 13,
-                "fontWeight": "normal",
-                "letterSpacing": 0,
-                "lineHeight": 18,
-              },
-            },
-            "ref": null,
-            "rendered": null,
             "type": [Function],
           },
         ],
@@ -538,21 +486,6 @@ ShallowWrapper {
             >
               NYC
             </Text>
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={
-                Object {
-                  "color": "#C0C0C0",
-                  "fontFamily": "Roboto",
-                  "fontSize": 13,
-                  "fontWeight": "normal",
-                  "letterSpacing": 0,
-                  "lineHeight": 18,
-                }
-              }
-            />
           </View>,
         ],
         "style": Object {
@@ -708,21 +641,6 @@ ShallowWrapper {
               >
                 NYC
               </Text>,
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                ellipsizeMode="tail"
-                style={
-                  Object {
-                    "color": "#C0C0C0",
-                    "fontFamily": "Roboto",
-                    "fontSize": 13,
-                    "fontWeight": "normal",
-                    "letterSpacing": 0,
-                    "lineHeight": 18,
-                  }
-                }
-              />,
             ],
             "style": Object {
               "alignItems": "center",
@@ -793,28 +711,6 @@ ShallowWrapper {
               },
               "ref": null,
               "rendered": "NYC",
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "accessible": true,
-                "allowFontScaling": true,
-                "children": undefined,
-                "ellipsizeMode": "tail",
-                "style": Object {
-                  "color": "#C0C0C0",
-                  "fontFamily": "Roboto",
-                  "fontSize": 13,
-                  "fontWeight": "normal",
-                  "letterSpacing": 0,
-                  "lineHeight": 18,
-                },
-              },
-              "ref": null,
-              "rendered": null,
               "type": [Function],
             },
           ],
