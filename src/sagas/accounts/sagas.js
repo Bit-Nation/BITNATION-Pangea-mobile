@@ -8,7 +8,7 @@ import {
   accountListUpdated, CURRENT_ACCOUNT_ID_CHANGED, currentAccountIdChanged,
   loginTaskUpdated, logoutTaskUpdated,
 } from '../../actions/accounts';
-import type { LoginAction } from '../../actions/accounts';
+import type { LoginAction, LogoutAction } from '../../actions/accounts';
 import { convertFromDatabase } from '../../utils/mapping/account';
 import TaskBuilder from '../../utils/asyncTask';
 import AccountsService from '../../services/accounts';
@@ -71,7 +71,7 @@ export function* listenForDatabaseUpdates() {
 
 /**
  * @desc Performs a login of user.
- * @param {LoginAction} action LoginAction that contains login parameters.
+ * @param {LoginAction} action Action that contains login parameters.
  * @returns {void}
  */
 export function* login(action: LoginAction) {
@@ -83,4 +83,12 @@ export function* login(action: LoginAction) {
   }
   yield put(currentAccountIdChanged(action.accountId));
   yield put(loginTaskUpdated(TaskBuilder.success()));
+}
+
+/**
+ * @desc Performs a logout.
+ * @return {void}
+ */
+export function* logout() {
+  yield put(currentAccountIdChanged(null));
 }
