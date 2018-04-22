@@ -12,7 +12,7 @@ import styles from './styles';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import i18n from '../../../global/i18n';
 import ScreenTitle from '../../../components/common/ScreenTitle';
-import SettingsListItem from './SettingsListItem';
+import SettingsListItem from '../../../components/common/SettingsListItem';
 import type { SettingsItem } from '../../../types/Settings';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import { screen } from '../../../global/Screens';
@@ -55,12 +55,18 @@ class SettingsListScreen extends NavigatorComponent<Props> {
         <BackgroundImage />
         <FakeNavigationBar />
         <ScreenTitle title={i18n.t('screens.settings.title')} />
-        <FlatList
-          renderItem={item => <SettingsListItem id={item.item} onPress={this.onSelectItem} />}
-          keyExtractor={item => item}
-          data={items}
-          style={styles.sectionList}
-        />
+        <View style={styles.bodyContainer}>
+          <FlatList
+            renderItem={item => (<SettingsListItem
+              id={item.item}
+              onPress={this.onSelectItem}
+              text={i18n.t(`screens.settings.${item.item}`)}
+            />)}
+            keyExtractor={item => item}
+            data={items}
+            style={styles.sectionList}
+          />
+        </View>
       </View>
     );
   }
@@ -71,7 +77,6 @@ const mapStateToProps = state => ({
   accounts: state.accounts,
 });
 
-const mapDispatchToProps = dispatch => ({
-});
+const mapDispatchToProps = dispatch => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(SettingsListScreen);

@@ -420,12 +420,15 @@
     },
     "settings": {
       "title": "Settings",
-      "tabTitle": "Settings",
+      "tabTitle": "SETTINGS",
       "identity": "Identity",
       "security": "Security"
     },
     "securitySettings": {
-      "title": "Security settings"
+      "title": "Security settings",
+      "useNumericPasscode": "Numeric Passcode (less secure)",
+      "passcodeLength": "Passcode Length",
+      "changePasscode": "Change Passcode"
     }
   },
   "testingMode": {
