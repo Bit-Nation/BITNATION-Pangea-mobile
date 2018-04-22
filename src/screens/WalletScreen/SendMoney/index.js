@@ -25,6 +25,7 @@ import { errorAlert } from '../../../global/alerts';
 import PanelView from '../../../components/common/PanelView';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import type { State as WalletState } from '../../../reducers/wallet';
+import ScreenTitle from '../../../components/common/ScreenTitle';
 
 const SEND_BUTTON = 'SEND_BUTTON';
 
@@ -123,12 +124,7 @@ class SendMoney extends NavigatorComponent<Props, State> {
         <BackgroundImage />
         <FakeNavigationBar />
         <View style={styles.bodyContainer}>
-
-          <View style={styles.titleContainer}>
-            <View style={styles.titleBarLarge}>
-              <Text style={styles.largeTitle}>{i18n.t('screens.sendMoney.title')}</Text>
-            </View>
-          </View>
+          <ScreenTitle title={i18n.t('screens.sendMoney.title')} />
 
           <PanelView
             style={styles.panelView}
