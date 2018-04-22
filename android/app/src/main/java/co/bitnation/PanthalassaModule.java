@@ -69,4 +69,37 @@ public class PanthalassaModule extends ReactContextBaseJavaModule {
             return e.getLocalizedMessage();
         }
     }
+
+    @ReactMethod
+    public boolean PanthalassaIsValidCID(String cid) {
+        boolean response = false;
+        try {
+            response = Panthalassa.isValidCID(cid);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return response;
+    }
+
+    @ReactMethod
+    public String PanthalassaCIDSha256(String value) {
+        try {
+            String response = Panthalassa.cidSha256(value);
+            return response;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return e.getLocalizedMessage();
+        }
+    }
+
+    @ReactMethod
+    public String PanthalassaCIDSha512(String value) {
+        try {
+            String response = Panthalassa.cidSha512(value);
+            return response;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return e.getLocalizedMessage();
+        }
+    }
 }
