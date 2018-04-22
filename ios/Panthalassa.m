@@ -81,4 +81,42 @@ RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(PanthalassaScryptEncrypt:(NSDictionary *)
   }
 }
 
+RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(PanthalassaIsValidCID:(NSString *)cid) {
+  
+  BOOL response;
+  response = PanthalassaIsValidCID(cid);
+  
+  if (response) {
+    return @YES;
+  } else {
+    return @NO;
+  }
+}
+
+RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(PanthalassaCIDSha256:(NSString *)value) {
+  
+  NSString *response;
+  NSError *error = nil;
+  response = PanthalassaCIDSha256(value, &error);
+  
+  if (error == nil) {
+    return response;
+  } else {
+    return(error.localizedDescription);
+  }
+}
+
+RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(PanthalassaCIDSha512:(NSString *)value) {
+  
+  NSString *response;
+  NSError *error = nil;
+  response = PanthalassaCIDSha512(value, &error);
+  
+  if (error == nil) {
+    return response;
+  } else {
+    return(error.localizedDescription);
+  }
+}
+
 @end
