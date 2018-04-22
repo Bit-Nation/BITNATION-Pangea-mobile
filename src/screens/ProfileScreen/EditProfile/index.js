@@ -22,6 +22,7 @@ import type { Navigator } from '../../../types/ReactNativeNavigation';
 import type { Account, EditingAccount } from '../../../types/Account';
 import i18n from '../../../global/i18n';
 import styles from './styles';
+import ScreenTitle from '../../../components/common/ScreenTitle';
 
 const DONE_BUTTON = 'DONE_BUTTON';
 
@@ -104,13 +105,7 @@ class EditProfile extends NavigatorComponent<Props> {
       <View style={styles.bodyContainer}>
         {/* SCROLLING PANELS FOR DATA ENTRY */}
         <KeyboardAwareScrollView style={styles.scrollView}>
-          {/* TITLE OF SCREEN */}
-          <View style={styles.titleContainer}>
-            <View style={styles.titleBarLarge}>
-              <Text style={styles.largeTitle}>{i18n.t('screens.profile.edit.editPhoto')}</Text>
-            </View>
-          </View>
-
+          <ScreenTitle title={i18n.t('screens.profile.edit.editPhoto')} />
           {this._buildPicturePanel()}
           {this._buildProfileForm()}
         </KeyboardAwareScrollView>
