@@ -16,8 +16,6 @@ babelHelpers.asyncToGenerator = asyncToGenerator;
 const store = configureStore();
 registerScreens(store, Provider);
 
-store.dispatch(requestSyncNations());
-
 Navigation.startTabBasedApp({
   tabs: [
     screen('DASHBOARD_SCREEN'),

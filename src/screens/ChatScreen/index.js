@@ -222,7 +222,7 @@ class ChatScreen extends Component<Props, State> {
 const mapStateToProps = state => ({
   nations: state.nations.nations,
   nationId: state.nations.openedNationId,
-  user: state.profile.user,
+  user: state.accounts.user,
   isFetching: state.chat.isFetching,
 });
 

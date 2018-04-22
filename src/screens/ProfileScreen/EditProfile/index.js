@@ -19,7 +19,7 @@ import saveShouldBeEnabled from '../../../utils/profile';
 import AssetsImage from '../../../global/AssetsImages';
 import Colors from '../../../global/colors';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
-import type { ProfileType } from '../../../types/Profile';
+import type { Account, EditingAccount } from '../../../types/Account';
 import i18n from '../../../global/i18n';
 import styles from './styles';
 
@@ -33,11 +33,11 @@ export type Props = {
   /**
    * @desc User object that is currently being edited
    */
-  editingUser: ProfileType,
+  editingUser: EditingAccount,
   /**
    * @desc Current user object
    */
-  user: ProfileType,
+  user: Account,
   /**
    * @desc Function to modify the editing user
    * @param field A user field to be modified

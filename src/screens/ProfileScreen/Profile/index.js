@@ -13,7 +13,7 @@ import AssetsImage from '../../../global/AssetsImages';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import Colors from '../../../global/colors';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
-import type { ProfileType } from '../../../types/Profile';
+import type { Account } from '../../../types/Account';
 import i18n from '../../../global/i18n';
 
 const EDIT_BUTTON = 'EDIT_BUTTON';
@@ -26,7 +26,7 @@ export type Props = {
   /**
    * @desc Current user object
    */
-  user: ProfileType,
+  user: Account,
   /**
    * @desc Flag that determines if testing mode is activated
    */
@@ -109,7 +109,6 @@ class ProfileScreen extends NavigatorComponent<Props> {
         <Image source={avatarSource} style={styles.avatarLarge} />
         <Text style={styles.nameText}>{user.name && user.name.trim()}</Text>
         <Text style={styles.infoText}>{user.location && user.location.trim()}</Text>
-        <Text style={styles.ethAddress}>{user && user.ethAddress}</Text>
       </View>
     );
   }

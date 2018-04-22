@@ -7,19 +7,12 @@ import { View } from 'react-native';
 import EmptyProfileScreen from './EmptyProfile';
 import ProfileScreen from './Profile';
 import EditProfile from './EditProfile';
-import {
-  startUserEditing,
-  changeEditingUser,
-  cancelUserEditing,
-  startUserCreating,
-  requestProfileUpdate,
-  getUserProfile,
-} from '../../actions/profile';
+import {} from '../../actions/accounts';
 import BackgroundImage from '../../components/common/BackgroundImage';
 import { makeStep, resetSteps } from '../../actions/testingMode';
 import FakeNavigationBar from '../../components/common/FakeNavigationBar';
 import type { Navigator } from '../../types/ReactNativeNavigation';
-import type { ProfileType } from '../../types/Profile';
+import type { EditingAccount, Account } from '../../types/Account';
 import styles from './EmptyProfile/styles';
 
 type Props = {
@@ -30,11 +23,11 @@ type Props = {
   /**
    * @desc User object that is currently being edited
    */
-  editingUser: ProfileType,
+  editingUser: EditingAccount,
   /**
    * @desc Current user object
    */
-  user: ProfileType,
+  user: Account,
   /**
    * @desc Flag that determines if testing mode is activated
    */
@@ -55,15 +48,11 @@ type Props = {
    * @desc Function to update editing user
    * @param user Modified user object
    */
-  onChangeEditingUser: (user: ProfileType) => void,
+  onChangeEditingUser: (user: EditingAccount) => void,
   /**
    * @desc Function to complete user edit
    */
   onDoneUserEditing: () => void,
-  /**
-   * @desc Function to fetch user profile
-   */
-  getUserProfile: () => void,
   /**
    * @desc Function to enable testing mode
    */
@@ -75,11 +64,6 @@ type Props = {
 };
 
 class ProfileContainer extends Component<Props> {
-  constructor(props: Props) {
-    super(props);
-    this.props.getUserProfile();
-  }
-
   _onCreateUserProfile = () => {
     this.props.onStartUserCreating();
   };
@@ -124,30 +108,12 @@ class ProfileContainer extends Component<Props> {
 }
 
 const mapStateToProps = state => ({
-  user: state.profile.user,
-  editingUser: state.profile.editingUser,
+  user: state.accounts.user,
+  editingUser: state.accounts.editingUser,
   testingModeActive: state.testingMode.isActive,
 });
 
 const mapDispatchToProps = dispatch => ({
-  onStartUserCreating() {
-    dispatch(startUserCreating());
-  },
-  onStartUserEditing() {
-    dispatch(startUserEditing());
-  },
-  onCancelUserEditing() {
-    dispatch(cancelUserEditing());
-  },
-  onChangeEditingUser(user) {
-    dispatch(changeEditingUser(user));
-  },
-  onDoneUserEditing() {
-    dispatch(requestProfileUpdate());
-  },
-  getUserProfile() {
-    dispatch(getUserProfile());
-  },
   makeStepForTestingMode() {
     dispatch(makeStep());
   },
