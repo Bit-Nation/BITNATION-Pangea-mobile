@@ -417,6 +417,15 @@
     },
     "qrCodeScanner": {
       "title": "Scan QR code"
+    },
+    "settings": {
+      "title": "Settings",
+      "tabTitle": "Settings",
+      "identity": "Identity",
+      "security": "Security"
+    },
+    "securitySettings": {
+      "title": "Security settings"
     }
   },
   "testingMode": {

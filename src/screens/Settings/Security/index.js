@@ -1,12 +1,8 @@
 // @flow
 
 import React from 'react';
-import {
-  Image,
-  View,
-  Text,
-  Alert,
-} from 'react-native';
+import { View } from 'react-native';
+import { connect } from 'react-redux';
 
 import styles from './styles';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
@@ -14,6 +10,9 @@ import type { Navigator } from '../../../types/ReactNativeNavigation';
 import type { Account } from '../../../types/Account';
 import i18n from '../../../global/i18n';
 import { androidNavigationButtons } from '../../../global/Screens';
+import ScreenTitle from '../../../components/common/ScreenTitle';
+import BackgroundImage from '../../../components/common/BackgroundImage';
+import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 
 export type Props = {
   /**
@@ -27,7 +26,6 @@ export type Props = {
 };
 
 class ProfileScreen extends NavigatorComponent<Props> {
-
   static navigatorButtons = { ...androidNavigationButtons };
 
   onNavBarButtonPress(id: string): void {
@@ -38,17 +36,23 @@ class ProfileScreen extends NavigatorComponent<Props> {
 
   render() {
     return (
-      <View style={styles.bodyContainer}>
-        {/* TITLE OF SCREEN */}
-        <View style={styles.titleContainer}>
-          <View style={styles.titleBarLarge}>
-            <Text style={styles.largeTitle}>{i18n.t('screens.profile.title')}</Text>
-          </View>
-        </View>
+      <View style={styles.screenContainer}>
+        <BackgroundImage />
+        <FakeNavigationBar />
+        <ScreenTitle title={i18n.t('screens.securitySettings.title')} />
+        <View style={styles.bodyContainer}>
 
+        </View>
       </View>
     );
   }
 }
 
-export default ProfileScreen;
+const mapStateToProps = state => ({
+});
+
+const mapDispatchToProps = dispatch => ({
+});
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileScreen);
