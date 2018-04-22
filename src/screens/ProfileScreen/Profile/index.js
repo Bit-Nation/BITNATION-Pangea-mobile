@@ -15,6 +15,7 @@ import Colors from '../../../global/colors';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import type { Account } from '../../../types/Account';
 import i18n from '../../../global/i18n';
+import ScreenTitle from '../../../components/common/ScreenTitle';
 
 const EDIT_BUTTON = 'EDIT_BUTTON';
 
@@ -86,12 +87,7 @@ class ProfileScreen extends NavigatorComponent<Props> {
   render() {
     return (
       <View style={styles.bodyContainer}>
-        {/* TITLE OF SCREEN */}
-        <View style={styles.titleContainer}>
-          <View style={styles.titleBarLarge}>
-            <Text style={styles.largeTitle}>{i18n.t('screens.profile.title')}</Text>
-          </View>
-        </View>
+        <ScreenTitle title={i18n.t('screens.profile.title')} />
         {this._buildHeader()}
       </View>
     );

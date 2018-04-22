@@ -19,6 +19,7 @@ import PanelViewCitizen from '../../../components/common/PanelViewCitizen';
 import { nationIsValid, resolveStatus } from '../../../utils/nations';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import type { NationType } from '../../../types/Nation';
+import ScreenTitle from '../../../components/common/ScreenTitle';
 
 type Props = {
   /**
@@ -244,11 +245,7 @@ class NationDetailsScreen extends Component<Props & Actions & NationState> {
         <BackgroundImage />
         <FakeNavigationBar />
         <View style={styles.bodyContainer}>
-          <View style={styles.titleContainer}>
-            <View style={styles.titleBarLarge}>
-              <Text style={styles.largeTitle}>{nation.nationName}</Text>
-            </View>
-          </View>
+          <ScreenTitle title={nation.nationName} />
 
           <ScrollView>
             {statusDescription !== '' && NationDetailsScreen.buildStatusPanel(statusDescription)}
