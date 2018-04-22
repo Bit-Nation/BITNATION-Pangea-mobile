@@ -1,4 +1,4 @@
-import { all, takeEvery } from 'redux-saga/effects';
+import { takeEvery } from 'redux-saga/effects';
 import { launchCorrectFlow } from './sagas';
 import { CURRENT_ACCOUNT_ID_CHANGED } from '../../actions/accounts';
 import { START_NAVIGATION } from '../../actions/navigation';
@@ -8,7 +8,5 @@ import { START_NAVIGATION } from '../../actions/navigation';
  * @return {void}
  */
 export default function* rootSaga() {
-  yield all([
-    takeEvery([CURRENT_ACCOUNT_ID_CHANGED, START_NAVIGATION], launchCorrectFlow),
-  ]);
+  yield takeEvery([CURRENT_ACCOUNT_ID_CHANGED, START_NAVIGATION], launchCorrectFlow);
 }
