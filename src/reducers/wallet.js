@@ -61,7 +61,7 @@ export default (state: State = initialState, action: Action): State => {
     case UPDATE_WALLET_BALANCE: {
       const { walletAddress } = action;
       const wallets = state.wallets || [];
-      const walletIndex = getWalletIndex(wallets || [], walletAddress);
+      const walletIndex = getWalletIndex(wallets, walletAddress);
       if (walletIndex === null) {
         return state;
       }
