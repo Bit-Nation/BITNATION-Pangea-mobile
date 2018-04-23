@@ -77,6 +77,9 @@
 		CC05049FF02246CDB2E2CCDF /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F02C743E40EC4CF88C1B3102 /* libReactNativeConfig.a */; };
 		D048746DE5E54EBD8D11FD4D /* RobotoCondensed-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C319B5A26459433183371050 /* RobotoCondensed-LightItalic.ttf */; };
 		D2742E32332B4672BBDFB2F6 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F552F5D46DB14E1888550D69 /* libRNVectorIcons.a */; };
+		D2BFDCD0208D8CAF0033E539 /* PanthalassaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BFDCCF208D8CAF0033E539 /* PanthalassaTests.m */; };
+		D2BFDCD1208D8FC80033E539 /* Panthalassa.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F5E4402087BFB400A0B991 /* Panthalassa.m */; };
+		D2BFDCD2208D90440033E539 /* panthalassa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2F5E40F2087B06700A0B991 /* panthalassa.framework */; };
 		D2F5E43C2087B06700A0B991 /* panthalassa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2F5E40F2087B06700A0B991 /* panthalassa.framework */; };
 		D2F5E4422087BFB400A0B991 /* Panthalassa.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F5E4402087BFB400A0B991 /* Panthalassa.m */; };
 		D4C9EDBC2CE847EE998E38B8 /* libimageCropPicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CA23D9CC370645A9AC80F60E /* libimageCropPicker.a */; };
@@ -503,6 +506,7 @@
 		CA23D9CC370645A9AC80F60E /* libimageCropPicker.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libimageCropPicker.a; sourceTree = "<group>"; };
 		CD03308491E94DE8ABFC807B /* ReactNativeNavigation.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeNavigation.xcodeproj; path = "../node_modules/react-native-navigation/ios/ReactNativeNavigation.xcodeproj"; sourceTree = "<group>"; };
 		CDA71C261DCA451C86E50868 /* Roboto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto.ttf; path = "../node_modules/native-base/Fonts/Roboto.ttf"; sourceTree = "<group>"; };
+		D2BFDCCF208D8CAF0033E539 /* PanthalassaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PanthalassaTests.m; path = PanthalassaTests/PanthalassaTests.m; sourceTree = SOURCE_ROOT; };
 		D2F5E40F2087B06700A0B991 /* panthalassa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = panthalassa.framework; path = Frameworks/panthalassa.framework; sourceTree = "<group>"; };
 		D2F5E4402087BFB400A0B991 /* Panthalassa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Panthalassa.m; sourceTree = "<group>"; };
 		D2F5E4412087BFB400A0B991 /* Panthalassa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Panthalassa.h; sourceTree = "<group>"; };
@@ -524,6 +528,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2BFDCD2208D90440033E539 /* panthalassa.framework in Frameworks */,
 				140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -634,6 +639,7 @@
 			children = (
 				00E356F21AD99517003FC87E /* PangeaTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
+				D2BFDCCF208D8CAF0033E539 /* PanthalassaTests.m */,
 			);
 			path = PangeaTests;
 			sourceTree = "<group>";
@@ -1617,6 +1623,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2BFDCD1208D8FC80033E539 /* Panthalassa.m in Sources */,
+				D2BFDCD0208D8CAF0033E539 /* PanthalassaTests.m in Sources */,
 				00E356F31AD99517003FC87E /* PangeaTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1683,6 +1691,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W63599SJEC;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1724,6 +1736,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = W63599SJEC;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
