@@ -71,6 +71,12 @@ const baseKeyScreen = {
  */
 
 const Screens = {
+  ACCOUNTS_SCREEN: {
+    screen: 'Pangea.AccountsScreen',
+    title: i18n.t('screens.accounts.title'),
+    label: 'accounts',
+    navigatorStyle: hiddenNavigatorStyle,
+  },
   DASHBOARD_SCREEN: {
     screen: 'Pangea.DashboardScreen',
     label: i18n.t('screens.dashboard.tabTitle'),
