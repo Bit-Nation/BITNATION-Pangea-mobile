@@ -15,7 +15,7 @@ describe('ChatNationsScreen', () => {
       }],
       openedNationId: 1,
     },
-    profile: {
+    accounts: {
       user: {},
     },
     chat: {

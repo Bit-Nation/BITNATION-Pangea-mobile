@@ -2,14 +2,14 @@ import rootReducer, { subReducers } from '../../../src/reducers';
 
 test('rootReducer contains all child reducers', () => {
   const reducerNames = [
+    'accounts',
     'activity',
     'chat',
     'key',
     'modifyNation',
     'nations',
-    'profile',
     'testingMode',
-    'profile',
+    'wallet',
   ];
 
   reducerNames.forEach((reducerName) => {
