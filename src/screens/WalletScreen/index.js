@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 
@@ -18,6 +18,7 @@ import FakeNavigationBar from '../../components/common/FakeNavigationBar';
 import type { State } from '../../reducers/wallet';
 import type { WalletType } from '../../types/Wallet';
 import type { Navigator } from '../../types/ReactNativeNavigation';
+import ScreenTitle from '../../components/common/ScreenTitle';
 
 const REMOVE_WALLETS_BUTTON = 'REMOVE_WALLETS_BUTTON';
 
@@ -109,12 +110,7 @@ class WalletScreen extends NavigatorComponent<Props & TestingModeProps & Actions
 
         <View style={styles.bodyContainer}>
 
-          {/* TITLE OF SCREEN */}
-          <View style={styles.titleContainer}>
-            <View style={styles.titleBarLarge}>
-              <Text style={styles.largeTitle}>{i18n.t('screens.wallet.title')}</Text>
-            </View>
-          </View>
+          <ScreenTitle title={i18n.t('screens.wallet.title')} />
           {this.props.wallets === null || _.isEmpty(this.props.wallets) ? <EmptyWalletScreen
             onCreateWallet={this.createWallet}
             onRestoreWallet={this.restoreWallet}

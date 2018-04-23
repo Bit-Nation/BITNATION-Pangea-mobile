@@ -3,7 +3,7 @@
 import React from 'react';
 import {
   View,
-  Text, SectionList,
+  SectionList,
 } from 'react-native';
 import _ from 'lodash';
 import SegmentedControl from 'react-native-segmented-control-tab';
@@ -18,6 +18,7 @@ import { resolveStatus, statusColor } from '../../../utils/nations';
 import Loading from '../../../components/common/Loading';
 import type { NationIdType, NationType } from '../../../types/Nation';
 import type { NationTab } from '../../../actions/nations';
+import ScreenTitle from '../../../components/common/ScreenTitle';
 
 type Props = {
   /**
@@ -65,12 +66,7 @@ const NationsListScreen = ({
     <View style={styles.nationsScreenContainer}>
       <BackgroundImage />
       <FakeNavigationBar />
-      {/* TITLE OF SCREEN */}
-      <View style={styles.titleContainer}>
-        <View style={styles.titleBarLarge}>
-          <Text style={styles.largeTitle}>{i18n.t('screens.nations.title')}</Text>
-        </View>
-      </View>
+      <ScreenTitle title={i18n.t('screens.nations.title')} />
       <View style={styles.segmentedControlContainer}>
         <SegmentedControl
           values={[i18n.t('screens.nations.allNations'), i18n.t('screens.nations.myNations')]}

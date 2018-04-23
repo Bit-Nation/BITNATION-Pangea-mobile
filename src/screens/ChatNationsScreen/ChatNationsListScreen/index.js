@@ -3,7 +3,7 @@
 import React from 'react';
 import {
   View,
-  Text, SectionList,
+  SectionList,
 } from 'react-native';
 import _ from 'lodash';
 
@@ -15,6 +15,7 @@ import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import i18n from '../../../global/i18n';
 import AssetsImages from '../../../global/AssetsImages';
 import type { NationType } from '../../../types/Nation';
+import ScreenTitle from '../../../components/common/ScreenTitle';
 
 type Props = {
   /**
@@ -58,12 +59,7 @@ const ChatNationsListScreen = ({
     <View style={styles.nationsScreenContainer}>
       <BackgroundImage />
       <FakeNavigationBar />
-      {/* TITLE OF SCREEN */}
-      <View style={styles.titleContainer}>
-        <View style={styles.titleBarLarge}>
-          <Text style={styles.largeTitle}>{i18n.t('screens.chat.title')}</Text>
-        </View>
-      </View>
+      <ScreenTitle title={i18n.t('screens.chat.title')} />
       <SectionList
         renderItem={(item) => {
           const nation = item.item;

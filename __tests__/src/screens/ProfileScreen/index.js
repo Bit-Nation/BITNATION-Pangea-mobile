@@ -8,7 +8,7 @@ describe('ProfileScreenContainer', () => {
   let profileScreenContainer;
 
   const initialStateMock = {
-    profile: {
+    accounts: {
       user: {
         _id: 1,
         name: 'Pangea',
