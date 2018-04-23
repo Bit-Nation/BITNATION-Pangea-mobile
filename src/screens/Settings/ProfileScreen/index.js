@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { View } from 'react-native';
 
-import EmptyProfileScreen from './EmptyProfile/index';
 import ProfileScreen from './Profile/index';
 import EditProfile from './EditProfile/index';
 import {} from '../../../actions/accounts';
@@ -15,6 +14,10 @@ import type { Navigator } from '../../../types/ReactNativeNavigation';
 import type { Account } from '../../../types/Account';
 import styles from './EmptyProfile/styles';
 import { getCurrentAccount } from '../../../reducers/accounts';
+import {
+  cancelAccountEditing, changeEditingAccount, doneAccountEditing,
+  startAccountEditing, updateAccount,
+} from '../../../actions/profile';
 
 type Props = {
   /**
@@ -36,7 +39,7 @@ type Props = {
   /**
    * @desc Function to start account edit
    */
-  onStartAccountEditing: () => void,
+  onStartAccountEditing: (account: Account) => void,
   /**
    * @desc Function to cancel account edit
    */
@@ -49,7 +52,7 @@ type Props = {
   /**
    * @desc Function to complete account edit
    */
-  onDoneAccountEditing: () => void,
+  onDoneAccountEditing: (editingAccount: Account) => void,
   /**
    * @desc Function to enable testing mode
    */
@@ -70,25 +73,27 @@ class ProfileContainer extends Component<Props> {
       <View style={styles.screenContainer}>
         <BackgroundImage />
         <FakeNavigationBar />
-        {this.props.editingAccount !== null &&
+        {
+          this.props.editingAccount !== null &&
           <EditProfile
             account={this.props.account}
             editingAccount={this.props.editingAccount}
             navigator={this.props.navigator}
             onAccountChanged={this._onAccountFieldChanged}
             onCancelEditing={this.props.onCancelAccountEditing}
-            onDoneEditing={this.props.onDoneAccountEditing}
+            onDoneEditing={() => this.props.onDoneAccountEditing(this.props.editingAccount)}
           />
         }
-        {this.props.editingAccount == null &&
-           <ProfileScreen
-             account={this.props.account}
-             navigator={this.props.navigator}
-             onStartEditing={this.props.onStartAccountEditing}
-             makeStepForTestingMode={this.props.makeStepForTestingMode}
-             resetStepsForTestingMode={this.props.resetStepsForTestingMode}
-             testingModeActive={this.props.testingModeActive}
-           />
+        {
+          this.props.editingAccount == null &&
+          <ProfileScreen
+            account={this.props.account}
+            navigator={this.props.navigator}
+            onStartEditing={() => this.props.onStartAccountEditing(this.props.account)}
+            makeStepForTestingMode={this.props.makeStepForTestingMode}
+            resetStepsForTestingMode={this.props.resetStepsForTestingMode}
+            testingModeActive={this.props.testingModeActive}
+          />
         }
       </View>
     );
@@ -96,12 +101,25 @@ class ProfileContainer extends Component<Props> {
 }
 
 const mapStateToProps = state => ({
-  account: getCurrentAccount(state),
+  account: getCurrentAccount(state.accounts),
   editingAccount: state.accounts.editingAccount,
   testingModeActive: state.testingMode.isActive,
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
+  onStartAccountEditing(account: Account) {
+    dispatch(startAccountEditing(account));
+  },
+  onCancelAccountEditing() {
+    dispatch(cancelAccountEditing());
+  },
+  onChangeEditingAccount(account: Account) {
+    dispatch(changeEditingAccount(account));
+  },
+  onDoneAccountEditing(account: Account) {
+    dispatch(updateAccount(account));
+    dispatch(doneAccountEditing());
+  },
   makeStepForTestingMode() {
     dispatch(makeStep());
   },

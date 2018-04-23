@@ -19,7 +19,7 @@ import saveShouldBeEnabled from '../../../../utils/profile';
 import AssetsImage from '../../../../global/AssetsImages';
 import Colors from '../../../../global/colors';
 import type { Navigator } from '../../../../types/ReactNativeNavigation';
-import type { Account, EditingAccount } from '../../../../types/Account';
+import type { Account } from '../../../../types/Account';
 import i18n from '../../../../global/i18n';
 import styles from './styles';
 import ScreenTitle from '../../../../components/common/ScreenTitle';

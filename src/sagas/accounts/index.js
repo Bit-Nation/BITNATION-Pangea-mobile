@@ -1,7 +1,7 @@
 import { all, call, takeEvery } from 'redux-saga/effects';
 import { doneAccountEditing, listenForDatabaseUpdates, login, logout } from './sagas';
 import { LOGIN, LOGOUT } from '../../actions/accounts';
-import { DONE_ACCOUNT_EDITING } from '../../actions/profile';
+import { UPDATE_ACCOUNT } from '../../actions/profile';
 
 /**
  * @desc Root accounts saga.
@@ -12,6 +12,6 @@ export default function* rootSaga() {
     call(listenForDatabaseUpdates),
     yield takeEvery(LOGIN, login),
     yield takeEvery(LOGOUT, logout),
-    yield takeEvery(DONE_ACCOUNT_EDITING, doneAccountEditing),
+    yield takeEvery(UPDATE_ACCOUNT, doneAccountEditing),
   ]);
 }

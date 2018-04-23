@@ -17,6 +17,7 @@ import AccountsService from '../../services/accounts';
 import { InvalidPasswordError } from '../../global/errors/accounts';
 import type { AccountType as DBAccount } from '../../services/database/schemata';
 import type { State as RootState } from '../../reducers';
+import { UpdateAccountAction } from '../../actions/profile';
 
 /**
  * @desc That function should be used for listening on information that depends on current account.
@@ -67,12 +68,11 @@ export function* getCurrentAccountId(): Generator<*, *, *> {
 export function* getCurrentAccount(): Generator<*, *, *> {
   const id = yield call(getCurrentAccountId);
   if (id === null) {
-    yield null;
-  } else {
-    const db = yield call(dbFactory);
-    const results = db.objects('Account').filtered(`id == ${id}`);
-    yield results[0] || null;
+    return yield null;
   }
+  const db = yield call(dbFactory);
+  const results = db.objects('Account').filtered(`id == '${id}'`);
+  return yield results[0];
 }
 
 /**
@@ -117,13 +117,12 @@ export function* logout(): Generator<*, *, *> {
  * @desc Saves updated account to database.
  * @return {void}
  */
-export function* doneAccountEditing(): Generator<*, *, *> {
+export function* doneAccountEditing(action: UpdateAccountAction): Generator<*, *, *> {
   const account: DBAccount = yield call(getCurrentAccount);
   if (account === null) {
     return;
   }
-  const state: RootState = yield select();
-  const { editingAccount } = state.accounts;
+  const { account: editingAccount } = action;
   if (editingAccount === null) {
     return;
   }

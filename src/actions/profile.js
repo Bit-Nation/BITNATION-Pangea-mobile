@@ -2,21 +2,24 @@
 
 import type { Account } from '../types/Account';
 
-type StartAccountEditingAction = { +type: 'START_ACCOUNT_EDITING', +account: Account };
-type ChangeEditingAccountAction = { +type: 'CHANGE_EDITING_ACCOUNT', +account: Account };
-type CancelAccountEditingAction = { +type: 'CANCEL_ACCOUNT_EDITING' };
-type DoneAccountEditingAction = { +type: 'DONE_ACCOUNT_EDITING' };
+export type StartAccountEditingAction = { +type: 'START_ACCOUNT_EDITING', +account: Account };
+export type ChangeEditingAccountAction = { +type: 'CHANGE_EDITING_ACCOUNT', +account: Account };
+export type CancelAccountEditingAction = { +type: 'CANCEL_ACCOUNT_EDITING' };
+export type DoneAccountEditingAction = { +type: 'DONE_ACCOUNT_EDITING' };
+export type UpdateAccountAction = { +type: 'UPDATE_ACCOUNT', +account: Account };
 
 export type Action =
   | StartAccountEditingAction
   | ChangeEditingAccountAction
   | CancelAccountEditingAction
   | DoneAccountEditingAction
+  | UpdateAccountAction;
 
 export const START_ACCOUNT_EDITING = 'START_ACCOUNT_EDITING';
 export const CHANGE_EDITING_ACCOUNT = 'CHANGE_EDITING_ACCOUNT';
 export const DONE_ACCOUNT_EDITING = 'DONE_ACCOUNT_EDITING';
 export const CANCEL_ACCOUNT_EDITING = 'CANCEL_ACCOUNT_EDITING';
+export const UPDATE_ACCOUNT = 'UPDATE_ACCOUNT';
 
 /**
  * @desc Action creator for an action that should be called to start account editing.
@@ -59,5 +62,17 @@ export function cancelAccountEditing(): CancelAccountEditingAction {
 export function doneAccountEditing(): DoneAccountEditingAction {
   return {
     type: DONE_ACCOUNT_EDITING,
+  };
+}
+
+/**
+ * @desc Action creator for an action that should be called on done account editing.
+ * @param {Account} account Account to be updated.
+ * @returns {UpdateAccountAction} An action.
+ */
+export function updateAccount(account: Account): UpdateAccountAction {
+  return {
+    type: UPDATE_ACCOUNT,
+    account,
   };
 }
