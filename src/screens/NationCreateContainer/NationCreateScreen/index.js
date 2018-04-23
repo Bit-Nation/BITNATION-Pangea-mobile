@@ -24,6 +24,7 @@ import { emptyNation, nationIsModified, type State as ModifyNationState } from '
 import { nationIsValid } from '../../../utils/nations';
 import type { EditingNationType } from '../../../types/Nation';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
+import ScreenTitle from '../../../components/common/ScreenTitle';
 
 type Props = {
   navigator: Navigator,
@@ -80,13 +81,7 @@ class CreateNation extends NavigatorComponent<Props & Actions & ModifyNationStat
 
         <View style={styles.bodyContainer}>
           <ScrollView style={styles.scrollView} contentContainerStyle={styles.noflex}>
-            <View style={styles.titleContainer}>
-              <View style={styles.titleBarLarge}>
-                <Text style={styles.largeTitle}>
-                  {i18n.t('screens.createNation.title')}
-                </Text>
-              </View>
-            </View>
+            <ScreenTitle title={i18n.t('screens.createNation.title')} />
             {CreateNation.buildIntroPanel()}
             {this.buildCoreNationView()}
             {this.buildLocationNationView()}

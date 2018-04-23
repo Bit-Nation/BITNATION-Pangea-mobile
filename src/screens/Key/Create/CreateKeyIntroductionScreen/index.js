@@ -1,10 +1,7 @@
 // @flow
 
 import React from 'react';
-import {
-  View,
-  Text,
-} from 'react-native';
+import { View } from 'react-native';
 import { connect } from 'react-redux';
 
 import styles from './styles';
@@ -17,6 +14,7 @@ import { removePrivateKey } from '../../../../actions/key';
 import BodyParagraphs from '../../../../components/common/BodyParagraphs';
 import i18n from '../../../../global/i18n';
 import type { State } from '../../../../reducers/key';
+import ScreenTitle from '../../../../components/common/ScreenTitle';
 
 type Actions = {
   /**
@@ -39,12 +37,7 @@ class CreateKeyIntroductionScreen extends KeyBaseScreen<Actions & State> {
         <FakeNavigationBar />
 
         <View style={styles.bodyContainer}>
-          <View style={styles.titleContainer}>
-            {/* TITLE OF SCREEN */}
-            <View style={styles.titleBarLarge}>
-              <Text style={styles.largeTitle}>{i18n.t('screens.createKey.title')}</Text>
-            </View>
-          </View>
+          <ScreenTitle title={i18n.t('screens.createKey.title')} />
 
           <PanelView
             style={styles.panelViewTransparent}

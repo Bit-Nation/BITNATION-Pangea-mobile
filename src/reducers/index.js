@@ -1,7 +1,7 @@
 // @flow
 
 import { combineReducers } from 'redux';
-import profile, { type State as ProfileState } from './profile';
+import accounts, { type State as AccountsState } from './accounts';
 import nations, { type State as NationsState } from './nations';
 import modifyNation, { type State as ModifyNationState } from './modifyNation';
 import wallet, { type State as WalletState } from './wallet';
@@ -11,7 +11,7 @@ import testingMode, { type State as TestingModeState } from './testingMode';
 import chat, { type State as ChatState } from './chat';
 
 export type State = {
-  profile: ProfileState,
+  accounts: AccountsState,
   nations: NationsState,
   modifyNation: ModifyNationState,
   wallet: WalletState,
@@ -22,7 +22,7 @@ export type State = {
 }
 
 export const subReducers = {
-  profile,
+  accounts,
   nations,
   modifyNation,
   wallet,
