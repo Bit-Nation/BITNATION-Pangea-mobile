@@ -1,7 +1,5 @@
 // @flow
 
-import _ from 'lodash';
-
 import {
   type Action,
   SELECT_WALLET,
