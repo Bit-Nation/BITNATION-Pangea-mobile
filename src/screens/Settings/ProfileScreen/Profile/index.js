@@ -9,13 +9,13 @@ import {
 } from 'react-native';
 
 import styles from './styles';
-import AssetsImage from '../../../global/AssetsImages';
-import NavigatorComponent from '../../../components/common/NavigatorComponent';
-import Colors from '../../../global/colors';
-import type { Navigator } from '../../../types/ReactNativeNavigation';
-import type { Account } from '../../../types/Account';
-import i18n from '../../../global/i18n';
-import ScreenTitle from '../../../components/common/ScreenTitle';
+import AssetsImage from '../../../../global/AssetsImages';
+import NavigatorComponent from '../../../../components/common/NavigatorComponent';
+import Colors from '../../../../global/colors';
+import type { Navigator } from '../../../../types/ReactNativeNavigation';
+import type { Account } from '../../../../types/Account';
+import i18n from '../../../../global/i18n';
+import ScreenTitle from '../../../../components/common/ScreenTitle';
 
 const EDIT_BUTTON = 'EDIT_BUTTON';
 
@@ -25,15 +25,15 @@ export type Props = {
    */
   navigator: Navigator,
   /**
-   * @desc Current user object
+   * @desc Current account object
    */
-  user: Account,
+  account: Account,
   /**
    * @desc Flag that determines if testing mode is activated
    */
   testingModeActive: boolean,
   /**
-   * @desc Function to start user edit
+   * @desc Function to start account edit
    */
   onStartEditing: () => void,
   /**
@@ -94,17 +94,17 @@ class ProfileScreen extends NavigatorComponent<Props> {
   }
 
   _buildHeader() {
-    const { user } = this.props;
+    const { account } = this.props;
 
-    const avatarSource = user.avatar ?
-      { uri: `data:image/gif;base64,${user.avatar}` } :
+    const avatarSource = account.avatar ?
+      { uri: `data:image/gif;base64,${account.avatar}` } :
       AssetsImage.Placeholder.avatar;
 
     return (
       <View style={styles.header}>
         <Image source={avatarSource} style={styles.avatarLarge} />
-        <Text style={styles.nameText}>{user.name && user.name.trim()}</Text>
-        <Text style={styles.infoText}>{user.location && user.location.trim()}</Text>
+        <Text style={styles.nameText}>{account.name && account.name.trim()}</Text>
+        <Text style={styles.infoText}>{account.location && account.location.trim()}</Text>
       </View>
     );
   }

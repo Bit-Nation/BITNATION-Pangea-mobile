@@ -12,7 +12,7 @@ import { androidNavigationButtons } from '../../../global/Screens';
 import ScreenTitle from '../../../components/common/ScreenTitle';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
-import { State as SettingsState } from '../../../reducers/settings';
+import { type State as SettingsState } from '../../../reducers/settings';
 import SettingsListItem from '../../../components/common/SettingsListItem';
 import { changePasscodeLength, changeUseNumericPasscode } from '../../../actions/settings';
 import Colors from '../../../global/colors';

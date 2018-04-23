@@ -20,7 +20,7 @@ ShallowWrapper {
         "setOnNavigatorEvent": [MockFunction],
       }
     }
-    onCreateUserProfile={[MockFunction]}
+    onCreateAccountProfile={[MockFunction]}
     store={
       Object {
         "clearActions": [Function],
@@ -51,7 +51,6 @@ ShallowWrapper {
         <PanelView
           body="Bitnation is a decentralized, open-source movement powered by blockchain technology. Bitnation offers a peer-to-peer voluntary governance system to compete with the prevailing top-down, one-size-fits-all, geographical apartheid Nation State model wherein your quality of life is arbitrarily defined by where you were born."
           buttonTitle="Create a User Profile"
-          onButtonClick={[MockFunction]}
           style={
             Object {
               "backgroundColor": "transparent",
@@ -111,7 +110,6 @@ ShallowWrapper {
         "props": Object {
           "body": "Bitnation is a decentralized, open-source movement powered by blockchain technology. Bitnation offers a peer-to-peer voluntary governance system to compete with the prevailing top-down, one-size-fits-all, geographical apartheid Nation State model wherein your quality of life is arbitrarily defined by where you were born.",
           "buttonTitle": "Create a User Profile",
-          "onButtonClick": [MockFunction],
           "style": Object {
             "backgroundColor": "transparent",
             "borderRadius": 8,
@@ -157,7 +155,6 @@ ShallowWrapper {
           <PanelView
             body="Bitnation is a decentralized, open-source movement powered by blockchain technology. Bitnation offers a peer-to-peer voluntary governance system to compete with the prevailing top-down, one-size-fits-all, geographical apartheid Nation State model wherein your quality of life is arbitrarily defined by where you were born."
             buttonTitle="Create a User Profile"
-            onButtonClick={[MockFunction]}
             style={
               Object {
                 "backgroundColor": "transparent",
@@ -217,7 +214,6 @@ ShallowWrapper {
           "props": Object {
             "body": "Bitnation is a decentralized, open-source movement powered by blockchain technology. Bitnation offers a peer-to-peer voluntary governance system to compete with the prevailing top-down, one-size-fits-all, geographical apartheid Nation State model wherein your quality of life is arbitrarily defined by where you were born.",
             "buttonTitle": "Create a User Profile",
-            "onButtonClick": [MockFunction],
             "style": Object {
               "backgroundColor": "transparent",
               "borderRadius": 8,

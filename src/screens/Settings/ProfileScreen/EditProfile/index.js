@@ -13,16 +13,16 @@ import ImagePicker from 'react-native-image-crop-picker';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { ActionSheet } from 'native-base';
 
-import NavigatorComponent from '../../../components/common/NavigatorComponent';
-import PanelView from '../../../components/common/PanelView';
-import saveShouldBeEnabled from '../../../utils/profile';
-import AssetsImage from '../../../global/AssetsImages';
-import Colors from '../../../global/colors';
-import type { Navigator } from '../../../types/ReactNativeNavigation';
-import type { Account, EditingAccount } from '../../../types/Account';
-import i18n from '../../../global/i18n';
+import NavigatorComponent from '../../../../components/common/NavigatorComponent';
+import PanelView from '../../../../components/common/PanelView';
+import saveShouldBeEnabled from '../../../../utils/profile';
+import AssetsImage from '../../../../global/AssetsImages';
+import Colors from '../../../../global/colors';
+import type { Navigator } from '../../../../types/ReactNativeNavigation';
+import type { Account, EditingAccount } from '../../../../types/Account';
+import i18n from '../../../../global/i18n';
 import styles from './styles';
-import ScreenTitle from '../../../components/common/ScreenTitle';
+import ScreenTitle from '../../../../components/common/ScreenTitle';
 
 const DONE_BUTTON = 'DONE_BUTTON';
 
@@ -32,25 +32,25 @@ export type Props = {
    */
   navigator: Navigator,
   /**
-   * @desc User object that is currently being edited
+   * @desc Account object that is currently being edited
    */
-  editingUser: EditingAccount,
+  editingAccount: Account,
   /**
-   * @desc Current user object
+   * @desc Current account object
    */
-  user: Account,
+  account: Account,
   /**
-   * @desc Function to modify the editing user
-   * @param field A user field to be modified
+   * @desc Function to modify the editing account
+   * @param field An account field to be modified
    * @param value Updated value on the UI
    */
-  onUserChanged: (field: string, value: string) => void,
+  onAccountChanged: (field: string, value: string) => void,
   /**
-   * @desc Function to cancel user edit
+   * @desc Function to cancel account edit
    */
   onCancelEditing: () => void,
   /**
-   * @desc Function to complete user edit
+   * @desc Function to complete account edit
    */
   onDoneEditing: () => void,
 };
@@ -82,8 +82,8 @@ class EditProfile extends NavigatorComponent<Props> {
   }
 
   componentWillReceiveProps(nextProps: Props) {
-    const saveWasEnabled = saveShouldBeEnabled(this.props.user, this.props.editingUser);
-    const saveWillBeEnabled = saveShouldBeEnabled(nextProps.user, nextProps.editingUser);
+    const saveWasEnabled = saveShouldBeEnabled(this.props.account, this.props.editingAccount);
+    const saveWillBeEnabled = saveShouldBeEnabled(nextProps.account, nextProps.editingAccount);
     if (saveWasEnabled !== saveWillBeEnabled) {
       this.setNavigationButtons(saveWillBeEnabled);
     }
@@ -115,10 +115,10 @@ class EditProfile extends NavigatorComponent<Props> {
 
   // ========================================
   _buildPicturePanel() {
-    const { editingUser } = this.props;
+    const { editingAccount } = this.props;
 
-    const avatarSource = editingUser.avatar
-      ? { uri: `data:image/gif;base64,${editingUser.avatar}` }
+    const avatarSource = editingAccount.avatar
+      ? { uri: `data:image/gif;base64,${editingAccount.avatar}` }
       : AssetsImage.Placeholder.avatar;
 
     return (
@@ -152,7 +152,7 @@ class EditProfile extends NavigatorComponent<Props> {
           <View style={styles.fieldsContainer}>
             <View style={styles.formRow}>
               <TextInput
-                value={this.props.editingUser.name}
+                value={this.props.editingAccount.name}
                 onChangeText={text => this._onChange('name', text)}
                 style={styles.textInput}
                 placeholder={i18n.t('screens.profile.edit.name')}
@@ -162,7 +162,7 @@ class EditProfile extends NavigatorComponent<Props> {
             </View>
             <View style={styles.formRow}>
               <TextInput
-                value={this.props.editingUser.location}
+                value={this.props.editingAccount.location}
                 onChangeText={text => this._onChange('location', text)}
                 style={styles.textInput}
                 placeholder={i18n.t('screens.profile.edit.location')}
@@ -183,7 +183,7 @@ class EditProfile extends NavigatorComponent<Props> {
   }
 
   _onChange = (field, value) => {
-    this.props.onUserChanged(field, value);
+    this.props.onAccountChanged(field, value);
   };
 
   _onEditAvatar = () => {
@@ -233,7 +233,7 @@ class EditProfile extends NavigatorComponent<Props> {
         await ImagePicker.openPicker(options);
 
       if (result.data) {
-        this.props.onUserChanged('avatar', result.data);
+        this.props.onAccountChanged('avatar', result.data);
       }
     } catch (error) {
       Alert.alert(i18n.t('error.noCamera'));

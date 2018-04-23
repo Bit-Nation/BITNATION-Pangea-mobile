@@ -1,4 +1,7 @@
+/* eslint-disable no-use-before-define */
 // @flow
+
+import _ from 'lodash';
 
 import {
   type Action,
@@ -8,17 +11,17 @@ import {
 } from '../actions/accounts';
 import type { Account, EditingAccount } from '../types/Account';
 import TaskBuilder, { type AsyncTask } from '../utils/asyncTask';
+import { CANCEL_ACCOUNT_EDITING, CHANGE_EDITING_ACCOUNT, DONE_ACCOUNT_EDITING, START_ACCOUNT_EDITING } from '../actions/profile';
 
 export type State = {
-  +user: Account | null,
-  +editingUser: EditingAccount | null,
+  +editingAccount: Account | null,
   +currentAccountId: string | null,
   +login: AsyncTask<void>,
   +logout: AsyncTask<void>,
   +accounts: Array<Account>,
 };
 
-export const emptyProfile: EditingAccount = {
+export const emptyAccount: EditingAccount = {
   id: null,
   name: null,
   location: null,
@@ -27,8 +30,7 @@ export const emptyProfile: EditingAccount = {
 };
 
 export const initialState: State = {
-  user: null,
-  editingUser: null,
+  editingAccount: null,
   currentAccountId: null,
   login: TaskBuilder.empty(),
   logout: TaskBuilder.empty(),
@@ -59,7 +61,32 @@ export default (state: State = initialState, action: Action): State => {
         login: action.asyncTask,
       };
 
+    case START_ACCOUNT_EDITING:
+      return {
+        ...state,
+        editingAccount: getCurrentAccount(state),
+      };
+    case CHANGE_EDITING_ACCOUNT:
+      return {
+        ...state,
+        editingAccount: action.account,
+      };
+    case CANCEL_ACCOUNT_EDITING:
+      return {
+        ...state,
+        editingAccount: null,
+      };
+    case DONE_ACCOUNT_EDITING: {
+      return {
+        ...state,
+        editingAccount: null,
+      };
+    }
+
     default:
       return state;
   }
 };
+
+export const getCurrentAccount = (state: State) =>
+  _.find(state.accounts, account => account.id === state.currentAccountId) || null;

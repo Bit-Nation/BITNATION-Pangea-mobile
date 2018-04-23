@@ -2,10 +2,10 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
 
-import EditProfileScreen from '../../../../../src/screens/ProfileScreen/EditProfile';
+import ProfileScreen from '../../../../../../src/screens/Settings/ProfileScreen/Profile/index';
 
 describe('ProfileScreenContainer', () => {
-  let editProfileScreen;
+  let profileScreen;
 
   const initialStateMock = {};
   const storeMock = configureStore([]);
@@ -14,7 +14,7 @@ describe('ProfileScreenContainer', () => {
       setButtons: jest.fn(),
       setOnNavigatorEvent: jest.fn(),
     },
-    editingUser: {
+    account: {
       _id: 1,
       name: 'Pangea',
       location: 'NYC',
@@ -23,13 +23,13 @@ describe('ProfileScreenContainer', () => {
   };
 
   beforeEach(() => {
-    editProfileScreen = shallow(<EditProfileScreen
+    profileScreen = shallow(<ProfileScreen
       {...propsMock}
       store={storeMock(initialStateMock)}
     />);
   });
 
   test('Rendering', () => {
-    expect(editProfileScreen).toMatchSnapshot();
+    expect(profileScreen).toMatchSnapshot();
   });
 });

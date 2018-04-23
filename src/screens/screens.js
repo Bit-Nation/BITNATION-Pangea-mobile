@@ -18,7 +18,7 @@ import ReceiveMoneyScreen from './WalletScreen/ReceiveMoney';
 import QRCodeScannerScreen from './WalletScreen/QRCodeScanner';
 import ChatScreen from './ChatScreen';
 import NationsScreen from './NationsScreen';
-import ProfileScreen from './ProfileScreen';
+import ProfileScreen from './Settings/ProfileScreen';
 import NationDetailsScreen from './NationDetailsContainer';
 import NationCreateScreen from './NationCreateContainer';
 import ChatNationsScreen from './ChatNationsScreen';

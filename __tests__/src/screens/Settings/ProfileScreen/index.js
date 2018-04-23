@@ -2,19 +2,19 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
 
-import ProfileScreenContainer from '../../../../src/screens/ProfileScreen';
+import ProfileScreenContainer from '../../../../../src/screens/Settings/ProfileScreen/index';
 
 describe('ProfileScreenContainer', () => {
   let profileScreenContainer;
 
   const initialStateMock = {
     accounts: {
-      user: {
+      account: {
         _id: 1,
         name: 'Pangea',
         location: 'NYC',
       },
-      editinguser: {},
+      editingAccount: {},
     },
     testingMode: {
       isActive: true,

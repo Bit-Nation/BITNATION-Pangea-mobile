@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
 
-import EmptyProfileScreen from '../../../../../src/screens/ProfileScreen/EmptyProfile';
+import EmptyProfileScreen from '../../../../../../src/screens/Settings/ProfileScreen/EmptyProfile/index';
 
 describe('ProfileScreenContainer', () => {
   let emptyProfileScreen;
@@ -14,7 +14,7 @@ describe('ProfileScreenContainer', () => {
       setButtons: jest.fn(),
       setOnNavigatorEvent: jest.fn(),
     },
-    onCreateUserProfile: jest.fn(),
+    onCreateAccountProfile: jest.fn(),
   };
 
   beforeEach(() => {

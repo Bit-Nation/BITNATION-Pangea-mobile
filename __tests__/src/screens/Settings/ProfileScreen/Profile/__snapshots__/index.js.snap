@@ -5,6 +5,14 @@ ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <ProfileScreen
+    account={
+      Object {
+        "_id": 1,
+        "avatar": null,
+        "location": "NYC",
+        "name": "Pangea",
+      }
+    }
     navigator={
       Object {
         "setButtons": [MockFunction] {
@@ -40,14 +48,6 @@ ShallowWrapper {
         "getState": [Function],
         "replaceReducer": [Function],
         "subscribe": [Function],
-      }
-    }
-    user={
-      Object {
-        "_id": 1,
-        "avatar": null,
-        "location": "NYC",
-        "name": "Pangea",
       }
     }
   />,

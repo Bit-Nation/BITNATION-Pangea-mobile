@@ -29,7 +29,12 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "editingUser": undefined,
+      "account": Object {
+        "_id": 1,
+        "location": "NYC",
+        "name": "Pangea",
+      },
+      "editingAccount": Object {},
       "makeStepForTestingMode": [Function],
       "navigator": Object {},
       "resetStepsForTestingMode": [Function],
@@ -61,11 +66,6 @@ ShallowWrapper {
         "unsubscribe": [Function],
       },
       "testingModeActive": true,
-      "user": Object {
-        "_id": 1,
-        "location": "NYC",
-        "name": "Pangea",
-      },
     },
     "ref": null,
     "rendered": null,
@@ -77,7 +77,12 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "editingUser": undefined,
+        "account": Object {
+          "_id": 1,
+          "location": "NYC",
+          "name": "Pangea",
+        },
+        "editingAccount": Object {},
         "makeStepForTestingMode": [Function],
         "navigator": Object {},
         "resetStepsForTestingMode": [Function],
@@ -109,11 +114,6 @@ ShallowWrapper {
           "unsubscribe": [Function],
         },
         "testingModeActive": true,
-        "user": Object {
-          "_id": 1,
-          "location": "NYC",
-          "name": "Pangea",
-        },
       },
       "ref": null,
       "rendered": null,
