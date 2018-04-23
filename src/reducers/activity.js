@@ -34,9 +34,12 @@ export function mergeMessages(
   newMessages: Array<ActivityLogMessage>,
   limit: number = ACTIVITY_MESSAGES_LIMIT,
 ): Array<ActivityLogMessage> {
-  const getId = message => -message.id;
   const allMessages = _.concat(currentMessages, newMessages);
-  const uniqueMessages = _.sortedUniqBy(_.sortBy(allMessages, getId), getId);
+  const uniqueMessages = _(allMessages)
+    .sortBy(message => message.id)
+    .sortedUniqBy(message => message.id)
+    .reverse()
+    .value();
   return _.take(uniqueMessages, limit);
 }
 
