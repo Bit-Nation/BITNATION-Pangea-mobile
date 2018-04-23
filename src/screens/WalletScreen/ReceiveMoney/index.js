@@ -15,6 +15,7 @@ import PanelView from '../../../components/common/PanelView';
 import { androidNavigationButtons } from '../../../global/Screens';
 import i18n from '../../../global/i18n';
 import type { State as WalletState } from '../../../reducers/wallet';
+import ScreenTitle from '../../../components/common/ScreenTitle';
 
 class ReceiveMoneyScreen extends Component<WalletState> {
   static navigatorButtons = { ...androidNavigationButtons };
@@ -31,12 +32,7 @@ class ReceiveMoneyScreen extends Component<WalletState> {
         <BackgroundImage />
         <FakeNavigationBar />
         <View style={styles.bodyContainer}>
-
-          <View style={styles.titleContainer}>
-            <View style={styles.titleBarLarge}>
-              <Text style={styles.largeTitle}>{i18n.t('screens.receiveMoney.title')}</Text>
-            </View>
-          </View>
+          <ScreenTitle title={i18n.t('screens.receiveMoney.title')} />
 
           <PanelView
             title={i18n.t('screens.receiveMoney.shareAddressPanel.title')}

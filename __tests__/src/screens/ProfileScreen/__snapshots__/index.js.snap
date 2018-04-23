@@ -30,14 +30,8 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "editingUser": undefined,
-      "getUserProfile": [Function],
       "makeStepForTestingMode": [Function],
       "navigator": Object {},
-      "onCancelUserEditing": [Function],
-      "onChangeEditingUser": [Function],
-      "onDoneUserEditing": [Function],
-      "onStartUserCreating": [Function],
-      "onStartUserEditing": [Function],
       "resetStepsForTestingMode": [Function],
       "store": Object {
         "clearActions": [Function],
@@ -84,14 +78,8 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "editingUser": undefined,
-        "getUserProfile": [Function],
         "makeStepForTestingMode": [Function],
         "navigator": Object {},
-        "onCancelUserEditing": [Function],
-        "onChangeEditingUser": [Function],
-        "onDoneUserEditing": [Function],
-        "onStartUserCreating": [Function],
-        "onStartUserEditing": [Function],
         "resetStepsForTestingMode": [Function],
         "store": Object {
           "clearActions": [Function],
