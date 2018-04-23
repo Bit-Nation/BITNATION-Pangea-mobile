@@ -1,15 +1,13 @@
 // @flow
 
 import React, { Component } from 'react';
-import {
-  View,
-  Text,
-} from 'react-native';
+import { View } from 'react-native';
 
 import styles from './styles';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import PanelView from '../../../components/common/PanelView';
 import i18n from '../../../global/i18n';
+import ScreenTitle from '../../../components/common/ScreenTitle';
 
 export type Props = {
   /**
@@ -30,12 +28,7 @@ class EmptyProfileScreen extends Component<Props> {
   render() {
     return (
       <View style={styles.bodyContainer}>
-        {/* TITLE OF SCREEN */}
-        <View style={styles.titleContainer}>
-          <View style={styles.titleBarLarge}>
-            <Text style={styles.largeTitle}>{i18n.t('screens.profile.title')}</Text>
-          </View>
-        </View>
+        <ScreenTitle title={i18n.t('screens.profile.title')} />
 
         <PanelView
           title={i18n.t('screens.profile.empty.createProfilePanel.title')}

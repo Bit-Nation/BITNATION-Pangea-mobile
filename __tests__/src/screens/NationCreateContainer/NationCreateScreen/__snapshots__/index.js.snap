@@ -88,41 +88,9 @@ ShallowWrapper {
               }
             }
           >
-            <View
-              style={
-                Object {
-                  "marginLeft": 8,
-                  "marginRight": 8,
-                }
-              }
-            >
-              <View
-                style={
-                  Object {
-                    "alignItems": "flex-start",
-                    "height": 52,
-                  }
-                }
-              >
-                <Text
-                  accessible={true}
-                  allowFontScaling={true}
-                  ellipsizeMode="tail"
-                  style={
-                    Object {
-                      "color": "#F5A623",
-                      "fontFamily": "Roboto",
-                      "fontSize": 22,
-                      "fontWeight": "900",
-                      "letterSpacing": 0,
-                      "lineHeight": 30,
-                    }
-                  }
-                >
-                  Create A Nation
-                </Text>
-              </View>
-            </View>
+            <ScreenTitle
+              title="Create A Nation"
+            />
             <View
               style={
                 Object {
@@ -942,41 +910,9 @@ ShallowWrapper {
               }
             }
           >
-            <View
-              style={
-                Object {
-                  "marginLeft": 8,
-                  "marginRight": 8,
-                }
-              }
-            >
-              <View
-                style={
-                  Object {
-                    "alignItems": "flex-start",
-                    "height": 52,
-                  }
-                }
-              >
-                <Text
-                  accessible={true}
-                  allowFontScaling={true}
-                  ellipsizeMode="tail"
-                  style={
-                    Object {
-                      "color": "#F5A623",
-                      "fontFamily": "Roboto",
-                      "fontSize": 22,
-                      "fontWeight": "900",
-                      "letterSpacing": 0,
-                      "lineHeight": 30,
-                    }
-                  }
-                >
-                  Create A Nation
-                </Text>
-              </View>
-            </View>
+            <ScreenTitle
+              title="Create A Nation"
+            />
             <View
               style={
                 Object {
@@ -1721,41 +1657,9 @@ ShallowWrapper {
           "nodeType": "class",
           "props": Object {
             "children": Array [
-              <View
-                style={
-                  Object {
-                    "marginLeft": 8,
-                    "marginRight": 8,
-                  }
-                }
-              >
-                <View
-                  style={
-                    Object {
-                      "alignItems": "flex-start",
-                      "height": 52,
-                    }
-                  }
-                >
-                  <Text
-                    accessible={true}
-                    allowFontScaling={true}
-                    ellipsizeMode="tail"
-                    style={
-                      Object {
-                        "color": "#F5A623",
-                        "fontFamily": "Roboto",
-                        "fontSize": 22,
-                        "fontWeight": "900",
-                        "letterSpacing": 0,
-                        "lineHeight": 30,
-                      }
-                    }
-                  >
-                    Create A Nation
-                  </Text>
-                </View>
-              </View>,
+              <ScreenTitle
+                title="Create A Nation"
+              />,
               <View
                 style={
                   Object {
@@ -2496,92 +2400,12 @@ ShallowWrapper {
             Object {
               "instance": null,
               "key": undefined,
-              "nodeType": "class",
+              "nodeType": "function",
               "props": Object {
-                "children": <View
-                  style={
-                    Object {
-                      "alignItems": "flex-start",
-                      "height": 52,
-                    }
-                  }
-                >
-                  <Text
-                    accessible={true}
-                    allowFontScaling={true}
-                    ellipsizeMode="tail"
-                    style={
-                      Object {
-                        "color": "#F5A623",
-                        "fontFamily": "Roboto",
-                        "fontSize": 22,
-                        "fontWeight": "900",
-                        "letterSpacing": 0,
-                        "lineHeight": 30,
-                      }
-                    }
-                  >
-                    Create A Nation
-                  </Text>
-                </View>,
-                "style": Object {
-                  "marginLeft": 8,
-                  "marginRight": 8,
-                },
+                "title": "Create A Nation",
               },
               "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "class",
-                "props": Object {
-                  "children": <Text
-                    accessible={true}
-                    allowFontScaling={true}
-                    ellipsizeMode="tail"
-                    style={
-                      Object {
-                        "color": "#F5A623",
-                        "fontFamily": "Roboto",
-                        "fontSize": 22,
-                        "fontWeight": "900",
-                        "letterSpacing": 0,
-                        "lineHeight": 30,
-                      }
-                    }
-                  >
-                    Create A Nation
-                  </Text>,
-                  "style": Object {
-                    "alignItems": "flex-start",
-                    "height": 52,
-                  },
-                },
-                "ref": null,
-                "rendered": Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "class",
-                  "props": Object {
-                    "accessible": true,
-                    "allowFontScaling": true,
-                    "children": "Create A Nation",
-                    "ellipsizeMode": "tail",
-                    "style": Object {
-                      "color": "#F5A623",
-                      "fontFamily": "Roboto",
-                      "fontSize": 22,
-                      "fontWeight": "900",
-                      "letterSpacing": 0,
-                      "lineHeight": 30,
-                    },
-                  },
-                  "ref": null,
-                  "rendered": "Create A Nation",
-                  "type": [Function],
-                },
-                "type": [Function],
-              },
+              "rendered": null,
               "type": [Function],
             },
             Object {
@@ -5163,41 +4987,9 @@ ShallowWrapper {
                 }
               }
             >
-              <View
-                style={
-                  Object {
-                    "marginLeft": 8,
-                    "marginRight": 8,
-                  }
-                }
-              >
-                <View
-                  style={
-                    Object {
-                      "alignItems": "flex-start",
-                      "height": 52,
-                    }
-                  }
-                >
-                  <Text
-                    accessible={true}
-                    allowFontScaling={true}
-                    ellipsizeMode="tail"
-                    style={
-                      Object {
-                        "color": "#F5A623",
-                        "fontFamily": "Roboto",
-                        "fontSize": 22,
-                        "fontWeight": "900",
-                        "letterSpacing": 0,
-                        "lineHeight": 30,
-                      }
-                    }
-                  >
-                    Create A Nation
-                  </Text>
-                </View>
-              </View>
+              <ScreenTitle
+                title="Create A Nation"
+              />
               <View
                 style={
                   Object {
@@ -6017,41 +5809,9 @@ ShallowWrapper {
                 }
               }
             >
-              <View
-                style={
-                  Object {
-                    "marginLeft": 8,
-                    "marginRight": 8,
-                  }
-                }
-              >
-                <View
-                  style={
-                    Object {
-                      "alignItems": "flex-start",
-                      "height": 52,
-                    }
-                  }
-                >
-                  <Text
-                    accessible={true}
-                    allowFontScaling={true}
-                    ellipsizeMode="tail"
-                    style={
-                      Object {
-                        "color": "#F5A623",
-                        "fontFamily": "Roboto",
-                        "fontSize": 22,
-                        "fontWeight": "900",
-                        "letterSpacing": 0,
-                        "lineHeight": 30,
-                      }
-                    }
-                  >
-                    Create A Nation
-                  </Text>
-                </View>
-              </View>
+              <ScreenTitle
+                title="Create A Nation"
+              />
               <View
                 style={
                   Object {
@@ -6796,41 +6556,9 @@ ShallowWrapper {
             "nodeType": "class",
             "props": Object {
               "children": Array [
-                <View
-                  style={
-                    Object {
-                      "marginLeft": 8,
-                      "marginRight": 8,
-                    }
-                  }
-                >
-                  <View
-                    style={
-                      Object {
-                        "alignItems": "flex-start",
-                        "height": 52,
-                      }
-                    }
-                  >
-                    <Text
-                      accessible={true}
-                      allowFontScaling={true}
-                      ellipsizeMode="tail"
-                      style={
-                        Object {
-                          "color": "#F5A623",
-                          "fontFamily": "Roboto",
-                          "fontSize": 22,
-                          "fontWeight": "900",
-                          "letterSpacing": 0,
-                          "lineHeight": 30,
-                        }
-                      }
-                    >
-                      Create A Nation
-                    </Text>
-                  </View>
-                </View>,
+                <ScreenTitle
+                  title="Create A Nation"
+                />,
                 <View
                   style={
                     Object {
@@ -7571,92 +7299,12 @@ ShallowWrapper {
               Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "class",
+                "nodeType": "function",
                 "props": Object {
-                  "children": <View
-                    style={
-                      Object {
-                        "alignItems": "flex-start",
-                        "height": 52,
-                      }
-                    }
-                  >
-                    <Text
-                      accessible={true}
-                      allowFontScaling={true}
-                      ellipsizeMode="tail"
-                      style={
-                        Object {
-                          "color": "#F5A623",
-                          "fontFamily": "Roboto",
-                          "fontSize": 22,
-                          "fontWeight": "900",
-                          "letterSpacing": 0,
-                          "lineHeight": 30,
-                        }
-                      }
-                    >
-                      Create A Nation
-                    </Text>
-                  </View>,
-                  "style": Object {
-                    "marginLeft": 8,
-                    "marginRight": 8,
-                  },
+                  "title": "Create A Nation",
                 },
                 "ref": null,
-                "rendered": Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "class",
-                  "props": Object {
-                    "children": <Text
-                      accessible={true}
-                      allowFontScaling={true}
-                      ellipsizeMode="tail"
-                      style={
-                        Object {
-                          "color": "#F5A623",
-                          "fontFamily": "Roboto",
-                          "fontSize": 22,
-                          "fontWeight": "900",
-                          "letterSpacing": 0,
-                          "lineHeight": 30,
-                        }
-                      }
-                    >
-                      Create A Nation
-                    </Text>,
-                    "style": Object {
-                      "alignItems": "flex-start",
-                      "height": 52,
-                    },
-                  },
-                  "ref": null,
-                  "rendered": Object {
-                    "instance": null,
-                    "key": undefined,
-                    "nodeType": "class",
-                    "props": Object {
-                      "accessible": true,
-                      "allowFontScaling": true,
-                      "children": "Create A Nation",
-                      "ellipsizeMode": "tail",
-                      "style": Object {
-                        "color": "#F5A623",
-                        "fontFamily": "Roboto",
-                        "fontSize": 22,
-                        "fontWeight": "900",
-                        "letterSpacing": 0,
-                        "lineHeight": 30,
-                      },
-                    },
-                    "ref": null,
-                    "rendered": "Create A Nation",
-                    "type": [Function],
-                  },
-                  "type": [Function],
-                },
+                "rendered": null,
                 "type": [Function],
               },
               Object {
