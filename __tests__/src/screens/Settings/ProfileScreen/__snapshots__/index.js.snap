@@ -29,14 +29,14 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "account": Object {
-        "_id": 1,
-        "location": "NYC",
-        "name": "Pangea",
-      },
+      "account": null,
       "editingAccount": Object {},
       "makeStepForTestingMode": [Function],
       "navigator": Object {},
+      "onCancelAccountEditing": [Function],
+      "onChangeEditingAccount": [Function],
+      "onDoneAccountEditing": [Function],
+      "onStartAccountEditing": [Function],
       "resetStepsForTestingMode": [Function],
       "store": Object {
         "clearActions": [Function],
@@ -77,14 +77,14 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "account": Object {
-          "_id": 1,
-          "location": "NYC",
-          "name": "Pangea",
-        },
+        "account": null,
         "editingAccount": Object {},
         "makeStepForTestingMode": [Function],
         "navigator": Object {},
+        "onCancelAccountEditing": [Function],
+        "onChangeEditingAccount": [Function],
+        "onDoneAccountEditing": [Function],
+        "onStartAccountEditing": [Function],
         "resetStepsForTestingMode": [Function],
         "store": Object {
           "clearActions": [Function],

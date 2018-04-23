@@ -77,6 +77,6 @@ const mapStateToProps = state => ({
   accounts: state.accounts,
 });
 
-const mapDispatchToProps = dispatch => ({});
+const mapDispatchToProps = () => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(SettingsListScreen);

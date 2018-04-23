@@ -1,7 +1,7 @@
 // @flow
 
 import _ from 'lodash';
-import type { Account, EditingAccount } from '../types/Account';
+import type { Account } from '../types/Account';
 
 /**
  * @desc Function that checks for the save enabled status

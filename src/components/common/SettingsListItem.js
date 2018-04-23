@@ -6,8 +6,6 @@ import { MediaQueryStyleSheet } from 'react-native-responsive';
 
 import GlobalStyles from '../../global/Styles';
 import AssetsImages from '../../global/AssetsImages';
-import i18n from '../../global/i18n';
-import type { SettingsItem } from '../../types/Settings';
 import Colors from '../../global/colors';
 
 export type AdditionalViewKind =

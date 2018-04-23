@@ -81,7 +81,7 @@ class ProfileContainer extends Component<Props> {
             navigator={this.props.navigator}
             onAccountChanged={this._onAccountFieldChanged}
             onCancelEditing={this.props.onCancelAccountEditing}
-            onDoneEditing={() => this.props.onDoneAccountEditing(this.props.editingAccount)}
+            onDoneEditing={() => this.props.onDoneAccountEditing(this.props.editingAccount || this.props.account)}
           />
         }
         {
@@ -106,7 +106,7 @@ const mapStateToProps = state => ({
   testingModeActive: state.testingMode.isActive,
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   onStartAccountEditing(account: Account) {
     dispatch(startAccountEditing(account));
   },

@@ -16,8 +16,7 @@ import TaskBuilder from '../../utils/asyncTask';
 import AccountsService from '../../services/accounts';
 import { InvalidPasswordError } from '../../global/errors/accounts';
 import type { AccountType as DBAccount } from '../../services/database/schemata';
-import type { State as RootState } from '../../reducers';
-import { UpdateAccountAction } from '../../actions/profile';
+import type { UpdateAccountAction } from '../../actions/profile';
 
 /**
  * @desc That function should be used for listening on information that depends on current account.
@@ -115,6 +114,7 @@ export function* logout(): Generator<*, *, *> {
 
 /**
  * @desc Saves updated account to database.
+ * @param {UpdateAccountAction} action An action saga was called with.
  * @return {void}
  */
 export function* doneAccountEditing(action: UpdateAccountAction): Generator<*, *, *> {
