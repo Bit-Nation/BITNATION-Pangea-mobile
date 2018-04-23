@@ -32,13 +32,14 @@ export function getWalletIndex(wallets: Array<WalletType>, address: string): num
  */
 export function convertWallets(wallets: Map<string, string>): Array<WalletType> {
   const walletsArray = [];
+
   wallets.forEach((value, key) =>
     walletsArray.push({
       key,
       value,
     }));
 
-  return _.map(walletsArray, wallet => ({
+  return walletsArray.map(wallet => ({
     ethAddress: wallet.key,
     currency: 'ETH',
     balance: null,
