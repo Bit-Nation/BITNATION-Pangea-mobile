@@ -24,5 +24,8 @@
     "no-underscore-dangle": 0,
     "max-len": "off",
     "import/prefer-default-export": "off"
+  },
+  "globals": {
+    "Generator": true
   }
 }

@@ -1,11 +1,9 @@
 import { Provider } from 'react-redux';
-import { Navigation } from 'react-native-navigation';
 import asyncToGenerator from 'async-to-generator';
 
 import configureStore from './src/config/configureStore';
 import registerScreens from './src/screens/screens';
-import { screen, appStyle, tabsStyle } from './src/global/Screens';
-import { requestSyncNations } from './src/actions/nations';
+import { startNavigation } from './src/actions/navigation';
 
 // Fix for https://github.com/Bit-Nation/BITNATION-Pangea-mobile/issues/166
 // Related with https://github.com/facebook/react-native/issues/4844
@@ -15,18 +13,7 @@ babelHelpers.asyncToGenerator = asyncToGenerator;
 
 const store = configureStore();
 registerScreens(store, Provider);
-
-Navigation.startTabBasedApp({
-  tabs: [
-    screen('DASHBOARD_SCREEN'),
-    screen('CHAT_NATIONS_SCREEN'),
-    screen('NATIONS_SCREEN'),
-    screen('WALLET_SCREEN'),
-    screen('SETTINGS_SCREEN'),
-  ],
-  tabsStyle: { ...tabsStyle },
-  appStyle: { ...appStyle },
-});
+store.dispatch(startNavigation());
 
 const App = () => null;
 
