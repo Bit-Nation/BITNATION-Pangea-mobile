@@ -54,7 +54,7 @@ export function launchLoggedInFlow() {
  */
 export function launchLoggedOutFlow() {
   Navigation.startSingleScreenApp({
-    screen: screen('INTRO_SCREEN'),
+    screen: screen('ACCOUNTS_SCREEN'),
     appStyle: { ...appStyle },
   });
 }

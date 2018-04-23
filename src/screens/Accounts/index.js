@@ -7,7 +7,7 @@ import { View } from 'react-native';
 import i18n from '../../global/i18n';
 import BackgroundImage from '../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../components/common/FakeNavigationBar';
-import BodyParagraphs from '../../components/common/BodyParagraphs';
+import PanelView from '../../components/common/PanelView';
 import ScreenTitle from '../../components/common/ScreenTitle';
 import Button from '../../components/common/Button';
 import styles from './styles';
@@ -23,7 +23,7 @@ class Accounts extends Component<Props> {
         <BackgroundImage />
         <FakeNavigationBar />
         <ScreenTitle title={i18n.t('screens.accounts.title')} />
-        <BodyParagraphs paragraphs={i18n.t('screens.accounts.introduction')} />
+        <PanelView body={i18n.t('screens.accounts.introduction')} />
         <View>
           <Button
             style={styles.panelButton}
