@@ -1,6 +1,7 @@
-import { all } from 'redux-saga/effects';
+import { all, call } from 'redux-saga/effects';
 
 import accounts from './accounts';
+import navigation from './navigation';
 
 /**
  * @desc Root saga.
@@ -8,6 +9,7 @@ import accounts from './accounts';
  */
 export default function* rootSaga() {
   yield all([
-    accounts(),
+    call(accounts),
+    call(navigation),
   ]);
 }
