@@ -74,7 +74,16 @@ const Screens = {
   ACCOUNTS_SCREEN: {
     screen: 'Pangea.AccountsScreen',
     title: i18n.t('screens.accounts.title'),
-    label: 'accounts',
+    navigatorStyle: hiddenNavigatorStyle,
+  },
+  ACCOUNT_CREATE_SCREEN: {
+    screen: 'Pangea.AccountCreateScreen',
+    title: i18n.t('screens.accounts.create.title'),
+    navigatorStyle: hiddenNavigatorStyle,
+  },
+  ACCOUNT_RESTORE_SCREEN: {
+    screen: 'Pangea.AccountRestoreScreen',
+    title: i18n.t('screens.accounts.restore.title'),
     navigatorStyle: hiddenNavigatorStyle,
   },
   DASHBOARD_SCREEN: {

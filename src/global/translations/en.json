@@ -204,7 +204,10 @@
     },
     "accounts": {
       "title": "Accounts",
-      "introduction": "Create a new account or restore an account you have backed up."
+      "introduction": "Create a new account or restore an account you have backed up.",
+      "create": {
+        "title": "Create Account"
+      }
     },
     "dashboard": {
       "tabTitle": "$t(tabbar.dashboard)",

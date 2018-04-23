@@ -19,7 +19,7 @@ class Accounts extends Component<Props> {
 
   render() {
     return (
-      <View style={styles.profilesScreenContainer}>
+      <View style={{}}>
         <BackgroundImage />
         <FakeNavigationBar />
         <ScreenTitle title={i18n.t('screens.accounts.title')} />
