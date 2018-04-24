@@ -158,7 +158,6 @@ class SendMoney extends NavigatorComponent<Props, State> {
                       style={[styles.textInputInContainer, styles.currencyLarge]}
                       placeholder='0.00000'
                       placeholderTextColor={Colors.placeholderTextColor}
-                      keyboardType='numeric'
                       onChangeText={amountString => this.setState({ amountString })}
                       value={this.state.amountString}
                     />
