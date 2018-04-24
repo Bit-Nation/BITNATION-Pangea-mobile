@@ -16,6 +16,10 @@ type Props = {
    */
   label?: string,
   /**
+   * @desc Switch alignment
+   */
+  align?: string,
+  /**
    * @desc Callback to be called on Switch when changes value.
    */
   onValueChange?: () => void,
@@ -26,21 +30,36 @@ type Props = {
  * @return {React.Component} A component.
  */
 
-const SwitchLabeled = ({ onValueChange, value, label }:Props) => {
+const SwitchLabeled = ({ onValueChange, value, label, align }:Props) => {
   const styles = MediaQueryStyleSheet.create({
     ...GlobalStyles,
   });
   return (
     <View style={styles.formRow}>
-      <View style={styles.switchContainer}>
-        <Switch
-          style={styles.switchObject}
-          onTintColor={Colors.BitnationHighlightColor}
-          onValueChange={onValueChange}
-          value={value}
-        />
-        <Text style={styles.formSwitchLabelText}>{label}</Text>
-      </View>
+      {
+        align === 'left' &&
+        <View style={styles.switchContainer}>
+          <Switch
+            style={styles.switchObject}
+            onTintColor={Colors.BitnationHighlightColor}
+            onValueChange={onValueChange}
+            value={value}
+          />
+          <Text style={styles.formSwitchLabelText}>{label}</Text>
+        </View>
+      }
+      {
+        align === 'right' &&
+        <View style={[styles.switchContainer, styles.flexEnd]}>
+          <Text style={styles.formSwitchLabelText}>{label}</Text>
+          <Switch
+            style={styles.switchObject}
+            onTintColor={Colors.BitnationHighlightColor}
+            onValueChange={onValueChange}
+            value={value}
+          />
+        </View>
+      }
     </View>
   );
 };
@@ -48,6 +67,7 @@ const SwitchLabeled = ({ onValueChange, value, label }:Props) => {
 SwitchLabeled.defaultProps = {
   value: false,
   label: '',
+  align: 'left',
   onValueChange: () => undefined,
 };
 

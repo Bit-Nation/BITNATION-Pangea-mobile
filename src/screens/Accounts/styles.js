@@ -16,6 +16,15 @@ const styles = MediaQueryStyleSheet.create({
 
   navButtons: {
   	alignSelf: 'flex-end',
+  },
+
+  inlineFieldContainer: {
+  	flexDirection: 'row',
+  	alignItems: 'center',
+  },
+
+  lengthSlider: {
+  	width: '50%'
   }
 });
 

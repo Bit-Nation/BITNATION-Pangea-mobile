@@ -206,7 +206,14 @@
       "title": "Accounts",
       "introduction": "Create a new account or restore an account you have backed up.",
       "create": {
-        "title": "Create Account"
+        "title": "Create Account",
+        "securityTitle": "Security Settings",
+        "numericCode": "Numeric Passcode (less secure)",
+        "codeLength": "Passcode Length",
+        "lockAccount": "Lock Account when app closes",
+        "requireCode": "Require Passcode for",
+        "payment": "Payments & Editing",
+        "editAccount": "Edit Account"
       }
     },
     "dashboard": {

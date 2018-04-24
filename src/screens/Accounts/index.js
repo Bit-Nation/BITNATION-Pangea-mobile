@@ -8,6 +8,7 @@ import i18n from '../../global/i18n';
 import { screen } from '../../global/Screens';
 import BackgroundImage from '../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../components/common/FakeNavigationBar';
+import NavigatorComponent from '../../components/common/NavigatorComponent';
 import PanelView from '../../components/common/PanelView';
 import ScreenTitle from '../../components/common/ScreenTitle';
 import Button from '../../components/common/Button';
@@ -21,7 +22,7 @@ type Props = {
   navigator: Navigator,
 };
 
-class Accounts extends Component<Props> {
+class Accounts extends NavigatorComponent<Props> {
 
   constructor(props: Props) {
     super(props);
