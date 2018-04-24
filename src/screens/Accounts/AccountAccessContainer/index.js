@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import { openNation } from '../../../actions/nations';
-
+import AccountAccessListScreen from './AccountAccessListScreen';
 
 type Props = {
   /**
@@ -27,6 +27,12 @@ class AccountAccessContainer extends NavigatorComponent<Props> {
       leftButtons: [],
       rightButtons: [],
     });
+  }
+
+  render() {
+    return (
+      <AccountAccessListScreen onSelectItem={this.onSelectItem} {...this.props} />
+    );
   }
 }
 
