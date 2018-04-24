@@ -1,7 +1,5 @@
 // @flow
 
-import _ from 'lodash';
-
 import {
   type Action,
   SELECT_WALLET,
@@ -43,23 +41,41 @@ export default (state: State = initialState, action: Action): State => {
       return Object.assign({}, state, { wallets: action.wallets });
     case WALLET_SYNC_FAILED: {
       const { walletAddress } = action;
-      const walletIndex = getWalletIndex(state.wallets || [], walletAddress);
-      const newWallets = _.cloneDeep(state.wallets);
+      const wallets = state.wallets || [];
+      const walletIndex = getWalletIndex(wallets, walletAddress);
       if (walletIndex === null) {
         return state;
       }
-      newWallets[walletIndex].synchronizationError = action.error;
-      return Object.assign({}, state, { wallets: newWallets });
+      return {
+        ...state,
+        wallets: [
+          ...wallets.slice(0, walletIndex - 1),
+          {
+            ...wallets[walletIndex],
+            synchronizationError: action.error,
+          },
+          ...wallets.slice(walletIndex + 1),
+        ],
+      };
     }
     case UPDATE_WALLET_BALANCE: {
       const { walletAddress } = action;
-      const walletIndex = getWalletIndex(state.wallets || [], walletAddress);
+      const wallets = state.wallets || [];
+      const walletIndex = getWalletIndex(wallets, walletAddress);
       if (walletIndex === null) {
         return state;
       }
-      const newWallets = _.cloneDeep(state.wallets);
-      newWallets[walletIndex].synchronizationError = undefined;
-      return Object.assign({}, state, { wallets: newWallets });
+      return {
+        ...state,
+        wallets: [
+          ...wallets.slice(0, walletIndex - 1),
+          {
+            ...wallets[walletIndex],
+            synchronizationError: undefined,
+          },
+          ...wallets.slice(walletIndex + 1),
+        ],
+      };
     }
     case SEND_MONEY:
       return { ...state, moneySendingInProgress: true, moneySendingError: null };
