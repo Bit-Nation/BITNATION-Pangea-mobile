@@ -14,6 +14,9 @@ const styles = MediaQueryStyleSheet.create({
     alignItems: 'center',
   },
 
+  navButtons: {
+  	alignSelf: 'flex-end',
+  }
 });
 
 export default styles;

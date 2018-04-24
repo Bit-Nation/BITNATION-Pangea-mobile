@@ -5,36 +5,58 @@ import { connect } from 'react-redux';
 import { View } from 'react-native';
 
 import i18n from '../../global/i18n';
+import { screen } from '../../global/Screens';
 import BackgroundImage from '../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../components/common/FakeNavigationBar';
 import PanelView from '../../components/common/PanelView';
 import ScreenTitle from '../../components/common/ScreenTitle';
 import Button from '../../components/common/Button';
+import type { Navigator } from '../../types/ReactNativeNavigation';
 import styles from './styles';
 
 type Props = {
+  /**
+   * @desc React Native Navigation navigator object.
+   */
+  navigator: Navigator,
 };
 
 class Accounts extends Component<Props> {
 
+  constructor(props: Props) {
+    super(props);
+    this.onCreateAccount = this.onCreateAccount.bind(this);
+    this.onRestoreAccount = this.onRestoreAccount.bind(this);
+  }
+
+  onCreateAccount() {
+    this.props.navigator.push(screen('ACCOUNT_CREATE_SCREEN'));
+  }
+
+  onRestoreAccount() {
+    this.props.navigator.push(screen('ACCOUNT_RESTORE_SCREEN'));
+  }
+
   render() {
     return (
-      <View style={{}}>
+      <View style={styles.profilesScreenContainer}>
         <BackgroundImage />
         <FakeNavigationBar />
-        <ScreenTitle title={i18n.t('screens.accounts.title')} />
-        <PanelView body={i18n.t('screens.accounts.introduction')} />
-        <View>
-          <Button
-            style={styles.panelButton}
-            title={'New Account'}
-            onPress={() => {}}
-          />
-          <Button
-            style={styles.panelButton}
-            title={'Restore Account'}
-            onPress={() => {}}
-          />
+        <View style={styles.screenContainer}>
+          <ScreenTitle title={i18n.t('screens.accounts.title')} />
+          <PanelView body={i18n.t('screens.accounts.introduction')} />
+          <View style={{}}>
+            <Button
+              style={styles.panelButton}
+              title={'New Account'}
+              onPress={this.onCreateAccount}
+            />
+            <Button
+              style={styles.panelButton}
+              title={'Restore Account'}
+              onPress={this.onRestoreAccount}
+            />
+          </View>
         </View>
       </View>
     );

@@ -24,7 +24,7 @@ const steps = [
 type Props = {
 };
 
-class CreateAccount extends Component<Props> {
+class RestoreAccount extends Component<Props> {
 
   constructor(props: Props) {
     super(props);
@@ -54,28 +54,24 @@ class CreateAccount extends Component<Props> {
 
   render() {
     return (
-      <View style={styles.profilesScreenContainer}>
+      <View style={{}}>
         <BackgroundImage />
         <FakeNavigationBar />
-        <View style={styles.bodyContainer}>
-          <ScreenTitle title={i18n.t('screens.accounts.create.title')} />
-          <View style={styles.bodyContainer}>
-
-          </View>
-          <View style={styles.buttonContainerMultiple}>
-            <Button
-              style={styles.panelButton}
-              title={'Prev'}
-              enabled={this.state.step !== 0}
-              onPress={this.previousStep}
-            />
-            <Button
-              style={styles.panelButton}
-              title={'Next'}
-              enabled={this.state.step !== (steps.length - 1)}
-              onPress={this.nextStep}
-            />
-          </View>
+        <ScreenTitle title={i18n.t('screens.accounts.create.title')} />
+        
+        <View>
+          <Button
+            style={styles.panelButton}
+            title={'Prev'}
+            enabled={this.state.step !== 0}
+            onPress={this.previousStep}
+          />
+          <Button
+            style={styles.panelButton}
+            title={'Next'}
+            enabled={this.state.step !== (steps.length - 1)}
+            onPress={this.nextStep}
+          />
         </View>
       </View>
     );
@@ -90,4 +86,4 @@ const mapDispatchToProps = dispatch => ({
 
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateAccount);
+export default connect(mapStateToProps, mapDispatchToProps)(RestoreAccount);
