@@ -10,6 +10,9 @@ import {
 import styles from './styles';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import i18n from '../../../global/i18n';
+import ScreenTitle from '../../../components/common/ScreenTitle';
+import BackgroundImage from '../../../components/common/BackgroundImage';
+import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import { androidNavigationButtons } from '../../../global/Screens';
 import Button from '../../../components/common/Button';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
@@ -32,27 +35,23 @@ export type Props = {
    */
   instruction: string,
   /**
-   * @desc Pin code length
-   */
-  pinCodeLength: number,
-  /**
    * @desc Whether to show cancel button on the left.
    */
   shouldShowCancel: boolean,
 };
 
 type State = {
-  pinCode: string,
+  password: string,
 }
 
-class PinCodeScreen extends NavigatorComponent<Props, State> {
+class PasswordScreen extends NavigatorComponent<Props, State> {
   textInput: any;
 
   constructor(props: Props) {
     super(props);
 
     this.state = {
-      pinCode: '',
+      password: '',
     };
     this.updateNavigation();
   }
@@ -88,18 +87,17 @@ class PinCodeScreen extends NavigatorComponent<Props, State> {
           {this.props.instruction}
         </Text>
         <TextInput
-          onChangeText={value => this.setState({ pinCode: value.slice(0, this.props.pinCodeLength) })}
-          value={this.state.pinCode}
+          onChangeText={value => this.setState({ password: value })}
+          value={this.state.password}
           style={styles.textInput}
-          keyboardType='numeric'
           secureTextEntry
           autoFocus
         />
         <View style={styles.buttonContainer}>
           <Button
-            enabled={this.state.pinCode.length === this.props.pinCodeLength}
+            enabled={this.state.password.length > 0}
             title={i18n.t('common.ok')}
-            onPress={() => this.props.onSubmit(this.state.pinCode)}
+            onPress={() => this.props.onSubmit(this.state.password)}
             style={styles.submitButton}
           />
         </View>
@@ -108,4 +106,4 @@ class PinCodeScreen extends NavigatorComponent<Props, State> {
   }
 }
 
-export default PinCodeScreen;
+export default PasswordScreen;
