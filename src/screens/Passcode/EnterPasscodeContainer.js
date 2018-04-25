@@ -6,8 +6,9 @@ import PinCodeScreen from './PinCode/index';
 import { type State as SettingsState } from '../../reducers/settings';
 import NavigatorComponent from '../../components/common/NavigatorComponent';
 import i18n from '../../global/i18n';
-import { checkPinCode } from '../../actions/accounts';
+import { checkPinCode, checkPassword } from '../../actions/accounts';
 import { errorAlert } from '../../global/alerts';
+import EnterPasswordScreen from './Password/EnterPassword';
 
 type Props = {
   /**
@@ -29,6 +30,10 @@ type Actions = {
    * @desc Check entered pin code.
    */
   checkPinCode: (pinCode: string, callback: (success: boolean) => void) => void,
+  /**
+   * @desc Check entered password.
+   */
+  checkPassword: (password: string, callback: (success: boolean) => void) => void,
 }
 
 class EnterPasscodeContainer extends NavigatorComponent<Props & Actions & SettingsState> {
@@ -38,7 +43,11 @@ class EnterPasscodeContainer extends NavigatorComponent<Props & Actions & Settin
       return;
     }
 
-    errorAlert(i18n.t('error.invalidPinCode'));
+    if (this.props.passcodeInfo.type === 'pinCode') {
+      errorAlert(i18n.t('error.invalidPinCode'));
+    } else {
+      errorAlert(i18n.t('error.invalidPassword'));
+    }
   };
 
   render() {
@@ -47,7 +56,7 @@ class EnterPasscodeContainer extends NavigatorComponent<Props & Actions & Settin
     } = this.props;
 
     return (
-      passcodeInfo.type === 'pinCode' &&
+      (passcodeInfo.type === 'pinCode' &&
       <PinCodeScreen
         navigator={navigator}
         pinCodeLength={passcodeInfo.length}
@@ -56,7 +65,18 @@ class EnterPasscodeContainer extends NavigatorComponent<Props & Actions & Settin
         shouldShowCancel
         onCancel={onCancel}
         onSubmit={pinCode => this.props.checkPinCode(pinCode, this.onCheckFinished)}
+      />)
+      ||
+      (passcodeInfo.type === 'password' &&
+      <EnterPasswordScreen
+        navigator={navigator}
+        instruction={i18n.t('screens.password.enterInstruction')}
+        title={title}
+        shouldShowCancel
+        onCancel={onCancel}
+        onSubmit={password => this.props.checkPassword(password, this.onCheckFinished)}
       />
+      )
     );
   }
 }
@@ -68,6 +88,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   checkPinCode(pinCode, callback) {
     dispatch(checkPinCode(pinCode, callback));
+  },
+  checkPassword(password, callback) {
+    dispatch(checkPassword(password, callback));
   },
 });
 
