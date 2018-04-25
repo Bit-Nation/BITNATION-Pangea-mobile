@@ -37,7 +37,7 @@ type Props = {
   /**
    * @desc Id of account which passcode will be created or edited.
    */
-  accountId: string,
+  accountId: ?string,
 }
 
 type Actions = {
@@ -61,6 +61,8 @@ type State = {
 }
 
 class CreatePasscodeContainer extends NavigatorComponent<Props & Actions & SettingsState, State> {
+  static defaultProps;
+
   constructor(props: Props & Actions & SettingsState) {
     super(props);
 
@@ -197,6 +199,13 @@ class CreatePasscodeContainer extends NavigatorComponent<Props & Actions & Setti
       />);
   }
 }
+
+CreatePasscodeContainer.defaultProps = {
+  onCancel: () => undefined,
+  onSuccess: () => undefined,
+  title: '',
+  accountId: null,
+};
 
 const mapStateToProps = state => ({
   ...state.settings,
