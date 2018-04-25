@@ -174,7 +174,11 @@ const Screens = {
     title: i18n.t('screens.scanQRCode.title'),
     navigatorStyle,
   },
-
+  PIN_CODE_SCREEN: {
+    screen: 'Pangea.PinCode',
+    title: '',
+    navigatorStyle,
+  },
 };
 
 /**
