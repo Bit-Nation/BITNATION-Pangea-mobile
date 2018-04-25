@@ -180,6 +180,12 @@
     "nationsDisabled": {
       "title": "This function is disabled in this release. It will be re-enabled on March 3.",
       "confirm": "$t(common.ok)"
+    },
+    "passcodeVerificationFailed": {
+      "title": "Passcode mismatch",
+      "subtitle": "Please enter passcode carefully again.",
+      "tryAgain": "Try again",
+      "startOver": "Start over"
     }
   },
   "screens": {
@@ -419,10 +425,14 @@
       "title": "Scan QR code"
     },
     "pinCode": {
-      "enterInstruction": "Enter PIN code:"
+      "enterInstruction": "Enter PIN code:",
+      "createInstruction": "Enter new PIN code:",
+      "verifyInstruction": "Enter PIN code again:"
     },
     "password": {
-      "enterInstruction": "Enter password:"
+      "enterInstruction": "Enter password:",
+      "createInstruction": "Enter new password:",
+      "verifyInstruction": "Enter password again:"
     }
   },
   "testingMode": {

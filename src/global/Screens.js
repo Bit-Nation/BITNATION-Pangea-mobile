@@ -174,8 +174,13 @@ const Screens = {
     title: i18n.t('screens.scanQRCode.title'),
     navigatorStyle,
   },
-  ENTER_PIN_CODE_SCREEN: {
-    screen: 'Pangea.EnterPinCode',
+  ENTER_PASSCODE_SCREEN: {
+    screen: 'Pangea.EnterPasscode',
+    title: '',
+    navigatorStyle: navigatorStyleModal,
+  },
+  CREATE_PASSCODE_SCREEN: {
+    screen: 'Pangea.CreatePasscode',
     title: '',
     navigatorStyle: navigatorStyleModal,
   },
