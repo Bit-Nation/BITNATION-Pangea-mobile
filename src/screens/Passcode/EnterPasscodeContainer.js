@@ -47,6 +47,8 @@ type Actions = {
 }
 
 class EnterPasscodeContainer extends NavigatorComponent<Props & Actions & SettingsState> {
+  static defaultProps;
+
   onCheckFinished = (success: boolean) => {
     if (success === true) {
       this.props.onSuccess();
@@ -99,6 +101,12 @@ class EnterPasscodeContainer extends NavigatorComponent<Props & Actions & Settin
     );
   }
 }
+
+EnterPasscodeContainer.defaultProps = {
+  onCancel: () => undefined,
+  onSuccess: () => undefined,
+  title: '',
+};
 
 const mapStateToProps = state => ({
   ...state.settings,
