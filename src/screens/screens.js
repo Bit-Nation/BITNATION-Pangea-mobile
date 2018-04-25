@@ -4,6 +4,7 @@ import { Navigation } from 'react-native-navigation';
 
 import Accounts from './Accounts';
 import CreateAccount from './Accounts/CreateAccount';
+import DeveloperSettings from './Accounts/CreateAccount/DeveloperSettings';
 import RestoreAccount from './Accounts/RestoreAccount';
 import Dashboard from './Dashboard';
 import WalletScreen from './WalletScreen';
@@ -36,6 +37,7 @@ import { screen } from '../global/Screens';
 export default function registerScreens(store: Object, Provider: Object) {
   Navigation.registerComponent(screen('ACCOUNTS_SCREEN').screen, () => Accounts, store, Provider);
   Navigation.registerComponent(screen('ACCOUNT_CREATE_SCREEN').screen, () => CreateAccount, store, Provider);
+  Navigation.registerComponent(screen('ACCOUNT_CREATE_DEVELOPER_SETTINGS').screen, () => DeveloperSettings, store, Provider);
   Navigation.registerComponent(screen('ACCOUNT_RESTORE_SCREEN').screen, () => RestoreAccount, store, Provider);
   Navigation.registerComponent(screen('CREATE_KEY_INTRODUCTION_SCREEN').screen, () => CreateKeyIntroductionScreen, store, Provider);
   Navigation.registerComponent(screen('CREATE_KEY_INSTRUCTION_SCREEN').screen, () => CreateKeyInstructionScreen, store, Provider);

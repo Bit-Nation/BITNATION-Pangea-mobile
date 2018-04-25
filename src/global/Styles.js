@@ -498,6 +498,7 @@ const styles = {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
     marginTop: 5,
     marginBottom: 10,
     // for testing

@@ -25,6 +25,16 @@ const styles = MediaQueryStyleSheet.create({
 
   lengthSlider: {
   	width: '50%'
+  },
+
+  networkDropdownButton: {
+  	flex: 1,
+  	marginBottom: 20
+  },
+
+  networkDropdownList: {
+  	flex: 1,
+  	marginTop: 10
   }
 });
 

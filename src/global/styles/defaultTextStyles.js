@@ -242,6 +242,8 @@ const defaultTextStyles = {
     color: Colors.BitnationLightColor,
   },
 
-
+  disabledText: {
+    color: Colors.disabledTextColor
+  }
 };
 export default defaultTextStyles;

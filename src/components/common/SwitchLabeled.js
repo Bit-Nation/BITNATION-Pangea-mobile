@@ -30,36 +30,35 @@ type Props = {
  * @return {React.Component} A component.
  */
 
-const SwitchLabeled = ({ onValueChange, value, label, align }:Props) => {
+const SwitchLabeled = ({ onValueChange, value, label, align, disabled }:Props) => {
   const styles = MediaQueryStyleSheet.create({
     ...GlobalStyles,
   });
+
+  let switchStyle = [styles.switchContainer];
+  if (align === 'right') {
+    switchStyle.push({
+      flexDirection: 'row-reverse'
+    });
+  }
+  
+  let textStyle = [styles.formSwitchLabelText];
+  if (disabled) {
+    textStyle.push(styles.disabledText);
+  }
+
   return (
     <View style={styles.formRow}>
-      {
-        align === 'left' &&
-        <View style={styles.switchContainer}>
-          <Switch
-            style={styles.switchObject}
-            onTintColor={Colors.BitnationHighlightColor}
-            onValueChange={onValueChange}
-            value={value}
-          />
-          <Text style={styles.formSwitchLabelText}>{label}</Text>
-        </View>
-      }
-      {
-        align === 'right' &&
-        <View style={[styles.switchContainer, styles.flexEnd]}>
-          <Text style={styles.formSwitchLabelText}>{label}</Text>
-          <Switch
-            style={styles.switchObject}
-            onTintColor={Colors.BitnationHighlightColor}
-            onValueChange={onValueChange}
-            value={value}
-          />
-        </View>
-      }
+      <View style={switchStyle}>
+        <Switch
+          disabled={disabled}
+          style={styles.switchObject}
+          onTintColor={Colors.BitnationHighlightColor}
+          onValueChange={onValueChange}
+          value={value}
+        />
+        <Text style={textStyle}>{label}</Text>
+      </View>
     </View>
   );
 };

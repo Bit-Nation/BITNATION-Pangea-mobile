@@ -213,7 +213,15 @@
         "lockAccount": "Lock Account when app closes",
         "requireCode": "Require Passcode for",
         "payment": "Payments & Editing",
-        "editAccount": "Edit Account"
+        "editAccount": "Edit Account",
+        "developerTitle": "Developer Settings",
+        "testingAccount": "Testing Account",
+        "useMainNetwork": "Using main Ethereum network",
+        "detailLogging": "Detailed Logging",
+        "debuggingTools": "Debugging Tools",
+        "mainNetwork": "Main Ethereum network",
+        "ropstenNetwork": "Ropsten testing network",
+        "rinkebyNetwork": "Rinkeby testing network",
       }
     },
     "dashboard": {

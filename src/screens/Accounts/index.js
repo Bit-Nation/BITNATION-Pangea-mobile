@@ -31,7 +31,8 @@ class Accounts extends NavigatorComponent<Props> {
   }
 
   onCreateAccount() {
-    this.props.navigator.push(screen('ACCOUNT_CREATE_SCREEN'));
+    // this.props.navigator.push(screen('ACCOUNT_CREATE_SCREEN'));
+    this.props.navigator.push(screen('ACCOUNT_CREATE_DEVELOPER_SETTINGS'));
   }
 
   onRestoreAccount() {
