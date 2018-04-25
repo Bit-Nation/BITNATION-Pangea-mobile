@@ -12,6 +12,7 @@ import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
 import i18n from '../../../../global/i18n';
 import type { Account } from '../../../../types/Account';
 import ScreenTitle from '../../../../components/common/ScreenTitle';
+import NationListItem from '../../../../components/common/NationListItem';
 
 type Props = {
   /**
@@ -34,13 +35,13 @@ const AccountAccessListScreen = ({ onSelectItem, accounts }: Props) => {
       <ScreenTitle title={i18n.t('screens.chat.title')} />
       <SectionList
         renderItem={(item) => {
-          const nation = item.item;
-          return (<ChatListItem
-            text={nation.nationName}
+          const account = item.item;
+          return (<NationListItem
+            text={account.name}
             participants=''
             itemIcon={0}
             onPress={id => onSelectItem(id, false)}
-            id={nation.id}
+            id={account.id}
           />);
         }}
         keyExtractor={item => item.id}
