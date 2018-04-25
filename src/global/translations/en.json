@@ -420,6 +420,9 @@
     },
     "pinCode": {
       "enterInstruction": "Enter PIN code:"
+    },
+    "password": {
+      "enterInstruction": "Enter password:"
     }
   },
   "testingMode": {
@@ -432,7 +435,8 @@
     "noConnection": "Please check your internet connection.",
     "insufficientFunds": "Insufficient funds. Please check your wallet.",
     "noCamera": "Camera Error",
-    "invalidPinCode": "PIN code is invalid. Please try again."
+    "invalidPinCode": "PIN code is invalid. Please try again.",
+    "invalidPassword": "Password is invalid. Please try again."
   },
   "bots": {
     "freudbot": {
