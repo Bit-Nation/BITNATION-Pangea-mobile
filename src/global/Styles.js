@@ -437,13 +437,13 @@ const styles = {
     borderBottomWidth: 1,
     flex: 1,
     marginTop: 4,
-    marginBottom: 4,
+    marginBottom: 14,
     marginRight: 0,
     marginLeft: 0,
     fontSize: 16,
     paddingLeft: 4,
     paddingTop: 6,
-    paddingBottom: 6,
+    paddingBottom: 12,
     // font settings
     // color: Colors.placeholderTextColor,
   },
@@ -730,7 +730,7 @@ const styles = {
   },
 
   avatarContainerLarge: {
-    flex: 1,
+    // flex: 1,
     alignItems: 'center',
   },
 

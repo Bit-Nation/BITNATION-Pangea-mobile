@@ -3,14 +3,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { View, Text } from 'react-native';
-// import DropDown, {
-//   Select,
-//   Option,
-//   OptionList,
-// } from 'react-native-selectme';
 import ModalDropdown from 'react-native-modal-dropdown';
 
 import i18n from '../../../global/i18n';
+import { screen } from '../../../global/Screens';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import PanelView from '../../../components/common/PanelView';
@@ -20,6 +16,10 @@ import SwitchLabeled from '../../../components/common/SwitchLabeled';
 import styles from '../styles';
 
 type Props = {
+	/**
+   * @desc React Native Navigation navigator object.
+   */
+  navigator: Navigator,
 };
 
 class DeveloperSettings extends Component<Props> {
@@ -44,7 +44,7 @@ class DeveloperSettings extends Component<Props> {
   }
 
   nextStep() {
-    
+    this.props.navigator.push(screen('ACCOUNT_CREATE_IDENTITY'));
   }
 
   setFieldValue(field, value) {
@@ -115,12 +115,12 @@ class DeveloperSettings extends Component<Props> {
           <View style={styles.buttonContainerMultiple}>
             <Button
               style={styles.panelButton}
-              title={'Prev'}
+              title={i18n.t('screens.accounts.create.prev')}
               onPress={this.previousStep}
             />
             <Button
               style={styles.panelButton}
-              title={'Next'}
+              title={i18n.t('screens.accounts.create.next')}
               onPress={this.nextStep}
             />
           </View>
