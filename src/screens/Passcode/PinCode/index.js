@@ -50,7 +50,6 @@ export type Props = {
 
 type State = {
   pinCode: string,
-  currentIndex: number,
 }
 
 class PinCodeScreen extends NavigatorComponent<Props, State> {
@@ -61,7 +60,6 @@ class PinCodeScreen extends NavigatorComponent<Props, State> {
 
     this.state = {
       pinCode: '',
-      currentIndex: 0,
     };
     this.updateNavigation();
   }
@@ -101,7 +99,7 @@ class PinCodeScreen extends NavigatorComponent<Props, State> {
             {this.props.instruction}
           </Text>
           <TextInput
-            onChangeText={value => this.setState({ pinCode: value.slice(0, 6) })}
+            onChangeText={value => this.setState({ pinCode: value.slice(0, this.props.pinCodeLength) })}
             value={this.state.pinCode}
             style={styles.textInput}
             keyboardType='numeric'
