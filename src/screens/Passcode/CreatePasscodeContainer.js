@@ -54,7 +54,7 @@ type Actions = {
 type State = {
   enteredPasscode: ?string,
   /**
-   * @desc Those reset key are used to reset state of child components.
+   * @desc These reset keys are used to reset state of child components.
    */
   verifyResetKey: number,
   createResetKey: number,
