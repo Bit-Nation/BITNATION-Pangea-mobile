@@ -34,17 +34,21 @@ type Props = {
    * @desc Callback on successful passcode entering.
    */
   onSuccess: () => void,
+  /**
+   * @desc Id of account which passcode will be created or edited.
+   */
+  accountId: string,
 }
 
 type Actions = {
   /**
    * @desc Check entered pin code.
    */
-  savePinCode: (pinCode: string, callback: (success: boolean) => void) => void,
+  savePinCode: (pinCode: string, accountId: string, callback: (success: boolean) => void) => void,
   /**
    * @desc Check entered password.
    */
-  savePassword: (password: string, callback: (success: boolean) => void) => void,
+  savePassword: (password: string, accountId: string, callback: (success: boolean) => void) => void,
 }
 
 type State = {
@@ -106,9 +110,9 @@ class CreatePasscodeContainer extends NavigatorComponent<Props & Actions & Setti
   onSubmitPasscode = (passcode: string) => {
     if (this.state.enteredPasscode === passcode) {
       if (this.props.passcodeInfo.type === 'pinCode') {
-        this.props.savePinCode(passcode, this.onSaveFinished);
+        this.props.savePinCode(passcode, this.props.accountId, this.onSaveFinished);
       } else {
-        this.props.savePassword(passcode, this.onSaveFinished);
+        this.props.savePassword(passcode, this.props.accountId, this.onSaveFinished);
       }
     } else {
       this.showVerificationFailedAlert();
@@ -199,11 +203,11 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  savePinCode(pinCode, callback) {
-    dispatch(savePinCode(pinCode, callback));
+  savePinCode(pinCode, accountId, callback) {
+    dispatch(savePinCode(pinCode, accountId, callback));
   },
-  savePassword(password, callback) {
-    dispatch(savePassword(password, callback));
+  savePassword(password, accountId, callback) {
+    dispatch(savePassword(password, accountId, callback));
   },
 });
 

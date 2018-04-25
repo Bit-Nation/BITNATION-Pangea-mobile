@@ -15,7 +15,6 @@ import styles from './PinCode/styles';
 import BackgroundImage from '../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../components/common/FakeNavigationBar';
 import ScreenTitle from '../../components/common/ScreenTitle';
-import accounts from '../../reducers/accounts';
 
 type Props = {
   /**

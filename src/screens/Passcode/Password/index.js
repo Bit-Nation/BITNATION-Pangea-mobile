@@ -10,9 +10,6 @@ import {
 import styles from './styles';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import i18n from '../../../global/i18n';
-import ScreenTitle from '../../../components/common/ScreenTitle';
-import BackgroundImage from '../../../components/common/BackgroundImage';
-import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import { androidNavigationButtons } from '../../../global/Screens';
 import Button from '../../../components/common/Button';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
