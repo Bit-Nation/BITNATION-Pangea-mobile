@@ -417,6 +417,9 @@
     },
     "qrCodeScanner": {
       "title": "Scan QR code"
+    },
+    "pinCode": {
+      "enterInstruction": "Enter PIN code:"
     }
   },
   "testingMode": {
@@ -428,7 +431,8 @@
   "error": {
     "noConnection": "Please check your internet connection.",
     "insufficientFunds": "Insufficient funds. Please check your wallet.",
-    "noCamera": "Camera Error"
+    "noCamera": "Camera Error",
+    "invalidPinCode": "PIN code is invalid. Please try again."
   },
   "bots": {
     "freudbot": {

@@ -174,10 +174,10 @@ const Screens = {
     title: i18n.t('screens.scanQRCode.title'),
     navigatorStyle,
   },
-  PIN_CODE_SCREEN: {
-    screen: 'Pangea.PinCode',
+  ENTER_PIN_CODE_SCREEN: {
+    screen: 'Pangea.EnterPinCode',
     title: '',
-    navigatorStyle,
+    navigatorStyle: navigatorStyleModal,
   },
 };
 

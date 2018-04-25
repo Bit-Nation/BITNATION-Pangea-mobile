@@ -23,7 +23,7 @@ import NationDetailsScreen from './NationDetailsContainer';
 import NationCreateScreen from './NationCreateContainer';
 import ChatNationsScreen from './ChatNationsScreen';
 import { screen } from '../global/Screens';
-import PinCodeScreen from './Passcode/PinCode';
+import EnterPinCodeScreen from './Passcode/EnterPasscodeContainer';
 
 /**
  * @desc Registers screens for React Native Navigation.
@@ -51,5 +51,5 @@ export default function registerScreens(store: Object, Provider: Object) {
   Navigation.registerComponent(screen('QR_CODE_SCANNER_SCREEN').screen, () => QRCodeScannerScreen, store, Provider);
   Navigation.registerComponent(screen('NATION_CREATE_SCREEN').screen, () => NationCreateScreen, store, Provider);
   Navigation.registerComponent(screen('CHAT_NATIONS_SCREEN').screen, () => ChatNationsScreen, store, Provider);
-  Navigation.registerComponent(screen('PIN_CODE_SCREEN').screen, () => PinCodeScreen, store, Provider);
+  Navigation.registerComponent(screen('ENTER_PIN_CODE_SCREEN').screen, () => EnterPinCodeScreen, store, Provider);
 }

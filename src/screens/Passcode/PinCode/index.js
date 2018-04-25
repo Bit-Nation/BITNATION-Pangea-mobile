@@ -63,15 +63,20 @@ class PinCodeScreen extends NavigatorComponent<Props, State> {
       pinCode: '',
       currentIndex: 0,
     };
+    this.updateNavigation();
   }
 
   componentDidUpdate() {
+    this.updateNavigation();
+  }
+
+  updateNavigation() {
     if (this.props.shouldShowCancel === true) {
       this.props.navigator.setButtons({
-        leftButtons: {
+        leftButtons: [{
           id: 'cancel',
           title: i18n.t('common.cancel'),
-        },
+        }],
         rightButtons: [],
       });
     } else {
@@ -96,7 +101,7 @@ class PinCodeScreen extends NavigatorComponent<Props, State> {
             {this.props.instruction}
           </Text>
           <TextInput
-            onChangeText={value => this.setState({ pinCode: value })}
+            onChangeText={value => this.setState({ pinCode: value.slice(0, 6) })}
             value={this.state.pinCode}
             style={styles.textInput}
             keyboardType='numeric'
@@ -105,8 +110,9 @@ class PinCodeScreen extends NavigatorComponent<Props, State> {
           />
           <View style={styles.buttonContainer}>
             <Button
+              enabled={this.state.pinCode.length === this.props.pinCodeLength}
               title={i18n.t('common.ok')}
-              onPress={this.props.onSubmit}
+              onPress={() => this.props.onSubmit(this.state.pinCode)}
               style={styles.submitButton}
             />
           </View>
