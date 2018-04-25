@@ -8,19 +8,22 @@ export type CurrentAccountIdChangedAction = { +type: 'CURRENT_ACCOUNT_ID_CHANGED
 export type LoginAction = { +type: 'LOGIN', accountId: string, password: string };
 export type LoginTaskUpdatedAction = { +type: 'LOGIN_TASK_UPDATED', asyncTask: AsyncTask<void> };
 export type LogoutAction = { +type: 'LOGOUT' };
+export type CheckPinCodeAction = { +type: 'CHECK_PIN_CODE', +pinCode: string, +callback: (success: boolean) => void };
 
 export type Action =
   | AccountsListUpdatedAction
   | CurrentAccountIdChangedAction
   | LoginAction
   | LoginTaskUpdatedAction
-  | LogoutAction;
+  | LogoutAction
+  | CheckPinCodeAction;
 
 export const ACCOUNTS_LIST_UPDATED = 'ACCOUNTS_LIST_UPDATED';
 export const CURRENT_ACCOUNT_ID_CHANGED = 'CURRENT_ACCOUNT_ID_CHANGED';
 export const LOGIN = 'LOGIN';
 export const LOGIN_TASK_UPDATED = 'LOGIN_TASK_UPDATED';
 export const LOGOUT = 'LOGOUT';
+export const CHECK_PIN_CODE = 'CHECK_PIN_CODE';
 
 /**
  * @desc Action creator for an action that is called when accounts list updated.
@@ -81,5 +84,19 @@ export function loginTaskUpdated(asyncTask: AsyncTask<void>): LoginTaskUpdatedAc
 export function logout(): LogoutAction {
   return {
     type: LOGOUT,
+  };
+}
+
+/**
+ * @desc Action creator for an action that is called to check entered pin code.
+ * @param {string} pinCode Pin code to check.
+ * @param {function} callback Callback that is called with true if check is successful and false otherwise.
+ * @return {CheckPinCodeAction} An action.
+ */
+export function checkPinCode(pinCode: string, callback: (boolean) => void): CheckPinCodeAction {
+  return {
+    type: CHECK_PIN_CODE,
+    pinCode,
+    callback,
   };
 }

@@ -1,6 +1,6 @@
 import { all, call, takeEvery } from 'redux-saga/effects';
-import { listenForDatabaseUpdates, login, logout } from './sagas';
-import { LOGIN, LOGOUT } from '../../actions/accounts';
+import { checkPinCode, listenForDatabaseUpdates, login, logout } from './sagas';
+import { CHECK_PIN_CODE, LOGIN, LOGOUT } from '../../actions/accounts';
 
 /**
  * @desc Root accounts saga.
@@ -11,5 +11,6 @@ export default function* rootSaga() {
     call(listenForDatabaseUpdates),
     yield takeEvery(LOGIN, login),
     yield takeEvery(LOGOUT, logout),
+    yield takeEvery(CHECK_PIN_CODE, checkPinCode),
   ]);
 }

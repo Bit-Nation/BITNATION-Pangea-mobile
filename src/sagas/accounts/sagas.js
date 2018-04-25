@@ -8,7 +8,7 @@ import {
   accountListUpdated, CURRENT_ACCOUNT_ID_CHANGED, currentAccountIdChanged,
   loginTaskUpdated,
 } from '../../actions/accounts';
-import type { LoginAction } from '../../actions/accounts';
+import type { CheckPinCodeAction, LoginAction } from '../../actions/accounts';
 import { convertFromDatabase } from '../../utils/mapping/account';
 import TaskBuilder from '../../utils/asyncTask';
 import AccountsService from '../../services/accounts';
@@ -92,4 +92,15 @@ export function* login(action: LoginAction) {
  */
 export function* logout() {
   yield put(currentAccountIdChanged(null));
+}
+
+/**
+ * @desc Checks if entered pin code is correct.
+ * @param {CheckPinCodeAction} action An action.
+ * @return {void}
+ */
+export function* checkPinCode(action: CheckPinCodeAction) {
+  // @todo Check if pin code is correct.
+  action.callback(true);
+  yield;
 }
