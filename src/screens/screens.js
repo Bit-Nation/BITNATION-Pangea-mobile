@@ -24,6 +24,8 @@ import NationCreateScreen from './NationCreateContainer';
 import ChatNationsScreen from './ChatNationsScreen';
 import AccountsAccess from './Accounts/AccountAccessContainer';
 import { screen } from '../global/Screens';
+import EnterPasscodeScreen from './Passcode/EnterPasscodeContainer';
+import CreatePasscodeScreen from './Passcode/CreatePasscodeContainer';
 
 /**
  * @desc Registers screens for React Native Navigation.
@@ -52,4 +54,6 @@ export default function registerScreens(store: Object, Provider: Object) {
   Navigation.registerComponent(screen('NATION_CREATE_SCREEN').screen, () => NationCreateScreen, store, Provider);
   Navigation.registerComponent(screen('CHAT_NATIONS_SCREEN').screen, () => ChatNationsScreen, store, Provider);
   Navigation.registerComponent(screen('ACCOUNTS_ACCESS_SCREEN').screen, () => AccountsAccess, store, Provider);
+  Navigation.registerComponent(screen('ENTER_PASSCODE_SCREEN').screen, () => EnterPasscodeScreen, store, Provider);
+  Navigation.registerComponent(screen('CREATE_PASSCODE_SCREEN').screen, () => CreatePasscodeScreen, store, Provider);
 }

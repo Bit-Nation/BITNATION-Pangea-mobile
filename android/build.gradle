@@ -21,8 +21,8 @@ allprojects {
             url "$rootDir/../node_modules/react-native/android"
         }
         maven { url "https://jitpack.io" }
-        flatDir {
-            dirs "$rootDir/../node_modules/react-native-eth-daemon/android/geth"
+        flatDir{
+            dirs "$rootDir/panthalassa"
         }
     }
 }
