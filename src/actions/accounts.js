@@ -10,8 +10,8 @@ export type LoginTaskUpdatedAction = { +type: 'LOGIN_TASK_UPDATED', asyncTask: A
 export type LogoutAction = { +type: 'LOGOUT' };
 export type CheckPinCodeAction = { +type: 'CHECK_PIN_CODE', +pinCode: string, +accountId: string, +callback: (success: boolean) => void };
 export type CheckPasswordAction = { +type: 'CHECK_PASSWORD', +password: string, +accountId: string, +callback: (success: boolean) => void };
-export type SavePinCodeAction = { +type: 'SAVE_PIN_CODE', +pinCode: string, +accountId: string, +callback: (success: boolean) => void };
-export type SavePasswordAction = { +type: 'SAVE_PASSWORD', +password: string, +accountId: string, +callback: (success: boolean) => void };
+export type SavePinCodeAction = { +type: 'SAVE_PIN_CODE', +pinCode: string, +accountId: ?string, +callback: (success: boolean) => void };
+export type SavePasswordAction = { +type: 'SAVE_PASSWORD', +password: string, +accountId: ?string, +callback: (success: boolean) => void };
 
 export type Action =
   | AccountsListUpdatedAction
@@ -131,7 +131,7 @@ export function checkPassword(password: string, accountId: string, callback: (bo
 /**
  * @desc Action creator for an action that is called to save new pin code.
  * @param {string} pinCode Pin code to save.
- * @param {string} accountId Id of account which pin code is going to be saved.
+ * @param {?string} accountId Id of account which pin code is going to be saved or null for new account.
  * @param {function} callback Callback that is called with true if save is successful and false otherwise.
  * @return {SavePinCodeAction} An action.
  */
@@ -147,7 +147,7 @@ export function savePinCode(pinCode: string, accountId: string, callback: (boole
 /**
  * @desc Action creator for an action that is called to save new password.
  * @param {string} password Password to save.
- * @param {string} accountId Id of account which password is going to be saved.
+ * @param {?string} accountId Id of account which password is going to be saved or null for new account.
  * @param {function} callback Callback that is called with true if save is successful and false otherwise.
  * @return {SavePinCodeAction} An action.
  */

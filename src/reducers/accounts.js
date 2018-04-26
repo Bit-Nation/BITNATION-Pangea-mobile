@@ -12,6 +12,7 @@ import TaskBuilder, { type AsyncTask } from '../utils/asyncTask';
 export type State = {
   +user: Account | null,
   +editingUser: EditingAccount | null,
+  +creatingUser: EditingAccount | null,
   +currentAccountId: string | null,
   +login: AsyncTask<void>,
   +logout: AsyncTask<void>,
@@ -23,12 +24,14 @@ export const emptyProfile: EditingAccount = {
   name: null,
   location: null,
   avatar: null,
+  accountStore: null,
   networkType: 'main',
 };
 
 export const initialState: State = {
   user: null,
   editingUser: null,
+  creatingUser: null,
   currentAccountId: null,
   login: TaskBuilder.empty(),
   logout: TaskBuilder.empty(),
