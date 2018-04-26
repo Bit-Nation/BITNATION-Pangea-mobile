@@ -44,11 +44,11 @@ type Actions = {
   /**
    * @desc Check entered pin code.
    */
-  savePinCode: (pinCode: string, accountId: string, callback: (success: boolean) => void) => void,
+  savePinCode: (pinCode: string, accountId: ?string, callback: (success: boolean) => void) => void,
   /**
    * @desc Check entered password.
    */
-  savePassword: (password: string, accountId: string, callback: (success: boolean) => void) => void,
+  savePassword: (password: string, accountId: ?string, callback: (success: boolean) => void) => void,
 }
 
 type State = {

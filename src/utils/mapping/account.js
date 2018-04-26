@@ -15,5 +15,6 @@ export function convertFromDatabase(account: DBAccount): Account {
     location: account.location,
     networkType: account.isDevelopment ? 'dev' : 'main',
     avatar: account.profileImage,
+    accountStore: account.accountStore,
   };
 }
