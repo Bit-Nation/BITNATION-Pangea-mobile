@@ -46,14 +46,14 @@ const AccountAccessListScreen = ({ onSelectItem }: Props) => (
         enabled
         // TODO Insert translations
         title='New Account'
-        onPress={() => this.props.onSubmit(this.state.pinCode)}
+        onPress={() => this.props.openAccount(this.props.createAccount)}
         style={styles.submitButton}
       />
       <Button
         enabled
         // TODO Insert translations
         title='Restore Account'
-        onPress={() => this.props.onSubmit(this.state.pinCode)}
+        onPress={() => this.props.openAccount(this.props.resetAccount)}
         style={styles.submitButton}
       />
       <View style={styles.spacer} />
