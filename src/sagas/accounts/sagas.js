@@ -136,11 +136,12 @@ export function* doneAccountEditing(action: UpdateAccountAction): Generator<*, *
   });
 }
 
+/**
  * @desc Checks if entered pin code is correct for an account which id is set in the action.
  * @param {CheckPinCodeAction} action An action.
  * @return {void}
  */
-export function* checkPinCode(action: CheckPinCodeAction) {
+export function* checkPinCode(action: CheckPinCodeAction): Generator<*, *, *> {
   // @todo Check if pin code is correct.
   action.callback(true);
   yield;
@@ -151,7 +152,7 @@ export function* checkPinCode(action: CheckPinCodeAction) {
  * @param {CheckPasswordAction} action An action.
  * @return {void}
  */
-export function* checkPassword(action: CheckPasswordAction) {
+export function* checkPassword(action: CheckPasswordAction): Generator<*, *, *> {
   // @todo Check if password is correct.
   action.callback(true);
   yield;
@@ -162,7 +163,7 @@ export function* checkPassword(action: CheckPasswordAction) {
  * @param {SavePinCodeAction} action An action.
  * @return {void}
  */
-export function* savePinCode(action: SavePinCodeAction) {
+export function* savePinCode(action: SavePinCodeAction): Generator<*, *, *> {
   // @todo Save pin code.
   action.callback(true);
   yield;
@@ -173,7 +174,7 @@ export function* savePinCode(action: SavePinCodeAction) {
  * @param {SavePasswordAction} action An action.
  * @return {void}
  */
-export function* savePassword(action: SavePasswordAction) {
+export function* savePassword(action: SavePasswordAction): Generator<*, *, *> {
   // @todo Save password.
   action.callback(true);
   yield;
