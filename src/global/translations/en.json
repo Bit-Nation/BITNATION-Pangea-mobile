@@ -49,7 +49,8 @@
     "updateFailed": "Update failed",
     "ethereum": "Ethereum",
     "continue": "Continue",
-    "location": "Location"
+    "location": "Location",
+    "accounts": "Accounts"
   },
   "enums": {
     "nation": {
@@ -180,6 +181,12 @@
     "nationsDisabled": {
       "title": "This function is disabled in this release. It will be re-enabled on March 3.",
       "confirm": "$t(common.ok)"
+    },
+    "passcodeVerificationFailed": {
+      "title": "Passcode mismatch",
+      "subtitle": "Please enter passcode carefully again.",
+      "tryAgain": "Try again",
+      "startOver": "Start over"
     }
   },
   "screens": {
@@ -199,6 +206,48 @@
       "nations": {
         "title": "Borderless       Decentralized      Nations",
         "text": "They can form a nation to get a fair deal, enforce contracts, and share working knowledge."
+      }
+    },
+    "accounts": {
+      "title": "Accounts",
+      "introduction": "Create a new account or restore an account you have backed up.",
+      "newAccount": "New Account",
+      "restoreAccount": "Restore Account",
+      "create": {
+        "prev": "Prev",
+        "next": "Next",
+        "title": "Create Account",
+        "securityTitle": "Security Settings",
+        "numericCode": "Numeric Passcode (less secure)",
+        "codeLength": "Passcode Length",
+        "lockAccount": "Lock Account when app closes",
+        "requireCode": "Require Passcode for",
+        "payment": "Payments & Editing",
+        "editAccount": "Edit Account",
+        "developerTitle": "Developer Settings",
+        "testingAccount": "Testing Account",
+        "useMainNetwork": "Using main Ethereum network",
+        "detailLogging": "Detailed Logging",
+        "debuggingTools": "Debugging Tools",
+        "mainNetwork": "Main Ethereum network",
+        "ropstenNetwork": "Ropsten testing network",
+        "rinkebyNetwork": "Rinkeby testing network",
+        "identityTitle": "Create Identity",
+        "name": "Name",
+        "location": "Location",
+        "readyUse": "Your account is ready to use.",
+        "walletEmpty": "Your account is ready, but your wallet is empty. Please add ETH to your wallet so you can do stuff.",
+        "openDashboard": "Open Dashboard",
+        "openWallet": "Open ETH Wallet",
+      },
+      "restore": {
+        "title": "Restore Account",
+        "source": "Restore your account from",
+        "clipboard": "Restore from Clipboard",
+        "file": "Restore from File",
+        "cloud": "Restore from Cloud",
+        "emptyWalletStatement": "Your wallet is empty or low. Please add ETH to your wallet so you can do stuff.",
+        "sendETH": "Send ETH to address"
       }
     },
     "dashboard": {
@@ -429,6 +478,16 @@
       "useNumericPasscode": "Numeric Passcode (less secure)",
       "passcodeLength": "Passcode Length",
       "changePasscode": "Change Passcode"
+    },
+    "pinCode": {
+      "enterInstruction": "Enter PIN code:",
+      "createInstruction": "Enter new PIN code:",
+      "verifyInstruction": "Enter PIN code again:"
+    },
+    "password": {
+      "enterInstruction": "Enter password:",
+      "createInstruction": "Enter new password:",
+      "verifyInstruction": "Enter password again:"
     }
   },
   "testingMode": {
@@ -440,7 +499,9 @@
   "error": {
     "noConnection": "Please check your internet connection.",
     "insufficientFunds": "Insufficient funds. Please check your wallet.",
-    "noCamera": "Camera Error"
+    "noCamera": "Camera Error",
+    "invalidPinCode": "PIN code is invalid. Please try again.",
+    "invalidPassword": "Password is invalid. Please try again."
   },
   "bots": {
     "freudbot": {

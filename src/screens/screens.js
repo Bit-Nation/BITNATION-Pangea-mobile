@@ -2,6 +2,13 @@
 
 import { Navigation } from 'react-native-navigation';
 
+import Accounts from './Accounts';
+import CreateAccount from './Accounts/CreateAccount';
+import DeveloperSettings from './Accounts/CreateAccount/DeveloperSettings';
+import CreateIdentity from './Accounts/CreateAccount/CreateIdentity';
+import CreateReady from './Accounts/CreateAccount/CreateReady';
+import RestoreSource from './Accounts/RestoreAccount/RestoreSource';
+import EmptyWallet from './Accounts/RestoreAccount/EmptyWallet';
 import Dashboard from './Dashboard';
 import WalletScreen from './WalletScreen';
 import CreateKeyIntroductionScreen from './Key/Create/CreateKeyIntroductionScreen';
@@ -25,6 +32,8 @@ import ChatNationsScreen from './ChatNationsScreen';
 import SettingsScreen from './Settings/SettingsList';
 import SecuritySettingsScreen from './Settings/Security';
 import { screen } from '../global/Screens';
+import EnterPasscodeScreen from './Passcode/EnterPasscodeContainer';
+import CreatePasscodeScreen from './Passcode/CreatePasscodeContainer';
 
 /**
  * @desc Registers screens for React Native Navigation.
@@ -33,6 +42,13 @@ import { screen } from '../global/Screens';
  * @return {void}
  */
 export default function registerScreens(store: Object, Provider: Object) {
+  Navigation.registerComponent(screen('ACCOUNTS_SCREEN').screen, () => Accounts, store, Provider);
+  Navigation.registerComponent(screen('ACCOUNT_CREATE_SCREEN').screen, () => CreateAccount, store, Provider);
+  Navigation.registerComponent(screen('ACCOUNT_CREATE_DEVELOPER_SETTINGS').screen, () => DeveloperSettings, store, Provider);
+  Navigation.registerComponent(screen('ACCOUNT_CREATE_IDENTITY').screen, () => CreateIdentity, store, Provider);
+  Navigation.registerComponent(screen('ACCOUNT_CREATE_READY').screen, () => CreateReady, store, Provider);
+  Navigation.registerComponent(screen('ACCOUNT_RESTORE_SOURCE').screen, () => RestoreSource, store, Provider);
+  Navigation.registerComponent(screen('ACCOUNT_RESTORE_EMPTY_WALLET').screen, () => EmptyWallet, store, Provider);
   Navigation.registerComponent(screen('CREATE_KEY_INTRODUCTION_SCREEN').screen, () => CreateKeyIntroductionScreen, store, Provider);
   Navigation.registerComponent(screen('CREATE_KEY_INSTRUCTION_SCREEN').screen, () => CreateKeyInstructionScreen, store, Provider);
   Navigation.registerComponent(screen('CREATE_KEY_PROCESS_SCREEN').screen, () => CreateKeyProcessScreen, store, Provider);
@@ -54,4 +70,6 @@ export default function registerScreens(store: Object, Provider: Object) {
   Navigation.registerComponent(screen('CHAT_NATIONS_SCREEN').screen, () => ChatNationsScreen, store, Provider);
   Navigation.registerComponent(screen('SETTINGS_SCREEN').screen, () => SettingsScreen, store, Provider);
   Navigation.registerComponent(screen('SECURITY_SETTINGS_SCREEN').screen, () => SecuritySettingsScreen, store, Provider);
+  Navigation.registerComponent(screen('ENTER_PASSCODE_SCREEN').screen, () => EnterPasscodeScreen, store, Provider);
+  Navigation.registerComponent(screen('CREATE_PASSCODE_SCREEN').screen, () => CreatePasscodeScreen, store, Provider);
 }

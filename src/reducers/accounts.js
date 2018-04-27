@@ -15,6 +15,7 @@ import { CANCEL_ACCOUNT_EDITING, CHANGE_EDITING_ACCOUNT, DONE_ACCOUNT_EDITING, S
 
 export type State = {
   +editingAccount: Account | null,
+  +creatingAccount: EditingAccount | null,
   +currentAccountId: string | null,
   +login: AsyncTask<void>,
   +logout: AsyncTask<void>,
@@ -26,11 +27,13 @@ export const emptyAccount: EditingAccount = {
   name: null,
   location: null,
   avatar: null,
+  accountStore: null,
   networkType: 'main',
 };
 
 export const initialState: State = {
   editingAccount: null,
+  creatingAccount: null,
   currentAccountId: null,
   login: TaskBuilder.empty(),
   logout: TaskBuilder.empty(),
