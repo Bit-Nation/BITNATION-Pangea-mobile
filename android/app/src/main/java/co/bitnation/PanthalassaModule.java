@@ -8,7 +8,6 @@ import com.facebook.react.bridge.ReadableMap;
 import org.json.JSONException;
 
 import panthalassa.Panthalassa;
-import panthalassa.Panthalassa_;
 
 /**
  * Created by Estarrona on 19/04/18.
@@ -38,13 +37,13 @@ public class PanthalassaModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public Panthalassa_ PanthalassaNewPanthalassa(ReadableMap jsonParams) throws JSONException {
+    public boolean PanthalassaNewPanthalassa(ReadableMap jsonParams) throws JSONException {
         try {
-            Panthalassa_ instance = Panthalassa.newPanthalassa(jsonParams.getString("keyStore"), jsonParams.getString("pw"));
-            return instance;
+            Panthalassa.newPanthalassa(jsonParams.getString("accountStore"), jsonParams.getString("pw"));
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
-            return null;
+            return false;
         }
     }
 
@@ -100,6 +99,50 @@ public class PanthalassaModule extends ReactContextBaseJavaModule {
         } catch (Exception e) {
             e.printStackTrace();
             return e.getLocalizedMessage();
+        }
+    }
+
+    @ReactMethod
+    public String PanthalassaEthereumPrivateKey() {
+        try {
+            String response = Panthalassa.ethereumPrivateKey();
+            return response;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return e.getLocalizedMessage();
+        }
+    }
+
+    @ReactMethod
+    public String PanthalassaExport(ReadableMap jsonParams) throws JSONException {
+        try {
+            String response = Panthalassa.export(jsonParams.getString("pw"), jsonParams.getString("pwConfirm"));
+            return response;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return e.getLocalizedMessage();
+        }
+    }
+
+    @ReactMethod
+    public String PanthalassaNewAccountKeysFromMnemonic(ReadableMap jsonParams) throws JSONException {
+        try {
+            String response = Panthalassa.newAccountKeysFromMnemonic(jsonParams.getString("mnemonic"), jsonParams.getString("pw"), jsonParams.getString("pwConfirm"));
+            return response;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return e.getLocalizedMessage();
+        }
+    }
+
+    @ReactMethod
+    public boolean PanthalassaStop() {
+        try {
+            Panthalassa.stop();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
         }
     }
 }
