@@ -10,45 +10,41 @@ import BackgroundImage from '../../../../components/common/BackgroundImage';
 import styles from './styles';
 import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
 import i18n from '../../../../global/i18n';
-import type { Account } from '../../../../types/Account';
 import ScreenTitle from '../../../../components/common/ScreenTitle';
 import NationListItem from '../../../../components/common/NationListItem';
 
 type Props = {
   /**
-   * @desc List of all accounts
-   */
-  accounts: Array<Account>,
-  /**
    * @desc Function to be called when an item is selected from the list
-   * @param id ID of the nation to be opened
-   * @param isBot Flag to indicate if the selected channel is bot
+   * @param id ID of the account to be opened
    */
-  onSelectItem: (id: number, isBot: boolean) => void,
+  onSelectItem: (id: number) => void,
 };
 
-const AccountAccessListScreen = ({ onSelectItem, accounts }: Props) => {
-  return (
-    <View style={styles.nationsScreenContainer}>
-      <BackgroundImage />
-      <FakeNavigationBar />
-      <ScreenTitle title={i18n.t('screens.chat.title')} />
-      <SectionList
-        renderItem={(item) => {
-          const account = item.item;
-          return (<NationListItem
-            text={account.name}
-            participants=''
-            itemIcon={0}
-            onPress={id => onSelectItem(id, false)}
-            id={account.id}
-          />);
-        }}
-        keyExtractor={item => item.id}
-        style={styles.sectionList}
-      />
-    </View>
-  );
+const AccountAccessListScreen = ({ onSelectItem }: Props) => (
+  <View style={styles.nationsScreenContainer}>
+    <BackgroundImage />
+    <FakeNavigationBar />
+    <ScreenTitle title={i18n.t('screens.chat.title')} />
+    <SectionList
+      renderItem={(item) => {
+        const account = item.item;
+        return (<NationListItem
+          text={account.name}
+          participants=''
+          itemIcon={0}
+          onPress={id => onSelectItem(id)}
+          id={account.id}
+        />);
+      }}
+      keyExtractor={item => item.id}
+      style={styles.sectionList}
+    />
+  </View>
+);
+
+AccountAccessListScreen.defaultProps = {
+  onSelectItem: () => null,
 };
 
 export default AccountAccessListScreen;
