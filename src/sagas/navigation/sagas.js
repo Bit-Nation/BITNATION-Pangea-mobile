@@ -41,7 +41,7 @@ export function launchLoggedInFlow() {
       screen('CHAT_NATIONS_SCREEN'),
       screen('NATIONS_SCREEN'),
       screen('WALLET_SCREEN'),
-      screen('PROFILE_SCREEN'),
+      screen('SETTINGS_SCREEN'),
     ],
     tabsStyle: { ...tabsStyle },
     appStyle: { ...appStyle },
