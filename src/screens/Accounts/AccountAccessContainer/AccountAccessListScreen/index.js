@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 
 import BackgroundImage from '../../../../components/common/BackgroundImage';
+import Button from '../../../../components/common/Button';
 import styles from './styles';
 import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
 import i18n from '../../../../global/i18n';
@@ -40,6 +41,23 @@ const AccountAccessListScreen = ({ onSelectItem }: Props) => (
       keyExtractor={item => item.id}
       style={styles.sectionList}
     />
+    <View style={styles.buttonsContainer}>
+      <Button
+        enabled
+        // TODO Insert translations
+        title='New Account'
+        onPress={() => this.props.onSubmit(this.state.pinCode)}
+        style={styles.submitButton}
+      />
+      <Button
+        enabled
+        // TODO Insert translations
+        title='Restore Account'
+        onPress={() => this.props.onSubmit(this.state.pinCode)}
+        style={styles.submitButton}
+      />
+      <View style={styles.spacer} />
+    </View>
   </View>
 );
 
