@@ -9,20 +9,20 @@ import {
   CURRENT_ACCOUNT_ID_CHANGED,
   LOGIN_TASK_UPDATED,
 } from '../actions/accounts';
-import type { Account, EditingAccount } from '../types/Account';
+import type { Account, PartialAccount } from '../types/Account';
 import TaskBuilder, { type AsyncTask } from '../utils/asyncTask';
 import { CANCEL_ACCOUNT_EDITING, CHANGE_EDITING_ACCOUNT, DONE_ACCOUNT_EDITING, START_ACCOUNT_EDITING } from '../actions/profile';
 
 export type State = {
   +editingAccount: Account | null,
-  +creatingAccount: EditingAccount | null,
+  +creatingAccount: PartialAccount | null,
   +currentAccountId: string | null,
   +login: AsyncTask<void>,
   +logout: AsyncTask<void>,
   +accounts: Array<Account>,
 };
 
-export const emptyAccount: EditingAccount = {
+export const emptyAccount: PartialAccount = {
   id: null,
   name: null,
   location: null,
