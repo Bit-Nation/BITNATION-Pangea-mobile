@@ -8,19 +8,31 @@ export type CurrentAccountIdChangedAction = { +type: 'CURRENT_ACCOUNT_ID_CHANGED
 export type LoginAction = { +type: 'LOGIN', accountId: string, password: string };
 export type LoginTaskUpdatedAction = { +type: 'LOGIN_TASK_UPDATED', asyncTask: AsyncTask<void> };
 export type LogoutAction = { +type: 'LOGOUT' };
+export type CheckPinCodeAction = { +type: 'CHECK_PIN_CODE', +pinCode: string, +accountId: string, +callback: (success: boolean) => void };
+export type CheckPasswordAction = { +type: 'CHECK_PASSWORD', +password: string, +accountId: string, +callback: (success: boolean) => void };
+export type SavePinCodeAction = { +type: 'SAVE_PIN_CODE', +pinCode: string, +accountId: ?string, +callback: (success: boolean) => void };
+export type SavePasswordAction = { +type: 'SAVE_PASSWORD', +password: string, +accountId: ?string, +callback: (success: boolean) => void };
 
 export type Action =
   | AccountsListUpdatedAction
   | CurrentAccountIdChangedAction
   | LoginAction
   | LoginTaskUpdatedAction
-  | LogoutAction;
+  | LogoutAction
+  | CheckPinCodeAction
+  | CheckPasswordAction
+  | SavePinCodeAction
+  | SavePasswordAction;
 
 export const ACCOUNTS_LIST_UPDATED = 'ACCOUNTS_LIST_UPDATED';
 export const CURRENT_ACCOUNT_ID_CHANGED = 'CURRENT_ACCOUNT_ID_CHANGED';
 export const LOGIN = 'LOGIN';
 export const LOGIN_TASK_UPDATED = 'LOGIN_TASK_UPDATED';
 export const LOGOUT = 'LOGOUT';
+export const CHECK_PIN_CODE = 'CHECK_PIN_CODE';
+export const CHECK_PASSWORD = 'CHECK_PASSWORD';
+export const SAVE_PIN_CODE = 'SAVE_PIN_CODE';
+export const SAVE_PASSWORD = 'SAVE_PASSWORD';
 
 /**
  * @desc Action creator for an action that is called when accounts list updated.
@@ -81,5 +93,69 @@ export function loginTaskUpdated(asyncTask: AsyncTask<void>): LoginTaskUpdatedAc
 export function logout(): LogoutAction {
   return {
     type: LOGOUT,
+  };
+}
+
+/**
+ * @desc Action creator for an action that is called to check entered pin code.
+ * @param {string} pinCode Pin code to check.
+ * @param {string} accountId Id of account which pin code is going to be checked.
+ * @param {function} callback Callback that is called with true if check is successful and false otherwise.
+ * @return {CheckPinCodeAction} An action.
+ */
+export function checkPinCode(pinCode: string, accountId: string, callback: (boolean) => void): CheckPinCodeAction {
+  return {
+    type: CHECK_PIN_CODE,
+    accountId,
+    pinCode,
+    callback,
+  };
+}
+
+/**
+ * @desc Action creator for an action that is called to check entered password.
+ * @param {string} password Password to check.
+ * @param {string} accountId Id of account which password is going to be checked.
+ * @param {function} callback Callback that is called with true if check is successful and false otherwise.
+ * @return {CheckPinCodeAction} An action.
+ */
+export function checkPassword(password: string, accountId: string, callback: (boolean) => void): CheckPasswordAction {
+  return {
+    type: CHECK_PASSWORD,
+    accountId,
+    password,
+    callback,
+  };
+}
+
+/**
+ * @desc Action creator for an action that is called to save new pin code.
+ * @param {string} pinCode Pin code to save.
+ * @param {?string} accountId Id of account which pin code is going to be saved or null for new account.
+ * @param {function} callback Callback that is called with true if save is successful and false otherwise.
+ * @return {SavePinCodeAction} An action.
+ */
+export function savePinCode(pinCode: string, accountId: string, callback: (boolean) => void): SavePinCodeAction {
+  return {
+    type: SAVE_PIN_CODE,
+    accountId,
+    pinCode,
+    callback,
+  };
+}
+
+/**
+ * @desc Action creator for an action that is called to save new password.
+ * @param {string} password Password to save.
+ * @param {?string} accountId Id of account which password is going to be saved or null for new account.
+ * @param {function} callback Callback that is called with true if save is successful and false otherwise.
+ * @return {SavePinCodeAction} An action.
+ */
+export function savePassword(password: string, accountId: string, callback: (boolean) => void): SavePasswordAction {
+  return {
+    type: SAVE_PASSWORD,
+    accountId,
+    password,
+    callback,
   };
 }
