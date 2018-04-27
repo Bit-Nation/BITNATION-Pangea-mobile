@@ -85,13 +85,13 @@ class CreateAccount extends Component<Props> {
           <View style={styles.buttonContainerMultiple}>
             <Button
               style={styles.panelButton}
-              title={'Prev'}
+              title={i18n.t('screens.accounts.create.prev')}
               enabled={this.state.step !== 0}
               onPress={this.previousStep}
             />
             <Button
               style={styles.panelButton}
-              title={'Next'}
+              title={i18n.t('screens.accounts.create.next')}
               enabled={this.state.step !== (steps.length - 1)}
               onPress={this.nextStep}
             />

@@ -35,7 +35,11 @@ const styles = MediaQueryStyleSheet.create({
   networkDropdownList: {
   	flex: 1,
   	marginTop: 10
-  }
+  },
+
+  mt30: {
+  	marginTop: 30
+  },
 });
 
 export default styles;

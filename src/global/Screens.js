@@ -95,9 +95,12 @@ const Screens = {
     screen: 'Pangea.AccountCreateReadyScreen',
     navigatorStyle: hiddenNavigatorStyle,
   },
-  ACCOUNT_RESTORE_SCREEN: {
-    screen: 'Pangea.AccountRestoreScreen',
-    title: i18n.t('screens.accounts.restore.title'),
+  ACCOUNT_RESTORE_SOURCE: {
+    screen: 'Pangea.AccountRestoreSourceScreen',
+    navigatorStyle: hiddenNavigatorStyle,
+  },
+  ACCOUNT_RESTORE_EMPTY_WALLET: {
+    screen: 'Pangea.AccountRestoreEmptyWalletScreen',
     navigatorStyle: hiddenNavigatorStyle,
   },
   DASHBOARD_SCREEN: {

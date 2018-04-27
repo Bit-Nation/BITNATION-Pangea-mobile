@@ -36,7 +36,7 @@ class Accounts extends NavigatorComponent<Props> {
   }
 
   onRestoreAccount() {
-    this.props.navigator.push(screen('ACCOUNT_RESTORE_SCREEN'));
+    this.props.navigator.push(screen('ACCOUNT_RESTORE_SOURCE'));
   }
 
   render() {

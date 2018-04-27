@@ -233,6 +233,15 @@
         "walletEmpty": "Your account is ready, but your wallet is empty. Please add ETH to your wallet so you can do stuff.",
         "openDashboard": "Open Dashboard",
         "openWallet": "Open ETH Wallet",
+      },
+      "restore": {
+        "title": "Restore Account",
+        "source": "Restore your account from",
+        "clipboard": "Restore from Clipboard",
+        "file": "Restore from File",
+        "cloud": "Restore from Cloud",
+        "emptyWalletStatement": "Your wallet is empty or low. Please add ETH to your wallet so you can do stuff.",
+        "sendETH": "Send ETH to address"
       }
     },
     "dashboard": {
