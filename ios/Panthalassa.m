@@ -34,19 +34,35 @@ RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(PanthalassaNewAccountKeys:(NSDictionary *
   }
 }
 
+RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(PanthalassaNewAccountKeysFromMnemonic:(NSDictionary *)parameters) {
+  
+  NSString *newAccount;
+  NSError *error = nil;
+  newAccount = PanthalassaNewAccountKeysFromMnemonic([RCTConvert NSString:parameters[@"mnemonic"]],
+                                         [RCTConvert NSString:parameters[@"pw"]],
+                                         [RCTConvert NSString:parameters[@"pwConfirm"]],
+                                         &error);
+  
+  if (error == nil) {
+    return newAccount;
+  } else {
+    return(error.localizedDescription);
+  }
+}
+
 RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(PanthalassaNewPanthalassa:(NSDictionary *)parameters) {
   
-  PanthalassaPanthalassa *instance;
+  BOOL response;
   NSError *error = nil;
   
-  instance = PanthalassaNewPanthalassa([RCTConvert NSString:parameters[@"keyStore"]],
+  response = PanthalassaNewPanthalassa([RCTConvert NSString:parameters[@"accountStore"]],
                                        [RCTConvert NSString:parameters[@"pw"]],
                                        &error);
   
-  if (error == nil) {
-    return instance;
+  if (response) {
+    return @YES;
   } else {
-    return(error.localizedDescription);
+    return @NO;
   }
 }
 
@@ -116,6 +132,47 @@ RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(PanthalassaCIDSha512:(NSString *)value) {
     return response;
   } else {
     return(error.localizedDescription);
+  }
+}
+
+RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(PanthalassaEthereumPrivateKey) {
+  
+  NSString *response;
+  NSError *error = nil;
+  response = PanthalassaEthereumPrivateKey(&error);
+  
+  if (error == nil) {
+    return response;
+  } else {
+    return(error.localizedDescription);
+  }
+}
+
+RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(PanthalassaExport:(NSDictionary *)parameters) {
+  
+  NSString *response;
+  NSError *error = nil;
+  response = PanthalassaExport([RCTConvert NSString:parameters[@"pw"]],
+                                           [RCTConvert NSString:parameters[@"pwConfirm"]],
+                                           &error);
+  
+  if (error == nil) {
+    return response;
+  } else {
+    return(error.localizedDescription);
+  }
+}
+
+RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(PanthalassaStop) {
+  
+  BOOL response;
+  NSError *error = nil;
+  response = PanthalassaStop(&error);
+  
+  if (response) {
+    return @YES;
+  } else {
+    return @NO;
   }
 }
 
