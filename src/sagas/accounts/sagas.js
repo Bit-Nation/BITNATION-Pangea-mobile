@@ -8,7 +8,10 @@ import {
   accountListUpdated, CURRENT_ACCOUNT_ID_CHANGED, currentAccountIdChanged,
   loginTaskUpdated,
 } from '../../actions/accounts';
-import type { LoginAction } from '../../actions/accounts';
+import type {
+  CheckPasswordAction, CheckPinCodeAction, LoginAction, SavePasswordAction,
+  SavePinCodeAction,
+} from '../../actions/accounts';
 import { convertFromDatabase } from '../../utils/mapping/account';
 import TaskBuilder from '../../utils/asyncTask';
 import AccountsService from '../../services/accounts';
@@ -92,4 +95,48 @@ export function* login(action: LoginAction) {
  */
 export function* logout() {
   yield put(currentAccountIdChanged(null));
+}
+
+/**
+ * @desc Checks if entered pin code is correct for an account which id is set in the action.
+ * @param {CheckPinCodeAction} action An action.
+ * @return {void}
+ */
+export function* checkPinCode(action: CheckPinCodeAction) {
+  // @todo Check if pin code is correct.
+  action.callback(true);
+  yield;
+}
+
+/**
+ * @desc Checks if entered password is correct for an account which id is set in the action.
+ * @param {CheckPasswordAction} action An action.
+ * @return {void}
+ */
+export function* checkPassword(action: CheckPasswordAction) {
+  // @todo Check if password is correct.
+  action.callback(true);
+  yield;
+}
+
+/**
+ * @desc Saves new pin code for an account which id is set in the action.
+ * @param {SavePinCodeAction} action An action.
+ * @return {void}
+ */
+export function* savePinCode(action: SavePinCodeAction) {
+  // @todo Save pin code.
+  action.callback(true);
+  yield;
+}
+
+/**
+ * @desc Save new password for an account which id is set in the action.
+ * @param {SavePasswordAction} action An action.
+ * @return {void}
+ */
+export function* savePassword(action: SavePasswordAction) {
+  // @todo Save password.
+  action.callback(true);
+  yield;
 }
