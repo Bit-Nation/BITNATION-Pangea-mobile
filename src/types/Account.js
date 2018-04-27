@@ -11,7 +11,7 @@ export type Account = {
   networkType: NetworkType,
 };
 
-export type EditingAccount = {
+export type PartialAccount = {
   id: ?string,
   name: ?string,
   location: ?string,
