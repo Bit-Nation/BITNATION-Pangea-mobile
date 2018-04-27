@@ -7,13 +7,15 @@ export type Account = {
   name: string,
   location: ?string,
   avatar: ?string,
+  accountStore: string,
   networkType: NetworkType,
 };
 
 export type EditingAccount = {
-  id: ?number,
+  id: ?string,
   name: ?string,
   location: ?string,
   avatar: ?string,
-  networkType: NetworkType,
+  accountStore: ?string,
+  networkType: ?NetworkType,
 }

@@ -71,6 +71,38 @@ const baseKeyScreen = {
  */
 
 const Screens = {
+  ACCOUNTS_SCREEN: {
+    screen: 'Pangea.AccountsScreen',
+    title: i18n.t('screens.accounts.title'),
+    navigatorStyle: hiddenNavigatorStyle,
+  },
+  ACCOUNT_CREATE_SCREEN: {
+    screen: 'Pangea.AccountCreateScreen',
+    title: i18n.t('screens.accounts.create.title'),
+    navigatorStyle: hiddenNavigatorStyle,
+  },
+  ACCOUNT_CREATE_DEVELOPER_SETTINGS: {
+    screen: 'Pangea.AccountCreateDeveloperSettingsScreen',
+    title: i18n.t('screens.accounts.create.developerTitle'),
+    navigatorStyle: hiddenNavigatorStyle,
+  },
+  ACCOUNT_CREATE_IDENTITY: {
+    screen: 'Pangea.AccountCreateIdentityScreen',
+    title: i18n.t('screens.accounts.create.identityTitle'),
+    navigatorStyle: hiddenNavigatorStyle,
+  },
+  ACCOUNT_CREATE_READY: {
+    screen: 'Pangea.AccountCreateReadyScreen',
+    navigatorStyle: hiddenNavigatorStyle,
+  },
+  ACCOUNT_RESTORE_SOURCE: {
+    screen: 'Pangea.AccountRestoreSourceScreen',
+    navigatorStyle: hiddenNavigatorStyle,
+  },
+  ACCOUNT_RESTORE_EMPTY_WALLET: {
+    screen: 'Pangea.AccountRestoreEmptyWalletScreen',
+    navigatorStyle: hiddenNavigatorStyle,
+  },
   DASHBOARD_SCREEN: {
     screen: 'Pangea.DashboardScreen',
     label: i18n.t('screens.dashboard.tabTitle'),
@@ -184,6 +216,16 @@ const Screens = {
     screen: 'Pangea.Settings.Security',
     title: '',
     navigatorStyle,
+  },
+  ENTER_PASSCODE_SCREEN: {
+    screen: 'Pangea.EnterPasscode',
+    title: '',
+    navigatorStyle: navigatorStyleModal,
+  },
+  CREATE_PASSCODE_SCREEN: {
+    screen: 'Pangea.CreatePasscode',
+    title: '',
+    navigatorStyle: navigatorStyleModal,
   },
 };
 
