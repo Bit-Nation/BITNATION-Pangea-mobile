@@ -12,6 +12,8 @@ export type CheckPinCodeAction = { +type: 'CHECK_PIN_CODE', +pinCode: string, +a
 export type CheckPasswordAction = { +type: 'CHECK_PASSWORD', +password: string, +accountId: string, +callback: (success: boolean) => void };
 export type SavePinCodeAction = { +type: 'SAVE_PIN_CODE', +pinCode: string, +accountId: ?string, +callback: (success: boolean) => void };
 export type SavePasswordAction = { +type: 'SAVE_PASSWORD', +password: string, +accountId: ?string, +callback: (success: boolean) => void };
+export type CreateAccountAction = { +type: 'CREATE_ACCOUNT' };
+export type ResetAccountAction = { +type: 'RESET_ACCOUNT' };
 
 export type Action =
   | AccountsListUpdatedAction
@@ -22,7 +24,9 @@ export type Action =
   | CheckPinCodeAction
   | CheckPasswordAction
   | SavePinCodeAction
-  | SavePasswordAction;
+  | SavePasswordAction
+  | CreateAccountAction
+  | ResetAccountAction;
 
 export const ACCOUNTS_LIST_UPDATED = 'ACCOUNTS_LIST_UPDATED';
 export const CURRENT_ACCOUNT_ID_CHANGED = 'CURRENT_ACCOUNT_ID_CHANGED';
@@ -33,6 +37,8 @@ export const CHECK_PIN_CODE = 'CHECK_PIN_CODE';
 export const CHECK_PASSWORD = 'CHECK_PASSWORD';
 export const SAVE_PIN_CODE = 'SAVE_PIN_CODE';
 export const SAVE_PASSWORD = 'SAVE_PASSWORD';
+export const CREATE_ACCOUNT = 'CREATE_ACCOUNT';
+export const RESET_ACCOUNT = 'RESET_ACCOUNT';
 
 /**
  * @desc Action creator for an action that is called when accounts list updated.
@@ -157,5 +163,25 @@ export function savePassword(password: string, accountId: string, callback: (boo
     accountId,
     password,
     callback,
+  };
+}
+
+/**
+ * @desc Action creator for an action that is called to create a new account.
+ * @return {CreateAccountAction} An action.
+ */
+export function createAccount(): CreateAccountAction {
+  return {
+    type: CREATE_ACCOUNT,
+  };
+}
+
+/**
+ * @desc Action creator for an action that is called to create a new account.
+ * @return {CreateAccountAction} An action.
+ */
+export function resetAccount(): ResetAccountAction {
+  return {
+    type: RESET_ACCOUNT,
   };
 }
