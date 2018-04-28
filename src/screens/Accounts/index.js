@@ -1,6 +1,6 @@
 // @flow
 
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { View } from 'react-native';
 
@@ -23,7 +23,6 @@ type Props = {
 };
 
 class Accounts extends NavigatorComponent<Props> {
-
   onCreateAccount: Function;
   onRestoreAccount: Function;
 
@@ -37,8 +36,8 @@ class Accounts extends NavigatorComponent<Props> {
     this.props.navigator.push({
       ...screen('SECURITY_SETTINGS_SCREEN'),
       passProps: {
-        isCreating: true
-      }
+        isCreating: true,
+      },
     });
   }
 
@@ -48,8 +47,8 @@ class Accounts extends NavigatorComponent<Props> {
       passProps: {
         onSuccess: () => {
           this.props.navigator.push(screen('ACCOUNT_RESTORE_SOURCE'));
-        }
-      }
+        },
+      },
     });
   }
 
@@ -64,12 +63,12 @@ class Accounts extends NavigatorComponent<Props> {
           <View style={{}}>
             <Button
               style={styles.panelButton}
-              title={'New Account'}
+              title='New Account'
               onPress={this.onCreateAccount}
             />
             <Button
               style={styles.panelButton}
-              title={'Restore Account'}
+              title='Restore Account'
               onPress={this.onRestoreAccount}
             />
           </View>

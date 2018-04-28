@@ -34,19 +34,21 @@ type Props = {
  * @return {React.Component} A component.
  */
 
-const SwitchLabeled = ({ onValueChange, value, label, align, disabled }:Props) => {
+const SwitchLabeled = ({
+  onValueChange, value, label, align, disabled,
+}:Props) => {
   const styles = MediaQueryStyleSheet.create({
     ...GlobalStyles,
   });
 
-  let switchStyle = [styles.switchContainer];
+  const switchStyle = [styles.switchContainer];
   if (align === 'right') {
     switchStyle.push({
-      flexDirection: 'row-reverse'
+      flexDirection: 'row-reverse',
     });
   }
-  
-  let textStyle = [styles.formSwitchLabelText];
+
+  const textStyle = [styles.formSwitchLabelText];
   if (disabled) {
     textStyle.push(styles.disabledText);
   }

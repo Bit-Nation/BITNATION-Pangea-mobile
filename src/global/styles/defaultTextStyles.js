@@ -243,7 +243,7 @@ const defaultTextStyles = {
   },
 
   disabledText: {
-    color: Colors.disabledTextColor
-  }
+    color: Colors.disabledTextColor,
+  },
 };
 export default defaultTextStyles;

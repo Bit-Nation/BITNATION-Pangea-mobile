@@ -76,7 +76,7 @@ class CreatePasscodeContainer extends NavigatorComponent<Props & Actions & Setti
       enteredPasscode: undefined,
       verifyResetKey: 0,
       createResetKey: 0,
-      showPincodeScreen: false
+      showPincodeScreen: false,
     };
   }
 
@@ -85,7 +85,7 @@ class CreatePasscodeContainer extends NavigatorComponent<Props & Actions & Setti
       if (this.props.isCreatingBoth && !this.state.showPincodeScreen) {
         this.setState({
           showPincodeScreen: true,
-          enteredPasscode: undefined
+          enteredPasscode: undefined,
         });
       } else {
         this.props.onSuccess();

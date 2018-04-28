@@ -8,8 +8,7 @@ import styles from './styles';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import i18n from '../../../global/i18n';
-import { screen } from '../../../global/Screens';
-import { androidNavigationButtons } from '../../../global/Screens';
+import { screen, androidNavigationButtons } from '../../../global/Screens';
 import ScreenTitle from '../../../components/common/ScreenTitle';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
@@ -55,8 +54,8 @@ class ProfileScreen extends NavigatorComponent<Props & Actions & SettingsState, 
     super(props);
 
     this.state = {
-      nextScreen: 'password'
-    }
+      nextScreen: 'password',
+    };
 
     this.previousStep = this.previousStep.bind(this);
     this.nextStep = this.nextStep.bind(this);
@@ -82,8 +81,8 @@ class ProfileScreen extends NavigatorComponent<Props & Actions & SettingsState, 
       ...screen('CREATE_PASSCODE_SCREEN'),
       passProps: {
         onSuccess: this.goToNextStep,
-        isCreatingBoth: true
-      }
+        isCreatingBoth: true,
+      },
     });
   }
 

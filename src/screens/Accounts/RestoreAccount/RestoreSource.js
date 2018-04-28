@@ -8,7 +8,6 @@ import i18n from '../../../global/i18n';
 import { screen } from '../../../global/Screens';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
-import PanelView from '../../../components/common/PanelView';
 import ScreenTitle from '../../../components/common/ScreenTitle';
 import Button from '../../../components/common/Button';
 import styles from '../styles';
@@ -23,12 +22,6 @@ type Props = {
 };
 
 class RestoreSource extends Component<Props> {
-
-  nextStep: Function;
-  restoreFromClipboard: Function;
-  restoreFromFile: Function;
-  restoreFromCloud: Function;
-
   constructor(props: Props) {
     super(props);
     this.nextStep = this.nextStep.bind(this);
@@ -37,16 +30,21 @@ class RestoreSource extends Component<Props> {
     this.restoreFromCloud = this.restoreFromCloud.bind(this);
   }
 
+  nextStep: Function;
+  restoreFromClipboard: Function;
+  restoreFromFile: Function;
+  restoreFromCloud: Function;
+
   restoreFromClipboard() {
-    
+
   }
 
   restoreFromFile() {
-    
+
   }
 
   restoreFromCloud() {
-    
+
   }
 
   nextStep() {

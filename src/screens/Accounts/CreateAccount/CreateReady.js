@@ -2,10 +2,9 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View, Text, TextInput, Image, TouchableOpacity, Alert } from 'react-native';
+import { View } from 'react-native';
 
 import i18n from '../../../global/i18n';
-import { screen } from '../../../global/Screens';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import PanelView from '../../../components/common/PanelView';
@@ -16,13 +15,12 @@ import type { Navigator } from '../../../types/ReactNativeNavigation';
 
 type Props = {
 	/**
-   * @desc React Native Navigation navigator object.
-   */
-  navigator: Navigator,
+	 * @desc React Native Navigation navigator object.
+	 */
+	navigator: Navigator,
 };
 
 class AccountReady extends Component<Props> {
-
   goToDashboard() {
 
   }

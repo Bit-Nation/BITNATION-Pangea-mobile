@@ -28,7 +28,7 @@ const styles = {
   // Used to align items at the end of the container
   flexEnd: {
     flex: 1,
-    justifyContent: 'flex-end'
+    justifyContent: 'flex-end',
   },
 
   // General screen container for ALL elements

@@ -15,30 +15,30 @@ const styles = MediaQueryStyleSheet.create({
   },
 
   navButtons: {
-  	alignSelf: 'flex-end',
+    alignSelf: 'flex-end',
   },
 
   inlineFieldContainer: {
-  	flexDirection: 'row',
-  	alignItems: 'center',
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 
   lengthSlider: {
-  	width: '50%'
+    width: '50%',
   },
 
   networkDropdownButton: {
-  	flex: 1,
-  	marginBottom: 20
+    flex: 1,
+    marginBottom: 20,
   },
 
   networkDropdownList: {
-  	flex: 1,
-  	marginTop: 10
+    flex: 1,
+    marginTop: 10,
   },
 
   mt30: {
-  	marginTop: 30
+    marginTop: 30,
   },
 });
 
