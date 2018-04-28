@@ -34,13 +34,27 @@ class Accounts extends NavigatorComponent<Props> {
     this.props.navigator.push({
       ...screen('SECURITY_SETTINGS_SCREEN'),
       passProps: {
-        isCreating: true
+        isCreating: true,
+        passcodeInfo: {
+          length: 4
+        }
       }
     });
   }
 
   onRestoreAccount() {
-    this.props.navigator.push(screen('ACCOUNT_RESTORE_SOURCE'));
+    this.props.navigator.push({
+      ...screen('ENTER_PASSCODE_SCREEN'),
+      passProps: {
+        onSuccess: () => {
+          this.props.navigator.push(screen('ACCOUNT_RESTORE_SOURCE'));
+        },
+        passcodeInfo: {
+          type: 'pinCode',
+          length: 4
+        }
+      }
+    });
   }
 
   render() {
