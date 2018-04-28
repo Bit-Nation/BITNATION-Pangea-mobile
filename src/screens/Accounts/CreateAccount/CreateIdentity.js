@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { View, Text, TextInput, Image, TouchableOpacity, Alert } from 'react-native';
 import ImagePicker from 'react-native-image-crop-picker';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { ActionSheet } from 'native-base';
 
 import i18n from '../../../global/i18n';
@@ -16,7 +15,6 @@ import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import PanelView from '../../../components/common/PanelView';
 import ScreenTitle from '../../../components/common/ScreenTitle';
 import Button from '../../../components/common/Button';
-import SwitchLabeled from '../../../components/common/SwitchLabeled';
 import styles from '../styles';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 
@@ -43,10 +41,9 @@ type State = {
 };
 
 class Identity extends Component<Props, State> {
-
-  previousStep: Function;
   nextStep: Function;
   setFieldValue: Function;
+  previousStep: Function;
   actionSheet: any;
 
   constructor(props: Props) {
@@ -55,8 +52,8 @@ class Identity extends Component<Props, State> {
     this.state = {
     	avatar: '',
     	name: '',
-    	location: ''
-    }
+    	location: '',
+    };
 
     this.previousStep = this.previousStep.bind(this);
     this.nextStep = this.nextStep.bind(this);
@@ -72,8 +69,8 @@ class Identity extends Component<Props, State> {
   }
 
   setFieldValue(field: string, value: string): void {
-		this.setState({[field]: value});
-	}
+    this.setState({ [field]: value });
+  }
 
   render() {
     return (
@@ -85,8 +82,8 @@ class Identity extends Component<Props, State> {
           <View style={styles.bodyContainer}>
             <Text style={styles.headline}>{i18n.t('screens.accounts.create.identityTitle')}</Text>
             {this._buildPicturePanel()}
-          	{this._buildProfileForm()}
-					</View>
+            {this._buildProfileForm()}
+          </View>
           <View style={styles.buttonContainerMultiple}>
             <Button
               style={styles.panelButton}

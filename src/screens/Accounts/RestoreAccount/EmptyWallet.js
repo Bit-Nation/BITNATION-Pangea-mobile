@@ -7,7 +7,6 @@ import { View, Text } from 'react-native';
 import i18n from '../../../global/i18n';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
-import PanelView from '../../../components/common/PanelView';
 import ScreenTitle from '../../../components/common/ScreenTitle';
 import Button from '../../../components/common/Button';
 import styles from '../styles';
@@ -21,7 +20,6 @@ type Props = {
 };
 
 class EmptyWallet extends Component<Props> {
-
   nextStep() {
 
   }
