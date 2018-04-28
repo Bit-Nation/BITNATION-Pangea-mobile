@@ -13,6 +13,8 @@ import ScreenTitle from '../../../components/common/ScreenTitle';
 import Button from '../../../components/common/Button';
 import styles from '../styles';
 
+import type { Navigator } from '../../../types/ReactNativeNavigation';
+
 type Props = {
   /**
    * @desc React Native Navigation navigator object.
@@ -21,6 +23,11 @@ type Props = {
 };
 
 class RestoreSource extends Component<Props> {
+
+  nextStep: Function;
+  restoreFromClipboard: Function;
+  restoreFromFile: Function;
+  restoreFromCloud: Function;
 
   constructor(props: Props) {
     super(props);

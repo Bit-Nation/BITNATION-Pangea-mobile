@@ -2,14 +2,14 @@
 
 import { type Action, CHANGE_PASSCODE_LENGTH, CHANGE_USE_NUMERIC_PASSCODE } from '../actions/settings';
 
-type PasscodeInfo =
+export type PasscodeInfo =
   {
     type: 'pinCode',
     length: number,
   } |
   {
     type: 'password',
-  }
+  };
 
 export type State = {
   +passcodeInfo: PasscodeInfo,

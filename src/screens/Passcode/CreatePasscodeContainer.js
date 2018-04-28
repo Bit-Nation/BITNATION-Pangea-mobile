@@ -41,12 +41,8 @@ type Props = {
   /**
    * @desc Id of account which passcode will be created or edited.
    */
-  accountId: ?string,
-  /**
-   * @desc Information of the passcode to be created
-   */
-  passcodeInfo?: Object
-}
+  accountId: ?string
+};
 
 type Actions = {
   /**
@@ -57,7 +53,7 @@ type Actions = {
    * @desc Check entered password.
    */
   savePassword: (password: string, accountId: ?string, callback: (success: boolean) => void) => void,
-}
+};
 
 type State = {
   enteredPasscode: ?string,
@@ -66,10 +62,12 @@ type State = {
    */
   verifyResetKey: number,
   createResetKey: number,
-}
+  showPincodeScreen: boolean,
+};
 
 class CreatePasscodeContainer extends NavigatorComponent<Props & Actions & SettingsState, State> {
   static defaultProps;
+  renderPasscodeScreen: Function;
 
   constructor(props: Props & Actions & SettingsState) {
     super(props);
@@ -171,7 +169,7 @@ class CreatePasscodeContainer extends NavigatorComponent<Props & Actions & Setti
           <PinCodeScreen
             key={`create ${this.state.createResetKey}`}
             navigator={navigator}
-            pinCodeLength={passcodeInfo.length}
+            pinCodeLength={passcodeInfo.length || 4}
             instruction={i18n.t('screens.pinCode.createInstruction')}
             shouldShowCancel
             onCancel={onCancel}
@@ -184,7 +182,7 @@ class CreatePasscodeContainer extends NavigatorComponent<Props & Actions & Setti
           key={`verify ${this.state.verifyResetKey}`}
           resetKey={this.state.verifyResetKey}
           navigator={navigator}
-          pinCodeLength={passcodeInfo.length}
+          pinCodeLength={passcodeInfo.length || 4}
           instruction={i18n.t('screens.pinCode.verifyInstruction')}
           shouldShowCancel
           onCancel={this.onCancelVerificationPasscode}

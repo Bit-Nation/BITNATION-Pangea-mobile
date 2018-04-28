@@ -23,6 +23,10 @@ type Props = {
    * @desc Callback to be called on Switch when changes value.
    */
   onValueChange?: () => void,
+  /**
+   * @desc Swich disabled status
+   */
+  disabled?: boolean,
 };
 
 /**

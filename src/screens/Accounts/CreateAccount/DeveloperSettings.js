@@ -14,6 +14,7 @@ import ScreenTitle from '../../../components/common/ScreenTitle';
 import Button from '../../../components/common/Button';
 import SwitchLabeled from '../../../components/common/SwitchLabeled';
 import styles from '../styles';
+import type { Navigator } from '../../../types/ReactNativeNavigation';
 
 type Props = {
 	/**
@@ -22,14 +23,25 @@ type Props = {
   navigator: Navigator,
 };
 
-class DeveloperSettings extends Component<Props> {
+type State = {
+	testingAccount: boolean,
+	network: string,
+	detailedLogging: boolean,
+	debuggingTools: boolean
+};
+
+class DeveloperSettings extends Component<Props, State> {
+
+	previousStep: Function;
+	nextStep: Function;
+	setFieldValue: Function;
 
   constructor(props: Props) {
     super(props);
 
     this.state = {
     	testingAccount: false,
-    	network: null,
+    	network: '',
     	detailedLogging: false,
     	debuggingTools: false,
     }

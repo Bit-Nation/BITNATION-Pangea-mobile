@@ -18,6 +18,7 @@ import ScreenTitle from '../../../components/common/ScreenTitle';
 import Button from '../../../components/common/Button';
 import SwitchLabeled from '../../../components/common/SwitchLabeled';
 import styles from '../styles';
+import type { Navigator } from '../../../types/ReactNativeNavigation';
 
 type Props = {
 	/**
@@ -26,13 +27,33 @@ type Props = {
   navigator: Navigator,
 };
 
-class Identity extends Component<Props> {
+type State = {
+  /**
+   * @desc Profile avatar string in base64 format
+   */
+  avatar: string,
+  /**
+   * @desc Profile name information
+   */
+  name: string,
+  /**
+   * @desc Profile location information
+   */
+  location: string
+};
+
+class Identity extends Component<Props, State> {
+
+  previousStep: Function;
+  nextStep: Function;
+  setFieldValue: Function;
+  actionSheet: any;
 
   constructor(props: Props) {
     super(props);
 
     this.state = {
-    	avatar: null,
+    	avatar: '',
     	name: '',
     	location: ''
     }
@@ -42,15 +63,15 @@ class Identity extends Component<Props> {
     this.setFieldValue = this.setFieldValue.bind(this);
   }
 
-  previousStep() {
+  previousStep(): void {
     this.props.navigator.pop();
   }
 
-  nextStep() {
+  nextStep(): void {
     this.props.navigator.push(screen('ACCOUNT_CREATE_READY'));
   }
 
-  setFieldValue(field, value) {
+  setFieldValue(field: string, value: string): void {
 		this.setState({[field]: value});
 	}
 

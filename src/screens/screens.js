@@ -3,7 +3,6 @@
 import { Navigation } from 'react-native-navigation';
 
 import Accounts from './Accounts';
-import CreateAccount from './Accounts/CreateAccount';
 import DeveloperSettings from './Accounts/CreateAccount/DeveloperSettings';
 import CreateIdentity from './Accounts/CreateAccount/CreateIdentity';
 import CreateReady from './Accounts/CreateAccount/CreateReady';
@@ -43,7 +42,6 @@ import CreatePasscodeScreen from './Passcode/CreatePasscodeContainer';
  */
 export default function registerScreens(store: Object, Provider: Object) {
   Navigation.registerComponent(screen('ACCOUNTS_SCREEN').screen, () => Accounts, store, Provider);
-  Navigation.registerComponent(screen('ACCOUNT_CREATE_SCREEN').screen, () => CreateAccount, store, Provider);
   Navigation.registerComponent(screen('ACCOUNT_CREATE_DEVELOPER_SETTINGS').screen, () => DeveloperSettings, store, Provider);
   Navigation.registerComponent(screen('ACCOUNT_CREATE_IDENTITY').screen, () => CreateIdentity, store, Provider);
   Navigation.registerComponent(screen('ACCOUNT_CREATE_READY').screen, () => CreateReady, store, Provider);

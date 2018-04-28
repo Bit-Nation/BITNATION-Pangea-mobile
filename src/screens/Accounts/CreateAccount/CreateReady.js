@@ -12,6 +12,7 @@ import PanelView from '../../../components/common/PanelView';
 import ScreenTitle from '../../../components/common/ScreenTitle';
 import Button from '../../../components/common/Button';
 import styles from '../styles';
+import type { Navigator } from '../../../types/ReactNativeNavigation';
 
 type Props = {
 	/**

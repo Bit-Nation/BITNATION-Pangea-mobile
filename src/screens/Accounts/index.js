@@ -24,6 +24,9 @@ type Props = {
 
 class Accounts extends NavigatorComponent<Props> {
 
+  onCreateAccount: Function;
+  onRestoreAccount: Function;
+
   constructor(props: Props) {
     super(props);
     this.onCreateAccount = this.onCreateAccount.bind(this);
@@ -34,10 +37,7 @@ class Accounts extends NavigatorComponent<Props> {
     this.props.navigator.push({
       ...screen('SECURITY_SETTINGS_SCREEN'),
       passProps: {
-        isCreating: true,
-        passcodeInfo: {
-          length: 4
-        }
+        isCreating: true
       }
     });
   }
@@ -48,10 +48,6 @@ class Accounts extends NavigatorComponent<Props> {
       passProps: {
         onSuccess: () => {
           this.props.navigator.push(screen('ACCOUNT_RESTORE_SOURCE'));
-        },
-        passcodeInfo: {
-          type: 'pinCode',
-          length: 4
         }
       }
     });
