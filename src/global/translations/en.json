@@ -424,6 +424,18 @@
     "qrCodeScanner": {
       "title": "Scan QR code"
     },
+    "settings": {
+      "title": "Settings",
+      "tabTitle": "SETTINGS",
+      "identity": "Identity",
+      "security": "Security"
+    },
+    "securitySettings": {
+      "title": "Security settings",
+      "useNumericPasscode": "Numeric Passcode (less secure)",
+      "passcodeLength": "Passcode Length",
+      "changePasscode": "Change Passcode"
+    },
     "pinCode": {
       "enterInstruction": "Enter PIN code:",
       "createInstruction": "Enter new PIN code:",

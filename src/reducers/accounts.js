@@ -1,4 +1,7 @@
+/* eslint-disable no-use-before-define */
 // @flow
+
+import _ from 'lodash';
 
 import {
   type Action,
@@ -6,20 +9,20 @@ import {
   CURRENT_ACCOUNT_ID_CHANGED,
   LOGIN_TASK_UPDATED,
 } from '../actions/accounts';
-import type { Account, EditingAccount } from '../types/Account';
+import type { Account, PartialAccount } from '../types/Account';
 import TaskBuilder, { type AsyncTask } from '../utils/asyncTask';
+import { CANCEL_ACCOUNT_EDITING, CHANGE_EDITING_ACCOUNT, DONE_ACCOUNT_EDITING, START_ACCOUNT_EDITING } from '../actions/profile';
 
 export type State = {
-  +user: Account | null,
-  +editingUser: EditingAccount | null,
-  +creatingUser: EditingAccount | null,
+  +editingAccount: Account | null,
+  +creatingAccount: PartialAccount | null,
   +currentAccountId: string | null,
   +login: AsyncTask<void>,
   +logout: AsyncTask<void>,
   +accounts: Array<Account>,
 };
 
-export const emptyProfile: EditingAccount = {
+export const emptyAccount: PartialAccount = {
   id: null,
   name: null,
   location: null,
@@ -29,9 +32,8 @@ export const emptyProfile: EditingAccount = {
 };
 
 export const initialState: State = {
-  user: null,
-  editingUser: null,
-  creatingUser: null,
+  editingAccount: null,
+  creatingAccount: null,
   currentAccountId: null,
   login: TaskBuilder.empty(),
   logout: TaskBuilder.empty(),
@@ -62,7 +64,32 @@ export default (state: State = initialState, action: Action): State => {
         login: action.asyncTask,
       };
 
+    case START_ACCOUNT_EDITING:
+      return {
+        ...state,
+        editingAccount: getCurrentAccount(state),
+      };
+    case CHANGE_EDITING_ACCOUNT:
+      return {
+        ...state,
+        editingAccount: action.account,
+      };
+    case CANCEL_ACCOUNT_EDITING:
+      return {
+        ...state,
+        editingAccount: null,
+      };
+    case DONE_ACCOUNT_EDITING: {
+      return {
+        ...state,
+        editingAccount: null,
+      };
+    }
+
     default:
       return state;
   }
 };
+
+export const getCurrentAccount = (state: State) =>
+  _.find(state.accounts, account => account.id === state.currentAccountId) || null;

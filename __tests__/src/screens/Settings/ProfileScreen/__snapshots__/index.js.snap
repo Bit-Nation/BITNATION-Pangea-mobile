@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ChatNationsScreen Rendering 1`] = `
+exports[`ProfileScreenContainer Rendering 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Connect(ChatScreen)
-    isBot={false}
+  Symbol(enzyme.__unrendered__): <Connect(ProfileContainer)
+    navigator={Object {}}
     store={
       Object {
         "clearActions": [Function],
@@ -29,17 +29,15 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "hideSpinner": [Function],
-      "isBot": false,
-      "isFetching": true,
-      "nationId": 1,
-      "nations": Array [
-        Object {
-          "_id": 1,
-          "idInSmartContract": 1,
-        },
-      ],
-      "showSpinner": [Function],
+      "account": null,
+      "editingAccount": Object {},
+      "makeStepForTestingMode": [Function],
+      "navigator": Object {},
+      "onCancelAccountEditing": [Function],
+      "onChangeEditingAccount": [Function],
+      "onDoneAccountEditing": [Function],
+      "onStartAccountEditing": [Function],
+      "resetStepsForTestingMode": [Function],
       "store": Object {
         "clearActions": [Function],
         "dispatch": [Function],
@@ -67,7 +65,7 @@ ShallowWrapper {
         },
         "unsubscribe": [Function],
       },
-      "user": null,
+      "testingModeActive": true,
     },
     "ref": null,
     "rendered": null,
@@ -79,17 +77,15 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "hideSpinner": [Function],
-        "isBot": false,
-        "isFetching": true,
-        "nationId": 1,
-        "nations": Array [
-          Object {
-            "_id": 1,
-            "idInSmartContract": 1,
-          },
-        ],
-        "showSpinner": [Function],
+        "account": null,
+        "editingAccount": Object {},
+        "makeStepForTestingMode": [Function],
+        "navigator": Object {},
+        "onCancelAccountEditing": [Function],
+        "onChangeEditingAccount": [Function],
+        "onDoneAccountEditing": [Function],
+        "onStartAccountEditing": [Function],
+        "resetStepsForTestingMode": [Function],
         "store": Object {
           "clearActions": [Function],
           "dispatch": [Function],
@@ -117,7 +113,7 @@ ShallowWrapper {
           },
           "unsubscribe": [Function],
         },
-        "user": null,
+        "testingModeActive": true,
       },
       "ref": null,
       "rendered": null,
