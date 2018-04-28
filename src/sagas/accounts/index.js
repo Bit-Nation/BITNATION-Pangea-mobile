@@ -1,12 +1,9 @@
 import { all, call, takeEvery } from 'redux-saga/effects';
 import { 
   doneAccountEditing, 
-  listenForDatabaseUpdates, 
-  login, 
-  logout, 
+  listenForDatabaseUpdates,
   checkPassword, 
-  checkPinCode, 
-  listenForDatabaseUpdates, 
+  checkPinCode,
   login, 
   logout, 
   savePassword,

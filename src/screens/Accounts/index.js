@@ -31,8 +31,12 @@ class Accounts extends NavigatorComponent<Props> {
   }
 
   onCreateAccount() {
-    // this.props.navigator.push(screen('ACCOUNT_CREATE_SCREEN'));
-    this.props.navigator.push(screen('ACCOUNT_CREATE_DEVELOPER_SETTINGS'));
+    this.props.navigator.push({
+      ...screen('SECURITY_SETTINGS_SCREEN'),
+      passProps: {
+        isCreating: true
+      }
+    });
   }
 
   onRestoreAccount() {

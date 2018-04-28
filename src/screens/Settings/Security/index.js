@@ -8,10 +8,12 @@ import styles from './styles';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import i18n from '../../../global/i18n';
+import { screen } from '../../../global/Screens';
 import { androidNavigationButtons } from '../../../global/Screens';
 import ScreenTitle from '../../../components/common/ScreenTitle';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
+import Button from '../../../components/common/Button';
 import { type State as SettingsState } from '../../../reducers/settings';
 import SettingsListItem from '../../../components/common/SettingsListItem';
 import { changePasscodeLength, changeUseNumericPasscode } from '../../../actions/settings';
@@ -22,6 +24,10 @@ type Props = {
    * @desc React Native Navigation navigator object.
    */
   navigator: Navigator,
+  /**
+   * @desc A flag that indicates if the user is being created
+   */
+  isCreating?: Boolean
 };
 
 type Actions = {
@@ -38,14 +44,44 @@ type Actions = {
 class ProfileScreen extends NavigatorComponent<Props & Actions & SettingsState> {
   static navigatorButtons = { ...androidNavigationButtons };
 
+  constructor(props: Props) {
+    super(props);
+
+    this.state = {
+      nextScreen: 'password'
+    }
+
+    this.previousStep = this.previousStep.bind(this);
+    this.nextStep = this.nextStep.bind(this);
+    this.goToNextStep = this.goToNextStep.bind(this);
+  }
+
   onNavBarButtonPress(id: string): void {
     if (id === 'cancel') {
       this.props.navigator.pop();
     }
   }
 
+  previousStep() {
+    this.props.navigator.pop();
+  }
+
+  goToNextStep() {
+    this.props.navigator.push(screen('ACCOUNT_CREATE_DEVELOPER_SETTINGS'));
+  }
+
+  nextStep() {
+    this.props.navigator.push({
+      ...screen('CREATE_PASSCODE_SCREEN'),
+      passProps: {
+        onSuccess: this.goToNextStep,
+        isCreatingBoth: true
+      }
+    });
+  }
+
   render() {
-    const { passcodeInfo } = this.props;
+    const { passcodeInfo, isCreating } = this.props;
 
     return (
       <View style={styles.screenContainer}>
@@ -95,6 +131,20 @@ class ProfileScreen extends NavigatorComponent<Props & Actions & SettingsState> 
             style={styles.noflex}
           />
         </View>
+        { isCreating &&
+          <View style={styles.buttonContainerMultiple}>
+            <Button
+              style={styles.panelButton}
+              title={i18n.t('screens.accounts.create.prev')}
+              onPress={this.previousStep}
+            />
+            <Button
+              style={styles.panelButton}
+              title={i18n.t('screens.accounts.create.next')}
+              onPress={this.nextStep}
+            />
+          </View>
+        }
       </View>
     );
   }
