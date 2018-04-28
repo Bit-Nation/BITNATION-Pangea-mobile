@@ -174,6 +174,17 @@ const Screens = {
     title: i18n.t('screens.scanQRCode.title'),
     navigatorStyle,
   },
+  SETTINGS_SCREEN: {
+    screen: 'Pangea.Settings',
+    title: '',
+    label: i18n.t('screens.settings.tabTitle'),
+    navigatorStyle,
+  },
+  SECURITY_SETTINGS_SCREEN: {
+    screen: 'Pangea.Settings.Security',
+    title: '',
+    navigatorStyle,
+  },
   ENTER_PASSCODE_SCREEN: {
     screen: 'Pangea.EnterPasscode',
     title: '',
