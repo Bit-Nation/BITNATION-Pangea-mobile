@@ -14,7 +14,7 @@ import ScreenTitle from '../../../components/common/ScreenTitle';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import Button from '../../../components/common/Button';
-import { type State as SettingsState } from '../../../reducers/settings';
+import type { State as SettingsState } from '../../../reducers/settings';
 import SettingsListItem from '../../../components/common/SettingsListItem';
 import { changePasscodeLength, changeUseNumericPasscode } from '../../../actions/settings';
 import Colors from '../../../global/colors';
@@ -41,10 +41,17 @@ type Actions = {
   changePasscodeLength: (number) => void,
 };
 
-class ProfileScreen extends NavigatorComponent<Props & Actions & SettingsState> {
-  static navigatorButtons = { ...androidNavigationButtons };
+type State = {
+  nextScreen: string
+}
 
-  constructor(props: Props) {
+class ProfileScreen extends NavigatorComponent<Props & Actions & SettingsState, State> {
+  static navigatorButtons = { ...androidNavigationButtons };
+  previousStep: Function;
+  nextStep: Function;
+  goToNextStep: Function;
+
+  constructor(props: Props & Actions & SettingsState) {
     super(props);
 
     this.state = {
