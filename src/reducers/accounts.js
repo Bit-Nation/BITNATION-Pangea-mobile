@@ -2,12 +2,14 @@
 // @flow
 
 import _ from 'lodash';
+import uuid from 'uuid4';
 
 import {
   type Action,
   ACCOUNTS_LIST_UPDATED,
   CURRENT_ACCOUNT_ID_CHANGED,
   LOGIN_TASK_UPDATED,
+  START_ACCOUNT_CREATION,
 } from '../actions/accounts';
 import type { Account, PartialAccount } from '../types/Account';
 import TaskBuilder, { type AsyncTask } from '../utils/asyncTask';
@@ -22,14 +24,14 @@ export type State = {
   +accounts: Array<Account>,
 };
 
-export const emptyAccount: PartialAccount = {
-  id: null,
+export const buildEmptyAccount = (): PartialAccount => ({
+  id: uuid(),
   name: null,
   location: null,
   avatar: null,
   accountStore: null,
   networkType: 'main',
-};
+});
 
 export const initialState: State = {
   editingAccount: null,
@@ -83,6 +85,12 @@ export default (state: State = initialState, action: Action): State => {
       return {
         ...state,
         editingAccount: null,
+      };
+    }
+    case START_ACCOUNT_CREATION: {
+      return {
+        ...state,
+        creatingAccount: buildEmptyAccount(),
       };
     }
 

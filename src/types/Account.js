@@ -12,7 +12,7 @@ export type Account = {
 };
 
 export type PartialAccount = {
-  id: ?string,
+  id: string,
   name: ?string,
   location: ?string,
   avatar: ?string,
