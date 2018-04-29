@@ -5,7 +5,7 @@ import type { AsyncTask } from '../utils/asyncTask';
 
 export type AccountsListUpdatedAction = { +type: 'ACCOUNTS_LIST_UPDATED', accounts: Array<Account> };
 export type CurrentAccountIdChangedAction = { +type: 'CURRENT_ACCOUNT_ID_CHANGED', currentAccountId: string | null };
-export type LoginAction = { +type: 'LOGIN', accountId: string, passcode: string };
+export type LoginAction = { +type: 'LOGIN', accountId: string, password: string };
 export type LoginTaskUpdatedAction = { +type: 'LOGIN_TASK_UPDATED', asyncTask: AsyncTask<void> };
 export type LogoutAction = { +type: 'LOGOUT' };
 export type StartAccountCreationAction = { +type: 'START_ACCOUNT_CREATION' };
@@ -66,14 +66,14 @@ export function currentAccountIdChanged(currentAccountId: string | null): Curren
 /**
  * @desc Action creator for an action that is called to perform a login.
  * @param {string} accountId Id of account to login to.
- * @param {string} passcode Passcode to login.
+ * @param {string} password Password to login.
  * @return {LoginAction} An action.
  */
-export function login(accountId: string, passcode: string): LoginAction {
+export function login(accountId: string, password: string): LoginAction {
   return {
     type: LOGIN,
     accountId,
-    passcode,
+    password,
   };
 }
 
