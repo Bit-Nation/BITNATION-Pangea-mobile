@@ -63,6 +63,11 @@ export function* getCurrentAccountId(): Generator<*, *, *> {
   return accounts.currentAccountId;
 }
 
+/**
+ * @desc Gets an account with specified id from realm.
+ * @param {string} id Id of account to be got.
+ * @return {DBAccount|null} Realm object of account with specified id or null if there is no account with specified id.
+ */
 export function* getAccount(id: string): Generator<*, *, *> {
   const db = yield call(dbFactory);
   const results = db.objects('Account').filtered(`id == '${id}'`);
@@ -103,7 +108,7 @@ export function* listenForDatabaseUpdates(): Generator<*, *, *> {
 export function* login(action: LoginAction): Generator<*, *, *> {
   yield put(loginTaskUpdated(TaskBuilder.pending()));
   const account = yield call(getAccount, action.accountId);
-  const isValid = yield call(AccountsService.checkPasscode, account.accountStore, action.passcode);
+  const isValid = yield call(AccountsService.checkPasscode, account.accountStore, action.password);
   if (isValid !== true) {
     yield put(loginTaskUpdated(TaskBuilder.failure(new InvalidPasswordError())));
     return;
