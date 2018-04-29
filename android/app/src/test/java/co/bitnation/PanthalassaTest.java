@@ -3,7 +3,6 @@ package co.bitnation;
 import org.junit.Test;
 
 import panthalassa.Panthalassa;
-import panthalassa.Panthalassa_;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.core.IsNull.notNullValue;
@@ -17,15 +16,17 @@ public class PanthalassaTest {
     @Test
     public void PanthalassaNewPanthalassa() {
 
-        Panthalassa_ instance = null;
+        boolean instance = false;
 
         try {
-            instance = Panthalassa.newPanthalassa("testingString", "password");
+            Panthalassa.newPanthalassa("testingString", "password");
+            instance = true;
         } catch (Exception e) {
             e.printStackTrace();
+            instance = false;
         }
 
-        assertThat(instance, is(notNullValue()));
+        assertThat(instance, is(true));
     }
 
     @Test

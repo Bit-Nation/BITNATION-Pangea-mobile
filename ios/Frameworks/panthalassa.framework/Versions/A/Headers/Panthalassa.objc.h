@@ -10,22 +10,13 @@
 #include "Universe.objc.h"
 
 
-@class PanthalassaPanthalassa;
-
-@interface PanthalassaPanthalassa : NSObject <goSeqRefInterface> {
-}
-@property(strong, readonly) id _ref;
-
-- (instancetype)initWithRef:(id)ref;
-- (instancetype)init:(NSString*)encryptedAccount pw:(NSString*)pw;
-- (NSString*)ethereumPrivateKey:(NSError**)error;
-- (NSString*)export:(NSString*)pw pwConfirm:(NSString*)pwConfirm error:(NSError**)error;
-- (BOOL)stop:(NSError**)error;
-@end
-
 FOUNDATION_EXPORT NSString* PanthalassaCIDSha256(NSString* value, NSError** error);
 
 FOUNDATION_EXPORT NSString* PanthalassaCIDSha512(NSString* value, NSError** error);
+
+FOUNDATION_EXPORT NSString* PanthalassaEthereumPrivateKey(NSError** error);
+
+FOUNDATION_EXPORT NSString* PanthalassaExport(NSString* pw, NSString* pwConfirm, NSError** error);
 
 FOUNDATION_EXPORT BOOL PanthalassaIsValidCID(NSString* cid);
 
@@ -33,10 +24,12 @@ FOUNDATION_EXPORT NSString* PanthalassaNewAccountKeys(NSString* pw, NSString* pw
 
 FOUNDATION_EXPORT NSString* PanthalassaNewAccountKeysFromMnemonic(NSString* mnemonic, NSString* pw, NSString* pwConfirm, NSError** error);
 
-FOUNDATION_EXPORT PanthalassaPanthalassa* PanthalassaNewPanthalassa(NSString* encryptedAccount, NSString* pw, NSError** error);
+FOUNDATION_EXPORT BOOL PanthalassaNewPanthalassa(NSString* accountStore, NSString* pw, NSError** error);
 
 FOUNDATION_EXPORT NSString* PanthalassaScryptDecrypt(NSString* data, NSString* pw, NSError** error);
 
 FOUNDATION_EXPORT NSString* PanthalassaScryptEncrypt(NSString* data, NSString* pw, NSString* pwConfirm, NSError** error);
+
+FOUNDATION_EXPORT BOOL PanthalassaStop(NSError** error);
 
 #endif
