@@ -63,6 +63,12 @@ export function* getCurrentAccountId(): Generator<*, *, *> {
   return accounts.currentAccountId;
 }
 
+export function* getAccount(id: string): Generator<*, *, *> {
+  const db = yield call(dbFactory);
+  const results = db.objects('Account').filtered(`id == '${id}'`);
+  return yield results[0];
+}
+
 /**
  * @desc Gets current account realm object.
  * @return {DBAccount} Current account realm object.
@@ -72,9 +78,7 @@ export function* getCurrentAccount(): Generator<*, *, *> {
   if (id === null) {
     return yield null;
   }
-  const db = yield call(dbFactory);
-  const results = db.objects('Account').filtered(`id == '${id}'`);
-  return yield results[0];
+  return yield call(getAccount, id);
 }
 
 /**
@@ -98,8 +102,9 @@ export function* listenForDatabaseUpdates(): Generator<*, *, *> {
  */
 export function* login(action: LoginAction): Generator<*, *, *> {
   yield put(loginTaskUpdated(TaskBuilder.pending()));
-  const isValid = yield AccountsService.checkPassword(action.accountId, action.password);
-  if (!isValid) {
+  const account = yield call(getAccount, action.accountId);
+  const isValid = yield call(AccountsService.checkPasscode, account.accountStore, action.passcode);
+  if (isValid !== true) {
     yield put(loginTaskUpdated(TaskBuilder.failure(new InvalidPasswordError())));
     return;
   }
@@ -112,6 +117,7 @@ export function* login(action: LoginAction): Generator<*, *, *> {
  * @return {void}
  */
 export function* logout(): Generator<*, *, *> {
+  yield call(AccountsService.logout);
   yield put(currentAccountIdChanged(null));
 }
 
