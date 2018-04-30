@@ -7,8 +7,13 @@ import { call, put, take, select, race } from 'redux-saga/effects';
 import { factory as dbFactory } from '../../services/database';
 import { createDatabaseUpdateChannel } from '../database';
 import {
-  accountListUpdated, changeCreatingAccountField, CURRENT_ACCOUNT_ID_CHANGED, currentAccountIdChanged,
+  accountListUpdated,
+  changeCreatingAccountField,
+  checkPassword,
+  CURRENT_ACCOUNT_ID_CHANGED,
+  currentAccountIdChanged,
   loginTaskUpdated,
+  savePassword,
 } from '../../actions/accounts';
 import type {
   CheckPasswordAction, CheckPinCodeAction, LoginAction, SavePasswordAction,
@@ -152,10 +157,8 @@ export function* doneAccountEditing(action: UpdateAccountAction): Generator<*, *
  * @param {CheckPinCodeAction} action An action.
  * @return {void}
  */
-export function* checkPinCode(action: CheckPinCodeAction): Generator<*, *, *> {
-  // @todo Check if pin code is correct.
-  action.callback(true);
-  yield;
+export function* checkPinCodeSaga(action: CheckPinCodeAction): Generator<*, *, *> {
+  yield call(checkPasswordSaga, checkPassword(action.pinCode, action.accountId, action.callback));
 }
 
 /**
@@ -163,7 +166,7 @@ export function* checkPinCode(action: CheckPinCodeAction): Generator<*, *, *> {
  * @param {CheckPasswordAction} action An action.
  * @return {void}
  */
-export function* checkPassword(action: CheckPasswordAction): Generator<*, *, *> {
+export function* checkPasswordSaga(action: CheckPasswordAction): Generator<*, *, *> {
   try {
     const success = yield call(AccountsService.checkPasscode, action.accountId, action.password);
     action.callback(success);
@@ -177,10 +180,8 @@ export function* checkPassword(action: CheckPasswordAction): Generator<*, *, *> 
  * @param {SavePinCodeAction} action An action.
  * @return {void}
  */
-export function* savePinCode(action: SavePinCodeAction): Generator<*, *, *> {
-  // @todo Save pin code.
-  action.callback(true);
-  yield;
+export function* savePinCodeSaga(action: SavePinCodeAction): Generator<*, *, *> {
+  yield call(savePasswordSaga, savePassword(action.pinCode, action.accountId, action.callback));
 }
 
 /**
@@ -188,7 +189,7 @@ export function* savePinCode(action: SavePinCodeAction): Generator<*, *, *> {
  * @param {SavePasswordAction} action An action.
  * @return {void}
  */
-export function* savePassword(action: SavePasswordAction): Generator<*, *, *> {
+export function* savePasswordSaga(action: SavePasswordAction): Generator<*, *, *> {
   const { accountId } = action;
   try {
     if (accountId === null) {
@@ -197,7 +198,12 @@ export function* savePassword(action: SavePasswordAction): Generator<*, *, *> {
       yield put(changeCreatingAccountField('accountStore', accountStore));
     } else {
       // It's an existing account, old keys need to be encrypted with new password and saved.
-      // @todo Implement.
+      const newAccountStore = yield call(AccountsService.exportAccountStore, action.password);
+      const db = yield call(dbFactory);
+      const account: DBAccount = yield call(getAccount, accountId);
+      db.write(() => {
+        account.accountStore = newAccountStore;
+      });
     }
     action.callback(true);
   } catch (e) {

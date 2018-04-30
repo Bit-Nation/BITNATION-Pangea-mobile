@@ -4,10 +4,10 @@ import {
   listenForDatabaseUpdates,
   login,
   logout,
-  checkPassword,
-  checkPinCode,
-  savePassword,
-  savePinCode,
+  checkPasswordSaga,
+  checkPinCodeSaga,
+  savePasswordSaga,
+  savePinCodeSaga,
 } from './sagas';
 import {
   LOGIN,
@@ -29,9 +29,9 @@ export default function* rootSaga() {
     yield takeEvery(LOGIN, login),
     yield takeEvery(LOGOUT, logout),
     yield takeEvery(UPDATE_ACCOUNT, doneAccountEditing),
-    yield takeEvery(CHECK_PIN_CODE, checkPinCode),
-    yield takeEvery(CHECK_PASSWORD, checkPassword),
-    yield takeEvery(SAVE_PIN_CODE, savePinCode),
-    yield takeEvery(SAVE_PASSWORD, savePassword),
+    yield takeEvery(CHECK_PIN_CODE, checkPinCodeSaga),
+    yield takeEvery(CHECK_PASSWORD, checkPasswordSaga),
+    yield takeEvery(SAVE_PIN_CODE, savePinCodeSaga),
+    yield takeEvery(SAVE_PASSWORD, savePasswordSaga),
   ]);
 }
