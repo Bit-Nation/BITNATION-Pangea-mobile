@@ -13,6 +13,8 @@ export type CheckPinCodeAction = { +type: 'CHECK_PIN_CODE', +pinCode: string, +a
 export type CheckPasswordAction = { +type: 'CHECK_PASSWORD', +password: string, +accountId: string, +callback: (success: boolean) => void };
 export type SavePinCodeAction = { +type: 'SAVE_PIN_CODE', +pinCode: string, +accountId: ?string, +callback: (success: boolean) => void };
 export type SavePasswordAction = { +type: 'SAVE_PASSWORD', +password: string, +accountId: ?string, +callback: (success: boolean) => void };
+export type ChangeCreatingAccountFieldAction = { +type: 'CHANGE_CREATING_ACCOUNT_FIELD', +field: string, +value: any };
+export type SaveCreatingAccountAction = { +type: 'SAVE_CREATING_ACCOUNT' };
 
 export type Action =
   | AccountsListUpdatedAction
@@ -24,7 +26,9 @@ export type Action =
   | CheckPinCodeAction
   | CheckPasswordAction
   | SavePinCodeAction
-  | SavePasswordAction;
+  | SavePasswordAction
+  | ChangeCreatingAccountFieldAction
+  | SaveCreatingAccountAction;
 
 export const ACCOUNTS_LIST_UPDATED = 'ACCOUNTS_LIST_UPDATED';
 export const CURRENT_ACCOUNT_ID_CHANGED = 'CURRENT_ACCOUNT_ID_CHANGED';
@@ -36,6 +40,8 @@ export const CHECK_PIN_CODE = 'CHECK_PIN_CODE';
 export const CHECK_PASSWORD = 'CHECK_PASSWORD';
 export const SAVE_PIN_CODE = 'SAVE_PIN_CODE';
 export const SAVE_PASSWORD = 'SAVE_PASSWORD';
+export const CHANGE_CREATING_ACCOUNT_FIELD = 'CHANGE_CREATING_ACCOUNT_FIELD';
+export const SAVE_CREATING_ACCOUNT = 'SAVE_CREATING_ACCOUNT';
 
 /**
  * @desc Action creator for an action that is called when accounts list updated.
@@ -171,5 +177,29 @@ export function savePassword(password: string, accountId: string, callback: (boo
     accountId,
     password,
     callback,
+  };
+}
+
+/**
+ * @desc Action creator for an action that is called to change a field on creating account.
+ * @param {string} field Name of the field to change.
+ * @param {any} value New value of the field.
+ * @return {ChangeCreatingAccountFieldAction} An action.
+ */
+export function changeCreatingAccountField(field: string, value: any): ChangeCreatingAccountFieldAction {
+  return {
+    type: CHANGE_CREATING_ACCOUNT_FIELD,
+    field,
+    value,
+  };
+}
+
+/**
+ * @desc Action creator for an action that is called to save currently created account.
+ * @return {SaveCreatingAccountAction} An action.
+ */
+export function saveCreatingAccount(): SaveCreatingAccountAction {
+  return {
+    type: SAVE_CREATING_ACCOUNT,
   };
 }

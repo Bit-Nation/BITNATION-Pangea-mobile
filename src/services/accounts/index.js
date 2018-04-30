@@ -9,6 +9,11 @@ export default class AccountsService {
     return success === true;
   }
 
+  static async createAccountStore(password: string): Promise<string> {
+    const { Panthalassa } = NativeModules;
+    return Panthalassa.PanthalassaNewAccountKeys({ pw: password, pwConfirm: password });
+  }
+
   static async logout(): Promise<void> {
     const { Panthalassa } = NativeModules;
     Panthalassa.PanthalassaStop();
