@@ -7,7 +7,7 @@ import { call, put, take, select, race } from 'redux-saga/effects';
 import { factory as dbFactory } from '../../services/database';
 import { createDatabaseUpdateChannel } from '../database';
 import {
-  accountListUpdated, CURRENT_ACCOUNT_ID_CHANGED, currentAccountIdChanged,
+  accountListUpdated, changeCreatingAccountField, CURRENT_ACCOUNT_ID_CHANGED, currentAccountIdChanged,
   loginTaskUpdated,
 } from '../../actions/accounts';
 import type {
@@ -164,9 +164,12 @@ export function* checkPinCode(action: CheckPinCodeAction): Generator<*, *, *> {
  * @return {void}
  */
 export function* checkPassword(action: CheckPasswordAction): Generator<*, *, *> {
-  // @todo Check if password is correct.
-  action.callback(true);
-  yield;
+  try {
+    const success = yield call(AccountsService.checkPasscode, action.accountId, action.password);
+    action.callback(success);
+  } catch (e) {
+    action.callback(false);
+  }
 }
 
 /**
@@ -186,7 +189,18 @@ export function* savePinCode(action: SavePinCodeAction): Generator<*, *, *> {
  * @return {void}
  */
 export function* savePassword(action: SavePasswordAction): Generator<*, *, *> {
-  // @todo Save password.
-  action.callback(true);
-  yield;
+  const { accountId } = action;
+  try {
+    if (accountId === null) {
+      // It's a new account, new keys need to be created.
+      const accountStore = yield call(AccountsService.createAccountStore, action.password);
+      yield put(changeCreatingAccountField('accountStore', accountStore));
+    } else {
+      // It's an existing account, old keys need to be encrypted with new password and saved.
+      // @todo Implement.
+    }
+    action.callback(true);
+  } catch (e) {
+    action.callback(false);
+  }
 }

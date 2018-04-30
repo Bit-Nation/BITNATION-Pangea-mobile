@@ -10,6 +10,7 @@ import {
   CURRENT_ACCOUNT_ID_CHANGED,
   LOGIN_TASK_UPDATED,
   START_ACCOUNT_CREATION,
+  CHANGE_CREATING_ACCOUNT_FIELD,
 } from '../actions/accounts';
 import type { Account, PartialAccount } from '../types/Account';
 import TaskBuilder, { type AsyncTask } from '../utils/asyncTask';
@@ -93,7 +94,15 @@ export default (state: State = initialState, action: Action): State => {
         creatingAccount: buildEmptyAccount(),
       };
     }
-
+    case CHANGE_CREATING_ACCOUNT_FIELD: {
+      return {
+        ...state,
+        creatingAccount: {
+          ...state.creatingAccount,
+          [action.field]: action.value,
+        },
+      };
+    }
     default:
       return state;
   }
