@@ -14,6 +14,11 @@ export default class AccountsService {
     return Panthalassa.PanthalassaNewAccountKeys({ pw: password, pwConfirm: password });
   }
 
+  static async exportAccountStore(password: string): Promise<string> {
+    const { Panthalassa } = NativeModules;
+    return Panthalassa.PanthalassaExport({ pw: password, pwConfirm: password });
+  }
+
   static async logout(): Promise<void> {
     const { Panthalassa } = NativeModules;
     Panthalassa.PanthalassaStop();

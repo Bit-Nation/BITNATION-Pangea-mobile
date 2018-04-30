@@ -155,7 +155,7 @@ export function checkPassword(password: string, accountId: string, callback: (bo
  * @param {function} callback Callback that is called with true if save is successful and false otherwise.
  * @return {SavePinCodeAction} An action.
  */
-export function savePinCode(pinCode: string, accountId: string, callback: (boolean) => void): SavePinCodeAction {
+export function savePinCode(pinCode: string, accountId: ?string, callback: (boolean) => void): SavePinCodeAction {
   return {
     type: SAVE_PIN_CODE,
     accountId,
@@ -171,7 +171,7 @@ export function savePinCode(pinCode: string, accountId: string, callback: (boole
  * @param {function} callback Callback that is called with true if save is successful and false otherwise.
  * @return {SavePinCodeAction} An action.
  */
-export function savePassword(password: string, accountId: string, callback: (boolean) => void): SavePasswordAction {
+export function savePassword(password: string, accountId: ?string, callback: (boolean) => void): SavePasswordAction {
   return {
     type: SAVE_PASSWORD,
     accountId,
