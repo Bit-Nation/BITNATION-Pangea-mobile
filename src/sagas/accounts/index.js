@@ -2,7 +2,7 @@ import { all, call, takeEvery } from 'redux-saga/effects';
 import {
   doneAccountEditing,
   listenForDatabaseUpdates,
-  login,
+  loginActionHandler,
   logout,
   checkPasswordSaga,
   checkPinCodeSaga,
@@ -28,7 +28,7 @@ import { UPDATE_ACCOUNT } from '../../actions/profile';
 export default function* rootSaga() {
   yield all([
     call(listenForDatabaseUpdates),
-    yield takeEvery(LOGIN, login),
+    yield takeEvery(LOGIN, loginActionHandler),
     yield takeEvery(LOGOUT, logout),
     yield takeEvery(UPDATE_ACCOUNT, doneAccountEditing),
     yield takeEvery(CHECK_PIN_CODE, checkPinCodeSaga),
