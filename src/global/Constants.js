@@ -7,8 +7,8 @@ export const KEY_PAGE_LENGTH = KEY_PAGE_ROW_COUNT * KEY_COLUMN_COUNT;
 export const KEY_ROW_COUNT = KEY_PAGE_ROW_COUNT * KEY_PAGE_COUNT;
 export const KEY_LENGTH = KEY_COLUMN_COUNT * KEY_ROW_COUNT;
 export const MINIMAL_PASSWORD_LENGTH = 8;
-export const MINIMAL_PINCODE_LENGTH = 6;
-export const MAXIMAL_PINCODE_LENGTH = 8;
+export const MINIMAL_PIN_CODE_LENGTH = 6;
+export const MAXIMAL_PIN_CODE_LENGTH = 8;
 
 // @todo Select right interval
 export const BALANCE_EXPIRATION_INTERVAL = 10 * 1000;

@@ -17,6 +17,7 @@ import type { State as SettingsState } from '../../../reducers/settings';
 import SettingsListItem from '../../../components/common/SettingsListItem';
 import { changePasscodeLength, changeUseNumericPasscode } from '../../../actions/settings';
 import Colors from '../../../global/colors';
+import { MAXIMAL_PIN_CODE_LENGTH, MINIMAL_PIN_CODE_LENGTH } from '../../../global/Constants';
 
 type Props = {
   /**
@@ -40,8 +41,9 @@ type Actions = {
   changePasscodeLength: (number) => void,
 };
 
-class ProfileScreen extends NavigatorComponent<Props & Actions & SettingsState> {
+class SecuritySettingsScreen extends NavigatorComponent<Props & Actions & SettingsState> {
   static navigatorButtons = { ...androidNavigationButtons };
+  static defaultProps;
 
   onNavBarButtonPress(id: string): void {
     if (id === 'cancel') {
@@ -53,12 +55,16 @@ class ProfileScreen extends NavigatorComponent<Props & Actions & SettingsState> 
     this.props.navigator.pop();
   };
 
+  /**
+   * @desc It's used on create account flow.
+   * @return {void}
+   */
   onNextPressed = () => {
     this.props.navigator.push({
       ...screen('CREATE_PASSCODE_SCREEN'),
       passProps: {
-        onSuccess: this.props.navigator.push(screen('ACCOUNT_CREATE_DEVELOPER_SETTINGS')),
-        onCancel: this.props.navigator.pop(),
+        onSuccess: () => this.props.navigator.push(screen('ACCOUNT_CREATE_DEVELOPER_SETTINGS')),
+        onCancel: () => this.props.navigator.pop(),
       },
     });
   };
@@ -97,8 +103,8 @@ class ProfileScreen extends NavigatorComponent<Props & Actions & SettingsState> 
               <View style={styles.sliderContainer}>
                 <Slider
                   style={styles.slider}
-                  minimumValue={4}
-                  maximumValue={8}
+                  minimumValue={MINIMAL_PIN_CODE_LENGTH}
+                  maximumValue={MAXIMAL_PIN_CODE_LENGTH}
                   step={1}
                   value={passcodeInfo.length}
                   onValueChange={this.props.changePasscodeLength}
@@ -108,11 +114,14 @@ class ProfileScreen extends NavigatorComponent<Props & Actions & SettingsState> 
             </View>
           }
 
-          <SettingsListItem
-            id='changePasscode'
-            text={i18n.t('screens.securitySettings.changePasscode')}
-            style={styles.noflex}
-          />
+          {
+            isCreating === false &&
+            <SettingsListItem
+              id='changePasscode'
+              text={i18n.t('screens.securitySettings.changePasscode')}
+              style={styles.noflex}
+            />
+          }
         </View>
         {isCreating &&
         <View style={styles.buttonContainerMultiple}>
@@ -133,6 +142,10 @@ class ProfileScreen extends NavigatorComponent<Props & Actions & SettingsState> 
   }
 }
 
+SecuritySettingsScreen.defaultProps = {
+  isCreating: false,
+};
+
 const mapStateToProps = state => ({
   ...state.settings,
 });
@@ -147,4 +160,4 @@ const mapDispatchToProps = dispatch => ({
 });
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProfileScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(SecuritySettingsScreen);
