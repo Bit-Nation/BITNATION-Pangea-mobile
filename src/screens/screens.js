@@ -18,11 +18,15 @@ import ReceiveMoneyScreen from './WalletScreen/ReceiveMoney';
 import QRCodeScannerScreen from './WalletScreen/QRCodeScanner';
 import ChatScreen from './ChatScreen';
 import NationsScreen from './NationsScreen';
-import ProfileScreen from './ProfileScreen';
+import ProfileScreen from './Settings/ProfileScreen';
 import NationDetailsScreen from './NationDetailsContainer';
 import NationCreateScreen from './NationCreateContainer';
 import ChatNationsScreen from './ChatNationsScreen';
+import SettingsScreen from './Settings/SettingsList';
+import SecuritySettingsScreen from './Settings/Security';
 import { screen } from '../global/Screens';
+import EnterPasscodeScreen from './Passcode/EnterPasscodeContainer';
+import CreatePasscodeScreen from './Passcode/CreatePasscodeContainer';
 
 /**
  * @desc Registers screens for React Native Navigation.
@@ -50,4 +54,8 @@ export default function registerScreens(store: Object, Provider: Object) {
   Navigation.registerComponent(screen('QR_CODE_SCANNER_SCREEN').screen, () => QRCodeScannerScreen, store, Provider);
   Navigation.registerComponent(screen('NATION_CREATE_SCREEN').screen, () => NationCreateScreen, store, Provider);
   Navigation.registerComponent(screen('CHAT_NATIONS_SCREEN').screen, () => ChatNationsScreen, store, Provider);
+  Navigation.registerComponent(screen('SETTINGS_SCREEN').screen, () => SettingsScreen, store, Provider);
+  Navigation.registerComponent(screen('SECURITY_SETTINGS_SCREEN').screen, () => SecuritySettingsScreen, store, Provider);
+  Navigation.registerComponent(screen('ENTER_PASSCODE_SCREEN').screen, () => EnterPasscodeScreen, store, Provider);
+  Navigation.registerComponent(screen('CREATE_PASSCODE_SCREEN').screen, () => CreatePasscodeScreen, store, Provider);
 }
