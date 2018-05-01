@@ -8,11 +8,12 @@ import styles from './styles';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import i18n from '../../../global/i18n';
-import { androidNavigationButtons } from '../../../global/Screens';
+import { screen, androidNavigationButtons } from '../../../global/Screens';
 import ScreenTitle from '../../../components/common/ScreenTitle';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
-import { type State as SettingsState } from '../../../reducers/settings';
+import Button from '../../../components/common/Button';
+import type { State as SettingsState } from '../../../reducers/settings';
 import SettingsListItem from '../../../components/common/SettingsListItem';
 import { changePasscodeLength, changeUseNumericPasscode } from '../../../actions/settings';
 import Colors from '../../../global/colors';
@@ -22,6 +23,10 @@ type Props = {
    * @desc React Native Navigation navigator object.
    */
   navigator: Navigator,
+  /**
+   * @desc A flag that indicates if the user is being created
+   */
+  isCreating?: Boolean
 };
 
 type Actions = {
@@ -40,12 +45,26 @@ class ProfileScreen extends NavigatorComponent<Props & Actions & SettingsState> 
 
   onNavBarButtonPress(id: string): void {
     if (id === 'cancel') {
-      this.props.navigator.pop();
+      this.onPreviousPressed();
     }
   }
 
+  onPreviousPressed = () => {
+    this.props.navigator.pop();
+  };
+
+  onNextPressed = () => {
+    this.props.navigator.push({
+      ...screen('CREATE_PASSCODE_SCREEN'),
+      passProps: {
+        onSuccess: this.props.navigator.push(screen('ACCOUNT_CREATE_DEVELOPER_SETTINGS')),
+        onCancel: this.props.navigator.pop(),
+      },
+    });
+  };
+
   render() {
-    const { passcodeInfo } = this.props;
+    const { passcodeInfo, isCreating } = this.props;
 
     return (
       <View style={styles.screenContainer}>
@@ -95,6 +114,20 @@ class ProfileScreen extends NavigatorComponent<Props & Actions & SettingsState> 
             style={styles.noflex}
           />
         </View>
+        {isCreating &&
+        <View style={styles.buttonContainerMultiple}>
+          <Button
+            style={styles.panelButton}
+            title={i18n.t('screens.accounts.create.prev')}
+            onPress={this.onPreviousPressed}
+          />
+          <Button
+            style={styles.panelButton}
+            title={i18n.t('screens.accounts.create.next')}
+            onPress={this.onNextPressed}
+          />
+        </View>
+        }
       </View>
     );
   }

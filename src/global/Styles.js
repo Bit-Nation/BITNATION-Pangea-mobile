@@ -25,6 +25,12 @@ const styles = {
     flex: 0,
   },
 
+  // Used to align items at the end of the container
+  flexEnd: {
+    flex: 1,
+    justifyContent: 'flex-end',
+  },
+
   // General screen container for ALL elements
   // Derived from Apple Human Interface Guidelines
   // and https://ivomynttinen.com/blog/ios-design-guidelines
@@ -431,13 +437,13 @@ const styles = {
     borderBottomWidth: 1,
     flex: 1,
     marginTop: 4,
-    marginBottom: 4,
+    marginBottom: 14,
     marginRight: 0,
     marginLeft: 0,
     fontSize: 16,
     paddingLeft: 4,
     paddingTop: 6,
-    paddingBottom: 6,
+    paddingBottom: 12,
     // font settings
     // color: Colors.placeholderTextColor,
   },
@@ -492,6 +498,7 @@ const styles = {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
     marginTop: 5,
     marginBottom: 10,
     // for testing
@@ -723,7 +730,7 @@ const styles = {
   },
 
   avatarContainerLarge: {
-    flex: 1,
+    // flex: 1,
     alignItems: 'center',
   },
 

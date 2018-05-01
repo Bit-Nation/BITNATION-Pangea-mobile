@@ -37,8 +37,8 @@ type Props = {
   /**
    * @desc Id of account which passcode will be created or edited.
    */
-  accountId: ?string,
-}
+  accountId: ?string
+};
 
 type Actions = {
   /**
@@ -49,7 +49,7 @@ type Actions = {
    * @desc Check entered password.
    */
   savePassword: (password: string, accountId: ?string, callback: (success: boolean) => void) => void,
-}
+};
 
 type State = {
   enteredPasscode: ?string,
@@ -58,10 +58,11 @@ type State = {
    */
   verifyResetKey: number,
   createResetKey: number,
-}
+};
 
 class CreatePasscodeContainer extends NavigatorComponent<Props & Actions & SettingsState, State> {
   static defaultProps;
+  renderPasscodeScreen: Function;
 
   constructor(props: Props & Actions & SettingsState) {
     super(props);
@@ -75,6 +76,9 @@ class CreatePasscodeContainer extends NavigatorComponent<Props & Actions & Setti
 
   onSaveFinished = (success: boolean) => {
     if (success === true) {
+      this.setState({
+        enteredPasscode: undefined,
+      });
       this.props.onSuccess();
       return;
     }
