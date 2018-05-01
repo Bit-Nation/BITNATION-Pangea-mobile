@@ -3,7 +3,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { View, Text } from 'react-native';
-import ModalDropdown from 'react-native-modal-dropdown';
 
 import i18n from '../../../global/i18n';
 import { screen } from '../../../global/Screens';
@@ -14,6 +13,8 @@ import Button from '../../../components/common/Button';
 import SwitchLabeled from '../../../components/common/SwitchLabeled';
 import styles from '../styles';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
+import { type State as AccountsState } from '../../../reducers/accounts';
+import { changeCreatingAccountField } from '../../../actions/accounts';
 
 type Props = {
   /**
@@ -22,46 +23,31 @@ type Props = {
   navigator: Navigator,
 };
 
-type State = {
-  testingAccount: boolean,
-  network: string,
-  detailedLogging: boolean,
-  debuggingTools: boolean
-};
+type Actions = {
+  /**
+   * @desc Action to change field of currently created account.
+   */
+  changeCreatingAccount: (field: string, value: any) => void,
+}
 
-class DeveloperSettings extends Component<Props, State> {
-  nextStep: Function;
-  setFieldValue: Function;
-  previousStep: Function;
-
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      testingAccount: false,
-      network: '',
-      detailedLogging: false,
-      debuggingTools: false,
-    };
-
-    this.previousStep = this.previousStep.bind(this);
-    this.nextStep = this.nextStep.bind(this);
-    this.setFieldValue = this.setFieldValue.bind(this);
-  }
-
-  previousStep() {
+class DeveloperSettings extends Component<Props & Actions & AccountsState> {
+  previousStep = () => {
     this.props.navigator.pop();
-  }
+  };
 
-  nextStep() {
+  nextStep = () => {
     this.props.navigator.push(screen('ACCOUNT_CREATE_IDENTITY'));
-  }
-
-  setFieldValue(field, value) {
-    this.setState({ [field]: value });
-  }
+  };
 
   render() {
+    const { creatingAccount } = this.props;
+    if (creatingAccount == null) {
+      this.previousStep();
+      return (
+        <View />
+      );
+    }
+
     return (
       <View style={styles.profilesScreenContainer}>
         <BackgroundImage />
@@ -74,31 +60,22 @@ class DeveloperSettings extends Component<Props, State> {
               <View style={styles.fieldsContainer}>
                 <SwitchLabeled
                   label={i18n.t('screens.accounts.create.testingAccount')}
-                  value={this.state.testingAccount}
+                  value={creatingAccount.networkType !== 'main'}
                   align='right'
-                  onValueChange={value => this.setFieldValue('testingAccount', value)}
+                  onValueChange={value => this.props.changeCreatingAccount('networkType', value ? 'dev' : 'main')}
                 />
               </View>
             </View>
             <View style={styles.formRow}>
               <View style={styles.fieldsContainer}>
-                {this.state.testingAccount ?
-                  <ModalDropdown
-                    defaultValue={i18n.t('screens.accounts.create.mainNetwork')}
-                    style={styles.networkDropdownButton}
-                    textStyle={styles.body}
-                    dropdownStyle={styles.networkDropdownList}
-                    dropdownTextStyle={{}}
-                    options={[
-                      i18n.t('screens.accounts.create.ropstenNetwork'),
-                      i18n.t('screens.accounts.create.rinkebyNetwork'),
-                    ]}
-                  />
-                  :
-                  <Text style={styles.body}>{i18n.t('screens.accounts.create.useMainNetwork')}</Text>
-                }
+                <Text style={styles.body}>
+                  {creatingAccount.networkType === 'main' ?
+                    i18n.t('screens.accounts.create.useMainNetwork') :
+                    i18n.t('screens.accounts.create.useRinkebyNetwork')}
+                </Text>
               </View>
             </View>
+            {/* Removed for 0.4.1
             <View style={styles.formRow}>
               <View style={styles.fieldsContainer}>
                 <SwitchLabeled
@@ -121,6 +98,7 @@ class DeveloperSettings extends Component<Props, State> {
                 />
               </View>
             </View>
+          */}
           </View>
           <View style={styles.buttonContainerMultiple}>
             <Button
@@ -140,8 +118,14 @@ class DeveloperSettings extends Component<Props, State> {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  ...state.accounts,
+});
 
-const mapDispatchToProps = dispatch => ({});
+const mapDispatchToProps = dispatch => ({
+  changeCreatingAccount(field, value) {
+    dispatch(changeCreatingAccountField(field, value));
+  },
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(DeveloperSettings);
