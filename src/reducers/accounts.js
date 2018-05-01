@@ -110,3 +110,6 @@ export default (state: State = initialState, action: Action): State => {
 
 export const getCurrentAccount = (state: State) =>
   _.find(state.accounts, account => account.id === state.currentAccountId) || null;
+
+export const isCreatingAccount = (state: State) =>
+  state.currentAccountId === null && state.creatingAccount !== null;

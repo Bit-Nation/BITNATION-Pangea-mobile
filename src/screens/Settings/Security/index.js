@@ -18,6 +18,8 @@ import SettingsListItem from '../../../components/common/SettingsListItem';
 import { changePasscodeLength, changeUseNumericPasscode } from '../../../actions/settings';
 import Colors from '../../../global/colors';
 import { MAXIMAL_PIN_CODE_LENGTH, MINIMAL_PIN_CODE_LENGTH } from '../../../global/Constants';
+import type { State as AccountsState } from '../../../reducers/accounts';
+import { isCreatingAccount } from '../../../reducers/accounts';
 
 type Props = {
   /**
@@ -25,9 +27,9 @@ type Props = {
    */
   navigator: Navigator,
   /**
-   * @desc A flag that indicates if the user is being created
+   * @desc Accounts redux state.
    */
-  isCreating?: Boolean
+  accounts: AccountsState,
 };
 
 type Actions = {
@@ -43,7 +45,6 @@ type Actions = {
 
 class SecuritySettingsScreen extends NavigatorComponent<Props & Actions & SettingsState> {
   static navigatorButtons = { ...androidNavigationButtons };
-  static defaultProps;
 
   onNavBarButtonPress(id: string): void {
     if (id === 'cancel') {
@@ -62,7 +63,7 @@ class SecuritySettingsScreen extends NavigatorComponent<Props & Actions & Settin
   };
 
   /**
-   * @desc It's used on create account flow.
+   * @desc It is used on create account flow.
    * @return {void}
    */
   onNextPressed = () => {
@@ -76,13 +77,14 @@ class SecuritySettingsScreen extends NavigatorComponent<Props & Actions & Settin
   };
 
   render() {
-    const { passcodeInfo, isCreating } = this.props;
+    const { passcodeInfo } = this.props;
+    const isCreating = isCreatingAccount(this.props.accounts);
 
     return (
       <View style={styles.screenContainer}>
-        <BackgroundImage/>
-        <FakeNavigationBar/>
-        <ScreenTitle title={i18n.t('screens.securitySettings.title')}/>
+        <BackgroundImage />
+        <FakeNavigationBar />
+        <ScreenTitle title={i18n.t('screens.securitySettings.title')} />
         <View style={styles.bodyContainer}>
           <SettingsListItem
             id='useNumericPasscode'
@@ -148,12 +150,9 @@ class SecuritySettingsScreen extends NavigatorComponent<Props & Actions & Settin
   }
 }
 
-SecuritySettingsScreen.defaultProps = {
-  isCreating: false,
-};
-
 const mapStateToProps = state => ({
   ...state.settings,
+  accounts: state.accounts,
 });
 
 const mapDispatchToProps = dispatch => ({
