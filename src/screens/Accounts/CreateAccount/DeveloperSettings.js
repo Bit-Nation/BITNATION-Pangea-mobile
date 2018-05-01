@@ -50,7 +50,7 @@ class DeveloperSettings extends Component<Props, State> {
 	}
 
 	previousStep() {
-    this.props.navigator.pop();
+	  this.props.navigator.pop();
 	}
 
 	nextStep() {

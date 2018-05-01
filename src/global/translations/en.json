@@ -238,7 +238,7 @@
         "readyUse": "Your account is ready to use.",
         "walletEmpty": "Your account is ready, but your wallet is empty. Please add ETH to your wallet so you can do stuff.",
         "openDashboard": "Open Dashboard",
-        "openWallet": "Open ETH Wallet",
+        "openWallet": "Open ETH Wallet"
       },
       "restore": {
         "title": "Restore Account",

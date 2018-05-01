@@ -199,11 +199,11 @@ ShallowWrapper {
                           "fontWeight": "normal",
                           "letterSpacing": 0,
                           "lineHeight": 22,
-                          "marginBottom": 4,
+                          "marginBottom": 14,
                           "marginLeft": 0,
                           "marginRight": 0,
                           "marginTop": 4,
-                          "paddingBottom": 6,
+                          "paddingBottom": 12,
                           "paddingLeft": 4,
                           "paddingTop": 6,
                         }
@@ -238,11 +238,11 @@ ShallowWrapper {
                           "fontWeight": "normal",
                           "letterSpacing": 0,
                           "lineHeight": 22,
-                          "marginBottom": 4,
+                          "marginBottom": 14,
                           "marginLeft": 0,
                           "marginRight": 0,
                           "marginTop": 4,
-                          "paddingBottom": 6,
+                          "paddingBottom": 12,
                           "paddingLeft": 4,
                           "paddingTop": 6,
                         }
@@ -765,6 +765,7 @@ ShallowWrapper {
                   }
                 >
                   <SwitchLabeled
+                    align="left"
                     label="Seeking diplomatic recognition as a sovereign entity."
                     onValueChange={[Function]}
                     value={false}
@@ -788,6 +789,7 @@ ShallowWrapper {
                   }
                 >
                   <SwitchLabeled
+                    align="left"
                     label="Non-citizens may use governance services."
                     onValueChange={[Function]}
                     value={false}
@@ -811,6 +813,7 @@ ShallowWrapper {
                   }
                 >
                   <SwitchLabeled
+                    align="left"
                     label="For-profit nation."
                     onValueChange={[Function]}
                     value={false}
@@ -1021,11 +1024,11 @@ ShallowWrapper {
                           "fontWeight": "normal",
                           "letterSpacing": 0,
                           "lineHeight": 22,
-                          "marginBottom": 4,
+                          "marginBottom": 14,
                           "marginLeft": 0,
                           "marginRight": 0,
                           "marginTop": 4,
-                          "paddingBottom": 6,
+                          "paddingBottom": 12,
                           "paddingLeft": 4,
                           "paddingTop": 6,
                         }
@@ -1060,11 +1063,11 @@ ShallowWrapper {
                           "fontWeight": "normal",
                           "letterSpacing": 0,
                           "lineHeight": 22,
-                          "marginBottom": 4,
+                          "marginBottom": 14,
                           "marginLeft": 0,
                           "marginRight": 0,
                           "marginTop": 4,
-                          "paddingBottom": 6,
+                          "paddingBottom": 12,
                           "paddingLeft": 4,
                           "paddingTop": 6,
                         }
@@ -1587,6 +1590,7 @@ ShallowWrapper {
                   }
                 >
                   <SwitchLabeled
+                    align="left"
                     label="Seeking diplomatic recognition as a sovereign entity."
                     onValueChange={[Function]}
                     value={false}
@@ -1610,6 +1614,7 @@ ShallowWrapper {
                   }
                 >
                   <SwitchLabeled
+                    align="left"
                     label="Non-citizens may use governance services."
                     onValueChange={[Function]}
                     value={false}
@@ -1633,6 +1638,7 @@ ShallowWrapper {
                   }
                 >
                   <SwitchLabeled
+                    align="left"
                     label="For-profit nation."
                     onValueChange={[Function]}
                     value={false}
@@ -1768,11 +1774,11 @@ ShallowWrapper {
                             "fontWeight": "normal",
                             "letterSpacing": 0,
                             "lineHeight": 22,
-                            "marginBottom": 4,
+                            "marginBottom": 14,
                             "marginLeft": 0,
                             "marginRight": 0,
                             "marginTop": 4,
-                            "paddingBottom": 6,
+                            "paddingBottom": 12,
                             "paddingLeft": 4,
                             "paddingTop": 6,
                           }
@@ -1807,11 +1813,11 @@ ShallowWrapper {
                             "fontWeight": "normal",
                             "letterSpacing": 0,
                             "lineHeight": 22,
-                            "marginBottom": 4,
+                            "marginBottom": 14,
                             "marginLeft": 0,
                             "marginRight": 0,
                             "marginTop": 4,
-                            "paddingBottom": 6,
+                            "paddingBottom": 12,
                             "paddingLeft": 4,
                             "paddingTop": 6,
                           }
@@ -2334,6 +2340,7 @@ ShallowWrapper {
                     }
                   >
                     <SwitchLabeled
+                      align="left"
                       label="Seeking diplomatic recognition as a sovereign entity."
                       onValueChange={[Function]}
                       value={false}
@@ -2357,6 +2364,7 @@ ShallowWrapper {
                     }
                   >
                     <SwitchLabeled
+                      align="left"
                       label="Non-citizens may use governance services."
                       onValueChange={[Function]}
                       value={false}
@@ -2380,6 +2388,7 @@ ShallowWrapper {
                     }
                   >
                     <SwitchLabeled
+                      align="left"
                       label="For-profit nation."
                       onValueChange={[Function]}
                       value={false}
@@ -2547,11 +2556,11 @@ ShallowWrapper {
                             "fontWeight": "normal",
                             "letterSpacing": 0,
                             "lineHeight": 22,
-                            "marginBottom": 4,
+                            "marginBottom": 14,
                             "marginLeft": 0,
                             "marginRight": 0,
                             "marginTop": 4,
-                            "paddingBottom": 6,
+                            "paddingBottom": 12,
                             "paddingLeft": 4,
                             "paddingTop": 6,
                           }
@@ -2586,11 +2595,11 @@ ShallowWrapper {
                             "fontWeight": "normal",
                             "letterSpacing": 0,
                             "lineHeight": 22,
-                            "marginBottom": 4,
+                            "marginBottom": 14,
                             "marginLeft": 0,
                             "marginRight": 0,
                             "marginTop": 4,
-                            "paddingBottom": 6,
+                            "paddingBottom": 12,
                             "paddingLeft": 4,
                             "paddingTop": 6,
                           }
@@ -2663,11 +2672,11 @@ ShallowWrapper {
                             "fontWeight": "normal",
                             "letterSpacing": 0,
                             "lineHeight": 22,
-                            "marginBottom": 4,
+                            "marginBottom": 14,
                             "marginLeft": 0,
                             "marginRight": 0,
                             "marginTop": 4,
-                            "paddingBottom": 6,
+                            "paddingBottom": 12,
                             "paddingLeft": 4,
                             "paddingTop": 6,
                           }
@@ -2702,11 +2711,11 @@ ShallowWrapper {
                             "fontWeight": "normal",
                             "letterSpacing": 0,
                             "lineHeight": 22,
-                            "marginBottom": 4,
+                            "marginBottom": 14,
                             "marginLeft": 0,
                             "marginRight": 0,
                             "marginTop": 4,
-                            "paddingBottom": 6,
+                            "paddingBottom": 12,
                             "paddingLeft": 4,
                             "paddingTop": 6,
                           }
@@ -2752,11 +2761,11 @@ ShallowWrapper {
                               "fontWeight": "normal",
                               "letterSpacing": 0,
                               "lineHeight": 22,
-                              "marginBottom": 4,
+                              "marginBottom": 14,
                               "marginLeft": 0,
                               "marginRight": 0,
                               "marginTop": 4,
-                              "paddingBottom": 6,
+                              "paddingBottom": 12,
                               "paddingLeft": 4,
                               "paddingTop": 6,
                             }
@@ -2791,11 +2800,11 @@ ShallowWrapper {
                               "fontWeight": "normal",
                               "letterSpacing": 0,
                               "lineHeight": 22,
-                              "marginBottom": 4,
+                              "marginBottom": 14,
                               "marginLeft": 0,
                               "marginRight": 0,
                               "marginTop": 4,
-                              "paddingBottom": 6,
+                              "paddingBottom": 12,
                               "paddingLeft": 4,
                               "paddingTop": 6,
                             }
@@ -2833,11 +2842,11 @@ ShallowWrapper {
                               "fontWeight": "normal",
                               "letterSpacing": 0,
                               "lineHeight": 22,
-                              "marginBottom": 4,
+                              "marginBottom": 14,
                               "marginLeft": 0,
                               "marginRight": 0,
                               "marginTop": 4,
-                              "paddingBottom": 6,
+                              "paddingBottom": 12,
                               "paddingLeft": 4,
                               "paddingTop": 6,
                             }
@@ -2870,11 +2879,11 @@ ShallowWrapper {
                             "fontWeight": "normal",
                             "letterSpacing": 0,
                             "lineHeight": 22,
-                            "marginBottom": 4,
+                            "marginBottom": 14,
                             "marginLeft": 0,
                             "marginRight": 0,
                             "marginTop": 4,
-                            "paddingBottom": 6,
+                            "paddingBottom": 12,
                             "paddingLeft": 4,
                             "paddingTop": 6,
                           },
@@ -2910,11 +2919,11 @@ ShallowWrapper {
                               "fontWeight": "normal",
                               "letterSpacing": 0,
                               "lineHeight": 22,
-                              "marginBottom": 4,
+                              "marginBottom": 14,
                               "marginLeft": 0,
                               "marginRight": 0,
                               "marginTop": 4,
-                              "paddingBottom": 6,
+                              "paddingBottom": 12,
                               "paddingLeft": 4,
                               "paddingTop": 6,
                             }
@@ -2949,11 +2958,11 @@ ShallowWrapper {
                             "fontWeight": "normal",
                             "letterSpacing": 0,
                             "lineHeight": 22,
-                            "marginBottom": 4,
+                            "marginBottom": 14,
                             "marginLeft": 0,
                             "marginRight": 0,
                             "marginTop": 4,
-                            "paddingBottom": 6,
+                            "paddingBottom": 12,
                             "paddingLeft": 4,
                             "paddingTop": 6,
                           },
@@ -4577,6 +4586,7 @@ ShallowWrapper {
                       }
                     >
                       <SwitchLabeled
+                        align="left"
                         label="Seeking diplomatic recognition as a sovereign entity."
                         onValueChange={[Function]}
                         value={false}
@@ -4600,6 +4610,7 @@ ShallowWrapper {
                       }
                     >
                       <SwitchLabeled
+                        align="left"
                         label="Non-citizens may use governance services."
                         onValueChange={[Function]}
                         value={false}
@@ -4623,6 +4634,7 @@ ShallowWrapper {
                       }
                     >
                       <SwitchLabeled
+                        align="left"
                         label="For-profit nation."
                         onValueChange={[Function]}
                         value={false}
@@ -4672,6 +4684,7 @@ ShallowWrapper {
                       }
                     >
                       <SwitchLabeled
+                        align="left"
                         label="Seeking diplomatic recognition as a sovereign entity."
                         onValueChange={[Function]}
                         value={false}
@@ -4689,6 +4702,7 @@ ShallowWrapper {
                     "nodeType": "class",
                     "props": Object {
                       "children": <SwitchLabeled
+                        align="left"
                         label="Seeking diplomatic recognition as a sovereign entity."
                         onValueChange={[Function]}
                         value={false}
@@ -4704,6 +4718,7 @@ ShallowWrapper {
                       "key": undefined,
                       "nodeType": "function",
                       "props": Object {
+                        "align": "left",
                         "label": "Seeking diplomatic recognition as a sovereign entity.",
                         "onValueChange": [Function],
                         "value": false,
@@ -4730,6 +4745,7 @@ ShallowWrapper {
                       }
                     >
                       <SwitchLabeled
+                        align="left"
                         label="Non-citizens may use governance services."
                         onValueChange={[Function]}
                         value={false}
@@ -4747,6 +4763,7 @@ ShallowWrapper {
                     "nodeType": "class",
                     "props": Object {
                       "children": <SwitchLabeled
+                        align="left"
                         label="Non-citizens may use governance services."
                         onValueChange={[Function]}
                         value={false}
@@ -4762,6 +4779,7 @@ ShallowWrapper {
                       "key": undefined,
                       "nodeType": "function",
                       "props": Object {
+                        "align": "left",
                         "label": "Non-citizens may use governance services.",
                         "onValueChange": [Function],
                         "value": false,
@@ -4788,6 +4806,7 @@ ShallowWrapper {
                       }
                     >
                       <SwitchLabeled
+                        align="left"
                         label="For-profit nation."
                         onValueChange={[Function]}
                         value={false}
@@ -4805,6 +4824,7 @@ ShallowWrapper {
                     "nodeType": "class",
                     "props": Object {
                       "children": <SwitchLabeled
+                        align="left"
                         label="For-profit nation."
                         onValueChange={[Function]}
                         value={false}
@@ -4820,6 +4840,7 @@ ShallowWrapper {
                       "key": undefined,
                       "nodeType": "function",
                       "props": Object {
+                        "align": "left",
                         "label": "For-profit nation.",
                         "onValueChange": [Function],
                         "value": false,
@@ -5098,11 +5119,11 @@ ShallowWrapper {
                             "fontWeight": "normal",
                             "letterSpacing": 0,
                             "lineHeight": 22,
-                            "marginBottom": 4,
+                            "marginBottom": 14,
                             "marginLeft": 0,
                             "marginRight": 0,
                             "marginTop": 4,
-                            "paddingBottom": 6,
+                            "paddingBottom": 12,
                             "paddingLeft": 4,
                             "paddingTop": 6,
                           }
@@ -5137,11 +5158,11 @@ ShallowWrapper {
                             "fontWeight": "normal",
                             "letterSpacing": 0,
                             "lineHeight": 22,
-                            "marginBottom": 4,
+                            "marginBottom": 14,
                             "marginLeft": 0,
                             "marginRight": 0,
                             "marginTop": 4,
-                            "paddingBottom": 6,
+                            "paddingBottom": 12,
                             "paddingLeft": 4,
                             "paddingTop": 6,
                           }
@@ -5664,6 +5685,7 @@ ShallowWrapper {
                     }
                   >
                     <SwitchLabeled
+                      align="left"
                       label="Seeking diplomatic recognition as a sovereign entity."
                       onValueChange={[Function]}
                       value={false}
@@ -5687,6 +5709,7 @@ ShallowWrapper {
                     }
                   >
                     <SwitchLabeled
+                      align="left"
                       label="Non-citizens may use governance services."
                       onValueChange={[Function]}
                       value={false}
@@ -5710,6 +5733,7 @@ ShallowWrapper {
                     }
                   >
                     <SwitchLabeled
+                      align="left"
                       label="For-profit nation."
                       onValueChange={[Function]}
                       value={false}
@@ -5920,11 +5944,11 @@ ShallowWrapper {
                             "fontWeight": "normal",
                             "letterSpacing": 0,
                             "lineHeight": 22,
-                            "marginBottom": 4,
+                            "marginBottom": 14,
                             "marginLeft": 0,
                             "marginRight": 0,
                             "marginTop": 4,
-                            "paddingBottom": 6,
+                            "paddingBottom": 12,
                             "paddingLeft": 4,
                             "paddingTop": 6,
                           }
@@ -5959,11 +5983,11 @@ ShallowWrapper {
                             "fontWeight": "normal",
                             "letterSpacing": 0,
                             "lineHeight": 22,
-                            "marginBottom": 4,
+                            "marginBottom": 14,
                             "marginLeft": 0,
                             "marginRight": 0,
                             "marginTop": 4,
-                            "paddingBottom": 6,
+                            "paddingBottom": 12,
                             "paddingLeft": 4,
                             "paddingTop": 6,
                           }
@@ -6486,6 +6510,7 @@ ShallowWrapper {
                     }
                   >
                     <SwitchLabeled
+                      align="left"
                       label="Seeking diplomatic recognition as a sovereign entity."
                       onValueChange={[Function]}
                       value={false}
@@ -6509,6 +6534,7 @@ ShallowWrapper {
                     }
                   >
                     <SwitchLabeled
+                      align="left"
                       label="Non-citizens may use governance services."
                       onValueChange={[Function]}
                       value={false}
@@ -6532,6 +6558,7 @@ ShallowWrapper {
                     }
                   >
                     <SwitchLabeled
+                      align="left"
                       label="For-profit nation."
                       onValueChange={[Function]}
                       value={false}
@@ -6667,11 +6694,11 @@ ShallowWrapper {
                               "fontWeight": "normal",
                               "letterSpacing": 0,
                               "lineHeight": 22,
-                              "marginBottom": 4,
+                              "marginBottom": 14,
                               "marginLeft": 0,
                               "marginRight": 0,
                               "marginTop": 4,
-                              "paddingBottom": 6,
+                              "paddingBottom": 12,
                               "paddingLeft": 4,
                               "paddingTop": 6,
                             }
@@ -6706,11 +6733,11 @@ ShallowWrapper {
                               "fontWeight": "normal",
                               "letterSpacing": 0,
                               "lineHeight": 22,
-                              "marginBottom": 4,
+                              "marginBottom": 14,
                               "marginLeft": 0,
                               "marginRight": 0,
                               "marginTop": 4,
-                              "paddingBottom": 6,
+                              "paddingBottom": 12,
                               "paddingLeft": 4,
                               "paddingTop": 6,
                             }
@@ -7233,6 +7260,7 @@ ShallowWrapper {
                       }
                     >
                       <SwitchLabeled
+                        align="left"
                         label="Seeking diplomatic recognition as a sovereign entity."
                         onValueChange={[Function]}
                         value={false}
@@ -7256,6 +7284,7 @@ ShallowWrapper {
                       }
                     >
                       <SwitchLabeled
+                        align="left"
                         label="Non-citizens may use governance services."
                         onValueChange={[Function]}
                         value={false}
@@ -7279,6 +7308,7 @@ ShallowWrapper {
                       }
                     >
                       <SwitchLabeled
+                        align="left"
                         label="For-profit nation."
                         onValueChange={[Function]}
                         value={false}
@@ -7446,11 +7476,11 @@ ShallowWrapper {
                               "fontWeight": "normal",
                               "letterSpacing": 0,
                               "lineHeight": 22,
-                              "marginBottom": 4,
+                              "marginBottom": 14,
                               "marginLeft": 0,
                               "marginRight": 0,
                               "marginTop": 4,
-                              "paddingBottom": 6,
+                              "paddingBottom": 12,
                               "paddingLeft": 4,
                               "paddingTop": 6,
                             }
@@ -7485,11 +7515,11 @@ ShallowWrapper {
                               "fontWeight": "normal",
                               "letterSpacing": 0,
                               "lineHeight": 22,
-                              "marginBottom": 4,
+                              "marginBottom": 14,
                               "marginLeft": 0,
                               "marginRight": 0,
                               "marginTop": 4,
-                              "paddingBottom": 6,
+                              "paddingBottom": 12,
                               "paddingLeft": 4,
                               "paddingTop": 6,
                             }
@@ -7562,11 +7592,11 @@ ShallowWrapper {
                               "fontWeight": "normal",
                               "letterSpacing": 0,
                               "lineHeight": 22,
-                              "marginBottom": 4,
+                              "marginBottom": 14,
                               "marginLeft": 0,
                               "marginRight": 0,
                               "marginTop": 4,
-                              "paddingBottom": 6,
+                              "paddingBottom": 12,
                               "paddingLeft": 4,
                               "paddingTop": 6,
                             }
@@ -7601,11 +7631,11 @@ ShallowWrapper {
                               "fontWeight": "normal",
                               "letterSpacing": 0,
                               "lineHeight": 22,
-                              "marginBottom": 4,
+                              "marginBottom": 14,
                               "marginLeft": 0,
                               "marginRight": 0,
                               "marginTop": 4,
-                              "paddingBottom": 6,
+                              "paddingBottom": 12,
                               "paddingLeft": 4,
                               "paddingTop": 6,
                             }
@@ -7651,11 +7681,11 @@ ShallowWrapper {
                                 "fontWeight": "normal",
                                 "letterSpacing": 0,
                                 "lineHeight": 22,
-                                "marginBottom": 4,
+                                "marginBottom": 14,
                                 "marginLeft": 0,
                                 "marginRight": 0,
                                 "marginTop": 4,
-                                "paddingBottom": 6,
+                                "paddingBottom": 12,
                                 "paddingLeft": 4,
                                 "paddingTop": 6,
                               }
@@ -7690,11 +7720,11 @@ ShallowWrapper {
                                 "fontWeight": "normal",
                                 "letterSpacing": 0,
                                 "lineHeight": 22,
-                                "marginBottom": 4,
+                                "marginBottom": 14,
                                 "marginLeft": 0,
                                 "marginRight": 0,
                                 "marginTop": 4,
-                                "paddingBottom": 6,
+                                "paddingBottom": 12,
                                 "paddingLeft": 4,
                                 "paddingTop": 6,
                               }
@@ -7732,11 +7762,11 @@ ShallowWrapper {
                                 "fontWeight": "normal",
                                 "letterSpacing": 0,
                                 "lineHeight": 22,
-                                "marginBottom": 4,
+                                "marginBottom": 14,
                                 "marginLeft": 0,
                                 "marginRight": 0,
                                 "marginTop": 4,
-                                "paddingBottom": 6,
+                                "paddingBottom": 12,
                                 "paddingLeft": 4,
                                 "paddingTop": 6,
                               }
@@ -7769,11 +7799,11 @@ ShallowWrapper {
                               "fontWeight": "normal",
                               "letterSpacing": 0,
                               "lineHeight": 22,
-                              "marginBottom": 4,
+                              "marginBottom": 14,
                               "marginLeft": 0,
                               "marginRight": 0,
                               "marginTop": 4,
-                              "paddingBottom": 6,
+                              "paddingBottom": 12,
                               "paddingLeft": 4,
                               "paddingTop": 6,
                             },
@@ -7809,11 +7839,11 @@ ShallowWrapper {
                                 "fontWeight": "normal",
                                 "letterSpacing": 0,
                                 "lineHeight": 22,
-                                "marginBottom": 4,
+                                "marginBottom": 14,
                                 "marginLeft": 0,
                                 "marginRight": 0,
                                 "marginTop": 4,
-                                "paddingBottom": 6,
+                                "paddingBottom": 12,
                                 "paddingLeft": 4,
                                 "paddingTop": 6,
                               }
@@ -7848,11 +7878,11 @@ ShallowWrapper {
                               "fontWeight": "normal",
                               "letterSpacing": 0,
                               "lineHeight": 22,
-                              "marginBottom": 4,
+                              "marginBottom": 14,
                               "marginLeft": 0,
                               "marginRight": 0,
                               "marginTop": 4,
-                              "paddingBottom": 6,
+                              "paddingBottom": 12,
                               "paddingLeft": 4,
                               "paddingTop": 6,
                             },
@@ -9476,6 +9506,7 @@ ShallowWrapper {
                         }
                       >
                         <SwitchLabeled
+                          align="left"
                           label="Seeking diplomatic recognition as a sovereign entity."
                           onValueChange={[Function]}
                           value={false}
@@ -9499,6 +9530,7 @@ ShallowWrapper {
                         }
                       >
                         <SwitchLabeled
+                          align="left"
                           label="Non-citizens may use governance services."
                           onValueChange={[Function]}
                           value={false}
@@ -9522,6 +9554,7 @@ ShallowWrapper {
                         }
                       >
                         <SwitchLabeled
+                          align="left"
                           label="For-profit nation."
                           onValueChange={[Function]}
                           value={false}
@@ -9571,6 +9604,7 @@ ShallowWrapper {
                         }
                       >
                         <SwitchLabeled
+                          align="left"
                           label="Seeking diplomatic recognition as a sovereign entity."
                           onValueChange={[Function]}
                           value={false}
@@ -9588,6 +9622,7 @@ ShallowWrapper {
                       "nodeType": "class",
                       "props": Object {
                         "children": <SwitchLabeled
+                          align="left"
                           label="Seeking diplomatic recognition as a sovereign entity."
                           onValueChange={[Function]}
                           value={false}
@@ -9603,6 +9638,7 @@ ShallowWrapper {
                         "key": undefined,
                         "nodeType": "function",
                         "props": Object {
+                          "align": "left",
                           "label": "Seeking diplomatic recognition as a sovereign entity.",
                           "onValueChange": [Function],
                           "value": false,
@@ -9629,6 +9665,7 @@ ShallowWrapper {
                         }
                       >
                         <SwitchLabeled
+                          align="left"
                           label="Non-citizens may use governance services."
                           onValueChange={[Function]}
                           value={false}
@@ -9646,6 +9683,7 @@ ShallowWrapper {
                       "nodeType": "class",
                       "props": Object {
                         "children": <SwitchLabeled
+                          align="left"
                           label="Non-citizens may use governance services."
                           onValueChange={[Function]}
                           value={false}
@@ -9661,6 +9699,7 @@ ShallowWrapper {
                         "key": undefined,
                         "nodeType": "function",
                         "props": Object {
+                          "align": "left",
                           "label": "Non-citizens may use governance services.",
                           "onValueChange": [Function],
                           "value": false,
@@ -9687,6 +9726,7 @@ ShallowWrapper {
                         }
                       >
                         <SwitchLabeled
+                          align="left"
                           label="For-profit nation."
                           onValueChange={[Function]}
                           value={false}
@@ -9704,6 +9744,7 @@ ShallowWrapper {
                       "nodeType": "class",
                       "props": Object {
                         "children": <SwitchLabeled
+                          align="left"
                           label="For-profit nation."
                           onValueChange={[Function]}
                           value={false}
@@ -9719,6 +9760,7 @@ ShallowWrapper {
                         "key": undefined,
                         "nodeType": "function",
                         "props": Object {
+                          "align": "left",
                           "label": "For-profit nation.",
                           "onValueChange": [Function],
                           "value": false,
