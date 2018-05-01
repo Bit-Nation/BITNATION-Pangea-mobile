@@ -180,6 +180,12 @@
     "nationsDisabled": {
       "title": "This function is disabled in this release. It will be re-enabled on March 3.",
       "confirm": "$t(common.ok)"
+    },
+    "passcodeVerificationFailed": {
+      "title": "Passcode mismatch",
+      "subtitle": "Please enter passcode carefully again.",
+      "tryAgain": "Try again",
+      "startOver": "Start over"
     }
   },
   "screens": {
@@ -417,6 +423,28 @@
     },
     "qrCodeScanner": {
       "title": "Scan QR code"
+    },
+    "settings": {
+      "title": "Settings",
+      "tabTitle": "SETTINGS",
+      "identity": "Identity",
+      "security": "Security"
+    },
+    "securitySettings": {
+      "title": "Security settings",
+      "useNumericPasscode": "Numeric Passcode (less secure)",
+      "passcodeLength": "Passcode Length",
+      "changePasscode": "Change Passcode"
+    },
+    "pinCode": {
+      "enterInstruction": "Enter PIN code:",
+      "createInstruction": "Enter new PIN code:",
+      "verifyInstruction": "Enter PIN code again:"
+    },
+    "password": {
+      "enterInstruction": "Enter password:",
+      "createInstruction": "Enter new password:",
+      "verifyInstruction": "Enter password again:"
     }
   },
   "testingMode": {
@@ -428,7 +456,9 @@
   "error": {
     "noConnection": "Please check your internet connection.",
     "insufficientFunds": "Insufficient funds. Please check your wallet.",
-    "noCamera": "Camera Error"
+    "noCamera": "Camera Error",
+    "invalidPinCode": "PIN code is invalid. Please try again.",
+    "invalidPassword": "Password is invalid. Please try again."
   },
   "bots": {
     "freudbot": {
