@@ -6,9 +6,9 @@ import type { Navigator } from '../../../types/ReactNativeNavigation';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import { openNation } from '../../../actions/nations';
 import AccountAccessListScreen from './AccountAccessListScreen';
-import type { Account } from '../../../types/Account';
 import { screen } from '../../../global/Screens';
-import type { createAccount, resetAccount } from '../../../actions/accounts';
+import { createAccount, resetAccount } from '../../../actions/accounts';
+import { type State as AccountState } from '../../../reducers/nations';
 
 type Props = {
   /**
@@ -24,11 +24,16 @@ type Props = {
    * @desc Function to open an account
    * @param id Index of the account selected
    */
-  openAccount: (Account) => void,
+  openAccount: (id: string) => void,
+  /**
+   * @desc Function to select specific account.
+   * @param {any} id Id of selected item.
+   */
+  onSelectItem: (id: any) => void,
 };
 
-class AccountAccessContainer extends NavigatorComponent<Props> {
-  constructor(props: Props) {
+class AccountAccessContainer extends NavigatorComponent<Props & AccountState> {
+  constructor(props) {
     super(props);
 
     this.props.navigator.setButtons({
@@ -43,6 +48,17 @@ class AccountAccessContainer extends NavigatorComponent<Props> {
   resetAccount = () => {
     this.props.navigator.showModal(screen('RESET_CREATE_SCREEN'));
   };
+  onSelectItem = (id) => {
+    // const account = resolveNation(this.props.accounts, id);
+
+    // if (!account) {
+    //  return;
+    // }
+
+    this.props.openAccount(id);
+
+    this.props.navigator.push(screen('LOGIN_ACCOUNT_SCREEN'));
+  };
   render() {
     return (
       <AccountAccessListScreen
@@ -54,10 +70,6 @@ class AccountAccessContainer extends NavigatorComponent<Props> {
     );
   }
 }
-
-AccountAccessContainer.defaultProps = {
-  onCreateAccount: () => null,
-};
 
 const mapStateToProps = state => ({
   ...state.accounts,
