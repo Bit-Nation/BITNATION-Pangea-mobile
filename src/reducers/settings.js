@@ -1,6 +1,7 @@
 // @flow
 
 import { type Action, CHANGE_PASSCODE_LENGTH, CHANGE_USE_NUMERIC_PASSCODE } from '../actions/settings';
+import { START_ACCOUNT_CREATION } from '../actions/accounts';
 
 export type PasscodeInfo =
   {
@@ -58,6 +59,9 @@ export default (state: State = initialState, action: Action): State => {
             length: action.passcodeLength,
           },
         };
+    }
+    case START_ACCOUNT_CREATION: {
+      return initialState;
     }
     default:
       return state;
