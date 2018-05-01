@@ -43,14 +43,7 @@ class Accounts extends NavigatorComponent<Props & Actions & AccountsState> {
   };
 
   onRestoreAccount = () => {
-    this.props.navigator.push({
-      ...screen('ENTER_PASSCODE_SCREEN'),
-      passProps: {
-        onSuccess: () => {
-          this.props.navigator.push(screen('ACCOUNT_RESTORE_SOURCE'));
-        },
-      },
-    });
+    this.props.navigator.push(screen('ACCOUNT_RESTORE_SOURCE'));
   };
 
   render() {
