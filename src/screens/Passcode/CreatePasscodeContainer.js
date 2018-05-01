@@ -77,7 +77,7 @@ class CreatePasscodeContainer extends NavigatorComponent<Props & Actions & Setti
   onSaveFinished = (success: boolean) => {
     if (success === true) {
       this.setState({
-        enteredPasscode: undefined
+        enteredPasscode: undefined,
       });
       this.props.onSuccess();
       return;
