@@ -30,6 +30,16 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "account": null,
+      "accountsState": Object {
+        "account": Object {
+          "_id": 1,
+          "location": "NYC",
+          "name": "Pangea",
+        },
+        "editingAccount": Object {},
+      },
+      "changeCreatingAccountField": [Function],
+      "doneAccountCreation": [Function],
       "editingAccount": Object {},
       "makeStepForTestingMode": [Function],
       "navigator": Object {},
@@ -78,6 +88,16 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "account": null,
+        "accountsState": Object {
+          "account": Object {
+            "_id": 1,
+            "location": "NYC",
+            "name": "Pangea",
+          },
+          "editingAccount": Object {},
+        },
+        "changeCreatingAccountField": [Function],
+        "doneAccountCreation": [Function],
         "editingAccount": Object {},
         "makeStepForTestingMode": [Function],
         "navigator": Object {},
