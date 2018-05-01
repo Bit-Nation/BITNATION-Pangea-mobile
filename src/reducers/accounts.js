@@ -59,7 +59,7 @@ export default (state: State = initialState, action: Action): State => {
     case CURRENT_ACCOUNT_ID_CHANGED:
       return {
         ...state,
-        currentAccountId: null,
+        currentAccountId: action.currentAccountId,
       };
     case LOGIN_TASK_UPDATED:
       return {
