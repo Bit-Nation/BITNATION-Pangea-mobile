@@ -42,6 +42,7 @@ type State = {
 }
 
 class PasswordScreen extends NavigatorComponent<Props, State> {
+  static defaultProps;
   textInput: any;
 
   constructor(props: Props) {
@@ -102,5 +103,9 @@ class PasswordScreen extends NavigatorComponent<Props, State> {
     );
   }
 }
+
+PasswordScreen.defaultProps = {
+  shouldShowCancel: false,
+};
 
 export default PasswordScreen;
