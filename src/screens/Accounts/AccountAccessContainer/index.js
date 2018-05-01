@@ -8,7 +8,7 @@ import { openNation } from '../../../actions/nations';
 import AccountAccessListScreen from './AccountAccessListScreen';
 import { screen } from '../../../global/Screens';
 import { createAccount, resetAccount } from '../../../actions/accounts';
-import { type State as AccountState } from '../../../reducers/nations';
+import { type State as AccountState } from '../../../reducers/accounts';
 
 type Props = {
   /**
