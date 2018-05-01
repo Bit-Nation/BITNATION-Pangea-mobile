@@ -8,6 +8,7 @@ import {
   checkPinCodeSaga,
   savePasswordSaga,
   savePinCodeSaga,
+  saveCreatingAccount,
 } from './sagas';
 import {
   LOGIN,
@@ -16,6 +17,7 @@ import {
   CHECK_PIN_CODE,
   SAVE_PASSWORD,
   SAVE_PIN_CODE,
+  SAVE_CREATING_ACCOUNT,
 } from '../../actions/accounts';
 import { UPDATE_ACCOUNT } from '../../actions/profile';
 
@@ -33,5 +35,6 @@ export default function* rootSaga() {
     yield takeEvery(CHECK_PASSWORD, checkPasswordSaga),
     yield takeEvery(SAVE_PIN_CODE, savePinCodeSaga),
     yield takeEvery(SAVE_PASSWORD, savePasswordSaga),
+    yield takeEvery(SAVE_CREATING_ACCOUNT, saveCreatingAccount),
   ]);
 }

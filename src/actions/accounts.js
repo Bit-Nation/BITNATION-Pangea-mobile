@@ -14,7 +14,7 @@ export type CheckPasswordAction = { +type: 'CHECK_PASSWORD', +password: string, 
 export type SavePinCodeAction = { +type: 'SAVE_PIN_CODE', +pinCode: string, +accountId: ?string, +callback: (success: boolean) => void };
 export type SavePasswordAction = { +type: 'SAVE_PASSWORD', +password: string, +accountId: ?string, +callback: (success: boolean) => void };
 export type ChangeCreatingAccountFieldAction = { +type: 'CHANGE_CREATING_ACCOUNT_FIELD', +field: string, +value: any };
-export type SaveCreatingAccountAction = { +type: 'SAVE_CREATING_ACCOUNT' };
+export type SaveCreatingAccountAction = { +type: 'SAVE_CREATING_ACCOUNT', +callback: (success: boolean) => void };
 
 export type Action =
   | AccountsListUpdatedAction
@@ -196,10 +196,12 @@ export function changeCreatingAccountField(field: string, value: any): ChangeCre
 
 /**
  * @desc Action creator for an action that is called to save currently created account.
+ * @param {Function} callback Callback that receives boolean value - whether save is successful.
  * @return {SaveCreatingAccountAction} An action.
  */
-export function saveCreatingAccount(): SaveCreatingAccountAction {
+export function saveCreatingAccount(callback: (boolean) => void): SaveCreatingAccountAction {
   return {
     type: SAVE_CREATING_ACCOUNT,
+    callback,
   };
 }

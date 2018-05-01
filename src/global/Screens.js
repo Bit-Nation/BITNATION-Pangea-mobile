@@ -81,11 +81,6 @@ const Screens = {
     title: i18n.t('screens.accounts.create.developerTitle'),
     navigatorStyle: hiddenNavigatorStyle,
   },
-  ACCOUNT_CREATE_IDENTITY: {
-    screen: 'Pangea.AccountCreateIdentityScreen',
-    title: i18n.t('screens.accounts.create.identityTitle'),
-    navigatorStyle: hiddenNavigatorStyle,
-  },
   ACCOUNT_CREATE_READY: {
     screen: 'Pangea.AccountCreateReadyScreen',
     navigatorStyle: hiddenNavigatorStyle,
