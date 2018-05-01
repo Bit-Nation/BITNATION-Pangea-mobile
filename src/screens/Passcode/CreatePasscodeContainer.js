@@ -82,11 +82,7 @@ class CreatePasscodeContainer extends NavigatorComponent<Props & Actions & Setti
       return;
     }
 
-    if (this.props.passcodeInfo.type === 'pinCode') {
-      errorAlert(i18n.t('error.invalidPinCode'));
-    } else {
-      errorAlert(i18n.t('error.invalidPassword'));
-    }
+    errorAlert(i18n.t('error.passcodeCreationFailed'));
   };
 
   showVerificationFailedAlert = () => {

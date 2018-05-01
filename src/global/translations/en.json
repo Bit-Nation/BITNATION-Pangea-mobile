@@ -501,7 +501,8 @@
     "insufficientFunds": "Insufficient funds. Please check your wallet.",
     "noCamera": "Camera Error",
     "invalidPinCode": "PIN code is invalid. Please try again.",
-    "invalidPassword": "Password is invalid. Please try again."
+    "invalidPassword": "Password is invalid. Please try again.",
+    "passcodeCreationFailed": "Unable to create passcode. Please report this issue."
   },
   "bots": {
     "freudbot": {
