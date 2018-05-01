@@ -27,10 +27,6 @@ type Props = {
    */
   title: string,
   /**
-   * @desc A flag that indicates if the user is creating both password and pincode
-   */
-  isCreatingBoth: boolean,
-  /**
    * @desc Callback on cancellation of entering passcode.
    */
   onCancel: () => void,
@@ -62,7 +58,6 @@ type State = {
    */
   verifyResetKey: number,
   createResetKey: number,
-  showPincodeScreen: boolean,
 };
 
 class CreatePasscodeContainer extends NavigatorComponent<Props & Actions & SettingsState, State> {
@@ -76,20 +71,15 @@ class CreatePasscodeContainer extends NavigatorComponent<Props & Actions & Setti
       enteredPasscode: undefined,
       verifyResetKey: 0,
       createResetKey: 0,
-      showPincodeScreen: false,
     };
   }
 
   onSaveFinished = (success: boolean) => {
     if (success === true) {
-      if (this.props.isCreatingBoth && !this.state.showPincodeScreen) {
-        this.setState({
-          showPincodeScreen: true,
-          enteredPasscode: undefined,
-        });
-      } else {
-        this.props.onSuccess();
-      }
+      this.setState({
+        enteredPasscode: undefined
+      });
+      this.props.onSuccess();
       return;
     }
 
@@ -163,13 +153,13 @@ class CreatePasscodeContainer extends NavigatorComponent<Props & Actions & Setti
       navigator, passcodeInfo, onCancel,
     } = this.props;
 
-    if (passcodeInfo.type === 'pinCode' || this.state.showPincodeScreen) {
+    if (passcodeInfo.type === 'pinCode') {
       if (this.state.enteredPasscode == null) {
         return (
           <PinCodeScreen
             key={`create ${this.state.createResetKey}`}
             navigator={navigator}
-            pinCodeLength={passcodeInfo.length || 4}
+            pinCodeLength={passcodeInfo.length}
             instruction={i18n.t('screens.pinCode.createInstruction')}
             shouldShowCancel
             onCancel={onCancel}
@@ -182,7 +172,7 @@ class CreatePasscodeContainer extends NavigatorComponent<Props & Actions & Setti
           key={`verify ${this.state.verifyResetKey}`}
           resetKey={this.state.verifyResetKey}
           navigator={navigator}
-          pinCodeLength={passcodeInfo.length || 4}
+          pinCodeLength={passcodeInfo.length}
           instruction={i18n.t('screens.pinCode.verifyInstruction')}
           shouldShowCancel
           onCancel={this.onCancelVerificationPasscode}
