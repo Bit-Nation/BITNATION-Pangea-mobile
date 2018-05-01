@@ -36,7 +36,7 @@ class DeveloperSettings extends Component<Props & Actions & AccountsState> {
   };
 
   nextStep = () => {
-    this.props.navigator.push(screen('ACCOUNT_CREATE_IDENTITY'));
+    this.props.navigator.push(screen('PROFILE_SCREEN'));
   };
 
   render() {

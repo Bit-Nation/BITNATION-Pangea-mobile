@@ -19,7 +19,7 @@ import saveShouldBeEnabled from '../../../../utils/profile';
 import AssetsImage from '../../../../global/AssetsImages';
 import Colors from '../../../../global/colors';
 import type { Navigator } from '../../../../types/ReactNativeNavigation';
-import type { Account } from '../../../../types/Account';
+import type { Account, PartialAccount } from '../../../../types/Account';
 import i18n from '../../../../global/i18n';
 import styles from './styles';
 import ScreenTitle from '../../../../components/common/ScreenTitle';
@@ -34,11 +34,15 @@ export type Props = {
   /**
    * @desc Account object that is currently being edited
    */
-  editingAccount: Account,
+  editingAccount: Account | PartialAccount,
   /**
    * @desc Current account object
    */
-  account: Account,
+  account: Account | PartialAccount,
+  /**
+   * @desc If account is currently being created.
+   */
+  isCreating: boolean,
   /**
    * @desc Function to modify the editing account
    * @param field An account field to be modified

@@ -16,10 +16,10 @@ import {
   savePassword,
 } from '../../actions/accounts';
 import type {
-  CheckPasswordAction, CheckPinCodeAction, LoginAction, SavePasswordAction,
+  CheckPasswordAction, CheckPinCodeAction, LoginAction, SaveCreatingAccountAction, SavePasswordAction,
   SavePinCodeAction,
 } from '../../actions/accounts';
-import { convertFromDatabase } from '../../utils/mapping/account';
+import { convertFromDatabase, convertToDatabase } from '../../utils/mapping/account';
 import TaskBuilder from '../../utils/asyncTask';
 import AccountsService from '../../services/accounts';
 import { InvalidPasswordError } from '../../global/errors/accounts';
@@ -208,5 +208,25 @@ export function* savePasswordSaga(action: SavePasswordAction): Generator<*, *, *
     action.callback(true);
   } catch (e) {
     action.callback(false);
+  }
+}
+
+/**
+ * @desc Saves creating account into database.
+ * @param {SaveCreatingAccountAction} action An action.
+ * @return {void}
+ */
+export function* saveCreatingAccount(action: SaveCreatingAccountAction): Generator<*, *, *> {
+  const { accounts } = yield select();
+  const { creatingAccount } = accounts;
+  const convertedAccount = convertToDatabase(creatingAccount);
+  if (convertedAccount === null) {
+    action.callback(false);
+  } else {
+    const db = yield dbFactory();
+    db.write(() => {
+      db.create('Account', convertedAccount);
+    });
+    action.callback(true);
   }
 }

@@ -17,7 +17,7 @@ import TaskBuilder, { type AsyncTask } from '../utils/asyncTask';
 import { CANCEL_ACCOUNT_EDITING, CHANGE_EDITING_ACCOUNT, DONE_ACCOUNT_EDITING, START_ACCOUNT_EDITING } from '../actions/profile';
 
 export type State = {
-  +editingAccount: Account | null,
+  +editingAccount: Account | PartialAccount | null,
   +creatingAccount: PartialAccount | null,
   +currentAccountId: string | null,
   +login: AsyncTask<void>,
@@ -89,9 +89,11 @@ export default (state: State = initialState, action: Action): State => {
       };
     }
     case START_ACCOUNT_CREATION: {
+      const newAccount = buildEmptyAccount();
       return {
         ...state,
-        creatingAccount: buildEmptyAccount(),
+        creatingAccount: newAccount,
+        editingAccount: newAccount,
       };
     }
     case CHANGE_CREATING_ACCOUNT_FIELD: {
