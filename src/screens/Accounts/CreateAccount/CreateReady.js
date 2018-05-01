@@ -22,17 +22,16 @@ type Props = {
   navigator: Navigator,
   /**
    * @desc Performs login that was deferred on account creation process.
-   * @param {string} accountId Account id to log in.
    */
-  performDeferredLogin: (accountId: string) => void,
+  performDeferredLogin: () => void,
 };
 
 class AccountReady extends Component<Props & AccountsState> {
   goToDashboard = () => {
     if (this.props.creatingAccount !== null) {
-      this.props.performDeferredLogin(this.props.creatingAccount.id);
+      this.props.performDeferredLogin();
     }
-  }
+  };
 
   render() {
     return (
@@ -60,8 +59,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  performDeferredLogin(accountId) {
-    dispatch(performDeferredLogin(accountId));
+  performDeferredLogin() {
+    dispatch(performDeferredLogin());
   },
 });
 

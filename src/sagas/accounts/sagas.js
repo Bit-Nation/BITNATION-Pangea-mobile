@@ -25,6 +25,7 @@ import AccountsService from '../../services/accounts';
 import { InvalidPasswordError } from '../../global/errors/accounts';
 import type { AccountType as DBAccount } from '../../services/database/schemata';
 import type { UpdateAccountAction } from '../../actions/profile';
+import { cancelAccountEditing } from '../../actions/profile';
 
 /**
  * @desc That function should be used for listening on information that depends on current account.
@@ -172,6 +173,7 @@ export function* doneAccountEditing(action: UpdateAccountAction): Generator<*, *
   db.write(() => {
     account.location = editingAccount.location ? editingAccount.location.trim() : '';
     account.name = editingAccount.name.trim();
+    account.profileImage = editingAccount.avatar || '';
   });
 }
 
@@ -258,4 +260,5 @@ export function* saveCreatingAccount(action: SaveCreatingAccountAction): Generat
     });
     action.callback(true);
   }
+  yield put(cancelAccountEditing());
 }
