@@ -81,7 +81,7 @@ class ProfileScreen extends NavigatorComponent<Props & Actions & SettingsState, 
       ...screen('CREATE_PASSCODE_SCREEN'),
       passProps: {
         onSuccess: this.goToNextStep,
-        isCreatingBoth: true,
+        onCancel: this.previousStep
       },
     });
   }
