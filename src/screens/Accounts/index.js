@@ -14,6 +14,8 @@ import ScreenTitle from '../../components/common/ScreenTitle';
 import Button from '../../components/common/Button';
 import type { Navigator } from '../../types/ReactNativeNavigation';
 import styles from './styles';
+import { startAccountCreation } from '../../actions/accounts';
+import { type State as AccountsState } from '../../reducers/accounts';
 
 type Props = {
   /**
@@ -22,26 +24,25 @@ type Props = {
   navigator: Navigator,
 };
 
-class Accounts extends NavigatorComponent<Props> {
-  onCreateAccount: Function;
-  onRestoreAccount: Function;
+type Actions = {
+  /**
+   * @desc Action to start account process.
+   */
+  startAccountCreation: () => void,
+}
 
-  constructor(props: Props) {
-    super(props);
-    this.onCreateAccount = this.onCreateAccount.bind(this);
-    this.onRestoreAccount = this.onRestoreAccount.bind(this);
-  }
-
-  onCreateAccount() {
+class Accounts extends NavigatorComponent<Props & Actions & AccountsState> {
+  onCreateAccount = () => {
+    this.props.startAccountCreation();
     this.props.navigator.push({
       ...screen('SECURITY_SETTINGS_SCREEN'),
       passProps: {
         isCreating: true,
       },
     });
-  }
+  };
 
-  onRestoreAccount() {
+  onRestoreAccount = () => {
     this.props.navigator.push({
       ...screen('ENTER_PASSCODE_SCREEN'),
       passProps: {
@@ -50,7 +51,7 @@ class Accounts extends NavigatorComponent<Props> {
         },
       },
     });
-  }
+  };
 
   render() {
     return (
@@ -63,12 +64,12 @@ class Accounts extends NavigatorComponent<Props> {
           <View style={{}}>
             <Button
               style={styles.panelButton}
-              title='New Account'
+              title={i18n.t('screens.accounts.newAccount')}
               onPress={this.onCreateAccount}
             />
             <Button
               style={styles.panelButton}
-              title='Restore Account'
+              title={i18n.t('screens.accounts.restoreAccount')}
               onPress={this.onRestoreAccount}
             />
           </View>
@@ -78,8 +79,14 @@ class Accounts extends NavigatorComponent<Props> {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  ...state.accounts,
+});
 
-const mapDispatchToProps = dispatch => ({});
+const mapDispatchToProps = dispatch => ({
+  startAccountCreation() {
+    dispatch(startAccountCreation());
+  },
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Accounts);
