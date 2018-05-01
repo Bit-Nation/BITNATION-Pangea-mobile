@@ -12,7 +12,7 @@ import {
   checkPassword,
   CURRENT_ACCOUNT_ID_CHANGED,
   currentAccountIdChanged,
-  loginTaskUpdated,
+  loginTaskUpdated, PERFORM_DEFERRED_LOGIN,
   savePassword,
 } from '../../actions/accounts';
 import type {
@@ -106,19 +106,42 @@ export function* listenForDatabaseUpdates(): Generator<*, *, *> {
 }
 
 /**
+ * @desc Takes login action and calls perform login with corresponding parameters.
+ * @param {LoginAction} action An action
+ * @return {void}
+ */
+export function* loginActionHandler(action: LoginAction): Generator<*, *, *> {
+  yield call(login, { accountId: action.accountId }, action.password, action.deferred);
+}
+
+/**
  * @desc Performs a login of user.
- * @param {LoginAction} action Action that contains login parameters.
+ * @param {*} userInfo Either object containing account id or account store to log in.
+ * @param {string} password Password to use on login.
+ * @param {boolean} deferred Flag whether login should be deferred until performDeferredLogin action is called.
  * @returns {void}
  */
-export function* login(action: LoginAction): Generator<*, *, *> {
+export function* login(userInfo: ({ accountId: string, accountStore?: string }), password: string, deferred: boolean = false): Generator<*, *, *> {
   yield put(loginTaskUpdated(TaskBuilder.pending()));
-  const account = yield call(getAccount, action.accountId);
-  const isValid = yield call(AccountsService.checkPasscode, account.accountStore, action.password);
+  const { accountId } = userInfo;
+  let accountStore: string;
+  if (userInfo.accountStore == null) {
+    const account = yield getAccount(accountId);
+    ({ accountStore } = account);
+  } else {
+    ({ accountStore } = userInfo);
+  }
+
+  const isValid = yield call(AccountsService.checkPasscode, accountStore, password);
   if (isValid !== true) {
     yield put(loginTaskUpdated(TaskBuilder.failure(new InvalidPasswordError())));
     return;
   }
-  yield put(currentAccountIdChanged(action.accountId));
+  if (deferred === true) {
+    yield take(PERFORM_DEFERRED_LOGIN);
+  }
+
+  yield put(currentAccountIdChanged(accountId));
   yield put(loginTaskUpdated(TaskBuilder.success()));
 }
 
@@ -196,6 +219,12 @@ export function* savePasswordSaga(action: SavePasswordAction): Generator<*, *, *
       // It's a new account, new keys need to be created.
       const accountStore = yield call(AccountsService.createAccountStore, action.password);
       yield put(changeCreatingAccountField('accountStore', accountStore));
+      const { accounts } = yield select();
+      const { creatingAccount } = accounts;
+      action.callback(true);
+
+      // We start deferred login, because it's the only place when we have password to do it.
+      yield call(login, { accountId: creatingAccount.id, accountStore }, action.password, true);
     } else {
       // It's an existing account, old keys need to be encrypted with new password and saved.
       const newAccountStore = yield call(AccountsService.exportAccountStore, action.password);
@@ -204,8 +233,8 @@ export function* savePasswordSaga(action: SavePasswordAction): Generator<*, *, *
       db.write(() => {
         account.accountStore = newAccountStore;
       });
+      action.callback(true);
     }
-    action.callback(true);
   } catch (e) {
     action.callback(false);
   }

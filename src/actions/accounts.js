@@ -5,7 +5,8 @@ import type { AsyncTask } from '../utils/asyncTask';
 
 export type AccountsListUpdatedAction = { +type: 'ACCOUNTS_LIST_UPDATED', accounts: Array<Account> };
 export type CurrentAccountIdChangedAction = { +type: 'CURRENT_ACCOUNT_ID_CHANGED', currentAccountId: string | null };
-export type LoginAction = { +type: 'LOGIN', accountId: string, password: string };
+export type LoginAction = { +type: 'LOGIN', accountId: string, password: string, deferred: boolean };
+export type PerformDeferredLoginAction = { +type: 'PERFORM_DEFERRED_LOGIN' };
 export type LoginTaskUpdatedAction = { +type: 'LOGIN_TASK_UPDATED', asyncTask: AsyncTask<void> };
 export type LogoutAction = { +type: 'LOGOUT' };
 export type StartAccountCreationAction = { +type: 'START_ACCOUNT_CREATION' };
@@ -20,6 +21,7 @@ export type Action =
   | AccountsListUpdatedAction
   | CurrentAccountIdChangedAction
   | LoginAction
+  | PerformDeferredLoginAction
   | LoginTaskUpdatedAction
   | LogoutAction
   | StartAccountCreationAction
@@ -42,6 +44,7 @@ export const SAVE_PIN_CODE = 'SAVE_PIN_CODE';
 export const SAVE_PASSWORD = 'SAVE_PASSWORD';
 export const CHANGE_CREATING_ACCOUNT_FIELD = 'CHANGE_CREATING_ACCOUNT_FIELD';
 export const SAVE_CREATING_ACCOUNT = 'SAVE_CREATING_ACCOUNT';
+export const PERFORM_DEFERRED_LOGIN = 'PERFORM_DEFERRED_LOGIN';
 
 /**
  * @desc Action creator for an action that is called when accounts list updated.
@@ -73,13 +76,25 @@ export function currentAccountIdChanged(currentAccountId: string | null): Curren
  * @desc Action creator for an action that is called to perform a login.
  * @param {string} accountId Id of account to login to.
  * @param {string} password Password to login.
+ * @param {boolean} deferred Flag if login should wait for performDeferredLogin action to proceed.
  * @return {LoginAction} An action.
  */
-export function login(accountId: string, password: string): LoginAction {
+export function login(accountId: string, password: string, deferred: boolean = false): LoginAction {
   return {
     type: LOGIN,
     accountId,
     password,
+    deferred,
+  };
+}
+
+/**
+ * @desc Action creator for an action to perform login that was deferred. That is used to not store password while creating account.
+ * @return {PerformDeferredLoginAction} An action.
+ */
+export function performDeferredLogin(): PerformDeferredLoginAction {
+  return {
+    type: PERFORM_DEFERRED_LOGIN,
   };
 }
 

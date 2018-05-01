@@ -12,21 +12,26 @@ import ScreenTitle from '../../../components/common/ScreenTitle';
 import Button from '../../../components/common/Button';
 import styles from '../styles';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
+import { performDeferredLogin } from '../../../actions/accounts';
+import { type State as AccountsState } from '../../../reducers/accounts';
 
 type Props = {
   /**
    * @desc React Native Navigation navigator object.
    */
   navigator: Navigator,
+  /**
+   * @desc Performs login that was deferred on account creation process.
+   * @param {string} accountId Account id to log in.
+   */
+  performDeferredLogin: (accountId: string) => void,
 };
 
-class AccountReady extends Component<Props> {
-  goToDashboard() {
-
-  }
-
-  goToEthWallet() {
-
+class AccountReady extends Component<Props & AccountsState> {
+  goToDashboard = () => {
+    if (this.props.creatingAccount !== null) {
+      this.props.performDeferredLogin(this.props.creatingAccount.id);
+    }
   }
 
   render() {
@@ -50,8 +55,14 @@ class AccountReady extends Component<Props> {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  ...state.accounts,
+});
 
-const mapDispatchToProps = dispatch => ({});
+const mapDispatchToProps = dispatch => ({
+  performDeferredLogin(accountId) {
+    dispatch(performDeferredLogin(accountId));
+  },
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(AccountReady);
