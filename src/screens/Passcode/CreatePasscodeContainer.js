@@ -62,7 +62,6 @@ type State = {
 
 class CreatePasscodeContainer extends NavigatorComponent<Props & Actions & SettingsState, State> {
   static defaultProps;
-  renderPasscodeScreen: Function;
 
   constructor(props: Props & Actions & SettingsState) {
     super(props);

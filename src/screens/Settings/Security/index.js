@@ -55,16 +55,22 @@ class SecuritySettingsScreen extends NavigatorComponent<Props & Actions & Settin
     this.props.navigator.pop();
   };
 
+  onPasscodeCreated = () => {
+    this.props.navigator.dismissModal().then(() => {
+      this.props.navigator.push(screen('ACCOUNT_CREATE_DEVELOPER_SETTINGS'));
+    });
+  };
+
   /**
    * @desc It's used on create account flow.
    * @return {void}
    */
   onNextPressed = () => {
-    this.props.navigator.push({
+    this.props.navigator.showModal({
       ...screen('CREATE_PASSCODE_SCREEN'),
       passProps: {
-        onSuccess: () => this.props.navigator.push(screen('ACCOUNT_CREATE_DEVELOPER_SETTINGS')),
-        onCancel: () => this.props.navigator.pop(),
+        onSuccess: this.onPasscodeCreated,
+        onCancel: () => this.props.navigator.dismissModal(),
       },
     });
   };
@@ -74,9 +80,9 @@ class SecuritySettingsScreen extends NavigatorComponent<Props & Actions & Settin
 
     return (
       <View style={styles.screenContainer}>
-        <BackgroundImage />
-        <FakeNavigationBar />
-        <ScreenTitle title={i18n.t('screens.securitySettings.title')} />
+        <BackgroundImage/>
+        <FakeNavigationBar/>
+        <ScreenTitle title={i18n.t('screens.securitySettings.title')}/>
         <View style={styles.bodyContainer}>
           <SettingsListItem
             id='useNumericPasscode'
