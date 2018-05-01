@@ -766,6 +766,7 @@ ShallowWrapper {
                 >
                   <SwitchLabeled
                     align="left"
+                    disabled={false}
                     label="Seeking diplomatic recognition as a sovereign entity."
                     onValueChange={[Function]}
                     value={false}
@@ -790,6 +791,7 @@ ShallowWrapper {
                 >
                   <SwitchLabeled
                     align="left"
+                    disabled={false}
                     label="Non-citizens may use governance services."
                     onValueChange={[Function]}
                     value={false}
@@ -814,6 +816,7 @@ ShallowWrapper {
                 >
                   <SwitchLabeled
                     align="left"
+                    disabled={false}
                     label="For-profit nation."
                     onValueChange={[Function]}
                     value={false}
@@ -1591,6 +1594,7 @@ ShallowWrapper {
                 >
                   <SwitchLabeled
                     align="left"
+                    disabled={false}
                     label="Seeking diplomatic recognition as a sovereign entity."
                     onValueChange={[Function]}
                     value={false}
@@ -1615,6 +1619,7 @@ ShallowWrapper {
                 >
                   <SwitchLabeled
                     align="left"
+                    disabled={false}
                     label="Non-citizens may use governance services."
                     onValueChange={[Function]}
                     value={false}
@@ -1639,6 +1644,7 @@ ShallowWrapper {
                 >
                   <SwitchLabeled
                     align="left"
+                    disabled={false}
                     label="For-profit nation."
                     onValueChange={[Function]}
                     value={false}
@@ -2341,6 +2347,7 @@ ShallowWrapper {
                   >
                     <SwitchLabeled
                       align="left"
+                      disabled={false}
                       label="Seeking diplomatic recognition as a sovereign entity."
                       onValueChange={[Function]}
                       value={false}
@@ -2365,6 +2372,7 @@ ShallowWrapper {
                   >
                     <SwitchLabeled
                       align="left"
+                      disabled={false}
                       label="Non-citizens may use governance services."
                       onValueChange={[Function]}
                       value={false}
@@ -2389,6 +2397,7 @@ ShallowWrapper {
                   >
                     <SwitchLabeled
                       align="left"
+                      disabled={false}
                       label="For-profit nation."
                       onValueChange={[Function]}
                       value={false}
@@ -4587,6 +4596,7 @@ ShallowWrapper {
                     >
                       <SwitchLabeled
                         align="left"
+                        disabled={false}
                         label="Seeking diplomatic recognition as a sovereign entity."
                         onValueChange={[Function]}
                         value={false}
@@ -4611,6 +4621,7 @@ ShallowWrapper {
                     >
                       <SwitchLabeled
                         align="left"
+                        disabled={false}
                         label="Non-citizens may use governance services."
                         onValueChange={[Function]}
                         value={false}
@@ -4635,6 +4646,7 @@ ShallowWrapper {
                     >
                       <SwitchLabeled
                         align="left"
+                        disabled={false}
                         label="For-profit nation."
                         onValueChange={[Function]}
                         value={false}
@@ -4685,6 +4697,7 @@ ShallowWrapper {
                     >
                       <SwitchLabeled
                         align="left"
+                        disabled={false}
                         label="Seeking diplomatic recognition as a sovereign entity."
                         onValueChange={[Function]}
                         value={false}
@@ -4703,6 +4716,7 @@ ShallowWrapper {
                     "props": Object {
                       "children": <SwitchLabeled
                         align="left"
+                        disabled={false}
                         label="Seeking diplomatic recognition as a sovereign entity."
                         onValueChange={[Function]}
                         value={false}
@@ -4719,6 +4733,7 @@ ShallowWrapper {
                       "nodeType": "function",
                       "props": Object {
                         "align": "left",
+                        "disabled": false,
                         "label": "Seeking diplomatic recognition as a sovereign entity.",
                         "onValueChange": [Function],
                         "value": false,
@@ -4746,6 +4761,7 @@ ShallowWrapper {
                     >
                       <SwitchLabeled
                         align="left"
+                        disabled={false}
                         label="Non-citizens may use governance services."
                         onValueChange={[Function]}
                         value={false}
@@ -4764,6 +4780,7 @@ ShallowWrapper {
                     "props": Object {
                       "children": <SwitchLabeled
                         align="left"
+                        disabled={false}
                         label="Non-citizens may use governance services."
                         onValueChange={[Function]}
                         value={false}
@@ -4780,6 +4797,7 @@ ShallowWrapper {
                       "nodeType": "function",
                       "props": Object {
                         "align": "left",
+                        "disabled": false,
                         "label": "Non-citizens may use governance services.",
                         "onValueChange": [Function],
                         "value": false,
@@ -4807,6 +4825,7 @@ ShallowWrapper {
                     >
                       <SwitchLabeled
                         align="left"
+                        disabled={false}
                         label="For-profit nation."
                         onValueChange={[Function]}
                         value={false}
@@ -4825,6 +4844,7 @@ ShallowWrapper {
                     "props": Object {
                       "children": <SwitchLabeled
                         align="left"
+                        disabled={false}
                         label="For-profit nation."
                         onValueChange={[Function]}
                         value={false}
@@ -4841,6 +4861,7 @@ ShallowWrapper {
                       "nodeType": "function",
                       "props": Object {
                         "align": "left",
+                        "disabled": false,
                         "label": "For-profit nation.",
                         "onValueChange": [Function],
                         "value": false,
@@ -5686,6 +5707,7 @@ ShallowWrapper {
                   >
                     <SwitchLabeled
                       align="left"
+                      disabled={false}
                       label="Seeking diplomatic recognition as a sovereign entity."
                       onValueChange={[Function]}
                       value={false}
@@ -5710,6 +5732,7 @@ ShallowWrapper {
                   >
                     <SwitchLabeled
                       align="left"
+                      disabled={false}
                       label="Non-citizens may use governance services."
                       onValueChange={[Function]}
                       value={false}
@@ -5734,6 +5757,7 @@ ShallowWrapper {
                   >
                     <SwitchLabeled
                       align="left"
+                      disabled={false}
                       label="For-profit nation."
                       onValueChange={[Function]}
                       value={false}
@@ -6511,6 +6535,7 @@ ShallowWrapper {
                   >
                     <SwitchLabeled
                       align="left"
+                      disabled={false}
                       label="Seeking diplomatic recognition as a sovereign entity."
                       onValueChange={[Function]}
                       value={false}
@@ -6535,6 +6560,7 @@ ShallowWrapper {
                   >
                     <SwitchLabeled
                       align="left"
+                      disabled={false}
                       label="Non-citizens may use governance services."
                       onValueChange={[Function]}
                       value={false}
@@ -6559,6 +6585,7 @@ ShallowWrapper {
                   >
                     <SwitchLabeled
                       align="left"
+                      disabled={false}
                       label="For-profit nation."
                       onValueChange={[Function]}
                       value={false}
@@ -7261,6 +7288,7 @@ ShallowWrapper {
                     >
                       <SwitchLabeled
                         align="left"
+                        disabled={false}
                         label="Seeking diplomatic recognition as a sovereign entity."
                         onValueChange={[Function]}
                         value={false}
@@ -7285,6 +7313,7 @@ ShallowWrapper {
                     >
                       <SwitchLabeled
                         align="left"
+                        disabled={false}
                         label="Non-citizens may use governance services."
                         onValueChange={[Function]}
                         value={false}
@@ -7309,6 +7338,7 @@ ShallowWrapper {
                     >
                       <SwitchLabeled
                         align="left"
+                        disabled={false}
                         label="For-profit nation."
                         onValueChange={[Function]}
                         value={false}
@@ -9507,6 +9537,7 @@ ShallowWrapper {
                       >
                         <SwitchLabeled
                           align="left"
+                          disabled={false}
                           label="Seeking diplomatic recognition as a sovereign entity."
                           onValueChange={[Function]}
                           value={false}
@@ -9531,6 +9562,7 @@ ShallowWrapper {
                       >
                         <SwitchLabeled
                           align="left"
+                          disabled={false}
                           label="Non-citizens may use governance services."
                           onValueChange={[Function]}
                           value={false}
@@ -9555,6 +9587,7 @@ ShallowWrapper {
                       >
                         <SwitchLabeled
                           align="left"
+                          disabled={false}
                           label="For-profit nation."
                           onValueChange={[Function]}
                           value={false}
@@ -9605,6 +9638,7 @@ ShallowWrapper {
                       >
                         <SwitchLabeled
                           align="left"
+                          disabled={false}
                           label="Seeking diplomatic recognition as a sovereign entity."
                           onValueChange={[Function]}
                           value={false}
@@ -9623,6 +9657,7 @@ ShallowWrapper {
                       "props": Object {
                         "children": <SwitchLabeled
                           align="left"
+                          disabled={false}
                           label="Seeking diplomatic recognition as a sovereign entity."
                           onValueChange={[Function]}
                           value={false}
@@ -9639,6 +9674,7 @@ ShallowWrapper {
                         "nodeType": "function",
                         "props": Object {
                           "align": "left",
+                          "disabled": false,
                           "label": "Seeking diplomatic recognition as a sovereign entity.",
                           "onValueChange": [Function],
                           "value": false,
@@ -9666,6 +9702,7 @@ ShallowWrapper {
                       >
                         <SwitchLabeled
                           align="left"
+                          disabled={false}
                           label="Non-citizens may use governance services."
                           onValueChange={[Function]}
                           value={false}
@@ -9684,6 +9721,7 @@ ShallowWrapper {
                       "props": Object {
                         "children": <SwitchLabeled
                           align="left"
+                          disabled={false}
                           label="Non-citizens may use governance services."
                           onValueChange={[Function]}
                           value={false}
@@ -9700,6 +9738,7 @@ ShallowWrapper {
                         "nodeType": "function",
                         "props": Object {
                           "align": "left",
+                          "disabled": false,
                           "label": "Non-citizens may use governance services.",
                           "onValueChange": [Function],
                           "value": false,
@@ -9727,6 +9766,7 @@ ShallowWrapper {
                       >
                         <SwitchLabeled
                           align="left"
+                          disabled={false}
                           label="For-profit nation."
                           onValueChange={[Function]}
                           value={false}
@@ -9745,6 +9785,7 @@ ShallowWrapper {
                       "props": Object {
                         "children": <SwitchLabeled
                           align="left"
+                          disabled={false}
                           label="For-profit nation."
                           onValueChange={[Function]}
                           value={false}
@@ -9761,6 +9802,7 @@ ShallowWrapper {
                         "nodeType": "function",
                         "props": Object {
                           "align": "left",
+                          "disabled": false,
                           "label": "For-profit nation.",
                           "onValueChange": [Function],
                           "value": false,
