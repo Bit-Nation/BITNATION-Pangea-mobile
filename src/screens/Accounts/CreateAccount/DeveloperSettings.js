@@ -52,7 +52,7 @@ class DeveloperSettings extends Component<Props & Actions & AccountsState> {
       <View style={styles.profilesScreenContainer}>
         <BackgroundImage />
         <FakeNavigationBar />
-        <View style={styles.bodyContainer}>
+        <View style={styles.bodyAccountContainer}>
           <ScreenTitle title={i18n.t('screens.accounts.create.title')} />
           <View style={styles.bodyContainer}>
             <Text style={styles.headline}>{i18n.t('screens.accounts.create.developerTitle')}</Text>
@@ -100,17 +100,19 @@ class DeveloperSettings extends Component<Props & Actions & AccountsState> {
             </View>
           */}
           </View>
-          <View style={styles.buttonContainerMultiple}>
-            <Button
-              style={styles.panelButton}
-              title={i18n.t('screens.accounts.create.prev')}
-              onPress={this.previousStep}
-            />
-            <Button
-              style={styles.panelButton}
-              title={i18n.t('screens.accounts.create.next')}
-              onPress={this.nextStep}
-            />
+          <View style={styles.bodyContainer}>
+            <View style={styles.buttonContainerMultiple}>
+              <Button
+                style={styles.panelButton}
+                title={i18n.t('screens.accounts.create.prev')}
+                onPress={this.previousStep}
+              />
+              <Button
+                style={styles.panelButton}
+                title={i18n.t('screens.accounts.create.next')}
+                onPress={this.nextStep}
+              />
+            </View>
           </View>
         </View>
       </View>
