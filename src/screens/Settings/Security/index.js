@@ -84,8 +84,8 @@ class SecuritySettingsScreen extends NavigatorComponent<Props & Actions & Settin
       <View style={styles.screenContainer}>
         <BackgroundImage />
         <FakeNavigationBar />
-        <ScreenTitle title={i18n.t('screens.securitySettings.title')} />
         <View style={styles.bodyContainer}>
+          <ScreenTitle title={i18n.t('screens.securitySettings.title')} />
           <SettingsListItem
             id='useNumericPasscode'
             text={i18n.t('screens.securitySettings.useNumericPasscode')}
@@ -132,17 +132,19 @@ class SecuritySettingsScreen extends NavigatorComponent<Props & Actions & Settin
           }
         </View>
         {isCreating &&
-        <View style={styles.buttonContainerMultiple}>
-          <Button
-            style={styles.panelButton}
-            title={i18n.t('screens.accounts.create.prev')}
-            onPress={this.onPreviousPressed}
-          />
-          <Button
-            style={styles.panelButton}
-            title={i18n.t('screens.accounts.create.next')}
-            onPress={this.onNextPressed}
-          />
+        <View style={styles.bodyContainer}>
+          <View style={styles.buttonContainerMultiple}>
+            <Button
+              style={styles.panelButton}
+              title={i18n.t('screens.accounts.create.prev')}
+              onPress={this.onPreviousPressed}
+            />
+            <Button
+              style={styles.panelButton}
+              title={i18n.t('screens.accounts.create.next')}
+              onPress={this.onNextPressed}
+            />
+          </View>
         </View>
         }
       </View>
