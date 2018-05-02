@@ -66,6 +66,22 @@ RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(PanthalassaNewPanthalassa:(NSDictionary *
   }
 }
 
+RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(PanthalassaNewPanthalassaFromMnemonic:(NSDictionary *)parameters) {
+  
+  BOOL response;
+  NSError *error = nil;
+  
+  response = PanthalassaNewPanthalassaFromMnemonic([RCTConvert NSString:parameters[@"accountStore"]],
+                                                   [RCTConvert NSString:parameters[@"mnemonic"]],
+                                                   &error);
+  
+  if (response) {
+    return @YES;
+  } else {
+    return @NO;
+  }
+}
+
 RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(PanthalassaScryptDecrypt:(NSDictionary *)parameters) {
   
   NSString *response;
