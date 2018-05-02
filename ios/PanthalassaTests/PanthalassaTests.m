@@ -41,6 +41,16 @@
   
 }
 
+- (void)testNewPanthalassaFromMnemonic {
+  
+  BOOL instance;
+  NSError *error = nil;
+  
+  instance = PanthalassaNewPanthalassaFromMnemonic(@"testingString", @"password", &error);
+  XCTAssertTrue(instance, @"Panthalassa lib error");
+  
+}
+
 - (void)testScryptDecrypt {
   
   NSString *response;
