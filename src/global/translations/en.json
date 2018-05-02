@@ -440,14 +440,8 @@
       },
       "startButton": "$t(common.begin)"
     },
-    "loadWallet": {
-      "title": "Load wallet",
-      "instructions": [
-        "If you have a private key from another Bitnation wallet, you can use it here to add that wallet to this app.",
-        "For example, if you lost or upgraded your device, you will have to transfer wallets from that device to this one.",
-        "To load your wallet, we will ask you for the {{KEY_LENGTH}} words of your private key. You should have these on a piece of paper you store in a safe and secure place."
-      ],
-      "startButton": "$t(common.begin)"
+    "restoreKey": {
+      "title": "Restore account"
     },
     "sendMoney": {
       "title": "Send money",
