@@ -48,6 +48,17 @@ public class PanthalassaModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
+    public boolean PanthalassaNewPanthalassaFromMnemonic(ReadableMap jsonParams) throws JSONException {
+        try {
+            Panthalassa.newPanthalassa(jsonParams.getString("accountStore"), jsonParams.getString("mnemonic"));
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    @ReactMethod
     public String PanthalassaScryptDecrypt(ReadableMap jsonParams) throws JSONException {
         try {
             String response = Panthalassa.scryptDecrypt(jsonParams.getString("data"), jsonParams.getString("pw"));
