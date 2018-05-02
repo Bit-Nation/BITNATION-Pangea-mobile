@@ -56,6 +56,17 @@ const styles = {
     marginRight: 8,
   },
 
+  // Container for the main area inside Accounts, below navigation but above the bottom tab bar (if existing)
+  bodyAccountContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    // alignItems: 'stretch',
+    alignContent: 'flex-start',
+    // these narrow left/right margins are for panels, which have their own indents.
+    marginLeft: 16,
+    marginRight: 16,
+  },
   // Container for a grid of panels (or a mosaic).
   // Similar to bodyContainer but we stretch fill all space
   // Used for dashboard
