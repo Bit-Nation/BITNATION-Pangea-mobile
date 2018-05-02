@@ -87,7 +87,7 @@ const Screens = {
   },
   ACCOUNT_RESTORE_SOURCE: {
     screen: 'Pangea.AccountRestoreSourceScreen',
-    navigatorStyle: hiddenNavigatorStyle,
+    navigatorStyle,
   },
   ACCOUNT_RESTORE_EMPTY_WALLET: {
     screen: 'Pangea.AccountRestoreEmptyWalletScreen',

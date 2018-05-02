@@ -58,7 +58,7 @@ class RestoreSource extends Component<Props> {
       <View style={styles.profilesScreenContainer}>
         <BackgroundImage />
         <FakeNavigationBar />
-        <View style={styles.screenContainer}>
+        <View style={styles.bodyAccountContainer}>
           <ScreenTitle title={i18n.t('screens.accounts.restore.title')} />
           <View style={styles.bodyContainer}>
             <Text style={styles.body}>

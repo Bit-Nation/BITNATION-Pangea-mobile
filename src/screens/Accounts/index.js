@@ -51,7 +51,7 @@ class Accounts extends NavigatorComponent<Props & Actions & AccountsState> {
       <View style={styles.profilesScreenContainer}>
         <BackgroundImage />
         <FakeNavigationBar />
-        <View style={styles.screenContainer}>
+        <View style={styles.bodyAccountContainer}>
           <ScreenTitle title={i18n.t('screens.accounts.title')} />
           <PanelView body={i18n.t('screens.accounts.introduction')} />
           <View style={{}}>

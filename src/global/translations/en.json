@@ -240,7 +240,7 @@
       },
       "restore": {
         "title": "Restore Account",
-        "source": "Restore your account from",
+        "source": "Restore your account from:",
         "clipboard": "Restore from Clipboard",
         "file": "Restore from File",
         "cloud": "Restore from Cloud",
