@@ -167,10 +167,10 @@ const Screens = {
     title: i18n.t('screens.verifyKey.title'),
     ...baseKeyScreen,
   },
-  LOAD_WALLET_SCREEN: {
-    screen: 'Pangea.LoadWalletScreen',
-    title: '',
-    ...baseKeyScreen,
+  RESTORE_KEY_SCREEN: {
+    screen: 'Pangea.RestoreKeyProcessScreen',
+    title: i18n.t('screens.restoreKey.title'),
+    navigatorStyle,
   },
   INTRO_SCREEN: {
     screen: 'Pangea.Intro',

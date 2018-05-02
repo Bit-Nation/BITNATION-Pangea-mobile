@@ -1,5 +1,5 @@
 // @flow
-// @todo Remove eslint-disable
+// It is not used in 0.4.1 since we can only restore account using a private key.
 /* eslint-disable */
 
 import React, { Component } from 'react';

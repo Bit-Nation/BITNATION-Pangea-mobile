@@ -2,6 +2,7 @@
 
 import { type Account } from '../types/Account';
 import type { AsyncTask } from '../utils/asyncTask';
+import type { Mnemonic } from '../types/Mnemonic';
 
 export type AccountsListUpdatedAction = { +type: 'ACCOUNTS_LIST_UPDATED', accounts: Array<Account> };
 export type CurrentAccountIdChangedAction = { +type: 'CURRENT_ACCOUNT_ID_CHANGED', currentAccountId: string | null };
@@ -16,6 +17,7 @@ export type SavePinCodeAction = { +type: 'SAVE_PIN_CODE', +pinCode: string, +acc
 export type SavePasswordAction = { +type: 'SAVE_PASSWORD', +password: string, +accountId: ?string, +callback: (success: boolean) => void };
 export type ChangeCreatingAccountFieldAction = { +type: 'CHANGE_CREATING_ACCOUNT_FIELD', +field: string, +value: any };
 export type SaveCreatingAccountAction = { +type: 'SAVE_CREATING_ACCOUNT', +callback: (success: boolean) => void };
+export type RestoreAccountUsingMnemonicAction = { +type: 'RESTORE_ACCOUNT_USING_MNEMONIC', +mnemonic: Mnemonic, +callback: (success: boolean) => void };
 
 export type Action =
   | AccountsListUpdatedAction
@@ -30,7 +32,8 @@ export type Action =
   | SavePinCodeAction
   | SavePasswordAction
   | ChangeCreatingAccountFieldAction
-  | SaveCreatingAccountAction;
+  | SaveCreatingAccountAction
+  | RestoreAccountUsingMnemonicAction;
 
 export const ACCOUNTS_LIST_UPDATED = 'ACCOUNTS_LIST_UPDATED';
 export const CURRENT_ACCOUNT_ID_CHANGED = 'CURRENT_ACCOUNT_ID_CHANGED';
@@ -45,6 +48,7 @@ export const SAVE_PASSWORD = 'SAVE_PASSWORD';
 export const CHANGE_CREATING_ACCOUNT_FIELD = 'CHANGE_CREATING_ACCOUNT_FIELD';
 export const SAVE_CREATING_ACCOUNT = 'SAVE_CREATING_ACCOUNT';
 export const PERFORM_DEFERRED_LOGIN = 'PERFORM_DEFERRED_LOGIN';
+export const RESTORE_ACCOUNT_USING_MNEMONIC = 'RESTORE_ACCOUNT_USING_MNEMONIC';
 
 /**
  * @desc Action creator for an action that is called when accounts list updated.
@@ -217,6 +221,20 @@ export function changeCreatingAccountField(field: string, value: any): ChangeCre
 export function saveCreatingAccount(callback: (boolean) => void): SaveCreatingAccountAction {
   return {
     type: SAVE_CREATING_ACCOUNT,
+    callback,
+  };
+}
+
+/**
+ * @desc Action creator for an action that is called to restore account using mnemonic.
+ * @param {Mnemonic} mnemonic Mnemonic to be used.
+ * @param {Function} callback Callback that receives boolean value - whether restore is successful.
+ * @return {RestoreAccountUsingMnemonicAction} An action.
+ */
+export function restoreAccountUsingMnemonic(mnemonic: Mnemonic, callback: (boolean) => void): RestoreAccountUsingMnemonicAction {
+  return {
+    type: RESTORE_ACCOUNT_USING_MNEMONIC,
+    mnemonic,
     callback,
   };
 }

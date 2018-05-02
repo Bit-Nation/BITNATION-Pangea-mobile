@@ -14,8 +14,9 @@ import ScreenTitle from '../../components/common/ScreenTitle';
 import Button from '../../components/common/Button';
 import type { Navigator } from '../../types/ReactNativeNavigation';
 import styles from './styles';
-import { startAccountCreation } from '../../actions/accounts';
+import { restoreAccountUsingMnemonic, startAccountCreation } from '../../actions/accounts';
 import { type State as AccountsState } from '../../reducers/accounts';
+import type { Mnemonic } from '../../types/Mnemonic';
 
 type Props = {
   /**
@@ -29,21 +30,39 @@ type Actions = {
    * @desc Action to start account process.
    */
   startAccountCreation: () => void,
+  /**
+   * @desc Action to restore account with mnemonic.
+   * @param {Mnemonic} mnemonic Mnemonic to be used.
+   * @param {Function} callback Callback to be called with true if restore is successful and false otherwise.
+   */
+  restoreAccountUsingMnemonic: (mnemonic: Mnemonic, callback: (success: boolean) => void) => void
 }
 
 class Accounts extends NavigatorComponent<Props & Actions & AccountsState> {
   onCreateAccount = () => {
     this.props.startAccountCreation();
+    this.showSecuritySettingsScreen();
+  };
+
+  showSecuritySettingsScreen() {
     this.props.navigator.push({
       ...screen('SECURITY_SETTINGS_SCREEN'),
       passProps: {
         isCreating: true,
       },
     });
-  };
+  }
 
   onRestoreAccount = () => {
-    this.props.navigator.push(screen('ACCOUNT_RESTORE_SOURCE'));
+    this.props.navigator.push({
+      ...screen('RESTORE_KEY_SCREEN'),
+      passProps: {
+        onCancel: () => this.props.navigator.pop(),
+        onDoneEntering: (mnemonic: Mnemonic) => this.props.restoreAccountUsingMnemonic(mnemonic, () => {
+          this.showSecuritySettingsScreen();
+        }),
+      },
+    });
   };
 
   render() {
@@ -79,6 +98,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   startAccountCreation() {
     dispatch(startAccountCreation());
+  },
+  restoreAccountUsingMnemonic(mnemonic, callback) {
+    dispatch(restoreAccountUsingMnemonic(mnemonic, callback));
   },
 });
 
