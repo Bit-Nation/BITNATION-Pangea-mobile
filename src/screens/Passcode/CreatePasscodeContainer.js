@@ -137,8 +137,10 @@ class CreatePasscodeContainer extends NavigatorComponent<Props & Actions & Setti
       <View style={styles.screenContainer}>
         <BackgroundImage />
         <FakeNavigationBar />
-        <ScreenTitle title={title} />
-        {this.renderPasscodeScreen()}
+        <View style={styles.bodyAccountContainer}>
+          <ScreenTitle title={title} />
+          {this.renderPasscodeScreen()}
+        </View>
       </View>
     );
   }
