@@ -100,7 +100,7 @@ export default (state: State = initialState, action: Action): State => {
       const newAccount = buildEmptyAccount();
       return {
         ...state,
-        currentModification: { type: 'create' },
+        currentCreation: { type: 'create' },
         creatingAccount: newAccount,
         editingAccount: newAccount,
       };
@@ -118,7 +118,7 @@ export default (state: State = initialState, action: Action): State => {
       const newAccount = buildEmptyAccount();
       return {
         ...state,
-        currentModification: { type: 'restore', mnemonic: action.mnemonic },
+        currentCreation: { type: 'restore', mnemonic: action.mnemonic },
         creatingAccount: newAccount,
         editingAccount: newAccount,
       };
@@ -126,7 +126,7 @@ export default (state: State = initialState, action: Action): State => {
     case SAVE_CREATING_ACCOUNT: {
       return {
         ...state,
-        currentModification: null,
+        currentCreation: null,
       };
     }
     default:
