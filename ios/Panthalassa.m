@@ -44,7 +44,7 @@ RCT_REMAP_METHOD(PanthalassaNewAccountKeysFromMnemonic,
   
   NSString *newAccount;
   NSError *error = nil;
-  newAccount = PanthalassaNewAccountKeysFromMnemonic([RCTConvert NSString:config[@"mnemonic"]],
+  newAccount = PanthalassaNewAccountKeysFromMnemonic([RCTConvert NSString:config[@"mne"]],
                                          [RCTConvert NSString:config[@"pw"]],
                                          [RCTConvert NSString:config[@"pwConfirm"]],
                                          &error);
@@ -56,38 +56,37 @@ RCT_REMAP_METHOD(PanthalassaNewAccountKeysFromMnemonic,
   }
 }
 
-RCT_REMAP_METHOD(PanthalassaNewPanthalassa,
-                 parameter:(NSDictionary *)config
+RCT_REMAP_METHOD(PanthalassaEthPrivateKey,
+                 ethPrivateKey:
                  resolver:(RCTPromiseResolveBlock)resolve
                  rejecter:(RCTPromiseRejectBlock)reject) {
-  BOOL response;
+  NSString* response;
   NSError *error = nil;
   
-  response = PanthalassaNewPanthalassa([RCTConvert NSString:config[@"accountStore"]],
-                                       [RCTConvert NSString:config[@"pw"]],
-                                       &error);
+  response = PanthalassaEthPrivateKey(&error);
   
-  if (response) {
-    resolve(@YES);
+  if (error == nil) {
+    resolve(response);
   } else {
     reject(@"error", error.localizedDescription, error);
   }
 }
 
-RCT_REMAP_METHOD(PanthalassaNewPanthalassaFromMnemonic,
+RCT_REMAP_METHOD(PanthalassaStartFromMnemonic,
                  parametersMnemonic:(NSDictionary *)config
                  resolver:(RCTPromiseResolveBlock)resolve
                  rejecter:(RCTPromiseRejectBlock)reject) {
   
   BOOL response;
   NSError *error = nil;
-  
-  response = PanthalassaNewPanthalassaFromMnemonic([RCTConvert NSString:config[@"accountStore"]],
+
+  response = PanthalassaStartFromMnemonic([RCTConvert NSString:config[@"accountStore"]],
                                                    [RCTConvert NSString:config[@"mnemonic"]],
                                                    &error);
+  NSNumber *val = [NSNumber numberWithBool:response];
   
-  if (response) {
-    resolve(@YES);
+  if (error == nil) {
+    resolve(val);
   } else {
     reject(@"error", error.localizedDescription, error);
   }
@@ -177,30 +176,30 @@ RCT_REMAP_METHOD(PanthalassaCIDSha512,
   }
 }
 
-RCT_REMAP_METHOD(PanthalassaEthereumPrivateKey,
-                 privateEthKey:
+RCT_REMAP_METHOD(PanthalassaIsValidMnemonic,
+                 validMnemonic:(NSString *)mnemonic
                  resolver:(RCTPromiseResolveBlock)resolve
                  rejecter:(RCTPromiseRejectBlock)reject) {
     
-  NSString *response;
+  BOOL response;
   NSError *error = nil;
-  response = PanthalassaEthereumPrivateKey(&error);
+  response = PanthalassaIsValidMnemonic(mnemonic);
   
-  if (error == nil) {
-    resolve(response);
+  if (response) {
+    resolve(@YES);
   } else {
-    reject(@"error", error.localizedDescription, error);
+    reject(@"error", @"Invalid mnemonic", error);
   }
 }
 
-RCT_REMAP_METHOD(PanthalassaExport,
+RCT_REMAP_METHOD(PanthalassaExportAccountStore,
                  panthalassaExp:(NSDictionary *)parameters
                  resolver:(RCTPromiseResolveBlock)resolve
                  rejecter:(RCTPromiseRejectBlock)reject) {
   
   NSString *response;
   NSError *error = nil;
-  response = PanthalassaExport([RCTConvert NSString:parameters[@"pw"]],
+  response = PanthalassaExportAccountStore([RCTConvert NSString:parameters[@"pw"]],
                                            [RCTConvert NSString:parameters[@"pwConfirm"]],
                                            &error);
   
@@ -219,9 +218,47 @@ RCT_REMAP_METHOD(PanthalassaStop,
   BOOL response;
   NSError *error = nil;
   response = PanthalassaStop(&error);
+  NSNumber *val = [NSNumber numberWithBool:response];
   
-  if (response) {
-    resolve(@YES);
+  if (error == nil) {
+    resolve(val);
+  } else {
+    reject(@"error", error.localizedDescription, error);
+  }
+}
+
+RCT_REMAP_METHOD(PanthalassaSendResponse,
+                 sendResponse:(NSString *)resp
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject) {
+  
+  BOOL response;
+  NSError *error = nil;
+  response = PanthalassaSendResponse(resp, &error);
+  NSNumber *val = [NSNumber numberWithBool:response];
+  
+  if (error == nil) {
+    resolve(val);
+  } else {
+    reject(@"error", @"Invalid mnemonic", error);
+  }
+}
+
+RCT_REMAP_METHOD(PanthalassaStart,
+                 start:(NSDictionary *)config
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject) {
+  
+  BOOL response;
+  NSError *error = nil;
+  
+  response = PanthalassaStart([RCTConvert NSString:config[@"accountStore"]],
+                                          [RCTConvert NSString:config[@"password"]],
+                                          &error);
+  NSNumber *val = [NSNumber numberWithBool:response];
+  
+  if (error == nil) {
+    resolve(val);
   } else {
     reject(@"error", error.localizedDescription, error);
   }
