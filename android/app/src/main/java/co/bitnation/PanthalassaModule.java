@@ -1,5 +1,6 @@
 package co.bitnation;
 
+import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
@@ -26,134 +27,157 @@ public class PanthalassaModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public String PanthalassaNewAccountKeys(ReadableMap jsonParams) throws JSONException {
+    public void PanthalassaNewAccountKeys(ReadableMap jsonParams, Promise promise) throws JSONException {
         try {
             String newAccount = Panthalassa.newAccountKeys(jsonParams.getString("pw"), jsonParams.getString("pwConfirm"));
-            return newAccount;
+            promise.resolve(newAccount);
         } catch (Exception e) {
             e.printStackTrace();
-            return e.getLocalizedMessage();
+            promise.reject("error", e.getLocalizedMessage());
         }
     }
 
     @ReactMethod
-    public boolean PanthalassaNewPanthalassa(ReadableMap jsonParams) throws JSONException {
+    public void PanthalassaStart(ReadableMap jsonParams, Promise promise) throws JSONException {
         try {
-            Panthalassa.newPanthalassa(jsonParams.getString("accountStore"), jsonParams.getString("pw"));
-            return true;
+            Panthalassa.start(jsonParams.getString("accountStore"), jsonParams.getString("password"));
+            promise.resolve(true);
         } catch (Exception e) {
             e.printStackTrace();
-            return false;
+            promise.reject("error", e.getLocalizedMessage());
         }
     }
 
     @ReactMethod
-    public boolean PanthalassaNewPanthalassaFromMnemonic(ReadableMap jsonParams) throws JSONException {
+    public void PanthalassaStartFromMnemonic(ReadableMap jsonParams, Promise promise) throws JSONException {
         try {
-            Panthalassa.newPanthalassa(jsonParams.getString("accountStore"), jsonParams.getString("mnemonic"));
-            return true;
+            Panthalassa.startFromMnemonic(jsonParams.getString("accountStore"), jsonParams.getString("mnemonic"));
+            promise.resolve(true);
         } catch (Exception e) {
             e.printStackTrace();
-            return false;
+            promise.reject("error", e.getLocalizedMessage());
         }
     }
 
     @ReactMethod
-    public String PanthalassaScryptDecrypt(ReadableMap jsonParams) throws JSONException {
+    public void PanthalassaScryptDecrypt(ReadableMap jsonParams, Promise promise) throws JSONException {
         try {
             String response = Panthalassa.scryptDecrypt(jsonParams.getString("data"), jsonParams.getString("pw"));
-            return response;
+            promise.resolve(response);
         } catch (Exception e) {
             e.printStackTrace();
-            return e.getLocalizedMessage();
+            promise.reject("error", e.getLocalizedMessage());
         }
     }
 
     @ReactMethod
-    public String PanthalassaScryptEncrypt(ReadableMap jsonParams) throws JSONException {
+    public void PanthalassaScryptEncrypt(ReadableMap jsonParams, Promise promise) throws JSONException {
         try {
             String response = Panthalassa.scryptEncrypt(jsonParams.getString("data"), jsonParams.getString("pw"), jsonParams.getString("pwConfirm"));
-            return response;
+            promise.resolve(response);
         } catch (Exception e) {
             e.printStackTrace();
-            return e.getLocalizedMessage();
+            promise.reject("error", e.getLocalizedMessage());
         }
     }
 
     @ReactMethod
-    public boolean PanthalassaIsValidCID(String cid) {
+    public void PanthalassaIsValidCID(String cid, Promise promise) {
         boolean response = false;
         try {
             response = Panthalassa.isValidCID(cid);
+            promise.resolve(response);
         } catch (Exception e) {
             e.printStackTrace();
+            promise.reject("error", e.getLocalizedMessage());
         }
-        return response;
     }
 
     @ReactMethod
-    public String PanthalassaCIDSha256(String value) {
+    public void PanthalassaCIDSha256(String value, Promise promise) {
         try {
             String response = Panthalassa.cidSha256(value);
-            return response;
+            promise.resolve(response);
         } catch (Exception e) {
             e.printStackTrace();
-            return e.getLocalizedMessage();
+            promise.reject("error", e.getLocalizedMessage());
         }
     }
 
     @ReactMethod
-    public String PanthalassaCIDSha512(String value) {
+    public void PanthalassaCIDSha512(String value, Promise promise) {
         try {
             String response = Panthalassa.cidSha512(value);
-            return response;
+            promise.resolve(response);
         } catch (Exception e) {
             e.printStackTrace();
-            return e.getLocalizedMessage();
+            promise.reject("error", e.getLocalizedMessage());
         }
     }
 
     @ReactMethod
-    public String PanthalassaEthereumPrivateKey() {
+    public void PanthalassaEthPrivateKey(Promise promise) {
         try {
-            String response = Panthalassa.ethereumPrivateKey();
-            return response;
+            String response = Panthalassa.ethPrivateKey();
+            promise.resolve(response);
         } catch (Exception e) {
             e.printStackTrace();
-            return e.getLocalizedMessage();
+            promise.reject("error", e.getLocalizedMessage());
         }
     }
 
     @ReactMethod
-    public String PanthalassaExport(ReadableMap jsonParams) throws JSONException {
+    public void PanthalassaExportAccountStore(ReadableMap jsonParams, Promise promise) throws JSONException {
         try {
-            String response = Panthalassa.export(jsonParams.getString("pw"), jsonParams.getString("pwConfirm"));
-            return response;
+            String response = Panthalassa.exportAccountStore(jsonParams.getString("pw"), jsonParams.getString("pwConfirm"));
+            promise.resolve(response);
         } catch (Exception e) {
             e.printStackTrace();
-            return e.getLocalizedMessage();
+            promise.reject("error", e.getLocalizedMessage());
         }
     }
 
     @ReactMethod
-    public String PanthalassaNewAccountKeysFromMnemonic(ReadableMap jsonParams) throws JSONException {
+    public void PanthalassaNewAccountKeysFromMnemonic(ReadableMap jsonParams, Promise promise) throws JSONException {
         try {
-            String response = Panthalassa.newAccountKeysFromMnemonic(jsonParams.getString("mnemonic"), jsonParams.getString("pw"), jsonParams.getString("pwConfirm"));
-            return response;
+            String response = Panthalassa.newAccountKeysFromMnemonic(jsonParams.getString("mne"), jsonParams.getString("pw"), jsonParams.getString("pwConfirm"));
+            promise.resolve(response);
         } catch (Exception e) {
             e.printStackTrace();
-            return e.getLocalizedMessage();
+            promise.reject("error", e.getLocalizedMessage());
         }
     }
 
     @ReactMethod
-    public boolean PanthalassaStop() {
+    public void PanthalassaStop(Promise promise) {
         try {
             Panthalassa.stop();
-            return true;
+            promise.resolve(true);
         } catch (Exception e) {
             e.printStackTrace();
-            return false;
+            promise.reject("error", e.getLocalizedMessage());
+        }
+    }
+
+    @ReactMethod
+    public void PanthalassaIsValidMnemonic(String mnemonic, Promise promise) {
+        try {
+            Panthalassa.isValidMnemonic(mnemonic);
+            promise.resolve(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            promise.reject("error", e.getLocalizedMessage());
+        }
+    }
+
+    @ReactMethod
+    public void PanthalassaSendResponse(String resp, Promise promise) {
+        try {
+            Panthalassa.sendResponse(resp);
+            promise.resolve(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            promise.reject("error", e.getLocalizedMessage());
         }
     }
 }
