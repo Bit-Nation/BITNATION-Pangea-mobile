@@ -9,6 +9,8 @@ import {
   savePasswordSaga,
   savePinCodeSaga,
   saveCreatingAccount,
+  startAccountCreation,
+  startRestoreAccountUsingMnemonic,
 } from './sagas';
 import {
   LOGIN,
@@ -18,6 +20,8 @@ import {
   SAVE_PASSWORD,
   SAVE_PIN_CODE,
   SAVE_CREATING_ACCOUNT,
+  START_ACCOUNT_CREATION,
+  START_RESTORE_ACCOUNT_USING_MNEMONIC,
 } from '../../actions/accounts';
 import { UPDATE_ACCOUNT } from '../../actions/profile';
 
@@ -28,6 +32,8 @@ import { UPDATE_ACCOUNT } from '../../actions/profile';
 export default function* rootSaga() {
   yield all([
     call(listenForDatabaseUpdates),
+    yield takeEvery(START_ACCOUNT_CREATION, startAccountCreation),
+    yield takeEvery(START_RESTORE_ACCOUNT_USING_MNEMONIC, startRestoreAccountUsingMnemonic),
     yield takeEvery(LOGIN, loginActionHandler),
     yield takeEvery(LOGOUT, logout),
     yield takeEvery(UPDATE_ACCOUNT, doneAccountEditing),

@@ -7,7 +7,6 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import { connect } from 'react-redux';
 
 import styles from './styles';
-import { screen } from '../../../global/Screens';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import GridView from '../../../components/GridView/index';
 import PrivateKeyTextInputContainer from '../../../components/PrivateKeyTextInputContainer/index';
@@ -21,7 +20,7 @@ import {
   KEY_PAGE_COUNT,
 } from '../../../global/Constants';
 import Button from '../../../components/common/Button';
-import { changeEnteredMnemonic } from '../../../actions/key';
+import { changeEnteredMnemonic, validateEnteredMnemonic } from '../../../actions/key';
 import Colors from '../../../global/colors';
 import BodyParagraphs from '../../../components/common/BodyParagraphs';
 import i18n from '../../../global/i18n';
@@ -47,6 +46,10 @@ type Props = {
 }
 
 type Actions = {
+  /**
+   * @desc Function to validate entered mnemonic.
+   */
+  validateMnemonic: () => void,
   /**
    * @desc Function to change entered mnemonic.
    */
@@ -94,14 +97,32 @@ class RestoreKeyScreen extends NavigatorComponent<Actions & KeyState & Props, St
     }
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     if (this.state.selectedInputIndex !== null) {
       const input = this.keyTextInputContainers[this.state.selectedInputIndex].textInput;
       if (!input.isFocused()) {
         input.focus();
       }
     }
+
+    if (this.props.mnemonicValid !== prevProps.mnemonicValid
+      && this.props.mnemonicValid !== null) {
+      if (this.props.mnemonicValid === false) {
+        this.showIncorrectMnemonicAlert();
+      } else {
+        // We are sure that mnemonic is non-null here, so we do type conversion.
+        this.props.onDoneEntering(((this.props.enteredMnemonic: any): Mnemonic));
+      }
+    }
   }
+
+  showIncorrectMnemonicAlert = () => {
+    Alert.alert(
+      i18n.t('alerts.incorrectKeyEntered.title'),
+      i18n.t('alerts.incorrectKeyEntered.subtitle'),
+      [{ text: i18n.t('alerts.incorrectKeyEntered.confirm'), onPress: () => null }],
+    );
+  };
 
   configureNavigation(props) {
     if (!this.props.navigator) return;
@@ -123,9 +144,7 @@ class RestoreKeyScreen extends NavigatorComponent<Actions & KeyState & Props, St
   onNavBarButtonPress(id) {
     switch (id) {
       case DONE_BUTTON: {
-        if (this.props.enteredMnemonic !== null) {
-          this.props.onDoneEntering(this.props.enteredMnemonic);
-        }
+        this.props.validateMnemonic();
         break;
       }
       case 'cancel': {
@@ -258,6 +277,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   changeMnemonic(mnemonic) {
     dispatch(changeEnteredMnemonic(mnemonic));
+  },
+  validateMnemonic() {
+    dispatch(validateEnteredMnemonic());
   },
 });
 

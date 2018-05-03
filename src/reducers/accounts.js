@@ -11,10 +11,13 @@ import {
   LOGIN_TASK_UPDATED,
   START_ACCOUNT_CREATION,
   CHANGE_CREATING_ACCOUNT_FIELD,
+  START_RESTORE_ACCOUNT_USING_MNEMONIC,
+  SAVE_CREATING_ACCOUNT,
 } from '../actions/accounts';
 import type { Account, PartialAccount } from '../types/Account';
 import TaskBuilder, { type AsyncTask } from '../utils/asyncTask';
 import { CANCEL_ACCOUNT_EDITING, CHANGE_EDITING_ACCOUNT, DONE_ACCOUNT_EDITING, START_ACCOUNT_EDITING } from '../actions/profile';
+import type { Mnemonic } from '../types/Mnemonic';
 
 export type State = {
   +editingAccount: Account | PartialAccount | null,
@@ -23,6 +26,10 @@ export type State = {
   +login: AsyncTask<void>,
   +logout: AsyncTask<void>,
   +accounts: Array<Account>,
+  +currentCreation:
+    | { type: 'create' }
+    | { type: 'restore', mnemonic: Mnemonic }
+    | null,
 };
 
 export const buildEmptyAccount = (): PartialAccount => ({
@@ -41,6 +48,7 @@ export const initialState: State = {
   login: TaskBuilder.empty(),
   logout: TaskBuilder.empty(),
   accounts: [],
+  currentCreation: null,
 };
 
 /**
@@ -92,6 +100,7 @@ export default (state: State = initialState, action: Action): State => {
       const newAccount = buildEmptyAccount();
       return {
         ...state,
+        currentModification: { type: 'create' },
         creatingAccount: newAccount,
         editingAccount: newAccount,
       };
@@ -103,6 +112,21 @@ export default (state: State = initialState, action: Action): State => {
           ...state.creatingAccount,
           [action.field]: action.value,
         },
+      };
+    }
+    case START_RESTORE_ACCOUNT_USING_MNEMONIC: {
+      const newAccount = buildEmptyAccount();
+      return {
+        ...state,
+        currentModification: { type: 'restore', mnemonic: action.mnemonic },
+        creatingAccount: newAccount,
+        editingAccount: newAccount,
+      };
+    }
+    case SAVE_CREATING_ACCOUNT: {
+      return {
+        ...state,
+        currentModification: null,
       };
     }
     default:

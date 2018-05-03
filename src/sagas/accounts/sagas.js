@@ -16,7 +16,11 @@ import {
   savePassword,
 } from '../../actions/accounts';
 import type {
-  CheckPasswordAction, CheckPinCodeAction, LoginAction, SaveCreatingAccountAction, SavePasswordAction,
+  CheckPasswordAction,
+  CheckPinCodeAction,
+  LoginAction,
+  SaveCreatingAccountAction,
+  SavePasswordAction,
   SavePinCodeAction,
 } from '../../actions/accounts';
 import { convertFromDatabase, convertToDatabase } from '../../utils/mapping/account';
@@ -26,6 +30,7 @@ import { InvalidPasswordError } from '../../global/errors/accounts';
 import type { AccountType as DBAccount } from '../../services/database/schemata';
 import type { UpdateAccountAction } from '../../actions/profile';
 import { cancelAccountEditing } from '../../actions/profile';
+import { resetSettings } from '../../actions/settings';
 
 /**
  * @desc That function should be used for listening on information that depends on current account.
@@ -104,6 +109,22 @@ export function* listenForDatabaseUpdates(): Generator<*, *, *> {
     const { collection } = yield take(channel);
     yield put(accountListUpdated(collection.map(convertFromDatabase)));
   }
+}
+
+/**
+ * @desc Performs preparation for account creation, e.g. clean settings.
+ * @return {void}
+ */
+export function* startAccountCreation(): Generator<*, *, *> {
+  yield put(resetSettings());
+}
+
+/**
+ * @desc Performs preparation for account restoration, e.g. clean settings.
+ * @return {void}
+ */
+export function* startRestoreAccountUsingMnemonic(): Generator<*, *, *> {
+  yield put(resetSettings());
 }
 
 /**
@@ -215,19 +236,11 @@ export function* savePinCodeSaga(action: SavePinCodeAction): Generator<*, *, *> 
  * @return {void}
  */
 export function* savePasswordSaga(action: SavePasswordAction): Generator<*, *, *> {
-  const { accountId } = action;
+  const { accountId, password } = action;
+  const { accounts } = yield select();
+  const { currentCreation } = accounts;
   try {
-    if (accountId === null) {
-      // It's a new account, new keys need to be created.
-      const accountStore = yield call(AccountsService.createAccountStore, action.password);
-      yield put(changeCreatingAccountField('accountStore', accountStore));
-      const { accounts } = yield select();
-      const { creatingAccount } = accounts;
-      action.callback(true);
-
-      // We start deferred login, because it's the only place when we have password to do it.
-      yield call(login, { accountId: creatingAccount.id, accountStore }, action.password, true);
-    } else {
+    if (currentCreation === null) {
       // It's an existing account, old keys need to be encrypted with new password and saved.
       const newAccountStore = yield call(AccountsService.exportAccountStore, action.password);
       const db = yield call(dbFactory);
@@ -236,7 +249,26 @@ export function* savePasswordSaga(action: SavePasswordAction): Generator<*, *, *
         account.accountStore = newAccountStore;
       });
       action.callback(true);
+      return;
     }
+
+    let accountStore: string;
+    if (currentCreation.type === 'create') {
+      // It's a new account, new keys need to be created.
+      accountStore = yield call(AccountsService.createAccountStore, password);
+    } else if (currentCreation.type === 'restore') {
+      // It's a new account restored from mnemonic, keys needs to be retrieved from it.
+      accountStore = yield call(AccountsService.restoreAccountStore, currentCreation.mnemonic, password);
+    } else {
+      action.callback(false);
+      return;
+    }
+
+    yield put(changeCreatingAccountField('accountStore', accountStore));
+    action.callback(true);
+
+    // We start deferred login, because it's the only place when we have password to do it.
+    yield call(login, { accountId, accountStore }, password, true);
   } catch (e) {
     action.callback(false);
   }

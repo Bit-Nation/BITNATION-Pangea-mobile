@@ -14,7 +14,7 @@ import ScreenTitle from '../../components/common/ScreenTitle';
 import Button from '../../components/common/Button';
 import type { Navigator } from '../../types/ReactNativeNavigation';
 import styles from './styles';
-import { restoreAccountUsingMnemonic, startAccountCreation } from '../../actions/accounts';
+import { startRestoreAccountUsingMnemonic, startAccountCreation } from '../../actions/accounts';
 import { type State as AccountsState } from '../../reducers/accounts';
 import type { Mnemonic } from '../../types/Mnemonic';
 
@@ -33,9 +33,8 @@ type Actions = {
   /**
    * @desc Action to restore account with mnemonic.
    * @param {Mnemonic} mnemonic Mnemonic to be used.
-   * @param {Function} callback Callback to be called with true if restore is successful and false otherwise.
    */
-  restoreAccountUsingMnemonic: (mnemonic: Mnemonic, callback: (success: boolean) => void) => void
+  startRestoreAccountUsingMnemonic: (mnemonic: Mnemonic) => void
 }
 
 class Accounts extends NavigatorComponent<Props & Actions & AccountsState> {
@@ -58,9 +57,10 @@ class Accounts extends NavigatorComponent<Props & Actions & AccountsState> {
       ...screen('RESTORE_KEY_SCREEN'),
       passProps: {
         onCancel: () => this.props.navigator.pop(),
-        onDoneEntering: (mnemonic: Mnemonic) => this.props.restoreAccountUsingMnemonic(mnemonic, () => {
+        onDoneEntering: (mnemonic: Mnemonic) => {
+          this.props.startRestoreAccountUsingMnemonic(mnemonic);
           this.showSecuritySettingsScreen();
-        }),
+        },
       },
     });
   };
@@ -99,8 +99,8 @@ const mapDispatchToProps = dispatch => ({
   startAccountCreation() {
     dispatch(startAccountCreation());
   },
-  restoreAccountUsingMnemonic(mnemonic, callback) {
-    dispatch(restoreAccountUsingMnemonic(mnemonic, callback));
+  startRestoreAccountUsingMnemonic(mnemonic) {
+    dispatch(startRestoreAccountUsingMnemonic(mnemonic));
   },
 });
 
