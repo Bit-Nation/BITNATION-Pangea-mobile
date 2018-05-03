@@ -730,6 +730,10 @@ const styles = {
     marginRight: 13,
   },
 
+  buttonPrevNext: {
+    marginTop: 13,
+    width: 90,
+  },
   // ========================================
   // Profile Screen
   // e.g. components/common/PanelView.js
