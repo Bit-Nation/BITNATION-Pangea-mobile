@@ -142,12 +142,12 @@ class SecuritySettingsScreen extends NavigatorComponent<Props & Actions & Settin
         <View style={styles.bodyContainer}>
           <View style={styles.buttonContainerMultiple}>
             <Button
-              style={styles.panelButton}
+              style={styles.buttonPrevNext}
               title={i18n.t('screens.accounts.create.prev')}
               onPress={this.onPreviousPressed}
             />
             <Button
-              style={styles.panelButton}
+              style={styles.buttonPrevNext}
               title={i18n.t('screens.accounts.create.next')}
               onPress={this.onNextPressed}
             />

@@ -214,7 +214,7 @@
       "newAccount": "New Account",
       "restoreAccount": "Restore Account",
       "create": {
-        "prev": "Prev",
+        "prev": "Previous",
         "next": "Next",
         "title": "Create Account",
         "securityTitle": "Security Settings",

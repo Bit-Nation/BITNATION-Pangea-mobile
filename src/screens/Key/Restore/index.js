@@ -252,13 +252,13 @@ class RestoreKeyScreen extends NavigatorComponent<Actions & KeyState & Props, St
                 <Button
                   title={i18n.t('screens.verifyKey.process.previousButton')}
                   onPress={this.onPreviousPressed}
-                  style={styles.button}
+                  style={styles.buttonPrevNext}
                   enabled={this.state.currentPage > 0}
                 />
                 <Button
                   title={i18n.t('screens.verifyKey.process.nextButton')}
                   onPress={this.onNextPressed}
-                  style={styles.button}
+                  style={styles.buttonPrevNext}
                   enabled={this.state.currentPage < KEY_PAGE_COUNT - 1}
                 />
               </View>
