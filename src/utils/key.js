@@ -10,5 +10,5 @@ import type { Mnemonic } from '../types/Mnemonic';
  * @return {string} Converted mnemonic string.
  */
 export function compressMnemonic(mnemonic: Mnemonic): string {
-  return _.join(mnemonic, ' ');
+  return _.join(mnemonic, ',');
 }

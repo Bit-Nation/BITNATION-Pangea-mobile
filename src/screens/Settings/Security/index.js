@@ -67,9 +67,16 @@ class SecuritySettingsScreen extends NavigatorComponent<Props & Actions & Settin
    * @return {void}
    */
   onNextPressed = () => {
+    const { creatingAccount } = this.props.accounts;
+    if (creatingAccount === null) {
+      console.log('FAIL! Creating account is null when next button on security settings is pressed, that should never happen');
+      return;
+    }
+
     this.props.navigator.showModal({
       ...screen('CREATE_PASSCODE_SCREEN'),
       passProps: {
+        accountId: creatingAccount.id,
         onSuccess: this.onPasscodeCreated,
         onCancel: () => this.props.navigator.dismissModal(),
       },

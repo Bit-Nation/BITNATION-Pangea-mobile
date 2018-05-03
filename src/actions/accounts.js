@@ -13,11 +13,11 @@ export type LogoutAction = { +type: 'LOGOUT' };
 export type StartAccountCreationAction = { +type: 'START_ACCOUNT_CREATION' };
 export type CheckPinCodeAction = { +type: 'CHECK_PIN_CODE', +pinCode: string, +accountId: string, +callback: (success: boolean) => void };
 export type CheckPasswordAction = { +type: 'CHECK_PASSWORD', +password: string, +accountId: string, +callback: (success: boolean) => void };
-export type SavePinCodeAction = { +type: 'SAVE_PIN_CODE', +pinCode: string, +accountId: ?string, +callback: (success: boolean) => void };
-export type SavePasswordAction = { +type: 'SAVE_PASSWORD', +password: string, +accountId: ?string, +callback: (success: boolean) => void };
+export type SavePinCodeAction = { +type: 'SAVE_PIN_CODE', +pinCode: string, +accountId: string, +callback: (success: boolean) => void };
+export type SavePasswordAction = { +type: 'SAVE_PASSWORD', +password: string, +accountId: string, +callback: (success: boolean) => void };
 export type ChangeCreatingAccountFieldAction = { +type: 'CHANGE_CREATING_ACCOUNT_FIELD', +field: string, +value: any };
 export type SaveCreatingAccountAction = { +type: 'SAVE_CREATING_ACCOUNT', +callback: (success: boolean) => void };
-export type RestoreAccountUsingMnemonicAction = { +type: 'RESTORE_ACCOUNT_USING_MNEMONIC', +mnemonic: Mnemonic, +callback: (success: boolean) => void };
+export type StartRestoreAccountUsingMnemonicAction = { +type: 'START_RESTORE_ACCOUNT_USING_MNEMONIC', +mnemonic: Mnemonic };
 
 export type Action =
   | AccountsListUpdatedAction
@@ -33,7 +33,7 @@ export type Action =
   | SavePasswordAction
   | ChangeCreatingAccountFieldAction
   | SaveCreatingAccountAction
-  | RestoreAccountUsingMnemonicAction;
+  | StartRestoreAccountUsingMnemonicAction;
 
 export const ACCOUNTS_LIST_UPDATED = 'ACCOUNTS_LIST_UPDATED';
 export const CURRENT_ACCOUNT_ID_CHANGED = 'CURRENT_ACCOUNT_ID_CHANGED';
@@ -48,7 +48,7 @@ export const SAVE_PASSWORD = 'SAVE_PASSWORD';
 export const CHANGE_CREATING_ACCOUNT_FIELD = 'CHANGE_CREATING_ACCOUNT_FIELD';
 export const SAVE_CREATING_ACCOUNT = 'SAVE_CREATING_ACCOUNT';
 export const PERFORM_DEFERRED_LOGIN = 'PERFORM_DEFERRED_LOGIN';
-export const RESTORE_ACCOUNT_USING_MNEMONIC = 'RESTORE_ACCOUNT_USING_MNEMONIC';
+export const START_RESTORE_ACCOUNT_USING_MNEMONIC = 'START_RESTORE_ACCOUNT_USING_MNEMONIC';
 
 /**
  * @desc Action creator for an action that is called when accounts list updated.
@@ -170,11 +170,11 @@ export function checkPassword(password: string, accountId: string, callback: (bo
 /**
  * @desc Action creator for an action that is called to save new pin code.
  * @param {string} pinCode Pin code to save.
- * @param {?string} accountId Id of account which pin code is going to be saved or null for new account.
+ * @param {string} accountId Id of account which pin code is going to be saved.
  * @param {function} callback Callback that is called with true if save is successful and false otherwise.
  * @return {SavePinCodeAction} An action.
  */
-export function savePinCode(pinCode: string, accountId: ?string, callback: (boolean) => void): SavePinCodeAction {
+export function savePinCode(pinCode: string, accountId: string, callback: (boolean) => void): SavePinCodeAction {
   return {
     type: SAVE_PIN_CODE,
     accountId,
@@ -186,11 +186,11 @@ export function savePinCode(pinCode: string, accountId: ?string, callback: (bool
 /**
  * @desc Action creator for an action that is called to save new password.
  * @param {string} password Password to save.
- * @param {?string} accountId Id of account which password is going to be saved or null for new account.
+ * @param {string} accountId Id of account which password is going to be saved.
  * @param {function} callback Callback that is called with true if save is successful and false otherwise.
  * @return {SavePinCodeAction} An action.
  */
-export function savePassword(password: string, accountId: ?string, callback: (boolean) => void): SavePasswordAction {
+export function savePassword(password: string, accountId: string, callback: (boolean) => void): SavePasswordAction {
   return {
     type: SAVE_PASSWORD,
     accountId,
@@ -228,13 +228,11 @@ export function saveCreatingAccount(callback: (boolean) => void): SaveCreatingAc
 /**
  * @desc Action creator for an action that is called to restore account using mnemonic.
  * @param {Mnemonic} mnemonic Mnemonic to be used.
- * @param {Function} callback Callback that receives boolean value - whether restore is successful.
- * @return {RestoreAccountUsingMnemonicAction} An action.
+ * @return {StartRestoreAccountUsingMnemonicAction} An action.
  */
-export function restoreAccountUsingMnemonic(mnemonic: Mnemonic, callback: (boolean) => void): RestoreAccountUsingMnemonicAction {
+export function startRestoreAccountUsingMnemonic(mnemonic: Mnemonic): StartRestoreAccountUsingMnemonicAction {
   return {
-    type: RESTORE_ACCOUNT_USING_MNEMONIC,
+    type: START_RESTORE_ACCOUNT_USING_MNEMONIC,
     mnemonic,
-    callback,
   };
 }
