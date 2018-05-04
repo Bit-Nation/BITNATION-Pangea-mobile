@@ -38,13 +38,13 @@ type Actions = {
 }
 
 class Accounts extends NavigatorComponent<Props & Actions & AccountsState> {
-  onCreateAccount = () => {
-    this.props.startAccountCreation();
-    this.showSecuritySettingsScreen();
+  static onCreateAccount = (navigator: Navigator, startCreate: () => void) => {
+    startCreate();
+    Accounts.showSecuritySettingsScreen(navigator);
   };
 
-  showSecuritySettingsScreen() {
-    this.props.navigator.push({
+  static showSecuritySettingsScreen(navigator: Navigator) {
+    navigator.push({
       ...screen('SECURITY_SETTINGS_SCREEN'),
       passProps: {
         isCreating: true,
@@ -52,14 +52,14 @@ class Accounts extends NavigatorComponent<Props & Actions & AccountsState> {
     });
   }
 
-  onRestoreAccount = () => {
-    this.props.navigator.push({
+  static onRestoreAccount = (navigator: Navigator, startRestore: (mnemonic: Mnemonic) => void) => {
+    navigator.push({
       ...screen('RESTORE_KEY_SCREEN'),
       passProps: {
-        onCancel: () => this.props.navigator.pop(),
+        onCancel: () => navigator.pop(),
         onDoneEntering: (mnemonic: Mnemonic) => {
-          this.props.startRestoreAccountUsingMnemonic(mnemonic);
-          this.showSecuritySettingsScreen();
+          startRestore(mnemonic);
+          Accounts.showSecuritySettingsScreen(navigator);
         },
       },
     });
@@ -77,12 +77,12 @@ class Accounts extends NavigatorComponent<Props & Actions & AccountsState> {
             <Button
               style={styles.panelButton}
               title={i18n.t('screens.accounts.newAccount')}
-              onPress={this.onCreateAccount}
+              onPress={() => Accounts.onCreateAccount(this.props.navigator, this.props.startAccountCreation)}
             />
             <Button
               style={styles.panelButton}
               title={i18n.t('screens.accounts.restoreAccount')}
-              onPress={this.onRestoreAccount}
+              onPress={() => Accounts.onRestoreAccount(this.props.navigator, this.props.startRestoreAccountUsingMnemonic)}
             />
           </View>
         </View>

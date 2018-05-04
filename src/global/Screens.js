@@ -93,6 +93,11 @@ const Screens = {
     screen: 'Pangea.AccountRestoreEmptyWalletScreen',
     navigatorStyle: hiddenNavigatorStyle,
   },
+  ACCOUNTS_ACCESS_SCREEN: {
+    screen: 'Pangea.AccountsAccess',
+    title: '',
+    navigatorStyle: navigatorStyleModal,
+  },
   DASHBOARD_SCREEN: {
     screen: 'Pangea.DashboardScreen',
     label: i18n.t('screens.dashboard.tabTitle'),
