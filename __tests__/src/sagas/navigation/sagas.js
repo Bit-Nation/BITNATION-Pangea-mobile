@@ -15,7 +15,8 @@ describe('launchCorrectFlow on first launch', () => {
 
   test('currentAccountId is null', () => {
     const clone = gen.clone();
-    expect(clone.next(null).value).toEqual(call(launchLoggedOutFlow));
+    clone.next(null);
+    expect(clone.next(false).value).toEqual(call(launchLoggedOutFlow, false));
     expect(clone.next().done).toBeTruthy();
   });
 
@@ -43,7 +44,8 @@ describe('launchCorrectFlow on change', () => {
       currentAccountId: null,
     });
 
-    expect(gen.next().value).toEqual(call(launchLoggedOutFlow));
+    gen.next();
+    expect(gen.next(true).value).toEqual(call(launchLoggedOutFlow, true));
     expect(gen.next().done).toBeTruthy();
   });
 });
