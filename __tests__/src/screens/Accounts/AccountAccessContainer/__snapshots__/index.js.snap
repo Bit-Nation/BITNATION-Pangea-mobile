@@ -39,8 +39,10 @@ ShallowWrapper {
         "push": [MockFunction],
         "setButtons": [MockFunction],
       },
-      "openNation": [Function],
+      "openAccount": [Function],
       "selectedAccount": [MockFunction],
+      "startAccountCreation": [Function],
+      "startRestoreAccountUsingMnemonic": [Function],
       "store": Object {
         "clearActions": [Function],
         "dispatch": [Function],
@@ -83,8 +85,10 @@ ShallowWrapper {
           "push": [MockFunction],
           "setButtons": [MockFunction],
         },
-        "openNation": [Function],
+        "openAccount": [Function],
         "selectedAccount": [MockFunction],
+        "startAccountCreation": [Function],
+        "startRestoreAccountUsingMnemonic": [Function],
         "store": Object {
           "clearActions": [Function],
           "dispatch": [Function],
