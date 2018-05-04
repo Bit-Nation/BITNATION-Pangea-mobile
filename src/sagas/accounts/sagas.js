@@ -75,6 +75,16 @@ export function* getCurrentAccountId(): Generator<*, *, *> {
 }
 
 /**
+ * @desc Checks if there is at least one account in database.
+ * @return {boolean} True if accounts are present in database.
+ */
+export function* accountsPresent(): Generator<*, *, *> {
+  const db = yield call(dbFactory);
+  const results = db.objects('Account');
+  return yield results.length > 0;
+}
+
+/**
  * @desc Gets an account with specified id from realm.
  * @param {string} id Id of account to be got.
  * @return {DBAccount|null} Realm object of account with specified id or null if there is no account with specified id.
