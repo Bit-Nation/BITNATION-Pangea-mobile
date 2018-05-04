@@ -14,22 +14,6 @@ public class PanthalassaTest {
     }
 
     @Test
-    public void PanthalassaNewPanthalassa() {
-
-        boolean instance = false;
-
-        try {
-            Panthalassa.newPanthalassa("testingString", "password");
-            instance = true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            instance = false;
-        }
-
-        assertThat(instance, is(true));
-    }
-
-    @Test
     public void PanthalassaNewAccountKeys() {
 
         String newAccount = null;
