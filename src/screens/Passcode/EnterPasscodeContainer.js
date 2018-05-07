@@ -8,7 +8,7 @@ import PinCodeScreen from './PinCode/index';
 import { type State as SettingsState } from '../../reducers/settings';
 import NavigatorComponent from '../../components/common/NavigatorComponent';
 import i18n from '../../global/i18n';
-import { checkPinCode, checkPassword } from '../../actions/accounts';
+import { checkPinCode, checkPassword, login } from '../../actions/accounts';
 import { errorAlert } from '../../global/alerts';
 import PasswordScreen from './Password/index';
 import styles from './PinCode/styles';
@@ -33,6 +33,10 @@ type Props = {
    * @desc Id of account which passcode will be entered.
    */
   accountId: string,
+  /**
+   * @desc Flag if there is currently logged in account.
+   */
+  isLoggedIn: boolean,
 }
 
 type Actions = {
@@ -49,6 +53,12 @@ type Actions = {
 class EnterPasscodeContainer extends NavigatorComponent<Props & Actions & SettingsState> {
   static defaultProps;
 
+  componentDidUpdate(prevProps: Props) {
+    if (prevProps.loginTask !== this.props.loginTask && this.props.loginTask.error !== null) {
+      errorAlert(this.props.loginTask.error);
+    }
+  }
+
   onCheckFinished = (success: boolean) => {
     if (success === true) {
       this.props.onSuccess();
@@ -62,9 +72,23 @@ class EnterPasscodeContainer extends NavigatorComponent<Props & Actions & Settin
     }
   };
 
+  onPasscodeEntered = (passcode) => {
+    const { accountId, isLoggedIn } = this.props;
+    if (isLoggedIn === false) {
+      this.props.login(accountId, passcode);
+      return;
+    }
+
+    if (this.props.passcodeType.type === 'pinCode') {
+      this.props.checkPinCode(passcode, accountId, this.onCheckFinished);
+    } else {
+      this.props.checkPassword(passcode, accountId, this.onCheckFinished);
+    }
+  };
+
   renderPasscodeScreen() {
     const {
-      navigator, passcodeType, title, onCancel, accountId,
+      navigator, passcodeType, title, onCancel,
     } = this.props;
     if (passcodeType.type === 'pinCode') {
       return (<PinCodeScreen
@@ -74,7 +98,7 @@ class EnterPasscodeContainer extends NavigatorComponent<Props & Actions & Settin
         title={title}
         shouldShowCancel
         onCancel={onCancel}
-        onSubmit={pinCode => this.props.checkPinCode(pinCode, accountId, this.onCheckFinished)}
+        onSubmit={this.onPasscodeEntered}
       />);
     }
 
@@ -84,7 +108,7 @@ class EnterPasscodeContainer extends NavigatorComponent<Props & Actions & Settin
       title={title}
       shouldShowCancel
       onCancel={onCancel}
-      onSubmit={password => this.props.checkPassword(password, accountId, this.onCheckFinished)}
+      onSubmit={this.onPasscodeEntered}
     />);
   }
 
@@ -110,6 +134,8 @@ EnterPasscodeContainer.defaultProps = {
 
 const mapStateToProps = state => ({
   ...state.settings,
+  loginTask: state.accounts.login,
+  isLoggedIn: state.accounts.currentAccountId !== null,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -118,6 +144,9 @@ const mapDispatchToProps = dispatch => ({
   },
   checkPassword(password, accountId, callback) {
     dispatch(checkPassword(password, accountId, callback));
+  },
+  login(password, accountId) {
+    dispatch(login(password, accountId));
   },
 });
 
