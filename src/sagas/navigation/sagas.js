@@ -16,6 +16,10 @@ import { CURRENT_ACCOUNT_ID_CHANGED } from '../../actions/accounts';
  * @return {void}
  */
 export function* launchCorrectFlow(action: CurrentAccountIdChangedAction | StartNavigationAction): Generator<*, *, *> {
+  yield call(launchLoggedInFlow);
+
+  return;
+
   let currentAccountId: string | null;
   if (action.type === CURRENT_ACCOUNT_ID_CHANGED) {
     ({ currentAccountId } = action);
@@ -40,7 +44,7 @@ export function launchLoggedInFlow() {
       screen('DASHBOARD_SCREEN'),
       screen('CHAT_NATIONS_SCREEN'),
       screen('NATIONS_SCREEN'),
-      screen('WALLET_SCREEN'),
+      screen('SEND_MONEY_SCREEN'),
       screen('PROFILE_SCREEN'),
     ],
     tabsStyle: { ...tabsStyle },

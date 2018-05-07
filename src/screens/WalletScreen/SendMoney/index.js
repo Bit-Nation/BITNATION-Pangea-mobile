@@ -95,6 +95,8 @@ class SendMoney extends NavigatorComponent<Props, State> {
   }
 
   validateSendData() {
+    return true;
+    
     const wallet = this.resolveWallet();
     if (wallet === null) return false;
     const sendAmount = SendMoney.parseAmount(this.state.amountString);
@@ -114,11 +116,6 @@ class SendMoney extends NavigatorComponent<Props, State> {
   };
 
   render() {
-    const wallet = this.resolveWallet();
-    if (!wallet) {
-      return <View />;
-    }
-
     return (
       <View style={styles.screenContainer}>
         <BackgroundImage />
@@ -135,7 +132,7 @@ class SendMoney extends NavigatorComponent<Props, State> {
               <View style={styles.textColumn}>
                 <Text style={styles.bodyBold}>{i18n.t('common.ethereum')}</Text>
                 <Text style={styles.currencyLarge}>
-                  {prettyWalletBalance(wallet, wallet.currency)}
+                  Unknown balance
                 </Text>
               </View>
             </View>
@@ -159,7 +156,7 @@ class SendMoney extends NavigatorComponent<Props, State> {
                       value={this.state.amountString}
                     />
                     <Text style={styles.currencyPlaceholder}>
-                      {wallet.currency}
+                      ETH
                     </Text>
                   </View>
                 </View>
