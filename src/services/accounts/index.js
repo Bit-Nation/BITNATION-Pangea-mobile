@@ -6,9 +6,19 @@ import { compressMnemonic } from '../../utils/key';
 
 export default class AccountsService {
   static async checkPasscode(accountStore: string, password: string): Promise<boolean> {
+    // @todo Change implementation so it do not restart Panthalassa.
+    return AccountsService.login(accountStore, password);
+  }
+
+  static async login(accountStore: string, password: string): Promise<boolean> {
     const { Panthalassa } = NativeModules;
-    await Panthalassa.PanthalassaStop();
-    const success = await Panthalassa.PanthalassaNewPanthalassa({ accountStore, pw: password });
+    try {
+      await Panthalassa.PanthalassaStop();
+      // eslint-disable-next-line no-empty
+    } catch (e) {
+      // We ignore exception, since we just need stop it in case it was started earlier.
+    }
+    const success = await Panthalassa.PanthalassaStart({ accountStore, password });
     return success === true;
   }
 
@@ -20,7 +30,7 @@ export default class AccountsService {
   static async restoreAccountStore(mnemonic: Mnemonic, password: string): Promise<string> {
     const { Panthalassa } = NativeModules;
     return Panthalassa.PanthalassaNewAccountKeys({
-      mnemonic: compressMnemonic(mnemonic),
+      mne: compressMnemonic(mnemonic),
       pw: password,
       pwConfirm: password,
     });
@@ -28,16 +38,16 @@ export default class AccountsService {
 
   static async exportAccountStore(password: string): Promise<string> {
     const { Panthalassa } = NativeModules;
-    return Panthalassa.PanthalassaExport({ pw: password, pwConfirm: password });
+    return Panthalassa.PanthalassaExportAccountStore({ pw: password, pwConfirm: password });
   }
 
   static async logout(): Promise<void> {
     const { Panthalassa } = NativeModules;
-    Panthalassa.PanthalassaStop();
+    return Panthalassa.PanthalassaStop();
   }
 
   static async validateMnemonic(mnemonic: Mnemonic): Promise<boolean> {
-    // @todo use Panthalassa method.
-    return mnemonic.indexOf('1') === -1;
+    const { Panthalassa } = NativeModules;
+    return Panthalassa.PanthalassaIsValidMnemonic(compressMnemonic(mnemonic));
   }
 }
