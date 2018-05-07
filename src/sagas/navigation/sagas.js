@@ -1,7 +1,7 @@
 // @flow
 
 /* eslint-disable no-use-before-define */
-import { call, select } from 'redux-saga/effects';
+import { call } from 'redux-saga/effects';
 import { Navigation } from 'react-native-navigation';
 
 import { appStyle, screen, tabsStyle } from '../../global/Screens';
