@@ -38,39 +38,41 @@ type Props = {
 const AccountAccessListScreen = ({
   accounts, onSelectItem, onRestoreAccount, onCreateAccount,
 }: Props) => (
-  <View style={styles.nationsScreenContainer}>
+  <View style={styles.profilesScreenContainer}>
     <BackgroundImage />
     <FakeNavigationBar />
-    <ScreenTitle title={i18n.t('screens.accounts.title')} />
-    <FlatList
-      renderItem={(item) => {
-        const account = item.item;
-        return (<NationListItem
-          text={account.name}
-          participants=''
-          itemIcon={0}
-          onPress={id => onSelectItem(id)}
-          id={account.id}
-        />);
-      }}
-      keyExtractor={item => item.id}
-      data={accounts}
-      style={styles.sectionList}
-    />
-    <View style={styles.buttonsContainer}>
-      <Button
-        enabled
-        title={i18n.t('screens.accounts.newAccount')}
-        onPress={() => onCreateAccount()}
-        style={styles.submitButton}
+    <View style={styles.bodyAccountContainer}>
+      <ScreenTitle title={i18n.t('screens.accounts.title')} />
+      <FlatList
+        renderItem={(item) => {
+          const account = item.item;
+          return (<NationListItem
+            text={account.name}
+            participants=''
+            itemIcon={0}
+            onPress={id => onSelectItem(id)}
+            id={account.id}
+          />);
+        }}
+        keyExtractor={item => item.id}
+        data={accounts}
+        style={styles.sectionList}
       />
-      <Button
-        enabled
-        title={i18n.t('screens.accounts.restoreAccount')}
-        onPress={() => onRestoreAccount()}
-        style={styles.submitButton}
-      />
-      <View style={styles.spacer} />
+      <View style={styles.buttonListContainer}>
+        <Button
+          enabled
+          title={i18n.t('screens.accounts.newAccount')}
+          onPress={() => onCreateAccount()}
+          style={styles.panelButton}
+        />
+        <Button
+          enabled
+          title={i18n.t('screens.accounts.restoreAccount')}
+          onPress={() => onRestoreAccount()}
+          style={styles.panelButton}
+        />
+        <View style={styles.spacer} />
+      </View>
     </View>
   </View>
 );
