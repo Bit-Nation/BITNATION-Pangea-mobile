@@ -1,5 +1,5 @@
 rootProject.name = 'Pangea'
-include ':realm'
+include ':realm', ':panthalassa'
 project(':realm').projectDir = new File(rootProject.projectDir, '../node_modules/realm/android')
 include ':react-native-vector-icons'
 project(':react-native-vector-icons').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-vector-icons/android')
@@ -13,7 +13,5 @@ project(':react-native-image-crop-picker').projectDir = new File(rootProject.pro
 project(':react-native-navigation').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-navigation/android/app')
 include ':react-native-config'
 project(':react-native-config').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-config/android')
-include ':react-native-eth-daemon'
-project(':react-native-eth-daemon').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-eth-daemon/android/app')
 
 include ':app'
