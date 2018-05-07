@@ -734,6 +734,14 @@ const styles = {
     marginTop: 13,
     width: 90,
   },
+
+  buttonListContainer: {
+    marginTop: 10,
+    marginBottom: 40,
+    // for testing
+    borderWidth: 0,
+
+  },
   // ========================================
   // Profile Screen
   // e.g. components/common/PanelView.js
