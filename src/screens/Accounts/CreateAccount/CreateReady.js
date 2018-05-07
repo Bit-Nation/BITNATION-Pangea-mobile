@@ -14,6 +14,7 @@ import styles from '../styles';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import { performDeferredLogin } from '../../../actions/accounts';
 import { type State as AccountsState } from '../../../reducers/accounts';
+import { saveSettings } from '../../../actions/settings';
 
 type Props = {
   /**
@@ -24,12 +25,20 @@ type Props = {
    * @desc Performs login that was deferred on account creation process.
    */
   performDeferredLogin: () => void,
+  /**
+   * @des Saves current settings into database related to specified account id.
+   * @param {string} accountId Id of corresponding account.
+   * @param {function} callback Function that is called when operation is finished.
+   */
+  saveSettings: (accountId: string, callback: () => void) => void,
 };
 
 class AccountReady extends Component<Props & AccountsState> {
   goToDashboard = () => {
     if (this.props.creatingAccount !== null) {
-      this.props.performDeferredLogin();
+      this.props.saveSettings(this.props.creatingAccount.id, () => {
+        this.props.performDeferredLogin();
+      });
     }
   };
 
@@ -61,6 +70,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   performDeferredLogin() {
     dispatch(performDeferredLogin());
+  },
+  saveSettings(accountId, callback) {
+    dispatch(saveSettings(accountId, callback));
   },
 });
 
