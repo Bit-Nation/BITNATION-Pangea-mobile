@@ -26,7 +26,7 @@ import type {
 import { convertFromDatabase, convertToDatabase } from '../../utils/mapping/account';
 import TaskBuilder from '../../utils/asyncTask';
 import AccountsService from '../../services/accounts';
-import { InvalidPasswordError } from '../../global/errors/accounts';
+import { InvalidPasswordError, LoginFailedError } from '../../global/errors/accounts';
 import type { AccountType as DBAccount } from '../../services/database/schemata';
 import type { UpdateAccountAction } from '../../actions/profile';
 import { cancelAccountEditing } from '../../actions/profile';
@@ -170,9 +170,14 @@ export function* login(userInfo: ({ accountId: string, accountStore?: string }),
     ({ accountStore } = userInfo);
   }
 
-  const isValid = yield call(AccountsService.checkPasscode, accountStore, password);
-  if (isValid !== true) {
-    yield put(loginTaskUpdated(TaskBuilder.failure(new InvalidPasswordError())));
+  try {
+    const isValid = yield call(AccountsService.login, accountStore, password);
+    if (isValid !== true) {
+      yield put(loginTaskUpdated(TaskBuilder.failure(new InvalidPasswordError())));
+      return;
+    }
+  } catch (error) {
+    yield put(loginTaskUpdated(TaskBuilder.failure(new LoginFailedError())));
     return;
   }
   if (deferred === true) {

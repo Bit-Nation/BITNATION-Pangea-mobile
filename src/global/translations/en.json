@@ -494,6 +494,7 @@
     "noCamera": "Camera Error",
     "invalidPinCode": "PIN code is invalid. Please try again.",
     "invalidPassword": "Password is invalid. Please try again.",
+    "loginFailed": "Unable to login. Please report this issue.",
     "passcodeCreationFailed": "Unable to create passcode. Please report this issue.",
     "accountCreationFailed": "Unable to create account. Please report this issue."
   },
