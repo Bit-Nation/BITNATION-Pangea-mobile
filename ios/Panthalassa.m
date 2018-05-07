@@ -20,7 +20,7 @@
 RCT_EXPORT_MODULE();
   
 RCT_REMAP_METHOD(PanthalassaNewAccountKeys,
-                 params:(NSDictionary *)config
+                 panthalassaNewAccountKeysWithParams:(NSDictionary *)config
                  resolver:(RCTPromiseResolveBlock)resolve
                  rejecter:(RCTPromiseRejectBlock)reject) {
   
@@ -38,7 +38,7 @@ RCT_REMAP_METHOD(PanthalassaNewAccountKeys,
 }
 
 RCT_REMAP_METHOD(PanthalassaNewAccountKeysFromMnemonic,
-                 parameters:(NSDictionary *)config
+                 panthalassaNewAccountKeysFromMnemonicWithParameters:(NSDictionary *)config
                  resolver:(RCTPromiseResolveBlock)resolve
                  rejecter:(RCTPromiseRejectBlock)reject) {
   
@@ -57,8 +57,7 @@ RCT_REMAP_METHOD(PanthalassaNewAccountKeysFromMnemonic,
 }
 
 RCT_REMAP_METHOD(PanthalassaEthPrivateKey,
-                 ethPrivateKey:
-                 resolver:(RCTPromiseResolveBlock)resolve
+                 PanthalassaEthPrivateKeyWithResolver:(RCTPromiseResolveBlock)resolve
                  rejecter:(RCTPromiseRejectBlock)reject) {
   NSString* response;
   NSError *error = nil;
@@ -73,7 +72,7 @@ RCT_REMAP_METHOD(PanthalassaEthPrivateKey,
 }
 
 RCT_REMAP_METHOD(PanthalassaStartFromMnemonic,
-                 parametersMnemonic:(NSDictionary *)config
+                 parametersStartFromMnemonic:(NSDictionary *)config
                  resolver:(RCTPromiseResolveBlock)resolve
                  rejecter:(RCTPromiseRejectBlock)reject) {
   
@@ -134,14 +133,23 @@ RCT_REMAP_METHOD(PanthalassaIsValidCID,
                  resolver:(RCTPromiseResolveBlock)resolve
                  rejecter:(RCTPromiseRejectBlock)reject) {
   
-  NSError *error = nil;
   BOOL response;
-  response = PanthalassaIsValidCID(cid);
   
-  if (response) {
-    resolve(@YES);
-  } else {
-    reject(@"error", @"No valid CID", error);
+  @try {
+    response = PanthalassaIsValidCID(cid);
+    NSNumber *val = [NSNumber numberWithBool:response];
+    resolve(val);
+  }
+  @catch (NSException *exception) {
+    NSMutableDictionary * info = [NSMutableDictionary dictionary];
+    [info setValue:exception.name forKey:@"ExceptionName"];
+    [info setValue:exception.reason forKey:@"ExceptionReason"];
+    [info setValue:exception.callStackReturnAddresses forKey:@"ExceptionCallStackReturnAddresses"];
+    [info setValue:exception.callStackSymbols forKey:@"ExceptionCallStackSymbols"];
+    [info setValue:exception.userInfo forKey:@"ExceptionUserInfo"];
+    
+    NSError *error = [[NSError alloc] initWithDomain:@"co.bitnation" code:001 userInfo:info];
+    reject(@"error", exception.reason, error);
   }
 }
 
@@ -180,15 +188,24 @@ RCT_REMAP_METHOD(PanthalassaIsValidMnemonic,
                  validMnemonic:(NSString *)mnemonic
                  resolver:(RCTPromiseResolveBlock)resolve
                  rejecter:(RCTPromiseRejectBlock)reject) {
-    
-  BOOL response;
-  NSError *error = nil;
-  response = PanthalassaIsValidMnemonic(mnemonic);
   
-  if (response) {
-    resolve(@YES);
-  } else {
-    reject(@"error", @"Invalid mnemonic", error);
+  BOOL response;
+  
+  @try {
+    response = PanthalassaIsValidMnemonic(mnemonic);
+    NSNumber *val = [NSNumber numberWithBool:response];
+    resolve(val);
+  }
+  @catch (NSException *exception) {
+    NSMutableDictionary * info = [NSMutableDictionary dictionary];
+    [info setValue:exception.name forKey:@"ExceptionName"];
+    [info setValue:exception.reason forKey:@"ExceptionReason"];
+    [info setValue:exception.callStackReturnAddresses forKey:@"ExceptionCallStackReturnAddresses"];
+    [info setValue:exception.callStackSymbols forKey:@"ExceptionCallStackSymbols"];
+    [info setValue:exception.userInfo forKey:@"ExceptionUserInfo"];
+    
+    NSError *error = [[NSError alloc] initWithDomain:@"co.bitnation" code:001 userInfo:info];
+    reject(@"error", exception.reason, error);
   }
 }
 
@@ -211,8 +228,7 @@ RCT_REMAP_METHOD(PanthalassaExportAccountStore,
 }
 
 RCT_REMAP_METHOD(PanthalassaStop,
-                 panthStop:
-                 resolver:(RCTPromiseResolveBlock)resolve
+                 stopPanthalassaWithResolver:(RCTPromiseResolveBlock)resolve
                  rejecter:(RCTPromiseRejectBlock)reject) {
     
   BOOL response;
