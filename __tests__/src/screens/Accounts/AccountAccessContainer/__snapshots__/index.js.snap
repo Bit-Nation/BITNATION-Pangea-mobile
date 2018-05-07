@@ -35,6 +35,7 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
+      "loadSettings": [Function],
       "navigator": Object {
         "push": [MockFunction],
         "setButtons": [MockFunction],
@@ -81,6 +82,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
+        "loadSettings": [Function],
         "navigator": Object {
           "push": [MockFunction],
           "setButtons": [MockFunction],

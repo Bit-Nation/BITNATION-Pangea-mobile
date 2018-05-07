@@ -11,6 +11,7 @@ import { startAccountCreation, startRestoreAccountUsingMnemonic } from '../../..
 import { type State as AccountState } from '../../../reducers/accounts';
 import type { Mnemonic } from '../../../types/Mnemonic';
 import AccountsScreen from '../index';
+import { loadSettings } from '../../../actions/settings';
 
 type Props = {
   /**
@@ -33,7 +34,13 @@ type Actions = {
    * @desc Action to restore account with mnemonic.
    * @param {Mnemonic} mnemonic Mnemonic to be used.
    */
-  startRestoreAccountUsingMnemonic: (mnemonic: Mnemonic) => void
+  startRestoreAccountUsingMnemonic: (mnemonic: Mnemonic) => void,
+  /**
+   * @desc Action to load settings for specific user.
+   * @param {string} accountId Id of account whose settings needs to be loaded.
+   * @param {function} callback Function that is called when loading is finished with boolean flag, which specifies if action was successful.
+   */
+  loadSettings: (accountId: string, callback: (success: boolean) => void) => void,
 }
 
 class AccountAccessContainer extends NavigatorComponent<Props & Actions & AccountState> {
@@ -47,14 +54,19 @@ class AccountAccessContainer extends NavigatorComponent<Props & Actions & Accoun
   }
 
   onSelectItem = (id) => {
-    // @todo Update settings to show pin code or password.
+    this.props.loadSettings(id, (success) => {
+      if (success === false) {
+        console.log('FATAL! Failed to open settings');
+        return;
+      }
 
-    this.props.navigator.showModal({
-      ...screen('ENTER_PASSCODE_SCREEN'),
-      passProps: {
-        accountId: id,
-        onCancel: () => this.props.navigator.dismissModal(),
-      },
+      this.props.navigator.showModal({
+        ...screen('ENTER_PASSCODE_SCREEN'),
+        passProps: {
+          accountId: id,
+          onCancel: () => this.props.navigator.dismissModal(),
+        },
+      });
     });
   };
   render() {
@@ -82,6 +94,9 @@ const mapDispatchToProps = dispatch => ({
   },
   startRestoreAccountUsingMnemonic(mnemonic) {
     dispatch(startRestoreAccountUsingMnemonic(mnemonic));
+  },
+  loadSettings(id, callback) {
+    dispatch(loadSettings(id, callback));
   },
 });
 
