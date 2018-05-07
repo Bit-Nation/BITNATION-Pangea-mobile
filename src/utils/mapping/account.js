@@ -37,6 +37,7 @@ export function convertToDatabase(account: PartialAccount): DBAccount | null {
     profileImage: account.avatar || '',
     accountStore: account.accountStore,
     confirmedMnemonic: false,
+    networkType: account.networkType,
     DHT: [],
   };
 }

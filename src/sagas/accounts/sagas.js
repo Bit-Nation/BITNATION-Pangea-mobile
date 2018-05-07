@@ -40,8 +40,8 @@ import { resetSettings } from '../../actions/settings';
  * @return {void}
  */
 export function* currentAccountBasedUpdate<T>(
-  resultsBuilder: (realm: Realm, currentAccountId: string | null) => Realm.Results<T>,
-  onChange: (Realm.Collection<T>, Realm.CollectionChangeSet<T>) => void,
+  resultsBuilder: (realm: Realm, currentAccountId: string | null) => Realm.Results<T> | null,
+  onChange: Generator<*, *, *>,
 ): Generator<*, *, *> {
   /**
    * @desc Function that is actually start listening on current account.
@@ -50,10 +50,16 @@ export function* currentAccountBasedUpdate<T>(
   function* startListening(): Generator<*, *, *> {
     const currentAccountId = yield call(getCurrentAccountId);
     const realm = yield call(dbFactory);
-    const channel = createDatabaseUpdateChannel(resultsBuilder(realm, currentAccountId));
+    const results = resultsBuilder(realm, currentAccountId);
+    if (results === null) {
+      // If there is nothing to listen on, we should not exit listener, since that will cause race to stop.
+      // So, we are hanging it and it will stop once current account id is changed.
+      yield take('HANG_FOREVER');
+    }
+    const channel = createDatabaseUpdateChannel(results);
     while (true) {
       const { collection, changes } = yield take(channel);
-      onChange(collection, changes);
+      yield call(onChange, collection, changes);
     }
   }
 
