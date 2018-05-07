@@ -204,6 +204,7 @@ const Screens = {
   SETTINGS_SCREEN: {
     screen: 'Pangea.Settings',
     title: '',
+    icon: AssetsImages.TabIcons.profile,
     label: i18n.t('screens.settings.tabTitle'),
     navigatorStyle,
   },
