@@ -5,7 +5,7 @@ import { SettingsType } from '../types/Settings';
 export type ChangeUseNumericPasscode = { +type: 'CHANGE_USE_NUMERIC_PASSCODE', useNumericPasscode: boolean };
 export type ChangePasscodeLength = { +type: 'CHANGE_PASSCODE_LENGTH', passcodeLength: number };
 export type ResetSettings = { +type: 'RESET_SETTINGS' };
-export type LoadSettings = { +type: 'LOAD_SETTINGS', accountId: string };
+export type LoadSettings = { +type: 'LOAD_SETTINGS', accountId: string, callback: (success: boolean) => void };
 export type SaveSettings = { +type: 'SAVE_SETTINGS', accountId: string, callback: (success: boolean) => void };
 export type SettingsUpdated = { +type: 'SETTINGS_UPDATED', settings: SettingsType };
 
@@ -76,12 +76,14 @@ export function saveSettings(accountId: string, callback: (success: boolean) => 
  * @desc Action creator for an action that is called to load account settings from database.
  * That one is used to load settings for account that is not logged in.
  * @param {string} accountId Account id which settings are related to.
+ * @param {function} callback Callback to be called when save is finished.
  * @returns {LoadSettings} An action.
  */
-export function loadSettings(accountId: string): LoadSettings {
+export function loadSettings(accountId: string, callback: (success: boolean) => void): LoadSettings {
   return {
     type: LOAD_SETTINGS,
     accountId,
+    callback,
   };
 }
 

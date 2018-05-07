@@ -35,7 +35,7 @@ export function* startDatabaseListening(): Generator<*, *, *> {
       if (accountId === null) {
         return null;
       }
-      return db.objects('AccountSettings').filtered(`id == ${accountId}`);
+      return db.objects('AccountSettings').filtered(`id == '${accountId}'`);
     },
     onChange,
   );
@@ -48,13 +48,14 @@ export function* startDatabaseListening(): Generator<*, *, *> {
  */
 export function* loadSettings(action: LoadSettings): Generator<*, *, *> {
   const db: Realm = yield call(dbFactory);
-  const objects = db.objects('AccountSettings').filtered(`id == ${action.accountId}`);
+  const objects = db.objects('AccountSettings').filtered(`id == '${action.accountId}'`);
   if (objects.length === 0) {
     return;
   }
   const settings = objects[0];
 
   yield put(settingsUpdated(convertFromDatabase(settings)));
+  yield call(action.callback, true);
 }
 
 /**
