@@ -3,6 +3,7 @@ import { all, call } from 'redux-saga/effects';
 import accounts from './accounts';
 import navigation from './navigation';
 import key from './key';
+import settings from './settings';
 
 /**
  * @desc Root saga.
@@ -13,5 +14,6 @@ export default function* rootSaga() {
     call(accounts),
     call(navigation),
     call(key),
+    call(settings),
   ]);
 }

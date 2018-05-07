@@ -55,7 +55,7 @@ class EnterPasscodeContainer extends NavigatorComponent<Props & Actions & Settin
       return;
     }
 
-    if (this.props.passcodeInfo.type === 'pinCode') {
+    if (this.props.passcodeType.type === 'pinCode') {
       errorAlert(i18n.t('error.invalidPinCode'));
     } else {
       errorAlert(i18n.t('error.invalidPassword'));
@@ -64,12 +64,12 @@ class EnterPasscodeContainer extends NavigatorComponent<Props & Actions & Settin
 
   renderPasscodeScreen() {
     const {
-      navigator, passcodeInfo, title, onCancel, accountId,
+      navigator, passcodeType, title, onCancel, accountId,
     } = this.props;
-    if (passcodeInfo.type === 'pinCode') {
+    if (passcodeType.type === 'pinCode') {
       return (<PinCodeScreen
         navigator={navigator}
-        pinCodeLength={passcodeInfo.length}
+        pinCodeLength={passcodeType.length}
         instruction={i18n.t('screens.pinCode.enterInstruction')}
         title={title}
         shouldShowCancel

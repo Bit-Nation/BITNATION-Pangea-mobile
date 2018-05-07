@@ -84,7 +84,7 @@ class SecuritySettingsScreen extends NavigatorComponent<Props & Actions & Settin
   };
 
   render() {
-    const { passcodeInfo } = this.props;
+    const { passcodeType } = this.props;
     const isCreating = isCreatingAccount(this.props.accounts);
 
     return (
@@ -98,21 +98,21 @@ class SecuritySettingsScreen extends NavigatorComponent<Props & Actions & Settin
             text={i18n.t('screens.securitySettings.useNumericPasscode')}
             additionalViewKind={{
               type: 'switch',
-              value: passcodeInfo.type === 'pinCode',
+              value: passcodeType.type === 'pinCode',
               onValueChange: this.props.changeUseNumericPasscode,
             }}
             style={styles.noflex}
           />
 
           {
-            passcodeInfo.type === 'pinCode' &&
+            passcodeType.type === 'pinCode' &&
             <View style={styles.passCodeLengthItemContainer}>
               <View style={styles.passCodeLengthItem}>
                 <Text style={styles.listItemText} numberOfLines={1}>
                   {i18n.t('screens.securitySettings.passcodeLength')}
                 </Text>
                 <Text style={styles.passCodeLengthNumberText} numberOfLines={1}>
-                  {passcodeInfo.length}
+                  {passcodeType.length}
                 </Text>
               </View>
               <View style={styles.sliderContainer}>
@@ -121,7 +121,7 @@ class SecuritySettingsScreen extends NavigatorComponent<Props & Actions & Settin
                   minimumValue={MINIMAL_PIN_CODE_LENGTH}
                   maximumValue={MAXIMAL_PIN_CODE_LENGTH}
                   step={1}
-                  value={passcodeInfo.length}
+                  value={passcodeType.length}
                   onValueChange={this.props.changePasscodeLength}
                   minimumTrackTintColor={Colors.BitnationHighlightColor}
                 />

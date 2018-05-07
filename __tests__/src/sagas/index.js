@@ -4,6 +4,7 @@ import rootSaga from '../../../src/sagas/index';
 import accounts from '../../../src/sagas/accounts';
 import navigation from '../../../src/sagas/navigation';
 import key from '../../../src/sagas/key';
+import settings from '../../../src/sagas/settings';
 
 test('rootSaga', () => {
   const iterator = rootSaga();
@@ -11,5 +12,6 @@ test('rootSaga', () => {
     call(accounts),
     call(navigation),
     call(key),
+    call(settings),
   ]));
 });

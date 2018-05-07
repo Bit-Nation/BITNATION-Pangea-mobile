@@ -1,27 +1,14 @@
 // @flow
 
-import { type Action, CHANGE_PASSCODE_LENGTH, CHANGE_USE_NUMERIC_PASSCODE, RESET_SETTINGS } from '../actions/settings';
+import {
+  type Action, CHANGE_PASSCODE_LENGTH, CHANGE_USE_NUMERIC_PASSCODE, RESET_SETTINGS,
+  SETTINGS_UPDATED,
+} from '../actions/settings';
+import type { SettingsType } from '../types/Settings';
 
-export type PasscodeInfo =
-  {
-    type: 'pinCode',
-    length: number,
-  } |
-  {
-    type: 'password',
-  };
+export type State = SettingsType
 
-export type State = {
-  +passcodeInfo: PasscodeInfo,
-};
-
-export const initialState: State = {
-  passcodeInfo: {
-    type: 'password',
-  },
-};
-
-export const PasscodeKind = {
+export const PasscodeTypeValues = {
   password: {
     type: 'password',
   },
@@ -29,6 +16,10 @@ export const PasscodeKind = {
     type: 'pinCode',
     length: 6,
   },
+};
+
+export const initialState: State = {
+  passcodeType: PasscodeTypeValues.password,
 };
 
 /**
@@ -40,25 +31,30 @@ export const PasscodeKind = {
 export default (state: State = initialState, action: Action): State => {
   switch (action.type) {
     case CHANGE_USE_NUMERIC_PASSCODE: {
-      const desiredKind = action.useNumericPasscode ? PasscodeKind.pinCode : PasscodeKind.password;
-      return (state.passcodeInfo.type === desiredKind) ?
+      const desiredValue = action.useNumericPasscode ? PasscodeTypeValues.pinCode : PasscodeTypeValues.password;
+      return (state.passcodeType.type === desiredValue) ?
         state :
         {
           ...state,
-          passcodeInfo: desiredKind,
+          passcodeType: desiredValue,
         };
     }
     case CHANGE_PASSCODE_LENGTH: {
-      return (state.passcodeInfo.type !== 'pinCode') ?
+      return (state.passcodeType.type !== 'pinCode') ?
         state :
         {
           ...state,
-          passcodeInfo: {
+          passcodeType: {
             type: 'pinCode',
             length: action.passcodeLength,
           },
         };
     }
+    case SETTINGS_UPDATED:
+      return {
+        ...state,
+        ...action.settings,
+      };
     case RESET_SETTINGS: {
       return initialState;
     }

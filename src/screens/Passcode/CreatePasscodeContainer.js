@@ -110,7 +110,7 @@ class CreatePasscodeContainer extends NavigatorComponent<Props & Actions & Setti
 
   onSubmitPasscode = (passcode: string) => {
     if (this.state.enteredPasscode === passcode) {
-      if (this.props.passcodeInfo.type === 'pinCode') {
+      if (this.props.passcodeType.type === 'pinCode') {
         this.props.savePinCode(passcode, this.props.accountId, this.onSaveFinished);
       } else {
         this.props.savePassword(passcode, this.props.accountId, this.onSaveFinished);
@@ -147,16 +147,16 @@ class CreatePasscodeContainer extends NavigatorComponent<Props & Actions & Setti
 
   renderPasscodeScreen() {
     const {
-      navigator, passcodeInfo, onCancel,
+      navigator, passcodeType, onCancel,
     } = this.props;
 
-    if (passcodeInfo.type === 'pinCode') {
+    if (passcodeType.type === 'pinCode') {
       if (this.state.enteredPasscode == null) {
         return (
           <PinCodeScreen
             key={`create ${this.state.createResetKey}`}
             navigator={navigator}
-            pinCodeLength={passcodeInfo.length}
+            pinCodeLength={passcodeType.length}
             instruction={i18n.t('screens.pinCode.createInstruction')}
             shouldShowCancel
             onCancel={onCancel}
@@ -169,7 +169,7 @@ class CreatePasscodeContainer extends NavigatorComponent<Props & Actions & Setti
           key={`verify ${this.state.verifyResetKey}`}
           resetKey={this.state.verifyResetKey}
           navigator={navigator}
-          pinCodeLength={passcodeInfo.length}
+          pinCodeLength={passcodeType.length}
           instruction={i18n.t('screens.pinCode.verifyInstruction')}
           shouldShowCancel
           onCancel={this.onCancelVerificationPasscode}
