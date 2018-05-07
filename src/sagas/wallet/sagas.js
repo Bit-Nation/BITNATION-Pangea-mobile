@@ -7,8 +7,7 @@ import EthereumService from '../../services/ethereum';
 
 export function* sendMoneySaga(action) {
   const state = yield select();
-  // @todo Remove hardcoded address
-  const fromAddress = state.wallet.selectedWalletAddress || 'some_hardcoded_address to send money from';
+  const fromAddress = state.wallet.selectedWalletAddress;
   const toAddress = action.toEthAddress;
   const amount = action.amount;
 
