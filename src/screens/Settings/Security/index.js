@@ -62,6 +62,10 @@ class SecuritySettingsScreen extends NavigatorComponent<Props & Actions & Settin
     });
   };
 
+  onPasscodeChanged = () => {
+    this.props.navigator.dismissAllModals();
+  };
+
   /**
    * @desc It is used on create account flow.
    * @return {void}
@@ -78,6 +82,39 @@ class SecuritySettingsScreen extends NavigatorComponent<Props & Actions & Settin
       passProps: {
         accountId: creatingAccount.id,
         onSuccess: this.onPasscodeCreated,
+        onCancel: () => this.props.navigator.dismissModal(),
+      },
+    });
+  };
+
+  onChangePasscodePressed = () => {
+    const { currentAccountId } = this.props.accounts;
+    if (currentAccountId === null) {
+      console.log('FAIL! Current account id is null when change passcode button on security settings is pressed, that should never happen');
+      return;
+    }
+
+    this.props.navigator.showModal({
+      ...screen('ENTER_PASSCODE_SCREEN'),
+      passProps: {
+        accountId: currentAccountId,
+        onCancel: () => this.props.navigator.dismissModal(),
+        onSuccess: this.onChangePasscodeAuthorized,
+      },
+    });
+  };
+
+  onChangePasscodeAuthorized = () => {
+    const { currentAccountId } = this.props.accounts;
+    if (currentAccountId === null) {
+      return;
+    }
+
+    this.props.navigator.showModal({
+      ...screen('CREATE_PASSCODE_SCREEN'),
+      passProps: {
+        accountId: currentAccountId,
+        onSuccess: this.onPasscodeChanged,
         onCancel: () => this.props.navigator.dismissModal(),
       },
     });
@@ -135,6 +172,7 @@ class SecuritySettingsScreen extends NavigatorComponent<Props & Actions & Settin
               id='changePasscode'
               text={i18n.t('screens.securitySettings.changePasscode')}
               style={styles.noflex}
+              onPress={this.onChangePasscodePressed}
             />
           }
         </View>
