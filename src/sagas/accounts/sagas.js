@@ -235,7 +235,9 @@ export function* checkPinCodeSaga(action: CheckPinCodeAction): Generator<*, *, *
  */
 export function* checkPasswordSaga(action: CheckPasswordAction): Generator<*, *, *> {
   try {
-    const success = yield call(AccountsService.checkPasscode, action.accountId, action.password);
+    const account = yield getAccount(action.accountId);
+    const { accountStore } = account;
+    const success = yield call(AccountsService.checkPasscode, accountStore, action.password);
     action.callback(success);
   } catch (e) {
     action.callback(false);
