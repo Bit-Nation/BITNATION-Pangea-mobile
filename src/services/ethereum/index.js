@@ -1,6 +1,6 @@
 // @flow
 import ethers from 'ethers';
-
+import { Alert, NativeModules } from 'react-native';
 
 export default class EthereumService {
 
@@ -24,5 +24,22 @@ export default class EthereumService {
     console.log('estimated gas: ', gasEstimate);
 
     return this.wallet.send(transaction);
+  }
+}
+
+/**
+ * testFunction
+ * @returns {Promise<void>} testFunction to get the Private Key
+ */
+export async function testFunction() {
+  try {
+    const testingPanthalassa = NativeModules.Panthalassa;
+    const result = await testingPanthalassa.PanthalassaEthPrivateKey();
+    console.log('Panthalassa: ', result);
+    if (result == null) {
+      Alert.alert('Private Key successfully obtained');
+    }
+  } catch (e) {
+    Alert.alert(e.message);
   }
 }
