@@ -13,7 +13,7 @@ export function convertFromDatabase(account: DBAccount): Account {
     id: account.id,
     name: account.name,
     location: account.location,
-    networkType: account.isDevelopment ? 'dev' : 'main',
+    networkType: account.networkType,
     avatar: account.profileImage,
     accountStore: account.accountStore,
   };
