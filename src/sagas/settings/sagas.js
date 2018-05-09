@@ -50,6 +50,7 @@ export function* loadSettings(action: LoadSettings): Generator<*, *, *> {
   const db: Realm = yield call(dbFactory);
   const objects = db.objects('AccountSettings').filtered(`id == '${action.accountId}'`);
   if (objects.length === 0) {
+    yield call(action.callback, false);
     return;
   }
   const settings = objects[0];

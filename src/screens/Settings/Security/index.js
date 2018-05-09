@@ -15,11 +15,12 @@ import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import Button from '../../../components/common/Button';
 import type { State as SettingsState } from '../../../reducers/settings';
 import SettingsListItem from '../../../components/common/SettingsListItem';
-import { changePasscodeLength, changeUseNumericPasscode } from '../../../actions/settings';
+import { changePasscodeLength, changeUseNumericPasscode, loadSettings, saveSettings } from '../../../actions/settings';
 import Colors from '../../../global/colors';
 import { MAXIMAL_PIN_CODE_LENGTH, MINIMAL_PIN_CODE_LENGTH } from '../../../global/Constants';
 import type { State as AccountsState } from '../../../reducers/accounts';
 import { isCreatingAccount } from '../../../reducers/accounts';
+import { alert } from '../../../global/alerts';
 
 type Props = {
   /**
@@ -43,8 +44,20 @@ type Actions = {
   changePasscodeLength: (number) => void,
 };
 
-class SecuritySettingsScreen extends NavigatorComponent<Props & Actions & SettingsState> {
+type State = {
+  pinCodeLengthSliderTemporaryValue: ?number,
+};
+
+class SecuritySettingsScreen extends NavigatorComponent<Props & Actions & SettingsState, State> {
   static navigatorButtons = { ...androidNavigationButtons };
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      pinCodeLengthSliderTemporaryValue: null,
+    };
+  }
 
   onNavBarButtonPress(id: string): void {
     if (id === 'cancel') {
@@ -63,8 +76,21 @@ class SecuritySettingsScreen extends NavigatorComponent<Props & Actions & Settin
   };
 
   onPasscodeChanged = () => {
-    this.props.navigator.dismissAllModals();
+    const { currentAccountId } = this.props.accounts;
+    if (currentAccountId === null) {
+      console.log('FAIL! Current account id is null when passcode is changed on security settings is pressed, that should never happen');
+      return;
+    }
+    this.props.saveSettings(currentAccountId, () => {
+      this.props.navigator.dismissAllModals();
+    });
   };
+
+  /**
+   * @desc This property stores changes that is going to be applied to settings, but waiting for current passcode to be entered.
+   * @type {null}
+   */
+  applySettingsChanges: (() => void) | null = null;
 
   /**
    * @desc It is used on create account flow.
@@ -87,7 +113,7 @@ class SecuritySettingsScreen extends NavigatorComponent<Props & Actions & Settin
     });
   };
 
-  onChangePasscodePressed = () => {
+  askEnterCurrentPassword = () => {
     const { currentAccountId } = this.props.accounts;
     if (currentAccountId === null) {
       console.log('FAIL! Current account id is null when change passcode button on security settings is pressed, that should never happen');
@@ -98,8 +124,16 @@ class SecuritySettingsScreen extends NavigatorComponent<Props & Actions & Settin
       ...screen('ENTER_PASSCODE_SCREEN'),
       passProps: {
         accountId: currentAccountId,
-        onCancel: () => this.props.navigator.dismissModal(),
-        onSuccess: this.onChangePasscodeAuthorized,
+        onCancel: () => {
+          this.setState({ pinCodeLengthSliderTemporaryValue: null });
+          this.props.navigator.dismissModal();
+        },
+        onSuccess: () => {
+          if (this.applySettingsChanges !== null) {
+            this.applySettingsChanges();
+          }
+          this.onChangePasscodeAuthorized();
+        },
       },
     });
   };
@@ -115,9 +149,36 @@ class SecuritySettingsScreen extends NavigatorComponent<Props & Actions & Settin
       passProps: {
         accountId: currentAccountId,
         onSuccess: this.onPasscodeChanged,
-        onCancel: () => this.props.navigator.dismissModal(),
+        onCancel: () => {
+          this.props.loadSettings(currentAccountId, () => {
+            this.applySettingsChanges = null;
+            this.props.navigator.dismissAllModals();
+          });
+        },
       },
     });
+  };
+
+  changePasscodeType = () => {
+    const isCreating = isCreatingAccount(this.props.accounts);
+    if (isCreating === true) {
+      if (this.applySettingsChanges) {
+        this.applySettingsChanges();
+      }
+      return;
+    }
+    alert('changingPasscodeType', [
+      {
+        name: 'cancel',
+        style: 'cancel',
+        onPress: () => {
+          this.applySettingsChanges = null;
+          this.setState({ pinCodeLengthSliderTemporaryValue: null });
+        },
+      }, {
+        name: 'confirm',
+        onPress: this.askEnterCurrentPassword,
+      }]);
   };
 
   render() {
@@ -136,7 +197,12 @@ class SecuritySettingsScreen extends NavigatorComponent<Props & Actions & Settin
             additionalViewKind={{
               type: 'switch',
               value: passcodeType.type === 'pinCode',
-              onValueChange: this.props.changeUseNumericPasscode,
+              onValueChange: (value) => {
+                this.applySettingsChanges = () => {
+                  this.props.changeUseNumericPasscode(value);
+                };
+                this.changePasscodeType();
+              },
             }}
             style={styles.noflex}
           />
@@ -149,7 +215,7 @@ class SecuritySettingsScreen extends NavigatorComponent<Props & Actions & Settin
                   {i18n.t('screens.securitySettings.passcodeLength')}
                 </Text>
                 <Text style={styles.passCodeLengthNumberText} numberOfLines={1}>
-                  {passcodeType.length}
+                  {this.state.pinCodeLengthSliderTemporaryValue || passcodeType.length}
                 </Text>
               </View>
               <View style={styles.sliderContainer}>
@@ -158,8 +224,18 @@ class SecuritySettingsScreen extends NavigatorComponent<Props & Actions & Settin
                   minimumValue={MINIMAL_PIN_CODE_LENGTH}
                   maximumValue={MAXIMAL_PIN_CODE_LENGTH}
                   step={1}
-                  value={passcodeType.length}
-                  onValueChange={this.props.changePasscodeLength}
+                  value={this.state.pinCodeLengthSliderTemporaryValue || passcodeType.length}
+                  onSlidingComplete={(value) => {
+                    if (passcodeType.length === value) {
+                      return;
+                    }
+                    this.applySettingsChanges = () => {
+                      this.props.changePasscodeLength(value);
+                      this.setState({ pinCodeLengthSliderTemporaryValue: null });
+                    };
+                    this.changePasscodeType();
+                  }}
+                  onValueChange={value => this.setState({ pinCodeLengthSliderTemporaryValue: value })}
                   minimumTrackTintColor={Colors.BitnationHighlightColor}
                 />
               </View>
@@ -172,7 +248,7 @@ class SecuritySettingsScreen extends NavigatorComponent<Props & Actions & Settin
               id='changePasscode'
               text={i18n.t('screens.securitySettings.changePasscode')}
               style={styles.noflex}
-              onPress={this.onChangePasscodePressed}
+              onPress={this.askEnterCurrentPassword}
             />
           }
         </View>
@@ -208,6 +284,12 @@ const mapDispatchToProps = dispatch => ({
   },
   changePasscodeLength(length: number) {
     dispatch(changePasscodeLength(length));
+  },
+  loadSettings(accountId, callback) {
+    dispatch(loadSettings(accountId, callback));
+  },
+  saveSettings(accountId, callback) {
+    dispatch(saveSettings(accountId, callback));
   },
 });
 

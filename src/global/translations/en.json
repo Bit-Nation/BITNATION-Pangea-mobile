@@ -187,6 +187,12 @@
       "subtitle": "Please enter passcode carefully again.",
       "tryAgain": "Try again",
       "startOver": "Start over"
+    },
+    "changingPasscodeType": {
+      "title": "Change passcode?",
+      "subtitle": "Changing the passcode type requires you to change your passcode",
+      "confirm": "$t(common.ok)",
+      "cancel": "$t(common.cancel)"
     }
   },
   "screens": {
