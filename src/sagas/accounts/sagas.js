@@ -271,7 +271,7 @@ export function* savePasswordSaga(action: SavePasswordAction): Generator<*, *, *
       db.write(() => {
         account.accountStore = newAccountStore;
       });
-      action.callback(true);
+      yield call(action.callback, true);
       return;
     }
 
@@ -283,17 +283,17 @@ export function* savePasswordSaga(action: SavePasswordAction): Generator<*, *, *
       // It's a new account restored from mnemonic, keys needs to be retrieved from it.
       accountStore = yield call(AccountsService.restoreAccountStore, currentCreation.mnemonic, password);
     } else {
-      action.callback(false);
+      yield call(action.callback, false);
       return;
     }
 
     yield put(changeCreatingAccountField('accountStore', accountStore));
-    action.callback(true);
+    yield call(action.callback, true);
 
     // We start deferred login, because it's the only place when we have password to do it.
     yield call(login, { accountId, accountStore }, password, true);
   } catch (e) {
-    action.callback(false);
+    yield call(action.callback, false);
   }
 }
 
