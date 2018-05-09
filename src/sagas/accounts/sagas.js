@@ -12,7 +12,8 @@ import {
   checkPassword,
   CURRENT_ACCOUNT_ID_CHANGED,
   currentAccountIdChanged,
-  loginTaskUpdated, PERFORM_DEFERRED_LOGIN,
+  loginTaskUpdated,
+  PERFORM_DEFERRED_LOGIN,
   savePassword,
 } from '../../actions/accounts';
 import type {
@@ -28,7 +29,7 @@ import TaskBuilder from '../../utils/asyncTask';
 import AccountsService from '../../services/accounts';
 import { InvalidPasswordError, LoginFailedError } from '../../global/errors/accounts';
 import type { AccountType as DBAccount } from '../../services/database/schemata';
-import type { UpdateAccountAction } from '../../actions/profile';
+import type { SaveAccountAction } from '../../actions/profile';
 import { cancelAccountEditing } from '../../actions/profile';
 import { resetSettings } from '../../actions/settings';
 
@@ -199,10 +200,10 @@ export function* logout(): Generator<*, *, *> {
 
 /**
  * @desc Saves updated account to database.
- * @param {UpdateAccountAction} action An action saga was called with.
+ * @param {SaveAccountAction} action An action saga was called with.
  * @return {void}
  */
-export function* doneAccountEditing(action: UpdateAccountAction): Generator<*, *, *> {
+export function* saveAccount(action: SaveAccountAction): Generator<*, *, *> {
   const account: DBAccount = yield call(getCurrentAccount);
   if (account === null) {
     return;

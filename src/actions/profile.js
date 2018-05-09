@@ -6,20 +6,20 @@ export type StartAccountEditingAction = { +type: 'START_ACCOUNT_EDITING', +accou
 export type ChangeEditingAccountAction = { +type: 'CHANGE_EDITING_ACCOUNT', +account: Account };
 export type CancelAccountEditingAction = { +type: 'CANCEL_ACCOUNT_EDITING' };
 export type DoneAccountEditingAction = { +type: 'DONE_ACCOUNT_EDITING' };
-export type UpdateAccountAction = { +type: 'UPDATE_ACCOUNT', +account: Account };
+export type SaveAccountAction = { +type: 'SAVE_ACCOUNT', +account: Account };
 
 export type Action =
   | StartAccountEditingAction
   | ChangeEditingAccountAction
   | CancelAccountEditingAction
   | DoneAccountEditingAction
-  | UpdateAccountAction;
+  | SaveAccountAction;
 
 export const START_ACCOUNT_EDITING = 'START_ACCOUNT_EDITING';
 export const CHANGE_EDITING_ACCOUNT = 'CHANGE_EDITING_ACCOUNT';
 export const DONE_ACCOUNT_EDITING = 'DONE_ACCOUNT_EDITING';
 export const CANCEL_ACCOUNT_EDITING = 'CANCEL_ACCOUNT_EDITING';
-export const UPDATE_ACCOUNT = 'UPDATE_ACCOUNT';
+export const SAVE_ACCOUNT = 'SAVE_ACCOUNT';
 
 /**
  * @desc Action creator for an action that should be called to start account editing.
@@ -66,13 +66,13 @@ export function doneAccountEditing(): DoneAccountEditingAction {
 }
 
 /**
- * @desc Action creator for an action that should be called on done account editing.
+ * @desc Action creator for an action that should be called to save account to database.
  * @param {Account} account Account to be updated.
- * @returns {UpdateAccountAction} An action.
+ * @returns {SaveAccountAction} An action.
  */
-export function updateAccount(account: Account): UpdateAccountAction {
+export function saveAccount(account: Account): SaveAccountAction {
   return {
-    type: UPDATE_ACCOUNT,
+    type: SAVE_ACCOUNT,
     account,
   };
 }
