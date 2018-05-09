@@ -8,7 +8,7 @@ export type AccountsListUpdatedAction = { +type: 'ACCOUNTS_LIST_UPDATED', accoun
 export type CurrentAccountIdChangedAction = { +type: 'CURRENT_ACCOUNT_ID_CHANGED', currentAccountId: string | null };
 export type LoginAction = { +type: 'LOGIN', accountId: string, password: string, deferred: boolean };
 export type PerformDeferredLoginAction = { +type: 'PERFORM_DEFERRED_LOGIN' };
-export type LoginTaskUpdatedAction = { +type: 'LOGIN_TASK_UPDATED', asyncTask: AsyncTask<void> };
+export type LoginTaskUpdatedAction = { +type: 'LOGIN_TASK_UPDATED', loginTask: AsyncTask<void> };
 export type LogoutAction = { +type: 'LOGOUT' };
 export type StartAccountCreationAction = { +type: 'START_ACCOUNT_CREATION' };
 export type CheckPinCodeAction = { +type: 'CHECK_PIN_CODE', +pinCode: string, +accountId: string, +callback: (success: boolean) => void };
@@ -104,13 +104,13 @@ export function performDeferredLogin(): PerformDeferredLoginAction {
 
 /**
  * @desc Action creator for an action that is called when login task status updated.
- * @param {AsyncTask<void>} asyncTask Updated async task.
+ * @param {AsyncTask<void>} loginTask Updated async task.
  * @return {LoginTaskUpdatedAction} An action.
  */
-export function loginTaskUpdated(asyncTask: AsyncTask<void>): LoginTaskUpdatedAction {
+export function loginTaskUpdated(loginTask: AsyncTask<void>): LoginTaskUpdatedAction {
   return {
     type: LOGIN_TASK_UPDATED,
-    asyncTask,
+    loginTask,
   };
 }
 

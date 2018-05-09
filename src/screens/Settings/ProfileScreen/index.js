@@ -16,7 +16,7 @@ import styles from './EmptyProfile/styles';
 import { type State as AccountsState, getCurrentAccount, isCreatingAccount } from '../../../reducers/accounts';
 import {
   cancelAccountEditing, changeEditingAccount, doneAccountEditing,
-  startAccountEditing, updateAccount,
+  startAccountEditing, saveAccount,
 } from '../../../actions/profile';
 import { screen } from '../../../global/Screens';
 import i18n from '../../../global/i18n';
@@ -187,7 +187,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(saveCreatingAccount(callback));
   },
   onDoneAccountEditing(account: Account) {
-    dispatch(updateAccount(account));
+    dispatch(saveAccount(account));
     dispatch(doneAccountEditing());
   },
   makeStepForTestingMode() {
