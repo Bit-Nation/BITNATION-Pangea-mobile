@@ -13,10 +13,10 @@ describe('Accounts', () => {
     navigator: {
       push: jest.fn(),
       pop: jest.fn(),
-      setOnNavigatorEvent: jest.fn()
+      setOnNavigatorEvent: jest.fn(),
     },
     startAccountCreation: jest.fn(),
-    startRestoreAccountUsingMnemonic: jest.fn()
+    startRestoreAccountUsingMnemonic: jest.fn(),
   };
 
   beforeEach(() => {

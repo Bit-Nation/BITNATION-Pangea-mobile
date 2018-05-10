@@ -13,7 +13,7 @@ describe('SettingsListScreen', () => {
     navigator: {
       push: jest.fn(),
       pop: jest.fn(),
-    }
+    },
   };
 
   beforeEach(() => {

@@ -10,28 +10,28 @@ describe('EnterPasscodeContainer', () => {
   const initialStateMock = {
     accounts: {
       login: {
-        error: 'Invalid'
-      }
+        error: 'Invalid',
+      },
     },
     settings: {
       passcodeType: {
         type: 'pinCode',
-        length: 6
-      }
-    }
+        length: 6,
+      },
+    },
   };
   const storeMock = configureStore([]);
   const propsMock = {
     navigator: {
       push: jest.fn(),
       pop: jest.fn(),
-      setOnNavigatorEvent: jest.fn()
+      setOnNavigatorEvent: jest.fn(),
     },
     checkPinCode: jest.fn(),
     checkPassword: jest.fn(),
     login: jest.fn(),
     onSuccess: jest.fn(),
-    onCancel: jest.fn()
+    onCancel: jest.fn(),
   };
 
   beforeEach(() => {

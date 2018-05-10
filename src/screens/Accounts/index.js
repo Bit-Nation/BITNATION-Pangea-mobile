@@ -77,13 +77,13 @@ class Accounts extends NavigatorComponent<Props & Actions & AccountsState> {
           <PanelView body={i18n.t('screens.accounts.introduction')} />
           <View style={{}}>
             <Button
-              id="createButton"
+              id='createButton'
               style={styles.panelButton}
               title={i18n.t('screens.accounts.newAccount')}
               onPress={() => Accounts.onCreateAccount(this.props.navigator, this.props.startAccountCreation)}
             />
             <Button
-              id="restoreButton"
+              id='restoreButton'
               style={styles.panelButton}
               title={i18n.t('screens.accounts.restoreAccount')}
               onPress={() => Accounts.onRestoreAccount(this.props.navigator, this.props.startRestoreAccountUsingMnemonic)}
