@@ -1,11 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ChatScreen Rendering 1`] = `
+exports[`CreatePasscodeContainer Rendering 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Connect(ChatScreen)
-    isBot={false}
+  Symbol(enzyme.__unrendered__): <Connect(CreatePasscodeContainer)
+    navigator={
+      Object {
+        "pop": [MockFunction],
+        "push": [MockFunction],
+        "setOnNavigatorEvent": [MockFunction],
+      }
+    }
+    onCancel={[MockFunction]}
+    onSuccess={[MockFunction]}
+    savePassword={[MockFunction]}
+    savePinCode={[MockFunction]}
     store={
       Object {
         "clearActions": [Function],
@@ -29,17 +39,15 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "hideSpinner": [Function],
-      "isBot": false,
-      "isFetching": true,
-      "nationId": 1,
-      "nations": Array [
-        Object {
-          "_id": 1,
-          "idInSmartContract": 1,
-        },
-      ],
-      "showSpinner": [Function],
+      "navigator": Object {
+        "pop": [MockFunction],
+        "push": [MockFunction],
+        "setOnNavigatorEvent": [MockFunction],
+      },
+      "onCancel": [MockFunction],
+      "onSuccess": [MockFunction],
+      "savePassword": [Function],
+      "savePinCode": [Function],
       "store": Object {
         "clearActions": [Function],
         "dispatch": [Function],
@@ -67,7 +75,7 @@ ShallowWrapper {
         },
         "unsubscribe": [Function],
       },
-      "user": null,
+      "title": "",
     },
     "ref": null,
     "rendered": null,
@@ -79,17 +87,15 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "hideSpinner": [Function],
-        "isBot": false,
-        "isFetching": true,
-        "nationId": 1,
-        "nations": Array [
-          Object {
-            "_id": 1,
-            "idInSmartContract": 1,
-          },
-        ],
-        "showSpinner": [Function],
+        "navigator": Object {
+          "pop": [MockFunction],
+          "push": [MockFunction],
+          "setOnNavigatorEvent": [MockFunction],
+        },
+        "onCancel": [MockFunction],
+        "onSuccess": [MockFunction],
+        "savePassword": [Function],
+        "savePinCode": [Function],
         "store": Object {
           "clearActions": [Function],
           "dispatch": [Function],
@@ -117,7 +123,7 @@ ShallowWrapper {
           },
           "unsubscribe": [Function],
         },
-        "user": null,
+        "title": "",
       },
       "ref": null,
       "rendered": null,
