@@ -11,8 +11,8 @@ describe('RestoreSource', () => {
   const storeMock = configureStore([]);
   const propsMock = {
     navigator: {
-      push: jest.fn()
-    }
+      push: jest.fn(),
+    },
   };
 
   beforeEach(() => {

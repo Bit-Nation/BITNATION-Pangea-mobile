@@ -16,9 +16,9 @@ describe('DeveloperSettings', () => {
     },
     creatingAccount: {
       id: 1,
-      networkType: 'main'
+      networkType: 'main',
     },
-    changeCreatingAccount: jest.fn()
+    changeCreatingAccount: jest.fn(),
   };
 
   beforeEach(() => {

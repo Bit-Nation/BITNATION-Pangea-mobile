@@ -13,12 +13,12 @@ describe('CreatePasscodeContainer', () => {
     navigator: {
       push: jest.fn(),
       pop: jest.fn(),
-      setOnNavigatorEvent: jest.fn()
+      setOnNavigatorEvent: jest.fn(),
     },
     savePinCode: jest.fn(),
     savePassword: jest.fn(),
     onSuccess: jest.fn(),
-    onCancel: jest.fn()
+    onCancel: jest.fn(),
   };
 
   beforeEach(() => {

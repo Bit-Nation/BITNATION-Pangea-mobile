@@ -14,11 +14,11 @@ describe('PasswordScreen', () => {
       push: jest.fn(),
       pop: jest.fn(),
       setOnNavigatorEvent: jest.fn(),
-      setButtons: jest.fn()
+      setButtons: jest.fn(),
     },
     shouldShowCancel: false,
     onSubmit: jest.fn(),
-    onCancel: jest.fn()
+    onCancel: jest.fn(),
   };
 
   beforeEach(() => {

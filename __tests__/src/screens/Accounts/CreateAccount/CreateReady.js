@@ -11,10 +11,10 @@ describe('CreateReady', () => {
   const storeMock = configureStore([]);
   const propsMock = {
     creatingAccount: {
-      id: 1
+      id: 1,
     },
     saveSettings: jest.fn(),
-    performDeferredLogin: jest.fn()
+    performDeferredLogin: jest.fn(),
   };
 
   beforeEach(() => {

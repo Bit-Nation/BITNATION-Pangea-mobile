@@ -14,8 +14,8 @@ describe('SecuritySettingsScreen', () => {
       push: jest.fn(),
       pop: jest.fn(),
       dismissAllModals: jest.fn(),
-      showModal: jest.fn()
-    }
+      showModal: jest.fn(),
+    },
   };
 
   beforeEach(() => {
