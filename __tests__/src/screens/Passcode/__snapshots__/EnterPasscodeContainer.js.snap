@@ -1,11 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ChatScreen Rendering 1`] = `
+exports[`EnterPasscodeContainer Rendering 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Connect(ChatScreen)
-    isBot={false}
+  Symbol(enzyme.__unrendered__): <Connect(EnterPasscodeContainer)
+    checkPassword={[MockFunction]}
+    checkPinCode={[MockFunction]}
+    login={[MockFunction]}
+    navigator={
+      Object {
+        "pop": [MockFunction],
+        "push": [MockFunction],
+        "setOnNavigatorEvent": [MockFunction],
+      }
+    }
+    onCancel={[MockFunction]}
+    onSuccess={[MockFunction]}
     store={
       Object {
         "clearActions": [Function],
@@ -29,17 +40,24 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "hideSpinner": [Function],
-      "isBot": false,
-      "isFetching": true,
-      "nationId": 1,
-      "nations": Array [
-        Object {
-          "_id": 1,
-          "idInSmartContract": 1,
-        },
-      ],
-      "showSpinner": [Function],
+      "checkPassword": [Function],
+      "checkPinCode": [Function],
+      "isLoggedIn": true,
+      "login": [Function],
+      "loginTask": Object {
+        "error": "Invalid",
+      },
+      "navigator": Object {
+        "pop": [MockFunction],
+        "push": [MockFunction],
+        "setOnNavigatorEvent": [MockFunction],
+      },
+      "onCancel": [MockFunction],
+      "onSuccess": [MockFunction],
+      "passcodeType": Object {
+        "length": 6,
+        "type": "pinCode",
+      },
       "store": Object {
         "clearActions": [Function],
         "dispatch": [Function],
@@ -67,7 +85,7 @@ ShallowWrapper {
         },
         "unsubscribe": [Function],
       },
-      "user": null,
+      "title": "",
     },
     "ref": null,
     "rendered": null,
@@ -79,17 +97,24 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "hideSpinner": [Function],
-        "isBot": false,
-        "isFetching": true,
-        "nationId": 1,
-        "nations": Array [
-          Object {
-            "_id": 1,
-            "idInSmartContract": 1,
-          },
-        ],
-        "showSpinner": [Function],
+        "checkPassword": [Function],
+        "checkPinCode": [Function],
+        "isLoggedIn": true,
+        "login": [Function],
+        "loginTask": Object {
+          "error": "Invalid",
+        },
+        "navigator": Object {
+          "pop": [MockFunction],
+          "push": [MockFunction],
+          "setOnNavigatorEvent": [MockFunction],
+        },
+        "onCancel": [MockFunction],
+        "onSuccess": [MockFunction],
+        "passcodeType": Object {
+          "length": 6,
+          "type": "pinCode",
+        },
         "store": Object {
           "clearActions": [Function],
           "dispatch": [Function],
@@ -117,7 +142,7 @@ ShallowWrapper {
           },
           "unsubscribe": [Function],
         },
-        "user": null,
+        "title": "",
       },
       "ref": null,
       "rendered": null,
