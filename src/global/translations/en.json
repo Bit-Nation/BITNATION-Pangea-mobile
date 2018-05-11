@@ -469,7 +469,8 @@
       "title": "Settings",
       "tabTitle": "SETTINGS",
       "identity": "Identity",
-      "security": "Security"
+      "security": "Security",
+      "switchAccounts": "Switch accounts"
     },
     "securitySettings": {
       "title": "Security settings",

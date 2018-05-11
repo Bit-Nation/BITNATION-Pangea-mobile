@@ -39,6 +39,8 @@ type Actions = {
 
 class Accounts extends NavigatorComponent<Props & Actions & AccountsState> {
   static onCreateAccount = (navigator: Navigator, startCreate: () => void) => {
+    console.log('================================');
+    console.log(startCreate);
     startCreate();
     Accounts.showSecuritySettingsScreen(navigator);
   };
@@ -75,11 +77,13 @@ class Accounts extends NavigatorComponent<Props & Actions & AccountsState> {
           <PanelView body={i18n.t('screens.accounts.introduction')} />
           <View style={{}}>
             <Button
+              id='createButton'
               style={styles.panelButton}
               title={i18n.t('screens.accounts.newAccount')}
               onPress={() => Accounts.onCreateAccount(this.props.navigator, this.props.startAccountCreation)}
             />
             <Button
+              id='restoreButton'
               style={styles.panelButton}
               title={i18n.t('screens.accounts.restoreAccount')}
               onPress={() => Accounts.onRestoreAccount(this.props.navigator, this.props.startRestoreAccountUsingMnemonic)}
