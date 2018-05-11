@@ -16,6 +16,7 @@ import type { Navigator } from '../../../../types/ReactNativeNavigation';
 import type { Account } from '../../../../types/Account';
 import i18n from '../../../../global/i18n';
 import ScreenTitle from '../../../../components/common/ScreenTitle';
+import { androidNavigationButtons } from '../../../../global/Screens';
 
 const EDIT_BUTTON = 'EDIT_BUTTON';
 
@@ -51,7 +52,7 @@ class ProfileScreen extends NavigatorComponent<Props> {
     super(props);
 
     this.props.navigator.setButtons({
-      leftButtons: [],
+      ...androidNavigationButtons,
       rightButtons: [{
         title: i18n.t('screens.profile.editButton'),
         id: EDIT_BUTTON,

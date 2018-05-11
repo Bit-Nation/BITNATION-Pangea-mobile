@@ -72,7 +72,7 @@ export default (state: State = initialState, action: Action): State => {
     case LOGIN_TASK_UPDATED:
       return {
         ...state,
-        login: action.asyncTask,
+        login: action.loginTask,
       };
 
     case START_ACCOUNT_EDITING:

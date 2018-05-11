@@ -17,6 +17,8 @@ import type { SettingsItem } from '../../../types/Settings';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import { screen } from '../../../global/Screens';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
+import Button from '../../../components/common/Button';
+import { logout } from '../../../actions/accounts';
 
 type Props = {
   /**
@@ -28,6 +30,10 @@ type Props = {
    * @param {any} id Id of selected item.
    */
   onSelectItem: (id: SettingsItem) => void,
+  /**
+   * @desc Function to logout from current account.
+   */
+  logout: () => void,
 }
 
 class SettingsListScreen extends NavigatorComponent<Props> {
@@ -66,6 +72,12 @@ class SettingsListScreen extends NavigatorComponent<Props> {
             data={items}
             style={styles.sectionList}
           />
+          <View style={styles.buttonContainer}>
+            <Button
+              title={i18n.t('screens.settings.switchAccounts')}
+              onPress={this.props.logout}
+            />
+          </View>
         </View>
       </View>
     );
@@ -77,6 +89,10 @@ const mapStateToProps = state => ({
   accounts: state.accounts,
 });
 
-const mapDispatchToProps = () => ({});
+const mapDispatchToProps = dispatch => ({
+  logout() {
+    dispatch(logout());
+  },
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(SettingsListScreen);

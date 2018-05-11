@@ -1,11 +1,11 @@
 import { all, call, takeEvery } from 'redux-saga/effects';
 import {
-  doneAccountEditing,
   listenForDatabaseUpdates,
   loginActionHandler,
   logout,
   checkPasswordSaga,
   checkPinCodeSaga,
+  saveAccount,
   savePasswordSaga,
   savePinCodeSaga,
   saveCreatingAccount,
@@ -23,7 +23,7 @@ import {
   START_ACCOUNT_CREATION,
   START_RESTORE_ACCOUNT_USING_MNEMONIC,
 } from '../../actions/accounts';
-import { UPDATE_ACCOUNT } from '../../actions/profile';
+import { SAVE_ACCOUNT } from '../../actions/profile';
 
 /**
  * @desc Root accounts saga.
@@ -36,7 +36,7 @@ export default function* rootSaga() {
     yield takeEvery(START_RESTORE_ACCOUNT_USING_MNEMONIC, startRestoreAccountUsingMnemonic),
     yield takeEvery(LOGIN, loginActionHandler),
     yield takeEvery(LOGOUT, logout),
-    yield takeEvery(UPDATE_ACCOUNT, doneAccountEditing),
+    yield takeEvery(SAVE_ACCOUNT, saveAccount),
     yield takeEvery(CHECK_PIN_CODE, checkPinCodeSaga),
     yield takeEvery(CHECK_PASSWORD, checkPasswordSaga),
     yield takeEvery(SAVE_PIN_CODE, savePinCodeSaga),

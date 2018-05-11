@@ -1,11 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ChatScreen Rendering 1`] = `
+exports[`CreateReady Rendering 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Connect(ChatScreen)
-    isBot={false}
+  Symbol(enzyme.__unrendered__): <Connect(AccountReady)
+    creatingAccount={
+      Object {
+        "id": 1,
+      }
+    }
+    performDeferredLogin={[MockFunction]}
+    saveSettings={[MockFunction]}
     store={
       Object {
         "clearActions": [Function],
@@ -29,17 +35,11 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "hideSpinner": [Function],
-      "isBot": false,
-      "isFetching": true,
-      "nationId": 1,
-      "nations": Array [
-        Object {
-          "_id": 1,
-          "idInSmartContract": 1,
-        },
-      ],
-      "showSpinner": [Function],
+      "creatingAccount": Object {
+        "id": 1,
+      },
+      "performDeferredLogin": [Function],
+      "saveSettings": [Function],
       "store": Object {
         "clearActions": [Function],
         "dispatch": [Function],
@@ -67,7 +67,6 @@ ShallowWrapper {
         },
         "unsubscribe": [Function],
       },
-      "user": null,
     },
     "ref": null,
     "rendered": null,
@@ -79,17 +78,11 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "hideSpinner": [Function],
-        "isBot": false,
-        "isFetching": true,
-        "nationId": 1,
-        "nations": Array [
-          Object {
-            "_id": 1,
-            "idInSmartContract": 1,
-          },
-        ],
-        "showSpinner": [Function],
+        "creatingAccount": Object {
+          "id": 1,
+        },
+        "performDeferredLogin": [Function],
+        "saveSettings": [Function],
         "store": Object {
           "clearActions": [Function],
           "dispatch": [Function],
@@ -117,7 +110,6 @@ ShallowWrapper {
           },
           "unsubscribe": [Function],
         },
-        "user": null,
       },
       "ref": null,
       "rendered": null,

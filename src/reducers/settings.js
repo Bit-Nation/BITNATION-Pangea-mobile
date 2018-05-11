@@ -32,7 +32,7 @@ export default (state: State = initialState, action: Action): State => {
   switch (action.type) {
     case CHANGE_USE_NUMERIC_PASSCODE: {
       const desiredValue = action.useNumericPasscode ? PasscodeTypeValues.pinCode : PasscodeTypeValues.password;
-      return (state.passcodeType.type === desiredValue) ?
+      return (state.passcodeType.type === desiredValue.type) ?
         state :
         {
           ...state,
