@@ -1,9 +1,9 @@
 import {
-  ADD_DUMMY_MESSAGE,
+  ADD_NEW_MESSAGE,
   DONE_FETCH_MESSAGES,
   MESSAGE_ADDED,
   START_FETCH_MESSAGES,
-  addDummyMessage,
+  addNewMessage,
   doneFetchMessages,
   messageAdded,
   startFetchMessages,
@@ -18,9 +18,9 @@ describe('activity action creators', () => {
   const messagesMock = [{ ...messageMock }, { ...messageMock }];
 
   test('messageAdded', () => {
-    expect(messageAdded(messageMock)).toEqual({
+    expect(messageAdded([messageMock])).toEqual({
       type: MESSAGE_ADDED,
-      message: messageMock,
+      messages: [messageMock],
     });
   });
 
@@ -39,8 +39,11 @@ describe('activity action creators', () => {
   });
 
   test('addDummyMessage', () => {
-    expect(addDummyMessage()).toEqual({
-      type: ADD_DUMMY_MESSAGE,
+    expect(addNewMessage('new message')).toEqual({
+      type: ADD_NEW_MESSAGE,
+      message: 'new message',
+      params: {},
+      interpret: true
     });
   });
 });

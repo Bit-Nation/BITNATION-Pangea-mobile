@@ -33,7 +33,8 @@ const buildMessageObject = (message, params, interpret): ActivityLogMessage => (
   id: uuid(),
   msg: message,
   params: JSON.stringify(params),
-  interpret
+  interpret,
+  created_at: new Date()
 });
 
 export function* addNewMessageSaga(action) {

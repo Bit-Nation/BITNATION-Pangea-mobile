@@ -14,6 +14,7 @@ export function convertFromDatabase(messageJob: DBMessage): ActivityLogMessage {
     msg: messageJob.msg,
     params: messageJob.params,
     interpret: messageJob.interpret,
+    created_at: messageJob.created_at
   };
 }
 
@@ -25,12 +26,12 @@ export function convertFromDatabase(messageJob: DBMessage): ActivityLogMessage {
 export function convertToDatabase(messageObject: ActivityLogMessage): DBMessage | null {
   return {
     id: messageObject.id,
-    heading: null,
+    heading: '',
     msg: messageObject.msg,
-    params: messageObject.params,
+    params: messageObject.params || '',
     version: 1,
     display: true,
-    interpret: messageObject.interpret,
-    created_at: new Date()
+    interpret: messageObject.interpret || true,
+    created_at: messageObject.created_at
   };
 }
