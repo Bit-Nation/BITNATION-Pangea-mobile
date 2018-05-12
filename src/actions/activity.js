@@ -6,28 +6,28 @@ import { type ActivityLogMessage } from '../types/ActivityLogMessage';
 type MessageAddedAction = { +type: 'MESSAGE_ADDED', +message: ActivityLogMessage };
 type StartFetchMessagesAction = { +type: 'START_FETCH_MESSAGES', +limit: number };
 type DoneFetchMessagesAction = { +type: 'DONE_FETCH_MESSAGES', +messages: Array<ActivityLogMessage> };
-type AddDummyMessageAction = { +type: 'ADD_DUMMY_MESSAGE' };
+type AddNewMessageAction = { +type: 'ADD_NEW_MESSAGE' };
 
 export type Action =
   | MessageAddedAction
   | StartFetchMessagesAction
   | DoneFetchMessagesAction
-  | AddDummyMessageAction;
+  | AddNewMessageAction;
 
 export const MESSAGE_ADDED = 'MESSAGE_ADDED';
 export const START_FETCH_MESSAGES = 'START_FETCH_MESSAGES';
 export const DONE_FETCH_MESSAGES = 'DONE_FETCH_MESSAGES';
-export const ADD_DUMMY_MESSAGE = 'ADD_DUMMY_MESSAGE';
+export const ADD_NEW_MESSAGE = 'ADD_NEW_MESSAGE';
 
 /**
  * @desc Action creator for an action that should be called once new activity log message added.
  * @param {ActivityLogMessage} message Activity log message that is added.
  * @returns {MessageAddedAction} An action.
  */
-export function messageAdded(message: ActivityLogMessage): MessageAddedAction {
+export function messageAdded(messages: Array<ActivityLogMessage>): MessageAddedAction {
   return {
     type: MESSAGE_ADDED,
-    message,
+    messages,
   };
 }
 
@@ -60,8 +60,8 @@ export function doneFetchMessages(messages: Array<ActivityLogMessage>): DoneFetc
  * @desc Action for an action that adds dummy activity log message for testing purposes.
  * @returns {AddDummyMessageAction} An action.
  */
-export function addDummyMessage(): AddDummyMessageAction {
+export function addNewMessage(): AddNewMessageAction {
   return {
-    type: ADD_DUMMY_MESSAGE,
+    type: ADD_NEW_MESSAGE,
   };
 }
