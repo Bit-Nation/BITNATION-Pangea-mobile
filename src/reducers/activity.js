@@ -51,7 +51,7 @@ export default (state: State = initialState, action: Action): State => {
     case MESSAGE_ADDED:
       return {
         ...state,
-        messages: mergeMessages(state.messages, [action.message]),
+        messages: mergeMessages(state.messages, action.messages),
       };
     case START_FETCH_MESSAGES:
       return {
