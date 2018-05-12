@@ -3,10 +3,10 @@
 import { ACTIVITY_MESSAGES_LIMIT } from '../global/Constants';
 import { type ActivityLogMessage } from '../types/ActivityLogMessage';
 
-type MessageAddedAction = { +type: 'MESSAGE_ADDED', +message: ActivityLogMessage };
+type MessageAddedAction = { +type: 'MESSAGE_ADDED', +messages: Array<ActivityLogMessage> };
 type StartFetchMessagesAction = { +type: 'START_FETCH_MESSAGES', +limit: number };
 type DoneFetchMessagesAction = { +type: 'DONE_FETCH_MESSAGES', +messages: Array<ActivityLogMessage> };
-type AddNewMessageAction = { +type: 'ADD_NEW_MESSAGE' };
+type AddNewMessageAction = { +type: 'ADD_NEW_MESSAGE', +message: string, +params: any, +interpret: boolean };
 
 export type Action =
   | MessageAddedAction
@@ -57,11 +57,14 @@ export function doneFetchMessages(messages: Array<ActivityLogMessage>): DoneFetc
 }
 
 /**
- * @desc Action for an action that adds dummy activity log message for testing purposes.
- * @returns {AddDummyMessageAction} An action.
+ * @desc Action for an action that adds activity log message.
+ * @returns {AddNewMessageAction} An action.
  */
-export function addNewMessage(): AddNewMessageAction {
+export function addNewMessage(message: string, params: ?any, interpret: ?boolean): AddNewMessageAction {
   return {
     type: ADD_NEW_MESSAGE,
+    message,
+    params: params || {},
+    interpret: interpret || true
   };
 }

@@ -17,7 +17,7 @@ import ActivityPanel from './ActivityPanel';
 import NationsPanel from './NationsPanel';
 import { openNation } from '../../actions/nations';
 import { screen } from '../../global/Screens';
-import { addDummyMessage, startFetchMessages } from '../../actions/activity';
+import { addNewMessage, startFetchMessages } from '../../actions/activity';
 import type { NationIdType } from '../../types/Nation';
 import type { State } from '../../reducers';
 import type { Navigator } from '../../types/ReactNativeNavigation';
@@ -117,7 +117,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(startFetchMessages());
   },
   onAddDummyMessage() {
-    dispatch(addDummyMessage());
+    dispatch(addNewMessage('dummy message'));
   },
 });
 
