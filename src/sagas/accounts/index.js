@@ -1,6 +1,29 @@
 import { all, call, takeEvery } from 'redux-saga/effects';
-import { listenForDatabaseUpdates, login, logout } from './sagas';
-import { LOGIN, LOGOUT } from '../../actions/accounts';
+import {
+  listenForDatabaseUpdates,
+  loginActionHandler,
+  logout,
+  checkPasswordSaga,
+  checkPinCodeSaga,
+  saveAccount,
+  savePasswordSaga,
+  savePinCodeSaga,
+  saveCreatingAccount,
+  startAccountCreation,
+  startRestoreAccountUsingMnemonic,
+} from './sagas';
+import {
+  LOGIN,
+  LOGOUT,
+  CHECK_PASSWORD,
+  CHECK_PIN_CODE,
+  SAVE_PASSWORD,
+  SAVE_PIN_CODE,
+  SAVE_CREATING_ACCOUNT,
+  START_ACCOUNT_CREATION,
+  START_RESTORE_ACCOUNT_USING_MNEMONIC,
+} from '../../actions/accounts';
+import { SAVE_ACCOUNT } from '../../actions/profile';
 
 /**
  * @desc Root accounts saga.
@@ -9,7 +32,15 @@ import { LOGIN, LOGOUT } from '../../actions/accounts';
 export default function* rootSaga() {
   yield all([
     call(listenForDatabaseUpdates),
-    yield takeEvery(LOGIN, login),
+    yield takeEvery(START_ACCOUNT_CREATION, startAccountCreation),
+    yield takeEvery(START_RESTORE_ACCOUNT_USING_MNEMONIC, startRestoreAccountUsingMnemonic),
+    yield takeEvery(LOGIN, loginActionHandler),
     yield takeEvery(LOGOUT, logout),
+    yield takeEvery(SAVE_ACCOUNT, saveAccount),
+    yield takeEvery(CHECK_PIN_CODE, checkPinCodeSaga),
+    yield takeEvery(CHECK_PASSWORD, checkPasswordSaga),
+    yield takeEvery(SAVE_PIN_CODE, savePinCodeSaga),
+    yield takeEvery(SAVE_PASSWORD, savePasswordSaga),
+    yield takeEvery(SAVE_CREATING_ACCOUNT, saveCreatingAccount),
   ]);
 }
