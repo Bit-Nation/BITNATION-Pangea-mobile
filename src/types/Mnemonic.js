@@ -1,3 +1,3 @@
 // @flow
 
-export type Mnemonic = Array<String>;
+export type Mnemonic = Array<string>;

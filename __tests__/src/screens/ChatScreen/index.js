@@ -4,7 +4,7 @@ import configureStore from 'redux-mock-store';
 
 import ChatScreen from '../../../../src/screens/ChatScreen';
 
-describe('ChatNationsScreen', () => {
+describe('ChatScreen', () => {
   let chatScreen;
 
   const initialStateMock = {

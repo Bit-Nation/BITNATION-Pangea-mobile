@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ChatNationsScreen Rendering 1`] = `
+exports[`ChatScreen Rendering 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
@@ -67,7 +67,7 @@ ShallowWrapper {
         },
         "unsubscribe": [Function],
       },
-      "user": Object {},
+      "user": null,
     },
     "ref": null,
     "rendered": null,
@@ -117,7 +117,7 @@ ShallowWrapper {
           },
           "unsubscribe": [Function],
         },
-        "user": Object {},
+        "user": null,
       },
       "ref": null,
       "rendered": null,
