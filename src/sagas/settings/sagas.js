@@ -11,34 +11,39 @@ import { convertFromDatabase, convertToDatabase } from '../../utils/mapping/sett
 import type { LoadSettings, SaveSettings } from '../../actions/settings';
 
 /**
+ * @desc Generator to be called on database change. Used to update settings.
+ * @param {*} collection Updated settings collection
+ * @return {void}
+ */
+export function* onCurrentAccountChange(collection: Realm.Result<AccountSettingsType>): Generator<*, *, *> {
+  if (collection.length === 0) {
+    return;
+  }
+
+  const settings = collection[0];
+  const convertedSettings = yield call(convertFromDatabase, settings);
+  yield put(settingsUpdated(convertedSettings));
+}
+
+/**
+ * @desc Function that creates Realm results fetching settings for specific account.
+ * @param {Realm} db Realm instance.
+ * @param {string|null} accountId Id of account to fetch settings or null.
+ * @return {Realm.Results<AccountSettings>|null} Realm results fetching settings for specified account or null if not applicable.
+ */
+export function buildAccountSettingsResults(db: Realm, accountId: string | null) {
+  if (accountId === null) {
+    return null;
+  }
+  return db.objects('AccountSettings').filtered(`id == '${accountId}'`);
+}
+
+/**
  * @desc Starts listen to settings updates in database.
  * @return {void}
  */
 export function* startDatabaseListening(): Generator<*, *, *> {
-  /**
-   * @desc Generator to be called on database change
-   * @param {*} collection Updated settings collection
-   * @return {void}
-   */
-  function* onChange(collection: Realm.Result<AccountSettingsType>): Generator<*, *, *> {
-    if (collection.length === 0) {
-      return;
-    }
-
-    const settings = collection[0];
-    yield put(settingsUpdated(convertFromDatabase(settings)));
-  }
-
-  yield call(
-    currentAccountBasedUpdate,
-    (db: Realm, accountId: string | null) => {
-      if (accountId === null) {
-        return null;
-      }
-      return db.objects('AccountSettings').filtered(`id == '${accountId}'`);
-    },
-    onChange,
-  );
+  yield call(currentAccountBasedUpdate, buildAccountSettingsResults, onCurrentAccountChange);
 }
 
 /**
@@ -60,7 +65,7 @@ export function* loadSettings(action: LoadSettings): Generator<*, *, *> {
 }
 
 /**
- * @desc Loads settings for specific account.
+ * @desc Saves settings for specific account.
  * @param {SaveSettings} action An action.
  * @return {void}
  */
@@ -72,5 +77,5 @@ export function* saveSettings(action: SaveSettings): Generator<*, *, *> {
   });
 
   yield put(settingsUpdated(convertFromDatabase(settings)));
-  action.callback(true);
+  yield call(action.callback, true);
 }
