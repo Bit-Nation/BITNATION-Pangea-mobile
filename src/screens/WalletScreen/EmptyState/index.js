@@ -26,7 +26,7 @@ type Props = {
  */
 const EmptyWalletScreen = ({ onCreateWallet, onRestoreWallet }: Props) => ((
   <View>
-    <ScrollView style={styles.scrollView} contentContainerStyle={styles.noflex}>
+    <ScrollView style={styles.scrollViewWallet}>
       <PanelView
         style={styles.panelViewTransparent}
         title={i18n.t('screens.wallet.empty.createWalletPanel.title')}
