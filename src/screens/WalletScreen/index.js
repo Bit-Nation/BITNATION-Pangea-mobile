@@ -89,6 +89,7 @@ class WalletScreen extends NavigatorComponent<Props & TestingModeProps & Actions
   };
 
   restoreWallet = () => {
+    this.props.navigator.showModal(screen('CREATE_KEY_INTRODUCTION_SCREEN'));
   };
 
   sendMoney = (wallet) => {
