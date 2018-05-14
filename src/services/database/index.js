@@ -40,4 +40,6 @@ export function* factory(customDbPath: string) {
   });
 }
 
+export const buildRandomPathDatabase = () => co(factory(`database/${Math.random()}`));
+
 export default co(factory);
