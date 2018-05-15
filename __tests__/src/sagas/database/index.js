@@ -1,3 +1,5 @@
+// @flow
+
 import { END } from 'redux-saga';
 
 import { buildRandomPathDatabase } from '../../../../src/services/database';

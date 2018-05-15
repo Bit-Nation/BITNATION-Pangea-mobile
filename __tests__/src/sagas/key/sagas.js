@@ -1,3 +1,5 @@
+// @flow
+
 import { select, call, put } from 'redux-saga/effects';
 import { cloneableGenerator } from 'redux-saga/utils';
 

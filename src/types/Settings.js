@@ -1,3 +1,5 @@
+// @flow
+
 export type SettingsItem = 'identity' | 'security';
 
 export type PasscodeType =

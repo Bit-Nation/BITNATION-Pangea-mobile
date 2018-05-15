@@ -1,3 +1,5 @@
+// @flow
+
 import {
   startAccountEditing,
   changeEditingAccount,
@@ -17,6 +19,8 @@ describe('profile action creators', () => {
     name: 'Name',
     accountStore: 'Account store',
     networkType: 'main',
+    avatar: null,
+    location: null,
   };
 
   test('startAccountEditing', () => {

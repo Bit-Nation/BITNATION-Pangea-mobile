@@ -5,17 +5,18 @@ import { call, put, select } from 'redux-saga/effects';
 import type { Realm } from 'realm';
 import { factory as dbFactory } from '../../services/database';
 import { currentAccountBasedUpdate } from '../accounts/sagas';
-import type { AccountSettingsType } from '../../services/database/schemata';
+import type { AccountSettingsType as DBSettings } from '../../services/database/schemata';
 import { settingsUpdated } from '../../actions/settings';
 import { convertFromDatabase, convertToDatabase } from '../../utils/mapping/settings';
 import type { LoadSettings, SaveSettings } from '../../actions/settings';
+import type { SettingsType } from '../../types/Settings';
 
 /**
  * @desc Generator to be called on database change. Used to update settings.
  * @param {*} collection Updated settings collection
  * @return {void}
  */
-export function* onCurrentAccountChange(collection: Realm.Result<AccountSettingsType>): Generator<*, *, *> {
+export function* onCurrentAccountChange(collection: Realm.Result<DBSettings>): Generator<*, *, *> {
   if (collection.length === 0) {
     return;
   }
@@ -58,7 +59,7 @@ export function* loadSettings(action: LoadSettings): Generator<*, *, *> {
     yield call(action.callback, false);
     return;
   }
-  const settings = objects[0];
+  const settings: DBSettings = objects[0];
 
   yield put(settingsUpdated(convertFromDatabase(settings)));
   yield call(action.callback, true);
@@ -70,12 +71,18 @@ export function* loadSettings(action: LoadSettings): Generator<*, *, *> {
  * @return {void}
  */
 export function* saveSettings(action: SaveSettings): Generator<*, *, *> {
-  const { settings } = yield select();
+  const { settings }: { settings : SettingsType } = yield select();
   const db: Realm = yield call(dbFactory);
+  let dbSettings: ?DBSettings;
   db.write(() => {
-    db.create('AccountSettings', convertToDatabase(settings, action.accountId), true);
+    dbSettings = db.create('AccountSettings', convertToDatabase(settings, action.accountId), true);
   });
 
-  yield put(settingsUpdated(convertFromDatabase(settings)));
+  if (dbSettings === undefined) {
+    yield call(action.callback, false);
+    return;
+  }
+
+  yield put(settingsUpdated(convertFromDatabase(dbSettings)));
   yield call(action.callback, true);
 }

@@ -1,3 +1,5 @@
+// @flow
+
 import { call, put, select } from 'redux-saga/effects';
 
 import db, {
@@ -70,6 +72,7 @@ test('startDatabaseListening', () => {
 describe('loadSettings', () => {
   test('no settings', async () => {
     const mockAction = {
+      type: 'LOAD_SETTINGS',
       accountId: 'TEST',
       callback: jest.fn(),
     };
@@ -89,12 +92,14 @@ describe('loadSettings', () => {
 
   test('load correctly', async () => {
     const mockAction = {
+      type: 'LOAD_SETTINGS',
       accountId: 'TEST',
       callback: jest.fn(),
     };
     const mockSettings1 = {
       id: 'TEST',
       passcodeType: 'password',
+      pinCodeLength: null,
     };
     const mockSettings2 = {
       id: 'TEST2',
@@ -124,6 +129,7 @@ describe('loadSettings', () => {
 describe('saveSettings', () => {
   test('save correctly', async () => {
     const mockAction = {
+      type: 'SAVE_SETTINGS',
       accountId: 'TEST',
       callback: jest.fn(),
     };
@@ -138,7 +144,7 @@ describe('saveSettings', () => {
     const gen = saveSettings(mockAction);
     expect(gen.next().value).toEqual(select());
     expect(gen.next({ settings: mockSettings }).value).toEqual(call(dbFactory));
-    expect(gen.next(realm).value).toEqual(put(settingsUpdated(convertFromDatabase(mockSettings))));
+    expect(gen.next(realm).value).toEqual(put(settingsUpdated(mockSettings)));
     expect(gen.next().value).toEqual(call(mockAction.callback, true));
 
     const last = gen.next();
