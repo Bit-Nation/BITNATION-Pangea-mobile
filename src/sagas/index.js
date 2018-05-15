@@ -4,6 +4,7 @@ import accounts from './accounts';
 import navigation from './navigation';
 import key from './key';
 import settings from './settings';
+import wallet from './wallet';
 
 /**
  * @desc Root saga.
@@ -15,5 +16,6 @@ export default function* rootSaga() {
     call(navigation),
     call(key),
     call(settings),
+    call(wallet),
   ]);
 }
