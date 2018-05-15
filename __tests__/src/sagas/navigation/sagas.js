@@ -6,7 +6,6 @@ import { cloneableGenerator } from 'redux-saga/utils';
 import { launchCorrectFlow, launchLoggedInFlow, launchLoggedOutFlow } from '../../../../src/sagas/navigation/sagas';
 import { getCurrentAccountId } from '../../../../src/sagas/accounts/sagas';
 import { START_NAVIGATION } from '../../../../src/actions/navigation';
-import { CURRENT_ACCOUNT_ID_CHANGED } from '../../../../src/actions/accounts';
 
 describe('launchCorrectFlow on first launch', () => {
   const gen = cloneableGenerator(launchCorrectFlow)({
