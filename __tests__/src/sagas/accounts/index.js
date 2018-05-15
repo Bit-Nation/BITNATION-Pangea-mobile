@@ -1,36 +1,37 @@
-import { all, call, takeEvery } from 'redux-saga/effects';
+// @flow
+
+import { takeEvery, all, call } from 'redux-saga/effects';
+
+import rootSaga from '../../../../src/sagas/accounts';
 import {
+  checkPasswordSaga,
+  checkPinCodeSaga,
   listenForDatabaseUpdates,
   loginActionHandler,
   logout,
-  checkPasswordSaga,
-  checkPinCodeSaga,
   saveAccount,
+  saveCreatingAccount,
   savePasswordSaga,
   savePinCodeSaga,
-  saveCreatingAccount,
   startAccountCreation,
   startRestoreAccountUsingMnemonic,
-} from './sagas';
+} from '../../../../src/sagas/accounts/sagas';
 import {
-  LOGIN,
-  LOGOUT,
   CHECK_PASSWORD,
   CHECK_PIN_CODE,
+  LOGIN,
+  LOGOUT,
+  SAVE_CREATING_ACCOUNT,
   SAVE_PASSWORD,
   SAVE_PIN_CODE,
-  SAVE_CREATING_ACCOUNT,
   START_ACCOUNT_CREATION,
   START_RESTORE_ACCOUNT_USING_MNEMONIC,
-} from '../../actions/accounts';
-import { SAVE_ACCOUNT } from '../../actions/profile';
+} from '../../../../src/actions/accounts';
+import { SAVE_ACCOUNT } from '../../../../src/actions/profile';
 
-/**
- * @desc Root accounts saga.
- * @return {void}
- */
-export default function* rootSaga() {
-  yield all([
+test('rootSaga', () => {
+  const iterator = rootSaga();
+  expect(iterator.next().value).toEqual(all([
     call(listenForDatabaseUpdates),
     takeEvery(START_ACCOUNT_CREATION, startAccountCreation),
     takeEvery(START_RESTORE_ACCOUNT_USING_MNEMONIC, startRestoreAccountUsingMnemonic),
@@ -42,5 +43,5 @@ export default function* rootSaga() {
     takeEvery(SAVE_PIN_CODE, savePinCodeSaga),
     takeEvery(SAVE_PASSWORD, savePasswordSaga),
     takeEvery(SAVE_CREATING_ACCOUNT, saveCreatingAccount),
-  ]);
-}
+  ]));
+});
