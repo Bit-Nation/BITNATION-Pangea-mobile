@@ -1,3 +1,5 @@
+// @flow
+
 import { all, call, takeEvery } from 'redux-saga/effects';
 
 import rootSaga from '../../../../src/sagas/settings';

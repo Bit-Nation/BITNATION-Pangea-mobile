@@ -48,14 +48,18 @@ type Actions = {
    * @desc Check entered password.
    */
   checkPassword: (password: string, accountId: string, callback: (success: boolean) => void) => void,
+  /**
+   * @desc Action to perform a login.
+   */
+  login: (password: string, accountId: string) => void,
 }
 
 class EnterPasscodeContainer extends NavigatorComponent<Props & Actions & SettingsState> {
   static defaultProps;
 
   componentDidUpdate(prevProps: Props) {
-    if (prevProps.loginTask !== this.props.loginTask && this.props.loginTask.error !== null) {
-      errorAlert(this.props.loginTask.error);
+    if (prevProps.loginTask !== this.props.login && this.props.login.error !== null) {
+      errorAlert(this.props.login.error);
     }
   }
 

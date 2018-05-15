@@ -1,3 +1,5 @@
+// @flow
+
 import reducer, {
   initialState,
   getCurrentAccount,
@@ -25,6 +27,8 @@ const accountMock1 = {
   name: 'Name 1',
   accountStore: 'Account store 1',
   networkType: 'main',
+  avatar: null,
+  location: null,
 };
 
 const accountMock2 = {
@@ -32,9 +36,12 @@ const accountMock2 = {
   name: 'Name 2',
   accountStore: 'Account store 2',
   networkType: 'main',
+  avatar: null,
+  location: null,
 };
 
 const stateMock = {
+  ...initialState,
   accounts: [accountMock1, accountMock2],
   currentAccountId: accountMock1.id,
 };
@@ -53,19 +60,23 @@ test('getCurrentAccount', () => {
 
 test('isCreatingAccount', () => {
   expect(isCreatingAccount({
+    ...initialState,
     currentAccountId: null,
     creatingAccount: {
+      ...buildEmptyAccount(),
       id: 'ID',
       accountStore: 'Account store',
     },
   })).toBeTruthy();
 
   expect(getCurrentAccount({
+    ...initialState,
     currentAccountId: null,
     creatingAccount: null,
   })).toBeFalsy();
 
   expect(getCurrentAccount({
+    ...initialState,
     currentAccountId: 'ID',
     creatingAccount: null,
   })).toBeFalsy();
@@ -99,10 +110,11 @@ describe('accounts reducer action handling', () => {
 
   test('startAccountEditing', () => {
     const stateBefore = {
+      ...initialState,
       accounts: [accountMock1, accountMock2],
       currentAccountId: 'Account 1',
     };
-    expect(reducer(stateBefore, startAccountEditing())).toEqual({
+    expect(reducer(stateBefore, startAccountEditing(accountMock1))).toEqual({
       ...stateBefore,
       editingAccount: accountMock1,
     });
@@ -110,6 +122,7 @@ describe('accounts reducer action handling', () => {
 
   test('changeEditingAccount', () => {
     const stateBefore = {
+      ...initialState,
       editingAccount: accountMock1,
     };
     const changedAccount = {
@@ -124,6 +137,7 @@ describe('accounts reducer action handling', () => {
 
   test('cancelAccountEditing', () => {
     const stateBefore = {
+      ...initialState,
       editingAccount: accountMock1,
     };
     expect(reducer(stateBefore, cancelAccountEditing())).toEqual({
@@ -139,6 +153,7 @@ describe('accounts reducer action handling', () => {
 
   test('doneAccountEditing', () => {
     const stateBefore = {
+      ...initialState,
       editingAccount: accountMock1,
     };
     expect(reducer(stateBefore, doneAccountEditing())).toEqual({
@@ -154,9 +169,13 @@ describe('accounts reducer action handling', () => {
 
   test('startAccountCreation', () => {
     const stateAfter = reducer(initialState, startAccountCreation());
+    expect(stateAfter.creatingAccount).not.toBeNull();
+
     // Since id is generated randomly we can not expect it to be equal.
     const account = {
       ...buildEmptyAccount(),
+      // Since we use expect above, we know that creatingAccount is not null.
+      // $FlowFixMe
       id: stateAfter.creatingAccount.id,
     };
     expect(stateAfter).toEqual({
@@ -171,6 +190,7 @@ describe('accounts reducer action handling', () => {
 
   test('changeCreatingAccountField', () => {
     const stateBefore = {
+      ...initialState,
       creatingAccount: accountMock1,
     };
     expect(reducer(stateBefore, changeCreatingAccountField('name', 'CHANGED NAME'))).toEqual({
@@ -185,9 +205,13 @@ describe('accounts reducer action handling', () => {
   test('startRestoreAccountUsingMnemonic', () => {
     const mnemonicMock = ['a', 'a', 'a', 'a', 'a', 'a'];
     const stateAfter = reducer(initialState, startRestoreAccountUsingMnemonic(mnemonicMock));
+    expect(stateAfter.creatingAccount).not.toBeNull();
+
     // Since id is generated randomly we can not expect it to be equal.
     const account = {
       ...buildEmptyAccount(),
+      // Since we use expect above, we know that creatingAccount is not null.
+      // $FlowFixMe
       id: stateAfter.creatingAccount.id,
     };
     expect(stateAfter).toEqual({
@@ -202,20 +226,35 @@ describe('accounts reducer action handling', () => {
 
   test('saveCreatingAccount', () => {
     const stateBefore = {
+      ...initialState,
       creatingAccount: accountMock1,
     };
-    expect(reducer(stateBefore, saveCreatingAccount())).toEqual({
+    const callbackMock = jest.fn();
+
+    expect(reducer(stateBefore, saveCreatingAccount(callbackMock))).toEqual({
       ...stateBefore,
       currentCreation: null,
     });
 
-    expect(reducer(initialState, saveCreatingAccount())).toEqual({
+    expect(reducer(initialState, saveCreatingAccount(callbackMock))).toEqual({
       ...initialState,
       currentCreation: null,
     });
   });
+});
 
-  test('default', () => {
-    expect(reducer(stateMock, { type: 'UNKNOWN' })).toEqual(stateMock);
+describe('buildEmptyAccount', () => {
+  test('generates empty account', () => {
+    const account = buildEmptyAccount();
+    expect(account.id).toBeDefined();
+    expect(account.name).toBeNull();
+    expect(account.accountStore).toBeNull();
+    expect(account.networkType).toEqual('main');
+    expect(account.location).toBeNull();
+    expect(account.avatar).toBeNull();
+  });
+
+  test('generates different ids', () => {
+    expect(buildEmptyAccount().id).not.toEqual(buildEmptyAccount().id);
   });
 });

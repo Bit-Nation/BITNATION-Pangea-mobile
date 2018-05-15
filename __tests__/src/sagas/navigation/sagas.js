@@ -1,3 +1,5 @@
+// @flow
+
 import { call } from 'redux-saga/effects';
 import { cloneableGenerator } from 'redux-saga/utils';
 
@@ -30,7 +32,7 @@ describe('launchCorrectFlow on first launch', () => {
 describe('launchCorrectFlow on change', () => {
   test('currentAccountId is not null', () => {
     const gen = launchCorrectFlow({
-      type: CURRENT_ACCOUNT_ID_CHANGED,
+      type: 'CURRENT_ACCOUNT_ID_CHANGED',
       currentAccountId: 'abc',
     });
 
@@ -40,7 +42,7 @@ describe('launchCorrectFlow on change', () => {
 
   test('currentAccountId is null', () => {
     const gen = launchCorrectFlow({
-      type: CURRENT_ACCOUNT_ID_CHANGED,
+      type: 'CURRENT_ACCOUNT_ID_CHANGED',
       currentAccountId: null,
     });
 

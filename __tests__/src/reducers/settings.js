@@ -1,3 +1,5 @@
+// @flow
+
 import reducer, { initialState } from '../../../src/reducers/settings';
 import {
   changePasscodeLength,
@@ -55,9 +57,5 @@ describe('settings reducer action handling', () => {
     expect(reducer(stateWithPassword, settingsUpdated(stateWithCustomLength))).toEqual(stateWithCustomLength);
     expect(reducer(stateWithPinCode, settingsUpdated(stateWithPassword))).toEqual(stateWithPassword);
     expect(reducer(stateWithCustomLength, settingsUpdated(stateWithPinCode))).toEqual(stateWithPinCode);
-  });
-
-  test('default', () => {
-    expect(reducer(stateWithPinCode, { type: 'UNKNOWN' })).toEqual(stateWithPinCode);
   });
 });

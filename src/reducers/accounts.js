@@ -5,7 +5,7 @@ import _ from 'lodash';
 import uuid from 'uuid4';
 
 import {
-  type Action,
+  type Action as AccountsAction,
   ACCOUNTS_LIST_UPDATED,
   CURRENT_ACCOUNT_ID_CHANGED,
   LOGIN_TASK_UPDATED,
@@ -16,7 +16,13 @@ import {
 } from '../actions/accounts';
 import type { Account, PartialAccount } from '../types/Account';
 import TaskBuilder, { type AsyncTask } from '../utils/asyncTask';
-import { CANCEL_ACCOUNT_EDITING, CHANGE_EDITING_ACCOUNT, DONE_ACCOUNT_EDITING, START_ACCOUNT_EDITING } from '../actions/profile';
+import {
+  type Action as ProfileAction,
+  CANCEL_ACCOUNT_EDITING,
+  CHANGE_EDITING_ACCOUNT,
+  DONE_ACCOUNT_EDITING,
+  START_ACCOUNT_EDITING,
+} from '../actions/profile';
 import type { Mnemonic } from '../types/Mnemonic';
 
 export type State = {
@@ -54,10 +60,10 @@ export const initialState: State = {
 /**
  * @desc Profile reducer.
  * @param {State} state Current state.
- * @param {Action} action Performed action.
+ * @param {AccountsAction|ProfileAction} action Performed action.
  * @returns {State} Next state.
  */
-export default (state: State = initialState, action: Action): State => {
+export default (state: State = initialState, action: AccountsAction | ProfileAction): State => {
   switch (action.type) {
     case ACCOUNTS_LIST_UPDATED:
       return {
