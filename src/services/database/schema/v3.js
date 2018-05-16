@@ -129,9 +129,6 @@ export const MessageJobSchema = {
   },
 };
 
-// We need this because of types circular dependencies.
-/* eslint-disable no-use-before-define */
-
 /**
  * @typedef TransactionJobType
  * @property {number} id
@@ -146,10 +143,9 @@ export type TransactionJobType = {
   nation: NationType | null
 }
 
-/* eslint-enable no-use-before-define */
-
 export const TransactionJobSchema = {
   name: 'TransactionJob',
+  primaryKey: 'txHash',
   properties: {
     txHash: 'string',
     status: 'int',
