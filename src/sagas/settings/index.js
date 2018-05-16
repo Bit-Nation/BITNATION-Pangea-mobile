@@ -9,7 +9,7 @@ import { LOAD_SETTINGS, SAVE_SETTINGS } from '../../actions/settings';
 export default function* rootSaga() {
   yield all([
     call(startDatabaseListening),
-    yield takeEvery(LOAD_SETTINGS, loadSettings),
-    yield takeEvery(SAVE_SETTINGS, saveSettings),
+    takeEvery(LOAD_SETTINGS, loadSettings),
+    takeEvery(SAVE_SETTINGS, saveSettings),
   ]);
 }

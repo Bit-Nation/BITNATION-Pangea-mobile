@@ -228,7 +228,7 @@ class RestoreKeyScreen extends NavigatorComponent<Actions & KeyState & Props, St
         <FakeNavigationBar />
         <View style={styles.bodyContainer}>
           <KeyboardAwareScrollView
-            contentContainerStyle={styles.bodyContainer}
+            contentContainerStyle={[styles.bodyContainer, styles.noflex]}
             enableAutoAutomaticScroll={false}
             extraHeight={48.5 + 44 + (Platform.OS === 'android' ? 22 : 0)}
             enableOnAndroid

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { View, Text } from 'react-native';
 
 import i18n from '../../../global/i18n';
-import { screen } from '../../../global/Screens';
+import { androidNavigationButtons, screen } from '../../../global/Screens';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import ScreenTitle from '../../../components/common/ScreenTitle';
@@ -31,6 +31,8 @@ type Actions = {
 }
 
 class DeveloperSettings extends Component<Props & Actions & AccountsState> {
+  static navigatorButtons = { ...androidNavigationButtons };
+
   previousStep = () => {
     this.props.navigator.pop();
   };

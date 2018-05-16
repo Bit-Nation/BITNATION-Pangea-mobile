@@ -1,3 +1,5 @@
+// @flow
+
 import {
   accountListUpdated,
   changeCreatingAccountField,
@@ -36,6 +38,8 @@ describe('accounts action creators', () => {
       name: 'Name',
       accountStore: 'Account store',
       networkType: 'main',
+      avatar: null,
+      location: null,
     };
 
     expect(accountListUpdated([accountMock, accountMock])).toEqual({

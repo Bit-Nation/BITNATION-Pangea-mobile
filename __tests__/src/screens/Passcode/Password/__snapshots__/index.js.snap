@@ -69,6 +69,7 @@ ShallowWrapper {
         />,
         <TextInput
           allowFontScaling={true}
+          autoCapitalize="none"
           autoFocus={true}
           onChangeText={[Function]}
           secureTextEntry={true}
@@ -76,7 +77,7 @@ ShallowWrapper {
             Object {
               "color": "white",
               "fontSize": 16,
-              "height": 24,
+              "height": 50,
               "marginLeft": 30,
               "marginRight": 30,
               "marginTop": 16,
@@ -148,13 +149,14 @@ ShallowWrapper {
         "nodeType": "class",
         "props": Object {
           "allowFontScaling": true,
+          "autoCapitalize": "none",
           "autoFocus": true,
           "onChangeText": [Function],
           "secureTextEntry": true,
           "style": Object {
             "color": "white",
             "fontSize": 16,
-            "height": 24,
+            "height": 50,
             "marginLeft": 30,
             "marginRight": 30,
             "marginTop": 16,
@@ -239,6 +241,7 @@ ShallowWrapper {
           />,
           <TextInput
             allowFontScaling={true}
+            autoCapitalize="none"
             autoFocus={true}
             onChangeText={[Function]}
             secureTextEntry={true}
@@ -246,7 +249,7 @@ ShallowWrapper {
               Object {
                 "color": "white",
                 "fontSize": 16,
-                "height": 24,
+                "height": 50,
                 "marginLeft": 30,
                 "marginRight": 30,
                 "marginTop": 16,
@@ -318,13 +321,14 @@ ShallowWrapper {
           "nodeType": "class",
           "props": Object {
             "allowFontScaling": true,
+            "autoCapitalize": "none",
             "autoFocus": true,
             "onChangeText": [Function],
             "secureTextEntry": true,
             "style": Object {
               "color": "white",
               "fontSize": 16,
-              "height": 24,
+              "height": 50,
               "marginLeft": 30,
               "marginRight": 30,
               "marginTop": 16,

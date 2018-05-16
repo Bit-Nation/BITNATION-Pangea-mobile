@@ -1,14 +1,16 @@
+// @flow
+
 import {
   startAccountEditing,
   changeEditingAccount,
   cancelAccountEditing,
   doneAccountEditing,
-  saveAccount,
+  saveEditingAccount,
   START_ACCOUNT_EDITING,
   CHANGE_EDITING_ACCOUNT,
   CANCEL_ACCOUNT_EDITING,
   DONE_ACCOUNT_EDITING,
-  SAVE_ACCOUNT,
+  SAVE_EDITING_ACCOUNT,
 } from '../../../src/actions/profile';
 
 describe('profile action creators', () => {
@@ -17,6 +19,8 @@ describe('profile action creators', () => {
     name: 'Name',
     accountStore: 'Account store',
     networkType: 'main',
+    avatar: null,
+    location: null,
   };
 
   test('startAccountEditing', () => {
@@ -50,8 +54,8 @@ describe('profile action creators', () => {
   });
 
   test('saveAccount', () => {
-    expect(saveAccount(accountMock)).toEqual({
-      type: SAVE_ACCOUNT,
+    expect(saveEditingAccount(accountMock)).toEqual({
+      type: SAVE_EDITING_ACCOUNT,
       account: accountMock,
     });
   });
