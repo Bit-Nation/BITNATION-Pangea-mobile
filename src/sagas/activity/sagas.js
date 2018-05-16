@@ -47,11 +47,11 @@ export function* addNewMessageSaga(action) {
     highestId = messages[0].id + 1;
   const convertedMessage = convertToDatabase(buildMessageObject(highestId, action.message, params, interpret));
   if (convertedMessage === null) {
-    action.callback(false);
+    // action.callback(false);
   } else {
     db.write(() => {
       db.create('MessageJob', convertedMessage);
     });
-    action.callback(true);
+    // action.callback(true);
   }
 }

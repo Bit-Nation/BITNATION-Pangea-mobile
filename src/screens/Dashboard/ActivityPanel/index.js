@@ -62,6 +62,7 @@ const ActivityPanel = ({
         style={styles.flex}
       />
       {
+        testingMode.isActive === true &&
         <Button title='Add dummy log' onPress={onAddDummyMessage} />
       }
 
