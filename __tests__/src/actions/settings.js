@@ -1,3 +1,5 @@
+// @flow
+
 import {
   changePasscodeLength,
   changeUseNumericPasscode,

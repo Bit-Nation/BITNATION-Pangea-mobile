@@ -216,7 +216,7 @@ class VerifyKeyProcessScreen extends KeyBaseScreen<Actions & KeyState & Props, S
         <FakeNavigationBar />
         <View style={styles.bodyContainer}>
           <KeyboardAwareScrollView
-            contentContainerStyle={styles.bodyContainer}
+            contentContainerStyle={[styles.bodyContainer, styles.noflex]}
             enableAutoAutomaticScroll={false}
             extraHeight={48.5 + 44 + (Platform.OS === 'android' ? 22 : 0)}
             enableOnAndroid

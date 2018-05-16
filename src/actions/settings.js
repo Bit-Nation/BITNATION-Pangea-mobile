@@ -1,6 +1,6 @@
 // @flow
 
-import { SettingsType } from '../types/Settings';
+import type { SettingsType } from '../types/Settings';
 
 export type ChangeUseNumericPasscode = { +type: 'CHANGE_USE_NUMERIC_PASSCODE', useNumericPasscode: boolean };
 export type ChangePasscodeLength = { +type: 'CHANGE_PASSCODE_LENGTH', passcodeLength: number };

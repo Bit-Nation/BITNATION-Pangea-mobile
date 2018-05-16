@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import { Slider, Text, View } from 'react-native';
+import { Slider, Text, View, Platform } from 'react-native';
 import { connect } from 'react-redux';
 
 import styles from './styles';
@@ -42,6 +42,14 @@ type Actions = {
    * @desc Action to change desired length of numeric passcode.
    */
   changePasscodeLength: (number) => void,
+  /**
+   * @desc Action to save current settings.
+   */
+  saveSettings: (accountId: string, callback: (success: boolean) => void) => void,
+  /**
+   * @desc Action to load settings for account from database.
+   */
+  loadSettings: (accountId: string, callback: (success: boolean) => void) => void,
 };
 
 type State = {
@@ -70,9 +78,15 @@ class SecuritySettingsScreen extends NavigatorComponent<Props & Actions & Settin
   };
 
   onPasscodeCreated = () => {
-    this.props.navigator.dismissModal().then(() => {
+    // @todo It is a hack because React Native Navigation API is not consistent between platforms.
+    if (Platform.OS === 'ios') {
+      this.props.navigator.dismissModal().then(() => {
+        this.props.navigator.push(screen('ACCOUNT_CREATE_DEVELOPER_SETTINGS'));
+      });
+    } else {
+      this.props.navigator.dismissModal();
       this.props.navigator.push(screen('ACCOUNT_CREATE_DEVELOPER_SETTINGS'));
-    });
+    }
   };
 
   onPasscodeChanged = () => {
