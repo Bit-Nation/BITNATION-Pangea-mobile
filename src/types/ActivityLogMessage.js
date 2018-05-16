@@ -1,7 +1,7 @@
 // @flow
 
 export type ActivityLogMessage = {
-  id: string,
+  id: number,
   msg: string,
   params: string,
   interpret: boolean,

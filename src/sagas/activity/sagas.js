@@ -29,8 +29,8 @@ export function* watchNewMessages(): Generator<*, *, *> {
   }
 }
 
-const buildMessageObject = (message, params, interpret): ActivityLogMessage => ({
-  id: uuid(),
+const buildMessageObject = (highestId, message, params, interpret): ActivityLogMessage => ({
+  id: highestId,
   msg: message,
   params: JSON.stringify(params),
   interpret,
@@ -41,7 +41,11 @@ export function* addNewMessageSaga(action) {
   const db = yield call(dbFactory);
   let params = action.params || {};
   let interpret = action.interpret === false ? false : true
-  const convertedMessage = convertToDatabase(buildMessageObject(action.message, params, interpret));
+  let messages = db.objects('MessageJob').sorted('id', true);
+  let highestId = 1;
+  if (messages.length > 0)
+    highestId = messages[0].id + 1;
+  const convertedMessage = convertToDatabase(buildMessageObject(highestId, action.message, params, interpret));
   if (convertedMessage === null) {
     action.callback(false);
   } else {
