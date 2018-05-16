@@ -3,7 +3,7 @@
 /* eslint-disable no-use-before-define */
 import { call, put, select } from 'redux-saga/effects';
 import type { Realm } from 'realm';
-import { factory as dbFactory } from '../../services/database';
+import defaultDB from '../../services/database';
 import { currentAccountBasedUpdate } from '../accounts/sagas';
 import type { AccountSettingsType as DBSettings } from '../../services/database/schemata';
 import { settingsUpdated } from '../../actions/settings';
@@ -53,7 +53,7 @@ export function* startDatabaseListening(): Generator<*, *, *> {
  * @return {void}
  */
 export function* loadSettings(action: LoadSettings): Generator<*, *, *> {
-  const db: Realm = yield call(dbFactory);
+  const db: Realm = yield defaultDB;
   const objects = db.objects('AccountSettings').filtered(`id == '${action.accountId}'`);
   if (objects.length === 0) {
     yield call(action.callback, false);
@@ -72,13 +72,13 @@ export function* loadSettings(action: LoadSettings): Generator<*, *, *> {
  */
 export function* saveSettings(action: SaveSettings): Generator<*, *, *> {
   const { settings }: { settings : SettingsType } = yield select();
-  const db: Realm = yield call(dbFactory);
-  let dbSettings: ?DBSettings;
+  const db: Realm = yield defaultDB;
+  let dbSettings: ?DBSettings = null;
   db.write(() => {
     dbSettings = db.create('AccountSettings', convertToDatabase(settings, action.accountId), true);
   });
 
-  if (dbSettings === undefined) {
+  if (dbSettings == null) {
     yield call(action.callback, false);
     return;
   }

@@ -9,7 +9,7 @@ import {
   listenForDatabaseUpdates,
   loginActionHandler,
   logout,
-  saveAccount,
+  saveEditingAccount,
   saveCreatingAccount,
   savePasswordSaga,
   savePinCodeSaga,
@@ -27,7 +27,7 @@ import {
   START_ACCOUNT_CREATION,
   START_RESTORE_ACCOUNT_USING_MNEMONIC,
 } from '../../../../src/actions/accounts';
-import { SAVE_ACCOUNT } from '../../../../src/actions/profile';
+import { SAVE_EDITING_ACCOUNT } from '../../../../src/actions/profile';
 
 test('rootSaga', () => {
   const iterator = rootSaga();
@@ -37,7 +37,7 @@ test('rootSaga', () => {
     takeEvery(START_RESTORE_ACCOUNT_USING_MNEMONIC, startRestoreAccountUsingMnemonic),
     takeEvery(LOGIN, loginActionHandler),
     takeEvery(LOGOUT, logout),
-    takeEvery(SAVE_ACCOUNT, saveAccount),
+    takeEvery(SAVE_EDITING_ACCOUNT, saveEditingAccount),
     takeEvery(CHECK_PIN_CODE, checkPinCodeSaga),
     takeEvery(CHECK_PASSWORD, checkPasswordSaga),
     takeEvery(SAVE_PIN_CODE, savePinCodeSaga),

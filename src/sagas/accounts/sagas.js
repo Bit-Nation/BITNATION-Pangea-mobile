@@ -4,7 +4,7 @@
 import type { Realm } from 'realm';
 import { call, put, take, select, race } from 'redux-saga/effects';
 
-import { factory as dbFactory } from '../../services/database';
+import defaultDB from '../../services/database';
 import { createDatabaseUpdateChannel } from '../database';
 import {
   accountListUpdated,
@@ -29,7 +29,7 @@ import TaskBuilder from '../../utils/asyncTask';
 import AccountsService from '../../services/accounts';
 import { InvalidPasswordError, LoginFailedError } from '../../global/errors/accounts';
 import type { AccountType as DBAccount } from '../../services/database/schemata';
-import type { SaveAccountAction } from '../../actions/profile';
+import type { SaveEditingAccountAction } from '../../actions/profile';
 import { cancelAccountEditing } from '../../actions/profile';
 import { resetSettings } from '../../actions/settings';
 
@@ -50,8 +50,8 @@ export function* currentAccountBasedUpdate<T>(
    */
   function* startListening(): Generator<*, *, *> {
     const currentAccountId = yield call(getCurrentAccountId);
-    const realm = yield call(dbFactory);
-    const results = resultsBuilder(realm, currentAccountId);
+    const db = yield defaultDB;
+    const results = resultsBuilder(db, currentAccountId);
     if (results === null) {
       // If there is nothing to listen on, we should not exit listener, since that will cause race to stop.
       // So, we are hanging it and it will stop once current account id is changed.
@@ -86,7 +86,7 @@ export function* getCurrentAccountId(): Generator<*, *, *> {
  * @return {boolean} True if accounts are present in database.
  */
 export function* accountsPresent(): Generator<*, *, *> {
-  const db = yield call(dbFactory);
+  const db = yield defaultDB;
   const results = db.objects('Account');
   return yield results.length > 0;
 }
@@ -97,14 +97,14 @@ export function* accountsPresent(): Generator<*, *, *> {
  * @return {DBAccount|null} Realm object of account with specified id or null if there is no account with specified id.
  */
 export function* getAccount(id: string): Generator<*, *, *> {
-  const db = yield call(dbFactory);
+  const db = yield defaultDB;
   const results = db.objects('Account').filtered(`id == '${id}'`);
-  return yield results[0];
+  return yield results[0] || null;
 }
 
 /**
  * @desc Gets current account realm object.
- * @return {DBAccount} Current account realm object.
+ * @return {DBAccount|null} Current account realm object or null.
  */
 export function* getCurrentAccount(): Generator<*, *, *> {
   const id = yield call(getCurrentAccountId);
@@ -118,10 +118,10 @@ export function* getCurrentAccount(): Generator<*, *, *> {
  * @desc Start listen for database updates and update the state accordingly.
  * @returns {void}
  */
-export function* listenForDatabaseUpdates(): Generator<*, *, *> {
-  const db = yield call(dbFactory);
-  const results = db.objects('Account');
-  const channel = createDatabaseUpdateChannel(results);
+export function* listenForDatabaseUpdates(): Generator<*, *, any> {
+  const db = yield defaultDB;
+  const results = yield call([db, 'objects'], 'Account');
+  const channel = yield call(createDatabaseUpdateChannel, results);
   while (true) {
     const { collection } = yield take(channel);
     yield put(accountListUpdated(collection.map(convertFromDatabase)));
@@ -165,7 +165,7 @@ export function* login(userInfo: ({ accountId: string, accountStore?: string }),
   const { accountId } = userInfo;
   let accountStore: string;
   if (userInfo.accountStore == null) {
-    const account = yield getAccount(accountId);
+    const account = yield call(getAccount, accountId);
     ({ accountStore } = account);
   } else {
     ({ accountStore } = userInfo);
@@ -200,19 +200,16 @@ export function* logout(): Generator<*, *, *> {
 
 /**
  * @desc Saves updated account to database.
- * @param {SaveAccountAction} action An action saga was called with.
+ * @param {SaveEditingAccountAction} action An action saga was called with.
  * @return {void}
  */
-export function* saveAccount(action: SaveAccountAction): Generator<*, *, *> {
+export function* saveEditingAccount(action: SaveEditingAccountAction): Generator<*, *, *> {
   const account: DBAccount = yield call(getCurrentAccount);
   if (account === null) {
     return;
   }
   const { account: editingAccount } = action;
-  if (editingAccount === null) {
-    return;
-  }
-  const db = yield dbFactory();
+  const db = yield defaultDB;
   db.write(() => {
     account.location = editingAccount.location ? editingAccount.location.trim() : '';
     account.name = editingAccount.name.trim();
@@ -267,7 +264,7 @@ export function* savePasswordSaga(action: SavePasswordAction): Generator<*, *, *
     if (currentCreation === null) {
       // It's an existing account, old keys need to be encrypted with new password and saved.
       const newAccountStore = yield call(AccountsService.exportAccountStore, action.password);
-      const db = yield call(dbFactory);
+      const db = yield defaultDB;
       const account: DBAccount = yield call(getAccount, accountId);
       db.write(() => {
         account.accountStore = newAccountStore;
@@ -310,7 +307,7 @@ export function* saveCreatingAccount(action: SaveCreatingAccountAction): Generat
   if (convertedAccount === null) {
     action.callback(false);
   } else {
-    const db = yield dbFactory();
+    const db = yield defaultDB;
     db.write(() => {
       db.create('Account', convertedAccount);
     });

@@ -2,10 +2,7 @@
 
 import { call, put, select } from 'redux-saga/effects';
 
-import db, {
-  factory as dbFactory,
-  buildRandomPathDatabase,
-} from '../../../../src/services/database';
+import defaultDB, { buildRandomPathDatabase } from '../../../../src/services/database';
 import {
   buildAccountSettingsResults, loadSettings, onCurrentAccountChange, saveSettings,
   startDatabaseListening,
@@ -48,13 +45,13 @@ describe('onCurrentAccountChange', () => {
 describe('buildAccountSettingsResults', () => {
   test('passing null to accountId', async () => {
     expect.assertions(1);
-    const realm = await db;
+    const realm = await defaultDB;
 
     expect(buildAccountSettingsResults(realm, null)).toBeNull();
   });
 
   test('passing nonnull accountId', async () => {
-    const realm = await db;
+    const realm = await defaultDB;
 
     expect(buildAccountSettingsResults(realm, 'test')).toBeDefined();
   });
@@ -80,7 +77,7 @@ describe('loadSettings', () => {
 
     const realm = await buildRandomPathDatabase();
     const gen = loadSettings(mockAction);
-    expect(gen.next().value).toEqual(call(dbFactory));
+    expect(gen.next().value).toEqual(defaultDB);
     expect(gen.next(realm).value).toEqual(call(mockAction.callback, false));
 
     const last = gen.next();
@@ -114,7 +111,7 @@ describe('loadSettings', () => {
       realm.create('AccountSettings', mockSettings2);
     });
     const gen = loadSettings(mockAction);
-    expect(gen.next().value).toEqual(call(dbFactory));
+    expect(gen.next().value).toEqual(defaultDB);
     expect(gen.next(realm).value).toEqual(put(settingsUpdated(convertFromDatabase(mockSettings1))));
     expect(gen.next().value).toEqual(call(mockAction.callback, true));
 
@@ -143,7 +140,7 @@ describe('saveSettings', () => {
     const realm = await buildRandomPathDatabase();
     const gen = saveSettings(mockAction);
     expect(gen.next().value).toEqual(select());
-    expect(gen.next({ settings: mockSettings }).value).toEqual(call(dbFactory));
+    expect(gen.next({ settings: mockSettings }).value).toEqual(defaultDB);
     expect(gen.next(realm).value).toEqual(put(settingsUpdated(mockSettings)));
     expect(gen.next().value).toEqual(call(mockAction.callback, true));
 
