@@ -19,6 +19,7 @@ ShallowWrapper {
           "calls": Array [
             Array [
               Object {
+                "leftButtons": Array [],
                 "rightButtons": Array [
                   Object {
                     "buttonColor": "#007AFF",
