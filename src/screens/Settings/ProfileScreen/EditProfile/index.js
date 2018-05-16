@@ -79,6 +79,7 @@ class EditProfile extends NavigatorComponent<Props> {
         disabled: !saveEnabled,
         buttonColor: Colors.navigationButtonColor,
       }],
+      ...androidNavigationButtons,
     };
     if (this.props.isCreating === false) {
       buttons.leftButtons = [{
