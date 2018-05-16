@@ -15,6 +15,7 @@ import styles from './PinCode/styles';
 import BackgroundImage from '../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../components/common/FakeNavigationBar';
 import ScreenTitle from '../../components/common/ScreenTitle';
+import type { AsyncTask } from '../../utils/asyncTask';
 
 type Props = {
   /**
@@ -37,6 +38,10 @@ type Props = {
    * @desc Flag if there is currently logged in account.
    */
   isLoggedIn: boolean,
+  /**
+   * @desc Task that describes current login status.
+   */
+  loginTask: AsyncTask<void>,
 }
 
 type Actions = {
@@ -57,9 +62,9 @@ type Actions = {
 class EnterPasscodeContainer extends NavigatorComponent<Props & Actions & SettingsState> {
   static defaultProps;
 
-  componentDidUpdate(prevProps: Props) {
-    if (prevProps.loginTask !== this.props.login && this.props.login.error !== null) {
-      errorAlert(this.props.login.error);
+  componentDidUpdate(prevProps: Props & Actions & SettingsState) {
+    if (prevProps.loginTask !== this.props.loginTask && this.props.loginTask.error != null) {
+      errorAlert(this.props.loginTask.error);
     }
   }
 
