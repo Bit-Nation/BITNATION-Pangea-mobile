@@ -37,38 +37,44 @@ import { resetSettings } from '../../actions/settings';
  * @desc That function should be used for listening on information that depends on current account.
  * That way it will automatically be updated once account is switched.
  * @param {function} resultsBuilder A function that takes realm and account id and returns a realm results collection to be listened on.
- * @param {function} onChange A function that is called on every change and takes updated collection and changes.
+ * @param {function|Generator} onChange A function that is called on every change and takes updated collection and changes.
  * @return {void}
  */
 export function* currentAccountBasedUpdate<T>(
   resultsBuilder: (realm: Realm, currentAccountId: string | null) => Realm.Results<T> | null,
-  onChange: Generator<*, *, *>,
+  onChange: any,
 ): Generator<*, *, *> {
-  /**
-   * @desc Function that is actually start listening on current account.
-   * @return {void}
-   */
-  function* startListening(): Generator<*, *, *> {
-    const currentAccountId = yield call(getCurrentAccountId);
-    const db = yield defaultDB;
-    const results = resultsBuilder(db, currentAccountId);
-    if (results === null) {
-      // If there is nothing to listen on, we should not exit listener, since that will cause race to stop.
-      // So, we are hanging it and it will stop once current account id is changed.
-      yield take('HANG_FOREVER');
-    }
-    const channel = createDatabaseUpdateChannel(results);
-    while (true) {
-      const { collection, changes } = yield take(channel);
-      yield call(onChange, collection, changes);
-    }
-  }
-
   while (true) {
     yield race({
-      task: call(startListening),
+      task: call(startAccountUpdateListening, resultsBuilder, onChange),
       cancel: take(CURRENT_ACCOUNT_ID_CHANGED),
     });
+  }
+}
+
+/**
+ * @desc Function that is actually start listening on current account updates.
+ * @param {function} resultsBuilder A function that takes realm and account id and returns a realm results collection to be listened on.
+ * @param {function|Generator} onChange A function that is called on every change and takes updated collection and changes.
+ * @return {void}
+ */
+export function* startAccountUpdateListening<T>(
+  resultsBuilder: (realm: Realm, currentAccountId: string | null) => Realm.Results<T> | null,
+  onChange: any,
+): Generator<*, *, *> {
+  const currentAccountId = yield call(getCurrentAccountId);
+  const db = yield defaultDB;
+  const results = yield call(resultsBuilder, db, currentAccountId);
+  if (results === null) {
+    // If there is nothing to listen on, we should not exit listener, since that will cause race to stop.
+    // So, we are hanging it and it will stop once current account id is changed.
+    yield take('HANG_FOREVER');
+    return;
+  }
+  const channel = yield call(createDatabaseUpdateChannel, results);
+  while (true) {
+    const { collection, changes } = yield take(channel);
+    yield call(onChange, collection, changes);
   }
 }
 
@@ -233,12 +239,12 @@ export function* checkPinCodeSaga(action: CheckPinCodeAction): Generator<*, *, *
  */
 export function* checkPasswordSaga(action: CheckPasswordAction): Generator<*, *, *> {
   try {
-    const account = yield getAccount(action.accountId);
+    const account = yield call(getAccount, action.accountId);
     const { accountStore } = account;
     const success = yield call(AccountsService.checkPasscode, accountStore, action.password);
-    action.callback(success);
+    yield call(action.callback, success);
   } catch (e) {
-    action.callback(false);
+    yield call(action.callback, false);
   }
 }
 
@@ -256,7 +262,7 @@ export function* savePinCodeSaga(action: SavePinCodeAction): Generator<*, *, *> 
  * @param {SavePasswordAction} action An action.
  * @return {void}
  */
-export function* savePasswordSaga(action: SavePasswordAction): Generator<*, *, *> {
+export function* savePasswordSaga(action: SavePasswordAction): Generator<*, *, any> {
   const { accountId, password } = action;
   const { accounts } = yield select();
   const { currentCreation } = accounts;
@@ -303,15 +309,23 @@ export function* savePasswordSaga(action: SavePasswordAction): Generator<*, *, *
 export function* saveCreatingAccount(action: SaveCreatingAccountAction): Generator<*, *, *> {
   const { accounts } = yield select();
   const { creatingAccount } = accounts;
+
+  if (creatingAccount === null) {
+    yield call(action.callback, false);
+    return;
+  }
+
   const convertedAccount = convertToDatabase(creatingAccount);
   if (convertedAccount === null) {
-    action.callback(false);
-  } else {
-    const db = yield defaultDB;
-    db.write(() => {
-      db.create('Account', convertedAccount);
-    });
-    action.callback(true);
+    yield call(action.callback, false);
+    return;
   }
+
+  const db = yield defaultDB;
+  db.write(() => {
+    db.create('Account', convertedAccount);
+  });
+  yield call(action.callback, true);
+
   yield put(cancelAccountEditing());
 }
