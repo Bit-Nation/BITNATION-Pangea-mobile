@@ -5,7 +5,7 @@ import {
   logout,
   checkPasswordSaga,
   checkPinCodeSaga,
-  saveAccount,
+  saveEditingAccount,
   savePasswordSaga,
   savePinCodeSaga,
   saveCreatingAccount,
@@ -23,7 +23,7 @@ import {
   START_ACCOUNT_CREATION,
   START_RESTORE_ACCOUNT_USING_MNEMONIC,
 } from '../../actions/accounts';
-import { SAVE_ACCOUNT } from '../../actions/profile';
+import { SAVE_EDITING_ACCOUNT } from '../../actions/profile';
 
 /**
  * @desc Root accounts saga.
@@ -36,7 +36,7 @@ export default function* rootSaga() {
     takeEvery(START_RESTORE_ACCOUNT_USING_MNEMONIC, startRestoreAccountUsingMnemonic),
     takeEvery(LOGIN, loginActionHandler),
     takeEvery(LOGOUT, logout),
-    takeEvery(SAVE_ACCOUNT, saveAccount),
+    takeEvery(SAVE_EDITING_ACCOUNT, saveEditingAccount),
     takeEvery(CHECK_PIN_CODE, checkPinCodeSaga),
     takeEvery(CHECK_PASSWORD, checkPasswordSaga),
     takeEvery(SAVE_PIN_CODE, savePinCodeSaga),
