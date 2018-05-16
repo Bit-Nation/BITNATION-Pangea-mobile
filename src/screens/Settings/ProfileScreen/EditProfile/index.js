@@ -23,6 +23,7 @@ import type { Account, PartialAccount } from '../../../../types/Account';
 import i18n from '../../../../global/i18n';
 import styles from './styles';
 import ScreenTitle from '../../../../components/common/ScreenTitle';
+import { androidNavigationButtons } from '../../../../global/Screens';
 
 const DONE_BUTTON = 'DONE_BUTTON';
 
@@ -66,23 +67,27 @@ class EditProfile extends NavigatorComponent<Props> {
     super(props);
 
     this.actionSheet = null;
-    this.setNavigationButtons(false);
+    this.setNavigationButtons(saveShouldBeEnabled(this.props.account, this.props.editingAccount));
   }
 
   setNavigationButtons(saveEnabled: boolean): void {
-    this.props.navigator.setButtons({
-      leftButtons: [{
-        title: i18n.t('screens.profile.edit.cancelButton'),
-        id: 'cancel',
-        buttonColor: Colors.navigationButtonColor,
-      }],
+    const buttons = {
+      leftButtons: undefined,
       rightButtons: [{
         title: i18n.t('screens.profile.edit.doneButton'),
         id: DONE_BUTTON,
         disabled: !saveEnabled,
         buttonColor: Colors.navigationButtonColor,
       }],
-    });
+    };
+    if (this.props.isCreating === false) {
+      buttons.leftButtons = [{
+        title: i18n.t('screens.profile.edit.cancelButton'),
+        id: 'cancel',
+        buttonColor: Colors.navigationButtonColor,
+      }];
+    }
+    this.props.navigator.setButtons(buttons);
   }
 
   componentWillReceiveProps(nextProps: Props) {
