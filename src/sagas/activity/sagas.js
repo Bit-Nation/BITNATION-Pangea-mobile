@@ -4,14 +4,14 @@ import uuid from 'uuid4';
 import { call, put, take } from 'redux-saga/effects';
 
 import { doneFetchMessages, messageAdded } from '../../actions/activity';
-import { factory as dbFactory } from '../../services/database';
+import defaultDB from '../../services/database';
 import { convertFromDatabase, convertToDatabase } from '../../utils/mapping/activity';
 import type { ActivityLogMessage } from '../../types/ActivityLogMessage';
 import { createDatabaseUpdateChannel } from '../database';
 
 export function* fetchMessagesSaga(action) {
   try {
-    const db = yield call(dbFactory);
+    const db = yield defaultDB;
     const messages = db.objects('MessageJob');
     yield put(doneFetchMessages(messages));
   } catch (error) {
@@ -20,7 +20,7 @@ export function* fetchMessagesSaga(action) {
 }
 
 export function* watchNewMessages(): Generator<*, *, *> {
-  const db = yield call(dbFactory);
+  const db = yield defaultDB;
   const results = db.objects('MessageJob');
   const channel = createDatabaseUpdateChannel(results);
   while (true) {
@@ -38,7 +38,7 @@ const buildMessageObject = (highestId, message, params, interpret): ActivityLogM
 });
 
 export function* addNewMessageSaga(action) {
-  const db = yield call(dbFactory);
+  const db = yield defaultDB;
   let params = action.params || {};
   let interpret = action.interpret === false ? false : true
   let messages = db.objects('MessageJob').sorted('id', true);
