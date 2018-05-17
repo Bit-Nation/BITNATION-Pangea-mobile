@@ -71,6 +71,33 @@ const baseKeyScreen = {
  */
 
 const Screens = {
+  ACCOUNTS_SCREEN: {
+    screen: 'Pangea.AccountsScreen',
+    title: i18n.t('screens.accounts.title'),
+    navigatorStyle: hiddenNavigatorStyle,
+  },
+  ACCOUNT_CREATE_DEVELOPER_SETTINGS: {
+    screen: 'Pangea.AccountCreateDeveloperSettingsScreen',
+    title: i18n.t('screens.accounts.create.developerTitle'),
+    navigatorStyle,
+  },
+  ACCOUNT_CREATE_READY: {
+    screen: 'Pangea.AccountCreateReadyScreen',
+    navigatorStyle: hiddenNavigatorStyle,
+  },
+  ACCOUNT_RESTORE_SOURCE: {
+    screen: 'Pangea.AccountRestoreSourceScreen',
+    navigatorStyle,
+  },
+  ACCOUNT_RESTORE_EMPTY_WALLET: {
+    screen: 'Pangea.AccountRestoreEmptyWalletScreen',
+    navigatorStyle: hiddenNavigatorStyle,
+  },
+  ACCOUNTS_ACCESS_SCREEN: {
+    screen: 'Pangea.AccountsAccess',
+    title: '',
+    navigatorStyle: navigatorStyleModal,
+  },
   DASHBOARD_SCREEN: {
     screen: 'Pangea.DashboardScreen',
     label: i18n.t('screens.dashboard.tabTitle'),
@@ -145,10 +172,10 @@ const Screens = {
     title: i18n.t('screens.verifyKey.title'),
     ...baseKeyScreen,
   },
-  LOAD_WALLET_SCREEN: {
-    screen: 'Pangea.LoadWalletScreen',
-    title: '',
-    ...baseKeyScreen,
+  RESTORE_KEY_SCREEN: {
+    screen: 'Pangea.RestoreKeyProcessScreen',
+    title: i18n.t('screens.restoreKey.title'),
+    navigatorStyle,
   },
   INTRO_SCREEN: {
     screen: 'Pangea.Intro',
@@ -174,7 +201,28 @@ const Screens = {
     title: i18n.t('screens.scanQRCode.title'),
     navigatorStyle,
   },
-
+  SETTINGS_SCREEN: {
+    screen: 'Pangea.Settings',
+    title: '',
+    icon: AssetsImages.TabIcons.profile,
+    label: i18n.t('screens.settings.tabTitle'),
+    navigatorStyle,
+  },
+  SECURITY_SETTINGS_SCREEN: {
+    screen: 'Pangea.Settings.Security',
+    title: '',
+    navigatorStyle,
+  },
+  ENTER_PASSCODE_SCREEN: {
+    screen: 'Pangea.EnterPasscode',
+    title: '',
+    navigatorStyle: navigatorStyleModal,
+  },
+  CREATE_PASSCODE_SCREEN: {
+    screen: 'Pangea.CreatePasscode',
+    title: '',
+    navigatorStyle: navigatorStyleModal,
+  },
 };
 
 /**

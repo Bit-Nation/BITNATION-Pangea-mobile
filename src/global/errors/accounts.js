@@ -1,5 +1,7 @@
-export class AccountCreationError extends Error {}
+export class LoginFailedError extends Error {
+  transKey: string = 'loginFailed';
+}
 
-export class LoginFailedError extends Error {}
-
-export class InvalidPasswordError extends LoginFailedError {}
+export class InvalidPasswordError extends Error {
+  transKey: string = 'invalidPassword';
+}

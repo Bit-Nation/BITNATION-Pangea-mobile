@@ -20,6 +20,7 @@ import createGiftedChatMessageObject from '../../utils/chat';
 import type { NationType } from '../../types/Nation';
 import type { Navigator } from '../../types/ReactNativeNavigation';
 import elizabot from '../../../vendor/elizabot';
+import { getCurrentAccount } from '../../reducers/accounts';
 
 type Props = {
   /**
@@ -222,7 +223,7 @@ class ChatScreen extends Component<Props, State> {
 const mapStateToProps = state => ({
   nations: state.nations.nations,
   nationId: state.nations.openedNationId,
-  user: state.accounts.user,
+  user: getCurrentAccount(state.accounts),
   isFetching: state.chat.isFetching,
 });
 

@@ -18,39 +18,83 @@
 }
 
 RCT_EXPORT_MODULE();
-
-RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(PanthalassaNewAccountKeys:(NSDictionary *)parameters) {
+  
+RCT_REMAP_METHOD(PanthalassaNewAccountKeys,
+                 panthalassaNewAccountKeysWithParams:(NSDictionary *)config
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject) {
   
   NSString *newAccount;
   NSError *error = nil;
-  newAccount = PanthalassaNewAccountKeys([RCTConvert NSString:parameters[@"pw"]],
-                                         [RCTConvert NSString:parameters[@"pwConfirm"]],
+  newAccount = PanthalassaNewAccountKeys([RCTConvert NSString:config[@"pw"]],
+                                         [RCTConvert NSString:config[@"pwConfirm"]],
                                          &error);
   
   if (error == nil) {
-    return newAccount;
+    resolve(newAccount);
   } else {
-    return(error.localizedDescription);
+    reject(@"error", error.localizedDescription, error);
   }
 }
 
-RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(PanthalassaNewPanthalassa:(NSDictionary *)parameters) {
+RCT_REMAP_METHOD(PanthalassaNewAccountKeysFromMnemonic,
+                 panthalassaNewAccountKeysFromMnemonicWithParameters:(NSDictionary *)config
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject) {
   
-  PanthalassaPanthalassa *instance;
+  NSString *newAccount;
   NSError *error = nil;
-  
-  instance = PanthalassaNewPanthalassa([RCTConvert NSString:parameters[@"keyStore"]],
-                                       [RCTConvert NSString:parameters[@"pw"]],
-                                       &error);
+  newAccount = PanthalassaNewAccountKeysFromMnemonic([RCTConvert NSString:config[@"mne"]],
+                                         [RCTConvert NSString:config[@"pw"]],
+                                         [RCTConvert NSString:config[@"pwConfirm"]],
+                                         &error);
   
   if (error == nil) {
-    return instance;
+    resolve(newAccount);
   } else {
-    return(error.localizedDescription);
+    reject(@"error", error.localizedDescription, error);
   }
 }
 
-RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(PanthalassaScryptDecrypt:(NSDictionary *)parameters) {
+RCT_REMAP_METHOD(PanthalassaEthPrivateKey,
+                 PanthalassaEthPrivateKeyWithResolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject) {
+  NSString* response;
+  NSError *error = nil;
+  
+  response = PanthalassaEthPrivateKey(&error);
+  
+  if (error == nil) {
+    resolve(response);
+  } else {
+    reject(@"error", error.localizedDescription, error);
+  }
+}
+
+RCT_REMAP_METHOD(PanthalassaStartFromMnemonic,
+                 parametersStartFromMnemonic:(NSDictionary *)config
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject) {
+  
+  BOOL response;
+  NSError *error = nil;
+
+  response = PanthalassaStartFromMnemonic([RCTConvert NSString:config[@"accountStore"]],
+                                                   [RCTConvert NSString:config[@"mnemonic"]],
+                                                   &error);
+  NSNumber *val = [NSNumber numberWithBool:response];
+  
+  if (error == nil) {
+    resolve(val);
+  } else {
+    reject(@"error", error.localizedDescription, error);
+  }
+}
+
+RCT_REMAP_METHOD(PanthalassaScryptDecrypt,
+                 scryptDecrypt:(NSDictionary *)parameters
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject) {
   
   NSString *response;
   NSError *error = nil;
@@ -59,13 +103,16 @@ RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(PanthalassaScryptDecrypt:(NSDictionary *)
                                          &error);
   
   if (error == nil) {
-    return response;
+    resolve(response);
   } else {
-    return(error.localizedDescription);
+    reject(@"error", error.localizedDescription, error);
   }
 }
 
-RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(PanthalassaScryptEncrypt:(NSDictionary *)parameters) {
+RCT_REMAP_METHOD(PanthalassaScryptEncrypt,
+                 scryptEncrypt:(NSDictionary *)parameters
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject) {
   
   NSString *response;
   NSError *error = nil;
@@ -75,47 +122,161 @@ RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(PanthalassaScryptEncrypt:(NSDictionary *)
                                       &error);
   
   if (error == nil) {
-    return response;
+    resolve(response);
   } else {
-    return(error.localizedDescription);
+    reject(@"error", error.localizedDescription, error);
   }
 }
 
-RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(PanthalassaIsValidCID:(NSString *)cid) {
+RCT_REMAP_METHOD(PanthalassaIsValidCID,
+                 validCid:(NSString *)cid
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject) {
   
   BOOL response;
-  response = PanthalassaIsValidCID(cid);
   
-  if (response) {
-    return @YES;
-  } else {
-    return @NO;
+  @try {
+    response = PanthalassaIsValidCID(cid);
+    NSNumber *val = [NSNumber numberWithBool:response];
+    resolve(val);
+  }
+  @catch (NSException *exception) {
+    NSMutableDictionary * info = [NSMutableDictionary dictionary];
+    [info setValue:exception.name forKey:@"ExceptionName"];
+    [info setValue:exception.reason forKey:@"ExceptionReason"];
+    [info setValue:exception.callStackReturnAddresses forKey:@"ExceptionCallStackReturnAddresses"];
+    [info setValue:exception.callStackSymbols forKey:@"ExceptionCallStackSymbols"];
+    [info setValue:exception.userInfo forKey:@"ExceptionUserInfo"];
+    
+    NSError *error = [[NSError alloc] initWithDomain:@"co.bitnation" code:001 userInfo:info];
+    reject(@"error", exception.reason, error);
   }
 }
 
-RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(PanthalassaCIDSha256:(NSString *)value) {
+RCT_REMAP_METHOD(PanthalassaCIDSha256,
+                 value256:(NSString *)value
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject) {
   
   NSString *response;
   NSError *error = nil;
   response = PanthalassaCIDSha256(value, &error);
   
   if (error == nil) {
-    return response;
+    resolve(response);
   } else {
-    return(error.localizedDescription);
+    reject(@"error", error.localizedDescription, error);
   }
 }
 
-RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(PanthalassaCIDSha512:(NSString *)value) {
-  
+RCT_REMAP_METHOD(PanthalassaCIDSha512,
+                 value512:(NSString *)value
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject) {
   NSString *response;
   NSError *error = nil;
   response = PanthalassaCIDSha512(value, &error);
   
   if (error == nil) {
-    return response;
+    resolve(response);
   } else {
-    return(error.localizedDescription);
+    reject(@"error", error.localizedDescription, error);
+  }
+}
+
+RCT_REMAP_METHOD(PanthalassaIsValidMnemonic,
+                 validMnemonic:(NSString *)mnemonic
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject) {
+  
+  BOOL response;
+  
+  @try {
+    response = PanthalassaIsValidMnemonic(mnemonic);
+    NSNumber *val = [NSNumber numberWithBool:response];
+    resolve(val);
+  }
+  @catch (NSException *exception) {
+    NSMutableDictionary * info = [NSMutableDictionary dictionary];
+    [info setValue:exception.name forKey:@"ExceptionName"];
+    [info setValue:exception.reason forKey:@"ExceptionReason"];
+    [info setValue:exception.callStackReturnAddresses forKey:@"ExceptionCallStackReturnAddresses"];
+    [info setValue:exception.callStackSymbols forKey:@"ExceptionCallStackSymbols"];
+    [info setValue:exception.userInfo forKey:@"ExceptionUserInfo"];
+    
+    NSError *error = [[NSError alloc] initWithDomain:@"co.bitnation" code:001 userInfo:info];
+    reject(@"error", exception.reason, error);
+  }
+}
+
+RCT_REMAP_METHOD(PanthalassaExportAccountStore,
+                 panthalassaExp:(NSDictionary *)parameters
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject) {
+  
+  NSString *response;
+  NSError *error = nil;
+  response = PanthalassaExportAccountStore([RCTConvert NSString:parameters[@"pw"]],
+                                           [RCTConvert NSString:parameters[@"pwConfirm"]],
+                                           &error);
+  
+  if (error == nil) {
+    resolve(response);
+  } else {
+    reject(@"error", error.localizedDescription, error);
+  }
+}
+
+RCT_REMAP_METHOD(PanthalassaStop,
+                 stopPanthalassaWithResolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject) {
+    
+  BOOL response;
+  NSError *error = nil;
+  response = PanthalassaStop(&error);
+  NSNumber *val = [NSNumber numberWithBool:response];
+  
+  if (error == nil) {
+    resolve(val);
+  } else {
+    reject(@"error", error.localizedDescription, error);
+  }
+}
+
+RCT_REMAP_METHOD(PanthalassaSendResponse,
+                 sendResponse:(NSString *)resp
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject) {
+  
+  BOOL response;
+  NSError *error = nil;
+  response = PanthalassaSendResponse(resp, &error);
+  NSNumber *val = [NSNumber numberWithBool:response];
+  
+  if (error == nil) {
+    resolve(val);
+  } else {
+    reject(@"error", @"Invalid mnemonic", error);
+  }
+}
+
+RCT_REMAP_METHOD(PanthalassaStart,
+                 start:(NSDictionary *)config
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject) {
+  
+  BOOL response;
+  NSError *error = nil;
+  
+  response = PanthalassaStart([RCTConvert NSString:config[@"accountStore"]],
+                                          [RCTConvert NSString:config[@"password"]],
+                                          &error);
+  NSNumber *val = [NSNumber numberWithBool:response];
+  
+  if (error == nil) {
+    resolve(val);
+  } else {
+    reject(@"error", error.localizedDescription, error);
   }
 }
 
