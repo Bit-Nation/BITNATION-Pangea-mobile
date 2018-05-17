@@ -7,9 +7,15 @@ import { convertWallets } from '../../utils/wallet';
 export default class WalletService {
   static async getWallets() {
     const { Panthalassa } = NativeModules;
-    const walletsObject = Panthalassa.PanthalassaEthPrivateKey();
-    console.log('EthPrivateKey from Panthalassa: ', walletsObject);
-    return convertWallets(walletsObject);
+    const walletKey = await Panthalassa.PanthalassaEthPrivateKey();
+    // console.log('EthPrivateKey from Panthalassa: ', walletKey);
+    const walletAddress = await Panthalassa.PanthalassaEthAddress();
+    // console.log('EthPrivateAddress from Panthalassa: ', walletAddress);
+    const walletArray = [{ ethAddress: walletAddress, currency: 'ETH', balance: undefined, name: 'Ethereum' },
+      { ethAddress: walletAddress, currency: 'PAT', balance: undefined, name: 'PAT' }];
+    console.log('----> Converted Wallet: ', walletArray);
+    // return convertWallets(walletArray);
+    return walletArray;
   }
 
   static async syncWallet(wallet) {
