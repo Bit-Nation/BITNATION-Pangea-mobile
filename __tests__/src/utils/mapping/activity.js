@@ -10,7 +10,7 @@ describe('convert message to database', () => {
       msg: 'test message',
       params: '',
       interpret: true,
-      created_at: new Date()
+      created_at: new Date(),
     };
 
     expect(convertToDatabase(msgObj)).toEqual({
@@ -21,7 +21,7 @@ describe('convert message to database', () => {
       version: 1,
       display: true,
       interpret: msgObj.interpret,
-      created_at: msgObj.created_at
+      created_at: msgObj.created_at,
     });
   });
 });
@@ -36,7 +36,7 @@ describe('convert message from database', () => {
       version: 1,
       display: true,
       interpret: true,
-      created_at: '737545435435'
+      created_at: '737545435435',
     };
 
     expect(convertFromDatabase(message)).toEqual({
@@ -44,7 +44,7 @@ describe('convert message from database', () => {
       msg: message.msg,
       params: message.params,
       interpret: message.interpret,
-      created_at: message.created_at
+      created_at: message.created_at,
     });
   });
 });

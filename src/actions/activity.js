@@ -21,7 +21,7 @@ export const ADD_NEW_MESSAGE = 'ADD_NEW_MESSAGE';
 
 /**
  * @desc Action creator for an action that should be called once new activity log message added.
- * @param {ActivityLogMessage} message Activity log message that is added.
+ * @param {ActivityLogMessage} messages Activity log message that is added.
  * @returns {MessageAddedAction} An action.
  */
 export function messageAdded(messages: Array<ActivityLogMessage>): MessageAddedAction {
@@ -58,6 +58,9 @@ export function doneFetchMessages(messages: Array<ActivityLogMessage>): DoneFetc
 
 /**
  * @desc Action for an action that adds activity log message.
+ * @param {string} message Acitivity message to be logged
+ * @param {any} params Additional params to the log
+ * @param {boolean} interpret Flag that indicates if the messsage should be interpreted
  * @returns {AddNewMessageAction} An action.
  */
 export function addNewMessage(message: string, params: ?any, interpret: ?boolean): AddNewMessageAction {
@@ -65,6 +68,6 @@ export function addNewMessage(message: string, params: ?any, interpret: ?boolean
     type: ADD_NEW_MESSAGE,
     message,
     params: params || {},
-    interpret: interpret || true
+    interpret: interpret || true,
   };
 }
