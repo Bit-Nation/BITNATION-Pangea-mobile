@@ -5,6 +5,7 @@ import _ from 'lodash';
 
 import { sendMoneyFailed, sendMoneySuccess, walletsListUpdated, walletSyncFailed } from '../../actions/wallet';
 import WalletService from '../../services/wallet';
+import EthereumService from '../../services/ethereum';
 // import { checkConnection } from '../connection';
 
 export function* sendMoneySaga(action) {
@@ -15,7 +16,7 @@ export function* sendMoneySaga(action) {
 
   try {
     // yield call(checkConnection);
-    yield call(WalletService.sendMoney, fromAddress, toAddress, amount);
+    yield call(EthereumService.sendMoney, fromAddress, toAddress, amount);
     yield put(sendMoneySuccess());
   } catch (error) {
     console.log(error);
@@ -57,3 +58,4 @@ export function* updateWalletBalance(wallet) {
     console.log(`Wallet balance update failed with error: ${error.toString()}`);
   }
 }
+
