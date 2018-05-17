@@ -129,7 +129,7 @@ export const DHTValueSchema = {
  * @property {date} created_at
  */
 export type MessageJobType = {
-  id: string,
+  id: number,
   heading: string,
   params: string,
   msg: string,
