@@ -132,6 +132,13 @@ ShallowWrapper {
           </TouchableOpacity>
         </View>
         <PanelView
+          body=""
+          buttonTitle="Button"
+          childrenContainerStyle={Object {}}
+          icon=""
+          onButtonClick={[Function]}
+          renderAdditionalInfo={null}
+          renderBottom={null}
           style={
             Object {
               "backgroundColor": "transparent",
@@ -329,6 +336,13 @@ ShallowWrapper {
             </TouchableOpacity>
           </View>,
           <PanelView
+            body=""
+            buttonTitle="Button"
+            childrenContainerStyle={Object {}}
+            icon=""
+            onButtonClick={[Function]}
+            renderAdditionalInfo={null}
+            renderBottom={null}
             style={
               Object {
                 "backgroundColor": "transparent",
@@ -674,6 +688,8 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
+            "body": "",
+            "buttonTitle": "Button",
             "children": <View
               style={
                 Object {
@@ -769,6 +785,11 @@ ShallowWrapper {
                 virtual={undefined}
               />
             </View>,
+            "childrenContainerStyle": Object {},
+            "icon": "",
+            "onButtonClick": [Function],
+            "renderAdditionalInfo": null,
+            "renderBottom": null,
             "style": Object {
               "backgroundColor": "transparent",
               "borderRadius": 8,
@@ -1231,6 +1252,13 @@ ShallowWrapper {
             </TouchableOpacity>
           </View>
           <PanelView
+            body=""
+            buttonTitle="Button"
+            childrenContainerStyle={Object {}}
+            icon=""
+            onButtonClick={[Function]}
+            renderAdditionalInfo={null}
+            renderBottom={null}
             style={
               Object {
                 "backgroundColor": "transparent",
@@ -1428,6 +1456,13 @@ ShallowWrapper {
               </TouchableOpacity>
             </View>,
             <PanelView
+              body=""
+              buttonTitle="Button"
+              childrenContainerStyle={Object {}}
+              icon=""
+              onButtonClick={[Function]}
+              renderAdditionalInfo={null}
+              renderBottom={null}
               style={
                 Object {
                   "backgroundColor": "transparent",
@@ -1773,6 +1808,8 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "class",
             "props": Object {
+              "body": "",
+              "buttonTitle": "Button",
               "children": <View
                 style={
                   Object {
@@ -1868,6 +1905,11 @@ ShallowWrapper {
                   virtual={undefined}
                 />
               </View>,
+              "childrenContainerStyle": Object {},
+              "icon": "",
+              "onButtonClick": [Function],
+              "renderAdditionalInfo": null,
+              "renderBottom": null,
               "style": Object {
                 "backgroundColor": "transparent",
                 "borderRadius": 8,
