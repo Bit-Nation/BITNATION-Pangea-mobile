@@ -1,14 +1,16 @@
 // @flow
 
 import React, { Component } from 'react';
-import {
-  View,
-  Platform,
-} from 'react-native';
+import { View, Platform } from 'react-native';
 import { connect } from 'react-redux';
 import config from 'react-native-config';
 import SocketIOClient from 'socket.io-client';
-import { GiftedChat, Composer, InputToolbar, Bubble } from 'react-native-gifted-chat';
+import {
+  GiftedChat,
+  Composer,
+  InputToolbar,
+  Bubble,
+} from 'react-native-gifted-chat';
 import styles from './styles';
 
 import { showSpinner, hideSpinner } from '../../actions/chat';
@@ -34,7 +36,7 @@ type Props = {
   /**
    * @desc List of nations
    */
-  nations?: Array<NationType>,
+  nations: Array<NationType>,
   /**
    * @desc Id of the selected nation
    */
@@ -42,11 +44,11 @@ type Props = {
   /**
    * @desc Current user object
    */
-  user?: any,
+  user: any,
   /**
    * @desc Flag that indicates the loading status
    */
-  isFetching?: boolean,
+  isFetching: boolean,
   /**
    * @desc Function to show spinner
    */
@@ -54,7 +56,7 @@ type Props = {
   /**
    * @desc Function to hide spinner
    */
-  hideSpinner: () => void,
+  hideSpinner: () => void
 };
 
 type State = {
@@ -119,18 +121,23 @@ class ChatScreen extends Component<Props, State> {
     if (this.props.isBot !== true && this.connection) {
       this.props.showSpinner();
       // load initial messages
-      const URL = `${config.CHAT_URL}/messages/${this.nationId}?auth_token=${config.AUTH_TOKEN}`;
+      const URL = `${config.CHAT_URL}/messages/${this.nationId}?auth_token=${
+        config.AUTH_TOKEN
+      }`;
       fetch(URL)
         .then(response => response.json())
-        .then((json) => {
-          const messages = createGiftedChatMessageObject(json.reverse());
-          this.props.hideSpinner();
-          this.setState(previousState => ({
-            messages: GiftedChat.append(previousState.messages, messages),
-          }));
-        }, () => {
-          this.props.hideSpinner();
-        });
+        .then(
+          (json) => {
+            const messages = createGiftedChatMessageObject(json.reverse());
+            this.props.hideSpinner();
+            this.setState(previousState => ({
+              messages: GiftedChat.append(previousState.messages, messages),
+            }));
+          },
+          () => {
+            this.props.hideSpinner();
+          },
+        );
 
       // add socket listener
       this.connection.on('room:joined', (data) => {
@@ -173,7 +180,9 @@ class ChatScreen extends Component<Props, State> {
       }));
 
       // Add Eliza's response
-      this.setState(previousState => ({ messages: GiftedChat.append(previousState.messages, m) }));
+      this.setState(previousState => ({
+        messages: GiftedChat.append(previousState.messages, m),
+      }));
     } else if (this.state.joined === true) {
       const newMessage = {
         nation_id: this.nationId,
@@ -203,22 +212,21 @@ class ChatScreen extends Component<Props, State> {
           onSend={messages => this.onSend(messages)}
           user={sendingUser}
           bottomOffset={Platform.OS === 'ios' ? 48.5 : 0}
-          renderComposer={props =>
+          renderComposer={props => (
             <Composer {...props} textInputStyle={styles.composer} />
-          }
-          renderInputToolbar={props =>
+          )}
+          renderInputToolbar={props => (
             <InputToolbar {...props} containerStyle={styles.inputToolbar} />
-          }
-          renderBubble={props =>
+          )}
+          renderBubble={props => (
             <Bubble {...props} customTextStyle={styles.customTextStyle} />
-          }
+          )}
         />
         {this.props.isFetching && <Loading />}
       </View>
     );
   }
 }
-
 
 const mapStateToProps = state => ({
   nations: state.nations.nations,
