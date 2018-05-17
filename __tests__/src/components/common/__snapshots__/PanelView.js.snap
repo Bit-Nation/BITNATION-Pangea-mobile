@@ -5,11 +5,17 @@ ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <PanelView
+    body=""
+    buttonTitle="Button"
     childrenContainerStyle={
       Object {
         "flex": 1,
       }
     }
+    icon=""
+    onButtonClick={[Function]}
+    renderAdditionalInfo={null}
+    renderBottom={null}
     style={
       Object {
         "backgroundColor": "rgba(255,255,255,0.2)",
@@ -93,6 +99,7 @@ ShallowWrapper {
               Test panel title
             </Text>
           </View>
+          
         </View>,
         <View
           style={
@@ -115,11 +122,20 @@ ShallowWrapper {
             Test children
           </Text>
         </View>,
-        undefined,
+        "",
         <View
           style={Object {}}
         />,
-        undefined,
+        <Button
+          enabled={true}
+          onPress={[Function]}
+          style={
+            Object {
+              "marginTop": 13,
+            }
+          }
+          title="Button"
+        />,
         <View
           style={Object {}}
         />,
@@ -171,7 +187,7 @@ ShallowWrapper {
                 Test panel title
               </Text>
             </View>,
-            undefined,
+            "",
           ],
           "style": Object {
             "backgroundColor": "transparent",
@@ -234,7 +250,7 @@ ShallowWrapper {
             },
             "type": [Function],
           },
-          undefined,
+          "",
         ],
         "type": [Function],
       },
@@ -277,26 +293,42 @@ ShallowWrapper {
         },
         "type": [Function],
       },
-      undefined,
+      "",
       Object {
         "instance": null,
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "children": undefined,
+          "children": null,
           "style": Object {},
         },
         "ref": null,
         "rendered": null,
         "type": [Function],
       },
-      undefined,
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "children": undefined,
+          "enabled": true,
+          "onPress": [Function],
+          "style": Object {
+            "marginTop": 13,
+          },
+          "title": "Button",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
       Object {
         "instance": null,
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "children": undefined,
+          "children": null,
           "style": Object {},
         },
         "ref": null,
@@ -348,6 +380,7 @@ ShallowWrapper {
                 Test panel title
               </Text>
             </View>
+            
           </View>,
           <View
             style={
@@ -370,11 +403,20 @@ ShallowWrapper {
               Test children
             </Text>
           </View>,
-          undefined,
+          "",
           <View
             style={Object {}}
           />,
-          undefined,
+          <Button
+            enabled={true}
+            onPress={[Function]}
+            style={
+              Object {
+                "marginTop": 13,
+              }
+            }
+            title="Button"
+          />,
           <View
             style={Object {}}
           />,
@@ -426,7 +468,7 @@ ShallowWrapper {
                   Test panel title
                 </Text>
               </View>,
-              undefined,
+              "",
             ],
             "style": Object {
               "backgroundColor": "transparent",
@@ -489,7 +531,7 @@ ShallowWrapper {
               },
               "type": [Function],
             },
-            undefined,
+            "",
           ],
           "type": [Function],
         },
@@ -532,26 +574,42 @@ ShallowWrapper {
           },
           "type": [Function],
         },
-        undefined,
+        "",
         Object {
           "instance": null,
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "children": undefined,
+            "children": null,
             "style": Object {},
           },
           "ref": null,
           "rendered": null,
           "type": [Function],
         },
-        undefined,
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": undefined,
+            "enabled": true,
+            "onPress": [Function],
+            "style": Object {
+              "marginTop": 13,
+            },
+            "title": "Button",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
         Object {
           "instance": null,
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "children": undefined,
+            "children": null,
             "style": Object {},
           },
           "ref": null,
@@ -578,6 +636,12 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <PanelView
     body="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
+    buttonTitle="Button"
+    childrenContainerStyle={Object {}}
+    icon=""
+    onButtonClick={[Function]}
+    renderAdditionalInfo={null}
+    renderBottom={null}
     style={
       Object {
         "backgroundColor": "rgba(255,255,255,0.2)",
@@ -653,6 +717,7 @@ ShallowWrapper {
               Test panel title
             </Text>
           </View>
+          
         </View>,
         <View
           style={
@@ -661,7 +726,7 @@ ShallowWrapper {
                 "flex": 1,
                 "marginBottom": 4,
               },
-              undefined,
+              Object {},
             ]
           }
         />,
@@ -695,7 +760,16 @@ ShallowWrapper {
         <View
           style={Object {}}
         />,
-        undefined,
+        <Button
+          enabled={true}
+          onPress={[Function]}
+          style={
+            Object {
+              "marginTop": 13,
+            }
+          }
+          title="Button"
+        />,
         <View
           style={Object {}}
         />,
@@ -747,7 +821,7 @@ ShallowWrapper {
                 Test panel title
               </Text>
             </View>,
-            undefined,
+            "",
           ],
           "style": Object {
             "backgroundColor": "transparent",
@@ -810,7 +884,7 @@ ShallowWrapper {
             },
             "type": [Function],
           },
-          undefined,
+          "",
         ],
         "type": [Function],
       },
@@ -819,13 +893,13 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "children": undefined,
+          "children": null,
           "style": Array [
             Object {
               "flex": 1,
               "marginBottom": 4,
             },
-            undefined,
+            Object {},
           ],
         },
         "ref": null,
@@ -890,20 +964,36 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "children": undefined,
+          "children": null,
           "style": Object {},
         },
         "ref": null,
         "rendered": null,
         "type": [Function],
       },
-      undefined,
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "children": undefined,
+          "enabled": true,
+          "onPress": [Function],
+          "style": Object {
+            "marginTop": 13,
+          },
+          "title": "Button",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
       Object {
         "instance": null,
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "children": undefined,
+          "children": null,
           "style": Object {},
         },
         "ref": null,
@@ -955,6 +1045,7 @@ ShallowWrapper {
                 Test panel title
               </Text>
             </View>
+            
           </View>,
           <View
             style={
@@ -963,7 +1054,7 @@ ShallowWrapper {
                   "flex": 1,
                   "marginBottom": 4,
                 },
-                undefined,
+                Object {},
               ]
             }
           />,
@@ -997,7 +1088,16 @@ ShallowWrapper {
           <View
             style={Object {}}
           />,
-          undefined,
+          <Button
+            enabled={true}
+            onPress={[Function]}
+            style={
+              Object {
+                "marginTop": 13,
+              }
+            }
+            title="Button"
+          />,
           <View
             style={Object {}}
           />,
@@ -1049,7 +1149,7 @@ ShallowWrapper {
                   Test panel title
                 </Text>
               </View>,
-              undefined,
+              "",
             ],
             "style": Object {
               "backgroundColor": "transparent",
@@ -1112,7 +1212,7 @@ ShallowWrapper {
               },
               "type": [Function],
             },
-            undefined,
+            "",
           ],
           "type": [Function],
         },
@@ -1121,13 +1221,13 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "children": undefined,
+            "children": null,
             "style": Array [
               Object {
                 "flex": 1,
                 "marginBottom": 4,
               },
-              undefined,
+              Object {},
             ],
           },
           "ref": null,
@@ -1192,20 +1292,36 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "children": undefined,
+            "children": null,
             "style": Object {},
           },
           "ref": null,
           "rendered": null,
           "type": [Function],
         },
-        undefined,
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": undefined,
+            "enabled": true,
+            "onPress": [Function],
+            "style": Object {
+              "marginTop": 13,
+            },
+            "title": "Button",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
         Object {
           "instance": null,
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "children": undefined,
+            "children": null,
             "style": Object {},
           },
           "ref": null,
@@ -1231,8 +1347,13 @@ ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <PanelView
+    body=""
     buttonTitle="Test panel button"
+    childrenContainerStyle={Object {}}
+    icon=""
     onButtonClick={[Function]}
+    renderAdditionalInfo={null}
+    renderBottom={null}
     style={
       Object {
         "backgroundColor": "rgba(255,255,255,0.2)",
@@ -1308,6 +1429,7 @@ ShallowWrapper {
               Test panel title
             </Text>
           </View>
+          
         </View>,
         <View
           style={
@@ -1316,11 +1438,11 @@ ShallowWrapper {
                 "flex": 1,
                 "marginBottom": 4,
               },
-              undefined,
+              Object {},
             ]
           }
         />,
-        undefined,
+        "",
         <View
           style={Object {}}
         />,
@@ -1385,7 +1507,7 @@ ShallowWrapper {
                 Test panel title
               </Text>
             </View>,
-            undefined,
+            "",
           ],
           "style": Object {
             "backgroundColor": "transparent",
@@ -1448,7 +1570,7 @@ ShallowWrapper {
             },
             "type": [Function],
           },
-          undefined,
+          "",
         ],
         "type": [Function],
       },
@@ -1457,26 +1579,26 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "children": undefined,
+          "children": null,
           "style": Array [
             Object {
               "flex": 1,
               "marginBottom": 4,
             },
-            undefined,
+            Object {},
           ],
         },
         "ref": null,
         "rendered": null,
         "type": [Function],
       },
-      undefined,
+      "",
       Object {
         "instance": null,
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "children": undefined,
+          "children": null,
           "style": Object {},
         },
         "ref": null,
@@ -1505,7 +1627,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "children": undefined,
+          "children": null,
           "style": Object {},
         },
         "ref": null,
@@ -1557,6 +1679,7 @@ ShallowWrapper {
                 Test panel title
               </Text>
             </View>
+            
           </View>,
           <View
             style={
@@ -1565,11 +1688,11 @@ ShallowWrapper {
                   "flex": 1,
                   "marginBottom": 4,
                 },
-                undefined,
+                Object {},
               ]
             }
           />,
-          undefined,
+          "",
           <View
             style={Object {}}
           />,
@@ -1634,7 +1757,7 @@ ShallowWrapper {
                   Test panel title
                 </Text>
               </View>,
-              undefined,
+              "",
             ],
             "style": Object {
               "backgroundColor": "transparent",
@@ -1697,7 +1820,7 @@ ShallowWrapper {
               },
               "type": [Function],
             },
-            undefined,
+            "",
           ],
           "type": [Function],
         },
@@ -1706,26 +1829,26 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "children": undefined,
+            "children": null,
             "style": Array [
               Object {
                 "flex": 1,
                 "marginBottom": 4,
               },
-              undefined,
+              Object {},
             ],
           },
           "ref": null,
           "rendered": null,
           "type": [Function],
         },
-        undefined,
+        "",
         Object {
           "instance": null,
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "children": undefined,
+            "children": null,
             "style": Object {},
           },
           "ref": null,
@@ -1754,7 +1877,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "children": undefined,
+            "children": null,
             "style": Object {},
           },
           "ref": null,
@@ -1782,8 +1905,11 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <PanelView
     body="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
     buttonTitle="Test panel button"
+    childrenContainerStyle={Object {}}
+    icon=""
     onButtonClick={[Function]}
     renderAdditionalInfo={[Function]}
+    renderBottom={null}
     style={
       Object {
         "backgroundColor": "rgba(255,255,255,0.2)",
@@ -1859,6 +1985,7 @@ ShallowWrapper {
               Test panel title
             </Text>
           </View>
+          
         </View>,
         <View
           style={
@@ -1867,7 +1994,7 @@ ShallowWrapper {
                 "flex": 1,
                 "marginBottom": 4,
               },
-              undefined,
+              Object {},
             ]
           }
         />,
@@ -1968,7 +2095,7 @@ ShallowWrapper {
                 Test panel title
               </Text>
             </View>,
-            undefined,
+            "",
           ],
           "style": Object {
             "backgroundColor": "transparent",
@@ -2031,7 +2158,7 @@ ShallowWrapper {
             },
             "type": [Function],
           },
-          undefined,
+          "",
         ],
         "type": [Function],
       },
@@ -2040,13 +2167,13 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "children": undefined,
+          "children": null,
           "style": Array [
             Object {
               "flex": 1,
               "marginBottom": 4,
             },
-            undefined,
+            Object {},
           ],
         },
         "ref": null,
@@ -2156,7 +2283,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "children": undefined,
+          "children": null,
           "style": Object {},
         },
         "ref": null,
@@ -2208,6 +2335,7 @@ ShallowWrapper {
                 Test panel title
               </Text>
             </View>
+            
           </View>,
           <View
             style={
@@ -2216,7 +2344,7 @@ ShallowWrapper {
                   "flex": 1,
                   "marginBottom": 4,
                 },
-                undefined,
+                Object {},
               ]
             }
           />,
@@ -2317,7 +2445,7 @@ ShallowWrapper {
                   Test panel title
                 </Text>
               </View>,
-              undefined,
+              "",
             ],
             "style": Object {
               "backgroundColor": "transparent",
@@ -2380,7 +2508,7 @@ ShallowWrapper {
               },
               "type": [Function],
             },
-            undefined,
+            "",
           ],
           "type": [Function],
         },
@@ -2389,13 +2517,13 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "children": undefined,
+            "children": null,
             "style": Array [
               Object {
                 "flex": 1,
                 "marginBottom": 4,
               },
-              undefined,
+              Object {},
             ],
           },
           "ref": null,
@@ -2505,7 +2633,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "children": undefined,
+            "children": null,
             "style": Object {},
           },
           "ref": null,
@@ -2533,7 +2661,10 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <PanelView
     body="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
     buttonTitle="Test panel button"
+    childrenContainerStyle={Object {}}
+    icon=""
     onButtonClick={[Function]}
+    renderAdditionalInfo={null}
     renderBottom={[Function]}
     style={
       Object {
@@ -2610,6 +2741,7 @@ ShallowWrapper {
               Test panel title
             </Text>
           </View>
+          
         </View>,
         <View
           style={
@@ -2618,7 +2750,7 @@ ShallowWrapper {
                 "flex": 1,
                 "marginBottom": 4,
               },
-              undefined,
+              Object {},
             ]
           }
         />,
@@ -2719,7 +2851,7 @@ ShallowWrapper {
                 Test panel title
               </Text>
             </View>,
-            undefined,
+            "",
           ],
           "style": Object {
             "backgroundColor": "transparent",
@@ -2782,7 +2914,7 @@ ShallowWrapper {
             },
             "type": [Function],
           },
-          undefined,
+          "",
         ],
         "type": [Function],
       },
@@ -2791,13 +2923,13 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "children": undefined,
+          "children": null,
           "style": Array [
             Object {
               "flex": 1,
               "marginBottom": 4,
             },
-            undefined,
+            Object {},
           ],
         },
         "ref": null,
@@ -2862,7 +2994,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "children": undefined,
+          "children": null,
           "style": Object {},
         },
         "ref": null,
@@ -2959,6 +3091,7 @@ ShallowWrapper {
                 Test panel title
               </Text>
             </View>
+            
           </View>,
           <View
             style={
@@ -2967,7 +3100,7 @@ ShallowWrapper {
                   "flex": 1,
                   "marginBottom": 4,
                 },
-                undefined,
+                Object {},
               ]
             }
           />,
@@ -3068,7 +3201,7 @@ ShallowWrapper {
                   Test panel title
                 </Text>
               </View>,
-              undefined,
+              "",
             ],
             "style": Object {
               "backgroundColor": "transparent",
@@ -3131,7 +3264,7 @@ ShallowWrapper {
               },
               "type": [Function],
             },
-            undefined,
+            "",
           ],
           "type": [Function],
         },
@@ -3140,13 +3273,13 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "children": undefined,
+            "children": null,
             "style": Array [
               Object {
                 "flex": 1,
                 "marginBottom": 4,
               },
-              undefined,
+              Object {},
             ],
           },
           "ref": null,
@@ -3211,7 +3344,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "children": undefined,
+            "children": null,
             "style": Object {},
           },
           "ref": null,
@@ -3284,7 +3417,11 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <PanelView
     body="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
     buttonTitle="Test panel button"
+    childrenContainerStyle={Object {}}
+    icon=""
     onButtonClick={[Function]}
+    renderAdditionalInfo={null}
+    renderBottom={null}
     style={
       Object {
         "backgroundColor": "rgba(255,255,255,0.2)",
@@ -3360,6 +3497,7 @@ ShallowWrapper {
               Test panel title
             </Text>
           </View>
+          
         </View>,
         <View
           style={
@@ -3368,7 +3506,7 @@ ShallowWrapper {
                 "flex": 1,
                 "marginBottom": 4,
               },
-              undefined,
+              Object {},
             ]
           }
         />,
@@ -3463,7 +3601,7 @@ ShallowWrapper {
                 Test panel title
               </Text>
             </View>,
-            undefined,
+            "",
           ],
           "style": Object {
             "backgroundColor": "transparent",
@@ -3526,7 +3664,7 @@ ShallowWrapper {
             },
             "type": [Function],
           },
-          undefined,
+          "",
         ],
         "type": [Function],
       },
@@ -3535,13 +3673,13 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "children": undefined,
+          "children": null,
           "style": Array [
             Object {
               "flex": 1,
               "marginBottom": 4,
             },
-            undefined,
+            Object {},
           ],
         },
         "ref": null,
@@ -3606,7 +3744,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "children": undefined,
+          "children": null,
           "style": Object {},
         },
         "ref": null,
@@ -3635,7 +3773,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "children": undefined,
+          "children": null,
           "style": Object {},
         },
         "ref": null,
@@ -3687,6 +3825,7 @@ ShallowWrapper {
                 Test panel title
               </Text>
             </View>
+            
           </View>,
           <View
             style={
@@ -3695,7 +3834,7 @@ ShallowWrapper {
                   "flex": 1,
                   "marginBottom": 4,
                 },
-                undefined,
+                Object {},
               ]
             }
           />,
@@ -3790,7 +3929,7 @@ ShallowWrapper {
                   Test panel title
                 </Text>
               </View>,
-              undefined,
+              "",
             ],
             "style": Object {
               "backgroundColor": "transparent",
@@ -3853,7 +3992,7 @@ ShallowWrapper {
               },
               "type": [Function],
             },
-            undefined,
+            "",
           ],
           "type": [Function],
         },
@@ -3862,13 +4001,13 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "children": undefined,
+            "children": null,
             "style": Array [
               Object {
                 "flex": 1,
                 "marginBottom": 4,
               },
-              undefined,
+              Object {},
             ],
           },
           "ref": null,
@@ -3933,7 +4072,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "children": undefined,
+            "children": null,
             "style": Object {},
           },
           "ref": null,
@@ -3962,7 +4101,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "children": undefined,
+            "children": null,
             "style": Object {},
           },
           "ref": null,

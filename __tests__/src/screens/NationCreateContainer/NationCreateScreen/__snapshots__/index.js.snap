@@ -130,6 +130,13 @@ ShallowWrapper {
               </View>
             </View>
             <PanelView
+              body=""
+              buttonTitle="Button"
+              childrenContainerStyle={Object {}}
+              icon=""
+              onButtonClick={[Function]}
+              renderAdditionalInfo={null}
+              renderBottom={null}
               style={
                 Object {
                   "backgroundColor": "transparent",
@@ -146,6 +153,7 @@ ShallowWrapper {
                   "paddingTop": 4,
                 }
               }
+              title=""
               titleStyle={
                 Object {
                   "color": "white",
@@ -254,7 +262,13 @@ ShallowWrapper {
               </View>
             </PanelView>
             <PanelView
+              body=""
+              buttonTitle="Button"
+              childrenContainerStyle={Object {}}
               icon=" "
+              onButtonClick={[Function]}
+              renderAdditionalInfo={null}
+              renderBottom={null}
               style={
                 Object {
                   "backgroundColor": "transparent",
@@ -365,7 +379,13 @@ ShallowWrapper {
               </Text>
             </PanelView>
             <PanelView
+              body=""
+              buttonTitle="Button"
+              childrenContainerStyle={Object {}}
               icon=" "
+              onButtonClick={[Function]}
+              renderAdditionalInfo={null}
+              renderBottom={null}
               style={
                 Object {
                   "backgroundColor": "transparent",
@@ -718,7 +738,13 @@ ShallowWrapper {
               </View>
             </PanelView>
             <PanelView
+              body=""
+              buttonTitle="Button"
+              childrenContainerStyle={Object {}}
               icon=" "
+              onButtonClick={[Function]}
+              renderAdditionalInfo={null}
+              renderBottom={null}
               style={
                 Object {
                   "backgroundColor": "transparent",
@@ -958,6 +984,13 @@ ShallowWrapper {
               </View>
             </View>
             <PanelView
+              body=""
+              buttonTitle="Button"
+              childrenContainerStyle={Object {}}
+              icon=""
+              onButtonClick={[Function]}
+              renderAdditionalInfo={null}
+              renderBottom={null}
               style={
                 Object {
                   "backgroundColor": "transparent",
@@ -974,6 +1007,7 @@ ShallowWrapper {
                   "paddingTop": 4,
                 }
               }
+              title=""
               titleStyle={
                 Object {
                   "color": "white",
@@ -1082,7 +1116,13 @@ ShallowWrapper {
               </View>
             </PanelView>
             <PanelView
+              body=""
+              buttonTitle="Button"
+              childrenContainerStyle={Object {}}
               icon=" "
+              onButtonClick={[Function]}
+              renderAdditionalInfo={null}
+              renderBottom={null}
               style={
                 Object {
                   "backgroundColor": "transparent",
@@ -1193,7 +1233,13 @@ ShallowWrapper {
               </Text>
             </PanelView>
             <PanelView
+              body=""
+              buttonTitle="Button"
+              childrenContainerStyle={Object {}}
               icon=" "
+              onButtonClick={[Function]}
+              renderAdditionalInfo={null}
+              renderBottom={null}
               style={
                 Object {
                   "backgroundColor": "transparent",
@@ -1546,7 +1592,13 @@ ShallowWrapper {
               </View>
             </PanelView>
             <PanelView
+              body=""
+              buttonTitle="Button"
+              childrenContainerStyle={Object {}}
               icon=" "
+              onButtonClick={[Function]}
+              renderAdditionalInfo={null}
+              renderBottom={null}
               style={
                 Object {
                   "backgroundColor": "transparent",
@@ -1711,6 +1763,13 @@ ShallowWrapper {
                 </View>
               </View>,
               <PanelView
+                body=""
+                buttonTitle="Button"
+                childrenContainerStyle={Object {}}
+                icon=""
+                onButtonClick={[Function]}
+                renderAdditionalInfo={null}
+                renderBottom={null}
                 style={
                   Object {
                     "backgroundColor": "transparent",
@@ -1727,6 +1786,7 @@ ShallowWrapper {
                     "paddingTop": 4,
                   }
                 }
+                title=""
                 titleStyle={
                   Object {
                     "color": "white",
@@ -1835,7 +1895,13 @@ ShallowWrapper {
                 </View>
               </PanelView>,
               <PanelView
+                body=""
+                buttonTitle="Button"
+                childrenContainerStyle={Object {}}
                 icon=" "
+                onButtonClick={[Function]}
+                renderAdditionalInfo={null}
+                renderBottom={null}
                 style={
                   Object {
                     "backgroundColor": "transparent",
@@ -1946,7 +2012,13 @@ ShallowWrapper {
                 </Text>
               </PanelView>,
               <PanelView
+                body=""
+                buttonTitle="Button"
+                childrenContainerStyle={Object {}}
                 icon=" "
+                onButtonClick={[Function]}
+                renderAdditionalInfo={null}
+                renderBottom={null}
                 style={
                   Object {
                     "backgroundColor": "transparent",
@@ -2299,7 +2371,13 @@ ShallowWrapper {
                 </View>
               </PanelView>,
               <PanelView
+                body=""
+                buttonTitle="Button"
+                childrenContainerStyle={Object {}}
                 icon=" "
+                onButtonClick={[Function]}
+                renderAdditionalInfo={null}
+                renderBottom={null}
                 style={
                   Object {
                     "backgroundColor": "transparent",
@@ -2524,6 +2602,8 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "class",
               "props": Object {
+                "body": "",
+                "buttonTitle": "Button",
                 "children": <View
                   style={
                     Object {
@@ -2618,6 +2698,11 @@ ShallowWrapper {
                     </View>
                   </View>
                 </View>,
+                "childrenContainerStyle": Object {},
+                "icon": "",
+                "onButtonClick": [Function],
+                "renderAdditionalInfo": null,
+                "renderBottom": null,
                 "style": Object {
                   "backgroundColor": "transparent",
                   "borderRadius": 8,
@@ -2632,6 +2717,7 @@ ShallowWrapper {
                   "paddingRight": 8,
                   "paddingTop": 4,
                 },
+                "title": "",
                 "titleStyle": Object {
                   "color": "white",
                   "fontFamily": "Roboto",
@@ -2995,6 +3081,8 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "class",
               "props": Object {
+                "body": "",
+                "buttonTitle": "Button",
                 "children": Array [
                   <View
                     style={
@@ -3077,7 +3165,11 @@ ShallowWrapper {
                     Virtual nations exist only in Pangea. Geographic nations are on Earth.
                   </Text>,
                 ],
+                "childrenContainerStyle": Object {},
                 "icon": " ",
+                "onButtonClick": [Function],
+                "renderAdditionalInfo": null,
+                "renderBottom": null,
                 "style": Object {
                   "backgroundColor": "transparent",
                   "borderRadius": 8,
@@ -3307,6 +3399,8 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "class",
               "props": Object {
+                "body": "",
+                "buttonTitle": "Button",
                 "children": Array [
                   <View
                     style={
@@ -3630,7 +3724,11 @@ ShallowWrapper {
                     </View>
                   </View>,
                 ],
+                "childrenContainerStyle": Object {},
                 "icon": " ",
+                "onButtonClick": [Function],
+                "renderAdditionalInfo": null,
+                "renderBottom": null,
                 "style": Object {
                   "backgroundColor": "transparent",
                   "borderRadius": 8,
@@ -4577,6 +4675,8 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "class",
               "props": Object {
+                "body": "",
+                "buttonTitle": "Button",
                 "children": Array [
                   <View
                     style={
@@ -4654,7 +4754,11 @@ ShallowWrapper {
                     </View>
                   </View>,
                 ],
+                "childrenContainerStyle": Object {},
                 "icon": " ",
+                "onButtonClick": [Function],
+                "renderAdditionalInfo": null,
+                "renderBottom": null,
                 "style": Object {
                   "backgroundColor": "transparent",
                   "borderRadius": 8,
@@ -5071,6 +5175,13 @@ ShallowWrapper {
                 </View>
               </View>
               <PanelView
+                body=""
+                buttonTitle="Button"
+                childrenContainerStyle={Object {}}
+                icon=""
+                onButtonClick={[Function]}
+                renderAdditionalInfo={null}
+                renderBottom={null}
                 style={
                   Object {
                     "backgroundColor": "transparent",
@@ -5087,6 +5198,7 @@ ShallowWrapper {
                     "paddingTop": 4,
                   }
                 }
+                title=""
                 titleStyle={
                   Object {
                     "color": "white",
@@ -5195,7 +5307,13 @@ ShallowWrapper {
                 </View>
               </PanelView>
               <PanelView
+                body=""
+                buttonTitle="Button"
+                childrenContainerStyle={Object {}}
                 icon=" "
+                onButtonClick={[Function]}
+                renderAdditionalInfo={null}
+                renderBottom={null}
                 style={
                   Object {
                     "backgroundColor": "transparent",
@@ -5306,7 +5424,13 @@ ShallowWrapper {
                 </Text>
               </PanelView>
               <PanelView
+                body=""
+                buttonTitle="Button"
+                childrenContainerStyle={Object {}}
                 icon=" "
+                onButtonClick={[Function]}
+                renderAdditionalInfo={null}
+                renderBottom={null}
                 style={
                   Object {
                     "backgroundColor": "transparent",
@@ -5659,7 +5783,13 @@ ShallowWrapper {
                 </View>
               </PanelView>
               <PanelView
+                body=""
+                buttonTitle="Button"
+                childrenContainerStyle={Object {}}
                 icon=" "
+                onButtonClick={[Function]}
+                renderAdditionalInfo={null}
+                renderBottom={null}
                 style={
                   Object {
                     "backgroundColor": "transparent",
@@ -5899,6 +6029,13 @@ ShallowWrapper {
                 </View>
               </View>
               <PanelView
+                body=""
+                buttonTitle="Button"
+                childrenContainerStyle={Object {}}
+                icon=""
+                onButtonClick={[Function]}
+                renderAdditionalInfo={null}
+                renderBottom={null}
                 style={
                   Object {
                     "backgroundColor": "transparent",
@@ -5915,6 +6052,7 @@ ShallowWrapper {
                     "paddingTop": 4,
                   }
                 }
+                title=""
                 titleStyle={
                   Object {
                     "color": "white",
@@ -6023,7 +6161,13 @@ ShallowWrapper {
                 </View>
               </PanelView>
               <PanelView
+                body=""
+                buttonTitle="Button"
+                childrenContainerStyle={Object {}}
                 icon=" "
+                onButtonClick={[Function]}
+                renderAdditionalInfo={null}
+                renderBottom={null}
                 style={
                   Object {
                     "backgroundColor": "transparent",
@@ -6134,7 +6278,13 @@ ShallowWrapper {
                 </Text>
               </PanelView>
               <PanelView
+                body=""
+                buttonTitle="Button"
+                childrenContainerStyle={Object {}}
                 icon=" "
+                onButtonClick={[Function]}
+                renderAdditionalInfo={null}
+                renderBottom={null}
                 style={
                   Object {
                     "backgroundColor": "transparent",
@@ -6487,7 +6637,13 @@ ShallowWrapper {
                 </View>
               </PanelView>
               <PanelView
+                body=""
+                buttonTitle="Button"
+                childrenContainerStyle={Object {}}
                 icon=" "
+                onButtonClick={[Function]}
+                renderAdditionalInfo={null}
+                renderBottom={null}
                 style={
                   Object {
                     "backgroundColor": "transparent",
@@ -6652,6 +6808,13 @@ ShallowWrapper {
                   </View>
                 </View>,
                 <PanelView
+                  body=""
+                  buttonTitle="Button"
+                  childrenContainerStyle={Object {}}
+                  icon=""
+                  onButtonClick={[Function]}
+                  renderAdditionalInfo={null}
+                  renderBottom={null}
                   style={
                     Object {
                       "backgroundColor": "transparent",
@@ -6668,6 +6831,7 @@ ShallowWrapper {
                       "paddingTop": 4,
                     }
                   }
+                  title=""
                   titleStyle={
                     Object {
                       "color": "white",
@@ -6776,7 +6940,13 @@ ShallowWrapper {
                   </View>
                 </PanelView>,
                 <PanelView
+                  body=""
+                  buttonTitle="Button"
+                  childrenContainerStyle={Object {}}
                   icon=" "
+                  onButtonClick={[Function]}
+                  renderAdditionalInfo={null}
+                  renderBottom={null}
                   style={
                     Object {
                       "backgroundColor": "transparent",
@@ -6887,7 +7057,13 @@ ShallowWrapper {
                   </Text>
                 </PanelView>,
                 <PanelView
+                  body=""
+                  buttonTitle="Button"
+                  childrenContainerStyle={Object {}}
                   icon=" "
+                  onButtonClick={[Function]}
+                  renderAdditionalInfo={null}
+                  renderBottom={null}
                   style={
                     Object {
                       "backgroundColor": "transparent",
@@ -7240,7 +7416,13 @@ ShallowWrapper {
                   </View>
                 </PanelView>,
                 <PanelView
+                  body=""
+                  buttonTitle="Button"
+                  childrenContainerStyle={Object {}}
                   icon=" "
+                  onButtonClick={[Function]}
+                  renderAdditionalInfo={null}
+                  renderBottom={null}
                   style={
                     Object {
                       "backgroundColor": "transparent",
@@ -7465,6 +7647,8 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "class",
                 "props": Object {
+                  "body": "",
+                  "buttonTitle": "Button",
                   "children": <View
                     style={
                       Object {
@@ -7559,6 +7743,11 @@ ShallowWrapper {
                       </View>
                     </View>
                   </View>,
+                  "childrenContainerStyle": Object {},
+                  "icon": "",
+                  "onButtonClick": [Function],
+                  "renderAdditionalInfo": null,
+                  "renderBottom": null,
                   "style": Object {
                     "backgroundColor": "transparent",
                     "borderRadius": 8,
@@ -7573,6 +7762,7 @@ ShallowWrapper {
                     "paddingRight": 8,
                     "paddingTop": 4,
                   },
+                  "title": "",
                   "titleStyle": Object {
                     "color": "white",
                     "fontFamily": "Roboto",
@@ -7936,6 +8126,8 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "class",
                 "props": Object {
+                  "body": "",
+                  "buttonTitle": "Button",
                   "children": Array [
                     <View
                       style={
@@ -8018,7 +8210,11 @@ ShallowWrapper {
                       Virtual nations exist only in Pangea. Geographic nations are on Earth.
                     </Text>,
                   ],
+                  "childrenContainerStyle": Object {},
                   "icon": " ",
+                  "onButtonClick": [Function],
+                  "renderAdditionalInfo": null,
+                  "renderBottom": null,
                   "style": Object {
                     "backgroundColor": "transparent",
                     "borderRadius": 8,
@@ -8248,6 +8444,8 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "class",
                 "props": Object {
+                  "body": "",
+                  "buttonTitle": "Button",
                   "children": Array [
                     <View
                       style={
@@ -8571,7 +8769,11 @@ ShallowWrapper {
                       </View>
                     </View>,
                   ],
+                  "childrenContainerStyle": Object {},
                   "icon": " ",
+                  "onButtonClick": [Function],
+                  "renderAdditionalInfo": null,
+                  "renderBottom": null,
                   "style": Object {
                     "backgroundColor": "transparent",
                     "borderRadius": 8,
@@ -9518,6 +9720,8 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "class",
                 "props": Object {
+                  "body": "",
+                  "buttonTitle": "Button",
                   "children": Array [
                     <View
                       style={
@@ -9595,7 +9799,11 @@ ShallowWrapper {
                       </View>
                     </View>,
                   ],
+                  "childrenContainerStyle": Object {},
                   "icon": " ",
+                  "onButtonClick": [Function],
+                  "renderAdditionalInfo": null,
+                  "renderBottom": null,
                   "style": Object {
                     "backgroundColor": "transparent",
                     "borderRadius": 8,

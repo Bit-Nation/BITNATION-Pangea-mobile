@@ -23,6 +23,13 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <PanelView
+          body=""
+          buttonTitle="Button"
+          childrenContainerStyle={Object {}}
+          icon=""
+          onButtonClick={[Function]}
+          renderAdditionalInfo={null}
+          renderBottom={null}
           style={
             Object {
               "alignItems": "stretch",
@@ -161,6 +168,8 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
+          "body": "",
+          "buttonTitle": "Button",
           "children": Array [
             <View
               style={
@@ -263,6 +272,11 @@ ShallowWrapper {
               />
             </View>,
           ],
+          "childrenContainerStyle": Object {},
+          "icon": "",
+          "onButtonClick": [Function],
+          "renderAdditionalInfo": null,
+          "renderBottom": null,
           "style": Object {
             "alignItems": "stretch",
             "backgroundColor": "rgba(255,255,255,0.2)",
@@ -558,6 +572,13 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <PanelView
+            body=""
+            buttonTitle="Button"
+            childrenContainerStyle={Object {}}
+            icon=""
+            onButtonClick={[Function]}
+            renderAdditionalInfo={null}
+            renderBottom={null}
             style={
               Object {
                 "alignItems": "stretch",
@@ -696,6 +717,8 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
+            "body": "",
+            "buttonTitle": "Button",
             "children": Array [
               <View
                 style={
@@ -798,6 +821,11 @@ ShallowWrapper {
                 />
               </View>,
             ],
+            "childrenContainerStyle": Object {},
+            "icon": "",
+            "onButtonClick": [Function],
+            "renderAdditionalInfo": null,
+            "renderBottom": null,
             "style": Object {
               "alignItems": "stretch",
               "backgroundColor": "rgba(255,255,255,0.2)",
