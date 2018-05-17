@@ -57,7 +57,7 @@ const ActivityPanel = ({
           const messageText = message.interpret ? i18n.t(`activityLog.${message.msg}`, JSON.parse(message.params)) : message.msg;
           return (<Text style={styles.listItemText}>{messageText}</Text>);
         }}
-        keyExtractor={(item: ActivityLogMessage) => item.id}
+        keyExtractor={(item: ActivityLogMessage) => item.id.toString()}
         data={messages}
         style={styles.flex}
       />
