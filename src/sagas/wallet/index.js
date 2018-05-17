@@ -1,7 +1,6 @@
 /* eslint-disable */
 
-import { all, takeEvery } from 'redux-saga/effects';
-
+import { all, takeEvery, call } from 'redux-saga/effects';
 import { SEND_MONEY, UPDATE_WALLET_BALANCE, UPDATE_WALLET_LIST } from '../../actions/wallet';
 import { updateWalletList, updateWalletBalance, sendMoneySaga } from './sagas';
 
@@ -22,5 +21,6 @@ export default function* rootSaga() {
     watchUpdateWalletList(),
     watchUpdateWalletBalance(),
     watchSendMoney(),
+    call(watchSendMoney),
   ]);
 }
