@@ -1,0 +1,507 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProfileScreenContainer Rendering 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <ProfileScreen
+    account={
+      Object {
+        "_id": 1,
+        "avatar": null,
+        "location": "NYC",
+        "name": "Pangea",
+      }
+    }
+    navigator={
+      Object {
+        "setButtons": [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "leftButtons": Array [],
+                "rightButtons": Array [
+                  Object {
+                    "buttonColor": "#007AFF",
+                    "id": "EDIT_BUTTON",
+                    "title": "Edit",
+                  },
+                ],
+              },
+            ],
+          ],
+        },
+        "setOnNavigatorEvent": [MockFunction] {
+          "calls": Array [
+            Array [
+              [Function],
+            ],
+          ],
+        },
+      }
+    }
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <ScreenTitle
+          title="Profile"
+        />,
+        <View
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "transparent",
+              "flexDirection": "column",
+              "justifyContent": "space-around",
+              "marginBottom": 20,
+            }
+          }
+        >
+          <Image
+            source={1}
+            style={
+              Object {
+                "borderRadius": 50,
+                "height": 100,
+                "margin": 16,
+                "width": 100,
+              }
+            }
+          />
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "#FFFFFF",
+                "fontFamily": "Roboto",
+                "fontSize": 28,
+                "fontWeight": "bold",
+                "letterSpacing": 0,
+                "lineHeight": 34,
+              }
+            }
+          >
+            Pangea
+          </Text>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "#FFFFFF",
+                "fontFamily": "Roboto",
+                "fontSize": 17,
+                "fontWeight": "normal",
+                "letterSpacing": 0,
+                "lineHeight": 22,
+              }
+            }
+          >
+            NYC
+          </Text>
+        </View>,
+      ],
+      "style": Object {
+        "alignContent": "flex-start",
+        "flex": 1,
+        "flexDirection": "column",
+        "justifyContent": "flex-start",
+        "marginLeft": 8,
+        "marginRight": 8,
+      },
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "title": "Profile",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <Image
+              source={1}
+              style={
+                Object {
+                  "borderRadius": 50,
+                  "height": 100,
+                  "margin": 16,
+                  "width": 100,
+                }
+              }
+            />,
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Object {
+                  "color": "#FFFFFF",
+                  "fontFamily": "Roboto",
+                  "fontSize": 28,
+                  "fontWeight": "bold",
+                  "letterSpacing": 0,
+                  "lineHeight": 34,
+                }
+              }
+            >
+              Pangea
+            </Text>,
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Object {
+                  "color": "#FFFFFF",
+                  "fontFamily": "Roboto",
+                  "fontSize": 17,
+                  "fontWeight": "normal",
+                  "letterSpacing": 0,
+                  "lineHeight": 22,
+                }
+              }
+            >
+              NYC
+            </Text>,
+          ],
+          "style": Object {
+            "alignItems": "center",
+            "backgroundColor": "transparent",
+            "flexDirection": "column",
+            "justifyContent": "space-around",
+            "marginBottom": 20,
+          },
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "source": 1,
+              "style": Object {
+                "borderRadius": 50,
+                "height": 100,
+                "margin": 16,
+                "width": 100,
+              },
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "accessible": true,
+              "allowFontScaling": true,
+              "children": "Pangea",
+              "ellipsizeMode": "tail",
+              "style": Object {
+                "color": "#FFFFFF",
+                "fontFamily": "Roboto",
+                "fontSize": 28,
+                "fontWeight": "bold",
+                "letterSpacing": 0,
+                "lineHeight": 34,
+              },
+            },
+            "ref": null,
+            "rendered": "Pangea",
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "accessible": true,
+              "allowFontScaling": true,
+              "children": "NYC",
+              "ellipsizeMode": "tail",
+              "style": Object {
+                "color": "#FFFFFF",
+                "fontFamily": "Roboto",
+                "fontSize": 17,
+                "fontWeight": "normal",
+                "letterSpacing": 0,
+                "lineHeight": 22,
+              },
+            },
+            "ref": null,
+            "rendered": "NYC",
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <ScreenTitle
+            title="Profile"
+          />,
+          <View
+            style={
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "transparent",
+                "flexDirection": "column",
+                "justifyContent": "space-around",
+                "marginBottom": 20,
+              }
+            }
+          >
+            <Image
+              source={1}
+              style={
+                Object {
+                  "borderRadius": 50,
+                  "height": 100,
+                  "margin": 16,
+                  "width": 100,
+                }
+              }
+            />
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Object {
+                  "color": "#FFFFFF",
+                  "fontFamily": "Roboto",
+                  "fontSize": 28,
+                  "fontWeight": "bold",
+                  "letterSpacing": 0,
+                  "lineHeight": 34,
+                }
+              }
+            >
+              Pangea
+            </Text>
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Object {
+                  "color": "#FFFFFF",
+                  "fontFamily": "Roboto",
+                  "fontSize": 17,
+                  "fontWeight": "normal",
+                  "letterSpacing": 0,
+                  "lineHeight": 22,
+                }
+              }
+            >
+              NYC
+            </Text>
+          </View>,
+        ],
+        "style": Object {
+          "alignContent": "flex-start",
+          "flex": 1,
+          "flexDirection": "column",
+          "justifyContent": "flex-start",
+          "marginLeft": 8,
+          "marginRight": 8,
+        },
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "title": "Profile",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <Image
+                source={1}
+                style={
+                  Object {
+                    "borderRadius": 50,
+                    "height": 100,
+                    "margin": 16,
+                    "width": 100,
+                  }
+                }
+              />,
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={
+                  Object {
+                    "color": "#FFFFFF",
+                    "fontFamily": "Roboto",
+                    "fontSize": 28,
+                    "fontWeight": "bold",
+                    "letterSpacing": 0,
+                    "lineHeight": 34,
+                  }
+                }
+              >
+                Pangea
+              </Text>,
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={
+                  Object {
+                    "color": "#FFFFFF",
+                    "fontFamily": "Roboto",
+                    "fontSize": 17,
+                    "fontWeight": "normal",
+                    "letterSpacing": 0,
+                    "lineHeight": 22,
+                  }
+                }
+              >
+                NYC
+              </Text>,
+            ],
+            "style": Object {
+              "alignItems": "center",
+              "backgroundColor": "transparent",
+              "flexDirection": "column",
+              "justifyContent": "space-around",
+              "marginBottom": 20,
+            },
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "source": 1,
+                "style": Object {
+                  "borderRadius": 50,
+                  "height": 100,
+                  "margin": 16,
+                  "width": 100,
+                },
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "accessible": true,
+                "allowFontScaling": true,
+                "children": "Pangea",
+                "ellipsizeMode": "tail",
+                "style": Object {
+                  "color": "#FFFFFF",
+                  "fontFamily": "Roboto",
+                  "fontSize": 28,
+                  "fontWeight": "bold",
+                  "letterSpacing": 0,
+                  "lineHeight": 34,
+                },
+              },
+              "ref": null,
+              "rendered": "Pangea",
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "accessible": true,
+                "allowFontScaling": true,
+                "children": "NYC",
+                "ellipsizeMode": "tail",
+                "style": Object {
+                  "color": "#FFFFFF",
+                  "fontFamily": "Roboto",
+                  "fontSize": 17,
+                  "fontWeight": "normal",
+                  "letterSpacing": 0,
+                  "lineHeight": 22,
+                },
+              },
+              "ref": null,
+              "rendered": "NYC",
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
