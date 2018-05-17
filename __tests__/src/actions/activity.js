@@ -43,7 +43,7 @@ describe('activity action creators', () => {
       type: ADD_NEW_MESSAGE,
       message: 'new message',
       params: {},
-      interpret: true
+      interpret: true,
     });
   });
 });
