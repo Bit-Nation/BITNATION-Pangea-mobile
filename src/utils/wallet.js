@@ -38,6 +38,8 @@ export function convertWallets(wallets: Array<{value: string, key: string}>): Ar
       value,
     }));
 
+  console.log('----> Wallets Array: ', walletsArray);
+
   return _.map(walletsArray, wallet => ({
     ethAddress: wallet.key,
     currency: 'ETH',
