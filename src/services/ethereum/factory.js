@@ -2,7 +2,7 @@
 import ethers from 'ethers';
 import providers from 'ethers/providers';
 import EthereumService from './index';
-import CustomSigner from './CustomSigner'
+import CustomSigner from './CustomSigner';
 
 // export default class EthereumServiceContainer {
 //   constructor() {
@@ -28,8 +28,13 @@ export default function factory(config: {private_key: string, provider_type: str
   const providerType: string = config.provider_type;
 
   // @todo check if valid private key - exit if not
-  const wallet = new CustomSigner();
+  const wallet = new ethers.Wallet(privateKey);
+  const customSigner = new CustomSigner(privateKey, providerType);
+  wallet.sign = customSigner.sign;
+  wallet.blah = customSigner.blah;
   wallet.provider = new providers.InfuraProvider(providerType);
+  console.log('custom sign function: ', customSigner.sign);
+  console.log('wallet sign function: ', wallet.sign);
 
   // Ethereum service
   const ethereumService = new EthereumService(wallet);
