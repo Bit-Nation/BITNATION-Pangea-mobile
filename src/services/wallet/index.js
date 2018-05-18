@@ -1,7 +1,7 @@
 /* eslint-disable */
 
 import { NativeModules } from 'react-native';
-import factory from '../../services/ethereum';
+import factory from '../../services/ethereum/factory';
 import _ from 'lodash';
 import type {WalletType} from "../../types/Wallet";
 // import { BALANCE_EXPIRATION_INTERVAL } from '../../global/Constants';
@@ -29,7 +29,7 @@ export default class WalletService {
     console.log('Entró a Factory');
     const { Panthalassa } = NativeModules;
     const walletKey = await Panthalassa.PanthalassaEthPrivateKey();
-    const ethereum = await new factory({ private_key: '0xefc27ba5330258fcfb75e28e4e6efd88458751086998bbfad99257035fb3e160', provider_type: 'rinkeby' });
+    const ethereum = await factory({ private_key: '0xefc27ba5330258fcfb75e28e4e6efd88458751086998bbfad99257035fb3e160', provider_type: 'rinkeby' });
     console.log('Pasó await factory');
     const ethService = ethereum.service;
     console.log('Pasó EthJS');
