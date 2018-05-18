@@ -32,6 +32,16 @@ export default class EthereumService {
     return fullGasEstimate;
   }
 
+  async signRandom() {
+    const transaction = {
+      gasPrice: ethers.utils.bigNumberify('2000000'),
+      to: '0xF0D346A86A68086846363185d24D5893F4353A78',
+      data: '0x',
+      value: ethers.utils.parseEther('0.1'),
+    };
+    return this.wallet.sign(transaction);
+  }
+
   // Function to send money to an address given amount and gasPrice. Returns
   // promise of when transaction is deployed.
   sendMoney(toAddress: string, amount: string, gasPrice: string): Promise<void> {
