@@ -49,6 +49,9 @@ export default class WalletService {
       }
     });
 
+    return wallets;
+    
+    /*
     let ethWallet = _.filter(wallets, { currency: 'ETH' });
     try {
       ethWallet.balance = await ethService.getBalance();
@@ -56,7 +59,7 @@ export default class WalletService {
       throw error;
     }
     console.log('===== > Wallets with balance resolveBalance', ethWallet);
-    return ethWallet;
+    return ethWallet;*/
 
     /* const container = await containerPromise;
     const walletObject = await container.eth.wallet.ethBalance(wallet.ethAddress);
