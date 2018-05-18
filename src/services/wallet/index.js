@@ -37,44 +37,59 @@ export default class WalletService {
     console.log('Creó Factory');
     console.log('===== > Wallets with balance resolveBalance-Inicio', ethService);
 
-    wallets.forEach(function (walletTemp, index, originalWallet) {
+    console.log('Wallet 0', wallets[0]);
+    try {
+      wallets[0].balance = await ethService.getBalance();
+    } catch (error) {
+      throw error;
+    }
+
+    console.log('Wallet 1', wallets[1]);
+    try {
+      wallets[1].balance = await ethService.getTokenBalance(wallets[1].ethAddress);
+    } catch (error) {
+      throw error;
+    }
+
+/*
+    const walletBalances = Promise.all(wallets.map(async (walletTemp, index) => {
+      if (walletTemp[index].currency === 'ETH'){
+        try {
+          const balance  = await ethService.getBalance();
+          return balance;
+        } catch (error) {
+          return undefined;
+        }
+      } else {
+        try {
+          const balance  = await ethService.getTokenBalance(walletTemp[index].ethAddress);
+          return balance;
+        } catch (e) {
+          // handle error so that all promises won't be rejected because one wallet failed to resolve balance.
+          return undefined; // maybe like that
+        }
+      }
+    }));
+
+    console.log('-> Balances: ', walletBalances);
+    */
+
+    /*
+    wallets.forEach(async function (walletTemp, index, originalWallet) {
+      console.log('Foreach Wallet: ', walletTemp[index]);
       if (walletTemp[index].currency === 'ETH'){
         try {
           walletTemp[index].balance = await ethService.getBalance();
+          console.log('Wallet with Balance: ', walletTemp[index]);
         } catch (error) {
           throw error;
         }
       } else {
         walletTemp[index].balance = await ethService.getTokenBalance(walletTemp[index].ethAddress);
       }
-    });
+    });*/
 
     return wallets;
-    
-    /*
-    let ethWallet = _.filter(wallets, { currency: 'ETH' });
-    try {
-      ethWallet.balance = await ethService.getBalance();
-    } catch (error) {
-      throw error;
-    }
-    console.log('===== > Wallets with balance resolveBalance', ethWallet);
-    return ethWallet;*/
-
-    /* const container = await containerPromise;
-    const walletObject = await container.eth.wallet.ethBalance(wallet.ethAddress);
-
-    if (walletObject === null ||
-      (new Date()).getTime() - walletObject.synced_at.getTime() > BALANCE_EXPIRATION_INTERVAL) {
-      try {
-        await syncWallet(wallet);
-        return await resolveBalance(wallet);
-      } catch (error) {
-        throw error;
-      }
-    }
-
-    return { ...wallet, balance: walletObject.amount }; */
   }
 
   static async sendMoney(fromAddress, toAddress, amount) {
