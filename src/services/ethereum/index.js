@@ -10,7 +10,6 @@ export default class EthereumService {
     this.wallet = wallet;
   }
   async getBalance(): string {
-    console.log('Get Balance!!');
     const balance = await this.wallet.getBalance('latest');
     return balance;
   }
