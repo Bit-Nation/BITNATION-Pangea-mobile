@@ -9,14 +9,10 @@ import type {WalletType} from "../../types/Wallet";
 export default class WalletService {
   static async getWallets() {
     const { Panthalassa } = NativeModules;
-    const walletKey = await Panthalassa.PanthalassaEthPrivateKey();
-    // console.log('EthPrivateKey from Panthalassa: ', walletKey);
     const walletAddress = await Panthalassa.PanthalassaEthAddress();
-    // console.log('EthPrivateAddress from Panthalassa: ', walletAddress);
     const walletArray = [{ currency: 'ETH', ethAddress: walletAddress, balance: null, name: 'Ethereum' },
       { currency: 'PAT', ethAddress: walletAddress, balance: null, name: 'PAT' }];
     console.log('----> Converted Wallet: ', walletArray);
-    // return convertWallets(walletArray);
     return walletArray;
   }
 
@@ -47,10 +43,10 @@ export default class WalletService {
 
     console.log('Wallet 1', wallets[1]);
     try {
-      wallets[1].balance = await ethService.getTokenBalance(0xc3830a6206fb9d089d1ce824598978532d14d8aa);
+      wallets[1].balance = await ethService.getTokenBalance('0xc3830a6206fb9d089d1ce824598978532d14d8aa');
     } catch (error) {
-      wallets[1].balance = undefined;
-      //throw error;
+      //wallets[1].balance = undefined;
+      throw error;
     }
 
 /*
