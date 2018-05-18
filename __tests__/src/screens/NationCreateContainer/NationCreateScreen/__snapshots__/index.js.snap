@@ -130,11 +130,11 @@ ShallowWrapper {
               </View>
             </View>
             <PanelView
-              body=""
+              body={undefined}
               buttonTitle="Button"
               childrenContainerStyle={Object {}}
-              icon=""
-              onButtonClick={[Function]}
+              icon={undefined}
+              onButtonClick={null}
               renderAdditionalInfo={null}
               renderBottom={null}
               style={
@@ -153,7 +153,7 @@ ShallowWrapper {
                   "paddingTop": 4,
                 }
               }
-              title=""
+              title={undefined}
               titleStyle={
                 Object {
                   "color": "white",
@@ -262,11 +262,11 @@ ShallowWrapper {
               </View>
             </PanelView>
             <PanelView
-              body=""
+              body={undefined}
               buttonTitle="Button"
               childrenContainerStyle={Object {}}
               icon=" "
-              onButtonClick={[Function]}
+              onButtonClick={null}
               renderAdditionalInfo={null}
               renderBottom={null}
               style={
@@ -379,11 +379,11 @@ ShallowWrapper {
               </Text>
             </PanelView>
             <PanelView
-              body=""
+              body={undefined}
               buttonTitle="Button"
               childrenContainerStyle={Object {}}
               icon=" "
-              onButtonClick={[Function]}
+              onButtonClick={null}
               renderAdditionalInfo={null}
               renderBottom={null}
               style={
@@ -738,11 +738,11 @@ ShallowWrapper {
               </View>
             </PanelView>
             <PanelView
-              body=""
+              body={undefined}
               buttonTitle="Button"
               childrenContainerStyle={Object {}}
               icon=" "
-              onButtonClick={[Function]}
+              onButtonClick={null}
               renderAdditionalInfo={null}
               renderBottom={null}
               style={
@@ -984,11 +984,11 @@ ShallowWrapper {
               </View>
             </View>
             <PanelView
-              body=""
+              body={undefined}
               buttonTitle="Button"
               childrenContainerStyle={Object {}}
-              icon=""
-              onButtonClick={[Function]}
+              icon={undefined}
+              onButtonClick={null}
               renderAdditionalInfo={null}
               renderBottom={null}
               style={
@@ -1007,7 +1007,7 @@ ShallowWrapper {
                   "paddingTop": 4,
                 }
               }
-              title=""
+              title={undefined}
               titleStyle={
                 Object {
                   "color": "white",
@@ -1116,11 +1116,11 @@ ShallowWrapper {
               </View>
             </PanelView>
             <PanelView
-              body=""
+              body={undefined}
               buttonTitle="Button"
               childrenContainerStyle={Object {}}
               icon=" "
-              onButtonClick={[Function]}
+              onButtonClick={null}
               renderAdditionalInfo={null}
               renderBottom={null}
               style={
@@ -1233,11 +1233,11 @@ ShallowWrapper {
               </Text>
             </PanelView>
             <PanelView
-              body=""
+              body={undefined}
               buttonTitle="Button"
               childrenContainerStyle={Object {}}
               icon=" "
-              onButtonClick={[Function]}
+              onButtonClick={null}
               renderAdditionalInfo={null}
               renderBottom={null}
               style={
@@ -1592,11 +1592,11 @@ ShallowWrapper {
               </View>
             </PanelView>
             <PanelView
-              body=""
+              body={undefined}
               buttonTitle="Button"
               childrenContainerStyle={Object {}}
               icon=" "
-              onButtonClick={[Function]}
+              onButtonClick={null}
               renderAdditionalInfo={null}
               renderBottom={null}
               style={
@@ -1763,11 +1763,11 @@ ShallowWrapper {
                 </View>
               </View>,
               <PanelView
-                body=""
+                body={undefined}
                 buttonTitle="Button"
                 childrenContainerStyle={Object {}}
-                icon=""
-                onButtonClick={[Function]}
+                icon={undefined}
+                onButtonClick={null}
                 renderAdditionalInfo={null}
                 renderBottom={null}
                 style={
@@ -1786,7 +1786,7 @@ ShallowWrapper {
                     "paddingTop": 4,
                   }
                 }
-                title=""
+                title={undefined}
                 titleStyle={
                   Object {
                     "color": "white",
@@ -1895,11 +1895,11 @@ ShallowWrapper {
                 </View>
               </PanelView>,
               <PanelView
-                body=""
+                body={undefined}
                 buttonTitle="Button"
                 childrenContainerStyle={Object {}}
                 icon=" "
-                onButtonClick={[Function]}
+                onButtonClick={null}
                 renderAdditionalInfo={null}
                 renderBottom={null}
                 style={
@@ -2012,11 +2012,11 @@ ShallowWrapper {
                 </Text>
               </PanelView>,
               <PanelView
-                body=""
+                body={undefined}
                 buttonTitle="Button"
                 childrenContainerStyle={Object {}}
                 icon=" "
-                onButtonClick={[Function]}
+                onButtonClick={null}
                 renderAdditionalInfo={null}
                 renderBottom={null}
                 style={
@@ -2371,11 +2371,11 @@ ShallowWrapper {
                 </View>
               </PanelView>,
               <PanelView
-                body=""
+                body={undefined}
                 buttonTitle="Button"
                 childrenContainerStyle={Object {}}
                 icon=" "
-                onButtonClick={[Function]}
+                onButtonClick={null}
                 renderAdditionalInfo={null}
                 renderBottom={null}
                 style={
@@ -2602,7 +2602,7 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "class",
               "props": Object {
-                "body": "",
+                "body": undefined,
                 "buttonTitle": "Button",
                 "children": <View
                   style={
@@ -2699,8 +2699,8 @@ ShallowWrapper {
                   </View>
                 </View>,
                 "childrenContainerStyle": Object {},
-                "icon": "",
-                "onButtonClick": [Function],
+                "icon": undefined,
+                "onButtonClick": null,
                 "renderAdditionalInfo": null,
                 "renderBottom": null,
                 "style": Object {
@@ -2717,7 +2717,7 @@ ShallowWrapper {
                   "paddingRight": 8,
                   "paddingTop": 4,
                 },
-                "title": "",
+                "title": undefined,
                 "titleStyle": Object {
                   "color": "white",
                   "fontFamily": "Roboto",
@@ -3081,7 +3081,7 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "class",
               "props": Object {
-                "body": "",
+                "body": undefined,
                 "buttonTitle": "Button",
                 "children": Array [
                   <View
@@ -3167,7 +3167,7 @@ ShallowWrapper {
                 ],
                 "childrenContainerStyle": Object {},
                 "icon": " ",
-                "onButtonClick": [Function],
+                "onButtonClick": null,
                 "renderAdditionalInfo": null,
                 "renderBottom": null,
                 "style": Object {
@@ -3399,7 +3399,7 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "class",
               "props": Object {
-                "body": "",
+                "body": undefined,
                 "buttonTitle": "Button",
                 "children": Array [
                   <View
@@ -3726,7 +3726,7 @@ ShallowWrapper {
                 ],
                 "childrenContainerStyle": Object {},
                 "icon": " ",
-                "onButtonClick": [Function],
+                "onButtonClick": null,
                 "renderAdditionalInfo": null,
                 "renderBottom": null,
                 "style": Object {
@@ -4675,7 +4675,7 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "class",
               "props": Object {
-                "body": "",
+                "body": undefined,
                 "buttonTitle": "Button",
                 "children": Array [
                   <View
@@ -4756,7 +4756,7 @@ ShallowWrapper {
                 ],
                 "childrenContainerStyle": Object {},
                 "icon": " ",
-                "onButtonClick": [Function],
+                "onButtonClick": null,
                 "renderAdditionalInfo": null,
                 "renderBottom": null,
                 "style": Object {
@@ -5175,11 +5175,11 @@ ShallowWrapper {
                 </View>
               </View>
               <PanelView
-                body=""
+                body={undefined}
                 buttonTitle="Button"
                 childrenContainerStyle={Object {}}
-                icon=""
-                onButtonClick={[Function]}
+                icon={undefined}
+                onButtonClick={null}
                 renderAdditionalInfo={null}
                 renderBottom={null}
                 style={
@@ -5198,7 +5198,7 @@ ShallowWrapper {
                     "paddingTop": 4,
                   }
                 }
-                title=""
+                title={undefined}
                 titleStyle={
                   Object {
                     "color": "white",
@@ -5307,11 +5307,11 @@ ShallowWrapper {
                 </View>
               </PanelView>
               <PanelView
-                body=""
+                body={undefined}
                 buttonTitle="Button"
                 childrenContainerStyle={Object {}}
                 icon=" "
-                onButtonClick={[Function]}
+                onButtonClick={null}
                 renderAdditionalInfo={null}
                 renderBottom={null}
                 style={
@@ -5424,11 +5424,11 @@ ShallowWrapper {
                 </Text>
               </PanelView>
               <PanelView
-                body=""
+                body={undefined}
                 buttonTitle="Button"
                 childrenContainerStyle={Object {}}
                 icon=" "
-                onButtonClick={[Function]}
+                onButtonClick={null}
                 renderAdditionalInfo={null}
                 renderBottom={null}
                 style={
@@ -5783,11 +5783,11 @@ ShallowWrapper {
                 </View>
               </PanelView>
               <PanelView
-                body=""
+                body={undefined}
                 buttonTitle="Button"
                 childrenContainerStyle={Object {}}
                 icon=" "
-                onButtonClick={[Function]}
+                onButtonClick={null}
                 renderAdditionalInfo={null}
                 renderBottom={null}
                 style={
@@ -6029,11 +6029,11 @@ ShallowWrapper {
                 </View>
               </View>
               <PanelView
-                body=""
+                body={undefined}
                 buttonTitle="Button"
                 childrenContainerStyle={Object {}}
-                icon=""
-                onButtonClick={[Function]}
+                icon={undefined}
+                onButtonClick={null}
                 renderAdditionalInfo={null}
                 renderBottom={null}
                 style={
@@ -6052,7 +6052,7 @@ ShallowWrapper {
                     "paddingTop": 4,
                   }
                 }
-                title=""
+                title={undefined}
                 titleStyle={
                   Object {
                     "color": "white",
@@ -6161,11 +6161,11 @@ ShallowWrapper {
                 </View>
               </PanelView>
               <PanelView
-                body=""
+                body={undefined}
                 buttonTitle="Button"
                 childrenContainerStyle={Object {}}
                 icon=" "
-                onButtonClick={[Function]}
+                onButtonClick={null}
                 renderAdditionalInfo={null}
                 renderBottom={null}
                 style={
@@ -6278,11 +6278,11 @@ ShallowWrapper {
                 </Text>
               </PanelView>
               <PanelView
-                body=""
+                body={undefined}
                 buttonTitle="Button"
                 childrenContainerStyle={Object {}}
                 icon=" "
-                onButtonClick={[Function]}
+                onButtonClick={null}
                 renderAdditionalInfo={null}
                 renderBottom={null}
                 style={
@@ -6637,11 +6637,11 @@ ShallowWrapper {
                 </View>
               </PanelView>
               <PanelView
-                body=""
+                body={undefined}
                 buttonTitle="Button"
                 childrenContainerStyle={Object {}}
                 icon=" "
-                onButtonClick={[Function]}
+                onButtonClick={null}
                 renderAdditionalInfo={null}
                 renderBottom={null}
                 style={
@@ -6808,11 +6808,11 @@ ShallowWrapper {
                   </View>
                 </View>,
                 <PanelView
-                  body=""
+                  body={undefined}
                   buttonTitle="Button"
                   childrenContainerStyle={Object {}}
-                  icon=""
-                  onButtonClick={[Function]}
+                  icon={undefined}
+                  onButtonClick={null}
                   renderAdditionalInfo={null}
                   renderBottom={null}
                   style={
@@ -6831,7 +6831,7 @@ ShallowWrapper {
                       "paddingTop": 4,
                     }
                   }
-                  title=""
+                  title={undefined}
                   titleStyle={
                     Object {
                       "color": "white",
@@ -6940,11 +6940,11 @@ ShallowWrapper {
                   </View>
                 </PanelView>,
                 <PanelView
-                  body=""
+                  body={undefined}
                   buttonTitle="Button"
                   childrenContainerStyle={Object {}}
                   icon=" "
-                  onButtonClick={[Function]}
+                  onButtonClick={null}
                   renderAdditionalInfo={null}
                   renderBottom={null}
                   style={
@@ -7057,11 +7057,11 @@ ShallowWrapper {
                   </Text>
                 </PanelView>,
                 <PanelView
-                  body=""
+                  body={undefined}
                   buttonTitle="Button"
                   childrenContainerStyle={Object {}}
                   icon=" "
-                  onButtonClick={[Function]}
+                  onButtonClick={null}
                   renderAdditionalInfo={null}
                   renderBottom={null}
                   style={
@@ -7416,11 +7416,11 @@ ShallowWrapper {
                   </View>
                 </PanelView>,
                 <PanelView
-                  body=""
+                  body={undefined}
                   buttonTitle="Button"
                   childrenContainerStyle={Object {}}
                   icon=" "
-                  onButtonClick={[Function]}
+                  onButtonClick={null}
                   renderAdditionalInfo={null}
                   renderBottom={null}
                   style={
@@ -7647,7 +7647,7 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "class",
                 "props": Object {
-                  "body": "",
+                  "body": undefined,
                   "buttonTitle": "Button",
                   "children": <View
                     style={
@@ -7744,8 +7744,8 @@ ShallowWrapper {
                     </View>
                   </View>,
                   "childrenContainerStyle": Object {},
-                  "icon": "",
-                  "onButtonClick": [Function],
+                  "icon": undefined,
+                  "onButtonClick": null,
                   "renderAdditionalInfo": null,
                   "renderBottom": null,
                   "style": Object {
@@ -7762,7 +7762,7 @@ ShallowWrapper {
                     "paddingRight": 8,
                     "paddingTop": 4,
                   },
-                  "title": "",
+                  "title": undefined,
                   "titleStyle": Object {
                     "color": "white",
                     "fontFamily": "Roboto",
@@ -8126,7 +8126,7 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "class",
                 "props": Object {
-                  "body": "",
+                  "body": undefined,
                   "buttonTitle": "Button",
                   "children": Array [
                     <View
@@ -8212,7 +8212,7 @@ ShallowWrapper {
                   ],
                   "childrenContainerStyle": Object {},
                   "icon": " ",
-                  "onButtonClick": [Function],
+                  "onButtonClick": null,
                   "renderAdditionalInfo": null,
                   "renderBottom": null,
                   "style": Object {
@@ -8444,7 +8444,7 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "class",
                 "props": Object {
-                  "body": "",
+                  "body": undefined,
                   "buttonTitle": "Button",
                   "children": Array [
                     <View
@@ -8771,7 +8771,7 @@ ShallowWrapper {
                   ],
                   "childrenContainerStyle": Object {},
                   "icon": " ",
-                  "onButtonClick": [Function],
+                  "onButtonClick": null,
                   "renderAdditionalInfo": null,
                   "renderBottom": null,
                   "style": Object {
@@ -9720,7 +9720,7 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "class",
                 "props": Object {
-                  "body": "",
+                  "body": undefined,
                   "buttonTitle": "Button",
                   "children": Array [
                     <View
@@ -9801,7 +9801,7 @@ ShallowWrapper {
                   ],
                   "childrenContainerStyle": Object {},
                   "icon": " ",
-                  "onButtonClick": [Function],
+                  "onButtonClick": null,
                   "renderAdditionalInfo": null,
                   "renderBottom": null,
                   "style": Object {

@@ -1,10 +1,7 @@
 // @flow
 
 import React, { Component } from 'react';
-import {
-  View,
-  Text,
-} from 'react-native';
+import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 
 import styles from './styles';
@@ -17,7 +14,7 @@ import ActivityPanel from './ActivityPanel';
 import NationsPanel from './NationsPanel';
 import { openNation } from '../../actions/nations';
 import { screen } from '../../global/Screens';
-import { addNewMessage, startFetchMessages } from '../../actions/activity';
+import { addNewMessage } from '../../actions/activity';
 import type { NationIdType } from '../../types/Nation';
 import type { State } from '../../reducers';
 import type { Navigator } from '../../types/ReactNativeNavigation';
@@ -26,43 +23,31 @@ type Props = {
   /**
    * @desc React Native Navigation navigator object.
    */
-  navigator: Navigator,
-}
+  navigator: Navigator
+};
 
 type Actions = {
   /**
    * @desc Callback on nation select.
    * @param {NationIdType} id Id of selected nation.
    */
-  onSelectNation: (id: NationIdType) => void,
-  /**
-   * @desc Function to start activity log messages fetch from database.
-   */
-  startFetchMessages: () => void,
-}
+  onSelectNation: (id: NationIdType) => void
+};
 
 type TestingModeProps = {
   /**
    * @desc Function to add dummy log activity message for testing.
    */
-  onAddDummyMessage: () => void,
-}
+  onAddDummyMessage: () => void
+};
 
 class Dashboard extends Component<Props & Actions & State & TestingModeProps> {
-  constructor(props) {
-    super(props);
-
-    this.props.startFetchMessages();
-  }
-
   onSelectNation = (id) => {
     this.props.onSelectNation(id);
     this.props.navigator.push(screen('NATION_DETAILS_SCREEN'));
   };
 
-  onSelectMore = () => {
-
-  };
+  onSelectMore = () => {};
 
   render() {
     return (
@@ -95,7 +80,9 @@ class Dashboard extends Component<Props & Actions & State & TestingModeProps> {
                 style={styles.warningPanel}
                 titleStyle={styles.panelViewTitle}
               >
-                <Text style={styles.warningPanelBody}>{i18n.t('screens.dashboard.warningPanel.body')}</Text>
+                <Text style={styles.warningPanelBody}>
+                  {i18n.t('screens.dashboard.warningPanel.body')}
+                </Text>
               </PanelView>
             </View>
           </View>
@@ -112,9 +99,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   onSelectNation(id) {
     dispatch(openNation(id));
-  },
-  startFetchMessages() {
-    dispatch(startFetchMessages());
   },
   onAddDummyMessage() {
     dispatch(addNewMessage('dummy message'));

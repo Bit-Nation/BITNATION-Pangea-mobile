@@ -132,11 +132,11 @@ ShallowWrapper {
           </TouchableOpacity>
         </View>
         <PanelView
-          body=""
+          body={undefined}
           buttonTitle="Button"
           childrenContainerStyle={Object {}}
-          icon=""
-          onButtonClick={[Function]}
+          icon={undefined}
+          onButtonClick={null}
           renderAdditionalInfo={null}
           renderBottom={null}
           style={
@@ -336,11 +336,11 @@ ShallowWrapper {
             </TouchableOpacity>
           </View>,
           <PanelView
-            body=""
+            body={undefined}
             buttonTitle="Button"
             childrenContainerStyle={Object {}}
-            icon=""
-            onButtonClick={[Function]}
+            icon={undefined}
+            onButtonClick={null}
             renderAdditionalInfo={null}
             renderBottom={null}
             style={
@@ -688,7 +688,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "body": "",
+            "body": undefined,
             "buttonTitle": "Button",
             "children": <View
               style={
@@ -786,8 +786,8 @@ ShallowWrapper {
               />
             </View>,
             "childrenContainerStyle": Object {},
-            "icon": "",
-            "onButtonClick": [Function],
+            "icon": undefined,
+            "onButtonClick": null,
             "renderAdditionalInfo": null,
             "renderBottom": null,
             "style": Object {
@@ -1252,11 +1252,11 @@ ShallowWrapper {
             </TouchableOpacity>
           </View>
           <PanelView
-            body=""
+            body={undefined}
             buttonTitle="Button"
             childrenContainerStyle={Object {}}
-            icon=""
-            onButtonClick={[Function]}
+            icon={undefined}
+            onButtonClick={null}
             renderAdditionalInfo={null}
             renderBottom={null}
             style={
@@ -1456,11 +1456,11 @@ ShallowWrapper {
               </TouchableOpacity>
             </View>,
             <PanelView
-              body=""
+              body={undefined}
               buttonTitle="Button"
               childrenContainerStyle={Object {}}
-              icon=""
-              onButtonClick={[Function]}
+              icon={undefined}
+              onButtonClick={null}
               renderAdditionalInfo={null}
               renderBottom={null}
               style={
@@ -1808,7 +1808,7 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "class",
             "props": Object {
-              "body": "",
+              "body": undefined,
               "buttonTitle": "Button",
               "children": <View
                 style={
@@ -1906,8 +1906,8 @@ ShallowWrapper {
                 />
               </View>,
               "childrenContainerStyle": Object {},
-              "icon": "",
-              "onButtonClick": [Function],
+              "icon": undefined,
+              "onButtonClick": null,
               "renderAdditionalInfo": null,
               "renderBottom": null,
               "style": Object {

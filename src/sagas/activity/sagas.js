@@ -1,57 +1,61 @@
-/* eslint-disable */
+import { put, take } from 'redux-saga/effects';
 
-import uuid from 'uuid4';
-import { call, put, take } from 'redux-saga/effects';
-
-import { doneFetchMessages, messageAdded } from '../../actions/activity';
+import { messagesAdded, AddNewMessageAction } from '../../actions/activity';
 import defaultDB from '../../services/database';
-import { convertFromDatabase, convertToDatabase } from '../../utils/mapping/activity';
+import {
+  convertFromDatabase,
+  convertToDatabase,
+} from '../../utils/mapping/activity';
 import type { ActivityLogMessage } from '../../types/ActivityLogMessage';
 import { createDatabaseUpdateChannel } from '../database';
 
-export function* fetchMessagesSaga(action) {
-  try {
-    const db = yield defaultDB;
-    const messages = db.objects('MessageJob');
-    yield put(doneFetchMessages(messages));
-  } catch (error) {
-    console.log(`Activity messages fetch failed with error: ${error.toString()}`);
-  }
-}
 
+/**
+ * @desc Function that listen to the new message addition event
+ * @return {void}
+ */
 export function* watchNewMessages(): Generator<*, *, *> {
   const db = yield defaultDB;
   const results = db.objects('MessageJob');
   const channel = createDatabaseUpdateChannel(results);
   while (true) {
     const { collection } = yield take(channel);
-    yield put(messageAdded(collection.map(convertFromDatabase)));
+    yield put(messagesAdded(collection.map(convertFromDatabase)));
   }
 }
 
-const buildMessageObject = (highestId, message, params, interpret): ActivityLogMessage => ({
+const buildMessageObject = (
+  highestId,
+  message,
+  params,
+  interpret,
+): ActivityLogMessage => ({
   id: highestId,
   msg: message,
   params: JSON.stringify(params),
   interpret,
-  created_at: new Date()
+  created_at: new Date(),
 });
 
-export function* addNewMessageSaga(action) {
+/**
+ * @desc Add a new activity log into the database
+ * @param {AddNewMessageAction} action ADD_MESSAGE action
+ * @return {void}
+ */
+export function* addNewMessageSaga(action: AddNewMessageAction) {
   const db = yield defaultDB;
-  let params = action.params || {};
-  let interpret = action.interpret === false ? false : true
-  let messages = db.objects('MessageJob').sorted('id', true);
+  const params = action.params || {};
+  const interpret = action.interpret !== false;
+  const messages = db.objects('MessageJob').sorted('id', false);
   let highestId = 1;
-  if (messages.length > 0)
-    highestId = messages[0].id + 1;
+  if (messages.length > 0) highestId = messages[0].id + 1;
   const convertedMessage = convertToDatabase(buildMessageObject(highestId, action.message, params, interpret));
   if (convertedMessage === null) {
-    // action.callback(false);
+    action.callback(false);
   } else {
     db.write(() => {
       db.create('MessageJob', convertedMessage);
     });
-    // action.callback(true);
+    action.callback(true);
   }
 }
