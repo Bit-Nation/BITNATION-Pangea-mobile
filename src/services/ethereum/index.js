@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import ethers from 'ethers';
 import { Alert, NativeModules } from 'react-native';
 import ERC20ABI from './ERC20ABI.json';
@@ -8,6 +10,7 @@ export default class EthereumService {
     this.wallet = wallet;
   }
   async getBalance(): string {
+    console.log('Get Balance!!');
     const balance = await this.wallet.getBalance('latest');
     return balance;
   }
