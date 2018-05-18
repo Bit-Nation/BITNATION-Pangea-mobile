@@ -1,12 +1,9 @@
 import {
   ADD_NEW_MESSAGE,
-  DONE_FETCH_MESSAGES,
-  MESSAGE_ADDED,
-  START_FETCH_MESSAGES,
+  MESSAGES_ADDED,
+  emptyCallback,
   addNewMessage,
-  doneFetchMessages,
-  messageAdded,
-  startFetchMessages,
+  messagesAdded,
 } from '../../../src/actions/activity';
 
 describe('activity action creators', () => {
@@ -15,26 +12,11 @@ describe('activity action creators', () => {
     params: {},
     interpret: true,
   };
-  const messagesMock = [{ ...messageMock }, { ...messageMock }];
 
-  test('messageAdded', () => {
-    expect(messageAdded([messageMock])).toEqual({
-      type: MESSAGE_ADDED,
+  test('messagesAdded', () => {
+    expect(messagesAdded([messageMock])).toEqual({
+      type: MESSAGES_ADDED,
       messages: [messageMock],
-    });
-  });
-
-  test('startFetchMessages', () => {
-    expect(startFetchMessages(42)).toEqual({
-      type: START_FETCH_MESSAGES,
-      limit: 42,
-    });
-  });
-
-  test('doneFetchMessages', () => {
-    expect(doneFetchMessages(messagesMock)).toEqual({
-      type: DONE_FETCH_MESSAGES,
-      messages: messagesMock,
     });
   });
 
@@ -44,6 +26,7 @@ describe('activity action creators', () => {
       message: 'new message',
       params: {},
       interpret: true,
+      callback: emptyCallback,
     });
   });
 });

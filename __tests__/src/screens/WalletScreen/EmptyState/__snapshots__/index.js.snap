@@ -22,8 +22,8 @@ ShallowWrapper {
           body="You need an Ethereum wallet to make payments, to create nations, and to use other useful services."
           buttonTitle="Create Wallet"
           childrenContainerStyle={Object {}}
-          icon=""
-          onButtonClick={[Function]}
+          icon={undefined}
+          onButtonClick={null}
           renderAdditionalInfo={null}
           renderBottom={null}
           style={
@@ -59,8 +59,8 @@ ShallowWrapper {
           body="You can restore your wallet if you lose or change your phone. You will need your private key to restore your wallet."
           buttonTitle="Restore Wallet"
           childrenContainerStyle={Object {}}
-          icon=""
-          onButtonClick={[Function]}
+          icon={undefined}
+          onButtonClick={null}
           renderAdditionalInfo={null}
           renderBottom={null}
           style={
@@ -105,8 +105,8 @@ ShallowWrapper {
           "buttonTitle": "Create Wallet",
           "children": null,
           "childrenContainerStyle": Object {},
-          "icon": "",
-          "onButtonClick": [Function],
+          "icon": undefined,
+          "onButtonClick": null,
           "renderAdditionalInfo": null,
           "renderBottom": null,
           "style": Object {
@@ -147,8 +147,8 @@ ShallowWrapper {
           "buttonTitle": "Restore Wallet",
           "children": null,
           "childrenContainerStyle": Object {},
-          "icon": "",
-          "onButtonClick": [Function],
+          "icon": undefined,
+          "onButtonClick": null,
           "renderAdditionalInfo": null,
           "renderBottom": null,
           "style": Object {
@@ -194,8 +194,8 @@ ShallowWrapper {
             body="You need an Ethereum wallet to make payments, to create nations, and to use other useful services."
             buttonTitle="Create Wallet"
             childrenContainerStyle={Object {}}
-            icon=""
-            onButtonClick={[Function]}
+            icon={undefined}
+            onButtonClick={null}
             renderAdditionalInfo={null}
             renderBottom={null}
             style={
@@ -231,8 +231,8 @@ ShallowWrapper {
             body="You can restore your wallet if you lose or change your phone. You will need your private key to restore your wallet."
             buttonTitle="Restore Wallet"
             childrenContainerStyle={Object {}}
-            icon=""
-            onButtonClick={[Function]}
+            icon={undefined}
+            onButtonClick={null}
             renderAdditionalInfo={null}
             renderBottom={null}
             style={
@@ -277,8 +277,8 @@ ShallowWrapper {
             "buttonTitle": "Create Wallet",
             "children": null,
             "childrenContainerStyle": Object {},
-            "icon": "",
-            "onButtonClick": [Function],
+            "icon": undefined,
+            "onButtonClick": null,
             "renderAdditionalInfo": null,
             "renderBottom": null,
             "style": Object {
@@ -319,8 +319,8 @@ ShallowWrapper {
             "buttonTitle": "Restore Wallet",
             "children": null,
             "childrenContainerStyle": Object {},
-            "icon": "",
-            "onButtonClick": [Function],
+            "icon": undefined,
+            "onButtonClick": null,
             "renderAdditionalInfo": null,
             "renderBottom": null,
             "style": Object {

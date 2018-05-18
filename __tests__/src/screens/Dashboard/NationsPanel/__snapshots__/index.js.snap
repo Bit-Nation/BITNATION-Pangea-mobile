@@ -23,11 +23,11 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <PanelView
-          body=""
+          body={undefined}
           buttonTitle="Button"
           childrenContainerStyle={Object {}}
-          icon=""
-          onButtonClick={[Function]}
+          icon={undefined}
+          onButtonClick={null}
           renderAdditionalInfo={null}
           renderBottom={null}
           style={
@@ -168,7 +168,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "body": "",
+          "body": undefined,
           "buttonTitle": "Button",
           "children": Array [
             <View
@@ -273,8 +273,8 @@ ShallowWrapper {
             </View>,
           ],
           "childrenContainerStyle": Object {},
-          "icon": "",
-          "onButtonClick": [Function],
+          "icon": undefined,
+          "onButtonClick": null,
           "renderAdditionalInfo": null,
           "renderBottom": null,
           "style": Object {
@@ -572,11 +572,11 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <PanelView
-            body=""
+            body={undefined}
             buttonTitle="Button"
             childrenContainerStyle={Object {}}
-            icon=""
-            onButtonClick={[Function]}
+            icon={undefined}
+            onButtonClick={null}
             renderAdditionalInfo={null}
             renderBottom={null}
             style={
@@ -717,7 +717,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "body": "",
+            "body": undefined,
             "buttonTitle": "Button",
             "children": Array [
               <View
@@ -822,8 +822,8 @@ ShallowWrapper {
               </View>,
             ],
             "childrenContainerStyle": Object {},
-            "icon": "",
-            "onButtonClick": [Function],
+            "icon": undefined,
+            "onButtonClick": null,
             "renderAdditionalInfo": null,
             "renderBottom": null,
             "style": Object {

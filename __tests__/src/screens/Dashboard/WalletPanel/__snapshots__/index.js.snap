@@ -20,15 +20,15 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "children": <PanelView
-        body=""
+        body={undefined}
         buttonTitle="Button"
         childrenContainerStyle={
           Object {
             "flex": 0,
           }
         }
-        icon=""
-        onButtonClick={[Function]}
+        icon={undefined}
+        onButtonClick={null}
         renderAdditionalInfo={null}
         renderBottom={null}
         style={
@@ -83,7 +83,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "body": "",
+        "body": undefined,
         "buttonTitle": "Button",
         "children": <Text
           accessible={true}
@@ -105,8 +105,8 @@ ShallowWrapper {
         "childrenContainerStyle": Object {
           "flex": 0,
         },
-        "icon": "",
-        "onButtonClick": [Function],
+        "icon": undefined,
+        "onButtonClick": null,
         "renderAdditionalInfo": null,
         "renderBottom": null,
         "style": Object {
@@ -165,15 +165,15 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "children": <PanelView
-          body=""
+          body={undefined}
           buttonTitle="Button"
           childrenContainerStyle={
             Object {
               "flex": 0,
             }
           }
-          icon=""
-          onButtonClick={[Function]}
+          icon={undefined}
+          onButtonClick={null}
           renderAdditionalInfo={null}
           renderBottom={null}
           style={
@@ -228,7 +228,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "body": "",
+          "body": undefined,
           "buttonTitle": "Button",
           "children": <Text
             accessible={true}
@@ -250,8 +250,8 @@ ShallowWrapper {
           "childrenContainerStyle": Object {
             "flex": 0,
           },
-          "icon": "",
-          "onButtonClick": [Function],
+          "icon": undefined,
+          "onButtonClick": null,
           "renderAdditionalInfo": null,
           "renderBottom": null,
           "style": Object {

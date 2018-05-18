@@ -33,7 +33,7 @@ type Props = {
   /**
    * @desc Callback on panel button click. Button appears only if this one is passed.
    */
-  onButtonClick?: () => void,
+  onButtonClick?: any,
   /**
    * @desc Title of panel button.
    */
@@ -144,9 +144,9 @@ PanelView.defaultProps = {
   childrenContainerStyle: {},
   renderBottom: null,
   buttonTitle: 'Button',
-  onButtonClick: () => {},
+  onButtonClick: null,
   renderAdditionalInfo: null,
-  body: '',
-  icon: '',
-  title: '',
+  body: undefined,
+  icon: undefined,
+  title: undefined,
 };

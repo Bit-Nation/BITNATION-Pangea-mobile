@@ -121,9 +121,7 @@ class ChatScreen extends Component<Props, State> {
     if (this.props.isBot !== true && this.connection) {
       this.props.showSpinner();
       // load initial messages
-      const URL = `${config.CHAT_URL}/messages/${this.nationId}?auth_token=${
-        config.AUTH_TOKEN
-      }`;
+      const URL = `${config.CHAT_URL}/messages/${this.nationId}?auth_token=${config.AUTH_TOKEN}`;
       fetch(URL)
         .then(response => response.json())
         .then(
