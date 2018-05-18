@@ -3,7 +3,9 @@
 import { NativeModules } from 'react-native';
 import factory from '../../services/ethereum/factory';
 import _ from 'lodash';
-import type {WalletType} from "../../types/Wallet";
+import type { WalletType } from '../../types/Wallet';
+import { BigNumber } from 'bignumber.js';
+
 // import { BALANCE_EXPIRATION_INTERVAL } from '../../global/Constants';
 
 export default class WalletService {
@@ -22,20 +24,18 @@ export default class WalletService {
   }
 
   static async resolveBalance(wallets: Array<WalletType>): Promise<string> {
-    console.log('Entró a Factory');
-    const { Panthalassa } = NativeModules;
-    const walletKey = await Panthalassa.PanthalassaEthPrivateKey();
-    const ethereum = await factory({ private_key: '0xefc27ba5330258fcfb75e28e4e6efd88458751086998bbfad99257035fb3e160', provider_type: 'rinkeby' });
-    console.log('Pasó await factory');
-    const ethService = ethereum.service;
-    console.log('Pasó EthJS');
 
-    console.log('Creó Factory');
-    console.log('===== > Wallets with balance resolveBalance-Inicio', ethService);
+    const { Panthalassa } = NativeModules;
+    const walletAddress = await Panthalassa.PanthalassaEthPrivateKey();
+    const ethereum = await factory({ private_key: '0x' + walletAddress, provider_type: 'rinkeby' });
+    const ethService = ethereum.service;
 
     console.log('Wallet 0', wallets[0]);
     try {
-      wallets[0].balance = await ethService.getBalance();
+      const balance = await ethService.getBalance();
+      let balanceBN = new BigNumber(balance);
+      console.log('Balance 0 :', balanceBN);
+      wallets[0].balance = balanceBN.round(5).toString(10);
     } catch (error) {
       wallets[0].balance = undefined;
       throw error;
@@ -43,9 +43,12 @@ export default class WalletService {
 
     console.log('Wallet 1', wallets[1]);
     try {
-      wallets[1].balance = await ethService.getTokenBalance('0xc3830a6206fb9d089d1ce824598978532d14d8aa');
+      const balance = await ethService.getTokenBalance('0xc3830a6206fb9d089d1ce824598978532d14d8aa');
+      let balanceBN = new BigNumber(balance);
+      console.log('Balance 1 :', balanceBN);
+      wallets[1].balance = balanceBN.round(5).toString(10);
     } catch (error) {
-      //wallets[1].balance = undefined;
+      wallets[1].balance = undefined;
       throw error;
     }
 
