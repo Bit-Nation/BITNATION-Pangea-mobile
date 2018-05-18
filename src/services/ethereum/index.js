@@ -3,7 +3,6 @@ import { Alert, NativeModules } from 'react-native';
 import ERC20ABI from './ERC20ABI.json';
 
 export default class EthereumService {
-
   constructor(wallet) {
     this.wallet = wallet;
   }
