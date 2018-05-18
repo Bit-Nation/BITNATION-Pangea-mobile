@@ -41,14 +41,16 @@ export default class WalletService {
     try {
       wallets[0].balance = await ethService.getBalance();
     } catch (error) {
+      wallets[0].balance = undefined;
       throw error;
     }
 
     console.log('Wallet 1', wallets[1]);
     try {
-      wallets[1].balance = await ethService.getTokenBalance(wallets[1].ethAddress);
+      wallets[1].balance = await ethService.getTokenBalance(0xc3830a6206fb9d089d1ce824598978532d14d8aa);
     } catch (error) {
-      throw error;
+      wallets[1].balance = undefined;
+      //throw error;
     }
 
 /*
