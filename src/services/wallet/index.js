@@ -37,13 +37,25 @@ export default class WalletService {
     console.log('Creó Factory');
     console.log('===== > Wallets with balance resolveBalance-Inicio', ethService);
 
+    wallets.forEach(function (walletTemp, index, originalWallet) {
+      if (walletTemp[index].currency === 'ETH'){
+        try {
+          walletTemp[index].balance = await ethService.getBalance();
+        } catch (error) {
+          throw error;
+        }
+      } else {
+        walletTemp[index].balance = await ethService.getTokenBalance(walletTemp[index].ethAddress);
+      }
+    });
+
     let ethWallet = _.filter(wallets, { currency: 'ETH' });
     try {
-      ethWallet = await ethService.getBalance();
+      ethWallet.balance = await ethService.getBalance();
     } catch (error) {
       throw error;
     }
-    console.log('===== > Wallets with balance resolveBalance', error);
+    console.log('===== > Wallets with balance resolveBalance', ethWallet);
     return ethWallet;
 
     /* const container = await containerPromise;
