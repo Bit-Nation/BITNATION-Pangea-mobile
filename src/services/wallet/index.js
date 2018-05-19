@@ -23,11 +23,11 @@ export default class WalletService {
     // return await container.eth.wallet.ethSync(wallet.ethAddress);
   }
 
-  static async resolveBalance(wallets: Array<WalletType>): Promise<string> {
+  static async resolveBalance(wallets: Array<WalletType>, network: string): Promise<string> {
 
     const { Panthalassa } = NativeModules;
     const walletAddress = await Panthalassa.PanthalassaEthPrivateKey();
-    const ethereum = await factory({ private_key: '0x' + walletAddress, provider_type: 'rinkeby' });
+    const ethereum = await factory({ private_key: '0x' + walletAddress, provider_type: network === 'dev' ? 'rinkeby' : 'homestead' });
     const ethService = ethereum.service;
 
     console.log('Wallet 0', wallets[0]);
@@ -43,7 +43,7 @@ export default class WalletService {
 
     console.log('Wallet 1', wallets[1]);
     try {
-      const balance = await ethService.getTokenBalance('0xc3830a6206fb9d089d1ce824598978532d14d8aa');
+      const balance = await ethService.getTokenBalance(network === 'dev' ? '0xc3830a6206fb9d089d1ce824598978532d14d8aa': '0xBB1fA4FdEB3459733bF67EbC6f893003fA976a82');
       let balanceBN = new BigNumber(balance);
       console.log('Balance 1 :', balanceBN);
       wallets[1].balance = balanceBN.round(5).toString(10);
