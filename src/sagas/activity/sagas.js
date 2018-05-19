@@ -51,11 +51,11 @@ export function* addNewMessageSaga(action: AddNewMessageAction) {
   if (messages.length > 0) highestId = messages[0].id + 1;
   const convertedMessage = convertToDatabase(buildMessageObject(highestId, action.message, params, interpret));
   if (convertedMessage === null) {
-    action.callback(false);
+    yield call(action.callback, false);
   } else {
     db.write(() => {
       db.create('MessageJob', convertedMessage);
     });
-    action.callback(true);
+    yield call(action.callback, false);
   }
 }
