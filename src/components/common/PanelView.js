@@ -33,7 +33,7 @@ type Props = {
   /**
    * @desc Callback on panel button click. Button appears only if this one is passed.
    */
-  onButtonClick?: any,
+  onButtonClick?: () => void,
   /**
    * @desc Title of panel button.
    */
