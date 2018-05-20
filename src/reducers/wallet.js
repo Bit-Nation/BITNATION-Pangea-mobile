@@ -40,7 +40,7 @@ export default (state: State = initialState, action: Action): State => {
     case SELECT_WALLET:
       return Object.assign({}, state, { selectedWalletAddress: action.wallet.ethAddress });
     case WALLETS_LIST_UPDATED:
-      return Object.assign({}, state, { wallets: action.wallets });
+      return Object.assign({}, state, { wallets: _.cloneDeep(action.wallets) });
     case WALLET_SYNC_FAILED: {
       const { walletAddress } = action;
       const walletIndex = getWalletIndex(state.wallets || [], walletAddress);
