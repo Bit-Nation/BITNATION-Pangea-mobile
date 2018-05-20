@@ -2,14 +2,19 @@
 
 import { Navigation } from 'react-native-navigation';
 
+import Accounts from './Accounts';
+import DeveloperSettings from './Accounts/CreateAccount/DeveloperSettings';
+import CreateReady from './Accounts/CreateAccount/CreateReady';
+import RestoreSource from './Accounts/RestoreAccount/RestoreSource';
+import EmptyWallet from './Accounts/RestoreAccount/EmptyWallet';
 import Dashboard from './Dashboard';
 import WalletScreen from './WalletScreen';
 import CreateKeyIntroductionScreen from './Key/Create/CreateKeyIntroductionScreen';
 import CreateKeyInstructionScreen from './Key/Create/CreateKeyInstructionScreen';
 import CreateKeyProcessScreen from './Key/Create/CreateKeyProcessScreen';
-import LoadWalletScreeen from './Key/LoadWallet';
 import VerifyKeyInstructionScreen from './Key/Verify/VerifyKeyInstructionScreen';
 import VerifyKeyProcessScreen from './Key/Verify/VerifyKeyProcessScreen';
+import RestoreKeyScreen from './Key/Restore';
 import VerifyKeySuccess from './Key/Verify/VerifyKeySuccess';
 import Intro from './Intro/RNSwiper';
 import SendMoney from './WalletScreen/SendMoney';
@@ -18,11 +23,16 @@ import ReceiveMoneyScreen from './WalletScreen/ReceiveMoney';
 import QRCodeScannerScreen from './WalletScreen/QRCodeScanner';
 import ChatScreen from './ChatScreen';
 import NationsScreen from './NationsScreen';
-import ProfileScreen from './ProfileScreen';
+import ProfileScreen from './Settings/ProfileScreen';
 import NationDetailsScreen from './NationDetailsContainer';
 import NationCreateScreen from './NationCreateContainer';
 import ChatNationsScreen from './ChatNationsScreen';
+import SettingsScreen from './Settings/SettingsList';
+import SecuritySettingsScreen from './Settings/Security';
+import AccountsAccess from './Accounts/AccountAccessContainer';
 import { screen } from '../global/Screens';
+import EnterPasscodeScreen from './Passcode/EnterPasscodeContainer';
+import CreatePasscodeScreen from './Passcode/CreatePasscodeContainer';
 
 /**
  * @desc Registers screens for React Native Navigation.
@@ -31,13 +41,18 @@ import { screen } from '../global/Screens';
  * @return {void}
  */
 export default function registerScreens(store: Object, Provider: Object) {
+  Navigation.registerComponent(screen('ACCOUNTS_SCREEN').screen, () => Accounts, store, Provider);
+  Navigation.registerComponent(screen('ACCOUNT_CREATE_DEVELOPER_SETTINGS').screen, () => DeveloperSettings, store, Provider);
+  Navigation.registerComponent(screen('ACCOUNT_CREATE_READY').screen, () => CreateReady, store, Provider);
+  Navigation.registerComponent(screen('ACCOUNT_RESTORE_SOURCE').screen, () => RestoreSource, store, Provider);
+  Navigation.registerComponent(screen('ACCOUNT_RESTORE_EMPTY_WALLET').screen, () => EmptyWallet, store, Provider);
   Navigation.registerComponent(screen('CREATE_KEY_INTRODUCTION_SCREEN').screen, () => CreateKeyIntroductionScreen, store, Provider);
   Navigation.registerComponent(screen('CREATE_KEY_INSTRUCTION_SCREEN').screen, () => CreateKeyInstructionScreen, store, Provider);
   Navigation.registerComponent(screen('CREATE_KEY_PROCESS_SCREEN').screen, () => CreateKeyProcessScreen, store, Provider);
-  Navigation.registerComponent(screen('LOAD_WALLET_SCREEN').screen, () => LoadWalletScreeen, store, Provider);
   Navigation.registerComponent(screen('VERIFY_KEY_INSTRUCTION_SCREEN').screen, () => VerifyKeyInstructionScreen, store, Provider);
   Navigation.registerComponent(screen('VERIFY_KEY_PROCESS_SCREEN').screen, () => VerifyKeyProcessScreen, store, Provider);
   Navigation.registerComponent(screen('VERIFY_KEY_SUCCESS_SCREEN').screen, () => VerifyKeySuccess, store, Provider);
+  Navigation.registerComponent(screen('RESTORE_KEY_SCREEN').screen, () => RestoreKeyScreen, store, Provider);
   Navigation.registerComponent(screen('INTRO_SCREEN').screen, () => Intro, store, Provider);
   Navigation.registerComponent(screen('DASHBOARD_SCREEN').screen, () => Dashboard, store, Provider);
   Navigation.registerComponent(screen('CHAT_SCREEN').screen, () => ChatScreen, store, Provider);
@@ -50,4 +65,9 @@ export default function registerScreens(store: Object, Provider: Object) {
   Navigation.registerComponent(screen('QR_CODE_SCANNER_SCREEN').screen, () => QRCodeScannerScreen, store, Provider);
   Navigation.registerComponent(screen('NATION_CREATE_SCREEN').screen, () => NationCreateScreen, store, Provider);
   Navigation.registerComponent(screen('CHAT_NATIONS_SCREEN').screen, () => ChatNationsScreen, store, Provider);
+  Navigation.registerComponent(screen('SETTINGS_SCREEN').screen, () => SettingsScreen, store, Provider);
+  Navigation.registerComponent(screen('SECURITY_SETTINGS_SCREEN').screen, () => SecuritySettingsScreen, store, Provider);
+  Navigation.registerComponent(screen('ACCOUNTS_ACCESS_SCREEN').screen, () => AccountsAccess, store, Provider);
+  Navigation.registerComponent(screen('ENTER_PASSCODE_SCREEN').screen, () => EnterPasscodeScreen, store, Provider);
+  Navigation.registerComponent(screen('CREATE_PASSCODE_SCREEN').screen, () => CreatePasscodeScreen, store, Provider);
 }

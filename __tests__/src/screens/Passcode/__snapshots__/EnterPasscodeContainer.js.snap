@@ -1,0 +1,160 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EnterPasscodeContainer Rendering 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Connect(EnterPasscodeContainer)
+    checkPassword={[MockFunction]}
+    checkPinCode={[MockFunction]}
+    login={[MockFunction]}
+    navigator={
+      Object {
+        "pop": [MockFunction],
+        "push": [MockFunction],
+        "setOnNavigatorEvent": [MockFunction],
+      }
+    }
+    onCancel={[MockFunction]}
+    onSuccess={[MockFunction]}
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "checkPassword": [Function],
+      "checkPinCode": [Function],
+      "isLoggedIn": true,
+      "login": [Function],
+      "loginTask": Object {
+        "error": "Invalid",
+      },
+      "navigator": Object {
+        "pop": [MockFunction],
+        "push": [MockFunction],
+        "setOnNavigatorEvent": [MockFunction],
+      },
+      "onCancel": [MockFunction],
+      "onSuccess": [MockFunction],
+      "passcodeType": Object {
+        "length": 6,
+        "type": "pinCode",
+      },
+      "store": Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      },
+      "storeSubscription": Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
+      },
+      "title": "",
+    },
+    "ref": null,
+    "rendered": null,
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "checkPassword": [Function],
+        "checkPinCode": [Function],
+        "isLoggedIn": true,
+        "login": [Function],
+        "loginTask": Object {
+          "error": "Invalid",
+        },
+        "navigator": Object {
+          "pop": [MockFunction],
+          "push": [MockFunction],
+          "setOnNavigatorEvent": [MockFunction],
+        },
+        "onCancel": [MockFunction],
+        "onSuccess": [MockFunction],
+        "passcodeType": Object {
+          "length": 6,
+          "type": "pinCode",
+        },
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "storeSubscription": Subscription {
+          "listeners": Object {
+            "clear": [Function],
+            "get": [Function],
+            "notify": [Function],
+            "subscribe": [Function],
+          },
+          "onStateChange": [Function],
+          "parentSub": undefined,
+          "store": Object {
+            "clearActions": [Function],
+            "dispatch": [Function],
+            "getActions": [Function],
+            "getState": [Function],
+            "replaceReducer": [Function],
+            "subscribe": [Function],
+          },
+          "unsubscribe": [Function],
+        },
+        "title": "",
+      },
+      "ref": null,
+      "rendered": null,
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

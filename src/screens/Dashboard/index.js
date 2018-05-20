@@ -92,8 +92,6 @@ class Dashboard extends Component<Props & Actions & State & TestingModeProps> {
               />
               <PanelView
                 title={i18n.t('screens.dashboard.warningPanel.title')}
-                buttonTitle={i18n.t('screens.dashboard.warningPanel.button')}
-                onButtonClick={this.onSelectMore}
                 style={styles.warningPanel}
                 titleStyle={styles.panelViewTitle}
               >
