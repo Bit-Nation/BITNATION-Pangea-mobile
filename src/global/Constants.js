@@ -28,3 +28,10 @@ export const FOUR_DOT_SEVEN_INCHES = 667;
 export const FIVE_DOT_FIVE_INCHES = 736;
 
 export const FIVE_DOT_EIGHT_INCHES = 812;
+
+export const TX_JOB_STATUS = {
+  UNKNOWN: 0,
+  PENDING: 200,
+  SUCCESS: 300,
+  FAILED: 400,
+};
