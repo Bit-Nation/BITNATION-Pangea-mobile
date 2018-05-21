@@ -450,7 +450,7 @@
       "title": "Private key",
       "instructions": [],
       "nextButton": "$t(common.next)",
-      "previousButton": "$t(common.previous)",
+      "previousButton": "$t(common.previous)"
     },
     "restoreKey": {
       "title": "Restore account"
