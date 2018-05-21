@@ -15,6 +15,7 @@ import CreateKeyProcessScreen from './Key/Create/CreateKeyProcessScreen';
 import VerifyKeyInstructionScreen from './Key/Verify/VerifyKeyInstructionScreen';
 import VerifyKeyProcessScreen from './Key/Verify/VerifyKeyProcessScreen';
 import RestoreKeyScreen from './Key/Restore';
+import ViewPrivateKeyScreen from './Key/View';
 import VerifyKeySuccess from './Key/Verify/VerifyKeySuccess';
 import Intro from './Intro/RNSwiper';
 import SendMoney from './WalletScreen/SendMoney';
@@ -53,6 +54,7 @@ export default function registerScreens(store: Object, Provider: Object) {
   Navigation.registerComponent(screen('VERIFY_KEY_PROCESS_SCREEN').screen, () => VerifyKeyProcessScreen, store, Provider);
   Navigation.registerComponent(screen('VERIFY_KEY_SUCCESS_SCREEN').screen, () => VerifyKeySuccess, store, Provider);
   Navigation.registerComponent(screen('RESTORE_KEY_SCREEN').screen, () => RestoreKeyScreen, store, Provider);
+  Navigation.registerComponent(screen('VIEW_PRIVATE_KEY_SCREEN').screen, () => ViewPrivateKeyScreen, store, Provider);
   Navigation.registerComponent(screen('INTRO_SCREEN').screen, () => Intro, store, Provider);
   Navigation.registerComponent(screen('DASHBOARD_SCREEN').screen, () => Dashboard, store, Provider);
   Navigation.registerComponent(screen('CHAT_SCREEN').screen, () => ChatScreen, store, Provider);

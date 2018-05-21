@@ -45,6 +45,9 @@ class SettingsListScreen extends NavigatorComponent<Props> {
       case 'security':
         this.props.navigator.push(screen('SECURITY_SETTINGS_SCREEN'));
         break;
+      case 'privateKey':
+        this.props.navigator.push(screen('VIEW_PRIVATE_KEY_SCREEN'));
+        break;
       default:
         break;
     }
@@ -54,6 +57,7 @@ class SettingsListScreen extends NavigatorComponent<Props> {
     const items: Array<SettingsItem> = [
       'identity',
       'security',
+      'privateKey',
     ];
 
     return (
