@@ -446,6 +446,12 @@
       },
       "startButton": "$t(common.begin)"
     },
+    "viewPrivateKey": {
+      "title": "Private key",
+      "instructions": [],
+      "nextButton": "$t(common.next)",
+      "previousButton": "$t(common.previous)",
+    },
     "restoreKey": {
       "title": "Restore account"
     },
@@ -470,6 +476,7 @@
       "tabTitle": "SETTINGS",
       "identity": "Identity",
       "security": "Security",
+      "privateKey": "Private Key",
       "switchAccounts": "Switch accounts"
     },
     "securitySettings": {
