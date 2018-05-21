@@ -177,6 +177,11 @@ const Screens = {
     title: i18n.t('screens.restoreKey.title'),
     navigatorStyle,
   },
+  VIEW_PRIVATE_KEY_SCREEN: {
+    screen: 'Pangea.ViewPrivateKeyScreen',
+    title: i18n.t('screens.viewPrivateKey.title'),
+    navigatorStyle,
+  },
   INTRO_SCREEN: {
     screen: 'Pangea.Intro',
     navigatorStyle: hiddenNavigatorStyle,
