@@ -56,6 +56,6 @@ export function* addNewMessageSaga(action: AddNewMessageAction) {
     db.write(() => {
       db.create('MessageJob', convertedMessage);
     });
-    yield call(action.callback, false);
+    yield call(action.callback, true);
   }
 }
