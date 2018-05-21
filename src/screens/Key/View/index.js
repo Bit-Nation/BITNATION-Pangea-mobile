@@ -12,8 +12,6 @@ import GridView from '../../../components/GridView/index';
 import Button from '../../../components/common/Button';
 import PrivateKeyTextInputContainer from '../../../components/PrivateKeyTextInputContainer/index';
 import { KEY_COLUMN_COUNT, KEY_PAGE_ROW_COUNT, KEY_PAGE_LENGTH, KEY_ROW_COUNT } from '../../../global/Constants';
-import KeyBaseScreen from '../KeyBaseScreen/index';
-import { removePrivateKey } from '../../../actions/key';
 import BodyParagraphs from '../../../components/common/BodyParagraphs';
 import i18n from '../../../global/i18n';
 import type { State as KeyState } from '../../../reducers/key';
