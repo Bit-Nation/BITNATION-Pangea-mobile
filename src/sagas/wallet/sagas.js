@@ -22,22 +22,16 @@ export function* sendMoneySaga(action) {
   }
 }
 
-function resolveWalletsBalance(wallets) {
-  return ethWallet;
-}
-
 export function* updateWalletList() {
   let currentAccountId: string | null;
   currentAccountId = yield call(getCurrentAccountId);
   const account = yield getAccount(currentAccountId);
-  console.log('>>> Account', account.networkType);
 
   const walletsWithoutBalance = yield call(WalletService.getWallets);
   yield put(walletsListUpdated(walletsWithoutBalance));
   // @todo Don't fail if only one fail
   try {
     const wallets = yield call(WalletService.resolveBalance, walletsWithoutBalance, account.networkType);
-    console.log('===== > Wallets with balance', wallets);
     yield put(walletsListUpdated(wallets));
   } catch (error) {
     console.log(`Wallet list update failed with error: ${error.toString()}`);
