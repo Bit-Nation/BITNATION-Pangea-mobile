@@ -19,7 +19,7 @@ import {
 import type {
   CheckPasswordAction,
   CheckPinCodeAction,
-  LoginAction,
+  LoginAction, MnemonicConfirmedAction,
   SaveCreatingAccountAction,
   SavePasswordAction,
   SavePinCodeAction,
@@ -328,4 +328,24 @@ export function* saveCreatingAccount(action: SaveCreatingAccountAction): Generat
   yield call(action.callback, true);
 
   yield put(cancelAccountEditing());
+}
+
+/**
+ * @desc Saves to database that mnemonic was confirmed to written down by user.
+ * @param {MnemonicConfirmedAction} action An action.
+ * @return {void}
+ */
+export function* saveMnemonicConfirmed(action: MnemonicConfirmedAction): Generator<*, *, *> {
+  const db = yield defaultDB;
+  const account = yield call(getCurrentAccount);
+
+  if (account == null) {
+    yield call(action.callback, true);
+    return;
+  }
+
+  db.write(() => {
+    account.confirmedMnemonic = true;
+  });
+  yield call(action.callback, true);
 }

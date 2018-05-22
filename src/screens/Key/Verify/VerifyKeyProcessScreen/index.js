@@ -30,6 +30,8 @@ import type { Mnemonic } from '../../../../types/Mnemonic';
 import NavigatorComponent from '../../../../components/common/NavigatorComponent';
 import AccountsService from '../../../../services/accounts';
 import { errorAlert } from '../../../../global/alerts';
+import { mnemonicConfirmed } from '../../../../actions/accounts';
+import { GeneralError } from '../../../../global/errors/common';
 
 const DONE_BUTTON = 'DONE_BUTTON';
 
@@ -49,6 +51,11 @@ type Actions = {
    * @desc Function to change entered mnemonic.
    */
   changeMnemonic: (Mnemonic) => void,
+  /**
+   * @desc Function to record that mnemonic was confirmed.
+   * @param {function} callback Function that is called when that information is recorded with flag if it was successful.
+   */
+  mnemonicConfirmed: (callback: (success: boolean) => void) => void,
 }
 
 type State = {
@@ -143,9 +150,14 @@ class VerifyKeyProcessScreen extends NavigatorComponent<Actions & KeyState & Pro
   };
 
   onSuccess() {
-    if (this.props.navigator) {
+    this.props.mnemonicConfirmed((success) => {
+      if (success === false) {
+        errorAlert(new GeneralError());
+        return;
+      }
+
       this.props.navigator.push(screen('VERIFY_KEY_SUCCESS_SCREEN'));
-    }
+    });
   }
 
   onNextPressed = () => {
@@ -273,6 +285,9 @@ const mapDispatchToProps = dispatch => ({
   },
   changeMnemonic(mnemonic) {
     dispatch(changeEnteredMnemonic(mnemonic));
+  },
+  mnemonicConfirmed(callback) {
+    dispatch(mnemonicConfirmed(callback));
   },
 });
 
