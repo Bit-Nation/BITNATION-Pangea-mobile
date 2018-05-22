@@ -3,7 +3,8 @@
 export type SettingsItem =
   | 'identity'
   | 'security'
-  | 'privateKey';
+  | 'viewPrivateKey'
+  | 'confirmPrivateKey';
 
 export type PasscodeType =
   {
