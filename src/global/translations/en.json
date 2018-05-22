@@ -397,20 +397,14 @@
         }
       }
     },
-    "createKey": {
-      "title": "Create Wallet",
-      "introduction": [
-        "To secure your wallet, you first need a \"private key.\"",
-        "You must write down your private key on paper. This process only takes a few minutes.",
-        "If you change your phone, the only way to recover your wallet is by entering your private key!",
-        "Your private key protects everything in Bitnation, so save your written private key in a safe place."
-      ],
+    "confirmKey": {
+      "title": "Confirm Private Key",
       "instructions": {
         "beforeGrid": [
-          "We will show you a group of {{KEY_LENGTH}} words that is the private key that unlocks your wallet."
+          "We will show you a group of {{KEY_LENGTH}} words that is the private key of your account."
         ],
         "afterGrid": [
-          "Write the words on paper, in order. Store the paper in very safe place. If your device is lost, stolen, broken, or upgraded, you must have this key to restore or unlock your wallet."
+          "Write the words on paper, in order. Store the paper in very safe place. If your device is lost, stolen, broken, or upgraded, you must have this key to restore your account."
         ]
       },
       "process": {
@@ -476,7 +470,8 @@
       "tabTitle": "SETTINGS",
       "identity": "Identity",
       "security": "Security",
-      "privateKey": "Private Key",
+      "viewPrivateKey": "Private Key",
+      "confirmPrivateKey": "Private Key (confirmation required)",
       "switchAccounts": "Switch accounts"
     },
     "securitySettings": {

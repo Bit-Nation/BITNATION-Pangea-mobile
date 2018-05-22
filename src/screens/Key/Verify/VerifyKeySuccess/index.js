@@ -2,34 +2,20 @@
 
 import React from 'react';
 import { View } from 'react-native';
-import { connect } from 'react-redux';
-
 import styles from './styles';
 import BackgroundImage from '../../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
-import { removePrivateKey, savePrivateKey } from '../../../../actions/key';
-import KeyBaseScreen from '../../KeyBaseScreen';
 import BodyParagraphs from '../../../../components/common/BodyParagraphs';
 import i18n from '../../../../global/i18n';
 import PanelView from '../../../../components/common/PanelView';
-import type { State } from '../../../../reducers/key';
+import NavigatorComponent from '../../../../components/common/NavigatorComponent';
 
-type Actions = {
-  /**
-   * @desc Function to save private key to database.
-   */
-  savePrivateKey: () => void,
-  /**
-   * @desc Function to abort private key creation process.
-   */
-  removePrivateKey: () => void,
-}
+class VerifyKeySuccess extends NavigatorComponent<void> {
+  static navigatorButtons = { leftButtons: [], rightButtons: [] };
 
-class VerifyKeySuccess extends KeyBaseScreen<State & Actions> {
   onNextButtonPressed() {
-    this.props.savePrivateKey();
     if (this.props.navigator) {
-      this.props.navigator.dismissModal();
+      this.props.navigator.popToRoot();
     }
   }
 
@@ -55,17 +41,4 @@ class VerifyKeySuccess extends KeyBaseScreen<State & Actions> {
   }
 }
 
-const mapStateToProps = state => ({
-  ...state.key,
-});
-
-const mapDispatchToProps = dispatch => ({
-  savePrivateKey() {
-    dispatch(savePrivateKey());
-  },
-  removePrivateKey() {
-    dispatch(removePrivateKey());
-  },
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(VerifyKeySuccess);
+export default VerifyKeySuccess;
