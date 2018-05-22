@@ -1,4 +1,4 @@
-import { put, take } from 'redux-saga/effects';
+import { put, take, call } from 'redux-saga/effects';
 
 import { messagesAdded, AddNewMessageAction } from '../../actions/activity';
 import defaultDB from '../../services/database';
