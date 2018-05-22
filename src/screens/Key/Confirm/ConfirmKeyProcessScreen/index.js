@@ -8,7 +8,7 @@ import {
 import { connect } from 'react-redux';
 
 import styles from './styles';
-import { screen } from '../../../../global/Screens';
+import { androidNavigationButtons, screen } from '../../../../global/Screens';
 import BackgroundImage from '../../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
 import PanelView from '../../../../components/common/PanelView';
@@ -21,6 +21,7 @@ import { removePrivateKey } from '../../../../actions/key';
 import BodyParagraphs from '../../../../components/common/BodyParagraphs';
 import i18n from '../../../../global/i18n';
 import type { State as KeyState } from '../../../../reducers/key';
+import NavigatorComponent from '../../../../components/common/NavigatorComponent';
 
 type Actions = {
   /**
@@ -40,7 +41,9 @@ type State = {
   completedPages: Array<number>,
 }
 
-class CreateKeyProcessScreen extends KeyBaseScreen<Actions & KeyState, State> {
+class ConfirmKeyProcessScreen extends NavigatorComponent<Actions & KeyState, State> {
+  static navigatorButtons = { ...androidNavigationButtons };
+
   constructor(props) {
     super(props);
 
@@ -131,7 +134,7 @@ class CreateKeyProcessScreen extends KeyBaseScreen<Actions & KeyState, State> {
             childrenContainerStyle={styles.noflex}
           >
 
-            <BodyParagraphs paragraphs={i18n.t('screens.createKey.process.instructions')} />
+            <BodyParagraphs paragraphs={i18n.t('screens.confirmKey.process.instructions')} />
 
             <View style={styles.gridContainer}>
               <GridView
@@ -148,13 +151,13 @@ class CreateKeyProcessScreen extends KeyBaseScreen<Actions & KeyState, State> {
 
             <View style={styles.buttonContainer}>
               <Button
-                title={i18n.t('screens.createKey.process.previousButton')}
+                title={i18n.t('screens.confirmKey.process.previousButton')}
                 onPress={this.onPreviousPressed}
                 style={styles.button}
                 enabled={this.state.activeRow > 0}
               />
               <Button
-                title={i18n.t('screens.createKey.process.nextButton')}
+                title={i18n.t('screens.confirmKey.process.nextButton')}
                 onPress={this.onNextPressed}
                 style={styles.button}
               />
@@ -177,4 +180,4 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateKeyProcessScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(ConfirmKeyProcessScreen);

@@ -3,9 +3,9 @@ import { shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
 
 import { initialState } from '../../../../../../src/reducers/key';
-import CreateKeyInstructionScreen from '../../../../../../src/screens/Key/Create/CreateKeyInstructionScreen';
+import ConfirmKeyProcessScreen from '../../../../../../src/screens/Key/Confirm/ConfirmKeyProcessScreen';
 
-test('CreateKeyInstructionScreen renders correctly', () => {
+test('ConfirmKeyProcessScreen renders correctly', () => {
   const initialStateMock = {
     key: initialState,
   };
@@ -17,7 +17,7 @@ test('CreateKeyInstructionScreen renders correctly', () => {
   };
 
   const wrapper = shallow((
-    <CreateKeyInstructionScreen {...propsMock} store={storeMock(initialStateMock)} />
+    <ConfirmKeyProcessScreen {...propsMock} store={storeMock(initialStateMock)} />
   ));
   expect(wrapper).toMatchSnapshot();
 });
