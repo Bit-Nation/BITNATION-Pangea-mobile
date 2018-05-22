@@ -32,10 +32,6 @@ const DONE_BUTTON = 'DONE_BUTTON';
 
 type Props = {
   /**
-   * @desc Flag that shows if testing mode is active.
-   */
-  testingModeActive: boolean,
-  /**
    * @desc Callback to be called when user done mnemonic entering.
    */
   onDoneEntering: (Mnemonic) => void,
@@ -71,9 +67,6 @@ class RestoreKeyScreen extends NavigatorComponent<Actions & KeyState & Props, St
     };
 
     this.props.changeMnemonic(_.fill(new Array(KEY_LENGTH), ''));
-    if (this.props.testingModeActive && this.props.createdMnemonic) {
-      this.props.changeMnemonic(this.props.createdMnemonic);
-    }
     this.keyTextInputContainers = [];
     this.configureNavigation(this.props);
   }
