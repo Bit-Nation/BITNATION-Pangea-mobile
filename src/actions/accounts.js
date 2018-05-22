@@ -18,6 +18,7 @@ export type SavePasswordAction = { +type: 'SAVE_PASSWORD', +password: string, +a
 export type ChangeCreatingAccountFieldAction = { +type: 'CHANGE_CREATING_ACCOUNT_FIELD', +field: string, +value: any };
 export type SaveCreatingAccountAction = { +type: 'SAVE_CREATING_ACCOUNT', +callback: (success: boolean) => void };
 export type StartRestoreAccountUsingMnemonicAction = { +type: 'START_RESTORE_ACCOUNT_USING_MNEMONIC', +mnemonic: Mnemonic };
+export type MnemonicConfirmedAction = { +type: 'MNEMONIC_CONFIRMED', +callback: (success: boolean) => void };
 
 export type Action =
   | AccountsListUpdatedAction
@@ -33,7 +34,8 @@ export type Action =
   | SavePasswordAction
   | ChangeCreatingAccountFieldAction
   | SaveCreatingAccountAction
-  | StartRestoreAccountUsingMnemonicAction;
+  | StartRestoreAccountUsingMnemonicAction
+  | MnemonicConfirmedAction;
 
 export const ACCOUNTS_LIST_UPDATED = 'ACCOUNTS_LIST_UPDATED';
 export const CURRENT_ACCOUNT_ID_CHANGED = 'CURRENT_ACCOUNT_ID_CHANGED';
@@ -49,6 +51,7 @@ export const CHANGE_CREATING_ACCOUNT_FIELD = 'CHANGE_CREATING_ACCOUNT_FIELD';
 export const SAVE_CREATING_ACCOUNT = 'SAVE_CREATING_ACCOUNT';
 export const PERFORM_DEFERRED_LOGIN = 'PERFORM_DEFERRED_LOGIN';
 export const START_RESTORE_ACCOUNT_USING_MNEMONIC = 'START_RESTORE_ACCOUNT_USING_MNEMONIC';
+export const MNEMONIC_CONFIRMED = 'MNEMONIC_CONFIRMED';
 
 /**
  * @desc Action creator for an action that is called when accounts list updated.
@@ -234,5 +237,17 @@ export function startRestoreAccountUsingMnemonic(mnemonic: Mnemonic): StartResto
   return {
     type: START_RESTORE_ACCOUNT_USING_MNEMONIC,
     mnemonic,
+  };
+}
+
+/**
+ * @desc Action creator for an action that is called when mnemonic is confirmed to record that to database.
+ * @param {Function} callback Callback that receives boolean value - whether save is successful.
+ * @return {MnemonicConfirmedAction} An action.
+ */
+export function mnemonicConfirmed(callback: (boolean) => void): MnemonicConfirmedAction {
+  return {
+    type: MNEMONIC_CONFIRMED,
+    callback,
   };
 }

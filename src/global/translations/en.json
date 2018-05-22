@@ -505,7 +505,8 @@
     "invalidPassword": "Password is invalid. Please try again.",
     "loginFailed": "Unable to login. Please report this issue.",
     "passcodeCreationFailed": "Unable to create passcode. Please report this issue.",
-    "accountCreationFailed": "Unable to create account. Please report this issue."
+    "accountCreationFailed": "Unable to create account. Please report this issue.",
+    "generalError": "Unable to finish operation. Please report this issue."
   },
   "bots": {
     "freudbot": {

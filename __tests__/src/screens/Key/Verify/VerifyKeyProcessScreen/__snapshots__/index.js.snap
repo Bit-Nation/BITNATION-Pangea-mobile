@@ -35,6 +35,7 @@ ShallowWrapper {
     "props": Object {
       "changeMnemonic": [Function],
       "enteredMnemonic": null,
+      "mnemonicConfirmed": [Function],
       "mnemonicValid": null,
       "mnemonicValidationInProgress": false,
       "navigator": Object {
@@ -82,6 +83,7 @@ ShallowWrapper {
       "props": Object {
         "changeMnemonic": [Function],
         "enteredMnemonic": null,
+        "mnemonicConfirmed": [Function],
         "mnemonicValid": null,
         "mnemonicValidationInProgress": false,
         "navigator": Object {
