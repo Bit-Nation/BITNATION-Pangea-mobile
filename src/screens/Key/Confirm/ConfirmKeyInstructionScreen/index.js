@@ -9,7 +9,7 @@ import {
 import { connect } from 'react-redux';
 
 import styles from './styles';
-import { screen } from '../../../../global/Screens';
+import { androidNavigationButtons, screen } from '../../../../global/Screens';
 import BackgroundImage from '../../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
 import PanelView from '../../../../components/common/PanelView';
@@ -20,6 +20,7 @@ import AssetsImages from '../../../../global/AssetsImages';
 import BodyParagraphs from '../../../../components/common/BodyParagraphs';
 import i18n from '../../../../global/i18n';
 import type { State } from '../../../../reducers/key';
+import NavigatorComponent from '../../../../components/common/NavigatorComponent';
 
 type Actions = {
   /**
@@ -32,11 +33,13 @@ type Actions = {
   removePrivateKey: () => void,
 }
 
-class CreateKeyInstructionScreen extends KeyBaseScreen<Actions & State> {
+class ConfirmKeyInstructionScreen extends NavigatorComponent<Actions & State> {
+  static navigatorButtons = { ...androidNavigationButtons };
+
   onNextButtonPressed() {
     this.props.createPrivateKey();
     if (this.props.navigator) {
-      this.props.navigator.push(screen('CREATE_KEY_PROCESS_SCREEN'));
+      this.props.navigator.push(screen('CONFIRM_KEY_PROCESS_SCREEN'));
     }
   }
 
@@ -51,10 +54,10 @@ class CreateKeyInstructionScreen extends KeyBaseScreen<Actions & State> {
           <ScrollView style={styles.scrollView} contentContainerStyle={styles.noflex}>
             <PanelView
               style={styles.panelViewTransparent}
-              buttonTitle={i18n.t('screens.createKey.startButton')}
+              buttonTitle={i18n.t('screens.confirmKey.startButton')}
               onButtonClick={() => this.onNextButtonPressed()}
             >
-              <BodyParagraphs paragraphs={i18n.t('screens.createKey.instructions.beforeGrid', { KEY_LENGTH })} />
+              <BodyParagraphs paragraphs={i18n.t('screens.confirmKey.instructions.beforeGrid', { KEY_LENGTH })} />
               <View style={styles.gridContainer}>
                 <Image
                   style={styles.privateKeyDemoImage}
@@ -62,7 +65,7 @@ class CreateKeyInstructionScreen extends KeyBaseScreen<Actions & State> {
                   source={AssetsImages.privateKeyDemo}
                 />
               </View>
-              <BodyParagraphs paragraphs={i18n.t('screens.createKey.instructions.afterGrid')} />
+              <BodyParagraphs paragraphs={i18n.t('screens.confirmKey.instructions.afterGrid')} />
 
             </PanelView>
           </ScrollView>
@@ -85,4 +88,4 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateKeyInstructionScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(ConfirmKeyInstructionScreen);

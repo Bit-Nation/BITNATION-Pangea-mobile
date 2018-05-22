@@ -7,7 +7,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import { connect } from 'react-redux';
 
 import styles from './styles';
-import { screen } from '../../../../global/Screens';
+import { androidNavigationButtons, screen } from '../../../../global/Screens';
 import BackgroundImage from '../../../../components/common/BackgroundImage';
 import GridView from '../../../../components/GridView/index';
 import PrivateKeyTextInputContainer from '../../../../components/PrivateKeyTextInputContainer/index';
@@ -28,6 +28,7 @@ import BodyParagraphs from '../../../../components/common/BodyParagraphs';
 import i18n from '../../../../global/i18n';
 import type { State as KeyState } from '../../../../reducers/key';
 import type { Mnemonic } from '../../../../types/Mnemonic';
+import NavigatorComponent from '../../../../components/common/NavigatorComponent';
 
 const DONE_BUTTON = 'DONE_BUTTON';
 
@@ -58,7 +59,9 @@ type State = {
   selectedInputIndex: number | null,
 }
 
-class VerifyKeyProcessScreen extends KeyBaseScreen<Actions & KeyState & Props, State> {
+class VerifyKeyProcessScreen extends NavigatorComponent<Actions & KeyState & Props, State> {
+  static navigatorButtons = { ...androidNavigationButtons };
+
   constructor(props) {
     super(props);
 

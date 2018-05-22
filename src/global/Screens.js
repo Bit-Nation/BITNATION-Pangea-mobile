@@ -56,14 +56,6 @@ export const navigatorStyleModal = {
   tabBarHidden: true,
 };
 
-const baseKeyScreen = {
-  navigatorStyle: {
-    ...navigatorStyle,
-    disabledBackGesture: true,
-  },
-  overrideBackPress: true,
-};
-
 /*
   label : this text string appears in the navigation bar at the bottom of the screen
   icon  : icon for navigation bar
@@ -147,30 +139,29 @@ const Screens = {
     title: '', // i18n.t('screens.profile.title'),
     navigatorStyle,
   },
-  CREATE_KEY_INTRODUCTION_SCREEN: {
-    screen: 'Pangea.CreateKeyIntroductionScreen',
-    title: '', // i18n.t('screens.createKey.title'),
-    ...baseKeyScreen,
+  CONFIRM_KEY_INSTRUCTION_SCREEN: {
+    screen: 'Pangea.ConfirmKeyInstructionScreen',
+    title: i18n.t('screens.confirmKey.title'),
+    navigatorStyle,
+    backButtonTitle: '',
   },
-  CREATE_KEY_INSTRUCTION_SCREEN: {
-    screen: 'Pangea.CreateKeyInstructionScreen',
-    title: i18n.t('screens.createKey.title'),
-    ...baseKeyScreen,
-  },
-  CREATE_KEY_PROCESS_SCREEN: {
-    screen: 'Pangea.CreateKeyProcessScreen',
-    title: i18n.t('screens.createKey.title'),
-    ...baseKeyScreen,
+  CONFIRM_KEY_PROCESS_SCREEN: {
+    screen: 'Pangea.ConfirmKeyProcessScreen',
+    title: i18n.t('screens.confirmKey.title'),
+    navigatorStyle,
+    backButtonTitle: '',
   },
   VERIFY_KEY_INSTRUCTION_SCREEN: {
     screen: 'Pangea.VerifyKeyInstructionScreen',
     title: i18n.t('screens.verifyKey.title'),
-    ...baseKeyScreen,
+    navigatorStyle,
+    backButtonTitle: '',
   },
   VERIFY_KEY_PROCESS_SCREEN: {
     screen: 'Pangea.VerifyKeyProcessScreen',
     title: i18n.t('screens.verifyKey.title'),
-    ...baseKeyScreen,
+    navigatorStyle,
+    backButtonTitle: '',
   },
   RESTORE_KEY_SCREEN: {
     screen: 'Pangea.RestoreKeyProcessScreen',
@@ -194,7 +185,8 @@ const Screens = {
   VERIFY_KEY_SUCCESS_SCREEN: {
     screen: 'Pangea.VerifyKeySuccess',
     title: i18n.t('screens.verifyKey.title'),
-    ...baseKeyScreen,
+    navigatorStyle,
+    backButtonTitle: '',
   },
   SEND_MONEY_SCREEN: {
     screen: 'Pangea.SendMoneyScreen',
