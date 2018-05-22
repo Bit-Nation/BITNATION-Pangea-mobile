@@ -19,6 +19,7 @@ import { screen } from '../../../global/Screens';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import Button from '../../../components/common/Button';
 import { logout } from '../../../actions/accounts';
+import { type State as AccountsState, getCurrentAccount } from '../../../reducers/accounts';
 
 type Props = {
   /**
@@ -34,6 +35,10 @@ type Props = {
    * @desc Function to logout from current account.
    */
   logout: () => void,
+  /**
+   * @desc Accounts Redux state.
+   */
+  accounts: AccountsState,
 }
 
 class SettingsListScreen extends NavigatorComponent<Props> {
@@ -45,8 +50,11 @@ class SettingsListScreen extends NavigatorComponent<Props> {
       case 'security':
         this.props.navigator.push(screen('SECURITY_SETTINGS_SCREEN'));
         break;
-      case 'privateKey':
+      case 'viewPrivateKey':
         this.props.navigator.push(screen('VIEW_PRIVATE_KEY_SCREEN'));
+        break;
+      case 'confirmPrivateKey':
+        this.props.navigator.push(screen('CONFIRM_KEY_INSTRUCTION_SCREEN'));
         break;
       default:
         break;
@@ -54,10 +62,16 @@ class SettingsListScreen extends NavigatorComponent<Props> {
   };
 
   render() {
+    const currentAccount = getCurrentAccount(this.props.accounts);
+
+    if (currentAccount == null) {
+      return (<View />);
+    }
+
     const items: Array<SettingsItem> = [
       'identity',
       'security',
-      'privateKey',
+      currentAccount.confirmedMnemonic ? 'viewPrivateKey' : 'confirmPrivateKey',
     ];
 
     return (
