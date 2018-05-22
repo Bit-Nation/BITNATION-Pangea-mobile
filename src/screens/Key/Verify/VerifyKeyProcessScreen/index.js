@@ -20,15 +20,16 @@ import {
   KEY_PAGE_LENGTH,
   KEY_PAGE_COUNT,
 } from '../../../../global/Constants';
-import KeyBaseScreen from '../../KeyBaseScreen';
 import Button from '../../../../components/common/Button';
-import { changeEnteredMnemonic, removePrivateKey, validateEnteredMnemonic } from '../../../../actions/key';
+import { changeEnteredMnemonic, validateEnteredMnemonic } from '../../../../actions/key';
 import Colors from '../../../../global/colors';
 import BodyParagraphs from '../../../../components/common/BodyParagraphs';
 import i18n from '../../../../global/i18n';
 import type { State as KeyState } from '../../../../reducers/key';
 import type { Mnemonic } from '../../../../types/Mnemonic';
 import NavigatorComponent from '../../../../components/common/NavigatorComponent';
+import AccountsService from '../../../../services/accounts';
+import { errorAlert } from '../../../../global/alerts';
 
 const DONE_BUTTON = 'DONE_BUTTON';
 
@@ -44,10 +45,6 @@ type Actions = {
    * @desc Function to validate entered mnemonic.
    */
   validateMnemonic: () => void,
-  /**
-   * @desc Function to abort private key creation process.
-   */
-  removePrivateKey: () => void,
   /**
    * @desc Function to change entered mnemonic.
    */
@@ -71,8 +68,12 @@ class VerifyKeyProcessScreen extends NavigatorComponent<Actions & KeyState & Pro
     };
 
     this.props.changeMnemonic(_.fill(new Array(KEY_LENGTH), ''));
-    if (this.props.testingModeActive && this.props.createdMnemonic) {
-      this.props.changeMnemonic(this.props.createdMnemonic);
+    if (this.props.testingModeActive) {
+      AccountsService.getMnemonic().then((mnemonic) => {
+        this.props.changeMnemonic(mnemonic);
+      }).catch((error) => {
+        errorAlert(error);
+      });
     }
     this.keyTextInputContainers = [];
     this.configureNavigation(this.props);
@@ -269,9 +270,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   validateMnemonic() {
     dispatch(validateEnteredMnemonic());
-  },
-  removePrivateKey() {
-    dispatch(removePrivateKey());
   },
   changeMnemonic(mnemonic) {
     dispatch(changeEnteredMnemonic(mnemonic));

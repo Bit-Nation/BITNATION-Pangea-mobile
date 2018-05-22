@@ -34,14 +34,12 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "changeMnemonic": [Function],
-      "createdMnemonic": null,
       "enteredMnemonic": null,
       "mnemonicValid": null,
       "mnemonicValidationInProgress": false,
       "navigator": Object {
         "push": [MockFunction],
       },
-      "removePrivateKey": [Function],
       "store": Object {
         "clearActions": [Function],
         "dispatch": [Function],
@@ -83,14 +81,12 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "changeMnemonic": [Function],
-        "createdMnemonic": null,
         "enteredMnemonic": null,
         "mnemonicValid": null,
         "mnemonicValidationInProgress": false,
         "navigator": Object {
           "push": [MockFunction],
         },
-        "removePrivateKey": [Function],
         "store": Object {
           "clearActions": [Function],
           "dispatch": [Function],
