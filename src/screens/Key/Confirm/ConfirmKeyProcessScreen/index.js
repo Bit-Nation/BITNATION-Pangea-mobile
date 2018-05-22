@@ -5,7 +5,6 @@ import {
   View,
   Alert,
 } from 'react-native';
-import { connect } from 'react-redux';
 
 import styles from './styles';
 import { androidNavigationButtons, screen } from '../../../../global/Screens';
@@ -16,19 +15,13 @@ import GridView from '../../../../components/GridView';
 import Button from '../../../../components/common/Button';
 import PrivateKeyTextInputContainer from '../../../../components/PrivateKeyTextInputContainer';
 import { KEY_COLUMN_COUNT, KEY_PAGE_ROW_COUNT, KEY_PAGE_LENGTH, KEY_PAGE_COUNT } from '../../../../global/Constants';
-import KeyBaseScreen from '../../KeyBaseScreen/index';
-import { removePrivateKey } from '../../../../actions/key';
 import BodyParagraphs from '../../../../components/common/BodyParagraphs';
 import i18n from '../../../../global/i18n';
-import type { State as KeyState } from '../../../../reducers/key';
 import NavigatorComponent from '../../../../components/common/NavigatorComponent';
-
-type Actions = {
-  /**
-   * @desc Function to abort private key creation process.
-   */
-  removePrivateKey: () => void,
-}
+import type { Mnemonic } from '../../../../types/Mnemonic';
+import type { NavigatorProps } from '../../../../components/common/NavigatorComponent';
+import AccountsService from '../../../../services/accounts';
+import { errorAlert } from '../../../../global/alerts';
 
 type State = {
   /**
@@ -39,21 +32,32 @@ type State = {
    * @desc Array of completed page numbers.
    */
   completedPages: Array<number>,
+  /**
+   * @desc Mnemonic for current account private key.
+   */
+  mnemonic: Mnemonic,
 }
 
-class ConfirmKeyProcessScreen extends NavigatorComponent<Actions & KeyState, State> {
+class ConfirmKeyProcessScreen extends NavigatorComponent<void, State> {
   static navigatorButtons = { ...androidNavigationButtons };
 
-  constructor(props) {
+  constructor(props: NavigatorProps & void) {
     super(props);
 
     this.state = {
       activeRow: 0,
       completedPages: [],
+      mnemonic: [],
     };
+
+    AccountsService.getMnemonic().then((mnemonic) => {
+      this.setState({ mnemonic });
+    }).catch((error) => {
+      errorAlert(error);
+    });
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps: void, prevState: State) {
     const prevPage = this.activePage(prevState);
     const currentPage = this.activePage(this.state);
     if (prevPage < currentPage && this.state.completedPages.indexOf(prevPage) === -1) {
@@ -61,7 +65,7 @@ class ConfirmKeyProcessScreen extends NavigatorComponent<Actions & KeyState, Sta
     }
   }
 
-  showPageCompletedAlert(completedPage, done) {
+  showPageCompletedAlert(completedPage: number, done: boolean) {
     Alert.alert(
       i18n.t('alerts.privateKeyGroupCompleted.title', { number: completedPage + 1 }),
       done ? '' : i18n.t('alerts.privateKeyGroupCompleted.subtitle', { KEY_PAGE_LENGTH }),
@@ -82,9 +86,9 @@ class ConfirmKeyProcessScreen extends NavigatorComponent<Actions & KeyState, Sta
     );
   }
 
-  activePage = state => Math.floor(state.activeRow / KEY_PAGE_ROW_COUNT);
+  activePage = (state: State) => Math.floor(state.activeRow / KEY_PAGE_ROW_COUNT);
 
-  isDone = state => this.activePage(state) === KEY_PAGE_COUNT;
+  isDone = (state: State) => this.activePage(state) === KEY_PAGE_COUNT;
 
   onDone = () => {
     if (this.props.navigator) {
@@ -106,13 +110,13 @@ class ConfirmKeyProcessScreen extends NavigatorComponent<Actions & KeyState, Sta
     this.setState(prevState => ({ activeRow: Math.max(prevState.activeRow - 1, 0) }));
   };
 
-  renderText = (biasedIndex) => {
+  renderText = (biasedIndex: number) => {
     const index = biasedIndex + (this.activePage(this.state) * KEY_PAGE_LENGTH);
     return (
       <PrivateKeyTextInputContainer
         editable={false}
         index={index}
-        value={this.props.createdMnemonic && this.props.createdMnemonic[index]}
+        value={this.state.mnemonic[index]}
         label={(index + 1).toString()}
         key={index}
         style={index % KEY_COLUMN_COUNT === 0 ? styles.firstTextInput : styles.textInput}
@@ -170,14 +174,4 @@ class ConfirmKeyProcessScreen extends NavigatorComponent<Actions & KeyState, Sta
   }
 }
 
-const mapStateToProps = state => ({
-  ...state.key,
-});
-
-const mapDispatchToProps = dispatch => ({
-  removePrivateKey() {
-    dispatch(removePrivateKey());
-  },
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(ConfirmKeyProcessScreen);
+export default ConfirmKeyProcessScreen;

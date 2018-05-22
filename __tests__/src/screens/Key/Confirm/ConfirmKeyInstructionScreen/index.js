@@ -13,6 +13,7 @@ test('ConfirmKeyInstructionScreen renders correctly', () => {
   const propsMock = {
     navigator: {
       push: jest.fn(),
+      setOnNavigatorEvent: jest.fn(),
     },
   };
 
