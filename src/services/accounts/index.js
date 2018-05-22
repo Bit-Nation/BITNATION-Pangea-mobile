@@ -2,12 +2,13 @@
 
 import { NativeModules } from 'react-native';
 import type { Mnemonic } from '../../types/Mnemonic';
-import { compressMnemonic } from '../../utils/key';
+import { compressMnemonic, decompressMnemonic } from '../../utils/key';
 
 export default class AccountsService {
   static async getMnemonic(): Promise<Mnemonic> {
-    // @todo Change mock with correct implementation.
-    return ['hospital', 'school', 'quote', 'wild', 'alpha', 'adapt', 'timber', 'jump', 'ugly', 'remain', 'goose', 'maple', 'maze', 'piano', 'beyond', 'copper', 'address', 'sand', 'meat', 'dilemma', 'rotate', 'core', 'twin', 'ribbon'];
+    const { Panthalassa } = NativeModules;
+    const mnemonicString = await Panthalassa.PanthalassaGetMnemonic();
+    return decompressMnemonic(mnemonicString);
   }
 
   static async checkPasscode(accountStore: string, password: string): Promise<boolean> {
