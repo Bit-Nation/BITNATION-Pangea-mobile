@@ -40,6 +40,7 @@ describe('accounts action creators', () => {
       networkType: 'main',
       avatar: null,
       location: null,
+      confirmedMnemonic: false,
     };
 
     expect(accountListUpdated([accountMock, accountMock])).toEqual({
