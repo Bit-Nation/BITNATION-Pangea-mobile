@@ -2,29 +2,19 @@
 
 import React from 'react';
 import { View } from 'react-native';
-import { connect } from 'react-redux';
 
 import styles from './styles';
 import { androidNavigationButtons, screen } from '../../../../global/Screens';
 import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
 import BackgroundImage from '../../../../components/common/BackgroundImage';
 import PanelView from '../../../../components/common/PanelView';
-import KeyBaseScreen from '../../KeyBaseScreen';
 import { KEY_LENGTH } from '../../../../global/Constants';
-import { removePrivateKey } from '../../../../actions/key';
 import BodyParagraphs from '../../../../components/common/BodyParagraphs';
 import i18n from '../../../../global/i18n';
 import type { State } from '../../../../reducers/key';
 import NavigatorComponent from '../../../../components/common/NavigatorComponent';
 
-type Actions = {
-  /**
-   * @desc Function to abort private key creation process.
-   */
-  removePrivateKey: () => void,
-}
-
-class VerifyKeyInstructionScreen extends NavigatorComponent<Actions & State> {
+class VerifyKeyInstructionScreen extends NavigatorComponent<State> {
   static navigatorButtons = { ...androidNavigationButtons };
 
   onNextButtonPressed() {
@@ -54,14 +44,4 @@ class VerifyKeyInstructionScreen extends NavigatorComponent<Actions & State> {
   }
 }
 
-const mapStateToProps = state => ({
-  ...state.key,
-});
-
-const mapDispatchToProps = dispatch => ({
-  removePrivateKey() {
-    dispatch(removePrivateKey());
-  },
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(VerifyKeyInstructionScreen);
+export default VerifyKeyInstructionScreen;
