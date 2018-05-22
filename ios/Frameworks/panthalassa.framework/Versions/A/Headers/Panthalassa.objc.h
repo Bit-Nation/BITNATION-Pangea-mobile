@@ -27,6 +27,8 @@ FOUNDATION_EXPORT NSString* PanthalassaEthPrivateKey(NSError** error);
 
 FOUNDATION_EXPORT NSString* PanthalassaExportAccountStore(NSString* pw, NSString* pwConfirm, NSError** error);
 
+FOUNDATION_EXPORT NSString* PanthalassaGetMnemonic(NSError** error);
+
 FOUNDATION_EXPORT BOOL PanthalassaIsValidCID(NSString* c);
 
 FOUNDATION_EXPORT BOOL PanthalassaIsValidMnemonic(NSString* mne);
