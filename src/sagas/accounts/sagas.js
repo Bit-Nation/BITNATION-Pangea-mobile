@@ -336,14 +336,14 @@ export function* saveCreatingAccount(action: SaveCreatingAccountAction): Generat
  * @return {void}
  */
 export function* saveMnemonicConfirmed(action: MnemonicConfirmedAction): Generator<*, *, *> {
-  const db = yield defaultDB;
   const account = yield call(getCurrentAccount);
 
   if (account == null) {
-    yield call(action.callback, true);
+    yield call(action.callback, false);
     return;
   }
 
+  const db = yield defaultDB;
   db.write(() => {
     account.confirmedMnemonic = true;
   });

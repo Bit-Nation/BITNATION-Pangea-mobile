@@ -11,15 +11,15 @@ describe('validateEnteredMnemonic', () => {
   test('not logged in', () => {
     const gen = cloneableGenerator(validateEnteredMnemonic)();
     expect(gen.next().value).toEqual(call(AccountsService.getMnemonic));
-    expect(gen.next(null).value).toEqual(select());
-    const enteredMnemonic = ['a'];
-    expect(gen.next({ key: { enteredMnemonic } }).value)
-      .toEqual(call(AccountsService.validateMnemonic, enteredMnemonic));
 
     const successGen = gen.clone();
+    expect(successGen.throw('error').value).toEqual(select());
+    expect(successGen.next({ key: { enteredMnemonic: ['a'] } }).value).toEqual(call(AccountsService.validateMnemonic, ['a']));
     expect(successGen.next(true).value).toEqual(put(changeMnemonicValid(true)));
 
     const failureGen = gen.clone();
+    expect(failureGen.throw('error').value).toEqual(select());
+    expect(failureGen.next({ key: { enteredMnemonic: ['a'] } }).value).toEqual(call(AccountsService.validateMnemonic, ['a']));
     expect(failureGen.next(false).value).toEqual(put(changeMnemonicValid(false)));
   });
 

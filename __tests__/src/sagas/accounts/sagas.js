@@ -8,7 +8,7 @@ import {
   getCurrentAccountId, listenForDatabaseUpdates, login as loginSaga, loginActionHandler, logout,
   saveEditingAccount as saveEditingAccountSaga, savePasswordSaga, savePinCodeSaga, startAccountCreation,
   startRestoreAccountUsingMnemonic, saveCreatingAccount as saveCreatingAccountSaga, currentAccountBasedUpdate,
-  startAccountUpdateListening,
+  startAccountUpdateListening, saveMnemonicConfirmed,
 } from '../../../../src/sagas/accounts/sagas';
 import defaultDB, { buildRandomPathDatabase } from '../../../../src/services/database';
 import { convertFromDatabase, convertToDatabase } from '../../../../src/utils/mapping/account';
@@ -19,7 +19,7 @@ import { createDatabaseUpdateChannel } from '../../../../src/sagas/database';
 import {
   accountListUpdated, changeCreatingAccountField, checkPassword, checkPinCode, CURRENT_ACCOUNT_ID_CHANGED,
   currentAccountIdChanged, login,
-  loginTaskUpdated, PERFORM_DEFERRED_LOGIN, saveCreatingAccount, savePassword, savePinCode,
+  loginTaskUpdated, mnemonicConfirmed, PERFORM_DEFERRED_LOGIN, saveCreatingAccount, savePassword, savePinCode,
 } from '../../../../src/actions/accounts';
 import TaskBuilder from '../../../../src/utils/asyncTask';
 import AccountsService from '../../../../src/services/accounts';
@@ -501,7 +501,7 @@ test('saveCreatingAccount', async () => {
   }).value).toEqual(defaultDB);
   expect(gen.next(db).value).toEqual(call(mockCallback, true));
   expect(gen.next().value).toEqual(put(cancelAccountEditing()));
-  last = accountIncompleteGen.next();
+  last = gen.next();
   expect(last.value).toBeUndefined();
   expect(last.done).toBeTruthy();
 
@@ -509,5 +509,42 @@ test('saveCreatingAccount', async () => {
     .toMatchObject({
       accountStore: 'ACCOUNT_STORE',
       name: 'NAME',
+    });
+});
+
+test('saveMnemonicConfirmed', async () => {
+  expect.assertions(9);
+
+  const mockCallback = jest.fn();
+  const mockAction = mnemonicConfirmed(mockCallback);
+
+  const gen = cloneableGenerator(saveMnemonicConfirmed)(mockAction);
+  expect(gen.next().value).toEqual(call(getCurrentAccount));
+
+  // There is no account currently logged in.
+  const noAccountGen = gen.clone();
+  expect(noAccountGen.next(null).value).toEqual(call(mockCallback, false));
+  let last = noAccountGen.next();
+  expect(last.value).toBeUndefined();
+  expect(last.done).toBeTruthy();
+
+  // Successful path.
+  const db = await buildRandomPathDatabase();
+  let dbAccount = null;
+  db.write(() => {
+    dbAccount = db.create('Account', convertToDatabase(partialAccountMock));
+  });
+
+  expect(gen.next(dbAccount).value).toEqual(defaultDB);
+  expect(gen.next(db).value).toEqual(call(mockCallback, true));
+  last = gen.next();
+  expect(last.value).toBeUndefined();
+  expect(last.done).toBeTruthy();
+
+  expect(convertFromDatabase(db.objects('Account')[0]))
+    .toMatchObject({
+      accountStore: 'ACCOUNT_STORE',
+      name: 'NAME',
+      confirmedMnemonic: true,
     });
 });

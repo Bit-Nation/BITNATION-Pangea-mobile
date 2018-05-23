@@ -18,8 +18,8 @@ export function* validateEnteredMnemonic(): Generator<*, *, *> {
   } catch (e) {
     currentMnemonic = null;
   }
-  const { key: { enteredMnemonic } } = yield select();
 
+  const { key: { enteredMnemonic } } = yield select();
   if (currentMnemonic === null) {
     const mnemonicCorrect = yield call(AccountsService.validateMnemonic, enteredMnemonic);
     yield put(changeMnemonicValid(mnemonicCorrect === true));
