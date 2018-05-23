@@ -183,7 +183,7 @@ class VerifyKeyProcessScreen extends NavigatorComponent<Actions & KeyState & Pro
     const values = this.props.enteredMnemonic;
     this.props.changeMnemonic([
       ...values.slice(0, index),
-      value.toLowerCase(),
+      value.toLowerCase().trim(),
       ...values.slice(index + 1),
     ]);
   };
