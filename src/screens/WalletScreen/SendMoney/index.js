@@ -87,7 +87,7 @@ class SendMoney extends NavigatorComponent<Props, State> {
   }
 
   resolveWallet() {
-    return resolveWallet(this.props.wallets || [], this.props.selectedWalletAddress || '');
+    return resolveWallet(this.props.wallets || [], this.props.selectedWalletCurrency || '');
   }
 
   static parseAmount(amountString: string): number {
