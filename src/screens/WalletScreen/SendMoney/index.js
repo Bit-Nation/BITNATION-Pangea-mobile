@@ -130,9 +130,9 @@ class SendMoney extends NavigatorComponent<Props, State> {
             childrenContainerStyle={styles.noflex}
           >
             <View style={styles.row}>
-              <Image style={styles.icon} source={Images.eth} resizeMode='contain' />
+              <Image style={styles.icon} source={wallet.currency === 'ETH' ? Images.ethereumLogo : Images.patLogo} resizeMode='contain' />
               <View style={styles.textColumn}>
-                <Text style={styles.bodyBold}>{i18n.t('common.ethereum')}</Text>
+                <Text style={styles.bodyBold}>{wallet.currency === 'ETH' ? i18n.t('common.ethereum') : i18n.t('common.bitnationPat')}</Text>
                 <Text style={styles.currencyLarge}>
                   {prettyWalletBalance(wallet, wallet.currency)}
                 </Text>
@@ -158,7 +158,7 @@ class SendMoney extends NavigatorComponent<Props, State> {
                       value={this.state.amountString}
                     />
                     <Text style={styles.currencyPlaceholder}>
-                      ETH
+                      {wallet.currency}
                     </Text>
                   </View>
                 </View>
