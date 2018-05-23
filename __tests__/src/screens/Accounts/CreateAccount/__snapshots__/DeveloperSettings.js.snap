@@ -16,6 +16,8 @@ ShallowWrapper {
       Object {
         "pop": [MockFunction],
         "push": [MockFunction],
+        "setButtons": [MockFunction],
+        "setOnNavigatorEvent": [MockFunction],
       }
     }
     store={
@@ -49,6 +51,8 @@ ShallowWrapper {
       "navigator": Object {
         "pop": [MockFunction],
         "push": [MockFunction],
+        "setButtons": [MockFunction],
+        "setOnNavigatorEvent": [MockFunction],
       },
       "store": Object {
         "clearActions": [Function],
@@ -96,6 +100,8 @@ ShallowWrapper {
         "navigator": Object {
           "pop": [MockFunction],
           "push": [MockFunction],
+          "setButtons": [MockFunction],
+          "setOnNavigatorEvent": [MockFunction],
         },
         "store": Object {
           "clearActions": [Function],

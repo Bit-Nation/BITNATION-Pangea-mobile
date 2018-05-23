@@ -3,6 +3,7 @@ import { shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
 
 import SettingsListScreen from '../../../../../src/screens/Settings/SettingsList';
+import navigatorMock from '../../../../../__mocks__/Navigator';
 
 describe('SettingsListScreen', () => {
   let settingsListScreen;
@@ -10,10 +11,7 @@ describe('SettingsListScreen', () => {
   const initialStateMock = {};
   const storeMock = configureStore([]);
   const propsMock = {
-    navigator: {
-      push: jest.fn(),
-      pop: jest.fn(),
-    },
+    navigator: navigatorMock,
   };
 
   beforeEach(() => {
