@@ -11,6 +11,7 @@ import type { WalletType } from '../types/Wallet';
  */
 export function resolveWallet(wallets: Array<WalletType>, address: string): WalletType | null {
   const resolved = _.find(wallets, wallet => wallet.ethAddress === address);
+  console.log('--> Resolved:', resolved);
   return resolved === undefined ? null : resolved;
 }
 
