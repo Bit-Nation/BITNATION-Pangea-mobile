@@ -17,9 +17,34 @@ import AssetsImages from '../../../../global/AssetsImages';
 import BodyParagraphs from '../../../../components/common/BodyParagraphs';
 import i18n from '../../../../global/i18n';
 import NavigatorComponent from '../../../../components/common/NavigatorComponent';
+import type { NavigatorProps } from '../../../../components/common/NavigatorComponent';
+import Colors from '../../../../global/colors';
 
-class ConfirmKeyInstructionScreen extends NavigatorComponent<void> {
-  static navigatorButtons = { ...androidNavigationButtons };
+type Props = {
+  shouldShowCancel: boolean,
+};
+
+class ConfirmKeyInstructionScreen extends NavigatorComponent<Props> {
+  static defaultProps;
+
+  constructor(props: Props & NavigatorProps) {
+    super(props);
+
+    props.navigator.setButtons({
+      leftButtons: props.shouldShowCancel ? [{
+        id: 'cancel',
+        title: 'Cancel',
+        buttonColor: Colors.navigationButtonColor,
+      }] : [],
+      ...androidNavigationButtons,
+    });
+  }
+
+  onNavBarButtonPress(id: string) {
+    if (id === 'cancel') {
+      this.props.navigator.dismissModal();
+    }
+  }
 
   onNextButtonPressed() {
     if (this.props.navigator) {
@@ -58,5 +83,9 @@ class ConfirmKeyInstructionScreen extends NavigatorComponent<void> {
     );
   }
 }
+
+ConfirmKeyInstructionScreen.defaultProps = {
+  shouldShowCancel: false,
+};
 
 export default ConfirmKeyInstructionScreen;
