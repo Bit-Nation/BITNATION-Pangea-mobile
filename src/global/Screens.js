@@ -162,6 +162,9 @@ const Screens = {
     title: i18n.t('screens.verifyKey.title'),
     navigatorStyle,
     backButtonTitle: '',
+    passProps: {
+      isVerification: true,
+    },
   },
   RESTORE_KEY_SCREEN: {
     screen: 'Pangea.RestoreKeyProcessScreen',
