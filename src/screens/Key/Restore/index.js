@@ -27,6 +27,7 @@ import i18n from '../../../global/i18n';
 import type { State as KeyState } from '../../../reducers/key';
 import type { Mnemonic } from '../../../types/Mnemonic';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
+import { androidNavigationButtons } from '../../../global/Screens';
 
 const DONE_BUTTON = 'DONE_BUTTON';
 
@@ -121,11 +122,7 @@ class RestoreKeyScreen extends NavigatorComponent<Actions & KeyState & Props, St
     if (!this.props.navigator) return;
 
     this.props.navigator.setButtons({
-      leftButtons: [{
-        id: 'cancel',
-        title: i18n.t('common.cancel'),
-        buttonColor: Colors.navigationButtonColor,
-      }],
+      ...androidNavigationButtons,
       rightButtons: RestoreKeyScreen.doneShouldBeEnabled(props) ? [{
         id: DONE_BUTTON,
         title: 'Done',
