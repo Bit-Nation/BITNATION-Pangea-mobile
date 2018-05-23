@@ -2,6 +2,10 @@
 
 import { type ActivityLogMessage } from '../types/ActivityLogMessage';
 
+export const MESSAGES_ADDED = 'MESSAGES_ADDED';
+export const ADD_NEW_MESSAGE = 'ADD_NEW_MESSAGE';
+export const emptyCallback = () => {};
+
 type MessagesAddedAction = {
   +type: "MESSAGES_ADDED",
   +messages: Array<ActivityLogMessage>
@@ -9,16 +13,12 @@ type MessagesAddedAction = {
 export type AddNewMessageAction = {
   +type: "ADD_NEW_MESSAGE",
   +message: string,
-  +params: any,
+  +params: Object,
   +interpret: boolean,
   +callback: (success: boolean) => void
 };
 
 export type Action = MessagesAddedAction | AddNewMessageAction;
-
-export const MESSAGES_ADDED = 'MESSAGES_ADDED';
-export const ADD_NEW_MESSAGE = 'ADD_NEW_MESSAGE';
-export const emptyCallback = () => {};
 
 /**
  * @desc Action creator for an action that should be called once new activity log message added.
@@ -42,15 +42,15 @@ export function messagesAdded(messages: Array<ActivityLogMessage>): MessagesAdde
  */
 export function addNewMessage(
   message: string,
-  params: ?any,
-  interpret: ?boolean,
+  params?: Object = {},
+  interpret?: boolean = true,
   callback?: (boolean) => void,
 ): AddNewMessageAction {
   return {
     type: ADD_NEW_MESSAGE,
     message,
-    params: params || {},
-    interpret: interpret || true,
+    params,
+    interpret,
     callback: callback || emptyCallback,
   };
 }
