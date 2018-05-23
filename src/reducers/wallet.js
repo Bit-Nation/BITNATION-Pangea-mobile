@@ -17,6 +17,7 @@ import { getWalletIndex } from '../utils/wallet';
 
 export type State = {
   +wallets: Array<WalletType> | null,
+  +selectedWalletCurrency: string | null,
   +selectedWalletAddress: string | null,
   +moneySendingInProgress: boolean,
   +moneySendingError: Error | null,
@@ -24,6 +25,7 @@ export type State = {
 
 export const initialState: State = {
   wallets: null,
+  selectedWalletCurrency: null,
   selectedWalletAddress: null,
   moneySendingInProgress: false,
   moneySendingError: null,
@@ -38,7 +40,7 @@ export const initialState: State = {
 export default (state: State = initialState, action: Action): State => {
   switch (action.type) {
     case SELECT_WALLET:
-      return Object.assign({}, state, { selectedWalletAddress: action.wallet.currency });
+      return Object.assign({}, state, { selectedWalletCurrency: action.wallet.currency, selectedWalletAddress: action.wallet.ethAddress });
     case WALLETS_LIST_UPDATED:
       return Object.assign({}, state, { wallets: _.cloneDeep(action.wallets) });
     case WALLET_SYNC_FAILED: {
