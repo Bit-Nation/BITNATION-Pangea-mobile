@@ -44,5 +44,14 @@ const styles = {
     ...GlobalStyles.body,
     fontWeight: '300',
   },
+  //
+  confirmKeyPanel: {
+    ...GlobalStyles.gridPanelView,
+    flex: 1,
+  },
+  confirmKeyBody: {
+    ...GlobalStyles.body,
+    fontWeight: '500',
+  },
 };
 export default styles;
