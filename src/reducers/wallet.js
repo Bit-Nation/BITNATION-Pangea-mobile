@@ -38,7 +38,7 @@ export const initialState: State = {
 export default (state: State = initialState, action: Action): State => {
   switch (action.type) {
     case SELECT_WALLET:
-      return Object.assign({}, state, { selectedWalletAddress: action.wallet.ethAddress });
+      return Object.assign({}, state, { selectedWalletAddress: action.wallet.currency });
     case WALLETS_LIST_UPDATED:
       return Object.assign({}, state, { wallets: _.cloneDeep(action.wallets) });
     case WALLET_SYNC_FAILED: {
