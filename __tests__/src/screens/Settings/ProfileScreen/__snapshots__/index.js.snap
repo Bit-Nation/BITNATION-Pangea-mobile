@@ -5,7 +5,14 @@ ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Connect(ProfileContainer)
-    navigator={Object {}}
+    navigator={
+      Object {
+        "pop": [MockFunction],
+        "push": [MockFunction],
+        "setButtons": [MockFunction],
+        "setOnNavigatorEvent": [MockFunction],
+      }
+    }
     store={
       Object {
         "clearActions": [Function],
@@ -42,7 +49,12 @@ ShallowWrapper {
       "doneAccountCreation": [Function],
       "editingAccount": Object {},
       "makeStepForTestingMode": [Function],
-      "navigator": Object {},
+      "navigator": Object {
+        "pop": [MockFunction],
+        "push": [MockFunction],
+        "setButtons": [MockFunction],
+        "setOnNavigatorEvent": [MockFunction],
+      },
       "onCancelAccountEditing": [Function],
       "onChangeEditingAccount": [Function],
       "onDoneAccountEditing": [Function],
@@ -100,7 +112,12 @@ ShallowWrapper {
         "doneAccountCreation": [Function],
         "editingAccount": Object {},
         "makeStepForTestingMode": [Function],
-        "navigator": Object {},
+        "navigator": Object {
+          "pop": [MockFunction],
+          "push": [MockFunction],
+          "setButtons": [MockFunction],
+          "setOnNavigatorEvent": [MockFunction],
+        },
         "onCancelAccountEditing": [Function],
         "onChangeEditingAccount": [Function],
         "onDoneAccountEditing": [Function],

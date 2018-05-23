@@ -7,7 +7,9 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <VerifyKeyInstructionScreen
     navigator={
       Object {
+        "pop": [MockFunction],
         "push": [MockFunction],
+        "setButtons": [MockFunction],
         "setOnNavigatorEvent": [MockFunction] {
           "calls": Array [
             Array [

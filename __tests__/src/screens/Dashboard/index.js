@@ -3,6 +3,7 @@ import { shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
 
 import Dashboard from '../../../../src/screens/Dashboard';
+import navigatorMock from '../../../../__mocks__/Navigator';
 
 test('Dashboard renders correctly', () => {
   const initialStateMock = {
@@ -24,9 +25,7 @@ test('Dashboard renders correctly', () => {
   };
   const storeMock = configureStore([]);
   const propsMock = {
-    navigator: {
-      push: jest.fn(),
-    },
+    navigator: navigatorMock,
   };
 
   const wrapper = shallow((
