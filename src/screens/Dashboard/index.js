@@ -21,6 +21,7 @@ import { addDummyMessage, startFetchMessages } from '../../actions/activity';
 import type { NationIdType } from '../../types/Nation';
 import type { State } from '../../reducers';
 import type { Navigator } from '../../types/ReactNativeNavigation';
+import { getCurrentAccount } from '../../reducers/accounts';
 
 type Props = {
   /**
@@ -64,7 +65,18 @@ class Dashboard extends Component<Props & Actions & State & TestingModeProps> {
 
   };
 
+  onStartKeyConfirmation = () => {
+    this.props.navigator.showModal({
+      ...screen('CONFIRM_KEY_INSTRUCTION_SCREEN'),
+      passProps: {
+        shouldShowCancel: true,
+      },
+    });
+  };
+
   render() {
+    const currentAccount = getCurrentAccount(this.props.accounts);
+
     return (
       <View style={styles.screenContainer}>
         <BackgroundImage />
@@ -90,13 +102,26 @@ class Dashboard extends Component<Props & Actions & State & TestingModeProps> {
                 wallets={this.props.wallet.wallets || []}
                 style={styles.walletPanel}
               />
-              <PanelView
-                title={i18n.t('screens.dashboard.warningPanel.title')}
-                style={styles.warningPanel}
-                titleStyle={styles.panelViewTitle}
-              >
-                <Text style={styles.warningPanelBody}>{i18n.t('screens.dashboard.warningPanel.body')}</Text>
-              </PanelView>
+              {
+                (currentAccount === null || currentAccount.confirmedMnemonic === true) ?
+                  <PanelView
+                    title={i18n.t('screens.dashboard.warningPanel.title')}
+                    style={styles.warningPanel}
+                    titleStyle={styles.panelViewTitle}
+                  >
+                    <Text style={styles.warningPanelBody}>{i18n.t('screens.dashboard.warningPanel.body')}</Text>
+                  </PanelView>
+                  :
+                  <PanelView
+                    title={i18n.t('screens.dashboard.confirmKeyPanel.title')}
+                    style={styles.confirmKeyPanel}
+                    titleStyle={styles.alertPanelViewTitle}
+                    buttonTitle={i18n.t('screens.dashboard.confirmKeyPanel.button')}
+                    onButtonClick={this.onStartKeyConfirmation}
+                  >
+                    <Text style={styles.confirmKeyBody}>{i18n.t('screens.dashboard.confirmKeyPanel.body')}</Text>
+                  </PanelView>
+              }
             </View>
           </View>
         </View>

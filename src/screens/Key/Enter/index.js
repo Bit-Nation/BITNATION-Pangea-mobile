@@ -7,6 +7,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import { connect } from 'react-redux';
 
 import styles from './styles';
+import { androidNavigationButtons, screen } from '../../../global/Screens';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import GridView from '../../../components/GridView/index';
 import PrivateKeyTextInputContainer from '../../../components/PrivateKeyTextInputContainer/index';
@@ -27,14 +28,18 @@ import i18n from '../../../global/i18n';
 import type { State as KeyState } from '../../../reducers/key';
 import type { Mnemonic } from '../../../types/Mnemonic';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
+import AccountsService from '../../../services/accounts';
+import { errorAlert } from '../../../global/alerts';
+import { mnemonicConfirmed } from '../../../actions/accounts';
+import { GeneralError } from '../../../global/errors/common';
 
 const DONE_BUTTON = 'DONE_BUTTON';
 
 type Props = {
   /**
-   * @desc Flag that shows if testing mode is active.
+   * @desc Flag that shows if user is currently verifying private key.
    */
-  testingModeActive: boolean,
+  isVerification: boolean,
   /**
    * @desc Callback to be called when user done mnemonic entering.
    */
@@ -43,6 +48,10 @@ type Props = {
    * @desc Callback to be called when user cancel mnemonic entering.
    */
   onCancel: () => void,
+  /**
+   * @desc Flag that shows if testing mode is active.
+   */
+  testingModeActive: boolean,
 }
 
 type Actions = {
@@ -54,6 +63,11 @@ type Actions = {
    * @desc Function to change entered mnemonic.
    */
   changeMnemonic: (Mnemonic) => void,
+  /**
+   * @desc Function to record that mnemonic was confirmed.
+   * @param {function} callback Function that is called when that information is recorded with flag if it was successful.
+   */
+  mnemonicConfirmed: (callback: (success: boolean) => void) => void,
 }
 
 type State = {
@@ -61,7 +75,9 @@ type State = {
   selectedInputIndex: number | null,
 }
 
-class RestoreKeyScreen extends NavigatorComponent<Actions & KeyState & Props, State> {
+class EnterKeyScreen extends NavigatorComponent<Actions & KeyState & Props, State> {
+  static defaultProps;
+
   constructor(props) {
     super(props);
 
@@ -71,8 +87,12 @@ class RestoreKeyScreen extends NavigatorComponent<Actions & KeyState & Props, St
     };
 
     this.props.changeMnemonic(_.fill(new Array(KEY_LENGTH), ''));
-    if (this.props.testingModeActive && this.props.createdMnemonic) {
-      this.props.changeMnemonic(this.props.createdMnemonic);
+    if (this.props.testingModeActive) {
+      AccountsService.getMnemonic().then((mnemonic) => {
+        this.props.changeMnemonic(mnemonic);
+      }).catch((error) => {
+        errorAlert(error);
+      });
     }
     this.keyTextInputContainers = [];
     this.configureNavigation(this.props);
@@ -91,8 +111,8 @@ class RestoreKeyScreen extends NavigatorComponent<Actions & KeyState & Props, St
   }
 
   componentWillUpdate(nextProps) {
-    if (RestoreKeyScreen.doneShouldBeEnabled(this.props)
-      !== RestoreKeyScreen.doneShouldBeEnabled(nextProps)) {
+    if (EnterKeyScreen.doneShouldBeEnabled(this.props)
+      !== EnterKeyScreen.doneShouldBeEnabled(nextProps)) {
       this.configureNavigation(nextProps);
     }
   }
@@ -110,8 +130,7 @@ class RestoreKeyScreen extends NavigatorComponent<Actions & KeyState & Props, St
       if (this.props.mnemonicValid === false) {
         this.showIncorrectMnemonicAlert();
       } else {
-        // We are sure that mnemonic is non-null here, so we do type conversion.
-        this.props.onDoneEntering(((this.props.enteredMnemonic: any): Mnemonic));
+        this.onSuccess();
       }
     }
   }
@@ -128,12 +147,8 @@ class RestoreKeyScreen extends NavigatorComponent<Actions & KeyState & Props, St
     if (!this.props.navigator) return;
 
     this.props.navigator.setButtons({
-      leftButtons: [{
-        id: 'cancel',
-        title: i18n.t('common.cancel'),
-        buttonColor: Colors.navigationButtonColor,
-      }],
-      rightButtons: RestoreKeyScreen.doneShouldBeEnabled(props) ? [{
+      ...androidNavigationButtons,
+      rightButtons: EnterKeyScreen.doneShouldBeEnabled(props) ? [{
         id: DONE_BUTTON,
         title: 'Done',
         buttonColor: Colors.navigationButtonColor,
@@ -142,19 +157,30 @@ class RestoreKeyScreen extends NavigatorComponent<Actions & KeyState & Props, St
   }
 
   onNavBarButtonPress(id) {
-    switch (id) {
-      case DONE_BUTTON: {
-        this.props.validateMnemonic();
-        break;
-      }
-      case 'cancel': {
-        this.props.onCancel();
-        break;
-      }
-      default:
-        break;
+    if (id === DONE_BUTTON) {
+      this.onDonePressed();
     }
   }
+
+  onSuccess() {
+    if (this.props.isVerification) {
+      this.props.mnemonicConfirmed((success) => {
+        if (success === false) {
+          errorAlert(new GeneralError());
+          return;
+        }
+
+        this.props.navigator.push(screen('VERIFY_KEY_SUCCESS_SCREEN'));
+      });
+    } else {
+      // We are sure that mnemonic is non-null here, so we do type conversion.
+      this.props.onDoneEntering(((this.props.enteredMnemonic: any): Mnemonic));
+    }
+  }
+
+  onDonePressed = () => {
+    this.props.validateMnemonic();
+  };
 
   onNextPressed = () => {
     this.setSelectedInputIndex((this.state.currentPage + 1) * KEY_PAGE_LENGTH);
@@ -179,7 +205,7 @@ class RestoreKeyScreen extends NavigatorComponent<Actions & KeyState & Props, St
     const values = this.props.enteredMnemonic;
     this.props.changeMnemonic([
       ...values.slice(0, index),
-      value.toLowerCase(),
+      value.toLowerCase().trim(),
       ...values.slice(index + 1),
     ]);
   };
@@ -239,7 +265,7 @@ class RestoreKeyScreen extends NavigatorComponent<Actions & KeyState & Props, St
               style={styles.panelViewTransparent}
               childrenContainerStyle={styles.noflex}
             >
-              <BodyParagraphs paragraphs={i18n.t('screens.verifyKey.process.instructions', { KEY_LENGTH })} />
+              <BodyParagraphs paragraphs={i18n.t('screens.enterPrivateKey.instructions', { KEY_LENGTH })} />
               <View style={styles.gridContainer}>
                 <GridView
                   itemsPerRow={KEY_COLUMN_COUNT}
@@ -250,17 +276,25 @@ class RestoreKeyScreen extends NavigatorComponent<Actions & KeyState & Props, St
               </View>
               <View style={styles.buttonContainer}>
                 <Button
-                  title={i18n.t('screens.verifyKey.process.previousButton')}
+                  title={i18n.t('screens.enterPrivateKey.previousButton')}
                   onPress={this.onPreviousPressed}
-                  style={styles.buttonPrevNext}
+                  style={styles.button}
                   enabled={this.state.currentPage > 0}
                 />
-                <Button
-                  title={i18n.t('screens.verifyKey.process.nextButton')}
-                  onPress={this.onNextPressed}
-                  style={styles.buttonPrevNext}
-                  enabled={this.state.currentPage < KEY_PAGE_COUNT - 1}
-                />
+                {
+                  this.state.currentPage < KEY_PAGE_COUNT - 1 ?
+                    <Button
+                      title={i18n.t('screens.enterPrivateKey.nextButton')}
+                      onPress={this.onNextPressed}
+                      style={styles.button}
+                    /> :
+                    <Button
+                      title={i18n.t('screens.enterPrivateKey.doneButton')}
+                      onPress={this.onDonePressed}
+                      style={styles.button}
+                      enabled={EnterKeyScreen.doneShouldBeEnabled(this.props)}
+                    />
+                }
               </View>
             </PanelView>
           </KeyboardAwareScrollView>
@@ -270,17 +304,25 @@ class RestoreKeyScreen extends NavigatorComponent<Actions & KeyState & Props, St
   }
 }
 
+EnterKeyScreen.defaultProps = {
+  isVerification: false,
+};
+
 const mapStateToProps = state => ({
   ...state.key,
+  testingModeActive: state.testingMode.isActive,
 });
 
 const mapDispatchToProps = dispatch => ({
-  changeMnemonic(mnemonic) {
-    dispatch(changeEnteredMnemonic(mnemonic));
-  },
   validateMnemonic() {
     dispatch(validateEnteredMnemonic());
   },
+  changeMnemonic(mnemonic) {
+    dispatch(changeEnteredMnemonic(mnemonic));
+  },
+  mnemonicConfirmed(callback) {
+    dispatch(mnemonicConfirmed(callback));
+  },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(RestoreKeyScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(EnterKeyScreen);

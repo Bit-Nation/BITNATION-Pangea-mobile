@@ -4,6 +4,7 @@ import configureStore from 'redux-mock-store';
 
 import { initialState } from '../../../../../../src/reducers/accounts';
 import AccountAccessListScreen from '../../../../../../src/screens/Accounts/AccountAccessContainer/AccountAccessListScreen';
+import navigatorMock from '../../../../../../__mocks__/Navigator';
 
 test('AccountAccessListScreen renders correctly', () => {
   const initialStateMock = {
@@ -11,9 +12,7 @@ test('AccountAccessListScreen renders correctly', () => {
   };
   const storeMock = configureStore([]);
   const propsMock = {
-    navigator: {
-      push: jest.fn(),
-    },
+    navigator: navigatorMock,
   };
 
   const wrapper = shallow((

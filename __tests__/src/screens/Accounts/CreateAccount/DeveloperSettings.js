@@ -3,6 +3,7 @@ import { shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
 
 import DeveloperSettings from '../../../../../src/screens/Accounts/CreateAccount/DeveloperSettings';
+import navigatorMock from '../../../../../__mocks__/Navigator';
 
 describe('DeveloperSettings', () => {
   let developerSettingsScreen;
@@ -10,10 +11,7 @@ describe('DeveloperSettings', () => {
   const initialStateMock = {};
   const storeMock = configureStore([]);
   const propsMock = {
-    navigator: {
-      push: jest.fn(),
-      pop: jest.fn(),
-    },
+    navigator: navigatorMock,
     creatingAccount: {
       id: 1,
       networkType: 'main',

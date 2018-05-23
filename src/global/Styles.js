@@ -298,6 +298,13 @@ const styles = {
     textAlign: 'left',
   },
 
+  alertPanelViewTitle: {
+    ...defaultTextStyles.title2,
+    fontWeight: 'bold',
+    color: Colors.primary_red,
+    textAlign: 'left',
+  },
+
   // Text style for the sub-titles in Panels
   panelSubTitle: {
     ...defaultTextStyles.title3,
