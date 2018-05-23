@@ -1,3 +1,6 @@
+import { Navigation } from 'react-native-navigation';
+import { screen } from '../../global/Screens';
+
 const ethers = require('ethers');
 
 export default function CustomSigner(privateKey, provider) {
@@ -5,38 +8,82 @@ export default function CustomSigner(privateKey, provider) {
   const wallet = new ethers.Wallet(privateKey);
   this.provider = new ethers.providers.InfuraProvider(provider);
   this.address = wallet.address;
-  this.blah = 'hello';
-
-  this.sign = (transaction) => {
+  this.estimateGas = wallet.estimateGas;
+  // this.showModal = function* (transaction) {
+  //   let ab = yield 'aaa';
+  //   const signedTransaction =  new Promise((resolve, reject) => {
+  //     // TODO: Create custom modal to show up here
+  //     resolve(wallet.sign(transaction));
+  //   });
+  //   signedTransaction.then((value)=>{
+  //     ab = value;
+  //   });
+  //
+  //   console.log('aaa=' + signedTransaction);
+  //   return signedTransaction;
+  // };
+  this.sign = async (transaction) => {
     console.log('SIGNED');
-    throw Error('worked!');
-    // return new Promise(function(resolve, reject) {
-    //   var allow = confirm('Sign Transaction? To: ' + transaction.to +
-    //     ", Amount: " + ethers.formatEther(transaction.value));
-    //
-    //   var etherString = ethers.formatEther(transaction.value);
-    //
-    //   var modal = document.createElement('pre');
-    //   document.body.appendChild(modal);
-    //   modal.className = "modal";
-    //   modal.textContent += 'Sign Transaction?\n';
-    //   modal.textContent += 'To:     ' + transaction.address + '\n';
-    //   modal.textContent += 'Amount: ' +  etherString + '\n';
-    //
-    //   var confirmButton = document.createElement('div');
-    //   modal.appendChild(confirmButton);
-    //   confirmButton.textContent = ""confirm";
-    //   confirmButton.onclick = function() {
-    //     resolve(wallet.sign(transaction));
-    //   }
-    //
-    //   var rejectButton = document.createElement('div');
-    //   modal.appendChild(rejectButton);
-    //   rejectButton.textContent = ""confirm";
-    //   rejectButton.onclick = function() {
-    //     modal.remove();
-    //     reject(new Error('cancelled transaction'));
-    //   }
-    // }
+    const signedTransaction = await new Promise((resolve, reject) => {
+      Navigation.showModal(screen('CREATE_KEY_INTRODUCTION_SCREEN'));
+      resolve(wallet.sign(transaction));
+    });
+    return signedTransaction;
+  };
+  this.sendTransaction = (transaction) => {
+    if (!this.provider) { throw new Error('missing provider'); }
+
+    if (!transaction || typeof (transaction) !== 'object') {
+      throw new Error('invalid transaction object');
+    }
+
+    let { gasLimit } = transaction;
+    if (gasLimit == null) { gasLimit = this.defaultGasLimit; }
+
+    const self = this;
+
+    let gasPricePromise = null;
+    if (transaction.gasPrice) {
+      gasPricePromise = Promise.resolve(transaction.gasPrice);
+    } else {
+      gasPricePromise = this.provider.getGasPrice();
+    }
+
+    let noncePromise = null;
+    if (transaction.nonce) {
+      noncePromise = Promise.resolve(transaction.nonce);
+    } else {
+      noncePromise = this.provider.getTransactionCount(self.address, 'pending');
+    }
+
+    const { chainId } = this.provider;
+
+    let toPromise = null;
+    if (transaction.to) {
+      toPromise = this.provider.resolveName(transaction.to);
+    } else {
+      toPromise = Promise.resolve(undefined);
+    }
+
+    var data = ethers.utils.hexlify(transaction.data || '0x');
+    var value = ethers.utils.hexlify(transaction.value || 0);
+
+    return Promise.all([gasPricePromise, noncePromise, toPromise]).then(async function(results) {
+      const signedTransaction = await self.sign({
+        to: results[2],
+        data: data,
+        gasLimit: gasLimit,
+        gasPrice: results[0],
+        nonce: results[1],
+        value: value,
+        chainId: chainId
+      });
+
+      return self.provider.sendTransaction(signedTransaction).then(function(hash) {
+        let transaction = ethers.Wallet.parseTransaction(signedTransaction);
+        transaction.hash = hash;
+        return transaction;
+      });
+    });
   };
 }
