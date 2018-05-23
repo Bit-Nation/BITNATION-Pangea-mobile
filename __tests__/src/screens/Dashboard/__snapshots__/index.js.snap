@@ -7,7 +7,10 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <Connect(Dashboard)
     navigator={
       Object {
+        "pop": [MockFunction],
         "push": [MockFunction],
+        "setButtons": [MockFunction],
+        "setOnNavigatorEvent": [MockFunction],
       }
     }
     store={
@@ -45,7 +48,10 @@ ShallowWrapper {
         ],
       },
       "navigator": Object {
+        "pop": [MockFunction],
         "push": [MockFunction],
+        "setButtons": [MockFunction],
+        "setOnNavigatorEvent": [MockFunction],
       },
       "onAddDummyMessage": [Function],
       "onSelectNation": [Function],
@@ -105,7 +111,10 @@ ShallowWrapper {
           ],
         },
         "navigator": Object {
+          "pop": [MockFunction],
           "push": [MockFunction],
+          "setButtons": [MockFunction],
+          "setOnNavigatorEvent": [MockFunction],
         },
         "onAddDummyMessage": [Function],
         "onSelectNation": [Function],

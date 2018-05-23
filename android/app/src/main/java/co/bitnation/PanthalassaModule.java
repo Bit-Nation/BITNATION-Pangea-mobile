@@ -9,6 +9,7 @@ import com.facebook.react.bridge.ReadableMap;
 import org.json.JSONException;
 
 import panthalassa.Panthalassa;
+import panthalassa.UpStream;
 
 /**
  * Created by Estarrona on 19/04/18.
@@ -40,7 +41,8 @@ public class PanthalassaModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void PanthalassaStart(ReadableMap jsonParams, Promise promise) throws JSONException {
         try {
-            Panthalassa.start(jsonParams.getString("accountStore"), jsonParams.getString("password"));
+            UpStream upstream = null;
+            Panthalassa.start(jsonParams.getString("accountStore"), jsonParams.getString("password"), upstream);
             promise.resolve(true);
         } catch (Exception e) {
             e.printStackTrace();
@@ -169,12 +171,24 @@ public class PanthalassaModule extends ReactContextBaseJavaModule {
             promise.reject("error", e.getLocalizedMessage());
         }
     }
-
+/*
     @ReactMethod
     public void PanthalassaSendResponse(String resp, Promise promise) {
         try {
             Panthalassa.sendResponse(resp);
             promise.resolve(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            promise.reject("error", e.getLocalizedMessage());
+        }
+    }
+*/
+
+    @ReactMethod
+    public void PanthalassaGetMnemonic(Promise promise) {
+        try {
+            String response = Panthalassa.getMnemonic();
+            promise.resolve(response);
         } catch (Exception e) {
             e.printStackTrace();
             promise.reject("error", e.getLocalizedMessage());

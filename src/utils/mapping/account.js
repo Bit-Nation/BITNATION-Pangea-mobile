@@ -16,6 +16,7 @@ export function convertFromDatabase(account: DBAccount): Account {
     networkType: account.networkType,
     avatar: account.profileImage,
     accountStore: account.accountStore,
+    confirmedMnemonic: account.confirmedMnemonic,
   };
 }
 
@@ -36,7 +37,7 @@ export function convertToDatabase(account: PartialAccount | Account): DBAccount 
     description: '',
     profileImage: account.avatar || '',
     accountStore: account.accountStore,
-    confirmedMnemonic: false,
+    confirmedMnemonic: typeof (account.confirmedMnemonic) === 'boolean' ? account.confirmedMnemonic : false,
     networkType: account.networkType,
     DHT: [],
   };

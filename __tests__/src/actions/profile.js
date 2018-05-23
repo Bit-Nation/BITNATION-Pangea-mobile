@@ -21,6 +21,7 @@ describe('profile action creators', () => {
     networkType: 'main',
     avatar: null,
     location: null,
+    confirmedMnemonic: false,
   };
 
   test('startAccountEditing', () => {

@@ -9,6 +9,7 @@
 #import "Panthalassa.h"
 #import <panthalassa/panthalassa.h>
 #import <React/RCTConvert.h>
+#import "PanthalassaUpStreamBridge.h"
 
 @implementation Panthalassa
 
@@ -51,6 +52,21 @@ RCT_REMAP_METHOD(PanthalassaNewAccountKeysFromMnemonic,
   
   if (error == nil) {
     resolve(newAccount);
+  } else {
+    reject(@"error", error.localizedDescription, error);
+  }
+}
+
+RCT_REMAP_METHOD(PanthalassaEthAddress,
+                 PanthalassaEthPrivateAddressWithResolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject) {
+  NSString* response;
+  NSError *error = nil;
+  
+  response = PanthalassaEthAddress(&error);
+  
+  if (error == nil) {
+    resolve(response);
   } else {
     reject(@"error", error.localizedDescription, error);
   }
@@ -242,7 +258,7 @@ RCT_REMAP_METHOD(PanthalassaStop,
     reject(@"error", error.localizedDescription, error);
   }
 }
-
+/*
 RCT_REMAP_METHOD(PanthalassaSendResponse,
                  sendResponse:(NSString *)resp
                  resolver:(RCTPromiseResolveBlock)resolve
@@ -259,7 +275,7 @@ RCT_REMAP_METHOD(PanthalassaSendResponse,
     reject(@"error", @"Invalid mnemonic", error);
   }
 }
-
+*/
 RCT_REMAP_METHOD(PanthalassaStart,
                  start:(NSDictionary *)config
                  resolver:(RCTPromiseResolveBlock)resolve
@@ -268,13 +284,39 @@ RCT_REMAP_METHOD(PanthalassaStart,
   BOOL response;
   NSError *error = nil;
   
+  upstream = [[PanthalassaUpStreamBridge alloc] init];
+  [upstream setDelegate:self];
+  
   response = PanthalassaStart([RCTConvert NSString:config[@"accountStore"]],
-                                          [RCTConvert NSString:config[@"password"]],
-                                          &error);
+                              [RCTConvert NSString:config[@"password"]],
+                              upstream,
+                              &error);
+  
   NSNumber *val = [NSNumber numberWithBool:response];
   
   if (error == nil) {
     resolve(val);
+  } else {
+    reject(@"error", error.localizedDescription, error);
+  }
+  
+  [upstream send:@"This is a test"];
+}
+
+- (void)receiveString {
+  NSLog(@"************ Received from delegate!!!");
+}
+
+RCT_REMAP_METHOD(PanthalassaGetMnemonic,
+                 PanthalassaGetMnemonicWithResolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject) {
+  NSString* response;
+  NSError *error = nil;
+  
+  response = PanthalassaGetMnemonic(&error);
+  
+  if (error == nil) {
+    resolve(response);
   } else {
     reject(@"error", error.localizedDescription, error);
   }

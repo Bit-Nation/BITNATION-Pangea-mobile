@@ -3,6 +3,7 @@ import { shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
 
 import AccountAccessContainer from '../../../../../src/screens/Accounts/AccountAccessContainer';
+import navigatorMock from '../../../../../__mocks__/Navigator';
 
 describe('AccountAccessContainer', () => {
   let accountsScreen;
@@ -10,10 +11,7 @@ describe('AccountAccessContainer', () => {
   const initialStateMock = {};
   const storeMock = configureStore([]);
   const propsMock = {
-    navigator: {
-      push: jest.fn(),
-      setButtons: jest.fn(),
-    },
+    navigator: navigatorMock,
     selectedAccount: jest.fn(),
   };
 
