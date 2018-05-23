@@ -1,7 +1,6 @@
 /* eslint-disable */
 
 import ethers from 'ethers';
-import { Alert, NativeModules } from 'react-native';
 import ERC20ABI from './ERC20ABI.json';
 
 export default class EthereumService {
