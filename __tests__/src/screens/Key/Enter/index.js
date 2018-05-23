@@ -3,11 +3,12 @@ import { shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
 
 import { initialState } from '../../../../../src/reducers/key';
-import RestoreKeyScreen from '../../../../../src/screens/Key/Restore';
+import EnterKeyScreen from '../../../../../src/screens/Key/Enter';
 
-test('RestoreKeyScreen renders correctly', () => {
+test('EnterKeyScreen renders correctly', () => {
   const initialStateMock = {
     key: initialState,
+    testingMode: { isActive: false },
   };
   const storeMock = configureStore([]);
   const propsMock = {
@@ -18,7 +19,7 @@ test('RestoreKeyScreen renders correctly', () => {
   };
 
   const wrapper = shallow((
-    <RestoreKeyScreen {...propsMock} store={storeMock(initialStateMock)} />
+    <EnterKeyScreen {...propsMock} store={storeMock(initialStateMock)} />
   ));
   expect(wrapper).toMatchSnapshot();
 });

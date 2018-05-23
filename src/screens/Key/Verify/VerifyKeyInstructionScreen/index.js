@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { View } from 'react-native';
-import { connect } from 'react-redux';
 
 import styles from './styles';
 import { androidNavigationButtons, screen } from '../../../../global/Screens';
