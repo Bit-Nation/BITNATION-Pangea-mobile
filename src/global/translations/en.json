@@ -423,14 +423,6 @@
         "You will type the {{KEY_LENGTH}} words of your private key into the app, and we will check that your written private key is correct.",
         "Your private key protects everything in Bitnation, so be sure to put your paper with your private key in a safe place."
       ],
-      "process": {
-        "instructions": [
-          "Enter in the correct order the {{KEY_LENGTH}} words that you wrote down as your paper key. Tap a box to begin."
-        ],
-        "nextButton": "$t(common.next)",
-        "previousButton": "$t(common.previous)",
-        "doneButton": "$t(common.done)"
-      },
       "success": {
         "instructions": [
           "Congratulations! You correctly entered your private key.",
@@ -439,6 +431,14 @@
         "doneButton": "$t(common.done)"
       },
       "startButton": "$t(common.begin)"
+    },
+    "enterPrivateKey": {
+      "instructions": [
+        "Enter in the correct order the {{KEY_LENGTH}} words that you wrote down as your paper key. Tap a box to begin."
+      ],
+      "nextButton": "$t(common.next)",
+      "previousButton": "$t(common.previous)",
+      "doneButton": "$t(common.done)"
     },
     "viewPrivateKey": {
       "title": "Private key",
