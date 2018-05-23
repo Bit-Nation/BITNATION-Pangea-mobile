@@ -6,37 +6,49 @@ import {
   ScrollView,
   Image,
 } from 'react-native';
-import { connect } from 'react-redux';
 
 import styles from './styles';
-import { screen } from '../../../../global/Screens';
+import { androidNavigationButtons, screen } from '../../../../global/Screens';
 import BackgroundImage from '../../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
 import PanelView from '../../../../components/common/PanelView';
 import { KEY_LENGTH } from '../../../../global/Constants';
-import KeyBaseScreen from '../../KeyBaseScreen/index';
-import { createPrivateKey, removePrivateKey } from '../../../../actions/key';
 import AssetsImages from '../../../../global/AssetsImages';
 import BodyParagraphs from '../../../../components/common/BodyParagraphs';
 import i18n from '../../../../global/i18n';
-import type { State } from '../../../../reducers/key';
+import NavigatorComponent from '../../../../components/common/NavigatorComponent';
+import type { NavigatorProps } from '../../../../components/common/NavigatorComponent';
+import Colors from '../../../../global/colors';
 
-type Actions = {
-  /**
-   * @desc Function to start private key creation process.
-   */
-  createPrivateKey: () => void,
-  /**
-   * @desc Function to abort private key creation process.
-   */
-  removePrivateKey: () => void,
-}
+type Props = {
+  shouldShowCancel: boolean,
+};
 
-class CreateKeyInstructionScreen extends KeyBaseScreen<Actions & State> {
+class ConfirmKeyInstructionScreen extends NavigatorComponent<Props> {
+  static defaultProps;
+
+  constructor(props: Props & NavigatorProps) {
+    super(props);
+
+    props.navigator.setButtons({
+      leftButtons: props.shouldShowCancel ? [{
+        id: 'cancel',
+        title: 'Cancel',
+        buttonColor: Colors.navigationButtonColor,
+      }] : [],
+      ...androidNavigationButtons,
+    });
+  }
+
+  onNavBarButtonPress(id: string) {
+    if (id === 'cancel') {
+      this.props.navigator.dismissModal();
+    }
+  }
+
   onNextButtonPressed() {
-    this.props.createPrivateKey();
     if (this.props.navigator) {
-      this.props.navigator.push(screen('CREATE_KEY_PROCESS_SCREEN'));
+      this.props.navigator.push(screen('CONFIRM_KEY_PROCESS_SCREEN'));
     }
   }
 
@@ -51,10 +63,10 @@ class CreateKeyInstructionScreen extends KeyBaseScreen<Actions & State> {
           <ScrollView style={styles.scrollView} contentContainerStyle={styles.noflex}>
             <PanelView
               style={styles.panelViewTransparent}
-              buttonTitle={i18n.t('screens.createKey.startButton')}
+              buttonTitle={i18n.t('screens.confirmKey.startButton')}
               onButtonClick={() => this.onNextButtonPressed()}
             >
-              <BodyParagraphs paragraphs={i18n.t('screens.createKey.instructions.beforeGrid', { KEY_LENGTH })} />
+              <BodyParagraphs paragraphs={i18n.t('screens.confirmKey.instructions.beforeGrid', { KEY_LENGTH })} />
               <View style={styles.gridContainer}>
                 <Image
                   style={styles.privateKeyDemoImage}
@@ -62,7 +74,7 @@ class CreateKeyInstructionScreen extends KeyBaseScreen<Actions & State> {
                   source={AssetsImages.privateKeyDemo}
                 />
               </View>
-              <BodyParagraphs paragraphs={i18n.t('screens.createKey.instructions.afterGrid')} />
+              <BodyParagraphs paragraphs={i18n.t('screens.confirmKey.instructions.afterGrid')} />
 
             </PanelView>
           </ScrollView>
@@ -72,17 +84,8 @@ class CreateKeyInstructionScreen extends KeyBaseScreen<Actions & State> {
   }
 }
 
-const mapStateToProps = state => ({
-  ...state.key,
-});
+ConfirmKeyInstructionScreen.defaultProps = {
+  shouldShowCancel: false,
+};
 
-const mapDispatchToProps = dispatch => ({
-  createPrivateKey() {
-    dispatch(createPrivateKey());
-  },
-  removePrivateKey() {
-    dispatch(removePrivateKey());
-  },
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(CreateKeyInstructionScreen);
+export default ConfirmKeyInstructionScreen;

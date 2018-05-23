@@ -4,6 +4,7 @@ import configureStore from 'redux-mock-store';
 
 import { initialState } from '../../../../../../src/reducers/key';
 import VerifyKeyInstructionScreen from '../../../../../../src/screens/Key/Verify/VerifyKeyInstructionScreen';
+import navigatorMock from '../../../../../../__mocks__/Navigator';
 
 test('VerifyKeyInstructionScreen renders correctly', () => {
   const initialStateMock = {
@@ -11,9 +12,7 @@ test('VerifyKeyInstructionScreen renders correctly', () => {
   };
   const storeMock = configureStore([]);
   const propsMock = {
-    navigator: {
-      push: jest.fn(),
-    },
+    navigator: navigatorMock,
   };
 
   const wrapper = shallow((

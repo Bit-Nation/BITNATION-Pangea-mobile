@@ -1,8 +1,7 @@
 // @flow
 
 import { StyleSheet } from 'react-native';
-
-import GlobalStyles from '../../../../global/Styles';
+import GlobalStyles from '../../../global/Styles';
 
 const styles = StyleSheet.create({
   ...GlobalStyles,
