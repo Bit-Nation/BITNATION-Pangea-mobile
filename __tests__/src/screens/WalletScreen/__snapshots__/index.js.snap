@@ -7,7 +7,10 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <Connect(WalletScreen)
     navigator={
       Object {
+        "pop": [MockFunction],
         "push": [MockFunction],
+        "setButtons": [MockFunction],
+        "setOnNavigatorEvent": [MockFunction],
       }
     }
     store={
@@ -36,7 +39,10 @@ ShallowWrapper {
       "moneySendingError": null,
       "moneySendingInProgress": false,
       "navigator": Object {
+        "pop": [MockFunction],
         "push": [MockFunction],
+        "setButtons": [MockFunction],
+        "setOnNavigatorEvent": [MockFunction],
       },
       "removeWallets": [Function],
       "selectWallet": [Function],
@@ -85,7 +91,10 @@ ShallowWrapper {
         "moneySendingError": null,
         "moneySendingInProgress": false,
         "navigator": Object {
+          "pop": [MockFunction],
           "push": [MockFunction],
+          "setButtons": [MockFunction],
+          "setOnNavigatorEvent": [MockFunction],
         },
         "removeWallets": [Function],
         "selectWallet": [Function],
@@ -143,7 +152,10 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <Connect(WalletScreen)
     navigator={
       Object {
+        "pop": [MockFunction],
         "push": [MockFunction],
+        "setButtons": [MockFunction],
+        "setOnNavigatorEvent": [MockFunction],
       }
     }
     store={
@@ -172,7 +184,10 @@ ShallowWrapper {
       "moneySendingError": null,
       "moneySendingInProgress": false,
       "navigator": Object {
+        "pop": [MockFunction],
         "push": [MockFunction],
+        "setButtons": [MockFunction],
+        "setOnNavigatorEvent": [MockFunction],
       },
       "removeWallets": [Function],
       "selectWallet": [Function],
@@ -227,7 +242,10 @@ ShallowWrapper {
         "moneySendingError": null,
         "moneySendingInProgress": false,
         "navigator": Object {
+          "pop": [MockFunction],
           "push": [MockFunction],
+          "setButtons": [MockFunction],
+          "setOnNavigatorEvent": [MockFunction],
         },
         "removeWallets": [Function],
         "selectWallet": [Function],

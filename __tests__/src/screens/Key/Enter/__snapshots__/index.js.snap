@@ -7,7 +7,9 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <Connect(EnterKeyScreen)
     navigator={
       Object {
+        "pop": [MockFunction],
         "push": [MockFunction],
+        "setButtons": [MockFunction],
         "setOnNavigatorEvent": [MockFunction],
       }
     }
@@ -41,7 +43,9 @@ ShallowWrapper {
       "mnemonicValid": null,
       "mnemonicValidationInProgress": false,
       "navigator": Object {
+        "pop": [MockFunction],
         "push": [MockFunction],
+        "setButtons": [MockFunction],
         "setOnNavigatorEvent": [MockFunction],
       },
       "store": Object {
@@ -91,7 +95,9 @@ ShallowWrapper {
         "mnemonicValid": null,
         "mnemonicValidationInProgress": false,
         "navigator": Object {
+          "pop": [MockFunction],
           "push": [MockFunction],
+          "setButtons": [MockFunction],
           "setOnNavigatorEvent": [MockFunction],
         },
         "store": Object {

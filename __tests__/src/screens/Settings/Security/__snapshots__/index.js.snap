@@ -7,10 +7,10 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <Connect(SecuritySettingsScreen)
     navigator={
       Object {
-        "dismissAllModals": [MockFunction],
         "pop": [MockFunction],
         "push": [MockFunction],
-        "showModal": [MockFunction],
+        "setButtons": [MockFunction],
+        "setOnNavigatorEvent": [MockFunction],
       }
     }
     store={
@@ -41,10 +41,10 @@ ShallowWrapper {
       "changeUseNumericPasscode": [Function],
       "loadSettings": [Function],
       "navigator": Object {
-        "dismissAllModals": [MockFunction],
         "pop": [MockFunction],
         "push": [MockFunction],
-        "showModal": [MockFunction],
+        "setButtons": [MockFunction],
+        "setOnNavigatorEvent": [MockFunction],
       },
       "saveSettings": [Function],
       "store": Object {
@@ -90,10 +90,10 @@ ShallowWrapper {
         "changeUseNumericPasscode": [Function],
         "loadSettings": [Function],
         "navigator": Object {
-          "dismissAllModals": [MockFunction],
           "pop": [MockFunction],
           "push": [MockFunction],
-          "showModal": [MockFunction],
+          "setButtons": [MockFunction],
+          "setOnNavigatorEvent": [MockFunction],
         },
         "saveSettings": [Function],
         "store": Object {

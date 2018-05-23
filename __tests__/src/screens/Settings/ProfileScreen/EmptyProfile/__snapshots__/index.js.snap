@@ -7,6 +7,8 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <EmptyProfileScreen
     navigator={
       Object {
+        "pop": [MockFunction],
+        "push": [MockFunction],
         "setButtons": [MockFunction] {
           "calls": Array [
             Array [

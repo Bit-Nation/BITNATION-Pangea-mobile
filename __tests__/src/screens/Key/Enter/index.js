@@ -4,6 +4,7 @@ import configureStore from 'redux-mock-store';
 
 import { initialState } from '../../../../../src/reducers/key';
 import EnterKeyScreen from '../../../../../src/screens/Key/Enter';
+import navigatorMock from '../../../../../__mocks__/Navigator';
 
 test('EnterKeyScreen renders correctly', () => {
   const initialStateMock = {
@@ -12,10 +13,7 @@ test('EnterKeyScreen renders correctly', () => {
   };
   const storeMock = configureStore([]);
   const propsMock = {
-    navigator: {
-      push: jest.fn(),
-      setOnNavigatorEvent: jest.fn(),
-    },
+    navigator: navigatorMock,
   };
 
   const wrapper = shallow((

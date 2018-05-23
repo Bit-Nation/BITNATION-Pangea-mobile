@@ -3,6 +3,7 @@ import { shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
 
 import PinCodeScreen from '../../../../../src/screens/Passcode/PinCode';
+import navigatorMock from '../../../../../__mocks__/Navigator';
 
 describe('PinCodeScreen', () => {
   let pinCodeScreen;
@@ -10,12 +11,7 @@ describe('PinCodeScreen', () => {
   const initialStateMock = {};
   const storeMock = configureStore([]);
   const propsMock = {
-    navigator: {
-      push: jest.fn(),
-      pop: jest.fn(),
-      setOnNavigatorEvent: jest.fn(),
-      setButtons: jest.fn(),
-    },
+    navigator: navigatorMock,
     shouldShowCancel: false,
     onSubmit: jest.fn(),
     onCancel: jest.fn(),

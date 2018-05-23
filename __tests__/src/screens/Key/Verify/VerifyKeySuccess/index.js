@@ -2,13 +2,11 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import VerifyKeySuccess from '../../../../../../src/screens/Key/Verify/VerifyKeySuccess';
+import navigatorMock from '../../../../../../__mocks__/Navigator';
 
 test('VerifyKeySuccess renders correctly', () => {
   const propsMock = {
-    navigator: {
-      push: jest.fn(),
-      setOnNavigatorEvent: jest.fn(),
-    },
+    navigator: navigatorMock,
   };
 
   const wrapper = shallow((

@@ -7,7 +7,17 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <ConfirmKeyInstructionScreen
     navigator={
       Object {
+        "pop": [MockFunction],
         "push": [MockFunction],
+        "setButtons": [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "leftButtons": Array [],
+              },
+            ],
+          ],
+        },
         "setOnNavigatorEvent": [MockFunction] {
           "calls": Array [
             Array [
@@ -17,6 +27,7 @@ ShallowWrapper {
         },
       }
     }
+    shouldShowCancel={false}
     store={
       Object {
         "clearActions": [Function],

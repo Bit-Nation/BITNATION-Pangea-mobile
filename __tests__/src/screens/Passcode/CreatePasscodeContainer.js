@@ -3,6 +3,7 @@ import { shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
 
 import CreatePasscodeContainer from '../../../../src/screens/Passcode/CreatePasscodeContainer';
+import navigatorMock from '../../../../__mocks__/Navigator';
 
 describe('CreatePasscodeContainer', () => {
   let createPasscodeContainer;
@@ -10,11 +11,7 @@ describe('CreatePasscodeContainer', () => {
   const initialStateMock = {};
   const storeMock = configureStore([]);
   const propsMock = {
-    navigator: {
-      push: jest.fn(),
-      pop: jest.fn(),
-      setOnNavigatorEvent: jest.fn(),
-    },
+    navigator: navigatorMock,
     savePinCode: jest.fn(),
     savePassword: jest.fn(),
     onSuccess: jest.fn(),
