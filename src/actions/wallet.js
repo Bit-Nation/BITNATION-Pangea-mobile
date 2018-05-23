@@ -2,14 +2,14 @@
 
 import type { WalletType } from '../types/Wallet';
 
-type SelectWalletAction = { +type: 'SELECT_WALLET', +wallet: WalletType };
-type SendMoneyAction = { +type: 'SEND_MONEY', +amount: number, +toEthAddress: string };
-type WalletListUpdatedAction = { +type: 'WALLETS_LIST_UPDATED', +wallets: Array<WalletType> };
-type UpdateWalletListAction = { +type: 'UPDATE_WALLET_LIST' };
-type UpdateWalletBalanceAction = { +type: 'UPDATE_WALLET_BALANCE', +walletAddress: string };
-type SendMoneySuccessAction = { +type: 'SEND_MONEY_SUCCESS' };
-type SendMoneyFailedAction = { +type: 'SEND_MONEY_FAILED', +error: Error };
-type WalletSyncFailedAction = { +type: 'WALLET_SYNC_FAILED', +walletAddress: string, +error: Error };
+export type SelectWalletAction = { +type: 'SELECT_WALLET', +wallet: WalletType };
+export type SendMoneyAction = { +type: 'SEND_MONEY', +amount: number, +toEthAddress: string };
+export type WalletListUpdatedAction = { +type: 'WALLETS_LIST_UPDATED', +wallets: Array<WalletType> };
+export type UpdateWalletListAction = { +type: 'UPDATE_WALLET_LIST' };
+export type UpdateWalletBalanceAction = { +type: 'UPDATE_WALLET_BALANCE', +walletAddress: string };
+export type SendMoneySuccessAction = { +type: 'SEND_MONEY_SUCCESS' };
+export type SendMoneyFailedAction = { +type: 'SEND_MONEY_FAILED', +error: Error };
+export type WalletSyncFailedAction = { +type: 'WALLET_SYNC_FAILED', +walletAddress: string, +error: Error };
 
 export type Action =
   | SelectWalletAction

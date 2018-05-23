@@ -1,28 +1,49 @@
-/* eslint-disable */
+// @flow
 
-import { call, put, select } from 'redux-saga/effects';
-import { sendMoneyFailed, sendMoneySuccess, walletsListUpdated, walletSyncFailed } from '../../actions/wallet';
+import {
+  call,
+  put,
+  select,
+} from 'redux-saga/effects';
+import {
+  sendMoneyFailed,
+  sendMoneySuccess,
+  walletsListUpdated,
+} from '../../actions/wallet';
 import WalletService from '../../services/wallet';
-import {getAccount, getCurrentAccountId} from '../accounts/sagas';
-// import { checkConnection } from '../connection';
+import { getAccount, getCurrentAccountId } from '../accounts/sagas';
+import type { SendMoneyAction } from '../../actions/wallet';
+import type { WalletType } from '../../types/Wallet';
 
-export function* sendMoneySaga(action) {
+/**
+ * @desc Updates the balance in the wallets on the list.
+ * @param {SendMoneyAction} action an Action
+ * @returns {void}
+ */
+export function* sendMoneySaga(action: SendMoneyAction): Generator<*, *, *> {
   const state = yield select();
   const fromAddress = state.wallet.selectedWalletAddress;
   const toAddress = action.toEthAddress;
-  const amount = action.amount;
+  const amounttoSend = action.amount;
+  /* eslint-disable prefer-const */
+  let currentAccountId: string | null;
+  currentAccountId = yield call(getCurrentAccountId);
+  const account = yield getAccount(currentAccountId);
 
   try {
     // yield call(checkConnection);
-    yield call(EthereumService.sendMoney, fromAddress, toAddress, amount);
+    yield call(WalletService.sendMoney, fromAddress, toAddress, amounttoSend, account.networkType);
     yield put(sendMoneySuccess());
   } catch (error) {
-    console.log(error);
     yield put(sendMoneyFailed(error));
   }
 }
 
-export function* updateWalletList() {
+/**
+ * @desc Updates the balance in the wallets on the list.
+ * @returns {void}
+ */
+export function* updateWalletList(): Generator<*, *, *> {
   let currentAccountId: string | null;
   currentAccountId = yield call(getCurrentAccountId);
   const account = yield getAccount(currentAccountId);
@@ -38,7 +59,12 @@ export function* updateWalletList() {
   }
 }
 
-export function* updateWalletBalance(wallet) {
+/**
+ * @desc Updates the balance in the wallet passed as parameter.
+ * @param {WalletType} wallet Wallet to be updated
+ * @returns {void}
+ */
+export function* updateWalletBalance(wallet: WalletType): Generator<*, *, *> {
   try {
     // yield call(checkConnection);
     yield call(WalletService.syncWallet, wallet);
