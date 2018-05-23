@@ -33,8 +33,9 @@ export default class WalletService {
 
     try {
       const balance = await ethService.getBalance();
+      BigNumber.config({ DECIMAL_PLACES: 5 });
       const balanceBN = new BigNumber(balance);
-      walletsToCheck[0].balance = balanceBN.round(5).toString(10);
+      walletsToCheck[0].balance = balanceBN.times(10e-19).round(5).toString(10);
     } catch (error) {
       // walletsToCheck[0].balance = undefined;
       throw error;
@@ -43,7 +44,7 @@ export default class WalletService {
     try {
       const balance = await ethService.getTokenBalance(network === 'dev' ? '0xc3830a6206fb9d089d1ce824598978532d14d8aa' : '0xBB1fA4FdEB3459733bF67EbC6f893003fA976a82');
       const balanceBN = new BigNumber(balance);
-      walletsToCheck[1].balance = balanceBN.round(5).toString(10);
+      walletsToCheck[1].balance = balanceBN.times(10e-22).round(5).toString(10);
     } catch (error) {
       // walletsToCheck[1].balance = undefined;
       throw error;
