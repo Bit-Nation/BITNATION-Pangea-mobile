@@ -6,11 +6,11 @@ import type { WalletType } from '../types/Wallet';
 /**
  * @desc Gets wallet by address from array of wallets.
  * @param {WalletType[]} wallets Array of wallets.
- * @param {string} address Address of wallet to be got.
+ * @param {string} currency Currency of wallet to be got.
  * @return {?WalletType} Wallet or no if there is no wallet with that address.
  */
-export function resolveWallet(wallets: Array<WalletType>, address: string): WalletType | null {
-  const resolved = _.find(wallets, wallet => wallet.ethAddress === address);
+export function resolveWallet(wallets: Array<WalletType>, currency: string): WalletType | null {
+  const resolved = _.find(wallets, wallet => wallet.currency === currency);
   console.log('--> Resolved:', resolved);
   return resolved === undefined ? null : resolved;
 }
