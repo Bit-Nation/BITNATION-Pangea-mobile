@@ -47,6 +47,7 @@ describe('convert account to database', () => {
       avatar: 'Avatar',
       accountStore: 'Account store',
       networkType: 'dev',
+      confirmedMnemonic: true,
     };
 
     expect(convertToDatabase(account)).toEqual({
@@ -57,7 +58,7 @@ describe('convert account to database', () => {
       description: '',
       accountStore: 'Account store',
       networkType: 'dev',
-      confirmedMnemonic: false,
+      confirmedMnemonic: true,
       DHT: [],
     });
   });
@@ -73,7 +74,7 @@ describe('convert setting from database', () => {
       description: 'Description',
       accountStore: 'Account store',
       networkType: 'dev',
-      confirmedMnemonic: false,
+      confirmedMnemonic: true,
       DHT: [],
     };
 
@@ -84,6 +85,7 @@ describe('convert setting from database', () => {
       location: 'Location',
       accountStore: 'Account store',
       networkType: 'dev',
+      confirmedMnemonic: true,
     });
   });
 });

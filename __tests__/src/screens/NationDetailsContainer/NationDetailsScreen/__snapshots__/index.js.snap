@@ -16,7 +16,9 @@ ShallowWrapper {
             Array [],
           ],
         },
+        "push": [MockFunction],
         "setButtons": [MockFunction],
+        "setOnNavigatorEvent": [MockFunction],
       }
     }
     openNationChat={[MockFunction]}

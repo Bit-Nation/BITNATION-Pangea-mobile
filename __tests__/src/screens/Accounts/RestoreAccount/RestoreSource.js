@@ -3,6 +3,7 @@ import { shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
 
 import RestoreSource from '../../../../../src/screens/Accounts/RestoreAccount/RestoreSource';
+import navigatorMock from '../../../../../__mocks__/Navigator';
 
 describe('RestoreSource', () => {
   let restoreSourceScreen;
@@ -10,9 +11,7 @@ describe('RestoreSource', () => {
   const initialStateMock = {};
   const storeMock = configureStore([]);
   const propsMock = {
-    navigator: {
-      push: jest.fn(),
-    },
+    navigator: navigatorMock,
   };
 
   beforeEach(() => {

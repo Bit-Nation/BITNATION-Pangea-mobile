@@ -2,9 +2,15 @@
 
 import { NativeModules } from 'react-native';
 import type { Mnemonic } from '../../types/Mnemonic';
-import { compressMnemonic } from '../../utils/key';
+import { compressMnemonic, decompressMnemonic } from '../../utils/key';
 
 export default class AccountsService {
+  static async getMnemonic(): Promise<Mnemonic> {
+    const { Panthalassa } = NativeModules;
+    const mnemonicString = await Panthalassa.PanthalassaGetMnemonic();
+    return decompressMnemonic(mnemonicString);
+  }
+
   static async checkPasscode(accountStore: string, password: string): Promise<boolean> {
     // @todo Change implementation so it do not restart Panthalassa.
     return AccountsService.login(accountStore, password);

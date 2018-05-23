@@ -14,13 +14,13 @@ import {
   savePasswordSaga,
   savePinCodeSaga,
   startAccountCreation,
-  startRestoreAccountUsingMnemonic,
+  startRestoreAccountUsingMnemonic, saveMnemonicConfirmed,
 } from '../../../../src/sagas/accounts/sagas';
 import {
   CHECK_PASSWORD,
   CHECK_PIN_CODE,
   LOGIN,
-  LOGOUT,
+  LOGOUT, MNEMONIC_CONFIRMED,
   SAVE_CREATING_ACCOUNT,
   SAVE_PASSWORD,
   SAVE_PIN_CODE,
@@ -43,5 +43,6 @@ test('rootSaga', () => {
     takeEvery(SAVE_PIN_CODE, savePinCodeSaga),
     takeEvery(SAVE_PASSWORD, savePasswordSaga),
     takeEvery(SAVE_CREATING_ACCOUNT, saveCreatingAccount),
+    takeEvery(MNEMONIC_CONFIRMED, saveMnemonicConfirmed),
   ]));
 });

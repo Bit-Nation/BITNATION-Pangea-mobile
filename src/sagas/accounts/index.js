@@ -10,7 +10,7 @@ import {
   savePinCodeSaga,
   saveCreatingAccount,
   startAccountCreation,
-  startRestoreAccountUsingMnemonic,
+  startRestoreAccountUsingMnemonic, saveMnemonicConfirmed,
 } from './sagas';
 import {
   LOGIN,
@@ -21,7 +21,7 @@ import {
   SAVE_PIN_CODE,
   SAVE_CREATING_ACCOUNT,
   START_ACCOUNT_CREATION,
-  START_RESTORE_ACCOUNT_USING_MNEMONIC,
+  START_RESTORE_ACCOUNT_USING_MNEMONIC, MNEMONIC_CONFIRMED,
 } from '../../actions/accounts';
 import { SAVE_EDITING_ACCOUNT } from '../../actions/profile';
 
@@ -42,5 +42,6 @@ export default function* rootSaga() {
     takeEvery(SAVE_PIN_CODE, savePinCodeSaga),
     takeEvery(SAVE_PASSWORD, savePasswordSaga),
     takeEvery(SAVE_CREATING_ACCOUNT, saveCreatingAccount),
+    takeEvery(MNEMONIC_CONFIRMED, saveMnemonicConfirmed),
   ]);
 }
