@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`RestoreKeyScreen renders correctly 1`] = `
+exports[`EnterKeyScreen renders correctly 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Connect(RestoreKeyScreen)
+  Symbol(enzyme.__unrendered__): <Connect(EnterKeyScreen)
     navigator={
       Object {
         "push": [MockFunction],
@@ -36,6 +36,8 @@ ShallowWrapper {
     "props": Object {
       "changeMnemonic": [Function],
       "enteredMnemonic": null,
+      "isVerification": false,
+      "mnemonicConfirmed": [Function],
       "mnemonicValid": null,
       "mnemonicValidationInProgress": false,
       "navigator": Object {
@@ -69,6 +71,7 @@ ShallowWrapper {
         },
         "unsubscribe": [Function],
       },
+      "testingModeActive": false,
       "validateMnemonic": [Function],
     },
     "ref": null,
@@ -83,6 +86,8 @@ ShallowWrapper {
       "props": Object {
         "changeMnemonic": [Function],
         "enteredMnemonic": null,
+        "isVerification": false,
+        "mnemonicConfirmed": [Function],
         "mnemonicValid": null,
         "mnemonicValidationInProgress": false,
         "navigator": Object {
@@ -116,6 +121,7 @@ ShallowWrapper {
           },
           "unsubscribe": [Function],
         },
+        "testingModeActive": false,
         "validateMnemonic": [Function],
       },
       "ref": null,
