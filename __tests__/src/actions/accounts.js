@@ -28,7 +28,7 @@ import {
   SAVE_PASSWORD,
   SAVE_PIN_CODE,
   START_ACCOUNT_CREATION,
-  START_RESTORE_ACCOUNT_USING_MNEMONIC,
+  START_RESTORE_ACCOUNT_USING_MNEMONIC, mnemonicConfirmed, MNEMONIC_CONFIRMED,
 } from '../../../src/actions/accounts';
 
 describe('accounts action creators', () => {
@@ -151,6 +151,14 @@ describe('accounts action creators', () => {
     expect(startRestoreAccountUsingMnemonic(mnemonic)).toEqual({
       type: START_RESTORE_ACCOUNT_USING_MNEMONIC,
       mnemonic,
+    });
+  });
+
+  test('mnemonicConfirmed', () => {
+    const callbackMock = jest.fn();
+    expect(mnemonicConfirmed(callbackMock)).toEqual({
+      type: MNEMONIC_CONFIRMED,
+      callback: callbackMock,
     });
   });
 });
