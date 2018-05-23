@@ -7,7 +7,10 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <Connect(NationsScreen)
     navigator={
       Object {
+        "pop": [MockFunction],
         "push": [MockFunction],
+        "setButtons": [MockFunction],
+        "setOnNavigatorEvent": [MockFunction],
       }
     }
     store={
@@ -38,7 +41,10 @@ ShallowWrapper {
       "myNationIds": Array [],
       "nations": Array [],
       "navigator": Object {
+        "pop": [MockFunction],
         "push": [MockFunction],
+        "setButtons": [MockFunction],
+        "setOnNavigatorEvent": [MockFunction],
       },
       "onSelectTab": [Function],
       "openNation": [Function],
@@ -90,7 +96,10 @@ ShallowWrapper {
         "myNationIds": Array [],
         "nations": Array [],
         "navigator": Object {
+          "pop": [MockFunction],
           "push": [MockFunction],
+          "setButtons": [MockFunction],
+          "setOnNavigatorEvent": [MockFunction],
         },
         "onSelectTab": [Function],
         "openNation": [Function],

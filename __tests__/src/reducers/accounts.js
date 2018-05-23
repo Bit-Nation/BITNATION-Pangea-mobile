@@ -29,6 +29,7 @@ const accountMock1 = {
   networkType: 'main',
   avatar: null,
   location: null,
+  confirmedMnemonic: false,
 };
 
 const accountMock2 = {
@@ -38,6 +39,7 @@ const accountMock2 = {
   networkType: 'main',
   avatar: null,
   location: null,
+  confirmedMnemonic: true,
 };
 
 const stateMock = {

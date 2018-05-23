@@ -1,6 +1,10 @@
 // @flow
 
-export type SettingsItem = 'identity' | 'security';
+export type SettingsItem =
+  | 'identity'
+  | 'security'
+  | 'viewPrivateKey'
+  | 'confirmPrivateKey';
 
 export type PasscodeType =
   {

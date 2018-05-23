@@ -3,6 +3,7 @@ import { shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
 
 import ChatNationsScreen from '../../../../src/screens/ChatNationsScreen';
+import navigatorMock from '../../../../__mocks__/Navigator';
 
 describe('ChatNationsScreen', () => {
   let chatScreen;
@@ -10,10 +11,7 @@ describe('ChatNationsScreen', () => {
   const initialStateMock = {};
   const storeMock = configureStore([]);
   const propsMock = {
-    navigator: {
-      push: jest.fn(),
-      setButtons: jest.fn(),
-    },
+    navigator: navigatorMock,
     onSelectTab: jest.fn(),
     openNation: jest.fn(),
     fetchNations: jest.fn(),

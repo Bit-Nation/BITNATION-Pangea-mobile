@@ -7,8 +7,10 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <Connect(AccountAccessContainer)
     navigator={
       Object {
+        "pop": [MockFunction],
         "push": [MockFunction],
         "setButtons": [MockFunction],
+        "setOnNavigatorEvent": [MockFunction],
       }
     }
     selectedAccount={[MockFunction]}
@@ -37,8 +39,10 @@ ShallowWrapper {
     "props": Object {
       "loadSettings": [Function],
       "navigator": Object {
+        "pop": [MockFunction],
         "push": [MockFunction],
         "setButtons": [MockFunction],
+        "setOnNavigatorEvent": [MockFunction],
       },
       "openAccount": [Function],
       "selectedAccount": [MockFunction],
@@ -84,8 +88,10 @@ ShallowWrapper {
       "props": Object {
         "loadSettings": [Function],
         "navigator": Object {
+          "pop": [MockFunction],
           "push": [MockFunction],
           "setButtons": [MockFunction],
+          "setOnNavigatorEvent": [MockFunction],
         },
         "openAccount": [Function],
         "selectedAccount": [MockFunction],

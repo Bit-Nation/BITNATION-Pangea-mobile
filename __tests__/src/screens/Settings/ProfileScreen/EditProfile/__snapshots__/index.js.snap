@@ -15,6 +15,8 @@ ShallowWrapper {
     }
     navigator={
       Object {
+        "pop": [MockFunction],
+        "push": [MockFunction],
         "setButtons": [MockFunction] {
           "calls": Array [
             Array [
