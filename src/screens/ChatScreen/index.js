@@ -1,5 +1,4 @@
 // @flow
-/* eslint-disable */
 
 import React, { Component } from 'react';
 import {
@@ -70,6 +69,7 @@ type State = {
 };
 
 class ChatScreen extends Component<Props, State> {
+  static defaultProps: Object;
   constructor(props: Props) {
     super(props);
 
@@ -220,6 +220,11 @@ class ChatScreen extends Component<Props, State> {
   }
 }
 
+ChatScreen.defaultProps = {
+  nations: null,
+  user: null,
+  isFetching: null,
+};
 
 const mapStateToProps = state => ({
   nations: state.nations.nations,
