@@ -33,6 +33,7 @@ describe('wallet reducer action handling', () => {
     expect(stateAfter).toEqual({
       ...stateBefore,
       selectedWalletAddress: mockWallet.ethAddress,
+      selectedWalletCurrency: mockWallet.currency,
     });
   });
 
