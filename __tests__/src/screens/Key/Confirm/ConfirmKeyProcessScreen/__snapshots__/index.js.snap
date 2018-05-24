@@ -74,11 +74,17 @@ ShallowWrapper {
             }
           />
           <PanelView
+            body={undefined}
+            buttonTitle="Button"
             childrenContainerStyle={
               Object {
                 "flex": 0,
               }
             }
+            icon={undefined}
+            onButtonClick={null}
+            renderAdditionalInfo={null}
+            renderBottom={null}
             style={
               Object {
                 "backgroundColor": "transparent",
@@ -95,6 +101,7 @@ ShallowWrapper {
                 "paddingTop": 4,
               }
             }
+            title={undefined}
             titleStyle={
               Object {
                 "color": "white",
@@ -223,11 +230,17 @@ ShallowWrapper {
               }
             />,
             <PanelView
+              body={undefined}
+              buttonTitle="Button"
               childrenContainerStyle={
                 Object {
                   "flex": 0,
                 }
               }
+              icon={undefined}
+              onButtonClick={null}
+              renderAdditionalInfo={null}
+              renderBottom={null}
               style={
                 Object {
                   "backgroundColor": "transparent",
@@ -244,6 +257,7 @@ ShallowWrapper {
                   "paddingTop": 4,
                 }
               }
+              title={undefined}
               titleStyle={
                 Object {
                   "color": "white",
@@ -352,6 +366,8 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "class",
             "props": Object {
+              "body": undefined,
+              "buttonTitle": "Button",
               "children": Array [
                 <BodyParagraphs
                   paragraphs={
@@ -422,6 +438,10 @@ ShallowWrapper {
               "childrenContainerStyle": Object {
                 "flex": 0,
               },
+              "icon": undefined,
+              "onButtonClick": null,
+              "renderAdditionalInfo": null,
+              "renderBottom": null,
               "style": Object {
                 "backgroundColor": "transparent",
                 "borderRadius": 8,
@@ -436,6 +456,7 @@ ShallowWrapper {
                 "paddingRight": 8,
                 "paddingTop": 4,
               },
+              "title": undefined,
               "titleStyle": Object {
                 "color": "white",
                 "fontFamily": "Roboto",
@@ -630,11 +651,17 @@ ShallowWrapper {
               }
             />
             <PanelView
+              body={undefined}
+              buttonTitle="Button"
               childrenContainerStyle={
                 Object {
                   "flex": 0,
                 }
               }
+              icon={undefined}
+              onButtonClick={null}
+              renderAdditionalInfo={null}
+              renderBottom={null}
               style={
                 Object {
                   "backgroundColor": "transparent",
@@ -651,6 +678,7 @@ ShallowWrapper {
                   "paddingTop": 4,
                 }
               }
+              title={undefined}
               titleStyle={
                 Object {
                   "color": "white",
@@ -779,11 +807,17 @@ ShallowWrapper {
                 }
               />,
               <PanelView
+                body={undefined}
+                buttonTitle="Button"
                 childrenContainerStyle={
                   Object {
                     "flex": 0,
                   }
                 }
+                icon={undefined}
+                onButtonClick={null}
+                renderAdditionalInfo={null}
+                renderBottom={null}
                 style={
                   Object {
                     "backgroundColor": "transparent",
@@ -800,6 +834,7 @@ ShallowWrapper {
                     "paddingTop": 4,
                   }
                 }
+                title={undefined}
                 titleStyle={
                   Object {
                     "color": "white",
@@ -908,6 +943,8 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "class",
               "props": Object {
+                "body": undefined,
+                "buttonTitle": "Button",
                 "children": Array [
                   <BodyParagraphs
                     paragraphs={
@@ -978,6 +1015,10 @@ ShallowWrapper {
                 "childrenContainerStyle": Object {
                   "flex": 0,
                 },
+                "icon": undefined,
+                "onButtonClick": null,
+                "renderAdditionalInfo": null,
+                "renderBottom": null,
                 "style": Object {
                   "backgroundColor": "transparent",
                   "borderRadius": 8,
@@ -992,6 +1033,7 @@ ShallowWrapper {
                   "paddingRight": 8,
                   "paddingTop": 4,
                 },
+                "title": undefined,
                 "titleStyle": Object {
                   "color": "white",
                   "fontFamily": "Roboto",
