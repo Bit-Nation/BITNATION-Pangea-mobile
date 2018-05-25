@@ -1,4 +1,4 @@
-// @flow
+
 
 import React from 'react';
 import {
@@ -17,6 +17,7 @@ import Colors from '../../../global/colors';
 import styles from './styles';
 import i18n from '../../../global/i18n';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
+import { type State as ConfirmationState } from '../../../reducers/confirmation';
 
 type Props = {
   navigator: Navigator,
@@ -27,10 +28,10 @@ type Actions = {
   onSendConfirmation: () => void,
 }
 
-class ConfirmationScreen extends NavigatorComponent<Props & Actions> {
+class ConfirmationScreen extends NavigatorComponent<Props & Actions & ConfirmationState> {
   static defaultProps: Object;
 
-  constructor(props: Props & Actions) {
+  constructor(props: Props & Actions & ConfirmationState) {
     super(props);
 
     if (this.props.navigator) {
@@ -41,7 +42,7 @@ class ConfirmationScreen extends NavigatorComponent<Props & Actions> {
           buttonColor: Colors.navigationButtonColor,
         }],
         rightButtons: [{
-          title: i18n.t('screens.createNation.confirmButton'),
+          title: i18n.t('screens.confirmTransaction.confirmButton'),
           id: 'confirm',
           buttonColor: Colors.navigationButtonColor,
         }],
@@ -89,11 +90,11 @@ class ConfirmationScreen extends NavigatorComponent<Props & Actions> {
             </View>
             <View style={styles.fieldsContainer}>
               <Slider
-                style={{ width: 300 }}
+                style={styles.gridContainer}
                 step={1}
                 minimumValue={2}
                 maximumValue={100}
-                value
+                value={this.props.confirmation.gasPrice}
                 onValueChange={val => this.setState({ gasPrice: val })}
                 onSlidingComplete={val => this.getVal(val)}
               />
@@ -106,6 +107,7 @@ class ConfirmationScreen extends NavigatorComponent<Props & Actions> {
 }
 
 ConfirmationScreen.defaultProps = {
+  gasPrice: 2,
   onCancelConfirmation: () => null,
   onSendConfirmation: () => null,
 };
