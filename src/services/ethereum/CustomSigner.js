@@ -25,8 +25,18 @@ export default function CustomSigner(privateKey, provider) {
   this.sign = async (transaction) => {
     console.log('SIGNED');
     const signedTransaction = await new Promise((resolve, reject) => {
-      Navigation.showModal(screen('CREATE_KEY_INTRODUCTION_SCREEN'));
-      resolve(wallet.sign(transaction));
+      Navigation.showModal({
+        ...screen('CREATE_KEY_INTRODUCTION_SCREEN'),
+        passProps: {
+          onFail: () => {
+            reject();
+          },
+          onSuccess: (gasPrice) => {
+            // Here we have gasPrice to pass it somewhere later.
+            resolve(wallet.sign(transaction));
+          },
+        },
+      });
     });
     return signedTransaction;
   };
