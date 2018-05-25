@@ -16,7 +16,7 @@ import BackgroundImage from '../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import { resolveWallet } from '../../../utils/wallet';
 import { sendMoney } from '../../../actions/wallet';
-import { androidNavigationButtons } from '../../../global/Screens';
+import {androidNavigationButtons, screen} from '../../../global/Screens';
 import Loading from '../../../components/common/Loading';
 import { prettyWalletBalance } from '../../../utils/formatters';
 import i18n from '../../../global/i18n';
@@ -55,7 +55,8 @@ class SendMoney extends NavigatorComponent<Props, State> {
 
   onNavBarButtonPress(id) {
     if (id === SEND_BUTTON) {
-      this.onSendPress();
+      // this.onSendPress();
+      this.props.navigator.showModal(screen('CONFIRMATION_SCREEN'));
     }
   }
 
