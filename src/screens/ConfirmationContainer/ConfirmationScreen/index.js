@@ -17,22 +17,23 @@ import Colors from '../../../global/colors';
 import styles from './styles';
 import i18n from '../../../global/i18n';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
-import { type State as ConfirmationState } from '../../../reducers/confirmation';
 
 type Props = {
   navigator: Navigator,
 }
 
-type Actions = {
-  onCancelConfirmation: () => void,
-  onSendConfirmation: () => void,
+type State = {
+  gasPrice: number,
 }
 
-class ConfirmationScreen extends NavigatorComponent<Props & Actions & ConfirmationState> {
+class ConfirmationScreen extends NavigatorComponent<Props, State> {
   static defaultProps: Object;
 
-  constructor(props: Props & Actions & ConfirmationState) {
+  constructor(props: Props) {
     super(props);
+    this.state = {
+      gasPrice: 2,
+    };
 
     if (this.props.navigator) {
       this.props.navigator.setButtons({
@@ -51,13 +52,14 @@ class ConfirmationScreen extends NavigatorComponent<Props & Actions & Confirmati
   }
   onNavBarButtonPress(id: string) {
     if (id === 'cancel') {
-      this.props.onCancelConfirmation();
+      this.props.onFail();
     } else {
-      this.props.onSendConfirmation();
+      this.props.onSuccess();
     }
   }
 
   render() {
+    console.log('---> Props on Screen:', this.props);
     return (
       <View style={styles.screenContainer}>
         <BackgroundImage />
@@ -105,12 +107,6 @@ class ConfirmationScreen extends NavigatorComponent<Props & Actions & Confirmati
     );
   }
 }
-
-ConfirmationScreen.defaultProps = {
-  gasPrice: 2,
-  onCancelConfirmation: () => null,
-  onSendConfirmation: () => null,
-};
 
 export default ConfirmationScreen;
 
