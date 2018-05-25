@@ -94,7 +94,7 @@ class ConfirmationScreen extends NavigatorComponent<Props & Actions & Confirmati
                 step={1}
                 minimumValue={2}
                 maximumValue={100}
-                value={this.props.confirmation.gasPrice}
+                value={this.state.gasPrice}
                 onValueChange={val => this.setState({ gasPrice: val })}
                 onSlidingComplete={val => this.getVal(val)}
               />
