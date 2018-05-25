@@ -8,16 +8,18 @@ import {
   sendConfirmation,
 } from '../../actions/confirmation';
 import ConfirmationScreen from './ConfirmationScreen';
+import { type State as ConfirmationState } from '../../reducers/confirmation';
 
 type Props = {
   navigator: Navigator,
 }
 
 type Actions = {
-
+  onCancelConfirmation: () => void,
+  onSendConfirmation: () => void,
 };
 
-class ConfirmationContainer extends Component<Props & Actions> {
+class ConfirmationContainer extends Component<Props & Actions & ConfirmationState> {
   static defaultProps: Object;
   cancelConfirmation = () => {
     this.props.navigator.dismissModal();
@@ -37,7 +39,9 @@ class ConfirmationContainer extends Component<Props & Actions> {
 }
 
 ConfirmationContainer.defaultProps = {
-
+  gasPrice: 2,
+  onCancelConfirmation: () => null,
+  onSendConfirmation: () => null,
 };
 
 const mapStateToProps = state => ({
