@@ -417,6 +417,11 @@
     },
     "qrCodeScanner": {
       "title": "Scan QR code"
+    },
+    "confirmTransaction": {
+      "title": "Confirm Transaction",
+      "gasPrice": "What gas price would you like to set?",
+      "confirmButton": "Confirm"
     }
   },
   "testingMode": {

@@ -174,7 +174,11 @@ const Screens = {
     title: i18n.t('screens.scanQRCode.title'),
     navigatorStyle,
   },
-
+  CONFIRMATION_SCREEN: {
+    screen: 'Pangea.ConfirmationContainer',
+    title: '',
+    navigatorStyle,
+  },
 };
 
 /**
