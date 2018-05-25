@@ -26,7 +26,7 @@ export default function CustomSigner(privateKey, provider) {
     console.log('SIGNED');
     const signedTransaction = await new Promise((resolve, reject) => {
       Navigation.showModal({
-        ...screen('CREATE_KEY_INTRODUCTION_SCREEN'),
+        ...screen('CONFIRMATION_SCREEN'),
         passProps: {
           onFail: () => {
             reject();

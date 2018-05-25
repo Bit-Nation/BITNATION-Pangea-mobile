@@ -56,7 +56,18 @@ class SendMoney extends NavigatorComponent<Props, State> {
   onNavBarButtonPress(id) {
     if (id === SEND_BUTTON) {
       // this.onSendPress();
-      this.props.navigator.showModal(screen('CONFIRMATION_SCREEN'));
+      this.props.navigator.showModal({
+        ...screen('CONFIRMATION_SCREEN'),
+        passProps: {
+          onFail: () => {
+            console.log('Failed Confirmation');
+          },
+          onSuccess: (gasPrice) => {
+            // Here we have gasPrice to pass it somewhere later.
+            console.log('Confirmation! GasPrice:', gasPrice);
+          },
+        },
+      });
     }
   }
 
