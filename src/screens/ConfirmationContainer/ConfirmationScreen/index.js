@@ -68,7 +68,7 @@ class ConfirmationScreen extends NavigatorComponent<Props, State> {
         <View style={styles.bodyContainer}>
           <ScrollView style={styles.scrollView} contentContainerStyle={styles.noflex}>
             <ScreenTitle title={i18n.t('screens.confirmTransaction.title')} />
-            {ConfirmationScreen.buildConfirmationView()}
+            {ConfirmationScreen.buildConfirmationView(this)}
           </ScrollView>
         </View>
       </View>
@@ -78,7 +78,8 @@ class ConfirmationScreen extends NavigatorComponent<Props, State> {
   static getVal(val) {
     console.log('Gas Price set:', val);
   }
-  static buildConfirmationView() {
+
+  static buildConfirmationView(instance) {
     return (
       <PanelView
         style={styles.panelViewTransparent}
@@ -96,9 +97,9 @@ class ConfirmationScreen extends NavigatorComponent<Props, State> {
                 step={1}
                 minimumValue={2}
                 maximumValue={100}
-                value={this.state.gasPrice}
-                onValueChange={val => this.setState({ gasPrice: val })}
-                onSlidingComplete={val => this.getVal(val)}
+                value={instance.state.gasPrice}
+                onValueChange={val => instance.setState({ gasPrice: val })}
+                onSlidingComplete={val => instance.getVal(val)}
               />
             </View>
           </View>
