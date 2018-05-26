@@ -421,7 +421,8 @@
     "confirmTransaction": {
       "title": "Confirm Transaction",
       "gasPrice": "What gas price would you like to set?",
-      "confirmButton": "Confirm"
+      "confirmButton": "Confirm",
+      "gasPriceTitle": "Gas Price: {{gasPrice}}"
     }
   },
   "testingMode": {
