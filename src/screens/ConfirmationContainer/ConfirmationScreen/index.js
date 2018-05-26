@@ -1,4 +1,4 @@
-
+// @flow
 
 import React from 'react';
 import {
@@ -19,10 +19,24 @@ import i18n from '../../../global/i18n';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 
 type Props = {
+  /**
+   * @desc React Native Navigation navigator object.
+   */
   navigator: Navigator,
+  /**
+   * @desc Function to return the Promise resolve
+   */
+  onSuccess: (number) => null,
+  /**
+   * @desc Function to return the Promise reject
+   */
+  onFail: () => null,
 }
 
 type State = {
+  /**
+   * @desc gasPrice to return in resolve
+   */
   gasPrice: number,
 }
 
@@ -54,12 +68,11 @@ class ConfirmationScreen extends NavigatorComponent<Props, State> {
     if (id === 'cancel') {
       this.props.onFail();
     } else {
-      this.props.onSuccess();
+      this.props.onSuccess(this.state.gasPrice);
     }
   }
 
   render() {
-    console.log('---> Props on Screen:', this.props);
     return (
       <View style={styles.screenContainer}>
         <BackgroundImage />
@@ -68,18 +81,15 @@ class ConfirmationScreen extends NavigatorComponent<Props, State> {
         <View style={styles.bodyContainer}>
           <ScrollView style={styles.scrollView} contentContainerStyle={styles.noflex}>
             <ScreenTitle title={i18n.t('screens.confirmTransaction.title')} />
-            {ConfirmationScreen.buildConfirmationView(this)}
+            {this.buildConfirmationView()}
           </ScrollView>
         </View>
       </View>
     );
   }
 
-  static getVal(val) {
-    console.log('Gas Price set:', val);
-  }
 
-  static buildConfirmationView(instance) {
+  buildConfirmationView() {
     return (
       <PanelView
         style={styles.panelViewTransparent}
@@ -97,10 +107,14 @@ class ConfirmationScreen extends NavigatorComponent<Props, State> {
                 step={1}
                 minimumValue={2}
                 maximumValue={100}
-                value={instance.state.gasPrice}
-                onValueChange={val => instance.setState({ gasPrice: val })}
-                onSlidingComplete={val => instance.getVal(val)}
+                value={this.state.gasPrice}
+                onValueChange={val => this.setState({ gasPrice: val })}
               />
+            </View>
+            <View style={styles.fieldsContainer}>
+              <Text style={styles.body}>
+                {i18n.t('screens.confirmTransaction.gasPriceTitle', { gasPrice: this.state.gasPrice })}
+              </Text>
             </View>
           </View>
         </View>

@@ -6,7 +6,18 @@ import type { Navigator } from '../../types/ReactNativeNavigation';
 import ConfirmationScreen from './ConfirmationScreen';
 
 type Props = {
+  /**
+   * @desc React Native Navigation navigator object.
+   */
   navigator: Navigator,
+  /**
+   * @desc Function to return the Promise resolve
+   */
+  onSuccess: (number) => null,
+  /**
+   * @desc Function to return the Promise reject
+   */
+  onFail: () => null,
 }
 
 type State = {
@@ -16,13 +27,15 @@ type State = {
 class ConfirmationContainer extends Component<Props, State> {
   static defaultProps: Object;
   cancelConfirmation = () => {
+    this.props.onFail();
     this.props.navigator.dismissModal();
   };
 
-  sendConfirmation = () => {
+  sendConfirmation = (gasPrice) => {
+    this.props.onSuccess(gasPrice);
+    this.props.navigator.dismissModal();
   };
   render() {
-    console.log('---> Props:', this.props);
     return (
       <ConfirmationScreen
         {...this.props}
