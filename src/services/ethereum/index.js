@@ -8,7 +8,7 @@ export default class EthereumService {
     this.wallet = wallet;
   }
   async getBalance(): string {
-    console.log('GETTING BALANCE FROM PROVIDER:  ', this.wallet);
+    console.log('GETTING BALANCE FROM PROVIDER:  ', this.wallet.provider);
     const balance = await this.wallet.getBalance('latest');
     console.log('BLAANCE: ', balance);
     return balance;
@@ -19,6 +19,13 @@ export default class EthereumService {
     const contract = new ethers.Contract(tokenAddress, abi, this.wallet.provider);
     const balance = await contract.balanceOf(this.wallet.address);
     return balance;
+  }
+
+  async sendTokens(tokenAddress: string, toAddress: string, tokenAmount: string) {
+    const abi = ERC20ABI;
+    const contract = new ethers.Contract(tokenAddress, abi, this.wallet.provider);
+    const transactionHash = await contract.transfer(toAddress, tokenAmount);
+    return transactionHash;
   }
 
   async estimateGas(gasPrice: string, data: string): string {
