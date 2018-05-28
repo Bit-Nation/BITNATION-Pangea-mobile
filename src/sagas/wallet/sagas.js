@@ -29,13 +29,22 @@ export function* sendMoneySaga(action: SendMoneyAction): Generator<*, *, *> {
   let currentAccountId: string | null;
   currentAccountId = yield call(getCurrentAccountId);
   const account = yield getAccount(currentAccountId);
-
-  try {
-    // yield call(checkConnection);
-    yield call(WalletService.sendMoney, fromAddress, toAddress, amounttoSend, account.networkType);
-    yield put(sendMoneySuccess());
-  } catch (error) {
-    yield put(sendMoneyFailed(error));
+  if (state.wallet.currency === 'ETH') {
+    try {
+      // yield call(checkConnection);
+      yield call(WalletService.sendMoney, fromAddress, toAddress, amounttoSend, account.networkType);
+      yield put(sendMoneySuccess());
+    } catch (error) {
+      yield put(sendMoneyFailed(error));
+    }
+  } else {
+    try {
+      // yield call(checkConnection);
+      yield call(WalletService.sendToken, fromAddress, toAddress, amounttoSend, account.networkType);
+      yield put(sendMoneySuccess());
+    } catch (error) {
+      yield put(sendMoneyFailed(error));
+    }
   }
 }
 
