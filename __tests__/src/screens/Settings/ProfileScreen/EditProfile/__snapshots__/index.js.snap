@@ -24,7 +24,7 @@ ShallowWrapper {
                 "leftButtons": undefined,
                 "rightButtons": Array [
                   Object {
-                    "buttonColor": "#007AFF",
+                    "buttonColor": "#FF8B00",
                     "disabled": false,
                     "id": "DONE_BUTTON",
                     "title": "Done",
