@@ -488,6 +488,12 @@
       "enterInstruction": "Enter password:",
       "createInstruction": "Enter new password:",
       "verifyInstruction": "Enter password again:"
+    },
+    "confirmTransaction": {
+      "title": "Confirm Transaction",
+      "gasPrice": "What gas price would you like to set?",
+      "confirmButton": "Confirm",
+      "gasPriceTitle": "Gas Price: {{gasPrice}}"
     }
   },
   "testingMode": {
