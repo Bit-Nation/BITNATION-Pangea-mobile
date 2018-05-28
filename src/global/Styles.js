@@ -94,8 +94,7 @@ const styles = {
   // Contains a title for a screen, e.g. Nations or Wallet
   // Margins position correctly INSIDE a bodyContainer View
   titleContainer: {
-    marginLeft: 8,
-    marginRight: 8,
+    marginHorizontal: 20,
   },
 
   // A block of text in the body area
@@ -581,11 +580,11 @@ const styles = {
   sectionListItemContainer: {
     flex: 1,
     flexDirection: 'row',
-    height: 44,
+    height: 46,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: Colors.sectionListItemContainerBackground,
-    marginLeft: 16,
+    marginLeft: 20,
   },
 
   // e.g. NationListHeader
@@ -594,6 +593,7 @@ const styles = {
     height: 30,
     justifyContent: 'center',
     alignItems: 'center',
+    marginLeft: 16,
     backgroundColor: Colors.sectionListHeaderContainer,
     // opacity: 0.5,
   },
@@ -641,6 +641,7 @@ const styles = {
   },
   tabStyle: {
     backgroundColor: 'transparent',
+    borderColor: Colors.activeTabStyle,
   },
   tabTextStyle: {
     backgroundColor: 'transparent',

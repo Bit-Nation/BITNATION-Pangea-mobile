@@ -132,7 +132,7 @@ const defaultTextStyles = {
     fontSize: 22,
     lineHeight: 30,
     letterSpacing: 0,
-    color: Colors.BitnationHighlightColor,
+    color: Colors.BitnationDarkGrayColor,
   },
 
   title1: {
