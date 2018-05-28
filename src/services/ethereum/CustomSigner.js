@@ -6,26 +6,13 @@ const ethers = require('ethers');
 export default function CustomSigner(privateKey, provider) {
 
   const wallet = new ethers.Wallet(privateKey);
+  // wallet.provider = new ethers.providers.InfuraProvider(provider);
   this.provider = new ethers.providers.InfuraProvider(provider);
   this.address = wallet.address;
+  this.getBalance = wallet.getBalance;
   this.estimateGas = wallet.estimateGas;
-  // this.showModal = function* (transaction) {
-  //   let ab = yield 'aaa';
-  //   const signedTransaction =  new Promise((resolve, reject) => {
-  //     // TODO: Create custom modal to show up here
-  //     resolve(wallet.sign(transaction));
-  //   });
-  //   signedTransaction.then((value)=>{
-  //     ab = value;
-  //   });
-  //
-  //   console.log('aaa=' + signedTransaction);
-  //   return signedTransaction;
-  // };
-  this.getBalance = when => wallet.getBalance(when);
-  this.estimateGas = transaction => wallet.estimateGas(transaction);
   this.sign = async (transaction) => {
-    console.log('SIGNED');
+    const transactionObject = transaction;
     const signedTransaction = await new Promise((resolve, reject) => {
       Navigation.showModal({
         ...screen('CONFIRMATION_SCREEN'),
@@ -35,7 +22,9 @@ export default function CustomSigner(privateKey, provider) {
           },
           onSuccess: (gasPrice) => {
             // Here we have gasPrice to pass it somewhere later.
-            resolve(wallet.sign(transaction));
+            transactionObject.gasPrice = gasPrice;
+            console.log('sending transaction: ', transactionObject);
+            resolve(wallet.sign(transactionObject));
           },
         },
       });
