@@ -54,11 +54,15 @@ export default class WalletService {
 
     return walletsToCheck;
   }
-
-  // @Todo Check this part with William
   static async sendMoney(fromAddress, toAddress, amount, network) {
     const ethereum = await factory({ private_key: `0x${fromAddress}`, provider_type: network === 'dev' ? 'rinkeby' : 'homestead' });
     const ethService = ethereum.service;
     return ethService.sendMoney(toAddress, amount, '00001');
+  }
+
+  static async sendToken(fromAddress, toAddress, amount, network) {
+    const ethereum = await factory({ private_key: `0x${fromAddress}`, provider_type: network === 'dev' ? 'rinkeby' : 'homestead' });
+    const ethService = ethereum.service;
+    return ethService.sendTokens(fromAddress, toAddress, amount);
   }
 }
