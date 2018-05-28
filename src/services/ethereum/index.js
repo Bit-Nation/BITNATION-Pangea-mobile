@@ -54,10 +54,9 @@ export default class EthereumService {
 
   // Function to send money to an address given amount and gasPrice. Returns
   // promise of when transaction is deployed.
-  sendMoney(toAddress: string, amount: string, gasPrice: string): Promise<void> {
+  sendMoney(toAddress: string, amount: string): Promise<void> {
     const transaction = {
       gasLimit: 21000,
-      gasPrice: ethers.utils.bigNumberify(gasPrice),
       to: toAddress,
       data: '0x',
       value: ethers.utils.parseEther(amount),
