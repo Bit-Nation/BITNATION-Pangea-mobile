@@ -9,6 +9,10 @@ import CustomSigner from './CustomSigner';
  * @param {Array<any>} config Array with: private_key Private Key base for the services, provider_type Type of Network
  * @returns {{wallet: ethers.Wallet, service: EthereumService}} The service
  */
+
+// Mock private key: 0xefc27ba5330258fcfb75e28e4e6efd88458751086998bbfad99257035fb3e160
+// Public key: 0xF0D346A86A68086846363185d24D5893F4353A78
+
 export default function factory(config: {private_key: string, provider_type: string}) {
   const privateKey: string = config.private_key;
   const providerType: string = config.provider_type;
