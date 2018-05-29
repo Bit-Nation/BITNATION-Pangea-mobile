@@ -105,9 +105,9 @@ class SendMoney extends NavigatorComponent<Props, State> {
   }
 
   onSendPress = () => {
-    if (this.validateSendData() === false) {
-      return;
-    }
+    // if (this.validateSendData() === false) {
+    //   return;
+    // }
 
     this.props.onSendMoney(this.state.amountString, this.state.toEthAddress);
   };
