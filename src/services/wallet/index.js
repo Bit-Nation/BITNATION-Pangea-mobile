@@ -13,7 +13,7 @@ export default class WalletService {
     const walletArray = [{
       currency: 'ETH', ethAddress: walletAddress, balance: null, name: 'Ethereum',
     }, {
-      currency: 'PAT', ethAddress: walletAddress, balance: null, name: 'PAT',
+      currency: 'PAT', ethAddress: walletAddress, balance: null, name: 'XPAT',
     }];
     return walletArray;
   }
