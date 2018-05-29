@@ -29,7 +29,7 @@ export function* sendMoneySaga(action: SendMoneyAction): Generator<*, *, *> {
   let currentAccountId: string | null;
   currentAccountId = yield call(getCurrentAccountId);
   const account = yield getAccount(currentAccountId);
-  if (state.wallet.currency === 'ETH') {
+  if (state.wallet.selectedWalletCurrency === 'ETH') {
     try {
       // yield call(checkConnection);
       yield call(WalletService.sendMoney, fromAddress, toAddress, amounttoSend, account.networkType);
