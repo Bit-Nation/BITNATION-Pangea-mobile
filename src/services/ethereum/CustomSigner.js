@@ -1,4 +1,5 @@
 import BN from 'bn.js';
+import { BigNumber } from 'bignumber.js';
 
 import { Navigation } from 'react-native-navigation';
 import { screen } from '../../global/Screens';
@@ -15,9 +16,6 @@ export default function CustomSigner(privateKey, provider) {
   this.estimateGas = wallet.estimateGas;
   this.sign = async (transaction) => {
     const transactionObject = transaction;
-    console.log('signing transaction: ', transactionObject);
-    const networkGasPrice = await this.provider.getGasPrice();
-    console.log('network gas price: ', networkGasPrice);
     const signedTransaction = await new Promise((resolve, reject) => {
       Navigation.showModal({
         ...screen('CONFIRMATION_SCREEN'),
@@ -27,10 +25,7 @@ export default function CustomSigner(privateKey, provider) {
           },
           onSuccess: (gasPrice) => {
             // Here we have gasPrice to pass it somewhere later.
-            console.log('gasprice: ', gasPrice);
-            const gasP = new BN(gasPrice, 10);
-            transactionObject.gasPrice = networkGasPrice;
-            console.log('sending transaction: ', transactionObject);
+            transactionObject.gasPrice = ethers.utils.bigNumberify(`${gasPrice.toString()}000000000`);
             resolve(wallet.sign(transactionObject));
           },
         },
