@@ -55,13 +55,17 @@ export default class WalletService {
     return walletsToCheck;
   }
   static async sendMoney(fromAddress, toAddress, amount, network) {
-    const ethereum = await factory({ private_key: `0x${fromAddress}`, provider_type: network === 'dev' ? 'rinkeby' : 'homestead' });
+    const { Panthalassa } = NativeModules;
+    const walletAddress = await Panthalassa.PanthalassaEthPrivateKey();
+    const ethereum = await factory({ private_key: `0x${walletAddress}`, provider_type: network === 'dev' ? 'rinkeby' : 'homestead' });
     const ethService = ethereum.service;
-    return ethService.sendMoney(toAddress, amount, '00001');
+    return ethService.sendMoney(toAddress, amount);
   }
 
   static async sendToken(fromAddress, toAddress, amount, network) {
-    const ethereum = await factory({ private_key: `0x${fromAddress}`, provider_type: network === 'dev' ? 'rinkeby' : 'homestead' });
+    const { Panthalassa } = NativeModules;
+    const walletAddress = await Panthalassa.PanthalassaEthPrivateKey();
+    const ethereum = await factory({ private_key: `0x${walletAddress}`, provider_type: network === 'dev' ? 'rinkeby' : 'homestead' });
     const ethService = ethereum.service;
     return ethService.sendTokens(fromAddress, toAddress, amount);
   }
