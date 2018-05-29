@@ -15,23 +15,28 @@ export default function CustomSigner(privateKey, provider) {
   this.getBalance = wallet.getBalance;
   this.estimateGas = wallet.estimateGas;
   this.sign = async (transaction) => {
+    console.log('signing... ', transaction);
     const transactionObject = transaction;
-    const signedTransaction = await new Promise((resolve, reject) => {
-      Navigation.showModal({
-        ...screen('CONFIRMATION_SCREEN'),
-        passProps: {
-          onFail: () => {
-            reject();
+    try {
+      const signedTransaction = await new Promise((resolve, reject) => {
+        Navigation.showModal({
+          ...screen('CONFIRMATION_SCREEN'),
+          passProps: {
+            onFail: () => {
+              reject();
+            },
+            onSuccess: (gasPrice) => {
+              // Here we have gasPrice to pass it somewhere later.
+              transactionObject.gasPrice = ethers.utils.bigNumberify(`${gasPrice.toString()}000000000`);
+              resolve(wallet.sign(transactionObject));
+            },
           },
-          onSuccess: (gasPrice) => {
-            // Here we have gasPrice to pass it somewhere later.
-            transactionObject.gasPrice = ethers.utils.bigNumberify(`${gasPrice.toString()}000000000`);
-            resolve(wallet.sign(transactionObject));
-          },
-        },
+        });
       });
-    });
-    return signedTransaction;
+      return signedTransaction;
+    } catch (e) {
+      throw new Error('Transaction aborted!');
+    }
   };
   this.sendTransaction = (transaction) => {
     if (!this.provider) { throw new Error('missing provider'); }
