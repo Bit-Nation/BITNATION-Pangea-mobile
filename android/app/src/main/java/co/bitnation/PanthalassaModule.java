@@ -1,5 +1,7 @@
 package co.bitnation;
 
+import android.util.Log;
+
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
@@ -15,7 +17,7 @@ import panthalassa.UpStream;
  * Created by Estarrona on 19/04/18.
  */
 
-public class PanthalassaModule extends ReactContextBaseJavaModule {
+public class PanthalassaModule extends ReactContextBaseJavaModule implements UpStream {
     final String TAG = "Panthalassa";
 
     public PanthalassaModule (ReactApplicationContext reactContext) {
@@ -41,7 +43,12 @@ public class PanthalassaModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void PanthalassaStart(ReadableMap jsonParams, Promise promise) throws JSONException {
         try {
-            UpStream upstream = null;
+            UpStream upstream = new UpStream() {
+                @Override
+                public void send(String s) {
+                    Log.v("Upstream","This is a test!");
+                }
+            };
             Panthalassa.start(jsonParams.getString("accountStore"), jsonParams.getString("password"), upstream);
             promise.resolve(true);
         } catch (Exception e) {
@@ -193,5 +200,10 @@ public class PanthalassaModule extends ReactContextBaseJavaModule {
             e.printStackTrace();
             promise.reject("error", e.getLocalizedMessage());
         }
+    }
+
+    @Override
+    public void send(String s) {
+        Log.v("Upstream","Received from callback");
     }
 }
