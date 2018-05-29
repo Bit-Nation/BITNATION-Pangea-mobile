@@ -23,7 +23,7 @@ export default class EthereumService {
 
   async sendTokens(tokenAddress: string, toAddress: string, tokenAmount: string) {
     const abi = ERC20ABI;
-    const contract = new ethers.Contract(tokenAddress, abi, this.wallet.provider);
+    const contract = new ethers.Contract(tokenAddress, abi, this.wallet);
     const transactionHash = await contract.transfer(toAddress, tokenAmount);
     return transactionHash;
   }
