@@ -1,0 +1,686 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AccountAccessListScreen renders correctly 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <AccountAccessListScreen
+    navigator={
+      Object {
+        "pop": [MockFunction],
+        "push": [MockFunction],
+        "setButtons": [MockFunction],
+        "setOnNavigatorEvent": [MockFunction],
+      }
+    }
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <BackgroundImage
+          source={
+            Object {
+              "testUri": "../../../src/assets/images/background.jpg",
+            }
+          }
+          style={undefined}
+        />,
+        <FakeNavigationBar
+          navBarHidden={false}
+        />,
+        <View
+          style={
+            Object {
+              "alignContent": "flex-start",
+              "flex": 1,
+              "flexDirection": "column",
+              "justifyContent": "flex-start",
+              "marginLeft": 16,
+              "marginRight": 16,
+            }
+          }
+        >
+          <ScreenTitle
+            title="Accounts"
+          />
+          <FlatList
+            data={undefined}
+            disableVirtualization={false}
+            horizontal={false}
+            initialNumToRender={10}
+            keyExtractor={[Function]}
+            maxToRenderPerBatch={10}
+            numColumns={1}
+            onEndReachedThreshold={2}
+            renderItem={[Function]}
+            scrollEventThrottle={50}
+            style={
+              Object {
+                "flex": 1,
+              }
+            }
+            updateCellsBatchingPeriod={50}
+            windowSize={21}
+          />
+          <View
+            style={
+              Object {
+                "borderWidth": 0,
+                "marginBottom": 40,
+                "marginTop": 10,
+              }
+            }
+          >
+            <Button
+              enabled={true}
+              onPress={[Function]}
+              style={
+                Object {
+                  "marginTop": 13,
+                }
+              }
+              title="New Account"
+            />
+            <Button
+              enabled={true}
+              onPress={[Function]}
+              style={
+                Object {
+                  "marginTop": 13,
+                }
+              }
+              title="Restore Account"
+            />
+            <View
+              style={undefined}
+            />
+          </View>
+        </View>,
+      ],
+      "style": Object {
+        "alignItems": "stretch",
+        "flex": 1,
+        "flexDirection": "column",
+        "justifyContent": "flex-start",
+      },
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "source": Object {
+            "testUri": "../../../src/assets/images/background.jpg",
+          },
+          "style": undefined,
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "navBarHidden": false,
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <ScreenTitle
+              title="Accounts"
+            />,
+            <FlatList
+              data={undefined}
+              disableVirtualization={false}
+              horizontal={false}
+              initialNumToRender={10}
+              keyExtractor={[Function]}
+              maxToRenderPerBatch={10}
+              numColumns={1}
+              onEndReachedThreshold={2}
+              renderItem={[Function]}
+              scrollEventThrottle={50}
+              style={
+                Object {
+                  "flex": 1,
+                }
+              }
+              updateCellsBatchingPeriod={50}
+              windowSize={21}
+            />,
+            <View
+              style={
+                Object {
+                  "borderWidth": 0,
+                  "marginBottom": 40,
+                  "marginTop": 10,
+                }
+              }
+            >
+              <Button
+                enabled={true}
+                onPress={[Function]}
+                style={
+                  Object {
+                    "marginTop": 13,
+                  }
+                }
+                title="New Account"
+              />
+              <Button
+                enabled={true}
+                onPress={[Function]}
+                style={
+                  Object {
+                    "marginTop": 13,
+                  }
+                }
+                title="Restore Account"
+              />
+              <View
+                style={undefined}
+              />
+            </View>,
+          ],
+          "style": Object {
+            "alignContent": "flex-start",
+            "flex": 1,
+            "flexDirection": "column",
+            "justifyContent": "flex-start",
+            "marginLeft": 16,
+            "marginRight": 16,
+          },
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "title": "Accounts",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "data": undefined,
+              "disableVirtualization": false,
+              "horizontal": false,
+              "initialNumToRender": 10,
+              "keyExtractor": [Function],
+              "maxToRenderPerBatch": 10,
+              "numColumns": 1,
+              "onEndReachedThreshold": 2,
+              "renderItem": [Function],
+              "scrollEventThrottle": 50,
+              "style": Object {
+                "flex": 1,
+              },
+              "updateCellsBatchingPeriod": 50,
+              "windowSize": 21,
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": Array [
+                <Button
+                  enabled={true}
+                  onPress={[Function]}
+                  style={
+                    Object {
+                      "marginTop": 13,
+                    }
+                  }
+                  title="New Account"
+                />,
+                <Button
+                  enabled={true}
+                  onPress={[Function]}
+                  style={
+                    Object {
+                      "marginTop": 13,
+                    }
+                  }
+                  title="Restore Account"
+                />,
+                <View
+                  style={undefined}
+                />,
+              ],
+              "style": Object {
+                "borderWidth": 0,
+                "marginBottom": 40,
+                "marginTop": 10,
+              },
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "children": undefined,
+                  "enabled": true,
+                  "onPress": [Function],
+                  "style": Object {
+                    "marginTop": 13,
+                  },
+                  "title": "New Account",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "children": undefined,
+                  "enabled": true,
+                  "onPress": [Function],
+                  "style": Object {
+                    "marginTop": 13,
+                  },
+                  "title": "Restore Account",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "style": undefined,
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <BackgroundImage
+            source={
+              Object {
+                "testUri": "../../../src/assets/images/background.jpg",
+              }
+            }
+            style={undefined}
+          />,
+          <FakeNavigationBar
+            navBarHidden={false}
+          />,
+          <View
+            style={
+              Object {
+                "alignContent": "flex-start",
+                "flex": 1,
+                "flexDirection": "column",
+                "justifyContent": "flex-start",
+                "marginLeft": 16,
+                "marginRight": 16,
+              }
+            }
+          >
+            <ScreenTitle
+              title="Accounts"
+            />
+            <FlatList
+              data={undefined}
+              disableVirtualization={false}
+              horizontal={false}
+              initialNumToRender={10}
+              keyExtractor={[Function]}
+              maxToRenderPerBatch={10}
+              numColumns={1}
+              onEndReachedThreshold={2}
+              renderItem={[Function]}
+              scrollEventThrottle={50}
+              style={
+                Object {
+                  "flex": 1,
+                }
+              }
+              updateCellsBatchingPeriod={50}
+              windowSize={21}
+            />
+            <View
+              style={
+                Object {
+                  "borderWidth": 0,
+                  "marginBottom": 40,
+                  "marginTop": 10,
+                }
+              }
+            >
+              <Button
+                enabled={true}
+                onPress={[Function]}
+                style={
+                  Object {
+                    "marginTop": 13,
+                  }
+                }
+                title="New Account"
+              />
+              <Button
+                enabled={true}
+                onPress={[Function]}
+                style={
+                  Object {
+                    "marginTop": 13,
+                  }
+                }
+                title="Restore Account"
+              />
+              <View
+                style={undefined}
+              />
+            </View>
+          </View>,
+        ],
+        "style": Object {
+          "alignItems": "stretch",
+          "flex": 1,
+          "flexDirection": "column",
+          "justifyContent": "flex-start",
+        },
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "source": Object {
+              "testUri": "../../../src/assets/images/background.jpg",
+            },
+            "style": undefined,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "navBarHidden": false,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <ScreenTitle
+                title="Accounts"
+              />,
+              <FlatList
+                data={undefined}
+                disableVirtualization={false}
+                horizontal={false}
+                initialNumToRender={10}
+                keyExtractor={[Function]}
+                maxToRenderPerBatch={10}
+                numColumns={1}
+                onEndReachedThreshold={2}
+                renderItem={[Function]}
+                scrollEventThrottle={50}
+                style={
+                  Object {
+                    "flex": 1,
+                  }
+                }
+                updateCellsBatchingPeriod={50}
+                windowSize={21}
+              />,
+              <View
+                style={
+                  Object {
+                    "borderWidth": 0,
+                    "marginBottom": 40,
+                    "marginTop": 10,
+                  }
+                }
+              >
+                <Button
+                  enabled={true}
+                  onPress={[Function]}
+                  style={
+                    Object {
+                      "marginTop": 13,
+                    }
+                  }
+                  title="New Account"
+                />
+                <Button
+                  enabled={true}
+                  onPress={[Function]}
+                  style={
+                    Object {
+                      "marginTop": 13,
+                    }
+                  }
+                  title="Restore Account"
+                />
+                <View
+                  style={undefined}
+                />
+              </View>,
+            ],
+            "style": Object {
+              "alignContent": "flex-start",
+              "flex": 1,
+              "flexDirection": "column",
+              "justifyContent": "flex-start",
+              "marginLeft": 16,
+              "marginRight": 16,
+            },
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "title": "Accounts",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "data": undefined,
+                "disableVirtualization": false,
+                "horizontal": false,
+                "initialNumToRender": 10,
+                "keyExtractor": [Function],
+                "maxToRenderPerBatch": 10,
+                "numColumns": 1,
+                "onEndReachedThreshold": 2,
+                "renderItem": [Function],
+                "scrollEventThrottle": 50,
+                "style": Object {
+                  "flex": 1,
+                },
+                "updateCellsBatchingPeriod": 50,
+                "windowSize": 21,
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  <Button
+                    enabled={true}
+                    onPress={[Function]}
+                    style={
+                      Object {
+                        "marginTop": 13,
+                      }
+                    }
+                    title="New Account"
+                  />,
+                  <Button
+                    enabled={true}
+                    onPress={[Function]}
+                    style={
+                      Object {
+                        "marginTop": 13,
+                      }
+                    }
+                    title="Restore Account"
+                  />,
+                  <View
+                    style={undefined}
+                  />,
+                ],
+                "style": Object {
+                  "borderWidth": 0,
+                  "marginBottom": 40,
+                  "marginTop": 10,
+                },
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "children": undefined,
+                    "enabled": true,
+                    "onPress": [Function],
+                    "style": Object {
+                      "marginTop": 13,
+                    },
+                    "title": "New Account",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "children": undefined,
+                    "enabled": true,
+                    "onPress": [Function],
+                    "style": Object {
+                      "marginTop": 13,
+                    },
+                    "title": "Restore Account",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "style": undefined,
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+              ],
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

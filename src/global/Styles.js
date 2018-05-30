@@ -25,6 +25,12 @@ const styles = {
     flex: 0,
   },
 
+  // Used to align items at the end of the container
+  flexEnd: {
+    flex: 1,
+    justifyContent: 'flex-end',
+  },
+
   // General screen container for ALL elements
   // Derived from Apple Human Interface Guidelines
   // and https://ivomynttinen.com/blog/ios-design-guidelines
@@ -50,6 +56,17 @@ const styles = {
     marginRight: 8,
   },
 
+  // Container for the main area inside Accounts, below navigation but above the bottom tab bar (if existing)
+  bodyAccountContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    // alignItems: 'stretch',
+    alignContent: 'flex-start',
+    // these narrow left/right margins are for panels, which have their own indents.
+    marginLeft: 16,
+    marginRight: 16,
+  },
   // Container for a grid of panels (or a mosaic).
   // Similar to bodyContainer but we stretch fill all space
   // Used for dashboard
@@ -281,6 +298,13 @@ const styles = {
     textAlign: 'left',
   },
 
+  alertPanelViewTitle: {
+    ...defaultTextStyles.title2,
+    fontWeight: 'bold',
+    color: Colors.primary_red,
+    textAlign: 'left',
+  },
+
   // Text style for the sub-titles in Panels
   panelSubTitle: {
     ...defaultTextStyles.title3,
@@ -431,13 +455,13 @@ const styles = {
     borderBottomWidth: 1,
     flex: 1,
     marginTop: 4,
-    marginBottom: 4,
+    marginBottom: 14,
     marginRight: 0,
     marginLeft: 0,
     fontSize: 16,
     paddingLeft: 4,
     paddingTop: 6,
-    paddingBottom: 6,
+    paddingBottom: 12,
     // font settings
     // color: Colors.placeholderTextColor,
   },
@@ -492,6 +516,7 @@ const styles = {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
     marginTop: 5,
     marginBottom: 10,
     // for testing
@@ -712,6 +737,18 @@ const styles = {
     marginRight: 13,
   },
 
+  buttonPrevNext: {
+    marginTop: 13,
+    width: 90,
+  },
+
+  buttonListContainer: {
+    marginTop: 10,
+    marginBottom: 40,
+    // for testing
+    borderWidth: 0,
+
+  },
   // ========================================
   // Profile Screen
   // e.g. components/common/PanelView.js
@@ -723,7 +760,7 @@ const styles = {
   },
 
   avatarContainerLarge: {
-    flex: 1,
+    // flex: 1,
     alignItems: 'center',
   },
 

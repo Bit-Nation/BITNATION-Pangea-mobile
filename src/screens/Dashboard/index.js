@@ -1,10 +1,7 @@
 // @flow
 
 import React, { Component } from 'react';
-import {
-  View,
-  Text,
-} from 'react-native';
+import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 
 import styles from './styles';
@@ -17,54 +14,54 @@ import ActivityPanel from './ActivityPanel';
 import NationsPanel from './NationsPanel';
 import { openNation } from '../../actions/nations';
 import { screen } from '../../global/Screens';
-import { addDummyMessage, startFetchMessages } from '../../actions/activity';
+import { addNewMessage } from '../../actions/activity';
 import type { NationIdType } from '../../types/Nation';
 import type { State } from '../../reducers';
 import type { Navigator } from '../../types/ReactNativeNavigation';
+import { getCurrentAccount } from '../../reducers/accounts';
 
 type Props = {
   /**
    * @desc React Native Navigation navigator object.
    */
-  navigator: Navigator,
-}
+  navigator: Navigator
+};
 
 type Actions = {
   /**
    * @desc Callback on nation select.
    * @param {NationIdType} id Id of selected nation.
    */
-  onSelectNation: (id: NationIdType) => void,
-  /**
-   * @desc Function to start activity log messages fetch from database.
-   */
-  startFetchMessages: () => void,
-}
+  onSelectNation: (id: NationIdType) => void
+};
 
 type TestingModeProps = {
   /**
    * @desc Function to add dummy log activity message for testing.
    */
-  onAddDummyMessage: () => void,
-}
+  onAddDummyMessage: () => void
+};
 
 class Dashboard extends Component<Props & Actions & State & TestingModeProps> {
-  constructor(props) {
-    super(props);
-
-    this.props.startFetchMessages();
-  }
-
   onSelectNation = (id) => {
     this.props.onSelectNation(id);
     this.props.navigator.push(screen('NATION_DETAILS_SCREEN'));
   };
 
-  onSelectMore = () => {
+  onSelectMore = () => {};
 
+  onStartKeyConfirmation = () => {
+    this.props.navigator.showModal({
+      ...screen('CONFIRM_KEY_INSTRUCTION_SCREEN'),
+      passProps: {
+        shouldShowCancel: true,
+      },
+    });
   };
 
   render() {
+    const currentAccount = getCurrentAccount(this.props.accounts);
+
     return (
       <View style={styles.screenContainer}>
         <BackgroundImage />
@@ -90,15 +87,26 @@ class Dashboard extends Component<Props & Actions & State & TestingModeProps> {
                 wallets={this.props.wallet.wallets || []}
                 style={styles.walletPanel}
               />
-              <PanelView
-                title={i18n.t('screens.dashboard.warningPanel.title')}
-                buttonTitle={i18n.t('screens.dashboard.warningPanel.button')}
-                onButtonClick={this.onSelectMore}
-                style={styles.warningPanel}
-                titleStyle={styles.panelViewTitle}
-              >
-                <Text style={styles.warningPanelBody}>{i18n.t('screens.dashboard.warningPanel.body')}</Text>
-              </PanelView>
+              {
+                (currentAccount === null || currentAccount.confirmedMnemonic === true) ?
+                  <PanelView
+                    title={i18n.t('screens.dashboard.warningPanel.title')}
+                    style={styles.warningPanel}
+                    titleStyle={styles.panelViewTitle}
+                  >
+                    <Text style={styles.warningPanelBody}>{i18n.t('screens.dashboard.warningPanel.body')}</Text>
+                  </PanelView>
+                  :
+                  <PanelView
+                    title={i18n.t('screens.dashboard.confirmKeyPanel.title')}
+                    style={styles.confirmKeyPanel}
+                    titleStyle={styles.alertPanelViewTitle}
+                    buttonTitle={i18n.t('screens.dashboard.confirmKeyPanel.button')}
+                    onButtonClick={this.onStartKeyConfirmation}
+                  >
+                    <Text style={styles.confirmKeyBody}>{i18n.t('screens.dashboard.confirmKeyPanel.body')}</Text>
+                  </PanelView>
+              }
             </View>
           </View>
         </View>
@@ -115,11 +123,8 @@ const mapDispatchToProps = dispatch => ({
   onSelectNation(id) {
     dispatch(openNation(id));
   },
-  startFetchMessages() {
-    dispatch(startFetchMessages());
-  },
   onAddDummyMessage() {
-    dispatch(addDummyMessage());
+    dispatch(addNewMessage('dummy message'));
   },
 });
 
