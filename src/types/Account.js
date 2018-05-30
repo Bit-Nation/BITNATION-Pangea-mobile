@@ -7,13 +7,16 @@ export type Account = {
   name: string,
   location: ?string,
   avatar: ?string,
+  accountStore: string,
   networkType: NetworkType,
+  confirmedMnemonic: boolean,
 };
 
-export type EditingAccount = {
-  id: ?number,
+export type PartialAccount = {
+  id: string,
   name: ?string,
   location: ?string,
   avatar: ?string,
+  accountStore: ?string,
   networkType: NetworkType,
 }

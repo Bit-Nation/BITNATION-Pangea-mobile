@@ -31,16 +31,6 @@
   
 }
 
-- (void)testNewPanthalassa {
-  
-  PanthalassaPanthalassa *instance;
-  NSError *error = nil;
-  
-  instance = PanthalassaNewPanthalassa(@"testingString", @"password", &error);
-  XCTAssertNotNil(instance, @"Panthalassa lib error");
-  
-}
-
 - (void)testScryptDecrypt {
   
   NSString *response;
@@ -81,6 +71,13 @@
   NSError *error = nil;
   response = PanthalassaCIDSha512(@"HI", &error);
   XCTAssertEqualObjects(response, @"UAVUUQEG8zpe5V7XbE9ZuG_0-q4q0ujKrksvGUoJTCs2fTjXSUvfOE6Z4f9ePhYante_RzbqCZT5RADYOegO_Yiz8WJo=", @"Panthalassa lib error");
+  
+}
+
+- (void)testPanthalassaStop {
+  
+  NSError *error = nil;
+  XCTAssertTrue(PanthalassaStop(&error));
   
 }
 

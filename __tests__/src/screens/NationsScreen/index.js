@@ -4,6 +4,7 @@ import configureStore from 'redux-mock-store';
 
 import { initialState } from '../../../../src/reducers/nations';
 import NationsScreen from '../../../../src/screens/NationsScreen';
+import navigatorMock from '../../../../__mocks__/Navigator';
 
 test('NationsScreen renders correctly', () => {
   const initialStateMock = {
@@ -11,9 +12,7 @@ test('NationsScreen renders correctly', () => {
   };
   const storeMock = configureStore([]);
   const propsMock = {
-    navigator: {
-      push: jest.fn(),
-    },
+    navigator: navigatorMock,
   };
 
   const wrapper = shallow((

@@ -12,6 +12,7 @@ export const AccountSchema = {
     profileImage: 'string',
     accountStore: 'string',
     confirmedMnemonic: 'bool',
+    networkType: 'string',
     DHT: {
       type: 'list',
       objectType: 'DHTValue',
@@ -37,7 +38,33 @@ export type AccountType = {
   profileImage: string,
   accountStore: string,
   confirmedMnemonic: boolean,
+  networkType: 'main' | 'dev',
   DHT: Array<DHTValueType>
+}
+
+export const AccountSettingsSchema = {
+  name: 'AccountSettings',
+  primaryKey: 'id',
+  properties: {
+    id: 'string',
+    passcodeType: 'string',
+    pinCodeLength: {
+      type: 'int',
+      optional: true,
+    },
+  },
+};
+
+/**
+ * @typedef {Object} AccountSettings
+ * @property {string} id Id of account that settings are related to.
+ * @property {string} passcodeType Selected type of passcode.
+ * @property {string} networkType Selected type of network - either dev or main.
+ */
+export type AccountSettingsType = {
+  id: string,
+  passcodeType: 'pinCode' | 'password',
+  pinCodeLength: number | null,
 }
 
 /**
@@ -105,6 +132,7 @@ export type MessageJobType = {
   id: number,
   heading: string,
   params: string,
+  msg: string,
   version: number,
   display: boolean,
   interpret: boolean,
@@ -253,6 +281,7 @@ export const NationSchema = {
 export const schemata =
   [
     AccountSchema,
+    AccountSettingsSchema,
     DHTValueSchema,
     AccountBalanceSchema,
     MessageJobSchema,

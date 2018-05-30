@@ -130,6 +130,13 @@ ShallowWrapper {
               </View>
             </View>
             <PanelView
+              body={undefined}
+              buttonTitle="Button"
+              childrenContainerStyle={Object {}}
+              icon={undefined}
+              onButtonClick={null}
+              renderAdditionalInfo={null}
+              renderBottom={null}
               style={
                 Object {
                   "backgroundColor": "transparent",
@@ -146,6 +153,7 @@ ShallowWrapper {
                   "paddingTop": 4,
                 }
               }
+              title={undefined}
               titleStyle={
                 Object {
                   "color": "white",
@@ -199,11 +207,11 @@ ShallowWrapper {
                           "fontWeight": "normal",
                           "letterSpacing": 0,
                           "lineHeight": 22,
-                          "marginBottom": 4,
+                          "marginBottom": 14,
                           "marginLeft": 0,
                           "marginRight": 0,
                           "marginTop": 4,
-                          "paddingBottom": 6,
+                          "paddingBottom": 12,
                           "paddingLeft": 4,
                           "paddingTop": 6,
                         }
@@ -238,11 +246,11 @@ ShallowWrapper {
                           "fontWeight": "normal",
                           "letterSpacing": 0,
                           "lineHeight": 22,
-                          "marginBottom": 4,
+                          "marginBottom": 14,
                           "marginLeft": 0,
                           "marginRight": 0,
                           "marginTop": 4,
-                          "paddingBottom": 6,
+                          "paddingBottom": 12,
                           "paddingLeft": 4,
                           "paddingTop": 6,
                         }
@@ -254,7 +262,13 @@ ShallowWrapper {
               </View>
             </PanelView>
             <PanelView
+              body={undefined}
+              buttonTitle="Button"
+              childrenContainerStyle={Object {}}
               icon=" "
+              onButtonClick={null}
+              renderAdditionalInfo={null}
+              renderBottom={null}
               style={
                 Object {
                   "backgroundColor": "transparent",
@@ -365,7 +379,13 @@ ShallowWrapper {
               </Text>
             </PanelView>
             <PanelView
+              body={undefined}
+              buttonTitle="Button"
+              childrenContainerStyle={Object {}}
               icon=" "
+              onButtonClick={null}
+              renderAdditionalInfo={null}
+              renderBottom={null}
               style={
                 Object {
                   "backgroundColor": "transparent",
@@ -718,7 +738,13 @@ ShallowWrapper {
               </View>
             </PanelView>
             <PanelView
+              body={undefined}
+              buttonTitle="Button"
+              childrenContainerStyle={Object {}}
               icon=" "
+              onButtonClick={null}
+              renderAdditionalInfo={null}
+              renderBottom={null}
               style={
                 Object {
                   "backgroundColor": "transparent",
@@ -765,6 +791,8 @@ ShallowWrapper {
                   }
                 >
                   <SwitchLabeled
+                    align="left"
+                    disabled={false}
                     label="Seeking diplomatic recognition as a sovereign entity."
                     onValueChange={[Function]}
                     value={false}
@@ -788,6 +816,8 @@ ShallowWrapper {
                   }
                 >
                   <SwitchLabeled
+                    align="left"
+                    disabled={false}
                     label="Non-citizens may use governance services."
                     onValueChange={[Function]}
                     value={false}
@@ -811,6 +841,8 @@ ShallowWrapper {
                   }
                 >
                   <SwitchLabeled
+                    align="left"
+                    disabled={false}
                     label="For-profit nation."
                     onValueChange={[Function]}
                     value={false}
@@ -952,6 +984,13 @@ ShallowWrapper {
               </View>
             </View>
             <PanelView
+              body={undefined}
+              buttonTitle="Button"
+              childrenContainerStyle={Object {}}
+              icon={undefined}
+              onButtonClick={null}
+              renderAdditionalInfo={null}
+              renderBottom={null}
               style={
                 Object {
                   "backgroundColor": "transparent",
@@ -968,6 +1007,7 @@ ShallowWrapper {
                   "paddingTop": 4,
                 }
               }
+              title={undefined}
               titleStyle={
                 Object {
                   "color": "white",
@@ -1021,11 +1061,11 @@ ShallowWrapper {
                           "fontWeight": "normal",
                           "letterSpacing": 0,
                           "lineHeight": 22,
-                          "marginBottom": 4,
+                          "marginBottom": 14,
                           "marginLeft": 0,
                           "marginRight": 0,
                           "marginTop": 4,
-                          "paddingBottom": 6,
+                          "paddingBottom": 12,
                           "paddingLeft": 4,
                           "paddingTop": 6,
                         }
@@ -1060,11 +1100,11 @@ ShallowWrapper {
                           "fontWeight": "normal",
                           "letterSpacing": 0,
                           "lineHeight": 22,
-                          "marginBottom": 4,
+                          "marginBottom": 14,
                           "marginLeft": 0,
                           "marginRight": 0,
                           "marginTop": 4,
-                          "paddingBottom": 6,
+                          "paddingBottom": 12,
                           "paddingLeft": 4,
                           "paddingTop": 6,
                         }
@@ -1076,7 +1116,13 @@ ShallowWrapper {
               </View>
             </PanelView>
             <PanelView
+              body={undefined}
+              buttonTitle="Button"
+              childrenContainerStyle={Object {}}
               icon=" "
+              onButtonClick={null}
+              renderAdditionalInfo={null}
+              renderBottom={null}
               style={
                 Object {
                   "backgroundColor": "transparent",
@@ -1187,7 +1233,13 @@ ShallowWrapper {
               </Text>
             </PanelView>
             <PanelView
+              body={undefined}
+              buttonTitle="Button"
+              childrenContainerStyle={Object {}}
               icon=" "
+              onButtonClick={null}
+              renderAdditionalInfo={null}
+              renderBottom={null}
               style={
                 Object {
                   "backgroundColor": "transparent",
@@ -1540,7 +1592,13 @@ ShallowWrapper {
               </View>
             </PanelView>
             <PanelView
+              body={undefined}
+              buttonTitle="Button"
+              childrenContainerStyle={Object {}}
               icon=" "
+              onButtonClick={null}
+              renderAdditionalInfo={null}
+              renderBottom={null}
               style={
                 Object {
                   "backgroundColor": "transparent",
@@ -1587,6 +1645,8 @@ ShallowWrapper {
                   }
                 >
                   <SwitchLabeled
+                    align="left"
+                    disabled={false}
                     label="Seeking diplomatic recognition as a sovereign entity."
                     onValueChange={[Function]}
                     value={false}
@@ -1610,6 +1670,8 @@ ShallowWrapper {
                   }
                 >
                   <SwitchLabeled
+                    align="left"
+                    disabled={false}
                     label="Non-citizens may use governance services."
                     onValueChange={[Function]}
                     value={false}
@@ -1633,6 +1695,8 @@ ShallowWrapper {
                   }
                 >
                   <SwitchLabeled
+                    align="left"
+                    disabled={false}
                     label="For-profit nation."
                     onValueChange={[Function]}
                     value={false}
@@ -1699,6 +1763,13 @@ ShallowWrapper {
                 </View>
               </View>,
               <PanelView
+                body={undefined}
+                buttonTitle="Button"
+                childrenContainerStyle={Object {}}
+                icon={undefined}
+                onButtonClick={null}
+                renderAdditionalInfo={null}
+                renderBottom={null}
                 style={
                   Object {
                     "backgroundColor": "transparent",
@@ -1715,6 +1786,7 @@ ShallowWrapper {
                     "paddingTop": 4,
                   }
                 }
+                title={undefined}
                 titleStyle={
                   Object {
                     "color": "white",
@@ -1768,11 +1840,11 @@ ShallowWrapper {
                             "fontWeight": "normal",
                             "letterSpacing": 0,
                             "lineHeight": 22,
-                            "marginBottom": 4,
+                            "marginBottom": 14,
                             "marginLeft": 0,
                             "marginRight": 0,
                             "marginTop": 4,
-                            "paddingBottom": 6,
+                            "paddingBottom": 12,
                             "paddingLeft": 4,
                             "paddingTop": 6,
                           }
@@ -1807,11 +1879,11 @@ ShallowWrapper {
                             "fontWeight": "normal",
                             "letterSpacing": 0,
                             "lineHeight": 22,
-                            "marginBottom": 4,
+                            "marginBottom": 14,
                             "marginLeft": 0,
                             "marginRight": 0,
                             "marginTop": 4,
-                            "paddingBottom": 6,
+                            "paddingBottom": 12,
                             "paddingLeft": 4,
                             "paddingTop": 6,
                           }
@@ -1823,7 +1895,13 @@ ShallowWrapper {
                 </View>
               </PanelView>,
               <PanelView
+                body={undefined}
+                buttonTitle="Button"
+                childrenContainerStyle={Object {}}
                 icon=" "
+                onButtonClick={null}
+                renderAdditionalInfo={null}
+                renderBottom={null}
                 style={
                   Object {
                     "backgroundColor": "transparent",
@@ -1934,7 +2012,13 @@ ShallowWrapper {
                 </Text>
               </PanelView>,
               <PanelView
+                body={undefined}
+                buttonTitle="Button"
+                childrenContainerStyle={Object {}}
                 icon=" "
+                onButtonClick={null}
+                renderAdditionalInfo={null}
+                renderBottom={null}
                 style={
                   Object {
                     "backgroundColor": "transparent",
@@ -2287,7 +2371,13 @@ ShallowWrapper {
                 </View>
               </PanelView>,
               <PanelView
+                body={undefined}
+                buttonTitle="Button"
+                childrenContainerStyle={Object {}}
                 icon=" "
+                onButtonClick={null}
+                renderAdditionalInfo={null}
+                renderBottom={null}
                 style={
                   Object {
                     "backgroundColor": "transparent",
@@ -2334,6 +2424,8 @@ ShallowWrapper {
                     }
                   >
                     <SwitchLabeled
+                      align="left"
+                      disabled={false}
                       label="Seeking diplomatic recognition as a sovereign entity."
                       onValueChange={[Function]}
                       value={false}
@@ -2357,6 +2449,8 @@ ShallowWrapper {
                     }
                   >
                     <SwitchLabeled
+                      align="left"
+                      disabled={false}
                       label="Non-citizens may use governance services."
                       onValueChange={[Function]}
                       value={false}
@@ -2380,6 +2474,8 @@ ShallowWrapper {
                     }
                   >
                     <SwitchLabeled
+                      align="left"
+                      disabled={false}
                       label="For-profit nation."
                       onValueChange={[Function]}
                       value={false}
@@ -2506,6 +2602,8 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "class",
               "props": Object {
+                "body": undefined,
+                "buttonTitle": "Button",
                 "children": <View
                   style={
                     Object {
@@ -2547,11 +2645,11 @@ ShallowWrapper {
                             "fontWeight": "normal",
                             "letterSpacing": 0,
                             "lineHeight": 22,
-                            "marginBottom": 4,
+                            "marginBottom": 14,
                             "marginLeft": 0,
                             "marginRight": 0,
                             "marginTop": 4,
-                            "paddingBottom": 6,
+                            "paddingBottom": 12,
                             "paddingLeft": 4,
                             "paddingTop": 6,
                           }
@@ -2586,11 +2684,11 @@ ShallowWrapper {
                             "fontWeight": "normal",
                             "letterSpacing": 0,
                             "lineHeight": 22,
-                            "marginBottom": 4,
+                            "marginBottom": 14,
                             "marginLeft": 0,
                             "marginRight": 0,
                             "marginTop": 4,
-                            "paddingBottom": 6,
+                            "paddingBottom": 12,
                             "paddingLeft": 4,
                             "paddingTop": 6,
                           }
@@ -2600,6 +2698,11 @@ ShallowWrapper {
                     </View>
                   </View>
                 </View>,
+                "childrenContainerStyle": Object {},
+                "icon": undefined,
+                "onButtonClick": null,
+                "renderAdditionalInfo": null,
+                "renderBottom": null,
                 "style": Object {
                   "backgroundColor": "transparent",
                   "borderRadius": 8,
@@ -2614,6 +2717,7 @@ ShallowWrapper {
                   "paddingRight": 8,
                   "paddingTop": 4,
                 },
+                "title": undefined,
                 "titleStyle": Object {
                   "color": "white",
                   "fontFamily": "Roboto",
@@ -2663,11 +2767,11 @@ ShallowWrapper {
                             "fontWeight": "normal",
                             "letterSpacing": 0,
                             "lineHeight": 22,
-                            "marginBottom": 4,
+                            "marginBottom": 14,
                             "marginLeft": 0,
                             "marginRight": 0,
                             "marginTop": 4,
-                            "paddingBottom": 6,
+                            "paddingBottom": 12,
                             "paddingLeft": 4,
                             "paddingTop": 6,
                           }
@@ -2702,11 +2806,11 @@ ShallowWrapper {
                             "fontWeight": "normal",
                             "letterSpacing": 0,
                             "lineHeight": 22,
-                            "marginBottom": 4,
+                            "marginBottom": 14,
                             "marginLeft": 0,
                             "marginRight": 0,
                             "marginTop": 4,
-                            "paddingBottom": 6,
+                            "paddingBottom": 12,
                             "paddingLeft": 4,
                             "paddingTop": 6,
                           }
@@ -2752,11 +2856,11 @@ ShallowWrapper {
                               "fontWeight": "normal",
                               "letterSpacing": 0,
                               "lineHeight": 22,
-                              "marginBottom": 4,
+                              "marginBottom": 14,
                               "marginLeft": 0,
                               "marginRight": 0,
                               "marginTop": 4,
-                              "paddingBottom": 6,
+                              "paddingBottom": 12,
                               "paddingLeft": 4,
                               "paddingTop": 6,
                             }
@@ -2791,11 +2895,11 @@ ShallowWrapper {
                               "fontWeight": "normal",
                               "letterSpacing": 0,
                               "lineHeight": 22,
-                              "marginBottom": 4,
+                              "marginBottom": 14,
                               "marginLeft": 0,
                               "marginRight": 0,
                               "marginTop": 4,
-                              "paddingBottom": 6,
+                              "paddingBottom": 12,
                               "paddingLeft": 4,
                               "paddingTop": 6,
                             }
@@ -2833,11 +2937,11 @@ ShallowWrapper {
                               "fontWeight": "normal",
                               "letterSpacing": 0,
                               "lineHeight": 22,
-                              "marginBottom": 4,
+                              "marginBottom": 14,
                               "marginLeft": 0,
                               "marginRight": 0,
                               "marginTop": 4,
-                              "paddingBottom": 6,
+                              "paddingBottom": 12,
                               "paddingLeft": 4,
                               "paddingTop": 6,
                             }
@@ -2870,11 +2974,11 @@ ShallowWrapper {
                             "fontWeight": "normal",
                             "letterSpacing": 0,
                             "lineHeight": 22,
-                            "marginBottom": 4,
+                            "marginBottom": 14,
                             "marginLeft": 0,
                             "marginRight": 0,
                             "marginTop": 4,
-                            "paddingBottom": 6,
+                            "paddingBottom": 12,
                             "paddingLeft": 4,
                             "paddingTop": 6,
                           },
@@ -2910,11 +3014,11 @@ ShallowWrapper {
                               "fontWeight": "normal",
                               "letterSpacing": 0,
                               "lineHeight": 22,
-                              "marginBottom": 4,
+                              "marginBottom": 14,
                               "marginLeft": 0,
                               "marginRight": 0,
                               "marginTop": 4,
-                              "paddingBottom": 6,
+                              "paddingBottom": 12,
                               "paddingLeft": 4,
                               "paddingTop": 6,
                             }
@@ -2949,11 +3053,11 @@ ShallowWrapper {
                             "fontWeight": "normal",
                             "letterSpacing": 0,
                             "lineHeight": 22,
-                            "marginBottom": 4,
+                            "marginBottom": 14,
                             "marginLeft": 0,
                             "marginRight": 0,
                             "marginTop": 4,
-                            "paddingBottom": 6,
+                            "paddingBottom": 12,
                             "paddingLeft": 4,
                             "paddingTop": 6,
                           },
@@ -2977,6 +3081,8 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "class",
               "props": Object {
+                "body": undefined,
+                "buttonTitle": "Button",
                 "children": Array [
                   <View
                     style={
@@ -3059,7 +3165,11 @@ ShallowWrapper {
                     Virtual nations exist only in Pangea. Geographic nations are on Earth.
                   </Text>,
                 ],
+                "childrenContainerStyle": Object {},
                 "icon": " ",
+                "onButtonClick": null,
+                "renderAdditionalInfo": null,
+                "renderBottom": null,
                 "style": Object {
                   "backgroundColor": "transparent",
                   "borderRadius": 8,
@@ -3289,6 +3399,8 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "class",
               "props": Object {
+                "body": undefined,
+                "buttonTitle": "Button",
                 "children": Array [
                   <View
                     style={
@@ -3612,7 +3724,11 @@ ShallowWrapper {
                     </View>
                   </View>,
                 ],
+                "childrenContainerStyle": Object {},
                 "icon": " ",
+                "onButtonClick": null,
+                "renderAdditionalInfo": null,
+                "renderBottom": null,
                 "style": Object {
                   "backgroundColor": "transparent",
                   "borderRadius": 8,
@@ -4559,6 +4675,8 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "class",
               "props": Object {
+                "body": undefined,
+                "buttonTitle": "Button",
                 "children": Array [
                   <View
                     style={
@@ -4577,6 +4695,8 @@ ShallowWrapper {
                       }
                     >
                       <SwitchLabeled
+                        align="left"
+                        disabled={false}
                         label="Seeking diplomatic recognition as a sovereign entity."
                         onValueChange={[Function]}
                         value={false}
@@ -4600,6 +4720,8 @@ ShallowWrapper {
                       }
                     >
                       <SwitchLabeled
+                        align="left"
+                        disabled={false}
                         label="Non-citizens may use governance services."
                         onValueChange={[Function]}
                         value={false}
@@ -4623,6 +4745,8 @@ ShallowWrapper {
                       }
                     >
                       <SwitchLabeled
+                        align="left"
+                        disabled={false}
                         label="For-profit nation."
                         onValueChange={[Function]}
                         value={false}
@@ -4630,7 +4754,11 @@ ShallowWrapper {
                     </View>
                   </View>,
                 ],
+                "childrenContainerStyle": Object {},
                 "icon": " ",
+                "onButtonClick": null,
+                "renderAdditionalInfo": null,
+                "renderBottom": null,
                 "style": Object {
                   "backgroundColor": "transparent",
                   "borderRadius": 8,
@@ -4672,6 +4800,8 @@ ShallowWrapper {
                       }
                     >
                       <SwitchLabeled
+                        align="left"
+                        disabled={false}
                         label="Seeking diplomatic recognition as a sovereign entity."
                         onValueChange={[Function]}
                         value={false}
@@ -4689,6 +4819,8 @@ ShallowWrapper {
                     "nodeType": "class",
                     "props": Object {
                       "children": <SwitchLabeled
+                        align="left"
+                        disabled={false}
                         label="Seeking diplomatic recognition as a sovereign entity."
                         onValueChange={[Function]}
                         value={false}
@@ -4704,6 +4836,8 @@ ShallowWrapper {
                       "key": undefined,
                       "nodeType": "function",
                       "props": Object {
+                        "align": "left",
+                        "disabled": false,
                         "label": "Seeking diplomatic recognition as a sovereign entity.",
                         "onValueChange": [Function],
                         "value": false,
@@ -4730,6 +4864,8 @@ ShallowWrapper {
                       }
                     >
                       <SwitchLabeled
+                        align="left"
+                        disabled={false}
                         label="Non-citizens may use governance services."
                         onValueChange={[Function]}
                         value={false}
@@ -4747,6 +4883,8 @@ ShallowWrapper {
                     "nodeType": "class",
                     "props": Object {
                       "children": <SwitchLabeled
+                        align="left"
+                        disabled={false}
                         label="Non-citizens may use governance services."
                         onValueChange={[Function]}
                         value={false}
@@ -4762,6 +4900,8 @@ ShallowWrapper {
                       "key": undefined,
                       "nodeType": "function",
                       "props": Object {
+                        "align": "left",
+                        "disabled": false,
                         "label": "Non-citizens may use governance services.",
                         "onValueChange": [Function],
                         "value": false,
@@ -4788,6 +4928,8 @@ ShallowWrapper {
                       }
                     >
                       <SwitchLabeled
+                        align="left"
+                        disabled={false}
                         label="For-profit nation."
                         onValueChange={[Function]}
                         value={false}
@@ -4805,6 +4947,8 @@ ShallowWrapper {
                     "nodeType": "class",
                     "props": Object {
                       "children": <SwitchLabeled
+                        align="left"
+                        disabled={false}
                         label="For-profit nation."
                         onValueChange={[Function]}
                         value={false}
@@ -4820,6 +4964,8 @@ ShallowWrapper {
                       "key": undefined,
                       "nodeType": "function",
                       "props": Object {
+                        "align": "left",
+                        "disabled": false,
                         "label": "For-profit nation.",
                         "onValueChange": [Function],
                         "value": false,
@@ -5029,6 +5175,13 @@ ShallowWrapper {
                 </View>
               </View>
               <PanelView
+                body={undefined}
+                buttonTitle="Button"
+                childrenContainerStyle={Object {}}
+                icon={undefined}
+                onButtonClick={null}
+                renderAdditionalInfo={null}
+                renderBottom={null}
                 style={
                   Object {
                     "backgroundColor": "transparent",
@@ -5045,6 +5198,7 @@ ShallowWrapper {
                     "paddingTop": 4,
                   }
                 }
+                title={undefined}
                 titleStyle={
                   Object {
                     "color": "white",
@@ -5098,11 +5252,11 @@ ShallowWrapper {
                             "fontWeight": "normal",
                             "letterSpacing": 0,
                             "lineHeight": 22,
-                            "marginBottom": 4,
+                            "marginBottom": 14,
                             "marginLeft": 0,
                             "marginRight": 0,
                             "marginTop": 4,
-                            "paddingBottom": 6,
+                            "paddingBottom": 12,
                             "paddingLeft": 4,
                             "paddingTop": 6,
                           }
@@ -5137,11 +5291,11 @@ ShallowWrapper {
                             "fontWeight": "normal",
                             "letterSpacing": 0,
                             "lineHeight": 22,
-                            "marginBottom": 4,
+                            "marginBottom": 14,
                             "marginLeft": 0,
                             "marginRight": 0,
                             "marginTop": 4,
-                            "paddingBottom": 6,
+                            "paddingBottom": 12,
                             "paddingLeft": 4,
                             "paddingTop": 6,
                           }
@@ -5153,7 +5307,13 @@ ShallowWrapper {
                 </View>
               </PanelView>
               <PanelView
+                body={undefined}
+                buttonTitle="Button"
+                childrenContainerStyle={Object {}}
                 icon=" "
+                onButtonClick={null}
+                renderAdditionalInfo={null}
+                renderBottom={null}
                 style={
                   Object {
                     "backgroundColor": "transparent",
@@ -5264,7 +5424,13 @@ ShallowWrapper {
                 </Text>
               </PanelView>
               <PanelView
+                body={undefined}
+                buttonTitle="Button"
+                childrenContainerStyle={Object {}}
                 icon=" "
+                onButtonClick={null}
+                renderAdditionalInfo={null}
+                renderBottom={null}
                 style={
                   Object {
                     "backgroundColor": "transparent",
@@ -5617,7 +5783,13 @@ ShallowWrapper {
                 </View>
               </PanelView>
               <PanelView
+                body={undefined}
+                buttonTitle="Button"
+                childrenContainerStyle={Object {}}
                 icon=" "
+                onButtonClick={null}
+                renderAdditionalInfo={null}
+                renderBottom={null}
                 style={
                   Object {
                     "backgroundColor": "transparent",
@@ -5664,6 +5836,8 @@ ShallowWrapper {
                     }
                   >
                     <SwitchLabeled
+                      align="left"
+                      disabled={false}
                       label="Seeking diplomatic recognition as a sovereign entity."
                       onValueChange={[Function]}
                       value={false}
@@ -5687,6 +5861,8 @@ ShallowWrapper {
                     }
                   >
                     <SwitchLabeled
+                      align="left"
+                      disabled={false}
                       label="Non-citizens may use governance services."
                       onValueChange={[Function]}
                       value={false}
@@ -5710,6 +5886,8 @@ ShallowWrapper {
                     }
                   >
                     <SwitchLabeled
+                      align="left"
+                      disabled={false}
                       label="For-profit nation."
                       onValueChange={[Function]}
                       value={false}
@@ -5851,6 +6029,13 @@ ShallowWrapper {
                 </View>
               </View>
               <PanelView
+                body={undefined}
+                buttonTitle="Button"
+                childrenContainerStyle={Object {}}
+                icon={undefined}
+                onButtonClick={null}
+                renderAdditionalInfo={null}
+                renderBottom={null}
                 style={
                   Object {
                     "backgroundColor": "transparent",
@@ -5867,6 +6052,7 @@ ShallowWrapper {
                     "paddingTop": 4,
                   }
                 }
+                title={undefined}
                 titleStyle={
                   Object {
                     "color": "white",
@@ -5920,11 +6106,11 @@ ShallowWrapper {
                             "fontWeight": "normal",
                             "letterSpacing": 0,
                             "lineHeight": 22,
-                            "marginBottom": 4,
+                            "marginBottom": 14,
                             "marginLeft": 0,
                             "marginRight": 0,
                             "marginTop": 4,
-                            "paddingBottom": 6,
+                            "paddingBottom": 12,
                             "paddingLeft": 4,
                             "paddingTop": 6,
                           }
@@ -5959,11 +6145,11 @@ ShallowWrapper {
                             "fontWeight": "normal",
                             "letterSpacing": 0,
                             "lineHeight": 22,
-                            "marginBottom": 4,
+                            "marginBottom": 14,
                             "marginLeft": 0,
                             "marginRight": 0,
                             "marginTop": 4,
-                            "paddingBottom": 6,
+                            "paddingBottom": 12,
                             "paddingLeft": 4,
                             "paddingTop": 6,
                           }
@@ -5975,7 +6161,13 @@ ShallowWrapper {
                 </View>
               </PanelView>
               <PanelView
+                body={undefined}
+                buttonTitle="Button"
+                childrenContainerStyle={Object {}}
                 icon=" "
+                onButtonClick={null}
+                renderAdditionalInfo={null}
+                renderBottom={null}
                 style={
                   Object {
                     "backgroundColor": "transparent",
@@ -6086,7 +6278,13 @@ ShallowWrapper {
                 </Text>
               </PanelView>
               <PanelView
+                body={undefined}
+                buttonTitle="Button"
+                childrenContainerStyle={Object {}}
                 icon=" "
+                onButtonClick={null}
+                renderAdditionalInfo={null}
+                renderBottom={null}
                 style={
                   Object {
                     "backgroundColor": "transparent",
@@ -6439,7 +6637,13 @@ ShallowWrapper {
                 </View>
               </PanelView>
               <PanelView
+                body={undefined}
+                buttonTitle="Button"
+                childrenContainerStyle={Object {}}
                 icon=" "
+                onButtonClick={null}
+                renderAdditionalInfo={null}
+                renderBottom={null}
                 style={
                   Object {
                     "backgroundColor": "transparent",
@@ -6486,6 +6690,8 @@ ShallowWrapper {
                     }
                   >
                     <SwitchLabeled
+                      align="left"
+                      disabled={false}
                       label="Seeking diplomatic recognition as a sovereign entity."
                       onValueChange={[Function]}
                       value={false}
@@ -6509,6 +6715,8 @@ ShallowWrapper {
                     }
                   >
                     <SwitchLabeled
+                      align="left"
+                      disabled={false}
                       label="Non-citizens may use governance services."
                       onValueChange={[Function]}
                       value={false}
@@ -6532,6 +6740,8 @@ ShallowWrapper {
                     }
                   >
                     <SwitchLabeled
+                      align="left"
+                      disabled={false}
                       label="For-profit nation."
                       onValueChange={[Function]}
                       value={false}
@@ -6598,6 +6808,13 @@ ShallowWrapper {
                   </View>
                 </View>,
                 <PanelView
+                  body={undefined}
+                  buttonTitle="Button"
+                  childrenContainerStyle={Object {}}
+                  icon={undefined}
+                  onButtonClick={null}
+                  renderAdditionalInfo={null}
+                  renderBottom={null}
                   style={
                     Object {
                       "backgroundColor": "transparent",
@@ -6614,6 +6831,7 @@ ShallowWrapper {
                       "paddingTop": 4,
                     }
                   }
+                  title={undefined}
                   titleStyle={
                     Object {
                       "color": "white",
@@ -6667,11 +6885,11 @@ ShallowWrapper {
                               "fontWeight": "normal",
                               "letterSpacing": 0,
                               "lineHeight": 22,
-                              "marginBottom": 4,
+                              "marginBottom": 14,
                               "marginLeft": 0,
                               "marginRight": 0,
                               "marginTop": 4,
-                              "paddingBottom": 6,
+                              "paddingBottom": 12,
                               "paddingLeft": 4,
                               "paddingTop": 6,
                             }
@@ -6706,11 +6924,11 @@ ShallowWrapper {
                               "fontWeight": "normal",
                               "letterSpacing": 0,
                               "lineHeight": 22,
-                              "marginBottom": 4,
+                              "marginBottom": 14,
                               "marginLeft": 0,
                               "marginRight": 0,
                               "marginTop": 4,
-                              "paddingBottom": 6,
+                              "paddingBottom": 12,
                               "paddingLeft": 4,
                               "paddingTop": 6,
                             }
@@ -6722,7 +6940,13 @@ ShallowWrapper {
                   </View>
                 </PanelView>,
                 <PanelView
+                  body={undefined}
+                  buttonTitle="Button"
+                  childrenContainerStyle={Object {}}
                   icon=" "
+                  onButtonClick={null}
+                  renderAdditionalInfo={null}
+                  renderBottom={null}
                   style={
                     Object {
                       "backgroundColor": "transparent",
@@ -6833,7 +7057,13 @@ ShallowWrapper {
                   </Text>
                 </PanelView>,
                 <PanelView
+                  body={undefined}
+                  buttonTitle="Button"
+                  childrenContainerStyle={Object {}}
                   icon=" "
+                  onButtonClick={null}
+                  renderAdditionalInfo={null}
+                  renderBottom={null}
                   style={
                     Object {
                       "backgroundColor": "transparent",
@@ -7186,7 +7416,13 @@ ShallowWrapper {
                   </View>
                 </PanelView>,
                 <PanelView
+                  body={undefined}
+                  buttonTitle="Button"
+                  childrenContainerStyle={Object {}}
                   icon=" "
+                  onButtonClick={null}
+                  renderAdditionalInfo={null}
+                  renderBottom={null}
                   style={
                     Object {
                       "backgroundColor": "transparent",
@@ -7233,6 +7469,8 @@ ShallowWrapper {
                       }
                     >
                       <SwitchLabeled
+                        align="left"
+                        disabled={false}
                         label="Seeking diplomatic recognition as a sovereign entity."
                         onValueChange={[Function]}
                         value={false}
@@ -7256,6 +7494,8 @@ ShallowWrapper {
                       }
                     >
                       <SwitchLabeled
+                        align="left"
+                        disabled={false}
                         label="Non-citizens may use governance services."
                         onValueChange={[Function]}
                         value={false}
@@ -7279,6 +7519,8 @@ ShallowWrapper {
                       }
                     >
                       <SwitchLabeled
+                        align="left"
+                        disabled={false}
                         label="For-profit nation."
                         onValueChange={[Function]}
                         value={false}
@@ -7405,6 +7647,8 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "class",
                 "props": Object {
+                  "body": undefined,
+                  "buttonTitle": "Button",
                   "children": <View
                     style={
                       Object {
@@ -7446,11 +7690,11 @@ ShallowWrapper {
                               "fontWeight": "normal",
                               "letterSpacing": 0,
                               "lineHeight": 22,
-                              "marginBottom": 4,
+                              "marginBottom": 14,
                               "marginLeft": 0,
                               "marginRight": 0,
                               "marginTop": 4,
-                              "paddingBottom": 6,
+                              "paddingBottom": 12,
                               "paddingLeft": 4,
                               "paddingTop": 6,
                             }
@@ -7485,11 +7729,11 @@ ShallowWrapper {
                               "fontWeight": "normal",
                               "letterSpacing": 0,
                               "lineHeight": 22,
-                              "marginBottom": 4,
+                              "marginBottom": 14,
                               "marginLeft": 0,
                               "marginRight": 0,
                               "marginTop": 4,
-                              "paddingBottom": 6,
+                              "paddingBottom": 12,
                               "paddingLeft": 4,
                               "paddingTop": 6,
                             }
@@ -7499,6 +7743,11 @@ ShallowWrapper {
                       </View>
                     </View>
                   </View>,
+                  "childrenContainerStyle": Object {},
+                  "icon": undefined,
+                  "onButtonClick": null,
+                  "renderAdditionalInfo": null,
+                  "renderBottom": null,
                   "style": Object {
                     "backgroundColor": "transparent",
                     "borderRadius": 8,
@@ -7513,6 +7762,7 @@ ShallowWrapper {
                     "paddingRight": 8,
                     "paddingTop": 4,
                   },
+                  "title": undefined,
                   "titleStyle": Object {
                     "color": "white",
                     "fontFamily": "Roboto",
@@ -7562,11 +7812,11 @@ ShallowWrapper {
                               "fontWeight": "normal",
                               "letterSpacing": 0,
                               "lineHeight": 22,
-                              "marginBottom": 4,
+                              "marginBottom": 14,
                               "marginLeft": 0,
                               "marginRight": 0,
                               "marginTop": 4,
-                              "paddingBottom": 6,
+                              "paddingBottom": 12,
                               "paddingLeft": 4,
                               "paddingTop": 6,
                             }
@@ -7601,11 +7851,11 @@ ShallowWrapper {
                               "fontWeight": "normal",
                               "letterSpacing": 0,
                               "lineHeight": 22,
-                              "marginBottom": 4,
+                              "marginBottom": 14,
                               "marginLeft": 0,
                               "marginRight": 0,
                               "marginTop": 4,
-                              "paddingBottom": 6,
+                              "paddingBottom": 12,
                               "paddingLeft": 4,
                               "paddingTop": 6,
                             }
@@ -7651,11 +7901,11 @@ ShallowWrapper {
                                 "fontWeight": "normal",
                                 "letterSpacing": 0,
                                 "lineHeight": 22,
-                                "marginBottom": 4,
+                                "marginBottom": 14,
                                 "marginLeft": 0,
                                 "marginRight": 0,
                                 "marginTop": 4,
-                                "paddingBottom": 6,
+                                "paddingBottom": 12,
                                 "paddingLeft": 4,
                                 "paddingTop": 6,
                               }
@@ -7690,11 +7940,11 @@ ShallowWrapper {
                                 "fontWeight": "normal",
                                 "letterSpacing": 0,
                                 "lineHeight": 22,
-                                "marginBottom": 4,
+                                "marginBottom": 14,
                                 "marginLeft": 0,
                                 "marginRight": 0,
                                 "marginTop": 4,
-                                "paddingBottom": 6,
+                                "paddingBottom": 12,
                                 "paddingLeft": 4,
                                 "paddingTop": 6,
                               }
@@ -7732,11 +7982,11 @@ ShallowWrapper {
                                 "fontWeight": "normal",
                                 "letterSpacing": 0,
                                 "lineHeight": 22,
-                                "marginBottom": 4,
+                                "marginBottom": 14,
                                 "marginLeft": 0,
                                 "marginRight": 0,
                                 "marginTop": 4,
-                                "paddingBottom": 6,
+                                "paddingBottom": 12,
                                 "paddingLeft": 4,
                                 "paddingTop": 6,
                               }
@@ -7769,11 +8019,11 @@ ShallowWrapper {
                               "fontWeight": "normal",
                               "letterSpacing": 0,
                               "lineHeight": 22,
-                              "marginBottom": 4,
+                              "marginBottom": 14,
                               "marginLeft": 0,
                               "marginRight": 0,
                               "marginTop": 4,
-                              "paddingBottom": 6,
+                              "paddingBottom": 12,
                               "paddingLeft": 4,
                               "paddingTop": 6,
                             },
@@ -7809,11 +8059,11 @@ ShallowWrapper {
                                 "fontWeight": "normal",
                                 "letterSpacing": 0,
                                 "lineHeight": 22,
-                                "marginBottom": 4,
+                                "marginBottom": 14,
                                 "marginLeft": 0,
                                 "marginRight": 0,
                                 "marginTop": 4,
-                                "paddingBottom": 6,
+                                "paddingBottom": 12,
                                 "paddingLeft": 4,
                                 "paddingTop": 6,
                               }
@@ -7848,11 +8098,11 @@ ShallowWrapper {
                               "fontWeight": "normal",
                               "letterSpacing": 0,
                               "lineHeight": 22,
-                              "marginBottom": 4,
+                              "marginBottom": 14,
                               "marginLeft": 0,
                               "marginRight": 0,
                               "marginTop": 4,
-                              "paddingBottom": 6,
+                              "paddingBottom": 12,
                               "paddingLeft": 4,
                               "paddingTop": 6,
                             },
@@ -7876,6 +8126,8 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "class",
                 "props": Object {
+                  "body": undefined,
+                  "buttonTitle": "Button",
                   "children": Array [
                     <View
                       style={
@@ -7958,7 +8210,11 @@ ShallowWrapper {
                       Virtual nations exist only in Pangea. Geographic nations are on Earth.
                     </Text>,
                   ],
+                  "childrenContainerStyle": Object {},
                   "icon": " ",
+                  "onButtonClick": null,
+                  "renderAdditionalInfo": null,
+                  "renderBottom": null,
                   "style": Object {
                     "backgroundColor": "transparent",
                     "borderRadius": 8,
@@ -8188,6 +8444,8 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "class",
                 "props": Object {
+                  "body": undefined,
+                  "buttonTitle": "Button",
                   "children": Array [
                     <View
                       style={
@@ -8511,7 +8769,11 @@ ShallowWrapper {
                       </View>
                     </View>,
                   ],
+                  "childrenContainerStyle": Object {},
                   "icon": " ",
+                  "onButtonClick": null,
+                  "renderAdditionalInfo": null,
+                  "renderBottom": null,
                   "style": Object {
                     "backgroundColor": "transparent",
                     "borderRadius": 8,
@@ -9458,6 +9720,8 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "class",
                 "props": Object {
+                  "body": undefined,
+                  "buttonTitle": "Button",
                   "children": Array [
                     <View
                       style={
@@ -9476,6 +9740,8 @@ ShallowWrapper {
                         }
                       >
                         <SwitchLabeled
+                          align="left"
+                          disabled={false}
                           label="Seeking diplomatic recognition as a sovereign entity."
                           onValueChange={[Function]}
                           value={false}
@@ -9499,6 +9765,8 @@ ShallowWrapper {
                         }
                       >
                         <SwitchLabeled
+                          align="left"
+                          disabled={false}
                           label="Non-citizens may use governance services."
                           onValueChange={[Function]}
                           value={false}
@@ -9522,6 +9790,8 @@ ShallowWrapper {
                         }
                       >
                         <SwitchLabeled
+                          align="left"
+                          disabled={false}
                           label="For-profit nation."
                           onValueChange={[Function]}
                           value={false}
@@ -9529,7 +9799,11 @@ ShallowWrapper {
                       </View>
                     </View>,
                   ],
+                  "childrenContainerStyle": Object {},
                   "icon": " ",
+                  "onButtonClick": null,
+                  "renderAdditionalInfo": null,
+                  "renderBottom": null,
                   "style": Object {
                     "backgroundColor": "transparent",
                     "borderRadius": 8,
@@ -9571,6 +9845,8 @@ ShallowWrapper {
                         }
                       >
                         <SwitchLabeled
+                          align="left"
+                          disabled={false}
                           label="Seeking diplomatic recognition as a sovereign entity."
                           onValueChange={[Function]}
                           value={false}
@@ -9588,6 +9864,8 @@ ShallowWrapper {
                       "nodeType": "class",
                       "props": Object {
                         "children": <SwitchLabeled
+                          align="left"
+                          disabled={false}
                           label="Seeking diplomatic recognition as a sovereign entity."
                           onValueChange={[Function]}
                           value={false}
@@ -9603,6 +9881,8 @@ ShallowWrapper {
                         "key": undefined,
                         "nodeType": "function",
                         "props": Object {
+                          "align": "left",
+                          "disabled": false,
                           "label": "Seeking diplomatic recognition as a sovereign entity.",
                           "onValueChange": [Function],
                           "value": false,
@@ -9629,6 +9909,8 @@ ShallowWrapper {
                         }
                       >
                         <SwitchLabeled
+                          align="left"
+                          disabled={false}
                           label="Non-citizens may use governance services."
                           onValueChange={[Function]}
                           value={false}
@@ -9646,6 +9928,8 @@ ShallowWrapper {
                       "nodeType": "class",
                       "props": Object {
                         "children": <SwitchLabeled
+                          align="left"
+                          disabled={false}
                           label="Non-citizens may use governance services."
                           onValueChange={[Function]}
                           value={false}
@@ -9661,6 +9945,8 @@ ShallowWrapper {
                         "key": undefined,
                         "nodeType": "function",
                         "props": Object {
+                          "align": "left",
+                          "disabled": false,
                           "label": "Non-citizens may use governance services.",
                           "onValueChange": [Function],
                           "value": false,
@@ -9687,6 +9973,8 @@ ShallowWrapper {
                         }
                       >
                         <SwitchLabeled
+                          align="left"
+                          disabled={false}
                           label="For-profit nation."
                           onValueChange={[Function]}
                           value={false}
@@ -9704,6 +9992,8 @@ ShallowWrapper {
                       "nodeType": "class",
                       "props": Object {
                         "children": <SwitchLabeled
+                          align="left"
+                          disabled={false}
                           label="For-profit nation."
                           onValueChange={[Function]}
                           value={false}
@@ -9719,6 +10009,8 @@ ShallowWrapper {
                         "key": undefined,
                         "nodeType": "function",
                         "props": Object {
+                          "align": "left",
+                          "disabled": false,
                           "label": "For-profit nation.",
                           "onValueChange": [Function],
                           "value": false,

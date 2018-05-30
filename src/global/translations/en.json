@@ -49,7 +49,8 @@
     "updateFailed": "Update failed",
     "ethereum": "Ethereum",
     "continue": "Continue",
-    "location": "Location"
+    "location": "Location",
+    "accounts": "Accounts"
   },
   "enums": {
     "nation": {
@@ -180,6 +181,18 @@
     "nationsDisabled": {
       "title": "This function is disabled in this release. It will be re-enabled on March 3.",
       "confirm": "$t(common.ok)"
+    },
+    "passcodeVerificationFailed": {
+      "title": "Passcode mismatch",
+      "subtitle": "Please enter passcode carefully again.",
+      "tryAgain": "Try again",
+      "startOver": "Start over"
+    },
+    "changingPasscodeType": {
+      "title": "Change passcode?",
+      "subtitle": "Changing the passcode type requires you to change your passcode",
+      "confirm": "$t(common.ok)",
+      "cancel": "$t(common.cancel)"
     }
   },
   "screens": {
@@ -199,6 +212,46 @@
       "nations": {
         "title": "Borderless       Decentralized      Nations",
         "text": "They can form a nation to get a fair deal, enforce contracts, and share working knowledge."
+      }
+    },
+    "accounts": {
+      "title": "Accounts",
+      "introduction": "Create a new account or restore an account you have backed up.",
+      "newAccount": "New Account",
+      "restoreAccount": "Restore Account",
+      "create": {
+        "prev": "Previous",
+        "next": "Next",
+        "title": "Create Account",
+        "securityTitle": "Security Settings",
+        "numericCode": "Numeric Passcode (less secure)",
+        "codeLength": "Passcode Length",
+        "lockAccount": "Lock Account when app closes",
+        "requireCode": "Require Passcode for",
+        "payment": "Payments & Editing",
+        "editAccount": "Edit Account",
+        "developerTitle": "Developer Settings",
+        "testingAccount": "Testing Account",
+        "useMainNetwork": "Using main Ethereum network",
+        "useRinkebyNetwork": "Using Rinkeby testing network",
+        "detailLogging": "Detailed Logging",
+        "debuggingTools": "Debugging Tools",
+        "identityTitle": "Create Identity",
+        "name": "Name",
+        "location": "Location",
+        "readyUse": "Your account is ready to use.",
+        "walletEmpty": "Your account is ready, but your wallet is empty. Please add ETH to your wallet so you can do stuff.",
+        "openDashboard": "Open Dashboard",
+        "openWallet": "Open ETH Wallet"
+      },
+      "restore": {
+        "title": "Restore Account",
+        "source": "Restore your account from:",
+        "clipboard": "Restore from Clipboard",
+        "file": "Restore from File",
+        "cloud": "Restore from Cloud",
+        "emptyWalletStatement": "Your wallet is empty or low. Please add ETH to your wallet so you can do stuff.",
+        "sendETH": "Send ETH to address"
       }
     },
     "dashboard": {
@@ -223,6 +276,11 @@
         "title": "Notice",
         "body": "Smart contracts will be upgraded in the near future.",
         "button": "More"
+      },
+      "confirmKeyPanel": {
+        "title": "Important",
+        "body": "Write down your private key to not lose your account.",
+        "button": "Start"
       }
     },
     "chat": {
@@ -344,20 +402,14 @@
         }
       }
     },
-    "createKey": {
-      "title": "Create Wallet",
-      "introduction": [
-        "To secure your wallet, you first need a \"private key.\"",
-        "You must write down your private key on paper. This process only takes a few minutes.",
-        "If you change your phone, the only way to recover your wallet is by entering your private key!",
-        "Your private key protects everything in Bitnation, so save your written private key in a safe place."
-      ],
+    "confirmKey": {
+      "title": "Confirm Private Key",
       "instructions": {
         "beforeGrid": [
-          "We will show you a group of {{KEY_LENGTH}} words that is the private key that unlocks your wallet."
+          "We will show you a group of {{KEY_LENGTH}} words that is the private key of your account."
         ],
         "afterGrid": [
-          "Write the words on paper, in order. Store the paper in very safe place. If your device is lost, stolen, broken, or upgraded, you must have this key to restore or unlock your wallet."
+          "Write the words on paper, in order. Store the paper in very safe place. If your device is lost, stolen, broken, or upgraded, you must have this key to restore your account."
         ]
       },
       "process": {
@@ -376,14 +428,6 @@
         "You will type the {{KEY_LENGTH}} words of your private key into the app, and we will check that your written private key is correct.",
         "Your private key protects everything in Bitnation, so be sure to put your paper with your private key in a safe place."
       ],
-      "process": {
-        "instructions": [
-          "Enter in the correct order the {{KEY_LENGTH}} words that you wrote down as your paper key. Tap a box to begin."
-        ],
-        "nextButton": "$t(common.next)",
-        "previousButton": "$t(common.previous)",
-        "doneButton": "$t(common.done)"
-      },
       "success": {
         "instructions": [
           "Congratulations! You correctly entered your private key.",
@@ -393,14 +437,22 @@
       },
       "startButton": "$t(common.begin)"
     },
-    "loadWallet": {
-      "title": "Load wallet",
+    "enterPrivateKey": {
       "instructions": [
-        "If you have a private key from another Bitnation wallet, you can use it here to add that wallet to this app.",
-        "For example, if you lost or upgraded your device, you will have to transfer wallets from that device to this one.",
-        "To load your wallet, we will ask you for the {{KEY_LENGTH}} words of your private key. You should have these on a piece of paper you store in a safe and secure place."
+        "Enter in the correct order the {{KEY_LENGTH}} words that you wrote down as your paper key. Tap a box to begin."
       ],
-      "startButton": "$t(common.begin)"
+      "nextButton": "$t(common.next)",
+      "previousButton": "$t(common.previous)",
+      "doneButton": "$t(common.done)"
+    },
+    "viewPrivateKey": {
+      "title": "Private key",
+      "instructions": [],
+      "nextButton": "$t(common.next)",
+      "previousButton": "$t(common.previous)"
+    },
+    "restoreKey": {
+      "title": "Restore account"
     },
     "sendMoney": {
       "title": "Send money",
@@ -417,6 +469,31 @@
     },
     "qrCodeScanner": {
       "title": "Scan QR code"
+    },
+    "settings": {
+      "title": "Settings",
+      "tabTitle": "SETTINGS",
+      "identity": "Identity",
+      "security": "Security",
+      "viewPrivateKey": "Private Key",
+      "confirmPrivateKey": "Private Key (confirmation required)",
+      "switchAccounts": "Switch accounts"
+    },
+    "securitySettings": {
+      "title": "Security settings",
+      "useNumericPasscode": "Numeric Passcode (less secure)",
+      "passcodeLength": "Passcode Length",
+      "changePasscode": "Change Passcode"
+    },
+    "pinCode": {
+      "enterInstruction": "Enter PIN code:",
+      "createInstruction": "Enter new PIN code:",
+      "verifyInstruction": "Enter PIN code again:"
+    },
+    "password": {
+      "enterInstruction": "Enter password:",
+      "createInstruction": "Enter new password:",
+      "verifyInstruction": "Enter password again:"
     }
   },
   "testingMode": {
@@ -428,7 +505,13 @@
   "error": {
     "noConnection": "Please check your internet connection.",
     "insufficientFunds": "Insufficient funds. Please check your wallet.",
-    "noCamera": "Camera Error"
+    "noCamera": "Camera Error",
+    "invalidPinCode": "PIN code is invalid. Please try again.",
+    "invalidPassword": "Password is invalid. Please try again.",
+    "loginFailed": "Unable to login. Please report this issue.",
+    "passcodeCreationFailed": "Unable to create passcode. Please report this issue.",
+    "accountCreationFailed": "Unable to create account. Please report this issue.",
+    "generalError": "Unable to finish operation. Please report this issue."
   },
   "bots": {
     "freudbot": {

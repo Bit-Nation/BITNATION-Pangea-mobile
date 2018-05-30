@@ -9,6 +9,7 @@ import key, { type State as KeyState } from './key';
 import activity, { type State as ActivityState } from './activity';
 import testingMode, { type State as TestingModeState } from './testingMode';
 import chat, { type State as ChatState } from './chat';
+import settings, { type State as SettingsState } from './settings';
 
 export type State = {
   accounts: AccountsState,
@@ -19,6 +20,7 @@ export type State = {
   activity: ActivityState,
   testingMode: TestingModeState,
   chat: ChatState,
+  settings: SettingsState,
 }
 
 export const subReducers = {
@@ -30,6 +32,7 @@ export const subReducers = {
   activity,
   testingMode,
   chat,
+  settings,
 };
 
 export default combineReducers(subReducers);
