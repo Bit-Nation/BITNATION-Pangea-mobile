@@ -13,7 +13,7 @@ import { CURRENT_ACCOUNT_ID_CHANGED } from '../../actions/accounts';
  * @param {CurrentAccountIdChangedAction} action An action.
  * @return {void}
  */
-export function* launchCorrectFlow(action: CurrentAccountIdChangedAction | StartNavigationAction): Generator<*, *, *> {
+export function* launchCorrectFlow(action: CurrentAccountIdChangedAction | StartNavigationAction): Generator<*, *, any> {
   let currentAccountId: string | null;
   if (action.type === CURRENT_ACCOUNT_ID_CHANGED) {
     ({ currentAccountId } = action);

@@ -2,45 +2,12 @@ import reducer, { initialState } from '../../../src/reducers/key';
 import {
   changeEnteredMnemonic,
   changeMnemonicValid,
-  createPrivateKey,
-  mnemonicCreated,
-  removePrivateKey,
   validateEnteredMnemonic,
 } from '../../../src/actions/key';
 import { KEY_LENGTH } from '../../../src/global/Constants';
 
 describe('key reducer action handling', () => {
   const mockMnemonic = new Array(KEY_LENGTH).fill('abc');
-
-  test('createPrivateKey', () => {
-    const stateBefore = initialState;
-    const stateAfter = reducer(stateBefore, createPrivateKey());
-    expect(stateAfter).toEqual({
-      ...stateBefore,
-      createdMnemonic: null,
-      enteredMnemonic: null,
-    });
-  });
-
-  test('removePrivateKey', () => {
-    const stateBefore = initialState;
-    const stateAfter = reducer(stateBefore, removePrivateKey());
-    expect(stateAfter).toEqual({
-      ...stateBefore,
-      createdMnemonic: null,
-      enteredMnemonic: null,
-    });
-  });
-
-  test('mnemonicCreated', () => {
-    const stateBefore = initialState;
-    const stateAfter = reducer(stateBefore, mnemonicCreated(mockMnemonic));
-    expect(stateAfter).toEqual({
-      ...stateBefore,
-      createdMnemonic: mockMnemonic,
-      mnemonicValid: null,
-    });
-  });
 
   test('changeEnteredMnemonic', () => {
     const stateBefore = initialState;

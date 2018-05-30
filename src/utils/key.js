@@ -12,3 +12,12 @@ import type { Mnemonic } from '../types/Mnemonic';
 export function compressMnemonic(mnemonic: Mnemonic): string {
   return _.join(mnemonic, ' ');
 }
+
+/**
+ * @desc Function to convert mnemonic from string to array.
+ * @param {string} mnemonicString Mnemonic string to convert.
+ * @return {Mnemonic} Converted mnemonic array.
+ */
+export function decompressMnemonic(mnemonicString: string): Mnemonic {
+  return mnemonicString.split(' ');
+}

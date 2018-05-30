@@ -4,13 +4,12 @@ import configureStore from 'redux-mock-store';
 
 import ReceiveMoney from '../../../../../src/screens/WalletScreen/ReceiveMoney';
 import { initialState } from '../../../../../src/reducers/wallet';
+import navigatorMock from '../../../../../__mocks__/Navigator';
 
 test('ReceiveMoney renders correctly', () => {
   const storeMock = configureStore([]);
   const propsMock = {
-    navigator: {
-      push: jest.fn(),
-    },
+    navigator: navigatorMock,
   };
   const initialStateMock = {
     wallet: {

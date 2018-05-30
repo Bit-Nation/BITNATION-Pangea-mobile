@@ -2,6 +2,7 @@
 
 import type { SettingsType } from '../../types/Settings';
 import { type AccountSettingsType as DBSettings } from '../../services/database/schemata';
+import { MINIMAL_PIN_CODE_LENGTH } from '../../global/Constants';
 
 /**
  * @desc Converts Realm object to app-level plain model.
@@ -13,7 +14,7 @@ export function convertFromDatabase(settings: DBSettings): SettingsType {
     passcodeType: settings.passcodeType === 'pinCode' ?
       {
         type: 'pinCode',
-        length: settings.pinCodeLength,
+        length: settings.pinCodeLength || MINIMAL_PIN_CODE_LENGTH,
       } : {
         type: 'password',
       },

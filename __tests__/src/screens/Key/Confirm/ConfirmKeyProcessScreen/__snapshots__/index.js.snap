@@ -1,0 +1,1202 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConfirmKeyProcessScreen renders correctly 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <ConfirmKeyProcessScreen
+    navigator={
+      Object {
+        "pop": [MockFunction],
+        "push": [MockFunction],
+        "setButtons": [MockFunction],
+        "setOnNavigatorEvent": [MockFunction] {
+          "calls": Array [
+            Array [
+              [Function],
+            ],
+          ],
+        },
+      }
+    }
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <BackgroundImage
+          source={
+            Object {
+              "testUri": "../../../src/assets/images/background.jpg",
+            }
+          }
+          style={undefined}
+        />,
+        <FakeNavigationBar
+          navBarHidden={false}
+        />,
+        <View
+          style={
+            Object {
+              "alignContent": "flex-start",
+              "flex": 1,
+              "flexDirection": "column",
+              "justifyContent": "flex-start",
+              "marginLeft": 8,
+              "marginRight": 8,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "height": 18,
+              }
+            }
+          />
+          <PanelView
+            body={undefined}
+            buttonTitle="Button"
+            childrenContainerStyle={
+              Object {
+                "flex": 0,
+              }
+            }
+            icon={undefined}
+            onButtonClick={null}
+            renderAdditionalInfo={null}
+            renderBottom={null}
+            style={
+              Object {
+                "backgroundColor": "transparent",
+                "borderRadius": 8,
+                "flexDirection": "column",
+                "justifyContent": "space-between",
+                "marginBottom": 8,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 8,
+                "paddingBottom": 4,
+                "paddingLeft": 8,
+                "paddingRight": 8,
+                "paddingTop": 4,
+              }
+            }
+            title={undefined}
+            titleStyle={
+              Object {
+                "color": "white",
+                "fontFamily": "Roboto",
+                "fontSize": 22,
+                "fontWeight": "bold",
+                "letterSpacing": 0,
+                "lineHeight": 28,
+                "textAlign": "left",
+              }
+            }
+          >
+            <BodyParagraphs
+              paragraphs={
+                Array [
+                  "Write each row of words on the piece of paper. Press “Next” when you have written the row.",
+                ]
+              }
+            />
+            <View
+              style={
+                Object {
+                  "backgroundColor": "rgba(27,57,92,0.7)",
+                  "borderRadius": 8,
+                  "height": 241,
+                  "paddingBottom": 3,
+                  "paddingLeft": 12,
+                  "paddingRight": 12,
+                  "paddingTop": 20,
+                }
+              }
+            >
+              <GridView
+                activeRow={0}
+                disableInactiveRows={true}
+                itemsPerRow={3}
+                renderItem={[Function]}
+                rowsCount={4}
+                style={
+                  Object {
+                    "flex": 1,
+                  }
+                }
+              />
+            </View>
+            <View
+              style={
+                Object {
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
+                  "marginLeft": 13,
+                  "marginRight": 13,
+                  "marginTop": 15,
+                }
+              }
+            >
+              <Button
+                enabled={false}
+                onPress={[Function]}
+                style={
+                  Object {
+                    "width": 90,
+                  }
+                }
+                title="Previous"
+              />
+              <Button
+                enabled={true}
+                onPress={[Function]}
+                style={
+                  Object {
+                    "width": 90,
+                  }
+                }
+                title="Next"
+              />
+            </View>
+          </PanelView>
+        </View>,
+      ],
+      "style": Object {
+        "alignItems": "stretch",
+        "flex": 1,
+        "flexDirection": "column",
+        "justifyContent": "space-between",
+      },
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "source": Object {
+            "testUri": "../../../src/assets/images/background.jpg",
+          },
+          "style": undefined,
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "navBarHidden": false,
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <View
+              style={
+                Object {
+                  "height": 18,
+                }
+              }
+            />,
+            <PanelView
+              body={undefined}
+              buttonTitle="Button"
+              childrenContainerStyle={
+                Object {
+                  "flex": 0,
+                }
+              }
+              icon={undefined}
+              onButtonClick={null}
+              renderAdditionalInfo={null}
+              renderBottom={null}
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderRadius": 8,
+                  "flexDirection": "column",
+                  "justifyContent": "space-between",
+                  "marginBottom": 8,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 8,
+                  "paddingBottom": 4,
+                  "paddingLeft": 8,
+                  "paddingRight": 8,
+                  "paddingTop": 4,
+                }
+              }
+              title={undefined}
+              titleStyle={
+                Object {
+                  "color": "white",
+                  "fontFamily": "Roboto",
+                  "fontSize": 22,
+                  "fontWeight": "bold",
+                  "letterSpacing": 0,
+                  "lineHeight": 28,
+                  "textAlign": "left",
+                }
+              }
+            >
+              <BodyParagraphs
+                paragraphs={
+                  Array [
+                    "Write each row of words on the piece of paper. Press “Next” when you have written the row.",
+                  ]
+                }
+              />
+              <View
+                style={
+                  Object {
+                    "backgroundColor": "rgba(27,57,92,0.7)",
+                    "borderRadius": 8,
+                    "height": 241,
+                    "paddingBottom": 3,
+                    "paddingLeft": 12,
+                    "paddingRight": 12,
+                    "paddingTop": 20,
+                  }
+                }
+              >
+                <GridView
+                  activeRow={0}
+                  disableInactiveRows={true}
+                  itemsPerRow={3}
+                  renderItem={[Function]}
+                  rowsCount={4}
+                  style={
+                    Object {
+                      "flex": 1,
+                    }
+                  }
+                />
+              </View>
+              <View
+                style={
+                  Object {
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "marginLeft": 13,
+                    "marginRight": 13,
+                    "marginTop": 15,
+                  }
+                }
+              >
+                <Button
+                  enabled={false}
+                  onPress={[Function]}
+                  style={
+                    Object {
+                      "width": 90,
+                    }
+                  }
+                  title="Previous"
+                />
+                <Button
+                  enabled={true}
+                  onPress={[Function]}
+                  style={
+                    Object {
+                      "width": 90,
+                    }
+                  }
+                  title="Next"
+                />
+              </View>
+            </PanelView>,
+          ],
+          "style": Object {
+            "alignContent": "flex-start",
+            "flex": 1,
+            "flexDirection": "column",
+            "justifyContent": "flex-start",
+            "marginLeft": 8,
+            "marginRight": 8,
+          },
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "style": Object {
+                "height": 18,
+              },
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "body": undefined,
+              "buttonTitle": "Button",
+              "children": Array [
+                <BodyParagraphs
+                  paragraphs={
+                    Array [
+                      "Write each row of words on the piece of paper. Press “Next” when you have written the row.",
+                    ]
+                  }
+                />,
+                <View
+                  style={
+                    Object {
+                      "backgroundColor": "rgba(27,57,92,0.7)",
+                      "borderRadius": 8,
+                      "height": 241,
+                      "paddingBottom": 3,
+                      "paddingLeft": 12,
+                      "paddingRight": 12,
+                      "paddingTop": 20,
+                    }
+                  }
+                >
+                  <GridView
+                    activeRow={0}
+                    disableInactiveRows={true}
+                    itemsPerRow={3}
+                    renderItem={[Function]}
+                    rowsCount={4}
+                    style={
+                      Object {
+                        "flex": 1,
+                      }
+                    }
+                  />
+                </View>,
+                <View
+                  style={
+                    Object {
+                      "flexDirection": "row",
+                      "justifyContent": "space-between",
+                      "marginLeft": 13,
+                      "marginRight": 13,
+                      "marginTop": 15,
+                    }
+                  }
+                >
+                  <Button
+                    enabled={false}
+                    onPress={[Function]}
+                    style={
+                      Object {
+                        "width": 90,
+                      }
+                    }
+                    title="Previous"
+                  />
+                  <Button
+                    enabled={true}
+                    onPress={[Function]}
+                    style={
+                      Object {
+                        "width": 90,
+                      }
+                    }
+                    title="Next"
+                  />
+                </View>,
+              ],
+              "childrenContainerStyle": Object {
+                "flex": 0,
+              },
+              "icon": undefined,
+              "onButtonClick": null,
+              "renderAdditionalInfo": null,
+              "renderBottom": null,
+              "style": Object {
+                "backgroundColor": "transparent",
+                "borderRadius": 8,
+                "flexDirection": "column",
+                "justifyContent": "space-between",
+                "marginBottom": 8,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 8,
+                "paddingBottom": 4,
+                "paddingLeft": 8,
+                "paddingRight": 8,
+                "paddingTop": 4,
+              },
+              "title": undefined,
+              "titleStyle": Object {
+                "color": "white",
+                "fontFamily": "Roboto",
+                "fontSize": 22,
+                "fontWeight": "bold",
+                "letterSpacing": 0,
+                "lineHeight": 28,
+                "textAlign": "left",
+              },
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "paragraphs": Array [
+                    "Write each row of words on the piece of paper. Press “Next” when you have written the row.",
+                  ],
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": <GridView
+                    activeRow={0}
+                    disableInactiveRows={true}
+                    itemsPerRow={3}
+                    renderItem={[Function]}
+                    rowsCount={4}
+                    style={
+                      Object {
+                        "flex": 1,
+                      }
+                    }
+                  />,
+                  "style": Object {
+                    "backgroundColor": "rgba(27,57,92,0.7)",
+                    "borderRadius": 8,
+                    "height": 241,
+                    "paddingBottom": 3,
+                    "paddingLeft": 12,
+                    "paddingRight": 12,
+                    "paddingTop": 20,
+                  },
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "activeRow": 0,
+                    "disableInactiveRows": true,
+                    "itemsPerRow": 3,
+                    "renderItem": [Function],
+                    "rowsCount": 4,
+                    "style": Object {
+                      "flex": 1,
+                    },
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": Array [
+                    <Button
+                      enabled={false}
+                      onPress={[Function]}
+                      style={
+                        Object {
+                          "width": 90,
+                        }
+                      }
+                      title="Previous"
+                    />,
+                    <Button
+                      enabled={true}
+                      onPress={[Function]}
+                      style={
+                        Object {
+                          "width": 90,
+                        }
+                      }
+                      title="Next"
+                    />,
+                  ],
+                  "style": Object {
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "marginLeft": 13,
+                    "marginRight": 13,
+                    "marginTop": 15,
+                  },
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "function",
+                    "props": Object {
+                      "children": undefined,
+                      "enabled": false,
+                      "onPress": [Function],
+                      "style": Object {
+                        "width": 90,
+                      },
+                      "title": "Previous",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "function",
+                    "props": Object {
+                      "children": undefined,
+                      "enabled": true,
+                      "onPress": [Function],
+                      "style": Object {
+                        "width": 90,
+                      },
+                      "title": "Next",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                ],
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <BackgroundImage
+            source={
+              Object {
+                "testUri": "../../../src/assets/images/background.jpg",
+              }
+            }
+            style={undefined}
+          />,
+          <FakeNavigationBar
+            navBarHidden={false}
+          />,
+          <View
+            style={
+              Object {
+                "alignContent": "flex-start",
+                "flex": 1,
+                "flexDirection": "column",
+                "justifyContent": "flex-start",
+                "marginLeft": 8,
+                "marginRight": 8,
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "height": 18,
+                }
+              }
+            />
+            <PanelView
+              body={undefined}
+              buttonTitle="Button"
+              childrenContainerStyle={
+                Object {
+                  "flex": 0,
+                }
+              }
+              icon={undefined}
+              onButtonClick={null}
+              renderAdditionalInfo={null}
+              renderBottom={null}
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderRadius": 8,
+                  "flexDirection": "column",
+                  "justifyContent": "space-between",
+                  "marginBottom": 8,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 8,
+                  "paddingBottom": 4,
+                  "paddingLeft": 8,
+                  "paddingRight": 8,
+                  "paddingTop": 4,
+                }
+              }
+              title={undefined}
+              titleStyle={
+                Object {
+                  "color": "white",
+                  "fontFamily": "Roboto",
+                  "fontSize": 22,
+                  "fontWeight": "bold",
+                  "letterSpacing": 0,
+                  "lineHeight": 28,
+                  "textAlign": "left",
+                }
+              }
+            >
+              <BodyParagraphs
+                paragraphs={
+                  Array [
+                    "Write each row of words on the piece of paper. Press “Next” when you have written the row.",
+                  ]
+                }
+              />
+              <View
+                style={
+                  Object {
+                    "backgroundColor": "rgba(27,57,92,0.7)",
+                    "borderRadius": 8,
+                    "height": 241,
+                    "paddingBottom": 3,
+                    "paddingLeft": 12,
+                    "paddingRight": 12,
+                    "paddingTop": 20,
+                  }
+                }
+              >
+                <GridView
+                  activeRow={0}
+                  disableInactiveRows={true}
+                  itemsPerRow={3}
+                  renderItem={[Function]}
+                  rowsCount={4}
+                  style={
+                    Object {
+                      "flex": 1,
+                    }
+                  }
+                />
+              </View>
+              <View
+                style={
+                  Object {
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "marginLeft": 13,
+                    "marginRight": 13,
+                    "marginTop": 15,
+                  }
+                }
+              >
+                <Button
+                  enabled={false}
+                  onPress={[Function]}
+                  style={
+                    Object {
+                      "width": 90,
+                    }
+                  }
+                  title="Previous"
+                />
+                <Button
+                  enabled={true}
+                  onPress={[Function]}
+                  style={
+                    Object {
+                      "width": 90,
+                    }
+                  }
+                  title="Next"
+                />
+              </View>
+            </PanelView>
+          </View>,
+        ],
+        "style": Object {
+          "alignItems": "stretch",
+          "flex": 1,
+          "flexDirection": "column",
+          "justifyContent": "space-between",
+        },
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "source": Object {
+              "testUri": "../../../src/assets/images/background.jpg",
+            },
+            "style": undefined,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "navBarHidden": false,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <View
+                style={
+                  Object {
+                    "height": 18,
+                  }
+                }
+              />,
+              <PanelView
+                body={undefined}
+                buttonTitle="Button"
+                childrenContainerStyle={
+                  Object {
+                    "flex": 0,
+                  }
+                }
+                icon={undefined}
+                onButtonClick={null}
+                renderAdditionalInfo={null}
+                renderBottom={null}
+                style={
+                  Object {
+                    "backgroundColor": "transparent",
+                    "borderRadius": 8,
+                    "flexDirection": "column",
+                    "justifyContent": "space-between",
+                    "marginBottom": 8,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 8,
+                    "paddingBottom": 4,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 4,
+                  }
+                }
+                title={undefined}
+                titleStyle={
+                  Object {
+                    "color": "white",
+                    "fontFamily": "Roboto",
+                    "fontSize": 22,
+                    "fontWeight": "bold",
+                    "letterSpacing": 0,
+                    "lineHeight": 28,
+                    "textAlign": "left",
+                  }
+                }
+              >
+                <BodyParagraphs
+                  paragraphs={
+                    Array [
+                      "Write each row of words on the piece of paper. Press “Next” when you have written the row.",
+                    ]
+                  }
+                />
+                <View
+                  style={
+                    Object {
+                      "backgroundColor": "rgba(27,57,92,0.7)",
+                      "borderRadius": 8,
+                      "height": 241,
+                      "paddingBottom": 3,
+                      "paddingLeft": 12,
+                      "paddingRight": 12,
+                      "paddingTop": 20,
+                    }
+                  }
+                >
+                  <GridView
+                    activeRow={0}
+                    disableInactiveRows={true}
+                    itemsPerRow={3}
+                    renderItem={[Function]}
+                    rowsCount={4}
+                    style={
+                      Object {
+                        "flex": 1,
+                      }
+                    }
+                  />
+                </View>
+                <View
+                  style={
+                    Object {
+                      "flexDirection": "row",
+                      "justifyContent": "space-between",
+                      "marginLeft": 13,
+                      "marginRight": 13,
+                      "marginTop": 15,
+                    }
+                  }
+                >
+                  <Button
+                    enabled={false}
+                    onPress={[Function]}
+                    style={
+                      Object {
+                        "width": 90,
+                      }
+                    }
+                    title="Previous"
+                  />
+                  <Button
+                    enabled={true}
+                    onPress={[Function]}
+                    style={
+                      Object {
+                        "width": 90,
+                      }
+                    }
+                    title="Next"
+                  />
+                </View>
+              </PanelView>,
+            ],
+            "style": Object {
+              "alignContent": "flex-start",
+              "flex": 1,
+              "flexDirection": "column",
+              "justifyContent": "flex-start",
+              "marginLeft": 8,
+              "marginRight": 8,
+            },
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "style": Object {
+                  "height": 18,
+                },
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "body": undefined,
+                "buttonTitle": "Button",
+                "children": Array [
+                  <BodyParagraphs
+                    paragraphs={
+                      Array [
+                        "Write each row of words on the piece of paper. Press “Next” when you have written the row.",
+                      ]
+                    }
+                  />,
+                  <View
+                    style={
+                      Object {
+                        "backgroundColor": "rgba(27,57,92,0.7)",
+                        "borderRadius": 8,
+                        "height": 241,
+                        "paddingBottom": 3,
+                        "paddingLeft": 12,
+                        "paddingRight": 12,
+                        "paddingTop": 20,
+                      }
+                    }
+                  >
+                    <GridView
+                      activeRow={0}
+                      disableInactiveRows={true}
+                      itemsPerRow={3}
+                      renderItem={[Function]}
+                      rowsCount={4}
+                      style={
+                        Object {
+                          "flex": 1,
+                        }
+                      }
+                    />
+                  </View>,
+                  <View
+                    style={
+                      Object {
+                        "flexDirection": "row",
+                        "justifyContent": "space-between",
+                        "marginLeft": 13,
+                        "marginRight": 13,
+                        "marginTop": 15,
+                      }
+                    }
+                  >
+                    <Button
+                      enabled={false}
+                      onPress={[Function]}
+                      style={
+                        Object {
+                          "width": 90,
+                        }
+                      }
+                      title="Previous"
+                    />
+                    <Button
+                      enabled={true}
+                      onPress={[Function]}
+                      style={
+                        Object {
+                          "width": 90,
+                        }
+                      }
+                      title="Next"
+                    />
+                  </View>,
+                ],
+                "childrenContainerStyle": Object {
+                  "flex": 0,
+                },
+                "icon": undefined,
+                "onButtonClick": null,
+                "renderAdditionalInfo": null,
+                "renderBottom": null,
+                "style": Object {
+                  "backgroundColor": "transparent",
+                  "borderRadius": 8,
+                  "flexDirection": "column",
+                  "justifyContent": "space-between",
+                  "marginBottom": 8,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 8,
+                  "paddingBottom": 4,
+                  "paddingLeft": 8,
+                  "paddingRight": 8,
+                  "paddingTop": 4,
+                },
+                "title": undefined,
+                "titleStyle": Object {
+                  "color": "white",
+                  "fontFamily": "Roboto",
+                  "fontSize": 22,
+                  "fontWeight": "bold",
+                  "letterSpacing": 0,
+                  "lineHeight": 28,
+                  "textAlign": "left",
+                },
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "paragraphs": Array [
+                      "Write each row of words on the piece of paper. Press “Next” when you have written the row.",
+                    ],
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": <GridView
+                      activeRow={0}
+                      disableInactiveRows={true}
+                      itemsPerRow={3}
+                      renderItem={[Function]}
+                      rowsCount={4}
+                      style={
+                        Object {
+                          "flex": 1,
+                        }
+                      }
+                    />,
+                    "style": Object {
+                      "backgroundColor": "rgba(27,57,92,0.7)",
+                      "borderRadius": 8,
+                      "height": 241,
+                      "paddingBottom": 3,
+                      "paddingLeft": 12,
+                      "paddingRight": 12,
+                      "paddingTop": 20,
+                    },
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "activeRow": 0,
+                      "disableInactiveRows": true,
+                      "itemsPerRow": 3,
+                      "renderItem": [Function],
+                      "rowsCount": 4,
+                      "style": Object {
+                        "flex": 1,
+                      },
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": Array [
+                      <Button
+                        enabled={false}
+                        onPress={[Function]}
+                        style={
+                          Object {
+                            "width": 90,
+                          }
+                        }
+                        title="Previous"
+                      />,
+                      <Button
+                        enabled={true}
+                        onPress={[Function]}
+                        style={
+                          Object {
+                            "width": 90,
+                          }
+                        }
+                        title="Next"
+                      />,
+                    ],
+                    "style": Object {
+                      "flexDirection": "row",
+                      "justifyContent": "space-between",
+                      "marginLeft": 13,
+                      "marginRight": 13,
+                      "marginTop": 15,
+                    },
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "function",
+                      "props": Object {
+                        "children": undefined,
+                        "enabled": false,
+                        "onPress": [Function],
+                        "style": Object {
+                          "width": 90,
+                        },
+                        "title": "Previous",
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "function",
+                      "props": Object {
+                        "children": undefined,
+                        "enabled": true,
+                        "onPress": [Function],
+                        "style": Object {
+                          "width": 90,
+                        },
+                        "title": "Next",
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": [Function],
+                    },
+                  ],
+                  "type": [Function],
+                },
+              ],
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

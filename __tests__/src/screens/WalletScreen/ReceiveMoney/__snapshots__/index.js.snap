@@ -7,7 +7,10 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <Connect(ReceiveMoneyScreen)
     navigator={
       Object {
+        "pop": [MockFunction],
         "push": [MockFunction],
+        "setButtons": [MockFunction],
+        "setOnNavigatorEvent": [MockFunction],
       }
     }
     store={
@@ -36,7 +39,10 @@ ShallowWrapper {
       "moneySendingError": null,
       "moneySendingInProgress": false,
       "navigator": Object {
+        "pop": [MockFunction],
         "push": [MockFunction],
+        "setButtons": [MockFunction],
+        "setOnNavigatorEvent": [MockFunction],
       },
       "selectedWalletAddress": null,
       "store": Object {
@@ -87,7 +93,10 @@ ShallowWrapper {
         "moneySendingError": null,
         "moneySendingInProgress": false,
         "navigator": Object {
+          "pop": [MockFunction],
           "push": [MockFunction],
+          "setButtons": [MockFunction],
+          "setOnNavigatorEvent": [MockFunction],
         },
         "selectedWalletAddress": null,
         "store": Object {
