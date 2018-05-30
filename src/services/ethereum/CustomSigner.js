@@ -14,6 +14,7 @@ export default function CustomSigner(privateKey, provider) {
   this.address = wallet.address;
   this.getBalance = wallet.getBalance;
   this.estimateGas = wallet.estimateGas;
+  this.getTransactionCount = wallet.getTransaction;
   this.sign = async (transaction) => {
     console.log('signing... ', transaction);
     const transactionObject = transaction;
