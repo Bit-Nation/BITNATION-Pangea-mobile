@@ -194,7 +194,12 @@
       "subtitle": "Changing the passcode type requires you to change your passcode",
       "confirm": "$t(common.ok)",
       "cancel": "$t(common.cancel)"
-    }
+    },
+    "successTransaction": {
+      "title": "Success",
+      "subtitle": "Your transaction has been successfully sent",
+      "confirm": "$t(common.ok)"
+    },
   },
   "screens": {
     "intro": {
