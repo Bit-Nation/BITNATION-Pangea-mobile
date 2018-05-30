@@ -31,7 +31,7 @@ describe('prettyWalletBalance', () => {
   const syncedWallet = {
     ethAddress: '0xtestAddress',
     currency: 'ETH',
-    balance: '0.12345678901',
+    balance: '0.12346',
     name: 'Test wallet',
   };
   const failedWallet = {
@@ -50,7 +50,7 @@ describe('prettyWalletBalance', () => {
 
   test('custom success suffix', () => {
     expect(prettyWalletBalance(unsyncedWallet, 'ETH', ' available')).toBe('Updating');
-    expect(prettyWalletBalance(syncedWallet, 'ETH', ' available')).toBe('0.12346 ETH available');
+    expect(prettyWalletBalance(syncedWallet, 'ETH', ' available')).toBe('0.12346 ETH');
     expect(prettyWalletBalance(failedWallet, 'ETH', ' available')).toBe('Update failed');
   });
 });

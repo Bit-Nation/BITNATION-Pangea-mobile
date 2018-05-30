@@ -59,6 +59,13 @@ ShallowWrapper {
               title="Confirm Transaction"
             />
             <PanelView
+              body={undefined}
+              buttonTitle="Button"
+              childrenContainerStyle={Object {}}
+              icon={undefined}
+              onButtonClick={null}
+              renderAdditionalInfo={null}
+              renderBottom={null}
               style={
                 Object {
                   "backgroundColor": "transparent",
@@ -75,6 +82,7 @@ ShallowWrapper {
                   "paddingTop": 4,
                 }
               }
+              title={undefined}
               titleStyle={
                 Object {
                   "color": "white",
@@ -243,6 +251,13 @@ ShallowWrapper {
               title="Confirm Transaction"
             />
             <PanelView
+              body={undefined}
+              buttonTitle="Button"
+              childrenContainerStyle={Object {}}
+              icon={undefined}
+              onButtonClick={null}
+              renderAdditionalInfo={null}
+              renderBottom={null}
               style={
                 Object {
                   "backgroundColor": "transparent",
@@ -259,6 +274,7 @@ ShallowWrapper {
                   "paddingTop": 4,
                 }
               }
+              title={undefined}
               titleStyle={
                 Object {
                   "color": "white",
@@ -390,6 +406,13 @@ ShallowWrapper {
                 title="Confirm Transaction"
               />,
               <PanelView
+                body={undefined}
+                buttonTitle="Button"
+                childrenContainerStyle={Object {}}
+                icon={undefined}
+                onButtonClick={null}
+                renderAdditionalInfo={null}
+                renderBottom={null}
                 style={
                   Object {
                     "backgroundColor": "transparent",
@@ -406,6 +429,7 @@ ShallowWrapper {
                     "paddingTop": 4,
                   }
                 }
+                title={undefined}
                 titleStyle={
                   Object {
                     "color": "white",
@@ -542,6 +566,8 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "class",
               "props": Object {
+                "body": undefined,
+                "buttonTitle": "Button",
                 "children": <View
                   style={
                     Object {
@@ -639,6 +665,11 @@ ShallowWrapper {
                     </View>
                   </View>
                 </View>,
+                "childrenContainerStyle": Object {},
+                "icon": undefined,
+                "onButtonClick": null,
+                "renderAdditionalInfo": null,
+                "renderBottom": null,
                 "style": Object {
                   "backgroundColor": "transparent",
                   "borderRadius": 8,
@@ -653,6 +684,7 @@ ShallowWrapper {
                   "paddingRight": 8,
                   "paddingTop": 4,
                 },
+                "title": undefined,
                 "titleStyle": Object {
                   "color": "white",
                   "fontFamily": "Roboto",
@@ -1077,6 +1109,13 @@ ShallowWrapper {
                 title="Confirm Transaction"
               />
               <PanelView
+                body={undefined}
+                buttonTitle="Button"
+                childrenContainerStyle={Object {}}
+                icon={undefined}
+                onButtonClick={null}
+                renderAdditionalInfo={null}
+                renderBottom={null}
                 style={
                   Object {
                     "backgroundColor": "transparent",
@@ -1093,6 +1132,7 @@ ShallowWrapper {
                     "paddingTop": 4,
                   }
                 }
+                title={undefined}
                 titleStyle={
                   Object {
                     "color": "white",
@@ -1261,6 +1301,13 @@ ShallowWrapper {
                 title="Confirm Transaction"
               />
               <PanelView
+                body={undefined}
+                buttonTitle="Button"
+                childrenContainerStyle={Object {}}
+                icon={undefined}
+                onButtonClick={null}
+                renderAdditionalInfo={null}
+                renderBottom={null}
                 style={
                   Object {
                     "backgroundColor": "transparent",
@@ -1277,6 +1324,7 @@ ShallowWrapper {
                     "paddingTop": 4,
                   }
                 }
+                title={undefined}
                 titleStyle={
                   Object {
                     "color": "white",
@@ -1408,6 +1456,13 @@ ShallowWrapper {
                   title="Confirm Transaction"
                 />,
                 <PanelView
+                  body={undefined}
+                  buttonTitle="Button"
+                  childrenContainerStyle={Object {}}
+                  icon={undefined}
+                  onButtonClick={null}
+                  renderAdditionalInfo={null}
+                  renderBottom={null}
                   style={
                     Object {
                       "backgroundColor": "transparent",
@@ -1424,6 +1479,7 @@ ShallowWrapper {
                       "paddingTop": 4,
                     }
                   }
+                  title={undefined}
                   titleStyle={
                     Object {
                       "color": "white",
@@ -1560,6 +1616,8 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "class",
                 "props": Object {
+                  "body": undefined,
+                  "buttonTitle": "Button",
                   "children": <View
                     style={
                       Object {
@@ -1657,6 +1715,11 @@ ShallowWrapper {
                       </View>
                     </View>
                   </View>,
+                  "childrenContainerStyle": Object {},
+                  "icon": undefined,
+                  "onButtonClick": null,
+                  "renderAdditionalInfo": null,
+                  "renderBottom": null,
                   "style": Object {
                     "backgroundColor": "transparent",
                     "borderRadius": 8,
@@ -1671,6 +1734,7 @@ ShallowWrapper {
                     "paddingRight": 8,
                     "paddingTop": 4,
                   },
+                  "title": undefined,
                   "titleStyle": Object {
                     "color": "white",
                     "fontFamily": "Roboto",
