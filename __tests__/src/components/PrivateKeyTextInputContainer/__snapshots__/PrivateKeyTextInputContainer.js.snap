@@ -51,7 +51,9 @@ exports[`PrivateKeyTextInputContainer component tests rendering custom style 1`]
         "textAlign": "center",
       }
     }
-  />
+  >
+    
+  </Text>
 </View>
 `;
 
@@ -63,7 +65,7 @@ exports[`PrivateKeyTextInputContainer component tests rendering default 1`] = `
         "flex": 1,
         "height": 44,
       },
-      undefined,
+      Object {},
     ]
   }
 >
@@ -104,7 +106,9 @@ exports[`PrivateKeyTextInputContainer component tests rendering default 1`] = `
         "textAlign": "center",
       }
     }
-  />
+  >
+    
+  </Text>
 </View>
 `;
 
@@ -120,6 +124,7 @@ ShallowWrapper {
     onChange={[Function]}
     onFocus={[Function]}
     onSubmit={[Function]}
+    style={Object {}}
     value="Test value"
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -181,7 +186,7 @@ ShallowWrapper {
           "flex": 1,
           "height": 44,
         },
-        undefined,
+        Object {},
       ],
     },
     "ref": null,
@@ -293,7 +298,7 @@ ShallowWrapper {
             "flex": 1,
             "height": 44,
           },
-          undefined,
+          Object {},
         ],
       },
       "ref": null,
@@ -375,6 +380,7 @@ ShallowWrapper {
     onChange={[Function]}
     onFocus={[Function]}
     onSubmit={[Function]}
+    style={Object {}}
     value="Test value"
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -436,7 +442,7 @@ ShallowWrapper {
           "flex": 1,
           "height": 44,
         },
-        undefined,
+        Object {},
       ],
     },
     "ref": null,
@@ -548,7 +554,7 @@ ShallowWrapper {
             "flex": 1,
             "height": 44,
           },
-          undefined,
+          Object {},
         ],
       },
       "ref": null,

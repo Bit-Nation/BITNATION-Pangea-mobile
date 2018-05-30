@@ -20,11 +20,17 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "children": <PanelView
+        body={undefined}
+        buttonTitle="Button"
         childrenContainerStyle={
           Object {
             "flex": 0,
           }
         }
+        icon={undefined}
+        onButtonClick={null}
+        renderAdditionalInfo={null}
+        renderBottom={null}
         style={
           Object {
             "alignItems": "stretch",
@@ -77,6 +83,8 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
+        "body": undefined,
+        "buttonTitle": "Button",
         "children": <Text
           accessible={true}
           allowFontScaling={true}
@@ -97,6 +105,10 @@ ShallowWrapper {
         "childrenContainerStyle": Object {
           "flex": 0,
         },
+        "icon": undefined,
+        "onButtonClick": null,
+        "renderAdditionalInfo": null,
+        "renderBottom": null,
         "style": Object {
           "alignItems": "stretch",
           "backgroundColor": "rgba(255,255,255,0.2)",
@@ -153,11 +165,17 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "children": <PanelView
+          body={undefined}
+          buttonTitle="Button"
           childrenContainerStyle={
             Object {
               "flex": 0,
             }
           }
+          icon={undefined}
+          onButtonClick={null}
+          renderAdditionalInfo={null}
+          renderBottom={null}
           style={
             Object {
               "alignItems": "stretch",
@@ -210,6 +228,8 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
+          "body": undefined,
+          "buttonTitle": "Button",
           "children": <Text
             accessible={true}
             allowFontScaling={true}
@@ -230,6 +250,10 @@ ShallowWrapper {
           "childrenContainerStyle": Object {
             "flex": 0,
           },
+          "icon": undefined,
+          "onButtonClick": null,
+          "renderAdditionalInfo": null,
+          "renderBottom": null,
           "style": Object {
             "alignItems": "stretch",
             "backgroundColor": "rgba(255,255,255,0.2)",

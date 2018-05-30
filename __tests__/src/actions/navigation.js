@@ -1,3 +1,5 @@
+// @flow
+
 import {
   START_NAVIGATION,
   startNavigation,
