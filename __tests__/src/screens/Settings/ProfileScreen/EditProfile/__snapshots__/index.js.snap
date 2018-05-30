@@ -134,6 +134,13 @@ ShallowWrapper {
           </TouchableOpacity>
         </View>
         <PanelView
+          body={undefined}
+          buttonTitle="Button"
+          childrenContainerStyle={Object {}}
+          icon={undefined}
+          onButtonClick={null}
+          renderAdditionalInfo={null}
+          renderBottom={null}
           style={
             Object {
               "backgroundColor": "transparent",
@@ -331,6 +338,13 @@ ShallowWrapper {
             </TouchableOpacity>
           </View>,
           <PanelView
+            body={undefined}
+            buttonTitle="Button"
+            childrenContainerStyle={Object {}}
+            icon={undefined}
+            onButtonClick={null}
+            renderAdditionalInfo={null}
+            renderBottom={null}
             style={
               Object {
                 "backgroundColor": "transparent",
@@ -676,6 +690,8 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
+            "body": undefined,
+            "buttonTitle": "Button",
             "children": <View
               style={
                 Object {
@@ -771,6 +787,11 @@ ShallowWrapper {
                 virtual={undefined}
               />
             </View>,
+            "childrenContainerStyle": Object {},
+            "icon": undefined,
+            "onButtonClick": null,
+            "renderAdditionalInfo": null,
+            "renderBottom": null,
             "style": Object {
               "backgroundColor": "transparent",
               "borderRadius": 8,
@@ -1233,6 +1254,13 @@ ShallowWrapper {
             </TouchableOpacity>
           </View>
           <PanelView
+            body={undefined}
+            buttonTitle="Button"
+            childrenContainerStyle={Object {}}
+            icon={undefined}
+            onButtonClick={null}
+            renderAdditionalInfo={null}
+            renderBottom={null}
             style={
               Object {
                 "backgroundColor": "transparent",
@@ -1430,6 +1458,13 @@ ShallowWrapper {
               </TouchableOpacity>
             </View>,
             <PanelView
+              body={undefined}
+              buttonTitle="Button"
+              childrenContainerStyle={Object {}}
+              icon={undefined}
+              onButtonClick={null}
+              renderAdditionalInfo={null}
+              renderBottom={null}
               style={
                 Object {
                   "backgroundColor": "transparent",
@@ -1775,6 +1810,8 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "class",
             "props": Object {
+              "body": undefined,
+              "buttonTitle": "Button",
               "children": <View
                 style={
                   Object {
@@ -1870,6 +1907,11 @@ ShallowWrapper {
                   virtual={undefined}
                 />
               </View>,
+              "childrenContainerStyle": Object {},
+              "icon": undefined,
+              "onButtonClick": null,
+              "renderAdditionalInfo": null,
+              "renderBottom": null,
               "style": Object {
                 "backgroundColor": "transparent",
                 "borderRadius": 8,

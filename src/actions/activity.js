@@ -1,67 +1,56 @@
 // @flow
 
-import { ACTIVITY_MESSAGES_LIMIT } from '../global/Constants';
 import { type ActivityLogMessage } from '../types/ActivityLogMessage';
 
-type MessageAddedAction = { +type: 'MESSAGE_ADDED', +message: ActivityLogMessage };
-type StartFetchMessagesAction = { +type: 'START_FETCH_MESSAGES', +limit: number };
-type DoneFetchMessagesAction = { +type: 'DONE_FETCH_MESSAGES', +messages: Array<ActivityLogMessage> };
-type AddDummyMessageAction = { +type: 'ADD_DUMMY_MESSAGE' };
+export const MESSAGES_ADDED = 'MESSAGES_ADDED';
+export const ADD_NEW_MESSAGE = 'ADD_NEW_MESSAGE';
+export const emptyCallback = () => {};
 
-export type Action =
-  | MessageAddedAction
-  | StartFetchMessagesAction
-  | DoneFetchMessagesAction
-  | AddDummyMessageAction;
+type MessagesAddedAction = {
+  +type: "MESSAGES_ADDED",
+  +messages: Array<ActivityLogMessage>
+};
+export type AddNewMessageAction = {
+  +type: "ADD_NEW_MESSAGE",
+  +message: string,
+  +params: Object,
+  +interpret: boolean,
+  +callback: (success: boolean) => void
+};
 
-export const MESSAGE_ADDED = 'MESSAGE_ADDED';
-export const START_FETCH_MESSAGES = 'START_FETCH_MESSAGES';
-export const DONE_FETCH_MESSAGES = 'DONE_FETCH_MESSAGES';
-export const ADD_DUMMY_MESSAGE = 'ADD_DUMMY_MESSAGE';
+export type Action = MessagesAddedAction | AddNewMessageAction;
 
 /**
  * @desc Action creator for an action that should be called once new activity log message added.
- * @param {ActivityLogMessage} message Activity log message that is added.
- * @returns {MessageAddedAction} An action.
+ * @param {Array<ActivityLogMessage>} messages Activity log messages that are added.
+ * @returns {MessagesAddedAction} An action.
  */
-export function messageAdded(message: ActivityLogMessage): MessageAddedAction {
+export function messagesAdded(messages: Array<ActivityLogMessage>): MessagesAddedAction {
   return {
-    type: MESSAGE_ADDED,
-    message,
-  };
-}
-
-/**
- * @desc Action creator for an action that starts fetching of activity log messages.
- * @param {number} limit Limit of count of messages to fetch.
- * @returns {{type: string, limit: number}} An action.
- */
-export function startFetchMessages(limit:
-                                     number = ACTIVITY_MESSAGES_LIMIT): StartFetchMessagesAction {
-  return {
-    type: START_FETCH_MESSAGES,
-    limit,
-  };
-}
-
-/**
- * @desc Action creator for an action to be called when activity log messages is fetched.
- * @param {ActivityLogMessage[]} messages Activity log messages that was fetched.
- * @returns {DoneFetchMessagesAction} An action.
- */
-export function doneFetchMessages(messages: Array<ActivityLogMessage>): DoneFetchMessagesAction {
-  return {
-    type: DONE_FETCH_MESSAGES,
+    type: MESSAGES_ADDED,
     messages,
   };
 }
 
 /**
- * @desc Action for an action that adds dummy activity log message for testing purposes.
- * @returns {AddDummyMessageAction} An action.
+ * @desc Action for an action that adds activity log message.
+ * @param {string} message Acitivity message to be logged
+ * @param {any} params Additional params to the log
+ * @param {boolean} interpret Flag that indicates if the messsage should be interpreted
+ * @param {function} callback Function that is after the action is processed
+ * @returns {AddNewMessageAction} An action.
  */
-export function addDummyMessage(): AddDummyMessageAction {
+export function addNewMessage(
+  message: string,
+  params?: Object = {},
+  interpret?: boolean = true,
+  callback?: (boolean) => void,
+): AddNewMessageAction {
   return {
-    type: ADD_DUMMY_MESSAGE,
+    type: ADD_NEW_MESSAGE,
+    message,
+    params,
+    interpret,
+    callback: callback || emptyCallback,
   };
 }
