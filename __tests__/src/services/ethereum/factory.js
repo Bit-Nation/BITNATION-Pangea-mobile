@@ -13,20 +13,4 @@ describe('factory', () => {
     const ethereumService = ethereum.service;
     expect(ethereumService).toBeInstanceOf(EthereumService);
   });
-  test('Full send money transaction process', async () => {
-    const ethereum = await factory({ private_key: '0xefc27ba5330258fcfb75e28e4e6efd88458751086998bbfad99257035fb3e160', provider_type: 'rinkeby' });
-    const ethereumService = ethereum.service;
-    let gasEstimate;
-    let result;
-    try {
-      gasEstimate = await ethereumService.estimateGas('2000000000', '0x');
-      const transaction = await ethereumService.sendMoney('0xF0D346A86A68086846363185d24D5893F4353A78', '0.00001', '2000000000');
-      const transactionHash = transaction.hash;
-      result = await ethereumService.trackTransaction(transactionHash);
-    } catch (e) {
-      console.log('error: ', e);
-    }
-    expect(gasEstimate).toEqual(42000000000000);
-    expect(result.from).toEqual('0xF0D346A86A68086846363185d24D5893F4353A78');
-  }, 60000);
 });

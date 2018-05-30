@@ -81,6 +81,7 @@ describe('wallet reducer action handling', () => {
       ...stateBefore,
       moneySendingError: null,
       moneySendingInProgress: false,
+      moneySendingSuccess: true,
     });
   });
 

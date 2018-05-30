@@ -199,7 +199,7 @@
       "title": "Success",
       "subtitle": "Your transaction has been successfully sent",
       "confirm": "$t(common.ok)"
-    },
+    }
   },
   "screens": {
     "intro": {
