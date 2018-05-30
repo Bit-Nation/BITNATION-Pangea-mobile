@@ -1,3 +1,4 @@
+// @flow
 
 import React from 'react';
 import {
@@ -20,7 +21,7 @@ import { androidNavigationButtons } from '../../../global/Screens';
 import Loading from '../../../components/common/Loading';
 import { prettyWalletBalance } from '../../../utils/formatters';
 import i18n from '../../../global/i18n';
-import { errorAlert } from '../../../global/alerts';
+import { alert, errorAlert } from '../../../global/alerts';
 import PanelView from '../../../components/common/PanelView';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import type { State as WalletState } from '../../../reducers/wallet';
@@ -81,6 +82,13 @@ class SendMoney extends NavigatorComponent<Props, State> {
     if (this.props.moneySendingError !== prevProps.moneySendingError
       && this.props.moneySendingError !== null) {
       errorAlert(this.props.moneySendingError);
+    } else if (this.props.moneySendingInProgress !== prevProps.moneySendingInProgress
+      && this.props.moneySendingSuccess) {
+      alert('successTransaction', [
+        {
+          name: 'confirm',
+          onPress: () => this.props.navigator.pop(),
+        }]);
     }
     this.updateNavigation();
   }
@@ -105,9 +113,9 @@ class SendMoney extends NavigatorComponent<Props, State> {
   }
 
   onSendPress = () => {
-    // if (this.validateSendData() === false) {
-    //   return;
-    // }
+    if (this.validateSendData() === false) {
+      return;
+    }
 
     this.props.onSendMoney(this.state.amountString, this.state.toEthAddress);
   };
@@ -133,7 +141,7 @@ class SendMoney extends NavigatorComponent<Props, State> {
               <View style={styles.textColumn}>
                 <Text style={styles.bodyBold}>{wallet.currency === 'ETH' ? i18n.t('common.ethereum') : i18n.t('common.bitnationPat')}</Text>
                 <Text style={styles.currencyLarge}>
-                  {prettyWalletBalance(wallet, wallet.currency)}
+                  {prettyWalletBalance(wallet)}
                 </Text>
               </View>
             </View>

@@ -67,6 +67,6 @@ export default class WalletService {
     const walletAddress = await Panthalassa.PanthalassaEthPrivateKey();
     const ethereum = await factory({ private_key: `0x${walletAddress}`, provider_type: network === 'dev' ? 'rinkeby' : 'homestead' });
     const ethService = ethereum.service;
-    return ethService.sendTokens(fromAddress, toAddress, amount);
+    return ethService.sendTokens(network === 'dev' ? '0xc3830a6206fb9d089d1ce824598978532d14d8aa' : '0xBB1fA4FdEB3459733bF67EbC6f893003fA976a82', toAddress, amount);
   }
 }
