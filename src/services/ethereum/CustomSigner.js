@@ -1,13 +1,20 @@
-import BN from 'bn.js';
-import { BigNumber } from 'bignumber.js';
+// @flow
 
 import { Navigation } from 'react-native-navigation';
 import { screen } from '../../global/Screens';
 
 const ethers = require('ethers');
 
-export default function CustomSigner(privateKey, provider) {
-
+/**
+ * @desc Custom signer for ethereum RPC
+ * @example
+ * const customSigner = CustomSigner(PRIVATE_KEY, 'homestead')
+ *
+ * @param {string} privateKey Private key of wallet
+ * @param {string} provider name of network
+ * @return {object} custom signer with wallet functions
+ */
+export default function CustomSigner(privateKey: string, provider: string) {
   const wallet = new ethers.Wallet(privateKey);
   // wallet.provider = new ethers.providers.InfuraProvider(provider);
   this.provider = new ethers.providers.InfuraProvider(provider);
@@ -16,7 +23,6 @@ export default function CustomSigner(privateKey, provider) {
   this.estimateGas = wallet.estimateGas;
   this.getTransactionCount = wallet.getTransaction;
   this.sign = async (transaction) => {
-    console.log('signing... ', transaction);
     const transactionObject = transaction;
     try {
       const signedTransaction = await new Promise((resolve, reject) => {
@@ -74,24 +80,24 @@ export default function CustomSigner(privateKey, provider) {
       toPromise = Promise.resolve(undefined);
     }
 
-    var data = ethers.utils.hexlify(transaction.data || '0x');
-    var value = ethers.utils.hexlify(transaction.value || 0);
+    const data = ethers.utils.hexlify(transaction.data || '0x');
+    const value = ethers.utils.hexlify(transaction.value || 0);
 
-    return Promise.all([gasPricePromise, noncePromise, toPromise]).then(async function(results) {
+    return Promise.all([gasPricePromise, noncePromise, toPromise]).then(async (results) => {
       const signedTransaction = await self.sign({
         to: results[2],
-        data: data,
-        gasLimit: gasLimit,
+        data,
+        gasLimit,
         gasPrice: results[0],
         nonce: results[1],
-        value: value,
-        chainId: chainId
+        value,
+        chainId,
       });
 
-      return self.provider.sendTransaction(signedTransaction).then(function(hash) {
-        let transaction = ethers.Wallet.parseTransaction(signedTransaction);
-        transaction.hash = hash;
-        return transaction;
+      return self.provider.sendTransaction(signedTransaction).then((hash) => {
+        const sentTransaction = ethers.Wallet.parseTransaction(signedTransaction);
+        sentTransaction.hash = hash;
+        return sentTransaction;
       });
     });
   };
