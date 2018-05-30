@@ -9,6 +9,7 @@ export type Account = {
   avatar: ?string,
   accountStore: string,
   networkType: NetworkType,
+  confirmedMnemonic: boolean,
 };
 
 export type PartialAccount = {

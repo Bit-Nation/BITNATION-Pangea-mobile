@@ -307,4 +307,19 @@ RCT_REMAP_METHOD(PanthalassaStart,
   NSLog(@"************ Received from delegate!!!");
 }
 
+RCT_REMAP_METHOD(PanthalassaGetMnemonic,
+                 PanthalassaGetMnemonicWithResolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject) {
+  NSString* response;
+  NSError *error = nil;
+  
+  response = PanthalassaGetMnemonic(&error);
+  
+  if (error == nil) {
+    resolve(response);
+  } else {
+    reject(@"error", error.localizedDescription, error);
+  }
+}
+
 @end

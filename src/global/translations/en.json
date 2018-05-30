@@ -282,6 +282,11 @@
         "title": "Notice",
         "body": "Smart contracts will be upgraded in the near future.",
         "button": "More"
+      },
+      "confirmKeyPanel": {
+        "title": "Important",
+        "body": "Write down your private key to not lose your account.",
+        "button": "Start"
       }
     },
     "chat": {
@@ -403,20 +408,14 @@
         }
       }
     },
-    "createKey": {
-      "title": "Create Wallet",
-      "introduction": [
-        "To secure your wallet, you first need a \"private key.\"",
-        "You must write down your private key on paper. This process only takes a few minutes.",
-        "If you change your phone, the only way to recover your wallet is by entering your private key!",
-        "Your private key protects everything in Bitnation, so save your written private key in a safe place."
-      ],
+    "confirmKey": {
+      "title": "Confirm Private Key",
       "instructions": {
         "beforeGrid": [
-          "We will show you a group of {{KEY_LENGTH}} words that is the private key that unlocks your wallet."
+          "We will show you a group of {{KEY_LENGTH}} words that is the private key of your account."
         ],
         "afterGrid": [
-          "Write the words on paper, in order. Store the paper in very safe place. If your device is lost, stolen, broken, or upgraded, you must have this key to restore or unlock your wallet."
+          "Write the words on paper, in order. Store the paper in very safe place. If your device is lost, stolen, broken, or upgraded, you must have this key to restore your account."
         ]
       },
       "process": {
@@ -435,14 +434,6 @@
         "You will type the {{KEY_LENGTH}} words of your private key into the app, and we will check that your written private key is correct.",
         "Your private key protects everything in Bitnation, so be sure to put your paper with your private key in a safe place."
       ],
-      "process": {
-        "instructions": [
-          "Enter in the correct order the {{KEY_LENGTH}} words that you wrote down as your paper key. Tap a box to begin."
-        ],
-        "nextButton": "$t(common.next)",
-        "previousButton": "$t(common.previous)",
-        "doneButton": "$t(common.done)"
-      },
       "success": {
         "instructions": [
           "Congratulations! You correctly entered your private key.",
@@ -451,6 +442,20 @@
         "doneButton": "$t(common.done)"
       },
       "startButton": "$t(common.begin)"
+    },
+    "enterPrivateKey": {
+      "instructions": [
+        "Enter in the correct order the {{KEY_LENGTH}} words that you wrote down as your paper key. Tap a box to begin."
+      ],
+      "nextButton": "$t(common.next)",
+      "previousButton": "$t(common.previous)",
+      "doneButton": "$t(common.done)"
+    },
+    "viewPrivateKey": {
+      "title": "Private key",
+      "instructions": [],
+      "nextButton": "$t(common.next)",
+      "previousButton": "$t(common.previous)"
     },
     "restoreKey": {
       "title": "Restore account"
@@ -476,6 +481,8 @@
       "tabTitle": "SETTINGS",
       "identity": "Identity",
       "security": "Security",
+      "viewPrivateKey": "Private Key",
+      "confirmPrivateKey": "Private Key (confirmation required)",
       "switchAccounts": "Switch accounts"
     },
     "securitySettings": {
@@ -515,7 +522,8 @@
     "invalidPassword": "Password is invalid. Please try again.",
     "loginFailed": "Unable to login. Please report this issue.",
     "passcodeCreationFailed": "Unable to create passcode. Please report this issue.",
-    "accountCreationFailed": "Unable to create account. Please report this issue."
+    "accountCreationFailed": "Unable to create account. Please report this issue.",
+    "generalError": "Unable to finish operation. Please report this issue."
   },
   "bots": {
     "freudbot": {

@@ -1,3 +1,5 @@
+// @flow
+
 import rootReducer, { subReducers } from '../../../src/reducers';
 
 test('rootReducer contains all child reducers', () => {

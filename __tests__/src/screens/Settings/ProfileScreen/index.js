@@ -3,6 +3,7 @@ import { shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
 
 import ProfileScreenContainer from '../../../../../src/screens/Settings/ProfileScreen/index';
+import navigatorMock from '../../../../../__mocks__/Navigator';
 
 describe('ProfileScreenContainer', () => {
   let profileScreenContainer;
@@ -22,7 +23,7 @@ describe('ProfileScreenContainer', () => {
   };
   const storeMock = configureStore([]);
   const propsMock = {
-    navigator: {},
+    navigator: navigatorMock,
   };
 
   beforeEach(() => {

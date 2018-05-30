@@ -52,6 +52,7 @@ class ProfileScreen extends NavigatorComponent<Props> {
     super(props);
 
     this.props.navigator.setButtons({
+      leftButtons: [],
       ...androidNavigationButtons,
       rightButtons: [{
         title: i18n.t('screens.profile.editButton'),

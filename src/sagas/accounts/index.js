@@ -5,12 +5,12 @@ import {
   logout,
   checkPasswordSaga,
   checkPinCodeSaga,
-  saveAccount,
+  saveEditingAccount,
   savePasswordSaga,
   savePinCodeSaga,
   saveCreatingAccount,
   startAccountCreation,
-  startRestoreAccountUsingMnemonic,
+  startRestoreAccountUsingMnemonic, saveMnemonicConfirmed,
 } from './sagas';
 import {
   LOGIN,
@@ -21,9 +21,9 @@ import {
   SAVE_PIN_CODE,
   SAVE_CREATING_ACCOUNT,
   START_ACCOUNT_CREATION,
-  START_RESTORE_ACCOUNT_USING_MNEMONIC,
+  START_RESTORE_ACCOUNT_USING_MNEMONIC, MNEMONIC_CONFIRMED,
 } from '../../actions/accounts';
-import { SAVE_ACCOUNT } from '../../actions/profile';
+import { SAVE_EDITING_ACCOUNT } from '../../actions/profile';
 
 /**
  * @desc Root accounts saga.
@@ -32,15 +32,16 @@ import { SAVE_ACCOUNT } from '../../actions/profile';
 export default function* rootSaga() {
   yield all([
     call(listenForDatabaseUpdates),
-    yield takeEvery(START_ACCOUNT_CREATION, startAccountCreation),
-    yield takeEvery(START_RESTORE_ACCOUNT_USING_MNEMONIC, startRestoreAccountUsingMnemonic),
-    yield takeEvery(LOGIN, loginActionHandler),
-    yield takeEvery(LOGOUT, logout),
-    yield takeEvery(SAVE_ACCOUNT, saveAccount),
-    yield takeEvery(CHECK_PIN_CODE, checkPinCodeSaga),
-    yield takeEvery(CHECK_PASSWORD, checkPasswordSaga),
-    yield takeEvery(SAVE_PIN_CODE, savePinCodeSaga),
-    yield takeEvery(SAVE_PASSWORD, savePasswordSaga),
-    yield takeEvery(SAVE_CREATING_ACCOUNT, saveCreatingAccount),
+    takeEvery(START_ACCOUNT_CREATION, startAccountCreation),
+    takeEvery(START_RESTORE_ACCOUNT_USING_MNEMONIC, startRestoreAccountUsingMnemonic),
+    takeEvery(LOGIN, loginActionHandler),
+    takeEvery(LOGOUT, logout),
+    takeEvery(SAVE_EDITING_ACCOUNT, saveEditingAccount),
+    takeEvery(CHECK_PIN_CODE, checkPinCodeSaga),
+    takeEvery(CHECK_PASSWORD, checkPasswordSaga),
+    takeEvery(SAVE_PIN_CODE, savePinCodeSaga),
+    takeEvery(SAVE_PASSWORD, savePasswordSaga),
+    takeEvery(SAVE_CREATING_ACCOUNT, saveCreatingAccount),
+    takeEvery(MNEMONIC_CONFIRMED, saveMnemonicConfirmed),
   ]);
 }
