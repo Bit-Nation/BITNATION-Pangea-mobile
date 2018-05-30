@@ -1,12 +1,7 @@
 // @flow
 
 import * as React from 'react';
-import {
-  Text,
-  TextInput,
-  View,
-  findNodeHandle,
-} from 'react-native';
+import { Text, TextInput, View, findNodeHandle } from 'react-native';
 
 import styles, { cursorColor } from './styles';
 
@@ -18,7 +13,7 @@ type Props = {
   /**
    * @desc Text label to be rendered below component. Used to show number of field.
    */
-  label?: string,
+  label: string,
   /**
    * @desc Text value of wrapped text field.
    */
@@ -38,7 +33,7 @@ type Props = {
   /**
    * @desc Callback on submit of wrapped text field.
    */
-  onSubmit: (number) => void,
+  onSubmit: number => void,
   /**
    * @desc Callback on focus of wrapped text field.
    */
@@ -46,8 +41,8 @@ type Props = {
   /**
    * @desc Style object to be applied on root view on top of default style.
    */
-  style?: any,
-}
+  style: any
+};
 
 /**
  * Component that renders text input view for private key input process.
@@ -62,11 +57,19 @@ class PrivateKeyTextInputContainer extends React.Component<Props> {
     this.textInput = null;
   }
 
-  textInput: React.Element<'TextInput'> | null;
+  textInput: React.Element<"TextInput"> | null;
 
   render() {
     const {
-      style, editable, isLast, value, index, label, onFocus, onSubmit, onChange,
+      style,
+      editable,
+      isLast,
+      value,
+      index,
+      label,
+      onFocus,
+      onSubmit,
+      onChange,
     } = this.props;
 
     return (
@@ -94,12 +97,14 @@ class PrivateKeyTextInputContainer extends React.Component<Props> {
 
 PrivateKeyTextInputContainer.defaultProps = {
   editable: true,
+  label: '',
   value: '',
   isLast: true,
   index: 0,
   onFocus: () => undefined,
   onSubmit: () => undefined,
   onChange: () => undefined,
+  style: {},
 };
 
 export default PrivateKeyTextInputContainer;
