@@ -132,6 +132,7 @@ export type MessageJobType = {
   id: number,
   heading: string,
   params: string,
+  msg: string,
   version: number,
   display: boolean,
   interpret: boolean,

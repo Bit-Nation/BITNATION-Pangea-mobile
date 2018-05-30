@@ -21,7 +21,11 @@ ShallowWrapper {
         <PanelView
           body="You need an Ethereum wallet to make payments, to create nations, and to use other useful services."
           buttonTitle="Create Wallet"
-          onButtonClick={undefined}
+          childrenContainerStyle={Object {}}
+          icon={undefined}
+          onButtonClick={null}
+          renderAdditionalInfo={null}
+          renderBottom={null}
           style={
             Object {
               "backgroundColor": "transparent",
@@ -54,7 +58,11 @@ ShallowWrapper {
         <PanelView
           body="You can restore your wallet if you lose or change your phone. You will need your private key to restore your wallet."
           buttonTitle="Restore Wallet"
-          onButtonClick={undefined}
+          childrenContainerStyle={Object {}}
+          icon={undefined}
+          onButtonClick={null}
+          renderAdditionalInfo={null}
+          renderBottom={null}
           style={
             Object {
               "backgroundColor": "transparent",
@@ -95,7 +103,12 @@ ShallowWrapper {
         "props": Object {
           "body": "You need an Ethereum wallet to make payments, to create nations, and to use other useful services.",
           "buttonTitle": "Create Wallet",
-          "onButtonClick": undefined,
+          "children": null,
+          "childrenContainerStyle": Object {},
+          "icon": undefined,
+          "onButtonClick": null,
+          "renderAdditionalInfo": null,
+          "renderBottom": null,
           "style": Object {
             "backgroundColor": "transparent",
             "borderRadius": 8,
@@ -132,7 +145,12 @@ ShallowWrapper {
         "props": Object {
           "body": "You can restore your wallet if you lose or change your phone. You will need your private key to restore your wallet.",
           "buttonTitle": "Restore Wallet",
-          "onButtonClick": undefined,
+          "children": null,
+          "childrenContainerStyle": Object {},
+          "icon": undefined,
+          "onButtonClick": null,
+          "renderAdditionalInfo": null,
+          "renderBottom": null,
           "style": Object {
             "backgroundColor": "transparent",
             "borderRadius": 8,
@@ -175,7 +193,11 @@ ShallowWrapper {
           <PanelView
             body="You need an Ethereum wallet to make payments, to create nations, and to use other useful services."
             buttonTitle="Create Wallet"
-            onButtonClick={undefined}
+            childrenContainerStyle={Object {}}
+            icon={undefined}
+            onButtonClick={null}
+            renderAdditionalInfo={null}
+            renderBottom={null}
             style={
               Object {
                 "backgroundColor": "transparent",
@@ -208,7 +230,11 @@ ShallowWrapper {
           <PanelView
             body="You can restore your wallet if you lose or change your phone. You will need your private key to restore your wallet."
             buttonTitle="Restore Wallet"
-            onButtonClick={undefined}
+            childrenContainerStyle={Object {}}
+            icon={undefined}
+            onButtonClick={null}
+            renderAdditionalInfo={null}
+            renderBottom={null}
             style={
               Object {
                 "backgroundColor": "transparent",
@@ -249,7 +275,12 @@ ShallowWrapper {
           "props": Object {
             "body": "You need an Ethereum wallet to make payments, to create nations, and to use other useful services.",
             "buttonTitle": "Create Wallet",
-            "onButtonClick": undefined,
+            "children": null,
+            "childrenContainerStyle": Object {},
+            "icon": undefined,
+            "onButtonClick": null,
+            "renderAdditionalInfo": null,
+            "renderBottom": null,
             "style": Object {
               "backgroundColor": "transparent",
               "borderRadius": 8,
@@ -286,7 +317,12 @@ ShallowWrapper {
           "props": Object {
             "body": "You can restore your wallet if you lose or change your phone. You will need your private key to restore your wallet.",
             "buttonTitle": "Restore Wallet",
-            "onButtonClick": undefined,
+            "children": null,
+            "childrenContainerStyle": Object {},
+            "icon": undefined,
+            "onButtonClick": null,
+            "renderAdditionalInfo": null,
+            "renderBottom": null,
             "style": Object {
               "backgroundColor": "transparent",
               "borderRadius": 8,

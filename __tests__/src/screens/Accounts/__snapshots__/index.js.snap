@@ -9,6 +9,7 @@ ShallowWrapper {
       Object {
         "pop": [MockFunction],
         "push": [MockFunction],
+        "setButtons": [MockFunction],
         "setOnNavigatorEvent": [MockFunction],
       }
     }
@@ -40,6 +41,7 @@ ShallowWrapper {
       "navigator": Object {
         "pop": [MockFunction],
         "push": [MockFunction],
+        "setButtons": [MockFunction],
         "setOnNavigatorEvent": [MockFunction],
       },
       "startAccountCreation": [Function],
@@ -85,6 +87,7 @@ ShallowWrapper {
         "navigator": Object {
           "pop": [MockFunction],
           "push": [MockFunction],
+          "setButtons": [MockFunction],
           "setOnNavigatorEvent": [MockFunction],
         },
         "startAccountCreation": [Function],

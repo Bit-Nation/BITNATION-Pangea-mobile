@@ -2,23 +2,16 @@
 
 import _ from 'lodash';
 
-import {
-  type Action,
-  DONE_FETCH_MESSAGES,
-  MESSAGE_ADDED,
-  START_FETCH_MESSAGES,
-} from '../actions/activity';
+import { type Action, MESSAGES_ADDED } from '../actions/activity';
 import type { ActivityLogMessage } from '../types/ActivityLogMessage';
 import { ACTIVITY_MESSAGES_LIMIT } from '../global/Constants';
 
 export type State = {
-  +messages: Array<ActivityLogMessage>,
-  +isFetching: boolean,
-}
+  +messages: Array<ActivityLogMessage>
+};
 
 export const initialState: State = {
   messages: [],
-  isFetching: false,
 };
 
 /**
@@ -48,21 +41,10 @@ export function mergeMessages(
  */
 export default (state: State = initialState, action: Action): State => {
   switch (action.type) {
-    case MESSAGE_ADDED:
-      return {
-        ...state,
-        messages: mergeMessages(state.messages, [action.message]),
-      };
-    case START_FETCH_MESSAGES:
-      return {
-        ...state,
-        isFetching: true,
-      };
-    case DONE_FETCH_MESSAGES:
+    case MESSAGES_ADDED:
       return {
         ...state,
         messages: mergeMessages(state.messages, action.messages),
-        isFetching: false,
       };
     default:
       return state;

@@ -54,7 +54,7 @@ type Props = {
    * @desc Children to be rendered inside panel view.
    */
   children?: React.Node
-}
+};
 
 const styles = MediaQueryStyleSheet.create({
   ...GlobalStyles,
@@ -72,22 +72,16 @@ export default class PanelView extends React.Component<Props> {
 
     return (
       <View style={styles.panelTitleRowContainer}>
-        {
-          title &&
+        {title && (
           <View style={styles.panelTitleContainer}>
-            <Text style={titleStyle}>
-              {title}
-            </Text>
+            <Text style={titleStyle}>{title}</Text>
           </View>
-        }
-        {
-          icon &&
+        )}
+        {icon && (
           <View style={styles.panelTitleIcon}>
-            <Text style={styles.panelIcon}>
-              {icon}
-            </Text>
+            <Text style={styles.panelIcon}>{icon}</Text>
           </View>
-        }
+        )}
       </View>
     );
   }
@@ -108,45 +102,36 @@ export default class PanelView extends React.Component<Props> {
 
     return (
       <View style={style}>
-
         {/* TITLE + ICON */}
         {/* Hide this view if no title or icon to avoid line below it. */}
-        {
-          (!_.isEmpty(title) || !_.isEmpty(icon)) &&
-          this.renderHeader()
-        }
+        {(!_.isEmpty(title) || !_.isEmpty(icon)) && this.renderHeader()}
 
         {/* CHILDREN (MAIN) DISPLAY AREA */}
         <View style={[styles.panelChildrenContainer, childrenContainerStyle]}>
           {children}
         </View>
 
-        {
-          body &&
+        {body && (
           <View style={styles.panelBodyContainer}>
-            <Text style={styles.body}>
-              {body}
-            </Text>
+            <Text style={styles.body}>{body}</Text>
           </View>
-        }
+        )}
 
         <View style={styles.messageAdditionalInfoContainer}>
           {renderAdditionalInfo && renderAdditionalInfo()}
         </View>
 
-        {
-          onButtonClick &&
+        {onButtonClick && (
           <Button
             style={styles.panelButton}
             title={buttonTitle}
             onPress={onButtonClick}
           />
-        }
+        )}
 
         <View style={styles.messageBottomContainer}>
           {renderBottom && renderBottom()}
         </View>
-
       </View>
     );
   }
@@ -155,4 +140,13 @@ export default class PanelView extends React.Component<Props> {
 PanelView.defaultProps = {
   style: styles.panelView,
   titleStyle: styles.panelViewTitle,
+  children: null,
+  childrenContainerStyle: {},
+  renderBottom: null,
+  buttonTitle: 'Button',
+  onButtonClick: null,
+  renderAdditionalInfo: null,
+  body: undefined,
+  icon: undefined,
+  title: undefined,
 };
