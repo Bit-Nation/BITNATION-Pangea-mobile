@@ -1,20 +1,19 @@
-/* eslint-disable */
+// @flow
 
 import ethers from 'ethers';
 import ERC20ABI from './ERC20ABI.json';
 
 export default class EthereumService {
-  constructor(wallet) {
+  wallet: Object;
+  constructor(wallet: Object) {
     this.wallet = wallet;
   }
-  async getBalance(): string {
-    console.log('GETTING BALANCE FROM PROVIDER:  ', this.wallet.provider);
+  async getBalance(): Promise<void> {
     const balance = await this.wallet.getBalance('latest');
-    console.log('BLAANCE: ', balance);
     return balance;
   }
 
-  async getTokenBalance(tokenAddress: string): string {
+  async getTokenBalance(tokenAddress: string): Promise<void> {
     const abi = ERC20ABI;
     const contract = new ethers.Contract(tokenAddress, abi, this.wallet.provider);
     const balance = await contract.balanceOf(this.wallet.address);
@@ -26,13 +25,13 @@ export default class EthereumService {
     const contract = new ethers.Contract(tokenAddress, abi, this.wallet);
     const formattedTokenAmount = ethers.utils.parseUnits(tokenAmount, 18);
     const overrideOptions = {
-      gasLimit: 1000000
+      gasLimit: 1000000,
     };
     const transactionHash = await contract.transfer(toAddress, formattedTokenAmount, overrideOptions);
     return transactionHash;
   }
 
-  async estimateGas(gasPrice: string, data: string): string {
+  async estimateGas(gasPrice: string, data: string): Promise<void> {
     const transaction = {
       gasPrice: ethers.utils.bigNumberify(gasPrice),
       to: '0xF0D346A86A68086846363185d24D5893F4353A78',
@@ -41,9 +40,8 @@ export default class EthereumService {
     };
 
     const gasEstimate = await this.wallet.estimateGas(transaction);
-    const fullGasEstimate = gasEstimate * parseInt(gasPrice);
 
-    return fullGasEstimate;
+    return gasEstimate;
   }
 
   async signRandom() {
