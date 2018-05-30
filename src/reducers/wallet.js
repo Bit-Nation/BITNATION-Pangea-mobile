@@ -21,6 +21,7 @@ export type State = {
   +selectedWalletAddress: string | null,
   +moneySendingInProgress: boolean,
   +moneySendingError: Error | null,
+  +moneySendingSuccess: boolean,
 };
 
 export const initialState: State = {
@@ -29,6 +30,7 @@ export const initialState: State = {
   selectedWalletAddress: null,
   moneySendingInProgress: false,
   moneySendingError: null,
+  moneySendingSuccess: false,
 };
 
 /**
@@ -66,7 +68,7 @@ export default (state: State = initialState, action: Action): State => {
     case SEND_MONEY:
       return { ...state, moneySendingInProgress: true, moneySendingError: null };
     case SEND_MONEY_SUCCESS:
-      return { ...state, moneySendingInProgress: false, moneySendingError: null };
+      return { ...state, moneySendingInProgress: false, moneySendingError: null, moneySendingSuccess: true };
     case SEND_MONEY_FAILED:
       return { ...state, moneySendingInProgress: false, moneySendingError: action.error };
     default:
