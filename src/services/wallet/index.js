@@ -4,7 +4,6 @@ import { NativeModules } from 'react-native';
 import { BigNumber } from 'bignumber.js';
 import factory from '../../services/ethereum/factory';
 import type { WalletType } from '../../types/Wallet';
-// import { BALANCE_EXPIRATION_INTERVAL } from '../../global/Constants';
 
 export default class WalletService {
   static async getWallets() {
@@ -33,13 +32,11 @@ export default class WalletService {
 
     try {
       const balance = await ethService.getBalance();
-      console.log('Resolved balance: ', balance);
       BigNumber.config({ DECIMAL_PLACES: 5 });
       const balanceBN = new BigNumber(balance);
       walletsToCheck[0].balance = balanceBN.times(10e-19).round(5).toString(10);
     } catch (error) {
       // walletsToCheck[0].balance = undefined;
-      console.log('error found in trying to get balance');
       throw error;
     }
 
