@@ -141,7 +141,7 @@ class SendMoney extends NavigatorComponent<Props, State> {
               <View style={styles.textColumn}>
                 <Text style={styles.bodyBold}>{wallet.currency === 'ETH' ? i18n.t('common.ethereum') : i18n.t('common.bitnationPat')}</Text>
                 <Text style={styles.currencyLarge}>
-                  {prettyWalletBalance(wallet)}
+                  {prettyWalletBalance(wallet, wallet.currency)}
                 </Text>
               </View>
             </View>
