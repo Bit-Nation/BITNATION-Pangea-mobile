@@ -25,8 +25,9 @@ type Props = {
   navigator: Navigator,
   /**
    * @desc Function to return the Promise resolve
+   * @param {number} gasPrice Number with the gasPrice selected by the user for the current transaction
    */
-  onSuccess: (number) => null,
+  onSuccess: (gasPrice: number) => null,
   /**
    * @desc Function to return the Promise reject
    */
@@ -49,20 +50,18 @@ class ConfirmationScreen extends NavigatorComponent<Props, State> {
       gasPrice: 2,
     };
 
-    if (this.props.navigator) {
-      this.props.navigator.setButtons({
-        leftButtons: [{
-          title: i18n.t('screens.createNation.cancelButton'),
-          id: 'cancel',
-          buttonColor: Colors.navigationButtonColor,
-        }],
-        rightButtons: [{
-          title: i18n.t('screens.confirmTransaction.confirmButton'),
-          id: 'confirm',
-          buttonColor: Colors.navigationButtonColor,
-        }],
-      });
-    }
+    this.props.navigator.setButtons({
+      leftButtons: [{
+        title: i18n.t('screens.createNation.cancelButton'),
+        id: 'cancel',
+        buttonColor: Colors.navigationButtonColor,
+      }],
+      rightButtons: [{
+        title: i18n.t('screens.confirmTransaction.confirmButton'),
+        id: 'confirm',
+        buttonColor: Colors.navigationButtonColor,
+      }],
+    });
   }
   onNavBarButtonPress(id: string) {
     if (id === 'cancel') {

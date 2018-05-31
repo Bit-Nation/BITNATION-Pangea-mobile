@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+
 import ethers from 'ethers';
 import providers from 'ethers/providers';
 import Ethereum from '../../../../src/services/ethereum/index';

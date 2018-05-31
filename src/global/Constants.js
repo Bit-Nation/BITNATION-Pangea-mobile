@@ -28,3 +28,9 @@ export const FOUR_DOT_SEVEN_INCHES = 667;
 export const FIVE_DOT_FIVE_INCHES = 736;
 
 export const FIVE_DOT_EIGHT_INCHES = 812;
+
+// Contract Address for PAT Tokens
+
+export const PAT_DEV_ADDRESS = '0xc3830a6206fb9d089d1ce824598978532d14d8aa';
+
+export const PAT_PROD_ADDRESS = '0xBB1fA4FdEB3459733bF67EbC6f893003fA976a82';
