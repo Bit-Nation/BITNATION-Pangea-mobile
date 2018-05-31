@@ -21,8 +21,8 @@ import {
  */
 export default function* rootSaga(): Generator<*, *, *> {
   yield all([
-    yield takeEvery(UPDATE_WALLET_LIST, updateWalletList),
-    yield takeEvery(UPDATE_WALLET_BALANCE, updateWalletBalance),
-    yield takeEvery(SEND_MONEY, sendMoneySaga),
+    takeEvery(UPDATE_WALLET_LIST, updateWalletList),
+    takeEvery(UPDATE_WALLET_BALANCE, updateWalletBalance),
+    takeEvery(SEND_MONEY, sendMoneySaga),
   ]);
 }
