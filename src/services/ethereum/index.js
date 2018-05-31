@@ -8,11 +8,23 @@ export default class EthereumService {
   constructor(wallet: Object) {
     this.wallet = wallet;
   }
+  /**
+   * @desc Function to get the balance of the given wallet
+   *
+   * @return {Promise} Promise that resolves with the balance in BN form
+   */
   async getBalance(): Promise<void> {
     const balance = await this.wallet.getBalance('latest');
     return balance;
   }
 
+  /**
+   * @desc Function to get the balance of the given wallet
+   *
+   * @param {string} tokenAddress The address of the deployed token contract
+   *
+   * @return {Promise} Promise that resolves with the balance in BN form
+   */
   async getTokenBalance(tokenAddress: string): Promise<void> {
     const abi = ERC20ABI;
     const contract = new ethers.Contract(tokenAddress, abi, this.wallet.provider);
@@ -20,6 +32,15 @@ export default class EthereumService {
     return balance;
   }
 
+  /**
+   * @desc Function to send tokens to an ethereum address
+   *
+   * @param {string} tokenAddress The address of the deployed token contract
+   * @param {string} toAddress The hex address of the recipient of the tokens
+   * @param {string} tokenAmount The amount of tokens that you wish to send.
+   *
+   * @return {Promise} Promise that resolves with the transaction hash
+   */
   async sendTokens(tokenAddress: string, toAddress: string, tokenAmount: string) {
     const abi = ERC20ABI;
     const contract = new ethers.Contract(tokenAddress, abi, this.wallet);
@@ -31,6 +52,14 @@ export default class EthereumService {
     return transactionHash;
   }
 
+  /**
+   * @desc Function to estimate how much gas will be used for any transaction
+   *
+   * @param {string} gasPrice The price of gas in gwei
+   * @param {string} data The data that needs to be sent with the transaction
+   *
+   * @return {Promise} Promise that resolves with the estimated gas in BN form
+   */
   async estimateGas(gasPrice: string, data: string): Promise<void> {
     const transaction = {
       gasPrice: ethers.utils.bigNumberify(gasPrice),
@@ -44,18 +73,14 @@ export default class EthereumService {
     return gasEstimate;
   }
 
-  async signRandom() {
-    const transaction = {
-      gasPrice: ethers.utils.bigNumberify('2000000'),
-      to: '0xF0D346A86A68086846363185d24D5893F4353A78',
-      data: '0x',
-      value: ethers.utils.parseEther('0.1'),
-    };
-    return this.wallet.sign(transaction);
-  }
-
-  // Function to send money to an address given amount and gasPrice. Returns
-  // promise of when transaction is deployed.
+  /**
+   * @desc Function to send ether to an ethereum address
+   *
+   * @param {string} toAddress The address to send the ether to
+   * @param {string} amount The amount of ether to be sent. (In ETH)
+   *
+   * @return {Promise} Promise that resolves with the transaction hash
+   */
   sendMoney(toAddress: string, amount: string): Promise<void> {
     const transaction = {
       gasLimit: 21000,
@@ -66,7 +91,13 @@ export default class EthereumService {
     return this.wallet.sendTransaction(transaction);
   }
 
-  // Returns a promise that resolves when the transaction given is mined.
+  /**
+   * @desc Function to get the balance of the given wallet
+   *
+   * @param {string} transactionHash The hash of the transaction that you want to track
+   *
+   * @return {Promise} Promise that resolves when the transaction is successfully mined.
+   */
   trackTransaction(transactionHash: string): Promise<void> {
     return this.wallet.provider.waitForTransaction(transactionHash);
   }
