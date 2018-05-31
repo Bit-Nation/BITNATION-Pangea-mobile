@@ -66,7 +66,9 @@ export default (state: State = initialState, action: Action): State => {
       return Object.assign({}, state, { wallets: newWallets });
     }
     case SEND_MONEY:
-      return { ...state, moneySendingInProgress: true, moneySendingError: null };
+      return {
+        ...state, moneySendingInProgress: true, moneySendingError: null, moneySendingSuccess: false,
+      };
     case SEND_MONEY_SUCCESS:
       return {
         ...state, moneySendingInProgress: false, moneySendingError: null, moneySendingSuccess: true,

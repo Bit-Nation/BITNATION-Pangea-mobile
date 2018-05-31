@@ -4,6 +4,10 @@ import { NativeModules } from 'react-native';
 import { BigNumber } from 'bignumber.js';
 import factory from '../../services/ethereum/factory';
 import type { WalletType } from '../../types/Wallet';
+import {
+  PAT_DEV_ADDRESS,
+  PAT_PROD_ADDRESS,
+} from '../../global/Constants';
 
 export default class WalletService {
   static async getWallets() {
@@ -27,34 +31,23 @@ export default class WalletService {
     const walletsToCheck: Array<WalletType> = wallets;
     const { Panthalassa } = NativeModules;
     const walletAddress = await Panthalassa.PanthalassaEthPrivateKey();
-    const ethereum = await factory({ private_key: `0x${walletAddress}`, provider_type: network === 'dev' ? 'rinkeby' : 'homestead' });
+    const ethereum = await factory({ privateKey: `0x${walletAddress}`, providerType: network === 'dev' ? 'rinkeby' : 'homestead' });
     const ethService = ethereum.service;
 
-    try {
-      const balance = await ethService.getBalance();
-      BigNumber.config({ DECIMAL_PLACES: 5 });
-      const balanceBN = new BigNumber(balance);
-      walletsToCheck[0].balance = balanceBN.times(10e-19).round(5).toString(10);
-    } catch (error) {
-      // walletsToCheck[0].balance = undefined;
-      throw error;
-    }
+    const balanceEth = await ethService.getBalance();
+    BigNumber.config({ DECIMAL_PLACES: 18 });
+    const balanceBNEth = new BigNumber(balanceEth);
+    walletsToCheck[0].balance = balanceBNEth.times(10e-19).toString(10);
 
-    try {
-      const balance = await ethService.getTokenBalance(network === 'dev' ? '0xc3830a6206fb9d089d1ce824598978532d14d8aa' : '0xBB1fA4FdEB3459733bF67EbC6f893003fA976a82');
-      const balanceBN = new BigNumber(balance);
-      walletsToCheck[1].balance = balanceBN.times(10e-19).round(5).toString(10);
-    } catch (error) {
-      // walletsToCheck[1].balance = undefined;
-      throw error;
-    }
-
+    const balancePAT = await ethService.getTokenBalance(network === 'dev' ? PAT_DEV_ADDRESS : PAT_PROD_ADDRESS);
+    const balanceBNPAT = new BigNumber(balancePAT);
+    walletsToCheck[1].balance = balanceBNPAT.times(10e-19).toString(10);
     return walletsToCheck;
   }
   static async sendMoney(fromAddress, toAddress, amount, network) {
     const { Panthalassa } = NativeModules;
     const walletAddress = await Panthalassa.PanthalassaEthPrivateKey();
-    const ethereum = await factory({ private_key: `0x${walletAddress}`, provider_type: network === 'dev' ? 'rinkeby' : 'homestead' });
+    const ethereum = await factory({ privateKey: `0x${walletAddress}`, providerType: network === 'dev' ? 'rinkeby' : 'homestead' });
     const ethService = ethereum.service;
     return ethService.sendMoney(toAddress, amount);
   }
@@ -62,8 +55,8 @@ export default class WalletService {
   static async sendToken(fromAddress, toAddress, amount, network) {
     const { Panthalassa } = NativeModules;
     const walletAddress = await Panthalassa.PanthalassaEthPrivateKey();
-    const ethereum = await factory({ private_key: `0x${walletAddress}`, provider_type: network === 'dev' ? 'rinkeby' : 'homestead' });
+    const ethereum = await factory({ privateKey: `0x${walletAddress}`, providerType: network === 'dev' ? 'rinkeby' : 'homestead' });
     const ethService = ethereum.service;
-    return ethService.sendTokens(network === 'dev' ? '0xc3830a6206fb9d089d1ce824598978532d14d8aa' : '0xBB1fA4FdEB3459733bF67EbC6f893003fA976a82', toAddress, amount);
+    return ethService.sendTokens(network === 'dev' ? PAT_DEV_ADDRESS : PAT_PROD_ADDRESS, toAddress, amount);
   }
 }

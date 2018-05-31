@@ -19,18 +19,12 @@ export function roundEth(eth: string): string {
 /**
  * @desc Provide string for wallet balance even if it is undefined
  * @param {object} wallet Wallet object
- * @param {object} currency Current symbol after amount, default is "ETH"
- * @param {object} successfulSuffix Suffix to add if balance is present
  * @return {string} Formatted balance + successful suffix if balance defined,
  * corresponding string if not defined.
  */
 export function prettyWalletBalance(wallet: WalletType) {
-  // currency: ?CurrencyType,
-  // successfulSuffix: ?string,
-  // const suffix = successfulSuffix || '';
   if (wallet.balance !== null) {
-    return `${wallet.balance} ${wallet.currency}`;
-    // return `${roundEth(wallet.balance)} ${currency || ''}${suffix}`;
+    return `${roundEth(wallet.balance)} ${wallet.currency}`;
   }
   return !wallet.synchronizationError ? i18n.t('common.updating') : i18n.t('common.updateFailed');
 }
