@@ -6,6 +6,41 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <ConfirmationScreen
     gasPrice={2}
+    navigator={
+      Object {
+        "pop": [MockFunction],
+        "push": [MockFunction],
+        "setButtons": [MockFunction] {
+          "calls": Array [
+            Array [
+              Object {
+                "leftButtons": Array [
+                  Object {
+                    "buttonColor": "#007AFF",
+                    "id": "cancel",
+                    "title": "Cancel",
+                  },
+                ],
+                "rightButtons": Array [
+                  Object {
+                    "buttonColor": "#007AFF",
+                    "id": "confirm",
+                    "title": "Confirm",
+                  },
+                ],
+              },
+            ],
+          ],
+        },
+        "setOnNavigatorEvent": [MockFunction] {
+          "calls": Array [
+            Array [
+              [Function],
+            ],
+          ],
+        },
+      }
+    }
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],

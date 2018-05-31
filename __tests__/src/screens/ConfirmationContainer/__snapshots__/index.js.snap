@@ -7,8 +7,10 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <Connect(ConfirmationContainer)
     navigator={
       Object {
+        "pop": [MockFunction],
         "push": [MockFunction],
         "setButtons": [MockFunction],
+        "setOnNavigatorEvent": [MockFunction],
       }
     }
     onFail={[MockFunction]}
@@ -37,8 +39,10 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "navigator": Object {
+        "pop": [MockFunction],
         "push": [MockFunction],
         "setButtons": [MockFunction],
+        "setOnNavigatorEvent": [MockFunction],
       },
       "onFail": [MockFunction],
       "onSuccess": [MockFunction],
@@ -81,8 +85,10 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "navigator": Object {
+          "pop": [MockFunction],
           "push": [MockFunction],
           "setButtons": [MockFunction],
+          "setOnNavigatorEvent": [MockFunction],
         },
         "onFail": [MockFunction],
         "onSuccess": [MockFunction],
