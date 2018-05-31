@@ -1,9 +1,8 @@
 // @flow
+import ethers from 'ethers';
 
 import { Navigation } from 'react-native-navigation';
 import { screen } from '../../global/Screens';
-
-const ethers = require('ethers');
 
 /**
  * @desc Custom signer for ethereum RPC
@@ -16,7 +15,6 @@ const ethers = require('ethers');
  */
 export default function CustomSigner(privateKey: string, provider: string) {
   const wallet = new ethers.Wallet(privateKey);
-  // wallet.provider = new ethers.providers.InfuraProvider(provider);
   this.provider = new ethers.providers.InfuraProvider(provider);
   this.address = wallet.address;
   this.getBalance = wallet.getBalance;
@@ -33,7 +31,7 @@ export default function CustomSigner(privateKey: string, provider: string) {
               reject();
             },
             onSuccess: (gasPrice) => {
-              // Here we have gasPrice to pass it somewhere later.
+              // Here we have gasPrice which is in wei, so we need to convert it into gwei.
               transactionObject.gasPrice = ethers.utils.bigNumberify(`${gasPrice.toString()}000000000`);
               resolve(wallet.sign(transactionObject));
             },

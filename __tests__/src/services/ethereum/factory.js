@@ -4,12 +4,12 @@
 import factory from '../../../../src/services/ethereum/factory';
 import EthereumService from '../../../../src/services/ethereum/index';
 
-const myMock = jest.fn();
-myMock.mockReturnValueOnce('0xefc27ba5330258fcfb75e28e4e6efd88458751086998bbfad99257035fb3e160');
+const privateKeyMock = jest.fn();
+privateKeyMock.mockReturnValueOnce('0xefc27ba5330258fcfb75e28e4e6efd88458751086998bbfad99257035fb3e160');
 
 describe('factory', () => {
   test('Check ethereum Service creation', async () => {
-    const ethereum = await factory({ private_key: myMock(), provider_type: 'rinkeby' });
+    const ethereum = await factory({ private_key: privateKeyMock(), provider_type: 'rinkeby' });
     const ethereumService = ethereum.service;
     expect(ethereumService).toBeInstanceOf(EthereumService);
   });
