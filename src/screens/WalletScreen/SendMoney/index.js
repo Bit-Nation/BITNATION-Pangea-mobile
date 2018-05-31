@@ -73,7 +73,7 @@ class SendMoney extends NavigatorComponent<Props, State> {
         title: i18n.t('common.send'),
         id: SEND_BUTTON,
         buttonColor: Colors.navigationButtonColor,
-        // disabled: !this.validateSendData(),
+        disabled: !this.validateSendData(),
       }],
     });
   }
