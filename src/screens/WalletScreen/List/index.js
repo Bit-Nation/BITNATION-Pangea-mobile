@@ -30,7 +30,7 @@ const WalletList = ({ wallets, onReceivePress, onSendPress }: Props) => ((
       data={wallets}
       keyExtractor={item => item.currency}
       renderItem={({ item }) => {
-        const balance = prettyWalletBalance(item);
+        const balance = prettyWalletBalance(item, item.currency);
         return (<WalletCard
           imagePath={item.currency === 'ETH' ? Images.ethereumLogo : Images.patLogo}
           onSendPress={() => onSendPress(item)}
