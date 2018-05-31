@@ -40,6 +40,7 @@ export default function CustomSigner(privateKey: string, provider: string) {
       });
       return signedTransaction;
     } catch (e) {
+      console.log('error: ', e);
       throw new Error('Transaction aborted!');
     }
   };
