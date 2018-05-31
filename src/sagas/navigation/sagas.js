@@ -1,3 +1,4 @@
+// @flow
 /* eslint-disable no-use-before-define */
 import { call } from 'redux-saga/effects';
 import { Navigation } from 'react-native-navigation';
