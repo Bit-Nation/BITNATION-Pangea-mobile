@@ -50,7 +50,7 @@ describe('prettyWalletBalance', () => {
 
   test('custom success suffix', () => {
     expect(prettyWalletBalance(unsyncedWallet, 'ETH', ' available')).toBe('Updating');
-    expect(prettyWalletBalance(syncedWallet, 'ETH', ' available')).toBe('0.12346 ETH');
+    expect(prettyWalletBalance(syncedWallet, 'ETH', ' available')).toBe('0.12346 ETH available');
     expect(prettyWalletBalance(failedWallet, 'ETH', ' available')).toBe('Update failed');
   });
 });
