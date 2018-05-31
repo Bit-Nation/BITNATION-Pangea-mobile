@@ -31,7 +31,7 @@ describe('prettyWalletBalance', () => {
   const syncedWallet = {
     ethAddress: '0xtestAddress',
     currency: 'ETH',
-    balance: '0.12346',
+    balance: '0.12345678901',
     name: 'Test wallet',
   };
   const failedWallet = {
