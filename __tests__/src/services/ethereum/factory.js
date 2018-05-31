@@ -9,7 +9,7 @@ privateKeyMock.mockReturnValueOnce('0xefc27ba5330258fcfb75e28e4e6efd884587510869
 
 describe('factory', () => {
   test('Check ethereum Service creation', async () => {
-    const ethereum = await factory({ private_key: privateKeyMock(), provider_type: 'rinkeby' });
+    const ethereum = await factory({ privateKey: privateKeyMock(), providerType: 'rinkeby' });
     const ethereumService = ethereum.service;
     expect(ethereumService).toBeInstanceOf(EthereumService);
   });
