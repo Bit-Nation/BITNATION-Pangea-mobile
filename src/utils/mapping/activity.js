@@ -11,6 +11,7 @@ import { type MessageJobType as DBMessage } from '../../services/database/schema
 export function convertFromDatabase(messageJob: DBMessage): ActivityLogMessage {
   return {
     id: messageJob.id,
+    accountId: messageJob.accountId,
     msg: messageJob.msg,
     params: messageJob.params,
     interpret: messageJob.interpret,
@@ -26,6 +27,7 @@ export function convertFromDatabase(messageJob: DBMessage): ActivityLogMessage {
 export function convertToDatabase(messageObject: ActivityLogMessage): DBMessage | null {
   return {
     id: messageObject.id,
+    accountId: messageObject.accountId,
     heading: '',
     msg: messageObject.msg,
     params: messageObject.params || '',
