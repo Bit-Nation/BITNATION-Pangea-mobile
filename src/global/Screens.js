@@ -223,6 +223,11 @@ const Screens = {
     title: '',
     navigatorStyle: navigatorStyleModal,
   },
+  CONFIRMATION_SCREEN: {
+    screen: 'Pangea.ConfirmationContainer',
+    title: '',
+    navigatorStyle,
+  },
 };
 
 /**

@@ -33,6 +33,7 @@ describe('wallet reducer action handling', () => {
     expect(stateAfter).toEqual({
       ...stateBefore,
       selectedWalletAddress: mockWallet.ethAddress,
+      selectedWalletCurrency: mockWallet.currency,
     });
   });
 
@@ -80,6 +81,7 @@ describe('wallet reducer action handling', () => {
       ...stateBefore,
       moneySendingError: null,
       moneySendingInProgress: false,
+      moneySendingSuccess: true,
     });
   });
 
