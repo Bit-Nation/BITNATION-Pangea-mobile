@@ -7,6 +7,7 @@ import activity from './activity';
 import navigation from './navigation';
 import key from './key';
 import settings from './settings';
+import wallet from './wallet';
 
 /**
  * @desc Root saga.
@@ -19,5 +20,6 @@ export default function* rootSaga(): Generator<*, *, *> {
     call(navigation),
     call(key),
     call(settings),
+    call(wallet),
   ]);
 }
