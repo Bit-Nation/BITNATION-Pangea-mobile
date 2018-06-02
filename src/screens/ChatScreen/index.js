@@ -1,4 +1,5 @@
 // @flow
+/* eslint-disable */
 
 import React, { Component } from 'react';
 import { View, Platform } from 'react-native';
