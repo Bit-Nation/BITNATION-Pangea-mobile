@@ -17,16 +17,20 @@ import { getWalletIndex } from '../utils/wallet';
 
 export type State = {
   +wallets: Array<WalletType> | null,
+  +selectedWalletCurrency: string | null,
   +selectedWalletAddress: string | null,
   +moneySendingInProgress: boolean,
   +moneySendingError: Error | null,
+  +moneySendingSuccess: boolean,
 };
 
 export const initialState: State = {
   wallets: null,
+  selectedWalletCurrency: null,
   selectedWalletAddress: null,
   moneySendingInProgress: false,
   moneySendingError: null,
+  moneySendingSuccess: false,
 };
 
 /**
@@ -38,9 +42,9 @@ export const initialState: State = {
 export default (state: State = initialState, action: Action): State => {
   switch (action.type) {
     case SELECT_WALLET:
-      return Object.assign({}, state, { selectedWalletAddress: action.wallet.ethAddress });
+      return Object.assign({}, state, { selectedWalletCurrency: action.wallet.currency, selectedWalletAddress: action.wallet.ethAddress });
     case WALLETS_LIST_UPDATED:
-      return Object.assign({}, state, { wallets: action.wallets });
+      return Object.assign({}, state, { wallets: _.cloneDeep(action.wallets) });
     case WALLET_SYNC_FAILED: {
       const { walletAddress } = action;
       const walletIndex = getWalletIndex(state.wallets || [], walletAddress);
@@ -62,9 +66,13 @@ export default (state: State = initialState, action: Action): State => {
       return Object.assign({}, state, { wallets: newWallets });
     }
     case SEND_MONEY:
-      return { ...state, moneySendingInProgress: true, moneySendingError: null };
+      return {
+        ...state, moneySendingInProgress: true, moneySendingError: null, moneySendingSuccess: false,
+      };
     case SEND_MONEY_SUCCESS:
-      return { ...state, moneySendingInProgress: false, moneySendingError: null };
+      return {
+        ...state, moneySendingInProgress: false, moneySendingError: null, moneySendingSuccess: true,
+      };
     case SEND_MONEY_FAILED:
       return { ...state, moneySendingInProgress: false, moneySendingError: action.error };
     default:

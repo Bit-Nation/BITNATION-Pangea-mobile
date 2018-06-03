@@ -38,6 +38,7 @@ ShallowWrapper {
     "props": Object {
       "moneySendingError": null,
       "moneySendingInProgress": false,
+      "moneySendingSuccess": false,
       "navigator": Object {
         "pop": [MockFunction],
         "push": [MockFunction],
@@ -45,6 +46,7 @@ ShallowWrapper {
         "setOnNavigatorEvent": [MockFunction],
       },
       "selectedWalletAddress": null,
+      "selectedWalletCurrency": null,
       "store": Object {
         "clearActions": [Function],
         "dispatch": [Function],
@@ -92,6 +94,7 @@ ShallowWrapper {
       "props": Object {
         "moneySendingError": null,
         "moneySendingInProgress": false,
+        "moneySendingSuccess": false,
         "navigator": Object {
           "pop": [MockFunction],
           "push": [MockFunction],
@@ -99,6 +102,7 @@ ShallowWrapper {
           "setOnNavigatorEvent": [MockFunction],
         },
         "selectedWalletAddress": null,
+        "selectedWalletCurrency": null,
         "store": Object {
           "clearActions": [Function],
           "dispatch": [Function],

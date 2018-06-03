@@ -39,8 +39,6 @@ type Actions = {
 
 class Accounts extends NavigatorComponent<Props & Actions & AccountsState> {
   static onCreateAccount = (navigator: Navigator, startCreate: () => void) => {
-    console.log('================================');
-    console.log(startCreate);
     startCreate();
     Accounts.showSecuritySettingsScreen(navigator);
   };
