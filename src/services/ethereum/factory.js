@@ -16,7 +16,7 @@ export default function factory(config: {privateKey: string, providerType: strin
   const customSigner = new CustomSigner(privateKey, providerType);
 
   // Ethereum service
-  const ethereumService = new EthereumService(customSigner);
+  const ethereumService = new EthereumService(customSigner, providerType === 'rinkeby' ? 'dev' : 'prod');
 
   return {
     wallet: customSigner,

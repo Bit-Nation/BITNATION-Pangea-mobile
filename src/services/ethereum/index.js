@@ -6,19 +6,11 @@ import NationsABI from './NationABI.json';
 
 export default class EthereumService {
   wallet: Object;
-  constructor(wallet: Object) {
+  nations: Object;
+  constructor(wallet: Object, network: string) {
     this.wallet = wallet;
-  }
-  /**
-   * @desc Function to get the balance of the given wallet
-   *
-   * @param {string} network dev for development network (rinkeby) or anything else for production (homestead)
-   *
-   * @return {Object} Object that holds all the functions for the nations object.
-   */
-  initNations(network: string): Object {
     const abi = NationsABI;
-    return new ethers.Contract(network === 'dev' ? '0x559f57f7dbe737319f8d28f8a94f1dcee9f468ad' : '0xa014847cff475826804f2e0a178096b10eeed7a7', abi, this.wallet);
+    this.nations = new ethers.Contract(network === 'dev' ? '0x559f57f7dbe737319f8d28f8a94f1dcee9f468ad' : '0xa014847cff475826804f2e0a178096b10eeed7a7', abi, this.wallet);
   }
   /**
    * @desc Function to get the balance of the given wallet
