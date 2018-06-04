@@ -48,6 +48,7 @@
     "updating": "Updating",
     "updateFailed": "Update failed",
     "ethereum": "Ethereum",
+    "bitnationPat": "XPAT",
     "continue": "Continue",
     "location": "Location",
     "accounts": "Accounts"
@@ -193,6 +194,11 @@
       "subtitle": "Changing the passcode type requires you to change your passcode",
       "confirm": "$t(common.ok)",
       "cancel": "$t(common.cancel)"
+    },
+    "successTransaction": {
+      "title": "Success",
+      "subtitle": "Your transaction has been successfully sent",
+      "confirm": "$t(common.ok)"
     }
   },
   "screens": {
@@ -494,6 +500,12 @@
       "enterInstruction": "Enter password:",
       "createInstruction": "Enter new password:",
       "verifyInstruction": "Enter password again:"
+    },
+    "confirmTransaction": {
+      "title": "Confirm Transaction",
+      "gasPrice": "What gas price would you like to set?",
+      "confirmButton": "Confirm",
+      "gasPriceTitle": "Gas Price: {{gasPrice}}"
     }
   },
   "testingMode": {

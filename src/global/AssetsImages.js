@@ -1,6 +1,7 @@
 const background = require('../assets/images/background.jpg');
 const rightArrow = require('../assets/images/right_arrow.png');
 const ethereumLogo = require('../assets/images/ethereum_logo.png');
+const patLogo = require('../assets/images/pat_logo.png');
 const demo = require('../assets/images/demoImage.png');
 const eth = require('../assets/images/ethereum_logo.png');
 const qrColor = require('../assets/images/QR_icon.png');
@@ -55,6 +56,7 @@ const Images = {
   background,
   rightArrow,
   ethereumLogo,
+  patLogo,
   demo,
   eth,
   qrColor,
