@@ -20,11 +20,11 @@ export function convertFromDatabase(messageJob: DBMessage): ActivityLogMessage {
 }
 
 /**
- * @desc Converts message object to Realm object if it's possible.
+ * @desc Converts message object to Realm object.
  * @param {ActivityLogMessage} messageObject Message object to be converted.
- * @return {?DBMessage} Converted object.
+ * @return {DBMessage} Converted object.
  */
-export function convertToDatabase(messageObject: ActivityLogMessage): DBMessage | null {
+export function convertToDatabase(messageObject: ActivityLogMessage): DBMessage {
   return {
     id: messageObject.id,
     accountId: messageObject.accountId,

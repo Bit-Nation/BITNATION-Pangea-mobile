@@ -80,8 +80,12 @@ describe('addNewMessageSaga', () => {
     expect(last.value).toBeUndefined();
 
     const mockMessage = buildMessageObject(1, testAccountId, mockAction.message, mockAction.params, mockAction.interpret);
+    const convertedMessage = convertToDatabase(mockMessage);
+    delete convertedMessage.created_at;
     expect(realm.objects('MessageJob').filtered(`accountId == '${testAccountId}'`)[0])
-      .toMatchObject(convertToDatabase(mockMessage));
+      .toMatchObject({
+        ...convertedMessage,
+      });
 
     realm.close();
   });
