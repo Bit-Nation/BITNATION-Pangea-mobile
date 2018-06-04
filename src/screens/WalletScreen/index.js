@@ -88,6 +88,7 @@ class WalletScreen extends NavigatorComponent<Props & TestingModeProps & Actions
   };
 
   restoreWallet = () => {
+
   };
 
   sendMoney = (wallet) => {
