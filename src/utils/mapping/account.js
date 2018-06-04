@@ -11,6 +11,7 @@ import { type AccountType as DBAccount } from '../../services/database/schemata'
 export function convertFromDatabase(account: DBAccount): Account {
   return {
     id: account.id,
+    accountId: account.accountId,
     name: account.name,
     location: account.location,
     networkType: account.networkType,
@@ -32,6 +33,7 @@ export function convertToDatabase(account: PartialAccount | Account): DBAccount 
 
   return {
     id: account.id,
+    accountId: account.accountId,
     name: account.name,
     location: account.location || '',
     description: '',

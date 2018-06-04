@@ -45,7 +45,7 @@ export function* startDatabaseListening(): Generator<*, *, *> {
   yield call(currentAccountBasedUpdate, buildAccountSettingsResults, onCurrentAccountChange);
 }
 
-const buildMessageObject = (
+export const buildMessageObject = (
   highestId,
   accountId,
   message,
