@@ -21,7 +21,6 @@ describe('convert account to database', () => {
   test('required params only', () => {
     const account = {
       id: 'Test',
-      accountId: '12345',
       name: 'Name',
       accountStore: 'Account store',
       networkType: 'dev',
@@ -29,7 +28,6 @@ describe('convert account to database', () => {
 
     expect(convertToDatabase(account)).toEqual({
       id: 'Test',
-      accountId: '12345',
       name: 'Name',
       profileImage: '',
       location: '',
@@ -44,7 +42,6 @@ describe('convert account to database', () => {
   test('full account', () => {
     const account = {
       id: 'Test',
-      accountId: '12345',
       name: 'Name',
       location: 'Location',
       avatar: 'Avatar',
@@ -56,7 +53,6 @@ describe('convert account to database', () => {
     expect(convertToDatabase(account)).toEqual({
       id: 'Test',
       name: 'Name',
-      accountId: '12345',
       profileImage: 'Avatar',
       location: 'Location',
       description: '',
@@ -72,7 +68,6 @@ describe('convert setting from database', () => {
   test('simple', () => {
     const account = {
       id: 'Test',
-      accountId: '12345',
       name: 'Name',
       profileImage: 'Profile image',
       location: 'Location',
@@ -85,7 +80,6 @@ describe('convert setting from database', () => {
 
     expect(convertFromDatabase(account)).toEqual({
       id: 'Test',
-      accountId: '12345',
       name: 'Name',
       avatar: 'Profile image',
       location: 'Location',
