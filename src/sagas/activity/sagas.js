@@ -1,4 +1,4 @@
-import { put, take, call } from 'redux-saga/effects';
+import { put, call } from 'redux-saga/effects';
 import type { Realm } from 'realm';
 
 import { messagesAdded, AddNewMessageAction } from '../../actions/activity';
@@ -9,7 +9,6 @@ import {
   convertToDatabase,
 } from '../../utils/mapping/activity';
 import type { ActivityLogMessage } from '../../types/ActivityLogMessage';
-import { createDatabaseUpdateChannel } from '../database';
 import { getCurrentAccountId, currentAccountBasedUpdate } from '../accounts/sagas';
 
 /**
