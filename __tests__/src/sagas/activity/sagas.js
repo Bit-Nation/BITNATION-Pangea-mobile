@@ -82,6 +82,7 @@ describe('addNewMessageSaga', () => {
     const mockMessage = buildMessageObject(1, testAccountId, mockAction.message, mockAction.params, mockAction.interpret);
     const convertedMessage = convertToDatabase(mockMessage);
     delete convertedMessage.created_at;
+    delete convertedMessage.params;
     expect(realm.objects('MessageJob').filtered(`accountId == '${testAccountId}'`)[0])
       .toMatchObject({
         ...convertedMessage,
