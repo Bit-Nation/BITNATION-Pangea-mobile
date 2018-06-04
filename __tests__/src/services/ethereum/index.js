@@ -37,4 +37,12 @@ describe('ethereum', () => {
     balance = await ethereum.getBalance();
     balance = await ethereum.getTokenBalance('0x9EDCb9A9c4d34b5d6A082c86cb4f117A1394F831');
   });
+  test('Check nations object', async () => {
+    const wallet = new ethers.Wallet('0xefc27ba5330258fcfb75e28e4e6efd88458751086998bbfad99257035fb3e160');
+    wallet.provider = new providers.InfuraProvider('rinkeby');
+    ethereum = new Ethereum(wallet);
+    const nationsObject = await ethereum.initNations('dev');
+    const numCitizens = await nationsObject.getNumCitizens(0);
+    expect(numCitizens.toNumber()).toEqual(0);
+  });
 });
