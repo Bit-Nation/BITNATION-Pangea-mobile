@@ -1,6 +1,6 @@
 // @flow
 
-import { put, take, call } from 'redux-saga/effects';
+import { put, call } from 'redux-saga/effects';
 
 import defaultDB, { buildRandomPathDatabase } from '../../../../src/services/database';
 import { buildAccountSettingsResults, onCurrentAccountChange, addNewMessageSaga, startDatabaseListening, buildMessageObject } from '../../../../src/sagas/activity/sagas';
