@@ -1,4 +1,4 @@
-import { all, takeEvery } from 'redux-saga/effects';
+import { all, call, takeEvery } from 'redux-saga/effects';
 
 import { ADD_NEW_MESSAGE } from '../../actions/activity';
 import {
@@ -12,7 +12,7 @@ import {
  */
 export default function* rootSaga() {
   yield all([
-    startDatabaseListening(),
+    call(startDatabaseListening),
     takeEvery(ADD_NEW_MESSAGE, addNewMessageSaga),
   ]);
 }

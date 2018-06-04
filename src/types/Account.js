@@ -4,6 +4,7 @@ export type NetworkType = 'main' | 'dev';
 
 export type Account = {
   id: string,
+  // accountId: string,
   name: string,
   location: ?string,
   avatar: ?string,
@@ -14,6 +15,7 @@ export type Account = {
 
 export type PartialAccount = {
   id: string,
+  // accountId: string,
   name: ?string,
   location: ?string,
   avatar: ?string,
