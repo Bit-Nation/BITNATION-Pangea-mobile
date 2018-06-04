@@ -86,6 +86,12 @@ const styles = {
     flex: 1,
   },
 
+  // ScrollView default container style
+  scrollViewWallet: {
+    flex: 0,
+    marginBottom: 56,
+  },
+
   // Extra space for the top of a page of text, to distinguish from nav.
   bodyTopSpacer: {
     height: fontSizeNormalizer(18),
