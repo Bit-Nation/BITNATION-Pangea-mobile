@@ -39,15 +39,12 @@ describe('onCurrentAccountChange', () => {
 
 describe('buildAccountSettingsResults', () => {
   test('passing null to accountId', async () => {
-    expect.assertions(1);
     const realm = await defaultDB;
-
     expect(buildAccountSettingsResults(realm, null)).toBeNull();
   });
 
   test('passing nonnull accountId', async () => {
     const realm = await defaultDB;
-
     expect(buildAccountSettingsResults(realm, 'test')).toBeDefined();
   });
 });
