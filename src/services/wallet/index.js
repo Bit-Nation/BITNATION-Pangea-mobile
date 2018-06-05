@@ -1,16 +1,23 @@
+/* eslint-disable class-methods-use-this */
 // @flow
 
 import { NativeModules } from 'react-native';
 import { BigNumber } from 'bignumber.js';
-import factory from '../../services/ethereum/factory';
 import type { WalletType } from '../../types/Wallet';
 import {
   PAT_DEV_ADDRESS,
   PAT_PROD_ADDRESS,
 } from '../../global/Constants';
+import EthereumService from '../ethereum';
 
 export default class WalletService {
-  static async getWallets() {
+  constructor(ethereumService: EthereumService) {
+    this.ethereumService = ethereumService;
+  }
+
+  ethereumService: EthereumService;
+
+  async getWallets() {
     const { Panthalassa } = NativeModules;
     const walletAddress = await Panthalassa.PanthalassaEthAddress();
     const walletArray = [{
@@ -21,18 +28,15 @@ export default class WalletService {
     return walletArray;
   }
 
-  static async syncWallet(wallet: WalletType) {
+  async syncWallet(wallet: WalletType) {
     // const container = await containerPromise;
     // return await container.eth.wallet.ethSync(wallet.ethAddress);
     return wallet;
   }
 
-  static async resolveBalance(wallets: Array<WalletType>, network: string) {
+  async resolveBalance(wallets: Array<WalletType>, network: string) {
     const walletsToCheck: Array<WalletType> = wallets;
-    const { Panthalassa } = NativeModules;
-    const walletAddress = await Panthalassa.PanthalassaEthPrivateKey();
-    const ethereum = await factory({ privateKey: `0x${walletAddress}`, providerType: network === 'dev' ? 'rinkeby' : 'homestead' });
-    const ethService = ethereum.service;
+    const ethService = this.ethereumService;
 
     const balanceEth = await ethService.getBalance();
     BigNumber.config({ DECIMAL_PLACES: 18 });
@@ -44,19 +48,12 @@ export default class WalletService {
     walletsToCheck[1].balance = balanceBNPAT.times(10e-19).toString(10);
     return walletsToCheck;
   }
-  static async sendMoney(fromAddress, toAddress, amount, network) {
-    const { Panthalassa } = NativeModules;
-    const walletAddress = await Panthalassa.PanthalassaEthPrivateKey();
-    const ethereum = await factory({ privateKey: `0x${walletAddress}`, providerType: network === 'dev' ? 'rinkeby' : 'homestead' });
-    const ethService = ethereum.service;
-    return ethService.sendMoney(toAddress, amount);
+
+  async sendMoney(fromAddress: string, toAddress: string, amount: string) {
+    return this.ethereumService.sendMoney(toAddress, amount);
   }
 
-  static async sendToken(fromAddress, toAddress, amount, network) {
-    const { Panthalassa } = NativeModules;
-    const walletAddress = await Panthalassa.PanthalassaEthPrivateKey();
-    const ethereum = await factory({ privateKey: `0x${walletAddress}`, providerType: network === 'dev' ? 'rinkeby' : 'homestead' });
-    const ethService = ethereum.service;
-    return ethService.sendTokens(network === 'dev' ? PAT_DEV_ADDRESS : PAT_PROD_ADDRESS, toAddress, amount);
+  async sendToken(fromAddress: string, toAddress: string, amount: string, network: string) {
+    return this.ethereumService.sendTokens(network === 'dev' ? PAT_DEV_ADDRESS : PAT_PROD_ADDRESS, toAddress, amount);
   }
 }
