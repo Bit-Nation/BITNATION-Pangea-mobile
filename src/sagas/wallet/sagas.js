@@ -61,6 +61,7 @@ export function* updateWalletList(): Generator<*, *, *> {
   const account = yield getAccount(currentAccountId);
   const { walletService } = ServiceContainer.instance;
   if (walletService === null) {
+    yield put(walletsListUpdated([]));
     return;
   }
 
