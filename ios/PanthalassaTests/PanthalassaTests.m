@@ -31,49 +31,6 @@
   
 }
 
-- (void)testScryptDecrypt {
-  
-  NSString *response;
-  NSError *error = nil;
-  response = PanthalassaScryptDecrypt(@"I am the value", @"1111111111111111", &error);
-  XCTAssertNotNil(response, @"Panthalassa lib error");
-  
-}
-
-- (void)testScryptEncrypt {
-  
-  NSString *response;
-  NSError *error = nil;
-  response = PanthalassaScryptEncrypt(@"I am the value", @"1111111111111111", @"1111111111111111", &error);
-  XCTAssertNotNil(response, @"Panthalassa lib error");
-  
-}
-
-- (void)testIsValidCID {
-  
-  XCTAssertTrue(PanthalassaIsValidCID(@"mAVUWIDAwU3dua7xpbnFfMuJGB3ydE8z6o/Oz8+bihw3lVhT1"));
-  XCTAssertFalse(PanthalassaIsValidCID(@"I should be invalid"));
-  
-}
-
-- (void)testCIDSha256 {
-  
-  NSString *response;
-  NSError *error = nil;
-  response = PanthalassaCIDSha256(@"HI", &error);
-  XCTAssertEqualObjects(response, @"mAVUWIDAwU3dua7xpbnFfMuJGB3ydE8z6o/Oz8+bihw3lVhT1", @"Panthalassa lib error");
-  
-}
-
-- (void)testCIDSha512 {
-  
-  NSString *response;
-  NSError *error = nil;
-  response = PanthalassaCIDSha512(@"HI", &error);
-  XCTAssertEqualObjects(response, @"UAVUUQEG8zpe5V7XbE9ZuG_0-q4q0ujKrksvGUoJTCs2fTjXSUvfOE6Z4f9ePhYante_RzbqCZT5RADYOegO_Yiz8WJo=", @"Panthalassa lib error");
-  
-}
-
 - (void)testPanthalassaStop {
   
   NSError *error = nil;
