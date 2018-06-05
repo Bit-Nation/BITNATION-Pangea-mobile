@@ -84,27 +84,72 @@ export function nationIsDraft(nation: NationType): boolean {
 }
 
 /**
+ * @desc Converts app editing nation model to database model.
+ * @param {EditingNationType} nation Editing nation to be converted.
+ * @param {number} nationId Id of nation to be set.
+ * @return {*} Object to create a database model (it is without optional values)
+ */
+export function convertDraftToDatabase(nation: EditingNationType, nationId: number): * {
+  return {
+    id: nationId,
+    created: false,
+    nationName: nation.nationName,
+    nationDescription: nation.nationDescription,
+    exists: nation.exists,
+    // @todo Fix virtual nation save unselected state
+    virtualNation: nation.virtualNation == null ? true : nation.virtualNation,
+    nationCode: nation.nationCode,
+    lawEnforcementMechanism: nation.lawEnforcementMechanism,
+    profit: nation.profit,
+    nonCitizenUse: nation.nonCitizenUse,
+    diplomaticRecognition: nation.diplomaticRecognition,
+    decisionMakingProcess: nation.decisionMakingProcess,
+    governanceService: nation.governanceService.join(', '),
+  };
+}
+
+/**
+ * @desc Converts database model to object to use in smart contract.
+ * @param {DBNationType} nation Nation to be converted
+ * @return {*} Object to pass into smart contract
+ */
+export function convertNationToBlockchain(nation: DBNationType) {
+  return {
+    nationName: nation.nationName,
+    nationDescription: nation.nationDescription,
+    exists: nation.exists,
+    virtualNation: nation.virtualNation,
+    nationCode: nation.nationCode,
+    lawEnforcementMechanism: nation.lawEnforcementMechanism,
+    profit: nation.profit,
+    nonCitizenUse: nation.nonCitizenUse,
+    diplomaticRecognition: nation.diplomaticRecognition,
+    decisionMakingProcess: nation.decisionMakingProcess,
+    governanceService: nation.governanceService,
+  };
+}
+
+/**
+ * @desc Convert NationType value to EditingNationType value
+ * @param {NationType} nation Nation to convert
+ * @return {EditingNationType} Convert nation.
+ */
+export function convertToEditingNation(nation: NationType): EditingNationType {
+  return {
+    ...nation,
+  };
+}
+
+/**
  * @desc Converts app nation model to database model.
  * @param {NationType} nationData Nation data to be converted.
  * @return {DBNationType} Database nation model.
  */
 export function convertToDatabase(nationData: NationType): DBNationType {
   return {
-    id: nationData.id,
+    ...convertDraftToDatabase(convertToEditingNation(nationData), nationData.id),
     idInSmartContract: nationData.idInSmartContract,
     created: nationData.created,
-    nationName: nationData.nationName,
-    nationDescription: nationData.nationDescription,
-    exists: nationData.exists,
-    // @todo Fix virtual nation save unselected state
-    virtualNation: nationData.virtualNation === null ? true : nationData.virtualNation,
-    nationCode: nationData.nationCode,
-    lawEnforcementMechanism: nationData.lawEnforcementMechanism,
-    profit: nationData.profit,
-    nonCitizenUse: nationData.nonCitizenUse,
-    diplomaticRecognition: nationData.diplomaticRecognition,
-    decisionMakingProcess: nationData.decisionMakingProcess,
-    governanceService: nationData.governanceService.join(', '),
     citizens: nationData.citizens,
     joined: nationData.joined,
     stateMutateAllowed: nationData.stateMutateAllowed,
@@ -144,17 +189,6 @@ export function convertFromDatabase(nation: DBNationType): NationType {
 }
 
 /**
- * @desc Convert NationType value to EditingNationType value
- * @param {NationType} nation Nation to convert
- * @return {EditingNationType} Convert nation.
- */
-export function convertToEditingNation(nation: NationType): EditingNationType {
-  return {
-    ...nation,
-  };
-}
-
-/**
  * @desc Validates the nation information.
  * @param {EditingNationType} nation Nation information to validate.
  * @return {boolean} Boolean value if the nation is valid.
@@ -189,47 +223,3 @@ export function statusColor(status: number) {
   }
 }
 
-/**
- * @desc Converts app editing nation model to database model.
- * @param {EditingNationType} nation Editing nation to be converted.
- * @param {number} nationId Id of nation to be set.
- * @return {*} Object to create a database model (it is without optional values)
- */
-export function convertDraftToDatabase(nation: EditingNationType, nationId: number): * {
-  return {
-    id: nationId,
-    created: false,
-    nationName: nation.nationName,
-    nationDescription: nation.nationDescription,
-    exists: nation.exists,
-    virtualNation: nation.virtualNation,
-    nationCode: nation.nationCode,
-    lawEnforcementMechanism: nation.lawEnforcementMechanism,
-    profit: nation.profit,
-    nonCitizenUse: nation.nonCitizenUse,
-    diplomaticRecognition: nation.diplomaticRecognition,
-    decisionMakingProcess: nation.decisionMakingProcess,
-    governanceService: nation.governanceService,
-  };
-}
-
-/**
- * @desc Converts database model to object to use in smart contract.
- * @param {DBNationType} nation Nation to be converted
- * @return {*} Object to pass into smart contract
- */
-export function convertNationToBlockchain(nation: DBNationType) {
-  return {
-    nationName: nation.nationName,
-    nationDescription: nation.nationDescription,
-    exists: nation.exists,
-    virtualNation: nation.virtualNation,
-    nationCode: nation.nationCode,
-    lawEnforcementMechanism: nation.lawEnforcementMechanism,
-    profit: nation.profit,
-    nonCitizenUse: nation.nonCitizenUse,
-    diplomaticRecognition: nation.diplomaticRecognition,
-    decisionMakingProcess: nation.decisionMakingProcess,
-    governanceService: nation.governanceService,
-  };
-}

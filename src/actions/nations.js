@@ -58,16 +58,6 @@ export function openNation(id: NationIdType): OpenNationAction {
 }
 
 /**
- * @desc Action creator for an action that starts nations sync with databse.
- * @returns {RequestSyncNationsAction} An action.
- */
-export function requestSyncNations(): RequestSyncNationsAction {
-  return {
-    type: START_NATIONS_SYNC,
-  };
-}
-
-/**
  * @desc Action creator for an action that is called when nations fetch started.
  * @returns {FetchNationsStartedAction} An action.
  */
