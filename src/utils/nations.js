@@ -188,3 +188,48 @@ export function statusColor(status: number) {
       return Colors.listItemTextState.default;
   }
 }
+
+/**
+ * @desc Converts app editing nation model to database model.
+ * @param {EditingNationType} nation Editing nation to be converted.
+ * @param {number} nationId Id of nation to be set.
+ * @return {*} Object to create a database model (it is without optional values)
+ */
+export function convertDraftToDatabase(nation: EditingNationType, nationId: number): * {
+  return {
+    id: nationId,
+    created: false,
+    nationName: nation.nationName,
+    nationDescription: nation.nationDescription,
+    exists: nation.exists,
+    virtualNation: nation.virtualNation,
+    nationCode: nation.nationCode,
+    lawEnforcementMechanism: nation.lawEnforcementMechanism,
+    profit: nation.profit,
+    nonCitizenUse: nation.nonCitizenUse,
+    diplomaticRecognition: nation.diplomaticRecognition,
+    decisionMakingProcess: nation.decisionMakingProcess,
+    governanceService: nation.governanceService,
+  };
+}
+
+/**
+ * @desc Converts database model to object to use in smart contract.
+ * @param {DBNationType} nation Nation to be converted
+ * @return {*} Object to pass into smart contract
+ */
+export function convertNationToBlockchain(nation: DBNationType) {
+  return {
+    nationName: nation.nationName,
+    nationDescription: nation.nationDescription,
+    exists: nation.exists,
+    virtualNation: nation.virtualNation,
+    nationCode: nation.nationCode,
+    lawEnforcementMechanism: nation.lawEnforcementMechanism,
+    profit: nation.profit,
+    nonCitizenUse: nation.nonCitizenUse,
+    diplomaticRecognition: nation.diplomaticRecognition,
+    decisionMakingProcess: nation.decisionMakingProcess,
+    governanceService: nation.governanceService,
+  };
+}
