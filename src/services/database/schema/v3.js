@@ -130,6 +130,7 @@ export const DHTValueSchema = {
  */
 export type MessageJobType = {
   id: number,
+  accountId: string,
   heading: string,
   params: string,
   msg: string,
@@ -144,6 +145,7 @@ export const MessageJobSchema = {
   primaryKey: 'id',
   properties: {
     id: 'int',
+    accountId: 'string',
     heading: {
       type: 'string',
       optional: true,
