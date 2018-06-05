@@ -37,14 +37,14 @@ export function* sendMoneySaga(action: SendMoneyAction): Generator<*, *, *> {
 
   if (state.wallet.selectedWalletCurrency === 'ETH') {
     try {
-      yield call(walletService.sendMoney, fromAddress, toAddress, amountToSend);
+      yield call([walletService, 'sendMoney'], fromAddress, toAddress, amountToSend);
       yield put(sendMoneySuccess());
     } catch (error) {
       yield put(sendMoneyFailed(error));
     }
   } else {
     try {
-      yield call(walletService.sendToken, fromAddress, toAddress, amountToSend, account.networkType);
+      yield call([walletService, 'sendToken'], fromAddress, toAddress, amountToSend, account.networkType);
       yield put(sendMoneySuccess());
     } catch (error) {
       yield put(sendMoneyFailed(error));
@@ -64,10 +64,10 @@ export function* updateWalletList(): Generator<*, *, *> {
     return;
   }
 
-  const walletsWithoutBalance = yield call(walletService.getWallets);
+  const walletsWithoutBalance = yield call([walletService, 'getWallets']);
   yield put(walletsListUpdated(walletsWithoutBalance));
   try {
-    const wallets = yield call(walletService.resolveBalance, walletsWithoutBalance, account.networkType);
+    const wallets = yield call([walletService, 'resolveBalance'], walletsWithoutBalance, account.networkType);
     yield put(walletsListUpdated(wallets));
   } catch (error) {
     yield put(walletSyncFailed(walletsWithoutBalance[0].ethAddress, error));
@@ -88,7 +88,7 @@ export function* updateWalletBalance(wallet: WalletType): Generator<*, *, *> {
   }
 
   try {
-    yield call(walletService.syncWallet, wallet);
+    yield call([walletService, 'syncWallet'], wallet);
     yield updateWalletList();
   } catch (error) {
     yield put(walletSyncFailed(wallet.ethAddress, error));
