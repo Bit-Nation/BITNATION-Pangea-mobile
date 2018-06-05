@@ -4,6 +4,7 @@ import EthereumServiceFactory from './ethereum/factory';
 import EthereumService from './ethereum';
 import WalletService from './wallet';
 import type { Account } from '../types/Account';
+import { normalizeEthPrivateKey } from '../utils/key';
 
 export default class ServiceContainer {
   static instance: ServiceContainer = new ServiceContainer();
@@ -13,7 +14,7 @@ export default class ServiceContainer {
 
   initServices(account: Account, ethPrivateKey: string) {
     this.ethereumService = EthereumServiceFactory({
-      privateKey: `0x${ethPrivateKey}`,
+      privateKey: normalizeEthPrivateKey(ethPrivateKey),
       providerType: account.networkType === 'dev' ? 'rinkeby' : 'homestead',
     }).service;
     this.walletService = new WalletService(this.ethereumService);
