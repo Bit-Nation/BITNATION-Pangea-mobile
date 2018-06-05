@@ -9,6 +9,7 @@ import navigation from '../../../src/sagas/navigation';
 import key from '../../../src/sagas/key';
 import settings from '../../../src/sagas/settings';
 import wallet from '../../../src/sagas/wallet';
+import serviceContainer from '../../../src/sagas/serviceContainer';
 
 test('rootSaga', () => {
   const iterator = rootSaga();
@@ -19,5 +20,6 @@ test('rootSaga', () => {
     call(key),
     call(settings),
     call(wallet),
+    call(serviceContainer),
   ]));
 });

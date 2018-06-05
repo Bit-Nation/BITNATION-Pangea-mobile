@@ -56,4 +56,9 @@ export default class AccountsService {
     const { Panthalassa } = NativeModules;
     return Panthalassa.PanthalassaIsValidMnemonic(compressMnemonic(mnemonic));
   }
+
+  static async getEthPrivateKey(): Promise<string> {
+    const { Panthalassa } = NativeModules;
+    return Panthalassa.PanthalassaEthPrivateKey();
+  }
 }
