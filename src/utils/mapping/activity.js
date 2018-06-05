@@ -11,6 +11,7 @@ import { type MessageJobType as DBMessage } from '../../services/database/schema
 export function convertFromDatabase(messageJob: DBMessage): ActivityLogMessage {
   return {
     id: messageJob.id,
+    accountId: messageJob.accountId,
     msg: messageJob.msg,
     params: messageJob.params,
     interpret: messageJob.interpret,
@@ -19,13 +20,14 @@ export function convertFromDatabase(messageJob: DBMessage): ActivityLogMessage {
 }
 
 /**
- * @desc Converts message object to Realm object if it's possible.
+ * @desc Converts message object to Realm object.
  * @param {ActivityLogMessage} messageObject Message object to be converted.
- * @return {?DBMessage} Converted object.
+ * @return {DBMessage} Converted object.
  */
-export function convertToDatabase(messageObject: ActivityLogMessage): DBMessage | null {
+export function convertToDatabase(messageObject: ActivityLogMessage): DBMessage {
   return {
     id: messageObject.id,
+    accountId: messageObject.accountId,
     heading: '',
     msg: messageObject.msg,
     params: messageObject.params || '',
