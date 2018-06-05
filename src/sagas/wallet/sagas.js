@@ -70,7 +70,8 @@ export function* updateWalletList(): Generator<*, *, *> {
     const wallets = yield call([walletService, 'resolveBalance'], walletsWithoutBalance, account.networkType);
     yield put(walletsListUpdated(wallets));
   } catch (error) {
-    yield put(walletSyncFailed(walletsWithoutBalance[0].ethAddress, error));
+    yield put(walletSyncFailed(walletsWithoutBalance[0].ethAddress, walletsWithoutBalance[0].currency, error));
+    yield put(walletSyncFailed(walletsWithoutBalance[1].ethAddress, walletsWithoutBalance[1].currency, error));
     console.log(`Wallet list update failed with error: ${error.toString()}`);
   }
 }
@@ -83,7 +84,7 @@ export function* updateWalletList(): Generator<*, *, *> {
 export function* updateWalletBalance(wallet: WalletType): Generator<*, *, *> {
   const { walletService } = ServiceContainer.instance;
   if (walletService === null) {
-    yield put(walletSyncFailed(wallet.ethAddress, new NoWalletServiceError()));
+    yield put(walletSyncFailed(wallet.ethAddress, wallet.currency, new NoWalletServiceError()));
     return;
   }
 
@@ -91,7 +92,7 @@ export function* updateWalletBalance(wallet: WalletType): Generator<*, *, *> {
     yield call([walletService, 'syncWallet'], wallet);
     yield updateWalletList();
   } catch (error) {
-    yield put(walletSyncFailed(wallet.ethAddress, error));
+    yield put(walletSyncFailed(wallet.ethAddress, wallet.currency, error));
     console.log(`Wallet balance update failed with error: ${error.toString()}`);
   }
 }
