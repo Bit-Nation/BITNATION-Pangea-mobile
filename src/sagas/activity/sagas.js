@@ -12,12 +12,12 @@ import type { ActivityLogMessage } from '../../types/ActivityLogMessage';
 import { getCurrentAccountId, currentAccountBasedUpdate } from '../accounts/sagas';
 
 /**
- * @desc Function that creates Realm results fetching settings for specific account.
+ * @desc Function that creates Realm results fetching activity logs for specific account.
  * @param {Realm} db Realm instance.
- * @param {string|null} accountId Id of account to fetch settings or null.
- * @return {Realm.Results<AccountSettings>|null} Realm results fetching settings for specified account or null if not applicable.
+ * @param {string|null} accountId Id of account to fetch logs or null.
+ * @return {Realm.Results<AccountSettings>|null} Realm results fetching logs for specified account or null if not applicable.
  */
-export function buildAccountSettingsResults(db: Realm, accountId: string | null) {
+export function buildMessagesResults(db: Realm, accountId: string | null) {
   if (accountId === null) {
     return null;
   }
@@ -37,11 +37,11 @@ export function* onCurrentAccountChange(collection: Realm.Result<DBMessage>): Ge
 }
 
 /**
- * @desc Starts listen to settings updates in database.
+ * @desc Starts listen to messages updates in database.
  * @return {void}
  */
 export function* startDatabaseListening(): Generator<*, *, *> {
-  yield call(currentAccountBasedUpdate, buildAccountSettingsResults, onCurrentAccountChange);
+  yield call(currentAccountBasedUpdate, buildMessagesResults, onCurrentAccountChange);
 }
 
 export const buildMessageObject = (

@@ -3,7 +3,7 @@
 import { put, call } from 'redux-saga/effects';
 
 import defaultDB, { buildRandomPathDatabase } from '../../../../src/services/database';
-import { buildAccountSettingsResults, onCurrentAccountChange, addNewMessageSaga, startDatabaseListening, buildMessageObject } from '../../../../src/sagas/activity/sagas';
+import { buildMessagesResults, onCurrentAccountChange, addNewMessageSaga, startDatabaseListening, buildMessageObject } from '../../../../src/sagas/activity/sagas';
 import { messagesAdded, ADD_NEW_MESSAGE } from '../../../../src/actions/activity';
 import { convertFromDatabase, convertToDatabase } from '../../../../src/utils/mapping/activity';
 import { getCurrentAccountId, currentAccountBasedUpdate } from '../../../../src/sagas/accounts/sagas';
@@ -37,21 +37,21 @@ describe('onCurrentAccountChange', () => {
   });
 });
 
-describe('buildAccountSettingsResults', () => {
+describe('buildMessagesResults', () => {
   test('passing null to accountId', async () => {
     const realm = await defaultDB;
-    expect(buildAccountSettingsResults(realm, null)).toBeNull();
+    expect(buildMessagesResults(realm, null)).toBeNull();
   });
 
   test('passing nonnull accountId', async () => {
     const realm = await defaultDB;
-    expect(buildAccountSettingsResults(realm, 'test')).toBeDefined();
+    expect(buildMessagesResults(realm, 'test')).toBeDefined();
   });
 });
 
 test('startDatabaseListening', () => {
   const gen = startDatabaseListening();
-  expect(gen.next().value).toEqual(call(currentAccountBasedUpdate, buildAccountSettingsResults, onCurrentAccountChange));
+  expect(gen.next().value).toEqual(call(currentAccountBasedUpdate, buildMessagesResults, onCurrentAccountChange));
 
   const last = gen.next();
   expect(last.done).toBeTruthy();
