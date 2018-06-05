@@ -59,7 +59,7 @@ export default class NationsService {
     }
   }
 
-  async submitDraft(nationId: number): Promise<void> {
+  async submitDraft(nationId: number): Promise<DBNationType> {
     const db = await this.dbPromise;
     const nation = await this.nationById(nationId);
 
@@ -74,20 +74,22 @@ export default class NationsService {
     }
 
     const nationData = convertNationToBlockchain(nation);
-    const txHash = await this.ethereumService.nations.createNation(JSON.stringify(nationData));
+    const tx = await this.ethereumService.nations.createNation(JSON.stringify(nationData));
 
-    const txJob = await jobFactory(txHash, TX_JOB_TYPE.NATION_CREATE);
+    const txJob = await jobFactory(tx.hash, TX_JOB_TYPE.NATION_CREATE);
     try {
       db.write(() => {
         nation.tx = txJob;
         nation.stateMutateAllowed = false;
       });
+
+      return nation;
     } catch (error) {
       throw new DatabaseWriteFailed(error);
     }
   }
 
-  async saveAndSubmit(nationData: EditingNationType): Promise<void> {
+  async saveAndSubmit(nationData: EditingNationType): Promise<DBNationType> {
     const draft = await this.saveDraft(nationData);
     return this.submitDraft(draft.id);
   }
@@ -119,8 +121,8 @@ export default class NationsService {
       throw new StateMutateNotPossible();
     }
 
-    const txHash = this.ethereumService.nations.joinNation(nation.idInSmartContract);
-    const txJob = await jobFactory(txHash, TX_JOB_TYPE.NATION_JOIN);
+    const tx = this.ethereumService.nations.joinNation(nation.idInSmartContract);
+    const txJob = await jobFactory(tx.hash, TX_JOB_TYPE.NATION_JOIN);
     try {
       db.write(() => {
         nation.tx = txJob;
@@ -139,8 +141,8 @@ export default class NationsService {
       throw new StateMutateNotPossible();
     }
 
-    const txHash = this.ethereumService.nations.leaveNation(nation.idInSmartContract);
-    const txJob = await jobFactory(txHash, TX_JOB_TYPE.NATION_LEAVE);
+    const tx = this.ethereumService.nations.leaveNation(nation.idInSmartContract);
+    const txJob = await jobFactory(tx.hash, TX_JOB_TYPE.NATION_LEAVE);
     try {
       db.write(() => {
         nation.tx = txJob;
