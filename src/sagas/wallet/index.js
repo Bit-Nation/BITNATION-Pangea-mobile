@@ -14,6 +14,7 @@ import {
   updateWalletBalance,
   sendMoneySaga,
 } from './sagas';
+import { CURRENT_ACCOUNT_ID_CHANGED } from '../../actions/accounts';
 
 /**
  * @desc Root wallet saga.
@@ -21,7 +22,7 @@ import {
  */
 export default function* rootSaga(): Generator<*, *, *> {
   yield all([
-    takeEvery(UPDATE_WALLET_LIST, updateWalletList),
+    takeEvery([UPDATE_WALLET_LIST, CURRENT_ACCOUNT_ID_CHANGED], updateWalletList),
     takeEvery(UPDATE_WALLET_BALANCE, updateWalletBalance),
     takeEvery(SEND_MONEY, sendMoneySaga),
   ]);
