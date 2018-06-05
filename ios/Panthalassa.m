@@ -112,104 +112,7 @@ RCT_REMAP_METHOD(PanthalassaStartFromMnemonic,
   
    [upstream send:@"Upstream created"];
 }
-/*
-RCT_REMAP_METHOD(PanthalassaScryptDecrypt,
-                 scryptDecrypt:(NSDictionary *)parameters
-                 resolver:(RCTPromiseResolveBlock)resolve
-                 rejecter:(RCTPromiseRejectBlock)reject) {
-  
-  NSString *response;
-  NSError *error = nil;
-  response = PanthalassaScryptDecrypt([RCTConvert NSString:parameters[@"data"]],
-                                         [RCTConvert NSString:parameters[@"pw"]],
-                                         &error);
-  
-  if (error == nil) {
-    resolve(response);
-  } else {
-    reject(@"error", error.localizedDescription, error);
-  }
-}
-*/
-/*
-RCT_REMAP_METHOD(PanthalassaScryptEncrypt,
-                 scryptEncrypt:(NSDictionary *)parameters
-                 resolver:(RCTPromiseResolveBlock)resolve
-                 rejecter:(RCTPromiseRejectBlock)reject) {
-  
-  NSString *response;
-  NSError *error = nil;
-  response = PanthalassaScryptEncrypt([RCTConvert NSString:parameters[@"data"]],
-                                      [RCTConvert NSString:parameters[@"pw"]],
-                                      [RCTConvert NSString:parameters[@"pwConfirm"]],
-                                      &error);
-  
-  if (error == nil) {
-    resolve(response);
-  } else {
-    reject(@"error", error.localizedDescription, error);
-  }
-}
-*/
-/*
-RCT_REMAP_METHOD(PanthalassaIsValidCID,
-                 validCid:(NSString *)cid
-                 resolver:(RCTPromiseResolveBlock)resolve
-                 rejecter:(RCTPromiseRejectBlock)reject) {
-  
-  BOOL response;
-  
-  @try {
-    response = PanthalassaIsValidCID(cid);
-    NSNumber *val = [NSNumber numberWithBool:response];
-    resolve(val);
-  }
-  @catch (NSException *exception) {
-    NSMutableDictionary * info = [NSMutableDictionary dictionary];
-    [info setValue:exception.name forKey:@"ExceptionName"];
-    [info setValue:exception.reason forKey:@"ExceptionReason"];
-    [info setValue:exception.callStackReturnAddresses forKey:@"ExceptionCallStackReturnAddresses"];
-    [info setValue:exception.callStackSymbols forKey:@"ExceptionCallStackSymbols"];
-    [info setValue:exception.userInfo forKey:@"ExceptionUserInfo"];
-    
-    NSError *error = [[NSError alloc] initWithDomain:@"co.bitnation" code:001 userInfo:info];
-    reject(@"error", exception.reason, error);
-  }
-}
-*/
-/*
-RCT_REMAP_METHOD(PanthalassaCIDSha256,
-                 value256:(NSString *)value
-                 resolver:(RCTPromiseResolveBlock)resolve
-                 rejecter:(RCTPromiseRejectBlock)reject) {
-  
-  NSString *response;
-  NSError *error = nil;
-  response = PanthalassaCIDSha256(value, &error);
-  
-  if (error == nil) {
-    resolve(response);
-  } else {
-    reject(@"error", error.localizedDescription, error);
-  }
-}
-*/
-/*
-RCT_REMAP_METHOD(PanthalassaCIDSha512,
-                 value512:(NSString *)value
-                 resolver:(RCTPromiseResolveBlock)resolve
-                 rejecter:(RCTPromiseRejectBlock)reject) {
-  NSString *response;
-  NSError *error = nil;
-  response = PanthalassaCIDSha512(value, &error);
-  
-  if (error == nil) {
-    resolve(response);
-  } else {
-    reject(@"error", error.localizedDescription, error);
-  }
-}
-*/
+
 RCT_REMAP_METHOD(PanthalassaIsValidMnemonic,
                  validMnemonic:(NSString *)mnemonic
                  resolver:(RCTPromiseResolveBlock)resolve
@@ -268,24 +171,7 @@ RCT_REMAP_METHOD(PanthalassaStop,
     reject(@"error", error.localizedDescription, error);
   }
 }
-/*
-RCT_REMAP_METHOD(PanthalassaSendResponse,
-                 sendResponse:(NSString *)resp
-                 resolver:(RCTPromiseResolveBlock)resolve
-                 rejecter:(RCTPromiseRejectBlock)reject) {
-  
-  BOOL response;
-  NSError *error = nil;
-  response = PanthalassaSendResponse(resp, &error);
-  NSNumber *val = [NSNumber numberWithBool:response];
-  
-  if (error == nil) {
-    resolve(val);
-  } else {
-    reject(@"error", @"Invalid mnemonic", error);
-  }
-}
-*/
+
 RCT_REMAP_METHOD(PanthalassaStart,
                  start:(NSDictionary *)config
                  resolver:(RCTPromiseResolveBlock)resolve
@@ -311,10 +197,6 @@ RCT_REMAP_METHOD(PanthalassaStart,
   }
   
   [upstream send:@"Upstream created"];
-}
-
-- (void)receiveString {
-  NSLog(@"************ Received from delegate!!!");
 }
 
 RCT_REMAP_METHOD(PanthalassaGetMnemonic,
@@ -497,6 +379,17 @@ RCT_REMAP_METHOD(PanthalassaSignProfileStandAlone,
   } else {
     reject(@"error", error.localizedDescription, error);
   }
+}
+
+// TEST FOR SEND  - https://facebook.github.io/react-native/docs/native-modules-ios.html#sending-events-to-javascript
+- (NSArray<NSString *> *)supportedEvents
+{
+  return @[@"PanthalassaUpStream"];
+}
+
+- (void)receiveString:(NSString *)data {
+  NSLog(@"************ Received from delegate!!!");
+  [self sendEventWithName:@"PanthalassaUpStream" body:@{@"upstream": data}];
 }
 
 @end
