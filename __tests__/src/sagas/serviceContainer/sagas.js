@@ -1,9 +1,10 @@
-import { select, call } from 'redux-saga/effects';
+import { select, call, put } from 'redux-saga/effects';
 import { cloneableGenerator } from 'redux-saga/utils';
 import { onCurrentAccountChange } from '../../../../src/sagas/serviceContainer/sagas';
 import { buildEmptyAccount } from '../../../../src/reducers/accounts';
 import ServiceContainer from '../../../../src/services/container';
 import AccountsService from '../../../../src/services/accounts';
+import { servicesCreated, servicesDestroyed } from '../../../../src/actions/serviceContainer';
 
 describe('onCurrentAccountChange', () => {
   const gen = cloneableGenerator(onCurrentAccountChange)();
@@ -17,6 +18,8 @@ describe('onCurrentAccountChange', () => {
     const clone = gen.clone();
     expect(clone.next({ accounts: mockAccounts }).value)
       .toEqual(call([ServiceContainer.instance, 'destroyServices']));
+    expect(clone.next().value)
+      .toEqual(put(servicesDestroyed()));
 
     expect(clone.next().value).toBeUndefined();
     expect(clone.next().done).toBeTruthy();
@@ -36,6 +39,8 @@ describe('onCurrentAccountChange', () => {
       .toEqual(call(AccountsService.getEthPrivateKey));
     expect(clone.next(privateKeyMock).value)
       .toEqual(call([ServiceContainer.instance, 'initServices'], mockAccount, privateKeyMock));
+    expect(clone.next().value)
+      .toEqual(put(servicesCreated()));
     expect(clone.next().done).toBeTruthy();
   });
 });
