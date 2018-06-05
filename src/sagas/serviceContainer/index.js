@@ -5,7 +5,7 @@ import { onCurrentAccountChange } from './sagas';
 import { CURRENT_ACCOUNT_ID_CHANGED } from '../../actions/accounts';
 
 /**
- * @desc Root settings saga.
+ * @desc Root service container saga.
  * @return {void}
  */
 export default function* rootSaga(): Generator<*, *, *> {
