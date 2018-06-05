@@ -15,6 +15,7 @@ import { screen } from '../../global/Screens';
  */
 export default function CustomSigner(privateKey: string, provider: string) {
   const wallet = new ethers.Wallet(privateKey);
+  this.defaultGasLimit = 300000;
   this.provider = new ethers.providers.InfuraProvider(provider);
   this.address = wallet.address;
   this.getBalance = wallet.getBalance;
