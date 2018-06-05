@@ -4,5 +4,13 @@ export class GeneralError extends Error {
 
 export class DatabaseWriteFailed extends Error {
   transKey: string = 'systemError.databaseWriteFailed';
+
+  error: Error;
+
+  constructor(error: Error) {
+    super();
+
+    this.error = error;
+  }
 }
 

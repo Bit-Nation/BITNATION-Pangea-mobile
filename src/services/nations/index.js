@@ -5,7 +5,7 @@ import Realm from 'realm';
 import EthereumService from '../ethereum';
 import type { NationType, EditingNationType, DBNationType, NationIdType } from '../../types/Nation';
 import { convertDraftToDatabase, convertNationToBlockchain } from '../../utils/nations';
-import { NationAlreadySubmitted, SaveDraftFailed, StateMutateNotPossible } from '../../global/errors/nations';
+import { NationAlreadySubmitted, StateMutateNotPossible } from '../../global/errors/nations';
 import { DatabaseWriteFailed } from '../../global/errors/common';
 import { jobFactory } from '../txQueue';
 import { TX_JOB_STATUS, TX_JOB_TYPE } from '../../global/Constants';
@@ -21,7 +21,7 @@ export default class NationsService {
 
   // Drafts operations
 
-  async updateDraft(nationId: number, nationData: EditingNationType): Promise<void> {
+  async updateDraft(nationId: number, nationData: EditingNationType): Promise<DBNationType> {
     const db = await this.dbPromise;
     const oldNation = await this.nationById(nationId);
 
@@ -32,9 +32,12 @@ export default class NationsService {
     }
 
     try {
+      let nation: DBNationType;
       db.write(() => {
-        db.create('Nation', convertDraftToDatabase(nationData, nationId), true);
+        nation = db.create('Nation', convertDraftToDatabase(nationData, nationId), true);
       });
+
+      return (nation: any);
     } catch (error) {
       throw new DatabaseWriteFailed();
     }
@@ -51,8 +54,8 @@ export default class NationsService {
       });
 
       return (nation: any);
-    } catch (_) {
-      throw new SaveDraftFailed();
+    } catch (error) {
+      throw new DatabaseWriteFailed(error);
     }
   }
 
@@ -79,8 +82,8 @@ export default class NationsService {
         nation.tx = txJob;
         nation.stateMutateAllowed = false;
       });
-    } catch (_) {
-      throw new DatabaseWriteFailed();
+    } catch (error) {
+      throw new DatabaseWriteFailed(error);
     }
   }
 
@@ -98,9 +101,11 @@ export default class NationsService {
     }
 
     try {
-      db.write(db => db.delete(nation));
-    } catch (_) {
-      throw new DatabaseWriteFailed();
+      db.write(() => {
+        db.delete(nation);
+      });
+    } catch (error) {
+      throw new DatabaseWriteFailed(error);
     }
   }
 
@@ -150,7 +155,7 @@ export default class NationsService {
 
   async nationById(id: NationIdType): Promise<DBNationType> {
     const db = await this.dbPromise;
-    const nations = await db.query(realm => realm.objects('Nation').filtered(`id = "${id}"`));
+    const nations = db.objects('Nation').filtered(`id = "${id}"`);
     if (nations.length === 0) {
       throw new Error('system_error.nation.does_not_exist');
     }
