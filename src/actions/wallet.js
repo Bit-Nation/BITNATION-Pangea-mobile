@@ -9,7 +9,7 @@ export type UpdateWalletListAction = { +type: 'UPDATE_WALLET_LIST' };
 export type UpdateWalletBalanceAction = { +type: 'UPDATE_WALLET_BALANCE', +walletAddress: string };
 export type SendMoneySuccessAction = { +type: 'SEND_MONEY_SUCCESS' };
 export type SendMoneyFailedAction = { +type: 'SEND_MONEY_FAILED', +error: Error };
-export type WalletSyncFailedAction = { +type: 'WALLET_SYNC_FAILED', +walletAddress: string, +error: Error };
+export type WalletSyncFailedAction = { +type: 'WALLET_SYNC_FAILED', +walletAddress: string, +walletCurrency: string, +error: Error };
 
 export type Action =
   | SelectWalletAction
@@ -115,13 +115,15 @@ export function sendMoneyFailed(error: Error): SendMoneyFailedAction {
 /**
  * @desc Action creator for an action that should be called on wallet synchronization fail.
  * @param {string} walletAddress Address of wallet that was synced.
+ * @param {string} walletCurrency Current of wallet that was synced.
  * @param {Error} error An error that occurs.
  * @returns {WalletSyncFailedAction} An action.
  */
-export function walletSyncFailed(walletAddress: string, error: Error): WalletSyncFailedAction {
+export function walletSyncFailed(walletAddress: string, walletCurrency: string, error: Error): WalletSyncFailedAction {
   return {
     type: WALLET_SYNC_FAILED,
     walletAddress,
+    walletCurrency,
     error,
   };
 }
