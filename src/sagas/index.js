@@ -8,6 +8,7 @@ import navigation from './navigation';
 import key from './key';
 import settings from './settings';
 import wallet from './wallet';
+import serviceContainer from './serviceContainer';
 
 /**
  * @desc Root saga.
@@ -21,5 +22,6 @@ export default function* rootSaga(): Generator<*, *, *> {
     call(key),
     call(settings),
     call(wallet),
+    call(serviceContainer),
   ]);
 }
