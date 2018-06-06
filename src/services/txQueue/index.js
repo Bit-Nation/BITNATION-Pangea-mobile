@@ -23,7 +23,7 @@ export async function jobFactory(txHash: string, type: string): Promise<Transact
 
   const job: TransactionJobType = {
     txHash,
-    status: TX_JOB_STATUS.UNKNOWN,
+    status: TX_JOB_STATUS.PENDING,
     type,
     nation: null,
   };
