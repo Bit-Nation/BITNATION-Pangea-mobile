@@ -1,11 +1,9 @@
 // @flow
 
-import { all, call, put, select } from 'redux-saga/effects';
-import { delay } from 'redux-saga';
+import { call, put, select } from 'redux-saga/effects';
 import { Realm } from 'realm';
 
 import { nationsUpdated, doneFetchNations, fetchNationsStarted, cancelLoading } from '../../actions/nations';
-import { NATION_INDEX_PERIOD } from '../../global/Constants';
 import { openedNation } from '../../reducers/nations';
 import { convertFromDatabase } from '../../utils/nations';
 import { errorAlert } from '../../global/alerts';
@@ -14,16 +12,6 @@ import { NoNationsServiceError } from '../../global/errors/services';
 import { currentAccountBasedUpdate } from '../accounts/sagas';
 import type { NationType as DBNationType } from '../../services/database/schemata';
 import type { State as NationsState } from '../../reducers/nations';
-
-const extractMessage = (error) => {
-  if (error.transKey !== undefined) {
-    return error;
-  }
-  if (error.toString().indexOf('insufficient') !== -1) {
-    return { transKey: 'insufficientFunds' };
-  }
-  return error;
-};
 
 export const getNations = (state: NationsState) => state.nations;
 

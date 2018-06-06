@@ -17,7 +17,7 @@ export default class ServiceContainer {
 
   initServices(account: Account, ethPrivateKey: string) {
     this.ethereumService = EthereumServiceFactory({
-      privateKey: normalizeEthPrivateKey('0x14397c5443a68bf84eda0a893f05bf02534b3b73d49f12bc657f8c291bc69b28'),
+      privateKey: normalizeEthPrivateKey(ethPrivateKey),
       providerType: account.networkType === 'dev' ? 'rinkeby' : 'homestead',
     }).service;
     this.walletService = new WalletService(this.ethereumService);
