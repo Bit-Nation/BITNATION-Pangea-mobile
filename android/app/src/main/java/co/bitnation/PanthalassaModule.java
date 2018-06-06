@@ -1,12 +1,20 @@
 package co.bitnation;
 
+import android.app.Activity;
+import android.support.annotation.Nullable;
 import android.util.Log;
 
+import com.facebook.react.ReactInstanceManager;
+import com.facebook.react.ReactNativeHost;
+import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
+import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableMap;
+import com.facebook.react.bridge.WritableMap;
+import com.facebook.react.modules.core.DeviceEventManagerModule;
 
 import org.json.JSONException;
 
@@ -264,5 +272,27 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
     @Override
     public void send(String s) {
         Log.v("Upstream","Received from callback");
+
+        WritableMap params = Arguments.createMap();
+        params.putString("data", s);
+        Activity activity = getCurrentActivity();
+        if (activity != null) {
+            MainApplication application = (MainApplication) activity.getApplication();
+            ReactNativeHost reactNativeHost = application.getReactNativeHost();
+            ReactInstanceManager reactInstanceManager = reactNativeHost.getReactInstanceManager();
+            ReactContext reactContext = reactInstanceManager.getCurrentReactContext();
+
+            if (reactContext != null) {
+                sendEvent(reactContext, "PanthalassaUpStream", params);
+            }
+        }
+    }
+
+    private void sendEvent(ReactContext reactContext,
+                           String eventName,
+                           @Nullable WritableMap params) {
+        reactContext
+                .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
+                .emit(eventName, params);
     }
 }
