@@ -87,11 +87,13 @@ export function nationIsDraft(nation: NationType): boolean {
  * @desc Converts app editing nation model to database model.
  * @param {EditingNationType} nation Editing nation to be converted.
  * @param {number} nationId Id of nation to be set.
+ * @param {string} accountId Id of account that nation is related to.
  * @return {*} Object to create a database model (it is without optional values)
  */
-export function convertDraftToDatabase(nation: EditingNationType, nationId: number): * {
+export function convertDraftToDatabase(nation: EditingNationType, nationId: number, accountId: string): * {
   return {
     id: nationId,
+    accountId,
     created: false,
     nationName: nation.nationName,
     nationDescription: nation.nationDescription,
@@ -147,7 +149,7 @@ export function convertToEditingNation(nation: NationType): EditingNationType {
  */
 export function convertToDatabase(nationData: NationType): DBNationType {
   return {
-    ...convertDraftToDatabase(convertToEditingNation(nationData), nationData.id),
+    ...convertDraftToDatabase(convertToEditingNation(nationData), nationData.id, nationData.accountId),
     idInSmartContract: nationData.idInSmartContract,
     created: nationData.created,
     citizens: nationData.citizens,
@@ -166,6 +168,7 @@ export function convertToDatabase(nationData: NationType): DBNationType {
 export function convertFromDatabase(nation: DBNationType): NationType {
   return {
     id: nation.id,
+    accountId: nation.accountId,
     idInSmartContract: nation.idInSmartContract,
     created: nation.created,
     nationName: nation.nationName,
