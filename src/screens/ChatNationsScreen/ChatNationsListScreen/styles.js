@@ -13,6 +13,9 @@ const styles = MediaQueryStyleSheet.create({
     color: Colors.Red,
   },
   */
+  fabStyle: {
+    backgroundColor: '#FF8B00',
+  },
 
 });
 

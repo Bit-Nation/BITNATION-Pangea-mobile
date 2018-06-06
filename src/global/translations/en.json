@@ -293,7 +293,15 @@
       "title": "$t(common.chat)",
       "tabTitle": "$t(tabbar.chat)",
       "allChats": "All Chats",
-      "myChats": "My Chats"
+      "myChats": "My Chats",
+      "newChat": "New Chat",
+      "dappChat": "Chat with DApp",
+      "cancel": "$t(common.cancel)",
+      "newConversation": "New Conversation",
+      "scanQrCode": "Scan QR Code",
+      "pasteClipboard": "Paste From Clipboard",
+      "qrCodeLibrary": "QR Code From Library",
+      "pubKeyPlaceholder": "Paste public key"
     },
     "nations": {
       "toolbar": {
