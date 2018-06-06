@@ -32,11 +32,13 @@ import TaskBuilder from '../../utils/asyncTask';
 import AccountsService from '../../services/accounts';
 import { InvalidPasswordError, LoginFailedError } from '../../global/errors/accounts';
 import type { AccountType as DBAccount } from '../../services/database/schemata';
-import type { Account } from '../../types/Account';
+import type { Account, Profile } from '../../types/Account';
 import type { SaveEditingAccountAction } from '../../actions/profile';
 import { cancelAccountEditing } from '../../actions/profile';
 import { resetSettings } from '../../actions/settings';
-import type { Profile } from '../../types/Account';
+import type { State as AccountsState } from '../../reducers/accounts';
+
+export const getAccounts = (state: AccountsState) => state.accounts;
 
 /**
  * @desc That function should be used for listening on information that depends on current account.
@@ -199,7 +201,7 @@ export function* login(userInfo: ({ accountId: string, accountStore?: string }),
     profile = retrieveProfileFromAccount(account);
   } else {
     ({ accountStore } = userInfo);
-    const { creatingAccount } = yield select(state => state.accounts);
+    const { creatingAccount } = yield select(getAccounts);
     const result = retrieveProfileFromPartialAccount(creatingAccount);
     if (result == null) {
       yield put(loginTaskUpdated(TaskBuilder.failure(new LoginFailedError())));
