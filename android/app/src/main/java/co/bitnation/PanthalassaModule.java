@@ -100,6 +100,29 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
     }
 
     @ReactMethod
+    public void PanthalassaEthAddress(Promise promise) {
+        try {
+            String response = Panthalassa.ethAddress();
+            promise.resolve(response);
+        } catch (Exception e) {
+            e.printStackTrace();
+            promise.reject("error", e.getLocalizedMessage());
+        }
+    }
+
+    @ReactMethod
+    public void PanthalassaHandleInitialMessage(ReadableMap jsonParams, Promise promise) throws JSONException {
+        try {
+            String response = Panthalassa.handleInitialMessage(jsonParams.getString("message"),
+                                                            jsonParams.getString("preKeyBundlePrivatePart"));
+            promise.resolve(response);
+        } catch (Exception e) {
+            e.printStackTrace();
+            promise.reject("error", e.getLocalizedMessage());
+        }
+    }
+
+    @ReactMethod
     public void PanthalassaExportAccountStore(ReadableMap jsonParams, Promise promise) throws JSONException {
         try {
             String response = Panthalassa.exportAccountStore(jsonParams.getString("pw"),
