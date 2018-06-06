@@ -195,6 +195,7 @@ export const TransactionJobSchema = {
 /**
  * @typedef NationType
  * @property {number} id internal id of the dataset
+ * @property {string} accountId Id of account that nation is related to.
  * @property {number} idInSmartContract is the id in the nation smart contract. If not this will be -1.
  * @property {boolean} created mean's if it is written to the blockchain (@todo this is probably an redundant field since you can get this information from "idInSmartContract")
  * @property {string} nationName human readable name of the nation
@@ -216,6 +217,7 @@ export const TransactionJobSchema = {
  */
 export type NationType = {
   id: number,
+  accountId: string,
   idInSmartContract: number,
   created: boolean,
   nationName: string,
@@ -240,6 +242,7 @@ export const NationSchema = {
   name: 'Nation',
   primaryKey: 'id',
   properties: {
+    accountId: 'string',
     id: 'int',
     idInSmartContract: {
       default: -1,

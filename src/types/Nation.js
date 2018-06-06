@@ -24,6 +24,7 @@ export type EditingNationType = {
 
 export type NationType = {
   id: NationIdType,
+  accountId: string,
   idInSmartContract: number,
   created: boolean,
   nationName: string,
