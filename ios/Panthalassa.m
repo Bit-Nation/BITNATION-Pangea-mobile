@@ -268,7 +268,6 @@ RCT_REMAP_METHOD(PanthalassaCreateHumanMessage,
   NSError *error = nil;
   
   response = PanthalassaCreateHumanMessage([RCTConvert NSString:config[@"rawMsg"]],
-                              [RCTConvert NSString:config[@"rawProfile"]],
                               [RCTConvert NSString:config[@"secret"]],
                               &error);
   
@@ -287,8 +286,7 @@ RCT_REMAP_METHOD(PanthalassaDecryptMessage,
   NSString *response;
   NSError *error = nil;
   
-  response = PanthalassaDecryptMessage([RCTConvert NSString:config[@"encryptedMessage"]],
-                                           [RCTConvert NSString:config[@"rawProfile"]],
+  response = PanthalassaDecryptMessage([RCTConvert NSString:config[@"message"]],
                                            [RCTConvert NSString:config[@"secret"]],
                                            &error);
   
