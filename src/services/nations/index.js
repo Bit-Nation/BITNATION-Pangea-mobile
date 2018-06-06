@@ -155,18 +155,28 @@ export default class NationsService {
   }
 
   async registerNationIndexing(sinceBlock: number) {
-    const self = this;
-    this.ethereumService.nations.onnationcreated = function processLog() {
-      // BE CAREFUL! Since strange API of ether.js log passed here as a 'this'.
-      const log = this;
+    return new Promise(async (resolve, reject) => {
+      const self = this;
+      let expectedNationsNumber = (await this.ethereumService.nations.numNations()).toNumber();
+      this.ethereumService.nations.onnationcreated = function processLog() {
+        // BE CAREFUL! Since strange API of ether.js log passed here as a 'this'.
+        const log = this;
 
-      self.performNationUpdate(log.args.nationId.toNumber(), log.txHash)
-        .catch((error) => {
-          console.log(error.toString());
-        });
-    };
+        self.performNationUpdate(log.args.nationId.toNumber(), log.txHash)
+          .then(() => {
+            expectedNationsNumber -= 1;
+            if (expectedNationsNumber === 0) {
+              resolve();
+            }
+          })
+          .catch((error) => {
+            console.log(error.toString());
+            reject(error);
+          });
+      };
 
-    this.ethereumService.nations.provider.resetEventsBlock(sinceBlock);
+      this.ethereumService.nations.provider.resetEventsBlock(sinceBlock);
+    });
   }
 
   async performNationUpdate(idInSmartContract: number, txHash: string | null) {
