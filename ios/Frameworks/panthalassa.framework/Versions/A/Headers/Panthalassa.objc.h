@@ -12,28 +12,8 @@
 
 @class PanthalassaPanthalassa;
 @class PanthalassaStartConfig;
-@protocol PanthalassaOneTimePreKeyStoreDBInterface;
-@class PanthalassaOneTimePreKeyStoreDBInterface;
-@protocol PanthalassaPangeaKeyStoreDBInterface;
-@class PanthalassaPangeaKeyStoreDBInterface;
 @protocol PanthalassaUpStream;
 @class PanthalassaUpStream;
-
-@protocol PanthalassaOneTimePreKeyStoreDBInterface <NSObject>
-- (BOOL)delete:(NSString*)pubKey error:(NSError**)error;
-- (NSString*)get:(NSString*)pubKey error:(NSError**)error;
-- (BOOL)has:(NSString*)pubKey ret0_:(BOOL*)ret0_ error:(NSError**)error;
-- (BOOL)put:(NSString*)pubKey encPrivKey:(NSString*)encPrivKey error:(NSError**)error;
-@end
-
-@protocol PanthalassaPangeaKeyStoreDBInterface <NSObject>
-- (NSString*)all;
-- (NSString*)count:(NSString*)key;
-- (void)deleteMk:(NSString*)key msgNum:(NSString*)msgNum;
-- (void)deletePk:(NSString*)key;
-- (NSString*)get:(NSString*)key msgNum:(NSString*)msgNum;
-- (void)put:(NSString*)key msgNum:(NSString*)msgNum messageKey:(NSString*)messageKey;
-@end
 
 @protocol PanthalassaUpStream <NSObject>
 - (void)send:(NSString*)data;
@@ -58,15 +38,13 @@
 - (instancetype)init;
 - (NSString*)encryptedKeyManager;
 - (void)setEncryptedKeyManager:(NSString*)v;
-- (NSString*)rendezvousKey;
-- (void)setRendezvousKey:(NSString*)v;
 - (NSString*)signedProfile;
 - (void)setSignedProfile:(NSString*)v;
 @end
 
-FOUNDATION_EXPORT NSString* PanthalassaCreateHumanMessage(NSString* rawMsg, NSString* rawProfile, NSString* secret, NSError** error);
+FOUNDATION_EXPORT NSString* PanthalassaCreateHumanMessage(NSString* rawMsg, NSString* secret, NSError** error);
 
-FOUNDATION_EXPORT NSString* PanthalassaDecryptMessage(NSString* encryptedMessage, NSString* rawProfile, NSString* secret, NSError** error);
+FOUNDATION_EXPORT NSString* PanthalassaDecryptMessage(NSString* message, NSString* secret, NSError** error);
 
 FOUNDATION_EXPORT NSString* PanthalassaEthAddress(NSError** error);
 
@@ -77,6 +55,8 @@ FOUNDATION_EXPORT NSString* PanthalassaExportAccountStore(NSString* pw, NSString
 FOUNDATION_EXPORT NSString* PanthalassaGetIdentityPublicKey(NSError** error);
 
 FOUNDATION_EXPORT NSString* PanthalassaGetMnemonic(NSError** error);
+
+FOUNDATION_EXPORT NSString* PanthalassaHandleInitialMessage(NSString* message, NSString* preKeyBundlePrivatePart, NSError** error);
 
 FOUNDATION_EXPORT NSString* PanthalassaIdentityPublicKey(NSError** error);
 
@@ -102,35 +82,7 @@ FOUNDATION_EXPORT BOOL PanthalassaStartFromMnemonic(NSString* config, NSString* 
 
 FOUNDATION_EXPORT BOOL PanthalassaStop(NSError** error);
 
-@class PanthalassaOneTimePreKeyStoreDBInterface;
-
-@class PanthalassaPangeaKeyStoreDBInterface;
-
 @class PanthalassaUpStream;
-
-@interface PanthalassaOneTimePreKeyStoreDBInterface : NSObject <goSeqRefInterface, PanthalassaOneTimePreKeyStoreDBInterface> {
-}
-@property(strong, readonly) id _ref;
-
-- (instancetype)initWithRef:(id)ref;
-- (BOOL)delete:(NSString*)pubKey error:(NSError**)error;
-- (NSString*)get:(NSString*)pubKey error:(NSError**)error;
-- (BOOL)has:(NSString*)pubKey ret0_:(BOOL*)ret0_ error:(NSError**)error;
-- (BOOL)put:(NSString*)pubKey encPrivKey:(NSString*)encPrivKey error:(NSError**)error;
-@end
-
-@interface PanthalassaPangeaKeyStoreDBInterface : NSObject <goSeqRefInterface, PanthalassaPangeaKeyStoreDBInterface> {
-}
-@property(strong, readonly) id _ref;
-
-- (instancetype)initWithRef:(id)ref;
-- (NSString*)all;
-- (NSString*)count:(NSString*)key;
-- (void)deleteMk:(NSString*)key msgNum:(NSString*)msgNum;
-- (void)deletePk:(NSString*)key;
-- (NSString*)get:(NSString*)key msgNum:(NSString*)msgNum;
-- (void)put:(NSString*)key msgNum:(NSString*)msgNum messageKey:(NSString*)messageKey;
-@end
 
 @interface PanthalassaUpStream : NSObject <goSeqRefInterface, PanthalassaUpStream> {
 }
