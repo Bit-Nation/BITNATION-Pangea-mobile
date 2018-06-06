@@ -11,13 +11,15 @@ import { jobFactory } from '../txQueue';
 import { TX_JOB_STATUS, TX_JOB_TYPE } from '../../global/Constants';
 
 export default class NationsService {
-  constructor(ethereumService: EthereumService, dbPromise: Promise<Realm>) {
+  constructor(ethereumService: EthereumService, dbPromise: Promise<Realm>, accountId: string) {
     this.ethereumService = ethereumService;
     this.dbPromise = dbPromise;
+    this.currentAccountId = accountId;
   }
 
   ethereumService: EthereumService;
   dbPromise: Promise<Realm>;
+  currentAccountId: string;
 
   // Drafts operations
 
@@ -34,7 +36,7 @@ export default class NationsService {
     try {
       let nation: DBNationType;
       db.write(() => {
-        nation = db.create('Nation', convertDraftToDatabase(nationData, nationId), true);
+        nation = db.create('Nation', convertDraftToDatabase(nationData, nationId, this.currentAccountId), true);
       });
 
       return (nation: any);
@@ -47,10 +49,9 @@ export default class NationsService {
     const db = await this.dbPromise;
     try {
       let nation: DBNationType;
+      const newId = await this.newNationId();
       db.write(() => {
-        const sorted = db.objects('Nation').sorted('id', true);
-        const newId = (sorted.length === 0 ? 1 : sorted[0].id + 1);
-        nation = db.create('Nation', convertDraftToDatabase(nationData, newId));
+        nation = db.create('Nation', convertDraftToDatabase(nationData, newId, this.currentAccountId));
       });
 
       return (nation: any);
@@ -121,7 +122,7 @@ export default class NationsService {
       throw new StateMutateNotPossible();
     }
 
-    const tx = this.ethereumService.nations.joinNation(nation.idInSmartContract);
+    const tx = await this.ethereumService.nations.joinNation(nation.idInSmartContract);
     const txJob = await jobFactory(tx.hash, TX_JOB_TYPE.NATION_JOIN);
     try {
       db.write(() => {
@@ -141,7 +142,7 @@ export default class NationsService {
       throw new StateMutateNotPossible();
     }
 
-    const tx = this.ethereumService.nations.leaveNation(nation.idInSmartContract);
+    const tx = await this.ethereumService.nations.leaveNation(nation.idInSmartContract);
     const txJob = await jobFactory(tx.hash, TX_JOB_TYPE.NATION_LEAVE);
     try {
       db.write(() => {
@@ -153,16 +154,102 @@ export default class NationsService {
     }
   }
 
+  async registerNationIndexing(sinceBlock: number) {
+    const self = this;
+    this.ethereumService.nations.onnationcreated = function processLog() {
+      // BE CAREFUL! Since strange API of ether.js log passed here as a 'this'.
+      const log = this;
+
+      self.performNationUpdate(log.args.nationId.toNumber(), log.txHash)
+        .catch((error) => {
+          console.log(error.toString());
+        });
+    };
+
+    this.ethereumService.nations.provider.resetEventsBlock(sinceBlock);
+  }
+
+  async performNationUpdate(idInSmartContract: number, txHash: string | null) {
+    const db = await this.dbPromise;
+    const draftToUpdate: DBNationType = db.objects('Nation').filtered(`tx.txHash = '${txHash || ''}' AND tx.type = '${TX_JOB_TYPE.NATION_CREATE}'`)[0];
+    if (draftToUpdate != null) {
+      // It's a draft that we need to update in database as submitted nation
+      db.write(() => {
+        draftToUpdate.idInSmartContract = idInSmartContract;
+        draftToUpdate.stateMutateAllowed = true;
+        draftToUpdate.resetStateMutateAllowed = false;
+      });
+    }
+
+    const isNationJoined = (await this.ethereumService.nations.getJoinedNations())
+      .map(bigNumber => bigNumber.toNumber()).includes(idInSmartContract);
+    const citizensNumber = (await this.ethereumService.nations.getNumCitizens(idInSmartContract)).toNumber();
+
+    const nationToUpdate: DBNationType = db.objects('Nation').filtered(`accountId = '${this.currentAccountId}' && idInSmartContract = ${idInSmartContract}`)[0];
+    if (nationToUpdate != null) {
+      // It's a nation that somehow is already in database, so we just update it.
+      db.write(() => {
+        nationToUpdate.joined = isNationJoined;
+        nationToUpdate.citizens = citizensNumber;
+
+        // We need to wait for resetStateMutateAllowed === true because that means we are allowed to reset stateMutateAllowed
+        if (nationToUpdate.resetStateMutateAllowed === true) {
+          nationToUpdate.stateMutateAllowed = true;
+          nationToUpdate.resetStateMutateAllowed = false;
+        }
+      });
+    }
+
+    if (draftToUpdate != null || nationToUpdate != null) {
+      // Since we update a nation we don't need to create it again.
+      return;
+    }
+
+    const nationData = JSON.parse(await this.ethereumService.nations.getNationMetaData(idInSmartContract));
+    const newId = await this.newNationId();
+    db.write(() => {
+      db.create('Nation', {
+        id: newId,
+        accountId: this.currentAccountId,
+        idInSmartContract,
+        nationName: nationData.nationName,
+        nationDescription: nationData.nationDescription,
+        created: true,
+        exists: nationData.exists,
+        virtualNation: nationData.virtualNation,
+        nationCode: nationData.nationCode,
+        lawEnforcementMechanism: nationData.lawEnforcementMechanism,
+        profit: nationData.profit,
+        nonCitizenUse: nationData.nonCitizenUse,
+        diplomaticRecognition: nationData.diplomaticRecognition,
+        decisionMakingProcess: nationData.decisionMakingProcess,
+        governanceService: nationData.governanceService,
+        joined: isNationJoined,
+        citizens: citizensNumber,
+      });
+    });
+  }
+
   // Utilities
+
+  async newNationId(): Promise<number> {
+    const db = await this.dbPromise;
+    const sorted = db.objects('Nation').sorted('id', true);
+    return (sorted.length === 0 ? 1 : sorted[0].id + 1);
+  }
 
   async nationById(id: NationIdType): Promise<DBNationType> {
     const db = await this.dbPromise;
-    const nations = db.objects('Nation').filtered(`id = "${id}"`);
+    const nations = db.objects('Nation').filtered(`id = ${id}`);
     if (nations.length === 0) {
       throw new Error('system_error.nation.does_not_exist');
     }
 
     return nations[0];
+  }
+
+  cleanUp() {
+    this.ethereumService.nations.onnationcreated = null;
   }
 
   /**
