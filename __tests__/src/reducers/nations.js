@@ -1,6 +1,6 @@
 import {
   switchNationTab, openNation, joinNation, leaveNation,
-  doneSyncNations, doneFetchNations, fetchNationsStarted,
+  nationsUpdated, doneFetchNations, fetchNationsStarted,
 } from '../../../src/actions/nations';
 import reducer, { initialState } from '../../../src/reducers/nations';
 
@@ -24,7 +24,7 @@ test('reducer - fetchNationsStarted', (done) => {
   done();
 });
 
-test('reducer - done sync nations', (done) => {
+test('reducer - nations updated', (done) => {
   const mockNations = [
     {
       id: 'Nation1',
@@ -35,7 +35,7 @@ test('reducer - done sync nations', (done) => {
       joined: false,
     },
   ];
-  const state = reducer(initialState, doneSyncNations(mockNations));
+  const state = reducer(initialState, nationsUpdated(mockNations));
   expect(state).toEqual({
     ...initialState,
     nations: mockNations,
