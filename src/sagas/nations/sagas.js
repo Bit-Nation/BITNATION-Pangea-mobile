@@ -1,6 +1,6 @@
 // @flow
 
-import { call, put, select, take, cancel, fork } from 'redux-saga/effects';
+import { all, call, put, select } from 'redux-saga/effects';
 import { delay } from 'redux-saga';
 import { Realm } from 'realm';
 
@@ -10,7 +10,6 @@ import { openedNation } from '../../reducers/nations';
 import { convertFromDatabase } from '../../utils/nations';
 import { errorAlert } from '../../global/alerts';
 import ServiceContainer from '../../services/container';
-import { SERVICES_CREATED, SERVICES_DESTROYED } from '../../actions/serviceContainer';
 import { NoNationsServiceError } from '../../global/errors/services';
 import { currentAccountBasedUpdate } from '../accounts/sagas';
 import type { NationType as DBNationType } from '../../services/database/schemata';
@@ -42,13 +41,13 @@ export function* onCurrentAccountChange(collection: Realm.Result<DBNationType>):
  * @desc Function that creates Realm results fetching nations for specific account.
  * @param {Realm} db Realm instance.
  * @param {string|null} accountId Id of account to fetch nations or null.
- * @return {Realm.Results<AccountSettings>|null} Realm results fetching nations for specified account or null if not applicable.
+ * @return {Realm.Results<DBNationType>|null} Realm results fetching nations for specified account or null if not applicable.
  */
 export function buildAccountNationsResults(db: Realm, accountId: string | null): Realm.Results<DBNationType> | null {
   if (accountId === null) {
     return null;
   }
-  return db.objects('AccountSettings').filtered(`id == '${accountId}'`);
+  return db.objects('Nation').filtered(`accountId == '${accountId}'`);
 }
 
 /**
@@ -60,40 +59,20 @@ export function* startDatabaseListening(): Generator<*, *, *> {
 }
 
 /**
- * @desc Repeat nations indexing (fetching from blockchain) regularly by some period of time.
- * @return {void}
- */
-export function* indexNations(): Generator<*, *, *> {
-  while (true) {
-    try {
-      const { nationsService } = ServiceContainer.instance;
-      if (nationsService == null) {
-        throw new NoNationsServiceError();
-      }
-      yield put(fetchNationsStarted());
-      yield call(nationsService.indexNations());
-      yield put(doneFetchNations());
-    } catch (e) {
-      yield put(cancelLoading());
-    }
-    yield delay(NATION_INDEX_PERIOD);
-  }
-}
-
-/**
- * @desc Starts nations indexing based on services created or destroyed.
+ * @desc Starts nations indexing worker that will fetch nations from blockchain.
  * @return {void}
  */
 export function* startNationIndexingWorker(): Generator<*, *, *> {
-  while (yield take(SERVICES_CREATED)) {
-    const task = yield fork(indexNations);
-
-    yield take(SERVICES_DESTROYED);
-
-    yield cancel(task);
+  const { nationsService } = ServiceContainer.instance;
+  if (nationsService == null) {
+    throw new NoNationsServiceError();
   }
-}
 
+  // @todo Pass block number
+  yield put(fetchNationsStarted());
+  yield call([nationsService, 'registerNationIndexing'], 0);
+  yield put(doneFetchNations());
+}
 
 /**
  * @desc Saga for joining nation
@@ -107,7 +86,7 @@ export function* joinNation(): Generator<*, *, *> {
     }
     const nationsState = yield select(getNations);
     const currentNation = openedNation(nationsState);
-    yield call(nationsService.joinNation, currentNation);
+    yield call([nationsService, 'joinNation'], currentNation);
   } catch (e) {
     errorAlert(e);
   } finally {
@@ -127,7 +106,7 @@ export function* leaveNation(): Generator<*, *, *> {
     }
     const nationsState = yield select(getNations);
     const currentNation = openedNation(nationsState);
-    yield call(nationsService.leaveNation, currentNation);
+    yield call([nationsService, 'leaveNation'], currentNation);
   } catch (e) {
     errorAlert(e);
   } finally {
