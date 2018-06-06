@@ -11,6 +11,7 @@ import settings from '../../../src/sagas/settings';
 import wallet from '../../../src/sagas/wallet';
 import serviceContainer from '../../../src/sagas/serviceContainer';
 import modifyNation from '../../../src/sagas/modifyNation';
+import nations from '../../../src/sagas/nations';
 
 test('rootSaga', () => {
   const iterator = rootSaga();
@@ -23,5 +24,6 @@ test('rootSaga', () => {
     call(wallet),
     call(serviceContainer),
     call(modifyNation),
+    call(nations),
   ]));
 });
