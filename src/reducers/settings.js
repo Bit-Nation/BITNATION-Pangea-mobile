@@ -5,6 +5,7 @@ import {
   SETTINGS_UPDATED,
 } from '../actions/settings';
 import type { SettingsType } from '../types/Settings';
+import { SERVICES_DESTROYED } from '../actions/serviceContainer';
 
 export type State = SettingsType
 
@@ -30,6 +31,8 @@ export const initialState: State = {
  */
 export default (state: State = initialState, action: Action): State => {
   switch (action.type) {
+    case SERVICES_DESTROYED:
+      return initialState;
     case CHANGE_USE_NUMERIC_PASSCODE: {
       const desiredValue = action.useNumericPasscode ? PasscodeTypeValues.pinCode : PasscodeTypeValues.password;
       return (state.passcodeType.type === desiredValue.type) ?
