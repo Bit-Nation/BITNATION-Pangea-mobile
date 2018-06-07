@@ -23,6 +23,7 @@ const styles = {
   nationsPanel: {
     flex: 1,
     marginRight: 4,
+
   },
   rightContainer: {
     marginLeft: 4,

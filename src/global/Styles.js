@@ -211,7 +211,7 @@ const styles = {
     alignItems: 'stretch',
     margin: 4,
     borderRadius: 8,
-    backgroundColor: Colors.panelView,
+    backgroundColor: Colors.white,
     overflow: 'hidden',
     // INDENTS
     padding: fontSizeNormalizer(16),
@@ -235,7 +235,7 @@ const styles = {
     flexDirection: 'column',
     justifyContent: 'space-between',
     borderRadius: 8,
-    backgroundColor: Colors.panelView,
+    backgroundColor: Colors.white,
     marginTop: 4,
     marginBottom: 4,
     marginLeft: 0,
@@ -446,7 +446,7 @@ const styles = {
 
   formSwitchLabelText: {
     ...defaultTextStyles.body,
-    color: 'white',
+    color: Colors.BitnationDarkGrayColor,
     marginRight: 60,
     fontSize: 16,
   },
@@ -555,7 +555,7 @@ const styles = {
   // e.g. NationListItem Text
   listItemText: {
     ...defaultTextStyles.body,
-    color: 'white',
+    color: '#58595B',
     flex: 1,
   },
 
@@ -692,28 +692,50 @@ const styles = {
   currencyLarge: {
     ...defaultTextStyles.largeTitle,
     fontFamily: 'Roboto',
-    fontWeight: '300',
     fontSize: 30,
-    lineHeight: 36,
-    letterSpacing: 0,
     color: Colors.currency,
+  },
+  currencyMedium: {
+    ...defaultTextStyles.largeTitle,
+    fontFamily: 'Roboto',
+    fontSize: 15,
+    color: Colors.currency,
+    fontWeight: 'bold',
   },
 
   buttonTitle: {
     fontSize: 14,
-    color: Colors.BitnationLightColor,
+    color: Colors.BitnationLinkOrangeColor,
     letterSpacing: -0.02,
     lineHeight: 19,
     textAlign: 'center',
+    fontWeight: 'bold',
   },
   disabledButtonTitle: {
     fontSize: 14,
-    color: Colors.disabledButtonTitleColor,
+    color: Colors.BitnationLightGrayColor,
     letterSpacing: -0.02,
     lineHeight: 19,
     textAlign: 'center',
+    fontWeight: 'bold',
   },
-
+  arrowButtonTitle: {
+    fontSize: 15,
+    color: Colors.BitnationLinkOrangeColor,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  arrowButtonIcon: {
+    fontSize: 14,
+    color: Colors.BitnationLinkOrangeColor,
+    alignSelf: 'center',
+  },
+  disabledArrowButtonTitle: {
+    fontSize: 15,
+    color: Colors.BitnationLightGrayColor,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
   // ========================================
   // Buttons
   // e.g. components/common/Button.js
@@ -724,17 +746,14 @@ const styles = {
     justifyContent: 'center',
   },
 
-  enabledButton: {
-    backgroundColor: Colors.buttonColor,
-  },
-
-  disabledButton: {
-    backgroundColor: Colors.disabledButtonColor,
-  },
 
   buttonContainer: {
     marginLeft: 13,
     marginRight: 13,
+  },
+  arrowButtonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
 
   buttonContainerMultiple: {
@@ -768,7 +787,7 @@ const styles = {
 
   avatarContainerLarge: {
     // flex: 1,
-    alignItems: 'center',
+    alignItems: 'flex-start',
   },
 
   avatarChangeContainer: {
