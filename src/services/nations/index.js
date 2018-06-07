@@ -8,7 +8,10 @@ import { convertDraftToDatabase, convertNationToBlockchain } from '../../utils/n
 import { NationAlreadySubmitted, StateMutateNotPossible } from '../../global/errors/nations';
 import { DatabaseWriteFailed } from '../../global/errors/common';
 import { jobFactory } from '../txProcessor';
-import { TX_JOB_STATUS, TX_JOB_TYPE } from '../../global/Constants';
+import {
+  NATION_DEV_CONTRACT_CREATION_BLOCK, NATION_PROD_CONTRACT_CREATION_BLOCK, TX_JOB_STATUS,
+  TX_JOB_TYPE,
+} from '../../global/Constants';
 
 export default class NationsService {
   constructor(ethereumService: EthereumService, dbPromise: Promise<Realm>, accountId: string) {
@@ -156,32 +159,35 @@ export default class NationsService {
     }
   }
 
-  async registerNationIndexing(sinceBlock: number) {
+  async registerNationIndexing() {
+    const firstBlock = this.ethereumService.network === 'dev' ? NATION_DEV_CONTRACT_CREATION_BLOCK : NATION_PROD_CONTRACT_CREATION_BLOCK
+
     return new Promise(async (resolve, reject) => {
       const self = this;
       let expectedNationsNumber = (await this.ethereumService.nations.numNations()).toNumber();
-      if (expectedNationsNumber === 0) {
-        resolve();
-      }
-      this.ethereumService.nations.onnationcreated = async function processLog() {
+
+      this.ethereumService.nations.onnationcreated = function processLog() {
         // BE CAREFUL! Since strange API of ether.js log passed here as a 'this'.
         const log = this;
 
-        self.logsProcessingPromise = self.logsProcessingPromise
-          .then(() => self.performNationUpdate(log.args.nationId.toNumber(), log.transactionHash));
-        try {
-          await self.logsProcessingPromise;
-        } catch (error) {
-          console.log(error.toString());
-          reject(error);
-        }
-        expectedNationsNumber -= 1;
-        if (expectedNationsNumber === 0) {
-          resolve();
-        }
+        self.performNationUpdate(log.args.nationId.toNumber(), log.transactionHash)
+          .then(() => {
+            expectedNationsNumber -= 1;
+            if (expectedNationsNumber === 0) {
+              resolve();
+            }
+          })
+          .catch((error) => {
+            console.log(error.toString());
+            reject(error);
+          });
       };
 
-      this.ethereumService.nations.provider.resetEventsBlock(sinceBlock);
+      if (expectedNationsNumber === 0) {
+        resolve();
+      }
+
+      this.ethereumService.nations.provider.resetEventsBlock(firstBlock);
     });
   }
 

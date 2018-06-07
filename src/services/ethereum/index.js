@@ -3,12 +3,15 @@
 import ethers from 'ethers';
 import ERC20ABI from './ERC20ABI.json';
 import NationsABI from './NationABI.json';
+import type { NetworkType } from '../../types/Account';
 
 export default class EthereumService {
   wallet: Object;
   nations: Object;
-  constructor(wallet: Object, network: string) {
+  network: NetworkType;
+  constructor(wallet: Object, network: NetworkType) {
     this.wallet = wallet;
+    this.network = network;
     const abi = NationsABI;
     this.nations = new ethers.Contract(network === 'dev' ? '0x559f57f7dbe737319f8d28f8a94f1dcee9f468ad' : '0xa014847cff475826804f2e0a178096b10eeed7a7', abi, this.wallet);
   }
