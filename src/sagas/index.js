@@ -11,6 +11,7 @@ import wallet from './wallet';
 import serviceContainer from './serviceContainer';
 import modifyNation from './modifyNation';
 import nations from './nations';
+import txProcessor from './txProcessor';
 
 /**
  * @desc Root saga.
@@ -27,5 +28,6 @@ export default function* rootSaga(): Generator<*, *, *> {
     call(serviceContainer),
     call(modifyNation),
     call(nations),
+    call(txProcessor),
   ]);
 }

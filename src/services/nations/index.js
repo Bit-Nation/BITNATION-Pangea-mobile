@@ -7,7 +7,7 @@ import type { NationType, EditingNationType, DBNationType, NationIdType } from '
 import { convertDraftToDatabase, convertNationToBlockchain } from '../../utils/nations';
 import { NationAlreadySubmitted, StateMutateNotPossible } from '../../global/errors/nations';
 import { DatabaseWriteFailed } from '../../global/errors/common';
-import { jobFactory } from '../txQueue';
+import { jobFactory } from '../txProcessor';
 import { TX_JOB_STATUS, TX_JOB_TYPE } from '../../global/Constants';
 
 export default class NationsService {
@@ -77,7 +77,7 @@ export default class NationsService {
     const nationData = convertNationToBlockchain(nation);
     const tx = await this.ethereumService.nations.createNation(JSON.stringify(nationData));
 
-    const txJob = await jobFactory(tx.hash, TX_JOB_TYPE.NATION_CREATE);
+    const txJob = await jobFactory(tx.hash, TX_JOB_TYPE.NATION_CREATE, this.currentAccountId);
     try {
       db.write(() => {
         nation.tx = txJob;
@@ -123,7 +123,7 @@ export default class NationsService {
     }
 
     const tx = await this.ethereumService.nations.joinNation(nation.idInSmartContract);
-    const txJob = await jobFactory(tx.hash, TX_JOB_TYPE.NATION_JOIN);
+    const txJob = await jobFactory(tx.hash, TX_JOB_TYPE.NATION_JOIN, this.currentAccountId);
     try {
       db.write(() => {
         nation.tx = txJob;
@@ -143,7 +143,7 @@ export default class NationsService {
     }
 
     const tx = await this.ethereumService.nations.leaveNation(nation.idInSmartContract);
-    const txJob = await jobFactory(tx.hash, TX_JOB_TYPE.NATION_LEAVE);
+    const txJob = await jobFactory(tx.hash, TX_JOB_TYPE.NATION_LEAVE, this.currentAccountId);
     try {
       db.write(() => {
         nation.tx = txJob;

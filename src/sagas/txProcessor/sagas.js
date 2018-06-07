@@ -1,53 +1,67 @@
 // @flow
 
-import { call, put } from 'redux-saga/effects';
+import { call, put, take } from 'redux-saga/effects';
 import type { Realm } from 'realm';
 import _ from 'lodash';
 
 import { currentAccountBasedUpdate } from '../accounts/sagas';
 import type { TransactionJobType } from '../../services/database/schemata';
+import ServiceContainer from '../../services/container';
+import { SERVICES_CREATED } from '../../actions/serviceContainer';
+import { NoTxProcessorError } from '../../global/errors/services';
 
 /**
- * @desc Function that creates Realm results builder that creates results fetching transactions of specific type for specific account.
- * @param {string} txType Type of transactions to be fetched.
- * @return {function} Realm results builder that is fetching transactions of specific type for specific account.
+ * @desc Function that creates Realm results fetching transactions for specific account.
+ * @param {Realm} db Realm instance.
+ * @param {string|null} accountId Id of account to fetch transactions or null.
+ * @return {Realm.Results<TransactionJobType>|null} Realm results fetching transactions for specified account or null if not applicable.
  */
-export function transactionsResultsBuilderFactory(txType: string): ((db: Realm, accountId: string | null) => Realm.Results<TransactionJobType>) {
-  return (db: Realm, accountId: string | null) => {
-    if (accountId === null) {
-      return null;
-    }
-    return db.objects('TransactionJob').filtered(`account.id == '${accountId}' AND type == '${txType}'`);
-  };
+export function buildTransactionsResults(db: Realm, accountId: string | null): Realm.Results<TransactionJobType> {
+  if (accountId === null) {
+    return null;
+  }
+  return db.objects('TransactionJob').filtered(`accountId == '${accountId}'`);
 }
 
-type TxProcessor = (tx: TransactionJobType, changeType: 'initial' | 'added' | 'modified') => void;
+export function* onCurrentAccountChange(
+  collection: Realm.Collection<TransactionJobType>,
+  changes: Realm.CollectionChangeSet<TransactionJobType>,
+): Generator<*, *, *> {
+  let { txProcessor } = ServiceContainer.instance;
+  if (txProcessor === null) {
+    yield take(SERVICES_CREATED);
+  }
+  ({ txProcessor } = ServiceContainer.instance);
+  if (txProcessor === null) {
+    // TxProcessor should be present now, because we waited for SERVICES_CREATED action.
+    // So, if it's not present then something critical happened.
+    throw new NoTxProcessorError();
+  }
+
+  if (changes == null || (_.isEmpty(changes.deletions) && _.isEmpty(changes.modifications) && _.isEmpty(changes.insertions))) {
+    _.forEach(collection, (tx) => {
+      txProcessor.processTransaction(tx, 'initial');
+    });
+    return;
+  }
+
+  _.forEach(changes.insertions, (index) => {
+    txProcessor.processTransaction(collection[index], 'added');
+  });
+
+  _.forEach(changes.insertions, (index) => {
+    txProcessor.processTransaction(collection[index], 'modified');
+  });
+}
 
 /**
- * @desc Generator to be called on database change. Used to update settings.
- * @param {string} txType Type of transactions to be fetched.
- * @param {TxProcessor} processor Function or generator that takes transaction and type of change.
+ * @desc Generator to be called to register transaction processing based on current account change.
  * @return {void}
  */
-export function* registerProcessor(txType: string, processor: TxProcessor): Generator<*, *, *> {
+export function* registerProcessor(): Generator<*, *, *> {
   yield call(
     currentAccountBasedUpdate,
-    transactionsResultsBuilderFactory(txType),
-    (collection: Realm.Collection<TransactionJobType>, changes: Realm.CollectionChangeSet<TransactionJobType>) => function*() {
-      if (changes == null || (_.isEmpty(changes.deletions) && _.isEmpty(changes.modifications) && _.isEmpty(changes.insertions))) {
-        _.forEach(collection, (tx) => {
-          yield call(processor, tx, 'initial');
-        });
-        return;
-      }
-
-      _.forEach(changes.insertions, (index) => {
-        yield call(processor, collection[index], 'added');
-      });
-
-      _.forEach(changes.insertions, (index) => {
-        yield call(processor, collection[index], 'modified');
-      });
-    },
+    buildTransactionsResults,
+    onCurrentAccountChange,
   );
 }
