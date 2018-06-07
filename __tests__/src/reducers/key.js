@@ -5,9 +5,15 @@ import {
   validateEnteredMnemonic,
 } from '../../../src/actions/key';
 import { KEY_LENGTH } from '../../../src/global/Constants';
+import { servicesDestroyed } from '../../../src/actions/serviceContainer';
 
 describe('key reducer action handling', () => {
   const mockMnemonic = new Array(KEY_LENGTH).fill('abc');
+
+  test('after service destroy returns initial state', () => {
+    const changedState = reducer(initialState, changeEnteredMnemonic(mockMnemonic));
+    expect(reducer(changedState, servicesDestroyed())).toEqual(initialState);
+  });
 
   test('changeEnteredMnemonic', () => {
     const stateBefore = initialState;

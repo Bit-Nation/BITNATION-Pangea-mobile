@@ -7,6 +7,7 @@ import {
   resetSettings,
   settingsUpdated,
 } from '../../../src/actions/settings';
+import { servicesDestroyed } from '../../../src/actions/serviceContainer';
 
 test('initial setting state', () => {
   expect(initialState).toEqual({ passcodeType: { type: 'password' } });
@@ -28,6 +29,12 @@ describe('settings reducer action handling', () => {
       length: 8,
     },
   };
+
+  test('after service destroy returns initial state', () => {
+    expect(reducer(stateWithPassword, servicesDestroyed())).toEqual(initialState);
+    expect(reducer(stateWithCustomLength, servicesDestroyed())).toEqual(initialState);
+    expect(reducer(stateWithPinCode, servicesDestroyed())).toEqual(initialState);
+  });
 
   test('changeUseNumericPasscode from password to pin code', () => {
     expect(reducer(stateWithPassword, changeUseNumericPasscode(true))).toEqual(stateWithPinCode);
