@@ -11,6 +11,7 @@ import {
   startNationCreation,
   startNationEditing, submitNation,
 } from '../../../src/actions/modifyNation';
+import { servicesDestroyed } from '../../../src/actions/serviceContainer';
 
 describe('modify nation reducer action handling', () => {
   const mockNation = {
@@ -21,6 +22,11 @@ describe('modify nation reducer action handling', () => {
   const mockError = {
     error: 'ERROR',
   };
+
+  test('after service destroy returns initial state', () => {
+    const changedState = reducer(initialState, startNationCreation());
+    expect(reducer(changedState, servicesDestroyed())).toEqual(initialState);
+  });
 
   test('startNationCreation', () => {
     const stateBefore = initialState;

@@ -40,8 +40,6 @@ export type NationType = {
   governanceService: Array<string>,
   citizens: number,
   joined: boolean,
-  stateMutateAllowed: boolean,
-  resetStateMutateAllowed: boolean,
   tx: TransactionJobType | null,
   ethAddress: string
 }
