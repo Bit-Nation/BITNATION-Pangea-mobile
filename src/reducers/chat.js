@@ -5,6 +5,7 @@ import {
   SHOW_CHAT_SPINNER,
   HIDE_CHAT_SPINNER,
 } from '../actions/chat';
+import { SERVICES_DESTROYED } from '../actions/serviceContainer';
 
 export type State = {
   +isFetching: boolean,
@@ -22,6 +23,8 @@ export const initialState: State = {
  */
 export default (state: State = initialState, action: Action): State => {
   switch (action.type) {
+    case SERVICES_DESTROYED:
+      return initialState;
     case SHOW_CHAT_SPINNER:
       return {
         ...state,
