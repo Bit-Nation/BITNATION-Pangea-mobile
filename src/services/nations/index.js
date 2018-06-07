@@ -272,6 +272,6 @@ export default class NationsService {
     if (nation.tx == null) {
       return true;
     }
-    return nation.tx.status === TX_JOB_STATUS.SUCCESS;
+    return nation.tx.status !== TX_JOB_STATUS.PENDING;
   };
 }
