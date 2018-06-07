@@ -8,18 +8,23 @@ import { convertDraftToDatabase, convertNationToBlockchain } from '../../utils/n
 import { NationAlreadySubmitted, StateMutateNotPossible } from '../../global/errors/nations';
 import { DatabaseWriteFailed } from '../../global/errors/common';
 import { jobFactory } from '../txProcessor';
-import { TX_JOB_STATUS, TX_JOB_TYPE } from '../../global/Constants';
+import {
+  NATION_DEV_CONTRACT_CREATION_BLOCK, NATION_PROD_CONTRACT_CREATION_BLOCK, TX_JOB_STATUS,
+  TX_JOB_TYPE,
+} from '../../global/Constants';
 
 export default class NationsService {
   constructor(ethereumService: EthereumService, dbPromise: Promise<Realm>, accountId: string) {
     this.ethereumService = ethereumService;
     this.dbPromise = dbPromise;
     this.currentAccountId = accountId;
+    this.logsProcessingPromise = Promise.resolve();
   }
 
   ethereumService: EthereumService;
   dbPromise: Promise<Realm>;
   currentAccountId: string;
+  logsProcessingPromise: Promise<void>;
 
   // Drafts operations
 
@@ -154,15 +159,18 @@ export default class NationsService {
     }
   }
 
-  async registerNationIndexing(sinceBlock: number) {
+  async registerNationIndexing() {
+    const firstBlock = this.ethereumService.network === 'dev' ? NATION_DEV_CONTRACT_CREATION_BLOCK : NATION_PROD_CONTRACT_CREATION_BLOCK
+
     return new Promise(async (resolve, reject) => {
       const self = this;
       let expectedNationsNumber = (await this.ethereumService.nations.numNations()).toNumber();
+
       this.ethereumService.nations.onnationcreated = function processLog() {
         // BE CAREFUL! Since strange API of ether.js log passed here as a 'this'.
         const log = this;
 
-        self.performNationUpdate(log.args.nationId.toNumber(), log.txHash)
+        self.performNationUpdate(log.args.nationId.toNumber(), log.transactionHash)
           .then(() => {
             expectedNationsNumber -= 1;
             if (expectedNationsNumber === 0) {
@@ -175,7 +183,11 @@ export default class NationsService {
           });
       };
 
-      this.ethereumService.nations.provider.resetEventsBlock(sinceBlock);
+      if (expectedNationsNumber === 0) {
+        resolve();
+      }
+
+      this.ethereumService.nations.provider.resetEventsBlock(firstBlock);
     });
   }
 

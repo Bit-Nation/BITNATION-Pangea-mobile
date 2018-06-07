@@ -2,7 +2,7 @@ import reducer, {
   initialState,
   mergeMessages,
 } from '../../../src/reducers/activity';
-import { messagesAdded } from '../../../src/actions/activity';
+import { messagesUpdated } from '../../../src/actions/activity';
 
 const message0 = {
   id: 0,
@@ -46,9 +46,9 @@ describe('activity reducer action handling', () => {
     expect(reducer(initialState, {})).toEqual(initialState);
   });
 
-  test('messagesAdded after initial state', () => {
+  test('messagesUpdated after initial state', () => {
     const stateBefore = initialState;
-    const stateAfter = reducer(stateBefore, messagesAdded(message0));
+    const stateAfter = reducer(stateBefore, messagesUpdated(message0));
     expect(stateAfter).toEqual({
       ...stateBefore,
       messages: [message0],

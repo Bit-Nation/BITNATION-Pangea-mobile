@@ -3,12 +3,15 @@
 import ethers from 'ethers';
 import ERC20ABI from './ERC20ABI.json';
 import NationsABI from './NationABI.json';
+import type { NetworkType } from '../../types/Account';
 
 export default class EthereumService {
   wallet: Object;
   nations: Object;
-  constructor(wallet: Object, network: string) {
+  network: NetworkType;
+  constructor(wallet: Object, network: NetworkType) {
     this.wallet = wallet;
+    this.network = network;
     const abi = NationsABI;
     this.nations = new ethers.Contract(network === 'dev' ? '0x559f57f7dbe737319f8d28f8a94f1dcee9f468ad' : '0xa014847cff475826804f2e0a178096b10eeed7a7', abi, this.wallet);
   }
@@ -96,7 +99,7 @@ export default class EthereumService {
   }
 
   /**
-   * @desc Function to get the balance of the given wallet
+   * @desc Function to track a transaction.
    *
    * @param {string} transactionHash The hash of the transaction that you want to track
    *
@@ -104,5 +107,16 @@ export default class EthereumService {
    */
   trackTransaction(transactionHash: string): Promise<void> {
     return this.wallet.provider.waitForTransaction(transactionHash);
+  }
+
+  /**
+   * @desc Function to get receipt of a transaction.
+   *
+   * @param {string} transactionHash The hash of the transaction that you want to get receipt of.
+   *
+   * @return {Promise} Promise that resolves with receipt object.
+   */
+  getTransactionReceipt(transactionHash: string): Promise<Object> {
+    return this.wallet.provider.getTransactionReceipt(transactionHash);
   }
 }
