@@ -2,11 +2,15 @@
 
 import ethers from 'ethers';
 import ERC20ABI from './ERC20ABI.json';
+import NationsABI from './NationABI.json';
 
 export default class EthereumService {
   wallet: Object;
-  constructor(wallet: Object) {
+  nations: Object;
+  constructor(wallet: Object, network: string) {
     this.wallet = wallet;
+    const abi = NationsABI;
+    this.nations = new ethers.Contract(network === 'dev' ? '0x559f57f7dbe737319f8d28f8a94f1dcee9f468ad' : '0xa014847cff475826804f2e0a178096b10eeed7a7', abi, this.wallet);
   }
   /**
    * @desc Function to get the balance of the given wallet

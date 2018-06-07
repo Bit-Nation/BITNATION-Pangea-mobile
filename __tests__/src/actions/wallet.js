@@ -69,9 +69,10 @@ describe('wallet action creators', () => {
     });
   });
   test('walletSyncFailed', () => {
-    expect(walletSyncFailed(mockAddress, mockError)).toEqual({
+    expect(walletSyncFailed(mockAddress, 'XPAT', mockError)).toEqual({
       type: WALLET_SYNC_FAILED,
       walletAddress: mockAddress,
+      walletCurrency: 'XPAT',
       error: mockError,
     });
   });
