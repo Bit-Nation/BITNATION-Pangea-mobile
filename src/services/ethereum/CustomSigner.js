@@ -1,7 +1,8 @@
 // @flow
 import ethers from 'ethers';
-
 import { Navigation } from 'react-native-navigation';
+
+import WebSocketProvider from './WebSocketProvider';
 import { screen } from '../../global/Screens';
 
 /**
@@ -15,7 +16,7 @@ import { screen } from '../../global/Screens';
  */
 export default function CustomSigner(privateKey: string, provider: string) {
   const wallet = new ethers.Wallet(privateKey);
-  this.provider = new ethers.providers.InfuraProvider(provider);
+  this.provider = new WebSocketProvider(provider);
   this.address = wallet.address;
   this.getBalance = wallet.getBalance;
   this.estimateGas = wallet.estimateGas;
