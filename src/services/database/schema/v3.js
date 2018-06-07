@@ -17,11 +17,6 @@ export const AccountSchema = {
       type: 'list',
       objectType: 'DHTValue',
     },
-    txns: {
-      type: 'linkingObjects',
-      objectType: 'TransactionJob',
-      property: 'account',
-    },
   },
 };
 
@@ -169,13 +164,14 @@ export const MessageJobSchema = {
  * @property {string} txHash
  * @property {number} status
  * @property {string} type Can be something like NATION_JOIN, NATION_LEAVE, NATION_CREATE etc. Used to know what this transaction is about.
+ * @property {string} accountId Id of account that tx is related to
  */
 export type TransactionJobType = {
   txHash: string,
   status: number,
   type: string,
   nation: NationType | null,
-  account: AccountType | null,
+  accountId: string,
 }
 
 export const TransactionJobSchema = {
@@ -190,7 +186,7 @@ export const TransactionJobSchema = {
       objectType: 'Nation',
       property: 'tx',
     },
-    account: 'Account',
+    accountId: 'string',
   },
 };
 
