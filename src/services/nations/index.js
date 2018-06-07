@@ -160,6 +160,9 @@ export default class NationsService {
     return new Promise(async (resolve, reject) => {
       const self = this;
       let expectedNationsNumber = (await this.ethereumService.nations.numNations()).toNumber();
+      if (expectedNationsNumber === 0) {
+        resolve();
+      }
       this.ethereumService.nations.onnationcreated = async function processLog() {
         // BE CAREFUL! Since strange API of ether.js log passed here as a 'this'.
         const log = this;
