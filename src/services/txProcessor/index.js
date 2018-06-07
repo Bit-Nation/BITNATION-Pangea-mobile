@@ -1,10 +1,7 @@
 // @flow
-import Realm from 'realm';
-
 import { TX_JOB_STATUS, TX_JOB_TYPE } from '../../global/Constants';
 import { InvalidTxHash, InvalidTxType } from '../../global/errors/txQueue';
 import type { TransactionJobType } from '../database/schemata';
-import EthereumService from '../ethereum';
 
 /**
  * @desc Factory to create a transaction job object.
@@ -28,31 +25,9 @@ export async function jobFactory(txHash: string, type: string, accountId: string
     txHash,
     status: TX_JOB_STATUS.PENDING,
     type,
-    nation: null,
+    nation: [],
     accountId,
   };
 
   return job;
-}
-
-export default class TxProcessor {
-  constructor(ethereumService: EthereumService, dbPromise: Promise<Realm>) {
-    this.ethereumService = ethereumService;
-    this.dbPromise = dbPromise;
-  }
-
-  ethereumService: EthereumService;
-  dbPromise: Promise<Realm>;
-
-  async processTransaction(tx: TransactionJobType, changeType: 'initial' | 'added' | 'modified') {
-    if (tx.status !== TX_JOB_STATUS.PENDING) {
-      return;
-    }
-
-    const result = await this.ethereumService.nations.provider.getTransactionReceipt(tx.txHash);
-  }
-
-  cleanUp() {
-
-  }
 }

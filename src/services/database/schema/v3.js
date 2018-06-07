@@ -170,7 +170,8 @@ export type TransactionJobType = {
   txHash: string,
   status: number,
   type: string,
-  nation: NationType | null,
+  // It's an array since reversed relations are always arrays in Realm.
+  nation: Array<NationType>,
   accountId: string,
 }
 
