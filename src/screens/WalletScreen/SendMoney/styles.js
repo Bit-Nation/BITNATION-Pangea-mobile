@@ -24,11 +24,12 @@ const styles = MediaQueryStyleSheet.create({
     marginTop: 10,
   },
   textInputContainer: {
-    borderColor: GlobalStyles.textInput.borderColor,
-    borderBottomWidth: GlobalStyles.textInput.borderBottomWidth,
+    backgroundColor: Colors.white,
+    borderRadius: 5,
     flexDirection: 'row',
-    alignItems: 'flex-end',
+    alignItems: 'center',
     justifyContent: 'flex-end',
+    paddingLeft: 25,
   },
   textInputInContainer: {
     ...GlobalStyles.textInput,
@@ -36,10 +37,13 @@ const styles = MediaQueryStyleSheet.create({
     marginTop: 0,
     borderBottomWidth: 0,
   },
+  currencyNumber: { fontWeight: 'normal', color: Colors.BitnationDarkGrayColor },
   currencyPlaceholder: {
     ...GlobalStyles.currencyLarge,
     color: Colors.placeholderTextColor,
-    marginBottom: 6,
+    marginTop: 6,
+    fontSize: 15,
+    marginRight: 12,
   },
   amountLabelText: {
     ...GlobalStyles.footnote,

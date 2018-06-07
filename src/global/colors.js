@@ -10,11 +10,11 @@ const BitnationLightColor = '#C0C0C0'; /* rgb(114, 164, 222) */
 const BitnationVeryLightColor = '#FFFFFF'; /* rgb(188, 220, 255) */
 const BitnationBackgroundColor = '#3e9eff'; /* rgb(62, 158, 255) */
 
-// const BitnationLightGrayColor = '#BBBDBF';
-// const BitnationGrayColor = '#929497';
+const BitnationLightGrayColor = '#BBBDBF';
+const BitnationGrayColor = '#929497';
 const BitnationDarkGrayColor = '#58595B';
 const BitnationLinkOrangeColor = '#FF8B00';
-// const BitnationHighlightYellowColor = '#FFCE00';
+const BitnationHighlightYellowColor = '#FFCE00';
 const BitnationWhiteAlphaColor = 'rgba(255,255,255,0.45)';
 
 // Highlight Color
@@ -72,12 +72,17 @@ export default {
   BitnationBackgroundColor,
   BitnationHighlightColor,
   BitnationDarkGrayColor,
+  BitnationLightGrayColor,
+  BitnationHighlightYellowColor,
+  BitnationGrayColor,
+  BitnationLinkOrangeColor,
+
   // Colors for common Text Styles
   // e.g. large titles on screens
   titleColor: BitnationHighlightColor,
   panelViewTitleColor: 'white',
   currency: '#FFDD15',
-  placeholderTextColor: shadeOf(BitnationVeryLightColor, 0.4),
+  placeholderTextColor: BitnationGrayColor,
 
   // Tab Bar (Navigation Bar for the app)
   tabBarBackgroundColor: BitnationDarkGrayColor,
