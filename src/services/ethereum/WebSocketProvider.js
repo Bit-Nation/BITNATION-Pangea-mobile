@@ -31,7 +31,6 @@ function WebSocketProvider(network) {
         }
     }
 
-    // @todo this needs to go I guess
     JsonRpcProvider.call(this, url, network);
 
     const webSocket = () => new Promise((res, rej) => {
@@ -65,13 +64,7 @@ function WebSocketProvider(network) {
 }
 JsonRpcProvider.inherits(WebSocketProvider);
 
-// @TODO: Create a connection to the IPC path and use filters instead of polling for block
-
 defineProperty(WebSocketProvider.prototype, 'send', function(method, params) {
-    // This method is very simple right now. We create a new socket
-    // connection each time, which may be slower, but the main
-    // advantage we are aiming for now is security. This simplifies
-    // multiplexing requests (since we do not need to multiplex).
 
     const id = uuid();
 
