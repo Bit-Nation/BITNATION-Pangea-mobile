@@ -43,7 +43,7 @@ ShallowWrapper {
           numberOfLines={1}
           style={
             Object {
-              "color": "white",
+              "color": "#58595B",
               "flex": 1,
               "fontFamily": "Roboto",
               "fontSize": 17,
@@ -120,7 +120,7 @@ ShallowWrapper {
             numberOfLines={1}
             style={
               Object {
-                "color": "white",
+                "color": "#58595B",
                 "flex": 1,
                 "fontFamily": "Roboto",
                 "fontSize": 17,
@@ -194,7 +194,7 @@ ShallowWrapper {
             "ellipsizeMode": "tail",
             "numberOfLines": 1,
             "style": Object {
-              "color": "white",
+              "color": "#58595B",
               "flex": 1,
               "fontFamily": "Roboto",
               "fontSize": 17,
@@ -294,7 +294,7 @@ ShallowWrapper {
             numberOfLines={1}
             style={
               Object {
-                "color": "white",
+                "color": "#58595B",
                 "flex": 1,
                 "fontFamily": "Roboto",
                 "fontSize": 17,
@@ -371,7 +371,7 @@ ShallowWrapper {
               numberOfLines={1}
               style={
                 Object {
-                  "color": "white",
+                  "color": "#58595B",
                   "flex": 1,
                   "fontFamily": "Roboto",
                   "fontSize": 17,
@@ -445,7 +445,7 @@ ShallowWrapper {
               "ellipsizeMode": "tail",
               "numberOfLines": 1,
               "style": Object {
-                "color": "white",
+                "color": "#58595B",
                 "flex": 1,
                 "fontFamily": "Roboto",
                 "fontSize": 17,
@@ -573,7 +573,7 @@ ShallowWrapper {
           numberOfLines={1}
           style={
             Object {
-              "color": "white",
+              "color": "#58595B",
               "flex": 1,
               "fontFamily": "Roboto",
               "fontSize": 17,
@@ -650,7 +650,7 @@ ShallowWrapper {
             numberOfLines={1}
             style={
               Object {
-                "color": "white",
+                "color": "#58595B",
                 "flex": 1,
                 "fontFamily": "Roboto",
                 "fontSize": 17,
@@ -724,7 +724,7 @@ ShallowWrapper {
             "ellipsizeMode": "tail",
             "numberOfLines": 1,
             "style": Object {
-              "color": "white",
+              "color": "#58595B",
               "flex": 1,
               "fontFamily": "Roboto",
               "fontSize": 17,
@@ -824,7 +824,7 @@ ShallowWrapper {
             numberOfLines={1}
             style={
               Object {
-                "color": "white",
+                "color": "#58595B",
                 "flex": 1,
                 "fontFamily": "Roboto",
                 "fontSize": 17,
@@ -901,7 +901,7 @@ ShallowWrapper {
               numberOfLines={1}
               style={
                 Object {
-                  "color": "white",
+                  "color": "#58595B",
                   "flex": 1,
                   "fontFamily": "Roboto",
                   "fontSize": 17,
@@ -975,7 +975,7 @@ ShallowWrapper {
               "ellipsizeMode": "tail",
               "numberOfLines": 1,
               "style": Object {
-                "color": "white",
+                "color": "#58595B",
                 "flex": 1,
                 "fontFamily": "Roboto",
                 "fontSize": 17,
@@ -1103,7 +1103,7 @@ ShallowWrapper {
           numberOfLines={1}
           style={
             Object {
-              "color": "white",
+              "color": "#58595B",
               "flex": 1,
               "fontFamily": "Roboto",
               "fontSize": 17,
@@ -1180,7 +1180,7 @@ ShallowWrapper {
             numberOfLines={1}
             style={
               Object {
-                "color": "white",
+                "color": "#58595B",
                 "flex": 1,
                 "fontFamily": "Roboto",
                 "fontSize": 17,
@@ -1254,7 +1254,7 @@ ShallowWrapper {
             "ellipsizeMode": "tail",
             "numberOfLines": 1,
             "style": Object {
-              "color": "white",
+              "color": "#58595B",
               "flex": 1,
               "fontFamily": "Roboto",
               "fontSize": 17,
@@ -1354,7 +1354,7 @@ ShallowWrapper {
             numberOfLines={1}
             style={
               Object {
-                "color": "white",
+                "color": "#58595B",
                 "flex": 1,
                 "fontFamily": "Roboto",
                 "fontSize": 17,
@@ -1431,7 +1431,7 @@ ShallowWrapper {
               numberOfLines={1}
               style={
                 Object {
-                  "color": "white",
+                  "color": "#58595B",
                   "flex": 1,
                   "fontFamily": "Roboto",
                   "fontSize": 17,
@@ -1505,7 +1505,7 @@ ShallowWrapper {
               "ellipsizeMode": "tail",
               "numberOfLines": 1,
               "style": Object {
-                "color": "white",
+                "color": "#58595B",
                 "flex": 1,
                 "fontFamily": "Roboto",
                 "fontSize": 17,
