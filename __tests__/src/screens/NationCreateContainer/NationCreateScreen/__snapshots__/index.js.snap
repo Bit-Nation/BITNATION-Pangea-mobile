@@ -54,11 +54,7 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <BackgroundImage
-          source={
-            Object {
-              "testUri": "../../../src/assets/images/background.jpg",
-            }
-          }
+          source={1}
           style={undefined}
         />,
         <FakeNavigationBar
@@ -116,7 +112,7 @@ ShallowWrapper {
                   ellipsizeMode="tail"
                   style={
                     Object {
-                      "color": "#FFFFFF",
+                      "color": "#58595B",
                       "fontFamily": "Roboto",
                       "fontSize": 17,
                       "fontWeight": "normal",
@@ -195,12 +191,12 @@ ShallowWrapper {
                       keyboardType="default"
                       onChangeText={[Function]}
                       placeholder="Nation name"
-                      placeholderTextColor="rgba(255,255,255,0.4)"
+                      placeholderTextColor="#929497"
                       style={
                         Object {
                           "borderBottomWidth": 1,
                           "borderColor": "rgba(192,192,192,0.4)",
-                          "color": "#FFFFFF",
+                          "color": "#58595B",
                           "flex": 1,
                           "fontFamily": "Roboto",
                           "fontSize": 16,
@@ -234,12 +230,12 @@ ShallowWrapper {
                       numberOfLines={4}
                       onChangeText={[Function]}
                       placeholder="Short description"
-                      placeholderTextColor="rgba(255,255,255,0.4)"
+                      placeholderTextColor="#929497"
                       style={
                         Object {
                           "borderBottomWidth": 1,
                           "borderColor": "rgba(192,192,192,0.4)",
-                          "color": "#FFFFFF",
+                          "color": "#58595B",
                           "flex": 1,
                           "fontFamily": "Roboto",
                           "fontSize": 16,
@@ -905,9 +901,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "function",
         "props": Object {
-          "source": Object {
-            "testUri": "../../../src/assets/images/background.jpg",
-          },
+          "source": 1,
           "style": undefined,
         },
         "ref": null,
@@ -970,7 +964,7 @@ ShallowWrapper {
                   ellipsizeMode="tail"
                   style={
                     Object {
-                      "color": "#FFFFFF",
+                      "color": "#58595B",
                       "fontFamily": "Roboto",
                       "fontSize": 17,
                       "fontWeight": "normal",
@@ -1049,12 +1043,12 @@ ShallowWrapper {
                       keyboardType="default"
                       onChangeText={[Function]}
                       placeholder="Nation name"
-                      placeholderTextColor="rgba(255,255,255,0.4)"
+                      placeholderTextColor="#929497"
                       style={
                         Object {
                           "borderBottomWidth": 1,
                           "borderColor": "rgba(192,192,192,0.4)",
-                          "color": "#FFFFFF",
+                          "color": "#58595B",
                           "flex": 1,
                           "fontFamily": "Roboto",
                           "fontSize": 16,
@@ -1088,12 +1082,12 @@ ShallowWrapper {
                       numberOfLines={4}
                       onChangeText={[Function]}
                       placeholder="Short description"
-                      placeholderTextColor="rgba(255,255,255,0.4)"
+                      placeholderTextColor="#929497"
                       style={
                         Object {
                           "borderBottomWidth": 1,
                           "borderColor": "rgba(192,192,192,0.4)",
-                          "color": "#FFFFFF",
+                          "color": "#58595B",
                           "flex": 1,
                           "fontFamily": "Roboto",
                           "fontSize": 16,
@@ -1749,7 +1743,7 @@ ShallowWrapper {
                     ellipsizeMode="tail"
                     style={
                       Object {
-                        "color": "#FFFFFF",
+                        "color": "#58595B",
                         "fontFamily": "Roboto",
                         "fontSize": 17,
                         "fontWeight": "normal",
@@ -1828,12 +1822,12 @@ ShallowWrapper {
                         keyboardType="default"
                         onChangeText={[Function]}
                         placeholder="Nation name"
-                        placeholderTextColor="rgba(255,255,255,0.4)"
+                        placeholderTextColor="#929497"
                         style={
                           Object {
                             "borderBottomWidth": 1,
                             "borderColor": "rgba(192,192,192,0.4)",
-                            "color": "#FFFFFF",
+                            "color": "#58595B",
                             "flex": 1,
                             "fontFamily": "Roboto",
                             "fontSize": 16,
@@ -1867,12 +1861,12 @@ ShallowWrapper {
                         numberOfLines={4}
                         onChangeText={[Function]}
                         placeholder="Short description"
-                        placeholderTextColor="rgba(255,255,255,0.4)"
+                        placeholderTextColor="#929497"
                         style={
                           Object {
                             "borderBottomWidth": 1,
                             "borderColor": "rgba(192,192,192,0.4)",
-                            "color": "#FFFFFF",
+                            "color": "#58595B",
                             "flex": 1,
                             "fontFamily": "Roboto",
                             "fontSize": 16,
@@ -2522,7 +2516,7 @@ ShallowWrapper {
                     ellipsizeMode="tail"
                     style={
                       Object {
-                        "color": "#FFFFFF",
+                        "color": "#58595B",
                         "fontFamily": "Roboto",
                         "fontSize": 17,
                         "fontWeight": "normal",
@@ -2555,7 +2549,7 @@ ShallowWrapper {
                     ellipsizeMode="tail"
                     style={
                       Object {
-                        "color": "#FFFFFF",
+                        "color": "#58595B",
                         "fontFamily": "Roboto",
                         "fontSize": 17,
                         "fontWeight": "normal",
@@ -2581,7 +2575,7 @@ ShallowWrapper {
                     "children": "Reclaim your sovereignty by creating your own decentralized borderless voluntary nation(DBVN).",
                     "ellipsizeMode": "tail",
                     "style": Object {
-                      "color": "#FFFFFF",
+                      "color": "#58595B",
                       "fontFamily": "Roboto",
                       "fontSize": 17,
                       "fontWeight": "normal",
@@ -2633,12 +2627,12 @@ ShallowWrapper {
                         keyboardType="default"
                         onChangeText={[Function]}
                         placeholder="Nation name"
-                        placeholderTextColor="rgba(255,255,255,0.4)"
+                        placeholderTextColor="#929497"
                         style={
                           Object {
                             "borderBottomWidth": 1,
                             "borderColor": "rgba(192,192,192,0.4)",
-                            "color": "#FFFFFF",
+                            "color": "#58595B",
                             "flex": 1,
                             "fontFamily": "Roboto",
                             "fontSize": 16,
@@ -2672,12 +2666,12 @@ ShallowWrapper {
                         numberOfLines={4}
                         onChangeText={[Function]}
                         placeholder="Short description"
-                        placeholderTextColor="rgba(255,255,255,0.4)"
+                        placeholderTextColor="#929497"
                         style={
                           Object {
                             "borderBottomWidth": 1,
                             "borderColor": "rgba(192,192,192,0.4)",
-                            "color": "#FFFFFF",
+                            "color": "#58595B",
                             "flex": 1,
                             "fontFamily": "Roboto",
                             "fontSize": 16,
@@ -2755,12 +2749,12 @@ ShallowWrapper {
                         keyboardType="default"
                         onChangeText={[Function]}
                         placeholder="Nation name"
-                        placeholderTextColor="rgba(255,255,255,0.4)"
+                        placeholderTextColor="#929497"
                         style={
                           Object {
                             "borderBottomWidth": 1,
                             "borderColor": "rgba(192,192,192,0.4)",
-                            "color": "#FFFFFF",
+                            "color": "#58595B",
                             "flex": 1,
                             "fontFamily": "Roboto",
                             "fontSize": 16,
@@ -2794,12 +2788,12 @@ ShallowWrapper {
                         numberOfLines={4}
                         onChangeText={[Function]}
                         placeholder="Short description"
-                        placeholderTextColor="rgba(255,255,255,0.4)"
+                        placeholderTextColor="#929497"
                         style={
                           Object {
                             "borderBottomWidth": 1,
                             "borderColor": "rgba(192,192,192,0.4)",
-                            "color": "#FFFFFF",
+                            "color": "#58595B",
                             "flex": 1,
                             "fontFamily": "Roboto",
                             "fontSize": 16,
@@ -2844,12 +2838,12 @@ ShallowWrapper {
                           keyboardType="default"
                           onChangeText={[Function]}
                           placeholder="Nation name"
-                          placeholderTextColor="rgba(255,255,255,0.4)"
+                          placeholderTextColor="#929497"
                           style={
                             Object {
                               "borderBottomWidth": 1,
                               "borderColor": "rgba(192,192,192,0.4)",
-                              "color": "#FFFFFF",
+                              "color": "#58595B",
                               "flex": 1,
                               "fontFamily": "Roboto",
                               "fontSize": 16,
@@ -2883,12 +2877,12 @@ ShallowWrapper {
                           numberOfLines={4}
                           onChangeText={[Function]}
                           placeholder="Short description"
-                          placeholderTextColor="rgba(255,255,255,0.4)"
+                          placeholderTextColor="#929497"
                           style={
                             Object {
                               "borderBottomWidth": 1,
                               "borderColor": "rgba(192,192,192,0.4)",
-                              "color": "#FFFFFF",
+                              "color": "#58595B",
                               "flex": 1,
                               "fontFamily": "Roboto",
                               "fontSize": 16,
@@ -2925,12 +2919,12 @@ ShallowWrapper {
                           keyboardType="default"
                           onChangeText={[Function]}
                           placeholder="Nation name"
-                          placeholderTextColor="rgba(255,255,255,0.4)"
+                          placeholderTextColor="#929497"
                           style={
                             Object {
                               "borderBottomWidth": 1,
                               "borderColor": "rgba(192,192,192,0.4)",
-                              "color": "#FFFFFF",
+                              "color": "#58595B",
                               "flex": 1,
                               "fontFamily": "Roboto",
                               "fontSize": 16,
@@ -2963,11 +2957,11 @@ ShallowWrapper {
                           "keyboardType": "default",
                           "onChangeText": [Function],
                           "placeholder": "Nation name",
-                          "placeholderTextColor": "rgba(255,255,255,0.4)",
+                          "placeholderTextColor": "#929497",
                           "style": Object {
                             "borderBottomWidth": 1,
                             "borderColor": "rgba(192,192,192,0.4)",
-                            "color": "#FFFFFF",
+                            "color": "#58595B",
                             "flex": 1,
                             "fontFamily": "Roboto",
                             "fontSize": 16,
@@ -3002,12 +2996,12 @@ ShallowWrapper {
                           numberOfLines={4}
                           onChangeText={[Function]}
                           placeholder="Short description"
-                          placeholderTextColor="rgba(255,255,255,0.4)"
+                          placeholderTextColor="#929497"
                           style={
                             Object {
                               "borderBottomWidth": 1,
                               "borderColor": "rgba(192,192,192,0.4)",
-                              "color": "#FFFFFF",
+                              "color": "#58595B",
                               "flex": 1,
                               "fontFamily": "Roboto",
                               "fontSize": 16,
@@ -3042,11 +3036,11 @@ ShallowWrapper {
                           "numberOfLines": 4,
                           "onChangeText": [Function],
                           "placeholder": "Short description",
-                          "placeholderTextColor": "rgba(255,255,255,0.4)",
+                          "placeholderTextColor": "#929497",
                           "style": Object {
                             "borderBottomWidth": 1,
                             "borderColor": "rgba(192,192,192,0.4)",
-                            "color": "#FFFFFF",
+                            "color": "#58595B",
                             "flex": 1,
                             "fontFamily": "Roboto",
                             "fontSize": 16,
@@ -5099,11 +5093,7 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <BackgroundImage
-            source={
-              Object {
-                "testUri": "../../../src/assets/images/background.jpg",
-              }
-            }
+            source={1}
             style={undefined}
           />,
           <FakeNavigationBar
@@ -5161,7 +5151,7 @@ ShallowWrapper {
                     ellipsizeMode="tail"
                     style={
                       Object {
-                        "color": "#FFFFFF",
+                        "color": "#58595B",
                         "fontFamily": "Roboto",
                         "fontSize": 17,
                         "fontWeight": "normal",
@@ -5240,12 +5230,12 @@ ShallowWrapper {
                         keyboardType="default"
                         onChangeText={[Function]}
                         placeholder="Nation name"
-                        placeholderTextColor="rgba(255,255,255,0.4)"
+                        placeholderTextColor="#929497"
                         style={
                           Object {
                             "borderBottomWidth": 1,
                             "borderColor": "rgba(192,192,192,0.4)",
-                            "color": "#FFFFFF",
+                            "color": "#58595B",
                             "flex": 1,
                             "fontFamily": "Roboto",
                             "fontSize": 16,
@@ -5279,12 +5269,12 @@ ShallowWrapper {
                         numberOfLines={4}
                         onChangeText={[Function]}
                         placeholder="Short description"
-                        placeholderTextColor="rgba(255,255,255,0.4)"
+                        placeholderTextColor="#929497"
                         style={
                           Object {
                             "borderBottomWidth": 1,
                             "borderColor": "rgba(192,192,192,0.4)",
-                            "color": "#FFFFFF",
+                            "color": "#58595B",
                             "flex": 1,
                             "fontFamily": "Roboto",
                             "fontSize": 16,
@@ -5950,9 +5940,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
-            "source": Object {
-              "testUri": "../../../src/assets/images/background.jpg",
-            },
+            "source": 1,
             "style": undefined,
           },
           "ref": null,
@@ -6015,7 +6003,7 @@ ShallowWrapper {
                     ellipsizeMode="tail"
                     style={
                       Object {
-                        "color": "#FFFFFF",
+                        "color": "#58595B",
                         "fontFamily": "Roboto",
                         "fontSize": 17,
                         "fontWeight": "normal",
@@ -6094,12 +6082,12 @@ ShallowWrapper {
                         keyboardType="default"
                         onChangeText={[Function]}
                         placeholder="Nation name"
-                        placeholderTextColor="rgba(255,255,255,0.4)"
+                        placeholderTextColor="#929497"
                         style={
                           Object {
                             "borderBottomWidth": 1,
                             "borderColor": "rgba(192,192,192,0.4)",
-                            "color": "#FFFFFF",
+                            "color": "#58595B",
                             "flex": 1,
                             "fontFamily": "Roboto",
                             "fontSize": 16,
@@ -6133,12 +6121,12 @@ ShallowWrapper {
                         numberOfLines={4}
                         onChangeText={[Function]}
                         placeholder="Short description"
-                        placeholderTextColor="rgba(255,255,255,0.4)"
+                        placeholderTextColor="#929497"
                         style={
                           Object {
                             "borderBottomWidth": 1,
                             "borderColor": "rgba(192,192,192,0.4)",
-                            "color": "#FFFFFF",
+                            "color": "#58595B",
                             "flex": 1,
                             "fontFamily": "Roboto",
                             "fontSize": 16,
@@ -6794,7 +6782,7 @@ ShallowWrapper {
                       ellipsizeMode="tail"
                       style={
                         Object {
-                          "color": "#FFFFFF",
+                          "color": "#58595B",
                           "fontFamily": "Roboto",
                           "fontSize": 17,
                           "fontWeight": "normal",
@@ -6873,12 +6861,12 @@ ShallowWrapper {
                           keyboardType="default"
                           onChangeText={[Function]}
                           placeholder="Nation name"
-                          placeholderTextColor="rgba(255,255,255,0.4)"
+                          placeholderTextColor="#929497"
                           style={
                             Object {
                               "borderBottomWidth": 1,
                               "borderColor": "rgba(192,192,192,0.4)",
-                              "color": "#FFFFFF",
+                              "color": "#58595B",
                               "flex": 1,
                               "fontFamily": "Roboto",
                               "fontSize": 16,
@@ -6912,12 +6900,12 @@ ShallowWrapper {
                           numberOfLines={4}
                           onChangeText={[Function]}
                           placeholder="Short description"
-                          placeholderTextColor="rgba(255,255,255,0.4)"
+                          placeholderTextColor="#929497"
                           style={
                             Object {
                               "borderBottomWidth": 1,
                               "borderColor": "rgba(192,192,192,0.4)",
-                              "color": "#FFFFFF",
+                              "color": "#58595B",
                               "flex": 1,
                               "fontFamily": "Roboto",
                               "fontSize": 16,
@@ -7567,7 +7555,7 @@ ShallowWrapper {
                       ellipsizeMode="tail"
                       style={
                         Object {
-                          "color": "#FFFFFF",
+                          "color": "#58595B",
                           "fontFamily": "Roboto",
                           "fontSize": 17,
                           "fontWeight": "normal",
@@ -7600,7 +7588,7 @@ ShallowWrapper {
                       ellipsizeMode="tail"
                       style={
                         Object {
-                          "color": "#FFFFFF",
+                          "color": "#58595B",
                           "fontFamily": "Roboto",
                           "fontSize": 17,
                           "fontWeight": "normal",
@@ -7626,7 +7614,7 @@ ShallowWrapper {
                       "children": "Reclaim your sovereignty by creating your own decentralized borderless voluntary nation(DBVN).",
                       "ellipsizeMode": "tail",
                       "style": Object {
-                        "color": "#FFFFFF",
+                        "color": "#58595B",
                         "fontFamily": "Roboto",
                         "fontSize": 17,
                         "fontWeight": "normal",
@@ -7678,12 +7666,12 @@ ShallowWrapper {
                           keyboardType="default"
                           onChangeText={[Function]}
                           placeholder="Nation name"
-                          placeholderTextColor="rgba(255,255,255,0.4)"
+                          placeholderTextColor="#929497"
                           style={
                             Object {
                               "borderBottomWidth": 1,
                               "borderColor": "rgba(192,192,192,0.4)",
-                              "color": "#FFFFFF",
+                              "color": "#58595B",
                               "flex": 1,
                               "fontFamily": "Roboto",
                               "fontSize": 16,
@@ -7717,12 +7705,12 @@ ShallowWrapper {
                           numberOfLines={4}
                           onChangeText={[Function]}
                           placeholder="Short description"
-                          placeholderTextColor="rgba(255,255,255,0.4)"
+                          placeholderTextColor="#929497"
                           style={
                             Object {
                               "borderBottomWidth": 1,
                               "borderColor": "rgba(192,192,192,0.4)",
-                              "color": "#FFFFFF",
+                              "color": "#58595B",
                               "flex": 1,
                               "fontFamily": "Roboto",
                               "fontSize": 16,
@@ -7800,12 +7788,12 @@ ShallowWrapper {
                           keyboardType="default"
                           onChangeText={[Function]}
                           placeholder="Nation name"
-                          placeholderTextColor="rgba(255,255,255,0.4)"
+                          placeholderTextColor="#929497"
                           style={
                             Object {
                               "borderBottomWidth": 1,
                               "borderColor": "rgba(192,192,192,0.4)",
-                              "color": "#FFFFFF",
+                              "color": "#58595B",
                               "flex": 1,
                               "fontFamily": "Roboto",
                               "fontSize": 16,
@@ -7839,12 +7827,12 @@ ShallowWrapper {
                           numberOfLines={4}
                           onChangeText={[Function]}
                           placeholder="Short description"
-                          placeholderTextColor="rgba(255,255,255,0.4)"
+                          placeholderTextColor="#929497"
                           style={
                             Object {
                               "borderBottomWidth": 1,
                               "borderColor": "rgba(192,192,192,0.4)",
-                              "color": "#FFFFFF",
+                              "color": "#58595B",
                               "flex": 1,
                               "fontFamily": "Roboto",
                               "fontSize": 16,
@@ -7889,12 +7877,12 @@ ShallowWrapper {
                             keyboardType="default"
                             onChangeText={[Function]}
                             placeholder="Nation name"
-                            placeholderTextColor="rgba(255,255,255,0.4)"
+                            placeholderTextColor="#929497"
                             style={
                               Object {
                                 "borderBottomWidth": 1,
                                 "borderColor": "rgba(192,192,192,0.4)",
-                                "color": "#FFFFFF",
+                                "color": "#58595B",
                                 "flex": 1,
                                 "fontFamily": "Roboto",
                                 "fontSize": 16,
@@ -7928,12 +7916,12 @@ ShallowWrapper {
                             numberOfLines={4}
                             onChangeText={[Function]}
                             placeholder="Short description"
-                            placeholderTextColor="rgba(255,255,255,0.4)"
+                            placeholderTextColor="#929497"
                             style={
                               Object {
                                 "borderBottomWidth": 1,
                                 "borderColor": "rgba(192,192,192,0.4)",
-                                "color": "#FFFFFF",
+                                "color": "#58595B",
                                 "flex": 1,
                                 "fontFamily": "Roboto",
                                 "fontSize": 16,
@@ -7970,12 +7958,12 @@ ShallowWrapper {
                             keyboardType="default"
                             onChangeText={[Function]}
                             placeholder="Nation name"
-                            placeholderTextColor="rgba(255,255,255,0.4)"
+                            placeholderTextColor="#929497"
                             style={
                               Object {
                                 "borderBottomWidth": 1,
                                 "borderColor": "rgba(192,192,192,0.4)",
-                                "color": "#FFFFFF",
+                                "color": "#58595B",
                                 "flex": 1,
                                 "fontFamily": "Roboto",
                                 "fontSize": 16,
@@ -8008,11 +7996,11 @@ ShallowWrapper {
                             "keyboardType": "default",
                             "onChangeText": [Function],
                             "placeholder": "Nation name",
-                            "placeholderTextColor": "rgba(255,255,255,0.4)",
+                            "placeholderTextColor": "#929497",
                             "style": Object {
                               "borderBottomWidth": 1,
                               "borderColor": "rgba(192,192,192,0.4)",
-                              "color": "#FFFFFF",
+                              "color": "#58595B",
                               "flex": 1,
                               "fontFamily": "Roboto",
                               "fontSize": 16,
@@ -8047,12 +8035,12 @@ ShallowWrapper {
                             numberOfLines={4}
                             onChangeText={[Function]}
                             placeholder="Short description"
-                            placeholderTextColor="rgba(255,255,255,0.4)"
+                            placeholderTextColor="#929497"
                             style={
                               Object {
                                 "borderBottomWidth": 1,
                                 "borderColor": "rgba(192,192,192,0.4)",
-                                "color": "#FFFFFF",
+                                "color": "#58595B",
                                 "flex": 1,
                                 "fontFamily": "Roboto",
                                 "fontSize": 16,
@@ -8087,11 +8075,11 @@ ShallowWrapper {
                             "numberOfLines": 4,
                             "onChangeText": [Function],
                             "placeholder": "Short description",
-                            "placeholderTextColor": "rgba(255,255,255,0.4)",
+                            "placeholderTextColor": "#929497",
                             "style": Object {
                               "borderBottomWidth": 1,
                               "borderColor": "rgba(192,192,192,0.4)",
-                              "color": "#FFFFFF",
+                              "color": "#58595B",
                               "flex": 1,
                               "fontFamily": "Roboto",
                               "fontSize": 16,
