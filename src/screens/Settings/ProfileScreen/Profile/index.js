@@ -100,7 +100,7 @@ class ProfileScreen extends NavigatorComponent<Props> {
 
     const avatarSource = account.avatar ?
       { uri: `data:image/gif;base64,${account.avatar}` } :
-      AssetsImage.Placeholder.avatar;
+      AssetsImage.avatarIcon;
 
     return (
       <View style={styles.header}>

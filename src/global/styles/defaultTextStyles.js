@@ -168,7 +168,7 @@ const defaultTextStyles = {
     fontSize: 17,
     lineHeight: 22,
     letterSpacing: 0,
-    color: Colors.BitnationVeryLightColor,
+    color: Colors.BitnationDarkGrayColor,
   },
 
   body: {
@@ -177,7 +177,7 @@ const defaultTextStyles = {
     fontSize: 17,
     lineHeight: 22,
     letterSpacing: 0,
-    color: Colors.BitnationVeryLightColor,
+    color: Colors.BitnationDarkGrayColor,
   },
 
   bodyBold: {
@@ -186,7 +186,7 @@ const defaultTextStyles = {
     fontSize: 17,
     lineHeight: 22,
     letterSpacing: 0,
-    color: Colors.BitnationVeryLightColor,
+    color: Colors.BitnationGrayColor,
   },
 
   bodyBlack: {

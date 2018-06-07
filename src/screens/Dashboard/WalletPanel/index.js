@@ -41,7 +41,7 @@ const WalletPanel = ({ style, wallets } : Props) => ((
           :
             <View>
               <Text style={styles.footnote}>{i18n.t('common.bitnationPat')}</Text>
-              <Text style={styles.currencyLarge}>{prettyWalletBalance(wallets[1])}</Text>
+              <Text style={[styles.largeTitle, styles.textWallet]}>{prettyWalletBalance(wallets[1])}</Text>
             </View>
       }
     </PanelView>

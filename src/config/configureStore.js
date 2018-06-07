@@ -7,6 +7,8 @@ import createSagaMonitor from 'saga-monitor';
 import reducers from '../reducers';
 import rootSaga from '../sagas';
 
+GLOBAL.XMLHttpRequest = GLOBAL.originalXMLHttpRequest || GLOBAL.XMLHttpRequest;
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 /**
  * @desc Configures a Redux store.
  * @return {Store} Created store object.
@@ -18,7 +20,7 @@ export default function configureStore(): Store {
   });
   const sagaMiddleware = createSagaMiddleware({ sagaMonitor });
 
-  const enhancer = compose(
+  const enhancer = composeEnhancers(
     applyMiddleware(sagaMiddleware),
     applyMiddleware(logger),
   );

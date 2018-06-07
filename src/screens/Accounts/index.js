@@ -2,15 +2,13 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { View } from 'react-native';
-
+import { View, Text, Image } from 'react-native';
+import Images from '../../global/AssetsImages';
 import i18n from '../../global/i18n';
 import { screen } from '../../global/Screens';
 import BackgroundImage from '../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../components/common/FakeNavigationBar';
 import NavigatorComponent from '../../components/common/NavigatorComponent';
-import PanelView from '../../components/common/PanelView';
-import ScreenTitle from '../../components/common/ScreenTitle';
 import Button from '../../components/common/Button';
 import type { Navigator } from '../../types/ReactNativeNavigation';
 import styles from './styles';
@@ -71,23 +69,31 @@ class Accounts extends NavigatorComponent<Props & Actions & AccountsState> {
         <BackgroundImage />
         <FakeNavigationBar />
         <View style={styles.bodyAccountContainer}>
-          <ScreenTitle title={i18n.t('screens.accounts.title')} />
-          <PanelView body={i18n.t('screens.accounts.introduction')} />
-          <View style={{}}>
-            <Button
-              id='createButton'
-              style={styles.panelButton}
-              title={i18n.t('screens.accounts.newAccount')}
-              onPress={() => Accounts.onCreateAccount(this.props.navigator, this.props.startAccountCreation)}
-            />
-            <Button
-              id='restoreButton'
-              style={styles.panelButton}
-              title={i18n.t('screens.accounts.restoreAccount')}
-              onPress={() => Accounts.onRestoreAccount(this.props.navigator, this.props.startRestoreAccountUsingMnemonic)}
-            />
-          </View>
+          <Image
+            source={Images.avatarIcon}
+            resizeMode='cover'
+          />
+          <Text style={[styles.title1, styles.accountTitle]}>{i18n.t('screens.accounts.title')}
+          </Text>
+          <Text style={[styles.subhead, styles.accountIntroText]}>{i18n.t('screens.accounts.introduction')}</Text>
+
+
+          <Button
+            id='restoreButton'
+            style={styles.restoreButton}
+            styleTitle={styles.restoreButtonText}
+            title={i18n.t('screens.accounts.restoreAccount')}
+            onPress={() => Accounts.onRestoreAccount(this.props.navigator, this.props.startRestoreAccountUsingMnemonic)}
+          />
+
         </View>
+        <Button
+          id='createButton'
+          styleTitle={styles.newAccountText}
+          style={styles.createButton}
+          title={i18n.t('screens.accounts.newAccount')}
+          onPress={() => Accounts.onCreateAccount(this.props.navigator, this.props.startAccountCreation)}
+        />
       </View>
     );
   }
