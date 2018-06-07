@@ -8,6 +8,7 @@ import {
   walletsListUpdated,
   walletSyncFailed,
 } from '../../../src/actions/wallet';
+import { servicesDestroyed } from '../../../src/actions/serviceContainer';
 
 const mockWallet = {
   ethAddress: '0xtestAddress',
@@ -26,6 +27,10 @@ describe('wallet reducer action handling', () => {
   });
 
   const stateWithWallets = reducer(initialState, walletsListUpdated([mockWallet]));
+
+  test('after service destroy returns initial state', () => {
+    expect(reducer(stateWithWallets, servicesDestroyed())).toEqual(initialState);
+  });
 
   test('selectWallet', () => {
     const stateBefore = initialState;

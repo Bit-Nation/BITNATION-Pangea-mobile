@@ -1,10 +1,8 @@
 // @flow
 
-import _ from 'lodash';
-
 import { type Action, MESSAGES_UPDATED } from '../actions/activity';
 import type { ActivityLogMessage } from '../types/ActivityLogMessage';
-import { ACTIVITY_MESSAGES_LIMIT } from '../global/Constants';
+import { SERVICES_DESTROYED } from '../actions/serviceContainer';
 
 export type State = {
   +messages: Array<ActivityLogMessage>
@@ -22,6 +20,8 @@ export const initialState: State = {
  */
 export default (state: State = initialState, action: Action): State => {
   switch (action.type) {
+    case SERVICES_DESTROYED:
+      return initialState;
     case MESSAGES_UPDATED:
       return {
         ...state,

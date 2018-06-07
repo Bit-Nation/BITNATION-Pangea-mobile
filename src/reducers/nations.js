@@ -15,6 +15,7 @@ import {
 } from '../actions/nations';
 import type { NationType, NationIdType, EditingNationType } from '../types/Nation';
 import { resolveNation } from '../utils/nations';
+import { SERVICES_DESTROYED } from '../actions/serviceContainer';
 
 export type State = {
   +nations: Array<NationType>,
@@ -44,6 +45,8 @@ export const initialState: State = {
  */
 export default (state: State = initialState, action: Action): State => {
   switch (action.type) {
+    case SERVICES_DESTROYED:
+      return initialState;
     case SWITCH_NATIONS_TAB:
       return {
         ...state,
