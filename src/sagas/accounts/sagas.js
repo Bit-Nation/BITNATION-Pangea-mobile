@@ -24,14 +24,21 @@ import type {
   SavePasswordAction,
   SavePinCodeAction,
 } from '../../actions/accounts';
-import { convertFromDatabase, convertToDatabase } from '../../utils/mapping/account';
+import {
+  convertFromDatabase, convertToDatabase, retrieveProfileFromAccount,
+  retrieveProfileFromPartialAccount,
+} from '../../utils/mapping/account';
 import TaskBuilder from '../../utils/asyncTask';
 import AccountsService from '../../services/accounts';
 import { InvalidPasswordError, LoginFailedError } from '../../global/errors/accounts';
 import type { AccountType as DBAccount } from '../../services/database/schemata';
+import type { Account, Profile } from '../../types/Account';
 import type { SaveEditingAccountAction } from '../../actions/profile';
 import { cancelAccountEditing } from '../../actions/profile';
 import { resetSettings } from '../../actions/settings';
+import type { State as AccountsState } from '../../reducers/accounts';
+
+export const getAccounts = (state: AccountsState) => state.accounts;
 
 /**
  * @desc That function should be used for listening on information that depends on current account.
@@ -135,6 +142,19 @@ export function* listenForDatabaseUpdates(): Generator<*, *, any> {
 }
 
 /**
+ * @desc Updates signed profile in Panthalassa.
+ * @returns {void}
+ */
+export function* updateSignedProfile(): Generator<*, *, *> {
+  const dbAccount: DBAccount = yield call(getCurrentAccount);
+  if (dbAccount != null) {
+    const account = convertFromDatabase(dbAccount);
+    yield call(AccountsService.signProfile, retrieveProfileFromAccount(account));
+  }
+}
+
+
+/**
  * @desc Performs preparation for account creation, e.g. clean settings.
  * @return {void}
  */
@@ -167,18 +187,31 @@ export function* loginActionHandler(action: LoginAction): Generator<*, *, *> {
  * @returns {void}
  */
 export function* login(userInfo: ({ accountId: string, accountStore?: string }), password: string, deferred: boolean = false): Generator<*, *, *> {
+  if (deferred === true) {
+    yield take(PERFORM_DEFERRED_LOGIN);
+  }
+
   yield put(loginTaskUpdated(TaskBuilder.pending()));
   const { accountId } = userInfo;
   let accountStore: string;
+  let profile: Profile;
   if (userInfo.accountStore == null) {
-    const account = yield call(getAccount, accountId);
+    const account: Account = yield call(getAccount, accountId);
     ({ accountStore } = account);
+    profile = retrieveProfileFromAccount(account);
   } else {
     ({ accountStore } = userInfo);
+    const { creatingAccount } = yield select(getAccounts);
+    const result = retrieveProfileFromPartialAccount(creatingAccount);
+    if (result == null) {
+      yield put(loginTaskUpdated(TaskBuilder.failure(new LoginFailedError())));
+      return;
+    }
+    profile = result;
   }
 
   try {
-    const isValid = yield call(AccountsService.login, accountStore, password);
+    const isValid = yield call(AccountsService.login, accountStore, profile, password);
     if (isValid !== true) {
       yield put(loginTaskUpdated(TaskBuilder.failure(new InvalidPasswordError())));
       return;
@@ -186,9 +219,6 @@ export function* login(userInfo: ({ accountId: string, accountStore?: string }),
   } catch (error) {
     yield put(loginTaskUpdated(TaskBuilder.failure(new LoginFailedError())));
     return;
-  }
-  if (deferred === true) {
-    yield take(PERFORM_DEFERRED_LOGIN);
   }
 
   yield put(currentAccountIdChanged(accountId));
@@ -241,7 +271,8 @@ export function* checkPasswordSaga(action: CheckPasswordAction): Generator<*, *,
   try {
     const account = yield call(getAccount, action.accountId);
     const { accountStore } = account;
-    const success = yield call(AccountsService.checkPasscode, accountStore, action.password);
+    const profile = retrieveProfileFromAccount(account);
+    const success = yield call(AccountsService.checkPasscode, accountStore, profile, action.password);
     yield call(action.callback, success);
   } catch (e) {
     yield call(action.callback, false);

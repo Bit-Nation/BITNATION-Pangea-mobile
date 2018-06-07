@@ -20,3 +20,9 @@ export type PartialAccount = {
   accountStore: ?string,
   networkType: NetworkType,
 }
+
+export type Profile = {
+  name: string,
+  location: ?string,
+  avatar: ?string,
+};
