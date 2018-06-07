@@ -17,6 +17,11 @@ export const AccountSchema = {
       type: 'list',
       objectType: 'DHTValue',
     },
+    txns: {
+      type: 'linkingObjects',
+      objectType: 'TransactionJob',
+      property: 'account',
+    },
   },
 };
 
@@ -159,12 +164,8 @@ export const MessageJobSchema = {
   },
 };
 
-// We need this because of types circular dependencies.
-/* eslint-disable no-use-before-define */
-
 /**
  * @typedef TransactionJobType
- * @property {number} id
  * @property {string} txHash
  * @property {number} status
  * @property {string} type Can be something like NATION_JOIN, NATION_LEAVE, NATION_CREATE etc. Used to know what this transaction is about.
@@ -173,13 +174,13 @@ export type TransactionJobType = {
   txHash: string,
   status: number,
   type: string,
-  nation: NationType | null
+  nation: NationType | null,
+  account: AccountType | null,
 }
-
-/* eslint-enable no-use-before-define */
 
 export const TransactionJobSchema = {
   name: 'TransactionJob',
+  primaryKey: 'txHash',
   properties: {
     txHash: 'string',
     status: 'int',
@@ -189,6 +190,7 @@ export const TransactionJobSchema = {
       objectType: 'Nation',
       property: 'tx',
     },
+    account: 'Account',
   },
 };
 
