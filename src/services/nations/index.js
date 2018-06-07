@@ -15,11 +15,13 @@ export default class NationsService {
     this.ethereumService = ethereumService;
     this.dbPromise = dbPromise;
     this.currentAccountId = accountId;
+    this.logsProcessingPromise = Promise.resolve();
   }
 
   ethereumService: EthereumService;
   dbPromise: Promise<Realm>;
   currentAccountId: string;
+  logsProcessingPromise: Promise<void>;
 
   // Drafts operations
 
@@ -158,21 +160,22 @@ export default class NationsService {
     return new Promise(async (resolve, reject) => {
       const self = this;
       let expectedNationsNumber = (await this.ethereumService.nations.numNations()).toNumber();
-      this.ethereumService.nations.onnationcreated = function processLog() {
+      this.ethereumService.nations.onnationcreated = async function processLog() {
         // BE CAREFUL! Since strange API of ether.js log passed here as a 'this'.
         const log = this;
 
-        self.performNationUpdate(log.args.nationId.toNumber(), log.txHash)
-          .then(() => {
-            expectedNationsNumber -= 1;
-            if (expectedNationsNumber === 0) {
-              resolve();
-            }
-          })
-          .catch((error) => {
-            console.log(error.toString());
-            reject(error);
-          });
+        self.logsProcessingPromise = self.logsProcessingPromise
+          .then(() => self.performNationUpdate(log.args.nationId.toNumber(), log.transactionHash));
+        try {
+          await self.logsProcessingPromise;
+        } catch (error) {
+          console.log(error.toString());
+          reject(error);
+        }
+        expectedNationsNumber -= 1;
+        if (expectedNationsNumber === 0) {
+          resolve();
+        }
       };
 
       this.ethereumService.nations.provider.resetEventsBlock(sinceBlock);
