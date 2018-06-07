@@ -9,13 +9,16 @@
   "activityLog": {
     "nation": {
       "join": {
-        "succeed": "Joined nation: {{nationName}}"
+        "succeed": "Joined nation: {{nationName}}",
+        "failed": "Failed to join: {{nationName}}"
       },
       "create": {
-        "succeed": "Created Nation {{nationName}}"
+        "succeed": "Created Nation {{nationName}}",
+        "failed": "Failed to create: {{nationName}}"
       },
       "leave": {
-        "succeed": "Left nation: {{nationName}}"
+        "succeed": "Left nation: {{nationName}}",
+        "failed": "Failed to leave: {{nationName}}"
       }
     }
   },
