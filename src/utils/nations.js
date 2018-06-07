@@ -2,11 +2,7 @@
 import _ from 'lodash';
 import Colors from '../global/colors';
 import type { DBNationType, NationType, EditingNationType } from '../types/Nation';
-
-// @todo Import from correct place
-export const TX_JOB_STATUS_PENDING = 200;
-export const TX_JOB_STATUS_SUCCESS = 300;
-export const TX_JOB_STATUS_FAILED = 400;
+import { TX_JOB_STATUS } from '../global/Constants';
 
 /**
  * @desc Function to get a nation by id from array.
@@ -215,11 +211,11 @@ export function nationIsValid(nation: EditingNationType | NationType): boolean {
  */
 export function statusColor(status: number) {
   switch (status) {
-    case TX_JOB_STATUS_SUCCESS:
+    case TX_JOB_STATUS.SUCCESS:
       return Colors.listItemTextState.accepted;
-    case TX_JOB_STATUS_FAILED:
+    case TX_JOB_STATUS.FAILED:
       return Colors.listItemTextState.rejected;
-    case TX_JOB_STATUS_PENDING:
+    case TX_JOB_STATUS.PENDING:
       return Colors.listItemTextState.pending;
     default:
       return Colors.listItemTextState.default;
