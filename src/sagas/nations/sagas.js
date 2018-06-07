@@ -58,7 +58,7 @@ export function* startNationIndexingWorker(): Generator<*, *, *> {
 
   // @todo Pass block number
   yield put(fetchNationsStarted());
-  yield call([nationsService, 'registerNationIndexing'], 0);
+  yield call([nationsService, 'registerNationIndexing']);
   yield put(doneFetchNations());
 }
 
