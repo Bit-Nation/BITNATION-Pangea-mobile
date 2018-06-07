@@ -210,8 +210,6 @@ export const TransactionJobSchema = {
  * @property {string} governanceService
  * @property {number} citizens Number of citizens
  * @property {boolean} joined Did I join the nation?
- * @property {boolean} stateMutateAllowed Hold information about if we can mutate the state of this nation. Since we only support synchronous mutate of the nation state (join/leave nation).
- * @property {boolean} determinants if we should reset (set to true) the  stateMutateAllowed on the next indexing round.
  * @property {TransactionJobType | null} tx A transaction. It can be e.g. a transaction that is responsible for writing the nation to the blockchain.
  */
 export type NationType = {
@@ -232,8 +230,6 @@ export type NationType = {
   governanceService: string,
   citizens: number,
   joined: boolean,
-  stateMutateAllowed: boolean,
-  resetStateMutateAllowed: boolean,
   tx: TransactionJobType | null
 }
 
@@ -263,14 +259,6 @@ export const NationSchema = {
     diplomaticRecognition: 'bool',
     decisionMakingProcess: 'string',
     governanceService: 'string',
-    stateMutateAllowed: {
-      type: 'bool',
-      default: true,
-    },
-    resetStateMutateAllowed: {
-      type: 'bool',
-      default: false,
-    },
     citizens: {
       type: 'int',
       default: 0,
