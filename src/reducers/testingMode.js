@@ -8,6 +8,7 @@ import {
   RESET_STEPS,
   EMPTY_WALLET,
 } from '../actions/testingMode';
+import { SERVICES_DESTROYED } from '../actions/serviceContainer';
 
 export const stepsCountToToggle = 5;
 
@@ -33,6 +34,8 @@ export default (state: State = initialState, action: Action): State => {
   if (config.PRODUCTION === 'true') return state;
 
   switch (action.type) {
+    case SERVICES_DESTROYED:
+      return initialState;
     case MAKE_STEP:
       if (state.stepsLeftToToggle === 1) {
         return { ...state, stepsLeftToToggle: stepsCountToToggle, isActive: !state.isActive };

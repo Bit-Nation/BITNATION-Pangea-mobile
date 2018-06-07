@@ -86,7 +86,6 @@ export default class NationsService {
     try {
       db.write(() => {
         nation.tx = txJob;
-        nation.stateMutateAllowed = false;
       });
 
       return nation;
@@ -132,7 +131,6 @@ export default class NationsService {
     try {
       db.write(() => {
         nation.tx = txJob;
-        nation.stateMutateAllowed = false;
       });
     } catch (_) {
       throw new DatabaseWriteFailed();
@@ -152,7 +150,6 @@ export default class NationsService {
     try {
       db.write(() => {
         nation.tx = txJob;
-        nation.stateMutateAllowed = false;
       });
     } catch (_) {
       throw new DatabaseWriteFailed();
@@ -160,7 +157,7 @@ export default class NationsService {
   }
 
   async registerNationIndexing() {
-    const firstBlock = this.ethereumService.network === 'dev' ? NATION_DEV_CONTRACT_CREATION_BLOCK : NATION_PROD_CONTRACT_CREATION_BLOCK
+    const firstBlock = this.ethereumService.network === 'dev' ? NATION_DEV_CONTRACT_CREATION_BLOCK : NATION_PROD_CONTRACT_CREATION_BLOCK;
 
     return new Promise(async (resolve, reject) => {
       const self = this;
@@ -198,8 +195,6 @@ export default class NationsService {
       // It's a draft that we need to update in database as submitted nation
       db.write(() => {
         draftToUpdate.idInSmartContract = idInSmartContract;
-        draftToUpdate.stateMutateAllowed = true;
-        draftToUpdate.resetStateMutateAllowed = false;
       });
     }
 
@@ -213,12 +208,6 @@ export default class NationsService {
       db.write(() => {
         nationToUpdate.joined = isNationJoined;
         nationToUpdate.citizens = citizensNumber;
-
-        // We need to wait for resetStateMutateAllowed === true because that means we are allowed to reset stateMutateAllowed
-        if (nationToUpdate.resetStateMutateAllowed === true) {
-          nationToUpdate.stateMutateAllowed = true;
-          nationToUpdate.resetStateMutateAllowed = false;
-        }
       });
     }
 
@@ -283,6 +272,6 @@ export default class NationsService {
     if (nation.tx == null) {
       return true;
     }
-    return nation.tx.status === TX_JOB_STATUS.SUCCESS;
+    return nation.tx.status !== TX_JOB_STATUS.PENDING;
   };
 }

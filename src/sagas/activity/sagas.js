@@ -65,7 +65,7 @@ export function* addNewMessageSaga(action: AddNewMessageAction) {
   const db = yield defaultDB;
   const params = action.params || {};
   const interpret = action.interpret !== false;
-  const messages = db.objects('MessageJob').sorted('id', false);
+  const messages = db.objects('MessageJob').sorted('id', true);
   let highestId = 1;
   if (messages.length > 0) highestId = messages[0].id + 1;
   const currentAccountId = yield call(getCurrentAccountId);
