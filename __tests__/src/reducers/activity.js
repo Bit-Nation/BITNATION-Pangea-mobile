@@ -2,6 +2,7 @@ import reducer, {
   initialState,
 } from '../../../src/reducers/activity';
 import { messagesUpdated } from '../../../src/actions/activity';
+import { servicesDestroyed } from '../../../src/actions/serviceContainer';
 
 const message = {
   id: 0,
@@ -12,6 +13,11 @@ const message = {
 describe('activity reducer action handling', () => {
   test('default returns the same state', () => {
     expect(reducer(initialState, {})).toEqual(initialState);
+  });
+
+  test('after service destroy returns initial state', () => {
+    const changedState = reducer(initialState, messagesUpdated([message]));
+    expect(reducer(changedState, servicesDestroyed())).toEqual(initialState);
   });
 
   test('messagesUpdated after initial state', () => {
