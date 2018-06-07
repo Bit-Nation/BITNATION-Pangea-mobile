@@ -1,9 +1,9 @@
 import {
   ADD_NEW_MESSAGE,
-  MESSAGES_ADDED,
+  MESSAGES_UPDATED,
   emptyCallback,
   addNewMessage,
-  messagesAdded,
+  messagesUpdated,
 } from '../../../src/actions/activity';
 
 describe('activity action creators', () => {
@@ -13,9 +13,9 @@ describe('activity action creators', () => {
     interpret: true,
   };
 
-  test('messagesAdded', () => {
-    expect(messagesAdded([messageMock])).toEqual({
-      type: MESSAGES_ADDED,
+  test('messagesUpdated', () => {
+    expect(messagesUpdated([messageMock])).toEqual({
+      type: MESSAGES_UPDATED,
       messages: [messageMock],
     });
   });
