@@ -79,10 +79,6 @@ export function* processTransaction(tx: TransactionJobType, changeType: 'initial
   console.log(receipt);
 
   const messageAction = yield call(processor, receipt.status === 1, tx);
-  db.write(() => {
-    tx.nation[0].resetStateMutateAllowed = true;
-    tx.nation[0].stateMutateAllowed = true;
-  });
 
   if (messageAction != null) {
     yield put(messageAction);
