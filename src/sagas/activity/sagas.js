@@ -10,7 +10,6 @@ import {
 } from '../../utils/mapping/activity';
 import type { ActivityLogMessage } from '../../types/ActivityLogMessage';
 import { getCurrentAccountId, currentAccountBasedUpdate } from '../accounts/sagas';
-import { errorAlert } from '../../global/alerts';
 
 /**
  * @desc Function that creates Realm results fetching activity logs for specific account.

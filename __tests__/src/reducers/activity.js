@@ -1,6 +1,4 @@
-import reducer, {
-  initialState,
-} from '../../../src/reducers/activity';
+import reducer, { initialState } from '../../../src/reducers/activity';
 import { messagesUpdated } from '../../../src/actions/activity';
 import { servicesDestroyed } from '../../../src/actions/serviceContainer';
 
