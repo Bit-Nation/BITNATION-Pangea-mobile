@@ -56,7 +56,6 @@ type Actions = {
 }
 
 class NationDetailsScreen extends Component<Props & Actions & NationState> {
-  static defaultProps: Object;
   static disableJoinButton(nation: NationType) {
     if (nation.tx && nation.tx.status === 200) {
       return true;
@@ -176,7 +175,7 @@ class NationDetailsScreen extends Component<Props & Actions & NationState> {
     }
     return null;
   }
-
+  static defaultProps: Object;
   buildTabBar() {
     const nation = openedNation(this.props);
     if (nation === null) return null;
