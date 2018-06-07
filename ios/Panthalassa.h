@@ -9,8 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <React/RCTBridgeModule.h>
 #import "PanthalassaUpStreamBridge.h"
+#import <React/RCTEventEmitter.h>
 
-@interface Panthalassa : NSObject <RCTBridgeModule> {
+@interface Panthalassa : RCTEventEmitter <RCTBridgeModule> {
   PanthalassaUpStreamBridge* upstream;
 }
 
