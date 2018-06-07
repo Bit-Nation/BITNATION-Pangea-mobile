@@ -1,5 +1,5 @@
 import { all, call } from 'redux-saga/effects';
-import { registerSendMoneyProcessor } from './sagas';
+import { registerProcessor } from './sagas';
 
 /**
  * @desc Root transaction processor saga.
@@ -7,6 +7,6 @@ import { registerSendMoneyProcessor } from './sagas';
  */
 export default function* rootSaga() {
   yield all([
-    call(registerSendMoneyProcessor),
+    call(registerProcessor),
   ]);
 }
