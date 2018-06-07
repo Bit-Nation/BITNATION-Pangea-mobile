@@ -11,6 +11,7 @@ import { getCurrentAccountId, currentAccountBasedUpdate } from '../../../../src/
 describe('onCurrentAccountChange', () => {
   test('empty results', () => {
     const gen = onCurrentAccountChange([]);
+    expect(gen.next().value).toEqual(put(messagesUpdated([])));
     expect(gen.next().done).toBeTruthy();
     expect(gen.next().value).toBeUndefined();
   });
