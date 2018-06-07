@@ -72,6 +72,7 @@ export function* processTransaction(tx: TransactionJobType, changeType: 'initial
   }
 
   const db = yield defaultDB;
+  yield call([ServiceContainer.instance.ethereumService, 'trackTransaction'], tx.txHash);
   const receipt = yield call([ServiceContainer.instance.ethereumService, 'getTransactionReceipt'], tx.txHash);
 
   console.log('HEY HEY HEY');
