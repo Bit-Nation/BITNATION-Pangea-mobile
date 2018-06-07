@@ -198,7 +198,7 @@ export default class NationsService {
       });
     }
 
-    const isNationJoined = (await this.ethereumService.nations.getJoinedNations())
+    const isNationJoined = (await this.ethereumService.nations.getJoinedNations({ from: this.ethereumService.wallet.address }))
       .map(bigNumber => bigNumber.toNumber()).includes(idInSmartContract);
     const citizensNumber = (await this.ethereumService.nations.getNumCitizens(idInSmartContract)).toNumber();
 
