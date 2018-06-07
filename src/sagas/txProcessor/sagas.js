@@ -32,6 +32,12 @@ export function buildTransactionsResults(db: Realm, accountId: string | null): R
 
 // Processors
 
+/**
+ * @desc Processor for CREATE_NATION transaction type.
+ * @param {boolean} txSuccess True iff transaction is successful.
+ * @param {TransactionJobType} tx Transaction object.
+ * @return {AddNewMessageAction} Returns an action to create a new log message.
+ */
 export function* createNationProcessor(txSuccess: boolean, tx: TransactionJobType): Generator<*, *, *> {
   if (tx.nation[0] == null) {
     throw new Error('Unexpected! There is no nation present on the job object');
@@ -49,6 +55,12 @@ export function* createNationProcessor(txSuccess: boolean, tx: TransactionJobTyp
   );
 }
 
+/**
+ * @desc Processor for JOIN_NATION transaction type.
+ * @param {boolean} txSuccess True iff transaction is successful.
+ * @param {TransactionJobType} tx Transaction object.
+ * @return {AddNewMessageAction} Returns an action to create a new log message.
+ */
 export function* joinNationProcessor(txSuccess: boolean, tx: TransactionJobType): Generator<*, *, *> {
   if (tx.nation[0] == null) {
     throw new Error('Unexpected! There is no nation present on the job object');
@@ -69,6 +81,12 @@ export function* joinNationProcessor(txSuccess: boolean, tx: TransactionJobType)
   );
 }
 
+/**
+ * @desc Processor for LEAVE_NATION transaction type.
+ * @param {boolean} txSuccess True iff transaction is successful.
+ * @param {TransactionJobType} tx Transaction object.
+ * @return {AddNewMessageAction} Returns an action to create a new log message.
+ */
 export function* leaveNationProcessor(txSuccess: boolean, tx: TransactionJobType): Generator<*, *, *> {
   if (tx.nation[0] == null) {
     throw new Error('Unexpected! There is no nation present on the job object');
@@ -91,6 +109,11 @@ export function* leaveNationProcessor(txSuccess: boolean, tx: TransactionJobType
 
 // Main processor
 
+/**
+ * @desc General processor that is common for all transactions.
+ * @param {TransactionJobType} tx Transaction object.
+ * @return {void}
+ */
 export function* processTransaction(tx: TransactionJobType): Generator<*, *, *> {
   if (tx.status !== TX_JOB_STATUS.PENDING) {
     // We need to process only pending transactions
@@ -120,6 +143,12 @@ export function* processTransaction(tx: TransactionJobType): Generator<*, *, *> 
   }
 }
 
+/**
+ * @desc Generator to be called on database change. Used to call processor on transactions from database.
+ * @param {*} collection Updated transactions collection
+ * @param {*} changes Transactions collection changes.
+ * @return {void}
+ */
 export function* onCurrentAccountChange(
   collection: Realm.Collection<TransactionJobType>,
   changes: Realm.CollectionChangeSet<TransactionJobType>,

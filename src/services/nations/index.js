@@ -157,7 +157,7 @@ export default class NationsService {
   }
 
   async registerNationIndexing() {
-    const firstBlock = this.ethereumService.network === 'dev' ? NATION_DEV_CONTRACT_CREATION_BLOCK : NATION_PROD_CONTRACT_CREATION_BLOCK
+    const firstBlock = this.ethereumService.network === 'dev' ? NATION_DEV_CONTRACT_CREATION_BLOCK : NATION_PROD_CONTRACT_CREATION_BLOCK;
 
     return new Promise(async (resolve, reject) => {
       const self = this;
