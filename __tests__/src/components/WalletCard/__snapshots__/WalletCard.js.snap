@@ -27,6 +27,8 @@ ShallowWrapper {
         style={
           Object {
             "alignItems": "stretch",
+            "backgroundColor": "white",
+            "borderRadius": 5,
             "flex": 1,
             "flexDirection": "row",
             "justifyContent": "flex-start",
@@ -39,7 +41,7 @@ ShallowWrapper {
           style={
             Object {
               "marginRight": 10,
-              "marginTop": 10,
+              "marginTop": 36,
               "width": 55,
             }
           }
@@ -65,7 +67,7 @@ ShallowWrapper {
             ellipsizeMode="tail"
             style={
               Object {
-                "color": "white",
+                "color": "#929497",
                 "fontSize": 17,
                 "fontWeight": "bold",
                 "marginBottom": 4,
@@ -80,8 +82,8 @@ ShallowWrapper {
             ellipsizeMode="tail"
             style={
               Object {
-                "color": "#C0C0C0",
-                "fontSize": 14,
+                "color": "#FFCE00",
+                "fontSize": 30,
               }
             }
           >
@@ -108,7 +110,6 @@ ShallowWrapper {
               style={
                 Array [
                   Object {
-                    "backgroundColor": "rgba(192,192,192,0.3)",
                     "borderRadius": 14,
                     "height": 25,
                     "width": 80,
@@ -125,7 +126,6 @@ ShallowWrapper {
               onPress={[Function]}
               style={
                 Object {
-                  "backgroundColor": "rgba(192,192,192,0.3)",
                   "borderRadius": 14,
                   "height": 25,
                   "width": 80,
@@ -155,6 +155,7 @@ ShallowWrapper {
         "backgroundColor": "transparent",
         "flex": 1,
         "height": 130,
+        "marginTop": 5,
       },
     },
     "ref": null,
@@ -170,7 +171,7 @@ ShallowWrapper {
             style={
               Object {
                 "marginRight": 10,
-                "marginTop": 10,
+                "marginTop": 36,
                 "width": 55,
               }
             }
@@ -196,7 +197,7 @@ ShallowWrapper {
               ellipsizeMode="tail"
               style={
                 Object {
-                  "color": "white",
+                  "color": "#929497",
                   "fontSize": 17,
                   "fontWeight": "bold",
                   "marginBottom": 4,
@@ -211,8 +212,8 @@ ShallowWrapper {
               ellipsizeMode="tail"
               style={
                 Object {
-                  "color": "#C0C0C0",
-                  "fontSize": 14,
+                  "color": "#FFCE00",
+                  "fontSize": 30,
                 }
               }
             >
@@ -239,7 +240,6 @@ ShallowWrapper {
                 style={
                   Array [
                     Object {
-                      "backgroundColor": "rgba(192,192,192,0.3)",
                       "borderRadius": 14,
                       "height": 25,
                       "width": 80,
@@ -256,7 +256,6 @@ ShallowWrapper {
                 onPress={[Function]}
                 style={
                   Object {
-                    "backgroundColor": "rgba(192,192,192,0.3)",
                     "borderRadius": 14,
                     "height": 25,
                     "width": 80,
@@ -283,6 +282,8 @@ ShallowWrapper {
         ],
         "style": Object {
           "alignItems": "stretch",
+          "backgroundColor": "white",
+          "borderRadius": 5,
           "flex": 1,
           "flexDirection": "row",
           "justifyContent": "flex-start",
@@ -299,7 +300,7 @@ ShallowWrapper {
             "source": 1,
             "style": Object {
               "marginRight": 10,
-              "marginTop": 10,
+              "marginTop": 36,
               "width": 55,
             },
           },
@@ -326,7 +327,7 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "white",
+                    "color": "#929497",
                     "fontSize": 17,
                     "fontWeight": "bold",
                     "marginBottom": 4,
@@ -341,8 +342,8 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "#C0C0C0",
-                    "fontSize": 14,
+                    "color": "#FFCE00",
+                    "fontSize": 30,
                   }
                 }
               >
@@ -369,7 +370,6 @@ ShallowWrapper {
                   style={
                     Array [
                       Object {
-                        "backgroundColor": "rgba(192,192,192,0.3)",
                         "borderRadius": 14,
                         "height": 25,
                         "width": 80,
@@ -386,7 +386,6 @@ ShallowWrapper {
                   onPress={[Function]}
                   style={
                     Object {
-                      "backgroundColor": "rgba(192,192,192,0.3)",
                       "borderRadius": 14,
                       "height": 25,
                       "width": 80,
@@ -440,7 +439,7 @@ ShallowWrapper {
                 "children": "Testing Press",
                 "ellipsizeMode": "tail",
                 "style": Object {
-                  "color": "white",
+                  "color": "#929497",
                   "fontSize": 17,
                   "fontWeight": "bold",
                   "marginBottom": 4,
@@ -460,8 +459,8 @@ ShallowWrapper {
                 "children": "Testing balance",
                 "ellipsizeMode": "tail",
                 "style": Object {
-                  "color": "#C0C0C0",
-                  "fontSize": 14,
+                  "color": "#FFCE00",
+                  "fontSize": 30,
                 },
               },
               "ref": null,
@@ -493,7 +492,6 @@ ShallowWrapper {
                     style={
                       Array [
                         Object {
-                          "backgroundColor": "rgba(192,192,192,0.3)",
                           "borderRadius": 14,
                           "height": 25,
                           "width": 80,
@@ -510,7 +508,6 @@ ShallowWrapper {
                     onPress={[Function]}
                     style={
                       Object {
-                        "backgroundColor": "rgba(192,192,192,0.3)",
                         "borderRadius": 14,
                         "height": 25,
                         "width": 80,
@@ -538,12 +535,10 @@ ShallowWrapper {
                   "key": undefined,
                   "nodeType": "function",
                   "props": Object {
-                    "children": undefined,
                     "enabled": true,
                     "onPress": [Function],
                     "style": Array [
                       Object {
-                        "backgroundColor": "rgba(192,192,192,0.3)",
                         "borderRadius": 14,
                         "height": 25,
                         "width": 80,
@@ -563,11 +558,9 @@ ShallowWrapper {
                   "key": undefined,
                   "nodeType": "function",
                   "props": Object {
-                    "children": undefined,
                     "enabled": true,
                     "onPress": [Function],
                     "style": Object {
-                      "backgroundColor": "rgba(192,192,192,0.3)",
                       "borderRadius": 14,
                       "height": 25,
                       "width": 80,
@@ -625,6 +618,8 @@ ShallowWrapper {
           style={
             Object {
               "alignItems": "stretch",
+              "backgroundColor": "white",
+              "borderRadius": 5,
               "flex": 1,
               "flexDirection": "row",
               "justifyContent": "flex-start",
@@ -637,7 +632,7 @@ ShallowWrapper {
             style={
               Object {
                 "marginRight": 10,
-                "marginTop": 10,
+                "marginTop": 36,
                 "width": 55,
               }
             }
@@ -663,7 +658,7 @@ ShallowWrapper {
               ellipsizeMode="tail"
               style={
                 Object {
-                  "color": "white",
+                  "color": "#929497",
                   "fontSize": 17,
                   "fontWeight": "bold",
                   "marginBottom": 4,
@@ -678,8 +673,8 @@ ShallowWrapper {
               ellipsizeMode="tail"
               style={
                 Object {
-                  "color": "#C0C0C0",
-                  "fontSize": 14,
+                  "color": "#FFCE00",
+                  "fontSize": 30,
                 }
               }
             >
@@ -706,7 +701,6 @@ ShallowWrapper {
                 style={
                   Array [
                     Object {
-                      "backgroundColor": "rgba(192,192,192,0.3)",
                       "borderRadius": 14,
                       "height": 25,
                       "width": 80,
@@ -723,7 +717,6 @@ ShallowWrapper {
                 onPress={[Function]}
                 style={
                   Object {
-                    "backgroundColor": "rgba(192,192,192,0.3)",
                     "borderRadius": 14,
                     "height": 25,
                     "width": 80,
@@ -753,6 +746,7 @@ ShallowWrapper {
           "backgroundColor": "transparent",
           "flex": 1,
           "height": 130,
+          "marginTop": 5,
         },
       },
       "ref": null,
@@ -768,7 +762,7 @@ ShallowWrapper {
               style={
                 Object {
                   "marginRight": 10,
-                  "marginTop": 10,
+                  "marginTop": 36,
                   "width": 55,
                 }
               }
@@ -794,7 +788,7 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "white",
+                    "color": "#929497",
                     "fontSize": 17,
                     "fontWeight": "bold",
                     "marginBottom": 4,
@@ -809,8 +803,8 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "#C0C0C0",
-                    "fontSize": 14,
+                    "color": "#FFCE00",
+                    "fontSize": 30,
                   }
                 }
               >
@@ -837,7 +831,6 @@ ShallowWrapper {
                   style={
                     Array [
                       Object {
-                        "backgroundColor": "rgba(192,192,192,0.3)",
                         "borderRadius": 14,
                         "height": 25,
                         "width": 80,
@@ -854,7 +847,6 @@ ShallowWrapper {
                   onPress={[Function]}
                   style={
                     Object {
-                      "backgroundColor": "rgba(192,192,192,0.3)",
                       "borderRadius": 14,
                       "height": 25,
                       "width": 80,
@@ -881,6 +873,8 @@ ShallowWrapper {
           ],
           "style": Object {
             "alignItems": "stretch",
+            "backgroundColor": "white",
+            "borderRadius": 5,
             "flex": 1,
             "flexDirection": "row",
             "justifyContent": "flex-start",
@@ -897,7 +891,7 @@ ShallowWrapper {
               "source": 1,
               "style": Object {
                 "marginRight": 10,
-                "marginTop": 10,
+                "marginTop": 36,
                 "width": 55,
               },
             },
@@ -924,7 +918,7 @@ ShallowWrapper {
                   ellipsizeMode="tail"
                   style={
                     Object {
-                      "color": "white",
+                      "color": "#929497",
                       "fontSize": 17,
                       "fontWeight": "bold",
                       "marginBottom": 4,
@@ -939,8 +933,8 @@ ShallowWrapper {
                   ellipsizeMode="tail"
                   style={
                     Object {
-                      "color": "#C0C0C0",
-                      "fontSize": 14,
+                      "color": "#FFCE00",
+                      "fontSize": 30,
                     }
                   }
                 >
@@ -967,7 +961,6 @@ ShallowWrapper {
                     style={
                       Array [
                         Object {
-                          "backgroundColor": "rgba(192,192,192,0.3)",
                           "borderRadius": 14,
                           "height": 25,
                           "width": 80,
@@ -984,7 +977,6 @@ ShallowWrapper {
                     onPress={[Function]}
                     style={
                       Object {
-                        "backgroundColor": "rgba(192,192,192,0.3)",
                         "borderRadius": 14,
                         "height": 25,
                         "width": 80,
@@ -1038,7 +1030,7 @@ ShallowWrapper {
                   "children": "Testing Press",
                   "ellipsizeMode": "tail",
                   "style": Object {
-                    "color": "white",
+                    "color": "#929497",
                     "fontSize": 17,
                     "fontWeight": "bold",
                     "marginBottom": 4,
@@ -1058,8 +1050,8 @@ ShallowWrapper {
                   "children": "Testing balance",
                   "ellipsizeMode": "tail",
                   "style": Object {
-                    "color": "#C0C0C0",
-                    "fontSize": 14,
+                    "color": "#FFCE00",
+                    "fontSize": 30,
                   },
                 },
                 "ref": null,
@@ -1091,7 +1083,6 @@ ShallowWrapper {
                       style={
                         Array [
                           Object {
-                            "backgroundColor": "rgba(192,192,192,0.3)",
                             "borderRadius": 14,
                             "height": 25,
                             "width": 80,
@@ -1108,7 +1099,6 @@ ShallowWrapper {
                       onPress={[Function]}
                       style={
                         Object {
-                          "backgroundColor": "rgba(192,192,192,0.3)",
                           "borderRadius": 14,
                           "height": 25,
                           "width": 80,
@@ -1136,12 +1126,10 @@ ShallowWrapper {
                     "key": undefined,
                     "nodeType": "function",
                     "props": Object {
-                      "children": undefined,
                       "enabled": true,
                       "onPress": [Function],
                       "style": Array [
                         Object {
-                          "backgroundColor": "rgba(192,192,192,0.3)",
                           "borderRadius": 14,
                           "height": 25,
                           "width": 80,
@@ -1161,11 +1149,9 @@ ShallowWrapper {
                     "key": undefined,
                     "nodeType": "function",
                     "props": Object {
-                      "children": undefined,
                       "enabled": true,
                       "onPress": [Function],
                       "style": Object {
-                        "backgroundColor": "rgba(192,192,192,0.3)",
                         "borderRadius": 14,
                         "height": 25,
                         "width": 80,
@@ -1232,6 +1218,7 @@ exports[`WalletCard component tests Rendering 1`] = `
       "backgroundColor": "transparent",
       "flex": 1,
       "height": 130,
+      "marginTop": 5,
     }
   }
 >
@@ -1239,6 +1226,8 @@ exports[`WalletCard component tests Rendering 1`] = `
     style={
       Object {
         "alignItems": "stretch",
+        "backgroundColor": "white",
+        "borderRadius": 5,
         "flex": 1,
         "flexDirection": "row",
         "justifyContent": "flex-start",
@@ -1251,7 +1240,7 @@ exports[`WalletCard component tests Rendering 1`] = `
       style={
         Object {
           "marginRight": 10,
-          "marginTop": 10,
+          "marginTop": 36,
           "width": 55,
         }
       }
@@ -1277,7 +1266,7 @@ exports[`WalletCard component tests Rendering 1`] = `
         ellipsizeMode="tail"
         style={
           Object {
-            "color": "white",
+            "color": "#929497",
             "fontSize": 17,
             "fontWeight": "bold",
             "marginBottom": 4,
@@ -1292,8 +1281,8 @@ exports[`WalletCard component tests Rendering 1`] = `
         ellipsizeMode="tail"
         style={
           Object {
-            "color": "#C0C0C0",
-            "fontSize": 14,
+            "color": "#FFCE00",
+            "fontSize": 30,
           }
         }
       >
@@ -1322,12 +1311,8 @@ exports[`WalletCard component tests Rendering 1`] = `
                 "height": 30,
                 "justifyContent": "center",
               },
-              Object {
-                "backgroundColor": "#1C497E",
-              },
               Array [
                 Object {
-                  "backgroundColor": "rgba(192,192,192,0.3)",
                   "borderRadius": 14,
                   "height": 25,
                   "width": 80,
@@ -1358,8 +1343,8 @@ exports[`WalletCard component tests Rendering 1`] = `
             onStartShouldSetResponder={[Function]}
             style={
               Object {
-                "marginLeft": 13,
-                "marginRight": 13,
+                "flexDirection": "row",
+                "justifyContent": "center",
                 "opacity": 1,
               }
             }
@@ -1372,15 +1357,39 @@ exports[`WalletCard component tests Rendering 1`] = `
               ellipsizeMode="tail"
               style={
                 Object {
-                  "color": "#C0C0C0",
-                  "fontSize": 14,
-                  "letterSpacing": -0.02,
-                  "lineHeight": 19,
+                  "color": "#FF8B00",
+                  "fontSize": 15,
+                  "fontWeight": "bold",
                   "textAlign": "center",
                 }
               }
             >
               Send
+            </Text>
+            <Text
+              accessible={true}
+              allowFontScaling={false}
+              ellipsizeMode="tail"
+              style={
+                Array [
+                  Object {
+                    "color": undefined,
+                    "fontSize": 12,
+                  },
+                  Object {
+                    "alignSelf": "center",
+                    "color": "#FF8B00",
+                    "fontSize": 14,
+                  },
+                  Object {
+                    "fontFamily": "Material Icons",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                ]
+              }
+            >
+              
             </Text>
           </View>
         </View>
@@ -1393,10 +1402,6 @@ exports[`WalletCard component tests Rendering 1`] = `
                 "justifyContent": "center",
               },
               Object {
-                "backgroundColor": "#1C497E",
-              },
-              Object {
-                "backgroundColor": "rgba(192,192,192,0.3)",
                 "borderRadius": 14,
                 "height": 25,
                 "width": 80,
@@ -1423,8 +1428,8 @@ exports[`WalletCard component tests Rendering 1`] = `
             onStartShouldSetResponder={[Function]}
             style={
               Object {
-                "marginLeft": 13,
-                "marginRight": 13,
+                "flexDirection": "row",
+                "justifyContent": "center",
                 "opacity": 1,
               }
             }
@@ -1437,15 +1442,39 @@ exports[`WalletCard component tests Rendering 1`] = `
               ellipsizeMode="tail"
               style={
                 Object {
-                  "color": "#C0C0C0",
-                  "fontSize": 14,
-                  "letterSpacing": -0.02,
-                  "lineHeight": 19,
+                  "color": "#FF8B00",
+                  "fontSize": 15,
+                  "fontWeight": "bold",
                   "textAlign": "center",
                 }
               }
             >
               Receive
+            </Text>
+            <Text
+              accessible={true}
+              allowFontScaling={false}
+              ellipsizeMode="tail"
+              style={
+                Array [
+                  Object {
+                    "color": undefined,
+                    "fontSize": 12,
+                  },
+                  Object {
+                    "alignSelf": "center",
+                    "color": "#FF8B00",
+                    "fontSize": 14,
+                  },
+                  Object {
+                    "fontFamily": "Material Icons",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                ]
+              }
+            >
+              
             </Text>
           </View>
         </View>

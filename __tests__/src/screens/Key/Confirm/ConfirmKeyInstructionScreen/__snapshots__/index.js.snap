@@ -53,11 +53,7 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <BackgroundImage
-          source={
-            Object {
-              "testUri": "../../../src/assets/images/background.jpg",
-            }
-          }
+          source={1}
           style={undefined}
         />,
         <FakeNavigationBar
@@ -175,9 +171,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "function",
         "props": Object {
-          "source": Object {
-            "testUri": "../../../src/assets/images/background.jpg",
-          },
+          "source": 1,
           "style": undefined,
         },
         "ref": null,
@@ -535,11 +529,7 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <BackgroundImage
-            source={
-              Object {
-                "testUri": "../../../src/assets/images/background.jpg",
-              }
-            }
+            source={1}
             style={undefined}
           />,
           <FakeNavigationBar
@@ -657,9 +647,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
-            "source": Object {
-              "testUri": "../../../src/assets/images/background.jpg",
-            },
+            "source": 1,
             "style": undefined,
           },
           "ref": null,
