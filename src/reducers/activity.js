@@ -1,10 +1,7 @@
 // @flow
 
-import _ from 'lodash';
-
 import { type Action, MESSAGES_UPDATED } from '../actions/activity';
 import type { ActivityLogMessage } from '../types/ActivityLogMessage';
-import { ACTIVITY_MESSAGES_LIMIT } from '../global/Constants';
 import { SERVICES_DESTROYED } from '../actions/serviceContainer';
 
 export type State = {
