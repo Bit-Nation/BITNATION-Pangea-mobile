@@ -414,6 +414,13 @@
 			remoteGlobalIDString = 358F4ED71D1E81A9004DF814;
 			remoteInfo = RCTBlob;
 		};
+		D2EC4D5320C9D75F00255255 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AEBAAD419E4D47BB9275AE52 /* RNRandomBytes.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 163CDE4E2087CAD3001065FB;
+			remoteInfo = "RNRandomBytes-tvOS";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -787,6 +794,7 @@
 			isa = PBXGroup;
 			children = (
 				17084FCB1FF8024B00CB17F5 /* libRNRandomBytes.a */,
+				D2EC4D5420C9D75F00255255 /* libRNRandomBytes-tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1465,6 +1473,13 @@
 			remoteRef = ADBDB9261DFEBF0700ED6528 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		D2EC4D5420C9D75F00255255 /* libRNRandomBytes-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libRNRandomBytes-tvOS.a";
+			remoteRef = D2EC4D5320C9D75F00255255 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -1764,7 +1779,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AD90FA4C0CF9656416A93031 /* Pods-Pangea.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Alberto Estarrona (73F9WW2ZM8)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Alberto Estarrona (73F9WW2ZM8)";
 				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = YES;
@@ -1807,7 +1821,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 067F660FC765FB199ABA4128 /* Pods-Pangea.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Bitnation Port One Pte. Ltd. (W63599SJEC)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Bitnation Port One Pte. Ltd. (W63599SJEC)";
 				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = YES;
