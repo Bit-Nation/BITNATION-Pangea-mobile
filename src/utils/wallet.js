@@ -18,10 +18,11 @@ export function resolveWallet(wallets: Array<WalletType>, currency: string): Wal
  * @desc Gets wallet index by address in array of wallets.
  * @param {WalletType[]} wallets Array of wallets.
  * @param {string} address Address of wallet to be got.
+ * @param {string} currency Currency of wallet to be got.
  * @return {number} Index of wallet or null if there is no wallet with that address.
  */
-export function getWalletIndex(wallets: Array<WalletType>, address: string): number | null {
-  const index = _.findIndex(wallets, wallet => wallet.ethAddress === address);
+export function getWalletIndex(wallets: Array<WalletType>, address: string, currency: string = 'ETH'): number | null {
+  const index = _.findIndex(wallets, wallet => wallet.ethAddress === address && wallet.currency === currency);
   return index === -1 ? null : index;
 }
 

@@ -159,27 +159,24 @@ export const MessageJobSchema = {
   },
 };
 
-// We need this because of types circular dependencies.
-/* eslint-disable no-use-before-define */
-
 /**
  * @typedef TransactionJobType
- * @property {number} id
  * @property {string} txHash
  * @property {number} status
  * @property {string} type Can be something like NATION_JOIN, NATION_LEAVE, NATION_CREATE etc. Used to know what this transaction is about.
+ * @property {string} accountId Id of account that tx is related to
  */
 export type TransactionJobType = {
   txHash: string,
   status: number,
   type: string,
-  nation: NationType | null
+  nation: NationType | null,
+  accountId: string,
 }
-
-/* eslint-enable no-use-before-define */
 
 export const TransactionJobSchema = {
   name: 'TransactionJob',
+  primaryKey: 'txHash',
   properties: {
     txHash: 'string',
     status: 'int',
@@ -189,12 +186,14 @@ export const TransactionJobSchema = {
       objectType: 'Nation',
       property: 'tx',
     },
+    accountId: 'string',
   },
 };
 
 /**
  * @typedef NationType
  * @property {number} id internal id of the dataset
+ * @property {string} accountId Id of account that nation is related to.
  * @property {number} idInSmartContract is the id in the nation smart contract. If not this will be -1.
  * @property {boolean} created mean's if it is written to the blockchain (@todo this is probably an redundant field since you can get this information from "idInSmartContract")
  * @property {string} nationName human readable name of the nation
@@ -216,6 +215,7 @@ export const TransactionJobSchema = {
  */
 export type NationType = {
   id: number,
+  accountId: string,
   idInSmartContract: number,
   created: boolean,
   nationName: string,
@@ -240,6 +240,7 @@ export const NationSchema = {
   name: 'Nation',
   primaryKey: 'id',
   properties: {
+    accountId: 'string',
     id: 'int',
     idInSmartContract: {
       default: -1,
