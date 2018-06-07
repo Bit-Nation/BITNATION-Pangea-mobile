@@ -10,7 +10,8 @@ import {
   CANCEL_LOADING,
   NATIONS_FETCH_STARTED,
   REQUEST_JOIN_NATION,
-  REQUEST_LEAVE_NATION, DONE_SYNC_NATIONS,
+  REQUEST_LEAVE_NATION,
+  NATIONS_UPDATED,
 } from '../actions/nations';
 import type { NationType, NationIdType, EditingNationType } from '../types/Nation';
 import { resolveNation } from '../utils/nations';
@@ -58,14 +59,14 @@ export default (state: State = initialState, action: Action): State => {
         ...state,
         inProgress: true,
       };
-    case DONE_SYNC_NATIONS: {
-      const myNationIds = _(action.payload)
+    case NATIONS_UPDATED: {
+      const myNationIds = _(action.nations)
         .filter(nation => nation.joined)
         .map(nation => nation.id)
         .value();
       return {
         ...state,
-        nations: action.payload,
+        nations: action.nations,
         myNationIds,
       };
     }

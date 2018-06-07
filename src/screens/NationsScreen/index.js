@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 
 import NationsListScreen from './NationsListScreen';
-import { switchNationTab, openNation, requestSyncNations } from '../../actions/nations';
+import { switchNationTab, openNation } from '../../actions/nations';
 import { screen } from '../../global/Screens';
 import { resolveNation } from '../../utils/nations';
 import Colors from '../../global/colors';
@@ -40,10 +40,6 @@ type Actions = {
    */
   openNation: (NationIdType) => void,
   /**
-   * @desc Function to sync the nation's list with the blockchain
-   */
-  syncNations: () => void,
-  /**
    * @desc Function to start the process of create a nation
    */
   startNationCreation: () => void,
@@ -61,10 +57,6 @@ class NationsScreen extends NavigatorComponent<Props &Actions & WalletState & Na
         buttonColor: Colors.navigationButtonColor,
       }],
     });
-  }
-
-  onWillAppear() {
-    this.props.syncNations();
   }
 
   onNavBarButtonPress(id) {
@@ -120,9 +112,6 @@ const mapDispatchToProps = dispatch => ({
   },
   openNation(id) {
     dispatch(openNation(id));
-  },
-  syncNations() {
-    dispatch(requestSyncNations());
   },
   startNationCreation() {
     dispatch(startNationCreation());

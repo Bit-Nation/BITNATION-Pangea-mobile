@@ -3,43 +3,43 @@
 import { type NationType, type EditingNationType } from '../types/Nation';
 import type { NationIdType } from '../types/Nation';
 
-type StartNationCreationAction = { +type: 'START_NATION_CREATION' };
-type StartNationEditingAction = { +type: 'START_NATION_EDITING', +nation: NationType };
-type ResetNationCreationAction = { +type: 'RESET_NATION_CREATION' };
-type EditingNationFieldChangeAction = {
+export type StartNationCreationAction = { +type: 'START_NATION_CREATION' };
+export type StartNationEditingAction = { +type: 'START_NATION_EDITING', +nation: NationType };
+export type ResetNationCreationAction = { +type: 'RESET_NATION_CREATION' };
+export type EditingNationFieldChangeAction = {
   +type: 'EDITING_NATION_FIELD_CHANGE',
   +field: string,
   +payload: any,
 };
-type CancelNationCreationAction = { +type: 'CANCEL_NATION_CREATE' };
-type SaveNationDraftAction = {
+export type CancelNationCreationAction = { +type: 'CANCEL_NATION_CREATE' };
+export type SaveNationDraftAction = {
   +type: 'SAVE_NATION_DRAFT',
   +nation: EditingNationType,
   +callback: () => void,
 };
-type DeleteNationDraftAction = {
+export type DeleteNationDraftAction = {
   +type: 'DELETE_NATION_DRAFT',
   +nationId: NationIdType,
   +callback: () => void,
 };
-type SubmitNationAction = {
+export type SubmitNationAction = {
   +type: 'SUBMIT_NATION',
   +nation: EditingNationType,
   +callback: () => void,
 };
-type NationDraftSaveResultAction = {
+export type NationDraftSaveResultAction = {
   +type: 'NATION_DRAFT_SAVE_FINISHED',
-  +nationId: NationIdType,
+  +nationId: ?NationIdType,
   +error: ?Error,
 };
-type NationDraftDeleteResultAction = {
+export type NationDraftDeleteResultAction = {
   +type: 'NATION_DRAFT_DELETE_FINISHED',
   +nationId: NationIdType,
   +error: ?Error,
 };
-type NationSubmitResultAction = {
+export type NationSubmitResultAction = {
   +type: 'NATION_SUBMIT_FINISHED',
-  +nationId: NationIdType,
+  +nationId: ?NationIdType,
   +error: ?Error,
 };
 
@@ -183,7 +183,7 @@ export function submitNation(
  * @returns {NationDraftSaveResultAction} An action.
  */
 export function nationDraftSaveResult(
-  nationId: number,
+  nationId: ?number,
   error: ?Error,
 ): NationDraftSaveResultAction {
   return {
@@ -217,7 +217,7 @@ export function nationDraftDeleteResult(
  * @returns {NationSubmitResultAction} An action.
  */
 export function nationSubmitResult(
-  nationId: number,
+  nationId: ?number,
   error: ?Error,
 ): NationSubmitResultAction {
   return {

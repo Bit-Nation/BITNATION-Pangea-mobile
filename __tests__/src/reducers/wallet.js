@@ -48,7 +48,7 @@ describe('wallet reducer action handling', () => {
 
   test('walletSyncFailed', () => {
     const stateBefore = stateWithWallets;
-    const stateAfter = reducer(stateBefore, walletSyncFailed(mockWallet.ethAddress, mockError));
+    const stateAfter = reducer(stateBefore, walletSyncFailed(mockWallet.ethAddress, mockWallet.currency, mockError));
     expect(stateAfter).toEqual({
       ...stateBefore,
       wallets: [{ ...mockWallet, synchronizationError: mockError }],

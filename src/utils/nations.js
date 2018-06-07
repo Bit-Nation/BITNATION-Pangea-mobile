@@ -2,11 +2,7 @@
 import _ from 'lodash';
 import Colors from '../global/colors';
 import type { DBNationType, NationType, EditingNationType } from '../types/Nation';
-
-// @todo Import from correct place
-export const TX_JOB_STATUS_PENDING = 200;
-export const TX_JOB_STATUS_SUCCESS = 300;
-export const TX_JOB_STATUS_FAILED = 400;
+import { TX_JOB_STATUS } from '../global/Constants';
 
 /**
  * @desc Function to get a nation by id from array.
@@ -84,27 +80,74 @@ export function nationIsDraft(nation: NationType): boolean {
 }
 
 /**
+ * @desc Converts app editing nation model to database model.
+ * @param {EditingNationType} nation Editing nation to be converted.
+ * @param {number} nationId Id of nation to be set.
+ * @param {string} accountId Id of account that nation is related to.
+ * @return {*} Object to create a database model (it is without optional values)
+ */
+export function convertDraftToDatabase(nation: EditingNationType, nationId: number, accountId: string): * {
+  return {
+    id: nationId,
+    accountId,
+    created: false,
+    nationName: nation.nationName,
+    nationDescription: nation.nationDescription,
+    exists: nation.exists,
+    // @todo Fix virtual nation save unselected state
+    virtualNation: nation.virtualNation == null ? true : nation.virtualNation,
+    nationCode: nation.nationCode,
+    lawEnforcementMechanism: nation.lawEnforcementMechanism,
+    profit: nation.profit,
+    nonCitizenUse: nation.nonCitizenUse,
+    diplomaticRecognition: nation.diplomaticRecognition,
+    decisionMakingProcess: nation.decisionMakingProcess,
+    governanceService: nation.governanceService.join(', '),
+  };
+}
+
+/**
+ * @desc Converts database model to object to use in smart contract.
+ * @param {DBNationType} nation Nation to be converted
+ * @return {*} Object to pass into smart contract
+ */
+export function convertNationToBlockchain(nation: DBNationType) {
+  return {
+    nationName: nation.nationName,
+    nationDescription: nation.nationDescription,
+    exists: nation.exists,
+    virtualNation: nation.virtualNation,
+    nationCode: nation.nationCode,
+    lawEnforcementMechanism: nation.lawEnforcementMechanism,
+    profit: nation.profit,
+    nonCitizenUse: nation.nonCitizenUse,
+    diplomaticRecognition: nation.diplomaticRecognition,
+    decisionMakingProcess: nation.decisionMakingProcess,
+    governanceService: nation.governanceService,
+  };
+}
+
+/**
+ * @desc Convert NationType value to EditingNationType value
+ * @param {NationType} nation Nation to convert
+ * @return {EditingNationType} Convert nation.
+ */
+export function convertToEditingNation(nation: NationType): EditingNationType {
+  return {
+    ...nation,
+  };
+}
+
+/**
  * @desc Converts app nation model to database model.
  * @param {NationType} nationData Nation data to be converted.
  * @return {DBNationType} Database nation model.
  */
 export function convertToDatabase(nationData: NationType): DBNationType {
   return {
-    id: nationData.id,
+    ...convertDraftToDatabase(convertToEditingNation(nationData), nationData.id, nationData.accountId),
     idInSmartContract: nationData.idInSmartContract,
     created: nationData.created,
-    nationName: nationData.nationName,
-    nationDescription: nationData.nationDescription,
-    exists: nationData.exists,
-    // @todo Fix virtual nation save unselected state
-    virtualNation: nationData.virtualNation === null ? true : nationData.virtualNation,
-    nationCode: nationData.nationCode,
-    lawEnforcementMechanism: nationData.lawEnforcementMechanism,
-    profit: nationData.profit,
-    nonCitizenUse: nationData.nonCitizenUse,
-    diplomaticRecognition: nationData.diplomaticRecognition,
-    decisionMakingProcess: nationData.decisionMakingProcess,
-    governanceService: nationData.governanceService.join(', '),
     citizens: nationData.citizens,
     joined: nationData.joined,
     stateMutateAllowed: nationData.stateMutateAllowed,
@@ -121,6 +164,7 @@ export function convertToDatabase(nationData: NationType): DBNationType {
 export function convertFromDatabase(nation: DBNationType): NationType {
   return {
     id: nation.id,
+    accountId: nation.accountId,
     idInSmartContract: nation.idInSmartContract,
     created: nation.created,
     nationName: nation.nationName,
@@ -140,17 +184,6 @@ export function convertFromDatabase(nation: DBNationType): NationType {
     resetStateMutateAllowed: nation.resetStateMutateAllowed,
     tx: nation.tx === null ? null : { ...nation.tx },
     ethAddress: '',
-  };
-}
-
-/**
- * @desc Convert NationType value to EditingNationType value
- * @param {NationType} nation Nation to convert
- * @return {EditingNationType} Convert nation.
- */
-export function convertToEditingNation(nation: NationType): EditingNationType {
-  return {
-    ...nation,
   };
 }
 
@@ -178,13 +211,14 @@ export function nationIsValid(nation: EditingNationType | NationType): boolean {
  */
 export function statusColor(status: number) {
   switch (status) {
-    case TX_JOB_STATUS_SUCCESS:
+    case TX_JOB_STATUS.SUCCESS:
       return Colors.listItemTextState.accepted;
-    case TX_JOB_STATUS_FAILED:
+    case TX_JOB_STATUS.FAILED:
       return Colors.listItemTextState.rejected;
-    case TX_JOB_STATUS_PENDING:
+    case TX_JOB_STATUS.PENDING:
       return Colors.listItemTextState.pending;
     default:
       return Colors.listItemTextState.default;
   }
 }
+
