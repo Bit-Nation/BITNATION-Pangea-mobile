@@ -150,8 +150,6 @@ export function convertToDatabase(nationData: NationType): DBNationType {
     created: nationData.created,
     citizens: nationData.citizens,
     joined: nationData.joined,
-    stateMutateAllowed: nationData.stateMutateAllowed,
-    resetStateMutateAllowed: nationData.resetStateMutateAllowed,
     tx: nationData.tx,
   };
 }
@@ -180,8 +178,6 @@ export function convertFromDatabase(nation: DBNationType): NationType {
     governanceService: nation.governanceService.split(', ').filter(value => !_.isEmpty(value)),
     citizens: nation.citizens,
     joined: nation.joined,
-    stateMutateAllowed: nation.stateMutateAllowed,
-    resetStateMutateAllowed: nation.resetStateMutateAllowed,
     tx: nation.tx === null ? null : { ...nation.tx },
     ethAddress: '',
   };
