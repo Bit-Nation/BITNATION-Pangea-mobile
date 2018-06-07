@@ -14,6 +14,7 @@ import {
 } from '../actions/wallet';
 import type { WalletType } from '../types/Wallet';
 import { getWalletIndex } from '../utils/wallet';
+import { SERVICES_DESTROYED } from '../actions/serviceContainer';
 
 export type State = {
   +wallets: Array<WalletType> | null,
@@ -41,6 +42,8 @@ export const initialState: State = {
  */
 export default (state: State = initialState, action: Action): State => {
   switch (action.type) {
+    case SERVICES_DESTROYED:
+      return initialState;
     case SELECT_WALLET:
       return Object.assign({}, state, { selectedWalletCurrency: action.wallet.currency, selectedWalletAddress: action.wallet.ethAddress });
     case WALLETS_LIST_UPDATED:
