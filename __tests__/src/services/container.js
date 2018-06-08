@@ -6,6 +6,8 @@ import type { Account } from '../../../src/types/Account';
 import EthereumService from '../../../src/services/ethereum';
 import WalletService from '../../../src/services/wallet';
 
+jest.mock('reconnecting-websocket');
+
 const accountMock: Account = ({
   ...buildEmptyAccount(),
   name: 'NAME',
