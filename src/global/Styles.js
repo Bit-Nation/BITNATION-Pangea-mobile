@@ -218,7 +218,6 @@ const styles = {
   },
 
   gridPanelViewWarning: {
-    flex: 2,
     flexDirection: 'column',
     justifyContent: 'space-between',
     alignItems: 'stretch',
