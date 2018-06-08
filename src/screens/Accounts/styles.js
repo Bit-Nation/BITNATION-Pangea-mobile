@@ -67,6 +67,7 @@ const styles = MediaQueryStyleSheet.create({
   createButton: {
     height: 54, backgroundColor: 'white', alignSelf: 'stretch', borderRadius: 0,
   },
+  warningPanelChildrenContainerStyle: { ...GlobalStyles.noflex, marginBottom: -15 },
 });
 
 export default styles;

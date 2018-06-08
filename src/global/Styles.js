@@ -217,6 +217,18 @@ const styles = {
     padding: fontSizeNormalizer(16),
   },
 
+  gridPanelViewWarning: {
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    alignItems: 'stretch',
+    margin: 4,
+    borderRadius: 8,
+    backgroundColor: Colors.white,
+    overflow: 'hidden',
+    // INDENTS
+    padding: fontSizeNormalizer(16),
+  },
+
   // Make an element inside a gridPanelView (e.g. style=listContainer) flush left/right by
   // removing the LR margin indents
   // Use on a View inside a gridPanelView.
