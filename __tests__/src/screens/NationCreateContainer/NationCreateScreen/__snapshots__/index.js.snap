@@ -152,7 +152,7 @@ ShallowWrapper {
               title={undefined}
               titleStyle={
                 Object {
-                  "color": "white",
+                  "color": "#58595B",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -284,7 +284,7 @@ ShallowWrapper {
               title="Location"
               titleStyle={
                 Object {
-                  "color": "white",
+                  "color": "#58595B",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -401,7 +401,7 @@ ShallowWrapper {
               title="Governmental Structure"
               titleStyle={
                 Object {
-                  "color": "white",
+                  "color": "#58595B",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -760,7 +760,7 @@ ShallowWrapper {
               title="Options"
               titleStyle={
                 Object {
-                  "color": "white",
+                  "color": "#58595B",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -852,7 +852,7 @@ ShallowWrapper {
           style={
             Object {
               "alignItems": "stretch",
-              "backgroundColor": "#3e9eff",
+              "backgroundColor": "#58595B",
               "flexDirection": "row",
               "height": 55,
               "justifyContent": "space-around",
@@ -1004,7 +1004,7 @@ ShallowWrapper {
               title={undefined}
               titleStyle={
                 Object {
-                  "color": "white",
+                  "color": "#58595B",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -1136,7 +1136,7 @@ ShallowWrapper {
               title="Location"
               titleStyle={
                 Object {
-                  "color": "white",
+                  "color": "#58595B",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -1253,7 +1253,7 @@ ShallowWrapper {
               title="Governmental Structure"
               titleStyle={
                 Object {
-                  "color": "white",
+                  "color": "#58595B",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -1612,7 +1612,7 @@ ShallowWrapper {
               title="Options"
               titleStyle={
                 Object {
-                  "color": "white",
+                  "color": "#58595B",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -1783,7 +1783,7 @@ ShallowWrapper {
                 title={undefined}
                 titleStyle={
                   Object {
-                    "color": "white",
+                    "color": "#58595B",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -1915,7 +1915,7 @@ ShallowWrapper {
                 title="Location"
                 titleStyle={
                   Object {
-                    "color": "white",
+                    "color": "#58595B",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -2032,7 +2032,7 @@ ShallowWrapper {
                 title="Governmental Structure"
                 titleStyle={
                   Object {
-                    "color": "white",
+                    "color": "#58595B",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -2391,7 +2391,7 @@ ShallowWrapper {
                 title="Options"
                 titleStyle={
                   Object {
-                    "color": "white",
+                    "color": "#58595B",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -2713,7 +2713,7 @@ ShallowWrapper {
                 },
                 "title": undefined,
                 "titleStyle": Object {
-                  "color": "white",
+                  "color": "#58595B",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -3180,7 +3180,7 @@ ShallowWrapper {
                 },
                 "title": "Location",
                 "titleStyle": Object {
-                  "color": "white",
+                  "color": "#58595B",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -3739,7 +3739,7 @@ ShallowWrapper {
                 },
                 "title": "Governmental Structure",
                 "titleStyle": Object {
-                  "color": "white",
+                  "color": "#58595B",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -4769,7 +4769,7 @@ ShallowWrapper {
                 },
                 "title": "Options",
                 "titleStyle": Object {
-                  "color": "white",
+                  "color": "#58595B",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -5013,7 +5013,7 @@ ShallowWrapper {
           ],
           "style": Object {
             "alignItems": "stretch",
-            "backgroundColor": "#3e9eff",
+            "backgroundColor": "#58595B",
             "flexDirection": "row",
             "height": 55,
             "justifyContent": "space-around",
@@ -5191,7 +5191,7 @@ ShallowWrapper {
                 title={undefined}
                 titleStyle={
                   Object {
-                    "color": "white",
+                    "color": "#58595B",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -5323,7 +5323,7 @@ ShallowWrapper {
                 title="Location"
                 titleStyle={
                   Object {
-                    "color": "white",
+                    "color": "#58595B",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -5440,7 +5440,7 @@ ShallowWrapper {
                 title="Governmental Structure"
                 titleStyle={
                   Object {
-                    "color": "white",
+                    "color": "#58595B",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -5799,7 +5799,7 @@ ShallowWrapper {
                 title="Options"
                 titleStyle={
                   Object {
-                    "color": "white",
+                    "color": "#58595B",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -5891,7 +5891,7 @@ ShallowWrapper {
             style={
               Object {
                 "alignItems": "stretch",
-                "backgroundColor": "#3e9eff",
+                "backgroundColor": "#58595B",
                 "flexDirection": "row",
                 "height": 55,
                 "justifyContent": "space-around",
@@ -6043,7 +6043,7 @@ ShallowWrapper {
                 title={undefined}
                 titleStyle={
                   Object {
-                    "color": "white",
+                    "color": "#58595B",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -6175,7 +6175,7 @@ ShallowWrapper {
                 title="Location"
                 titleStyle={
                   Object {
-                    "color": "white",
+                    "color": "#58595B",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -6292,7 +6292,7 @@ ShallowWrapper {
                 title="Governmental Structure"
                 titleStyle={
                   Object {
-                    "color": "white",
+                    "color": "#58595B",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -6651,7 +6651,7 @@ ShallowWrapper {
                 title="Options"
                 titleStyle={
                   Object {
-                    "color": "white",
+                    "color": "#58595B",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -6822,7 +6822,7 @@ ShallowWrapper {
                   title={undefined}
                   titleStyle={
                     Object {
-                      "color": "white",
+                      "color": "#58595B",
                       "fontFamily": "Roboto",
                       "fontSize": 22,
                       "fontWeight": "bold",
@@ -6954,7 +6954,7 @@ ShallowWrapper {
                   title="Location"
                   titleStyle={
                     Object {
-                      "color": "white",
+                      "color": "#58595B",
                       "fontFamily": "Roboto",
                       "fontSize": 22,
                       "fontWeight": "bold",
@@ -7071,7 +7071,7 @@ ShallowWrapper {
                   title="Governmental Structure"
                   titleStyle={
                     Object {
-                      "color": "white",
+                      "color": "#58595B",
                       "fontFamily": "Roboto",
                       "fontSize": 22,
                       "fontWeight": "bold",
@@ -7430,7 +7430,7 @@ ShallowWrapper {
                   title="Options"
                   titleStyle={
                     Object {
-                      "color": "white",
+                      "color": "#58595B",
                       "fontFamily": "Roboto",
                       "fontSize": 22,
                       "fontWeight": "bold",
@@ -7752,7 +7752,7 @@ ShallowWrapper {
                   },
                   "title": undefined,
                   "titleStyle": Object {
-                    "color": "white",
+                    "color": "#58595B",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -8219,7 +8219,7 @@ ShallowWrapper {
                   },
                   "title": "Location",
                   "titleStyle": Object {
-                    "color": "white",
+                    "color": "#58595B",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -8778,7 +8778,7 @@ ShallowWrapper {
                   },
                   "title": "Governmental Structure",
                   "titleStyle": Object {
-                    "color": "white",
+                    "color": "#58595B",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -9808,7 +9808,7 @@ ShallowWrapper {
                   },
                   "title": "Options",
                   "titleStyle": Object {
-                    "color": "white",
+                    "color": "#58595B",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -10052,7 +10052,7 @@ ShallowWrapper {
             ],
             "style": Object {
               "alignItems": "stretch",
-              "backgroundColor": "#3e9eff",
+              "backgroundColor": "#58595B",
               "flexDirection": "row",
               "height": 55,
               "justifyContent": "space-around",
