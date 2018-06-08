@@ -3,7 +3,7 @@
 /**
  * @desc Utility type to be used as possible currency values.
  */
-export type CurrencyType = 'ETH';
+export type CurrencyType = 'ETH' | 'PAT';
 
 /**
  * @desc Wallet type used in the app.
