@@ -78,7 +78,7 @@ class ChatScreen extends Component<Props, State> {
     if (props.isBot !== true) {
       const selectedNation = resolveNation(props.nations || [], props.nationId);
       if (selectedNation === null) {
-        this.props.navigator.pop();
+        props.navigator.pop();
         return;
       }
       this.nationId = selectedNation.idInSmartContract;
@@ -187,7 +187,7 @@ class ChatScreen extends Component<Props, State> {
         nation_id: this.nationId,
         msg: messages[0].text,
         from: this.props.user ? this.props.user.name : 'anonymous',
-        userId: this.props.user ? this.props.user.uid : 'anonymous',
+        userId: this.props.user ? this.props.user.id : 'anonymous',
       };
       this.connection.emit('room:msg', newMessage);
     }
@@ -198,7 +198,7 @@ class ChatScreen extends Component<Props, State> {
 
   render() {
     const sendingUser = {
-      _id: this.props.user ? this.props.user.uid : 'anonymous',
+      _id: this.props.user ? this.props.user.id : 'anonymous',
       name: this.props.user ? this.props.user.name : 'anonymous',
     };
     return (
