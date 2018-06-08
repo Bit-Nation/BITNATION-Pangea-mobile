@@ -52,7 +52,7 @@ ShallowWrapper {
           title="Create Wallet"
           titleStyle={
             Object {
-              "color": "white",
+              "color": "#58595B",
               "fontFamily": "Roboto",
               "fontSize": 22,
               "fontWeight": "bold",
@@ -89,7 +89,7 @@ ShallowWrapper {
           title="Restore Wallet"
           titleStyle={
             Object {
-              "color": "white",
+              "color": "#58595B",
               "fontFamily": "Roboto",
               "fontSize": 22,
               "fontWeight": "bold",
@@ -135,7 +135,7 @@ ShallowWrapper {
             title="Create Wallet"
             titleStyle={
               Object {
-                "color": "white",
+                "color": "#58595B",
                 "fontFamily": "Roboto",
                 "fontSize": 22,
                 "fontWeight": "bold",
@@ -172,7 +172,7 @@ ShallowWrapper {
             title="Restore Wallet"
             titleStyle={
               Object {
-                "color": "white",
+                "color": "#58595B",
                 "fontFamily": "Roboto",
                 "fontSize": 22,
                 "fontWeight": "bold",
@@ -219,7 +219,7 @@ ShallowWrapper {
             },
             "title": "Create Wallet",
             "titleStyle": Object {
-              "color": "white",
+              "color": "#58595B",
               "fontFamily": "Roboto",
               "fontSize": 22,
               "fontWeight": "bold",
@@ -261,7 +261,7 @@ ShallowWrapper {
             },
             "title": "Restore Wallet",
             "titleStyle": Object {
-              "color": "white",
+              "color": "#58595B",
               "fontFamily": "Roboto",
               "fontSize": 22,
               "fontWeight": "bold",
@@ -320,7 +320,7 @@ ShallowWrapper {
             title="Create Wallet"
             titleStyle={
               Object {
-                "color": "white",
+                "color": "#58595B",
                 "fontFamily": "Roboto",
                 "fontSize": 22,
                 "fontWeight": "bold",
@@ -357,7 +357,7 @@ ShallowWrapper {
             title="Restore Wallet"
             titleStyle={
               Object {
-                "color": "white",
+                "color": "#58595B",
                 "fontFamily": "Roboto",
                 "fontSize": 22,
                 "fontWeight": "bold",
@@ -403,7 +403,7 @@ ShallowWrapper {
               title="Create Wallet"
               titleStyle={
                 Object {
-                  "color": "white",
+                  "color": "#58595B",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -440,7 +440,7 @@ ShallowWrapper {
               title="Restore Wallet"
               titleStyle={
                 Object {
-                  "color": "white",
+                  "color": "#58595B",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -487,7 +487,7 @@ ShallowWrapper {
               },
               "title": "Create Wallet",
               "titleStyle": Object {
-                "color": "white",
+                "color": "#58595B",
                 "fontFamily": "Roboto",
                 "fontSize": 22,
                 "fontWeight": "bold",
@@ -529,7 +529,7 @@ ShallowWrapper {
               },
               "title": "Restore Wallet",
               "titleStyle": Object {
-                "color": "white",
+                "color": "#58595B",
                 "fontFamily": "Roboto",
                 "fontSize": 22,
                 "fontWeight": "bold",
