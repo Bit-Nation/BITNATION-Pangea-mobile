@@ -16,14 +16,14 @@ ShallowWrapper {
               Object {
                 "leftButtons": Array [
                   Object {
-                    "buttonColor": "#007AFF",
+                    "buttonColor": "#FF8B00",
                     "id": "cancel",
                     "title": "Cancel",
                   },
                 ],
                 "rightButtons": Array [
                   Object {
-                    "buttonColor": "#007AFF",
+                    "buttonColor": "#FF8B00",
                     "id": "confirm",
                     "title": "Confirm",
                   },
@@ -56,11 +56,7 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <BackgroundImage
-          source={
-            Object {
-              "testUri": "../../../src/assets/images/background.jpg",
-            }
-          }
+          source={1}
           style={undefined}
         />,
         <FakeNavigationBar
@@ -120,7 +116,7 @@ ShallowWrapper {
               title={undefined}
               titleStyle={
                 Object {
-                  "color": "white",
+                  "color": "#58595B",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -159,7 +155,7 @@ ShallowWrapper {
                       ellipsizeMode="tail"
                       style={
                         Object {
-                          "color": "#FFFFFF",
+                          "color": "#929497",
                           "fontFamily": "Roboto",
                           "fontSize": 17,
                           "fontWeight": "normal",
@@ -213,7 +209,7 @@ ShallowWrapper {
                       ellipsizeMode="tail"
                       style={
                         Object {
-                          "color": "#FFFFFF",
+                          "color": "#929497",
                           "fontFamily": "Roboto",
                           "fontSize": 17,
                           "fontWeight": "normal",
@@ -245,9 +241,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "function",
         "props": Object {
-          "source": Object {
-            "testUri": "../../../src/assets/images/background.jpg",
-          },
+          "source": 1,
           "style": undefined,
         },
         "ref": null,
@@ -312,7 +306,7 @@ ShallowWrapper {
               title={undefined}
               titleStyle={
                 Object {
-                  "color": "white",
+                  "color": "#58595B",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -351,7 +345,7 @@ ShallowWrapper {
                       ellipsizeMode="tail"
                       style={
                         Object {
-                          "color": "#FFFFFF",
+                          "color": "#929497",
                           "fontFamily": "Roboto",
                           "fontSize": 17,
                           "fontWeight": "normal",
@@ -405,7 +399,7 @@ ShallowWrapper {
                       ellipsizeMode="tail"
                       style={
                         Object {
-                          "color": "#FFFFFF",
+                          "color": "#929497",
                           "fontFamily": "Roboto",
                           "fontSize": 17,
                           "fontWeight": "normal",
@@ -467,7 +461,7 @@ ShallowWrapper {
                 title={undefined}
                 titleStyle={
                   Object {
-                    "color": "white",
+                    "color": "#58595B",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -506,7 +500,7 @@ ShallowWrapper {
                         ellipsizeMode="tail"
                         style={
                           Object {
-                            "color": "#FFFFFF",
+                            "color": "#929497",
                             "fontFamily": "Roboto",
                             "fontSize": 17,
                             "fontWeight": "normal",
@@ -560,7 +554,7 @@ ShallowWrapper {
                         ellipsizeMode="tail"
                         style={
                           Object {
-                            "color": "#FFFFFF",
+                            "color": "#929497",
                             "fontFamily": "Roboto",
                             "fontSize": 17,
                             "fontWeight": "normal",
@@ -632,7 +626,7 @@ ShallowWrapper {
                         ellipsizeMode="tail"
                         style={
                           Object {
-                            "color": "#FFFFFF",
+                            "color": "#929497",
                             "fontFamily": "Roboto",
                             "fontSize": 17,
                             "fontWeight": "normal",
@@ -686,7 +680,7 @@ ShallowWrapper {
                         ellipsizeMode="tail"
                         style={
                           Object {
-                            "color": "#FFFFFF",
+                            "color": "#929497",
                             "fontFamily": "Roboto",
                             "fontSize": 17,
                             "fontWeight": "normal",
@@ -721,7 +715,7 @@ ShallowWrapper {
                 },
                 "title": undefined,
                 "titleStyle": Object {
-                  "color": "white",
+                  "color": "#58595B",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -757,7 +751,7 @@ ShallowWrapper {
                         ellipsizeMode="tail"
                         style={
                           Object {
-                            "color": "#FFFFFF",
+                            "color": "#929497",
                             "fontFamily": "Roboto",
                             "fontSize": 17,
                             "fontWeight": "normal",
@@ -811,7 +805,7 @@ ShallowWrapper {
                         ellipsizeMode="tail"
                         style={
                           Object {
-                            "color": "#FFFFFF",
+                            "color": "#929497",
                             "fontFamily": "Roboto",
                             "fontSize": 17,
                             "fontWeight": "normal",
@@ -849,7 +843,7 @@ ShallowWrapper {
                           ellipsizeMode="tail"
                           style={
                             Object {
-                              "color": "#FFFFFF",
+                              "color": "#929497",
                               "fontFamily": "Roboto",
                               "fontSize": 17,
                               "fontWeight": "normal",
@@ -903,7 +897,7 @@ ShallowWrapper {
                           ellipsizeMode="tail"
                           style={
                             Object {
-                              "color": "#FFFFFF",
+                              "color": "#929497",
                               "fontFamily": "Roboto",
                               "fontSize": 17,
                               "fontWeight": "normal",
@@ -934,7 +928,7 @@ ShallowWrapper {
                           ellipsizeMode="tail"
                           style={
                             Object {
-                              "color": "#FFFFFF",
+                              "color": "#929497",
                               "fontFamily": "Roboto",
                               "fontSize": 17,
                               "fontWeight": "normal",
@@ -960,7 +954,7 @@ ShallowWrapper {
                           "children": "What gas price would you like to set?",
                           "ellipsizeMode": "tail",
                           "style": Object {
-                            "color": "#FFFFFF",
+                            "color": "#929497",
                             "fontFamily": "Roboto",
                             "fontSize": 17,
                             "fontWeight": "normal",
@@ -1042,7 +1036,7 @@ ShallowWrapper {
                           ellipsizeMode="tail"
                           style={
                             Object {
-                              "color": "#FFFFFF",
+                              "color": "#929497",
                               "fontFamily": "Roboto",
                               "fontSize": 17,
                               "fontWeight": "normal",
@@ -1069,7 +1063,7 @@ ShallowWrapper {
                           "children": "Gas Price: 2",
                           "ellipsizeMode": "tail",
                           "style": Object {
-                            "color": "#FFFFFF",
+                            "color": "#929497",
                             "fontFamily": "Roboto",
                             "fontSize": 17,
                             "fontWeight": "normal",
@@ -1106,11 +1100,7 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <BackgroundImage
-            source={
-              Object {
-                "testUri": "../../../src/assets/images/background.jpg",
-              }
-            }
+            source={1}
             style={undefined}
           />,
           <FakeNavigationBar
@@ -1170,7 +1160,7 @@ ShallowWrapper {
                 title={undefined}
                 titleStyle={
                   Object {
-                    "color": "white",
+                    "color": "#58595B",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -1209,7 +1199,7 @@ ShallowWrapper {
                         ellipsizeMode="tail"
                         style={
                           Object {
-                            "color": "#FFFFFF",
+                            "color": "#929497",
                             "fontFamily": "Roboto",
                             "fontSize": 17,
                             "fontWeight": "normal",
@@ -1263,7 +1253,7 @@ ShallowWrapper {
                         ellipsizeMode="tail"
                         style={
                           Object {
-                            "color": "#FFFFFF",
+                            "color": "#929497",
                             "fontFamily": "Roboto",
                             "fontSize": 17,
                             "fontWeight": "normal",
@@ -1295,9 +1285,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
-            "source": Object {
-              "testUri": "../../../src/assets/images/background.jpg",
-            },
+            "source": 1,
             "style": undefined,
           },
           "ref": null,
@@ -1362,7 +1350,7 @@ ShallowWrapper {
                 title={undefined}
                 titleStyle={
                   Object {
-                    "color": "white",
+                    "color": "#58595B",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -1401,7 +1389,7 @@ ShallowWrapper {
                         ellipsizeMode="tail"
                         style={
                           Object {
-                            "color": "#FFFFFF",
+                            "color": "#929497",
                             "fontFamily": "Roboto",
                             "fontSize": 17,
                             "fontWeight": "normal",
@@ -1455,7 +1443,7 @@ ShallowWrapper {
                         ellipsizeMode="tail"
                         style={
                           Object {
-                            "color": "#FFFFFF",
+                            "color": "#929497",
                             "fontFamily": "Roboto",
                             "fontSize": 17,
                             "fontWeight": "normal",
@@ -1517,7 +1505,7 @@ ShallowWrapper {
                   title={undefined}
                   titleStyle={
                     Object {
-                      "color": "white",
+                      "color": "#58595B",
                       "fontFamily": "Roboto",
                       "fontSize": 22,
                       "fontWeight": "bold",
@@ -1556,7 +1544,7 @@ ShallowWrapper {
                           ellipsizeMode="tail"
                           style={
                             Object {
-                              "color": "#FFFFFF",
+                              "color": "#929497",
                               "fontFamily": "Roboto",
                               "fontSize": 17,
                               "fontWeight": "normal",
@@ -1610,7 +1598,7 @@ ShallowWrapper {
                           ellipsizeMode="tail"
                           style={
                             Object {
-                              "color": "#FFFFFF",
+                              "color": "#929497",
                               "fontFamily": "Roboto",
                               "fontSize": 17,
                               "fontWeight": "normal",
@@ -1682,7 +1670,7 @@ ShallowWrapper {
                           ellipsizeMode="tail"
                           style={
                             Object {
-                              "color": "#FFFFFF",
+                              "color": "#929497",
                               "fontFamily": "Roboto",
                               "fontSize": 17,
                               "fontWeight": "normal",
@@ -1736,7 +1724,7 @@ ShallowWrapper {
                           ellipsizeMode="tail"
                           style={
                             Object {
-                              "color": "#FFFFFF",
+                              "color": "#929497",
                               "fontFamily": "Roboto",
                               "fontSize": 17,
                               "fontWeight": "normal",
@@ -1771,7 +1759,7 @@ ShallowWrapper {
                   },
                   "title": undefined,
                   "titleStyle": Object {
-                    "color": "white",
+                    "color": "#58595B",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -1807,7 +1795,7 @@ ShallowWrapper {
                           ellipsizeMode="tail"
                           style={
                             Object {
-                              "color": "#FFFFFF",
+                              "color": "#929497",
                               "fontFamily": "Roboto",
                               "fontSize": 17,
                               "fontWeight": "normal",
@@ -1861,7 +1849,7 @@ ShallowWrapper {
                           ellipsizeMode="tail"
                           style={
                             Object {
-                              "color": "#FFFFFF",
+                              "color": "#929497",
                               "fontFamily": "Roboto",
                               "fontSize": 17,
                               "fontWeight": "normal",
@@ -1899,7 +1887,7 @@ ShallowWrapper {
                             ellipsizeMode="tail"
                             style={
                               Object {
-                                "color": "#FFFFFF",
+                                "color": "#929497",
                                 "fontFamily": "Roboto",
                                 "fontSize": 17,
                                 "fontWeight": "normal",
@@ -1953,7 +1941,7 @@ ShallowWrapper {
                             ellipsizeMode="tail"
                             style={
                               Object {
-                                "color": "#FFFFFF",
+                                "color": "#929497",
                                 "fontFamily": "Roboto",
                                 "fontSize": 17,
                                 "fontWeight": "normal",
@@ -1984,7 +1972,7 @@ ShallowWrapper {
                             ellipsizeMode="tail"
                             style={
                               Object {
-                                "color": "#FFFFFF",
+                                "color": "#929497",
                                 "fontFamily": "Roboto",
                                 "fontSize": 17,
                                 "fontWeight": "normal",
@@ -2010,7 +1998,7 @@ ShallowWrapper {
                             "children": "What gas price would you like to set?",
                             "ellipsizeMode": "tail",
                             "style": Object {
-                              "color": "#FFFFFF",
+                              "color": "#929497",
                               "fontFamily": "Roboto",
                               "fontSize": 17,
                               "fontWeight": "normal",
@@ -2092,7 +2080,7 @@ ShallowWrapper {
                             ellipsizeMode="tail"
                             style={
                               Object {
-                                "color": "#FFFFFF",
+                                "color": "#929497",
                                 "fontFamily": "Roboto",
                                 "fontSize": 17,
                                 "fontWeight": "normal",
@@ -2119,7 +2107,7 @@ ShallowWrapper {
                             "children": "Gas Price: 2",
                             "ellipsizeMode": "tail",
                             "style": Object {
-                              "color": "#FFFFFF",
+                              "color": "#929497",
                               "fontFamily": "Roboto",
                               "fontSize": 17,
                               "fontWeight": "normal",

@@ -1,4 +1,4 @@
-const background = require('../assets/images/background.jpg');
+const background = require('../assets/images/background.png');
 const rightArrow = require('../assets/images/right_arrow.png');
 const ethereumLogo = require('../assets/images/ethereum_logo.png');
 const patLogo = require('../assets/images/pat_logo.png');
@@ -13,6 +13,7 @@ const build = require('../assets/images/Chrysler_Building.png');
 const monroe = require('../assets/images/monroe.png');
 const fern = require('../assets/images/fern.png');
 const moon = require('../assets/images/moon.png');
+const avatarIcon = require('../assets/images/avatarIcon.png');
 
 const privateKeyDemo = require('../assets/images/privateKeyDemo.png');
 
@@ -65,6 +66,7 @@ const Images = {
   monroe,
   fern,
   moon,
+  avatarIcon,
   bitLogoBig,
   QR,
   privateKeyDemo,

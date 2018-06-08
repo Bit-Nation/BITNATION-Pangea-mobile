@@ -16,5 +16,6 @@ const styles = MediaQueryStyleSheet.create({
     flex: 0,
     justifyContent: 'flex-start',
   },
+  textWallet: { fontWeight: 'normal', color: '#FF8B00', fontSize: 30 },
 });
 export default styles;

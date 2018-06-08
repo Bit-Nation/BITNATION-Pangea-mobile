@@ -44,11 +44,7 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <BackgroundImage
-          source={
-            Object {
-              "testUri": "../../../src/assets/images/background.jpg",
-            }
-          }
+          source={1}
           style={undefined}
         />,
         <FakeNavigationBar
@@ -104,7 +100,7 @@ ShallowWrapper {
             title={undefined}
             titleStyle={
               Object {
-                "color": "white",
+                "color": "#58595B",
                 "fontFamily": "Roboto",
                 "fontSize": 22,
                 "fontWeight": "bold",
@@ -196,9 +192,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "function",
         "props": Object {
-          "source": Object {
-            "testUri": "../../../src/assets/images/background.jpg",
-          },
+          "source": 1,
           "style": undefined,
         },
         "ref": null,
@@ -260,7 +254,7 @@ ShallowWrapper {
               title={undefined}
               titleStyle={
                 Object {
-                  "color": "white",
+                  "color": "#58595B",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -458,7 +452,7 @@ ShallowWrapper {
               },
               "title": undefined,
               "titleStyle": Object {
-                "color": "white",
+                "color": "#58595B",
                 "fontFamily": "Roboto",
                 "fontSize": 22,
                 "fontWeight": "bold",
@@ -621,11 +615,7 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <BackgroundImage
-            source={
-              Object {
-                "testUri": "../../../src/assets/images/background.jpg",
-              }
-            }
+            source={1}
             style={undefined}
           />,
           <FakeNavigationBar
@@ -681,7 +671,7 @@ ShallowWrapper {
               title={undefined}
               titleStyle={
                 Object {
-                  "color": "white",
+                  "color": "#58595B",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -773,9 +763,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
-            "source": Object {
-              "testUri": "../../../src/assets/images/background.jpg",
-            },
+            "source": 1,
             "style": undefined,
           },
           "ref": null,
@@ -837,7 +825,7 @@ ShallowWrapper {
                 title={undefined}
                 titleStyle={
                   Object {
-                    "color": "white",
+                    "color": "#58595B",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -1035,7 +1023,7 @@ ShallowWrapper {
                 },
                 "title": undefined,
                 "titleStyle": Object {
-                  "color": "white",
+                  "color": "#58595B",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
