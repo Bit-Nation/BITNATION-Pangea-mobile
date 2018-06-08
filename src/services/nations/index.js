@@ -198,8 +198,12 @@ export default class NationsService {
       });
     }
 
-    const isNationJoined = (await this.ethereumService.nations.getJoinedNations({ from: this.ethereumService.wallet.address }))
-      .map(bigNumber => bigNumber.toNumber()).includes(idInSmartContract);
+    // For some reason we sometimes get object instead of array here. This object contains nations that we don't actually join. So we ignore it.
+    const joinedNations = (await this.ethereumService.nations.getJoinedNations({ from: this.ethereumService.wallet.address }));
+    let isNationJoined: boolean = false;
+    if (Array.isArray(joinedNations) === true) {
+      isNationJoined = joinedNations.map(bigNumber => bigNumber.toNumber()).includes(idInSmartContract);
+    }
     const citizensNumber = (await this.ethereumService.nations.getNumCitizens(idInSmartContract)).toNumber();
 
     const nationToUpdate: DBNationType = db.objects('Nation').filtered(`accountId = '${this.currentAccountId}' && idInSmartContract = ${idInSmartContract}`)[0];
