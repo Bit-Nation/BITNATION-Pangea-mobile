@@ -4,7 +4,9 @@ import Realm from 'realm';
 import co from 'co';
 import schemas from './schemata';
 
-const REALM_PATH = 'pangea';
+// We keep previous database to be able later do some restore.
+const REALM_PATH_BEFORE_0_4_5 = 'pangea';
+const REALM_PATH = 'pangea_0_4_5';
 
 /**
  * @desc Creates an realm instance
