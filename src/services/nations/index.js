@@ -191,7 +191,7 @@ export default class NationsService {
   async performNationUpdate(idInSmartContract: number, txHash: string | null) {
     const db = await this.dbPromise;
     const draftToUpdate: DBNationType = db.objects('Nation').filtered(`tx.txHash = '${txHash || ''}' AND tx.type = '${TX_JOB_TYPE.NATION_CREATE}'`)[0];
-    if (draftToUpdate != null) {
+    if (draftToUpdate != null && draftToUpdate.idInSmartContract !== idInSmartContract) {
       // It's a draft that we need to update in database as submitted nation
       db.write(() => {
         draftToUpdate.idInSmartContract = idInSmartContract;
@@ -207,7 +207,7 @@ export default class NationsService {
     const citizensNumber = (await this.ethereumService.nations.getNumCitizens(idInSmartContract)).toNumber();
 
     const nationToUpdate: DBNationType = db.objects('Nation').filtered(`accountId = '${this.currentAccountId}' && idInSmartContract = ${idInSmartContract}`)[0];
-    if (nationToUpdate != null) {
+    if (nationToUpdate != null && (nationToUpdate.joined !== isNationJoined || nationToUpdate.citizens !== citizensNumber)) {
       // It's a nation that somehow is already in database, so we just update it.
       db.write(() => {
         nationToUpdate.joined = isNationJoined;
