@@ -1,3 +1,5 @@
+// @flow
+
 import reducer, { initialState } from '../../../src/reducers/wallet';
 import {
   selectWallet,
@@ -9,24 +11,29 @@ import {
   walletSyncFailed,
 } from '../../../src/actions/wallet';
 import { servicesDestroyed } from '../../../src/actions/serviceContainer';
+import type { WalletType } from '../../../src/types/Wallet';
 
-const mockWallet = {
+const mockWallet: WalletType = {
   ethAddress: '0xtestAddress',
   currency: 'ETH',
   balance: null,
   name: 'Test wallet',
 };
 
-const mockError = {
-  error: 'ERROR',
+const mockPATWallet: WalletType = {
+  ...mockWallet,
+  currency: 'PAT',
 };
 
-describe('wallet reducer action handling', () => {
-  test('default returns the same state', () => {
-    expect(reducer(initialState, {})).toEqual(initialState);
-  });
+const mockWallets = [
+  mockWallet,
+  mockPATWallet,
+];
 
-  const stateWithWallets = reducer(initialState, walletsListUpdated([mockWallet]));
+const mockError: Error = new Error('error');
+
+describe('wallet reducer action handling', () => {
+  const stateWithWallets = reducer(initialState, walletsListUpdated(mockWallets));
 
   test('after service destroy returns initial state', () => {
     expect(reducer(stateWithWallets, servicesDestroyed())).toEqual(initialState);
@@ -57,7 +64,14 @@ describe('wallet reducer action handling', () => {
       const stateAfter = reducer(stateBefore, walletSyncFailed(mockWallet.ethAddress, mockWallet.currency, mockError));
       expect(stateAfter).toEqual({
         ...stateBefore,
-        wallets: [{ ...mockWallet, synchronizationError: mockError }],
+        ...stateBefore,
+        wallets: [
+          {
+            ...mockWallet,
+            synchronizationError: mockError,
+          },
+          mockPATWallet,
+        ],
       });
     });
 
@@ -71,16 +85,22 @@ describe('wallet reducer action handling', () => {
   describe('updateWalletBalance', () => {
     test('with wallets', () => {
       const stateBefore = stateWithWallets;
-      const stateAfter = reducer(stateBefore, updateWalletBalance(mockWallet.ethAddress));
+      const stateAfter = reducer(stateBefore, updateWalletBalance(mockWallet.ethAddress, 'ETH'));
       expect(stateAfter).toEqual({
         ...stateBefore,
-        wallets: [{ ...mockWallet, synchronizationError: undefined }],
+        wallets: [
+          {
+            ...mockWallet,
+            synchronizationError: undefined,
+          },
+          mockPATWallet,
+        ],
       });
     });
 
     test('without wallets', () => {
       const stateBefore = initialState;
-      const stateAfter = reducer(stateBefore, updateWalletBalance(mockWallet.ethAddress));
+      const stateAfter = reducer(stateBefore, updateWalletBalance(mockWallet.ethAddress, 'ETH'));
       expect(stateAfter).toEqual(stateBefore);
     });
   });

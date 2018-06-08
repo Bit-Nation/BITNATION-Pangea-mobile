@@ -14,7 +14,7 @@ import {
 } from '../actions/wallet';
 import type { WalletType } from '../types/Wallet';
 import { getWalletIndex } from '../utils/wallet';
-import { SERVICES_DESTROYED } from '../actions/serviceContainer';
+import { SERVICES_DESTROYED, type ServicesDestroyedAction } from '../actions/serviceContainer';
 
 export type State = {
   +wallets: Array<WalletType> | null,
@@ -40,7 +40,7 @@ export const initialState: State = {
  * @param {Action} action Performed Action.
  * @returns {State} Next state.
  */
-export default (state: State = initialState, action: Action): State => {
+export default (state: State = initialState, action: Action | ServicesDestroyedAction): State => {
   switch (action.type) {
     case SERVICES_DESTROYED:
       return initialState;
@@ -49,7 +49,7 @@ export default (state: State = initialState, action: Action): State => {
     case WALLETS_LIST_UPDATED:
       return Object.assign({}, state, { wallets: _.cloneDeep(action.wallets) });
     case WALLET_SYNC_FAILED: {
-      const { walletAddress, walletCurrency } = action;
+      const { walletAddress, walletCurrency, error } = action;
       const wallets = state.wallets || [];
       const walletIndex = getWalletIndex(wallets, walletAddress, walletCurrency);
       if (walletIndex === null) {
@@ -57,14 +57,16 @@ export default (state: State = initialState, action: Action): State => {
       }
       return {
         ...state,
-        wallets: [
-          ...wallets.slice(0, walletIndex - 1),
-          {
-            ...wallets[walletIndex],
-            synchronizationError: action.error,
-          },
-          ...wallets.slice(walletIndex + 1),
-        ],
+        wallets: wallets.map((item, index) => {
+          if (index !== walletIndex) {
+            return item;
+          }
+
+          return {
+            ...item,
+            synchronizationError: error,
+          };
+        }),
       };
     }
     case UPDATE_WALLET_BALANCE: {
@@ -76,14 +78,16 @@ export default (state: State = initialState, action: Action): State => {
       }
       return {
         ...state,
-        wallets: [
-          ...wallets.slice(0, walletIndex - 1),
-          {
-            ...wallets[walletIndex],
+        wallets: wallets.map((item, index) => {
+          if (index !== walletIndex) {
+            return item;
+          }
+
+          return {
+            ...item,
             synchronizationError: undefined,
-          },
-          ...wallets.slice(walletIndex + 1),
-        ],
+          };
+        }),
       };
     }
     case SEND_MONEY:
