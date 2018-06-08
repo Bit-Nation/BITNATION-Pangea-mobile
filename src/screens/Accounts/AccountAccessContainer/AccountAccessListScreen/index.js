@@ -61,19 +61,24 @@ const AccountAccessListScreen = ({
       <View style={styles.buttonListContainer}>
         <Button
           enabled
-          title={i18n.t('screens.accounts.newAccount')}
-          onPress={() => onCreateAccount()}
-          style={styles.panelButton}
-        />
-        <Button
-          enabled
+          style={styles.restoreAccountButton}
+          styleTitle={styles.restoreAccountButtonText}
           title={i18n.t('screens.accounts.restoreAccount')}
           onPress={() => onRestoreAccount()}
-          style={styles.panelButton}
+
         />
+
         <View style={styles.spacer} />
       </View>
+
     </View>
+    <Button
+      enabled
+      styleTitle={styles.newAccountText}
+      title={i18n.t('screens.accounts.newAccount').toUpperCase()}
+      onPress={() => onCreateAccount()}
+      style={styles.newAccountButton}
+    />
   </View>
 );
 

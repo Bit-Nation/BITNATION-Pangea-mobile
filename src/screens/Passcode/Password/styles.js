@@ -12,7 +12,7 @@ const styles = MediaQueryStyleSheet.create({
     alignSelf: 'center',
   },
   textInput: {
-    color: Colors.white,
+    color: Colors.BitnationGrayColor,
     fontSize: 16,
     paddingTop: 2,
     paddingBottom: 2,
