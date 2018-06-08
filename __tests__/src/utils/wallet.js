@@ -36,6 +36,6 @@ describe('Wallet services', () => {
 
   test('Wallet index does not exist', () => {
     const index = getWalletIndex(wallets, '0x88a5C2d9919e46F883EB62F7b8Dd9d0CC45bc291');
-    expect(index).toEqual(-1);
+    expect(index).toBeNull();
   });
 });
