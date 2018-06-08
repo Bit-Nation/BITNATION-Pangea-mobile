@@ -26,14 +26,14 @@ type State = {
 
 class ConfirmationContainer extends Component<Props, State> {
   static defaultProps: Object;
-  cancelConfirmation = () => {
+  cancelConfirmation = async () => {
+    await this.props.navigator.dismissModal();
     this.props.onFail();
-    this.props.navigator.dismissModal();
   };
 
-  sendConfirmation = (gasPrice) => {
+  sendConfirmation = async (gasPrice) => {
+    await this.props.navigator.dismissModal();
     this.props.onSuccess(gasPrice);
-    this.props.navigator.dismissModal();
   };
   render() {
     return (

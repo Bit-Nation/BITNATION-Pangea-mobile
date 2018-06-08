@@ -12,6 +12,9 @@
 #import "PanthalassaUpStreamBridge.h"
 
 @implementation Panthalassa
+{
+  bool hasListeners;
+}
 
 - (dispatch_queue_t)methodQueue
 {
@@ -387,7 +390,17 @@ RCT_REMAP_METHOD(PanthalassaSignProfileStandAlone,
 
 - (void)receiveString:(NSString *)data {
   NSLog(@"************ Received from delegate!!!");
-  [self sendEventWithName:@"PanthalassaUpStream" body:@{@"upstream": data}];
+  if (hasListeners) {
+    [self sendEventWithName:@"PanthalassaUpStream" body:@{@"upstream": data}];
+  }
+}
+
+-(void)startObserving {
+  hasListeners = YES;
+}
+
+-(void)stopObserving {
+  hasListeners = NO;
 }
 
 @end

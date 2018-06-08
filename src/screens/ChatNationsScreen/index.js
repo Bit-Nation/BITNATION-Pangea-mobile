@@ -4,7 +4,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import ChatNationsListScreen from './ChatNationsListScreen';
-import { switchNationTab, openNation, requestSyncNations } from '../../actions/nations';
+import { switchNationTab, openNation } from '../../actions/nations';
 import { screen } from '../../global/Screens';
 import { resolveNation } from '../../utils/nations';
 import NavigatorComponent from '../../components/common/NavigatorComponent';
@@ -50,10 +50,6 @@ class ChatNationsScreen extends NavigatorComponent<Props> {
     });
   }
 
-  onWillAppear() {
-    this.props.fetchNations();
-  }
-
   render() {
     return (
       <ChatNationsListScreen onSelectItem={this.onSelectItem} {...this.props} />
@@ -93,9 +89,6 @@ const mapDispatchToProps = dispatch => ({
   },
   openNation(id) {
     dispatch(openNation(id));
-  },
-  fetchNations() {
-    dispatch(requestSyncNations());
   },
   startNationCreation() {
     dispatch(startNationCreation());

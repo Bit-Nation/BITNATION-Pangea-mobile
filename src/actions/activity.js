@@ -2,12 +2,12 @@
 
 import { type ActivityLogMessage } from '../types/ActivityLogMessage';
 
-export const MESSAGES_ADDED = 'MESSAGES_ADDED';
+export const MESSAGES_UPDATED = 'MESSAGES_UPDATED';
 export const ADD_NEW_MESSAGE = 'ADD_NEW_MESSAGE';
 export const emptyCallback = () => {};
 
 type MessagesAddedAction = {
-  +type: "MESSAGES_ADDED",
+  +type: "MESSAGES_UPDATED",
   +messages: Array<ActivityLogMessage>
 };
 export type AddNewMessageAction = {
@@ -21,13 +21,13 @@ export type AddNewMessageAction = {
 export type Action = MessagesAddedAction | AddNewMessageAction;
 
 /**
- * @desc Action creator for an action that should be called once new activity log message added.
- * @param {Array<ActivityLogMessage>} messages Activity log messages that are added.
+ * @desc Action creator for an action that should be called when activity logs messages updated in database.
+ * @param {Array<ActivityLogMessage>} messages Updated activity logs.
  * @returns {MessagesAddedAction} An action.
  */
-export function messagesAdded(messages: Array<ActivityLogMessage>): MessagesAddedAction {
+export function messagesUpdated(messages: Array<ActivityLogMessage>): MessagesAddedAction {
   return {
-    type: MESSAGES_ADDED,
+    type: MESSAGES_UPDATED,
     messages,
   };
 }
