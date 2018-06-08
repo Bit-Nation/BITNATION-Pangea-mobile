@@ -76,6 +76,7 @@
 		C183D06FBD484C54BA361406 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 70ECA807306F4EA78DCF90CA /* MaterialCommunityIcons.ttf */; };
 		CC05049FF02246CDB2E2CCDF /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F02C743E40EC4CF88C1B3102 /* libReactNativeConfig.a */; };
 		D048746DE5E54EBD8D11FD4D /* RobotoCondensed-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C319B5A26459433183371050 /* RobotoCondensed-LightItalic.ttf */; };
+		D246D88F20CA57180015AD6F /* Images-2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D246D88E20CA57180015AD6F /* Images-2.xcassets */; };
 		D2742E32332B4672BBDFB2F6 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F552F5D46DB14E1888550D69 /* libRNVectorIcons.a */; };
 		D2BFDCD0208D8CAF0033E539 /* PanthalassaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BFDCCF208D8CAF0033E539 /* PanthalassaTests.m */; };
 		D2BFDCD1208D8FC80033E539 /* Panthalassa.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F5E4402087BFB400A0B991 /* Panthalassa.m */; };
@@ -514,6 +515,7 @@
 		CA23D9CC370645A9AC80F60E /* libimageCropPicker.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libimageCropPicker.a; sourceTree = "<group>"; };
 		CD03308491E94DE8ABFC807B /* ReactNativeNavigation.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeNavigation.xcodeproj; path = "../node_modules/react-native-navigation/ios/ReactNativeNavigation.xcodeproj"; sourceTree = "<group>"; };
 		CDA71C261DCA451C86E50868 /* Roboto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto.ttf; path = "../node_modules/native-base/Fonts/Roboto.ttf"; sourceTree = "<group>"; };
+		D246D88E20CA57180015AD6F /* Images-2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = "Images-2.xcassets"; path = "Pangea/Images-2.xcassets"; sourceTree = "<group>"; };
 		D2BFDCCF208D8CAF0033E539 /* PanthalassaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PanthalassaTests.m; path = PanthalassaTests/PanthalassaTests.m; sourceTree = SOURCE_ROOT; };
 		D2C287FA20ABACDA00D2B3DC /* PanthalassaUpStreamBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PanthalassaUpStreamBridge.h; sourceTree = "<group>"; };
 		D2C287FB20ABACDA00D2B3DC /* PanthalassaUpStreamBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PanthalassaUpStreamBridge.m; sourceTree = "<group>"; };
@@ -736,6 +738,7 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				D246D88E20CA57180015AD6F /* Images-2.xcassets */,
 			);
 			name = Pangea;
 			sourceTree = "<group>";
@@ -1525,6 +1528,7 @@
 				0255CF4C9BA94A2188FF9619 /* Roboto-LightItalic.ttf in Resources */,
 				AC36A7CB11A64E6B8771B705 /* Roboto-Medium.ttf in Resources */,
 				D9559FCA4D604D6DBC98131A /* Roboto-MediumItalic.ttf in Resources */,
+				D246D88F20CA57180015AD6F /* Images-2.xcassets in Resources */,
 				B3DFC5FFEAF646DA8029EC4A /* Roboto-Regular.ttf in Resources */,
 				C051C39E86824475BAC9814B /* Roboto-Thin.ttf in Resources */,
 				3D2CAA22BF674F90B4C36446 /* Roboto-ThinItalic.ttf in Resources */,
