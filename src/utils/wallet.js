@@ -25,23 +25,3 @@ export function getWalletIndex(wallets: Array<WalletType>, address: string, curr
   const index = _.findIndex(wallets, wallet => wallet.ethAddress === address && wallet.currency === currency);
   return index === -1 ? null : index;
 }
-
-/**
- * @desc Converts wallet from database representation.
- * @param {Object} wallets Dictionary that contains addresses as keys and private keys as values.
- * @return {WalletType[]} Array of converted wallets.
- */
-export function convertWallets(wallets: Array<{value: string, key: string}>): Array<WalletType> {
-  const walletsArray = [];
-  wallets.forEach((value, key) =>
-    walletsArray.push({
-      key,
-      value,
-    }));
-  return _.map(walletsArray, wallet => ({
-    ethAddress: wallet.key,
-    currency: 'ETH',
-    balance: undefined,
-    name: 'Ethereum',
-  }));
-}
