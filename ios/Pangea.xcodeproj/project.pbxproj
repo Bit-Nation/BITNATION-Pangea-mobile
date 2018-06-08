@@ -1783,8 +1783,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AD90FA4C0CF9656416A93031 /* Pods-Pangea.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Alberto Estarrona (73F9WW2ZM8)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Alberto Estarrona (73F9WW2ZM8)";
 				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = YES;
@@ -1827,8 +1825,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 067F660FC765FB199ABA4128 /* Pods-Pangea.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Bitnation Port One Pte. Ltd. (W63599SJEC)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Bitnation Port One Pte. Ltd. (W63599SJEC)";
 				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = YES;
