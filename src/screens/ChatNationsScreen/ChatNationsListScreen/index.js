@@ -14,7 +14,7 @@ import NationListHeader from '../../../components/common/NationListHeader';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import i18n from '../../../global/i18n';
 import AssetsImages from '../../../global/AssetsImages';
-import type { NationType } from '../../../types/Nation';
+import type { NationIdType, NationType } from '../../../types/Nation';
 
 type Props = {
   /**
@@ -26,9 +26,9 @@ type Props = {
    */
   nations: Array<NationType>,
   /**
-   * @desc List of nations that the current user has joined to.
+   * @desc List of nations ids that the current user has joined to.
    */
-  myNations: Array<NationType>,
+  myNationIds: Array<NationIdType>,
   /**
    * @desc Function to be called when an item is selected from the list
    * @param id ID of the nation to be opened
@@ -38,15 +38,15 @@ type Props = {
 };
 
 const ChatNationsListScreen = ({
-  selectedTab, nations, myNations, onSelectItem,
+  selectedTab, nations, myNationIds, onSelectItem,
 }: Props) => {
   const nationsToDisplay = selectedTab === 'ALL_NATIONS' ?
     _.filter(nations, nation => nation.idInSmartContract >= 0)
     :
-    _.filter(nations, nation => (
-      _.indexOf(myNations, nation.id) !== -1) && (nation.idInSmartContract >= 0));
-  const sortedNations = _.sortBy(nationsToDisplay, nation => nation.nationName);
-  const groups = _.groupBy(sortedNations, nation => nation.nationName.charAt(0));
+    _.filter(nations, nation => _.indexOf(myNationIds, nation.id) !== -1
+      && nation.idInSmartContract >= 0);
+  const sortedNations = _.sortBy(nationsToDisplay, nation => nation.nationName.toUpperCase());
+  const groups = _.groupBy(sortedNations, nation => nation.nationName.toUpperCase().charAt(0));
   let sections = _.map(groups, (group, key) => ({
     title: key,
     data: group,
