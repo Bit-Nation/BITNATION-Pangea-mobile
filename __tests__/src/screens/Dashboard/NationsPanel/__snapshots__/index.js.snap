@@ -115,7 +115,6 @@ ShallowWrapper {
             <View
               style={
                 Object {
-                  "backgroundColor": "rgba(27,57,92,0.5)",
                   "height": 30,
                   "justifyContent": "center",
                   "paddingLeft": 16,
@@ -230,7 +229,6 @@ ShallowWrapper {
               <View
                 style={
                   Object {
-                    "backgroundColor": "rgba(27,57,92,0.5)",
                     "height": 30,
                     "justifyContent": "center",
                     "paddingLeft": 16,
@@ -425,7 +423,6 @@ ShallowWrapper {
                 <View
                   style={
                     Object {
-                      "backgroundColor": "rgba(27,57,92,0.5)",
                       "height": 30,
                       "justifyContent": "center",
                       "paddingLeft": 16,
@@ -500,7 +497,6 @@ ShallowWrapper {
                     Newest Nations
                   </Text>,
                   "style": Object {
-                    "backgroundColor": "rgba(27,57,92,0.5)",
                     "height": 30,
                     "justifyContent": "center",
                     "paddingLeft": 16,
@@ -664,7 +660,6 @@ ShallowWrapper {
               <View
                 style={
                   Object {
-                    "backgroundColor": "rgba(27,57,92,0.5)",
                     "height": 30,
                     "justifyContent": "center",
                     "paddingLeft": 16,
@@ -779,7 +774,6 @@ ShallowWrapper {
                 <View
                   style={
                     Object {
-                      "backgroundColor": "rgba(27,57,92,0.5)",
                       "height": 30,
                       "justifyContent": "center",
                       "paddingLeft": 16,
@@ -974,7 +968,6 @@ ShallowWrapper {
                   <View
                     style={
                       Object {
-                        "backgroundColor": "rgba(27,57,92,0.5)",
                         "height": 30,
                         "justifyContent": "center",
                         "paddingLeft": 16,
@@ -1049,7 +1042,6 @@ ShallowWrapper {
                       Newest Nations
                     </Text>,
                     "style": Object {
-                      "backgroundColor": "rgba(27,57,92,0.5)",
                       "height": 30,
                       "justifyContent": "center",
                       "paddingLeft": 16,

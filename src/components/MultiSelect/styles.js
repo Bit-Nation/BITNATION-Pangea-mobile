@@ -43,8 +43,8 @@ export default {
     backgroundColor: colorPack.actionButtonColor,
   },
   indicator: {
-    fontSize: 15,
-    color: colorPack.placeholderTextColor,
+    fontSize: 18,
+    color: Colors.BitnationLinkOrangeColor,
   },
   selectedItem: {
     flexDirection: 'row',
