@@ -38,11 +38,7 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <BackgroundImage
-          source={
-            Object {
-              "testUri": "../../../src/assets/images/background.jpg",
-            }
-          }
+          source={1}
           style={undefined}
         />,
         <FakeNavigationBar
@@ -96,17 +92,16 @@ ShallowWrapper {
               onPress={[Function]}
               style={
                 Object {
-                  "marginTop": 13,
+                  "alignSelf": "stretch",
+                  "backgroundColor": "transparent",
+                  "borderRadius": 0,
                 }
               }
-              title="New Account"
-            />
-            <Button
-              enabled={true}
-              onPress={[Function]}
-              style={
+              styleTitle={
                 Object {
-                  "marginTop": 13,
+                  "color": "#58595B",
+                  "fontSize": 15,
+                  "fontWeight": "bold",
                 }
               }
               title="Restore Account"
@@ -116,6 +111,26 @@ ShallowWrapper {
             />
           </View>
         </View>,
+        <Button
+          enabled={true}
+          onPress={[Function]}
+          style={
+            Object {
+              "alignSelf": "stretch",
+              "backgroundColor": "white",
+              "borderRadius": 0,
+              "height": 54,
+            }
+          }
+          styleTitle={
+            Object {
+              "color": "#FF8B00",
+              "fontSize": 15,
+              "fontWeight": "900",
+            }
+          }
+          title="NEW ACCOUNT"
+        />,
       ],
       "style": Object {
         "alignItems": "stretch",
@@ -131,9 +146,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "function",
         "props": Object {
-          "source": Object {
-            "testUri": "../../../src/assets/images/background.jpg",
-          },
+          "source": 1,
           "style": undefined,
         },
         "ref": null,
@@ -193,17 +206,16 @@ ShallowWrapper {
                 onPress={[Function]}
                 style={
                   Object {
-                    "marginTop": 13,
+                    "alignSelf": "stretch",
+                    "backgroundColor": "transparent",
+                    "borderRadius": 0,
                   }
                 }
-                title="New Account"
-              />
-              <Button
-                enabled={true}
-                onPress={[Function]}
-                style={
+                styleTitle={
                   Object {
-                    "marginTop": 13,
+                    "color": "#58595B",
+                    "fontSize": 15,
+                    "fontWeight": "bold",
                   }
                 }
                 title="Restore Account"
@@ -271,17 +283,16 @@ ShallowWrapper {
                   onPress={[Function]}
                   style={
                     Object {
-                      "marginTop": 13,
+                      "alignSelf": "stretch",
+                      "backgroundColor": "transparent",
+                      "borderRadius": 0,
                     }
                   }
-                  title="New Account"
-                />,
-                <Button
-                  enabled={true}
-                  onPress={[Function]}
-                  style={
+                  styleTitle={
                     Object {
-                      "marginTop": 13,
+                      "color": "#58595B",
+                      "fontSize": 15,
+                      "fontWeight": "bold",
                     }
                   }
                   title="Restore Account"
@@ -307,24 +318,14 @@ ShallowWrapper {
                   "enabled": true,
                   "onPress": [Function],
                   "style": Object {
-                    "marginTop": 13,
+                    "alignSelf": "stretch",
+                    "backgroundColor": "transparent",
+                    "borderRadius": 0,
                   },
-                  "title": "New Account",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "function",
-                "props": Object {
-                  "children": undefined,
-                  "enabled": true,
-                  "onPress": [Function],
-                  "style": Object {
-                    "marginTop": 13,
+                  "styleTitle": Object {
+                    "color": "#58595B",
+                    "fontSize": 15,
+                    "fontWeight": "bold",
                   },
                   "title": "Restore Account",
                 },
@@ -349,6 +350,31 @@ ShallowWrapper {
         ],
         "type": [Function],
       },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "children": undefined,
+          "enabled": true,
+          "onPress": [Function],
+          "style": Object {
+            "alignSelf": "stretch",
+            "backgroundColor": "white",
+            "borderRadius": 0,
+            "height": 54,
+          },
+          "styleTitle": Object {
+            "color": "#FF8B00",
+            "fontSize": 15,
+            "fontWeight": "900",
+          },
+          "title": "NEW ACCOUNT",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
     ],
     "type": [Function],
   },
@@ -360,11 +386,7 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <BackgroundImage
-            source={
-              Object {
-                "testUri": "../../../src/assets/images/background.jpg",
-              }
-            }
+            source={1}
             style={undefined}
           />,
           <FakeNavigationBar
@@ -418,17 +440,16 @@ ShallowWrapper {
                 onPress={[Function]}
                 style={
                   Object {
-                    "marginTop": 13,
+                    "alignSelf": "stretch",
+                    "backgroundColor": "transparent",
+                    "borderRadius": 0,
                   }
                 }
-                title="New Account"
-              />
-              <Button
-                enabled={true}
-                onPress={[Function]}
-                style={
+                styleTitle={
                   Object {
-                    "marginTop": 13,
+                    "color": "#58595B",
+                    "fontSize": 15,
+                    "fontWeight": "bold",
                   }
                 }
                 title="Restore Account"
@@ -438,6 +459,26 @@ ShallowWrapper {
               />
             </View>
           </View>,
+          <Button
+            enabled={true}
+            onPress={[Function]}
+            style={
+              Object {
+                "alignSelf": "stretch",
+                "backgroundColor": "white",
+                "borderRadius": 0,
+                "height": 54,
+              }
+            }
+            styleTitle={
+              Object {
+                "color": "#FF8B00",
+                "fontSize": 15,
+                "fontWeight": "900",
+              }
+            }
+            title="NEW ACCOUNT"
+          />,
         ],
         "style": Object {
           "alignItems": "stretch",
@@ -453,9 +494,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
-            "source": Object {
-              "testUri": "../../../src/assets/images/background.jpg",
-            },
+            "source": 1,
             "style": undefined,
           },
           "ref": null,
@@ -515,17 +554,16 @@ ShallowWrapper {
                   onPress={[Function]}
                   style={
                     Object {
-                      "marginTop": 13,
+                      "alignSelf": "stretch",
+                      "backgroundColor": "transparent",
+                      "borderRadius": 0,
                     }
                   }
-                  title="New Account"
-                />
-                <Button
-                  enabled={true}
-                  onPress={[Function]}
-                  style={
+                  styleTitle={
                     Object {
-                      "marginTop": 13,
+                      "color": "#58595B",
+                      "fontSize": 15,
+                      "fontWeight": "bold",
                     }
                   }
                   title="Restore Account"
@@ -593,17 +631,16 @@ ShallowWrapper {
                     onPress={[Function]}
                     style={
                       Object {
-                        "marginTop": 13,
+                        "alignSelf": "stretch",
+                        "backgroundColor": "transparent",
+                        "borderRadius": 0,
                       }
                     }
-                    title="New Account"
-                  />,
-                  <Button
-                    enabled={true}
-                    onPress={[Function]}
-                    style={
+                    styleTitle={
                       Object {
-                        "marginTop": 13,
+                        "color": "#58595B",
+                        "fontSize": 15,
+                        "fontWeight": "bold",
                       }
                     }
                     title="Restore Account"
@@ -629,24 +666,14 @@ ShallowWrapper {
                     "enabled": true,
                     "onPress": [Function],
                     "style": Object {
-                      "marginTop": 13,
+                      "alignSelf": "stretch",
+                      "backgroundColor": "transparent",
+                      "borderRadius": 0,
                     },
-                    "title": "New Account",
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": [Function],
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "function",
-                  "props": Object {
-                    "children": undefined,
-                    "enabled": true,
-                    "onPress": [Function],
-                    "style": Object {
-                      "marginTop": 13,
+                    "styleTitle": Object {
+                      "color": "#58595B",
+                      "fontSize": 15,
+                      "fontWeight": "bold",
                     },
                     "title": "Restore Account",
                   },
@@ -669,6 +696,31 @@ ShallowWrapper {
               "type": [Function],
             },
           ],
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": undefined,
+            "enabled": true,
+            "onPress": [Function],
+            "style": Object {
+              "alignSelf": "stretch",
+              "backgroundColor": "white",
+              "borderRadius": 0,
+              "height": 54,
+            },
+            "styleTitle": Object {
+              "color": "#FF8B00",
+              "fontSize": 15,
+              "fontWeight": "900",
+            },
+            "title": "NEW ACCOUNT",
+          },
+          "ref": null,
+          "rendered": null,
           "type": [Function],
         },
       ],

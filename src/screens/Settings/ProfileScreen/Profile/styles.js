@@ -37,6 +37,7 @@ const styles = MediaQueryStyleSheet.create({
 
   nameText: {
     ...GlobalStyles.title1,
+    color: Colors.BitnationDarkGrayColor,
   },
 
   infoText: {

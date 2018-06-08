@@ -7,6 +7,7 @@ import {
   Text,
 } from 'react-native';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import GlobalStyles from '../../global/Styles';
 
@@ -16,11 +17,6 @@ type Props = {
    */
   style?: any,
 
-  styleTitle?: any,
-  /**
-   * @desc Component(s) to be rendered inside a button.
-   */
-  children?: React.Node,
   /**
    * @desc Callback to be called on button press.
    */
@@ -40,7 +36,7 @@ type Props = {
  * @return {React.Component} A component.
  */
 const Button = ({
-  style, children, onPress, enabled, styleTitle, title, ...props
+  style, onPress, enabled, title, ...props
 }: Props) => {
   const styles = MediaQueryStyleSheet.create({
     ...GlobalStyles,
@@ -49,19 +45,19 @@ const Button = ({
   return ((
     <View
       style={[
-          styles.baseButton,
-
-          style,
-        ]}
+        styles.baseButton,
+        style,
+      ]}
       {...props}
     >
-      <TouchableOpacity testID='Touchable' disabled={!enabled} style={[styles.buttonContainer]} onPress={onPress}>
-        {
-        children ||
-        <Text style={enabled ? [styles.buttonTitle, styleTitle] : styles.disabledButtonTitle}>
+      <TouchableOpacity testID='Touchable' disabled={!enabled} style={styles.arrowButtonContainer} onPress={onPress}>
+        <Text style={enabled ? styles.arrowButtonTitle : styles.disabledArrowButtonTitle}>
           {title}
         </Text>
-      }
+        <MaterialIcons
+          style={styles.arrowButtonIcon}
+          name='keyboard-arrow-right'
+        />
       </TouchableOpacity>
     </View>
   ));
@@ -69,7 +65,6 @@ const Button = ({
 
 Button.defaultProps = {
   style: undefined,
-  children: undefined,
   enabled: true,
   onPress: () => null,
   title: '',
