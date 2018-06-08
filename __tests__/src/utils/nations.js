@@ -1,10 +1,10 @@
 import {
-  TX_JOB_STATUS_SUCCESS,
   resolveNation,
   convertToDatabase,
   convertFromDatabase,
   statusColor,
 } from '../../../src/utils/nations';
+import { TX_JOB_STATUS } from '../../../src/global/Constants';
 
 test('resolveNation works', () => {
   const expectedNation = {
@@ -36,6 +36,6 @@ test('convert governance service to and from database works', () => {
 });
 
 test('get status color', () => {
-  const nationStatusColor = statusColor(TX_JOB_STATUS_SUCCESS);
+  const nationStatusColor = statusColor(TX_JOB_STATUS.SUCCESS);
   expect(nationStatusColor).toEqual('#4CAF50');
 });
