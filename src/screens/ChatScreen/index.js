@@ -218,7 +218,12 @@ class ChatScreen extends Component<Props, State> {
             <InputToolbar {...props} containerStyle={styles.inputToolbar} />
           )}
           renderBubble={props => (
-            <Bubble {...props} customTextStyle={styles.customTextStyle} />
+            <Bubble
+              {...props}
+              customTextStyle={styles.customTextStyle}
+              wrapperStyle={{left: styles.leftBubbleWrapper, right: styles.rightBubbleWrapper}}
+              textStyle={{left: styles.leftTextStyle, right: styles.rightTextStyle}}
+            />
           )}
         />
         {this.props.isFetching && <Loading />}
