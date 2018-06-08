@@ -228,6 +228,9 @@
       "introduction": "Create a new account or restore an account you have backed up.",
       "newAccount": "New Account",
       "restoreAccount": "Restore Account",
+      "warningTitle": "Where's My Money?",
+      "warningText": "This release is not compatible with prior releases of the Pangea app. Tap this button to lear how to recover the Ethereum in your wallet.",
+      "checkRelease": "Open Instructions Website",
       "create": {
         "prev": "Previous",
         "next": "Next",

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, Linking } from 'react-native';
 import Images from '../../global/AssetsImages';
 import i18n from '../../global/i18n';
 import { screen } from '../../global/Screens';
@@ -15,6 +15,7 @@ import styles from './styles';
 import { startRestoreAccountUsingMnemonic, startAccountCreation } from '../../actions/accounts';
 import { type State as AccountsState } from '../../reducers/accounts';
 import type { Mnemonic } from '../../types/Mnemonic';
+import PanelView from '../../components/common/PanelView';
 
 type Props = {
   /**
@@ -63,6 +64,15 @@ class Accounts extends NavigatorComponent<Props & Actions & AccountsState> {
     });
   };
 
+  onOpenRUrl = () => {
+    Linking.canOpenURL('https://steemit.com/bitnation/@infinitechaos/pangea-v0-4-5-june-8-release-note-important').then((supported) => {
+      if (supported) {
+        Linking.openURL('https://steemit.com/bitnation/@infinitechaos/pangea-v0-4-5-june-8-release-note-important');
+      } else {
+        console.log('Error opening URL');
+      }
+    });
+  };
   render() {
     return (
       <View style={styles.profilesScreenContainer}>
@@ -76,8 +86,15 @@ class Accounts extends NavigatorComponent<Props & Actions & AccountsState> {
           <Text style={[styles.title1, styles.accountTitle]}>{i18n.t('screens.accounts.title')}
           </Text>
           <Text style={[styles.subhead, styles.accountIntroText]}>{i18n.t('screens.accounts.introduction')}</Text>
-
-
+          <PanelView
+            title={i18n.t('screens.accounts.warningTitle')}
+            style={styles.gridPanelViewWarning}
+            titleStyle={styles.alertPanelViewTitle}
+            buttonTitle={i18n.t('screens.accounts.checkRelease')}
+            onButtonClick={this.onOpenRUrl}
+          >
+            <Text style={styles.confirmKeyBody}>{i18n.t('screens.accounts.warningText')}</Text>
+          </PanelView>
           <Button
             id='restoreButton'
             style={styles.restoreButton}
