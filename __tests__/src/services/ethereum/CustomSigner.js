@@ -2,6 +2,8 @@
 // Mock Public key: 0xF0D346A86A68086846363185d24D5893F4353A78
 import CustomSigner from '../../../../src/services/ethereum/CustomSigner';
 
+jest.mock('reconnecting-websocket');
+
 const privateKey = '0xefc27ba5330258fcfb75e28e4e6efd88458751086998bbfad99257035fb3e160';
 jest.mock('react-native-navigation', () => ({
   Navigation: {

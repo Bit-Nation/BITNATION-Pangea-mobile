@@ -101,13 +101,13 @@ class EnterKeyScreen extends NavigatorComponent<Actions & KeyState & Props, Stat
   keyTextInputContainers: Array<any>;
   scrollView: ?any;
 
-  static doneShouldBeEnabled(props) {
+  static doneShouldBeEnabled(props): boolean {
     const inputFilled = _.reduce(
       props.enteredMnemonic,
       (prev, next) => prev && !_.isEmpty(next),
       true,
     );
-    return inputFilled && !props.mnemonicValidationInProgress;
+    return (inputFilled && !props.mnemonicValidationInProgress) || false;
   }
 
   componentWillUpdate(nextProps) {

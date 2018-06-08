@@ -4,6 +4,8 @@
 import factory from '../../../../src/services/ethereum/factory';
 import EthereumService from '../../../../src/services/ethereum/index';
 
+jest.mock('reconnecting-websocket');
+
 const privateKeyMock = jest.fn();
 privateKeyMock.mockReturnValueOnce('0xefc27ba5330258fcfb75e28e4e6efd88458751086998bbfad99257035fb3e160');
 
