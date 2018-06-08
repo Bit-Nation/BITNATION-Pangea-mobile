@@ -12,6 +12,7 @@ import { NoNationsServiceError } from '../../global/errors/services';
 import { currentAccountBasedUpdate } from '../accounts/sagas';
 import type { NationType as DBNationType } from '../../services/database/schemata';
 import type { State as NationsState } from '../../reducers/nations';
+import { CancelledError } from '../../global/errors/common';
 
 const extractMessage = (error) => {
   if (error.transKey !== undefined) {
@@ -86,6 +87,9 @@ export function* joinNation(): Generator<*, *, *> {
     const currentNation = openedNation(nationsState);
     yield call([nationsService, 'joinNation'], currentNation);
   } catch (e) {
+    if (e.isCancelled === true) {
+      return;
+    }
     errorAlert(extractMessage(e));
   } finally {
     yield put(cancelLoading());
@@ -106,6 +110,9 @@ export function* leaveNation(): Generator<*, *, *> {
     const currentNation = openedNation(nationsState);
     yield call([nationsService, 'leaveNation'], currentNation);
   } catch (e) {
+    if (e.isCancelled === true) {
+      return;
+    }
     errorAlert(extractMessage(e));
   } finally {
     yield put(cancelLoading());
