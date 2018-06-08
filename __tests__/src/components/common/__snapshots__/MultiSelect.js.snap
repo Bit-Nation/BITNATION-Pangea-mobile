@@ -73,7 +73,7 @@ exports[`MultiSelect renders correctly 1`] = `
             style={
               Array [
                 Object {
-                  "color": "white",
+                  "color": "#58595B",
                   "flex": 1,
                   "fontSize": 15,
                 },
@@ -94,7 +94,7 @@ exports[`MultiSelect renders correctly 1`] = `
                   "fontSize": 12,
                 },
                 Object {
-                  "color": "white",
+                  "color": "#58595B",
                   "fontSize": 15,
                 },
                 Object {
@@ -187,7 +187,7 @@ exports[`MultiSelect renders correctly with customized colors 1`] = `
             style={
               Array [
                 Object {
-                  "color": "white",
+                  "color": "#58595B",
                   "flex": 1,
                   "fontSize": 15,
                 },
@@ -208,7 +208,7 @@ exports[`MultiSelect renders correctly with customized colors 1`] = `
                   "fontSize": 12,
                 },
                 Object {
-                  "color": "white",
+                  "color": "#58595B",
                   "fontSize": 15,
                 },
                 Object {
