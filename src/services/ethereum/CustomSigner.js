@@ -4,6 +4,7 @@ import { Navigation } from 'react-native-navigation';
 
 import WebSocketProvider from './WebSocketProvider';
 import { screen } from '../../global/Screens';
+import { CancelledError } from '../../global/errors/common';
 
 /**
  * @desc Custom signer for ethereum RPC
@@ -42,8 +43,8 @@ export default function CustomSigner(privateKey: string, provider: string) {
       });
       return signedTransaction;
     } catch (e) {
-      console.log('error: ', e);
-      throw new Error('Transaction aborted!');
+      console.log('Sign transaction fail with error: ', e);
+      throw new CancelledError();
     }
   };
   this.sendTransaction = (transaction) => {
@@ -100,6 +101,14 @@ export default function CustomSigner(privateKey: string, provider: string) {
         sentTransaction.hash = hash;
         return sentTransaction;
       });
+    }).catch((error) => {
+      if (error.isCancelled === true) {
+        throw new CancelledError();
+      }
+      if (error.toString().indexOf('invalid') !== -1) {
+        throw new Error('insufficient funds');
+      }
+      throw error;
     });
   };
 }
