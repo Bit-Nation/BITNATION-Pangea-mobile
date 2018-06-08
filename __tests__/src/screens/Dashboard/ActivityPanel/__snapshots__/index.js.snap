@@ -40,7 +40,7 @@ ShallowWrapper {
         style={
           Object {
             "alignItems": "stretch",
-            "backgroundColor": "rgba(255,255,255,0.2)",
+            "backgroundColor": "white",
             "borderRadius": 8,
             "flex": 1,
             "flexDirection": "column",
@@ -135,7 +135,7 @@ ShallowWrapper {
         "renderBottom": null,
         "style": Object {
           "alignItems": "stretch",
-          "backgroundColor": "rgba(255,255,255,0.2)",
+          "backgroundColor": "white",
           "borderRadius": 8,
           "flex": 1,
           "flexDirection": "column",
@@ -223,7 +223,7 @@ ShallowWrapper {
           style={
             Object {
               "alignItems": "stretch",
-              "backgroundColor": "rgba(255,255,255,0.2)",
+              "backgroundColor": "white",
               "borderRadius": 8,
               "flex": 1,
               "flexDirection": "column",
@@ -318,7 +318,7 @@ ShallowWrapper {
           "renderBottom": null,
           "style": Object {
             "alignItems": "stretch",
-            "backgroundColor": "rgba(255,255,255,0.2)",
+            "backgroundColor": "white",
             "borderRadius": 8,
             "flex": 1,
             "flexDirection": "column",

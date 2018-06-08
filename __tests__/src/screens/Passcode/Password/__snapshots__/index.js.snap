@@ -58,7 +58,7 @@ ShallowWrapper {
           ellipsizeMode="tail"
           style={
             Object {
-              "color": "#FFFFFF",
+              "color": "#58595B",
               "fontFamily": "Roboto",
               "fontSize": 17,
               "fontWeight": "bold",
@@ -75,7 +75,7 @@ ShallowWrapper {
           secureTextEntry={true}
           style={
             Object {
-              "color": "white",
+              "color": "#929497",
               "fontSize": 16,
               "height": 50,
               "marginLeft": 30,
@@ -131,7 +131,7 @@ ShallowWrapper {
           "children": undefined,
           "ellipsizeMode": "tail",
           "style": Object {
-            "color": "#FFFFFF",
+            "color": "#58595B",
             "fontFamily": "Roboto",
             "fontSize": 17,
             "fontWeight": "bold",
@@ -154,7 +154,7 @@ ShallowWrapper {
           "onChangeText": [Function],
           "secureTextEntry": true,
           "style": Object {
-            "color": "white",
+            "color": "#929497",
             "fontSize": 16,
             "height": 50,
             "marginLeft": 30,
@@ -230,7 +230,7 @@ ShallowWrapper {
             ellipsizeMode="tail"
             style={
               Object {
-                "color": "#FFFFFF",
+                "color": "#58595B",
                 "fontFamily": "Roboto",
                 "fontSize": 17,
                 "fontWeight": "bold",
@@ -247,7 +247,7 @@ ShallowWrapper {
             secureTextEntry={true}
             style={
               Object {
-                "color": "white",
+                "color": "#929497",
                 "fontSize": 16,
                 "height": 50,
                 "marginLeft": 30,
@@ -303,7 +303,7 @@ ShallowWrapper {
             "children": undefined,
             "ellipsizeMode": "tail",
             "style": Object {
-              "color": "#FFFFFF",
+              "color": "#58595B",
               "fontFamily": "Roboto",
               "fontSize": 17,
               "fontWeight": "bold",
@@ -326,7 +326,7 @@ ShallowWrapper {
             "onChangeText": [Function],
             "secureTextEntry": true,
             "style": Object {
-              "color": "white",
+              "color": "#929497",
               "fontSize": 16,
               "height": 50,
               "marginLeft": 30,

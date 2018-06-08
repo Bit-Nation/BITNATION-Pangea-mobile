@@ -132,7 +132,7 @@ class EditProfile extends NavigatorComponent<Props> {
 
     const avatarSource = editingAccount.avatar
       ? { uri: `data:image/gif;base64,${editingAccount.avatar}` }
-      : AssetsImage.Placeholder.avatar;
+      : AssetsImage.avatarIcon;
 
     return (
       <View style={styles.avatarContainerLarge}>

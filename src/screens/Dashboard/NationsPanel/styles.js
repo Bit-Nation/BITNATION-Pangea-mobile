@@ -23,7 +23,7 @@ const styles = {
   // Text: Number of nations, shown in the text above the list.
   nationsCountString: {
     ...GlobalStyles.bodyBlack,
-    color: 'white', // Colors.BitnationHighlightColor,
+    color: Colors.BitnationLinkOrangeColor, // Colors.BitnationHighlightColor,
   },
   // LIST OF NATIONS
   // use the listContainer, but bring edge to edge of the containing View.

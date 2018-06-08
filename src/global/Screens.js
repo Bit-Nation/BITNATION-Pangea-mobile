@@ -40,6 +40,7 @@ export const navigatorStyle = {
   navBarButtonColor: Colors.navBarButtonColor,
   screenBackgroundColor: 'transparent',
   rootBackgroundImageName: 'background-gray.jpg',
+  topBarElevationShadowEnabled: false,
 };
 
 export const hiddenNavigatorStyle = {
