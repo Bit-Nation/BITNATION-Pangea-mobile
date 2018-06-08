@@ -86,7 +86,7 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "white",
+                    "color": "#FF8B00",
                     "fontFamily": "Roboto",
                     "fontSize": 17,
                     "fontWeight": "900",
@@ -201,7 +201,7 @@ ShallowWrapper {
                   ellipsizeMode="tail"
                   style={
                     Object {
-                      "color": "white",
+                      "color": "#FF8B00",
                       "fontFamily": "Roboto",
                       "fontSize": 17,
                       "fontWeight": "900",
@@ -328,7 +328,7 @@ ShallowWrapper {
                   ellipsizeMode="tail"
                   style={
                     Object {
-                      "color": "white",
+                      "color": "#FF8B00",
                       "fontFamily": "Roboto",
                       "fontSize": 17,
                       "fontWeight": "900",
@@ -362,7 +362,7 @@ ShallowWrapper {
                     ellipsizeMode="tail"
                     style={
                       Object {
-                        "color": "white",
+                        "color": "#FF8B00",
                         "fontFamily": "Roboto",
                         "fontSize": 17,
                         "fontWeight": "900",
@@ -398,7 +398,7 @@ ShallowWrapper {
                     "children": "0",
                     "ellipsizeMode": "tail",
                     "style": Object {
-                      "color": "white",
+                      "color": "#FF8B00",
                       "fontFamily": "Roboto",
                       "fontSize": 17,
                       "fontWeight": "900",
@@ -635,7 +635,7 @@ ShallowWrapper {
                   ellipsizeMode="tail"
                   style={
                     Object {
-                      "color": "white",
+                      "color": "#FF8B00",
                       "fontFamily": "Roboto",
                       "fontSize": 17,
                       "fontWeight": "900",
@@ -750,7 +750,7 @@ ShallowWrapper {
                     ellipsizeMode="tail"
                     style={
                       Object {
-                        "color": "white",
+                        "color": "#FF8B00",
                         "fontFamily": "Roboto",
                         "fontSize": 17,
                         "fontWeight": "900",
@@ -877,7 +877,7 @@ ShallowWrapper {
                     ellipsizeMode="tail"
                     style={
                       Object {
-                        "color": "white",
+                        "color": "#FF8B00",
                         "fontFamily": "Roboto",
                         "fontSize": 17,
                         "fontWeight": "900",
@@ -911,7 +911,7 @@ ShallowWrapper {
                       ellipsizeMode="tail"
                       style={
                         Object {
-                          "color": "white",
+                          "color": "#FF8B00",
                           "fontFamily": "Roboto",
                           "fontSize": 17,
                           "fontWeight": "900",
@@ -947,7 +947,7 @@ ShallowWrapper {
                       "children": "0",
                       "ellipsizeMode": "tail",
                       "style": Object {
-                        "color": "white",
+                        "color": "#FF8B00",
                         "fontFamily": "Roboto",
                         "fontSize": 17,
                         "fontWeight": "900",

@@ -83,7 +83,7 @@ ShallowWrapper {
             title={undefined}
             titleStyle={
               Object {
-                "color": "white",
+                "color": "#58595B",
                 "fontFamily": "Roboto",
                 "fontSize": 22,
                 "fontWeight": "bold",
@@ -172,7 +172,7 @@ ShallowWrapper {
             title={undefined}
             titleStyle={
               Object {
-                "color": "white",
+                "color": "#58595B",
                 "fontFamily": "Roboto",
                 "fontSize": 22,
                 "fontWeight": "bold",
@@ -239,7 +239,7 @@ ShallowWrapper {
             },
             "title": undefined,
             "titleStyle": Object {
-              "color": "white",
+              "color": "#58595B",
               "fontFamily": "Roboto",
               "fontSize": 22,
               "fontWeight": "bold",
@@ -327,7 +327,7 @@ ShallowWrapper {
               title={undefined}
               titleStyle={
                 Object {
-                  "color": "white",
+                  "color": "#58595B",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -416,7 +416,7 @@ ShallowWrapper {
               title={undefined}
               titleStyle={
                 Object {
-                  "color": "white",
+                  "color": "#58595B",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -483,7 +483,7 @@ ShallowWrapper {
               },
               "title": undefined,
               "titleStyle": Object {
-                "color": "white",
+                "color": "#58595B",
                 "fontFamily": "Roboto",
                 "fontSize": 22,
                 "fontWeight": "bold",
