@@ -562,7 +562,7 @@ const styles = {
   // e.g. NationListItem Text very BOLD
   listItemTextVeryBold: {
     ...defaultTextStyles.bodyBlack,
-    color: 'white',
+    color: Colors.BitnationDarkGrayColor,
     flex: 1,
   },
 
@@ -683,7 +683,7 @@ const styles = {
   fakeBottomBar: {
     paddingTop: 5,
     height: isiPhoneXTabBar(55),
-    backgroundColor: Colors.BitnationBackgroundColor,
+    backgroundColor: Colors.BitnationDarkGrayColor,
     flexDirection: 'row',
     alignItems: 'stretch',
     justifyContent: 'space-around',

@@ -80,7 +80,7 @@ export default {
   // Colors for common Text Styles
   // e.g. large titles on screens
   titleColor: BitnationHighlightColor,
-  panelViewTitleColor: 'white',
+  panelViewTitleColor: BitnationDarkGrayColor,
   currency: '#FFDD15',
   placeholderTextColor: BitnationGrayColor,
 
@@ -150,7 +150,7 @@ export default {
   privateKeyTextInputLabelColor: '#F1F1F1',
 
   // NAVIGATOR COLORS (in SCREENS.JS)
-  navBarTextColor: 'white',
+  navBarTextColor: BitnationDarkGrayColor,
   navBarButtonColor: BitnationLinkOrangeColor,
   navBarBackgroundColor: 'transparent',
   navigationButtonColor: Platform.OS === 'ios' ? BitnationLinkOrangeColor : '#FFFFFF',
