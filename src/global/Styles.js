@@ -365,7 +365,7 @@ const styles = {
   // Should be similar to sectionListItemContainer
   panelFlatlistHeader: {
     justifyContent: 'center',
-    backgroundColor: Colors.shadeOf(Colors.BitnationDarkColor, 0.5),
+    // backgroundColor: Colors.shadeOf(Colors.BitnationDarkColor, 0.5),
     // Matches the marginLeft: 16 of sectionListItemContainer
     paddingLeft: 16,
     // Standard row height for an iOS list item:
