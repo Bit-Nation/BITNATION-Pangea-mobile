@@ -53,7 +53,9 @@ function WebSocketProvider(network) {
 
         ws.onclose = (e) => {
             console.log(`websocket error: ${e.message}`);
-            WebSocketProvider.prototype.webSocketPromise = webSocket();
+            setTimeout(() => {
+                WebSocketProvider.prototype.webSocketPromise = webSocket();
+            }, 1000)
         };
 
     });
