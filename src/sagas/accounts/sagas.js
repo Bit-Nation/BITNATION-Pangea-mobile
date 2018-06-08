@@ -217,7 +217,11 @@ export function* login(userInfo: ({ accountId: string, accountStore?: string }),
       return;
     }
   } catch (error) {
-    yield put(loginTaskUpdated(TaskBuilder.failure(new LoginFailedError())));
+    if (error.transKey !== undefined) {
+      yield put(loginTaskUpdated(TaskBuilder.failure(error)));
+    } else {
+      yield put(loginTaskUpdated(TaskBuilder.failure(new LoginFailedError())));
+    }
     return;
   }
 

@@ -84,7 +84,7 @@ const NationsPanel = ({
                 />);
             }}
             ItemSeparatorComponent={() => <View style={styles.sectionListSeparator} />}
-            keyExtractor={item => item.id}
+            keyExtractor={item => item.id.toString()}
             data={newestNations}
           />
         </View>

@@ -3,6 +3,7 @@
 const ether = require('ethers');
 const EventEmitter = require('eventemitter3');
 const uuid = require('uuid4');
+const ReconnectingWebSocket = require('reconnecting-websocket');
 
 const JsonRpcProvider = require('ethers/providers/json-rpc-provider');
 
@@ -33,14 +34,8 @@ function WebSocketProvider(network) {
 
     JsonRpcProvider.call(this, url, network);
 
-    const webSocket = () => new Promise((res, rej) => {
-
-        const ws = new WebSocket(url);
-
-        ws.onopen = () => {
-            console.log(`connected to websocket`);
-            res(ws);
-        };
+    const webSocket = (() => {
+        const ws = new ReconnectingWebSocket(url, null, { reconnectInterval: 3000 });
 
         ws.onmessage = (e) => {
             const event = JSON.parse(e.data.toString('utf8')).result;
@@ -48,21 +43,40 @@ function WebSocketProvider(network) {
         };
 
         ws.onerror = (e) => {
-            console.log(e.message);
+          console.log(e.message);
+          if (e.message.indexOf('Unable to resolve host') !== -1) {
+            ws.close();
+          }
         };
 
-        ws.onclose = (e) => {
-            console.log(`websocket error: ${e.message}`);
-            WebSocketProvider.prototype.webSocketPromise = webSocket();
-        };
-
-    });
+        return ws;
+    })();
 
     defineProperty(this, 'webSocketUrl', url);
     defineProperty(this, 'eventEmitter', new EventEmitter());
-    defineProperty(this, 'webSocketPromise', webSocket())
+    defineProperty(this, 'webSocket', webSocket)
 }
 JsonRpcProvider.inherits(WebSocketProvider);
+
+const onOpenClosePromiseBuilder = (ws) => new Promise((res, rej) => {
+  if (ws.readyState === WebSocket.OPEN) {
+    res(ws);
+  }
+  const onOpenHandler = () => {
+    console.log(`connected to websocket`);
+    ws.removeEventListener('open', onOpenHandler);
+    ws.removeEventListener('close', onCloseHandler);
+    res(ws);
+  };
+  const onCloseHandler = (e) => {
+    console.log(`disconnected from websocket`);
+    ws.removeEventListener('open', onOpenHandler);
+    ws.removeEventListener('close', onCloseHandler);
+    rej(new Error(e.message));
+  };
+  ws.addEventListener('open', onOpenHandler);
+  ws.addEventListener('close', onCloseHandler);
+});
 
 defineProperty(WebSocketProvider.prototype, 'send', function(method, params) {
 
@@ -75,21 +89,14 @@ defineProperty(WebSocketProvider.prototype, 'send', function(method, params) {
         jsonrpc: "2.0"
     });
 
-    const self = this;
     return new Promise((resolve, reject) => {
-
-        self
-            .webSocketPromise
-            .then((ws) => {
-                self.eventEmitter.once(id, (data) => {
-
-                    resolve(data);
-
-                });
-                ws.send(payload)
-            })
-            .catch(reject)
-
+        onOpenClosePromiseBuilder(this.webSocket)
+          .then((ws) => {
+            this.eventEmitter.once(id, (data) => {
+              resolve(data);
+            });
+            ws.send(payload);
+          }).catch(reject);
     });
 });
 

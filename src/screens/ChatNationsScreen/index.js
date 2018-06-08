@@ -10,7 +10,7 @@ import { resolveNation } from '../../utils/nations';
 import NavigatorComponent from '../../components/common/NavigatorComponent';
 import { startNationCreation } from '../../actions/modifyNation';
 import type { Navigator } from '../../types/ReactNativeNavigation';
-import type { NationType } from '../../types/Nation';
+import type { NationIdType, NationType } from '../../types/Nation';
 
 type Props = {
   /**
@@ -26,9 +26,9 @@ type Props = {
    */
   nations?: Array<NationType>,
   /**
-   * @desc List of nations that the current user has joined to.
+   * @desc List of nations ids that the current user has joined to.
    */
-  myNations: Array<NationType>,
+  myNationIds: Array<NationIdType>,
   /**
    * @desc Function to retrieve nations from the database
    */

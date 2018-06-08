@@ -4,6 +4,7 @@ import { NativeModules } from 'react-native';
 import type { Mnemonic } from '../../types/Mnemonic';
 import { compressMnemonic, decompressMnemonic } from '../../utils/key';
 import type { Profile } from '../../types/Account';
+import { InvalidPasswordError } from '../../global/errors/accounts';
 
 export default class AccountsService {
   static async getMnemonic(): Promise<Mnemonic> {
@@ -26,7 +27,9 @@ export default class AccountsService {
     } catch (e) {
       // We ignore exception, since we just need stop it in case it was started earlier.
     }
-    const signedProfile = await AccountsService.signProfileStandalone(profile, accountStore, password);
+    const signedProfile = await AccountsService.signProfileStandalone(profile, accountStore, password).catch(() => {
+      throw new InvalidPasswordError();
+    });
     const config = JSON.stringify({
       encrypted_key_manager: accountStore,
       signed_profile: signedProfile,
