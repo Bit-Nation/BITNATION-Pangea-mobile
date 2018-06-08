@@ -24,7 +24,7 @@ ShallowWrapper {
                 "leftButtons": undefined,
                 "rightButtons": Array [
                   Object {
-                    "buttonColor": "#007AFF",
+                    "buttonColor": "#FF8B00",
                     "disabled": false,
                     "id": "DONE_BUTTON",
                     "title": "Done",
@@ -85,7 +85,7 @@ ShallowWrapper {
         <View
           style={
             Object {
-              "alignItems": "center",
+              "alignItems": "flex-start",
             }
           }
         >
@@ -97,6 +97,7 @@ ShallowWrapper {
               style={
                 Object {
                   "alignItems": "center",
+                  "flexDirection": "row",
                 }
               }
             >
@@ -160,7 +161,7 @@ ShallowWrapper {
           title=""
           titleStyle={
             Object {
-              "color": "white",
+              "color": "#58595B",
               "fontFamily": "Roboto",
               "fontSize": 22,
               "fontWeight": "bold",
@@ -199,12 +200,12 @@ ShallowWrapper {
                   keyboardType="default"
                   onChangeText={[Function]}
                   placeholder="Name"
-                  placeholderTextColor="rgba(255,255,255,0.4)"
+                  placeholderTextColor="#929497"
                   style={
                     Object {
                       "borderBottomWidth": 1,
                       "borderColor": "rgba(192,192,192,0.4)",
-                      "color": "#FFFFFF",
+                      "color": "#929497",
                       "flex": 1,
                       "fontFamily": "Roboto",
                       "fontSize": 16,
@@ -236,12 +237,12 @@ ShallowWrapper {
                   keyboardType="default"
                   onChangeText={[Function]}
                   placeholder="Location (Optional)"
-                  placeholderTextColor="rgba(255,255,255,0.4)"
+                  placeholderTextColor="#929497"
                   style={
                     Object {
                       "borderBottomWidth": 1,
                       "borderColor": "rgba(192,192,192,0.4)",
-                      "color": "#FFFFFF",
+                      "color": "#929497",
                       "flex": 1,
                       "fontFamily": "Roboto",
                       "fontSize": 16,
@@ -289,7 +290,7 @@ ShallowWrapper {
           <View
             style={
               Object {
-                "alignItems": "center",
+                "alignItems": "flex-start",
               }
             }
           >
@@ -301,6 +302,7 @@ ShallowWrapper {
                 style={
                   Object {
                     "alignItems": "center",
+                    "flexDirection": "row",
                   }
                 }
               >
@@ -364,7 +366,7 @@ ShallowWrapper {
             title=""
             titleStyle={
               Object {
-                "color": "white",
+                "color": "#58595B",
                 "fontFamily": "Roboto",
                 "fontSize": 22,
                 "fontWeight": "bold",
@@ -403,12 +405,12 @@ ShallowWrapper {
                     keyboardType="default"
                     onChangeText={[Function]}
                     placeholder="Name"
-                    placeholderTextColor="rgba(255,255,255,0.4)"
+                    placeholderTextColor="#929497"
                     style={
                       Object {
                         "borderBottomWidth": 1,
                         "borderColor": "rgba(192,192,192,0.4)",
-                        "color": "#FFFFFF",
+                        "color": "#929497",
                         "flex": 1,
                         "fontFamily": "Roboto",
                         "fontSize": 16,
@@ -440,12 +442,12 @@ ShallowWrapper {
                     keyboardType="default"
                     onChangeText={[Function]}
                     placeholder="Location (Optional)"
-                    placeholderTextColor="rgba(255,255,255,0.4)"
+                    placeholderTextColor="#929497"
                     style={
                       Object {
                         "borderBottomWidth": 1,
                         "borderColor": "rgba(192,192,192,0.4)",
-                        "color": "#FFFFFF",
+                        "color": "#929497",
                         "flex": 1,
                         "fontFamily": "Roboto",
                         "fontSize": 16,
@@ -507,6 +509,7 @@ ShallowWrapper {
                 style={
                   Object {
                     "alignItems": "center",
+                    "flexDirection": "row",
                   }
                 }
               >
@@ -543,7 +546,7 @@ ShallowWrapper {
               </View>
             </TouchableOpacity>,
             "style": Object {
-              "alignItems": "center",
+              "alignItems": "flex-start",
             },
           },
           "ref": null,
@@ -557,6 +560,7 @@ ShallowWrapper {
                 style={
                   Object {
                     "alignItems": "center",
+                    "flexDirection": "row",
                   }
                 }
               >
@@ -633,6 +637,7 @@ ShallowWrapper {
                 ],
                 "style": Object {
                   "alignItems": "center",
+                  "flexDirection": "row",
                 },
               },
               "ref": null,
@@ -721,12 +726,12 @@ ShallowWrapper {
                     keyboardType="default"
                     onChangeText={[Function]}
                     placeholder="Name"
-                    placeholderTextColor="rgba(255,255,255,0.4)"
+                    placeholderTextColor="#929497"
                     style={
                       Object {
                         "borderBottomWidth": 1,
                         "borderColor": "rgba(192,192,192,0.4)",
-                        "color": "#FFFFFF",
+                        "color": "#929497",
                         "flex": 1,
                         "fontFamily": "Roboto",
                         "fontSize": 16,
@@ -758,12 +763,12 @@ ShallowWrapper {
                     keyboardType="default"
                     onChangeText={[Function]}
                     placeholder="Location (Optional)"
-                    placeholderTextColor="rgba(255,255,255,0.4)"
+                    placeholderTextColor="#929497"
                     style={
                       Object {
                         "borderBottomWidth": 1,
                         "borderColor": "rgba(192,192,192,0.4)",
-                        "color": "#FFFFFF",
+                        "color": "#929497",
                         "flex": 1,
                         "fontFamily": "Roboto",
                         "fontSize": 16,
@@ -808,7 +813,7 @@ ShallowWrapper {
             },
             "title": "",
             "titleStyle": Object {
-              "color": "white",
+              "color": "#58595B",
               "fontFamily": "Roboto",
               "fontSize": 22,
               "fontWeight": "bold",
@@ -845,12 +850,12 @@ ShallowWrapper {
                       keyboardType="default"
                       onChangeText={[Function]}
                       placeholder="Name"
-                      placeholderTextColor="rgba(255,255,255,0.4)"
+                      placeholderTextColor="#929497"
                       style={
                         Object {
                           "borderBottomWidth": 1,
                           "borderColor": "rgba(192,192,192,0.4)",
-                          "color": "#FFFFFF",
+                          "color": "#929497",
                           "flex": 1,
                           "fontFamily": "Roboto",
                           "fontSize": 16,
@@ -882,12 +887,12 @@ ShallowWrapper {
                       keyboardType="default"
                       onChangeText={[Function]}
                       placeholder="Location (Optional)"
-                      placeholderTextColor="rgba(255,255,255,0.4)"
+                      placeholderTextColor="#929497"
                       style={
                         Object {
                           "borderBottomWidth": 1,
                           "borderColor": "rgba(192,192,192,0.4)",
-                          "color": "#FFFFFF",
+                          "color": "#929497",
                           "flex": 1,
                           "fontFamily": "Roboto",
                           "fontSize": 16,
@@ -937,12 +942,12 @@ ShallowWrapper {
                         keyboardType="default"
                         onChangeText={[Function]}
                         placeholder="Name"
-                        placeholderTextColor="rgba(255,255,255,0.4)"
+                        placeholderTextColor="#929497"
                         style={
                           Object {
                             "borderBottomWidth": 1,
                             "borderColor": "rgba(192,192,192,0.4)",
-                            "color": "#FFFFFF",
+                            "color": "#929497",
                             "flex": 1,
                             "fontFamily": "Roboto",
                             "fontSize": 16,
@@ -974,12 +979,12 @@ ShallowWrapper {
                         keyboardType="default"
                         onChangeText={[Function]}
                         placeholder="Location (Optional)"
-                        placeholderTextColor="rgba(255,255,255,0.4)"
+                        placeholderTextColor="#929497"
                         style={
                           Object {
                             "borderBottomWidth": 1,
                             "borderColor": "rgba(192,192,192,0.4)",
-                            "color": "#FFFFFF",
+                            "color": "#929497",
                             "flex": 1,
                             "fontFamily": "Roboto",
                             "fontSize": 16,
@@ -1016,12 +1021,12 @@ ShallowWrapper {
                         keyboardType="default"
                         onChangeText={[Function]}
                         placeholder="Name"
-                        placeholderTextColor="rgba(255,255,255,0.4)"
+                        placeholderTextColor="#929497"
                         style={
                           Object {
                             "borderBottomWidth": 1,
                             "borderColor": "rgba(192,192,192,0.4)",
-                            "color": "#FFFFFF",
+                            "color": "#929497",
                             "flex": 1,
                             "fontFamily": "Roboto",
                             "fontSize": 16,
@@ -1054,11 +1059,11 @@ ShallowWrapper {
                         "keyboardType": "default",
                         "onChangeText": [Function],
                         "placeholder": "Name",
-                        "placeholderTextColor": "rgba(255,255,255,0.4)",
+                        "placeholderTextColor": "#929497",
                         "style": Object {
                           "borderBottomWidth": 1,
                           "borderColor": "rgba(192,192,192,0.4)",
-                          "color": "#FFFFFF",
+                          "color": "#929497",
                           "flex": 1,
                           "fontFamily": "Roboto",
                           "fontSize": 16,
@@ -1091,12 +1096,12 @@ ShallowWrapper {
                         keyboardType="default"
                         onChangeText={[Function]}
                         placeholder="Location (Optional)"
-                        placeholderTextColor="rgba(255,255,255,0.4)"
+                        placeholderTextColor="#929497"
                         style={
                           Object {
                             "borderBottomWidth": 1,
                             "borderColor": "rgba(192,192,192,0.4)",
-                            "color": "#FFFFFF",
+                            "color": "#929497",
                             "flex": 1,
                             "fontFamily": "Roboto",
                             "fontSize": 16,
@@ -1129,11 +1134,11 @@ ShallowWrapper {
                         "keyboardType": "default",
                         "onChangeText": [Function],
                         "placeholder": "Location (Optional)",
-                        "placeholderTextColor": "rgba(255,255,255,0.4)",
+                        "placeholderTextColor": "#929497",
                         "style": Object {
                           "borderBottomWidth": 1,
                           "borderColor": "rgba(192,192,192,0.4)",
-                          "color": "#FFFFFF",
+                          "color": "#929497",
                           "flex": 1,
                           "fontFamily": "Roboto",
                           "fontSize": 16,
@@ -1205,7 +1210,7 @@ ShallowWrapper {
           <View
             style={
               Object {
-                "alignItems": "center",
+                "alignItems": "flex-start",
               }
             }
           >
@@ -1217,6 +1222,7 @@ ShallowWrapper {
                 style={
                   Object {
                     "alignItems": "center",
+                    "flexDirection": "row",
                   }
                 }
               >
@@ -1280,7 +1286,7 @@ ShallowWrapper {
             title=""
             titleStyle={
               Object {
-                "color": "white",
+                "color": "#58595B",
                 "fontFamily": "Roboto",
                 "fontSize": 22,
                 "fontWeight": "bold",
@@ -1319,12 +1325,12 @@ ShallowWrapper {
                     keyboardType="default"
                     onChangeText={[Function]}
                     placeholder="Name"
-                    placeholderTextColor="rgba(255,255,255,0.4)"
+                    placeholderTextColor="#929497"
                     style={
                       Object {
                         "borderBottomWidth": 1,
                         "borderColor": "rgba(192,192,192,0.4)",
-                        "color": "#FFFFFF",
+                        "color": "#929497",
                         "flex": 1,
                         "fontFamily": "Roboto",
                         "fontSize": 16,
@@ -1356,12 +1362,12 @@ ShallowWrapper {
                     keyboardType="default"
                     onChangeText={[Function]}
                     placeholder="Location (Optional)"
-                    placeholderTextColor="rgba(255,255,255,0.4)"
+                    placeholderTextColor="#929497"
                     style={
                       Object {
                         "borderBottomWidth": 1,
                         "borderColor": "rgba(192,192,192,0.4)",
-                        "color": "#FFFFFF",
+                        "color": "#929497",
                         "flex": 1,
                         "fontFamily": "Roboto",
                         "fontSize": 16,
@@ -1409,7 +1415,7 @@ ShallowWrapper {
             <View
               style={
                 Object {
-                  "alignItems": "center",
+                  "alignItems": "flex-start",
                 }
               }
             >
@@ -1421,6 +1427,7 @@ ShallowWrapper {
                   style={
                     Object {
                       "alignItems": "center",
+                      "flexDirection": "row",
                     }
                   }
                 >
@@ -1484,7 +1491,7 @@ ShallowWrapper {
               title=""
               titleStyle={
                 Object {
-                  "color": "white",
+                  "color": "#58595B",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -1523,12 +1530,12 @@ ShallowWrapper {
                       keyboardType="default"
                       onChangeText={[Function]}
                       placeholder="Name"
-                      placeholderTextColor="rgba(255,255,255,0.4)"
+                      placeholderTextColor="#929497"
                       style={
                         Object {
                           "borderBottomWidth": 1,
                           "borderColor": "rgba(192,192,192,0.4)",
-                          "color": "#FFFFFF",
+                          "color": "#929497",
                           "flex": 1,
                           "fontFamily": "Roboto",
                           "fontSize": 16,
@@ -1560,12 +1567,12 @@ ShallowWrapper {
                       keyboardType="default"
                       onChangeText={[Function]}
                       placeholder="Location (Optional)"
-                      placeholderTextColor="rgba(255,255,255,0.4)"
+                      placeholderTextColor="#929497"
                       style={
                         Object {
                           "borderBottomWidth": 1,
                           "borderColor": "rgba(192,192,192,0.4)",
-                          "color": "#FFFFFF",
+                          "color": "#929497",
                           "flex": 1,
                           "fontFamily": "Roboto",
                           "fontSize": 16,
@@ -1627,6 +1634,7 @@ ShallowWrapper {
                   style={
                     Object {
                       "alignItems": "center",
+                      "flexDirection": "row",
                     }
                   }
                 >
@@ -1663,7 +1671,7 @@ ShallowWrapper {
                 </View>
               </TouchableOpacity>,
               "style": Object {
-                "alignItems": "center",
+                "alignItems": "flex-start",
               },
             },
             "ref": null,
@@ -1677,6 +1685,7 @@ ShallowWrapper {
                   style={
                     Object {
                       "alignItems": "center",
+                      "flexDirection": "row",
                     }
                   }
                 >
@@ -1753,6 +1762,7 @@ ShallowWrapper {
                   ],
                   "style": Object {
                     "alignItems": "center",
+                    "flexDirection": "row",
                   },
                 },
                 "ref": null,
@@ -1841,12 +1851,12 @@ ShallowWrapper {
                       keyboardType="default"
                       onChangeText={[Function]}
                       placeholder="Name"
-                      placeholderTextColor="rgba(255,255,255,0.4)"
+                      placeholderTextColor="#929497"
                       style={
                         Object {
                           "borderBottomWidth": 1,
                           "borderColor": "rgba(192,192,192,0.4)",
-                          "color": "#FFFFFF",
+                          "color": "#929497",
                           "flex": 1,
                           "fontFamily": "Roboto",
                           "fontSize": 16,
@@ -1878,12 +1888,12 @@ ShallowWrapper {
                       keyboardType="default"
                       onChangeText={[Function]}
                       placeholder="Location (Optional)"
-                      placeholderTextColor="rgba(255,255,255,0.4)"
+                      placeholderTextColor="#929497"
                       style={
                         Object {
                           "borderBottomWidth": 1,
                           "borderColor": "rgba(192,192,192,0.4)",
-                          "color": "#FFFFFF",
+                          "color": "#929497",
                           "flex": 1,
                           "fontFamily": "Roboto",
                           "fontSize": 16,
@@ -1928,7 +1938,7 @@ ShallowWrapper {
               },
               "title": "",
               "titleStyle": Object {
-                "color": "white",
+                "color": "#58595B",
                 "fontFamily": "Roboto",
                 "fontSize": 22,
                 "fontWeight": "bold",
@@ -1965,12 +1975,12 @@ ShallowWrapper {
                         keyboardType="default"
                         onChangeText={[Function]}
                         placeholder="Name"
-                        placeholderTextColor="rgba(255,255,255,0.4)"
+                        placeholderTextColor="#929497"
                         style={
                           Object {
                             "borderBottomWidth": 1,
                             "borderColor": "rgba(192,192,192,0.4)",
-                            "color": "#FFFFFF",
+                            "color": "#929497",
                             "flex": 1,
                             "fontFamily": "Roboto",
                             "fontSize": 16,
@@ -2002,12 +2012,12 @@ ShallowWrapper {
                         keyboardType="default"
                         onChangeText={[Function]}
                         placeholder="Location (Optional)"
-                        placeholderTextColor="rgba(255,255,255,0.4)"
+                        placeholderTextColor="#929497"
                         style={
                           Object {
                             "borderBottomWidth": 1,
                             "borderColor": "rgba(192,192,192,0.4)",
-                            "color": "#FFFFFF",
+                            "color": "#929497",
                             "flex": 1,
                             "fontFamily": "Roboto",
                             "fontSize": 16,
@@ -2057,12 +2067,12 @@ ShallowWrapper {
                           keyboardType="default"
                           onChangeText={[Function]}
                           placeholder="Name"
-                          placeholderTextColor="rgba(255,255,255,0.4)"
+                          placeholderTextColor="#929497"
                           style={
                             Object {
                               "borderBottomWidth": 1,
                               "borderColor": "rgba(192,192,192,0.4)",
-                              "color": "#FFFFFF",
+                              "color": "#929497",
                               "flex": 1,
                               "fontFamily": "Roboto",
                               "fontSize": 16,
@@ -2094,12 +2104,12 @@ ShallowWrapper {
                           keyboardType="default"
                           onChangeText={[Function]}
                           placeholder="Location (Optional)"
-                          placeholderTextColor="rgba(255,255,255,0.4)"
+                          placeholderTextColor="#929497"
                           style={
                             Object {
                               "borderBottomWidth": 1,
                               "borderColor": "rgba(192,192,192,0.4)",
-                              "color": "#FFFFFF",
+                              "color": "#929497",
                               "flex": 1,
                               "fontFamily": "Roboto",
                               "fontSize": 16,
@@ -2136,12 +2146,12 @@ ShallowWrapper {
                           keyboardType="default"
                           onChangeText={[Function]}
                           placeholder="Name"
-                          placeholderTextColor="rgba(255,255,255,0.4)"
+                          placeholderTextColor="#929497"
                           style={
                             Object {
                               "borderBottomWidth": 1,
                               "borderColor": "rgba(192,192,192,0.4)",
-                              "color": "#FFFFFF",
+                              "color": "#929497",
                               "flex": 1,
                               "fontFamily": "Roboto",
                               "fontSize": 16,
@@ -2174,11 +2184,11 @@ ShallowWrapper {
                           "keyboardType": "default",
                           "onChangeText": [Function],
                           "placeholder": "Name",
-                          "placeholderTextColor": "rgba(255,255,255,0.4)",
+                          "placeholderTextColor": "#929497",
                           "style": Object {
                             "borderBottomWidth": 1,
                             "borderColor": "rgba(192,192,192,0.4)",
-                            "color": "#FFFFFF",
+                            "color": "#929497",
                             "flex": 1,
                             "fontFamily": "Roboto",
                             "fontSize": 16,
@@ -2211,12 +2221,12 @@ ShallowWrapper {
                           keyboardType="default"
                           onChangeText={[Function]}
                           placeholder="Location (Optional)"
-                          placeholderTextColor="rgba(255,255,255,0.4)"
+                          placeholderTextColor="#929497"
                           style={
                             Object {
                               "borderBottomWidth": 1,
                               "borderColor": "rgba(192,192,192,0.4)",
-                              "color": "#FFFFFF",
+                              "color": "#929497",
                               "flex": 1,
                               "fontFamily": "Roboto",
                               "fontSize": 16,
@@ -2249,11 +2259,11 @@ ShallowWrapper {
                           "keyboardType": "default",
                           "onChangeText": [Function],
                           "placeholder": "Location (Optional)",
-                          "placeholderTextColor": "rgba(255,255,255,0.4)",
+                          "placeholderTextColor": "#929497",
                           "style": Object {
                             "borderBottomWidth": 1,
                             "borderColor": "rgba(192,192,192,0.4)",
-                            "color": "#FFFFFF",
+                            "color": "#929497",
                             "flex": 1,
                             "fontFamily": "Roboto",
                             "fontSize": 16,

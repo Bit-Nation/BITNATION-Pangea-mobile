@@ -140,7 +140,7 @@ class SendMoney extends NavigatorComponent<Props, State> {
               <Image style={styles.icon} source={wallet.currency === 'ETH' ? Images.ethereumLogo : Images.patLogo} resizeMode='contain' />
               <View style={styles.textColumn}>
                 <Text style={styles.bodyBold}>{wallet.currency === 'ETH' ? i18n.t('common.ethereum') : i18n.t('common.bitnationPat')}</Text>
-                <Text style={styles.currencyLarge}>
+                <Text style={styles.currencyMedium}>
                   {prettyWalletBalance(wallet, wallet.currency)}
                 </Text>
               </View>
@@ -148,7 +148,7 @@ class SendMoney extends NavigatorComponent<Props, State> {
           </PanelView>
 
           <PanelView
-            style={styles.panelViewTransparent}
+            style={[styles.panelViewTransparent, styles.pannelViewRow]}
             childrenContainerStyle={styles.noflex}
           >
             <View style={styles.formRow}>
@@ -156,23 +156,24 @@ class SendMoney extends NavigatorComponent<Props, State> {
                 <Text style={styles.amountLabelText}>{i18n.t('common.amount')}</Text>
                 <View style={styles.formRow}>
                   <View style={styles.textInputContainer}>
+                    <Text style={styles.currencyPlaceholder}>
+                      {wallet.currency}
+                    </Text>
                     <TextInput
-                      style={[styles.textInputInContainer, styles.currencyLarge]}
+                      style={[styles.textInputInContainer, styles.currencyLarge, styles.currencyNumber]}
                       placeholder='0.00000'
                       placeholderTextColor={Colors.placeholderTextColor}
                       keyboardType='numeric'
                       onChangeText={amountString => this.setState({ amountString })}
                       value={this.state.amountString}
                     />
-                    <Text style={styles.currencyPlaceholder}>
-                      {wallet.currency}
-                    </Text>
+
                   </View>
                 </View>
                 <Text style={styles.toLabelText}>{i18n.t('common.to')}</Text>
-                <View style={styles.formRow}>
+                <View style={styles.textInputContainer}>
                   <TextInput
-                    style={styles.toTextInput}
+                    style={[styles.textInputInContainer, styles.currencyLarge, styles.currencyNumber]}
                     placeholder='0x'
                     placeholderTextColor={Colors.placeholderTextColor}
                     keyboardType='default'
