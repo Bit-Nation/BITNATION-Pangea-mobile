@@ -12,7 +12,6 @@ import { NoNationsServiceError } from '../../global/errors/services';
 import { currentAccountBasedUpdate } from '../accounts/sagas';
 import type { NationType as DBNationType } from '../../services/database/schemata';
 import type { State as NationsState } from '../../reducers/nations';
-import { CancelledError } from '../../global/errors/common';
 
 const extractMessage = (error) => {
   if (error.transKey !== undefined) {
