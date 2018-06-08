@@ -31,6 +31,10 @@ const styles = MediaQueryStyleSheet.create({
     justifyContent: 'flex-end',
     paddingLeft: 25,
   },
+  pannelViewRow: {
+    paddingLeft: 0,
+    paddingRight: 0,
+  },
   textInputInContainer: {
     ...GlobalStyles.textInput,
     marginBottom: 0,

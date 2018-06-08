@@ -148,7 +148,7 @@ class SendMoney extends NavigatorComponent<Props, State> {
           </PanelView>
 
           <PanelView
-            style={styles.panelViewTransparent}
+            style={[styles.panelViewTransparent, styles.pannelViewRow]}
             childrenContainerStyle={styles.noflex}
           >
             <View style={styles.formRow}>
