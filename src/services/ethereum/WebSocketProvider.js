@@ -43,7 +43,10 @@ function WebSocketProvider(network) {
         };
 
         ws.onerror = (e) => {
-            console.log(e.message);
+          console.log(e.message);
+          if (e.message.indexOf('Unable to resolve host') !== -1) {
+            ws.close();
+          }
         };
 
         return ws;
