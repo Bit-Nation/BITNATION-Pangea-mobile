@@ -1,6 +1,7 @@
 // @flow
 
 import { call, put, select } from 'redux-saga/effects';
+import { delay } from 'redux-saga';
 import { Realm } from 'realm';
 
 import { nationsUpdated, doneFetchNations, fetchNationsStarted, cancelLoading } from '../../actions/nations';
@@ -12,6 +13,7 @@ import { NoNationsServiceError } from '../../global/errors/services';
 import { currentAccountBasedUpdate } from '../accounts/sagas';
 import type { NationType as DBNationType } from '../../services/database/schemata';
 import type { State as NationsState } from '../../reducers/nations';
+import { NATION_INDEX_RECOVER_PERIOD } from '../../global/Constants';
 
 const extractMessage = (error) => {
   if (error.transKey !== undefined) {
@@ -61,15 +63,21 @@ export function* startDatabaseListening(): Generator<*, *, *> {
  * @return {void}
  */
 export function* startNationIndexingWorker(): Generator<*, *, *> {
-  const { nationsService } = ServiceContainer.instance;
-  if (nationsService == null) {
-    throw new NoNationsServiceError();
-  }
+  try {
+    const { nationsService } = ServiceContainer.instance;
+    if (nationsService == null) {
+      throw new NoNationsServiceError();
+    }
 
-  // @todo Pass block number
-  yield put(fetchNationsStarted());
-  yield call([nationsService, 'registerNationIndexing']);
-  yield put(doneFetchNations());
+    yield put(fetchNationsStarted());
+    yield call([nationsService, 'registerNationIndexing']);
+    yield put(doneFetchNations());
+  } catch (e) {
+    console.log('HEY FAILED');
+    yield delay(NATION_INDEX_RECOVER_PERIOD);
+    console.log('RECOVER');
+    yield call(startNationIndexingWorker);
+  }
 }
 
 /**
