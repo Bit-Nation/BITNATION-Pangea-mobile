@@ -9,7 +9,7 @@ const styles = MediaQueryStyleSheet.create({
     backgroundColor: Colors.shadeOfBitnationLightColor(0.2),
     borderWidth: 1,
     borderColor: Colors.borderColor,
-    color: Colors.white,
+    color: Colors.BitnationDarkGrayColor,
     paddingLeft: 4,
     marginRight: 5,
   },
@@ -21,6 +21,21 @@ const styles = MediaQueryStyleSheet.create({
   customTextStyle: {
     fontFamily: 'Roboto',
     fontWeight: 'normal',
+    color: Colors.BitnationDarkGrayColor,
+  },
+  leftBubbleWrapper: {
+    flex: 1,
+    backgroundColor: Colors.white,
+  },
+  rightBubbleWrapper: {
+    flex: 1,
+    backgroundColor: Colors.BitnationHighlightYellowColor,
+  },
+  leftTextStyle: {
+    color: Colors.BitnationDarkGrayColor,
+  },
+  rightTextStyle: {
+    color: Colors.BitnationDarkGrayColor,
   },
 });
 
