@@ -89,6 +89,7 @@ class Accounts extends NavigatorComponent<Props & Actions & AccountsState> {
           <PanelView
             title={i18n.t('screens.accounts.warningTitle')}
             style={styles.gridPanelViewWarning}
+            childrenContainerStyle={styles.warningPanelChildrenContainerStyle}
             titleStyle={styles.alertPanelViewTitle}
             buttonTitle={i18n.t('screens.accounts.checkRelease')}
             onButtonClick={this.onOpenRUrl}
