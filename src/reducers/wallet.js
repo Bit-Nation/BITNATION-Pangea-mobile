@@ -50,23 +50,41 @@ export default (state: State = initialState, action: Action): State => {
       return Object.assign({}, state, { wallets: _.cloneDeep(action.wallets) });
     case WALLET_SYNC_FAILED: {
       const { walletAddress, walletCurrency } = action;
-      const walletIndex = getWalletIndex(state.wallets || [], walletAddress, walletCurrency);
-      const newWallets = _.cloneDeep(state.wallets);
+      const wallets = state.wallets || [];
+      const walletIndex = getWalletIndex(wallets, walletAddress, walletCurrency);
       if (walletIndex === null) {
         return state;
       }
-      newWallets[walletIndex].synchronizationError = action.error;
-      return Object.assign({}, state, { wallets: newWallets });
+      return {
+        ...state,
+        wallets: [
+          ...wallets.slice(0, walletIndex - 1),
+          {
+            ...wallets[walletIndex],
+            synchronizationError: action.error,
+          },
+          ...wallets.slice(walletIndex + 1),
+        ],
+      };
     }
     case UPDATE_WALLET_BALANCE: {
-      const { walletAddress } = action;
-      const walletIndex = getWalletIndex(state.wallets || [], walletAddress);
+      const { walletAddress, walletCurrency } = action;
+      const wallets = state.wallets || [];
+      const walletIndex = getWalletIndex(wallets, walletAddress, walletCurrency);
       if (walletIndex === null) {
         return state;
       }
-      const newWallets = _.cloneDeep(state.wallets);
-      newWallets[walletIndex].synchronizationError = undefined;
-      return Object.assign({}, state, { wallets: newWallets });
+      return {
+        ...state,
+        wallets: [
+          ...wallets.slice(0, walletIndex - 1),
+          {
+            ...wallets[walletIndex],
+            synchronizationError: undefined,
+          },
+          ...wallets.slice(walletIndex + 1),
+        ],
+      };
     }
     case SEND_MONEY:
       return {
