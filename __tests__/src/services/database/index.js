@@ -7,7 +7,7 @@ describe('db', () => {
   test('default path', async () => {
     expect.assertions(1);
     const realm = await db;
-    expect(realm.path.split('/').slice(-1)[0]).toEqual('pangea');
+    expect(realm.path.split('/').slice(-1)[0]).toEqual('pangea_0_4_5');
     realm.close();
   });
   test('custom path', async () => {
