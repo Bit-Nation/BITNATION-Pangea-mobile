@@ -1,22 +1,18 @@
-/* eslint-disable */
+import { all, call, takeEvery } from 'redux-saga/effects';
 
-import { all, takeEvery } from 'redux-saga/effects';
+import { ADD_NEW_MESSAGE } from '../../actions/activity';
+import {
+  addNewMessageSaga,
+  startDatabaseListening,
+} from './sagas';
 
-import { ADD_DUMMY_MESSAGE, START_FETCH_MESSAGES } from '../../actions/activity';
-import { addDummyMessageSaga, fetchMessagesSaga, watchNewMessages } from './sagas';
-
-function* watchStartFetchMessages() {
-  yield takeEvery(START_FETCH_MESSAGES, fetchMessagesSaga);
-}
-
-function* watchAddDummyMessage() {
-  yield takeEvery(ADD_DUMMY_MESSAGE, addDummyMessageSaga);
-}
-
+/**
+ * @desc Root activity saga.
+ * @return {void}
+ */
 export default function* rootSaga() {
   yield all([
-    watchStartFetchMessages(),
-    watchNewMessages(),
-    watchAddDummyMessage(),
+    call(startDatabaseListening),
+    takeEvery(ADD_NEW_MESSAGE, addNewMessageSaga),
   ]);
 }

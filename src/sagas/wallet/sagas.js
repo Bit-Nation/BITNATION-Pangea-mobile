@@ -1,58 +1,99 @@
-/* eslint-disable */
+// @flow
 
-import { all, call, put, select } from 'redux-saga/effects';
-import _ from 'lodash';
+import {
+  call,
+  put,
+  select,
+} from 'redux-saga/effects';
+import {
+  sendMoneyFailed,
+  sendMoneySuccess,
+  walletsListUpdated,
+  walletSyncFailed,
+} from '../../actions/wallet';
+import { getAccount, getCurrentAccountId } from '../accounts/sagas';
+import type { SendMoneyAction } from '../../actions/wallet';
+import type { WalletType } from '../../types/Wallet';
+import ServiceContainer from '../../services/container';
+import { NoWalletServiceError } from '../../global/errors/services';
 
-import { sendMoneyFailed, sendMoneySuccess, walletsListUpdated, walletSyncFailed } from '../../actions/wallet';
-import { getWallets, resolveBalance, sendMoney, syncWallet } from './serviceFunctions';
-import { checkConnection } from '../connection';
-
-export function* sendMoneySaga(action) {
+/**
+ * @desc Sends money depending the currency of the wallets on the list.
+ * @param {SendMoneyAction} action an Action
+ * @returns {void}
+ */
+export function* sendMoneySaga(action: SendMoneyAction): Generator<*, *, *> {
   const state = yield select();
   const fromAddress = state.wallet.selectedWalletAddress;
   const toAddress = action.toEthAddress;
-  const amount = action.amount;
+  const amountToSend = action.amount;
+  const currentAccountId: string = yield call(getCurrentAccountId);
+  const account = yield getAccount(currentAccountId);
+  const { walletService } = ServiceContainer.instance;
+  if (walletService === null) {
+    yield put(sendMoneyFailed(new NoWalletServiceError()));
+    return;
+  }
 
-  try {
-    yield call(checkConnection);
-    yield call(sendMoney, fromAddress, toAddress, amount);
-    yield put(sendMoneySuccess());
-  } catch (error) {
-    console.log(error);
-    yield put(sendMoneyFailed(error));
+  if (state.wallet.selectedWalletCurrency === 'ETH') {
+    try {
+      yield call([walletService, 'sendMoney'], fromAddress, toAddress, amountToSend);
+      yield put(sendMoneySuccess());
+    } catch (error) {
+      yield put(sendMoneyFailed(error));
+    }
+  } else {
+    try {
+      yield call([walletService, 'sendToken'], fromAddress, toAddress, amountToSend, account.networkType);
+      yield put(sendMoneySuccess());
+    } catch (error) {
+      yield put(sendMoneyFailed(error));
+    }
   }
 }
 
-function* resolveWalletBalance(walletWithoutBalance) {
-  try {
-    yield call(checkConnection);
-    const wallet = yield call(resolveBalance, walletWithoutBalance);
-    console.log(wallet);
-    return wallet;
-  } catch (error) {
-    yield put(walletSyncFailed(walletWithoutBalance.ethAddress, error));
-    throw error;
+/**
+ * @desc Updates the balance in the wallets on the list.
+ * @returns {void}
+ */
+export function* updateWalletList(): Generator<*, *, *> {
+  const currentAccountId: string = yield call(getCurrentAccountId);
+  const account = yield getAccount(currentAccountId);
+  const { walletService } = ServiceContainer.instance;
+  if (walletService === null) {
+    yield put(walletsListUpdated([]));
+    return;
   }
-}
 
-export function* updateWalletList() {
-  const walletsWithoutBalance = yield call(getWallets);
+  const walletsWithoutBalance = yield call([walletService, 'getWallets']);
   yield put(walletsListUpdated(walletsWithoutBalance));
-  // @todo Don't fail if only one fail
   try {
-    const wallets = yield all(_.map(walletsWithoutBalance, wallet => call(resolveWalletBalance, wallet)));
+    const wallets = yield call([walletService, 'resolveBalance'], walletsWithoutBalance, account.networkType);
     yield put(walletsListUpdated(wallets));
   } catch (error) {
+    yield put(walletSyncFailed(walletsWithoutBalance[0].ethAddress, walletsWithoutBalance[0].currency, error));
+    yield put(walletSyncFailed(walletsWithoutBalance[1].ethAddress, walletsWithoutBalance[1].currency, error));
     console.log(`Wallet list update failed with error: ${error.toString()}`);
   }
 }
 
-export function* updateWalletBalance(wallet) {
+/**
+ * @desc Updates the balance in the wallet passed as parameter.
+ * @param {WalletType} wallet Wallet to be updated
+ * @returns {void}
+ */
+export function* updateWalletBalance(wallet: WalletType): Generator<*, *, *> {
+  const { walletService } = ServiceContainer.instance;
+  if (walletService === null) {
+    yield put(walletSyncFailed(wallet.ethAddress, wallet.currency, new NoWalletServiceError()));
+    return;
+  }
+
   try {
-    yield call(checkConnection);
-    yield call(syncWallet, wallet);
+    yield call([walletService, 'syncWallet'], wallet);
     yield updateWalletList();
   } catch (error) {
+    yield put(walletSyncFailed(wallet.ethAddress, wallet.currency, error));
     console.log(`Wallet balance update failed with error: ${error.toString()}`);
   }
 }

@@ -9,6 +9,7 @@ exports[`NationListHeader renders correctly 1`] = `
       "flexDirection": "row",
       "height": 30,
       "justifyContent": "center",
+      "marginLeft": 16,
     }
   }
 >

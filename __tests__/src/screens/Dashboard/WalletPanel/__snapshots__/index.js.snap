@@ -20,15 +20,21 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "children": <PanelView
+        body={undefined}
+        buttonTitle="Button"
         childrenContainerStyle={
           Object {
             "flex": 0,
           }
         }
+        icon={undefined}
+        onButtonClick={null}
+        renderAdditionalInfo={null}
+        renderBottom={null}
         style={
           Object {
             "alignItems": "stretch",
-            "backgroundColor": "rgba(255,255,255,0.2)",
+            "backgroundColor": "white",
             "borderRadius": 8,
             "flex": 0,
             "flexDirection": "column",
@@ -57,7 +63,7 @@ ShallowWrapper {
           ellipsizeMode="tail"
           style={
             Object {
-              "color": "#FFFFFF",
+              "color": "#929497",
               "fontFamily": "Roboto",
               "fontSize": 17,
               "fontWeight": "normal",
@@ -77,13 +83,15 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
+        "body": undefined,
+        "buttonTitle": "Button",
         "children": <Text
           accessible={true}
           allowFontScaling={true}
           ellipsizeMode="tail"
           style={
             Object {
-              "color": "#FFFFFF",
+              "color": "#929497",
               "fontFamily": "Roboto",
               "fontSize": 17,
               "fontWeight": "normal",
@@ -97,9 +105,13 @@ ShallowWrapper {
         "childrenContainerStyle": Object {
           "flex": 0,
         },
+        "icon": undefined,
+        "onButtonClick": null,
+        "renderAdditionalInfo": null,
+        "renderBottom": null,
         "style": Object {
           "alignItems": "stretch",
-          "backgroundColor": "rgba(255,255,255,0.2)",
+          "backgroundColor": "white",
           "borderRadius": 8,
           "flex": 0,
           "flexDirection": "column",
@@ -130,7 +142,7 @@ ShallowWrapper {
           "children": "Create a wallet to use Pangea.",
           "ellipsizeMode": "tail",
           "style": Object {
-            "color": "#FFFFFF",
+            "color": "#929497",
             "fontFamily": "Roboto",
             "fontSize": 17,
             "fontWeight": "normal",
@@ -153,15 +165,21 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "children": <PanelView
+          body={undefined}
+          buttonTitle="Button"
           childrenContainerStyle={
             Object {
               "flex": 0,
             }
           }
+          icon={undefined}
+          onButtonClick={null}
+          renderAdditionalInfo={null}
+          renderBottom={null}
           style={
             Object {
               "alignItems": "stretch",
-              "backgroundColor": "rgba(255,255,255,0.2)",
+              "backgroundColor": "white",
               "borderRadius": 8,
               "flex": 0,
               "flexDirection": "column",
@@ -190,7 +208,7 @@ ShallowWrapper {
             ellipsizeMode="tail"
             style={
               Object {
-                "color": "#FFFFFF",
+                "color": "#929497",
                 "fontFamily": "Roboto",
                 "fontSize": 17,
                 "fontWeight": "normal",
@@ -210,13 +228,15 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
+          "body": undefined,
+          "buttonTitle": "Button",
           "children": <Text
             accessible={true}
             allowFontScaling={true}
             ellipsizeMode="tail"
             style={
               Object {
-                "color": "#FFFFFF",
+                "color": "#929497",
                 "fontFamily": "Roboto",
                 "fontSize": 17,
                 "fontWeight": "normal",
@@ -230,9 +250,13 @@ ShallowWrapper {
           "childrenContainerStyle": Object {
             "flex": 0,
           },
+          "icon": undefined,
+          "onButtonClick": null,
+          "renderAdditionalInfo": null,
+          "renderBottom": null,
           "style": Object {
             "alignItems": "stretch",
-            "backgroundColor": "rgba(255,255,255,0.2)",
+            "backgroundColor": "white",
             "borderRadius": 8,
             "flex": 0,
             "flexDirection": "column",
@@ -263,7 +287,7 @@ ShallowWrapper {
             "children": "Create a wallet to use Pangea.",
             "ellipsizeMode": "tail",
             "style": Object {
-              "color": "#FFFFFF",
+              "color": "#929497",
               "fontFamily": "Roboto",
               "fontSize": 17,
               "fontWeight": "normal",

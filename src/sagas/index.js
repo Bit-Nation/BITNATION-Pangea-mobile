@@ -1,23 +1,33 @@
-/* eslint-disable */
+// @flow
 
-import { all } from 'redux-saga/effects';
+import { all, call } from 'redux-saga/effects';
 
-import wallet from './wallet';
-import key from './key';
-import profile from './profile';
-import nations from './nations';
+import accounts from './accounts';
 import activity from './activity';
+import navigation from './navigation';
+import key from './key';
+import settings from './settings';
+import wallet from './wallet';
+import serviceContainer from './serviceContainer';
 import modifyNation from './modifyNation';
-import transactions from './transactions';
+import nations from './nations';
+import txProcessor from './txProcessor';
 
-export default function* rootSaga() {
+/**
+ * @desc Root saga.
+ * @return {void}
+ */
+export default function* rootSaga(): Generator<*, *, *> {
   yield all([
-    wallet(),
-    profile(),
-    nations(),
-    key(),
-    activity(),
-    modifyNation(),
-    transactions(),
+    call(accounts),
+    call(activity),
+    call(navigation),
+    call(key),
+    call(settings),
+    call(wallet),
+    call(serviceContainer),
+    call(modifyNation),
+    call(nations),
+    call(txProcessor),
   ]);
 }

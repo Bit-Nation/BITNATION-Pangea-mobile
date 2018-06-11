@@ -28,12 +28,11 @@ const WalletList = ({ wallets, onReceivePress, onSendPress }: Props) => ((
   <View style={styles.walletListContainer}>
     <FlatList
       data={wallets}
-      keyExtractor={item => item.ethAddress}
+      keyExtractor={item => item.currency}
       renderItem={({ item }) => {
-        const balance = prettyWalletBalance(item, 'ETH');
-
+        const balance = prettyWalletBalance(item, item.currency);
         return (<WalletCard
-          imagePath={Images.ethereumLogo}
+          imagePath={item.currency === 'ETH' ? Images.ethereumLogo : Images.patLogo}
           onSendPress={() => onSendPress(item)}
           onReceivePress={() => onReceivePress(item)}
           nameHeading={item.name}

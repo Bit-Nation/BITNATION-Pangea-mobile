@@ -2,12 +2,12 @@ import saveShouldBeEnabled from '../../../src/utils/profile';
 
 describe('saveShouldBeEnabled', () => {
   const initialProps = {
-    user: {
+    account: {
       _id: 1,
       name: 'Pangea',
       location: 'NYC',
     },
-    editingUser: {
+    editingAccount: {
       _id: 1,
       name: 'Pangea',
       location: 'NYC',
@@ -15,28 +15,28 @@ describe('saveShouldBeEnabled', () => {
   };
 
   test('should disable save because no changes are made', () => {
-    expect(saveShouldBeEnabled(initialProps.user, initialProps.editingUser)).toBe(false);
+    expect(saveShouldBeEnabled(initialProps.account, initialProps.editingAccount)).toBe(false);
   });
 
   test('should disable save because name is not provided', () => {
     const props1 = {
       ...initialProps,
-      editingUser: {
-        ...initialProps.editingUser,
+      editingAccount: {
+        ...initialProps.editingAccount,
         name: '',
       },
     };
-    expect(saveShouldBeEnabled(props1.user, props1.editingUser)).toBe(false);
+    expect(saveShouldBeEnabled(props1.account, props1.editingAccount)).toBe(false);
   });
 
   test('should enable save', () => {
     const props2 = {
       ...initialProps,
-      editingUser: {
-        ...initialProps.editingUser,
+      editingAccount: {
+        ...initialProps.editingAccount,
         name: 'Bitnation',
       },
     };
-    expect(saveShouldBeEnabled(props2.user, props2.editingUser)).toBe(true);
+    expect(saveShouldBeEnabled(props2.account, props2.editingAccount)).toBe(true);
   });
 });

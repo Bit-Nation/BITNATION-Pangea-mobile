@@ -40,6 +40,7 @@ export const navigatorStyle = {
   navBarButtonColor: Colors.navBarButtonColor,
   screenBackgroundColor: 'transparent',
   rootBackgroundImageName: 'background-gray.jpg',
+  topBarElevationShadowEnabled: false,
 };
 
 export const hiddenNavigatorStyle = {
@@ -56,14 +57,6 @@ export const navigatorStyleModal = {
   tabBarHidden: true,
 };
 
-const baseKeyScreen = {
-  navigatorStyle: {
-    ...navigatorStyle,
-    disabledBackGesture: true,
-  },
-  overrideBackPress: true,
-};
-
 /*
   label : this text string appears in the navigation bar at the bottom of the screen
   icon  : icon for navigation bar
@@ -71,6 +64,33 @@ const baseKeyScreen = {
  */
 
 const Screens = {
+  ACCOUNTS_SCREEN: {
+    screen: 'Pangea.AccountsScreen',
+    title: i18n.t('screens.accounts.title'),
+    navigatorStyle: hiddenNavigatorStyle,
+  },
+  ACCOUNT_CREATE_DEVELOPER_SETTINGS: {
+    screen: 'Pangea.AccountCreateDeveloperSettingsScreen',
+    title: i18n.t('screens.accounts.create.developerTitle'),
+    navigatorStyle,
+  },
+  ACCOUNT_CREATE_READY: {
+    screen: 'Pangea.AccountCreateReadyScreen',
+    navigatorStyle: hiddenNavigatorStyle,
+  },
+  ACCOUNT_RESTORE_SOURCE: {
+    screen: 'Pangea.AccountRestoreSourceScreen',
+    navigatorStyle,
+  },
+  ACCOUNT_RESTORE_EMPTY_WALLET: {
+    screen: 'Pangea.AccountRestoreEmptyWalletScreen',
+    navigatorStyle: hiddenNavigatorStyle,
+  },
+  ACCOUNTS_ACCESS_SCREEN: {
+    screen: 'Pangea.AccountsAccess',
+    title: '',
+    navigatorStyle: navigatorStyleModal,
+  },
   DASHBOARD_SCREEN: {
     screen: 'Pangea.DashboardScreen',
     label: i18n.t('screens.dashboard.tabTitle'),
@@ -120,35 +140,42 @@ const Screens = {
     title: '', // i18n.t('screens.profile.title'),
     navigatorStyle,
   },
-  CREATE_KEY_INTRODUCTION_SCREEN: {
-    screen: 'Pangea.CreateKeyIntroductionScreen',
-    title: '', // i18n.t('screens.createKey.title'),
-    ...baseKeyScreen,
+  CONFIRM_KEY_INSTRUCTION_SCREEN: {
+    screen: 'Pangea.ConfirmKeyInstructionScreen',
+    title: i18n.t('screens.confirmKey.title'),
+    navigatorStyle,
+    backButtonTitle: '',
   },
-  CREATE_KEY_INSTRUCTION_SCREEN: {
-    screen: 'Pangea.CreateKeyInstructionScreen',
-    title: i18n.t('screens.createKey.title'),
-    ...baseKeyScreen,
-  },
-  CREATE_KEY_PROCESS_SCREEN: {
-    screen: 'Pangea.CreateKeyProcessScreen',
-    title: i18n.t('screens.createKey.title'),
-    ...baseKeyScreen,
+  CONFIRM_KEY_PROCESS_SCREEN: {
+    screen: 'Pangea.ConfirmKeyProcessScreen',
+    title: i18n.t('screens.confirmKey.title'),
+    navigatorStyle,
+    backButtonTitle: '',
   },
   VERIFY_KEY_INSTRUCTION_SCREEN: {
     screen: 'Pangea.VerifyKeyInstructionScreen',
     title: i18n.t('screens.verifyKey.title'),
-    ...baseKeyScreen,
+    navigatorStyle,
+    backButtonTitle: '',
   },
   VERIFY_KEY_PROCESS_SCREEN: {
     screen: 'Pangea.VerifyKeyProcessScreen',
     title: i18n.t('screens.verifyKey.title'),
-    ...baseKeyScreen,
+    navigatorStyle,
+    backButtonTitle: '',
+    passProps: {
+      isVerification: true,
+    },
   },
-  LOAD_WALLET_SCREEN: {
-    screen: 'Pangea.LoadWalletScreen',
-    title: '',
-    ...baseKeyScreen,
+  RESTORE_KEY_SCREEN: {
+    screen: 'Pangea.RestoreKeyProcessScreen',
+    title: i18n.t('screens.restoreKey.title'),
+    navigatorStyle,
+  },
+  VIEW_PRIVATE_KEY_SCREEN: {
+    screen: 'Pangea.ViewPrivateKeyScreen',
+    title: i18n.t('screens.viewPrivateKey.title'),
+    navigatorStyle,
   },
   INTRO_SCREEN: {
     screen: 'Pangea.Intro',
@@ -162,7 +189,8 @@ const Screens = {
   VERIFY_KEY_SUCCESS_SCREEN: {
     screen: 'Pangea.VerifyKeySuccess',
     title: i18n.t('screens.verifyKey.title'),
-    ...baseKeyScreen,
+    navigatorStyle,
+    backButtonTitle: '',
   },
   SEND_MONEY_SCREEN: {
     screen: 'Pangea.SendMoneyScreen',
@@ -174,7 +202,33 @@ const Screens = {
     title: i18n.t('screens.scanQRCode.title'),
     navigatorStyle,
   },
-
+  SETTINGS_SCREEN: {
+    screen: 'Pangea.Settings',
+    title: '',
+    icon: AssetsImages.TabIcons.profile,
+    label: i18n.t('screens.settings.tabTitle'),
+    navigatorStyle,
+  },
+  SECURITY_SETTINGS_SCREEN: {
+    screen: 'Pangea.Settings.Security',
+    title: '',
+    navigatorStyle,
+  },
+  ENTER_PASSCODE_SCREEN: {
+    screen: 'Pangea.EnterPasscode',
+    title: '',
+    navigatorStyle: navigatorStyleModal,
+  },
+  CREATE_PASSCODE_SCREEN: {
+    screen: 'Pangea.CreatePasscode',
+    title: '',
+    navigatorStyle: navigatorStyleModal,
+  },
+  CONFIRMATION_SCREEN: {
+    screen: 'Pangea.ConfirmationContainer',
+    title: '',
+    navigatorStyle,
+  },
 };
 
 /**

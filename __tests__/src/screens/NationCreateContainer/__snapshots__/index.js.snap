@@ -7,8 +7,10 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <Connect(NationCreateContainer)
     navigator={
       Object {
+        "pop": [MockFunction],
         "push": [MockFunction],
         "setButtons": [MockFunction],
+        "setOnNavigatorEvent": [MockFunction],
       }
     }
     onDeleteNationDraft={[MockFunction]}
@@ -43,8 +45,10 @@ ShallowWrapper {
       "initialNation": null,
       "latestError": null,
       "navigator": Object {
+        "pop": [MockFunction],
         "push": [MockFunction],
         "setButtons": [MockFunction],
+        "setOnNavigatorEvent": [MockFunction],
       },
       "onCancelNationCreation": [Function],
       "onDeleteNationDraft": [Function],
@@ -94,8 +98,10 @@ ShallowWrapper {
         "initialNation": null,
         "latestError": null,
         "navigator": Object {
+          "pop": [MockFunction],
           "push": [MockFunction],
           "setButtons": [MockFunction],
+          "setOnNavigatorEvent": [MockFunction],
         },
         "onCancelNationCreation": [Function],
         "onDeleteNationDraft": [Function],
