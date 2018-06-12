@@ -7,7 +7,10 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <NationsListScreen
     navigator={
       Object {
+        "pop": [MockFunction],
         "push": [MockFunction],
+        "setButtons": [MockFunction],
+        "setOnNavigatorEvent": [MockFunction],
       }
     }
     store={
@@ -35,51 +38,15 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <BackgroundImage
-          source={
-            Object {
-              "testUri": "../../../src/assets/images/background.jpg",
-            }
-          }
+          source={1}
           style={undefined}
         />,
         <FakeNavigationBar
           navBarHidden={false}
         />,
-        <View
-          style={
-            Object {
-              "marginLeft": 8,
-              "marginRight": 8,
-            }
-          }
-        >
-          <View
-            style={
-              Object {
-                "alignItems": "flex-start",
-                "height": 52,
-              }
-            }
-          >
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={
-                Object {
-                  "color": "#F5A623",
-                  "fontFamily": "Roboto",
-                  "fontSize": 22,
-                  "fontWeight": "900",
-                  "letterSpacing": 0,
-                  "lineHeight": 30,
-                }
-              }
-            >
-              Nations
-            </Text>
-          </View>
-        </View>,
+        <ScreenTitle
+          title="Nations"
+        />,
         <View
           style={
             Object {
@@ -96,7 +63,7 @@ ShallowWrapper {
             activeTabBadgeStyle={Object {}}
             activeTabStyle={
               Object {
-                "backgroundColor": "#3e9eff",
+                "backgroundColor": "#FF8B00",
               }
             }
             activeTabTextStyle={Object {}}
@@ -121,12 +88,13 @@ ShallowWrapper {
             tabStyle={
               Object {
                 "backgroundColor": "transparent",
+                "borderColor": "#FF8B00",
               }
             }
             tabTextStyle={
               Object {
                 "backgroundColor": "transparent",
-                "color": "#3e9eff",
+                "color": "#FF8B00",
               }
             }
             tabsContainerStyle={
@@ -179,9 +147,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "function",
         "props": Object {
-          "source": Object {
-            "testUri": "../../../src/assets/images/background.jpg",
-          },
+          "source": 1,
           "style": undefined,
         },
         "ref": null,
@@ -202,92 +168,12 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "class",
+        "nodeType": "function",
         "props": Object {
-          "children": <View
-            style={
-              Object {
-                "alignItems": "flex-start",
-                "height": 52,
-              }
-            }
-          >
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={
-                Object {
-                  "color": "#F5A623",
-                  "fontFamily": "Roboto",
-                  "fontSize": 22,
-                  "fontWeight": "900",
-                  "letterSpacing": 0,
-                  "lineHeight": 30,
-                }
-              }
-            >
-              Nations
-            </Text>
-          </View>,
-          "style": Object {
-            "marginLeft": 8,
-            "marginRight": 8,
-          },
+          "title": "Nations",
         },
         "ref": null,
-        "rendered": Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "children": <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={
-                Object {
-                  "color": "#F5A623",
-                  "fontFamily": "Roboto",
-                  "fontSize": 22,
-                  "fontWeight": "900",
-                  "letterSpacing": 0,
-                  "lineHeight": 30,
-                }
-              }
-            >
-              Nations
-            </Text>,
-            "style": Object {
-              "alignItems": "flex-start",
-              "height": 52,
-            },
-          },
-          "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "accessible": true,
-              "allowFontScaling": true,
-              "children": "Nations",
-              "ellipsizeMode": "tail",
-              "style": Object {
-                "color": "#F5A623",
-                "fontFamily": "Roboto",
-                "fontSize": 22,
-                "fontWeight": "900",
-                "letterSpacing": 0,
-                "lineHeight": 30,
-              },
-            },
-            "ref": null,
-            "rendered": "Nations",
-            "type": [Function],
-          },
-          "type": [Function],
-        },
+        "rendered": null,
         "type": [Function],
       },
       Object {
@@ -300,7 +186,7 @@ ShallowWrapper {
             activeTabBadgeStyle={Object {}}
             activeTabStyle={
               Object {
-                "backgroundColor": "#3e9eff",
+                "backgroundColor": "#FF8B00",
               }
             }
             activeTabTextStyle={Object {}}
@@ -325,12 +211,13 @@ ShallowWrapper {
             tabStyle={
               Object {
                 "backgroundColor": "transparent",
+                "borderColor": "#FF8B00",
               }
             }
             tabTextStyle={
               Object {
                 "backgroundColor": "transparent",
-                "color": "#3e9eff",
+                "color": "#FF8B00",
               }
             }
             tabsContainerStyle={
@@ -362,7 +249,7 @@ ShallowWrapper {
             "activeTabBadgeContainerStyle": Object {},
             "activeTabBadgeStyle": Object {},
             "activeTabStyle": Object {
-              "backgroundColor": "#3e9eff",
+              "backgroundColor": "#FF8B00",
             },
             "activeTabTextStyle": Object {},
             "badges": Array [
@@ -381,10 +268,11 @@ ShallowWrapper {
             "tabBadgeStyle": Object {},
             "tabStyle": Object {
               "backgroundColor": "transparent",
+              "borderColor": "#FF8B00",
             },
             "tabTextStyle": Object {
               "backgroundColor": "transparent",
-              "color": "#3e9eff",
+              "color": "#FF8B00",
             },
             "tabsContainerStyle": Object {
               "backgroundColor": "transparent",
@@ -439,51 +327,15 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <BackgroundImage
-            source={
-              Object {
-                "testUri": "../../../src/assets/images/background.jpg",
-              }
-            }
+            source={1}
             style={undefined}
           />,
           <FakeNavigationBar
             navBarHidden={false}
           />,
-          <View
-            style={
-              Object {
-                "marginLeft": 8,
-                "marginRight": 8,
-              }
-            }
-          >
-            <View
-              style={
-                Object {
-                  "alignItems": "flex-start",
-                  "height": 52,
-                }
-              }
-            >
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                ellipsizeMode="tail"
-                style={
-                  Object {
-                    "color": "#F5A623",
-                    "fontFamily": "Roboto",
-                    "fontSize": 22,
-                    "fontWeight": "900",
-                    "letterSpacing": 0,
-                    "lineHeight": 30,
-                  }
-                }
-              >
-                Nations
-              </Text>
-            </View>
-          </View>,
+          <ScreenTitle
+            title="Nations"
+          />,
           <View
             style={
               Object {
@@ -500,7 +352,7 @@ ShallowWrapper {
               activeTabBadgeStyle={Object {}}
               activeTabStyle={
                 Object {
-                  "backgroundColor": "#3e9eff",
+                  "backgroundColor": "#FF8B00",
                 }
               }
               activeTabTextStyle={Object {}}
@@ -525,12 +377,13 @@ ShallowWrapper {
               tabStyle={
                 Object {
                   "backgroundColor": "transparent",
+                  "borderColor": "#FF8B00",
                 }
               }
               tabTextStyle={
                 Object {
                   "backgroundColor": "transparent",
-                  "color": "#3e9eff",
+                  "color": "#FF8B00",
                 }
               }
               tabsContainerStyle={
@@ -583,9 +436,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
-            "source": Object {
-              "testUri": "../../../src/assets/images/background.jpg",
-            },
+            "source": 1,
             "style": undefined,
           },
           "ref": null,
@@ -606,92 +457,12 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "class",
+          "nodeType": "function",
           "props": Object {
-            "children": <View
-              style={
-                Object {
-                  "alignItems": "flex-start",
-                  "height": 52,
-                }
-              }
-            >
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                ellipsizeMode="tail"
-                style={
-                  Object {
-                    "color": "#F5A623",
-                    "fontFamily": "Roboto",
-                    "fontSize": 22,
-                    "fontWeight": "900",
-                    "letterSpacing": 0,
-                    "lineHeight": 30,
-                  }
-                }
-              >
-                Nations
-              </Text>
-            </View>,
-            "style": Object {
-              "marginLeft": 8,
-              "marginRight": 8,
-            },
+            "title": "Nations",
           },
           "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "children": <Text
-                accessible={true}
-                allowFontScaling={true}
-                ellipsizeMode="tail"
-                style={
-                  Object {
-                    "color": "#F5A623",
-                    "fontFamily": "Roboto",
-                    "fontSize": 22,
-                    "fontWeight": "900",
-                    "letterSpacing": 0,
-                    "lineHeight": 30,
-                  }
-                }
-              >
-                Nations
-              </Text>,
-              "style": Object {
-                "alignItems": "flex-start",
-                "height": 52,
-              },
-            },
-            "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "accessible": true,
-                "allowFontScaling": true,
-                "children": "Nations",
-                "ellipsizeMode": "tail",
-                "style": Object {
-                  "color": "#F5A623",
-                  "fontFamily": "Roboto",
-                  "fontSize": 22,
-                  "fontWeight": "900",
-                  "letterSpacing": 0,
-                  "lineHeight": 30,
-                },
-              },
-              "ref": null,
-              "rendered": "Nations",
-              "type": [Function],
-            },
-            "type": [Function],
-          },
+          "rendered": null,
           "type": [Function],
         },
         Object {
@@ -704,7 +475,7 @@ ShallowWrapper {
               activeTabBadgeStyle={Object {}}
               activeTabStyle={
                 Object {
-                  "backgroundColor": "#3e9eff",
+                  "backgroundColor": "#FF8B00",
                 }
               }
               activeTabTextStyle={Object {}}
@@ -729,12 +500,13 @@ ShallowWrapper {
               tabStyle={
                 Object {
                   "backgroundColor": "transparent",
+                  "borderColor": "#FF8B00",
                 }
               }
               tabTextStyle={
                 Object {
                   "backgroundColor": "transparent",
-                  "color": "#3e9eff",
+                  "color": "#FF8B00",
                 }
               }
               tabsContainerStyle={
@@ -766,7 +538,7 @@ ShallowWrapper {
               "activeTabBadgeContainerStyle": Object {},
               "activeTabBadgeStyle": Object {},
               "activeTabStyle": Object {
-                "backgroundColor": "#3e9eff",
+                "backgroundColor": "#FF8B00",
               },
               "activeTabTextStyle": Object {},
               "badges": Array [
@@ -785,10 +557,11 @@ ShallowWrapper {
               "tabBadgeStyle": Object {},
               "tabStyle": Object {
                 "backgroundColor": "transparent",
+                "borderColor": "#FF8B00",
               },
               "tabTextStyle": Object {
                 "backgroundColor": "transparent",
-                "color": "#3e9eff",
+                "color": "#FF8B00",
               },
               "tabsContainerStyle": Object {
                 "backgroundColor": "transparent",

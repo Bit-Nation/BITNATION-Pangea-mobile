@@ -1,5 +1,6 @@
 import reducer, { initialState, stepsCountToToggle } from '../../../src/reducers/testingMode';
 import { makeStep, emptyWallet, resetSteps } from '../../../src/actions/testingMode';
+import { servicesDestroyed } from '../../../src/actions/serviceContainer';
 
 test('testing mode initial state contains correct number of step left', () => {
   expect(initialState).toEqual(expect.objectContaining({ stepsLeftToToggle: stepsCountToToggle }));
@@ -10,6 +11,11 @@ test('testing mode initial state has isActive set to false', () => {
 });
 
 describe('testing mode reducer action handling', () => {
+  test('after service destroy returns initial state', () => {
+    const changedState = reducer(initialState, makeStep());
+    expect(reducer(changedState, servicesDestroyed())).toEqual(initialState);
+  });
+
   test('resetSteps', () => {
     const stateBefore = { initialState, stepsLeftToToggle: stepsCountToToggle - 1 };
     const stateAfter = reducer(stateBefore, resetSteps());

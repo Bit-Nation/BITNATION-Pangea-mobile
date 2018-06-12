@@ -10,6 +10,13 @@ const BitnationLightColor = '#C0C0C0'; /* rgb(114, 164, 222) */
 const BitnationVeryLightColor = '#FFFFFF'; /* rgb(188, 220, 255) */
 const BitnationBackgroundColor = '#3e9eff'; /* rgb(62, 158, 255) */
 
+const BitnationLightGrayColor = '#BBBDBF';
+const BitnationGrayColor = '#929497';
+const BitnationDarkGrayColor = '#58595B';
+const BitnationLinkOrangeColor = '#FF8B00';
+const BitnationHighlightYellowColor = '#FFCE00';
+const BitnationWhiteAlphaColor = 'rgba(255,255,255,0.45)';
+
 // Highlight Color
 const BitnationHighlightColor = '#F5A623'; /* rgb(245, 166, 35) */
 
@@ -58,34 +65,38 @@ export default {
   shadeOf,
   shadeOfBitnationColor,
   shadeOfBitnationLightColor,
-
   BitnationColor,
   BitnationDarkColor,
   BitnationLightColor,
   BitnationVeryLightColor,
   BitnationBackgroundColor,
   BitnationHighlightColor,
+  BitnationDarkGrayColor,
+  BitnationLightGrayColor,
+  BitnationHighlightYellowColor,
+  BitnationGrayColor,
+  BitnationLinkOrangeColor,
 
   // Colors for common Text Styles
   // e.g. large titles on screens
   titleColor: BitnationHighlightColor,
-  panelViewTitleColor: 'white',
+  panelViewTitleColor: BitnationDarkGrayColor,
   currency: '#FFDD15',
-  placeholderTextColor: shadeOf(BitnationVeryLightColor, 0.4),
+  placeholderTextColor: BitnationGrayColor,
 
   // Tab Bar (Navigation Bar for the app)
-  tabBarBackgroundColor: BitnationBackgroundColor,
-  tabBarSelectedLabelColor: 'white',
-  tabBarSelectedButtonColor: 'white',
+  tabBarBackgroundColor: BitnationDarkGrayColor,
+  tabBarSelectedLabelColor: BitnationWhiteAlphaColor,
+  tabBarSelectedButtonColor: BitnationWhiteAlphaColor,
   tabBarLabelColor: 'white',
-  tabBarButtonColor: '#9fc9fa',
+  tabBarButtonColor: 'white',
 
   // Toolbars (e.g. Create Nation)
   toolBarBackgroundColor: BitnationBackgroundColor,
 
   // Segmented Control
-  activeTabStyle: BitnationBackgroundColor,
-  tabTextStyle: BitnationBackgroundColor,
+  activeTabStyle: BitnationLinkOrangeColor,
+  tabTextStyle: BitnationLinkOrangeColor,
 
   // Panel background color
   panelView: 'rgba(255,255,255,0.2)',
@@ -139,10 +150,10 @@ export default {
   privateKeyTextInputLabelColor: '#F1F1F1',
 
   // NAVIGATOR COLORS (in SCREENS.JS)
-  navBarTextColor: 'white',
-  navBarButtonColor: 'white',
+  navBarTextColor: BitnationDarkGrayColor,
+  navBarButtonColor: BitnationLinkOrangeColor,
   navBarBackgroundColor: 'transparent',
-  navigationButtonColor: Platform.OS === 'ios' ? '#007AFF' : '#FFFFFF',
+  navigationButtonColor: Platform.OS === 'ios' ? BitnationLinkOrangeColor : '#FFFFFF',
   statusBarColorOther: 'black',
   statusBarColorIOS: 'black',
 

@@ -79,7 +79,6 @@ class NationDetailsContainer extends NavigatorComponent
     super(props);
 
     this.props.navigator.setButtons({
-      leftButtons: [],
       rightButtons: this.props.isDraft ? [{
         title: 'Edit',
         id: EDIT_BUTTON,
