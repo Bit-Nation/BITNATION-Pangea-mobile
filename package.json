@@ -17,15 +17,18 @@
     "build:ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/Pangea/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios'"
   },
   "dependencies": {
-    "BITNATION-Pangea-libs": "git+https://github.com/Bit-Nation/BITNATION-Pangea-libs.git#tags/0.3.4",
     "assert": "^1.4.1",
     "async-to-generator": "^1.1.0",
     "awilix": "^3.0.1",
     "bignumber.js": "^5.0.0",
+    "bn.js": "^4.11.8",
     "buffer": "^4.9.1",
     "co": "^4.6.0",
+    "ethers": "^3.0.15",
+    "eventemitter3": "^3.1.0",
     "events": "^1.1.1",
     "fetch-everywhere": "^1.0.5",
+    "flow-bin": "^0.57.0",
     "hoist-non-react-statics": "^2.3.1",
     "i18next": "^10.3.0",
     "lodash": "^4.17.4",
@@ -33,7 +36,7 @@
     "prop-types": "^15.6.0",
     "react": "16.0.0",
     "react-native": "0.51.0",
-    "react-native-camera": "^0.13.0",
+    "react-native-camera": "^0.10.0",
     "react-native-config": "^0.11.2",
     "react-native-crypto": "^2.1.2",
     "react-native-dropdownalert": "^3.1.2",
@@ -56,7 +59,8 @@
     "react-navigation": "^1.0.0-beta.22",
     "react-redux": "^5.0.6",
     "readable-stream": "^1.0.33",
-    "realm": "^2.3.1",
+    "realm": "^2.6.0",
+    "reconnecting-websocket": "^4.0.0-rc5",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
     "redux-persist": "^5.4.0",
@@ -68,6 +72,7 @@
     "stream-browserify": "^1.0.0",
     "string_decoder": "^0.10.31",
     "unique-string": "^1.0.0",
+    "uuid4": "^1.0.0",
     "vm-browserify": "0.0.4"
   },
   "devDependencies": {
@@ -88,12 +93,14 @@
     "eslint-plugin-react": "^7.7.0",
     "eslint-plugin-react-native": "^3.2.1",
     "eslint-plugin-require-jsdoc": "^1.0.4",
+    "ethers-cli": "^4.0.0",
     "flow-bin": "^0.57.0",
     "jest": "22.0.3",
     "react-dom": "^16.2.0",
     "react-native-mock": "^0.3.1",
     "react-test-renderer": "16.0.0",
-    "redux-mock-store": "^1.5.1"
+    "redux-mock-store": "^1.5.1",
+    "websocket": "^1.0.26"
   },
   "jest": {
     "preset": "react-native",

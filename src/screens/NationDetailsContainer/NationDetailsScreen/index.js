@@ -19,6 +19,7 @@ import PanelViewCitizen from '../../../components/common/PanelViewCitizen';
 import { nationIsValid, resolveStatus } from '../../../utils/nations';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import type { NationType } from '../../../types/Nation';
+import ScreenTitle from '../../../components/common/ScreenTitle';
 
 type Props = {
   /**
@@ -55,7 +56,6 @@ type Actions = {
 }
 
 class NationDetailsScreen extends Component<Props & Actions & NationState> {
-  static defaultProps: Object;
   static disableJoinButton(nation: NationType) {
     if (nation.tx && nation.tx.status === 200) {
       return true;
@@ -175,7 +175,7 @@ class NationDetailsScreen extends Component<Props & Actions & NationState> {
     }
     return null;
   }
-
+  static defaultProps: Object;
   buildTabBar() {
     const nation = openedNation(this.props);
     if (nation === null) return null;
@@ -244,11 +244,7 @@ class NationDetailsScreen extends Component<Props & Actions & NationState> {
         <BackgroundImage />
         <FakeNavigationBar />
         <View style={styles.bodyContainer}>
-          <View style={styles.titleContainer}>
-            <View style={styles.titleBarLarge}>
-              <Text style={styles.largeTitle}>{nation.nationName}</Text>
-            </View>
-          </View>
+          <ScreenTitle title={nation.nationName} />
 
           <ScrollView>
             {statusDescription !== '' && NationDetailsScreen.buildStatusPanel(statusDescription)}

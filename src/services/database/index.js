@@ -1,15 +1,20 @@
+// @flow
+
 import Realm from 'realm';
 import co from 'co';
 import schemas from './schemata';
 
-const REALM_PATH = 'pangea';
+// We keep previous database to be able later do some restore.
+// eslint-disable-next-line no-unused-vars
+const REALM_PATH_BEFORE_0_4_5 = 'pangea';
+const REALM_PATH = 'pangea_0_4_5';
 
 /**
  * @desc Creates an realm instance
  * @param {string} customDbPath optional path to the database
  * @return {Iterator} returns an iterator like every generator
  */
-export function* factory(customDbPath: string) {
+export function* factory(customDbPath: ?string): Generator<*, *, *> {
   let databasePath = REALM_PATH;
 
   if (customDbPath !== '' && typeof customDbPath === 'string') {
@@ -39,5 +44,7 @@ export function* factory(customDbPath: string) {
     migration: schema.migration,
   });
 }
+
+export const buildRandomPathDatabase = () => co(factory(`database/${Math.random()}`));
 
 export default co(factory);

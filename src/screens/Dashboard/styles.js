@@ -23,6 +23,7 @@ const styles = {
   nationsPanel: {
     flex: 1,
     marginRight: 4,
+
   },
   rightContainer: {
     marginLeft: 4,
@@ -43,6 +44,15 @@ const styles = {
   warningPanelBody: {
     ...GlobalStyles.body,
     fontWeight: '300',
+  },
+  //
+  confirmKeyPanel: {
+    ...GlobalStyles.gridPanelView,
+    flex: 1,
+  },
+  confirmKeyBody: {
+    ...GlobalStyles.body,
+    fontWeight: '500',
   },
 };
 export default styles;

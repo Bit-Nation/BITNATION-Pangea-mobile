@@ -1,84 +1,63 @@
+// @flow
+
 import {
-  startUserCreating,
-  startUserEditing,
-  changeEditingUser,
-  setUserProfile,
-  cancelUserEditing,
-  doneUserEditing,
-  requestProfileUpdate,
-  getUserProfile,
-  START_USER_CREATING,
-  START_USER_EDITING,
-  CHANGE_EDITING_USER,
-  SET_USER_PROFILE,
-  CANCEL_USER_EDITING,
-  DONE_USER_EDITING,
-  REQUEST_PROFILE_UPDATE,
-  REQUEST_GET_PROFILE,
+  startAccountEditing,
+  changeEditingAccount,
+  cancelAccountEditing,
+  doneAccountEditing,
+  saveEditingAccount,
+  START_ACCOUNT_EDITING,
+  CHANGE_EDITING_ACCOUNT,
+  CANCEL_ACCOUNT_EDITING,
+  DONE_ACCOUNT_EDITING,
+  SAVE_EDITING_ACCOUNT,
 } from '../../../src/actions/profile';
 
-test('actions - startUserCreating', (done) => {
-  expect(startUserCreating()).toEqual({
-    type: START_USER_CREATING,
-  });
-  done();
-});
-
-test('actions - startUserEditing', (done) => {
-  expect(startUserEditing()).toEqual({
-    type: START_USER_EDITING,
-  });
-  done();
-});
-
-test('actions - changeEditingUser', (done) => {
-  const user = {
-    name: 'Jack',
-    location: 'NYC',
+describe('profile action creators', () => {
+  const accountMock = {
+    id: 'ID',
+    name: 'Name',
+    accountStore: 'Account store',
+    networkType: 'main',
+    avatar: null,
+    location: null,
+    confirmedMnemonic: false,
   };
-  expect(changeEditingUser(user)).toEqual({
-    type: CHANGE_EDITING_USER,
-    user,
-  });
-  done();
-});
 
-test('actions - setUserProfile', (done) => {
-  const user = {
-    name: 'Jack',
-    location: 'NYC',
-  };
-  expect(setUserProfile(user)).toEqual({
-    type: SET_USER_PROFILE,
-    user,
+  test('startAccountEditing', () => {
+    expect(startAccountEditing(accountMock)).toEqual({
+      type: START_ACCOUNT_EDITING,
+      account: accountMock,
+    });
   });
-  done();
-});
 
-test('actions - cancelUserEditing', (done) => {
-  expect(cancelUserEditing()).toEqual({
-    type: CANCEL_USER_EDITING,
+  test('changeEditingAccount', () => {
+    const account = {
+      ...accountMock,
+      name: 'CHANGED NAME',
+    };
+    expect(changeEditingAccount(account)).toEqual({
+      type: CHANGE_EDITING_ACCOUNT,
+      account,
+    });
   });
-  done();
-});
 
-test('actions - doneUserEditing', (done) => {
-  expect(doneUserEditing()).toEqual({
-    type: DONE_USER_EDITING,
+  test('cancelAccountEditing', () => {
+    expect(cancelAccountEditing()).toEqual({
+      type: CANCEL_ACCOUNT_EDITING,
+    });
   });
-  done();
-});
 
-test('actions - requestProfileUpdate', (done) => {
-  expect(requestProfileUpdate()).toEqual({
-    type: REQUEST_PROFILE_UPDATE,
+  test('doneAccountEditing', () => {
+    expect(doneAccountEditing()).toEqual({
+      type: DONE_ACCOUNT_EDITING,
+    });
   });
-  done();
-});
 
-test('actions - getUserProfile', (done) => {
-  expect(getUserProfile()).toEqual({
-    type: REQUEST_GET_PROFILE,
+  test('saveAccount', () => {
+    expect(saveEditingAccount(accountMock)).toEqual({
+      type: SAVE_EDITING_ACCOUNT,
+      account: accountMock,
+    });
   });
-  done();
 });

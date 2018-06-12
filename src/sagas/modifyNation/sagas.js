@@ -1,25 +1,34 @@
-/* eslint-disable */
+// @flow
 
-import { all, call, put, select } from 'redux-saga/effects';
-import _ from 'lodash';
+import { call, put, select } from 'redux-saga/effects';
 
-import { createDraft, updateDraft, deleteDraft, saveAndSubmit, submitDraft } from './serviceFunctions';
 import { nationDraftSaveResult, nationDraftDeleteResult, startNationEditing, nationSubmitResult } from '../../actions/modifyNation';
+import type { SaveNationDraftAction, DeleteNationDraftAction, SubmitNationAction } from '../../actions/modifyNation';
 import { nationIsModified } from '../../reducers/modifyNation';
-import { requestSyncNations } from '../../actions/nations';
+import ServiceContainer from '../../services/container';
+import { NoNationsServiceError } from '../../global/errors/services';
+import { convertFromDatabase } from '../../utils/nations';
 
-export function* saveDraftSaga(action) {
+/**
+ * @desc Saves draft to database. Updates existing one if present.
+ * @param {SaveNationDraftAction} action an Action
+ * @returns {void}
+ */
+export function* saveDraftSaga(action: SaveNationDraftAction): Generator<*, *, *> {
   const nationData = action.nation;
+  const { nationsService } = ServiceContainer.instance;
   try {
+    if (nationsService == null) {
+      throw new NoNationsServiceError();
+    }
     let nation;
     if (nationData.id === undefined) {
-      nation = yield call(createDraft, nationData);
+      nation = yield call([nationsService, 'saveDraft'], nationData);
     } else {
-      nation = yield call(updateDraft, nationData.id, nationData);
+      nation = yield call([nationsService, 'updateDraft'], nationData.id, nationData);
     }
     yield put(nationDraftSaveResult(nation.id));
-    yield put(startNationEditing(nation));
-    yield put(requestSyncNations());
+    yield put(startNationEditing(convertFromDatabase(nation)));
   } catch (error) {
     yield put(nationDraftSaveResult(nationData.id, error));
   } finally {
@@ -29,12 +38,20 @@ export function* saveDraftSaga(action) {
   }
 }
 
-export function* deleteDraftSaga(action) {
-  const nationId = action.nationId;
+/**
+ * @desc Deletes draft from database.
+ * @param {DeleteNationDraftAction} action an Action
+ * @returns {void}
+ */
+export function* deleteDraftSaga(action: DeleteNationDraftAction): Generator<*, *, *> {
+  const { nationId } = action;
+  const { nationsService } = ServiceContainer.instance;
   try {
-    yield call(deleteDraft, nationId);
+    if (nationsService == null) {
+      throw new NoNationsServiceError();
+    }
+    yield call([nationsService, 'deleteDraft'], nationId);
     yield put(nationDraftDeleteResult(nationId));
-    yield put(requestSyncNations());
   } catch (error) {
     yield put(nationDraftDeleteResult(nationId, error));
   } finally {
@@ -44,22 +61,30 @@ export function* deleteDraftSaga(action) {
   }
 }
 
-export function* submitNationSaga(action) {
+/**
+ * @desc Submits nation to blockchain.
+ * @param {SubmitNationAction} action an Action
+ * @returns {void}
+ */
+export function* submitNationSaga(action: SubmitNationAction): Generator<*, *, *> {
   const nationData = action.nation;
+  const { nationsService } = ServiceContainer.instance;
   try {
+    if (nationsService == null) {
+      throw new NoNationsServiceError();
+    }
     let nation;
     if (nationData.id === undefined) {
-      nation = yield call(saveAndSubmit, nationData);
+      nation = yield call([nationsService, 'saveAndSubmit'], nationData);
     } else {
       const state = yield select();
       const isModified = nationIsModified(state.modifyNation);
       if (isModified) {
-        yield call(updateDraft, nationData.id, nationData);
+        yield call([nationsService, 'updateDraft'], nationData.id, nationData);
       }
-      nation = yield call(submitDraft, nationData.id);
+      nation = yield call([nationsService, 'submitDraft'], nationData.id);
     }
     yield put(nationSubmitResult(nation.id));
-    yield put(requestSyncNations());
   } catch (error) {
     yield put(nationSubmitResult(nationData.id, error));
   } finally {

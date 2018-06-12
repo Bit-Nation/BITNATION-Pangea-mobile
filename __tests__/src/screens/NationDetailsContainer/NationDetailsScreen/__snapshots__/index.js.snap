@@ -16,7 +16,9 @@ ShallowWrapper {
             Array [],
           ],
         },
+        "push": [MockFunction],
         "setButtons": [MockFunction],
+        "setOnNavigatorEvent": [MockFunction],
       }
     }
     openNationChat={[MockFunction]}
@@ -44,9 +46,7 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "function",
     "props": Object {
-      "source": Object {
-        "testUri": "../../../src/assets/images/background.jpg",
-      },
+      "source": 1,
       "style": undefined,
     },
     "ref": null,
@@ -59,9 +59,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "function",
       "props": Object {
-        "source": Object {
-          "testUri": "../../../src/assets/images/background.jpg",
-        },
+        "source": 1,
         "style": undefined,
       },
       "ref": null,

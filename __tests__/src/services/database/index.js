@@ -1,5 +1,5 @@
 import Realm from 'realm';
-import db, { factory } from '../../../../src/services/database/index';
+import db, { factory, buildRandomPathDatabase } from '../../../../src/services/database';
 
 const randomDbPath = () => `database/${Math.random()}`;
 
@@ -7,7 +7,7 @@ describe('db', () => {
   test('default path', async () => {
     expect.assertions(1);
     const realm = await db;
-    expect(realm.path.split('/').slice(-1)[0]).toEqual('pangea');
+    expect(realm.path.split('/').slice(-1)[0]).toEqual('pangea_0_4_5');
     realm.close();
   });
   test('custom path', async () => {
@@ -22,7 +22,7 @@ describe('db', () => {
     realm.close();
   });
   test('open and migrate process', async () => {
-    expect.assertions(4);
+    expect.assertions(5);
     const dbPath = randomDbPath();
     const databaseGenerator = factory(dbPath);
 
@@ -40,7 +40,18 @@ describe('db', () => {
 
     // The last yield will return the realm open promise
     const realm3 = await databaseGenerator.next(realm2).value;
-    expect(Realm.schemaVersion(dbPath)).toBe(2);
-    realm3.close();
+    expect(Realm.schemaVersion(dbPath)).toBe(3);
+
+    const realm4 = await databaseGenerator.next(realm3).value;
+    expect(Realm.schemaVersion(dbPath)).toBe(3);
+
+    realm4.close();
+  });
+  test('random path database builder', async () => {
+    expect.assertions(2);
+    const realm = await buildRandomPathDatabase();
+    expect(realm.write).toBeDefined();
+    expect(realm.objects).toBeDefined();
+    realm.close();
   });
 });

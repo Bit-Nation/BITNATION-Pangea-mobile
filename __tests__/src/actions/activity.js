@@ -1,12 +1,9 @@
 import {
-  ADD_DUMMY_MESSAGE,
-  DONE_FETCH_MESSAGES,
-  MESSAGE_ADDED,
-  START_FETCH_MESSAGES,
-  addDummyMessage,
-  doneFetchMessages,
-  messageAdded,
-  startFetchMessages,
+  ADD_NEW_MESSAGE,
+  MESSAGES_UPDATED,
+  emptyCallback,
+  addNewMessage,
+  messagesUpdated,
 } from '../../../src/actions/activity';
 
 describe('activity action creators', () => {
@@ -15,32 +12,21 @@ describe('activity action creators', () => {
     params: {},
     interpret: true,
   };
-  const messagesMock = [{ ...messageMock }, { ...messageMock }];
 
-  test('messageAdded', () => {
-    expect(messageAdded(messageMock)).toEqual({
-      type: MESSAGE_ADDED,
-      message: messageMock,
-    });
-  });
-
-  test('startFetchMessages', () => {
-    expect(startFetchMessages(42)).toEqual({
-      type: START_FETCH_MESSAGES,
-      limit: 42,
-    });
-  });
-
-  test('doneFetchMessages', () => {
-    expect(doneFetchMessages(messagesMock)).toEqual({
-      type: DONE_FETCH_MESSAGES,
-      messages: messagesMock,
+  test('messagesUpdated', () => {
+    expect(messagesUpdated([messageMock])).toEqual({
+      type: MESSAGES_UPDATED,
+      messages: [messageMock],
     });
   });
 
   test('addDummyMessage', () => {
-    expect(addDummyMessage()).toEqual({
-      type: ADD_DUMMY_MESSAGE,
+    expect(addNewMessage('new message')).toEqual({
+      type: ADD_NEW_MESSAGE,
+      message: 'new message',
+      params: {},
+      interpret: true,
+      callback: emptyCallback,
     });
   });
 });
