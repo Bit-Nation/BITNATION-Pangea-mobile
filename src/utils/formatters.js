@@ -3,7 +3,7 @@
 import { BigNumber } from 'bignumber.js';
 
 import i18n from '../global/i18n';
-import type { CurrencyType, WalletType } from '../types/Wallet';
+import type { WalletType, CurrencyType } from '../types/Wallet';
 
 /**
  * @desc Round to 5 digits

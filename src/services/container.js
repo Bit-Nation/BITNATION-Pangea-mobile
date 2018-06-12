@@ -1,72 +1,35 @@
-/* eslint-disable */
 // @flow
 
-import pangeaLibsFactory from 'BITNATION-Pangea-libs';
-import { roundEth, shortEthAddress } from '../utils/formatters';
-import secureStorage from './panthalassa/secureStorage';
-import osDeps from './panthalassa/osDependencies';
-import ethDaemon from './panthalassa/ethDaemon';
-import { NetInfo } from 'react-native';
-import { APP_ONLINE, APP_OFFLINE } from 'BITNATION-Pangea-libs/src/events';
-import config from 'react-native-config';
-import { Alert } from 'react-native';
-import { ETH_TX_SIGN } from 'BITNATION-Pangea-libs/src/events';
+import EthereumServiceFactory from './ethereum/factory';
+import EthereumService from './ethereum';
+import WalletService from './wallet';
+import NationsService from './nations';
+import type { Account } from '../types/Account';
+import { normalizeEthPrivateKey } from '../utils/key';
+import defaultDB from './database';
 
-const EventEmitter = require('eventemitter3');
+export default class ServiceContainer {
+  static instance: ServiceContainer = new ServiceContainer();
 
-const DB_PATH = 'pangea';
+  ethereumService: EthereumService | null = null;
+  walletService: WalletService | null = null;
+  nationsService: NationsService | null = null;
 
-if (!config.ETH_HTTP_ENDPOINT) {
-  throw new Error('Please set the "ETH_HTTP_ENDPOINT" env variable (checkout the Readme)');
-}
+  initServices(account: Account, ethPrivateKey: string) {
+    this.ethereumService = EthereumServiceFactory({
+      privateKey: normalizeEthPrivateKey(ethPrivateKey),
+      networkType: account.networkType,
+    }).service;
+    this.walletService = new WalletService(this.ethereumService);
+    this.nationsService = new NationsService(this.ethereumService, defaultDB, account.id);
+  }
 
-let production = config.PRODUCTION;
-
-if (!production) {
-  throw new Error('Please set the "PRODUCTION" env variable to an boolean value (checkout the readme)');
-}
-
-if (production === 'false') {
-  production = false;
-}
-
-if (production === 'true') {
-  production = true;
-}
-
-const PangeaLibFactory:Promise<*> = new Promise((res, rej) => {
-  const ee = new EventEmitter();
-
-  ee.on(ETH_TX_SIGN, (data) => {
-    Alert.alert(
-      'Sign Transaction',
-      `Send ${roundEth(data.value)} ETH from ${shortEthAddress(data.from)} to ${shortEthAddress(data.to)} (${roundEth(data.transactionFee)} ETH transaction fee)`,
-      [
-        { text: 'Cancel', onPress: data.abort, style: 'cancel' },
-        { text: 'OK', onPress: data.confirm },
-      ],
-      { cancelable: false },
-    );
-  });
-
-  NetInfo
-    .isConnected
-    .fetch()
-    .then(isConnected => pangeaLibsFactory(
-      secureStorage,
-      DB_PATH,
-      ethDaemon,
-      osDeps,
-      ee,
-      isConnected,
-      production,
-    ))
-    .then(res)
-    .catch(rej);
-});
-
-export default PangeaLibFactory;
-
-export function getPangeaLibrary() {
-  return PangeaLibFactory;
+  destroyServices() {
+    this.ethereumService = null;
+    this.walletService = null;
+    if (this.nationsService !== null) {
+      this.nationsService.cleanUp();
+    }
+    this.nationsService = null;
+  }
 }

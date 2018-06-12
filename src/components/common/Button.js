@@ -15,6 +15,8 @@ type Props = {
    * @desc Style to be applied on top of default styles.
    */
   style?: any,
+
+  styleTitle?: any,
   /**
    * @desc Component(s) to be rendered inside a button.
    */
@@ -38,7 +40,7 @@ type Props = {
  * @return {React.Component} A component.
  */
 const Button = ({
-  style, children, onPress, enabled, title, ...props
+  style, children, onPress, enabled, styleTitle, title, ...props
 }: Props) => {
   const styles = MediaQueryStyleSheet.create({
     ...GlobalStyles,
@@ -48,7 +50,7 @@ const Button = ({
     <View
       style={[
           styles.baseButton,
-          enabled ? styles.enabledButton : styles.disabledButton,
+
           style,
         ]}
       {...props}
@@ -56,7 +58,7 @@ const Button = ({
       <TouchableOpacity testID='Touchable' disabled={!enabled} style={[styles.buttonContainer]} onPress={onPress}>
         {
         children ||
-        <Text style={enabled ? styles.buttonTitle : styles.disabledButtonTitle}>
+        <Text style={enabled ? [styles.buttonTitle, styleTitle] : styles.disabledButtonTitle}>
           {title}
         </Text>
       }

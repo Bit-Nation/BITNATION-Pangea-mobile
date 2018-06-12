@@ -7,7 +7,10 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <Connect(WalletScreen)
     navigator={
       Object {
+        "pop": [MockFunction],
         "push": [MockFunction],
+        "setButtons": [MockFunction],
+        "setOnNavigatorEvent": [MockFunction],
       }
     }
     store={
@@ -35,12 +38,17 @@ ShallowWrapper {
     "props": Object {
       "moneySendingError": null,
       "moneySendingInProgress": false,
+      "moneySendingSuccess": false,
       "navigator": Object {
+        "pop": [MockFunction],
         "push": [MockFunction],
+        "setButtons": [MockFunction],
+        "setOnNavigatorEvent": [MockFunction],
       },
       "removeWallets": [Function],
       "selectWallet": [Function],
       "selectedWalletAddress": null,
+      "selectedWalletCurrency": null,
       "store": Object {
         "clearActions": [Function],
         "dispatch": [Function],
@@ -84,12 +92,17 @@ ShallowWrapper {
       "props": Object {
         "moneySendingError": null,
         "moneySendingInProgress": false,
+        "moneySendingSuccess": false,
         "navigator": Object {
+          "pop": [MockFunction],
           "push": [MockFunction],
+          "setButtons": [MockFunction],
+          "setOnNavigatorEvent": [MockFunction],
         },
         "removeWallets": [Function],
         "selectWallet": [Function],
         "selectedWalletAddress": null,
+        "selectedWalletCurrency": null,
         "store": Object {
           "clearActions": [Function],
           "dispatch": [Function],
@@ -143,7 +156,10 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <Connect(WalletScreen)
     navigator={
       Object {
+        "pop": [MockFunction],
         "push": [MockFunction],
+        "setButtons": [MockFunction],
+        "setOnNavigatorEvent": [MockFunction],
       }
     }
     store={
@@ -171,12 +187,17 @@ ShallowWrapper {
     "props": Object {
       "moneySendingError": null,
       "moneySendingInProgress": false,
+      "moneySendingSuccess": false,
       "navigator": Object {
+        "pop": [MockFunction],
         "push": [MockFunction],
+        "setButtons": [MockFunction],
+        "setOnNavigatorEvent": [MockFunction],
       },
       "removeWallets": [Function],
       "selectWallet": [Function],
       "selectedWalletAddress": null,
+      "selectedWalletCurrency": null,
       "store": Object {
         "clearActions": [Function],
         "dispatch": [Function],
@@ -226,12 +247,17 @@ ShallowWrapper {
       "props": Object {
         "moneySendingError": null,
         "moneySendingInProgress": false,
+        "moneySendingSuccess": false,
         "navigator": Object {
+          "pop": [MockFunction],
           "push": [MockFunction],
+          "setButtons": [MockFunction],
+          "setOnNavigatorEvent": [MockFunction],
         },
         "removeWallets": [Function],
         "selectWallet": [Function],
         "selectedWalletAddress": null,
+        "selectedWalletCurrency": null,
         "store": Object {
           "clearActions": [Function],
           "dispatch": [Function],

@@ -3,11 +3,7 @@
 exports[`BackgroundImage renders correctly 1`] = `
 <Image
   resizeMode="cover"
-  source={
-    Object {
-      "testUri": "../../../src/assets/images/background.jpg",
-    }
-  }
+  source={1}
   style={
     Array [
       Object {

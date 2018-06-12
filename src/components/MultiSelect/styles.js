@@ -9,8 +9,8 @@ export const colorPack = {
   primary: Colors.BitnationHighlightColor,
   primaryDark: '#215191',
   light: 'transparent', // Colors.shadeOfBitnationLightColor(0.2),
-  textPrimary: Colors.white,
-  placeholderTextColor: Colors.white,
+  textPrimary: Colors.BitnationDarkGrayColor,
+  placeholderTextColor: Colors.BitnationDarkGrayColor,
   danger: Colors.primary_red,
   borderColor: Colors.borderColor,
   backgroundColor: 'transparent',
@@ -43,8 +43,8 @@ export default {
     backgroundColor: colorPack.actionButtonColor,
   },
   indicator: {
-    fontSize: 15,
-    color: colorPack.placeholderTextColor,
+    fontSize: 18,
+    color: Colors.BitnationLinkOrangeColor,
   },
   selectedItem: {
     flexDirection: 'row',
