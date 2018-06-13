@@ -352,7 +352,7 @@
     },
     "createNation": {
       "title": "Create A Nation",
-      "introduction": "Reclaim your sovereignty by creating your own decentralized borderless voluntary nation(DBVN).",
+      "introduction": "Reclaim your sovereignty by creating your own decentralized borderless voluntary nation (DBVN).",
       "prompt": {
         "name": "Nation name",
         "description": "Short description",
