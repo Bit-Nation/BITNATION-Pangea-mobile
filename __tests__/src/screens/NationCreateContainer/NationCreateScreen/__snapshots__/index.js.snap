@@ -121,7 +121,7 @@ ShallowWrapper {
                     }
                   }
                 >
-                  Reclaim your sovereignty by creating your own decentralized borderless voluntary nation(DBVN).
+                  Reclaim your sovereignty by creating your own decentralized borderless voluntary nation (DBVN).
                 </Text>
               </View>
             </View>
@@ -973,7 +973,7 @@ ShallowWrapper {
                     }
                   }
                 >
-                  Reclaim your sovereignty by creating your own decentralized borderless voluntary nation(DBVN).
+                  Reclaim your sovereignty by creating your own decentralized borderless voluntary nation (DBVN).
                 </Text>
               </View>
             </View>
@@ -1752,7 +1752,7 @@ ShallowWrapper {
                       }
                     }
                   >
-                    Reclaim your sovereignty by creating your own decentralized borderless voluntary nation(DBVN).
+                    Reclaim your sovereignty by creating your own decentralized borderless voluntary nation (DBVN).
                   </Text>
                 </View>
               </View>,
@@ -2525,7 +2525,7 @@ ShallowWrapper {
                       }
                     }
                   >
-                    Reclaim your sovereignty by creating your own decentralized borderless voluntary nation(DBVN).
+                    Reclaim your sovereignty by creating your own decentralized borderless voluntary nation (DBVN).
                   </Text>
                 </View>,
                 "style": Object {
@@ -2558,7 +2558,7 @@ ShallowWrapper {
                       }
                     }
                   >
-                    Reclaim your sovereignty by creating your own decentralized borderless voluntary nation(DBVN).
+                    Reclaim your sovereignty by creating your own decentralized borderless voluntary nation (DBVN).
                   </Text>,
                   "style": Object {
                     "paddingBottom": 16,
@@ -2572,7 +2572,7 @@ ShallowWrapper {
                   "props": Object {
                     "accessible": true,
                     "allowFontScaling": true,
-                    "children": "Reclaim your sovereignty by creating your own decentralized borderless voluntary nation(DBVN).",
+                    "children": "Reclaim your sovereignty by creating your own decentralized borderless voluntary nation (DBVN).",
                     "ellipsizeMode": "tail",
                     "style": Object {
                       "color": "#929497",
@@ -2584,7 +2584,7 @@ ShallowWrapper {
                     },
                   },
                   "ref": null,
-                  "rendered": "Reclaim your sovereignty by creating your own decentralized borderless voluntary nation(DBVN).",
+                  "rendered": "Reclaim your sovereignty by creating your own decentralized borderless voluntary nation (DBVN).",
                   "type": [Function],
                 },
                 "type": [Function],
@@ -5160,7 +5160,7 @@ ShallowWrapper {
                       }
                     }
                   >
-                    Reclaim your sovereignty by creating your own decentralized borderless voluntary nation(DBVN).
+                    Reclaim your sovereignty by creating your own decentralized borderless voluntary nation (DBVN).
                   </Text>
                 </View>
               </View>
@@ -6012,7 +6012,7 @@ ShallowWrapper {
                       }
                     }
                   >
-                    Reclaim your sovereignty by creating your own decentralized borderless voluntary nation(DBVN).
+                    Reclaim your sovereignty by creating your own decentralized borderless voluntary nation (DBVN).
                   </Text>
                 </View>
               </View>
@@ -6791,7 +6791,7 @@ ShallowWrapper {
                         }
                       }
                     >
-                      Reclaim your sovereignty by creating your own decentralized borderless voluntary nation(DBVN).
+                      Reclaim your sovereignty by creating your own decentralized borderless voluntary nation (DBVN).
                     </Text>
                   </View>
                 </View>,
@@ -7564,7 +7564,7 @@ ShallowWrapper {
                         }
                       }
                     >
-                      Reclaim your sovereignty by creating your own decentralized borderless voluntary nation(DBVN).
+                      Reclaim your sovereignty by creating your own decentralized borderless voluntary nation (DBVN).
                     </Text>
                   </View>,
                   "style": Object {
@@ -7597,7 +7597,7 @@ ShallowWrapper {
                         }
                       }
                     >
-                      Reclaim your sovereignty by creating your own decentralized borderless voluntary nation(DBVN).
+                      Reclaim your sovereignty by creating your own decentralized borderless voluntary nation (DBVN).
                     </Text>,
                     "style": Object {
                       "paddingBottom": 16,
@@ -7611,7 +7611,7 @@ ShallowWrapper {
                     "props": Object {
                       "accessible": true,
                       "allowFontScaling": true,
-                      "children": "Reclaim your sovereignty by creating your own decentralized borderless voluntary nation(DBVN).",
+                      "children": "Reclaim your sovereignty by creating your own decentralized borderless voluntary nation (DBVN).",
                       "ellipsizeMode": "tail",
                       "style": Object {
                         "color": "#929497",
@@ -7623,7 +7623,7 @@ ShallowWrapper {
                       },
                     },
                     "ref": null,
-                    "rendered": "Reclaim your sovereignty by creating your own decentralized borderless voluntary nation(DBVN).",
+                    "rendered": "Reclaim your sovereignty by creating your own decentralized borderless voluntary nation (DBVN).",
                     "type": [Function],
                   },
                   "type": [Function],
