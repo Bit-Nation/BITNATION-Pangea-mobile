@@ -1,9 +1,11 @@
 // @flow
 
 import React from 'react';
+import ethers from 'ethers';
 import {
   View,
   Text,
+  TextInput,
   ScrollView,
   Slider,
 } from 'react-native';
@@ -27,11 +29,18 @@ type Props = {
    * @desc Function to return the Promise resolve
    * @param {number} gasPrice Number with the gasPrice selected by the user for the current transaction
    */
-  onSuccess: (gasPrice: number) => null,
+  onSuccess: (gasPrice: number, gasLimit: number) => null,
   /**
    * @desc Function to return the Promise reject
    */
   onFail: () => null,
+  /**
+   * @desc Object with the properties of the transaction
+   */
+  to: String,
+  from: String,
+  amount: String,
+  estimate: String
 }
 
 type State = {
@@ -39,6 +48,7 @@ type State = {
    * @desc gasPrice to return in resolve
    */
   gasPrice: number,
+  gasLimit: number
 }
 
 class ConfirmationScreen extends NavigatorComponent<Props, State> {
@@ -48,6 +58,7 @@ class ConfirmationScreen extends NavigatorComponent<Props, State> {
     super(props);
     this.state = {
       gasPrice: 2,
+      gasLimit: '1500000',
     };
 
     this.props.navigator.setButtons({
@@ -67,7 +78,7 @@ class ConfirmationScreen extends NavigatorComponent<Props, State> {
     if (id === 'cancel') {
       this.props.onFail();
     } else {
-      this.props.onSuccess(this.state.gasPrice);
+      this.props.onSuccess(this.state.gasPrice, this.state.gasLimit);
     }
   }
 
@@ -89,12 +100,37 @@ class ConfirmationScreen extends NavigatorComponent<Props, State> {
 
 
   buildConfirmationView() {
+    let speed;
+    if (this.state.gasPrice < 10) {
+      speed = i18n.t('screens.confirmTransaction.slow');
+    } else if (this.state.gasPrice < 30) {
+      speed = i18n.t('screens.confirmTransaction.quick');
+    } else if (this.state.gasPrice < 60) {
+      speed = i18n.t('screens.confirmTransaction.fast');
+    } else {
+      speed = i18n.t('screens.confirmTransaction.fastest');
+    }
     return (
       <PanelView
         style={styles.panelViewTransparent}
       >
         <View style={styles.formRow}>
           <View style={styles.fieldsContainer}>
+            <View style={styles.bodyParagraph}>
+              <Text style={styles.body}>
+                {i18n.t('screens.confirmTransaction.to')} {this.props.to}
+              </Text>
+            </View>
+            <View style={styles.bodyParagraph}>
+              <Text style={styles.body}>
+                {i18n.t('screens.confirmTransaction.from')} {this.props.from}
+              </Text>
+            </View>
+            <View style={styles.bodyParagraph}>
+              <Text style={styles.body}>
+                {i18n.t('screens.confirmTransaction.amount')} {ethers.utils.formatEther(ethers.utils.bigNumberify(this.props.amount))} ETH
+              </Text>
+            </View>
             <View style={styles.bodyParagraph}>
               <Text style={styles.body}>
                 {i18n.t('screens.confirmTransaction.gasPrice')}
@@ -112,8 +148,28 @@ class ConfirmationScreen extends NavigatorComponent<Props, State> {
             </View>
             <View style={styles.fieldsContainer}>
               <Text style={styles.body}>
-                {i18n.t('screens.confirmTransaction.gasPriceTitle', { gasPrice: this.state.gasPrice })}
+                {i18n.t('screens.confirmTransaction.gasEstimate')} {ethers.utils.formatEther(ethers.utils.bigNumberify(this.props.estimate).mul(ethers.utils.parseUnits(this.state.gasPrice.toString(), 'gwei')))} ETH
               </Text>
+            </View>
+            <View style={styles.fieldsContainer}>
+              <Text style={styles.body}>
+                {i18n.t('screens.confirmTransaction.gasPriceTitle', { gasPrice: this.state.gasPrice })} - {speed}
+              </Text>
+            </View>
+            <View style={styles.fieldsContainer}>
+              <View style={styles.bodyParagraph}>
+                <Text style={styles.body}>
+                  {i18n.t('screens.confirmTransaction.gasLimit')}
+                </Text>
+              </View>
+              <View style={styles.textInputContainer}>
+                <TextInput
+                  style={[styles.textInputInContainer, styles.currencyLarge, styles.currencyNumber]}
+                  placeholderTextColor={Colors.placeholderTextColor}
+                  onChangeText={gasLimit => this.setState({ gasLimit })}
+                  value={this.state.gasLimit}
+                />
+              </View>
             </View>
           </View>
         </View>
