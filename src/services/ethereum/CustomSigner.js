@@ -26,6 +26,7 @@ export default function CustomSigner(privateKey: string, provider: string) {
   this.sign = async (transaction) => {
     const transactionObject = transaction;
     try {
+      const estimate = await this.estimateGas(transactionObject);
       const signedTransaction = await new Promise((resolve, reject) => {
         Navigation.showModal({
           ...screen('CONFIRMATION_SCREEN'),
@@ -33,11 +34,16 @@ export default function CustomSigner(privateKey: string, provider: string) {
             onFail: () => {
               reject();
             },
-            onSuccess: (gasPrice) => {
+            onSuccess: (gasPrice, gasLimit) => {
               // Here we have gasPrice which is in wei, so we need to convert it into gwei.
-              transactionObject.gasPrice = ethers.utils.bigNumberify(`${gasPrice.toString()}000000000`);
+              transactionObject.gasPrice = ethers.utils.parseUnits(gasPrice.toString(), 'gwei');
+              transactionObject.gasLimit = ethers.utils.bigNumberify(gasLimit.toString());
               resolve(wallet.sign(transactionObject));
             },
+            to: transactionObject.to,
+            from: this.address,
+            amount: transactionObject.value,
+            estimate: estimate.toString(),
           },
         });
       });

@@ -13,15 +13,20 @@ type Props = {
   /**
    * @desc Function to return the Promise resolve
    */
-  onSuccess: (number) => null,
+  onSuccess: (number, number) => null,
   /**
    * @desc Function to return the Promise reject
    */
   onFail: () => null,
+  to: String,
+  from: String,
+  amount: String,
+  estimate: String,
 }
 
 type State = {
   gasPrice: number,
+  gasLimit: number,
 }
 
 class ConfirmationContainer extends Component<Props, State> {
@@ -31,9 +36,9 @@ class ConfirmationContainer extends Component<Props, State> {
     this.props.onFail();
   };
 
-  sendConfirmation = async (gasPrice) => {
+  sendConfirmation = async (gasPrice, gasLimit) => {
     await this.props.navigator.dismissModal();
-    this.props.onSuccess(gasPrice);
+    this.props.onSuccess(gasPrice, gasLimit);
   };
   render() {
     return (
@@ -54,6 +59,10 @@ ConfirmationScreen.defaultProps = {
   gasPrice: 2,
   onFail: () => null,
   onSuccess: () => null,
+  to: '0x0',
+  from: '0x0',
+  amount: null,
+  estimate: '0',
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ConfirmationContainer);
