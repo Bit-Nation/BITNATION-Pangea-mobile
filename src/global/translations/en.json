@@ -9,13 +9,16 @@
   "activityLog": {
     "nation": {
       "join": {
-        "succeed": "Joined nation: {{nationName}}"
+        "succeed": "Joined nation: {{nationName}}",
+        "failed": "Failed to join: {{nationName}}"
       },
       "create": {
-        "succeed": "Created Nation {{nationName}}"
+        "succeed": "Created Nation {{nationName}}",
+        "failed": "Failed to create: {{nationName}}"
       },
       "leave": {
-        "succeed": "Left nation: {{nationName}}"
+        "succeed": "Left nation: {{nationName}}",
+        "failed": "Failed to leave: {{nationName}}"
       }
     }
   },
@@ -225,6 +228,9 @@
       "introduction": "Create a new account or restore an account you have backed up.",
       "newAccount": "New Account",
       "restoreAccount": "Restore Account",
+      "warningTitle": "Where's My Money?",
+      "warningText": "This release is not compatible with prior releases of the Pangea app. Tap this button to learn how to recover the Ethereum in your wallet.",
+      "checkRelease": "Open Instructions Website",
       "create": {
         "prev": "Previous",
         "next": "Next",
@@ -354,7 +360,7 @@
     },
     "createNation": {
       "title": "Create A Nation",
-      "introduction": "Reclaim your sovereignty by creating your own decentralized borderless voluntary nation(DBVN).",
+      "introduction": "Reclaim your sovereignty by creating your own decentralized borderless voluntary nation (DBVN).",
       "prompt": {
         "name": "Nation name",
         "description": "Short description",

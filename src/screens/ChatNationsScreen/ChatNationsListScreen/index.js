@@ -17,7 +17,7 @@ import NationListHeader from '../../../components/common/NationListHeader';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import i18n from '../../../global/i18n';
 import AssetsImages from '../../../global/AssetsImages';
-import type { NationType } from '../../../types/Nation';
+import type { NationIdType, NationType } from '../../../types/Nation';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import ScreenTitle from '../../../components/common/ScreenTitle';
 
@@ -35,9 +35,9 @@ type Props = {
    */
   nations: Array<NationType>,
   /**
-   * @desc List of nations that the current user has joined to.
+   * @desc List of nations ids that the current user has joined to.
    */
-  myNations: Array<NationType>,
+  myNationIds: Array<NationIdType>,
   /**
    * @desc Function to be called when an item is selected from the list
    * @param id ID of the nation to be opened

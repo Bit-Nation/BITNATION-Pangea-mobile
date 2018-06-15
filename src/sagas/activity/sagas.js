@@ -1,7 +1,7 @@
 import { put, call } from 'redux-saga/effects';
 import type { Realm } from 'realm';
 
-import { messagesAdded, AddNewMessageAction } from '../../actions/activity';
+import { messagesUpdated, AddNewMessageAction } from '../../actions/activity';
 import defaultDB from '../../services/database';
 import type { MessageJobType as DBMessage } from '../../services/database/schemata';
 import {
@@ -30,10 +30,7 @@ export function buildMessagesResults(db: Realm, accountId: string | null) {
  * @return {void}
  */
 export function* onCurrentAccountChange(collection: Realm.Result<DBMessage>): Generator<*, *, *> {
-  if (collection.length === 0) {
-    return;
-  }
-  yield put(messagesAdded(collection.map(convertFromDatabase)));
+  yield put(messagesUpdated(collection.map(convertFromDatabase)));
 }
 
 /**
@@ -68,7 +65,7 @@ export function* addNewMessageSaga(action: AddNewMessageAction) {
   const db = yield defaultDB;
   const params = action.params || {};
   const interpret = action.interpret !== false;
-  const messages = db.objects('MessageJob').sorted('id', false);
+  const messages = db.objects('MessageJob').sorted('id', true);
   let highestId = 1;
   if (messages.length > 0) highestId = messages[0].id + 1;
   const currentAccountId = yield call(getCurrentAccountId);

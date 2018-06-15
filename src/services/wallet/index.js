@@ -41,11 +41,12 @@ export default class WalletService {
     const balanceEth = await ethService.getBalance();
     BigNumber.config({ DECIMAL_PLACES: 18 });
     const balanceBNEth = new BigNumber(balanceEth);
-    walletsToCheck[0].balance = balanceBNEth.times(10e-19).toString(10);
+    walletsToCheck[0].balance = balanceBNEth.div(new BigNumber(10).pow(18)).toString(10);
+
 
     const balancePAT = await ethService.getTokenBalance(network === 'dev' ? PAT_DEV_ADDRESS : PAT_PROD_ADDRESS);
     const balanceBNPAT = new BigNumber(balancePAT);
-    walletsToCheck[1].balance = balanceBNPAT.times(10e-19).toString(10);
+    walletsToCheck[1].balance = balanceBNPAT.div(new BigNumber(10).pow(18)).toString(10);
     return walletsToCheck;
   }
 
