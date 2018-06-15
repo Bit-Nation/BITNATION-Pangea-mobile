@@ -3,6 +3,8 @@
 import { NativeModules } from 'react-native';
 import type { Mnemonic } from '../../types/Mnemonic';
 import { compressMnemonic, decompressMnemonic } from '../../utils/key';
+import type { Profile } from '../../types/Account';
+import { InvalidPasswordError } from '../../global/errors/accounts';
 
 export default class AccountsService {
   static async getMnemonic(): Promise<Mnemonic> {
@@ -11,20 +13,29 @@ export default class AccountsService {
     return decompressMnemonic(mnemonicString);
   }
 
-  static async checkPasscode(accountStore: string, password: string): Promise<boolean> {
+  static async checkPasscode(accountStore: string, profile: Profile, password: string): Promise<boolean> {
     // @todo Change implementation so it do not restart Panthalassa.
-    return AccountsService.login(accountStore, password);
+    return AccountsService.login(accountStore, profile, password);
   }
 
-  static async login(accountStore: string, password: string): Promise<boolean> {
+  static async login(accountStore: string, profile: Profile, password: string): Promise<boolean> {
     const { Panthalassa } = NativeModules;
+
     try {
       await Panthalassa.PanthalassaStop();
       // eslint-disable-next-line no-empty
     } catch (e) {
       // We ignore exception, since we just need stop it in case it was started earlier.
     }
-    const success = await Panthalassa.PanthalassaStart({ accountStore, password });
+    const signedProfile = await AccountsService.signProfileStandalone(profile, accountStore, password).catch(() => {
+      throw new InvalidPasswordError();
+    });
+    const config = JSON.stringify({
+      encrypted_key_manager: accountStore,
+      signed_profile: signedProfile,
+    });
+
+    const success = await Panthalassa.PanthalassaStart({ config, password });
     return success === true;
   }
 
@@ -60,5 +71,26 @@ export default class AccountsService {
   static async getEthPrivateKey(): Promise<string> {
     const { Panthalassa } = NativeModules;
     return Panthalassa.PanthalassaEthPrivateKey();
+  }
+
+  static async signProfileStandalone(profile: Profile, accountStore: string, password: string): Promise<string> {
+    const { Panthalassa } = NativeModules;
+
+    return Panthalassa.PanthalassaSignProfileStandAlone({
+      name: profile.name,
+      location: profile.location || '',
+      image: profile.avatar || '',
+      keyManagerStore: accountStore,
+      password,
+    });
+  }
+
+  static async signProfile(profile: Profile): Promise<string> {
+    const { Panthalassa } = NativeModules;
+    return Panthalassa.PanthalassaSignProfile({
+      name: profile.name,
+      location: profile.location || '',
+      image: profile.avatar || '',
+    });
   }
 }

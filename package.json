@@ -25,6 +25,7 @@
     "buffer": "^4.9.1",
     "co": "^4.6.0",
     "ethers": "^3.0.15",
+    "eventemitter3": "^3.1.0",
     "events": "^1.1.1",
     "fetch-everywhere": "^1.0.5",
     "flow-bin": "^0.57.0",
@@ -60,6 +61,7 @@
     "react-redux": "^5.0.6",
     "readable-stream": "^1.0.33",
     "realm": "^2.6.0",
+    "reconnecting-websocket": "^4.0.0-rc5",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
     "redux-persist": "^5.4.0",
@@ -93,11 +95,13 @@
     "eslint-plugin-react-native": "^3.2.1",
     "eslint-plugin-require-jsdoc": "^1.0.4",
     "ethers-cli": "^4.0.0",
+    "flow-bin": "^0.57.0",
     "jest": "22.0.3",
     "react-dom": "^16.2.0",
     "react-native-mock": "^0.3.1",
     "react-test-renderer": "16.0.0",
-    "redux-mock-store": "^1.5.1"
+    "redux-mock-store": "^1.5.1",
+    "websocket": "^1.0.26"
   },
   "jest": {
     "preset": "react-native",

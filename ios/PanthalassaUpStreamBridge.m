@@ -16,7 +16,7 @@
 
 - (void)send:(NSString *)data {
   NSLog(@"Upstream: %@", data);
-  [delegate receiveString];
+  [delegate receiveString:data];
 }
 
 @end

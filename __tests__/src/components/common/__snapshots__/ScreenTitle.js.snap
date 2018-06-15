@@ -33,7 +33,7 @@ ShallowWrapper {
           ellipsizeMode="tail"
           style={
             Object {
-              "color": "#F5A623",
+              "color": "#58595B",
               "fontFamily": "Roboto",
               "fontSize": 22,
               "fontWeight": "900",
@@ -46,8 +46,7 @@ ShallowWrapper {
         </Text>
       </View>,
       "style": Object {
-        "marginLeft": 8,
-        "marginRight": 8,
+        "marginHorizontal": 20,
       },
     },
     "ref": null,
@@ -62,7 +61,7 @@ ShallowWrapper {
           ellipsizeMode="tail"
           style={
             Object {
-              "color": "#F5A623",
+              "color": "#58595B",
               "fontFamily": "Roboto",
               "fontSize": 22,
               "fontWeight": "900",
@@ -89,7 +88,7 @@ ShallowWrapper {
           "children": "Test title",
           "ellipsizeMode": "tail",
           "style": Object {
-            "color": "#F5A623",
+            "color": "#58595B",
             "fontFamily": "Roboto",
             "fontSize": 22,
             "fontWeight": "900",
@@ -125,7 +124,7 @@ ShallowWrapper {
             ellipsizeMode="tail"
             style={
               Object {
-                "color": "#F5A623",
+                "color": "#58595B",
                 "fontFamily": "Roboto",
                 "fontSize": 22,
                 "fontWeight": "900",
@@ -138,8 +137,7 @@ ShallowWrapper {
           </Text>
         </View>,
         "style": Object {
-          "marginLeft": 8,
-          "marginRight": 8,
+          "marginHorizontal": 20,
         },
       },
       "ref": null,
@@ -154,7 +152,7 @@ ShallowWrapper {
             ellipsizeMode="tail"
             style={
               Object {
-                "color": "#F5A623",
+                "color": "#58595B",
                 "fontFamily": "Roboto",
                 "fontSize": 22,
                 "fontWeight": "900",
@@ -181,7 +179,7 @@ ShallowWrapper {
             "children": "Test title",
             "ellipsizeMode": "tail",
             "style": Object {
-              "color": "#F5A623",
+              "color": "#58595B",
               "fontFamily": "Roboto",
               "fontSize": 22,
               "fontWeight": "900",

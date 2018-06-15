@@ -7,6 +7,7 @@ import {
   VALIDATE_ENTERED_MNEMONIC,
 } from '../actions/key';
 import type { Mnemonic } from '../types/Mnemonic';
+import { SERVICES_DESTROYED } from '../actions/serviceContainer';
 
 export type State = {
   +enteredMnemonic: Mnemonic | null,
@@ -28,6 +29,8 @@ export const initialState: State = {
  */
 export default (state: State = initialState, action: Action): State => {
   switch (action.type) {
+    case SERVICES_DESTROYED:
+      return initialState;
     case CHANGE_ENTERED_MNEMONIC:
       return { ...state, enteredMnemonic: action.mnemonic };
     case VALIDATE_ENTERED_MNEMONIC:

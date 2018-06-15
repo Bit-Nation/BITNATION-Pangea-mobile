@@ -27,7 +27,7 @@ ShallowWrapper {
           ellipsizeMode="tail"
           style={
             Object {
-              "color": "#FFFFFF",
+              "color": "#929497",
               "fontFamily": "Roboto",
               "fontSize": 17,
               "fontWeight": "normal",
@@ -80,7 +80,7 @@ ShallowWrapper {
           ],
           "ellipsizeMode": "tail",
           "style": Object {
-            "color": "#FFFFFF",
+            "color": "#929497",
             "fontFamily": "Roboto",
             "fontSize": 17,
             "fontWeight": "normal",
@@ -127,7 +127,7 @@ ShallowWrapper {
             ellipsizeMode="tail"
             style={
               Object {
-                "color": "#FFFFFF",
+                "color": "#929497",
                 "fontFamily": "Roboto",
                 "fontSize": 17,
                 "fontWeight": "normal",
@@ -180,7 +180,7 @@ ShallowWrapper {
             ],
             "ellipsizeMode": "tail",
             "style": Object {
-              "color": "#FFFFFF",
+              "color": "#929497",
               "fontFamily": "Roboto",
               "fontSize": 17,
               "fontWeight": "normal",
