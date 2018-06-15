@@ -8,7 +8,7 @@ import {
   getCurrentAccountId, listenForDatabaseUpdates, login as loginSaga, loginActionHandler, logout,
   saveEditingAccount as saveEditingAccountSaga, savePasswordSaga, savePinCodeSaga, startAccountCreation,
   startRestoreAccountUsingMnemonic, saveCreatingAccount as saveCreatingAccountSaga, currentAccountBasedUpdate,
-  startAccountUpdateListening, saveMnemonicConfirmed,
+  startAccountUpdateListening, saveMnemonicConfirmed, getAccounts,
 } from '../../../../src/sagas/accounts/sagas';
 import defaultDB, { buildRandomPathDatabase } from '../../../../src/services/database';
 import { convertFromDatabase, convertToDatabase } from '../../../../src/utils/mapping/account';
@@ -206,7 +206,16 @@ describe('login', () => {
     const gen = cloneableGenerator(loginSaga)({ accountId: 'ID' }, 'PASSWORD');
     expect(gen.next().value).toEqual(put(loginTaskUpdated(TaskBuilder.pending())));
     expect(gen.next().value).toEqual(call(getAccount, 'ID'));
-    expect(gen.next(accountMock).value).toEqual(call(AccountsService.login, 'ACCOUNT_STORE', 'PASSWORD'));
+    expect(gen.next(accountMock).value).toEqual(call(
+      AccountsService.login,
+      'ACCOUNT_STORE',
+      {
+        name: 'NAME',
+        avatar: null,
+        location: null,
+      },
+      'PASSWORD',
+    ));
 
     // Invalid password
     const failureGen = gen.clone();
@@ -231,8 +240,21 @@ describe('login', () => {
 
   test('login to new account using account store', () => {
     const gen = cloneableGenerator(loginSaga)({ accountId: 'ID', accountStore: 'ACCOUNT_STORE' }, 'PASSWORD', true);
+
+    expect(gen.next().value).toEqual(take(PERFORM_DEFERRED_LOGIN));
+
     expect(gen.next().value).toEqual(put(loginTaskUpdated(TaskBuilder.pending())));
-    expect(gen.next().value).toEqual(call(AccountsService.login, 'ACCOUNT_STORE', 'PASSWORD'));
+    expect(gen.next().value).toEqual(select(getAccounts));
+    expect(gen.next({ creatingAccount: accountMock }).value).toEqual(call(
+      AccountsService.login,
+      'ACCOUNT_STORE',
+      {
+        name: 'NAME',
+        avatar: null,
+        location: null,
+      },
+      'PASSWORD',
+    ));
 
     // Invalid password
     const failureGen = gen.clone();
@@ -251,8 +273,7 @@ describe('login', () => {
     expect(last.done).toBeTruthy();
 
     // successful path
-    expect(gen.next(true).value).toEqual(take(PERFORM_DEFERRED_LOGIN));
-    expect(gen.next().value).toEqual(put(currentAccountIdChanged('ID')));
+    expect(gen.next(true).value).toEqual(put(currentAccountIdChanged('ID')));
     expect(gen.next().value).toEqual(put(loginTaskUpdated(TaskBuilder.success())));
 
     last = gen.next();
@@ -313,7 +334,17 @@ test('checkPasswordSaga', () => {
   const mockAction = checkPassword('PASSWORD', 'ID', mockCallback);
   const gen = cloneableGenerator(checkPasswordSaga)(mockAction);
   expect(gen.next().value).toEqual(call(getAccount, 'ID'));
-  expect(gen.next(accountMock).value).toEqual(call(AccountsService.checkPasscode, 'ACCOUNT_STORE', 'PASSWORD'));
+  expect(gen.next(accountMock).value)
+    .toEqual(call(
+      AccountsService.checkPasscode,
+      'ACCOUNT_STORE',
+      {
+        name: 'NAME',
+        avatar: null,
+        location: null,
+      },
+      'PASSWORD',
+    ));
 
   // Invalid password
   const failureGen = gen.clone();

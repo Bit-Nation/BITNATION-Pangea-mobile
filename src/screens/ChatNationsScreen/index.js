@@ -4,13 +4,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import ChatNationsListScreen from './ChatNationsListScreen';
-import { switchNationTab, openNation, requestSyncNations } from '../../actions/nations';
+import { switchNationTab, openNation } from '../../actions/nations';
 import { screen } from '../../global/Screens';
 import { resolveNation } from '../../utils/nations';
 import NavigatorComponent from '../../components/common/NavigatorComponent';
 import { startNationCreation } from '../../actions/modifyNation';
 import type { Navigator } from '../../types/ReactNativeNavigation';
-import type { NationType } from '../../types/Nation';
+import type { NationIdType, NationType } from '../../types/Nation';
 
 type Props = {
   /**
@@ -26,9 +26,9 @@ type Props = {
    */
   nations?: Array<NationType>,
   /**
-   * @desc List of nations that the current user has joined to.
+   * @desc List of nations ids that the current user has joined to.
    */
-  myNations: Array<NationType>,
+  myNationIds: Array<NationIdType>,
   /**
    * @desc Function to retrieve nations from the database
    */
@@ -48,10 +48,6 @@ class ChatNationsScreen extends NavigatorComponent<Props> {
       leftButtons: [],
       rightButtons: [],
     });
-  }
-
-  onWillAppear() {
-    this.props.fetchNations();
   }
 
   render() {
@@ -93,9 +89,6 @@ const mapDispatchToProps = dispatch => ({
   },
   openNation(id) {
     dispatch(openNation(id));
-  },
-  fetchNations() {
-    dispatch(requestSyncNations());
   },
   startNationCreation() {
     dispatch(startNationCreation());

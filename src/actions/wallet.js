@@ -6,10 +6,10 @@ export type SelectWalletAction = { +type: 'SELECT_WALLET', +wallet: WalletType }
 export type SendMoneyAction = { +type: 'SEND_MONEY', +amount: number, +toEthAddress: string };
 export type WalletListUpdatedAction = { +type: 'WALLETS_LIST_UPDATED', +wallets: Array<WalletType> };
 export type UpdateWalletListAction = { +type: 'UPDATE_WALLET_LIST' };
-export type UpdateWalletBalanceAction = { +type: 'UPDATE_WALLET_BALANCE', +walletAddress: string };
+export type UpdateWalletBalanceAction = { +type: 'UPDATE_WALLET_BALANCE', +walletAddress: string, +walletCurrency: string};
 export type SendMoneySuccessAction = { +type: 'SEND_MONEY_SUCCESS' };
 export type SendMoneyFailedAction = { +type: 'SEND_MONEY_FAILED', +error: Error };
-export type WalletSyncFailedAction = { +type: 'WALLET_SYNC_FAILED', +walletAddress: string, +error: Error };
+export type WalletSyncFailedAction = { +type: 'WALLET_SYNC_FAILED', +walletAddress: string, +walletCurrency: string, +error: Error };
 
 export type Action =
   | SelectWalletAction
@@ -81,12 +81,14 @@ export function updateWalletList(): UpdateWalletListAction {
 /**
  * @desc Action creator for an action that starts specific wallet update.
  * @param {string} walletAddress Address of wallet to update.
+ * @param {string} walletCurrency Currency of wallet to update.
  * @returns {UpdateWalletBalanceAction} An action.
  */
-export function updateWalletBalance(walletAddress: string): UpdateWalletBalanceAction {
+export function updateWalletBalance(walletAddress: string, walletCurrency: string): UpdateWalletBalanceAction {
   return {
     type: UPDATE_WALLET_BALANCE,
     walletAddress,
+    walletCurrency,
   };
 }
 
@@ -115,13 +117,15 @@ export function sendMoneyFailed(error: Error): SendMoneyFailedAction {
 /**
  * @desc Action creator for an action that should be called on wallet synchronization fail.
  * @param {string} walletAddress Address of wallet that was synced.
+ * @param {string} walletCurrency Current of wallet that was synced.
  * @param {Error} error An error that occurs.
  * @returns {WalletSyncFailedAction} An action.
  */
-export function walletSyncFailed(walletAddress: string, error: Error): WalletSyncFailedAction {
+export function walletSyncFailed(walletAddress: string, walletCurrency: string, error: Error): WalletSyncFailedAction {
   return {
     type: WALLET_SYNC_FAILED,
     walletAddress,
+    walletCurrency,
     error,
   };
 }

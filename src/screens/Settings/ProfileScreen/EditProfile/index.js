@@ -132,7 +132,7 @@ class EditProfile extends NavigatorComponent<Props> {
 
     const avatarSource = editingAccount.avatar
       ? { uri: `data:image/gif;base64,${editingAccount.avatar}` }
-      : AssetsImage.Placeholder.avatar;
+      : AssetsImage.avatarIcon;
 
     return (
       <View style={styles.avatarContainerLarge}>
@@ -249,7 +249,9 @@ class EditProfile extends NavigatorComponent<Props> {
         this.props.onAccountChanged('avatar', result.data);
       }
     } catch (error) {
-      Alert.alert(i18n.t('error.noCamera'));
+      if (error.code !== 'E_PICKER_CANCELLED') {
+        Alert.alert(i18n.t('error.noCamera'));
+      }
     }
   };
 }

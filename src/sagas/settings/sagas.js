@@ -16,7 +16,7 @@ import type { SettingsType } from '../../types/Settings';
  * @param {*} collection Updated settings collection
  * @return {void}
  */
-export function* onCurrentAccountChange(collection: Realm.Result<DBSettings>): Generator<*, *, *> {
+export function* onCurrentAccountChange(collection: Realm.Collection<DBSettings>): Generator<*, *, *> {
   if (collection.length === 0) {
     return;
   }

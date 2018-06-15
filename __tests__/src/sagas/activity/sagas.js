@@ -4,13 +4,14 @@ import { put, call } from 'redux-saga/effects';
 
 import defaultDB, { buildRandomPathDatabase } from '../../../../src/services/database';
 import { buildMessagesResults, onCurrentAccountChange, addNewMessageSaga, startDatabaseListening, buildMessageObject } from '../../../../src/sagas/activity/sagas';
-import { messagesAdded, ADD_NEW_MESSAGE } from '../../../../src/actions/activity';
+import { messagesUpdated, ADD_NEW_MESSAGE } from '../../../../src/actions/activity';
 import { convertFromDatabase, convertToDatabase } from '../../../../src/utils/mapping/activity';
 import { getCurrentAccountId, currentAccountBasedUpdate } from '../../../../src/sagas/accounts/sagas';
 
 describe('onCurrentAccountChange', () => {
   test('empty results', () => {
     const gen = onCurrentAccountChange([]);
+    expect(gen.next().value).toEqual(put(messagesUpdated([])));
     expect(gen.next().done).toBeTruthy();
     expect(gen.next().value).toBeUndefined();
   });
@@ -29,7 +30,7 @@ describe('onCurrentAccountChange', () => {
     };
 
     const gen = onCurrentAccountChange([mockMessage]);
-    expect(gen.next().value).toEqual(put(messagesAdded([mockMessage].map(convertFromDatabase))));
+    expect(gen.next().value).toEqual(put(messagesUpdated([mockMessage].map(convertFromDatabase))));
 
     const last = gen.next();
     expect(last.done).toBeTruthy();
