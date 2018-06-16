@@ -77,6 +77,8 @@
 		CC05049FF02246CDB2E2CCDF /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F02C743E40EC4CF88C1B3102 /* libReactNativeConfig.a */; };
 		D048746DE5E54EBD8D11FD4D /* RobotoCondensed-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C319B5A26459433183371050 /* RobotoCondensed-LightItalic.ttf */; };
 		D246D88F20CA57180015AD6F /* Images-2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D246D88E20CA57180015AD6F /* Images-2.xcassets */; };
+		D2586CA920D57D8300F2C9B5 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2586C7C20D57D8300F2C9B5 /* Realm.framework */; };
+		D2586CAA20D57D8300F2C9B5 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D2586C7C20D57D8300F2C9B5 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D2742E32332B4672BBDFB2F6 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F552F5D46DB14E1888550D69 /* libRNVectorIcons.a */; };
 		D2BFDCD0208D8CAF0033E539 /* PanthalassaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BFDCCF208D8CAF0033E539 /* PanthalassaTests.m */; };
 		D2BFDCD1208D8FC80033E539 /* Panthalassa.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F5E4402087BFB400A0B991 /* Panthalassa.m */; };
@@ -431,6 +433,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				D2586CAA20D57D8300F2C9B5 /* Realm.framework in Embed Frameworks */,
 				172769061FFB316400AD076B /* RSKImageCropper.framework in Embed Frameworks */,
 				172769091FFB317300AD076B /* QBImagePicker.framework in Embed Frameworks */,
 			);
@@ -516,6 +519,7 @@
 		CD03308491E94DE8ABFC807B /* ReactNativeNavigation.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeNavigation.xcodeproj; path = "../node_modules/react-native-navigation/ios/ReactNativeNavigation.xcodeproj"; sourceTree = "<group>"; };
 		CDA71C261DCA451C86E50868 /* Roboto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto.ttf; path = "../node_modules/native-base/Fonts/Roboto.ttf"; sourceTree = "<group>"; };
 		D246D88E20CA57180015AD6F /* Images-2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = "Images-2.xcassets"; path = "Pangea/Images-2.xcassets"; sourceTree = "<group>"; };
+		D2586C7C20D57D8300F2C9B5 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Frameworks/Realm.framework; sourceTree = "<group>"; };
 		D2BFDCCF208D8CAF0033E539 /* PanthalassaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PanthalassaTests.m; path = PanthalassaTests/PanthalassaTests.m; sourceTree = SOURCE_ROOT; };
 		D2C287FA20ABACDA00D2B3DC /* PanthalassaUpStreamBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PanthalassaUpStreamBridge.h; sourceTree = "<group>"; };
 		D2C287FB20ABACDA00D2B3DC /* PanthalassaUpStreamBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PanthalassaUpStreamBridge.m; sourceTree = "<group>"; };
@@ -553,6 +557,7 @@
 				172769051FFB316400AD076B /* RSKImageCropper.framework in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
+				D2586CA920D57D8300F2C9B5 /* Realm.framework in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
@@ -928,6 +933,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				D2586C7C20D57D8300F2C9B5 /* Realm.framework */,
 				13B07FAE1A68108700A75B9A /* Pangea */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* PangeaTests */,
