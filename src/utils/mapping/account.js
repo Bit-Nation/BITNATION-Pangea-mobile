@@ -34,7 +34,7 @@ export function convertToDatabase(account: PartialAccount | Account): DBAccount 
     id: account.id,
     name: account.name,
     location: account.location || '',
-    description: '',
+    description_: '',
     profileImage: account.avatar || '',
     accountStore: account.accountStore,
     confirmedMnemonic: typeof (account.confirmedMnemonic) === 'boolean' ? account.confirmedMnemonic : false,
