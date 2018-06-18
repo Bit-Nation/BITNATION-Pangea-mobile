@@ -10,9 +10,16 @@ import java.util.Arrays;
 import java.util.List;
 
 import br.com.classapp.RNSensitiveInfo.RNSensitiveInfoPackage;
+import io.realm.Realm;
 import io.realm.react.RealmReactPackage;
 
 public class MainApplication extends NavigationApplication {
+    // Realm Java for POC
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        Realm.init(this);
+    }
 
     @Override
     public boolean isDebug() {
