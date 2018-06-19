@@ -40,7 +40,9 @@ type Props = {
   to: String,
   from: String,
   amount: String,
-  estimate: String
+  estimate: String,
+  purpose: String,
+  app: String,
 }
 
 type State = {
@@ -110,6 +112,8 @@ class ConfirmationScreen extends NavigatorComponent<Props, State> {
     } else {
       speed = i18n.t('screens.confirmTransaction.fastest');
     }
+    const amount = ethers.utils.bigNumberify(this.props.amount);
+    const gasEstimate = ethers.utils.bigNumberify(this.props.estimate).mul(ethers.utils.parseUnits(this.state.gasPrice.toString(), 'gwei'));
     return (
       <PanelView
         style={styles.panelViewTransparent}
@@ -118,22 +122,36 @@ class ConfirmationScreen extends NavigatorComponent<Props, State> {
           <View style={styles.fieldsContainer}>
             <View style={styles.bodyParagraph}>
               <Text style={styles.body}>
-                {i18n.t('screens.confirmTransaction.to')} {this.props.to}
+                Processor
+              </Text>
+              <Text style={styles.body}>
+                {this.props.app || 'Default Application'}
               </Text>
             </View>
             <View style={styles.bodyParagraph}>
               <Text style={styles.body}>
-                {i18n.t('screens.confirmTransaction.from')} {this.props.from}
+                {i18n.t('screens.confirmTransaction.to')}
+              </Text>
+              <Text style={styles.body}>
+                {this.props.to}
               </Text>
             </View>
             <View style={styles.bodyParagraph}>
               <Text style={styles.body}>
-                {i18n.t('screens.confirmTransaction.amount')} {ethers.utils.formatEther(ethers.utils.bigNumberify(this.props.amount))} ETH
+                {i18n.t('screens.confirmTransaction.amount')}
+              </Text>
+              <Text style={styles.body}>
+                {ethers.utils.formatEther(amount)} ETH
               </Text>
             </View>
             <View style={styles.bodyParagraph}>
               <Text style={styles.body}>
-                {i18n.t('screens.confirmTransaction.gasPrice')}
+                {this.props.purpose}
+              </Text>
+            </View>
+            <View style={styles.fieldsContainer}>
+              <Text style={styles.body}>
+                {i18n.t('screens.confirmTransaction.gasEstimate')}: {ethers.utils.formatEther(gasEstimate)} ETH
               </Text>
             </View>
             <View style={styles.fieldsContainer}>
@@ -141,15 +159,10 @@ class ConfirmationScreen extends NavigatorComponent<Props, State> {
                 style={styles.gridContainer}
                 step={1}
                 minimumValue={2}
-                maximumValue={100}
+                maximumValue={60}
                 value={this.state.gasPrice}
                 onValueChange={val => this.setState({ gasPrice: val })}
               />
-            </View>
-            <View style={styles.fieldsContainer}>
-              <Text style={styles.body}>
-                {i18n.t('screens.confirmTransaction.gasEstimate')} {ethers.utils.formatEther(ethers.utils.bigNumberify(this.props.estimate).mul(ethers.utils.parseUnits(this.state.gasPrice.toString(), 'gwei')))} ETH
-              </Text>
             </View>
             <View style={styles.fieldsContainer}>
               <Text style={styles.body}>
@@ -159,7 +172,7 @@ class ConfirmationScreen extends NavigatorComponent<Props, State> {
             <View style={styles.fieldsContainer}>
               <View style={styles.bodyParagraph}>
                 <Text style={styles.body}>
-                  {i18n.t('screens.confirmTransaction.gasLimit')}
+                  {i18n.t('screens.confirmTransaction.gasLimit')}:
                 </Text>
               </View>
               <View style={styles.textInputContainer}>
@@ -170,6 +183,9 @@ class ConfirmationScreen extends NavigatorComponent<Props, State> {
                   value={this.state.gasLimit}
                 />
               </View>
+              <Text style={styles.bodyParagraph}>
+                {i18n.t('screens.confirmTransaction.total')} {ethers.utils.formatEther(amount.add(gasEstimate))}
+              </Text>
             </View>
           </View>
         </View>

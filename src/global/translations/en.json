@@ -510,8 +510,8 @@
     "confirmTransaction": {
       "title": "Confirm Transaction",
       "gasPrice": "What gas price would you like to set?",
-      "gasLimit": "What gas limit would you like to set? (1500000 is the standard)",
-      "gasEstimate": "The estimated amount of gas required for this transaction is:",
+      "gasLimit": "Gas Limit",
+      "gasEstimate": "Est. Transaction fee",
       "confirmButton": "Confirm",
       "gasPriceTitle": "Gas Price: {{gasPrice}}",
       "slow": "Slow",
@@ -520,7 +520,8 @@
       "fastest": "Fastest",
       "to": "To Address:",
       "from": "From Address:",
-      "amount": "Amount:"
+      "amount": "Amount:",
+      "total": "Total:"
     }
   },
   "testingMode": {
