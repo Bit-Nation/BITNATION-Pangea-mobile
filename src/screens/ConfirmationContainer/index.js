@@ -22,6 +22,8 @@ type Props = {
   from: String,
   amount: String,
   estimate: String,
+  purpose: String,
+  app: String
 }
 
 type State = {
@@ -63,6 +65,8 @@ ConfirmationScreen.defaultProps = {
   from: '0x0',
   amount: null,
   estimate: '0',
+  purpose: '',
+  app: '',
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ConfirmationContainer);

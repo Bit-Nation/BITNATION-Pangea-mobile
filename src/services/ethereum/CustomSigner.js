@@ -23,7 +23,7 @@ export default function CustomSigner(privateKey: string, provider: string) {
   this.estimateGas = wallet.estimateGas;
   this.getTransactionCount = wallet.getTransaction;
   this.defaultGasLimit = wallet.defaultGasLimit;
-  this.sign = async (transaction) => {
+  this.sign = async (transaction, purpose = '', app = '') => {
     const transactionObject = transaction;
     try {
       const estimate = await this.estimateGas(transactionObject);
@@ -44,6 +44,8 @@ export default function CustomSigner(privateKey: string, provider: string) {
             from: this.address,
             amount: transactionObject.value,
             estimate: estimate.toString(),
+            purpose,
+            app,
           },
         });
       });
