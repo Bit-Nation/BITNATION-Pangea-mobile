@@ -60,7 +60,7 @@ class ConfirmationScreen extends NavigatorComponent<Props, State> {
     super(props);
     this.state = {
       gasPrice: 2,
-      gasLimit: '1500000',
+      gasLimit: 1500000,
     };
 
     this.props.navigator.setButtons({
@@ -120,31 +120,31 @@ class ConfirmationScreen extends NavigatorComponent<Props, State> {
       >
         <View style={styles.formRow}>
           <View style={styles.fieldsContainer}>
-            <View style={styles.bodyParagraph}>
+            <View style={styles.bodyParagraphConfirmationRow}>
               <Text style={styles.body}>
-                Processor
+                {i18n.t('screens.confirmTransaction.processor')}
               </Text>
-              <Text style={styles.body}>
+              <Text style={styles.bodyBoldBlack}>
                 {this.props.app || 'Default Application'}
               </Text>
             </View>
-            <View style={styles.bodyParagraph}>
+            <View style={styles.bodyParagraphConfirmationColumn}>
               <Text style={styles.body}>
                 {i18n.t('screens.confirmTransaction.to')}
               </Text>
-              <Text style={styles.body}>
+              <Text style={styles.bodyBoldBlackSmall}>
                 {this.props.to}
               </Text>
             </View>
-            <View style={styles.bodyParagraph}>
+            <View style={styles.bodyParagraphConfirmationRow}>
               <Text style={styles.body}>
                 {i18n.t('screens.confirmTransaction.amount')}
               </Text>
-              <Text style={styles.body}>
+              <Text style={styles.bodyBoldBlack}>
                 {ethers.utils.formatEther(amount)} ETH
               </Text>
             </View>
-            <View style={styles.bodyParagraph}>
+            <View style={styles.bodyParagraphConfirmationRow}>
               <Text style={styles.body}>
                 {this.props.purpose}
               </Text>
@@ -183,7 +183,7 @@ class ConfirmationScreen extends NavigatorComponent<Props, State> {
                   value={this.state.gasLimit}
                 />
               </View>
-              <Text style={styles.bodyParagraph}>
+              <Text style={styles.bodyBoldBlack}>
                 {i18n.t('screens.confirmTransaction.total')} {ethers.utils.formatEther(amount.add(gasEstimate))}
               </Text>
             </View>
