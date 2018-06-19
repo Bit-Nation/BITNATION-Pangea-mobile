@@ -49,7 +49,7 @@ type Props = {
 class ChatNationsListScreen extends React.Component<Props> {
   onChatAction = (index) => {
     if (index === 0) {
-      this.props.navigator.push({
+      this.props.navigator.showModal({
         ...screen('NEW_CHAT_SCREEN'),
       });
     }
