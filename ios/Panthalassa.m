@@ -10,6 +10,43 @@
 #import <panthalassa/panthalassa.h>
 #import <React/RCTConvert.h>
 #import "PanthalassaUpStreamBridge.h"
+#import <Realm/Realm.h>
+
+@interface DHTValue : RLMObject
+@property NSString *key;
+@property NSData *value;
+@property NSDate *ttl;
+@end
+
+@implementation DHTValue
++ (NSArray *)requiredProperties {
+  return @[@"key", @"value", @"ttl"];
+}
+@end
+
+RLM_ARRAY_TYPE(DHTValue)
+
+@interface Account : RLMObject
+@property NSString *id;
+@property NSString *name;
+@property NSString *location;
+@property NSString *description_;
+@property NSString *profileImage;
+@property NSString *accountStore;
+@property bool confirmedMnemonic;
+@property NSString *networkType;
+@property RLMArray <DHTValue> *DHT;
+@end
+
+@implementation Account
++ (NSString *)primaryKey {
+  return @"id";
+}
++ (NSArray *)requiredProperties {
+  return @[@"id", @"name", @"location", @"description_", @"profileImage", @"accountStore", @"confirmedMnemonic", @"networkType", @"DHT"];
+}
+@end
+
 
 @implementation Panthalassa
 {
@@ -209,6 +246,13 @@ RCT_REMAP_METHOD(PanthalassaGetMnemonic,
   NSError *error = nil;
   
   response = PanthalassaGetMnemonic(&error);
+  
+  RLMRealm *realm = [RLMRealm defaultRealm];
+  RLMResults *results = [Account allObjectsInRealm:realm];
+  Account* dbAccount = results.firstObject;
+  [realm beginWriteTransaction];
+  dbAccount.name = @"Hey, new name!";
+  [realm commitWriteTransaction];
   
   if (error == nil) {
     resolve(response);

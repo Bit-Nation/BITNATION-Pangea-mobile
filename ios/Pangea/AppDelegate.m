@@ -17,41 +17,6 @@
 
 #import <Realm/Realm.h>
 
-@interface DHTValue : RLMObject
-@property NSString *key;
-@property NSData *value;
-@property NSDate *ttl;
-@end
-
-@implementation DHTValue
-+ (NSArray *)requiredProperties {
-  return @[@"key", @"value", @"ttl"];
-}
-@end
-
-RLM_ARRAY_TYPE(DHTValue)
-
-@interface Account : RLMObject
-@property NSString *id;
-@property NSString *name;
-@property NSString *location;
-@property NSString *description_;
-@property NSString *profileImage;
-@property NSString *accountStore;
-@property bool confirmedMnemonic;
-@property NSString *networkType;
-@property RLMArray <DHTValue> *DHT;
-@end
-
-@implementation Account
-+ (NSString *)primaryKey {
-  return @"id";
-}
-+ (NSArray *)requiredProperties {
-  return @[@"id", @"name", @"location", @"description_", @"profileImage", @"accountStore", @"confirmedMnemonic", @"networkType", @"DHT"];
-}
-@end
-
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -72,21 +37,13 @@ RLM_ARRAY_TYPE(DHTValue)
                      URLByAppendingPathComponent:@"pangea"]
                     URLByAppendingPathExtension:@""];
   config.schemaVersion = 3;
-  config.migrationBlock = ^(RLMMigration *migration, uint64_t oldSchemaVersion) {
-    if (oldSchemaVersion < 4) {
-      [migration enumerateObjects:Account.description
-                            block:^(RLMObject *oldObject, RLMObject *newObject) {
-                              newObject[@"description_"] = oldObject[@"description"];
-                            }];
-    }
-  };
+  
+  [RLMRealmConfiguration setDefaultConfiguration:config];
   
   // -------> After run 1st time uncommente this code
   /*
    
    // Configuration to use Pangea's DB
-   [RLMRealmConfiguration setDefaultConfiguration:config];
-   RLMRealm *realm = [RLMRealm realmWithConfiguration:config error:nil];
    
    // Proof of reading from the DB
    RLMResults *results = [Account allObjectsInRealm:realm];
