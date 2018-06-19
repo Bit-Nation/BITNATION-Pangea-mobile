@@ -60,7 +60,7 @@ class ConfirmationScreen extends NavigatorComponent<Props, State> {
     super(props);
     this.state = {
       gasPrice: 2,
-      gasLimit: 1500000,
+      gasLimit: '1500000',
     };
 
     this.props.navigator.setButtons({
@@ -146,12 +146,15 @@ class ConfirmationScreen extends NavigatorComponent<Props, State> {
             </View>
             <View style={styles.bodyParagraphConfirmationRow}>
               <Text style={styles.body}>
-                {this.props.purpose}
+                {this.props.purpose || 'Send Ether'}
               </Text>
             </View>
-            <View style={styles.fieldsContainer}>
+            <View style={styles.bodyParagraphConfirmationRow}>
               <Text style={styles.body}>
-                {i18n.t('screens.confirmTransaction.gasEstimate')}: {ethers.utils.formatEther(gasEstimate)} ETH
+                {i18n.t('screens.confirmTransaction.gasEstimate')}
+              </Text>
+              <Text style={styles.bodyBoldBlack}>
+                {ethers.utils.formatEther(gasEstimate)} ETH
               </Text>
             </View>
             <View style={styles.fieldsContainer}>
@@ -169,6 +172,18 @@ class ConfirmationScreen extends NavigatorComponent<Props, State> {
                 {i18n.t('screens.confirmTransaction.gasPriceTitle', { gasPrice: this.state.gasPrice })} - {speed}
               </Text>
             </View>
+            <View style={styles.bodyParagraphConfirmationRow}>
+              <Text style={styles.body}>
+                {i18n.t('screens.confirmTransaction.gasLimit')}
+              </Text>
+              <View style={styles.textInputContainer}>
+                <TextInput
+                  style={[styles.textInputInContainer, styles.bodyBoldBlack]}
+                  onChangeText={gasLimit => this.setState({ gasLimit })}
+                  value={this.state.gasLimit}
+                />
+              </View>
+            </View>
             <View style={styles.fieldsContainer}>
               <View style={styles.bodyParagraph}>
                 <Text style={styles.body}>
@@ -177,14 +192,18 @@ class ConfirmationScreen extends NavigatorComponent<Props, State> {
               </View>
               <View style={styles.textInputContainer}>
                 <TextInput
-                  style={[styles.textInputInContainer, styles.currencyLarge, styles.currencyNumber]}
-                  placeholderTextColor={Colors.placeholderTextColor}
+                  style={[styles.textInputInContainer, styles.bodyBoldBlack]}
                   onChangeText={gasLimit => this.setState({ gasLimit })}
                   value={this.state.gasLimit}
                 />
               </View>
+            </View>
+            <View style={styles.bodyParagraphConfirmationRow}>
+              <Text style={styles.body}>
+                {i18n.t('screens.confirmTransaction.total')}
+              </Text>
               <Text style={styles.bodyBoldBlack}>
-                {i18n.t('screens.confirmTransaction.total')} {ethers.utils.formatEther(amount.add(gasEstimate))}
+                {ethers.utils.formatEther(amount.add(gasEstimate))}
               </Text>
             </View>
           </View>
