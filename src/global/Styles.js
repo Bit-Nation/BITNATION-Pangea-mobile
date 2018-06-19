@@ -108,6 +108,29 @@ const styles = {
     paddingBottom: 16,
   },
 
+  // A block of text in the Confirmation Screen
+  bodyParagraphConfirmationRow: {
+    paddingBottom: 20,
+    borderBottomColor: Colors.BitnationGrayColor,
+    borderBottomWidth: 0.4,
+    paddingLeft: 4,
+    paddingRight: 4,
+    paddingTop: 8,
+    flexDirection: 'row',
+    alignItems: 'stretch',
+    justifyContent: 'space-between',
+    flex: 1,
+  },
+
+  bodyParagraphConfirmationColumn: {
+    paddingBottom: 16,
+    borderBottomColor: Colors.BitnationGrayColor,
+    borderBottomWidth: 0.4,
+    paddingLeft: 4,
+    paddingRight: 4,
+    paddingTop: 8,
+  },
+
   statusBar: {
     height: isiPhoneXStatusBar(20),
     backgroundColor: 'transparent',

@@ -521,7 +521,8 @@
       "to": "To Address:",
       "from": "From Address:",
       "amount": "Amount:",
-      "total": "Total:"
+      "total": "Total:",
+      "processor": "Processor"
     }
   },
   "testingMode": {
