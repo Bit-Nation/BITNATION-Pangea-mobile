@@ -300,14 +300,15 @@
       "tabTitle": "$t(tabbar.chat)",
       "allChats": "All Chats",
       "myChats": "My Chats",
-      "newChat": "New Chat",
-      "dappChat": "Chat with DApp",
+      "keyFromClipboard": "Use public key on clipboard",
+      "keyFromLibrary": "Get public key from library",
+      "keyFromCamera": "Scan public key with camera",
+      "dappChat": "New Chat with DApp",
       "cancel": "$t(common.cancel)",
-      "newConversation": "New Conversation",
-      "scanQrCode": "Scan QR Code",
-      "pasteClipboard": "Paste From Clipboard",
-      "qrCodeLibrary": "QR Code From Library",
-      "pubKeyPlaceholder": "Paste public key"
+      "sendInvite": "Send Invite",
+      "newChat": "New Chat",
+      "invalidKey": "Invalid or Missing Key",
+      "inviteSent": "Invite Sent"
     },
     "nations": {
       "toolbar": {

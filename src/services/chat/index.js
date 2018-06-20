@@ -6,7 +6,6 @@ import type { Profile } from '../../types/Account';
 
 export default class ChatService {
   static async uploadProfile(profile: string): Promise {
-    console.log('profile upload: ', profile);
     const URL = `${Config.CHAT_ENDPOINT}/profile`;
     await fetch(URL, {
       body: profile,
@@ -33,7 +32,8 @@ export default class ChatService {
         bearer: Config.CHAT_TOKEN,
       },
       method: 'GET',
-    });
+    })
+      .then(response => response.json());
   }
 
   static async getPreKeyBundleCount(): Promise<number> {
@@ -54,7 +54,6 @@ export default class ChatService {
     const { Panthalassa } = NativeModules;
     let preKeyBundle = await Panthalassa.PanthalassaNewPreKeyBundle();
     preKeyBundle = JSON.parse(preKeyBundle);
-    console.log('prekey: ', preKeyBundle.public_part);
     const URL = `${Config.CHAT_ENDPOINT}/pre-key-bundle`;
     return fetch(URL, {
       body: preKeyBundle.public_part,
