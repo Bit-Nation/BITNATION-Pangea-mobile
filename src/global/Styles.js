@@ -506,6 +506,17 @@ const styles = {
     // color: Colors.placeholderTextColor,
   },
 
+  // TextInput component
+  textInputConfirmation: {
+    ...defaultTextStyles.body,
+    borderColor: Colors.borderColor,
+    flex: 1,
+    alignItems: 'stretch',
+    textAlign: 'right',
+    fontSize: 16,
+    paddingLeft: 4,
+  },
+
   // text inside of text input fields prompting user to enter information,
   // e.g. 'Name' or 'Country'
   placeHolderText: {
