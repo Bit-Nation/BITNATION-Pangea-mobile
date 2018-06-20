@@ -185,14 +185,12 @@ class ConfirmationScreen extends NavigatorComponent<Props, State> {
               </View>
             </View>
             <View style={styles.fieldsContainer}>
-              <View style={styles.bodyParagraph}>
+              <View style={styles.bodyParagraphConfirmationRow}>
                 <Text style={styles.body}>
                   {i18n.t('screens.confirmTransaction.gasLimit')}:
                 </Text>
-              </View>
-              <View style={styles.textInputContainer}>
                 <TextInput
-                  style={[styles.textInputInContainer, styles.bodyBoldBlack]}
+                  style={[styles.textInputConfirmation, styles.bodyBoldBlack]}
                   onChangeText={gasLimit => this.setState({ gasLimit })}
                   value={this.state.gasLimit}
                 />
