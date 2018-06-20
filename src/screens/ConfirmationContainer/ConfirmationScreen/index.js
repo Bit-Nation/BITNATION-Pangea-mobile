@@ -60,7 +60,7 @@ class ConfirmationScreen extends NavigatorComponent<Props, State> {
     super(props);
     this.state = {
       gasPrice: 2,
-      gasLimit: '1500000',
+      gasLimit: 1500000,
     };
 
     this.props.navigator.setButtons({
