@@ -4,6 +4,7 @@ import React from 'react';
 import {
   View,
   SectionList,
+  Clipboard,
 } from 'react-native';
 import _ from 'lodash';
 import { Fab, Text } from 'native-base';
@@ -20,6 +21,10 @@ import AssetsImages from '../../../global/AssetsImages';
 import type { NationIdType, NationType } from '../../../types/Nation';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import ScreenTitle from '../../../components/common/ScreenTitle';
+import ChatService from '../../../services/chat';
+import NewChatModal from './NewChatModal';
+import InvalidKeyModal from './InvalidKeyModal';
+import InviteSentModal from './InviteSentModal';
 
 type Props = {
   /**
@@ -46,13 +51,68 @@ type Props = {
   onSelectItem: (id: number, isBot: boolean) => void,
 };
 
-class ChatNationsListScreen extends React.Component<Props> {
+type State = {
+  /**
+   * @desc User profile object
+   */
+  profile: any,
+  /**
+   * @desc Name of the modal to be shown
+   */
+  showModal: string
+};
+
+class ChatNationsListScreen extends React.Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      profile: null,
+      showModal: '',
+    };
+  }
+
   onChatAction = (index) => {
-    if (index === 0) {
-      this.props.navigator.showModal({
-        ...screen('NEW_CHAT_SCREEN'),
+    switch (index) {
+      case 0:
+        // this.props.navigator.showModal({
+        //   ...screen('NEW_CHAT_SCREEN'),
+        // });
+        this.getPublicKeyFromClipboard();
+        break;
+      default:
+        break;
+    }
+  }
+
+  getPublicKeyFromClipboard = async () => {
+    const pubKey = await Clipboard.getString();
+    console.log('pub key: ', pubKey);
+    this.getUserProfile(pubKey);
+  }
+
+  getUserProfile = async (publicKey) => {
+    try {
+      const response = await ChatService.getProfile(publicKey);
+      const profile = JSON.parse(response.profile);
+      console.log('fetch profile: ', profile);
+      this.setState({
+        profile,
+        showModal: 'new_chat',
+      });
+    } catch (e) {
+      console.log('fetch error: ', e);
+      this.setState({
+        profile: null,
+        showModal: 'invalid_key',
       });
     }
+  }
+
+  dismissModal = () => {
+    this.setState({
+      profile: null,
+      showModal: '',
+    });
   }
 
   showActionSheet = () => {
@@ -79,6 +139,14 @@ class ChatNationsListScreen extends React.Component<Props> {
     }));
     const bots = [{ title: 'Bots', data: [{ name: 'Dr. FreudBot', isBot: true, id: 0 }] }];
     sections = bots.concat(sections);
+
+    const newChatOptions = [
+      i18n.t('screens.chat.keyFromClipboard'),
+      i18n.t('screens.chat.keyFromLibrary'),
+      i18n.t('screens.chat.keyFromCamera'),
+      i18n.t('screens.chat.dappChat'),
+      i18n.t('screens.chat.cancel'),
+    ];
 
     return (
       <View style={styles.nationsScreenContainer}>
@@ -119,9 +187,23 @@ class ChatNationsListScreen extends React.Component<Props> {
         </Fab>
         <ActionSheet
           ref={(o) => { this.actionSheet = o; }}
-          options={[i18n.t('screens.chat.newChat'), i18n.t('screens.chat.dappChat'), i18n.t('screens.chat.cancel')]}
-          cancelButtonIndex={2}
+          options={newChatOptions}
+          cancelButtonIndex={newChatOptions.length - 1}
           onPress={this.onChatAction}
+        />
+        <NewChatModal
+          profile={this.state.profile}
+          visible={this.state.showModal === 'new_chat'}
+          onSendInvite={() => {}}
+          onCancel={this.dismissModal}
+        />
+        <InvalidKeyModal
+          done={this.dismissModal}
+          visible={this.state.showModal === 'invalid_key'}
+        />
+        <InviteSentModal
+          done={this.dismissModal}
+          visible={this.state.showModal === 'invite'}
         />
       </View>
     );
