@@ -236,6 +236,17 @@ const Screens = {
     title: '',
     navigatorStyle,
   },
+  CHAT_LIST_SCREEN: {
+    screen: 'Pangea.ChatListScreen',
+    label: i18n.t('screens.chat.tabTitle'),
+    icon: AssetsImages.TabIcons.chat,
+    navigatorStyle,
+  },
+  PRIVATE_CHAT_SCREEN: {
+    screen: 'Pangea.PrivateChatScreen',
+    title: i18n.t('screens.chat.title'),
+    navigatorStyle,
+  },
 };
 
 /**

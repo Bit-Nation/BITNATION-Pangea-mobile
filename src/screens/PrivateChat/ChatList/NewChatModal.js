@@ -25,7 +25,7 @@ type Props = {
    * @desc Function to send invite
    * @param profile Profile object of the user
    */
-  onSendInvite: (profile: Object) => void,
+  onStartChat: (profile: Object) => void,
   /**
    * @desc Modal visibility
    */
@@ -33,7 +33,7 @@ type Props = {
 };
 
 const NewChatModal = ({
-  profile, onSendInvite, onCancel, visible,
+  profile, onStartChat, onCancel, visible,
 }: Props) => (
   <Modal
     animationType='slide'
@@ -44,8 +44,8 @@ const NewChatModal = ({
       <View style={[styles.modalContent, styles.newChatModal]}>
         <View style={styles.profileArea}>
           <Text style={styles.modalTitle}>{i18n.t('screens.chat.newChat')}</Text>
-          <Image source={profile.information.image} style={styles.avatarLarge} />
-          <Text style={styles.userName}>{profile.information.name}</Text>
+          <Image source={profile ? profile.information.image : null} style={styles.avatarLarge} />
+          <Text style={styles.userName}>{profile ? profile.information.name : ''}</Text>
         </View>
         <View style={styles.buttonArea}>
           <Button
@@ -57,8 +57,8 @@ const NewChatModal = ({
           <Button
             enabled
             styleTitle={styles.newAccountText}
-            title={i18n.t('screens.chat.sendInvite').toUpperCase()}
-            onPress={onSendInvite}
+            title={i18n.t('screens.chat.startChat').toUpperCase()}
+            onPress={onStartChat}
           />
         </View>
       </View>
