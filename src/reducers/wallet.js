@@ -23,6 +23,7 @@ export type State = {
   +moneySendingInProgress: boolean,
   +moneySendingError: Error | null,
   +moneySendingSuccess: boolean,
+  +isRefreshing: boolean,
 };
 
 export const initialState: State = {
@@ -32,6 +33,7 @@ export const initialState: State = {
   moneySendingInProgress: false,
   moneySendingError: null,
   moneySendingSuccess: false,
+  isRefreshing: false,
 };
 
 /**

@@ -46,6 +46,12 @@ ShallowWrapper {
         maxToRenderPerBatch={10}
         numColumns={1}
         onEndReachedThreshold={2}
+        refreshControl={
+          <RefreshControlMock
+            onRefresh={[Function]}
+            refreshing={undefined}
+          />
+        }
         renderItem={[Function]}
         scrollEventThrottle={50}
         updateCellsBatchingPeriod={50}
@@ -76,6 +82,10 @@ ShallowWrapper {
         "maxToRenderPerBatch": 10,
         "numColumns": 1,
         "onEndReachedThreshold": 2,
+        "refreshControl": <RefreshControlMock
+          onRefresh={[Function]}
+          refreshing={undefined}
+        />,
         "renderItem": [Function],
         "scrollEventThrottle": 50,
         "updateCellsBatchingPeriod": 50,
@@ -111,6 +121,12 @@ ShallowWrapper {
           maxToRenderPerBatch={10}
           numColumns={1}
           onEndReachedThreshold={2}
+          refreshControl={
+            <RefreshControlMock
+              onRefresh={[Function]}
+              refreshing={undefined}
+            />
+          }
           renderItem={[Function]}
           scrollEventThrottle={50}
           updateCellsBatchingPeriod={50}
@@ -141,6 +157,10 @@ ShallowWrapper {
           "maxToRenderPerBatch": 10,
           "numColumns": 1,
           "onEndReachedThreshold": 2,
+          "refreshControl": <RefreshControlMock
+            onRefresh={[Function]}
+            refreshing={undefined}
+          />,
           "renderItem": [Function],
           "scrollEventThrottle": 50,
           "updateCellsBatchingPeriod": 50,
