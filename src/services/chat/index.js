@@ -6,6 +6,7 @@ import type { Profile } from '../../types/Account';
 
 export default class ChatService {
   static async uploadProfile(profile: string): Promise {
+    console.log('profile upload: ', profile);
     const URL = `${Config.CHAT_ENDPOINT}/profile`;
     await fetch(URL, {
       body: profile,
@@ -40,6 +41,18 @@ export default class ChatService {
     const { Panthalassa } = NativeModules;
     const publicKey = await Panthalassa.PanthalassaIdentityPublicKey();
     const URL = `${Config.CHAT_ENDPOINT}/pre-key-bundle/count/${publicKey}`;
+    return fetch(URL, {
+      headers: {
+        'content-type': 'application/json',
+        bearer: Config.CHAT_TOKEN,
+      },
+      method: 'GET',
+    })
+      .then(response => response.json());
+  }
+
+  static async getPreKeyBundle(publicKey: string): Promise<number> {
+    const URL = `${Config.CHAT_ENDPOINT}/pre-key-bundle/${publicKey}`;
     return fetch(URL, {
       headers: {
         'content-type': 'application/json',
