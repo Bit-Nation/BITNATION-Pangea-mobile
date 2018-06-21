@@ -34,6 +34,7 @@ import ConfirmationContainer from './ConfirmationContainer';
 import { screen } from '../global/Screens';
 import EnterPasscodeScreen from './Passcode/EnterPasscodeContainer';
 import CreatePasscodeScreen from './Passcode/CreatePasscodeContainer';
+import ChatListScreen from './PrivateChat/ChatList';
 
 /**
  * @desc Registers screens for React Native Navigation.
@@ -73,4 +74,5 @@ export default function registerScreens(store: Object, Provider: Object) {
   Navigation.registerComponent(screen('ENTER_PASSCODE_SCREEN').screen, () => EnterPasscodeScreen, store, Provider);
   Navigation.registerComponent(screen('CREATE_PASSCODE_SCREEN').screen, () => CreatePasscodeScreen, store, Provider);
   Navigation.registerComponent(screen('CONFIRMATION_SCREEN').screen, () => ConfirmationContainer, store, Provider);
+  Navigation.registerComponent(screen('CHAT_LIST_SCREEN').screen, () => ChatListScreen, store, Provider);
 }
