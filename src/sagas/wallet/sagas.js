@@ -16,6 +16,8 @@ import type { SendMoneyAction } from '../../actions/wallet';
 import type { WalletType } from '../../types/Wallet';
 import ServiceContainer from '../../services/container';
 import { NoWalletServiceError } from '../../global/errors/services';
+import defaultDB from '../../services/database';
+import type { WalletType as DBWallet } from '../../services/database/schemata';
 
 /**
  * @desc Sends money depending the currency of the wallets on the list.
@@ -53,6 +55,16 @@ export function* sendMoneySaga(action: SendMoneyAction): Generator<*, *, *> {
 }
 
 /**
+ * @desc Gets the wallets saved in realm.
+ * @return {DBWallet|null} Realm objects of wallets or null if there is no wallet saved in Realm.
+ */
+export function* getDbWallets(): Generator<*, *, *> {
+  const db = yield defaultDB;
+  const results = db.objects('Wallet');
+  return yield results || null;
+}
+
+/**
  * @desc Updates the balance in the wallets on the list.
  * @returns {void}
  */
@@ -65,7 +77,13 @@ export function* updateWalletList(): Generator<*, *, *> {
     return;
   }
 
-  const walletsWithoutBalance = yield call([walletService, 'getWallets']);
+  let walletsWithoutBalance;
+  const walletsFromDb: DBWallet = yield call(getDbWallets);
+  if (walletsFromDb === null) {
+    walletsWithoutBalance = yield call([walletService, 'getWallets']);
+  } else {
+    walletsWithoutBalance = walletsFromDb;
+  }
   yield put(walletsListUpdated(walletsWithoutBalance));
   try {
     const wallets = yield call([walletService, 'resolveBalance'], walletsWithoutBalance, account.networkType);
@@ -97,4 +115,3 @@ export function* updateWalletBalance(wallet: WalletType): Generator<*, *, *> {
     console.log(`Wallet balance update failed with error: ${error.toString()}`);
   }
 }
-
