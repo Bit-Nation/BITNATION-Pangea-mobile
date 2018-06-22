@@ -282,7 +282,7 @@ export const NationSchema = {
 export type WalletType = {
   symbol: 'ETH' | 'PAT',
   name: string,
-  ethereumBased: boolean,
+  chain: 'ethereum' | 'rootstock'| 'bitcoin',
   decimals: number,
   balance: string,
   address: string,
@@ -294,7 +294,7 @@ export const WalletSchema = {
   properties: {
     name: 'string',
     symbol: 'string',
-    ethereumBased: 'bool',
+    chain: 'string',
     decimals: 'int',
     balance: 'string',
     address: 'string',
