@@ -4,6 +4,8 @@ import { NativeModules } from 'react-native';
 import Config from 'react-native-config';
 import type { Profile } from '../../types/Account';
 
+const { Panthalassa } = NativeModules;
+
 export default class ChatService {
   static async uploadProfile(profile: string): Promise {
     console.log('profile upload: ', profile);
@@ -38,7 +40,6 @@ export default class ChatService {
   }
 
   static async getPreKeyBundleCount(): Promise<number> {
-    const { Panthalassa } = NativeModules;
     const publicKey = await Panthalassa.PanthalassaIdentityPublicKey();
     const URL = `${Config.CHAT_ENDPOINT}/pre-key-bundle/count/${publicKey}`;
     return fetch(URL, {
@@ -51,7 +52,7 @@ export default class ChatService {
       .then(response => response.json());
   }
 
-  static async getPreKeyBundle(publicKey: string): Promise<number> {
+  static async getPreKeyBundle(publicKey: string): Promise {
     const URL = `${Config.CHAT_ENDPOINT}/pre-key-bundle/${publicKey}`;
     return fetch(URL, {
       headers: {
@@ -64,7 +65,6 @@ export default class ChatService {
   }
 
   static async uploadPreKeyBundle(): Promise {
-    const { Panthalassa } = NativeModules;
     let preKeyBundle = await Panthalassa.PanthalassaNewPreKeyBundle();
     preKeyBundle = JSON.parse(preKeyBundle);
     const URL = `${Config.CHAT_ENDPOINT}/pre-key-bundle`;
@@ -76,5 +76,10 @@ export default class ChatService {
       },
       method: 'PUT',
     });
+  }
+
+  static async startChat(identityPublicKey: string, preKeyBundle: string): Promise<any> {
+    const response = await Panthalassa.PanthalassaInitializeChat({ identityPublicKey, preKeyBundle });
+    console.log('init chat: ', response);
   }
 }

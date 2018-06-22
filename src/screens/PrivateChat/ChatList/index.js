@@ -16,6 +16,7 @@ import { screen } from '../../../global/Screens';
 import ChatListItem from '../../../components/common/ChatListItem';
 import NationListHeader from '../../../components/common/NationListHeader';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
+import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import i18n from '../../../global/i18n';
 import AssetsImages from '../../../global/AssetsImages';
 import type { NationIdType, NationType } from '../../../types/Nation';
@@ -25,8 +26,13 @@ import ChatService from '../../../services/chat';
 import NewChatModal from './NewChatModal';
 import InvalidKeyModal from './InvalidKeyModal';
 import InviteSentModal from './InviteSentModal';
+import Chat from '../Chat';
 
 type Props = {
+  /**
+   * @desc React Native Navigation navigator object.
+   */
+  navigator: Navigator,
   /**
    * @desc List of all contacts
    */
@@ -40,6 +46,10 @@ type Props = {
 
 type State = {
   /**
+   * @desc User public key
+   */
+  publicKey: string,
+  /**
    * @desc User profile object
    */
   profile: any,
@@ -49,10 +59,11 @@ type State = {
   showModal: string
 };
 
-class ChatListScreen extends React.Component<Props, State> {
+class ChatListScreen extends NavigatorComponent<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
+      publicKey: '',
       profile: null,
       showModal: '',
     };
@@ -75,7 +86,6 @@ class ChatListScreen extends React.Component<Props, State> {
     const pubKey = await Clipboard.getString();
     console.log('pub key: ', pubKey);
     await this.getUserProfile(pubKey);
-    await this.getPrekeyBundle(pubKey);
   }
 
   getUserProfile = async (publicKey) => {
@@ -84,23 +94,31 @@ class ChatListScreen extends React.Component<Props, State> {
       const profile = JSON.parse(response.profile);
       console.log('fetch profile: ', profile);
       this.setState({
+        publicKey,
         profile,
         showModal: 'new_chat',
       });
     } catch (e) {
       console.log('fetch error: ', e);
       this.setState({
+        publicKey: '',
         profile: null,
         showModal: 'invalid_key',
       });
     }
   }
 
-  getPrekeyBundle = async (publicKey) => {
+  startChat = async () => {
     try {
-      const response = await ChatService.getPreKeyBundle(publicKey);
-      const bundle = JSON.parse(response.bundle);
-      console.log('fetch bundle: ', bundle);
+      const response = await ChatService.getPreKeyBundle(this.state.publicKey);
+      console.log('fetch bundle: ', response);
+      await ChatService.startChat(this.state.publicKey, JSON.stringify(response.bundle));
+      this.props.navigator.push({
+        ...screen('PRIVATE_CHAT_SCREEN'),
+        passProps: {
+          opponent: this.state.profile,
+        },
+      });
     } catch (e) {
       console.log('fetch error: ', e);
     }
@@ -108,6 +126,7 @@ class ChatListScreen extends React.Component<Props, State> {
 
   dismissModal = () => {
     this.setState({
+      publicKey: '',
       profile: null,
       showModal: '',
     });
@@ -176,7 +195,7 @@ class ChatListScreen extends React.Component<Props, State> {
         <NewChatModal
           profile={this.state.profile}
           visible={this.state.showModal === 'new_chat'}
-          onStartChat={() => {}}
+          onStartChat={this.startChat}
           onCancel={this.dismissModal}
         />
         <InvalidKeyModal
