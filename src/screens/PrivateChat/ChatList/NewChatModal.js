@@ -44,7 +44,7 @@ const NewChatModal = ({
       <View style={[styles.modalContent, styles.newChatModal]}>
         <View style={styles.profileArea}>
           <Text style={styles.modalTitle}>{i18n.t('screens.chat.newChat')}</Text>
-          <Image source={profile ? profile.information.image : null} style={styles.avatarLarge} />
+          <Image source={profile ? profile.information.image : { uri: '' }} style={styles.avatarLarge} />
           <Text style={styles.userName}>{profile ? profile.information.name : ''}</Text>
         </View>
         <View style={styles.buttonArea}>
