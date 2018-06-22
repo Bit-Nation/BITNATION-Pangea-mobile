@@ -22,9 +22,10 @@ export function convertFromDatabase(wallets: DBWallet[]): WalletType[] {
  * @return {DBWallet} Converted object.
  */
 export function convertToDatabase(wallet: WalletType):DBWallet {
+  console.log('ENTRO a convertToDatabase');
   return {
     name: wallet.name,
-    ethereumBased: wallet.currency !== 'ETH',
+    chain: 'ethereum',
     symbol: wallet.currency,
     decimals: 18,
     balance: wallet.balance === null ? '' : wallet.balance,
