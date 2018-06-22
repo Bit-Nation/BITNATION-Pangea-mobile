@@ -57,4 +57,22 @@ export default class WalletService {
   async sendToken(fromAddress: string, toAddress: string, amount: string, network: string) {
     return this.ethereumService.sendTokens(network === 'dev' ? PAT_DEV_ADDRESS : PAT_PROD_ADDRESS, toAddress, amount);
   }
+  async isNetworkAvailable() {
+    let probablyHasInternet;
+    try {
+      const googleCall = await fetch('https://google.com', {
+        headers: {
+          'Cache-Control': 'no-cache, no-store, must-revalidate',
+          Pragma: 'no-cache',
+          Expires: 0,
+        },
+      });
+      probablyHasInternet = googleCall.status === 200;
+    } catch (e) {
+      probablyHasInternet = false;
+    }
+
+    console.log(`@@ isConnected: ${probablyHasInternet}`);
+    return probablyHasInternet;
+  }
 }
