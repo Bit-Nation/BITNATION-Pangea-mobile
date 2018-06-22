@@ -18,6 +18,7 @@ import ServiceContainer from '../../services/container';
 import { NoWalletServiceError } from '../../global/errors/services';
 import defaultDB from '../../services/database';
 import type { WalletType as DBWallet } from '../../services/database/schemata';
+import { convertFromDatabase } from '../../utils/mapping/wallet';
 
 /**
  * @desc Sends money depending the currency of the wallets on the list.
@@ -61,7 +62,21 @@ export function* sendMoneySaga(action: SendMoneyAction): Generator<*, *, *> {
 export function* getDbWallets(): Generator<*, *, *> {
   const db = yield defaultDB;
   const results = db.objects('Wallet');
-  return yield results || null;
+  return yield results;
+}
+
+/**
+ * @desc Gets the wallets saved in realm.
+ * @return {DBWallet|null} Realm objects of wallets or null if there is no wallet saved in Realm.
+ */
+export function* saveWalletsToDb(walletsArray: WalletType[]): Generator<*, *, *> {
+  const db = yield defaultDB;
+  const ethWallet = walletsArray[0];
+  const patWallet = walletsArray[1];
+  db.write(() => {
+    db.create('Wallet', ethWallet);
+    db.create('Wallet', patWallet);
+  });
 }
 
 /**
@@ -77,12 +92,13 @@ export function* updateWalletList(): Generator<*, *, *> {
     return;
   }
 
-  let walletsWithoutBalance;
-  const walletsFromDb: DBWallet = yield call(getDbWallets);
-  if (walletsFromDb === null) {
+  let walletsWithoutBalance: WalletType[];
+  const walletsFromDb: DBWallet[] = yield call(getDbWallets);
+  if (walletsFromDb.length === 0) {
     walletsWithoutBalance = yield call([walletService, 'getWallets']);
+    saveWalletsToDb(walletsWithoutBalance);
   } else {
-    walletsWithoutBalance = walletsFromDb;
+    walletsWithoutBalance = convertFromDatabase(walletsFromDb);
   }
   yield put(walletsListUpdated(walletsWithoutBalance));
   try {
