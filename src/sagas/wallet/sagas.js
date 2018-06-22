@@ -62,12 +62,14 @@ export function* sendMoneySaga(action: SendMoneyAction): Generator<*, *, *> {
 export function* getDbWallets(): Generator<*, *, *> {
   const db = yield defaultDB;
   const results = db.objects('Wallet');
+  console.log('Wallets from the DB ->', results);
   return yield results;
 }
 
 /**
  * @desc Gets the wallets saved in realm.
- * @return {DBWallet|null} Realm objects of wallets or null if there is no wallet saved in Realm.
+ * @param {WalletType[]} walletsArray Array of wallets to save in to Realm
+ * @returns {void}
  */
 export function* saveWalletsToDb(walletsArray: WalletType[]): Generator<*, *, *> {
   const db = yield defaultDB;
@@ -97,8 +99,10 @@ export function* updateWalletList(): Generator<*, *, *> {
   if (walletsFromDb.length === 0) {
     walletsWithoutBalance = yield call([walletService, 'getWallets']);
     saveWalletsToDb(walletsWithoutBalance);
+    console.log('CREATE DB WALLETS -> ', walletsWithoutBalance);
   } else {
     walletsWithoutBalance = convertFromDatabase(walletsFromDb);
+    console.log('ENTER DB WALLETS -> ', walletsWithoutBalance);
   }
   yield put(walletsListUpdated(walletsWithoutBalance));
   try {
