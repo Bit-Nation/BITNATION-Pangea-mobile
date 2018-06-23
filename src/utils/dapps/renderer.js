@@ -5,6 +5,7 @@ import React from 'react';
 import Text from '../../components/dapps/Text';
 import View from '../../components/dapps/View';
 import TextInput from '../../components/dapps/TextInput';
+import Button from '../../components/dapps/Button';
 
 export type ComponentsJSON = { type: string, props: Object, children: Array<Object> };
 
@@ -21,6 +22,8 @@ export const getTypeElementFromText = (typeName: string) => {
       return View;
     case 'TextInput':
       return TextInput;
+    case 'Button':
+      return Button;
     default:
       console.warn(`Unknown component type ${typeName}.`);
       return null;
