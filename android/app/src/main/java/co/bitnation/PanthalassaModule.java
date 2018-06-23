@@ -253,7 +253,9 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
     public void PanthalassaSendResponse(ReadableMap jsonParams, Promise promise) throws JSONException {
         try {
             Panthalassa.sendResponse(jsonParams.getString("id_"),
-                                    jsonParams.getString("data"));
+                                    jsonParams.getString("data"),
+                                    jsonParams.getString("responseError"),
+                                    jsonParams.getInt("timeout"));
             promise.resolve(true);
         } catch (Exception e) {
             e.printStackTrace();
