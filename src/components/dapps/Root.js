@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import { View as ReactNativeView } from 'react-native';
 
 import { type ComponentsJSON, renderJSON } from '../../utils/dapps/renderer';
+import { updatePartByKeyPath } from '../../utils/dapps/updates';
 
 export type Props = {
   /**
@@ -28,11 +29,8 @@ export default class Root extends Component<Props, any> {
         this.state,
       );
 
-  updateStateByKey = (key: string, value: any) => {
-    this.setState(prevState => ({
-      ...prevState,
-      [key]: value,
-    }));
+  updateStateByKeyPath = (keyPath: string, value: any) => {
+    this.setState(prevState => updatePartByKeyPath(prevState, keyPath, value));
   };
 
   performCallbackByID = (callbackID: string) => {
@@ -60,7 +58,7 @@ export default class Root extends Component<Props, any> {
       }
       if (propKind === 'set') {
         // It's a setting property
-        resultedProps[nameWithoutPath] = value => this.updateStateByKey(propKeyPath, value);
+        resultedProps[nameWithoutPath] = value => this.updateStateByKeyPath(propKeyPath, value);
       } else {
         // It's a getting property
         resultedProps[nameWithoutPath] = this.getStateByKeyPath(propKeyPath);
