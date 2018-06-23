@@ -6,32 +6,31 @@ export type NationTab = 'ALL_NATIONS' | 'MY_NATIONS';
 
 type SwitchNationTabAction = { +type: 'SWITCH_NATIONS_TAB', +tab: NationTab };
 type OpenNationAction = { +type: 'OPEN_NATION', +nationId: NationIdType };
-type RequestSyncNationsAction = { +type: 'START_NATIONS_SYNC' };
 type JoinNationAction = { +type: 'REQUEST_JOIN_NATION' };
 type LeaveNationAction = { +type: 'REQUEST_LEAVE_NATION' };
 type FetchNationsStartedAction = { +type: 'NATIONS_FETCH_STARTED' };
 type DoneFetchNationsAction = { +type: 'DONE_FETCH_NATIONS' };
-type DoneSyncNationsAction = { +type: 'DONE_SYNC_NATIONS', +payload: Array<NationType> };
+type CancelLoadingAction = { +type: 'CANCEL_LOADING' };
+type NationsUpdatedAction = { +type: 'NATIONS_UPDATED', +nations: Array<NationType> };
 
 export type Action =
   | SwitchNationTabAction
   | OpenNationAction
   | FetchNationsStartedAction
-  | RequestSyncNationsAction
   | JoinNationAction
   | LeaveNationAction
   | DoneFetchNationsAction
-  | DoneSyncNationsAction;
+  | CancelLoadingAction
+  | NationsUpdatedAction;
 
 export const SWITCH_NATIONS_TAB = 'SWITCH_NATIONS_TAB';
 export const OPEN_NATION = 'OPEN_NATION';
-export const START_NATIONS_SYNC = 'START_NATIONS_SYNC';
 export const NATIONS_FETCH_STARTED = 'NATIONS_FETCH_STARTED';
 export const DONE_FETCH_NATIONS = 'DONE_FETCH_NATIONS';
 export const CANCEL_LOADING = 'CANCEL_LOADING';
 export const REQUEST_JOIN_NATION = 'REQUEST_JOIN_NATION';
 export const REQUEST_LEAVE_NATION = 'REQUEST_LEAVE_NATION';
-export const DONE_SYNC_NATIONS = 'DONE_SYNC_NATIONS';
+export const NATIONS_UPDATED = 'NATIONS_UPDATED';
 
 /**
  * @desc Action creator for an action that switches nation list filter.
@@ -54,16 +53,6 @@ export function openNation(id: NationIdType): OpenNationAction {
   return {
     type: OPEN_NATION,
     nationId: id,
-  };
-}
-
-/**
- * @desc Action creator for an action that starts nations sync with databse.
- * @returns {RequestSyncNationsAction} An action.
- */
-export function requestSyncNations(): RequestSyncNationsAction {
-  return {
-    type: START_NATIONS_SYNC,
   };
 }
 
@@ -108,13 +97,23 @@ export function doneFetchNations(): DoneFetchNationsAction {
 }
 
 /**
+ * @desc Action creator for an action that is called to cancel loading.
+ * @returns {CancelLoadingAction} An action
+ */
+export function cancelLoading(): CancelLoadingAction {
+  return {
+    type: CANCEL_LOADING,
+  };
+}
+
+/**
  * @desc Action creator for an action that is called when nations sync finished.
  * @param {NationType[]} nations Nations coming from database.
- * @returns {DoneSyncNationsAction} An action.
+ * @returns {NationsUpdatedAction} An action.
  */
-export function doneSyncNations(nations: Array<NationType>): DoneSyncNationsAction {
+export function nationsUpdated(nations: Array<NationType>): NationsUpdatedAction {
   return {
-    type: DONE_SYNC_NATIONS,
-    payload: nations,
+    type: NATIONS_UPDATED,
+    nations,
   };
 }

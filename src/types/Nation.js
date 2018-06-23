@@ -24,6 +24,7 @@ export type EditingNationType = {
 
 export type NationType = {
   id: NationIdType,
+  accountId: string,
   idInSmartContract: number,
   created: boolean,
   nationName: string,
@@ -39,8 +40,6 @@ export type NationType = {
   governanceService: Array<string>,
   citizens: number,
   joined: boolean,
-  stateMutateAllowed: boolean,
-  resetStateMutateAllowed: boolean,
   tx: TransactionJobType | null,
   ethAddress: string
 }

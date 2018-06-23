@@ -2,44 +2,17 @@ import reducer, { initialState } from '../../../src/reducers/key';
 import {
   changeEnteredMnemonic,
   changeMnemonicValid,
-  createPrivateKey,
-  mnemonicCreated,
-  removePrivateKey,
   validateEnteredMnemonic,
 } from '../../../src/actions/key';
 import { KEY_LENGTH } from '../../../src/global/Constants';
+import { servicesDestroyed } from '../../../src/actions/serviceContainer';
 
 describe('key reducer action handling', () => {
   const mockMnemonic = new Array(KEY_LENGTH).fill('abc');
 
-  test('createPrivateKey', () => {
-    const stateBefore = initialState;
-    const stateAfter = reducer(stateBefore, createPrivateKey());
-    expect(stateAfter).toEqual({
-      ...stateBefore,
-      createdMnemonic: null,
-      enteredMnemonic: null,
-    });
-  });
-
-  test('removePrivateKey', () => {
-    const stateBefore = initialState;
-    const stateAfter = reducer(stateBefore, removePrivateKey());
-    expect(stateAfter).toEqual({
-      ...stateBefore,
-      createdMnemonic: null,
-      enteredMnemonic: null,
-    });
-  });
-
-  test('mnemonicCreated', () => {
-    const stateBefore = initialState;
-    const stateAfter = reducer(stateBefore, mnemonicCreated(mockMnemonic));
-    expect(stateAfter).toEqual({
-      ...stateBefore,
-      createdMnemonic: mockMnemonic,
-      mnemonicValid: null,
-    });
+  test('after service destroy returns initial state', () => {
+    const changedState = reducer(initialState, changeEnteredMnemonic(mockMnemonic));
+    expect(reducer(changedState, servicesDestroyed())).toEqual(initialState);
   });
 
   test('changeEnteredMnemonic', () => {

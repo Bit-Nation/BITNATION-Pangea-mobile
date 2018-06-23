@@ -3,6 +3,7 @@ import { shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
 
 import NationDetailsContainer from '../../../../src/screens/NationDetailsContainer';
+import navigatorMock from '../../../../__mocks__/Navigator';
 
 describe('NationDetailsContainer', () => {
   let detailScreen;
@@ -18,10 +19,7 @@ describe('NationDetailsContainer', () => {
   };
   const storeMock = configureStore([]);
   const propsMock = {
-    navigator: {
-      push: jest.fn(),
-      setButtons: jest.fn(),
-    },
+    navigator: navigatorMock,
     isDraft: false,
     onSelectTab: jest.fn(),
     joinNation: jest.fn(),

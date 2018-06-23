@@ -11,7 +11,6 @@ import List from './List';
 import EmptyWalletScreen from './EmptyState/index';
 import { selectWallet, updateWalletList } from '../../actions/wallet';
 import NavigatorComponent from '../../components/common/NavigatorComponent';
-import { removeAllPrivateKeys } from '../../actions/key';
 import i18n from '../../global/i18n';
 import styles from '../NationsScreen/NationsListScreen/styles';
 import FakeNavigationBar from '../../components/common/FakeNavigationBar';
@@ -89,7 +88,7 @@ class WalletScreen extends NavigatorComponent<Props & TestingModeProps & Actions
   };
 
   restoreWallet = () => {
-    this.props.navigator.showModal(screen('LOAD_WALLET_SCREEN'));
+
   };
 
   sendMoney = (wallet) => {
@@ -139,9 +138,7 @@ const mapDispatchToProps = dispatch => ({
   updateWalletList() {
     dispatch(updateWalletList());
   },
-  removeWallets() {
-    dispatch(removeAllPrivateKeys());
-  },
+  removeWallets() {},
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(WalletScreen);

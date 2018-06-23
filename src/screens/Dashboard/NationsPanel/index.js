@@ -45,7 +45,7 @@ const NationsPanel = ({
   style, nations, onSelectNation, loadingInProgress,
 }: Props) => {
   const existedNations = _.filter(nations, nation => nationIsDraft(nation) === false);
-  const newestNations = _.take(_.sortBy(existedNations, nation => -nation.id), NEWEST_NATION_COUNT);
+  const newestNations = _.take(_.sortBy(existedNations, nation => -nation.idInSmartContract), NEWEST_NATION_COUNT);
   const nationsCountStrings = i18n.t('screens.dashboard.nationsPanel.nationsCount', { count: existedNations.length });
 
   return (
@@ -84,7 +84,7 @@ const NationsPanel = ({
                 />);
             }}
             ItemSeparatorComponent={() => <View style={styles.sectionListSeparator} />}
-            keyExtractor={item => item.id}
+            keyExtractor={item => item.id.toString()}
             data={newestNations}
           />
         </View>

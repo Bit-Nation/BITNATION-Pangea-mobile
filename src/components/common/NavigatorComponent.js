@@ -3,7 +3,7 @@
 import { Component } from 'react';
 import type { NavigatorEvent, Navigator } from '../../types/ReactNativeNavigation';
 
-type NavigatorProps = {
+export type NavigatorProps = {
   /**
    * @desc React Native Navigation navigator object.
    */
