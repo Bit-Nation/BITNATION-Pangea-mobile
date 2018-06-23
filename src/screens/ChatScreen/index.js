@@ -1,14 +1,17 @@
 // @flow
+/* eslint-disable */
 
 import React, { Component } from 'react';
-import {
-  View,
-  Platform,
-} from 'react-native';
+import { View, Platform } from 'react-native';
 import { connect } from 'react-redux';
 import config from 'react-native-config';
 import SocketIOClient from 'socket.io-client';
-import { GiftedChat, Composer, InputToolbar, Bubble } from 'react-native-gifted-chat';
+import {
+  GiftedChat,
+  Composer,
+  InputToolbar,
+  Bubble,
+} from 'react-native-gifted-chat';
 import styles from './styles';
 
 import { showSpinner, hideSpinner } from '../../actions/chat';
@@ -20,6 +23,7 @@ import createGiftedChatMessageObject from '../../utils/chat';
 import type { NationType } from '../../types/Nation';
 import type { Navigator } from '../../types/ReactNativeNavigation';
 import elizabot from '../../../vendor/elizabot';
+import { getCurrentAccount } from '../../reducers/accounts';
 
 type Props = {
   /**
@@ -33,7 +37,7 @@ type Props = {
   /**
    * @desc List of nations
    */
-  nations?: Array<NationType>,
+  nations: Array<NationType>,
   /**
    * @desc Id of the selected nation
    */
@@ -41,11 +45,11 @@ type Props = {
   /**
    * @desc Current user object
    */
-  user?: any,
+  user: any,
   /**
    * @desc Flag that indicates the loading status
    */
-  isFetching?: boolean,
+  isFetching: boolean,
   /**
    * @desc Function to show spinner
    */
@@ -53,7 +57,7 @@ type Props = {
   /**
    * @desc Function to hide spinner
    */
-  hideSpinner: () => void,
+  hideSpinner: () => void
 };
 
 type State = {
@@ -74,7 +78,7 @@ class ChatScreen extends Component<Props, State> {
     if (props.isBot !== true) {
       const selectedNation = resolveNation(props.nations || [], props.nationId);
       if (selectedNation === null) {
-        this.props.navigator.pop();
+        props.navigator.pop();
         return;
       }
       this.nationId = selectedNation.idInSmartContract;
@@ -121,15 +125,18 @@ class ChatScreen extends Component<Props, State> {
       const URL = `${config.CHAT_URL}/messages/${this.nationId}?auth_token=${config.AUTH_TOKEN}`;
       fetch(URL)
         .then(response => response.json())
-        .then((json) => {
-          const messages = createGiftedChatMessageObject(json.reverse());
-          this.props.hideSpinner();
-          this.setState(previousState => ({
-            messages: GiftedChat.append(previousState.messages, messages),
-          }));
-        }, () => {
-          this.props.hideSpinner();
-        });
+        .then(
+          (json) => {
+            const messages = createGiftedChatMessageObject(json.reverse());
+            this.props.hideSpinner();
+            this.setState(previousState => ({
+              messages: GiftedChat.append(previousState.messages, messages),
+            }));
+          },
+          () => {
+            this.props.hideSpinner();
+          },
+        );
 
       // add socket listener
       this.connection.on('room:joined', (data) => {
@@ -172,13 +179,15 @@ class ChatScreen extends Component<Props, State> {
       }));
 
       // Add Eliza's response
-      this.setState(previousState => ({ messages: GiftedChat.append(previousState.messages, m) }));
+      this.setState(previousState => ({
+        messages: GiftedChat.append(previousState.messages, m),
+      }));
     } else if (this.state.joined === true) {
       const newMessage = {
         nation_id: this.nationId,
         msg: messages[0].text,
         from: this.props.user ? this.props.user.name : 'anonymous',
-        userId: this.props.user ? this.props.user.uid : 'anonymous',
+        userId: this.props.user ? this.props.user.id : 'anonymous',
       };
       this.connection.emit('room:msg', newMessage);
     }
@@ -189,7 +198,7 @@ class ChatScreen extends Component<Props, State> {
 
   render() {
     const sendingUser = {
-      _id: this.props.user ? this.props.user.uid : 'anonymous',
+      _id: this.props.user ? this.props.user.id : 'anonymous',
       name: this.props.user ? this.props.user.name : 'anonymous',
     };
     return (
@@ -202,15 +211,20 @@ class ChatScreen extends Component<Props, State> {
           onSend={messages => this.onSend(messages)}
           user={sendingUser}
           bottomOffset={Platform.OS === 'ios' ? 48.5 : 0}
-          renderComposer={props =>
+          renderComposer={props => (
             <Composer {...props} textInputStyle={styles.composer} />
-          }
-          renderInputToolbar={props =>
+          )}
+          renderInputToolbar={props => (
             <InputToolbar {...props} containerStyle={styles.inputToolbar} />
-          }
-          renderBubble={props =>
-            <Bubble {...props} customTextStyle={styles.customTextStyle} />
-          }
+          )}
+          renderBubble={props => (
+            <Bubble
+              {...props}
+              customTextStyle={styles.customTextStyle}
+              wrapperStyle={{left: styles.leftBubbleWrapper, right: styles.rightBubbleWrapper}}
+              textStyle={{left: styles.leftTextStyle, right: styles.rightTextStyle}}
+            />
+          )}
         />
         {this.props.isFetching && <Loading />}
       </View>
@@ -218,11 +232,10 @@ class ChatScreen extends Component<Props, State> {
   }
 }
 
-
 const mapStateToProps = state => ({
   nations: state.nations.nations,
   nationId: state.nations.openedNationId,
-  user: state.accounts.user,
+  user: getCurrentAccount(state.accounts),
   isFetching: state.chat.isFetching,
 });
 

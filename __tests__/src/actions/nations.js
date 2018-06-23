@@ -1,44 +1,76 @@
 import {
-  switchNationTab, openNation, joinNation, leaveNation, fetchNationsStarted,
-  SWITCH_NATIONS_TAB, OPEN_NATION, REQUEST_JOIN_NATION, REQUEST_LEAVE_NATION,
+  switchNationTab,
+  openNation,
+  joinNation,
+  leaveNation,
+  fetchNationsStarted,
+  cancelLoading,
+  nationsUpdated,
+  doneFetchNations,
+  SWITCH_NATIONS_TAB,
+  OPEN_NATION,
+  REQUEST_JOIN_NATION,
+  REQUEST_LEAVE_NATION,
   NATIONS_FETCH_STARTED,
+  CANCEL_LOADING,
+  NATIONS_UPDATED,
+  DONE_FETCH_NATIONS,
 } from '../../../src/actions/nations';
 
-test('actions - switchNationTab', (done) => {
+test('actions - switchNationTab', () => {
   const tab = 1;
   expect(switchNationTab(tab)).toEqual({
     type: SWITCH_NATIONS_TAB,
     tab,
   });
-  done();
 });
 
-test('actions - openNation', (done) => {
+test('actions - openNation', () => {
   const id = 123;
   expect(openNation(id)).toEqual({
     type: OPEN_NATION,
     nationId: id,
   });
-  done();
 });
 
-test('actions - fetchNationsStarted', (done) => {
+test('actions - fetchNationsStarted', () => {
   expect(fetchNationsStarted()).toEqual({
     type: NATIONS_FETCH_STARTED,
   });
-  done();
 });
 
-test('actions - joinNation', (done) => {
+test('actions - doneFetchNations', () => {
+  expect(doneFetchNations()).toEqual({
+    type: DONE_FETCH_NATIONS,
+  });
+});
+
+test('actions - joinNation', () => {
   expect(joinNation()).toEqual({
     type: REQUEST_JOIN_NATION,
   });
-  done();
 });
 
-test('actions - leaveNation', (done) => {
+test('actions - leaveNation', () => {
   expect(leaveNation()).toEqual({
     type: REQUEST_LEAVE_NATION,
   });
-  done();
+});
+
+test('actions - cancelLoading', () => {
+  expect(cancelLoading()).toEqual({
+    type: CANCEL_LOADING,
+  });
+});
+
+test('actions - nationsUpdated', () => {
+  const mockNation = {
+    id: 'ID',
+    name: 'NAME',
+  };
+
+  expect(nationsUpdated([mockNation])).toEqual({
+    type: NATIONS_UPDATED,
+    nations: [mockNation],
+  });
 });

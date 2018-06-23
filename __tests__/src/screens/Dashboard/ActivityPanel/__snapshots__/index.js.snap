@@ -26,15 +26,21 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "children": <PanelView
+        body={undefined}
+        buttonTitle="Button"
         childrenContainerStyle={
           Object {
             "flex": 1,
           }
         }
+        icon={undefined}
+        onButtonClick={null}
+        renderAdditionalInfo={null}
+        renderBottom={null}
         style={
           Object {
             "alignItems": "stretch",
-            "backgroundColor": "rgba(255,255,255,0.2)",
+            "backgroundColor": "white",
             "borderRadius": 8,
             "flex": 1,
             "flexDirection": "column",
@@ -91,6 +97,8 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
+        "body": undefined,
+        "buttonTitle": "Button",
         "children": Array [
           <FlatList
             data={Array []}
@@ -121,9 +129,13 @@ ShallowWrapper {
         "childrenContainerStyle": Object {
           "flex": 1,
         },
+        "icon": undefined,
+        "onButtonClick": null,
+        "renderAdditionalInfo": null,
+        "renderBottom": null,
         "style": Object {
           "alignItems": "stretch",
-          "backgroundColor": "rgba(255,255,255,0.2)",
+          "backgroundColor": "white",
           "borderRadius": 8,
           "flex": 1,
           "flexDirection": "column",
@@ -197,15 +209,21 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "children": <PanelView
+          body={undefined}
+          buttonTitle="Button"
           childrenContainerStyle={
             Object {
               "flex": 1,
             }
           }
+          icon={undefined}
+          onButtonClick={null}
+          renderAdditionalInfo={null}
+          renderBottom={null}
           style={
             Object {
               "alignItems": "stretch",
-              "backgroundColor": "rgba(255,255,255,0.2)",
+              "backgroundColor": "white",
               "borderRadius": 8,
               "flex": 1,
               "flexDirection": "column",
@@ -262,6 +280,8 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
+          "body": undefined,
+          "buttonTitle": "Button",
           "children": Array [
             <FlatList
               data={Array []}
@@ -292,9 +312,13 @@ ShallowWrapper {
           "childrenContainerStyle": Object {
             "flex": 1,
           },
+          "icon": undefined,
+          "onButtonClick": null,
+          "renderAdditionalInfo": null,
+          "renderBottom": null,
           "style": Object {
             "alignItems": "stretch",
-            "backgroundColor": "rgba(255,255,255,0.2)",
+            "backgroundColor": "white",
             "borderRadius": 8,
             "flex": 1,
             "flexDirection": "column",

@@ -9,7 +9,7 @@ import {
 
 import styles from './styles';
 import Images from '../../global/AssetsImages';
-import Button from '../common/Button';
+import Button from '../common/ArrowButton';
 import i18n from '../../global/i18n';
 
 type Props = {

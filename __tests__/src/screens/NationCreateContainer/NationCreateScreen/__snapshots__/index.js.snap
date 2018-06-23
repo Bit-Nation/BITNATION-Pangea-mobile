@@ -54,11 +54,7 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <BackgroundImage
-          source={
-            Object {
-              "testUri": "../../../src/assets/images/background.jpg",
-            }
-          }
+          source={1}
           style={undefined}
         />,
         <FakeNavigationBar
@@ -116,7 +112,7 @@ ShallowWrapper {
                   ellipsizeMode="tail"
                   style={
                     Object {
-                      "color": "#FFFFFF",
+                      "color": "#929497",
                       "fontFamily": "Roboto",
                       "fontSize": 17,
                       "fontWeight": "normal",
@@ -125,11 +121,18 @@ ShallowWrapper {
                     }
                   }
                 >
-                  Reclaim your sovereignty by creating your own decentralized borderless voluntary nation(DBVN).
+                  Reclaim your sovereignty by creating your own decentralized borderless voluntary nation (DBVN).
                 </Text>
               </View>
             </View>
             <PanelView
+              body={undefined}
+              buttonTitle="Button"
+              childrenContainerStyle={Object {}}
+              icon={undefined}
+              onButtonClick={null}
+              renderAdditionalInfo={null}
+              renderBottom={null}
               style={
                 Object {
                   "backgroundColor": "transparent",
@@ -146,9 +149,10 @@ ShallowWrapper {
                   "paddingTop": 4,
                 }
               }
+              title={undefined}
               titleStyle={
                 Object {
-                  "color": "white",
+                  "color": "#58595B",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -187,23 +191,23 @@ ShallowWrapper {
                       keyboardType="default"
                       onChangeText={[Function]}
                       placeholder="Nation name"
-                      placeholderTextColor="rgba(255,255,255,0.4)"
+                      placeholderTextColor="#929497"
                       style={
                         Object {
                           "borderBottomWidth": 1,
                           "borderColor": "rgba(192,192,192,0.4)",
-                          "color": "#FFFFFF",
+                          "color": "#929497",
                           "flex": 1,
                           "fontFamily": "Roboto",
                           "fontSize": 16,
                           "fontWeight": "normal",
                           "letterSpacing": 0,
                           "lineHeight": 22,
-                          "marginBottom": 4,
+                          "marginBottom": 14,
                           "marginLeft": 0,
                           "marginRight": 0,
                           "marginTop": 4,
-                          "paddingBottom": 6,
+                          "paddingBottom": 12,
                           "paddingLeft": 4,
                           "paddingTop": 6,
                         }
@@ -226,23 +230,23 @@ ShallowWrapper {
                       numberOfLines={4}
                       onChangeText={[Function]}
                       placeholder="Short description"
-                      placeholderTextColor="rgba(255,255,255,0.4)"
+                      placeholderTextColor="#929497"
                       style={
                         Object {
                           "borderBottomWidth": 1,
                           "borderColor": "rgba(192,192,192,0.4)",
-                          "color": "#FFFFFF",
+                          "color": "#929497",
                           "flex": 1,
                           "fontFamily": "Roboto",
                           "fontSize": 16,
                           "fontWeight": "normal",
                           "letterSpacing": 0,
                           "lineHeight": 22,
-                          "marginBottom": 4,
+                          "marginBottom": 14,
                           "marginLeft": 0,
                           "marginRight": 0,
                           "marginTop": 4,
-                          "paddingBottom": 6,
+                          "paddingBottom": 12,
                           "paddingLeft": 4,
                           "paddingTop": 6,
                         }
@@ -254,7 +258,13 @@ ShallowWrapper {
               </View>
             </PanelView>
             <PanelView
+              body={undefined}
+              buttonTitle="Button"
+              childrenContainerStyle={Object {}}
               icon=" "
+              onButtonClick={null}
+              renderAdditionalInfo={null}
+              renderBottom={null}
               style={
                 Object {
                   "backgroundColor": "transparent",
@@ -274,7 +284,7 @@ ShallowWrapper {
               title="Location"
               titleStyle={
                 Object {
-                  "color": "white",
+                  "color": "#58595B",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -327,7 +337,7 @@ ShallowWrapper {
                     searchInputPlaceholderText=""
                     searchInputStyle={
                       Object {
-                        "color": "white",
+                        "color": "#58595B",
                       }
                     }
                     selectText="Nation location type..."
@@ -341,7 +351,7 @@ ShallowWrapper {
                     tagBorderColor="#CCC"
                     tagRemoveIconColor="#CCC"
                     tagTextColor="#CCC"
-                    textColor="white"
+                    textColor="#58595B"
                     uniqueKey="id"
                   />
                 </View>
@@ -365,7 +375,13 @@ ShallowWrapper {
               </Text>
             </PanelView>
             <PanelView
+              body={undefined}
+              buttonTitle="Button"
+              childrenContainerStyle={Object {}}
               icon=" "
+              onButtonClick={null}
+              renderAdditionalInfo={null}
+              renderBottom={null}
               style={
                 Object {
                   "backgroundColor": "transparent",
@@ -385,7 +401,7 @@ ShallowWrapper {
               title="Governmental Structure"
               titleStyle={
                 Object {
-                  "color": "white",
+                  "color": "#58595B",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -458,7 +474,7 @@ ShallowWrapper {
                     searchInputPlaceholderText=""
                     searchInputStyle={
                       Object {
-                        "color": "white",
+                        "color": "#58595B",
                       }
                     }
                     selectText="Legal Code..."
@@ -476,7 +492,7 @@ ShallowWrapper {
                     tagBorderColor="#CCC"
                     tagRemoveIconColor="#CCC"
                     tagTextColor="#CCC"
-                    textColor="white"
+                    textColor="#58595B"
                     uniqueKey="id"
                   />
                 </View>
@@ -536,7 +552,7 @@ ShallowWrapper {
                     searchInputPlaceholderText=""
                     searchInputStyle={
                       Object {
-                        "color": "white",
+                        "color": "#58595B",
                       }
                     }
                     selectText="Law Enforcement Mechanism..."
@@ -554,7 +570,7 @@ ShallowWrapper {
                     tagBorderColor="#CCC"
                     tagRemoveIconColor="#CCC"
                     tagTextColor="#CCC"
-                    textColor="white"
+                    textColor="#58595B"
                     uniqueKey="id"
                   />
                 </View>
@@ -618,7 +634,7 @@ ShallowWrapper {
                     searchInputPlaceholderText=""
                     searchInputStyle={
                       Object {
-                        "color": "white",
+                        "color": "#58595B",
                       }
                     }
                     selectText="Type of Government..."
@@ -636,7 +652,7 @@ ShallowWrapper {
                     tagBorderColor="#CCC"
                     tagRemoveIconColor="#CCC"
                     tagTextColor="#CCC"
-                    textColor="white"
+                    textColor="#58595B"
                     uniqueKey="id"
                   />
                 </View>
@@ -696,7 +712,7 @@ ShallowWrapper {
                     searchInputPlaceholderText=""
                     searchInputStyle={
                       Object {
-                        "color": "white",
+                        "color": "#58595B",
                       }
                     }
                     selectText="Services Offered..."
@@ -710,7 +726,7 @@ ShallowWrapper {
                     tagBorderColor="#CCC"
                     tagRemoveIconColor="#CCC"
                     tagTextColor="#CCC"
-                    textColor="white"
+                    textColor="#58595B"
                     uniqueKey="id"
                   />
                   <View />
@@ -718,7 +734,13 @@ ShallowWrapper {
               </View>
             </PanelView>
             <PanelView
+              body={undefined}
+              buttonTitle="Button"
+              childrenContainerStyle={Object {}}
               icon=" "
+              onButtonClick={null}
+              renderAdditionalInfo={null}
+              renderBottom={null}
               style={
                 Object {
                   "backgroundColor": "transparent",
@@ -738,7 +760,7 @@ ShallowWrapper {
               title="Options"
               titleStyle={
                 Object {
-                  "color": "white",
+                  "color": "#58595B",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -765,6 +787,8 @@ ShallowWrapper {
                   }
                 >
                   <SwitchLabeled
+                    align="left"
+                    disabled={false}
                     label="Seeking diplomatic recognition as a sovereign entity."
                     onValueChange={[Function]}
                     value={false}
@@ -788,6 +812,8 @@ ShallowWrapper {
                   }
                 >
                   <SwitchLabeled
+                    align="left"
+                    disabled={false}
                     label="Non-citizens may use governance services."
                     onValueChange={[Function]}
                     value={false}
@@ -811,6 +837,8 @@ ShallowWrapper {
                   }
                 >
                   <SwitchLabeled
+                    align="left"
+                    disabled={false}
                     label="For-profit nation."
                     onValueChange={[Function]}
                     value={false}
@@ -824,7 +852,7 @@ ShallowWrapper {
           style={
             Object {
               "alignItems": "stretch",
-              "backgroundColor": "#3e9eff",
+              "backgroundColor": "#58595B",
               "flexDirection": "row",
               "height": 55,
               "justifyContent": "space-around",
@@ -873,9 +901,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "function",
         "props": Object {
-          "source": Object {
-            "testUri": "../../../src/assets/images/background.jpg",
-          },
+          "source": 1,
           "style": undefined,
         },
         "ref": null,
@@ -938,7 +964,7 @@ ShallowWrapper {
                   ellipsizeMode="tail"
                   style={
                     Object {
-                      "color": "#FFFFFF",
+                      "color": "#929497",
                       "fontFamily": "Roboto",
                       "fontSize": 17,
                       "fontWeight": "normal",
@@ -947,11 +973,18 @@ ShallowWrapper {
                     }
                   }
                 >
-                  Reclaim your sovereignty by creating your own decentralized borderless voluntary nation(DBVN).
+                  Reclaim your sovereignty by creating your own decentralized borderless voluntary nation (DBVN).
                 </Text>
               </View>
             </View>
             <PanelView
+              body={undefined}
+              buttonTitle="Button"
+              childrenContainerStyle={Object {}}
+              icon={undefined}
+              onButtonClick={null}
+              renderAdditionalInfo={null}
+              renderBottom={null}
               style={
                 Object {
                   "backgroundColor": "transparent",
@@ -968,9 +1001,10 @@ ShallowWrapper {
                   "paddingTop": 4,
                 }
               }
+              title={undefined}
               titleStyle={
                 Object {
-                  "color": "white",
+                  "color": "#58595B",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -1009,23 +1043,23 @@ ShallowWrapper {
                       keyboardType="default"
                       onChangeText={[Function]}
                       placeholder="Nation name"
-                      placeholderTextColor="rgba(255,255,255,0.4)"
+                      placeholderTextColor="#929497"
                       style={
                         Object {
                           "borderBottomWidth": 1,
                           "borderColor": "rgba(192,192,192,0.4)",
-                          "color": "#FFFFFF",
+                          "color": "#929497",
                           "flex": 1,
                           "fontFamily": "Roboto",
                           "fontSize": 16,
                           "fontWeight": "normal",
                           "letterSpacing": 0,
                           "lineHeight": 22,
-                          "marginBottom": 4,
+                          "marginBottom": 14,
                           "marginLeft": 0,
                           "marginRight": 0,
                           "marginTop": 4,
-                          "paddingBottom": 6,
+                          "paddingBottom": 12,
                           "paddingLeft": 4,
                           "paddingTop": 6,
                         }
@@ -1048,23 +1082,23 @@ ShallowWrapper {
                       numberOfLines={4}
                       onChangeText={[Function]}
                       placeholder="Short description"
-                      placeholderTextColor="rgba(255,255,255,0.4)"
+                      placeholderTextColor="#929497"
                       style={
                         Object {
                           "borderBottomWidth": 1,
                           "borderColor": "rgba(192,192,192,0.4)",
-                          "color": "#FFFFFF",
+                          "color": "#929497",
                           "flex": 1,
                           "fontFamily": "Roboto",
                           "fontSize": 16,
                           "fontWeight": "normal",
                           "letterSpacing": 0,
                           "lineHeight": 22,
-                          "marginBottom": 4,
+                          "marginBottom": 14,
                           "marginLeft": 0,
                           "marginRight": 0,
                           "marginTop": 4,
-                          "paddingBottom": 6,
+                          "paddingBottom": 12,
                           "paddingLeft": 4,
                           "paddingTop": 6,
                         }
@@ -1076,7 +1110,13 @@ ShallowWrapper {
               </View>
             </PanelView>
             <PanelView
+              body={undefined}
+              buttonTitle="Button"
+              childrenContainerStyle={Object {}}
               icon=" "
+              onButtonClick={null}
+              renderAdditionalInfo={null}
+              renderBottom={null}
               style={
                 Object {
                   "backgroundColor": "transparent",
@@ -1096,7 +1136,7 @@ ShallowWrapper {
               title="Location"
               titleStyle={
                 Object {
-                  "color": "white",
+                  "color": "#58595B",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -1149,7 +1189,7 @@ ShallowWrapper {
                     searchInputPlaceholderText=""
                     searchInputStyle={
                       Object {
-                        "color": "white",
+                        "color": "#58595B",
                       }
                     }
                     selectText="Nation location type..."
@@ -1163,7 +1203,7 @@ ShallowWrapper {
                     tagBorderColor="#CCC"
                     tagRemoveIconColor="#CCC"
                     tagTextColor="#CCC"
-                    textColor="white"
+                    textColor="#58595B"
                     uniqueKey="id"
                   />
                 </View>
@@ -1187,7 +1227,13 @@ ShallowWrapper {
               </Text>
             </PanelView>
             <PanelView
+              body={undefined}
+              buttonTitle="Button"
+              childrenContainerStyle={Object {}}
               icon=" "
+              onButtonClick={null}
+              renderAdditionalInfo={null}
+              renderBottom={null}
               style={
                 Object {
                   "backgroundColor": "transparent",
@@ -1207,7 +1253,7 @@ ShallowWrapper {
               title="Governmental Structure"
               titleStyle={
                 Object {
-                  "color": "white",
+                  "color": "#58595B",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -1280,7 +1326,7 @@ ShallowWrapper {
                     searchInputPlaceholderText=""
                     searchInputStyle={
                       Object {
-                        "color": "white",
+                        "color": "#58595B",
                       }
                     }
                     selectText="Legal Code..."
@@ -1298,7 +1344,7 @@ ShallowWrapper {
                     tagBorderColor="#CCC"
                     tagRemoveIconColor="#CCC"
                     tagTextColor="#CCC"
-                    textColor="white"
+                    textColor="#58595B"
                     uniqueKey="id"
                   />
                 </View>
@@ -1358,7 +1404,7 @@ ShallowWrapper {
                     searchInputPlaceholderText=""
                     searchInputStyle={
                       Object {
-                        "color": "white",
+                        "color": "#58595B",
                       }
                     }
                     selectText="Law Enforcement Mechanism..."
@@ -1376,7 +1422,7 @@ ShallowWrapper {
                     tagBorderColor="#CCC"
                     tagRemoveIconColor="#CCC"
                     tagTextColor="#CCC"
-                    textColor="white"
+                    textColor="#58595B"
                     uniqueKey="id"
                   />
                 </View>
@@ -1440,7 +1486,7 @@ ShallowWrapper {
                     searchInputPlaceholderText=""
                     searchInputStyle={
                       Object {
-                        "color": "white",
+                        "color": "#58595B",
                       }
                     }
                     selectText="Type of Government..."
@@ -1458,7 +1504,7 @@ ShallowWrapper {
                     tagBorderColor="#CCC"
                     tagRemoveIconColor="#CCC"
                     tagTextColor="#CCC"
-                    textColor="white"
+                    textColor="#58595B"
                     uniqueKey="id"
                   />
                 </View>
@@ -1518,7 +1564,7 @@ ShallowWrapper {
                     searchInputPlaceholderText=""
                     searchInputStyle={
                       Object {
-                        "color": "white",
+                        "color": "#58595B",
                       }
                     }
                     selectText="Services Offered..."
@@ -1532,7 +1578,7 @@ ShallowWrapper {
                     tagBorderColor="#CCC"
                     tagRemoveIconColor="#CCC"
                     tagTextColor="#CCC"
-                    textColor="white"
+                    textColor="#58595B"
                     uniqueKey="id"
                   />
                   <View />
@@ -1540,7 +1586,13 @@ ShallowWrapper {
               </View>
             </PanelView>
             <PanelView
+              body={undefined}
+              buttonTitle="Button"
+              childrenContainerStyle={Object {}}
               icon=" "
+              onButtonClick={null}
+              renderAdditionalInfo={null}
+              renderBottom={null}
               style={
                 Object {
                   "backgroundColor": "transparent",
@@ -1560,7 +1612,7 @@ ShallowWrapper {
               title="Options"
               titleStyle={
                 Object {
-                  "color": "white",
+                  "color": "#58595B",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -1587,6 +1639,8 @@ ShallowWrapper {
                   }
                 >
                   <SwitchLabeled
+                    align="left"
+                    disabled={false}
                     label="Seeking diplomatic recognition as a sovereign entity."
                     onValueChange={[Function]}
                     value={false}
@@ -1610,6 +1664,8 @@ ShallowWrapper {
                   }
                 >
                   <SwitchLabeled
+                    align="left"
+                    disabled={false}
                     label="Non-citizens may use governance services."
                     onValueChange={[Function]}
                     value={false}
@@ -1633,6 +1689,8 @@ ShallowWrapper {
                   }
                 >
                   <SwitchLabeled
+                    align="left"
+                    disabled={false}
                     label="For-profit nation."
                     onValueChange={[Function]}
                     value={false}
@@ -1685,7 +1743,7 @@ ShallowWrapper {
                     ellipsizeMode="tail"
                     style={
                       Object {
-                        "color": "#FFFFFF",
+                        "color": "#929497",
                         "fontFamily": "Roboto",
                         "fontSize": 17,
                         "fontWeight": "normal",
@@ -1694,11 +1752,18 @@ ShallowWrapper {
                       }
                     }
                   >
-                    Reclaim your sovereignty by creating your own decentralized borderless voluntary nation(DBVN).
+                    Reclaim your sovereignty by creating your own decentralized borderless voluntary nation (DBVN).
                   </Text>
                 </View>
               </View>,
               <PanelView
+                body={undefined}
+                buttonTitle="Button"
+                childrenContainerStyle={Object {}}
+                icon={undefined}
+                onButtonClick={null}
+                renderAdditionalInfo={null}
+                renderBottom={null}
                 style={
                   Object {
                     "backgroundColor": "transparent",
@@ -1715,9 +1780,10 @@ ShallowWrapper {
                     "paddingTop": 4,
                   }
                 }
+                title={undefined}
                 titleStyle={
                   Object {
-                    "color": "white",
+                    "color": "#58595B",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -1756,23 +1822,23 @@ ShallowWrapper {
                         keyboardType="default"
                         onChangeText={[Function]}
                         placeholder="Nation name"
-                        placeholderTextColor="rgba(255,255,255,0.4)"
+                        placeholderTextColor="#929497"
                         style={
                           Object {
                             "borderBottomWidth": 1,
                             "borderColor": "rgba(192,192,192,0.4)",
-                            "color": "#FFFFFF",
+                            "color": "#929497",
                             "flex": 1,
                             "fontFamily": "Roboto",
                             "fontSize": 16,
                             "fontWeight": "normal",
                             "letterSpacing": 0,
                             "lineHeight": 22,
-                            "marginBottom": 4,
+                            "marginBottom": 14,
                             "marginLeft": 0,
                             "marginRight": 0,
                             "marginTop": 4,
-                            "paddingBottom": 6,
+                            "paddingBottom": 12,
                             "paddingLeft": 4,
                             "paddingTop": 6,
                           }
@@ -1795,23 +1861,23 @@ ShallowWrapper {
                         numberOfLines={4}
                         onChangeText={[Function]}
                         placeholder="Short description"
-                        placeholderTextColor="rgba(255,255,255,0.4)"
+                        placeholderTextColor="#929497"
                         style={
                           Object {
                             "borderBottomWidth": 1,
                             "borderColor": "rgba(192,192,192,0.4)",
-                            "color": "#FFFFFF",
+                            "color": "#929497",
                             "flex": 1,
                             "fontFamily": "Roboto",
                             "fontSize": 16,
                             "fontWeight": "normal",
                             "letterSpacing": 0,
                             "lineHeight": 22,
-                            "marginBottom": 4,
+                            "marginBottom": 14,
                             "marginLeft": 0,
                             "marginRight": 0,
                             "marginTop": 4,
-                            "paddingBottom": 6,
+                            "paddingBottom": 12,
                             "paddingLeft": 4,
                             "paddingTop": 6,
                           }
@@ -1823,7 +1889,13 @@ ShallowWrapper {
                 </View>
               </PanelView>,
               <PanelView
+                body={undefined}
+                buttonTitle="Button"
+                childrenContainerStyle={Object {}}
                 icon=" "
+                onButtonClick={null}
+                renderAdditionalInfo={null}
+                renderBottom={null}
                 style={
                   Object {
                     "backgroundColor": "transparent",
@@ -1843,7 +1915,7 @@ ShallowWrapper {
                 title="Location"
                 titleStyle={
                   Object {
-                    "color": "white",
+                    "color": "#58595B",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -1896,7 +1968,7 @@ ShallowWrapper {
                       searchInputPlaceholderText=""
                       searchInputStyle={
                         Object {
-                          "color": "white",
+                          "color": "#58595B",
                         }
                       }
                       selectText="Nation location type..."
@@ -1910,7 +1982,7 @@ ShallowWrapper {
                       tagBorderColor="#CCC"
                       tagRemoveIconColor="#CCC"
                       tagTextColor="#CCC"
-                      textColor="white"
+                      textColor="#58595B"
                       uniqueKey="id"
                     />
                   </View>
@@ -1934,7 +2006,13 @@ ShallowWrapper {
                 </Text>
               </PanelView>,
               <PanelView
+                body={undefined}
+                buttonTitle="Button"
+                childrenContainerStyle={Object {}}
                 icon=" "
+                onButtonClick={null}
+                renderAdditionalInfo={null}
+                renderBottom={null}
                 style={
                   Object {
                     "backgroundColor": "transparent",
@@ -1954,7 +2032,7 @@ ShallowWrapper {
                 title="Governmental Structure"
                 titleStyle={
                   Object {
-                    "color": "white",
+                    "color": "#58595B",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -2027,7 +2105,7 @@ ShallowWrapper {
                       searchInputPlaceholderText=""
                       searchInputStyle={
                         Object {
-                          "color": "white",
+                          "color": "#58595B",
                         }
                       }
                       selectText="Legal Code..."
@@ -2045,7 +2123,7 @@ ShallowWrapper {
                       tagBorderColor="#CCC"
                       tagRemoveIconColor="#CCC"
                       tagTextColor="#CCC"
-                      textColor="white"
+                      textColor="#58595B"
                       uniqueKey="id"
                     />
                   </View>
@@ -2105,7 +2183,7 @@ ShallowWrapper {
                       searchInputPlaceholderText=""
                       searchInputStyle={
                         Object {
-                          "color": "white",
+                          "color": "#58595B",
                         }
                       }
                       selectText="Law Enforcement Mechanism..."
@@ -2123,7 +2201,7 @@ ShallowWrapper {
                       tagBorderColor="#CCC"
                       tagRemoveIconColor="#CCC"
                       tagTextColor="#CCC"
-                      textColor="white"
+                      textColor="#58595B"
                       uniqueKey="id"
                     />
                   </View>
@@ -2187,7 +2265,7 @@ ShallowWrapper {
                       searchInputPlaceholderText=""
                       searchInputStyle={
                         Object {
-                          "color": "white",
+                          "color": "#58595B",
                         }
                       }
                       selectText="Type of Government..."
@@ -2205,7 +2283,7 @@ ShallowWrapper {
                       tagBorderColor="#CCC"
                       tagRemoveIconColor="#CCC"
                       tagTextColor="#CCC"
-                      textColor="white"
+                      textColor="#58595B"
                       uniqueKey="id"
                     />
                   </View>
@@ -2265,7 +2343,7 @@ ShallowWrapper {
                       searchInputPlaceholderText=""
                       searchInputStyle={
                         Object {
-                          "color": "white",
+                          "color": "#58595B",
                         }
                       }
                       selectText="Services Offered..."
@@ -2279,7 +2357,7 @@ ShallowWrapper {
                       tagBorderColor="#CCC"
                       tagRemoveIconColor="#CCC"
                       tagTextColor="#CCC"
-                      textColor="white"
+                      textColor="#58595B"
                       uniqueKey="id"
                     />
                     <View />
@@ -2287,7 +2365,13 @@ ShallowWrapper {
                 </View>
               </PanelView>,
               <PanelView
+                body={undefined}
+                buttonTitle="Button"
+                childrenContainerStyle={Object {}}
                 icon=" "
+                onButtonClick={null}
+                renderAdditionalInfo={null}
+                renderBottom={null}
                 style={
                   Object {
                     "backgroundColor": "transparent",
@@ -2307,7 +2391,7 @@ ShallowWrapper {
                 title="Options"
                 titleStyle={
                   Object {
-                    "color": "white",
+                    "color": "#58595B",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -2334,6 +2418,8 @@ ShallowWrapper {
                     }
                   >
                     <SwitchLabeled
+                      align="left"
+                      disabled={false}
                       label="Seeking diplomatic recognition as a sovereign entity."
                       onValueChange={[Function]}
                       value={false}
@@ -2357,6 +2443,8 @@ ShallowWrapper {
                     }
                   >
                     <SwitchLabeled
+                      align="left"
+                      disabled={false}
                       label="Non-citizens may use governance services."
                       onValueChange={[Function]}
                       value={false}
@@ -2380,6 +2468,8 @@ ShallowWrapper {
                     }
                   >
                     <SwitchLabeled
+                      align="left"
+                      disabled={false}
                       label="For-profit nation."
                       onValueChange={[Function]}
                       value={false}
@@ -2426,7 +2516,7 @@ ShallowWrapper {
                     ellipsizeMode="tail"
                     style={
                       Object {
-                        "color": "#FFFFFF",
+                        "color": "#929497",
                         "fontFamily": "Roboto",
                         "fontSize": 17,
                         "fontWeight": "normal",
@@ -2435,7 +2525,7 @@ ShallowWrapper {
                       }
                     }
                   >
-                    Reclaim your sovereignty by creating your own decentralized borderless voluntary nation(DBVN).
+                    Reclaim your sovereignty by creating your own decentralized borderless voluntary nation (DBVN).
                   </Text>
                 </View>,
                 "style": Object {
@@ -2459,7 +2549,7 @@ ShallowWrapper {
                     ellipsizeMode="tail"
                     style={
                       Object {
-                        "color": "#FFFFFF",
+                        "color": "#929497",
                         "fontFamily": "Roboto",
                         "fontSize": 17,
                         "fontWeight": "normal",
@@ -2468,7 +2558,7 @@ ShallowWrapper {
                       }
                     }
                   >
-                    Reclaim your sovereignty by creating your own decentralized borderless voluntary nation(DBVN).
+                    Reclaim your sovereignty by creating your own decentralized borderless voluntary nation (DBVN).
                   </Text>,
                   "style": Object {
                     "paddingBottom": 16,
@@ -2482,10 +2572,10 @@ ShallowWrapper {
                   "props": Object {
                     "accessible": true,
                     "allowFontScaling": true,
-                    "children": "Reclaim your sovereignty by creating your own decentralized borderless voluntary nation(DBVN).",
+                    "children": "Reclaim your sovereignty by creating your own decentralized borderless voluntary nation (DBVN).",
                     "ellipsizeMode": "tail",
                     "style": Object {
-                      "color": "#FFFFFF",
+                      "color": "#929497",
                       "fontFamily": "Roboto",
                       "fontSize": 17,
                       "fontWeight": "normal",
@@ -2494,7 +2584,7 @@ ShallowWrapper {
                     },
                   },
                   "ref": null,
-                  "rendered": "Reclaim your sovereignty by creating your own decentralized borderless voluntary nation(DBVN).",
+                  "rendered": "Reclaim your sovereignty by creating your own decentralized borderless voluntary nation (DBVN).",
                   "type": [Function],
                 },
                 "type": [Function],
@@ -2506,6 +2596,8 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "class",
               "props": Object {
+                "body": undefined,
+                "buttonTitle": "Button",
                 "children": <View
                   style={
                     Object {
@@ -2535,23 +2627,23 @@ ShallowWrapper {
                         keyboardType="default"
                         onChangeText={[Function]}
                         placeholder="Nation name"
-                        placeholderTextColor="rgba(255,255,255,0.4)"
+                        placeholderTextColor="#929497"
                         style={
                           Object {
                             "borderBottomWidth": 1,
                             "borderColor": "rgba(192,192,192,0.4)",
-                            "color": "#FFFFFF",
+                            "color": "#929497",
                             "flex": 1,
                             "fontFamily": "Roboto",
                             "fontSize": 16,
                             "fontWeight": "normal",
                             "letterSpacing": 0,
                             "lineHeight": 22,
-                            "marginBottom": 4,
+                            "marginBottom": 14,
                             "marginLeft": 0,
                             "marginRight": 0,
                             "marginTop": 4,
-                            "paddingBottom": 6,
+                            "paddingBottom": 12,
                             "paddingLeft": 4,
                             "paddingTop": 6,
                           }
@@ -2574,23 +2666,23 @@ ShallowWrapper {
                         numberOfLines={4}
                         onChangeText={[Function]}
                         placeholder="Short description"
-                        placeholderTextColor="rgba(255,255,255,0.4)"
+                        placeholderTextColor="#929497"
                         style={
                           Object {
                             "borderBottomWidth": 1,
                             "borderColor": "rgba(192,192,192,0.4)",
-                            "color": "#FFFFFF",
+                            "color": "#929497",
                             "flex": 1,
                             "fontFamily": "Roboto",
                             "fontSize": 16,
                             "fontWeight": "normal",
                             "letterSpacing": 0,
                             "lineHeight": 22,
-                            "marginBottom": 4,
+                            "marginBottom": 14,
                             "marginLeft": 0,
                             "marginRight": 0,
                             "marginTop": 4,
-                            "paddingBottom": 6,
+                            "paddingBottom": 12,
                             "paddingLeft": 4,
                             "paddingTop": 6,
                           }
@@ -2600,6 +2692,11 @@ ShallowWrapper {
                     </View>
                   </View>
                 </View>,
+                "childrenContainerStyle": Object {},
+                "icon": undefined,
+                "onButtonClick": null,
+                "renderAdditionalInfo": null,
+                "renderBottom": null,
                 "style": Object {
                   "backgroundColor": "transparent",
                   "borderRadius": 8,
@@ -2614,8 +2711,9 @@ ShallowWrapper {
                   "paddingRight": 8,
                   "paddingTop": 4,
                 },
+                "title": undefined,
                 "titleStyle": Object {
-                  "color": "white",
+                  "color": "#58595B",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -2651,23 +2749,23 @@ ShallowWrapper {
                         keyboardType="default"
                         onChangeText={[Function]}
                         placeholder="Nation name"
-                        placeholderTextColor="rgba(255,255,255,0.4)"
+                        placeholderTextColor="#929497"
                         style={
                           Object {
                             "borderBottomWidth": 1,
                             "borderColor": "rgba(192,192,192,0.4)",
-                            "color": "#FFFFFF",
+                            "color": "#929497",
                             "flex": 1,
                             "fontFamily": "Roboto",
                             "fontSize": 16,
                             "fontWeight": "normal",
                             "letterSpacing": 0,
                             "lineHeight": 22,
-                            "marginBottom": 4,
+                            "marginBottom": 14,
                             "marginLeft": 0,
                             "marginRight": 0,
                             "marginTop": 4,
-                            "paddingBottom": 6,
+                            "paddingBottom": 12,
                             "paddingLeft": 4,
                             "paddingTop": 6,
                           }
@@ -2690,23 +2788,23 @@ ShallowWrapper {
                         numberOfLines={4}
                         onChangeText={[Function]}
                         placeholder="Short description"
-                        placeholderTextColor="rgba(255,255,255,0.4)"
+                        placeholderTextColor="#929497"
                         style={
                           Object {
                             "borderBottomWidth": 1,
                             "borderColor": "rgba(192,192,192,0.4)",
-                            "color": "#FFFFFF",
+                            "color": "#929497",
                             "flex": 1,
                             "fontFamily": "Roboto",
                             "fontSize": 16,
                             "fontWeight": "normal",
                             "letterSpacing": 0,
                             "lineHeight": 22,
-                            "marginBottom": 4,
+                            "marginBottom": 14,
                             "marginLeft": 0,
                             "marginRight": 0,
                             "marginTop": 4,
-                            "paddingBottom": 6,
+                            "paddingBottom": 12,
                             "paddingLeft": 4,
                             "paddingTop": 6,
                           }
@@ -2740,23 +2838,23 @@ ShallowWrapper {
                           keyboardType="default"
                           onChangeText={[Function]}
                           placeholder="Nation name"
-                          placeholderTextColor="rgba(255,255,255,0.4)"
+                          placeholderTextColor="#929497"
                           style={
                             Object {
                               "borderBottomWidth": 1,
                               "borderColor": "rgba(192,192,192,0.4)",
-                              "color": "#FFFFFF",
+                              "color": "#929497",
                               "flex": 1,
                               "fontFamily": "Roboto",
                               "fontSize": 16,
                               "fontWeight": "normal",
                               "letterSpacing": 0,
                               "lineHeight": 22,
-                              "marginBottom": 4,
+                              "marginBottom": 14,
                               "marginLeft": 0,
                               "marginRight": 0,
                               "marginTop": 4,
-                              "paddingBottom": 6,
+                              "paddingBottom": 12,
                               "paddingLeft": 4,
                               "paddingTop": 6,
                             }
@@ -2779,23 +2877,23 @@ ShallowWrapper {
                           numberOfLines={4}
                           onChangeText={[Function]}
                           placeholder="Short description"
-                          placeholderTextColor="rgba(255,255,255,0.4)"
+                          placeholderTextColor="#929497"
                           style={
                             Object {
                               "borderBottomWidth": 1,
                               "borderColor": "rgba(192,192,192,0.4)",
-                              "color": "#FFFFFF",
+                              "color": "#929497",
                               "flex": 1,
                               "fontFamily": "Roboto",
                               "fontSize": 16,
                               "fontWeight": "normal",
                               "letterSpacing": 0,
                               "lineHeight": 22,
-                              "marginBottom": 4,
+                              "marginBottom": 14,
                               "marginLeft": 0,
                               "marginRight": 0,
                               "marginTop": 4,
-                              "paddingBottom": 6,
+                              "paddingBottom": 12,
                               "paddingLeft": 4,
                               "paddingTop": 6,
                             }
@@ -2821,23 +2919,23 @@ ShallowWrapper {
                           keyboardType="default"
                           onChangeText={[Function]}
                           placeholder="Nation name"
-                          placeholderTextColor="rgba(255,255,255,0.4)"
+                          placeholderTextColor="#929497"
                           style={
                             Object {
                               "borderBottomWidth": 1,
                               "borderColor": "rgba(192,192,192,0.4)",
-                              "color": "#FFFFFF",
+                              "color": "#929497",
                               "flex": 1,
                               "fontFamily": "Roboto",
                               "fontSize": 16,
                               "fontWeight": "normal",
                               "letterSpacing": 0,
                               "lineHeight": 22,
-                              "marginBottom": 4,
+                              "marginBottom": 14,
                               "marginLeft": 0,
                               "marginRight": 0,
                               "marginTop": 4,
-                              "paddingBottom": 6,
+                              "paddingBottom": 12,
                               "paddingLeft": 4,
                               "paddingTop": 6,
                             }
@@ -2859,22 +2957,22 @@ ShallowWrapper {
                           "keyboardType": "default",
                           "onChangeText": [Function],
                           "placeholder": "Nation name",
-                          "placeholderTextColor": "rgba(255,255,255,0.4)",
+                          "placeholderTextColor": "#929497",
                           "style": Object {
                             "borderBottomWidth": 1,
                             "borderColor": "rgba(192,192,192,0.4)",
-                            "color": "#FFFFFF",
+                            "color": "#929497",
                             "flex": 1,
                             "fontFamily": "Roboto",
                             "fontSize": 16,
                             "fontWeight": "normal",
                             "letterSpacing": 0,
                             "lineHeight": 22,
-                            "marginBottom": 4,
+                            "marginBottom": 14,
                             "marginLeft": 0,
                             "marginRight": 0,
                             "marginTop": 4,
-                            "paddingBottom": 6,
+                            "paddingBottom": 12,
                             "paddingLeft": 4,
                             "paddingTop": 6,
                           },
@@ -2898,23 +2996,23 @@ ShallowWrapper {
                           numberOfLines={4}
                           onChangeText={[Function]}
                           placeholder="Short description"
-                          placeholderTextColor="rgba(255,255,255,0.4)"
+                          placeholderTextColor="#929497"
                           style={
                             Object {
                               "borderBottomWidth": 1,
                               "borderColor": "rgba(192,192,192,0.4)",
-                              "color": "#FFFFFF",
+                              "color": "#929497",
                               "flex": 1,
                               "fontFamily": "Roboto",
                               "fontSize": 16,
                               "fontWeight": "normal",
                               "letterSpacing": 0,
                               "lineHeight": 22,
-                              "marginBottom": 4,
+                              "marginBottom": 14,
                               "marginLeft": 0,
                               "marginRight": 0,
                               "marginTop": 4,
-                              "paddingBottom": 6,
+                              "paddingBottom": 12,
                               "paddingLeft": 4,
                               "paddingTop": 6,
                             }
@@ -2938,22 +3036,22 @@ ShallowWrapper {
                           "numberOfLines": 4,
                           "onChangeText": [Function],
                           "placeholder": "Short description",
-                          "placeholderTextColor": "rgba(255,255,255,0.4)",
+                          "placeholderTextColor": "#929497",
                           "style": Object {
                             "borderBottomWidth": 1,
                             "borderColor": "rgba(192,192,192,0.4)",
-                            "color": "#FFFFFF",
+                            "color": "#929497",
                             "flex": 1,
                             "fontFamily": "Roboto",
                             "fontSize": 16,
                             "fontWeight": "normal",
                             "letterSpacing": 0,
                             "lineHeight": 22,
-                            "marginBottom": 4,
+                            "marginBottom": 14,
                             "marginLeft": 0,
                             "marginRight": 0,
                             "marginTop": 4,
-                            "paddingBottom": 6,
+                            "paddingBottom": 12,
                             "paddingLeft": 4,
                             "paddingTop": 6,
                           },
@@ -2977,6 +3075,8 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "class",
               "props": Object {
+                "body": undefined,
+                "buttonTitle": "Button",
                 "children": Array [
                   <View
                     style={
@@ -3021,7 +3121,7 @@ ShallowWrapper {
                         searchInputPlaceholderText=""
                         searchInputStyle={
                           Object {
-                            "color": "white",
+                            "color": "#58595B",
                           }
                         }
                         selectText="Nation location type..."
@@ -3035,7 +3135,7 @@ ShallowWrapper {
                         tagBorderColor="#CCC"
                         tagRemoveIconColor="#CCC"
                         tagTextColor="#CCC"
-                        textColor="white"
+                        textColor="#58595B"
                         uniqueKey="id"
                       />
                     </View>
@@ -3059,7 +3159,11 @@ ShallowWrapper {
                     Virtual nations exist only in Pangea. Geographic nations are on Earth.
                   </Text>,
                 ],
+                "childrenContainerStyle": Object {},
                 "icon": " ",
+                "onButtonClick": null,
+                "renderAdditionalInfo": null,
+                "renderBottom": null,
                 "style": Object {
                   "backgroundColor": "transparent",
                   "borderRadius": 8,
@@ -3076,7 +3180,7 @@ ShallowWrapper {
                 },
                 "title": "Location",
                 "titleStyle": Object {
-                  "color": "white",
+                  "color": "#58595B",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -3127,7 +3231,7 @@ ShallowWrapper {
                         searchInputPlaceholderText=""
                         searchInputStyle={
                           Object {
-                            "color": "white",
+                            "color": "#58595B",
                           }
                         }
                         selectText="Nation location type..."
@@ -3141,7 +3245,7 @@ ShallowWrapper {
                         tagBorderColor="#CCC"
                         tagRemoveIconColor="#CCC"
                         tagTextColor="#CCC"
-                        textColor="white"
+                        textColor="#58595B"
                         uniqueKey="id"
                       />
                     </View>,
@@ -3183,7 +3287,7 @@ ShallowWrapper {
                         searchInputPlaceholderText=""
                         searchInputStyle={
                           Object {
-                            "color": "white",
+                            "color": "#58595B",
                           }
                         }
                         selectText="Nation location type..."
@@ -3197,7 +3301,7 @@ ShallowWrapper {
                         tagBorderColor="#CCC"
                         tagRemoveIconColor="#CCC"
                         tagTextColor="#CCC"
-                        textColor="white"
+                        textColor="#58595B"
                         uniqueKey="id"
                       />,
                       "style": Object {
@@ -3234,7 +3338,7 @@ ShallowWrapper {
                         "onSelectedItemsChange": [Function],
                         "searchInputPlaceholderText": "",
                         "searchInputStyle": Object {
-                          "color": "white",
+                          "color": "#58595B",
                         },
                         "selectText": "Nation location type...",
                         "selectedItemFontFamily": "",
@@ -3247,7 +3351,7 @@ ShallowWrapper {
                         "tagBorderColor": "#CCC",
                         "tagRemoveIconColor": "#CCC",
                         "tagTextColor": "#CCC",
-                        "textColor": "white",
+                        "textColor": "#58595B",
                         "uniqueKey": "id",
                       },
                       "ref": null,
@@ -3289,6 +3393,8 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "class",
               "props": Object {
+                "body": undefined,
+                "buttonTitle": "Button",
                 "children": Array [
                   <View
                     style={
@@ -3353,7 +3459,7 @@ ShallowWrapper {
                         searchInputPlaceholderText=""
                         searchInputStyle={
                           Object {
-                            "color": "white",
+                            "color": "#58595B",
                           }
                         }
                         selectText="Legal Code..."
@@ -3371,7 +3477,7 @@ ShallowWrapper {
                         tagBorderColor="#CCC"
                         tagRemoveIconColor="#CCC"
                         tagTextColor="#CCC"
-                        textColor="white"
+                        textColor="#58595B"
                         uniqueKey="id"
                       />
                     </View>
@@ -3431,7 +3537,7 @@ ShallowWrapper {
                         searchInputPlaceholderText=""
                         searchInputStyle={
                           Object {
-                            "color": "white",
+                            "color": "#58595B",
                           }
                         }
                         selectText="Law Enforcement Mechanism..."
@@ -3449,7 +3555,7 @@ ShallowWrapper {
                         tagBorderColor="#CCC"
                         tagRemoveIconColor="#CCC"
                         tagTextColor="#CCC"
-                        textColor="white"
+                        textColor="#58595B"
                         uniqueKey="id"
                       />
                     </View>
@@ -3513,7 +3619,7 @@ ShallowWrapper {
                         searchInputPlaceholderText=""
                         searchInputStyle={
                           Object {
-                            "color": "white",
+                            "color": "#58595B",
                           }
                         }
                         selectText="Type of Government..."
@@ -3531,7 +3637,7 @@ ShallowWrapper {
                         tagBorderColor="#CCC"
                         tagRemoveIconColor="#CCC"
                         tagTextColor="#CCC"
-                        textColor="white"
+                        textColor="#58595B"
                         uniqueKey="id"
                       />
                     </View>
@@ -3591,7 +3697,7 @@ ShallowWrapper {
                         searchInputPlaceholderText=""
                         searchInputStyle={
                           Object {
-                            "color": "white",
+                            "color": "#58595B",
                           }
                         }
                         selectText="Services Offered..."
@@ -3605,14 +3711,18 @@ ShallowWrapper {
                         tagBorderColor="#CCC"
                         tagRemoveIconColor="#CCC"
                         tagTextColor="#CCC"
-                        textColor="white"
+                        textColor="#58595B"
                         uniqueKey="id"
                       />
                       <View />
                     </View>
                   </View>,
                 ],
+                "childrenContainerStyle": Object {},
                 "icon": " ",
+                "onButtonClick": null,
+                "renderAdditionalInfo": null,
+                "renderBottom": null,
                 "style": Object {
                   "backgroundColor": "transparent",
                   "borderRadius": 8,
@@ -3629,7 +3739,7 @@ ShallowWrapper {
                 },
                 "title": "Governmental Structure",
                 "titleStyle": Object {
-                  "color": "white",
+                  "color": "#58595B",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -3700,7 +3810,7 @@ ShallowWrapper {
                         searchInputPlaceholderText=""
                         searchInputStyle={
                           Object {
-                            "color": "white",
+                            "color": "#58595B",
                           }
                         }
                         selectText="Legal Code..."
@@ -3718,7 +3828,7 @@ ShallowWrapper {
                         tagBorderColor="#CCC"
                         tagRemoveIconColor="#CCC"
                         tagTextColor="#CCC"
-                        textColor="white"
+                        textColor="#58595B"
                         uniqueKey="id"
                       />
                     </View>,
@@ -3780,7 +3890,7 @@ ShallowWrapper {
                         searchInputPlaceholderText=""
                         searchInputStyle={
                           Object {
-                            "color": "white",
+                            "color": "#58595B",
                           }
                         }
                         selectText="Legal Code..."
@@ -3798,7 +3908,7 @@ ShallowWrapper {
                         tagBorderColor="#CCC"
                         tagRemoveIconColor="#CCC"
                         tagTextColor="#CCC"
-                        textColor="white"
+                        textColor="#58595B"
                         uniqueKey="id"
                       />,
                       "style": Object {
@@ -3855,7 +3965,7 @@ ShallowWrapper {
                         "onSelectedItemsChange": [Function],
                         "searchInputPlaceholderText": "",
                         "searchInputStyle": Object {
-                          "color": "white",
+                          "color": "#58595B",
                         },
                         "selectText": "Legal Code...",
                         "selectedItemFontFamily": "",
@@ -3870,7 +3980,7 @@ ShallowWrapper {
                         "tagBorderColor": "#CCC",
                         "tagRemoveIconColor": "#CCC",
                         "tagTextColor": "#CCC",
-                        "textColor": "white",
+                        "textColor": "#58595B",
                         "uniqueKey": "id",
                       },
                       "ref": null,
@@ -3933,7 +4043,7 @@ ShallowWrapper {
                         searchInputPlaceholderText=""
                         searchInputStyle={
                           Object {
-                            "color": "white",
+                            "color": "#58595B",
                           }
                         }
                         selectText="Law Enforcement Mechanism..."
@@ -3951,7 +4061,7 @@ ShallowWrapper {
                         tagBorderColor="#CCC"
                         tagRemoveIconColor="#CCC"
                         tagTextColor="#CCC"
-                        textColor="white"
+                        textColor="#58595B"
                         uniqueKey="id"
                       />
                     </View>,
@@ -4005,7 +4115,7 @@ ShallowWrapper {
                         searchInputPlaceholderText=""
                         searchInputStyle={
                           Object {
-                            "color": "white",
+                            "color": "#58595B",
                           }
                         }
                         selectText="Law Enforcement Mechanism..."
@@ -4023,7 +4133,7 @@ ShallowWrapper {
                         tagBorderColor="#CCC"
                         tagRemoveIconColor="#CCC"
                         tagTextColor="#CCC"
-                        textColor="white"
+                        textColor="#58595B"
                         uniqueKey="id"
                       />,
                       "style": Object {
@@ -4072,7 +4182,7 @@ ShallowWrapper {
                         "onSelectedItemsChange": [Function],
                         "searchInputPlaceholderText": "",
                         "searchInputStyle": Object {
-                          "color": "white",
+                          "color": "#58595B",
                         },
                         "selectText": "Law Enforcement Mechanism...",
                         "selectedItemFontFamily": "",
@@ -4087,7 +4197,7 @@ ShallowWrapper {
                         "tagBorderColor": "#CCC",
                         "tagRemoveIconColor": "#CCC",
                         "tagTextColor": "#CCC",
-                        "textColor": "white",
+                        "textColor": "#58595B",
                         "uniqueKey": "id",
                       },
                       "ref": null,
@@ -4154,7 +4264,7 @@ ShallowWrapper {
                         searchInputPlaceholderText=""
                         searchInputStyle={
                           Object {
-                            "color": "white",
+                            "color": "#58595B",
                           }
                         }
                         selectText="Type of Government..."
@@ -4172,7 +4282,7 @@ ShallowWrapper {
                         tagBorderColor="#CCC"
                         tagRemoveIconColor="#CCC"
                         tagTextColor="#CCC"
-                        textColor="white"
+                        textColor="#58595B"
                         uniqueKey="id"
                       />
                     </View>,
@@ -4230,7 +4340,7 @@ ShallowWrapper {
                         searchInputPlaceholderText=""
                         searchInputStyle={
                           Object {
-                            "color": "white",
+                            "color": "#58595B",
                           }
                         }
                         selectText="Type of Government..."
@@ -4248,7 +4358,7 @@ ShallowWrapper {
                         tagBorderColor="#CCC"
                         tagRemoveIconColor="#CCC"
                         tagTextColor="#CCC"
-                        textColor="white"
+                        textColor="#58595B"
                         uniqueKey="id"
                       />,
                       "style": Object {
@@ -4301,7 +4411,7 @@ ShallowWrapper {
                         "onSelectedItemsChange": [Function],
                         "searchInputPlaceholderText": "",
                         "searchInputStyle": Object {
-                          "color": "white",
+                          "color": "#58595B",
                         },
                         "selectText": "Type of Government...",
                         "selectedItemFontFamily": "",
@@ -4316,7 +4426,7 @@ ShallowWrapper {
                         "tagBorderColor": "#CCC",
                         "tagRemoveIconColor": "#CCC",
                         "tagTextColor": "#CCC",
-                        "textColor": "white",
+                        "textColor": "#58595B",
                         "uniqueKey": "id",
                       },
                       "ref": null,
@@ -4379,7 +4489,7 @@ ShallowWrapper {
                         searchInputPlaceholderText=""
                         searchInputStyle={
                           Object {
-                            "color": "white",
+                            "color": "#58595B",
                           }
                         }
                         selectText="Services Offered..."
@@ -4393,7 +4503,7 @@ ShallowWrapper {
                         tagBorderColor="#CCC"
                         tagRemoveIconColor="#CCC"
                         tagTextColor="#CCC"
-                        textColor="white"
+                        textColor="#58595B"
                         uniqueKey="id"
                       />
                       <View />
@@ -4449,7 +4559,7 @@ ShallowWrapper {
                           searchInputPlaceholderText=""
                           searchInputStyle={
                             Object {
-                              "color": "white",
+                              "color": "#58595B",
                             }
                           }
                           selectText="Services Offered..."
@@ -4463,7 +4573,7 @@ ShallowWrapper {
                           tagBorderColor="#CCC"
                           tagRemoveIconColor="#CCC"
                           tagTextColor="#CCC"
-                          textColor="white"
+                          textColor="#58595B"
                           uniqueKey="id"
                         />,
                         <View />,
@@ -4515,7 +4625,7 @@ ShallowWrapper {
                           "onSelectedItemsChange": [Function],
                           "searchInputPlaceholderText": "",
                           "searchInputStyle": Object {
-                            "color": "white",
+                            "color": "#58595B",
                           },
                           "selectText": "Services Offered...",
                           "selectedItemFontFamily": "",
@@ -4528,7 +4638,7 @@ ShallowWrapper {
                           "tagBorderColor": "#CCC",
                           "tagRemoveIconColor": "#CCC",
                           "tagTextColor": "#CCC",
-                          "textColor": "white",
+                          "textColor": "#58595B",
                           "uniqueKey": "id",
                         },
                         "ref": [Function],
@@ -4559,6 +4669,8 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "class",
               "props": Object {
+                "body": undefined,
+                "buttonTitle": "Button",
                 "children": Array [
                   <View
                     style={
@@ -4577,6 +4689,8 @@ ShallowWrapper {
                       }
                     >
                       <SwitchLabeled
+                        align="left"
+                        disabled={false}
                         label="Seeking diplomatic recognition as a sovereign entity."
                         onValueChange={[Function]}
                         value={false}
@@ -4600,6 +4714,8 @@ ShallowWrapper {
                       }
                     >
                       <SwitchLabeled
+                        align="left"
+                        disabled={false}
                         label="Non-citizens may use governance services."
                         onValueChange={[Function]}
                         value={false}
@@ -4623,6 +4739,8 @@ ShallowWrapper {
                       }
                     >
                       <SwitchLabeled
+                        align="left"
+                        disabled={false}
                         label="For-profit nation."
                         onValueChange={[Function]}
                         value={false}
@@ -4630,7 +4748,11 @@ ShallowWrapper {
                     </View>
                   </View>,
                 ],
+                "childrenContainerStyle": Object {},
                 "icon": " ",
+                "onButtonClick": null,
+                "renderAdditionalInfo": null,
+                "renderBottom": null,
                 "style": Object {
                   "backgroundColor": "transparent",
                   "borderRadius": 8,
@@ -4647,7 +4769,7 @@ ShallowWrapper {
                 },
                 "title": "Options",
                 "titleStyle": Object {
-                  "color": "white",
+                  "color": "#58595B",
                   "fontFamily": "Roboto",
                   "fontSize": 22,
                   "fontWeight": "bold",
@@ -4672,6 +4794,8 @@ ShallowWrapper {
                       }
                     >
                       <SwitchLabeled
+                        align="left"
+                        disabled={false}
                         label="Seeking diplomatic recognition as a sovereign entity."
                         onValueChange={[Function]}
                         value={false}
@@ -4689,6 +4813,8 @@ ShallowWrapper {
                     "nodeType": "class",
                     "props": Object {
                       "children": <SwitchLabeled
+                        align="left"
+                        disabled={false}
                         label="Seeking diplomatic recognition as a sovereign entity."
                         onValueChange={[Function]}
                         value={false}
@@ -4704,6 +4830,8 @@ ShallowWrapper {
                       "key": undefined,
                       "nodeType": "function",
                       "props": Object {
+                        "align": "left",
+                        "disabled": false,
                         "label": "Seeking diplomatic recognition as a sovereign entity.",
                         "onValueChange": [Function],
                         "value": false,
@@ -4730,6 +4858,8 @@ ShallowWrapper {
                       }
                     >
                       <SwitchLabeled
+                        align="left"
+                        disabled={false}
                         label="Non-citizens may use governance services."
                         onValueChange={[Function]}
                         value={false}
@@ -4747,6 +4877,8 @@ ShallowWrapper {
                     "nodeType": "class",
                     "props": Object {
                       "children": <SwitchLabeled
+                        align="left"
+                        disabled={false}
                         label="Non-citizens may use governance services."
                         onValueChange={[Function]}
                         value={false}
@@ -4762,6 +4894,8 @@ ShallowWrapper {
                       "key": undefined,
                       "nodeType": "function",
                       "props": Object {
+                        "align": "left",
+                        "disabled": false,
                         "label": "Non-citizens may use governance services.",
                         "onValueChange": [Function],
                         "value": false,
@@ -4788,6 +4922,8 @@ ShallowWrapper {
                       }
                     >
                       <SwitchLabeled
+                        align="left"
+                        disabled={false}
                         label="For-profit nation."
                         onValueChange={[Function]}
                         value={false}
@@ -4805,6 +4941,8 @@ ShallowWrapper {
                     "nodeType": "class",
                     "props": Object {
                       "children": <SwitchLabeled
+                        align="left"
+                        disabled={false}
                         label="For-profit nation."
                         onValueChange={[Function]}
                         value={false}
@@ -4820,6 +4958,8 @@ ShallowWrapper {
                       "key": undefined,
                       "nodeType": "function",
                       "props": Object {
+                        "align": "left",
+                        "disabled": false,
                         "label": "For-profit nation.",
                         "onValueChange": [Function],
                         "value": false,
@@ -4873,7 +5013,7 @@ ShallowWrapper {
           ],
           "style": Object {
             "alignItems": "stretch",
-            "backgroundColor": "#3e9eff",
+            "backgroundColor": "#58595B",
             "flexDirection": "row",
             "height": 55,
             "justifyContent": "space-around",
@@ -4953,11 +5093,7 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <BackgroundImage
-            source={
-              Object {
-                "testUri": "../../../src/assets/images/background.jpg",
-              }
-            }
+            source={1}
             style={undefined}
           />,
           <FakeNavigationBar
@@ -5015,7 +5151,7 @@ ShallowWrapper {
                     ellipsizeMode="tail"
                     style={
                       Object {
-                        "color": "#FFFFFF",
+                        "color": "#929497",
                         "fontFamily": "Roboto",
                         "fontSize": 17,
                         "fontWeight": "normal",
@@ -5024,11 +5160,18 @@ ShallowWrapper {
                       }
                     }
                   >
-                    Reclaim your sovereignty by creating your own decentralized borderless voluntary nation(DBVN).
+                    Reclaim your sovereignty by creating your own decentralized borderless voluntary nation (DBVN).
                   </Text>
                 </View>
               </View>
               <PanelView
+                body={undefined}
+                buttonTitle="Button"
+                childrenContainerStyle={Object {}}
+                icon={undefined}
+                onButtonClick={null}
+                renderAdditionalInfo={null}
+                renderBottom={null}
                 style={
                   Object {
                     "backgroundColor": "transparent",
@@ -5045,9 +5188,10 @@ ShallowWrapper {
                     "paddingTop": 4,
                   }
                 }
+                title={undefined}
                 titleStyle={
                   Object {
-                    "color": "white",
+                    "color": "#58595B",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -5086,23 +5230,23 @@ ShallowWrapper {
                         keyboardType="default"
                         onChangeText={[Function]}
                         placeholder="Nation name"
-                        placeholderTextColor="rgba(255,255,255,0.4)"
+                        placeholderTextColor="#929497"
                         style={
                           Object {
                             "borderBottomWidth": 1,
                             "borderColor": "rgba(192,192,192,0.4)",
-                            "color": "#FFFFFF",
+                            "color": "#929497",
                             "flex": 1,
                             "fontFamily": "Roboto",
                             "fontSize": 16,
                             "fontWeight": "normal",
                             "letterSpacing": 0,
                             "lineHeight": 22,
-                            "marginBottom": 4,
+                            "marginBottom": 14,
                             "marginLeft": 0,
                             "marginRight": 0,
                             "marginTop": 4,
-                            "paddingBottom": 6,
+                            "paddingBottom": 12,
                             "paddingLeft": 4,
                             "paddingTop": 6,
                           }
@@ -5125,23 +5269,23 @@ ShallowWrapper {
                         numberOfLines={4}
                         onChangeText={[Function]}
                         placeholder="Short description"
-                        placeholderTextColor="rgba(255,255,255,0.4)"
+                        placeholderTextColor="#929497"
                         style={
                           Object {
                             "borderBottomWidth": 1,
                             "borderColor": "rgba(192,192,192,0.4)",
-                            "color": "#FFFFFF",
+                            "color": "#929497",
                             "flex": 1,
                             "fontFamily": "Roboto",
                             "fontSize": 16,
                             "fontWeight": "normal",
                             "letterSpacing": 0,
                             "lineHeight": 22,
-                            "marginBottom": 4,
+                            "marginBottom": 14,
                             "marginLeft": 0,
                             "marginRight": 0,
                             "marginTop": 4,
-                            "paddingBottom": 6,
+                            "paddingBottom": 12,
                             "paddingLeft": 4,
                             "paddingTop": 6,
                           }
@@ -5153,7 +5297,13 @@ ShallowWrapper {
                 </View>
               </PanelView>
               <PanelView
+                body={undefined}
+                buttonTitle="Button"
+                childrenContainerStyle={Object {}}
                 icon=" "
+                onButtonClick={null}
+                renderAdditionalInfo={null}
+                renderBottom={null}
                 style={
                   Object {
                     "backgroundColor": "transparent",
@@ -5173,7 +5323,7 @@ ShallowWrapper {
                 title="Location"
                 titleStyle={
                   Object {
-                    "color": "white",
+                    "color": "#58595B",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -5226,7 +5376,7 @@ ShallowWrapper {
                       searchInputPlaceholderText=""
                       searchInputStyle={
                         Object {
-                          "color": "white",
+                          "color": "#58595B",
                         }
                       }
                       selectText="Nation location type..."
@@ -5240,7 +5390,7 @@ ShallowWrapper {
                       tagBorderColor="#CCC"
                       tagRemoveIconColor="#CCC"
                       tagTextColor="#CCC"
-                      textColor="white"
+                      textColor="#58595B"
                       uniqueKey="id"
                     />
                   </View>
@@ -5264,7 +5414,13 @@ ShallowWrapper {
                 </Text>
               </PanelView>
               <PanelView
+                body={undefined}
+                buttonTitle="Button"
+                childrenContainerStyle={Object {}}
                 icon=" "
+                onButtonClick={null}
+                renderAdditionalInfo={null}
+                renderBottom={null}
                 style={
                   Object {
                     "backgroundColor": "transparent",
@@ -5284,7 +5440,7 @@ ShallowWrapper {
                 title="Governmental Structure"
                 titleStyle={
                   Object {
-                    "color": "white",
+                    "color": "#58595B",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -5357,7 +5513,7 @@ ShallowWrapper {
                       searchInputPlaceholderText=""
                       searchInputStyle={
                         Object {
-                          "color": "white",
+                          "color": "#58595B",
                         }
                       }
                       selectText="Legal Code..."
@@ -5375,7 +5531,7 @@ ShallowWrapper {
                       tagBorderColor="#CCC"
                       tagRemoveIconColor="#CCC"
                       tagTextColor="#CCC"
-                      textColor="white"
+                      textColor="#58595B"
                       uniqueKey="id"
                     />
                   </View>
@@ -5435,7 +5591,7 @@ ShallowWrapper {
                       searchInputPlaceholderText=""
                       searchInputStyle={
                         Object {
-                          "color": "white",
+                          "color": "#58595B",
                         }
                       }
                       selectText="Law Enforcement Mechanism..."
@@ -5453,7 +5609,7 @@ ShallowWrapper {
                       tagBorderColor="#CCC"
                       tagRemoveIconColor="#CCC"
                       tagTextColor="#CCC"
-                      textColor="white"
+                      textColor="#58595B"
                       uniqueKey="id"
                     />
                   </View>
@@ -5517,7 +5673,7 @@ ShallowWrapper {
                       searchInputPlaceholderText=""
                       searchInputStyle={
                         Object {
-                          "color": "white",
+                          "color": "#58595B",
                         }
                       }
                       selectText="Type of Government..."
@@ -5535,7 +5691,7 @@ ShallowWrapper {
                       tagBorderColor="#CCC"
                       tagRemoveIconColor="#CCC"
                       tagTextColor="#CCC"
-                      textColor="white"
+                      textColor="#58595B"
                       uniqueKey="id"
                     />
                   </View>
@@ -5595,7 +5751,7 @@ ShallowWrapper {
                       searchInputPlaceholderText=""
                       searchInputStyle={
                         Object {
-                          "color": "white",
+                          "color": "#58595B",
                         }
                       }
                       selectText="Services Offered..."
@@ -5609,7 +5765,7 @@ ShallowWrapper {
                       tagBorderColor="#CCC"
                       tagRemoveIconColor="#CCC"
                       tagTextColor="#CCC"
-                      textColor="white"
+                      textColor="#58595B"
                       uniqueKey="id"
                     />
                     <View />
@@ -5617,7 +5773,13 @@ ShallowWrapper {
                 </View>
               </PanelView>
               <PanelView
+                body={undefined}
+                buttonTitle="Button"
+                childrenContainerStyle={Object {}}
                 icon=" "
+                onButtonClick={null}
+                renderAdditionalInfo={null}
+                renderBottom={null}
                 style={
                   Object {
                     "backgroundColor": "transparent",
@@ -5637,7 +5799,7 @@ ShallowWrapper {
                 title="Options"
                 titleStyle={
                   Object {
-                    "color": "white",
+                    "color": "#58595B",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -5664,6 +5826,8 @@ ShallowWrapper {
                     }
                   >
                     <SwitchLabeled
+                      align="left"
+                      disabled={false}
                       label="Seeking diplomatic recognition as a sovereign entity."
                       onValueChange={[Function]}
                       value={false}
@@ -5687,6 +5851,8 @@ ShallowWrapper {
                     }
                   >
                     <SwitchLabeled
+                      align="left"
+                      disabled={false}
                       label="Non-citizens may use governance services."
                       onValueChange={[Function]}
                       value={false}
@@ -5710,6 +5876,8 @@ ShallowWrapper {
                     }
                   >
                     <SwitchLabeled
+                      align="left"
+                      disabled={false}
                       label="For-profit nation."
                       onValueChange={[Function]}
                       value={false}
@@ -5723,7 +5891,7 @@ ShallowWrapper {
             style={
               Object {
                 "alignItems": "stretch",
-                "backgroundColor": "#3e9eff",
+                "backgroundColor": "#58595B",
                 "flexDirection": "row",
                 "height": 55,
                 "justifyContent": "space-around",
@@ -5772,9 +5940,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
-            "source": Object {
-              "testUri": "../../../src/assets/images/background.jpg",
-            },
+            "source": 1,
             "style": undefined,
           },
           "ref": null,
@@ -5837,7 +6003,7 @@ ShallowWrapper {
                     ellipsizeMode="tail"
                     style={
                       Object {
-                        "color": "#FFFFFF",
+                        "color": "#929497",
                         "fontFamily": "Roboto",
                         "fontSize": 17,
                         "fontWeight": "normal",
@@ -5846,11 +6012,18 @@ ShallowWrapper {
                       }
                     }
                   >
-                    Reclaim your sovereignty by creating your own decentralized borderless voluntary nation(DBVN).
+                    Reclaim your sovereignty by creating your own decentralized borderless voluntary nation (DBVN).
                   </Text>
                 </View>
               </View>
               <PanelView
+                body={undefined}
+                buttonTitle="Button"
+                childrenContainerStyle={Object {}}
+                icon={undefined}
+                onButtonClick={null}
+                renderAdditionalInfo={null}
+                renderBottom={null}
                 style={
                   Object {
                     "backgroundColor": "transparent",
@@ -5867,9 +6040,10 @@ ShallowWrapper {
                     "paddingTop": 4,
                   }
                 }
+                title={undefined}
                 titleStyle={
                   Object {
-                    "color": "white",
+                    "color": "#58595B",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -5908,23 +6082,23 @@ ShallowWrapper {
                         keyboardType="default"
                         onChangeText={[Function]}
                         placeholder="Nation name"
-                        placeholderTextColor="rgba(255,255,255,0.4)"
+                        placeholderTextColor="#929497"
                         style={
                           Object {
                             "borderBottomWidth": 1,
                             "borderColor": "rgba(192,192,192,0.4)",
-                            "color": "#FFFFFF",
+                            "color": "#929497",
                             "flex": 1,
                             "fontFamily": "Roboto",
                             "fontSize": 16,
                             "fontWeight": "normal",
                             "letterSpacing": 0,
                             "lineHeight": 22,
-                            "marginBottom": 4,
+                            "marginBottom": 14,
                             "marginLeft": 0,
                             "marginRight": 0,
                             "marginTop": 4,
-                            "paddingBottom": 6,
+                            "paddingBottom": 12,
                             "paddingLeft": 4,
                             "paddingTop": 6,
                           }
@@ -5947,23 +6121,23 @@ ShallowWrapper {
                         numberOfLines={4}
                         onChangeText={[Function]}
                         placeholder="Short description"
-                        placeholderTextColor="rgba(255,255,255,0.4)"
+                        placeholderTextColor="#929497"
                         style={
                           Object {
                             "borderBottomWidth": 1,
                             "borderColor": "rgba(192,192,192,0.4)",
-                            "color": "#FFFFFF",
+                            "color": "#929497",
                             "flex": 1,
                             "fontFamily": "Roboto",
                             "fontSize": 16,
                             "fontWeight": "normal",
                             "letterSpacing": 0,
                             "lineHeight": 22,
-                            "marginBottom": 4,
+                            "marginBottom": 14,
                             "marginLeft": 0,
                             "marginRight": 0,
                             "marginTop": 4,
-                            "paddingBottom": 6,
+                            "paddingBottom": 12,
                             "paddingLeft": 4,
                             "paddingTop": 6,
                           }
@@ -5975,7 +6149,13 @@ ShallowWrapper {
                 </View>
               </PanelView>
               <PanelView
+                body={undefined}
+                buttonTitle="Button"
+                childrenContainerStyle={Object {}}
                 icon=" "
+                onButtonClick={null}
+                renderAdditionalInfo={null}
+                renderBottom={null}
                 style={
                   Object {
                     "backgroundColor": "transparent",
@@ -5995,7 +6175,7 @@ ShallowWrapper {
                 title="Location"
                 titleStyle={
                   Object {
-                    "color": "white",
+                    "color": "#58595B",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -6048,7 +6228,7 @@ ShallowWrapper {
                       searchInputPlaceholderText=""
                       searchInputStyle={
                         Object {
-                          "color": "white",
+                          "color": "#58595B",
                         }
                       }
                       selectText="Nation location type..."
@@ -6062,7 +6242,7 @@ ShallowWrapper {
                       tagBorderColor="#CCC"
                       tagRemoveIconColor="#CCC"
                       tagTextColor="#CCC"
-                      textColor="white"
+                      textColor="#58595B"
                       uniqueKey="id"
                     />
                   </View>
@@ -6086,7 +6266,13 @@ ShallowWrapper {
                 </Text>
               </PanelView>
               <PanelView
+                body={undefined}
+                buttonTitle="Button"
+                childrenContainerStyle={Object {}}
                 icon=" "
+                onButtonClick={null}
+                renderAdditionalInfo={null}
+                renderBottom={null}
                 style={
                   Object {
                     "backgroundColor": "transparent",
@@ -6106,7 +6292,7 @@ ShallowWrapper {
                 title="Governmental Structure"
                 titleStyle={
                   Object {
-                    "color": "white",
+                    "color": "#58595B",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -6179,7 +6365,7 @@ ShallowWrapper {
                       searchInputPlaceholderText=""
                       searchInputStyle={
                         Object {
-                          "color": "white",
+                          "color": "#58595B",
                         }
                       }
                       selectText="Legal Code..."
@@ -6197,7 +6383,7 @@ ShallowWrapper {
                       tagBorderColor="#CCC"
                       tagRemoveIconColor="#CCC"
                       tagTextColor="#CCC"
-                      textColor="white"
+                      textColor="#58595B"
                       uniqueKey="id"
                     />
                   </View>
@@ -6257,7 +6443,7 @@ ShallowWrapper {
                       searchInputPlaceholderText=""
                       searchInputStyle={
                         Object {
-                          "color": "white",
+                          "color": "#58595B",
                         }
                       }
                       selectText="Law Enforcement Mechanism..."
@@ -6275,7 +6461,7 @@ ShallowWrapper {
                       tagBorderColor="#CCC"
                       tagRemoveIconColor="#CCC"
                       tagTextColor="#CCC"
-                      textColor="white"
+                      textColor="#58595B"
                       uniqueKey="id"
                     />
                   </View>
@@ -6339,7 +6525,7 @@ ShallowWrapper {
                       searchInputPlaceholderText=""
                       searchInputStyle={
                         Object {
-                          "color": "white",
+                          "color": "#58595B",
                         }
                       }
                       selectText="Type of Government..."
@@ -6357,7 +6543,7 @@ ShallowWrapper {
                       tagBorderColor="#CCC"
                       tagRemoveIconColor="#CCC"
                       tagTextColor="#CCC"
-                      textColor="white"
+                      textColor="#58595B"
                       uniqueKey="id"
                     />
                   </View>
@@ -6417,7 +6603,7 @@ ShallowWrapper {
                       searchInputPlaceholderText=""
                       searchInputStyle={
                         Object {
-                          "color": "white",
+                          "color": "#58595B",
                         }
                       }
                       selectText="Services Offered..."
@@ -6431,7 +6617,7 @@ ShallowWrapper {
                       tagBorderColor="#CCC"
                       tagRemoveIconColor="#CCC"
                       tagTextColor="#CCC"
-                      textColor="white"
+                      textColor="#58595B"
                       uniqueKey="id"
                     />
                     <View />
@@ -6439,7 +6625,13 @@ ShallowWrapper {
                 </View>
               </PanelView>
               <PanelView
+                body={undefined}
+                buttonTitle="Button"
+                childrenContainerStyle={Object {}}
                 icon=" "
+                onButtonClick={null}
+                renderAdditionalInfo={null}
+                renderBottom={null}
                 style={
                   Object {
                     "backgroundColor": "transparent",
@@ -6459,7 +6651,7 @@ ShallowWrapper {
                 title="Options"
                 titleStyle={
                   Object {
-                    "color": "white",
+                    "color": "#58595B",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -6486,6 +6678,8 @@ ShallowWrapper {
                     }
                   >
                     <SwitchLabeled
+                      align="left"
+                      disabled={false}
                       label="Seeking diplomatic recognition as a sovereign entity."
                       onValueChange={[Function]}
                       value={false}
@@ -6509,6 +6703,8 @@ ShallowWrapper {
                     }
                   >
                     <SwitchLabeled
+                      align="left"
+                      disabled={false}
                       label="Non-citizens may use governance services."
                       onValueChange={[Function]}
                       value={false}
@@ -6532,6 +6728,8 @@ ShallowWrapper {
                     }
                   >
                     <SwitchLabeled
+                      align="left"
+                      disabled={false}
                       label="For-profit nation."
                       onValueChange={[Function]}
                       value={false}
@@ -6584,7 +6782,7 @@ ShallowWrapper {
                       ellipsizeMode="tail"
                       style={
                         Object {
-                          "color": "#FFFFFF",
+                          "color": "#929497",
                           "fontFamily": "Roboto",
                           "fontSize": 17,
                           "fontWeight": "normal",
@@ -6593,11 +6791,18 @@ ShallowWrapper {
                         }
                       }
                     >
-                      Reclaim your sovereignty by creating your own decentralized borderless voluntary nation(DBVN).
+                      Reclaim your sovereignty by creating your own decentralized borderless voluntary nation (DBVN).
                     </Text>
                   </View>
                 </View>,
                 <PanelView
+                  body={undefined}
+                  buttonTitle="Button"
+                  childrenContainerStyle={Object {}}
+                  icon={undefined}
+                  onButtonClick={null}
+                  renderAdditionalInfo={null}
+                  renderBottom={null}
                   style={
                     Object {
                       "backgroundColor": "transparent",
@@ -6614,9 +6819,10 @@ ShallowWrapper {
                       "paddingTop": 4,
                     }
                   }
+                  title={undefined}
                   titleStyle={
                     Object {
-                      "color": "white",
+                      "color": "#58595B",
                       "fontFamily": "Roboto",
                       "fontSize": 22,
                       "fontWeight": "bold",
@@ -6655,23 +6861,23 @@ ShallowWrapper {
                           keyboardType="default"
                           onChangeText={[Function]}
                           placeholder="Nation name"
-                          placeholderTextColor="rgba(255,255,255,0.4)"
+                          placeholderTextColor="#929497"
                           style={
                             Object {
                               "borderBottomWidth": 1,
                               "borderColor": "rgba(192,192,192,0.4)",
-                              "color": "#FFFFFF",
+                              "color": "#929497",
                               "flex": 1,
                               "fontFamily": "Roboto",
                               "fontSize": 16,
                               "fontWeight": "normal",
                               "letterSpacing": 0,
                               "lineHeight": 22,
-                              "marginBottom": 4,
+                              "marginBottom": 14,
                               "marginLeft": 0,
                               "marginRight": 0,
                               "marginTop": 4,
-                              "paddingBottom": 6,
+                              "paddingBottom": 12,
                               "paddingLeft": 4,
                               "paddingTop": 6,
                             }
@@ -6694,23 +6900,23 @@ ShallowWrapper {
                           numberOfLines={4}
                           onChangeText={[Function]}
                           placeholder="Short description"
-                          placeholderTextColor="rgba(255,255,255,0.4)"
+                          placeholderTextColor="#929497"
                           style={
                             Object {
                               "borderBottomWidth": 1,
                               "borderColor": "rgba(192,192,192,0.4)",
-                              "color": "#FFFFFF",
+                              "color": "#929497",
                               "flex": 1,
                               "fontFamily": "Roboto",
                               "fontSize": 16,
                               "fontWeight": "normal",
                               "letterSpacing": 0,
                               "lineHeight": 22,
-                              "marginBottom": 4,
+                              "marginBottom": 14,
                               "marginLeft": 0,
                               "marginRight": 0,
                               "marginTop": 4,
-                              "paddingBottom": 6,
+                              "paddingBottom": 12,
                               "paddingLeft": 4,
                               "paddingTop": 6,
                             }
@@ -6722,7 +6928,13 @@ ShallowWrapper {
                   </View>
                 </PanelView>,
                 <PanelView
+                  body={undefined}
+                  buttonTitle="Button"
+                  childrenContainerStyle={Object {}}
                   icon=" "
+                  onButtonClick={null}
+                  renderAdditionalInfo={null}
+                  renderBottom={null}
                   style={
                     Object {
                       "backgroundColor": "transparent",
@@ -6742,7 +6954,7 @@ ShallowWrapper {
                   title="Location"
                   titleStyle={
                     Object {
-                      "color": "white",
+                      "color": "#58595B",
                       "fontFamily": "Roboto",
                       "fontSize": 22,
                       "fontWeight": "bold",
@@ -6795,7 +7007,7 @@ ShallowWrapper {
                         searchInputPlaceholderText=""
                         searchInputStyle={
                           Object {
-                            "color": "white",
+                            "color": "#58595B",
                           }
                         }
                         selectText="Nation location type..."
@@ -6809,7 +7021,7 @@ ShallowWrapper {
                         tagBorderColor="#CCC"
                         tagRemoveIconColor="#CCC"
                         tagTextColor="#CCC"
-                        textColor="white"
+                        textColor="#58595B"
                         uniqueKey="id"
                       />
                     </View>
@@ -6833,7 +7045,13 @@ ShallowWrapper {
                   </Text>
                 </PanelView>,
                 <PanelView
+                  body={undefined}
+                  buttonTitle="Button"
+                  childrenContainerStyle={Object {}}
                   icon=" "
+                  onButtonClick={null}
+                  renderAdditionalInfo={null}
+                  renderBottom={null}
                   style={
                     Object {
                       "backgroundColor": "transparent",
@@ -6853,7 +7071,7 @@ ShallowWrapper {
                   title="Governmental Structure"
                   titleStyle={
                     Object {
-                      "color": "white",
+                      "color": "#58595B",
                       "fontFamily": "Roboto",
                       "fontSize": 22,
                       "fontWeight": "bold",
@@ -6926,7 +7144,7 @@ ShallowWrapper {
                         searchInputPlaceholderText=""
                         searchInputStyle={
                           Object {
-                            "color": "white",
+                            "color": "#58595B",
                           }
                         }
                         selectText="Legal Code..."
@@ -6944,7 +7162,7 @@ ShallowWrapper {
                         tagBorderColor="#CCC"
                         tagRemoveIconColor="#CCC"
                         tagTextColor="#CCC"
-                        textColor="white"
+                        textColor="#58595B"
                         uniqueKey="id"
                       />
                     </View>
@@ -7004,7 +7222,7 @@ ShallowWrapper {
                         searchInputPlaceholderText=""
                         searchInputStyle={
                           Object {
-                            "color": "white",
+                            "color": "#58595B",
                           }
                         }
                         selectText="Law Enforcement Mechanism..."
@@ -7022,7 +7240,7 @@ ShallowWrapper {
                         tagBorderColor="#CCC"
                         tagRemoveIconColor="#CCC"
                         tagTextColor="#CCC"
-                        textColor="white"
+                        textColor="#58595B"
                         uniqueKey="id"
                       />
                     </View>
@@ -7086,7 +7304,7 @@ ShallowWrapper {
                         searchInputPlaceholderText=""
                         searchInputStyle={
                           Object {
-                            "color": "white",
+                            "color": "#58595B",
                           }
                         }
                         selectText="Type of Government..."
@@ -7104,7 +7322,7 @@ ShallowWrapper {
                         tagBorderColor="#CCC"
                         tagRemoveIconColor="#CCC"
                         tagTextColor="#CCC"
-                        textColor="white"
+                        textColor="#58595B"
                         uniqueKey="id"
                       />
                     </View>
@@ -7164,7 +7382,7 @@ ShallowWrapper {
                         searchInputPlaceholderText=""
                         searchInputStyle={
                           Object {
-                            "color": "white",
+                            "color": "#58595B",
                           }
                         }
                         selectText="Services Offered..."
@@ -7178,7 +7396,7 @@ ShallowWrapper {
                         tagBorderColor="#CCC"
                         tagRemoveIconColor="#CCC"
                         tagTextColor="#CCC"
-                        textColor="white"
+                        textColor="#58595B"
                         uniqueKey="id"
                       />
                       <View />
@@ -7186,7 +7404,13 @@ ShallowWrapper {
                   </View>
                 </PanelView>,
                 <PanelView
+                  body={undefined}
+                  buttonTitle="Button"
+                  childrenContainerStyle={Object {}}
                   icon=" "
+                  onButtonClick={null}
+                  renderAdditionalInfo={null}
+                  renderBottom={null}
                   style={
                     Object {
                       "backgroundColor": "transparent",
@@ -7206,7 +7430,7 @@ ShallowWrapper {
                   title="Options"
                   titleStyle={
                     Object {
-                      "color": "white",
+                      "color": "#58595B",
                       "fontFamily": "Roboto",
                       "fontSize": 22,
                       "fontWeight": "bold",
@@ -7233,6 +7457,8 @@ ShallowWrapper {
                       }
                     >
                       <SwitchLabeled
+                        align="left"
+                        disabled={false}
                         label="Seeking diplomatic recognition as a sovereign entity."
                         onValueChange={[Function]}
                         value={false}
@@ -7256,6 +7482,8 @@ ShallowWrapper {
                       }
                     >
                       <SwitchLabeled
+                        align="left"
+                        disabled={false}
                         label="Non-citizens may use governance services."
                         onValueChange={[Function]}
                         value={false}
@@ -7279,6 +7507,8 @@ ShallowWrapper {
                       }
                     >
                       <SwitchLabeled
+                        align="left"
+                        disabled={false}
                         label="For-profit nation."
                         onValueChange={[Function]}
                         value={false}
@@ -7325,7 +7555,7 @@ ShallowWrapper {
                       ellipsizeMode="tail"
                       style={
                         Object {
-                          "color": "#FFFFFF",
+                          "color": "#929497",
                           "fontFamily": "Roboto",
                           "fontSize": 17,
                           "fontWeight": "normal",
@@ -7334,7 +7564,7 @@ ShallowWrapper {
                         }
                       }
                     >
-                      Reclaim your sovereignty by creating your own decentralized borderless voluntary nation(DBVN).
+                      Reclaim your sovereignty by creating your own decentralized borderless voluntary nation (DBVN).
                     </Text>
                   </View>,
                   "style": Object {
@@ -7358,7 +7588,7 @@ ShallowWrapper {
                       ellipsizeMode="tail"
                       style={
                         Object {
-                          "color": "#FFFFFF",
+                          "color": "#929497",
                           "fontFamily": "Roboto",
                           "fontSize": 17,
                           "fontWeight": "normal",
@@ -7367,7 +7597,7 @@ ShallowWrapper {
                         }
                       }
                     >
-                      Reclaim your sovereignty by creating your own decentralized borderless voluntary nation(DBVN).
+                      Reclaim your sovereignty by creating your own decentralized borderless voluntary nation (DBVN).
                     </Text>,
                     "style": Object {
                       "paddingBottom": 16,
@@ -7381,10 +7611,10 @@ ShallowWrapper {
                     "props": Object {
                       "accessible": true,
                       "allowFontScaling": true,
-                      "children": "Reclaim your sovereignty by creating your own decentralized borderless voluntary nation(DBVN).",
+                      "children": "Reclaim your sovereignty by creating your own decentralized borderless voluntary nation (DBVN).",
                       "ellipsizeMode": "tail",
                       "style": Object {
-                        "color": "#FFFFFF",
+                        "color": "#929497",
                         "fontFamily": "Roboto",
                         "fontSize": 17,
                         "fontWeight": "normal",
@@ -7393,7 +7623,7 @@ ShallowWrapper {
                       },
                     },
                     "ref": null,
-                    "rendered": "Reclaim your sovereignty by creating your own decentralized borderless voluntary nation(DBVN).",
+                    "rendered": "Reclaim your sovereignty by creating your own decentralized borderless voluntary nation (DBVN).",
                     "type": [Function],
                   },
                   "type": [Function],
@@ -7405,6 +7635,8 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "class",
                 "props": Object {
+                  "body": undefined,
+                  "buttonTitle": "Button",
                   "children": <View
                     style={
                       Object {
@@ -7434,23 +7666,23 @@ ShallowWrapper {
                           keyboardType="default"
                           onChangeText={[Function]}
                           placeholder="Nation name"
-                          placeholderTextColor="rgba(255,255,255,0.4)"
+                          placeholderTextColor="#929497"
                           style={
                             Object {
                               "borderBottomWidth": 1,
                               "borderColor": "rgba(192,192,192,0.4)",
-                              "color": "#FFFFFF",
+                              "color": "#929497",
                               "flex": 1,
                               "fontFamily": "Roboto",
                               "fontSize": 16,
                               "fontWeight": "normal",
                               "letterSpacing": 0,
                               "lineHeight": 22,
-                              "marginBottom": 4,
+                              "marginBottom": 14,
                               "marginLeft": 0,
                               "marginRight": 0,
                               "marginTop": 4,
-                              "paddingBottom": 6,
+                              "paddingBottom": 12,
                               "paddingLeft": 4,
                               "paddingTop": 6,
                             }
@@ -7473,23 +7705,23 @@ ShallowWrapper {
                           numberOfLines={4}
                           onChangeText={[Function]}
                           placeholder="Short description"
-                          placeholderTextColor="rgba(255,255,255,0.4)"
+                          placeholderTextColor="#929497"
                           style={
                             Object {
                               "borderBottomWidth": 1,
                               "borderColor": "rgba(192,192,192,0.4)",
-                              "color": "#FFFFFF",
+                              "color": "#929497",
                               "flex": 1,
                               "fontFamily": "Roboto",
                               "fontSize": 16,
                               "fontWeight": "normal",
                               "letterSpacing": 0,
                               "lineHeight": 22,
-                              "marginBottom": 4,
+                              "marginBottom": 14,
                               "marginLeft": 0,
                               "marginRight": 0,
                               "marginTop": 4,
-                              "paddingBottom": 6,
+                              "paddingBottom": 12,
                               "paddingLeft": 4,
                               "paddingTop": 6,
                             }
@@ -7499,6 +7731,11 @@ ShallowWrapper {
                       </View>
                     </View>
                   </View>,
+                  "childrenContainerStyle": Object {},
+                  "icon": undefined,
+                  "onButtonClick": null,
+                  "renderAdditionalInfo": null,
+                  "renderBottom": null,
                   "style": Object {
                     "backgroundColor": "transparent",
                     "borderRadius": 8,
@@ -7513,8 +7750,9 @@ ShallowWrapper {
                     "paddingRight": 8,
                     "paddingTop": 4,
                   },
+                  "title": undefined,
                   "titleStyle": Object {
-                    "color": "white",
+                    "color": "#58595B",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -7550,23 +7788,23 @@ ShallowWrapper {
                           keyboardType="default"
                           onChangeText={[Function]}
                           placeholder="Nation name"
-                          placeholderTextColor="rgba(255,255,255,0.4)"
+                          placeholderTextColor="#929497"
                           style={
                             Object {
                               "borderBottomWidth": 1,
                               "borderColor": "rgba(192,192,192,0.4)",
-                              "color": "#FFFFFF",
+                              "color": "#929497",
                               "flex": 1,
                               "fontFamily": "Roboto",
                               "fontSize": 16,
                               "fontWeight": "normal",
                               "letterSpacing": 0,
                               "lineHeight": 22,
-                              "marginBottom": 4,
+                              "marginBottom": 14,
                               "marginLeft": 0,
                               "marginRight": 0,
                               "marginTop": 4,
-                              "paddingBottom": 6,
+                              "paddingBottom": 12,
                               "paddingLeft": 4,
                               "paddingTop": 6,
                             }
@@ -7589,23 +7827,23 @@ ShallowWrapper {
                           numberOfLines={4}
                           onChangeText={[Function]}
                           placeholder="Short description"
-                          placeholderTextColor="rgba(255,255,255,0.4)"
+                          placeholderTextColor="#929497"
                           style={
                             Object {
                               "borderBottomWidth": 1,
                               "borderColor": "rgba(192,192,192,0.4)",
-                              "color": "#FFFFFF",
+                              "color": "#929497",
                               "flex": 1,
                               "fontFamily": "Roboto",
                               "fontSize": 16,
                               "fontWeight": "normal",
                               "letterSpacing": 0,
                               "lineHeight": 22,
-                              "marginBottom": 4,
+                              "marginBottom": 14,
                               "marginLeft": 0,
                               "marginRight": 0,
                               "marginTop": 4,
-                              "paddingBottom": 6,
+                              "paddingBottom": 12,
                               "paddingLeft": 4,
                               "paddingTop": 6,
                             }
@@ -7639,23 +7877,23 @@ ShallowWrapper {
                             keyboardType="default"
                             onChangeText={[Function]}
                             placeholder="Nation name"
-                            placeholderTextColor="rgba(255,255,255,0.4)"
+                            placeholderTextColor="#929497"
                             style={
                               Object {
                                 "borderBottomWidth": 1,
                                 "borderColor": "rgba(192,192,192,0.4)",
-                                "color": "#FFFFFF",
+                                "color": "#929497",
                                 "flex": 1,
                                 "fontFamily": "Roboto",
                                 "fontSize": 16,
                                 "fontWeight": "normal",
                                 "letterSpacing": 0,
                                 "lineHeight": 22,
-                                "marginBottom": 4,
+                                "marginBottom": 14,
                                 "marginLeft": 0,
                                 "marginRight": 0,
                                 "marginTop": 4,
-                                "paddingBottom": 6,
+                                "paddingBottom": 12,
                                 "paddingLeft": 4,
                                 "paddingTop": 6,
                               }
@@ -7678,23 +7916,23 @@ ShallowWrapper {
                             numberOfLines={4}
                             onChangeText={[Function]}
                             placeholder="Short description"
-                            placeholderTextColor="rgba(255,255,255,0.4)"
+                            placeholderTextColor="#929497"
                             style={
                               Object {
                                 "borderBottomWidth": 1,
                                 "borderColor": "rgba(192,192,192,0.4)",
-                                "color": "#FFFFFF",
+                                "color": "#929497",
                                 "flex": 1,
                                 "fontFamily": "Roboto",
                                 "fontSize": 16,
                                 "fontWeight": "normal",
                                 "letterSpacing": 0,
                                 "lineHeight": 22,
-                                "marginBottom": 4,
+                                "marginBottom": 14,
                                 "marginLeft": 0,
                                 "marginRight": 0,
                                 "marginTop": 4,
-                                "paddingBottom": 6,
+                                "paddingBottom": 12,
                                 "paddingLeft": 4,
                                 "paddingTop": 6,
                               }
@@ -7720,23 +7958,23 @@ ShallowWrapper {
                             keyboardType="default"
                             onChangeText={[Function]}
                             placeholder="Nation name"
-                            placeholderTextColor="rgba(255,255,255,0.4)"
+                            placeholderTextColor="#929497"
                             style={
                               Object {
                                 "borderBottomWidth": 1,
                                 "borderColor": "rgba(192,192,192,0.4)",
-                                "color": "#FFFFFF",
+                                "color": "#929497",
                                 "flex": 1,
                                 "fontFamily": "Roboto",
                                 "fontSize": 16,
                                 "fontWeight": "normal",
                                 "letterSpacing": 0,
                                 "lineHeight": 22,
-                                "marginBottom": 4,
+                                "marginBottom": 14,
                                 "marginLeft": 0,
                                 "marginRight": 0,
                                 "marginTop": 4,
-                                "paddingBottom": 6,
+                                "paddingBottom": 12,
                                 "paddingLeft": 4,
                                 "paddingTop": 6,
                               }
@@ -7758,22 +7996,22 @@ ShallowWrapper {
                             "keyboardType": "default",
                             "onChangeText": [Function],
                             "placeholder": "Nation name",
-                            "placeholderTextColor": "rgba(255,255,255,0.4)",
+                            "placeholderTextColor": "#929497",
                             "style": Object {
                               "borderBottomWidth": 1,
                               "borderColor": "rgba(192,192,192,0.4)",
-                              "color": "#FFFFFF",
+                              "color": "#929497",
                               "flex": 1,
                               "fontFamily": "Roboto",
                               "fontSize": 16,
                               "fontWeight": "normal",
                               "letterSpacing": 0,
                               "lineHeight": 22,
-                              "marginBottom": 4,
+                              "marginBottom": 14,
                               "marginLeft": 0,
                               "marginRight": 0,
                               "marginTop": 4,
-                              "paddingBottom": 6,
+                              "paddingBottom": 12,
                               "paddingLeft": 4,
                               "paddingTop": 6,
                             },
@@ -7797,23 +8035,23 @@ ShallowWrapper {
                             numberOfLines={4}
                             onChangeText={[Function]}
                             placeholder="Short description"
-                            placeholderTextColor="rgba(255,255,255,0.4)"
+                            placeholderTextColor="#929497"
                             style={
                               Object {
                                 "borderBottomWidth": 1,
                                 "borderColor": "rgba(192,192,192,0.4)",
-                                "color": "#FFFFFF",
+                                "color": "#929497",
                                 "flex": 1,
                                 "fontFamily": "Roboto",
                                 "fontSize": 16,
                                 "fontWeight": "normal",
                                 "letterSpacing": 0,
                                 "lineHeight": 22,
-                                "marginBottom": 4,
+                                "marginBottom": 14,
                                 "marginLeft": 0,
                                 "marginRight": 0,
                                 "marginTop": 4,
-                                "paddingBottom": 6,
+                                "paddingBottom": 12,
                                 "paddingLeft": 4,
                                 "paddingTop": 6,
                               }
@@ -7837,22 +8075,22 @@ ShallowWrapper {
                             "numberOfLines": 4,
                             "onChangeText": [Function],
                             "placeholder": "Short description",
-                            "placeholderTextColor": "rgba(255,255,255,0.4)",
+                            "placeholderTextColor": "#929497",
                             "style": Object {
                               "borderBottomWidth": 1,
                               "borderColor": "rgba(192,192,192,0.4)",
-                              "color": "#FFFFFF",
+                              "color": "#929497",
                               "flex": 1,
                               "fontFamily": "Roboto",
                               "fontSize": 16,
                               "fontWeight": "normal",
                               "letterSpacing": 0,
                               "lineHeight": 22,
-                              "marginBottom": 4,
+                              "marginBottom": 14,
                               "marginLeft": 0,
                               "marginRight": 0,
                               "marginTop": 4,
-                              "paddingBottom": 6,
+                              "paddingBottom": 12,
                               "paddingLeft": 4,
                               "paddingTop": 6,
                             },
@@ -7876,6 +8114,8 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "class",
                 "props": Object {
+                  "body": undefined,
+                  "buttonTitle": "Button",
                   "children": Array [
                     <View
                       style={
@@ -7920,7 +8160,7 @@ ShallowWrapper {
                           searchInputPlaceholderText=""
                           searchInputStyle={
                             Object {
-                              "color": "white",
+                              "color": "#58595B",
                             }
                           }
                           selectText="Nation location type..."
@@ -7934,7 +8174,7 @@ ShallowWrapper {
                           tagBorderColor="#CCC"
                           tagRemoveIconColor="#CCC"
                           tagTextColor="#CCC"
-                          textColor="white"
+                          textColor="#58595B"
                           uniqueKey="id"
                         />
                       </View>
@@ -7958,7 +8198,11 @@ ShallowWrapper {
                       Virtual nations exist only in Pangea. Geographic nations are on Earth.
                     </Text>,
                   ],
+                  "childrenContainerStyle": Object {},
                   "icon": " ",
+                  "onButtonClick": null,
+                  "renderAdditionalInfo": null,
+                  "renderBottom": null,
                   "style": Object {
                     "backgroundColor": "transparent",
                     "borderRadius": 8,
@@ -7975,7 +8219,7 @@ ShallowWrapper {
                   },
                   "title": "Location",
                   "titleStyle": Object {
-                    "color": "white",
+                    "color": "#58595B",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -8026,7 +8270,7 @@ ShallowWrapper {
                           searchInputPlaceholderText=""
                           searchInputStyle={
                             Object {
-                              "color": "white",
+                              "color": "#58595B",
                             }
                           }
                           selectText="Nation location type..."
@@ -8040,7 +8284,7 @@ ShallowWrapper {
                           tagBorderColor="#CCC"
                           tagRemoveIconColor="#CCC"
                           tagTextColor="#CCC"
-                          textColor="white"
+                          textColor="#58595B"
                           uniqueKey="id"
                         />
                       </View>,
@@ -8082,7 +8326,7 @@ ShallowWrapper {
                           searchInputPlaceholderText=""
                           searchInputStyle={
                             Object {
-                              "color": "white",
+                              "color": "#58595B",
                             }
                           }
                           selectText="Nation location type..."
@@ -8096,7 +8340,7 @@ ShallowWrapper {
                           tagBorderColor="#CCC"
                           tagRemoveIconColor="#CCC"
                           tagTextColor="#CCC"
-                          textColor="white"
+                          textColor="#58595B"
                           uniqueKey="id"
                         />,
                         "style": Object {
@@ -8133,7 +8377,7 @@ ShallowWrapper {
                           "onSelectedItemsChange": [Function],
                           "searchInputPlaceholderText": "",
                           "searchInputStyle": Object {
-                            "color": "white",
+                            "color": "#58595B",
                           },
                           "selectText": "Nation location type...",
                           "selectedItemFontFamily": "",
@@ -8146,7 +8390,7 @@ ShallowWrapper {
                           "tagBorderColor": "#CCC",
                           "tagRemoveIconColor": "#CCC",
                           "tagTextColor": "#CCC",
-                          "textColor": "white",
+                          "textColor": "#58595B",
                           "uniqueKey": "id",
                         },
                         "ref": null,
@@ -8188,6 +8432,8 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "class",
                 "props": Object {
+                  "body": undefined,
+                  "buttonTitle": "Button",
                   "children": Array [
                     <View
                       style={
@@ -8252,7 +8498,7 @@ ShallowWrapper {
                           searchInputPlaceholderText=""
                           searchInputStyle={
                             Object {
-                              "color": "white",
+                              "color": "#58595B",
                             }
                           }
                           selectText="Legal Code..."
@@ -8270,7 +8516,7 @@ ShallowWrapper {
                           tagBorderColor="#CCC"
                           tagRemoveIconColor="#CCC"
                           tagTextColor="#CCC"
-                          textColor="white"
+                          textColor="#58595B"
                           uniqueKey="id"
                         />
                       </View>
@@ -8330,7 +8576,7 @@ ShallowWrapper {
                           searchInputPlaceholderText=""
                           searchInputStyle={
                             Object {
-                              "color": "white",
+                              "color": "#58595B",
                             }
                           }
                           selectText="Law Enforcement Mechanism..."
@@ -8348,7 +8594,7 @@ ShallowWrapper {
                           tagBorderColor="#CCC"
                           tagRemoveIconColor="#CCC"
                           tagTextColor="#CCC"
-                          textColor="white"
+                          textColor="#58595B"
                           uniqueKey="id"
                         />
                       </View>
@@ -8412,7 +8658,7 @@ ShallowWrapper {
                           searchInputPlaceholderText=""
                           searchInputStyle={
                             Object {
-                              "color": "white",
+                              "color": "#58595B",
                             }
                           }
                           selectText="Type of Government..."
@@ -8430,7 +8676,7 @@ ShallowWrapper {
                           tagBorderColor="#CCC"
                           tagRemoveIconColor="#CCC"
                           tagTextColor="#CCC"
-                          textColor="white"
+                          textColor="#58595B"
                           uniqueKey="id"
                         />
                       </View>
@@ -8490,7 +8736,7 @@ ShallowWrapper {
                           searchInputPlaceholderText=""
                           searchInputStyle={
                             Object {
-                              "color": "white",
+                              "color": "#58595B",
                             }
                           }
                           selectText="Services Offered..."
@@ -8504,14 +8750,18 @@ ShallowWrapper {
                           tagBorderColor="#CCC"
                           tagRemoveIconColor="#CCC"
                           tagTextColor="#CCC"
-                          textColor="white"
+                          textColor="#58595B"
                           uniqueKey="id"
                         />
                         <View />
                       </View>
                     </View>,
                   ],
+                  "childrenContainerStyle": Object {},
                   "icon": " ",
+                  "onButtonClick": null,
+                  "renderAdditionalInfo": null,
+                  "renderBottom": null,
                   "style": Object {
                     "backgroundColor": "transparent",
                     "borderRadius": 8,
@@ -8528,7 +8778,7 @@ ShallowWrapper {
                   },
                   "title": "Governmental Structure",
                   "titleStyle": Object {
-                    "color": "white",
+                    "color": "#58595B",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -8599,7 +8849,7 @@ ShallowWrapper {
                           searchInputPlaceholderText=""
                           searchInputStyle={
                             Object {
-                              "color": "white",
+                              "color": "#58595B",
                             }
                           }
                           selectText="Legal Code..."
@@ -8617,7 +8867,7 @@ ShallowWrapper {
                           tagBorderColor="#CCC"
                           tagRemoveIconColor="#CCC"
                           tagTextColor="#CCC"
-                          textColor="white"
+                          textColor="#58595B"
                           uniqueKey="id"
                         />
                       </View>,
@@ -8679,7 +8929,7 @@ ShallowWrapper {
                           searchInputPlaceholderText=""
                           searchInputStyle={
                             Object {
-                              "color": "white",
+                              "color": "#58595B",
                             }
                           }
                           selectText="Legal Code..."
@@ -8697,7 +8947,7 @@ ShallowWrapper {
                           tagBorderColor="#CCC"
                           tagRemoveIconColor="#CCC"
                           tagTextColor="#CCC"
-                          textColor="white"
+                          textColor="#58595B"
                           uniqueKey="id"
                         />,
                         "style": Object {
@@ -8754,7 +9004,7 @@ ShallowWrapper {
                           "onSelectedItemsChange": [Function],
                           "searchInputPlaceholderText": "",
                           "searchInputStyle": Object {
-                            "color": "white",
+                            "color": "#58595B",
                           },
                           "selectText": "Legal Code...",
                           "selectedItemFontFamily": "",
@@ -8769,7 +9019,7 @@ ShallowWrapper {
                           "tagBorderColor": "#CCC",
                           "tagRemoveIconColor": "#CCC",
                           "tagTextColor": "#CCC",
-                          "textColor": "white",
+                          "textColor": "#58595B",
                           "uniqueKey": "id",
                         },
                         "ref": null,
@@ -8832,7 +9082,7 @@ ShallowWrapper {
                           searchInputPlaceholderText=""
                           searchInputStyle={
                             Object {
-                              "color": "white",
+                              "color": "#58595B",
                             }
                           }
                           selectText="Law Enforcement Mechanism..."
@@ -8850,7 +9100,7 @@ ShallowWrapper {
                           tagBorderColor="#CCC"
                           tagRemoveIconColor="#CCC"
                           tagTextColor="#CCC"
-                          textColor="white"
+                          textColor="#58595B"
                           uniqueKey="id"
                         />
                       </View>,
@@ -8904,7 +9154,7 @@ ShallowWrapper {
                           searchInputPlaceholderText=""
                           searchInputStyle={
                             Object {
-                              "color": "white",
+                              "color": "#58595B",
                             }
                           }
                           selectText="Law Enforcement Mechanism..."
@@ -8922,7 +9172,7 @@ ShallowWrapper {
                           tagBorderColor="#CCC"
                           tagRemoveIconColor="#CCC"
                           tagTextColor="#CCC"
-                          textColor="white"
+                          textColor="#58595B"
                           uniqueKey="id"
                         />,
                         "style": Object {
@@ -8971,7 +9221,7 @@ ShallowWrapper {
                           "onSelectedItemsChange": [Function],
                           "searchInputPlaceholderText": "",
                           "searchInputStyle": Object {
-                            "color": "white",
+                            "color": "#58595B",
                           },
                           "selectText": "Law Enforcement Mechanism...",
                           "selectedItemFontFamily": "",
@@ -8986,7 +9236,7 @@ ShallowWrapper {
                           "tagBorderColor": "#CCC",
                           "tagRemoveIconColor": "#CCC",
                           "tagTextColor": "#CCC",
-                          "textColor": "white",
+                          "textColor": "#58595B",
                           "uniqueKey": "id",
                         },
                         "ref": null,
@@ -9053,7 +9303,7 @@ ShallowWrapper {
                           searchInputPlaceholderText=""
                           searchInputStyle={
                             Object {
-                              "color": "white",
+                              "color": "#58595B",
                             }
                           }
                           selectText="Type of Government..."
@@ -9071,7 +9321,7 @@ ShallowWrapper {
                           tagBorderColor="#CCC"
                           tagRemoveIconColor="#CCC"
                           tagTextColor="#CCC"
-                          textColor="white"
+                          textColor="#58595B"
                           uniqueKey="id"
                         />
                       </View>,
@@ -9129,7 +9379,7 @@ ShallowWrapper {
                           searchInputPlaceholderText=""
                           searchInputStyle={
                             Object {
-                              "color": "white",
+                              "color": "#58595B",
                             }
                           }
                           selectText="Type of Government..."
@@ -9147,7 +9397,7 @@ ShallowWrapper {
                           tagBorderColor="#CCC"
                           tagRemoveIconColor="#CCC"
                           tagTextColor="#CCC"
-                          textColor="white"
+                          textColor="#58595B"
                           uniqueKey="id"
                         />,
                         "style": Object {
@@ -9200,7 +9450,7 @@ ShallowWrapper {
                           "onSelectedItemsChange": [Function],
                           "searchInputPlaceholderText": "",
                           "searchInputStyle": Object {
-                            "color": "white",
+                            "color": "#58595B",
                           },
                           "selectText": "Type of Government...",
                           "selectedItemFontFamily": "",
@@ -9215,7 +9465,7 @@ ShallowWrapper {
                           "tagBorderColor": "#CCC",
                           "tagRemoveIconColor": "#CCC",
                           "tagTextColor": "#CCC",
-                          "textColor": "white",
+                          "textColor": "#58595B",
                           "uniqueKey": "id",
                         },
                         "ref": null,
@@ -9278,7 +9528,7 @@ ShallowWrapper {
                           searchInputPlaceholderText=""
                           searchInputStyle={
                             Object {
-                              "color": "white",
+                              "color": "#58595B",
                             }
                           }
                           selectText="Services Offered..."
@@ -9292,7 +9542,7 @@ ShallowWrapper {
                           tagBorderColor="#CCC"
                           tagRemoveIconColor="#CCC"
                           tagTextColor="#CCC"
-                          textColor="white"
+                          textColor="#58595B"
                           uniqueKey="id"
                         />
                         <View />
@@ -9348,7 +9598,7 @@ ShallowWrapper {
                             searchInputPlaceholderText=""
                             searchInputStyle={
                               Object {
-                                "color": "white",
+                                "color": "#58595B",
                               }
                             }
                             selectText="Services Offered..."
@@ -9362,7 +9612,7 @@ ShallowWrapper {
                             tagBorderColor="#CCC"
                             tagRemoveIconColor="#CCC"
                             tagTextColor="#CCC"
-                            textColor="white"
+                            textColor="#58595B"
                             uniqueKey="id"
                           />,
                           <View />,
@@ -9414,7 +9664,7 @@ ShallowWrapper {
                             "onSelectedItemsChange": [Function],
                             "searchInputPlaceholderText": "",
                             "searchInputStyle": Object {
-                              "color": "white",
+                              "color": "#58595B",
                             },
                             "selectText": "Services Offered...",
                             "selectedItemFontFamily": "",
@@ -9427,7 +9677,7 @@ ShallowWrapper {
                             "tagBorderColor": "#CCC",
                             "tagRemoveIconColor": "#CCC",
                             "tagTextColor": "#CCC",
-                            "textColor": "white",
+                            "textColor": "#58595B",
                             "uniqueKey": "id",
                           },
                           "ref": [Function],
@@ -9458,6 +9708,8 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "class",
                 "props": Object {
+                  "body": undefined,
+                  "buttonTitle": "Button",
                   "children": Array [
                     <View
                       style={
@@ -9476,6 +9728,8 @@ ShallowWrapper {
                         }
                       >
                         <SwitchLabeled
+                          align="left"
+                          disabled={false}
                           label="Seeking diplomatic recognition as a sovereign entity."
                           onValueChange={[Function]}
                           value={false}
@@ -9499,6 +9753,8 @@ ShallowWrapper {
                         }
                       >
                         <SwitchLabeled
+                          align="left"
+                          disabled={false}
                           label="Non-citizens may use governance services."
                           onValueChange={[Function]}
                           value={false}
@@ -9522,6 +9778,8 @@ ShallowWrapper {
                         }
                       >
                         <SwitchLabeled
+                          align="left"
+                          disabled={false}
                           label="For-profit nation."
                           onValueChange={[Function]}
                           value={false}
@@ -9529,7 +9787,11 @@ ShallowWrapper {
                       </View>
                     </View>,
                   ],
+                  "childrenContainerStyle": Object {},
                   "icon": " ",
+                  "onButtonClick": null,
+                  "renderAdditionalInfo": null,
+                  "renderBottom": null,
                   "style": Object {
                     "backgroundColor": "transparent",
                     "borderRadius": 8,
@@ -9546,7 +9808,7 @@ ShallowWrapper {
                   },
                   "title": "Options",
                   "titleStyle": Object {
-                    "color": "white",
+                    "color": "#58595B",
                     "fontFamily": "Roboto",
                     "fontSize": 22,
                     "fontWeight": "bold",
@@ -9571,6 +9833,8 @@ ShallowWrapper {
                         }
                       >
                         <SwitchLabeled
+                          align="left"
+                          disabled={false}
                           label="Seeking diplomatic recognition as a sovereign entity."
                           onValueChange={[Function]}
                           value={false}
@@ -9588,6 +9852,8 @@ ShallowWrapper {
                       "nodeType": "class",
                       "props": Object {
                         "children": <SwitchLabeled
+                          align="left"
+                          disabled={false}
                           label="Seeking diplomatic recognition as a sovereign entity."
                           onValueChange={[Function]}
                           value={false}
@@ -9603,6 +9869,8 @@ ShallowWrapper {
                         "key": undefined,
                         "nodeType": "function",
                         "props": Object {
+                          "align": "left",
+                          "disabled": false,
                           "label": "Seeking diplomatic recognition as a sovereign entity.",
                           "onValueChange": [Function],
                           "value": false,
@@ -9629,6 +9897,8 @@ ShallowWrapper {
                         }
                       >
                         <SwitchLabeled
+                          align="left"
+                          disabled={false}
                           label="Non-citizens may use governance services."
                           onValueChange={[Function]}
                           value={false}
@@ -9646,6 +9916,8 @@ ShallowWrapper {
                       "nodeType": "class",
                       "props": Object {
                         "children": <SwitchLabeled
+                          align="left"
+                          disabled={false}
                           label="Non-citizens may use governance services."
                           onValueChange={[Function]}
                           value={false}
@@ -9661,6 +9933,8 @@ ShallowWrapper {
                         "key": undefined,
                         "nodeType": "function",
                         "props": Object {
+                          "align": "left",
+                          "disabled": false,
                           "label": "Non-citizens may use governance services.",
                           "onValueChange": [Function],
                           "value": false,
@@ -9687,6 +9961,8 @@ ShallowWrapper {
                         }
                       >
                         <SwitchLabeled
+                          align="left"
+                          disabled={false}
                           label="For-profit nation."
                           onValueChange={[Function]}
                           value={false}
@@ -9704,6 +9980,8 @@ ShallowWrapper {
                       "nodeType": "class",
                       "props": Object {
                         "children": <SwitchLabeled
+                          align="left"
+                          disabled={false}
                           label="For-profit nation."
                           onValueChange={[Function]}
                           value={false}
@@ -9719,6 +9997,8 @@ ShallowWrapper {
                         "key": undefined,
                         "nodeType": "function",
                         "props": Object {
+                          "align": "left",
+                          "disabled": false,
                           "label": "For-profit nation.",
                           "onValueChange": [Function],
                           "value": false,
@@ -9772,7 +10052,7 @@ ShallowWrapper {
             ],
             "style": Object {
               "alignItems": "stretch",
-              "backgroundColor": "#3e9eff",
+              "backgroundColor": "#58595B",
               "flexDirection": "row",
               "height": 55,
               "justifyContent": "space-around",

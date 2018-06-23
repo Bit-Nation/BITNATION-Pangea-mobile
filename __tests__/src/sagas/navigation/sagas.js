@@ -1,10 +1,11 @@
+// @flow
+
 import { call } from 'redux-saga/effects';
 import { cloneableGenerator } from 'redux-saga/utils';
 
 import { launchCorrectFlow, launchLoggedInFlow, launchLoggedOutFlow } from '../../../../src/sagas/navigation/sagas';
 import { getCurrentAccountId } from '../../../../src/sagas/accounts/sagas';
 import { START_NAVIGATION } from '../../../../src/actions/navigation';
-import { CURRENT_ACCOUNT_ID_CHANGED } from '../../../../src/actions/accounts';
 
 describe('launchCorrectFlow on first launch', () => {
   const gen = cloneableGenerator(launchCorrectFlow)({
@@ -15,7 +16,8 @@ describe('launchCorrectFlow on first launch', () => {
 
   test('currentAccountId is null', () => {
     const clone = gen.clone();
-    expect(clone.next(null).value).toEqual(call(launchLoggedOutFlow));
+    clone.next(null);
+    expect(clone.next(false).value).toEqual(call(launchLoggedOutFlow, false));
     expect(clone.next().done).toBeTruthy();
   });
 
@@ -29,7 +31,7 @@ describe('launchCorrectFlow on first launch', () => {
 describe('launchCorrectFlow on change', () => {
   test('currentAccountId is not null', () => {
     const gen = launchCorrectFlow({
-      type: CURRENT_ACCOUNT_ID_CHANGED,
+      type: 'CURRENT_ACCOUNT_ID_CHANGED',
       currentAccountId: 'abc',
     });
 
@@ -39,11 +41,12 @@ describe('launchCorrectFlow on change', () => {
 
   test('currentAccountId is null', () => {
     const gen = launchCorrectFlow({
-      type: CURRENT_ACCOUNT_ID_CHANGED,
+      type: 'CURRENT_ACCOUNT_ID_CHANGED',
       currentAccountId: null,
     });
 
-    expect(gen.next().value).toEqual(call(launchLoggedOutFlow));
+    gen.next();
+    expect(gen.next(true).value).toEqual(call(launchLoggedOutFlow, true));
     expect(gen.next().done).toBeTruthy();
   });
 });

@@ -8,8 +8,10 @@ export type NavigatorEvent = {
 export type Navigator = {
   push: (?any) => void,
   pop: (?any) => void,
+  popToRoot: (?any) => void,
   showModal: (?any) => void,
-  dismissModal: (?any) => void,
+  dismissModal: () => void,
+  dismissAllModals: () => void,
   setButtons: (?any) => void,
   switchToTab: (?any) => void,
   setOnNavigatorEvent: ((NavigatorEvent) => void) => void,
