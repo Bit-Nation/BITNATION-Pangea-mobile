@@ -327,7 +327,7 @@ RCT_REMAP_METHOD(PanthalassaSendResponse,
   BOOL response;
   NSError *error = nil;
   
-  response = PanthalassaSendResponse([RCTConvert NSString:config[@"id_"]],
+  response = PanthalassaSendResponse([RCTConvert NSString:config[@"id"]],
                                           [RCTConvert NSString:config[@"data"]],
                                           [RCTConvert NSString:config[@"responseError"]],
                                           [RCTConvert CGFloat:config[@"timeout"]],
