@@ -1,11 +1,11 @@
 // @flow
 
-import _ from 'lodash';
 import {
   call,
   put,
   select,
 } from 'redux-saga/effects';
+import { BigNumber } from 'bignumber.js';
 import {
   sendMoneyFailed,
   sendMoneySuccess,
@@ -20,6 +20,29 @@ import { NoWalletServiceError } from '../../global/errors/services';
 import defaultDB from '../../services/database';
 import type { WalletType as DBWallet } from '../../services/database/schemata';
 import { convertFromDatabase, convertToDatabase } from '../../utils/mapping/wallet';
+import { resolveWallet } from '../../utils/wallet';
+
+/**
+ * @desc Update Eth wallet balance to realm.
+ * @param {WalletType[]} walletsArray Array of wallets to save in to Realm
+ * @param {String} amount Amount to discount from the wallet
+ * @param {String} currency Currency of the wallet to update
+ * @returns {void}
+ */
+export function* updateWalletToDb(walletsArray: WalletType[], amount: string, currency: string): Generator<*, *, *> {
+  const db = yield defaultDB;
+  const walletToSave = resolveWallet(walletsArray, currency);
+  if (walletToSave === null) {
+    return;
+  }
+  const walletToDB = convertToDatabase(walletToSave);
+  BigNumber.config({ DECIMAL_PLACES: 18 });
+  const balanceBNEth = new BigNumber(walletToDB.balance);
+  const amountNEth = new BigNumber(amount);
+  db.write(() => {
+    db.create('Wallet', { name: walletToDB.name, balance: balanceBNEth.minus(amountNEth) }, true);
+  });
+}
 
 /**
  * @desc Sends money depending the currency of the wallets on the list.
@@ -43,6 +66,7 @@ export function* sendMoneySaga(action: SendMoneyAction): Generator<*, *, *> {
     try {
       yield call([walletService, 'sendMoney'], fromAddress, toAddress, amountToSend);
       yield put(sendMoneySuccess());
+      yield call(updateWalletToDb, amountToSend, state.wallet.selectedWalletCurrency);
     } catch (error) {
       yield put(sendMoneyFailed(error));
     }
@@ -50,6 +74,7 @@ export function* sendMoneySaga(action: SendMoneyAction): Generator<*, *, *> {
     try {
       yield call([walletService, 'sendToken'], fromAddress, toAddress, amountToSend, account.networkType);
       yield put(sendMoneySuccess());
+      yield call(updateWalletToDb, amountToSend, state.wallet.selectedWalletCurrency);
     } catch (error) {
       yield put(sendMoneyFailed(error));
     }
@@ -89,8 +114,14 @@ export function* saveWalletsToDb(walletsArray: WalletType[]): Generator<*, *, *>
  */
 export function* updateWalletsToDb(walletsArray: WalletType[]): Generator<*, *, *> {
   const db = yield defaultDB;
-  const walletEthToSave = _.find(walletsArray, ['name', 'Ethereum']);
-  const walletPatToSave = _.find(walletsArray, ['name', 'XPAT']);
+  const walletEth = resolveWallet(walletsArray, 'ETH');
+  const walletPat = resolveWallet(walletsArray, 'PAT');
+  if (walletEth === null || walletPat === null) {
+    return;
+  }
+  const walletEthToSave = convertToDatabase(walletEth);
+  const walletPatToSave = convertToDatabase(walletPat);
+
   db.write(() => {
     db.create('Wallet', { name: walletEthToSave.name, balance: walletEthToSave.balance }, true);
     db.create('Wallet', { name: walletPatToSave.name, balance: walletPatToSave.balance }, true);
