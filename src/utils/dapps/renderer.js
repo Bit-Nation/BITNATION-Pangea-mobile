@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 
 import Text from '../../components/dapps/Text';
@@ -11,7 +13,7 @@ export type ComponentsJSON = { type: string, props: Object, children: Array<Obje
  * @param {string} typeName String representation of the type.
  * @return {*} Class or function of component or null if type is unknown.
  */
-export const getTypeElementFromText = (typeName) => {
+export const getTypeElementFromText = (typeName: string) => {
   switch (typeName) {
     case 'Text':
       return Text;
@@ -29,32 +31,38 @@ export const getTypeElementFromText = (typeName) => {
  * @desc Validates props against list of valid names and filter only whitelisted ones.
  * Used to prevent DApp developer to pass something bad to components we provide.
  * @param {Object} props Props to validate.
- * @param {string[]} validPropNames Array of valid prop names.
+ * @param {string[]} validNativeProps Array of valid native props.
+ * @param {string[]} validAdditionalProps Array of valid additional props that is used to set/get from root component state and therefore should be appended by 'Path'. E.g. value prop will be passed as valuePath.
  * @param {string} type String representation of component type.
  * @return {Object} Filtered props.
  */
-export const validateProps = (props: Object, validPropNames: Array<string>, type: string) => {
+export const validateProps = (props: Object, validNativeProps: Array<string>, validAdditionalProps: Array<string>, type: string) => {
   const filteredProps = {};
+  const additionalProps = {};
   Object.keys(props).forEach((propName) => {
-    if (validPropNames.includes(propName)) {
+    if (validNativeProps.includes(propName)) {
+      // It's an allowed native prop.
       filteredProps[propName] = props[propName];
+    } else if (propName.endsWith('Path') && validAdditionalProps.includes(propName.substring(0, propName.length - 4))) {
+      // It's an allowed prop to set or get root component state. That properties are marked by Path suffix.
+      additionalProps[propName] = props[propName];
     } else {
       console.warn(`Prop ${propName} is not allowed on component ${type}`);
     }
   });
 
-  return filteredProps;
+  return { filteredProps, additionalProps };
 };
 
 /**
  * @desc Renders JSON provided by DApp developer into react components.
  * @param {ComponentsJSON} json JSON object that represents components to render.
  * @param {?string} key Key of component (used for updates).
- * @param {Function} customPropsProvider Function that takes string name of type and props and returns new props if it's needed to add ones.
+ * @param {Function} customPropsProvider Function that takes component class or function and props and returns new props if it's needed to add ones.
  * @param {*} parent Function or class of component that is parent of currently used or undefined for root.
  * @return {*} Tree of components that is ready to be render.
  */
-export const renderJSON = (json: ComponentsJSON, key: ?string, customPropsProvider: (type: string, ownProps: Object) => Object, parent: any) => {
+export const renderJSON = (json: ComponentsJSON, key: ?string, customPropsProvider: (component: any, ownProps: Object) => Object, parent: any) => {
   const { type, children } = json;
 
   // This is the case when we have string literal inside children.
@@ -74,17 +82,16 @@ export const renderJSON = (json: ComponentsJSON, key: ?string, customPropsProvid
     return null;
   }
 
-  let { props } = json;
+  const { props } = json;
 
-  if (Array.isArray(component.validProps) && component.validProps !== undefined) {
-    props = validateProps(json.props, component.validProps, type);
-  }
+  const { filteredProps = props, additionalProps = {} } = component.validNativeProps !== undefined ?
+    validateProps(json.props, component.validNativeProps, Object.keys(component.stateBasedProps || {}), type) : {};
 
   return React.createElement(
     component,
-    { ...props, ...customPropsProvider(type, props), key },
+    { ...filteredProps, ...customPropsProvider(component, { ...filteredProps, ...additionalProps }), key },
     children
-      ? children.map((child, index) => renderJSON(child, index, customPropsProvider, component))
+      ? children.map((child, index) => renderJSON(child, `${index}`, customPropsProvider, component))
       : null,
   );
 };
