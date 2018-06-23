@@ -9,6 +9,7 @@ import styles from './styles';
 import PanelView from '../../../components/common/PanelView';
 import i18n from '../../../global/i18n';
 import { prettyWalletBalance } from '../../../utils/formatters';
+import { resolveWallet } from '../../../utils/wallet';
 import type { WalletType } from '../../../types/Wallet';
 
 type Props = {
@@ -26,27 +27,30 @@ type Props = {
  * @desc Component to render wallet panel on dashboard
  * @return {React.Component} A component.
  */
-const WalletPanel = ({ style, wallets } : Props) => ((
-  <View style={style}>
-    <PanelView
-      style={styles.walletGridPanel}
-      childrenContainerStyle={styles.noflex}
-      title={i18n.t('screens.dashboard.walletPanel.title')}
-      titleStyle={styles.panelViewTitle}
-    >
-      {
-        _.isEmpty(wallets)
-          ?
-            <Text style={styles.body}>{i18n.t('screens.dashboard.walletPanel.empty')}</Text>
-          :
-            <View>
-              <Text style={styles.footnote}>{i18n.t('common.bitnationPat')}</Text>
-              <Text style={[styles.largeTitle, styles.textWallet]}>{prettyWalletBalance(wallets[1])}</Text>
-            </View>
-      }
-    </PanelView>
-  </View>
-));
+const WalletPanel = ({ style, wallets } : Props) => {
+  const patWallet: WalletType = resolveWallet(wallets, 'PAT');
+  return (
+    <View style={style}>
+      <PanelView
+        style={styles.walletGridPanel}
+        childrenContainerStyle={styles.noflex}
+        title={i18n.t('screens.dashboard.walletPanel.title')}
+        titleStyle={styles.panelViewTitle}
+      >
+        {
+          _.isEmpty(wallets)
+            ?
+              <Text style={styles.body}>{i18n.t('screens.dashboard.walletPanel.empty')}</Text>
+            :
+              <View>
+                <Text style={styles.footnote}>{i18n.t('common.bitnationPat')}</Text>
+                <Text style={[styles.largeTitle, styles.textWallet]}>{prettyWalletBalance(patWallet)}</Text>
+              </View>
+        }
+      </PanelView>
+    </View>
+  );
+};
 
 WalletPanel.defaultProps = {
   wallets: [],
