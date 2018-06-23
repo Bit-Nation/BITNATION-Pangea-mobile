@@ -1,5 +1,5 @@
 import Realm from 'realm';
-import db, { factory } from '../../../../src/services/database/index';
+import db, { factory, buildRandomPathDatabase } from '../../../../src/services/database';
 
 const randomDbPath = () => `database/${Math.random()}`;
 
@@ -46,5 +46,12 @@ describe('db', () => {
     expect(Realm.schemaVersion(dbPath)).toBe(3);
 
     realm4.close();
+  });
+  test('random path database builder', async () => {
+    expect.assertions(2);
+    const realm = await buildRandomPathDatabase();
+    expect(realm.write).toBeDefined();
+    expect(realm.objects).toBeDefined();
+    realm.close();
   });
 });

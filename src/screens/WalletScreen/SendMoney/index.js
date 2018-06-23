@@ -21,7 +21,7 @@ import { androidNavigationButtons } from '../../../global/Screens';
 import Loading from '../../../components/common/Loading';
 import { prettyWalletBalance } from '../../../utils/formatters';
 import i18n from '../../../global/i18n';
-import { errorAlert } from '../../../global/alerts';
+import { alert, errorAlert } from '../../../global/alerts';
 import PanelView from '../../../components/common/PanelView';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import type { State as WalletState } from '../../../reducers/wallet';
@@ -82,12 +82,19 @@ class SendMoney extends NavigatorComponent<Props, State> {
     if (this.props.moneySendingError !== prevProps.moneySendingError
       && this.props.moneySendingError !== null) {
       errorAlert(this.props.moneySendingError);
+    } else if (this.props.moneySendingInProgress !== prevProps.moneySendingInProgress
+      && this.props.moneySendingSuccess) {
+      alert('successTransaction', [
+        {
+          name: 'confirm',
+          onPress: () => this.props.navigator.pop(),
+        }]);
     }
     this.updateNavigation();
   }
 
   resolveWallet() {
-    return resolveWallet(this.props.wallets || [], this.props.selectedWalletAddress || '');
+    return resolveWallet(this.props.wallets || [], this.props.selectedWalletCurrency || '');
   }
 
   static parseAmount(amountString: string): number {
@@ -118,7 +125,6 @@ class SendMoney extends NavigatorComponent<Props, State> {
     if (!wallet) {
       return <View />;
     }
-
     return (
       <View style={styles.screenContainer}>
         <BackgroundImage />
@@ -131,10 +137,10 @@ class SendMoney extends NavigatorComponent<Props, State> {
             childrenContainerStyle={styles.noflex}
           >
             <View style={styles.row}>
-              <Image style={styles.icon} source={Images.eth} resizeMode='contain' />
+              <Image style={styles.icon} source={wallet.currency === 'ETH' ? Images.ethereumLogo : Images.patLogo} resizeMode='contain' />
               <View style={styles.textColumn}>
-                <Text style={styles.bodyBold}>{i18n.t('common.ethereum')}</Text>
-                <Text style={styles.currencyLarge}>
+                <Text style={styles.bodyBold}>{wallet.currency === 'ETH' ? i18n.t('common.ethereum') : i18n.t('common.bitnationPat')}</Text>
+                <Text style={styles.currencyMedium}>
                   {prettyWalletBalance(wallet, wallet.currency)}
                 </Text>
               </View>
@@ -142,7 +148,7 @@ class SendMoney extends NavigatorComponent<Props, State> {
           </PanelView>
 
           <PanelView
-            style={styles.panelViewTransparent}
+            style={[styles.panelViewTransparent, styles.pannelViewRow]}
             childrenContainerStyle={styles.noflex}
           >
             <View style={styles.formRow}>
@@ -150,23 +156,23 @@ class SendMoney extends NavigatorComponent<Props, State> {
                 <Text style={styles.amountLabelText}>{i18n.t('common.amount')}</Text>
                 <View style={styles.formRow}>
                   <View style={styles.textInputContainer}>
-                    <TextInput
-                      style={[styles.textInputInContainer, styles.currencyLarge]}
-                      placeholder='0.00000'
-                      placeholderTextColor={Colors.placeholderTextColor}
-                      keyboardType='numeric'
-                      onChangeText={amountString => this.setState({ amountString })}
-                      value={this.state.amountString}
-                    />
                     <Text style={styles.currencyPlaceholder}>
                       {wallet.currency}
                     </Text>
+                    <TextInput
+                      style={[styles.textInputInContainer, styles.currencyLarge, styles.currencyNumber]}
+                      placeholder='0.00000'
+                      placeholderTextColor={Colors.placeholderTextColor}
+                      onChangeText={amountString => this.setState({ amountString })}
+                      value={this.state.amountString}
+                    />
+
                   </View>
                 </View>
                 <Text style={styles.toLabelText}>{i18n.t('common.to')}</Text>
-                <View style={styles.formRow}>
+                <View style={styles.textInputContainer}>
                   <TextInput
-                    style={styles.toTextInput}
+                    style={[styles.textInputInContainer, styles.currencyLarge, styles.currencyNumber]}
                     placeholder='0x'
                     placeholderTextColor={Colors.placeholderTextColor}
                     keyboardType='default'

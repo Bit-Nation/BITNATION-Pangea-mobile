@@ -25,6 +25,12 @@ const styles = {
     flex: 0,
   },
 
+  // Used to align items at the end of the container
+  flexEnd: {
+    flex: 1,
+    justifyContent: 'flex-end',
+  },
+
   // General screen container for ALL elements
   // Derived from Apple Human Interface Guidelines
   // and https://ivomynttinen.com/blog/ios-design-guidelines
@@ -50,6 +56,17 @@ const styles = {
     marginRight: 8,
   },
 
+  // Container for the main area inside Accounts, below navigation but above the bottom tab bar (if existing)
+  bodyAccountContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    // alignItems: 'stretch',
+    alignContent: 'flex-start',
+    // these narrow left/right margins are for panels, which have their own indents.
+    marginLeft: 16,
+    marginRight: 16,
+  },
   // Container for a grid of panels (or a mosaic).
   // Similar to bodyContainer but we stretch fill all space
   // Used for dashboard
@@ -69,6 +86,12 @@ const styles = {
     flex: 1,
   },
 
+  // ScrollView default container style
+  scrollViewWallet: {
+    flex: 0,
+    marginBottom: 56,
+  },
+
   // Extra space for the top of a page of text, to distinguish from nav.
   bodyTopSpacer: {
     height: fontSizeNormalizer(18),
@@ -77,8 +100,7 @@ const styles = {
   // Contains a title for a screen, e.g. Nations or Wallet
   // Margins position correctly INSIDE a bodyContainer View
   titleContainer: {
-    marginLeft: 8,
-    marginRight: 8,
+    marginHorizontal: 20,
   },
 
   // A block of text in the body area
@@ -189,7 +211,19 @@ const styles = {
     alignItems: 'stretch',
     margin: 4,
     borderRadius: 8,
-    backgroundColor: Colors.panelView,
+    backgroundColor: Colors.white,
+    overflow: 'hidden',
+    // INDENTS
+    padding: fontSizeNormalizer(16),
+  },
+
+  gridPanelViewWarning: {
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    alignItems: 'stretch',
+    margin: 4,
+    borderRadius: 8,
+    backgroundColor: Colors.white,
     overflow: 'hidden',
     // INDENTS
     padding: fontSizeNormalizer(16),
@@ -213,7 +247,7 @@ const styles = {
     flexDirection: 'column',
     justifyContent: 'space-between',
     borderRadius: 8,
-    backgroundColor: Colors.panelView,
+    backgroundColor: Colors.white,
     marginTop: 4,
     marginBottom: 4,
     marginLeft: 0,
@@ -281,6 +315,13 @@ const styles = {
     textAlign: 'left',
   },
 
+  alertPanelViewTitle: {
+    ...defaultTextStyles.title2,
+    fontWeight: 'bold',
+    color: Colors.primary_red,
+    textAlign: 'left',
+  },
+
   // Text style for the sub-titles in Panels
   panelSubTitle: {
     ...defaultTextStyles.title3,
@@ -336,7 +377,7 @@ const styles = {
   // Should be similar to sectionListItemContainer
   panelFlatlistHeader: {
     justifyContent: 'center',
-    backgroundColor: Colors.shadeOf(Colors.BitnationDarkColor, 0.5),
+    // backgroundColor: Colors.shadeOf(Colors.BitnationDarkColor, 0.5),
     // Matches the marginLeft: 16 of sectionListItemContainer
     paddingLeft: 16,
     // Standard row height for an iOS list item:
@@ -417,7 +458,7 @@ const styles = {
 
   formSwitchLabelText: {
     ...defaultTextStyles.body,
-    color: 'white',
+    color: Colors.BitnationDarkGrayColor,
     marginRight: 60,
     fontSize: 16,
   },
@@ -431,13 +472,13 @@ const styles = {
     borderBottomWidth: 1,
     flex: 1,
     marginTop: 4,
-    marginBottom: 4,
+    marginBottom: 14,
     marginRight: 0,
     marginLeft: 0,
     fontSize: 16,
     paddingLeft: 4,
     paddingTop: 6,
-    paddingBottom: 6,
+    paddingBottom: 12,
     // font settings
     // color: Colors.placeholderTextColor,
   },
@@ -492,6 +533,7 @@ const styles = {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
     marginTop: 5,
     marginBottom: 10,
     // for testing
@@ -525,14 +567,14 @@ const styles = {
   // e.g. NationListItem Text
   listItemText: {
     ...defaultTextStyles.body,
-    color: 'white',
+    color: '#58595B',
     flex: 1,
   },
 
   // e.g. NationListItem Text very BOLD
   listItemTextVeryBold: {
     ...defaultTextStyles.bodyBlack,
-    color: 'white',
+    color: Colors.BitnationDarkGrayColor,
     flex: 1,
   },
 
@@ -556,11 +598,11 @@ const styles = {
   sectionListItemContainer: {
     flex: 1,
     flexDirection: 'row',
-    height: 44,
+    height: 46,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: Colors.sectionListItemContainerBackground,
-    marginLeft: 16,
+    marginLeft: 20,
   },
 
   // e.g. NationListHeader
@@ -569,6 +611,7 @@ const styles = {
     height: 30,
     justifyContent: 'center',
     alignItems: 'center',
+    marginLeft: 16,
     backgroundColor: Colors.sectionListHeaderContainer,
     // opacity: 0.5,
   },
@@ -616,6 +659,7 @@ const styles = {
   },
   tabStyle: {
     backgroundColor: 'transparent',
+    borderColor: Colors.activeTabStyle,
   },
   tabTextStyle: {
     backgroundColor: 'transparent',
@@ -651,7 +695,7 @@ const styles = {
   fakeBottomBar: {
     paddingTop: 5,
     height: isiPhoneXTabBar(55),
-    backgroundColor: Colors.BitnationBackgroundColor,
+    backgroundColor: Colors.BitnationDarkGrayColor,
     flexDirection: 'row',
     alignItems: 'stretch',
     justifyContent: 'space-around',
@@ -660,28 +704,50 @@ const styles = {
   currencyLarge: {
     ...defaultTextStyles.largeTitle,
     fontFamily: 'Roboto',
-    fontWeight: '300',
     fontSize: 30,
-    lineHeight: 36,
-    letterSpacing: 0,
     color: Colors.currency,
+  },
+  currencyMedium: {
+    ...defaultTextStyles.largeTitle,
+    fontFamily: 'Roboto',
+    fontSize: 15,
+    color: Colors.currency,
+    fontWeight: 'bold',
   },
 
   buttonTitle: {
     fontSize: 14,
-    color: Colors.BitnationLightColor,
+    color: Colors.BitnationLinkOrangeColor,
     letterSpacing: -0.02,
     lineHeight: 19,
     textAlign: 'center',
+    fontWeight: 'bold',
   },
   disabledButtonTitle: {
     fontSize: 14,
-    color: Colors.disabledButtonTitleColor,
+    color: Colors.BitnationLightGrayColor,
     letterSpacing: -0.02,
     lineHeight: 19,
     textAlign: 'center',
+    fontWeight: 'bold',
   },
-
+  arrowButtonTitle: {
+    fontSize: 15,
+    color: Colors.BitnationLinkOrangeColor,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  arrowButtonIcon: {
+    fontSize: 14,
+    color: Colors.BitnationLinkOrangeColor,
+    alignSelf: 'center',
+  },
+  disabledArrowButtonTitle: {
+    fontSize: 15,
+    color: Colors.BitnationLightGrayColor,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
   // ========================================
   // Buttons
   // e.g. components/common/Button.js
@@ -692,17 +758,14 @@ const styles = {
     justifyContent: 'center',
   },
 
-  enabledButton: {
-    backgroundColor: Colors.buttonColor,
-  },
-
-  disabledButton: {
-    backgroundColor: Colors.disabledButtonColor,
-  },
 
   buttonContainer: {
     marginLeft: 13,
     marginRight: 13,
+  },
+  arrowButtonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
 
   buttonContainerMultiple: {
@@ -712,6 +775,18 @@ const styles = {
     marginRight: 13,
   },
 
+  buttonPrevNext: {
+    marginTop: 13,
+    width: 90,
+  },
+
+  buttonListContainer: {
+    marginTop: 10,
+    marginBottom: 40,
+    // for testing
+    borderWidth: 0,
+
+  },
   // ========================================
   // Profile Screen
   // e.g. components/common/PanelView.js
@@ -723,8 +798,8 @@ const styles = {
   },
 
   avatarContainerLarge: {
-    flex: 1,
-    alignItems: 'center',
+    // flex: 1,
+    alignItems: 'flex-start',
   },
 
   avatarChangeContainer: {

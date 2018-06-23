@@ -7,7 +7,10 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <NationsListScreen
     navigator={
       Object {
+        "pop": [MockFunction],
         "push": [MockFunction],
+        "setButtons": [MockFunction],
+        "setOnNavigatorEvent": [MockFunction],
       }
     }
     store={
@@ -35,11 +38,7 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <BackgroundImage
-          source={
-            Object {
-              "testUri": "../../../src/assets/images/background.jpg",
-            }
-          }
+          source={1}
           style={undefined}
         />,
         <FakeNavigationBar
@@ -64,7 +63,7 @@ ShallowWrapper {
             activeTabBadgeStyle={Object {}}
             activeTabStyle={
               Object {
-                "backgroundColor": "#3e9eff",
+                "backgroundColor": "#FF8B00",
               }
             }
             activeTabTextStyle={Object {}}
@@ -89,12 +88,13 @@ ShallowWrapper {
             tabStyle={
               Object {
                 "backgroundColor": "transparent",
+                "borderColor": "#FF8B00",
               }
             }
             tabTextStyle={
               Object {
                 "backgroundColor": "transparent",
-                "color": "#3e9eff",
+                "color": "#FF8B00",
               }
             }
             tabsContainerStyle={
@@ -147,9 +147,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "function",
         "props": Object {
-          "source": Object {
-            "testUri": "../../../src/assets/images/background.jpg",
-          },
+          "source": 1,
           "style": undefined,
         },
         "ref": null,
@@ -188,7 +186,7 @@ ShallowWrapper {
             activeTabBadgeStyle={Object {}}
             activeTabStyle={
               Object {
-                "backgroundColor": "#3e9eff",
+                "backgroundColor": "#FF8B00",
               }
             }
             activeTabTextStyle={Object {}}
@@ -213,12 +211,13 @@ ShallowWrapper {
             tabStyle={
               Object {
                 "backgroundColor": "transparent",
+                "borderColor": "#FF8B00",
               }
             }
             tabTextStyle={
               Object {
                 "backgroundColor": "transparent",
-                "color": "#3e9eff",
+                "color": "#FF8B00",
               }
             }
             tabsContainerStyle={
@@ -250,7 +249,7 @@ ShallowWrapper {
             "activeTabBadgeContainerStyle": Object {},
             "activeTabBadgeStyle": Object {},
             "activeTabStyle": Object {
-              "backgroundColor": "#3e9eff",
+              "backgroundColor": "#FF8B00",
             },
             "activeTabTextStyle": Object {},
             "badges": Array [
@@ -269,10 +268,11 @@ ShallowWrapper {
             "tabBadgeStyle": Object {},
             "tabStyle": Object {
               "backgroundColor": "transparent",
+              "borderColor": "#FF8B00",
             },
             "tabTextStyle": Object {
               "backgroundColor": "transparent",
-              "color": "#3e9eff",
+              "color": "#FF8B00",
             },
             "tabsContainerStyle": Object {
               "backgroundColor": "transparent",
@@ -327,11 +327,7 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <BackgroundImage
-            source={
-              Object {
-                "testUri": "../../../src/assets/images/background.jpg",
-              }
-            }
+            source={1}
             style={undefined}
           />,
           <FakeNavigationBar
@@ -356,7 +352,7 @@ ShallowWrapper {
               activeTabBadgeStyle={Object {}}
               activeTabStyle={
                 Object {
-                  "backgroundColor": "#3e9eff",
+                  "backgroundColor": "#FF8B00",
                 }
               }
               activeTabTextStyle={Object {}}
@@ -381,12 +377,13 @@ ShallowWrapper {
               tabStyle={
                 Object {
                   "backgroundColor": "transparent",
+                  "borderColor": "#FF8B00",
                 }
               }
               tabTextStyle={
                 Object {
                   "backgroundColor": "transparent",
-                  "color": "#3e9eff",
+                  "color": "#FF8B00",
                 }
               }
               tabsContainerStyle={
@@ -439,9 +436,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
-            "source": Object {
-              "testUri": "../../../src/assets/images/background.jpg",
-            },
+            "source": 1,
             "style": undefined,
           },
           "ref": null,
@@ -480,7 +475,7 @@ ShallowWrapper {
               activeTabBadgeStyle={Object {}}
               activeTabStyle={
                 Object {
-                  "backgroundColor": "#3e9eff",
+                  "backgroundColor": "#FF8B00",
                 }
               }
               activeTabTextStyle={Object {}}
@@ -505,12 +500,13 @@ ShallowWrapper {
               tabStyle={
                 Object {
                   "backgroundColor": "transparent",
+                  "borderColor": "#FF8B00",
                 }
               }
               tabTextStyle={
                 Object {
                   "backgroundColor": "transparent",
-                  "color": "#3e9eff",
+                  "color": "#FF8B00",
                 }
               }
               tabsContainerStyle={
@@ -542,7 +538,7 @@ ShallowWrapper {
               "activeTabBadgeContainerStyle": Object {},
               "activeTabBadgeStyle": Object {},
               "activeTabStyle": Object {
-                "backgroundColor": "#3e9eff",
+                "backgroundColor": "#FF8B00",
               },
               "activeTabTextStyle": Object {},
               "badges": Array [
@@ -561,10 +557,11 @@ ShallowWrapper {
               "tabBadgeStyle": Object {},
               "tabStyle": Object {
                 "backgroundColor": "transparent",
+                "borderColor": "#FF8B00",
               },
               "tabTextStyle": Object {
                 "backgroundColor": "transparent",
-                "color": "#3e9eff",
+                "color": "#FF8B00",
               },
               "tabsContainerStyle": Object {
                 "backgroundColor": "transparent",

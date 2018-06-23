@@ -14,19 +14,24 @@ import {
 } from '../actions/wallet';
 import type { WalletType } from '../types/Wallet';
 import { getWalletIndex } from '../utils/wallet';
+import { SERVICES_DESTROYED, type ServicesDestroyedAction } from '../actions/serviceContainer';
 
 export type State = {
   +wallets: Array<WalletType> | null,
+  +selectedWalletCurrency: string | null,
   +selectedWalletAddress: string | null,
   +moneySendingInProgress: boolean,
   +moneySendingError: Error | null,
+  +moneySendingSuccess: boolean,
 };
 
 export const initialState: State = {
   wallets: null,
+  selectedWalletCurrency: null,
   selectedWalletAddress: null,
   moneySendingInProgress: false,
   moneySendingError: null,
+  moneySendingSuccess: false,
 };
 
 /**
@@ -35,36 +40,64 @@ export const initialState: State = {
  * @param {Action} action Performed Action.
  * @returns {State} Next state.
  */
-export default (state: State = initialState, action: Action): State => {
+export default (state: State = initialState, action: Action | ServicesDestroyedAction): State => {
   switch (action.type) {
+    case SERVICES_DESTROYED:
+      return initialState;
     case SELECT_WALLET:
-      return Object.assign({}, state, { selectedWalletAddress: action.wallet.ethAddress });
+      return Object.assign({}, state, { selectedWalletCurrency: action.wallet.currency, selectedWalletAddress: action.wallet.ethAddress });
     case WALLETS_LIST_UPDATED:
-      return Object.assign({}, state, { wallets: action.wallets });
+      return Object.assign({}, state, { wallets: _.cloneDeep(action.wallets) });
     case WALLET_SYNC_FAILED: {
-      const { walletAddress } = action;
-      const walletIndex = getWalletIndex(state.wallets || [], walletAddress);
-      const newWallets = _.cloneDeep(state.wallets);
+      const { walletAddress, walletCurrency, error } = action;
+      const wallets = state.wallets || [];
+      const walletIndex = getWalletIndex(wallets, walletAddress, walletCurrency);
       if (walletIndex === null) {
         return state;
       }
-      newWallets[walletIndex].synchronizationError = action.error;
-      return Object.assign({}, state, { wallets: newWallets });
+      return {
+        ...state,
+        wallets: wallets.map((item, index) => {
+          if (index !== walletIndex) {
+            return item;
+          }
+
+          return {
+            ...item,
+            synchronizationError: error,
+          };
+        }),
+      };
     }
     case UPDATE_WALLET_BALANCE: {
-      const { walletAddress } = action;
-      const walletIndex = getWalletIndex(state.wallets || [], walletAddress);
+      const { walletAddress, walletCurrency } = action;
+      const wallets = state.wallets || [];
+      const walletIndex = getWalletIndex(wallets, walletAddress, walletCurrency);
       if (walletIndex === null) {
         return state;
       }
-      const newWallets = _.cloneDeep(state.wallets);
-      newWallets[walletIndex].synchronizationError = undefined;
-      return Object.assign({}, state, { wallets: newWallets });
+      return {
+        ...state,
+        wallets: wallets.map((item, index) => {
+          if (index !== walletIndex) {
+            return item;
+          }
+
+          return {
+            ...item,
+            synchronizationError: undefined,
+          };
+        }),
+      };
     }
     case SEND_MONEY:
-      return { ...state, moneySendingInProgress: true, moneySendingError: null };
+      return {
+        ...state, moneySendingInProgress: true, moneySendingError: null, moneySendingSuccess: false,
+      };
     case SEND_MONEY_SUCCESS:
-      return { ...state, moneySendingInProgress: false, moneySendingError: null };
+      return {
+        ...state, moneySendingInProgress: false, moneySendingError: null, moneySendingSuccess: true,
+      };
     case SEND_MONEY_FAILED:
       return { ...state, moneySendingInProgress: false, moneySendingError: action.error };
     default:

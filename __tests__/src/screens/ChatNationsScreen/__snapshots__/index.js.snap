@@ -8,8 +8,10 @@ ShallowWrapper {
     fetchNations={[MockFunction]}
     navigator={
       Object {
+        "pop": [MockFunction],
         "push": [MockFunction],
         "setButtons": [MockFunction],
+        "setOnNavigatorEvent": [MockFunction],
       }
     }
     onSelectTab={[MockFunction]}
@@ -38,10 +40,12 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "fetchNations": [Function],
+      "fetchNations": [MockFunction],
       "navigator": Object {
+        "pop": [MockFunction],
         "push": [MockFunction],
         "setButtons": [MockFunction],
+        "setOnNavigatorEvent": [MockFunction],
       },
       "onSelectTab": [Function],
       "openNation": [Function],
@@ -84,10 +88,12 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "fetchNations": [Function],
+        "fetchNations": [MockFunction],
         "navigator": Object {
+          "pop": [MockFunction],
           "push": [MockFunction],
           "setButtons": [MockFunction],
+          "setOnNavigatorEvent": [MockFunction],
         },
         "onSelectTab": [Function],
         "openNation": [Function],

@@ -1,8 +1,10 @@
 // @flow
 
 export type ActivityLogMessage = {
-  id: string,
+  id: number,
+  accountId: string,
   msg: string,
   params: string,
   interpret: boolean,
+  created_at: Date
 };

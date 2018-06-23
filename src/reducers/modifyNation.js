@@ -18,6 +18,7 @@ import {
 import type { EditingNationType } from '../types/Nation';
 import type { Action } from '../actions/modifyNation';
 import { convertToEditingNation } from '../utils/nations';
+import { SERVICES_DESTROYED } from '../actions/serviceContainer';
 
 export type State = {
   +editingNation: EditingNationType | null,
@@ -56,6 +57,8 @@ export const initialState: State = {
  */
 export default (state: State = initialState, action: Action): State => {
   switch (action.type) {
+    case SERVICES_DESTROYED:
+      return initialState;
     case START_NATION_CREATION:
       return {
         ...state,

@@ -38,6 +38,9 @@ export {
   AccountSchema,
   AccountType,
 
+  AccountSettingsSchema,
+  AccountSettingsType,
+
   AccountBalanceSchema,
   AccountBalanceType,
 

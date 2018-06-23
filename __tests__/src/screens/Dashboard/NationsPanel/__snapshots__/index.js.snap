@@ -23,10 +23,17 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <PanelView
+          body={undefined}
+          buttonTitle="Button"
+          childrenContainerStyle={Object {}}
+          icon={undefined}
+          onButtonClick={null}
+          renderAdditionalInfo={null}
+          renderBottom={null}
           style={
             Object {
               "alignItems": "stretch",
-              "backgroundColor": "rgba(255,255,255,0.2)",
+              "backgroundColor": "white",
               "borderRadius": 8,
               "flex": 1,
               "flexDirection": "column",
@@ -63,7 +70,7 @@ ShallowWrapper {
               ellipsizeMode="tail"
               style={
                 Object {
-                  "color": "#FFFFFF",
+                  "color": "#929497",
                   "fontFamily": "Roboto",
                   "fontSize": 17,
                   "fontWeight": "normal",
@@ -79,7 +86,7 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "white",
+                    "color": "#FF8B00",
                     "fontFamily": "Roboto",
                     "fontSize": 17,
                     "fontWeight": "900",
@@ -108,7 +115,6 @@ ShallowWrapper {
             <View
               style={
                 Object {
-                  "backgroundColor": "rgba(27,57,92,0.5)",
                   "height": 30,
                   "justifyContent": "center",
                   "paddingLeft": 16,
@@ -121,7 +127,7 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "#FFFFFF",
+                    "color": "#929497",
                     "fontFamily": "Roboto",
                     "fontSize": 17,
                     "fontWeight": "normal",
@@ -161,6 +167,8 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
+          "body": undefined,
+          "buttonTitle": "Button",
           "children": Array [
             <View
               style={
@@ -176,7 +184,7 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "#FFFFFF",
+                    "color": "#929497",
                     "fontFamily": "Roboto",
                     "fontSize": 17,
                     "fontWeight": "normal",
@@ -192,7 +200,7 @@ ShallowWrapper {
                   ellipsizeMode="tail"
                   style={
                     Object {
-                      "color": "white",
+                      "color": "#FF8B00",
                       "fontFamily": "Roboto",
                       "fontSize": 17,
                       "fontWeight": "900",
@@ -221,7 +229,6 @@ ShallowWrapper {
               <View
                 style={
                   Object {
-                    "backgroundColor": "rgba(27,57,92,0.5)",
                     "height": 30,
                     "justifyContent": "center",
                     "paddingLeft": 16,
@@ -234,7 +241,7 @@ ShallowWrapper {
                   ellipsizeMode="tail"
                   style={
                     Object {
-                      "color": "#FFFFFF",
+                      "color": "#929497",
                       "fontFamily": "Roboto",
                       "fontSize": 17,
                       "fontWeight": "normal",
@@ -263,9 +270,14 @@ ShallowWrapper {
               />
             </View>,
           ],
+          "childrenContainerStyle": Object {},
+          "icon": undefined,
+          "onButtonClick": null,
+          "renderAdditionalInfo": null,
+          "renderBottom": null,
           "style": Object {
             "alignItems": "stretch",
-            "backgroundColor": "rgba(255,255,255,0.2)",
+            "backgroundColor": "white",
             "borderRadius": 8,
             "flex": 1,
             "flexDirection": "column",
@@ -298,7 +310,7 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "#FFFFFF",
+                    "color": "#929497",
                     "fontFamily": "Roboto",
                     "fontSize": 17,
                     "fontWeight": "normal",
@@ -314,7 +326,7 @@ ShallowWrapper {
                   ellipsizeMode="tail"
                   style={
                     Object {
-                      "color": "white",
+                      "color": "#FF8B00",
                       "fontFamily": "Roboto",
                       "fontSize": 17,
                       "fontWeight": "900",
@@ -348,7 +360,7 @@ ShallowWrapper {
                     ellipsizeMode="tail"
                     style={
                       Object {
-                        "color": "white",
+                        "color": "#FF8B00",
                         "fontFamily": "Roboto",
                         "fontSize": 17,
                         "fontWeight": "900",
@@ -363,7 +375,7 @@ ShallowWrapper {
                 ],
                 "ellipsizeMode": "tail",
                 "style": Object {
-                  "color": "#FFFFFF",
+                  "color": "#929497",
                   "fontFamily": "Roboto",
                   "fontSize": 17,
                   "fontWeight": "normal",
@@ -384,7 +396,7 @@ ShallowWrapper {
                     "children": "0",
                     "ellipsizeMode": "tail",
                     "style": Object {
-                      "color": "white",
+                      "color": "#FF8B00",
                       "fontFamily": "Roboto",
                       "fontSize": 17,
                       "fontWeight": "900",
@@ -411,7 +423,6 @@ ShallowWrapper {
                 <View
                   style={
                     Object {
-                      "backgroundColor": "rgba(27,57,92,0.5)",
                       "height": 30,
                       "justifyContent": "center",
                       "paddingLeft": 16,
@@ -424,7 +435,7 @@ ShallowWrapper {
                     ellipsizeMode="tail"
                     style={
                       Object {
-                        "color": "#FFFFFF",
+                        "color": "#929497",
                         "fontFamily": "Roboto",
                         "fontSize": 17,
                         "fontWeight": "normal",
@@ -474,7 +485,7 @@ ShallowWrapper {
                     ellipsizeMode="tail"
                     style={
                       Object {
-                        "color": "#FFFFFF",
+                        "color": "#929497",
                         "fontFamily": "Roboto",
                         "fontSize": 17,
                         "fontWeight": "normal",
@@ -486,7 +497,6 @@ ShallowWrapper {
                     Newest Nations
                   </Text>,
                   "style": Object {
-                    "backgroundColor": "rgba(27,57,92,0.5)",
                     "height": 30,
                     "justifyContent": "center",
                     "paddingLeft": 16,
@@ -503,7 +513,7 @@ ShallowWrapper {
                     "children": "Newest Nations",
                     "ellipsizeMode": "tail",
                     "style": Object {
-                      "color": "#FFFFFF",
+                      "color": "#929497",
                       "fontFamily": "Roboto",
                       "fontSize": 17,
                       "fontWeight": "normal",
@@ -558,10 +568,17 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <PanelView
+            body={undefined}
+            buttonTitle="Button"
+            childrenContainerStyle={Object {}}
+            icon={undefined}
+            onButtonClick={null}
+            renderAdditionalInfo={null}
+            renderBottom={null}
             style={
               Object {
                 "alignItems": "stretch",
-                "backgroundColor": "rgba(255,255,255,0.2)",
+                "backgroundColor": "white",
                 "borderRadius": 8,
                 "flex": 1,
                 "flexDirection": "column",
@@ -598,7 +615,7 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "#FFFFFF",
+                    "color": "#929497",
                     "fontFamily": "Roboto",
                     "fontSize": 17,
                     "fontWeight": "normal",
@@ -614,7 +631,7 @@ ShallowWrapper {
                   ellipsizeMode="tail"
                   style={
                     Object {
-                      "color": "white",
+                      "color": "#FF8B00",
                       "fontFamily": "Roboto",
                       "fontSize": 17,
                       "fontWeight": "900",
@@ -643,7 +660,6 @@ ShallowWrapper {
               <View
                 style={
                   Object {
-                    "backgroundColor": "rgba(27,57,92,0.5)",
                     "height": 30,
                     "justifyContent": "center",
                     "paddingLeft": 16,
@@ -656,7 +672,7 @@ ShallowWrapper {
                   ellipsizeMode="tail"
                   style={
                     Object {
-                      "color": "#FFFFFF",
+                      "color": "#929497",
                       "fontFamily": "Roboto",
                       "fontSize": 17,
                       "fontWeight": "normal",
@@ -696,6 +712,8 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
+            "body": undefined,
+            "buttonTitle": "Button",
             "children": Array [
               <View
                 style={
@@ -711,7 +729,7 @@ ShallowWrapper {
                   ellipsizeMode="tail"
                   style={
                     Object {
-                      "color": "#FFFFFF",
+                      "color": "#929497",
                       "fontFamily": "Roboto",
                       "fontSize": 17,
                       "fontWeight": "normal",
@@ -727,7 +745,7 @@ ShallowWrapper {
                     ellipsizeMode="tail"
                     style={
                       Object {
-                        "color": "white",
+                        "color": "#FF8B00",
                         "fontFamily": "Roboto",
                         "fontSize": 17,
                         "fontWeight": "900",
@@ -756,7 +774,6 @@ ShallowWrapper {
                 <View
                   style={
                     Object {
-                      "backgroundColor": "rgba(27,57,92,0.5)",
                       "height": 30,
                       "justifyContent": "center",
                       "paddingLeft": 16,
@@ -769,7 +786,7 @@ ShallowWrapper {
                     ellipsizeMode="tail"
                     style={
                       Object {
-                        "color": "#FFFFFF",
+                        "color": "#929497",
                         "fontFamily": "Roboto",
                         "fontSize": 17,
                         "fontWeight": "normal",
@@ -798,9 +815,14 @@ ShallowWrapper {
                 />
               </View>,
             ],
+            "childrenContainerStyle": Object {},
+            "icon": undefined,
+            "onButtonClick": null,
+            "renderAdditionalInfo": null,
+            "renderBottom": null,
             "style": Object {
               "alignItems": "stretch",
-              "backgroundColor": "rgba(255,255,255,0.2)",
+              "backgroundColor": "white",
               "borderRadius": 8,
               "flex": 1,
               "flexDirection": "column",
@@ -833,7 +855,7 @@ ShallowWrapper {
                   ellipsizeMode="tail"
                   style={
                     Object {
-                      "color": "#FFFFFF",
+                      "color": "#929497",
                       "fontFamily": "Roboto",
                       "fontSize": 17,
                       "fontWeight": "normal",
@@ -849,7 +871,7 @@ ShallowWrapper {
                     ellipsizeMode="tail"
                     style={
                       Object {
-                        "color": "white",
+                        "color": "#FF8B00",
                         "fontFamily": "Roboto",
                         "fontSize": 17,
                         "fontWeight": "900",
@@ -883,7 +905,7 @@ ShallowWrapper {
                       ellipsizeMode="tail"
                       style={
                         Object {
-                          "color": "white",
+                          "color": "#FF8B00",
                           "fontFamily": "Roboto",
                           "fontSize": 17,
                           "fontWeight": "900",
@@ -898,7 +920,7 @@ ShallowWrapper {
                   ],
                   "ellipsizeMode": "tail",
                   "style": Object {
-                    "color": "#FFFFFF",
+                    "color": "#929497",
                     "fontFamily": "Roboto",
                     "fontSize": 17,
                     "fontWeight": "normal",
@@ -919,7 +941,7 @@ ShallowWrapper {
                       "children": "0",
                       "ellipsizeMode": "tail",
                       "style": Object {
-                        "color": "white",
+                        "color": "#FF8B00",
                         "fontFamily": "Roboto",
                         "fontSize": 17,
                         "fontWeight": "900",
@@ -946,7 +968,6 @@ ShallowWrapper {
                   <View
                     style={
                       Object {
-                        "backgroundColor": "rgba(27,57,92,0.5)",
                         "height": 30,
                         "justifyContent": "center",
                         "paddingLeft": 16,
@@ -959,7 +980,7 @@ ShallowWrapper {
                       ellipsizeMode="tail"
                       style={
                         Object {
-                          "color": "#FFFFFF",
+                          "color": "#929497",
                           "fontFamily": "Roboto",
                           "fontSize": 17,
                           "fontWeight": "normal",
@@ -1009,7 +1030,7 @@ ShallowWrapper {
                       ellipsizeMode="tail"
                       style={
                         Object {
-                          "color": "#FFFFFF",
+                          "color": "#929497",
                           "fontFamily": "Roboto",
                           "fontSize": 17,
                           "fontWeight": "normal",
@@ -1021,7 +1042,6 @@ ShallowWrapper {
                       Newest Nations
                     </Text>,
                     "style": Object {
-                      "backgroundColor": "rgba(27,57,92,0.5)",
                       "height": 30,
                       "justifyContent": "center",
                       "paddingLeft": 16,
@@ -1038,7 +1058,7 @@ ShallowWrapper {
                       "children": "Newest Nations",
                       "ellipsizeMode": "tail",
                       "style": Object {
-                        "color": "#FFFFFF",
+                        "color": "#929497",
                         "fontFamily": "Roboto",
                         "fontSize": 17,
                         "fontWeight": "normal",
