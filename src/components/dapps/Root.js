@@ -35,8 +35,9 @@ export default class Root extends Component<Props, any> {
     }));
   };
 
-  performCallbackByName = (callbackName: string) => {
+  performCallbackByID = (callbackID: string) => {
     // @todo Panthalassa call
+    console.log(`CALLBACK ${callbackID} CALLED`);
   };
 
   generateCustomProps = (component: any, ownProps: Object) => {
@@ -44,7 +45,7 @@ export default class Root extends Component<Props, any> {
       return {};
     }
 
-    const { stateBasedProps = {} } = component;
+    const { stateBasedProps = {}, callbackProps = [] } = component;
     const resultedProps = {};
 
     Object.keys(stateBasedProps).forEach((nameWithoutPath) => {
@@ -64,6 +65,19 @@ export default class Root extends Component<Props, any> {
         // It's a getting property
         resultedProps[nameWithoutPath] = this.getStateByKeyPath(propKeyPath);
       }
+    });
+
+    callbackProps.forEach((nameWithoutID) => {
+      // Names on components are specified without 'ID' suffix to match native props.
+      const propName = `${nameWithoutID}ID`;
+      const callbackID = ownProps[propName];
+      if (callbackID == null) return;
+      if (typeof callbackID !== 'string') {
+        console.warn(`Callback id ${callbackID} must be a string.`);
+        return;
+      }
+
+      resultedProps[nameWithoutID] = () => this.performCallbackByID(callbackID);
     });
 
     return resultedProps;

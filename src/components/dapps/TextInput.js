@@ -23,6 +23,10 @@ export default class Input extends Component {
     value: 'get',
   };
 
+  static callbackProps = [
+    'onEndEditing',
+  ];
+
   render() {
     return (
       <ReactNativeTextInput {...this.props} />
