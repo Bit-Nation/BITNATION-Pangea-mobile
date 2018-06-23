@@ -1,5 +1,6 @@
 // @flow
 
+import _ from 'lodash';
 import {
   call,
   put,
@@ -82,6 +83,21 @@ export function* saveWalletsToDb(walletsArray: WalletType[]): Generator<*, *, *>
 }
 
 /**
+ * @desc Update the wallet's balance in realm.
+ * @param {WalletType[]} walletsArray Array of wallets to be updated in Realm
+ * @returns {void}
+ */
+export function* updateWalletsToDb(walletsArray: WalletType[]): Generator<*, *, *> {
+  const db = yield defaultDB;
+  const walletEthToSave = _.find(walletsArray, ['name', 'Ethereum']);
+  const walletPatToSave = _.find(walletsArray, ['name', 'XPAT']);
+  db.write(() => {
+    db.create('Wallet', { name: walletEthToSave.name, balance: walletEthToSave.balance }, true);
+    db.create('Wallet', { name: walletPatToSave.name, balance: walletPatToSave.balance }, true);
+  });
+}
+
+/**
  * @desc Updates the balance in the wallets on the list.
  * @returns {void}
  */
@@ -99,17 +115,15 @@ export function* updateWalletList(): Generator<*, *, *> {
   if (walletsFromDb.length === 0) {
     walletsWithoutBalance = yield call([walletService, 'getWallets']);
     yield call(saveWalletsToDb, walletsWithoutBalance);
-    console.log('CREATE DB WALLETS -> ', walletsWithoutBalance);
+    console.log('CREATE DB WALLETS --> ', walletsWithoutBalance);
   } else {
     walletsWithoutBalance = convertFromDatabase(walletsFromDb);
-    console.log('ENTER DB WALLETS -> ', walletsWithoutBalance);
+    console.log('ENTER DB WALLETS --> ', walletsWithoutBalance);
   }
   yield put(walletsListUpdated(walletsWithoutBalance));
   try {
-    // Check if connection -> Call resolve balance & Update Wallet DB & walletsListUpdate
-    // Else -> Read from DB & walletsListUpdate
     const wallets = yield call([walletService, 'resolveBalance'], walletsWithoutBalance, account.networkType);
-    console.log('WALLETS Balance -> ', wallets);
+    yield call(updateWalletsToDb, wallets);
     yield put(walletsListUpdated(wallets));
   } catch (error) {
     yield put(walletSyncFailed(walletsWithoutBalance[0].ethAddress, walletsWithoutBalance[0].currency, error));
