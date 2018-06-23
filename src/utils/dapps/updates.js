@@ -8,8 +8,6 @@
  * @return {Object} Updated object.
  */
 export function updatePartByKeyPath(initialObject: Object, keyPath: string, value: any): Object {
-  console.log(keyPath);
-
   const indexOfDot = keyPath.indexOf('.');
   if (indexOfDot === -1) {
     return {
