@@ -42,7 +42,7 @@
 - (void)setSignedProfile:(NSString*)v;
 @end
 
-FOUNDATION_EXPORT NSString* PanthalassaCreateHumanMessage(NSString* rawMsg, NSString* secret, NSError** error);
+FOUNDATION_EXPORT NSString* PanthalassaCreateHumanMessage(NSString* rawMsg, NSString* secretID, NSString* secret, NSError** error);
 
 FOUNDATION_EXPORT NSString* PanthalassaDecryptMessage(NSString* message, NSString* secret, NSError** error);
 
@@ -70,8 +70,7 @@ FOUNDATION_EXPORT NSString* PanthalassaNewAccountKeysFromMnemonic(NSString* mne,
 
 FOUNDATION_EXPORT NSString* PanthalassaNewPreKeyBundle(NSError** error);
 
-// skipped function SendResponse with unsupported parameter or return types
-
+FOUNDATION_EXPORT BOOL PanthalassaSendResponse(NSString* id_, NSString* data, NSString* responseError, long timeout, NSError** error);
 
 FOUNDATION_EXPORT NSString* PanthalassaSignProfile(NSString* name, NSString* location, NSString* image, NSError** error);
 
