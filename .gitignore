@@ -22,6 +22,7 @@ DerivedData
 *.ipa
 *.xcuserstate
 project.xcworkspace
+ios/Frameworks/Realm*
 
 ios/Pods
 
@@ -62,3 +63,4 @@ src.zip
 docs_build
 /.eslintrc
 pangea*
+android/java_pid13504.hprof
