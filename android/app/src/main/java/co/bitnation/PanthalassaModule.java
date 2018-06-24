@@ -248,7 +248,7 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
             promise.reject("error", e.getLocalizedMessage());
         }
     }
-
+/*
     @ReactMethod
     public void PanthalassaSendResponse(ReadableMap jsonParams, Promise promise) throws JSONException {
         try {
@@ -262,7 +262,7 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
             promise.reject("error", e.getLocalizedMessage());
         }
     }
-
+*/
     @ReactMethod
     public void PanthalassaSignProfile(ReadableMap jsonParams, Promise promise) throws JSONException {
         try {
