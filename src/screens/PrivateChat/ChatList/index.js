@@ -111,14 +111,14 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
   startChat = async () => {
     try {
       const response = await ChatService.getPreKeyBundle(this.state.publicKey);
-      console.log('fetch bundle: ', response);
+      // console.log('fetch bundle: ', response);
       await ChatService.startChat(this.state.publicKey, JSON.stringify(response.bundle));
-      this.props.navigator.push({
-        ...screen('PRIVATE_CHAT_SCREEN'),
-        passProps: {
-          opponent: this.state.profile,
-        },
-      });
+      // this.props.navigator.push({
+      //   ...screen('PRIVATE_CHAT_SCREEN'),
+      //   passProps: {
+      //     opponent: this.state.profile,
+      //   },
+      // });
     } catch (e) {
       console.log('fetch error: ', e);
     }
