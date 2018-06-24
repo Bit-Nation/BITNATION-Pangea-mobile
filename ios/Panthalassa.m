@@ -271,6 +271,7 @@ RCT_REMAP_METHOD(PanthalassaCreateHumanMessage,
   NSError *error = nil;
   
   response = PanthalassaCreateHumanMessage([RCTConvert NSString:config[@"rawMsg"]],
+                              [RCTConvert NSString:config[@"secretID"]],
                               [RCTConvert NSString:config[@"secret"]],
                               &error);
   
@@ -327,8 +328,10 @@ RCT_REMAP_METHOD(PanthalassaSendResponse,
   BOOL response;
   NSError *error = nil;
   
-  response = PanthalassaSendResponse([RCTConvert NSString:config[@"id_"]],
+  response = PanthalassaSendResponse([RCTConvert NSString:config[@"id"]],
                                           [RCTConvert NSString:config[@"data"]],
+                                          [RCTConvert NSString:config[@"responseError"]],
+                                          [RCTConvert CGFloat:config[@"timeout"]],
                                           &error);
   
   NSNumber *val = [NSNumber numberWithBool:response];
@@ -374,6 +377,24 @@ RCT_REMAP_METHOD(PanthalassaSignProfileStandAlone,
                                               [RCTConvert NSString:config[@"keyManagerStore"]],
                                               [RCTConvert NSString:config[@"password"]],
                                               &error);
+  
+  if (error == nil) {
+    resolve(response);
+  } else {
+    reject(@"error", error.localizedDescription, error);
+  }
+}
+
+RCT_REMAP_METHOD(PanthalassaHandleInitialMessage,
+                 PanthalassaHandleInitialMessageWithResolver:(NSDictionary *)config
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject) {
+  
+  NSString *response;
+  NSError *error = nil;
+  response = PanthalassaNewAccountKeys([RCTConvert NSString:config[@"message"]],
+                                         [RCTConvert NSString:config[@"preKeyBundlePrivatePart"]],
+                                         &error);
   
   if (error == nil) {
     resolve(response);
