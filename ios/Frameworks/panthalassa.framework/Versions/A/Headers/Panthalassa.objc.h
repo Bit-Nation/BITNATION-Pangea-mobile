@@ -70,7 +70,8 @@ FOUNDATION_EXPORT NSString* PanthalassaNewAccountKeysFromMnemonic(NSString* mne,
 
 FOUNDATION_EXPORT NSString* PanthalassaNewPreKeyBundle(NSError** error);
 
-FOUNDATION_EXPORT BOOL PanthalassaSendResponse(NSString* id_, NSString* data, NSError** error);
+// skipped function SendResponse with unsupported parameter or return types
+
 
 FOUNDATION_EXPORT NSString* PanthalassaSignProfile(NSString* name, NSString* location, NSString* image, NSError** error);
 

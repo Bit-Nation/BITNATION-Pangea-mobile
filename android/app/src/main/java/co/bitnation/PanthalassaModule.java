@@ -248,19 +248,21 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
             promise.reject("error", e.getLocalizedMessage());
         }
     }
-
+/*
     @ReactMethod
     public void PanthalassaSendResponse(ReadableMap jsonParams, Promise promise) throws JSONException {
         try {
-            Panthalassa.sendResponse(jsonParams.getString("id_"),
-                                    jsonParams.getString("data"));
+            Panthalassa.sendResponse(jsonParams.getString("id"),
+                                    jsonParams.getString("data"),
+                                    jsonParams.getString("responseError"),
+                                    jsonParams.getInt("timeout"));
             promise.resolve(true);
         } catch (Exception e) {
             e.printStackTrace();
             promise.reject("error", e.getLocalizedMessage());
         }
     }
-
+*/
     @ReactMethod
     public void PanthalassaSignProfile(ReadableMap jsonParams, Promise promise) throws JSONException {
         try {
