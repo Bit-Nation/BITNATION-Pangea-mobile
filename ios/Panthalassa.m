@@ -318,7 +318,7 @@ RCT_REMAP_METHOD(PanthalassaInitializeChat,
     reject(@"error", error.localizedDescription, error);
   }
 }
-
+/*
 RCT_REMAP_METHOD(PanthalassaSendResponse,
                  PanthalassaSendResponseWithResolver:(NSDictionary *)config
                  resolver:(RCTPromiseResolveBlock)resolve
@@ -341,7 +341,7 @@ RCT_REMAP_METHOD(PanthalassaSendResponse,
     reject(@"error", error.localizedDescription, error);
   }
 }
-
+*/
 RCT_REMAP_METHOD(PanthalassaSignProfile,
                  PanthalassaSignProfileWithResolver:(NSDictionary *)config
                  resolver:(RCTPromiseResolveBlock)resolve
