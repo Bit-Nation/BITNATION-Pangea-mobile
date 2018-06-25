@@ -19,16 +19,24 @@ export const appStyle = {
   ...tabsStyle,
 };
 
-export const androidNavigationButtons = Platform.OS === 'android' ? {
-  leftButtons: [{
-    id: 'back',
-    buttonColor: Colors.androidNavigationButtons,
-  }],
-} : {};
+export const androidNavigationButtons =
+  Platform.OS === 'android'
+    ? {
+      leftButtons: [
+        {
+          id: 'back',
+          buttonColor: Colors.androidNavigationButtons,
+        },
+      ],
+    }
+    : {};
 
 export const navigatorStyle = {
   statusBarTextColorScheme: 'light',
-  statusBarColor: Platform.OS === 'ios' ? Colors.statusBarColorIOS : Colors.statusBarColorOther, // Nativebase variable!
+  statusBarColor:
+    Platform.OS === 'ios'
+      ? Colors.statusBarColorIOS
+      : Colors.statusBarColorOther, // Nativebase variable!
   navBarBackgroundColor: Colors.navBarBackgroundColor,
   navBarTransparent: true,
   navBarBlur: false, // blur is too light
@@ -45,7 +53,10 @@ export const navigatorStyle = {
 
 export const hiddenNavigatorStyle = {
   statusBarTextColorScheme: 'light',
-  statusBarColor: Platform.OS === 'ios' ? Colors.statusBarColorIOS : Colors.statusBarColorOther,
+  statusBarColor:
+    Platform.OS === 'ios'
+      ? Colors.statusBarColorIOS
+      : Colors.statusBarColorOther,
   navBarHidden: true,
   drawUnderStatusBar: false, // Apple says, don't do it. So we don't.
   screenBackgroundColor: 'transparent',
@@ -201,6 +212,21 @@ const Screens = {
     screen: 'Pangea.QRCodeScannerScreen',
     title: i18n.t('screens.scanQRCode.title'),
     navigatorStyle,
+  },
+  QR_CODE_DAPP_SCREEN: {
+    screen: 'Pangea.QRCodeAppScreen',
+    title: i18n.t('screens.scanQRCode.title'),
+    navigatorStyle,
+    navigatorButtons: {
+      leftButtons: [
+        {
+          id: 'cancel',
+          title: 'Cancel',
+          buttonColor: Colors.androidNavigationButtons,
+        },
+      ],
+      rightButtons: [],
+    },
   },
   SETTINGS_SCREEN: {
     screen: 'Pangea.Settings',
