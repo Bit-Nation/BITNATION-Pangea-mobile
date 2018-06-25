@@ -19,24 +19,16 @@ export const appStyle = {
   ...tabsStyle,
 };
 
-export const androidNavigationButtons =
-  Platform.OS === 'android'
-    ? {
-      leftButtons: [
-        {
-          id: 'back',
-          buttonColor: Colors.androidNavigationButtons,
-        },
-      ],
-    }
-    : {};
+export const androidNavigationButtons = Platform.OS === 'android' ? {
+  leftButtons: [{
+    id: 'back',
+    buttonColor: Colors.androidNavigationButtons,
+  }],
+} : {};
 
 export const navigatorStyle = {
   statusBarTextColorScheme: 'light',
-  statusBarColor:
-    Platform.OS === 'ios'
-      ? Colors.statusBarColorIOS
-      : Colors.statusBarColorOther, // Nativebase variable!
+  statusBarColor: Platform.OS === 'ios' ? Colors.statusBarColorIOS : Colors.statusBarColorOther, // Nativebase variable!
   navBarBackgroundColor: Colors.navBarBackgroundColor,
   navBarTransparent: true,
   navBarBlur: false, // blur is too light
@@ -53,10 +45,7 @@ export const navigatorStyle = {
 
 export const hiddenNavigatorStyle = {
   statusBarTextColorScheme: 'light',
-  statusBarColor:
-    Platform.OS === 'ios'
-      ? Colors.statusBarColorIOS
-      : Colors.statusBarColorOther,
+  statusBarColor: Platform.OS === 'ios' ? Colors.statusBarColorIOS : Colors.statusBarColorOther,
   navBarHidden: true,
   drawUnderStatusBar: false, // Apple says, don't do it. So we don't.
   screenBackgroundColor: 'transparent',
