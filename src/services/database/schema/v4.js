@@ -280,12 +280,12 @@ export const NationSchema = {
  * @property {string} address Wallet's Public address.
  */
 export type WalletType = {
-  symbol: 'string',
-  name: 'string',
-  ethereumBased: 'bool',
-  decimals: 'int',
-  balance: 'string',
-  address: 'string',
+  symbol: 'ETH' | 'PAT',
+  name: string,
+  chain: 'ethereum' | 'rootstock'| 'bitcoin',
+  decimals: number,
+  balance: string,
+  address: string,
 }
 
 export const WalletSchema = {
@@ -294,7 +294,7 @@ export const WalletSchema = {
   properties: {
     name: 'string',
     symbol: 'string',
-    ethereumBased: 'bool',
+    chain: 'string',
     decimals: 'int',
     balance: 'string',
     address: 'string',
