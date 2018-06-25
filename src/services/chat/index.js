@@ -81,5 +81,32 @@ export default class ChatService {
   static async startChat(identityPublicKey: string, preKeyBundle: string): Promise<any> {
     const response = await Panthalassa.PanthalassaInitializeChat({ identityPublicKey, preKeyBundle });
     console.log('init chat: ', response);
+    const jsonObject = JSON.parse(response);
+    const initChatResponse = await ChatService.uploadMessage(response.message);
+    console.log('link chat: ', initChatResponse);
+  }
+
+  static async uploadMessage(message: string): Promise {
+    const URL = `${Config.CHAT_ENDPOINT}/message`;
+    return fetch(URL, {
+      body: message,
+      headers: {
+        'content-type': 'application/json',
+        bearer: Config.CHAT_TOKEN,
+      },
+      method: 'PUT',
+    });
+  }
+
+  static async loadMessages(publicKey: string): Promise {
+    const URL = `${Config.CHAT_ENDPOINT}/missing-messages/${publicKey}`;
+    return fetch(URL, {
+      headers: {
+        'content-type': 'application/json',
+        bearer: Config.CHAT_TOKEN,
+      },
+      method: 'GET',
+    })
+      .then(response => response.json());
   }
 }
