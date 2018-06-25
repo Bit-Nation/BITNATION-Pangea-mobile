@@ -60,6 +60,7 @@
     "react-redux": "^5.0.6",
     "readable-stream": "^1.0.33",
     "realm": "^2.6.0",
+    "recompose": "^0.27.1",
     "reconnecting-websocket": "^4.0.0-rc5",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
