@@ -18,6 +18,9 @@ type Props = {
    * @desc Function to return the Promise reject
    */
   onFail: () => null,
+  /**
+   * @desc Properties of the transaction
+   */
   to: String,
   from: String,
   amount: String,
@@ -63,7 +66,7 @@ ConfirmationScreen.defaultProps = {
   onSuccess: () => null,
   to: '0x0',
   from: '0x0',
-  amount: null,
+  amount: '0',
   estimate: '0',
   purpose: '',
   app: '',

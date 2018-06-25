@@ -37,7 +37,7 @@ export default function CustomSigner(privateKey: string, provider: string) {
             onSuccess: (gasPrice, gasLimit) => {
               // Here we have gasPrice which is in wei, so we need to convert it into gwei.
               transactionObject.gasPrice = ethers.utils.parseUnits(gasPrice.toString(), 'gwei');
-              transactionObject.gasLimit = ethers.utils.bigNumberify(gasLimit.toString());
+              transactionObject.gasLimit = ethers.utils.bigNumberify(gasLimit);
               resolve(wallet.sign(transactionObject));
             },
             to: transactionObject.to,
