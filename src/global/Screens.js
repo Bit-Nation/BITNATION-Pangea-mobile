@@ -210,7 +210,6 @@ const Screens = {
       leftButtons: [
         {
           id: 'cancel',
-          title: 'Cancel',
           buttonColor: Colors.androidNavigationButtons,
         },
       ],
