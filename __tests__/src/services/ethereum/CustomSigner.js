@@ -14,11 +14,12 @@ jest.mock('react-native-navigation', () => ({
 describe('Check Custom Signer', () => {
   test('Check the custom sign function', async () => {
     const customSigner = new CustomSigner(privateKey, 'rinkeby');
+    customSigner.estimateGas = () => 1000;
     const signedTransaction = await customSigner.sign({
       to: '0xF0D346A86A68086846363185d24D5893F4353A78',
       from: '0xF0D346A86A68086846363185d24D5893F4353A78',
       amount: '0',
-      estimate: '0',
+      data: '0x0',
     });
     expect(signedTransaction).toMatch(/0x/);
   });
