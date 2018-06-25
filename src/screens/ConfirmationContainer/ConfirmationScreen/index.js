@@ -28,6 +28,7 @@ type Props = {
   /**
    * @desc Function to return the Promise resolve
    * @param {number} gasPrice Number with the gasPrice selected by the user for the current transaction
+   * @param {string} gasLimit string to describe the maximum gas price for this transaction
    */
   onSuccess: (gasPrice: number, gasLimit: string) => null,
   /**
@@ -48,6 +49,7 @@ type Props = {
 type State = {
   /**
    * @desc gasPrice to return in resolve
+   * @desc gasLimit to return in resolve
    */
   gasPrice: number,
   gasLimit: string
