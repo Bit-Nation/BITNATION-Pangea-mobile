@@ -119,7 +119,15 @@
       "!**/node_modules/**",
       "!**/coverage/**",
       "!**/vendor/**"
-    ]
+    ],
+    "globals": {
+      "WebSocket": {
+        "CONNECTING": 0,
+        "OPEN": 1,
+        "CLOSING": 2,
+        "CLOSED": 3
+      }
+    }
   },
   "react-native": {
     "crypto": "react-native-crypto",
