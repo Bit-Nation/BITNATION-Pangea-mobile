@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { Text as ReactNativeText } from 'react-native';
 
-export default class View extends Component {
+export default class Text extends Component {
   static validNativeProps = [
     'style',
     'numberOfLines',
