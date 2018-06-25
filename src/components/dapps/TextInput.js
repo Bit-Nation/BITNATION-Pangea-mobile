@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { TextInput as ReactNativeTextInput } from 'react-native';
 
-export default class Input extends Component {
+export default class TextInput extends Component {
   static validNativeProps = [
     'style',
     'autoCorrect',
