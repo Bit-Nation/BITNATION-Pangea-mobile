@@ -29,7 +29,7 @@ type Props = {
    * @desc Function to return the Promise resolve
    * @param {number} gasPrice Number with the gasPrice selected by the user for the current transaction
    */
-  onSuccess: (gasPrice: number, gasLimit: number) => null,
+  onSuccess: (gasPrice: number, gasLimit: string) => null,
   /**
    * @desc Function to return the Promise reject
    */
@@ -50,7 +50,7 @@ type State = {
    * @desc gasPrice to return in resolve
    */
   gasPrice: number,
-  gasLimit: number
+  gasLimit: string
 }
 
 class ConfirmationScreen extends NavigatorComponent<Props, State> {
