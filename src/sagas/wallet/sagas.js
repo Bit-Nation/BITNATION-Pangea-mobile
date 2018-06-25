@@ -5,6 +5,7 @@ import {
   put,
   select,
 } from 'redux-saga/effects';
+import { BigNumber } from 'bignumber.js';
 import {
   sendMoneyFailed,
   sendMoneySuccess,
@@ -18,6 +19,30 @@ import ServiceContainer from '../../services/container';
 import { NoWalletServiceError } from '../../global/errors/services';
 import defaultDB from '../../services/database';
 import type { WalletType as DBWallet } from '../../services/database/schemata';
+import { convertFromDatabase, convertToDatabase } from '../../utils/mapping/wallet';
+import { resolveWallet } from '../../utils/wallet';
+
+/**
+ * @desc Update Eth wallet balance to realm.
+ * @param {WalletType[]} walletsArray Array of wallets to save in to Realm
+ * @param {String} amount Amount to discount from the wallet
+ * @param {String} currency Currency of the wallet to update
+ * @returns {void}
+ */
+export function* updateWalletToDb(walletsArray: WalletType[], amount: string, currency: string): Generator<*, *, *> {
+  const db = yield defaultDB;
+  const walletToSave = resolveWallet(walletsArray, currency);
+  if (walletToSave === null) {
+    return;
+  }
+  const walletToDB = convertToDatabase(walletToSave);
+  BigNumber.config({ DECIMAL_PLACES: 18 });
+  const balanceBNEth = new BigNumber(walletToDB.balance);
+  const amountNEth = new BigNumber(amount);
+  db.write(() => {
+    db.create('Wallet', { name: walletToDB.name, balance: balanceBNEth.minus(amountNEth) }, true);
+  });
+}
 
 /**
  * @desc Sends money depending the currency of the wallets on the list.
@@ -41,6 +66,7 @@ export function* sendMoneySaga(action: SendMoneyAction): Generator<*, *, *> {
     try {
       yield call([walletService, 'sendMoney'], fromAddress, toAddress, amountToSend);
       yield put(sendMoneySuccess());
+      yield call(updateWalletToDb, amountToSend, state.wallet.selectedWalletCurrency);
     } catch (error) {
       yield put(sendMoneyFailed(error));
     }
@@ -48,6 +74,7 @@ export function* sendMoneySaga(action: SendMoneyAction): Generator<*, *, *> {
     try {
       yield call([walletService, 'sendToken'], fromAddress, toAddress, amountToSend, account.networkType);
       yield put(sendMoneySuccess());
+      yield call(updateWalletToDb, amountToSend, state.wallet.selectedWalletCurrency);
     } catch (error) {
       yield put(sendMoneyFailed(error));
     }
@@ -61,7 +88,44 @@ export function* sendMoneySaga(action: SendMoneyAction): Generator<*, *, *> {
 export function* getDbWallets(): Generator<*, *, *> {
   const db = yield defaultDB;
   const results = db.objects('Wallet');
-  return yield results || null;
+  console.log('Wallets from the DB ->', results);
+  return yield results;
+}
+
+/**
+ * @desc Gets the wallets saved in realm.
+ * @param {WalletType[]} walletsArray Array of wallets to save in to Realm
+ * @returns {void}
+ */
+export function* saveWalletsToDb(walletsArray: WalletType[]): Generator<*, *, *> {
+  const db = yield defaultDB;
+  const ethWallet = convertToDatabase(walletsArray[0]);
+  const patWallet = convertToDatabase(walletsArray[1]);
+  db.write(() => {
+    db.create('Wallet', ethWallet);
+    db.create('Wallet', patWallet);
+  });
+}
+
+/**
+ * @desc Update the wallet's balance in realm.
+ * @param {WalletType[]} walletsArray Array of wallets to be updated in Realm
+ * @returns {void}
+ */
+export function* updateWalletsToDb(walletsArray: WalletType[]): Generator<*, *, *> {
+  const db = yield defaultDB;
+  const walletEth = resolveWallet(walletsArray, 'ETH');
+  const walletPat = resolveWallet(walletsArray, 'PAT');
+  if (walletEth === null || walletPat === null) {
+    return;
+  }
+  const walletEthToSave = convertToDatabase(walletEth);
+  const walletPatToSave = convertToDatabase(walletPat);
+
+  db.write(() => {
+    db.create('Wallet', { name: walletEthToSave.name, balance: walletEthToSave.balance }, true);
+    db.create('Wallet', { name: walletPatToSave.name, balance: walletPatToSave.balance }, true);
+  });
 }
 
 /**
@@ -77,16 +141,20 @@ export function* updateWalletList(): Generator<*, *, *> {
     return;
   }
 
-  let walletsWithoutBalance;
-  const walletsFromDb: DBWallet = yield call(getDbWallets);
-  if (walletsFromDb === null) {
+  let walletsWithoutBalance: WalletType[];
+  const walletsFromDb: DBWallet[] = yield call(getDbWallets);
+  if (walletsFromDb.length === 0) {
     walletsWithoutBalance = yield call([walletService, 'getWallets']);
+    yield call(saveWalletsToDb, walletsWithoutBalance);
+    console.log('CREATE DB WALLETS --> ', walletsWithoutBalance);
   } else {
-    walletsWithoutBalance = walletsFromDb;
+    walletsWithoutBalance = convertFromDatabase(walletsFromDb);
+    console.log('ENTER DB WALLETS --> ', walletsWithoutBalance);
   }
   yield put(walletsListUpdated(walletsWithoutBalance));
   try {
     const wallets = yield call([walletService, 'resolveBalance'], walletsWithoutBalance, account.networkType);
+    yield call(updateWalletsToDb, wallets);
     yield put(walletsListUpdated(wallets));
   } catch (error) {
     yield put(walletSyncFailed(walletsWithoutBalance[0].ethAddress, walletsWithoutBalance[0].currency, error));
