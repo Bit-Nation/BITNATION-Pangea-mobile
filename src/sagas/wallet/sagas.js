@@ -30,22 +30,15 @@ import { resolveWallet } from '../../utils/wallet';
  * @returns {void}
  */
 export function* updateWalletToDb(walletsArray: WalletType[], amount: string, currency: string): Generator<*, *, *> {
-  console.log('Wallet Params --> ', walletsArray);
-  console.log('Amount Params --> ', amount);
-  console.log('Currency Params --> ', currency);
   const db = yield defaultDB;
   const walletToSave = resolveWallet(walletsArray, currency);
   if (walletToSave === null) {
     return;
   }
-  console.log('Wallet from Saga SendMoney --> ', walletToSave);
   const walletToDB = convertToDatabase(walletToSave);
-  console.log('Wallet from DB SendMoney --> ', walletToDB);
   BigNumber.config({ DECIMAL_PLACES: 18 });
   const balanceBNEth = new BigNumber(walletToDB.balance);
-  console.log('BN Balance --> ', balanceBNEth);
   const amountNEth = new BigNumber(amount);
-  console.log('BN amount --> ', amountNEth);
   db.write(() => {
     db.create('Wallet', { name: walletToDB.name, balance: balanceBNEth.minus(amountNEth).toString() }, true);
   });
