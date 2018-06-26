@@ -12,12 +12,17 @@ type Props = {
   navigator: Navigator,
   /**
    * @desc Function to return the Promise resolve
+   * @param number gasPrice parameter to specify the gas price in gwei
+   * @param string gasLimit parameter to specify the maximum amount of gas the user is willing to spend
    */
-  onSuccess: (number, number) => null,
+  onSuccess: (gasPrice: number, gasLimit: string) => null,
   /**
    * @desc Function to return the Promise reject
    */
   onFail: () => null,
+  /**
+   * @desc Properties of the transaction
+   */
   to: String,
   from: String,
   amount: String,
@@ -63,7 +68,7 @@ ConfirmationScreen.defaultProps = {
   onSuccess: () => null,
   to: '0x0',
   from: '0x0',
-  amount: null,
+  amount: '0',
   estimate: '0',
   purpose: '',
   app: '',
