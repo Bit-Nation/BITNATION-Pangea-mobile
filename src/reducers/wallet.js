@@ -9,6 +9,7 @@ import {
   SEND_MONEY_FAILED,
   SEND_MONEY_SUCCESS,
   UPDATE_WALLET_BALANCE,
+  UPDATE_WALLET_LIST,
   WALLET_SYNC_FAILED,
   WALLETS_LIST_UPDATED,
 } from '../actions/wallet';
@@ -46,10 +47,15 @@ export default (state: State = initialState, action: Action | ServicesDestroyedA
   switch (action.type) {
     case SERVICES_DESTROYED:
       return initialState;
+    case UPDATE_WALLET_LIST:
+      return {
+        ...state,
+        isRefreshing: true,
+      };
     case SELECT_WALLET:
       return Object.assign({}, state, { selectedWalletCurrency: action.wallet.currency, selectedWalletAddress: action.wallet.ethAddress });
     case WALLETS_LIST_UPDATED:
-      return Object.assign({}, state, { wallets: _.cloneDeep(action.wallets) });
+      return Object.assign({}, state, { wallets: _.cloneDeep(action.wallets), isRefreshing: !action.syncDone });
     case WALLET_SYNC_FAILED: {
       const { walletAddress, walletCurrency, error } = action;
       const wallets = state.wallets || [];
@@ -59,6 +65,7 @@ export default (state: State = initialState, action: Action | ServicesDestroyedA
       }
       return {
         ...state,
+        isRefreshing: false,
         wallets: wallets.map((item, index) => {
           if (index !== walletIndex) {
             return item;
@@ -80,6 +87,7 @@ export default (state: State = initialState, action: Action | ServicesDestroyedA
       }
       return {
         ...state,
+        isRefreshing: true,
         wallets: wallets.map((item, index) => {
           if (index !== walletIndex) {
             return item;
