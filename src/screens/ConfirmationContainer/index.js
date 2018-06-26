@@ -12,8 +12,10 @@ type Props = {
   navigator: Navigator,
   /**
    * @desc Function to return the Promise resolve
+   * @param number gasPrice parameter to specify the gas price in gwei
+   * @param string gasLimit parameter to specify the maximum amount of gas the user is willing to spend
    */
-  onSuccess: (number, number) => null,
+  onSuccess: (gasPrice: number, gasLimit: string) => null,
   /**
    * @desc Function to return the Promise reject
    */
