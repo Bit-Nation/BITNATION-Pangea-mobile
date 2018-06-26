@@ -14,7 +14,7 @@ import NavigatorComponent from '../../components/common/NavigatorComponent';
 import i18n from '../../global/i18n';
 import styles from '../NationsScreen/NationsListScreen/styles';
 import FakeNavigationBar from '../../components/common/FakeNavigationBar';
-import type { WalletState } from '../../reducers/wallet';
+import type { State as WalletState } from '../../reducers/wallet';
 import type { WalletType } from '../../types/Wallet';
 import type { Navigator } from '../../types/ReactNativeNavigation';
 import ScreenTitle from '../../components/common/ScreenTitle';
