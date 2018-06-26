@@ -5,7 +5,7 @@ import com.facebook.react.ReactPackage;
 import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 import com.reactnative.ivpusic.imagepicker.PickerPackage;
 import com.reactnativenavigation.NavigationApplication;
-import com.lwansbrough.RCTCamera.*;
+import org.reactnative.camera.RNCameraPackage;
 import java.util.Arrays;
 import java.util.List;
 
@@ -23,7 +23,7 @@ public class MainApplication extends NavigationApplication {
     protected List<ReactPackage> getPackages() {
         return Arrays.<ReactPackage>asList(
                 new PickerPackage(),
-                new RCTCameraPackage(),
+                new RNCameraPackage(),
                 new PanthalassaPackage(),
                 new RealmReactPackage(),
                 new RNSensitiveInfoPackage(),
