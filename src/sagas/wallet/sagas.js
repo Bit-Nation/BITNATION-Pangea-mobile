@@ -136,7 +136,7 @@ export function* updateWalletList(): Generator<*, *, *> {
   const account = yield getAccount(currentAccountId);
   const { walletService } = ServiceContainer.instance;
   if (walletService === null) {
-    yield put(walletsListUpdated([]));
+    yield put(walletsListUpdated([], true));
     return;
   }
 
@@ -148,11 +148,11 @@ export function* updateWalletList(): Generator<*, *, *> {
   } else {
     walletsWithoutBalance = convertFromDatabase(walletsFromDb);
   }
-  yield put(walletsListUpdated(walletsWithoutBalance));
+  yield put(walletsListUpdated(walletsWithoutBalance, false));
   try {
     const wallets = yield call([walletService, 'resolveBalance'], walletsWithoutBalance, account.networkType);
     yield call(updateWalletsToDb, wallets);
-    yield put(walletsListUpdated(wallets));
+    yield put(walletsListUpdated(wallets, true));
   } catch (error) {
     yield put(walletSyncFailed(walletsWithoutBalance[0].ethAddress, walletsWithoutBalance[0].currency, error));
     yield put(walletSyncFailed(walletsWithoutBalance[1].ethAddress, walletsWithoutBalance[1].currency, error));
