@@ -14,7 +14,7 @@ import NavigatorComponent from '../../components/common/NavigatorComponent';
 import i18n from '../../global/i18n';
 import styles from '../NationsScreen/NationsListScreen/styles';
 import FakeNavigationBar from '../../components/common/FakeNavigationBar';
-import type { State } from '../../reducers/wallet';
+import type { WalletState } from '../../reducers/wallet';
 import type { WalletType } from '../../types/Wallet';
 import type { Navigator } from '../../types/ReactNativeNavigation';
 import ScreenTitle from '../../components/common/ScreenTitle';
@@ -51,10 +51,18 @@ type Actions = {
   updateWalletList: () => void,
 }
 
-class WalletScreen extends NavigatorComponent<Props & TestingModeProps & Actions & State> {
+type State = {
+  /**
+   * @desc Flag to control Refreshing on Pull to Refresh
+   */
+  pullToRefreshInProgress: boolean,
+}
+
+class WalletScreen extends NavigatorComponent<Props & TestingModeProps & Actions & WalletState, State> {
   constructor(props) {
     super(props);
 
+    this.state = { pullToRefreshInProgress: false };
     this.props.updateWalletList();
   }
 
@@ -66,6 +74,12 @@ class WalletScreen extends NavigatorComponent<Props & TestingModeProps & Actions
       }] : [],
       rightButtons: [],
     });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.isRefreshing !== nextProps.isRefreshing && nextProps.isRefreshing === true) {
+      this.setState({ pullToRefreshInProgress: false });
+    }
   }
 
   componentDidUpdate() {
@@ -102,6 +116,7 @@ class WalletScreen extends NavigatorComponent<Props & TestingModeProps & Actions
   };
 
   onRefresh = () => {
+    this.setState({ pullToRefreshInProgress: true });
     this.props.updateWalletList();
   };
 
@@ -123,7 +138,7 @@ class WalletScreen extends NavigatorComponent<Props & TestingModeProps & Actions
               onSendPress={this.sendMoney}
               onReceivePress={this.receiveMoney}
               onRefresh={this.onRefresh}
-              isRefreshing={this.props.isRefreshing}
+              isRefreshing={this.state.pullToRefreshInProgress}
             />
           }
         </View>
