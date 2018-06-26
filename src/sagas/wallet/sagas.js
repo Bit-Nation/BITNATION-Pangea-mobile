@@ -88,7 +88,6 @@ export function* sendMoneySaga(action: SendMoneyAction): Generator<*, *, *> {
 export function* getDbWallets(): Generator<*, *, *> {
   const db = yield defaultDB;
   const results = db.objects('Wallet');
-  console.log('Wallets from the DB ->', results);
   return yield results;
 }
 
@@ -146,10 +145,8 @@ export function* updateWalletList(): Generator<*, *, *> {
   if (walletsFromDb.length === 0) {
     walletsWithoutBalance = yield call([walletService, 'getWallets']);
     yield call(saveWalletsToDb, walletsWithoutBalance);
-    console.log('CREATE DB WALLETS --> ', walletsWithoutBalance);
   } else {
     walletsWithoutBalance = convertFromDatabase(walletsFromDb);
-    console.log('ENTER DB WALLETS --> ', walletsWithoutBalance);
   }
   yield put(walletsListUpdated(walletsWithoutBalance));
   try {
