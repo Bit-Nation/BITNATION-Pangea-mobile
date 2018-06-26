@@ -522,7 +522,9 @@
       "from": "From Address:",
       "amount": "Amount:",
       "total": "Total:",
-      "processor": "Processor"
+      "processor": "Processor",
+      "gwei": "Gwei",
+      "eth": "ETH"
     }
   },
   "testingMode": {
