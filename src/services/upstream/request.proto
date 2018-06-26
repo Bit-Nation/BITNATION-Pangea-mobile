@@ -46,4 +46,21 @@ message Request {
 
     ShowModal showModal = 8;
 
+    message SendEthereumTransaction {
+        string value = 1;
+        string to = 2;
+        string data = 3;
+    }
+
+    SendEthereumTransaction sendEthereumTransaction = 9;
+
+    message SaveDApp {
+        string appName = 1;
+        string code = 2;
+        string signature = 3;
+        string signingPublicKey = 4;
+    }
+
+    SaveDApp saveDApp = 10;
+
 }
