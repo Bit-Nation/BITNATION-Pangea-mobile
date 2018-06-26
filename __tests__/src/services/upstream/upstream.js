@@ -1,4 +1,4 @@
-import { api_proto } from '../../../../src/services/upstream/compiledReqeust';
+import { api_proto } from '../../../../src/services/upstream/compiledRequest';
 import Upstream from '../../../../src/services/upstream/upstream';
 
 const { Request } = api_proto;
@@ -48,9 +48,9 @@ const message = {
     layout: '2',
   },
   sendEthereumTransaction: {
-    value: 1,
-    to: 2,
-    data: 3,
+    value: '1',
+    to: '2',
+    data: '3',
   },
   saveDApp: {
     appName: '1',
