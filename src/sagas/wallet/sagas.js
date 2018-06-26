@@ -65,7 +65,7 @@ export function* sendMoneySaga(action: SendMoneyAction): Generator<*, *, *> {
   if (state.wallet.selectedWalletCurrency === 'ETH') {
     try {
       yield call([walletService, 'sendMoney'], fromAddress, toAddress, amountToSend);
-      yield call(updateWalletToDb, state.wallet.wallets, amountToSend, state.wallet.selectedWalletCurrency);
+      // yield call(updateWalletToDb, state.wallet.wallets, amountToSend, state.wallet.selectedWalletCurrency);
       yield put(sendMoneySuccess());
     } catch (error) {
       yield put(sendMoneyFailed(error));
@@ -74,7 +74,7 @@ export function* sendMoneySaga(action: SendMoneyAction): Generator<*, *, *> {
     try {
       yield call([walletService, 'sendToken'], fromAddress, toAddress, amountToSend, account.networkType);
       yield put(sendMoneySuccess());
-      yield call(updateWalletToDb, state.wallet.wallets, amountToSend, state.wallet.selectedWalletCurrency);
+      // yield call(updateWalletToDb, state.wallet.wallets, amountToSend, state.wallet.selectedWalletCurrency);
     } catch (error) {
       yield put(sendMoneyFailed(error));
     }
