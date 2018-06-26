@@ -158,9 +158,9 @@ class ConfirmationScreen extends NavigatorComponent<Props, State> {
                 maximumValue={60}
                 value={this.state.gasPrice}
                 onValueChange={val => this.setState({ gasPrice: val })}
-                thumbTintColor='rgb(252, 228, 149)'
-                maximumTrackTintColor='#BBBDBF'
-                minimumTrackTintColor='#FF8B00'
+                thumbTintColor={Colors.thumbTintColor}
+                maximumTrackTintColor={Colors.maximumTrackTintColor}
+                minimumTrackTintColor={Colors.minimumTrackTintColor}
               />
               <View style={styles.textCon}>
                 <Text style={styles.colorGrey}>{i18n.t('screens.confirmTransaction.slow')}</Text>
