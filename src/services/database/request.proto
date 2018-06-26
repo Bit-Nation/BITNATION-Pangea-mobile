@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package api_proto;
+
+message Request {
+
+    string requestID = 1;
+
+    message DRKeyStoreGet {
+        bytes drKey = 1;
+        uint64 messageNumber = 2;
+    }
+
+    message DRKeyStorePut {
+        bytes key = 1;
+        uint64 messageNumber = 2;
+        bytes messageKey = 3;
+    }
+
+    message DRKeyStoreDeleteMK {
+        bytes key = 1;
+        uint64 msgNum = 2;
+    }
+
+    message DRKeyStoreDeleteKeys {
+        bytes key = 1;
+    }
+
+    message DRKeyStoreCount {
+        bytes key = 1;
+    }
+
+    message DRKeyStoreAll {}
+
+    DRKeyStoreGet dRKeyStoreGet = 2;
+    DRKeyStorePut dRKeyStorePut = 3;
+    DRKeyStoreDeleteMK dRKeyStoreDeleteMK = 4;
+    DRKeyStoreDeleteKeys dRKeyStoreDeleteKeys = 5;
+    DRKeyStoreCount dRKeyStoreCount = 6;
+    DRKeyStoreAll dRKeyStoreAll = 7;
+
+    message ShowModal {
+        string title = 1;
+        string layout = 2;
+    }
+
+    ShowModal showModal = 8;
+
+}

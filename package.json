@@ -14,7 +14,8 @@
     "android": "flow && node_modules/.bin/react-native run-android",
     "postinstall": "./node_modules/.bin/rn-nodeify --install 'stream,buffer,vm,crypto,string_decoder,events,assert' --hack",
     "docs": "node_modules/.bin/documentation build src/services/container.js -f md > docs/main.md",
-    "build:ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/Pangea/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios'"
+    "build:ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/Pangea/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios'",
+    "build:protofile": "pbjs -t static-module -w commonjs -o src/services/database/compiledReqeust.js src/services/database/request.proto"
   },
   "dependencies": {
     "assert": "^1.4.1",
@@ -34,7 +35,6 @@
     "lodash": "^4.17.4",
     "native-base": "^2.3.5",
     "prop-types": "^15.6.0",
-    "protobufjs": "^6.8.6",
     "react": "16.0.0",
     "react-native": "0.51.0",
     "react-native-camera": "^0.10.0",
@@ -97,6 +97,7 @@
     "ethers-cli": "^4.0.0",
     "flow-bin": "^0.57.0",
     "jest": "22.0.3",
+    "protobufjs": "^6.8.6",
     "react-dom": "^16.2.0",
     "react-native-mock": "^0.3.1",
     "react-test-renderer": "16.0.0",
