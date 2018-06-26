@@ -292,6 +292,53 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
         }
     }
 
+    @ReactMethod
+    public void connectToDAppDevHost(ReadableMap jsonParams, Promise promise) throws JSONException {
+        try {
+            Panthalassa.connectToDAppDevHost(jsonParams.getString("address"));
+            promise.resolve(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            promise.reject("error", e.getLocalizedMessage());
+        }
+    }
+
+    @ReactMethod
+    public void PanthalassaOpenDApp(ReadableMap jsonParams, Promise promise) throws JSONException {
+        try {
+            Panthalassa.openDApp(jsonParams.getString("id"),
+                                jsonParams.getString("context"));
+            promise.resolve(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            promise.reject("error", e.getLocalizedMessage());
+        }
+    }
+
+    @ReactMethod
+    public void PanthalassaRenderMessage(ReadableMap jsonParams, Promise promise) throws JSONException {
+        try {
+            String response = Panthalassa.renderMessage(jsonParams.getString("id"),
+                                                        jsonParams.getString("msg"),
+                                                        jsonParams.getString("context"));
+            promise.resolve(response);
+        } catch (Exception e) {
+            e.printStackTrace();
+            promise.reject("error", e.getLocalizedMessage());
+        }
+    }
+
+    @ReactMethod
+    public void PanthalassaStartDApp(ReadableMap jsonParams, Promise promise) throws JSONException {
+        try {
+            Panthalassa.startDApp(jsonParams.getString("dApp"));
+            promise.resolve(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            promise.reject("error", e.getLocalizedMessage());
+        }
+    }
+
     //=====
     @Override
     public void send(String s) {
