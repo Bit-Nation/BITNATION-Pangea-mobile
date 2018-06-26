@@ -1,6 +1,8 @@
 import { NativeEventEmitter, NativeModules } from 'react-native';
 // Javascript static code of the proto file
-import { Request } from './compiledReqeust';
+import { api_proto } from './compiledReqeust';
+
+const { Request } = api_proto;
 
 const { Panthalassa } = NativeModules;
 
@@ -17,6 +19,7 @@ export default class UpstreamService {
   };
   handleRequest = (request) => {
     const decoded = Request.decode(request);
+    console.log('decoded request: ', decoded);
     if (decoded.DRKeyStoreGet !== null) {
       this.handleDRKeyStoreGet(decoded.DRKeyStoreGet.drKey, decoded.DRKeyStoreGet.messageNumber);
     } else if (decoded.DRKeyStorePut !== null) {
@@ -29,6 +32,8 @@ export default class UpstreamService {
       this.handleDRKeyStoreCount(decoded.DRKeyStoreDeleteKeys.key);
     } else if (decoded.ShowModal !== null) {
       this.handleShowModal(decoded.ShowModal.title, decoded.ShowModal.layout);
+    } else {
+      this.handleErrorMessage();
     }
   };
   handleDRKeyStoreGet = (drKey, messageNumber) => {
@@ -47,6 +52,9 @@ export default class UpstreamService {
 
   };
   handleShowModal = (title, layout) => {
+
+  };
+  handleErrorMessage = () => {
 
   };
   unsubscribe = () => {
