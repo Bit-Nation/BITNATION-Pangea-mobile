@@ -26,10 +26,6 @@ type Props = {
    * @desc React Native Navigation navigator object.
    */
   navigator: Navigator,
-  /**
-   * @desc Flag to control Refreshing on Pull to Refresh
-   */
-  isRefreshing: boolean,
 }
 
 type TestingModeProps = {
@@ -106,9 +102,9 @@ class WalletScreen extends NavigatorComponent<Props & TestingModeProps & Actions
   };
 
   onRefresh = () => {
-    this.props.isRefreshing = true;
     this.props.updateWalletList();
-  }
+  };
+
   render() {
     return (
       <View style={styles.screenContainer}>
