@@ -22,7 +22,6 @@ export function convertFromDatabase(wallets: DBWallet[]): WalletType[] {
  * @return {DBWallet} Converted object.
  */
 export function convertToDatabase(wallet: WalletType):DBWallet {
-  console.log('ENTRO a convertToDatabase');
   return {
     name: wallet.name,
     chain: 'ethereum',
