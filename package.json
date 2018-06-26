@@ -15,7 +15,8 @@
     "postinstall": "./node_modules/.bin/rn-nodeify --install 'stream,buffer,vm,crypto,string_decoder,events,assert' --hack",
     "docs": "node_modules/.bin/documentation build src/services/container.js -f md > docs/main.md",
     "build:ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/Pangea/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios'",
-    "build:protofile": "pbjs -t static-module -w commonjs -o src/services/upstream/compiledReqeust.js src/services/upstream/request.proto"
+    "build:requestprotofile": "pbjs -t static-module -w commonjs -o src/services/upstream/compiledReqeust.js src/services/upstream/request.proto",
+    "build:responseprotofile": "pbjs -t static-module -w commonjs -o src/services/upstream/compiledResponse.js src/services/upstream/response.proto"
   },
   "dependencies": {
     "assert": "^1.4.1",
