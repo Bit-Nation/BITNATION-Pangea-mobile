@@ -1,63 +1,57 @@
 import { NativeEventEmitter, NativeModules } from 'react-native';
 // Javascript static code of the proto file
-import { api_proto } from './compiledReqeust';
-
-const { Request } = api_proto;
+import { api_proto } from './compiledRequest';
 
 const { Panthalassa } = NativeModules;
 
-
 export default class UpstreamService {
   eventsSubscription;
+  request;
   constructor() {
     const emitter = new NativeEventEmitter(Panthalassa);
-
     this.eventsSubscription = emitter.addListener(
-      'RequestEvent',
-      (request) => this.handleRequest(request),
+      'PanthalassaUpStream',
+      request => this.handleRequest(request),
     );
-  };
+    this.request = { api_proto };
+  }
   handleRequest = (request) => {
-    const decoded = Request.decode(request);
-    console.log('decoded request: ', decoded);
-    if (decoded.DRKeyStoreGet !== null) {
-      this.handleDRKeyStoreGet(decoded.DRKeyStoreGet.drKey, decoded.DRKeyStoreGet.messageNumber);
-    } else if (decoded.DRKeyStorePut !== null) {
-      this.handleDRKeyStorePut(decoded.DRKeyStorePut.key, decoded.DRKeyStorePut.messageNumber, decoded.DRKeyStorePut.messageKey);
-    } else if (decoded.DRKeyStoreDeleteMK !== null) {
-      this.handleDRKeyStoreDeleteMK(decoded.DRKeyStoreDeleteMK.key, decoded.DRKeyStoreDeleteMK.msgNum);
-    } else if (decoded.DRKeyStoreDeleteKeys !== null) {
-      this.handleDRKeyStoreDeleteKeys(decoded.DRKeyStoreDeleteKeys.key);
-    } else if (decoded.DRKeyStoreDeleteKeys !== null) {
-      this.handleDRKeyStoreCount(decoded.DRKeyStoreDeleteKeys.key);
+    const decoded = this.request.decode(request).finish();
+    if (decoded.dRKeyStoreGet !== null) {
+      this.handleDRKeyStoreGet(
+        decoded.dRKeyStoreGet.drKey,
+        decoded.dRKeyStoreGet.messageNumber,
+      );
+    } else if (decoded.dRKeyStorePut !== null) {
+      this.handleDRKeyStorePut(
+        decoded.dRKeyStorePut.key,
+        decoded.dRKeyStorePut.messageNumber,
+        decoded.dRKeyStorePut.messageKey,
+      );
+    } else if (decoded.dRKeyStoreDeleteMK !== null) {
+      this.handleDRKeyStoreDeleteMK(
+        decoded.dRKeyStoreDeleteMK.key,
+        decoded.dRKeyStoreDeleteMK.msgNum,
+      );
+    } else if (decoded.dRKeyStoreDeleteKeys !== null) {
+      this.handleDRKeyStoreDeleteKeys(decoded.dRKeyStoreDeleteKeys.key);
+    } else if (decoded.dRKeyStoreDeleteKeys !== null) {
+      this.handleDRKeyStoreCount(decoded.dRKeyStoreDeleteKeys.key);
     } else if (decoded.ShowModal !== null) {
       this.handleShowModal(decoded.ShowModal.title, decoded.ShowModal.layout);
     } else {
       this.handleErrorMessage();
     }
   };
-  handleDRKeyStoreGet = (drKey, messageNumber) => {
-
-  };
-  handleDRKeyStorePut = (key, messageNumber, messageKey) => {
-
-  };
-  handleDRKeyStoreDeleteMK = (key, msgNum) => {
-
-  };
-  handleDRKeyStoreDeleteKeys = (key) => {
-
-  };
-  handleDRKeyStoreCount = (key) => {
-
-  };
-  handleShowModal = (title, layout) => {
-
-  };
-  handleErrorMessage = () => {
-
-  };
+  handleDRKeyStoreGet = (drKey, messageNumber) => {};
+  handleDRKeyStorePut = (key, messageNumber, messageKey) => {};
+  handleDRKeyStoreDeleteMK = (key, msgNum) => {};
+  handleDRKeyStoreDeleteKeys = (key) => {};
+  handleDRKeyStoreCount = (key) => {};
+  handleShowModal = (title, layout) => {};
   unsubscribe = () => {
-    this.eventsSubscription.remove();
+    if (this.eventsSubscription) {
+      // this.eventsSubscription.remove();
+    }
   };
 }
