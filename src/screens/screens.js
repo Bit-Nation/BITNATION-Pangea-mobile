@@ -20,6 +20,7 @@ import SendMoney from './WalletScreen/SendMoney';
 import ReceiveMoneyScreen from './WalletScreen/ReceiveMoney';
 // eslint-disable-next-line import/no-unresolved,import/extensions
 import QRCodeScannerScreen from './WalletScreen/QRCodeScanner';
+import QRCodeDappScreen from './Dapp/QRCodeScanner';
 import ChatScreen from './ChatScreen';
 import NationsScreen from './NationsScreen';
 import ProfileScreen from './Settings/ProfileScreen';
@@ -66,6 +67,7 @@ export default function registerScreens(store: Object, Provider: Object) {
   Navigation.registerComponent(screen('RECEIVE_MONEY_SCREEN').screen, () => ReceiveMoneyScreen, store, Provider);
   Navigation.registerComponent(screen('SEND_MONEY_SCREEN').screen, () => SendMoney, store, Provider);
   Navigation.registerComponent(screen('QR_CODE_SCANNER_SCREEN').screen, () => QRCodeScannerScreen, store, Provider);
+  Navigation.registerComponent(screen('QR_CODE_DAPP_SCREEN').screen, () => QRCodeDappScreen, store, Provider);
   Navigation.registerComponent(screen('NATION_CREATE_SCREEN').screen, () => NationCreateScreen, store, Provider);
   Navigation.registerComponent(screen('CHAT_NATIONS_SCREEN').screen, () => ChatNationsScreen, store, Provider);
   Navigation.registerComponent(screen('NEW_CHAT_SCREEN').screen, () => NewChatScreen, store, Provider);

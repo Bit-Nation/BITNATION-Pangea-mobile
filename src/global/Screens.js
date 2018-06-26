@@ -209,6 +209,20 @@ const Screens = {
     title: i18n.t('screens.scanQRCode.title'),
     navigatorStyle,
   },
+  QR_CODE_DAPP_SCREEN: {
+    screen: 'Pangea.QRCodeAppScreen',
+    title: i18n.t('screens.scanQRCode.title'),
+    navigatorStyle,
+    navigatorButtons: {
+      leftButtons: [
+        {
+          id: 'cancel',
+          buttonColor: Colors.androidNavigationButtons,
+        },
+      ],
+      rightButtons: [],
+    },
+  },
   SETTINGS_SCREEN: {
     screen: 'Pangea.Settings',
     title: '',
