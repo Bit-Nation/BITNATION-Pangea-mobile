@@ -21,7 +21,6 @@ export default class EthereumService {
    * @return {Promise} Promise that resolves with the balance in BN form
    */
   async getBalance(): Promise<void> {
-    // await this.wallet.sign({});
     const balance = await this.wallet.getBalance('latest');
     return balance;
   }
