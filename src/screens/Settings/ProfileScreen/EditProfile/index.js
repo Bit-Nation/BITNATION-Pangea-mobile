@@ -249,7 +249,9 @@ class EditProfile extends NavigatorComponent<Props> {
         this.props.onAccountChanged('avatar', result.data);
       }
     } catch (error) {
-      Alert.alert(i18n.t('error.noCamera'));
+      if (error.code !== 'E_PICKER_CANCELLED') {
+        Alert.alert(i18n.t('error.noCamera'));
+      }
     }
   };
 }

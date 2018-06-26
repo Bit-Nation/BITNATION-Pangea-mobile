@@ -184,6 +184,7 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
     public void PanthalassaCreateHumanMessage(ReadableMap jsonParams, Promise promise) throws JSONException {
         try {
             String response = Panthalassa.createHumanMessage(jsonParams.getString("rawMsg"),
+                                                                jsonParams.getString("secretID"),
                                                                 jsonParams.getString("secret"));
             promise.resolve(response);
         } catch (Exception e) {
@@ -252,8 +253,10 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
     @ReactMethod
     public void PanthalassaSendResponse(ReadableMap jsonParams, Promise promise) throws JSONException {
         try {
-            Panthalassa.sendResponse(jsonParams.getString("id_"),
-                                    jsonParams.getString("data"));
+            Panthalassa.sendResponse(jsonParams.getString("id"),
+                                    jsonParams.getString("data"),
+                                    jsonParams.getString("responseError"),
+                                    jsonParams.getInt("timeout"));
             promise.resolve(true);
         } catch (Exception e) {
             e.printStackTrace();
