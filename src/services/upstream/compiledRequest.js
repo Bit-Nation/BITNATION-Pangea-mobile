@@ -32,6 +32,8 @@ $root.api_proto = (function() {
          * @property {api_proto.Request.IDRKeyStoreCount|null} [dRKeyStoreCount] Request dRKeyStoreCount
          * @property {api_proto.Request.IDRKeyStoreAll|null} [dRKeyStoreAll] Request dRKeyStoreAll
          * @property {api_proto.Request.IShowModal|null} [showModal] Request showModal
+         * @property {api_proto.Request.ISendEthereumTransaction|null} [sendEthereumTransaction] Request sendEthereumTransaction
+         * @property {api_proto.Request.ISaveDApp|null} [saveDApp] Request saveDApp
          */
 
         /**
@@ -114,6 +116,22 @@ $root.api_proto = (function() {
         Request.prototype.showModal = null;
 
         /**
+         * Request sendEthereumTransaction.
+         * @member {api_proto.Request.ISendEthereumTransaction|null|undefined} sendEthereumTransaction
+         * @memberof api_proto.Request
+         * @instance
+         */
+        Request.prototype.sendEthereumTransaction = null;
+
+        /**
+         * Request saveDApp.
+         * @member {api_proto.Request.ISaveDApp|null|undefined} saveDApp
+         * @memberof api_proto.Request
+         * @instance
+         */
+        Request.prototype.saveDApp = null;
+
+        /**
          * Creates a new Request instance using the specified properties.
          * @function create
          * @memberof api_proto.Request
@@ -153,6 +171,10 @@ $root.api_proto = (function() {
                 $root.api_proto.Request.DRKeyStoreAll.encode(message.dRKeyStoreAll, writer.uint32(/* id 7, wireType 2 =*/58).fork()).ldelim();
             if (message.showModal != null && message.hasOwnProperty("showModal"))
                 $root.api_proto.Request.ShowModal.encode(message.showModal, writer.uint32(/* id 8, wireType 2 =*/66).fork()).ldelim();
+            if (message.sendEthereumTransaction != null && message.hasOwnProperty("sendEthereumTransaction"))
+                $root.api_proto.Request.SendEthereumTransaction.encode(message.sendEthereumTransaction, writer.uint32(/* id 9, wireType 2 =*/74).fork()).ldelim();
+            if (message.saveDApp != null && message.hasOwnProperty("saveDApp"))
+                $root.api_proto.Request.SaveDApp.encode(message.saveDApp, writer.uint32(/* id 10, wireType 2 =*/82).fork()).ldelim();
             return writer;
         };
 
@@ -210,6 +232,12 @@ $root.api_proto = (function() {
                     break;
                 case 8:
                     message.showModal = $root.api_proto.Request.ShowModal.decode(reader, reader.uint32());
+                    break;
+                case 9:
+                    message.sendEthereumTransaction = $root.api_proto.Request.SendEthereumTransaction.decode(reader, reader.uint32());
+                    break;
+                case 10:
+                    message.saveDApp = $root.api_proto.Request.SaveDApp.decode(reader, reader.uint32());
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -284,6 +312,16 @@ $root.api_proto = (function() {
                 if (error)
                     return "showModal." + error;
             }
+            if (message.sendEthereumTransaction != null && message.hasOwnProperty("sendEthereumTransaction")) {
+                var error = $root.api_proto.Request.SendEthereumTransaction.verify(message.sendEthereumTransaction);
+                if (error)
+                    return "sendEthereumTransaction." + error;
+            }
+            if (message.saveDApp != null && message.hasOwnProperty("saveDApp")) {
+                var error = $root.api_proto.Request.SaveDApp.verify(message.saveDApp);
+                if (error)
+                    return "saveDApp." + error;
+            }
             return null;
         };
 
@@ -336,6 +374,16 @@ $root.api_proto = (function() {
                     throw TypeError(".api_proto.Request.showModal: object expected");
                 message.showModal = $root.api_proto.Request.ShowModal.fromObject(object.showModal);
             }
+            if (object.sendEthereumTransaction != null) {
+                if (typeof object.sendEthereumTransaction !== "object")
+                    throw TypeError(".api_proto.Request.sendEthereumTransaction: object expected");
+                message.sendEthereumTransaction = $root.api_proto.Request.SendEthereumTransaction.fromObject(object.sendEthereumTransaction);
+            }
+            if (object.saveDApp != null) {
+                if (typeof object.saveDApp !== "object")
+                    throw TypeError(".api_proto.Request.saveDApp: object expected");
+                message.saveDApp = $root.api_proto.Request.SaveDApp.fromObject(object.saveDApp);
+            }
             return message;
         };
 
@@ -361,6 +409,8 @@ $root.api_proto = (function() {
                 object.dRKeyStoreCount = null;
                 object.dRKeyStoreAll = null;
                 object.showModal = null;
+                object.sendEthereumTransaction = null;
+                object.saveDApp = null;
             }
             if (message.requestID != null && message.hasOwnProperty("requestID"))
                 object.requestID = message.requestID;
@@ -378,6 +428,10 @@ $root.api_proto = (function() {
                 object.dRKeyStoreAll = $root.api_proto.Request.DRKeyStoreAll.toObject(message.dRKeyStoreAll, options);
             if (message.showModal != null && message.hasOwnProperty("showModal"))
                 object.showModal = $root.api_proto.Request.ShowModal.toObject(message.showModal, options);
+            if (message.sendEthereumTransaction != null && message.hasOwnProperty("sendEthereumTransaction"))
+                object.sendEthereumTransaction = $root.api_proto.Request.SendEthereumTransaction.toObject(message.sendEthereumTransaction, options);
+            if (message.saveDApp != null && message.hasOwnProperty("saveDApp"))
+                object.saveDApp = $root.api_proto.Request.SaveDApp.toObject(message.saveDApp, options);
             return object;
         };
 
@@ -1846,6 +1900,492 @@ $root.api_proto = (function() {
             };
 
             return ShowModal;
+        })();
+
+        Request.SendEthereumTransaction = (function() {
+
+            /**
+             * Properties of a SendEthereumTransaction.
+             * @memberof api_proto.Request
+             * @interface ISendEthereumTransaction
+             * @property {string|null} [value] SendEthereumTransaction value
+             * @property {string|null} [to] SendEthereumTransaction to
+             * @property {string|null} [data] SendEthereumTransaction data
+             */
+
+            /**
+             * Constructs a new SendEthereumTransaction.
+             * @memberof api_proto.Request
+             * @classdesc Represents a SendEthereumTransaction.
+             * @implements ISendEthereumTransaction
+             * @constructor
+             * @param {api_proto.Request.ISendEthereumTransaction=} [properties] Properties to set
+             */
+            function SendEthereumTransaction(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * SendEthereumTransaction value.
+             * @member {string} value
+             * @memberof api_proto.Request.SendEthereumTransaction
+             * @instance
+             */
+            SendEthereumTransaction.prototype.value = "";
+
+            /**
+             * SendEthereumTransaction to.
+             * @member {string} to
+             * @memberof api_proto.Request.SendEthereumTransaction
+             * @instance
+             */
+            SendEthereumTransaction.prototype.to = "";
+
+            /**
+             * SendEthereumTransaction data.
+             * @member {string} data
+             * @memberof api_proto.Request.SendEthereumTransaction
+             * @instance
+             */
+            SendEthereumTransaction.prototype.data = "";
+
+            /**
+             * Creates a new SendEthereumTransaction instance using the specified properties.
+             * @function create
+             * @memberof api_proto.Request.SendEthereumTransaction
+             * @static
+             * @param {api_proto.Request.ISendEthereumTransaction=} [properties] Properties to set
+             * @returns {api_proto.Request.SendEthereumTransaction} SendEthereumTransaction instance
+             */
+            SendEthereumTransaction.create = function create(properties) {
+                return new SendEthereumTransaction(properties);
+            };
+
+            /**
+             * Encodes the specified SendEthereumTransaction message. Does not implicitly {@link api_proto.Request.SendEthereumTransaction.verify|verify} messages.
+             * @function encode
+             * @memberof api_proto.Request.SendEthereumTransaction
+             * @static
+             * @param {api_proto.Request.ISendEthereumTransaction} message SendEthereumTransaction message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            SendEthereumTransaction.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.value != null && message.hasOwnProperty("value"))
+                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.value);
+                if (message.to != null && message.hasOwnProperty("to"))
+                    writer.uint32(/* id 2, wireType 2 =*/18).string(message.to);
+                if (message.data != null && message.hasOwnProperty("data"))
+                    writer.uint32(/* id 3, wireType 2 =*/26).string(message.data);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified SendEthereumTransaction message, length delimited. Does not implicitly {@link api_proto.Request.SendEthereumTransaction.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof api_proto.Request.SendEthereumTransaction
+             * @static
+             * @param {api_proto.Request.ISendEthereumTransaction} message SendEthereumTransaction message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            SendEthereumTransaction.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a SendEthereumTransaction message from the specified reader or buffer.
+             * @function decode
+             * @memberof api_proto.Request.SendEthereumTransaction
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {api_proto.Request.SendEthereumTransaction} SendEthereumTransaction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            SendEthereumTransaction.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.api_proto.Request.SendEthereumTransaction();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1:
+                        message.value = reader.string();
+                        break;
+                    case 2:
+                        message.to = reader.string();
+                        break;
+                    case 3:
+                        message.data = reader.string();
+                        break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a SendEthereumTransaction message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof api_proto.Request.SendEthereumTransaction
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {api_proto.Request.SendEthereumTransaction} SendEthereumTransaction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            SendEthereumTransaction.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a SendEthereumTransaction message.
+             * @function verify
+             * @memberof api_proto.Request.SendEthereumTransaction
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            SendEthereumTransaction.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.value != null && message.hasOwnProperty("value"))
+                    if (!$util.isString(message.value))
+                        return "value: string expected";
+                if (message.to != null && message.hasOwnProperty("to"))
+                    if (!$util.isString(message.to))
+                        return "to: string expected";
+                if (message.data != null && message.hasOwnProperty("data"))
+                    if (!$util.isString(message.data))
+                        return "data: string expected";
+                return null;
+            };
+
+            /**
+             * Creates a SendEthereumTransaction message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof api_proto.Request.SendEthereumTransaction
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {api_proto.Request.SendEthereumTransaction} SendEthereumTransaction
+             */
+            SendEthereumTransaction.fromObject = function fromObject(object) {
+                if (object instanceof $root.api_proto.Request.SendEthereumTransaction)
+                    return object;
+                var message = new $root.api_proto.Request.SendEthereumTransaction();
+                if (object.value != null)
+                    message.value = String(object.value);
+                if (object.to != null)
+                    message.to = String(object.to);
+                if (object.data != null)
+                    message.data = String(object.data);
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a SendEthereumTransaction message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof api_proto.Request.SendEthereumTransaction
+             * @static
+             * @param {api_proto.Request.SendEthereumTransaction} message SendEthereumTransaction
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            SendEthereumTransaction.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                var object = {};
+                if (options.defaults) {
+                    object.value = "";
+                    object.to = "";
+                    object.data = "";
+                }
+                if (message.value != null && message.hasOwnProperty("value"))
+                    object.value = message.value;
+                if (message.to != null && message.hasOwnProperty("to"))
+                    object.to = message.to;
+                if (message.data != null && message.hasOwnProperty("data"))
+                    object.data = message.data;
+                return object;
+            };
+
+            /**
+             * Converts this SendEthereumTransaction to JSON.
+             * @function toJSON
+             * @memberof api_proto.Request.SendEthereumTransaction
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            SendEthereumTransaction.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            return SendEthereumTransaction;
+        })();
+
+        Request.SaveDApp = (function() {
+
+            /**
+             * Properties of a SaveDApp.
+             * @memberof api_proto.Request
+             * @interface ISaveDApp
+             * @property {string|null} [appName] SaveDApp appName
+             * @property {string|null} [code] SaveDApp code
+             * @property {string|null} [signature] SaveDApp signature
+             * @property {string|null} [signingPublicKey] SaveDApp signingPublicKey
+             */
+
+            /**
+             * Constructs a new SaveDApp.
+             * @memberof api_proto.Request
+             * @classdesc Represents a SaveDApp.
+             * @implements ISaveDApp
+             * @constructor
+             * @param {api_proto.Request.ISaveDApp=} [properties] Properties to set
+             */
+            function SaveDApp(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * SaveDApp appName.
+             * @member {string} appName
+             * @memberof api_proto.Request.SaveDApp
+             * @instance
+             */
+            SaveDApp.prototype.appName = "";
+
+            /**
+             * SaveDApp code.
+             * @member {string} code
+             * @memberof api_proto.Request.SaveDApp
+             * @instance
+             */
+            SaveDApp.prototype.code = "";
+
+            /**
+             * SaveDApp signature.
+             * @member {string} signature
+             * @memberof api_proto.Request.SaveDApp
+             * @instance
+             */
+            SaveDApp.prototype.signature = "";
+
+            /**
+             * SaveDApp signingPublicKey.
+             * @member {string} signingPublicKey
+             * @memberof api_proto.Request.SaveDApp
+             * @instance
+             */
+            SaveDApp.prototype.signingPublicKey = "";
+
+            /**
+             * Creates a new SaveDApp instance using the specified properties.
+             * @function create
+             * @memberof api_proto.Request.SaveDApp
+             * @static
+             * @param {api_proto.Request.ISaveDApp=} [properties] Properties to set
+             * @returns {api_proto.Request.SaveDApp} SaveDApp instance
+             */
+            SaveDApp.create = function create(properties) {
+                return new SaveDApp(properties);
+            };
+
+            /**
+             * Encodes the specified SaveDApp message. Does not implicitly {@link api_proto.Request.SaveDApp.verify|verify} messages.
+             * @function encode
+             * @memberof api_proto.Request.SaveDApp
+             * @static
+             * @param {api_proto.Request.ISaveDApp} message SaveDApp message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            SaveDApp.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.appName != null && message.hasOwnProperty("appName"))
+                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.appName);
+                if (message.code != null && message.hasOwnProperty("code"))
+                    writer.uint32(/* id 2, wireType 2 =*/18).string(message.code);
+                if (message.signature != null && message.hasOwnProperty("signature"))
+                    writer.uint32(/* id 3, wireType 2 =*/26).string(message.signature);
+                if (message.signingPublicKey != null && message.hasOwnProperty("signingPublicKey"))
+                    writer.uint32(/* id 4, wireType 2 =*/34).string(message.signingPublicKey);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified SaveDApp message, length delimited. Does not implicitly {@link api_proto.Request.SaveDApp.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof api_proto.Request.SaveDApp
+             * @static
+             * @param {api_proto.Request.ISaveDApp} message SaveDApp message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            SaveDApp.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a SaveDApp message from the specified reader or buffer.
+             * @function decode
+             * @memberof api_proto.Request.SaveDApp
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {api_proto.Request.SaveDApp} SaveDApp
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            SaveDApp.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.api_proto.Request.SaveDApp();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1:
+                        message.appName = reader.string();
+                        break;
+                    case 2:
+                        message.code = reader.string();
+                        break;
+                    case 3:
+                        message.signature = reader.string();
+                        break;
+                    case 4:
+                        message.signingPublicKey = reader.string();
+                        break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a SaveDApp message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof api_proto.Request.SaveDApp
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {api_proto.Request.SaveDApp} SaveDApp
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            SaveDApp.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a SaveDApp message.
+             * @function verify
+             * @memberof api_proto.Request.SaveDApp
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            SaveDApp.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.appName != null && message.hasOwnProperty("appName"))
+                    if (!$util.isString(message.appName))
+                        return "appName: string expected";
+                if (message.code != null && message.hasOwnProperty("code"))
+                    if (!$util.isString(message.code))
+                        return "code: string expected";
+                if (message.signature != null && message.hasOwnProperty("signature"))
+                    if (!$util.isString(message.signature))
+                        return "signature: string expected";
+                if (message.signingPublicKey != null && message.hasOwnProperty("signingPublicKey"))
+                    if (!$util.isString(message.signingPublicKey))
+                        return "signingPublicKey: string expected";
+                return null;
+            };
+
+            /**
+             * Creates a SaveDApp message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof api_proto.Request.SaveDApp
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {api_proto.Request.SaveDApp} SaveDApp
+             */
+            SaveDApp.fromObject = function fromObject(object) {
+                if (object instanceof $root.api_proto.Request.SaveDApp)
+                    return object;
+                var message = new $root.api_proto.Request.SaveDApp();
+                if (object.appName != null)
+                    message.appName = String(object.appName);
+                if (object.code != null)
+                    message.code = String(object.code);
+                if (object.signature != null)
+                    message.signature = String(object.signature);
+                if (object.signingPublicKey != null)
+                    message.signingPublicKey = String(object.signingPublicKey);
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a SaveDApp message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof api_proto.Request.SaveDApp
+             * @static
+             * @param {api_proto.Request.SaveDApp} message SaveDApp
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            SaveDApp.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                var object = {};
+                if (options.defaults) {
+                    object.appName = "";
+                    object.code = "";
+                    object.signature = "";
+                    object.signingPublicKey = "";
+                }
+                if (message.appName != null && message.hasOwnProperty("appName"))
+                    object.appName = message.appName;
+                if (message.code != null && message.hasOwnProperty("code"))
+                    object.code = message.code;
+                if (message.signature != null && message.hasOwnProperty("signature"))
+                    object.signature = message.signature;
+                if (message.signingPublicKey != null && message.hasOwnProperty("signingPublicKey"))
+                    object.signingPublicKey = message.signingPublicKey;
+                return object;
+            };
+
+            /**
+             * Converts this SaveDApp to JSON.
+             * @function toJSON
+             * @memberof api_proto.Request.SaveDApp
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            SaveDApp.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            return SaveDApp;
         })();
 
         return Request;
