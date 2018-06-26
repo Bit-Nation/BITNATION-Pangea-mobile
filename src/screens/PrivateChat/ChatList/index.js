@@ -18,7 +18,6 @@ import NationListHeader from '../../../components/common/NationListHeader';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import i18n from '../../../global/i18n';
-import AssetsImages from '../../../global/AssetsImages';
 import type { NationIdType, NationType } from '../../../types/Nation';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import ScreenTitle from '../../../components/common/ScreenTitle';
@@ -26,7 +25,6 @@ import ChatService from '../../../services/chat';
 import NewChatModal from './NewChatModal';
 import InvalidKeyModal from './InvalidKeyModal';
 import InviteSentModal from './InviteSentModal';
-import Chat from '../Chat';
 
 type Props = {
   /**
@@ -72,9 +70,6 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
   onChatAction = (index) => {
     switch (index) {
       case 0:
-        // this.props.navigator.showModal({
-        //   ...screen('NEW_CHAT_SCREEN'),
-        // });
         this.getPublicKeyFromClipboard();
         break;
       default:

@@ -281,7 +281,7 @@ export const AESValueSchema = {
 };
 
 const PreKeyBundleSchema = {
-  name: 'pre_key_bundle',
+  name: 'PreKeyBundle',
   properties: {
     one_time_pre_key: 'string',
     private_part: 'AESCipherText',
@@ -289,7 +289,7 @@ const PreKeyBundleSchema = {
 };
 
 const ProfileSchema = {
-  name: 'profile',
+  name: 'Profile',
   primaryKey: 'identity_pub_key',
   properties: {
     name: 'string',
@@ -307,16 +307,18 @@ const ProfileSchema = {
 
 const SharedSecret = {
   name: 'SharedSecret',
+  primaryKey: 'id',
   properties: {
     id: 'string',
-    secret: 'AES',
+    secret: 'AESCipherText',
   },
 };
 
 const ChatSessionSchema = {
   name: 'ChatSession',
+  primaryKey: 'publicKey',
   properties: {
-    type: 'string',
+    publicKey: 'string',
     messages: {
       type: 'list',
       objectType: 'Message',
@@ -348,6 +350,7 @@ const MessageSchema = {
     signature: 'string',
     used_secret: 'string',
     identity_pub_key: 'string',
+    outgoing: 'boolean',
   },
 };
 
