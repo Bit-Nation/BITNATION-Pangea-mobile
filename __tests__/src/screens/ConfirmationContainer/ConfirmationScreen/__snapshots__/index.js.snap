@@ -289,7 +289,8 @@ ShallowWrapper {
                       }
                     >
                       0.0
-                       ETH
+                       
+                      ETH
                     </Text>
                   </View>
                   <View
@@ -341,7 +342,8 @@ ShallowWrapper {
                       }
                     >
                       0.0
-                       ETH
+                       
+                      ETH
                     </Text>
                   </View>
                   <View
@@ -406,7 +408,8 @@ ShallowWrapper {
                         }
                       >
                         2
-                         Gwei
+                         
+                        Gwei
                       </Text>
                       <Text
                         accessible={true}
@@ -545,7 +548,8 @@ ShallowWrapper {
                       }
                     >
                       0.0
-                       ETH
+                       
+                      ETH
                     </Text>
                   </View>
                 </View>
@@ -804,7 +808,8 @@ ShallowWrapper {
                       }
                     >
                       0.0
-                       ETH
+                       
+                      ETH
                     </Text>
                   </View>
                   <View
@@ -856,7 +861,8 @@ ShallowWrapper {
                       }
                     >
                       0.0
-                       ETH
+                       
+                      ETH
                     </Text>
                   </View>
                   <View
@@ -921,7 +927,8 @@ ShallowWrapper {
                         }
                       >
                         2
-                         Gwei
+                         
+                        Gwei
                       </Text>
                       <Text
                         accessible={true}
@@ -1060,7 +1067,8 @@ ShallowWrapper {
                       }
                     >
                       0.0
-                       ETH
+                       
+                      ETH
                     </Text>
                   </View>
                 </View>
@@ -1284,7 +1292,8 @@ ShallowWrapper {
                         }
                       >
                         0.0
-                         ETH
+                         
+                        ETH
                       </Text>
                     </View>
                     <View
@@ -1336,7 +1345,8 @@ ShallowWrapper {
                         }
                       >
                         0.0
-                         ETH
+                         
+                        ETH
                       </Text>
                     </View>
                     <View
@@ -1401,7 +1411,8 @@ ShallowWrapper {
                           }
                         >
                           2
-                           Gwei
+                           
+                          Gwei
                         </Text>
                         <Text
                           accessible={true}
@@ -1540,7 +1551,8 @@ ShallowWrapper {
                         }
                       >
                         0.0
-                         ETH
+                         
+                        ETH
                       </Text>
                     </View>
                   </View>
@@ -1735,7 +1747,8 @@ ShallowWrapper {
                         }
                       >
                         0.0
-                         ETH
+                         
+                        ETH
                       </Text>
                     </View>
                     <View
@@ -1787,7 +1800,8 @@ ShallowWrapper {
                         }
                       >
                         0.0
-                         ETH
+                         
+                        ETH
                       </Text>
                     </View>
                     <View
@@ -1852,7 +1866,8 @@ ShallowWrapper {
                           }
                         >
                           2
-                           Gwei
+                           
+                          Gwei
                         </Text>
                         <Text
                           accessible={true}
@@ -1991,7 +2006,8 @@ ShallowWrapper {
                         }
                       >
                         0.0
-                         ETH
+                         
+                        ETH
                       </Text>
                     </View>
                   </View>
@@ -2185,7 +2201,8 @@ ShallowWrapper {
                         }
                       >
                         0.0
-                         ETH
+                         
+                        ETH
                       </Text>
                     </View>
                     <View
@@ -2237,7 +2254,8 @@ ShallowWrapper {
                         }
                       >
                         0.0
-                         ETH
+                         
+                        ETH
                       </Text>
                     </View>
                     <View
@@ -2302,7 +2320,8 @@ ShallowWrapper {
                           }
                         >
                           2
-                           Gwei
+                           
+                          Gwei
                         </Text>
                         <Text
                           accessible={true}
@@ -2441,7 +2460,8 @@ ShallowWrapper {
                         }
                       >
                         0.0
-                         ETH
+                         
+                        ETH
                       </Text>
                     </View>
                   </View>,
@@ -2602,7 +2622,8 @@ ShallowWrapper {
                           }
                         >
                           0.0
-                           ETH
+                           
+                          ETH
                         </Text>
                       </View>,
                       null,
@@ -2655,7 +2676,8 @@ ShallowWrapper {
                           }
                         >
                           0.0
-                           ETH
+                           
+                          ETH
                         </Text>
                       </View>,
                       <View
@@ -2720,7 +2742,8 @@ ShallowWrapper {
                             }
                           >
                             2
-                             Gwei
+                             
+                            Gwei
                           </Text>
                           <Text
                             accessible={true}
@@ -2859,7 +2882,8 @@ ShallowWrapper {
                           }
                         >
                           0.0
-                           ETH
+                           
+                          ETH
                         </Text>
                       </View>,
                     ],
@@ -3109,7 +3133,8 @@ ShallowWrapper {
                             }
                           >
                             0.0
-                             ETH
+                             
+                            ETH
                           </Text>,
                         ],
                         "style": Object {
@@ -3158,7 +3183,8 @@ ShallowWrapper {
                             "allowFontScaling": true,
                             "children": Array [
                               "0.0",
-                              " ETH",
+                              " ",
+                              "ETH",
                             ],
                             "ellipsizeMode": "tail",
                             "style": Object {
@@ -3173,7 +3199,8 @@ ShallowWrapper {
                           "ref": null,
                           "rendered": Array [
                             "0.0",
-                            " ETH",
+                            " ",
+                            "ETH",
                           ],
                           "type": [Function],
                         },
@@ -3220,7 +3247,8 @@ ShallowWrapper {
                             }
                           >
                             0.0
-                             ETH
+                             
+                            ETH
                           </Text>,
                         ],
                         "style": Object {
@@ -3269,7 +3297,8 @@ ShallowWrapper {
                             "allowFontScaling": true,
                             "children": Array [
                               "0.0",
-                              " ETH",
+                              " ",
+                              "ETH",
                             ],
                             "ellipsizeMode": "tail",
                             "style": Object {
@@ -3284,7 +3313,8 @@ ShallowWrapper {
                           "ref": null,
                           "rendered": Array [
                             "0.0",
-                            " ETH",
+                            " ",
+                            "ETH",
                           ],
                           "type": [Function],
                         },
@@ -3351,7 +3381,8 @@ ShallowWrapper {
                               }
                             >
                               2
-                               Gwei
+                               
+                              Gwei
                             </Text>
                             <Text
                               accessible={true}
@@ -3431,7 +3462,8 @@ ShallowWrapper {
                                 }
                               >
                                 2
-                                 Gwei
+                                 
+                                Gwei
                               </Text>,
                               <Text
                                 accessible={true}
@@ -3480,7 +3512,8 @@ ShallowWrapper {
                                 "allowFontScaling": true,
                                 "children": Array [
                                   2,
-                                  " Gwei",
+                                  " ",
+                                  "Gwei",
                                 ],
                                 "ellipsizeMode": "tail",
                                 "style": Object {
@@ -3490,7 +3523,8 @@ ShallowWrapper {
                               "ref": null,
                               "rendered": Array [
                                 2,
-                                " Gwei",
+                                " ",
+                                "Gwei",
                               ],
                               "type": [Function],
                             },
@@ -3771,7 +3805,8 @@ ShallowWrapper {
                             }
                           >
                             0.0
-                             ETH
+                             
+                            ETH
                           </Text>,
                         ],
                         "style": Object {
@@ -3820,7 +3855,8 @@ ShallowWrapper {
                             "allowFontScaling": true,
                             "children": Array [
                               "0.0",
-                              " ETH",
+                              " ",
+                              "ETH",
                             ],
                             "ellipsizeMode": "tail",
                             "style": Object {
@@ -3835,7 +3871,8 @@ ShallowWrapper {
                           "ref": null,
                           "rendered": Array [
                             "0.0",
-                            " ETH",
+                            " ",
+                            "ETH",
                           ],
                           "type": [Function],
                         },
@@ -4096,7 +4133,8 @@ ShallowWrapper {
                         }
                       >
                         0.0
-                         ETH
+                         
+                        ETH
                       </Text>
                     </View>
                     <View
@@ -4148,7 +4186,8 @@ ShallowWrapper {
                         }
                       >
                         0.0
-                         ETH
+                         
+                        ETH
                       </Text>
                     </View>
                     <View
@@ -4213,7 +4252,8 @@ ShallowWrapper {
                           }
                         >
                           2
-                           Gwei
+                           
+                          Gwei
                         </Text>
                         <Text
                           accessible={true}
@@ -4352,7 +4392,8 @@ ShallowWrapper {
                         }
                       >
                         0.0
-                         ETH
+                         
+                        ETH
                       </Text>
                     </View>
                   </View>
@@ -4611,7 +4652,8 @@ ShallowWrapper {
                         }
                       >
                         0.0
-                         ETH
+                         
+                        ETH
                       </Text>
                     </View>
                     <View
@@ -4663,7 +4705,8 @@ ShallowWrapper {
                         }
                       >
                         0.0
-                         ETH
+                         
+                        ETH
                       </Text>
                     </View>
                     <View
@@ -4728,7 +4771,8 @@ ShallowWrapper {
                           }
                         >
                           2
-                           Gwei
+                           
+                          Gwei
                         </Text>
                         <Text
                           accessible={true}
@@ -4867,7 +4911,8 @@ ShallowWrapper {
                         }
                       >
                         0.0
-                         ETH
+                         
+                        ETH
                       </Text>
                     </View>
                   </View>
@@ -5091,7 +5136,8 @@ ShallowWrapper {
                           }
                         >
                           0.0
-                           ETH
+                           
+                          ETH
                         </Text>
                       </View>
                       <View
@@ -5143,7 +5189,8 @@ ShallowWrapper {
                           }
                         >
                           0.0
-                           ETH
+                           
+                          ETH
                         </Text>
                       </View>
                       <View
@@ -5208,7 +5255,8 @@ ShallowWrapper {
                             }
                           >
                             2
-                             Gwei
+                             
+                            Gwei
                           </Text>
                           <Text
                             accessible={true}
@@ -5347,7 +5395,8 @@ ShallowWrapper {
                           }
                         >
                           0.0
-                           ETH
+                           
+                          ETH
                         </Text>
                       </View>
                     </View>
@@ -5542,7 +5591,8 @@ ShallowWrapper {
                           }
                         >
                           0.0
-                           ETH
+                           
+                          ETH
                         </Text>
                       </View>
                       <View
@@ -5594,7 +5644,8 @@ ShallowWrapper {
                           }
                         >
                           0.0
-                           ETH
+                           
+                          ETH
                         </Text>
                       </View>
                       <View
@@ -5659,7 +5710,8 @@ ShallowWrapper {
                             }
                           >
                             2
-                             Gwei
+                             
+                            Gwei
                           </Text>
                           <Text
                             accessible={true}
@@ -5798,7 +5850,8 @@ ShallowWrapper {
                           }
                         >
                           0.0
-                           ETH
+                           
+                          ETH
                         </Text>
                       </View>
                     </View>
@@ -5992,7 +6045,8 @@ ShallowWrapper {
                           }
                         >
                           0.0
-                           ETH
+                           
+                          ETH
                         </Text>
                       </View>
                       <View
@@ -6044,7 +6098,8 @@ ShallowWrapper {
                           }
                         >
                           0.0
-                           ETH
+                           
+                          ETH
                         </Text>
                       </View>
                       <View
@@ -6109,7 +6164,8 @@ ShallowWrapper {
                             }
                           >
                             2
-                             Gwei
+                             
+                            Gwei
                           </Text>
                           <Text
                             accessible={true}
@@ -6248,7 +6304,8 @@ ShallowWrapper {
                           }
                         >
                           0.0
-                           ETH
+                           
+                          ETH
                         </Text>
                       </View>
                     </View>,
@@ -6409,7 +6466,8 @@ ShallowWrapper {
                             }
                           >
                             0.0
-                             ETH
+                             
+                            ETH
                           </Text>
                         </View>,
                         null,
@@ -6462,7 +6520,8 @@ ShallowWrapper {
                             }
                           >
                             0.0
-                             ETH
+                             
+                            ETH
                           </Text>
                         </View>,
                         <View
@@ -6527,7 +6586,8 @@ ShallowWrapper {
                               }
                             >
                               2
-                               Gwei
+                               
+                              Gwei
                             </Text>
                             <Text
                               accessible={true}
@@ -6666,7 +6726,8 @@ ShallowWrapper {
                             }
                           >
                             0.0
-                             ETH
+                             
+                            ETH
                           </Text>
                         </View>,
                       ],
@@ -6916,7 +6977,8 @@ ShallowWrapper {
                               }
                             >
                               0.0
-                               ETH
+                               
+                              ETH
                             </Text>,
                           ],
                           "style": Object {
@@ -6965,7 +7027,8 @@ ShallowWrapper {
                               "allowFontScaling": true,
                               "children": Array [
                                 "0.0",
-                                " ETH",
+                                " ",
+                                "ETH",
                               ],
                               "ellipsizeMode": "tail",
                               "style": Object {
@@ -6980,7 +7043,8 @@ ShallowWrapper {
                             "ref": null,
                             "rendered": Array [
                               "0.0",
-                              " ETH",
+                              " ",
+                              "ETH",
                             ],
                             "type": [Function],
                           },
@@ -7027,7 +7091,8 @@ ShallowWrapper {
                               }
                             >
                               0.0
-                               ETH
+                               
+                              ETH
                             </Text>,
                           ],
                           "style": Object {
@@ -7076,7 +7141,8 @@ ShallowWrapper {
                               "allowFontScaling": true,
                               "children": Array [
                                 "0.0",
-                                " ETH",
+                                " ",
+                                "ETH",
                               ],
                               "ellipsizeMode": "tail",
                               "style": Object {
@@ -7091,7 +7157,8 @@ ShallowWrapper {
                             "ref": null,
                             "rendered": Array [
                               "0.0",
-                              " ETH",
+                              " ",
+                              "ETH",
                             ],
                             "type": [Function],
                           },
@@ -7158,7 +7225,8 @@ ShallowWrapper {
                                 }
                               >
                                 2
-                                 Gwei
+                                 
+                                Gwei
                               </Text>
                               <Text
                                 accessible={true}
@@ -7238,7 +7306,8 @@ ShallowWrapper {
                                   }
                                 >
                                   2
-                                   Gwei
+                                   
+                                  Gwei
                                 </Text>,
                                 <Text
                                   accessible={true}
@@ -7287,7 +7356,8 @@ ShallowWrapper {
                                   "allowFontScaling": true,
                                   "children": Array [
                                     2,
-                                    " Gwei",
+                                    " ",
+                                    "Gwei",
                                   ],
                                   "ellipsizeMode": "tail",
                                   "style": Object {
@@ -7297,7 +7367,8 @@ ShallowWrapper {
                                 "ref": null,
                                 "rendered": Array [
                                   2,
-                                  " Gwei",
+                                  " ",
+                                  "Gwei",
                                 ],
                                 "type": [Function],
                               },
@@ -7578,7 +7649,8 @@ ShallowWrapper {
                               }
                             >
                               0.0
-                               ETH
+                               
+                              ETH
                             </Text>,
                           ],
                           "style": Object {
@@ -7627,7 +7699,8 @@ ShallowWrapper {
                               "allowFontScaling": true,
                               "children": Array [
                                 "0.0",
-                                " ETH",
+                                " ",
+                                "ETH",
                               ],
                               "ellipsizeMode": "tail",
                               "style": Object {
@@ -7642,7 +7715,8 @@ ShallowWrapper {
                             "ref": null,
                             "rendered": Array [
                               "0.0",
-                              " ETH",
+                              " ",
+                              "ETH",
                             ],
                             "type": [Function],
                           },
