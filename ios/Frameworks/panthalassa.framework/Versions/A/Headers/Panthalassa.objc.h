@@ -40,7 +40,11 @@
 - (void)setEncryptedKeyManager:(NSString*)v;
 - (NSString*)signedProfile;
 - (void)setSignedProfile:(NSString*)v;
+- (NSString*)ethWsEndpoint;
+- (void)setEthWsEndpoint:(NSString*)v;
 @end
+
+FOUNDATION_EXPORT BOOL PanthalassaConnectToDAppDevHost(NSString* address, NSError** error);
 
 FOUNDATION_EXPORT NSString* PanthalassaCreateHumanMessage(NSString* rawMsg, NSString* secretID, NSString* secret, NSError** error);
 
