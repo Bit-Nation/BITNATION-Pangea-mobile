@@ -40,7 +40,7 @@ export function* updateWalletToDb(walletsArray: WalletType[], amount: string, cu
   const balanceBNEth = new BigNumber(walletToDB.balance);
   const amountNEth = new BigNumber(amount);
   db.write(() => {
-    db.create('Wallet', { name: walletToDB.name, balance: balanceBNEth.minus(amountNEth) }, true);
+    db.create('Wallet', { name: walletToDB.name, balance: balanceBNEth.minus(amountNEth).toString() }, true);
   });
 }
 
@@ -65,8 +65,8 @@ export function* sendMoneySaga(action: SendMoneyAction): Generator<*, *, *> {
   if (state.wallet.selectedWalletCurrency === 'ETH') {
     try {
       yield call([walletService, 'sendMoney'], fromAddress, toAddress, amountToSend);
+      yield call(updateWalletToDb, state.wallet.wallets, amountToSend, state.wallet.selectedWalletCurrency);
       yield put(sendMoneySuccess());
-      yield call(updateWalletToDb, amountToSend, state.wallet.selectedWalletCurrency);
     } catch (error) {
       yield put(sendMoneyFailed(error));
     }
@@ -74,7 +74,7 @@ export function* sendMoneySaga(action: SendMoneyAction): Generator<*, *, *> {
     try {
       yield call([walletService, 'sendToken'], fromAddress, toAddress, amountToSend, account.networkType);
       yield put(sendMoneySuccess());
-      yield call(updateWalletToDb, amountToSend, state.wallet.selectedWalletCurrency);
+      yield call(updateWalletToDb, state.wallet.wallets, amountToSend, state.wallet.selectedWalletCurrency);
     } catch (error) {
       yield put(sendMoneyFailed(error));
     }
