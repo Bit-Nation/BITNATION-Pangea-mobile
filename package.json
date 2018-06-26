@@ -14,7 +14,9 @@
     "android": "flow && node_modules/.bin/react-native run-android",
     "postinstall": "./node_modules/.bin/rn-nodeify --install 'stream,buffer,vm,crypto,string_decoder,events,assert' --hack",
     "docs": "node_modules/.bin/documentation build src/services/container.js -f md > docs/main.md",
-    "build:ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/Pangea/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios'"
+    "build:ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/Pangea/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios'",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "dependencies": {
     "assert": "^1.4.1",
@@ -73,7 +75,8 @@
     "string_decoder": "^0.10.31",
     "unique-string": "^1.0.0",
     "uuid4": "^1.0.0",
-    "vm-browserify": "0.0.4"
+    "vm-browserify": "0.0.4",
+    "snyk": "^1.85.0"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.2",
@@ -145,5 +148,6 @@
     "assets": [
       "assets/fonts/Roboto"
     ]
-  }
+  },
+  "snyk": true
 }
