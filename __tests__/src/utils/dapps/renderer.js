@@ -1,8 +1,16 @@
-import { getTypeElementFromText, validateProps } from '../../../../src/utils/dapps/renderer';
-import Text from '../../../../src/components/dapps/Text';
+import React from 'react';
+
+import { getTypeElementFromText, renderJSON, validateProps } from '../../../../src/utils/dapps/renderer';
 import View from '../../../../src/components/dapps/View';
+import Text from '../../../../src/components/dapps/Text';
 import TextInput from '../../../../src/components/dapps/TextInput';
 import Button from '../../../../src/components/dapps/Button';
+
+React.createElement = jest.fn().mockImplementation((component, props, children) => ({
+  component,
+  props,
+  children,
+}));
 
 test('getTypeElementFromText', () => {
   expect(getTypeElementFromText('Text')).toEqual(Text);
@@ -42,5 +50,160 @@ test('validateProps', () => {
     callbackProps: {
       onPressID: 'ON_PRESS',
     },
+  });
+});
+
+describe('renderJSON', () => {
+  test('single view', () => {
+    expect(renderJSON({
+      type: 'View',
+      props: {},
+      children: null,
+    }, undefined, () => ({}))).toEqual({
+      component: View,
+      props: {},
+      children: null,
+    });
+  });
+
+  test('unknown component', () => {
+    expect(renderJSON({ type: 'Something unknown' }, undefined, () => ({}))).toBeNull();
+  });
+
+  test('string literal outside Text', () => {
+    expect(renderJSON({ type: 'View', children: ['Something unknown'], props: {} }, undefined, () => ({}))).toEqual({
+      component: View,
+      props: {},
+      children: [null],
+    });
+  });
+
+  test('complex JSON', () => {
+    const json = {
+      type: 'View',
+      props: { style: { backgroundColor: 'yellow', flex: 1 } },
+      children: [
+        {
+          type: 'Text',
+          props: { style: { color: 'red' } },
+          children: [
+            'Red text',
+          ],
+        },
+        {
+          type: 'View',
+          props: { style: { backgroundColor: 'blue' } },
+          children: [
+            {
+              type: 'Text',
+              props: { style: { color: 'white' } },
+              children: [{
+                type: 'Text',
+                props: { style: { color: 'red' } },
+                children: [
+                  'White bold text',
+                ],
+              },
+              'And text',
+              ],
+            },
+          ],
+        },
+        {
+          type: 'TextInput',
+          props: {
+            style: { width: 200, height: 50 },
+            onChangeTextPath: 'textInput1.text',
+            onEndEditingID: 'text callback',
+          },
+        },
+        {
+          type: 'TextInput',
+          props: { style: { width: 200, height: 50 }, valuePath: 'textInput1.text' },
+        },
+        {
+          type: 'Button',
+          props: {
+            style: { width: 100, height: 50, backgroundColor: 'green' },
+            title: 'Hey',
+            onPressID: 'BUTTON CALLBACK',
+            disabledPath: 'textInput1.text.length',
+          },
+        },
+      ],
+    };
+
+    const customPropsProvider = (component, ownProps) => ({
+      type: component,
+      ownPropsCount: Object.keys(ownProps).length,
+    });
+
+    expect(renderJSON(json, undefined, customPropsProvider)).toEqual({
+      component: View,
+      props: {
+        style: { backgroundColor: 'yellow', flex: 1 }, type: View, key: undefined, ownPropsCount: 1,
+      },
+      children: [
+        {
+          component: Text,
+          props: {
+            style: { color: 'red' }, type: Text, key: '0', ownPropsCount: 1,
+          },
+          children: [
+            'Red text',
+          ],
+        },
+        {
+          component: View,
+          props: {
+            style: { backgroundColor: 'blue' }, type: View, key: '1', ownPropsCount: 1,
+          },
+          children: [
+            {
+              component: Text,
+              props: {
+                style: { color: 'white' }, type: Text, key: '0', ownPropsCount: 1,
+              },
+              children: [{
+                component: Text,
+                props: {
+                  style: { color: 'red' }, type: Text, key: '0', ownPropsCount: 1,
+                },
+                children: [
+                  'White bold text',
+                ],
+              },
+              'And text',
+              ],
+            },
+          ],
+        },
+        {
+          children: null,
+          component: TextInput,
+          props: {
+            style: { width: 200, height: 50 }, type: TextInput, key: '2', ownPropsCount: 3,
+          },
+        },
+        {
+          children: null,
+          component: TextInput,
+          props: {
+            style: { width: 200, height: 50 }, type: TextInput, key: '3', ownPropsCount: 2,
+          },
+        },
+        {
+          children: null,
+          component: Button,
+          props: {
+            style: { width: 100, height: 50, backgroundColor: 'green' },
+            title: 'Hey',
+            type: Button,
+            key: '4',
+            ownPropsCount: 4,
+          },
+        },
+      ],
+    });
   });
 });
