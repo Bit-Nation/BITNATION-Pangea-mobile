@@ -3,15 +3,23 @@ import { shallow } from 'enzyme';
 
 import List from '../../../../../src/screens/WalletScreen/List';
 
-test('List renders correctly', () => {
-  const wrapper = shallow((
-    <List wallets={[{
+describe('List Wallet', () => {
+  let ListScreen;
+  const propsMock = {
+    wallets: [{
       balance: '0',
       currency: 'ETH',
-      name: 'Test wallet',
       ethAddress: '0xtestAddress',
-    }]}
-    />
-  ));
-  expect(wrapper).toMatchSnapshot();
+    }],
+    onReceivePress: jest.fn(),
+    onSendPress: jest.fn(),
+    isRefreshing: jest.fn(),
+    onRefresh: jest.fn(),
+  };
+  test('List renders correctly', () => {
+    ListScreen = shallow((
+      <List {...propsMock} />
+    ));
+    expect(ListScreen).toMatchSnapshot();
+  });
 });

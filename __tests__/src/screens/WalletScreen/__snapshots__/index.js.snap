@@ -36,6 +36,7 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
+      "isRefreshing": false,
       "moneySendingError": null,
       "moneySendingInProgress": false,
       "moneySendingSuccess": false,
@@ -90,6 +91,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
+        "isRefreshing": false,
         "moneySendingError": null,
         "moneySendingInProgress": false,
         "moneySendingSuccess": false,
@@ -185,6 +187,7 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
+      "isRefreshing": false,
       "moneySendingError": null,
       "moneySendingInProgress": false,
       "moneySendingSuccess": false,
@@ -245,6 +248,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
+        "isRefreshing": false,
         "moneySendingError": null,
         "moneySendingInProgress": false,
         "moneySendingSuccess": false,
