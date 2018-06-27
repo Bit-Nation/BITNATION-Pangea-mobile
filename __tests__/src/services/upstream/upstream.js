@@ -1,16 +1,11 @@
-import { api_proto } from '../../../../src/services/upstream/compiledRequest';
 import Upstream from '../../../../src/services/upstream/upstream';
+import { api_proto as apiProto } from '../../../../src/services/upstream/compiled';
 
-const { Request } = api_proto;
-
+const { Request } = apiProto;
 jest.mock('react-native', () => ({
-  NativeEventEmitter: (config) => {
-    return {
-      addListener: jest.fn((name, request) => {
-        console.log('handling request');
-      }),
-    };
-  },
+  NativeEventEmitter: () => ({
+    addListener: jest.fn(() => {}),
+  }),
   NativeModules: {},
 }));
 
@@ -68,11 +63,11 @@ describe('upstream', () => {
 });
 
 
-// describe('Upstream class', () => {
-//   let upstream;
-//   test('Initialize the upstream service', async () => {
-//     const encodedRequest = Request.encode(message).finish();
-//     upstream = new Upstream();
-//     upstream.handleRequest(encodedRequest);
-//   });
-// });
+describe('Upstream class', () => {
+  let upstream;
+  test('Initialize the upstream service', () => {
+    const encodedRequest = Request.encode(message).finish();
+    upstream = new Upstream();
+    upstream.handleRequest(encodedRequest);
+  });
+});
