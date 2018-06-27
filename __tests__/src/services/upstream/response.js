@@ -1,6 +1,6 @@
-import { api_proto } from '../../../../src/services/upstream/compiledResponse';
+import { api_proto as apiProto } from '../../../../src/services/upstream/compiled';
 
-const { Response } = api_proto;
+const { Response } = apiProto;
 
 const message = {
 
