@@ -4,6 +4,7 @@ import {
   type Action,
   SHOW_CHAT_SPINNER,
   HIDE_CHAT_SPINNER,
+  CHATS_UPDATED,
 } from '../actions/chat';
 import { SERVICES_DESTROYED } from '../actions/serviceContainer';
 
@@ -13,6 +14,7 @@ export type State = {
 
 export const initialState: State = {
   isFetching: false,
+  chats: [],
 };
 
 /**
@@ -34,6 +36,11 @@ export default (state: State = initialState, action: Action): State => {
       return {
         ...state,
         isFetching: false,
+      };
+    case CHATS_UPDATED:
+      return {
+        ...state,
+        chats: action.chats,
       };
     default:
       return state;
