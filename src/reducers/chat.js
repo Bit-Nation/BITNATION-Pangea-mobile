@@ -5,16 +5,20 @@ import {
   SHOW_CHAT_SPINNER,
   HIDE_CHAT_SPINNER,
   CHATS_UPDATED,
+  SELECT_PROFILE,
 } from '../actions/chat';
 import { SERVICES_DESTROYED } from '../actions/serviceContainer';
 
 export type State = {
   +isFetching: boolean,
+  chats: Array<any>,
+  chatProfile: Object,
 };
 
 export const initialState: State = {
   isFetching: false,
   chats: [],
+  chatProfile: {},
 };
 
 /**
@@ -41,6 +45,11 @@ export default (state: State = initialState, action: Action): State => {
       return {
         ...state,
         chats: action.chats,
+      };
+    case SELECT_PROFILE:
+      return {
+        ...state,
+        chatProfile: action.profile,
       };
     default:
       return state;
