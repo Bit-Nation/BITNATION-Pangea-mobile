@@ -489,7 +489,8 @@
       "security": "Security",
       "viewPrivateKey": "Private Key",
       "confirmPrivateKey": "Private Key (confirmation required)",
-      "switchAccounts": "Switch accounts"
+      "switchAccounts": "Switch accounts",
+      "connectToDAppHost": "Connect to DApp host"
     },
     "securitySettings": {
       "title": "Security settings",
