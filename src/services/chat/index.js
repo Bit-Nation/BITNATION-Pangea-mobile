@@ -3,12 +3,12 @@
 import { NativeModules } from 'react-native';
 import Config from 'react-native-config';
 
-import type { Profile } from '../../types/Account';
+// import type { Profile } from '../../types/Account';
 
 const { Panthalassa } = NativeModules;
 
 export default class ChatService {
-  static async uploadProfile(profile: string): Promise {
+  static async uploadProfile(profile: string): Promise<any> {
     console.log('profile upload: ', profile);
     const URL = `${Config.CHAT_ENDPOINT}/profile`;
     await fetch(URL, {
@@ -29,7 +29,7 @@ export default class ChatService {
     });
   }
 
-  static async getProfile(publicKey: string): Promise {
+  static async getProfile(publicKey: string): Promise<any> {
     const URL = `${Config.CHAT_ENDPOINT}/profile/${publicKey}`;
     return fetch(URL, {
       headers: {
@@ -54,7 +54,7 @@ export default class ChatService {
       .then(response => response.json());
   }
 
-  static async getPreKeyBundle(publicKey: string): Promise {
+  static async getPreKeyBundle(publicKey: string): Promise<any> {
     const URL = `${Config.CHAT_ENDPOINT}/pre-key-bundle/${publicKey}`;
     return fetch(URL, {
       headers: {
@@ -66,7 +66,7 @@ export default class ChatService {
       .then(response => response.json());
   }
 
-  static async uploadPreKeyBundle(): Promise {
+  static async uploadPreKeyBundle(): Promise<any> {
     let preKeyBundle = await Panthalassa.PanthalassaNewPreKeyBundle();
     preKeyBundle = JSON.parse(preKeyBundle);
     console.log('pre key bundle: ', preKeyBundle);
@@ -88,7 +88,7 @@ export default class ChatService {
     return response;
   }
 
-  static async uploadMessage(message: string): Promise {
+  static async uploadMessage(message: string): Promise<any> {
     const URL = `${Config.CHAT_ENDPOINT}/message`;
     return fetch(URL, {
       body: message,
@@ -100,7 +100,7 @@ export default class ChatService {
     });
   }
 
-  static async loadMessages(publicKey: string): Promise {
+  static async loadMessages(publicKey: string): Promise<any> {
     const URL = `${Config.CHAT_ENDPOINT}/missing-messages/${publicKey}`;
     return fetch(URL, {
       headers: {

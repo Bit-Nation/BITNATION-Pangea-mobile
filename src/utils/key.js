@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-// @flow
+// TODO add FLOW
 
 import _ from 'lodash';
 import type { Mnemonic } from '../types/Mnemonic';
