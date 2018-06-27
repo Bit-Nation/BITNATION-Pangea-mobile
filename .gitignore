@@ -63,4 +63,5 @@ src.zip
 docs_build
 /.eslintrc
 pangea*
-android/java_pid13504.hprof
+*.hprof
+
