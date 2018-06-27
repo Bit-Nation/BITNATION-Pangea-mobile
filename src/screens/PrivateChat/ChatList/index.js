@@ -1,6 +1,7 @@
 // @flow
 
 import React from 'react';
+import { connect } from 'react-redux';
 import {
   View,
   SectionList,
@@ -10,6 +11,7 @@ import _ from 'lodash';
 import { Fab, Text } from 'native-base';
 import ActionSheet from 'react-native-actionsheet';
 
+import { newChatSession } from '../../../actions/chat';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import styles from './styles';
 import { screen } from '../../../global/Screens';
@@ -107,7 +109,8 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
     try {
       const response = await ChatService.getPreKeyBundle(this.state.publicKey);
       // console.log('fetch bundle: ', response);
-      await ChatService.startChat(this.state.publicKey, JSON.stringify(response.bundle));
+      const initMessage = await ChatService.startChat(this.state.publicKey, JSON.stringify(response.bundle));
+      this.props.createNewSession(this.state.profile, initMessage);
       this.setState({
         showModal: '',
       });
@@ -212,4 +215,12 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
   }
 }
 
-export default ChatListScreen;
+const mapStateToProps = state => ({
+  chatSessions: state.chat,
+});
+
+const mapDispatchToProps = dispatch => ({
+  createNewSession: (key, initMessage) => dispatch(newChatSession(key, initMessage)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ChatListScreen);
