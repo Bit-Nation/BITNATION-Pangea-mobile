@@ -165,6 +165,7 @@ class SendMoney extends NavigatorComponent<Props, State> {
                       placeholderTextColor={Colors.placeholderTextColor}
                       onChangeText={amountString => this.setState({ amountString })}
                       value={this.state.amountString}
+                      keyboardType='numeric'
                     />
 
                   </View>
@@ -177,6 +178,7 @@ class SendMoney extends NavigatorComponent<Props, State> {
                     placeholderTextColor={Colors.placeholderTextColor}
                     keyboardType='default'
                     autoCapitalize='none'
+                    autoCorrect={false}
                     onChangeText={toEthAddress => this.setState({ toEthAddress })}
                     value={this.state.toEthAddress}
                   />

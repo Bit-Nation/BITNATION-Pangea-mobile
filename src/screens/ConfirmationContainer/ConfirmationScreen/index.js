@@ -1,9 +1,11 @@
 // @flow
 
 import React from 'react';
+import ethers from 'ethers';
 import {
   View,
   Text,
+  TextInput,
   ScrollView,
   Slider,
 } from 'react-native';
@@ -26,19 +28,31 @@ type Props = {
   /**
    * @desc Function to return the Promise resolve
    * @param {number} gasPrice Number with the gasPrice selected by the user for the current transaction
+   * @param {string} gasLimit string to describe the maximum gas price for this transaction
    */
-  onSuccess: (gasPrice: number) => null,
+  onSuccess: (gasPrice: number, gasLimit: string) => null,
   /**
    * @desc Function to return the Promise reject
    */
   onFail: () => null,
+  /**
+   * @desc Object with the properties of the transaction
+   */
+  to: String,
+  from: String,
+  amount: String,
+  estimate: String,
+  purpose: String,
+  app: String,
 }
 
 type State = {
   /**
    * @desc gasPrice to return in resolve
+   * @desc gasLimit to return in resolve
    */
   gasPrice: number,
+  gasLimit: string
 }
 
 class ConfirmationScreen extends NavigatorComponent<Props, State> {
@@ -48,6 +62,7 @@ class ConfirmationScreen extends NavigatorComponent<Props, State> {
     super(props);
     this.state = {
       gasPrice: 2,
+      gasLimit: '1500000',
     };
 
     this.props.navigator.setButtons({
@@ -67,7 +82,7 @@ class ConfirmationScreen extends NavigatorComponent<Props, State> {
     if (id === 'cancel') {
       this.props.onFail();
     } else {
-      this.props.onSuccess(this.state.gasPrice);
+      this.props.onSuccess(this.state.gasPrice, this.state.gasLimit);
     }
   }
 
@@ -89,15 +104,50 @@ class ConfirmationScreen extends NavigatorComponent<Props, State> {
 
 
   buildConfirmationView() {
+    const amount = ethers.utils.bigNumberify(this.props.amount);
+    const gasEstimate = ethers.utils.bigNumberify(this.props.estimate).mul(ethers.utils.parseUnits(this.state.gasPrice.toString(), 'gwei'));
     return (
       <PanelView
         style={styles.panelViewTransparent}
       >
         <View style={styles.formRow}>
           <View style={styles.fieldsContainer}>
-            <View style={styles.bodyParagraph}>
+            <View style={styles.bodyParagraphConfirmationRow}>
               <Text style={styles.body}>
-                {i18n.t('screens.confirmTransaction.gasPrice')}
+                {i18n.t('screens.confirmTransaction.processor')}
+              </Text>
+              <Text style={styles.bodyBoldBlack}>
+                {this.props.app || 'Default Application'}
+              </Text>
+            </View>
+            <View style={styles.bodyParagraphConfirmationColumn}>
+              <Text style={styles.body}>
+                {i18n.t('screens.confirmTransaction.to')}
+              </Text>
+              <Text style={styles.bodyBoldBlackSmall}>
+                {this.props.to}
+              </Text>
+            </View>
+            <View style={styles.bodyParagraphConfirmationRow}>
+              <Text style={styles.body}>
+                {i18n.t('screens.confirmTransaction.amount')}
+              </Text>
+              <Text style={styles.bodyBoldBlack}>
+                {ethers.utils.formatEther(amount)} {i18n.t('screens.confirmTransaction.eth')}
+              </Text>
+            </View>
+            {this.props.purpose ?
+              <View style={styles.bodyParagraphConfirmationRow}>
+                <Text style={styles.body}>
+                  {this.props.purpose}
+                </Text>
+              </View> : null}
+            <View style={styles.bodyParagraphConfirmationRow}>
+              <Text style={styles.body}>
+                {i18n.t('screens.confirmTransaction.gasEstimate')}
+              </Text>
+              <Text style={styles.bodyBoldBlack}>
+                {ethers.utils.formatEther(gasEstimate)} {i18n.t('screens.confirmTransaction.eth')}
               </Text>
             </View>
             <View style={styles.fieldsContainer}>
@@ -105,14 +155,39 @@ class ConfirmationScreen extends NavigatorComponent<Props, State> {
                 style={styles.gridContainer}
                 step={1}
                 minimumValue={2}
-                maximumValue={100}
+                maximumValue={60}
                 value={this.state.gasPrice}
                 onValueChange={val => this.setState({ gasPrice: val })}
+                thumbTintColor={Colors.thumbTintColor}
+                maximumTrackTintColor={Colors.maximumTrackTintColor}
+                minimumTrackTintColor={Colors.minimumTrackTintColor}
               />
+              <View style={styles.textCon}>
+                <Text style={styles.colorGrey}>{i18n.t('screens.confirmTransaction.slow')}</Text>
+                <Text style={styles.colorYellow}>
+                  {this.state.gasPrice} {i18n.t('screens.confirmTransaction.gwei')}
+                </Text>
+                <Text style={styles.colorGrey}>{i18n.t('screens.confirmTransaction.fast')}</Text>
+              </View>
             </View>
             <View style={styles.fieldsContainer}>
+              <View style={styles.bodyParagraphConfirmationRow}>
+                <Text style={styles.body}>
+                  {i18n.t('screens.confirmTransaction.gasLimit')}:
+                </Text>
+                <TextInput
+                  style={[styles.textInputConfirmation, styles.bodyBoldBlack]}
+                  onChangeText={gasLimit => this.setState({ gasLimit })}
+                  value={this.state.gasLimit}
+                />
+              </View>
+            </View>
+            <View style={styles.bodyParagraphConfirmationRow}>
               <Text style={styles.body}>
-                {i18n.t('screens.confirmTransaction.gasPriceTitle', { gasPrice: this.state.gasPrice })}
+                {i18n.t('screens.confirmTransaction.total')}
+              </Text>
+              <Text style={styles.bodyBoldBlack}>
+                {ethers.utils.formatEther(amount.add(gasEstimate))} {i18n.t('screens.confirmTransaction.eth')}
               </Text>
             </View>
           </View>
