@@ -42,6 +42,8 @@
 - (void)setSignedProfile:(NSString*)v;
 - (NSString*)ethWsEndpoint;
 - (void)setEthWsEndpoint:(NSString*)v;
+- (BOOL)enableDebugging;
+- (void)setEnableDebugging:(BOOL)v;
 @end
 
 FOUNDATION_EXPORT BOOL PanthalassaConnectToDAppDevHost(NSString* address, NSError** error);
