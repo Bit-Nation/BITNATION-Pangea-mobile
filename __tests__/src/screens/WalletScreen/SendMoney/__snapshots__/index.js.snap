@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SendMoney renders correctly 1`] = `
+exports[`SendMoney Screen SendMoney renders correctly 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
@@ -13,6 +13,7 @@ ShallowWrapper {
         "setOnNavigatorEvent": [MockFunction],
       }
     }
+    onSendMoney={[MockFunction]}
     store={
       Object {
         "clearActions": [Function],
@@ -36,6 +37,7 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
+      "isRefreshing": false,
       "moneySendingError": null,
       "moneySendingInProgress": false,
       "moneySendingSuccess": false,
@@ -93,6 +95,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
+        "isRefreshing": false,
         "moneySendingError": null,
         "moneySendingInProgress": false,
         "moneySendingSuccess": false,

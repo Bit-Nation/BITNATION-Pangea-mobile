@@ -4,7 +4,7 @@ import type { WalletType } from '../types/Wallet';
 
 export type SelectWalletAction = { +type: 'SELECT_WALLET', +wallet: WalletType };
 export type SendMoneyAction = { +type: 'SEND_MONEY', +amount: number, +toEthAddress: string };
-export type WalletListUpdatedAction = { +type: 'WALLETS_LIST_UPDATED', +wallets: Array<WalletType> };
+export type WalletListUpdatedAction = { +type: 'WALLETS_LIST_UPDATED', +wallets: Array<WalletType>, syncDone: boolean };
 export type UpdateWalletListAction = { +type: 'UPDATE_WALLET_LIST' };
 export type UpdateWalletBalanceAction = { +type: 'UPDATE_WALLET_BALANCE', +walletAddress: string, +walletCurrency: string};
 export type SendMoneySuccessAction = { +type: 'SEND_MONEY_SUCCESS' };
@@ -59,12 +59,14 @@ export function sendMoney(amount: number, toEthAddress: string): SendMoneyAction
 /**
  * @desc Action creator for an action that takes update of wallets available.
  * @param {WalletType[]} wallets Array of wallets.
+ * @param {boolean} syncDone Flag if sync is not pending.
  * @returns {WalletListUpdatedAction} An action.
  */
-export function walletsListUpdated(wallets: Array<WalletType>): WalletListUpdatedAction {
+export function walletsListUpdated(wallets: Array<WalletType>, syncDone: boolean): WalletListUpdatedAction {
   return {
     type: WALLETS_LIST_UPDATED,
     wallets,
+    syncDone,
   };
 }
 

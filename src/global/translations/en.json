@@ -511,8 +511,21 @@
     "confirmTransaction": {
       "title": "Confirm Transaction",
       "gasPrice": "What gas price would you like to set?",
+      "gasLimit": "Gas Limit",
+      "gasEstimate": "Est. Transaction fee",
       "confirmButton": "Confirm",
-      "gasPriceTitle": "Gas Price: {{gasPrice}}"
+      "gasPriceTitle": "Gas Price: {{gasPrice}}",
+      "slow": "Slow",
+      "quick": "Quick",
+      "fast": "Fast",
+      "fastest": "Fastest",
+      "to": "To Address:",
+      "from": "From Address:",
+      "amount": "Amount:",
+      "total": "Total:",
+      "processor": "Processor",
+      "gwei": "Gwei",
+      "eth": "ETH"
     }
   },
   "testingMode": {

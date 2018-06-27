@@ -61,4 +61,7 @@ export {
 
   DAppSchema,
   DAppType,
+
+  WalletSchema,
+  WalletType,
 } from './schema/v4';

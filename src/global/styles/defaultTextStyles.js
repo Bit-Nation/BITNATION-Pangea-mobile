@@ -189,6 +189,24 @@ const defaultTextStyles = {
     color: Colors.BitnationGrayColor,
   },
 
+  bodyBoldBlack: {
+    fontFamily: 'Roboto',
+    fontWeight: 'bold',
+    fontSize: 17,
+    lineHeight: 22,
+    letterSpacing: 0,
+    color: Colors.textPrimary,
+  },
+
+  bodyBoldBlackSmall: {
+    fontFamily: 'Roboto',
+    fontWeight: 'bold',
+    fontSize: 14,
+    lineHeight: 22,
+    letterSpacing: 0,
+    color: Colors.textPrimary,
+  },
+
   bodyBlack: {
     fontFamily: 'Roboto',
     fontWeight: '900',
