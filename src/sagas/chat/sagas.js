@@ -26,7 +26,7 @@ export function buildChatResults(db: Realm, accountId: string | null) {
  * @param {*} collection Updated chat collection
  * @return {void}
  */
-export function* onCurrentAccountChange(collection: Realm.Result<ChatSessionType>): Generator<*, *, *> {
+export function* onCurrentAccountChange(collection: Realm.Result<DBChatSession>): Generator<*, *, *> {
   yield put(chatsUpdated(collection));
 }
 
