@@ -74,6 +74,10 @@ FOUNDATION_EXPORT NSString* PanthalassaNewAccountKeysFromMnemonic(NSString* mne,
 
 FOUNDATION_EXPORT NSString* PanthalassaNewPreKeyBundle(NSError** error);
 
+FOUNDATION_EXPORT BOOL PanthalassaOpenDApp(NSString* id_, NSString* context, NSError** error);
+
+FOUNDATION_EXPORT NSString* PanthalassaRenderMessage(NSString* id_, NSString* msg, NSString* context, NSError** error);
+
 FOUNDATION_EXPORT BOOL PanthalassaSendResponse(NSString* id_, NSString* data, NSString* responseError, long timeout, NSError** error);
 
 FOUNDATION_EXPORT NSString* PanthalassaSignProfile(NSString* name, NSString* location, NSString* image, NSError** error);
@@ -81,6 +85,8 @@ FOUNDATION_EXPORT NSString* PanthalassaSignProfile(NSString* name, NSString* loc
 FOUNDATION_EXPORT NSString* PanthalassaSignProfileStandAlone(NSString* name, NSString* location, NSString* image, NSString* keyManagerStore, NSString* password, NSError** error);
 
 FOUNDATION_EXPORT BOOL PanthalassaStart(NSString* config, NSString* password, id<PanthalassaUpStream> client, NSError** error);
+
+FOUNDATION_EXPORT BOOL PanthalassaStartDApp(NSString* dApp, NSError** error);
 
 FOUNDATION_EXPORT BOOL PanthalassaStartFromMnemonic(NSString* config, NSString* mnemonic, id<PanthalassaUpStream> client, NSError** error);
 
