@@ -31,7 +31,7 @@ describe('SendMoney Screen', () => {
   };
   beforeEach(() => {
     sendMoneyScreen = shallow((
-      <SendMoney {...propsMock} store={storeMock(initialStateMock)}/>
+      <SendMoney {...propsMock} store={storeMock(initialStateMock)} />
     ));
   });
   test('SendMoney renders correctly', () => {
