@@ -107,7 +107,7 @@ export function saveProfile(profile: Object): SaveProfileAction {
 
 /**
  * @desc Action for saving a pre key bundle into database
- * @param {Object} bundle Pre key bundle object
+ * @param {Object} preKeyBundle Pre key bundle object
  * @returns {SavePreKeyBundleAction} An action.
  */
 export function savePreKeyBundle(preKeyBundle: Object): SavePreKeyBundleAction {
