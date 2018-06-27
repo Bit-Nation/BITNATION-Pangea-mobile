@@ -112,6 +112,7 @@ class ChatScreen extends Component<Props, State> {
 const mapStateToProps = state => ({
   user: getCurrentAccount(state.accounts),
   isFetching: state.chat.isFetching,
+  chatProfile: state.chat.chatProfile,
 });
 
 const mapDispatchToProps = dispatch => ({
