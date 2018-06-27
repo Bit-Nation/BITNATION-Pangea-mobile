@@ -1,8 +1,9 @@
 import { put, call } from 'redux-saga/effects';
 import type { Realm } from 'realm';
 
-import { SaveProfileAction, SavePreKeyBundleAction, NewChatSessionAction, chatsUpdated } from '../../actions/chat';
+import { SaveProfileAction, SavePreKeyBundleAction, NewChatSessionAction, OpenChatAction, chatsUpdated, selectProfile } from '../../actions/chat';
 import defaultDB from '../../services/database';
+import ChatService from '../../services/chat';
 import type { ChatSessionType as DBChatSession } from '../../services/database/schemata';
 import { getCurrentAccountId, currentAccountBasedUpdate } from '../accounts/sagas';
 import { byteToHexString } from '../../utils/key';
@@ -97,8 +98,29 @@ export function* createChatSession(action: NewChatSessionAction) {
     accountId: currentAccountId,
     messages: [],
   };
+  yield put(selectProfile(action.profile));
   db.write(() => {
     db.create('SharedSecret', secret);
     db.create('ChatSession', chatSession);
   });
+  yield call(action.callback, true);
+}
+
+/**
+ * @desc Open a chat session
+ * @param {OpenChatAction} action OPEN_CHAT_SESSION action
+ * @return {void}
+ */
+export function* openChatSession(action: OpenChatAction) {
+  const db = yield defaultDB;
+  const currentAccountId = yield call(getCurrentAccountId);
+  let results = yield call([db, 'objects'], 'ChatSession');
+  results = yield call([results, 'filtered'], `publicKey == '${action.publicKey}' && accountId == '${currentAccountId}'`);
+  const profile = yield results[0] || null;
+  if (profile) {
+    yield put(selectProfile(action.profile));
+    yield call(action.callback, true);
+  } else {
+    yield call(action.callback, false);
+  }
 }
