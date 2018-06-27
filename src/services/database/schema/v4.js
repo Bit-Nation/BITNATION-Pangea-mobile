@@ -270,6 +270,20 @@ export const NationSchema = {
   },
 };
 
+/**
+ * @typedef AESType
+ * @property {string} iv
+ * @property {number} cipher_text
+ * @property {string} mac
+ * @property {number} v Version of the AES
+ */
+export type AESType = {
+  iv: string,
+  cipher_text: string,
+  mac: string,
+  v: number,
+};
+
 export const AESValueSchema = {
   name: 'AESCipherText',
   properties: {
@@ -280,7 +294,17 @@ export const AESValueSchema = {
   },
 };
 
-const PreKeyBundleSchema = {
+/**
+ * @typedef PreKeyBundleType
+ * @property {string} one_time_pre_key
+ * @property {AESType} private_part
+ */
+export type PreKeyBundleType = {
+  one_time_pre_key: string,
+  private_part: AESType,
+};
+
+export const PreKeyBundleSchema = {
   name: 'PreKeyBundle',
   properties: {
     one_time_pre_key: 'string',
@@ -288,7 +312,33 @@ const PreKeyBundleSchema = {
   },
 };
 
-const ProfileSchema = {
+/**
+ * @typedef ProfileType
+ * @property {string} name
+ * @property {string} location
+ * @property {string} image
+ * @property {string} identity_pub_key
+ * @property {string} ethereum_pub_Key
+ * @property {string} chat_id_key
+ * @property {Date} timestamp
+ * @property {number} version
+ * @property {string} identity_key_signature
+ * @property {string} ethereum_key_signature
+ */
+export type ProfileType = {
+  name: string,
+  location: string,
+  image: string,
+  identity_pub_key: string,
+  ethereum_pub_Key: string,
+  chat_id_key: string,
+  timestamp: Date,
+  version: number,
+  identity_key_signature: string,
+  ethereum_key_signature: string,
+};
+
+export const ProfileSchema = {
   name: 'Profile',
   primaryKey: 'identity_pub_key',
   properties: {
@@ -305,20 +355,49 @@ const ProfileSchema = {
   },
 };
 
-const SharedSecret = {
+/**
+ * @typedef SecretType
+ * @property {string} id
+ * @property {string} accountId
+ * @property {AESType} secret
+ */
+export type SecretType = {
+  id: string,
+  accountId: string,
+  secret: AESType,
+};
+
+export const SharedSecretSchema = {
   name: 'SharedSecret',
   primaryKey: 'id',
   properties: {
     id: 'string',
+    accountId: 'string',
     secret: 'AESCipherText',
   },
 };
 
-const ChatSessionSchema = {
+/**
+ * @typedef ChatSessionType
+ * @property {string} publicKey
+ * @property {string} username
+ * @property {string} accountId
+ * @property {Array<MessageType>} messages
+ */
+export type ChatSessionType = {
+  publicKey: string,
+  username: string,
+  accountId: string,
+  messages: Array<MessageType>,
+};
+
+export const ChatSessionSchema = {
   name: 'ChatSession',
   primaryKey: 'publicKey',
   properties: {
     publicKey: 'string',
+    username: 'string',
+    accountId: 'string',
     messages: {
       type: 'list',
       objectType: 'Message',
@@ -326,7 +405,25 @@ const ChatSessionSchema = {
   },
 };
 
-const DAppMessage = {
+/**
+ * @typedef DAppMessageType
+ * @property {string} dapp_id
+ * @property {string} type
+ * @property {string} group_id
+ * @property {string} params
+ * @property {boolean} should_send
+ * @property {boolean} should_render
+ */
+export type DAppMessageType = {
+  dapp_id: string,
+  type: string,
+  group_id: string,
+  params: string,
+  should_send: boolean,
+  should_render: boolean,
+};
+
+export const DAppMessageSchema = {
   name: 'DAppMessage',
   properties: {
     dapp_id: 'string',
@@ -338,7 +435,33 @@ const DAppMessage = {
   },
 };
 
-const MessageSchema = {
+/**
+ * @typedef MessageType
+ * @property {string} type
+ * @property {Date} send_at
+ * @property {string} additional_data
+ * @property {SecretType} shared_secret
+ * @property {DAppMessageType} dapp_message
+ * @property {string} human_message
+ * @property {string} signature
+ * @property {string} used_secret
+ * @property {string} identity_pub_key
+ * @property {boolean} outgoing
+ */
+export type MessageType = {
+  type: string,
+  send_at: Date,
+  additional_data: string,
+  shared_secret: SecretType,
+  dapp_message: DAppMessageType,
+  human_message: string,
+  signature: string,
+  used_secret: string,
+  identity_pub_key: string,
+  outgoing: boolean,
+};
+
+export const MessageSchema = {
   name: 'Message',
   properties: {
     type: 'string',
@@ -365,9 +488,9 @@ export const schemata =
     NationSchema,
     PreKeyBundleSchema,
     ProfileSchema,
-    SharedSecret,
+    SharedSecretSchema,
     ChatSessionSchema,
-    DAppMessage,
+    DAppMessageSchema,
     MessageSchema,
   ];
 
