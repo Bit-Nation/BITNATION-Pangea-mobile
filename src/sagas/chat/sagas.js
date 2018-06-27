@@ -1,7 +1,7 @@
-import { put, call } from 'redux-saga/effects';
+import { put, call, take, fork, cancel } from 'redux-saga/effects';
 import type { Realm } from 'realm';
 
-import { SaveProfileAction, SavePreKeyBundleAction, NewChatSessionAction, OpenChatAction, chatsUpdated, selectProfile } from '../../actions/chat';
+import { SaveProfileAction, SavePreKeyBundleAction, NewChatSessionAction, OpenChatAction, ChatListenAction, chatsUpdated, selectProfile, FETCH_MESSAGES } from '../../actions/chat';
 import defaultDB from '../../services/database';
 import ChatService from '../../services/chat';
 import type { ChatSessionType as DBChatSession } from '../../services/database/schemata';
@@ -123,4 +123,34 @@ export function* openChatSession(action: OpenChatAction) {
   } else {
     yield call(action.callback, false);
   }
+}
+
+/**
+ * @desc Fetch messages
+ * @return {void}
+ */
+function* tick() {
+  while (true) {
+    yield call(delay, 8000);
+    yield put({ type: FETCH_MESSAGES });
+  }
+}
+
+/**
+ * @desc Start listening to incoming messages
+ * @param {ChatListenAction} action LISTEN_CHAT action
+ * @return {void}
+ */
+export function* listenMessages(action: ChatListenAction) {
+  const bgSyncTask = yield fork(tick);
+  yield take('STOP_FETCH_MESSAGES');
+  yield cancel(bgSyncTask);
+}
+
+/**
+ * @desc Fetch new messages
+ * @return {void}
+ */
+export function* fetchMessages() {
+  const db = yield defaultDB;
 }
