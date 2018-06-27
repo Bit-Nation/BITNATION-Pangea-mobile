@@ -4,6 +4,7 @@ import { schemata as schemaVZero, migration as migrationVZero } from './schema/v
 import { schemata as schemaVOne, migration as migrationVOne } from './schema/v1';
 import { schemata as schemaVTwo, migration as migrationVTwo } from './schema/v2';
 import { schemata as schemaVThree, migration as migrationVThree } from './schema/v3';
+import { schemata as schemaVFour, migration as migrationVFour } from './schema/v4';
 
 /**
  * @desc All available schemas. including there version and migration.
@@ -29,6 +30,11 @@ export default [
     schemaVersion: 3,
     migration: migrationVThree,
   },
+  {
+    schema: schemaVFour,
+    schemaVersion: 4,
+    migration: migrationVFour,
+  },
 ];
 
 export {
@@ -52,4 +58,7 @@ export {
 
   TransactionJobSchema,
   TransactionJobType,
-} from './schema/v3';
+
+  WalletSchema,
+  WalletType,
+} from './schema/v4';

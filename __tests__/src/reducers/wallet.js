@@ -7,6 +7,7 @@ import {
   sendMoneyFailed,
   sendMoneySuccess,
   updateWalletBalance,
+  updateWalletList,
   walletsListUpdated,
   walletSyncFailed,
 } from '../../../src/actions/wallet';
@@ -33,10 +34,19 @@ const mockWallets = [
 const mockError: Error = new Error('error');
 
 describe('wallet reducer action handling', () => {
-  const stateWithWallets = reducer(initialState, walletsListUpdated(mockWallets));
+  const stateWithWallets = reducer(initialState, walletsListUpdated(mockWallets, true));
 
   test('after service destroy returns initial state', () => {
     expect(reducer(stateWithWallets, servicesDestroyed())).toEqual(initialState);
+  });
+
+  test('updateWalletList', () => {
+    const stateBefore = initialState;
+    const stateAfter = reducer(stateBefore, updateWalletList());
+    expect(stateAfter).toEqual({
+      ...stateBefore,
+      isRefreshing: true,
+    });
   });
 
   test('selectWallet', () => {
@@ -49,12 +59,23 @@ describe('wallet reducer action handling', () => {
     });
   });
 
-  test('walletListUpdated', () => {
+  test('walletListUpdated, sync done', () => {
     const stateBefore = initialState;
-    const stateAfter = reducer(stateBefore, walletsListUpdated([mockWallet]));
+    const stateAfter = reducer(stateBefore, walletsListUpdated([mockWallet], true));
     expect(stateAfter).toEqual({
       ...stateBefore,
       wallets: [mockWallet],
+      isRefreshing: false,
+    });
+  });
+
+  test('walletListUpdated, sync not done', () => {
+    const stateBefore = initialState;
+    const stateAfter = reducer(stateBefore, walletsListUpdated([mockWallet], false));
+    expect(stateAfter).toEqual({
+      ...stateBefore,
+      wallets: [mockWallet],
+      isRefreshing: true,
     });
   });
 
@@ -64,7 +85,7 @@ describe('wallet reducer action handling', () => {
       const stateAfter = reducer(stateBefore, walletSyncFailed(mockWallet.ethAddress, mockWallet.currency, mockError));
       expect(stateAfter).toEqual({
         ...stateBefore,
-        ...stateBefore,
+        isRefreshing: false,
         wallets: [
           {
             ...mockWallet,
@@ -88,6 +109,7 @@ describe('wallet reducer action handling', () => {
       const stateAfter = reducer(stateBefore, updateWalletBalance(mockWallet.ethAddress, 'ETH'));
       expect(stateAfter).toEqual({
         ...stateBefore,
+        isRefreshing: true,
         wallets: [
           {
             ...mockWallet,
