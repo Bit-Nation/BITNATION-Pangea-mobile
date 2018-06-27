@@ -65,7 +65,9 @@ export default class UpstreamService {
   handleDRKeyStoreDeleteKeys = (key) => {};
   handleDRKeyStoreCount = (key) => {};
   handleShowModal = (title, layout) => {};
-  handleSaveDApp = (saveDApp) => {};
+  handleSaveDApp = (saveDApp) => {
+    console.log(`SAVE_DAPP: ${saveDApp}`);
+  };
   handleSendEthereumTransaction = (id, value, to, data) => {
     const transaction = {
       to,
