@@ -7,6 +7,8 @@ export const SAVE_PROFILE = 'SAVE_PROFILE';
 export const SAVE_PRE_KEY_BUNDLE = 'SAVE_PRE_KEY_BUNDLE';
 export const NEW_CHAT_SESSION = 'NEW_CHAT_SESSION';
 export const CHATS_UPDATED = 'CHATS_UPDATED';
+export const OPEN_CHAT_SESSION = 'OPEN_CHAT_SESSION';
+export const SELECT_PROFILE = 'SELECT_PROFILE';
 
 export type ShowSpinnerAction = { +type: 'SHOW_CHAT_SPINNER' };
 export type HideSpinnerAction = { +type: 'HIDE_CHAT_SPINNER' };
@@ -25,12 +27,22 @@ export type SavePreKeyBundleAction = {
 export type NewChatSessionAction = {
   +type: 'NEW_CHAT_SESSION',
   +publicKey: string,
-  +initMessage: Object
+  +initMessage: Object,
+  +callback: () => void,
 };
 export type UpdateChatsAction = {
   +type: 'CHATS_UPDATED',
   +chats: any
 };
+export type OpenChatAction = {
+  +type: 'OPEN_CHAT_SESSION',
+  +publicKey: string,
+  +callback: () => void,
+}
+export type SelectProfileAction = {
+  +type: 'SELECT_PROFILE',
+  +profile: Object,
+}
 
 export type Action =
   | ShowSpinnerAction
@@ -39,7 +51,9 @@ export type Action =
   | SaveProfileAction
   | SavePreKeyBundleAction
   | NewChatSessionAction
-  | UpdateChatsAction;
+  | UpdateChatsAction
+  | OpenChatAction
+  | SelectProfileAction;
 
 /**
  * @desc Action for an action that shows spinner while processing in background
@@ -101,13 +115,15 @@ export function savePreKeyBundle(preKeyBundle: Object): SavePreKeyBundleAction {
  * @desc Action for creating a new chat session
  * @param {Object} profile Public key of the user
  * @param {Object} initMessage Initialization message
+ * @param {func} callback Callback
  * @returns {NewChatSessionAction} An action.
  */
-export function newChatSession(profile: Object, initMessage: Object): NewChatSessionAction {
+export function newChatSession(profile: Object, initMessage: Object, callback: () => void): NewChatSessionAction {
   return {
     type: NEW_CHAT_SESSION,
     profile,
     initMessage,
+    callback,
   };
 }
 
@@ -120,5 +136,31 @@ export function chatsUpdated(chats: any): UpdateChatsAction {
   return {
     type: CHATS_UPDATED,
     chats,
+  };
+}
+
+/**
+ * @desc Action for opening chat session from the list
+ * @param {string} publicKey Public Key of the chat session
+ * @param {func} callback Callback
+ * @returns {OpenChatAction} An action.
+ */
+export function openChat(publicKey: string, callback: () => void): OpenChatAction {
+  return {
+    type: OPEN_CHAT_SESSION,
+    publicKey,
+    callback,
+  };
+}
+
+/**
+ * @desc Action for getting selected profile
+ * @param {Object} profile Public Key of the chat session
+ * @returns {SelectProfileAction} An action.
+ */
+export function selectProfile(profile: Object): SelectProfileAction {
+  return {
+    type: SELECT_PROFILE,
+    profile,
   };
 }

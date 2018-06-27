@@ -11,7 +11,7 @@ import _ from 'lodash';
 import { Fab, Text } from 'native-base';
 import ActionSheet from 'react-native-actionsheet';
 
-import { newChatSession } from '../../../actions/chat';
+import { saveProfile, newChatSession, openChat } from '../../../actions/chat';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import styles from './styles';
 import { screen } from '../../../global/Screens';
@@ -20,7 +20,7 @@ import NationListHeader from '../../../components/common/NationListHeader';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import i18n from '../../../global/i18n';
-import type { NationIdType, NationType } from '../../../types/Nation';
+import type { ChatSessionType } from '../../../types/Chat';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import ScreenTitle from '../../../components/common/ScreenTitle';
 import ChatService from '../../../services/chat';
@@ -34,14 +34,27 @@ type Props = {
    */
   navigator: Navigator,
   /**
-   * @desc List of all contacts
+   * @desc List of all chat sessions
    */
-  contacts: Array<NationType>,
+  chatSessions: Array<ChatSessionType>,
+  /**
+   * @desc Function to save a user profile
+   * @param {Object} profile User profile
+   */
+  saveProfile: (profile: Object) => void,
   /**
    * @desc Function to be called when an item is selected from the list
-   * @param id ID of the contact to be opened
+   * @param {string} key Public key of the chat session
+   * @param {func} callback
    */
-  onSelectItem: (id: number) => void,
+  onItemSelect: (key: string, callback: (success: boolean) => void) => void,
+  /**
+   * @desc Function to initialize a new chat
+   * @param {string} key public key of the user
+   * @param {Object} initMessage response from the panthalassa library method
+   * @param {func} callback
+   */
+  createNewSession: (key: string, initMessage: Object, callback: (success: boolean) => void) => void,
 };
 
 type State = {
@@ -95,6 +108,7 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
         profile,
         showModal: 'new_chat',
       });
+      this.props.saveProfile(profile);
     } catch (e) {
       console.log('fetch error: ', e);
       this.setState({
@@ -110,15 +124,15 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
       const response = await ChatService.getPreKeyBundle(this.state.publicKey);
       // console.log('fetch bundle: ', response);
       const initMessage = await ChatService.startChat(this.state.publicKey, JSON.stringify(response.bundle));
-      this.props.createNewSession(this.state.profile, initMessage);
+      this.props.createNewSession(this.state.profile, initMessage, (success) => {
+        if (success) {
+          this.props.navigator.push({
+            ...screen('PRIVATE_CHAT_SCREEN'),
+          });
+        }
+      });
       this.setState({
         showModal: '',
-      });
-      this.props.navigator.push({
-        ...screen('PRIVATE_CHAT_SCREEN'),
-        passProps: {
-          opponent: this.state.profile,
-        },
       });
     } catch (e) {
       console.log('fetch error: ', e);
@@ -126,6 +140,16 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
         showModal: 'invalid_key',
       });
     }
+  }
+
+  onChatSelect = (id) => {
+    this.props.onItemSelect(id, (success) => {
+      if (success) {
+        this.props.navigator.push({
+          ...screen('PRIVATE_CHAT_SCREEN'),
+        });
+      }
+    });
   }
 
   dismissModal = () => {
@@ -141,18 +165,12 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
   }
 
   render() {
-    const {
-      contacts,
-      onSelectItem,
-    } = this.props;
-    const sortedContacts = _.sortBy(contacts, contact => contact.name);
-    const groups = _.groupBy(sortedContacts, contact => contact.name.charAt(0));
-    let sections = _.map(groups, (group, key) => ({
+    const sortedSessions = _.sortBy(this.props.chatSessions, session => session.username);
+    const groups = _.groupBy(sortedSessions, session => session.username.charAt(0));
+    const sections = _.map(groups, (group, key) => ({
       title: key,
       data: group,
     }));
-    const bots = [{ title: 'Bots', data: [{ name: 'Dr. FreudBot', isBot: true, id: 0 }] }];
-    sections = bots.concat(sections);
 
     const newChatOptions = [
       i18n.t('screens.chat.keyFromClipboard'),
@@ -169,13 +187,13 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
         <ScreenTitle title={i18n.t('screens.chat.title')} />
         <SectionList
           renderItem={(item) => {
-            const contact = item.item;
+            const session = item.item;
             return (<ChatListItem
-              text={contact.name}
+              text={session.username}
               participants=''
               itemIcon={0}
-              onPress={id => onSelectItem(id)}
-              id={contact.id}
+              onPress={this.onChatSelect}
+              id={session.publicKey}
             />);
           }}
           keyExtractor={item => item.id}
@@ -216,11 +234,13 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
 }
 
 const mapStateToProps = state => ({
-  chatSessions: state.chat,
+  chatSessions: state.chat.chats,
 });
 
 const mapDispatchToProps = dispatch => ({
-  createNewSession: (key, initMessage) => dispatch(newChatSession(key, initMessage)),
+  saveProfile: profile => dispatch(saveProfile(profile)),
+  createNewSession: (key, initMessage, callback) => dispatch(newChatSession(key, initMessage, callback)),
+  onItemSelect: (key, callback) => dispatch(openChat(key, callback)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChatListScreen);
