@@ -473,13 +473,14 @@ export const MessageSchema = {
     signature: 'string',
     used_secret: 'string',
     identity_pub_key: 'string',
-    outgoing: 'boolean',
+    outgoing: 'bool',
   },
 };
 
 export const schemata =
   [
     AccountSchema,
+    AESValueSchema,
     AccountSettingsSchema,
     DHTValueSchema,
     AccountBalanceSchema,
