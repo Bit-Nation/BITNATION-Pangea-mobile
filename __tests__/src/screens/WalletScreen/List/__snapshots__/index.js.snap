@@ -1,17 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`List renders correctly 1`] = `
+exports[`List Wallet List renders correctly 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <WalletList
+    isRefreshing={[MockFunction]}
+    onReceivePress={[MockFunction]}
+    onRefresh={[MockFunction]}
+    onSendPress={[MockFunction]}
     wallets={
       Array [
         Object {
           "balance": "0",
           "currency": "ETH",
           "ethAddress": "0xtestAddress",
-          "name": "Test wallet",
         },
       ]
     }
@@ -35,7 +38,6 @@ ShallowWrapper {
               "balance": "0",
               "currency": "ETH",
               "ethAddress": "0xtestAddress",
-              "name": "Test wallet",
             },
           ]
         }
@@ -49,7 +51,7 @@ ShallowWrapper {
         refreshControl={
           <RefreshControlMock
             onRefresh={[Function]}
-            refreshing={undefined}
+            refreshing={[MockFunction]}
           />
         }
         renderItem={[Function]}
@@ -72,7 +74,6 @@ ShallowWrapper {
             "balance": "0",
             "currency": "ETH",
             "ethAddress": "0xtestAddress",
-            "name": "Test wallet",
           },
         ],
         "disableVirtualization": false,
@@ -84,7 +85,7 @@ ShallowWrapper {
         "onEndReachedThreshold": 2,
         "refreshControl": <RefreshControlMock
           onRefresh={[Function]}
-          refreshing={undefined}
+          refreshing={[MockFunction]}
         />,
         "renderItem": [Function],
         "scrollEventThrottle": 50,
@@ -110,7 +111,6 @@ ShallowWrapper {
                 "balance": "0",
                 "currency": "ETH",
                 "ethAddress": "0xtestAddress",
-                "name": "Test wallet",
               },
             ]
           }
@@ -124,7 +124,7 @@ ShallowWrapper {
           refreshControl={
             <RefreshControlMock
               onRefresh={[Function]}
-              refreshing={undefined}
+              refreshing={[MockFunction]}
             />
           }
           renderItem={[Function]}
@@ -147,7 +147,6 @@ ShallowWrapper {
               "balance": "0",
               "currency": "ETH",
               "ethAddress": "0xtestAddress",
-              "name": "Test wallet",
             },
           ],
           "disableVirtualization": false,
@@ -159,7 +158,7 @@ ShallowWrapper {
           "onEndReachedThreshold": 2,
           "refreshControl": <RefreshControlMock
             onRefresh={[Function]}
-            refreshing={undefined}
+            refreshing={[MockFunction]}
           />,
           "renderItem": [Function],
           "scrollEventThrottle": 50,
