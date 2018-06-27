@@ -9,6 +9,8 @@ export const NEW_CHAT_SESSION = 'NEW_CHAT_SESSION';
 export const CHATS_UPDATED = 'CHATS_UPDATED';
 export const OPEN_CHAT_SESSION = 'OPEN_CHAT_SESSION';
 export const SELECT_PROFILE = 'SELECT_PROFILE';
+export const LISTEN_CHAT = 'LISTEN_CHAT';
+export const FETCH_MESSAGES = 'FETCH_MESSAGES';
 
 export type ShowSpinnerAction = { +type: 'SHOW_CHAT_SPINNER' };
 export type HideSpinnerAction = { +type: 'HIDE_CHAT_SPINNER' };
@@ -43,6 +45,9 @@ export type SelectProfileAction = {
   +type: 'SELECT_PROFILE',
   +profile: Object,
 }
+export type ChatListenAction = {
+  +type: 'LISTEN_CHAT',
+}
 
 export type Action =
   | ShowSpinnerAction
@@ -53,7 +58,8 @@ export type Action =
   | NewChatSessionAction
   | UpdateChatsAction
   | OpenChatAction
-  | SelectProfileAction;
+  | SelectProfileAction
+  | ChatListenAction;
 
 /**
  * @desc Action for an action that shows spinner while processing in background
@@ -162,5 +168,15 @@ export function selectProfile(profile: Object): SelectProfileAction {
   return {
     type: SELECT_PROFILE,
     profile,
+  };
+}
+
+/**
+ * @desc Action for listening to incoming messages
+ * @returns {ChatListenAction} An action.
+ */
+export function listenToChat(): ChatListenAction {
+  return {
+    type: LISTEN_CHAT,
   };
 }
