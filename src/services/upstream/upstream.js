@@ -93,15 +93,15 @@ export default class UpstreamService {
             },
           }).finish(),
           error: '',
-          timeout: 1,
+          timeout: 20,
         });
       })
       .catch((err) => {
         Panthalassa.PanthalassaSendResponse({
           id,
-          data: {},
+          data: Response.encode({}),
           error: err,
-          timeout: 1,
+          timeout: 20,
         });
       });
   };
