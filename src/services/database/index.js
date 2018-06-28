@@ -4,7 +4,7 @@ import Realm from 'realm';
 import co from 'co';
 import schemas from './schemata';
 
-const REALM_PATH = 'pangea';
+const REALM_PATH = 'pangea.realm';
 
 /**
  * @desc Creates an realm instance

@@ -48,7 +48,7 @@ export function* startDatabaseListening(): Generator<*, *, *> {
  */
 export function* saveProfile(action: SaveProfileAction) {
   const db = yield defaultDB;
-  const { profile: { information } } = action;
+  const { profile: { information, signatures } } = action;
   const results = db.objects('Profile').filtered(`identity_pub_key == '${information.identity_pub_key}'`);
   if (results.length === 0) {
     const profile = {
@@ -57,11 +57,11 @@ export function* saveProfile(action: SaveProfileAction) {
       image: information.image,
       identity_pub_key: information.identity_pub_key,
       ethereum_pub_Key: information.ethereum_pub_Key,
-      chat_id_key: information.chat_id_key,
+      chat_id_key: byteToHexString(information.chat_id_key),
       timestamp: information.timestamp,
       version: information.version,
-      identity_key_signature: information.identity_key_signature,
-      ethereum_key_signature: information.ethereum_key_signature,
+      identity_key_signature: signatures.identity_key,
+      ethereum_key_signature: signatures.ethereum_key,
     };
     db.write(() => {
       db.create('Profile', profile);
