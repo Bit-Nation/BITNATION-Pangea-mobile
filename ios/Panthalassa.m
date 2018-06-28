@@ -17,7 +17,7 @@
 
 - (dispatch_queue_t)methodQueue
 {
-  return dispatch_get_main_queue();
+  return dispatch_queue_create("panthalassaLibQueue", DISPATCH_QUEUE_SERIAL);
 }
 
 RCT_EXPORT_MODULE();
@@ -459,6 +459,27 @@ RCT_REMAP_METHOD(PanthalassaStartDApp,
   
   response = PanthalassaStartDApp([RCTConvert NSString:config[@"dApp"]],
                                  &error);
+  
+  NSNumber *val = [NSNumber numberWithBool:response];
+  
+  if (error == nil) {
+    resolve(val);
+  } else {
+    reject(@"error", error.localizedDescription, error);
+  }
+}
+
+RCT_REMAP_METHOD(PanthalassaCallDAppFunction,
+                 PanthalassaCallDAppFunctiontWithResolver:(NSDictionary *)config
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject) {
+  
+  BOOL response;
+  NSError *error = nil;
+  response = PanthalassaCallDAppFunction([RCTConvert NSString:config[@"dAppId"]],
+                                         [RCTConvert CGFloat:config[@"id"]],
+                                         [RCTConvert NSString:config[@"args"]],
+                                             &error);
   
   NSNumber *val = [NSNumber numberWithBool:response];
   
