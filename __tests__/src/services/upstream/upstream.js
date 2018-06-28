@@ -66,9 +66,17 @@ describe('upstream', () => {
 
 describe('Upstream class', () => {
   test('Initialize the upstream service', () => {
+    expect.assertions(2);
     const { Request } = apiProto;
     const encodedRequest = Request.encode(message).finish();
+    expect(encodedRequest).toBeDefined();
     const upstream = new Upstream();
-    upstream.handleRequest(encodedRequest);
+    let error;
+    try {
+      upstream.handleRequest(encodedRequest);
+    } catch (e) {
+      error = e;
+    }
+    expect(error).toEqual(undefined);
   });
 });
