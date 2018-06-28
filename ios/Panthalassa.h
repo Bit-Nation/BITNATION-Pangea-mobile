@@ -11,8 +11,8 @@
 #import "PanthalassaUpStreamBridge.h"
 #import <React/RCTEventEmitter.h>
 
-@interface Panthalassa : RCTEventEmitter <RCTBridgeModule> {
-  PanthalassaUpStreamBridge* upstream;
+@interface Panthalassa : RCTEventEmitter <RCTBridgeModule, PanthalassaUpStream> {
+  //PanthalassaUpStreamBridge* upstream;
 }
 
 @end
