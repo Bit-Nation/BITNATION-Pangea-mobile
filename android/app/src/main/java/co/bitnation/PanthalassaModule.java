@@ -52,15 +52,9 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
     @ReactMethod
     public void PanthalassaStart(ReadableMap jsonParams, Promise promise) throws JSONException {
         try {
-            UpStream upstream = new UpStream() {
-                @Override
-                public void send(String s) {
-                    Log.v("Upstream","This is a test!");
-                }
-            };
             Panthalassa.start(jsonParams.getString("config"),
                                 jsonParams.getString("password"),
-                                upstream);
+                                this);
             promise.resolve(true);
         } catch (Exception e) {
             e.printStackTrace();
@@ -71,16 +65,9 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
     @ReactMethod
     public void PanthalassaStartFromMnemonic(ReadableMap jsonParams, Promise promise) throws JSONException {
         try {
-            UpStream upstream = new UpStream() {
-                @Override
-                public void send(String s) {
-                    Log.v("Upstream","This is a test!");
-                }
-            };
-
             Panthalassa.startFromMnemonic(jsonParams.getString("config"),
                                             jsonParams.getString("mnemonic"),
-                                            upstream);
+                                            this);
             promise.resolve(true);
         } catch (Exception e) {
             e.printStackTrace();
@@ -308,7 +295,7 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
     }
 
     @ReactMethod
-    public void connectToDAppDevHost(ReadableMap jsonParams, Promise promise) throws JSONException {
+    public void PanthalassaConnectToDAppDevHost(ReadableMap jsonParams, Promise promise) throws JSONException {
         try {
             Panthalassa.connectToDAppDevHost(jsonParams.getString("address"));
             promise.resolve(true);
