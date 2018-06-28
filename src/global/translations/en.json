@@ -479,8 +479,9 @@
         "button": "Share Wallet Address"
       }
     },
-    "qrCodeScanner": {
-      "title": "Scan QR code"
+    "dAppQRCodeScanner": {
+      "title": "Connect to DApp host",
+      "instruction": "Scan QR code to connect to PC"
     },
     "settings": {
       "title": "Settings",
