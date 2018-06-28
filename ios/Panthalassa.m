@@ -9,7 +9,6 @@
 #import "Panthalassa.h"
 #import <panthalassa/panthalassa.h>
 #import <React/RCTConvert.h>
-#import "PanthalassaUpStreamBridge.h"
 
 @implementation Panthalassa
 {
@@ -97,9 +96,6 @@ RCT_REMAP_METHOD(PanthalassaStartFromMnemonic,
   
   BOOL response;
   NSError *error = nil;
-
-  //upstream = [[PanthalassaUpStreamBridge alloc] init];
-  //[upstream setDelegate:self];
   
   response = PanthalassaStartFromMnemonic([RCTConvert NSString:config[@"config"]],
                                                    [RCTConvert NSString:config[@"mnemonic"]],
@@ -112,8 +108,6 @@ RCT_REMAP_METHOD(PanthalassaStartFromMnemonic,
   } else {
     reject(@"error", error.localizedDescription, error);
   }
-  
-   //[upstream send:@"Upstream created"];
 }
 
 RCT_REMAP_METHOD(PanthalassaIsValidMnemonic,
@@ -183,9 +177,6 @@ RCT_REMAP_METHOD(PanthalassaStart,
   BOOL response;
   NSError *error = nil;
   
-  //upstream = [[PanthalassaUpStreamBridge alloc] init];
-  //[upstream setDelegate:self];
-  
   response = PanthalassaStart([RCTConvert NSString:config[@"config"]],
                               [RCTConvert NSString:config[@"password"]],
                               self,
@@ -198,8 +189,6 @@ RCT_REMAP_METHOD(PanthalassaStart,
   } else {
     reject(@"error", error.localizedDescription, error);
   }
-  
-  //[upstream send:@"Upstream created"];
 }
 
 RCT_REMAP_METHOD(PanthalassaGetMnemonic,
@@ -485,14 +474,7 @@ RCT_REMAP_METHOD(PanthalassaStartDApp,
 {
   return @[@"PanthalassaUpStream"];
 }
-/*
-- (void)receiveString:(NSString *)data {
-  NSLog(@"************ Received from delegate!!!");
-  if (hasListeners && data != nil) {
-    [self sendEventWithName:@"PanthalassaUpStream" body:@{@"upstream": data}];
-  }
-}
-*/
+
 -(void)startObserving {
   hasListeners = YES;
 }
