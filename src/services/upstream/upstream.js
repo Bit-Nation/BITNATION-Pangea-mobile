@@ -11,8 +11,7 @@ import type { MessageKeyType } from '../../types/Message';
 import { api_proto as apiProto } from './compiled';
 
 import EthereumService from '../ethereum';
-import { errorAlert } from '../../global/alerts';
-import i18n from '../../global/i18n';
+import { screen } from '../../global/Screens';
 
 const { Panthalassa } = NativeModules;
 const { Response, Request } = apiProto;
@@ -64,10 +63,8 @@ export default class UpstreamService {
       } else {
         await this.handleErrorMessage(decoded.requestID, decoded);
       }
-    } catch (e) {
-      console.log('====================================');
-      console.log('error =', e);
-      console.log('====================================');
+    } catch (error) {
+      console.log(`[ERROR] ${error}`);
     }
   };
 
@@ -174,9 +171,43 @@ export default class UpstreamService {
   };
 
   handleShowModal = (id: string, info: any) => {
+    const { title, layout } = info;
+    try {
+      const JSONLayout = JSON.parse(layout);
+
+      Navigation.showModal({
+        ...screen('DAPP_MODAL_SCREEN'),
+        title,
+        passProps: {
+          layout: JSONLayout,
+        },
+      });
+      return this.sendSuccessResponse(id, {});
+    } catch (error) {
+      return this.sendErrorResponse(id, error);
+    }
   };
-  handleSaveDApp = () => {
+
+  handleSaveDApp = async (id: string, info: any) => {
+    const {
+      appName, code, signature, signingPublicKey,
+    } = info;
+    try {
+      const db = await this.dbPromise;
+      db.write(() => {
+        db.create('DApp', {
+          name: appName,
+          code,
+          signature,
+          publicKey: signingPublicKey,
+        }, true);
+      });
+      return this.sendSuccessResponse(id, {});
+    } catch (error) {
+      return this.sendErrorResponse(id, error);
+    }
   };
+
   handleSendEthereumTransaction = async (id: string, info: any) => {
     const { value, to, data } = info;
 
@@ -206,7 +237,10 @@ export default class UpstreamService {
     }
   };
 
-  handleErrorMessage = async (id: string, info: any) => this.sendErrorResponse(id, new Error(`Unknown upstream request ${info}`));
+  handleErrorMessage = async (id: string, info: any) => {
+    console.log(`[ERROR] Unknown upstream request ${info}`);
+    return this.sendErrorResponse(id, new Error(`Unknown upstream request ${info}`));
+  };
 
   unsubscribe = () => {
     if (this.eventsSubscription) {
