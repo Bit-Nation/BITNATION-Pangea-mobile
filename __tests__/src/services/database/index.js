@@ -43,7 +43,7 @@ describe('db', () => {
     expect(Realm.schemaVersion(dbPath)).toBe(3);
 
     const realm4 = await databaseGenerator.next(realm3).value;
-    expect(Realm.schemaVersion(dbPath)).toBe(3);
+    expect(Realm.schemaVersion(dbPath)).toBe(4);
 
     realm4.close();
   });

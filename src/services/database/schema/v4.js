@@ -326,6 +326,38 @@ export const DAppSchema = {
   },
 };
 
+/**
+ * @typedef WalletType
+ * @property {string} symbol Representation of the currency tokens.
+ * @property {string} name Wallet's name.
+ * @property {bool} ethereumBased True if token is based on Ethereum.
+ * @property {number} decimals Number of decimals for the token.
+ * @property {string} balance Wallet's balance.
+ * @property {string} address Wallet's Public address.
+ */
+export type WalletType = {
+  symbol: 'ETH' | 'PAT',
+  name: string,
+  chain: 'ethereum' | 'rootstock'| 'bitcoin',
+  decimals: number,
+  balance: string,
+  address: string,
+}
+
+export const WalletSchema = {
+  name: 'Wallet',
+  primaryKey: 'name',
+  properties: {
+    name: 'string',
+    symbol: 'string',
+    chain: 'string',
+    decimals: 'int',
+    balance: 'string',
+    address: 'string',
+  },
+};
+
+
 export const schemata =
   [
     AccountSchema,
@@ -338,6 +370,7 @@ export const schemata =
     DAppSchema,
     MessageKeySchema,
     DoubleRatchetKeySchema,
+    WalletSchema,
   ];
 
 export const migration = () => {
