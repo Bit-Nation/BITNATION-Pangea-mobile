@@ -358,11 +358,13 @@ export const ProfileSchema = {
 /**
  * @typedef SecretType
  * @property {string} id
+ * @property {string} publicKey
  * @property {string} accountId
  * @property {AESType} secret
  */
 export type SecretType = {
   id: string,
+  publicKey: string,
   accountId: string,
   secret: AESType,
 };
@@ -372,6 +374,7 @@ export const SharedSecretSchema = {
   primaryKey: 'id',
   properties: {
     id: 'string',
+    publicKey: 'string',
     accountId: 'string',
     secret: 'AESCipherText',
   },
@@ -379,12 +382,14 @@ export const SharedSecretSchema = {
 
 /**
  * @typedef ChatSessionType
+ * @property {string} secret
  * @property {string} publicKey
  * @property {string} username
  * @property {string} accountId
  * @property {Array<MessageType>} messages
  */
 export type ChatSessionType = {
+  secret: string,
   publicKey: string,
   username: string,
   accountId: string,
@@ -393,8 +398,9 @@ export type ChatSessionType = {
 
 export const ChatSessionSchema = {
   name: 'ChatSession',
-  primaryKey: 'publicKey',
+  primaryKey: 'secret',
   properties: {
+    secret: 'string',
     publicKey: 'string',
     username: 'string',
     accountId: 'string',

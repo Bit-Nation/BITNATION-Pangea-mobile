@@ -24,6 +24,7 @@ import type { ChatSessionType } from '../../../types/Chat';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import ScreenTitle from '../../../components/common/ScreenTitle';
 import ChatService from '../../../services/chat';
+import { getSelectedSession } from '../../../utils/chat';
 import NewChatModal from './NewChatModal';
 import InvalidKeyModal from './InvalidKeyModal';
 import InviteSentModal from './InviteSentModal';
@@ -120,8 +121,10 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
   startChat = async () => {
     this.props.createNewSession(this.state.profile, (result) => {
       if (result === 'success') {
+        const session = getSelectedSession(this.props.chatSessions, this.state.profile.information.identity_pub_key);
         this.props.navigator.push({
           ...screen('PRIVATE_CHAT_SCREEN'),
+          passProps: { session },
         });
       } else {
         console.log('create session error: ', result);
@@ -135,8 +138,10 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
   onChatSelect = (id) => {
     this.props.onItemSelect(id, (success) => {
       if (success) {
+        const session = getSelectedSession(this.props.chatSessions, id);
         this.props.navigator.push({
           ...screen('PRIVATE_CHAT_SCREEN'),
+          passProps: { session },
         });
       }
     });
@@ -164,9 +169,9 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
 
     const newChatOptions = [
       i18n.t('screens.chat.keyFromClipboard'),
-      i18n.t('screens.chat.keyFromLibrary'),
-      i18n.t('screens.chat.keyFromCamera'),
-      i18n.t('screens.chat.dappChat'),
+      // i18n.t('screens.chat.keyFromLibrary'),
+      // i18n.t('screens.chat.keyFromCamera'),
+      // i18n.t('screens.chat.dappChat'),
       i18n.t('screens.chat.cancel'),
     ];
 
