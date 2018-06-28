@@ -6,12 +6,21 @@ import { View as ReactNativeView } from 'react-native';
 
 import { type ComponentsJSON, renderJSON } from '../../utils/dapps/renderer';
 import { updatePartByKeyPath } from '../../utils/dapps/updates';
+import DAppsService from '../../services/dapps';
 
 export type Props = {
   /**
    * @desc JSON provided by DApp developer to be rendered inside Root component
    */
-  componentsJSON: ComponentsJSON
+  componentsJSON: ComponentsJSON,
+  /**
+   * @desc Context object to be passed to DApp to provide a context.
+   */
+  context: Object,
+  /**
+   * @desc DApp object that view is related to.
+   */
+  dapp: DApp,
 }
 
 export default class Root extends Component<Props, any> {
@@ -34,8 +43,10 @@ export default class Root extends Component<Props, any> {
   };
 
   performCallbackByID = (callbackID: string) => {
-    // @todo Panthalassa call
-    console.log(`CALLBACK ${callbackID} CALLED`);
+    DAppsService.performDAppCallback(this.props.dapp.publicKey, callbackID, {
+      state: this.state,
+      context: this.props.context,
+    });
   };
 
   generateCustomProps = (component: any, ownProps: Object) => {
