@@ -98,12 +98,12 @@ RCT_REMAP_METHOD(PanthalassaStartFromMnemonic,
   BOOL response;
   NSError *error = nil;
 
-  upstream = [[PanthalassaUpStreamBridge alloc] init];
-  [upstream setDelegate:self];
+  //upstream = [[PanthalassaUpStreamBridge alloc] init];
+  //[upstream setDelegate:self];
   
   response = PanthalassaStartFromMnemonic([RCTConvert NSString:config[@"config"]],
                                                    [RCTConvert NSString:config[@"mnemonic"]],
-                                                   upstream,
+                                                   self,
                                                    &error);
   NSNumber *val = [NSNumber numberWithBool:response];
   
@@ -113,7 +113,7 @@ RCT_REMAP_METHOD(PanthalassaStartFromMnemonic,
     reject(@"error", error.localizedDescription, error);
   }
   
-   [upstream send:@"Upstream created"];
+   //[upstream send:@"Upstream created"];
 }
 
 RCT_REMAP_METHOD(PanthalassaIsValidMnemonic,
@@ -183,12 +183,12 @@ RCT_REMAP_METHOD(PanthalassaStart,
   BOOL response;
   NSError *error = nil;
   
-  upstream = [[PanthalassaUpStreamBridge alloc] init];
-  [upstream setDelegate:self];
+  //upstream = [[PanthalassaUpStreamBridge alloc] init];
+  //[upstream setDelegate:self];
   
   response = PanthalassaStart([RCTConvert NSString:config[@"config"]],
                               [RCTConvert NSString:config[@"password"]],
-                              upstream,
+                              self,
                               &error);
   
   NSNumber *val = [NSNumber numberWithBool:response];
@@ -199,7 +199,7 @@ RCT_REMAP_METHOD(PanthalassaStart,
     reject(@"error", error.localizedDescription, error);
   }
   
-  [upstream send:@"Upstream created"];
+  //[upstream send:@"Upstream created"];
 }
 
 RCT_REMAP_METHOD(PanthalassaGetMnemonic,
@@ -485,20 +485,27 @@ RCT_REMAP_METHOD(PanthalassaStartDApp,
 {
   return @[@"PanthalassaUpStream"];
 }
-
+/*
 - (void)receiveString:(NSString *)data {
   NSLog(@"************ Received from delegate!!!");
   if (hasListeners && data != nil) {
     [self sendEventWithName:@"PanthalassaUpStream" body:@{@"upstream": data}];
   }
 }
-
+*/
 -(void)startObserving {
   hasListeners = YES;
 }
 
 -(void)stopObserving {
   hasListeners = NO;
+}
+
+- (void)send:(NSString *)data {
+  NSLog(@"************ Received from go!");
+  if (hasListeners) {
+    [self sendEventWithName:@"PanthalassaUpStream" body:@{@"upstream": data}];
+  }
 }
 
 @end
