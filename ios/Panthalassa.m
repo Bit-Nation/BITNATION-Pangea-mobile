@@ -488,7 +488,7 @@ RCT_REMAP_METHOD(PanthalassaStartDApp,
 
 - (void)receiveString:(NSString *)data {
   NSLog(@"************ Received from delegate!!!");
-  if (hasListeners) {
+  if (hasListeners && data != nil) {
     [self sendEventWithName:@"PanthalassaUpStream" body:@{@"upstream": data}];
   }
 }
