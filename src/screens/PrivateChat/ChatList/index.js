@@ -50,11 +50,10 @@ type Props = {
   onItemSelect: (key: string, callback: (success: boolean) => void) => void,
   /**
    * @desc Function to initialize a new chat
-   * @param {string} key public key of the user
-   * @param {Object} initMessage response from the panthalassa library method
+   * @param {Object} profile Profile of the user
    * @param {func} callback
    */
-  createNewSession: (key: string, initMessage: Object, callback: (success: boolean) => void) => void,
+  createNewSession: (profile: Object, callback: (result: string) => void) => void,
 };
 
 type State = {
@@ -100,8 +99,7 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
 
   getUserProfile = async (publicKey) => {
     try {
-      const response = await ChatService.getProfile(publicKey);
-      const profile = JSON.parse(response.profile);
+      const profile = await ChatService.getProfile(publicKey);
       console.log('fetch profile: ', profile);
       this.setState({
         publicKey,
@@ -120,26 +118,18 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
   }
 
   startChat = async () => {
-    try {
-      const response = await ChatService.getPreKeyBundle(this.state.publicKey);
-      // console.log('fetch bundle: ', response);
-      const initMessage = await ChatService.startChat(this.state.publicKey, JSON.stringify(response.bundle));
-      this.props.createNewSession(this.state.profile, initMessage, (success) => {
-        if (success) {
-          this.props.navigator.push({
-            ...screen('PRIVATE_CHAT_SCREEN'),
-          });
-        }
-      });
+    this.props.createNewSession(this.state.profile, (result) => {
+      if (result === 'success') {
+        this.props.navigator.push({
+          ...screen('PRIVATE_CHAT_SCREEN'),
+        });
+      } else {
+        console.log('create session error: ', result);
+      }
       this.setState({
         showModal: '',
       });
-    } catch (e) {
-      console.log('fetch error: ', e);
-      this.setState({
-        showModal: 'invalid_key',
-      });
-    }
+    });
   }
 
   onChatSelect = (id) => {
@@ -239,7 +229,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   saveProfile: profile => dispatch(saveProfile(profile)),
-  createNewSession: (key, initMessage, callback) => dispatch(newChatSession(key, initMessage, callback)),
+  createNewSession: (profile, callback) => dispatch(newChatSession(profile, callback)),
   onItemSelect: (key, callback) => dispatch(openChat(key, callback)),
 });
 

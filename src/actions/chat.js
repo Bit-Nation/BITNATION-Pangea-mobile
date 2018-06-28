@@ -125,16 +125,14 @@ export function savePreKeyBundle(preKeyBundle: Object): SavePreKeyBundleAction {
 
 /**
  * @desc Action for creating a new chat session
- * @param {Object} profile Public key of the user
- * @param {Object} initMessage Initialization message
+ * @param {Object} profile Profile of the user
  * @param {func} callback Callback
  * @returns {NewChatSessionAction} An action.
  */
-export function newChatSession(profile: Object, initMessage: Object, callback: () => void): NewChatSessionAction {
+export function newChatSession(profile: Object, callback: () => void): NewChatSessionAction {
   return {
     type: NEW_CHAT_SESSION,
     profile,
-    initMessage,
     callback,
   };
 }
