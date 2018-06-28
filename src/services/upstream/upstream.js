@@ -20,12 +20,16 @@ export default class UpstreamService {
   ethereumService: EthereumService;
   constructor(ethereumService: EthereumService) {
     this.ethereumService = ethereumService;
+  }
+
+  startSubscribe=() => {
     const emitter = new NativeEventEmitter(Panthalassa);
     this.eventsSubscription = emitter.addListener(
       'PanthalassaUpStream',
       request => this.handleRequest(request),
     );
   }
+
   handleRequest = (request) => {
     try {
       const decoded = Request.decode(request);
