@@ -184,6 +184,25 @@ export function* listenMessages() {
   }
 }
 
+/**
+ * @desc Handle chat init handshake
+ * @param {Object} message Initialization message object
+ * @return {Promise} A result promise
+ */
+async function handleInitialMessage(message: Object): Promise {
+  console.log('handling chat init');
+  const db = await defaultDB;
+  const results = await db.objects('PreKeyBundle').filtered(`one_time_pre_key == '${message.additional_data.used_one_time_pre_key}'`);
+  if (results.length > 0) {
+    const preKeyBundle = results[0];
+    console.log('chat pre key: ', preKeyBundle);
+    const response = await ChatService.handleChatInit(JSON.stringify(message), JSON.stringify(preKeyBundle.private_part));
+    console.log('handle init chat: ', response);
+  } else {
+    return null;
+  }
+}
+
 export const getAccountState = state => state.accounts;
 
 /**
@@ -200,15 +219,16 @@ export function* fetchMessages() {
     }
     const publicKey = yield call(ChatService.getPublicKey);
     const response = yield call(ChatService.loadMessages, publicKey);
-    const messages = response.messages;
+    const { messages } = response;
     console.log('got messages: ', messages);
     if (messages) {
-      messages.forEach((m) => {
-        const message = JSON.parse(m);
+      for (let i = 0; i < messages.length; i++) {
+        const message = JSON.parse(messages[i]);
         if (message.type === 'PROTOCOL_INITIALISATION') {
-
+          console.log('handle message: ', message);
+          yield call(handleInitialMessage, message);
         }
-      });
+      }
     }
   } catch (e) {
     console.log('fetch message error: ', e);
