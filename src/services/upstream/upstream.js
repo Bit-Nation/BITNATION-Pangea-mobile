@@ -1,16 +1,22 @@
 import ethers from 'ethers';
 import { NativeEventEmitter, NativeModules } from 'react-native';
+import _ from 'lodash';
+import defaultDB from '../../services/database';
+
+import type { MessageKeyType } from '../../types/Message';
+
 // Javascript static code of the proto file
 import { api_proto as apiProto } from './compiled';
 
 import EthereumService from '../ethereum';
+import { DatabaseWriteFailed } from '../../global/errors/common';
+
 
 const { Panthalassa } = NativeModules;
 const { Response, Request } = apiProto;
 
 export default class UpstreamService {
   eventsSubscription;
-
   ethereumService: EthereumService;
   constructor(ethereumService: EthereumService) {
     this.ethereumService = ethereumService;
@@ -25,21 +31,14 @@ export default class UpstreamService {
       const decoded = Request.decode(request);
 
       if (decoded.dRKeyStoreGet !== null) {
-        this.handleDRKeyStoreGet(
-          decoded.dRKeyStoreGet.drKey,
-          decoded.dRKeyStoreGet.messageNumber,
-        );
+        this.handleDRKeyStoreGet({ ...decoded.dRKeyStoreGet });
       } else if (decoded.dRKeyStorePut !== null) {
-        this.handleDRKeyStorePut(
-          decoded.dRKeyStorePut.key,
-          decoded.dRKeyStorePut.messageNumber,
-          decoded.dRKeyStorePut.messageKey,
-        );
+        this.handleDRKeyStorePut({ ...decoded.dRKeyStorePut });
       } else if (decoded.dRKeyStoreDeleteMK !== null) {
-        this.handleDRKeyStoreDeleteMK(
-          decoded.dRKeyStoreDeleteMK.key,
-          decoded.dRKeyStoreDeleteMK.msgNum,
-        );
+        this.handleDRKeyStoreDeleteMK({
+          messageKey: decoded.dRKeyStoreDeleteMK.key,
+          messageNumber: decoded.dRKeyStoreDeleteMK.msgNum,
+        });
       } else if (decoded.dRKeyStoreDeleteKeys !== null) {
         this.handleDRKeyStoreDeleteKeys(decoded.dRKeyStoreDeleteKeys.key);
       } else if (decoded.dRKeyStoreDeleteKeys !== null) {
@@ -59,11 +58,58 @@ export default class UpstreamService {
       console.log('====================================');
     }
   };
-  handleDRKeyStoreGet = (drKey, messageNumber) => {};
-  handleDRKeyStorePut = (key, messageNumber, messageKey) => {};
-  handleDRKeyStoreDeleteMK = (key, msgNum) => {};
-  handleDRKeyStoreDeleteKeys = (key) => {};
-  handleDRKeyStoreCount = (key) => {};
+
+   handleDRKeyStoreGet = async ({ messageNumber }) => {
+     const db = await defaultDB;
+     return db.objects('MessageKey').filtered(`messageNumber == '${messageNumber}'`);
+   };
+  handleDRKeyStorePut = async ({
+    messageKey,
+    messageNumber,
+  }:MessageKeyType) => {
+    const db = await defaultDB;
+    try {
+      db.write(() => {
+        db.create('MessageKey', {
+          messageKey,
+          messageNumber,
+        });
+      });
+    } catch (error) {
+      throw new DatabaseWriteFailed(error);
+    }
+  };
+  handleDRKeyStoreDeleteMK = async ({
+    messageKey,
+    messageNumber,
+  }:MessageKeyType) => {
+    const db = await defaultDB;
+    const message = db.objects('MessageKey').filtered(`messageKey == '${messageKey}'  AND messageNumber == '${messageNumber}'`);
+    try {
+      db.write(() => {
+        db.delete(message);
+      });
+    } catch (error) {
+      throw new DatabaseWriteFailed(error);
+    }
+  };
+  handleDRKeyStoreDeleteKeys =async (messageKey) => {
+    const db = await defaultDB;
+    const messages = db.objects('MessageKey').filtered(`messageKey == '${messageKey}'`);
+    try {
+      db.write(() => {
+        db.delete(messages);
+      });
+    } catch (error) {
+      throw new DatabaseWriteFailed(error);
+    }
+  };
+  handleDRKeyStoreCount = async (messageKey) => {
+    const db = await defaultDB;
+    const messages = db.objects('MessageKey').filtered(`messageKey == '${messageKey}'`);
+    return _.size(messages);
+  };
+
   handleShowModal = (title, layout) => {};
   handleSaveDApp = (saveDApp) => {};
   handleSendEthereumTransaction = (id, value, to, data) => {

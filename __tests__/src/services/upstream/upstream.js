@@ -1,7 +1,7 @@
 import Upstream from '../../../../src/services/upstream/upstream';
 import { api_proto as apiProto } from '../../../../src/services/upstream/compiled';
+// import defaultDB, { buildRandomPathDatabase } from '../../../../src/services/database';
 
-const { Request } = apiProto;
 jest.mock('react-native', () => ({
   NativeEventEmitter: () => ({
     addListener: jest.fn(() => {}),
@@ -57,6 +57,7 @@ const message = {
 
 describe('upstream', () => {
   test('encode request', () => {
+    const { Request } = apiProto;
     const buffer = Request.encode(message).finish();
     expect(buffer).toBeDefined();
   });
@@ -64,10 +65,15 @@ describe('upstream', () => {
 
 
 describe('Upstream class', () => {
-  let upstream;
   test('Initialize the upstream service', () => {
+    const { Request } = apiProto;
     const encodedRequest = Request.encode(message).finish();
-    upstream = new Upstream();
+    const upstream = new Upstream();
     upstream.handleRequest(encodedRequest);
   });
+  // test('handleDRKeyStorePut', async () => {
+  //   const upstream = new Upstream();
+
+  //   upstream.handleDRKeyStorePut({ messageKey: 'somekey', messageNumber: 123 });
+  // });
 });

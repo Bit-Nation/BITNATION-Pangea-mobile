@@ -61,4 +61,6 @@ export {
 
   DAppSchema,
   DAppType,
+  MessageKeySchema,
+  DoubleRatchetKeySchema,
 } from './schema/v4';
