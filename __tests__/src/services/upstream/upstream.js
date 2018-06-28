@@ -71,9 +71,4 @@ describe('Upstream class', () => {
     const upstream = new Upstream();
     upstream.handleRequest(encodedRequest);
   });
-  // test('handleDRKeyStorePut', async () => {
-  //   const upstream = new Upstream();
-
-  //   upstream.handleDRKeyStorePut({ messageKey: 'somekey', messageNumber: 123 });
-  // });
 });
