@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import GlobalStyles from '../../../global/Styles';
 
 export default StyleSheet.create({
   centerText: {
@@ -18,5 +19,8 @@ export default StyleSheet.create({
   },
   buttonTouchable: {
     padding: 16,
+  },
+  container: {
+    flex: 1,
   },
 });
