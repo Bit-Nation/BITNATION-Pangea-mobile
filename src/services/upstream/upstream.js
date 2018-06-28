@@ -110,8 +110,8 @@ export default class UpstreamService {
     return _.size(messages);
   };
 
-  handleShowModal = (title, layout) => {};
-  handleSaveDApp = (saveDApp) => {};
+  handleShowModal = () => {};
+  handleSaveDApp = () => {};
   handleSendEthereumTransaction = (id, value, to, data) => {
     const transaction = {
       to,
