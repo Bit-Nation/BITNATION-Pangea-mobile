@@ -54,7 +54,7 @@ type Props = {
    * @param {Object} profile Profile of the user
    * @param {func} callback
    */
-  createNewSession: (profile: Object, callback: (result: string) => void) => void,
+  createNewSession: (profile: Object, callback: (result: Object) => void) => void,
 };
 
 type State = {
@@ -120,8 +120,8 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
 
   startChat = async () => {
     this.props.createNewSession(this.state.profile, (result) => {
-      if (result === 'success') {
-        const session = getSelectedSession(this.props.chatSessions, this.state.profile.information.identity_pub_key);
+      if (result.status === 'success') {
+        const session = getSelectedSession(this.props.chatSessions, result.secret);
         this.props.navigator.push({
           ...screen('PRIVATE_CHAT_SCREEN'),
           passProps: { session },
@@ -188,10 +188,10 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
               participants=''
               itemIcon={0}
               onPress={this.onChatSelect}
-              id={session.publicKey}
+              id={session.secret}
             />);
           }}
-          keyExtractor={item => item.id}
+          keyExtractor={item => item.secret}
           renderSectionHeader={({ section }) => <NationListHeader title={section.title} />}
           sections={sections}
           style={styles.sectionList}
