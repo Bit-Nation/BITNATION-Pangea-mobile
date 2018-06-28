@@ -243,6 +243,10 @@ const Screens = {
     title: '',
     navigatorStyle,
   },
+  DAPP_MODAL_SCREEN: {
+    screen: 'Pangea.DAppModalScreen',
+    navigatorStyle,
+  }
 };
 
 /**
