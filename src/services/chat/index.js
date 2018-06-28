@@ -106,6 +106,10 @@ export default class ChatService {
     return response;
   }
 
+  static async handleChatInit(message: string, preKeyBundlePrivatePart: string): Promise<any> {
+    return Panthalassa.PanthalassaHandleInitialMessage({ message, preKeyBundlePrivatePart });
+  }
+
   static async uploadMessage(message: string): Promise {
     const URL = `${Config.CHAT_ENDPOINT}/message`;
     return fetch(URL, {

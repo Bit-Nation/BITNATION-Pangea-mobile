@@ -135,10 +135,10 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
     });
   }
 
-  onChatSelect = (id) => {
-    this.props.onItemSelect(id, (success) => {
+  onChatSelect = (item) => {
+    this.props.onItemSelect(item.publicKey, (success) => {
       if (success) {
-        const session = getSelectedSession(this.props.chatSessions, id);
+        const session = getSelectedSession(this.props.chatSessions, item.secret);
         this.props.navigator.push({
           ...screen('PRIVATE_CHAT_SCREEN'),
           passProps: { session },
@@ -188,7 +188,7 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
               participants=''
               itemIcon={0}
               onPress={this.onChatSelect}
-              id={session.secret}
+              id={session}
             />);
           }}
           keyExtractor={item => item.secret}
