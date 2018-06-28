@@ -392,7 +392,7 @@ RCT_REMAP_METHOD(PanthalassaHandleInitialMessage,
   
   NSString *response;
   NSError *error = nil;
-  response = PanthalassaNewAccountKeys([RCTConvert NSString:config[@"message"]],
+  response = PanthalassaHandleInitialMessage([RCTConvert NSString:config[@"message"]],
                                          [RCTConvert NSString:config[@"preKeyBundlePrivatePart"]],
                                          &error);
   
@@ -412,6 +412,64 @@ RCT_REMAP_METHOD(PanthalassaConnectToDAppDevHost,
   NSError *error = nil;
   response = PanthalassaConnectToDAppDevHost([RCTConvert NSString:config[@"address"]],
                                             &error);
+  
+  NSNumber *val = [NSNumber numberWithBool:response];
+  
+  if (error == nil) {
+    resolve(val);
+  } else {
+    reject(@"error", error.localizedDescription, error);
+  }
+}
+
+RCT_REMAP_METHOD(PanthalassaOpenDApp,
+                 PanthalassaOpenDAppWithResolver:(NSDictionary *)config
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject) {
+  BOOL response;
+  NSError *error = nil;
+  
+  response = PanthalassaOpenDApp([RCTConvert NSString:config[@"id"]],
+                                 [RCTConvert NSString:config[@"context"]],
+                                 &error);
+  
+  NSNumber *val = [NSNumber numberWithBool:response];
+  
+  if (error == nil) {
+    resolve(val);
+  } else {
+    reject(@"error", error.localizedDescription, error);
+  }
+}
+
+RCT_REMAP_METHOD(PanthalassaRenderMessage,
+                 PanthalassaRenderMessageWithResolver:(NSDictionary *)config
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject) {
+  
+  NSString *response;
+  NSError *error = nil;
+  response = PanthalassaRenderMessage([RCTConvert NSString:config[@"id"]],
+                                      [RCTConvert NSString:config[@"msg"]],
+                                      [RCTConvert NSString:config[@"context"]],
+                                      &error);
+  
+  if (error == nil) {
+    resolve(response);
+  } else {
+    reject(@"error", error.localizedDescription, error);
+  }
+}
+
+RCT_REMAP_METHOD(PanthalassaStartDApp,
+                 PanthalassaStartDAppWithResolver:(NSDictionary *)config
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject) {
+  BOOL response;
+  NSError *error = nil;
+  
+  response = PanthalassaStartDApp([RCTConvert NSString:config[@"dApp"]],
+                                 &error);
   
   NSNumber *val = [NSNumber numberWithBool:response];
   
