@@ -6,10 +6,13 @@ import SendMoney from '../../../../../src/screens/WalletScreen/SendMoney';
 import { initialState } from '../../../../../src/reducers/wallet';
 import navigatorMock from '../../../../../__mocks__/Navigator';
 
-test('SendMoney renders correctly', () => {
+describe('SendMoney Screen', () => {
+  let sendMoneyScreen;
+
   const storeMock = configureStore([]);
   const propsMock = {
     navigator: navigatorMock,
+    onSendMoney: jest.fn(),
   };
   const initialStateMock = {
     wallet: {
@@ -26,9 +29,16 @@ test('SendMoney renders correctly', () => {
       isActive: false,
     },
   };
+  beforeEach(() => {
+    sendMoneyScreen = shallow((
+      <SendMoney {...propsMock} store={storeMock(initialStateMock)} />
+    ));
+  });
+  test('SendMoney renders correctly', () => {
+    expect(sendMoneyScreen).toMatchSnapshot();
+  });
 
-  const wrapper = shallow((
-    <SendMoney {...propsMock} store={storeMock(initialStateMock)} />
-  ));
-  expect(wrapper).toMatchSnapshot();
+  test('SendMoney requires navigator prop', () => {
+    expect(sendMoneyScreen.props().navigator).toBeDefined();
+  });
 });
