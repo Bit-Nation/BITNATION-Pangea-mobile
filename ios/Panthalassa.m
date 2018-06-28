@@ -321,7 +321,7 @@ RCT_REMAP_METHOD(PanthalassaSendResponse,
   response = PanthalassaSendResponse([RCTConvert NSString:config[@"id"]],
                                           [RCTConvert NSString:config[@"data"]],
                                           [RCTConvert NSString:config[@"responseError"]],
-                                          [RCTConvert CGFloat:config[@"timeout"]],
+                                          [[RCTConvert NSNumber:config[@"timeout"]] longValue],
                                           &error);
   
   NSNumber *val = [NSNumber numberWithBool:response];
@@ -478,7 +478,7 @@ RCT_REMAP_METHOD(PanthalassaCallDAppFunction,
   BOOL response;
   NSError *error = nil;
   response = PanthalassaCallDAppFunction([RCTConvert NSString:config[@"dAppId"]],
-                                         [RCTConvert CGFloat:config[@"id"]],
+                                         [[RCTConvert NSNumber:config[@"id"]] longValue],
                                          [RCTConvert NSString:config[@"args"]],
                                              &error);
   
