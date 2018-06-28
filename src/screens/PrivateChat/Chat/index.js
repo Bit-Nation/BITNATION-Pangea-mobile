@@ -18,6 +18,7 @@ import BackgroundImage from '../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import Loading from '../../../components/common/Loading';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
+import type { ChatSessionType } from '../../../types/Chat';
 import { getCurrentAccount } from '../../../reducers/accounts';
 
 type Props = {
@@ -37,6 +38,10 @@ type Props = {
    * @desc Flag that indicates the loading status
    */
   isFetching: boolean,
+  /**
+   * @desc The chat session
+   */
+  session: ChatSessionType,
   /**
    * @desc Function to show spinner
    */
@@ -63,6 +68,7 @@ class ChatScreen extends Component<Props, State> {
   }
 
   componentDidMount() {
+
   }
 
   onSend(messages: Array<any> = []) {
