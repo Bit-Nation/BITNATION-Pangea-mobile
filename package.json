@@ -22,6 +22,7 @@
     "assert": "^1.4.1",
     "async-to-generator": "^1.1.0",
     "awilix": "^3.0.1",
+    "base-64": "^0.1.0",
     "bignumber.js": "^5.0.0",
     "bn.js": "^4.11.8",
     "buffer": "^4.9.1",
