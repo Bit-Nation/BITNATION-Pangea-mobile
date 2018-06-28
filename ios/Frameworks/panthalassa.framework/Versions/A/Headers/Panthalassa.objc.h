@@ -57,6 +57,8 @@ to use the mesh network
 - (void)setEnableDebugging:(BOOL)v;
 @end
 
+FOUNDATION_EXPORT BOOL PanthalassaCallDAppFunction(NSString* dAppId, long id_, NSString* args, NSError** error);
+
 /**
  * connect the host to DApp development server
  */
