@@ -1,9 +1,12 @@
 import ethers from 'ethers';
 import { NativeEventEmitter, NativeModules } from 'react-native';
+import { Buffer } from 'buffer';
 // Javascript static code of the proto file
 import { api_proto as apiProto } from './compiled';
 
 import EthereumService from '../ethereum';
+import DAppsService from '../dapps';
+import type { DApp } from '../../types/DApp';
 
 const { Panthalassa } = NativeModules;
 const { Response, Request } = apiProto;
@@ -22,7 +25,7 @@ export default class UpstreamService {
   }
   handleRequest = (request) => {
     try {
-      const decoded = Request.decode(request);
+      const decoded = Request.decode(Buffer.from(request.upstream, 'base64'));
 
       if (decoded.dRKeyStoreGet !== null) {
         this.handleDRKeyStoreGet(
@@ -65,8 +68,16 @@ export default class UpstreamService {
   handleDRKeyStoreDeleteKeys = (key) => {};
   handleDRKeyStoreCount = (key) => {};
   handleShowModal = (title, layout) => {};
-  handleSaveDApp = (saveDApp) => {
-    console.log(`SAVE_DAPP: ${saveDApp}`);
+  handleSaveDApp = async (saveDApp) => {
+    const dApp: DApp = {
+      name: saveDApp.appName,
+      code: saveDApp.code,
+      publicKey: saveDApp.signingPublicKey,
+      signature: saveDApp.signature,
+    };
+    // @todo Save DApp
+    await DAppsService.startDApp(dApp);
+    await DAppsService.openDApp(saveDApp.signingPublicKey, {});
   };
   handleSendEthereumTransaction = (id, value, to, data) => {
     const transaction = {
