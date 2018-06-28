@@ -9,7 +9,7 @@ const { Panthalassa } = NativeModules;
 
 export default class ChatService {
   static async uploadProfile(profile: string): Promise {
-    console.log('profile upload: ', profile);
+    console.log('profile upload: ', JSON.parse(profile));
     const URL = `${Config.CHAT_ENDPOINT}/profile`;
     await fetch(URL, {
       body: profile,
@@ -72,7 +72,7 @@ export default class ChatService {
     console.log('pre key bundle: ', preKeyBundle);
     const URL = `${Config.CHAT_ENDPOINT}/pre-key-bundle`;
     return fetch(URL, {
-      body: preKeyBundle.public_part,
+      body: JSON.stringify(preKeyBundle.public_part),
       headers: {
         'content-type': 'application/json',
         bearer: Config.CHAT_TOKEN,

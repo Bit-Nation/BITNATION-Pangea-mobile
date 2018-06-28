@@ -9,8 +9,9 @@ export const NEW_CHAT_SESSION = 'NEW_CHAT_SESSION';
 export const CHATS_UPDATED = 'CHATS_UPDATED';
 export const OPEN_CHAT_SESSION = 'OPEN_CHAT_SESSION';
 export const SELECT_PROFILE = 'SELECT_PROFILE';
-export const LISTEN_CHAT = 'LISTEN_CHAT';
 export const FETCH_MESSAGES = 'FETCH_MESSAGES';
+export const START_FETCH_MESSAGES = 'START_FETCH_MESSAGES';
+export const STOP_FETCH_MESSAGES = 'STOP_FETCH_MESSAGES';
 
 export type ShowSpinnerAction = { +type: 'SHOW_CHAT_SPINNER' };
 export type HideSpinnerAction = { +type: 'HIDE_CHAT_SPINNER' };
@@ -45,8 +46,11 @@ export type SelectProfileAction = {
   +type: 'SELECT_PROFILE',
   +profile: Object,
 }
-export type ChatListenAction = {
-  +type: 'LISTEN_CHAT',
+export type StartFetchAction = {
+  +type: 'START_FETCH_MESSAGES',
+}
+export type StopFetchAction = {
+  +type: 'STOP_FETCH_MESSAGES',
 }
 
 export type Action =
@@ -59,7 +63,9 @@ export type Action =
   | UpdateChatsAction
   | OpenChatAction
   | SelectProfileAction
-  | ChatListenAction;
+  | ChatListenAction
+  | StartFetchAction
+  | StopFetchAction;
 
 /**
  * @desc Action for an action that shows spinner while processing in background
@@ -172,11 +178,21 @@ export function selectProfile(profile: Object): SelectProfileAction {
 }
 
 /**
- * @desc Action for listening to incoming messages
- * @returns {ChatListenAction} An action.
+ * @desc Action to start listening messages
+ * @returns {StartFetchAction} An action.
  */
-export function listenToChat(): ChatListenAction {
+export function startFetchMessages(): StartFetchAction {
   return {
-    type: LISTEN_CHAT,
+    type: START_FETCH_MESSAGES,
+  };
+}
+
+/**
+ * @desc Action to stop listening messages
+ * @returns {StopFetchAction} An action.
+ */
+export function stopFetchMessages(): StopFetchAction {
+  return {
+    type: STOP_FETCH_MESSAGES,
   };
 }
