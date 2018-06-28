@@ -1,6 +1,7 @@
-import { put, call, take, fork, cancel } from 'redux-saga/effects';
+import { put, call, take, fork, cancel, select } from 'redux-saga/effects';
 import type { Realm } from 'realm';
 
+import { getCurrentAccount } from '../../actions/accounts';
 import {
   SaveProfileAction, SavePreKeyBundleAction, NewChatSessionAction, OpenChatAction, chatsUpdated, selectProfile,
   FETCH_MESSAGES, START_FETCH_MESSAGES, STOP_FETCH_MESSAGES,
@@ -8,6 +9,7 @@ import {
 import defaultDB from '../../services/database';
 import ChatService from '../../services/chat';
 import type { ChatSessionType as DBChatSession } from '../../services/database/schemata';
+import type { AccountType as DBAccount } from '../../services/database/schemata';
 import { getCurrentAccountId, currentAccountBasedUpdate } from '../accounts/sagas';
 import { byteToHexString } from '../../utils/key';
 
@@ -49,7 +51,9 @@ export function* startDatabaseListening(): Generator<*, *, *> {
 export function* saveProfile(action: SaveProfileAction) {
   const db = yield defaultDB;
   const { profile: { information, signatures } } = action;
-  const results = db.objects('Profile').filtered(`identity_pub_key == '${information.identity_pub_key}'`);
+  // const results = db.objects('Profile').filtered(`identity_pub_key == '${information.identity_pub_key}'`);
+  let results = yield call([db, 'objects'], 'Profile');
+  results = yield call([results, 'filtered'], `identity_pub_key == '${information.identity_pub_key}'`);
   if (results.length === 0) {
     const profile = {
       name: information.name,
@@ -93,23 +97,35 @@ export function* savePreKeyBundle(action: SavePreKeyBundleAction) {
 export function* createChatSession(action: NewChatSessionAction) {
   const db = yield defaultDB;
   const currentAccountId = yield call(getCurrentAccountId);
-  const secret = {
-    id: action.profile.information.identity_pub_key,
-    secret: action.initMessage.shared_chat_secret,
-    accountId: currentAccountId,
-  };
-  const chatSession = {
-    publicKey: action.profile.information.identity_pub_key,
-    username: action.profile.information.name,
-    accountId: currentAccountId,
-    messages: [],
-  };
+  const publicKey = action.profile.information.identity_pub_key;
+  const results = db.objects('ChatSession').filtered(`publicKey == '${publicKey}' && accountId == '${currentAccountId}'`);
+  if (results.length === 0) {
+    let initMessage = null;
+    try {
+      const response = yield call(ChatService.getPreKeyBundle, publicKey);
+      // console.log('fetch bundle: ', response);
+      initMessage = yield call(ChatService.startChat, publicKey, JSON.stringify(response.bundle));
+    } catch (e) {
+      yield call(action.callback, 'invalid_key');
+    }
+    const secret = {
+      id: publicKey,
+      secret: initMessage.shared_chat_secret,
+      accountId: currentAccountId,
+    };
+    const chatSession = {
+      publicKey,
+      username: action.profile.information.name,
+      accountId: currentAccountId,
+      messages: [],
+    };
+    db.write(() => {
+      db.create('SharedSecret', secret);
+      db.create('ChatSession', chatSession);
+    });
+  }
+  yield call(action.callback, 'success');
   yield put(selectProfile(action.profile));
-  db.write(() => {
-    db.create('SharedSecret', secret);
-    db.create('ChatSession', chatSession);
-  });
-  yield call(action.callback, true);
 }
 
 /**
@@ -119,12 +135,11 @@ export function* createChatSession(action: NewChatSessionAction) {
  */
 export function* openChatSession(action: OpenChatAction) {
   const db = yield defaultDB;
-  const currentAccountId = yield call(getCurrentAccountId);
-  let results = yield call([db, 'objects'], 'ChatSession');
-  results = yield call([results, 'filtered'], `publicKey == '${action.publicKey}' && accountId == '${currentAccountId}'`);
+  let results = yield call([db, 'objects'], 'Profile');
+  results = yield call([results, 'filtered'], `identity_pub_key == '${action.publicKey}'`);
   const profile = yield results[0] || null;
   if (profile) {
-    yield put(selectProfile(action.profile));
+    yield put(selectProfile(profile));
     yield call(action.callback, true);
   } else {
     yield call(action.callback, false);
@@ -162,10 +177,22 @@ export function* listenMessages() {
   }
 }
 
+export const getAccountState = state => state.accounts;
+
 /**
  * @desc Fetch new messages
  * @return {void}
  */
 export function* fetchMessages() {
   const db = yield defaultDB;
+
+  const { accounts } = yield select();
+  const currentAccount = getCurrentAccount(accounts);
+  if (currentAccount === null) {
+    return yield null;
+  }
+  const publicKey = yield call(ChatService.getPublicKey);
+  const messages = yield call(ChatService.loadMessages, publicKey);
+
+  console.log('got messages: ', messages);
 }

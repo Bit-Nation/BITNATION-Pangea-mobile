@@ -38,11 +38,17 @@ export default class ChatService {
       },
       method: 'GET',
     })
-      .then(response => response.json());
+      .then(response => response.json())
+      .then(response => JSON.parse(response.profile));
+  }
+
+  static async getPublicKey(): Promise<string> {
+    const publicKey = await Panthalassa.PanthalassaIdentityPublicKey();
+    return publicKey;
   }
 
   static async getPreKeyBundleCount(): Promise<number> {
-    const publicKey = await Panthalassa.PanthalassaIdentityPublicKey();
+    const publicKey = ChatService.getPublicKey();
     const URL = `${Config.CHAT_ENDPOINT}/pre-key-bundle/count/${publicKey}`;
     return fetch(URL, {
       headers: {
@@ -84,14 +90,14 @@ export default class ChatService {
   static async startChat(identityPublicKey: string, preKeyBundle: string): Promise<any> {
     const response = await Panthalassa.PanthalassaInitializeChat({ identityPublicKey, preKeyBundle });
     console.log('init chat: ', response);
-    await ChatService.uploadMessage(response.message);
+    await ChatService.uploadMessage(JSON.parse(response).message);
     return response;
   }
 
   static async uploadMessage(message: string): Promise {
     const URL = `${Config.CHAT_ENDPOINT}/message`;
     return fetch(URL, {
-      body: message,
+      body: JSON.stringify(message),
       headers: {
         'content-type': 'application/json',
         bearer: Config.CHAT_TOKEN,
