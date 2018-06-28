@@ -25,6 +25,10 @@ import type {
   SavePinCodeAction,
 } from '../../actions/accounts';
 import {
+  startFetchMessages,
+  stopFetchMessages,
+} from '../../actions/chat';
+import {
   convertFromDatabase, convertToDatabase, retrieveProfileFromAccount,
   retrieveProfileFromPartialAccount,
 } from '../../utils/mapping/account';
@@ -227,6 +231,8 @@ export function* login(userInfo: ({ accountId: string, accountStore?: string }),
 
   yield put(currentAccountIdChanged(accountId));
   yield put(loginTaskUpdated(TaskBuilder.success()));
+
+  yield put(startFetchMessages());
 }
 
 /**
@@ -234,6 +240,7 @@ export function* login(userInfo: ({ accountId: string, accountStore?: string }),
  * @return {void}
  */
 export function* logout(): Generator<*, *, *> {
+  yield put(stopFetchMessages());
   yield call(AccountsService.logout);
   yield put(currentAccountIdChanged(null));
 }
