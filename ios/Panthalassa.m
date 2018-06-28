@@ -17,7 +17,7 @@
 
 - (dispatch_queue_t)methodQueue
 {
-  return dispatch_get_main_queue();
+  return dispatch_queue_create("panthalassaLibQueue", DISPATCH_QUEUE_SERIAL);
 }
 
 RCT_EXPORT_MODULE();
@@ -262,6 +262,7 @@ RCT_REMAP_METHOD(PanthalassaCreateHumanMessage,
   response = PanthalassaCreateHumanMessage([RCTConvert NSString:config[@"rawMsg"]],
                               [RCTConvert NSString:config[@"secretID"]],
                               [RCTConvert NSString:config[@"secret"]],
+                              [RCTConvert NSString:config[@"receiverIdKey"]],
                               &error);
   
   if (error == nil) {
@@ -468,6 +469,49 @@ RCT_REMAP_METHOD(PanthalassaStartDApp,
     reject(@"error", error.localizedDescription, error);
   }
 }
+
+RCT_REMAP_METHOD(PanthalassaCallDAppFunction,
+                 PanthalassaCallDAppFunctiontWithResolver:(NSDictionary *)config
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject) {
+  
+  BOOL response;
+  NSError *error = nil;
+  response = PanthalassaCallDAppFunction([RCTConvert NSString:config[@"dAppId"]],
+                                         [RCTConvert CGFloat:config[@"id"]],
+                                         [RCTConvert NSString:config[@"args"]],
+                                             &error);
+  
+  NSNumber *val = [NSNumber numberWithBool:response];
+  
+  if (error == nil) {
+    resolve(val);
+  } else {
+    reject(@"error", error.localizedDescription, error);
+  }
+}
+
+RCT_REMAP_METHOD(PanthalassaCreateDAppMessage,
+                 PanthalassaCreateDAppMessageWithResolver:(NSDictionary *)config
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject) {
+  
+  NSString *response;
+  NSError *error = nil;
+  
+  response = PanthalassaCreateDAppMessage([RCTConvert NSString:config[@"rawMsg"]],
+                                           [RCTConvert NSString:config[@"secretID"]],
+                                           [RCTConvert NSString:config[@"secret"]],
+                                           [RCTConvert NSString:config[@"receiverIdKey"]],
+                                           &error);
+  
+  if (error == nil) {
+    resolve(response);
+  } else {
+    reject(@"error", error.localizedDescription, error);
+  }
+}
+
 
 // TEST FOR SEND  - https://facebook.github.io/react-native/docs/native-modules-ios.html#sending-events-to-javascript
 - (NSArray<NSString *> *)supportedEvents

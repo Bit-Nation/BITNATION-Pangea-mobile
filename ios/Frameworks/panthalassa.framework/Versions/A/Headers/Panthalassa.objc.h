@@ -65,10 +65,16 @@ FOUNDATION_EXPORT BOOL PanthalassaCallDAppFunction(NSString* dAppId, long id_, N
 FOUNDATION_EXPORT BOOL PanthalassaConnectToDAppDevHost(NSString* address, NSError** error);
 
 /**
+ * create a dapp message
+secret should be a aes cipher text as string
+ */
+FOUNDATION_EXPORT NSString* PanthalassaCreateDAppMessage(NSString* rawMsg, NSString* secretID, NSString* secret, NSString* receiverIdKey, NSError** error);
+
+/**
  * create message
 secret should be a aes cipher text as string
  */
-FOUNDATION_EXPORT NSString* PanthalassaCreateHumanMessage(NSString* rawMsg, NSString* secretID, NSString* secret, NSError** error);
+FOUNDATION_EXPORT NSString* PanthalassaCreateHumanMessage(NSString* rawMsg, NSString* secretID, NSString* secret, NSString* receiverIdKey, NSError** error);
 
 /**
  * decrypt a chat message
