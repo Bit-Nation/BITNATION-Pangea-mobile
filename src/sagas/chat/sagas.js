@@ -1,7 +1,6 @@
 import { put, call, take, fork, cancel, select } from 'redux-saga/effects';
 import type { Realm } from 'realm';
 
-import { getCurrentAccount } from '../../actions/accounts';
 import {
   SaveProfileAction, SavePreKeyBundleAction, NewChatSessionAction, OpenChatAction, chatsUpdated, selectProfile,
   FETCH_MESSAGES, START_FETCH_MESSAGES, STOP_FETCH_MESSAGES,
@@ -11,6 +10,7 @@ import ChatService from '../../services/chat';
 import type { ChatSessionType as DBChatSession } from '../../services/database/schemata';
 import type { AccountType as DBAccount } from '../../services/database/schemata';
 import { getCurrentAccountId, currentAccountBasedUpdate } from '../accounts/sagas';
+import { getCurrentAccount } from '../../reducers/accounts';
 import { byteToHexString } from '../../utils/key';
 
 /**
@@ -109,19 +109,21 @@ export function* createChatSession(action: NewChatSessionAction) {
       yield call(action.callback, 'invalid_key');
     }
     const secret = {
-      id: publicKey,
+      id: initMessage.public_part.used_secret,
+      publicKey,
       secret: initMessage.shared_chat_secret,
       accountId: currentAccountId,
     };
     const chatSession = {
+      secret: initMessage.public_part.used_secret,
       publicKey,
       username: action.profile.information.name,
       accountId: currentAccountId,
       messages: [],
     };
     db.write(() => {
-      db.create('SharedSecret', secret);
-      db.create('ChatSession', chatSession);
+      db.create('SharedSecret', secret, true);
+      db.create('ChatSession', chatSession, true);
     });
   }
   yield call(action.callback, 'success');
@@ -185,14 +187,25 @@ export const getAccountState = state => state.accounts;
  */
 export function* fetchMessages() {
   const db = yield defaultDB;
+  try {
+    const { accounts } = yield select();
+    const currentAccount = getCurrentAccount(accounts);
+    if (currentAccount === null) {
+      return yield null;
+    }
+    const publicKey = yield call(ChatService.getPublicKey);
+    const response = yield call(ChatService.loadMessages, publicKey);
+    const messages = response.messages;
+    console.log('got messages: ', messages);
+    if (messages) {
+      messages.forEach((m) => {
+        const message = JSON.parse(m);
+        if (message.type === 'PROTOCOL_INITIALISATION') {
 
-  const { accounts } = yield select();
-  const currentAccount = getCurrentAccount(accounts);
-  if (currentAccount === null) {
-    return yield null;
+        }
+      });
+    }
+  } catch (e) {
+    console.log('fetch message error: ', e);
   }
-  const publicKey = yield call(ChatService.getPublicKey);
-  const messages = yield call(ChatService.loadMessages, publicKey);
-
-  console.log('got messages: ', messages);
 }
