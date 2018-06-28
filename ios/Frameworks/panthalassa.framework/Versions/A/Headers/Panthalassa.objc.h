@@ -80,6 +80,8 @@ FOUNDATION_EXPORT BOOL PanthalassaOpenDApp(NSString* id_, NSString* context, NSE
 
 FOUNDATION_EXPORT NSString* PanthalassaRenderMessage(NSString* id_, NSString* msg, NSString* context, NSError** error);
 
+FOUNDATION_EXPORT BOOL PanthalassaSend(NSString* data, NSError** error);
+
 FOUNDATION_EXPORT BOOL PanthalassaSendResponse(NSString* id_, NSString* data, NSString* responseError, long timeout, NSError** error);
 
 FOUNDATION_EXPORT NSString* PanthalassaSignProfile(NSString* name, NSString* location, NSString* image, NSError** error);
