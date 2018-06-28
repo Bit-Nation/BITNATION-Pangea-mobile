@@ -99,23 +99,25 @@ export function* createChatSession(action: NewChatSessionAction) {
   const currentAccountId = yield call(getCurrentAccountId);
   const publicKey = action.profile.information.identity_pub_key;
   const results = db.objects('ChatSession').filtered(`publicKey == '${publicKey}' && accountId == '${currentAccountId}'`);
+  let initMessage = null;
   if (results.length === 0) {
-    let initMessage = null;
     try {
       const response = yield call(ChatService.getPreKeyBundle, publicKey);
       // console.log('fetch bundle: ', response);
       initMessage = yield call(ChatService.startChat, publicKey, JSON.stringify(response.bundle));
     } catch (e) {
-      yield call(action.callback, 'invalid_key');
+      yield call(action.callback, {
+        status: 'fail',
+      });
     }
     const secret = {
-      id: initMessage.public_part.used_secret,
+      id: initMessage.message.used_secret,
       publicKey,
       secret: initMessage.shared_chat_secret,
       accountId: currentAccountId,
     };
     const chatSession = {
-      secret: initMessage.public_part.used_secret,
+      secret: initMessage.message.used_secret,
       publicKey,
       username: action.profile.information.name,
       accountId: currentAccountId,
@@ -126,7 +128,10 @@ export function* createChatSession(action: NewChatSessionAction) {
       db.create('ChatSession', chatSession, true);
     });
   }
-  yield call(action.callback, 'success');
+  yield call(action.callback, {
+    status: 'success',
+    secret: initMessage.message.used_secret,
+  });
   yield put(selectProfile(action.profile));
 }
 
