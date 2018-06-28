@@ -7,7 +7,7 @@ import NationsService from './nations';
 import type { Account } from '../types/Account';
 import { normalizeEthPrivateKey } from '../utils/key';
 import defaultDB from './database';
-import UpstreamService from "./upstream/upstream";
+import UpstreamService from './upstream/upstream';
 
 export default class ServiceContainer {
   static instance: ServiceContainer = new ServiceContainer();
