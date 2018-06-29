@@ -251,6 +251,12 @@ export default class UpstreamService {
     return this.sendErrorResponse(id, new Error(`Unknown upstream request ${info}`));
   };
 
+  cleanUp() {
+    if (this.eventsSubscription != null) {
+      this.eventsSubscription.remove();
+    }
+  }
+
   // Common functions
 
   sendErrorResponse = async (id: string, error: Error) => Panthalassa.PanthalassaSendResponse({
