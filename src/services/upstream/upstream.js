@@ -188,6 +188,13 @@ export default class UpstreamService {
         title,
         passProps: {
           layout: JSONLayout,
+          // @todo Place correct dapp
+          dApp: {
+            name: 'Test DApp',
+            code: '',
+            publicKey: 'public key',
+          },
+          context: {},
         },
       });
       return this.sendSuccessResponse(id, {});
