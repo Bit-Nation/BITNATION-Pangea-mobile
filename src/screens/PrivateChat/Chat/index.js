@@ -20,6 +20,7 @@ import Loading from '../../../components/common/Loading';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import type { ChatSessionType } from '../../../types/Chat';
 import { getCurrentAccount } from '../../../reducers/accounts';
+import { convertFromDatabase } from '../../../utils/chat';
 
 type Props = {
   /**
@@ -67,8 +68,11 @@ class ChatScreen extends Component<Props, State> {
     };
   }
 
-  componentDidMount() {
-
+  componentWillReceiveProps(nextProps: Props) {
+    const messages = nextProps.session.messages.map((m, i) => {
+      return convertFromDatabase(i, nextProps.user, m);
+    });
+    this.setState({messages});
   }
 
   onSend(messages: Array<any> = []) {
