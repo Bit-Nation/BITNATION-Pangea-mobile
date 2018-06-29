@@ -1,24 +1,15 @@
 import UpstreamService from '../../../../src/services/upstream/upstream';
 import { api_proto as apiProto } from '../../../../src/services/upstream/compiled';
 
-jest.mock('react-native-navigation', () => ({
-  Navigation: {
-    showModal: jest.fn(),
+jest.mock('NativeModules', () => ({
+  Panthalassa: {
+    PanthalassaSendResponse: jest.fn(),
   },
 }));
-jest.mock('react-native', () => ({
-  NativeEventEmitter: () => ({
-    addListener: jest.fn(() => {}),
-  }),
-  NativeModules: {
-    Panthalassa: {
-      PanthalassaSendResponse: jest.fn(),
-    },
-  },
-  Platform: {
-    OS: 'ios',
-  },
-}));
+
+jest.mock('NativeEventEmitter', () => function () {
+  return { addListener: jest.fn() };
+});
 
 const message = {
   requestID: '1',
