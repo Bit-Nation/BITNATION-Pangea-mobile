@@ -204,7 +204,7 @@ export default class UpstreamService {
       appName, code, signature, signingPublicKey,
     } = info;
     try {
-      const dApp: DApp = {
+      const dApp = {
         name: appName,
         code,
         signature,

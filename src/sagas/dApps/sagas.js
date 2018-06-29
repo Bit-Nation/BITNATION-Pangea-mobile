@@ -3,12 +3,12 @@
 import { call, select, put } from 'redux-saga/effects';
 import { Realm } from 'realm';
 
+import defaultDB from '../../services/database';
 import type { OpenDAppAction, PerformDAppCallbackAction, StartDAppAction } from '../../actions/dApps';
-import { getDApp as getDAppFromState } from '../../reducers/dApps';
 import { dAppsListUpdated, dAppStarted, dAppStartFailed, startDApp } from '../../actions/dApps';
 import DAppsService from '../../services/dApps';
 import type { DAppType as DBDApp } from '../../services/database/schemata';
-import { currentAccountBasedUpdate } from '../accounts/sagas';
+import { currentAccountBasedUpdate, getCurrentAccountId } from '../accounts/sagas';
 
 /**
  * @desc Function that creates Realm results fetching DApps for specific account.
@@ -29,7 +29,11 @@ export function buildDAppsResults(db: Realm, accountId: string | null) {
  * @return {void}
  */
 export function* onCurrentAccountChange(collection: Realm.Result<DBDApp>): Generator<*, *, *> {
-  yield put(dAppsListUpdated(collection));
+  yield put(dAppsListUpdated(collection.map(dApp => ({
+    name: dApp.name,
+    publicKey: dApp.publicKey,
+    signature: dApp.signature,
+  }))));
   const { dApps: { startedDAppIds } } = yield select();
   for (let i = 0; i < collection.length; i += 1) {
     const { publicKey } = collection[i];
@@ -53,8 +57,9 @@ export function* startDatabaseListening(): Generator<*, *, *> {
  * @return {void}
  */
 export function* getDApp(publicKey: string): Generator<*, *, *> {
-  const { dApps } = yield select();
-  return getDAppFromState(dApps, publicKey);
+  const accountId = yield call(getCurrentAccountId);
+  const db: Realm = yield defaultDB;
+  return yield db.objects('DApp').filtered(`accountId == '${accountId}' && publicKey == '${publicKey}'`)[0];
 }
 
 /**
@@ -63,7 +68,7 @@ export function* getDApp(publicKey: string): Generator<*, *, *> {
  * @return {void}
  */
 export function* startDAppSaga(action: StartDAppAction): Generator<*, *, *> {
-  const dApp = yield call(getDApp, action.dAppPublicKey);
+  const dApp: ?DBDApp = yield call(getDApp, action.dAppPublicKey);
   if (dApp == null) {
     yield put(dAppStartFailed(action.dAppPublicKey));
     return;
@@ -85,7 +90,7 @@ export function* startDAppSaga(action: StartDAppAction): Generator<*, *, *> {
  */
 export function* openDApp(action: OpenDAppAction): Generator<*, *, *> {
   const { dAppPublicKey, callback } = action;
-  const dApp = yield call(getDApp, dAppPublicKey);
+  const dApp: ?DBDApp = yield call(getDApp, dAppPublicKey);
   if (dApp == null) {
     yield call(callback, false, new Error(`Unable to find DApp with public key ${dAppPublicKey}`));
     return;
