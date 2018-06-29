@@ -152,7 +152,7 @@ FOUNDATION_EXPORT NSString* PanthalassaSignProfileStandAlone(NSString* name, NSS
  */
 FOUNDATION_EXPORT BOOL PanthalassaStart(NSString* config, NSString* password, id<PanthalassaUpStream> client, NSError** error);
 
-FOUNDATION_EXPORT BOOL PanthalassaStartDApp(NSString* dApp, NSError** error);
+FOUNDATION_EXPORT BOOL PanthalassaStartDApp(NSString* dApp, long timeout, NSError** error);
 
 /**
  * create a new panthalassa instance with the mnemonic
