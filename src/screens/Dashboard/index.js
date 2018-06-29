@@ -1,7 +1,7 @@
 // @flow
 
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Alert } from 'react-native';
 import { connect } from 'react-redux';
 import RNShake from 'react-native-shake';
 import { ActionSheet } from 'native-base';
@@ -69,6 +69,41 @@ class Dashboard extends Component<Props & Actions & State & TestingModeProps> {
     });
   };
 
+  onShake = async () => {
+    if (__DEV__) {
+      await new Promise(res => setTimeout(res, 10));
+    }
+    console.log('HERE SHAKE');
+
+    const dApps = this.props.dApps.availableDApps;
+    const options = dApps.map(dApp => (dApp.name + (this.props.dApps.startedDAppIds.includes(dApp.publicKey) === false ? ' (loading)' : '')));
+
+    if (this.actionSheet !== null) {
+      this.actionSheet._root.showActionSheet(
+        {
+          options: [
+            ...options,
+            i18n.t('common.cancel'),
+          ],
+          cancelButtonIndex: dApps.length,
+          title: 'Select DApp to open',
+        },
+        (buttonIndex) => {
+          switch (buttonIndex) {
+            case dApps.length:
+              return;
+            default:
+              if (this.props.dApps.startedDAppIds.includes(dApps[buttonIndex].publicKey)) {
+                this.props.openDApp(dApps[buttonIndex].publicKey);
+              } else {
+                Alert.alert('DApp is not yet initialized. Try again in several seconds');
+              }
+          }
+        },
+      );
+    }
+  };
+
   actionSheet: any;
 
   render() {
@@ -76,8 +111,8 @@ class Dashboard extends Component<Props & Actions & State & TestingModeProps> {
 
     return (
       <View style={styles.screenContainer}>
-        <BackgroundImage />
-        <FakeNavigationBar navBarHidden />
+        <BackgroundImage/>
+        <FakeNavigationBar navBarHidden/>
         <View style={styles.gridContainer}>
           <View style={styles.activityPanelContainer}>
             <ActivityPanel
@@ -130,37 +165,6 @@ class Dashboard extends Component<Props & Actions & State & TestingModeProps> {
       </View>
     );
   }
-
-  onShake = async () => {
-    if (__DEV__) {
-      await new Promise(res => setTimeout(res, 2000));
-    }
-    console.log('HERE SHAKE');
-
-    const dApps = this.props.dApps.availableDApps;
-    const options = dApps.map(dApp => dApp.name);
-
-    if (this.actionSheet !== null) {
-      this.actionSheet._root.showActionSheet(
-        {
-          options: [
-            ...options,
-            i18n.t('screens.profile.edit.editPhotoActionSheet.cancel'),
-          ],
-          cancelButtonIndex: dApps.length,
-          title: 'Select DApp to open',
-        },
-        (buttonIndex) => {
-          switch (buttonIndex) {
-            case dApps.length:
-              return;
-            default:
-              this.props.openDApp(dApps[buttonIndex].publicKey);
-          }
-        },
-      );
-    }
-  };
 }
 
 const mapStateToProps = state => ({
