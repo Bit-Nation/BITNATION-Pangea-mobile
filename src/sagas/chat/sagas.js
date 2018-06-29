@@ -2,7 +2,7 @@ import { put, call, take, fork, cancel, select } from 'redux-saga/effects';
 import type { Realm } from 'realm';
 
 import {
-  SaveProfileAction, SavePreKeyBundleAction, NewChatSessionAction, OpenChatAction, SendMessageAction,
+  SaveProfileAction, SavePreKeyBundleAction, NewChatSessionAction, OpenChatAction, SendMessageAction, SaveHumanMessageAction,
   chatsUpdated, selectProfile,
   FETCH_MESSAGES, START_FETCH_MESSAGES, STOP_FETCH_MESSAGES,
 } from '../../actions/chat';
@@ -33,6 +33,22 @@ export function buildChatResults(db: Realm, accountId: string | null) {
  * @return {void}
  */
 export function* onCurrentAccountChange(collection: Realm.Result<ChatSessionType>): Generator<*, *, *> {
+  const updatedSessions = [];
+  for (let i = 0; i < collection.length; i++) {
+    const session = collection[i];
+    session.decryptedMessages = [];
+    let sharedSecrets = yield call([db, 'objects'], 'SharedSecret');
+    sharedSecrets = yield call([sharedSecrets, 'filtered'], `id == '${session.secret}'`);
+    if (sharedSecrets.length === 0) {
+      return yield null;
+    }
+    for (let j = 0; j < session.messages.length; j++) {
+      const decrypted = yield call(ChatService.decryptMessage, session.messages[j], sharedSecrets);
+      console.log('decrypted message: ', decrypted);
+      session.decryptedMessages.push(decrypted);
+    }
+    updatedSessions.push(session);
+  }
   yield put(chatsUpdated(collection));
 }
 
@@ -259,30 +275,36 @@ async function handleInitialMessage(message: Object, accountId: string): Promise
  * @return {Promise} A result promise
  */
 async function handleHumanMessage(message: Object, outgoing: boolean = false): Promise {
+  console.log('handle message: ', message);
   const db = await defaultDB;
   const results = await db.objects('ChatSession').filtered(`secret == '${message.used_secret}'`);
   if (results.length > 0) {
     const session = results[0];
-    // const messageObject = await ChatService.decryptMessage(JSON.stringify(message.doubleratchet_message), secret);
-    console.log('message session: ', session);
     const sharedSecrets = await db.objects('SharedSecret').filtered(`id == '${message.used_secret}'`);
     if (sharedSecrets.length > 0) {
       const sharedSecret = sharedSecrets[0];
       const newMessage = {
         type: message.type,
         send_at: message.timestamp,
-        additional_data: message.additional_data,
+        additional_data: JSON.stringify(message.additional_data),
         dapp_message: null,
-        human_message: message.doubleratchet_message,
+        human_message: JSON.stringify(message.doubleratchet_message),
         signature: message.signature,
         used_secret: message.used_secret,
         identity_pub_key: message.id_public_key,
         shared_secret: sharedSecret,
         outgoing,
       };
-      db.write(() => {
-        session.messages.push(newMessage);
-      });
+      const messages = session.messages.slice();
+      messages.push(newMessage);
+      console.log('updated messages: ', messages);
+      try {
+        db.write(() => {
+          session.messages = messages;
+        });
+      } catch (e) {
+        console.log('session db update error: ', e);
+      }
       return true;
     }
   }
@@ -296,7 +318,6 @@ export const getAccountState = state => state.accounts;
  * @return {void}
  */
 export function* fetchMessages() {
-  const db = yield defaultDB;
   try {
     const { accounts } = yield select();
     const currentAccount = getCurrentAccount(accounts);
@@ -309,11 +330,10 @@ export function* fetchMessages() {
     if (messages) {
       for (let i = 0; i < messages.length; i++) {
         const message = JSON.parse(messages[i]);
-        console.log('handle message: ', message);
         if (message.type === 'PROTOCOL_INITIALISATION') {
           yield call(handleInitialMessage, message, currentAccount.id);
-        } else {
-          yield call(handleHumanMessage, message, currentAccount.id);
+        } else if (message.type === 'HUMAN_MESSAGE') {
+          yield call(handleHumanMessage, message);
         }
       }
     }
@@ -329,13 +349,26 @@ export function* fetchMessages() {
  */
 export function* sendMessage(action: SendMessageAction) {
   const db = yield defaultDB;
-  let results = yield call([db, 'objects'], 'SharedSecret');
-  results = yield call([results, 'filtered'], `id == '${action.session.secret}'`);
-  const secret = yield results[0] || null;
-  if (secret) {
-    const messageObject = yield call(ChatService.createHumanMessage, action.message, secret.id, JSON.stringify(secret.secret), action.session.publicKey);
-    yield call(action.callback, messageObject);
-  } else {
-    yield call(action.callback, null);
+  try {
+    let results = yield call([db, 'objects'], 'SharedSecret');
+    results = yield call([results, 'filtered'], `id == '${action.session.secret}'`);
+    const secret = yield results[0] || null;
+    if (secret) {
+      const messageObject = yield call(ChatService.createHumanMessage, action.message, secret.id, JSON.stringify(secret.secret), action.session.publicKey);
+      yield call(action.callback, messageObject);
+    } else {
+      yield call(action.callback, null);
+    }
+  } catch (e) {
+    console.log('send message error: ', e);
   }
+}
+
+/**
+ * @desc Save a human message
+ * @param {SaveHumanMessageAction} action SAVE_HUMAN_MESSAGE action
+ * @return {void}
+ */
+export function* saveHumanMessage(action: SaveHumanMessageAction) {
+  yield call(handleHumanMessage, action.message, true);
 }

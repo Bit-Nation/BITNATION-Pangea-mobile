@@ -115,8 +115,7 @@ export default class ChatService {
       rawMsg, secretID, secret, receiverIdKey,
     });
     response = JSON.parse(response);
-    console.log('send human message: ', response);
-    await ChatService.uploadMessage(response.message);
+    await ChatService.uploadMessage(response);
     return response;
   }
 
@@ -124,7 +123,8 @@ export default class ChatService {
     return Panthalassa.PanthalassaDecryptMessage({ message, secret });
   }
 
-  static async uploadMessage(message: string): Promise {
+  static async uploadMessage(message: Object): Promise {
+    console.log('upload message: ', message);
     const URL = `${Config.CHAT_ENDPOINT}/message`;
     return fetch(URL, {
       body: JSON.stringify(message),
