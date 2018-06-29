@@ -2,10 +2,10 @@
 
 import React from 'react';
 
-import Text from '../../components/dapps/Text';
-import View from '../../components/dapps/View';
-import TextInput from '../../components/dapps/TextInput';
-import Button from '../../components/dapps/Button';
+import Text from '../../components/dApps/Text';
+import View from '../../components/dApps/View';
+import TextInput from '../../components/dApps/TextInput';
+import Button from '../../components/dApps/Button';
 
 export type ComponentsJSON = { type: string, props: Object, children: Array<Object> };
 
