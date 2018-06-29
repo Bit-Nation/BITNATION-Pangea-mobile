@@ -7,6 +7,14 @@ import EthereumService from '../../../src/services/ethereum';
 import WalletService from '../../../src/services/wallet';
 
 jest.mock('reconnecting-websocket');
+jest.mock('NativeModules', () => ({
+  Panthalassa: {
+    PanthalassaSendResponse: jest.fn(),
+  },
+}));
+jest.mock('NativeEventEmitter', () => function () {
+  return { addListener: jest.fn() };
+});
 
 const accountMock: Account = ({
   ...buildEmptyAccount(),
