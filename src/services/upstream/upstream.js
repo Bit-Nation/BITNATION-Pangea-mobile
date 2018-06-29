@@ -42,28 +42,28 @@ export default class UpstreamService {
       const decoded = Request.decode(request);
 
       if (decoded.dRKeyStoreGet !== null) {
-        await this.handleDRKeyStoreGet(decoded.requestID, decoded.dRKeyStoreGet);
+        return this.handleDRKeyStoreGet(decoded.requestID, decoded.dRKeyStoreGet);
       } else if (decoded.dRKeyStorePut !== null) {
-        await this.handleDRKeyStorePut(decoded.requestID, decoded.dRKeyStorePut);
+        return this.handleDRKeyStorePut(decoded.requestID, decoded.dRKeyStorePut);
       } else if (decoded.dRKeyStoreDeleteMK !== null) {
-        await this.handleDRKeyStoreDeleteMK(decoded.requestID, decoded.dRKeyStoreDeleteMK);
+        return this.handleDRKeyStoreDeleteMK(decoded.requestID, decoded.dRKeyStoreDeleteMK);
       } else if (decoded.dRKeyStoreDeleteKeys !== null) {
-        await this.handleDRKeyStoreDeleteKeys(decoded.requestID, decoded.dRKeyStoreDeleteKeys);
+        return this.handleDRKeyStoreDeleteKeys(decoded.requestID, decoded.dRKeyStoreDeleteKeys);
       } else if (decoded.dRKeyStoreCount !== null) {
-        await this.handleDRKeyStoreCount(decoded.requestID, decoded.dRKeyStoreCount);
+        return this.handleDRKeyStoreCount(decoded.requestID, decoded.dRKeyStoreCount);
       } else if (decoded.dRKeyStoreAll !== null) {
-        await this.handleDRKeyStoreAll(decoded.requestID);
+        return this.handleDRKeyStoreAll(decoded.requestID);
       } else if (decoded.showModal !== null) {
-        await this.handleShowModal(decoded.requestID, decoded.showModal);
+        return this.handleShowModal(decoded.requestID, decoded.showModal);
       } else if (decoded.sendEthereumTransaction !== null) {
-        await this.handleSendEthereumTransaction(decoded.requestID, decoded.sendEthereumTransaction);
+        return this.handleSendEthereumTransaction(decoded.requestID, decoded.sendEthereumTransaction);
       } else if (decoded.saveDApp !== null) {
-        await this.handleSaveDApp(decoded.requestID, decoded.saveDApp);
-      } else {
-        await this.handleErrorMessage(decoded.requestID, decoded);
+        return this.handleSaveDApp(decoded.requestID, decoded.saveDApp);
       }
+      return this.handleErrorMessage(decoded.requestID, decoded);
     } catch (error) {
       console.log(`[ERROR] ${error}`);
+      throw error;
     }
   };
 
