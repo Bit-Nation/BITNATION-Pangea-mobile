@@ -56,6 +56,7 @@
     "react-native-responsive": "^1.0.2",
     "react-native-segmented-control-tab": "^3.2.1",
     "react-native-sensitive-info": "^5.1.0",
+    "react-native-shake": "^3.2.2",
     "react-native-simple-dialogs": "^0.3.1",
     "react-native-swiper": "^1.5.13",
     "react-native-vector-icons": "^4.4.2",
