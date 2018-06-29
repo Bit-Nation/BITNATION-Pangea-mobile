@@ -33,23 +33,69 @@ export function buildChatResults(db: Realm, accountId: string | null) {
  * @return {void}
  */
 export function* onCurrentAccountChange(collection: Realm.Result<ChatSessionType>): Generator<*, *, *> {
+  const db = yield defaultDB;
+
+  // get current user
+  const { accounts } = yield select();
+  const currentAccount = getCurrentAccount(accounts);
+
   const updatedSessions = [];
-  for (let i = 0; i < collection.length; i++) {
-    const session = collection[i];
-    session.decryptedMessages = [];
-    let sharedSecrets = yield call([db, 'objects'], 'SharedSecret');
-    sharedSecrets = yield call([sharedSecrets, 'filtered'], `id == '${session.secret}'`);
-    if (sharedSecrets.length === 0) {
-      return yield null;
+  try {
+    for (let i = 0; i < collection.length; i++) {
+      const session = collection[i];
+      session.decryptedMessages = [];
+
+      // get shared secret from db
+      let sharedSecrets = yield call([db, 'objects'], 'SharedSecret');
+      sharedSecrets = yield call([sharedSecrets, 'filtered'], `id == '${session.secret}'`);
+      if (sharedSecrets.length === 0) {
+        return yield null;
+      }
+      const sharedSecret = sharedSecrets[0].secret;
+      console.log('decrypt using secret: ', sharedSecret);
+
+      // get opponent user object
+      let results = yield call([db, 'objects'], 'Profile');
+      results = yield call([results, 'filtered'], `identity_pub_key == '${session.publicKey}'`);
+      if (results.length === 0) {
+        return yield null;
+      }
+      const profile = results[0];
+
+      for (let j = 0; j < session.messages.length; j++) {
+        let additional_data = JSON.parse(session.messages[j].additional_data);
+        if (typeof additional_data !== 'object') {
+          additional_data = {};
+        }
+        let doubleratchet_message = JSON.parse(session.messages[j].doubleratchet_message);
+        if (typeof doubleratchet_message !== 'object') {
+          doubleratchet_message = {};
+        }
+        const message = {
+          ...session.messages[j],
+          doubleratchet_message,
+          additional_data,
+        };
+        console.log('decrypting message: ', message);
+        const decrypted = yield call(ChatService.decryptMessage, JSON.stringify(message), JSON.stringify(sharedSecret));
+        console.log('decrypted message: ', decrypted);
+        const messageObject = {
+          _id: j,
+          text: decrypted,
+          createdAt: message.timestamp,
+          user: {
+            _id: message.id_public_key,
+            name: session.publicKey === message.id_public_key ? profile.name : currentAccount.name,
+          },
+        };
+        session.decryptedMessages.push(messageObject);
+      }
+      updatedSessions.push(session);
     }
-    for (let j = 0; j < session.messages.length; j++) {
-      const decrypted = yield call(ChatService.decryptMessage, session.messages[j], sharedSecrets);
-      console.log('decrypted message: ', decrypted);
-      session.decryptedMessages.push(decrypted);
-    }
-    updatedSessions.push(session);
+  } catch (e) {
+    console.log('message convert error: ', e);
   }
-  yield put(chatsUpdated(collection));
+  yield put(chatsUpdated(updatedSessions));
 }
 
 /**
@@ -91,27 +137,6 @@ async function saveProfileIntoDatabase(profileObject: Object) {
  * @return {void}
  */
 export function* saveProfileSaga(action: SaveProfileAction) {
-  // const db = yield defaultDB;
-  // const { profile: { information, signatures } } = action;
-  // let results = yield call([db, 'objects'], 'Profile');
-  // results = yield call([results, 'filtered'], `identity_pub_key == '${information.identity_pub_key}'`);
-  // if (results.length === 0) {
-  //   const profile = {
-  //     name: information.name,
-  //     location: information.location,
-  //     image: information.image,
-  //     identity_pub_key: information.identity_pub_key,
-  //     ethereum_pub_Key: information.ethereum_pub_Key,
-  //     chat_id_key: byteToHexString(information.chat_id_key),
-  //     timestamp: information.timestamp,
-  //     version: information.version,
-  //     identity_key_signature: signatures.identity_key,
-  //     ethereum_key_signature: signatures.ethereum_key,
-  //   };
-  //   db.write(() => {
-  //     db.create('Profile', profile, true);
-  //   });
-  // }
   yield call(saveProfileIntoDatabase, action.profile);
 }
 
@@ -280,33 +305,27 @@ async function handleHumanMessage(message: Object, outgoing: boolean = false): P
   const results = await db.objects('ChatSession').filtered(`secret == '${message.used_secret}'`);
   if (results.length > 0) {
     const session = results[0];
-    const sharedSecrets = await db.objects('SharedSecret').filtered(`id == '${message.used_secret}'`);
-    if (sharedSecrets.length > 0) {
-      const sharedSecret = sharedSecrets[0];
-      const newMessage = {
-        type: message.type,
-        send_at: message.timestamp,
-        additional_data: JSON.stringify(message.additional_data),
-        dapp_message: null,
-        human_message: JSON.stringify(message.doubleratchet_message),
-        signature: message.signature,
-        used_secret: message.used_secret,
-        identity_pub_key: message.id_public_key,
-        shared_secret: sharedSecret,
-        outgoing,
-      };
-      const messages = session.messages.slice();
-      messages.push(newMessage);
-      console.log('updated messages: ', messages);
-      try {
-        db.write(() => {
-          session.messages = messages;
-        });
-      } catch (e) {
-        console.log('session db update error: ', e);
-      }
-      return true;
+    const newMessage = {
+      type: message.type,
+      timestamp: message.timestamp,
+      used_secret: message.used_secret,
+      additional_data: JSON.stringify(message.additional_data || {}),
+      doubleratchet_message: JSON.stringify(message.doubleratchet_message),
+      signature: message.signature,
+      id_public_key: message.id_public_key,
+      receiver: message.receiver,
+    };
+    const messages = session.messages.slice();
+    messages.push(newMessage);
+    console.log('updated messages: ', messages);
+    try {
+      db.write(() => {
+        session.messages = messages;
+      });
+    } catch (e) {
+      console.log('session db update error: ', e);
     }
+    return true;
   }
   return null;
 }

@@ -34,11 +34,11 @@ export default function createGiftedChatMessageObject(messagesData: Array<any>):
 export function convertFromDatabase(id: number, profile: Object, messageData: MessageType): GiftedChatMessageType {
   return {
     _id: id,
-    text: messageData.human_message,
-    createdAt: messageData.send_at,
+    text: messageData.text,
+    createdAt: messageData.createdAt,
     user: {
-      _id: messageData.identity_pub_key,
-      name: profile.name,
+      _id: messageData.userId,
+      name: profile.username,
     },
   };
 }
