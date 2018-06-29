@@ -1,7 +1,6 @@
 // @flow
 
 import React from 'react';
-import { View } from 'react-native';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import Colors from '../../../global/colors';
 import i18n from '../../../global/i18n';
