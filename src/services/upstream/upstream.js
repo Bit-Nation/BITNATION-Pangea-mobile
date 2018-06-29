@@ -74,7 +74,9 @@ export default class UpstreamService {
     try {
       const message = await this.getMessageKeyModel(drKey, messageNumber);
       return this.sendSuccessResponse(id, {
-        messageKey: message.messageKey,
+        dRKeyStoreGet: {
+          messageKey: message.messageKey,
+        },
       });
     } catch (error) {
       return this.sendErrorResponse(id, error);
@@ -147,7 +149,9 @@ export default class UpstreamService {
     try {
       const drKeyModel = await this.getDRKeyModel(drKey);
       return this.sendSuccessResponse(id, {
-        count: drKeyModel.messageKeys.length,
+        dRKeyStoreCount: {
+          count: drKeyModel.messageKeys.length,
+        },
       });
     } catch (error) {
       return this.sendErrorResponse(id, error);
@@ -157,17 +161,19 @@ export default class UpstreamService {
     const db = await this.dbPromise;
     const drKeyModels = db.objects('DoubleRatchetKey').filtered(`accountId == '${this.currentAccountId}'`);
     return this.sendSuccessResponse(id, {
-      all: drKeyModels.map((drKeyModel) => {
-        const messageKeys = {};
-        drKeyModel.messageKeys.forEach((messageKeyModel) => {
-          messageKeys[messageKeyModel.messageKeys] = messageKeyModel.messageKey;
-        });
+      dRKeyStoreAll: {
+        all: drKeyModels.map((drKeyModel) => {
+          const messageKeys = {};
+          drKeyModel.messageKeys.forEach((messageKeyModel) => {
+            messageKeys[messageKeyModel.messageKeys] = messageKeyModel.messageKey;
+          });
 
-        return {
-          key: drKeyModel.doubleRatchetKey,
-          messageKeys,
-        };
-      }),
+          return {
+            key: drKeyModel.doubleRatchetKey,
+            messageKeys,
+          };
+        }),
+      },
     });
   };
 
@@ -220,18 +226,20 @@ export default class UpstreamService {
     try {
       const txDetails = await this.ethereumService.wallet.sendTransaction(transaction);
       return this.sendSuccessResponse(id, {
-        nonce: txDetails.nonce,
-        gasPrice: txDetails.gasPrice.toString(),
-        gasLimit: txDetails.gasLimit.toString(),
-        value: txDetails.value.toString(),
-        to: txDetails.to,
-        data: txDetails.data,
-        chainId: txDetails.chainId,
-        from: txDetails.from,
-        hash: txDetails.hash,
-        v: txDetails.v,
-        r: txDetails.r,
-        s: txDetails.s,
+        sendEthereumTransaction: {
+          nonce: txDetails.nonce,
+          gasPrice: txDetails.gasPrice.toString(),
+          gasLimit: txDetails.gasLimit.toString(),
+          value: txDetails.value.toString(),
+          to: txDetails.to,
+          data: txDetails.data,
+          chainId: txDetails.chainId,
+          from: txDetails.from,
+          hash: txDetails.hash,
+          v: txDetails.v,
+          r: txDetails.r,
+          s: txDetails.s,
+        },
       });
     } catch (error) {
       return this.sendErrorResponse(id, error);
@@ -247,14 +255,14 @@ export default class UpstreamService {
 
   sendErrorResponse = async (id: string, error: Error) => Panthalassa.PanthalassaSendResponse({
     id,
-    data: Response.encode({}),
-    responseError: error,
+    data: Buffer.from(Response.encode({}).finish()).toString('utf8'),
+    responseError: error.message,
     timeout: RESPONSE_TIMEOUT,
   });
 
   sendSuccessResponse = async (id: string, data: any) => Panthalassa.PanthalassaSendResponse({
     id,
-    data: Response.encode(data),
+    data: Buffer.from(Response.encode(data).finish()).toString('utf8'),
     responseError: '',
     timeout: RESPONSE_TIMEOUT,
   });
