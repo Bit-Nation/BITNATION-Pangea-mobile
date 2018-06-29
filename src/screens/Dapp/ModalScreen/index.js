@@ -5,7 +5,6 @@ import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import Colors from '../../../global/colors';
 import i18n from '../../../global/i18n';
 import Root from '../../../components/dapps/Root';
-import type { DApp } from '../../../types/DApp';
 
 type Props = {
   /**
