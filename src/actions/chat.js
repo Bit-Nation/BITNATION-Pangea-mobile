@@ -12,6 +12,7 @@ export const SELECT_PROFILE = 'SELECT_PROFILE';
 export const FETCH_MESSAGES = 'FETCH_MESSAGES';
 export const START_FETCH_MESSAGES = 'START_FETCH_MESSAGES';
 export const STOP_FETCH_MESSAGES = 'STOP_FETCH_MESSAGES';
+export const SEND_MESSAGE = 'SEND_MESSAGE';
 
 export type ShowSpinnerAction = { +type: 'SHOW_CHAT_SPINNER' };
 export type HideSpinnerAction = { +type: 'HIDE_CHAT_SPINNER' };
@@ -35,23 +36,27 @@ export type NewChatSessionAction = {
 };
 export type UpdateChatsAction = {
   +type: 'CHATS_UPDATED',
-  +chats: any
+  +chats: Array<any>,
 };
 export type OpenChatAction = {
   +type: 'OPEN_CHAT_SESSION',
   +publicKey: string,
   +callback: () => void,
-}
+};
 export type SelectProfileAction = {
   +type: 'SELECT_PROFILE',
   +profile: Object,
-}
+};
 export type StartFetchAction = {
   +type: 'START_FETCH_MESSAGES',
-}
+};
 export type StopFetchAction = {
   +type: 'STOP_FETCH_MESSAGES',
-}
+};
+export type SendMessageAction = {
+  +type: 'SEND_MESSAGE',
+  +message: string,
+};
 
 export type Action =
   | ShowSpinnerAction
@@ -63,13 +68,13 @@ export type Action =
   | UpdateChatsAction
   | OpenChatAction
   | SelectProfileAction
-  | ChatListenAction
   | StartFetchAction
-  | StopFetchAction;
+  | StopFetchAction
+  | SendMessageAction;
 
 /**
  * @desc Action for an action that shows spinner while processing in background
- * @returns {ShowSpinnerAction} An action.
+ * @returns {ShowSpinnerAction} An action
  */
 export function showSpinner(): ShowSpinnerAction {
   return {
@@ -79,7 +84,7 @@ export function showSpinner(): ShowSpinnerAction {
 
 /**
  * @desc Action for an action that hide spinner after the process is completed
- * @returns {HideSpinnerAction} An action.
+ * @returns {HideSpinnerAction} An action
  */
 export function hideSpinner(): HideSpinnerAction {
   return {
@@ -102,7 +107,7 @@ export function findUserByPublicKey(key: string): FindUserByPubKeyAction {
 /**
  * @desc Action for saving a user profile into database
  * @param {Object} profile profile object
- * @returns {SaveProfileAction} An action.
+ * @returns {SaveProfileAction} An action
  */
 export function saveProfile(profile: Object): SaveProfileAction {
   return {
@@ -139,10 +144,10 @@ export function newChatSession(profile: Object, callback: () => void): NewChatSe
 
 /**
  * @desc Action for updating chats
- * @param {any} chats Updated chats
- * @returns {UpdateChatsAction} An action.
+ * @param {Array<any>} chats Updated chats
+ * @returns {UpdateChatsAction} An action
  */
-export function chatsUpdated(chats: any): UpdateChatsAction {
+export function chatsUpdated(chats: Array<any>): UpdateChatsAction {
   return {
     type: CHATS_UPDATED,
     chats,
@@ -153,7 +158,7 @@ export function chatsUpdated(chats: any): UpdateChatsAction {
  * @desc Action for opening chat session from the list
  * @param {string} publicKey Public Key of the chat session
  * @param {func} callback Callback
- * @returns {OpenChatAction} An action.
+ * @returns {OpenChatAction} An action
  */
 export function openChat(publicKey: string, callback: () => void): OpenChatAction {
   return {
@@ -166,7 +171,7 @@ export function openChat(publicKey: string, callback: () => void): OpenChatActio
 /**
  * @desc Action for getting selected profile
  * @param {Object} profile Public Key of the chat session
- * @returns {SelectProfileAction} An action.
+ * @returns {SelectProfileAction} An action
  */
 export function selectProfile(profile: Object): SelectProfileAction {
   return {
@@ -177,7 +182,7 @@ export function selectProfile(profile: Object): SelectProfileAction {
 
 /**
  * @desc Action to start listening messages
- * @returns {StartFetchAction} An action.
+ * @returns {StartFetchAction} An action
  */
 export function startFetchMessages(): StartFetchAction {
   return {
@@ -187,10 +192,26 @@ export function startFetchMessages(): StartFetchAction {
 
 /**
  * @desc Action to stop listening messages
- * @returns {StopFetchAction} An action.
+ * @returns {StopFetchAction} An action
  */
 export function stopFetchMessages(): StopFetchAction {
   return {
     type: STOP_FETCH_MESSAGES,
+  };
+}
+
+/**
+ * @desc Action for sending message
+ * @param {string} message Message to send
+ * @param {Object} session Session object
+ * @param {func} callback Callback
+ * @returns {SendMessageAction} An action
+ */
+export function sendMessage(message: string, session: Object, callback: () => void): SendMessageAction {
+  return {
+    type: SEND_MESSAGE,
+    message,
+    session,
+    callback,
   };
 }

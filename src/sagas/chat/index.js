@@ -1,6 +1,6 @@
 import { all, call, takeEvery } from 'redux-saga/effects';
 
-import { SAVE_PROFILE, SAVE_PRE_KEY_BUNDLE, NEW_CHAT_SESSION, OPEN_CHAT_SESSION, FETCH_MESSAGES } from '../../actions/chat';
+import { SAVE_PROFILE, SAVE_PRE_KEY_BUNDLE, NEW_CHAT_SESSION, OPEN_CHAT_SESSION, FETCH_MESSAGES, SEND_MESSAGE } from '../../actions/chat';
 import {
   startDatabaseListening,
   saveProfileSaga,
@@ -9,6 +9,7 @@ import {
   openChatSession,
   listenMessages,
   fetchMessages,
+  sendMessage,
 } from './sagas';
 
 /**
@@ -24,5 +25,6 @@ export default function* rootSaga() {
     takeEvery(NEW_CHAT_SESSION, createChatSession),
     takeEvery(OPEN_CHAT_SESSION, openChatSession),
     takeEvery(FETCH_MESSAGES, fetchMessages),
+    takeEvery(SEND_MESSAGE, sendMessage),
   ]);
 }

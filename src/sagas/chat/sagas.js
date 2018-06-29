@@ -2,7 +2,8 @@ import { put, call, take, fork, cancel, select } from 'redux-saga/effects';
 import type { Realm } from 'realm';
 
 import {
-  SaveProfileAction, SavePreKeyBundleAction, NewChatSessionAction, OpenChatAction, chatsUpdated, selectProfile, saveProfile,
+  SaveProfileAction, SavePreKeyBundleAction, NewChatSessionAction, OpenChatAction, SendMessageAction,
+  chatsUpdated, selectProfile,
   FETCH_MESSAGES, START_FETCH_MESSAGES, STOP_FETCH_MESSAGES,
 } from '../../actions/chat';
 import defaultDB from '../../services/database';
@@ -44,33 +45,58 @@ export function* startDatabaseListening(): Generator<*, *, *> {
 }
 
 /**
+ * @desc Save profile into database.
+ * @param {Object} profileObject Profile object
+ * @return {void}
+ */
+async function saveProfileIntoDatabase(profileObject: Object) {
+  const db = await defaultDB;
+  const { information, signatures } = profileObject;
+  const profile = {
+    name: information.name,
+    location: information.location,
+    image: information.image,
+    identity_pub_key: information.identity_pub_key,
+    ethereum_pub_Key: information.ethereum_pub_Key,
+    chat_id_key: byteToHexString(information.chat_id_key),
+    timestamp: information.timestamp,
+    version: information.version,
+    identity_key_signature: signatures.identity_key,
+    ethereum_key_signature: signatures.ethereum_key,
+  };
+  db.write(() => {
+    db.create('Profile', profile, true);
+  });
+}
+
+/**
  * @desc Save a user profile into the database
  * @param {SaveProfileAction} action SAVE_PROFILE action
  * @return {void}
  */
 export function* saveProfileSaga(action: SaveProfileAction) {
-  const db = yield defaultDB;
-  const { profile: { information, signatures } } = action;
-  // const results = db.objects('Profile').filtered(`identity_pub_key == '${information.identity_pub_key}'`);
-  let results = yield call([db, 'objects'], 'Profile');
-  results = yield call([results, 'filtered'], `identity_pub_key == '${information.identity_pub_key}'`);
-  if (results.length === 0) {
-    const profile = {
-      name: information.name,
-      location: information.location,
-      image: information.image,
-      identity_pub_key: information.identity_pub_key,
-      ethereum_pub_Key: information.ethereum_pub_Key,
-      chat_id_key: byteToHexString(information.chat_id_key),
-      timestamp: information.timestamp,
-      version: information.version,
-      identity_key_signature: signatures.identity_key,
-      ethereum_key_signature: signatures.ethereum_key,
-    };
-    db.write(() => {
-      db.create('Profile', profile, true);
-    });
-  }
+  // const db = yield defaultDB;
+  // const { profile: { information, signatures } } = action;
+  // let results = yield call([db, 'objects'], 'Profile');
+  // results = yield call([results, 'filtered'], `identity_pub_key == '${information.identity_pub_key}'`);
+  // if (results.length === 0) {
+  //   const profile = {
+  //     name: information.name,
+  //     location: information.location,
+  //     image: information.image,
+  //     identity_pub_key: information.identity_pub_key,
+  //     ethereum_pub_Key: information.ethereum_pub_Key,
+  //     chat_id_key: byteToHexString(information.chat_id_key),
+  //     timestamp: information.timestamp,
+  //     version: information.version,
+  //     identity_key_signature: signatures.identity_key,
+  //     ethereum_key_signature: signatures.ethereum_key,
+  //   };
+  //   db.write(() => {
+  //     db.create('Profile', profile, true);
+  //   });
+  // }
+  yield call(saveProfileIntoDatabase, action.profile);
 }
 
 /**
@@ -187,24 +213,79 @@ export function* listenMessages() {
 /**
  * @desc Handle chat init handshake
  * @param {Object} message Initialization message object
+ * @param {string} accountId Current account Id
  * @return {Promise} A result promise
  */
-async function handleInitialMessage(message: Object): Promise {
+async function handleInitialMessage(message: Object, accountId: string): Promise {
   const db = await defaultDB;
   const results = await db.objects('PreKeyBundle').filtered(`one_time_pre_key == '${message.additional_data.used_one_time_pre_key}'`);
   if (results.length > 0) {
-    try {
-      const preKeyBundle = results[0];
-      console.log('chat pre key: ', preKeyBundle);
-      const response = await ChatService.handleChatInit(JSON.stringify(message), JSON.stringify(preKeyBundle.private_part));
-      console.log('handle init chat: ', response);
-      return JSON.parse(response);
-    } catch (e) {
-      console.log('handle chat error: ', e);
-      return null;
-    }
+    const preKeyBundle = results[0];
+    const response = await ChatService.handleChatInit(JSON.stringify(message), JSON.stringify(preKeyBundle.private_part));
+    console.log('handle init chat: ', response);
+    const secret = JSON.parse(response);
+    const profile = await ChatService.getProfile(message.id_public_key);
+    console.log('got profile: ', profile);
+    await saveProfileIntoDatabase(profile);
+
+    const sharedSecret = {
+      id: message.used_secret,
+      publicKey: message.id_public_key,
+      secret,
+      accountId,
+    };
+    const chatSession = {
+      secret: message.used_secret,
+      publicKey: message.id_public_key,
+      username: profile.information.name,
+      accountId,
+      messages: [],
+    };
+    db.write(() => {
+      db.create('SharedSecret', sharedSecret, true);
+      db.create('ChatSession', chatSession, true);
+    });
+  } else {
+    return null;
   }
 
+  return true;
+}
+
+/**
+ * @desc Handle human message
+ * @param {Object} message Human message object
+ * @param {boolean} outgoing Flag for indicating message direction
+ * @return {Promise} A result promise
+ */
+async function handleHumanMessage(message: Object, outgoing: boolean = false): Promise {
+  const db = await defaultDB;
+  const results = await db.objects('ChatSession').filtered(`secret == '${message.used_secret}'`);
+  if (results.length > 0) {
+    const session = results[0];
+    // const messageObject = await ChatService.decryptMessage(JSON.stringify(message.doubleratchet_message), secret);
+    console.log('message session: ', session);
+    const sharedSecrets = await db.objects('SharedSecret').filtered(`id == '${message.used_secret}'`);
+    if (sharedSecrets.length > 0) {
+      const sharedSecret = sharedSecrets[0];
+      const newMessage = {
+        type: message.type,
+        send_at: message.timestamp,
+        additional_data: message.additional_data,
+        dapp_message: null,
+        human_message: message.doubleratchet_message,
+        signature: message.signature,
+        used_secret: message.used_secret,
+        identity_pub_key: message.id_public_key,
+        shared_secret: sharedSecret,
+        outgoing,
+      };
+      db.write(() => {
+        session.messages.push(newMessage);
+      });
+      return true;
+    }
+  }
   return null;
 }
 
@@ -228,36 +309,33 @@ export function* fetchMessages() {
     if (messages) {
       for (let i = 0; i < messages.length; i++) {
         const message = JSON.parse(messages[i]);
+        console.log('handle message: ', message);
         if (message.type === 'PROTOCOL_INITIALISATION') {
-          console.log('handle message: ', message);
-          const secret = yield call(handleInitialMessage, message);
-          if (secret) {
-            const accountId = yield call(getCurrentAccountId);
-            const profile = yield call(ChatService.getProfile, message.id_public_key);
-            console.log('got profile: ', profile);
-            yield put(saveProfile(profile));
-            const sharedSecret = {
-              id: message.used_secret,
-              publicKey: message.id_public_key,
-              secret,
-              accountId,
-            };
-            const chatSession = {
-              secret: message.used_secret,
-              publicKey: message.id_public_key,
-              username: profile.information.name,
-              accountId,
-              messages: [],
-            };
-            db.write(() => {
-              db.create('SharedSecret', sharedSecret, true);
-              db.create('ChatSession', chatSession, true);
-            });
-          }
+          yield call(handleInitialMessage, message, currentAccount.id);
+        } else {
+          yield call(handleHumanMessage, message, currentAccount.id);
         }
       }
     }
   } catch (e) {
     console.log('fetch message error: ', e);
+  }
+}
+
+/**
+ * @desc Send a human message
+ * @param {SendMessageAction} action SEND_MESSAGE action
+ * @return {void}
+ */
+export function* sendMessage(action: SendMessageAction) {
+  const db = yield defaultDB;
+  let results = yield call([db, 'objects'], 'SharedSecret');
+  results = yield call([results, 'filtered'], `id == '${action.session.secret}'`);
+  const secret = yield results[0] || null;
+  if (secret) {
+    const messageObject = yield call(ChatService.createHumanMessage, action.message, secret.id, JSON.stringify(secret.secret), action.session.publicKey);
+    yield call(action.callback, messageObject);
+  } else {
+    yield call(action.callback, null);
   }
 }
