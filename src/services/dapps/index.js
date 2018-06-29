@@ -26,10 +26,12 @@ export default class DAppsService {
     return Panthalassa.PanthalassaConnectToDAppDevHost({ address });
   }
 
-  static async performDAppCallback(dappPublicKey: string, id: string, params: Object) {
+  static async performDAppCallback(dappPublicKey: string, id: number, params: Object) {
     const { Panthalassa } = NativeModules;
-    return Panthalassa.PanthalassaCallDAppFunction(dappPublicKey, id, params);
+    return Panthalassa.PanthalassaCallDAppFunction({
+      dAppId: dappPublicKey,
+      id,
+      args: JSON.stringify(params),
+    });
   }
-
-  // async renderDAppMessage(publicKey: string, message: )
 }
