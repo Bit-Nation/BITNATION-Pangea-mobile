@@ -459,6 +459,7 @@ RCT_REMAP_METHOD(PanthalassaStartDApp,
   NSError *error = nil;
   
   response = PanthalassaStartDApp([RCTConvert NSString:config[@"dApp"]],
+                                  [[RCTConvert NSNumber:config[@"timeout"]] longValue],
                                  &error);
   
   NSNumber *val = [NSNumber numberWithBool:response];

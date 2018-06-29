@@ -333,7 +333,8 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
     @ReactMethod
     public void PanthalassaStartDApp(ReadableMap jsonParams, Promise promise) throws JSONException {
         try {
-            Panthalassa.startDApp(jsonParams.getString("dApp"));
+            Panthalassa.startDApp(jsonParams.getString("dApp"),
+                                Long.valueOf(jsonParams.getString("timeout")));
             promise.resolve(true);
         } catch (Exception e) {
             e.printStackTrace();
