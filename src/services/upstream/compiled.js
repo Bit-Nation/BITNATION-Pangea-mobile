@@ -1,4 +1,4 @@
-/*eslint-disable block-scoped-var, no-redeclare, no-control-regex, no-prototype-builtins*/
+/* eslint-disable */
 "use strict";
 
 var $protobuf = require("protobufjs/minimal");
