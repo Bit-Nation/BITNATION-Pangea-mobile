@@ -71,9 +71,8 @@ class Dashboard extends Component<Props & Actions & State & TestingModeProps> {
 
   onShake = async () => {
     if (__DEV__) {
-      await new Promise(res => setTimeout(res, 10));
+      await new Promise(res => setTimeout(res, 2000));
     }
-    console.log('HERE SHAKE');
 
     const dApps = this.props.dApps.availableDApps;
     const options = dApps.map(dApp => (dApp.name + (this.props.dApps.startedDAppIds.includes(dApp.publicKey) === false ? ' (loading)' : '')));
