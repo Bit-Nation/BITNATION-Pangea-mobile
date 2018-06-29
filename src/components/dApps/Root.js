@@ -5,10 +5,10 @@ import { MediaQueryStyleSheet } from 'react-native-responsive';
 import { View as ReactNativeView } from 'react-native';
 import { connect } from 'react-redux';
 
-import { type ComponentsJSON, renderJSON } from '../../utils/dapps/renderer';
-import { updatePartByKeyPath } from '../../utils/dapps/updates';
+import { type ComponentsJSON, renderJSON } from '../../utils/dApps/renderer';
+import { updatePartByKeyPath } from '../../utils/dApps/updates';
 
-import { performDAppCallback } from '../../actions/dapps';
+import { performDAppCallback } from '../../actions/dApps';
 
 export type Props = {
   /**

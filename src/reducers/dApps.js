@@ -5,7 +5,7 @@ import {
   type Action, DAPP_START_FAILED, DAPP_STARTED,
   DAPPS_LIST_UPDATED,
   OPEN_DAPP,
-} from '../actions/dapps';
+} from '../actions/dApps';
 import { SERVICES_DESTROYED } from '../actions/serviceContainer';
 
 export type State = {

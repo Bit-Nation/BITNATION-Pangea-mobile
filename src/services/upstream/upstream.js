@@ -12,7 +12,7 @@ import { api_proto as apiProto } from './compiled';
 
 import EthereumService from '../ethereum';
 import { screen } from '../../global/Screens';
-import DAppsService from '../dapps';
+import DAppsService from '../dApps';
 import type { DApp } from '../../types/DApp';
 import { convertToDatabase } from '../../utils/mapping/dapp';
 
