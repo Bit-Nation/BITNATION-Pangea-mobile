@@ -1,12 +1,23 @@
-import Upstream from '../../../../src/services/upstream/upstream';
+import UpstreamService from '../../../../src/services/upstream/upstream';
 import { api_proto as apiProto } from '../../../../src/services/upstream/compiled';
-// import defaultDB, { buildRandomPathDatabase } from '../../../../src/services/database';
 
+jest.mock('react-native-navigation', () => ({
+  Navigation: {
+    showModal: jest.fn(),
+  },
+}));
 jest.mock('react-native', () => ({
   NativeEventEmitter: () => ({
     addListener: jest.fn(() => {}),
   }),
-  NativeModules: {},
+  NativeModules: {
+    Panthalassa: {
+      PanthalassaSendResponse: jest.fn(),
+    },
+  },
+  Platform: {
+    OS: 'ios',
+  },
 }));
 
 const message = {
@@ -65,15 +76,15 @@ describe('upstream', () => {
 
 
 describe('Upstream class', () => {
-  test('Initialize the upstream service', () => {
+  test('Initialize the upstream service', async () => {
     expect.assertions(2);
     const { Request } = apiProto;
     const encodedRequest = Request.encode(message).finish();
     expect(encodedRequest).toBeDefined();
-    const upstream = new Upstream();
+    const upstream = new UpstreamService();
     let error;
     try {
-      upstream.handleRequest(encodedRequest);
+      await upstream.handleRequest(encodedRequest);
     } catch (e) {
       error = e;
     }
