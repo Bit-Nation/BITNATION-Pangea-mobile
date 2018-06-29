@@ -2,7 +2,7 @@
 
 import { call, select, put } from 'redux-saga/effects';
 
-import type { OpenDAppAction, StartDAppAction } from '../../actions/dapps';
+import type { OpenDAppAction, PerformDAppCallbackAction, StartDAppAction } from '../../actions/dapps';
 import { getDApp as getDAppFromState } from '../../reducers/dApps';
 import { dAppStarted, dAppStartFailed } from '../../actions/dapps';
 import DAppsService from '../../services/dapps';
@@ -59,5 +59,22 @@ export function* openDApp(action: OpenDAppAction): Generator<*, *, *> {
   } catch (error) {
     console.log(`DApp open failed: ${error}`);
     yield call(callback, false, error);
+  }
+}
+
+/**
+ * @desc Performs DApp callback.
+ * @param {PerformDAppCallbackAction} action An action.
+ * @return {void}
+ */
+export function* performDAppCallback(action: PerformDAppCallbackAction): Generator<*, *, *> {
+  const { dAppPublicKey, callbackID, args } = action;
+  const { dApps: { contexts } } = yield select();
+  const context = contexts[dAppPublicKey] || {};
+
+  try {
+    yield call(DAppsService.performDAppCallback, dAppPublicKey, callbackID, { context, ...args });
+  } catch (error) {
+    console.log(`DApp callback with ID ${callbackID} failed to execute: ${error}`);
   }
 }
