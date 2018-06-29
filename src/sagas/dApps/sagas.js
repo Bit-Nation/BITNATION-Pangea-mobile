@@ -1,11 +1,51 @@
 // @flow
 
 import { call, select, put } from 'redux-saga/effects';
+import { Realm } from 'realm';
 
 import type { OpenDAppAction, PerformDAppCallbackAction, StartDAppAction } from '../../actions/dapps';
 import { getDApp as getDAppFromState } from '../../reducers/dApps';
-import { dAppStarted, dAppStartFailed } from '../../actions/dapps';
+import { dAppsListUpdated, dAppStarted, dAppStartFailed, startDApp } from '../../actions/dapps';
 import DAppsService from '../../services/dapps';
+import type { DAppType as DBDApp } from '../../services/database/schemata';
+import { currentAccountBasedUpdate } from '../accounts/sagas';
+
+/**
+ * @desc Function that creates Realm results fetching DApps for specific account.
+ * @param {Realm} db Realm instance.
+ * @param {string|null} accountId Id of account to fetch logs or null.
+ * @return {Realm.Results<DBDApp>|null} Realm results fetching DApps for specified account or null if not applicable.
+ */
+export function buildDAppsResults(db: Realm, accountId: string | null) {
+  if (accountId === null) {
+    return null;
+  }
+  return db.objects('DApp').filtered(`accountId == '${accountId}'`);
+}
+
+/**
+ * @desc Generator to be called on database change. Used to update DApps list.
+ * @param {*} collection Updated DApps collection
+ * @return {void}
+ */
+export function* onCurrentAccountChange(collection: Realm.Result<DBDApp>): Generator<*, *, *> {
+  yield put(dAppsListUpdated(collection));
+  const { dApps: { startedDAppIds } } = yield select();
+  for (let i = 0; i < collection.length; i += 1) {
+    const { publicKey } = collection[i];
+    if (!startedDAppIds.includes(publicKey)) {
+      yield put(startDApp(publicKey));
+    }
+  }
+}
+
+/**
+ * @desc Starts listen to messages updates in database.
+ * @return {void}
+ */
+export function* startDatabaseListening(): Generator<*, *, *> {
+  yield call(currentAccountBasedUpdate, buildDAppsResults, onCurrentAccountChange);
+}
 
 /**
  * @desc Get DApp from state by public key. If not available returns undefined.
@@ -22,7 +62,7 @@ export function* getDApp(publicKey: string): Generator<*, *, *> {
  * @param {StartDAppAction} action An action.
  * @return {void}
  */
-export function* startDApp(action: StartDAppAction): Generator<*, *, *> {
+export function* startDAppSaga(action: StartDAppAction): Generator<*, *, *> {
   const dApp = yield call(getDApp, action.dAppPublicKey);
   if (dApp == null) {
     yield put(dAppStartFailed(action.dAppPublicKey));
