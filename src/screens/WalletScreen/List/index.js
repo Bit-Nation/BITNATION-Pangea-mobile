@@ -4,6 +4,7 @@ import React from 'react';
 import {
   FlatList,
   View,
+  RefreshControl,
 } from 'react-native';
 
 import styles from './styles';
@@ -16,6 +17,8 @@ type Props = {
   wallets: Array<WalletType>,
   onReceivePress: (WalletType) => void,
   onSendPress: (WalletType) => void,
+  onRefresh: () => void,
+  isRefreshing: boolean,
 }
 
 /**
@@ -24,7 +27,13 @@ type Props = {
  * @return {React.Component} A component.
  * @constructor
  */
-const WalletList = ({ wallets, onReceivePress, onSendPress }: Props) => ((
+const WalletList = ({
+  wallets,
+  onReceivePress,
+  onSendPress,
+  onRefresh,
+  isRefreshing,
+}: Props) => ((
   <View style={styles.walletListContainer}>
     <FlatList
       data={wallets}
@@ -39,6 +48,11 @@ const WalletList = ({ wallets, onReceivePress, onSendPress }: Props) => ((
           balance={balance}
         />);
       }}
+      refreshControl={
+        <RefreshControl
+          refreshing={isRefreshing}
+          onRefresh={() => onRefresh()}
+        />}
     />
   </View>
 ));

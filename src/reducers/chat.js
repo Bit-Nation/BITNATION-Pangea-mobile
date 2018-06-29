@@ -1,5 +1,7 @@
 // @flow
 
+import _ from 'lodash';
+
 import {
   type Action,
   SHOW_CHAT_SPINNER,
@@ -42,9 +44,10 @@ export default (state: State = initialState, action: Action): State => {
         isFetching: false,
       };
     case CHATS_UPDATED:
+      console.log('updated chats: ', action.chats);
       return {
         ...state,
-        chats: action.chats,
+        chats: action.chats.slice(),
       };
     case SELECT_PROFILE:
       return {
