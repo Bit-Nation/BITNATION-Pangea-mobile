@@ -3,6 +3,8 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
+import RNShake from 'react-native-shake';
+import { ActionSheet } from 'native-base';
 
 import styles from './styles';
 import BackgroundImage from '../../components/common/BackgroundImage';
@@ -19,12 +21,14 @@ import type { NationIdType } from '../../types/Nation';
 import type { State } from '../../reducers';
 import type { Navigator } from '../../types/ReactNativeNavigation';
 import { getCurrentAccount } from '../../reducers/accounts';
+import { openDApp } from '../../actions/dApps';
 
 type Props = {
   /**
    * @desc React Native Navigation navigator object.
    */
-  navigator: Navigator
+  navigator: Navigator,
+  openDApp: (publicKey: string) => void,
 };
 
 type Actions = {
@@ -43,12 +47,18 @@ type TestingModeProps = {
 };
 
 class Dashboard extends Component<Props & Actions & State & TestingModeProps> {
+  componentWillMount() {
+    RNShake.addEventListener('shake', this.onShake);
+  }
+
+  componentWillUnmount() {
+    RNShake.removeEventListener('shake', this.onShake);
+  }
+
   onSelectNation = (id) => {
     this.props.onSelectNation(id);
     this.props.navigator.push(screen('NATION_DETAILS_SCREEN'));
   };
-
-  onSelectMore = () => {};
 
   onStartKeyConfirmation = () => {
     this.props.navigator.showModal({
@@ -58,6 +68,8 @@ class Dashboard extends Component<Props & Actions & State & TestingModeProps> {
       },
     });
   };
+
+  actionSheet: any;
 
   render() {
     const currentAccount = getCurrentAccount(this.props.accounts);
@@ -110,9 +122,45 @@ class Dashboard extends Component<Props & Actions & State & TestingModeProps> {
             </View>
           </View>
         </View>
+        <ActionSheet
+          ref={(c) => {
+            this.actionSheet = c;
+          }}
+        />
       </View>
     );
   }
+
+  onShake = async () => {
+    if (__DEV__) {
+      await new Promise(res => setTimeout(res, 2000));
+    }
+    console.log('HERE SHAKE');
+
+    const dApps = this.props.dApps.availableDApps;
+    const options = dApps.map(dApp => dApp.name);
+
+    if (this.actionSheet !== null) {
+      this.actionSheet._root.showActionSheet(
+        {
+          options: [
+            ...options,
+            i18n.t('screens.profile.edit.editPhotoActionSheet.cancel'),
+          ],
+          cancelButtonIndex: dApps.length,
+          title: 'Select DApp to open',
+        },
+        (buttonIndex) => {
+          switch (buttonIndex) {
+            case dApps.length:
+              return;
+            default:
+              this.props.openDApp(dApps[buttonIndex].publicKey);
+          }
+        },
+      );
+    }
+  };
 }
 
 const mapStateToProps = state => ({
@@ -125,6 +173,9 @@ const mapDispatchToProps = dispatch => ({
   },
   onAddDummyMessage() {
     dispatch(addNewMessage('dummy message'));
+  },
+  openDApp(publicKey) {
+    dispatch(openDApp(publicKey));
   },
 });
 
