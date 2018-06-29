@@ -13,13 +13,9 @@ type Props = {
    */
   layout: Object,
   /**
-   * @desc Dapp
+   * @desc Public key of DApp that controls the screen.
    */
-  dApp: DApp,
-  /**
-   * @desc Context
-   */
-  context: Object,
+  dAppPublicKey: string,
 }
 
 export default class DAppModalScreen extends NavigatorComponent<Props> {
@@ -40,9 +36,8 @@ export default class DAppModalScreen extends NavigatorComponent<Props> {
 
   render() {
     return (<Root
-      componentsJSON={this.props.layout}
-      context={this.props.context}
-      dApp={this.props.dApp}
+      layout={this.props.layout}
+      dApp={this.props.dAppPublicKey}
     />);
   }
 }

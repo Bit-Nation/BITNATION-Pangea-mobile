@@ -3,25 +3,26 @@
 import React, { Component } from 'react';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
 import { View as ReactNativeView } from 'react-native';
+import { connect } from 'react-redux';
 
 import { type ComponentsJSON, renderJSON } from '../../utils/dapps/renderer';
 import { updatePartByKeyPath } from '../../utils/dapps/updates';
-import DAppsService from '../../services/dapps';
-import type { DApp } from '../../types/DApp';
+
+import { performDAppCallback } from '../../actions/dapps';
 
 export type Props = {
   /**
-   * @desc JSON provided by DApp developer to be rendered inside Root component
+   * @desc Layout in JSON form provided by DApp developer to be rendered inside Root component
    */
-  componentsJSON: ComponentsJSON,
+  layout: ComponentsJSON,
   /**
-   * @desc Context object to be passed to DApp to provide a context.
+   * @desc Public key of DApp that view is related to.
    */
-  context: Object,
+  dAppPublicKey: string,
   /**
-   * @desc DApp object that view is related to.
+   * @desc Action to perform a DApp callback.
    */
-  dApp: DApp,
+  performDAppCallback: (appId: string, callbacID: number, state: any) => void,
 }
 
 const styles = MediaQueryStyleSheet.create({
@@ -32,7 +33,7 @@ const styles = MediaQueryStyleSheet.create({
   },
 });
 
-export default class Root extends Component<Props, any> {
+class Root extends Component<Props, any> {
   constructor(props: Props) {
     super(props);
 
@@ -51,11 +52,8 @@ export default class Root extends Component<Props, any> {
     this.setState(prevState => updatePartByKeyPath(prevState, keyPath, value));
   };
 
-  performCallbackByID = (callbackID: string) => {
-    DAppsService.performDAppCallback(this.props.dApp.publicKey, callbackID, {
-      state: this.state,
-      context: this.props.context,
-    });
+  performCallbackByID = (callbackID: number) => {
+    this.props.performDAppCallback(this.props.dAppPublicKey, callbackID, this.state);
   };
 
   generateCustomProps = (component: any, ownProps: Object) => {
@@ -90,8 +88,8 @@ export default class Root extends Component<Props, any> {
       const propName = `${nameWithoutID}ID`;
       const callbackID = ownProps[propName];
       if (callbackID == null) return;
-      if (typeof callbackID !== 'string') {
-        console.warn(`Callback id ${callbackID} must be a string.`);
+      if (typeof callbackID !== 'number') {
+        console.warn(`Callback id ${callbackID} must be a number.`);
         return;
       }
 
@@ -104,8 +102,18 @@ export default class Root extends Component<Props, any> {
   render() {
     return (
       <ReactNativeView style={styles.container}>
-        {renderJSON(this.props.componentsJSON, undefined, this.generateCustomProps)}
+        {renderJSON(this.props.layout, undefined, this.generateCustomProps)}
       </ReactNativeView>
     );
   }
 }
+
+const mapStateToProps = () => ({});
+
+const mapDispatchToProps = dispatch => ({
+  performDAppCallback(dAppId, callbackId, state) {
+    dispatch(performDAppCallback(dAppId, callbackId, { state }));
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Root);
