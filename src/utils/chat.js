@@ -39,6 +39,7 @@ export function convertFromDatabase(id: number, profile: Object, messageData: Me
     user: {
       _id: messageData.identity_pub_key,
       name: profile.name,
+    },
   };
 }
 
