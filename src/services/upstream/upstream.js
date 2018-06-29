@@ -180,8 +180,9 @@ export default class UpstreamService {
   };
 
   handleShowModal = (id: string, info: any) => {
-    const { title, layout } = info;
+    const { title, layout, dAppPublicKey: dAppPublicKeyBytes } = info;
     try {
+      const dAppPublicKey = Buffer.from(dAppPublicKeyBytes).toString('hex');
       const JSONLayout = JSON.parse(layout);
 
       Navigation.showModal({
@@ -189,13 +190,7 @@ export default class UpstreamService {
         title,
         passProps: {
           layout: JSONLayout,
-          // @todo Place correct dapp
-          dApp: {
-            name: 'Test DApp',
-            code: '',
-            publicKey: 'public key',
-          },
-          context: {},
+          dAppPublicKey,
         },
       });
       return this.sendSuccessResponse(id, {});
