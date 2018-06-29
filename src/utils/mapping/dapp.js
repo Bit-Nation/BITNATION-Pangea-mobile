@@ -2,7 +2,6 @@
 
 // $FlowFixMe Flow has issues with import buffer for some reason.
 import { Buffer } from 'buffer';
-import type { DApp } from '../../types/DApp';
 import type { DAppType as DBDApp } from '../../services/database/schemata';
 
 /**
@@ -10,7 +9,7 @@ import type { DAppType as DBDApp } from '../../services/database/schemata';
  * @param {DApp} dApp DApp to convert.
  * @return {Object} Converted DApp object.
  */
-export function convertToPanthalassa(dApp: DApp) {
+export function convertToPanthalassa(dApp: DBDApp) {
   return {
     name: dApp.name,
     code: dApp.code,
@@ -21,11 +20,11 @@ export function convertToPanthalassa(dApp: DApp) {
 
 /**
  * @desc Converts DApp to database representation.
- * @param {DApp} dApp DApp to convert.
+ * @param {*} dApp DApp info object to convert.
  * @param {string} accountId Id of account that DApp is related to.
  * @return {Object} Converted DApp object.
  */
-export function convertToDatabase(dApp: DApp, accountId: string): DBDApp {
+export function convertToDatabase(dApp: { name: string, code: string, signature: string, publicKey: string }, accountId: string): DBDApp {
   return {
     name: dApp.name,
     code: dApp.code,
