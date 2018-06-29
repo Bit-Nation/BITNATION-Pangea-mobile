@@ -2,7 +2,7 @@ import { put, call, take, fork, cancel, select } from 'redux-saga/effects';
 import type { Realm } from 'realm';
 
 import {
-  SaveProfileAction, SavePreKeyBundleAction, NewChatSessionAction, OpenChatAction, chatsUpdated, selectProfile,
+  SaveProfileAction, SavePreKeyBundleAction, NewChatSessionAction, OpenChatAction, chatsUpdated, selectProfile, saveProfile,
   FETCH_MESSAGES, START_FETCH_MESSAGES, STOP_FETCH_MESSAGES,
 } from '../../actions/chat';
 import defaultDB from '../../services/database';
@@ -48,7 +48,7 @@ export function* startDatabaseListening(): Generator<*, *, *> {
  * @param {SaveProfileAction} action SAVE_PROFILE action
  * @return {void}
  */
-export function* saveProfile(action: SaveProfileAction) {
+export function* saveProfileSaga(action: SaveProfileAction) {
   const db = yield defaultDB;
   const { profile: { information, signatures } } = action;
   // const results = db.objects('Profile').filtered(`identity_pub_key == '${information.identity_pub_key}'`);
@@ -68,7 +68,7 @@ export function* saveProfile(action: SaveProfileAction) {
       ethereum_key_signature: signatures.ethereum_key,
     };
     db.write(() => {
-      db.create('Profile', profile);
+      db.create('Profile', profile, true);
     });
   }
 }
@@ -190,17 +190,22 @@ export function* listenMessages() {
  * @return {Promise} A result promise
  */
 async function handleInitialMessage(message: Object): Promise {
-  console.log('handling chat init');
   const db = await defaultDB;
   const results = await db.objects('PreKeyBundle').filtered(`one_time_pre_key == '${message.additional_data.used_one_time_pre_key}'`);
   if (results.length > 0) {
-    const preKeyBundle = results[0];
-    console.log('chat pre key: ', preKeyBundle);
-    const response = await ChatService.handleChatInit(JSON.stringify(message), JSON.stringify(preKeyBundle.private_part));
-    console.log('handle init chat: ', response);
-  } else {
-    return null;
+    try {
+      const preKeyBundle = results[0];
+      console.log('chat pre key: ', preKeyBundle);
+      const response = await ChatService.handleChatInit(JSON.stringify(message), JSON.stringify(preKeyBundle.private_part));
+      console.log('handle init chat: ', response);
+      return JSON.parse(response);
+    } catch (e) {
+      console.log('handle chat error: ', e);
+      return null;
+    }
   }
+
+  return null;
 }
 
 export const getAccountState = state => state.accounts;
@@ -225,7 +230,30 @@ export function* fetchMessages() {
         const message = JSON.parse(messages[i]);
         if (message.type === 'PROTOCOL_INITIALISATION') {
           console.log('handle message: ', message);
-          yield call(handleInitialMessage, message);
+          const secret = yield call(handleInitialMessage, message);
+          if (secret) {
+            const accountId = yield call(getCurrentAccountId);
+            const profile = yield call(ChatService.getProfile, message.id_public_key);
+            console.log('got profile: ', profile);
+            yield put(saveProfile(profile));
+            const sharedSecret = {
+              id: message.used_secret,
+              publicKey: message.id_public_key,
+              secret,
+              accountId,
+            };
+            const chatSession = {
+              secret: message.used_secret,
+              publicKey: message.id_public_key,
+              username: profile.information.name,
+              accountId,
+              messages: [],
+            };
+            db.write(() => {
+              db.create('SharedSecret', sharedSecret, true);
+              db.create('ChatSession', chatSession, true);
+            });
+          }
         }
       }
     }
