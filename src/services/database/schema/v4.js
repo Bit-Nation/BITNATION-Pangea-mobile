@@ -341,11 +341,13 @@ export type WalletType = {
   decimals: number,
   balance: string,
   address: string,
+  accountId: string,
+  compoundId: string,
 }
 
 export const WalletSchema = {
   name: 'Wallet',
-  primaryKey: 'name',
+  primaryKey: 'compoundId',
   properties: {
     name: 'string',
     symbol: 'string',
@@ -353,6 +355,8 @@ export const WalletSchema = {
     decimals: 'int',
     balance: 'string',
     address: 'string',
+    accountId: 'string',
+    compoundId: 'string',
   },
 };
 
