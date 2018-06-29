@@ -24,7 +24,6 @@ import type { ChatSessionType } from '../../../types/Chat';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import ScreenTitle from '../../../components/common/ScreenTitle';
 import ChatService from '../../../services/chat';
-import { getSelectedSession } from '../../../utils/chat';
 import NewChatModal from './NewChatModal';
 import InvalidKeyModal from './InvalidKeyModal';
 import InviteSentModal from './InviteSentModal';
@@ -121,10 +120,9 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
   startChat = async () => {
     this.props.createNewSession(this.state.profile, (result) => {
       if (result.status === 'success') {
-        const session = getSelectedSession(this.props.chatSessions, result.secret);
         this.props.navigator.push({
           ...screen('PRIVATE_CHAT_SCREEN'),
-          passProps: { session },
+          passProps: { secret: result.secret },
         });
       } else {
         console.log('create session error: ', result);
@@ -138,10 +136,9 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
   onChatSelect = (item) => {
     this.props.onItemSelect(item.publicKey, (success) => {
       if (success) {
-        const session = getSelectedSession(this.props.chatSessions, item.secret);
         this.props.navigator.push({
           ...screen('PRIVATE_CHAT_SCREEN'),
-          passProps: { session },
+          passProps: { secret: item.secret },
         });
       }
     });
