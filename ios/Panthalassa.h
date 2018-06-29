@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import <React/RCTBridgeModule.h>
-#import "PanthalassaUpStreamBridge.h"
+#import <panthalassa/panthalassa.h>
 #import <React/RCTEventEmitter.h>
 
-@interface Panthalassa : RCTEventEmitter <RCTBridgeModule> {
-  PanthalassaUpStreamBridge* upstream;
+@interface Panthalassa : RCTEventEmitter <RCTBridgeModule, PanthalassaUpStream> {
+  //PanthalassaUpStreamBridge* upstream;
 }
 
 @end

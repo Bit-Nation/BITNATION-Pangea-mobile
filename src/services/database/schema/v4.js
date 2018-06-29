@@ -358,11 +358,13 @@ export const ProfileSchema = {
 /**
  * @typedef SecretType
  * @property {string} id
+ * @property {string} publicKey
  * @property {string} accountId
  * @property {AESType} secret
  */
 export type SecretType = {
   id: string,
+  publicKey: string,
   accountId: string,
   secret: AESType,
 };
@@ -372,6 +374,7 @@ export const SharedSecretSchema = {
   primaryKey: 'id',
   properties: {
     id: 'string',
+    publicKey: 'string',
     accountId: 'string',
     secret: 'AESCipherText',
   },
@@ -379,12 +382,14 @@ export const SharedSecretSchema = {
 
 /**
  * @typedef ChatSessionType
+ * @property {string} secret
  * @property {string} publicKey
  * @property {string} username
  * @property {string} accountId
  * @property {Array<MessageType>} messages
  */
 export type ChatSessionType = {
+  secret: string,
   publicKey: string,
   username: string,
   accountId: string,
@@ -393,8 +398,9 @@ export type ChatSessionType = {
 
 export const ChatSessionSchema = {
   name: 'ChatSession',
-  primaryKey: 'publicKey',
+  primaryKey: 'secret',
   properties: {
+    secret: 'string',
     publicKey: 'string',
     username: 'string',
     accountId: 'string',
@@ -402,6 +408,60 @@ export const ChatSessionSchema = {
       type: 'list',
       objectType: 'Message',
     },
+  },
+};
+
+export const MessageKeySchema = {
+  name: 'MessageKey',
+  properties: {
+    messageNumber: 'int',
+    messageKey: 'string',
+  },
+};
+
+
+export const DoubleRatchetKeySchema = {
+  name: 'DoubleRatchetKey',
+  primaryKey: 'doubleRatchetKey',
+  properties: {
+    accountId: 'string',
+    doubleRatchetKey: 'string',
+    messageKeys: {
+      type: 'list',
+      objectType: 'MessageKey',
+    },
+  },
+};
+
+
+/**
+ * @typedef DAppType
+ * @property {string} name Name of the DApp
+ * @property {string} publicKey Public key of the DApp.
+ * @property {string} signature Signature of the DApp.
+ * @property {string} icon DApp icon in base64 format.
+ * @property {string} code Source code of DApp.
+ */
+export type DAppType = {
+  name: string,
+  publicKey: string,
+  signature: string,
+  icon: string,
+  code: string,
+}
+
+export const DAppSchema = {
+  name: 'DApp',
+  primaryKey: 'publicKey',
+  properties: {
+    name: 'string',
+    publicKey: 'string',
+    signature: 'string',
+    icon: {
+      type: 'string',
+      optional: true,
+    },
+    code: 'string',
   },
 };
 
@@ -477,6 +537,42 @@ export const MessageSchema = {
   },
 };
 
+/**
+ * @typedef WalletType
+ * @property {string} symbol Representation of the currency tokens.
+ * @property {string} name Wallet's name.
+ * @property {bool} ethereumBased True if token is based on Ethereum.
+ * @property {number} decimals Number of decimals for the token.
+ * @property {string} balance Wallet's balance.
+ * @property {string} address Wallet's Public address.
+ */
+export type WalletType = {
+  symbol: 'ETH' | 'PAT',
+  name: string,
+  chain: 'ethereum' | 'rootstock'| 'bitcoin',
+  decimals: number,
+  balance: string,
+  address: string,
+  accountId: string,
+  compoundId: string,
+}
+
+export const WalletSchema = {
+  name: 'Wallet',
+  primaryKey: 'compoundId',
+  properties: {
+    name: 'string',
+    symbol: 'string',
+    chain: 'string',
+    decimals: 'int',
+    balance: 'string',
+    address: 'string',
+    accountId: 'string',
+    compoundId: 'string',
+  },
+};
+
+
 export const schemata =
   [
     AccountSchema,
@@ -493,6 +589,10 @@ export const schemata =
     ChatSessionSchema,
     DAppMessageSchema,
     MessageSchema,
+    DAppSchema,
+    MessageKeySchema,
+    DoubleRatchetKeySchema,
+    WalletSchema,
   ];
 
 export const migration = () => {

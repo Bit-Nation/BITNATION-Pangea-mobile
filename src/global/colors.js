@@ -167,4 +167,8 @@ export default {
   // Used in many places, e.g. Wallet code, identical to 'transparent'
   Transparent: 'transparent',
 
+  // Confirmation Screen slider
+  thumbTintColor: 'rgb(252, 228, 149)',
+  maximumTrackTintColor: '#BBBDBF',
+  minimumTrackTintColor: '#FF8B00',
 };

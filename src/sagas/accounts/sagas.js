@@ -104,6 +104,9 @@ export function* getCurrentAccountId(): Generator<*, *, *> {
  */
 export function* accountsPresent(): Generator<*, *, *> {
   const db = yield defaultDB;
+  // console.log('DB location');
+  // console.log(db.path);
+  // console.log('DB location END');
   const results = db.objects('Account');
   return yield results.length > 0;
 }
