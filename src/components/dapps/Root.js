@@ -7,6 +7,7 @@ import { View as ReactNativeView } from 'react-native';
 import { type ComponentsJSON, renderJSON } from '../../utils/dapps/renderer';
 import { updatePartByKeyPath } from '../../utils/dapps/updates';
 import DAppsService from '../../services/dapps';
+import type { DApp } from '../../types/DApp';
 
 export type Props = {
   /**
