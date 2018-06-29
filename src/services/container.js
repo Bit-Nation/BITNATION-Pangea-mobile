@@ -34,6 +34,9 @@ export default class ServiceContainer {
       this.nationsService.cleanUp();
     }
     this.nationsService = null;
+    if (this.upstreamService !== null) {
+      this.upstreamService.cleanUp();
+    }
     this.upstreamService = null;
   }
 }
