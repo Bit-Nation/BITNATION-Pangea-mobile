@@ -13,12 +13,14 @@ import {
 } from 'react-native-gifted-chat';
 import styles from './styles';
 
-import { showSpinner, hideSpinner } from '../../../actions/chat';
+import { showSpinner, hideSpinner, sendMessage } from '../../../actions/chat';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import Loading from '../../../components/common/Loading';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
+import type { ChatSessionType } from '../../../types/Chat';
 import { getCurrentAccount } from '../../../reducers/accounts';
+import { convertFromDatabase } from '../../../utils/chat';
 
 type Props = {
   /**
@@ -38,13 +40,24 @@ type Props = {
    */
   isFetching: boolean,
   /**
+   * @desc The chat session
+   */
+  session: ChatSessionType,
+  /**
    * @desc Function to show spinner
    */
   showSpinner: () => void,
   /**
    * @desc Function to hide spinner
    */
-  hideSpinner: () => void
+  hideSpinner: () => void,
+  /**
+   * @desc Function to send a human message
+   * @param {string} msg Message to be sent
+   * @param {func} callback Callback
+   * @param {Object} session Session object
+   */
+  sendMessage: (msg: string, session: Object, callback: () => void) => void,
 };
 
 type State = {
@@ -62,15 +75,20 @@ class ChatScreen extends Component<Props, State> {
     };
   }
 
-  componentDidMount() {
+  componentWillReceiveProps(nextProps: Props) {
+    const messages = nextProps.session.messages.map((m, i) => {
+      return convertFromDatabase(i, nextProps.user, m);
+    });
+    this.setState({messages});
   }
 
   onSend(messages: Array<any> = []) {
-    const newMessage = {
-      msg: messages[0].text,
-      from: this.props.user ? this.props.user.name : 'anonymous',
-      userId: this.props.user ? this.props.user.id : 'anonymous',
-    };
+    const message = messages[0].text;
+    this.props.sendMessage(message, this.props.session, (response) => {
+      if (response) {
+        
+      }
+    });
   }
 
   render() {
@@ -118,6 +136,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   showSpinner: () => dispatch(showSpinner()),
   hideSpinner: () => dispatch(hideSpinner()),
+  sendMessage: (msg, session, callback) => dispatch(sendMessage(msg, session, callback)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChatScreen);

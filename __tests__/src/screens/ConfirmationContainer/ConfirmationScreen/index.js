@@ -9,6 +9,8 @@ describe('ConfirmationScreen', () => {
   const propsMock = {
     gasPrice: 2,
     navigator: navigatorMock,
+    amount: '0',
+    estimate: '0',
   };
 
   beforeEach(() => {
