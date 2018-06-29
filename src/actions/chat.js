@@ -13,6 +13,7 @@ export const FETCH_MESSAGES = 'FETCH_MESSAGES';
 export const START_FETCH_MESSAGES = 'START_FETCH_MESSAGES';
 export const STOP_FETCH_MESSAGES = 'STOP_FETCH_MESSAGES';
 export const SEND_MESSAGE = 'SEND_MESSAGE';
+export const SAVE_HUMAN_MESSAGE = 'SAVE_HUMAN_MESSAGE';
 
 export type ShowSpinnerAction = { +type: 'SHOW_CHAT_SPINNER' };
 export type HideSpinnerAction = { +type: 'HIDE_CHAT_SPINNER' };
@@ -56,6 +57,12 @@ export type StopFetchAction = {
 export type SendMessageAction = {
   +type: 'SEND_MESSAGE',
   +message: string,
+  +session: Object,
+  +callback: () => void,
+};
+export type SaveHumanMessageAction = {
+  +type: 'SAVE_HUMAN_MESSAGE',
+  +message: string,
 };
 
 export type Action =
@@ -70,7 +77,8 @@ export type Action =
   | SelectProfileAction
   | StartFetchAction
   | StopFetchAction
-  | SendMessageAction;
+  | SendMessageAction
+  | SaveMessageAction;
 
 /**
  * @desc Action for an action that shows spinner while processing in background
@@ -213,5 +221,19 @@ export function sendMessage(message: string, session: Object, callback: () => vo
     message,
     session,
     callback,
+  };
+}
+
+/**
+ * @desc Action for saving human message
+ * @param {string} message Message to send
+ * @param {Object} session Session object
+ * @returns {SaveHumanMessageAction} An action
+ */
+export function saveHumanMessage(message: Object, session: Object): SaveHumanMessageAction {
+  return {
+    type: SAVE_HUMAN_MESSAGE,
+    message,
+    session,
   };
 }
