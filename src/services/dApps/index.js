@@ -2,13 +2,13 @@
 
 import { NativeModules } from 'react-native';
 
-import type { DApp } from '../../types/DApp';
+import type { DAppType as DBDApp } from '../../services/database/schemata';
 import { convertToPanthalassa } from '../../utils/mapping/dapp';
 
 const DAPP_START_TIMEOUT = 30;
 
 export default class DAppsService {
-  static async startDApp(dApp: DApp): Promise<boolean> {
+  static async startDApp(dApp: DBDApp): Promise<boolean> {
     const { Panthalassa } = NativeModules;
     return Panthalassa.PanthalassaStartDApp({
       dApp: JSON.stringify(convertToPanthalassa(dApp)),
