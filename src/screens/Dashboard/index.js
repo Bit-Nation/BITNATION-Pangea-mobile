@@ -110,8 +110,8 @@ class Dashboard extends Component<Props & Actions & State & TestingModeProps> {
 
     return (
       <View style={styles.screenContainer}>
-        <BackgroundImage/>
-        <FakeNavigationBar navBarHidden/>
+        <BackgroundImage />
+        <FakeNavigationBar navBarHidden />
         <View style={styles.gridContainer}>
           <View style={styles.activityPanelContainer}>
             <ActivityPanel

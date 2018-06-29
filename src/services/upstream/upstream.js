@@ -12,7 +12,6 @@ import { api_proto as apiProto } from './compiled';
 
 import EthereumService from '../ethereum';
 import { screen } from '../../global/Screens';
-import type { DApp } from '../../types/DApp';
 import { convertToDatabase } from '../../utils/mapping/dapp';
 
 const { Panthalassa } = NativeModules;
