@@ -122,7 +122,8 @@
       "**/**/**/**/*.{js,jsx}",
       "!**/node_modules/**",
       "!**/coverage/**",
-      "!**/vendor/**"
+      "!**/vendor/**",
+      "!src/services/upstream/compiled.js"
     ],
     "globals": {
       "WebSocket": {
