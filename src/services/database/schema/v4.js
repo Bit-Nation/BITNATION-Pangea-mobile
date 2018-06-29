@@ -1,6 +1,7 @@
 /* eslint-disable no-use-before-define */
 // @flow
 
+
 export const AccountSchema = {
   name: 'Account',
   primaryKey: 'id',
@@ -270,6 +271,61 @@ export const NationSchema = {
   },
 };
 
+
+export const MessageKeySchema = {
+  name: 'MessageKey',
+  properties: {
+    messageNumber: 'int',
+    messageKey: 'string',
+  },
+};
+
+
+export const DoubleRatchetKeySchema = {
+  name: 'DoubleRatchetKey',
+  primaryKey: 'doubleRatchetKey',
+  properties: {
+    accountId: 'string',
+    doubleRatchetKey: 'string',
+    messageKeys: {
+      type: 'list',
+      objectType: 'MessageKey',
+    },
+  },
+};
+
+
+/**
+ * @typedef DAppType
+ * @property {string} name Name of the DApp
+ * @property {string} publicKey Public key of the DApp.
+ * @property {string} signature Signature of the DApp.
+ * @property {string} icon DApp icon in base64 format.
+ * @property {string} code Source code of DApp.
+ */
+export type DAppType = {
+  name: string,
+  publicKey: string,
+  signature: string,
+  icon: string,
+  code: string,
+}
+
+export const DAppSchema = {
+  name: 'DApp',
+  primaryKey: 'publicKey',
+  properties: {
+    name: 'string',
+    publicKey: 'string',
+    signature: 'string',
+    icon: {
+      type: 'string',
+      optional: true,
+    },
+    code: 'string',
+  },
+};
+
 /**
  * @typedef WalletType
  * @property {string} symbol Representation of the currency tokens.
@@ -301,6 +357,7 @@ export const WalletSchema = {
   },
 };
 
+
 export const schemata =
   [
     AccountSchema,
@@ -310,6 +367,9 @@ export const schemata =
     MessageJobSchema,
     TransactionJobSchema,
     NationSchema,
+    DAppSchema,
+    MessageKeySchema,
+    DoubleRatchetKeySchema,
     WalletSchema,
   ];
 

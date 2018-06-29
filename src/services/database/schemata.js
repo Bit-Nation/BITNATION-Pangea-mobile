@@ -58,7 +58,10 @@ export {
 
   TransactionJobSchema,
   TransactionJobType,
-
   WalletSchema,
   WalletType,
+  DAppSchema,
+  DAppType,
+  MessageKeySchema,
+  DoubleRatchetKeySchema,
 } from './schema/v4';
