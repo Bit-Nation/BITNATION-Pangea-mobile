@@ -101,7 +101,6 @@ export default class ChatService {
   static async startChat(identityPublicKey: string, preKeyBundle: string): Promise<any> {
     let response = await Panthalassa.PanthalassaInitializeChat({ identityPublicKey, preKeyBundle });
     response = JSON.parse(response);
-    console.log('init chat: ', response);
     await ChatService.uploadMessage(response.message);
     return response;
   }
