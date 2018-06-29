@@ -36,12 +36,3 @@ describe('response upstream', () => {
   });
 });
 
-
-// describe('Upstream class', () => {
-//   let upstream;
-//   test('Initialize the upstream service', async () => {
-//     const encodedRequest = Request.encode(message).finish();
-//     upstream = new Upstream();
-//     upstream.handleRequest(encodedRequest);
-//   });
-// });

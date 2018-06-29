@@ -7,7 +7,7 @@ import NationsService from './nations';
 import type { Account } from '../types/Account';
 import { normalizeEthPrivateKey } from '../utils/key';
 import defaultDB from './database';
-import UpstreamService from "./upstream/upstream";
+import UpstreamService from './upstream/upstream';
 
 export default class ServiceContainer {
   static instance: ServiceContainer = new ServiceContainer();
@@ -24,7 +24,7 @@ export default class ServiceContainer {
     }).service;
     this.walletService = new WalletService(this.ethereumService);
     this.nationsService = new NationsService(this.ethereumService, defaultDB, account.id);
-    this.upstreamService = new UpstreamService(this.ethereumService);
+    this.upstreamService = new UpstreamService(this.ethereumService, defaultDB, account.id);
   }
 
   destroyServices() {

@@ -64,4 +64,7 @@ export {
 
   WalletSchema,
   WalletType,
+  
+  MessageKeySchema,
+  DoubleRatchetKeySchema,
 } from './schema/v4';

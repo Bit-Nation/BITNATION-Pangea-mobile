@@ -270,6 +270,30 @@ export const NationSchema = {
   },
 };
 
+
+export const MessageKeySchema = {
+  name: 'MessageKey',
+  properties: {
+    messageNumber: 'int',
+    messageKey: 'string',
+  },
+};
+
+
+export const DoubleRatchetKeySchema = {
+  name: 'DoubleRatchetKey',
+  primaryKey: 'doubleRatchetKey',
+  properties: {
+    accountId: 'string',
+    doubleRatchetKey: 'string',
+    messageKeys: {
+      type: 'list',
+      objectType: 'MessageKey',
+    },
+  },
+};
+
+
 /**
  * @typedef DAppType
  * @property {string} name Name of the DApp
@@ -342,6 +366,8 @@ export const schemata =
     TransactionJobSchema,
     NationSchema,
     DAppSchema,
+    MessageKeySchema,
+    DoubleRatchetKeySchema,
     WalletSchema,
   ];
 
