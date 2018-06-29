@@ -2,6 +2,7 @@
 
 import ethers from 'ethers';
 import { NativeEventEmitter, NativeModules } from 'react-native';
+// $FlowFixMe Flow doesn't want to allow import buffer for some reason.
 import { Buffer } from 'buffer';
 import Realm from 'realm';
 import { Navigation } from 'react-native-navigation';
@@ -10,8 +11,6 @@ import { Navigation } from 'react-native-navigation';
 import { api_proto as apiProto } from './compiled';
 
 import EthereumService from '../ethereum';
-import DAppsService from '../dapps';
-import type { DApp } from '../../types/DApp';
 import { screen } from '../../global/Screens';
 
 const { Panthalassa } = NativeModules;
