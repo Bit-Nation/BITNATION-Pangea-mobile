@@ -3,9 +3,7 @@
 import ethers from 'ethers';
 import { NativeEventEmitter, NativeModules } from 'react-native';
 import Realm from 'realm';
-import Navigation from 'react-native-navigation';
-
-import type { MessageKeyType } from '../../types/Message';
+import { Navigation } from 'react-native-navigation';
 
 // Javascript static code of the proto file
 import { api_proto as apiProto } from './compiled';
