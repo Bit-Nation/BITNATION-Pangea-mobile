@@ -12,6 +12,7 @@ import { api_proto as apiProto } from './compiled';
 
 import EthereumService from '../ethereum';
 import { screen } from '../../global/Screens';
+import DAppsService from '../dapps';
 
 const { Panthalassa } = NativeModules;
 const { Response, Request } = apiProto;
@@ -209,6 +210,14 @@ export default class UpstreamService {
           publicKey: signingPublicKey,
         }, true);
       });
+      await DAppsService.startDApp({
+        name: appName,
+        code,
+        signature,
+        publicKey: signingPublicKey,
+      });
+      await new Promise(resolve => setTimeout(resolve, 5000));
+      await DAppsService.openDApp(signingPublicKey, {});
       return this.sendSuccessResponse(id, {});
     } catch (error) {
       return this.sendErrorResponse(id, error);
