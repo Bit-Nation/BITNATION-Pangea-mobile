@@ -26,9 +26,10 @@ export function buildDAppsResults(db: Realm, accountId: string | null) {
 /**
  * @desc Generator to be called on database change. Used to update DApps list.
  * @param {*} collection Updated DApps collection
+ * @param {*} changes Changes set.
  * @return {void}
  */
-export function* onCurrentAccountChange(collection: Realm.Result<DBDApp>): Generator<*, *, *> {
+export function* onCurrentAccountChange(collection: Realm.Result<DBDApp>, changes: Realm.CollectionChangeSet<DBDApp>): Generator<*, *, *> {
   yield put(dAppsListUpdated(collection.map(dApp => ({
     name: dApp.name,
     publicKey: dApp.publicKey,
@@ -38,6 +39,9 @@ export function* onCurrentAccountChange(collection: Realm.Result<DBDApp>): Gener
   for (let i = 0; i < collection.length; i += 1) {
     const { publicKey } = collection[i];
     if (!startedDAppIds.includes(publicKey)) {
+      yield put(startDApp(publicKey));
+    } else if (changes.modifications.includes(i)) {
+      yield put(dAppStartFailed(publicKey));
       yield put(startDApp(publicKey));
     }
   }
