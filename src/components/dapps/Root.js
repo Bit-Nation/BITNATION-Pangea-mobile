@@ -21,7 +21,7 @@ export type Props = {
   /**
    * @desc DApp object that view is related to.
    */
-  dapp: DApp,
+  dApp: DApp,
 }
 
 const styles = MediaQueryStyleSheet.create({
@@ -52,7 +52,7 @@ export default class Root extends Component<Props, any> {
   };
 
   performCallbackByID = (callbackID: string) => {
-    DAppsService.performDAppCallback(this.props.dapp.publicKey, callbackID, {
+    DAppsService.performDAppCallback(this.props.dApp.publicKey, callbackID, {
       state: this.state,
       context: this.props.context,
     });

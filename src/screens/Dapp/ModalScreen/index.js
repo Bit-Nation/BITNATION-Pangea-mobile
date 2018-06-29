@@ -5,12 +5,22 @@ import { View } from 'react-native';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import Colors from '../../../global/colors';
 import i18n from '../../../global/i18n';
+import Root from '../../../components/dapps/Root';
+import type { DApp } from '../../../types/DApp';
 
 type Props = {
   /**
    * @desc JSON object of layout to be displayed.
    */
-  layout: Object
+  layout: Object,
+  /**
+   * @desc Dapp
+   */
+  dApp: DApp,
+  /**
+   * @desc Context
+   */
+  context: Object,
 }
 
 export default class DAppModalScreen extends NavigatorComponent<Props> {
@@ -30,6 +40,10 @@ export default class DAppModalScreen extends NavigatorComponent<Props> {
   }
 
   render() {
-    return <View />;
+    return (<Root
+      componentsJSON={this.props.layout}
+      context={this.props.context}
+      dApp={this.props.dApp}
+    />);
   }
 }
