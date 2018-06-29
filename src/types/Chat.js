@@ -29,15 +29,13 @@ export type DAppMessageType = {
 
 export type MessageType = {
   type: string,
-  send_at: Date,
-  additional_data: string,
-  shared_secret: SecretType,
-  dapp_message: DAppMessageType,
-  human_message: string,
-  signature: string,
+  timestamp: Date,
   used_secret: string,
-  identity_pub_key: string,
-  outgoing: boolean,
+  additional_data: string,
+  doubleratchet_message: string,
+  signature: string,
+  id_public_key: string,
+  receiver: string,
 };
 
 export type ChatSessionType = {
