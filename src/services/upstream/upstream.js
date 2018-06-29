@@ -13,6 +13,8 @@ import { api_proto as apiProto } from './compiled';
 import EthereumService from '../ethereum';
 import { screen } from '../../global/Screens';
 import DAppsService from '../dapps';
+import type { DApp } from '../../types/DApp';
+import { convertToDatabase } from '../../utils/mapping/dapp';
 
 const { Panthalassa } = NativeModules;
 const { Response, Request } = apiProto;
@@ -208,23 +210,16 @@ export default class UpstreamService {
       appName, code, signature, signingPublicKey,
     } = info;
     try {
-      const db = await this.dbPromise;
-      db.write(() => {
-        db.create('DApp', {
-          name: appName,
-          code,
-          signature,
-          publicKey: signingPublicKey,
-        }, true);
-      });
-      await DAppsService.startDApp({
+      const dApp: DApp = {
         name: appName,
         code,
         signature,
         publicKey: signingPublicKey,
+      };
+      const db = await this.dbPromise;
+      db.write(() => {
+        db.create('DApp', convertToDatabase(dApp, this.currentAccountId), true);
       });
-      await new Promise(resolve => setTimeout(resolve, 5000));
-      await DAppsService.openDApp(signingPublicKey, {});
       return this.sendSuccessResponse(id, {});
     } catch (error) {
       return this.sendErrorResponse(id, error);
