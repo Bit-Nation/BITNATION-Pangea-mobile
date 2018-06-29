@@ -6,6 +6,7 @@ import {
   DAPPS_LIST_UPDATED,
   OPEN_DAPP,
 } from '../actions/dapps';
+import { SERVICES_DESTROYED } from '../actions/serviceContainer';
 
 export type State = {
   +availableDApps: Array<DApp>,
@@ -38,6 +39,8 @@ export const getDApp = (state: State, publicKey: string) => state.availableDApps
  */
 export default (state: State = initialState, action: Action): State => {
   switch (action.type) {
+    case SERVICES_DESTROYED:
+      return initialState;
     case DAPPS_LIST_UPDATED:
       return {
         ...state,
