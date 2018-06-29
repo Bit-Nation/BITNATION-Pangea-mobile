@@ -411,6 +411,60 @@ export const ChatSessionSchema = {
   },
 };
 
+export const MessageKeySchema = {
+  name: 'MessageKey',
+  properties: {
+    messageNumber: 'int',
+    messageKey: 'string',
+  },
+};
+
+
+export const DoubleRatchetKeySchema = {
+  name: 'DoubleRatchetKey',
+  primaryKey: 'doubleRatchetKey',
+  properties: {
+    accountId: 'string',
+    doubleRatchetKey: 'string',
+    messageKeys: {
+      type: 'list',
+      objectType: 'MessageKey',
+    },
+  },
+};
+
+
+/**
+ * @typedef DAppType
+ * @property {string} name Name of the DApp
+ * @property {string} publicKey Public key of the DApp.
+ * @property {string} signature Signature of the DApp.
+ * @property {string} icon DApp icon in base64 format.
+ * @property {string} code Source code of DApp.
+ */
+export type DAppType = {
+  name: string,
+  publicKey: string,
+  signature: string,
+  icon: string,
+  code: string,
+}
+
+export const DAppSchema = {
+  name: 'DApp',
+  primaryKey: 'publicKey',
+  properties: {
+    name: 'string',
+    publicKey: 'string',
+    signature: 'string',
+    icon: {
+      type: 'string',
+      optional: true,
+    },
+    code: 'string',
+  },
+};
+
 /**
  * @typedef DAppMessageType
  * @property {string} dapp_id
@@ -483,6 +537,38 @@ export const MessageSchema = {
   },
 };
 
+/**
+ * @typedef WalletType
+ * @property {string} symbol Representation of the currency tokens.
+ * @property {string} name Wallet's name.
+ * @property {bool} ethereumBased True if token is based on Ethereum.
+ * @property {number} decimals Number of decimals for the token.
+ * @property {string} balance Wallet's balance.
+ * @property {string} address Wallet's Public address.
+ */
+export type WalletType = {
+  symbol: 'ETH' | 'PAT',
+  name: string,
+  chain: 'ethereum' | 'rootstock'| 'bitcoin',
+  decimals: number,
+  balance: string,
+  address: string,
+}
+
+export const WalletSchema = {
+  name: 'Wallet',
+  primaryKey: 'name',
+  properties: {
+    name: 'string',
+    symbol: 'string',
+    chain: 'string',
+    decimals: 'int',
+    balance: 'string',
+    address: 'string',
+  },
+};
+
+
 export const schemata =
   [
     AccountSchema,
@@ -499,6 +585,10 @@ export const schemata =
     ChatSessionSchema,
     DAppMessageSchema,
     MessageSchema,
+    DAppSchema,
+    MessageKeySchema,
+    DoubleRatchetKeySchema,
+    WalletSchema,
   ];
 
 export const migration = () => {
