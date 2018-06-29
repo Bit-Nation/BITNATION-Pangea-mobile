@@ -26,9 +26,10 @@ export default class UpstreamService {
     this.ethereumService = ethereumService;
     this.dbPromise = dbPromise;
     this.currentAccountId = accountId;
+    this.startListening();
   }
 
-  startSubscribe = () => {
+  startListening = () => {
     const emitter = new NativeEventEmitter(Panthalassa);
     this.eventsSubscription = emitter.addListener(
       'PanthalassaUpStream',
@@ -238,12 +239,6 @@ export default class UpstreamService {
   handleErrorMessage = async (id: string, info: any) => {
     console.log(`[ERROR] Unknown upstream request ${info}`);
     return this.sendErrorResponse(id, new Error(`Unknown upstream request ${info}`));
-  };
-
-  unsubscribe = () => {
-    if (this.eventsSubscription) {
-      // this.eventsSubscription.remove();
-    }
   };
 
   // Common functions
