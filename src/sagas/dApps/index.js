@@ -1,6 +1,6 @@
 import { all, call, takeEvery } from 'redux-saga/effects';
 import { startDAppSaga, openDApp, performDAppCallback, startDatabaseListening } from './sagas';
-import { START_DAPP, OPEN_DAPP, PERFORM_DAPP_CALLBACK } from '../../actions/dapps';
+import { START_DAPP, OPEN_DAPP, PERFORM_DAPP_CALLBACK } from '../../actions/dApps';
 
 /**
  * @desc Root key saga.

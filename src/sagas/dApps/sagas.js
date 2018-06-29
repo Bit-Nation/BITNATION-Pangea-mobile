@@ -3,10 +3,10 @@
 import { call, select, put } from 'redux-saga/effects';
 import { Realm } from 'realm';
 
-import type { OpenDAppAction, PerformDAppCallbackAction, StartDAppAction } from '../../actions/dapps';
+import type { OpenDAppAction, PerformDAppCallbackAction, StartDAppAction } from '../../actions/dApps';
 import { getDApp as getDAppFromState } from '../../reducers/dApps';
-import { dAppsListUpdated, dAppStarted, dAppStartFailed, startDApp } from '../../actions/dapps';
-import DAppsService from '../../services/dapps';
+import { dAppsListUpdated, dAppStarted, dAppStartFailed, startDApp } from '../../actions/dApps';
+import DAppsService from '../../services/dApps';
 import type { DAppType as DBDApp } from '../../services/database/schemata';
 import { currentAccountBasedUpdate } from '../accounts/sagas';
 
@@ -53,8 +53,8 @@ export function* startDatabaseListening(): Generator<*, *, *> {
  * @return {void}
  */
 export function* getDApp(publicKey: string): Generator<*, *, *> {
-  const { dapps } = yield select();
-  return getDAppFromState(dapps, publicKey);
+  const { dApps } = yield select();
+  return getDAppFromState(dApps, publicKey);
 }
 
 /**

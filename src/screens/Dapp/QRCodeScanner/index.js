@@ -5,7 +5,7 @@ import React from 'react';
 import { Alert, Text, View } from 'react-native';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 
-import DAppsService from '../../../services/dapps';
+import DAppsService from '../../../services/dApps';
 import styles from './styles';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import i18n from '../../../global/i18n';

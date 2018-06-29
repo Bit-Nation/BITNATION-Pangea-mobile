@@ -1,4 +1,4 @@
-import { updatePartByKeyPath } from '../../../../src/utils/dapps/updates';
+import { updatePartByKeyPath } from '../../../../src/utils/dApps/updates';
 
 test('updatePartByKeyPath', () => {
   expect(updatePartByKeyPath({}, 'plain', 'TEST_VALUE'))
