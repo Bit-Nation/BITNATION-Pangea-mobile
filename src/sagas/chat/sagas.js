@@ -220,7 +220,6 @@ export function* fetchMessages() {
     const publicKey = yield call(ChatService.getPublicKey);
     const response = yield call(ChatService.loadMessages, publicKey);
     const { messages } = response;
-    console.log('got messages: ', messages);
     if (messages) {
       for (let i = 0; i < messages.length; i++) {
         const message = JSON.parse(messages[i]);
