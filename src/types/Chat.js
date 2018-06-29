@@ -46,3 +46,15 @@ export type ChatSessionType = {
   accountId: string,
   messages: Array<MessageType>,
 };
+
+export type GiftedChatUserType = {
+  _id: string,
+  name: string,
+};
+
+export type GiftedChatMessageType = {
+  _id: string,
+  text: string,
+  createdAt: Date,
+  user: GiftedChatUserType,
+};
