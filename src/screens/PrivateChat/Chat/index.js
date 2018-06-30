@@ -98,7 +98,10 @@ class ChatScreen extends Component<Props, State> {
 
   render() {
     const session = getSelectedSession(this.props.sessions, this.props.secret);
-    const sortedMessages = session.decryptedMessages.slice().reverse();
+    let sortedMessages = [];
+    if (session.decryptedMessages && session.decryptedMessages.length > 0) {
+      sortedMessages = session.decryptedMessages.slice().reverse();
+    }
     const sendingUser = {
       _id: this.props.userPublicKey,
       name: this.props.user ? this.props.user.name : 'anonymous',
