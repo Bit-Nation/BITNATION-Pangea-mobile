@@ -1,7 +1,6 @@
 // @flow
 
 import { NativeModules } from 'react-native';
-import Config from 'react-native-config';
 import type { Mnemonic } from '../../types/Mnemonic';
 import { compressMnemonic, decompressMnemonic } from '../../utils/key';
 import type { Profile } from '../../types/Account';

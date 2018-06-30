@@ -65,6 +65,11 @@ export type SaveHumanMessageAction = {
   +message: string,
 };
 
+export type SaveMessageAction = {
+  +type: 'SAVE_HUMAN_MESSAGE',
+  +message: string,
+};
+
 export type Action =
   | ShowSpinnerAction
   | HideSpinnerAction
