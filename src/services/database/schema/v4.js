@@ -1,7 +1,6 @@
 /* eslint-disable no-use-before-define */
 // @flow
 
-
 export const AccountSchema = {
   name: 'Account',
   primaryKey: 'id',
@@ -271,6 +270,146 @@ export const NationSchema = {
   },
 };
 
+/**
+ * @typedef AESType
+ * @property {string} iv
+ * @property {number} cipher_text
+ * @property {string} mac
+ * @property {number} v Version of the AES
+ */
+export type AESType = {
+  iv: string,
+  cipher_text: string,
+  mac: string,
+  v: number,
+};
+
+export const AESValueSchema = {
+  name: 'AESCipherText',
+  properties: {
+    iv: 'string',
+    cipher_text: 'string',
+    mac: 'string',
+    v: 'int',
+  },
+};
+
+/**
+ * @typedef PreKeyBundleType
+ * @property {string} one_time_pre_key
+ * @property {AESType} private_part
+ */
+export type PreKeyBundleType = {
+  one_time_pre_key: string,
+  private_part: AESType,
+};
+
+export const PreKeyBundleSchema = {
+  name: 'PreKeyBundle',
+  properties: {
+    one_time_pre_key: 'string',
+    private_part: 'AESCipherText',
+  },
+};
+
+/**
+ * @typedef ProfileType
+ * @property {string} name
+ * @property {string} location
+ * @property {string} image
+ * @property {string} identity_pub_key
+ * @property {string} ethereum_pub_Key
+ * @property {string} chat_id_key
+ * @property {Date} timestamp
+ * @property {number} version
+ * @property {string} identity_key_signature
+ * @property {string} ethereum_key_signature
+ */
+export type ProfileType = {
+  name: string,
+  location: string,
+  image: string,
+  identity_pub_key: string,
+  ethereum_pub_Key: string,
+  chat_id_key: string,
+  timestamp: Date,
+  version: number,
+  identity_key_signature: string,
+  ethereum_key_signature: string,
+};
+
+export const ProfileSchema = {
+  name: 'Profile',
+  primaryKey: 'identity_pub_key',
+  properties: {
+    name: 'string',
+    location: 'string',
+    image: 'string',
+    identity_pub_key: 'string',
+    ethereum_pub_Key: 'string',
+    chat_id_key: 'string',
+    timestamp: 'date',
+    version: 'int',
+    identity_key_signature: 'string',
+    ethereum_key_signature: 'string',
+  },
+};
+
+/**
+ * @typedef SecretType
+ * @property {string} id
+ * @property {string} publicKey
+ * @property {string} accountId
+ * @property {AESType} secret
+ */
+export type SecretType = {
+  id: string,
+  publicKey: string,
+  accountId: string,
+  secret: AESType,
+};
+
+export const SharedSecretSchema = {
+  name: 'SharedSecret',
+  primaryKey: 'id',
+  properties: {
+    id: 'string',
+    publicKey: 'string',
+    accountId: 'string',
+    secret: 'AESCipherText',
+  },
+};
+
+/**
+ * @typedef ChatSessionType
+ * @property {string} secret
+ * @property {string} publicKey
+ * @property {string} username
+ * @property {string} accountId
+ * @property {Array<MessageType>} messages
+ */
+export type ChatSessionType = {
+  secret: string,
+  publicKey: string,
+  username: string,
+  accountId: string,
+  messages: Array<MessageType>,
+};
+
+export const ChatSessionSchema = {
+  name: 'ChatSession',
+  primaryKey: 'secret',
+  properties: {
+    secret: 'string',
+    publicKey: 'string',
+    username: 'string',
+    accountId: 'string',
+    messages: {
+      type: 'list',
+      objectType: 'Message',
+    },
+  },
+};
 
 export const MessageKeySchema = {
   name: 'MessageKey',
@@ -327,6 +466,72 @@ export const DAppSchema = {
 };
 
 /**
+ * @typedef DAppMessageType
+ * @property {string} dapp_id
+ * @property {string} type
+ * @property {string} group_id
+ * @property {string} params
+ * @property {boolean} should_send
+ * @property {boolean} should_render
+ */
+export type DAppMessageType = {
+  dapp_id: string,
+  type: string,
+  group_id: string,
+  params: string,
+  should_send: boolean,
+  should_render: boolean,
+};
+
+export const DAppMessageSchema = {
+  name: 'DAppMessage',
+  properties: {
+    dapp_id: 'string',
+    type: 'string',
+    group_id: 'string',
+    params: 'string',
+    should_send: 'bool',
+    should_render: 'bool',
+  },
+};
+
+/**
+ * @typedef MessageType
+ * @property {string} type
+ * @property {Date} timestamp
+ * @property {string} used_secret
+ * @property {string} additional_data
+ * @property {string} doubleratchet_message
+ * @property {string} signature
+ * @property {string} id_public_key
+ * @property {string} receiver
+ */
+export type MessageType = {
+  type: string,
+  timestamp: Date,
+  used_secret: string,
+  additional_data: string,
+  doubleratchet_message: string,
+  signature: string,
+  id_public_key: string,
+  receiver: string,
+};
+
+export const MessageSchema = {
+  name: 'Message',
+  properties: {
+    type: 'string',
+    timestamp: 'date',
+    used_secret: 'string',
+    additional_data: 'string',
+    doubleratchet_message: 'string',
+    signature: 'string',
+    id_public_key: 'string',
+    receiver: 'string',
+  },
+};
+
+/**
  * @typedef WalletType
  * @property {string} symbol Representation of the currency tokens.
  * @property {string} name Wallet's name.
@@ -342,11 +547,13 @@ export type WalletType = {
   decimals: number,
   balance: string,
   address: string,
+  accountId: string,
+  compoundId: string,
 }
 
 export const WalletSchema = {
   name: 'Wallet',
-  primaryKey: 'name',
+  primaryKey: 'compoundId',
   properties: {
     name: 'string',
     symbol: 'string',
@@ -354,6 +561,8 @@ export const WalletSchema = {
     decimals: 'int',
     balance: 'string',
     address: 'string',
+    accountId: 'string',
+    compoundId: 'string',
   },
 };
 
@@ -361,12 +570,19 @@ export const WalletSchema = {
 export const schemata =
   [
     AccountSchema,
+    AESValueSchema,
     AccountSettingsSchema,
     DHTValueSchema,
     AccountBalanceSchema,
     MessageJobSchema,
     TransactionJobSchema,
     NationSchema,
+    PreKeyBundleSchema,
+    ProfileSchema,
+    SharedSecretSchema,
+    ChatSessionSchema,
+    DAppMessageSchema,
+    MessageSchema,
     DAppSchema,
     MessageKeySchema,
     DoubleRatchetKeySchema,
