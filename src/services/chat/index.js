@@ -101,7 +101,6 @@ export default class ChatService {
   static async startChat(identityPublicKey: string, preKeyBundle: string): Promise<any> {
     let response = await Panthalassa.PanthalassaInitializeChat({ identityPublicKey, preKeyBundle });
     response = JSON.parse(response);
-    console.log('init chat: ', response);
     await ChatService.uploadMessage(response.message);
     return response;
   }
@@ -114,8 +113,7 @@ export default class ChatService {
       rawMsg, secretID, secret, receiverIdKey,
     });
     response = JSON.parse(response);
-    console.log('send human message: ', response);
-    await ChatService.uploadMessage(response.message);
+    await ChatService.uploadMessage(response);
     return response;
   }
 
@@ -123,7 +121,8 @@ export default class ChatService {
     return Panthalassa.PanthalassaDecryptMessage({ message, secret });
   }
 
-  static async uploadMessage(message: string): Promise {
+  static async uploadMessage(message: Object): Promise {
+    console.log('upload message: ', message);
     const URL = `${Config.CHAT_ENDPOINT}/message`;
     return fetch(URL, {
       body: JSON.stringify(message),

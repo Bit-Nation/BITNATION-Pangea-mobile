@@ -13,14 +13,14 @@ import {
 } from 'react-native-gifted-chat';
 import styles from './styles';
 
-import { showSpinner, hideSpinner, sendMessage } from '../../../actions/chat';
+import { showSpinner, hideSpinner, sendMessage, saveHumanMessage } from '../../../actions/chat';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import Loading from '../../../components/common/Loading';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import type { ChatSessionType } from '../../../types/Chat';
 import { getCurrentAccount } from '../../../reducers/accounts';
-import { convertFromDatabase } from '../../../utils/chat';
+import { getSelectedSession, convertFromDatabase } from '../../../utils/chat';
 
 type Props = {
   /**
@@ -40,9 +40,13 @@ type Props = {
    */
   isFetching: boolean,
   /**
-   * @desc The chat session
+   * @desc Shared secret for the chat session
    */
-  session: ChatSessionType,
+  secret: string,
+  /**
+   * @desc Public key of the current user
+   */
+  userPublicKey: string,
   /**
    * @desc Function to show spinner
    */
@@ -58,6 +62,12 @@ type Props = {
    * @param {Object} session Session object
    */
   sendMessage: (msg: string, session: Object, callback: () => void) => void,
+  /**
+   * @desc Function to save a human message
+   * @param {string} msg Message to be sent
+   * @param {Object} session Session object
+   */
+  saveMessage: (msg: string, session: Object) => void,
 };
 
 type State = {
@@ -70,30 +80,27 @@ type State = {
 class ChatScreen extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
+    const session = getSelectedSession(this.props.sessions, this.props.secret);
     this.state = {
-      messages: [],
+      session
     };
-  }
-
-  componentWillReceiveProps(nextProps: Props) {
-    const messages = nextProps.session.messages.map((m, i) => {
-      return convertFromDatabase(i, nextProps.user, m);
-    });
-    this.setState({messages});
   }
 
   onSend(messages: Array<any> = []) {
     const message = messages[0].text;
-    this.props.sendMessage(message, this.props.session, (response) => {
+    this.props.sendMessage(message, this.state.session, (response) => {
+      console.log('created human message: ', response);
       if (response) {
-        
+        this.props.saveMessage(response);
       }
     });
   }
 
   render() {
+    const session = getSelectedSession(this.props.sessions, this.props.secret);
+    const sortedMessages = session.decryptedMessages.slice().reverse();
     const sendingUser = {
-      _id: this.props.user ? this.props.user.id : 'anonymous',
+      _id: this.props.userPublicKey,
       name: this.props.user ? this.props.user.name : 'anonymous',
     };
     return (
@@ -102,7 +109,7 @@ class ChatScreen extends Component<Props, State> {
         <FakeNavigationBar navBarHidden />
 
         <GiftedChat
-          messages={this.state.messages}
+          messages={sortedMessages}
           onSend={messages => this.onSend(messages)}
           user={sendingUser}
           bottomOffset={Platform.OS === 'ios' ? 48.5 : 0}
@@ -131,12 +138,14 @@ const mapStateToProps = state => ({
   user: getCurrentAccount(state.accounts),
   isFetching: state.chat.isFetching,
   chatProfile: state.chat.chatProfile,
+  sessions: state.chat.chats,
 });
 
 const mapDispatchToProps = dispatch => ({
   showSpinner: () => dispatch(showSpinner()),
   hideSpinner: () => dispatch(hideSpinner()),
   sendMessage: (msg, session, callback) => dispatch(sendMessage(msg, session, callback)),
+  saveMessage: (message, session) => dispatch(saveHumanMessage(message, session)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChatScreen);

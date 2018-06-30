@@ -498,42 +498,36 @@ export const DAppMessageSchema = {
 /**
  * @typedef MessageType
  * @property {string} type
- * @property {Date} send_at
- * @property {string} additional_data
- * @property {SecretType} shared_secret
- * @property {DAppMessageType} dapp_message
- * @property {string} human_message
- * @property {string} signature
+ * @property {Date} timestamp
  * @property {string} used_secret
- * @property {string} identity_pub_key
- * @property {boolean} outgoing
+ * @property {string} additional_data
+ * @property {string} doubleratchet_message
+ * @property {string} signature
+ * @property {string} id_public_key
+ * @property {string} receiver
  */
 export type MessageType = {
   type: string,
-  send_at: Date,
-  additional_data: string,
-  shared_secret: SecretType,
-  dapp_message: DAppMessageType,
-  human_message: string,
-  signature: string,
+  timestamp: Date,
   used_secret: string,
-  identity_pub_key: string,
-  outgoing: boolean,
+  additional_data: string,
+  doubleratchet_message: string,
+  signature: string,
+  id_public_key: string,
+  receiver: string,
 };
 
 export const MessageSchema = {
   name: 'Message',
   properties: {
     type: 'string',
-    send_at: 'date',
-    additional_data: 'string',
-    shared_secret: 'SharedSecret',
-    dapp_message: 'DAppMessage',
-    human_message: 'string',
-    signature: 'string',
+    timestamp: 'date',
     used_secret: 'string',
-    identity_pub_key: 'string',
-    outgoing: 'bool',
+    additional_data: 'string',
+    doubleratchet_message: 'string',
+    signature: 'string',
+    id_public_key: 'string',
+    receiver: 'string',
   },
 };
 

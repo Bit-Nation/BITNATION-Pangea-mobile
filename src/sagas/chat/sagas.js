@@ -2,14 +2,14 @@ import { put, call, take, fork, cancel, select } from 'redux-saga/effects';
 import type { Realm } from 'realm';
 
 import {
-  SaveProfileAction, SavePreKeyBundleAction, NewChatSessionAction, OpenChatAction, SendMessageAction,
+  SaveProfileAction, SavePreKeyBundleAction, NewChatSessionAction, OpenChatAction, SendMessageAction, SaveHumanMessageAction,
   chatsUpdated, selectProfile,
   FETCH_MESSAGES, START_FETCH_MESSAGES, STOP_FETCH_MESSAGES,
 } from '../../actions/chat';
 import defaultDB from '../../services/database';
 import ChatService from '../../services/chat';
 import type { ChatSessionType as DBChatSession } from '../../services/database/schemata';
-import type { AccountType as DBAccount } from '../../services/database/schemata';
+// import type { AccountType as DBAccount } from '../../services/database/schemata';
 import { getCurrentAccountId, currentAccountBasedUpdate } from '../accounts/sagas';
 import { getCurrentAccount } from '../../reducers/accounts';
 import { byteToHexString } from '../../utils/key';
@@ -33,7 +33,69 @@ export function buildChatResults(db: Realm, accountId: string | null) {
  * @return {void}
  */
 export function* onCurrentAccountChange(collection: Realm.Result<DBChatSession>): Generator<*, *, *> {
-  yield put(chatsUpdated(collection));
+  const db = yield defaultDB;
+
+  // get current user
+  const { accounts } = yield select();
+  const currentAccount = getCurrentAccount(accounts);
+
+  const updatedSessions = [];
+  try {
+    for (let i = 0; i < collection.length; i++) {
+      const session = collection[i];
+      session.decryptedMessages = [];
+
+      // get shared secret from db
+      let sharedSecrets = yield call([db, 'objects'], 'SharedSecret');
+      sharedSecrets = yield call([sharedSecrets, 'filtered'], `id == '${session.secret}'`);
+      if (sharedSecrets.length === 0) {
+        return yield null;
+      }
+      const sharedSecret = sharedSecrets[0].secret;
+      console.log('decrypt using secret: ', sharedSecret);
+
+      // get opponent user object
+      let results = yield call([db, 'objects'], 'Profile');
+      results = yield call([results, 'filtered'], `identity_pub_key == '${session.publicKey}'`);
+      if (results.length === 0) {
+        return yield null;
+      }
+      const profile = results[0];
+
+      for (let j = 0; j < session.messages.length; j++) {
+        let additional_data = JSON.parse(session.messages[j].additional_data);
+        if (typeof additional_data !== 'object') {
+          additional_data = {};
+        }
+        let doubleratchet_message = JSON.parse(session.messages[j].doubleratchet_message);
+        if (typeof doubleratchet_message !== 'object') {
+          doubleratchet_message = {};
+        }
+        const message = {
+          ...session.messages[j],
+          doubleratchet_message,
+          additional_data,
+        };
+        console.log('decrypting message: ', message);
+        const decrypted = yield call(ChatService.decryptMessage, JSON.stringify(message), JSON.stringify(sharedSecret));
+        console.log('decrypted message: ', decrypted);
+        const messageObject = {
+          _id: j,
+          text: decrypted,
+          createdAt: message.timestamp,
+          user: {
+            _id: message.id_public_key,
+            name: session.publicKey === message.id_public_key ? profile.name : currentAccount.name,
+          },
+        };
+        session.decryptedMessages.push(messageObject);
+      }
+      updatedSessions.push(session);
+    }
+  } catch (e) {
+    console.log('message convert error: ', e);
+  }
+  yield put(chatsUpdated(updatedSessions));
 }
 
 /**
@@ -75,27 +137,6 @@ async function saveProfileIntoDatabase(profileObject: Object) {
  * @return {void}
  */
 export function* saveProfileSaga(action: SaveProfileAction) {
-  // const db = yield defaultDB;
-  // const { profile: { information, signatures } } = action;
-  // let results = yield call([db, 'objects'], 'Profile');
-  // results = yield call([results, 'filtered'], `identity_pub_key == '${information.identity_pub_key}'`);
-  // if (results.length === 0) {
-  //   const profile = {
-  //     name: information.name,
-  //     location: information.location,
-  //     image: information.image,
-  //     identity_pub_key: information.identity_pub_key,
-  //     ethereum_pub_Key: information.ethereum_pub_Key,
-  //     chat_id_key: byteToHexString(information.chat_id_key),
-  //     timestamp: information.timestamp,
-  //     version: information.version,
-  //     identity_key_signature: signatures.identity_key,
-  //     ethereum_key_signature: signatures.ethereum_key,
-  //   };
-  //   db.write(() => {
-  //     db.create('Profile', profile, true);
-  //   });
-  // }
   yield call(saveProfileIntoDatabase, action.profile);
 }
 
@@ -124,13 +165,15 @@ export function* createChatSession(action: NewChatSessionAction) {
   const db = yield defaultDB;
   const currentAccountId = yield call(getCurrentAccountId);
   const publicKey = action.profile.information.identity_pub_key;
-  const results = db.objects('ChatSession').filtered(`publicKey == '${publicKey}' && accountId == '${currentAccountId}'`);
+  let results = yield call([db, 'objects'], 'ChatSession');
+  results = yield call([results, 'filtered'], `publicKey == '${publicKey}' && accountId == '${currentAccountId}'`);
   let initMessage = null;
   if (results.length === 0) {
     try {
       const response = yield call(ChatService.getPreKeyBundle, publicKey);
-      // console.log('fetch bundle: ', response);
+      console.log('fetch bundle: ', response);
       initMessage = yield call(ChatService.startChat, publicKey, JSON.stringify(response.bundle));
+      console.log('initialization: ', initMessage);
     } catch (e) {
       yield call(action.callback, {
         status: 'fail',
@@ -154,9 +197,11 @@ export function* createChatSession(action: NewChatSessionAction) {
       db.create('ChatSession', chatSession, true);
     });
   }
+  const userPublicKey = yield call(ChatService.getPublicKey);
   yield call(action.callback, {
     status: 'success',
     secret: initMessage.message.used_secret,
+    userPublicKey,
   });
   yield put(selectProfile(action.profile));
 }
@@ -173,9 +218,15 @@ export function* openChatSession(action: OpenChatAction) {
   const profile = yield results[0] || null;
   if (profile) {
     yield put(selectProfile(profile));
-    yield call(action.callback, true);
+    const userPublicKey = yield call(ChatService.getPublicKey);
+    yield call(action.callback, {
+      status: 'success',
+      userPublicKey,
+    });
   } else {
-    yield call(action.callback, false);
+    yield call(action.callback, {
+      status: 'fail',
+    });
   }
 }
 
@@ -225,7 +276,6 @@ async function handleInitialMessage(message: Object, accountId: string): Promise
     console.log('handle init chat: ', response);
     const secret = JSON.parse(response);
     const profile = await ChatService.getProfile(message.id_public_key);
-    console.log('got profile: ', profile);
     await saveProfileIntoDatabase(profile);
 
     const sharedSecret = {
@@ -259,32 +309,32 @@ async function handleInitialMessage(message: Object, accountId: string): Promise
  * @return {Promise} A result promise
  */
 async function handleHumanMessage(message: Object, outgoing: boolean = false): Promise {
+  console.log('handle message: ', message);
   const db = await defaultDB;
   const results = await db.objects('ChatSession').filtered(`secret == '${message.used_secret}'`);
   if (results.length > 0) {
     const session = results[0];
-    // const messageObject = await ChatService.decryptMessage(JSON.stringify(message.doubleratchet_message), secret);
-    console.log('message session: ', session);
-    const sharedSecrets = await db.objects('SharedSecret').filtered(`id == '${message.used_secret}'`);
-    if (sharedSecrets.length > 0) {
-      const sharedSecret = sharedSecrets[0];
-      const newMessage = {
-        type: message.type,
-        send_at: message.timestamp,
-        additional_data: message.additional_data,
-        dapp_message: null,
-        human_message: message.doubleratchet_message,
-        signature: message.signature,
-        used_secret: message.used_secret,
-        identity_pub_key: message.id_public_key,
-        shared_secret: sharedSecret,
-        outgoing,
-      };
+    const newMessage = {
+      type: message.type,
+      timestamp: message.timestamp,
+      used_secret: message.used_secret,
+      additional_data: JSON.stringify(message.additional_data || {}),
+      doubleratchet_message: JSON.stringify(message.doubleratchet_message),
+      signature: message.signature,
+      id_public_key: message.id_public_key,
+      receiver: message.receiver,
+    };
+    const messages = session.messages.slice();
+    messages.push(newMessage);
+    console.log('updated messages: ', messages);
+    try {
       db.write(() => {
-        session.messages.push(newMessage);
+        session.messages = messages;
       });
-      return true;
+    } catch (e) {
+      console.log('session db update error: ', e);
     }
+    return true;
   }
   return null;
 }
@@ -296,7 +346,6 @@ export const getAccountState = state => state.accounts;
  * @return {void}
  */
 export function* fetchMessages() {
-  const db = yield defaultDB;
   try {
     const { accounts } = yield select();
     const currentAccount = getCurrentAccount(accounts);
@@ -309,11 +358,10 @@ export function* fetchMessages() {
     if (messages) {
       for (let i = 0; i < messages.length; i++) {
         const message = JSON.parse(messages[i]);
-        console.log('handle message: ', message);
         if (message.type === 'PROTOCOL_INITIALISATION') {
           yield call(handleInitialMessage, message, currentAccount.id);
-        } else {
-          yield call(handleHumanMessage, message, currentAccount.id);
+        } else if (message.type === 'HUMAN_MESSAGE') {
+          yield call(handleHumanMessage, message);
         }
       }
     }
@@ -329,13 +377,26 @@ export function* fetchMessages() {
  */
 export function* sendMessage(action: SendMessageAction) {
   const db = yield defaultDB;
-  let results = yield call([db, 'objects'], 'SharedSecret');
-  results = yield call([results, 'filtered'], `id == '${action.session.secret}'`);
-  const secret = yield results[0] || null;
-  if (secret) {
-    const messageObject = yield call(ChatService.createHumanMessage, action.message, secret.id, JSON.stringify(secret.secret), action.session.publicKey);
-    yield call(action.callback, messageObject);
-  } else {
-    yield call(action.callback, null);
+  try {
+    let results = yield call([db, 'objects'], 'SharedSecret');
+    results = yield call([results, 'filtered'], `id == '${action.session.secret}'`);
+    const secret = yield results[0] || null;
+    if (secret) {
+      const messageObject = yield call(ChatService.createHumanMessage, action.message, secret.id, JSON.stringify(secret.secret), action.session.publicKey);
+      yield call(action.callback, messageObject);
+    } else {
+      yield call(action.callback, null);
+    }
+  } catch (e) {
+    console.log('send message error: ', e);
   }
+}
+
+/**
+ * @desc Save a human message
+ * @param {SaveHumanMessageAction} action SAVE_HUMAN_MESSAGE action
+ * @return {void}
+ */
+export function* saveHumanMessage(action: SaveHumanMessageAction) {
+  yield call(handleHumanMessage, action.message, true);
 }
