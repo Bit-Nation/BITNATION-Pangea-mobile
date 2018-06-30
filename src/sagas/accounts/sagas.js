@@ -38,8 +38,9 @@ import { InvalidPasswordError, LoginFailedError } from '../../global/errors/acco
 import type { AccountType as DBAccount } from '../../services/database/schemata';
 import type { Account, Profile } from '../../types/Account';
 import type { SaveEditingAccountAction } from '../../actions/profile';
-import { cancelAccountEditing } from '../../actions/profile';
+import { cancelAccountEditing, setPublicKey } from '../../actions/profile';
 import { resetSettings } from '../../actions/settings';
+import ChatService from '../../services/chat';
 import type { State as AccountsState } from '../../reducers/accounts';
 
 export const getAccounts = (state: AccountsState) => state.accounts;
@@ -231,6 +232,9 @@ export function* login(userInfo: ({ accountId: string, accountStore?: string }),
     }
     return;
   }
+
+  const publicKey = yield call(ChatService.getPublicKey);
+  yield put(setPublicKey(publicKey));
 
   yield put(currentAccountIdChanged(accountId));
   yield put(loginTaskUpdated(TaskBuilder.success()));

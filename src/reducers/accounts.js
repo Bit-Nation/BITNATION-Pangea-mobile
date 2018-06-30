@@ -22,6 +22,7 @@ import {
   CHANGE_EDITING_ACCOUNT,
   DONE_ACCOUNT_EDITING,
   START_ACCOUNT_EDITING,
+  SET_PUBLIC_KEY,
 } from '../actions/profile';
 import type { Mnemonic } from '../types/Mnemonic';
 
@@ -55,6 +56,7 @@ export const initialState: State = {
   logout: TaskBuilder.empty(),
   accounts: [],
   currentCreation: null,
+  publicKey: '',
 };
 
 /**
@@ -134,6 +136,12 @@ export default (state: State = initialState, action: AccountsAction | ProfileAct
       return {
         ...state,
         currentCreation: null,
+      };
+    }
+    case SET_PUBLIC_KEY: {
+      return {
+        ...state,
+        publicKey: action.publicKey,
       };
     }
     default:

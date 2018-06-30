@@ -35,6 +35,10 @@ type Props = {
    */
   account: Account | null,
   /**
+   * @desc Current account public key
+   */
+  publicKey: string,
+  /**
    * @desc The whole accounts Redux state object.
    */
   accountsState: AccountsState,
@@ -124,7 +128,7 @@ class ProfileContainer extends Component<Props> {
 
   render() {
     const { creatingAccount, editingAccount } = this.props.accountsState;
-    const { account } = this.props;
+    const { account, publicKey } = this.props;
     const currentAccount = (account || creatingAccount);
     if (currentAccount == null) {
       return (<View />);
@@ -151,6 +155,7 @@ class ProfileContainer extends Component<Props> {
           editingAccount == null && account != null &&
           <ProfileScreen
             account={account}
+            publicKey={publicKey}
             navigator={this.props.navigator}
             onStartEditing={() => this.props.onStartAccountEditing(account)}
             makeStepForTestingMode={this.props.makeStepForTestingMode}
@@ -168,6 +173,7 @@ const mapStateToProps = state => ({
   account: getCurrentAccount(state.accounts),
   editingAccount: state.accounts.editingAccount,
   testingModeActive: state.testingMode.isActive,
+  publicKey: state.accounts.publicKey,
 });
 
 const mapDispatchToProps = dispatch => ({
