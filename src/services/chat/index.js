@@ -1,8 +1,7 @@
-// @flow
+// TODO Add Flow
 
 import { NativeModules } from 'react-native';
 import Config from 'react-native-config';
-// import type { Profile } from '../../types/Account';
 import defaultDB from '../database';
 import { byteToHexString } from '../../utils/key';
 
@@ -43,13 +42,13 @@ export default class ChatService {
       .then(response => JSON.parse(response.profile));
   }
 
-  static async getPublicKey(): Promise<string> {
+  static async getPublicKey(): Promise<any> {
     const publicKey = await Panthalassa.PanthalassaIdentityPublicKey();
     return publicKey;
   }
 
-  static async getPreKeyBundleCount(): Promise<number> {
-    const publicKey = ChatService.getPublicKey();
+  static async getPreKeyBundleCount(): Promise<any> {
+    const publicKey: string = ChatService.getPublicKey();
     const URL = `${Config.CHAT_ENDPOINT}/pre-key-bundle/count/${publicKey}`;
     return fetch(URL, {
       headers: {
@@ -117,11 +116,11 @@ export default class ChatService {
     return response;
   }
 
-  static async decryptMessage(message: string, secret: string): Promise {
+  static async decryptMessage(message: string, secret: string): Promise<any> {
     return Panthalassa.PanthalassaDecryptMessage({ message, secret });
   }
 
-  static async uploadMessage(message: Object): Promise {
+  static async uploadMessage(message: Object): Promise<any> {
     console.log('upload message: ', message);
     const URL = `${Config.CHAT_ENDPOINT}/message`;
     return fetch(URL, {
