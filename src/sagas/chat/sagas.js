@@ -2,6 +2,7 @@
 /* eslint-disable camelcase */
 /* eslint no-plusplus: ["error", { "allowForLoopAfterthoughts": true }] */
 
+import { delay } from 'redux-saga';
 import { put, call, take, fork, cancel, select } from 'redux-saga/effects';
 import type { Realm } from 'realm';
 
@@ -171,8 +172,9 @@ export function* createChatSession(action: NewChatSessionAction) {
   const publicKey = action.profile.information.identity_pub_key;
   let results = yield call([db, 'objects'], 'ChatSession');
   results = yield call([results, 'filtered'], `publicKey == '${publicKey}' && accountId == '${currentAccountId}'`);
-  let initMessage = null;
+  let usedSecret = null;
   if (results.length === 0) {
+    let initMessage = null;
     try {
       const response = yield call(ChatService.getPreKeyBundle, publicKey);
       console.log('fetch bundle: ', response);
@@ -183,6 +185,7 @@ export function* createChatSession(action: NewChatSessionAction) {
         status: 'fail',
       });
     }
+    usedSecret = initMessage.message.used_secret;
     const secret = {
       id: initMessage.message.used_secret,
       publicKey,
@@ -200,11 +203,13 @@ export function* createChatSession(action: NewChatSessionAction) {
       db.create('SharedSecret', secret, true);
       db.create('ChatSession', chatSession, true);
     });
+  } else {
+    usedSecret = results[0].secret;
   }
   const userPublicKey = yield call(ChatService.getPublicKey);
   yield call(action.callback, {
     status: 'success',
-    secret: initMessage.message.used_secret,
+    secret: usedSecret,
     userPublicKey,
   });
   yield put(selectProfile(action.profile));
@@ -234,8 +239,6 @@ export function* openChatSession(action: OpenChatAction) {
   }
 }
 
-export const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
-
 /**
  * @desc Fetch messages
  * @return {void}
@@ -243,7 +246,7 @@ export const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 export function* tick() {
   while (true) {
     yield put({ type: FETCH_MESSAGES });
-    yield call(delay, 8000);
+    yield delay(8000);
   }
 }
 
