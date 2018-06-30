@@ -35,7 +35,8 @@ export function* updateWalletToDb(walletsArray: WalletType[], amount: string, cu
   if (walletToSave === null) {
     return;
   }
-  const walletToDB = convertToDatabase(walletToSave);
+  const accountId = yield call(getCurrentAccountId);
+  const walletToDB = convertToDatabase(walletToSave, accountId);
   BigNumber.config({ DECIMAL_PLACES: 18 });
   const balanceBNEth = new BigNumber(walletToDB.balance);
   const amountNEth = new BigNumber(amount);
@@ -87,7 +88,8 @@ export function* sendMoneySaga(action: SendMoneyAction): Generator<*, *, *> {
  */
 export function* getDbWallets(): Generator<*, *, *> {
   const db = yield defaultDB;
-  const results = db.objects('Wallet');
+  const accountId = yield call(getCurrentAccountId);
+  const results = db.objects('Wallet').filtered(`accountId == '${accountId}'`);
   return yield results;
 }
 
@@ -98,11 +100,13 @@ export function* getDbWallets(): Generator<*, *, *> {
  */
 export function* saveWalletsToDb(walletsArray: WalletType[]): Generator<*, *, *> {
   const db = yield defaultDB;
-  const ethWallet = convertToDatabase(walletsArray[0]);
-  const patWallet = convertToDatabase(walletsArray[1]);
+  const accountId = yield call(getCurrentAccountId);
+
+  const ethWallet = convertToDatabase(walletsArray[0], accountId);
+  const patWallet = convertToDatabase(walletsArray[1], accountId);
   db.write(() => {
-    db.create('Wallet', ethWallet);
-    db.create('Wallet', patWallet);
+    db.create('Wallet', ethWallet, true);
+    db.create('Wallet', patWallet, true);
   });
 }
 
@@ -118,12 +122,13 @@ export function* updateWalletsToDb(walletsArray: WalletType[]): Generator<*, *, 
   if (walletEth === null || walletPat === null) {
     return;
   }
-  const walletEthToSave = convertToDatabase(walletEth);
-  const walletPatToSave = convertToDatabase(walletPat);
+  const accountId = yield call(getCurrentAccountId);
+  const walletEthToSave = convertToDatabase(walletEth, accountId);
+  const walletPatToSave = convertToDatabase(walletPat, accountId);
 
   db.write(() => {
-    db.create('Wallet', { name: walletEthToSave.name, balance: walletEthToSave.balance }, true);
-    db.create('Wallet', { name: walletPatToSave.name, balance: walletPatToSave.balance }, true);
+    db.create('Wallet', walletEthToSave, true);
+    db.create('Wallet', walletPatToSave, true);
   });
 }
 
@@ -142,6 +147,7 @@ export function* updateWalletList(): Generator<*, *, *> {
 
   let walletsWithoutBalance: WalletType[];
   const walletsFromDb: DBWallet[] = yield call(getDbWallets);
+
   if (walletsFromDb.length === 0) {
     walletsWithoutBalance = yield call([walletService, 'getWallets']);
     yield call(saveWalletsToDb, walletsWithoutBalance);
