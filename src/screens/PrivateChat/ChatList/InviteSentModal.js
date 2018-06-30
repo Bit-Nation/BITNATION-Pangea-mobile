@@ -4,7 +4,6 @@ import React from 'react';
 import {
   View,
   Modal,
-  Image,
 } from 'react-native';
 import { Text } from 'native-base';
 

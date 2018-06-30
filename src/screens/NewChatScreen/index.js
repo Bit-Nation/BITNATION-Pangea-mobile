@@ -31,7 +31,14 @@ type Actions = {
 
 }
 
-class NewChatScreen extends NavigatorComponent<Props & Actions> {
+type State = {
+  /**
+   * @desc key Key entered for new chat
+   */
+  key: string,
+}
+
+class NewChatScreen extends NavigatorComponent<Props & Actions, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
