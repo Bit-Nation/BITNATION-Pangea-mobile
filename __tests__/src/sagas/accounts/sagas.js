@@ -23,8 +23,10 @@ import {
 } from '../../../../src/actions/accounts';
 import TaskBuilder from '../../../../src/utils/asyncTask';
 import AccountsService from '../../../../src/services/accounts';
+import ChatService from '../../../../src/services/chat';
 import { InvalidPasswordError, LoginFailedError } from '../../../../src/global/errors/accounts';
-import { cancelAccountEditing, saveEditingAccount } from '../../../../src/actions/profile';
+import { cancelAccountEditing, saveEditingAccount, setPublicKey } from '../../../../src/actions/profile';
+import { startFetchMessages, stopFetchMessages } from '../../actions/chat';
 
 const partialAccountMock: PartialAccount = {
   ...buildEmptyAccount(),
@@ -273,6 +275,9 @@ describe('login', () => {
     expect(last.done).toBeTruthy();
 
     // successful path
+    expect(gen.next().value).toEqual(call(ChatService.getPublicKey));
+    const pubkey = 'pubkey';
+    expect(gen.next('pubkey').value).toEqual(put(setPublicKey(pubkey)));
     expect(gen.next(true).value).toEqual(put(currentAccountIdChanged('ID')));
     expect(gen.next().value).toEqual(put(loginTaskUpdated(TaskBuilder.success())));
 
@@ -284,6 +289,7 @@ describe('login', () => {
 
 test('logout', () => {
   const gen = logout();
+  expect(gen.next().value).toEqual(put(stopFetchMessages()));
   expect(gen.next().value).toEqual(call(AccountsService.logout));
   expect(gen.next().value).toEqual(put(currentAccountIdChanged(null)));
 
