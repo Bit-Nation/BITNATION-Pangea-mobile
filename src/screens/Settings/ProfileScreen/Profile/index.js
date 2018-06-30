@@ -32,6 +32,10 @@ export type Props = {
    */
   account: Account,
   /**
+   * @desc Current account public key
+   */
+  publicKey: string,
+  /**
    * @desc Flag that determines if testing mode is activated
    */
   testingModeActive: boolean,
