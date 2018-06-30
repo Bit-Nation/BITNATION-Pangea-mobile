@@ -98,6 +98,7 @@ class ChatScreen extends Component<Props, State> {
 
   render() {
     const session = getSelectedSession(this.props.sessions, this.props.secret);
+    const sortedMessages = session.decryptedMessages.slice().reverse();
     const sendingUser = {
       _id: this.props.userPublicKey,
       name: this.props.user ? this.props.user.name : 'anonymous',
@@ -108,7 +109,7 @@ class ChatScreen extends Component<Props, State> {
         <FakeNavigationBar navBarHidden />
 
         <GiftedChat
-          messages={session.decryptedMessages}
+          messages={sortedMessages}
           onSend={messages => this.onSend(messages)}
           user={sendingUser}
           bottomOffset={Platform.OS === 'ios' ? 48.5 : 0}
