@@ -1,4 +1,5 @@
-// @flow
+// TODO add FLOW
+/* eslint-disable */
 
 import React from 'react';
 import {

@@ -1,4 +1,4 @@
-// @flow
+// TODO add FLOW
 
 import React from 'react';
 import { connect } from 'react-redux';

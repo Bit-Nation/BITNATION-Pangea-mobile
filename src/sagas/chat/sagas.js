@@ -1,3 +1,7 @@
+/* eslint-disable consistent-return */
+/* eslint-disable camelcase */
+/* eslint no-plusplus: ["error", { "allowForLoopAfterthoughts": true }] */
+
 import { put, call, take, fork, cancel, select } from 'redux-saga/effects';
 import type { Realm } from 'realm';
 
@@ -9,7 +13,7 @@ import {
 import defaultDB from '../../services/database';
 import ChatService from '../../services/chat';
 import type { ChatSessionType as DBChatSession } from '../../services/database/schemata';
-import type { AccountType as DBAccount } from '../../services/database/schemata';
+// import type { AccountType as DBAccount } from '../../services/database/schemata';
 import { getCurrentAccountId, currentAccountBasedUpdate } from '../accounts/sagas';
 import { getCurrentAccount } from '../../reducers/accounts';
 import { byteToHexString } from '../../utils/key';
@@ -32,7 +36,7 @@ export function buildChatResults(db: Realm, accountId: string | null) {
  * @param {*} collection Updated chat collection
  * @return {void}
  */
-export function* onCurrentAccountChange(collection: Realm.Result<ChatSessionType>): Generator<*, *, *> {
+export function* onCurrentAccountChange(collection: Realm.Result<DBChatSession>): Generator<*, *, *> {
   const db = yield defaultDB;
 
   // get current user
@@ -305,10 +309,9 @@ async function handleInitialMessage(message: Object, accountId: string): Promise
 /**
  * @desc Handle human message
  * @param {Object} message Human message object
- * @param {boolean} outgoing Flag for indicating message direction
  * @return {Promise} A result promise
  */
-async function handleHumanMessage(message: Object, outgoing: boolean = false): Promise {
+async function handleHumanMessage(message: Object): Promise {
   console.log('handle message: ', message);
   const db = await defaultDB;
   const results = await db.objects('ChatSession').filtered(`secret == '${message.used_secret}'`);
@@ -398,5 +401,5 @@ export function* sendMessage(action: SendMessageAction) {
  * @return {void}
  */
 export function* saveHumanMessage(action: SaveHumanMessageAction) {
-  yield call(handleHumanMessage, action.message, true);
+  yield call(handleHumanMessage, action.message);
 }
