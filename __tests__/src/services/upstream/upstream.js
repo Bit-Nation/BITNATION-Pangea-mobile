@@ -1,3 +1,5 @@
+import { Buffer } from 'buffer';
+
 import UpstreamService from '../../../../src/services/upstream/upstream';
 import { api_proto as apiProto } from '../../../../src/services/upstream/compiled';
 import { buildRandomPathDatabase } from '../../../../src/services/database';
@@ -94,7 +96,7 @@ const saveDApp = {
 
 const { Request } = apiProto;
 
-const prepareRequest = object => Request.encode(object).finish();
+const prepareRequest = object => ({ upstream: Buffer.from(Request.encode(object).finish()).toString('base64') });
 
 describe('Request', () => {
   test('encoding', () => {
