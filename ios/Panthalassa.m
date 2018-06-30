@@ -280,7 +280,7 @@ RCT_REMAP_METHOD(PanthalassaDecryptMessage,
   NSString *response;
   NSError *error = nil;
   
-  response = PanthalassaDecryptMessage([RCTConvert NSString:config[@"message"]],
+  response =  PanthalassaDecryptMessage([RCTConvert NSString:config[@"message"]],
                                            [RCTConvert NSString:config[@"secret"]],
                                            &error);
   
@@ -459,6 +459,7 @@ RCT_REMAP_METHOD(PanthalassaStartDApp,
   NSError *error = nil;
   
   response = PanthalassaStartDApp([RCTConvert NSString:config[@"dApp"]],
+                                  [[RCTConvert NSNumber:config[@"timeout"]] longValue],
                                  &error);
   
   NSNumber *val = [NSNumber numberWithBool:response];
