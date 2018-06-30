@@ -165,13 +165,15 @@ export function* createChatSession(action: NewChatSessionAction) {
   const db = yield defaultDB;
   const currentAccountId = yield call(getCurrentAccountId);
   const publicKey = action.profile.information.identity_pub_key;
-  const results = db.objects('ChatSession').filtered(`publicKey == '${publicKey}' && accountId == '${currentAccountId}'`);
+  let results = yield call([db, 'objects'], 'ChatSession');
+  results = yield call([results, 'filtered'], `publicKey == '${publicKey}' && accountId == '${currentAccountId}'`);
   let initMessage = null;
   if (results.length === 0) {
     try {
       const response = yield call(ChatService.getPreKeyBundle, publicKey);
-      // console.log('fetch bundle: ', response);
+      console.log('fetch bundle: ', response);
       initMessage = yield call(ChatService.startChat, publicKey, JSON.stringify(response.bundle));
+      console.log('initialization: ', initMessage);
     } catch (e) {
       yield call(action.callback, {
         status: 'fail',
@@ -195,9 +197,11 @@ export function* createChatSession(action: NewChatSessionAction) {
       db.create('ChatSession', chatSession, true);
     });
   }
+  const userPublicKey = yield call(ChatService.getPublicKey);
   yield call(action.callback, {
     status: 'success',
     secret: initMessage.message.used_secret,
+    userPublicKey,
   });
   yield put(selectProfile(action.profile));
 }
@@ -214,9 +218,15 @@ export function* openChatSession(action: OpenChatAction) {
   const profile = yield results[0] || null;
   if (profile) {
     yield put(selectProfile(profile));
-    yield call(action.callback, true);
+    const userPublicKey = yield call(ChatService.getPublicKey);
+    yield call(action.callback, {
+      status: 'success',
+      userPublicKey,
+    });
   } else {
-    yield call(action.callback, false);
+    yield call(action.callback, {
+      status: 'fail',
+    });
   }
 }
 
@@ -266,7 +276,6 @@ async function handleInitialMessage(message: Object, accountId: string): Promise
     console.log('handle init chat: ', response);
     const secret = JSON.parse(response);
     const profile = await ChatService.getProfile(message.id_public_key);
-    console.log('got profile: ', profile);
     await saveProfileIntoDatabase(profile);
 
     const sharedSecret = {
