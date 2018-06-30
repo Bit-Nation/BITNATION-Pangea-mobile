@@ -105,14 +105,12 @@ const Screens = {
   CHAT_NATIONS_SCREEN: {
     screen: 'Pangea.ChatNationsScreen',
     label: i18n.t('screens.chat.tabTitle'),
-    icon: AssetsImages.TabIcons.chat,
     title: '',
     navigatorStyle,
   },
   NEW_CHAT_SCREEN: {
     screen: 'Pangea.NewChatScreen',
     label: i18n.t('screens.chat.newConversation'),
-    icon: AssetsImages.TabIcons.chat,
     title: '',
     navigatorStyle,
   },
