@@ -143,7 +143,6 @@ const Screens = {
   PROFILE_SCREEN: {
     screen: 'Pangea.ProfileScreen',
     label: i18n.t('screens.profile.tabTitle'),
-    icon: AssetsImages.TabIcons.profile,
     title: '', // i18n.t('screens.profile.title'),
     navigatorStyle,
   },

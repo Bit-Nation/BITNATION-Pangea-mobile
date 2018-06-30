@@ -68,7 +68,6 @@ export const initialState: State = {
 export default (state: State = initialState, action: AccountsAction | ProfileAction): State => {
   switch (action.type) {
     case ACCOUNTS_LIST_UPDATED:
-      console.log('accounts: ', action.accounts);
       return {
         ...state,
         accounts: action.accounts,
