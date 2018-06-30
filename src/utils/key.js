@@ -1,4 +1,6 @@
 /* eslint-disable import/prefer-default-export */
+/* eslint-disable no-undef */
+/* eslint no-plusplus: ["error", { "allowForLoopAfterthoughts": true }] */
 // TODO add FLOW
 
 import _ from 'lodash';
@@ -58,6 +60,7 @@ export function base64ToHex(str: string): string {
   return hex.join('');
 }
 
+/* eslint-disable */
 /**
  * @desc Convert byte array into Hex string
  * @param {byte[]} byteArray byte array to be converted

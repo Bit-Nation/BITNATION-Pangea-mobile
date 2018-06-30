@@ -1,3 +1,7 @@
+/* eslint-disable consistent-return */
+/* eslint-disable camelcase */
+/* eslint no-plusplus: ["error", { "allowForLoopAfterthoughts": true }] */
+
 import { put, call, take, fork, cancel, select } from 'redux-saga/effects';
 import type { Realm } from 'realm';
 
@@ -305,10 +309,9 @@ async function handleInitialMessage(message: Object, accountId: string): Promise
 /**
  * @desc Handle human message
  * @param {Object} message Human message object
- * @param {boolean} outgoing Flag for indicating message direction
  * @return {Promise} A result promise
  */
-async function handleHumanMessage(message: Object, outgoing: boolean = false): Promise {
+async function handleHumanMessage(message: Object): Promise {
   console.log('handle message: ', message);
   const db = await defaultDB;
   const results = await db.objects('ChatSession').filtered(`secret == '${message.used_secret}'`);
@@ -398,5 +401,5 @@ export function* sendMessage(action: SendMessageAction) {
  * @return {void}
  */
 export function* saveHumanMessage(action: SaveHumanMessageAction) {
-  yield call(handleHumanMessage, action.message, true);
+  yield call(handleHumanMessage, action.message);
 }
