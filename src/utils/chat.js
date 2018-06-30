@@ -24,24 +24,5 @@ export default function createGiftedChatMessageObject(messagesData: Array<any>):
   return messages;
 }
 
-/**
- * @desc Convert message object into gifted chat format
- * @param {MessageType} messageData Message object from database
- * @param {number} id Message Id
- * @param {Object} profile User profile
- * @returns {GiftedChatMessageType} Message object
- */
-export function convertFromDatabase(id: number, profile: Object, messageData: MessageType): GiftedChatMessageType {
-  return {
-    _id: id,
-    text: messageData.text,
-    createdAt: messageData.createdAt,
-    user: {
-      _id: messageData.userId,
-      name: profile.username,
-    },
-  };
-}
-
 export const getSelectedSession = (sessions: Array, secret: string) =>
   _.find(sessions, session => session.secret === secret) || null;
