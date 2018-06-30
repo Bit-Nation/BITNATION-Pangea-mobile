@@ -1,16 +1,15 @@
-// @flow
+// TODO Add Flow
 
 import { NativeModules } from 'react-native';
 import Config from 'react-native-config';
-
-import type { Profile } from '../../types/Account';
 import defaultDB from '../database';
 import { byteToHexString } from '../../utils/key';
+
 
 const { Panthalassa } = NativeModules;
 
 export default class ChatService {
-  static async uploadProfile(profile: string): Promise {
+  static async uploadProfile(profile: string): Promise<any> {
     console.log('profile upload: ', JSON.parse(profile));
     const URL = `${Config.CHAT_ENDPOINT}/profile`;
     await fetch(URL, {
@@ -30,7 +29,7 @@ export default class ChatService {
     });
   }
 
-  static async getProfile(publicKey: string): Promise {
+  static async getProfile(publicKey: string): Promise<any> {
     const URL = `${Config.CHAT_ENDPOINT}/profile/${publicKey}`;
     return fetch(URL, {
       headers: {
@@ -43,13 +42,13 @@ export default class ChatService {
       .then(response => JSON.parse(response.profile));
   }
 
-  static async getPublicKey(): Promise<string> {
+  static async getPublicKey(): Promise<any> {
     const publicKey = await Panthalassa.PanthalassaIdentityPublicKey();
     return publicKey;
   }
 
-  static async getPreKeyBundleCount(): Promise<number> {
-    const publicKey = ChatService.getPublicKey();
+  static async getPreKeyBundleCount(): Promise<any> {
+    const publicKey: string = ChatService.getPublicKey();
     const URL = `${Config.CHAT_ENDPOINT}/pre-key-bundle/count/${publicKey}`;
     return fetch(URL, {
       headers: {
@@ -61,7 +60,7 @@ export default class ChatService {
       .then(response => response.json());
   }
 
-  static async getPreKeyBundle(publicKey: string): Promise {
+  static async getPreKeyBundle(publicKey: string): Promise<any> {
     const URL = `${Config.CHAT_ENDPOINT}/pre-key-bundle/${publicKey}`;
     return fetch(URL, {
       headers: {
@@ -73,7 +72,7 @@ export default class ChatService {
       .then(response => response.json());
   }
 
-  static async uploadPreKeyBundle(): Promise {
+  static async uploadPreKeyBundle(): Promise<any> {
     let preKeyBundle = await Panthalassa.PanthalassaNewPreKeyBundle();
     preKeyBundle = JSON.parse(preKeyBundle);
     console.log('pre key bundle: ', preKeyBundle);
@@ -104,7 +103,6 @@ export default class ChatService {
     await ChatService.uploadMessage(response.message);
     return response;
   }
-
   static async handleChatInit(message: string, preKeyBundlePrivatePart: string): Promise<any> {
     return Panthalassa.PanthalassaHandleInitialMessage({ message, preKeyBundlePrivatePart });
   }
@@ -118,11 +116,11 @@ export default class ChatService {
     return response;
   }
 
-  static async decryptMessage(message: string, secret: string): Promise {
+  static async decryptMessage(message: string, secret: string): Promise<any> {
     return Panthalassa.PanthalassaDecryptMessage({ message, secret });
   }
 
-  static async uploadMessage(message: Object): Promise {
+  static async uploadMessage(message: Object): Promise<any> {
     console.log('upload message: ', message);
     const URL = `${Config.CHAT_ENDPOINT}/message`;
     return fetch(URL, {
@@ -135,7 +133,7 @@ export default class ChatService {
     });
   }
 
-  static async loadMessages(publicKey: string): Promise {
+  static async loadMessages(publicKey: string): Promise<any> {
     const URL = `${Config.CHAT_ENDPOINT}/missing-messages/${publicKey}`;
     return fetch(URL, {
       headers: {

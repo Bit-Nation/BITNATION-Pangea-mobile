@@ -1,4 +1,4 @@
-// @flow
+// TODO Add Flow
 /* eslint-disable */
 
 import React, { Component } from 'react';
@@ -20,7 +20,7 @@ import Loading from '../../../components/common/Loading';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import type { ChatSessionType } from '../../../types/Chat';
 import { getCurrentAccount } from '../../../reducers/accounts';
-import { getSelectedSession, convertFromDatabase } from '../../../utils/chat';
+import { getSelectedSession } from '../../../utils/chat';
 
 type Props = {
   /**
