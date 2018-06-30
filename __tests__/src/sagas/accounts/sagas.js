@@ -236,7 +236,9 @@ describe('login', () => {
     expect(last.done).toBeTruthy();
 
     // successful path
-    expect(gen.next(true).value).toEqual(put(currentAccountIdChanged('ID')));
+    expect(gen.next(true).value).toEqual(call(ChatService.getPublicKey));
+    expect(gen.next('pubkey').value).toEqual(put(setPublicKey('pubkey')));
+    expect(gen.next().value).toEqual(put(currentAccountIdChanged('ID')));
     expect(gen.next().value).toEqual(put(loginTaskUpdated(TaskBuilder.success())));
     expect(gen.next().value).toEqual(put(startFetchMessages()));
   });
@@ -276,10 +278,9 @@ describe('login', () => {
     expect(last.done).toBeTruthy();
 
     // successful path
-    expect(gen.next().value).toEqual(call(ChatService.getPublicKey));
-    const pubkey = 'pubkey';
-    expect(gen.next('pubkey').value).toEqual(put(setPublicKey(pubkey)));
-    expect(gen.next(true).value).toEqual(put(currentAccountIdChanged('ID')));
+    expect(gen.next(true).value).toEqual(call(ChatService.getPublicKey));
+    expect(gen.next('pubkey').value).toEqual(put(setPublicKey('pubkey')));
+    expect(gen.next().value).toEqual(put(currentAccountIdChanged('ID')));
     expect(gen.next().value).toEqual(put(loginTaskUpdated(TaskBuilder.success())));
     expect(gen.next().value).toEqual(put(startFetchMessages()));
 
