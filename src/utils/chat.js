@@ -1,7 +1,7 @@
 // @flow
 
 import _ from 'lodash';
-import type { MessageType, GiftedChatMessageType, GiftedChatUserType } from '../types/Chat';
+import type { MessageType, GiftedChatMessageType } from '../types/Chat';
 
 /**
  * @desc Function that creates the list of messages to be consumed by GiftedChat
@@ -26,9 +26,9 @@ export default function createGiftedChatMessageObject(messagesData: Array<any>):
 
 /**
  * @desc Convert message object into gifted chat format
- * @param {MessageType} messageData Message object from database
  * @param {number} id Message Id
  * @param {Object} profile User profile
+ * @param {MessageType} messageData Message object from database
  * @returns {GiftedChatMessageType} Message object
  */
 export function convertFromDatabase(id: number, profile: Object, messageData: MessageType): GiftedChatMessageType {
