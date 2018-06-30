@@ -242,8 +242,8 @@ export const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
  */
 export function* tick() {
   while (true) {
-    yield call(delay, 8000);
     yield put({ type: FETCH_MESSAGES });
+    yield call(delay, 8000);
   }
 }
 
