@@ -42,7 +42,6 @@ export default (state: State = initialState, action: Action): State => {
         isFetching: false,
       };
     case CHATS_UPDATED:
-      console.log('chats updated: ', action.chats);
       return {
         ...state,
         chats: action.chats.slice(),
