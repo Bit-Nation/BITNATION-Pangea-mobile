@@ -401,6 +401,7 @@
     "profile": {
       "title": "Profile",
       "tabTitle": "$t(tabbar.profile)",
+      "copyKey": "Copy Public Key",
       "empty": {
         "createProfilePanel": {
           "title": "Become a World Citizen",
