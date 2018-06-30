@@ -44,6 +44,10 @@ type Props = {
    */
   secret: string,
   /**
+   * @desc Public key of the current user
+   */
+  userPublicKey: string,
+  /**
    * @desc Function to show spinner
    */
   showSpinner: () => void,
@@ -78,7 +82,6 @@ class ChatScreen extends Component<Props, State> {
     super(props);
     const session = getSelectedSession(this.props.sessions, this.props.secret);
     this.state = {
-      messages: [],
       session
     };
   }
@@ -96,7 +99,7 @@ class ChatScreen extends Component<Props, State> {
   render() {
     const session = getSelectedSession(this.props.sessions, this.props.secret);
     const sendingUser = {
-      _id: this.props.user ? this.props.user.id : 'anonymous',
+      _id: this.props.userPublicKey,
       name: this.props.user ? this.props.user.name : 'anonymous',
     };
     return (
@@ -105,7 +108,7 @@ class ChatScreen extends Component<Props, State> {
         <FakeNavigationBar navBarHidden />
 
         <GiftedChat
-          messages={this.state.messages}
+          messages={session.decryptedMessages}
           onSend={messages => this.onSend(messages)}
           user={sendingUser}
           bottomOffset={Platform.OS === 'ios' ? 48.5 : 0}
