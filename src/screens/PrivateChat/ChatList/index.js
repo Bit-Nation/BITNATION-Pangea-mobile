@@ -47,7 +47,7 @@ type Props = {
    * @param {string} key Public key of the chat session
    * @param {func} callback
    */
-  onItemSelect: (key: string, callback: (success: boolean) => void) => void,
+  onItemSelect: (key: string, callback: (result: Object) => void) => void,
   /**
    * @desc Function to initialize a new chat
    * @param {Object} profile Profile of the user
@@ -122,7 +122,10 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
       if (result.status === 'success') {
         this.props.navigator.push({
           ...screen('PRIVATE_CHAT_SCREEN'),
-          passProps: { secret: result.secret },
+          passProps: {
+            secret: result.secret,
+            userPublicKey: result.userPublicKey,
+          },
         });
       } else {
         console.log('create session error: ', result);
@@ -134,11 +137,14 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
   }
 
   onChatSelect = (item) => {
-    this.props.onItemSelect(item.publicKey, (success) => {
-      if (success) {
+    this.props.onItemSelect(item.publicKey, (result) => {
+      if (result.status === 'success') {
         this.props.navigator.push({
           ...screen('PRIVATE_CHAT_SCREEN'),
-          passProps: { secret: item.secret },
+          passProps: {
+            secret: item.secret,
+            userPublicKey: result.userPublicKey,
+          },
         });
       }
     });
