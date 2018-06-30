@@ -25,7 +25,7 @@ import TaskBuilder from '../../../../src/utils/asyncTask';
 import AccountsService from '../../../../src/services/accounts';
 import ChatService from '../../../../src/services/chat';
 import { InvalidPasswordError, LoginFailedError } from '../../../../src/global/errors/accounts';
-import { cancelAccountEditing, saveEditingAccount } from '../../../../src/actions/profile';
+import { cancelAccountEditing, saveEditingAccount, setPublicKey } from '../../../../src/actions/profile';
 import { startFetchMessages, stopFetchMessages } from '../../../../src/actions/chat';
 
 const partialAccountMock: PartialAccount = {
