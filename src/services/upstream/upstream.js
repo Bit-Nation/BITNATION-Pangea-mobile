@@ -4,6 +4,8 @@ import ethers from 'ethers';
 import { NativeEventEmitter, NativeModules } from 'react-native';
 import Realm from 'realm';
 import { Navigation } from 'react-native-navigation';
+// $FlowFixMe
+import { Buffer } from 'buffer';
 
 // Javascript static code of the proto file
 import { api_proto as apiProto } from './compiled';
@@ -39,7 +41,7 @@ export default class UpstreamService {
 
   handleRequest = async (request: any) => {
     try {
-      const decoded = Request.decode(request);
+      const decoded = Request.decode(Buffer.from(request.upstream, 'base64'));
 
       if (decoded.dRKeyStoreGet !== null) {
         return this.handleDRKeyStoreGet(decoded.requestID, decoded.dRKeyStoreGet);
