@@ -1,5 +1,4 @@
 // @flow
-/* eslint-disable */
 
 import React, { Component } from 'react';
 import { View, Platform } from 'react-native';
@@ -221,8 +220,8 @@ class ChatScreen extends Component<Props, State> {
             <Bubble
               {...props}
               customTextStyle={styles.customTextStyle}
-              wrapperStyle={{left: styles.leftBubbleWrapper, right: styles.rightBubbleWrapper}}
-              textStyle={{left: styles.leftTextStyle, right: styles.rightTextStyle}}
+              wrapperStyle={{ left: styles.leftBubbleWrapper, right: styles.rightBubbleWrapper }}
+              textStyle={{ left: styles.leftTextStyle, right: styles.rightTextStyle }}
             />
           )}
         />
