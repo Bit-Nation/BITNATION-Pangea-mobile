@@ -1,4 +1,4 @@
-// TODO add FLOW
+// @flow
 
 import React from 'react';
 import { connect } from 'react-redux';
@@ -81,6 +81,8 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
     };
   }
 
+  actionSheet: any;
+
   onChatAction = (index) => {
     switch (index) {
       case 0:
@@ -89,18 +91,16 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
       default:
         break;
     }
-  }
+  };
 
   getPublicKeyFromClipboard = async () => {
     const pubKey = await Clipboard.getString();
-    console.log('pub key: ', pubKey);
     await this.getUserProfile(pubKey);
-  }
+  };
 
   getUserProfile = async (publicKey) => {
     try {
       const profile = await ChatService.getProfile(publicKey);
-      console.log('fetch profile: ', profile);
       this.setState({
         publicKey,
         profile,
@@ -115,7 +115,7 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
         showModal: 'invalid_key',
       });
     }
-  }
+  };
 
   startChat = async () => {
     this.props.createNewSession(this.state.profile, (result) => {
@@ -134,7 +134,7 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
         showModal: '',
       });
     });
-  }
+  };
 
   onChatSelect = (item) => {
     this.props.onItemSelect(item.publicKey, (result) => {
@@ -148,7 +148,7 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
         });
       }
     });
-  }
+  };
 
   dismissModal = () => {
     this.setState({
@@ -156,11 +156,11 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
       profile: null,
       showModal: '',
     });
-  }
+  };
 
   showActionSheet = () => {
     this.actionSheet.show();
-  }
+  };
 
   render() {
     const sortedSessions = _.sortBy(this.props.chatSessions, session => session.username);
@@ -207,7 +207,9 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
           <Text>+</Text>
         </Fab>
         <ActionSheet
-          ref={(o) => { this.actionSheet = o; }}
+          ref={(o) => {
+            this.actionSheet = o;
+          }}
           options={newChatOptions}
           cancelButtonIndex={newChatOptions.length - 1}
           onPress={this.onChatAction}

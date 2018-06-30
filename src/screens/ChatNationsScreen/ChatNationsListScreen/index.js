@@ -1,33 +1,23 @@
-// TODO add FLOW
-/* eslint-disable */
+// @flow
 
 import React from 'react';
 import {
   View,
   SectionList,
-  Clipboard,
 } from 'react-native';
 import _ from 'lodash';
-import { Fab, Text } from 'native-base';
-import ActionSheet from 'react-native-actionsheet';
 
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import styles from './styles';
-import { screen } from '../../../global/Screens';
 import ChatListItem from '../../../components/common/ChatListItem';
 import NationListHeader from '../../../components/common/NationListHeader';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import i18n from '../../../global/i18n';
 import AssetsImages from '../../../global/AssetsImages';
 import type { NationIdType, NationType } from '../../../types/Nation';
-import type { Navigator } from '../../../types/ReactNativeNavigation';
 import ScreenTitle from '../../../components/common/ScreenTitle';
 
 type Props = {
-  /**
-   * @desc React Native Navigation navigator object.
-   */
-  navigator: Navigator,
   /**
    * @desc Selected Tab Name
    */
@@ -37,9 +27,9 @@ type Props = {
    */
   nations: Array<NationType>,
   /**
-   * @desc List of all nations
+   * @desc List of nations ids that the current user has joined to.
    */
-  myNations: Array<NationType>,
+  myNationIds: Array<NationIdType>,
   /**
    * @desc Function to be called when an item is selected from the list
    * @param id ID of the nation to be opened
@@ -51,16 +41,16 @@ type Props = {
 const ChatNationsListScreen = ({
   selectedTab,
   nations,
-  myNations,
+  myNationIds,
   onSelectItem,
 }: Props) => {
   const nationsToDisplay = selectedTab === 'ALL_NATIONS' ?
     _.filter(nations, nation => nation.idInSmartContract >= 0)
     :
-    _.filter(nations, nation => (
-      _.indexOf(myNations, nation.id) !== -1) && (nation.idInSmartContract >= 0));
-  const sortedNations = _.sortBy(nationsToDisplay, nation => nation.nationName);
-  const groups = _.groupBy(sortedNations, nation => nation.nationName.charAt(0));
+    _.filter(nations, nation => _.indexOf(myNationIds, nation.id) !== -1
+      && nation.idInSmartContract >= 0);
+  const sortedNations = _.sortBy(nationsToDisplay, nation => nation.nationName.toUpperCase());
+  const groups = _.groupBy(sortedNations, nation => nation.nationName.toUpperCase().charAt(0));
   let sections = _.map(groups, (group, key) => ({
     title: key,
     data: group,
