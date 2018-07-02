@@ -4,6 +4,7 @@ import { all, call } from 'redux-saga/effects';
 
 import accounts from './accounts';
 import activity from './activity';
+import chat from './chat';
 import navigation from './navigation';
 import key from './key';
 import settings from './settings';
@@ -22,6 +23,7 @@ export default function* rootSaga(): Generator<*, *, *> {
   yield all([
     call(accounts),
     call(activity),
+    call(chat),
     call(navigation),
     call(key),
     call(settings),

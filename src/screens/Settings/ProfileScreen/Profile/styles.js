@@ -47,6 +47,12 @@ const styles = MediaQueryStyleSheet.create({
   ethAddress: {
     ...GlobalStyles.footnote,
   },
+
+  publicKey: {
+    marginTop: 10,
+    marginLeft: 40,
+    marginRight: 40,
+  },
 });
 
 export default styles;
