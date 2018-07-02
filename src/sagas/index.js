@@ -13,7 +13,7 @@ import serviceContainer from './serviceContainer';
 import modifyNation from './modifyNation';
 import nations from './nations';
 import txProcessor from './txProcessor';
-import dApps from './dApps';
+import dApps from './nativeDApps';
 
 /**
  * @desc Root saga.
