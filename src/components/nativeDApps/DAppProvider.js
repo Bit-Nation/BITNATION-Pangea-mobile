@@ -8,7 +8,8 @@ import type { Account } from '../../types/Account';
 import AmountSelect from './AmountSelect';
 import type { ChatSessionType, DAppMessageType, GiftedChatMessageType, ProfileType } from '../../types/Chat';
 import type { Navigator } from '../../types/ReactNativeNavigation';
-
+import EthereumService from '../../services/ethereum';
+import ServiceContainer from '../../services/container';
 
 type ProviderProps = {
   /**
@@ -63,6 +64,10 @@ export type ProvidedProps = {
      * @desc Function to send a message.
      */
     sendMessage: (type: string, groupId: string, params: Object, callback: (message: ?GiftedChatMessageType) => void) => void,
+    /**
+     * @desc Service to deal with ethereum.
+     */
+    ethereumService: EthereumService,
   },
   navigation: {
     /**
@@ -78,6 +83,11 @@ export type ProvidedProps = {
  * @return {*} HOC
  */
 export const DAppProvider = (Component: React.ComponentType<any>) => (props: ProviderProps) => {
+  const { ethereumService } = ServiceContainer.instance;
+  if (ethereumService == null) {
+    return null;
+  }
+
   const providedProps: ProvidedProps = {
     context: {
       currentAccount: props.currentAccount,
@@ -116,6 +126,7 @@ export const DAppProvider = (Component: React.ComponentType<any>) => (props: Pro
           callback(null);
         }
       },
+      ethereumService,
     },
     navigation: {
       dismiss() {

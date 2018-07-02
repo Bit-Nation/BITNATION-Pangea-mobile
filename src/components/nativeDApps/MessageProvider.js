@@ -6,6 +6,8 @@ import * as React from 'react';
 import type { Account } from '../../types/Account';
 import type { DAppMessageType, ProfileType } from '../../types/Chat';
 import type { Navigator } from '../../types/ReactNativeNavigation';
+import EthereumService from '../../services/ethereum';
+import ServiceContainer from '../../services/container';
 
 
 type ProviderProps = {
@@ -47,6 +49,10 @@ export type ProvidedProps = {
     friend: ProfileType,
   },
   services: {
+    /**
+     * @desc Service to deal with ethereum.
+     */
+    ethereumService: EthereumService,
   },
 };
 
@@ -56,6 +62,11 @@ export type ProvidedProps = {
  * @return {*} HOC
  */
 export const MessageProvider = (Component: React.ComponentType<any>) => (props: ProviderProps) => {
+  const { ethereumService } = ServiceContainer.instance;
+  if (ethereumService == null) {
+    return null;
+  }
+
   const providedProps: ProvidedProps = {
     context: {
       dAppMessage: props.dAppMessage,
@@ -63,6 +74,7 @@ export const MessageProvider = (Component: React.ComponentType<any>) => (props: 
       friend: props.friend,
     },
     services: {
+      ethereumService,
     },
   };
 
