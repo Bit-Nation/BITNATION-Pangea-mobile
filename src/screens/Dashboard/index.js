@@ -1,10 +1,8 @@
 // @flow
 
 import React, { Component } from 'react';
-import { View, Text, Alert } from 'react-native';
+import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
-import RNShake from 'react-native-shake';
-import { ActionSheet } from 'native-base';
 
 import styles from './styles';
 import BackgroundImage from '../../components/common/BackgroundImage';
@@ -22,6 +20,7 @@ import type { State } from '../../reducers';
 import type { Navigator } from '../../types/ReactNativeNavigation';
 import { getCurrentAccount } from '../../reducers/accounts';
 import { openDApp } from '../../actions/dApps';
+import { Navigation } from 'react-native-navigation';
 
 type Props = {
   /**
@@ -47,14 +46,6 @@ type TestingModeProps = {
 };
 
 class Dashboard extends Component<Props & Actions & State & TestingModeProps> {
-  componentWillMount() {
-    RNShake.addEventListener('shake', this.onShake);
-  }
-
-  componentWillUnmount() {
-    RNShake.removeEventListener('shake', this.onShake);
-  }
-
   onSelectNation = (id) => {
     this.props.onSelectNation(id);
     this.props.navigator.push(screen('NATION_DETAILS_SCREEN'));
@@ -68,42 +59,6 @@ class Dashboard extends Component<Props & Actions & State & TestingModeProps> {
       },
     });
   };
-
-  onShake = async () => {
-    if (__DEV__) {
-      await new Promise(res => setTimeout(res, 2000));
-    }
-
-    const dApps = this.props.dApps.availableDApps;
-    const options = dApps.map(dApp => (dApp.name + (this.props.dApps.startedDAppIds.includes(dApp.publicKey) === false ? ' (loading)' : '')));
-
-    if (this.actionSheet !== null) {
-      this.actionSheet._root.showActionSheet(
-        {
-          options: [
-            ...options,
-            i18n.t('common.cancel'),
-          ],
-          cancelButtonIndex: dApps.length,
-          title: 'Select DApp to open',
-        },
-        (buttonIndex) => {
-          switch (buttonIndex) {
-            case dApps.length:
-              return;
-            default:
-              if (this.props.dApps.startedDAppIds.includes(dApps[buttonIndex].publicKey)) {
-                this.props.openDApp(dApps[buttonIndex].publicKey);
-              } else {
-                Alert.alert('DApp is not yet initialized. Try again in several seconds');
-              }
-          }
-        },
-      );
-    }
-  };
-
-  actionSheet: any;
 
   render() {
     const currentAccount = getCurrentAccount(this.props.accounts);
@@ -156,11 +111,6 @@ class Dashboard extends Component<Props & Actions & State & TestingModeProps> {
             </View>
           </View>
         </View>
-        <ActionSheet
-          ref={(c) => {
-            this.actionSheet = c;
-          }}
-        />
       </View>
     );
   }
