@@ -4,7 +4,7 @@
 import * as React from 'react';
 
 import type { Account } from '../../types/Account';
-import type { DAppMessageType, GiftedChatUserType } from '../../types/Chat';
+import type { DAppMessageType, ProfileType } from '../../types/Chat';
 import type { Navigator } from '../../types/ReactNativeNavigation';
 
 
@@ -24,7 +24,7 @@ type ProviderProps = {
   /**
    * @desc Profile of current chat friend.
    */
-  friend: GiftedChatUserType,
+  friend: ProfileType,
   /**
    * @desc Message to render.
    */
@@ -44,7 +44,7 @@ export type ProvidedProps = {
     /**
      * @desc Profile of current chat friend.
      */
-    friend: GiftedChatUserType,
+    friend: ProfileType,
   },
   services: {
   },

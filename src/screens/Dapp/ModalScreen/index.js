@@ -14,7 +14,7 @@ import BackgroundImage from '../../../components/common/BackgroundImage';
 import { sendDAppMessage } from '../../../actions/dApps';
 import { getCurrentAccount } from '../../../reducers/accounts';
 import { getSelectedSession } from '../../../utils/chat';
-import type { ChatSessionType, DAppMessageType, GiftedChatMessageType } from '../../../types/Chat';
+import type { ChatSessionType, DAppMessageType, GiftedChatMessageType, ProfileType } from '../../../types/Chat';
 import type { Account } from '../../../types/Account';
 
 type OwnProps = {
@@ -30,6 +30,10 @@ type OwnProps = {
    * @desc Shared secret for the chat session
    */
   chatSecret: string,
+  /**
+   * @desc Shared secret for the chat session
+   */
+  friend: ProfileType,
 }
 
 type Props = {
@@ -86,10 +90,6 @@ class DAppModalScreen extends NavigatorComponent<Props & OwnProps> {
             {...this.props}
             session={session}
             currentAccount={this.props.user}
-            friend={{
-              _id: session.publicKey,
-              name: session.username,
-            }}
           />
         </View>
       </View>
