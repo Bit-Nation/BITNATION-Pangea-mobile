@@ -1,6 +1,7 @@
 // @flow
 
 import { type DApp } from '../types/DApp';
+import type { DAppMessageType, ChatSessionType } from '../types/Chat';
 
 export type DAppsListUpdatedAction = { +type: 'DAPPS_LIST_UPDATED', availableDApps: Array<DApp> };
 export type StartDAppAction = { +type: 'START_DAPP', dAppPublicKey: string };
@@ -8,6 +9,7 @@ export type DAppStartedAction = { +type: 'DAPP_STARTED', dAppPublicKey: string }
 export type DAppStartFailedAction = { +type: 'DAPP_START_FAILED', dAppPublicKey: string };
 export type OpenDAppAction = { +type: 'OPEN_DAPP', dAppPublicKey: string, context: Object, callback: (success: boolean, error: ?Error) => void };
 export type PerformDAppCallbackAction = { +type: 'PERFORM_DAPP_CALLBACK', dAppPublicKey: string, callbackID: number, args: Object };
+export type SendDAppMessageAction = { +type: 'SEND_DAPP_MESSAGE', message: DAppMessageType, session: ChatSessionType };
 
 export type Action =
   | DAppsListUpdatedAction
@@ -15,7 +17,8 @@ export type Action =
   | DAppStartedAction
   | DAppStartFailedAction
   | OpenDAppAction
-  | PerformDAppCallbackAction;
+  | PerformDAppCallbackAction
+  | SendDAppMessageAction;
 
 export const DAPPS_LIST_UPDATED = 'DAPPS_LIST_UPDATED';
 export const START_DAPP = 'START_DAPP';
@@ -23,6 +26,7 @@ export const DAPP_STARTED = 'DAPP_STARTED';
 export const DAPP_START_FAILED = 'DAPP_START_FAILED';
 export const OPEN_DAPP = 'OPEN_DAPP';
 export const PERFORM_DAPP_CALLBACK = 'PERFORM_DAPP_CALLBACK';
+export const SEND_DAPP_MESSAGE = 'SEND_DAPP_MESSAGE';
 
 /**
  * @desc Action creator for an action that is called when DApps list updated.
@@ -103,5 +107,19 @@ export function performDAppCallback(dAppPublicKey: string, callbackID: number, a
     dAppPublicKey,
     callbackID,
     args,
+  };
+}
+
+/**
+ * @desc Action creator for an action to send DApp message.
+ * @param {DAppMessageType} message Message to send.
+ * @param {ChatSessionType} session Session to send to.
+ * @return {SendDAppMessageAction} An action.
+ */
+export function sendDAppMessage(message: DAppMessageType, session: ChatSessionType): SendDAppMessageAction {
+  return {
+    type: SEND_DAPP_MESSAGE,
+    message,
+    session,
   };
 }
