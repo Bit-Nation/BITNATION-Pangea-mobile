@@ -21,7 +21,7 @@ import Loading from '../../../components/common/Loading';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import { getCurrentAccount } from '../../../reducers/accounts';
 import { getSelectedSession } from '../../../utils/chat';
-import type { ChatSessionType } from '../../../types/Chat';
+import type { ChatSessionType, ProfileType } from '../../../types/Chat';
 import { errorAlert } from '../../../global/alerts';
 import i18n from '../../../global/i18n';
 import type { DAppType } from '../../../dapps';
@@ -78,9 +78,13 @@ type Props = {
    */
   dAppsState: DAppsState,
   /**
+   * @desc Profile of chat friend.
+   */
+  friend: ProfileType,
+  /**
    * @desc Open DApp.
    */
-  openDApp: (dAppPublicKey: string, secret: string) => void,
+  openDApp: (dAppPublicKey: string, secret: string, friend: ProfileType) => void
 };
 
 class ChatScreen extends Component<Props> {
@@ -97,7 +101,7 @@ class ChatScreen extends Component<Props> {
   onSelectDAppToOpen = (index) => {
     const session = getSelectedSession(this.props.sessions, this.props.secret);
     if (index < this.props.availableDApps.length && session) {
-      this.props.openDApp(this.props.availableDApps[index].identityPublicKey, this.props.secret);
+      this.props.openDApp(this.props.availableDApps[index].identityPublicKey, this.props.secret, this.props.friend);
     }
   };
 
@@ -192,14 +196,16 @@ const mapStateToProps = state => ({
   sessions: state.chat.chats,
   availableDApps: state.dApps.availableDApps,
   dAppsState: state.dApps,
+  friend: state.chat.chatProfile,
 });
 
 const mapDispatchToProps = dispatch => ({
   showSpinner: () => dispatch(showSpinner()),
   hideSpinner: () => dispatch(hideSpinner()),
   sendMessage: (msg, session) => dispatch(sendMessage(msg, session)),
-  openDApp: (dAppPublicKey, secret) => dispatch(openDApp(dAppPublicKey, {
+  openDApp: (dAppPublicKey, secret, friend) => dispatch(openDApp(dAppPublicKey, {
     chatSecret: secret,
+    friend,
   })),
 });
 

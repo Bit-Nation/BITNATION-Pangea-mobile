@@ -6,7 +6,7 @@ import * as React from 'react';
 import type { WalletType } from '../../types/Wallet';
 import type { Account } from '../../types/Account';
 import AmountSelect from './AmountSelect';
-import type { ChatSessionType, DAppMessageType, GiftedChatMessageType, GiftedChatUserType } from '../../types/Chat';
+import type { ChatSessionType, DAppMessageType, GiftedChatMessageType, ProfileType } from '../../types/Chat';
 import type { Navigator } from '../../types/ReactNativeNavigation';
 
 
@@ -38,7 +38,7 @@ type ProviderProps = {
   /**
    * @desc Profile of current chat friend.
    */
-  friend: GiftedChatUserType,
+  friend: ProfileType,
 };
 
 export type ProvidedProps = {
@@ -50,7 +50,7 @@ export type ProvidedProps = {
     /**
      * @desc Profile of current chat friend.
      */
-    friend: GiftedChatUserType,
+    friend: ProfileType,
   },
   components: {
     /**
