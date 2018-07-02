@@ -208,7 +208,7 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
     }
 
     @ReactMethod
-    public void PanthalassaGetIdentityPublicKey(ReadableMap jsonParams, Promise promise) throws JSONException {
+    public void PanthalassaGetIdentityPublicKey(Promise promise) throws JSONException {
         try {
             String response = Panthalassa.getIdentityPublicKey();
             promise.resolve(response);
@@ -219,7 +219,7 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
     }
 
     @ReactMethod
-    public void PanthalassaIdentityPublicKey(ReadableMap jsonParams, Promise promise) throws JSONException {
+    public void PanthalassaIdentityPublicKey(Promise promise) throws JSONException {
         try {
             String response = Panthalassa.identityPublicKey();
             promise.resolve(response);
@@ -242,7 +242,7 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
     }
 
     @ReactMethod
-    public void PanthalassaNewPreKeyBundle(ReadableMap jsonParams, Promise promise) throws JSONException {
+    public void PanthalassaNewPreKeyBundle(Promise promise) throws JSONException {
         try {
             String response = Panthalassa.newPreKeyBundle();
             promise.resolve(response);
