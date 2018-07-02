@@ -3,10 +3,11 @@
 import { call, select } from 'redux-saga/effects';
 
 import type { OpenDAppAction, SendDAppMessageAction } from '../../actions/dApps';
-import type { DAppType } from '../../services/database/schemata';
-import { getDApp } from '../dApps/sagas';
+import type { DAppType } from '../../dapps';
+import { getDApp } from '../../reducers/nativeDApps';
 import { sendMessage } from '../chat/sagas';
 import { sendMessage as sendMessageAction } from '../../actions/chat';
+import { launchDAppModal } from '../navigation/sagas';
 
 /**
  * @desc Opens DApp.
@@ -15,18 +16,17 @@ import { sendMessage as sendMessageAction } from '../../actions/chat';
  */
 export function* openDApp(action: OpenDAppAction): Generator<*, *, *> {
   const { dAppPublicKey, callback } = action;
-  const dApp: ?DAppType = yield call(getDApp, dAppPublicKey);
+  const { dApps } = yield select();
+  const dApp: ?DAppType = yield call(getDApp, dApps, dAppPublicKey);
   if (dApp == null) {
     yield call(callback, false, new Error(`Unable to find DApp with public key ${dAppPublicKey}`));
     return;
   }
-  const { dApps: { contexts } } = yield select();
+  const { contexts } = dApps;
   const context = contexts[dAppPublicKey] || {};
 
   try {
-    // @todo Call DApp open handler.
-    // yield call(DAppsService.openDApp, dAppPublicKey, context);
-    console.log(context);
+    yield call(launchDAppModal, dAppPublicKey, dApp.modal, context);
     yield call(callback, true);
   } catch (error) {
     console.log(`DApp open failed: ${error}`);
