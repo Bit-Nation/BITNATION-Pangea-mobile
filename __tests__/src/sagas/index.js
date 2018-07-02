@@ -14,12 +14,14 @@ import modifyNation from '../../../src/sagas/modifyNation';
 import nations from '../../../src/sagas/nations';
 import txProcessor from '../../../src/sagas/txProcessor';
 import dApps from '../../../src/sagas/dApps';
+import chat from '../../../src/sagas/chat';
 
 test('rootSaga', () => {
   const iterator = rootSaga();
   expect(iterator.next().value).toEqual(all([
     call(accounts),
     call(activity),
+    call(chat),
     call(navigation),
     call(key),
     call(settings),
