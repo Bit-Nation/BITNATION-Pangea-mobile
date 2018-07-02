@@ -280,7 +280,7 @@ RCT_REMAP_METHOD(PanthalassaDecryptMessage,
   NSString *response;
   NSError *error = nil;
   
-  response = PanthalassaDecryptMessage([RCTConvert NSString:config[@"message"]],
+  response =  PanthalassaDecryptMessage([RCTConvert NSString:config[@"message"]],
                                            [RCTConvert NSString:config[@"secret"]],
                                            &error);
   

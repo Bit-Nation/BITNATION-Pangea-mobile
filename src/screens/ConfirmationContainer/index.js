@@ -12,16 +12,28 @@ type Props = {
   navigator: Navigator,
   /**
    * @desc Function to return the Promise resolve
+   * @param number gasPrice parameter to specify the gas price in gwei
+   * @param string gasLimit parameter to specify the maximum amount of gas the user is willing to spend
    */
-  onSuccess: (number) => null,
+  onSuccess: (gasPrice: number, gasLimit: string) => null,
   /**
    * @desc Function to return the Promise reject
    */
   onFail: () => null,
+  /**
+   * @desc Properties of the transaction
+   */
+  to: String,
+  from: String,
+  amount: String,
+  estimate: String,
+  purpose: String,
+  app: String
 }
 
 type State = {
   gasPrice: number,
+  gasLimit: number,
 }
 
 class ConfirmationContainer extends Component<Props, State> {
@@ -31,9 +43,9 @@ class ConfirmationContainer extends Component<Props, State> {
     this.props.onFail();
   };
 
-  sendConfirmation = async (gasPrice) => {
+  sendConfirmation = async (gasPrice, gasLimit) => {
     await this.props.navigator.dismissModal();
-    this.props.onSuccess(gasPrice);
+    this.props.onSuccess(gasPrice, gasLimit);
   };
   render() {
     return (
@@ -54,6 +66,12 @@ ConfirmationScreen.defaultProps = {
   gasPrice: 2,
   onFail: () => null,
   onSuccess: () => null,
+  to: '0x0',
+  from: '0x0',
+  amount: '0',
+  estimate: '0',
+  purpose: '',
+  app: '',
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ConfirmationContainer);

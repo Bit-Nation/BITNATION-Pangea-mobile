@@ -108,6 +108,29 @@ const styles = {
     paddingBottom: 16,
   },
 
+  // A block of text in the Confirmation Screen
+  bodyParagraphConfirmationRow: {
+    paddingBottom: 20,
+    borderBottomColor: Colors.BitnationGrayColor,
+    borderBottomWidth: 0.4,
+    paddingLeft: 4,
+    paddingRight: 4,
+    paddingTop: 8,
+    flexDirection: 'row',
+    alignItems: 'stretch',
+    justifyContent: 'space-between',
+    flex: 1,
+  },
+
+  bodyParagraphConfirmationColumn: {
+    paddingBottom: 16,
+    borderBottomColor: Colors.BitnationGrayColor,
+    borderBottomWidth: 0.4,
+    paddingLeft: 4,
+    paddingRight: 4,
+    paddingTop: 8,
+  },
+
   statusBar: {
     height: isiPhoneXStatusBar(20),
     backgroundColor: 'transparent',
@@ -481,6 +504,17 @@ const styles = {
     paddingBottom: 12,
     // font settings
     // color: Colors.placeholderTextColor,
+  },
+
+  // TextInput component
+  textInputConfirmation: {
+    ...defaultTextStyles.body,
+    borderColor: Colors.borderColor,
+    flex: 1,
+    alignItems: 'stretch',
+    textAlign: 'right',
+    fontSize: 16,
+    paddingLeft: 4,
   },
 
   // text inside of text input fields prompting user to enter information,

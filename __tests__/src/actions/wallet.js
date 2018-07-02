@@ -1,3 +1,5 @@
+// @flow
+
 import {
   SELECT_WALLET,
   SEND_MONEY,
@@ -25,7 +27,7 @@ describe('wallet action creators', () => {
     name: 'Test wallet name',
   };
   const mockWallets = [{ ...mockWallet }, { ...mockWallet }];
-  const mockError = { error: 'ERROR' };
+  const mockError = new Error('ERROR');
 
   test('selectWallet', () => {
     expect(selectWallet(mockWallet)).toEqual({
@@ -41,9 +43,10 @@ describe('wallet action creators', () => {
     });
   });
   test('walletsListUpdated', () => {
-    expect(walletsListUpdated(mockWallets)).toEqual({
+    expect(walletsListUpdated(mockWallets, true)).toEqual({
       type: WALLETS_LIST_UPDATED,
       wallets: mockWallets,
+      syncDone: true,
     });
   });
   test('updateWalletList', () => {
@@ -52,9 +55,10 @@ describe('wallet action creators', () => {
     });
   });
   test('updateWalletBalance', () => {
-    expect(updateWalletBalance(mockAddress)).toEqual({
+    expect(updateWalletBalance(mockAddress, 'ETH')).toEqual({
       type: UPDATE_WALLET_BALANCE,
       walletAddress: mockAddress,
+      walletCurrency: 'ETH',
     });
   });
   test('sendMoneySuccess', () => {

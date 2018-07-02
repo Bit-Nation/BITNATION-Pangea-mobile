@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 // @flow
 
 import _ from 'lodash';
@@ -33,4 +32,17 @@ export function normalizeEthPrivateKey(ethPrivateKey: string): string {
   }
 
   return `0x${ethPrivateKey}`;
+}
+
+
+/* eslint-disable */
+/**
+ * @desc Convert byte array into Hex string
+ * @param {byte[]} byteArray byte array to be converted
+ * @return {string} Result Hex string
+ */
+export function byteToHexString(byteArray: Array<number>): string {
+  return Array.from(byteArray, (byte) => {
+    return ('0' + (byte & 0xFF).toString(16)).slice(-2);
+  }).join('');
 }
