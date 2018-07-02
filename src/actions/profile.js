@@ -7,19 +7,22 @@ export type ChangeEditingAccountAction = { +type: 'CHANGE_EDITING_ACCOUNT', +acc
 export type CancelAccountEditingAction = { +type: 'CANCEL_ACCOUNT_EDITING' };
 export type DoneAccountEditingAction = { +type: 'DONE_ACCOUNT_EDITING' };
 export type SaveEditingAccountAction = { +type: 'SAVE_EDITING_ACCOUNT', +account: Account };
+export type SetPublicKeyAction = { +type: 'SET_PUBLIC_KEY', +publicKey: string };
 
 export type Action =
   | StartAccountEditingAction
   | ChangeEditingAccountAction
   | CancelAccountEditingAction
   | DoneAccountEditingAction
-  | SaveEditingAccountAction;
+  | SaveEditingAccountAction
+  | SetPublicKeyAction;
 
 export const START_ACCOUNT_EDITING = 'START_ACCOUNT_EDITING';
 export const CHANGE_EDITING_ACCOUNT = 'CHANGE_EDITING_ACCOUNT';
 export const DONE_ACCOUNT_EDITING = 'DONE_ACCOUNT_EDITING';
 export const CANCEL_ACCOUNT_EDITING = 'CANCEL_ACCOUNT_EDITING';
 export const SAVE_EDITING_ACCOUNT = 'SAVE_EDITING_ACCOUNT';
+export const SET_PUBLIC_KEY = 'SET_PUBLIC_KEY';
 
 /**
  * @desc Action creator for an action that should be called to start account editing.
@@ -74,5 +77,17 @@ export function saveEditingAccount(account: Account): SaveEditingAccountAction {
   return {
     type: SAVE_EDITING_ACCOUNT,
     account,
+  };
+}
+
+/**
+ * @desc Action creator for an action that save the public key.
+ * @param {string} publicKey Public key of the current account.
+ * @returns {SetPublicKeyAction} An action.
+ */
+export function setPublicKey(publicKey: string): SetPublicKeyAction {
+  return {
+    type: SET_PUBLIC_KEY,
+    publicKey,
   };
 }

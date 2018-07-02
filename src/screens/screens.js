@@ -27,6 +27,7 @@ import ProfileScreen from './Settings/ProfileScreen';
 import NationDetailsScreen from './NationDetailsContainer';
 import NationCreateScreen from './NationCreateContainer';
 import ChatNationsScreen from './ChatNationsScreen';
+import NewChatScreen from './NewChatScreen';
 import SettingsScreen from './Settings/SettingsList';
 import SecuritySettingsScreen from './Settings/Security';
 import AccountsAccess from './Accounts/AccountAccessContainer';
@@ -34,6 +35,9 @@ import ConfirmationContainer from './ConfirmationContainer';
 import { screen } from '../global/Screens';
 import EnterPasscodeScreen from './Passcode/EnterPasscodeContainer';
 import CreatePasscodeScreen from './Passcode/CreatePasscodeContainer';
+import ChatListScreen from './PrivateChat/ChatList';
+import PrivateChatScreen from './PrivateChat/Chat';
+import DAppModalScreen from './Dapp/ModalScreen';
 
 /**
  * @desc Registers screens for React Native Navigation.
@@ -67,10 +71,14 @@ export default function registerScreens(store: Object, Provider: Object) {
   Navigation.registerComponent(screen('QR_CODE_DAPP_SCREEN').screen, () => QRCodeDappScreen, store, Provider);
   Navigation.registerComponent(screen('NATION_CREATE_SCREEN').screen, () => NationCreateScreen, store, Provider);
   Navigation.registerComponent(screen('CHAT_NATIONS_SCREEN').screen, () => ChatNationsScreen, store, Provider);
+  Navigation.registerComponent(screen('NEW_CHAT_SCREEN').screen, () => NewChatScreen, store, Provider);
   Navigation.registerComponent(screen('SETTINGS_SCREEN').screen, () => SettingsScreen, store, Provider);
   Navigation.registerComponent(screen('SECURITY_SETTINGS_SCREEN').screen, () => SecuritySettingsScreen, store, Provider);
   Navigation.registerComponent(screen('ACCOUNTS_ACCESS_SCREEN').screen, () => AccountsAccess, store, Provider);
   Navigation.registerComponent(screen('ENTER_PASSCODE_SCREEN').screen, () => EnterPasscodeScreen, store, Provider);
   Navigation.registerComponent(screen('CREATE_PASSCODE_SCREEN').screen, () => CreatePasscodeScreen, store, Provider);
   Navigation.registerComponent(screen('CONFIRMATION_SCREEN').screen, () => ConfirmationContainer, store, Provider);
+  Navigation.registerComponent(screen('CHAT_LIST_SCREEN').screen, () => ChatListScreen, store, Provider);
+  Navigation.registerComponent(screen('PRIVATE_CHAT_SCREEN').screen, () => PrivateChatScreen, store, Provider);
+  Navigation.registerComponent(screen('DAPP_MODAL_SCREEN').screen, () => DAppModalScreen, store, Provider);
 }
