@@ -8,9 +8,11 @@ import {
   Composer,
   InputToolbar,
   Bubble,
+  Actions,
 } from 'react-native-gifted-chat';
-import styles from './styles';
+import ActionSheet from 'react-native-actionsheet';
 
+import styles from './styles';
 import { showSpinner, hideSpinner, sendMessage, saveHumanMessage } from '../../../actions/chat';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
@@ -20,6 +22,8 @@ import { getCurrentAccount } from '../../../reducers/accounts';
 import { getSelectedSession } from '../../../utils/chat';
 import type { ChatSessionType } from '../../../types/Chat';
 import { errorAlert } from '../../../global/alerts';
+import i18n from '../../../global/i18n';
+import type { DAppType } from '../../../services/database/schema/v4';
 
 type Props = {
   /**
@@ -70,7 +74,11 @@ type Props = {
   /**
    * @desc Array of chat sessions.
    */
-  sessions: Array<ChatSessionType>
+  sessions: Array<ChatSessionType>,
+  /**
+   * @desc Array of available DApps.
+   */
+  availableDApps: Array<DAppType>
 };
 
 class ChatScreen extends Component<Props> {
@@ -89,11 +97,28 @@ class ChatScreen extends Component<Props> {
     });
   }
 
+  onSelectDAppToOpen = (index) => {
+    // @todo Open DApps
+    switch (index) {
+      case 0:
+        break;
+      default:
+        break;
+    }
+  };
+
+  actionSheet: any;
+
   showSessionClosedAlert = () => {
     errorAlert(new Error('Session is closed, please reopen the chat'));
   };
 
   render() {
+    const dAppsOptions = [
+      ...this.props.availableDApps.map(dApp => dApp.name),
+      i18n.t('screens.chat.cancel'),
+    ];
+
     const session = getSelectedSession(this.props.sessions, this.props.secret);
     if (session == null) {
       this.showSessionClosedAlert();
@@ -131,8 +156,18 @@ class ChatScreen extends Component<Props> {
               textStyle={{ left: styles.leftTextStyle, right: styles.rightTextStyle }}
             />
           )}
+          onPressActionButton={() => this.actionSheet && this.actionSheet.show()}
+          renderActions={props => <Actions {...props} containerStyle={{ width: 26, height: 26 }} />}
         />
         {this.props.isFetching && <Loading />}
+        <ActionSheet
+          ref={(o) => {
+            this.actionSheet = o;
+          }}
+          options={dAppsOptions}
+          cancelButtonIndex={dAppsOptions.length - 1}
+          onPress={this.onSelectDAppToOpen}
+        />
       </View>
     );
   }
@@ -142,6 +177,7 @@ const mapStateToProps = state => ({
   user: getCurrentAccount(state.accounts),
   isFetching: state.chat.isFetching,
   sessions: state.chat.chats,
+  availableDApps: state.dApps.availableDApps,
 });
 
 const mapDispatchToProps = dispatch => ({
