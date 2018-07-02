@@ -145,7 +145,7 @@ class ChatScreen extends Component<Props> {
             />
           )}
           onPressActionButton={() => this.actionSheet && this.actionSheet.show()}
-          renderActions={props => <Actions {...props} containerStyle={{ width: 26, height: 26 }} />}
+          renderActions={props => <Actions {...props} containerStyle={styles.actionContainerStyle} />}
         />
         {this.props.isFetching && <Loading />}
         <ActionSheet

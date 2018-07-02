@@ -45,6 +45,14 @@ export default class AmountSelect extends Component<Props & InternalProps, State
     };
   }
 
+  componentDidUpdate(prevProps: Props & InternalProps, prevState: State) {
+    if (this.state.selectedAmount !== prevState.selectedAmount
+      || this.state.selectedWalletIndex !== prevState.selectedWalletIndex) {
+      const wallet = this.props.wallets[this.state.selectedWalletIndex];
+      this.props.onAmountSelected(this.state.selectedAmount, wallet.currency, wallet.ethAddress);
+    }
+  }
+
   onSelectWallet = (index: number) => {
     if (index < this.props.wallets.length) {
       this.setState({ selectedWalletIndex: index });
@@ -52,14 +60,6 @@ export default class AmountSelect extends Component<Props & InternalProps, State
   };
 
   actionSheet: any;
-
-  componentDidUpdate(prevProps: Props & InternalProps, prevState: State) {
-    if (this.state.selectedAmount !== prevState.selectedAmount
-    || this.state.selectedWalletIndex !== prevState.selectedWalletIndex) {
-      const wallet = this.props.wallets[this.state.selectedWalletIndex];
-      this.props.onAmountSelected(this.state.selectedAmount, wallet.currency, wallet.ethAddress);
-    }
-  }
 
   render() {
     const walletToShow = this.props.wallets[this.state.selectedWalletIndex];
