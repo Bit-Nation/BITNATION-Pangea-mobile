@@ -1,7 +1,7 @@
 // @flow
 
 import { type DApp } from '../types/DApp';
-import type { DAppMessageType, ChatSessionType } from '../types/Chat';
+import type { DAppMessageType, ChatSessionType, GiftedChatMessageType } from '../types/Chat';
 
 export type DAppsListUpdatedAction = { +type: 'DAPPS_LIST_UPDATED', availableDApps: Array<DApp> };
 export type StartDAppAction = { +type: 'START_DAPP', dAppPublicKey: string };
@@ -9,7 +9,7 @@ export type DAppStartedAction = { +type: 'DAPP_STARTED', dAppPublicKey: string }
 export type DAppStartFailedAction = { +type: 'DAPP_START_FAILED', dAppPublicKey: string };
 export type OpenDAppAction = { +type: 'OPEN_DAPP', dAppPublicKey: string, context: Object, callback: (success: boolean, error: ?Error) => void };
 export type PerformDAppCallbackAction = { +type: 'PERFORM_DAPP_CALLBACK', dAppPublicKey: string, callbackID: number, args: Object };
-export type SendDAppMessageAction = { +type: 'SEND_DAPP_MESSAGE', message: DAppMessageType, session: ChatSessionType };
+export type SendDAppMessageAction = { +type: 'SEND_DAPP_MESSAGE', message: DAppMessageType, session: ChatSessionType, callback: (message: ?GiftedChatMessageType) => void };
 
 export type Action =
   | DAppsListUpdatedAction
@@ -114,12 +114,14 @@ export function performDAppCallback(dAppPublicKey: string, callbackID: number, a
  * @desc Action creator for an action to send DApp message.
  * @param {DAppMessageType} message Message to send.
  * @param {ChatSessionType} session Session to send to.
+ * @param {function} callback Callback to call on finish or error.
  * @return {SendDAppMessageAction} An action.
  */
-export function sendDAppMessage(message: DAppMessageType, session: ChatSessionType): SendDAppMessageAction {
+export function sendDAppMessage(message: DAppMessageType, session: ChatSessionType, callback: (message: ?GiftedChatMessageType) => void): SendDAppMessageAction {
   return {
     type: SEND_DAPP_MESSAGE,
     message,
     session,
+    callback,
   };
 }

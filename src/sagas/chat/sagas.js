@@ -404,6 +404,9 @@ export function* fetchMessages(): Generator<*, *, *> {
         yield call(handleInitialMessage, message, currentAccount.id);
       } else if (message.type === 'HUMAN_MESSAGE') {
         yield call(handleHumanMessage, message);
+      } else {
+        // We handle other message the same for now.
+        yield call(handleHumanMessage, message);
       }
     }
   } catch (e) {

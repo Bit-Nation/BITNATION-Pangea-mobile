@@ -39,10 +39,10 @@ export function* openDApp(action: OpenDAppAction): Generator<*, *, *> {
  * @return {void}
  */
 export function* sendDAppMessage(action: SendDAppMessageAction): Generator<*, *, *> {
-  const { message, session } = action;
+  const { message, session, callback } = action;
 
   try {
-    yield call(sendMessage, sendMessageAction(JSON.stringify(message), session));
+    yield call(sendMessage, sendMessageAction(JSON.stringify(message), session, callback));
   } catch (error) {
     console.log(`DApp send message failed: ${error}`);
   }
