@@ -54,7 +54,8 @@
     "bitnationPat": "XPAT",
     "continue": "Continue",
     "location": "Location",
-    "accounts": "Accounts"
+    "accounts": "Accounts",
+    "balance": "Balance"
   },
   "enums": {
     "nation": {
