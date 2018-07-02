@@ -13,7 +13,7 @@ import serviceContainer from '../../../src/sagas/serviceContainer';
 import modifyNation from '../../../src/sagas/modifyNation';
 import nations from '../../../src/sagas/nations';
 import txProcessor from '../../../src/sagas/txProcessor';
-import dApps from '../../../src/sagas/dApps';
+import dApps from '../../../src/sagas/nativeDApps';
 import chat from '../../../src/sagas/chat';
 
 test('rootSaga', () => {

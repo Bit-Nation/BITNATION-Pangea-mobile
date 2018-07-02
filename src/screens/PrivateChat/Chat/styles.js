@@ -37,6 +37,10 @@ const styles = MediaQueryStyleSheet.create({
   rightTextStyle: {
     color: Colors.BitnationDarkGrayColor,
   },
+  actionContainerStyle: {
+    width: 26,
+    height: 26,
+  },
 });
 
 export default styles;

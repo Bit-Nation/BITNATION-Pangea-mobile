@@ -20,7 +20,6 @@ import type { State } from '../../reducers';
 import type { Navigator } from '../../types/ReactNativeNavigation';
 import { getCurrentAccount } from '../../reducers/accounts';
 import { openDApp } from '../../actions/dApps';
-import { Navigation } from 'react-native-navigation';
 
 type Props = {
   /**
