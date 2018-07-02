@@ -13,7 +13,7 @@ import {
 import ActionSheet from 'react-native-actionsheet';
 
 import styles from './styles';
-import { showSpinner, hideSpinner, sendMessage, saveHumanMessage } from '../../../actions/chat';
+import { showSpinner, hideSpinner, sendMessage } from '../../../actions/chat';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import Loading from '../../../components/common/Loading';
@@ -61,16 +61,9 @@ type Props = {
   /**
    * @desc Function to send a human message
    * @param {string} msg Message to be sent
-   * @param {func} callback Callback
    * @param {Object} session Session object
    */
-  sendMessage: (msg: string, session: Object, callback: () => void) => void,
-  /**
-   * @desc Function to save a human message
-   * @param {string} msg Message to be sent
-   * @param {Object} session Session object
-   */
-  saveMessage: (msg: string, session: Object) => void,
+  sendMessage: (msg: string, session: Object) => void,
   /**
    * @desc Array of chat sessions.
    */
@@ -89,12 +82,7 @@ class ChatScreen extends Component<Props> {
       this.showSessionClosedAlert();
       return;
     }
-    this.props.sendMessage(message, session, (response) => {
-      console.log('created human message: ', response);
-      if (response) {
-        this.props.saveMessage(response, session);
-      }
-    });
+    this.props.sendMessage(message, session);
   }
 
   onSelectDAppToOpen = (index) => {
@@ -183,8 +171,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   showSpinner: () => dispatch(showSpinner()),
   hideSpinner: () => dispatch(hideSpinner()),
-  sendMessage: (msg, session, callback) => dispatch(sendMessage(msg, session, callback)),
-  saveMessage: (message, session) => dispatch(saveHumanMessage(message, session)),
+  sendMessage: (msg, session) => dispatch(sendMessage(msg, session)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChatScreen);

@@ -12,7 +12,6 @@ import {
   NewChatSessionAction,
   OpenChatAction,
   SendMessageAction,
-  SaveHumanMessageAction,
   chatsUpdated,
   selectProfile,
   FETCH_MESSAGES,
@@ -24,6 +23,7 @@ import ChatService from '../../services/chat';
 import type { ChatSessionType as DBChatSession } from '../../services/database/schemata';
 import { getCurrentAccount, getCurrentAccountId, currentAccountBasedUpdate } from '../accounts/sagas';
 import { byteToHexString } from '../../utils/key';
+import type { DAppMessageType } from '../../services/database/schema/v4';
 
 /**
  * @desc Function that creates Realm results fetching chats for specific account.
@@ -36,6 +36,33 @@ export function buildChatResults(db: Realm, accountId: string | null) {
     return null;
   }
   return db.objects('ChatSession').filtered(`accountId == '${accountId}'`);
+}
+
+/**
+ * @desc Extracts DApp information from message if possible.
+ * @param {string} decrypted Plain message text.
+ * @return {?DAppMessageType} Message object or undefined.
+ */
+function extractDAppMessage(decrypted: string): ?DAppMessageType {
+  try {
+    const parsed = JSON.parse(decrypted);
+    if (parsed == null) return undefined;
+    if (parsed.dapp_id == null || typeof parsed.dapp_id !== 'string') return undefined;
+    if (parsed.type == null || typeof parsed.type !== 'string') return undefined;
+    if (parsed.group_id == null || typeof parsed.group_id !== 'string') return undefined;
+    if (parsed.params == null || typeof parsed.params !== 'string') return undefined;
+
+    return {
+      dapp_id: parsed.dapp_id,
+      type: parsed.type,
+      group_id: parsed.dapp_id,
+      params: parsed.params,
+      should_send: true,
+      should_render: true,
+    };
+  } catch (e) {
+    return undefined;
+  }
 }
 
 /**
@@ -101,6 +128,7 @@ export function* onSessionsChange(collection: Realm.Result<DBChatSession>): Gene
             _id: message.id_public_key,
             name: session.publicKey === message.id_public_key ? profile.name : currentAccount.name,
           },
+          dAppMessage: extractDAppMessage(decrypted),
         };
         session.decryptedMessages.push(messageObject);
       } catch (e) {
@@ -396,6 +424,7 @@ export function* sendMessage(action: SendMessageAction): Generator<*, *, *> {
     const secret = yield results[0] || null;
     if (secret) {
       const messageObject = yield call(ChatService.createHumanMessage, action.message, secret.id, JSON.stringify(secret.secret), action.session.publicKey);
+      yield call(handleHumanMessage, messageObject);
       yield call(action.callback, messageObject);
     } else {
       yield call(action.callback, null);
@@ -404,13 +433,4 @@ export function* sendMessage(action: SendMessageAction): Generator<*, *, *> {
     console.log('send message error: ', e);
     yield call(action.callback, null);
   }
-}
-
-/**
- * @desc Save a human message
- * @param {SaveHumanMessageAction} action SAVE_HUMAN_MESSAGE action
- * @return {void}
- */
-export function* saveHumanMessage(action: SaveHumanMessageAction): Generator<*, *, *> {
-  yield call(handleHumanMessage, action.message);
 }
