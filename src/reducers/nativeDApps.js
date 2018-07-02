@@ -1,13 +1,14 @@
 // @flow
 
-import type { DApp } from '../types/DApp';
+import type { DAppType } from '../dapps';
 import {
   type Action,
   OPEN_DAPP,
 } from '../actions/dApps';
+import dApps from '../dapps';
 
 export type State = {
-  +availableDApps: Array<DApp>,
+  +availableDApps: Array<DAppType>,
   +contexts: { [string]: Object },
 };
 
@@ -15,15 +16,14 @@ export const initialState: State = {
   /**
    * @desc Array of DApps currently saved in database
    */
-  // @todo Import from registry.
-  availableDApps: [],
+  availableDApps: dApps,
   /**
    * @desc Dictionary that contains context for each DApp id.
    */
   contexts: {},
 };
 
-export const getDApp = (state: State, publicKey: string) => state.availableDApps.find(dApp => dApp.publicKey === publicKey);
+export const getDApp = (state: State, publicKey: string) => state.availableDApps.find(dApp => dApp.identityPublicKey === publicKey);
 
 /**
  * @desc DApps reducer.
