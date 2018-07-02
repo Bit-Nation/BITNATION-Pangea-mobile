@@ -7,7 +7,6 @@ import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import Colors from '../../../global/colors';
 import GlobalStyles from '../../../global/Styles';
 import i18n from '../../../global/i18n';
-import { DAppProvider } from '../../../components/nativeDApps/DAppProvider';
 import type { WalletType } from '../../../types/Wallet';
 import View from '../../../components/dApps/View';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
@@ -53,14 +52,6 @@ type Props = {
 }
 
 class DAppModalScreen extends NavigatorComponent<Props & OwnProps> {
-  constructor(props) {
-    super(props);
-
-    this.InjectedModal = DAppProvider(this.props.component);
-  }
-
-  InjectedModal;
-
   static navigatorButtons = {
     leftButtons: [{
       id: 'cancel',
@@ -77,7 +68,7 @@ class DAppModalScreen extends NavigatorComponent<Props & OwnProps> {
   }
 
   render() {
-    const { InjectedModal } = this;
+    const { component: Component } = this.props;
 
     const session = getSelectedSession(this.props.sessions, this.props.chatSecret);
 
@@ -91,7 +82,7 @@ class DAppModalScreen extends NavigatorComponent<Props & OwnProps> {
         <BackgroundImage />
         <FakeNavigationBar />
         <View style={GlobalStyles.bodyContainer}>
-          <InjectedModal
+          <Component
             {...this.props}
             session={session}
             currentAccount={this.props.user}
