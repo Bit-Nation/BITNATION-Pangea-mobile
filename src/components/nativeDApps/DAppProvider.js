@@ -75,10 +75,10 @@ export type ProvidedProps = {
 
 /**
  * @desc HOC builder for providing helper functions and context into DApp component.
- * @param {ProviderProps} props Props that are required for HOC.
+ * @param {React.Component} Component Component to wrap to.
  * @return {*} HOC
  */
-export function dAppProvider(props: ProviderProps): * {
+export const DAppProvider = (Component: React.ComponentType<any>) => (props: ProviderProps) => {
   const providedProps: ProvidedProps = {
     context: {
       currentAccount: props.currentAccount,
@@ -124,5 +124,6 @@ export function dAppProvider(props: ProviderProps): * {
       },
     },
   };
-  return withProps(providedProps);
-}
+
+  return <Component {...providedProps} />;
+};
