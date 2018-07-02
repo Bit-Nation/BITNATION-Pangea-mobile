@@ -31,10 +31,6 @@ type OwnProps = {
    * @desc Shared secret for the chat session
    */
   chatSecret: string,
-  /**
-   * @desc Current user.
-   */
-  user: Account
 }
 
 type Props = {
@@ -50,6 +46,10 @@ type Props = {
    * @desc Function to send a DApp message.
    */
   sendMessage: (message: DAppMessageType, session: ChatSessionType, callback: (message: ?GiftedChatMessageType) => void) => void,
+  /**
+   * @desc Current user.
+   */
+  user: Account
 }
 
 
@@ -85,6 +85,12 @@ class DAppModalScreen extends NavigatorComponent<Props & OwnProps> {
           {React.createElement(dAppProvider({
             ...this.props,
             session,
+            currentAccount: this.props.user,
+            key: 'ROOT_DAPP_COMPONENT',
+            friend: {
+              _id: session.publicKey,
+              name: session.username,
+            },
           })(this.props.component))}
         </View>
       </View>

@@ -1,13 +1,16 @@
 // @flow
 
-import React from 'react';
+import * as React from 'react';
+import sendReceiveDApp from './sendReceiveMoney';
 
 export type DAppType = {
-    name: string,
-    identityPublicKey: string,
-    openDApp: (payload:Object, services:Object) => void,
-    renderMessage: (payload:Object, services:Object) => Promise<React.Component>
+  name: string,
+  identityPublicKey: string,
+  modal: React.ComponentType<any>,
+  message: React.ComponentType<any>,
 }
 
-const dapps:Array<DAppType> = [];
-export default dapps;
+const dApps: Array<DAppType> = [
+  sendReceiveDApp,
+];
+export default dApps;

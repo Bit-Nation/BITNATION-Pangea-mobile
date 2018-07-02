@@ -5,9 +5,11 @@ import * as React from 'react';
 import { withProps } from 'recompose';
 
 import type { WalletType } from '../../types/Wallet';
+import type { Account } from '../../types/Account';
 import AmountSelect from './AmountSelect';
-import type { ChatSessionType, DAppMessageType, GiftedChatMessageType } from '../../types/Chat';
+import type { ChatSessionType, DAppMessageType, GiftedChatMessageType, GiftedChatUserType } from '../../types/Chat';
 import type { Navigator } from '../../types/ReactNativeNavigation';
+
 
 type ProviderProps = {
   /**
@@ -30,21 +32,45 @@ type ProviderProps = {
    * @desc React Native Navigation navigator object.
    */
   navigator: Navigator,
+  /**
+   * @desc Account of current user
+   */
+  currentAccount: Account,
+  /**
+   * @desc Profile of current chat friend.
+   */
+  friend: GiftedChatUserType,
 };
 
 export type ProvidedProps = {
-  /**
-   * @desc Wallets array
-   */
-  renderAmountSelect: (props: any) => React.Node,
-  /**
-   * @desc Function to send a message.
-   */
-  sendMessage: (type: string, groupId: string, params: Object, callback: (message: ?GiftedChatMessageType) => void) => void,
-  /**
-   * @desc Dismiss the modal.
-   */
-  dismiss: () => void
+  context: {
+    /**
+     * @desc Account of current user.
+     */
+    currentAccount: Account,
+    /**
+     * @desc Profile of current chat friend.
+     */
+    friend: GiftedChatUserType,
+  },
+  components: {
+    /**
+     * @desc Renders AmountSelect component.
+     */
+    renderAmountSelect: (props: any) => React.Node,
+  },
+  services: {
+    /**
+     * @desc Function to send a message.
+     */
+    sendMessage: (type: string, groupId: string, params: Object, callback: (message: ?GiftedChatMessageType) => void) => void,
+  },
+  navigation: {
+    /**
+     * @desc Dismiss the modal.
+     */
+    dismiss: () => void
+  }
 };
 
 /**
@@ -54,38 +80,48 @@ export type ProvidedProps = {
  */
 export function dAppProvider(props: ProviderProps): * {
   const providedProps: ProvidedProps = {
-    renderAmountSelect(customProps) {
-      return (
-        <AmountSelect {...customProps} wallets={props.wallets} />
-      );
+    context: {
+      currentAccount: props.currentAccount,
+      friend: props.friend,
     },
-    sendMessage(type: string, groupId: string, params: Object, callback: (message: ?GiftedChatMessageType) => void) {
-      // @todo Add error providing.
-      if (type.length > 100) {
-        callback(null);
-        return;
-      }
-      if (groupId.length > 100) {
-        callback(null);
-        return;
-      }
-      try {
-        const stringified = JSON.stringify(params);
-        if (stringified.length > 5000000) return;
-        props.sendMessage({
-          dapp_id: props.dAppPublicKey,
-          type,
-          group_id: groupId,
-          params: stringified,
-          should_send: true,
-          should_render: true,
-        }, props.session, callback);
-      } catch (e) {
-        callback(null);
-      }
+    components: {
+      renderAmountSelect(customProps) {
+        return (
+          <AmountSelect {...customProps} wallets={props.wallets} />
+        );
+      },
     },
-    dismiss() {
-      props.navigator.dismissModal();
+    services: {
+      sendMessage(type: string, groupId: string, params: Object, callback: (message: ?GiftedChatMessageType) => void) {
+        // @todo Add error providing.
+        if (type.length > 100) {
+          callback(null);
+          return;
+        }
+        if (groupId.length > 100) {
+          callback(null);
+          return;
+        }
+        try {
+          const stringified = JSON.stringify(params);
+          if (stringified.length > 5000000) return;
+          props.sendMessage({
+            dapp_id: props.dAppPublicKey,
+            type,
+            group_id: groupId,
+            params: stringified,
+            should_send: true,
+            should_render: true,
+          }, props.session, callback);
+        } catch (e) {
+          callback(null);
+        }
+      },
+    },
+    navigation: {
+      dismiss() {
+        props.navigator.dismissModal();
+      },
     },
   };
   return withProps(providedProps);

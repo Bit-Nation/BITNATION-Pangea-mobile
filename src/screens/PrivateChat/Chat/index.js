@@ -23,7 +23,9 @@ import { getSelectedSession } from '../../../utils/chat';
 import type { ChatSessionType } from '../../../types/Chat';
 import { errorAlert } from '../../../global/alerts';
 import i18n from '../../../global/i18n';
-import type { DAppType } from '../../../services/database/schema/v4';
+import type { DAppType } from '../../../dapps';
+import { openDApp } from '../../../actions/dApps';
+import type { Account } from '../../../types/Account';
 
 type Props = {
   /**
@@ -33,11 +35,7 @@ type Props = {
   /**
    * @desc Current user object
    */
-  user: any,
-  /**
-   * @desc Opponent user object
-   */
-  opponent: any,
+  user: Account,
   /**
    * @desc Flag that indicates the loading status
    */
@@ -71,7 +69,11 @@ type Props = {
   /**
    * @desc Array of available DApps.
    */
-  availableDApps: Array<DAppType>
+  availableDApps: Array<DAppType>,
+  /**
+   * @desc Open DApp.
+   */
+  openDApp: (dAppPublicKey: string, secret: string) => void,
 };
 
 class ChatScreen extends Component<Props> {
@@ -86,12 +88,9 @@ class ChatScreen extends Component<Props> {
   }
 
   onSelectDAppToOpen = (index) => {
-    // @todo Open DApps
-    switch (index) {
-      case 0:
-        break;
-      default:
-        break;
+    const session = getSelectedSession(this.props.sessions, this.props.secret);
+    if (index < this.props.availableDApps.length && session) {
+      this.props.openDApp(this.props.availableDApps[index].identityPublicKey, this.props.secret);
     }
   };
 
@@ -172,6 +171,9 @@ const mapDispatchToProps = dispatch => ({
   showSpinner: () => dispatch(showSpinner()),
   hideSpinner: () => dispatch(hideSpinner()),
   sendMessage: (msg, session) => dispatch(sendMessage(msg, session)),
+  openDApp: (dAppPublicKey, secret) => dispatch(openDApp(dAppPublicKey, {
+    chatSecret: secret,
+  })),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChatScreen);
