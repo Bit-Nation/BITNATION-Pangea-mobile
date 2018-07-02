@@ -2,6 +2,8 @@
 
 import * as React from 'react';
 import sendReceiveDApp from './sendReceiveMoney';
+import { DAppProvider } from '../components/nativeDApps/DAppProvider';
+import { MessageProvider } from '../components/nativeDApps/MessageProvider';
 
 export type DAppType = {
   name: string,
@@ -13,4 +15,12 @@ export type DAppType = {
 const dApps: Array<DAppType> = [
   sendReceiveDApp,
 ];
-export default dApps;
+
+export default dApps.map(dApp => ({
+  name: dApp.name,
+  identityPublicKey: dApp.identityPublicKey,
+  // $FlowFixMe
+  modal: DAppProvider(dApp.modal),
+  // $FlowFixMe
+  message: MessageProvider(dApp.message),
+}));

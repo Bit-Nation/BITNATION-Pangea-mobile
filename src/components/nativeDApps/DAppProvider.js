@@ -2,7 +2,6 @@
 // @flow
 
 import * as React from 'react';
-import { withProps } from 'recompose';
 
 import type { WalletType } from '../../types/Wallet';
 import type { Account } from '../../types/Account';
@@ -85,7 +84,7 @@ export const DAppProvider = (Component: React.ComponentType<any>) => (props: Pro
       friend: props.friend,
     },
     components: {
-      renderAmountSelect(customProps) {
+      renderAmountSelect(customProps: any) {
         return (
           <AmountSelect {...customProps} wallets={props.wallets} />
         );
