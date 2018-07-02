@@ -39,7 +39,10 @@ type Props = {
 };
 
 const ChatNationsListScreen = ({
-  selectedTab, nations, myNationIds, onSelectItem,
+  selectedTab,
+  nations,
+  myNationIds,
+  onSelectItem,
 }: Props) => {
   const nationsToDisplay = selectedTab === 'ALL_NATIONS' ?
     _.filter(nations, nation => nation.idInSmartContract >= 0)

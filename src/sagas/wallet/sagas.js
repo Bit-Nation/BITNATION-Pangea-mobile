@@ -148,8 +148,6 @@ export function* updateWalletList(): Generator<*, *, *> {
   let walletsWithoutBalance: WalletType[];
   const walletsFromDb: DBWallet[] = yield call(getDbWallets);
 
-  console.log(`WALLETS BLA: ${JSON.stringify(walletsFromDb)}`);
-
   if (walletsFromDb.length === 0) {
     walletsWithoutBalance = yield call([walletService, 'getWallets']);
     yield call(saveWalletsToDb, walletsWithoutBalance);
