@@ -1,10 +1,8 @@
-// TODO Add Flow
-/* eslint-disable */
+// @flow
 
 import React, { Component } from 'react';
 import { View, Platform } from 'react-native';
 import { connect } from 'react-redux';
-import config from 'react-native-config';
 import {
   GiftedChat,
   Composer,
@@ -18,9 +16,10 @@ import BackgroundImage from '../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import Loading from '../../../components/common/Loading';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
-import type { ChatSessionType } from '../../../types/Chat';
 import { getCurrentAccount } from '../../../reducers/accounts';
 import { getSelectedSession } from '../../../utils/chat';
+import type { ChatSessionType } from '../../../types/Chat';
+import { errorAlert } from '../../../global/alerts';
 
 type Props = {
   /**
@@ -68,36 +67,38 @@ type Props = {
    * @param {Object} session Session object
    */
   saveMessage: (msg: string, session: Object) => void,
-};
-
-type State = {
   /**
-   * @desc List of messages
+   * @desc Array of chat sessions.
    */
-  messages: Array<any>
+  sessions: Array<ChatSessionType>
 };
 
-class ChatScreen extends Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    const session = getSelectedSession(this.props.sessions, this.props.secret);
-    this.state = {
-      session
-    };
-  }
-
+class ChatScreen extends Component<Props> {
   onSend(messages: Array<any> = []) {
     const message = messages[0].text;
-    this.props.sendMessage(message, this.state.session, (response) => {
+    const session = getSelectedSession(this.props.sessions, this.props.secret);
+    if (session == null) {
+      this.showSessionClosedAlert();
+      return;
+    }
+    this.props.sendMessage(message, session, (response) => {
       console.log('created human message: ', response);
       if (response) {
-        this.props.saveMessage(response);
+        this.props.saveMessage(response, session);
       }
     });
   }
 
+  showSessionClosedAlert = () => {
+    errorAlert(new Error('Session is closed, please reopen the chat'));
+  };
+
   render() {
     const session = getSelectedSession(this.props.sessions, this.props.secret);
+    if (session == null) {
+      this.showSessionClosedAlert();
+      return <View />;
+    }
     let sortedMessages = [];
     if (session.decryptedMessages && session.decryptedMessages.length > 0) {
       sortedMessages = session.decryptedMessages.slice().reverse();
@@ -109,7 +110,7 @@ class ChatScreen extends Component<Props, State> {
     return (
       <View style={styles.container}>
         <BackgroundImage />
-        <FakeNavigationBar navBarHidden />
+        <FakeNavigationBar />
 
         <GiftedChat
           messages={sortedMessages}
@@ -126,8 +127,8 @@ class ChatScreen extends Component<Props, State> {
             <Bubble
               {...props}
               customTextStyle={styles.customTextStyle}
-              wrapperStyle={{left: styles.leftBubbleWrapper, right: styles.rightBubbleWrapper}}
-              textStyle={{left: styles.leftTextStyle, right: styles.rightTextStyle}}
+              wrapperStyle={{ left: styles.leftBubbleWrapper, right: styles.rightBubbleWrapper }}
+              textStyle={{ left: styles.leftTextStyle, right: styles.rightTextStyle }}
             />
           )}
         />
@@ -140,7 +141,6 @@ class ChatScreen extends Component<Props, State> {
 const mapStateToProps = state => ({
   user: getCurrentAccount(state.accounts),
   isFetching: state.chat.isFetching,
-  chatProfile: state.chat.chatProfile,
   sessions: state.chat.chats,
 });
 
