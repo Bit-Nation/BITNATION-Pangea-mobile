@@ -9,6 +9,7 @@ import {
   InputToolbar,
   Bubble,
   Actions,
+  MessageText,
 } from 'react-native-gifted-chat';
 import ActionSheet from 'react-native-actionsheet';
 
@@ -26,6 +27,8 @@ import i18n from '../../../global/i18n';
 import type { DAppType } from '../../../dapps';
 import { openDApp } from '../../../actions/dApps';
 import type { Account } from '../../../types/Account';
+import { getDApp } from '../../../reducers/nativeDApps';
+import type { State as DAppsState } from '../../../reducers/nativeDApps';
 
 type Props = {
   /**
@@ -70,6 +73,10 @@ type Props = {
    * @desc Array of available DApps.
    */
   availableDApps: Array<DAppType>,
+  /**
+   * @desc The whole DApps reducer state.
+   */
+  dAppsState: DAppsState,
   /**
    * @desc Open DApp.
    */
@@ -135,6 +142,25 @@ class ChatScreen extends Component<Props> {
           renderInputToolbar={props => (
             <InputToolbar {...props} containerStyle={styles.inputToolbar} />
           )}
+          renderMessageText={(props) => {
+            const { currentMessage } = props;
+            if (currentMessage.dAppMessage == null) {
+              return <MessageText {...props} />;
+            }
+
+            return null;
+          }}
+          renderCustomView={(props) => {
+            const { currentMessage } = props;
+            const { dAppMessage } = currentMessage;
+            if (dAppMessage == null) return null;
+
+            const dApp = getDApp(this.props.dAppsState, dAppMessage.dapp_id);
+            if (dApp == null) return null;
+            const MessageComponent = dApp.message;
+
+            return (<MessageComponent dAppMessage={dAppMessage} currentAccount={this.props.user} />);
+          }}
           renderBubble={props => (
             <Bubble
               {...props}
@@ -165,6 +191,7 @@ const mapStateToProps = state => ({
   isFetching: state.chat.isFetching,
   sessions: state.chat.chats,
   availableDApps: state.dApps.availableDApps,
+  dAppsState: state.dApps,
 });
 
 const mapDispatchToProps = dispatch => ({
