@@ -26,6 +26,7 @@ export function* openDApp(action: OpenDAppAction): Generator<*, *, *> {
   try {
     // @todo Call DApp open handler.
     // yield call(DAppsService.openDApp, dAppPublicKey, context);
+    console.log(context);
     yield call(callback, true);
   } catch (error) {
     console.log(`DApp open failed: ${error}`);
