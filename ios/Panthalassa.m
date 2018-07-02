@@ -17,7 +17,7 @@
 
 - (dispatch_queue_t)methodQueue
 {
-  return dispatch_queue_create("panthalassaLibQueue", DISPATCH_QUEUE_SERIAL);
+  return dispatch_queue_create("panthalassaLibQueue", DISPATCH_QUEUE_CONCURRENT);
 }
 
 RCT_EXPORT_MODULE();
