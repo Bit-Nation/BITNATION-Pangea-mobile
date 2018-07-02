@@ -126,6 +126,32 @@ ShallowWrapper {
             NYC
           </Text>
         </View>,
+        <View
+          style={
+            Object {
+              "marginLeft": 40,
+              "marginRight": 40,
+              "marginTop": 10,
+            }
+          }
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={undefined}
+          />
+          <Button
+            enabled={true}
+            onPress={[Function]}
+            style={
+              Object {
+                "marginTop": 13,
+              }
+            }
+            title="Copy Public Key"
+          />
+        </View>,
       ],
       "style": Object {
         "alignContent": "flex-start",
@@ -275,6 +301,72 @@ ShallowWrapper {
         ],
         "type": [Function],
       },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={undefined}
+            />,
+            <Button
+              enabled={true}
+              onPress={[Function]}
+              style={
+                Object {
+                  "marginTop": 13,
+                }
+              }
+              title="Copy Public Key"
+            />,
+          ],
+          "style": Object {
+            "marginLeft": 40,
+            "marginRight": 40,
+            "marginTop": 10,
+          },
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "accessible": true,
+              "allowFontScaling": true,
+              "children": undefined,
+              "ellipsizeMode": "tail",
+              "style": undefined,
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "children": undefined,
+              "enabled": true,
+              "onPress": [Function],
+              "style": Object {
+                "marginTop": 13,
+              },
+              "title": "Copy Public Key",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
     ],
     "type": [Function],
   },
@@ -344,6 +436,32 @@ ShallowWrapper {
             >
               NYC
             </Text>
+          </View>,
+          <View
+            style={
+              Object {
+                "marginLeft": 40,
+                "marginRight": 40,
+                "marginTop": 10,
+              }
+            }
+          >
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={undefined}
+            />
+            <Button
+              enabled={true}
+              onPress={[Function]}
+              style={
+                Object {
+                  "marginTop": 13,
+                }
+              }
+              title="Copy Public Key"
+            />
           </View>,
         ],
         "style": Object {
@@ -489,6 +607,72 @@ ShallowWrapper {
               },
               "ref": null,
               "rendered": "NYC",
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={undefined}
+              />,
+              <Button
+                enabled={true}
+                onPress={[Function]}
+                style={
+                  Object {
+                    "marginTop": 13,
+                  }
+                }
+                title="Copy Public Key"
+              />,
+            ],
+            "style": Object {
+              "marginLeft": 40,
+              "marginRight": 40,
+              "marginTop": 10,
+            },
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "accessible": true,
+                "allowFontScaling": true,
+                "children": undefined,
+                "ellipsizeMode": "tail",
+                "style": undefined,
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "children": undefined,
+                "enabled": true,
+                "onPress": [Function],
+                "style": Object {
+                  "marginTop": 13,
+                },
+                "title": "Copy Public Key",
+              },
+              "ref": null,
+              "rendered": null,
               "type": [Function],
             },
           ],
