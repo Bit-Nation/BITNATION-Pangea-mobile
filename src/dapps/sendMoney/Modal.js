@@ -6,6 +6,8 @@ import Button from '../../components/common/Button';
 import i18n from '../../global/i18n';
 import Colors from '../../global/colors';
 import GlobalStyles from '../../global/Styles';
+import { errorAlert } from '../../global/alerts';
+import type { ProfileType } from '../../types/Chat';
 
 const styles = StyleSheet.create({
   textInputContainer: {
@@ -38,6 +40,15 @@ const styles = StyleSheet.create({
     marginTop: 16,
   },
 });
+
+export type SendMoneyMessageData = {
+  amount: string,
+  currency: string,
+  fromAddress: string,
+  txHash: string,
+  to: ProfileType,
+}
+
 export default class Modal extends React.Component<ProvidedProps, *> {
   constructor(props: ProvidedProps) {
     super(props);
@@ -45,20 +56,36 @@ export default class Modal extends React.Component<ProvidedProps, *> {
     this.state = {
       amount: '',
       currency: '',
-      address: '',
+      fromAddress: '',
       isValid: false,
     };
   }
 
-  onAmountSelected = (amount: string, currency: string, address: string, isValid: boolean) => {
+  onAmountSelected = (amount: string, currency: string, fromAddress: string, isValid: boolean) => {
     this.setState({
-      amount, currency, address, isValid,
+      amount, currency, fromAddress, isValid,
     });
   };
 
-  onButtonPress = () => {
-    this.props.services.sendMessage('TEST_TYPE', '', { data: { ...this.state, to: this.props.context.friend.name } }, () => {
-    });
+  onButtonPress = async () => {
+    // @todo Get wallet address from ethereum_pub_Key
+    try {
+      const result = await this.props.services.ethereumService.sendMoney('0x560d7433407ee0F862348a44D43E07749077C011', this.state.amount);
+
+      const data: SendMoneyMessageData = {
+        amount: this.state.amount,
+        currency: this.state.currency,
+        fromAddress: this.state.fromAddress,
+        txHash: result.hash,
+        to: this.props.context.friend,
+      };
+
+      this.props.services.sendMessage('SEND_MESSAGE', '', data, () => {
+        this.props.navigation.dismiss();
+      });
+    } catch (error) {
+      errorAlert(error);
+    }
   };
 
   render() {
