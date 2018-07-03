@@ -1,7 +1,7 @@
 // @flow
 
 import * as React from 'react';
-import sendReceiveDApp from './sendReceiveMoney';
+import sendReceiveDApp from './sendMoney';
 import { DAppProvider } from '../components/nativeDApps/DAppProvider';
 import { MessageProvider } from '../components/nativeDApps/MessageProvider';
 
