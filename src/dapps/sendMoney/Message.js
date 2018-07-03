@@ -26,6 +26,8 @@ type State = {
   to: ProfileType,
   amount: string,
   currency: string,
+  fromAddress: string,
+  fromName: string,
   invalidMessage: boolean,
 }
 
@@ -51,6 +53,7 @@ export default class Message extends React.Component<MessageProvidedProp, State>
       && data.to != null
       && data.to.name != null
       && data.fromAddress != null
+      && data.toAddress != null
       && data.txHash != null;
   }
 
@@ -68,7 +71,7 @@ export default class Message extends React.Component<MessageProvidedProp, State>
     const statusText = (() => {
       switch (this.state.status) {
         case 'pending':
-          return 'Money sending';
+          return 'Checking status';
         case 'failed':
           return 'Send failed';
         case 'success':
@@ -84,7 +87,7 @@ export default class Message extends React.Component<MessageProvidedProp, State>
           {statusText}
         </Text>
         <Text style={styles.text}>
-          Send {this.state.amount} {this.state.currency} to {this.state.to.name}
+          Send {this.state.amount} {this.state.currency} from {this.state.fromName} to {this.state.to.name}
         </Text>
       </View>
     );

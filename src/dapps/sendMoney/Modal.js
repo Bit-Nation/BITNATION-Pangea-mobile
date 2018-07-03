@@ -45,6 +45,8 @@ export type SendMoneyMessageData = {
   amount: string,
   currency: string,
   fromAddress: string,
+  fromName: string,
+  toAddress: string,
   txHash: string,
   to: ProfileType,
 }
@@ -68,16 +70,18 @@ export default class Modal extends React.Component<ProvidedProps, *> {
   };
 
   onButtonPress = async () => {
-    // @todo Get wallet address from ethereum_pub_Key
     try {
-      const result = await this.props.services.ethereumService.sendMoney('0x560d7433407ee0F862348a44D43E07749077C011', this.state.amount);
+      const address = this.props.services.ethereumService.ethereumAddressFromPublicKey(this.props.context.friend.ethereum_pub_Key);
+      const result = await this.props.services.ethereumService.sendMoney(address, this.state.amount);
 
       const data: SendMoneyMessageData = {
         amount: this.state.amount,
         currency: this.state.currency,
         fromAddress: this.state.fromAddress,
+        toAddress: address,
         txHash: result.hash,
         to: this.props.context.friend,
+        fromName: this.props.context.currentAccount.name,
       };
 
       this.props.services.sendMessage('SEND_MESSAGE', '', data, () => {
