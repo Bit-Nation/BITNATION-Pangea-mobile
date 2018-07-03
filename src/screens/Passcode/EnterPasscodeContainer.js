@@ -16,6 +16,7 @@ import BackgroundImage from '../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../components/common/FakeNavigationBar';
 import ScreenTitle from '../../components/common/ScreenTitle';
 import type { AsyncTask } from '../../utils/asyncTask';
+import Loading from '../../components/common/Loading';
 
 type Props = {
   /**
@@ -130,6 +131,7 @@ class EnterPasscodeContainer extends NavigatorComponent<Props & Actions & Settin
         <FakeNavigationBar />
         <ScreenTitle title={title} />
         {this.renderPasscodeScreen()}
+        {this.props.loginTask.inProgress === true && <Loading />}
       </View>
     );
   }
