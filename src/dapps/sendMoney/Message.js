@@ -57,7 +57,7 @@ export default class Message extends React.Component<MessageProvidedProp, State>
       && data.txHash != null;
   }
 
-  trackTransaction = async () => this.props.services.ethereumService.trackTransaction(this.state.txHash).then((result) => {
+  trackTransaction = async () => this.props.services.ethereumService.trackTransaction(this.state.txHash).then(() => {
     this.setState({ status: 'success' });
   }).catch(() => {
     this.setState({ status: 'failed' });
