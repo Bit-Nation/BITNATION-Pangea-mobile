@@ -20,7 +20,7 @@ export default class Modal extends React.Component<ProvidedProps, *> {
   };
 
   onButtonPress = () => {
-    this.props.services.sendMessage('TEST_TYPE', '', { something: 90 }, () => {
+    this.props.services.sendMessage('TEST_TYPE', '', { data: { ...this.state, to: this.props.context.friend.name } }, () => {
     });
   };
 
