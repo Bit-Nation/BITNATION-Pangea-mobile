@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
 import { Text, TextInput, TouchableOpacity } from 'react-native';
 import ActionSheet from 'react-native-actionsheet';
+import { BigNumber } from 'bignumber.js';
 
 import type { WalletType } from '../../types/Wallet';
 import View from '../dApps/View';
@@ -23,11 +24,15 @@ export type Props = {
   /**
    * @desc Style to apply to container view.
    */
-  style: Object,
+  style?: Object,
   /**
    * @desc
    */
-  onAmountSelected: (amount: string, currency: string, walletAddress: string) => void,
+  onAmountSelected: (amount: string, currency: string, walletAddress: string, isValid: boolean) => void,
+  /**
+   * @desc Flag whether amount is invalid if it greater than balance.
+   */
+  shouldCheckLess: boolean,
 }
 
 type State = {
@@ -49,7 +54,7 @@ export default class AmountSelect extends Component<Props & InternalProps, State
     if (this.state.selectedAmount !== prevState.selectedAmount
       || this.state.selectedWalletIndex !== prevState.selectedWalletIndex) {
       const wallet = this.props.wallets[this.state.selectedWalletIndex];
-      this.props.onAmountSelected(this.state.selectedAmount, wallet.currency, wallet.ethAddress);
+      this.props.onAmountSelected(this.state.selectedAmount, wallet.currency, wallet.ethAddress, this.isValidAmount());
     }
   }
 
@@ -58,6 +63,19 @@ export default class AmountSelect extends Component<Props & InternalProps, State
       this.setState({ selectedWalletIndex: index });
     }
   };
+
+  isValidAmount(): boolean {
+    try {
+      const amount = new BigNumber(this.state.selectedAmount);
+      const wallet = this.props.wallets[this.state.selectedWalletIndex];
+      if (this.props.shouldCheckLess) {
+        return amount.lessThanOrEqualTo(new BigNumber(wallet.balance));
+      }
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
 
   actionSheet: any;
 

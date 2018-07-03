@@ -58,7 +58,7 @@ const Button = ({
       <TouchableOpacity testID='Touchable' disabled={!enabled} style={[styles.buttonContainer]} onPress={onPress}>
         {
         children ||
-        <Text style={enabled ? [styles.buttonTitle, styleTitle] : styles.disabledButtonTitle}>
+        <Text style={[styles.buttonTitle, styleTitle, (enabled === false) && styles.disabledButtonTitle]}>
           {title}
         </Text>
       }
