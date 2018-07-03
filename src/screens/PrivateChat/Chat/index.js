@@ -1,7 +1,7 @@
 // @flow
 
 import React, { Component } from 'react';
-import { View, Platform } from 'react-native';
+import { View, Platform, Clipboard } from 'react-native';
 import { connect } from 'react-redux';
 import {
   GiftedChat,
@@ -87,7 +87,23 @@ type Props = {
   openDApp: (dAppPublicKey: string, secret: string, friend: ProfileType) => void
 };
 
-class ChatScreen extends Component<Props> {
+class ChatScreen extends Component<Props, *> {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      selectedMessage: null,
+    };
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { selectedMessage } = this.state;
+    if (selectedMessage === prevState.selectedMessage) return;
+    if (selectedMessage == null) return;
+
+    this.messageActionSheet.show();
+  }
+
   onSend(messages: Array<any> = []) {
     const message = messages[0].text;
     const session = getSelectedSession(this.props.sessions, this.props.secret);
@@ -105,7 +121,20 @@ class ChatScreen extends Component<Props> {
     }
   };
 
-  actionSheet: any;
+  onMessageAction = (index: number) => {
+    const { selectedMessage } = this.state;
+    if (selectedMessage == null) return;
+
+    switch (index) {
+      case 0:
+        Clipboard.setString(selectedMessage.text);
+        break;
+      default:
+        break;
+    }
+  };
+  dAppsActionSheet: any;
+  messageActionSheet: any;
 
   showSessionClosedAlert = () => {
     errorAlert(new Error('Session is closed, please reopen the chat'));
@@ -173,17 +202,34 @@ class ChatScreen extends Component<Props> {
               textStyle={{ left: styles.leftTextStyle, right: styles.rightTextStyle }}
             />
           )}
-          onPressActionButton={() => this.actionSheet && this.actionSheet.show()}
+          onLongPress={(context, message) => {
+            if (message.dAppMessage != null) {
+              return;
+            }
+
+            this.setState({
+              selectedMessage: message,
+            });
+          }}
+          onPressActionButton={() => this.dAppsActionSheet && this.dAppsActionSheet.show()}
           renderActions={props => <Actions {...props} containerStyle={styles.actionContainerStyle} />}
         />
         {this.props.isFetching && <Loading />}
         <ActionSheet
           ref={(o) => {
-            this.actionSheet = o;
+            this.dAppsActionSheet = o;
           }}
           options={dAppsOptions}
           cancelButtonIndex={dAppsOptions.length - 1}
           onPress={this.onSelectDAppToOpen}
+        />
+        <ActionSheet
+          ref={(o) => {
+            this.messageActionSheet = o;
+          }}
+          options={['Copy Text', 'Cancel']}
+          cancelButtonIndex={1}
+          onPress={this.onMessageAction}
         />
       </View>
     );
