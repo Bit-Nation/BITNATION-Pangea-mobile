@@ -466,7 +466,7 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
         Log.v("Upstream","Received from callback");
 
         WritableMap params = Arguments.createMap();
-        params.putString("data", s);
+        params.putString("upstream", s);
         Activity activity = getCurrentActivity();
         if (activity != null) {
             MainApplication application = (MainApplication) activity.getApplication();
