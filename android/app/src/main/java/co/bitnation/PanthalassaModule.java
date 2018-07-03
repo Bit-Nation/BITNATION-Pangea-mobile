@@ -103,19 +103,18 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
     }
 
     @ReactMethod
-    public void PanthalassaEthAddress(Promise promise) {
+    public void PanthalassaEthAddress(final Promise promise) {
         new Thread(new Runnable() {
             public void run() {
-
+                try {
+                    String response = Panthalassa.ethAddress();
+                    promise.resolve(response);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    promise.reject("error", e.getLocalizedMessage());
+                }
             }
         }).start();
-        try {
-            String response = Panthalassa.ethAddress();
-            promise.resolve(response);
-        } catch (Exception e) {
-            e.printStackTrace();
-            promise.reject("error", e.getLocalizedMessage());
-        }
     }
 
     @ReactMethod
