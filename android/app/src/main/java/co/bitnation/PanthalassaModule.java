@@ -332,7 +332,7 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
                     Panthalassa.sendResponse(jsonParams.getString("id"),
                             jsonParams.getString("data"),
                             jsonParams.getString("responseError"),
-                            Long.valueOf(jsonParams.getString("timeout")));
+                            jsonParams.getInt("timeout"));
                     promise.resolve(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -432,7 +432,7 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
             public void run() {
                 try {
                     Panthalassa.startDApp(jsonParams.getString("dApp"),
-                            Long.valueOf(jsonParams.getString("timeout")));
+                            jsonParams.getInt("timeout"));
                     promise.resolve(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -449,7 +449,7 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
                 try {
                     long id;
                     Panthalassa.callDAppFunction(jsonParams.getString("dAppId"),
-                            Long.valueOf(jsonParams.getString("id")),
+                            jsonParams.getInt("id"),
                             jsonParams.getString("args"));
                     promise.resolve(true);
                 } catch (Exception e) {
@@ -466,7 +466,7 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
         Log.v("Upstream","Received from callback");
 
         WritableMap params = Arguments.createMap();
-        params.putString("data", s);
+        params.putString("upstream", s);
         Activity activity = getCurrentActivity();
         if (activity != null) {
             MainApplication application = (MainApplication) activity.getApplication();
