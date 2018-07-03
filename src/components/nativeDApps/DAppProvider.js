@@ -5,7 +5,7 @@ import * as React from 'react';
 
 import type { WalletType } from '../../types/Wallet';
 import type { Account } from '../../types/Account';
-import AmountSelect from './AmountSelect';
+import AmountSelect, { type Props as AmountSelectProps } from './AmountSelect';
 import type { ChatSessionType, DAppMessageType, GiftedChatMessageType, ProfileType } from '../../types/Chat';
 import type { Navigator } from '../../types/ReactNativeNavigation';
 import EthereumService from '../../services/ethereum';
@@ -57,7 +57,7 @@ export type ProvidedProps = {
     /**
      * @desc Renders AmountSelect component.
      */
-    renderAmountSelect: (props: any) => React.Node,
+    renderAmountSelect: (props: AmountSelectProps) => React.Node,
   },
   services: {
     /**
@@ -94,7 +94,7 @@ export const DAppProvider = (Component: React.ComponentType<any>) => (props: Pro
       friend: props.friend,
     },
     components: {
-      renderAmountSelect(customProps: any) {
+      renderAmountSelect(customProps: AmountSelectProps) {
         return (
           <AmountSelect {...customProps} wallets={props.wallets} />
         );
