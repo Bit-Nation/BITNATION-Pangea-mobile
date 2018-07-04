@@ -3,12 +3,11 @@
 
 import React, { Component } from 'react';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
-import { Text, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import ActionSheet from 'react-native-actionsheet';
 import { BigNumber } from 'bignumber.js';
 
 import type { WalletType } from '../../types/Wallet';
-import View from '../dApps/View';
 import i18n from '../../global/i18n';
 import GlobalStyles from '../../global/Styles';
 import Colors from '../../global/colors';
