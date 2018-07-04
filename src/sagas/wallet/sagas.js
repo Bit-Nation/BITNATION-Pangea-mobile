@@ -152,7 +152,7 @@ export function* updateWalletList(): Generator<*, *, *> {
     walletsWithoutBalance = yield call([walletService, 'getWallets']);
     yield call(saveWalletsToDb, walletsWithoutBalance);
   } else {
-    walletsWithoutBalance = convertFromDatabase(walletsFromDb);
+    walletsWithoutBalance = walletsFromDb.map(convertFromDatabase);
   }
   yield put(walletsListUpdated(walletsWithoutBalance, false));
   try {
