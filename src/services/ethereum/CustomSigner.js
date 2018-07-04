@@ -13,9 +13,11 @@ import { CancelledError } from '../../global/errors/common';
  *
  * @param {string} privateKey Private key of wallet
  * @param {string} provider name of network
+ * @param {string} app name of application creating this signer
+ * @param {string} purpose purpose of the app
  * @return {object} custom signer with wallet functions
  */
-export default function CustomSigner(privateKey: string, provider: string) {
+export default function CustomSigner(privateKey: string, provider: string, app: string, purpose: string) {
   const wallet = new ethers.Wallet(privateKey);
   this.provider = new WebSocketProvider(provider);
   this.address = wallet.address;
@@ -23,7 +25,7 @@ export default function CustomSigner(privateKey: string, provider: string) {
   this.estimateGas = wallet.estimateGas;
   this.getTransactionCount = wallet.getTransaction;
   this.defaultGasLimit = wallet.defaultGasLimit;
-  this.sign = async (transaction, purpose = '', app = '') => {
+  this.sign = async (transaction) => {
     const transactionObject = transaction;
     try {
       const estimate = await this.estimateGas(transactionObject);
