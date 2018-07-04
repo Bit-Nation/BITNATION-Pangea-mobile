@@ -16,6 +16,7 @@ import { getCurrentAccount } from '../../../reducers/accounts';
 import { getSelectedSession } from '../../../utils/chat';
 import type { ChatSessionType, DAppMessageType, GiftedChatMessageType, ProfileType } from '../../../types/Chat';
 import type { Account } from '../../../types/Account';
+import Loading from '../../../components/common/Loading';
 
 type OwnProps = {
   /**
@@ -55,7 +56,11 @@ type Props = {
   user: Account
 }
 
-class DAppModalScreen extends NavigatorComponent<Props & OwnProps> {
+type State = {
+  isLoading: boolean,
+}
+
+class DAppModalScreen extends NavigatorComponent<Props & OwnProps, State> {
   static navigatorButtons = {
     leftButtons: [{
       id: 'cancel',
@@ -64,6 +69,14 @@ class DAppModalScreen extends NavigatorComponent<Props & OwnProps> {
     }],
     rightButtons: [],
   };
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isLoading: false,
+    };
+  }
 
   onNavBarButtonPress(id: string) {
     if (id === 'cancel') {
@@ -88,10 +101,12 @@ class DAppModalScreen extends NavigatorComponent<Props & OwnProps> {
         <View style={GlobalStyles.bodyContainer}>
           <Component
             {...this.props}
+            setLoadingVisible={visible => this.setState({ isLoading: visible })}
             session={session}
             currentAccount={this.props.user}
           />
         </View>
+        {this.state.isLoading && <Loading />}
       </View>
     );
   }

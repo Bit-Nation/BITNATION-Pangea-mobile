@@ -41,6 +41,10 @@ type ProviderProps = {
    * @desc Profile of current chat friend.
    */
   friend: ProfileType,
+  /**
+   * @desc Function to show or hide loading.
+   */
+  setLoadingVisible: (visible: boolean) => void,
 };
 
 export type ProvidedProps = {
@@ -59,6 +63,10 @@ export type ProvidedProps = {
      * @desc Renders AmountSelect component.
      */
     renderAmountSelect: (props: AmountSelectProps) => React.Node,
+    /**
+     * @desc Function to show or hide loading.
+     */
+    setLoadingVisible: (visible: boolean) => void,
   },
   services: {
     /**
@@ -104,6 +112,7 @@ export const DAppProvider = (Component: React.ComponentType<any>) => (props: Pro
           <AmountSelect {...customProps} wallets={props.wallets} />
         );
       },
+      setLoadingVisible: props.setLoadingVisible,
     },
     services: {
       sendMessage(type: string, groupId: string, params: Object, callback: (message: ?GiftedChatMessageType) => void) {
@@ -141,5 +150,7 @@ export const DAppProvider = (Component: React.ComponentType<any>) => (props: Pro
     },
   };
 
-  return <Component {...providedProps} />;
+  return (
+    <Component {...providedProps} />
+  );
 };
