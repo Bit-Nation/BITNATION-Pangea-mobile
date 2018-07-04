@@ -25,7 +25,7 @@ import type { ChatSessionType, ProfileType } from '../../../types/Chat';
 import { errorAlert } from '../../../global/alerts';
 import i18n from '../../../global/i18n';
 import type { DAppType } from '../../../dapps';
-import { openDApp } from '../../../actions/dApps';
+import { openDApp } from '../../../actions/nativeDApps';
 import type { Account } from '../../../types/Account';
 import { getDApp } from '../../../reducers/nativeDApps';
 import type { State as DAppsState } from '../../../reducers/nativeDApps';
