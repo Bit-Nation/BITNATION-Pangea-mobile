@@ -1,6 +1,7 @@
 // @flow
 
 import ethers from 'ethers';
+import etherutils from 'ethereumjs-util';
 import ERC20ABI from './ERC20ABI.json';
 import NationsABI from './NationABI.json';
 import type { NetworkType } from '../../types/Account';
@@ -9,12 +10,14 @@ export default class EthereumService {
   wallet: Object;
   nations: Object;
   network: NetworkType;
+
   constructor(wallet: Object, network: NetworkType) {
     this.wallet = wallet;
     this.network = network;
     const abi = NationsABI;
     this.nations = new ethers.Contract(network === 'dev' ? '0x559f57f7dbe737319f8d28f8a94f1dcee9f468ad' : '0xa014847cff475826804f2e0a178096b10eeed7a7', abi, this.wallet);
   }
+
   /**
    * @desc Function to get the balance of the given wallet
    *
@@ -118,5 +121,14 @@ export default class EthereumService {
    */
   getTransactionReceipt(transactionHash: string): Promise<Object> {
     return this.wallet.provider.getTransactionReceipt(transactionHash);
+  }
+
+  /**
+   * @desc Convert Ethereum public key to wallet address.
+   * @param {string} publicKey Public key to convert
+   * @return {string} Wallet address.
+   */
+  ethereumAddressFromPublicKey(publicKey: string): string {
+    return etherutils.publicToAddress(etherutils.addHexPrefix(publicKey));
   }
 }

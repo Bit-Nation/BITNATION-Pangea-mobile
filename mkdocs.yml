@@ -1,12 +1,10 @@
-site_name: Bitnation Pangea
+site_name: Pangea
 site_url: https://bitnation.co
 repo_url: https://github.com/Bit-Nation/BITNATION-Pangea-mobile
 site_dir: docs_build
 pages:
-  - Home: index.md
-  - Tech stack & high level overview: tech_stack_and_high_level_overview.md
-  - Services: services.md
-  - Components: components.md
-  - Extend the docs: work_on_docs.md
-
+  - Getting Started: getting_started.md
+  - How to contribute: contribute.md
+  - DApp Development (native): dapp_dev_native.md
+  - DApp Development (VM): dapp_dev_vm.md
 theme: readthedocs
