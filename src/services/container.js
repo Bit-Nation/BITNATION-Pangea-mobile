@@ -24,7 +24,6 @@ export default class ServiceContainer {
       privateKey: normalizeEthPrivateKey(ethPrivateKey),
       networkType: account.networkType,
       app: 'Default Application',
-      purpose: 'To send Money or XPAT',
     }).service;
     this.walletService = new WalletService(this.ethereumService);
     this.nationsService = new NationsService(this.ethereumService, defaultDB, account.id);
