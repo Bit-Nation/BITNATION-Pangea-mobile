@@ -3,7 +3,7 @@
 
 import * as React from 'react';
 
-import type { WalletType } from '../../types/Wallet';
+import type { CurrencyType, WalletType } from '../../types/Wallet';
 import type { Account } from '../../types/Account';
 import AmountSelect, { type Props as AmountSelectProps } from './AmountSelect';
 import type { ChatSessionType, DAppMessageType, GiftedChatMessageType, ProfileType } from '../../types/Chat';
@@ -11,8 +11,9 @@ import type { Navigator } from '../../types/ReactNativeNavigation';
 import EthereumService from '../../services/ethereum';
 import DAppWalletService from '../../services/dAppsWalletService';
 import ServiceContainer from '../../services/container';
+import type { DAppType } from '../../dapps';
 
-type ProviderProps = {
+export type ProviderProps = {
   /**
    * @desc Wallets array
    */
@@ -24,7 +25,7 @@ type ProviderProps = {
   /**
    * @desc Public key of DApp.
    */
-  dAppPublicKey: string,
+  dApp: DAppType,
   /**
    * @desc Function to send a DApp message.
    */
@@ -78,9 +79,13 @@ export type ProvidedProps = {
      */
     ethereumService: EthereumService,
     /**
-     * @desc Service with helpers for sending money.
+     * @desc Function to send money
+     * @param {CurrencyType} currency String with currency symbol (ETH, XPAT)
+     * @param {string} toAddress Address to send ether to.
+     * @param {string} amount Amount in base currency unit (ether, XPAT)
+     * @return {Promise<void>} Promise
      */
-    walletService: DAppWalletService,
+    sendMoney: (currency: CurrencyType, toAddress: string, amount: string) => Promise<void>,
   },
   navigation: {
     /**
@@ -97,6 +102,7 @@ export type ProvidedProps = {
  */
 export const DAppProvider = (Component: React.ComponentType<any>) => (props: ProviderProps) => {
   const { ethereumService, dAppsWalletService } = ServiceContainer.instance;
+  const { identityPublicKey: dAppPublicKey, name: dAppName } = props.dApp;
   if (ethereumService == null || dAppsWalletService == null) {
     return null;
   }
@@ -129,7 +135,7 @@ export const DAppProvider = (Component: React.ComponentType<any>) => (props: Pro
           const stringified = JSON.stringify(params);
           if (stringified.length > 5000000) return;
           props.sendMessage({
-            dapp_id: props.dAppPublicKey,
+            dapp_id: dAppPublicKey,
             type,
             group_id: groupId,
             params: stringified,
@@ -141,7 +147,7 @@ export const DAppProvider = (Component: React.ComponentType<any>) => (props: Pro
         }
       },
       ethereumService,
-      walletService: dAppsWalletService,
+      sendMoney: (currency, toAddress, amount) => dAppsWalletService.sendMoney(`${dAppName} DApp`, currency, toAddress, amount),
     },
     navigation: {
       dismiss() {

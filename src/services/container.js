@@ -20,15 +20,16 @@ export default class ServiceContainer {
   dAppsWalletService: DAppsWalletService | null = null;
 
   initServices(account: Account, ethPrivateKey: string) {
-    this.ethereumService = EthereumServiceFactory({
+    const { service, serviceBuilder } = EthereumServiceFactory({
       privateKey: normalizeEthPrivateKey(ethPrivateKey),
       networkType: account.networkType,
       app: 'Default Application',
-    }).service;
+    });
+    this.ethereumService = service;
     this.walletService = new WalletService(this.ethereumService);
     this.nationsService = new NationsService(this.ethereumService, defaultDB, account.id);
     this.upstreamService = new UpstreamService(this.ethereumService, defaultDB, account.id);
-    this.dAppsWalletService = new DAppsWalletService(this.ethereumService, account);
+    this.dAppsWalletService = new DAppsWalletService(this.ethereumService, serviceBuilder, account);
   }
 
   destroyServices() {
