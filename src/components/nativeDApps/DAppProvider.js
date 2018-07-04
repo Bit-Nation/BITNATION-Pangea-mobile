@@ -9,7 +9,6 @@ import AmountSelect, { type Props as AmountSelectProps } from './AmountSelect';
 import type { ChatSessionType, DAppMessageType, GiftedChatMessageType, ProfileType } from '../../types/Chat';
 import type { Navigator } from '../../types/ReactNativeNavigation';
 import EthereumService from '../../services/ethereum';
-import DAppWalletService from '../../services/dAppsWalletService';
 import ServiceContainer from '../../services/container';
 import type { DAppType } from '../../dapps';
 
