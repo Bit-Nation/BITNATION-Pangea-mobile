@@ -41,14 +41,20 @@ ShallowWrapper {
           allowFontScaling={true}
           ellipsizeMode="tail"
           style={
-            Object {
-              "color": "#BBBDBF",
-              "fontSize": 14,
-              "fontWeight": "bold",
-              "letterSpacing": -0.02,
-              "lineHeight": 19,
-              "textAlign": "center",
-            }
+            Array [
+              Object {
+                "color": "#FF8B00",
+                "fontSize": 14,
+                "fontWeight": "bold",
+                "letterSpacing": -0.02,
+                "lineHeight": 19,
+                "textAlign": "center",
+              },
+              undefined,
+              Object {
+                "color": "#BBBDBF",
+              },
+            ]
           }
         >
           
@@ -75,14 +81,20 @@ ShallowWrapper {
           allowFontScaling={true}
           ellipsizeMode="tail"
           style={
-            Object {
-              "color": "#BBBDBF",
-              "fontSize": 14,
-              "fontWeight": "bold",
-              "letterSpacing": -0.02,
-              "lineHeight": 19,
-              "textAlign": "center",
-            }
+            Array [
+              Object {
+                "color": "#FF8B00",
+                "fontSize": 14,
+                "fontWeight": "bold",
+                "letterSpacing": -0.02,
+                "lineHeight": 19,
+                "textAlign": "center",
+              },
+              undefined,
+              Object {
+                "color": "#BBBDBF",
+              },
+            ]
           }
         >
           
@@ -107,14 +119,20 @@ ShallowWrapper {
           "allowFontScaling": true,
           "children": "",
           "ellipsizeMode": "tail",
-          "style": Object {
-            "color": "#BBBDBF",
-            "fontSize": 14,
-            "fontWeight": "bold",
-            "letterSpacing": -0.02,
-            "lineHeight": 19,
-            "textAlign": "center",
-          },
+          "style": Array [
+            Object {
+              "color": "#FF8B00",
+              "fontSize": 14,
+              "fontWeight": "bold",
+              "letterSpacing": -0.02,
+              "lineHeight": 19,
+              "textAlign": "center",
+            },
+            undefined,
+            Object {
+              "color": "#BBBDBF",
+            },
+          ],
         },
         "ref": null,
         "rendered": "",
@@ -149,14 +167,20 @@ ShallowWrapper {
             allowFontScaling={true}
             ellipsizeMode="tail"
             style={
-              Object {
-                "color": "#BBBDBF",
-                "fontSize": 14,
-                "fontWeight": "bold",
-                "letterSpacing": -0.02,
-                "lineHeight": 19,
-                "textAlign": "center",
-              }
+              Array [
+                Object {
+                  "color": "#FF8B00",
+                  "fontSize": 14,
+                  "fontWeight": "bold",
+                  "letterSpacing": -0.02,
+                  "lineHeight": 19,
+                  "textAlign": "center",
+                },
+                undefined,
+                Object {
+                  "color": "#BBBDBF",
+                },
+              ]
             }
           >
             
@@ -183,14 +207,20 @@ ShallowWrapper {
             allowFontScaling={true}
             ellipsizeMode="tail"
             style={
-              Object {
-                "color": "#BBBDBF",
-                "fontSize": 14,
-                "fontWeight": "bold",
-                "letterSpacing": -0.02,
-                "lineHeight": 19,
-                "textAlign": "center",
-              }
+              Array [
+                Object {
+                  "color": "#FF8B00",
+                  "fontSize": 14,
+                  "fontWeight": "bold",
+                  "letterSpacing": -0.02,
+                  "lineHeight": 19,
+                  "textAlign": "center",
+                },
+                undefined,
+                Object {
+                  "color": "#BBBDBF",
+                },
+              ]
             }
           >
             
@@ -215,14 +245,20 @@ ShallowWrapper {
             "allowFontScaling": true,
             "children": "",
             "ellipsizeMode": "tail",
-            "style": Object {
-              "color": "#BBBDBF",
-              "fontSize": 14,
-              "fontWeight": "bold",
-              "letterSpacing": -0.02,
-              "lineHeight": 19,
-              "textAlign": "center",
-            },
+            "style": Array [
+              Object {
+                "color": "#FF8B00",
+                "fontSize": 14,
+                "fontWeight": "bold",
+                "letterSpacing": -0.02,
+                "lineHeight": 19,
+                "textAlign": "center",
+              },
+              undefined,
+              Object {
+                "color": "#BBBDBF",
+              },
+            ],
           },
           "ref": null,
           "rendered": "",
@@ -294,6 +330,7 @@ ShallowWrapper {
                 "textAlign": "center",
               },
               undefined,
+              false,
             ]
           }
         >
@@ -331,6 +368,7 @@ ShallowWrapper {
                 "textAlign": "center",
               },
               undefined,
+              false,
             ]
           }
         >
@@ -366,6 +404,7 @@ ShallowWrapper {
               "textAlign": "center",
             },
             undefined,
+            false,
           ],
         },
         "ref": null,
@@ -411,6 +450,7 @@ ShallowWrapper {
                   "textAlign": "center",
                 },
                 undefined,
+                false,
               ]
             }
           >
@@ -448,6 +488,7 @@ ShallowWrapper {
                   "textAlign": "center",
                 },
                 undefined,
+                false,
               ]
             }
           >
@@ -483,6 +524,7 @@ ShallowWrapper {
                 "textAlign": "center",
               },
               undefined,
+              false,
             ],
           },
           "ref": null,
@@ -555,6 +597,7 @@ ShallowWrapper {
                 "textAlign": "center",
               },
               undefined,
+              false,
             ]
           }
         >
@@ -592,6 +635,7 @@ ShallowWrapper {
                 "textAlign": "center",
               },
               undefined,
+              false,
             ]
           }
         >
@@ -627,6 +671,7 @@ ShallowWrapper {
               "textAlign": "center",
             },
             undefined,
+            false,
           ],
         },
         "ref": null,
@@ -672,6 +717,7 @@ ShallowWrapper {
                   "textAlign": "center",
                 },
                 undefined,
+                false,
               ]
             }
           >
@@ -709,6 +755,7 @@ ShallowWrapper {
                   "textAlign": "center",
                 },
                 undefined,
+                false,
               ]
             }
           >
@@ -744,6 +791,7 @@ ShallowWrapper {
                 "textAlign": "center",
               },
               undefined,
+              false,
             ],
           },
           "ref": null,
@@ -806,14 +854,20 @@ ShallowWrapper {
           allowFontScaling={true}
           ellipsizeMode="tail"
           style={
-            Object {
-              "color": "#BBBDBF",
-              "fontSize": 14,
-              "fontWeight": "bold",
-              "letterSpacing": -0.02,
-              "lineHeight": 19,
-              "textAlign": "center",
-            }
+            Array [
+              Object {
+                "color": "#FF8B00",
+                "fontSize": 14,
+                "fontWeight": "bold",
+                "letterSpacing": -0.02,
+                "lineHeight": 19,
+                "textAlign": "center",
+              },
+              undefined,
+              Object {
+                "color": "#BBBDBF",
+              },
+            ]
           }
         >
           
@@ -840,14 +894,20 @@ ShallowWrapper {
           allowFontScaling={true}
           ellipsizeMode="tail"
           style={
-            Object {
-              "color": "#BBBDBF",
-              "fontSize": 14,
-              "fontWeight": "bold",
-              "letterSpacing": -0.02,
-              "lineHeight": 19,
-              "textAlign": "center",
-            }
+            Array [
+              Object {
+                "color": "#FF8B00",
+                "fontSize": 14,
+                "fontWeight": "bold",
+                "letterSpacing": -0.02,
+                "lineHeight": 19,
+                "textAlign": "center",
+              },
+              undefined,
+              Object {
+                "color": "#BBBDBF",
+              },
+            ]
           }
         >
           
@@ -872,14 +932,20 @@ ShallowWrapper {
           "allowFontScaling": true,
           "children": "",
           "ellipsizeMode": "tail",
-          "style": Object {
-            "color": "#BBBDBF",
-            "fontSize": 14,
-            "fontWeight": "bold",
-            "letterSpacing": -0.02,
-            "lineHeight": 19,
-            "textAlign": "center",
-          },
+          "style": Array [
+            Object {
+              "color": "#FF8B00",
+              "fontSize": 14,
+              "fontWeight": "bold",
+              "letterSpacing": -0.02,
+              "lineHeight": 19,
+              "textAlign": "center",
+            },
+            undefined,
+            Object {
+              "color": "#BBBDBF",
+            },
+          ],
         },
         "ref": null,
         "rendered": "",
@@ -914,14 +980,20 @@ ShallowWrapper {
             allowFontScaling={true}
             ellipsizeMode="tail"
             style={
-              Object {
-                "color": "#BBBDBF",
-                "fontSize": 14,
-                "fontWeight": "bold",
-                "letterSpacing": -0.02,
-                "lineHeight": 19,
-                "textAlign": "center",
-              }
+              Array [
+                Object {
+                  "color": "#FF8B00",
+                  "fontSize": 14,
+                  "fontWeight": "bold",
+                  "letterSpacing": -0.02,
+                  "lineHeight": 19,
+                  "textAlign": "center",
+                },
+                undefined,
+                Object {
+                  "color": "#BBBDBF",
+                },
+              ]
             }
           >
             
@@ -948,14 +1020,20 @@ ShallowWrapper {
             allowFontScaling={true}
             ellipsizeMode="tail"
             style={
-              Object {
-                "color": "#BBBDBF",
-                "fontSize": 14,
-                "fontWeight": "bold",
-                "letterSpacing": -0.02,
-                "lineHeight": 19,
-                "textAlign": "center",
-              }
+              Array [
+                Object {
+                  "color": "#FF8B00",
+                  "fontSize": 14,
+                  "fontWeight": "bold",
+                  "letterSpacing": -0.02,
+                  "lineHeight": 19,
+                  "textAlign": "center",
+                },
+                undefined,
+                Object {
+                  "color": "#BBBDBF",
+                },
+              ]
             }
           >
             
@@ -980,14 +1058,20 @@ ShallowWrapper {
             "allowFontScaling": true,
             "children": "",
             "ellipsizeMode": "tail",
-            "style": Object {
-              "color": "#BBBDBF",
-              "fontSize": 14,
-              "fontWeight": "bold",
-              "letterSpacing": -0.02,
-              "lineHeight": 19,
-              "textAlign": "center",
-            },
+            "style": Array [
+              Object {
+                "color": "#FF8B00",
+                "fontSize": 14,
+                "fontWeight": "bold",
+                "letterSpacing": -0.02,
+                "lineHeight": 19,
+                "textAlign": "center",
+              },
+              undefined,
+              Object {
+                "color": "#BBBDBF",
+              },
+            ],
           },
           "ref": null,
           "rendered": "",
@@ -1244,14 +1328,20 @@ ShallowWrapper {
           allowFontScaling={true}
           ellipsizeMode="tail"
           style={
-            Object {
-              "color": "#BBBDBF",
-              "fontSize": 14,
-              "fontWeight": "bold",
-              "letterSpacing": -0.02,
-              "lineHeight": 19,
-              "textAlign": "center",
-            }
+            Array [
+              Object {
+                "color": "#FF8B00",
+                "fontSize": 14,
+                "fontWeight": "bold",
+                "letterSpacing": -0.02,
+                "lineHeight": 19,
+                "textAlign": "center",
+              },
+              undefined,
+              Object {
+                "color": "#BBBDBF",
+              },
+            ]
           }
         >
           Testing title
@@ -1278,14 +1368,20 @@ ShallowWrapper {
           allowFontScaling={true}
           ellipsizeMode="tail"
           style={
-            Object {
-              "color": "#BBBDBF",
-              "fontSize": 14,
-              "fontWeight": "bold",
-              "letterSpacing": -0.02,
-              "lineHeight": 19,
-              "textAlign": "center",
-            }
+            Array [
+              Object {
+                "color": "#FF8B00",
+                "fontSize": 14,
+                "fontWeight": "bold",
+                "letterSpacing": -0.02,
+                "lineHeight": 19,
+                "textAlign": "center",
+              },
+              undefined,
+              Object {
+                "color": "#BBBDBF",
+              },
+            ]
           }
         >
           Testing title
@@ -1310,14 +1406,20 @@ ShallowWrapper {
           "allowFontScaling": true,
           "children": "Testing title",
           "ellipsizeMode": "tail",
-          "style": Object {
-            "color": "#BBBDBF",
-            "fontSize": 14,
-            "fontWeight": "bold",
-            "letterSpacing": -0.02,
-            "lineHeight": 19,
-            "textAlign": "center",
-          },
+          "style": Array [
+            Object {
+              "color": "#FF8B00",
+              "fontSize": 14,
+              "fontWeight": "bold",
+              "letterSpacing": -0.02,
+              "lineHeight": 19,
+              "textAlign": "center",
+            },
+            undefined,
+            Object {
+              "color": "#BBBDBF",
+            },
+          ],
         },
         "ref": null,
         "rendered": "Testing title",
@@ -1352,14 +1454,20 @@ ShallowWrapper {
             allowFontScaling={true}
             ellipsizeMode="tail"
             style={
-              Object {
-                "color": "#BBBDBF",
-                "fontSize": 14,
-                "fontWeight": "bold",
-                "letterSpacing": -0.02,
-                "lineHeight": 19,
-                "textAlign": "center",
-              }
+              Array [
+                Object {
+                  "color": "#FF8B00",
+                  "fontSize": 14,
+                  "fontWeight": "bold",
+                  "letterSpacing": -0.02,
+                  "lineHeight": 19,
+                  "textAlign": "center",
+                },
+                undefined,
+                Object {
+                  "color": "#BBBDBF",
+                },
+              ]
             }
           >
             Testing title
@@ -1386,14 +1494,20 @@ ShallowWrapper {
             allowFontScaling={true}
             ellipsizeMode="tail"
             style={
-              Object {
-                "color": "#BBBDBF",
-                "fontSize": 14,
-                "fontWeight": "bold",
-                "letterSpacing": -0.02,
-                "lineHeight": 19,
-                "textAlign": "center",
-              }
+              Array [
+                Object {
+                  "color": "#FF8B00",
+                  "fontSize": 14,
+                  "fontWeight": "bold",
+                  "letterSpacing": -0.02,
+                  "lineHeight": 19,
+                  "textAlign": "center",
+                },
+                undefined,
+                Object {
+                  "color": "#BBBDBF",
+                },
+              ]
             }
           >
             Testing title
@@ -1418,14 +1532,20 @@ ShallowWrapper {
             "allowFontScaling": true,
             "children": "Testing title",
             "ellipsizeMode": "tail",
-            "style": Object {
-              "color": "#BBBDBF",
-              "fontSize": 14,
-              "fontWeight": "bold",
-              "letterSpacing": -0.02,
-              "lineHeight": 19,
-              "textAlign": "center",
-            },
+            "style": Array [
+              Object {
+                "color": "#FF8B00",
+                "fontSize": 14,
+                "fontWeight": "bold",
+                "letterSpacing": -0.02,
+                "lineHeight": 19,
+                "textAlign": "center",
+              },
+              undefined,
+              Object {
+                "color": "#BBBDBF",
+              },
+            ],
           },
           "ref": null,
           "rendered": "Testing title",
@@ -1497,6 +1617,7 @@ ShallowWrapper {
                 "textAlign": "center",
               },
               undefined,
+              false,
             ]
           }
         >
@@ -1534,6 +1655,7 @@ ShallowWrapper {
                 "textAlign": "center",
               },
               undefined,
+              false,
             ]
           }
         >
@@ -1569,6 +1691,7 @@ ShallowWrapper {
               "textAlign": "center",
             },
             undefined,
+            false,
           ],
         },
         "ref": null,
@@ -1614,6 +1737,7 @@ ShallowWrapper {
                   "textAlign": "center",
                 },
                 undefined,
+                false,
               ]
             }
           >
@@ -1651,6 +1775,7 @@ ShallowWrapper {
                   "textAlign": "center",
                 },
                 undefined,
+                false,
               ]
             }
           >
@@ -1686,6 +1811,7 @@ ShallowWrapper {
                 "textAlign": "center",
               },
               undefined,
+              false,
             ],
           },
           "ref": null,
@@ -1953,6 +2079,7 @@ ShallowWrapper {
                 "textAlign": "center",
               },
               undefined,
+              false,
             ]
           }
         >
@@ -1990,6 +2117,7 @@ ShallowWrapper {
                 "textAlign": "center",
               },
               undefined,
+              false,
             ]
           }
         >
@@ -2025,6 +2153,7 @@ ShallowWrapper {
               "textAlign": "center",
             },
             undefined,
+            false,
           ],
         },
         "ref": null,
@@ -2070,6 +2199,7 @@ ShallowWrapper {
                   "textAlign": "center",
                 },
                 undefined,
+                false,
               ]
             }
           >
@@ -2107,6 +2237,7 @@ ShallowWrapper {
                   "textAlign": "center",
                 },
                 undefined,
+                false,
               ]
             }
           >
@@ -2142,6 +2273,7 @@ ShallowWrapper {
                 "textAlign": "center",
               },
               undefined,
+              false,
             ],
           },
           "ref": null,

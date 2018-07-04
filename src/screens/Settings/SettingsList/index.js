@@ -56,6 +56,9 @@ class SettingsListScreen extends NavigatorComponent<Props> {
       case 'confirmPrivateKey':
         this.props.navigator.push(screen('CONFIRM_KEY_INSTRUCTION_SCREEN'));
         break;
+      case 'connectToDAppHost':
+        this.props.navigator.push(screen('QR_CODE_DAPP_SCREEN'));
+        break;
       default:
         break;
     }

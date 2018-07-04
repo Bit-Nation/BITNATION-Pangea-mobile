@@ -15,17 +15,18 @@
     "postinstall": "./node_modules/.bin/rn-nodeify --install 'stream,buffer,vm,crypto,string_decoder,events,assert' --hack",
     "docs": "node_modules/.bin/documentation build src/services/container.js -f md > docs/main.md",
     "build:ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/Pangea/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios'",
-    "build:requestprotofile": "pbjs -t static-module -w commonjs -o src/services/upstream/compiledReqeust.js src/services/upstream/request.proto",
-    "build:responseprotofile": "pbjs -t static-module -w commonjs -o src/services/upstream/compiledResponse.js src/services/upstream/response.proto"
+    "build:protofile": "pbjs -t static-module -w commonjs -o src/services/upstream/compiled.js src/services/upstream/request.proto src/services/upstream/response.proto"
   },
   "dependencies": {
     "assert": "^1.4.1",
     "async-to-generator": "^1.1.0",
     "awilix": "^3.0.1",
+    "base64-arraybuffer": "^0.1.5",
     "bignumber.js": "^5.0.0",
     "bn.js": "^4.11.8",
     "buffer": "^4.9.1",
     "co": "^4.6.0",
+    "ethereumjs-util": "^5.2.0",
     "ethers": "^3.0.15",
     "eventemitter3": "^3.1.0",
     "events": "^1.1.1",
@@ -56,6 +57,7 @@
     "react-native-responsive": "^1.0.2",
     "react-native-segmented-control-tab": "^3.2.1",
     "react-native-sensitive-info": "^5.1.0",
+    "react-native-shake": "^3.2.2",
     "react-native-simple-dialogs": "^0.3.1",
     "react-native-swiper": "^1.5.13",
     "react-native-vector-icons": "^4.4.2",

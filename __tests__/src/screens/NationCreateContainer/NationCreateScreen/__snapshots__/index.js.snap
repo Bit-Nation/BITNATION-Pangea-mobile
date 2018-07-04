@@ -362,7 +362,7 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "#C0C0C0",
+                    "color": "#929497",
                     "fontFamily": "Roboto",
                     "fontSize": 13,
                     "fontWeight": "normal",
@@ -1214,7 +1214,7 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "#C0C0C0",
+                    "color": "#929497",
                     "fontFamily": "Roboto",
                     "fontSize": 13,
                     "fontWeight": "normal",
@@ -1993,7 +1993,7 @@ ShallowWrapper {
                   ellipsizeMode="tail"
                   style={
                     Object {
-                      "color": "#C0C0C0",
+                      "color": "#929497",
                       "fontFamily": "Roboto",
                       "fontSize": 13,
                       "fontWeight": "normal",
@@ -3147,7 +3147,7 @@ ShallowWrapper {
                     ellipsizeMode="tail"
                     style={
                       Object {
-                        "color": "#C0C0C0",
+                        "color": "#929497",
                         "fontFamily": "Roboto",
                         "fontSize": 13,
                         "fontWeight": "normal",
@@ -3373,7 +3373,7 @@ ShallowWrapper {
                     "children": "Virtual nations exist only in Pangea. Geographic nations are on Earth.",
                     "ellipsizeMode": "tail",
                     "style": Object {
-                      "color": "#C0C0C0",
+                      "color": "#929497",
                       "fontFamily": "Roboto",
                       "fontSize": 13,
                       "fontWeight": "normal",
@@ -5401,7 +5401,7 @@ ShallowWrapper {
                   ellipsizeMode="tail"
                   style={
                     Object {
-                      "color": "#C0C0C0",
+                      "color": "#929497",
                       "fontFamily": "Roboto",
                       "fontSize": 13,
                       "fontWeight": "normal",
@@ -6253,7 +6253,7 @@ ShallowWrapper {
                   ellipsizeMode="tail"
                   style={
                     Object {
-                      "color": "#C0C0C0",
+                      "color": "#929497",
                       "fontFamily": "Roboto",
                       "fontSize": 13,
                       "fontWeight": "normal",
@@ -7032,7 +7032,7 @@ ShallowWrapper {
                     ellipsizeMode="tail"
                     style={
                       Object {
-                        "color": "#C0C0C0",
+                        "color": "#929497",
                         "fontFamily": "Roboto",
                         "fontSize": 13,
                         "fontWeight": "normal",
@@ -8186,7 +8186,7 @@ ShallowWrapper {
                       ellipsizeMode="tail"
                       style={
                         Object {
-                          "color": "#C0C0C0",
+                          "color": "#929497",
                           "fontFamily": "Roboto",
                           "fontSize": 13,
                           "fontWeight": "normal",
@@ -8412,7 +8412,7 @@ ShallowWrapper {
                       "children": "Virtual nations exist only in Pangea. Geographic nations are on Earth.",
                       "ellipsizeMode": "tail",
                       "style": Object {
-                        "color": "#C0C0C0",
+                        "color": "#929497",
                         "fontFamily": "Roboto",
                         "fontSize": 13,
                         "fontWeight": "normal",

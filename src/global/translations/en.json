@@ -54,7 +54,8 @@
     "bitnationPat": "XPAT",
     "continue": "Continue",
     "location": "Location",
-    "accounts": "Accounts"
+    "accounts": "Accounts",
+    "balance": "Balance"
   },
   "enums": {
     "nation": {
@@ -490,8 +491,9 @@
         "button": "Share Wallet Address"
       }
     },
-    "qrCodeScanner": {
-      "title": "Scan QR code"
+    "dAppQRCodeScanner": {
+      "title": "Connect to DApp host",
+      "instruction": "Scan QR code to connect to PC"
     },
     "settings": {
       "title": "Settings",
@@ -500,7 +502,8 @@
       "security": "Security",
       "viewPrivateKey": "Private Key",
       "confirmPrivateKey": "Private Key (confirmation required)",
-      "switchAccounts": "Switch accounts"
+      "switchAccounts": "Switch accounts",
+      "connectToDAppHost": "Connect to DApp host"
     },
     "securitySettings": {
       "title": "Security settings",

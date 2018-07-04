@@ -1,26 +1,34 @@
-// TODO Add Flow
-/* eslint-disable */
+// @flow
 
 import React, { Component } from 'react';
-import { View, Platform } from 'react-native';
+import { View, Platform, Clipboard } from 'react-native';
 import { connect } from 'react-redux';
-import config from 'react-native-config';
 import {
   GiftedChat,
   Composer,
   InputToolbar,
   Bubble,
+  Actions,
+  MessageText,
 } from 'react-native-gifted-chat';
-import styles from './styles';
+import ActionSheet from 'react-native-actionsheet';
 
-import { showSpinner, hideSpinner, sendMessage, saveHumanMessage } from '../../../actions/chat';
+import styles from './styles';
+import { showSpinner, hideSpinner, sendMessage } from '../../../actions/chat';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import Loading from '../../../components/common/Loading';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
-import type { ChatSessionType } from '../../../types/Chat';
 import { getCurrentAccount } from '../../../reducers/accounts';
 import { getSelectedSession } from '../../../utils/chat';
+import type { ChatSessionType, ProfileType } from '../../../types/Chat';
+import { errorAlert } from '../../../global/alerts';
+import i18n from '../../../global/i18n';
+import type { DAppType } from '../../../dapps';
+import { openDApp } from '../../../actions/dApps';
+import type { Account } from '../../../types/Account';
+import { getDApp } from '../../../reducers/nativeDApps';
+import type { State as DAppsState } from '../../../reducers/nativeDApps';
 
 type Props = {
   /**
@@ -30,11 +38,7 @@ type Props = {
   /**
    * @desc Current user object
    */
-  user: any,
-  /**
-   * @desc Opponent user object
-   */
-  opponent: any,
+  user: Account,
   /**
    * @desc Flag that indicates the loading status
    */
@@ -58,46 +62,95 @@ type Props = {
   /**
    * @desc Function to send a human message
    * @param {string} msg Message to be sent
-   * @param {func} callback Callback
    * @param {Object} session Session object
    */
-  sendMessage: (msg: string, session: Object, callback: () => void) => void,
+  sendMessage: (msg: string, session: Object) => void,
   /**
-   * @desc Function to save a human message
-   * @param {string} msg Message to be sent
-   * @param {Object} session Session object
+   * @desc Array of chat sessions.
    */
-  saveMessage: (msg: string, session: Object) => void,
+  sessions: Array<ChatSessionType>,
+  /**
+   * @desc Array of available DApps.
+   */
+  availableDApps: Array<DAppType>,
+  /**
+   * @desc The whole DApps reducer state.
+   */
+  dAppsState: DAppsState,
+  /**
+   * @desc Profile of chat friend.
+   */
+  friend: ProfileType,
+  /**
+   * @desc Open DApp.
+   */
+  openDApp: (dAppPublicKey: string, secret: string, friend: ProfileType) => void
 };
 
-type State = {
-  /**
-   * @desc List of messages
-   */
-  messages: Array<any>
-};
-
-class ChatScreen extends Component<Props, State> {
-  constructor(props: Props) {
+class ChatScreen extends Component<Props, *> {
+  constructor(props) {
     super(props);
-    const session = getSelectedSession(this.props.sessions, this.props.secret);
+
     this.state = {
-      session
+      selectedMessage: null,
     };
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { selectedMessage } = this.state;
+    if (selectedMessage === prevState.selectedMessage) return;
+    if (selectedMessage == null) return;
+
+    this.messageActionSheet.show();
   }
 
   onSend(messages: Array<any> = []) {
     const message = messages[0].text;
-    this.props.sendMessage(message, this.state.session, (response) => {
-      console.log('created human message: ', response);
-      if (response) {
-        this.props.saveMessage(response);
-      }
-    });
+    const session = getSelectedSession(this.props.sessions, this.props.secret);
+    if (session == null) {
+      this.showSessionClosedAlert();
+      return;
+    }
+    this.props.sendMessage(message, session);
   }
 
-  render() {
+  onSelectDAppToOpen = (index) => {
     const session = getSelectedSession(this.props.sessions, this.props.secret);
+    if (index < this.props.availableDApps.length && session) {
+      this.props.openDApp(this.props.availableDApps[index].identityPublicKey, this.props.secret, this.props.friend);
+    }
+  };
+
+  onMessageAction = (index: number) => {
+    const { selectedMessage } = this.state;
+    if (selectedMessage == null) return;
+
+    switch (index) {
+      case 0:
+        Clipboard.setString(selectedMessage.text);
+        break;
+      default:
+        break;
+    }
+  };
+  dAppsActionSheet: any;
+  messageActionSheet: any;
+
+  showSessionClosedAlert = () => {
+    errorAlert(new Error('Session is closed, please reopen the chat'));
+  };
+
+  render() {
+    const dAppsOptions = [
+      ...this.props.availableDApps.map(dApp => dApp.name),
+      i18n.t('screens.chat.cancel'),
+    ];
+
+    const session = getSelectedSession(this.props.sessions, this.props.secret);
+    if (session == null) {
+      this.showSessionClosedAlert();
+      return <View />;
+    }
     let sortedMessages = [];
     if (session.decryptedMessages && session.decryptedMessages.length > 0) {
       sortedMessages = session.decryptedMessages.slice().reverse();
@@ -109,7 +162,7 @@ class ChatScreen extends Component<Props, State> {
     return (
       <View style={styles.container}>
         <BackgroundImage />
-        <FakeNavigationBar navBarHidden />
+        <FakeNavigationBar />
 
         <GiftedChat
           messages={sortedMessages}
@@ -122,16 +175,62 @@ class ChatScreen extends Component<Props, State> {
           renderInputToolbar={props => (
             <InputToolbar {...props} containerStyle={styles.inputToolbar} />
           )}
+          renderMessageText={(props) => {
+            const { currentMessage } = props;
+            if (currentMessage.dAppMessage == null) {
+              return <MessageText {...props} />;
+            }
+
+            return null;
+          }}
+          renderCustomView={(props) => {
+            const { currentMessage } = props;
+            const { dAppMessage } = currentMessage;
+            if (dAppMessage == null) return null;
+
+            const dApp = getDApp(this.props.dAppsState, dAppMessage.dapp_id);
+            if (dApp == null) return null;
+            const MessageComponent = dApp.message;
+
+            return (<MessageComponent dAppMessage={dAppMessage} currentAccount={this.props.user} />);
+          }}
           renderBubble={props => (
             <Bubble
               {...props}
               customTextStyle={styles.customTextStyle}
-              wrapperStyle={{left: styles.leftBubbleWrapper, right: styles.rightBubbleWrapper}}
-              textStyle={{left: styles.leftTextStyle, right: styles.rightTextStyle}}
+              wrapperStyle={{ left: styles.leftBubbleWrapper, right: styles.rightBubbleWrapper }}
+              textStyle={{ left: styles.leftTextStyle, right: styles.rightTextStyle }}
             />
           )}
+          onLongPress={(context, message) => {
+            if (message.dAppMessage != null) {
+              return;
+            }
+
+            this.setState({
+              selectedMessage: message,
+            });
+          }}
+          onPressActionButton={() => this.dAppsActionSheet && this.dAppsActionSheet.show()}
+          renderActions={props => <Actions {...props} containerStyle={styles.actionContainerStyle} />}
         />
         {this.props.isFetching && <Loading />}
+        <ActionSheet
+          ref={(o) => {
+            this.dAppsActionSheet = o;
+          }}
+          options={dAppsOptions}
+          cancelButtonIndex={dAppsOptions.length - 1}
+          onPress={this.onSelectDAppToOpen}
+        />
+        <ActionSheet
+          ref={(o) => {
+            this.messageActionSheet = o;
+          }}
+          options={['Copy Text', 'Cancel']}
+          cancelButtonIndex={1}
+          onPress={this.onMessageAction}
+        />
       </View>
     );
   }
@@ -140,15 +239,20 @@ class ChatScreen extends Component<Props, State> {
 const mapStateToProps = state => ({
   user: getCurrentAccount(state.accounts),
   isFetching: state.chat.isFetching,
-  chatProfile: state.chat.chatProfile,
   sessions: state.chat.chats,
+  availableDApps: state.dApps.availableDApps,
+  dAppsState: state.dApps,
+  friend: state.chat.chatProfile,
 });
 
 const mapDispatchToProps = dispatch => ({
   showSpinner: () => dispatch(showSpinner()),
   hideSpinner: () => dispatch(hideSpinner()),
-  sendMessage: (msg, session, callback) => dispatch(sendMessage(msg, session, callback)),
-  saveMessage: (message, session) => dispatch(saveHumanMessage(message, session)),
+  sendMessage: (msg, session) => dispatch(sendMessage(msg, session)),
+  openDApp: (dAppPublicKey, secret, friend) => dispatch(openDApp(dAppPublicKey, {
+    chatSecret: secret,
+    friend,
+  })),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChatScreen);
