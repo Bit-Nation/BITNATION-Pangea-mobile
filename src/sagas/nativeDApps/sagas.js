@@ -2,7 +2,7 @@
 
 import { call, select } from 'redux-saga/effects';
 
-import type { OpenDAppAction, SendDAppMessageAction } from '../../actions/dApps';
+import type { OpenDAppAction, SendDAppMessageAction } from '../../actions/nativeDApps';
 import type { DAppType } from '../../dapps';
 import { getDApp } from '../../reducers/nativeDApps';
 import { sendMessage } from '../chat/sagas';
