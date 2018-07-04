@@ -31,8 +31,8 @@ export default function CustomSigner(privateKey: string, provider: string) {
         Navigation.showModal({
           ...screen('CONFIRMATION_SCREEN'),
           passProps: {
-            onFail: () => {
-              reject();
+            onFail: (error) => {
+              reject(error);
             },
             onSuccess: (gasPrice, gasLimit) => {
               // Here we have gasPrice which is in wei, so we need to convert it into gwei.
@@ -52,7 +52,7 @@ export default function CustomSigner(privateKey: string, provider: string) {
       return signedTransaction;
     } catch (e) {
       console.log('Sign transaction fail with error: ', e);
-      throw new CancelledError();
+      throw e;
     }
   };
   this.sendTransaction = (transaction) => {
