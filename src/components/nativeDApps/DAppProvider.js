@@ -9,6 +9,7 @@ import AmountSelect, { type Props as AmountSelectProps } from './AmountSelect';
 import type { ChatSessionType, DAppMessageType, GiftedChatMessageType, ProfileType } from '../../types/Chat';
 import type { Navigator } from '../../types/ReactNativeNavigation';
 import EthereumService from '../../services/ethereum';
+import DAppWalletService from '../../services/dAppsWalletService';
 import ServiceContainer from '../../services/container';
 
 type ProviderProps = {
@@ -68,6 +69,10 @@ export type ProvidedProps = {
      * @desc Service to deal with ethereum.
      */
     ethereumService: EthereumService,
+    /**
+     * @desc Service with helpers for sending money.
+     */
+    walletService: DAppWalletService,
   },
   navigation: {
     /**
@@ -83,8 +88,8 @@ export type ProvidedProps = {
  * @return {*} HOC
  */
 export const DAppProvider = (Component: React.ComponentType<any>) => (props: ProviderProps) => {
-  const { ethereumService } = ServiceContainer.instance;
-  if (ethereumService == null) {
+  const { ethereumService, dAppsWalletService } = ServiceContainer.instance;
+  if (ethereumService == null || dAppsWalletService == null) {
     return null;
   }
 
@@ -127,6 +132,7 @@ export const DAppProvider = (Component: React.ComponentType<any>) => (props: Pro
         }
       },
       ethereumService,
+      walletService: dAppsWalletService,
     },
     navigation: {
       dismiss() {
