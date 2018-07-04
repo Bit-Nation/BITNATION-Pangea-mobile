@@ -13,6 +13,7 @@ test('rootReducer contains all child reducers', () => {
     'testingMode',
     'wallet',
     'settings',
+    'dApps',
   ];
 
   reducerNames.forEach((reducerName) => {

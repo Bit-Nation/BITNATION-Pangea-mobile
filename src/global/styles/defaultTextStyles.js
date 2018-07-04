@@ -239,7 +239,7 @@ const defaultTextStyles = {
     fontSize: 13,
     lineHeight: 18,
     letterSpacing: 0,
-    color: Colors.BitnationLightColor,
+    color: Colors.BitnationGrayColor,
   },
 
   caption1: {

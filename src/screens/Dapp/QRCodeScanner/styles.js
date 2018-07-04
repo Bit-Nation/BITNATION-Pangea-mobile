@@ -19,4 +19,7 @@ export default StyleSheet.create({
   buttonTouchable: {
     padding: 16,
   },
+  container: {
+    flex: 1,
+  },
 });

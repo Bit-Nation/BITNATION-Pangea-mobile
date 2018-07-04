@@ -4,7 +4,8 @@ export type SettingsItem =
   | 'identity'
   | 'security'
   | 'viewPrivateKey'
-  | 'confirmPrivateKey';
+  | 'confirmPrivateKey'
+  | 'connectToDAppHost';
 
 export type PasscodeType =
   {
