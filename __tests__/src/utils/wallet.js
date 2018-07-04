@@ -12,10 +12,10 @@ describe('Wallet services', () => {
       name: 'Ethereum',
     },
     {
-      currency: 'PAT',
+      currency: 'XPAT',
       ethAddress: '0x88a5C2d9919e46F883EB62F7b8Dd9d0CC45bc290',
       balance: null,
-      name: 'PAT',
+      name: 'XPAT',
     },
   ];
 

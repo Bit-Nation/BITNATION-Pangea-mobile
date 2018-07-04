@@ -118,7 +118,7 @@ export function* saveWalletsToDb(walletsArray: WalletType[]): Generator<*, *, *>
 export function* updateWalletsToDb(walletsArray: WalletType[]): Generator<*, *, *> {
   const db = yield defaultDB;
   const walletEth = resolveWallet(walletsArray, 'ETH');
-  const walletPat = resolveWallet(walletsArray, 'PAT');
+  const walletPat = resolveWallet(walletsArray, 'XPAT');
   if (walletEth === null || walletPat === null) {
     return;
   }
