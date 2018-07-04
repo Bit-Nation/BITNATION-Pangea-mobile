@@ -8,6 +8,7 @@ import type { DAppMessageType, ProfileType } from '../../types/Chat';
 import type { Navigator } from '../../types/ReactNativeNavigation';
 import EthereumService from '../../services/ethereum';
 import ServiceContainer from '../../services/container';
+import DAppWalletService from '../../services/dAppsWalletService';
 
 
 type ProviderProps = {
@@ -53,6 +54,10 @@ export type ProvidedProps = {
      * @desc Service to deal with ethereum.
      */
     ethereumService: EthereumService,
+    /**
+     * @desc Service with helpers for sending money.
+     */
+    walletService: DAppWalletService,
   },
 };
 
@@ -62,8 +67,8 @@ export type ProvidedProps = {
  * @return {*} HOC
  */
 export const MessageProvider = (Component: React.ComponentType<any>) => (props: ProviderProps) => {
-  const { ethereumService } = ServiceContainer.instance;
-  if (ethereumService == null) {
+  const { ethereumService, dAppsWalletService } = ServiceContainer.instance;
+  if (ethereumService == null || dAppsWalletService == null) {
     return null;
   }
 
@@ -75,6 +80,7 @@ export const MessageProvider = (Component: React.ComponentType<any>) => (props: 
     },
     services: {
       ethereumService,
+      walletService: dAppsWalletService,
     },
   };
 

@@ -1,7 +1,8 @@
 // @flow
 
 import ethers from 'ethers';
-import etherutils from 'ethereumjs-util';
+import { NativeModules } from 'react-native';
+
 import ERC20ABI from './ERC20ABI.json';
 import NationsABI from './NationABI.json';
 import type { NetworkType } from '../../types/Account';
@@ -128,7 +129,8 @@ export default class EthereumService {
    * @param {string} publicKey Public key to convert
    * @return {string} Wallet address.
    */
-  ethereumAddressFromPublicKey(publicKey: string): string {
-    return etherutils.publicToAddress(etherutils.addHexPrefix(publicKey));
+  ethereumAddressFromPublicKey(publicKey: string): Promise<string> {
+    const { Panthalassa } = NativeModules;
+    return Panthalassa.PanthalassaEthPubToAddress({ pub: publicKey });
   }
 }
