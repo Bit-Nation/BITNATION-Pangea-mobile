@@ -49,6 +49,7 @@ export type SendMoneyMessageData = {
   toAddress: string,
   txHash: string,
   to: ProfileType,
+  isLoading: boolean,
 }
 
 export default class Modal extends React.Component<ProvidedProps, *> {
@@ -71,6 +72,7 @@ export default class Modal extends React.Component<ProvidedProps, *> {
 
   onButtonPress = async () => {
     try {
+      this.props.components.setLoadingVisible(true);
       const address = await this.props.services.ethereumService.ethereumAddressFromPublicKey(this.props.context.friend.ethereum_pub_Key);
       const result = await this.props.services.walletService.sendMoney(this.state.currency, address, this.state.amount);
 
@@ -88,7 +90,12 @@ export default class Modal extends React.Component<ProvidedProps, *> {
         this.props.navigation.dismiss();
       });
     } catch (error) {
+      if (error.isCancelled === true) {
+        return;
+      }
       errorAlert(error);
+    } finally {
+      this.props.components.setLoadingVisible(false);
     }
   };
 
