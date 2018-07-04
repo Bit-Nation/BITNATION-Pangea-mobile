@@ -74,7 +74,7 @@ export default class Modal extends React.Component<ProvidedProps, *> {
     try {
       this.props.components.setLoadingVisible(true);
       const address = await this.props.services.ethereumService.ethereumAddressFromPublicKey(this.props.context.friend.ethereum_pub_Key);
-      const result = await this.props.services.walletService.sendMoney(this.state.currency, address, this.state.amount);
+      const result = await this.props.services.sendMoney(this.state.currency, address, this.state.amount);
 
       const data: SendMoneyMessageData = {
         amount: this.state.amount,

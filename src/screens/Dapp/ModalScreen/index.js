@@ -17,12 +17,14 @@ import { getSelectedSession } from '../../../utils/chat';
 import type { ChatSessionType, DAppMessageType, GiftedChatMessageType, ProfileType } from '../../../types/Chat';
 import type { Account } from '../../../types/Account';
 import Loading from '../../../components/common/Loading';
+import { getDApp, type State as DAppsState } from '../../../reducers/nativeDApps';
+import type { ProviderProps } from '../../../components/nativeDApps/DAppProvider';
 
 type OwnProps = {
   /**
    * @desc JSON object of layout to be displayed.
    */
-  component: React.ComponentType<any>,
+  component: React.ComponentType<ProviderProps & any>,
   /**
    * @desc Public key of DApp that controls the screen.
    */
@@ -53,7 +55,11 @@ type Props = {
   /**
    * @desc Current user.
    */
-  user: Account
+  user: Account,
+  /**
+   * @desc DApps redux state.
+   */
+  dAppsState: DAppsState,
 }
 
 type State = {
@@ -88,8 +94,9 @@ class DAppModalScreen extends NavigatorComponent<Props & OwnProps, State> {
     const { component: Component } = this.props;
 
     const session = getSelectedSession(this.props.sessions, this.props.chatSecret);
+    const dApp = getDApp(this.props.dAppsState, this.props.dAppPublicKey);
 
-    if (session == null) {
+    if (session == null || dApp == null) {
       this.props.navigator.dismissModal();
       return null;
     }
@@ -100,10 +107,15 @@ class DAppModalScreen extends NavigatorComponent<Props & OwnProps, State> {
         <FakeNavigationBar />
         <View style={GlobalStyles.bodyContainer}>
           <Component
-            {...this.props}
+            navigator={this.props.navigator}
+            wallets={this.props.wallets}
+            user={this.props.user}
+            friend={this.props.friend}
+            currentAccount={this.props.user}
+            sendMessage={this.props.sendMessage}
+            dApp={dApp}
             setLoadingVisible={visible => this.setState({ isLoading: visible })}
             session={session}
-            currentAccount={this.props.user}
           />
         </View>
         {this.state.isLoading && <Loading />}
@@ -116,6 +128,7 @@ const mapStateToProps = state => ({
   wallets: state.wallet.wallets,
   sessions: state.chat.chats,
   user: getCurrentAccount(state.accounts),
+  dAppsState: state.dApps,
 });
 
 const mapDispatchToProps = dispatch => ({
