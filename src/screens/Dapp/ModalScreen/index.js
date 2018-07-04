@@ -11,7 +11,7 @@ import i18n from '../../../global/i18n';
 import type { WalletType } from '../../../types/Wallet';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import BackgroundImage from '../../../components/common/BackgroundImage';
-import { sendDAppMessage } from '../../../actions/dApps';
+import { sendDAppMessage } from '../../../actions/nativeDApps';
 import { getCurrentAccount } from '../../../reducers/accounts';
 import { getSelectedSession } from '../../../utils/chat';
 import type { ChatSessionType, DAppMessageType, GiftedChatMessageType, ProfileType } from '../../../types/Chat';

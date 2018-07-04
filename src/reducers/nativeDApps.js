@@ -4,7 +4,7 @@ import type { DAppType } from '../dapps';
 import {
   type Action,
   OPEN_DAPP,
-} from '../actions/dApps';
+} from '../actions/nativeDApps';
 import dApps from '../dapps';
 
 export type State = {
