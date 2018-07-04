@@ -513,6 +513,24 @@ RCT_REMAP_METHOD(PanthalassaCreateDAppMessage,
   }
 }
 
+RCT_REMAP_METHOD(PanthalassaEthPubToAddress,
+                 PanthalassaEthPubToAddressWithResolver:(NSDictionary *)config
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject) {
+  
+  NSString *response;
+  NSError *error = nil;
+  
+  response = PanthalassaEthPubToAddress([RCTConvert NSString:config[@"pub"]],
+                                          &error);
+  
+  if (error == nil) {
+    resolve(response);
+  } else {
+    reject(@"error", error.localizedDescription, error);
+  }
+}
+
 
 // TEST FOR SEND  - https://facebook.github.io/react-native/docs/native-modules-ios.html#sending-events-to-javascript
 - (NSArray<NSString *> *)supportedEvents
