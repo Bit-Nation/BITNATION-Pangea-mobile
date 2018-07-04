@@ -17,7 +17,7 @@ import { CancelledError } from '../../global/errors/common';
  * @param {string} purpose purpose of the app
  * @return {object} custom signer with wallet functions
  */
-export default function CustomSigner(privateKey: string, provider: string, app: string, purpose: string) {
+export default function CustomSigner(privateKey: string, provider: string, app: string) {
   const wallet = new ethers.Wallet(privateKey);
   this.provider = new WebSocketProvider(provider);
   this.address = wallet.address;
@@ -46,7 +46,6 @@ export default function CustomSigner(privateKey: string, provider: string, app: 
             from: this.address,
             amount: transactionObject.value,
             estimate: estimate.toString(),
-            purpose,
             app,
           },
         });
