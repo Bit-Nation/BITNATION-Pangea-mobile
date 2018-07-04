@@ -43,6 +43,6 @@ export default class DAppsWalletService {
    * @return {Promise<void>} Promise
    */
   async sendXPAT(toAddress: string, amount: string) {
-    return this.ethereumService.sendTokens(this.currentAccount.network === 'dev' ? PAT_DEV_ADDRESS : PAT_PROD_ADDRESS, toAddress, amount);
+    return this.ethereumService.sendTokens(this.currentAccount.networkType === 'dev' ? PAT_DEV_ADDRESS : PAT_PROD_ADDRESS, toAddress, amount);
   }
 }
