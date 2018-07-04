@@ -2,13 +2,13 @@
 
 import * as React from 'react';
 import { connect } from 'react-redux';
+import { View } from 'react-native';
 
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import Colors from '../../../global/colors';
 import GlobalStyles from '../../../global/Styles';
 import i18n from '../../../global/i18n';
 import type { WalletType } from '../../../types/Wallet';
-import View from '../../../components/dApps/View';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import { sendDAppMessage } from '../../../actions/dApps';
