@@ -71,8 +71,8 @@ export default class Modal extends React.Component<ProvidedProps, *> {
 
   onButtonPress = async () => {
     try {
-      const address = this.props.services.ethereumService.ethereumAddressFromPublicKey(this.props.context.friend.ethereum_pub_Key);
-      const result = await this.props.services.ethereumService.sendMoney(address, this.state.amount);
+      const address = await this.props.services.ethereumService.ethereumAddressFromPublicKey(this.props.context.friend.ethereum_pub_Key);
+      const result = await this.props.services.walletService.sendMoney(this.state.currency, address, this.state.amount);
 
       const data: SendMoneyMessageData = {
         amount: this.state.amount,
