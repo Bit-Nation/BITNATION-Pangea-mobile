@@ -8,8 +8,6 @@ import {
 } from '../../global/Constants';
 import EthereumService from '../ethereum';
 import type { CurrencyType } from '../../types/Wallet';
-import EthereumServiceFactory from '../ethereum/factory';
-import { normalizeEthPrivateKey } from '../../utils/key';
 
 export default class DAppsWalletService {
   constructor(ethereumService: EthereumService, serviceBuilder: (app: string) => EthereumService, account: Account) {
