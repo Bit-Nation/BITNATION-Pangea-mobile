@@ -78,6 +78,8 @@ export default class AmountSelect extends Component<Props & InternalProps> {
 
     try {
       const bnAmount = new BigNumber(amount);
+      if (bnAmount.isZero()) return false;
+      if (!bnAmount.isFinite()) return false;
       if (this.props.shouldCheckLess) {
         return bnAmount.lessThanOrEqualTo(new BigNumber(wallet.balance));
       }
