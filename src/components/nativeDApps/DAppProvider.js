@@ -85,9 +85,21 @@ export type ProvidedProps = {
      * @param {CurrencyType} currency String with currency symbol (ETH, XPAT)
      * @param {string} toAddress Address to send ether to.
      * @param {string} amount Amount in base currency unit (ether, XPAT)
-     * @return {Promise<void>} Promise
+     * @return {Promise<Object>} Promise that resolves into transaction.
      */
-    sendMoney: (currency: CurrencyType, toAddress: string, amount: string) => Promise<void>,
+    sendMoney: (currency: CurrencyType, toAddress: string, amount: string) => Promise<Object>,
+    /**
+     * @desc Deploy contract and return a deploy transaction.
+     * @param {string} bytecode Byte code of contract
+     * @param {string} abi ABI of contract
+     * @param {any} params Additional params to pass.
+     * @return {Promise<Object>} Promise that resolves into transaction
+     */
+    deployContract: (bytecode: string, abi: string, ...params: any) => Promise<Object>,
+    /**
+     * @desc Function to get XPAT token contract address (based on current account network).
+     */
+    getXPATTokenAddress: () => string,
   },
   navigation: {
     /**
@@ -104,10 +116,12 @@ export type ProvidedProps = {
  */
 export const DAppProvider = (Component: React.ComponentType<any>) => (props: ProviderProps) => {
   const { ethereumService, dAppsWalletService } = ServiceContainer.instance;
-  const { identityPublicKey: dAppPublicKey, name: dAppName } = props.dApp;
+  const { identityPublicKey: dAppPublicKey, name } = props.dApp;
   if (ethereumService == null || dAppsWalletService == null) {
     return null;
   }
+
+  const dAppName = `${name} DApp`;
 
   const providedProps: ProvidedProps = {
     context: {
@@ -150,7 +164,9 @@ export const DAppProvider = (Component: React.ComponentType<any>) => (props: Pro
         }
       },
       ethereumService,
-      sendMoney: (currency, toAddress, amount) => dAppsWalletService.sendMoney(`${dAppName} DApp`, currency, toAddress, amount),
+      sendMoney: (currency, toAddress, amount) => dAppsWalletService.sendMoney(dAppName, currency, toAddress, amount),
+      deployContract: (bytecode, abi, ...params) => dAppsWalletService.deployContract(dAppName, bytecode, abi, ...params),
+      getXPATTokenAddress: dAppsWalletService.getXPATTokenAddress,
     },
     navigation: {
       dismiss() {
