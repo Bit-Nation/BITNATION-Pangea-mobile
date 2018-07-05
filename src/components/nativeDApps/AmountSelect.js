@@ -38,13 +38,9 @@ export type Props = {
    */
   amount: string,
   /**
-   * @desc Selected currency.
+   * @desc Currency of selected wallet.
    */
   currency: CurrencyType,
-  /**
-   * @desc Selected wallet address.
-   */
-  walletAddress: string,
 }
 
 export default class AmountSelect extends Component<Props & InternalProps> {
@@ -74,9 +70,7 @@ export default class AmountSelect extends Component<Props & InternalProps> {
 
   getWallet(): ?WalletType {
     this.props.wallets[0].currency = 'ETH';
-    return _.find(this.props.wallets, (wallet =>
-      wallet.ethAddress === this.props.walletAddress
-      && wallet.currency === this.props.currency));
+    return _.find(this.props.wallets, (wallet => wallet.currency === this.props.currency));
   }
 
   isValidAmount(amount: string, wallet: WalletType): boolean {
