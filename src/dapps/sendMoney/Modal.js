@@ -105,7 +105,7 @@ export default class Modal extends React.Component<ProvidedProps, *> {
         {this.props.components.renderAmountSelect({
           onAmountSelected: this.onAmountSelected,
           shouldCheckLess: true,
-        })}
+        }, true)}
         <Text style={styles.toLabelText}>{i18n.t('common.to')}</Text>
         <View style={styles.textInputContainer}>
           <TextInput
