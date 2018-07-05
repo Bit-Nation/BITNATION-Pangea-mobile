@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   },
   currencyNumber: {
     fontWeight: 'normal',
-    color: Colors.BitnationDarkGrayColor,
+    color: Colors.BitnationGrayColor,
   },
   toLabelText: {
     ...GlobalStyles.footnote,
@@ -39,6 +39,17 @@ const styles = StyleSheet.create({
     height: 50,
     borderRadius: 0,
     marginTop: 16,
+  },
+  block: {
+    marginTop: 8,
+    marginBottom: 8,
+  },
+  currencyPlaceholder: {
+    ...GlobalStyles.currencyLarge,
+    color: Colors.placeholderTextColor,
+    marginTop: 6,
+    fontSize: 15,
+    marginRight: 12,
   },
 });
 
@@ -59,11 +70,11 @@ export default class Modal extends React.Component<ProvidedProps, *> {
 
     this.state = {
       from: {
-        amount: '',
+        amount: '0',
         currency: 'ETH',
       },
       to: {
-        amount: '',
+        amount: '0',
         currency: 'XPAT',
       },
       rate: '',
@@ -185,32 +196,37 @@ export default class Modal extends React.Component<ProvidedProps, *> {
   render() {
     return (
       <View>
-        {this.props.components.renderAmountSelect({
-          onAmountSelected: (...args) => this.onAmountSelected('from', ...args),
-          shouldCheckLess: true,
-          amount: this.state.from.amount,
-          currency: this.state.from.currency,
-          walletAddress: this.state.from.address,
-        }, false)}
-        <View style={styles.textInputContainer}>
-          <Text style={styles.currencyPlaceholder}>
-            {`${this.state.from.currency}:${this.state.to.currency}`}
-          </Text>
-          <TextInput
-            style={[styles.textInputInContainer, GlobalStyles.currencyLarge, styles.currencyNumber]}
-            onChangeText={this.onChangeRate}
-            value={this.state.rate}
-            keyboardType='numeric'
-          />
+        <View style={styles.block}>
+          {this.props.components.renderAmountSelect({
+            onAmountSelected: (...args) => this.onAmountSelected('from', ...args),
+            shouldCheckLess: true,
+            amount: this.state.from.amount,
+            currency: this.state.from.currency,
+            walletAddress: this.state.from.address,
+          }, false)}
         </View>
-        {this.props.components.renderAmountSelect({
-          onAmountSelected: (...args) => this.onAmountSelected('to', ...args),
-          shouldCheckLess: false,
-          amount: this.state.to.amount,
-          currency: this.state.to.currency,
-          walletAddress: this.state.to.address,
-        }, false)}
-        <Text style={styles.toLabelText}>{i18n.t('common.to')}</Text>
+        <View style={styles.block}>
+          <View style={styles.textInputContainer}>
+            <Text style={styles.currencyPlaceholder}>
+              {`${this.state.from.currency}:${this.state.to.currency}`}
+            </Text>
+            <TextInput
+              style={[styles.textInputInContainer, GlobalStyles.currencyLarge, styles.currencyNumber]}
+              onChangeText={this.onChangeRate}
+              value={this.state.rate}
+              keyboardType='numeric'
+            />
+          </View>
+        </View>
+        <View style={styles.block}>
+          {this.props.components.renderAmountSelect({
+            onAmountSelected: (...args) => this.onAmountSelected('to', ...args),
+            shouldCheckLess: false,
+            amount: this.state.to.amount,
+            currency: this.state.to.currency,
+            walletAddress: this.state.to.address,
+          }, false)}
+        </View>
         <Button
           styleTitle={GlobalStyles.title3}
           style={styles.sendButton}
