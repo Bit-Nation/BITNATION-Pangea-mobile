@@ -11,6 +11,7 @@ import type { Navigator } from '../../types/ReactNativeNavigation';
 import EthereumService from '../../services/ethereum';
 import ServiceContainer from '../../services/container';
 import type { DAppType } from '../../dapps';
+import AmountSelectController from './AmountSelectController';
 
 export type ProviderProps = {
   /**
@@ -61,8 +62,10 @@ export type ProvidedProps = {
   components: {
     /**
      * @desc Renders AmountSelect component.
+     * @param {AmountSelectProps} props Props to pass to AmountSelect component
+     * @param {boolean} autoControlled Flag whether state of component should be handled automatically
      */
-    renderAmountSelect: (props: AmountSelectProps) => React.Node,
+    renderAmountSelect: (props: AmountSelectProps, autoControlled?: boolean) => React.Node,
     /**
      * @desc Function to show or hide loading.
      */
@@ -112,10 +115,11 @@ export const DAppProvider = (Component: React.ComponentType<any>) => (props: Pro
       friend: props.friend,
     },
     components: {
-      renderAmountSelect(customProps: AmountSelectProps) {
-        return (
-          <AmountSelect {...customProps} wallets={props.wallets} />
-        );
+      renderAmountSelect(customProps: AmountSelectProps, autoControlled: boolean = true) {
+        return (autoControlled === true) ?
+          <AmountSelectController {...customProps} wallets={props.wallets} />
+          :
+          <AmountSelect {...customProps} wallets={props.wallets} />;
       },
       setLoadingVisible: props.setLoadingVisible,
     },
