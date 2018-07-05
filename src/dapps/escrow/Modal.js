@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { StyleSheet, Text, TextInput, View } from 'react-native';
 import { BigNumber } from 'bignumber.js';
+import { utils } from 'ethers';
 
 import type { ProvidedProps } from '../../components/nativeDApps/DAppProvider';
 import Button from '../../components/common/Button';
@@ -9,6 +10,7 @@ import Colors from '../../global/colors';
 import GlobalStyles from '../../global/Styles';
 import { errorAlert } from '../../global/alerts';
 import type { ProfileType } from '../../types/Chat';
+import ContractInfo from './ABI.json';
 
 const styles = StyleSheet.create({
   textInputContainer: {
@@ -83,6 +85,19 @@ export default class Modal extends React.Component<ProvidedProps, *> {
   onButtonPress = async () => {
     try {
       this.props.components.setLoadingVisible(true);
+      const address = await this.props.services.ethereumService.ethereumAddressFromPublicKey(this.props.context.friend.ethereum_pub_Key);
+      const etherAmount = this.state.from.currency === 'ETH' ? this.state.from.amount : this.state.to.amount;
+      const xpatAmount = this.state.from.currency === 'XPAT' ? this.state.from.amount : this.state.to.amount;
+      const result = await this.props.services.deployContract(
+        ContractInfo.bytecode,
+        ContractInfo.abi,
+        this.props.services.getXPATTokenAddress(),
+        utils.parseEther(etherAmount),
+        utils.parseUnits(xpatAmount, 18),
+        address,
+        this.state.from.currency === 'XPAT',
+      );
+      console.log(`[DAPP] Deployed transaction ${result}`);
       // const address = await this.props.services.ethereumService.ethereumAddressFromPublicKey(this.props.context.friend.ethereum_pub_Key);
       // const result = await this.props.services.walletService.sendMoney(this.state.currency, address, this.state.amount);
       //

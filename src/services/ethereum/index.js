@@ -133,4 +133,16 @@ export default class EthereumService {
     const { Panthalassa } = NativeModules;
     return Panthalassa.PanthalassaEthPubToAddress({ pub: publicKey });
   }
+
+  /**
+   * @desc Deploy contract and return a deploy transaction.
+   * @param {string} bytecode Byte code of contract
+   * @param {string} abi ABI of contract
+   * @param {any} params Additional params to pass.
+   * @return {Promise<Object>} Promise that resolves into transaction
+   */
+  async deployContract(bytecode: string, abi: string, ...params: any): Promise<Object> {
+    const tx = await ethers.Contract.getDeployTransaction(bytecode, abi, ...params);
+    return this.wallet.sendTransaction(tx);
+  }
 }
