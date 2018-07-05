@@ -105,7 +105,7 @@ class ConfirmationScreen extends NavigatorComponent<Props, State> {
 
 
   buildConfirmationView() {
-    const amount = this.props.amount != null ? ethers.utils.bigNumberify(this.props.amount) : ethers.utils.bigNumberify('0');
+    const amount = ethers.utils.bigNumberify(this.props.amount);
     const gasEstimate = ethers.utils.bigNumberify(this.props.estimate).mul(ethers.utils.parseUnits(this.state.gasPrice.toString(), 'gwei'));
     return (
       <PanelView

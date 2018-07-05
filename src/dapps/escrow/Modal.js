@@ -91,6 +91,7 @@ export default class Modal extends React.Component<ProvidedProps, *> {
       const result = await this.props.services.deployContract(
         ContractInfo.bytecode,
         ContractInfo.abi,
+        etherAmount,
         this.props.services.getXPATTokenAddress(),
         utils.parseEther(etherAmount),
         utils.parseUnits(xpatAmount, 18),
