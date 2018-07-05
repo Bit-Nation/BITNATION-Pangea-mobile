@@ -29,11 +29,6 @@ const styles = StyleSheet.create({
     fontWeight: 'normal',
     color: Colors.BitnationGrayColor,
   },
-  toLabelText: {
-    ...GlobalStyles.footnote,
-    marginLeft: 5,
-    marginTop: 10,
-  },
   sendButton: {
     backgroundColor: Colors.BitnationHighlightColor,
     height: 50,
