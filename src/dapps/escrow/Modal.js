@@ -72,6 +72,7 @@ export default class Modal extends React.Component<ProvidedProps, *> {
       from: {
         amount: '0',
         currency: 'ETH',
+        isValid: false,
       },
       to: {
         amount: '0',
@@ -113,15 +114,15 @@ export default class Modal extends React.Component<ProvidedProps, *> {
     }
   };
 
-  onAmountSelected(field: 'from' | 'to', amount, currency) {
-    this.handleUpdate(field, amount, currency, this.state.rate);
+  onAmountSelected(field: 'from' | 'to', amount, currency, walletAddress, isValid) {
+    this.handleUpdate(field, amount, currency, isValid);
   }
 
   onChangeRate = (rateString: string) => {
     this.handleUpdate('rate', rateString);
   };
 
-  handleUpdate(field: 'from' | 'to' | 'rate', amount, currency) {
+  handleUpdate(field: 'from' | 'to' | 'rate', amount, currency, isValid) {
     this.setState((prevState) => {
       const resultState = {
         ...prevState,
@@ -133,6 +134,7 @@ export default class Modal extends React.Component<ProvidedProps, *> {
         resultState[field] = {
           amount,
           currency,
+          isValid,
         };
         const oppositeField = field === 'from' ? 'to' : 'from';
         if (prevState[field].currency !== currency) {
@@ -193,12 +195,22 @@ export default class Modal extends React.Component<ProvidedProps, *> {
     return result.toString(10);
   };
 
+  isValid() {
+    return this.state.from.isValid === true
+      && (new BigNumber(this.state.from.amount)).isFinite() === true
+      && (new BigNumber(this.state.to.amount)).isFinite() === true
+      && (new BigNumber(this.state.rate)).isFinite() === true
+      && (new BigNumber(this.state.to.amount)).isZero() === false
+      && (new BigNumber(this.state.from.amount)).isZero() === false
+      && (new BigNumber(this.state.rate)).isZero() === false;
+  }
+
   render() {
     return (
       <View>
         <View style={styles.block}>
           {this.props.components.renderAmountSelect({
-            onAmountSelected: (...args) => this.onAmountSelected('from', ...args),
+            onAmountSelected: (amount, currency, address, isValid) => this.onAmountSelected('from', amount, currency, address, isValid),
             shouldCheckLess: true,
             amount: this.state.from.amount,
             currency: this.state.from.currency,
@@ -220,7 +232,7 @@ export default class Modal extends React.Component<ProvidedProps, *> {
         </View>
         <View style={styles.block}>
           {this.props.components.renderAmountSelect({
-            onAmountSelected: (...args) => this.onAmountSelected('to', ...args),
+            onAmountSelected: (amount, currency, address, isValid) => this.onAmountSelected('to', amount, currency, address, isValid),
             shouldCheckLess: false,
             amount: this.state.to.amount,
             currency: this.state.to.currency,
@@ -232,7 +244,7 @@ export default class Modal extends React.Component<ProvidedProps, *> {
           style={styles.sendButton}
           title={i18n.t('dApps.escrow.requestExchange')}
           onPress={this.onButtonPress}
-          enabled={this.state.isValid}
+          enabled={this.isValid()}
         />
       </View>
     );
