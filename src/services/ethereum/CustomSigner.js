@@ -14,7 +14,6 @@ import { CancelledError } from '../../global/errors/common';
  * @param {string} privateKey Private key of wallet
  * @param {string} provider name of network
  * @param {string} app name of application creating this signer
- * @param {string} purpose purpose of the app
  * @return {object} custom signer with wallet functions
  */
 export default function CustomSigner(privateKey: string, provider: string, app: string) {
@@ -28,7 +27,14 @@ export default function CustomSigner(privateKey: string, provider: string, app: 
   this.sign = async (transaction) => {
     const transactionObject = transaction;
     try {
-      const estimate = await this.estimateGas(transactionObject);
+      let estimate;
+      if (transactionObject.to === undefined) {
+        transactionObject.to = '0xF0D346A86A68086846363185d24D5893F4353A78';
+        estimate = await this.estimateGas(transactionObject);
+        transactionObject.to = undefined;
+      } else {
+        estimate = await this.estimateGas(transactionObject);
+      }
       const signedTransaction = await new Promise((resolve, reject) => {
         Navigation.showModal({
           ...screen('CONFIRMATION_SCREEN'),
