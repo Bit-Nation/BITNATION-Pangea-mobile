@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import sendReceiveDApp from './sendMoney';
+import escrowDApp from './escrow';
 import { DAppProvider } from '../components/nativeDApps/DAppProvider';
 import { MessageProvider } from '../components/nativeDApps/MessageProvider';
 
@@ -14,6 +15,7 @@ export type DAppType = {
 
 const dApps: Array<DAppType> = [
   sendReceiveDApp,
+  escrowDApp,
 ];
 
 export default dApps.map(dApp => ({
