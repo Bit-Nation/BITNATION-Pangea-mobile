@@ -570,7 +570,8 @@
   },
   "dApps": {
     "escrow": {
-      "requestExchange": "Request exchange"
+      "requestExchange": "START EXCHANGE",
+      "sendTokens": "$t(common.send)"
     }
   }
 }
