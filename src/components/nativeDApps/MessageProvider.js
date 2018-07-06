@@ -34,6 +34,10 @@ type ProviderProps = {
    * @desc Message to render.
    */
   dAppMessage: DAppMessageType,
+  /**
+   * @desc Wallet address of current account.
+   */
+  walletAddress: string,
 };
 
 export type ProvidedProps = {
@@ -50,6 +54,10 @@ export type ProvidedProps = {
      * @desc Profile of current chat friend.
      */
     friend: ProfileType,
+    /**
+     * @desc Wallet address of current account.
+     */
+    walletAddress: string,
   },
   services: {
     /**
@@ -64,6 +72,13 @@ export type ProvidedProps = {
      * @return {Promise<Object>} Promise that resolves into transaction.
      */
     sendMoney: (currency: CurrencyType, toAddress: string, amount: string) => Promise<Object>,
+    /**
+     * @desc Gets contract instance.
+     * @param {string} address Address of deployed contract.
+     * @param {(string|Object)} abi ABI of contract.
+     * @return {*} Contract instance.
+     */
+    getContract: (address: string, abi: (string | Object)) => Promise<Object>,
   },
 };
 
@@ -83,10 +98,12 @@ export const MessageProvider = (Component: React.ComponentType<any>) => (props: 
       dAppMessage: props.dAppMessage,
       currentAccount: props.currentAccount,
       friend: props.friend,
+      walletAddress: props.walletAddress,
     },
     services: {
       ethereumService,
-      sendMoney: (currency, toAddress, amouwnt) => dAppsWalletService.sendMoney(props.dApp.name, currency, toAddress, amount),
+      sendMoney: (...args) => dAppsWalletService.sendMoney(props.dApp.name, ...args),
+      getContract: (...args) => dAppsWalletService.getContract(props.dApp.name, ...args),
     },
   };
 

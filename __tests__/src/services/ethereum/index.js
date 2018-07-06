@@ -3,7 +3,7 @@
 import ethers from 'ethers';
 import providers from 'ethers/providers';
 import Ethereum from '../../../../src/services/ethereum/index';
-import ContractInfo from '../../../../src/dapps/escrow/ABI.json';
+import ContractInfo from '../../../../src/dapps/escrow/ERC20TokenEscrow.json';
 
 describe('ethereum', () => {
   let ethereum;

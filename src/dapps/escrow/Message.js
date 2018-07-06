@@ -2,54 +2,87 @@
 
 /* eslint-disable prefer-destructuring,class-methods-use-this */
 import * as React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 import type { ProvidedProps as MessageProvidedProps } from '../../components/nativeDApps/MessageProvider';
-import { MESSAGE_TYPES } from './Constants';
-import ExchangeInitiatedMessage from './ExchangeInitiatedMessage';
+import ContractInteractionMessage from './ContractInteractionMessage';
+import { MessageParamsValidator } from '../../components/nativeDApps/MessageParamsValidator';
+import type { MessageData } from './Constants';
+import ContractInfo from './ERC20TokenEscrow.json';
 
 const styles = StyleSheet.create({
   container: { margin: 5 },
+  textBold: { fontWeight: 'bold' },
 });
 
-export default class Message extends React.Component<MessageProvidedProps, *> {
-  constructor(props: MessageProvidedProps) {
+type OwnProps = {
+  data: MessageData,
+}
+
+type State = {
+  contract: Object | null,
+  contractAddress: string | null,
+  contractCheckFailed: boolean,
+}
+
+type Props = MessageProvidedProps & OwnProps;
+
+class Message extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
 
-    const params: string = this.props.context.dAppMessage.params;
-    const messageType = this.props.context.dAppMessage.type;
-    const data = JSON.parse(params);
-
     this.state = {
-      data,
-      invalidMessage: this.validateParams(data, messageType) === false,
+      contract: null,
+      contractAddress: null,
+      contractCheckFailed: false,
     };
+
+    this.getContractAddress().catch(() => {
+      this.setState({ contractCheckFailed: true });
+    });
   }
 
-  validateParams(data: Object, type: string) {
-    switch (type) {
-      case MESSAGE_TYPES.EXCHANGE_INITIATED:
-        return data.amount != null
-          && data.currency != null
-          && data.to != null
-          && data.to.name != null
-          && data.fromAddress != null
-          && data.toAddress != null
-          && data.txHash != null;
-      default:
-        return false;
-    }
-  }
+  getContractAddress = async () => {
+    await this.props.services.ethereumService.trackTransaction(this.props.data.deployTxHash);
+    const receipt = await this.props.services.ethereumService.getTransactionReceipt(this.props.data.deployTxHash);
+    this.setState({
+      contractAddress: receipt.contractAddress,
+      contract: this.props.services.getContract(receipt.contractAddress, ContractInfo.abi),
+    });
+  };
 
   render() {
-    if (this.state.invalidMessage) {
-      return null;
-    }
-
     return (
       <View style={styles.container}>
-        {this.props.context.dAppMessage.type === MESSAGE_TYPES.EXCHANGE_INITIATED
-        && <ExchangeInitiatedMessage {...this.state.data} />}
+        {
+          this.state.contractAddress == null || this.state.contract === null ?
+            (
+              <Text style={styles.textBold}>
+                {
+                  this.state.contractCheckFailed
+                    ? 'Failed to check status, please reopen the chat'
+                    : 'Checking smart contract status'
+                }
+              </Text>
+            )
+            :
+            (
+              <ContractInteractionMessage
+                contract={this.state.contract}
+                contractAddress={this.state.contractAddress}
+                {...this.props}
+                {...this.props.data}
+              />
+            )
+        }
       </View>
     );
   }
 }
+
+export default MessageParamsValidator(Message, (data: Object) =>
+  data.deployTxHash != null
+  && data.etherAmount != null
+  && data.tokenAmount != null
+  && data.tokenContractAddress != null
+  && data.tokensFromAddress != null
+  && data.tokensFromName != null);
