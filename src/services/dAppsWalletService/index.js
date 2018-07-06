@@ -86,5 +86,7 @@ export default class DAppsWalletService {
     return this.getEthereumServiceForDApp(app).deployContract(bytecode, abi, txValue, ...params);
   }
 
-  getXPATTokenAddress = (): string => (this.currentAccount.networkType === 'dev' ? PAT_DEV_ADDRESS : PAT_PROD_ADDRESS)
+  getXPATTokenAddress = (): string => (this.currentAccount.networkType === 'dev' ? PAT_DEV_ADDRESS : PAT_PROD_ADDRESS);
+
+  getContract = (app: string, contractAddress: string, abi: string | Object) => this.getEthereumServiceForDApp(app).getContract(contractAddress, abi);
 }

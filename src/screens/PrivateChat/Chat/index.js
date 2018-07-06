@@ -29,6 +29,7 @@ import { openDApp } from '../../../actions/nativeDApps';
 import type { Account } from '../../../types/Account';
 import { getDApp } from '../../../reducers/nativeDApps';
 import type { State as DAppsState } from '../../../reducers/nativeDApps';
+import type { WalletType } from '../../../types/Wallet';
 
 type Props = {
   /**
@@ -84,7 +85,11 @@ type Props = {
   /**
    * @desc Open DApp.
    */
-  openDApp: (dAppPublicKey: string, secret: string, friend: ProfileType) => void
+  openDApp: (dAppPublicKey: string, secret: string, friend: ProfileType) => void,
+  /**
+   * @desc Array of user wallets.
+   */
+  wallets: Array<WalletType>
 };
 
 class ChatScreen extends Component<Props, *> {
@@ -192,7 +197,12 @@ class ChatScreen extends Component<Props, *> {
             if (dApp == null) return null;
             const MessageComponent = dApp.message;
 
-            return (<MessageComponent dApp={dApp} dAppMessage={dAppMessage} currentAccount={this.props.user} />);
+            return (<MessageComponent
+              dApp={dApp}
+              dAppMessage={dAppMessage}
+              currentAccount={this.props.user}
+              walletAddress={this.props.wallets[0].ethAddress}
+            />);
           }}
           renderBubble={props => (
             <Bubble
@@ -243,6 +253,7 @@ const mapStateToProps = state => ({
   availableDApps: state.dApps.availableDApps,
   dAppsState: state.dApps,
   friend: state.chat.chatProfile,
+  wallets: state.wallet.wallets,
 });
 
 const mapDispatchToProps = dispatch => ({
