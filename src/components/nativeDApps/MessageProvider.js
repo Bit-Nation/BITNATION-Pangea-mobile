@@ -9,13 +9,15 @@ import type { Navigator } from '../../types/ReactNativeNavigation';
 import EthereumService from '../../services/ethereum';
 import ServiceContainer from '../../services/container';
 import DAppWalletService from '../../services/dAppsWalletService';
+import type { CurrencyType } from '../../types/Wallet';
+import type { DAppType } from '../../dapps';
 
 
 type ProviderProps = {
   /**
    * @desc Public key of DApp.
    */
-  dAppPublicKey: string,
+  dApp: DAppType,
   /**
    * @desc React Native Navigation navigator object.
    */
@@ -55,9 +57,13 @@ export type ProvidedProps = {
      */
     ethereumService: EthereumService,
     /**
-     * @desc Service with helpers for sending money.
+     * @desc Function to send money
+     * @param {CurrencyType} currency String with currency symbol (ETH, XPAT)
+     * @param {string} toAddress Address to send ether to.
+     * @param {string} amount Amount in base currency unit (ether, XPAT)
+     * @return {Promise<Object>} Promise that resolves into transaction.
      */
-    walletService: DAppWalletService,
+    sendMoney: (currency: CurrencyType, toAddress: string, amount: string) => Promise<Object>,
   },
 };
 
@@ -80,7 +86,7 @@ export const MessageProvider = (Component: React.ComponentType<any>) => (props: 
     },
     services: {
       ethereumService,
-      walletService: dAppsWalletService,
+      sendMoney: (currency, toAddress, amount) => dAppsWalletService.sendMoney(props.dApp.name, currency, toAddress, amount),
     },
   };
 
