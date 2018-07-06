@@ -5,8 +5,8 @@ import * as React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import Colors from '../../global/colors';
 import type { ProvidedProps as MessageProvidedProps } from '../../components/nativeDApps/MessageProvider';
-import type { SendMoneyMessageData } from './Modal';
 import type { ProfileType } from '../../types/Chat';
+import { MessageParamsValidator } from '../../components/nativeDApps/MessageParamsValidator';
 
 const styles = StyleSheet.create({
   container: { margin: 5 },
@@ -22,54 +22,41 @@ const styles = StyleSheet.create({
 
 type Status = 'pending' | 'failed' | 'success';
 
-type State = {
-  status: Status,
-  txHash: string,
-  to: ProfileType,
-  amount: string,
-  currency: string,
-  fromAddress: string,
-  fromName: string,
-  invalidMessage: boolean,
+type OwnProps = {
+  data: {
+    txHash: string,
+    to: ProfileType,
+    amount: string,
+    currency: string,
+    fromAddress: string,
+    fromName: string,
+  }
 }
 
-export default class Message extends React.Component<MessageProvidedProps, State> {
-  constructor(props: MessageProvidedProps) {
-    super(props);
+type State = {
+  status: Status,
+}
 
-    const params: string = this.props.context.dAppMessage.params;
-    const data: SendMoneyMessageData = JSON.parse(params);
+type Props = MessageProvidedProps & OwnProps;
+
+class Message extends React.Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
 
     this.state = {
       status: 'pending',
-      ...data,
-      invalidMessage: this.validateParams(data) === false,
     };
 
     this.trackTransaction();
   }
 
-  validateParams(data: SendMoneyMessageData) {
-    return data.amount != null
-      && data.currency != null
-      && data.to != null
-      && data.to.name != null
-      && data.fromAddress != null
-      && data.toAddress != null
-      && data.txHash != null;
-  }
-
-  trackTransaction = async () => this.props.services.ethereumService.trackTransaction(this.state.txHash).then(() => {
+  trackTransaction = async () => this.props.services.ethereumService.trackTransaction(this.props.data.txHash).then(() => {
     this.setState({ status: 'success' });
   }).catch(() => {
     this.setState({ status: 'failed' });
   });
 
   render() {
-    if (this.state.invalidMessage) {
-      return null;
-    }
-
     const statusText = (() => {
       switch (this.state.status) {
         case 'pending':
@@ -89,9 +76,18 @@ export default class Message extends React.Component<MessageProvidedProps, State
           {statusText}
         </Text>
         <Text style={styles.text}>
-          Send {this.state.amount} {this.state.currency} from {this.state.fromName} to {this.state.to.name}
+          Send {this.props.data.amount} {this.props.data.currency} from {this.props.data.fromName} to {this.props.data.to.name}
         </Text>
       </View>
     );
   }
 }
+
+export default MessageParamsValidator(Message, (data: Object) =>
+  data.amount != null
+  && data.currency != null
+  && data.to != null
+  && data.to.name != null
+  && data.fromAddress != null
+  && data.toAddress != null
+  && data.txHash != null);
