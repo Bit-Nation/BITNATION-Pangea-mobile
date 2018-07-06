@@ -3,12 +3,14 @@
 
 import * as React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
+import { BigNumber } from 'bignumber.js';
+
 import Colors from '../../global/colors';
 import i18n from '../../global/i18n';
 import type { ProvidedProps as MessageProvidedProps } from '../../components/nativeDApps/MessageProvider';
 import type { MessageData } from './Constants';
 import Button from '../../components/common/Button';
-import { alert } from '../../global/alerts';
+import { alert, errorAlert } from '../../global/alerts';
 
 const styles = StyleSheet.create({
   container: { margin: 5 },
@@ -60,21 +62,42 @@ export default class ContractInteractionMessage extends React.Component<Props, S
     this.stopFetching();
   }
 
-  startFetching = async () => {
-    await this.fetch().catch((error) => {
+  startFetching = async (oneTime: boolean = false) => {
+    try {
+      const status = await this.fetch();
+      this.setState({ contractStatus: status });
+      if (status === 'readyForWithdraw') {
+        await this.props.contract.withdrawal();
+        await this.startFetching(true);
+      }
+    } catch (error) {
       console.log(`[Escrow DApp] Failed to fetch contract info with error ${error.message}`);
-    });
-    this.timeoutHandler = setTimeout(this.startFetching, 8000);
+    }
+    if (oneTime === false) {
+      this.timeoutHandler = setTimeout(this.startFetching, 8000);
+    }
   };
 
-  fetch = async () => {
+  fetch = async (): Promise<Status> => {
     const withdrawn = await this.props.contract.functions.withdrawled;
     if (withdrawn === true) {
-      this.setState({ contractStatus: 'withdrawn' });
-      return Promise.resolve();
+      return 'withdrawn';
     }
 
-    const tokenBalance = await this.props.services.ethereumService.getTokenBalance(this.props.tokenContractAddress);
+    // @todo Change methods
+    const agreedEtherAmount = new BigNumber(this.props.etherAmount);
+    const etherBalance = new BigNumber(await this.props.services.ethereumService.getOtherBalance(this.props.contractAddress));
+    if (etherBalance.lessThan(agreedEtherAmount)) {
+      return 'drained';
+    }
+
+    const agreedTokenAmount = new BigNumber(this.props.tokenAmount);
+    const tokenBalance = new BigNumber(await this.props.services.ethereumService.getOtherTokenBalance(this.props.tokenContractAddress, this.props.contractAddress));
+    if (tokenBalance.lessThan(agreedTokenAmount)) {
+      return 'pending';
+    }
+
+    return 'readyForWithdraw';
   };
 
   stopFetching = () => {
@@ -95,37 +118,52 @@ export default class ContractInteractionMessage extends React.Component<Props, S
   };
 
   cancelContract = async () => {
-    // @todo Cancel contract
+    try {
+      await this.props.contract.drain();
+      await this.startFetching(true);
+    } catch (error) {
+      errorAlert(error);
+    }
   };
 
   shouldShowSendTokens = () => this.props.tokensFromAddress === this.props.context.walletAddress;
 
-  renderSuccess() {
-    const shouldShowSendTokens = this.shouldShowSendTokens();
-
-    return (
-      <View>
-        <Text style={styles.textBold}>
-          {shouldShowSendTokens
-            ? 'Send XPAT to complete exchange'
-            : `Waiting for ${this.props.tokensFromName} to complete exchange`
-          }
-        </Text>
-        <View>
-          {
-            shouldShowSendTokens &&
-            <Button
-              onPress={this.onPressSend}
-              title={i18n.t('dApps.escrow.sendTokens')}
-            />
-          }
-          <Button
-            onPress={this.onPressCancel}
-            title={i18n.t('dApps.escrow.cancelContract')}
-          />
-        </View>
-      </View>
-    );
+  renderStatus(status: Status) {
+    const shouldShowSendTokens = this.shouldShowSendTokens() && status === 'pending';
+    switch (status) {
+      case 'unknown':
+        return (
+          <Text style={styles.textBold}>
+            Checking smart contract status.
+          </Text>
+        );
+      case 'pending':
+        return (
+          <View>
+            <Text style={styles.textBold}>
+              {shouldShowSendTokens
+                ? 'Send XPAT to complete exchange'
+                : `Waiting for ${this.props.tokensFromName} to complete exchange`
+              }
+            </Text>
+            <View>
+              {
+                shouldShowSendTokens &&
+                <Button
+                  onPress={this.onPressSend}
+                  title={i18n.t('dApps.escrow.sendTokens')}
+                />
+              }
+              <Button
+                onPress={this.onPressCancel}
+                title={i18n.t('dApps.escrow.cancelContract')}
+              />
+            </View>
+          </View>
+        );
+      default:
+        return null;
+    }
   }
 
   render() {
@@ -135,12 +173,7 @@ export default class ContractInteractionMessage extends React.Component<Props, S
           Exchange of {this.props.etherAmount} ETH to {this.props.tokenAmount} XPAT is initiated.
         </Text>
         {
-          this.state.contractStatus === 'unknown' ?
-            <Text style={styles.textBold}>
-              Checking smart contract status.
-            </Text>
-            :
-            this.renderSuccess()
+          this.renderStatus(this.state.contractStatus)
         }
       </View>
     );

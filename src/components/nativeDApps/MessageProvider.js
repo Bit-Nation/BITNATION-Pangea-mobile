@@ -8,7 +8,6 @@ import type { DAppMessageType, ProfileType } from '../../types/Chat';
 import type { Navigator } from '../../types/ReactNativeNavigation';
 import EthereumService from '../../services/ethereum';
 import ServiceContainer from '../../services/container';
-import DAppWalletService from '../../services/dAppsWalletService';
 import type { CurrencyType } from '../../types/Wallet';
 import type { DAppType } from '../../dapps';
 
