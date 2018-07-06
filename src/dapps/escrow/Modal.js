@@ -1,3 +1,5 @@
+// @flow
+
 import * as React from 'react';
 import { StyleSheet, Text, TextInput, View } from 'react-native';
 import { BigNumber } from 'bignumber.js';
@@ -9,8 +11,9 @@ import i18n from '../../global/i18n';
 import Colors from '../../global/colors';
 import GlobalStyles from '../../global/Styles';
 import { errorAlert } from '../../global/alerts';
-import type { ProfileType } from '../../types/Chat';
 import ContractInfo from './ABI.json';
+import type { ExchangeInitiatedMessageData } from './Constants';
+import type { CurrencyType } from '../../types/Wallet';
 
 const styles = StyleSheet.create({
   textInputContainer: {
@@ -50,17 +53,6 @@ const styles = StyleSheet.create({
   },
 });
 
-export type SendMoneyMessageData = {
-  amount: string,
-  currency: string,
-  fromAddress: string,
-  fromName: string,
-  toAddress: string,
-  txHash: string,
-  to: ProfileType,
-  isLoading: boolean,
-}
-
 export default class Modal extends React.Component<ProvidedProps, *> {
   constructor(props: ProvidedProps) {
     super(props);
@@ -88,32 +80,28 @@ export default class Modal extends React.Component<ProvidedProps, *> {
       const address = await this.props.services.ethereumService.ethereumAddressFromPublicKey(this.props.context.friend.ethereum_pub_Key);
       const etherAmount = this.state.from.currency === 'ETH' ? this.state.from.amount : this.state.to.amount;
       const xpatAmount = this.state.from.currency === 'XPAT' ? this.state.from.amount : this.state.to.amount;
+      const tokenAddress = this.props.services.getXPATTokenAddress();
       const result = await this.props.services.deployContract(
         ContractInfo.bytecode,
         ContractInfo.abi,
         etherAmount,
-        this.props.services.getXPATTokenAddress(),
+        tokenAddress,
         utils.parseEther(etherAmount),
         utils.parseUnits(xpatAmount, 18),
         address,
       );
-      console.log(`[DAPP] Deployed transaction ${JSON.stringify(result)}`);
-      // const address = await this.props.services.ethereumService.ethereumAddressFromPublicKey(this.props.context.friend.ethereum_pub_Key);
-      // const result = await this.props.services.walletService.sendMoney(this.state.currency, address, this.state.amount);
-      //
-      // const data: SendMoneyMessageData = {
-      //   amount: this.state.amount,
-      //   currency: this.state.currency,
-      //   fromAddress: this.state.fromAddress,
-      //   toAddress: address,
-      //   txHash: result.hash,
-      //   to: this.props.context.friend,
-      //   fromName: this.props.context.currentAccount.name,
-      // };
-      //
-      // this.props.services.sendMessage('SEND_MESSAGE', '', data, () => {
-      //   this.props.navigation.dismiss();
-      // });
+      const data: ExchangeInitiatedMessageData = {
+        deployTxHash: result.hash,
+        etherAmount,
+        tokenAmount: xpatAmount,
+        tokensFromAddress: address,
+        tokensFromName: this.props.context.friend.name,
+        tokenContractAddress: tokenAddress,
+      };
+
+      this.props.services.sendMessage('SEND_MESSAGE', '', data, () => {
+        this.props.navigation.dismiss();
+      });
     } catch (error) {
       if (error.isCancelled === true) {
         return;
@@ -124,7 +112,7 @@ export default class Modal extends React.Component<ProvidedProps, *> {
     }
   };
 
-  onAmountSelected(field: 'from' | 'to', amount, currency, walletAddress, isValid) {
+  onAmountSelected(field: 'from' | 'to', amount: string, currency: CurrencyType, walletAddress: string, isValid: boolean) {
     this.handleUpdate(field, amount, currency, isValid);
   }
 
@@ -132,7 +120,7 @@ export default class Modal extends React.Component<ProvidedProps, *> {
     this.handleUpdate('rate', rateString);
   };
 
-  handleUpdate(field: 'from' | 'to' | 'rate', amount, currency, isValid) {
+  handleUpdate(field: 'from' | 'to' | 'rate', amount: string, currency?: CurrencyType, isValid?: boolean) {
     this.setState((prevState) => {
       const resultState = {
         ...prevState,
@@ -140,7 +128,7 @@ export default class Modal extends React.Component<ProvidedProps, *> {
           prevState.lastEditedFields :
           [prevState.lastEditedFields[1], field],
       };
-      if (field === 'from' || field === 'to') {
+      if ((field === 'from' || field === 'to') && currency != null && isValid != null) {
         resultState[field] = {
           amount,
           currency,
@@ -175,7 +163,7 @@ export default class Modal extends React.Component<ProvidedProps, *> {
     });
   }
 
-  calculateRate = (fromString, toString) => {
+  calculateRate = (fromString: string, toString: string) => {
     let from = new BigNumber(fromString);
     let to = new BigNumber(toString);
     if (!from.isFinite()) from = new BigNumber(0);
@@ -185,7 +173,7 @@ export default class Modal extends React.Component<ProvidedProps, *> {
     return result.toString(10);
   };
 
-  calculateFrom = (rateString, toString) => {
+  calculateFrom = (rateString: string, toString: string) => {
     let rate = new BigNumber(rateString);
     let to = new BigNumber(toString);
     if (!rate.isFinite()) rate = new BigNumber(0);
@@ -195,7 +183,7 @@ export default class Modal extends React.Component<ProvidedProps, *> {
     return result.toString(10);
   };
 
-  calculateTo = (fromString, rateString) => {
+  calculateTo = (fromString: string, rateString: string) => {
     let from = new BigNumber(fromString);
     let rate = new BigNumber(rateString);
     if (!from.isFinite()) from = new BigNumber(0);
@@ -220,11 +208,10 @@ export default class Modal extends React.Component<ProvidedProps, *> {
       <View>
         <View style={styles.block}>
           {this.props.components.renderAmountSelect({
-            onAmountSelected: (amount, currency, address, isValid) => this.onAmountSelected('from', amount, currency, address, isValid),
+            onAmountSelected: (amount: string, currency: CurrencyType, address: string, isValid: boolean) => this.onAmountSelected('from', amount, currency, address, isValid),
             shouldCheckLess: true,
-            amount: this.state.from.amount,
-            currency: this.state.from.currency,
-            walletAddress: this.state.from.address,
+            amount: (this.state.from.amount: string),
+            currency: (this.state.from.currency: CurrencyType),
             changeCurrencyEnabled: false,
           }, false)}
         </View>
@@ -243,11 +230,10 @@ export default class Modal extends React.Component<ProvidedProps, *> {
         </View>
         <View style={styles.block}>
           {this.props.components.renderAmountSelect({
-            onAmountSelected: (amount, currency, address, isValid) => this.onAmountSelected('to', amount, currency, address, isValid),
+            onAmountSelected: (amount: string, currency: CurrencyType, address: string, isValid: boolean) => this.onAmountSelected('to', amount, currency, address, isValid),
             shouldCheckLess: false,
-            amount: this.state.to.amount,
-            currency: this.state.to.currency,
-            walletAddress: this.state.to.address,
+            amount: (this.state.to.amount: string),
+            currency: (this.state.to.currency: CurrencyType),
             changeCurrencyEnabled: false,
           }, false)}
         </View>
