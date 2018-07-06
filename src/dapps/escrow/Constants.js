@@ -1,6 +1,6 @@
 // @flow
 
-export type ExchangeInitiatedMessageData = {
+export type MessageData = {
   deployTxHash: string,
   etherAmount: string,
   tokenAmount: string,
@@ -17,7 +17,3 @@ export type ExchangeInitiatedMessageData = {
    */
   tokensFromName: string,
 }
-
-export const MESSAGE_TYPES = {
-  EXCHANGE_INITIATED: 'EXCHANGE_INITIATED',
-};
