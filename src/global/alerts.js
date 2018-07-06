@@ -26,7 +26,7 @@ export function errorAlert(error: Error | TranslatableError) {
 type Button = {
   name: string,
   style?: any,
-  onPress?: () => void,
+  onPress?: () => any,
 }
 
 /**
