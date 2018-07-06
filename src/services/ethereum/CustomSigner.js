@@ -28,8 +28,10 @@ export default function CustomSigner(privateKey: string, provider: string, app: 
     const transactionObject = transaction;
     try {
       let estimate;
+      // If no to address is specified, like in the case of contract creation, set a default one to the wallet address
+      // Issue caused by 3.x of ethers.js, see posted issue here: https://github.com/ethers-io/ethers.js/issues/212
       if (transactionObject.to === undefined) {
-        transactionObject.to = '0xF0D346A86A68086846363185d24D5893F4353A78';
+        transactionObject.to = this.address;
         estimate = await this.estimateGas(transactionObject);
         transactionObject.to = undefined;
       } else {
