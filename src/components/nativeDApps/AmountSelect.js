@@ -41,6 +41,10 @@ export type Props = {
    * @desc Currency of selected wallet.
    */
   currency: CurrencyType,
+  /**
+   * @desc Flag whether to allow user to change currency.
+   */
+  changeCurrencyEnabled: boolean,
 }
 
 export default class AmountSelect extends Component<Props & InternalProps> {
@@ -113,7 +117,10 @@ export default class AmountSelect extends Component<Props & InternalProps> {
           </Text>
         </View>
         <View style={styles.textInputContainer}>
-          <TouchableOpacity onPress={() => this.actionSheet.show()}>
+          <TouchableOpacity
+            disabled={this.props.changeCurrencyEnabled === false}
+            onPress={() => this.actionSheet.show()}
+          >
             <Text style={styles.currencyPlaceholder}>
               {walletToShow.currency}
             </Text>
