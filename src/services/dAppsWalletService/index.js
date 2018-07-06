@@ -78,11 +78,12 @@ export default class DAppsWalletService {
    * @param {string} app Name of the app that requests deploy.
    * @param {string} bytecode Byte code of contract
    * @param {string} abi ABI of contract
+   * @param {string} txValue Value in ether to set to deploy transaction.
    * @param {any} params Additional params to pass.
    * @return {Promise<Object>} Promise that resolves into transaction
    */
-  async deployContract(app: string, bytecode: string, abi: string, ...params: any): Promise<Object> {
-    return this.getEthereumServiceForDApp(app).deployContract(bytecode, abi, ...params);
+  async deployContract(app: string, bytecode: string, abi: string, txValue?: string, ...params: any): Promise<Object> {
+    return this.getEthereumServiceForDApp(app).deployContract(bytecode, abi, txValue, ...params);
   }
 
   getXPATTokenAddress = (): string => (this.currentAccount.networkType === 'dev' ? PAT_DEV_ADDRESS : PAT_PROD_ADDRESS)

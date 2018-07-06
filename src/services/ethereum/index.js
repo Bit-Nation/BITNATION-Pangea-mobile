@@ -138,13 +138,15 @@ export default class EthereumService {
    * @desc Deploy contract and return a deploy transaction.
    * @param {string} bytecode Byte code of contract
    * @param {string} abi ABI of contract
-   * @param {string} amount The ether amount
+   * @param {string} amount The ether amount of transaction.
    * @param {any} params Additional params to pass.
    * @return {Promise<Object>} Promise that resolves into transaction
    */
-  async deployContract(bytecode: string, abi: string, amount: string, ...params: any): Promise<Object> {
+  async deployContract(bytecode: string, abi: string, amount?: string, ...params: any): Promise<Object> {
     const tx = await ethers.Contract.getDeployTransaction(bytecode, abi, ...params);
-    tx.value = ethers.utils.parseEther(amount);
+    if (amount != null) {
+      tx.value = ethers.utils.parseEther(amount);
+    }
     return this.wallet.sendTransaction(tx);
   }
 }
