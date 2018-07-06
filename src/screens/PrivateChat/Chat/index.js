@@ -192,7 +192,7 @@ class ChatScreen extends Component<Props, *> {
             if (dApp == null) return null;
             const MessageComponent = dApp.message;
 
-            return (<MessageComponent dAppMessage={dAppMessage} currentAccount={this.props.user} />);
+            return (<MessageComponent dApp={dApp} dAppMessage={dAppMessage} currentAccount={this.props.user} />);
           }}
           renderBubble={props => (
             <Bubble
