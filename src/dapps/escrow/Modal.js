@@ -11,8 +11,8 @@ import i18n from '../../global/i18n';
 import Colors from '../../global/colors';
 import GlobalStyles from '../../global/Styles';
 import { errorAlert } from '../../global/alerts';
-import ContractInfo from './ABI.json';
-import type { ExchangeInitiatedMessageData } from './Constants';
+import ContractInfo from './ERC20TokenEscrow.json';
+import type { MessageData } from './Constants';
 import type { CurrencyType } from '../../types/Wallet';
 
 const styles = StyleSheet.create({
@@ -90,7 +90,7 @@ export default class Modal extends React.Component<ProvidedProps, *> {
         utils.parseUnits(xpatAmount, 18),
         address,
       );
-      const data: ExchangeInitiatedMessageData = {
+      const data: MessageData = {
         deployTxHash: result.hash,
         etherAmount,
         tokenAmount: xpatAmount,
@@ -99,7 +99,7 @@ export default class Modal extends React.Component<ProvidedProps, *> {
         tokenContractAddress: tokenAddress,
       };
 
-      this.props.services.sendMessage('SEND_MESSAGE', '', data, () => {
+      this.props.services.sendMessage('EXCHANGE', '', data, () => {
         this.props.navigation.dismiss();
       });
     } catch (error) {
