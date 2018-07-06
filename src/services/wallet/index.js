@@ -57,5 +57,4 @@ export default class WalletService {
   async sendToken(fromAddress: string, toAddress: string, amount: string, network: string) {
     return this.ethereumService.sendTokens(network === 'dev' ? PAT_DEV_ADDRESS : PAT_PROD_ADDRESS, toAddress, amount);
   }
-
 }

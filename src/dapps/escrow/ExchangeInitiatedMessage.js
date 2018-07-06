@@ -43,7 +43,7 @@ export default class ExchangeInitiatedMessage extends React.Component<Props, Sta
       contractStatus: 'pending',
     };
 
-    this.trackTransaction();
+    this.trackDeployTransaction();
   }
 
   onPressSend = async () => {
@@ -52,11 +52,31 @@ export default class ExchangeInitiatedMessage extends React.Component<Props, Sta
     await this.props.services.sendMoney('XPAT', address, this.props.tokenAmount);
   };
 
-  trackTransaction = async () => this.props.services.ethereumService.trackTransaction(this.props.deployTxHash).then(() => {
+  trackDeployTransaction = async () => this.props.services.ethereumService.trackTransaction(this.props.deployTxHash).then(() => {
     this.setState({ contractStatus: 'success' });
   }).catch(() => {
     this.setState({ contractStatus: 'failed' });
   });
+
+  renderSuccess() {
+    return (
+      <View>
+        <Text style={styles.textBold}>
+          {this.props.shouldShowSendTokens
+            ? 'Send XPAT to complete exchange'
+            : `Waiting for ${this.props.tokensFromName} to complete exchange`
+          }
+        </Text>
+        {
+          this.props.shouldShowSendTokens &&
+          <Button
+            onPress={this.onPressSend}
+            title={i18n.t('dApps.escrow.sendTokens')}
+          />
+        }
+      </View>
+    );
+  }
 
   render() {
     const statusText = (() => {
@@ -82,26 +102,6 @@ export default class ExchangeInitiatedMessage extends React.Component<Props, Sta
           <Text style={styles.textBold}>
             {statusText}
           </Text>)
-        }
-      </View>
-    );
-  }
-
-  renderSuccess() {
-    return (
-      <View>
-        <Text style={styles.textBold}>
-          {this.props.shouldShowSendTokens
-            ? 'Send XPAT to complete exchange'
-            : `Waiting for ${this.props.tokensFromName} to complete exchange`
-          }
-        </Text>
-        {
-          this.props.shouldShowSendTokens &&
-          <Button
-            onPress={this.onPressSend}
-            title={i18n.t('dApps.escrow.sendTokens')}
-          />
         }
       </View>
     );
