@@ -91,12 +91,11 @@ export default class Modal extends React.Component<ProvidedProps, *> {
       const result = await this.props.services.deployContract(
         ContractInfo.bytecode,
         ContractInfo.abi,
-        this.state.from.currency === 'XPAT' ? '0' : etherAmount,
+        etherAmount,
         this.props.services.getXPATTokenAddress(),
         utils.parseEther(etherAmount),
         utils.parseUnits(xpatAmount, 18),
         address,
-        this.state.from.currency === 'XPAT',
       );
       console.log(`[DAPP] Deployed transaction ${JSON.stringify(result)}`);
       // const address = await this.props.services.ethereumService.ethereumAddressFromPublicKey(this.props.context.friend.ethereum_pub_Key);
@@ -226,6 +225,7 @@ export default class Modal extends React.Component<ProvidedProps, *> {
             amount: this.state.from.amount,
             currency: this.state.from.currency,
             walletAddress: this.state.from.address,
+            changeCurrencyEnabled: false,
           }, false)}
         </View>
         <View style={styles.block}>
@@ -248,6 +248,7 @@ export default class Modal extends React.Component<ProvidedProps, *> {
             amount: this.state.to.amount,
             currency: this.state.to.currency,
             walletAddress: this.state.to.address,
+            changeCurrencyEnabled: false,
           }, false)}
         </View>
         <Button
