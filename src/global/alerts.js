@@ -39,10 +39,10 @@ type Button = {
  */
 export function alert(name: string, buttons: Array<Button>, cancellable: boolean = false) {
   Alert.alert(
-    i18n.ifExists(`alerts.${name}.title`),
-    i18n.ifExists(`alerts.${name}.subtitle`),
+    i18n.tf(`alerts.${name}.title`, `${name}.title`),
+    i18n.tf(`alerts.${name}.subtitle`, `${name}.subtitle`),
     buttons.map(button => ({
-      text: i18n.t(`alerts.${name}.${button.name}`),
+      text: i18n.tf(`alerts.${name}.${button.name}`, `${name}.${button.name}`),
       style: button.style,
       onPress: button.onPress,
     })),
