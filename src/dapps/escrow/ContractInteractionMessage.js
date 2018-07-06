@@ -66,8 +66,11 @@ export default class ContractInteractionMessage extends React.Component<Props, S
     try {
       const status = await this.fetch();
       this.setState({ contractStatus: status });
+
+      console.log(`[DAPP] NOW ${status}`);
+
       if (status === 'readyForWithdraw') {
-        await this.props.contract.withdrawal();
+        await this.props.contract.functions.withdrawal();
         await this.startFetching(true);
       }
     } catch (error) {
@@ -137,7 +140,7 @@ export default class ContractInteractionMessage extends React.Component<Props, S
             Checking smart contract status.
           </Text>
         );
-      case 'pending':
+      default:
         return (
           <View>
             <Text style={styles.textBold}>
@@ -161,8 +164,6 @@ export default class ContractInteractionMessage extends React.Component<Props, S
             </View>
           </View>
         );
-      default:
-        return null;
     }
   }
 
