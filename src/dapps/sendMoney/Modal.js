@@ -1,3 +1,5 @@
+// @flow
+
 import * as React from 'react';
 import { StyleSheet, Text, TextInput, View } from 'react-native';
 
@@ -8,6 +10,7 @@ import Colors from '../../global/colors';
 import GlobalStyles from '../../global/Styles';
 import { errorAlert } from '../../global/alerts';
 import type { ProfileType } from '../../types/Chat';
+import type { CurrencyType } from '../../types/Wallet';
 
 const styles = StyleSheet.create({
   textInputContainer: {
@@ -43,13 +46,12 @@ const styles = StyleSheet.create({
 
 export type SendMoneyMessageData = {
   amount: string,
-  currency: string,
+  currency: CurrencyType,
   fromAddress: string,
   fromName: string,
   toAddress: string,
   txHash: string,
   to: ProfileType,
-  isLoading: boolean,
 }
 
 export default class Modal extends React.Component<ProvidedProps, *> {
@@ -58,7 +60,7 @@ export default class Modal extends React.Component<ProvidedProps, *> {
 
     this.state = {
       amount: '',
-      currency: '',
+      currency: 'XPAT',
       fromAddress: '',
       isValid: false,
     };
@@ -118,7 +120,7 @@ export default class Modal extends React.Component<ProvidedProps, *> {
           styleTitle={GlobalStyles.title3}
           style={styles.sendButton}
           title={i18n.t('common.send')}
-          onPress={this.onButtonPress}
+          onPress={() => this.onButtonPress()}
           enabled={this.state.isValid}
         />
       </View>
