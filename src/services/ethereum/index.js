@@ -30,6 +30,18 @@ export default class EthereumService {
   }
 
   /**
+   * @desc Function to get the balance of a given address
+   *
+   * @param {string} address The address to check
+   *
+   * @return {Promise} Promise that resolves with the balance in BN form
+   */
+  async getOtherBalance(address: string): Promise<void> {
+    const balance = await this.wallet.provider.getBalance(address);
+    return balance;
+  }
+
+  /**
    * @desc Function to get the balance of the given wallet
    *
    * @param {string} tokenAddress The address of the deployed token contract
@@ -40,6 +52,21 @@ export default class EthereumService {
     const abi = ERC20ABI;
     const contract = new ethers.Contract(tokenAddress, abi, this.wallet.provider);
     const balance = await contract.balanceOf(this.wallet.address);
+    return balance;
+  }
+
+  /**
+   * @desc Function to get the token balance of a given address
+   *
+   * @param {string} tokenAddress The address of the deployed token contract
+   * @param {string} address The address to check
+   *
+   * @return {Promise} Promise that resolves with the balance in BN form
+   */
+  async getOtherTokenBalance(tokenAddress: string, address: string): Promise<void> {
+    const abi = ERC20ABI;
+    const contract = new ethers.Contract(tokenAddress, abi, this.wallet.provider);
+    const balance = await contract.balanceOf(address);
     return balance;
   }
 
