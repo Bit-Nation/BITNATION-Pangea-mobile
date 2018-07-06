@@ -2,10 +2,34 @@
 // @flow
 
 import React, { Component } from 'react';
-import type { InternalProps, Props } from './AmountSelect';
+import type { InternalProps } from './AmountSelect';
 import AmountSelect from './AmountSelect';
+import type { CurrencyType } from '../../types/Wallet';
+
+export type Props = {
+  /**
+   * @desc Style to apply to container view.
+   */
+  style?: Object,
+  /**
+   * @desc
+   */
+  onAmountSelected: (amount: string, currency: CurrencyType, walletAddress: string, isValid: boolean) => void,
+  /**
+   * @desc Flag whether amount is invalid if it greater than balance.
+   */
+  shouldCheckLess: boolean,
+  /**
+   * @desc Flag whether to allow user to change currency.
+   */
+  changeCurrencyEnabled?: boolean,
+}
 
 export default class AmountSelectController extends Component<Props & InternalProps, *> {
+  static defaultProps: Object = {
+    changeCurrencyEnabled: true,
+  };
+
   constructor(props: Props & InternalProps) {
     super(props);
 
@@ -26,6 +50,7 @@ export default class AmountSelectController extends Component<Props & InternalPr
         }}
         shouldCheckLess={this.props.shouldCheckLess || false}
         wallets={this.props.wallets}
+        changeCurrencyEnabled={this.props.changeCurrencyEnabled}
       />
     );
   }
