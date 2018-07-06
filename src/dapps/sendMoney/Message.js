@@ -5,8 +5,8 @@ import * as React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import Colors from '../../global/colors';
 import type { ProvidedProps as MessageProvidedProps } from '../../components/nativeDApps/MessageProvider';
-import type { ProfileType } from '../../types/Chat';
 import { MessageParamsValidator } from '../../components/nativeDApps/MessageParamsValidator';
+import type { SendMoneyMessageData } from './Modal';
 
 const styles = StyleSheet.create({
   container: { margin: 5 },
@@ -23,14 +23,7 @@ const styles = StyleSheet.create({
 type Status = 'pending' | 'failed' | 'success';
 
 type OwnProps = {
-  data: {
-    txHash: string,
-    to: ProfileType,
-    amount: string,
-    currency: string,
-    fromAddress: string,
-    fromName: string,
-  }
+  data: SendMoneyMessageData,
 }
 
 type State = {
