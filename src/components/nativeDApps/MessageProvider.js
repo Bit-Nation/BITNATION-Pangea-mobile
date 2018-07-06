@@ -86,7 +86,7 @@ export const MessageProvider = (Component: React.ComponentType<any>) => (props: 
     },
     services: {
       ethereumService,
-      sendMoney: (currency, toAddress, amount) => dAppsWalletService.sendMoney(props.dApp.name, currency, toAddress, amount),
+      sendMoney: (currency, toAddress, amouwnt) => dAppsWalletService.sendMoney(props.dApp.name, currency, toAddress, amount),
     },
   };
 
