@@ -91,14 +91,14 @@ export default class Modal extends React.Component<ProvidedProps, *> {
       const result = await this.props.services.deployContract(
         ContractInfo.bytecode,
         ContractInfo.abi,
-        etherAmount,
+        this.state.from.currency === 'XPAT' ? '0' : etherAmount,
         this.props.services.getXPATTokenAddress(),
         utils.parseEther(etherAmount),
         utils.parseUnits(xpatAmount, 18),
         address,
         this.state.from.currency === 'XPAT',
       );
-      console.log(`[DAPP] Deployed transaction ${result}`);
+      console.log(`[DAPP] Deployed transaction ${JSON.stringify(result)}`);
       // const address = await this.props.services.ethereumService.ethereumAddressFromPublicKey(this.props.context.friend.ethereum_pub_Key);
       // const result = await this.props.services.walletService.sendMoney(this.state.currency, address, this.state.amount);
       //
