@@ -6,6 +6,7 @@ import * as React from 'react';
 import type { CurrencyType, WalletType } from '../../types/Wallet';
 import type { Account } from '../../types/Account';
 import AmountSelect, { type Props as AmountSelectProps } from './AmountSelect';
+import type { Props as AmountSelectControllerProps } from './AmountSelectController';
 import type { ChatSessionType, DAppMessageType, GiftedChatMessageType, ProfileType } from '../../types/Chat';
 import type { Navigator } from '../../types/ReactNativeNavigation';
 import EthereumService from '../../services/ethereum';
@@ -65,7 +66,7 @@ export type ProvidedProps = {
      * @param {AmountSelectProps} props Props to pass to AmountSelect component
      * @param {boolean} autoControlled Flag whether state of component should be handled automatically
      */
-    renderAmountSelect: (props: AmountSelectProps, autoControlled?: boolean) => React.Node,
+    renderAmountSelect: (props: AmountSelectProps | AmountSelectControllerProps, autoControlled?: boolean) => React.Node,
     /**
      * @desc Function to show or hide loading.
      */
@@ -130,7 +131,7 @@ export const DAppProvider = (Component: React.ComponentType<any>) => (props: Pro
       friend: props.friend,
     },
     components: {
-      renderAmountSelect(customProps: AmountSelectProps, autoControlled: boolean = true) {
+      renderAmountSelect(customProps: AmountSelectProps | AmountSelectControllerProps, autoControlled: boolean = true) {
         return (autoControlled === true) ?
           <AmountSelectController {...customProps} wallets={props.wallets} />
           :

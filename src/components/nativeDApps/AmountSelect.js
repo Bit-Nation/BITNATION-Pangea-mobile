@@ -44,10 +44,14 @@ export type Props = {
   /**
    * @desc Flag whether to allow user to change currency.
    */
-  changeCurrencyEnabled: boolean,
+  changeCurrencyEnabled?: boolean,
 }
 
 export default class AmountSelect extends Component<Props & InternalProps> {
+  static defaultProps: Object = {
+    changeCurrencyEnabled: true,
+  };
+
   onSelectWallet = (index: number) => {
     if (index < this.props.wallets.length) {
       const wallet = this.props.wallets[index];

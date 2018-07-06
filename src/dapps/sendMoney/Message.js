@@ -1,9 +1,11 @@
+// @flow
+
 /* eslint-disable prefer-destructuring,class-methods-use-this */
 import * as React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import Colors from '../../global/colors';
-import type { ProvidedProps as MessageProvidedProp } from '../../components/nativeDApps/MessageProvider';
-import { SendMoneyMessageData } from './Modal';
+import type { ProvidedProps as MessageProvidedProps } from '../../components/nativeDApps/MessageProvider';
+import type { SendMoneyMessageData } from './Modal';
 import type { ProfileType } from '../../types/Chat';
 
 const styles = StyleSheet.create({
@@ -31,8 +33,8 @@ type State = {
   invalidMessage: boolean,
 }
 
-export default class Message extends React.Component<MessageProvidedProp, State> {
-  constructor(props) {
+export default class Message extends React.Component<MessageProvidedProps, State> {
+  constructor(props: MessageProvidedProps) {
     super(props);
 
     const params: string = this.props.context.dAppMessage.params;
