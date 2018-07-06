@@ -7,6 +7,7 @@ import i18n from '../../global/i18n';
 import type { ProvidedProps as MessageProvidedProps } from '../../components/nativeDApps/MessageProvider';
 import type { ExchangeInitiatedMessageData } from './Constants';
 import Button from '../../components/common/Button';
+import { alert } from '../../global/alerts';
 
 const styles = StyleSheet.create({
   container: { margin: 5 },
@@ -52,6 +53,17 @@ export default class ExchangeInitiatedMessage extends React.Component<Props, Sta
     await this.props.services.sendMoney('XPAT', address, this.props.tokenAmount);
   };
 
+  onPressCancel = async () => {
+    alert('dApps.escrow.cancelConfirmationAlert', [
+      { name: 'confirm', onPress: this.cancelContract },
+      { name: 'cancel', style: 'cancel' },
+    ]);
+  };
+
+  cancelContract = async () => {
+    // @todo Cancel contract
+  };
+
   trackDeployTransaction = async () => this.props.services.ethereumService.trackTransaction(this.props.deployTxHash).then(() => {
     this.setState({ contractStatus: 'success' });
   }).catch(() => {
@@ -67,13 +79,19 @@ export default class ExchangeInitiatedMessage extends React.Component<Props, Sta
             : `Waiting for ${this.props.tokensFromName} to complete exchange`
           }
         </Text>
-        {
-          this.props.shouldShowSendTokens &&
+        <View>
+          {
+            this.props.shouldShowSendTokens &&
+            <Button
+              onPress={this.onPressSend}
+              title={i18n.t('dApps.escrow.sendTokens')}
+            />
+          }
           <Button
-            onPress={this.onPressSend}
-            title={i18n.t('dApps.escrow.sendTokens')}
+            onPress={this.onPressCancel}
+            title={i18n.t('dApps.escrow.cancelContract')}
           />
-        }
+        </View>
       </View>
     );
   }
