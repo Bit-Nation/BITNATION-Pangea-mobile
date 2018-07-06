@@ -92,10 +92,11 @@ export type ProvidedProps = {
      * @desc Deploy contract and return a deploy transaction.
      * @param {string} bytecode Byte code of contract
      * @param {string} abi ABI of contract
+     * @param {string} txValue Value in ether to set to deploy transaction.
      * @param {any} params Additional params to pass.
      * @return {Promise<Object>} Promise that resolves into transaction
      */
-    deployContract: (bytecode: string, abi: string, ...params: any) => Promise<Object>,
+    deployContract: (bytecode: string, abi: string, txValue?: string, ...params: any) => Promise<Object>,
     /**
      * @desc Function to get XPAT token contract address (based on current account network).
      */
@@ -165,7 +166,7 @@ export const DAppProvider = (Component: React.ComponentType<any>) => (props: Pro
       },
       ethereumService,
       sendMoney: (currency, toAddress, amount) => dAppsWalletService.sendMoney(dAppName, currency, toAddress, amount),
-      deployContract: (bytecode, abi, ...params) => dAppsWalletService.deployContract(dAppName, bytecode, abi, ...params),
+      deployContract: (bytecode, abi, txValue, ...params) => dAppsWalletService.deployContract(dAppName, bytecode, abi, txValue, ...params),
       getXPATTokenAddress: dAppsWalletService.getXPATTokenAddress,
     },
     navigation: {
