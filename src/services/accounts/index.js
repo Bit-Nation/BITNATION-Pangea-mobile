@@ -5,6 +5,7 @@ import type { Mnemonic } from '../../types/Mnemonic';
 import { compressMnemonic, decompressMnemonic } from '../../utils/key';
 import type { Profile } from '../../types/Account';
 import { InvalidPasswordError } from '../../global/errors/accounts';
+import ChatService from '../chat';
 
 export default class AccountsService {
   static async getMnemonic(): Promise<Mnemonic> {
@@ -36,7 +37,16 @@ export default class AccountsService {
     });
 
     const success = await Panthalassa.PanthalassaStart({ config, password });
-    return success === true;
+
+    if (success === true) {
+      try {
+        await ChatService.uploadProfile(signedProfile);
+      } catch (e) {
+        console.log('upload fail: ', e);
+      }
+      return true;
+    }
+    return false;
   }
 
   static async createAccountStore(password: string): Promise<string> {

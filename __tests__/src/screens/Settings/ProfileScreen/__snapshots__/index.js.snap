@@ -59,6 +59,7 @@ ShallowWrapper {
       "onChangeEditingAccount": [Function],
       "onDoneAccountEditing": [Function],
       "onStartAccountEditing": [Function],
+      "publicKey": undefined,
       "resetStepsForTestingMode": [Function],
       "store": Object {
         "clearActions": [Function],
@@ -122,6 +123,7 @@ ShallowWrapper {
         "onChangeEditingAccount": [Function],
         "onDoneAccountEditing": [Function],
         "onStartAccountEditing": [Function],
+        "publicKey": undefined,
         "resetStepsForTestingMode": [Function],
         "store": Object {
           "clearActions": [Function],
