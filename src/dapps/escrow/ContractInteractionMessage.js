@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
     justifyContent: 'space-between',
   },
+  spacer: { height: 12 },
 });
 
 type OwnProps = {
@@ -174,6 +175,7 @@ export default class ContractInteractionMessage extends React.Component<Props, S
         <Text style={styles.textBold}>
           {statusText}
         </Text>
+        <View style={styles.spacer} />
         <View style={styles.buttonContainer}>
           {
             shouldShowSendTokens &&
@@ -202,8 +204,11 @@ export default class ContractInteractionMessage extends React.Component<Props, S
     return (
       <View>
         <Text style={styles.text}>
-          {`Exchange\nof ${this.props.etherAmount} ETH\nto ${this.props.tokenAmount} XPAT.`}
+          Exchange{'\n'}
+          of <Text style={styles.textBold}>{this.props.etherAmount} ETH{'\n'}</Text>
+          for <Text style={styles.textBold}>{this.props.tokenAmount} XPAT</Text>
         </Text>
+        <View style={styles.spacer} />
         {
           this.renderStatus(this.state.contractStatus)
         }

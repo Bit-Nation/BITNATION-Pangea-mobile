@@ -10,7 +10,7 @@ import type { MessageData } from './Constants';
 import ContractInfo from './ERC20TokenEscrow.json';
 
 const styles = StyleSheet.create({
-  container: { margin: 8 },
+  container: { margin: 10 },
   textBold: { fontWeight: 'bold' },
 });
 
