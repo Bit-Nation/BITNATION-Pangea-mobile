@@ -571,8 +571,9 @@
   "dApps": {
     "escrow": {
       "requestExchange": "START EXCHANGE",
-      "sendTokens": "$t(common.send)",
-      "cancelContract": "Stop",
+      "sendTokens": "SEND",
+      "cancelContract": "REFUND",
+      "completeContract": "EXCHANGE",
       "cancelConfirmationAlert": {
         "title": "Cancel Contract",
         "subtitle": "Are you sure that you want to terminate exchange process?",

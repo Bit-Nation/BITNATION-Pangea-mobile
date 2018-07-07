@@ -9,7 +9,7 @@ import { MessageParamsValidator } from '../../components/nativeDApps/MessagePara
 import type { SendMoneyMessageData } from './Modal';
 
 const styles = StyleSheet.create({
-  container: { margin: 5 },
+  container: { margin: 8 },
   text: {
     fontSize: 17,
     color: Colors.BitnationDarkGrayColor,
@@ -65,11 +65,11 @@ class Message extends React.Component<Props, State> {
 
     return (
       <View style={styles.container}>
+        <Text style={styles.text}>
+          {`Send ${this.props.data.amount} ${this.props.data.currency}\nfrom ${this.props.data.fromName}\nto ${this.props.data.to.name}`}
+        </Text>
         <Text style={styles.textBold}>
           {statusText}
-        </Text>
-        <Text style={styles.text}>
-          Send {this.props.data.amount} {this.props.data.currency} from {this.props.data.fromName} to {this.props.data.to.name}
         </Text>
       </View>
     );
