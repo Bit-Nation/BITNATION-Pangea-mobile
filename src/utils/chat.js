@@ -1,5 +1,7 @@
 // @flow
 
+import _ from 'lodash';
+
 /**
  * @desc Function that creates the list of messages to be consumed by GiftedChat
  * @param {Array<any>} messagesData Array of message data
@@ -20,3 +22,6 @@ export default function createGiftedChatMessageObject(messagesData: Array<any>):
   });
   return messages;
 }
+
+export const getSelectedSession = (sessions: Array<any>, secret: string) =>
+  _.find(sessions, session => session.secret === secret) || null;

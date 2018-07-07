@@ -14,7 +14,9 @@
     "android": "flow && node_modules/.bin/react-native run-android",
     "postinstall": "./node_modules/.bin/rn-nodeify --install 'stream,buffer,vm,crypto,string_decoder,events,assert' --hack",
     "docs": "node_modules/.bin/documentation build src/services/container.js -f md > docs/main.md",
-    "build:ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/Pangea/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios'"
+    "build:ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/Pangea/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios'",
+    "build:requestprotofile": "pbjs -t static-module -w commonjs -o src/services/upstream/compiledReqeust.js src/services/upstream/request.proto",
+    "build:responseprotofile": "pbjs -t static-module -w commonjs -o src/services/upstream/compiledResponse.js src/services/upstream/response.proto"
   },
   "dependencies": {
     "assert": "^1.4.1",
@@ -36,7 +38,8 @@
     "prop-types": "^15.6.0",
     "react": "16.0.0",
     "react-native": "0.51.0",
-    "react-native-camera": "^0.10.0",
+    "react-native-actionsheet": "^2.4.2",
+    "react-native-camera": "1.1.4",
     "react-native-config": "^0.11.2",
     "react-native-crypto": "^2.1.2",
     "react-native-dropdownalert": "^3.1.2",
@@ -59,7 +62,8 @@
     "react-navigation": "^1.0.0-beta.22",
     "react-redux": "^5.0.6",
     "readable-stream": "^1.0.33",
-    "realm": "^2.6.0",
+    "realm": "2.8.0",
+    "recompose": "^0.27.1",
     "reconnecting-websocket": "^4.0.0-rc5",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
@@ -96,6 +100,7 @@
     "ethers-cli": "^4.0.0",
     "flow-bin": "^0.57.0",
     "jest": "22.0.3",
+    "protobufjs": "^6.8.6",
     "react-dom": "^16.2.0",
     "react-native-mock": "^0.3.1",
     "react-test-renderer": "16.0.0",
@@ -118,8 +123,17 @@
       "**/**/**/**/*.{js,jsx}",
       "!**/node_modules/**",
       "!**/coverage/**",
-      "!**/vendor/**"
-    ]
+      "!**/vendor/**",
+      "!src/services/upstream/compiled.js"
+    ],
+    "globals": {
+      "WebSocket": {
+        "CONNECTING": 0,
+        "OPEN": 1,
+        "CLOSING": 2,
+        "CLOSED": 3
+      }
+    }
   },
   "react-native": {
     "crypto": "react-native-crypto",

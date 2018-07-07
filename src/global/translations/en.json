@@ -229,7 +229,7 @@
       "newAccount": "New Account",
       "restoreAccount": "Restore Account",
       "warningTitle": "Where's My Money?",
-      "warningText": "This release is not compatible with prior releases of the Pangea app. Tap this button to lear how to recover the Ethereum in your wallet.",
+      "warningText": "This release is not compatible with prior releases of the Pangea app. Tap this button to learn how to recover the Ethereum in your wallet.",
       "checkRelease": "Open Instructions Website",
       "create": {
         "prev": "Previous",
@@ -299,7 +299,17 @@
       "title": "$t(common.chat)",
       "tabTitle": "$t(tabbar.chat)",
       "allChats": "All Chats",
-      "myChats": "My Chats"
+      "myChats": "My Chats",
+      "keyFromClipboard": "Use public key on clipboard",
+      "keyFromLibrary": "Get public key from library",
+      "keyFromCamera": "Scan public key with camera",
+      "dappChat": "New Chat with DApp",
+      "cancel": "$t(common.cancel)",
+      "sendInvite": "Send Invite",
+      "startChat": "Begin Chat",
+      "newChat": "New Chat",
+      "invalidKey": "Invalid or Missing Key",
+      "inviteSent": "Invite Sent"
     },
     "nations": {
       "toolbar": {
@@ -352,7 +362,7 @@
     },
     "createNation": {
       "title": "Create A Nation",
-      "introduction": "Reclaim your sovereignty by creating your own decentralized borderless voluntary nation(DBVN).",
+      "introduction": "Reclaim your sovereignty by creating your own decentralized borderless voluntary nation (DBVN).",
       "prompt": {
         "name": "Nation name",
         "description": "Short description",
@@ -391,6 +401,7 @@
     "profile": {
       "title": "Profile",
       "tabTitle": "$t(tabbar.profile)",
+      "copyKey": "Copy Public Key",
       "empty": {
         "createProfilePanel": {
           "title": "Become a World Citizen",
@@ -510,8 +521,21 @@
     "confirmTransaction": {
       "title": "Confirm Transaction",
       "gasPrice": "What gas price would you like to set?",
+      "gasLimit": "Gas Limit",
+      "gasEstimate": "Est. Transaction fee",
       "confirmButton": "Confirm",
-      "gasPriceTitle": "Gas Price: {{gasPrice}}"
+      "gasPriceTitle": "Gas Price: {{gasPrice}}",
+      "slow": "Slow",
+      "quick": "Quick",
+      "fast": "Fast",
+      "fastest": "Fastest",
+      "to": "To Address:",
+      "from": "From Address:",
+      "amount": "Amount:",
+      "total": "Total:",
+      "processor": "Processor",
+      "gwei": "Gwei",
+      "eth": "ETH"
     }
   },
   "testingMode": {
