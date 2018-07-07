@@ -103,8 +103,8 @@ android {
         applicationId 'co.bitnation'
         minSdkVersion 16
         targetSdkVersion 22
-        versionCode 1
-        versionName "1.0"
+        versionCode 9
+        versionName "0.5.2"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
