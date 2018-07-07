@@ -5,15 +5,16 @@ import type { WalletType as DBWallet } from '../../services/database/schemata';
 
 /**
  * @desc Converts Realm object to app-level plain model.
- * @param {WalletType} wallets Realm account object.
- * @return {DBWallet} Converted wallet array object.
+ * @param {WalletType} wallet Realm wallet object.
+ * @return {DBWallet} Converted wallet object.
  */
-export function convertFromDatabase(wallets: DBWallet[]): WalletType[] {
-  return [{
-    currency: wallets[0].symbol, ethAddress: wallets[0].address, balance: wallets[0].balance === '' ? null : wallets[0].balance, name: wallets[0].name,
-  }, {
-    currency: wallets[1].symbol, ethAddress: wallets[1].address, balance: wallets[1].balance === '' ? null : wallets[1].balance, name: wallets[1].name,
-  }];
+export function convertFromDatabase(wallet: DBWallet): WalletType {
+  return {
+    currency: wallet.symbol === 'PAT' ? 'XPAT' : wallet.symbol,
+    ethAddress: wallet.address,
+    balance: wallet.balance === '' ? null : wallet.balance,
+    name: wallet.name,
+  };
 }
 
 /**
@@ -23,15 +24,17 @@ export function convertFromDatabase(wallets: DBWallet[]): WalletType[] {
  * @return {DBWallet} Converted object.
  */
 export function convertToDatabase(wallet: WalletType, accountId: string):DBWallet {
+  const convertedCurrency = wallet.currency === 'XPAT' ? 'PAT' : wallet.currency;
+
   return {
     name: wallet.name,
     chain: 'ethereum',
-    symbol: wallet.currency,
+    symbol: convertedCurrency,
     decimals: 18,
     balance: wallet.balance === null ? '' : wallet.balance,
     address: wallet.ethAddress,
     accountId,
     // It's needed because we can have the same address on different accounts in theory later.
-    compoundId: `${accountId}|${wallet.ethAddress}|${wallet.currency}`,
+    compoundId: `${accountId}|${wallet.ethAddress}|${convertedCurrency}`,
   };
 }

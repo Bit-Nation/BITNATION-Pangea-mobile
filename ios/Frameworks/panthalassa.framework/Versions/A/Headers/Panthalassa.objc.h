@@ -90,6 +90,11 @@ FOUNDATION_EXPORT NSString* PanthalassaEthAddress(NSError** error);
 FOUNDATION_EXPORT NSString* PanthalassaEthPrivateKey(NSError** error);
 
 /**
+ * converts an ethereum public key to address
+ */
+FOUNDATION_EXPORT NSString* PanthalassaEthPubToAddress(NSString* pub, NSError** error);
+
+/**
  * Export the current account store with given password
  */
 FOUNDATION_EXPORT NSString* PanthalassaExportAccountStore(NSString* pw, NSString* pwConfirm, NSError** error);

@@ -77,7 +77,7 @@ class WalletScreen extends NavigatorComponent<Props & TestingModeProps & Actions
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.isRefreshing !== nextProps.isRefreshing && nextProps.isRefreshing === true) {
+    if (this.props.isRefreshing !== nextProps.isRefreshing && nextProps.isRefreshing === false) {
       this.setState({ pullToRefreshInProgress: false });
     }
   }

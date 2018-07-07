@@ -1,6 +1,7 @@
 // @flow
 
 import _ from 'lodash';
+import type { ChatSessionType } from '../types/Chat';
 
 /**
  * @desc Function that creates the list of messages to be consumed by GiftedChat
@@ -23,5 +24,5 @@ export default function createGiftedChatMessageObject(messagesData: Array<any>):
   return messages;
 }
 
-export const getSelectedSession = (sessions: Array<any>, secret: string) =>
+export const getSelectedSession = (sessions: Array<ChatSessionType>, secret: string) =>
   _.find(sessions, session => session.secret === secret) || null;
