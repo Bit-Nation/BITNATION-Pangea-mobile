@@ -45,14 +45,14 @@ describe('ethereum', () => {
     const wallet = new ethers.Wallet('0xefc27ba5330258fcfb75e28e4e6efd88458751086998bbfad99257035fb3e160');
     wallet.provider = new providers.InfuraProvider('rinkeby');
     ethereum = new Ethereum(wallet, 'dev');
-    // const txReceipt = await ethereum.deployContract(
-    //   ContractInfo.bytecode,
-    //   ContractInfo.abi,
-    //   '0xC3830A6206fB9d089D1ce824598978532D14d8Aa',
-    //   '0',
-    //   '0',
-    //   '0xcd4dd4fd12acD06fD49509516Bb136A0B496d451',
-    //   false,
-    // );
+    const txReceipt = await ethereum.deployContract(
+      ContractInfo.bytecode,
+      ContractInfo.abi,
+      '0',
+      '0xC3830A6206fB9d089D1ce824598978532D14d8Aa',
+      '0',
+      '0',
+      '0xcd4dd4fd12acD06fD49509516Bb136A0B496d451',
+    );
   });
 });
