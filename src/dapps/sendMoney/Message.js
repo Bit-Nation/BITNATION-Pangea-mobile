@@ -9,7 +9,7 @@ import { MessageParamsValidator } from '../../components/nativeDApps/MessagePara
 import type { SendMoneyMessageData } from './Modal';
 
 const styles = StyleSheet.create({
-  container: { margin: 8 },
+  container: { margin: 10 },
   text: {
     fontSize: 17,
     color: Colors.BitnationDarkGrayColor,
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
   textBold: {
     fontWeight: 'bold',
   },
-
+  spacer: { height: 12 },
 });
 
 type Status = 'pending' | 'failed' | 'success';
@@ -66,8 +66,11 @@ class Message extends React.Component<Props, State> {
     return (
       <View style={styles.container}>
         <Text style={styles.text}>
-          {`Send ${this.props.data.amount} ${this.props.data.currency}\nfrom ${this.props.data.fromName}\nto ${this.props.data.to.name}`}
+          {`Send ${this.props.data.amount} ${this.props.data.currency}\n`}
+          {`from ${this.props.data.fromName}\n`}
+          {`to ${this.props.data.to.name}`}
         </Text>
+        <View style={styles.spacer} />
         <Text style={styles.textBold}>
           {statusText}
         </Text>
