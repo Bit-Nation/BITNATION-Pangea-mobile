@@ -1,3 +1,4 @@
+/* eslint-disable prefer-destructuring */
 // @flow
 
 import React, { Component } from 'react';
@@ -21,7 +22,7 @@ import Loading from '../../../components/common/Loading';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import { getCurrentAccount } from '../../../reducers/accounts';
 import { getSelectedSession } from '../../../utils/chat';
-import type { ChatSessionType, ProfileType } from '../../../types/Chat';
+import type { ChatSessionType, ProfileType, DAppMessageType } from '../../../types/Chat';
 import { errorAlert } from '../../../global/alerts';
 import i18n from '../../../global/i18n';
 import type { DAppType } from '../../../dapps';
@@ -160,6 +161,22 @@ class ChatScreen extends Component<Props, *> {
     if (session.decryptedMessages && session.decryptedMessages.length > 0) {
       sortedMessages = session.decryptedMessages.slice().reverse();
     }
+    sortedMessages = sortedMessages.map((message) => {
+      if (message.dAppMessage == null || message.dAppMessage.dapp_id == null) return message;
+      const dAppMessage: DAppMessageType = (message: any).dAppMessage;
+
+      const dApp = getDApp(this.props.dAppsState, dAppMessage.dapp_id);
+      if (dApp == null) return message;
+
+      return {
+        ...message,
+        user: {
+          _id: dApp.identityPublicKey,
+          name: dApp.name,
+        },
+      };
+    });
+
     const sendingUser = {
       _id: this.props.userPublicKey,
       name: this.props.user ? this.props.user.name : 'anonymous',
