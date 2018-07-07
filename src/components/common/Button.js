@@ -24,7 +24,7 @@ type Props = {
   /**
    * @desc Callback to be called on button press.
    */
-  onPress?: () => void,
+  onPress?: () => any,
   /**
    * @desc Flag that determines if button is enabled.
    */
@@ -58,7 +58,7 @@ const Button = ({
       <TouchableOpacity testID='Touchable' disabled={!enabled} style={[styles.buttonContainer]} onPress={onPress}>
         {
         children ||
-        <Text style={enabled ? [styles.buttonTitle, styleTitle] : styles.disabledButtonTitle}>
+        <Text style={[styles.buttonTitle, styleTitle, (enabled === false) && styles.disabledButtonTitle]}>
           {title}
         </Text>
       }

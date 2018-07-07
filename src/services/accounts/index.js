@@ -34,6 +34,7 @@ export default class AccountsService {
     const config = JSON.stringify({
       encrypted_key_manager: accountStore,
       signed_profile: signedProfile,
+      enable_debugging: false,
     });
 
     const success = await Panthalassa.PanthalassaStart({ config, password });

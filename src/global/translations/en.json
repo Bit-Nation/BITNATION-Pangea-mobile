@@ -54,7 +54,8 @@
     "bitnationPat": "XPAT",
     "continue": "Continue",
     "location": "Location",
-    "accounts": "Accounts"
+    "accounts": "Accounts",
+    "balance": "Balance"
   },
   "enums": {
     "nation": {
@@ -490,8 +491,9 @@
         "button": "Share Wallet Address"
       }
     },
-    "qrCodeScanner": {
-      "title": "Scan QR code"
+    "dAppQRCodeScanner": {
+      "title": "Connect to DApp host",
+      "instruction": "Scan QR code to connect to PC"
     },
     "settings": {
       "title": "Settings",
@@ -500,7 +502,8 @@
       "security": "Security",
       "viewPrivateKey": "Private Key",
       "confirmPrivateKey": "Private Key (confirmation required)",
-      "switchAccounts": "Switch accounts"
+      "switchAccounts": "Switch accounts",
+      "connectToDAppHost": "Connect to DApp host"
     },
     "securitySettings": {
       "title": "Security settings",
@@ -563,6 +566,20 @@
       "initial4": "I'm here, Dr. FreudBot. Talk to me.",
       "initial5": "Talk to me! I am Dr. FreudBot. Tell me about your mother.",
       "initial6": "Hallo, Dr. FreudBot here. I am not a real Freudian. I am not real. Are you? Are you sure?"
+    }
+  },
+  "dApps": {
+    "escrow": {
+      "requestExchange": "START EXCHANGE",
+      "sendTokens": "SEND",
+      "cancelContract": "REFUND",
+      "completeContract": "EXCHANGE",
+      "cancelConfirmationAlert": {
+        "title": "Cancel Contract",
+        "subtitle": "Are you sure that you want to terminate exchange process?",
+        "confirm": "Stop exchange",
+        "cancel": "$t(common.cancel)"
+      }
     }
   }
 }

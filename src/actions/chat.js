@@ -220,7 +220,7 @@ export function stopFetchMessages(): StopFetchAction {
  * @param {func} callback Callback
  * @returns {SendMessageAction} An action
  */
-export function sendMessage(message: string, session: Object, callback: () => void): SendMessageAction {
+export function sendMessage(message: string, session: Object, callback: () => void = () => undefined): SendMessageAction {
   return {
     type: SEND_MESSAGE,
     message,

@@ -19,12 +19,14 @@ import type { NationIdType } from '../../types/Nation';
 import type { State } from '../../reducers';
 import type { Navigator } from '../../types/ReactNativeNavigation';
 import { getCurrentAccount } from '../../reducers/accounts';
+import { openDApp } from '../../actions/nativeDApps';
 
 type Props = {
   /**
    * @desc React Native Navigation navigator object.
    */
-  navigator: Navigator
+  navigator: Navigator,
+  openDApp: (publicKey: string) => void,
 };
 
 type Actions = {
@@ -47,8 +49,6 @@ class Dashboard extends Component<Props & Actions & State & TestingModeProps> {
     this.props.onSelectNation(id);
     this.props.navigator.push(screen('NATION_DETAILS_SCREEN'));
   };
-
-  onSelectMore = () => {};
 
   onStartKeyConfirmation = () => {
     this.props.navigator.showModal({
@@ -125,6 +125,9 @@ const mapDispatchToProps = dispatch => ({
   },
   onAddDummyMessage() {
     dispatch(addNewMessage('dummy message'));
+  },
+  openDApp(publicKey) {
+    dispatch(openDApp(publicKey));
   },
 });
 
