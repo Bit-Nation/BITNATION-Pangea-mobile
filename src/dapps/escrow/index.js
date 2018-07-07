@@ -7,7 +7,7 @@ import type { DAppType } from '../index';
 const dApp: DAppType = {
   name: 'XPAT escrow',
   // @todo
-  identityPublicKey: '0x@xpatescrow',
+  identityPublicKey: '0x@xpat_escrow',
   modal: Modal,
   message: Message,
 };
