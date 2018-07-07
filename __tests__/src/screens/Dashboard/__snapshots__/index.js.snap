@@ -55,6 +55,7 @@ ShallowWrapper {
       },
       "onAddDummyMessage": [Function],
       "onSelectNation": [Function],
+      "openDApp": [Function],
       "store": Object {
         "clearActions": [Function],
         "dispatch": [Function],
@@ -118,6 +119,7 @@ ShallowWrapper {
         },
         "onAddDummyMessage": [Function],
         "onSelectNation": [Function],
+        "openDApp": [Function],
         "store": Object {
           "clearActions": [Function],
           "dispatch": [Function],

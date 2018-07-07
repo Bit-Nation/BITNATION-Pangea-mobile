@@ -28,7 +28,7 @@ type Props = {
  * @return {React.Component} A component.
  */
 const WalletPanel = ({ style, wallets } : Props) => {
-  const patWallet = resolveWallet(wallets, 'PAT');
+  const patWallet = resolveWallet(wallets, 'XPAT');
   if (patWallet === null) {
     return <View />;
   }

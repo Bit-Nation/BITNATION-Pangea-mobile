@@ -40,8 +40,9 @@ message Request {
     DRKeyStoreAll dRKeyStoreAll = 7;
 
     message ShowModal {
-        string title = 1;
-        string layout = 2;
+        bytes dAppPublicKey = 1;
+        string title = 2;
+        string layout = 3;
     }
 
     ShowModal showModal = 8;
