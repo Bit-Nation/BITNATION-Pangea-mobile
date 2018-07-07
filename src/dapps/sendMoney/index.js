@@ -6,7 +6,7 @@ import type { DAppType } from '../index';
 
 const dApp: DAppType = {
   name: 'Send money',
-  identityPublicKey: '0x@todo',
+  identityPublicKey: '0x@send_money',
   modal: Modal,
   message: Message,
 };
