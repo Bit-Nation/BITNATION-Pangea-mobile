@@ -43,6 +43,7 @@ type Status = 'unknown' | 'pending' | 'readyForWithdraw' | 'withdrawn' | 'draine
 
 type State = {
   contractStatus: Status,
+  userHasSpends: boolean,
 }
 
 type Props = MessageData & OwnProps & MessageProvidedProps
@@ -53,6 +54,7 @@ export default class ContractInteractionMessage extends React.Component<Props, S
 
     this.state = {
       contractStatus: 'unknown',
+      userHasSpends: false,
     };
   }
 
@@ -68,8 +70,8 @@ export default class ContractInteractionMessage extends React.Component<Props, S
 
   startFetching = async (oneTime: boolean = false) => {
     try {
-      const status = await this.fetchStatus();
-      this.setState({ contractStatus: status });
+      const [status, userHasSpends] = await this.fetchStatus();
+      this.setState({ contractStatus: status, userHasSpends });
     } catch (error) {
       console.log(`[Escrow DApp] Failed to fetch contract info with error ${error.message}`);
     }
@@ -78,26 +80,30 @@ export default class ContractInteractionMessage extends React.Component<Props, S
     }
   };
 
-  fetchStatus = async (): Promise<Status> => {
+  fetchStatus = async (): Promise<[Status, boolean]> => {
     const withdrawn = await this.props.contract.withdrawled();
-    if (withdrawn === true) {
-      return 'withdrawn';
-    }
-
-    // @todo Change methods
     const agreedEtherAmount = new BigNumber(this.props.etherAmount);
     const etherBalance = new BigNumber(await this.props.services.ethereumService.getOtherBalance(this.props.contractAddress));
-    if (etherBalance.lessThan(agreedEtherAmount)) {
-      return 'drained';
-    }
-
     const agreedTokenAmount = new BigNumber(this.props.tokenAmount);
     const tokenBalance = new BigNumber(await this.props.services.ethereumService.getOtherTokenBalance(this.props.tokenContractAddress, this.props.contractAddress));
-    if (tokenBalance.lessThan(agreedTokenAmount)) {
-      return 'pending';
+
+    const userHasSpends = this.props.tokensFromAddress === this.props.context.walletAddress
+      ? tokenBalance.isZero() === false
+      : etherBalance.isZero() === false;
+
+    if (withdrawn === true) {
+      return ['withdrawn', userHasSpends];
     }
 
-    return 'readyForWithdraw';
+    if (etherBalance.lessThan(agreedEtherAmount)) {
+      return ['drained', userHasSpends];
+    }
+
+    if (tokenBalance.lessThan(agreedTokenAmount)) {
+      return ['pending', userHasSpends];
+    }
+
+    return ['readyForWithdraw', userHasSpends];
   };
 
   stopFetching = () => {
@@ -191,10 +197,13 @@ export default class ContractInteractionMessage extends React.Component<Props, S
               title={i18n.t('dApps.escrow.completeContract')}
             />
           }
-          <Button
-            onPress={this.onPressCancel}
-            title={i18n.t('dApps.escrow.cancelContract')}
-          />
+          {
+            this.state.userHasSpends === true &&
+            <Button
+              onPress={this.onPressCancel}
+              title={i18n.t('dApps.escrow.cancelContract')}
+            />
+          }
         </View>
       </View>
     );
