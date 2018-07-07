@@ -13,6 +13,7 @@ type TranslatableError = {
  * @return {void}
  */
 export function errorAlert(error: Error | TranslatableError) {
+  if (error.isCancelled === true) return;
   Alert.alert(
     i18n.t('alerts.error.title'),
     typeof error.transKey === 'string' ? i18n.t(`error.${error.transKey}`) : error.toString(),

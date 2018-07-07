@@ -183,5 +183,5 @@ export default class EthereumService {
    * @param {(string|Object)} abi ABI of contract.
    * @return {*} Contract instance.
    */
-  getContract = (address: string, abi: string | Object) => new ethers.Contract(address, abi, this.wallet.provider)
+  getContract = (address: string, abi: string | Object) => new ethers.Contract(address, abi, this.wallet)
 }
