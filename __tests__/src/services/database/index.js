@@ -21,31 +21,40 @@ describe('db', () => {
     expect(realm.path.split('/').slice(-1)[0]).toEqual(id.toString());
     realm.close();
   });
-  test('open and migrate process', async () => {
-    expect.assertions(5);
-    const dbPath = randomDbPath();
-    const databaseGenerator = factory(dbPath);
+  describe('open and migrate process', () => {
+    test('schema v0 - v2', async () => {
+      expect.assertions(3);
+      const dbPath = randomDbPath();
+      const databaseGenerator = factory(dbPath);
 
-    // Opened with schema version 0
-    const realm0 = await databaseGenerator.next().value;
-    expect(Realm.schemaVersion(dbPath)).toBe(0);
+      // Opened with schema version 0
+      const realm0 = await databaseGenerator.next().value;
+      expect(Realm.schemaVersion(dbPath)).toBe(0);
 
-    // Realm need to be passed in so that it can be closed
-    const realm1 = await databaseGenerator.next(realm0).value;
-    expect(Realm.schemaVersion(dbPath)).toBe(1);
+      // Realm need to be passed in so that it can be closed
+      const realm1 = await databaseGenerator.next(realm0).value;
+      expect(Realm.schemaVersion(dbPath)).toBe(1);
 
-    // Realm need to be passed in so that it can be closed
-    const realm2 = await databaseGenerator.next(realm1).value;
-    expect(Realm.schemaVersion(dbPath)).toBe(2);
+      // The last yield will return the realm open promise
+      const realm2 = await databaseGenerator.next(realm1).value;
+      expect(Realm.schemaVersion(dbPath)).toBe(2);
 
-    // The last yield will return the realm open promise
-    const realm3 = await databaseGenerator.next(realm2).value;
-    expect(Realm.schemaVersion(dbPath)).toBe(3);
+      realm2.close();
+    });
 
-    const realm4 = await databaseGenerator.next(realm3).value;
-    expect(Realm.schemaVersion(dbPath)).toBe(3);
+    test('schema v3 - v4', async () => {
+      expect.assertions(2);
+      const dbPath = randomDbPath();
+      const databaseGenerator = factory(dbPath, 3);
 
-    realm4.close();
+      const realm3 = await databaseGenerator.next().value;
+      expect(Realm.schemaVersion(dbPath)).toBe(3);
+
+      const realm4 = await databaseGenerator.next(realm3).value;
+      expect(Realm.schemaVersion(dbPath)).toBe(4);
+
+      realm4.close();
+    });
   });
   test('random path database builder', async () => {
     expect.assertions(2);

@@ -13,7 +13,6 @@ const styles = MediaQueryStyleSheet.create({
     color: Colors.Red,
   },
   */
-
 });
 
 export default styles;

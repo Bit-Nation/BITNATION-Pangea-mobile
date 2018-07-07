@@ -105,7 +105,12 @@ const Screens = {
   CHAT_NATIONS_SCREEN: {
     screen: 'Pangea.ChatNationsScreen',
     label: i18n.t('screens.chat.tabTitle'),
-    icon: AssetsImages.TabIcons.chat,
+    title: '',
+    navigatorStyle,
+  },
+  NEW_CHAT_SCREEN: {
+    screen: 'Pangea.NewChatScreen',
+    label: i18n.t('screens.chat.newConversation'),
     title: '',
     navigatorStyle,
   },
@@ -201,6 +206,20 @@ const Screens = {
     title: i18n.t('screens.scanQRCode.title'),
     navigatorStyle,
   },
+  QR_CODE_DAPP_SCREEN: {
+    screen: 'Pangea.QRCodeAppScreen',
+    title: i18n.t('screens.scanQRCode.title'),
+    navigatorStyle,
+    navigatorButtons: {
+      leftButtons: [
+        {
+          id: 'cancel',
+          buttonColor: Colors.androidNavigationButtons,
+        },
+      ],
+      rightButtons: [],
+    },
+  },
   SETTINGS_SCREEN: {
     screen: 'Pangea.Settings',
     title: '',
@@ -226,6 +245,21 @@ const Screens = {
   CONFIRMATION_SCREEN: {
     screen: 'Pangea.ConfirmationContainer',
     title: '',
+    navigatorStyle,
+  },
+  CHAT_LIST_SCREEN: {
+    screen: 'Pangea.ChatListScreen',
+    label: i18n.t('screens.chat.tabTitle'),
+    icon: AssetsImages.TabIcons.chat,
+    navigatorStyle,
+  },
+  PRIVATE_CHAT_SCREEN: {
+    screen: 'Pangea.PrivateChatScreen',
+    title: i18n.t('screens.chat.title'),
+    navigatorStyle,
+  },
+  DAPP_MODAL_SCREEN: {
+    screen: 'Pangea.DAppModalScreen',
     navigatorStyle,
   },
 };
