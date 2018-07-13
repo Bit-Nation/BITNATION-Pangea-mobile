@@ -161,21 +161,24 @@ export function* startDatabaseListening(): Generator<*, *, *> {
 async function saveProfileIntoDatabase(profileObject: Object) {
   const db = await defaultDB;
   const { information, signatures } = profileObject;
-  const profile = {
-    name: information.name,
-    location: information.location,
-    image: information.image,
-    identity_pub_key: information.identity_pub_key,
-    ethereum_pub_Key: information.ethereum_pub_Key,
-    chat_id_key: byteToHexString(information.chat_id_key),
-    timestamp: information.timestamp,
-    version: information.version,
-    identity_key_signature: signatures.identity_key,
-    ethereum_key_signature: signatures.ethereum_key,
-  };
-  db.write(() => {
-    db.create('Profile', profile, true);
-  });
+  const isProfileOnDb = db.objects('Profile').filtered(`identity_pub_key == '${information.ethereum_pub_Key}'`);
+  if (isProfileOnDb.length === 0) {
+    const profile = {
+      name: information.name,
+      location: information.location,
+      image: information.image,
+      identity_pub_key: information.identity_pub_key,
+      ethereum_pub_Key: information.ethereum_pub_Key,
+      chat_id_key: byteToHexString(information.chat_id_key),
+      timestamp: information.timestamp,
+      version: information.version,
+      identity_key_signature: signatures.identity_key,
+      ethereum_key_signature: signatures.ethereum_key,
+    };
+    db.write(() => {
+      db.create('Profile', profile, true);
+    });
+  }
 }
 
 /**
