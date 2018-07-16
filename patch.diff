@@ -1,0 +1,232 @@
+From b089fece9eaf3ea7d8de66fce13c890c25154da9 Mon Sep 17 00:00:00 2001
+From: Andrii Selivanov <seland2008@gmail.com>
+Date: Mon, 16 Jul 2018 23:13:28 +0300
+Subject: [PATCH] [refactor] Change nation indexing.
+
+---
+ ios/Pangea.xcodeproj/project.pbxproj |   5 +-
+ ios/Podfile.lock                     |   2 +-
+ src/sagas/nations/sagas.js           |   4 +-
+ src/services/nations/index.js        | 137 +++++++++++++++++++----------------
+ 4 files changed, 81 insertions(+), 67 deletions(-)
+
+diff --git a/ios/Pangea.xcodeproj/project.pbxproj b/ios/Pangea.xcodeproj/project.pbxproj
+index 39e7610c..a9cfa156 100644
+--- a/ios/Pangea.xcodeproj/project.pbxproj
++++ b/ios/Pangea.xcodeproj/project.pbxproj
+@@ -1581,13 +1581,12 @@
+ 			);
+ 			inputPaths = (
+ 				"${SRCROOT}/Pods/Target Support Files/Pods-Pangea/Pods-Pangea-resources.sh",
+-				"${PODS_CONFIGURATION_BUILD_DIR}/QBImagePickerController/QBImagePicker.bundle",
++				"$PODS_CONFIGURATION_BUILD_DIR/QBImagePickerController/QBImagePicker.bundle",
+ 				"${PODS_ROOT}/RSKImageCropper/RSKImageCropper/RSKImageCropperStrings.bundle",
+ 			);
+ 			name = "[CP] Copy Pods Resources";
+ 			outputPaths = (
+-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/QBImagePicker.bundle",
+-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RSKImageCropperStrings.bundle",
++				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+ 			);
+ 			runOnlyForDeploymentPostprocessing = 0;
+ 			shellPath = /bin/sh;
+diff --git a/ios/Podfile.lock b/ios/Podfile.lock
+index c8e91ff9..55781d0d 100644
+--- a/ios/Podfile.lock
++++ b/ios/Podfile.lock
+@@ -12,4 +12,4 @@ SPEC CHECKSUMS:
+ 
+ PODFILE CHECKSUM: cfc2e954ae5b8be9969987641ad09d31bfda9b8b
+ 
+-COCOAPODS: 1.4.0
++COCOAPODS: 1.3.1
+diff --git a/src/sagas/nations/sagas.js b/src/sagas/nations/sagas.js
+index f3ec3150..6f932ad5 100644
+--- a/src/sagas/nations/sagas.js
++++ b/src/sagas/nations/sagas.js
+@@ -73,9 +73,9 @@ export function* startNationIndexingWorker(): Generator<*, *, *> {
+     yield call([nationsService, 'registerNationIndexing']);
+     yield put(doneFetchNations());
+   } catch (e) {
+-    console.log('HEY FAILED');
++    console.log(`[PANGEA] Nation indexing failed with error: ${e.message}`);
+     yield delay(NATION_INDEX_RECOVER_PERIOD);
+-    console.log('RECOVER');
++    console.log('[PANGEA] Recover nation indexing');
+     yield call(startNationIndexingWorker);
+   }
+ }
+diff --git a/src/services/nations/index.js b/src/services/nations/index.js
+index 7264da4c..62f6367d 100644
+--- a/src/services/nations/index.js
++++ b/src/services/nations/index.js
+@@ -159,90 +159,105 @@ export default class NationsService {
+   async registerNationIndexing() {
+     const firstBlock = this.ethereumService.network === 'dev' ? NATION_DEV_CONTRACT_CREATION_BLOCK : NATION_PROD_CONTRACT_CREATION_BLOCK;
+ 
+-    return new Promise(async (resolve, reject) => {
+-      const self = this;
++    const nationLogs = await new Promise(async (resolve) => {
+       let expectedNationsNumber = (await this.ethereumService.nations.numNations()).toNumber();
++      console.log(`[TEST] Start fetching logs ${expectedNationsNumber}`);
++      const logs = [];
+ 
+       this.ethereumService.nations.onnationcreated = function processLog() {
+         // BE CAREFUL! Since strange API of ether.js log passed here as a 'this'.
+         const log = this;
+ 
+-        self.performNationUpdate(log.args.nationId.toNumber(), log.transactionHash)
+-          .then(() => {
+-            expectedNationsNumber -= 1;
+-            if (expectedNationsNumber === 0) {
+-              resolve();
+-            }
+-          })
+-          .catch((error) => {
+-            console.log(error.toString());
+-            reject(error);
+-          });
++        logs.push({ idInSmartContract: log.args.nationId.toNumber(), txHash: log.transactionHash });
++        expectedNationsNumber -= 1;
++        if (expectedNationsNumber === 0) {
++          resolve(logs);
++        }
+       };
+ 
+       if (expectedNationsNumber === 0) {
+-        resolve();
++        resolve([]);
+       }
+ 
+       this.ethereumService.nations.provider.resetEventsBlock(firstBlock);
+     });
++
++    console.log('[TEST] Done fetching logs');
++    return this.updateNationsFromLogs(nationLogs);
+   }
+ 
+-  async performNationUpdate(idInSmartContract: number, txHash: string | null) {
++  async updateNationsFromLogs(logs: Array<{ idInSmartContract: number, txHash: string | null }>) {
+     const db = await this.dbPromise;
+-    const draftToUpdate: DBNationType = db.objects('Nation').filtered(`tx.txHash = '${txHash || ''}' AND tx.type = '${TX_JOB_TYPE.NATION_CREATE}'`)[0];
+-    if (draftToUpdate != null && draftToUpdate.idInSmartContract !== idInSmartContract) {
+-      // It's a draft that we need to update in database as submitted nation
+-      db.write(() => {
+-        draftToUpdate.idInSmartContract = idInSmartContract;
+-      });
+-    }
++    let newId = await this.newNationId();
+ 
+     // For some reason we sometimes get object instead of array here. This object contains nations that we don't actually join. So we ignore it.
+-    const joinedNations = (await this.ethereumService.nations.getJoinedNations({ from: this.ethereumService.wallet.address }));
+-    let isNationJoined: boolean = false;
+-    if (Array.isArray(joinedNations) === true) {
+-      isNationJoined = joinedNations.map(bigNumber => bigNumber.toNumber()).includes(idInSmartContract);
+-    }
+-    const citizensNumber = (await this.ethereumService.nations.getNumCitizens(idInSmartContract)).toNumber();
++    const joinedNationBNIds = (await this.ethereumService.nations.getJoinedNations({ from: this.ethereumService.wallet.address }));
++
++    const joinedNationIds = Array.isArray(joinedNationBNIds) === true ? joinedNationBNIds.map(bigNumber => bigNumber.toNumber()) : [];
++
++    const writePromises = logs.map(async (log) => {
++      console.log(`[TEST] Start processing log for id ${log.idInSmartContract}`);
++
++      const { txHash, idInSmartContract } = log;
++      const citizensNumber = (await this.ethereumService.nations.getNumCitizens(idInSmartContract)).toNumber();
++      const isNationJoined: boolean = joinedNationIds.includes(idInSmartContract);
++      const draftToUpdate: DBNationType = db.objects('Nation').filtered(`tx.txHash = '${txHash || ''}' AND tx.type = '${TX_JOB_TYPE.NATION_CREATE}'`)[0];
++      if (draftToUpdate != null) {
++        console.log('[TEST] Updating draft');
++        return () => {
++          draftToUpdate.idInSmartContract = idInSmartContract;
++          draftToUpdate.joined = isNationJoined;
++          draftToUpdate.citizens = citizensNumber;
++        };
++      }
+ 
+-    const nationToUpdate: DBNationType = db.objects('Nation').filtered(`accountId = '${this.currentAccountId}' && idInSmartContract = ${idInSmartContract}`)[0];
+-    if (nationToUpdate != null && (nationToUpdate.joined !== isNationJoined || nationToUpdate.citizens !== citizensNumber)) {
+-      // It's a nation that somehow is already in database, so we just update it.
+-      db.write(() => {
+-        nationToUpdate.joined = isNationJoined;
+-        nationToUpdate.citizens = citizensNumber;
+-      });
+-    }
++      const nationToUpdate: DBNationType = db.objects('Nation').filtered(`accountId = '${this.currentAccountId}' && idInSmartContract = ${idInSmartContract}`)[0];
++      if (nationToUpdate != null) {
++        console.log('[TEST] Updating nation');
++        // It's a nation that somehow is already in database, so we just update it.
++        return () => {
++          nationToUpdate.joined = isNationJoined;
++          nationToUpdate.citizens = citizensNumber;
++        };
++      }
+ 
+-    if (draftToUpdate != null || nationToUpdate != null) {
+-      // Since we update a nation we don't need to create it again.
+-      return;
+-    }
++      const nationData = JSON.parse(await this.ethereumService.nations.getNationMetaData(idInSmartContract));
++
++      // We increase newId manually since we're not writing to database, but pretending as if we are.
++      const idToUse = newId;
++      newId += 1;
++
++      console.log(`[TEST] Creating nation with id ${idToUse}`);
++
++      return () => {
++        db.create('Nation', {
++          id: idToUse,
++          accountId: this.currentAccountId,
++          idInSmartContract,
++          nationName: nationData.nationName,
++          nationDescription: nationData.nationDescription,
++          created: true,
++          exists: nationData.exists,
++          virtualNation: nationData.virtualNation,
++          nationCode: nationData.nationCode,
++          lawEnforcementMechanism: nationData.lawEnforcementMechanism,
++          profit: nationData.profit,
++          nonCitizenUse: nationData.nonCitizenUse,
++          diplomaticRecognition: nationData.diplomaticRecognition,
++          decisionMakingProcess: nationData.decisionMakingProcess,
++          governanceService: nationData.governanceService,
++          joined: isNationJoined,
++          citizens: citizensNumber,
++        });
++      };
++    });
+ 
+-    const nationData = JSON.parse(await this.ethereumService.nations.getNationMetaData(idInSmartContract));
+-    const newId = await this.newNationId();
++    const writes = await Promise.all(writePromises);
++    console.log('[TEST] Created writes');
+     db.write(() => {
+-      db.create('Nation', {
+-        id: newId,
+-        accountId: this.currentAccountId,
+-        idInSmartContract,
+-        nationName: nationData.nationName,
+-        nationDescription: nationData.nationDescription,
+-        created: true,
+-        exists: nationData.exists,
+-        virtualNation: nationData.virtualNation,
+-        nationCode: nationData.nationCode,
+-        lawEnforcementMechanism: nationData.lawEnforcementMechanism,
+-        profit: nationData.profit,
+-        nonCitizenUse: nationData.nonCitizenUse,
+-        diplomaticRecognition: nationData.diplomaticRecognition,
+-        decisionMakingProcess: nationData.decisionMakingProcess,
+-        governanceService: nationData.governanceService,
+-        joined: isNationJoined,
+-        citizens: citizensNumber,
+-      });
++      writes.forEach(fn => fn());
+     });
++    console.log('[TEST] Done');
+   }
+ 
+   // Utilities
+-- 
+2.15.1
+
