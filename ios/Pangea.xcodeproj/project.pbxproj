@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -97,6 +96,7 @@
 		F1C11E3D287F435E82B3EBE7 /* SourceCodePro-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2883BEBCB3844277960A2316 /* SourceCodePro-Black.ttf */; };
 		F433AF1A43DC4172A5A60632 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A9167971C1DA4D47AB1CEA9E /* Roboto-Bold.ttf */; };
 		F873814B82C84617B09ACC6C /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 775AD21554C848DFB5B0F045 /* Ionicons.ttf */; };
+		8DD8690E35E2478B9FCDA0AA /* libRNThread.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 096955360C5A47AC903C9555 /* libRNThread.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -533,6 +533,8 @@
 		F0B54AA7CCFF4B118143EA59 /* RobotoCondensed-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoCondensed-Regular.ttf"; path = "../assets/fonts/Roboto/RobotoCondensed-Regular.ttf"; sourceTree = "<group>"; };
 		F1F2602F426447A093FC2EE0 /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-BlackItalic.ttf"; path = "../assets/fonts/Roboto/Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
 		F552F5D46DB14E1888550D69 /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
+		1D1F553815FC429A915DA280 /* RNThread.xcodeproj */ = {isa = PBXFileReference; name = "RNThread.xcodeproj"; path = "../node_modules/react-native-threads/ios/RNThread.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		096955360C5A47AC903C9555 /* libRNThread.a */ = {isa = PBXFileReference; name = "libRNThread.a"; path = "libRNThread.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -576,6 +578,7 @@
 				222174D549BD4E7F84A49BE7 /* libz.tbd in Frameworks */,
 				D4C9EDBC2CE847EE998E38B8 /* libimageCropPicker.a in Frameworks */,
 				0EEB22BB89D8DB1F0AF929C3 /* libPods-Pangea.a in Frameworks */,
+				8DD8690E35E2478B9FCDA0AA /* libRNThread.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -904,6 +907,7 @@
 				9B29C53248DB4D7CBB403C9B /* RNSensitiveInfo.xcodeproj */,
 				BF69E689E78D42E198301553 /* RealmReact.xcodeproj */,
 				9BB21DC2FAED4B40BE2D0B74 /* imageCropPicker.xcodeproj */,
+				1D1F553815FC429A915DA280 /* RNThread.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1720,12 +1724,14 @@
 					"$(SRCROOT)/../node_modules/react-native-image-crop-picker/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-eth-daemon/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-eth-daemon/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-threads/ios",
 				);
 				INFOPLIST_FILE = PangeaTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1761,12 +1767,14 @@
 					"$(SRCROOT)/../node_modules/react-native-image-crop-picker/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-eth-daemon/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-eth-daemon/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-threads/ios",
 				);
 				INFOPLIST_FILE = PangeaTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1801,6 +1809,7 @@
 					"$(SRCROOT)/../node_modules/react-native-sensitive-info/ios/RNSensitiveInfo/**",
 					"$(SRCROOT)/../node_modules/realm/src/**",
 					"$(SRCROOT)/../node_modules/react-native-image-crop-picker/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-threads/ios",
 				);
 				INFOPLIST_FILE = Pangea/Info.plist;
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = " -traditional";
@@ -1842,6 +1851,7 @@
 					"$(SRCROOT)/../node_modules/react-native-sensitive-info/ios/RNSensitiveInfo/**",
 					"$(SRCROOT)/../node_modules/realm/src/**",
 					"$(SRCROOT)/../node_modules/react-native-image-crop-picker/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-threads/ios",
 				);
 				INFOPLIST_FILE = Pangea/Info.plist;
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = " -traditional";
@@ -1888,11 +1898,13 @@
 					"$(SRCROOT)/../node_modules/react-native-image-crop-picker/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-eth-daemon/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-eth-daemon/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-threads/ios",
 				);
 				INFOPLIST_FILE = "Pangea-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1934,11 +1946,13 @@
 					"$(SRCROOT)/../node_modules/react-native-image-crop-picker/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-eth-daemon/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-eth-daemon/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-threads/ios",
 				);
 				INFOPLIST_FILE = "Pangea-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1973,6 +1987,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.Pangea-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2001,6 +2016,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.Pangea-tvOSTests";
