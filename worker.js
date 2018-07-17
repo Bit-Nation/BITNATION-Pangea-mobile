@@ -1,5 +1,5 @@
 import { self } from 'react-native-threads';
-import defaultDB from '../../services/database';
+import defaultDB from './src/services/database';
 
 self.onmessage = async (data) => {
   const nationData = JSON.parse(data);

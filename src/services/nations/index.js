@@ -220,17 +220,11 @@ export default class NationsService {
       return;
     }
 
-    // const nationData = JSON.parse(await this.ethereumService.nations.getNationMetaData(idInSmartContract));
-    const nationDataJson = JSON.parse(await this.ethereumService.nations.getNationMetaData(idInSmartContract));
-    nationDataJson.idInSmartContract = idInSmartContract;
-    nationDataJson.joined = isNationJoined;
-    nationDataJson.citizens = citizensNumber;
-    nationDataJson.accountId = this.currentAccountId;
-    nationDataJson.id = await this.newNationId();
-    const thread = new Thread('worker.js');
-    thread.postMessage(JSON.stringify(nationDataJson));
-    thread.onmessage = (message) => { console.log(message); };
-    /* const newId = await this.newNationId();
+    const nationData = JSON.parse(await this.ethereumService.nations.getNationMetaData(idInSmartContract));
+    // const thread = new Thread('./worker.js');
+    // thread.postMessage(JSON.stringify(nationDataJson));
+    // thread.onmessage = (message) => { console.log(message); };
+    const newId = await this.newNationId();
     db.write(() => {
       db.create('Nation', {
         id: newId,
@@ -251,7 +245,7 @@ export default class NationsService {
         joined: isNationJoined,
         citizens: citizensNumber,
       });
-    }); */
+    });
   }
 
   // Utilities

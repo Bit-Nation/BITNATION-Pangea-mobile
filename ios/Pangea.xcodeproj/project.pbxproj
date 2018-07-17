@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -59,6 +60,7 @@
 		7E9302F27F4143A0AD66FC3F /* libReactNativeNavigation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 198F613DD4A7453EA458D327 /* libReactNativeNavigation.a */; };
 		80DB860BD646435B984E0C26 /* RobotoCondensed-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C73E453C89B44FC5974D10C6 /* RobotoCondensed-BoldItalic.ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		8DD8690E35E2478B9FCDA0AA /* libRNThread.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 096955360C5A47AC903C9555 /* libRNThread.a */; };
 		8FFBD48D3BA145B49B2DE6BC /* SourceCodePro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C99ECD50D88848589091A8FA /* SourceCodePro-Regular.ttf */; };
 		934EB16E1B6644B3A1AF8412 /* libRNRandomBytes.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EF00CF24A374466CA2C3D089 /* libRNRandomBytes.a */; };
 		943AF008471241D7B43409FA /* RobotoCondensed-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F0B54AA7CCFF4B118143EA59 /* RobotoCondensed-Regular.ttf */; };
@@ -96,7 +98,6 @@
 		F1C11E3D287F435E82B3EBE7 /* SourceCodePro-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2883BEBCB3844277960A2316 /* SourceCodePro-Black.ttf */; };
 		F433AF1A43DC4172A5A60632 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A9167971C1DA4D47AB1CEA9E /* Roboto-Bold.ttf */; };
 		F873814B82C84617B09ACC6C /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 775AD21554C848DFB5B0F045 /* Ionicons.ttf */; };
-		8DD8690E35E2478B9FCDA0AA /* libRNThread.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 096955360C5A47AC903C9555 /* libRNThread.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -415,6 +416,13 @@
 			remoteGlobalIDString = 4107012F1ACB723B00C6AA39;
 			remoteInfo = RNCamera;
 		};
+		D2A58E9C20FE66A300C1BD65 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1D1F553815FC429A915DA280 /* RNThread.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNThread;
+		};
 		D2EC4D5320C9D75F00255255 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AEBAAD419E4D47BB9275AE52 /* RNRandomBytes.xcodeproj */;
@@ -453,6 +461,7 @@
 		015AF0AAB1DE43B68DEA7900 /* Roboto_medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto_medium.ttf; path = "../node_modules/native-base/Fonts/Roboto_medium.ttf"; sourceTree = "<group>"; };
 		018738D368CA43C1BEB54A3D /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/native-base/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		067F660FC765FB199ABA4128 /* Pods-Pangea.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pangea.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pangea/Pods-Pangea.release.xcconfig"; sourceTree = "<group>"; };
+		096955360C5A47AC903C9555 /* libRNThread.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNThread.a; sourceTree = "<group>"; };
 		099997F9E42E486BB02DA894 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/native-base/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		0EAF57EC11E4404592FB5E81 /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-LightItalic.ttf"; path = "../assets/fonts/Roboto/Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
@@ -470,6 +479,7 @@
 		17F9F56F840D4E95A4064389 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/native-base/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		198F613DD4A7453EA458D327 /* libReactNativeNavigation.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libReactNativeNavigation.a; sourceTree = "<group>"; };
 		1A278AA8274448FFB105C984 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/native-base/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
+		1D1F553815FC429A915DA280 /* RNThread.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNThread.xcodeproj; path = "../node_modules/react-native-threads/ios/RNThread.xcodeproj"; sourceTree = "<group>"; };
 		22DF4321A766C4BF2CAA9AB9 /* libPods-Pangea.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Pangea.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2883BEBCB3844277960A2316 /* SourceCodePro-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SourceCodePro-Black.ttf"; path = "../assets/fonts/SourceCodePro/SourceCodePro-Black.ttf"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* Pangea-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pangea-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -533,8 +543,6 @@
 		F0B54AA7CCFF4B118143EA59 /* RobotoCondensed-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "RobotoCondensed-Regular.ttf"; path = "../assets/fonts/Roboto/RobotoCondensed-Regular.ttf"; sourceTree = "<group>"; };
 		F1F2602F426447A093FC2EE0 /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-BlackItalic.ttf"; path = "../assets/fonts/Roboto/Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
 		F552F5D46DB14E1888550D69 /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
-		1D1F553815FC429A915DA280 /* RNThread.xcodeproj */ = {isa = PBXFileReference; name = "RNThread.xcodeproj"; path = "../node_modules/react-native-threads/ios/RNThread.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
-		096955360C5A47AC903C9555 /* libRNThread.a */ = {isa = PBXFileReference; name = "libRNThread.a"; path = "libRNThread.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -687,6 +695,7 @@
 				9DA898BBC9A649F0B490A468 /* libRealmReact.a */,
 				CA23D9CC370645A9AC80F60E /* libimageCropPicker.a */,
 				4A85B90D42A544BB812E0982 /* libRNEthDaemon.a */,
+				096955360C5A47AC903C9555 /* libRNThread.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -966,6 +975,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		D2A58E9920FE66A300C1BD65 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D2A58E9D20FE66A300C1BD65 /* libRNThread.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1162,6 +1179,10 @@
 				{
 					ProductGroup = 17084FC21FF801B100CB17F5 /* Products */;
 					ProjectRef = 9B29C53248DB4D7CBB403C9B /* RNSensitiveInfo.xcodeproj */;
+				},
+				{
+					ProductGroup = D2A58E9920FE66A300C1BD65 /* Products */;
+					ProjectRef = 1D1F553815FC429A915DA280 /* RNThread.xcodeproj */;
 				},
 				{
 					ProductGroup = 049D76241FF18AD300864A38 /* Products */;
@@ -1478,6 +1499,13 @@
 			fileType = archive.ar;
 			path = libRNCamera.a;
 			remoteRef = D20378AC20FD17F100447B59 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D2A58E9D20FE66A300C1BD65 /* libRNThread.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNThread.a;
+			remoteRef = D2A58E9C20FE66A300C1BD65 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		D2EC4D5420C9D75F00255255 /* libRNRandomBytes-tvOS.a */ = {
