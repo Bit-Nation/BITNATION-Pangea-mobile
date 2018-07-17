@@ -158,13 +158,13 @@ export default class NationsService {
 
   async registerNationIndexing() {
     const firstBlock = this.ethereumService.network === 'dev' ? NATION_DEV_CONTRACT_CREATION_BLOCK : NATION_PROD_CONTRACT_CREATION_BLOCK;
+    let expectedNationsNumber = (await this.ethereumService.nations.numNations()).toNumber();
 
-    const nationLogs = await new Promise(async (resolve) => {
-      let expectedNationsNumber = (await this.ethereumService.nations.numNations()).toNumber();
+    const nationLogs = await new Promise((resolve) => {
       console.log(`[TEST] Start fetching logs ${expectedNationsNumber}`);
       const logs = [];
 
-      this.ethereumService.nations.onnationcreated = function processLog() {
+      this.ethereumService.nations.onnationcreated = async function processLog() {
         // BE CAREFUL! Since strange API of ether.js log passed here as a 'this'.
         const log = this;
 
