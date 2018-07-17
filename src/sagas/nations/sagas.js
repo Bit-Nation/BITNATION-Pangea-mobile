@@ -73,9 +73,9 @@ export function* startNationIndexingWorker(): Generator<*, *, *> {
     yield call([nationsService, 'registerNationIndexing']);
     yield put(doneFetchNations());
   } catch (e) {
-    console.log('HEY FAILED');
+    console.log(`[PANGEA] Nation indexing failed with error: ${e.message}`);
     yield delay(NATION_INDEX_RECOVER_PERIOD);
-    console.log('RECOVER');
+    console.log('[PANGEA] Recover nation indexing');
     yield call(startNationIndexingWorker);
   }
 }
