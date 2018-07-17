@@ -120,7 +120,7 @@ export default class Modal extends React.Component<ProvidedProps, *> {
           styleTitle={GlobalStyles.title3}
           style={styles.sendButton}
           title={i18n.t('common.send')}
-          onPress={() => this.onButtonPress()}
+          onPress={this.onButtonPress}
           enabled={this.state.isValid}
         />
       </View>
