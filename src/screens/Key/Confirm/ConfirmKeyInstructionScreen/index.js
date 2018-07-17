@@ -46,11 +46,11 @@ class ConfirmKeyInstructionScreen extends NavigatorComponent<Props> {
     }
   }
 
-  onNextButtonPressed() {
+  onNextButtonPressed = () => {
     if (this.props.navigator) {
       this.props.navigator.push(screen('CONFIRM_KEY_PROCESS_SCREEN'));
     }
-  }
+  };
 
   render() {
     return (
@@ -64,7 +64,7 @@ class ConfirmKeyInstructionScreen extends NavigatorComponent<Props> {
             <PanelView
               style={styles.panelViewTransparent}
               buttonTitle={i18n.t('screens.confirmKey.startButton')}
-              onButtonClick={() => this.onNextButtonPressed()}
+              onButtonClick={this.onNextButtonPressed}
             >
               <BodyParagraphs paragraphs={i18n.t('screens.confirmKey.instructions.beforeGrid', { KEY_LENGTH })} />
               <View style={styles.gridContainer}>
