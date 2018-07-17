@@ -229,7 +229,7 @@ export default class NationsService {
     nationDataJson.id = await this.newNationId();
     const thread = new Thread('worker.js');
     thread.postMessage(JSON.stringify(nationDataJson));
-    thread.onmessage = (message) => { console.log(message); thread.terminate(); };
+    thread.onmessage = (message) => { console.log(message); };
     /* const newId = await this.newNationId();
     db.write(() => {
       db.create('Nation', {
