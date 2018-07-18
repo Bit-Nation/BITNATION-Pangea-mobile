@@ -158,94 +158,112 @@ export default class NationsService {
 
   async registerNationIndexing() {
     const firstBlock = this.ethereumService.network === 'dev' ? NATION_DEV_CONTRACT_CREATION_BLOCK : NATION_PROD_CONTRACT_CREATION_BLOCK;
+    const expectedNationsNumber = (await this.ethereumService.nations.numNations()).toNumber();
 
-    return new Promise(async (resolve, reject) => {
-      const self = this;
-      let expectedNationsNumber = (await this.ethereumService.nations.numNations()).toNumber();
-
-      this.ethereumService.nations.onnationcreated = function processLog() {
+    const jsonParameters = {};
+    jsonParameters.expectedNationsNumber = expectedNationsNumber;
+    jsonParameters.wallet = this.ethereumService.wallet;
+    jsonParameters.network = this.ethereumService.network;
+    const nationLogs = await new Promise((resolve) => {
+      console.log(`[TEST] Start fetching logs ${expectedNationsNumber}`);
+      const thread = new Thread('./worker.js');
+      thread.postMessage(JSON.stringify(jsonParameters));
+      let logs = [];
+      /*
+      this.ethereumService.nations.onnationcreated = async function processLog() {
         // BE CAREFUL! Since strange API of ether.js log passed here as a 'this'.
         const log = this;
 
-        self.performNationUpdate(log.args.nationId.toNumber(), log.transactionHash)
-          .then(() => {
-            expectedNationsNumber -= 1;
-            if (expectedNationsNumber === 0) {
-              resolve();
-            }
-          })
-          .catch((error) => {
-            console.log(error.toString());
-            reject(error);
-          });
-      };
-
+        logs.push({ idInSmartContract: log.args.nationId.toNumber(), txHash: log.transactionHash });
+        expectedNationsNumber -= 1;
+        if (expectedNationsNumber === 0) {
+          resolve(logs);
+        }
+      }; */
+      thread.onmessage = (message) => { logs = JSON.parse(message); };
       if (expectedNationsNumber === 0) {
-        resolve();
+        resolve([]);
       }
 
       this.ethereumService.nations.provider.resetEventsBlock(firstBlock);
     });
+
+    console.log('[TEST] Done fetching logs');
+    return this.updateNationsFromLogs(nationLogs);
   }
 
-  async performNationUpdate(idInSmartContract: number, txHash: string | null) {
+  async updateNationsFromLogs(logs: Array<{ idInSmartContract: number, txHash: string | null }>) {
     const db = await this.dbPromise;
-    const draftToUpdate: DBNationType = db.objects('Nation').filtered(`tx.txHash = '${txHash || ''}' AND tx.type = '${TX_JOB_TYPE.NATION_CREATE}'`)[0];
-    if (draftToUpdate != null && draftToUpdate.idInSmartContract !== idInSmartContract) {
-      // It's a draft that we need to update in database as submitted nation
-      db.write(() => {
-        draftToUpdate.idInSmartContract = idInSmartContract;
-      });
-    }
+    let newId = await this.newNationId();
 
     // For some reason we sometimes get object instead of array here. This object contains nations that we don't actually join. So we ignore it.
-    const joinedNations = (await this.ethereumService.nations.getJoinedNations({ from: this.ethereumService.wallet.address }));
-    let isNationJoined: boolean = false;
-    if (Array.isArray(joinedNations) === true) {
-      isNationJoined = joinedNations.map(bigNumber => bigNumber.toNumber()).includes(idInSmartContract);
-    }
-    const citizensNumber = (await this.ethereumService.nations.getNumCitizens(idInSmartContract)).toNumber();
+    const joinedNationBNIds = (await this.ethereumService.nations.getJoinedNations({ from: this.ethereumService.wallet.address }));
 
-    const nationToUpdate: DBNationType = db.objects('Nation').filtered(`accountId = '${this.currentAccountId}' && idInSmartContract = ${idInSmartContract}`)[0];
-    if (nationToUpdate != null && (nationToUpdate.joined !== isNationJoined || nationToUpdate.citizens !== citizensNumber)) {
-      // It's a nation that somehow is already in database, so we just update it.
-      db.write(() => {
-        nationToUpdate.joined = isNationJoined;
-        nationToUpdate.citizens = citizensNumber;
-      });
-    }
+    const joinedNationIds = Array.isArray(joinedNationBNIds) === true ? joinedNationBNIds.map(bigNumber => bigNumber.toNumber()) : [];
 
-    if (draftToUpdate != null || nationToUpdate != null) {
-      // Since we update a nation we don't need to create it again.
-      return;
-    }
+    const writePromises = logs.map(async (log) => {
+      console.log(`[TEST] Start processing log for id ${log.idInSmartContract}`);
 
-    const nationData = JSON.parse(await this.ethereumService.nations.getNationMetaData(idInSmartContract));
-    // const thread = new Thread('./worker.js');
-    // thread.postMessage(JSON.stringify(nationDataJson));
-    // thread.onmessage = (message) => { console.log(message); };
-    const newId = await this.newNationId();
-    db.write(() => {
-      db.create('Nation', {
-        id: newId,
-        accountId: this.currentAccountId,
-        idInSmartContract,
-        nationName: nationData.nationName,
-        nationDescription: nationData.nationDescription,
-        created: true,
-        exists: nationData.exists,
-        virtualNation: nationData.virtualNation,
-        nationCode: nationData.nationCode,
-        lawEnforcementMechanism: nationData.lawEnforcementMechanism,
-        profit: nationData.profit,
-        nonCitizenUse: nationData.nonCitizenUse,
-        diplomaticRecognition: nationData.diplomaticRecognition,
-        decisionMakingProcess: nationData.decisionMakingProcess,
-        governanceService: nationData.governanceService,
-        joined: isNationJoined,
-        citizens: citizensNumber,
-      });
+      const { txHash, idInSmartContract } = log;
+      const citizensNumber = (await this.ethereumService.nations.getNumCitizens(idInSmartContract)).toNumber();
+      const isNationJoined: boolean = joinedNationIds.includes(idInSmartContract);
+      const draftToUpdate: DBNationType = db.objects('Nation').filtered(`tx.txHash = '${txHash || ''}' AND tx.type = '${TX_JOB_TYPE.NATION_CREATE}'`)[0];
+      if (draftToUpdate != null) {
+        console.log('[TEST] Updating draft');
+        return () => {
+          draftToUpdate.idInSmartContract = idInSmartContract;
+          draftToUpdate.joined = isNationJoined;
+          draftToUpdate.citizens = citizensNumber;
+        };
+      }
+
+      const nationToUpdate: DBNationType = db.objects('Nation').filtered(`accountId = '${this.currentAccountId}' && idInSmartContract = ${idInSmartContract}`)[0];
+      if (nationToUpdate != null) {
+        console.log('[TEST] Updating nation');
+        // It's a nation that somehow is already in database, so we just update it.
+        return () => {
+          nationToUpdate.joined = isNationJoined;
+          nationToUpdate.citizens = citizensNumber;
+        };
+      }
+
+      const nationData = JSON.parse(await this.ethereumService.nations.getNationMetaData(idInSmartContract));
+
+      // We increase newId manually since we're not writing to database, but pretending as if we are.
+      const idToUse = newId;
+      newId += 1;
+
+      console.log(`[TEST] Creating nation with id ${idToUse}`);
+
+      return () => {
+        db.create('Nation', {
+          id: idToUse,
+          accountId: this.currentAccountId,
+          idInSmartContract,
+          nationName: nationData.nationName,
+          nationDescription: nationData.nationDescription,
+          created: true,
+          exists: nationData.exists,
+          virtualNation: nationData.virtualNation,
+          nationCode: nationData.nationCode,
+          lawEnforcementMechanism: nationData.lawEnforcementMechanism,
+          profit: nationData.profit,
+          nonCitizenUse: nationData.nonCitizenUse,
+          diplomaticRecognition: nationData.diplomaticRecognition,
+          decisionMakingProcess: nationData.decisionMakingProcess,
+          governanceService: nationData.governanceService,
+          joined: isNationJoined,
+          citizens: citizensNumber,
+        });
+      };
     });
+
+    const writes = await Promise.all(writePromises);
+    console.log('[TEST] Created writes');
+    db.write(() => {
+      writes.forEach(fn => fn());
+    });
+    console.log('[TEST] Done');
   }
 
   // Utilities
