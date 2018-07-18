@@ -162,28 +162,18 @@ export default class NationsService {
 
     const jsonParameters = {};
     jsonParameters.expectedNationsNumber = expectedNationsNumber;
-    jsonParameters.wallet = this.ethereumService.wallet;
-    jsonParameters.network = this.ethereumService.network;
     const nationLogs = await new Promise((resolve) => {
       console.log(`[TEST] Start fetching logs ${expectedNationsNumber}`);
-      const thread = new Thread('./worker.js');
+      const thread = new Thread('./worker.thread.js');
       thread.postMessage(JSON.stringify(jsonParameters));
-      let logs = [];
-      /*
-      this.ethereumService.nations.onnationcreated = async function processLog() {
-        // BE CAREFUL! Since strange API of ether.js log passed here as a 'this'.
-        const log = this;
+      thread.onmessage = (message) => {
+        console.log(`[TEST] Receive message ${message}`);
+        const logs = JSON.parse(message);
+        resolve(logs);
+        thread.terminate();
+      };
 
-        logs.push({ idInSmartContract: log.args.nationId.toNumber(), txHash: log.transactionHash });
-        expectedNationsNumber -= 1;
-        if (expectedNationsNumber === 0) {
-          resolve(logs);
-        }
-      }; */
-      thread.onmessage = (message) => { logs = JSON.parse(message); };
-      if (expectedNationsNumber === 0) {
-        resolve([]);
-      }
+      resolve();
 
       this.ethereumService.nations.provider.resetEventsBlock(firstBlock);
     });

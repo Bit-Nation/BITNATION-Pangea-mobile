@@ -1,14 +1,15 @@
 import { self } from 'react-native-threads';
-import Ethereum from './src/services/ethereum';
+import ServiceContainer from './src/services/container';
 
 self.onmessage = async (data) => {
   const jsonConfigData = JSON.parse(data);
   let { expectedNationsNumber } = jsonConfigData;
-  const { wallet } = jsonConfigData;
-  const { network } = jsonConfigData;
-  const ethereumService = new Ethereum(wallet, network);
+  const { ethereumService } = ServiceContainer;
   const logs = [];
+  console.log(`[TEST] On message here`);
   ethereumService.nations.onnationcreated = async function processLog() {
+    console.log(`[TEST] Process ${this.transactionHash}`);
+
     // BE CAREFUL! Since strange API of ether.js log passed here as a 'this'.
     const log = this;
 
@@ -18,4 +19,8 @@ self.onmessage = async (data) => {
       self.postMessage(JSON.stringify(logs));
     }
   };
+
+  if (expectedNationsNumber === 0) {
+    self.postMessage(JSON.stringify(logs));
+  }
 };
