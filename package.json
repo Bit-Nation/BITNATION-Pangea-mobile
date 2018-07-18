@@ -59,7 +59,7 @@
     "react-native-shake": "^3.2.2",
     "react-native-simple-dialogs": "^0.3.1",
     "react-native-swiper": "^1.5.13",
-    "react-native-threads": "0.0.13",
+    "react-native-threads": "git+https://github.com/joltup/react-native-threads.git#eb06054349e26acb526abc627091e33676034916",
     "react-native-vector-icons": "^4.4.2",
     "react-navigation": "^1.0.0-beta.22",
     "react-redux": "^5.0.6",
