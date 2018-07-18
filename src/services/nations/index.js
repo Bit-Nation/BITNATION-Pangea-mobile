@@ -10,6 +10,8 @@ import { NationAlreadySubmitted, StateMutateNotPossible } from '../../global/err
 import { DatabaseWriteFailed } from '../../global/errors/common';
 import { jobFactory } from '../txProcessor';
 import {
+  NATIONS_DEV_ENDPOINT,
+  NATIONS_PROD_ENDPOINT,
   TX_JOB_STATUS,
   TX_JOB_TYPE,
 } from '../../global/Constants';
@@ -157,6 +159,22 @@ export default class NationsService {
     }
   }
 
+  // Indexing
+
+  async requestNationLogsHistory(): Promise<any> {
+    const URL = this.ethereumService.network === 'dev' ? NATIONS_DEV_ENDPOINT : NATIONS_PROD_ENDPOINT;
+    const response = await fetch(URL, {
+      headers: {
+        'content-type': 'application/json',
+      },
+      method: 'GET',
+    });
+    if (response.ok !== true) {
+      throw new Error('[TEST] Nation logs fetch failed');
+    }
+    return Promise.resolve(response.json());
+  }
+
   async registerNationIndexing() {
     this.ethereumService.nations.onnationcreated = function processLog() {
       // BE CAREFUL! Since strange API of ether.js log passed here as a 'this'.
@@ -168,8 +186,12 @@ export default class NationsService {
         });
     };
 
-    // @todo Fetch logs from server
-    const nationLogs = [];
+    // eslint-disable-next-line camelcase
+    const nationLogs = (await this.requestNationLogsHistory()).map(({ id, tx_hash }) => ({
+      idInSmartContract: id,
+      txHash: tx_hash,
+    }));
+    console.log(`[TEST] Nation logs ${JSON.stringify(nationLogs)}`);
 
     return this.updateNationsFromLogs(nationLogs);
   }
@@ -210,7 +232,7 @@ export default class NationsService {
 
       const nationData = JSON.parse(await this.ethereumService.nations.getNationMetaData(idInSmartContract));
 
-      console.log(`[TEST] Creating nation ${nationData.idInSmartContract}`);
+      console.log(`[TEST] Creating nation ${idInSmartContract}`);
 
       return () => {
         db.create('Nation', {
@@ -245,7 +267,7 @@ export default class NationsService {
 
   // Utilities
 
-  async newNationId(): Promise<NationIdType> {
+  newNationId(): Promise<NationIdType> {
     return uuid();
   }
 
