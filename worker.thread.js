@@ -6,7 +6,7 @@ self.onmessage = async (data) => {
   let { expectedNationsNumber } = jsonConfigData;
   const { ethereumService } = ServiceContainer;
   const logs = [];
-  console.log(`[TEST] On message here`);
+  console.log('[TEST] On message here');
   ethereumService.nations.onnationcreated = async function processLog() {
     console.log(`[TEST] Process ${this.transactionHash}`);
 

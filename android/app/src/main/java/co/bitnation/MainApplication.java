@@ -32,7 +32,8 @@ public class MainApplication extends NavigationApplication implements ReactAppli
                     new RNSensitiveInfoPackage(),
                     new RandomBytesPackage(),
                     new ReactNativeConfigPackage(),
-                    new RNThreadPackage(mReactNativeHost)
+                    new RNThreadPackage(mReactNativeHost, new PanthalassaPackage(), new RandomBytesPackage(),
+                            new RNCameraPackage(), new ReactNativeConfigPackage(), new RNSensitiveInfoPackage())
             );
         }
 
@@ -61,7 +62,8 @@ public class MainApplication extends NavigationApplication implements ReactAppli
                 new RNSensitiveInfoPackage(),
                 new RandomBytesPackage(),
                 new ReactNativeConfigPackage(),
-                new RNThreadPackage(mReactNativeHost)
+                new RNThreadPackage(mReactNativeHost, new PanthalassaPackage(), new RandomBytesPackage(),
+                        new RNCameraPackage(), new ReactNativeConfigPackage(), new RNSensitiveInfoPackage())
         );
     }
 
