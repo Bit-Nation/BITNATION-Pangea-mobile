@@ -1,6 +1,7 @@
 // @flow
 
 import Realm from 'realm';
+import uuid from 'uuid4';
 
 import EthereumService from '../ethereum';
 import type { NationType, EditingNationType, DBNationType, NationIdType } from '../../types/Nation';
@@ -28,7 +29,7 @@ export default class NationsService {
 
   // Drafts operations
 
-  async updateDraft(nationId: number, nationData: EditingNationType): Promise<DBNationType> {
+  async updateDraft(nationId: NationIdType, nationData: EditingNationType): Promise<DBNationType> {
     const db = await this.dbPromise;
     const oldNation = await this.nationById(nationId);
 
@@ -65,7 +66,7 @@ export default class NationsService {
     }
   }
 
-  async submitDraft(nationId: number): Promise<DBNationType> {
+  async submitDraft(nationId: NationIdType): Promise<DBNationType> {
     const db = await this.dbPromise;
     const nation = await this.nationById(nationId);
 
@@ -99,7 +100,7 @@ export default class NationsService {
     return this.submitDraft(draft.id);
   }
 
-  async deleteDraft(nationId: number): Promise<void> {
+  async deleteDraft(nationId: NationIdType): Promise<void> {
     const db = await this.dbPromise;
     const nation = await this.nationById(nationId);
 
@@ -175,7 +176,6 @@ export default class NationsService {
 
   async updateNationsFromLogs(logs: Array<{ idInSmartContract: number, txHash: string | null }>) {
     const db = await this.dbPromise;
-    let newId = await this.newNationId();
 
     // For some reason we sometimes get object instead of array here. This object contains nations that we don't actually join. So we ignore it.
     const joinedNationBNIds = (await this.ethereumService.nations.getJoinedNations({ from: this.ethereumService.wallet.address }));
@@ -210,15 +210,11 @@ export default class NationsService {
 
       const nationData = JSON.parse(await this.ethereumService.nations.getNationMetaData(idInSmartContract));
 
-      // We increase newId manually since we're not writing to database, but pretending as if we are.
-      const idToUse = newId;
-      newId += 1;
-
-      console.log(`[TEST] Creating nation with id ${idToUse}`);
+      console.log(`[TEST] Creating nation ${nationData.idInSmartContract}`);
 
       return () => {
         db.create('Nation', {
-          id: idToUse,
+          id: this.newNationId(),
           accountId: this.currentAccountId,
           idInSmartContract,
           nationName: nationData.nationName,
@@ -249,10 +245,8 @@ export default class NationsService {
 
   // Utilities
 
-  async newNationId(): Promise<number> {
-    const db = await this.dbPromise;
-    const sorted = db.objects('Nation').sorted('id', true);
-    return (sorted.length === 0 ? 1 : sorted[0].id + 1);
+  async newNationId(): Promise<NationIdType> {
+    return uuid();
   }
 
   async nationById(id: NationIdType): Promise<DBNationType> {
