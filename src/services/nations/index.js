@@ -9,7 +9,7 @@ import { NationAlreadySubmitted, StateMutateNotPossible } from '../../global/err
 import { DatabaseWriteFailed } from '../../global/errors/common';
 import { jobFactory } from '../txProcessor';
 import {
-  NATION_DEV_CONTRACT_CREATION_BLOCK, NATION_PROD_CONTRACT_CREATION_BLOCK, TX_JOB_STATUS,
+  TX_JOB_STATUS,
   TX_JOB_TYPE,
 } from '../../global/Constants';
 
@@ -157,32 +157,19 @@ export default class NationsService {
   }
 
   async registerNationIndexing() {
-    const firstBlock = this.ethereumService.network === 'dev' ? NATION_DEV_CONTRACT_CREATION_BLOCK : NATION_PROD_CONTRACT_CREATION_BLOCK;
-    let expectedNationsNumber = (await this.ethereumService.nations.numNations()).toNumber();
+    this.ethereumService.nations.onnationcreated = function processLog() {
+      // BE CAREFUL! Since strange API of ether.js log passed here as a 'this'.
+      const log = this;
 
-    const nationLogs = await new Promise((resolve) => {
-      console.log(`[TEST] Start fetching logs ${expectedNationsNumber}`);
-      const logs = [];
+      this.updateNationsFromLogs([{ idInSmartContract: log.args.nationId.toNumber(), txHash: log.transactionHash }])
+        .catch((error) => {
+          console.log(`[PANGEA] Nation update fails with error ${error.message}`);
+        });
+    };
 
-      this.ethereumService.nations.onnationcreated = async function processLog() {
-        // BE CAREFUL! Since strange API of ether.js log passed here as a 'this'.
-        const log = this;
+    // @todo Fetch logs from server
+    const nationLogs = [];
 
-        logs.push({ idInSmartContract: log.args.nationId.toNumber(), txHash: log.transactionHash });
-        expectedNationsNumber -= 1;
-        if (expectedNationsNumber === 0) {
-          resolve(logs);
-        }
-      };
-
-      if (expectedNationsNumber === 0) {
-        resolve([]);
-      }
-
-      this.ethereumService.nations.provider.resetEventsBlock(firstBlock);
-    });
-
-    console.log('[TEST] Done fetching logs');
     return this.updateNationsFromLogs(nationLogs);
   }
 
