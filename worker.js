@@ -1,21 +1,29 @@
 import { self } from 'react-native-threads';
-import Ethereum from './src/services/ethereum';
+import defaultDB from './src/services/database';
 
 self.onmessage = async (data) => {
-  const jsonConfigData = JSON.parse(data);
-  let { expectedNationsNumber } = jsonConfigData;
-  const { wallet } = jsonConfigData;
-  const { network } = jsonConfigData;
-  const ethereumService = new Ethereum(wallet, network);
-  const logs = [];
-  ethereumService.nations.onnationcreated = async function processLog() {
-    // BE CAREFUL! Since strange API of ether.js log passed here as a 'this'.
-    const log = this;
-
-    logs.push({ idInSmartContract: log.args.nationId.toNumber(), txHash: log.transactionHash });
-    expectedNationsNumber -= 1;
-    if (expectedNationsNumber === 0) {
-      self.postMessage(JSON.stringify(logs));
-    }
-  };
-};
+  const nationData = JSON.parse(data);
+  const db = await defaultDB;
+  db.write(() => {
+    db.create('Nation', {
+      id: nationData.id,
+      accountId: nationData.currentAccountId,
+      idInSmartContract: nationData.idInSmartContract,
+      nationName: nationData.nationName,
+      nationDescription: nationData.nationDescription,
+      created: true,
+      exists: nationData.exists,
+      virtualNation: nationData.virtualNation,
+      nationCode: nationData.nationCode,
+      lawEnforcementMechanism: nationData.lawEnforcementMechanism,
+      profit: nationData.profit,
+      nonCitizenUse: nationData.nonCitizenUse,
+      diplomaticRecognition: nationData.diplomaticRecognition,
+      decisionMakingProcess: nationData.decisionMakingProcess,
+      governanceService: nationData.governanceService,
+      joined: nationData.isNationJoined,
+      citizens: nationData.citizensNumber,
+    });
+  });
+  self.postMessage('done');
+}
