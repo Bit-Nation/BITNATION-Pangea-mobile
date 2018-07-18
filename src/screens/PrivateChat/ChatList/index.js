@@ -119,7 +119,7 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
       });
       this.props.saveProfile(profile);
     } catch (e) {
-      console.log('fetch error: ', e);
+      console.log(`[TEST] Profile fetch error: ${e.message}`);
       this.setState({
         publicKey: '',
         profile: null,
