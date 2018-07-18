@@ -217,7 +217,6 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
         >
           <Text>+</Text>
         </Fab>
-        {this.props.isFetching && <Loading />}
         <ActionSheet
           ref={(o) => {
             this.actionSheet = o;
