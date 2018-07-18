@@ -38,9 +38,10 @@ const NewChatModal = ({
   profile, onStartChat, onCancel, visible,
 }: Props) => (
   <Modal
-    animationType='slide'
+    animationType='fade'
     transparent
     visible={visible}
+    onRequestClose={onCancel}
   >
     <View style={styles.modalContainer}>
       <View style={[styles.modalContent, styles.newChatModal]}>
