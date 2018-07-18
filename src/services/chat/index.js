@@ -10,9 +10,9 @@ const { Panthalassa } = NativeModules;
 
 export default class ChatService {
   static async uploadProfile(profile: string): Promise<any> {
-    console.log('profile upload: ', JSON.parse(profile));
+    console.log(`[TEST] Profile upload: ${profile}`);
     const URL = `${Config.CHAT_ENDPOINT}/profile`;
-    await fetch(URL, {
+    const result = await fetch(URL, {
       body: profile,
       headers: {
         'content-type': 'application/json',
@@ -20,13 +20,16 @@ export default class ChatService {
       },
       method: 'PUT',
     });
+    console.log(`[TEST] Profile upload result: ${JSON.stringify(result)}`);
+    if (result.ok !== true) {
+      return Promise.reject(new Error('Failed to upload profile'));
+    }
     const bundleCountResponse = await ChatService.getPreKeyBundleCount();
+    console.log(`[TEST] bundleCountResponse ${JSON.stringify(bundleCountResponse)}`);
     if (bundleCountResponse.count < 100) {
       return ChatService.uploadPreKeyBundle();
     }
-    return Promise.resolve({
-      result: 'success',
-    });
+    return Promise.resolve();
   }
 
   static async getProfile(publicKey: string): Promise<any> {
@@ -35,6 +38,9 @@ export default class ChatService {
       headers: {
         'content-type': 'application/json',
         bearer: Config.CHAT_TOKEN,
+        'Cache-Control': 'no-cache, no-store, must-revalidate',
+        Pragma: 'no-cache',
+        Expires: 0,
       },
       method: 'GET',
     })
