@@ -1,7 +1,7 @@
 // @flow
 
 import Realm from 'realm';
-
+import { Thread } from 'react-native-threads';
 import EthereumService from '../ethereum';
 import type { NationType, EditingNationType, DBNationType, NationIdType } from '../../types/Nation';
 import { convertDraftToDatabase, convertNationToBlockchain } from '../../utils/nations';
@@ -158,26 +158,22 @@ export default class NationsService {
 
   async registerNationIndexing() {
     const firstBlock = this.ethereumService.network === 'dev' ? NATION_DEV_CONTRACT_CREATION_BLOCK : NATION_PROD_CONTRACT_CREATION_BLOCK;
-    let expectedNationsNumber = (await this.ethereumService.nations.numNations()).toNumber();
+    const expectedNationsNumber = (await this.ethereumService.nations.numNations()).toNumber();
 
+    const jsonParameters = {};
+    jsonParameters.expectedNationsNumber = expectedNationsNumber;
     const nationLogs = await new Promise((resolve) => {
       console.log(`[TEST] Start fetching logs ${expectedNationsNumber}`);
-      const logs = [];
-
-      this.ethereumService.nations.onnationcreated = async function processLog() {
-        // BE CAREFUL! Since strange API of ether.js log passed here as a 'this'.
-        const log = this;
-
-        logs.push({ idInSmartContract: log.args.nationId.toNumber(), txHash: log.transactionHash });
-        expectedNationsNumber -= 1;
-        if (expectedNationsNumber === 0) {
-          resolve(logs);
-        }
+      const thread = new Thread('./worker.thread.js');
+      thread.postMessage(JSON.stringify(jsonParameters));
+      thread.onmessage = (message) => {
+        console.log(`[TEST] Receive message ${message}`);
+        const logs = JSON.parse(message);
+        resolve(logs);
+        thread.terminate();
       };
 
-      if (expectedNationsNumber === 0) {
-        resolve([]);
-      }
+      resolve();
 
       this.ethereumService.nations.provider.resetEventsBlock(firstBlock);
     });
