@@ -36,7 +36,7 @@ import TaskBuilder from '../../utils/asyncTask';
 import AccountsService from '../../services/accounts';
 import { InvalidPasswordError, LoginFailedError } from '../../global/errors/accounts';
 import type { AccountType as DBAccount } from '../../services/database/schemata';
-import type { Account, Profile } from '../../types/Account';
+import type { Profile } from '../../types/Account';
 import type { SaveEditingAccountAction } from '../../actions/profile';
 import { cancelAccountEditing, setPublicKey } from '../../actions/profile';
 import { resetSettings } from '../../actions/settings';
