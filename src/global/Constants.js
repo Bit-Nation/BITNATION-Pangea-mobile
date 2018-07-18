@@ -48,3 +48,6 @@ export const TX_JOB_TYPE = {
   NATION_LEAVE: 'NATION_LEAVE',
   ETH_SEND: 'ETH_SEND',
 };
+
+export const NATIONS_DEV_ENDPOINT = 'https://nation-cache.herokuapp.com/nations/development';
+export const NATIONS_PROD_ENDPOINT = 'https://nation-cache.herokuapp.com/nations/production';
