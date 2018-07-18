@@ -177,15 +177,26 @@ export default class NationsService {
 
   async registerNationIndexing() {
     const self = this;
-    this.ethereumService.nations.onnationcreated = function processLog() {
+
+    /**
+     * @desc Function to process log about event on nation contract.
+     * @return {void}
+     */
+    function processLog() {
       // BE CAREFUL! Since strange API of ether.js log passed here as a 'this'.
       const log = this;
+
+      console.log(`[TEST] Coming log ${JSON.stringify(log)}`);
 
       self.updateNationsFromLogs([{ idInSmartContract: log.args.nationId.toNumber(), txHash: log.transactionHash }])
         .catch((error) => {
           console.log(`[PANGEA] Nation update fails with error ${error.message}`);
         });
-    };
+    }
+
+    this.ethereumService.nations.onnationcreated = processLog;
+    this.ethereumService.nations.oncitizenjoined = processLog;
+    this.ethereumService.nations.oncitizenleft = processLog;
 
     // eslint-disable-next-line camelcase
     const nationLogs = (await this.requestNationLogsHistory()).map(({ id, tx_hash }) => ({
