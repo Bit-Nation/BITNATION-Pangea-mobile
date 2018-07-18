@@ -11,7 +11,7 @@ import _ from 'lodash';
 import { Fab, Text } from 'native-base';
 import ActionSheet from 'react-native-actionsheet';
 
-import { saveProfile, newChatSession, openChat, hideSpinner, showSpinner } from '../../../actions/chat';
+import { saveProfile, newChatSession, openChat } from '../../../actions/chat';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import styles from './styles';
 import { screen } from '../../../global/Screens';
@@ -55,18 +55,6 @@ type Props = {
    * @param {func} callback
    */
   createNewSession: (profile: Object, callback: (result: Object) => void) => void,
-  /**
-   * @desc Flag that indicates the loading status
-   */
-  isFetching: boolean,
-  /**
-   * @desc Function to show spinner
-   */
-  showSpinner: () => void,
-  /**
-   * @desc Function to hide spinner
-   */
-  hideSpinner: () => void,
 };
 
 type State = {
@@ -81,7 +69,11 @@ type State = {
   /**
    * @desc Name of the modal to be shown
    */
-  showModal: string
+  showModal: string,
+  /**
+   * @desc Flag whether loading is in progress.
+   */
+  loading: boolean,
 };
 
 class ChatListScreen extends NavigatorComponent<Props, State> {
@@ -91,15 +83,21 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
       publicKey: '',
       profile: null,
       showModal: '',
+      loading: false,
     };
   }
 
   actionSheet: any;
 
-  onChatAction = (index) => {
+  onChatAction = async (index) => {
     switch (index) {
       case 0:
-        this.getPublicKeyFromClipboard();
+        try {
+          this.setState({ loading: true });
+          await this.getPublicKeyFromClipboard();
+        } finally {
+          this.setState({ loading: false });
+        }
         break;
       default:
         break;
@@ -107,7 +105,6 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
   };
 
   getPublicKeyFromClipboard = async () => {
-    this.props.showSpinner();
     const pubKey = await Clipboard.getString();
     await this.getUserProfile(pubKey);
   };
@@ -243,6 +240,7 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
           done={this.dismissModal}
           visible={this.state.showModal === 'invite'}
         />
+        {this.state.loading === true && <Loading />}
       </View>
     );
   }
@@ -250,12 +248,9 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
 
 const mapStateToProps = state => ({
   chatSessions: state.chat.chats,
-  isFetching: state.chat.isFetching,
 });
 
 const mapDispatchToProps = dispatch => ({
-  showSpinner: () => dispatch(showSpinner()),
-  hideSpinner: () => dispatch(hideSpinner()),
   saveProfile: profile => dispatch(saveProfile(profile)),
   createNewSession: (profile, callback) => dispatch(newChatSession(profile, callback)),
   onItemSelect: (key, callback) => dispatch(openChat(key, callback)),
