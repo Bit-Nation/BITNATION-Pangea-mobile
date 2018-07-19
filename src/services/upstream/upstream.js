@@ -2,21 +2,45 @@
 
 import ethers from 'ethers';
 import { NativeEventEmitter, NativeModules } from 'react-native';
+// $FlowFixMe Flow doesn't want to allow import buffer for some reason.
+import { Buffer } from 'buffer';
 import Realm from 'realm';
 import { Navigation } from 'react-native-navigation';
-// $FlowFixMe
-import { Buffer } from 'buffer';
 
 // Javascript static code of the proto file
 import { api_proto as apiProto } from './compiled';
 
 import EthereumService from '../ethereum';
 import { screen } from '../../global/Screens';
+import { convertToDatabase } from '../../utils/mapping/dapp';
 
 const { Panthalassa } = NativeModules;
 const { Response, Request } = apiProto;
 
 const RESPONSE_TIMEOUT = 20;
+
+const convertObject = (object: Object) => {
+  const convertDRKey = key => Buffer.from(key).toString('hex');
+  const resultObject = object;
+
+  if (object.dRKeyStoreGet != null) {
+    resultObject.dRKeyStoreGet.drKey = convertDRKey(object.dRKeyStoreGet.drKey);
+  }
+  if (object.dRKeyStorePut != null) {
+    resultObject.dRKeyStorePut.key = convertDRKey(object.dRKeyStorePut.key);
+  }
+  if (object.dRKeyStoreDeleteMK != null) {
+    resultObject.dRKeyStoreDeleteMK.key = convertDRKey(object.dRKeyStoreDeleteMK.key);
+  }
+  if (object.dRKeyStoreDeleteKeys != null) {
+    resultObject.dRKeyStoreDeleteKeys.key = convertDRKey(object.dRKeyStoreDeleteKeys.key);
+  }
+  if (object.dRKeyStoreCount != null) {
+    resultObject.dRKeyStoreCount.key = convertDRKey(object.dRKeyStoreCount.key);
+  }
+
+  return resultObject;
+};
 
 export default class UpstreamService {
   eventsSubscription: any;
@@ -41,30 +65,31 @@ export default class UpstreamService {
 
   handleRequest = async (request: any) => {
     try {
-      const decoded = Request.decode(Buffer.from(request.upstream, 'base64'));
+      const decoded = convertObject(Request.decode(Buffer.from(request.upstream, 'base64')));
+      console.log(`[PANGEA] Received request ${decoded.requestID}`);
 
-      if (decoded.dRKeyStoreGet !== null) {
+      if (decoded.dRKeyStoreGet != null) {
         return this.handleDRKeyStoreGet(decoded.requestID, decoded.dRKeyStoreGet);
-      } else if (decoded.dRKeyStorePut !== null) {
+      } else if (decoded.dRKeyStorePut != null) {
         return this.handleDRKeyStorePut(decoded.requestID, decoded.dRKeyStorePut);
-      } else if (decoded.dRKeyStoreDeleteMK !== null) {
+      } else if (decoded.dRKeyStoreDeleteMK != null) {
         return this.handleDRKeyStoreDeleteMK(decoded.requestID, decoded.dRKeyStoreDeleteMK);
-      } else if (decoded.dRKeyStoreDeleteKeys !== null) {
+      } else if (decoded.dRKeyStoreDeleteKeys != null) {
         return this.handleDRKeyStoreDeleteKeys(decoded.requestID, decoded.dRKeyStoreDeleteKeys);
-      } else if (decoded.dRKeyStoreCount !== null) {
+      } else if (decoded.dRKeyStoreCount != null) {
         return this.handleDRKeyStoreCount(decoded.requestID, decoded.dRKeyStoreCount);
-      } else if (decoded.dRKeyStoreAll !== null) {
+      } else if (decoded.dRKeyStoreAll != null) {
         return this.handleDRKeyStoreAll(decoded.requestID);
-      } else if (decoded.showModal !== null) {
+      } else if (decoded.showModal != null) {
         return this.handleShowModal(decoded.requestID, decoded.showModal);
-      } else if (decoded.sendEthereumTransaction !== null) {
+      } else if (decoded.sendEthereumTransaction != null) {
         return this.handleSendEthereumTransaction(decoded.requestID, decoded.sendEthereumTransaction);
-      } else if (decoded.saveDApp !== null) {
+      } else if (decoded.saveDApp != null) {
         return this.handleSaveDApp(decoded.requestID, decoded.saveDApp);
       }
       return this.handleErrorMessage(decoded.requestID, decoded);
     } catch (error) {
-      console.log(`[ERROR] ${error}`);
+      console.log(`[PANGEA] Upstream decode error: ${error}`);
       throw error;
     }
   };
@@ -178,8 +203,9 @@ export default class UpstreamService {
   };
 
   handleShowModal = (id: string, info: any) => {
-    const { title, layout } = info;
+    const { title, layout, dAppPublicKey: dAppPublicKeyBytes } = info;
     try {
+      const dAppPublicKey = Buffer.from(dAppPublicKeyBytes).toString('hex');
       const JSONLayout = JSON.parse(layout);
 
       Navigation.showModal({
@@ -187,6 +213,7 @@ export default class UpstreamService {
         title,
         passProps: {
           layout: JSONLayout,
+          dAppPublicKey,
         },
       });
       return this.sendSuccessResponse(id, {});
@@ -200,14 +227,15 @@ export default class UpstreamService {
       appName, code, signature, signingPublicKey,
     } = info;
     try {
+      const dApp = {
+        name: appName,
+        code,
+        signature,
+        publicKey: signingPublicKey,
+      };
       const db = await this.dbPromise;
       db.write(() => {
-        db.create('DApp', {
-          name: appName,
-          code,
-          signature,
-          publicKey: signingPublicKey,
-        }, true);
+        db.create('DApp', convertToDatabase(dApp, this.currentAccountId), true);
       });
       return this.sendSuccessResponse(id, {});
     } catch (error) {
@@ -259,19 +287,35 @@ export default class UpstreamService {
 
   // Common functions
 
-  sendErrorResponse = async (id: string, error: Error) => Panthalassa.PanthalassaSendResponse({
-    id,
-    data: Buffer.from(Response.encode({}).finish()).toString('utf8'),
-    responseError: error.message,
-    timeout: RESPONSE_TIMEOUT,
-  });
+  sendErrorResponse = async (id: string, error: Error) => {
+    console.log(`[PANGEA] Upstream error response: ${id}, error: ${error.message}`);
+    try {
+      return Panthalassa.PanthalassaSendResponse({
+        id,
+        data: Buffer.from(Response.encode({}).finish()).toString('utf8'),
+        responseError: error.message,
+        timeout: RESPONSE_TIMEOUT,
+      });
+    } catch (sendError) {
+      console.log(`[PANGEA] Upstream failed to send fail response: ${id}, error: ${sendError.message}`);
+      throw sendError;
+    }
+  };
 
-  sendSuccessResponse = async (id: string, data: any) => Panthalassa.PanthalassaSendResponse({
-    id,
-    data: Buffer.from(Response.encode(data).finish()).toString('utf8'),
-    responseError: '',
-    timeout: RESPONSE_TIMEOUT,
-  });
+  sendSuccessResponse = async (id: string, data: any) => {
+    console.log(`[PANGEA] Upstream success response: ${id}`);
+    try {
+      return Panthalassa.PanthalassaSendResponse({
+        id,
+        data: Buffer.from(Response.encode(data).finish()).toString('utf8'),
+        responseError: '',
+        timeout: RESPONSE_TIMEOUT,
+      });
+    } catch (sendError) {
+      console.log(`[PANGEA] Upstream failed to send success response: ${id}, error: ${sendError.message}`);
+      throw sendError;
+    }
+  };
 
   getDRKeyModel = async (drKey: string) => {
     const db = await this.dbPromise;

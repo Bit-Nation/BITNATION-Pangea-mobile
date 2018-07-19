@@ -10,7 +10,7 @@
 
 @implementation PanthalassaUpStreamBridge
 
-- (void)setDelegate:(id)aDelegate {
+- (void)setDelegate:(id<UpStreamProtocolDelegate>)aDelegate {
   delegate = aDelegate;
 }
 

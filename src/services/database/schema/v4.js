@@ -448,11 +448,13 @@ export type DAppType = {
   signature: string,
   icon: string,
   code: string,
+  accountId: string,
+  compoundId: string,
 }
 
 export const DAppSchema = {
   name: 'DApp',
-  primaryKey: 'publicKey',
+  primaryKey: 'compoundId',
   properties: {
     name: 'string',
     publicKey: 'string',
@@ -462,6 +464,8 @@ export const DAppSchema = {
       optional: true,
     },
     code: 'string',
+    accountId: 'string',
+    compoundId: 'string',
   },
 };
 
@@ -565,7 +569,6 @@ export const WalletSchema = {
     compoundId: 'string',
   },
 };
-
 
 export const schemata =
   [
