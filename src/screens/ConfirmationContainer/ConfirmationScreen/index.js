@@ -19,6 +19,7 @@ import Colors from '../../../global/colors';
 import styles from './styles';
 import i18n from '../../../global/i18n';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
+import { CancelledError } from '../../../global/errors/common';
 
 type Props = {
   /**
@@ -34,7 +35,7 @@ type Props = {
   /**
    * @desc Function to return the Promise reject
    */
-  onFail: () => null,
+  onFail: (error: Error) => null,
   /**
    * @desc Object with the properties of the transaction
    */
@@ -80,7 +81,7 @@ class ConfirmationScreen extends NavigatorComponent<Props, State> {
   }
   onNavBarButtonPress(id: string) {
     if (id === 'cancel') {
-      this.props.onFail();
+      this.props.onFail(new CancelledError());
     } else {
       this.props.onSuccess(this.state.gasPrice, this.state.gasLimit);
     }
