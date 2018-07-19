@@ -43,7 +43,7 @@ export default class AccountsService {
       try {
         await ChatService.uploadProfile(signedProfile);
       } catch (e) {
-        console.log('upload fail: ', e);
+        console.log(`[TEST] Profile upload fail: ${e.message}`);
       }
       return true;
     }
