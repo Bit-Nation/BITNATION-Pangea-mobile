@@ -11,6 +11,8 @@ import { Text } from 'native-base';
 import Button from '../../../components/common/Button';
 import styles from './styles';
 import i18n from '../../../global/i18n';
+import AssetsImage from '../../../global/AssetsImages';
+import { imageSource } from '../../../utils/profile';
 
 type Props = {
   /**
@@ -36,15 +38,19 @@ const NewChatModal = ({
   profile, onStartChat, onCancel, visible,
 }: Props) => (
   <Modal
-    animationType='slide'
+    animationType='fade'
     transparent
     visible={visible}
+    onRequestClose={onCancel}
   >
     <View style={styles.modalContainer}>
       <View style={[styles.modalContent, styles.newChatModal]}>
         <View style={styles.profileArea}>
           <Text style={styles.modalTitle}>{i18n.t('screens.chat.newChat')}</Text>
-          <Image source={profile ? profile.information.image : { uri: '' }} style={styles.avatarLarge} />
+          <Image
+            source={imageSource(profile ? profile.information.image : null) || AssetsImage.avatarIcon}
+            style={styles.avatarLarge}
+          />
           <Text style={styles.userName}>{profile ? profile.information.name : ''}</Text>
         </View>
         <View style={styles.buttonArea}>
