@@ -34,6 +34,7 @@ export default class AccountsService {
     const config = JSON.stringify({
       encrypted_key_manager: accountStore,
       signed_profile: signedProfile,
+      enable_debugging: false,
     });
 
     const success = await Panthalassa.PanthalassaStart({ config, password });
@@ -56,7 +57,7 @@ export default class AccountsService {
 
   static async restoreAccountStore(mnemonic: Mnemonic, password: string): Promise<string> {
     const { Panthalassa } = NativeModules;
-    return Panthalassa.PanthalassaNewAccountKeys({
+    return Panthalassa.PanthalassaNewAccountKeysFromMnemonic({
       mne: compressMnemonic(mnemonic),
       pw: password,
       pwConfirm: password,
