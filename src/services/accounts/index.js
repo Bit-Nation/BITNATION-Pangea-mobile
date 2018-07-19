@@ -57,7 +57,7 @@ export default class AccountsService {
 
   static async restoreAccountStore(mnemonic: Mnemonic, password: string): Promise<string> {
     const { Panthalassa } = NativeModules;
-    return Panthalassa.PanthalassaNewAccountKeys({
+    return Panthalassa.PanthalassaNewAccountKeysFromMnemonic({
       mne: compressMnemonic(mnemonic),
       pw: password,
       pwConfirm: password,
