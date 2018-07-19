@@ -76,11 +76,11 @@
 		CC05049FF02246CDB2E2CCDF /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F02C743E40EC4CF88C1B3102 /* libReactNativeConfig.a */; };
 		D048746DE5E54EBD8D11FD4D /* RobotoCondensed-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C319B5A26459433183371050 /* RobotoCondensed-LightItalic.ttf */; };
 		D2742E32332B4672BBDFB2F6 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F552F5D46DB14E1888550D69 /* libRNVectorIcons.a */; };
+		D2AC16B420F01E8C0001028B /* libRNCamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AC16B320F01E810001028B /* libRNCamera.a */; };
 		D2BFDCD0208D8CAF0033E539 /* PanthalassaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BFDCCF208D8CAF0033E539 /* PanthalassaTests.m */; };
 		D2BFDCD1208D8FC80033E539 /* Panthalassa.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F5E4402087BFB400A0B991 /* Panthalassa.m */; };
 		D2BFDCD2208D90440033E539 /* panthalassa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2F5E40F2087B06700A0B991 /* panthalassa.framework */; };
 		D2C287FC20ABACDA00D2B3DC /* PanthalassaUpStreamBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C287FB20ABACDA00D2B3DC /* PanthalassaUpStreamBridge.m */; };
-		D2E0451920F9401600D5E460 /* libRNCamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2E0451820F93F5800D5E460 /* libRNCamera.a */; };
 		D2F5E43C2087B06700A0B991 /* panthalassa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2F5E40F2087B06700A0B991 /* panthalassa.framework */; };
 		D2F5E4422087BFB400A0B991 /* Panthalassa.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F5E4402087BFB400A0B991 /* Panthalassa.m */; };
 		D4C9EDBC2CE847EE998E38B8 /* libimageCropPicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CA23D9CC370645A9AC80F60E /* libimageCropPicker.a */; };
@@ -407,9 +407,9 @@
 			remoteGlobalIDString = 358F4ED71D1E81A9004DF814;
 			remoteInfo = RCTBlob;
 		};
-		D2E0451720F93F5800D5E460 /* PBXContainerItemProxy */ = {
+		D2AC16B220F01E810001028B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = D2E0451320F93F5800D5E460 /* RNCamera.xcodeproj */;
+			containerPortal = D2AC16AE20F01E810001028B /* RNCamera.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 4107012F1ACB723B00C6AA39;
 			remoteInfo = RNCamera;
@@ -513,10 +513,10 @@
 		CA23D9CC370645A9AC80F60E /* libimageCropPicker.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libimageCropPicker.a; sourceTree = "<group>"; };
 		CD03308491E94DE8ABFC807B /* ReactNativeNavigation.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeNavigation.xcodeproj; path = "../node_modules/react-native-navigation/ios/ReactNativeNavigation.xcodeproj"; sourceTree = "<group>"; };
 		CDA71C261DCA451C86E50868 /* Roboto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto.ttf; path = "../node_modules/native-base/Fonts/Roboto.ttf"; sourceTree = "<group>"; };
+		D2AC16AE20F01E810001028B /* RNCamera.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNCamera.xcodeproj; path = "../node_modules/react-native-camera/ios/RNCamera.xcodeproj"; sourceTree = "<group>"; };
 		D2BFDCCF208D8CAF0033E539 /* PanthalassaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PanthalassaTests.m; path = PanthalassaTests/PanthalassaTests.m; sourceTree = SOURCE_ROOT; };
 		D2C287FA20ABACDA00D2B3DC /* PanthalassaUpStreamBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PanthalassaUpStreamBridge.h; sourceTree = "<group>"; };
 		D2C287FB20ABACDA00D2B3DC /* PanthalassaUpStreamBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PanthalassaUpStreamBridge.m; sourceTree = "<group>"; };
-		D2E0451320F93F5800D5E460 /* RNCamera.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNCamera.xcodeproj; path = "../node_modules/react-native-camera/ios/RNCamera.xcodeproj"; sourceTree = "<group>"; };
 		D2F5E40F2087B06700A0B991 /* panthalassa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = panthalassa.framework; path = Frameworks/panthalassa.framework; sourceTree = "<group>"; };
 		D2F5E4402087BFB400A0B991 /* Panthalassa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Panthalassa.m; sourceTree = "<group>"; };
 		D2F5E4412087BFB400A0B991 /* Panthalassa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Panthalassa.h; sourceTree = "<group>"; };
@@ -547,7 +547,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2E0451920F9401600D5E460 /* libRNCamera.a in Frameworks */,
+				D2AC16B420F01E8C0001028B /* libRNCamera.a in Frameworks */,
 				172769051FFB316400AD076B /* RSKImageCropper.framework in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
@@ -881,7 +881,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				D2E0451320F93F5800D5E460 /* RNCamera.xcodeproj */,
+				D2AC16AE20F01E810001028B /* RNCamera.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
@@ -951,10 +951,10 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D2E0451420F93F5800D5E460 /* Products */ = {
+		D2AC16AF20F01E810001028B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D2E0451820F93F5800D5E460 /* libRNCamera.a */,
+				D2AC16B320F01E810001028B /* libRNCamera.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -991,7 +991,7 @@
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				29461E77F15976B43EDDE297 /* [CP] Copy Pods Resources */,
 				172769071FFB316400AD076B /* Embed Frameworks */,
-				32BED8965AA737857BD64F76 /* [CP] Embed Pods Frameworks */,
+				CC47E39E2F08E10B0FA919E2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1146,8 +1146,8 @@
 					ProjectRef = BF69E689E78D42E198301553 /* RealmReact.xcodeproj */;
 				},
 				{
-					ProductGroup = D2E0451420F93F5800D5E460 /* Products */;
-					ProjectRef = D2E0451320F93F5800D5E460 /* RNCamera.xcodeproj */;
+					ProductGroup = D2AC16AF20F01E810001028B /* Products */;
+					ProjectRef = D2AC16AE20F01E810001028B /* RNCamera.xcodeproj */;
 				},
 				{
 					ProductGroup = 17084FC71FF8024B00CB17F5 /* Products */;
@@ -1467,11 +1467,11 @@
 			remoteRef = ADBDB9261DFEBF0700ED6528 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		D2E0451820F93F5800D5E460 /* libRNCamera.a */ = {
+		D2AC16B320F01E810001028B /* libRNCamera.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRNCamera.a;
-			remoteRef = D2E0451720F93F5800D5E460 /* PBXContainerItemProxy */;
+			remoteRef = D2AC16B220F01E810001028B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		D2EC4D5420C9D75F00255255 /* libRNRandomBytes-tvOS.a */ = {
@@ -1603,21 +1603,6 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		32BED8965AA737857BD64F76 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pangea/Pods-Pangea-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		4893DC58B29E7C773C6AEDBE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1634,6 +1619,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CC47E39E2F08E10B0FA919E2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pangea/Pods-Pangea-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
