@@ -1,16 +1,16 @@
 // @flow
 import _ from 'lodash';
 import Colors from '../global/colors';
-import type { DBNationType, NationType, EditingNationType } from '../types/Nation';
+import type { DBNationType, NationType, EditingNationType, NationIdType } from '../types/Nation';
 import { TX_JOB_STATUS } from '../global/Constants';
 
 /**
  * @desc Function to get a nation by id from array.
  * @param {NationType[]} nations List of nations
- * @param {number} id Id of the nation
+ * @param {NationIdType} id Id of the nation
  * @return {?NationType} Nation or null if there is no nation with that id.
  */
-export function resolveNation(nations: Array<NationType>, id: number): NationType | null {
+export function resolveNation(nations: Array<NationType>, id: NationIdType): NationType | null {
   const resolved = _.find(nations, nation => nation.id === id);
   if (resolved === undefined) {
     return null;
@@ -82,11 +82,11 @@ export function nationIsDraft(nation: NationType): boolean {
 /**
  * @desc Converts app editing nation model to database model.
  * @param {EditingNationType} nation Editing nation to be converted.
- * @param {number} nationId Id of nation to be set.
+ * @param {NationIdType} nationId Id of nation to be set.
  * @param {string} accountId Id of account that nation is related to.
  * @return {*} Object to create a database model (it is without optional values)
  */
-export function convertDraftToDatabase(nation: EditingNationType, nationId: number, accountId: string): * {
+export function convertDraftToDatabase(nation: EditingNationType, nationId: NationIdType, accountId: string): * {
   return {
     id: nationId,
     accountId,
