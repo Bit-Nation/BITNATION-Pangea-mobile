@@ -18,6 +18,7 @@ import { screen } from '../../../global/Screens';
 import ChatListItem from '../../../components/common/ChatListItem';
 import NationListHeader from '../../../components/common/NationListHeader';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
+import Loading from '../../../components/common/Loading';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import i18n from '../../../global/i18n';
 import type { ChatSessionType } from '../../../types/Chat';
@@ -68,7 +69,11 @@ type State = {
   /**
    * @desc Name of the modal to be shown
    */
-  showModal: string
+  showModal: string,
+  /**
+   * @desc Flag whether loading is in progress.
+   */
+  loading: boolean,
 };
 
 class ChatListScreen extends NavigatorComponent<Props, State> {
@@ -78,15 +83,21 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
       publicKey: '',
       profile: null,
       showModal: '',
+      loading: false,
     };
   }
 
   actionSheet: any;
 
-  onChatAction = (index) => {
+  onChatAction = async (index) => {
     switch (index) {
       case 0:
-        this.getPublicKeyFromClipboard();
+        try {
+          this.setState({ loading: true });
+          await this.getPublicKeyFromClipboard();
+        } finally {
+          this.setState({ loading: false });
+        }
         break;
       default:
         break;
@@ -108,7 +119,7 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
       });
       this.props.saveProfile(profile);
     } catch (e) {
-      console.log('fetch error: ', e);
+      console.log(`[TEST] Profile fetch error: ${e.message}`);
       this.setState({
         publicKey: '',
         profile: null,
@@ -228,6 +239,7 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
           done={this.dismissModal}
           visible={this.state.showModal === 'invite'}
         />
+        {this.state.loading === true && <Loading />}
       </View>
     );
   }
