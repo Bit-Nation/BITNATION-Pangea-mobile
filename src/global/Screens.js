@@ -27,6 +27,7 @@ export const androidNavigationButtons = Platform.OS === 'android' ? {
 } : {};
 
 export const navigatorStyle = {
+  tabBarHidden: false,
   statusBarTextColorScheme: 'light',
   statusBarColor: Platform.OS === 'ios' ? Colors.statusBarColorIOS : Colors.statusBarColorOther, // Nativebase variable!
   navBarBackgroundColor: Colors.navBarBackgroundColor,
