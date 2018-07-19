@@ -19,7 +19,7 @@ import FakeNavigationBar from '../../components/common/FakeNavigationBar';
 import Loading from '../../components/common/Loading';
 import { resolveNation } from '../../utils/nations';
 import createGiftedChatMessageObject from '../../utils/chat';
-import type { NationType } from '../../types/Nation';
+import type { NationIdType, NationType } from '../../types/Nation';
 import type { Navigator } from '../../types/ReactNativeNavigation';
 import elizabot from '../../../vendor/elizabot';
 import { getCurrentAccount } from '../../reducers/accounts';
@@ -40,7 +40,7 @@ type Props = {
   /**
    * @desc Id of the selected nation
    */
-  nationId: number,
+  nationId: NationIdType,
   /**
    * @desc Current user object
    */
