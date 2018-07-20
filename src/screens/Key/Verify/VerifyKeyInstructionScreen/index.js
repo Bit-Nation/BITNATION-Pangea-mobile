@@ -17,11 +17,11 @@ import NavigatorComponent from '../../../../components/common/NavigatorComponent
 class VerifyKeyInstructionScreen extends NavigatorComponent<State> {
   static navigatorButtons = { ...androidNavigationButtons };
 
-  onNextButtonPressed() {
+  onNextButtonPressed = () => {
     if (this.props.navigator) {
       this.props.navigator.push(screen('VERIFY_KEY_PROCESS_SCREEN'));
     }
-  }
+  };
 
   render() {
     return (
@@ -34,7 +34,7 @@ class VerifyKeyInstructionScreen extends NavigatorComponent<State> {
             style={styles.panelViewTransparent}
             childrenContainerStyle={styles.noflex}
             buttonTitle={i18n.t('screens.verifyKey.startButton')}
-            onButtonClick={() => this.onNextButtonPressed()}
+            onButtonClick={this.onNextButtonPressed}
           >
             <BodyParagraphs paragraphs={i18n.t('screens.verifyKey.instructions', { KEY_LENGTH })} />
           </PanelView>
