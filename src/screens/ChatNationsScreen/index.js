@@ -37,7 +37,7 @@ type Props = {
    * @desc Function to open a nation
    * @param id Id of the nation to be opened
    */
-  openNation: (id: number) => void,
+  openNation: (id: NationIdType) => void,
 };
 
 class ChatNationsScreen extends NavigatorComponent<Props> {

@@ -19,6 +19,7 @@ import i18n from '../../../../global/i18n';
 import ScreenTitle from '../../../../components/common/ScreenTitle';
 import Button from '../../../../components/common/Button';
 import { androidNavigationButtons } from '../../../../global/Screens';
+import { imageSource } from '../../../../utils/profile';
 
 const EDIT_BUTTON = 'EDIT_BUTTON';
 
@@ -109,9 +110,7 @@ class ProfileScreen extends NavigatorComponent<Props> {
   _buildHeader() {
     const { account } = this.props;
 
-    const avatarSource = account.avatar ?
-      { uri: `data:image/gif;base64,${account.avatar}` } :
-      AssetsImage.avatarIcon;
+    const avatarSource = imageSource(account.avatar) || AssetsImage.avatarIcon;
 
     return (
       <View style={styles.header}>

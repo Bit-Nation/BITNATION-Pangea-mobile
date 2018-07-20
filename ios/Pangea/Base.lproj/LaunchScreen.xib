@@ -14,7 +14,7 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="xxxhdpi" translatesAutoresizingMaskIntoConstraints="NO" id="ufd-2c-KWK">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Splash" translatesAutoresizingMaskIntoConstraints="NO" id="ufd-2c-KWK">
                     <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
@@ -26,6 +26,6 @@
         </view>
     </objects>
     <resources>
-        <image name="xxxhdpi" width="1921" height="3408"/>
+        <image name="Splash" width="720" height="1278"/>
     </resources>
 </document>
