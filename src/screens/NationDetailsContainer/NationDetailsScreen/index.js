@@ -145,7 +145,7 @@ class NationDetailsScreen extends Component<Props & Actions & NationState> {
           {nation.diplomaticRecognition ? (`${i18n.t('screens.nationDetails.diplomaticRecognitionInfo', { name: nation.nationName })}\n\n`) : ''}
 
           {i18n.t('screens.nationDetails.serviceUsageInfo', {
-            allowance: nation.createNationsNonCitizensMayUseGovernanceServices ? i18n.t('enums.nation.usageAllowance.may') : i18n.t('enums.nation.usageAllowance.mayNot'),
+            allowance: nation.nonCitizenUse ? i18n.t('enums.nation.usageAllowance.may') : i18n.t('enums.nation.usageAllowance.mayNot'),
           })}
           {'\n\n'}
 

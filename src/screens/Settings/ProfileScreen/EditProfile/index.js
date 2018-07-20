@@ -15,7 +15,7 @@ import { ActionSheet } from 'native-base';
 
 import NavigatorComponent from '../../../../components/common/NavigatorComponent';
 import PanelView from '../../../../components/common/PanelView';
-import saveShouldBeEnabled from '../../../../utils/profile';
+import { imageSource, saveShouldBeEnabled } from '../../../../utils/profile';
 import AssetsImage from '../../../../global/AssetsImages';
 import Colors from '../../../../global/colors';
 import type { Navigator } from '../../../../types/ReactNativeNavigation';
@@ -130,9 +130,7 @@ class EditProfile extends NavigatorComponent<Props> {
   _buildPicturePanel() {
     const { editingAccount } = this.props;
 
-    const avatarSource = editingAccount.avatar
-      ? { uri: `data:image/gif;base64,${editingAccount.avatar}` }
-      : AssetsImage.avatarIcon;
+    const avatarSource = imageSource(editingAccount.avatar) || AssetsImage.avatarIcon;
 
     return (
       <View style={styles.avatarContainerLarge}>
