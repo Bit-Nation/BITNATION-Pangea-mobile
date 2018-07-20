@@ -276,9 +276,6 @@ RCT_REMAP_METHOD(PanthalassaDecryptMessage,
                  PanthalassaDecryptMessageWithResolver:(NSDictionary *)config
                  resolver:(RCTPromiseResolveBlock)resolve
                  rejecter:(RCTPromiseRejectBlock)reject) {
-  dispatch_queue_t queue = dispatch_queue_create("panthalassaLibQueueNew", DISPATCH_QUEUE_SERIAL);
-  
-  dispatch_async(queue, ^{
     NSString *response;
     NSError *error = nil;
     
@@ -291,7 +288,6 @@ RCT_REMAP_METHOD(PanthalassaDecryptMessage,
     } else {
       reject(@"error", error.localizedDescription, error);
     }
-  });
 }
 
 RCT_REMAP_METHOD(PanthalassaInitializeChat,
