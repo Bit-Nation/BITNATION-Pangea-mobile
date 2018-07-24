@@ -64,7 +64,7 @@ const AccountAccessListScreen = ({
           style={styles.restoreAccountButton}
           styleTitle={styles.restoreAccountButtonText}
           title={i18n.t('screens.accounts.restoreAccount')}
-          onPress={() => onRestoreAccount()}
+          onPress={onRestoreAccount}
 
         />
 
@@ -76,7 +76,7 @@ const AccountAccessListScreen = ({
       enabled
       styleTitle={styles.newAccountText}
       title={i18n.t('screens.accounts.newAccount').toUpperCase()}
-      onPress={() => onCreateAccount()}
+      onPress={onCreateAccount}
       style={styles.newAccountButton}
     />
   </View>

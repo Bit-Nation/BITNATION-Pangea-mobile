@@ -149,7 +149,7 @@ export function saveNationDraft(
  * @returns {DeleteNationDraftAction} An action.
  */
 export function deleteNationDraft(
-  nationId: number,
+  nationId: NationIdType,
   callback: () => void,
 ): DeleteNationDraftAction {
   return {
@@ -183,7 +183,7 @@ export function submitNation(
  * @returns {NationDraftSaveResultAction} An action.
  */
 export function nationDraftSaveResult(
-  nationId: ?number,
+  nationId: ?NationIdType,
   error: ?Error,
 ): NationDraftSaveResultAction {
   return {
@@ -200,7 +200,7 @@ export function nationDraftSaveResult(
  * @returns {NationDraftDeleteResultAction} An action.
  */
 export function nationDraftDeleteResult(
-  nationId: number,
+  nationId: NationIdType,
   error: ?Error,
 ): NationDraftDeleteResultAction {
   return {
@@ -217,7 +217,7 @@ export function nationDraftDeleteResult(
  * @returns {NationSubmitResultAction} An action.
  */
 export function nationSubmitResult(
-  nationId: ?number,
+  nationId: ?NationIdType,
   error: ?Error,
 ): NationSubmitResultAction {
   return {
