@@ -38,6 +38,7 @@ const accountMock: Account = ({
   ...buildEmptyAccount(),
   name: 'NAME',
   accountStore: 'ACCOUNT_STORE',
+  profileImage: 'PROFILE_IMAGE',
 }: any); // Conversion through any because of flow issue - https://github.com/facebook/flow/issues/1511
 
 test('currentAccountBasedUpdate', () => {
@@ -213,7 +214,7 @@ describe('login', () => {
       'ACCOUNT_STORE',
       {
         name: 'NAME',
-        avatar: null,
+        avatar: 'PROFILE_IMAGE',
         location: null,
       },
       'PASSWORD',
@@ -349,7 +350,7 @@ test('checkPasswordSaga', () => {
       'ACCOUNT_STORE',
       {
         name: 'NAME',
-        avatar: null,
+        avatar: 'PROFILE_IMAGE',
         location: null,
       },
       'PASSWORD',

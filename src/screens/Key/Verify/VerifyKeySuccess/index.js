@@ -13,11 +13,11 @@ import NavigatorComponent from '../../../../components/common/NavigatorComponent
 class VerifyKeySuccess extends NavigatorComponent<void> {
   static navigatorButtons = { leftButtons: [], rightButtons: [] };
 
-  onNextButtonPressed() {
+  onNextButtonPressed = () => {
     if (this.props.navigator) {
       this.props.navigator.popToRoot();
     }
-  }
+  };
 
   render() {
     return (
@@ -30,7 +30,7 @@ class VerifyKeySuccess extends NavigatorComponent<void> {
             style={styles.panelViewTransparent}
             childrenContainerStyle={styles.noflex}
             buttonTitle={i18n.t('screens.verifyKey.success.doneButton')}
-            onButtonClick={() => this.onNextButtonPressed()}
+            onButtonClick={this.onNextButtonPressed}
           >
             <BodyParagraphs paragraphs={i18n.t('screens.verifyKey.success.instructions')} />
           </PanelView>

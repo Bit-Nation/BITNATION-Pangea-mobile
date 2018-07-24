@@ -35,7 +35,7 @@ type Props = {
    * @param id ID of the nation to be opened
    * @param isBot Flag to indicate if the selected channel is bot
    */
-  onSelectItem: (id: number, isBot: boolean) => void,
+  onSelectItem: (id: NationIdType, isBot: boolean) => void,
 };
 
 const ChatNationsListScreen = ({
