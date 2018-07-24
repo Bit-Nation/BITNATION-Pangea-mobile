@@ -21,9 +21,6 @@ TODO: Fill out this long description.
 If you find a bug / vulnerability please DO NOT open an issue. Write to `security@bitnation.co` PLEASE use [this](security-bitnation.co.key.pub) PGP key to encrypt your report / email.
 
 ## Install
-> Look at our install section from the [docs](https://bitnation-pangea-mobile.readthedocs.io/)
-
-## Usage
 
 __Project setup__
 
@@ -40,6 +37,7 @@ __IOS specific__
 
 __Android specific__
 1. Run `npm run android`
+## Usage
 
 ### Git & best practice
 
