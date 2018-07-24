@@ -39,7 +39,7 @@ __Android specific__
 1. Run `npm run android`
 ## Usage
 
-### Git & best practice
+__Git & best practice__
 
 - We use [this](http://nvie.com/posts/a-successful-git-branching-model/) branching model. Make sure to read it.
 - PLEASE prefix your commit's with a topic like this: `[git] blacklisted .idea`
