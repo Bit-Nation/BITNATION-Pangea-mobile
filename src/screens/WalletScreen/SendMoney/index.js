@@ -80,7 +80,7 @@ class SendMoney extends NavigatorComponent<Props, State> {
 
   componentDidUpdate(prevProps: Props) {
     if (this.props.moneySendingError !== prevProps.moneySendingError
-      && this.props.moneySendingError !== null) {
+      && this.props.moneySendingError !== null && this.props.moneySendingError.isCancelled !== true) {
       errorAlert(this.props.moneySendingError);
     } else if (this.props.moneySendingInProgress !== prevProps.moneySendingInProgress
       && this.props.moneySendingSuccess) {

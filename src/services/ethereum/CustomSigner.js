@@ -13,9 +13,10 @@ import { CancelledError } from '../../global/errors/common';
  *
  * @param {string} privateKey Private key of wallet
  * @param {string} provider name of network
+ * @param {string} app name of application creating this signer
  * @return {object} custom signer with wallet functions
  */
-export default function CustomSigner(privateKey: string, provider: string) {
+export default function CustomSigner(privateKey: string, provider: string, app: string) {
   const wallet = new ethers.Wallet(privateKey);
   this.provider = new WebSocketProvider(provider);
   this.address = wallet.address;
@@ -23,16 +24,25 @@ export default function CustomSigner(privateKey: string, provider: string) {
   this.estimateGas = wallet.estimateGas;
   this.getTransactionCount = wallet.getTransaction;
   this.defaultGasLimit = wallet.defaultGasLimit;
-  this.sign = async (transaction, purpose = '', app = '') => {
+  this.sign = async (transaction) => {
     const transactionObject = transaction;
     try {
-      const estimate = await this.estimateGas(transactionObject);
+      let estimate;
+      // If no to address is specified, like in the case of contract creation, set a default one to the wallet address
+      // Issue caused by 3.x of ethers.js, see posted issue here: https://github.com/ethers-io/ethers.js/issues/212
+      if (transactionObject.to === undefined) {
+        transactionObject.to = this.address;
+        estimate = await this.estimateGas(transactionObject);
+        transactionObject.to = undefined;
+      } else {
+        estimate = await this.estimateGas(transactionObject);
+      }
       const signedTransaction = await new Promise((resolve, reject) => {
         Navigation.showModal({
           ...screen('CONFIRMATION_SCREEN'),
           passProps: {
-            onFail: () => {
-              reject();
+            onFail: (error) => {
+              reject(error);
             },
             onSuccess: (gasPrice, gasLimit) => {
               // Here we have gasPrice which is in wei, so we need to convert it into gwei.
@@ -44,7 +54,6 @@ export default function CustomSigner(privateKey: string, provider: string) {
             from: this.address,
             amount: transactionObject.value,
             estimate: estimate.toString(),
-            purpose,
             app,
           },
         });
@@ -52,7 +61,7 @@ export default function CustomSigner(privateKey: string, provider: string) {
       return signedTransaction;
     } catch (e) {
       console.log('Sign transaction fail with error: ', e);
-      throw new CancelledError();
+      throw e;
     }
   };
   this.sendTransaction = (transaction) => {

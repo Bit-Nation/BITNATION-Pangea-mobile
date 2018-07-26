@@ -16,10 +16,10 @@
 @end
 
 @interface PanthalassaUpStreamBridge : NSObject <PanthalassaUpStream> {
-  id delegate;
+  id<UpStreamProtocolDelegate> delegate;
 }
 
-- (void)setDelegate:(id)delegate;
+- (void)setDelegate:(id<UpStreamProtocolDelegate>)delegate;
 - (void)send:(NSString *)data;
 
 @end
