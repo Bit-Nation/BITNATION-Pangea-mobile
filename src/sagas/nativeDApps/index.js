@@ -1,6 +1,6 @@
 import { all, takeEvery } from 'redux-saga/effects';
 import { openDApp, sendDAppMessage } from './sagas';
-import { OPEN_DAPP, SEND_DAPP_MESSAGE } from '../../actions/dApps';
+import { OPEN_DAPP, SEND_DAPP_MESSAGE } from '../../actions/nativeDApps';
 
 /**
  * @desc Root key saga.

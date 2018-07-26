@@ -1,3 +1,5 @@
+// @flow
+
 import * as React from 'react';
 import { StyleSheet, Text, TextInput, View } from 'react-native';
 
@@ -8,6 +10,7 @@ import Colors from '../../global/colors';
 import GlobalStyles from '../../global/Styles';
 import { errorAlert } from '../../global/alerts';
 import type { ProfileType } from '../../types/Chat';
+import type { CurrencyType } from '../../types/Wallet';
 
 const styles = StyleSheet.create({
   textInputContainer: {
@@ -43,7 +46,7 @@ const styles = StyleSheet.create({
 
 export type SendMoneyMessageData = {
   amount: string,
-  currency: string,
+  currency: CurrencyType,
   fromAddress: string,
   fromName: string,
   toAddress: string,
@@ -57,7 +60,7 @@ export default class Modal extends React.Component<ProvidedProps, *> {
 
     this.state = {
       amount: '',
-      currency: '',
+      currency: 'XPAT',
       fromAddress: '',
       isValid: false,
     };
@@ -71,8 +74,9 @@ export default class Modal extends React.Component<ProvidedProps, *> {
 
   onButtonPress = async () => {
     try {
-      const address = this.props.services.ethereumService.ethereumAddressFromPublicKey(this.props.context.friend.ethereum_pub_Key);
-      const result = await this.props.services.ethereumService.sendMoney(address, this.state.amount);
+      this.props.components.setLoadingVisible(true);
+      const address = await this.props.services.ethereumService.ethereumAddressFromPublicKey(this.props.context.friend.ethereum_pub_Key);
+      const result = await this.props.services.sendMoney(this.state.currency, address, this.state.amount);
 
       const data: SendMoneyMessageData = {
         amount: this.state.amount,
@@ -88,7 +92,12 @@ export default class Modal extends React.Component<ProvidedProps, *> {
         this.props.navigation.dismiss();
       });
     } catch (error) {
+      if (error.isCancelled === true) {
+        return;
+      }
       errorAlert(error);
+    } finally {
+      this.props.components.setLoadingVisible(false);
     }
   };
 
@@ -98,7 +107,7 @@ export default class Modal extends React.Component<ProvidedProps, *> {
         {this.props.components.renderAmountSelect({
           onAmountSelected: this.onAmountSelected,
           shouldCheckLess: true,
-        })}
+        }, true)}
         <Text style={styles.toLabelText}>{i18n.t('common.to')}</Text>
         <View style={styles.textInputContainer}>
           <TextInput

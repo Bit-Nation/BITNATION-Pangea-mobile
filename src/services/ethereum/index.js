@@ -1,7 +1,8 @@
 // @flow
 
 import ethers from 'ethers';
-import etherutils from 'ethereumjs-util';
+import { NativeModules } from 'react-native';
+
 import ERC20ABI from './ERC20ABI.json';
 import NationsABI from './NationABI.json';
 import type { NetworkType } from '../../types/Account';
@@ -29,6 +30,18 @@ export default class EthereumService {
   }
 
   /**
+   * @desc Function to get the balance of a given address
+   *
+   * @param {string} address The address to check
+   *
+   * @return {Promise} Promise that resolves with the balance in BN form
+   */
+  async getOtherBalance(address: string): Promise<void> {
+    const balance = await this.wallet.provider.getBalance(address);
+    return balance;
+  }
+
+  /**
    * @desc Function to get the balance of the given wallet
    *
    * @param {string} tokenAddress The address of the deployed token contract
@@ -39,6 +52,21 @@ export default class EthereumService {
     const abi = ERC20ABI;
     const contract = new ethers.Contract(tokenAddress, abi, this.wallet.provider);
     const balance = await contract.balanceOf(this.wallet.address);
+    return balance;
+  }
+
+  /**
+   * @desc Function to get the token balance of a given address
+   *
+   * @param {string} tokenAddress The address of the deployed token contract
+   * @param {string} address The address to check
+   *
+   * @return {Promise} Promise that resolves with the balance in BN form
+   */
+  async getOtherTokenBalance(tokenAddress: string, address: string): Promise<void> {
+    const abi = ERC20ABI;
+    const contract = new ethers.Contract(tokenAddress, abi, this.wallet.provider);
+    const balance = await contract.balanceOf(address);
     return balance;
   }
 
@@ -128,7 +156,32 @@ export default class EthereumService {
    * @param {string} publicKey Public key to convert
    * @return {string} Wallet address.
    */
-  ethereumAddressFromPublicKey(publicKey: string): string {
-    return etherutils.publicToAddress(etherutils.addHexPrefix(publicKey));
+  ethereumAddressFromPublicKey(publicKey: string): Promise<string> {
+    const { Panthalassa } = NativeModules;
+    return Panthalassa.PanthalassaEthPubToAddress({ pub: publicKey });
   }
+
+  /**
+   * @desc Deploy contract and return a deploy transaction.
+   * @param {string} bytecode Byte code of contract
+   * @param {string} abi ABI of contract
+   * @param {string} amount The ether amount of transaction.
+   * @param {any} params Additional params to pass.
+   * @return {Promise<Object>} Promise that resolves into transaction
+   */
+  async deployContract(bytecode: string, abi: string, amount?: string, ...params: any): Promise<Object> {
+    const tx = await ethers.Contract.getDeployTransaction(bytecode, abi, ...params);
+    if (amount != null) {
+      tx.value = ethers.utils.parseEther(amount);
+    }
+    return this.wallet.sendTransaction(tx);
+  }
+
+  /**
+   * @desc Gets contract instance.
+   * @param {string} address Address of deployed contract.
+   * @param {(string|Object)} abi ABI of contract.
+   * @return {*} Contract instance.
+   */
+  getContract = (address: string, abi: string | Object) => new ethers.Contract(address, abi, this.wallet)
 }

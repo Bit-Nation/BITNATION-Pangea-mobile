@@ -24,7 +24,7 @@ type Props = {
   /**
    * @desc Callback to be called on button press.
    */
-  onPress?: () => void,
+  onPress?: () => any,
   /**
    * @desc Flag that determines if button is enabled.
    */

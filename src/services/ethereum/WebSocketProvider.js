@@ -38,8 +38,9 @@ function WebSocketProvider(network) {
         const ws = new ReconnectingWebSocket(url, null, { reconnectInterval: 3000 });
 
         ws.onmessage = (e) => {
-            const event = JSON.parse(e.data.toString('utf8')).result;
-            this.eventEmitter.emit(JSON.parse(e.data).id, event);
+            const parsed = JSON.parse(e.data);
+            const event = parsed.result;
+            this.eventEmitter.emit(parsed.id, event);
         };
 
         ws.onerror = (e) => {

@@ -15,6 +15,7 @@ import type { Navigator } from '../../../types/ReactNativeNavigation';
 import { performDeferredLogin } from '../../../actions/accounts';
 import { type State as AccountsState } from '../../../reducers/accounts';
 import { saveSettings } from '../../../actions/settings';
+import Loading from '../../../components/common/Loading';
 
 type Props = {
   /**
@@ -58,6 +59,7 @@ class AccountReady extends Component<Props & AccountsState> {
             />
           </View>
         </View>
+        {this.props.login.inProgress === true && <Loading />}
       </View>
     );
   }
