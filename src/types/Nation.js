@@ -5,7 +5,7 @@ import type { TransactionJobType } from '../services/database/schemata';
 // eslint-disable-next-line import/prefer-default-export
 export type { NationType as DBNationType } from '../services/database/schemata';
 
-export type NationIdType = number;
+export type NationIdType = string;
 
 export type EditingNationType = {
   id?: NationIdType,

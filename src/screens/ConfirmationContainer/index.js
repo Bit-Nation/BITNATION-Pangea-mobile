@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import type { Navigator } from '../../types/ReactNativeNavigation';
 import ConfirmationScreen from './ConfirmationScreen';
+import { CancelledError } from '../../global/errors/common';
 
 type Props = {
   /**
@@ -19,7 +20,7 @@ type Props = {
   /**
    * @desc Function to return the Promise reject
    */
-  onFail: () => null,
+  onFail: (error: Error) => null,
   /**
    * @desc Properties of the transaction
    */
@@ -40,7 +41,7 @@ class ConfirmationContainer extends Component<Props, State> {
   static defaultProps: Object;
   cancelConfirmation = async () => {
     await this.props.navigator.dismissModal();
-    this.props.onFail();
+    this.props.onFail(new CancelledError());
   };
 
   sendConfirmation = async (gasPrice, gasLimit) => {

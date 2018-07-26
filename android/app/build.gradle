@@ -103,12 +103,22 @@ android {
         applicationId 'co.bitnation'
         minSdkVersion 16
         targetSdkVersion 22
-        versionCode 1
-        versionName "1.0"
+        versionCode 12
+        versionName "0.5.4"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
         vectorDrawables.useSupportLibrary = true
+    }
+    signingConfigs {
+        release {
+            if (project.hasProperty('MYAPP_RELEASE_STORE_FILE')) {
+                storeFile file(MYAPP_RELEASE_STORE_FILE)
+                storePassword MYAPP_RELEASE_STORE_PASSWORD
+                keyAlias MYAPP_RELEASE_KEY_ALIAS
+                keyPassword MYAPP_RELEASE_KEY_PASSWORD
+            }
+        }
     }
     splits {
         abi {
@@ -122,6 +132,7 @@ android {
         release {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            signingConfig signingConfigs.release
         }
     }
     // applicationVariants are e.g. debug, release
@@ -139,9 +150,16 @@ android {
     }
     productFlavors {
     }
+    lintOptions {
+        checkReleaseBuilds false
+    }
+    dexOptions {
+        jumboMode true
+    }
 }
 
 dependencies {
+    compile project(':react-native-shake')
     compile (project(':react-native-camera')) {
       exclude group: "com.android.support", module: 'support-v4'
     }

@@ -18,6 +18,18 @@ export type SecretType = {
   private_part: Object
 };
 
+export type GiftedChatUserType = {
+  _id: string,
+  name: string,
+};
+
+export type GiftedChatMessageType = {
+  _id: string,
+  text: string,
+  createdAt: Date,
+  user: GiftedChatUserType,
+};
+
 export type DAppMessageType = {
   dapp_id: string,
   type: string,
@@ -39,20 +51,11 @@ export type MessageType = {
 };
 
 export type ChatSessionType = {
+  secret: string,
   publicKey: string,
   username: string,
   accountId: string,
   messages: Array<MessageType>,
+  decryptedMessages: Array<GiftedChatMessageType>
 };
 
-export type GiftedChatUserType = {
-  _id: string,
-  name: string,
-};
-
-export type GiftedChatMessageType = {
-  _id: string,
-  text: string,
-  createdAt: Date,
-  user: GiftedChatUserType,
-};
