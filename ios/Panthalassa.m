@@ -276,19 +276,18 @@ RCT_REMAP_METHOD(PanthalassaDecryptMessage,
                  PanthalassaDecryptMessageWithResolver:(NSDictionary *)config
                  resolver:(RCTPromiseResolveBlock)resolve
                  rejecter:(RCTPromiseRejectBlock)reject) {
-  
-  NSString *response;
-  NSError *error = nil;
-  
-  response =  PanthalassaDecryptMessage([RCTConvert NSString:config[@"message"]],
-                                           [RCTConvert NSString:config[@"secret"]],
-                                           &error);
-  
-  if (error == nil) {
-    resolve(response);
-  } else {
-    reject(@"error", error.localizedDescription, error);
-  }
+    NSString *response;
+    NSError *error = nil;
+    
+    response =  PanthalassaDecryptMessage([RCTConvert NSString:config[@"message"]],
+                                          [RCTConvert NSString:config[@"secret"]],
+                                          &error);
+    
+    if (error == nil) {
+      resolve(response);
+    } else {
+      reject(@"error", error.localizedDescription, error);
+    }
 }
 
 RCT_REMAP_METHOD(PanthalassaInitializeChat,
@@ -548,7 +547,7 @@ RCT_REMAP_METHOD(PanthalassaEthPubToAddress,
 
 - (void)send:(NSString *)data {
   NSLog(@"************ Received from go!");
-  if (hasListeners) {
+  if (hasListeners && data != nil) {
     [self sendEventWithName:@"PanthalassaUpStream" body:@{@"upstream": data}];
   }
 }

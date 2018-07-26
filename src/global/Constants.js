@@ -35,10 +35,6 @@ export const PAT_DEV_ADDRESS = '0xc3830a6206fb9d089d1ce824598978532d14d8aa';
 
 export const PAT_PROD_ADDRESS = '0xBB1fA4FdEB3459733bF67EbC6f893003fA976a82';
 
-export const NATION_DEV_CONTRACT_CREATION_BLOCK = 2375943;
-
-export const NATION_PROD_CONTRACT_CREATION_BLOCK = 4977201;
-
 export const TX_JOB_STATUS = {
   UNKNOWN: 0,
   PENDING: 200,
@@ -52,3 +48,6 @@ export const TX_JOB_TYPE = {
   NATION_LEAVE: 'NATION_LEAVE',
   ETH_SEND: 'ETH_SEND',
 };
+
+export const NATIONS_DEV_ENDPOINT = 'https://nation-cache.herokuapp.com/nations/development';
+export const NATIONS_PROD_ENDPOINT = 'https://nation-cache.herokuapp.com/nations/production';

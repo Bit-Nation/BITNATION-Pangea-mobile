@@ -27,6 +27,7 @@ export const androidNavigationButtons = Platform.OS === 'android' ? {
 } : {};
 
 export const navigatorStyle = {
+  tabBarHidden: false,
   statusBarTextColorScheme: 'light',
   statusBarColor: Platform.OS === 'ios' ? Colors.statusBarColorIOS : Colors.statusBarColorOther, // Nativebase variable!
   navBarBackgroundColor: Colors.navBarBackgroundColor,
@@ -208,16 +209,10 @@ const Screens = {
   },
   QR_CODE_DAPP_SCREEN: {
     screen: 'Pangea.QRCodeAppScreen',
-    title: i18n.t('screens.scanQRCode.title'),
+    title: i18n.t('screens.dAppQRCodeScanner.title'),
     navigatorStyle,
     navigatorButtons: {
-      leftButtons: [
-        {
-          id: 'cancel',
-          buttonColor: Colors.androidNavigationButtons,
-        },
-      ],
-      rightButtons: [],
+      ...androidNavigationButtons,
     },
   },
   SETTINGS_SCREEN: {

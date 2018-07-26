@@ -758,12 +758,7 @@ const styles = {
     fontWeight: 'bold',
   },
   disabledButtonTitle: {
-    fontSize: 14,
     color: Colors.BitnationLightGrayColor,
-    letterSpacing: -0.02,
-    lineHeight: 19,
-    textAlign: 'center',
-    fontWeight: 'bold',
   },
   arrowButtonTitle: {
     fontSize: 15,

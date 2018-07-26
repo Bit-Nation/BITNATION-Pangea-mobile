@@ -118,7 +118,7 @@ export function* saveWalletsToDb(walletsArray: WalletType[]): Generator<*, *, *>
 export function* updateWalletsToDb(walletsArray: WalletType[]): Generator<*, *, *> {
   const db = yield defaultDB;
   const walletEth = resolveWallet(walletsArray, 'ETH');
-  const walletPat = resolveWallet(walletsArray, 'PAT');
+  const walletPat = resolveWallet(walletsArray, 'XPAT');
   if (walletEth === null || walletPat === null) {
     return;
   }
@@ -152,7 +152,7 @@ export function* updateWalletList(): Generator<*, *, *> {
     walletsWithoutBalance = yield call([walletService, 'getWallets']);
     yield call(saveWalletsToDb, walletsWithoutBalance);
   } else {
-    walletsWithoutBalance = convertFromDatabase(walletsFromDb);
+    walletsWithoutBalance = walletsFromDb.map(convertFromDatabase);
   }
   yield put(walletsListUpdated(walletsWithoutBalance, false));
   try {
