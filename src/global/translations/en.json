@@ -567,5 +567,19 @@
       "initial5": "Talk to me! I am Dr. FreudBot. Tell me about your mother.",
       "initial6": "Hallo, Dr. FreudBot here. I am not a real Freudian. I am not real. Are you? Are you sure?"
     }
+  },
+  "dApps": {
+    "escrow": {
+      "requestExchange": "START EXCHANGE",
+      "sendTokens": "SEND",
+      "cancelContract": "REFUND",
+      "completeContract": "EXCHANGE",
+      "cancelConfirmationAlert": {
+        "title": "Cancel Contract",
+        "subtitle": "Are you sure that you want to terminate exchange process?",
+        "confirm": "Stop exchange",
+        "cancel": "$t(common.cancel)"
+      }
+    }
   }
 }

@@ -1,13 +1,15 @@
+// @flow
+
 /* eslint-disable prefer-destructuring,class-methods-use-this */
 import * as React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import Colors from '../../global/colors';
-import type { ProvidedProps as MessageProvidedProp } from '../../components/nativeDApps/MessageProvider';
-import { SendMoneyMessageData } from './Modal';
-import type { ProfileType } from '../../types/Chat';
+import type { ProvidedProps as MessageProvidedProps } from '../../components/nativeDApps/MessageProvider';
+import { MessageParamsValidator } from '../../components/nativeDApps/MessageParamsValidator';
+import type { SendMoneyMessageData } from './Modal';
 
 const styles = StyleSheet.create({
-  container: { margin: 5 },
+  container: { margin: 10 },
   text: {
     fontSize: 17,
     color: Colors.BitnationDarkGrayColor,
@@ -15,59 +17,39 @@ const styles = StyleSheet.create({
   textBold: {
     fontWeight: 'bold',
   },
-
+  spacer: { height: 12 },
 });
 
 type Status = 'pending' | 'failed' | 'success';
 
-type State = {
-  status: Status,
-  txHash: string,
-  to: ProfileType,
-  amount: string,
-  currency: string,
-  fromAddress: string,
-  fromName: string,
-  invalidMessage: boolean,
+type OwnProps = {
+  data: SendMoneyMessageData,
 }
 
-export default class Message extends React.Component<MessageProvidedProp, State> {
-  constructor(props) {
-    super(props);
+type State = {
+  status: Status,
+}
 
-    const params: string = this.props.context.dAppMessage.params;
-    const data: SendMoneyMessageData = JSON.parse(params);
+type Props = MessageProvidedProps & OwnProps;
+
+class Message extends React.Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
 
     this.state = {
       status: 'pending',
-      ...data,
-      invalidMessage: this.validateParams(data) === false,
     };
 
     this.trackTransaction();
   }
 
-  validateParams(data: SendMoneyMessageData) {
-    return data.amount != null
-      && data.currency != null
-      && data.to != null
-      && data.to.name != null
-      && data.fromAddress != null
-      && data.toAddress != null
-      && data.txHash != null;
-  }
-
-  trackTransaction = async () => this.props.services.ethereumService.trackTransaction(this.state.txHash).then(() => {
+  trackTransaction = async () => this.props.services.ethereumService.trackTransaction(this.props.data.txHash).then(() => {
     this.setState({ status: 'success' });
   }).catch(() => {
     this.setState({ status: 'failed' });
   });
 
   render() {
-    if (this.state.invalidMessage) {
-      return null;
-    }
-
     const statusText = (() => {
       switch (this.state.status) {
         case 'pending':
@@ -83,13 +65,25 @@ export default class Message extends React.Component<MessageProvidedProp, State>
 
     return (
       <View style={styles.container}>
+        <Text style={styles.text}>
+          {`Send ${this.props.data.amount} ${this.props.data.currency}\n`}
+          {`from ${this.props.data.fromName}\n`}
+          {`to ${this.props.data.to.name}`}
+        </Text>
+        <View style={styles.spacer} />
         <Text style={styles.textBold}>
           {statusText}
-        </Text>
-        <Text style={styles.text}>
-          Send {this.state.amount} {this.state.currency} from {this.state.fromName} to {this.state.to.name}
         </Text>
       </View>
     );
   }
 }
+
+export default MessageParamsValidator(Message, (data: Object) =>
+  data.amount != null
+  && data.currency != null
+  && data.to != null
+  && data.to.name != null
+  && data.fromAddress != null
+  && data.toAddress != null
+  && data.txHash != null);

@@ -447,11 +447,25 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
         new Thread(new Runnable() {
             public void run() {
                 try {
-                    long id;
                     Panthalassa.callDAppFunction(jsonParams.getString("dAppId"),
                             jsonParams.getInt("id"),
                             jsonParams.getString("args"));
                     promise.resolve(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    promise.reject("error", e.getLocalizedMessage());
+                }
+            }
+        }).start();
+    }
+
+    @ReactMethod
+    public void PanthalassaEthPubToAddress(final ReadableMap jsonParams, final Promise promise) throws JSONException {
+        new Thread(new Runnable() {
+            public void run() {
+                try {
+                    String response = Panthalassa.ethPubToAddress(jsonParams.getString("pub"));
+                    promise.resolve(response);
                 } catch (Exception e) {
                     e.printStackTrace();
                     promise.reject("error", e.getLocalizedMessage());
