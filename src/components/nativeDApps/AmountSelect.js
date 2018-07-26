@@ -3,17 +3,17 @@
 
 import React, { Component } from 'react';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
-import { Text, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import ActionSheet from 'react-native-actionsheet';
 import { BigNumber } from 'bignumber.js';
+import _ from 'lodash';
 
-import type { WalletType } from '../../types/Wallet';
-import View from '../dApps/View';
 import i18n from '../../global/i18n';
 import GlobalStyles from '../../global/Styles';
 import Colors from '../../global/colors';
+import type { CurrencyType, WalletType } from '../../types/Wallet';
 
-type InternalProps = {
+export type InternalProps = {
   /**
    * @desc Wallets array
    */
@@ -28,48 +28,68 @@ export type Props = {
   /**
    * @desc
    */
-  onAmountSelected: (amount: string, currency: string, walletAddress: string, isValid: boolean) => void,
+  onAmountSelected: (amount: string, currency: CurrencyType, walletAddress: string, isValid: boolean) => void,
   /**
    * @desc Flag whether amount is invalid if it greater than balance.
    */
   shouldCheckLess: boolean,
+  /**
+   * @desc Amount to show on a component.
+   */
+  amount: string,
+  /**
+   * @desc Currency of selected wallet.
+   */
+  currency: CurrencyType,
+  /**
+   * @desc Flag whether to allow user to change currency.
+   */
+  changeCurrencyEnabled?: boolean,
 }
 
-type State = {
-  selectedAmount: string,
-  selectedWalletIndex: number,
-};
-
-export default class AmountSelect extends Component<Props & InternalProps, State> {
-  constructor(props: Props & InternalProps) {
-    super(props);
-
-    this.state = {
-      selectedAmount: '',
-      selectedWalletIndex: 0,
-    };
-  }
-
-  componentDidUpdate(prevProps: Props & InternalProps, prevState: State) {
-    if (this.state.selectedAmount !== prevState.selectedAmount
-      || this.state.selectedWalletIndex !== prevState.selectedWalletIndex) {
-      const wallet = this.props.wallets[this.state.selectedWalletIndex];
-      this.props.onAmountSelected(this.state.selectedAmount, wallet.currency, wallet.ethAddress, this.isValidAmount());
-    }
-  }
+export default class AmountSelect extends Component<Props & InternalProps> {
+  static defaultProps: Object = {
+    changeCurrencyEnabled: true,
+  };
 
   onSelectWallet = (index: number) => {
     if (index < this.props.wallets.length) {
-      this.setState({ selectedWalletIndex: index });
+      const wallet = this.props.wallets[index];
+      this.props.onAmountSelected(
+        this.props.amount,
+        wallet.currency,
+        wallet.ethAddress,
+        this.isValidAmount(this.props.amount, wallet),
+      );
     }
   };
 
-  isValidAmount(): boolean {
+  onChangeAmount = (amount: string) => {
+    const wallet = this.getWallet();
+    if (wallet == null) return;
+
+    this.props.onAmountSelected(
+      amount,
+      wallet.currency,
+      wallet.ethAddress,
+      this.isValidAmount(amount, wallet),
+    );
+  };
+
+  getWallet(): ?WalletType {
+    this.props.wallets[0].currency = 'ETH';
+    return _.find(this.props.wallets, (wallet => wallet.currency === this.props.currency));
+  }
+
+  isValidAmount(amount: string, wallet: WalletType): boolean {
+    if (amount == null || amount.length === 0) return false;
+
     try {
-      const amount = new BigNumber(this.state.selectedAmount);
-      const wallet = this.props.wallets[this.state.selectedWalletIndex];
+      const bnAmount = new BigNumber(amount);
+      if (bnAmount.isZero()) return false;
+      if (!bnAmount.isFinite()) return false;
       if (this.props.shouldCheckLess) {
-        return amount.lessThanOrEqualTo(new BigNumber(wallet.balance));
+        return bnAmount.lessThanOrEqualTo(new BigNumber(wallet.balance));
       }
       return true;
     } catch (e) {
@@ -80,7 +100,9 @@ export default class AmountSelect extends Component<Props & InternalProps, State
   actionSheet: any;
 
   render() {
-    const walletToShow = this.props.wallets[this.state.selectedWalletIndex];
+    const walletToShow = this.getWallet();
+    if (walletToShow == null) return null;
+
     const { balance: balanceString } = walletToShow;
     const balanceToShow = balanceString == null ?
       i18n.t('common.updating') :
@@ -99,7 +121,10 @@ export default class AmountSelect extends Component<Props & InternalProps, State
           </Text>
         </View>
         <View style={styles.textInputContainer}>
-          <TouchableOpacity onPress={() => this.actionSheet.show()}>
+          <TouchableOpacity
+            disabled={this.props.changeCurrencyEnabled === false}
+            onPress={() => this.actionSheet.show()}
+          >
             <Text style={styles.currencyPlaceholder}>
               {walletToShow.currency}
             </Text>
@@ -108,8 +133,8 @@ export default class AmountSelect extends Component<Props & InternalProps, State
             style={[styles.textInputInContainer, GlobalStyles.currencyLarge, styles.currencyNumber, styles.textInput]}
             placeholder='0.00000'
             placeholderTextColor={Colors.placeholderTextColor}
-            onChangeText={selectedAmount => this.setState({ selectedAmount })}
-            value={this.state.selectedAmount}
+            onChangeText={this.onChangeAmount}
+            value={this.props.amount}
             keyboardType='numeric'
           />
           <ActionSheet

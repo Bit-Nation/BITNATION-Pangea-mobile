@@ -3,15 +3,18 @@
 
 import * as React from 'react';
 
-import type { WalletType } from '../../types/Wallet';
+import type { CurrencyType, WalletType } from '../../types/Wallet';
 import type { Account } from '../../types/Account';
 import AmountSelect, { type Props as AmountSelectProps } from './AmountSelect';
+import type { Props as AmountSelectControllerProps } from './AmountSelectController';
 import type { ChatSessionType, DAppMessageType, GiftedChatMessageType, ProfileType } from '../../types/Chat';
 import type { Navigator } from '../../types/ReactNativeNavigation';
 import EthereumService from '../../services/ethereum';
 import ServiceContainer from '../../services/container';
+import type { DAppType } from '../../dapps';
+import AmountSelectController from './AmountSelectController';
 
-type ProviderProps = {
+export type ProviderProps = {
   /**
    * @desc Wallets array
    */
@@ -23,7 +26,7 @@ type ProviderProps = {
   /**
    * @desc Public key of DApp.
    */
-  dAppPublicKey: string,
+  dApp: DAppType,
   /**
    * @desc Function to send a DApp message.
    */
@@ -40,6 +43,10 @@ type ProviderProps = {
    * @desc Profile of current chat friend.
    */
   friend: ProfileType,
+  /**
+   * @desc Function to show or hide loading.
+   */
+  setLoadingVisible: (visible: boolean) => void,
 };
 
 export type ProvidedProps = {
@@ -56,8 +63,14 @@ export type ProvidedProps = {
   components: {
     /**
      * @desc Renders AmountSelect component.
+     * @param {AmountSelectProps} props Props to pass to AmountSelect component
+     * @param {boolean} autoControlled Flag whether state of component should be handled automatically
      */
-    renderAmountSelect: (props: AmountSelectProps) => React.Node,
+    renderAmountSelect: (props: AmountSelectProps | AmountSelectControllerProps, autoControlled?: boolean) => React.Node,
+    /**
+     * @desc Function to show or hide loading.
+     */
+    setLoadingVisible: (visible: boolean) => void,
   },
   services: {
     /**
@@ -68,6 +81,27 @@ export type ProvidedProps = {
      * @desc Service to deal with ethereum.
      */
     ethereumService: EthereumService,
+    /**
+     * @desc Function to send money
+     * @param {CurrencyType} currency String with currency symbol (ETH, XPAT)
+     * @param {string} toAddress Address to send ether to.
+     * @param {string} amount Amount in base currency unit (ether, XPAT)
+     * @return {Promise<Object>} Promise that resolves into transaction.
+     */
+    sendMoney: (currency: CurrencyType, toAddress: string, amount: string) => Promise<Object>,
+    /**
+     * @desc Deploy contract and return a deploy transaction.
+     * @param {string} bytecode Byte code of contract
+     * @param {string} abi ABI of contract
+     * @param {string} txValue Value in ether to set to deploy transaction.
+     * @param {any} params Additional params to pass.
+     * @return {Promise<Object>} Promise that resolves into transaction
+     */
+    deployContract: (bytecode: string, abi: string, txValue?: string, ...params: any) => Promise<Object>,
+    /**
+     * @desc Function to get XPAT token contract address (based on current account network).
+     */
+    getXPATTokenAddress: () => string,
   },
   navigation: {
     /**
@@ -83,10 +117,13 @@ export type ProvidedProps = {
  * @return {*} HOC
  */
 export const DAppProvider = (Component: React.ComponentType<any>) => (props: ProviderProps) => {
-  const { ethereumService } = ServiceContainer.instance;
-  if (ethereumService == null) {
+  const { ethereumService, dAppsWalletService } = ServiceContainer.instance;
+  const { identityPublicKey: dAppPublicKey, name } = props.dApp;
+  if (ethereumService == null || dAppsWalletService == null) {
     return null;
   }
+
+  const dAppName = `${name} DApp`;
 
   const providedProps: ProvidedProps = {
     context: {
@@ -94,11 +131,13 @@ export const DAppProvider = (Component: React.ComponentType<any>) => (props: Pro
       friend: props.friend,
     },
     components: {
-      renderAmountSelect(customProps: AmountSelectProps) {
-        return (
-          <AmountSelect {...customProps} wallets={props.wallets} />
-        );
+      renderAmountSelect(customProps: AmountSelectProps | AmountSelectControllerProps, autoControlled: boolean = true) {
+        return (autoControlled === true) ?
+          <AmountSelectController {...customProps} wallets={props.wallets} />
+          :
+          <AmountSelect {...customProps} wallets={props.wallets} />;
       },
+      setLoadingVisible: props.setLoadingVisible,
     },
     services: {
       sendMessage(type: string, groupId: string, params: Object, callback: (message: ?GiftedChatMessageType) => void) {
@@ -115,7 +154,7 @@ export const DAppProvider = (Component: React.ComponentType<any>) => (props: Pro
           const stringified = JSON.stringify(params);
           if (stringified.length > 5000000) return;
           props.sendMessage({
-            dapp_id: props.dAppPublicKey,
+            dapp_id: dAppPublicKey,
             type,
             group_id: groupId,
             params: stringified,
@@ -127,6 +166,9 @@ export const DAppProvider = (Component: React.ComponentType<any>) => (props: Pro
         }
       },
       ethereumService,
+      sendMoney: (currency, toAddress, amount) => dAppsWalletService.sendMoney(dAppName, currency, toAddress, amount),
+      deployContract: (bytecode, abi, txValue, ...params) => dAppsWalletService.deployContract(dAppName, bytecode, abi, txValue, ...params),
+      getXPATTokenAddress: dAppsWalletService.getXPATTokenAddress,
     },
     navigation: {
       dismiss() {
@@ -135,5 +177,7 @@ export const DAppProvider = (Component: React.ComponentType<any>) => (props: Pro
     },
   };
 
-  return <Component {...providedProps} />;
+  return (
+    <Component {...providedProps} />
+  );
 };

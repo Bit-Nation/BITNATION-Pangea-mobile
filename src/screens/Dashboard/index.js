@@ -19,7 +19,7 @@ import type { NationIdType } from '../../types/Nation';
 import type { State } from '../../reducers';
 import type { Navigator } from '../../types/ReactNativeNavigation';
 import { getCurrentAccount } from '../../reducers/accounts';
-import { openDApp } from '../../actions/dApps';
+import { openDApp } from '../../actions/nativeDApps';
 
 type Props = {
   /**

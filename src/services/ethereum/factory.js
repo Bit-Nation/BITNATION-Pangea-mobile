@@ -9,18 +9,22 @@ import type { NetworkType } from '../../types/Account';
  * @param {Object<any>} config Array with: privateKey Private Key base for the services, providerType Type of Network
  * @returns {{wallet: ethers.Wallet, service: EthereumService}} The service
  */
-export default function factory(config: {privateKey: string, networkType: NetworkType}) {
+export default function factory(config: {privateKey: string, networkType: NetworkType, app: string}) {
   const { privateKey } = config;
   const { networkType } = config;
 
-  // @todo check if valid private key - exit if not
-  const customSigner = new CustomSigner(privateKey, networkType === 'dev' ? 'rinkeby' : 'homestead');
+  const serviceBuilder = (application: string): EthereumService => {
+    const customSigner = new CustomSigner(privateKey, networkType === 'dev' ? 'rinkeby' : 'homestead', application);
+    return new EthereumService(customSigner, networkType);
+  };
 
-  // Ethereum service
-  const ethereumService = new EthereumService(customSigner, networkType);
+  let { app } = config;
+  if (app == null) {
+    app = 'Bitnation Application';
+  }
 
   return {
-    wallet: customSigner,
-    service: ethereumService,
+    service: serviceBuilder(app),
+    serviceBuilder,
   };
 }

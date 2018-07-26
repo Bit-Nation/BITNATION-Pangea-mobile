@@ -2,26 +2,29 @@
 
 import * as React from 'react';
 import { connect } from 'react-redux';
+import { View } from 'react-native';
 
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import Colors from '../../../global/colors';
 import GlobalStyles from '../../../global/Styles';
 import i18n from '../../../global/i18n';
 import type { WalletType } from '../../../types/Wallet';
-import View from '../../../components/dApps/View';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import BackgroundImage from '../../../components/common/BackgroundImage';
-import { sendDAppMessage } from '../../../actions/dApps';
+import { sendDAppMessage } from '../../../actions/nativeDApps';
 import { getCurrentAccount } from '../../../reducers/accounts';
 import { getSelectedSession } from '../../../utils/chat';
 import type { ChatSessionType, DAppMessageType, GiftedChatMessageType, ProfileType } from '../../../types/Chat';
 import type { Account } from '../../../types/Account';
+import Loading from '../../../components/common/Loading';
+import { getDApp, type State as DAppsState } from '../../../reducers/nativeDApps';
+import type { ProviderProps } from '../../../components/nativeDApps/DAppProvider';
 
 type OwnProps = {
   /**
    * @desc JSON object of layout to be displayed.
    */
-  component: React.ComponentType<any>,
+  component: React.ComponentType<ProviderProps & any>,
   /**
    * @desc Public key of DApp that controls the screen.
    */
@@ -52,10 +55,18 @@ type Props = {
   /**
    * @desc Current user.
    */
-  user: Account
+  user: Account,
+  /**
+   * @desc DApps redux state.
+   */
+  dAppsState: DAppsState,
 }
 
-class DAppModalScreen extends NavigatorComponent<Props & OwnProps> {
+type State = {
+  isLoading: boolean,
+}
+
+class DAppModalScreen extends NavigatorComponent<Props & OwnProps, State> {
   static navigatorButtons = {
     leftButtons: [{
       id: 'cancel',
@@ -64,6 +75,14 @@ class DAppModalScreen extends NavigatorComponent<Props & OwnProps> {
     }],
     rightButtons: [],
   };
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isLoading: false,
+    };
+  }
 
   onNavBarButtonPress(id: string) {
     if (id === 'cancel') {
@@ -75,8 +94,9 @@ class DAppModalScreen extends NavigatorComponent<Props & OwnProps> {
     const { component: Component } = this.props;
 
     const session = getSelectedSession(this.props.sessions, this.props.chatSecret);
+    const dApp = getDApp(this.props.dAppsState, this.props.dAppPublicKey);
 
-    if (session == null) {
+    if (session == null || dApp == null) {
       this.props.navigator.dismissModal();
       return null;
     }
@@ -87,11 +107,18 @@ class DAppModalScreen extends NavigatorComponent<Props & OwnProps> {
         <FakeNavigationBar />
         <View style={GlobalStyles.bodyContainer}>
           <Component
-            {...this.props}
-            session={session}
+            navigator={this.props.navigator}
+            wallets={this.props.wallets}
+            user={this.props.user}
+            friend={this.props.friend}
             currentAccount={this.props.user}
+            sendMessage={this.props.sendMessage}
+            dApp={dApp}
+            setLoadingVisible={visible => this.setState({ isLoading: visible })}
+            session={session}
           />
         </View>
+        {this.state.isLoading && <Loading />}
       </View>
     );
   }
@@ -101,6 +128,7 @@ const mapStateToProps = state => ({
   wallets: state.wallet.wallets,
   sessions: state.chat.chats,
   user: getCurrentAccount(state.accounts),
+  dAppsState: state.dApps,
 });
 
 const mapDispatchToProps = dispatch => ({

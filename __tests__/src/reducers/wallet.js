@@ -23,7 +23,7 @@ const mockWallet: WalletType = {
 
 const mockPATWallet: WalletType = {
   ...mockWallet,
-  currency: 'PAT',
+  currency: 'XPAT',
 };
 
 const mockWallets = [
