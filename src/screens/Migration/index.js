@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import { View, Text } from 'react-native';
 import i18n from '../../global/i18n';
