@@ -3,7 +3,7 @@
 
 import type { Realm } from 'realm';
 import { call, put, take, select, race } from 'redux-saga/effects';
-
+import VersionNumber from 'react-native-version-number';
 import defaultDB from '../../services/database';
 import { createDatabaseUpdateChannel } from '../database';
 import {
@@ -355,13 +355,14 @@ export function* savePasswordSaga(action: SavePasswordAction): Generator<*, *, a
 export function* saveCreatingAccount(action: SaveCreatingAccountAction): Generator<*, *, *> {
   const { accounts } = yield select();
   const { creatingAccount } = accounts;
+  const version = VersionNumber.appVersion;
 
   if (creatingAccount === null) {
     yield call(action.callback, false);
     return;
   }
 
-  const convertedAccount = convertToDatabase(creatingAccount);
+  const convertedAccount = convertToDatabase(creatingAccount, version);
   if (convertedAccount === null) {
     yield call(action.callback, false);
     return;
