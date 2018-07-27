@@ -30,6 +30,7 @@ export const AccountSchema = {
  * @property {string} name
  * @property {string} location
  * @property {string} description A profile description
+ * @property {string} lastMigrationVersion This is the last migration version of the app
  * @property {string} profileImage This should be a multihash (https://github.com/multiformats/multihash). It will be a reference to the image stored in the DHT.
  * @property {string} accountStore This string is the encrypted keystore that contain's all the private key's etc needed to work with this account
  * @property {Array<DHTValue>} DHT is the decentralized hash table of the account. It hold's data available to the public network. Like the profile image etc.
@@ -597,11 +598,6 @@ export const schemata =
     WalletSchema,
   ];
 
-export const migration = (oldRealm: Realm, newRealm: Realm) => {
-  const oldObjects = oldRealm.objects('Nation');
-  const newObjects = newRealm.objects('Nation');
-
-  for (let i = 0; i < oldObjects.length; i += 1) {
-    newObjects[i].id = uuid();
-  }
+export const migration = () => {
+  // @todo Migration
 };

@@ -56,7 +56,10 @@ describe('db', () => {
       const realm5 = await databaseGenerator.next(realm4).value;
       expect(Realm.schemaVersion(dbPath)).toBe(5);
 
-      realm5.close();
+      const realm6 = await databaseGenerator.next(realm5).value;
+      expect(Realm.schemaVersion(dbPath)).toBe(6);
+
+      realm6.close();
     });
   });
   test('random path database builder', async () => {

@@ -111,7 +111,7 @@ const Screens = {
   },
   MIGRATION_SCREEN: {
     screem: 'Pangea.MigartionScreen',
-    label: i18n.t('screens.migartion.title'),
+    label: i18n.t('screens.migration.title'),
     navigatorStyle,
   },
   NEW_CHAT_SCREEN: {
