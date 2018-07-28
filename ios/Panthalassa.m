@@ -99,7 +99,7 @@ RCT_REMAP_METHOD(PanthalassaStartFromMnemonic,
   
   response = PanthalassaStartFromMnemonic([RCTConvert NSString:config[@"config"]],
                                                    [RCTConvert NSString:config[@"mnemonic"]],
-                                                   self,
+                                                   self, self,
                                                    &error);
   NSNumber *val = [NSNumber numberWithBool:response];
   
@@ -179,7 +179,7 @@ RCT_REMAP_METHOD(PanthalassaStart,
   
   response = PanthalassaStart([RCTConvert NSString:config[@"config"]],
                               [RCTConvert NSString:config[@"password"]],
-                              self,
+                              self, self,
                               &error);
   
   NSNumber *val = [NSNumber numberWithBool:response];
@@ -228,79 +228,6 @@ RCT_REMAP_METHOD(PanthalassaIdentityPublicKey,
   NSError *error = nil;
   
   response = PanthalassaIdentityPublicKey(&error);
-  
-  if (error == nil) {
-    resolve(response);
-  } else {
-    reject(@"error", error.localizedDescription, error);
-  }
-}
-
-RCT_REMAP_METHOD(PanthalassaNewPreKeyBundle,
-                 PanthalassaNewPreKeyBundleWithResolver:(RCTPromiseResolveBlock)resolve
-                 rejecter:(RCTPromiseRejectBlock)reject) {
-  NSString* response;
-  NSError *error = nil;
-  
-  response = PanthalassaNewPreKeyBundle(&error);
-  
-  if (error == nil) {
-    resolve(response);
-  } else {
-    reject(@"error", error.localizedDescription, error);
-  }
-}
-
-RCT_REMAP_METHOD(PanthalassaCreateHumanMessage,
-                 PanthalassaCreateHumanMessageWithResolver:(NSDictionary *)config
-                 resolver:(RCTPromiseResolveBlock)resolve
-                 rejecter:(RCTPromiseRejectBlock)reject) {
-  
-  NSString *response;
-  NSError *error = nil;
-  
-  response = PanthalassaCreateHumanMessage([RCTConvert NSString:config[@"rawMsg"]],
-                              [RCTConvert NSString:config[@"secretID"]],
-                              [RCTConvert NSString:config[@"secret"]],
-                              [RCTConvert NSString:config[@"receiverIdKey"]],
-                              &error);
-  
-  if (error == nil) {
-    resolve(response);
-  } else {
-    reject(@"error", error.localizedDescription, error);
-  }
-}
-
-RCT_REMAP_METHOD(PanthalassaDecryptMessage,
-                 PanthalassaDecryptMessageWithResolver:(NSDictionary *)config
-                 resolver:(RCTPromiseResolveBlock)resolve
-                 rejecter:(RCTPromiseRejectBlock)reject) {
-    NSString *response;
-    NSError *error = nil;
-    
-    response =  PanthalassaDecryptMessage([RCTConvert NSString:config[@"message"]],
-                                          [RCTConvert NSString:config[@"secret"]],
-                                          &error);
-    
-    if (error == nil) {
-      resolve(response);
-    } else {
-      reject(@"error", error.localizedDescription, error);
-    }
-}
-
-RCT_REMAP_METHOD(PanthalassaInitializeChat,
-                 PanthalassaInitializeChatWithResolver:(NSDictionary *)config
-                 resolver:(RCTPromiseResolveBlock)resolve
-                 rejecter:(RCTPromiseRejectBlock)reject) {
-  
-  NSString *response;
-  NSError *error = nil;
-  
-  response = PanthalassaInitializeChat([RCTConvert NSString:config[@"identityPublicKey"]],
-                                       [RCTConvert NSString:config[@"preKeyBundle"]],
-                                       &error);
   
   if (error == nil) {
     resolve(response);
@@ -366,24 +293,6 @@ RCT_REMAP_METHOD(PanthalassaSignProfileStandAlone,
                                               [RCTConvert NSString:config[@"keyManagerStore"]],
                                               [RCTConvert NSString:config[@"password"]],
                                               &error);
-  
-  if (error == nil) {
-    resolve(response);
-  } else {
-    reject(@"error", error.localizedDescription, error);
-  }
-}
-
-RCT_REMAP_METHOD(PanthalassaHandleInitialMessage,
-                 PanthalassaHandleInitialMessageWithResolver:(NSDictionary *)config
-                 resolver:(RCTPromiseResolveBlock)resolve
-                 rejecter:(RCTPromiseRejectBlock)reject) {
-  
-  NSString *response;
-  NSError *error = nil;
-  response = PanthalassaHandleInitialMessage([RCTConvert NSString:config[@"message"]],
-                                         [RCTConvert NSString:config[@"preKeyBundlePrivatePart"]],
-                                         &error);
   
   if (error == nil) {
     resolve(response);
@@ -491,27 +400,6 @@ RCT_REMAP_METHOD(PanthalassaCallDAppFunction,
   }
 }
 
-RCT_REMAP_METHOD(PanthalassaCreateDAppMessage,
-                 PanthalassaCreateDAppMessageWithResolver:(NSDictionary *)config
-                 resolver:(RCTPromiseResolveBlock)resolve
-                 rejecter:(RCTPromiseRejectBlock)reject) {
-  
-  NSString *response;
-  NSError *error = nil;
-  
-  response = PanthalassaCreateDAppMessage([RCTConvert NSString:config[@"rawMsg"]],
-                                           [RCTConvert NSString:config[@"secretID"]],
-                                           [RCTConvert NSString:config[@"secret"]],
-                                           [RCTConvert NSString:config[@"receiverIdKey"]],
-                                           &error);
-  
-  if (error == nil) {
-    resolve(response);
-  } else {
-    reject(@"error", error.localizedDescription, error);
-  }
-}
-
 RCT_REMAP_METHOD(PanthalassaEthPubToAddress,
                  PanthalassaEthPubToAddressWithResolver:(NSDictionary *)config
                  resolver:(RCTPromiseResolveBlock)resolve
@@ -530,6 +418,98 @@ RCT_REMAP_METHOD(PanthalassaEthPubToAddress,
   }
 }
 
+RCT_REMAP_METHOD(PanthalassaAllChats,
+                 PanthalassaAllChatsWithResolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject) {
+  NSString* response;
+  NSError *error = nil;
+  
+  response = PanthalassaAllChats(&error);
+  
+  if (error == nil) {
+    resolve(response);
+  } else {
+    reject(@"error", error.localizedDescription, error);
+  }
+}
+
+RCT_REMAP_METHOD(PanthalassaConnectLogger,
+                 PanthalassaConnectLoggerWithResolver:(NSDictionary *)config
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject) {
+  
+  BOOL response;
+  NSError *error = nil;
+  response = PanthalassaConnectLogger([RCTConvert NSString:config[@"address"]],
+                                         &error);
+  
+  NSNumber *val = [NSNumber numberWithBool:response];
+  
+  if (error == nil) {
+    resolve(val);
+  } else {
+    reject(@"error", error.localizedDescription, error);
+  }
+}
+
+RCT_REMAP_METHOD(PanthalassaMessages,
+                 PanthalassaMessagesWithResolver:(NSDictionary *)config
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject) {
+  
+  NSString *response;
+  NSError *error = nil;
+  
+  response = PanthalassaMessages([RCTConvert NSString:config[@"partner"]],
+                                 [[RCTConvert NSNumber:config[@"start"]] intValue],
+                                 [[RCTConvert NSNumber:config[@"amount"]] longValue],
+                                  &error);
+  
+  if (error == nil) {
+    resolve(response);
+  } else {
+    reject(@"error", error.localizedDescription, error);
+  }
+}
+
+RCT_REMAP_METHOD(PanthalassaSendMessage,
+                 PanthalassaSendMessageWithResolver:(NSDictionary *)config
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject) {
+  
+  BOOL response;
+  NSError *error = nil;
+  response = PanthalassaSendMessage([RCTConvert NSString:config[@"partner"]],
+                                    [RCTConvert NSString:config[@"message"]],
+                                      &error);
+  
+  NSNumber *val = [NSNumber numberWithBool:response];
+  
+  if (error == nil) {
+    resolve(val);
+  } else {
+    reject(@"error", error.localizedDescription, error);
+  }
+}
+
+RCT_REMAP_METHOD(PanthalassaSetLogger,
+                 PanthalassaSetLoggerWithResolver:(NSDictionary *)config
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject) {
+  
+  BOOL response;
+  NSError *error = nil;
+  response = PanthalassaSetLogger([RCTConvert NSString:config[@"level"]],
+                                    &error);
+  
+  NSNumber *val = [NSNumber numberWithBool:response];
+  
+  if (error == nil) {
+    resolve(val);
+  } else {
+    reject(@"error", error.localizedDescription, error);
+  }
+}
 
 // TEST FOR SEND  - https://facebook.github.io/react-native/docs/native-modules-ios.html#sending-events-to-javascript
 - (NSArray<NSString *> *)supportedEvents
