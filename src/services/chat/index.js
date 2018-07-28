@@ -4,9 +4,14 @@ import { NativeModules } from 'react-native';
 import Config from 'react-native-config';
 import defaultDB from '../database';
 import { byteToHexString } from '../../utils/key';
-
-
-const { Panthalassa } = NativeModules;
+import {
+  panthalassaGetIdentityPublicKey,
+  panthalassaNewPreKeyBundle,
+  panthalassaInitializeChat,
+  panthalassaHandleInitialMessage,
+  panthalassaCreateHumanMessage,
+  panthalassaDecryptMessage,
+} from '../../services/panthalassa';
 
 export default class ChatService {
   static async uploadProfile(profile: string): Promise<any> {
@@ -49,7 +54,7 @@ export default class ChatService {
   }
 
   static async getPublicKey(): Promise<any> {
-    const publicKey = await Panthalassa.PanthalassaIdentityPublicKey();
+    const publicKey = await panthalassaGetIdentityPublicKey();
     return publicKey;
   }
 
@@ -79,7 +84,7 @@ export default class ChatService {
   }
 
   static async uploadPreKeyBundle(): Promise<any> {
-    let preKeyBundle = await Panthalassa.PanthalassaNewPreKeyBundle();
+    let preKeyBundle = await panthalassaNewPreKeyBundle();
     preKeyBundle = JSON.parse(preKeyBundle);
     console.log('pre key bundle: ', preKeyBundle);
 
@@ -104,26 +109,26 @@ export default class ChatService {
   }
 
   static async startChat(identityPublicKey: string, preKeyBundle: string): Promise<any> {
-    let response = await Panthalassa.PanthalassaInitializeChat({ identityPublicKey, preKeyBundle });
+    let response = await panthalassaInitializeChat(identityPublicKey, preKeyBundle);
     response = JSON.parse(response);
     await ChatService.uploadMessage(response.message);
     return response;
   }
   static async handleChatInit(message: string, preKeyBundlePrivatePart: string): Promise<any> {
-    return Panthalassa.PanthalassaHandleInitialMessage({ message, preKeyBundlePrivatePart });
+    return panthalassaHandleInitialMessage(message, preKeyBundlePrivatePart);
   }
 
   static async createHumanMessage(rawMsg: string, secretID: string, secret: string, receiverIdKey: string): Promise<any> {
-    let response = await Panthalassa.PanthalassaCreateHumanMessage({
+    let response = await panthalassaCreateHumanMessage(
       rawMsg, secretID, secret, receiverIdKey,
-    });
+    );
     response = JSON.parse(response);
     await ChatService.uploadMessage(response);
     return response;
   }
 
   static async decryptMessage(message: string, secret: string): Promise<any> {
-    return Panthalassa.PanthalassaDecryptMessage({ message, secret });
+    return panthalassaDecryptMessage(message, secret);
   }
 
   static async uploadMessage(message: Object): Promise<any> {
