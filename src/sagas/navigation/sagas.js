@@ -35,18 +35,24 @@ export function* launchCorrectFlow(action: CurrentAccountIdChangedAction | Start
  * @desc Launch logged in flow of the app.
  * @return {void}
  */
-export function launchLoggedInFlow() {
-  Navigation.startTabBasedApp({
-    tabs: [
-      screen('DASHBOARD_SCREEN'),
-      screen('CHAT_LIST_SCREEN'),
-      screen('NATIONS_SCREEN'),
-      screen('WALLET_SCREEN'),
-      screen('SETTINGS_SCREEN'),
-    ],
-    tabsStyle: { ...tabsStyle },
-    appStyle: { ...appStyle },
-  });
+export function launchLoggedInFlow(isMigration: boolean) {
+  if (isMigration) {
+    Navigation.startSingleScreenApp({
+      screen: screen('MIGRATION_SCREEN'),
+    });
+  } else {
+    Navigation.startTabBasedApp({
+      tabs: [
+        screen('DASHBOARD_SCREEN'),
+        screen('CHAT_LIST_SCREEN'),
+        screen('NATIONS_SCREEN'),
+        screen('WALLET_SCREEN'),
+        screen('SETTINGS_SCREEN'),
+      ],
+      tabsStyle: { ...tabsStyle },
+      appStyle: { ...appStyle },
+    });
+  }
 }
 
 /**
