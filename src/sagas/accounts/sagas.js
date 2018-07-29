@@ -28,9 +28,7 @@ import {
   startFetchMessages,
   stopFetchMessages,
 } from '../../actions/chat';
-import {
-  startMigration
-} from '../../actions/migration';
+import {startMigration,} from '../../actions/migration';
 import {
   convertFromDatabase, convertToDatabase, retrieveProfileFromAccount,
   retrieveProfileFromPartialAccount,
@@ -45,7 +43,7 @@ import { cancelAccountEditing, setPublicKey } from '../../actions/profile';
 import { resetSettings } from '../../actions/settings';
 import ChatService from '../../services/chat';
 import MigrationService from '../../services/migration';
- { State as AccountsState } from '../../reducers/accounts';
+import type { State as AccountsState } from '../../reducers/accounts';
 
 export const getAccounts = (state: AccountsState) => state.accounts;
 
