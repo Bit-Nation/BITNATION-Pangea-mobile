@@ -1,11 +1,7 @@
 // @flow
 
 import React from 'react';
-
-import Text from '../../components/dApps/Text';
-import View from '../../components/dApps/View';
-import TextInput from '../../components/dApps/TextInput';
-import Button from '../../components/dApps/Button';
+import components from '../components';
 
 export type ComponentsJSON = { type: string, props: Object, children: Array<Object> };
 
@@ -14,21 +10,7 @@ export type ComponentsJSON = { type: string, props: Object, children: Array<Obje
  * @param {string} typeName String representation of the type.
  * @return {*} Class or function of component or null if type is unknown.
  */
-export const getTypeElementFromText = (typeName: string) => {
-  switch (typeName) {
-    case 'Text':
-      return Text;
-    case 'View':
-      return View;
-    case 'TextInput':
-      return TextInput;
-    case 'Button':
-      return Button;
-    default:
-      console.warn(`Unknown component type ${typeName}.`);
-      return null;
-  }
-};
+export const getTypeElementFromText = (typeName: string) => components[typeName];
 
 /**
  * @desc Validates props against list of valid names and filter only whitelisted ones.
@@ -40,19 +22,19 @@ export const getTypeElementFromText = (typeName: string) => {
  */
 export const validateProps = (
   props: Object,
-  validProps: { native: Array<string>, stateBased: Array<string>, callbacks: Array<string> },
+  validProps: { native: Array<string>, custom: Array<string>, callbacks: Array<string> },
   type: string,
 ) => {
   const nativeProps = {};
-  const stateBasedProps = {};
+  const customProps = {};
   const callbackProps = {};
   Object.keys(props).forEach((propName) => {
     if (validProps.native.includes(propName)) {
       // It's an allowed native prop.
       nativeProps[propName] = props[propName];
-    } else if (propName.endsWith('Path') && validProps.stateBased.includes(propName.substring(0, propName.length - 4))) {
-      // It's an allowed prop to set or get root component state. That properties are marked by Path suffix.
-      stateBasedProps[propName] = props[propName];
+    } else if (validProps.custom.includes(propName)) {
+      // It's an allowed custom prop.
+      customProps[propName] = props[propName];
     } else if (propName.endsWith('ID') && validProps.callbacks.includes(propName.substring(0, propName.length - 2))) {
       // It's an allowed prop to perform a callback. That properties are marked by ID suffix.
       callbackProps[propName] = props[propName];
@@ -61,7 +43,7 @@ export const validateProps = (
     }
   });
 
-  return { nativeProps, stateBasedProps, callbackProps };
+  return { nativeProps, customProps, callbackProps };
 };
 
 /**
@@ -78,7 +60,7 @@ export const renderJSON = (json: ComponentsJSON, key: ?string, customPropsProvid
   // This is the case when we have string literal inside children.
   // It's only allowed for Text.
   if (type === undefined && typeof (json) === 'string') {
-    if (parent === Text) {
+    if (parent === components.Text) {
       return json;
     }
 
@@ -86,26 +68,32 @@ export const renderJSON = (json: ComponentsJSON, key: ?string, customPropsProvid
     return null;
   }
 
-  const component = getTypeElementFromText(type);
+  const component = components[type];
 
-  if (component === null) {
+  if (component == null) {
+    console.warn(`Trying to render unknown component type ${type}.`);
     return null;
   }
 
   const { props } = json;
 
-  const { nativeProps = props, stateBasedProps = {}, callbackProps = {} } =
+  const { nativeProps = props, customProps = {}, callbackProps = {} } =
     component.validNativeProps !== undefined
       ? validateProps(json.props, {
         native: component.validNativeProps,
-        stateBased: Object.keys(component.stateBasedProps || {}),
+        custom: component.customProps,
         callbacks: component.callbackProps || [],
       }, type)
       : {};
 
   return React.createElement(
     component,
-    { ...nativeProps, ...customPropsProvider(component, { ...nativeProps, ...stateBasedProps, ...callbackProps }), key },
+    {
+      nativeProps,
+      ...customProps,
+      ...customPropsProvider(component, { ...nativeProps, ...callbackProps }),
+      key,
+    },
     children
       ? children.map((child, index) => renderJSON(child, `${index}`, customPropsProvider, component))
       : null,

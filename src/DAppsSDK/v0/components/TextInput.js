@@ -18,11 +18,6 @@ export default class TextInput extends Component {
     'spellCheck',
   ];
 
-  static stateBasedProps = {
-    onChangeText: 'set',
-    value: 'get',
-  };
-
   static callbackProps = [
     'onEndEditing',
   ];
