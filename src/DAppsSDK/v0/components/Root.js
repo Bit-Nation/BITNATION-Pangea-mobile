@@ -5,10 +5,9 @@ import { MediaQueryStyleSheet } from 'react-native-responsive';
 import { View as ReactNativeView } from 'react-native';
 import { connect } from 'react-redux';
 
-import { type ComponentsJSON, renderJSON } from '../../utils/dApps/renderer';
-import { updatePartByKeyPath } from '../../utils/dApps/updates';
+import { type ComponentsJSON, renderJSON } from '../utils/renderer';
 
-import { performDAppCallback } from '../../actions/dApps';
+import { performDAppCallback } from '../../../actions/dApps';
 
 export type Props = {
   /**
@@ -22,7 +21,7 @@ export type Props = {
   /**
    * @desc Action to perform a DApp callback.
    */
-  performDAppCallback: (appId: string, callbacID: number, state: any) => void,
+  performDAppCallback: (appId: string, callbackID: number, state: any) => void,
 }
 
 const styles = MediaQueryStyleSheet.create({
@@ -40,18 +39,6 @@ class Root extends Component<Props, any> {
     this.state = {};
   }
 
-  getStateByKeyPath = (keyPath: string): any =>
-    keyPath
-      .split('.')
-      .reduce(
-        (obj: any, key: string): any => (obj != null ? obj[key] : undefined),
-        this.state,
-      );
-
-  updateStateByKeyPath = (keyPath: string, value: any) => {
-    this.setState(prevState => updatePartByKeyPath(prevState, keyPath, value));
-  };
-
   performCallbackByID = (callbackID: number) => {
     this.props.performDAppCallback(this.props.dAppPublicKey, callbackID, this.state);
   };
@@ -61,27 +48,8 @@ class Root extends Component<Props, any> {
       return {};
     }
 
-    const { stateBasedProps = {}, callbackProps = [] } = component;
+    const { callbackProps = [] } = component;
     const resultedProps = {};
-
-    Object.keys(stateBasedProps).forEach((nameWithoutPath) => {
-      const propKind = stateBasedProps[nameWithoutPath];
-      // Names on components are specified without 'Path' suffix to match native props.
-      const propName = `${nameWithoutPath}Path`;
-      const propKeyPath = ownProps[propName];
-      if (propKeyPath == null) return;
-      if (typeof propKeyPath !== 'string') {
-        console.warn(`Prop ${propName} must be a key path string linking to location in the state.`);
-        return;
-      }
-      if (propKind === 'set') {
-        // It's a setting property
-        resultedProps[nameWithoutPath] = value => this.updateStateByKeyPath(propKeyPath, value);
-      } else {
-        // It's a getting property
-        resultedProps[nameWithoutPath] = this.getStateByKeyPath(propKeyPath);
-      }
-    });
 
     callbackProps.forEach((nameWithoutID) => {
       // Names on components are specified without 'ID' suffix to match native props.
