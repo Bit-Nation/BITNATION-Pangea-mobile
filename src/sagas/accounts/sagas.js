@@ -29,6 +29,9 @@ import {
   stopFetchMessages,
 } from '../../actions/chat';
 import {
+  startMigration
+} from '../../actions/migration';
+import {
   convertFromDatabase, convertToDatabase, retrieveProfileFromAccount,
   retrieveProfileFromPartialAccount,
 } from '../../utils/mapping/account';
@@ -41,7 +44,8 @@ import type { SaveEditingAccountAction } from '../../actions/profile';
 import { cancelAccountEditing, setPublicKey } from '../../actions/profile';
 import { resetSettings } from '../../actions/settings';
 import ChatService from '../../services/chat';
-import type { State as AccountsState } from '../../reducers/accounts';
+import typeimport MigrationService from '../../services/migration';
+ { State as AccountsState } from '../../reducers/accounts';
 
 export const getAccounts = (state: AccountsState) => state.accounts;
 
@@ -220,6 +224,10 @@ export function* login(userInfo: ({ accountId: string, accountStore?: string }),
     if (isValid !== true) {
       yield put(loginTaskUpdated(TaskBuilder.failure(new InvalidPasswordError())));
       return;
+    }
+    const isMigration = yield call(MigrationService.isMigration);
+    if (isMigration === true) {
+      yield put(startMigration());
     }
   } catch (error) {
     if (error.transKey !== undefined) {
