@@ -7,6 +7,7 @@ import { Navigation } from 'react-native-navigation';
 import { appStyle, screen, tabsStyle } from '../../global/Screens';
 import { accountsPresent, getCurrentAccountId } from '../accounts/sagas';
 import type { CurrentAccountIdChangedAction } from '../../actions/accounts';
+import { isMigration } from '../migration/sagas';
 import type { StartNavigationAction } from '../../actions/navigation';
 import { CURRENT_ACCOUNT_ID_CHANGED } from '../../actions/accounts';
 
@@ -35,10 +36,12 @@ export function* launchCorrectFlow(action: CurrentAccountIdChangedAction | Start
  * @desc Launch logged in flow of the app.
  * @return {void}
  */
-export function launchLoggedInFlow(isMigration: boolean) {
-  if (isMigration) {
+export function* launchLoggedInFlow() {
+  const isMigrationRequired = yield call(isMigration);
+  if (isMigrationRequired) {
     Navigation.startSingleScreenApp({
       screen: screen('MIGRATION_SCREEN'),
+      appStyle: { ...appStyle },
     });
   } else {
     Navigation.startTabBasedApp({
@@ -54,6 +57,7 @@ export function launchLoggedInFlow(isMigration: boolean) {
     });
   }
 }
+
 
 /**
  * @desc Launch logged out flow of the app.
