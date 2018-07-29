@@ -1,7 +1,7 @@
 // @flow
 
-import { type Action  } from '../actions/migration';
-import { SERVICES_CREATED, SERVICES_DESTROYED } from '../actions/serviceContainer';
+import { type Action, STORE_VERSION } from '../actions/migration';
+import { SERVICES_DESTROYED } from '../actions/serviceContainer';
 
 export type State = {
   };
@@ -19,6 +19,11 @@ export default (state: State = initialState, action: Action): State => {
   switch (action.type) {
     case SERVICES_DESTROYED:
       return initialState;
+    case STORE_VERSION:
+      return {
+        ...state,
+        migrationVersion: action.version,
+      };
     default:
       return state;
   }

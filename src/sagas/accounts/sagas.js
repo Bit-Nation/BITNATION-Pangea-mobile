@@ -28,7 +28,7 @@ import {
   startFetchMessages,
   stopFetchMessages,
 } from '../../actions/chat';
-import {startMigration,} from '../../actions/migration';
+import { storeVersion } from '../../actions/migration';
 import {
   convertFromDatabase, convertToDatabase, retrieveProfileFromAccount,
   retrieveProfileFromPartialAccount,
@@ -42,7 +42,6 @@ import type { SaveEditingAccountAction } from '../../actions/profile';
 import { cancelAccountEditing, setPublicKey } from '../../actions/profile';
 import { resetSettings } from '../../actions/settings';
 import ChatService from '../../services/chat';
-import MigrationService from '../../services/migration';
 import type { State as AccountsState } from '../../reducers/accounts';
 
 export const getAccounts = (state: AccountsState) => state.accounts;
@@ -200,6 +199,7 @@ export function* login(userInfo: ({ accountId: string, accountStore?: string }),
 
   yield put(loginTaskUpdated(TaskBuilder.pending()));
   const { accountId } = userInfo;
+  const version = VersionNumber.appVersion;
   let accountStore: string;
   let profile: Profile;
   if (userInfo.accountStore == null) {
@@ -217,15 +217,13 @@ export function* login(userInfo: ({ accountId: string, accountStore?: string }),
     profile = result;
   }
 
+  yield put(storeVersion(version));
+
   try {
     const isValid = yield call(AccountsService.login, accountStore, profile, password);
     if (isValid !== true) {
       yield put(loginTaskUpdated(TaskBuilder.failure(new InvalidPasswordError())));
       return;
-    }
-    const isMigration = yield call(MigrationService.isMigration);
-    if (isMigration === true) {
-      yield put(startMigration());
     }
   } catch (error) {
     if (error.transKey !== undefined) {
