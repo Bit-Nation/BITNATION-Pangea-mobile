@@ -110,7 +110,7 @@ const Screens = {
     navigatorStyle,
   },
   MIGRATION_SCREEN: {
-    screem: 'Pangea.MigartionScreen',
+    screen: 'Pangea.MigrationScreen',
     label: i18n.t('screens.migration.title'),
     navigatorStyle,
   },
