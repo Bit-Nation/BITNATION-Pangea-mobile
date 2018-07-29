@@ -2,8 +2,9 @@
 
 import React from 'react';
 import { View, Text } from 'react-native';
+import { connect } from 'react-redux';
 import i18n from '../../global/i18n';
-
+import { startMigration } from '../../actions/migration';
 import BackgroundImage from '../../components/common/BackgroundImage';
 import styles from './styles';
 import NavigatorComponent from '../../components/common/NavigatorComponent';
@@ -19,6 +20,9 @@ type State = {
 }
 
 class MigrationScreen extends NavigatorComponent<Props & Actions, State> {
+  componentDidMount() {
+    this.props.startMigration();
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -30,4 +34,14 @@ class MigrationScreen extends NavigatorComponent<Props & Actions, State> {
   }
 }
 
-export default MigrationScreen;
+const mapStateToProps = state => ({
+  ...state.migration,
+});
+
+const mapDispatchToProps = dispatch => ({
+  startMigration() {
+    dispatch(startMigration());
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(MigrationScreen);

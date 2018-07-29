@@ -2,7 +2,6 @@
 
 import { call, select, put } from 'redux-saga/effects';
 import _ from 'lodash';
-
 // import type { Migration } from '../../types/Migration';
 
 /**
@@ -10,4 +9,5 @@ import _ from 'lodash';
  * @return {void}
  */
 export function* startMigration(): Generator<*, *, *> {
+  // @todo All migration functions will go here
 }

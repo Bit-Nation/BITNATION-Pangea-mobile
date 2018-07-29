@@ -17,6 +17,7 @@ export function convertFromDatabase(account: DBAccount): Account {
     avatar: account.profileImage,
     accountStore: account.accountStore,
     confirmedMnemonic: account.confirmedMnemonic,
+    lastMigrationVersion: account.lastMigrationVersion,
   };
 }
 
