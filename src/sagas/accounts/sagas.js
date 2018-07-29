@@ -44,7 +44,7 @@ import type { SaveEditingAccountAction } from '../../actions/profile';
 import { cancelAccountEditing, setPublicKey } from '../../actions/profile';
 import { resetSettings } from '../../actions/settings';
 import ChatService from '../../services/chat';
-import typeimport MigrationService from '../../services/migration';
+import MigrationService from '../../services/migration';
  { State as AccountsState } from '../../reducers/accounts';
 
 export const getAccounts = (state: AccountsState) => state.accounts;
