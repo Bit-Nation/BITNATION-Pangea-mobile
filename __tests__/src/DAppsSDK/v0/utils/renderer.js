@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { getTypeElementFromText, renderJSON, validateProps } from '../../../../src/DAppsSDK/v0/utils/renderer';
-import View from '../../../../src/DAppsSDK/v0/components/View';
-import Text from '../../../../src/DAppsSDK/v0/components/Text';
-import TextInput from '../../../../src/DAppsSDK/v0/components/TextInput';
-import Button from '../../../../src/DAppsSDK/v0/components/Button';
+import { getTypeElementFromText, renderJSON, validateProps } from '../../../../../src/DAppsSDK/v0/utils/renderer';
+import View from '../../../../../src/DAppsSDK/v0/components/View';
+import Text from '../../../../../src/DAppsSDK/v0/components/Text';
+import TextInput from '../../../../../src/DAppsSDK/v0/components/TextInput';
+import Button from '../../../../../src/DAppsSDK/v0/components/Button';
 
 React.createElement = jest.fn().mockImplementation((component, props, children) => ({
   component,
@@ -17,7 +17,7 @@ test('getTypeElementFromText', () => {
   expect(getTypeElementFromText('View')).toEqual(View);
   expect(getTypeElementFromText('TextInput')).toEqual(TextInput);
   expect(getTypeElementFromText('Button')).toEqual(Button);
-  expect(getTypeElementFromText('Something unknown')).toBeNull();
+  expect(getTypeElementFromText('Something unknown')).toBeUndefined();
 });
 
 test('validateProps', () => {
@@ -26,15 +26,14 @@ test('validateProps', () => {
       allowedNativeProp1: 'ALLOWED_NATIVE_PROP_1',
       allowedNativeProp2: 'ALLOWED_NATIVE_PROP_2',
       disallowedNativeProp3: 'DISALLOWED_NATIVE_PROP_3',
-      disabledPath: 'DISABLED',
-      onChangeTextPath: 'ON_CHANGE_TEXT',
-      badStateBasedPropertyPath: 'BAD_STATE_BASED_PROPERTY',
-      onValidChangedPath: 'ON_VALID_CHANGED',
+      someCustomProp1: 'SOME_CUSTOM_PROP_1',
+      someCustomProp2: 'SOME_CUSTOM_PROP_2',
+      badCustomProp: 'BAD_CUSTOM_PROP',
       onPressID: 'ON_PRESS',
       badCallbackID: 'BAD_CALLBACK',
     }, {
       native: ['allowedNativeProp1', 'allowedNativeProp2'],
-      stateBased: ['disabled', 'onChangeText'],
+      custom: ['someCustomProp1', 'someCustomProp2'],
       callbacks: ['onPress'],
     },
     'COMPONENT_TYPE',
@@ -43,9 +42,9 @@ test('validateProps', () => {
       allowedNativeProp1: 'ALLOWED_NATIVE_PROP_1',
       allowedNativeProp2: 'ALLOWED_NATIVE_PROP_2',
     },
-    stateBasedProps: {
-      disabledPath: 'DISABLED',
-      onChangeTextPath: 'ON_CHANGE_TEXT',
+    customProps: {
+      someCustomProp1: 'SOME_CUSTOM_PROP_1',
+      someCustomProp2: 'SOME_CUSTOM_PROP_2',
     },
     callbackProps: {
       onPressID: 'ON_PRESS',
@@ -61,7 +60,7 @@ describe('renderJSON', () => {
       children: null,
     }, undefined, () => ({}))).toEqual({
       component: View,
-      props: {},
+      props: { nativeProps: {} },
       children: null,
     });
   });
@@ -73,7 +72,7 @@ describe('renderJSON', () => {
   test('string literal outside Text', () => {
     expect(renderJSON({ type: 'View', children: ['Something unknown'], props: {} }, undefined, () => ({}))).toEqual({
       component: View,
-      props: {},
+      props: { nativeProps: {} },
       children: [null],
     });
   });
@@ -113,41 +112,43 @@ describe('renderJSON', () => {
           type: 'TextInput',
           props: {
             style: { width: 200, height: 50 },
-            onChangeTextPath: 'textInput1.text',
-            onEndEditingID: 'text callback',
+            onEndEditingID: 1,
           },
         },
         {
           type: 'TextInput',
-          props: { style: { width: 200, height: 50 }, valuePath: 'textInput1.text' },
+          props: { style: { width: 200, height: 50 } },
         },
         {
           type: 'Button',
           props: {
             style: { width: 100, height: 50, backgroundColor: 'green' },
             title: 'Hey',
-            onPressID: 'BUTTON CALLBACK',
-            disabledPath: 'textInput1.text.length',
+            onPressID: 2,
           },
         },
       ],
     };
 
     const customPropsProvider = (component, ownProps) => ({
-      type: component,
       ownPropsCount: Object.keys(ownProps).length,
     });
 
     expect(renderJSON(json, undefined, customPropsProvider)).toEqual({
       component: View,
       props: {
-        style: { backgroundColor: 'yellow', flex: 1 }, type: View, key: undefined, ownPropsCount: 1,
+        nativeProps: { style: { backgroundColor: 'yellow', flex: 1 } },
+        key: undefined,
+        ownPropsCount: 1,
       },
       children: [
         {
           component: Text,
           props: {
-            style: { color: 'red' }, type: Text, key: '0', ownPropsCount: 1,
+            nativeProps: {},
+            style: { color: 'red' },
+            key: '0',
+            ownPropsCount: 1,
           },
           children: [
             'Red text',
@@ -156,18 +157,26 @@ describe('renderJSON', () => {
         {
           component: View,
           props: {
-            style: { backgroundColor: 'blue' }, type: View, key: '1', ownPropsCount: 1,
+            nativeProps: { style: { backgroundColor: 'blue' } },
+            key: '1',
+            ownPropsCount: 1,
           },
           children: [
             {
               component: Text,
               props: {
-                style: { color: 'white' }, type: Text, key: '0', ownPropsCount: 1,
+                nativeProps: {},
+                style: { color: 'white' },
+                key: '0',
+                ownPropsCount: 1,
               },
               children: [{
                 component: Text,
                 props: {
-                  style: { color: 'red' }, type: Text, key: '0', ownPropsCount: 1,
+                  nativeProps: {},
+                  style: { color: 'red' },
+                  key: '0',
+                  ownPropsCount: 1,
                 },
                 children: [
                   'White bold text',
@@ -182,25 +191,33 @@ describe('renderJSON', () => {
           children: null,
           component: TextInput,
           props: {
-            style: { width: 200, height: 50 }, type: TextInput, key: '2', ownPropsCount: 3,
+            nativeProps: {
+              style: { width: 200, height: 50 },
+            },
+            key: '2',
+            ownPropsCount: 2,
           },
         },
         {
           children: null,
           component: TextInput,
           props: {
-            style: { width: 200, height: 50 }, type: TextInput, key: '3', ownPropsCount: 2,
+            nativeProps: {
+              style: { width: 200, height: 50 },
+            },
+            key: '3',
+            ownPropsCount: 1,
           },
         },
         {
           children: null,
           component: Button,
           props: {
+            nativeProps: {},
             style: { width: 100, height: 50, backgroundColor: 'green' },
             title: 'Hey',
-            type: Button,
             key: '4',
-            ownPropsCount: 4,
+            ownPropsCount: 3,
           },
         },
       ],
