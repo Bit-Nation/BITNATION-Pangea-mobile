@@ -6,7 +6,7 @@ import { View } from 'react-native';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import Colors from '../../../global/colors';
 import i18n from '../../../global/i18n';
-import Root from '../../../DAppsSDK/v0/components/Root';
+import Root from '../../../DAppsSDK/0.0.1/components/Root';
 import GlobalStyles from '../../../global/Styles';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
