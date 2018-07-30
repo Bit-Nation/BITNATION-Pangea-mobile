@@ -47,7 +47,6 @@ export default class Text extends React.Component<Props> {
   static validNativeProps = [
     'numberOfLines',
     'ellipsizeMode',
-    'children',
   ];
 
   static customProps = [
