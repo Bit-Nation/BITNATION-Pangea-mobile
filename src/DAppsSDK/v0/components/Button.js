@@ -36,11 +36,6 @@ type Props = {
   onPress: () => any,
 }
 
-const types = [
-  'transparent',
-  'action',
-];
-
 export default class Button extends Component<Props> {
   static validNativeProps = [
     'disabled',
@@ -67,6 +62,7 @@ export default class Button extends Component<Props> {
     switch (type) {
       case 'transparent':
         return styles.baseButton;
+      // @todo Add more styles
       default:
         return null;
     }
