@@ -1,8 +1,21 @@
+// @flow
+
 import React, { Component } from 'react';
 
 import { TextInput as ReactNativeTextInput } from 'react-native';
 
-export default class TextInput extends Component {
+type Props = {
+  /**
+   * @desc Props that should be passed as they are to backed native component.
+   */
+  nativeProps: Object,
+  /**
+   * @desc Callback to be called when entering into text field is done.
+   */
+  onEndEditing: (text: string) => any,
+}
+
+export default class TextInput extends Component<Props, *> {
   static validNativeProps = [
     'style',
     'autoCorrect',
@@ -22,9 +35,23 @@ export default class TextInput extends Component {
     'onEndEditing',
   ];
 
+  static defaultProps = {
+    onEndEditing: () => undefined,
+  };
+
+  constructor(props: Props) {
+    super(props);
+    this.state = { value: '' };
+  }
+
   render() {
     return (
-      <ReactNativeTextInput {...this.props} />
+      <ReactNativeTextInput
+        {...this.props.nativeProps}
+        value={this.state.value}
+        onChangeText={value => this.setState({ value })}
+        onEndEditing={() => this.props.onEndEditing(this.state.value)}
+      />
     );
   }
 }

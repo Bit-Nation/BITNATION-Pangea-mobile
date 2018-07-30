@@ -253,6 +253,10 @@ const Screens = {
     title: i18n.t('screens.chat.title'),
     navigatorStyle,
   },
+  NATIVE_DAPP_MODAL_SCREEN: {
+    screen: 'Pangea.DAppModalScreen',
+    navigatorStyle,
+  },
   DAPP_MODAL_SCREEN: {
     screen: 'Pangea.DAppModalScreen',
     navigatorStyle,
