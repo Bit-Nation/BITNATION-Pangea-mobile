@@ -78,13 +78,11 @@ export const renderJSON = (json: ComponentsJSON, key: ?string, customPropsProvid
   const { props } = json;
 
   const { nativeProps = props, customProps = {}, callbackProps = {} } =
-    component.validNativeProps !== undefined
-      ? validateProps(json.props, {
-        native: component.validNativeProps,
-        custom: component.customProps,
-        callbacks: component.callbackProps || [],
-      }, type)
-      : {};
+    validateProps(json.props, {
+      native: component.validNativeProps || [],
+      custom: component.customProps || [],
+      callbacks: component.callbackProps || [],
+    }, type);
 
   return React.createElement(
     component,

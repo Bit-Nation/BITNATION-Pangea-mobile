@@ -21,7 +21,7 @@ export type Props = {
   /**
    * @desc Action to perform a DApp callback.
    */
-  performDAppCallback: (appId: string, callbackID: number, state: any) => void,
+  performDAppCallback: (appId: string, callbackID: number, args: Object) => void,
 }
 
 const styles = MediaQueryStyleSheet.create({
@@ -39,8 +39,8 @@ class Root extends Component<Props, any> {
     this.state = {};
   }
 
-  performCallbackByID = (callbackID: number) => {
-    this.props.performDAppCallback(this.props.dAppPublicKey, callbackID, this.state);
+  performCallbackByID = (callbackID: number, args: Object) => {
+    this.props.performDAppCallback(this.props.dAppPublicKey, callbackID, args);
   };
 
   generateCustomProps = (component: any, ownProps: Object) => {
@@ -61,7 +61,7 @@ class Root extends Component<Props, any> {
         return;
       }
 
-      resultedProps[nameWithoutID] = () => this.performCallbackByID(callbackID);
+      resultedProps[nameWithoutID] = args => this.performCallbackByID(callbackID, args);
     });
 
     return resultedProps;

@@ -1,15 +1,30 @@
-import React, { Component } from 'react';
+// @flow
+
+import * as React from 'react';
 
 import { View as ReactNativeView } from 'react-native';
 
-export default class View extends Component {
+type Props = {
+  /**
+   * @desc Props that should be passed as they are to backed native component.
+   */
+  nativeProps: Object,
+  /**
+   * @desc Children components.
+   */
+  children: React.Node,
+}
+
+export default class View extends React.Component<Props> {
   static validNativeProps = [
     'style',
   ];
 
   render() {
     return (
-      <ReactNativeView {...this.props} />
+      <ReactNativeView {...this.props.nativeProps}>
+        {this.props.children}
+      </ReactNativeView>
     );
   }
 }
