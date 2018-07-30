@@ -89,7 +89,7 @@ export const renderJSON = (json: ComponentsJSON, key: ?string, customPropsProvid
     {
       nativeProps,
       ...customProps,
-      ...customPropsProvider(component, { ...nativeProps, ...callbackProps }),
+      ...customPropsProvider(component, { ...nativeProps, ...customProps, ...callbackProps }),
       key,
     },
     children
