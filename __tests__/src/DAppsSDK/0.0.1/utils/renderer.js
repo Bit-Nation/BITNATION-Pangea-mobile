@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { getTypeElementFromText, renderJSON, validateProps } from '../../../../../src/DAppsSDK/v0/utils/renderer';
-import View from '../../../../../src/DAppsSDK/v0/components/View';
-import Text from '../../../../../src/DAppsSDK/v0/components/Text';
-import TextInput from '../../../../../src/DAppsSDK/v0/components/TextInput';
-import Button from '../../../../../src/DAppsSDK/v0/components/Button';
+import { getTypeElementFromText, renderJSON, validateProps } from '../../../../../src/DAppsSDK/0.0.1/utils/renderer';
+import View from '../../../../../src/DAppsSDK/0.0.1/components/View';
+import Text from '../../../../../src/DAppsSDK/0.0.1/components/Text';
+import TextInput from '../../../../../src/DAppsSDK/0.0.1/components/TextInput';
+import Button from '../../../../../src/DAppsSDK/0.0.1/components/Button';
 
 React.createElement = jest.fn().mockImplementation((component, props, children) => ({
   component,
