@@ -29,6 +29,11 @@ export const validateProps = (
   const customProps = {};
   const callbackProps = {};
   Object.keys(props).forEach((propName) => {
+    if (typeof propName !== 'string') {
+      console.warn('Prop name is not a string');
+      return;
+    }
+
     if (validProps.native.includes(propName)) {
       // It's an allowed native prop.
       nativeProps[propName] = props[propName];
@@ -72,6 +77,19 @@ export const renderJSON = (json: ComponentsJSON, key: ?string, customPropsProvid
 
   if (component == null) {
     console.warn(`Trying to render unknown component type ${type}.`);
+    return null;
+  }
+
+  if (component.validNativeProps != null && Array.isArray(component.validNativeProps) === false) {
+    console.warn(`validNativeProps field of component ${type} should be an array of strings.`);
+    return null;
+  }
+  if (component.customProps != null && Array.isArray(component.customProps) === false) {
+    console.warn(`customProps field of component ${type} should be an array of strings.`);
+    return null;
+  }
+  if (component.callbackProps != null && Array.isArray(component.callbackProps) === false) {
+    console.warn(`callbackProps field of component ${type} should be an array of strings.`);
     return null;
   }
 
