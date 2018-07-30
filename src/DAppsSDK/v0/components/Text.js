@@ -1,6 +1,6 @@
 // @flow
 
-import React, { Component } from 'react';
+import * as React from 'react';
 import { Text as ReactNativeText } from 'react-native';
 
 import styles from '../../../global/Styles';
@@ -17,7 +17,11 @@ type Props = {
   /**
    * @desc Style object.
    */
-  style?: Object
+  style?: Object,
+  /**
+   * @desc Children components.
+   */
+  children: React.Node,
 }
 
 const types = [
@@ -39,10 +43,11 @@ const types = [
   'disabledText',
 ];
 
-export default class Text extends Component<Props> {
+export default class Text extends React.Component<Props> {
   static validNativeProps = [
     'numberOfLines',
     'ellipsizeMode',
+    'children',
   ];
 
   static customProps = [
@@ -72,7 +77,9 @@ export default class Text extends Component<Props> {
       <ReactNativeText
         {...this.props.nativeProps}
         style={[typeStyle, this.props.style]}
-      />
+      >
+        {this.props.children}
+      </ReactNativeText>
     );
   }
 }

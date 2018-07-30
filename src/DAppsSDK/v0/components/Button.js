@@ -1,8 +1,12 @@
 // @flow
 
 import React, { Component } from 'react';
+import {
+  TouchableOpacity,
+  View,
+  Text,
+} from 'react-native';
 
-import { Button as ReactNativeButton } from 'react-native';
 import styles from '../../../global/Styles';
 
 type Props = {
@@ -17,7 +21,19 @@ type Props = {
   /**
    * @desc Style object.
    */
-  style?: Object
+  style?: Object,
+  /**
+   * @desc Title of the button.
+   */
+  title: string,
+  /**
+   * @desc Set if button should be disabled.
+   */
+  disabled: boolean,
+  /**
+   * @desc Callback to be called when button is pressed.
+   */
+  onPress: () => any,
 }
 
 const types = [
@@ -25,11 +41,8 @@ const types = [
   'action',
 ];
 
-
 export default class Button extends Component<Props> {
   static validNativeProps = [
-    'title',
-    'color',
     'disabled',
   ];
 
@@ -39,19 +52,24 @@ export default class Button extends Component<Props> {
 
   static customProps = [
     'type',
+    'title',
     'style',
   ];
 
   static defaultProps = {
-    type: 'body',
+    type: 'transparent',
+    disabled: false,
+    title: '',
+    onPress: () => undefined,
   };
 
   styleForType(type: string) {
-    if (types.includes(type) === false) {
-      return null;
+    switch (type) {
+      case 'transparent':
+        return styles.baseButton;
+      default:
+        return null;
     }
-
-    return styles[type];
   }
 
   render() {
@@ -61,10 +79,26 @@ export default class Button extends Component<Props> {
     }
 
     return (
-      <ReactNativeButton
-        {...this.props.nativeProps}
-        style={[typeStyle, this.props.style]}
-      />
+
+      <View
+        style={[
+          typeStyle,
+          this.props.style,
+        ]}
+      >
+        <TouchableOpacity
+          testID='Touchable'
+          {...this.props.nativeProps}
+          style={[styles.buttonContainer]}
+          onPress={() => this.props.onPress()}
+        >
+          {
+            <Text style={[styles.buttonTitle, (this.props.disabled === false) && styles.disabledButtonTitle]}>
+              {this.props.title}
+            </Text>
+          }
+        </TouchableOpacity>
+      </View>
     );
   }
 }
