@@ -36,7 +36,7 @@ export function* launchCorrectFlow(action: CurrentAccountIdChangedAction | Start
  * @desc Launch logged in flow of the app.
  * @return {void}
  */
-export function* launchLoggedInFlow() {
+export function* launchLoggedInFlow(): Generator<*, *, any> {
   const isMigrationRequired = yield call(isMigration);
   if (isMigrationRequired) {
     Navigation.startSingleScreenApp({
