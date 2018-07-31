@@ -24,6 +24,7 @@ export function convertFromDatabase(account: DBAccount): Account {
 /**
  * @desc Converts creating account to Realm object if it's possible.
  * @param {PartialAccount} account Account to be converted.
+ * @param {string} version Version number.
  * @return {?DBAccount} Converted object.
  */
 export function convertToDatabase(account: PartialAccount | Account, version: string): DBAccount | null {
