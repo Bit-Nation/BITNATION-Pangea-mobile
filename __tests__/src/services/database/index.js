@@ -43,7 +43,7 @@ describe('db', () => {
     });
 
     test('schema v3 - v4', async () => {
-      expect.assertions(3);
+      expect.assertions(4);
       const dbPath = randomDbPath();
       const databaseGenerator = factory(dbPath, 3);
 
