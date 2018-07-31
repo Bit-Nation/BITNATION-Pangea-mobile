@@ -1,7 +1,6 @@
 // @flow
 
 import { select } from 'redux-saga/effects';
-// import type { Migration } from '../../types/Migration';
 
 /**
  * @desc Start migration.

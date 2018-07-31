@@ -5,17 +5,8 @@ import GlobalStyles from '../../global/Styles';
 
 const styles = MediaQueryStyleSheet.create({
   ...GlobalStyles,
-  container: {
+  migrationContainer: {
     flex: 1,
-  },
-  migrationTitle: {
-    marginTop: 40,
-    marginBottom: 19,
-    backgroundColor: 'white',
-    paddingHorizontal: 28,
-    color: '#58595B',
-    paddingVertical: 3,
-    alignSelf: 'flex-start',
   },
   migrationText: {
     flex: 1,
