@@ -5,9 +5,6 @@ target 'Pangea' do
   pod 'RSKImageCropper', '2.0.0'
   pod 'QBImagePickerController', '3.4.0'
 
-
-  pod 'RNDeviceInfo', :path => '../node_modules/react-native-device-info'
-
   pod 'react-native-version-number', :path => '../node_modules/react-native-version-number'
 
 end
