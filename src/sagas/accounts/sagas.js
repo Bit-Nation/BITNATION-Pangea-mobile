@@ -235,7 +235,7 @@ export function* login(userInfo: ({ accountId: string, accountStore?: string }),
   const publicKey = yield call(ChatService.getPublicKey);
   yield put(setPublicKey(publicKey));
 
-  if (version) {
+  if (version !== null) {
     yield put(storeVersion(version));
   }
 

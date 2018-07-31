@@ -12,7 +12,7 @@ export const initialState: State = {
 };
 
   /**
-   * @desc Activity reducer.
+   * @desc Migration reducer.
    * @param {State} state Current state.
    * @param {Action} action Performed action.
    * @returns {State} Next state.
