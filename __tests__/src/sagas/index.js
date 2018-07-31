@@ -15,7 +15,6 @@ import nations from '../../../src/sagas/nations';
 import txProcessor from '../../../src/sagas/txProcessor';
 import dApps from '../../../src/sagas/nativeDApps';
 import chat from '../../../src/sagas/chat';
-import migration from '../../../src/sagas/migration';
 
 test('rootSaga', () => {
   const iterator = rootSaga();
@@ -27,7 +26,6 @@ test('rootSaga', () => {
     call(key),
     call(settings),
     call(wallet),
-    call(migration),
     call(serviceContainer),
     call(modifyNation),
     call(nations),
