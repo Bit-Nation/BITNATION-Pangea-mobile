@@ -217,8 +217,6 @@ export function* login(userInfo: ({ accountId: string, accountStore?: string }),
     profile = result;
   }
 
-  yield put(storeVersion(version));
-
   try {
     const isValid = yield call(AccountsService.login, accountStore, profile, password);
     if (isValid !== true) {
@@ -236,6 +234,8 @@ export function* login(userInfo: ({ accountId: string, accountStore?: string }),
 
   const publicKey = yield call(ChatService.getPublicKey);
   yield put(setPublicKey(publicKey));
+
+  yield put(storeVersion(version));
 
   yield put(currentAccountIdChanged(accountId));
   yield put(loginTaskUpdated(TaskBuilder.success()));

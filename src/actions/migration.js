@@ -2,12 +2,12 @@
 
 type StartMigrationAction = { +type: 'START_MIGRATION' };
 type StoreVersionAction = { +type: 'STORE_VERSION' };
-type isMigrationAction = { +type: 'IS_MIGRATION' };
+type IsMigrationAction = { +type: 'IS_MIGRATION' };
 
 export type Action =
   | StartMigrationAction
   | StoreVersionAction
-  | isMigrationAction
+  | IsMigrationAction
 
 export const START_MIGRATION = 'START_MIGRATION';
 export const STORE_VERSION = 'STORE_VERSION';
@@ -38,9 +38,9 @@ export function storeVersion(version: string): StoreVersionAction {
 
 /**
  * @desc Action creator for an action that is used to check if Migration is required or not
- * @return {isMigrationAction} An action.
+ * @return {IsMigrationAction} An action.
  */
-export function isMigration(): isMigrationAction {
+export function isMigration(): IsMigrationAction {
   return {
     type: IS_MIGRATION,
   };
