@@ -1,7 +1,7 @@
 // @flow
 
 type StartMigrationAction = { +type: 'START_MIGRATION' };
-type StoreVersionAction = { +type: 'STORE_VERSION' };
+type StoreVersionAction = { +type: 'STORE_VERSION', +version: string | null };
 type IsMigrationAction = { +type: 'IS_MIGRATION' };
 
 export type Action =
