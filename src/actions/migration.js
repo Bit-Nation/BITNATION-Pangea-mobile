@@ -1,7 +1,5 @@
 // @flow
 
-import { type Migration } from '../types/Migration';
-
 type StartMigrationAction = { +type: 'START_MIGRATION' };
 type StoreVersionAction = { +type: 'STORE_VERSION' };
 type isMigrationAction = { +type: 'IS_MIGRATION' };

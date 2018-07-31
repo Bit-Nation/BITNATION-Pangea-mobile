@@ -10,8 +10,7 @@ import styles from './styles';
 import NavigatorComponent from '../../components/common/NavigatorComponent';
 
 type Props = {
-    navigator: Navigator,
-  }
+}
 
 type Actions = {
 };
