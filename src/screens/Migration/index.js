@@ -8,6 +8,7 @@ import { startMigration } from '../../actions/migration';
 import BackgroundImage from '../../components/common/BackgroundImage';
 import styles from './styles';
 import ScreenTitle from '../../components/common/ScreenTitle';
+import FakeNavigationBar from '../../components/common/FakeNavigationBar';
 import NavigatorComponent from '../../components/common/NavigatorComponent';
 
 type Props = {
@@ -27,6 +28,7 @@ class MigrationScreen extends NavigatorComponent<Props & Actions, State> {
     return (
       <View style={styles.migrationContainer}>
         <BackgroundImage />
+        <FakeNavigationBar />
         <ScreenTitle title={i18n.t('screens.migration.title')} />
         <View style={styles.bodyContainer}>
           <Text style={[styles.subhead, styles.migrationText]}>{i18n.t('screens.migration.migrateData')}</Text>
