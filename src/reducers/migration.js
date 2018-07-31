@@ -4,9 +4,11 @@ import { type Action, STORE_VERSION } from '../actions/migration';
 import { SERVICES_DESTROYED } from '../actions/serviceContainer';
 
 export type State = {
-  };
+  migrationVersion: string,
+};
 
 export const initialState: State = {
+  migrationVersion: '',
 };
 
   /**
