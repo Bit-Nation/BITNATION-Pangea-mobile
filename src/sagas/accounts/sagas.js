@@ -235,7 +235,9 @@ export function* login(userInfo: ({ accountId: string, accountStore?: string }),
   const publicKey = yield call(ChatService.getPublicKey);
   yield put(setPublicKey(publicKey));
 
-  yield put(storeVersion(version));
+  if (version) {
+    yield put(storeVersion(version));
+  }
 
   yield put(currentAccountIdChanged(accountId));
   yield put(loginTaskUpdated(TaskBuilder.success()));
@@ -360,13 +362,17 @@ export function* saveCreatingAccount(action: SaveCreatingAccountAction): Generat
   const { accounts } = yield select();
   const { creatingAccount } = accounts;
   const version = VersionNumber.appVersion;
+  let convertedAccount;
 
   if (creatingAccount === null) {
     yield call(action.callback, false);
     return;
   }
-
-  const convertedAccount = convertToDatabase(creatingAccount, version);
+  if (version) {
+    convertedAccount = convertToDatabase(creatingAccount, version);
+  } else {
+    convertedAccount = convertToDatabase(creatingAccount, '0.0.0');
+  }
   if (convertedAccount === null) {
     yield call(action.callback, false);
     return;

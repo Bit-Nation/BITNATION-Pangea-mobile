@@ -17,7 +17,7 @@ export const initialState: State = {
    * @param {Action} action Performed action.
    * @returns {State} Next state.
    */
-export default (state: State = initialState, action: Action): State => {
+export default (state: State = initialState, action: any): State => {
   switch (action.type) {
     case SERVICES_DESTROYED:
       return initialState;
