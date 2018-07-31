@@ -1,7 +1,6 @@
 // @flow
 
-import { call, select, put } from 'redux-saga/effects';
-import _ from 'lodash';
+import { select } from 'redux-saga/effects';
 // import type { Migration } from '../../types/Migration';
 
 /**
@@ -13,8 +12,8 @@ export function* startMigration(): Generator<*, *, *> {
 }
 
 /**
- * @desc Check if migration is needed or not.
- * @return {boolean}
+ * @desc Check if migration is required.
+ * @return {void}
  */
 export function* isMigration(): Generator<*, *, any> {
   const { migration } = yield select();

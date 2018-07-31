@@ -1,9 +1,6 @@
 /* eslint-disable no-use-before-define */
 // @flow
 
-import type { Realm } from 'realm';
-import uuid from 'uuid4';
-
 export const AccountSchema = {
   name: 'Account',
   primaryKey: 'id',
