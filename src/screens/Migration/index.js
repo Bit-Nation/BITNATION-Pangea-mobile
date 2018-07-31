@@ -7,6 +7,7 @@ import i18n from '../../global/i18n';
 import { startMigration } from '../../actions/migration';
 import BackgroundImage from '../../components/common/BackgroundImage';
 import styles from './styles';
+import ScreenTitle from '../../components/common/ScreenTitle';
 import NavigatorComponent from '../../components/common/NavigatorComponent';
 
 type Props = {
@@ -24,10 +25,12 @@ class MigrationScreen extends NavigatorComponent<Props & Actions, State> {
   }
   render() {
     return (
-      <View style={styles.container}>
+      <View style={styles.migrationContainer}>
         <BackgroundImage />
-        <Text style={[styles.title1, styles.migrationTitle]}>{i18n.t('screens.migration.title')}</Text>
-        <Text style={[styles.subhead, styles.migrationText]}>{i18n.t('screens.migration.migratedata')}</Text>
+        <ScreenTitle title={i18n.t('screens.migration.title')} />
+        <View style={styles.bodyContainer}>
+          <Text style={[styles.subhead, styles.migrationText]}>{i18n.t('screens.migration.migrateData')}</Text>
+        </View>
       </View>
     );
   }
