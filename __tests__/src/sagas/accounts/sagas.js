@@ -34,6 +34,8 @@ const partialAccountMock: PartialAccount = {
   accountStore: 'ACCOUNT_STORE',
 };
 
+const version = '1.0.7';
+
 const accountMock: Account = ({
   ...buildEmptyAccount(),
   name: 'NAME',
@@ -102,7 +104,7 @@ describe('accountsPresent', () => {
 
     const db = await buildRandomPathDatabase();
     db.write(() => {
-      db.create('Account', convertToDatabase(partialAccountMock));
+      db.create('Account', convertToDatabase(partialAccountMock, version));
     });
     const gen = accountsPresent();
     expect(gen.next().value).toEqual(defaultDB);
@@ -126,7 +128,7 @@ describe('getAccount', () => {
     const db = await buildRandomPathDatabase();
     let realmAccount = null;
     db.write(() => {
-      realmAccount = db.create('Account', convertToDatabase(partialAccountMock));
+      realmAccount = db.create('Account', convertToDatabase(partialAccountMock, version));
     });
     if (realmAccount == null) {
       throw new Error('Account was not created');
@@ -173,7 +175,7 @@ test('listenForDatabaseUpdates', () => {
   };
   const resultsUpdateMock = {
     collection: [{
-      ...convertToDatabase(partialAccountMock),
+      ...convertToDatabase(partialAccountMock, version),
     }],
   };
 
@@ -308,7 +310,7 @@ test('saveAccount', async () => {
   const db = await buildRandomPathDatabase();
   let dbAccount = null;
   db.write(() => {
-    dbAccount = db.create('Account', convertToDatabase(partialAccountMock));
+    dbAccount = db.create('Account', convertToDatabase(partialAccountMock, version));
   });
 
   const changedAccount: Account = {
@@ -488,7 +490,7 @@ describe('savePasswordSaga', () => {
     const db = await buildRandomPathDatabase();
     let dbAccount = null;
     db.write(() => {
-      dbAccount = db.create('Account', convertToDatabase(partialAccountMock));
+      dbAccount = db.create('Account', convertToDatabase(partialAccountMock, version));
     });
 
     expect(gen.next('NEW_ACCOUNT_STORE').value).toEqual(defaultDB);
@@ -573,7 +575,7 @@ test('saveMnemonicConfirmed', async () => {
   const db = await buildRandomPathDatabase();
   let dbAccount = null;
   db.write(() => {
-    dbAccount = db.create('Account', convertToDatabase(partialAccountMock));
+    dbAccount = db.create('Account', convertToDatabase(partialAccountMock, version));
   });
 
   expect(gen.next(dbAccount).value).toEqual(defaultDB);

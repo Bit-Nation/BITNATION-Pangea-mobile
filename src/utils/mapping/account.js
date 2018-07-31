@@ -27,7 +27,7 @@ export function convertFromDatabase(account: DBAccount): Account {
  * @param {string} version Version number.
  * @return {?DBAccount} Converted object.
  */
-export function convertToDatabase(account: PartialAccount | Account, version: string): DBAccount | null {
+export function convertToDatabase(account: PartialAccount | Account, version: string | null): DBAccount | null {
   if (account.name == null || account.accountStore == null) {
     return null;
   }

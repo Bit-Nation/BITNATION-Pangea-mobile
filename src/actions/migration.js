@@ -29,7 +29,7 @@ export function startMigration(): StartMigrationAction {
  * @param {string} version Version number of current app to be set.
  * @return {StoreVersionAction} An action.
  */
-export function storeVersion(version: string): StoreVersionAction {
+export function storeVersion(version: string | null): StoreVersionAction {
   return {
     type: STORE_VERSION,
     version,

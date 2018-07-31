@@ -20,7 +20,7 @@ type State = {
 
 class MigrationScreen extends NavigatorComponent<Props & Actions, State> {
   componentDidMount() {
-    this.props.startMigration();
+    // this.props.startMigration();
   }
   render() {
     return (
