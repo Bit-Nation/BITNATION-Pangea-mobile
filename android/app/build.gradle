@@ -159,7 +159,6 @@ android {
 }
 
 dependencies {
-    compile project(':react-native-version-number')
     compile project(':react-native-shake')
     compile (project(':react-native-camera')) {
       exclude group: "com.android.support", module: 'support-v4'

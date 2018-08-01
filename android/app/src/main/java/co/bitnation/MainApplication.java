@@ -4,7 +4,6 @@ import com.bitgo.randombytes.RandomBytesPackage;
 import com.facebook.react.ReactPackage;
 import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 import com.reactnative.ivpusic.imagepicker.PickerPackage;
-import com.apsl.versionnumber.RNVersionNumberPackage;
 import com.reactnativenavigation.NavigationApplication;
 import org.reactnative.camera.RNCameraPackage;
 import java.util.Arrays;
