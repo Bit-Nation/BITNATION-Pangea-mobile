@@ -10,7 +10,6 @@ import activity, { type State as ActivityState } from './activity';
 import testingMode, { type State as TestingModeState } from './testingMode';
 import chat, { type State as ChatState } from './chat';
 import settings, { type State as SettingsState } from './settings';
-import nativeDApps, { type State as NativeDAppsState } from './nativeDApps';
 
 export type State = {
   accounts: AccountsState,
@@ -22,7 +21,6 @@ export type State = {
   testingMode: TestingModeState,
   chat: ChatState,
   settings: SettingsState,
-  dApps: NativeDAppsState,
 }
 
 export const subReducers = {
@@ -35,7 +33,6 @@ export const subReducers = {
   testingMode,
   chat,
   settings,
-  dApps: nativeDApps,
 };
 
 export default combineReducers(subReducers);
