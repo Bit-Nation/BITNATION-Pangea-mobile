@@ -3,7 +3,6 @@
 
 import type { Realm } from 'realm';
 import { call, put, take, select, race } from 'redux-saga/effects';
-import VersionNumber from 'react-native-version-number';
 import defaultDB from '../../services/database';
 import { createDatabaseUpdateChannel } from '../database';
 import {
@@ -42,6 +41,7 @@ import type { SaveEditingAccountAction } from '../../actions/profile';
 import { cancelAccountEditing, setPublicKey } from '../../actions/profile';
 import { resetSettings } from '../../actions/settings';
 import ChatService from '../../services/chat';
+import { version } from '../../../package.json';
 import type { State as AccountsState } from '../../reducers/accounts';
 
 export const getAccounts = (state: AccountsState) => state.accounts;
@@ -199,7 +199,6 @@ export function* login(userInfo: ({ accountId: string, accountStore?: string }),
 
   yield put(loginTaskUpdated(TaskBuilder.pending()));
   const { accountId } = userInfo;
-  const version = VersionNumber.appVersion;
   let accountStore: string;
   let profile: Profile;
   if (userInfo.accountStore == null) {
@@ -235,11 +234,12 @@ export function* login(userInfo: ({ accountId: string, accountStore?: string }),
   const publicKey = yield call(ChatService.getPublicKey);
   yield put(setPublicKey(publicKey));
 
+  yield put(currentAccountIdChanged(accountId));
+
   if (version !== null && version !== undefined) {
     yield put(storeVersion(version));
   }
 
-  yield put(currentAccountIdChanged(accountId));
   yield put(loginTaskUpdated(TaskBuilder.success()));
 
   yield put(startFetchMessages());
@@ -361,7 +361,6 @@ export function* savePasswordSaga(action: SavePasswordAction): Generator<*, *, a
 export function* saveCreatingAccount(action: SaveCreatingAccountAction): Generator<*, *, *> {
   const { accounts } = yield select();
   const { creatingAccount } = accounts;
-  const version = VersionNumber.appVersion;
   let convertedAccount;
 
   if (creatingAccount === null) {
