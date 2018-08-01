@@ -38,7 +38,6 @@ import EnterPasscodeScreen from './Passcode/EnterPasscodeContainer';
 import CreatePasscodeScreen from './Passcode/CreatePasscodeContainer';
 import ChatListScreen from './PrivateChat/ChatList';
 import PrivateChatScreen from './PrivateChat/Chat';
-import NativeDAppModalScreen from './Dapp/NativeModalScreen';
 import DAppModalScreen from './Dapp/ModalScreen';
 
 /**
@@ -83,6 +82,5 @@ export default function registerScreens(store: Object, Provider: Object) {
   Navigation.registerComponent(screen('CONFIRMATION_SCREEN').screen, () => ConfirmationContainer, store, Provider);
   Navigation.registerComponent(screen('CHAT_LIST_SCREEN').screen, () => ChatListScreen, store, Provider);
   Navigation.registerComponent(screen('PRIVATE_CHAT_SCREEN').screen, () => PrivateChatScreen, store, Provider);
-  Navigation.registerComponent(screen('NATIVE_DAPP_MODAL_SCREEN').screen, () => NativeDAppModalScreen, store, Provider);
   Navigation.registerComponent(screen('DAPP_MODAL_SCREEN').screen, () => DAppModalScreen, store, Provider);
 }
