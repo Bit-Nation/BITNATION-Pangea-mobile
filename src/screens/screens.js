@@ -9,6 +9,7 @@ import RestoreSource from './Accounts/RestoreAccount/RestoreSource';
 import EmptyWallet from './Accounts/RestoreAccount/EmptyWallet';
 import Dashboard from './Dashboard';
 import WalletScreen from './WalletScreen';
+import MigrationScreen from './Migration';
 import ConfirmKeyInstructionScreen from './Key/Confirm/ConfirmKeyInstructionScreen';
 import ConfirmKeyProcessScreen from './Key/Confirm/ConfirmKeyProcessScreen';
 import VerifyKeyInstructionScreen from './Key/Verify/VerifyKeyInstructionScreen';
@@ -62,6 +63,7 @@ export default function registerScreens(store: Object, Provider: Object) {
   Navigation.registerComponent(screen('INTRO_SCREEN').screen, () => Intro, store, Provider);
   Navigation.registerComponent(screen('DASHBOARD_SCREEN').screen, () => Dashboard, store, Provider);
   Navigation.registerComponent(screen('CHAT_SCREEN').screen, () => ChatScreen, store, Provider);
+  Navigation.registerComponent(screen('MIGRATION_SCREEN').screen, () => MigrationScreen, store, Provider);
   Navigation.registerComponent(screen('NATIONS_SCREEN').screen, () => NationsScreen, store, Provider);
   Navigation.registerComponent(screen('NATION_DETAILS_SCREEN').screen, () => NationDetailsScreen, store, Provider);
   Navigation.registerComponent(screen('WALLET_SCREEN').screen, () => WalletScreen, store, Provider);
