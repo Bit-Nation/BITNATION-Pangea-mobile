@@ -57,8 +57,14 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
     public void PanthalassaStart(final ReadableMap jsonParams, final Promise promise) throws JSONException {
         new Thread(new Runnable() {
             public void run() {
+                String path;
+                if (android.os.Build.VERSION.SDK_INT >=android.os.Build.VERSION_CODES.LOLLIPOP){
+                    path = getCurrentActivity().getNoBackupFilesDir().getAbsolutePath();
+                } else {
+                    path = getCurrentActivity().getFilesDir().getAbsolutePath();
+                }
                 try {
-                    Panthalassa.start(jsonParams.getString("config"),
+                    Panthalassa.start(path, jsonParams.getString("config"),
                             jsonParams.getString("password"),
                             PanthalassaModule.this,
                             PanthalassaModule.this);
@@ -75,8 +81,14 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
     public void PanthalassaStartFromMnemonic(final ReadableMap jsonParams, final Promise promise) throws JSONException {
         new Thread(new Runnable() {
             public void run() {
+                String path;
+                if (android.os.Build.VERSION.SDK_INT >=android.os.Build.VERSION_CODES.LOLLIPOP){
+                    path = getCurrentActivity().getNoBackupFilesDir().getAbsolutePath();
+                } else {
+                    path = getCurrentActivity().getFilesDir().getAbsolutePath();
+                }
                 try {
-                    Panthalassa.startFromMnemonic(jsonParams.getString("config"),
+                    Panthalassa.startFromMnemonic(path, jsonParams.getString("config"),
                             jsonParams.getString("mnemonic"),
                             PanthalassaModule.this,
                             PanthalassaModule.this);
