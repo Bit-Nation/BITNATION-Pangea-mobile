@@ -519,6 +519,24 @@ RCT_REMAP_METHOD(PanthalassaSetLogger,
   }
 }
 
+RCT_REMAP_METHOD(PanthalassaStopDApp,
+                  PanthalassaStopDAppWithResolver:(NSDictionary *)config
+                  resolver:(RCTPromiseResolveBlock)resolve
+                  rejecter:(RCTPromiseRejectBlock)reject) {
+  
+  BOOL response;
+  NSError *error = nil;
+  response = PanthalassaStopDApp([RCTConvert NSString:config[@"dAppSingingKeyStr"]],
+                                 &error);
+  NSNumber *val = [NSNumber numberWithBool:response];
+  
+  if (error == nil) {
+    resolve(val);
+  } else {
+    reject(@"error", error.localizedDescription, error);
+  }
+}
+
 // TEST FOR SEND  - https://facebook.github.io/react-native/docs/native-modules-ios.html#sending-events-to-javascript
 - (NSArray<NSString *> *)supportedEvents
 {
