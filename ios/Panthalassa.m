@@ -97,7 +97,11 @@ RCT_REMAP_METHOD(PanthalassaStartFromMnemonic,
   BOOL response;
   NSError *error = nil;
   
-  response = PanthalassaStartFromMnemonic([RCTConvert NSString:config[@"config"]],
+  NSString* path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                        NSUserDomainMask,
+                                                        YES) firstObject];
+  
+  response = PanthalassaStartFromMnemonic(path, [RCTConvert NSString:config[@"config"]],
                                                    [RCTConvert NSString:config[@"mnemonic"]],
                                                    self, self,
                                                    &error);
@@ -177,7 +181,11 @@ RCT_REMAP_METHOD(PanthalassaStart,
   BOOL response;
   NSError *error = nil;
   
-  response = PanthalassaStart([RCTConvert NSString:config[@"config"]],
+  NSString* path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                        NSUserDomainMask,
+                                                        YES) firstObject];
+  
+  response = PanthalassaStart(path, [RCTConvert NSString:config[@"config"]],
                               [RCTConvert NSString:config[@"password"]],
                               self, self,
                               &error);
