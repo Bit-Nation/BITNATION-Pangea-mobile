@@ -28,7 +28,7 @@ export default class ServiceContainer {
     this.ethereumService = service;
     this.walletService = new WalletService(this.ethereumService);
     this.nationsService = new NationsService(this.ethereumService, defaultDB, account.id);
-    this.upstreamService = new UpstreamService(this.ethereumService, defaultDB, account.id);
+    this.upstreamService = new UpstreamService(this.ethereumService);
     this.dAppsWalletService = new DAppsWalletService(this.ethereumService, serviceBuilder, account);
   }
 
