@@ -57,9 +57,16 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
     public void PanthalassaStart(final ReadableMap jsonParams, final Promise promise) throws JSONException {
         new Thread(new Runnable() {
             public void run() {
+                String path;
+                if (android.os.Build.VERSION.SDK_INT >=android.os.Build.VERSION_CODES.LOLLIPOP){
+                    path = getCurrentActivity().getNoBackupFilesDir().getAbsolutePath();
+                } else {
+                    path = getCurrentActivity().getFilesDir().getAbsolutePath();
+                }
                 try {
-                    Panthalassa.start(jsonParams.getString("config"),
+                    Panthalassa.start(path, jsonParams.getString("config"),
                             jsonParams.getString("password"),
+                            PanthalassaModule.this,
                             PanthalassaModule.this);
                     promise.resolve(true);
                 } catch (Exception e) {
@@ -74,9 +81,16 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
     public void PanthalassaStartFromMnemonic(final ReadableMap jsonParams, final Promise promise) throws JSONException {
         new Thread(new Runnable() {
             public void run() {
+                String path;
+                if (android.os.Build.VERSION.SDK_INT >=android.os.Build.VERSION_CODES.LOLLIPOP){
+                    path = getCurrentActivity().getNoBackupFilesDir().getAbsolutePath();
+                } else {
+                    path = getCurrentActivity().getFilesDir().getAbsolutePath();
+                }
                 try {
-                    Panthalassa.startFromMnemonic(jsonParams.getString("config"),
+                    Panthalassa.startFromMnemonic(path, jsonParams.getString("config"),
                             jsonParams.getString("mnemonic"),
+                            PanthalassaModule.this,
                             PanthalassaModule.this);
                     promise.resolve(true);
                 } catch (Exception e) {
@@ -108,22 +122,6 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
             public void run() {
                 try {
                     String response = Panthalassa.ethAddress();
-                    promise.resolve(response);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    promise.reject("error", e.getLocalizedMessage());
-                }
-            }
-        }).start();
-    }
-
-    @ReactMethod
-    public void PanthalassaHandleInitialMessage(final ReadableMap jsonParams, final Promise promise) throws JSONException {
-        new Thread(new Runnable() {
-            public void run() {
-                try {
-                    String response = Panthalassa.handleInitialMessage(jsonParams.getString("message"),
-                            jsonParams.getString("preKeyBundlePrivatePart"));
                     promise.resolve(response);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -212,58 +210,6 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
     }
 
     @ReactMethod
-    public void PanthalassaCreateHumanMessage(final ReadableMap jsonParams, final Promise promise) throws JSONException {
-        new Thread(new Runnable() {
-            public void run() {
-                try {
-                    String response = Panthalassa.createHumanMessage(jsonParams.getString("rawMsg"),
-                            jsonParams.getString("secretID"),
-                            jsonParams.getString("secret"),
-                            jsonParams.getString("receiverIdKey"));
-                    promise.resolve(response);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    promise.reject("error", e.getLocalizedMessage());
-                }
-            }
-        }).start();
-    }
-
-    @ReactMethod
-    public void PanthalassaCreateDAppMessage(final ReadableMap jsonParams, final Promise promise) throws JSONException {
-        new Thread(new Runnable() {
-            public void run() {
-                try {
-                    String response = Panthalassa.createDAppMessage(jsonParams.getString("rawMsg"),
-                            jsonParams.getString("secretID"),
-                            jsonParams.getString("secret"),
-                            jsonParams.getString("receiverIdKey"));
-                    promise.resolve(response);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    promise.reject("error", e.getLocalizedMessage());
-                }
-            }
-        }).start();
-    }
-
-    @ReactMethod
-    public void PanthalassaDecryptMessage(final ReadableMap jsonParams, final Promise promise) throws JSONException {
-        new Thread(new Runnable() {
-            public void run() {
-                try {
-                    String response = Panthalassa.decryptMessage(jsonParams.getString("message"),
-                            jsonParams.getString("secret"));
-                    promise.resolve(response);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    promise.reject("error", e.getLocalizedMessage());
-                }
-            }
-        }).start();
-    }
-
-    @ReactMethod
     public void PanthalassaGetIdentityPublicKey(final Promise promise) throws JSONException {
         new Thread(new Runnable() {
             public void run() {
@@ -284,37 +230,6 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
             public void run() {
                 try {
                     String response = Panthalassa.identityPublicKey();
-                    promise.resolve(response);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    promise.reject("error", e.getLocalizedMessage());
-                }
-            }
-        }).start();
-    }
-
-    @ReactMethod
-    public void PanthalassaInitializeChat(final ReadableMap jsonParams, final Promise promise) throws JSONException {
-        new Thread(new Runnable() {
-            public void run() {
-                try {
-                    String response = Panthalassa.initializeChat(jsonParams.getString("identityPublicKey"),
-                            jsonParams.getString("preKeyBundle"));
-                    promise.resolve(response);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    promise.reject("error", e.getLocalizedMessage());
-                }
-            }
-        }).start();
-    }
-
-    @ReactMethod
-    public void PanthalassaNewPreKeyBundle(final Promise promise) throws JSONException {
-        new Thread(new Runnable() {
-            public void run() {
-                try {
-                    String response = Panthalassa.newPreKeyBundle();
                     promise.resolve(response);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -466,6 +381,99 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
                 try {
                     String response = Panthalassa.ethPubToAddress(jsonParams.getString("pub"));
                     promise.resolve(response);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    promise.reject("error", e.getLocalizedMessage());
+                }
+            }
+        }).start();
+    }
+
+    @ReactMethod
+    public void PanthalassaAllChats(final Promise promise) {
+        new Thread(new Runnable() {
+            public void run() {
+                try {
+                    String response = Panthalassa.allChats();
+                    promise.resolve(response);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    promise.reject("error", e.getLocalizedMessage());
+                }
+            }
+        }).start();
+    }
+
+    @ReactMethod
+    public void PanthalassaConnectLogger(final ReadableMap jsonParams, final Promise promise) throws JSONException {
+        new Thread(new Runnable() {
+            public void run() {
+                try {
+                    Panthalassa.connectLogger(jsonParams.getString("address"));
+                    promise.resolve(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    promise.reject("error", e.getLocalizedMessage());
+                }
+            }
+        }).start();
+    }
+
+    @ReactMethod
+    public void PanthalassaMessages(final ReadableMap jsonParams, final Promise promise) throws JSONException {
+        new Thread(new Runnable() {
+            public void run() {
+                try {
+                    String response = Panthalassa.messages(jsonParams.getString("partner"),
+                            jsonParams.getInt("start"),
+                            jsonParams.getInt("amount"));
+                    promise.resolve(response);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    promise.reject("error", e.getLocalizedMessage());
+                }
+            }
+        }).start();
+    }
+
+    @ReactMethod
+    public void PanthalassaSendMessage(final ReadableMap jsonParams, final Promise promise) throws JSONException {
+        new Thread(new Runnable() {
+            public void run() {
+                try {
+                    Panthalassa.sendMessage(jsonParams.getString("partner"),
+                            jsonParams.getString("message"));
+                    promise.resolve(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    promise.reject("error", e.getLocalizedMessage());
+                }
+            }
+        }).start();
+    }
+
+    @ReactMethod
+    public void PanthalassaSetLogger(final ReadableMap jsonParams, final Promise promise) throws JSONException {
+        new Thread(new Runnable() {
+            public void run() {
+                try {
+                    Panthalassa.setLogger(jsonParams.getString("level"));
+                    promise.resolve(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    promise.reject("error", e.getLocalizedMessage());
+                }
+            }
+        }).start();
+    }
+
+    @ReactMethod
+    public void PanthalassaStopDApp(final ReadableMap jsonParams, final Promise promise) {
+        new Thread(new Runnable() {
+            public void run() {
+                try {
+                    Panthalassa.stopDApp(jsonParams.getString("dAppSingingKeyStr"));
+                    promise.resolve(true);
                 } catch (Exception e) {
                     e.printStackTrace();
                     promise.reject("error", e.getLocalizedMessage());
