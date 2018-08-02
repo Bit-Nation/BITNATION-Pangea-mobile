@@ -68,6 +68,8 @@ FOUNDATION_EXPORT BOOL PanthalassaConnectLogger(NSString* address, NSError** err
  */
 FOUNDATION_EXPORT BOOL PanthalassaConnectToDAppDevHost(NSString* address, NSError** error);
 
+FOUNDATION_EXPORT NSString* PanthalassaDApps(NSError** error);
+
 FOUNDATION_EXPORT NSString* PanthalassaEthAddress(NSError** error);
 
 /**

@@ -467,6 +467,36 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
         }).start();
     }
 
+    @ReactMethod
+    public void PanthalassaStopDApp(final ReadableMap jsonParams, final Promise promise) {
+        new Thread(new Runnable() {
+            public void run() {
+                try {
+                    Panthalassa.stopDApp(jsonParams.getString("dAppSingingKeyStr"));
+                    promise.resolve(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    promise.reject("error", e.getLocalizedMessage());
+                }
+            }
+        }).start();
+    }
+
+    @ReactMethod
+    public void PanthalassaDApps(final Promise promise) {
+        new Thread(new Runnable() {
+            public void run() {
+                try {
+                    String response = Panthalassa.dApps();
+                    promise.resolve(response);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    promise.reject("error", e.getLocalizedMessage());
+                }
+            }
+        }).start();
+    }
+
     //=====
     @Override
     public void send(String s) {
