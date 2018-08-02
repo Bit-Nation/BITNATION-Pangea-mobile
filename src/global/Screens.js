@@ -109,6 +109,11 @@ const Screens = {
     title: '',
     navigatorStyle,
   },
+  MIGRATION_SCREEN: {
+    screen: 'Pangea.MigrationScreen',
+    label: i18n.t('screens.migration.title'),
+    navigatorStyle,
+  },
   NEW_CHAT_SCREEN: {
     screen: 'Pangea.NewChatScreen',
     label: i18n.t('screens.chat.newConversation'),
