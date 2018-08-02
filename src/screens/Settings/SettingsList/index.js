@@ -75,6 +75,7 @@ class SettingsListScreen extends NavigatorComponent<Props> {
       'identity',
       'security',
       currentAccount.confirmedMnemonic ? 'viewPrivateKey' : 'confirmPrivateKey',
+      'connectToDAppHost',
     ];
 
     return (
