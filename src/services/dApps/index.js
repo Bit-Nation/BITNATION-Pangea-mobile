@@ -24,9 +24,20 @@ export default class DAppsService {
     });
   }
 
+  static async getDApps(): Promise<string> {
+    const { Panthalassa } = NativeModules;
+    return Panthalassa.PanthalassaDApps();
+  }
+
   static async connectToDAppHost(address: string): Promise<boolean> {
     const { Panthalassa } = NativeModules;
     return Panthalassa.PanthalassaConnectToDAppDevHost({ address });
+  }
+
+  static async connectToLogger(address: string): Promise<boolean> {
+    const { Panthalassa } = NativeModules;
+    await Panthalassa.PanthalassaConnectLogger({ address });
+    return Panthalassa.PanthalassaSetLogger({ level: 'DEBUG' });
   }
 
   static async performDAppCallback(dappPublicKey: string, id: number, params: Object) {
