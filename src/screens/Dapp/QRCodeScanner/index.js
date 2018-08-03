@@ -10,6 +10,7 @@ import styles from './styles';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import i18n from '../../../global/i18n';
 import Loading from '../../../components/common/Loading';
+import { androidNavigationButtons } from '../../../global/Screens';
 
 type Props = {
   /**
@@ -26,7 +27,11 @@ type State = {
 }
 
 export default class DAppQRCodeScannerScreen extends NavigatorComponent<Props, State> {
-  static defaultProps: {
+  static navigatorButtons = {
+    ...androidNavigationButtons,
+  };
+
+  static defaultProps = {
     connectionType: 'devHost',
   };
 
