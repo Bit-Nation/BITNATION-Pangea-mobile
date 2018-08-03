@@ -216,9 +216,6 @@ const Screens = {
     screen: 'Pangea.QRCodeAppScreen',
     title: i18n.t('screens.dAppQRCodeScanner.title'),
     navigatorStyle,
-    navigatorButtons: {
-      ...androidNavigationButtons,
-    },
   },
   SETTINGS_SCREEN: {
     screen: 'Pangea.Settings',
