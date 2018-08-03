@@ -11,6 +11,13 @@ import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import i18n from '../../../global/i18n';
 import Loading from '../../../components/common/Loading';
 
+type Props = {
+  /**
+   * @desc Specifies type of connecting node
+   */
+  connectionType: 'devHost' | 'logger',
+}
+
 type State = {
   /**
    * @desc Flag that shows if connecting is currently in progress.
@@ -18,11 +25,20 @@ type State = {
   isConnecting: boolean,
 }
 
-export default class DAppQRCodeScannerScreen extends NavigatorComponent<void, State> {
+export default class DAppQRCodeScannerScreen extends NavigatorComponent<Props, State> {
+  static defaultProps: {
+    connectionType: 'devHost',
+  };
+
   constructor(props: any) {
     super(props);
 
     this.state = { isConnecting: false };
+
+    // @todo For test purposes, needs to be removed
+    DAppsService.getDApps().then((result) => {
+      console.log(`[DApp] DApps list: ${result}`);
+    });
   }
 
   scanner: ?QRCodeScanner;
@@ -35,11 +51,16 @@ export default class DAppQRCodeScannerScreen extends NavigatorComponent<void, St
 
   onReadQRCode = (address: string) => {
     this.setState({ isConnecting: true });
-    DAppsService.connectToDAppHost(address).then(() => {
+    const connectFunction = this.props.connectionType === 'devHost'
+      ? DAppsService.connectToDAppHost
+      : DAppsService.connectToLogger;
+    connectFunction(address).then(() => {
       Alert.alert('Success', null, [
         {
           text: i18n.t('common.ok'),
-          onPress: () => { this.props.navigator.pop(); },
+          onPress: () => {
+            this.props.navigator.pop();
+          },
         },
       ]);
     }).catch((error) => {
@@ -65,7 +86,7 @@ export default class DAppQRCodeScannerScreen extends NavigatorComponent<void, St
           onRead={result => this.onReadQRCode(result.data)}
           topContent={
             <Text style={styles.centerText}>{i18n.t('screens.dAppQRCodeScanner.instruction')}</Text>
-        }
+          }
           ref={scanner => (this.scanner = scanner)}
         />
         {this.state.isConnecting === true ? <Loading /> : null}

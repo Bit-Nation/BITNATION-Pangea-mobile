@@ -57,7 +57,20 @@ class SettingsListScreen extends NavigatorComponent<Props> {
         this.props.navigator.push(screen('CONFIRM_KEY_INSTRUCTION_SCREEN'));
         break;
       case 'connectToDAppHost':
-        this.props.navigator.push(screen('QR_CODE_DAPP_SCREEN'));
+        this.props.navigator.push({
+          ...screen('QR_CODE_DAPP_SCREEN'),
+          passProps: {
+            connectionType: 'devHost',
+          },
+        });
+        break;
+      case 'connectToDAppLogger':
+        this.props.navigator.push({
+          ...screen('QR_CODE_DAPP_SCREEN'),
+          passProps: {
+            connectionType: 'logger',
+          },
+        });
         break;
       default:
         break;
@@ -76,6 +89,7 @@ class SettingsListScreen extends NavigatorComponent<Props> {
       'security',
       currentAccount.confirmedMnemonic ? 'viewPrivateKey' : 'confirmPrivateKey',
       'connectToDAppHost',
+      'connectToDAppLogger',
     ];
 
     return (
