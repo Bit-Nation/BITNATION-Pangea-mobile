@@ -1,6 +1,6 @@
 // @flow
 
-import { select, call } from 'redux-saga/effects';
+import { call } from 'redux-saga/effects';
 import defaultDB from '../../services/database';
 import { getCurrentAccount } from '../accounts/sagas';
 import { launchLoggedInFlow } from '../navigation/sagas';
