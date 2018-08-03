@@ -9,9 +9,13 @@ import styles from './styles';
 import ScreenTitle from '../../components/common/ScreenTitle';
 import FakeNavigationBar from '../../components/common/FakeNavigationBar';
 import NavigatorComponent from '../../components/common/NavigatorComponent';
+import { startMigration } from '../../actions/migration';
 
 type Props = {
-  // @todo Props to be added later.
+  /**
+   * @desc Function to initiate migration
+   */
+  startMigration: () => void,
 }
 
 type Actions = {
@@ -23,6 +27,10 @@ type State = {
 }
 
 class MigrationScreen extends NavigatorComponent<Props & Actions, State> {
+  componentDidMount() {
+    this.props.startMigration();
+  }
+
   render() {
     return (
       <View style={styles.migrationContainer}>
@@ -41,8 +49,11 @@ const mapStateToProps = state => ({
   ...state.migration,
 });
 
-const mapDispatchToProps = () => ({
+const mapDispatchToProps = dispatch => ({
   // @todo Dispatch Actions to be added later.
+  startMigration() {
+    dispatch(startMigration());
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MigrationScreen);
