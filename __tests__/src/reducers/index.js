@@ -12,6 +12,7 @@ test('rootReducer contains all child reducers', () => {
     'nations',
     'testingMode',
     'wallet',
+    'migration',
     'settings',
     'dApps',
   ];

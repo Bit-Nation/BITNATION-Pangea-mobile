@@ -42,12 +42,12 @@ __Android specific__
 __Git & best practice__
 
 - We use [this](http://nvie.com/posts/a-successful-git-branching-model/) branching model. Make sure to read it.
-- PLEASE prefix your commit's with a topic like this: `[git] blacklisted .idea`
-- Write test's for your code
+- PLEASE prefix your commits with a topic like this: `[git] blacklisted .idea`
+- Write tests for your code
 
 
 ## API
-> If you would like to develop an DApp for Pangea please checkout [this part](https://bitnation-pangea-mobile.readthedocs.io/) of the documentation
+> If you would like to develop a DApp for Pangea please checkout [this part](https://bitnation-pangea-mobile.readthedocs.io/) of the documentation
 
 ## Maintainers
 
@@ -55,7 +55,7 @@ __Git & best practice__
 
 ## Contribute
 
-PRs accepted.
+PRs are accepted.
 
 Small note: If editing the README, please conform to the [standard-readme](https://github.com/RichardLitt/standard-readme) specification.
 
