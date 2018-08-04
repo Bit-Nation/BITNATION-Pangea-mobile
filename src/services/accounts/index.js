@@ -21,7 +21,6 @@ export default class AccountsService {
 
   static async login(accountStore: string, profile: Profile, password: string): Promise<boolean> {
     const { Panthalassa } = NativeModules;
-
     try {
       await Panthalassa.PanthalassaStop();
       // eslint-disable-next-line no-empty
