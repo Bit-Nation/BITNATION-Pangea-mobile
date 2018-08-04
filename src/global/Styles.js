@@ -760,6 +760,24 @@ const styles = {
   disabledButtonTitle: {
     color: Colors.BitnationLightGrayColor,
   },
+
+  dAppMessage: {
+    width: 250,
+  },
+
+  dAppMessageTime: {
+    fontSize: 12,
+    padding: 9,
+    marginTop: 2,
+    color: Colors.textColor,
+  },
+  dAppMessageText: {
+    fontSize: 18,
+    padding: 9,
+    marginBottom: 3,
+    color: Colors.textColor,
+  },
+
   arrowButtonTitle: {
     fontSize: 15,
     color: Colors.BitnationLinkOrangeColor,

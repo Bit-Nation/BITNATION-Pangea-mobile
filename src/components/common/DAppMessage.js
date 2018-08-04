@@ -6,30 +6,37 @@
  */
 
 import React from 'react';
-import { View, TouchableOpacity } from 'react-native';
+import { View, TouchableOpacity, Text } from 'react-native';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
 
 import GlobalStyles from '../../global/Styles';
 
 type Props = {
   /**
-   * @desc Callback on press item.
+   *
+   * @desc Message to be displayed.
    */
-  onPress: any => void,
+  message: string,
+  /**
+   *
+   * @desc Time to be displayed.
+   */
+  time: string,
 };
 
 const styles = MediaQueryStyleSheet.create({
   ...GlobalStyles,
 });
 
-const DAppMessage = ({ onPress }: Props) => (
-  <View style={styles.sectionListItemContainer}>
-    <TouchableOpacity testID='Touchable' onPress={() => onPress()} />
+const DAppMessage = ({ message, time }: Props) => (
+  <View style={styles.dAppMessage}>
+    <TouchableOpacity testID='Touchable'>
+      <Text style={styles.dAppMessageTime}>{time}</Text>
+      <Text style={styles.dAppMessageText} numberOfLines={1}>
+        {message}
+      </Text>
+    </TouchableOpacity>
   </View>
 );
-
-DAppMessage.defaultProps = {
-  onPress: () => null,
-};
 
 export default DAppMessage;
