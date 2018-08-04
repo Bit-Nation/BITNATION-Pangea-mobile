@@ -4,7 +4,6 @@ import ethers from 'ethers';
 import { NativeEventEmitter, NativeModules } from 'react-native';
 // $FlowFixMe Flow doesn't want to allow import buffer for some reason.
 import { Buffer } from 'buffer';
-import Realm from 'realm';
 import { Navigation } from 'react-native-navigation';
 
 // Javascript static code of the proto file
@@ -12,46 +11,18 @@ import { api_proto as apiProto } from './compiled';
 
 import EthereumService from '../ethereum';
 import { screen } from '../../global/Screens';
-import { convertToDatabase } from '../../utils/mapping/dapp';
 
 const { Panthalassa } = NativeModules;
 const { Response, Request } = apiProto;
 
 const RESPONSE_TIMEOUT = 20;
 
-const convertObject = (object: Object) => {
-  const convertDRKey = key => Buffer.from(key).toString('hex');
-  const resultObject = object;
-
-  if (object.dRKeyStoreGet != null) {
-    resultObject.dRKeyStoreGet.drKey = convertDRKey(object.dRKeyStoreGet.drKey);
-  }
-  if (object.dRKeyStorePut != null) {
-    resultObject.dRKeyStorePut.key = convertDRKey(object.dRKeyStorePut.key);
-  }
-  if (object.dRKeyStoreDeleteMK != null) {
-    resultObject.dRKeyStoreDeleteMK.key = convertDRKey(object.dRKeyStoreDeleteMK.key);
-  }
-  if (object.dRKeyStoreDeleteKeys != null) {
-    resultObject.dRKeyStoreDeleteKeys.key = convertDRKey(object.dRKeyStoreDeleteKeys.key);
-  }
-  if (object.dRKeyStoreCount != null) {
-    resultObject.dRKeyStoreCount.key = convertDRKey(object.dRKeyStoreCount.key);
-  }
-
-  return resultObject;
-};
-
 export default class UpstreamService {
   eventsSubscription: any;
   ethereumService: EthereumService;
-  dbPromise: Promise<Realm>;
-  currentAccountId: string;
 
-  constructor(ethereumService: EthereumService, dbPromise: Promise<Realm>, accountId: string) {
+  constructor(ethereumService: EthereumService) {
     this.ethereumService = ethereumService;
-    this.dbPromise = dbPromise;
-    this.currentAccountId = accountId;
     this.startListening();
   }
 
@@ -65,141 +36,19 @@ export default class UpstreamService {
 
   handleRequest = async (request: any) => {
     try {
-      const decoded = convertObject(Request.decode(Buffer.from(request.upstream, 'base64')));
+      const decoded = Request.decode(Buffer.from(request.upstream, 'base64'));
       console.log(`[PANGEA] Received request ${decoded.requestID}`);
 
-      if (decoded.dRKeyStoreGet != null) {
-        return this.handleDRKeyStoreGet(decoded.requestID, decoded.dRKeyStoreGet);
-      } else if (decoded.dRKeyStorePut != null) {
-        return this.handleDRKeyStorePut(decoded.requestID, decoded.dRKeyStorePut);
-      } else if (decoded.dRKeyStoreDeleteMK != null) {
-        return this.handleDRKeyStoreDeleteMK(decoded.requestID, decoded.dRKeyStoreDeleteMK);
-      } else if (decoded.dRKeyStoreDeleteKeys != null) {
-        return this.handleDRKeyStoreDeleteKeys(decoded.requestID, decoded.dRKeyStoreDeleteKeys);
-      } else if (decoded.dRKeyStoreCount != null) {
-        return this.handleDRKeyStoreCount(decoded.requestID, decoded.dRKeyStoreCount);
-      } else if (decoded.dRKeyStoreAll != null) {
-        return this.handleDRKeyStoreAll(decoded.requestID);
-      } else if (decoded.showModal != null) {
+      if (decoded.showModal != null) {
         return this.handleShowModal(decoded.requestID, decoded.showModal);
       } else if (decoded.sendEthereumTransaction != null) {
         return this.handleSendEthereumTransaction(decoded.requestID, decoded.sendEthereumTransaction);
-      } else if (decoded.saveDApp != null) {
-        return this.handleSaveDApp(decoded.requestID, decoded.saveDApp);
       }
       return this.handleErrorMessage(decoded.requestID, decoded);
     } catch (error) {
       console.log(`[PANGEA] Upstream decode error: ${error}`);
       throw error;
     }
-  };
-
-  handleDRKeyStoreGet = async (id: string, info: any) => {
-    const { drKey, messageNumber } = info;
-    try {
-      const message = await this.getMessageKeyModel(drKey, messageNumber);
-      return this.sendSuccessResponse(id, {
-        dRKeyStoreGet: {
-          messageKey: message.messageKey,
-        },
-      });
-    } catch (error) {
-      return this.sendErrorResponse(id, error);
-    }
-  };
-
-  handleDRKeyStorePut = async (id: string, info: any) => {
-    const { key: drKey, messageNumber, messageKey } = info;
-    const db = await this.dbPromise;
-    let drKeyModel;
-    try {
-      drKeyModel = await this.getDRKeyModel(drKey);
-    } catch (_) {
-      try {
-        db.write(() => {
-          drKeyModel = db.create('DoubleRatchetKey', {
-            accountId: this.currentAccountId,
-            doubleRatchetKey: drKey,
-          });
-        });
-      } catch (error) {
-        return this.sendErrorResponse(id, error);
-      }
-    }
-    try {
-      db.write(() => {
-        const createdKey = db.create('MessageKey', {
-          messageKey,
-          messageNumber,
-        });
-        drKeyModel.messageKeys.push(createdKey);
-      });
-      return this.sendSuccessResponse(id, {});
-    } catch (error) {
-      return this.sendErrorResponse(id, error);
-    }
-  };
-
-  handleDRKeyStoreDeleteMK = async (id: string, info: any) => {
-    const { key: drKey, msgNum: messageNumber } = info;
-    try {
-      const db = await this.dbPromise;
-      const message = await this.getMessageKeyModel(drKey, messageNumber);
-      db.write(() => {
-        db.delete(message);
-      });
-      return this.sendSuccessResponse(id, {});
-    } catch (error) {
-      return this.sendErrorResponse(id, error);
-    }
-  };
-
-  handleDRKeyStoreDeleteKeys = async (id: string, info: any) => {
-    const { key: drKey } = info;
-    try {
-      const db = await this.dbPromise;
-      const drKeyModel = await this.getDRKeyModel(drKey);
-      db.write(() => {
-        drKeyModel.messageKeys.forEach((messageKey) => {
-          db.delete(messageKey);
-        });
-      });
-      return this.sendSuccessResponse(id, {});
-    } catch (error) {
-      return this.sendErrorResponse(id, error);
-    }
-  };
-  handleDRKeyStoreCount = async (id: string, info: any) => {
-    const { key: drKey } = info;
-    try {
-      const drKeyModel = await this.getDRKeyModel(drKey);
-      return this.sendSuccessResponse(id, {
-        dRKeyStoreCount: {
-          count: drKeyModel.messageKeys.length,
-        },
-      });
-    } catch (error) {
-      return this.sendErrorResponse(id, error);
-    }
-  };
-  handleDRKeyStoreAll = async (id: string) => {
-    const db = await this.dbPromise;
-    const drKeyModels = db.objects('DoubleRatchetKey').filtered(`accountId == '${this.currentAccountId}'`);
-    return this.sendSuccessResponse(id, {
-      dRKeyStoreAll: {
-        all: drKeyModels.map((drKeyModel) => {
-          const messageKeys = {};
-          drKeyModel.messageKeys.forEach((messageKeyModel) => {
-            messageKeys[messageKeyModel.messageKeys] = messageKeyModel.messageKey;
-          });
-
-          return {
-            key: drKeyModel.doubleRatchetKey,
-            messageKeys,
-          };
-        }),
-      },
-    });
   };
 
   handleShowModal = (id: string, info: any) => {
@@ -215,27 +64,6 @@ export default class UpstreamService {
           layout: JSONLayout,
           dAppPublicKey,
         },
-      });
-      return this.sendSuccessResponse(id, {});
-    } catch (error) {
-      return this.sendErrorResponse(id, error);
-    }
-  };
-
-  handleSaveDApp = async (id: string, info: any) => {
-    const {
-      appName, code, signature, signingPublicKey,
-    } = info;
-    try {
-      const dApp = {
-        name: appName,
-        code,
-        signature,
-        publicKey: signingPublicKey,
-      };
-      const db = await this.dbPromise;
-      db.write(() => {
-        db.create('DApp', convertToDatabase(dApp, this.currentAccountId), true);
       });
       return this.sendSuccessResponse(id, {});
     } catch (error) {
@@ -315,26 +143,5 @@ export default class UpstreamService {
       console.log(`[PANGEA] Upstream failed to send success response: ${id}, error: ${sendError.message}`);
       throw sendError;
     }
-  };
-
-  getDRKeyModel = async (drKey: string) => {
-    const db = await this.dbPromise;
-    const drKeyModels = db.objects('DoubleRatchetKey')
-      .filtered(`accountId == '${this.currentAccountId}' && doubleRatchetKey == '${drKey}'`);
-    if (drKeyModels.length === 0) {
-      throw new Error(`No message with drKey ${drKey} found!`);
-    }
-
-    return drKeyModels[0];
-  };
-
-  getMessageKeyModel = async (drKey: string, messageNumber: string) => {
-    const drKeyModel = await this.getDRKeyModel(drKey);
-    const messages = drKeyModel.messageKeys.filtered(`messageNumber == ${messageNumber}`);
-    if (messages.length === 0) {
-      throw new Error(`No message with number ${messageNumber} found!`);
-    }
-
-    return messages[0];
   };
 }
