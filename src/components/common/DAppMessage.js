@@ -28,14 +28,16 @@ const styles = MediaQueryStyleSheet.create({
   ...GlobalStyles,
 });
 
-const DAppMessage = () => (
+const DAppMessage = ({
+  time, message,
+}: Props) => (
   <View style={styles.dAppMessage}>
     <TouchableOpacity testID='Touchable'>
       <Text style={styles.dAppMessageTime}>
-        {/* Time will come here */}
+        {time}
       </Text>
       <Text style={styles.dAppMessageText} numberOfLines={1}>
-        {/* Message will come here */}
+        {message}
       </Text>
     </TouchableOpacity>
   </View>
