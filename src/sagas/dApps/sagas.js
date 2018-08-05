@@ -10,8 +10,8 @@ import type {
 } from '../../actions/dApps';
 import { dAppLaunchStateChanged, dAppsListUpdated, startDApp } from '../../actions/dApps';
 import DAppsService from '../../services/dApps';
-import type { DAppType as DBDApp } from '../../services/database/schemata';
 import { getDApp, getDAppLaunchState } from '../../reducers/dApps';
+import type { DApp } from '../../types/DApp';
 
 /**
  * @desc Fetch list of DApps.
@@ -54,7 +54,7 @@ export function* getDAppSaga(publicKey: string): Generator<*, *, *> {
  * @return {void}
  */
 export function* startDAppSaga(action: StartDAppAction): Generator<*, *, *> {
-  const dApp: ?DBDApp = yield call(getDAppSaga, action.dAppPublicKey);
+  const dApp: ?DApp = yield call(getDAppSaga, action.dAppPublicKey);
   if (dApp == null) {
     yield put(dAppLaunchStateChanged(action.dAppPublicKey, 'off'));
     return;
@@ -77,7 +77,7 @@ export function* startDAppSaga(action: StartDAppAction): Generator<*, *, *> {
  */
 export function* openDApp(action: OpenDAppAction): Generator<*, *, *> {
   const { dAppPublicKey, callback } = action;
-  const dApp: ?DBDApp = yield call(getDApp, dAppPublicKey);
+  const dApp: ?DApp = yield call(getDAppSaga, dAppPublicKey);
   if (dApp == null) {
     yield call(callback, false, new Error(`Unable to find DApp with public key ${dAppPublicKey}`));
     return;
