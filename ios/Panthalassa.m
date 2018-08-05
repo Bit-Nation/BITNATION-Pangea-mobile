@@ -389,7 +389,7 @@ RCT_REMAP_METHOD(PanthalassaStartDApp,
   BOOL response;
   NSError *error = nil;
   
-  response = PanthalassaStartDApp([RCTConvert NSString:config[@"dApp"]],
+  response = PanthalassaStartDApp([RCTConvert NSString:config[@"dAppSingingKeyStr"]],
                                   [[RCTConvert NSNumber:config[@"timeout"]] longValue],
                                  &error);
   
