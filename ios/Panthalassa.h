@@ -13,7 +13,7 @@
 #import "PanthalassaUpStreamBridge.h"
 
 @interface Panthalassa : RCTEventEmitter <RCTBridgeModule, UpStreamProtocolDelegate> {
-  PanthalassaUpStreamBridge* upstreamCliet;
+  PanthalassaUpStreamBridge* upstreamClient;
   PanthalassaUpStreamBridge* upstreamUI;
 }
 

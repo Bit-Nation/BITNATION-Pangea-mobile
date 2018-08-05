@@ -15,8 +15,7 @@
 }
 
 - (void)send:(NSString *)data {
-  NSLog(@"Upstream: %@", data);
-  [delegate receiveString:data withDelegate:delegate];
+  [delegate receiveString:data withUpStream:self];
 }
 
 @end
