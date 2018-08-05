@@ -22,9 +22,8 @@ import Loading from '../../../components/common/Loading';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import { getCurrentAccount } from '../../../reducers/accounts';
 import { getSelectedSession } from '../../../utils/chat';
-import type { ChatSessionType, ProfileType, DAppMessageType } from '../../../types/Chat';
+import type { ChatSessionType, ProfileType } from '../../../types/Chat';
 import { errorAlert } from '../../../global/alerts';
-import i18n from '../../../global/i18n';
 import type { Account } from '../../../types/Account';
 import type { WalletType } from '../../../types/Wallet';
 
