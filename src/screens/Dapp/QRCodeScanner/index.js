@@ -39,11 +39,6 @@ export default class DAppQRCodeScannerScreen extends NavigatorComponent<Props, S
     super(props);
 
     this.state = { isConnecting: false };
-
-    // @todo For test purposes, needs to be removed
-    DAppsService.getDApps().then((result) => {
-      console.log(`[DApp] DApps list: ${result}`);
-    });
   }
 
   scanner: ?QRCodeScanner;
