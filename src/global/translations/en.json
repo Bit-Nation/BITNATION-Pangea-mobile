@@ -507,7 +507,8 @@
       "viewPrivateKey": "Private Key",
       "confirmPrivateKey": "Private Key (confirmation required)",
       "switchAccounts": "Switch accounts",
-      "connectToDAppHost": "Connect to DApp host"
+      "connectToDAppHost": "Connect to DApp host",
+      "connectToDAppLogger": "Connect debug logger"
     },
     "securitySettings": {
       "title": "Security settings",
