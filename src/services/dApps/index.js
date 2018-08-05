@@ -11,7 +11,7 @@ export default class DAppsService {
   static async startDApp(dApp: DApp): Promise<boolean> {
     const { Panthalassa } = NativeModules;
     return Panthalassa.PanthalassaStartDApp({
-      dApp: dApp.publicKey,
+      dAppSingingKeyStr: dApp.publicKey,
       timeout: DAPP_START_TIMEOUT,
     });
   }
