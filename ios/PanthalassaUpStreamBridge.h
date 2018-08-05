@@ -11,7 +11,7 @@
 
 @protocol UpStreamProtocolDelegate
 
-- (void)receiveString:(NSString *)data;
+- (void)receiveString:(NSString *)data withDelegate:(id<UpStreamProtocolDelegate>)delegate;
 
 @end
 
