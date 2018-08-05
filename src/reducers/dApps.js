@@ -2,16 +2,19 @@
 
 import type { DApp } from '../types/DApp';
 import {
-  type Action, DAPP_START_FAILED, DAPP_STARTED,
+  type Action,
+  DAPP_LAUNCH_STATE_CHANGED,
   DAPPS_LIST_UPDATED,
   OPEN_DAPP,
 } from '../actions/dApps';
 import { SERVICES_DESTROYED } from '../actions/serviceContainer';
 
+export type DAppLaunchState = 'off' | 'starting' | 'started' | 'opened';
+
 export type State = {
   +availableDApps: Array<DApp>,
   +contexts: { [string]: Object },
-  +startedDAppIds: Array<string>,
+  +dAppsLaunchState: { [string]: DAppLaunchState },
 };
 
 export const initialState: State = {
@@ -24,12 +27,14 @@ export const initialState: State = {
    */
   contexts: {},
   /**
-   * @desc Array of ids of DApps that is started (prepared to be opened).
+   * @desc Map from DApps ids to their launch states.
    */
-  startedDAppIds: [],
+  dAppsLaunchState: {},
 };
 
 export const getDApp = (state: State, publicKey: string) => state.availableDApps.find(dApp => dApp.publicKey === publicKey);
+export const getDAppLaunchState = (state: State, publicKey: string) => state.dAppsLaunchState[publicKey];
+
 
 /**
  * @desc DApps reducer.
@@ -41,11 +46,19 @@ export default (state: State = initialState, action: Action): State => {
   switch (action.type) {
     case SERVICES_DESTROYED:
       return initialState;
-    case DAPPS_LIST_UPDATED:
+    case DAPPS_LIST_UPDATED: {
+      const newDAppsLaunchState = {};
+      action.availableDApps.forEach((dApp) => {
+        const launchState = getDAppLaunchState(state, dApp.publicKey);
+        newDAppsLaunchState[dApp.publicKey] = launchState || 'off';
+      });
+
       return {
         ...state,
         availableDApps: action.availableDApps,
+        dAppsLaunchState: newDAppsLaunchState,
       };
+    }
     case OPEN_DAPP: {
       if (getDApp(state, action.dAppPublicKey) == null) {
         return state;
@@ -59,25 +72,15 @@ export default (state: State = initialState, action: Action): State => {
         },
       };
     }
-    case DAPP_STARTED: {
-      if (state.startedDAppIds.includes(action.dAppPublicKey)) {
-        return state;
-      }
+    case DAPP_LAUNCH_STATE_CHANGED: {
+      const { dAppPublicKey, launchState } = action;
 
       return {
         ...state,
-        startedDAppIds: [
-          ...state.startedDAppIds,
-          action.dAppPublicKey,
-        ],
-      };
-    }
-    case DAPP_START_FAILED: {
-      const { dAppPublicKey } = action;
-
-      return {
-        ...state,
-        startedDAppIds: state.startedDAppIds.filter(id => id !== dAppPublicKey),
+        dAppsLaunchState: {
+          ...state.dAppsLaunchState,
+          [dAppPublicKey]: launchState,
+        },
       };
     }
     default:
