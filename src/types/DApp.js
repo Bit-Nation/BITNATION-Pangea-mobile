@@ -1,9 +1,14 @@
 // @flow
 
 export type DApp = {
+  name: string,
+  publicKey: string,
+}
+
+export type PanthalassaDApp = {
   name: { [string]: string },
   code: string,
-  publicKey: string,
+  used_signing_key: string,
   signature: string,
   engine: {
     major: number,
