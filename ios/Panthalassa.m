@@ -20,6 +20,21 @@
   return dispatch_queue_create("panthalassaLibQueue", DISPATCH_QUEUE_CONCURRENT);
 }
 
+- (instancetype)init {
+  if (self = [super init]) {
+    [self initUpstreams];
+  }
+  
+  return self;
+}
+
+- (void)initUpstreams {
+  upstreamClient = [[PanthalassaUpStreamBridge alloc] init];
+  upstreamUI = [[PanthalassaUpStreamBridge alloc] init];
+  [upstreamClient setDelegate:self];
+  [upstreamUI setDelegate:self];
+}
+
 RCT_EXPORT_MODULE();
   
 RCT_REMAP_METHOD(PanthalassaNewAccountKeys,
@@ -103,7 +118,7 @@ RCT_REMAP_METHOD(PanthalassaStartFromMnemonic,
   
   response = PanthalassaStartFromMnemonic(path, [RCTConvert NSString:config[@"config"]],
                                                    [RCTConvert NSString:config[@"mnemonic"]],
-                                                   upstreamCliet, upstreamUI,
+                                          upstreamClient, upstreamUI,
                                                    &error);
   NSNumber *val = [NSNumber numberWithBool:response];
   
@@ -187,7 +202,7 @@ RCT_REMAP_METHOD(PanthalassaStart,
   
   response = PanthalassaStart(path, [RCTConvert NSString:config[@"config"]],
                               [RCTConvert NSString:config[@"password"]],
-                              upstreamCliet, upstreamUI,
+                              upstreamClient, upstreamUI,
                               &error);
   
   NSNumber *val = [NSNumber numberWithBool:response];
@@ -574,10 +589,10 @@ RCT_REMAP_METHOD(PanthalassaDApps,
   }
 }
 
-- (void)receiveString:(NSString *)data withDelegate:(id<UpStreamProtocolDelegate>)delegate {
+- (void)receiveString:(NSString *)data withUpStream:(id<PanthalassaUpStream>)upStream {
   NSLog(@"************ Received from go!");
   if (hasListeners && data != nil) {
-    if (delegate == upstreamCliet) {
+    if (upStream == upstreamClient) {
       [self sendEventWithName:@"PanthalassaUpStream" body:@{@"client": data}];
     } else {
       [self sendEventWithName:@"PanthalassaUpStream" body:@{@"ui": data}];
