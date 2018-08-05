@@ -352,7 +352,7 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
         new Thread(new Runnable() {
             public void run() {
                 try {
-                    Panthalassa.startDApp(jsonParams.getString("dApp"),
+                    Panthalassa.startDApp(jsonParams.getString("dAppSingingKeyStr"),
                             jsonParams.getInt("timeout"));
                     promise.resolve(true);
                 } catch (Exception e) {
