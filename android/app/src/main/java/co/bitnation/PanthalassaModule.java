@@ -27,6 +27,7 @@ import panthalassa.UpStream;
 
 public class PanthalassaModule extends ReactContextBaseJavaModule implements UpStream {
     final String TAG = "Panthalassa";
+    UpStream client, ui;
 
     public PanthalassaModule (ReactApplicationContext reactContext) {
         super(reactContext);
@@ -66,7 +67,12 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
                 try {
                     Panthalassa.start(path, jsonParams.getString("config"),
                             jsonParams.getString("password"),
-                            PanthalassaModule.this,
+                            client = new UpStream() {
+                                @Override
+                                public void send(String s) {
+
+                                }
+                            },
                             PanthalassaModule.this);
                     promise.resolve(true);
                 } catch (Exception e) {
@@ -523,5 +529,9 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
         reactContext
                 .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
                 .emit(eventName, params);
+    }
+
+    private void prepareEmitter(String data, String channel) {
+        
     }
 }
