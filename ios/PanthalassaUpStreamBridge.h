@@ -11,7 +11,7 @@
 
 @protocol UpStreamProtocolDelegate
 
-- (void)receiveString:(NSString *)data withDelegate:(id<UpStreamProtocolDelegate>)delegate;
+- (void)receiveString:(NSString *)data withUpStream:(id<PanthalassaUpStream>)upStream;
 
 @end
 
