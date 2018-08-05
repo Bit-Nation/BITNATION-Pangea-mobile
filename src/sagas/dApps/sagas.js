@@ -1,58 +1,42 @@
 // @flow
 
 import { call, select, put } from 'redux-saga/effects';
-import { Realm } from 'realm';
 
-import defaultDB from '../../services/database';
-import type { OpenDAppAction, PerformDAppCallbackAction, StartDAppAction } from '../../actions/dApps';
-import { dAppsListUpdated, dAppStarted, dAppStartFailed, startDApp } from '../../actions/dApps';
+import type {
+  DAppsListUpdatedAction,
+  OpenDAppAction,
+  PerformDAppCallbackAction,
+  StartDAppAction,
+} from '../../actions/dApps';
+import { dAppLaunchStateChanged, dAppsListUpdated, startDApp } from '../../actions/dApps';
 import DAppsService from '../../services/dApps';
 import type { DAppType as DBDApp } from '../../services/database/schemata';
-import { currentAccountBasedUpdate, getCurrentAccountId } from '../accounts/sagas';
+import { getDApp, getDAppLaunchState } from '../../reducers/dApps';
 
 /**
- * @desc Function that creates Realm results fetching DApps for specific account.
- * @param {Realm} db Realm instance.
- * @param {string|null} accountId Id of account to fetch logs or null.
- * @return {Realm.Results<DBDApp>|null} Realm results fetching DApps for specified account or null if not applicable.
+ * @desc Fetch list of DApps.
+ * @return {void}
  */
-export function buildDAppsResults(db: Realm, accountId: string | null) {
-  if (accountId === null) {
-    return null;
-  }
-  return db.objects('DApp').filtered(`accountId == '${accountId}'`);
+export function* fetchDApps(): Generator<*, *, *> {
+  const dApps = yield call(DAppsService.getDApps);
+  yield put(dAppsListUpdated(dApps));
 }
 
 /**
- * @desc Generator to be called on database change. Used to update DApps list.
- * @param {*} collection Updated DApps collection
- * @param {*} changes Changes set.
+ * @desc Callback on DApps list update.
+ * @param {DAppsListUpdatedAction} action An action.
  * @return {void}
  */
-export function* onCurrentAccountChange(collection: Realm.Result<DBDApp>, changes: Realm.CollectionChangeSet<DBDApp>): Generator<*, *, *> {
-  yield put(dAppsListUpdated(collection.map(dApp => ({
-    name: dApp.name,
-    publicKey: dApp.publicKey,
-    signature: dApp.signature,
-  }))));
-  const { dApps: { startedDAppIds } } = yield select();
-  for (let i = 0; i < collection.length; i += 1) {
-    const { publicKey } = collection[i];
-    if (!startedDAppIds.includes(publicKey)) {
-      yield put(startDApp(publicKey));
-    } else if (changes.modifications.includes(i)) {
-      yield put(dAppStartFailed(publicKey));
+export function* onDAppsListUpdated(action: DAppsListUpdatedAction): Generator<*, *, *> {
+  const { availableDApps } = action;
+  const { dApps: dAppsState } = yield select();
+  for (let i = 0; i < availableDApps.length; i += 1) {
+    const { publicKey } = availableDApps[i];
+    const launchState = getDAppLaunchState(dAppsState, publicKey);
+    if (launchState === 'off') {
       yield put(startDApp(publicKey));
     }
   }
-}
-
-/**
- * @desc Starts listen to messages updates in database.
- * @return {void}
- */
-export function* startDatabaseListening(): Generator<*, *, *> {
-  yield call(currentAccountBasedUpdate, buildDAppsResults, onCurrentAccountChange);
 }
 
 /**
@@ -60,10 +44,8 @@ export function* startDatabaseListening(): Generator<*, *, *> {
  * @param {string} publicKey Public key of desired DApp.
  * @return {void}
  */
-export function* getDApp(publicKey: string): Generator<*, *, *> {
-  const accountId = yield call(getCurrentAccountId);
-  const db: Realm = yield defaultDB;
-  return yield db.objects('DApp').filtered(`accountId == '${accountId}' && publicKey == '${publicKey}'`)[0];
+export function* getDAppSaga(publicKey: string): Generator<*, *, *> {
+  return yield select(state => getDApp(state.dApps, publicKey));
 }
 
 /**
@@ -72,18 +54,19 @@ export function* getDApp(publicKey: string): Generator<*, *, *> {
  * @return {void}
  */
 export function* startDAppSaga(action: StartDAppAction): Generator<*, *, *> {
-  const dApp: ?DBDApp = yield call(getDApp, action.dAppPublicKey);
+  const dApp: ?DBDApp = yield call(getDAppSaga, action.dAppPublicKey);
   if (dApp == null) {
-    yield put(dAppStartFailed(action.dAppPublicKey));
+    yield put(dAppLaunchStateChanged(action.dAppPublicKey, 'off'));
     return;
   }
 
   try {
+    yield put(dAppLaunchStateChanged(action.dAppPublicKey, 'starting'));
     yield call(DAppsService.startDApp, dApp);
-    yield put(dAppStarted(action.dAppPublicKey));
+    yield put(dAppLaunchStateChanged(action.dAppPublicKey, 'started'));
   } catch (error) {
     console.log(`DApp start failed: ${error}`);
-    yield put(dAppStartFailed(action.dAppPublicKey));
+    yield put(dAppLaunchStateChanged(action.dAppPublicKey, 'off'));
   }
 }
 
@@ -104,6 +87,7 @@ export function* openDApp(action: OpenDAppAction): Generator<*, *, *> {
 
   try {
     yield call(DAppsService.openDApp, dAppPublicKey, context);
+    yield put(dAppLaunchStateChanged(action.dAppPublicKey, 'opened'));
     yield call(callback, true);
   } catch (error) {
     console.log(`DApp open failed: ${error}`);
