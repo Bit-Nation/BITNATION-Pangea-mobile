@@ -103,7 +103,7 @@ RCT_REMAP_METHOD(PanthalassaStartFromMnemonic,
   
   response = PanthalassaStartFromMnemonic(path, [RCTConvert NSString:config[@"config"]],
                                                    [RCTConvert NSString:config[@"mnemonic"]],
-                                                   self, self,
+                                                   upstreamCliet, upstreamUI,
                                                    &error);
   NSNumber *val = [NSNumber numberWithBool:response];
   
@@ -187,7 +187,7 @@ RCT_REMAP_METHOD(PanthalassaStart,
   
   response = PanthalassaStart(path, [RCTConvert NSString:config[@"config"]],
                               [RCTConvert NSString:config[@"password"]],
-                              self, self,
+                              upstreamCliet, upstreamUI,
                               &error);
   
   NSNumber *val = [NSNumber numberWithBool:response];
@@ -566,10 +566,22 @@ RCT_REMAP_METHOD(PanthalassaDApps,
   hasListeners = NO;
 }
 
+// This method should be deleted due is not the active protocol listener now
 - (void)send:(NSString *)data {
   NSLog(@"************ Received from go!");
   if (hasListeners && data != nil) {
     [self sendEventWithName:@"PanthalassaUpStream" body:@{@"upstream": data}];
+  }
+}
+
+- (void)receiveString:(NSString *)data withDelegate:(id<UpStreamProtocolDelegate>)delegate {
+  NSLog(@"************ Received from go!");
+  if (hasListeners && data != nil) {
+    if (delegate == upstreamCliet) {
+      [self sendEventWithName:@"PanthalassaUpStream" body:@{@"client": data}];
+    } else {
+      [self sendEventWithName:@"PanthalassaUpStream" body:@{@"ui": data}];
+    }
   }
 }
 
