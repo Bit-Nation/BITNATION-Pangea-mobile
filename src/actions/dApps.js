@@ -2,11 +2,11 @@
 
 import { type DApp } from '../types/DApp';
 import type { DAppMessageType, ChatSessionType, GiftedChatMessageType } from '../types/Chat';
+import type { DAppLaunchState } from '../reducers/dApps';
 
 export type DAppsListUpdatedAction = { +type: 'DAPPS_LIST_UPDATED', availableDApps: Array<DApp> };
 export type StartDAppAction = { +type: 'START_DAPP', dAppPublicKey: string };
-export type DAppStartedAction = { +type: 'DAPP_STARTED', dAppPublicKey: string };
-export type DAppStartFailedAction = { +type: 'DAPP_START_FAILED', dAppPublicKey: string };
+export type DAppLaunchStateChangedAction = { +type: 'DAPP_LAUNCH_STATE_CHANGED', dAppPublicKey: string, launchState: DAppLaunchState };
 export type OpenDAppAction = { +type: 'OPEN_DAPP', dAppPublicKey: string, context: Object, callback: (success: boolean, error: ?Error) => void };
 export type PerformDAppCallbackAction = { +type: 'PERFORM_DAPP_CALLBACK', dAppPublicKey: string, callbackID: number, args: Object };
 export type SendDAppMessageAction = { +type: 'SEND_DAPP_MESSAGE', message: DAppMessageType, session: ChatSessionType, callback: (message: ?GiftedChatMessageType) => void };
@@ -14,16 +14,14 @@ export type SendDAppMessageAction = { +type: 'SEND_DAPP_MESSAGE', message: DAppM
 export type Action =
   | DAppsListUpdatedAction
   | StartDAppAction
-  | DAppStartedAction
-  | DAppStartFailedAction
+  | DAppLaunchStateChangedAction
   | OpenDAppAction
   | PerformDAppCallbackAction
   | SendDAppMessageAction;
 
 export const DAPPS_LIST_UPDATED = 'DAPPS_LIST_UPDATED';
 export const START_DAPP = 'START_DAPP';
-export const DAPP_STARTED = 'DAPP_STARTED';
-export const DAPP_START_FAILED = 'DAPP_START_FAILED';
+export const DAPP_LAUNCH_STATE_CHANGED = 'DAPP_LAUNCH_STATE_CHANGED';
 export const OPEN_DAPP = 'OPEN_DAPP';
 export const PERFORM_DAPP_CALLBACK = 'PERFORM_DAPP_CALLBACK';
 export const SEND_DAPP_MESSAGE = 'SEND_DAPP_MESSAGE';
@@ -41,26 +39,16 @@ export function dAppsListUpdated(availableDApps: Array<DApp>): DAppsListUpdatedA
 }
 
 /**
- * @desc Action creator for an action that is called when DApp started successfully.
- * @param {string} dAppPublicKey Public key of DApp that started.
- * @return {DAppStartedAction} An action.
- */
-export function dAppStarted(dAppPublicKey: string): DAppStartedAction {
-  return {
-    type: DAPP_STARTED,
-    dAppPublicKey,
-  };
-}
-
-/**
- * @desc Action creator for an action that is called when DApp failed to start.
+ * @desc Action creator for an action that is called when DApp changed his launch state, e.g. started/opened/closed/etc.
  * @param {string} dAppPublicKey Public key of DApp that failed to start.
- * @return {DAppStartFailedAction} An action.
+ * @param {DAppLaunchState} launchState State that DApp was switched to.
+ * @return {DAppLaunchStateChangedAction} An action.
  */
-export function dAppStartFailed(dAppPublicKey: string): DAppStartFailedAction {
+export function dAppLaunchStateChanged(dAppPublicKey: string, launchState: DAppLaunchState): DAppLaunchStateChangedAction {
   return {
-    type: DAPP_START_FAILED,
+    type: DAPP_LAUNCH_STATE_CHANGED,
     dAppPublicKey,
+    launchState,
   };
 }
 

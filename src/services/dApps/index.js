@@ -4,6 +4,7 @@ import { NativeModules } from 'react-native';
 
 import type { DAppType as DBDApp } from '../../services/database/schemata';
 import { convertToPanthalassa } from '../../utils/mapping/dapp';
+import type { DApp } from '../../types/DApp';
 
 const DAPP_START_TIMEOUT = 30;
 
@@ -24,9 +25,15 @@ export default class DAppsService {
     });
   }
 
-  static async getDApps(): Promise<string> {
+  static async getDApps(): Promise<Array<DApp>> {
     const { Panthalassa } = NativeModules;
-    return Panthalassa.PanthalassaDApps();
+    try {
+      const dApps = await Panthalassa.PanthalassaDApps();
+      return JSON.parse(dApps);
+    } catch (error) {
+      console.log(`[PANGEA] Failed to get DApps ${error.message}`);
+      return [];
+    }
   }
 
   static async connectToDAppHost(address: string): Promise<boolean> {
