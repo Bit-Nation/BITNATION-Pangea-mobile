@@ -6,7 +6,7 @@ import type {
   DAppsListUpdatedAction,
   OpenDAppAction,
   PerformDAppCallbackAction,
-  StartDAppAction,
+  StartDAppAction, StopDAppAction,
 } from '../../actions/dApps';
 import { dAppLaunchStateChanged, dAppsListUpdated, startDApp } from '../../actions/dApps';
 import DAppsService from '../../services/dApps';
@@ -54,19 +54,27 @@ export function* getDAppSaga(publicKey: string): Generator<*, *, *> {
  * @return {void}
  */
 export function* startDAppSaga(action: StartDAppAction): Generator<*, *, *> {
-  const dApp: ?DApp = yield call(getDAppSaga, action.dAppPublicKey);
-  if (dApp == null) {
-    yield put(dAppLaunchStateChanged(action.dAppPublicKey, 'off'));
-    return;
-  }
-
   try {
     yield put(dAppLaunchStateChanged(action.dAppPublicKey, 'starting'));
-    yield call(DAppsService.startDApp, dApp);
+    yield call(DAppsService.startDApp, action.dAppPublicKey);
     yield put(dAppLaunchStateChanged(action.dAppPublicKey, 'started'));
   } catch (error) {
-    console.log(`DApp start failed: ${error}`);
+    console.log(`[DAPP] Start failed: ${JSON.stringify(error)}`);
     yield put(dAppLaunchStateChanged(action.dAppPublicKey, 'off'));
+  }
+}
+
+/**
+ * @desc Stops DApp.
+ * @param {StopDAppAction} action An action.
+ * @return {void}
+ */
+export function* stopDAppSaga(action: StopDAppAction): Generator<*, *, *> {
+  try {
+    yield call(DAppsService.stopDApp, action.dAppPublicKey);
+    yield put(dAppLaunchStateChanged(action.dAppPublicKey, 'off'));
+  } catch (error) {
+    console.log(`[DAPP] Stop failed: ${error.toString()}`);
   }
 }
 

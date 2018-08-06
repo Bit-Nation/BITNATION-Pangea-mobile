@@ -1,11 +1,12 @@
 // @flow
 
-import { call, take, fork } from 'redux-saga/effects';
+import { call, take, fork, put } from 'redux-saga/effects';
 import { eventChannel, type Channel } from 'redux-saga';
 
 import ServiceContainer from '../../services/container';
 import UpstreamService from '../../services/upstream/upstream';
 import { fetchDApps } from './sagas';
+import { stopDApp } from '../../actions/dApps';
 
 /**
  * @desc Handles UI API request.
@@ -18,9 +19,12 @@ export function* handleRequest(request: Object): Generator<*, *, *> {
 
   // @todo Handle requests.
   switch (name) {
-    case 'DAPP:PERSISTED':
+    case 'DAPP:PERSISTED': {
+      const { dapp_signing_key: publicKey } = payload;
+      yield put(stopDApp(publicKey));
       yield call(fetchDApps);
       break;
+    }
     case 'MESSAGE:RECEIVED': break;
     case 'MESSAGE:DELIVERED': break;
     case 'MESSAGE:PERSISTED': break;
