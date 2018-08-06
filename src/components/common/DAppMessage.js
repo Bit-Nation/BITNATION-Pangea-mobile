@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import { View, TouchableOpacity, Text } from 'react-native';
+import { View, Text } from 'react-native';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
 
 import GlobalStyles from '../../global/Styles';
@@ -32,14 +32,12 @@ const DAppMessage = ({
   time, message,
 }: Props) => (
   <View style={styles.dAppMessage}>
-    <TouchableOpacity testID='Touchable'>
-      <Text style={styles.dAppMessageTime}>
-        {time}
-      </Text>
-      <Text style={styles.dAppMessageText} numberOfLines={1}>
-        {message}
-      </Text>
-    </TouchableOpacity>
+    <Text style={styles.dAppMessageTime}>
+      {time}
+    </Text>
+    <Text style={styles.dAppMessageText} numberOfLines={1}>
+      {message}
+    </Text>
   </View>
 );
 
