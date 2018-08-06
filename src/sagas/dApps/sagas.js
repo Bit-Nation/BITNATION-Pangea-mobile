@@ -98,7 +98,7 @@ export function* openDApp(action: OpenDAppAction): Generator<*, *, *> {
     yield put(dAppLaunchStateChanged(action.dAppPublicKey, 'opened'));
     yield call(callback, true);
   } catch (error) {
-    console.log(`DApp open failed: ${error}`);
+    console.log(`[DApp] Open failed: ${error}`);
     yield call(callback, false, error);
   }
 }
