@@ -6,6 +6,7 @@ import type { DAppLaunchState } from '../reducers/dApps';
 
 export type DAppsListUpdatedAction = { +type: 'DAPPS_LIST_UPDATED', availableDApps: Array<DApp> };
 export type StartDAppAction = { +type: 'START_DAPP', dAppPublicKey: string };
+export type StopDAppAction = { +type: 'STOP_DAPP', dAppPublicKey: string };
 export type DAppLaunchStateChangedAction = { +type: 'DAPP_LAUNCH_STATE_CHANGED', dAppPublicKey: string, launchState: DAppLaunchState };
 export type OpenDAppAction = { +type: 'OPEN_DAPP', dAppPublicKey: string, context: Object, callback: (success: boolean, error: ?Error) => void };
 export type PerformDAppCallbackAction = { +type: 'PERFORM_DAPP_CALLBACK', dAppPublicKey: string, callbackID: number, args: Object };
@@ -14,6 +15,7 @@ export type SendDAppMessageAction = { +type: 'SEND_DAPP_MESSAGE', message: DAppM
 export type Action =
   | DAppsListUpdatedAction
   | StartDAppAction
+  | StopDAppAction
   | DAppLaunchStateChangedAction
   | OpenDAppAction
   | PerformDAppCallbackAction
@@ -21,6 +23,7 @@ export type Action =
 
 export const DAPPS_LIST_UPDATED = 'DAPPS_LIST_UPDATED';
 export const START_DAPP = 'START_DAPP';
+export const STOP_DAPP = 'STOP_DAPP';
 export const DAPP_LAUNCH_STATE_CHANGED = 'DAPP_LAUNCH_STATE_CHANGED';
 export const OPEN_DAPP = 'OPEN_DAPP';
 export const PERFORM_DAPP_CALLBACK = 'PERFORM_DAPP_CALLBACK';
@@ -54,7 +57,7 @@ export function dAppLaunchStateChanged(dAppPublicKey: string, launchState: DAppL
 
 /**
  * @desc Action creator for an action to start DApp by its public key.
- * @param {string} dAppPublicKey Public key of DApp to open.
+ * @param {string} dAppPublicKey Public key of DApp to start.
  * @return {StartDAppAction} An action.
  */
 export function startDApp(dAppPublicKey: string): StartDAppAction {
@@ -64,6 +67,17 @@ export function startDApp(dAppPublicKey: string): StartDAppAction {
   };
 }
 
+/**
+ * @desc Action creator for an action to start DApp by its public key.
+ * @param {string} dAppPublicKey Public key of DApp to stop.
+ * @return {StopDAppAction} An action.
+ */
+export function stopDApp(dAppPublicKey: string): StopDAppAction {
+  return {
+    type: STOP_DAPP,
+    dAppPublicKey,
+  };
+}
 
 /**
  * @desc Action creator for an action to open DApp by its public key.
