@@ -70,10 +70,15 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
                             client = new UpStream() {
                                 @Override
                                 public void send(String s) {
-
+                                    prepareEmitter(s, "client");
                                 }
                             },
-                            PanthalassaModule.this);
+                            ui = new UpStream() {
+                                @Override
+                                public void send(String s) {
+                                    prepareEmitter(s, "ui");
+                                }
+                            });
                     promise.resolve(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -96,8 +101,18 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
                 try {
                     Panthalassa.startFromMnemonic(path, jsonParams.getString("config"),
                             jsonParams.getString("mnemonic"),
-                            PanthalassaModule.this,
-                            PanthalassaModule.this);
+                            client = new UpStream() {
+                                @Override
+                                public void send(String s) {
+                                    prepareEmitter(s, "client");
+                                }
+                            },
+                            ui = new UpStream() {
+                                @Override
+                                public void send(String s) {
+                                    prepareEmitter(s, "ui");
+                                }
+                            });
                     promise.resolve(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -352,7 +367,7 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
         new Thread(new Runnable() {
             public void run() {
                 try {
-                    Panthalassa.startDApp(jsonParams.getString("dApp"),
+                    Panthalassa.startDApp(jsonParams.getString("dAppSingingKeyStr"),
                             jsonParams.getInt("timeout"));
                     promise.resolve(true);
                 } catch (Exception e) {
@@ -504,6 +519,8 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
     }
 
     //=====
+
+    // This method should be deleted due is not the active protocol listener now
     @Override
     public void send(String s) {
         Log.v("Upstream","Received from callback");
@@ -532,6 +549,20 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
     }
 
     private void prepareEmitter(String data, String channel) {
-        
+        Log.v("Upstream","Received from callback");
+
+        WritableMap params = Arguments.createMap();
+        params.putString(channel, data);
+        Activity activity = getCurrentActivity();
+        if (activity != null) {
+            MainApplication application = (MainApplication) activity.getApplication();
+            ReactNativeHost reactNativeHost = application.getReactNativeHost();
+            ReactInstanceManager reactInstanceManager = reactNativeHost.getReactInstanceManager();
+            ReactContext reactContext = reactInstanceManager.getCurrentReactContext();
+
+            if (reactContext != null) {
+                sendEvent(reactContext, "PanthalassaUpStream", params);
+            }
+        }
     }
 }
