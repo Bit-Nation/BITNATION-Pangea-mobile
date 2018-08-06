@@ -1,6 +1,8 @@
 // @flow
 
 import { NativeModules } from 'react-native';
+// $FlowFixMe
+import { Buffer } from 'buffer';
 
 import { convertFromPanthalassa } from '../../utils/mapping/dapp';
 import type { DApp } from '../../types/DApp';
@@ -8,10 +10,20 @@ import type { DApp } from '../../types/DApp';
 const DAPP_START_TIMEOUT = 30;
 
 export default class DAppsService {
-  static async startDApp(dApp: DApp): Promise<boolean> {
+  static async startDApp(dAppPublicKey: string): Promise<boolean> {
     const { Panthalassa } = NativeModules;
+    const hexPublicKey = Buffer.from(dAppPublicKey, 'base64').toString('hex');
     return Panthalassa.PanthalassaStartDApp({
-      dAppSingingKeyStr: dApp.publicKey,
+      dAppSingingKeyStr: hexPublicKey,
+      timeout: DAPP_START_TIMEOUT,
+    });
+  }
+
+  static async stopDApp(dAppPublicKey: string): Promise<boolean> {
+    const { Panthalassa } = NativeModules;
+    const hexPublicKey = Buffer.from(dAppPublicKey, 'base64').toString('hex');
+    return Panthalassa.PanthalassaStopDApp({
+      dAppSingingKeyStr: hexPublicKey,
       timeout: DAPP_START_TIMEOUT,
     });
   }
