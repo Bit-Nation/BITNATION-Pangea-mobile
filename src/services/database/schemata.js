@@ -6,6 +6,7 @@ import { schemata as schemaVTwo, migration as migrationVTwo } from './schema/v2'
 import { schemata as schemaVThree, migration as migrationVThree } from './schema/v3';
 import { schemata as schemaVFour, migration as migrationVFour } from './schema/v4';
 import { schemata as schemaVFive, migration as migrationVFive } from './schema/v5';
+import { schemata as schemaVSix, migration as migrationVSix } from './schema/v6';
 
 /**
  * @desc All available schemas. including there version and migration.
@@ -40,6 +41,11 @@ export default [
     schema: schemaVFive,
     schemaVersion: 5,
     migration: migrationVFive,
+  },
+  {
+    schema: schemaVSix,
+    schemaVersion: 6,
+    migration: migrationVSix,
   },
 ];
 
@@ -91,4 +97,4 @@ export {
   DAppType,
   MessageKeySchema,
   DoubleRatchetKeySchema,
-} from './schema/v5';
+} from './schema/v6';
