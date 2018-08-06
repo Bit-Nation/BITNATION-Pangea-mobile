@@ -762,7 +762,7 @@ const styles = {
   },
 
   dAppMessage: {
-    width: 250,
+    width: '70%',
   },
 
   dAppMessageTime: {
