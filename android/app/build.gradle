@@ -159,6 +159,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-camera')
     compile project(':react-native-shake')
     compile (project(':react-native-camera')) {
       exclude group: "com.android.support", module: 'support-v4'
@@ -174,8 +175,13 @@ dependencies {
     testCompile 'junit:junit:4.12'
     testCompile 'org.mockito:mockito-core:1.10.19'
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:25.0.1'
+    compile ('com.android.support:appcompat-v7:25.0.1'){
+        force = true
+    }
     compile 'com.facebook.react:react-native:+'
+    compile ("com.android.support:support-v4:26.0.1") {
+        force = true //<-- force dependency resolution to 26.0.1 in my case
+    }
 }
 
 
