@@ -214,7 +214,7 @@ const Screens = {
   },
   QR_CODE_DAPP_SCREEN: {
     screen: 'Pangea.QRCodeAppScreen',
-    title: i18n.t('screens.dAppQRCodeScanner.title'),
+    title: '',
     navigatorStyle,
   },
   SETTINGS_SCREEN: {
