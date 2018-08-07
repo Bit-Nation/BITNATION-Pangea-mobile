@@ -1,4 +1,6 @@
 // @flow
+// $FlowFixMe
+import { Buffer } from 'buffer';
 import type { DApp, PanthalassaDApp } from '../../types/DApp';
 
 /**
@@ -8,8 +10,9 @@ import type { DApp, PanthalassaDApp } from '../../types/DApp';
  * @return {Object} Converted DApp object.
  */
 export function convertFromPanthalassa(dApp: PanthalassaDApp, locale: string = 'en-us'): DApp {
+  const hexPublicKey = Buffer.from(dApp.used_signing_key, 'base64').toString('hex');
   return {
     name: dApp.name[locale] || dApp.name['en-us'],
-    publicKey: dApp.used_signing_key,
+    publicKey: hexPublicKey,
   };
 }
