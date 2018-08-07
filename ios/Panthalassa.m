@@ -581,12 +581,7 @@ RCT_REMAP_METHOD(PanthalassaDApps,
   hasListeners = NO;
 }
 
-// This method should be deleted due is not the active protocol listener now
 - (void)send:(NSString *)data {
-  NSLog(@"************ Received from go!");
-  if (hasListeners && data != nil) {
-    [self sendEventWithName:@"PanthalassaUpStream" body:@{@"upstream": data}];
-  }
 }
 
 - (void)receiveString:(NSString *)data withUpStream:(id<PanthalassaUpStream>)upStream {
