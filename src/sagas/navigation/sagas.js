@@ -7,6 +7,7 @@ import { Navigation } from 'react-native-navigation';
 import { appStyle, screen, tabsStyle } from '../../global/Screens';
 import { accountsPresent, getCurrentAccountId } from '../accounts/sagas';
 import type { CurrentAccountIdChangedAction } from '../../actions/accounts';
+import { isMigration } from '../migration/sagas';
 import type { StartNavigationAction } from '../../actions/navigation';
 import { CURRENT_ACCOUNT_ID_CHANGED } from '../../actions/accounts';
 
@@ -35,19 +36,28 @@ export function* launchCorrectFlow(action: CurrentAccountIdChangedAction | Start
  * @desc Launch logged in flow of the app.
  * @return {void}
  */
-export function launchLoggedInFlow() {
-  Navigation.startTabBasedApp({
-    tabs: [
-      screen('DASHBOARD_SCREEN'),
-      screen('CHAT_LIST_SCREEN'),
-      screen('NATIONS_SCREEN'),
-      screen('WALLET_SCREEN'),
-      screen('SETTINGS_SCREEN'),
-    ],
-    tabsStyle: { ...tabsStyle },
-    appStyle: { ...appStyle },
-  });
+export function* launchLoggedInFlow(): Generator<*, *, any> {
+  const isMigrationRequired = yield call(isMigration);
+  if (isMigrationRequired) {
+    Navigation.startSingleScreenApp({
+      screen: screen('MIGRATION_SCREEN'),
+      appStyle: { ...appStyle },
+    });
+  } else {
+    Navigation.startTabBasedApp({
+      tabs: [
+        screen('DASHBOARD_SCREEN'),
+        screen('CHAT_LIST_SCREEN'),
+        screen('NATIONS_SCREEN'),
+        screen('WALLET_SCREEN'),
+        screen('SETTINGS_SCREEN'),
+      ],
+      tabsStyle: { ...tabsStyle },
+      appStyle: { ...appStyle },
+    });
+  }
 }
+
 
 /**
  * @desc Launch logged out flow of the app.

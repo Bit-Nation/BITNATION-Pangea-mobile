@@ -17,15 +17,17 @@ export function convertFromDatabase(account: DBAccount): Account {
     avatar: account.profileImage,
     accountStore: account.accountStore,
     confirmedMnemonic: account.confirmedMnemonic,
+    lastMigrationVersion: account.lastMigrationVersion,
   };
 }
 
 /**
  * @desc Converts creating account to Realm object if it's possible.
  * @param {PartialAccount} account Account to be converted.
+ * @param {string} version Version number.
  * @return {?DBAccount} Converted object.
  */
-export function convertToDatabase(account: PartialAccount | Account): DBAccount | null {
+export function convertToDatabase(account: PartialAccount | Account, version: string | null): DBAccount | null {
   if (account.name == null || account.accountStore == null) {
     return null;
   }
@@ -39,6 +41,7 @@ export function convertToDatabase(account: PartialAccount | Account): DBAccount 
     accountStore: account.accountStore,
     confirmedMnemonic: typeof (account.confirmedMnemonic) === 'boolean' ? account.confirmedMnemonic : false,
     networkType: account.networkType,
+    lastMigrationVersion: version || '0.0.0',
     DHT: [],
   };
 }
