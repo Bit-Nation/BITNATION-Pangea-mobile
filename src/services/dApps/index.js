@@ -12,9 +12,8 @@ const DAPP_START_TIMEOUT = 30;
 export default class DAppsService {
   static async startDApp(dAppPublicKey: string): Promise<boolean> {
     const { Panthalassa } = NativeModules;
-    const hexPublicKey = Buffer.from(dAppPublicKey, 'base64').toString('hex');
     return Panthalassa.PanthalassaStartDApp({
-      dAppSingingKeyStr: hexPublicKey,
+      dAppSingingKeyStr: dAppPublicKey,
       timeout: DAPP_START_TIMEOUT,
     });
   }
@@ -29,9 +28,8 @@ export default class DAppsService {
 
   static async openDApp(publicKey: string, context: Object): Promise<boolean> {
     const { Panthalassa } = NativeModules;
-    const hexPublicKey = Buffer.from(publicKey, 'base64').toString('hex');
     return Panthalassa.PanthalassaOpenDApp({
-      id: hexPublicKey,
+      id: publicKey,
       context: JSON.stringify(context),
     });
   }
