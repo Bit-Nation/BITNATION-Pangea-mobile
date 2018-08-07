@@ -11,6 +11,9 @@ import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import i18n from '../../../global/i18n';
 import Loading from '../../../components/common/Loading';
 import { androidNavigationButtons } from '../../../global/Screens';
+import BackgroundImage from '../../../components/common/BackgroundImage';
+import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
+import ScreenTitle from '../../../components/common/ScreenTitle';
 
 type Props = {
   /**
@@ -81,11 +84,14 @@ export default class DAppQRCodeScannerScreen extends NavigatorComponent<Props, S
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={styles.screenContainer}>
+        <BackgroundImage />
+        <FakeNavigationBar />
+        <ScreenTitle title={i18n.t(`screens.dAppQRCodeScanner.${this.props.connectionType}.title`)} />
         <QRCodeScanner
           onRead={result => this.onReadQRCode(result.data)}
           topContent={
-            <Text style={styles.centerText}>{i18n.t('screens.dAppQRCodeScanner.instruction')}</Text>
+            <Text style={styles.body}>{i18n.t(`screens.dAppQRCodeScanner.${this.props.connectionType}.instruction`)}</Text>
           }
           ref={scanner => (this.scanner = scanner)}
         />
