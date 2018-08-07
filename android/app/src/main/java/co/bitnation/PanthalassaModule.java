@@ -520,24 +520,8 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
 
     //=====
 
-    // This method should be deleted due is not the active protocol listener now
     @Override
     public void send(String s) {
-        Log.v("Upstream","Received from callback");
-
-        WritableMap params = Arguments.createMap();
-        params.putString("upstream", s);
-        Activity activity = getCurrentActivity();
-        if (activity != null) {
-            MainApplication application = (MainApplication) activity.getApplication();
-            ReactNativeHost reactNativeHost = application.getReactNativeHost();
-            ReactInstanceManager reactInstanceManager = reactNativeHost.getReactInstanceManager();
-            ReactContext reactContext = reactInstanceManager.getCurrentReactContext();
-
-            if (reactContext != null) {
-                sendEvent(reactContext, "PanthalassaUpStream", params);
-            }
-        }
     }
 
     private void sendEvent(ReactContext reactContext,
