@@ -496,8 +496,14 @@
       }
     },
     "dAppQRCodeScanner": {
-      "title": "Connect to DApp host",
-      "instruction": "Scan QR code to connect to PC"
+      "devHost": {
+        "title": "Connect to DApp host",
+        "instruction": "Scan QR code to connect to PC"
+      },
+      "logger": {
+        "title": "Connect to debug logger",
+        "instruction": "Scan QR code to connect to PC"
+      }
     },
     "settings": {
       "title": "Settings",
