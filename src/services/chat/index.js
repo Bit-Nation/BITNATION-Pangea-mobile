@@ -29,11 +29,6 @@ export default class ChatService {
     if (result.ok !== true) {
       return Promise.reject(new Error('Failed to upload profile'));
     }
-    const bundleCountResponse = await ChatService.getPreKeyBundleCount();
-    console.log(`[TEST] bundleCountResponse ${JSON.stringify(bundleCountResponse)}`);
-    if (bundleCountResponse.count < 100) {
-      return ChatService.uploadPreKeyBundle();
-    }
     return Promise.resolve();
   }
 
