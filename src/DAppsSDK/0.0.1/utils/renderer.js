@@ -111,7 +111,7 @@ export const renderJSON = (json: ComponentsJSON, key: ?string, customPropsProvid
       key,
     },
     children
-      ? children.map((child, index) => renderJSON(child, `${index}`, customPropsProvider, component))
+      ? Array.isArray(children) ? children.map((child, index) => renderJSON(child, `${index}`, customPropsProvider, component)) : children
       : null,
   );
 };
