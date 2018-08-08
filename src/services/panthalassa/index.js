@@ -18,7 +18,7 @@ export async function panthalassaStop(): Promise<boolean> {
  * @param {string} password Account's password
  * @returns {Promise<*>} Boolean response about operation's result
  */
-export async function panthalassaStart(config: String, password: String):Promise<boolean> {
+export async function panthalassaStart(config: string, password: string):Promise<boolean> {
   return Panthalassa.PanthalassaStart({ config, password });
 }
 
@@ -28,7 +28,7 @@ export async function panthalassaStart(config: String, password: String):Promise
  * @param {string} mnemonic Account's mnemonic phrase to recover it
  * @returns {Promise<*>} Boolean response about operation's result
  */
-export async function panthalassaStartFromMnemonic(config: String, mnemonic: String):Promise<boolean> {
+export async function panthalassaStartFromMnemonic(config: string, mnemonic: string):Promise<boolean> {
   return Panthalassa.PanthalassaStartFromMnemonic({ config, mnemonic });
 }
 
@@ -37,7 +37,7 @@ export async function panthalassaStartFromMnemonic(config: String, mnemonic: Str
  * @param {string} mnemonic Phrase to restore account
  * @returns {Promise<*>} Boolean response about operation's result
  */
-export async function panthalassaIsValidMnemonic(mnemonic: String):Promise<boolean> {
+export async function panthalassaIsValidMnemonic(mnemonic: string):Promise<boolean> {
   return Panthalassa.PanthalassaIsValidMnemonic(mnemonic);
 }
 
@@ -46,7 +46,7 @@ export async function panthalassaIsValidMnemonic(mnemonic: String):Promise<boole
  * @param {string} password Account's password
  * @returns {Promise<*>} {string} Account's new account ConfigurationStore
  */
-export async function panthalassaNewAccountKeys(password: String):Promise<string> {
+export async function panthalassaNewAccountKeys(password: string):Promise<string> {
   return Panthalassa.PanthalassaNewAccountKeys({
     pw: password,
     pwConfirm: password,
@@ -59,7 +59,7 @@ export async function panthalassaNewAccountKeys(password: String):Promise<string
  * @param {string} mnemonic Account's mnemonic
  * @returns {Promise<*>} {string} Account's new account ConfigurationStore
  */
-export async function panthalassaNewAccountKeysFromMnemonic(password: String, mnemonic: String):Promise<string> {
+export async function panthalassaNewAccountKeysFromMnemonic(password: string, mnemonic: string):Promise<string> {
   return Panthalassa.PanthalassaNewAccountKeysFromMnemonic({
     mne: mnemonic,
     pw: password,
@@ -72,7 +72,7 @@ export async function panthalassaNewAccountKeysFromMnemonic(password: String, mn
  * @param {string} password Account's password
  * @returns {Promise<*>} {string} Account's account ConfigurationStore
  */
-export async function panthalassaExportAccountStore(password: String):Promise<string> {
+export async function panthalassaExportAccountStore(password: string):Promise<string> {
   return Panthalassa.PanthalassaExportAccountStore({
     pw: password,
     pwConfirm: password,
@@ -92,7 +92,7 @@ export async function panthalassaEthPrivateKey():Promise<string> {
  * @param {string} publicKey User's public key
  * @returns {Promise<*>} {string} Account's Ethereum public key
  */
-export async function panthalassaEthPubToAddress(publicKey: String):Promise<string> {
+export async function panthalassaEthPubToAddress(publicKey: string):Promise<string> {
   return Panthalassa.PanthalassaEthPubToAddress(publicKey);
 }
 
@@ -121,7 +121,7 @@ export async function panthalassaGetIdentityPublicKey():Promise<string> {
  * @param {string} password Account's password
  * @returns {Promise<*>} {string} Account's signed profile
  */
-export async function panthalassaSignProfileStandAlone(name: String, location: String, image: String, keyManagerStore: String, password: String):Promise<string> {
+export async function panthalassaSignProfileStandAlone(name: string, location: string, image: string, keyManagerStore: string, password: string):Promise<string> {
   return Panthalassa.PanthalassaSignProfileStandAlone({
     name,
     location,
@@ -138,7 +138,7 @@ export async function panthalassaSignProfileStandAlone(name: String, location: S
  * @param {string} image Profile's avatar
  * @returns {Promise<*>} {
  */
-export async function panthalassaSignProfile(name: String, location: String, image: String):Promise<string> {
+export async function panthalassaSignProfile(name: string, location: string, image: string):Promise<string> {
   return Panthalassa.PanthalassaSignProfile({
     name,
     location,
@@ -160,7 +160,7 @@ export async function panthalassaGetMnemonic():Promise<string> {
  * @param {string} timeout Value for timeout operation
  * @returns {Promise<*>} Boolean response about operation's result
  */
-export async function panthalassaStartDApp(dAppSingingKeyStr: String, timeout: Number):Promise<boolean> {
+export async function panthalassaStartDApp(dAppSingingKeyStr: string, timeout: Number):Promise<boolean> {
   return Panthalassa.PanthalassaStartDApp({
     dAppSingingKeyStr,
     timeout,
@@ -173,7 +173,7 @@ export async function panthalassaStartDApp(dAppSingingKeyStr: String, timeout: N
  * @param {string} context TODO
  * @returns {Promise<*>} Boolean response about operation's result
  */
-export async function panthalassaOpenDApp(id: String, context: String):Promise<boolean> {
+export async function panthalassaOpenDApp(id: string, context: string):Promise<boolean> {
   return Panthalassa.PanthalassaOpenDApp({
     id,
     context,
@@ -187,7 +187,7 @@ export async function panthalassaOpenDApp(id: String, context: String):Promise<b
  * @param {string} args TODO
  * @returns {Promise<*>} Boolean response about operation's result
  */
-export async function panthalassaCallDAppFunction(dAppId: String, id: Number, args: String):Promise<boolean> {
+export async function panthalassaCallDAppFunction(dAppId: string, id: Number, args: string):Promise<boolean> {
   return Panthalassa.PanthalassaCallDAppFunction({
     dAppId,
     id,
@@ -200,7 +200,7 @@ export async function panthalassaCallDAppFunction(dAppId: String, id: Number, ar
  * @param {string} address Server address
  * @returns {Promise<*>} Boolean response about operation's result
  */
-export async function panthalassaConnectToDAppDevHost(address: String):Promise<boolean> {
+export async function panthalassaConnectToDAppDevHost(address: string):Promise<boolean> {
   return Panthalassa.PanthalassaConnectToDAppDevHost(address);
 }
 
@@ -210,7 +210,7 @@ export async function panthalassaConnectToDAppDevHost(address: String):Promise<b
  * @param {string} payload TODO
  * @returns {Promise<*>} {string}
  */
-export async function panthalassaRenderMessage(signingKey: String, payload: String):Promise<string> {
+export async function panthalassaRenderMessage(signingKey: string, payload: string):Promise<string> {
   return Panthalassa.PanthalassaRenderMessage({
     signingKey,
     payload,
@@ -225,7 +225,7 @@ export async function panthalassaRenderMessage(signingKey: String, payload: Stri
  * @param {Number} timeout TODO
  * @returns {Promise<*>} {string} TODO
  */
-export async function panthalassaSendResponse(id: String, data: String, responseError: String, timeout: Number):Promise<boolean> {
+export async function panthalassaSendResponse(id: string, data: string, responseError: string, timeout: Number):Promise<boolean> {
   return Panthalassa.PanthalassaSendResponse({
     id,
     data,
@@ -236,7 +236,7 @@ export async function panthalassaSendResponse(id: String, data: String, response
 
 /**
  * @desc Brings all chat conversation from the account
- * @returns {Promise<*>} String response with all the account's conversations
+ * @returns {Promise<*>} string response with all the account's conversations
  */
 export async function panthalassaAllChats():Promise<string> {
   return Panthalassa.PanthalassaAllChats();
@@ -247,13 +247,13 @@ export async function panthalassaAllChats():Promise<string> {
  * @param {string} address TODO
  * @returns {Promise<*>} Boolean response about operation's result
  */
-export async function panthalassaConnectLogger(address: String):Promise<boolean> {
+export async function panthalassaConnectLogger(address: string):Promise<boolean> {
   return Panthalassa.PanthalassaConnectLogger(address);
 }
 
 /**
  * @desc Brings all DApps available
- * @returns {Promise<*>} String response with all DApps available for the account
+ * @returns {Promise<*>} string response with all DApps available for the account
  */
 export async function panthalassaDApps():Promise<string> {
   return Panthalassa.PanthalassaDApps();
@@ -261,7 +261,7 @@ export async function panthalassaDApps():Promise<string> {
 
 /**
  * @desc Retrieves Account's public key
- * @returns {Promise<*>} String Account's public key
+ * @returns {Promise<*>} string Account's public key
  */
 export async function panthalassaIdentityPublicKey():Promise<string> {
   return Panthalassa.PanthalassaIdentityPublicKey();
@@ -274,7 +274,7 @@ export async function panthalassaIdentityPublicKey():Promise<string> {
  * @param {Number} amount TODO
  * @returns {Promise<*>} {string} TODO
  */
-export async function panthalassaMessages(partner: String, start: Number, amount: Number):Promise<string> {
+export async function panthalassaMessages(partner: string, start: Number, amount: Number):Promise<string> {
   return Panthalassa.PanthalassaMessages({
     partner,
     start,
@@ -288,7 +288,7 @@ export async function panthalassaMessages(partner: String, start: Number, amount
  * @param {string} message Message to send
  * @returns {Promise<*>} Boolean response about operation's result
  */
-export async function panthalassaSendMessage(partner: String, message: Number):Promise<boolean> {
+export async function panthalassaSendMessage(partner: string, message: Number):Promise<boolean> {
   return Panthalassa.PanthalassaSendMessage({
     partner,
     message,
@@ -300,7 +300,7 @@ export async function panthalassaSendMessage(partner: String, message: Number):P
  * @param {string} level TODO
  * @returns {Promise<*>} Boolean response about operation's result
  */
-export async function panthalassaSetLogger(level: String):Promise<boolean> {
+export async function panthalassaSetLogger(level: string):Promise<boolean> {
   return Panthalassa.PanthalassaSetLogger(level);
 }
 
@@ -309,6 +309,6 @@ export async function panthalassaSetLogger(level: String):Promise<boolean> {
  * @param {string} dAppSingingKeyStr Key of the DApp
  * @returns {Promise<*>} Boolean response about operation's result
  */
-export async function panthalassaStopDApp(dAppSingingKeyStr: String):Promise<boolean> {
+export async function panthalassaStopDApp(dAppSingingKeyStr: string):Promise<boolean> {
   return Panthalassa.PanthalassaStopDApp(dAppSingingKeyStr);
 }
