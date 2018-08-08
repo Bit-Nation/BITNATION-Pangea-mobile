@@ -59,7 +59,7 @@ to use the mesh network
 
 FOUNDATION_EXPORT NSString* PanthalassaAllChats(NSError** error);
 
-FOUNDATION_EXPORT BOOL PanthalassaCallDAppFunction(NSString* dAppId, long id_, NSString* args, NSError** error);
+FOUNDATION_EXPORT BOOL PanthalassaCallDAppFunction(NSString* signingKey, long id_, NSString* args, NSError** error);
 
 FOUNDATION_EXPORT BOOL PanthalassaConnectLogger(NSString* address, NSError** error);
 
@@ -67,6 +67,8 @@ FOUNDATION_EXPORT BOOL PanthalassaConnectLogger(NSString* address, NSError** err
  * connect the host to DApp development server
  */
 FOUNDATION_EXPORT BOOL PanthalassaConnectToDAppDevHost(NSString* address, NSError** error);
+
+FOUNDATION_EXPORT NSString* PanthalassaDApps(NSError** error);
 
 FOUNDATION_EXPORT NSString* PanthalassaEthAddress(NSError** error);
 
@@ -114,7 +116,7 @@ FOUNDATION_EXPORT NSString* PanthalassaNewAccountKeysFromMnemonic(NSString* mne,
 
 FOUNDATION_EXPORT BOOL PanthalassaOpenDApp(NSString* id_, NSString* context, NSError** error);
 
-FOUNDATION_EXPORT NSString* PanthalassaRenderMessage(NSString* id_, NSString* msg, NSString* context, NSError** error);
+FOUNDATION_EXPORT NSString* PanthalassaRenderMessage(NSString* signingKey, NSString* payload, NSError** error);
 
 FOUNDATION_EXPORT BOOL PanthalassaSendMessage(NSString* partner, NSString* message, NSError** error);
 
@@ -132,19 +134,21 @@ FOUNDATION_EXPORT NSString* PanthalassaSignProfileStandAlone(NSString* name, NSS
 /**
  * start panthalassa
  */
-FOUNDATION_EXPORT BOOL PanthalassaStart(NSString* config, NSString* password, id<PanthalassaUpStream> client, id<PanthalassaUpStream> uiUpstream, NSError** error);
+FOUNDATION_EXPORT BOOL PanthalassaStart(NSString* dbDir, NSString* config, NSString* password, id<PanthalassaUpStream> client, id<PanthalassaUpStream> uiUpstream, NSError** error);
 
-FOUNDATION_EXPORT BOOL PanthalassaStartDApp(NSString* dApp, long timeout, NSError** error);
+FOUNDATION_EXPORT BOOL PanthalassaStartDApp(NSString* dAppSingingKeyStr, long timeout, NSError** error);
 
 /**
  * create a new panthalassa instance with the mnemonic
  */
-FOUNDATION_EXPORT BOOL PanthalassaStartFromMnemonic(NSString* config, NSString* mnemonic, id<PanthalassaUpStream> client, id<PanthalassaUpStream> uiUpstream, NSError** error);
+FOUNDATION_EXPORT BOOL PanthalassaStartFromMnemonic(NSString* dbDir, NSString* config, NSString* mnemonic, id<PanthalassaUpStream> client, id<PanthalassaUpStream> uiUpstream, NSError** error);
 
 /**
  * Stop panthalassa
  */
 FOUNDATION_EXPORT BOOL PanthalassaStop(NSError** error);
+
+FOUNDATION_EXPORT BOOL PanthalassaStopDApp(NSString* dAppSingingKeyStr, NSError** error);
 
 @class PanthalassaUpStream;
 

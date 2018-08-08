@@ -25,8 +25,9 @@ import panthalassa.UpStream;
  * Created by Estarrona on 19/04/18.
  */
 
-public class PanthalassaModule extends ReactContextBaseJavaModule implements UpStream {
+public class PanthalassaModule extends ReactContextBaseJavaModule {
     final String TAG = "Panthalassa";
+    UpStream client, ui;
 
     public PanthalassaModule (ReactApplicationContext reactContext) {
         super(reactContext);
@@ -57,11 +58,27 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
     public void PanthalassaStart(final ReadableMap jsonParams, final Promise promise) throws JSONException {
         new Thread(new Runnable() {
             public void run() {
+                String path;
+                if (android.os.Build.VERSION.SDK_INT >=android.os.Build.VERSION_CODES.LOLLIPOP){
+                    path = getCurrentActivity().getNoBackupFilesDir().getAbsolutePath();
+                } else {
+                    path = getCurrentActivity().getFilesDir().getAbsolutePath();
+                }
                 try {
-                    Panthalassa.start(jsonParams.getString("config"),
+                    Panthalassa.start(path, jsonParams.getString("config"),
                             jsonParams.getString("password"),
-                            PanthalassaModule.this,
-                            PanthalassaModule.this);
+                            client = new UpStream() {
+                                @Override
+                                public void send(String s) {
+                                    prepareEmitter(s, "client");
+                                }
+                            },
+                            ui = new UpStream() {
+                                @Override
+                                public void send(String s) {
+                                    prepareEmitter(s, "ui");
+                                }
+                            });
                     promise.resolve(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -75,11 +92,27 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
     public void PanthalassaStartFromMnemonic(final ReadableMap jsonParams, final Promise promise) throws JSONException {
         new Thread(new Runnable() {
             public void run() {
+                String path;
+                if (android.os.Build.VERSION.SDK_INT >=android.os.Build.VERSION_CODES.LOLLIPOP){
+                    path = getCurrentActivity().getNoBackupFilesDir().getAbsolutePath();
+                } else {
+                    path = getCurrentActivity().getFilesDir().getAbsolutePath();
+                }
                 try {
-                    Panthalassa.startFromMnemonic(jsonParams.getString("config"),
+                    Panthalassa.startFromMnemonic(path, jsonParams.getString("config"),
                             jsonParams.getString("mnemonic"),
-                            PanthalassaModule.this,
-                            PanthalassaModule.this);
+                            client = new UpStream() {
+                                @Override
+                                public void send(String s) {
+                                    prepareEmitter(s, "client");
+                                }
+                            },
+                            ui = new UpStream() {
+                                @Override
+                                public void send(String s) {
+                                    prepareEmitter(s, "ui");
+                                }
+                            });
                     promise.resolve(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -317,9 +350,8 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
         new Thread(new Runnable() {
             public void run() {
                 try {
-                    String response = Panthalassa.renderMessage(jsonParams.getString("id"),
-                            jsonParams.getString("msg"),
-                            jsonParams.getString("context"));
+                    String response = Panthalassa.renderMessage(jsonParams.getString("signingKey"),
+                            jsonParams.getString("payload"));
                     promise.resolve(response);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -334,7 +366,7 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
         new Thread(new Runnable() {
             public void run() {
                 try {
-                    Panthalassa.startDApp(jsonParams.getString("dApp"),
+                    Panthalassa.startDApp(jsonParams.getString("dAppSingingKeyStr"),
                             jsonParams.getInt("timeout"));
                     promise.resolve(true);
                 } catch (Exception e) {
@@ -455,13 +487,51 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
         }).start();
     }
 
+    @ReactMethod
+    public void PanthalassaStopDApp(final ReadableMap jsonParams, final Promise promise) {
+        new Thread(new Runnable() {
+            public void run() {
+                try {
+                    Panthalassa.stopDApp(jsonParams.getString("dAppSingingKeyStr"));
+                    promise.resolve(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    promise.reject("error", e.getLocalizedMessage());
+                }
+            }
+        }).start();
+    }
+
+    @ReactMethod
+    public void PanthalassaDApps(final Promise promise) {
+        new Thread(new Runnable() {
+            public void run() {
+                try {
+                    String response = Panthalassa.dApps();
+                    promise.resolve(response);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    promise.reject("error", e.getLocalizedMessage());
+                }
+            }
+        }).start();
+    }
+
     //=====
-    @Override
-    public void send(String s) {
+
+    private void sendEvent(ReactContext reactContext,
+                           String eventName,
+                           @Nullable WritableMap params) {
+        reactContext
+                .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
+                .emit(eventName, params);
+    }
+
+    private void prepareEmitter(String data, String channel) {
         Log.v("Upstream","Received from callback");
 
         WritableMap params = Arguments.createMap();
-        params.putString("upstream", s);
+        params.putString(channel, data);
         Activity activity = getCurrentActivity();
         if (activity != null) {
             MainApplication application = (MainApplication) activity.getApplication();
@@ -473,13 +543,5 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
                 sendEvent(reactContext, "PanthalassaUpStream", params);
             }
         }
-    }
-
-    private void sendEvent(ReactContext reactContext,
-                           String eventName,
-                           @Nullable WritableMap params) {
-        reactContext
-                .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
-                .emit(eventName, params);
     }
 }
