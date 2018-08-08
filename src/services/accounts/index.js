@@ -6,6 +6,10 @@ import { compressMnemonic, decompressMnemonic } from '../../utils/key';
 import type { Profile } from '../../types/Account';
 import { InvalidPasswordError } from '../../global/errors/accounts';
 import ChatService from '../chat';
+import {
+  panthalassaStart,
+  panthalassaStop,
+} from '../panthalassa';
 
 export default class AccountsService {
   static async getMnemonic(): Promise<Mnemonic> {
@@ -20,9 +24,8 @@ export default class AccountsService {
   }
 
   static async login(accountStore: string, profile: Profile, password: string): Promise<boolean> {
-    const { Panthalassa } = NativeModules;
     try {
-      await Panthalassa.PanthalassaStop();
+      await panthalassaStop();
       // eslint-disable-next-line no-empty
     } catch (e) {
       // We ignore exception, since we just need stop it in case it was started earlier.
@@ -36,17 +39,20 @@ export default class AccountsService {
       enable_debugging: false,
     });
 
-    const success = await Panthalassa.PanthalassaStart({ config, password });
-
-    if (success === true) {
-      try {
-        await ChatService.uploadProfile(signedProfile);
-      } catch (e) {
-        console.log(`[TEST] Profile upload fail: ${e.message}`);
-      }
-      return true;
+    try {
+      await panthalassaStart(config, password);
+    } catch (e) {
+      console.log(`[TEST] Panthalassa start failed: ${e.message}`);
+      return false;
     }
-    return false;
+
+    try {
+      await ChatService.uploadProfile(signedProfile);
+    } catch (e) {
+      console.log(`[TEST] Profile upload fail: ${e.message}`);
+    }
+
+    return true;
   }
 
   static async createAccountStore(password: string): Promise<string> {
