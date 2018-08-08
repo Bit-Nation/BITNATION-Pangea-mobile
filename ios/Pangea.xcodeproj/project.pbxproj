@@ -1048,13 +1048,13 @@
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = QQMXRZ87TX;
+						DevelopmentTeam = W63599SJEC;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = QQMXRZ87TX;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = W63599SJEC;
+						ProvisioningStyle = Manual;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -1696,7 +1696,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QQMXRZ87TX;
+				DEVELOPMENT_TEAM = W63599SJEC;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
@@ -1738,7 +1738,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = QQMXRZ87TX;
+				DEVELOPMENT_TEAM = W63599SJEC;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
@@ -1773,13 +1773,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AD90FA4C0CF9656416A93031 /* Pods-Pangea.debug.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Alberto Estarrona (73F9WW2ZM8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Alberto Estarrona (73F9WW2ZM8)";
 				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = QQMXRZ87TX;
+				DEVELOPMENT_TEAM = W63599SJEC;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Frameworks";
 				HEADER_SEARCH_PATHS = (
@@ -1796,7 +1796,7 @@
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = " -traditional";
 				INFOPLIST_PREFIX_HEADER = "${BUILD_DIR}/GeneratedInfoPlistDotEnv.h";
 				INFOPLIST_PREPROCESS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1805,8 +1805,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = co.bitnation.pangea;
 				PRODUCT_NAME = Pangea;
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "1d9f7fb0-8e71-411a-bd9d-cbf1af9a8150";
+				PROVISIONING_PROFILE_SPECIFIER = Dev_Pangea_install;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1815,12 +1815,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 067F660FC765FB199ABA4128 /* Pods-Pangea.release.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Bitnation Port One Pte. Ltd. (W63599SJEC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Bitnation Port One Pte. Ltd. (W63599SJEC)";
 				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = QQMXRZ87TX;
+				DEVELOPMENT_TEAM = W63599SJEC;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Frameworks";
 				HEADER_SEARCH_PATHS = (
@@ -1837,7 +1837,7 @@
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = " -traditional";
 				INFOPLIST_PREFIX_HEADER = "${BUILD_DIR}/GeneratedInfoPlistDotEnv.h";
 				INFOPLIST_PREPROCESS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1846,8 +1846,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = co.bitnation.pangea;
 				PRODUCT_NAME = Pangea;
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "1d9f7fb0-8e71-411a-bd9d-cbf1af9a8150";
+				PROVISIONING_PROFILE_SPECIFIER = Pangea_Dist_Store;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
