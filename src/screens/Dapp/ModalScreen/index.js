@@ -46,12 +46,10 @@ export default class DAppModalScreen extends NavigatorComponent<Props, *> {
       <View style={GlobalStyles.screenContainer}>
         <BackgroundImage />
         <FakeNavigationBar />
-        <View style={GlobalStyles.bodyContainer}>
-          <Root
-            layout={this.props.layout}
-            dApp={this.props.dAppPublicKey}
-          />
-        </View>
+        <Root
+          layout={this.props.layout}
+          dApp={this.props.dAppPublicKey}
+        />
         {this.state.isLoading && <Loading />}
       </View>
     );
