@@ -370,9 +370,8 @@ RCT_REMAP_METHOD(PanthalassaRenderMessage,
   
   NSString *response;
   NSError *error = nil;
-  response = PanthalassaRenderMessage([RCTConvert NSString:config[@"id"]],
-                                      [RCTConvert NSString:config[@"msg"]],
-                                      [RCTConvert NSString:config[@"context"]],
+  response = PanthalassaRenderMessage([RCTConvert NSString:config[@"signingKey"]],
+                                      [RCTConvert NSString:config[@"payload"]],
                                       &error);
   
   if (error == nil) {
