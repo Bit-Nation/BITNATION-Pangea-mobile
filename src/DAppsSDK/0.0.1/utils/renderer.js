@@ -3,7 +3,7 @@
 import React from 'react';
 import components from '../components';
 
-export type ComponentsJSON = { type: string, props: Object, children: Array<Object> };
+export type ComponentsJSON = { type: string, props: Object, children: ?(Array<Object | string | number> | string | number) } | string | number;
 
 /**
  * @desc Function to get element class or function from text representation, e.g. 'Text' means Text component.
@@ -60,16 +60,21 @@ export const validateProps = (
  * @return {*} Tree of components that is ready to be render.
  */
 export const renderJSON = (json: ComponentsJSON, key: ?string, customPropsProvider: (component: any, ownProps: Object) => Object, parent: any) => {
-  const { type, children } = json;
+  const { type, children } = typeof json === 'object' ? json : {};
 
-  // This is the case when we have string literal inside children.
+  // This is the case when we have string or number literal inside or instead of children.
   // It's only allowed for Text.
-  if (type === undefined && typeof (json) === 'string') {
-    if (parent === components.Text) {
+  if (typeof json === 'string' || typeof json === 'number') {
+    if (parent === components.text) {
       return json;
     }
 
-    console.warn(`String literal may only appear inside Text component. Found "${json}" outside.`);
+    if (typeof json === 'number') {
+      console.warn(`Number literal may only appear inside Text component. Found "${json}" outside.`);
+    }
+    if (typeof json === 'string') {
+      console.warn(`String literal may only appear inside Text component. Found "${json}" outside.`);
+    }
     return null;
   }
 
@@ -110,8 +115,12 @@ export const renderJSON = (json: ComponentsJSON, key: ?string, customPropsProvid
       ...customPropsProvider(component, { ...nativeProps, ...customProps, ...callbackProps }),
       key,
     },
-    children
-      ? Array.isArray(children) ? children.map((child, index) => renderJSON(child, `${index}`, customPropsProvider, component)) : children
-      : null,
+    (() => {
+      if (children == null) return null;
+      if (typeof children === 'string' || typeof children === 'number') {
+        return renderJSON(children, '0', customPropsProvider, component);
+      }
+      return children.map((child, index) => renderJSON(child, `${index}`, customPropsProvider, component));
+    })(),
   );
 };
