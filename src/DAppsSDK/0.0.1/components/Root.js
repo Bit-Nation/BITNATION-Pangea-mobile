@@ -1,13 +1,13 @@
 // @flow
 
 import React, { Component } from 'react';
-import { MediaQueryStyleSheet } from 'react-native-responsive';
 import { View as ReactNativeView } from 'react-native';
 import { connect } from 'react-redux';
 
 import { type ComponentsJSON, renderJSON } from '../utils/renderer';
 
 import { performDAppCallback } from '../../../actions/dApps';
+import GlobalStyles from '../../../global/Styles';
 
 export type Props = {
   /**
@@ -23,14 +23,6 @@ export type Props = {
    */
   performDAppCallback: (appId: string, callbackID: number, args: Object) => void,
 }
-
-const styles = MediaQueryStyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'stretch',
-    justifyContent: 'center',
-  },
-});
 
 class Root extends Component<Props, any> {
   constructor(props: Props) {
@@ -75,7 +67,7 @@ class Root extends Component<Props, any> {
 
   render() {
     return (
-      <ReactNativeView style={styles.container}>
+      <ReactNativeView style={GlobalStyles.bodyContainer}>
         {renderJSON(this.props.layout, undefined, this.generateCustomProps)}
       </ReactNativeView>
     );
