@@ -13,11 +13,11 @@ React.createElement = jest.fn().mockImplementation((component, props, children) 
 }));
 
 test('getTypeElementFromText', () => {
-  expect(getTypeElementFromText('Text')).toEqual(Text);
-  expect(getTypeElementFromText('View')).toEqual(View);
-  expect(getTypeElementFromText('TextInput')).toEqual(TextInput);
-  expect(getTypeElementFromText('Button')).toEqual(Button);
-  expect(getTypeElementFromText('Something unknown')).toBeUndefined();
+  expect(getTypeElementFromText('text')).toEqual(Text);
+  expect(getTypeElementFromText('view')).toEqual(View);
+  expect(getTypeElementFromText('textInput')).toEqual(TextInput);
+  expect(getTypeElementFromText('button')).toEqual(Button);
+  expect(getTypeElementFromText('something unknown')).toBeUndefined();
 });
 
 test('validateProps', () => {
@@ -55,7 +55,7 @@ test('validateProps', () => {
 describe('renderJSON', () => {
   test('single view', () => {
     expect(renderJSON({
-      type: 'View',
+      type: 'view',
       props: {},
       children: null,
     }, undefined, () => ({}))).toEqual({
@@ -69,35 +69,65 @@ describe('renderJSON', () => {
     expect(renderJSON({ type: 'Something unknown' }, undefined, () => ({}))).toBeNull();
   });
 
-  test('string literal outside Text', () => {
-    expect(renderJSON({ type: 'View', children: ['Something unknown'], props: {} }, undefined, () => ({}))).toEqual({
+  test('string literal outside text', () => {
+    expect(renderJSON({ type: 'view', children: ['Something unknown'], props: {} }, undefined, () => ({}))).toEqual({
       component: View,
       props: { nativeProps: {} },
       children: [null],
+    });
+
+    expect(renderJSON({ type: 'view', children: 'Something unknown', props: {} }, undefined, () => ({}))).toEqual({
+      component: View,
+      props: { nativeProps: {} },
+      children: null,
+    });
+  });
+
+  test('string literal inside text', () => {
+    expect(renderJSON({ type: 'text', children: 'Something unknown', props: {} }, undefined, () => ({}))).toEqual({
+      component: Text,
+      props: { nativeProps: {} },
+      children: 'Something unknown',
+    });
+  });
+
+  test('number literal inside text', () => {
+    expect(renderJSON({ type: 'text', children: 5, props: {} }, undefined, () => ({}))).toEqual({
+      component: Text,
+      props: { nativeProps: {} },
+      children: 5,
+    });
+  });
+
+  test('number literal outside text', () => {
+    expect(renderJSON({ type: 'view', children: 5, props: {} }, undefined, () => ({}))).toEqual({
+      component: View,
+      props: { nativeProps: {} },
+      children: null,
     });
   });
 
   test('complex JSON', () => {
     const json = {
-      type: 'View',
+      type: 'view',
       props: { style: { backgroundColor: 'yellow', flex: 1 } },
       children: [
         {
-          type: 'Text',
+          type: 'text',
           props: { style: { color: 'red' } },
           children: [
             'Red text',
           ],
         },
         {
-          type: 'View',
+          type: 'view',
           props: { style: { backgroundColor: 'blue' } },
           children: [
             {
-              type: 'Text',
+              type: 'text',
               props: { style: { color: 'white' } },
               children: [{
-                type: 'Text',
+                type: 'text',
                 props: { style: { color: 'red' } },
                 children: [
                   'White bold text',
@@ -109,18 +139,18 @@ describe('renderJSON', () => {
           ],
         },
         {
-          type: 'TextInput',
+          type: 'textInput',
           props: {
             style: { width: 200, height: 50 },
             onEndEditingID: 1,
           },
         },
         {
-          type: 'TextInput',
+          type: 'textInput',
           props: { style: { width: 200, height: 50 } },
         },
         {
-          type: 'Button',
+          type: 'button',
           props: {
             style: { width: 100, height: 50, backgroundColor: 'green' },
             title: 'Hey',
