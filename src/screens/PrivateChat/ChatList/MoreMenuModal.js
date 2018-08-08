@@ -1,4 +1,4 @@
-// TODO add FLOW
+// @flow
 
 import React from 'react';
 import {
