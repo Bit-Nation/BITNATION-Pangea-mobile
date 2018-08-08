@@ -350,9 +350,8 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
         new Thread(new Runnable() {
             public void run() {
                 try {
-                    String response = Panthalassa.renderMessage(jsonParams.getString("id"),
-                            jsonParams.getString("msg"),
-                            jsonParams.getString("context"));
+                    String response = Panthalassa.renderMessage(jsonParams.getString("signingKey"),
+                            jsonParams.getString("payload"));
                     promise.resolve(response);
                 } catch (Exception e) {
                     e.printStackTrace();
