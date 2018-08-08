@@ -1,7 +1,7 @@
 // @flow
 
 import { MediaQueryStyleSheet } from 'react-native-responsive';
-
+import { StyleSheet, Platform } from 'react-native';
 import GlobalStyles from '../../../global/Styles';
 import Colors from '../../../global/colors';
 
@@ -70,6 +70,42 @@ const styles = MediaQueryStyleSheet.create({
   buttonArea: {
     flexDirection: 'row',
     justifyContent: 'flex-end',
+  },
+  modalMoreContainer: {
+    flex: 1,
+    backgroundColor: 'transparent',
+    paddingLeft: 100,
+    paddingRight: 10,
+    paddingTop: Platform.OS === 'android' ? 0 : 20,
+  },
+  modalMoreContent: {
+    backgroundColor: 'white',
+    shadowColor: Colors.BitnationDarkGrayColor,
+    shadowOffset: { width: 2, height: 4 },
+    shadowOpacity: 0.8,
+    elevation: 2,
+  },
+  modalMenuItem: {
+    paddingVertical: 10,
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  modalMenuItemBorderBottom: {
+    borderBottomColor: 'rgba(0, 0, 0, 0.87)',
+    borderBottomWidth: StyleSheet.hairlineWidth,
+  },
+  modalMenuText: {
+    paddingLeft: 15,
+    fontSize: 16,
+    color: 'rgba(0, 0, 0, 0.87)',
+  },
+  iconForward: {
+    fontSize: 17,
+    color: 'rgba(0, 0, 0, 0.87)',
+    paddingTop: 5,
+    paddingLeft: 60,
+    paddingRight: 15,
   },
 });
 
