@@ -92,17 +92,17 @@ const styles = MediaQueryStyleSheet.create({
     justifyContent: 'space-between',
   },
   modalMenuItemBorderBottom: {
-    borderBottomColor: 'rgba(0, 0, 0, 0.87)',
+    borderBottomColor: Colors.BitnationBlackAlphaColor,
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
   modalMenuText: {
     paddingLeft: 15,
     fontSize: 16,
-    color: 'rgba(0, 0, 0, 0.87)',
+    color: Colors.BitnationBlackAlphaColor,
   },
   iconForward: {
     fontSize: 17,
-    color: 'rgba(0, 0, 0, 0.87)',
+    color: Colors.BitnationBlackAlphaColor,
     paddingTop: 5,
     paddingLeft: 60,
     paddingRight: 15,
