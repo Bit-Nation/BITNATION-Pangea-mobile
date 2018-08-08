@@ -4,6 +4,7 @@ import { NativeModules } from 'react-native';
 import Config from 'react-native-config';
 import defaultDB from '../database';
 import { byteToHexString } from '../../utils/key';
+import { Buffer } from 'buffer';
 import {
   panthalassaGetIdentityPublicKey,
   panthalassaNewPreKeyBundle,
@@ -12,6 +13,10 @@ import {
   panthalassaCreateHumanMessage,
   panthalassaDecryptMessage,
 } from '../../services/panthalassa';
+
+// Javascript static code of the proto file
+import { api_proto as apiProto } from './compiled';
+const { Profile } = apiProto;
 
 export default class ChatService {
   static async uploadProfile(profile: string): Promise<any> {
@@ -29,11 +34,12 @@ export default class ChatService {
     if (result.ok !== true) {
       return Promise.reject(new Error('Failed to upload profile'));
     }
+
     return Promise.resolve();
   }
 
   static async getProfile(publicKey: string): Promise<any> {
-    const URL = `${Config.CHAT_ENDPOINT}/profile/${publicKey}`;
+    const URL = `${Config.CHAT_ENDPOINT}/profile`;
     return fetch(URL, {
       headers: {
         'content-type': 'application/json',
@@ -41,11 +47,13 @@ export default class ChatService {
         'Cache-Control': 'no-cache, no-store, must-revalidate',
         Pragma: 'no-cache',
         Expires: 0,
+        'Identity': publicKey
       },
       method: 'GET',
     })
-      .then(response => response.json())
-      .then(response => JSON.parse(response.profile));
+      .then(response => response.text())
+      .then(response => Profile.decode(Buffer.from(response, 'base64')))
+      .then(response => Profile.toObject(response, {bytes: String}));
   }
 
   static async getPublicKey(): Promise<any> {
