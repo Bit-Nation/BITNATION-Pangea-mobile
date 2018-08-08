@@ -580,9 +580,6 @@ RCT_REMAP_METHOD(PanthalassaDApps,
   hasListeners = NO;
 }
 
-- (void)send:(NSString *)data {
-}
-
 - (void)receiveString:(NSString *)data withUpStream:(id<PanthalassaUpStream>)upStream {
   NSLog(@"************ Received from go!");
   if (hasListeners && data != nil) {
