@@ -16,8 +16,8 @@ export function* startMigration(): Generator<*, *, *> {
  */
 export function* isMigration(): Generator<*, *, any> {
   const { migration } = yield select();
-  // if (migration.migrationVersion !== '1.1.0') {
-  //   return true;
-  // }
+  if (migration.migrationVersion !== '1.1.0') {
+    return true;
+  }
   return false;
 }
