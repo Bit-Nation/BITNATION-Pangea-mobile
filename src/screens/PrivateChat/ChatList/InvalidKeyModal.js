@@ -37,10 +37,8 @@ const InvalidKeyModal = ({
           <Text style={styles.modalTitle}>{i18n.t('screens.chat.invalidKey')}</Text>
           <Text style={styles.modalBody}>
             Your clipboard does not have a valid public key on it.{'\n'}{'\n'}
-            1. Close this app{'\n'}
-            2. Copy a public key to the clipboard{'\n'}
-            3. Return to this screen{'\n'}{'\n'}
-            Once you enter the public key, this app will send them an invitation to chat.
+            Ask the person you want to chat with to share there Identity Key with you. They can find their Identity Key in the app identity setting, or in the menu on the chat screen.{'\n'}{'\n'}
+            Copy the key they send you and return here.
           </Text>
         </View>
         <View style={styles.buttonArea}>

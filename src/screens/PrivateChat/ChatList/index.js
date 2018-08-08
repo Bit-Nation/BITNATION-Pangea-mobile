@@ -10,7 +10,6 @@ import {
 import _ from 'lodash';
 import { Fab, Text } from 'native-base';
 import ActionSheet from 'react-native-actionsheet';
-
 import { saveProfile, newChatSession, openChat } from '../../../actions/chat';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import styles from './styles';
@@ -21,6 +20,7 @@ import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import Loading from '../../../components/common/Loading';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import i18n from '../../../global/i18n';
+import Colors from '../../../global/colors';
 import type { ChatSessionType } from '../../../types/Chat';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import ScreenTitle from '../../../components/common/ScreenTitle';
@@ -28,6 +28,9 @@ import ChatService from '../../../services/chat';
 import NewChatModal from './NewChatModal';
 import InvalidKeyModal from './InvalidKeyModal';
 import InviteSentModal from './InviteSentModal';
+import MoreMenuModal from './MoreMenuModal';
+
+const MORE_BUTTON = 'MORE_BUTTON';
 
 type Props = {
   /**
@@ -85,6 +88,23 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
       showModal: '',
       loading: false,
     };
+
+    this.props.navigator.setButtons({
+      leftButtons: [],
+      rightButtons: [{
+        title: 'More',
+        id: MORE_BUTTON,
+        buttonColor: Colors.navigationButtonColor,
+      }],
+    });
+  }
+
+  onNavBarButtonPress(id) {
+    if (id === MORE_BUTTON) {
+      this.setState({
+        showModal: 'more_menu',
+      });
+    }
   }
 
   actionSheet: any;
@@ -224,6 +244,10 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
           options={newChatOptions}
           cancelButtonIndex={newChatOptions.length - 1}
           onPress={this.onChatAction}
+        />
+        <MoreMenuModal
+          visible={this.state.showModal === 'more_menu'}
+          onCancel={this.dismissModal}
         />
         <NewChatModal
           profile={this.state.profile}
