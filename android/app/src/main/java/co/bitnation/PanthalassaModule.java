@@ -25,7 +25,7 @@ import panthalassa.UpStream;
  * Created by Estarrona on 19/04/18.
  */
 
-public class PanthalassaModule extends ReactContextBaseJavaModule implements UpStream {
+public class PanthalassaModule extends ReactContextBaseJavaModule {
     final String TAG = "Panthalassa";
     UpStream client, ui;
 
@@ -518,10 +518,6 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
     }
 
     //=====
-
-    @Override
-    public void send(String s) {
-    }
 
     private void sendEvent(ReactContext reactContext,
                            String eventName,
