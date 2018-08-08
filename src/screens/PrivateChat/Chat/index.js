@@ -26,6 +26,11 @@ import type { ChatSessionType, ProfileType } from '../../../types/Chat';
 import { errorAlert } from '../../../global/alerts';
 import type { Account } from '../../../types/Account';
 import type { WalletType } from '../../../types/Wallet';
+import type { DApp } from '../../../types/DApp';
+import type { State as DAppsState } from '../../../reducers/dApps';
+import { getDApp } from '../../../reducers/dApps';
+import { openDApp } from '../../../actions/dApps';
+import i18n from '../../../global/i18n';
 
 type Props = {
   /**
@@ -67,6 +72,14 @@ type Props = {
    */
   sessions: Array<ChatSessionType>,
   /**
+   * @desc Array of available DApps.
+   */
+  availableDApps: Array<DApp>,
+  /**
+   * @desc The whole DApps reducer state.
+   */
+  dAppsState: DAppsState,
+  /**
    * @desc Profile of chat friend.
    */
   friend: ProfileType,
@@ -107,6 +120,13 @@ class ChatScreen extends Component<Props, *> {
     this.props.sendMessage(message, session);
   }
 
+  onSelectDAppToOpen = (index) => {
+    // const session = getSelectedSession(this.props.sessions, this.props.secret);
+    if (index < this.props.availableDApps.length) {
+      this.props.openDApp(this.props.availableDApps[index].publicKey, this.props.secret, this.props.friend);
+    }
+  };
+
   onMessageAction = (index: number) => {
     const { selectedMessage } = this.state;
     if (selectedMessage == null) return;
@@ -119,6 +139,7 @@ class ChatScreen extends Component<Props, *> {
         break;
     }
   };
+
   dAppsActionSheet: any;
   messageActionSheet: any;
 
@@ -127,15 +148,36 @@ class ChatScreen extends Component<Props, *> {
   };
 
   render() {
-    const session = getSelectedSession(this.props.sessions, this.props.secret);
+    const dAppsOptions = [
+      ...this.props.availableDApps.map(dApp => dApp.name),
+      i18n.t('screens.chat.cancel'),
+    ];
+
+    let session = getSelectedSession(this.props.sessions, this.props.secret);
     if (session == null) {
-      this.showSessionClosedAlert();
-      return <View />;
+      // this.showSessionClosedAlert();
+      // return <View />;
+      session = {};
     }
     let sortedMessages = [];
     if (session.decryptedMessages && session.decryptedMessages.length > 0) {
       sortedMessages = session.decryptedMessages.slice().reverse();
     }
+    sortedMessages = sortedMessages.map((message) => {
+      if (message.dAppMessage == null || message.dAppMessage.dapp_id == null) return message;
+      const dAppMessage = (message: any).dAppMessage;
+
+      const dApp = getDApp(this.props.dAppsState, dAppMessage.dapp_id);
+      if (dApp == null) return message;
+
+      return {
+        ...message,
+        user: {
+          _id: dApp.publicKey,
+          name: dApp.name,
+        },
+      };
+    });
 
     const sendingUser = {
       _id: this.props.userPublicKey,
@@ -188,6 +230,14 @@ class ChatScreen extends Component<Props, *> {
         {this.props.isFetching && <Loading />}
         <ActionSheet
           ref={(o) => {
+            this.dAppsActionSheet = o;
+          }}
+          options={dAppsOptions}
+          cancelButtonIndex={dAppsOptions.length - 1}
+          onPress={this.onSelectDAppToOpen}
+        />
+        <ActionSheet
+          ref={(o) => {
             this.messageActionSheet = o;
           }}
           options={['Copy Text', 'Cancel']}
@@ -205,12 +255,18 @@ const mapStateToProps = state => ({
   sessions: state.chat.chats,
   friend: state.chat.chatProfile,
   wallets: state.wallet.wallets,
+  availableDApps: state.dApps.availableDApps,
+  dAppsState: state.dApps,
 });
 
 const mapDispatchToProps = dispatch => ({
   showSpinner: () => dispatch(showSpinner()),
   hideSpinner: () => dispatch(hideSpinner()),
   sendMessage: (msg, session) => dispatch(sendMessage(msg, session)),
+  openDApp: (dAppPublicKey, secret, friend) => dispatch(openDApp(dAppPublicKey, {
+    chatSecret: secret,
+    friend,
+  })),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChatScreen);
