@@ -84,17 +84,19 @@ export default class UpstreamService {
   };
 
   handleShowModal = (id: string, info: any) => {
-    const { title, layout, dAppPublicKey: dAppPublicKeyBytes } = info;
+    const { uiID, layout, dAppPublicKey: dAppPublicKeyBase64 } = info;
     try {
-      const dAppPublicKey = Buffer.from(dAppPublicKeyBytes).toString('hex');
+      const dAppPublicKey = Buffer.from(dAppPublicKeyBase64, 'base64').toString('hex');
       const JSONLayout = JSON.parse(layout);
+      // Add type for root component.
+      JSONLayout.type = 'view';
 
       Navigation.showModal({
         ...screen('DAPP_MODAL_SCREEN'),
-        title,
         passProps: {
           layout: JSONLayout,
           dAppPublicKey,
+          uiID,
         },
       });
       return this.sendSuccessResponse(id, {});
