@@ -206,16 +206,14 @@ export async function panthalassaConnectToDAppDevHost(address: String):Promise<b
 
 /**
  * @desc TODO
- * @param {string} id TODO
- * @param {string} msg TODO
- * @param {string} context TODO
+ * @param {string} signingKey TODO
+ * @param {string} payload TODO
  * @returns {Promise<*>} {string}
  */
-export async function panthalassaRenderMessage(id: String, msg: String, context: String):Promise<string> {
+export async function panthalassaRenderMessage(signingKey: String, payload: String):Promise<string> {
   return Panthalassa.PanthalassaRenderMessage({
-    id,
-    msg,
-    context,
+    signingKey,
+    payload,
   });
 }
 
