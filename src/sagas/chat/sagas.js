@@ -160,21 +160,21 @@ export function* startDatabaseListening(): Generator<*, *, *> {
  */
 async function saveProfileIntoDatabase(profileObject: Object) {
   const db = await defaultDB;
-  const { information, signatures } = profileObject;
-  const isProfileOnDb = db.objects('Profile').filtered(`identity_pub_key == '${information.ethereum_pub_Key}'`);
+  const isProfileOnDb = db.objects('Profile').filtered(`identity_pub_key == '${profileObject.ethereumPubKey}'`);
   if (isProfileOnDb.length === 0) {
     const profile = {
-      name: information.name,
-      location: information.location,
-      image: information.image,
-      identity_pub_key: information.identity_pub_key,
-      ethereum_pub_Key: information.ethereum_pub_Key,
-      chat_id_key: byteToHexString(information.chat_id_key),
-      timestamp: information.timestamp,
-      version: information.version,
-      identity_key_signature: signatures.identity_key,
-      ethereum_key_signature: signatures.ethereum_key,
+      name: profileObject.name,
+      location: profileObject.location || '',
+      image: profileObject.image || '',
+      identity_pub_key: profileObject.identityPubKey,
+      ethereum_pub_Key: profileObject.ethereumPubKey,
+      chat_id_key: byteToHexString(profileObject.chatIdentityPubKey),
+      timestamp: new Date(1000 * profileObject.timestamp),
+      version: profileObject.version,
+      identity_key_signature: profileObject.identityKeySignature,
+      ethereum_key_signature: profileObject.ethereumKeySignature,
     };
+    
     db.write(() => {
       db.create('Profile', profile, true);
     });
@@ -214,7 +214,7 @@ export function* savePreKeyBundle(action: SavePreKeyBundleAction): Generator<*, 
 export function* createChatSession(action: NewChatSessionAction): Generator<*, *, *> {
   const db = yield defaultDB;
   const currentAccountId = yield call(getCurrentAccountId);
-  const publicKey = action.profile.information.identity_pub_key;
+  const publicKey = action.profile.identityPubKey;
   let results = yield call([db, 'objects'], 'ChatSession');
   results = yield call([results, 'filtered'], `publicKey == '${publicKey}' && accountId == '${currentAccountId}'`);
   let usedSecret = null;
@@ -241,7 +241,7 @@ export function* createChatSession(action: NewChatSessionAction): Generator<*, *
     const chatSession = {
       secret: initMessage.message.used_secret,
       publicKey,
-      username: action.profile.information.name,
+      username: action.profile.name,
       accountId: currentAccountId,
       messages: [],
     };
@@ -340,7 +340,7 @@ async function handleInitialMessage(message: Object, accountId: string): Promise
     const chatSession = {
       secret: message.used_secret,
       publicKey: message.id_public_key,
-      username: profile.information.name,
+      username: profile.name,
       accountId,
       messages: [],
     };
