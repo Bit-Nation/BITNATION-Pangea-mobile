@@ -1,8 +1,6 @@
 // @flow
 
 import { NativeModules } from 'react-native';
-// $FlowFixMe
-import { Buffer } from 'buffer';
 
 import { convertFromPanthalassa } from '../../utils/mapping/dapp';
 import type { DApp } from '../../types/DApp';
