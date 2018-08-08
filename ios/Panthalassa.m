@@ -20,6 +20,21 @@
   return dispatch_queue_create("panthalassaLibQueue", DISPATCH_QUEUE_CONCURRENT);
 }
 
+- (instancetype)init {
+  if (self = [super init]) {
+    [self initUpstreams];
+  }
+  
+  return self;
+}
+
+- (void)initUpstreams {
+  upstreamClient = [[PanthalassaUpStreamBridge alloc] init];
+  upstreamUI = [[PanthalassaUpStreamBridge alloc] init];
+  [upstreamClient setDelegate:self];
+  [upstreamUI setDelegate:self];
+}
+
 RCT_EXPORT_MODULE();
   
 RCT_REMAP_METHOD(PanthalassaNewAccountKeys,
@@ -97,9 +112,13 @@ RCT_REMAP_METHOD(PanthalassaStartFromMnemonic,
   BOOL response;
   NSError *error = nil;
   
-  response = PanthalassaStartFromMnemonic([RCTConvert NSString:config[@"config"]],
+  NSString* path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                        NSUserDomainMask,
+                                                        YES) firstObject];
+  
+  response = PanthalassaStartFromMnemonic(path, [RCTConvert NSString:config[@"config"]],
                                                    [RCTConvert NSString:config[@"mnemonic"]],
-                                                   self, self,
+                                          upstreamClient, upstreamUI,
                                                    &error);
   NSNumber *val = [NSNumber numberWithBool:response];
   
@@ -177,9 +196,13 @@ RCT_REMAP_METHOD(PanthalassaStart,
   BOOL response;
   NSError *error = nil;
   
-  response = PanthalassaStart([RCTConvert NSString:config[@"config"]],
+  NSString* path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                        NSUserDomainMask,
+                                                        YES) firstObject];
+  
+  response = PanthalassaStart(path, [RCTConvert NSString:config[@"config"]],
                               [RCTConvert NSString:config[@"password"]],
-                              self, self,
+                              upstreamClient, upstreamUI,
                               &error);
   
   NSNumber *val = [NSNumber numberWithBool:response];
@@ -347,9 +370,8 @@ RCT_REMAP_METHOD(PanthalassaRenderMessage,
   
   NSString *response;
   NSError *error = nil;
-  response = PanthalassaRenderMessage([RCTConvert NSString:config[@"id"]],
-                                      [RCTConvert NSString:config[@"msg"]],
-                                      [RCTConvert NSString:config[@"context"]],
+  response = PanthalassaRenderMessage([RCTConvert NSString:config[@"signingKey"]],
+                                      [RCTConvert NSString:config[@"payload"]],
                                       &error);
   
   if (error == nil) {
@@ -366,7 +388,7 @@ RCT_REMAP_METHOD(PanthalassaStartDApp,
   BOOL response;
   NSError *error = nil;
   
-  response = PanthalassaStartDApp([RCTConvert NSString:config[@"dApp"]],
+  response = PanthalassaStartDApp([RCTConvert NSString:config[@"dAppSingingKeyStr"]],
                                   [[RCTConvert NSNumber:config[@"timeout"]] longValue],
                                  &error);
   
@@ -511,6 +533,39 @@ RCT_REMAP_METHOD(PanthalassaSetLogger,
   }
 }
 
+RCT_REMAP_METHOD(PanthalassaStopDApp,
+                  PanthalassaStopDAppWithResolver:(NSDictionary *)config
+                  resolver:(RCTPromiseResolveBlock)resolve
+                  rejecter:(RCTPromiseRejectBlock)reject) {
+  
+  BOOL response;
+  NSError *error = nil;
+  response = PanthalassaStopDApp([RCTConvert NSString:config[@"dAppSingingKeyStr"]],
+                                 &error);
+  NSNumber *val = [NSNumber numberWithBool:response];
+  
+  if (error == nil) {
+    resolve(val);
+  } else {
+    reject(@"error", error.localizedDescription, error);
+  }
+}
+
+RCT_REMAP_METHOD(PanthalassaDApps,
+                 PanthalassaDAppsWithResolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject) {
+  NSString* response;
+  NSError *error = nil;
+  
+  response = PanthalassaDApps(&error);
+  
+  if (error == nil) {
+    resolve(response);
+  } else {
+    reject(@"error", error.localizedDescription, error);
+  }
+}
+
 // TEST FOR SEND  - https://facebook.github.io/react-native/docs/native-modules-ios.html#sending-events-to-javascript
 - (NSArray<NSString *> *)supportedEvents
 {
@@ -525,10 +580,14 @@ RCT_REMAP_METHOD(PanthalassaSetLogger,
   hasListeners = NO;
 }
 
-- (void)send:(NSString *)data {
+- (void)receiveString:(NSString *)data withUpStream:(id<PanthalassaUpStream>)upStream {
   NSLog(@"************ Received from go!");
   if (hasListeners && data != nil) {
-    [self sendEventWithName:@"PanthalassaUpStream" body:@{@"upstream": data}];
+    if (upStream == upstreamClient) {
+      [self sendEventWithName:@"PanthalassaUpStream" body:@{@"client": data}];
+    } else {
+      [self sendEventWithName:@"PanthalassaUpStream" body:@{@"ui": data}];
+    }
   }
 }
 
