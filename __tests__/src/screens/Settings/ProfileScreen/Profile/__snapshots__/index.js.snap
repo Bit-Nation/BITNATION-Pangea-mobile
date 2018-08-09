@@ -149,7 +149,7 @@ ShallowWrapper {
                 "marginTop": 13,
               }
             }
-            title="Copy Public Key"
+            title="Copy Identity Key"
           />
         </View>,
       ],
@@ -321,7 +321,7 @@ ShallowWrapper {
                   "marginTop": 13,
                 }
               }
-              title="Copy Public Key"
+              title="Copy Identity Key"
             />,
           ],
           "style": Object {
@@ -358,7 +358,7 @@ ShallowWrapper {
               "style": Object {
                 "marginTop": 13,
               },
-              "title": "Copy Public Key",
+              "title": "Copy Identity Key",
             },
             "ref": null,
             "rendered": null,
@@ -460,7 +460,7 @@ ShallowWrapper {
                   "marginTop": 13,
                 }
               }
-              title="Copy Public Key"
+              title="Copy Identity Key"
             />
           </View>,
         ],
@@ -632,7 +632,7 @@ ShallowWrapper {
                     "marginTop": 13,
                   }
                 }
-                title="Copy Public Key"
+                title="Copy Identity Key"
               />,
             ],
             "style": Object {
@@ -669,7 +669,7 @@ ShallowWrapper {
                 "style": Object {
                   "marginTop": 13,
                 },
-                "title": "Copy Public Key",
+                "title": "Copy Identity Key",
               },
               "ref": null,
               "rendered": null,
