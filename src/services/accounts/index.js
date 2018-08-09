@@ -9,12 +9,19 @@ import ChatService from '../chat';
 import {
   panthalassaStart,
   panthalassaStop,
+  panthalassaGetMnemonic,
+  panthalassaNewAccountKeys,
+  panthalassaNewAccountKeysFromMnemonic,
+  panthalassaExportAccountStore,
+  panthalassaIsValidMnemonic,
+  panthalassaEthPrivateKey,
+  panthalassaSignProfileStandAlone,
+  panthalassaSignProfile
 } from '../panthalassa';
 
 export default class AccountsService {
   static async getMnemonic(): Promise<Mnemonic> {
-    const { Panthalassa } = NativeModules;
-    const mnemonicString = await Panthalassa.PanthalassaGetMnemonic();
+    const mnemonicString = await panthalassaGetMnemonic();
     return decompressMnemonic(mnemonicString);
   }
 
@@ -56,57 +63,44 @@ export default class AccountsService {
   }
 
   static async createAccountStore(password: string): Promise<string> {
-    const { Panthalassa } = NativeModules;
-    return Panthalassa.PanthalassaNewAccountKeys({ pw: password, pwConfirm: password });
+    return panthalassaNewAccountKeys(password);
   }
 
-  static async restoreAccountStore(mnemonic: Mnemonic, password: string): Promise<string> {
-    const { Panthalassa } = NativeModules;
-    return Panthalassa.PanthalassaNewAccountKeysFromMnemonic({
-      mne: compressMnemonic(mnemonic),
-      pw: password,
-      pwConfirm: password,
-    });
+  static async restoreAccountStore(mnemonic: string, password: string): Promise<string> {
+    return panthalassaNewAccountKeysFromMnemonic(mnemonic, password);
   }
 
   static async exportAccountStore(password: string): Promise<string> {
-    const { Panthalassa } = NativeModules;
-    return Panthalassa.PanthalassaExportAccountStore({ pw: password, pwConfirm: password });
+    return panthalassaExportAccountStore(password);
   }
 
-  static async logout(): Promise<void> {
-    const { Panthalassa } = NativeModules;
-    return Panthalassa.PanthalassaStop();
+  static async logout(): Promise<boolean> {
+    return panthalassaStop();
   }
 
   static async validateMnemonic(mnemonic: Mnemonic): Promise<boolean> {
-    const { Panthalassa } = NativeModules;
-    return Panthalassa.PanthalassaIsValidMnemonic(compressMnemonic(mnemonic));
+    return panthalassaIsValidMnemonic(compressMnemonic(mnemonic));
   }
 
   static async getEthPrivateKey(): Promise<string> {
-    const { Panthalassa } = NativeModules;
-    return Panthalassa.PanthalassaEthPrivateKey();
+    return panthalassaEthPrivateKey();
   }
 
   static async signProfileStandalone(profile: Profile, accountStore: string, password: string): Promise<string> {
-    const { Panthalassa } = NativeModules;
-
-    return Panthalassa.PanthalassaSignProfileStandAlone({
-      name: profile.name,
-      location: profile.location || '',
-      image: profile.avatar || '',
-      keyManagerStore: accountStore,
-      password,
-    });
+    return panthalassaSignProfileStandAlone(
+      profile.name,
+      profile.location || '',
+      profile.avatar || '',
+      accountStore,
+      password
+    );
   }
 
   static async signProfile(profile: Profile): Promise<string> {
-    const { Panthalassa } = NativeModules;
-    return Panthalassa.PanthalassaSignProfile({
-      name: profile.name,
-      location: profile.location || '',
-      image: profile.avatar || '',
-    });
+    return panthalassaSignProfile(
+      profile.name,
+      profile.location || '',
+      profile.avatar || '',
+    );
   }
 }
