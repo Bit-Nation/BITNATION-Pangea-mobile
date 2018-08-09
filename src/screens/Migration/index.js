@@ -7,28 +7,20 @@ import i18n from '../../global/i18n';
 import BackgroundImage from '../../components/common/BackgroundImage';
 import styles from './styles';
 import ScreenTitle from '../../components/common/ScreenTitle';
+import { startMigration } from '../../actions/migration';
 import FakeNavigationBar from '../../components/common/FakeNavigationBar';
 import NavigatorComponent from '../../components/common/NavigatorComponent';
-import { startMigration } from '../../actions/migration';
 import Colors from '../../global/colors';
 
-type Props = {
+type Actions = {
   /**
    * @desc Function to initiate migration
    */
-  startMigration: () => void,
-}
-
-type Actions = {
-  // @todo Action to be added later.
+  startMigration: () => void
 };
 
-type State = {
-  // @todo State to be added later.
-}
-
-class MigrationScreen extends NavigatorComponent<Props & Actions, State> {
-  componentDidMount() {
+class MigrationScreen extends NavigatorComponent<Actions> {
+  componentWillMount() {
     this.props.startMigration();
   }
 
@@ -52,10 +44,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  // @todo Dispatch Actions to be added later.
-  startMigration() {
-    dispatch(startMigration());
-  },
+  startMigration: () => dispatch(startMigration()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MigrationScreen);
