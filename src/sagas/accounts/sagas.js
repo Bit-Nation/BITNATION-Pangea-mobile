@@ -24,7 +24,6 @@ import type {
   SavePinCodeAction,
 } from '../../actions/accounts';
 import {
-  fetchAllMessages,
   startListenForMessages,
   stopListenForMessages,
 } from '../../actions/chat';
@@ -244,7 +243,6 @@ export function* login(userInfo: ({ accountId: string, accountStore?: string }),
 
   yield put(loginTaskUpdated(TaskBuilder.success()));
 
-  yield put(fetchAllMessages());
   yield put(startListenForMessages());
 }
 
