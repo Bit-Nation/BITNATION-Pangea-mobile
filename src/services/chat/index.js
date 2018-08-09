@@ -14,6 +14,7 @@ import {
   panthalassaCreateHumanMessage,
   panthalassaDecryptMessage,
   panthalassaAllChats,
+  panthalassaMessages,
 } from '../../services/panthalassa';
 
 // Javascript static code of the proto file
@@ -156,15 +157,16 @@ export default class ChatService {
     });
   }
 
-  static async loadMessages(publicKey: string): Promise<any> {
-    const URL = `${Config.CHAT_ENDPOINT}/missing-messages/${publicKey}`;
-    return fetch(URL, {
-      headers: {
-        'content-type': 'application/json',
-        bearer: Config.CHAT_TOKEN,
-      },
-      method: 'GET',
-    })
-      .then(response => response.json());
+  static async loadMessages(recipientPublicKey: string, start: Number, amount: Number): Array<any> {
+    let response = [];
+    try {
+      const partner = Buffer.from(recipientPublicKey, 'utf8').toString('hex');
+      response = await panthalassaMessages(partner, start, amount);
+      response = JSON.parse(response);
+    } catch(e) {
+      console.log(`[TEST] Error loading messages: ${e.message}`);
+    }
+
+    return response;
   }
 }
