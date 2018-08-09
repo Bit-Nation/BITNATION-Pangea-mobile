@@ -5,7 +5,7 @@ import { SERVICES_CREATED } from '../../actions/serviceContainer';
 import { subscribeToUIAPI } from './uiAPI';
 
 /**
- * @desc Root DApps saga.
+ * @desc Root upstream saga.
  * @return {void}
  */
 export default function* rootSaga(): Generator<*, *, *> {
