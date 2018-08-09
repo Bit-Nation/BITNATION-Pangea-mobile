@@ -6,6 +6,7 @@ import {
   NEW_CHAT_SESSION,
   OPEN_CHAT_SESSION,
   SEND_MESSAGE,
+  FETCH_ALL_CHATS,
   START_LISTEN_FOR_MESSAGES,
   STOP_LISTEN_FOR_MESSAGES,
 } from '../../actions/chat';
@@ -15,6 +16,7 @@ import {
   savePreKeyBundle,
   createChatSession,
   openChatSession,
+  fetchAllChats,
   startListenForMessages,
   stopListenForMessages,
   sendMessage,
@@ -27,6 +29,7 @@ import {
 export default function* rootSaga() {
   yield all([
     call(startDatabaseListening),
+    takeEvery(FETCH_ALL_CHATS, fetchAllChats),
     takeEvery(START_LISTEN_FOR_MESSAGES, startListenForMessages),
     takeEvery(STOP_LISTEN_FOR_MESSAGES, stopListenForMessages),
     takeEvery(SAVE_PROFILE, saveProfileSaga),
