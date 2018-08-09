@@ -1,4 +1,4 @@
-import type { ProfileType, PreKeyBundleType } from '../types/Chat';
+import type { ProfileType, PreKeyBundleType, ChatSessionType } from '../types/Chat';
 
 export const SHOW_CHAT_SPINNER = 'SHOW_CHAT_SPINNER';
 export const HIDE_CHAT_SPINNER = 'HIDE_CHAT_SPINNER';
@@ -7,6 +7,7 @@ export const SAVE_PROFILE = 'SAVE_PROFILE';
 export const SAVE_PRE_KEY_BUNDLE = 'SAVE_PRE_KEY_BUNDLE';
 export const NEW_CHAT_SESSION = 'NEW_CHAT_SESSION';
 export const CHATS_UPDATED = 'CHATS_UPDATED';
+export const ADD_CREATED_CHAT_SESSION = 'ADD_CREATED_CHAT_SESSION';
 export const OPEN_CHAT_SESSION = 'OPEN_CHAT_SESSION';
 export const SELECT_PROFILE = 'SELECT_PROFILE';
 export const FETCH_ALL_MESSAGES = 'FETCH_ALL_MESSAGES';
@@ -34,6 +35,10 @@ export type NewChatSessionAction = {
   +publicKey: string,
   +initMessage: Object,
   +callback: () => void,
+};
+export type AddCreatedChatSessionAction = {
+  +type: 'ADD_CREATED_CHAT_SESSION',
+  +chat: ChatSessionType,
 };
 export type UpdateChatsAction = {
   +type: 'CHATS_UPDATED',
@@ -156,6 +161,19 @@ export function newChatSession(profile: Object, callback: () => void): NewChatSe
     type: NEW_CHAT_SESSION,
     profile,
     callback,
+  };
+}
+
+/**
+ * @desc Action for adding a newly created chat session
+ * @param {Object} profile Profile of the user
+ * @param {func} callback Callback
+ * @returns {AddCreatedChatSessionAction} An action.
+ */
+export function addCreatedChatSession(chat: ChatSessionType): AddCreatedChatSessionAction {
+  return {
+    type: ADD_CREATED_CHAT_SESSION,
+    chat,
   };
 }
 
