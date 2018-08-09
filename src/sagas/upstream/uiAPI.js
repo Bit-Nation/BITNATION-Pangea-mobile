@@ -15,6 +15,9 @@ export function* handleRequest(request: Object): Generator<*, *, *> {
   const { name, payload } = request;
   if (typeof name !== 'string' || typeof payload !== 'object') return;
 
+  // @todo Remove this once request handling is implemented.
+  yield;
+
   // @todo Handle requests.
   switch (name) {
     case 'DAPP:PERSISTED': break;
