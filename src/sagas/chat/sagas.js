@@ -17,6 +17,7 @@ import {
   StopListenForMessagesAction,
   chatsUpdated,
   selectProfile,
+  addCreatedChatSession,
 } from '../../actions/chat';
 import defaultDB from '../../services/database';
 import ChatService from '../../services/chat';
@@ -212,50 +213,18 @@ export function* savePreKeyBundle(action: SavePreKeyBundleAction): Generator<*, 
  * @return {void}
  */
 export function* createChatSession(action: NewChatSessionAction): Generator<*, *, *> {
-  const db = yield defaultDB;
   const currentAccountId = yield call(getCurrentAccountId);
-  const publicKey = action.profile.identityPubKey;
-  let results = yield call([db, 'objects'], 'ChatSession');
-  results = yield call([results, 'filtered'], `publicKey == '${publicKey}' && accountId == '${currentAccountId}'`);
-  let usedSecret = null;
-  if (results.length === 0) {
-    let initMessage = null;
-    try {
-      const response = yield call(ChatService.getPreKeyBundle, publicKey);
-      console.log('fetch bundle: ', response);
-      initMessage = yield call(ChatService.startChat, publicKey, JSON.stringify(response.bundle));
-      console.log('initialization: ', initMessage);
-    } catch (e) {
-      yield call(action.callback, {
-        status: 'fail',
-      });
-      return;
-    }
-    usedSecret = initMessage.message.used_secret;
-    const secret = {
-      id: initMessage.message.used_secret,
-      publicKey,
-      secret: initMessage.shared_chat_secret,
-      accountId: currentAccountId,
-    };
-    const chatSession = {
-      secret: initMessage.message.used_secret,
-      publicKey,
-      username: action.profile.name,
-      accountId: currentAccountId,
-      messages: [],
-    };
-    db.write(() => {
-      db.create('SharedSecret', secret, true);
-      db.create('ChatSession', chatSession, true);
-    });
-  } else {
-    usedSecret = results[0].secret;
-  }
+  const chatSession = {
+    publicKey: action.profile.identityPubKey,
+    username: action.profile.name,
+    accountId: currentAccountId,
+    messages: [],
+  };
+  yield put(addCreatedChatSession(chatSession));
+
   const userPublicKey = yield call(ChatService.getPublicKey);
   yield call(action.callback, {
     status: 'success',
-    secret: usedSecret,
     userPublicKey,
   });
   yield put(selectProfile(action.profile));
