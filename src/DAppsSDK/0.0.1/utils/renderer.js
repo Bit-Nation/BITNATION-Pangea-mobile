@@ -40,8 +40,8 @@ export const validateProps = (
     } else if (validProps.custom.includes(propName)) {
       // It's an allowed custom prop.
       customProps[propName] = props[propName];
-    } else if (propName.endsWith('ID') && validProps.callbacks.includes(propName.substring(0, propName.length - 2))) {
-      // It's an allowed prop to perform a callback. That properties are marked by ID suffix.
+    } else if (validProps.callbacks.includes(propName)) {
+      // It's an allowed prop to perform a callback.
       callbackProps[propName] = props[propName];
     } else {
       console.warn(`Prop ${propName} is not allowed on component ${type}`);
