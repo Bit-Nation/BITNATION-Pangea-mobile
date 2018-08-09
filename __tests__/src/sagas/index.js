@@ -15,6 +15,7 @@ import nations from '../../../src/sagas/nations';
 import txProcessor from '../../../src/sagas/txProcessor';
 import dApps from '../../../src/sagas/nativeDApps';
 import chat from '../../../src/sagas/chat';
+import migration from '../../../src/sagas/migration';
 import upstream from '../../../src/sagas/upstream';
 
 test('rootSaga', () => {
@@ -32,6 +33,7 @@ test('rootSaga', () => {
     call(nations),
     call(txProcessor),
     call(dApps),
+    call(migration),
     call(upstream),
   ]));
 });
