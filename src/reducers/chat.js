@@ -7,6 +7,7 @@ import {
   CHATS_UPDATED,
   SELECT_PROFILE,
   ADD_CREATED_CHAT_SESSION,
+  CHAT_MESSAGES_LOADED,
 } from '../actions/chat';
 import { SERVICES_DESTROYED } from '../actions/serviceContainer';
 import type { ChatSessionType } from '../types/Chat';
@@ -58,6 +59,9 @@ export default (state: State = initialState, action: Action): State => {
         ...state,
         chatProfile: action.profile,
       };
+    case CHAT_MESSAGES_LOADED:
+      // TODO: Add loaded messages to the correct chat
+      return state;
     default:
       return state;
   }

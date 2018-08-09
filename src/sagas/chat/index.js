@@ -9,6 +9,7 @@ import {
   FETCH_ALL_CHATS,
   START_LISTEN_FOR_MESSAGES,
   STOP_LISTEN_FOR_MESSAGES,
+  LOAD_CHAT_MESSAGES,
 } from '../../actions/chat';
 import {
   saveProfileSaga,
@@ -19,6 +20,7 @@ import {
   startListenForMessages,
   stopListenForMessages,
   sendMessage,
+  loadMessages,
 } from './sagas';
 
 /**
@@ -35,5 +37,6 @@ export default function* rootSaga() {
     takeEvery(NEW_CHAT_SESSION, createChatSession),
     takeEvery(OPEN_CHAT_SESSION, openChatSession),
     takeEvery(SEND_MESSAGE, sendMessage),
+    takeEvery(LOAD_CHAT_MESSAGES, loadMessages),
   ]);
 }

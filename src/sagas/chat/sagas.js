@@ -18,6 +18,9 @@ import {
   chatsUpdated,
   selectProfile,
   addCreatedChatSession,
+  loadChatMessages,
+  LoadChatMessagesAction,
+  chatMessagesLoaded,
 } from '../../actions/chat';
 import defaultDB from '../../services/database';
 import ChatService from '../../services/chat';
@@ -153,6 +156,7 @@ export function* openChatSession(action: OpenChatAction): Generator<*, *, *> {
   results = yield call([results, 'filtered'], `identity_pub_key == '${action.publicKey}'`);
   const profile = yield results[0] || null;
   if (profile) {
+    yield put(loadChatMessages(action.publicKey));
     yield put(selectProfile(profile));
     const userPublicKey = yield call(ChatService.getPublicKey);
     yield call(action.callback, {
@@ -192,6 +196,16 @@ export function* startListenForMessages(): Generator<*, *, *> {
  */
 export function* stopListenForMessages(): Generator<*, *, *> {
   // TOOD: Stop panthalassa listener and remove from state
+}
+
+/**
+ * @desc Load chat messages
+ * @param {LoadChatMessagesAction} action LOAD_CHAT_MESSAGES action
+ * @return {void}
+ */
+export function* loadMessages(action: LoadChatMessagesAction): Generator<*, *, *> {
+  const messages = yield call(ChatService.loadMessages, action.recipientPublicKey, 0, 10);
+  yield put(chatMessagesLoaded(action.recipientPublicKey, messages));
 }
 
 /**
@@ -267,34 +281,6 @@ async function handleHumanMessage(message: Object): Promise<boolean> {
     return false;
   }
   return true;
-}
-
-/**
- * @desc Fetch new messages
- * @return {void}
- */
-export function* fetchMessages(): Generator<*, *, *> {
-  try {
-    const currentAccount = yield call(getCurrentAccount);
-    if (currentAccount === null) return;
-    const publicKey = yield call(ChatService.getPublicKey);
-    const response = yield call(ChatService.loadMessages, publicKey);
-    const { messages } = response;
-    if (messages == null) return;
-    for (let i = 0; i < messages.length; i += 1) {
-      const message = JSON.parse(messages[i]);
-      if (message.type === 'PROTOCOL_INITIALISATION') {
-        yield call(handleInitialMessage, message, currentAccount.id);
-      } else if (message.type === 'HUMAN_MESSAGE') {
-        yield call(handleHumanMessage, message);
-      } else {
-        // We handle other message the same for now.
-        yield call(handleHumanMessage, message);
-      }
-    }
-  } catch (e) {
-    console.log('fetch message error: ', e);
-  }
 }
 
 /**
