@@ -10,7 +10,6 @@ export const CHATS_UPDATED = 'CHATS_UPDATED';
 export const ADD_CREATED_CHAT_SESSION = 'ADD_CREATED_CHAT_SESSION';
 export const OPEN_CHAT_SESSION = 'OPEN_CHAT_SESSION';
 export const SELECT_PROFILE = 'SELECT_PROFILE';
-export const FETCH_ALL_MESSAGES = 'FETCH_ALL_MESSAGES';
 export const START_LISTEN_FOR_MESSAGES = 'START_LISTEN_FOR_MESSAGES';
 export const STOP_LISTEN_FOR_MESSAGES = 'STOP_LISTEN_FOR_MESSAGES';
 export const SEND_MESSAGE = 'SEND_MESSAGE';
@@ -53,9 +52,6 @@ export type SelectProfileAction = {
   +type: 'SELECT_PROFILE',
   +profile: Object,
 };
-export type FetchAllMessagesAction = {
-  +type: 'FETCH_ALL_MESSAGES',
-}
 export type StartListenForMessagesAction = {
   +type: 'START_LISTEN_FOR_MESSAGES',
 }
@@ -88,7 +84,6 @@ export type Action =
   | UpdateChatsAction
   | OpenChatAction
   | SelectProfileAction
-  | FetchAllMessagesAction
   | StartListenForMessagesAction
   | StopListenForMessagesAction
   | SendMessageAction
@@ -212,16 +207,6 @@ export function selectProfile(profile: Object): SelectProfileAction {
   return {
     type: SELECT_PROFILE,
     profile,
-  };
-}
-
-/**
- * @desc Action to fetch all messages
- * @returns {FetchAllMessagesAction} An action
- */
-export function fetchAllMessages(): FetchAllMessagesAction {
-  return {
-    type: FETCH_ALL_MESSAGES,
   };
 }
 
