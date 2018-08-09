@@ -51,7 +51,6 @@ export type MessageType = {
 };
 
 export type ChatSessionType = {
-  secret: string,
   publicKey: string,
   username: string,
   accountId: string,
