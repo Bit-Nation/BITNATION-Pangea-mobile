@@ -6,12 +6,14 @@ import {
   HIDE_CHAT_SPINNER,
   CHATS_UPDATED,
   SELECT_PROFILE,
+  ADD_CREATED_CHAT_SESSION,
 } from '../actions/chat';
 import { SERVICES_DESTROYED } from '../actions/serviceContainer';
+import type { ChatSessionType } from '../types/Chat';
 
 export type State = {
   +isFetching: boolean,
-  chats: Array<any>,
+  chats: Array<ChatSessionType>,
   chatProfile: Object,
 };
 
@@ -46,6 +48,11 @@ export default (state: State = initialState, action: Action): State => {
         ...state,
         chats: action.chats.slice(),
       };
+    case ADD_CREATED_CHAT_SESSION:
+      return {
+        ...state,
+        chats: [...state.chats, action.chat]
+      }
     case SELECT_PROFILE:
       return {
         ...state,
