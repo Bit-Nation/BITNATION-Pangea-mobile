@@ -31,6 +31,10 @@ import InviteSentModal from './InviteSentModal';
 import MoreMenuModal from './MoreMenuModal';
 
 const MORE_BUTTON = 'MORE_BUTTON';
+const MORE_MODAL_KEY = 'moreMenu';
+const NEW_CHAT_MODAL_KEY = 'new_chat';
+const INVITE_MODAL_KEY = 'invite';
+const INVALID_MODAL_KEY = 'invalid_key';
 
 type Props = {
   /**
@@ -80,6 +84,15 @@ type State = {
 };
 
 class ChatListScreen extends NavigatorComponent<Props, State> {
+  static navigatorButtons = {
+    leftButtons: [],
+    rightButtons: [{
+      title: 'More',
+      id: MORE_BUTTON,
+      buttonColor: Colors.navigationButtonColor,
+    }],
+  };
+
   constructor(props: Props) {
     super(props);
     this.state = {
@@ -88,21 +101,12 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
       showModal: '',
       loading: false,
     };
-
-    this.props.navigator.setButtons({
-      leftButtons: [],
-      rightButtons: [{
-        title: 'More',
-        id: MORE_BUTTON,
-        buttonColor: Colors.navigationButtonColor,
-      }],
-    });
   }
 
   onNavBarButtonPress(id) {
     if (id === MORE_BUTTON) {
       this.setState({
-        showModal: 'more_menu',
+        showModal: MORE_MODAL_KEY,
       });
     }
   }
@@ -135,7 +139,7 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
       this.setState({
         publicKey,
         profile,
-        showModal: 'new_chat',
+        showModal: NEW_CHAT_MODAL_KEY,
       });
       this.props.saveProfile(profile);
     } catch (e) {
@@ -143,7 +147,7 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
       this.setState({
         publicKey: '',
         profile: null,
-        showModal: 'invalid_key',
+        showModal: INVALID_MODAL_KEY,
       });
     }
   };
@@ -246,22 +250,22 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
           onPress={this.onChatAction}
         />
         <MoreMenuModal
-          visible={this.state.showModal === 'more_menu'}
+          visible={this.state.showModal === MORE_MODAL_KEY}
           onCancel={this.dismissModal}
         />
         <NewChatModal
           profile={this.state.profile}
-          visible={this.state.showModal === 'new_chat'}
+          visible={this.state.showModal === NEW_CHAT_MODAL_KEY}
           onStartChat={this.startChat}
           onCancel={this.dismissModal}
         />
         <InvalidKeyModal
           done={this.dismissModal}
-          visible={this.state.showModal === 'invalid_key'}
+          visible={this.state.showModal === INVALID_MODAL_KEY}
         />
         <InviteSentModal
           done={this.dismissModal}
-          visible={this.state.showModal === 'invite'}
+          visible={this.state.showModal === INVITE_MODAL_KEY}
         />
         {this.state.loading === true && <Loading />}
       </View>
