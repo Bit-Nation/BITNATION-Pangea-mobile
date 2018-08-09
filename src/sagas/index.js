@@ -14,6 +14,8 @@ import modifyNation from './modifyNation';
 import nations from './nations';
 import txProcessor from './txProcessor';
 import dApps from './nativeDApps';
+import migration from './migration';
+import upstream from './upstream';
 
 /**
  * @desc Root saga.
@@ -33,5 +35,7 @@ export default function* rootSaga(): Generator<*, *, *> {
     call(nations),
     call(txProcessor),
     call(dApps),
+    call(migration),
+    call(upstream),
   ]);
 }
