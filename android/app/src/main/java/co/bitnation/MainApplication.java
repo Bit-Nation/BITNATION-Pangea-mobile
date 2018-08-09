@@ -26,7 +26,6 @@ public class MainApplication extends NavigationApplication {
                 new RNCameraPackage(),
                 new PanthalassaPackage(),
                 new RealmReactPackage(),
-                new RNVersionNumberPackage(),
                 new RNSensitiveInfoPackage(),
                 new RandomBytesPackage(),
                 new ReactNativeConfigPackage()
