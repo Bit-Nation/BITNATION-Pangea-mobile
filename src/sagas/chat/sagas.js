@@ -12,6 +12,7 @@ import {
   NewChatSessionAction,
   OpenChatAction,
   SendMessageAction,
+  FetchAllChatsAction,
   StartListenForMessagesAction,
   StopListenForMessagesAction,
   chatsUpdated,
@@ -141,7 +142,7 @@ export function* onSessionsChange(collection: Realm.Result<DBChatSession>): Gene
   }
 
   console.log('[PANGEA] Finish decryption messages');
-
+  
   yield put(chatsUpdated(updatedSessions));
 }
 
@@ -251,6 +252,16 @@ export function* openChatSession(action: OpenChatAction): Generator<*, *, *> {
       status: 'fail',
     });
   }
+}
+
+/**
+ * @desc Fetch all chats
+ * @param {FetchAllChatsAction} action FETCH_ALL_CHATS action
+ * @return {void}
+ */
+export function* fetchAllChats(): Generator<*, *, *> {
+  const chats = yield call(ChatService.fetchAllChats);
+  yield put(chatsUpdated(chats));
 }
 
 /**
