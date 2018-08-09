@@ -12,11 +12,11 @@ import {
   NewChatSessionAction,
   OpenChatAction,
   SendMessageAction,
+  FetchAllMessagesAction,
+  StartListenForMessagesAction,
+  StopListenForMessagesAction,
   chatsUpdated,
   selectProfile,
-  FETCH_MESSAGES,
-  START_FETCH_MESSAGES,
-  STOP_FETCH_MESSAGES,
 } from '../../actions/chat';
 import defaultDB from '../../services/database';
 import ChatService from '../../services/chat';
@@ -286,32 +286,30 @@ export function* openChatSession(action: OpenChatAction): Generator<*, *, *> {
 }
 
 /**
- * @desc Fetch messages
+ * @desc Fetch all messages
+ * @param {FetchAllMessagesAction} action FETCH_ALL_MESSAGES action
  * @return {void}
  */
-export function* tick(): Generator<*, *, *> {
-  while (true) {
-    yield put({ type: FETCH_MESSAGES });
-    yield delay(8000);
-  }
+export function* fetchAllMessages(): Generator<*, *, *> {
+  // TOOD: Call panthalassaAllChats
 }
 
 /**
- * @desc Start listening to incoming messages
- * @param {ChatListenAction} action LISTEN_CHAT action
+ * @desc Start listening for incoming messages
+ * @param {StartListenForMessagesAction} action START_LISTEN_FOR_MESSAGES action
  * @return {void}
  */
-export function* listenMessages(): Generator<*, *, *> {
-  while (yield take(START_FETCH_MESSAGES)) {
-    // starts the task in the background
-    const bgSyncTask = yield fork(tick);
+export function* startListenForMessages(): Generator<*, *, *> {
+  // TOOD: Create panthalassa listener and set in state
+}
 
-    // wait for the user stop action
-    yield take(STOP_FETCH_MESSAGES);
-    // user clicked stop. cancel the background task
-    // this will throw a SagaCancellationException into task
-    yield cancel(bgSyncTask);
-  }
+/**
+ * @desc Stop listening for incoming messages
+ * @param {StopListenForMessagesAction} action STOP_LISTEN_FOR_MESSAGES action
+ * @return {void}
+ */
+export function* stopListenForMessages(): Generator<*, *, *> {
+  // TOOD: Stop panthalassa listener and remove from state
 }
 
 /**
