@@ -9,9 +9,9 @@ export const NEW_CHAT_SESSION = 'NEW_CHAT_SESSION';
 export const CHATS_UPDATED = 'CHATS_UPDATED';
 export const OPEN_CHAT_SESSION = 'OPEN_CHAT_SESSION';
 export const SELECT_PROFILE = 'SELECT_PROFILE';
-export const FETCH_MESSAGES = 'FETCH_MESSAGES';
-export const START_FETCH_MESSAGES = 'START_FETCH_MESSAGES';
-export const STOP_FETCH_MESSAGES = 'STOP_FETCH_MESSAGES';
+export const FETCH_ALL_MESSAGES = 'FETCH_ALL_MESSAGES';
+export const START_LISTEN_FOR_MESSAGES = 'START_LISTEN_FOR_MESSAGES';
+export const STOP_LISTEN_FOR_MESSAGES = 'STOP_LISTEN_FOR_MESSAGES';
 export const SEND_MESSAGE = 'SEND_MESSAGE';
 export const SAVE_HUMAN_MESSAGE = 'SAVE_HUMAN_MESSAGE';
 
@@ -48,12 +48,15 @@ export type SelectProfileAction = {
   +type: 'SELECT_PROFILE',
   +profile: Object,
 };
-export type StartFetchAction = {
-  +type: 'START_FETCH_MESSAGES',
-};
-export type StopFetchAction = {
-  +type: 'STOP_FETCH_MESSAGES',
-};
+export type FetchAllMessagesAction = {
+  +type: 'FETCH_ALL_MESSAGES',
+}
+export type StartListenForMessagesAction = {
+  +type: 'START_LISTEN_FOR_MESSAGES',
+}
+export type StopListenForMessagesAction = {
+  +type: 'STOP_LISTEN_FOR_MESSAGES',
+}
 export type SendMessageAction = {
   +type: 'SEND_MESSAGE',
   +message: string,
@@ -80,8 +83,9 @@ export type Action =
   | UpdateChatsAction
   | OpenChatAction
   | SelectProfileAction
-  | StartFetchAction
-  | StopFetchAction
+  | FetchAllMessagesAction
+  | StartListenForMessagesAction
+  | StopListenForMessagesAction
   | SendMessageAction
   | SaveMessageAction;
 
@@ -194,22 +198,32 @@ export function selectProfile(profile: Object): SelectProfileAction {
 }
 
 /**
- * @desc Action to start listening messages
- * @returns {StartFetchAction} An action
+ * @desc Action to fetch all messages
+ * @returns {FetchAllMessagesAction} An action
  */
-export function startFetchMessages(): StartFetchAction {
+export function fetchAllMessages(): FetchAllMessagesAction {
   return {
-    type: START_FETCH_MESSAGES,
+    type: FETCH_ALL_MESSAGES,
   };
 }
 
 /**
- * @desc Action to stop listening messages
- * @returns {StopFetchAction} An action
+ * @desc Action to start listening for messages
+ * @returns {StartListenForMessagesAction} An action
  */
-export function stopFetchMessages(): StopFetchAction {
+export function startListenForMessages(): StartListenForMessagesAction {
   return {
-    type: STOP_FETCH_MESSAGES,
+    type: START_LISTEN_FOR_MESSAGES,
+  };
+}
+
+/**
+ * @desc Action to stop listening for messages
+ * @returns {StopListenForMessagesAction} An action
+ */
+export function stopListenForMessages(): StopListenForMessagesAction {
+  return {
+    type: STOP_LISTEN_FOR_MESSAGES,
   };
 }
 
