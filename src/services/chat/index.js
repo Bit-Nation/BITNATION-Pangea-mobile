@@ -5,6 +5,7 @@ import Config from 'react-native-config';
 import defaultDB from '../database';
 import { byteToHexString } from '../../utils/key';
 import { Buffer } from 'buffer';
+import type { ChatSessionType } from '../../types/Chat';
 import {
   panthalassaGetIdentityPublicKey,
   panthalassaNewPreKeyBundle,
@@ -12,6 +13,7 @@ import {
   panthalassaHandleInitialMessage,
   panthalassaCreateHumanMessage,
   panthalassaDecryptMessage,
+  panthalassaAllChats,
 } from '../../services/panthalassa';
 
 // Javascript static code of the proto file
@@ -111,12 +113,19 @@ export default class ChatService {
     });
   }
 
+  static async fetchAllChats(): Array<ChatSessionType> {
+    let response = await panthalassaAllChats();
+    response = JSON.parse(response);
+    return response;
+  }
+
   static async startChat(identityPublicKey: string, preKeyBundle: string): Promise<any> {
     let response = await panthalassaInitializeChat(identityPublicKey, preKeyBundle);
     response = JSON.parse(response);
     await ChatService.uploadMessage(response.message);
     return response;
   }
+
   static async handleChatInit(message: string, preKeyBundlePrivatePart: string): Promise<any> {
     return panthalassaHandleInitialMessage(message, preKeyBundlePrivatePart);
   }
