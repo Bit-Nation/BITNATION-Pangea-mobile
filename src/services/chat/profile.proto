@@ -3,19 +3,15 @@ syntax = "proto3";
 package api_proto;
 
 message Profile {
-    message Information {
-        string name = 1;
-        string location = 2;
-        string image = 3;
-        bytes  identityPubKey = 4;
-        bytes  ethereumPubKey = 5;
-        bytes  chatIdentityPubKey = 6;
-        int64 timestamp = 7;
-        uint32 version = 8;
-    }
+    string name = 1;
+    string location = 2;
+    string image = 3;
+    bytes  identityPubKey = 4;
+    bytes  ethereumPubKey = 5;
+    bytes  chatIdentityPubKey = 6;
+    int64 timestamp = 7;
+    uint32 version = 8;
 
-    message Signatures {
-        bytes  identityKeySignature = 1;
-        bytes  ethereumKeySignature = 2;
-    }
+    bytes  identityKeySignature = 9;
+    bytes  ethereumKeySignature = 10;
 }
