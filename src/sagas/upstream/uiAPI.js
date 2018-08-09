@@ -44,7 +44,7 @@ export function createUIAPIChannel(service: UpstreamService): Channel<Object> {
 }
 
 /**
- * @desc Fetch list of DApps.
+ * @desc Subscribes to UI API and passes request to handle.
  * @return {void}
  */
 export function* subscribeToUIAPI(): Generator<*, *, *> {
