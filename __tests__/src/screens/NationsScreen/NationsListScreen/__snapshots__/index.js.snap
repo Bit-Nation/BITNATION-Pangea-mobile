@@ -59,14 +59,18 @@ ShallowWrapper {
           }
         >
           <SegmentedControlTab
+            accessibilityLabels={Array []}
+            accessible={true}
             activeTabBadgeContainerStyle={Object {}}
             activeTabBadgeStyle={Object {}}
+            activeTabOpacity={1}
             activeTabStyle={
               Object {
                 "backgroundColor": "#FF8B00",
               }
             }
             activeTabTextStyle={Object {}}
+            allowFontScaling={true}
             badges={
               Array [
                 "",
@@ -75,6 +79,7 @@ ShallowWrapper {
               ]
             }
             borderRadius={5}
+            enabled={true}
             multiple={false}
             onTabPress={[Function]}
             selectedIndex={1}
@@ -97,11 +102,17 @@ ShallowWrapper {
                 "color": "#FF8B00",
               }
             }
+            tabsContainerDisableStyle={
+              Object {
+                "opacity": 0.6,
+              }
+            }
             tabsContainerStyle={
               Object {
                 "backgroundColor": "transparent",
               }
             }
+            textNumberOfLines={1}
             values={
               Array [
                 "All Nations",
@@ -182,14 +193,18 @@ ShallowWrapper {
         "nodeType": "class",
         "props": Object {
           "children": <SegmentedControlTab
+            accessibilityLabels={Array []}
+            accessible={true}
             activeTabBadgeContainerStyle={Object {}}
             activeTabBadgeStyle={Object {}}
+            activeTabOpacity={1}
             activeTabStyle={
               Object {
                 "backgroundColor": "#FF8B00",
               }
             }
             activeTabTextStyle={Object {}}
+            allowFontScaling={true}
             badges={
               Array [
                 "",
@@ -198,6 +213,7 @@ ShallowWrapper {
               ]
             }
             borderRadius={5}
+            enabled={true}
             multiple={false}
             onTabPress={[Function]}
             selectedIndex={1}
@@ -220,11 +236,17 @@ ShallowWrapper {
                 "color": "#FF8B00",
               }
             }
+            tabsContainerDisableStyle={
+              Object {
+                "opacity": 0.6,
+              }
+            }
             tabsContainerStyle={
               Object {
                 "backgroundColor": "transparent",
               }
             }
+            textNumberOfLines={1}
             values={
               Array [
                 "All Nations",
@@ -246,18 +268,23 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
+            "accessibilityLabels": Array [],
+            "accessible": true,
             "activeTabBadgeContainerStyle": Object {},
             "activeTabBadgeStyle": Object {},
+            "activeTabOpacity": 1,
             "activeTabStyle": Object {
               "backgroundColor": "#FF8B00",
             },
             "activeTabTextStyle": Object {},
+            "allowFontScaling": true,
             "badges": Array [
               "",
               "",
               "",
             ],
             "borderRadius": 5,
+            "enabled": true,
             "multiple": false,
             "onTabPress": [Function],
             "selectedIndex": 1,
@@ -274,9 +301,13 @@ ShallowWrapper {
               "backgroundColor": "transparent",
               "color": "#FF8B00",
             },
+            "tabsContainerDisableStyle": Object {
+              "opacity": 0.6,
+            },
             "tabsContainerStyle": Object {
               "backgroundColor": "transparent",
             },
+            "textNumberOfLines": 1,
             "values": Array [
               "All Nations",
               "My Nations",
@@ -348,14 +379,18 @@ ShallowWrapper {
             }
           >
             <SegmentedControlTab
+              accessibilityLabels={Array []}
+              accessible={true}
               activeTabBadgeContainerStyle={Object {}}
               activeTabBadgeStyle={Object {}}
+              activeTabOpacity={1}
               activeTabStyle={
                 Object {
                   "backgroundColor": "#FF8B00",
                 }
               }
               activeTabTextStyle={Object {}}
+              allowFontScaling={true}
               badges={
                 Array [
                   "",
@@ -364,6 +399,7 @@ ShallowWrapper {
                 ]
               }
               borderRadius={5}
+              enabled={true}
               multiple={false}
               onTabPress={[Function]}
               selectedIndex={1}
@@ -386,11 +422,17 @@ ShallowWrapper {
                   "color": "#FF8B00",
                 }
               }
+              tabsContainerDisableStyle={
+                Object {
+                  "opacity": 0.6,
+                }
+              }
               tabsContainerStyle={
                 Object {
                   "backgroundColor": "transparent",
                 }
               }
+              textNumberOfLines={1}
               values={
                 Array [
                   "All Nations",
@@ -471,14 +513,18 @@ ShallowWrapper {
           "nodeType": "class",
           "props": Object {
             "children": <SegmentedControlTab
+              accessibilityLabels={Array []}
+              accessible={true}
               activeTabBadgeContainerStyle={Object {}}
               activeTabBadgeStyle={Object {}}
+              activeTabOpacity={1}
               activeTabStyle={
                 Object {
                   "backgroundColor": "#FF8B00",
                 }
               }
               activeTabTextStyle={Object {}}
+              allowFontScaling={true}
               badges={
                 Array [
                   "",
@@ -487,6 +533,7 @@ ShallowWrapper {
                 ]
               }
               borderRadius={5}
+              enabled={true}
               multiple={false}
               onTabPress={[Function]}
               selectedIndex={1}
@@ -509,11 +556,17 @@ ShallowWrapper {
                   "color": "#FF8B00",
                 }
               }
+              tabsContainerDisableStyle={
+                Object {
+                  "opacity": 0.6,
+                }
+              }
               tabsContainerStyle={
                 Object {
                   "backgroundColor": "transparent",
                 }
               }
+              textNumberOfLines={1}
               values={
                 Array [
                   "All Nations",
@@ -535,18 +588,23 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "function",
             "props": Object {
+              "accessibilityLabels": Array [],
+              "accessible": true,
               "activeTabBadgeContainerStyle": Object {},
               "activeTabBadgeStyle": Object {},
+              "activeTabOpacity": 1,
               "activeTabStyle": Object {
                 "backgroundColor": "#FF8B00",
               },
               "activeTabTextStyle": Object {},
+              "allowFontScaling": true,
               "badges": Array [
                 "",
                 "",
                 "",
               ],
               "borderRadius": 5,
+              "enabled": true,
               "multiple": false,
               "onTabPress": [Function],
               "selectedIndex": 1,
@@ -563,9 +621,13 @@ ShallowWrapper {
                 "backgroundColor": "transparent",
                 "color": "#FF8B00",
               },
+              "tabsContainerDisableStyle": Object {
+                "opacity": 0.6,
+              },
               "tabsContainerStyle": Object {
                 "backgroundColor": "transparent",
               },
+              "textNumberOfLines": 1,
               "values": Array [
                 "All Nations",
                 "My Nations",
