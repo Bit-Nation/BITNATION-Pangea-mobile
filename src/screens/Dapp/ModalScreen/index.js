@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { View } from 'react-native';
+import { connect } from 'react-redux';
 
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import Colors from '../../../global/colors';
@@ -11,6 +12,7 @@ import GlobalStyles from '../../../global/Styles';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import Loading from '../../../components/common/Loading';
+import { dAppLaunchStateChanged } from '../../../actions/dApps';
 
 type Props = {
   /**
@@ -21,9 +23,13 @@ type Props = {
    * @desc Public key of DApp that controls the screen.
    */
   dAppPublicKey: string,
+  /**
+   * @desc Function to stop DApp.
+   */
+  closeDApp: (dAppPublicKey: string) => void,
 }
 
-export default class DAppModalScreen extends NavigatorComponent<Props, *> {
+class DAppModalScreen extends NavigatorComponent<Props, *> {
   static navigatorButtons = {
     leftButtons: [{
       id: 'cancel',
@@ -37,6 +43,7 @@ export default class DAppModalScreen extends NavigatorComponent<Props, *> {
 
   onNavBarButtonPress(id: string) {
     if (id === 'cancel') {
+      this.props.closeDApp(this.props.dAppPublicKey);
       this.props.navigator.dismissModal();
     }
   }
@@ -55,3 +62,13 @@ export default class DAppModalScreen extends NavigatorComponent<Props, *> {
     );
   }
 }
+
+const mapStateToProps = () => ({});
+
+const mapDispatchToProps = dispatch => ({
+  closeDApp(dAppId) {
+    dispatch(dAppLaunchStateChanged(dAppId, 'started'));
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(DAppModalScreen);
