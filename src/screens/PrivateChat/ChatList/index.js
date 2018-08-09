@@ -10,7 +10,6 @@ import {
 import _ from 'lodash';
 import { Fab, Text } from 'native-base';
 import ActionSheet from 'react-native-actionsheet';
-
 import { saveProfile, newChatSession, openChat } from '../../../actions/chat';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import styles from './styles';
@@ -21,6 +20,7 @@ import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import Loading from '../../../components/common/Loading';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import i18n from '../../../global/i18n';
+import Colors from '../../../global/colors';
 import type { ChatSessionType } from '../../../types/Chat';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import ScreenTitle from '../../../components/common/ScreenTitle';
@@ -28,6 +28,13 @@ import ChatService from '../../../services/chat';
 import NewChatModal from './NewChatModal';
 import InvalidKeyModal from './InvalidKeyModal';
 import InviteSentModal from './InviteSentModal';
+import MoreMenuModal from './MoreMenuModal';
+
+const MORE_BUTTON = 'MORE_BUTTON';
+const MORE_MODAL_KEY = 'moreMenu';
+const NEW_CHAT_MODAL_KEY = 'newChat';
+const INVITE_MODAL_KEY = 'invite';
+const INVALID_MODAL_KEY = 'invalidKey';
 
 type Props = {
   /**
@@ -77,6 +84,15 @@ type State = {
 };
 
 class ChatListScreen extends NavigatorComponent<Props, State> {
+  static navigatorButtons = {
+    leftButtons: [],
+    rightButtons: [{
+      title: 'More',
+      id: MORE_BUTTON,
+      buttonColor: Colors.navigationButtonColor,
+    }],
+  };
+
   constructor(props: Props) {
     super(props);
     this.state = {
@@ -85,6 +101,14 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
       showModal: '',
       loading: false,
     };
+  }
+
+  onNavBarButtonPress(id) {
+    if (id === MORE_BUTTON) {
+      this.setState({
+        showModal: MORE_MODAL_KEY,
+      });
+    }
   }
 
   actionSheet: any;
@@ -115,7 +139,7 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
       this.setState({
         publicKey,
         profile,
-        showModal: 'new_chat',
+        showModal: NEW_CHAT_MODAL_KEY,
       });
       this.props.saveProfile(profile);
     } catch (e) {
@@ -123,7 +147,7 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
       this.setState({
         publicKey: '',
         profile: null,
-        showModal: 'invalid_key',
+        showModal: INVALID_MODAL_KEY,
       });
     }
   };
@@ -228,19 +252,23 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
           cancelButtonIndex={newChatOptions.length - 1}
           onPress={this.onChatAction}
         />
+        <MoreMenuModal
+          visible={this.state.showModal === MORE_MODAL_KEY}
+          onCancel={this.dismissModal}
+        />
         <NewChatModal
           profile={this.state.profile}
-          visible={this.state.showModal === 'new_chat'}
+          visible={this.state.showModal === NEW_CHAT_MODAL_KEY}
           onStartChat={this.startChat}
           onCancel={this.dismissModal}
         />
         <InvalidKeyModal
           done={this.dismissModal}
-          visible={this.state.showModal === 'invalid_key'}
+          visible={this.state.showModal === INVALID_MODAL_KEY}
         />
         <InviteSentModal
           done={this.dismissModal}
-          visible={this.state.showModal === 'invite'}
+          visible={this.state.showModal === INVITE_MODAL_KEY}
         />
         {this.state.loading === true && <Loading />}
       </View>
