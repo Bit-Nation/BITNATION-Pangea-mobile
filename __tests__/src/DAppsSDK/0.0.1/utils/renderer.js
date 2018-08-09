@@ -29,8 +29,8 @@ test('validateProps', () => {
       someCustomProp1: 'SOME_CUSTOM_PROP_1',
       someCustomProp2: 'SOME_CUSTOM_PROP_2',
       badCustomProp: 'BAD_CUSTOM_PROP',
-      onPressID: 'ON_PRESS',
-      badCallbackID: 'BAD_CALLBACK',
+      onPress: 'ON_PRESS',
+      badCallback: 'BAD_CALLBACK',
     }, {
       native: ['allowedNativeProp1', 'allowedNativeProp2'],
       custom: ['someCustomProp1', 'someCustomProp2'],
@@ -47,7 +47,7 @@ test('validateProps', () => {
       someCustomProp2: 'SOME_CUSTOM_PROP_2',
     },
     callbackProps: {
-      onPressID: 'ON_PRESS',
+      onPress: 'ON_PRESS',
     },
   });
 });
@@ -106,7 +106,7 @@ describe('renderJSON', () => {
       children: null,
     });
   });
-
+  
   test('complex JSON', () => {
     const json = {
       type: 'view',
@@ -142,7 +142,7 @@ describe('renderJSON', () => {
           type: 'textInput',
           props: {
             style: { width: 200, height: 50 },
-            onEndEditingID: 1,
+            onEndEditing: 1,
           },
         },
         {
@@ -154,7 +154,7 @@ describe('renderJSON', () => {
           props: {
             style: { width: 100, height: 50, backgroundColor: 'green' },
             title: 'Hey',
-            onPressID: 2,
+            onPress: 2,
           },
         },
       ],

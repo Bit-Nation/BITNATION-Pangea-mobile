@@ -44,21 +44,19 @@ class Root extends Component<Props, any> {
     const resultedProps = {};
 
     if (Array.isArray(callbackProps)) {
-      callbackProps.forEach((nameWithoutID) => {
-        if (typeof nameWithoutID !== 'string') {
+      callbackProps.forEach((callbackName) => {
+        if (typeof callbackName !== 'string') {
           return;
         }
 
-        // Names on components are specified without 'ID' suffix to match native props.
-        const propName = `${nameWithoutID}ID`;
-        const callbackID = ownProps[propName];
+        const callbackID = ownProps[callbackName];
         if (callbackID == null) return;
         if (typeof callbackID !== 'number') {
           console.warn(`Callback id ${callbackID} must be a number.`);
           return;
         }
 
-        resultedProps[nameWithoutID] = args => this.performCallbackByID(callbackID, args);
+        resultedProps[callbackName] = args => this.performCallbackByID(callbackID, args);
       });
     }
 
