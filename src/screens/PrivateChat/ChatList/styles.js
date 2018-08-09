@@ -1,10 +1,9 @@
 // @flow
 
 import { MediaQueryStyleSheet } from 'react-native-responsive';
-import { StyleSheet, Platform } from 'react-native';
+import { StyleSheet } from 'react-native';
 import GlobalStyles from '../../../global/Styles';
 import Colors from '../../../global/colors';
-import { PADDING_STATUS_BAR_IOS } from '../../../global/Constants';
 
 const styles = MediaQueryStyleSheet.create({
   ...GlobalStyles,
@@ -77,7 +76,7 @@ const styles = MediaQueryStyleSheet.create({
     backgroundColor: 'transparent',
     paddingLeft: 100,
     paddingRight: 10,
-    paddingTop: Platform.OS === 'android' ? 0 : PADDING_STATUS_BAR_IOS,
+    paddingTop: GlobalStyles.statusBar.height,
   },
   modalMoreContent: {
     backgroundColor: 'white',
