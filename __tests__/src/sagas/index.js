@@ -16,6 +16,7 @@ import txProcessor from '../../../src/sagas/txProcessor';
 import chat from '../../../src/sagas/chat';
 import migration from '../../../src/sagas/migration';
 import dApps from '../../../src/sagas/dApps';
+import upstream from '../../../src/sagas/upstream';
 
 test('rootSaga', () => {
   const iterator = rootSaga();
@@ -33,5 +34,6 @@ test('rootSaga', () => {
     call(txProcessor),
     call(migration),
     call(dApps),
+    call(upstream),
   ]));
 });
