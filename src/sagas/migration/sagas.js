@@ -1,19 +1,21 @@
 // @flow
 
-import { select, put } from 'redux-saga/effects';
-import { storeVersion } from '../../actions/migration';
-
+import { call } from 'redux-saga/effects';
+import defaultDB from '../../services/database';
+import { getCurrentAccount } from '../accounts/sagas';
+import { launchLoggedInFlow } from '../navigation/sagas';
 
 /**
  * @desc Start migration.
  * @return {void}
  */
 export function* startMigration(): Generator<*, *, any> {
-  const { migration } = yield select();
-  if (migration.migrationVersion !== '1.1.0') {
-    const version = '1.1.0';
-    yield put(storeVersion(version));
-  }
+  const db = yield defaultDB;
+  const currentAccount = yield getCurrentAccount();
+  db.write(() => {
+    db.create('Account', { ...currentAccount, lastMigrationVersion: '1.1.0' }, true);
+  });
+  yield call(launchLoggedInFlow);
 }
 
 /**
@@ -21,8 +23,8 @@ export function* startMigration(): Generator<*, *, any> {
  * @return {void}
  */
 export function* isMigration(): Generator<*, *, any> {
-  const { migration } = yield select();
-  if (migration.migrationVersion !== '1.1.0') {
+  const currentAccount = yield getCurrentAccount();
+  if (currentAccount.lastMigrationVersion !== '1.1.0') {
     return true;
   }
   return false;
