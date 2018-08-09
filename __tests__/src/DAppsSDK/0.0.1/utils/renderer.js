@@ -106,7 +106,7 @@ describe('renderJSON', () => {
       children: null,
     });
   });
-  
+
   test('complex JSON', () => {
     const json = {
       type: 'view',
