@@ -12,7 +12,6 @@ import {
   NewChatSessionAction,
   OpenChatAction,
   SendMessageAction,
-  FetchAllMessagesAction,
   StartListenForMessagesAction,
   StopListenForMessagesAction,
   chatsUpdated,
@@ -252,15 +251,6 @@ export function* openChatSession(action: OpenChatAction): Generator<*, *, *> {
       status: 'fail',
     });
   }
-}
-
-/**
- * @desc Fetch all messages
- * @param {FetchAllMessagesAction} action FETCH_ALL_MESSAGES action
- * @return {void}
- */
-export function* fetchAllMessages(): Generator<*, *, *> {
-  // TOOD: Call panthalassaAllChats
 }
 
 /**
