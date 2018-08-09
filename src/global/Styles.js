@@ -1,3 +1,4 @@
+import { Platform } from 'react-native';
 import Colors from './colors';
 import { fontSizeNormalizer, normalWidthMargin, isiPhoneXStatusBar, isiPhoneXTabBar } from '../utils/normalizer';
 
@@ -132,7 +133,7 @@ const styles = {
   },
 
   statusBar: {
-    height: isiPhoneXStatusBar(20),
+    height: Platform.OS === 'android' ? 0 : isiPhoneXStatusBar(20),
     backgroundColor: 'transparent',
   },
 
@@ -143,7 +144,7 @@ const styles = {
 
   // Navigation area that shows a normal ("largeTitle" style) title
   navigationBar: {
-    marginTop: isiPhoneXStatusBar(20), // force below the status bar !!! THIS IS WRONG
+    marginTop: Platform.OS === 'android' ? 0 : isiPhoneXStatusBar(20),
     marginLeft: 8,
     marginRight: 8,
     height: 44,
