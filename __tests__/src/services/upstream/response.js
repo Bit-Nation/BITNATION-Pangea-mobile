@@ -3,16 +3,6 @@ import { api_proto as apiProto } from '../../../../src/services/upstream/compile
 const { Response } = apiProto;
 
 const message = {
-
-  dRKeyStoreGet: {
-    messageKey: 1,
-  },
-
-  dRKeyStoreCount: {
-    count: 1,
-  },
-
-  dRKeyStoreAll: {},
   sendEthereumTransaction: {
     nonce: 1,
     gasPrice: '2',
