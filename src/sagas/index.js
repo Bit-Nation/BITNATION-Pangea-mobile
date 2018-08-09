@@ -13,8 +13,8 @@ import serviceContainer from './serviceContainer';
 import modifyNation from './modifyNation';
 import nations from './nations';
 import txProcessor from './txProcessor';
-import migration from './migration';
 import dApps from './dApps';
+import migration from './migration';
 import upstream from './upstream';
 
 /**
@@ -36,6 +36,7 @@ export default function* rootSaga(): Generator<*, *, *> {
     call(txProcessor),
     call(migration),
     call(dApps),
+    call(migration),
     call(upstream),
   ]);
 }
