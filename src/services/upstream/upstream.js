@@ -20,10 +20,19 @@ const RESPONSE_TIMEOUT = 20;
 export default class UpstreamService {
   eventsSubscription: any;
   ethereumService: EthereumService;
+  onUIAPIRequest: ?((data: Object) => void);
 
   constructor(ethereumService: EthereumService) {
     this.ethereumService = ethereumService;
     this.startListening();
+  }
+
+  subscribeToUIAPI(handler: ((data: Object) => void)) {
+    this.onUIAPIRequest = handler;
+  }
+
+  unsubscribeFromUIAPI() {
+    this.onUIAPIRequest = null;
   }
 
   startListening = () => {
@@ -35,8 +44,19 @@ export default class UpstreamService {
   };
 
   handleRequest = async (request: any) => {
+    if (request.client != null) {
+      return this.handleClientUpstreamRequest(request.client);
+    }
+    if (request.ui != null) {
+      return this.handleUIAPIUpstreamRequest(request.ui);
+    }
+
+    return Promise.resolve();
+  };
+
+  handleClientUpstreamRequest = async (data: any) => {
     try {
-      const decoded = Request.decode(Buffer.from(request.upstream, 'base64'));
+      const decoded = Request.decode(Buffer.from(data, 'base64'));
       console.log(`[PANGEA] Received request ${decoded.requestID}`);
 
       if (decoded.showModal != null) {
@@ -47,6 +67,18 @@ export default class UpstreamService {
       return this.handleErrorMessage(decoded.requestID, decoded);
     } catch (error) {
       console.log(`[PANGEA] Upstream decode error: ${error}`);
+      throw error;
+    }
+  };
+
+  handleUIAPIUpstreamRequest = async (data: any) => {
+    try {
+      const parsed = JSON.parse(data);
+      if (typeof this.onUIAPIRequest === 'function') {
+        this.onUIAPIRequest(parsed);
+      }
+    } catch (error) {
+      console.log(`[PANGEA] UI API handle error: ${error}`);
       throw error;
     }
   };
