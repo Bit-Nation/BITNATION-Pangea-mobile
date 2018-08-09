@@ -32,9 +32,9 @@ import MoreMenuModal from './MoreMenuModal';
 
 const MORE_BUTTON = 'MORE_BUTTON';
 const MORE_MODAL_KEY = 'moreMenu';
-const NEW_CHAT_MODAL_KEY = 'new_chat';
+const NEW_CHAT_MODAL_KEY = 'newChat';
 const INVITE_MODAL_KEY = 'invite';
-const INVALID_MODAL_KEY = 'invalid_key';
+const INVALID_MODAL_KEY = 'invalidKey';
 
 type Props = {
   /**
