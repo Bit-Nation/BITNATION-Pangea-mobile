@@ -1,13 +1,19 @@
 // @flow
 
-import { select } from 'redux-saga/effects';
+import { select, put } from 'redux-saga/effects';
+import { storeVersion } from '../../actions/migration';
+
 
 /**
  * @desc Start migration.
  * @return {void}
  */
-export function* startMigration(): Generator<*, *, *> {
-  // @todo All migration functions will go here
+export function* startMigration(): Generator<*, *, any> {
+  const { migration } = yield select();
+  if (migration.migrationVersion !== '1.1.0') {
+    const version = '1.1.0';
+    yield put(storeVersion(version));
+  }
 }
 
 /**
