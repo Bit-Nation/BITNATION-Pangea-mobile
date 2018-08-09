@@ -24,5 +24,5 @@ export default function createGiftedChatMessageObject(messagesData: Array<any>):
   return messages;
 }
 
-export const getSelectedSession = (sessions: Array<ChatSessionType>, secret: string) =>
-  _.find(sessions, session => session.secret === secret) || null;
+export const getSelectedSession = (sessions: Array<ChatSessionType>, recipientPublicKey: string) =>
+  _.find(sessions, session => session.publicKey === recipientPublicKey) || null;

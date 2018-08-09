@@ -50,6 +50,10 @@ type Props = {
    */
   secret: string,
   /**
+   * @desc The public key of the chat recipient
+   */
+  recipientPublicKey: string,
+  /**
    * @desc Public key of the current user
    */
   userPublicKey: string,
@@ -152,7 +156,7 @@ class ChatScreen extends Component<Props, *> {
       i18n.t('screens.chat.cancel'),
     ];
 
-    const session = getSelectedSession(this.props.sessions, this.props.secret);
+    const session = getSelectedSession(this.props.sessions, this.props.recipientPublicKey);
     if (session == null) {
       this.showSessionClosedAlert();
       return <View />;
