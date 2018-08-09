@@ -15,6 +15,8 @@ export const START_LISTEN_FOR_MESSAGES = 'START_LISTEN_FOR_MESSAGES';
 export const STOP_LISTEN_FOR_MESSAGES = 'STOP_LISTEN_FOR_MESSAGES';
 export const SEND_MESSAGE = 'SEND_MESSAGE';
 export const SAVE_HUMAN_MESSAGE = 'SAVE_HUMAN_MESSAGE';
+export const LOAD_CHAT_MESSAGES = 'LOAD_CHAT_MESSAGES';
+export const CHAT_MESSAGES_LOADED = 'CHAT_MESSAGES_LOADED';
 
 export type ShowSpinnerAction = { +type: 'SHOW_CHAT_SPINNER' };
 export type HideSpinnerAction = { +type: 'HIDE_CHAT_SPINNER' };
@@ -72,11 +74,19 @@ export type SaveHumanMessageAction = {
   +type: 'SAVE_HUMAN_MESSAGE',
   +message: string,
 };
-
 export type SaveMessageAction = {
   +type: 'SAVE_HUMAN_MESSAGE',
   +message: string,
 };
+export type LoadChatMessagesAction = {
+  +type: 'LOAD_CHAT_MESSAGES',
+  +recipientPublicKey: string,
+}
+export type ChatMessagesLoadedAction = {
+  +type: 'CHAT_MESSAGES_LOADED',
+  +recipientPublicKey: string,
+  +messages: Array<any>,
+}
 
 export type Action =
   | ShowSpinnerAction
@@ -92,7 +102,9 @@ export type Action =
   | StartListenForMessagesAction
   | StopListenForMessagesAction
   | SendMessageAction
-  | SaveMessageAction;
+  | SaveMessageAction
+  | LoadChatMessagesAction
+  | ChatMessagesLoadedAction;
 
 /**
  * @desc Action for an action that shows spinner while processing in background
@@ -272,5 +284,31 @@ export function saveHumanMessage(message: Object, session: Object): SaveHumanMes
     type: SAVE_HUMAN_MESSAGE,
     message,
     session,
+  };
+}
+
+/**
+ * @desc Action for loading chat messages
+ * @param {string} recipientPublicKey Public Key of the chat recipient
+ * @returns {LoadChatMessagesAction} An action
+ */
+export function loadChatMessages(recipientPublicKey: string): LoadChatMessagesAction {
+  return {
+    type: LOAD_CHAT_MESSAGES,
+    recipientPublicKey,
+  };
+}
+
+/**
+ * @desc Action for loaded messages
+ * @param {string} recipientPublicKey The public key of the recipient 
+ * @param {Array<any>} messages Loaded messages
+ * @returns {ChatMessagesLoadedAction} An action
+ */
+export function chatMessagesLoaded(recipientPublicKey: string, messages: Array<any>): ChatMessagesLoadedAction {
+  return {
+    type: CHAT_MESSAGES_LOADED,
+    recipientPublicKey,
+    messages,
   };
 }
