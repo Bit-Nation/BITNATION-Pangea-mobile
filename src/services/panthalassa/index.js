@@ -105,7 +105,7 @@ export async function panthalassaEthAddress():Promise<string> {
 }
 
 /**
- * @desc Retrieves Account's public ey
+ * @desc Retrieves Account's public key
  * @returns {Promise<*>} {string} Account's public key
  */
 export async function panthalassaGetIdentityPublicKey():Promise<string> {
@@ -156,13 +156,13 @@ export async function panthalassaGetMnemonic():Promise<string> {
 
 /**
  * @desc Starts DApp's VM
- * @param {string} dApp DApp's Identifier
+ * @param {string} dAppSingingKeyStr DApp's Identifier
  * @param {string} timeout Value for timeout operation
  * @returns {Promise<*>} Boolean response about operation's result
  */
-export async function panthalassaStartDApp(dApp: String, timeout: Number):Promise<boolean> {
+export async function panthalassaStartDApp(dAppSingingKeyStr: String, timeout: Number):Promise<boolean> {
   return Panthalassa.PanthalassaStartDApp({
-    dApp,
+    dAppSingingKeyStr,
     timeout,
   });
 }
@@ -181,14 +181,6 @@ export async function panthalassaOpenDApp(id: String, context: String):Promise<b
 }
 
 /**
- * @desc TODO
- * @returns {Promise<*>} TODO
- */
-export async function panthalassaNewPreKeyBundle():Promise<string> {
-  return Panthalassa.PanthalassaNewPreKeyBundle();
-}
-
-/**
  * @desc Calls a DApp's function over th VM
  * @param {string} dAppId TODO
  * @param {string} id TODO
@@ -204,9 +196,9 @@ export async function panthalassaCallDAppFunction(dAppId: String, id: Number, ar
 }
 
 /**
- * @desc TODO
- * @param {string} address TODO
- * @returns {Promise<*>} TODO
+ * @desc Connect the host to DApp development server
+ * @param {string} address Server address
+ * @returns {Promise<*>} Boolean response about operation's result
  */
 export async function panthalassaConnectToDAppDevHost(address: String):Promise<boolean> {
   return Panthalassa.PanthalassaConnectToDAppDevHost(address);
@@ -214,89 +206,14 @@ export async function panthalassaConnectToDAppDevHost(address: String):Promise<b
 
 /**
  * @desc TODO
- * @param {string} rawMsg TODO
- * @param {string} secretID TODO
- * @param {string} secret TODO
- * @param {string} receiverIdKey TODO
- * @returns {Promise<*>} TODO
- */
-export async function panthalassaCreateDAppMessage(rawMsg: String, secretID: String, secret: String, receiverIdKey:String):Promise<string> {
-  return Panthalassa.PanthalassaCreateDAppMessage({
-    rawMsg,
-    secretID,
-    secret,
-    receiverIdKey,
-  });
-}
-
-/**
- * @desc TODO
- * @param {string} identityPublicKey TODO
- * @param {string} preKeyBundle TODO
- * @returns {Promise<*>} {string} TODO
- */
-export async function panthalassaInitializeChat(identityPublicKey: String, preKeyBundle: String):Promise<string> {
-  return Panthalassa.PanthalassaInitializeChat({
-    identityPublicKey,
-    preKeyBundle,
-  });
-}
-
-/**
- * @desc TODO
- * @param {string} message TODO
- * @param {string} preKeyBundlePrivatePart TODO
- * @returns {Promise<*>} {string} TODO
- */
-export async function panthalassaHandleInitialMessage(message: String, preKeyBundlePrivatePart: String):Promise<string> {
-  return Panthalassa.PanthalassaHandleInitialMessage({
-    message,
-    preKeyBundlePrivatePart,
-  });
-}
-
-/**
- * @desc TODO
- * @param {string} rawMsg TODO
- * @param {string} secretID TODO
- * @param {string} secret TODO
- * @param {string} receiverIdKey TODO
+ * @param {string} signingKey TODO
+ * @param {string} payload TODO
  * @returns {Promise<*>} {string}
  */
-export async function panthalassaCreateHumanMessage(rawMsg: String, secretID: String, secret: String, receiverIdKey: String):Promise<string> {
-  return Panthalassa.PanthalassaCreateHumanMessage({
-    rawMsg,
-    secretID,
-    secret,
-    receiverIdKey,
-  });
-}
-
-/**
- * @desc TODO
- * @param {string} message TODO
- * @param {string} secret TODO
- * @returns {Promise<*>} {string} TODO
- */
-export async function panthalassaDecryptMessage(message: String, secret: String):Promise<string> {
-  return Panthalassa.PanthalassaDecryptMessage({
-    message,
-    secret,
-  });
-}
-
-/**
- * @desc TODO
- * @param {string} id TODO
- * @param {string} msg TODO
- * @param {string} context TODO
- * @returns {Promise<*>} {string}
- */
-export async function panthalassaRenderMessage(id: String, msg: String, context: String):Promise<string> {
+export async function panthalassaRenderMessage(signingKey: String, payload: String):Promise<string> {
   return Panthalassa.PanthalassaRenderMessage({
-    id,
-    msg,
-    context,
+    signingKey,
+    payload,
   });
 }
 
@@ -305,7 +222,7 @@ export async function panthalassaRenderMessage(id: String, msg: String, context:
  * @param {string} id TODO
  * @param {string} data TODO
  * @param {string} responseError TODO
- * @param {string} timeout TODO
+ * @param {Number} timeout TODO
  * @returns {Promise<*>} {string} TODO
  */
 export async function panthalassaSendResponse(id: String, data: String, responseError: String, timeout: Number):Promise<boolean> {
@@ -315,4 +232,83 @@ export async function panthalassaSendResponse(id: String, data: String, response
     responseError,
     timeout,
   });
+}
+
+/**
+ * @desc Brings all chat conversation from the account
+ * @returns {Promise<*>} String response with all the account's conversations
+ */
+export async function panthalassaAllChats():Promise<string> {
+  return Panthalassa.PanthalassaAllChats();
+}
+
+/**
+ * @desc TODO
+ * @param {string} address TODO
+ * @returns {Promise<*>} Boolean response about operation's result
+ */
+export async function panthalassaConnectLogger(address: String):Promise<boolean> {
+  return Panthalassa.PanthalassaConnectLogger(address);
+}
+
+/**
+ * @desc Brings all DApps available
+ * @returns {Promise<*>} String response with all DApps available for the account
+ */
+export async function panthalassaDApps():Promise<string> {
+  return Panthalassa.PanthalassaDApps();
+}
+
+/**
+ * @desc Retrieves Account's public key
+ * @returns {Promise<*>} String Account's public key
+ */
+export async function panthalassaIdentityPublicKey():Promise<string> {
+  return Panthalassa.PanthalassaIdentityPublicKey();
+}
+
+/**
+ * @desc TODO
+ * @param {string} partner TODO
+ * @param {Number} start TODO
+ * @param {Number} amount TODO
+ * @returns {Promise<*>} {string} TODO
+ */
+export async function panthalassaMessages(partner: String, start: Number, amount: Number):Promise<string> {
+  return Panthalassa.PanthalassaMessages({
+    partner,
+    start,
+    amount,
+  });
+}
+
+/**
+ * @desc Sends a message to ? TODO
+ * @param {string} partner Receiver of the message
+ * @param {string} message Message to send
+ * @returns {Promise<*>} Boolean response about operation's result
+ */
+export async function panthalassaSendMessage(partner: String, message: Number):Promise<boolean> {
+  return Panthalassa.PanthalassaSendMessage({
+    partner,
+    message,
+  });
+}
+
+/**
+ * @desc TODO
+ * @param {string} level TODO
+ * @returns {Promise<*>} Boolean response about operation's result
+ */
+export async function panthalassaSetLogger(level: String):Promise<boolean> {
+  return Panthalassa.PanthalassaSetLogger(level);
+}
+
+/**
+ * @desc Stops the execution of a DApp
+ * @param {string} dAppSingingKeyStr Key of the DApp
+ * @returns {Promise<*>} Boolean response about operation's result
+ */
+export async function panthalassaStopDApp(dAppSingingKeyStr: String):Promise<boolean> {
+  return Panthalassa.PanthalassaStopDApp(dAppSingingKeyStr);
 }

@@ -223,6 +223,7 @@ export function* login(userInfo: ({ accountId: string, accountStore?: string }),
       return;
     }
   } catch (error) {
+    console.log('--> ERROR Login: ', error);
     if (error.transKey !== undefined) {
       yield put(loginTaskUpdated(TaskBuilder.failure(error)));
     } else {
