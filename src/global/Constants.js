@@ -19,6 +19,7 @@ export const NATION_INDEX_RECOVER_PERIOD = 10 * 1000;
 
 export const TRANSACTIONS_WORKER_RECOVER_DELAY = 30 * 1000;
 
+export const PADDING_STATUS_BAR_IOS = 20;
 // Screen sizes for Normalizer
 
 export const FOUR_INCHES = 568;
