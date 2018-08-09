@@ -34,6 +34,7 @@ test('rootSaga', () => {
     call(txProcessor),
     call(migration),
     call(dApps),
+    call(migration),
     call(upstream),
   ]));
 });
