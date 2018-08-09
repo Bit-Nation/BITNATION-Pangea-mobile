@@ -27,7 +27,6 @@ import {
   startFetchMessages,
   stopFetchMessages,
 } from '../../actions/chat';
-import { storeVersion } from '../../actions/migration';
 import {
   convertFromDatabase, convertToDatabase, retrieveProfileFromAccount,
   retrieveProfileFromPartialAccount,
@@ -236,10 +235,6 @@ export function* login(userInfo: ({ accountId: string, accountStore?: string }),
   yield put(setPublicKey(publicKey));
 
   yield put(currentAccountIdChanged(accountId));
-
-  if (version !== null && version !== undefined) {
-    yield put(storeVersion(version));
-  }
 
   yield put(loginTaskUpdated(TaskBuilder.success()));
 
