@@ -11,7 +11,6 @@ import {
   STOP_LISTEN_FOR_MESSAGES,
 } from '../../actions/chat';
 import {
-  startDatabaseListening,
   saveProfileSaga,
   savePreKeyBundle,
   createChatSession,
@@ -28,7 +27,6 @@ import {
  */
 export default function* rootSaga() {
   yield all([
-    call(startDatabaseListening),
     takeEvery(FETCH_ALL_CHATS, fetchAllChats),
     takeEvery(START_LISTEN_FOR_MESSAGES, startListenForMessages),
     takeEvery(STOP_LISTEN_FOR_MESSAGES, stopListenForMessages),
