@@ -4,8 +4,10 @@ import { NativeModules } from 'react-native';
 import Config from 'react-native-config';
 import defaultDB from '../database';
 import { byteToHexString } from '../../utils/key';
+import createGiftedChatMessageObject from '../../utils/chat';
 import { Buffer } from 'buffer';
-import type { ChatSessionType } from '../../types/Chat';
+import type { Account } from '../../types/Account';
+import type { ChatSessionType, GiftedChatMessageType, ProfileType } from '../../types/Chat';
 import {
   panthalassaGetIdentityPublicKey,
   panthalassaNewPreKeyBundle,
@@ -15,6 +17,7 @@ import {
   panthalassaDecryptMessage,
   panthalassaAllChats,
   panthalassaMessages,
+  panthalassaSendMessage,
 } from '../../services/panthalassa';
 
 // Javascript static code of the proto file
@@ -157,16 +160,26 @@ export default class ChatService {
     });
   }
 
-  static async loadMessages(recipientPublicKey: string, start: Number, amount: Number): Array<any> {
+  static async loadMessages(sender: Account, receiver: ProfileType, startStr: string, amount: Number): Array<ChatMessageType> {
     let response = [];
     try {
-      const partner = Buffer.from(recipientPublicKey, 'utf8').toString('hex');
-      response = await panthalassaMessages(partner, start, amount);
-      response = JSON.parse(response);
+      const partner = Buffer.from(receiver.identity_pub_key, 'base64').toString('hex');
+      messages = await panthalassaMessages(partner, startStr, amount);
+      messages = JSON.parse(messages);
+      response = createGiftedChatMessageObject(sender, receiver, messages);
     } catch(e) {
       console.log(`[TEST] Error loading messages: ${e.message}`);
     }
 
     return response;
+  }
+
+  static async sendMessage(recipientPublicKey: string, message: string): void {
+    try {
+      const partner = Buffer.from(recipientPublicKey, 'base64').toString('hex');
+      await panthalassaSendMessage(partner, message);
+    } catch(e) {
+      console.log(`[TEST] Error sending messsage: ${e.message}`);
+    }
   }
 }

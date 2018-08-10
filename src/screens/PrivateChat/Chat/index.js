@@ -13,6 +13,7 @@ import {
   MessageText,
 } from 'react-native-gifted-chat';
 import ActionSheet from 'react-native-actionsheet';
+import _ from 'lodash';
 
 import styles from './styles';
 import { showSpinner, hideSpinner, sendMessage } from '../../../actions/chat';
@@ -67,10 +68,11 @@ type Props = {
   hideSpinner: () => void,
   /**
    * @desc Function to send a human message
+   * @param {string} recipientPublicKey The recipient's public key
    * @param {string} msg Message to be sent
    * @param {Object} session Session object
    */
-  sendMessage: (msg: string, session: Object) => void,
+  sendMessage: (recipientPublicKey: string, msg: string) => void,
   /**
    * @desc Array of chat sessions.
    */
@@ -116,12 +118,12 @@ class ChatScreen extends Component<Props, *> {
 
   onSend(messages: Array<any> = []) {
     const message = messages[0].text;
-    const session = getSelectedSession(this.props.sessions, this.props.secret);
+    const session = getSelectedSession(this.props.sessions, this.props.recipientPublicKey);
     if (session == null) {
       this.showSessionClosedAlert();
       return;
     }
-    this.props.sendMessage(message, session);
+    this.props.sendMessage(this.props.recipientPublicKey, message);
   }
 
   onSelectDAppToOpen = (index) => {
@@ -162,8 +164,8 @@ class ChatScreen extends Component<Props, *> {
       return <View />;
     }
     let sortedMessages = [];
-    if (session.decryptedMessages && session.decryptedMessages.length > 0) {
-      sortedMessages = session.decryptedMessages.slice().reverse();
+    if (session.messages && session.messages.length > 0) {
+      sortedMessages = _.orderBy(session.messages, ['createdAt'], ['desc']);
     }
     sortedMessages = sortedMessages.map((message) => {
       if (message.dAppMessage == null || message.dAppMessage.dapp_id == null) return message;
@@ -280,7 +282,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   showSpinner: () => dispatch(showSpinner()),
   hideSpinner: () => dispatch(hideSpinner()),
-  sendMessage: (msg, session) => dispatch(sendMessage(msg, session)),
+  sendMessage: (publicKey, msg) => dispatch(sendMessage(publicKey, msg)),
   openDApp: (dAppPublicKey, secret, friend) => dispatch(openDApp(dAppPublicKey, {
     chatSecret: secret,
     friend,
