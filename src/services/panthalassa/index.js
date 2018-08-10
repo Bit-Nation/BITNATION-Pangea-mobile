@@ -182,14 +182,14 @@ export async function panthalassaOpenDApp(id: String, context: String):Promise<b
 
 /**
  * @desc Calls a DApp's function over th VM
- * @param {string} dAppId TODO
+ * @param {string} signingKey TODO
  * @param {string} id TODO
  * @param {string} args TODO
  * @returns {Promise<*>} Boolean response about operation's result
  */
-export async function panthalassaCallDAppFunction(dAppId: String, id: Number, args: String):Promise<boolean> {
+export async function panthalassaCallDAppFunction(signingKey: String, id: Number, args: String):Promise<boolean> {
   return Panthalassa.PanthalassaCallDAppFunction({
-    dAppId,
+    signingKey,
     id,
     args,
   });
