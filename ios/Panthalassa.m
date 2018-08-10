@@ -483,7 +483,7 @@ RCT_REMAP_METHOD(PanthalassaMessages,
   NSError *error = nil;
   
   response = PanthalassaMessages([RCTConvert NSString:config[@"partner"]],
-                                 [[RCTConvert NSNumber:config[@"start"]] intValue],
+                                 [RCTConvert NSString:config[@"startStr"]],
                                  [[RCTConvert NSNumber:config[@"amount"]] longValue],
                                   &error);
   
