@@ -288,7 +288,7 @@ export async function panthalassaMessages(partner: String, startStr: String, amo
  * @param {string} message Message to send
  * @returns {Promise<*>} Boolean response about operation's result
  */
-export async function panthalassaSendMessage(partner: string, message: Number):Promise<boolean> {
+export async function panthalassaSendMessage(partner: string, message: string):Promise<boolean> {
   return Panthalassa.PanthalassaSendMessage({
     partner,
     message,

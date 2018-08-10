@@ -259,16 +259,16 @@ export function stopListenForMessages(): StopListenForMessagesAction {
 
 /**
  * @desc Action for sending message
+ * @param {string} recipientPublicKey The recipient's public key
  * @param {string} message Message to send
- * @param {Object} session Session object
  * @param {func} callback Callback
  * @returns {SendMessageAction} An action
  */
-export function sendMessage(message: string, session: Object, callback: () => void = () => undefined): SendMessageAction {
+export function sendMessage(recipientPublicKey: string, message: string, callback: () => void = () => undefined): SendMessageAction {
   return {
     type: SEND_MESSAGE,
+    recipientPublicKey,
     message,
-    session,
     callback,
   };
 }

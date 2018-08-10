@@ -5,6 +5,9 @@
 import { delay } from 'redux-saga';
 import { put, call, take, fork, cancel } from 'redux-saga/effects';
 import type { Realm } from 'realm';
+import _ from 'lodash';
+// $FlowFixMe Flow has issues with import buffer for some reason.
+import { Buffer } from 'buffer';
 
 import {
   SaveProfileAction,
@@ -176,7 +179,28 @@ export function* openChatSession(action: OpenChatAction): Generator<*, *, *> {
  * @return {void}
  */
 export function* fetchAllChats(): Generator<*, *, *> {
-  const chats = yield call(ChatService.fetchAllChats);
+  const db = yield defaultDB;
+  let results = yield call([db, 'objects'], 'Profile');
+
+  const currentAccountId = yield call(getCurrentAccountId);
+  const hexPublicKeys = yield call(ChatService.fetchAllChats);
+
+  let chats = [];
+  let profile, publicKey;
+  for (let hexPubKey of hexPublicKeys) {
+    publicKey = new Buffer(hexPubKey, 'hex').toString('base64');
+    results = yield call([results, 'filtered'], `identity_pub_key == '${publicKey}'`);
+    profile = yield results[0] || null;
+    if (profile) {
+      chats.push({
+        publicKey,
+        username: profile.name,
+        accountId: currentAccountId,
+        messages: [],
+      });
+    }
+  }
+
   yield put(chatsUpdated(chats));
 }
 
@@ -204,8 +228,17 @@ export function* stopListenForMessages(): Generator<*, *, *> {
  * @return {void}
  */
 export function* loadMessages(action: LoadChatMessagesAction): Generator<*, *, *> {
-  const messages = yield call(ChatService.loadMessages, action.recipientPublicKey, 0, 10);
-  yield put(chatMessagesLoaded(action.recipientPublicKey, messages));
+  const db = yield defaultDB;
+  let results = yield call([db, 'objects'], 'Profile');
+  results = yield call([results, 'filtered'], `identity_pub_key == '${action.recipientPublicKey}'`);
+  const recipientProfile = yield results[0] || null;
+
+  const senderAccount = yield call(getCurrentAccount);
+
+  if (recipientProfile) {
+    const messages = yield call(ChatService.loadMessages, senderAccount, recipientProfile, '0', 50);
+    yield put(chatMessagesLoaded(action.recipientPublicKey, messages));
+  }
 }
 
 /**
@@ -289,20 +322,5 @@ async function handleHumanMessage(message: Object): Promise<boolean> {
  * @return {void}
  */
 export function* sendMessage(action: SendMessageAction): Generator<*, *, *> {
-  const db = yield defaultDB;
-  try {
-    let results = yield call([db, 'objects'], 'SharedSecret');
-    results = yield call([results, 'filtered'], `id == '${action.session.secret}'`);
-    const secret = yield results[0] || null;
-    if (secret) {
-      const messageObject = yield call(ChatService.createHumanMessage, action.message, secret.id, JSON.stringify(secret.secret), action.session.publicKey);
-      yield call(handleHumanMessage, messageObject);
-      yield call(action.callback, messageObject);
-    } else {
-      yield call(action.callback, null);
-    }
-  } catch (e) {
-    console.log('send message error: ', e);
-    yield call(action.callback, null);
-  }
+  yield call(ChatService.sendMessage, action.recipientPublicKey, action.message);
 }
