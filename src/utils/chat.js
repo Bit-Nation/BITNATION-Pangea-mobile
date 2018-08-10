@@ -6,11 +6,34 @@ import type { ChatSessionType, GiftedChatMessageType, ProfileType } from '../typ
 
 /**
  * @desc Function that creates the list of messages to be consumed by GiftedChat
- * @param {ProfileType} profile The profile of the recipient
+ * @param {Array<any>} messagesData Array of message data
+ * @returns {Array<any>} An array of formatted messages data
+ */
+export default function createGiftedChatMessageObject(messagesData: Array<any>): Array<any> {
+  const messages = [];
+  messagesData.forEach((data) => {
+    messages.push({
+      _id: data._id,
+      text: data.msg,
+      createdAt: data.createdAt,
+      user: {
+        _id: data.userId,
+        name: data.from,
+      },
+    });
+  });
+  return messages;
+}
+
+
+/**
+ * @desc Function that creates the list of messages to be consumed by GiftedChat
+ * @param {Account} sender The account of the sender
+ * @param {ProfileType} receiver The profile of the recipient
  * @param {Array<any>} messagesData Array of message data
  * @returns {Array<GiftedChatMessageType>} An array of formatted messages data
  */
-export default function createGiftedChatMessageObject(sender: Account, receiver: ProfileType, messagesData: Array<any>): Array<GiftedChatMessageType> {
+export function createGiftedChatMessageObjects(sender: Account, receiver: ProfileType, messagesData: Array<any>): Array<GiftedChatMessageType> {
   const messages = [];
   messagesData.forEach((data) => {
     let createdAt = new Date(0);
