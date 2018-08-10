@@ -66,19 +66,22 @@ class DAppModalScreen extends NavigatorComponent<Props & Actions, *> {
 
   render() {
     const info = this.modalInfo;
+    // Coming layout is a layout with container, which we don't need to render.
+    // It's expected that modal component returns single root component.
+    const childrenLayout = info.layout.children[0];
+    const { title } = info.layout.props;
     const isLoading = getDAppLaunchState(this.props.dApps, info.dAppPublicKey) === 'working';
 
     return (
       <View style={GlobalStyles.screenContainer}>
         <BackgroundImage />
+        <FakeNavigationBar />
         {
-          info.title.length > 0
-          ? <ScreenTitle title={info.title} />
-          : <FakeNavigationBar />
+          title.length > 0 && <ScreenTitle title={title} />
         }
         <Root
-          layout={this.modalInfo.layout}
-          dAppPublicKey={this.modalInfo.dAppPublicKey}
+          layout={childrenLayout}
+          dAppPublicKey={info.dAppPublicKey}
         />
         {isLoading && <Loading />}
       </View>
