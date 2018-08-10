@@ -39,22 +39,10 @@ export type DAppMessageType = {
   should_render: boolean,
 };
 
-export type MessageType = {
-  type: string,
-  timestamp: Date,
-  used_secret: string,
-  additional_data: string,
-  doubleratchet_message: string,
-  signature: string,
-  id_public_key: string,
-  receiver: string,
-};
-
 export type ChatSessionType = {
   publicKey: string,
   username: string,
   accountId: string,
-  messages: Array<MessageType>,
-  decryptedMessages: Array<GiftedChatMessageType>
+  messages: Array<GiftedChatMessageType>
 };
 

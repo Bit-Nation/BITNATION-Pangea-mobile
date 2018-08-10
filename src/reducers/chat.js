@@ -31,6 +31,8 @@ export const initialState: State = {
  * @returns {State} Next state.
  */
 export default (state: State = initialState, action: Action): State => {
+  let chats;
+
   switch (action.type) {
     case SERVICES_DESTROYED:
       return initialState;
@@ -60,8 +62,20 @@ export default (state: State = initialState, action: Action): State => {
         chatProfile: action.profile,
       };
     case CHAT_MESSAGES_LOADED:
-      // TODO: Add loaded messages to the correct chat
-      return state;
+      chats = state.chats.map(chat => {
+        if (chat.publicKey === action.recipientPublicKey) {
+          return {
+            ...chat,
+            messages: action.messages
+          }
+        }
+        return chat;
+      });
+      
+      return {
+        ...state,
+        chats
+      }
     default:
       return state;
   }

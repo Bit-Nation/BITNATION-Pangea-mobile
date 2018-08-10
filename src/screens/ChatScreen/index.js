@@ -118,38 +118,41 @@ class ChatScreen extends Component<Props, State> {
   }
 
   componentDidMount() {
-    if (this.props.isBot !== true && this.connection) {
-      this.props.showSpinner();
-      // load initial messages
-      const URL = `${config.CHAT_URL}/messages/${this.nationId}?auth_token=${config.AUTH_TOKEN}`;
-      fetch(URL)
-        .then(response => response.json())
-        .then(
-          (json) => {
-            const messages = createGiftedChatMessageObject(json.reverse());
-            this.props.hideSpinner();
-            this.setState(previousState => ({
-              messages: GiftedChat.append(previousState.messages, messages),
-            }));
-          },
-          () => {
-            this.props.hideSpinner();
-          },
-        );
+    // TODO: createGiftedChatMessageObject signature has changed to
+    // parse panthalassa chat messages. Update its use here.
+    
+    // if (this.props.isBot !== true && this.connection) {
+    //   this.props.showSpinner();
+    //   // load initial messages
+    //   const URL = `${config.CHAT_URL}/messages/${this.nationId}?auth_token=${config.AUTH_TOKEN}`;
+    //   fetch(URL)
+    //     .then(response => response.json())
+    //     .then(
+    //       (json) => {
+    //         const messages = createGiftedChatMessageObject(json.reverse());
+    //         this.props.hideSpinner();
+    //         this.setState(previousState => ({
+    //           messages: GiftedChat.append(previousState.messages, messages),
+    //         }));
+    //       },
+    //       () => {
+    //         this.props.hideSpinner();
+    //       },
+    //     );
 
-      // add socket listener
-      this.connection.on('room:joined', (data) => {
-        if (data.nation_id >= 0) {
-          this.setState({ joined: true });
-          this.connection.on('msg', (messageData) => {
-            const messages = createGiftedChatMessageObject([messageData]);
-            this.setState(previousState => ({
-              messages: GiftedChat.append(previousState.messages, messages),
-            }));
-          });
-        }
-      });
-    }
+    //   // add socket listener
+    //   this.connection.on('room:joined', (data) => {
+    //     if (data.nation_id >= 0) {
+    //       this.setState({ joined: true });
+    //       this.connection.on('msg', (messageData) => {
+    //         const messages = createGiftedChatMessageObject([messageData]);
+    //         this.setState(previousState => ({
+    //           messages: GiftedChat.append(previousState.messages, messages),
+    //         }));
+    //       });
+    //     }
+    //   });
+    // }
   }
 
   componentWillUnmount() {
