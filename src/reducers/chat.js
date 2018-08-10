@@ -82,7 +82,7 @@ export default (state: State = initialState, action: Action): State => {
         if (chat.publicKey === action.publicKey) {
           return {
             ...chat,
-            messages: [action.message, ...chat.messages]
+            messages: [...chat.messages, action.message]
           }
         }
         return chat;
