@@ -13,7 +13,6 @@ import {
   MessageText,
 } from 'react-native-gifted-chat';
 import ActionSheet from 'react-native-actionsheet';
-import _ from 'lodash';
 
 import styles from './styles';
 import { showSpinner, hideSpinner, sendMessage } from '../../../actions/chat';
@@ -165,7 +164,7 @@ class ChatScreen extends Component<Props, *> {
     }
     let sortedMessages = [];
     if (session.messages && session.messages.length > 0) {
-      sortedMessages = _.orderBy(session.messages, ['createdAt'], ['desc']);
+      sortedMessages = session.messages.slice().reverse();
     }
     sortedMessages = sortedMessages.map((message) => {
       if (message.dAppMessage == null || message.dAppMessage.dapp_id == null) return message;
