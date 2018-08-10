@@ -10,6 +10,7 @@ import {
   START_LISTEN_FOR_MESSAGES,
   STOP_LISTEN_FOR_MESSAGES,
   LOAD_CHAT_MESSAGES,
+  PANTHALASSA_MESSAGE_PERSISTED,
 } from '../../actions/chat';
 import {
   saveProfileSaga,
@@ -21,6 +22,7 @@ import {
   stopListenForMessages,
   sendMessage,
   loadMessages,
+  handlePanthalassaMessagePersisted,
 } from './sagas';
 
 /**
@@ -38,5 +40,6 @@ export default function* rootSaga() {
     takeEvery(OPEN_CHAT_SESSION, openChatSession),
     takeEvery(SEND_MESSAGE, sendMessage),
     takeEvery(LOAD_CHAT_MESSAGES, loadMessages),
+    takeEvery(PANTHALASSA_MESSAGE_PERSISTED, handlePanthalassaMessagePersisted),
   ]);
 }
