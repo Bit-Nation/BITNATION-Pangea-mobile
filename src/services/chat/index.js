@@ -4,7 +4,7 @@ import { NativeModules } from 'react-native';
 import Config from 'react-native-config';
 import defaultDB from '../database';
 import { byteToHexString } from '../../utils/key';
-import createGiftedChatMessageObject from '../../utils/chat';
+import { createGiftedChatMessageObjects } from '../../utils/chat';
 import { Buffer } from 'buffer';
 import type { Account } from '../../types/Account';
 import type { ChatSessionType, GiftedChatMessageType, ProfileType } from '../../types/Chat';
@@ -161,17 +161,17 @@ export default class ChatService {
   }
 
   static async loadMessages(sender: Account, receiver: ProfileType, startStr: string, amount: Number): Array<ChatMessageType> {
-    let response = [];
+    let messages = [];
     try {
       const partner = Buffer.from(receiver.identity_pub_key, 'base64').toString('hex');
       messages = await panthalassaMessages(partner, startStr, amount);
       messages = JSON.parse(messages);
-      response = createGiftedChatMessageObject(sender, receiver, messages);
+      messages = createGiftedChatMessageObjects(sender, receiver, messages);
     } catch(e) {
       console.log(`[TEST] Error loading messages: ${e.message}`);
     }
 
-    return response;
+    return messages;
   }
 
   static async sendMessage(recipientPublicKey: string, message: string): void {
