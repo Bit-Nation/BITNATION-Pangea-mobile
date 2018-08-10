@@ -758,6 +758,11 @@ const styles = {
     textAlign: 'center',
     fontWeight: 'bold',
   },
+  actionButtonTitle: {
+    ...defaultTextStyles.headline,
+    color: Colors.white,
+    textAlign: 'center',
+  },
   disabledButtonTitle: {
     color: Colors.BitnationLightGrayColor,
   },
@@ -806,6 +811,12 @@ const styles = {
     justifyContent: 'center',
   },
 
+  actionButton: {
+    borderRadius: 0,
+    height: 44,
+    justifyContent: 'center',
+    backgroundColor: Colors.BitnationActionColor,
+  },
 
   buttonContainer: {
     marginLeft: 13,

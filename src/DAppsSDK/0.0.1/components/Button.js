@@ -27,6 +27,10 @@ type Props = {
    */
   title: string,
   /**
+   * @desc Style of button title.
+   */
+  titleStyle?: Object,
+  /**
    * @desc Set if button should be disabled.
    */
   disabled: boolean,
@@ -49,6 +53,7 @@ export default class Button extends Component<Props> {
     'type',
     'title',
     'style',
+    'titleStyle',
   ];
 
   static defaultProps = {
@@ -58,19 +63,35 @@ export default class Button extends Component<Props> {
     onPress: () => undefined,
   };
 
-  styleForType(type: string) {
+  rootStyleForType(type: string) {
     switch (type) {
       case 'transparent':
         return styles.baseButton;
-      // @todo Add more styles
-      default:
+      case 'action':
+        return styles.actionButton;
+      case 'custom':
         return null;
+      default:
+        return undefined;
+    }
+  }
+
+  titleStyleForType(type: string) {
+    switch (type) {
+      case 'transparent':
+        return styles.buttonTitle;
+      case 'action':
+        return styles.actionButtonTitle;
+      case 'custom':
+        return null;
+      default:
+        return undefined;
     }
   }
 
   render() {
-    const typeStyle = this.props.type ? this.styleForType(this.props.type) : null;
-    if (this.props.type != null && typeStyle == null) {
+    const typeStyle = this.rootStyleForType(this.props.type);
+    if (typeStyle === undefined) {
       console.warn(`Invalid value '${this.props.type}' for 'type' property of 'Button' component`);
     }
 
@@ -89,7 +110,7 @@ export default class Button extends Component<Props> {
           onPress={() => this.props.onPress()}
         >
           {
-            <Text style={[styles.buttonTitle, (this.props.disabled === false) && styles.disabledButtonTitle]}>
+            <Text style={[this.titleStyleForType(this.props.type), this.props.nativeProps.disabled ? styles.disabledButtonTitle : null, this.props.titleStyle]}>
               {this.props.title}
             </Text>
           }
