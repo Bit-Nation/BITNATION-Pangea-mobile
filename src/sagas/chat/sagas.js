@@ -334,7 +334,6 @@ export function* sendMessage(action: SendMessageAction): Generator<*, *, *> {
  * @return {void}
  */
 export function* handlePanthalassaMessagePersisted(action: PanthalassaMessagePersistedAction): Generator<*, *, *> {
-  console.log('[CHAT MIGRATION] in handlePanthalassaMessagePersisted');
   const publicKey = new Buffer(action.payload.chat, 'hex').toString('base64');
 
   const db = yield defaultDB;

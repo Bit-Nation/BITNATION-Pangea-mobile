@@ -332,7 +332,6 @@ export function chatMessagesLoaded(recipientPublicKey: string, messages: Array<a
  * @returns {PanthalassaMessagePersistedAction} An action
  */
 export function panthalassaMessagePersisted(payload: Object): PanthalassaMessagePersistedAction {
-  console.log('[CHAT MIGRATION] return PanthalassaMessagePersistedAction');
   return {
     type: PANTHALASSA_MESSAGE_PERSISTED,
     payload,
@@ -346,7 +345,6 @@ export function panthalassaMessagePersisted(payload: Object): PanthalassaMessage
  * @returns {AddChatMessageAction} An action
  */
 export function addChatMessage(publicKey: string, message: Object): AddChatMessageAction {
-  console.log('MIGUEL GOT CALLED 2');
   return {
     type: ADD_CHAT_MESSAGE,
     publicKey,
