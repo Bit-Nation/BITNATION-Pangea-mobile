@@ -17,6 +17,8 @@ export const SEND_MESSAGE = 'SEND_MESSAGE';
 export const SAVE_HUMAN_MESSAGE = 'SAVE_HUMAN_MESSAGE';
 export const LOAD_CHAT_MESSAGES = 'LOAD_CHAT_MESSAGES';
 export const CHAT_MESSAGES_LOADED = 'CHAT_MESSAGES_LOADED';
+export const PANTHALASSA_MESSAGE_PERSISTED = 'PANTHALASSA_MESSAGE_PERSISTED';
+export const ADD_CHAT_MESSAGE = 'ADD_CHAT_MESSAGE';
 
 export type ShowSpinnerAction = { +type: 'SHOW_CHAT_SPINNER' };
 export type HideSpinnerAction = { +type: 'HIDE_CHAT_SPINNER' };
@@ -87,6 +89,15 @@ export type ChatMessagesLoadedAction = {
   +recipientPublicKey: string,
   +messages: Array<any>,
 }
+export type PanthalassaMessagePersistedAction = {
+  +type: 'PANTHALASSA_MESSAGE_PERSISTED',
+  +payload: Object,
+}
+export type AddChatMessageAction = {
+  +type: 'ADD_CHAT_MESSAGE',
+  +publicKey: string,
+  +message: Object,
+}
 
 export type Action =
   | ShowSpinnerAction
@@ -104,7 +115,9 @@ export type Action =
   | SendMessageAction
   | SaveMessageAction
   | LoadChatMessagesAction
-  | ChatMessagesLoadedAction;
+  | ChatMessagesLoadedAction
+  | PanthalassaMessagePersistedAction
+  | AddChatMessageAction;
 
 /**
  * @desc Action for an action that shows spinner while processing in background
@@ -310,5 +323,33 @@ export function chatMessagesLoaded(recipientPublicKey: string, messages: Array<a
     type: CHAT_MESSAGES_LOADED,
     recipientPublicKey,
     messages,
+  };
+}
+
+/**
+ * @desc Action for handling a panthalassa persisted message event
+ * @param {Object} payload The event payload
+ * @returns {PanthalassaMessagePersistedAction} An action
+ */
+export function panthalassaMessagePersisted(payload: Object): PanthalassaMessagePersistedAction {
+  console.log('[CHAT MIGRATION] return PanthalassaMessagePersistedAction');
+  return {
+    type: PANTHALASSA_MESSAGE_PERSISTED,
+    payload,
+  };
+}
+
+/**
+ * @desc Action for adding a chat message
+ * @param {string} publicKey The chat public key
+ * @param {Object} message The chat message
+ * @returns {AddChatMessageAction} An action
+ */
+export function addChatMessage(publicKey: string, message: Object): AddChatMessageAction {
+  console.log('MIGUEL GOT CALLED 2');
+  return {
+    type: ADD_CHAT_MESSAGE,
+    publicKey,
+    message,
   };
 }
