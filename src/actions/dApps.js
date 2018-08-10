@@ -3,12 +3,15 @@
 import { type DApp } from '../types/DApp';
 import type { DAppMessageType, ChatSessionType, GiftedChatMessageType } from '../types/Chat';
 import type { DAppLaunchState } from '../reducers/dApps';
+import type { DAppModalInfo } from '../types/DApp';
 
 export type DAppsListUpdatedAction = { +type: 'DAPPS_LIST_UPDATED', availableDApps: Array<DApp> };
 export type StartDAppAction = { +type: 'START_DAPP', dAppPublicKey: string };
 export type StopDAppAction = { +type: 'STOP_DAPP', dAppPublicKey: string };
 export type DAppLaunchStateChangedAction = { +type: 'DAPP_LAUNCH_STATE_CHANGED', dAppPublicKey: string, launchState: DAppLaunchState };
 export type OpenDAppAction = { +type: 'OPEN_DAPP', dAppPublicKey: string, context: Object, callback: (success: boolean, error: ?Error) => void };
+export type StoreDAppModalAction = { +type: 'STORE_DAPP_MODAL', modal: DAppModalInfo };
+export type CleanDAppModalAction = { +type: 'CLEAN_DAPP_MODAL', modalID: string };
 export type PerformDAppCallbackAction = { +type: 'PERFORM_DAPP_CALLBACK', dAppPublicKey: string, callbackID: number, args: Object };
 export type SendDAppMessageAction = { +type: 'SEND_DAPP_MESSAGE', message: DAppMessageType, session: ChatSessionType, callback: (message: ?GiftedChatMessageType) => void };
 
@@ -18,6 +21,8 @@ export type Action =
   | StopDAppAction
   | DAppLaunchStateChangedAction
   | OpenDAppAction
+  | StoreDAppModalAction
+  | CleanDAppModalAction
   | PerformDAppCallbackAction
   | SendDAppMessageAction;
 
@@ -26,6 +31,8 @@ export const START_DAPP = 'START_DAPP';
 export const STOP_DAPP = 'STOP_DAPP';
 export const DAPP_LAUNCH_STATE_CHANGED = 'DAPP_LAUNCH_STATE_CHANGED';
 export const OPEN_DAPP = 'OPEN_DAPP';
+export const STORE_DAPP_MODAL = 'STORE_DAPP_MODAL';
+export const CLEAN_DAPP_MODAL = 'CLEAN_DAPP_MODAL';
 export const PERFORM_DAPP_CALLBACK = 'PERFORM_DAPP_CALLBACK';
 export const SEND_DAPP_MESSAGE = 'SEND_DAPP_MESSAGE';
 
@@ -93,6 +100,30 @@ export function openDApp(dAppPublicKey: string, context: Object = {}, callback: 
     dAppPublicKey,
     context,
     callback,
+  };
+}
+
+/**
+ * @desc Action creator for an action to update or create DApp modal.
+ * @param {DAppModalInfo} modal Modal to store
+ * @return {StoreDAppModalAction} An action.
+ */
+export function storeDAppModal(modal: DAppModalInfo): StoreDAppModalAction {
+  return {
+    type: STORE_DAPP_MODAL,
+    modal,
+  };
+}
+
+/**
+ * @desc Action creator for an action to clean DApp modal, i.e. remove its info from state.
+ * @param {string} modalID ID of modal to clean
+ * @return {CleanDAppModalAction} An action.
+ */
+export function cleanDAppModal(modalID: string): CleanDAppModalAction {
+  return {
+    type: CLEAN_DAPP_MODAL,
+    modalID,
   };
 }
 

@@ -49,6 +49,15 @@ export function* getDAppSaga(publicKey: string): Generator<*, *, *> {
 }
 
 /**
+ * @desc Get DApp launch state from state by public key. If not available returns undefined.
+ * @param {string} publicKey Public key of desired DApp.
+ * @return {void}
+ */
+export function* getDAppLaunchStateSaga(publicKey: string): Generator<*, *, *> {
+  return yield select(state => getDAppLaunchState(state.dApps, publicKey));
+}
+
+/**
  * @desc Starts DApp, i.e. prepares it to be opened later.
  * @param {StartDAppAction} action An action.
  * @return {void}
@@ -114,8 +123,15 @@ export function* performDAppCallback(action: PerformDAppCallbackAction): Generat
   const context = contexts[dAppPublicKey] || {};
 
   try {
+    yield put(dAppLaunchStateChanged(dAppPublicKey, 'working'));
     yield call(DAppsService.performDAppCallback, dAppPublicKey, callbackID, { context, ...args });
   } catch (error) {
     console.log(`DApp callback with ID ${callbackID} failed to execute: ${error}`);
+  } finally {
+    const launchState = yield call(getDAppLaunchStateSaga, dAppPublicKey);
+    // If DApp was not interrupted or changed its state another way then we should return it back.
+    if (launchState === 'working') {
+      yield put(dAppLaunchStateChanged(dAppPublicKey, 'opened'));
+    }
   }
 }

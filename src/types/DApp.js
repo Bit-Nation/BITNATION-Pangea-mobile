@@ -17,3 +17,10 @@ export type PanthalassaDApp = {
   },
   version: number,
 }
+
+export type DAppModalInfo = {
+  layout: Object,
+  title: string,
+  modalID: string,
+  dAppPublicKey: string,
+}
