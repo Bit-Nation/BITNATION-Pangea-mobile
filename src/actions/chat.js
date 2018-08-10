@@ -11,8 +11,6 @@ export const ADD_CREATED_CHAT_SESSION = 'ADD_CREATED_CHAT_SESSION';
 export const OPEN_CHAT_SESSION = 'OPEN_CHAT_SESSION';
 export const SELECT_PROFILE = 'SELECT_PROFILE';
 export const FETCH_ALL_CHATS = 'FETCH_ALL_CHATS';
-export const START_LISTEN_FOR_MESSAGES = 'START_LISTEN_FOR_MESSAGES';
-export const STOP_LISTEN_FOR_MESSAGES = 'STOP_LISTEN_FOR_MESSAGES';
 export const SEND_MESSAGE = 'SEND_MESSAGE';
 export const SAVE_HUMAN_MESSAGE = 'SAVE_HUMAN_MESSAGE';
 export const LOAD_CHAT_MESSAGES = 'LOAD_CHAT_MESSAGES';
@@ -60,12 +58,6 @@ export type SelectProfileAction = {
 export type FetchAllChatsAction = {
   +type: 'FETCH_ALL_CHATS',
 }
-export type StartListenForMessagesAction = {
-  +type: 'START_LISTEN_FOR_MESSAGES',
-}
-export type StopListenForMessagesAction = {
-  +type: 'STOP_LISTEN_FOR_MESSAGES',
-}
 export type SendMessageAction = {
   +type: 'SEND_MESSAGE',
   +message: string,
@@ -110,8 +102,6 @@ export type Action =
   | OpenChatAction
   | SelectProfileAction
   | FetchAllChatsAction
-  | StartListenForMessagesAction
-  | StopListenForMessagesAction
   | SendMessageAction
   | SaveMessageAction
   | LoadChatMessagesAction
@@ -247,26 +237,6 @@ export function selectProfile(profile: Object): SelectProfileAction {
 export function fetchAllChats(): FetchAllChatsAction {
   return {
     type: FETCH_ALL_CHATS,
-  };
-}
-
-/**
- * @desc Action to start listening for messages
- * @returns {StartListenForMessagesAction} An action
- */
-export function startListenForMessages(): StartListenForMessagesAction {
-  return {
-    type: START_LISTEN_FOR_MESSAGES,
-  };
-}
-
-/**
- * @desc Action to stop listening for messages
- * @returns {StopListenForMessagesAction} An action
- */
-export function stopListenForMessages(): StopListenForMessagesAction {
-  return {
-    type: STOP_LISTEN_FOR_MESSAGES,
   };
 }
 
