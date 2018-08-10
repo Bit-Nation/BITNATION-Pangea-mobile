@@ -90,21 +90,18 @@ export default class UpstreamService {
   };
 
   handleShowModal = (id: string, info: any) => {
-    const {
-      uiID, layout, dAppPublicKey: dAppPublicKeyBase64, title,
-    } = info;
+    const { uiID, layout, dAppPublicKey: dAppPublicKeyBase64 } = info;
     try {
       const dAppPublicKey = Buffer.from(dAppPublicKeyBase64, 'base64').toString('hex');
       const JSONLayout = JSON.parse(layout);
       // Add type for root component.
-      JSONLayout.type = 'view';
+      JSONLayout.type = 'modalRoot';
 
       if (typeof this.onRenderModal === 'function') {
         this.onRenderModal({
           layout: JSONLayout,
           dAppPublicKey,
           modalID: uiID,
-          title: title || '',
         });
       } else {
         throw new Error('Render modal saga is not registered');
