@@ -8,6 +8,7 @@ import {
   SELECT_PROFILE,
   ADD_CREATED_CHAT_SESSION,
   CHAT_MESSAGES_LOADED,
+  ADD_CHAT_MESSAGE,
 } from '../actions/chat';
 import { SERVICES_DESTROYED } from '../actions/serviceContainer';
 import type { ChatSessionType } from '../types/Chat';
@@ -72,6 +73,21 @@ export default (state: State = initialState, action: Action): State => {
         return chat;
       });
       
+      return {
+        ...state,
+        chats
+      }
+    case ADD_CHAT_MESSAGE:
+      chats = state.chats.map(chat => {
+        if (chat.publicKey === action.publicKey) {
+          return {
+            ...chat,
+            messages: [action.message, ...chat.messages]
+          }
+        }
+        return chat;
+      });
+
       return {
         ...state,
         chats

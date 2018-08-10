@@ -6,6 +6,10 @@ import { eventChannel, type Channel } from 'redux-saga';
 import ServiceContainer from '../../services/container';
 import UpstreamService from '../../services/upstream/upstream';
 
+import {
+  panthalassaMessagePersisted
+} from '../../actions/chat';
+
 /**
  * @desc Handles UI API request.
  * @param {Object} request Request to handle
@@ -16,14 +20,17 @@ export function* handleRequest(request: Object): Generator<*, *, *> {
   if (typeof name !== 'string' || typeof payload !== 'object') return;
 
   // @todo Remove this once request handling is implemented.
-  yield;
+  // yield;
 
   // @todo Handle requests.
   switch (name) {
     case 'DAPP:PERSISTED': break;
     case 'MESSAGE:RECEIVED': break;
     case 'MESSAGE:DELIVERED': break;
-    case 'MESSAGE:PERSISTED': break;
+    case 'MESSAGE:PERSISTED':
+      console.log('[CHAT MIGRATION] yield call panthalassaMessagePersisted');
+      yield call(panthalassaMessagePersisted, payload);
+      break;
     default: break;
   }
 }

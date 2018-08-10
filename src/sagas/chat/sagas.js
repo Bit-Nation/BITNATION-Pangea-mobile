@@ -24,12 +24,15 @@ import {
   loadChatMessages,
   LoadChatMessagesAction,
   chatMessagesLoaded,
+  PanthalassaMessagePersistedAction,
+  addChatMessage,
 } from '../../actions/chat';
 import defaultDB from '../../services/database';
 import ChatService from '../../services/chat';
 import type { ChatSessionType as DBChatSession } from '../../services/database/schemata';
 import { getCurrentAccount, getCurrentAccountId, currentAccountBasedUpdate } from '../accounts/sagas';
 import { byteToHexString } from '../../utils/key';
+import { createGiftedChatMessageObjects } from '../../utils/chat';
 import type { DAppMessageType } from '../../services/database/schema/v4';
 
 /**
@@ -323,4 +326,26 @@ async function handleHumanMessage(message: Object): Promise<boolean> {
  */
 export function* sendMessage(action: SendMessageAction): Generator<*, *, *> {
   yield call(ChatService.sendMessage, action.recipientPublicKey, action.message);
+}
+
+/**
+ * @desc Handle a panthalassa persisted message
+ * @param {PanthalassaMessagePersistedAction} action PANTHALASSA_MESSAGE_PERSISTED action
+ * @return {void}
+ */
+export function* handlePanthalassaMessagePersisted(action: PanthalassaMessagePersistedAction): Generator<*, *, *> {
+  console.log('[CHAT MIGRATION] in handlePanthalassaMessagePersisted');
+  const publicKey = new Buffer(action.payload.chat, 'hex').toString('base64');
+
+  const db = yield defaultDB;
+  let results = yield call([db, 'objects'], 'Profile');
+  results = yield call([results, 'filtered'], `identity_pub_key == '${publicKey}'`);
+  const receiver = yield results[0] || null;
+
+  const sender = yield call(getCurrentAccount);
+
+  if (receiver) {
+    const messages = createGiftedChatMessageObjects(sender, receiver, [action.payload]);
+    yield put(addChatMessage(publicKey, messages[0]));
+  }
 }
