@@ -6,15 +6,19 @@ import {
   DAPP_LAUNCH_STATE_CHANGED,
   DAPPS_LIST_UPDATED,
   OPEN_DAPP,
+  STORE_DAPP_MODAL,
+  CLEAN_DAPP_MODAL,
 } from '../actions/dApps';
 import { SERVICES_DESTROYED } from '../actions/serviceContainer';
+import { type DAppModalInfo } from '../types/DApp';
 
-export type DAppLaunchState = 'off' | 'starting' | 'started' | 'opened';
+export type DAppLaunchState = 'off' | 'starting' | 'started' | 'opened' | 'working';
 
 export type State = {
   +availableDApps: Array<DApp>,
   +contexts: { [string]: Object },
   +dAppsLaunchState: { [string]: DAppLaunchState },
+  +modals: { [string]: DAppModalInfo },
 };
 
 export const initialState: State = {
@@ -30,6 +34,10 @@ export const initialState: State = {
    * @desc Map from DApps ids to their launch states.
    */
   dAppsLaunchState: {},
+  /**
+   * @desc Map from modal ids to modal info.
+   */
+  modals: {},
 };
 
 export const getDApp = (state: State, publicKey: string) => state.availableDApps.find(dApp => dApp.publicKey === publicKey);
@@ -72,6 +80,24 @@ export default (state: State = initialState, action: Action): State => {
         },
       };
     }
+    case STORE_DAPP_MODAL:
+      return {
+        ...state,
+        modals: {
+          ...state.modals,
+          [action.modal.modalID]: action.modal,
+        },
+      };
+    case CLEAN_DAPP_MODAL: {
+      const newModals = { ...state.modals };
+      delete newModals[action.modalID];
+
+      return {
+        ...state,
+        modals: newModals,
+      };
+    }
+
     case DAPP_LAUNCH_STATE_CHANGED: {
       const { dAppPublicKey, launchState } = action;
 

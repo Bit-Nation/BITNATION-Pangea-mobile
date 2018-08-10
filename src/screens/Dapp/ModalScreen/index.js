@@ -12,24 +12,34 @@ import GlobalStyles from '../../../global/Styles';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import Loading from '../../../components/common/Loading';
-import { dAppLaunchStateChanged } from '../../../actions/dApps';
+import { dAppLaunchStateChanged, cleanDAppModal } from '../../../actions/dApps';
+import { getDAppLaunchState, type State as DAppsState } from '../../../reducers/dApps';
+import type { DAppModalInfo } from '../../../types/DApp';
+import ScreenTitle from '../../../components/common/ScreenTitle';
 
 type Props = {
   /**
-   * @desc JSON object of layout to be displayed.
+   * @desc UI id of that modal.
    */
-  layout: Object,
+  modalID: string,
   /**
-   * @desc Public key of DApp that controls the screen.
+   * @desc DApp redux state.
    */
-  dAppPublicKey: string,
+  dApps: DAppsState,
+}
+
+type Actions = {
   /**
    * @desc Function to stop DApp.
    */
   closeDApp: (dAppPublicKey: string) => void,
+  /**
+   * @desc Function to remove modal from state.
+   */
+  cleanDAppModal: (modalID: string) => void,
 }
 
-class DAppModalScreen extends NavigatorComponent<Props, *> {
+class DAppModalScreen extends NavigatorComponent<Props & Actions, *> {
   static navigatorButtons = {
     leftButtons: [{
       id: 'cancel',
@@ -39,35 +49,53 @@ class DAppModalScreen extends NavigatorComponent<Props, *> {
     rightButtons: [],
   };
 
-  state = { isLoading: false };
+  componentWillUnmount() {
+    this.props.cleanDAppModal(this.props.modalID);
+  }
 
   onNavBarButtonPress(id: string) {
     if (id === 'cancel') {
-      this.props.closeDApp(this.props.dAppPublicKey);
+      this.props.closeDApp(this.modalInfo.dAppPublicKey);
       this.props.navigator.dismissModal();
     }
   }
 
+  get modalInfo(): DAppModalInfo {
+    return this.props.dApps.modals[this.props.modalID];
+  }
+
   render() {
+    const info = this.modalInfo;
+    const isLoading = getDAppLaunchState(this.props.dApps, info.dAppPublicKey) === 'working';
+
     return (
       <View style={GlobalStyles.screenContainer}>
         <BackgroundImage />
-        <FakeNavigationBar />
+        {
+          info.title.length > 0
+          ? <ScreenTitle title={info.title} />
+          : <FakeNavigationBar />
+        }
         <Root
-          layout={this.props.layout}
-          dAppPublicKey={this.props.dAppPublicKey}
+          layout={this.modalInfo.layout}
+          dAppPublicKey={this.modalInfo.dAppPublicKey}
         />
-        {this.state.isLoading && <Loading />}
+        {isLoading && <Loading />}
       </View>
     );
   }
 }
 
-const mapStateToProps = () => ({});
+const mapStateToProps = state => ({
+  dApps: state.dApps,
+});
 
 const mapDispatchToProps = dispatch => ({
   closeDApp(dAppId) {
     dispatch(dAppLaunchStateChanged(dAppId, 'started'));
+  },
+  cleanDAppModal(modalID) {
+    dispatch(cleanDAppModal(modalID));
   },
 });
 
