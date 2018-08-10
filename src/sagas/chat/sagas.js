@@ -16,8 +16,6 @@ import {
   OpenChatAction,
   SendMessageAction,
   FetchAllChatsAction,
-  StartListenForMessagesAction,
-  StopListenForMessagesAction,
   chatsUpdated,
   selectProfile,
   addCreatedChatSession,
@@ -205,24 +203,6 @@ export function* fetchAllChats(): Generator<*, *, *> {
   }
 
   yield put(chatsUpdated(chats));
-}
-
-/**
- * @desc Start listening for incoming messages
- * @param {StartListenForMessagesAction} action START_LISTEN_FOR_MESSAGES action
- * @return {void}
- */
-export function* startListenForMessages(): Generator<*, *, *> {
-  // TOOD: Create panthalassa listener and set in state
-}
-
-/**
- * @desc Stop listening for incoming messages
- * @param {StopListenForMessagesAction} action STOP_LISTEN_FOR_MESSAGES action
- * @return {void}
- */
-export function* stopListenForMessages(): Generator<*, *, *> {
-  // TOOD: Stop panthalassa listener and remove from state
 }
 
 /**

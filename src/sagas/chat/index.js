@@ -7,8 +7,6 @@ import {
   OPEN_CHAT_SESSION,
   SEND_MESSAGE,
   FETCH_ALL_CHATS,
-  START_LISTEN_FOR_MESSAGES,
-  STOP_LISTEN_FOR_MESSAGES,
   LOAD_CHAT_MESSAGES,
   PANTHALASSA_MESSAGE_PERSISTED,
 } from '../../actions/chat';
@@ -18,8 +16,6 @@ import {
   createChatSession,
   openChatSession,
   fetchAllChats,
-  startListenForMessages,
-  stopListenForMessages,
   sendMessage,
   loadMessages,
   handlePanthalassaMessagePersisted,
@@ -32,8 +28,6 @@ import {
 export default function* rootSaga() {
   yield all([
     takeEvery(FETCH_ALL_CHATS, fetchAllChats),
-    takeEvery(START_LISTEN_FOR_MESSAGES, startListenForMessages),
-    takeEvery(STOP_LISTEN_FOR_MESSAGES, stopListenForMessages),
     takeEvery(SAVE_PROFILE, saveProfileSaga),
     takeEvery(SAVE_PRE_KEY_BUNDLE, savePreKeyBundle),
     takeEvery(NEW_CHAT_SESSION, createChatSession),
