@@ -1,6 +1,6 @@
 // @flow
 
-import { call, take, fork } from 'redux-saga/effects';
+import { call, take, fork, put } from 'redux-saga/effects';
 import { eventChannel, type Channel } from 'redux-saga';
 
 import ServiceContainer from '../../services/container';
@@ -28,8 +28,7 @@ export function* handleRequest(request: Object): Generator<*, *, *> {
     case 'MESSAGE:RECEIVED': break;
     case 'MESSAGE:DELIVERED': break;
     case 'MESSAGE:PERSISTED':
-      console.log('[CHAT MIGRATION] yield call panthalassaMessagePersisted');
-      yield call(panthalassaMessagePersisted, payload);
+      yield put(panthalassaMessagePersisted(payload));
       break;
     default: break;
   }
