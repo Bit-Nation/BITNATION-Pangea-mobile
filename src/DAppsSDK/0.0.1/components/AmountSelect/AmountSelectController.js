@@ -14,18 +14,19 @@ export type Props = {
    */
   style?: Object,
   /**
-   * @desc
+   * @desc Callback on selected amount change.
    */
-  onAmountSelected: ({ amount: string, currency: CurrencyType, walletAddress: string, isValid: boolean }) => void,
-  /**
-   * @desc Flag whether amount is invalid if it greater than balance.
-   */
-  shouldCheckLess: boolean,
+  onAmountSelected: ({ amount: string, currency: CurrencyType, walletAddress: string, isValid: boolean, isLessThanBalance: boolean }) => void,
+  nativeProps: {
+    /**
+     * @desc Style object to pass to container.
+     */
+    style: Object,
+  },
 }
 
 class AmountSelectController extends Component<Props & InternalProps, *> {
   static validNativeProps = [
-    'shouldCheckLess',
     'style',
   ];
 
@@ -45,21 +46,21 @@ class AmountSelectController extends Component<Props & InternalProps, *> {
   render() {
     return (
       <AmountSelect
-        style={this.props.style}
+        {...this.props.nativeProps}
         amount={this.state.amount}
         currency={this.state.currency}
         onAmountSelected={(amount, currency) => {
           this.setState({ amount, currency });
         }}
-        onFinalChange={(amount, currency, address, isValid) => {
+        onFinalChange={(amount, currency, address, isValid, isLessThanBalance) => {
           this.props.onAmountSelected({
             amount,
             currency,
             walletAddress: address,
             isValid,
+            isLessThanBalance,
           });
         }}
-        shouldCheckLess={this.props.shouldCheckLess || false}
         wallets={this.props.wallets}
       />
     );
