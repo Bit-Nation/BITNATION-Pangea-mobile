@@ -13,6 +13,7 @@ import i18n from '../../../global/i18n';
 
 type Props = {
   onCancel: () => void,
+  onShareKey: () => void,
   /**
    * @desc Modal visibility
    */
@@ -21,7 +22,9 @@ type Props = {
 
 
 const MoreMenuModal = ({
-  onCancel, visible,
+  onCancel,
+  onShareKey,
+  visible,
 }: Props) => (
   <Modal
     animationType='fade'
@@ -34,7 +37,7 @@ const MoreMenuModal = ({
         <TouchableOpacity
           style={styles.modalMenuItem}
           activeOpacity={0.8}
-          onPress={this.sharePublicKey}
+          onPress={onShareKey}
         >
           <Text style={styles.modalMenuText}>{i18n.t('screens.chat.menu.shareIdentityKey')}</Text>
           <IconIonic
