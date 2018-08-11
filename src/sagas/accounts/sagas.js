@@ -23,9 +23,7 @@ import type {
   SavePasswordAction,
   SavePinCodeAction,
 } from '../../actions/accounts';
-import {
-  fetchAllChats,
-} from '../../actions/chat';
+import { fetchAllChats } from '../../actions/chat';
 import {
   convertFromDatabase, convertToDatabase, retrieveProfileFromAccount,
   retrieveProfileFromPartialAccount,
