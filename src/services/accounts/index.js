@@ -1,6 +1,5 @@
 // @flow
 
-import { NativeModules } from 'react-native';
 import type { Mnemonic } from '../../types/Mnemonic';
 import { compressMnemonic, decompressMnemonic } from '../../utils/key';
 import type { Profile } from '../../types/Account';
@@ -16,7 +15,7 @@ import {
   panthalassaIsValidMnemonic,
   panthalassaEthPrivateKey,
   panthalassaSignProfileStandAlone,
-  panthalassaSignProfile
+  panthalassaSignProfile,
 } from '../panthalassa';
 
 export default class AccountsService {
@@ -92,7 +91,7 @@ export default class AccountsService {
       profile.location || '',
       profile.avatar || '',
       accountStore,
-      password
+      password,
     );
   }
 
