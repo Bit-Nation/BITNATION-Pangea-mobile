@@ -274,7 +274,7 @@ export async function panthalassaIdentityPublicKey():Promise<string> {
  * @param {Number} amount TODO
  * @returns {Promise<*>} {string} TODO
  */
-export async function panthalassaMessages(partner: String, startStr: String, amount: Number):Promise<string> {
+export async function panthalassaMessages(partner: string, startStr: string, amount: number):Promise<string> {
   return Panthalassa.PanthalassaMessages({
     partner,
     startStr,

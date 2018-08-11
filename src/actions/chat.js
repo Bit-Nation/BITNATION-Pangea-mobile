@@ -1,10 +1,9 @@
-import type { ProfileType, PreKeyBundleType, ChatSessionType } from '../types/Chat';
+import type { ProfileType, ChatSessionType } from '../types/Chat';
 
 export const SHOW_CHAT_SPINNER = 'SHOW_CHAT_SPINNER';
 export const HIDE_CHAT_SPINNER = 'HIDE_CHAT_SPINNER';
 export const FIND_USER_BY_KEY = 'FIND_USER_BY_KEY';
 export const SAVE_PROFILE = 'SAVE_PROFILE';
-export const SAVE_PRE_KEY_BUNDLE = 'SAVE_PRE_KEY_BUNDLE';
 export const NEW_CHAT_SESSION = 'NEW_CHAT_SESSION';
 export const CHATS_UPDATED = 'CHATS_UPDATED';
 export const ADD_CREATED_CHAT_SESSION = 'ADD_CREATED_CHAT_SESSION';
@@ -12,7 +11,6 @@ export const OPEN_CHAT_SESSION = 'OPEN_CHAT_SESSION';
 export const SELECT_PROFILE = 'SELECT_PROFILE';
 export const FETCH_ALL_CHATS = 'FETCH_ALL_CHATS';
 export const SEND_MESSAGE = 'SEND_MESSAGE';
-export const SAVE_HUMAN_MESSAGE = 'SAVE_HUMAN_MESSAGE';
 export const LOAD_CHAT_MESSAGES = 'LOAD_CHAT_MESSAGES';
 export const CHAT_MESSAGES_LOADED = 'CHAT_MESSAGES_LOADED';
 export const PANTHALASSA_MESSAGE_PERSISTED = 'PANTHALASSA_MESSAGE_PERSISTED';
@@ -27,10 +25,6 @@ export type FindUserByPubKeyAction = {
 export type SaveProfileAction = {
   +type: 'SAVE_PROFILE',
   +profile: ProfileType
-};
-export type SavePreKeyBundleAction = {
-  +type: 'SAVE_PRE_KEY_BUNDLE',
-  +profile: PreKeyBundleType
 };
 export type NewChatSessionAction = {
   +type: 'NEW_CHAT_SESSION',
@@ -64,10 +58,6 @@ export type SendMessageAction = {
   +session: Object,
   +callback: () => void,
 };
-export type SaveHumanMessageAction = {
-  +type: 'SAVE_HUMAN_MESSAGE',
-  +message: string,
-};
 export type SaveMessageAction = {
   +type: 'SAVE_HUMAN_MESSAGE',
   +message: string,
@@ -96,7 +86,6 @@ export type Action =
   | HideSpinnerAction
   | FindUserByPubKeyAction
   | SaveProfileAction
-  | SavePreKeyBundleAction
   | NewChatSessionAction
   | UpdateChatsAction
   | OpenChatAction
@@ -154,18 +143,6 @@ export function saveProfile(profile: Object): SaveProfileAction {
 }
 
 /**
- * @desc Action for saving a pre key bundle into database
- * @param {Object} preKeyBundle Pre key bundle object
- * @returns {SavePreKeyBundleAction} An action.
- */
-export function savePreKeyBundle(preKeyBundle: Object): SavePreKeyBundleAction {
-  return {
-    type: SAVE_PRE_KEY_BUNDLE,
-    preKeyBundle,
-  };
-}
-
-/**
  * @desc Action for creating a new chat session
  * @param {Object} profile Profile of the user
  * @param {func} callback Callback
@@ -181,8 +158,7 @@ export function newChatSession(profile: Object, callback: () => void): NewChatSe
 
 /**
  * @desc Action for adding a newly created chat session
- * @param {Object} profile Profile of the user
- * @param {func} callback Callback
+ * @param {ChatSessionType} chat Created chat.
  * @returns {AddCreatedChatSessionAction} An action.
  */
 export function addCreatedChatSession(chat: ChatSessionType): AddCreatedChatSessionAction {
@@ -257,20 +233,6 @@ export function sendMessage(recipientPublicKey: string, message: string, callbac
 }
 
 /**
- * @desc Action for saving human message
- * @param {string} message Message to send
- * @param {Object} session Session object
- * @returns {SaveHumanMessageAction} An action
- */
-export function saveHumanMessage(message: Object, session: Object): SaveHumanMessageAction {
-  return {
-    type: SAVE_HUMAN_MESSAGE,
-    message,
-    session,
-  };
-}
-
-/**
  * @desc Action for loading chat messages
  * @param {string} recipientPublicKey Public Key of the chat recipient
  * @returns {LoadChatMessagesAction} An action
@@ -284,7 +246,7 @@ export function loadChatMessages(recipientPublicKey: string): LoadChatMessagesAc
 
 /**
  * @desc Action for loaded messages
- * @param {string} recipientPublicKey The public key of the recipient 
+ * @param {string} recipientPublicKey The public key of the recipient
  * @param {Array<any>} messages Loaded messages
  * @returns {ChatMessagesLoadedAction} An action
  */

@@ -155,14 +155,14 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
   startChat = async () => {
     // TODO: First check if there is an existing chat session for this.state.profile
     // and if so use that session instead of creating a new one.
-    
+
     this.props.createNewSession(this.state.profile, (result) => {
       if (result.status === 'success') {
         this.props.navigator.push({
           ...screen('PRIVATE_CHAT_SCREEN'),
           passProps: {
             userPublicKey: result.userPublicKey,
-            recipientPublicKey: this.state.profile.identityPubKey
+            recipientPublicKey: this.state.profile.identityPubKey,
           },
         });
       } else {

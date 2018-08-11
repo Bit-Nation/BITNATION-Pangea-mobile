@@ -55,43 +55,43 @@ export default (state: State = initialState, action: Action): State => {
     case ADD_CREATED_CHAT_SESSION:
       return {
         ...state,
-        chats: [...state.chats, action.chat]
-      }
+        chats: [...state.chats, action.chat],
+      };
     case SELECT_PROFILE:
       return {
         ...state,
         chatProfile: action.profile,
       };
     case CHAT_MESSAGES_LOADED:
-      chats = state.chats.map(chat => {
+      chats = state.chats.map((chat) => {
         if (chat.publicKey === action.recipientPublicKey) {
           return {
             ...chat,
-            messages: action.messages
-          }
-        }
-        return chat;
-      });
-      
-      return {
-        ...state,
-        chats
-      }
-    case ADD_CHAT_MESSAGE:
-      chats = state.chats.map(chat => {
-        if (chat.publicKey === action.publicKey) {
-          return {
-            ...chat,
-            messages: [...chat.messages, action.message]
-          }
+            messages: action.messages,
+          };
         }
         return chat;
       });
 
       return {
         ...state,
-        chats
-      }
+        chats,
+      };
+    case ADD_CHAT_MESSAGE:
+      chats = state.chats.map((chat) => {
+        if (chat.publicKey === action.publicKey) {
+          return {
+            ...chat,
+            messages: [...chat.messages, action.message],
+          };
+        }
+        return chat;
+      });
+
+      return {
+        ...state,
+        chats,
+      };
     default:
       return state;
   }
