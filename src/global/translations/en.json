@@ -414,7 +414,7 @@
     "profile": {
       "title": "Profile",
       "tabTitle": "$t(tabbar.profile)",
-      "copyKey": "Copy Identity Key",
+      "shareKey": "Share Identity Key",
       "empty": {
         "createProfilePanel": {
           "title": "Become a World Citizen",
