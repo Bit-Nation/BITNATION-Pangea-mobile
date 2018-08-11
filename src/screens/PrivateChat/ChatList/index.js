@@ -6,6 +6,7 @@ import {
   View,
   SectionList,
   Clipboard,
+  Share,
 } from 'react-native';
 import _ from 'lodash';
 import { Fab, Text } from 'native-base';
@@ -29,6 +30,7 @@ import NewChatModal from './NewChatModal';
 import InvalidKeyModal from './InvalidKeyModal';
 import InviteSentModal from './InviteSentModal';
 import MoreMenuModal from './MoreMenuModal';
+import { panthalassaIdentityPublicKey } from '../../../services/panthalassa';
 
 const MORE_BUTTON = 'MORE_BUTTON';
 const MORE_MODAL_KEY = 'moreMenu';
@@ -195,6 +197,14 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
     });
   };
 
+  sharePublicKey = async () => {
+    const pubKey = await panthalassaIdentityPublicKey();
+    console.log('STATE --> ', pubKey);
+    Share.share({
+      message: pubKey || '',
+    });
+  };
+
   showActionSheet = () => {
     this.actionSheet.show();
   };
@@ -254,6 +264,7 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
         <MoreMenuModal
           visible={this.state.showModal === MORE_MODAL_KEY}
           onCancel={this.dismissModal}
+          onShareKey={this.sharePublicKey}
         />
         <NewChatModal
           profile={this.state.profile}
