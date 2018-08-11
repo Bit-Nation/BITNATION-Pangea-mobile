@@ -199,7 +199,6 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
 
   sharePublicKey = async () => {
     const pubKey = await panthalassaIdentityPublicKey();
-    console.log('STATE --> ', pubKey);
     Share.share({
       message: pubKey || '',
     });
