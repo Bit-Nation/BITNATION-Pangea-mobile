@@ -201,6 +201,8 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
     const pubKey = await panthalassaIdentityPublicKey();
     Share.share({
       message: pubKey || '',
+    }).then(() => {
+      this.dismissModal();
     });
   };
 
