@@ -22,15 +22,15 @@ import Loading from '../../../components/common/Loading';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import { getCurrentAccount } from '../../../reducers/accounts';
 import { getSelectedSession } from '../../../utils/chat';
-import type { ChatSessionType, ProfileType, DAppMessageType } from '../../../types/Chat';
+import type { ChatSessionType, ProfileType } from '../../../types/Chat';
 import { errorAlert } from '../../../global/alerts';
-import i18n from '../../../global/i18n';
-import type { DAppType } from '../../../dapps';
-import { openDApp } from '../../../actions/nativeDApps';
 import type { Account } from '../../../types/Account';
-import { getDApp } from '../../../reducers/nativeDApps';
-import type { State as DAppsState } from '../../../reducers/nativeDApps';
 import type { WalletType } from '../../../types/Wallet';
+import type { DApp } from '../../../types/DApp';
+import type { State as DAppsState } from '../../../reducers/dApps';
+import { getDApp } from '../../../reducers/dApps';
+import { openDApp } from '../../../actions/dApps';
+import i18n from '../../../global/i18n';
 
 type Props = {
   /**
@@ -74,7 +74,7 @@ type Props = {
   /**
    * @desc Array of available DApps.
    */
-  availableDApps: Array<DAppType>,
+  availableDApps: Array<DApp>,
   /**
    * @desc The whole DApps reducer state.
    */
@@ -121,9 +121,9 @@ class ChatScreen extends Component<Props, *> {
   }
 
   onSelectDAppToOpen = (index) => {
-    const session = getSelectedSession(this.props.sessions, this.props.secret);
-    if (index < this.props.availableDApps.length && session) {
-      this.props.openDApp(this.props.availableDApps[index].identityPublicKey, this.props.secret, this.props.friend);
+    // const session = getSelectedSession(this.props.sessions, this.props.secret);
+    if (index < this.props.availableDApps.length) {
+      this.props.openDApp(this.props.availableDApps[index].publicKey, this.props.secret, this.props.friend);
     }
   };
 
@@ -139,6 +139,7 @@ class ChatScreen extends Component<Props, *> {
         break;
     }
   };
+
   dAppsActionSheet: any;
   messageActionSheet: any;
 
@@ -152,10 +153,11 @@ class ChatScreen extends Component<Props, *> {
       i18n.t('screens.chat.cancel'),
     ];
 
-    const session = getSelectedSession(this.props.sessions, this.props.secret);
+    let session = getSelectedSession(this.props.sessions, this.props.secret);
     if (session == null) {
-      this.showSessionClosedAlert();
-      return <View />;
+      // this.showSessionClosedAlert();
+      // return <View />;
+      session = {};
     }
     let sortedMessages = [];
     if (session.decryptedMessages && session.decryptedMessages.length > 0) {
@@ -163,7 +165,7 @@ class ChatScreen extends Component<Props, *> {
     }
     sortedMessages = sortedMessages.map((message) => {
       if (message.dAppMessage == null || message.dAppMessage.dapp_id == null) return message;
-      const dAppMessage: DAppMessageType = (message: any).dAppMessage;
+      const dAppMessage = (message: any).dAppMessage;
 
       const dApp = getDApp(this.props.dAppsState, dAppMessage.dapp_id);
       if (dApp == null) return message;
@@ -171,7 +173,7 @@ class ChatScreen extends Component<Props, *> {
       return {
         ...message,
         user: {
-          _id: dApp.identityPublicKey,
+          _id: dApp.publicKey,
           name: dApp.name,
         },
       };
@@ -204,22 +206,6 @@ class ChatScreen extends Component<Props, *> {
             }
 
             return null;
-          }}
-          renderCustomView={(props) => {
-            const { currentMessage } = props;
-            const { dAppMessage } = currentMessage;
-            if (dAppMessage == null) return null;
-
-            const dApp = getDApp(this.props.dAppsState, dAppMessage.dapp_id);
-            if (dApp == null) return null;
-            const MessageComponent = dApp.message;
-
-            return (<MessageComponent
-              dApp={dApp}
-              dAppMessage={dAppMessage}
-              currentAccount={this.props.user}
-              walletAddress={this.props.wallets[0].ethAddress}
-            />);
           }}
           renderBubble={props => (
             <Bubble
@@ -267,10 +253,10 @@ const mapStateToProps = state => ({
   user: getCurrentAccount(state.accounts),
   isFetching: state.chat.isFetching,
   sessions: state.chat.chats,
-  availableDApps: state.dApps.availableDApps,
-  dAppsState: state.dApps,
   friend: state.chat.chatProfile,
   wallets: state.wallet.wallets,
+  availableDApps: state.dApps.availableDApps,
+  dAppsState: state.dApps,
 });
 
 const mapDispatchToProps = dispatch => ({

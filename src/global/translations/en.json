@@ -496,8 +496,14 @@
       }
     },
     "dAppQRCodeScanner": {
-      "title": "Connect to DApp host",
-      "instruction": "Scan QR code to connect to PC"
+      "devHost": {
+        "title": "Connect to DApp host",
+        "instruction": "Scan QR code to connect to PC"
+      },
+      "logger": {
+        "title": "Connect to debug logger",
+        "instruction": "Scan QR code to connect to PC"
+      }
     },
     "settings": {
       "title": "Settings",
@@ -507,7 +513,8 @@
       "viewPrivateKey": "Private Key",
       "confirmPrivateKey": "Private Key (confirmation required)",
       "switchAccounts": "Switch accounts",
-      "connectToDAppHost": "Connect to DApp host"
+      "connectToDAppHost": "Connect to DApp host",
+      "connectToDAppLogger": "Connect debug logger"
     },
     "securitySettings": {
       "title": "Security settings",

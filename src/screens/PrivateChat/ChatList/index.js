@@ -103,6 +103,17 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
     };
   }
 
+  // @todo For testing purposes. Needs to be removed.
+  onWillAppear() {
+    this.props.navigator.push({
+      ...screen('PRIVATE_CHAT_SCREEN'),
+      passProps: {
+        secret: 'secret',
+        userPublicKey: 'pbKEY',
+      },
+    });
+  }
+
   onNavBarButtonPress(id) {
     if (id === MORE_BUTTON) {
       this.setState({

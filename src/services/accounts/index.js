@@ -34,6 +34,7 @@ export default class AccountsService {
       encrypted_key_manager: accountStore,
       signed_profile: signedProfile,
       enable_debugging: false,
+      eth_ws_endpoint: 'wss://mainnet.infura.io/_ws',
     });
 
     const success = await Panthalassa.PanthalassaStart({ config, password });
