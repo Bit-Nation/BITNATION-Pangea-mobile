@@ -161,7 +161,7 @@ export default class UpstreamService {
     try {
       return Panthalassa.PanthalassaSendResponse({
         id,
-        data: Buffer.from(Response.encode({}).finish()).toString('utf8'),
+        data: '',
         responseError: error.message,
         timeout: RESPONSE_TIMEOUT,
       });
@@ -175,7 +175,7 @@ export default class UpstreamService {
     try {
       return Panthalassa.PanthalassaSendResponse({
         id,
-        data: Buffer.from(Response.encode(data).finish()).toString('utf8'),
+        data: Buffer.from(Response.encode(data).finish()).toString('base64'),
         responseError: '',
         timeout: RESPONSE_TIMEOUT,
       });
