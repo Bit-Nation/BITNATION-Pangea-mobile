@@ -1,6 +1,7 @@
 // @flow
 
 import { NativeModules } from 'react-native';
+import Config from 'react-native-config';
 import type { Mnemonic } from '../../types/Mnemonic';
 import { compressMnemonic, decompressMnemonic } from '../../utils/key';
 import type { Profile } from '../../types/Account';
@@ -35,6 +36,8 @@ export default class AccountsService {
       signed_profile: signedProfile,
       enable_debugging: false,
       eth_ws_endpoint: 'wss://mainnet.infura.io/_ws',
+      private_chat_endpoint: Config.CHAT_WSS_ENDPOINT,
+      private_chat_bearer_token: Config.CHAT_TOKEN,
     });
 
     const success = await Panthalassa.PanthalassaStart({ config, password });
