@@ -2,6 +2,7 @@
 
 exports[`ConfirmKeyProcessScreen renders correctly 1`] = `
 ShallowWrapper {
+  "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <ConfirmKeyProcessScreen
     navigator={
@@ -1190,8 +1191,6 @@ ShallowWrapper {
         },
       },
     },
-    "attachTo": undefined,
-    "hydrateIn": undefined,
   },
 }
 `;

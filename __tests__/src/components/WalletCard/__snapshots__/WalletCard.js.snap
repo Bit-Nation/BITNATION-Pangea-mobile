@@ -2,6 +2,7 @@
 
 exports[`WalletCard component tests Press on Send/Receive Buttons 1`] = `
 ShallowWrapper {
+  "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <WalletCard
     balance="Testing balance"
@@ -1211,8 +1212,6 @@ ShallowWrapper {
         },
       },
     },
-    "attachTo": undefined,
-    "hydrateIn": undefined,
   },
 }
 `;
