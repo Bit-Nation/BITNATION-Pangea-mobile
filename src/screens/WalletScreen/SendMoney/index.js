@@ -133,22 +133,22 @@ class SendMoney extends NavigatorComponent<Props, State> {
         <View style={styles.bodyContainer}>
           <ScreenTitle title={i18n.t('screens.sendMoney.title')} />
 
-          <PanelView
-            style={styles.panelView}
-            childrenContainerStyle={styles.noflex}
-          >
-            <View style={styles.row}>
-              <Image style={styles.icon} source={wallet.currency === 'ETH' ? Images.ethereumLogo : Images.patLogo} resizeMode='contain' />
-              <View style={styles.textColumn}>
-                <Text style={styles.bodyBold}>{wallet.currency === 'ETH' ? i18n.t('common.ethereum') : i18n.t('common.bitnationPat')}</Text>
-                <Text style={styles.currencyMedium}>
-                  {prettyWalletBalance(wallet, wallet.currency)}
-                </Text>
-              </View>
-            </View>
-          </PanelView>
-
           <ScrollView style={styles.scrollView} contentContainerStyle={styles.noflex}>
+            <PanelView
+              style={styles.panelView}
+              childrenContainerStyle={styles.noflex}
+            >
+              <View style={styles.row}>
+                <Image style={styles.icon} source={wallet.currency === 'ETH' ? Images.ethereumLogo : Images.patLogo} resizeMode='contain' />
+                <View style={styles.textColumn}>
+                  <Text style={styles.bodyBold}>{wallet.currency === 'ETH' ? i18n.t('common.ethereum') : i18n.t('common.bitnationPat')}</Text>
+                  <Text style={styles.currencyMedium}>
+                    {prettyWalletBalance(wallet, wallet.currency)}
+                  </Text>
+                </View>
+              </View>
+            </PanelView>
+
             <PanelView
               style={[styles.panelViewTransparent, styles.pannelViewRow]}
               childrenContainerStyle={styles.noflex}
