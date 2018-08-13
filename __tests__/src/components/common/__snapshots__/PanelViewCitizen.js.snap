@@ -2,6 +2,7 @@
 
 exports[`PanelViewCitizen tests Rendering Testing correct rendering 1`] = `
 ShallowWrapper {
+  "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <PanelViewCitizen
     nationName=""
@@ -226,8 +227,6 @@ ShallowWrapper {
         },
       },
     },
-    "attachTo": undefined,
-    "hydrateIn": undefined,
   },
 }
 `;

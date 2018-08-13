@@ -2,6 +2,7 @@
 
 exports[`PanelViewAlert tests Rendering With title and button 1`] = `
 ShallowWrapper {
+  "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <PanelViewAlert
     status="Test panel status"
@@ -233,8 +234,6 @@ ShallowWrapper {
         },
       },
     },
-    "attachTo": undefined,
-    "hydrateIn": undefined,
   },
 }
 `;

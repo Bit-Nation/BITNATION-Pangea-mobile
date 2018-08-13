@@ -2,6 +2,7 @@
 
 exports[`AccountAccessListScreen renders correctly 1`] = `
 ShallowWrapper {
+  "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <AccountAccessListScreen
     navigator={
@@ -738,8 +739,6 @@ ShallowWrapper {
         },
       },
     },
-    "attachTo": undefined,
-    "hydrateIn": undefined,
   },
 }
 `;

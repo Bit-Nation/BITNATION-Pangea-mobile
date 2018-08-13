@@ -2,6 +2,7 @@
 
 exports[`NationsScreen renders correctly 1`] = `
 ShallowWrapper {
+  "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Connect(NationsScreen)
     navigator={
@@ -150,8 +151,6 @@ ShallowWrapper {
         },
       },
     },
-    "attachTo": undefined,
-    "hydrateIn": undefined,
   },
 }
 `;
