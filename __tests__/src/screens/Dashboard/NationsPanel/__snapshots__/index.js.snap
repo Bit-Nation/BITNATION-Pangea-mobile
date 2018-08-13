@@ -2,6 +2,7 @@
 
 exports[`NationsPanel renders correctly 1`] = `
 ShallowWrapper {
+  "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <NationsPanel
     loadingInProgress={false}
@@ -1117,8 +1118,6 @@ ShallowWrapper {
         },
       },
     },
-    "attachTo": undefined,
-    "hydrateIn": undefined,
   },
 }
 `;
