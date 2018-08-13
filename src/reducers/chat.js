@@ -80,6 +80,11 @@ export default (state: State = initialState, action: Action): State => {
     case ADD_CHAT_MESSAGE:
       chats = state.chats.map((chat) => {
         if (chat.publicKey === action.publicKey) {
+          const index = chat.messages.findIndex(message => action.message._id === message._id);
+          if (index !== -1) {
+            return chat;
+          }
+
           return {
             ...chat,
             messages: [...chat.messages, action.message],

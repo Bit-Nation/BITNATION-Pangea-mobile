@@ -4,6 +4,7 @@
 import React, { Component } from 'react';
 import { View, Platform, Clipboard } from 'react-native';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 import {
   GiftedChat,
   Composer,
@@ -164,7 +165,7 @@ class ChatScreen extends Component<Props, *> {
     }
     let sortedMessages = [];
     if (session.messages && session.messages.length > 0) {
-      sortedMessages = session.messages.slice().reverse();
+      sortedMessages = _.sortBy(session.messages, message => message.createdAt).reverse();
     }
     sortedMessages = sortedMessages.map((message) => {
       if (message.dAppMessage == null || message.dAppMessage.dapp_id == null) return message;
