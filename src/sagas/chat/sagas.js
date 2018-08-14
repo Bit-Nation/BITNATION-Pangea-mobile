@@ -102,7 +102,7 @@ export function* saveProfileSaga(action: SaveProfileAction): Generator<*, *, *> 
 
 /**
  * @desc Create a chat session
- * @param {NewChatSessionAction} action SAVE_PROFILE action
+ * @param {NewChatSessionAction} action NEW_CHAT_SESSION action
  * @return {void}
  */
 export function* createChatSession(action: NewChatSessionAction): Generator<*, *, *> {
@@ -115,12 +115,13 @@ export function* createChatSession(action: NewChatSessionAction): Generator<*, *
   };
   yield put(addCreatedChatSession(chatSession));
 
+  yield put(selectProfile(action.profile));
+
   const userPublicKey = yield call(ChatService.getPublicKey);
   yield call(action.callback, {
     status: 'success',
     userPublicKey,
   });
-  yield put(selectProfile(action.profile));
 }
 
 /**
