@@ -43,7 +43,7 @@ export default class AccountsService {
     const config = JSON.stringify({
       encrypted_key_manager: accountStore,
       signed_profile: signedProfile,
-      enable_debugging: false,
+      enable_debugging: true,
       private_chat_endpoint: Config.CHAT_WSS_ENDPOINT,
       private_chat_bearer_token: Config.CHAT_TOKEN,
     });
