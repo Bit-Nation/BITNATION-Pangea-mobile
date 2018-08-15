@@ -2,7 +2,6 @@
 
 exports[`ProfileScreenContainer Rendering 1`] = `
 ShallowWrapper {
-  "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <ProfileScreen
     account={
@@ -139,7 +138,13 @@ ShallowWrapper {
             accessible={true}
             allowFontScaling={true}
             ellipsizeMode="tail"
-            style={undefined}
+            style={
+              Object {
+                "color": undefined,
+                "fontSize": 13,
+                "textAlign": "center",
+              }
+            }
           />
           <Button
             enabled={true}
@@ -149,7 +154,7 @@ ShallowWrapper {
                 "marginTop": 13,
               }
             }
-            title="Copy Identity Key"
+            title="Share Identity Key"
           />
         </View>,
       ],
@@ -311,7 +316,13 @@ ShallowWrapper {
               accessible={true}
               allowFontScaling={true}
               ellipsizeMode="tail"
-              style={undefined}
+              style={
+                Object {
+                  "color": undefined,
+                  "fontSize": 13,
+                  "textAlign": "center",
+                }
+              }
             />,
             <Button
               enabled={true}
@@ -321,7 +332,7 @@ ShallowWrapper {
                   "marginTop": 13,
                 }
               }
-              title="Copy Identity Key"
+              title="Share Identity Key"
             />,
           ],
           "style": Object {
@@ -341,7 +352,11 @@ ShallowWrapper {
               "allowFontScaling": true,
               "children": undefined,
               "ellipsizeMode": "tail",
-              "style": undefined,
+              "style": Object {
+                "color": undefined,
+                "fontSize": 13,
+                "textAlign": "center",
+              },
             },
             "ref": null,
             "rendered": null,
@@ -358,7 +373,7 @@ ShallowWrapper {
               "style": Object {
                 "marginTop": 13,
               },
-              "title": "Copy Identity Key",
+              "title": "Share Identity Key",
             },
             "ref": null,
             "rendered": null,
@@ -450,7 +465,13 @@ ShallowWrapper {
               accessible={true}
               allowFontScaling={true}
               ellipsizeMode="tail"
-              style={undefined}
+              style={
+                Object {
+                  "color": undefined,
+                  "fontSize": 13,
+                  "textAlign": "center",
+                }
+              }
             />
             <Button
               enabled={true}
@@ -460,7 +481,7 @@ ShallowWrapper {
                   "marginTop": 13,
                 }
               }
-              title="Copy Identity Key"
+              title="Share Identity Key"
             />
           </View>,
         ],
@@ -622,7 +643,13 @@ ShallowWrapper {
                 accessible={true}
                 allowFontScaling={true}
                 ellipsizeMode="tail"
-                style={undefined}
+                style={
+                  Object {
+                    "color": undefined,
+                    "fontSize": 13,
+                    "textAlign": "center",
+                  }
+                }
               />,
               <Button
                 enabled={true}
@@ -632,7 +659,7 @@ ShallowWrapper {
                     "marginTop": 13,
                   }
                 }
-                title="Copy Identity Key"
+                title="Share Identity Key"
               />,
             ],
             "style": Object {
@@ -652,7 +679,11 @@ ShallowWrapper {
                 "allowFontScaling": true,
                 "children": undefined,
                 "ellipsizeMode": "tail",
-                "style": undefined,
+                "style": Object {
+                  "color": undefined,
+                  "fontSize": 13,
+                  "textAlign": "center",
+                },
               },
               "ref": null,
               "rendered": null,
@@ -669,7 +700,7 @@ ShallowWrapper {
                 "style": Object {
                   "marginTop": 13,
                 },
-                "title": "Copy Identity Key",
+                "title": "Share Identity Key",
               },
               "ref": null,
               "rendered": null,
@@ -686,8 +717,16 @@ ShallowWrapper {
     "adapter": ReactSixteenAdapter {
       "options": Object {
         "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getSnapshotBeforeUpdate": true,
+        },
       },
     },
+    "attachTo": undefined,
+    "hydrateIn": undefined,
   },
 }
 `;
