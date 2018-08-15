@@ -43,7 +43,7 @@ export function* sendDAppMessage(action: SendDAppMessageAction): Generator<*, *,
   const { message, session, callback } = action;
 
   try {
-    yield call(sendMessage, sendMessageAction(JSON.stringify(message), session, callback));
+    yield call(sendMessage, sendMessageAction(session.publicKey, JSON.stringify(message), callback));
   } catch (error) {
     console.log(`DApp send message failed: ${error}`);
   }
