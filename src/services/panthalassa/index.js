@@ -38,7 +38,7 @@ export async function panthalassaStartFromMnemonic(config: string, mnemonic: str
  * @returns {Promise<*>} Boolean response about operation's result
  */
 export async function panthalassaIsValidMnemonic(mnemonic: string): Promise<boolean> {
-  return Panthalassa.PanthalassaIsValidMnemonic({ mnemonic });
+  return Panthalassa.PanthalassaIsValidMnemonic(mnemonic);
 }
 
 /**
@@ -93,7 +93,9 @@ export async function panthalassaEthPrivateKey(): Promise<string> {
  * @returns {Promise<*>} {string} Account's Ethereum public key
  */
 export async function panthalassaEthPubToAddress(publicKey: string): Promise<string> {
-  return Panthalassa.PanthalassaEthPubToAddress({ publicKey });
+  return Panthalassa.PanthalassaEthPubToAddress({
+    pub: publicKey,
+  });
 }
 
 /**
@@ -182,14 +184,14 @@ export async function panthalassaOpenDApp(id: string, context: string): Promise<
 
 /**
  * @desc Calls a DApp's function over th VM
- * @param {string} signingKey TODO
+ * @param {string} dAppId TODO
  * @param {string} id TODO
  * @param {string} args TODO
  * @returns {Promise<*>} Boolean response about operation's result
  */
-export async function panthalassaCallDAppFunction(signingKey: string, id: number, args: string): Promise<boolean> {
+export async function panthalassaCallDAppFunction(dAppId: string, id: number, args: string): Promise<boolean> {
   return Panthalassa.PanthalassaCallDAppFunction({
-    signingKey,
+    dAppId,
     id,
     args,
   });
@@ -288,7 +290,7 @@ export async function panthalassaMessages(partner: string, startStr: string, amo
  * @param {string} message Message to send
  * @returns {Promise<*>} Boolean response about operation's result
  */
-export async function panthalassaSendMessage(partner: string, message: number): Promise<boolean> {
+export async function panthalassaSendMessage(partner: string, message: string): Promise<boolean> {
   return Panthalassa.PanthalassaSendMessage({
     partner,
     message,

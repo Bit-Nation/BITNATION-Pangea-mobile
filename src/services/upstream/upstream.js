@@ -167,6 +167,7 @@ export default class UpstreamService {
       });
     } catch (sendError) {
       console.log(`[PANGEA] Upstream failed to send fail response: ${id}, error: ${sendError.message}`);
+      throw sendError;
     }
   };
 
@@ -181,6 +182,7 @@ export default class UpstreamService {
       });
     } catch (sendError) {
       console.log(`[PANGEA] Upstream failed to send success response: ${id}, error: ${sendError.message}`);
+      throw sendError;
     }
   };
 }
