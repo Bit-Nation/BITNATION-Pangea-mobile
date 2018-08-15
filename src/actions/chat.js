@@ -1,9 +1,11 @@
-import type { ProfileType, ChatSessionType } from '../types/Chat';
+// @flow
+
+import type { ProfileType, ChatSessionType, GiftedChatMessageType } from '../types/Chat';
 
 export const SHOW_CHAT_SPINNER = 'SHOW_CHAT_SPINNER';
 export const HIDE_CHAT_SPINNER = 'HIDE_CHAT_SPINNER';
 export const FIND_USER_BY_KEY = 'FIND_USER_BY_KEY';
-export const SAVE_PROFILE = 'SAVE_PROFILE';
+export const GET_PROFILE = 'GET_PROFILE';
 export const NEW_CHAT_SESSION = 'NEW_CHAT_SESSION';
 export const CHATS_UPDATED = 'CHATS_UPDATED';
 export const ADD_CREATED_CHAT_SESSION = 'ADD_CREATED_CHAT_SESSION';
@@ -22,14 +24,14 @@ export type FindUserByPubKeyAction = {
   +type: 'FIND_USER_BY_KEY',
   +key: string
 };
-export type SaveProfileAction = {
-  +type: 'SAVE_PROFILE',
-  +profile: ProfileType
+export type GetProfileAction = {
+  +type: 'GET_PROFILE',
+  +identityKey: string,
+  +callback: (profile: ProfileType | null, error: Error | null) => void,
 };
 export type NewChatSessionAction = {
   +type: 'NEW_CHAT_SESSION',
-  +publicKey: string,
-  +initMessage: Object,
+  +profile: ProfileType,
   +callback: () => void,
 };
 export type AddCreatedChatSessionAction = {
@@ -47,7 +49,7 @@ export type OpenChatAction = {
 };
 export type SelectProfileAction = {
   +type: 'SELECT_PROFILE',
-  +profile: Object,
+  +profile: ProfileType,
 };
 export type FetchAllChatsAction = {
   +type: 'FETCH_ALL_CHATS',
@@ -55,7 +57,7 @@ export type FetchAllChatsAction = {
 export type SendMessageAction = {
   +type: 'SEND_MESSAGE',
   +message: string,
-  +session: Object,
+  +recipientPublicKey: string,
   +callback: () => void,
 };
 export type SaveMessageAction = {
@@ -78,14 +80,14 @@ export type PanthalassaMessagePersistedAction = {
 export type AddChatMessageAction = {
   +type: 'ADD_CHAT_MESSAGE',
   +publicKey: string,
-  +message: Object,
+  +message: GiftedChatMessageType,
 }
 
 export type Action =
   | ShowSpinnerAction
   | HideSpinnerAction
   | FindUserByPubKeyAction
-  | SaveProfileAction
+  | GetProfileAction
   | NewChatSessionAction
   | UpdateChatsAction
   | OpenChatAction
@@ -131,14 +133,16 @@ export function findUserByPublicKey(key: string): FindUserByPubKeyAction {
 }
 
 /**
- * @desc Action for saving a user profile into database
- * @param {Object} profile profile object
- * @returns {SaveProfileAction} An action
+ * @desc Action for retrieving profile for identity key. Takes it either from database or network.
+ * @param {string} identityKey Identity key of profile to be got
+ * @param {function} callback Callback to be called with result or error
+ * @returns {GetProfileAction} An action
  */
-export function saveProfile(profile: Object): SaveProfileAction {
+export function getProfile(identityKey: string, callback: (result: ProfileType | null, error: Error | null) => void): GetProfileAction {
   return {
-    type: SAVE_PROFILE,
-    profile,
+    type: GET_PROFILE,
+    identityKey,
+    callback,
   };
 }
 
@@ -148,7 +152,7 @@ export function saveProfile(profile: Object): SaveProfileAction {
  * @param {func} callback Callback
  * @returns {NewChatSessionAction} An action.
  */
-export function newChatSession(profile: Object, callback: () => void): NewChatSessionAction {
+export function newChatSession(profile: ProfileType, callback: () => void): NewChatSessionAction {
   return {
     type: NEW_CHAT_SESSION,
     profile,
@@ -199,7 +203,7 @@ export function openChat(publicKey: string, callback: () => void): OpenChatActio
  * @param {Object} profile Public Key of the chat session
  * @returns {SelectProfileAction} An action
  */
-export function selectProfile(profile: Object): SelectProfileAction {
+export function selectProfile(profile: ProfileType): SelectProfileAction {
   return {
     type: SELECT_PROFILE,
     profile,
@@ -273,10 +277,10 @@ export function panthalassaMessagePersisted(payload: Object): PanthalassaMessage
 /**
  * @desc Action for adding a chat message
  * @param {string} publicKey The chat public key
- * @param {Object} message The chat message
+ * @param {GiftedChatMessageType} message The chat message
  * @returns {AddChatMessageAction} An action
  */
-export function addChatMessage(publicKey: string, message: Object): AddChatMessageAction {
+export function addChatMessage(publicKey: string, message: GiftedChatMessageType): AddChatMessageAction {
   return {
     type: ADD_CHAT_MESSAGE,
     publicKey,

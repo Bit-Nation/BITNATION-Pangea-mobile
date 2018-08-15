@@ -2,23 +2,24 @@
 
 /* eslint-disable camelcase,no-continue */
 
-import { put, call } from 'redux-saga/effects';
-// $FlowFixMe Flow has issues with import buffer for some reason.
-import { Buffer } from 'buffer';
+import { put, call, select } from 'redux-saga/effects';
+import { Buffer } from 'buffer/index';
 
-import {
-  SaveProfileAction,
+import type {
+  GetProfileAction,
   NewChatSessionAction,
   OpenChatAction,
   SendMessageAction,
+  LoadChatMessagesAction,
+  PanthalassaMessagePersistedAction,
+} from '../../actions/chat';
+import {
   chatsUpdated,
   selectProfile,
   addCreatedChatSession,
   loadChatMessages,
-  LoadChatMessagesAction,
   chatMessagesLoaded,
-  PanthalassaMessagePersistedAction,
-  addChatMessage,
+  addChatMessage, newChatSession,
 } from '../../actions/chat';
 import defaultDB from '../../services/database';
 import ChatService from '../../services/chat';
@@ -90,14 +91,18 @@ export function* getProfile(encodedPublicKey: string, isHex: boolean = true): Ge
   }
 }
 
-
 /**
- * @desc Save a user profile into the database
- * @param {SaveProfileAction} action SAVE_PROFILE action
+ * @desc Handler for GET_PROFILE action.
+ * @param {GetProfileAction} action An action.
  * @return {void}
  */
-export function* saveProfileSaga(action: SaveProfileAction): Generator<*, *, *> {
-  yield call(saveProfileIntoDatabase, action.profile);
+export function* getProfileActionHandler(action: GetProfileAction): Generator<*, *, *> {
+  try {
+    const profile = yield call(getProfile, action.identityKey);
+    return yield call(action.callback, profile, null);
+  } catch (error) {
+    return yield call(action.callback, null, error);
+  }
 }
 
 /**
@@ -108,7 +113,7 @@ export function* saveProfileSaga(action: SaveProfileAction): Generator<*, *, *> 
 export function* createChatSession(action: NewChatSessionAction): Generator<*, *, *> {
   const currentAccountId = yield call(getCurrentAccountId);
   const chatSession = {
-    publicKey: action.profile.identityPubKey,
+    publicKey: action.profile.identity_pub_key,
     username: action.profile.name,
     accountId: currentAccountId,
     messages: [],
@@ -212,6 +217,11 @@ export function* handlePanthalassaMessagePersisted(action: PanthalassaMessagePer
   const receiver = yield call(getProfile, action.payload.chat);
 
   const sender = yield call(getCurrentAccount);
+
+  const { chat: { chats } } = yield select();
+  if (chats.findIndex(chat => chat.publicKey === publicKey) === -1) {
+    yield call(createChatSession, newChatSession(receiver, () => undefined));
+  }
 
   if (receiver) {
     const messages = createGiftedChatMessageObjects(sender, receiver, [action.payload]);
