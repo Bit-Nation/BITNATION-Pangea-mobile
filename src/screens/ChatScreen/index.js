@@ -118,7 +118,6 @@ class ChatScreen extends Component<Props, State> {
   }
 
   componentDidMount() {
-    // TODO: Does chat migration apply to here as well?
     if (this.props.isBot !== true && this.connection) {
       this.props.showSpinner();
       // load initial messages

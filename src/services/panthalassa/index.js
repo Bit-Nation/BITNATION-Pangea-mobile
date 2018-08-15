@@ -93,7 +93,9 @@ export async function panthalassaEthPrivateKey():Promise<string> {
  * @returns {Promise<*>} {string} Account's Ethereum public key
  */
 export async function panthalassaEthPubToAddress(publicKey: string):Promise<string> {
-  return Panthalassa.PanthalassaEthPubToAddress(publicKey);
+  return Panthalassa.PanthalassaEthPubToAddress({
+    pub: publicKey,
+  });
 }
 
 /**
@@ -160,7 +162,7 @@ export async function panthalassaGetMnemonic():Promise<string> {
  * @param {string} timeout Value for timeout operation
  * @returns {Promise<*>} Boolean response about operation's result
  */
-export async function panthalassaStartDApp(dAppSingingKeyStr: string, timeout: Number):Promise<boolean> {
+export async function panthalassaStartDApp(dAppSingingKeyStr: string, timeout: number):Promise<boolean> {
   return Panthalassa.PanthalassaStartDApp({
     dAppSingingKeyStr,
     timeout,
@@ -187,7 +189,7 @@ export async function panthalassaOpenDApp(id: string, context: string):Promise<b
  * @param {string} args TODO
  * @returns {Promise<*>} Boolean response about operation's result
  */
-export async function panthalassaCallDAppFunction(dAppId: string, id: Number, args: string):Promise<boolean> {
+export async function panthalassaCallDAppFunction(dAppId: string, id: number, args: string):Promise<boolean> {
   return Panthalassa.PanthalassaCallDAppFunction({
     dAppId,
     id,
@@ -201,7 +203,7 @@ export async function panthalassaCallDAppFunction(dAppId: string, id: Number, ar
  * @returns {Promise<*>} Boolean response about operation's result
  */
 export async function panthalassaConnectToDAppDevHost(address: string):Promise<boolean> {
-  return Panthalassa.PanthalassaConnectToDAppDevHost(address);
+  return Panthalassa.PanthalassaConnectToDAppDevHost({ address });
 }
 
 /**
@@ -222,10 +224,10 @@ export async function panthalassaRenderMessage(signingKey: string, payload: stri
  * @param {string} id TODO
  * @param {string} data TODO
  * @param {string} responseError TODO
- * @param {Number} timeout TODO
+ * @param {number} timeout TODO
  * @returns {Promise<*>} {string} TODO
  */
-export async function panthalassaSendResponse(id: string, data: string, responseError: string, timeout: Number):Promise<boolean> {
+export async function panthalassaSendResponse(id: string, data: string, responseError: string, timeout: number):Promise<boolean> {
   return Panthalassa.PanthalassaSendResponse({
     id,
     data,
@@ -248,7 +250,7 @@ export async function panthalassaAllChats():Promise<string> {
  * @returns {Promise<*>} Boolean response about operation's result
  */
 export async function panthalassaConnectLogger(address: string):Promise<boolean> {
-  return Panthalassa.PanthalassaConnectLogger(address);
+  return Panthalassa.PanthalassaConnectLogger({ address });
 }
 
 /**
@@ -271,7 +273,7 @@ export async function panthalassaIdentityPublicKey():Promise<string> {
  * @desc TODO
  * @param {string} partner TODO
  * @param {string} startStr TODO
- * @param {Number} amount TODO
+ * @param {number} amount TODO
  * @returns {Promise<*>} {string} TODO
  */
 export async function panthalassaMessages(partner: string, startStr: string, amount: number):Promise<string> {
@@ -301,7 +303,7 @@ export async function panthalassaSendMessage(partner: string, message: string):P
  * @returns {Promise<*>} Boolean response about operation's result
  */
 export async function panthalassaSetLogger(level: string):Promise<boolean> {
-  return Panthalassa.PanthalassaSetLogger(level);
+  return Panthalassa.PanthalassaSetLogger({ level });
 }
 
 /**
@@ -310,5 +312,5 @@ export async function panthalassaSetLogger(level: string):Promise<boolean> {
  * @returns {Promise<*>} Boolean response about operation's result
  */
 export async function panthalassaStopDApp(dAppSingingKeyStr: string):Promise<boolean> {
-  return Panthalassa.PanthalassaStopDApp(dAppSingingKeyStr);
+  return Panthalassa.PanthalassaStopDApp({ dAppSingingKeyStr });
 }
