@@ -55,6 +55,10 @@ to use the mesh network
 - (void)setEthWsEndpoint:(NSString*)v;
 - (BOOL)enableDebugging;
 - (void)setEnableDebugging:(BOOL)v;
+- (NSString*)privChatEndpoint;
+- (void)setPrivChatEndpoint:(NSString*)v;
+- (NSString*)privChatBearerToken;
+- (void)setPrivChatBearerToken:(NSString*)v;
 @end
 
 FOUNDATION_EXPORT NSString* PanthalassaAllChats(NSError** error);

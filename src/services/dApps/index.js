@@ -1,7 +1,5 @@
 // @flow
 
-import { NativeModules } from 'react-native';
-
 import { convertFromPanthalassa } from '../../utils/mapping/dapp';
 import type { DApp } from '../../types/DApp';
 import * as Panthalassa from '../panthalassa';

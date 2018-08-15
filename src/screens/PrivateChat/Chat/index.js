@@ -4,6 +4,7 @@
 import React, { Component } from 'react';
 import { View, Platform, Clipboard } from 'react-native';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 import {
   GiftedChat,
   Composer,
@@ -50,6 +51,10 @@ type Props = {
    */
   secret: string,
   /**
+   * @desc The public key of the chat recipient
+   */
+  recipientPublicKey: string,
+  /**
    * @desc Public key of the current user
    */
   userPublicKey: string,
@@ -63,10 +68,11 @@ type Props = {
   hideSpinner: () => void,
   /**
    * @desc Function to send a human message
+   * @param {string} recipientPublicKey The recipient's public key
    * @param {string} msg Message to be sent
    * @param {Object} session Session object
    */
-  sendMessage: (msg: string, session: Object) => void,
+  sendMessage: (recipientPublicKey: string, msg: string) => void,
   /**
    * @desc Array of chat sessions.
    */
@@ -112,12 +118,12 @@ class ChatScreen extends Component<Props, *> {
 
   onSend(messages: Array<any> = []) {
     const message = messages[0].text;
-    const session = getSelectedSession(this.props.sessions, this.props.secret);
+    const session = getSelectedSession(this.props.sessions, this.props.recipientPublicKey);
     if (session == null) {
       this.showSessionClosedAlert();
       return;
     }
-    this.props.sendMessage(message, session);
+    this.props.sendMessage(this.props.recipientPublicKey, message);
   }
 
   onSelectDAppToOpen = (index) => {
@@ -153,15 +159,14 @@ class ChatScreen extends Component<Props, *> {
       i18n.t('screens.chat.cancel'),
     ];
 
-    let session = getSelectedSession(this.props.sessions, this.props.secret);
+    const session = getSelectedSession(this.props.sessions, this.props.recipientPublicKey);
     if (session == null) {
-      // this.showSessionClosedAlert();
-      // return <View />;
-      session = {};
+      this.showSessionClosedAlert();
+      return <View />;
     }
     let sortedMessages = [];
-    if (session.decryptedMessages && session.decryptedMessages.length > 0) {
-      sortedMessages = session.decryptedMessages.slice().reverse();
+    if (session.messages && session.messages.length > 0) {
+      sortedMessages = _.sortBy(session.messages, message => message.createdAt).reverse();
     }
     sortedMessages = sortedMessages.map((message) => {
       if (message.dAppMessage == null || message.dAppMessage.dapp_id == null) return message;
@@ -262,7 +267,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   showSpinner: () => dispatch(showSpinner()),
   hideSpinner: () => dispatch(hideSpinner()),
-  sendMessage: (msg, session) => dispatch(sendMessage(msg, session)),
+  sendMessage: (publicKey, msg) => dispatch(sendMessage(publicKey, msg)),
   openDApp: (dAppPublicKey, secret, friend) => dispatch(openDApp(dAppPublicKey, {
     chatSecret: secret,
     friend,
