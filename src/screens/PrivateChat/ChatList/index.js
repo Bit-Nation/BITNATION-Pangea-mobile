@@ -10,7 +10,7 @@ import {
 import _ from 'lodash';
 import { Fab, Text } from 'native-base';
 import ActionSheet from 'react-native-actionsheet';
-import { saveProfile, newChatSession, openChat } from '../../../actions/chat';
+import { getProfile, newChatSession, openChat } from '../../../actions/chat';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import styles from './styles';
 import { screen } from '../../../global/Screens';
@@ -21,10 +21,9 @@ import Loading from '../../../components/common/Loading';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import i18n from '../../../global/i18n';
 import Colors from '../../../global/colors';
-import type { ChatSessionType } from '../../../types/Chat';
+import type { ProfileType, ChatSessionType } from '../../../types/Chat';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import ScreenTitle from '../../../components/common/ScreenTitle';
-import ChatService from '../../../services/chat';
 import NewChatModal from './NewChatModal';
 import InvalidKeyModal from './InvalidKeyModal';
 import InviteSentModal from './InviteSentModal';
@@ -46,10 +45,11 @@ type Props = {
    */
   chatSessions: Array<ChatSessionType>,
   /**
-   * @desc Function to save a user profile
-   * @param {Object} profile User profile
+   * @desc Function to get user profile
+   * @param {string} identityKey Identity key of user.
+   * @param {function} callback Callback
    */
-  saveProfile: (profile: Object) => void,
+  getProfile: (identityKey: string, callback: (profile: (ProfileType | null), error: (Error | null)) => void) => void,
   /**
    * @desc Function to be called when an item is selected from the list
    * @param {string} key Public key of the chat session
@@ -58,10 +58,10 @@ type Props = {
   onItemSelect: (key: string, callback: (result: Object) => void) => void,
   /**
    * @desc Function to initialize a new chat
-   * @param {Object} profile Profile of the user
+   * @param {ProfileType} profile Profile of the user
    * @param {func} callback
    */
-  createNewSession: (profile: Object, callback: (result: Object) => void) => void,
+  createNewSession: (profile: ProfileType, callback: (result: Object) => void) => void,
 };
 
 type State = {
@@ -70,9 +70,9 @@ type State = {
    */
   publicKey: string,
   /**
-   * @desc User profile object
+   * @desc Profile of currently added user
    */
-  profile: any,
+  profile: ProfileType | null,
   /**
    * @desc Name of the modal to be shown
    */
@@ -134,49 +134,57 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
   };
 
   getUserProfile = async (publicKey) => {
-    try {
-      const profile = await ChatService.getProfile(publicKey);
-      this.setState({
-        publicKey,
-        profile,
-        showModal: NEW_CHAT_MODAL_KEY,
-      });
-      this.props.saveProfile(profile);
-    } catch (e) {
-      console.log(`[TEST] Profile fetch error: ${e.message}`);
-      this.setState({
-        publicKey: '',
-        profile: null,
-        showModal: INVALID_MODAL_KEY,
-      });
-    }
+    this.props.getProfile(publicKey, (profile, error) => {
+      if (profile != null) {
+        this.setState({
+          publicKey,
+          profile,
+          showModal: NEW_CHAT_MODAL_KEY,
+        });
+      } else {
+        if (error != null) {
+          console.log(`[TEST] Profile fetch error: ${error.message}`);
+        }
+        this.setState({
+          publicKey: '',
+          profile: null,
+          showModal: INVALID_MODAL_KEY,
+        });
+      }
+    });
   };
 
   startChat = async () => {
-    const chatSession = _.find(this.props.chatSessions, (session) => {
-      return session.publicKey === this.state.profile.identityPubKey;
-    });
-
-    if (chatSession) {
-      this.onChatSelect(chatSession);
-    } else {
-      this.props.createNewSession(this.state.profile, (result) => {
-        if (result.status === 'success') {
-          this.props.navigator.push({
-            ...screen('PRIVATE_CHAT_SCREEN'),
-            passProps: {
-              userPublicKey: result.userPublicKey,
-              recipientPublicKey: this.state.profile.identityPubKey,
-            },
-          });
-        } else {
-          console.log('[TEST] create session error: ', result);
-        }
-      });
-    }
-
     this.setState({
       showModal: '',
+    });
+
+    const partnerProfile = this.state.profile;
+    if (partnerProfile == null) {
+      console.log('[TEST] No partner profile selected');
+      return;
+    }
+
+    const chatSession = _.find(this.props.chatSessions, session => session.publicKey === partnerProfile.identity_pub_key);
+
+    if (chatSession != null) {
+      this.onChatSelect(chatSession);
+      return;
+    }
+
+    this.props.createNewSession(partnerProfile, (result) => {
+      if (result.status !== 'success') {
+        console.log('[TEST] create session error: ', result);
+        return;
+      }
+
+      this.props.navigator.push({
+        ...screen('PRIVATE_CHAT_SCREEN'),
+        passProps: {
+          userPublicKey: result.userPublicKey,
+          recipientPublicKey: partnerProfile.identity_pub_key,
+        },
+      });
     });
   };
 
@@ -238,7 +246,7 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
               id={session}
             />);
           }}
-          keyExtractor={item => item.secret}
+          keyExtractor={item => item.publicKey}
           renderSectionHeader={({ section }) => <NationListHeader title={section.title} />}
           sections={sections}
           style={styles.sectionList}
@@ -287,7 +295,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  saveProfile: profile => dispatch(saveProfile(profile)),
+  getProfile: (profile, callback) => dispatch(getProfile(profile, callback)),
   createNewSession: (profile, callback) => dispatch(newChatSession(profile, callback)),
   onItemSelect: (key, callback) => dispatch(openChat(key, callback)),
 });
