@@ -82,13 +82,9 @@ export function* getProfile(encodedPublicKey: string, isHex: boolean = true): Ge
     return yield receiver;
   }
 
-  try {
-    const profile = yield call(ChatService.getProfile, hexPublicKey);
-    const dbProfile = yield call(saveProfileIntoDatabase, profile);
-    return dbProfile;
-  } catch (e) {
-    return yield null;
-  }
+  const profile = yield call(ChatService.getProfile, hexPublicKey);
+  const dbProfile = yield call(saveProfileIntoDatabase, profile);
+  return dbProfile;
 }
 
 /**
@@ -135,8 +131,15 @@ export function* createChatSession(action: NewChatSessionAction): Generator<*, *
  * @return {void}
  */
 export function* openChatSession(action: OpenChatAction): Generator<*, *, *> {
-  const profile = yield call(getProfile, action.publicKey, false);
-  if (profile != null) {
+  try {
+    const profile = yield call(getProfile, action.publicKey, false);
+    if (profile == null) {
+      yield call(action.callback, {
+        status: 'fail',
+      });
+      return;
+    }
+
     yield put(loadChatMessages(action.publicKey));
     yield put(selectProfile(profile));
     const userPublicKey = yield call(ChatService.getPublicKey);
@@ -144,7 +147,7 @@ export function* openChatSession(action: OpenChatAction): Generator<*, *, *> {
       status: 'success',
       userPublicKey,
     });
-  } else {
+  } catch (error) {
     yield call(action.callback, {
       status: 'fail',
     });
@@ -164,14 +167,18 @@ export function* fetchAllChats(): Generator<*, *, *> {
   // eslint-disable-next-line no-restricted-syntax
   for (const hexPubKey of hexPublicKeys) {
     publicKey = Buffer.from(hexPubKey, 'hex').toString('base64');
-    const profile = yield call(getProfile, hexPubKey);
-    if (profile != null) {
-      chats.push({
-        publicKey,
-        username: profile.name,
-        accountId: currentAccountId,
-        messages: [],
-      });
+    try {
+      const profile = yield call(getProfile, hexPubKey);
+      if (profile != null) {
+        chats.push({
+          publicKey,
+          username: profile.name,
+          accountId: currentAccountId,
+          messages: [],
+        });
+      }
+    } catch (error) {
+      console.log(`[TEST] Fail to get profile with error: ${error.message}`);
     }
   }
 
@@ -214,17 +221,21 @@ export function* sendMessage(action: SendMessageAction): Generator<*, *, *> {
 export function* handlePanthalassaMessagePersisted(action: PanthalassaMessagePersistedAction): Generator<*, *, *> {
   const publicKey = Buffer.from(action.payload.chat, 'hex').toString('base64');
 
-  const receiver = yield call(getProfile, action.payload.chat);
+  try {
+    const receiver = yield call(getProfile, action.payload.chat);
 
-  const sender = yield call(getCurrentAccount);
+    const sender = yield call(getCurrentAccount);
 
-  const { chat: { chats } } = yield select();
-  if (chats.findIndex(chat => chat.publicKey === publicKey) === -1) {
-    yield call(createChatSession, newChatSession(receiver, () => undefined));
-  }
+    const { chat: { chats } } = yield select();
+    if (chats.findIndex(chat => chat.publicKey === publicKey) === -1) {
+      yield call(createChatSession, newChatSession(receiver, () => undefined));
+    }
 
-  if (receiver) {
-    const messages = createGiftedChatMessageObjects(sender, receiver, [action.payload]);
-    yield put(addChatMessage(publicKey, messages[0]));
+    if (receiver) {
+      const messages = createGiftedChatMessageObjects(sender, receiver, [action.payload]);
+      yield put(addChatMessage(publicKey, messages[0]));
+    }
+  } catch (error) {
+    console.log(`[TEST] Handle message persisted failed: ${error.message}`);
   }
 }
