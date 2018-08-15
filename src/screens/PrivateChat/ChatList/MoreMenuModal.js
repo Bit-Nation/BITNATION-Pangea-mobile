@@ -12,8 +12,14 @@ import styles from './styles';
 import i18n from '../../../global/i18n';
 
 type Props = {
+  /**
+   * @desc Function to cancel the menu
+   */
   onCancel: () => void,
-  onShareKey: () => void,
+  /**
+   * @desc Function to share public key
+   */
+  onShareKey: () => Promise <void>,
   /**
    * @desc Modal visibility
    */
