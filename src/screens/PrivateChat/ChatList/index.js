@@ -130,16 +130,20 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
 
   getPublicKeyFromClipboard = async () => {
     const pubKey = await Clipboard.getString();
-    await this.getUserProfile(pubKey);
+    this.getUserProfile(pubKey);
   };
 
-  getUserProfile = async (publicKey) => {
+  getUserProfile = (publicKey) => {
+    this.setState({
+      loading: true,
+    });
     this.props.getProfile(publicKey, (profile, error) => {
       if (profile != null) {
         this.setState({
           publicKey,
           profile,
           showModal: NEW_CHAT_MODAL_KEY,
+          loading: false,
         });
       } else {
         if (error != null) {
@@ -149,16 +153,13 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
           publicKey: '',
           profile: null,
           showModal: INVALID_MODAL_KEY,
+          loading: false,
         });
       }
     });
   };
 
   startChat = async () => {
-    this.setState({
-      showModal: '',
-    });
-
     const partnerProfile = this.state.profile;
     if (partnerProfile == null) {
       console.log('[TEST] No partner profile selected');
@@ -169,6 +170,9 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
 
     if (chatSession != null) {
       this.onChatSelect(chatSession);
+      this.setState({
+        showModal: '',
+      });
       return;
     }
 
@@ -177,6 +181,10 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
         console.log('[TEST] create session error: ', result);
         return;
       }
+
+      this.setState({
+        showModal: '',
+      });
 
       this.props.navigator.push({
         ...screen('PRIVATE_CHAT_SCREEN'),
