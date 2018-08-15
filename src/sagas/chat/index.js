@@ -1,7 +1,7 @@
 import { all, takeEvery } from 'redux-saga/effects';
 
 import {
-  SAVE_PROFILE,
+  GET_PROFILE,
   NEW_CHAT_SESSION,
   OPEN_CHAT_SESSION,
   SEND_MESSAGE,
@@ -10,7 +10,7 @@ import {
   PANTHALASSA_MESSAGE_PERSISTED,
 } from '../../actions/chat';
 import {
-  saveProfileSaga,
+  getProfileActionHandler,
   createChatSession,
   openChatSession,
   fetchAllChats,
@@ -26,7 +26,7 @@ import {
 export default function* rootSaga() {
   yield all([
     takeEvery(FETCH_ALL_CHATS, fetchAllChats),
-    takeEvery(SAVE_PROFILE, saveProfileSaga),
+    takeEvery(GET_PROFILE, getProfileActionHandler),
     takeEvery(NEW_CHAT_SESSION, createChatSession),
     takeEvery(OPEN_CHAT_SESSION, openChatSession),
     takeEvery(SEND_MESSAGE, sendMessage),
