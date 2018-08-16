@@ -24,10 +24,10 @@ import type { Navigator } from '../../../types/ReactNativeNavigation';
 import { getCurrentAccount } from '../../../reducers/accounts';
 import { getSelectedSession } from '../../../utils/chat';
 import type { GiftedChatMessageType, ChatSessionType, ProfileType } from '../../../types/Chat';
+import type { DAppChatContext, DApp } from '../../../types/DApp';
 import { errorAlert } from '../../../global/alerts';
 import type { Account } from '../../../types/Account';
 import type { WalletType } from '../../../types/Wallet';
-import type { DApp } from '../../../types/DApp';
 import type { State as DAppsState } from '../../../reducers/dApps';
 import { getDApp } from '../../../reducers/dApps';
 import { openDApp } from '../../../actions/dApps';
@@ -88,7 +88,7 @@ type Props = {
   /**
    * @desc Open DApp.
    */
-  openDApp: (dAppPublicKey: string, partner: ProfileType) => void,
+  openDApp: (dAppPublicKey: string, context: DAppChatContext) => void,
   /**
    * @desc Array of user wallets.
    */
@@ -124,7 +124,21 @@ class ChatScreen extends Component<Props, *> {
 
   onSelectDAppToOpen = (index) => {
     if (index < this.props.availableDApps.length) {
-      this.props.openDApp(this.props.availableDApps[index].publicKey, this.props.partner);
+      const context: DAppChatContext = {
+        partner: {
+          name: this.props.partner.name,
+          // @todo Convert to hex
+          identityKey: this.props.partner.identity_pub_key,
+          // @todo Convert to address from pub key
+          ethereumAddress: this.props.partner.ethereum_pub_Key,
+        },
+        account: {
+          name: this.props.userPublicKey,
+          identityKey: this.props.userPublicKey,
+          ethereumAddress: this.props.wallets[0].ethAddress,
+        },
+      };
+      this.props.openDApp(this.props.availableDApps[index].publicKey, context);
     }
   };
 
@@ -267,7 +281,7 @@ const mapDispatchToProps = dispatch => ({
   showSpinner: () => dispatch(showSpinner()),
   hideSpinner: () => dispatch(hideSpinner()),
   sendMessage: (publicKey, msg) => dispatch(sendMessage(publicKey, msg)),
-  openDApp: (dAppPublicKey, partner) => dispatch(openDApp(dAppPublicKey, { partner })),
+  openDApp: (dAppPublicKey, context) => dispatch(openDApp(dAppPublicKey, context)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChatScreen);
