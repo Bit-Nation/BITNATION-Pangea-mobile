@@ -118,9 +118,23 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
       case 0:
         try {
           this.setState({ loading: true });
-          await this.getPublicKeyFromClipboard();
+          const profile = await this.getPublicKeyFromClipboard();
+          this.setState({
+            publicKey: profile.identity_pub_key,
+            profile,
+            showModal: NEW_CHAT_MODAL_KEY,
+          });
+        } catch (error) {
+          console.log(`[CHAT] Strange error: ${JSON.stringify(error)}`);
+          this.setState({
+            publicKey: '',
+            profile: null,
+            showModal: INVALID_MODAL_KEY,
+          });
         } finally {
-          this.setState({ loading: false });
+          this.setState({
+            loading: false,
+          });
         }
         break;
       default:
@@ -130,34 +144,22 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
 
   getPublicKeyFromClipboard = async () => {
     const pubKey = await Clipboard.getString();
-    this.getUserProfile(pubKey);
+    return this.getUserProfile(pubKey);
   };
 
-  getUserProfile = (publicKey) => {
-    this.setState({
-      loading: true,
-    });
+  getUserProfile = async publicKey => new Promise((res, rej) => {
     this.props.getProfile(publicKey, (profile, error) => {
       if (profile != null) {
-        this.setState({
-          publicKey,
-          profile,
-          showModal: NEW_CHAT_MODAL_KEY,
-          loading: false,
-        });
-      } else {
-        if (error != null) {
-          console.log(`[TEST] Profile fetch error: ${error.message}`);
-        }
-        this.setState({
-          publicKey: '',
-          profile: null,
-          showModal: INVALID_MODAL_KEY,
-          loading: false,
-        });
+        res(profile);
+        return;
       }
+
+      if (error != null) {
+        console.log(`[TEST] Profile fetch error: ${error.message}`);
+      }
+      rej(error);
     });
-  };
+  });
 
   startChat = async () => {
     const partnerProfile = this.state.profile;
