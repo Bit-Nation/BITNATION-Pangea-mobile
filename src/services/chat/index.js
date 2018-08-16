@@ -55,7 +55,7 @@ export default class ChatService {
       .then(response => Profile.toObject(response, { bytes: String }));
   }
 
-  static async getPublicKey(): Promise<any> {
+  static async getPublicKey(): Promise<string> {
     return panthalassaGetIdentityPublicKey();
   }
 

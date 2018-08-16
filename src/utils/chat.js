@@ -41,6 +41,7 @@ export function createGiftedChatMessageObjects(sender: Account, receiver: Profil
 
     const user = data.received ?
       { _id: receiver.identity_pub_key, name: receiver.name } :
+      // sender.id is not an identity key, but there is no difference because it can't be the same as someone's identity_pub_key
       { _id: sender.id, name: sender.name };
 
     let dAppMessage: DAppMessageType | null = null;
