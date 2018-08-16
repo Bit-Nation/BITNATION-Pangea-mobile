@@ -32,6 +32,7 @@ import type { State as DAppsState } from '../../../reducers/dApps';
 import { getDApp } from '../../../reducers/dApps';
 import { openDApp } from '../../../actions/dApps';
 import i18n from '../../../global/i18n';
+import { GiftedChatMessageType } from '../../../types/Chat';
 
 type Props = {
   /**
@@ -164,25 +165,29 @@ class ChatScreen extends Component<Props, *> {
       this.showSessionClosedAlert();
       return <View />;
     }
-    let sortedMessages = [];
+    let sortedMessages: Array<GiftedChatMessageType> = [];
     if (session.messages && session.messages.length > 0) {
       sortedMessages = _.sortBy(session.messages, message => message.createdAt).reverse();
     }
-    sortedMessages = sortedMessages.map((message) => {
-      if (message.dAppMessage == null || message.dAppMessage.dapp_id == null) return message;
-      const dAppMessage = (message: any).dAppMessage;
+    sortedMessages = (sortedMessages
+      .map((message) => {
+        if (message.dAppMessage == null) return message;
+        const { dAppMessage } = message;
 
-      const dApp = getDApp(this.props.dAppsState, dAppMessage.dapp_id);
-      if (dApp == null) return message;
+        const dApp = getDApp(this.props.dAppsState, dAppMessage.dapp_public_key);
+        if (dApp == null) {
+          return null;
+        }
 
-      return {
-        ...message,
-        user: {
-          _id: dApp.publicKey,
-          name: dApp.name,
-        },
-      };
-    });
+        return {
+          ...message,
+          user: {
+            _id: dApp.publicKey,
+            name: dApp.name,
+          },
+        };
+        // Conversion using any because flow doesn't know that we filtered out all null elements.
+      }).filter(message => message !== null) : any);
 
     const sendingUser = {
       _id: this.props.userPublicKey,
