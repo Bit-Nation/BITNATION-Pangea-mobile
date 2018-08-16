@@ -127,10 +127,8 @@ class ChatScreen extends Component<Props, *> {
       const context: DAppChatContext = {
         partner: {
           name: this.props.partner.name,
-          // @todo Convert to hex
-          identityKey: this.props.partner.identity_pub_key,
-          // @todo Convert to address from pub key
-          ethereumAddress: this.props.partner.ethereum_pub_Key,
+          identityKey: this.props.partner.identityKey,
+          ethereumAddress: this.props.partner.ethereumAddress,
         },
         account: {
           name: this.props.userPublicKey,
@@ -182,7 +180,7 @@ class ChatScreen extends Component<Props, *> {
         if (message.dAppMessage == null) return message;
         const { dAppMessage } = message;
 
-        const dApp = getDApp(this.props.dAppsState, dAppMessage.dapp_public_key);
+        const dApp = getDApp(this.props.dAppsState, dAppMessage.dAppPublicKey);
         if (dApp == null) {
           return null;
         }
