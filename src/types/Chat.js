@@ -18,20 +18,19 @@ export type GiftedChatUserType = {
   name: string,
 };
 
+export type DAppMessageType = {
+  dapp_public_key: string,
+  type: string,
+  params: Object,
+  should_send: boolean,
+};
+
 export type GiftedChatMessageType = {
   _id: string,
   text: string,
   createdAt: Date,
   user: GiftedChatUserType,
-};
-
-export type DAppMessageType = {
-  dapp_id: string,
-  type: string,
-  group_id: string,
-  params: string,
-  should_send: boolean,
-  should_render: boolean,
+  dAppMessage: DAppMessageType | null,
 };
 
 export type ChatSessionType = {
