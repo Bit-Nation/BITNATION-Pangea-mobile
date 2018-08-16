@@ -13,7 +13,7 @@ export type OpenDAppAction = { +type: 'OPEN_DAPP', dAppPublicKey: string, contex
 export type StoreDAppModalAction = { +type: 'STORE_DAPP_MODAL', modal: DAppModalInfo };
 export type CleanDAppModalAction = { +type: 'CLEAN_DAPP_MODAL', modalID: string };
 export type PerformDAppCallbackAction = { +type: 'PERFORM_DAPP_CALLBACK', dAppPublicKey: string, callbackID: number, args: Object };
-export type SendDAppMessageAction = { +type: 'SEND_DAPP_MESSAGE', message: DAppMessageType, session: ChatSessionType, callback: (message: ?GiftedChatMessageType) => void };
+export type RenderDAppMessageAction = { +type: 'RENDER_DAPP_MESSAGE', message: DAppMessageType, callback: (layout: ?Object) => void };
 
 export type Action =
   | DAppsListUpdatedAction
@@ -24,7 +24,7 @@ export type Action =
   | StoreDAppModalAction
   | CleanDAppModalAction
   | PerformDAppCallbackAction
-  | SendDAppMessageAction;
+  | RenderDAppMessageAction;
 
 export const DAPPS_LIST_UPDATED = 'DAPPS_LIST_UPDATED';
 export const START_DAPP = 'START_DAPP';
@@ -34,7 +34,7 @@ export const OPEN_DAPP = 'OPEN_DAPP';
 export const STORE_DAPP_MODAL = 'STORE_DAPP_MODAL';
 export const CLEAN_DAPP_MODAL = 'CLEAN_DAPP_MODAL';
 export const PERFORM_DAPP_CALLBACK = 'PERFORM_DAPP_CALLBACK';
-export const SEND_DAPP_MESSAGE = 'SEND_DAPP_MESSAGE';
+export const RENDER_DAPP_MESSAGE = 'RENDER_DAPP_MESSAGE';
 
 /**
  * @desc Action creator for an action that is called when DApps list updated.
@@ -146,15 +146,13 @@ export function performDAppCallback(dAppPublicKey: string, callbackID: number, a
 /**
  * @desc Action creator for an action to send DApp message.
  * @param {DAppMessageType} message Message to send.
- * @param {ChatSessionType} session Session to send to.
  * @param {function} callback Callback to call on finish or error.
- * @return {SendDAppMessageAction} An action.
+ * @return {RenderDAppMessageAction} An action.
  */
-export function sendDAppMessage(message: DAppMessageType, session: ChatSessionType, callback: (message: ?GiftedChatMessageType) => void): SendDAppMessageAction {
+export function renderDAppMessage(message: DAppMessageType, callback: (layout: ?Object) => void): RenderDAppMessageAction {
   return {
-    type: SEND_DAPP_MESSAGE,
+    type: RENDER_DAPP_MESSAGE,
     message,
-    session,
     callback,
   };
 }

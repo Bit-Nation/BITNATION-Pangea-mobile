@@ -6,39 +6,136 @@
  */
 
 import React from 'react';
-import { View, Text } from 'react-native';
+import { ActivityIndicator, Text, View } from 'react-native';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
+import { connect } from 'react-redux';
 
+import Root from '../../DAppsSDK/0.0.1/components/Root';
+import type { DAppMessageType } from '../../types/Chat';
 import GlobalStyles from '../../global/Styles';
+import { renderDAppMessage } from '../../actions/dApps';
+import Loading from './Loading';
+import i18n from '../../global/i18n';
+import { getDApp, type State as DAppsState } from '../../reducers/dApps';
 
 type Props = {
   /**
-   *
    * @desc Message to be displayed.
    */
-  message: string,
+  message: DAppMessageType,
   /**
-   *
-   * @desc Time to be displayed.
+   * @desc Function to render DApp message and get layout.
    */
-  time: string,
+  renderDAppMessage: (message: DAppMessageType, callback: (layout: ?Object) => void) => void,
+  /**
+   * @desc DApp redux state.
+   */
+  dAppsState: DAppsState,
 };
+
+type State = {
+  isRendering: boolean,
+  layout: ?Object,
+}
 
 const styles = MediaQueryStyleSheet.create({
   ...GlobalStyles,
+  dAppMessageRootView: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  dAppMessageContainer: {
+    paddingTop: 8,
+    paddingBottom: 4,
+    paddingLeft: 8,
+    paddingRight: 8,
+    flexGrow: 1,
+    alignItems: 'stretch',
+    justifyContent: 'center',
+    flex: 0,
+  },
+
+  loadingContainer: {
+    flex: 1,
+    height: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });
 
-const DAppMessage = ({
-  time, message,
-}: Props) => (
-  <View style={styles.dAppMessage}>
-    <Text style={styles.dAppMessageTime}>
-      {time}
-    </Text>
-    <Text style={styles.dAppMessageText} numberOfLines={1}>
-      {message}
-    </Text>
-  </View>
-);
+class DAppMessage extends React.Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
 
-export default DAppMessage;
+    this.state = {
+      isRendering: true,
+      layout: null,
+    };
+    this.props.renderDAppMessage(props.message, (layout) => {
+      this.setState(() => ({
+        isRendering: false,
+        layout,
+      }));
+    });
+  }
+
+  renderFallbackUI() {
+    const dApp = getDApp(this.props.dAppsState, this.props.message.dAppPublicKey);
+    let textToShow = i18n.t('dApps.unknownDAppMessage');
+    if (dApp != null) {
+      textToShow = i18n.t('dApps.failedDAppMessageRender', { dAppName: dApp.name });
+    }
+    return (
+      <Text style={styles.body}>
+        {textToShow}
+      </Text>
+    );
+  }
+
+  renderLoading() {
+    return (
+      <View style={styles.loadingContainer}>
+        <ActivityIndicator size='small' />
+      </View>
+    );
+  }
+
+  render() {
+    return (
+      <View style={styles.dAppMessageRootView}>
+        <View style={styles.dAppMessageContainer}>
+          {
+            this.state.layout != null
+            &&
+            <Root
+              dAppPublicKey={this.props.message.dAppPublicKey}
+              layout={this.state.layout}
+            />
+          }
+          {
+            this.state.isRendering === false
+            && this.state.layout == null
+            && this.renderFallbackUI()
+          }
+        </View>
+        {
+          this.state.isRendering === true && this.renderLoading()
+        }
+      </View>
+    );
+  }
+}
+
+const mapStateToProps = state => ({
+  dAppsState: state.dApps,
+});
+
+const mapDispatchToProps = dispatch => ({
+  renderDAppMessage(message, callback) {
+    dispatch(renderDAppMessage(message, callback));
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(DAppMessage);

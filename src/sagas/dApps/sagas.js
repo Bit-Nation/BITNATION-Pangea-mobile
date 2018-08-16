@@ -5,7 +5,7 @@ import { call, select, put } from 'redux-saga/effects';
 import type {
   DAppsListUpdatedAction,
   OpenDAppAction,
-  PerformDAppCallbackAction,
+  PerformDAppCallbackAction, RenderDAppMessageAction,
   StartDAppAction, StopDAppAction,
 } from '../../actions/dApps';
 import { dAppLaunchStateChanged, dAppsListUpdated, startDApp } from '../../actions/dApps';
@@ -133,5 +133,25 @@ export function* performDAppCallback(action: PerformDAppCallbackAction): Generat
     if (launchState === 'working') {
       yield put(dAppLaunchStateChanged(dAppPublicKey, 'opened'));
     }
+  }
+}
+
+/**
+ * @desc Renders DApp message and returns a layout.
+ * @param {RenderDAppMessageAction} action An action.
+ * @return {void}
+ */
+export function* renderDAppMessage(action: RenderDAppMessageAction): Generator<*, *, *> {
+  const { message, callback } = action;
+  const { dAppPublicKey, params } = message;
+  const { dApps: { contexts } } = yield select();
+  const context = contexts[dAppPublicKey] || {};
+
+  try {
+    const layout = yield call(DAppsService.renderDAppMessage, dAppPublicKey, params, context);
+    yield call(callback, layout);
+  } catch (error) {
+    console.log(`[DAPP] Fail to render message: ${JSON.stringify(message)} with error: ${error}`);
+    yield call(callback, null);
   }
 }

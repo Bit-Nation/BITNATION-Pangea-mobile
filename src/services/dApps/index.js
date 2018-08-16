@@ -39,7 +39,17 @@ export default class DAppsService {
     return Panthalassa.panthalassaSetLogger('DEBUG');
   }
 
-  static async performDAppCallback(dappPublicKey: string, id: number, params: Object) {
-    return Panthalassa.panthalassaCallDAppFunction(dappPublicKey, id, JSON.stringify(params));
+  static async performDAppCallback(dAppPublicKey: string, id: number, params: Object) {
+    return Panthalassa.panthalassaCallDAppFunction(dAppPublicKey, id, JSON.stringify(params));
+  }
+
+  static async renderDAppMessage(dAppPublicKey: string, params: Object, context: Object) {
+    return Panthalassa.panthalassaRenderMessage(
+      dAppPublicKey,
+      JSON.stringify({
+        context,
+        params,
+      }),
+    );
   }
 }
