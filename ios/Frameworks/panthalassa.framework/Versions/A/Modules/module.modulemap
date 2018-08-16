@@ -1,0 +1,8 @@
+framework module "Panthalassa" {
+	header "ref.h"
+    header "Panthalassa.objc.h"
+    header "universe.objc.h"
+    header "Panthalassa.h"
+
+    export *
+}
