@@ -71,30 +71,9 @@ export {
   TransactionJobSchema,
   TransactionJobType,
 
-  AESValueSchema,
-  AESType,
-
-  PreKeyBundleSchema,
-  PreKeyBundleType,
-
   ProfileSchema,
   ProfileType,
 
-  SharedSecretSchema,
-  SecretType,
-
-  ChatSessionSchema,
-  ChatSessionType,
-
-  DAppMessageSchema,
-  DAppMessageType,
-
-  MessageSchema,
-  MessageType,
   WalletSchema,
   WalletType,
-  DAppSchema,
-  DAppType,
-  MessageKeySchema,
-  DoubleRatchetKeySchema,
 } from './schema/v6';
