@@ -32,6 +32,7 @@ import type { State as DAppsState } from '../../../reducers/dApps';
 import { getDApp } from '../../../reducers/dApps';
 import { openDApp } from '../../../actions/dApps';
 import i18n from '../../../global/i18n';
+import DAppMessage from '../../../components/common/DAppMessage';
 
 type Props = {
   /**
@@ -175,14 +176,20 @@ class ChatScreen extends Component<Props, *> {
     if (session.messages && session.messages.length > 0) {
       sortedMessages = _.sortBy(session.messages, message => message.createdAt).reverse();
     }
-    sortedMessages = (sortedMessages
+    sortedMessages = sortedMessages
       .map((message) => {
         if (message.dAppMessage == null) return message;
         const { dAppMessage } = message;
 
         const dApp = getDApp(this.props.dAppsState, dAppMessage.dAppPublicKey);
         if (dApp == null) {
-          return null;
+          return {
+            ...message,
+            user: {
+              _id: dAppMessage.dAppPublicKey,
+              name: '??',
+            },
+          };
         }
 
         return {
@@ -192,8 +199,7 @@ class ChatScreen extends Component<Props, *> {
             name: dApp.name,
           },
         };
-        // Conversion using any because flow doesn't know that we filtered out all null elements.
-      }).filter(message => message !== null) : any);
+      });
 
     const sendingUser = {
       _id: this.props.userPublicKey,
@@ -215,6 +221,13 @@ class ChatScreen extends Component<Props, *> {
           renderInputToolbar={props => (
             <InputToolbar {...props} containerStyle={styles.inputToolbar} />
           )}
+          renderCustomView={(props) => {
+            const { currentMessage }: { currentMessage: GiftedChatMessageType } = props;
+            const { dAppMessage } = currentMessage;
+            if (dAppMessage == null) return null;
+
+            return (<DAppMessage message={dAppMessage} />);
+          }}
           renderMessageText={(props) => {
             const { currentMessage } = props;
             if (currentMessage.dAppMessage == null) {

@@ -767,10 +767,6 @@ const styles = {
     color: Colors.BitnationLightGrayColor,
   },
 
-  dAppMessage: {
-    width: '70%',
-  },
-
   dAppMessageTime: {
     fontSize: 12,
     padding: 9,
