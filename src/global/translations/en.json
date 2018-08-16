@@ -580,17 +580,7 @@
     }
   },
   "dApps": {
-    "escrow": {
-      "requestExchange": "START EXCHANGE",
-      "sendTokens": "SEND",
-      "cancelContract": "REFUND",
-      "completeContract": "EXCHANGE",
-      "cancelConfirmationAlert": {
-        "title": "Cancel Contract",
-        "subtitle": "Are you sure that you want to terminate exchange process?",
-        "confirm": "Stop exchange",
-        "cancel": "$t(common.cancel)"
-      }
-    }
+    "unknownDAppMessage": "This message was sent from DApp that is not installed on your device. It can not be rendered.",
+    "failedDAppMessageRender": "{{dAppName}} DApp failed to render this message. It may be due to issue in DApp or using of an old version.",
   }
 }
