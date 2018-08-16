@@ -73,35 +73,6 @@ export type AccountSettingsType = {
 }
 
 /**
- * @typedef AccountBalanceType
- * @property {string} id
- * @property {string} address
- * @property {string} amount
- * @property {number} synced_at
- * @property {string} currency
- */
-export type AccountBalanceType = {
-  id: string,
-  address: string,
-  // Amount is in wei
-  amount: string,
-  synced_at: number,
-  currency: string
-}
-
-export const AccountBalanceSchema = {
-  name: 'AccountBalance',
-  primaryKey: 'id',
-  properties: {
-    id: 'string',
-    address: 'string',
-    amount: 'string',
-    synced_at: 'date',
-    currency: 'string',
-  },
-};
-
-/**
  * @typedef {Object} DHTValue
  * @property {string} key is the multihash (https://github.com/multiformats/multihash) key of the value
  * @property {ArrayBuffer} value
@@ -125,13 +96,17 @@ export const DHTValueSchema = {
   },
 };
 
-/*
+/**
  * @typedef MessageJobType
  * @property {number} id
+ * @property {string} accountId
  * @property {string} heading
- * @property {string} text
+ * @property {string} msg
+ * @property {string} params
  * @property {number} version
- * @property {date} created_at
+ * @property {boolean} display
+ * @property {boolean} interpret
+ * @property {date} createdAt
  */
 export type MessageJobType = {
   id: number,
@@ -142,7 +117,7 @@ export type MessageJobType = {
   version: number,
   display: boolean,
   interpret: boolean,
-  created_at: Date
+  createdAt: Date
 }
 
 export const MessageJobSchema = {
@@ -160,7 +135,7 @@ export const MessageJobSchema = {
     display: 'bool',
     msg: 'string',
     version: 'int',
-    created_at: 'date',
+    createdAt: 'date',
   },
 };
 
@@ -280,13 +255,14 @@ export const NationSchema = {
  * @property {string} name
  * @property {string} location
  * @property {string} image
- * @property {string} identity_pub_key
- * @property {string} ethereum_pub_Key
- * @property {string} chat_id_key
+ * @property {string} identityKey
+ * @property {string} ethereumPublicKey
+ * @property {string} ethereumAddress
+ * @property {string} chatIdKey
  * @property {Date} timestamp
  * @property {number} version
- * @property {string} identity_key_signature
- * @property {string} ethereum_key_signature
+ * @property {string} identityKeySignature
+ * @property {string} ethereumKeySignature
  */
 export type ProfileType = {
   name: string,
@@ -332,7 +308,7 @@ export const ProfileSchema = {
 export type WalletType = {
   symbol: 'ETH' | 'PAT',
   name: string,
-  chain: 'ethereum' | 'rootstock'| 'bitcoin',
+  chain: 'ethereum' | 'rootstock' | 'bitcoin',
   decimals: number,
   balance: string,
   address: string,
@@ -360,7 +336,6 @@ export const schemata =
     AccountSchema,
     AccountSettingsSchema,
     DHTValueSchema,
-    AccountBalanceSchema,
     MessageJobSchema,
     TransactionJobSchema,
     NationSchema,
@@ -372,4 +347,10 @@ export const migration = (oldRealm: Realm, newRealm: Realm) => {
   // Migrate profiles
   // Since we remove all messages, it's not a problem if we remove profiles as well
   newRealm.delete(newRealm.objects('Profile'));
+
+  const oldJobs = oldRealm.objects('MessageJob');
+  const newJobs = newRealm.objects('MessageJob');
+  for (let i = 0; i < oldJobs.length; i += 1) {
+    newJobs[i].createdAt = oldJobs[i].created_at;
+  }
 };

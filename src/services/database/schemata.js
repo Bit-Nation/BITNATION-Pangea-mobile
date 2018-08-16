@@ -59,9 +59,6 @@ export {
   AccountSettingsSchema,
   AccountSettingsType,
 
-  AccountBalanceSchema,
-  AccountBalanceType,
-
   MessageJobSchema,
   MessageJobType,
 

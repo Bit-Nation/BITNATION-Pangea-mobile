@@ -174,10 +174,10 @@ export function addCreatedChatSession(chat: ChatSessionType): AddCreatedChatSess
 
 /**
  * @desc Action for updating chats
- * @param {Array<any>} chats Updated chats
+ * @param {Array<ChatSessionType>} chats Updated chats
  * @returns {UpdateChatsAction} An action
  */
-export function chatsUpdated(chats: Array<any>): UpdateChatsAction {
+export function chatsUpdated(chats: Array<ChatSessionType>): UpdateChatsAction {
   return {
     type: CHATS_UPDATED,
     chats,

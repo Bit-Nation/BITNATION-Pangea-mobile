@@ -68,8 +68,7 @@ export default class ChatService {
   static async loadMessages(sender: Account, receiver: ProfileType, startStr: string, amount: number): Promise<Array<GiftedChatMessageType>> {
     let messages = [];
     try {
-      const partner = Buffer.from(receiver.identity_pub_key, 'base64').toString('hex');
-      messages = await panthalassaMessages(partner, startStr, amount);
+      messages = await panthalassaMessages(receiver.identityKey, startStr, amount);
       messages = JSON.parse(messages);
       messages = createGiftedChatMessageObjects(sender, receiver, messages);
     } catch (e) {
@@ -81,8 +80,7 @@ export default class ChatService {
 
   static async sendMessage(recipientPublicKey: string, message: string): Promise<void> {
     try {
-      const partner = Buffer.from(recipientPublicKey, 'base64').toString('hex');
-      await panthalassaSendMessage(partner, message);
+      await panthalassaSendMessage(recipientPublicKey, message);
     } catch (e) {
       console.log(`[TEST] Error sending messsage: ${e.message}`);
     }
