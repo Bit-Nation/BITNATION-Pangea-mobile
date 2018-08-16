@@ -23,7 +23,7 @@ import Loading from '../../../components/common/Loading';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import { getCurrentAccount } from '../../../reducers/accounts';
 import { getSelectedSession } from '../../../utils/chat';
-import type { ChatSessionType, ProfileType } from '../../../types/Chat';
+import type { GiftedChatMessageType, ChatSessionType, ProfileType } from '../../../types/Chat';
 import { errorAlert } from '../../../global/alerts';
 import type { Account } from '../../../types/Account';
 import type { WalletType } from '../../../types/Wallet';
@@ -32,7 +32,6 @@ import type { State as DAppsState } from '../../../reducers/dApps';
 import { getDApp } from '../../../reducers/dApps';
 import { openDApp } from '../../../actions/dApps';
 import i18n from '../../../global/i18n';
-import { GiftedChatMessageType } from '../../../types/Chat';
 
 type Props = {
   /**
@@ -47,10 +46,6 @@ type Props = {
    * @desc Flag that indicates the loading status
    */
   isFetching: boolean,
-  /**
-   * @desc Shared secret for the chat session
-   */
-  secret: string,
   /**
    * @desc The public key of the chat recipient
    */
@@ -87,13 +82,13 @@ type Props = {
    */
   dAppsState: DAppsState,
   /**
-   * @desc Profile of chat friend.
+   * @desc Profile of chat partner.
    */
-  friend: ProfileType,
+  partner: ProfileType,
   /**
    * @desc Open DApp.
    */
-  openDApp: (dAppPublicKey: string, secret: string, friend: ProfileType) => void,
+  openDApp: (dAppPublicKey: string, partner: ProfileType) => void,
   /**
    * @desc Array of user wallets.
    */
@@ -128,9 +123,8 @@ class ChatScreen extends Component<Props, *> {
   }
 
   onSelectDAppToOpen = (index) => {
-    // const session = getSelectedSession(this.props.sessions, this.props.secret);
     if (index < this.props.availableDApps.length) {
-      this.props.openDApp(this.props.availableDApps[index].publicKey, this.props.secret, this.props.friend);
+      this.props.openDApp(this.props.availableDApps[index].publicKey, this.props.partner);
     }
   };
 
@@ -263,7 +257,7 @@ const mapStateToProps = state => ({
   user: getCurrentAccount(state.accounts),
   isFetching: state.chat.isFetching,
   sessions: state.chat.chats,
-  friend: state.chat.chatProfile,
+  partner: state.chat.chatProfile,
   wallets: state.wallet.wallets,
   availableDApps: state.dApps.availableDApps,
   dAppsState: state.dApps,
@@ -273,10 +267,7 @@ const mapDispatchToProps = dispatch => ({
   showSpinner: () => dispatch(showSpinner()),
   hideSpinner: () => dispatch(hideSpinner()),
   sendMessage: (publicKey, msg) => dispatch(sendMessage(publicKey, msg)),
-  openDApp: (dAppPublicKey, secret, friend) => dispatch(openDApp(dAppPublicKey, {
-    chatSecret: secret,
-    friend,
-  })),
+  openDApp: (dAppPublicKey, partner) => dispatch(openDApp(dAppPublicKey, { partner })),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChatScreen);
