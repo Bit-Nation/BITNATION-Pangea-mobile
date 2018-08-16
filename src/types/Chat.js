@@ -4,13 +4,14 @@ export type ProfileType = {
   name: string,
   location: string,
   image: string,
-  identity_pub_key: string,
-  ethereum_pub_Key: string,
-  chat_id_key: string,
+  identityKey: string,
+  ethereumAddress: string,
+  ethereumPublicKey: string,
+  chatIdKey: string,
   timestamp: Date,
   version: number,
-  identity_key_signature: string,
-  ethereum_key_signature: string
+  identityKeySignature: string,
+  ethereumKeySignature: string
 };
 
 export type GiftedChatUserType = {
@@ -19,10 +20,10 @@ export type GiftedChatUserType = {
 };
 
 export type DAppMessageType = {
-  dapp_public_key: string,
+  dAppPublicKey: string,
   type: string,
   params: Object,
-  should_send: boolean,
+  shouldSend: boolean,
 };
 
 export type GiftedChatMessageType = {

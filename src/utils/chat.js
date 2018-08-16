@@ -40,8 +40,8 @@ export function createGiftedChatMessageObjects(sender: Account, receiver: Profil
     createdAt.setUTCMilliseconds(data.created_at / 1000000);
 
     const user = data.received ?
-      { _id: receiver.identity_pub_key, name: receiver.name } :
-      // sender.id is not an identity key, but there is no difference because it can't be the same as someone's identity_pub_key
+      { _id: receiver.identityKey, name: receiver.name } :
+      // sender.id is not an identity key, but there is no difference because it can't be the same as someone's identityKey
       { _id: sender.id, name: sender.name };
 
     let dAppMessage: DAppMessageType | null = null;
@@ -50,7 +50,7 @@ export function createGiftedChatMessageObjects(sender: Account, receiver: Profil
         const dAppMessageJSON = JSON.parse(data.dapp);
         dAppMessage = {
           ...dAppMessageJSON,
-          dapp_public_key: Buffer.from(dAppMessageJSON.dapp_public_key, 'base64').toString('hex'),
+          dAppPublicKey: Buffer.from(dAppMessageJSON.dapp_public_key, 'base64').toString('hex'),
         };
       } catch (error) {
         console.log(`[CHAT] Unable to parse DApp message: ${data.dapp}`);

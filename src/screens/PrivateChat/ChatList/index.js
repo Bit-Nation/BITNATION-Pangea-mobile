@@ -120,12 +120,11 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
           this.setState({ loading: true });
           const profile = await this.getPublicKeyFromClipboard();
           this.setState({
-            publicKey: profile.identity_pub_key,
+            publicKey: profile.identityKey,
             profile,
             showModal: NEW_CHAT_MODAL_KEY,
           });
         } catch (error) {
-          console.log(`[CHAT] Strange error: ${JSON.stringify(error)}`);
           this.setState({
             publicKey: '',
             profile: null,
@@ -168,7 +167,7 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
       return;
     }
 
-    const chatSession = _.find(this.props.chatSessions, session => session.publicKey === partnerProfile.identity_pub_key);
+    const chatSession = _.find(this.props.chatSessions, session => session.publicKey === partnerProfile.identityKey);
 
     if (chatSession != null) {
       this.onChatSelect(chatSession);
@@ -192,7 +191,7 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
         ...screen('PRIVATE_CHAT_SCREEN'),
         passProps: {
           userPublicKey: result.userPublicKey,
-          recipientPublicKey: partnerProfile.identity_pub_key,
+          recipientPublicKey: partnerProfile.identityKey,
         },
       });
     });
