@@ -16,7 +16,6 @@ import GlobalStyles from '../../global/Styles';
 import { renderDAppMessage } from '../../actions/dApps';
 import i18n from '../../global/i18n';
 import { getDApp, type State as DAppsState } from '../../reducers/dApps';
-import type { DAppChatContext } from '../../types/DApp';
 
 type Props = {
   /**
