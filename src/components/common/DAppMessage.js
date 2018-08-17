@@ -14,9 +14,9 @@ import Root from '../../DAppsSDK/0.0.1/components/Root';
 import type { DAppMessageType } from '../../types/Chat';
 import GlobalStyles from '../../global/Styles';
 import { renderDAppMessage } from '../../actions/dApps';
-import Loading from './Loading';
 import i18n from '../../global/i18n';
 import { getDApp, type State as DAppsState } from '../../reducers/dApps';
+import type { DAppChatContext } from '../../types/DApp';
 
 type Props = {
   /**
@@ -24,9 +24,13 @@ type Props = {
    */
   message: DAppMessageType,
   /**
+   * @desc Context to pass to messages renderer.
+   */
+  context: DAppChatContext,
+  /**
    * @desc Function to render DApp message and get layout.
    */
-  renderDAppMessage: (message: DAppMessageType, callback: (layout: ?Object) => void) => void,
+  renderDAppMessage: (message: DAppMessageType, context: DAppChatContext, callback: (layout: ?Object) => void) => void,
   /**
    * @desc DApp redux state.
    */
@@ -47,10 +51,7 @@ const styles = MediaQueryStyleSheet.create({
   },
 
   dAppMessageContainer: {
-    paddingTop: 8,
-    paddingBottom: 4,
-    paddingLeft: 8,
-    paddingRight: 8,
+    paddingTop: 6,
     flexGrow: 1,
     alignItems: 'stretch',
     justifyContent: 'center',
@@ -73,7 +74,7 @@ class DAppMessage extends React.Component<Props, State> {
       isRendering: true,
       layout: null,
     };
-    this.props.renderDAppMessage(props.message, (layout) => {
+    this.props.renderDAppMessage(props.message, props.context, (layout) => {
       this.setState(() => ({
         isRendering: false,
         layout,
@@ -133,8 +134,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  renderDAppMessage(message, callback) {
-    dispatch(renderDAppMessage(message, callback));
+  renderDAppMessage(message, context, callback) {
+    dispatch(renderDAppMessage(message, context, callback));
   },
 });
 

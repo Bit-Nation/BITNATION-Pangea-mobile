@@ -7,7 +7,7 @@ import {
   DAPPS_LIST_UPDATED,
   OPEN_DAPP,
   STORE_DAPP_MODAL,
-  CLEAN_DAPP_MODAL,
+  CLEAN_DAPP_MODAL, RENDER_DAPP_MESSAGE,
 } from '../actions/dApps';
 import { SERVICES_DESTROYED } from '../actions/serviceContainer';
 import { type DAppModalInfo } from '../types/DApp';
