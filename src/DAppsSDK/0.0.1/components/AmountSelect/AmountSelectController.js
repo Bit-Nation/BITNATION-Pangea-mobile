@@ -28,6 +28,7 @@ export type Props = {
 class AmountSelectController extends Component<Props & InternalProps, *> {
   static validNativeProps = [
     'style',
+    'changeCurrencyEnabled',
   ];
 
   static callbackProps = [

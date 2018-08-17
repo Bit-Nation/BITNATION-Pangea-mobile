@@ -2,6 +2,7 @@
 
 import { convertFromPanthalassa } from '../../utils/mapping/dapp';
 import type { DApp } from '../../types/DApp';
+import type { DAppMessageType } from '../../types/Chat';
 import * as Panthalassa from '../panthalassa';
 
 const DAPP_START_TIMEOUT = 30;
@@ -43,12 +44,12 @@ export default class DAppsService {
     return Panthalassa.panthalassaCallDAppFunction(dAppPublicKey, id, JSON.stringify(params));
   }
 
-  static async renderDAppMessage(dAppPublicKey: string, params: Object, context: Object) {
+  static async renderDAppMessage(message: DAppMessageType, context: Object) {
     return Panthalassa.panthalassaRenderMessage(
-      dAppPublicKey,
+      message.dAppPublicKey,
       JSON.stringify({
+        message,
         context,
-        params,
       }),
     );
   }
