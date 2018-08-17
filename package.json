@@ -15,7 +15,8 @@
     "postinstall": "./node_modules/.bin/rn-nodeify --install 'stream,buffer,vm,crypto,string_decoder,events,assert' --hack",
     "docs": "node_modules/.bin/documentation build src/services/container.js -f md > docs/main.md",
     "build:ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/Pangea/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios'",
-    "build:protofile": "pbjs -t static-module -w commonjs -o src/services/upstream/compiled.js src/services/upstream/request.proto src/services/upstream/response.proto"
+    "build:protofile": "pbjs -t static-module -w commonjs -o src/services/upstream/compiled.js src/services/upstream/request.proto src/services/upstream/response.proto",
+    "build:profile_protofile": "pbjs -t static-module -w commonjs -o src/services/chat/compiled.js src/services/chat/profile.proto"
   },
   "dependencies": {
     "assert": "^1.4.1",
@@ -88,8 +89,8 @@
     "color": "^3.0.0",
     "coveralls": "^3.0.0",
     "documentation": "^5.3.5",
-    "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme": "3.3.0",
+    "enzyme-adapter-react-16": "1.1.1",
     "eslint": "^4.18.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.8.0",
