@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'stretch',
-    borderRadius: 5,
+    borderRadius: 15,
     backgroundColor: Colors.white,
   },
   textColumn: {
@@ -45,11 +45,12 @@ const styles = StyleSheet.create({
   button: {
     height: 25,
     borderRadius: 14,
-    width: 87,
+    width: 80,
   },
   buttonsContainer: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
+    marginLeft: 2,
   },
   leftButton: {
     marginRight: 8,

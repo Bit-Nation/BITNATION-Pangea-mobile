@@ -1,10 +1,10 @@
 // @flow
 
 import React from 'react';
-import { View } from 'react-native';
+import { View, Modal, WebView } from 'react-native';
 import { connect } from 'react-redux';
+import { Item, Left, Icon } from 'native-base';
 import _ from 'lodash';
-
 import Background from '../../components/common/BackgroundImage';
 import { screen } from '../../global/Screens';
 import List from './List';
@@ -26,7 +26,7 @@ type Props = {
    * @desc React Native Navigation navigator object.
    */
   navigator: Navigator,
-}
+};
 
 type TestingModeProps = {
   /**
@@ -37,7 +37,7 @@ type TestingModeProps = {
    * @desc Function to remove all wallets.
    */
   removeWallets: () => void,
-}
+};
 
 type Actions = {
   /**
@@ -49,35 +49,52 @@ type Actions = {
    * @desc Function to request wallet list update.
    */
   updateWalletList: () => void,
-}
+};
 
 type State = {
   /**
    * @desc Flag to control Refreshing on Pull to Refresh
    */
   pullToRefreshInProgress: boolean,
-}
+  /**
+   * @desc Flag to control opening of transactions Modal
+   */
+  transactionsVisible: boolean,
+};
 
-class WalletScreen extends NavigatorComponent<Props & TestingModeProps & Actions & WalletState, State> {
+class WalletScreen extends NavigatorComponent<
+  Props & TestingModeProps & Actions & WalletState,
+  State,
+> {
   constructor(props) {
     super(props);
 
-    this.state = { pullToRefreshInProgress: false };
+    this.state = {
+      pullToRefreshInProgress: false,
+      transactionsVisible: false,
+    };
     this.props.updateWalletList();
   }
 
   updateNavigation() {
     this.props.navigator.setButtons({
-      leftButtons: this.props.testingModeActive ? [{
-        id: REMOVE_WALLETS_BUTTON,
-        title: i18n.t('testingMode.removeWallets'),
-      }] : [],
+      leftButtons: this.props.testingModeActive
+        ? [
+          {
+            id: REMOVE_WALLETS_BUTTON,
+            title: i18n.t('testingMode.removeWallets'),
+          },
+        ]
+        : [],
       rightButtons: [],
     });
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.isRefreshing !== nextProps.isRefreshing && nextProps.isRefreshing === false) {
+    if (
+      this.props.isRefreshing !== nextProps.isRefreshing &&
+      nextProps.isRefreshing === false
+    ) {
       this.setState({ pullToRefreshInProgress: false });
     }
   }
@@ -101,9 +118,7 @@ class WalletScreen extends NavigatorComponent<Props & TestingModeProps & Actions
     this.props.navigator.showModal(screen('CREATE_KEY_INTRODUCTION_SCREEN'));
   };
 
-  restoreWallet = () => {
-
-  };
+  restoreWallet = () => {};
 
   sendMoney = (wallet) => {
     this.props.selectWallet(wallet);
@@ -116,28 +131,32 @@ class WalletScreen extends NavigatorComponent<Props & TestingModeProps & Actions
   };
 
   transactions = () => {
-    console.log('Hello');
-  }
+    this.setState({ transactionsVisible: true });
+  };
 
   onRefresh = () => {
     this.setState({ pullToRefreshInProgress: true });
     this.props.updateWalletList();
   };
 
+  close() {
+    this.setState({ transactionsVisible: false });
+  }
+
   render() {
     return (
       <View style={styles.screenContainer}>
         <Background />
         <FakeNavigationBar />
-
         <View style={styles.bodyContainer}>
-
           <ScreenTitle title={i18n.t('screens.wallet.title')} />
-          {this.props.wallets === null || _.isEmpty(this.props.wallets) ? <EmptyWalletScreen
-            onCreateWallet={this.createWallet}
-            onRestoreWallet={this.restoreWallet}
-          />
-            : <List
+          {this.props.wallets === null || _.isEmpty(this.props.wallets) ? (
+            <EmptyWalletScreen
+              onCreateWallet={this.createWallet}
+              onRestoreWallet={this.restoreWallet}
+            />
+          ) : (
+            <List
               wallets={this.props.wallets}
               onSendPress={this.sendMoney}
               onReceivePress={this.receiveMoney}
@@ -145,8 +164,28 @@ class WalletScreen extends NavigatorComponent<Props & TestingModeProps & Actions
               onRefresh={this.onRefresh}
               isRefreshing={this.state.pullToRefreshInProgress}
             />
-          }
+          )}
         </View>
+        <Modal
+          animationType='slide'
+          transparent={false}
+          visible={this.state.transactionsVisible}
+          onRequestClose={() => this.close()}
+          backDropOpacity={1}
+        >
+          <View>
+            <Item onPress={() => this.setState({ transactionsVisible: false })}>
+              <Left>
+                <Icon name='ios-close' style={styles.closeIcon} />
+              </Left>
+            </Item>
+          </View>
+          <WebView
+            source={{
+              uri: 'https://etherscan.io/address/{this.props.wallet.ethAddress}',
+            }}
+          />
+        </Modal>
       </View>
     );
   }
@@ -167,4 +206,7 @@ const mapDispatchToProps = dispatch => ({
   removeWallets() {},
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(WalletScreen);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(WalletScreen);
