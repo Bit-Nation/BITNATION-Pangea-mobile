@@ -445,7 +445,7 @@ public class PanthalassaModule extends ReactContextBaseJavaModule {
             public void run() {
                 try {
                     String response = Panthalassa.messages(jsonParams.getString("partner"),
-                            jsonParams.getInt("start"),
+                            jsonParams.getString("startStr"),
                             jsonParams.getInt("amount"));
                     promise.resolve(response);
                 } catch (Exception e) {
