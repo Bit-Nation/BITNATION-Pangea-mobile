@@ -104,7 +104,7 @@ const styles = MediaQueryStyleSheet.create({
     fontSize: 17,
     color: Colors.BitnationBlackAlphaColor,
     paddingTop: 5,
-    paddingLeft: 60,
+    paddingLeft: 4,
     paddingRight: 15,
   },
 });
