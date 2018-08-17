@@ -143,15 +143,22 @@ export function* performDAppCallback(action: PerformDAppCallbackAction): Generat
  */
 export function* renderDAppMessage(action: RenderDAppMessageAction): Generator<*, *, *> {
   const { message, context: messageContext, callback } = action;
-  const { dAppPublicKey, params } = message;
+  const { dAppPublicKey } = message;
   const { dApps: { contexts } } = yield select();
   const context = contexts[dAppPublicKey] || {};
 
   try {
-    const layoutString = yield call(DAppsService.renderDAppMessage, dAppPublicKey, params, { ...context, ...messageContext });
+    const layoutString = yield call(DAppsService.renderDAppMessage, message, { ...context, ...messageContext });
+    console.log(`[DAPP] layout string: ${JSON.stringify(layoutString)}`);
     let layout = JSON.parse(layoutString);
-    if (Array.isArray(layout.children)) {
+    if (Array.isArray(layout.children) && layout.children.length > 0) {
       [layout] = layout.children;
+    }
+    if (layout.type === undefined) {
+      // Fallback to empty view in case of empty layout.
+      layout.type = 'view';
+      layout.props = {};
+      layout.children = [];
     }
     yield call(callback, layout);
   } catch (error) {

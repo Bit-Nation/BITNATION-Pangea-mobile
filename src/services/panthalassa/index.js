@@ -189,9 +189,9 @@ export async function panthalassaOpenDApp(id: string, context: string): Promise<
  * @param {string} args TODO
  * @returns {Promise<*>} Boolean response about operation's result
  */
-export async function panthalassaCallDAppFunction(dAppId: string, id: number, args: string): Promise<boolean> {
+export async function panthalassaCallDAppFunction(signingKey: string, id: number, args: string): Promise<boolean> {
   return Panthalassa.PanthalassaCallDAppFunction({
-    dAppId,
+    signingKey,
     id,
     args,
   });
