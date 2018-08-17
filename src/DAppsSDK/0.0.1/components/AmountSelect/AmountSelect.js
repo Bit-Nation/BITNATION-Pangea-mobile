@@ -52,6 +52,12 @@ export default class AmountSelect extends Component<Props & InternalProps> {
     changeCurrencyEnabled: true,
   };
 
+  constructor(props: Props & InternalProps) {
+    super(props);
+
+    this.reportFinalChange();
+  }
+
   onSelectWallet = (index: number) => {
     if (index < this.props.wallets.length) {
       const wallet = this.props.wallets[index];
