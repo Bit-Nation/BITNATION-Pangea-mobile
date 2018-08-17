@@ -125,19 +125,7 @@ class ChatScreen extends Component<Props, *> {
 
   onSelectDAppToOpen = (index) => {
     if (index < this.props.availableDApps.length) {
-      const context: DAppChatContext = {
-        partner: {
-          name: this.props.partner.name,
-          identityKey: this.props.partner.identityKey,
-          ethereumAddress: this.props.partner.ethereumAddress,
-        },
-        account: {
-          name: this.props.userPublicKey,
-          identityKey: this.props.userPublicKey,
-          ethereumAddress: this.props.wallets[0].ethAddress,
-        },
-      };
-      this.props.openDApp(this.props.availableDApps[index].publicKey, context);
+      this.props.openDApp(this.props.availableDApps[index].publicKey, this.buildContext());
     }
   };
 
@@ -153,6 +141,23 @@ class ChatScreen extends Component<Props, *> {
         break;
     }
   };
+
+  buildContext() {
+    const context: DAppChatContext = {
+      partner: {
+        name: this.props.partner.name,
+        identityKey: this.props.partner.identityKey,
+        ethereumAddress: this.props.partner.ethereumAddress,
+      },
+      account: {
+        name: this.props.user.name,
+        identityKey: this.props.userPublicKey,
+        ethereumAddress: this.props.wallets[0].ethAddress,
+      },
+    };
+
+    return context;
+  }
 
   dAppsActionSheet: any;
   messageActionSheet: any;
@@ -226,7 +231,7 @@ class ChatScreen extends Component<Props, *> {
             const { dAppMessage } = currentMessage;
             if (dAppMessage == null) return null;
 
-            return (<DAppMessage message={dAppMessage} />);
+            return (<DAppMessage message={dAppMessage} context={this.buildContext()} />);
           }}
           renderMessageText={(props) => {
             const { currentMessage } = props;

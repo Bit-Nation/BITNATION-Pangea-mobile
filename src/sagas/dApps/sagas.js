@@ -142,13 +142,17 @@ export function* performDAppCallback(action: PerformDAppCallbackAction): Generat
  * @return {void}
  */
 export function* renderDAppMessage(action: RenderDAppMessageAction): Generator<*, *, *> {
-  const { message, callback } = action;
+  const { message, context: messageContext, callback } = action;
   const { dAppPublicKey, params } = message;
   const { dApps: { contexts } } = yield select();
   const context = contexts[dAppPublicKey] || {};
 
   try {
-    const layout = yield call(DAppsService.renderDAppMessage, dAppPublicKey, params, context);
+    const layoutString = yield call(DAppsService.renderDAppMessage, dAppPublicKey, params, { ...context, ...messageContext });
+    let layout = JSON.parse(layoutString);
+    if (Array.isArray(layout.children)) {
+      [layout] = layout.children;
+    }
     yield call(callback, layout);
   } catch (error) {
     console.log(`[DAPP] Fail to render message: ${JSON.stringify(message)} with error: ${error}`);
