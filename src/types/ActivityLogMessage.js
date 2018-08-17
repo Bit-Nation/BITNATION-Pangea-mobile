@@ -6,5 +6,5 @@ export type ActivityLogMessage = {
   msg: string,
   params: string,
   interpret: boolean,
-  created_at: Date
+  createdAt: Date
 };

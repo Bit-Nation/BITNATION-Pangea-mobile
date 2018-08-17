@@ -4,13 +4,10 @@ import ethers from 'ethers';
 import { NativeEventEmitter, NativeModules } from 'react-native';
 // $FlowFixMe Flow doesn't want to allow import buffer for some reason.
 import { Buffer } from 'buffer';
-import { Navigation } from 'react-native-navigation';
 
-// Javascript static code of the proto file
 import { api_proto as apiProto } from './compiled';
-
 import EthereumService from '../ethereum';
-import { screen } from '../../global/Screens';
+import { type DAppModalInfo } from '../../types/DApp';
 
 const { Panthalassa } = NativeModules;
 const { Response, Request } = apiProto;
@@ -21,6 +18,7 @@ export default class UpstreamService {
   eventsSubscription: any;
   ethereumService: EthereumService;
   onUIAPIRequest: ?((data: Object) => void);
+  onRenderModal: ?((data: DAppModalInfo) => void);
 
   constructor(ethereumService: EthereumService) {
     this.ethereumService = ethereumService;
@@ -33,6 +31,14 @@ export default class UpstreamService {
 
   unsubscribeFromUIAPI() {
     this.onUIAPIRequest = null;
+  }
+
+  subscribeToModalRender(handler: ((data: DAppModalInfo) => void)) {
+    this.onRenderModal = handler;
+  }
+
+  unsubscribeFromModalRender() {
+    this.onRenderModal = null;
   }
 
   startListening = () => {
@@ -84,19 +90,22 @@ export default class UpstreamService {
   };
 
   handleShowModal = (id: string, info: any) => {
-    const { title, layout, dAppPublicKey: dAppPublicKeyBytes } = info;
+    const { uiID, layout, dAppPublicKey: dAppPublicKeyBase64 } = info;
     try {
-      const dAppPublicKey = Buffer.from(dAppPublicKeyBytes).toString('hex');
+      const dAppPublicKey = Buffer.from(dAppPublicKeyBase64, 'base64').toString('hex');
       const JSONLayout = JSON.parse(layout);
+      // Add type for root component.
+      JSONLayout.type = 'modalRoot';
 
-      Navigation.showModal({
-        ...screen('DAPP_MODAL_SCREEN'),
-        title,
-        passProps: {
+      if (typeof this.onRenderModal === 'function') {
+        this.onRenderModal({
           layout: JSONLayout,
           dAppPublicKey,
-        },
-      });
+          modalID: uiID,
+        });
+      } else {
+        throw new Error('Render modal saga is not registered');
+      }
       return this.sendSuccessResponse(id, {});
     } catch (error) {
       return this.sendErrorResponse(id, error);
