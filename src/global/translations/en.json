@@ -310,7 +310,15 @@
       "startChat": "Begin Chat",
       "newChat": "New Chat",
       "invalidKey": "Invalid or Missing Key",
-      "inviteSent": "Invite Sent"
+      "inviteSent": "Invite Sent",
+      "menu": {
+        "filterChatList": "Filter Chat List",
+        "markAllRead": "Mark all as read",
+        "shareIdentityKey": "Share my Identity Key",
+        "managerChatSections": "Manager Chat Sections",
+        "restoreChat": "Restore Chat",
+        "settings": "Settings"
+      }
     },
     "migration": {
       "title": "Migration",
@@ -406,7 +414,7 @@
     "profile": {
       "title": "Profile",
       "tabTitle": "$t(tabbar.profile)",
-      "copyKey": "Copy Identity Key",
+      "shareKey": "Share Identity Key",
       "empty": {
         "createProfilePanel": {
           "title": "Become a World Citizen",
