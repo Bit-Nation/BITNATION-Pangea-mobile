@@ -115,6 +115,10 @@ class WalletScreen extends NavigatorComponent<Props & TestingModeProps & Actions
     this.props.navigator.push(screen('RECEIVE_MONEY_SCREEN'));
   };
 
+  transactions = () => {
+    console.log('Hello');
+  }
+
   onRefresh = () => {
     this.setState({ pullToRefreshInProgress: true });
     this.props.updateWalletList();
@@ -137,6 +141,7 @@ class WalletScreen extends NavigatorComponent<Props & TestingModeProps & Actions
               wallets={this.props.wallets}
               onSendPress={this.sendMoney}
               onReceivePress={this.receiveMoney}
+              onTransactionPress={this.transactions}
               onRefresh={this.onRefresh}
               isRefreshing={this.state.pullToRefreshInProgress}
             />
