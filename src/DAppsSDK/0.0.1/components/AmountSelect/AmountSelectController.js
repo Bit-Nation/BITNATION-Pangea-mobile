@@ -17,6 +17,14 @@ export type Props = {
    * @desc Callback on selected amount change.
    */
   onAmountSelected: ({ amount: string, currency: CurrencyType, walletAddress: string, isValid: boolean, isLessThanBalance: boolean }) => void,
+  /**
+   * @desc Amount to be set at component constructing
+   */
+  initialAmount: string,
+  /**
+   * @desc Currency to be set at component constructing
+   */
+  initialCurrency: string,
   nativeProps: {
     /**
      * @desc Style object to pass to container.
@@ -35,12 +43,17 @@ class AmountSelectController extends Component<Props & InternalProps, *> {
     'onAmountSelected',
   ];
 
+  static customProps = [
+    'initialAmount',
+    'initialCurrency',
+  ];
+
   constructor(props: Props & InternalProps) {
     super(props);
 
     this.state = {
-      amount: '',
-      currency: 'ETH',
+      amount: this.props.initialAmount || '',
+      currency: this.props.initialCurrency || 'ETH',
     };
   }
 
