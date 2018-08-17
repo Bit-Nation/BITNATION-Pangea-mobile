@@ -1,7 +1,9 @@
+// @flow
+
 import { put, call } from 'redux-saga/effects';
 import type { Realm } from 'realm';
 
-import { messagesUpdated, AddNewMessageAction } from '../../actions/activity';
+import { messagesUpdated, type AddNewMessageAction } from '../../actions/activity';
 import defaultDB from '../../services/database';
 import type { MessageJobType as DBMessage } from '../../services/database/schemata';
 import {
@@ -42,18 +44,18 @@ export function* startDatabaseListening(): Generator<*, *, *> {
 }
 
 export const buildMessageObject = (
-  highestId,
-  accountId,
-  message,
-  params,
-  interpret,
+  highestId: number,
+  accountId: string,
+  message: string,
+  params: Object,
+  interpret: boolean,
 ): ActivityLogMessage => ({
   id: highestId,
   accountId,
   msg: message,
   params: JSON.stringify(params),
   interpret,
-  created_at: new Date(),
+  createdAt: new Date(),
 });
 
 /**
@@ -61,8 +63,8 @@ export const buildMessageObject = (
  * @param {AddNewMessageAction} action ADD_MESSAGE action
  * @return {void}
  */
-export function* addNewMessageSaga(action: AddNewMessageAction) {
-  const db = yield defaultDB;
+export function* addNewMessageSaga(action: AddNewMessageAction): Generator<*, *, *> {
+  const db: Realm = yield defaultDB;
   const params = action.params || {};
   const interpret = action.interpret !== false;
   const messages = db.objects('MessageJob').sorted('id', true);

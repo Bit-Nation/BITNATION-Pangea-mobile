@@ -408,7 +408,7 @@ RCT_REMAP_METHOD(PanthalassaCallDAppFunction,
   
   BOOL response;
   NSError *error = nil;
-  response = PanthalassaCallDAppFunction([RCTConvert NSString:config[@"dAppId"]],
+  response = PanthalassaCallDAppFunction([RCTConvert NSString:config[@"signingKey"]],
                                          [[RCTConvert NSNumber:config[@"id"]] longValue],
                                          [RCTConvert NSString:config[@"args"]],
                                              &error);
@@ -483,7 +483,7 @@ RCT_REMAP_METHOD(PanthalassaMessages,
   NSError *error = nil;
   
   response = PanthalassaMessages([RCTConvert NSString:config[@"partner"]],
-                                 [[RCTConvert NSNumber:config[@"start"]] intValue],
+                                 [RCTConvert NSString:config[@"startStr"]],
                                  [[RCTConvert NSNumber:config[@"amount"]] longValue],
                                   &error);
   

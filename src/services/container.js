@@ -8,7 +8,6 @@ import EthereumService from './ethereum';
 import WalletService from './wallet';
 import NationsService from './nations';
 import UpstreamService from './upstream/upstream';
-import DAppsWalletService from './dAppsWalletService';
 
 export default class ServiceContainer {
   static instance: ServiceContainer = new ServiceContainer();
@@ -17,10 +16,9 @@ export default class ServiceContainer {
   walletService: WalletService | null = null;
   nationsService: NationsService | null = null;
   upstreamService: UpstreamService | null = null;
-  dAppsWalletService: DAppsWalletService | null = null;
 
   initServices(account: Account, ethPrivateKey: string) {
-    const { service, serviceBuilder } = EthereumServiceFactory({
+    const { service } = EthereumServiceFactory({
       privateKey: normalizeEthPrivateKey(ethPrivateKey),
       networkType: account.networkType,
       app: 'Default Application',
@@ -29,7 +27,6 @@ export default class ServiceContainer {
     this.walletService = new WalletService(this.ethereumService);
     this.nationsService = new NationsService(this.ethereumService, defaultDB, account.id);
     this.upstreamService = new UpstreamService(this.ethereumService);
-    this.dAppsWalletService = new DAppsWalletService(this.ethereumService, serviceBuilder, account);
   }
 
   destroyServices() {
@@ -43,6 +40,5 @@ export default class ServiceContainer {
       this.upstreamService.cleanUp();
     }
     this.upstreamService = null;
-    this.dAppsWalletService = null;
   }
 }

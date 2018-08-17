@@ -42,22 +42,41 @@ describe('db', () => {
       realm2.close();
     });
 
-    test('schema v3 - v4', async () => {
-      expect.assertions(4);
+    test('schema v3 - v6', async () => {
+      expect.assertions(5);
       const dbPath = randomDbPath();
       const databaseGenerator = factory(dbPath, 3);
 
-      const realm3 = await databaseGenerator.next().value;
+      const realm3: Realm = await databaseGenerator.next().value;
       expect(Realm.schemaVersion(dbPath)).toBe(3);
 
-      const realm4 = await databaseGenerator.next(realm3).value;
+      const realm4: Realm = await databaseGenerator.next(realm3).value;
       expect(Realm.schemaVersion(dbPath)).toBe(4);
 
-      const realm5 = await databaseGenerator.next(realm4).value;
+      const realm5: Realm = await databaseGenerator.next(realm4).value;
       expect(Realm.schemaVersion(dbPath)).toBe(5);
 
-      const realm6 = await databaseGenerator.next(realm5).value;
+      // Add profile to DB
+      realm5.write(() => {
+        realm5.create('Profile', {
+          name: 'name',
+          location: 'location',
+          image: 'image',
+          identity_pub_key: 'identity_pub_key',
+          ethereum_pub_Key: 'ethereum_pub_Key',
+          chat_id_key: 'chat_id_key',
+          timestamp: new Date(),
+          version: 0,
+          identity_key_signature: 'identity_key_signature',
+          ethereum_key_signature: 'ethereum_key_signature',
+        });
+      });
+
+      const realm6: Realm = await databaseGenerator.next(realm5).value;
       expect(Realm.schemaVersion(dbPath)).toBe(6);
+
+      // Check that profile was deleted correctly.
+      expect(realm6.objects('Profile')).toHaveLength(0);
 
       realm6.close();
     });

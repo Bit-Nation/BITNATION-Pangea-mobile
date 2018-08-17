@@ -4,6 +4,7 @@
 import React, { Component } from 'react';
 import { View, Platform, Clipboard } from 'react-native';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 import {
   GiftedChat,
   Composer,
@@ -22,15 +23,16 @@ import Loading from '../../../components/common/Loading';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import { getCurrentAccount } from '../../../reducers/accounts';
 import { getSelectedSession } from '../../../utils/chat';
-import type { ChatSessionType, ProfileType, DAppMessageType } from '../../../types/Chat';
+import type { GiftedChatMessageType, ChatSessionType, ProfileType } from '../../../types/Chat';
+import type { DAppChatContext, DApp } from '../../../types/DApp';
 import { errorAlert } from '../../../global/alerts';
-import i18n from '../../../global/i18n';
-import type { DAppType } from '../../../dapps';
-import { openDApp } from '../../../actions/nativeDApps';
 import type { Account } from '../../../types/Account';
-import { getDApp } from '../../../reducers/nativeDApps';
-import type { State as DAppsState } from '../../../reducers/nativeDApps';
 import type { WalletType } from '../../../types/Wallet';
+import type { State as DAppsState } from '../../../reducers/dApps';
+import { getDApp } from '../../../reducers/dApps';
+import { openDApp, setDAppContext } from '../../../actions/dApps';
+import i18n from '../../../global/i18n';
+import DAppMessage from '../../../components/common/DAppMessage';
 
 type Props = {
   /**
@@ -46,9 +48,9 @@ type Props = {
    */
   isFetching: boolean,
   /**
-   * @desc Shared secret for the chat session
+   * @desc The public key of the chat recipient
    */
-  secret: string,
+  recipientPublicKey: string,
   /**
    * @desc Public key of the current user
    */
@@ -63,10 +65,11 @@ type Props = {
   hideSpinner: () => void,
   /**
    * @desc Function to send a human message
+   * @param {string} recipientPublicKey The recipient's public key
    * @param {string} msg Message to be sent
    * @param {Object} session Session object
    */
-  sendMessage: (msg: string, session: Object) => void,
+  sendMessage: (recipientPublicKey: string, msg: string) => void,
   /**
    * @desc Array of chat sessions.
    */
@@ -74,19 +77,23 @@ type Props = {
   /**
    * @desc Array of available DApps.
    */
-  availableDApps: Array<DAppType>,
+  availableDApps: Array<DApp>,
   /**
    * @desc The whole DApps reducer state.
    */
   dAppsState: DAppsState,
   /**
-   * @desc Profile of chat friend.
+   * @desc Profile of chat partner.
    */
-  friend: ProfileType,
+  partner: ProfileType,
   /**
    * @desc Open DApp.
    */
-  openDApp: (dAppPublicKey: string, secret: string, friend: ProfileType) => void,
+  openDApp: (dAppPublicKey: string) => void,
+  /**
+   * @desc Set context for DApps.
+   */
+  setDAppContext: (context: DAppChatContext | null) => void,
   /**
    * @desc Array of user wallets.
    */
@@ -102,6 +109,10 @@ class ChatScreen extends Component<Props, *> {
     };
   }
 
+  componentDidMount() {
+    this.props.setDAppContext(this.buildContext());
+  }
+
   componentDidUpdate(prevProps, prevState) {
     const { selectedMessage } = this.state;
     if (selectedMessage === prevState.selectedMessage) return;
@@ -110,20 +121,23 @@ class ChatScreen extends Component<Props, *> {
     this.messageActionSheet.show();
   }
 
+  componentWillUnmount() {
+    this.props.setDAppContext(null);
+  }
+
   onSend(messages: Array<any> = []) {
     const message = messages[0].text;
-    const session = getSelectedSession(this.props.sessions, this.props.secret);
+    const session = getSelectedSession(this.props.sessions, this.props.recipientPublicKey);
     if (session == null) {
       this.showSessionClosedAlert();
       return;
     }
-    this.props.sendMessage(message, session);
+    this.props.sendMessage(this.props.recipientPublicKey, message);
   }
 
   onSelectDAppToOpen = (index) => {
-    const session = getSelectedSession(this.props.sessions, this.props.secret);
-    if (index < this.props.availableDApps.length && session) {
-      this.props.openDApp(this.props.availableDApps[index].identityPublicKey, this.props.secret, this.props.friend);
+    if (index < this.props.availableDApps.length) {
+      this.props.openDApp(this.props.availableDApps[index].publicKey);
     }
   };
 
@@ -132,13 +146,33 @@ class ChatScreen extends Component<Props, *> {
     if (selectedMessage == null) return;
 
     switch (index) {
-      case 0:
-        Clipboard.setString(selectedMessage.text);
+      case 0: {
+        const textToCopy = (selectedMessage.dAppMessage && selectedMessage.dAppMessage.params.contentToCopy) || selectedMessage.text;
+        Clipboard.setString(textToCopy);
         break;
+      }
       default:
         break;
     }
   };
+
+  buildContext() {
+    const context: DAppChatContext = {
+      partner: {
+        name: this.props.partner.name,
+        identityKey: this.props.partner.identityKey,
+        ethereumAddress: this.props.partner.ethereumAddress,
+      },
+      account: {
+        name: this.props.user.name,
+        identityKey: this.props.userPublicKey,
+        ethereumAddress: this.props.wallets[0].ethAddress,
+      },
+    };
+
+    return context;
+  }
+
   dAppsActionSheet: any;
   messageActionSheet: any;
 
@@ -152,30 +186,39 @@ class ChatScreen extends Component<Props, *> {
       i18n.t('screens.chat.cancel'),
     ];
 
-    const session = getSelectedSession(this.props.sessions, this.props.secret);
+    const session = getSelectedSession(this.props.sessions, this.props.recipientPublicKey);
     if (session == null) {
       this.showSessionClosedAlert();
       return <View />;
     }
-    let sortedMessages = [];
-    if (session.decryptedMessages && session.decryptedMessages.length > 0) {
-      sortedMessages = session.decryptedMessages.slice().reverse();
+    let sortedMessages: Array<GiftedChatMessageType> = [];
+    if (session.messages && session.messages.length > 0) {
+      sortedMessages = _.sortBy(session.messages, message => message.createdAt).reverse();
     }
-    sortedMessages = sortedMessages.map((message) => {
-      if (message.dAppMessage == null || message.dAppMessage.dapp_id == null) return message;
-      const dAppMessage: DAppMessageType = (message: any).dAppMessage;
+    sortedMessages = sortedMessages
+      .map((message) => {
+        if (message.dAppMessage == null) return message;
+        const { dAppMessage } = message;
 
-      const dApp = getDApp(this.props.dAppsState, dAppMessage.dapp_id);
-      if (dApp == null) return message;
+        const dApp = getDApp(this.props.dAppsState, dAppMessage.dAppPublicKey);
+        if (dApp == null) {
+          return {
+            ...message,
+            user: {
+              _id: dAppMessage.dAppPublicKey,
+              name: '??',
+            },
+          };
+        }
 
-      return {
-        ...message,
-        user: {
-          _id: dApp.identityPublicKey,
-          name: dApp.name,
-        },
-      };
-    });
+        return {
+          ...message,
+          user: {
+            _id: dApp.publicKey,
+            name: dApp.name,
+          },
+        };
+      });
 
     const sendingUser = {
       _id: this.props.userPublicKey,
@@ -184,7 +227,7 @@ class ChatScreen extends Component<Props, *> {
     return (
       <View style={styles.container}>
         <BackgroundImage />
-        <FakeNavigationBar />
+        <FakeNavigationBar navBarHidden={false} />
 
         <GiftedChat
           messages={sortedMessages}
@@ -197,6 +240,13 @@ class ChatScreen extends Component<Props, *> {
           renderInputToolbar={props => (
             <InputToolbar {...props} containerStyle={styles.inputToolbar} />
           )}
+          renderCustomView={(props) => {
+            const { currentMessage }: { currentMessage: GiftedChatMessageType } = props;
+            const { dAppMessage } = currentMessage;
+            if (dAppMessage == null) return null;
+
+            return (<DAppMessage message={dAppMessage} />);
+          }}
           renderMessageText={(props) => {
             const { currentMessage } = props;
             if (currentMessage.dAppMessage == null) {
@@ -204,22 +254,6 @@ class ChatScreen extends Component<Props, *> {
             }
 
             return null;
-          }}
-          renderCustomView={(props) => {
-            const { currentMessage } = props;
-            const { dAppMessage } = currentMessage;
-            if (dAppMessage == null) return null;
-
-            const dApp = getDApp(this.props.dAppsState, dAppMessage.dapp_id);
-            if (dApp == null) return null;
-            const MessageComponent = dApp.message;
-
-            return (<MessageComponent
-              dApp={dApp}
-              dAppMessage={dAppMessage}
-              currentAccount={this.props.user}
-              walletAddress={this.props.wallets[0].ethAddress}
-            />);
           }}
           renderBubble={props => (
             <Bubble
@@ -230,10 +264,6 @@ class ChatScreen extends Component<Props, *> {
             />
           )}
           onLongPress={(context, message) => {
-            if (message.dAppMessage != null) {
-              return;
-            }
-
             this.setState({
               selectedMessage: message,
             });
@@ -267,20 +297,18 @@ const mapStateToProps = state => ({
   user: getCurrentAccount(state.accounts),
   isFetching: state.chat.isFetching,
   sessions: state.chat.chats,
+  partner: state.chat.chatProfile,
+  wallets: state.wallet.wallets,
   availableDApps: state.dApps.availableDApps,
   dAppsState: state.dApps,
-  friend: state.chat.chatProfile,
-  wallets: state.wallet.wallets,
 });
 
 const mapDispatchToProps = dispatch => ({
   showSpinner: () => dispatch(showSpinner()),
   hideSpinner: () => dispatch(hideSpinner()),
-  sendMessage: (msg, session) => dispatch(sendMessage(msg, session)),
-  openDApp: (dAppPublicKey, secret, friend) => dispatch(openDApp(dAppPublicKey, {
-    chatSecret: secret,
-    friend,
-  })),
+  sendMessage: (publicKey, msg) => dispatch(sendMessage(publicKey, msg)),
+  openDApp: dAppPublicKey => dispatch(openDApp(dAppPublicKey)),
+  setDAppContext: context => dispatch(setDAppContext(context)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChatScreen);

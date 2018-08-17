@@ -1,10 +1,14 @@
 // @flow
 
-import { call, take, fork } from 'redux-saga/effects';
+import { call, take, fork, put } from 'redux-saga/effects';
 import { eventChannel, type Channel } from 'redux-saga';
 
 import ServiceContainer from '../../services/container';
 import UpstreamService from '../../services/upstream/upstream';
+import { stopDApp } from '../../actions/dApps';
+import { fetchDApps, stopDAppSaga } from '../dApps/sagas';
+
+import { panthalassaMessagePersisted } from '../../actions/chat';
 
 /**
  * @desc Handles UI API request.
@@ -15,15 +19,19 @@ export function* handleRequest(request: Object): Generator<*, *, *> {
   const { name, payload } = request;
   if (typeof name !== 'string' || typeof payload !== 'object') return;
 
-  // @todo Remove this once request handling is implemented.
-  yield;
-
   // @todo Handle requests.
   switch (name) {
-    case 'DAPP:PERSISTED': break;
+    case 'DAPP:PERSISTED': {
+      const { dapp_signing_key: publicKey } = payload;
+      yield call(stopDAppSaga, stopDApp(publicKey));
+      yield call(fetchDApps);
+      break;
+    }
     case 'MESSAGE:RECEIVED': break;
     case 'MESSAGE:DELIVERED': break;
-    case 'MESSAGE:PERSISTED': break;
+    case 'MESSAGE:PERSISTED':
+      yield put(panthalassaMessagePersisted(payload));
+      break;
     default: break;
   }
 }
