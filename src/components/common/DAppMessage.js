@@ -60,6 +60,11 @@ const styles = MediaQueryStyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
+  fallbackUIContainer: {
+    paddingLeft: 6,
+    paddingRight: 6,
+  },
 });
 
 class DAppMessage extends React.Component<Props, State> {
@@ -85,9 +90,11 @@ class DAppMessage extends React.Component<Props, State> {
       textToShow = i18n.t('dApps.failedDAppMessageRender', { dAppName: dApp.name });
     }
     return (
-      <Text style={styles.body}>
-        {textToShow}
-      </Text>
+      <View style={styles.fallbackUIContainer}>
+        <Text style={styles.body}>
+          {textToShow}
+        </Text>
+      </View>
     );
   }
 
