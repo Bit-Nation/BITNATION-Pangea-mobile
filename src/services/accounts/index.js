@@ -1,5 +1,6 @@
 // @flow
 
+import Config from 'react-native-config';
 import type { Mnemonic } from '../../types/Mnemonic';
 import { compressMnemonic, decompressMnemonic } from '../../utils/key';
 import type { Profile } from '../../types/Account';
@@ -43,6 +44,8 @@ export default class AccountsService {
       encrypted_key_manager: accountStore,
       signed_profile: signedProfile,
       enable_debugging: false,
+      private_chat_endpoint: Config.CHAT_WSS_ENDPOINT,
+      private_chat_bearer_token: Config.CHAT_TOKEN,
     });
 
     try {

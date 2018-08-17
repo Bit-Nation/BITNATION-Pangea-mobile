@@ -36,12 +36,12 @@ export default function createGiftedChatMessageObject(messagesData: Array<any>):
 export function createGiftedChatMessageObjects(sender: Account, receiver: ProfileType, messagesData: Array<any>): Array<GiftedChatMessageType> {
   const messages = [];
   messagesData.forEach((data) => {
-    let createdAt = new Date(0);
+    const createdAt = new Date(0);
     createdAt.setUTCMilliseconds(data.created_at / 1000000);
 
-    let user = data.received ?
-      {_id: receiver.identity_pub_key, name: receiver.name} :
-      {_id: sender.id, name: sender.name};
+    const user = data.received ?
+      { _id: receiver.identity_pub_key, name: receiver.name } :
+      { _id: sender.id, name: sender.name };
 
     messages.push({
       _id: data.db_id,
