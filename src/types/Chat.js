@@ -13,11 +13,6 @@ export type ProfileType = {
   ethereum_key_signature: string
 };
 
-export type SecretType = {
-  one_time_pre_key: string,
-  private_part: Object
-};
-
 export type GiftedChatUserType = {
   _id: string,
   name: string,
@@ -39,23 +34,10 @@ export type DAppMessageType = {
   should_render: boolean,
 };
 
-export type MessageType = {
-  type: string,
-  timestamp: Date,
-  used_secret: string,
-  additional_data: string,
-  doubleratchet_message: string,
-  signature: string,
-  id_public_key: string,
-  receiver: string,
-};
-
 export type ChatSessionType = {
-  secret: string,
   publicKey: string,
   username: string,
   accountId: string,
-  messages: Array<MessageType>,
-  decryptedMessages: Array<GiftedChatMessageType>
+  messages: Array<GiftedChatMessageType>
 };
 

@@ -878,6 +878,12 @@ const styles = {
     paddingRight: 12,
   },
 
+  publicKeyText: {
+    fontSize: 13,
+    color: Colors.black,
+    textAlign: 'center',
+  },
+
 };
 
 export default styles;
