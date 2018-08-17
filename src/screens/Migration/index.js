@@ -12,25 +12,18 @@ import FakeNavigationBar from '../../components/common/FakeNavigationBar';
 import NavigatorComponent from '../../components/common/NavigatorComponent';
 import Colors from '../../global/colors';
 
-type Props = {
-  /**
-  * @desc Function to initiate migration
-  */
-  startMigration: () => void
-}
-
 type Actions = {
-  // @todo Action to be added later.
+  /**
+   * @desc Function to initiate migration
+   */
+  startMigration: () => void
 };
 
-type State = {
-  // @todo State to be added later.
-}
-
-class MigrationScreen extends NavigatorComponent<Props & Actions, State> {
+class MigrationScreen extends NavigatorComponent<Actions> {
   componentWillMount() {
     this.props.startMigration();
   }
+
   render() {
     return (
       <View style={styles.migrationContainer}>

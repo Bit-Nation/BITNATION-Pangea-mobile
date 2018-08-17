@@ -6,7 +6,7 @@ import {
   View,
   Text,
   Alert,
-  Clipboard,
+  Share,
 } from 'react-native';
 
 import styles from './styles';
@@ -93,9 +93,12 @@ class ProfileScreen extends NavigatorComponent<Props> {
     }
   }
 
-  copyPublicKey = () => {
-    Clipboard.setString(this.props.publicKey);
-  }
+  sharePublicKey = () => {
+    Share.share({
+      message: this.props.publicKey || '',
+    });
+    // Clipboard.setString(this.props.publicKey);
+  };
 
   render() {
     return (
@@ -126,11 +129,11 @@ class ProfileScreen extends NavigatorComponent<Props> {
 
     return (
       <View style={styles.publicKey}>
-        <Text style={styles.keyText}>{publicKey && publicKey.trim()}</Text>
+        <Text style={styles.publicKeyText}>{publicKey && publicKey.trim()}</Text>
         <Button
           style={styles.panelButton}
-          title={i18n.t('screens.profile.copyKey')}
-          onPress={this.copyPublicKey}
+          title={i18n.t('screens.profile.shareKey')}
+          onPress={this.sharePublicKey}
         />
       </View>
     );

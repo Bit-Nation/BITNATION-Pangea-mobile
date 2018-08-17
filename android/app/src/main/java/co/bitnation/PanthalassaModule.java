@@ -25,7 +25,7 @@ import panthalassa.UpStream;
  * Created by Estarrona on 19/04/18.
  */
 
-public class PanthalassaModule extends ReactContextBaseJavaModule {
+public class PanthalassaModule extends ReactContextBaseJavaModule implements UpStream {
     final String TAG = "Panthalassa";
     UpStream client, ui;
 
@@ -382,7 +382,7 @@ public class PanthalassaModule extends ReactContextBaseJavaModule {
         new Thread(new Runnable() {
             public void run() {
                 try {
-                    Panthalassa.callDAppFunction(jsonParams.getString("dAppId"),
+                    Panthalassa.callDAppFunction(jsonParams.getString("signingKey"),
                             jsonParams.getInt("id"),
                             jsonParams.getString("args"));
                     promise.resolve(true);
@@ -445,7 +445,7 @@ public class PanthalassaModule extends ReactContextBaseJavaModule {
             public void run() {
                 try {
                     String response = Panthalassa.messages(jsonParams.getString("partner"),
-                            jsonParams.getInt("start"),
+                            jsonParams.getString("startStr"),
                             jsonParams.getInt("amount"));
                     promise.resolve(response);
                 } catch (Exception e) {
@@ -518,6 +518,26 @@ public class PanthalassaModule extends ReactContextBaseJavaModule {
     }
 
     //=====
+
+    // This method should be deleted due is not the active protocol listener now
+    @Override
+    public void send(String s) {
+        Log.v("Upstream","Received from callback");
+
+        WritableMap params = Arguments.createMap();
+        params.putString("upstream", s);
+        Activity activity = getCurrentActivity();
+        if (activity != null) {
+            MainApplication application = (MainApplication) activity.getApplication();
+            ReactNativeHost reactNativeHost = application.getReactNativeHost();
+            ReactInstanceManager reactInstanceManager = reactNativeHost.getReactInstanceManager();
+            ReactContext reactContext = reactInstanceManager.getCurrentReactContext();
+
+            if (reactContext != null) {
+                sendEvent(reactContext, "PanthalassaUpStream", params);
+            }
+        }
+    }
 
     private void sendEvent(ReactContext reactContext,
                            String eventName,

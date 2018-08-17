@@ -1,3 +1,5 @@
+// @flow
+
 import { all, call, takeEvery } from 'redux-saga/effects';
 
 import { ADD_NEW_MESSAGE } from '../../actions/activity';
@@ -10,7 +12,7 @@ import {
  * @desc Root activity saga.
  * @return {void}
  */
-export default function* rootSaga() {
+export default function* rootSaga(): Generator<*, *, *> {
   yield all([
     call(startDatabaseListening),
     takeEvery(ADD_NEW_MESSAGE, addNewMessageSaga),
