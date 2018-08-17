@@ -1,3 +1,6 @@
+// @TODO CAREFUL!!! For some reason generated file is not working properly
+// Applied find and replace: $root.api_proto.Profile -> api_proto.Profile.
+
 /* eslint-disable */
 "use strict";
 
@@ -205,7 +208,7 @@ $root.api_proto = (function() {
         Profile.decode = function decode(reader, length) {
             if (!(reader instanceof $Reader))
                 reader = $Reader.create(reader);
-            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.api_proto.Profile();
+            var end = length === undefined ? reader.len : reader.pos + length, message = new api_proto.Profile();
             while (reader.pos < end) {
                 var tag = reader.uint32();
                 switch (tag >>> 3) {
@@ -316,9 +319,9 @@ $root.api_proto = (function() {
          * @returns {api_proto.Profile} Profile
          */
         Profile.fromObject = function fromObject(object) {
-            if (object instanceof $root.api_proto.Profile)
+            if (object instanceof api_proto.Profile)
                 return object;
-            var message = new $root.api_proto.Profile();
+            var message = new api_proto.Profile();
             if (object.name != null)
                 message.name = String(object.name);
             if (object.location != null)

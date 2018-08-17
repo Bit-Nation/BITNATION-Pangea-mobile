@@ -14,6 +14,7 @@ const BitnationLightGrayColor = '#BBBDBF';
 const BitnationGrayColor = '#929497';
 const BitnationDarkGrayColor = '#58595B';
 const BitnationLinkOrangeColor = '#FF8B00';
+const BitnationActionColor = '#FB8C25';
 const BitnationHighlightYellowColor = '#FFCE00';
 const BitnationWhiteAlphaColor = 'rgba(255,255,255,0.45)';
 const BitnationBlackAlphaColor = 'rgba(0, 0, 0, 0.87)';
@@ -77,6 +78,7 @@ export default {
   BitnationHighlightYellowColor,
   BitnationGrayColor,
   BitnationLinkOrangeColor,
+  BitnationActionColor,
   BitnationBlackAlphaColor,
 
   // Colors for common Text Styles

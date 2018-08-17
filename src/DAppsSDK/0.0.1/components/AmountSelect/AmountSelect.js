@@ -8,10 +8,10 @@ import ActionSheet from 'react-native-actionsheet';
 import { BigNumber } from 'bignumber.js';
 import _ from 'lodash';
 
-import i18n from '../../global/i18n';
-import GlobalStyles from '../../global/Styles';
-import Colors from '../../global/colors';
-import type { CurrencyType, WalletType } from '../../types/Wallet';
+import i18n from '../../../../global/i18n';
+import GlobalStyles from '../../../../global/Styles';
+import Colors from '../../../../global/colors';
+import type { CurrencyType, WalletType } from '../../../../types/Wallet';
 
 export type InternalProps = {
   /**
@@ -26,13 +26,13 @@ export type Props = {
    */
   style?: Object,
   /**
-   * @desc
+   * @desc Function that called on each change.
    */
-  onAmountSelected: (amount: string, currency: CurrencyType, walletAddress: string, isValid: boolean) => void,
+  onAmountSelected: (amount: string, currency: CurrencyType, walletAddress: string, isValidAmount: boolean, isLessThanBalance: boolean) => void,
   /**
-   * @desc Flag whether amount is invalid if it greater than balance.
+   * @desc Function that called on end editing with result.
    */
-  shouldCheckLess: boolean,
+  onFinalChange: (amount: string, currency: CurrencyType, walletAddress: string, isValid: boolean, isLessThanBalance: boolean) => void,
   /**
    * @desc Amount to show on a component.
    */
@@ -52,6 +52,12 @@ export default class AmountSelect extends Component<Props & InternalProps> {
     changeCurrencyEnabled: true,
   };
 
+  constructor(props: Props & InternalProps) {
+    super(props);
+
+    this.reportFinalChange();
+  }
+
   onSelectWallet = (index: number) => {
     if (index < this.props.wallets.length) {
       const wallet = this.props.wallets[index];
@@ -59,8 +65,10 @@ export default class AmountSelect extends Component<Props & InternalProps> {
         this.props.amount,
         wallet.currency,
         wallet.ethAddress,
-        this.isValidAmount(this.props.amount, wallet),
+        this.isValidAmount(this.props.amount),
+        this.isLessThanBalance(this.props.amount, wallet),
       );
+      this.reportFinalChange();
     }
   };
 
@@ -72,7 +80,8 @@ export default class AmountSelect extends Component<Props & InternalProps> {
       amount,
       wallet.currency,
       wallet.ethAddress,
-      this.isValidAmount(amount, wallet),
+      this.isValidAmount(amount),
+      this.isLessThanBalance(this.props.amount, wallet),
     );
   };
 
@@ -81,17 +90,40 @@ export default class AmountSelect extends Component<Props & InternalProps> {
     return _.find(this.props.wallets, (wallet => wallet.currency === this.props.currency));
   }
 
-  isValidAmount(amount: string, wallet: WalletType): boolean {
+  reportFinalChange = () => {
+    const wallet = this.getWallet();
+    if (wallet == null) return;
+
+    this.props.onFinalChange(
+      this.props.amount,
+      wallet.currency,
+      wallet.ethAddress,
+      this.isValidAmount(this.props.amount),
+      this.isLessThanBalance(this.props.amount, wallet),
+    );
+  };
+
+  isValidAmount(amount: string): boolean {
     if (amount == null || amount.length === 0) return false;
 
     try {
       const bnAmount = new BigNumber(amount);
       if (bnAmount.isZero()) return false;
       if (!bnAmount.isFinite()) return false;
-      if (this.props.shouldCheckLess) {
-        return bnAmount.lessThanOrEqualTo(new BigNumber(wallet.balance));
-      }
       return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  isLessThanBalance(amount: string, wallet: WalletType): boolean {
+    if (amount == null || amount.length === 0) return false;
+
+    try {
+      const bnAmount = new BigNumber(amount);
+      if (bnAmount.isZero()) return false;
+      if (!bnAmount.isFinite()) return false;
+      return bnAmount.lessThanOrEqualTo(new BigNumber(wallet.balance));
     } catch (e) {
       return false;
     }
@@ -134,6 +166,7 @@ export default class AmountSelect extends Component<Props & InternalProps> {
             placeholder='0.00000'
             placeholderTextColor={Colors.placeholderTextColor}
             onChangeText={this.onChangeAmount}
+            onEndEditing={this.reportFinalChange}
             value={this.props.amount}
             keyboardType='numeric'
           />
