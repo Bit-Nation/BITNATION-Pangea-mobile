@@ -6,6 +6,7 @@ import {
   Text,
   TextInput,
   Image,
+  ScrollView,
 } from 'react-native';
 import { connect } from 'react-redux';
 import _ from 'lodash';
@@ -132,61 +133,63 @@ class SendMoney extends NavigatorComponent<Props, State> {
         <View style={styles.bodyContainer}>
           <ScreenTitle title={i18n.t('screens.sendMoney.title')} />
 
-          <PanelView
-            style={styles.panelView}
-            childrenContainerStyle={styles.noflex}
-          >
-            <View style={styles.row}>
-              <Image style={styles.icon} source={wallet.currency === 'ETH' ? Images.ethereumLogo : Images.patLogo} resizeMode='contain' />
-              <View style={styles.textColumn}>
-                <Text style={styles.bodyBold}>{wallet.currency === 'ETH' ? i18n.t('common.ethereum') : i18n.t('common.bitnationPat')}</Text>
-                <Text style={styles.currencyMedium}>
-                  {prettyWalletBalance(wallet, wallet.currency)}
-                </Text>
+          <ScrollView style={styles.scrollView} contentContainerStyle={styles.noflex}>
+            <PanelView
+              style={styles.panelView}
+              childrenContainerStyle={styles.noflex}
+            >
+              <View style={styles.row}>
+                <Image style={styles.icon} source={wallet.currency === 'ETH' ? Images.ethereumLogo : Images.patLogo} resizeMode='contain' />
+                <View style={styles.textColumn}>
+                  <Text style={styles.bodyBold}>{wallet.currency === 'ETH' ? i18n.t('common.ethereum') : i18n.t('common.bitnationPat')}</Text>
+                  <Text style={styles.currencyMedium}>
+                    {prettyWalletBalance(wallet, wallet.currency)}
+                  </Text>
+                </View>
               </View>
-            </View>
-          </PanelView>
+            </PanelView>
 
-          <PanelView
-            style={[styles.panelViewTransparent, styles.pannelViewRow]}
-            childrenContainerStyle={styles.noflex}
-          >
-            <View style={styles.formRow}>
-              <View style={styles.fieldsContainer}>
-                <Text style={styles.amountLabelText}>{i18n.t('common.amount')}</Text>
-                <View style={styles.formRow}>
+            <PanelView
+              style={[styles.panelViewTransparent, styles.pannelViewRow]}
+              childrenContainerStyle={styles.noflex}
+            >
+              <View style={styles.formRow}>
+                <View style={styles.fieldsContainer}>
+                  <Text style={styles.amountLabelText}>{i18n.t('common.amount')}</Text>
+                  <View style={styles.formRow}>
+                    <View style={styles.textInputContainer}>
+                      <Text style={styles.currencyPlaceholder}>
+                        {wallet.currency}
+                      </Text>
+                      <TextInput
+                        style={[styles.textInputInContainer, styles.currencyLarge, styles.currencyNumber]}
+                        placeholder='0.00000'
+                        placeholderTextColor={Colors.placeholderTextColor}
+                        onChangeText={amountString => this.setState({ amountString })}
+                        value={this.state.amountString}
+                        keyboardType='decimal-pad'
+                      />
+
+                    </View>
+                  </View>
+                  <Text style={styles.toLabelText}>{i18n.t('common.to')}</Text>
                   <View style={styles.textInputContainer}>
-                    <Text style={styles.currencyPlaceholder}>
-                      {wallet.currency}
-                    </Text>
                     <TextInput
                       style={[styles.textInputInContainer, styles.currencyLarge, styles.currencyNumber]}
-                      placeholder='0.00000'
+                      placeholder='0x'
                       placeholderTextColor={Colors.placeholderTextColor}
-                      onChangeText={amountString => this.setState({ amountString })}
-                      value={this.state.amountString}
-                      keyboardType='numeric'
+                      keyboardType='default'
+                      autoCapitalize='none'
+                      autoCorrect={false}
+                      onChangeText={toEthAddress => this.setState({ toEthAddress })}
+                      value={this.state.toEthAddress}
                     />
-
                   </View>
                 </View>
-                <Text style={styles.toLabelText}>{i18n.t('common.to')}</Text>
-                <View style={styles.textInputContainer}>
-                  <TextInput
-                    style={[styles.textInputInContainer, styles.currencyLarge, styles.currencyNumber]}
-                    placeholder='0x'
-                    placeholderTextColor={Colors.placeholderTextColor}
-                    keyboardType='default'
-                    autoCapitalize='none'
-                    autoCorrect={false}
-                    onChangeText={toEthAddress => this.setState({ toEthAddress })}
-                    value={this.state.toEthAddress}
-                  />
-                </View>
               </View>
-            </View>
 
-          </PanelView>
+            </PanelView>
+          </ScrollView>
 
         </View>
         {this.props.moneySendingInProgress ? <Loading /> : null}

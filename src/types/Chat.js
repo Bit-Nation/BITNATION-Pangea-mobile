@@ -13,11 +13,6 @@ export type ProfileType = {
   ethereum_key_signature: string
 };
 
-export type SecretType = {
-  one_time_pre_key: string,
-  private_part: Object
-};
-
 export type GiftedChatUserType = {
   _id: string,
   name: string,

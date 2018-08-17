@@ -2,78 +2,30 @@
 
 /* eslint-disable camelcase,no-continue */
 
-import { delay } from 'redux-saga';
-import { put, call, take, fork, cancel } from 'redux-saga/effects';
-import type { Realm } from 'realm';
-import _ from 'lodash';
-// $FlowFixMe Flow has issues with import buffer for some reason.
-import { Buffer } from 'buffer';
+import { put, call, select } from 'redux-saga/effects';
+import { Buffer } from 'buffer/index';
 
-import {
-  SaveProfileAction,
-  SavePreKeyBundleAction,
+import type {
+  GetProfileAction,
   NewChatSessionAction,
   OpenChatAction,
   SendMessageAction,
-  FetchAllChatsAction,
-  StartListenForMessagesAction,
-  StopListenForMessagesAction,
+  LoadChatMessagesAction,
+  PanthalassaMessagePersistedAction,
+} from '../../actions/chat';
+import {
   chatsUpdated,
   selectProfile,
   addCreatedChatSession,
   loadChatMessages,
-  LoadChatMessagesAction,
   chatMessagesLoaded,
-  PanthalassaMessagePersistedAction,
-  addChatMessage,
+  addChatMessage, newChatSession,
 } from '../../actions/chat';
 import defaultDB from '../../services/database';
 import ChatService from '../../services/chat';
-import type { ChatSessionType as DBChatSession } from '../../services/database/schemata';
-import { getCurrentAccount, getCurrentAccountId, currentAccountBasedUpdate } from '../accounts/sagas';
+import { getCurrentAccount, getCurrentAccountId } from '../accounts/sagas';
 import { byteToHexString } from '../../utils/key';
 import { createGiftedChatMessageObjects } from '../../utils/chat';
-import type { DAppMessageType } from '../../services/database/schema/v4';
-
-/**
- * @desc Function that creates Realm results fetching chats for specific account.
- * @param {Realm} db Realm instance.
- * @param {string|null} accountId Id of account to fetch logs or null.
- * @return {Realm.Results<AccountSettings>|null} Realm results fetching logs for specified account or null if not applicable.
- */
-export function buildChatResults(db: Realm, accountId: string | null) {
-  if (accountId === null) {
-    return null;
-  }
-  return db.objects('ChatSession').filtered(`accountId == '${accountId}'`);
-}
-
-/**
- * @desc Extracts DApp information from message if possible.
- * @param {string} decrypted Plain message text.
- * @return {?DAppMessageType} Message object or undefined.
- */
-function extractDAppMessage(decrypted: string): ?DAppMessageType {
-  try {
-    const parsed = JSON.parse(decrypted);
-    if (parsed == null) return undefined;
-    if (parsed.dapp_id == null || typeof parsed.dapp_id !== 'string') return undefined;
-    if (parsed.type == null || typeof parsed.type !== 'string') return undefined;
-    if (parsed.group_id == null || typeof parsed.group_id !== 'string') return undefined;
-    if (parsed.params == null || typeof parsed.params !== 'string') return undefined;
-
-    return {
-      dapp_id: parsed.dapp_id,
-      type: parsed.type,
-      group_id: parsed.dapp_id,
-      params: parsed.params,
-      should_send: true,
-      should_render: true,
-    };
-  } catch (e) {
-    return undefined;
-  }
-}
 
 /**
  * @desc Save profile into database.
@@ -96,59 +48,85 @@ async function saveProfileIntoDatabase(profileObject: Object) {
       identity_key_signature: profileObject.identityKeySignature,
       ethereum_key_signature: profileObject.ethereumKeySignature,
     };
-    
+
+    let dbProfile = null;
     db.write(() => {
-      db.create('Profile', profile, true);
+      dbProfile = db.create('Profile', profile, true);
     });
+
+    return dbProfile;
+  }
+
+  return isProfileOnDb[0];
+}
+
+/**
+ * @desc Get profile from db or from network if not exist
+ * @param {string} encodedPublicKey Public key of user
+ * @param {boolean} isHex If public key is in hex
+ * @return {void}
+ */
+export function* getProfile(encodedPublicKey: string, isHex: boolean = true): Generator<*, *, *> {
+  let publicKey = encodedPublicKey;
+  if (isHex === true) {
+    publicKey = Buffer.from(encodedPublicKey, 'hex').toString('base64');
+  }
+  const hexPublicKey = isHex ? encodedPublicKey : Buffer.from(encodedPublicKey, 'base64').toString('hex');
+
+  const db = yield defaultDB;
+  let results = yield call([db, 'objects'], 'Profile');
+  results = yield call([results, 'filtered'], `identity_pub_key == '${publicKey}'`);
+  const receiver = yield results[0] || null;
+
+  if (receiver != null) {
+    return yield receiver;
+  }
+
+  try {
+    const profile = yield call(ChatService.getProfile, hexPublicKey);
+    const dbProfile = yield call(saveProfileIntoDatabase, profile);
+    return dbProfile;
+  } catch (e) {
+    return yield null;
   }
 }
 
 /**
- * @desc Save a user profile into the database
- * @param {SaveProfileAction} action SAVE_PROFILE action
+ * @desc Handler for GET_PROFILE action.
+ * @param {GetProfileAction} action An action.
  * @return {void}
  */
-export function* saveProfileSaga(action: SaveProfileAction): Generator<*, *, *> {
-  yield call(saveProfileIntoDatabase, action.profile);
-}
-
-/**
- * @desc Save a user profile into the database
- * @param {SaveProfileAction} action SAVE_PROFILE action
- * @return {void}
- */
-export function* savePreKeyBundle(action: SavePreKeyBundleAction): Generator<*, *, *> {
-  const db = yield defaultDB;
-  const dbObject = {
-    one_time_pre_key: byteToHexString(action.preKeyBundle.public_part.one_time_pre_key),
-    private_part: action.preKeyBundle.private_part,
-  };
-  db.write(() => {
-    db.create('PreKeyBundle', dbObject);
-  });
+export function* getProfileActionHandler(action: GetProfileAction): Generator<*, *, *> {
+  try {
+    const profile = yield call(getProfile, action.identityKey);
+    return yield call(action.callback, profile, null);
+  } catch (error) {
+    return yield call(action.callback, null, error);
+  }
 }
 
 /**
  * @desc Create a chat session
- * @param {NewChatSessionAction} action SAVE_PROFILE action
+ * @param {NewChatSessionAction} action NEW_CHAT_SESSION action
  * @return {void}
  */
 export function* createChatSession(action: NewChatSessionAction): Generator<*, *, *> {
   const currentAccountId = yield call(getCurrentAccountId);
   const chatSession = {
-    publicKey: action.profile.identityPubKey,
+    publicKey: action.profile.identity_pub_key,
     username: action.profile.name,
     accountId: currentAccountId,
     messages: [],
   };
   yield put(addCreatedChatSession(chatSession));
 
+  yield put(selectProfile(action.profile));
+
   const userPublicKey = yield call(ChatService.getPublicKey);
   yield call(action.callback, {
     status: 'success',
     userPublicKey,
   });
-  yield put(selectProfile(action.profile));
 }
 
 /**
@@ -157,11 +135,8 @@ export function* createChatSession(action: NewChatSessionAction): Generator<*, *
  * @return {void}
  */
 export function* openChatSession(action: OpenChatAction): Generator<*, *, *> {
-  const db = yield defaultDB;
-  let results = yield call([db, 'objects'], 'Profile');
-  results = yield call([results, 'filtered'], `identity_pub_key == '${action.publicKey}'`);
-  const profile = yield results[0] || null;
-  if (profile) {
+  const profile = yield call(getProfile, action.publicKey, false);
+  if (profile != null) {
     yield put(loadChatMessages(action.publicKey));
     yield put(selectProfile(profile));
     const userPublicKey = yield call(ChatService.getPublicKey);
@@ -178,23 +153,19 @@ export function* openChatSession(action: OpenChatAction): Generator<*, *, *> {
 
 /**
  * @desc Fetch all chats
- * @param {FetchAllChatsAction} action FETCH_ALL_CHATS action
  * @return {void}
  */
 export function* fetchAllChats(): Generator<*, *, *> {
-  const db = yield defaultDB;
-  let results = yield call([db, 'objects'], 'Profile');
-
   const currentAccountId = yield call(getCurrentAccountId);
   const hexPublicKeys = yield call(ChatService.fetchAllChats);
 
-  let chats = [];
-  let profile, publicKey;
-  for (let hexPubKey of hexPublicKeys) {
-    publicKey = new Buffer(hexPubKey, 'hex').toString('base64');
-    results = yield call([results, 'filtered'], `identity_pub_key == '${publicKey}'`);
-    profile = yield results[0] || null;
-    if (profile) {
+  const chats = [];
+  let publicKey;
+  // eslint-disable-next-line no-restricted-syntax
+  for (const hexPubKey of hexPublicKeys) {
+    publicKey = Buffer.from(hexPubKey, 'hex').toString('base64');
+    const profile = yield call(getProfile, hexPubKey);
+    if (profile != null) {
       chats.push({
         publicKey,
         username: profile.name,
@@ -205,24 +176,6 @@ export function* fetchAllChats(): Generator<*, *, *> {
   }
 
   yield put(chatsUpdated(chats));
-}
-
-/**
- * @desc Start listening for incoming messages
- * @param {StartListenForMessagesAction} action START_LISTEN_FOR_MESSAGES action
- * @return {void}
- */
-export function* startListenForMessages(): Generator<*, *, *> {
-  // TOOD: Create panthalassa listener and set in state
-}
-
-/**
- * @desc Stop listening for incoming messages
- * @param {StopListenForMessagesAction} action STOP_LISTEN_FOR_MESSAGES action
- * @return {void}
- */
-export function* stopListenForMessages(): Generator<*, *, *> {
-  // TOOD: Stop panthalassa listener and remove from state
 }
 
 /**
@@ -245,81 +198,6 @@ export function* loadMessages(action: LoadChatMessagesAction): Generator<*, *, *
 }
 
 /**
- * @desc Handle chat init handshake
- * @param {Object} message Initialization message object
- * @param {string} accountId Current account Id
- * @return {Promise} A result promise
- */
-async function handleInitialMessage(message: Object, accountId: string): Promise<boolean> {
-  const db = await defaultDB;
-  const results = await db.objects('PreKeyBundle').filtered(`one_time_pre_key == '${message.additional_data.used_one_time_pre_key}'`);
-  if (results.length > 0) {
-    const preKeyBundle = results[0];
-    const response = await ChatService.handleChatInit(JSON.stringify(message), JSON.stringify(preKeyBundle.private_part));
-    console.log('handle init chat: ', response);
-    const secret = JSON.parse(response);
-    const profile = await ChatService.getProfile(message.id_public_key);
-    await saveProfileIntoDatabase(profile);
-
-    const sharedSecret = {
-      id: message.used_secret,
-      publicKey: message.id_public_key,
-      secret,
-      accountId,
-    };
-    const chatSession = {
-      secret: message.used_secret,
-      publicKey: message.id_public_key,
-      username: profile.name,
-      accountId,
-      messages: [],
-    };
-    db.write(() => {
-      db.create('SharedSecret', sharedSecret, true);
-      db.create('ChatSession', chatSession, true);
-    });
-  } else {
-    return false;
-  }
-
-  return true;
-}
-
-/**
- * @desc Handle human message
- * @param {Object} message Human message object
- * @return {Promise} A result promise
- */
-async function handleHumanMessage(message: Object): Promise<boolean> {
-  console.log('handle message: ', message);
-  const db = await defaultDB;
-  const results = await db.objects('ChatSession').filtered(`secret == '${message.used_secret}'`);
-  if (results.length === 0) return false;
-
-  const session = results[0];
-  const newMessage = {
-    type: message.type,
-    timestamp: message.timestamp,
-    used_secret: message.used_secret,
-    additional_data: JSON.stringify(message.additional_data || {}),
-    doubleratchet_message: JSON.stringify(message.doubleratchet_message),
-    signature: message.signature,
-    id_public_key: message.id_public_key,
-    receiver: message.receiver,
-  };
-  try {
-    db.write(() => {
-      const dbMessage = db.create('Message', newMessage, true);
-      session.messages.push(dbMessage);
-    });
-  } catch (e) {
-    console.log('session db update error: ', e);
-    return false;
-  }
-  return true;
-}
-
-/**
  * @desc Send a human message
  * @param {SendMessageAction} action SEND_MESSAGE action
  * @return {void}
@@ -334,14 +212,16 @@ export function* sendMessage(action: SendMessageAction): Generator<*, *, *> {
  * @return {void}
  */
 export function* handlePanthalassaMessagePersisted(action: PanthalassaMessagePersistedAction): Generator<*, *, *> {
-  const publicKey = new Buffer(action.payload.chat, 'hex').toString('base64');
+  const publicKey = Buffer.from(action.payload.chat, 'hex').toString('base64');
 
-  const db = yield defaultDB;
-  let results = yield call([db, 'objects'], 'Profile');
-  results = yield call([results, 'filtered'], `identity_pub_key == '${publicKey}'`);
-  const receiver = yield results[0] || null;
+  const receiver = yield call(getProfile, action.payload.chat);
 
   const sender = yield call(getCurrentAccount);
+
+  const { chat: { chats } } = yield select();
+  if (chats.findIndex(chat => chat.publicKey === publicKey) === -1) {
+    yield call(createChatSession, newChatSession(receiver, () => undefined));
+  }
 
   if (receiver) {
     const messages = createGiftedChatMessageObjects(sender, receiver, [action.payload]);
