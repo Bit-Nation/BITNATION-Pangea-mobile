@@ -24,7 +24,6 @@ import {
 import defaultDB from '../../services/database';
 import ChatService from '../../services/chat';
 import { getCurrentAccount, getCurrentAccountId } from '../accounts/sagas';
-import { byteToHexString } from '../../utils/key';
 import { createGiftedChatMessageObjects } from '../../utils/chat';
 import { panthalassaEthPubToAddress } from '../../services/panthalassa';
 
