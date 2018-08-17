@@ -17,7 +17,7 @@ export default class DAppsService {
   }
 
   static async openDApp(publicKey: string, context: Object): Promise<boolean> {
-    return Panthalassa.panthalassaOpenDApp(publicKey, JSON.stringify(context));
+    return Panthalassa.panthalassaOpenDApp(publicKey, JSON.stringify({ context }));
   }
 
   static async getDApps(): Promise<Array<DApp>> {
