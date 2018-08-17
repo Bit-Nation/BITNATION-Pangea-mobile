@@ -83,6 +83,13 @@ class DAppMessage extends React.Component<Props, State> {
     });
   }
 
+  componentDidCatch() {
+    this.setState({
+      isRendering: false,
+      layout: null,
+    });
+  }
+
   renderFallbackUI() {
     const dApp = getDApp(this.props.dAppsState, this.props.message.dAppPublicKey);
     let textToShow = i18n.t('dApps.unknownDAppMessage');

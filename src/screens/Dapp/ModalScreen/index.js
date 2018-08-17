@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
 import { connect } from 'react-redux';
 
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
@@ -49,6 +49,20 @@ class DAppModalScreen extends NavigatorComponent<Props & Actions, *> {
     rightButtons: [],
   };
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      renderFailed: false,
+    };
+  }
+
+  componentDidCatch() {
+    this.setState({
+      renderFailed: true,
+    });
+  }
+
   componentWillUnmount() {
     this.props.cleanDAppModal(this.props.modalID);
   }
@@ -65,6 +79,21 @@ class DAppModalScreen extends NavigatorComponent<Props & Actions, *> {
   }
 
   render() {
+    if (this.state.renderFailed === true) {
+      // Fallback UI.
+      return (
+        <View style={GlobalStyles.screenContainer}>
+          <BackgroundImage />
+          <FakeNavigationBar />
+          <View style={GlobalStyles.bodyContainer}>
+            <Text style={GlobalStyles.body}>
+              {i18n.t('dApps.failedDAppModalRender')}
+            </Text>
+          </View>
+        </View>
+      );
+    }
+
     const info = this.modalInfo;
     // Coming layout is a layout with container, which we don't need to render.
     // It's expected that modal component returns single root component.
