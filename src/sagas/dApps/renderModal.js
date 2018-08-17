@@ -1,3 +1,5 @@
+// @flow
+
 import { eventChannel, type Channel } from 'redux-saga';
 import { call, fork, take, select, put } from 'redux-saga/effects';
 import { Navigation } from 'react-native-navigation';
