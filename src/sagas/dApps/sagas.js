@@ -106,6 +106,11 @@ export function* openDApp(action: OpenDAppAction): Generator<*, *, *> {
     yield put(dAppLaunchStateChanged(action.dAppPublicKey, 'opened'));
     yield call(callback, true);
   } catch (error) {
+    if (error === 'Error: it seems like that this app hasn\'t been started yet') {
+      yield call(startDAppSaga);
+      yield call(openDApp, action);
+      return;
+    }
     console.log(`[DApp] Open failed: ${error}`);
     yield call(callback, false, error);
   }
@@ -157,6 +162,11 @@ export function* renderDAppMessage(action: RenderDAppMessageAction): Generator<*
     }
     yield call(callback, layout);
   } catch (error) {
+    if (error === 'Error: it seems like that this app hasn\'t been started yet') {
+      yield call(startDAppSaga);
+      yield call(renderDAppMessage, action);
+      return;
+    }
     console.log(`[DAPP] Fail to render message: ${JSON.stringify(message)} with error: ${error}`);
     yield call(callback, null);
   }
