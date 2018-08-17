@@ -581,6 +581,6 @@
   },
   "dApps": {
     "unknownDAppMessage": "This message was sent from DApp that is not installed on your device. It can not be rendered.",
-    "failedDAppMessageRender": "{{dAppName}} DApp failed to render this message. It may be due to issue in DApp or using of an old version.",
+    "failedDAppMessageRender": "{{dAppName}} DApp failed to render this message. It may be due to issue in DApp or using of an old version."
   }
 }
