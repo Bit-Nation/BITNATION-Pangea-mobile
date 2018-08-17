@@ -23,11 +23,7 @@ import type {
   SavePasswordAction,
   SavePinCodeAction,
 } from '../../actions/accounts';
-import {
-  fetchAllChats,
-  startListenForMessages,
-  stopListenForMessages,
-} from '../../actions/chat';
+import { fetchAllChats } from '../../actions/chat';
 import {
   convertFromDatabase, convertToDatabase, retrieveProfileFromAccount,
   retrieveProfileFromPartialAccount,
@@ -240,7 +236,6 @@ export function* login(userInfo: ({ accountId: string, accountStore?: string }),
   yield put(loginTaskUpdated(TaskBuilder.success()));
 
   yield put(fetchAllChats());
-  yield put(startListenForMessages());
 }
 
 /**
@@ -248,7 +243,6 @@ export function* login(userInfo: ({ accountId: string, accountStore?: string }),
  * @return {void}
  */
 export function* logout(): Generator<*, *, *> {
-  yield put(stopListenForMessages());
   yield call(AccountsService.logout);
   yield put(currentAccountIdChanged(null));
 }
