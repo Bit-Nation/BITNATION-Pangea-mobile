@@ -55,6 +55,10 @@ to use the mesh network
 - (void)setEthWsEndpoint:(NSString*)v;
 - (BOOL)enableDebugging;
 - (void)setEnableDebugging:(BOOL)v;
+- (NSString*)privChatEndpoint;
+- (void)setPrivChatEndpoint:(NSString*)v;
+- (NSString*)privChatBearerToken;
+- (void)setPrivChatBearerToken:(NSString*)v;
 @end
 
 FOUNDATION_EXPORT NSString* PanthalassaAllChats(NSError** error);
@@ -101,7 +105,7 @@ FOUNDATION_EXPORT NSString* PanthalassaIdentityPublicKey(NSError** error);
  */
 FOUNDATION_EXPORT BOOL PanthalassaIsValidMnemonic(NSString* mne);
 
-FOUNDATION_EXPORT NSString* PanthalassaMessages(NSString* partner, int64_t start, long amount, NSError** error);
+FOUNDATION_EXPORT NSString* PanthalassaMessages(NSString* partner, NSString* startStr, long amount, NSError** error);
 
 /**
  * Creates an new set of encrypted account key's
