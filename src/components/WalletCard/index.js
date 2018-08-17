@@ -1,11 +1,7 @@
 // @flow
 
 import React from 'react';
-import {
-  Text,
-  Image,
-  View,
-} from 'react-native';
+import { Text, Image, View } from 'react-native';
 
 import styles from './styles';
 import Images from '../../global/AssetsImages';
@@ -37,17 +33,21 @@ type Props = {
    * @desc Callback on transactions button press
    */
   onTransactionPress: () => void,
-}
+};
 
 /**
  * @desc Component for rendering wallet details.
  * @return {React.Component} A component.
  */
 const WalletCard = ({
-  imagePath, nameHeading, balance, onSendPress, onReceivePress, onTransactionPress,
+  imagePath,
+  nameHeading,
+  balance,
+  onSendPress,
+  onReceivePress,
+  onTransactionPress,
 }: Props) => (
   <View style={styles.container}>
-
     <View style={styles.row}>
       <Image style={styles.icon} source={imagePath} resizeMode='contain' />
 
@@ -58,16 +58,27 @@ const WalletCard = ({
         <View style={styles.spacer} />
 
         <View style={styles.buttonsContainer}>
-          <Button title={i18n.t('common.send')} onPress={onSendPress} style={[styles.button, styles.leftButton]} />
-          <Button title={i18n.t('common.receive')} onPress={onReceivePress} style={styles.button} />
-          <Button title={i18n.t('common.transactions')} onPress={onTransactionPress} style={styles.button} />
+          <Button
+            title={i18n.t('common.send')}
+            onPress={onSendPress}
+            style={[styles.button, styles.leftButton]}
+          />
+          <Button
+            title={i18n.t('common.receive')}
+            onPress={onReceivePress}
+            style={styles.button}
+          />
+          <Button
+            title={i18n.t('common.transactions')}
+            onPress={onTransactionPress}
+            style={styles.button}
+          />
           <View style={styles.spacer} />
         </View>
 
         <View style={styles.spacer} />
       </View>
     </View>
-
   </View>
 );
 
@@ -77,6 +88,7 @@ WalletCard.defaultProps = {
   balance: '0',
   onSendPress: () => null,
   onReceivePress: () => null,
+  onTransactionPress: () => null,
 };
 
 export default WalletCard;

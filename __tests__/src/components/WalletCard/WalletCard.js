@@ -8,7 +8,7 @@ import Images from '../../../../src/global/AssetsImages';
 describe('WalletCard component tests', () => {
   test('Rendering', () => {
     const tree = renderer.create(<WalletCard
-      imagePath={Images.ethereumLogo}
+      imagePath={Images.walletIcon}
       nameHeading='Testing Wallet'
       balance='Testing Balance'
       messageText='Testing Message'
