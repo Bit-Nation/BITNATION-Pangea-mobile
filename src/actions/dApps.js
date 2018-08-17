@@ -3,7 +3,7 @@
 import { type DApp } from '../types/DApp';
 import type { DAppMessageType, ChatSessionType, GiftedChatMessageType } from '../types/Chat';
 import type { DAppLaunchState } from '../reducers/dApps';
-import type { DAppModalInfo } from '../types/DApp';
+import type { DAppChatContext, DAppModalInfo } from '../types/DApp';
 
 export type DAppsListUpdatedAction = { +type: 'DAPPS_LIST_UPDATED', availableDApps: Array<DApp> };
 export type StartDAppAction = { +type: 'START_DAPP', dAppPublicKey: string };
@@ -13,7 +13,7 @@ export type OpenDAppAction = { +type: 'OPEN_DAPP', dAppPublicKey: string, contex
 export type StoreDAppModalAction = { +type: 'STORE_DAPP_MODAL', modal: DAppModalInfo };
 export type CleanDAppModalAction = { +type: 'CLEAN_DAPP_MODAL', modalID: string };
 export type PerformDAppCallbackAction = { +type: 'PERFORM_DAPP_CALLBACK', dAppPublicKey: string, callbackID: number, args: Object };
-export type RenderDAppMessageAction = { +type: 'RENDER_DAPP_MESSAGE', message: DAppMessageType, callback: (layout: ?Object) => void };
+export type RenderDAppMessageAction = { +type: 'RENDER_DAPP_MESSAGE', message: DAppMessageType, context: DAppChatContext, callback: (layout: ?Object) => void };
 
 export type Action =
   | DAppsListUpdatedAction
@@ -147,12 +147,14 @@ export function performDAppCallback(dAppPublicKey: string, callbackID: number, a
  * @desc Action creator for an action to send DApp message.
  * @param {DAppMessageType} message Message to send.
  * @param {function} callback Callback to call on finish or error.
+ * @param {DAppChatContext} context Context to pass to renderer.
  * @return {RenderDAppMessageAction} An action.
  */
-export function renderDAppMessage(message: DAppMessageType, callback: (layout: ?Object) => void): RenderDAppMessageAction {
+export function renderDAppMessage(message: DAppMessageType, context: DAppChatContext, callback: (layout: ?Object) => void): RenderDAppMessageAction {
   return {
     type: RENDER_DAPP_MESSAGE,
     message,
+    context,
     callback,
   };
 }
