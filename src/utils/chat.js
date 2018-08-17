@@ -49,8 +49,10 @@ export function createGiftedChatMessageObjects(sender: Account, receiver: Profil
       try {
         const dAppMessageJSON = JSON.parse(data.dapp);
         dAppMessage = {
-          ...dAppMessageJSON,
           dAppPublicKey: Buffer.from(dAppMessageJSON.dapp_public_key, 'base64').toString('hex'),
+          params: dAppMessageJSON.params,
+          shouldSend: dAppMessageJSON.should_send,
+          type: dAppMessageJSON.type,
         };
       } catch (error) {
         console.log(`[CHAT] Unable to parse DApp message: ${data.dapp}`);
