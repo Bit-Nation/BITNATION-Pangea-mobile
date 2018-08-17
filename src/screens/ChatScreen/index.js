@@ -203,7 +203,7 @@ class ChatScreen extends Component<Props, State> {
     return (
       <View style={styles.container}>
         <BackgroundImage />
-        <FakeNavigationBar navBarHidden />
+        <FakeNavigationBar navBarHidden={false} />
 
         <GiftedChat
           messages={this.state.messages}
