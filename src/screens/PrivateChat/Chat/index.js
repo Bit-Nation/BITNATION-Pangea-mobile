@@ -146,9 +146,11 @@ class ChatScreen extends Component<Props, *> {
     if (selectedMessage == null) return;
 
     switch (index) {
-      case 0:
-        Clipboard.setString(selectedMessage.text);
+      case 0: {
+        const textToCopy = (selectedMessage.dAppMessage && selectedMessage.dAppMessage.params.contentToCopy) || selectedMessage.text;
+        Clipboard.setString(textToCopy);
         break;
+      }
       default:
         break;
     }
@@ -262,10 +264,6 @@ class ChatScreen extends Component<Props, *> {
             />
           )}
           onLongPress={(context, message) => {
-            if (message.dAppMessage != null) {
-              return;
-            }
-
             this.setState({
               selectedMessage: message,
             });
