@@ -33,6 +33,10 @@ type Props = {
    * @desc Callback on receive money button press
    */
   onReceivePress: () => void,
+  /**
+   * @desc Callback on transactions button press
+   */
+  onTransactionPress: () => void,
 }
 
 /**
@@ -40,7 +44,7 @@ type Props = {
  * @return {React.Component} A component.
  */
 const WalletCard = ({
-  imagePath, nameHeading, balance, onSendPress, onReceivePress,
+  imagePath, nameHeading, balance, onSendPress, onReceivePress, onTransactionPress,
 }: Props) => (
   <View style={styles.container}>
 
@@ -56,6 +60,7 @@ const WalletCard = ({
         <View style={styles.buttonsContainer}>
           <Button title={i18n.t('common.send')} onPress={onSendPress} style={[styles.button, styles.leftButton]} />
           <Button title={i18n.t('common.receive')} onPress={onReceivePress} style={styles.button} />
+          <Button title={i18n.t('common.transactions')} onPress={onTransactionPress} style={styles.button} />
           <View style={styles.spacer} />
         </View>
 
