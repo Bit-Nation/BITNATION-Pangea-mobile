@@ -30,7 +30,7 @@ import type { Account } from '../../../types/Account';
 import type { WalletType } from '../../../types/Wallet';
 import type { State as DAppsState } from '../../../reducers/dApps';
 import { getDApp } from '../../../reducers/dApps';
-import { openDApp } from '../../../actions/dApps';
+import { openDApp, setDAppContext } from '../../../actions/dApps';
 import i18n from '../../../global/i18n';
 import DAppMessage from '../../../components/common/DAppMessage';
 
@@ -89,7 +89,11 @@ type Props = {
   /**
    * @desc Open DApp.
    */
-  openDApp: (dAppPublicKey: string, context: DAppChatContext) => void,
+  openDApp: (dAppPublicKey: string) => void,
+  /**
+   * @desc Set context for DApps.
+   */
+  setDAppContext: (context: DAppChatContext | null) => void,
   /**
    * @desc Array of user wallets.
    */
@@ -105,12 +109,20 @@ class ChatScreen extends Component<Props, *> {
     };
   }
 
+  componentDidMount() {
+    this.props.setDAppContext(this.buildContext());
+  }
+
   componentDidUpdate(prevProps, prevState) {
     const { selectedMessage } = this.state;
     if (selectedMessage === prevState.selectedMessage) return;
     if (selectedMessage == null) return;
 
     this.messageActionSheet.show();
+  }
+
+  componentWillUnmount() {
+    this.props.setDAppContext(null);
   }
 
   onSend(messages: Array<any> = []) {
@@ -125,7 +137,7 @@ class ChatScreen extends Component<Props, *> {
 
   onSelectDAppToOpen = (index) => {
     if (index < this.props.availableDApps.length) {
-      this.props.openDApp(this.props.availableDApps[index].publicKey, this.buildContext());
+      this.props.openDApp(this.props.availableDApps[index].publicKey);
     }
   };
 
@@ -231,7 +243,7 @@ class ChatScreen extends Component<Props, *> {
             const { dAppMessage } = currentMessage;
             if (dAppMessage == null) return null;
 
-            return (<DAppMessage message={dAppMessage} context={this.buildContext()} />);
+            return (<DAppMessage message={dAppMessage} />);
           }}
           renderMessageText={(props) => {
             const { currentMessage } = props;
@@ -297,7 +309,8 @@ const mapDispatchToProps = dispatch => ({
   showSpinner: () => dispatch(showSpinner()),
   hideSpinner: () => dispatch(hideSpinner()),
   sendMessage: (publicKey, msg) => dispatch(sendMessage(publicKey, msg)),
-  openDApp: (dAppPublicKey, context) => dispatch(openDApp(dAppPublicKey, context)),
+  openDApp: dAppPublicKey => dispatch(openDApp(dAppPublicKey)),
+  setDAppContext: context => dispatch(setDAppContext(context)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChatScreen);

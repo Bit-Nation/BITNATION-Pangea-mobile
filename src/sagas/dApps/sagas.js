@@ -99,8 +99,7 @@ export function* openDApp(action: OpenDAppAction): Generator<*, *, *> {
     yield call(callback, false, new Error(`Unable to find DApp with public key ${dAppPublicKey}`));
     return;
   }
-  const { dApps: { contexts } } = yield select();
-  const context = contexts[dAppPublicKey] || {};
+  const { dApps: { context } } = yield select();
 
   try {
     yield call(DAppsService.openDApp, dAppPublicKey, context);
@@ -119,8 +118,7 @@ export function* openDApp(action: OpenDAppAction): Generator<*, *, *> {
  */
 export function* performDAppCallback(action: PerformDAppCallbackAction): Generator<*, *, *> {
   const { dAppPublicKey, callbackID, args } = action;
-  const { dApps: { contexts } } = yield select();
-  const context = contexts[dAppPublicKey] || {};
+  const { dApps: { context } } = yield select();
 
   try {
     yield put(dAppLaunchStateChanged(dAppPublicKey, 'working'));
@@ -142,14 +140,11 @@ export function* performDAppCallback(action: PerformDAppCallbackAction): Generat
  * @return {void}
  */
 export function* renderDAppMessage(action: RenderDAppMessageAction): Generator<*, *, *> {
-  const { message, context: messageContext, callback } = action;
-  const { dAppPublicKey } = message;
-  const { dApps: { contexts } } = yield select();
-  const context = contexts[dAppPublicKey] || {};
+  const { message, callback } = action;
+  const { dApps: { context } } = yield select();
 
   try {
-    const layoutString = yield call(DAppsService.renderDAppMessage, message, { ...context, ...messageContext });
-    console.log(`[DAPP] layout string: ${JSON.stringify(layoutString)}`);
+    const layoutString = yield call(DAppsService.renderDAppMessage, message, { ...context });
     let layout = JSON.parse(layoutString);
     if (Array.isArray(layout.children) && layout.children.length > 0) {
       [layout] = layout.children;

@@ -24,13 +24,9 @@ type Props = {
    */
   message: DAppMessageType,
   /**
-   * @desc Context to pass to messages renderer.
-   */
-  context: DAppChatContext,
-  /**
    * @desc Function to render DApp message and get layout.
    */
-  renderDAppMessage: (message: DAppMessageType, context: DAppChatContext, callback: (layout: ?Object) => void) => void,
+  renderDAppMessage: (message: DAppMessageType, callback: (layout: ?Object) => void) => void,
   /**
    * @desc DApp redux state.
    */
@@ -74,7 +70,7 @@ class DAppMessage extends React.Component<Props, State> {
       isRendering: true,
       layout: null,
     };
-    this.props.renderDAppMessage(props.message, props.context, (layout) => {
+    this.props.renderDAppMessage(props.message, (layout) => {
       this.setState(() => ({
         isRendering: false,
         layout,
@@ -134,8 +130,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  renderDAppMessage(message, context, callback) {
-    dispatch(renderDAppMessage(message, context, callback));
+  renderDAppMessage(message, callback) {
+    dispatch(renderDAppMessage(message, callback));
   },
 });
 

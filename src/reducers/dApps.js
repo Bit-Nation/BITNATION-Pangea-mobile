@@ -1,13 +1,13 @@
 // @flow
 
-import type { DApp } from '../types/DApp';
+import type { DApp, DAppChatContext } from '../types/DApp';
 import {
   type Action,
   DAPP_LAUNCH_STATE_CHANGED,
   DAPPS_LIST_UPDATED,
-  OPEN_DAPP,
   STORE_DAPP_MODAL,
-  CLEAN_DAPP_MODAL, RENDER_DAPP_MESSAGE,
+  CLEAN_DAPP_MODAL,
+  SET_DAPP_CONTEXT,
 } from '../actions/dApps';
 import { SERVICES_DESTROYED } from '../actions/serviceContainer';
 import { type DAppModalInfo } from '../types/DApp';
@@ -16,7 +16,7 @@ export type DAppLaunchState = 'off' | 'starting' | 'started' | 'opened' | 'worki
 
 export type State = {
   +availableDApps: Array<DApp>,
-  +contexts: { [string]: Object },
+  +context: DAppChatContext | null,
   +dAppsLaunchState: { [string]: DAppLaunchState },
   +modals: { [string]: DAppModalInfo },
 };
@@ -29,7 +29,7 @@ export const initialState: State = {
   /**
    * @desc Dictionary that contains context for each DApp id.
    */
-  contexts: {},
+  context: null,
   /**
    * @desc Map from DApps ids to their launch states.
    */
@@ -67,16 +67,11 @@ export default (state: State = initialState, action: Action): State => {
         dAppsLaunchState: newDAppsLaunchState,
       };
     }
-    case OPEN_DAPP: {
-      if (getDApp(state, action.dAppPublicKey) == null) {
-        return state;
-      }
-
+    case SET_DAPP_CONTEXT: {
       return {
         ...state,
-        contexts: {
-          ...state.contexts,
-          [action.dAppPublicKey]: action.context,
+        context: {
+          ...action.context,
         },
       };
     }
