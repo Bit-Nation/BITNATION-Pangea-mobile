@@ -44,6 +44,7 @@ export default class AccountsService {
       encrypted_key_manager: accountStore,
       signed_profile: signedProfile,
       enable_debugging: false,
+      eth_ws_endpoint: 'wss://mainnet.infura.io/_ws',
       private_chat_endpoint: Config.CHAT_WSS_ENDPOINT,
       private_chat_bearer_token: Config.CHAT_TOKEN,
     });

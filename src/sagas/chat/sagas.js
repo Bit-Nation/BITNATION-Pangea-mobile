@@ -24,8 +24,8 @@ import {
 import defaultDB from '../../services/database';
 import ChatService from '../../services/chat';
 import { getCurrentAccount, getCurrentAccountId } from '../accounts/sagas';
-import { byteToHexString } from '../../utils/key';
 import { createGiftedChatMessageObjects } from '../../utils/chat';
+import { panthalassaEthPubToAddress } from '../../services/panthalassa';
 
 /**
  * @desc Save profile into database.
@@ -34,19 +34,22 @@ import { createGiftedChatMessageObjects } from '../../utils/chat';
  */
 async function saveProfileIntoDatabase(profileObject: Object) {
   const db = await defaultDB;
-  const isProfileOnDb = db.objects('Profile').filtered(`identity_pub_key == '${profileObject.ethereumPubKey}'`);
+  const isProfileOnDb = db.objects('Profile').filtered(`identityKey == '${profileObject.ethereumPubKey}'`);
   if (isProfileOnDb.length === 0) {
+    const ethereumPublicKey = Buffer.from(profileObject.ethereumPubKey, 'base64').toString('hex');
+    const ethereumAddress = await panthalassaEthPubToAddress(ethereumPublicKey);
     const profile = {
       name: profileObject.name,
       location: profileObject.location || '',
       image: profileObject.image || '',
-      identity_pub_key: profileObject.identityPubKey,
-      ethereum_pub_Key: profileObject.ethereumPubKey,
-      chat_id_key: byteToHexString(profileObject.chatIdentityPubKey),
+      identityKey: Buffer.from(profileObject.identityPubKey, 'base64').toString('hex'),
+      ethereumPublicKey,
+      ethereumAddress,
+      chatIdKey: Buffer.from(profileObject.chatIdentityPubKey, 'base64').toString('hex'),
       timestamp: new Date(1000 * profileObject.timestamp),
       version: profileObject.version,
-      identity_key_signature: profileObject.identityKeySignature,
-      ethereum_key_signature: profileObject.ethereumKeySignature,
+      identityKeySignature: Buffer.from(profileObject.identityKeySignature, 'base64').toString('hex'),
+      ethereumKeySignature: Buffer.from(profileObject.ethereumKeySignature, 'base64').toString('hex'),
     };
 
     let dbProfile = null;
@@ -62,33 +65,22 @@ async function saveProfileIntoDatabase(profileObject: Object) {
 
 /**
  * @desc Get profile from db or from network if not exist
- * @param {string} encodedPublicKey Public key of user
- * @param {boolean} isHex If public key is in hex
+ * @param {string} identityKey Public key of user
  * @return {void}
  */
-export function* getProfile(encodedPublicKey: string, isHex: boolean = true): Generator<*, *, *> {
-  let publicKey = encodedPublicKey;
-  if (isHex === true) {
-    publicKey = Buffer.from(encodedPublicKey, 'hex').toString('base64');
-  }
-  const hexPublicKey = isHex ? encodedPublicKey : Buffer.from(encodedPublicKey, 'base64').toString('hex');
-
+export function* getProfile(identityKey: string): Generator<*, *, *> {
   const db = yield defaultDB;
   let results = yield call([db, 'objects'], 'Profile');
-  results = yield call([results, 'filtered'], `identity_pub_key == '${publicKey}'`);
+  results = yield call([results, 'filtered'], `identityKey == '${identityKey}'`);
   const receiver = yield results[0] || null;
 
   if (receiver != null) {
     return yield receiver;
   }
 
-  try {
-    const profile = yield call(ChatService.getProfile, hexPublicKey);
-    const dbProfile = yield call(saveProfileIntoDatabase, profile);
-    return dbProfile;
-  } catch (e) {
-    return yield null;
-  }
+  const profile = yield call(ChatService.getProfile, identityKey);
+  const dbProfile = yield call(saveProfileIntoDatabase, profile);
+  return dbProfile;
 }
 
 /**
@@ -113,7 +105,7 @@ export function* getProfileActionHandler(action: GetProfileAction): Generator<*,
 export function* createChatSession(action: NewChatSessionAction): Generator<*, *, *> {
   const currentAccountId = yield call(getCurrentAccountId);
   const chatSession = {
-    publicKey: action.profile.identity_pub_key,
+    publicKey: action.profile.identityKey,
     username: action.profile.name,
     accountId: currentAccountId,
     messages: [],
@@ -135,8 +127,15 @@ export function* createChatSession(action: NewChatSessionAction): Generator<*, *
  * @return {void}
  */
 export function* openChatSession(action: OpenChatAction): Generator<*, *, *> {
-  const profile = yield call(getProfile, action.publicKey, false);
-  if (profile != null) {
+  try {
+    const profile = yield call(getProfile, action.publicKey, false);
+    if (profile == null) {
+      yield call(action.callback, {
+        status: 'fail',
+      });
+      return;
+    }
+
     yield put(loadChatMessages(action.publicKey));
     yield put(selectProfile(profile));
     const userPublicKey = yield call(ChatService.getPublicKey);
@@ -144,7 +143,7 @@ export function* openChatSession(action: OpenChatAction): Generator<*, *, *> {
       status: 'success',
       userPublicKey,
     });
-  } else {
+  } catch (error) {
     yield call(action.callback, {
       status: 'fail',
     });
@@ -157,21 +156,23 @@ export function* openChatSession(action: OpenChatAction): Generator<*, *, *> {
  */
 export function* fetchAllChats(): Generator<*, *, *> {
   const currentAccountId = yield call(getCurrentAccountId);
-  const hexPublicKeys = yield call(ChatService.fetchAllChats);
+  const identityKeys = yield call(ChatService.fetchAllChats);
 
   const chats = [];
-  let publicKey;
   // eslint-disable-next-line no-restricted-syntax
-  for (const hexPubKey of hexPublicKeys) {
-    publicKey = Buffer.from(hexPubKey, 'hex').toString('base64');
-    const profile = yield call(getProfile, hexPubKey);
-    if (profile != null) {
-      chats.push({
-        publicKey,
-        username: profile.name,
-        accountId: currentAccountId,
-        messages: [],
-      });
+  for (const identityKey of identityKeys) {
+    try {
+      const profile = yield call(getProfile, identityKey);
+      if (profile != null) {
+        chats.push({
+          publicKey: identityKey,
+          username: profile.name,
+          accountId: currentAccountId,
+          messages: [],
+        });
+      }
+    } catch (error) {
+      console.log(`[TEST] Fail to get profile with error: ${error.message}`);
     }
   }
 
@@ -186,7 +187,7 @@ export function* fetchAllChats(): Generator<*, *, *> {
 export function* loadMessages(action: LoadChatMessagesAction): Generator<*, *, *> {
   const db = yield defaultDB;
   let results = yield call([db, 'objects'], 'Profile');
-  results = yield call([results, 'filtered'], `identity_pub_key == '${action.recipientPublicKey}'`);
+  results = yield call([results, 'filtered'], `identityKey == '${action.recipientPublicKey}'`);
   const recipientProfile = yield results[0] || null;
 
   const senderAccount = yield call(getCurrentAccount);
@@ -212,19 +213,23 @@ export function* sendMessage(action: SendMessageAction): Generator<*, *, *> {
  * @return {void}
  */
 export function* handlePanthalassaMessagePersisted(action: PanthalassaMessagePersistedAction): Generator<*, *, *> {
-  const publicKey = Buffer.from(action.payload.chat, 'hex').toString('base64');
+  const publicKey = action.payload.chat;
 
-  const receiver = yield call(getProfile, action.payload.chat);
+  try {
+    const receiver = yield call(getProfile, publicKey);
 
-  const sender = yield call(getCurrentAccount);
+    const sender = yield call(getCurrentAccount);
 
-  const { chat: { chats } } = yield select();
-  if (chats.findIndex(chat => chat.publicKey === publicKey) === -1) {
-    yield call(createChatSession, newChatSession(receiver, () => undefined));
-  }
+    const { chat: { chats } } = yield select();
+    if (chats.findIndex(chat => chat.publicKey === publicKey) === -1) {
+      yield call(createChatSession, newChatSession(receiver, () => undefined));
+    }
 
-  if (receiver) {
-    const messages = createGiftedChatMessageObjects(sender, receiver, [action.payload]);
-    yield put(addChatMessage(publicKey, messages[0]));
+    if (receiver) {
+      const messages = createGiftedChatMessageObjects(sender, receiver, [action.payload]);
+      yield put(addChatMessage(publicKey, messages[0]));
+    }
+  } catch (error) {
+    console.log(`[TEST] Handle message persisted failed: ${error.message}`);
   }
 }
