@@ -26,6 +26,10 @@ type Props = {
    * @desc React Native Navigation navigator object.
    */
   navigator: Navigator,
+  /**
+   * @desc Wallet object.
+   */
+  wallet: WalletType,
 };
 
 type TestingModeProps = {
@@ -180,11 +184,15 @@ class WalletScreen extends NavigatorComponent<
               </Left>
             </Item>
           </View>
-          <WebView
-            source={{
-              uri: 'https://etherscan.io/address/{this.props.wallet.ethAddress}',
-            }}
-          />
+          {this.props.wallet &&
+            <WebView
+              source={{
+                uri: `https://etherscan.io/address/${
+                  this.props.wallet.ethAddress
+                  }`,
+              }}
+            />
+          }
         </Modal>
       </View>
     );
