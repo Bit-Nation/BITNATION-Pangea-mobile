@@ -10,6 +10,7 @@ ShallowWrapper {
     nameHeading="Testing Press"
     onReceivePress={[Function]}
     onSendPress={[Function]}
+    onTransactionPress={[Function]}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -28,7 +29,7 @@ ShallowWrapper {
           Object {
             "alignItems": "stretch",
             "backgroundColor": "white",
-            "borderRadius": 5,
+            "borderRadius": 15,
             "flex": 1,
             "flexDirection": "row",
             "justifyContent": "flex-start",
@@ -101,6 +102,7 @@ ShallowWrapper {
               Object {
                 "flexDirection": "row",
                 "justifyContent": "flex-start",
+                "marginLeft": 2,
               }
             }
           >
@@ -132,6 +134,18 @@ ShallowWrapper {
                 }
               }
               title="Receive"
+            />
+            <Button
+              enabled={true}
+              onPress={[Function]}
+              style={
+                Object {
+                  "borderRadius": 14,
+                  "height": 25,
+                  "width": 80,
+                }
+              }
+              title="Transactions"
             />
             <View
               style={
@@ -231,6 +245,7 @@ ShallowWrapper {
                 Object {
                   "flexDirection": "row",
                   "justifyContent": "flex-start",
+                  "marginLeft": 2,
                 }
               }
             >
@@ -263,6 +278,18 @@ ShallowWrapper {
                 }
                 title="Receive"
               />
+              <Button
+                enabled={true}
+                onPress={[Function]}
+                style={
+                  Object {
+                    "borderRadius": 14,
+                    "height": 25,
+                    "width": 80,
+                  }
+                }
+                title="Transactions"
+              />
               <View
                 style={
                   Object {
@@ -283,7 +310,7 @@ ShallowWrapper {
         "style": Object {
           "alignItems": "stretch",
           "backgroundColor": "white",
-          "borderRadius": 5,
+          "borderRadius": 15,
           "flex": 1,
           "flexDirection": "row",
           "justifyContent": "flex-start",
@@ -361,6 +388,7 @@ ShallowWrapper {
                   Object {
                     "flexDirection": "row",
                     "justifyContent": "flex-start",
+                    "marginLeft": 2,
                   }
                 }
               >
@@ -392,6 +420,18 @@ ShallowWrapper {
                     }
                   }
                   title="Receive"
+                />
+                <Button
+                  enabled={true}
+                  onPress={[Function]}
+                  style={
+                    Object {
+                      "borderRadius": 14,
+                      "height": 25,
+                      "width": 80,
+                    }
+                  }
+                  title="Transactions"
                 />
                 <View
                   style={
@@ -515,6 +555,18 @@ ShallowWrapper {
                     }
                     title="Receive"
                   />,
+                  <Button
+                    enabled={true}
+                    onPress={[Function]}
+                    style={
+                      Object {
+                        "borderRadius": 14,
+                        "height": 25,
+                        "width": 80,
+                      }
+                    }
+                    title="Transactions"
+                  />,
                   <View
                     style={
                       Object {
@@ -526,6 +578,7 @@ ShallowWrapper {
                 "style": Object {
                   "flexDirection": "row",
                   "justifyContent": "flex-start",
+                  "marginLeft": 2,
                 },
               },
               "ref": null,
@@ -566,6 +619,24 @@ ShallowWrapper {
                       "width": 80,
                     },
                     "title": "Receive",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "function",
+                  "props": Object {
+                    "enabled": true,
+                    "onPress": [Function],
+                    "style": Object {
+                      "borderRadius": 14,
+                      "height": 25,
+                      "width": 80,
+                    },
+                    "title": "Transactions",
                   },
                   "ref": null,
                   "rendered": null,
@@ -619,7 +690,7 @@ ShallowWrapper {
             Object {
               "alignItems": "stretch",
               "backgroundColor": "white",
-              "borderRadius": 5,
+              "borderRadius": 15,
               "flex": 1,
               "flexDirection": "row",
               "justifyContent": "flex-start",
@@ -692,6 +763,7 @@ ShallowWrapper {
                 Object {
                   "flexDirection": "row",
                   "justifyContent": "flex-start",
+                  "marginLeft": 2,
                 }
               }
             >
@@ -723,6 +795,18 @@ ShallowWrapper {
                   }
                 }
                 title="Receive"
+              />
+              <Button
+                enabled={true}
+                onPress={[Function]}
+                style={
+                  Object {
+                    "borderRadius": 14,
+                    "height": 25,
+                    "width": 80,
+                  }
+                }
+                title="Transactions"
               />
               <View
                 style={
@@ -822,6 +906,7 @@ ShallowWrapper {
                   Object {
                     "flexDirection": "row",
                     "justifyContent": "flex-start",
+                    "marginLeft": 2,
                   }
                 }
               >
@@ -854,6 +939,18 @@ ShallowWrapper {
                   }
                   title="Receive"
                 />
+                <Button
+                  enabled={true}
+                  onPress={[Function]}
+                  style={
+                    Object {
+                      "borderRadius": 14,
+                      "height": 25,
+                      "width": 80,
+                    }
+                  }
+                  title="Transactions"
+                />
                 <View
                   style={
                     Object {
@@ -874,7 +971,7 @@ ShallowWrapper {
           "style": Object {
             "alignItems": "stretch",
             "backgroundColor": "white",
-            "borderRadius": 5,
+            "borderRadius": 15,
             "flex": 1,
             "flexDirection": "row",
             "justifyContent": "flex-start",
@@ -952,6 +1049,7 @@ ShallowWrapper {
                     Object {
                       "flexDirection": "row",
                       "justifyContent": "flex-start",
+                      "marginLeft": 2,
                     }
                   }
                 >
@@ -983,6 +1081,18 @@ ShallowWrapper {
                       }
                     }
                     title="Receive"
+                  />
+                  <Button
+                    enabled={true}
+                    onPress={[Function]}
+                    style={
+                      Object {
+                        "borderRadius": 14,
+                        "height": 25,
+                        "width": 80,
+                      }
+                    }
+                    title="Transactions"
                   />
                   <View
                     style={
@@ -1106,6 +1216,18 @@ ShallowWrapper {
                       }
                       title="Receive"
                     />,
+                    <Button
+                      enabled={true}
+                      onPress={[Function]}
+                      style={
+                        Object {
+                          "borderRadius": 14,
+                          "height": 25,
+                          "width": 80,
+                        }
+                      }
+                      title="Transactions"
+                    />,
                     <View
                       style={
                         Object {
@@ -1117,6 +1239,7 @@ ShallowWrapper {
                   "style": Object {
                     "flexDirection": "row",
                     "justifyContent": "flex-start",
+                    "marginLeft": 2,
                   },
                 },
                 "ref": null,
@@ -1157,6 +1280,24 @@ ShallowWrapper {
                         "width": 80,
                       },
                       "title": "Receive",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "function",
+                    "props": Object {
+                      "enabled": true,
+                      "onPress": [Function],
+                      "style": Object {
+                        "borderRadius": 14,
+                        "height": 25,
+                        "width": 80,
+                      },
+                      "title": "Transactions",
                     },
                     "ref": null,
                     "rendered": null,
@@ -1227,7 +1368,7 @@ exports[`WalletCard component tests Rendering 1`] = `
       Object {
         "alignItems": "stretch",
         "backgroundColor": "white",
-        "borderRadius": 5,
+        "borderRadius": 15,
         "flex": 1,
         "flexDirection": "row",
         "justifyContent": "flex-start",
@@ -1300,6 +1441,7 @@ exports[`WalletCard component tests Rendering 1`] = `
           Object {
             "flexDirection": "row",
             "justifyContent": "flex-start",
+            "marginLeft": 2,
           }
         }
       >
@@ -1344,7 +1486,8 @@ exports[`WalletCard component tests Rendering 1`] = `
             style={
               Object {
                 "flexDirection": "row",
-                "justifyContent": "center",
+                "justifyContent": "flex-start",
+                "marginLeft": 0,
                 "opacity": 1,
               }
             }
@@ -1358,7 +1501,7 @@ exports[`WalletCard component tests Rendering 1`] = `
               style={
                 Object {
                   "color": "#FF8B00",
-                  "fontSize": 15,
+                  "fontSize": 12,
                   "fontWeight": "bold",
                   "textAlign": "center",
                 }
@@ -1429,7 +1572,8 @@ exports[`WalletCard component tests Rendering 1`] = `
             style={
               Object {
                 "flexDirection": "row",
-                "justifyContent": "center",
+                "justifyContent": "flex-start",
+                "marginLeft": 0,
                 "opacity": 1,
               }
             }
@@ -1443,13 +1587,99 @@ exports[`WalletCard component tests Rendering 1`] = `
               style={
                 Object {
                   "color": "#FF8B00",
-                  "fontSize": 15,
+                  "fontSize": 12,
                   "fontWeight": "bold",
                   "textAlign": "center",
                 }
               }
             >
               Receive
+            </Text>
+            <Text
+              accessible={true}
+              allowFontScaling={false}
+              ellipsizeMode="tail"
+              style={
+                Array [
+                  Object {
+                    "color": undefined,
+                    "fontSize": 12,
+                  },
+                  Object {
+                    "alignSelf": "center",
+                    "color": "#FF8B00",
+                    "fontSize": 14,
+                  },
+                  Object {
+                    "fontFamily": "Material Icons",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                ]
+              }
+            >
+              
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "borderRadius": 15,
+                "height": 30,
+                "justifyContent": "center",
+              },
+              Object {
+                "borderRadius": 14,
+                "height": 25,
+                "width": 80,
+              },
+            ]
+          }
+        >
+          <View
+            accessibilityComponentType={undefined}
+            accessibilityLabel={undefined}
+            accessibilityTraits={undefined}
+            accessible={true}
+            collapsable={undefined}
+            hasTVPreferredFocus={undefined}
+            hitSlop={undefined}
+            isTVSelectable={true}
+            nativeID={undefined}
+            onLayout={undefined}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "flexDirection": "row",
+                "justifyContent": "flex-start",
+                "marginLeft": 0,
+                "opacity": 1,
+              }
+            }
+            testID="Touchable"
+            tvParallaxProperties={undefined}
+          >
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Object {
+                  "color": "#FF8B00",
+                  "fontSize": 12,
+                  "fontWeight": "bold",
+                  "textAlign": "center",
+                }
+              }
+            >
+              Transactions
             </Text>
             <Text
               accessible={true}
