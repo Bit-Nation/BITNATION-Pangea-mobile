@@ -26,10 +26,6 @@ type Props = {
    * @desc React Native Navigation navigator object.
    */
   navigator: Navigator,
-  /**
-   * @desc Wallet object.
-   */
-  wallet: WalletType,
 };
 
 type TestingModeProps = {
@@ -64,6 +60,10 @@ type State = {
    * @desc Flag to control opening of transactions Modal
    */
   transactionsVisible: boolean,
+  /**
+   * @desc To store ETH Address
+   */
+  ethAddress: string,
 };
 
 class WalletScreen extends NavigatorComponent<
@@ -76,6 +76,7 @@ class WalletScreen extends NavigatorComponent<
     this.state = {
       pullToRefreshInProgress: false,
       transactionsVisible: false,
+      ethAddress: '',
     };
     this.props.updateWalletList();
   }
@@ -134,8 +135,8 @@ class WalletScreen extends NavigatorComponent<
     this.props.navigator.push(screen('RECEIVE_MONEY_SCREEN'));
   };
 
-  transactions = () => {
-    this.setState({ transactionsVisible: true });
+  transactions = (wallet) => {
+    this.setState({ transactionsVisible: true, ethAddress: wallet.ethAddress });
   };
 
   onRefresh = () => {
@@ -184,15 +185,13 @@ class WalletScreen extends NavigatorComponent<
               </Left>
             </Item>
           </View>
-          {this.props.wallet &&
-            <WebView
-              source={{
-                uri: `https://etherscan.io/address/${
-                  this.props.wallet.ethAddress
-                  }`,
-              }}
-            />
-          }
+          <WebView
+            source={{
+              uri: `https://etherscan.io/address/${
+                this.state.ethAddress
+                }`,
+            }}
+          />
         </Modal>
       </View>
     );
