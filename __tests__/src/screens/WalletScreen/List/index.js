@@ -13,7 +13,6 @@ describe('List Wallet', () => {
     }],
     onReceivePress: jest.fn(),
     onSendPress: jest.fn(),
-    // onTransactionPress: jest.fn(),
     isRefreshing: jest.fn(),
     onRefresh: jest.fn(),
   };

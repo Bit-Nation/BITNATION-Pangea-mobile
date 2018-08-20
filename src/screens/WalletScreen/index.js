@@ -61,9 +61,9 @@ type State = {
    */
   transactionsVisible: boolean,
   /**
-   * @desc To store ETH Address
+   * @desc To store transaction variables
    */
-  ethAddress: string,
+  transactionsModel: Object,
 };
 
 class WalletScreen extends NavigatorComponent<
@@ -77,6 +77,10 @@ class WalletScreen extends NavigatorComponent<
       pullToRefreshInProgress: false,
       transactionsVisible: false,
       ethAddress: '',
+      transactionsModel: {
+        visible: false,
+        ethAddress: '',
+      },
     };
     this.props.updateWalletList();
   }
@@ -135,8 +139,8 @@ class WalletScreen extends NavigatorComponent<
     this.props.navigator.push(screen('RECEIVE_MONEY_SCREEN'));
   };
 
-  transactions = (wallet) => {
-    this.setState({ transactionsVisible: true, ethAddress: wallet.ethAddress });
+  showTransactions = (wallet) => {
+    this.setState({ transactionsModel: { visible: false, ethAddress: wallet.ethAddress } });
   };
 
   onRefresh = () => {
@@ -144,7 +148,7 @@ class WalletScreen extends NavigatorComponent<
     this.props.updateWalletList();
   };
 
-  close() {
+  transactionModalClose() {
     this.setState({ transactionsVisible: false });
   }
 
@@ -165,7 +169,7 @@ class WalletScreen extends NavigatorComponent<
               wallets={this.props.wallets}
               onSendPress={this.sendMoney}
               onReceivePress={this.receiveMoney}
-              onTransactionPress={this.transactions}
+              onTransactionPress={this.showTransactions}
               onRefresh={this.onRefresh}
               isRefreshing={this.state.pullToRefreshInProgress}
             />
@@ -174,12 +178,12 @@ class WalletScreen extends NavigatorComponent<
         <Modal
           animationType='slide'
           transparent={false}
-          visible={this.state.transactionsVisible}
-          onRequestClose={() => this.close()}
+          visible={this.state.transactionsModel.visible}
+          onRequestClose={() => this.transactionModalClose()}
           backDropOpacity={1}
         >
           <View>
-            <Item onPress={() => this.setState({ transactionsVisible: false })}>
+            <Item onPress={() => this.setState({ transactionsModel: { visible: false } })}>
               <Left>
                 <Icon name='ios-close' style={styles.closeIcon} />
               </Left>
@@ -188,7 +192,7 @@ class WalletScreen extends NavigatorComponent<
           <WebView
             source={{
               uri: `https://etherscan.io/address/${
-                this.state.ethAddress
+                this.state.transactionsModel.ethAddress
                 }`,
             }}
           />
