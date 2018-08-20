@@ -58,7 +58,7 @@ const SettingsListItem = ({
   });
 
   return (
-    <View style={[styles.sectionListItemContainer, style]}>
+    <View style={[styles.sectionListItemContainer, styles.settingsList, style]}>
       <TouchableOpacity
         testID='Touchable'
         onPress={() => onPress(id)}
