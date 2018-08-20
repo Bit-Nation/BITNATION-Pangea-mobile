@@ -140,7 +140,7 @@ class WalletScreen extends NavigatorComponent<
   };
 
   showTransactions = (wallet) => {
-    this.setState({ transactionsModel: { visible: false, ethAddress: wallet.ethAddress } });
+    this.setState({ transactionsModel: { visible: true, ethAddress: wallet.ethAddress } });
   };
 
   onRefresh = () => {
