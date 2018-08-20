@@ -696,17 +696,18 @@ const styles = {
     borderColor: Colors.borderColor,
   },
 
-  switchAccountText:
+  settingsText:
   {
     color: 'white',
     fontSize: 15,
     fontWeight: '900',
   },
-  switchAccountButton: {
+  settingsButton: {
     height: 54,
     backgroundColor: '#FF8B00',
     alignSelf: 'stretch',
     borderRadius: 0,
+    bottom: 0,
   },
 
   tabsContainerStyle: {

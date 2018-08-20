@@ -128,12 +128,16 @@ class ProfileScreen extends NavigatorComponent<Props> {
     const { publicKey } = this.props;
 
     return (
-      <View style={styles.publicKey}>
-        <Text style={styles.publicKeyText}>{publicKey && publicKey.trim()}</Text>
+      <View style={styles.screenContainer}>
+        <View style={styles.publicKey}>
+          <Text style={styles.publicKeyText}>{publicKey && publicKey.trim()}</Text>
+        </View>
         <Button
-          style={styles.panelButton}
-          title={i18n.t('screens.profile.shareKey')}
+          enabled
+          style={styles.settingsButton}
+          title={i18n.t('screens.profile.shareKey').toUpperCase()}
           onPress={this.sharePublicKey}
+          styleTitle={styles.settingsText}
         />
       </View>
     );
