@@ -689,6 +689,26 @@ const styles = {
   segmentedControlContainerBackground: {
     backgroundColor: 'transparent',
   },
+
+  settingsList: {
+    height: 50,
+    borderBottomWidth: 1.6,
+    borderColor: Colors.borderColor,
+  },
+
+  switchAccountText:
+  {
+    color: 'white',
+    fontSize: 15,
+    fontWeight: '900',
+  },
+  switchAccountButton: {
+    height: 54,
+    backgroundColor: '#FF8B00',
+    alignSelf: 'stretch',
+    borderRadius: 0,
+  },
+
   tabsContainerStyle: {
     backgroundColor: 'transparent',
   },
