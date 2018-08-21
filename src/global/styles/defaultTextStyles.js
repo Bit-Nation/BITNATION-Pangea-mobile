@@ -128,8 +128,8 @@ const defaultTextStyles = {
 
   largeTitle: {
     fontFamily: 'Roboto',
-    fontWeight: '900',
-    fontSize: 22,
+    fontWeight: '500',
+    fontSize: 27,
     lineHeight: 30,
     letterSpacing: 0,
     color: Colors.BitnationDarkGrayColor,
