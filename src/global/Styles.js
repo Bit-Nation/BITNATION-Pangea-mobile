@@ -102,6 +102,9 @@ const styles = {
   // Margins position correctly INSIDE a bodyContainer View
   titleContainer: {
     marginHorizontal: 20,
+    marginBottom: 8,
+    borderBottomWidth: 1,
+    borderColor: Colors.BitnationDarkGrayColor,
   },
 
   // A block of text in the body area
@@ -172,7 +175,7 @@ const styles = {
   // If the body has no margins (bars that go edge to edge)
   // then use the style below.
   titleBarLarge: {
-    height: fontSizeNormalizer(52),
+    height: fontSizeNormalizer(40),
     alignItems: 'flex-start',
     // marginLeft: 8,
     // marginRight: 8,
