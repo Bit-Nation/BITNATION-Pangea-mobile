@@ -1,13 +1,11 @@
 // @flow
 
 import React from 'react';
-import { View, Text, TouchableOpacity, Switch } from 'react-native';
+import { View, Text, TouchableOpacity, Switch, Platform } from 'react-native';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
-// import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import Icon from 'react-native-vector-icons/Octicons';
-
+import IosIcon from 'react-native-vector-icons/Octicons';
+import AndroidIcon from 'react-native-vector-icons/Entypo';
 import GlobalStyles from '../../global/Styles';
-// import AssetsImages from '../../global/AssetsImages';
 import Colors from '../../global/colors';
 
 export type AdditionalViewKind =
@@ -74,9 +72,20 @@ const SettingsListItem = ({
         <Text style={styles.listItemText} numberOfLines={1}>
           {text}
         </Text>
-        {additionalViewKind.type === 'disclosure' && (
-          <Icon name='triangle-right' size={30} color='#FF8B00' />
-        )}
+        {additionalViewKind.type === 'disclosure' &&
+          (Platform.OS === 'ios' ? (
+            <IosIcon
+              name='triangle-right'
+              size={30}
+              color={Colors.BitnationLinkOrangeColor}
+            />
+          ) : (
+            <AndroidIcon
+              name='triangle-right'
+              size={30}
+              color={Colors.BitnationLinkOrangeColor}
+            />
+          ))}
         {additionalViewKind.type === 'switch' && (
           <Switch
             style={styles.switchObject}

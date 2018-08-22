@@ -63,7 +63,7 @@ class ProfileScreen extends NavigatorComponent<Props> {
       rightButtons: [{
         title: i18n.t('screens.profile.editButton'),
         id: EDIT_BUTTON,
-        buttonColor: Colors.navigationButtonColor,
+        buttonColor: Colors.BitnationLinkOrangeColor,
       }],
     });
   }
