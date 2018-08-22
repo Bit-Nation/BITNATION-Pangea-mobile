@@ -103,7 +103,7 @@ const styles = {
   titleContainer: {
     marginHorizontal: 20,
     marginBottom: 8,
-    borderBottomWidth: 1,
+    borderBottomWidth: Platform.OS === 'android' ? 1 : 0,
     borderColor: Colors.BitnationDarkGrayColor,
   },
 
@@ -177,8 +177,6 @@ const styles = {
   titleBarLarge: {
     height: fontSizeNormalizer(40),
     alignItems: 'flex-start',
-    // marginLeft: 8,
-    // marginRight: 8,
   },
 
   titleBarLargeNationDetail: {
