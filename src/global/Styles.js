@@ -103,8 +103,6 @@ const styles = {
   titleContainer: {
     marginHorizontal: 20,
     marginBottom: 8,
-    borderBottomWidth: Platform.OS === 'android' ? 1 : 0,
-    borderColor: Colors.BitnationDarkGrayColor,
   },
 
   // A block of text in the body area
