@@ -46,8 +46,6 @@ ShallowWrapper {
         </Text>
       </View>,
       "style": Object {
-        "borderBottomWidth": 0,
-        "borderColor": "#58595B",
         "marginBottom": 8,
         "marginHorizontal": 20,
       },
@@ -140,8 +138,6 @@ ShallowWrapper {
           </Text>
         </View>,
         "style": Object {
-          "borderBottomWidth": 0,
-          "borderColor": "#58595B",
           "marginBottom": 8,
           "marginHorizontal": 20,
         },
