@@ -149,7 +149,7 @@ class WalletScreen extends NavigatorComponent<
   };
 
   transactionModalClose() {
-    this.setState({ transactionsVisible: false });
+    this.setState({ transactionsModel: { visible: false } });
   }
 
   render() {
@@ -183,7 +183,7 @@ class WalletScreen extends NavigatorComponent<
           backDropOpacity={1}
         >
           <View>
-            <Item onPress={() => this.setState({ transactionsModel: { visible: false } })}>
+            <Item onPress={() => this.transactionModalClose()}>
               <Left>
                 <Icon name='ios-close' style={styles.closeIcon} />
               </Left>
