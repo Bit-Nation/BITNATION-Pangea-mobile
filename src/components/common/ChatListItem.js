@@ -48,6 +48,8 @@ const ChatListItem = ({
       onPress={() => onPress(id)}
       style={styles.sectionListTouchable}
     >
+      <Image source={AssetsImages.ChatUI.newMsgIcon} style={styles.sectionListNewMessage} />
+      <Image source={AssetsImages.avatarIcon} style={styles.avatarSmall} />
       <Text style={styles.listItemText} numberOfLines={1}>
         {text}
       </Text>
