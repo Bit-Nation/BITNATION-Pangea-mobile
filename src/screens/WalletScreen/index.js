@@ -1,9 +1,9 @@
 // @flow
 
 import React from 'react';
-import { View, Modal, WebView } from 'react-native';
+import { View, Modal, WebView, TouchableHighlight } from 'react-native';
 import { connect } from 'react-redux';
-import { Item, Left, Icon } from 'native-base';
+import { Icon } from 'native-base';
 import _ from 'lodash';
 import Background from '../../components/common/BackgroundImage';
 import { screen } from '../../global/Screens';
@@ -183,11 +183,13 @@ class WalletScreen extends NavigatorComponent<
           backDropOpacity={1}
         >
           <View>
-            <Item onPress={() => this.transactionModalClose()}>
-              <Left>
-                <Icon name='ios-close' style={styles.closeIcon} />
-              </Left>
-            </Item>
+            <TouchableHighlight
+              onPress={() => {
+                this.transactionModalClose();
+              }}
+            >
+              <Icon name='ios-close' style={styles.closeIcon} />
+            </TouchableHighlight>
           </View>
           <WebView
             source={{
