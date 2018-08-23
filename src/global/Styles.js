@@ -677,6 +677,12 @@ const styles = {
     height: 15,
   },
 
+  sectionListNewMessage: {
+    marginRight: 7,
+    width: 7,
+    height: 7,
+  },
+
   // ========================================
   // Tab Bar with text
   segmentedControlContainer: {
@@ -859,6 +865,13 @@ const styles = {
 
   avatarChangeContainer: {
     alignItems: 'center',
+  },
+
+  avatarSmall: {
+    height: 35,
+    width: 35,
+    borderRadius: 10,
+    marginRight: 10,
   },
 
   avatarMedium: {
