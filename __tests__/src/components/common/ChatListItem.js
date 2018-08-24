@@ -16,6 +16,7 @@ describe('ChatListItem tests', () => {
         text='Test chat list item'
         participants='Text'
         itemIcon={AssetsImages.ChatUI.signal0}
+        profileImage=''
       />);
       expect(wrapper).toMatchSnapshot();
     });
