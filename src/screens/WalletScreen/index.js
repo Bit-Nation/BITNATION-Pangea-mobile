@@ -1,7 +1,8 @@
 // @flow
 
 import React from 'react';
-import { View, Modal, WebView, TouchableHighlight } from 'react-native';
+import { View, WebView, TouchableHighlight } from 'react-native';
+import Modal from 'react-native-modal';
 import { connect } from 'react-redux';
 import { Icon } from 'native-base';
 import _ from 'lodash';
@@ -176,11 +177,7 @@ class WalletScreen extends NavigatorComponent<
           )}
         </View>
         <Modal
-          animationType='slide'
-          transparent={false}
-          visible={this.state.transactionsModel.visible}
-          onRequestClose={() => this.transactionModalClose()}
-          backDropOpacity={1}
+          isVisible={this.state.transactionsModel.visible}
         >
           <View>
             <TouchableHighlight
