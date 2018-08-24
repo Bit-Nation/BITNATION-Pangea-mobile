@@ -11,6 +11,7 @@ import { MediaQueryStyleSheet } from 'react-native-responsive';
 
 import GlobalStyles from '../../global/Styles';
 import AssetsImages from '../../global/AssetsImages';
+import {imageSource} from "../../utils/profile";
 
 type Props = {
   /**
@@ -33,6 +34,10 @@ type Props = {
    * @desc Image resource to be displayed as icon.
    */
   itemIcon: number,
+  /**
+   * @desc Image resource for the profile Image.
+   */
+  profileImage: number,
 }
 
 const styles = MediaQueryStyleSheet.create({
@@ -40,7 +45,7 @@ const styles = MediaQueryStyleSheet.create({
 });
 
 const ChatListItem = ({
-  text, participants, id, onPress, itemIcon,
+  text, participants, id, onPress, itemIcon, profileImage,
 }: Props) => (
   <View style={styles.sectionListItemContainer}>
     <TouchableOpacity
@@ -49,7 +54,10 @@ const ChatListItem = ({
       style={styles.sectionListTouchable}
     >
       <Image source={AssetsImages.ChatUI.newMsgIcon} style={styles.sectionListNewMessage} />
-      <Image source={AssetsImages.avatarIcon} style={styles.avatarSmall} />
+      <Image
+        style={styles.avatarSmall}
+        source={imageSource(profileImage) || AssetsImages.avatarIcon}
+      />
       <Text style={styles.listItemText} numberOfLines={1}>
         {text}
       </Text>

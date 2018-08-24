@@ -870,7 +870,7 @@ const styles = {
   avatarSmall: {
     height: 35,
     width: 35,
-    borderRadius: 10,
+    borderRadius: 18,
     marginRight: 10,
   },
 
