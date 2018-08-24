@@ -169,6 +169,7 @@ export function* fetchAllChats(): Generator<*, *, *> {
           username: profile.name,
           accountId: currentAccountId,
           messages: [],
+          image: profile.image,
         });
       }
     } catch (error) {

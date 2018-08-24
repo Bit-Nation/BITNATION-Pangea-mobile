@@ -235,6 +235,7 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
   };
 
   render() {
+    console.log('CHATS -->:', this.props.chatSessions);
     const sortedSessions = _.sortBy(this.props.chatSessions, session => session.username);
     const groups = _.groupBy(sortedSessions, session => session.username.charAt(0));
     const sections = _.map(groups, (group, key) => ({
@@ -264,6 +265,7 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
               itemIcon={0}
               onPress={this.onChatSelect}
               id={session}
+              profileImage={session.image}
             />);
           }}
           keyExtractor={item => item.publicKey}
