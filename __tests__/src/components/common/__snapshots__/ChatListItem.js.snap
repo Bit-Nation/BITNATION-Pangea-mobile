@@ -9,6 +9,7 @@ ShallowWrapper {
     itemIcon={0}
     onPress={[MockFunction]}
     participants=""
+    profileImage=""
     text="Test list item"
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -36,6 +37,27 @@ ShallowWrapper {
         }
         testID="Touchable"
       >
+        <Image
+          source={1}
+          style={
+            Object {
+              "height": 7,
+              "marginRight": 7,
+              "width": 7,
+            }
+          }
+        />
+        <Image
+          source={1}
+          style={
+            Object {
+              "borderRadius": 18,
+              "height": 35,
+              "marginRight": 10,
+              "width": 35,
+            }
+          }
+        />
         <Text
           accessible={true}
           allowFontScaling={true}
@@ -113,6 +135,27 @@ ShallowWrapper {
       "props": Object {
         "activeOpacity": 0.2,
         "children": Array [
+          <Image
+            source={1}
+            style={
+              Object {
+                "height": 7,
+                "marginRight": 7,
+                "width": 7,
+              }
+            }
+          />,
+          <Image
+            source={1}
+            style={
+              Object {
+                "borderRadius": 18,
+                "height": 35,
+                "marginRight": 10,
+                "width": 35,
+              }
+            }
+          />,
           <Text
             accessible={true}
             allowFontScaling={true}
@@ -183,6 +226,39 @@ ShallowWrapper {
       },
       "ref": null,
       "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "source": 1,
+            "style": Object {
+              "height": 7,
+              "marginRight": 7,
+              "width": 7,
+            },
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "source": 1,
+            "style": Object {
+              "borderRadius": 18,
+              "height": 35,
+              "marginRight": 10,
+              "width": 35,
+            },
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
         Object {
           "instance": null,
           "key": undefined,
@@ -287,6 +363,27 @@ ShallowWrapper {
           }
           testID="Touchable"
         >
+          <Image
+            source={1}
+            style={
+              Object {
+                "height": 7,
+                "marginRight": 7,
+                "width": 7,
+              }
+            }
+          />
+          <Image
+            source={1}
+            style={
+              Object {
+                "borderRadius": 18,
+                "height": 35,
+                "marginRight": 10,
+                "width": 35,
+              }
+            }
+          />
           <Text
             accessible={true}
             allowFontScaling={true}
@@ -364,6 +461,27 @@ ShallowWrapper {
         "props": Object {
           "activeOpacity": 0.2,
           "children": Array [
+            <Image
+              source={1}
+              style={
+                Object {
+                  "height": 7,
+                  "marginRight": 7,
+                  "width": 7,
+                }
+              }
+            />,
+            <Image
+              source={1}
+              style={
+                Object {
+                  "borderRadius": 18,
+                  "height": 35,
+                  "marginRight": 10,
+                  "width": 35,
+                }
+              }
+            />,
             <Text
               accessible={true}
               allowFontScaling={true}
@@ -434,6 +552,39 @@ ShallowWrapper {
         },
         "ref": null,
         "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "source": 1,
+              "style": Object {
+                "height": 7,
+                "marginRight": 7,
+                "width": 7,
+              },
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "source": 1,
+              "style": Object {
+                "borderRadius": 18,
+                "height": 35,
+                "marginRight": 10,
+                "width": 35,
+              },
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
           Object {
             "instance": null,
             "key": undefined,
@@ -539,6 +690,7 @@ ShallowWrapper {
     itemIcon={1}
     onPress={[Function]}
     participants="Text"
+    profileImage=""
     text="Test chat list item"
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -566,6 +718,27 @@ ShallowWrapper {
         }
         testID="Touchable"
       >
+        <Image
+          source={1}
+          style={
+            Object {
+              "height": 7,
+              "marginRight": 7,
+              "width": 7,
+            }
+          }
+        />
+        <Image
+          source={1}
+          style={
+            Object {
+              "borderRadius": 18,
+              "height": 35,
+              "marginRight": 10,
+              "width": 35,
+            }
+          }
+        />
         <Text
           accessible={true}
           allowFontScaling={true}
@@ -643,6 +816,27 @@ ShallowWrapper {
       "props": Object {
         "activeOpacity": 0.2,
         "children": Array [
+          <Image
+            source={1}
+            style={
+              Object {
+                "height": 7,
+                "marginRight": 7,
+                "width": 7,
+              }
+            }
+          />,
+          <Image
+            source={1}
+            style={
+              Object {
+                "borderRadius": 18,
+                "height": 35,
+                "marginRight": 10,
+                "width": 35,
+              }
+            }
+          />,
           <Text
             accessible={true}
             allowFontScaling={true}
@@ -713,6 +907,39 @@ ShallowWrapper {
       },
       "ref": null,
       "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "source": 1,
+            "style": Object {
+              "height": 7,
+              "marginRight": 7,
+              "width": 7,
+            },
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "source": 1,
+            "style": Object {
+              "borderRadius": 18,
+              "height": 35,
+              "marginRight": 10,
+              "width": 35,
+            },
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
         Object {
           "instance": null,
           "key": undefined,
@@ -817,6 +1044,27 @@ ShallowWrapper {
           }
           testID="Touchable"
         >
+          <Image
+            source={1}
+            style={
+              Object {
+                "height": 7,
+                "marginRight": 7,
+                "width": 7,
+              }
+            }
+          />
+          <Image
+            source={1}
+            style={
+              Object {
+                "borderRadius": 18,
+                "height": 35,
+                "marginRight": 10,
+                "width": 35,
+              }
+            }
+          />
           <Text
             accessible={true}
             allowFontScaling={true}
@@ -894,6 +1142,27 @@ ShallowWrapper {
         "props": Object {
           "activeOpacity": 0.2,
           "children": Array [
+            <Image
+              source={1}
+              style={
+                Object {
+                  "height": 7,
+                  "marginRight": 7,
+                  "width": 7,
+                }
+              }
+            />,
+            <Image
+              source={1}
+              style={
+                Object {
+                  "borderRadius": 18,
+                  "height": 35,
+                  "marginRight": 10,
+                  "width": 35,
+                }
+              }
+            />,
             <Text
               accessible={true}
               allowFontScaling={true}
@@ -964,6 +1233,39 @@ ShallowWrapper {
         },
         "ref": null,
         "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "source": 1,
+              "style": Object {
+                "height": 7,
+                "marginRight": 7,
+                "width": 7,
+              },
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "source": 1,
+              "style": Object {
+                "borderRadius": 18,
+                "height": 35,
+                "marginRight": 10,
+                "width": 35,
+              },
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
           Object {
             "instance": null,
             "key": undefined,
@@ -1069,6 +1371,7 @@ ShallowWrapper {
     itemIcon={0}
     onPress={[Function]}
     participants=""
+    profileImage=""
     text="Test list item"
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -1096,6 +1399,27 @@ ShallowWrapper {
         }
         testID="Touchable"
       >
+        <Image
+          source={1}
+          style={
+            Object {
+              "height": 7,
+              "marginRight": 7,
+              "width": 7,
+            }
+          }
+        />
+        <Image
+          source={1}
+          style={
+            Object {
+              "borderRadius": 18,
+              "height": 35,
+              "marginRight": 10,
+              "width": 35,
+            }
+          }
+        />
         <Text
           accessible={true}
           allowFontScaling={true}
@@ -1173,6 +1497,27 @@ ShallowWrapper {
       "props": Object {
         "activeOpacity": 0.2,
         "children": Array [
+          <Image
+            source={1}
+            style={
+              Object {
+                "height": 7,
+                "marginRight": 7,
+                "width": 7,
+              }
+            }
+          />,
+          <Image
+            source={1}
+            style={
+              Object {
+                "borderRadius": 18,
+                "height": 35,
+                "marginRight": 10,
+                "width": 35,
+              }
+            }
+          />,
           <Text
             accessible={true}
             allowFontScaling={true}
@@ -1243,6 +1588,39 @@ ShallowWrapper {
       },
       "ref": null,
       "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "source": 1,
+            "style": Object {
+              "height": 7,
+              "marginRight": 7,
+              "width": 7,
+            },
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "source": 1,
+            "style": Object {
+              "borderRadius": 18,
+              "height": 35,
+              "marginRight": 10,
+              "width": 35,
+            },
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
         Object {
           "instance": null,
           "key": undefined,
@@ -1347,6 +1725,27 @@ ShallowWrapper {
           }
           testID="Touchable"
         >
+          <Image
+            source={1}
+            style={
+              Object {
+                "height": 7,
+                "marginRight": 7,
+                "width": 7,
+              }
+            }
+          />
+          <Image
+            source={1}
+            style={
+              Object {
+                "borderRadius": 18,
+                "height": 35,
+                "marginRight": 10,
+                "width": 35,
+              }
+            }
+          />
           <Text
             accessible={true}
             allowFontScaling={true}
@@ -1424,6 +1823,27 @@ ShallowWrapper {
         "props": Object {
           "activeOpacity": 0.2,
           "children": Array [
+            <Image
+              source={1}
+              style={
+                Object {
+                  "height": 7,
+                  "marginRight": 7,
+                  "width": 7,
+                }
+              }
+            />,
+            <Image
+              source={1}
+              style={
+                Object {
+                  "borderRadius": 18,
+                  "height": 35,
+                  "marginRight": 10,
+                  "width": 35,
+                }
+              }
+            />,
             <Text
               accessible={true}
               allowFontScaling={true}
@@ -1494,6 +1914,39 @@ ShallowWrapper {
         },
         "ref": null,
         "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "source": 1,
+              "style": Object {
+                "height": 7,
+                "marginRight": 7,
+                "width": 7,
+              },
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "source": 1,
+              "style": Object {
+                "borderRadius": 18,
+                "height": 35,
+                "marginRight": 10,
+                "width": 35,
+              },
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
           Object {
             "instance": null,
             "key": undefined,
