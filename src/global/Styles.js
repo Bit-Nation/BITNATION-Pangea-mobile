@@ -109,6 +109,7 @@ const styles = {
     paddingBottom: 16,
   },
 
+
   // A block of text in the Confirmation Screen
   bodyParagraphConfirmationRow: {
     paddingBottom: 20,
@@ -675,6 +676,10 @@ const styles = {
     marginRight: 14,
     width: 20,
     height: 15,
+  },
+
+  closeIcon: {
+    color: '#fff',
   },
 
   // ========================================
