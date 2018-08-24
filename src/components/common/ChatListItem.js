@@ -11,7 +11,7 @@ import { MediaQueryStyleSheet } from 'react-native-responsive';
 
 import GlobalStyles from '../../global/Styles';
 import AssetsImages from '../../global/AssetsImages';
-import {imageSource} from "../../utils/profile";
+import { imageSource } from '../../utils/profile';
 
 type Props = {
   /**
@@ -37,7 +37,7 @@ type Props = {
   /**
    * @desc Image resource for the profile Image.
    */
-  profileImage: number,
+  profileImage: string,
 }
 
 const styles = MediaQueryStyleSheet.create({
@@ -76,6 +76,7 @@ ChatListItem.defaultProps = {
   id: null,
   onPress: () => null,
   itemIcon: 0,
+  profileImage: '',
 };
 
 export default ChatListItem;

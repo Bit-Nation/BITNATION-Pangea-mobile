@@ -265,7 +265,7 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
               itemIcon={0}
               onPress={this.onChatSelect}
               id={session}
-              profileImage={session.image}
+              profileImage={session.image || ''}
             />);
           }}
           keyExtractor={item => item.publicKey}
