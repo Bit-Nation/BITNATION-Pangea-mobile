@@ -27,6 +27,10 @@ type Props = {
    * @desc React Native Navigation navigator object.
    */
   navigator: Navigator,
+  /**
+   * @desc Type of ETH Network
+   */
+  networkType: string,
 };
 
 type TestingModeProps = {
@@ -58,13 +62,18 @@ type State = {
    */
   pullToRefreshInProgress: boolean,
   /**
-   * @desc Flag to control opening of transactions Modal
+   * @desc Stores Transaction Modal state
    */
-  transactionsVisible: boolean,
-  /**
-   * @desc To store transaction variables
-   */
-  transactionsModel: Object,
+  transactionModal: {
+    /**
+     * @desc Flag to control the visibility of modal
+     */
+    visible: boolean,
+    /**
+     * @desc Stores the ETH Address
+     */
+    ethAddress?: string,
+  },
 };
 
 class WalletScreen extends NavigatorComponent<
@@ -78,7 +87,7 @@ class WalletScreen extends NavigatorComponent<
       pullToRefreshInProgress: false,
       transactionsVisible: false,
       ethAddress: '',
-      transactionsModel: {
+      transactionModal: {
         visible: false,
         ethAddress: '',
       },
@@ -141,7 +150,7 @@ class WalletScreen extends NavigatorComponent<
   };
 
   showTransactions = (wallet) => {
-    this.setState({ transactionsModel: { visible: true, ethAddress: wallet.ethAddress } });
+    this.setState({ transactionModal: { visible: true, ethAddress: wallet.ethAddress } });
   };
 
   onRefresh = () => {
@@ -150,10 +159,11 @@ class WalletScreen extends NavigatorComponent<
   };
 
   transactionModalClose() {
-    this.setState({ transactionsModel: { visible: false } });
+    this.setState({ transactionModal: { visible: false } });
   }
 
   render() {
+    const { networkType } = this.props;
     return (
       <View style={styles.screenContainer}>
         <Background />
@@ -177,7 +187,7 @@ class WalletScreen extends NavigatorComponent<
           )}
         </View>
         <Modal
-          isVisible={this.state.transactionsModel.visible}
+          isVisible={this.state.transactionModal.visible}
         >
           <View>
             <TouchableHighlight
@@ -188,13 +198,19 @@ class WalletScreen extends NavigatorComponent<
               <Icon name='ios-close' style={styles.closeIcon} />
             </TouchableHighlight>
           </View>
-          <WebView
-            source={{
-              uri: `https://etherscan.io/address/${
-                this.state.transactionsModel.ethAddress
-                }`,
-            }}
-          />
+          {this.state.transactionModal && this.state.transactionModal.ethAddress &&
+            <WebView
+              source={networkType === 'main' ? {
+                uri: `https://etherscan.io/address/${
+                  this.state.transactionModal.ethAddress
+                  }`,
+            } : {
+              uri: `https://rinkeby.etherscan.io/address/${
+                this.state.transactionModal.ethAddress
+                  }`,
+              }}
+            />
+          }
         </Modal>
       </View>
     );
@@ -204,6 +220,7 @@ class WalletScreen extends NavigatorComponent<
 const mapStateToProps = state => ({
   ...state.wallet,
   testingModeActive: state.testingMode.isActive,
+  networkType: state.accounts.networkType,
 });
 
 const mapDispatchToProps = dispatch => ({
