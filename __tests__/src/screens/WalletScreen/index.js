@@ -18,6 +18,9 @@ describe('WalletScreen renders correctly', () => {
       testingMode: {
         isActive: false,
       },
+      accounts: {
+        networkType: 'main',
+      },
     };
 
     const wrapper = shallow((
@@ -38,6 +41,9 @@ describe('WalletScreen renders correctly', () => {
       },
       testingMode: {
         isActive: false,
+      },
+      accounts: {
+        networkType: 'main',
       },
     };
 
