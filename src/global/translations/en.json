@@ -25,6 +25,7 @@
   "common": {
     "send": "Send",
     "receive": "Receive",
+    "transactions": "Transactions",
     "ok": "OK",
     "previous": "Previous",
     "next": "Next",
