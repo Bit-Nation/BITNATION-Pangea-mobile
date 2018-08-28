@@ -65,10 +65,10 @@ export default class ChatService {
     return response;
   }
 
-  static async loadMessages(sender: Account, receiver: ProfileType, startStr: string, amount: number): Promise<Array<GiftedChatMessageType>> {
+  static async loadMessages(sender: Account, receiver: ProfileType, startId: string, amount: number): Promise<Array<GiftedChatMessageType>> {
     let messages = [];
     try {
-      messages = await panthalassaMessages(receiver.identityKey, startStr, amount);
+      messages = await panthalassaMessages(receiver.identityKey, startId, amount);
       messages = JSON.parse(messages);
       messages = createGiftedChatMessageObjects(sender, receiver, messages);
     } catch (e) {

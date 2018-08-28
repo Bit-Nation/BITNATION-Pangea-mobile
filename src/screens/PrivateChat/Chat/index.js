@@ -16,7 +16,7 @@ import {
 import ActionSheet from 'react-native-actionsheet';
 
 import styles from './styles';
-import { showSpinner, hideSpinner, sendMessage } from '../../../actions/chat';
+import { showSpinner, hideSpinner, sendMessage, loadChatMessages } from '../../../actions/chat';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import Loading from '../../../components/common/Loading';
@@ -70,6 +70,10 @@ type Props = {
    * @param {Object} session Session object
    */
   sendMessage: (recipientPublicKey: string, msg: string) => void,
+  /**
+   * @desc Function to initate messages loading.
+   */
+  loadMessages: (recipientPublicKey: string, startId: string) => void,
   /**
    * @desc Array of chat sessions.
    */
@@ -193,7 +197,7 @@ class ChatScreen extends Component<Props, *> {
     }
     let sortedMessages: Array<GiftedChatMessageType> = [];
     if (session.messages && session.messages.length > 0) {
-      sortedMessages = _.sortBy(session.messages, message => message.createdAt).reverse();
+      sortedMessages = _.sortBy(session.messages, message => message.createdAt);
     }
     sortedMessages = sortedMessages
       .map((message) => {
@@ -224,13 +228,15 @@ class ChatScreen extends Component<Props, *> {
       _id: this.props.userPublicKey,
       name: this.props.user ? this.props.user.name : 'anonymous',
     };
+    const earliestMessageId = (sortedMessages[0] && sortedMessages[0]._id) || '0';
+
     return (
       <View style={styles.container}>
         <BackgroundImage />
         <FakeNavigationBar navBarHidden={false} />
 
         <GiftedChat
-          messages={sortedMessages}
+          messages={sortedMessages.reverse()}
           onSend={messages => this.onSend(messages)}
           user={sendingUser}
           bottomOffset={Platform.OS === 'ios' ? 48.5 : 0}
@@ -270,6 +276,8 @@ class ChatScreen extends Component<Props, *> {
           }}
           onPressActionButton={() => this.dAppsActionSheet && this.dAppsActionSheet.show()}
           renderActions={props => <Actions {...props} containerStyle={styles.actionContainerStyle} />}
+          loadEarlier
+          onLoadEarlier={() => this.props.loadMessages(this.props.recipientPublicKey, earliestMessageId)}
         />
         {this.props.isFetching && <Loading />}
         <ActionSheet
@@ -309,6 +317,7 @@ const mapDispatchToProps = dispatch => ({
   sendMessage: (publicKey, msg) => dispatch(sendMessage(publicKey, msg)),
   openDApp: dAppPublicKey => dispatch(openDApp(dAppPublicKey)),
   setDAppContext: context => dispatch(setDAppContext(context)),
+  loadMessages: (publicKey, fromMessageId) => dispatch(loadChatMessages(publicKey, fromMessageId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChatScreen);
