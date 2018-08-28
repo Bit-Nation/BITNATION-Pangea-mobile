@@ -19,7 +19,7 @@ describe('WalletScreen renders correctly', () => {
         isActive: false,
       },
       accounts: {
-        networkType: 'main',
+        user: {},
       },
     };
 
@@ -43,7 +43,7 @@ describe('WalletScreen renders correctly', () => {
         isActive: false,
       },
       accounts: {
-        networkType: 'main',
+        user: {},
       },
     };
 

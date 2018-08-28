@@ -7,7 +7,6 @@ const eth = require('../assets/images/ethereum_logo.png');
 const qrColor = require('../assets/images/QR_icon.png');
 const bitLogo = require('../assets/images/bitnation_logo.png');
 const bitLogoBig = require('../assets/images/bitnation_logo_big.png');
-const walletIcon = require('../assets/images/wallet.png');
 
 // Photos and Graphics for Introduction Screens
 const build = require('../assets/images/Chrysler_Building.png');
@@ -63,7 +62,6 @@ const Images = {
   eth,
   qrColor,
   bitLogo,
-  walletIcon,
   build,
   monroe,
   fern,
