@@ -17,6 +17,7 @@ import styles from '../NationsScreen/NationsListScreen/styles';
 import FakeNavigationBar from '../../components/common/FakeNavigationBar';
 import type { State as WalletState } from '../../reducers/wallet';
 import type { WalletType } from '../../types/Wallet';
+import type { Account } from '../../types/Account';
 import type { Navigator } from '../../types/ReactNativeNavigation';
 import { getCurrentAccount } from '../../reducers/accounts';
 import ScreenTitle from '../../components/common/ScreenTitle';
@@ -31,7 +32,7 @@ type Props = {
   /**
    * @desc Current user object.
    */
-  user: any,
+  user: Account | null,
 };
 
 type TestingModeProps = {
