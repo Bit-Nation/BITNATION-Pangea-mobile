@@ -18,6 +18,7 @@ import FakeNavigationBar from '../../components/common/FakeNavigationBar';
 import type { State as WalletState } from '../../reducers/wallet';
 import type { WalletType } from '../../types/Wallet';
 import type { Navigator } from '../../types/ReactNativeNavigation';
+import { getCurrentAccount } from '../../reducers/accounts';
 import ScreenTitle from '../../components/common/ScreenTitle';
 
 const REMOVE_WALLETS_BUTTON = 'REMOVE_WALLETS_BUTTON';
@@ -28,9 +29,9 @@ type Props = {
    */
   navigator: Navigator,
   /**
-   * @desc Type of ETH Network
+   * @desc Current user object.
    */
-  networkType: string,
+  user: any,
 };
 
 type TestingModeProps = {
@@ -163,7 +164,7 @@ class WalletScreen extends NavigatorComponent<
   }
 
   render() {
-    const { networkType } = this.props;
+    const { user } = this.props;
     return (
       <View style={styles.screenContainer}>
         <Background />
@@ -200,7 +201,7 @@ class WalletScreen extends NavigatorComponent<
           </View>
           {this.state.transactionModal && this.state.transactionModal.ethAddress &&
             <WebView
-              source={networkType === 'main' ? {
+              source={user !== null && user.networkType === 'main' ? {
                 uri: `https://etherscan.io/address/${
                   this.state.transactionModal.ethAddress
                   }`,
@@ -220,7 +221,7 @@ class WalletScreen extends NavigatorComponent<
 const mapStateToProps = state => ({
   ...state.wallet,
   testingModeActive: state.testingMode.isActive,
-  networkType: state.accounts.networkType,
+  user: getCurrentAccount(state.accounts),
 });
 
 const mapDispatchToProps = dispatch => ({
