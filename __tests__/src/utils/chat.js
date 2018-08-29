@@ -28,18 +28,16 @@ test('createGiftedChatMessageObject', () => {
 });
 
 describe('mergeMessages', () => {
-  const buildMessage: ((id: string) => GiftedChatMessageType) = (id) => {
-    return {
-      _id: id,
-      createdAt: new Date(),
-      text: `${id}`,
-      user: {
-        _id: 'USER_ID',
-        name: 'USER_NAME',
-      },
-      dAppMessage: null,
-    };
-  };
+  const buildMessage: ((id: string) => GiftedChatMessageType) = id => ({
+    _id: id,
+    createdAt: new Date(),
+    text: `${id}`,
+    user: {
+      _id: 'USER_ID',
+      name: 'USER_NAME',
+    },
+    dAppMessage: null,
+  });
 
   test('empty merging', () => {
     expect(mergeMessages([], [])).toEqual([]);
