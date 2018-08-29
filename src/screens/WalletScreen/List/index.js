@@ -17,6 +17,7 @@ type Props = {
   wallets: Array<WalletType>,
   onReceivePress: (WalletType) => void,
   onSendPress: (WalletType) => void,
+  onTransactionPress: (WalletType) => void,
   onRefresh: () => void,
   isRefreshing: boolean,
 }
@@ -31,6 +32,7 @@ const WalletList = ({
   wallets,
   onReceivePress,
   onSendPress,
+  onTransactionPress,
   onRefresh,
   isRefreshing,
 }: Props) => ((
@@ -44,6 +46,7 @@ const WalletList = ({
           imagePath={item.currency === 'ETH' ? Images.ethereumLogo : Images.patLogo}
           onSendPress={() => onSendPress(item)}
           onReceivePress={() => onReceivePress(item)}
+          onTransactionPress={() => onTransactionPress(item)}
           nameHeading={item.name}
           balance={balance}
         />);

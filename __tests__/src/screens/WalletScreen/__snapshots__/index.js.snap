@@ -79,6 +79,7 @@ ShallowWrapper {
       },
       "testingModeActive": false,
       "updateWalletList": [Function],
+      "user": null,
       "wallets": null,
     },
     "ref": null,
@@ -134,6 +135,7 @@ ShallowWrapper {
         },
         "testingModeActive": false,
         "updateWalletList": [Function],
+        "user": null,
         "wallets": null,
       },
       "ref": null,
@@ -230,6 +232,7 @@ ShallowWrapper {
       },
       "testingModeActive": false,
       "updateWalletList": [Function],
+      "user": null,
       "wallets": Array [
         Object {
           "balance": "0",
@@ -291,6 +294,7 @@ ShallowWrapper {
         },
         "testingModeActive": false,
         "updateWalletList": [Function],
+        "user": null,
         "wallets": Array [
           Object {
             "balance": "0",

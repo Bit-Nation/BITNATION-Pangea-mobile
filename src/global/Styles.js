@@ -102,12 +102,14 @@ const styles = {
   // Margins position correctly INSIDE a bodyContainer View
   titleContainer: {
     marginHorizontal: 20,
+    marginBottom: 8,
   },
 
   // A block of text in the body area
   bodyParagraph: {
     paddingBottom: 16,
   },
+
 
   // A block of text in the Confirmation Screen
   bodyParagraphConfirmationRow: {
@@ -172,10 +174,8 @@ const styles = {
   // If the body has no margins (bars that go edge to edge)
   // then use the style below.
   titleBarLarge: {
-    height: fontSizeNormalizer(52),
+    height: fontSizeNormalizer(40),
     alignItems: 'flex-start',
-    // marginLeft: 8,
-    // marginRight: 8,
   },
 
   titleBarLargeNationDetail: {
@@ -677,6 +677,10 @@ const styles = {
     height: 15,
   },
 
+  closeIcon: {
+    color: '#fff',
+  },
+
   // ========================================
   // Tab Bar with text
   segmentedControlContainer: {
@@ -689,6 +693,27 @@ const styles = {
   segmentedControlContainerBackground: {
     backgroundColor: 'transparent',
   },
+
+  settingsList: {
+    height: 50,
+    borderBottomWidth: 1.6,
+    borderColor: Colors.borderColor,
+  },
+
+  settingsText:
+  {
+    color: 'white',
+    fontSize: 15,
+    fontWeight: '900',
+  },
+  settingsButton: {
+    height: 54,
+    backgroundColor: '#FF8B00',
+    alignSelf: 'stretch',
+    borderRadius: 0,
+    bottom: 0,
+  },
+
   tabsContainerStyle: {
     backgroundColor: 'transparent',
   },
@@ -781,7 +806,7 @@ const styles = {
   },
 
   arrowButtonTitle: {
-    fontSize: 15,
+    fontSize: 12,
     color: Colors.BitnationLinkOrangeColor,
     fontWeight: 'bold',
     textAlign: 'center',
@@ -820,7 +845,8 @@ const styles = {
   },
   arrowButtonContainer: {
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
+    marginLeft: 0,
   },
 
   buttonContainerMultiple: {
