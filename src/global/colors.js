@@ -162,7 +162,7 @@ export default {
   statusBarColorIOS: 'black',
 
   // PLATFORM SPECIFIC COLORS
-  androidNavigationButtons: 'white', // in Screens.js
+  androidNavigationButtons: BitnationLinkOrangeColor, // in Screens.js
 
   // Why do we have this? So we can redefine white to something just a little darker
   // because pure white can be hard...sometimes better to use 98% white.
