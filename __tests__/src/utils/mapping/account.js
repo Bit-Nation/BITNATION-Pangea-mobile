@@ -26,7 +26,9 @@ describe('convert account to database', () => {
       networkType: 'dev',
     };
 
-    expect(convertToDatabase(account)).toEqual({
+    const version = '0.0.0';
+
+    expect(convertToDatabase(account, version)).toEqual({
       id: 'Test',
       name: 'Name',
       profileImage: '',
@@ -36,6 +38,7 @@ describe('convert account to database', () => {
       networkType: 'dev',
       confirmedMnemonic: false,
       DHT: [],
+      lastMigrationVersion: version,
     });
   });
 
@@ -50,6 +53,8 @@ describe('convert account to database', () => {
       confirmedMnemonic: true,
     };
 
+    const version = '0.0.0';
+
     expect(convertToDatabase(account)).toEqual({
       id: 'Test',
       name: 'Name',
@@ -60,6 +65,7 @@ describe('convert account to database', () => {
       networkType: 'dev',
       confirmedMnemonic: true,
       DHT: [],
+      lastMigrationVersion: version,
     });
   });
 });

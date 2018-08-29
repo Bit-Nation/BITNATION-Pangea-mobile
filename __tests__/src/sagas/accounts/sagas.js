@@ -26,13 +26,15 @@ import AccountsService from '../../../../src/services/accounts';
 import ChatService from '../../../../src/services/chat';
 import { InvalidPasswordError, LoginFailedError } from '../../../../src/global/errors/accounts';
 import { cancelAccountEditing, saveEditingAccount, setPublicKey } from '../../../../src/actions/profile';
-import { startFetchMessages, stopFetchMessages } from '../../../../src/actions/chat';
+import { fetchAllChats } from '../../../../src/actions/chat';
 
 const partialAccountMock: PartialAccount = {
   ...buildEmptyAccount(),
   name: 'NAME',
   accountStore: 'ACCOUNT_STORE',
 };
+
+const version = '1.0.7';
 
 const accountMock: Account = ({
   ...buildEmptyAccount(),
@@ -102,7 +104,7 @@ describe('accountsPresent', () => {
 
     const db = await buildRandomPathDatabase();
     db.write(() => {
-      db.create('Account', convertToDatabase(partialAccountMock));
+      db.create('Account', convertToDatabase(partialAccountMock, version));
     });
     const gen = accountsPresent();
     expect(gen.next().value).toEqual(defaultDB);
@@ -126,7 +128,7 @@ describe('getAccount', () => {
     const db = await buildRandomPathDatabase();
     let realmAccount = null;
     db.write(() => {
-      realmAccount = db.create('Account', convertToDatabase(partialAccountMock));
+      realmAccount = db.create('Account', convertToDatabase(partialAccountMock, version));
     });
     if (realmAccount == null) {
       throw new Error('Account was not created');
@@ -173,7 +175,7 @@ test('listenForDatabaseUpdates', () => {
   };
   const resultsUpdateMock = {
     collection: [{
-      ...convertToDatabase(partialAccountMock),
+      ...convertToDatabase(partialAccountMock, version),
     }],
   };
 
@@ -241,7 +243,7 @@ describe('login', () => {
     expect(gen.next('pubkey').value).toEqual(put(setPublicKey('pubkey')));
     expect(gen.next().value).toEqual(put(currentAccountIdChanged('ID')));
     expect(gen.next().value).toEqual(put(loginTaskUpdated(TaskBuilder.success())));
-    expect(gen.next().value).toEqual(put(startFetchMessages()));
+    expect(gen.next().value).toEqual(put(fetchAllChats()));
   });
 
   test('login to new account using account store', () => {
@@ -283,7 +285,7 @@ describe('login', () => {
     expect(gen.next('pubkey').value).toEqual(put(setPublicKey('pubkey')));
     expect(gen.next().value).toEqual(put(currentAccountIdChanged('ID')));
     expect(gen.next().value).toEqual(put(loginTaskUpdated(TaskBuilder.success())));
-    expect(gen.next().value).toEqual(put(startFetchMessages()));
+    expect(gen.next().value).toEqual(put(fetchAllChats()));
 
     last = gen.next();
     expect(last.value).toBeUndefined();
@@ -293,7 +295,6 @@ describe('login', () => {
 
 test('logout', () => {
   const gen = logout();
-  expect(gen.next().value).toEqual(put(stopFetchMessages()));
   expect(gen.next().value).toEqual(call(AccountsService.logout));
   expect(gen.next().value).toEqual(put(currentAccountIdChanged(null)));
 
@@ -308,7 +309,7 @@ test('saveAccount', async () => {
   const db = await buildRandomPathDatabase();
   let dbAccount = null;
   db.write(() => {
-    dbAccount = db.create('Account', convertToDatabase(partialAccountMock));
+    dbAccount = db.create('Account', convertToDatabase(partialAccountMock, version));
   });
 
   const changedAccount: Account = {
@@ -488,7 +489,7 @@ describe('savePasswordSaga', () => {
     const db = await buildRandomPathDatabase();
     let dbAccount = null;
     db.write(() => {
-      dbAccount = db.create('Account', convertToDatabase(partialAccountMock));
+      dbAccount = db.create('Account', convertToDatabase(partialAccountMock, version));
     });
 
     expect(gen.next('NEW_ACCOUNT_STORE').value).toEqual(defaultDB);
@@ -573,7 +574,7 @@ test('saveMnemonicConfirmed', async () => {
   const db = await buildRandomPathDatabase();
   let dbAccount = null;
   db.write(() => {
-    dbAccount = db.create('Account', convertToDatabase(partialAccountMock));
+    dbAccount = db.create('Account', convertToDatabase(partialAccountMock, version));
   });
 
   expect(gen.next(dbAccount).value).toEqual(defaultDB);

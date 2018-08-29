@@ -26,7 +26,7 @@ describe('onCurrentAccountChange', () => {
       version: 3,
       display: true,
       interpret: true,
-      created_at: new Date(),
+      createdAt: new Date(),
     };
 
     const gen = onCurrentAccountChange([mockMessage]);
@@ -64,7 +64,7 @@ describe('addNewMessageSaga', () => {
     const mockAction = {
       type: ADD_NEW_MESSAGE,
       message: 'Test Message',
-      params: '',
+      params: {},
       interpret: true,
       callback: jest.fn(),
     };
@@ -82,7 +82,7 @@ describe('addNewMessageSaga', () => {
 
     const mockMessage = buildMessageObject(1, testAccountId, mockAction.message, mockAction.params, mockAction.interpret);
     const convertedMessage = convertToDatabase(mockMessage);
-    delete convertedMessage.created_at;
+    delete convertedMessage.createdAt;
     delete convertedMessage.params;
     expect(realm.objects('MessageJob').filtered(`accountId == '${testAccountId}'`)[0])
       .toMatchObject({

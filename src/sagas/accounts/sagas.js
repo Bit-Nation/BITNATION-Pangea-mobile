@@ -3,7 +3,6 @@
 
 import type { Realm } from 'realm';
 import { call, put, take, select, race } from 'redux-saga/effects';
-
 import defaultDB from '../../services/database';
 import { createDatabaseUpdateChannel } from '../database';
 import {
@@ -24,10 +23,7 @@ import type {
   SavePasswordAction,
   SavePinCodeAction,
 } from '../../actions/accounts';
-import {
-  startFetchMessages,
-  stopFetchMessages,
-} from '../../actions/chat';
+import { fetchAllChats } from '../../actions/chat';
 import {
   convertFromDatabase, convertToDatabase, retrieveProfileFromAccount,
   retrieveProfileFromPartialAccount,
@@ -41,6 +37,7 @@ import type { SaveEditingAccountAction } from '../../actions/profile';
 import { cancelAccountEditing, setPublicKey } from '../../actions/profile';
 import { resetSettings } from '../../actions/settings';
 import ChatService from '../../services/chat';
+import { version } from '../../../package.json';
 import type { State as AccountsState } from '../../reducers/accounts';
 
 export const getAccounts = (state: AccountsState) => state.accounts;
@@ -222,6 +219,7 @@ export function* login(userInfo: ({ accountId: string, accountStore?: string }),
       return;
     }
   } catch (error) {
+    console.log('--> ERROR Login: ', error);
     if (error.transKey !== undefined) {
       yield put(loginTaskUpdated(TaskBuilder.failure(error)));
     } else {
@@ -234,9 +232,10 @@ export function* login(userInfo: ({ accountId: string, accountStore?: string }),
   yield put(setPublicKey(publicKey));
 
   yield put(currentAccountIdChanged(accountId));
+
   yield put(loginTaskUpdated(TaskBuilder.success()));
 
-  yield put(startFetchMessages());
+  yield put(fetchAllChats());
 }
 
 /**
@@ -244,7 +243,6 @@ export function* login(userInfo: ({ accountId: string, accountStore?: string }),
  * @return {void}
  */
 export function* logout(): Generator<*, *, *> {
-  yield put(stopFetchMessages());
   yield call(AccountsService.logout);
   yield put(currentAccountIdChanged(null));
 }
@@ -355,13 +353,17 @@ export function* savePasswordSaga(action: SavePasswordAction): Generator<*, *, a
 export function* saveCreatingAccount(action: SaveCreatingAccountAction): Generator<*, *, *> {
   const { accounts } = yield select();
   const { creatingAccount } = accounts;
+  let convertedAccount;
 
   if (creatingAccount === null) {
     yield call(action.callback, false);
     return;
   }
-
-  const convertedAccount = convertToDatabase(creatingAccount);
+  if (version !== null && version !== undefined) {
+    convertedAccount = convertToDatabase(creatingAccount, version);
+  } else {
+    convertedAccount = convertToDatabase(creatingAccount, '0.0.0');
+  }
   if (convertedAccount === null) {
     yield call(action.callback, false);
     return;
