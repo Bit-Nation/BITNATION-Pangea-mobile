@@ -1,72 +1,45 @@
 // @flow
 
-import * as React from 'react';
+import React from 'react';
+import { Text, View } from 'react-native';
 import { connect } from 'react-redux';
-import { View } from 'react-native';
 
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import Colors from '../../../global/colors';
-import GlobalStyles from '../../../global/Styles';
 import i18n from '../../../global/i18n';
-import type { WalletType } from '../../../types/Wallet';
-import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
+import Root from '../../../DAppsSDK/0.0.1/components/Root';
+import GlobalStyles from '../../../global/Styles';
 import BackgroundImage from '../../../components/common/BackgroundImage';
-import { sendDAppMessage } from '../../../actions/nativeDApps';
-import { getCurrentAccount } from '../../../reducers/accounts';
-import { getSelectedSession } from '../../../utils/chat';
-import type { ChatSessionType, DAppMessageType, GiftedChatMessageType, ProfileType } from '../../../types/Chat';
-import type { Account } from '../../../types/Account';
+import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import Loading from '../../../components/common/Loading';
-import { getDApp, type State as DAppsState } from '../../../reducers/nativeDApps';
-import type { ProviderProps } from '../../../components/nativeDApps/DAppProvider';
-
-type OwnProps = {
-  /**
-   * @desc JSON object of layout to be displayed.
-   */
-  component: React.ComponentType<ProviderProps & any>,
-  /**
-   * @desc Public key of DApp that controls the screen.
-   */
-  dAppPublicKey: string,
-  /**
-   * @desc Shared secret for the chat session
-   */
-  chatSecret: string,
-  /**
-   * @desc Shared secret for the chat session
-   */
-  friend: ProfileType,
-}
+import { dAppLaunchStateChanged, cleanDAppModal } from '../../../actions/dApps';
+import { getDAppLaunchState, type State as DAppsState } from '../../../reducers/dApps';
+import type { DAppModalInfo } from '../../../types/DApp';
+import ScreenTitle from '../../../components/common/ScreenTitle';
 
 type Props = {
   /**
-   * @desc List of wallets.
+   * @desc UI id of that modal.
    */
-  wallets: Array<WalletType>,
+  modalID: string,
   /**
-   * @desc List of chat.
+   * @desc DApp redux state.
    */
-  sessions: Array<ChatSessionType>,
-  /**
-   * @desc Function to send a DApp message.
-   */
-  sendMessage: (message: DAppMessageType, session: ChatSessionType, callback: (message: ?GiftedChatMessageType) => void) => void,
-  /**
-   * @desc Current user.
-   */
-  user: Account,
-  /**
-   * @desc DApps redux state.
-   */
-  dAppsState: DAppsState,
+  dApps: DAppsState,
 }
 
-type State = {
-  isLoading: boolean,
+type Actions = {
+  /**
+   * @desc Function to stop DApp.
+   */
+  closeDApp: (dAppPublicKey: string) => void,
+  /**
+   * @desc Function to remove modal from state.
+   */
+  cleanDAppModal: (modalID: string) => void,
 }
 
-class DAppModalScreen extends NavigatorComponent<Props & OwnProps, State> {
+class DAppModalScreen extends NavigatorComponent<Props & Actions, *> {
   static navigatorButtons = {
     leftButtons: [{
       id: 'cancel',
@@ -80,60 +53,81 @@ class DAppModalScreen extends NavigatorComponent<Props & OwnProps, State> {
     super(props);
 
     this.state = {
-      isLoading: false,
+      renderFailed: false,
     };
+  }
+
+  componentDidCatch() {
+    this.setState({
+      renderFailed: true,
+    });
+  }
+
+  componentWillUnmount() {
+    this.props.cleanDAppModal(this.props.modalID);
   }
 
   onNavBarButtonPress(id: string) {
     if (id === 'cancel') {
+      this.props.closeDApp(this.modalInfo.dAppPublicKey);
       this.props.navigator.dismissModal();
     }
   }
 
+  get modalInfo(): DAppModalInfo {
+    return this.props.dApps.modals[this.props.modalID];
+  }
+
   render() {
-    const { component: Component } = this.props;
-
-    const session = getSelectedSession(this.props.sessions, this.props.chatSecret);
-    const dApp = getDApp(this.props.dAppsState, this.props.dAppPublicKey);
-
-    if (session == null || dApp == null) {
-      this.props.navigator.dismissModal();
-      return null;
+    if (this.state.renderFailed === true) {
+      // Fallback UI.
+      return (
+        <View style={GlobalStyles.screenContainer}>
+          <BackgroundImage />
+          <FakeNavigationBar />
+          <View style={GlobalStyles.bodyContainer}>
+            <Text style={GlobalStyles.body}>
+              {i18n.t('dApps.failedDAppModalRender')}
+            </Text>
+          </View>
+        </View>
+      );
     }
+
+    const info = this.modalInfo;
+    // Coming layout is a layout with container, which we don't need to render.
+    // It's expected that modal component returns single root component.
+    const childrenLayout = info.layout.children[0];
+    const { title } = info.layout.props;
+    const isLoading = getDAppLaunchState(this.props.dApps, info.dAppPublicKey) === 'working';
 
     return (
       <View style={GlobalStyles.screenContainer}>
         <BackgroundImage />
         <FakeNavigationBar />
-        <View style={GlobalStyles.bodyContainer}>
-          <Component
-            navigator={this.props.navigator}
-            wallets={this.props.wallets}
-            user={this.props.user}
-            friend={this.props.friend}
-            currentAccount={this.props.user}
-            sendMessage={this.props.sendMessage}
-            dApp={dApp}
-            setLoadingVisible={visible => this.setState({ isLoading: visible })}
-            session={session}
-          />
-        </View>
-        {this.state.isLoading && <Loading />}
+        {
+          title.length > 0 && <ScreenTitle title={title} />
+        }
+        <Root
+          layout={childrenLayout}
+          dAppPublicKey={info.dAppPublicKey}
+        />
+        {isLoading && <Loading />}
       </View>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  wallets: state.wallet.wallets,
-  sessions: state.chat.chats,
-  user: getCurrentAccount(state.accounts),
-  dAppsState: state.dApps,
+  dApps: state.dApps,
 });
 
 const mapDispatchToProps = dispatch => ({
-  sendMessage(message, session, callback) {
-    dispatch(sendDAppMessage(message, session, callback));
+  closeDApp(dAppId) {
+    dispatch(dAppLaunchStateChanged(dAppId, 'started'));
+  },
+  cleanDAppModal(modalID) {
+    dispatch(cleanDAppModal(modalID));
   },
 });
 

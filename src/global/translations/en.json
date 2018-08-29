@@ -301,16 +301,28 @@
       "tabTitle": "$t(tabbar.chat)",
       "allChats": "All Chats",
       "myChats": "My Chats",
-      "keyFromClipboard": "Use public key on clipboard",
-      "keyFromLibrary": "Get public key from library",
-      "keyFromCamera": "Scan public key with camera",
+      "keyFromClipboard": "Use Identity Key on clipboard",
+      "keyFromLibrary": "Get Identity Key from library",
+      "keyFromCamera": "Scan Identity Key with camera",
       "dappChat": "New Chat with DApp",
       "cancel": "$t(common.cancel)",
       "sendInvite": "Send Invite",
       "startChat": "Begin Chat",
       "newChat": "New Chat",
       "invalidKey": "Invalid or Missing Key",
-      "inviteSent": "Invite Sent"
+      "inviteSent": "Invite Sent",
+      "menu": {
+        "filterChatList": "Filter Chat List",
+        "markAllRead": "Mark all as read",
+        "shareIdentityKey": "Share my Identity Key",
+        "managerChatSections": "Manager Chat Sections",
+        "restoreChat": "Restore Chat",
+        "settings": "Settings"
+      }
+    },
+    "migration": {
+      "title": "Migration",
+      "migrateData": "Please wait, we are migrating your data"
     },
     "nations": {
       "toolbar": {
@@ -402,7 +414,7 @@
     "profile": {
       "title": "Profile",
       "tabTitle": "$t(tabbar.profile)",
-      "copyKey": "Copy Public Key",
+      "shareKey": "Share Identity Key",
       "empty": {
         "createProfilePanel": {
           "title": "Become a World Citizen",
@@ -492,8 +504,14 @@
       }
     },
     "dAppQRCodeScanner": {
-      "title": "Connect to DApp host",
-      "instruction": "Scan QR code to connect to PC"
+      "devHost": {
+        "title": "Connect to DApp host",
+        "instruction": "Scan QR code to connect to PC"
+      },
+      "logger": {
+        "title": "Connect to debug logger",
+        "instruction": "Scan QR code to connect to PC"
+      }
     },
     "settings": {
       "title": "Settings",
@@ -503,7 +521,8 @@
       "viewPrivateKey": "Private Key",
       "confirmPrivateKey": "Private Key (confirmation required)",
       "switchAccounts": "Switch accounts",
-      "connectToDAppHost": "Connect to DApp host"
+      "connectToDAppHost": "Connect to DApp host",
+      "connectToDAppLogger": "Connect debug logger"
     },
     "securitySettings": {
       "title": "Security settings",
@@ -569,17 +588,8 @@
     }
   },
   "dApps": {
-    "escrow": {
-      "requestExchange": "START EXCHANGE",
-      "sendTokens": "SEND",
-      "cancelContract": "REFUND",
-      "completeContract": "EXCHANGE",
-      "cancelConfirmationAlert": {
-        "title": "Cancel Contract",
-        "subtitle": "Are you sure that you want to terminate exchange process?",
-        "confirm": "Stop exchange",
-        "cancel": "$t(common.cancel)"
-      }
-    }
+    "unknownDAppMessage": "This message was sent from DApp that is not installed on your device. It can not be rendered.",
+    "failedDAppMessageRender": "{{dAppName}} DApp failed to render this message. It may be due to an issue in the DApp or using of an old version.",
+    "failedDAppModalRender": "{{dAppName}} DApp failed to render the modal. It may be due to an issue in the DApp or using of an old version."
   }
 }
