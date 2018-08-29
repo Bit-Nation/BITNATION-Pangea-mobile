@@ -1,7 +1,5 @@
 // @flow
 
-/* eslint-disable camelcase,no-continue */
-
 import { put, call, select } from 'redux-saga/effects';
 import { Buffer } from 'buffer/index';
 
@@ -17,9 +15,8 @@ import {
   chatsUpdated,
   selectProfile,
   addCreatedChatSession,
-  loadChatMessages,
   chatMessagesLoaded,
-  addChatMessage, newChatSession, SHOW_CHAT_SPINNER, showSpinner, hideSpinner,
+  addChatMessage, newChatSession, showSpinner, hideSpinner,
 } from '../../actions/chat';
 import defaultDB from '../../services/database';
 import ChatService from '../../services/chat';

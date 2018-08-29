@@ -4,7 +4,6 @@
 import React, { Component } from 'react';
 import { View, Platform, Clipboard } from 'react-native';
 import { connect } from 'react-redux';
-import _ from 'lodash';
 import {
   GiftedChat,
   Composer,
