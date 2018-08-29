@@ -139,7 +139,13 @@ ShallowWrapper {
             accessible={true}
             allowFontScaling={true}
             ellipsizeMode="tail"
-            style={undefined}
+            style={
+              Object {
+                "color": undefined,
+                "fontSize": 13,
+                "textAlign": "center",
+              }
+            }
           />
           <Button
             enabled={true}
@@ -149,7 +155,7 @@ ShallowWrapper {
                 "marginTop": 13,
               }
             }
-            title="Copy Public Key"
+            title="Share Identity Key"
           />
         </View>,
       ],
@@ -311,7 +317,13 @@ ShallowWrapper {
               accessible={true}
               allowFontScaling={true}
               ellipsizeMode="tail"
-              style={undefined}
+              style={
+                Object {
+                  "color": undefined,
+                  "fontSize": 13,
+                  "textAlign": "center",
+                }
+              }
             />,
             <Button
               enabled={true}
@@ -321,7 +333,7 @@ ShallowWrapper {
                   "marginTop": 13,
                 }
               }
-              title="Copy Public Key"
+              title="Share Identity Key"
             />,
           ],
           "style": Object {
@@ -341,7 +353,11 @@ ShallowWrapper {
               "allowFontScaling": true,
               "children": undefined,
               "ellipsizeMode": "tail",
-              "style": undefined,
+              "style": Object {
+                "color": undefined,
+                "fontSize": 13,
+                "textAlign": "center",
+              },
             },
             "ref": null,
             "rendered": null,
@@ -358,7 +374,7 @@ ShallowWrapper {
               "style": Object {
                 "marginTop": 13,
               },
-              "title": "Copy Public Key",
+              "title": "Share Identity Key",
             },
             "ref": null,
             "rendered": null,
@@ -450,7 +466,13 @@ ShallowWrapper {
               accessible={true}
               allowFontScaling={true}
               ellipsizeMode="tail"
-              style={undefined}
+              style={
+                Object {
+                  "color": undefined,
+                  "fontSize": 13,
+                  "textAlign": "center",
+                }
+              }
             />
             <Button
               enabled={true}
@@ -460,7 +482,7 @@ ShallowWrapper {
                   "marginTop": 13,
                 }
               }
-              title="Copy Public Key"
+              title="Share Identity Key"
             />
           </View>,
         ],
@@ -622,7 +644,13 @@ ShallowWrapper {
                 accessible={true}
                 allowFontScaling={true}
                 ellipsizeMode="tail"
-                style={undefined}
+                style={
+                  Object {
+                    "color": undefined,
+                    "fontSize": 13,
+                    "textAlign": "center",
+                  }
+                }
               />,
               <Button
                 enabled={true}
@@ -632,7 +660,7 @@ ShallowWrapper {
                     "marginTop": 13,
                   }
                 }
-                title="Copy Public Key"
+                title="Share Identity Key"
               />,
             ],
             "style": Object {
@@ -652,7 +680,11 @@ ShallowWrapper {
                 "allowFontScaling": true,
                 "children": undefined,
                 "ellipsizeMode": "tail",
-                "style": undefined,
+                "style": Object {
+                  "color": undefined,
+                  "fontSize": 13,
+                  "textAlign": "center",
+                },
               },
               "ref": null,
               "rendered": null,
@@ -669,7 +701,7 @@ ShallowWrapper {
                 "style": Object {
                   "marginTop": 13,
                 },
-                "title": "Copy Public Key",
+                "title": "Share Identity Key",
               },
               "ref": null,
               "rendered": null,

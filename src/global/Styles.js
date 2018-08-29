@@ -1,3 +1,4 @@
+import { Platform } from 'react-native';
 import Colors from './colors';
 import { fontSizeNormalizer, normalWidthMargin, isiPhoneXStatusBar, isiPhoneXTabBar } from '../utils/normalizer';
 
@@ -132,7 +133,7 @@ const styles = {
   },
 
   statusBar: {
-    height: isiPhoneXStatusBar(20),
+    height: Platform.OS === 'android' ? 0 : isiPhoneXStatusBar(20),
     backgroundColor: 'transparent',
   },
 
@@ -143,7 +144,7 @@ const styles = {
 
   // Navigation area that shows a normal ("largeTitle" style) title
   navigationBar: {
-    marginTop: isiPhoneXStatusBar(20), // force below the status bar !!! THIS IS WRONG
+    marginTop: Platform.OS === 'android' ? 0 : isiPhoneXStatusBar(20),
     marginLeft: 8,
     marginRight: 8,
     height: 44,
@@ -757,9 +758,28 @@ const styles = {
     textAlign: 'center',
     fontWeight: 'bold',
   },
+  actionButtonTitle: {
+    ...defaultTextStyles.headline,
+    color: Colors.white,
+    textAlign: 'center',
+  },
   disabledButtonTitle: {
     color: Colors.BitnationLightGrayColor,
   },
+
+  dAppMessageTime: {
+    fontSize: 12,
+    padding: 9,
+    marginTop: 2,
+    color: Colors.textColor,
+  },
+  dAppMessageText: {
+    fontSize: 18,
+    padding: 9,
+    marginBottom: 3,
+    color: Colors.textColor,
+  },
+
   arrowButtonTitle: {
     fontSize: 15,
     color: Colors.BitnationLinkOrangeColor,
@@ -787,6 +807,12 @@ const styles = {
     justifyContent: 'center',
   },
 
+  actionButton: {
+    borderRadius: 0,
+    height: 44,
+    justifyContent: 'center',
+    backgroundColor: Colors.BitnationActionColor,
+  },
 
   buttonContainer: {
     marginLeft: 13,
@@ -857,6 +883,12 @@ const styles = {
     paddingBottom: 3,
     paddingLeft: 12,
     paddingRight: 12,
+  },
+
+  publicKeyText: {
+    fontSize: 13,
+    color: Colors.black,
+    textAlign: 'center',
   },
 
 };
