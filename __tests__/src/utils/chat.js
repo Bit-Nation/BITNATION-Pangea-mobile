@@ -1,4 +1,7 @@
-import createGiftedChatMessageObject from '../../../src/utils/chat';
+// @flow
+
+import createGiftedChatMessageObject, { mergeMessages } from '../../../src/utils/chat';
+import type { GiftedChatMessageType } from '../../../src/types/Chat';
 
 test('createGiftedChatMessageObject', () => {
   const messageData = [
@@ -22,4 +25,61 @@ test('createGiftedChatMessageObject', () => {
     },
   ];
   expect(createGiftedChatMessageObject(messageData)).toEqual(result);
+});
+
+describe('mergeMessages', () => {
+  const buildMessage: ((id: string) => GiftedChatMessageType) = (id) => {
+    return {
+      _id: id,
+      createdAt: new Date(),
+      text: `${id}`,
+      user: {
+        _id: 'USER_ID',
+        name: 'USER_NAME',
+      },
+      dAppMessage: null,
+    };
+  };
+
+  test('empty merging', () => {
+    expect(mergeMessages([], [])).toEqual([]);
+  });
+  test('merging empty with coming', () => {
+    const comingMessages = [
+      buildMessage('1'),
+      buildMessage('2'),
+      buildMessage('3'),
+    ];
+
+    expect(mergeMessages([], comingMessages)).toEqual(comingMessages);
+  });
+  test('merging when old is subset of coming', () => {
+    const oldMessages = [
+      buildMessage('1'),
+      buildMessage('2'),
+    ];
+    const comingMessages = [
+      oldMessages[0],
+      oldMessages[1],
+      buildMessage('3'),
+    ];
+
+    expect(mergeMessages(oldMessages, comingMessages)).toEqual(comingMessages);
+  });
+  test('merging when old intersects with coming', () => {
+    const oldMessages = [
+      buildMessage('1'),
+      buildMessage('2'),
+    ];
+    const comingMessages = [
+      oldMessages[1],
+      buildMessage('3'),
+    ];
+
+    expect(mergeMessages(oldMessages, comingMessages)).toEqual([
+      oldMessages[0],
+      oldMessages[1],
+      comingMessages[1],
+    ]);
+  });
 });
