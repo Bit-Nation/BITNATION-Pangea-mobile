@@ -73,7 +73,7 @@ type Props = {
   /**
    * @desc Function to initate messages loading.
    */
-  loadMessages: (recipientPublicKey: string, startId: string) => void,
+  loadMessages: (recipientPublicKey: string, startId?: string) => void,
   /**
    * @desc Array of chat sessions.
    */
@@ -115,6 +115,9 @@ class ChatScreen extends Component<Props, *> {
 
   componentDidMount() {
     this.props.setDAppContext(this.buildContext());
+    setImmediate(() => {
+      this.props.loadMessages(this.props.recipientPublicKey);
+    });
   }
 
   componentDidUpdate(prevProps, prevState) {
