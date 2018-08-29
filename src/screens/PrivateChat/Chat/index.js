@@ -195,14 +195,10 @@ class ChatScreen extends Component<Props, *> {
 
     const session = getSelectedSession(this.props.sessions, this.props.recipientPublicKey);
     if (session == null) {
-      this.showSessionClosedAlert();
       return <View />;
     }
-    let sortedMessages: Array<GiftedChatMessageType> = [];
-    if (session.messages && session.messages.length > 0) {
-      sortedMessages = _.sortBy(session.messages, message => message.createdAt);
-    }
-    sortedMessages = sortedMessages
+    let messages: Array<GiftedChatMessageType> = session.messages;
+    messages = messages
       .map((message) => {
         if (message.dAppMessage == null) return message;
         const { dAppMessage } = message;
@@ -231,7 +227,7 @@ class ChatScreen extends Component<Props, *> {
       _id: this.props.userPublicKey,
       name: this.props.user ? this.props.user.name : 'anonymous',
     };
-    const earliestMessageId = (sortedMessages[0] && sortedMessages[0]._id) || '0';
+    const earliestMessageId = (messages[0] && messages[0]._id) || '0';
 
     return (
       <View style={styles.container}>
@@ -239,8 +235,8 @@ class ChatScreen extends Component<Props, *> {
         <FakeNavigationBar navBarHidden={false} />
 
         <GiftedChat
-          messages={sortedMessages.reverse()}
-          onSend={messages => this.onSend(messages)}
+          messages={messages.reverse()}
+          onSend={messagesToSend => this.onSend(messagesToSend)}
           user={sendingUser}
           bottomOffset={Platform.OS === 'ios' ? 48.5 : 0}
           renderComposer={props => (
