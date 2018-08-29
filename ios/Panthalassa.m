@@ -566,6 +566,24 @@ RCT_REMAP_METHOD(PanthalassaDApps,
   }
 }
 
+RCT_REMAP_METHOD(PanthalassaMarkMessagesAsRead,
+                 PanthalassaMarkMessagesAsReadWithResolver:(NSDictionary *)config
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject) {
+  
+  BOOL response;
+  NSError *error = nil;
+  response = PanthalassaMarkMessagesAsRead([RCTConvert NSString:config[@"partner"]],
+                                            &error);
+  NSNumber *val = [NSNumber numberWithBool:response];
+  
+  if (error == nil) {
+    resolve(val);
+  } else {
+    reject(@"error", error.localizedDescription, error);
+  }
+}
+
 // TEST FOR SEND  - https://facebook.github.io/react-native/docs/native-modules-ios.html#sending-events-to-javascript
 - (NSArray<NSString *> *)supportedEvents
 {
