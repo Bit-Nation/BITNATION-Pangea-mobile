@@ -6,6 +6,7 @@ import {
   View,
   Text,
   Alert,
+  Share,
 } from 'react-native';
 
 import styles from './styles';
@@ -16,7 +17,7 @@ import type { Navigator } from '../../../../types/ReactNativeNavigation';
 import type { Account } from '../../../../types/Account';
 import i18n from '../../../../global/i18n';
 import ScreenTitle from '../../../../components/common/ScreenTitle';
-// import Button from '../../../../components/common/Button';
+import Button from '../../../../components/common/Button';
 import { androidNavigationButtons } from '../../../../global/Screens';
 import { imageSource } from '../../../../utils/profile';
 
@@ -92,12 +93,31 @@ class ProfileScreen extends NavigatorComponent<Props> {
     }
   }
 
+  sharePublicKey = () => {
+    Share.share({
+      message: this.props.publicKey || '',
+    });
+  };
+
   render() {
+    const { publicKey } = this.props;
+
     return (
-      <View style={styles.bodyContainer}>
-        <ScreenTitle title={i18n.t('screens.profile.title')} />
-        {this._buildHeader()}
-        {this._buildPublicKey()}
+      <View style={styles.screenContainer}>
+        <View style={styles.bodyContainer}>
+          <ScreenTitle title={i18n.t('screens.profile.title')} />
+          {this._buildHeader()}
+          <View style={styles.publicKey}>
+            <Text style={styles.publicKeyText}>{publicKey && publicKey.trim()}</Text>
+          </View>
+        </View>
+        <Button
+          enabled
+          style={styles.settingsButton}
+          title={i18n.t('screens.profile.shareKey').toUpperCase()}
+          onPress={this.sharePublicKey}
+          styleTitle={styles.settingsText}
+        />
       </View>
     );
   }
@@ -112,15 +132,6 @@ class ProfileScreen extends NavigatorComponent<Props> {
         <Image source={avatarSource} style={styles.avatarLarge} />
         <Text style={styles.nameText}>{account.name && account.name.trim()}</Text>
         <Text style={styles.infoText}>{account.location && account.location.trim()}</Text>
-      </View>
-    );
-  }
-
-  _buildPublicKey() {
-    const { publicKey } = this.props;
-    return (
-      <View style={styles.publicKey}>
-        <Text style={styles.publicKeyText}>{publicKey && publicKey.trim()}</Text>
       </View>
     );
   }
