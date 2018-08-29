@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View, Alert, Share } from 'react-native';
+import { View, Alert } from 'react-native';
 
 import ProfileScreen from './Profile/index';
 import EditProfile from './EditProfile/index';
@@ -11,7 +11,6 @@ import BackgroundImage from '../../../components/common/BackgroundImage';
 import { makeStep, resetSteps } from '../../../actions/testingMode';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
-import Button from '../../../components/common/Button';
 import type { Account } from '../../../types/Account';
 import styles from './EmptyProfile/styles';
 import { type State as AccountsState, getCurrentAccount, isCreatingAccount } from '../../../reducers/accounts';
@@ -127,14 +126,6 @@ class ProfileContainer extends Component<Props> {
     }
   };
 
-  sharePublicKey = () => {
-    Share.share({
-      message: this.props.publicKey || '',
-    });
-    // Clipboard.setString(this.props.publicKey);
-  };
-
-
   render() {
     const { creatingAccount, editingAccount } = this.props.accountsState;
     const { account, publicKey } = this.props;
@@ -148,39 +139,30 @@ class ProfileContainer extends Component<Props> {
       <View style={styles.screenContainer}>
         <BackgroundImage />
         <FakeNavigationBar />
-        <View style={styles.bodyContainer}>
-          {
-            editingAccount !== null &&
-            <EditProfile
-              account={currentAccount}
-              editingAccount={editingAccount}
-              navigator={this.props.navigator}
-              onAccountChanged={this.onAccountFieldChanged}
-              onCancelEditing={this.onCancelEditTapped}
-              onDoneEditing={this.onDoneEditTapped}
-              isCreating={isCreating}
-            />
-          }
-          {
-            editingAccount == null && account != null &&
-            <ProfileScreen
-              account={account}
-              publicKey={publicKey}
-              navigator={this.props.navigator}
-              onStartEditing={() => this.props.onStartAccountEditing(account)}
-              makeStepForTestingMode={this.props.makeStepForTestingMode}
-              resetStepsForTestingMode={this.props.resetStepsForTestingMode}
-              testingModeActive={this.props.testingModeActive}
-            />
-          }
-        </View>
-        <Button
-          enabled
-          style={styles.settingsButton}
-          title={i18n.t('screens.profile.shareKey').toUpperCase()}
-          onPress={this.sharePublicKey}
-          styleTitle={styles.settingsText}
-        />
+        {
+          editingAccount !== null &&
+          <EditProfile
+            account={currentAccount}
+            editingAccount={editingAccount}
+            navigator={this.props.navigator}
+            onAccountChanged={this.onAccountFieldChanged}
+            onCancelEditing={this.onCancelEditTapped}
+            onDoneEditing={this.onDoneEditTapped}
+            isCreating={isCreating}
+          />
+        }
+        {
+          editingAccount == null && account != null &&
+          <ProfileScreen
+            account={account}
+            publicKey={publicKey}
+            navigator={this.props.navigator}
+            onStartEditing={() => this.props.onStartAccountEditing(account)}
+            makeStepForTestingMode={this.props.makeStepForTestingMode}
+            resetStepsForTestingMode={this.props.resetStepsForTestingMode}
+            testingModeActive={this.props.testingModeActive}
+          />
+        }
       </View>
     );
   }
