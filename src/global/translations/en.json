@@ -524,11 +524,9 @@
       "switchAccounts": "Switch accounts",
       "connectToDAppHost": "Connect to DApp host",
       "connectToDAppLogger": "Connect debug logger",
-      "documents": "Documents",
       "sections": {
         "account": "Account",
-        "dApps": "DApp development",
-        "notary": "Notary"
+        "dApps": "DApp development"
       }
     },
     "securitySettings": {
