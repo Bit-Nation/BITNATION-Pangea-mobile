@@ -5,11 +5,11 @@ ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <ChatListItem
+    avatar={null}
     id="Test id"
     lastMessage={undefined}
+    name=""
     onPress={[MockFunction]}
-    partnerAvatar={null}
-    partnerName=""
     text="Test list item"
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -27,14 +27,14 @@ ShallowWrapper {
       "AdditionalView": [Function],
       "disabled": false,
       "disclosureIconVisible": true,
-      "iconSource": undefined,
+      "iconSource": null,
       "id": "Test id",
       "onPress": [MockFunction],
       "style": Object {
         "height": 72,
       },
       "subtitle": undefined,
-      "text": undefined,
+      "text": "",
       "textStyle": Object {
         "color": "#58595B",
         "fontFamily": "Roboto",
@@ -57,14 +57,14 @@ ShallowWrapper {
         "AdditionalView": [Function],
         "disabled": false,
         "disclosureIconVisible": true,
-        "iconSource": undefined,
+        "iconSource": null,
         "id": "Test id",
         "onPress": [MockFunction],
         "style": Object {
           "height": 72,
         },
         "subtitle": undefined,
-        "text": undefined,
+        "text": "",
         "textStyle": Object {
           "color": "#58595B",
           "fontFamily": "Roboto",
@@ -94,12 +94,12 @@ ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <ChatListItem
+    avatar={null}
     itemIcon={1}
     lastMessage={undefined}
+    name=""
     onPress={[Function]}
     participants="Text"
-    partnerAvatar={null}
-    partnerName=""
     text="Test chat list item"
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -117,14 +117,14 @@ ShallowWrapper {
       "AdditionalView": [Function],
       "disabled": false,
       "disclosureIconVisible": true,
-      "iconSource": undefined,
+      "iconSource": null,
       "id": null,
       "onPress": [Function],
       "style": Object {
         "height": 72,
       },
       "subtitle": undefined,
-      "text": undefined,
+      "text": "",
       "textStyle": Object {
         "color": "#58595B",
         "fontFamily": "Roboto",
@@ -147,14 +147,14 @@ ShallowWrapper {
         "AdditionalView": [Function],
         "disabled": false,
         "disclosureIconVisible": true,
-        "iconSource": undefined,
+        "iconSource": null,
         "id": null,
         "onPress": [Function],
         "style": Object {
           "height": 72,
         },
         "subtitle": undefined,
-        "text": undefined,
+        "text": "",
         "textStyle": Object {
           "color": "#58595B",
           "fontFamily": "Roboto",
@@ -184,10 +184,10 @@ ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <ChatListItem
+    avatar={null}
     lastMessage={undefined}
+    name=""
     onPress={[Function]}
-    partnerAvatar={null}
-    partnerName=""
     text="Test list item"
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -205,14 +205,14 @@ ShallowWrapper {
       "AdditionalView": [Function],
       "disabled": false,
       "disclosureIconVisible": true,
-      "iconSource": undefined,
+      "iconSource": null,
       "id": null,
       "onPress": [Function],
       "style": Object {
         "height": 72,
       },
       "subtitle": undefined,
-      "text": undefined,
+      "text": "",
       "textStyle": Object {
         "color": "#58595B",
         "fontFamily": "Roboto",
@@ -235,14 +235,14 @@ ShallowWrapper {
         "AdditionalView": [Function],
         "disabled": false,
         "disclosureIconVisible": true,
-        "iconSource": undefined,
+        "iconSource": null,
         "id": null,
         "onPress": [Function],
         "style": Object {
           "height": 72,
         },
         "subtitle": undefined,
-        "text": undefined,
+        "text": "",
         "textStyle": Object {
           "color": "#58595B",
           "fontFamily": "Roboto",
