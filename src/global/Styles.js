@@ -638,6 +638,7 @@ const styles = {
     alignItems: 'center',
     backgroundColor: Colors.sectionListItemContainerBackground,
     marginLeft: 20,
+    marginRight: 8,
   },
 
   // e.g. ItemsListHeader
