@@ -18,7 +18,7 @@ type Props = {
    * @desc Style object for basic text style
    * @type object
    */
-  textStyle?: any,
+  textStyle?: Text.propTypes.style,
   /**
    * @desc Status of the Nation to display on item
    * @type string
