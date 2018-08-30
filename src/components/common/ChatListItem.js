@@ -1,71 +1,59 @@
 // @flow
 
 /**
- * @desc Component that renders Chat Nations list item.
+ * @desc Component that renders chat list item.
  * @type React.Component
  */
 
 import React from 'react';
-import { View, Text, TouchableOpacity, Image } from 'react-native';
-import { MediaQueryStyleSheet } from 'react-native-responsive';
+import { Image } from 'react-native';
 
+import ListItem from './ListItem';
 import GlobalStyles from '../../global/Styles';
-import AssetsImages from '../../global/AssetsImages';
 
 type Props = {
   /**
-  * @desc Text to display on item
+  * @desc Name of chat partner.
   */
-  text: string,
+  name: string,
   /**
-   * @desc Number of participants in the chat to be displayed.
+   * @desc Last message to show on preview.
    */
-  participants: string,
+  lastMessage?: string | null,
+  /**
+   * @desc Base64 avatar of partner.
+   */
+  avatar: Image.propTypes.source,
   /**
    * @desc Id that will be passed in onPress callback.
    */
-  id: any,
+  id: string,
   /**
    * @desc Callback on press item.
+   * @param Id of item that was pressed.
    */
-  onPress: (any) => void,
-  /**
-   * @desc Image resource to be displayed as icon.
-   */
-  itemIcon: number,
+  onPress: (id: string) => void,
 }
 
-const styles = MediaQueryStyleSheet.create({
-  ...GlobalStyles,
-});
-
 const ChatListItem = ({
-  text, participants, id, onPress, itemIcon,
+  name, id, onPress, avatar, lastMessage,
 }: Props) => (
-  <View style={styles.sectionListItemContainer}>
-    <TouchableOpacity
-      testID='Touchable'
-      onPress={() => onPress(id)}
-      style={styles.sectionListTouchable}
-    >
-      <Text style={styles.listItemText} numberOfLines={1}>
-        {text}
-      </Text>
-      <Image source={itemIcon} style={styles.sectionListSignal} />
-      <Text style={styles.listItemTextState}>
-        {participants}
-      </Text>
-      <Image source={AssetsImages.disclosureRowIcon} style={styles.sectionListDisclosure} />
-    </TouchableOpacity>
-  </View>
+  <ListItem
+    id={id}
+    text={name}
+    textStyle={GlobalStyles.chatTitleStyle}
+    onPress={onPress}
+    iconSource={avatar}
+    style={GlobalStyles.chatListItem}
+    subtitle={lastMessage}
+  />
 );
 
 ChatListItem.defaultProps = {
-  text: '',
-  participants: '',
-  id: null,
+  partnerName: '',
   onPress: () => null,
-  itemIcon: 0,
+  partnerAvatar: null,
+  lastMessage: undefined,
 };
 
 export default ChatListItem;
