@@ -28,12 +28,12 @@ type Props = {
    * @desc Id that will be passed in onPress callback.
    * @type string
    */
-  id: any,
+  id: string,
   /**
    * @desc Callback on press item.
-   * @type string
+   * @param Id of item that was pressed.
    */
-  onPress: (any) => void,
+  onPress: (id: string) => void,
   /**
    * @desc Color Status of the Nation's label to display on item
    * @type string
@@ -71,7 +71,6 @@ NationListItem.defaultProps = {
   statusColor: Colors.listItemTextState.default,
   textStyle: undefined,
   status: undefined,
-  id: null,
   onPress: () => undefined,
 };
 
