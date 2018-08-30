@@ -51,3 +51,9 @@ export const TX_JOB_TYPE = {
 
 export const NATIONS_DEV_ENDPOINT = 'https://nation-cache.herokuapp.com/nations/development';
 export const NATIONS_PROD_ENDPOINT = 'https://nation-cache.herokuapp.com/nations/production';
+
+/**
+ * @desc Defines the number of messages that is fetched as one page on the chat.
+ * @type {number}
+ */
+export const CHAT_MESSAGES_PAGE = 20;
