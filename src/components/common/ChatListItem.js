@@ -8,12 +8,17 @@
 import React from 'react';
 
 import ListItem from './ListItem';
+import GlobalStyles from '../../global/Styles';
 
 type Props = {
   /**
   * @desc Name of chat partner.
   */
   name: string,
+  /**
+   * @desc Last message to show on preview.
+   */
+  lastMessage?: string | null,
   /**
    * @desc Base64 avatar of partner.
    */
@@ -29,13 +34,16 @@ type Props = {
 }
 
 const ChatListItem = ({
-  name, id, onPress, avatar,
+  name, id, onPress, avatar, lastMessage,
 }: Props) => (
   <ListItem
     id={id}
     text={name}
+    textStyle={GlobalStyles.chatTitleStyle}
     onPress={onPress}
     iconSource={avatar}
+    style={GlobalStyles.chatListItem}
+    subtitle={lastMessage}
   />
 );
 
@@ -44,6 +52,7 @@ ChatListItem.defaultProps = {
   id: null,
   onPress: () => null,
   partnerAvatar: null,
+  lastMessage: undefined,
 };
 
 export default ChatListItem;

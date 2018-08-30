@@ -19,6 +19,10 @@ type Props = {
    */
   textStyle?: any,
   /**
+   * @desc Text to show under main text.
+   */
+  subtitle?: string | null,
+  /**
    * @desc Additional view to render on the right of the list item.
    * @type string
    */
@@ -57,11 +61,17 @@ type Props = {
  * @return {React.Component} A component.
  */
 const ListItem = ({
-  id, textStyle, onPress, text, AdditionalView, disclosureIconVisible, disabled, style, iconSource,
+  id, textStyle, onPress, text, AdditionalView, disclosureIconVisible, disabled, style, iconSource, subtitle,
 }: Props) => {
   const styles = MediaQueryStyleSheet.create({
     ...GlobalStyles,
   });
+
+  const title = (
+    <Text style={[styles.listItemText, textStyle]} numberOfLines={1}>
+      {text}
+    </Text>
+  );
 
   return (
     <View style={[styles.sectionListItemContainer, style]}>
@@ -75,9 +85,15 @@ const ListItem = ({
           iconSource != null &&
           <Image source={iconSource} style={styles.listItemIcon} />
         }
-        <Text style={[styles.listItemText, textStyle]} numberOfLines={1}>
-          {text}
-        </Text>
+        {
+          subtitle == null ? title :
+          <View style={styles.listItemTextContainer}>
+            {title}
+            <Text style={styles.listItemSubtitle} numberOfLines={1}>
+              {subtitle}
+            </Text>
+          </View>
+        }
         <AdditionalView />
         {
           disclosureIconVisible &&
@@ -97,6 +113,7 @@ ListItem.defaultProps = {
   disabled: false,
   AdditionalView: () => null,
   iconSource: undefined,
+  subtitle: undefined,
 };
 
 export default ListItem;
