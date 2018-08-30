@@ -563,6 +563,9 @@
       "processor": "Processor",
       "gwei": "Gwei",
       "eth": "ETH"
+    },
+    "documentsList": {
+      "title": "Documents"
     }
   },
   "testingMode": {
