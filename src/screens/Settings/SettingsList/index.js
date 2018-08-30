@@ -3,7 +3,7 @@
 import React from 'react';
 import {
   View,
-  FlatList,
+  SectionList,
 } from 'react-native';
 import { connect } from 'react-redux';
 
@@ -20,6 +20,7 @@ import type { Navigator } from '../../../types/ReactNativeNavigation';
 import Button from '../../../components/common/Button';
 import { logout } from '../../../actions/accounts';
 import { type State as AccountsState, getCurrentAccount } from '../../../reducers/accounts';
+import SettingsListHeader from '../../../components/common/ItemsListHeader';
 
 type Props = {
   /**
@@ -39,6 +40,11 @@ type Props = {
    * @desc Accounts Redux state.
    */
   accounts: AccountsState,
+}
+
+type SettingsSection = {
+  title: string,
+  data: Array<SettingsItem>
 }
 
 class SettingsListScreen extends NavigatorComponent<Props> {
@@ -84,12 +90,22 @@ class SettingsListScreen extends NavigatorComponent<Props> {
       return (<View />);
     }
 
-    const items: Array<SettingsItem> = [
-      'identity',
-      'security',
-      currentAccount.confirmedMnemonic ? 'viewPrivateKey' : 'confirmPrivateKey',
-      'connectToDAppHost',
-      'connectToDAppLogger',
+    const sections: Array<SettingsSection> = [
+      {
+        title: i18n.t('screens.settings.sections.account'),
+        data: [
+          'identity',
+          'security',
+          currentAccount.confirmedMnemonic ? 'viewPrivateKey' : 'confirmPrivateKey',
+        ],
+      },
+      {
+        title: i18n.t('screens.settings.sections.dApps'),
+        data: [
+          'connectToDAppHost',
+          'connectToDAppLogger',
+        ],
+      },
     ];
 
     return (
@@ -98,14 +114,17 @@ class SettingsListScreen extends NavigatorComponent<Props> {
         <FakeNavigationBar />
         <ScreenTitle title={i18n.t('screens.settings.title')} />
         <View style={styles.bodyContainer}>
-          <FlatList
-            renderItem={item => (<SettingsListItem
-              id={item.item}
+          <SectionList
+            renderItem={({ item }) => (<SettingsListItem
+              id={item}
               onPress={this.onSelectItem}
-              text={i18n.t(`screens.settings.${item.item}`)}
+              text={i18n.t(`screens.settings.${item}`)}
             />)}
+            renderSectionHeader={({ section: { title } }) => (
+              <SettingsListHeader title={title} />
+            )}
             keyExtractor={item => item}
-            data={items}
+            sections={(sections: any)}
             style={styles.sectionList}
           />
         </View>
