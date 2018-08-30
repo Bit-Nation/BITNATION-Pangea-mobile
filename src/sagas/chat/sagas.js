@@ -22,7 +22,7 @@ import defaultDB from '../../services/database';
 import ChatService from '../../services/chat';
 import { getCurrentAccount, getCurrentAccountId } from '../accounts/sagas';
 import { createGiftedChatMessageObjects } from '../../utils/chat';
-import { panthalassaEthPubToAddress } from '../../services/panthalassa';
+import { panthalassaEthPubToAddress, panthalassaMarkMessagesAsRead } from '../../services/panthalassa';
 import { CHAT_MESSAGES_PAGE } from '../../global/Constants';
 
 /**
@@ -169,6 +169,7 @@ export function* fetchAllChats(): Generator<*, *, *> {
           accountId: currentAccountId,
           messages: [],
           image: profile.image,
+          unreadMessages: info.unread_messages,
         });
       }
     } catch (error) {
@@ -198,6 +199,7 @@ export function* loadMessages(action: LoadChatMessagesAction): Generator<*, *, *
       yield put(showSpinner());
       const messages = yield call(ChatService.loadMessages, senderAccount, recipientProfile, fromMessageId, CHAT_MESSAGES_PAGE);
       yield put(chatMessagesLoaded(recipientPublicKey, messages, CHAT_MESSAGES_PAGE));
+      yield call(panthalassaMarkMessagesAsRead, recipientPublicKey);
     } finally {
       yield put(hideSpinner());
     }

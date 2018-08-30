@@ -38,6 +38,10 @@ type Props = {
    * @desc Image resource for the profile Image.
    */
   profileImage: string,
+  /**
+   * @desc unreadMessages indicator for new messages in Chat
+   */
+  unreadMessages: boolean,
 }
 
 const styles = MediaQueryStyleSheet.create({
@@ -45,7 +49,7 @@ const styles = MediaQueryStyleSheet.create({
 });
 
 const ChatListItem = ({
-  text, participants, id, onPress, itemIcon, profileImage,
+  text, participants, id, onPress, itemIcon, profileImage, unreadMessages,
 }: Props) => (
   <View style={styles.sectionListItemContainer}>
     <TouchableOpacity
@@ -53,7 +57,7 @@ const ChatListItem = ({
       onPress={() => onPress(id)}
       style={styles.sectionListTouchable}
     >
-      <Image source={AssetsImages.ChatUI.newMsgIcon} style={styles.sectionListNewMessage} />
+      <Image source={unreadMessages ? AssetsImages.ChatUI.newMsgIcon : null} style={styles.sectionListNewMessage} />
       <Image
         style={styles.avatarSmall}
         source={imageSource(profileImage) || AssetsImages.avatarIcon}
