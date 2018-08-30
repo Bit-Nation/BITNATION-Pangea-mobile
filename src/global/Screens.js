@@ -259,6 +259,10 @@ const Screens = {
     screen: 'Pangea.DAppModalScreen',
     navigatorStyle,
   },
+  DOCUMENTS_LIST_SCREEN: {
+    screen: 'Pangea.DocumentsListScreen',
+    navigatorStyle,
+  },
 };
 
 /**
