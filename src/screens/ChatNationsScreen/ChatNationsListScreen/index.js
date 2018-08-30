@@ -68,17 +68,15 @@ const ChatNationsListScreen = ({
           const nation = item.item;
           if (nation.isBot === true) {
             return (<ChatListItem
-              text={nation.name}
-              participants=''
-              itemIcon={AssetsImages.ChatUI.botIcon}
+              name={nation.name}
+              avatar={AssetsImages.ChatUI.botIcon}
               onPress={id => onSelectItem(id, true)}
               id={nation.id}
             />);
           }
             return (<ChatListItem
-              text={nation.nationName}
-              participants=''
-              itemIcon={0}
+              name={nation.nationName}
+              avatar={AssetsImages.avatarIcon}
               onPress={id => onSelectItem(id, false)}
               id={nation.id}
             />);

@@ -43,7 +43,7 @@ const WalletList = ({
       renderItem={({ item }) => {
         const balance = prettyWalletBalance(item, item.currency);
         return (<WalletCard
-          imagePath={item.currency === 'ETH' ? Images.ethereumLogo : Images.patLogo}
+          imagePath={item.currency === 'ETH' ? Images.ethereumLogo : Images.xpatLogo}
           onSendPress={() => onSendPress(item)}
           onReceivePress={() => onReceivePress(item)}
           onTransactionPress={() => onTransactionPress(item)}

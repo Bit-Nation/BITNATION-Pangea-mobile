@@ -672,6 +672,13 @@ const styles = {
     height: 15,
   },
 
+  listItemIcon: {
+    height: 40,
+    width: 40,
+    borderRadius: 20,
+    marginRight: 16,
+  },
+
   sectionListSignal: {
     marginRight: 14,
     width: 20,
