@@ -604,6 +604,29 @@ const styles = {
     ...defaultTextStyles.body,
     color: '#58595B',
     flex: 1,
+    textAlignVertical: 'center',
+  },
+
+  listItemSubtitle: {
+    ...defaultTextStyles.footnote,
+    color: '#444444',
+    flex: 1,
+    textAlignVertical: 'center',
+  },
+
+  listItemTextContainer: {
+    flex: 1,
+    alignItems: 'stretch',
+    justifyContent: 'space-between',
+    paddingBottom: 16,
+    paddingTop: 12,
+  },
+
+  chatTitleStyle: {
+    ...defaultTextStyles.body,
+    color: '#444444',
+    fontSize: 14,
+    fontWeight: '500',
   },
 
   // e.g. NationListItem Text very BOLD
@@ -692,6 +715,10 @@ const styles = {
     marginRight: 16,
   },
 
+  chatListItem: {
+    height: 72,
+  },
+
   closeIcon: {
     color: '#fff',
   },
@@ -714,11 +741,11 @@ const styles = {
   },
 
   settingsText:
-  {
-    color: 'white',
-    fontSize: 15,
-    fontWeight: '900',
-  },
+    {
+      color: 'white',
+      fontSize: 15,
+      fontWeight: '900',
+    },
   settingsButton: {
     height: 54,
     backgroundColor: '#FF8B00',
