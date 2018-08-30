@@ -164,6 +164,7 @@ export function* fetchAllChats(): Generator<*, *, *> {
   for (const identityKey of identityKeys) {
     try {
       const profile = yield call(getProfile, identityKey);
+      console.log('identityKeys Profile -->', profile);
       if (profile != null) {
         chats.push({
           publicKey: identityKey,
@@ -191,9 +192,9 @@ export function* loadMessages(action: LoadChatMessagesAction): Generator<*, *, *
   let results = yield call([db, 'objects'], 'Profile');
   results = yield call([results, 'filtered'], `identityKey == '${action.recipientPublicKey}'`);
   const recipientProfile = yield results[0] || null;
-
+  console.log('CHAT messages recipientProfile -->', recipientProfile);
   const senderAccount = yield call(getCurrentAccount);
-
+  console.log('CHAT messages senderAccount -->', senderAccount);
   if (recipientProfile) {
     const messages = yield call(ChatService.loadMessages, senderAccount, recipientProfile, '0', 50);
     yield put(chatMessagesLoaded(action.recipientPublicKey, messages));
