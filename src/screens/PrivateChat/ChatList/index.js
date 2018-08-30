@@ -263,6 +263,7 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
             const iconSource = imageSource(session.profile.image) || AssetsImages.avatarIcon;
             return (<ChatListItem
               name={session.profile.name}
+              lastMessage={session.messages.length === 0 ? null : session.messages[session.messages.length - 1].text}
               avatar={iconSource}
               onPress={this.onChatSelect}
               id={session}
