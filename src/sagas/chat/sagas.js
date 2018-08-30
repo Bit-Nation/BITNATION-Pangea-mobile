@@ -162,9 +162,9 @@ export function* fetchAllChats(): Generator<*, *, *> {
   // eslint-disable-next-line no-restricted-syntax
   for (const info of chatsInfo) {
     try {
-      const { chat: identityKey } = info;
+      const { chat: identityKeyBase64 } = info;
+      const identityKey = Buffer.from(identityKeyBase64, 'base64').toString('hex');
       const profile = yield call(getProfile, identityKey);
-      console.log('identityKeys Profile -->', profile);
       if (profile != null) {
         chats.push({
           publicKey: identityKey,
