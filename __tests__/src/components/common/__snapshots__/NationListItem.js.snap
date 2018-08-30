@@ -76,7 +76,6 @@ ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <NationListItem
-    id={null}
     onPress={[Function]}
     status={undefined}
     statusColor="gray"
@@ -147,7 +146,6 @@ ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <NationListItem
-    id={null}
     onPress={[Function]}
     status={undefined}
     statusColor="gray"
