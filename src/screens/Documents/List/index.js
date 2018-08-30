@@ -14,12 +14,12 @@ import { screen } from '../../../global/Screens';
 import styles from './styles';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import ScreenTitle from '../../../components/common/ScreenTitle';
-import ListItem from '../../../components/common/ListItem';
 import type { Document } from '../../../types/Documents';
 import i18n from '../../../global/i18n';
 import { openDocument, startDocumentCreation } from '../../../actions/documents';
 import Loading from '../../../components/common/Loading';
 import type { State as DocumentsState } from '../../../reducers/documents';
+import DocumentListItem from '../../../components/common/DocumentListItem';
 
 type Props = {
   /**
@@ -76,11 +76,11 @@ class DocumentsListScreen extends NavigatorComponent<Props & DocumentsState & Ac
             renderItem={(item) => {
               const document = item.item;
               // @todo Add preview icon.
-              return (<ListItem
-                text={document.name}
+              return (<DocumentListItem
+                name={document.name}
                 onPress={id => this.onSelectItem(id)}
                 id={document.id}
-                subtitle={document.description}
+                description={document.description}
               />);
             }}
             keyExtractor={item => item.id}
