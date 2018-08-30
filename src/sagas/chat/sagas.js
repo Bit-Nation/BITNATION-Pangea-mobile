@@ -1,7 +1,5 @@
 // @flow
 
-/* eslint-disable camelcase,no-continue */
-
 import { put, call, select } from 'redux-saga/effects';
 import { Buffer } from 'buffer/index';
 
@@ -17,15 +15,15 @@ import {
   chatsUpdated,
   selectProfile,
   addCreatedChatSession,
-  loadChatMessages,
   chatMessagesLoaded,
-  addChatMessage, newChatSession,
+  addChatMessage, newChatSession, showSpinner, hideSpinner,
 } from '../../actions/chat';
 import defaultDB from '../../services/database';
 import ChatService from '../../services/chat';
 import { getCurrentAccount, getCurrentAccountId } from '../accounts/sagas';
 import { createGiftedChatMessageObjects } from '../../utils/chat';
 import { panthalassaEthPubToAddress } from '../../services/panthalassa';
+import { CHAT_MESSAGES_PAGE } from '../../global/Constants';
 
 /**
  * @desc Save profile into database.
@@ -136,7 +134,6 @@ export function* openChatSession(action: OpenChatAction): Generator<*, *, *> {
       return;
     }
 
-    yield put(loadChatMessages(action.publicKey));
     yield put(selectProfile(profile));
     const userPublicKey = yield call(ChatService.getPublicKey);
     yield call(action.callback, {
@@ -188,16 +185,22 @@ export function* fetchAllChats(): Generator<*, *, *> {
  * @return {void}
  */
 export function* loadMessages(action: LoadChatMessagesAction): Generator<*, *, *> {
+  const { recipientPublicKey, fromMessageId } = action;
   const db = yield defaultDB;
   let results = yield call([db, 'objects'], 'Profile');
-  results = yield call([results, 'filtered'], `identityKey == '${action.recipientPublicKey}'`);
+  results = yield call([results, 'filtered'], `identityKey == '${recipientPublicKey}'`);
   const recipientProfile = yield results[0] || null;
   console.log('CHAT messages recipientProfile -->', recipientProfile);
   const senderAccount = yield call(getCurrentAccount);
-  console.log('CHAT messages senderAccount -->', senderAccount);
-  if (recipientProfile) {
-    const messages = yield call(ChatService.loadMessages, senderAccount, recipientProfile, '0', 50);
-    yield put(chatMessagesLoaded(action.recipientPublicKey, messages));
+
+  if (recipientProfile != null) {
+    try {
+      yield put(showSpinner());
+      const messages = yield call(ChatService.loadMessages, senderAccount, recipientProfile, fromMessageId, CHAT_MESSAGES_PAGE);
+      yield put(chatMessagesLoaded(recipientPublicKey, messages, CHAT_MESSAGES_PAGE));
+    } finally {
+      yield put(hideSpinner());
+    }
   }
 }
 
