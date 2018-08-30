@@ -20,7 +20,7 @@ type Props = {
    * @desc Id that will be passed in onPress callback.
    * @type string
    */
-  id: any,
+  id: string,
   /**
    * @desc Text to display on item
    * @type string
@@ -28,9 +28,9 @@ type Props = {
   text: string,
   /**
    * @desc Callback on press item.
-   * @type string
+   * @param Id of item that was pressed.
    */
-  onPress: any => void,
+  onPress: (id: string) => void,
   /**
    * @desc Kind of additional view on the right.
    * disclosure - shows disclosure indicator on right side,

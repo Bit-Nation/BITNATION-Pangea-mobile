@@ -1,13 +1,13 @@
 // @flow
 
-import React from 'react';
+import * as React from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
 
 import GlobalStyles from '../../global/Styles';
 import AssetsImages from '../../global/AssetsImages';
 
-type Props = {
+type Props<IDType> = {
   /**
    * @desc Text to display on item
    * @type string
@@ -17,7 +17,7 @@ type Props = {
    * @desc Style object for basic text style
    * @type object
    */
-  textStyle?: any,
+  textStyle?: Text.propTypes.style,
   /**
    * @desc Text to show under main text.
    */
@@ -26,21 +26,21 @@ type Props = {
    * @desc Additional view to render on the right of the list item.
    * @type string
    */
-  AdditionalView: any,
+  AdditionalView: React.ComponentType<any>,
   /**
    * @desc Flag to show/hide disclosure indicator.
    */
   disclosureIconVisible: boolean,
   /**
    * @desc Id that will be passed in onPress callback.
-   * @type string
+   * @type IDType
    */
-  id: any,
+  id: IDType,
   /**
    * @desc Callback on press item.
-   * @type string
+   * @param {IDType} id Id of item that was pressed
    */
-  onPress: (any) => void,
+  onPress: (id: IDType) => void,
   /**
    * @desc Flag to enable/disable press on item.
    */
@@ -49,20 +49,21 @@ type Props = {
    * @desc Style to be applied on top of default.
    * @type object
    */
-  style?: any,
+  style?: View.propTypes.style,
   /**
    * @desc Icon base64 image to be displayed on the left
    */
-  iconSource?: any,
+  iconSource?: Image.propTypes.source,
 }
 
 /**
  * @desc Component that renders common list item.
  * @return {React.Component} A component.
  */
-const ListItem = ({
+// eslint-disable-next-line arrow-parens
+const ListItem = <IDType>({
   id, textStyle, onPress, text, AdditionalView, disclosureIconVisible, disabled, style, iconSource, subtitle,
-}: Props) => {
+}: Props<IDType>) => {
   const styles = MediaQueryStyleSheet.create({
     ...GlobalStyles,
   });

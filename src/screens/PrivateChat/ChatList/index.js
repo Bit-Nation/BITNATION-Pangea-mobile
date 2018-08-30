@@ -174,7 +174,7 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
     const chatSession = _.find(this.props.chatSessions, session => session.publicKey === partnerProfile.identityKey);
 
     if (chatSession != null) {
-      this.onChatSelect(chatSession);
+      this.onChatSelect(chatSession.publicKey);
       this.setState({
         showModal: '',
       });
@@ -201,14 +201,14 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
     });
   };
 
-  onChatSelect = (item) => {
-    this.props.onItemSelect(item.publicKey, (result) => {
+  onChatSelect = (publicKey: string) => {
+    this.props.onItemSelect(publicKey, (result) => {
       if (result.status === 'success') {
         this.props.navigator.push({
           ...screen('PRIVATE_CHAT_SCREEN'),
           passProps: {
             userPublicKey: result.userPublicKey,
-            recipientPublicKey: item.publicKey,
+            recipientPublicKey: publicKey,
           },
         });
       }
@@ -266,7 +266,7 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
               lastMessage={session.messages.length === 0 ? null : session.messages[session.messages.length - 1].text}
               avatar={iconSource}
               onPress={this.onChatSelect}
-              id={session}
+              id={session.publicKey}
             />);
           }}
           keyExtractor={item => item.publicKey}

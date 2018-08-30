@@ -48,7 +48,7 @@ type SettingsSection = {
 }
 
 class SettingsListScreen extends NavigatorComponent<Props> {
-  onSelectItem = (item: SettingsItem) => {
+  onSelectItem = (item: string) => {
     switch (item) {
       case 'identity':
         this.props.navigator.push(screen('PROFILE_SCREEN'));
