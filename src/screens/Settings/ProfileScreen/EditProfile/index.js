@@ -77,7 +77,7 @@ class EditProfile extends NavigatorComponent<Props> {
         title: i18n.t('screens.profile.edit.doneButton'),
         id: DONE_BUTTON,
         disabled: !saveEnabled,
-        buttonColor: Colors.navigationButtonColor,
+        buttonColor: Colors.BitnationLinkOrangeColor,
       }],
       ...androidNavigationButtons,
     };
@@ -85,7 +85,7 @@ class EditProfile extends NavigatorComponent<Props> {
       buttons.leftButtons = [{
         title: i18n.t('screens.profile.edit.cancelButton'),
         id: 'cancel',
-        buttonColor: Colors.navigationButtonColor,
+        buttonColor: Colors.BitnationLinkOrangeColor,
       }];
     }
     this.props.navigator.setButtons(buttons);

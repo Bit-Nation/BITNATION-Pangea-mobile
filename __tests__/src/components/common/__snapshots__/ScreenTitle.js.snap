@@ -23,7 +23,7 @@ ShallowWrapper {
         style={
           Object {
             "alignItems": "flex-start",
-            "height": 52,
+            "height": 40,
           }
         }
       >
@@ -35,7 +35,7 @@ ShallowWrapper {
             Object {
               "color": "#58595B",
               "fontFamily": "Roboto",
-              "fontSize": 22,
+              "fontSize": 27,
               "fontWeight": "900",
               "letterSpacing": 0,
               "lineHeight": 30,
@@ -46,6 +46,7 @@ ShallowWrapper {
         </Text>
       </View>,
       "style": Object {
+        "marginBottom": 8,
         "marginHorizontal": 20,
       },
     },
@@ -63,7 +64,7 @@ ShallowWrapper {
             Object {
               "color": "#58595B",
               "fontFamily": "Roboto",
-              "fontSize": 22,
+              "fontSize": 27,
               "fontWeight": "900",
               "letterSpacing": 0,
               "lineHeight": 30,
@@ -74,7 +75,7 @@ ShallowWrapper {
         </Text>,
         "style": Object {
           "alignItems": "flex-start",
-          "height": 52,
+          "height": 40,
         },
       },
       "ref": null,
@@ -90,7 +91,7 @@ ShallowWrapper {
           "style": Object {
             "color": "#58595B",
             "fontFamily": "Roboto",
-            "fontSize": 22,
+            "fontSize": 27,
             "fontWeight": "900",
             "letterSpacing": 0,
             "lineHeight": 30,
@@ -114,7 +115,7 @@ ShallowWrapper {
           style={
             Object {
               "alignItems": "flex-start",
-              "height": 52,
+              "height": 40,
             }
           }
         >
@@ -126,7 +127,7 @@ ShallowWrapper {
               Object {
                 "color": "#58595B",
                 "fontFamily": "Roboto",
-                "fontSize": 22,
+                "fontSize": 27,
                 "fontWeight": "900",
                 "letterSpacing": 0,
                 "lineHeight": 30,
@@ -137,6 +138,7 @@ ShallowWrapper {
           </Text>
         </View>,
         "style": Object {
+          "marginBottom": 8,
           "marginHorizontal": 20,
         },
       },
@@ -154,7 +156,7 @@ ShallowWrapper {
               Object {
                 "color": "#58595B",
                 "fontFamily": "Roboto",
-                "fontSize": 22,
+                "fontSize": 27,
                 "fontWeight": "900",
                 "letterSpacing": 0,
                 "lineHeight": 30,
@@ -165,7 +167,7 @@ ShallowWrapper {
           </Text>,
           "style": Object {
             "alignItems": "flex-start",
-            "height": 52,
+            "height": 40,
           },
         },
         "ref": null,
@@ -181,7 +183,7 @@ ShallowWrapper {
             "style": Object {
               "color": "#58595B",
               "fontFamily": "Roboto",
-              "fontSize": 22,
+              "fontSize": 27,
               "fontWeight": "900",
               "letterSpacing": 0,
               "lineHeight": 30,
