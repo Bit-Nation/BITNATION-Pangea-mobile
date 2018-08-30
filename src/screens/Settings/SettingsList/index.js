@@ -121,21 +121,20 @@ class SettingsListScreen extends NavigatorComponent<Props> {
         <BackgroundImage />
         <FakeNavigationBar />
         <ScreenTitle title={i18n.t('screens.settings.title')} />
-        <View style={styles.bodyContainer}>
-          <SectionList
-            renderItem={({ item }) => (<SettingsListItem
-              id={item}
-              onPress={this.onSelectItem}
-              text={i18n.t(`screens.settings.${item}`)}
-            />)}
-            renderSectionHeader={({ section: { title } }) => (
-              <SettingsListHeader title={title} />
-            )}
-            keyExtractor={item => item}
-            sections={(sections: any)}
-            style={styles.sectionList}
-          />
-        </View>
+        <SectionList
+          renderItem={({ item }) => (<SettingsListItem
+            id={item}
+            onPress={this.onSelectItem}
+            text={i18n.t(`screens.settings.${item}`)}
+          />)}
+          renderSectionHeader={({ section: { title } }) => (
+            <SettingsListHeader title={title} />
+          )}
+          keyExtractor={item => item}
+          sections={(sections: any)}
+          style={styles.sectionList}
+          ItemSeparatorComponent={() => (<View style={styles.itemSeparator} />)}
+        />
         <Button
           enabled
           styleTitle={styles.settingsText}

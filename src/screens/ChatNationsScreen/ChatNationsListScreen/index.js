@@ -87,6 +87,7 @@ const ChatNationsListScreen = ({
         renderSectionHeader={({ section }) => <NationListHeader title={section.title} />}
         sections={sections}
         style={styles.sectionList}
+        ItemSeparatorComponent={() => (<View style={styles.itemSeparator} />)}
       />
     </View>
   );
