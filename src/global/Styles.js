@@ -715,7 +715,7 @@ const styles = {
     marginRight: 16,
   },
 
-  chatListItem: {
+  itemWithSubtitle: {
     height: 72,
   },
 
