@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NationListHeader renders correctly 1`] = `
+exports[`ItemsListHeader renders correctly 1`] = `
 <View
   style={
     Object {

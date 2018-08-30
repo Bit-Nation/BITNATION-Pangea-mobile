@@ -640,7 +640,7 @@ const styles = {
     marginLeft: 20,
   },
 
-  // e.g. NationListHeader
+  // e.g. ItemsListHeader
   sectionListHeaderContainer: {
     flexDirection: 'row',
     height: 30,

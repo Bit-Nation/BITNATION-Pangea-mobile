@@ -11,7 +11,7 @@ import SegmentedControl from 'react-native-segmented-control-tab';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import styles from './styles';
 import NationListItem from '../../../components/common/NationListItem';
-import NationListHeader from '../../../components/common/NationListHeader';
+import NationListHeader from '../../../components/common/ItemsListHeader';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import i18n from '../../../global/i18n';
 import { resolveStatus, statusColor } from '../../../utils/nations';
