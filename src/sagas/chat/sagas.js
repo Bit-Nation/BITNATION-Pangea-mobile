@@ -104,7 +104,7 @@ export function* createChatSession(action: NewChatSessionAction): Generator<*, *
   const currentAccountId = yield call(getCurrentAccountId);
   const chatSession = {
     publicKey: action.profile.identityKey,
-    username: action.profile.name,
+    profile: action.profile,
     accountId: currentAccountId,
     messages: [],
   };
@@ -152,7 +152,8 @@ export function* openChatSession(action: OpenChatAction): Generator<*, *, *> {
  * @return {void}
  */
 export function* fetchAllChats(): Generator<*, *, *> {
-  const currentAccountId = yield call(getCurrentAccountId);
+  const currentAccount = yield call(getCurrentAccount);
+  const { id: currentAccountId } = currentAccount;
   const identityKeys = yield call(ChatService.fetchAllChats);
 
   const chats = [];
@@ -160,12 +161,13 @@ export function* fetchAllChats(): Generator<*, *, *> {
   for (const identityKey of identityKeys) {
     try {
       const profile = yield call(getProfile, identityKey);
+      const firstMessages = yield call(ChatService.loadMessages, currentAccount, profile, '0', 1);
       if (profile != null) {
         chats.push({
           publicKey: identityKey,
-          username: profile.name,
+          profile,
           accountId: currentAccountId,
-          messages: [],
+          messages: firstMessages,
         });
       }
     } catch (error) {

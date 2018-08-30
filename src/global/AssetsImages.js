@@ -1,20 +1,16 @@
 const background = require('../assets/images/background.png');
-const rightArrow = require('../assets/images/right_arrow.png');
-const ethereumLogo = require('../assets/images/ethereum_logo.png');
-const patLogo = require('../assets/images/pat_logo.png');
-const demo = require('../assets/images/demoImage.png');
-const eth = require('../assets/images/ethereum_logo.png');
-const qrColor = require('../assets/images/QR_icon.png');
-const bitLogo = require('../assets/images/bitnation_logo.png');
-const bitLogoBig = require('../assets/images/bitnation_logo_big.png');
+const ethereumLogo = require('../assets/images/ethereumLogo.png');
+const xpatLogo = require('../assets/images/xpatLogo.png');
+const bitLogo = require('../assets/images/bitnationLogo.png');
+const bitLogoBig = require('../assets/images/bitnationLogoBig.png');
 
 // Photos and Graphics for Introduction Screens
 const build = require('../assets/images/Chrysler_Building.png');
 const monroe = require('../assets/images/monroe.png');
 const fern = require('../assets/images/fern.png');
 const moon = require('../assets/images/moon.png');
-const avatarIcon = require('../assets/images/avatarIcon.png');
 
+const avatarIcon = require('../assets/images/avatarIcon.png');
 const privateKeyDemo = require('../assets/images/privateKeyDemo.png');
 
 // Main Navigation Icons
@@ -23,11 +19,6 @@ const chatTabIcon = require('../assets/images/tabIconChat.png');
 const nationsTabIcon = require('../assets/images/tabIconNations.png');
 const walletTabIcon = require('../assets/images/tabIconWallet.png');
 const profileTabIcon = require('../assets/images/tabIconProfile.png');
-const QR = require('../assets/images/QR.png');
-
-// DEMO placeholders
-const demoPlaceholder = require('../assets/images/demoImage.png');
-const avatarPlaceholder = require('../assets/images/avatarPlaceholder.png');
 
 // Tool Bar Icons
 const chatActionIcon = require('../assets/images/toolbarIconChat.png');
@@ -55,12 +46,8 @@ const botIconLucy = require('../assets/images/icon_chatbot.png');
 
 const Images = {
   background,
-  rightArrow,
   ethereumLogo,
-  patLogo,
-  demo,
-  eth,
-  qrColor,
+  xpatLogo,
   bitLogo,
   build,
   monroe,
@@ -68,7 +55,6 @@ const Images = {
   moon,
   avatarIcon,
   bitLogoBig,
-  QR,
   privateKeyDemo,
   userCitizenIcon,
   disclosureRowIcon,
@@ -78,10 +64,6 @@ const Images = {
     nations: nationsTabIcon,
     wallet: walletTabIcon,
     profile: profileTabIcon,
-  },
-  Placeholder: {
-    demo: demoPlaceholder,
-    avatar: avatarPlaceholder,
   },
   Actions: {
     chat: chatActionIcon,

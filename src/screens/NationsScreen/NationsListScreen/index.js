@@ -11,7 +11,7 @@ import SegmentedControl from 'react-native-segmented-control-tab';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import styles from './styles';
 import NationListItem from '../../../components/common/NationListItem';
-import NationListHeader from '../../../components/common/NationListHeader';
+import NationListHeader from '../../../components/common/ItemsListHeader';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import i18n from '../../../global/i18n';
 import { resolveStatus, statusColor } from '../../../utils/nations';
@@ -80,31 +80,32 @@ const NationsListScreen = ({
       </View>
       <SectionList
         renderItem={(item) => {
-            const nation = item.item;
-            const nationStatus = resolveStatus(nation);
+          const nation = item.item;
+          const nationStatus = resolveStatus(nation);
 
-            let statusString = '';
-            if (nationStatus !== null) {
-              statusString = i18n.t(`enums.nation.status.${nationStatus.key}`);
-            }
+          let statusString = '';
+          if (nationStatus !== null) {
+            statusString = i18n.t(`enums.nation.status.${nationStatus.key}`);
+          }
 
-            let statusTextColor = statusColor(0);
-            if (nationStatus !== null) {
-              statusTextColor = statusColor(nationStatus.code);
-            }
+          let statusTextColor = statusColor(0);
+          if (nationStatus !== null) {
+            statusTextColor = statusColor(nationStatus.code);
+          }
 
-            return (<NationListItem
-              text={nation.nationName}
-              onPress={onSelectItem}
-              status={statusString}
-              statusColor={statusTextColor}
-              id={nation.id}
-            />);
-          }}
+          return (<NationListItem
+            nationName={nation.nationName}
+            onPress={onSelectItem}
+            status={statusString}
+            statusColor={statusTextColor}
+            id={nation.id}
+          />);
+        }}
         keyExtractor={item => item.id}
         renderSectionHeader={({ section }) => <NationListHeader title={section.title} />}
         sections={sections}
         style={styles.sectionList}
+        ItemSeparatorComponent={() => (<View style={styles.itemSeparator} />)}
       />
       {inProgress && _.isEmpty(nations) && <Loading />}
     </View>

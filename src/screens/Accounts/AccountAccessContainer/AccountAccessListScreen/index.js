@@ -11,7 +11,7 @@ import Button from '../../../../components/common/Button';
 import styles from './styles';
 import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
 import ScreenTitle from '../../../../components/common/ScreenTitle';
-import NationListItem from '../../../../components/common/NationListItem';
+import ListItem from '../../../../components/common/ListItem';
 import type { Account } from '../../../../types/Account';
 import i18n from '../../../../global/i18n';
 
@@ -46,10 +46,8 @@ const AccountAccessListScreen = ({
       <FlatList
         renderItem={(item) => {
           const account = item.item;
-          return (<NationListItem
+          return (<ListItem
             text={account.name}
-            participants=''
-            itemIcon={0}
             onPress={id => onSelectItem(id)}
             id={account.id}
           />);
@@ -57,6 +55,7 @@ const AccountAccessListScreen = ({
         keyExtractor={item => item.id}
         data={accounts}
         style={styles.sectionList}
+        ItemSeparatorComponent={() => (<View style={styles.itemSeparator} />)}
       />
       <View style={styles.buttonListContainer}>
         <Button
