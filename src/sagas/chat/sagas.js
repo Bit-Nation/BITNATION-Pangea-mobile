@@ -104,7 +104,7 @@ export function* createChatSession(action: NewChatSessionAction): Generator<*, *
   const currentAccountId = yield call(getCurrentAccountId);
   const chatSession = {
     publicKey: action.profile.identityKey,
-    username: action.profile.name,
+    profile: action.profile,
     accountId: currentAccountId,
     messages: [],
   };
@@ -163,7 +163,7 @@ export function* fetchAllChats(): Generator<*, *, *> {
       if (profile != null) {
         chats.push({
           publicKey: identityKey,
-          username: profile.name,
+          profile,
           accountId: currentAccountId,
           messages: [],
         });

@@ -46,6 +46,10 @@ type Props = {
    * @type object
    */
   style?: any,
+  /**
+   * @desc Icon base64 image to be displayed on the left
+   */
+  iconSource?: any,
 }
 
 /**
@@ -53,7 +57,7 @@ type Props = {
  * @return {React.Component} A component.
  */
 const ListItem = ({
-  id, textStyle, onPress, text, AdditionalView, disclosureIconVisible, disabled, style,
+  id, textStyle, onPress, text, AdditionalView, disclosureIconVisible, disabled, style, iconSource,
 }: Props) => {
   const styles = MediaQueryStyleSheet.create({
     ...GlobalStyles,
@@ -67,6 +71,10 @@ const ListItem = ({
         style={styles.sectionListTouchable}
         disabled={disabled}
       >
+        {
+          iconSource != null &&
+          <Image source={iconSource} style={styles.listItemIcon} />
+        }
         <Text style={[styles.listItemText, textStyle]} numberOfLines={1}>
           {text}
         </Text>
@@ -88,6 +96,7 @@ ListItem.defaultProps = {
   onPress: () => undefined,
   disabled: false,
   AdditionalView: () => null,
+  iconSource: undefined,
 };
 
 export default ListItem;
