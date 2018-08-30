@@ -16,7 +16,7 @@ import BackgroundImage from '../../../components/common/BackgroundImage';
 import styles from './styles';
 import { screen } from '../../../global/Screens';
 import ChatListItem from '../../../components/common/ChatListItem';
-import NationListHeader from '../../../components/common/NationListHeader';
+import ChatListHeader from '../../../components/common/ItemsListHeader';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import Loading from '../../../components/common/Loading';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
@@ -267,7 +267,7 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
             />);
           }}
           keyExtractor={item => item.publicKey}
-          renderSectionHeader={({ section }) => <NationListHeader title={section.title} />}
+          renderSectionHeader={({ section }) => <ChatListHeader title={section.title} />}
           sections={sections}
           style={styles.sectionList}
         />
