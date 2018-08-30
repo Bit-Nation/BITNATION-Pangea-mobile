@@ -6,6 +6,7 @@
  */
 
 import React from 'react';
+import { Image } from 'react-native';
 
 import ListItem from './ListItem';
 import GlobalStyles from '../../global/Styles';
@@ -22,7 +23,7 @@ type Props = {
   /**
    * @desc Base64 avatar of partner.
    */
-  avatar: any,
+  avatar: Image.propTypes.source,
   /**
    * @desc Id that will be passed in onPress callback.
    */

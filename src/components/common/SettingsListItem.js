@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import { Switch } from 'react-native';
+import { View, Switch } from 'react-native';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
 import GlobalStyles from '../../global/Styles';
 import Colors from '../../global/colors';
@@ -40,7 +40,7 @@ type Props = {
   /**
    * @desc Style to be applied on top of default.
    */
-  style?: any,
+  style?: View.propTypes.style,
 };
 
 /**
