@@ -30,6 +30,8 @@ import InvalidKeyModal from './InvalidKeyModal';
 import InviteSentModal from './InviteSentModal';
 import MoreMenuModal from './MoreMenuModal';
 import { panthalassaIdentityPublicKey } from '../../../services/panthalassa';
+import { imageSource } from '../../../utils/profile';
+import AssetsImages from '../../../global/AssetsImages';
 
 const MORE_BUTTON = 'MORE_BUTTON';
 const MORE_MODAL_KEY = 'moreMenu';
@@ -235,8 +237,8 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
   };
 
   render() {
-    const sortedSessions = _.sortBy(this.props.chatSessions, session => session.username);
-    const groups = _.groupBy(sortedSessions, session => session.username.charAt(0));
+    const sortedSessions = _.sortBy(this.props.chatSessions, session => session.profile.name);
+    const groups = _.groupBy(sortedSessions, session => session.profile.name.charAt(0));
     const sections = _.map(groups, (group, key) => ({
       title: key,
       data: group,
@@ -257,11 +259,11 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
         <ScreenTitle title={i18n.t('screens.chat.title')} />
         <SectionList
           renderItem={(item) => {
-            const session = item.item;
+            const session: ChatSessionType = item.item;
+            const iconSource = imageSource(session.profile.image) || AssetsImages.avatarIcon;
             return (<ChatListItem
-              text={session.username}
-              participants=''
-              itemIcon={0}
+              name={session.profile.name}
+              avatar={iconSource}
               onPress={this.onChatSelect}
               id={session}
             />);
