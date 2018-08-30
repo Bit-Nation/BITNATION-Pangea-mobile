@@ -156,13 +156,13 @@ export function* openChatSession(action: OpenChatAction): Generator<*, *, *> {
  */
 export function* fetchAllChats(): Generator<*, *, *> {
   const currentAccountId = yield call(getCurrentAccountId);
-  const identityKeys = yield call(ChatService.fetchAllChats);
+  const chatsInfo: Array<{ chat: string, unread_messages: boolean }> = yield call(ChatService.fetchAllChats);
 
-  console.log('identityKeys FetchChats -->', identityKeys);
   const chats = [];
   // eslint-disable-next-line no-restricted-syntax
-  for (const identityKey of identityKeys) {
+  for (const info of chatsInfo) {
     try {
+      const { chat: identityKey } = info;
       const profile = yield call(getProfile, identityKey);
       console.log('identityKeys Profile -->', profile);
       if (profile != null) {

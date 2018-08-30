@@ -59,7 +59,7 @@ export default class ChatService {
     return panthalassaGetIdentityPublicKey();
   }
 
-  static async fetchAllChats(): Promise<Array<ChatSessionType>> {
+  static async fetchAllChats(): Promise<Array<{ chat: string, unread_messages: boolean }>> {
     let response = await panthalassaAllChats();
     response = JSON.parse(response);
     return response;
