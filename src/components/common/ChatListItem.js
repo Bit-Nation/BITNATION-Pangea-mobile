@@ -26,11 +26,12 @@ type Props = {
   /**
    * @desc Id that will be passed in onPress callback.
    */
-  id: any,
+  id: string,
   /**
    * @desc Callback on press item.
+   * @param Id of item that was pressed.
    */
-  onPress: (any) => void,
+  onPress: (id: string) => void,
 }
 
 const ChatListItem = ({
@@ -49,7 +50,6 @@ const ChatListItem = ({
 
 ChatListItem.defaultProps = {
   partnerName: '',
-  id: null,
   onPress: () => null,
   partnerAvatar: null,
   lastMessage: undefined,
