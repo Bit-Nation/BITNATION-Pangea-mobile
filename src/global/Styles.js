@@ -602,14 +602,14 @@ const styles = {
   // e.g. NationListItem Text
   listItemText: {
     ...defaultTextStyles.body,
-    color: '#58595B',
+    color: Colors.BitnationDarkGrayColor,
     flex: 1,
     textAlignVertical: 'center',
   },
 
   listItemSubtitle: {
     ...defaultTextStyles.footnote,
-    color: '#444444',
+    color: Colors.BitnationDarkGrayColor,
     flex: 1,
     textAlignVertical: 'center',
   },
@@ -624,7 +624,7 @@ const styles = {
 
   chatTitleStyle: {
     ...defaultTextStyles.body,
-    color: '#444444',
+    color: Colors.BitnationDarkGrayColor,
     fontSize: 14,
     fontWeight: '500',
   },
