@@ -44,7 +44,7 @@ const ChatListItem = ({
     textStyle={GlobalStyles.chatTitleStyle}
     onPress={onPress}
     iconSource={avatar}
-    style={GlobalStyles.chatListItem}
+    style={GlobalStyles.itemWithSubtitle}
     subtitle={lastMessage}
   />
 );

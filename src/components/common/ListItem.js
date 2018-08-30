@@ -75,7 +75,7 @@ const ListItem = <IDType>({
   );
 
   return (
-    <View style={[styles.sectionListItemContainer, style]}>
+    <View style={[styles.sectionListItemContainer, subtitle != null ? styles.itemWithSubtitle : null, style]}>
       <TouchableOpacity
         testID='Touchable'
         onPress={() => onPress(id)}
