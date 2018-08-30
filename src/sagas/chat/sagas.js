@@ -10,6 +10,7 @@ import type {
   SendMessageAction,
   LoadChatMessagesAction,
   PanthalassaMessagePersistedAction,
+  ChangeUnreadStatusAction,
 } from '../../actions/chat';
 import {
   chatsUpdated,
@@ -17,6 +18,7 @@ import {
   addCreatedChatSession,
   chatMessagesLoaded,
   addChatMessage, newChatSession, showSpinner, hideSpinner,
+  unreadStatusChanged,
 } from '../../actions/chat';
 import defaultDB from '../../services/database';
 import ChatService from '../../services/chat';
@@ -191,7 +193,6 @@ export function* loadMessages(action: LoadChatMessagesAction): Generator<*, *, *
   let results = yield call([db, 'objects'], 'Profile');
   results = yield call([results, 'filtered'], `identityKey == '${recipientPublicKey}'`);
   const recipientProfile = yield results[0] || null;
-  console.log('CHAT messages recipientProfile -->', recipientProfile);
   const senderAccount = yield call(getCurrentAccount);
 
   if (recipientProfile != null) {
@@ -236,8 +237,22 @@ export function* handlePanthalassaMessagePersisted(action: PanthalassaMessagePer
     if (receiver) {
       const messages = createGiftedChatMessageObjects(sender, receiver, [action.payload]);
       yield put(addChatMessage(publicKey, messages[0]));
+      yield put(unreadStatusChanged(publicKey, true));
     }
   } catch (error) {
     console.log(`[TEST] Handle message persisted failed: ${error.message}`);
+  }
+}
+
+/**
+ * @desc Changes flag of new messages
+ * @param {ChangeUnreadStatusAction} action CHANGE_UNREAD_STATUS action
+ * @returns {void}
+ */
+export function* changeUnreadStatus(action: ChangeUnreadStatusAction): Generator<*, *, *> {
+  try {
+    yield call(panthalassaMarkMessagesAsRead, action.recipientPublicKey);
+  } finally {
+    yield put(unreadStatusChanged(action.recipientPublicKey, action.status));
   }
 }

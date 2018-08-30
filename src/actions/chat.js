@@ -17,6 +17,8 @@ export const LOAD_CHAT_MESSAGES = 'LOAD_CHAT_MESSAGES';
 export const CHAT_MESSAGES_LOADED = 'CHAT_MESSAGES_LOADED';
 export const PANTHALASSA_MESSAGE_PERSISTED = 'PANTHALASSA_MESSAGE_PERSISTED';
 export const ADD_CHAT_MESSAGE = 'ADD_CHAT_MESSAGE';
+export const CHANGE_UNREAD_STATUS = 'CHANGE_UNREAD_STATUS';
+export const UNREAD_STATUS_CHANGED = 'UNREAD_STATUS_CHANGED';
 
 export type ShowSpinnerAction = { +type: 'SHOW_CHAT_SPINNER' };
 export type HideSpinnerAction = { +type: 'HIDE_CHAT_SPINNER' };
@@ -83,6 +85,16 @@ export type AddChatMessageAction = {
   +publicKey: string,
   +message: GiftedChatMessageType,
 }
+export type ChangeUnreadStatusAction = {
+  +type: 'CHANGE_UNREAD_STATUS',
+  +recipientPublicKey: string,
+  +chats: Array<any>,
+}
+export type UnreadStatusChangedAction = {
+  +type: 'UNREAD_STATUS_CHANGED',
+  +recipientPublicKey: string,
+  +chats: Array<any>,
+}
 
 export type Action =
   | ShowSpinnerAction
@@ -99,7 +111,9 @@ export type Action =
   | LoadChatMessagesAction
   | ChatMessagesLoadedAction
   | PanthalassaMessagePersistedAction
-  | AddChatMessageAction;
+  | AddChatMessageAction
+  | ChangeUnreadStatusAction
+  | UnreadStatusChangedAction;
 
 /**
  * @desc Action for an action that shows spinner while processing in background
@@ -290,5 +304,33 @@ export function addChatMessage(publicKey: string, message: GiftedChatMessageType
     type: ADD_CHAT_MESSAGE,
     publicKey,
     message,
+  };
+}
+
+/**
+ * @desc Action for change a conversation's new messages flag
+ * @param {string} recipientPublicKey Public Key of the chat recipient
+ * @param {boolean} status Status flag for new messages on chat
+ * @returns {ChangeUnreadStatusAction} An action
+ */
+export function changeUnreadStatus(recipientPublicKey: string, status: boolean): ChangeUnreadStatusAction {
+  return {
+    type: CHANGE_UNREAD_STATUS,
+    recipientPublicKey,
+    status,
+  };
+}
+
+/**
+ * @desc Action for change a conversation's new messages flag
+ * @param {string} recipientPublicKey Public Key of the chat recipient
+ * @param {boolean} status Status flag for new messages on chat
+ * @returns {UnreadStatusChangedAction} An action
+ */
+export function unreadStatusChanged(recipientPublicKey: string, status:boolean): UnreadStatusChangedAction {
+  return {
+    type: UNREAD_STATUS_CHANGED,
+    recipientPublicKey,
+    status,
   };
 }
