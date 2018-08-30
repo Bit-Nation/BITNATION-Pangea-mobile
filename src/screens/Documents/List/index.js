@@ -18,6 +18,8 @@ import ListItem from '../../../components/common/ListItem';
 import type { Document } from '../../../types/Documents';
 import i18n from '../../../global/i18n';
 import { openDocument, startDocumentCreation } from '../../../actions/documents';
+import Loading from '../../../components/common/Loading';
+import type { State as DocumentsState } from '../../../reducers/documents';
 
 type Props = {
   /**
@@ -42,7 +44,7 @@ type Actions = {
   startDocumentCreation: () => void,
 }
 
-class DocumentsListScreen extends NavigatorComponent<Props & Actions> {
+class DocumentsListScreen extends NavigatorComponent<Props & DocumentsState & Actions> {
   constructor(props) {
     super(props);
 
@@ -87,6 +89,7 @@ class DocumentsListScreen extends NavigatorComponent<Props & Actions> {
             ItemSeparatorComponent={() => (<View style={styles.itemSeparator} />)}
           />
         </View>
+        {this.props.isFetching && <Loading />}
       </View>
     );
   }
