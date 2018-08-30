@@ -10,7 +10,7 @@ import _ from 'lodash';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import styles from './styles';
 import ChatListItem from '../../../components/common/ChatListItem';
-import NationListHeader from '../../../components/common/NationListHeader';
+import NationListHeader from '../../../components/common/ItemsListHeader';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import i18n from '../../../global/i18n';
 import AssetsImages from '../../../global/AssetsImages';
