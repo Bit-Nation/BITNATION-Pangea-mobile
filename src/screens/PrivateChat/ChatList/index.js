@@ -270,6 +270,7 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
           renderSectionHeader={({ section }) => <ChatListHeader title={section.title} />}
           sections={sections}
           style={styles.sectionList}
+          ItemSeparatorComponent={() => (<View style={styles.itemSeparator} />)}
         />
         <Fab
           style={styles.fabStyle}

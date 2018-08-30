@@ -677,6 +677,13 @@ const styles = {
     height: 15,
   },
 
+  itemSeparator: {
+    height: 1,
+    backgroundColor: Colors.BitnationLightGrayColor,
+    marginLeft: 16,
+    marginRight: 16,
+  },
+
   closeIcon: {
     color: '#fff',
   },
@@ -696,8 +703,6 @@ const styles = {
 
   settingsList: {
     height: 50,
-    borderBottomWidth: 1.6,
-    borderColor: Colors.borderColor,
   },
 
   settingsText:
