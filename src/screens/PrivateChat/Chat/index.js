@@ -4,7 +4,6 @@
 import React, { Component } from 'react';
 import { View, Platform, Clipboard } from 'react-native';
 import { connect } from 'react-redux';
-import _ from 'lodash';
 import {
   GiftedChat,
   Composer,
@@ -16,7 +15,7 @@ import {
 import ActionSheet from 'react-native-actionsheet';
 
 import styles from './styles';
-import { showSpinner, hideSpinner, sendMessage } from '../../../actions/chat';
+import { showSpinner, hideSpinner, sendMessage, loadChatMessages } from '../../../actions/chat';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import Loading from '../../../components/common/Loading';
@@ -71,6 +70,10 @@ type Props = {
    */
   sendMessage: (recipientPublicKey: string, msg: string) => void,
   /**
+   * @desc Function to initate messages loading.
+   */
+  loadMessages: (recipientPublicKey: string, startId?: string) => void,
+  /**
    * @desc Array of chat sessions.
    */
   sessions: Array<ChatSessionType>,
@@ -111,6 +114,9 @@ class ChatScreen extends Component<Props, *> {
 
   componentDidMount() {
     this.props.setDAppContext(this.buildContext());
+    setImmediate(() => {
+      this.props.loadMessages(this.props.recipientPublicKey);
+    });
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -188,14 +194,10 @@ class ChatScreen extends Component<Props, *> {
 
     const session = getSelectedSession(this.props.sessions, this.props.recipientPublicKey);
     if (session == null) {
-      this.showSessionClosedAlert();
       return <View />;
     }
-    let sortedMessages: Array<GiftedChatMessageType> = [];
-    if (session.messages && session.messages.length > 0) {
-      sortedMessages = _.sortBy(session.messages, message => message.createdAt).reverse();
-    }
-    sortedMessages = sortedMessages
+    let messages: Array<GiftedChatMessageType> = session.messages;
+    messages = messages
       .map((message) => {
         if (message.dAppMessage == null) return message;
         const { dAppMessage } = message;
@@ -224,14 +226,16 @@ class ChatScreen extends Component<Props, *> {
       _id: this.props.userPublicKey,
       name: this.props.user ? this.props.user.name : 'anonymous',
     };
+    const earliestMessageId = (messages[0] && messages[0]._id) || '0';
+
     return (
       <View style={styles.container}>
         <BackgroundImage />
         <FakeNavigationBar navBarHidden={false} />
 
         <GiftedChat
-          messages={sortedMessages}
-          onSend={messages => this.onSend(messages)}
+          messages={messages.reverse()}
+          onSend={messagesToSend => this.onSend(messagesToSend)}
           user={sendingUser}
           bottomOffset={Platform.OS === 'ios' ? 48.5 : 0}
           renderComposer={props => (
@@ -270,6 +274,8 @@ class ChatScreen extends Component<Props, *> {
           }}
           onPressActionButton={() => this.dAppsActionSheet && this.dAppsActionSheet.show()}
           renderActions={props => <Actions {...props} containerStyle={styles.actionContainerStyle} />}
+          loadEarlier
+          onLoadEarlier={() => this.props.loadMessages(this.props.recipientPublicKey, earliestMessageId)}
         />
         {this.props.isFetching && <Loading />}
         <ActionSheet
@@ -309,6 +315,7 @@ const mapDispatchToProps = dispatch => ({
   sendMessage: (publicKey, msg) => dispatch(sendMessage(publicKey, msg)),
   openDApp: dAppPublicKey => dispatch(openDApp(dAppPublicKey)),
   setDAppContext: context => dispatch(setDAppContext(context)),
+  loadMessages: (publicKey, fromMessageId) => dispatch(loadChatMessages(publicKey, fromMessageId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChatScreen);
