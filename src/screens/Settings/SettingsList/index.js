@@ -79,6 +79,7 @@ class SettingsListScreen extends NavigatorComponent<Props> {
         });
         break;
       case 'documents':
+        this.props.navigator.push(screen('DOCUMENTS_LIST_SCREEN'));
         break;
       default:
         break;
