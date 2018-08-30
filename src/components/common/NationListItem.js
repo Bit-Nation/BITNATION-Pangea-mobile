@@ -1,19 +1,19 @@
 // @flow
 
 import React from 'react';
-import { View, Text, TouchableOpacity, Image } from 'react-native';
+import { Text } from 'react-native';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
 
 import GlobalStyles from '../../global/Styles';
-import AssetsImages from '../../global/AssetsImages';
 import Colors from '../../global/colors';
+import ListItem from './ListItem';
 
 type Props = {
   /**
    * @desc Text to display on item
    * @type string
    */
-  text?: string,
+  nationName: string,
   /**
    * @desc Style object for basic text style
    * @type object
@@ -46,33 +46,28 @@ type Props = {
  * @return {React.Component} A component.
  */
 const NationListItem = ({
-  id, textStyle, onPress, text, status, statusColor,
+  id, textStyle, onPress, nationName, status, statusColor,
 }: Props) => {
   const styles = MediaQueryStyleSheet.create({
     ...GlobalStyles,
   });
 
   return (
-    <View style={styles.sectionListItemContainer}>
-      <TouchableOpacity
-        testID='Touchable'
-        onPress={() => onPress(id)}
-        style={styles.sectionListTouchable}
-      >
-        <Text style={[styles.listItemText, textStyle]} numberOfLines={1}>
-          {text}
-        </Text>
+    <ListItem
+      text={nationName}
+      textStyle={textStyle}
+      id={id}
+      onPress={onPress}
+      additionalView={() => (
         <Text style={[styles.listItemTextState, { color: statusColor }]}>
           {status}
         </Text>
-        <Image source={AssetsImages.disclosureRowIcon} style={styles.sectionListDisclosure} />
-      </TouchableOpacity>
-    </View>
+      )}
+    />
   );
 };
 
 NationListItem.defaultProps = {
-  text: undefined,
   statusColor: Colors.listItemTextState.default,
   textStyle: undefined,
   status: undefined,

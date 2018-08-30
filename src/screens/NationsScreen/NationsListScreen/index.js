@@ -94,7 +94,7 @@ const NationsListScreen = ({
           }
 
           return (<NationListItem
-            text={nation.nationName}
+            nationName={nation.nationName}
             onPress={onSelectItem}
             status={statusString}
             statusColor={statusTextColor}
