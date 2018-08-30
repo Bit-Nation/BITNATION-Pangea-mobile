@@ -67,6 +67,7 @@ export type SaveMessageAction = {
 export type LoadChatMessagesAction = {
   +type: 'LOAD_CHAT_MESSAGES',
   +recipientPublicKey: string,
+  +fromMessageId: string,
 }
 export type ChatMessagesLoadedAction = {
   +type: 'CHAT_MESSAGES_LOADED',
@@ -239,12 +240,14 @@ export function sendMessage(recipientPublicKey: string, message: string, callbac
 /**
  * @desc Action for loading chat messages
  * @param {string} recipientPublicKey Public Key of the chat recipient
+ * @param {string} fromMessageId Id of message to start load from
  * @returns {LoadChatMessagesAction} An action
  */
-export function loadChatMessages(recipientPublicKey: string): LoadChatMessagesAction {
+export function loadChatMessages(recipientPublicKey: string, fromMessageId: string = '0'): LoadChatMessagesAction {
   return {
     type: LOAD_CHAT_MESSAGES,
     recipientPublicKey,
+    fromMessageId,
   };
 }
 
@@ -252,13 +255,15 @@ export function loadChatMessages(recipientPublicKey: string): LoadChatMessagesAc
  * @desc Action for loaded messages
  * @param {string} recipientPublicKey The public key of the recipient
  * @param {Array<any>} messages Loaded messages
+ * @param {number} expectedCount Number of message that was requested. Used to determine if there are older messages.
  * @returns {ChatMessagesLoadedAction} An action
  */
-export function chatMessagesLoaded(recipientPublicKey: string, messages: Array<any>): ChatMessagesLoadedAction {
+export function chatMessagesLoaded(recipientPublicKey: string, messages: Array<any>, expectedCount: number): ChatMessagesLoadedAction {
   return {
     type: CHAT_MESSAGES_LOADED,
     recipientPublicKey,
     messages,
+    expectedCount,
   };
 }
 
