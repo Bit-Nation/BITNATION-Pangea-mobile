@@ -265,6 +265,7 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
               itemIcon={0}
               onPress={this.onChatSelect}
               id={session}
+              unreadMessages={session.unreadMessages}
               profileImage={session.image || ''}
             />);
           }}
