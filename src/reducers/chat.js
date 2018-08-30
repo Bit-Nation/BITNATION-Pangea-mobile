@@ -12,6 +12,7 @@ import {
 } from '../actions/chat';
 import { SERVICES_DESTROYED } from '../actions/serviceContainer';
 import type { ChatSessionType } from '../types/Chat';
+import { mergeMessages } from '../utils/chat';
 
 export type State = {
   +isFetching: boolean,
@@ -66,7 +67,7 @@ export default (state: State = initialState, action: Action): State => {
         if (chat.publicKey === recipientPublicKey) {
           return {
             ...chat,
-            messages,
+            messages: mergeMessages(chat.messages, messages),
           };
         }
         return chat;
@@ -81,14 +82,9 @@ export default (state: State = initialState, action: Action): State => {
       const { publicKey, message } = action;
       const chats = state.chats.map((chat) => {
         if (chat.publicKey === publicKey) {
-          const index = chat.messages.findIndex(existingMessage => existingMessage._id === message._id);
-          if (index !== -1) {
-            return chat;
-          }
-
           return {
             ...chat,
-            messages: [...chat.messages, message],
+            messages: mergeMessages(chat.messages, [message]),
           };
         }
         return chat;
