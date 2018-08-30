@@ -4,7 +4,7 @@ import Config from 'react-native-config';
 import { Buffer } from 'buffer/index';
 import { createGiftedChatMessageObjects } from '../../utils/chat';
 import type { Account } from '../../types/Account';
-import type { ChatSessionType, GiftedChatMessageType, ProfileType } from '../../types/Chat';
+import type { GiftedChatMessageType, ProfileType } from '../../types/Chat';
 import {
   panthalassaGetIdentityPublicKey,
   panthalassaAllChats,
