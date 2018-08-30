@@ -108,13 +108,14 @@ class SettingsListScreen extends NavigatorComponent<Props> {
             data={items}
             style={styles.sectionList}
           />
-          <View style={styles.buttonContainer}>
-            <Button
-              title={i18n.t('screens.settings.switchAccounts')}
-              onPress={this.props.logout}
-            />
-          </View>
         </View>
+        <Button
+          enabled
+          styleTitle={styles.settingsText}
+          title={i18n.t('screens.settings.switchAccounts').toUpperCase()}
+          onPress={this.props.logout}
+          style={styles.settingsButton}
+        />
       </View>
     );
   }
