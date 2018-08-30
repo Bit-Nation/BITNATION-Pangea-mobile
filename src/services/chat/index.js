@@ -70,6 +70,7 @@ export default class ChatService {
     try {
       messages = await panthalassaMessages(receiver.identityKey, startStr, amount);
       messages = JSON.parse(messages);
+      console.log('CHAT messages -->', messages);
       messages = createGiftedChatMessageObjects(sender, receiver, messages);
     } catch (e) {
       console.log(`[TEST] Error loading messages: ${e.message}`);
