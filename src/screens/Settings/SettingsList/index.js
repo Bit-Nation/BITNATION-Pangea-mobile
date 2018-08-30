@@ -78,8 +78,6 @@ class SettingsListScreen extends NavigatorComponent<Props> {
           },
         });
         break;
-      case 'documents':
-        break;
       default:
         break;
     }
@@ -106,12 +104,6 @@ class SettingsListScreen extends NavigatorComponent<Props> {
         data: [
           'connectToDAppHost',
           'connectToDAppLogger',
-        ],
-      },
-      {
-        title: i18n.t('screens.settings.sections.notary'),
-        data: [
-          'documents',
         ],
       },
     ];

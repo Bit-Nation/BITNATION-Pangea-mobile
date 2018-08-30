@@ -6,8 +6,7 @@ export type SettingsItem =
   | 'viewPrivateKey'
   | 'confirmPrivateKey'
   | 'connectToDAppHost'
-  | 'connectToDAppLogger'
-  | 'documents';
+  | 'connectToDAppLogger';
 
 export type PasscodeType =
   {
