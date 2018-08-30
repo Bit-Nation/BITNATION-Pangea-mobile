@@ -155,7 +155,6 @@ export function* openChatSession(action: OpenChatAction): Generator<*, *, *> {
  * @return {void}
  */
 export function* fetchAllChats(): Generator<*, *, *> {
-  console.log('Entro FetchChats -->');
   const currentAccountId = yield call(getCurrentAccountId);
   const identityKeys = yield call(ChatService.fetchAllChats);
 
@@ -163,7 +162,6 @@ export function* fetchAllChats(): Generator<*, *, *> {
   const chats = [];
   // eslint-disable-next-line no-restricted-syntax
   for (const identityKey of identityKeys) {
-    console.log('entro FOR FetchChats -->');
     try {
       const profile = yield call(getProfile, identityKey);
       if (profile != null) {
@@ -180,7 +178,6 @@ export function* fetchAllChats(): Generator<*, *, *> {
     }
   }
 
-  console.log('Salio FetchChats -->');
   yield put(chatsUpdated(chats));
 }
 
