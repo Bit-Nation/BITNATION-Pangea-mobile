@@ -50,9 +50,9 @@ const ChatListItem = ({
 );
 
 ChatListItem.defaultProps = {
-  partnerName: '',
+  name: '',
   onPress: () => null,
-  partnerAvatar: null,
+  avatar: null,
   lastMessage: undefined,
 };
 
