@@ -25,10 +25,6 @@ const walletTabIcon = require('../assets/images/tabIconWallet.png');
 const profileTabIcon = require('../assets/images/tabIconProfile.png');
 const QR = require('../assets/images/QR.png');
 
-// DEMO placeholders
-const demoPlaceholder = require('../assets/images/demoImage.png');
-const avatarPlaceholder = require('../assets/images/avatarPlaceholder.png');
-
 // Tool Bar Icons
 const chatActionIcon = require('../assets/images/toolbarIconChat.png');
 const mapActionIcon = require('../assets/images/toolbarIconMap.png');
@@ -78,10 +74,6 @@ const Images = {
     nations: nationsTabIcon,
     wallet: walletTabIcon,
     profile: profileTabIcon,
-  },
-  Placeholder: {
-    demo: demoPlaceholder,
-    avatar: avatarPlaceholder,
   },
   Actions: {
     chat: chatActionIcon,
