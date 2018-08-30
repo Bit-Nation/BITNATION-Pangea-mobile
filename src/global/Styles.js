@@ -622,7 +622,7 @@ const styles = {
     paddingTop: 12,
   },
 
-  chatTitleStyle: {
+  detailedItemTitle: {
     ...defaultTextStyles.body,
     color: Colors.BitnationDarkGrayColor,
     fontSize: 14,
@@ -715,7 +715,7 @@ const styles = {
     marginRight: 16,
   },
 
-  itemWithSubtitle: {
+  detailedItemContainer: {
     height: 72,
   },
 

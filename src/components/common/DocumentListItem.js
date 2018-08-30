@@ -13,17 +13,17 @@ import GlobalStyles from '../../global/Styles';
 
 type Props = {
   /**
-  * @desc Name of chat partner.
-  */
+   * @desc Name of the document.
+   */
   name: string,
   /**
-   * @desc Last message to show on preview.
+   * @desc Description of the document.
    */
-  lastMessage?: string | null,
+  description: string,
   /**
    * @desc Base64 avatar of partner.
    */
-  avatar: Image.propTypes.source,
+  preview: Image.propTypes.source,
   /**
    * @desc Id that will be passed in onPress callback.
    */
@@ -35,25 +35,25 @@ type Props = {
   onPress: (id: string) => void,
 }
 
-const ChatListItem = ({
-  name, id, onPress, avatar, lastMessage,
+const DocumentListItem = ({
+  name, id, onPress, preview, description,
 }: Props) => (
   <ListItem
     id={id}
     text={name}
     textStyle={GlobalStyles.detailedItemTitle}
     onPress={onPress}
-    iconSource={avatar}
+    iconSource={preview}
     style={GlobalStyles.detailedItemContainer}
-    subtitle={lastMessage}
+    subtitle={description}
   />
 );
 
-ChatListItem.defaultProps = {
+DocumentListItem.defaultProps = {
   name: '',
   onPress: () => null,
-  avatar: null,
-  lastMessage: undefined,
+  description: '',
+  preview: undefined,
 };
 
-export default ChatListItem;
+export default DocumentListItem;
