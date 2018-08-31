@@ -3,8 +3,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { View } from 'react-native';
-import has from 'lodash/has';
-
 import PinCodeScreen from './PinCode/index';
 import { type State as SettingsState } from '../../reducers/settings';
 import NavigatorComponent from '../../components/common/NavigatorComponent';
@@ -109,7 +107,7 @@ class EnterPasscodeContainer extends NavigatorComponent<Props & Actions & Settin
     const {
       navigator, passcodeType, title, onCancel, isLoggedIn,
     } = this.props;
-    const shouldShowForget = !isLoggedIn && has(this.props, 'accountId');
+    const shouldShowForget = !isLoggedIn && this.props.accountId != null;
     if (passcodeType.type === 'pinCode') {
       return (<PinCodeScreen
         navigator={navigator}

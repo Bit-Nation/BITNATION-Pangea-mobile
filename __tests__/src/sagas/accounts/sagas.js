@@ -9,7 +9,7 @@ import {
   saveEditingAccount as saveEditingAccountSaga, savePasswordSaga, savePinCodeSaga, startAccountCreation,
   startRestoreAccountUsingMnemonic, saveCreatingAccount as saveCreatingAccountSaga, currentAccountBasedUpdate,
   startAccountUpdateListening, saveMnemonicConfirmed, getAccounts,
-  validMnemonicWithAccount as validMnemonicWithAccountSaga, validMnemonicWithAccountActionHandler,
+  validateMnemonicWithAccount as validateMnemonicWithAccountSaga, validateMnemonicWithAccountActionHandler,
 } from '../../../../src/sagas/accounts/sagas';
 import defaultDB, { buildRandomPathDatabase } from '../../../../src/services/database';
 import { convertFromDatabase, convertToDatabase } from '../../../../src/utils/mapping/account';
@@ -21,7 +21,7 @@ import {
   accountListUpdated, changeCreatingAccountField, checkPassword, checkPinCode, CURRENT_ACCOUNT_ID_CHANGED,
   currentAccountIdChanged, login,
   loginTaskUpdated, mnemonicConfirmed, PERFORM_DEFERRED_LOGIN, saveCreatingAccount, savePassword, savePinCode,
-  validMnemonicWithAccount,
+  validateMnemonicWithAccount,
 } from '../../../../src/actions/accounts';
 import TaskBuilder from '../../../../src/utils/asyncTask';
 import AccountsService from '../../../../src/services/accounts';
@@ -208,10 +208,10 @@ test('loginActionHandler', () => {
   expect(loginActionHandler(actionMock).next().value).toEqual(call(loginSaga, { accountId: 'ID' }, 'PASSWORD', false));
 });
 
-test('validMnemonicWithAccountActionHandler', () => {
+test('validateMnemonicWithAccountActionHandler', () => {
   const mockCallback = jest.fn();
-  const actionMock = validMnemonicWithAccount('ID', mockCallback);
-  expect(validMnemonicWithAccountActionHandler(actionMock).next().value).toEqual(call(validMnemonicWithAccountSaga, { accountId: 'ID' }, mockCallback));
+  const actionMock = validateMnemonicWithAccount('ID', mockCallback);
+  expect(validateMnemonicWithAccountActionHandler(actionMock).next().value).toEqual(call(validateMnemonicWithAccountSaga, { accountId: 'ID' }, mockCallback));
 });
 
 describe('login', () => {

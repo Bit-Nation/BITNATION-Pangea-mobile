@@ -209,6 +209,11 @@
       "title": "Success",
       "subtitle": "Your transaction has been successfully sent",
       "confirm": "$t(common.ok)"
+    },
+    "successResetPassword": {
+      "title": "Success",
+      "subtitle": "Your password has been successfully changed",
+      "confirm": "$t(common.ok)"
     }
   },
   "screens": {
@@ -549,7 +554,7 @@
       "enterInstruction": "Enter password:",
       "createInstruction": "Enter new password:",
       "verifyInstruction": "Enter password again:",
-      "forgetInstruction": "Forget Password?"
+      "forgetInstruction": "Forgot Password?"
     },
     "confirmTransaction": {
       "title": "Confirm Transaction",
