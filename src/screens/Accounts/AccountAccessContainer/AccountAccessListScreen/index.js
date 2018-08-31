@@ -41,36 +41,33 @@ const AccountAccessListScreen = ({
   <View style={styles.profilesScreenContainer}>
     <BackgroundImage />
     <FakeNavigationBar />
-    <View style={styles.bodyAccountContainer}>
-      <ScreenTitle title={i18n.t('screens.accounts.title')} />
-      <FlatList
-        renderItem={(item) => {
-          const account = item.item;
-          return (<ListItem
-            text={account.name}
-            onPress={id => onSelectItem(id)}
-            id={account.id}
-          />);
-        }}
-        keyExtractor={item => item.id}
-        data={accounts}
-        style={styles.sectionList}
-        ItemSeparatorComponent={() => (<View style={styles.itemSeparator} />)}
+    <ScreenTitle title={i18n.t('screens.accounts.title')} />
+    <FlatList
+      renderItem={(item) => {
+        const account = item.item;
+        return (<ListItem
+          text={account.name}
+          onPress={id => onSelectItem(id)}
+          id={account.id}
+        />);
+      }}
+      keyExtractor={item => item.id}
+      data={accounts}
+      style={styles.sectionList}
+      ItemSeparatorComponent={() => (<View style={styles.itemSeparator} />)}
+    />
+    <View style={styles.buttonListContainer}>
+      <Button
+        enabled
+        style={styles.restoreAccountButton}
+        styleTitle={styles.restoreAccountButtonText}
+        title={i18n.t('screens.accounts.restoreAccount')}
+        onPress={onRestoreAccount}
       />
-      <View style={styles.buttonListContainer}>
-        <Button
-          enabled
-          style={styles.restoreAccountButton}
-          styleTitle={styles.restoreAccountButtonText}
-          title={i18n.t('screens.accounts.restoreAccount')}
-          onPress={onRestoreAccount}
 
-        />
-
-        <View style={styles.spacer} />
-      </View>
-
+      <View style={styles.spacer} />
     </View>
+
     <Button
       enabled
       styleTitle={styles.newAccountText}
