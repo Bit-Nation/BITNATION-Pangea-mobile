@@ -157,7 +157,7 @@ export default {
   navBarTextColor: BitnationDarkGrayColor,
   navBarButtonColor: BitnationLinkOrangeColor,
   navBarBackgroundColor: 'transparent',
-  navigationButtonColor: Platform.OS === 'ios' ? BitnationLinkOrangeColor : '#FFFFFF',
+  navigationButtonColor: BitnationLinkOrangeColor,
   statusBarColorOther: 'black',
   statusBarColorIOS: 'black',
 
