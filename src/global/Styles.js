@@ -970,6 +970,10 @@ const styles = {
     textAlign: 'center',
   },
 
+  floatingButton: {
+    backgroundColor: Colors.BitnationLinkOrangeColor,
+  },
+
 };
 
 export default styles;
