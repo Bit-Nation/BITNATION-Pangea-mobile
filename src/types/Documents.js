@@ -4,7 +4,7 @@ export type Document = {
   id: number,
   name: string,
   description: string,
-  data: string,
+  dataId: string,
   mimeType: string,
 }
 
@@ -12,7 +12,7 @@ export type EditingDocument = {
   id: number | null,
   name: string,
   description: string,
-  data: string | null,
+  dataId: string,
   mimeType: string,
 }
 
@@ -21,4 +21,5 @@ export type PanthalassaDocument = {
   title: string,
   mime_type: string,
   content: string,
+  description: string,
 }

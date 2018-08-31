@@ -11,10 +11,11 @@ import {
   START_DOCUMENT_EDITING,
   CANCEL_DOCUMENT_MODIFICATION,
   UPDATE_MODIFIED_DOCUMENT_FIELD,
-  OPEN_DOCUMENT,
+  OPEN_DOCUMENT, DELETE_DOCUMENT,
 } from '../actions/documents';
 import { SERVICES_DESTROYED } from '../actions/serviceContainer';
 import type { Document, EditingDocument } from '../types/Documents';
+import { contentStorage } from '../services/documents';
 
 export type State = {
   isFetching: boolean,
@@ -35,13 +36,13 @@ export const initialState: State = {
   fetchError: null,
 };
 
-const emptyDocument: EditingDocument = {
+const emptyDocumentBuilder = (content: string): EditingDocument => ({
   id: null,
   name: '',
   description: '',
-  data: null,
+  dataId: contentStorage.storeContent(content),
   mimeType: '',
-};
+});
 
 export const getDocument = (state: State, id: number) => _.find(state.documents, document => document.id === id);
 export const getOpenedDocument = (state: State) => (state.openedDocumentId === null ? null : getDocument(state, state.openedDocumentId));
@@ -74,14 +75,17 @@ export default (state: State = initialState, action: Action): State => {
         isFetching: false,
         documents: [...action.documents],
       };
-    case START_DOCUMENT_CREATION:
+    case START_DOCUMENT_CREATION: {
+      const { content } = action;
+
       return {
         ...state,
         modification: {
           initial: null,
-          new: emptyDocument,
+          new: emptyDocumentBuilder(content),
         },
       };
+    }
     case START_DOCUMENT_EDITING: {
       const { documentId } = action;
       const document = getDocument(state, documentId);
@@ -97,11 +101,17 @@ export default (state: State = initialState, action: Action): State => {
         },
       };
     }
-    case CANCEL_DOCUMENT_MODIFICATION:
+    case CANCEL_DOCUMENT_MODIFICATION: {
+      const { modification } = state;
+      if (modification !== null) {
+        contentStorage.removeContent(modification.new.dataId);
+      }
+
       return {
         ...state,
         modification: null,
       };
+    }
     case OPEN_DOCUMENT:
       return {
         ...state,
@@ -125,6 +135,15 @@ export default (state: State = initialState, action: Action): State => {
           },
         },
       };
+    }
+    case DELETE_DOCUMENT: {
+      const { documentId } = action;
+      const document = getDocument(state, documentId);
+      if (document != null) {
+        contentStorage.removeContent(document.dataId);
+      }
+
+      return state;
     }
     default:
       return state;
