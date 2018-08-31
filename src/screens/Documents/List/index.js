@@ -127,7 +127,7 @@ class DocumentsListScreen extends NavigatorComponent<Props & DocumentsState & Ac
         <PhotoActionSheet
           ref={actionSheet => (this.photoActionSheet = actionSheet)}
           onImageChosen={this.onNewDocumentContentChosen}
-          title={i18n.t('screens.documentList.actionSheetTitle')}
+          title={i18n.t('screens.documentsList.actionSheetTitle')}
         />
         {this.props.isFetching && <Loading />}
       </View>
