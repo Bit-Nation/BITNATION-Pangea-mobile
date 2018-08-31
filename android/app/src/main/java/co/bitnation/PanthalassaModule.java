@@ -518,6 +518,7 @@ public class PanthalassaModule extends ReactContextBaseJavaModule {
         }).start();
     }
 
+    @ReactMethod
     public void PanthalassaMarkMessagesAsRead(final ReadableMap jsonParams, final Promise promise) throws JSONException {
         new Thread(new Runnable() {
             public void run() {
