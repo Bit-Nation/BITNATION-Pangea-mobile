@@ -3,7 +3,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { View } from 'react-native';
-
 import PinCodeScreen from './PinCode/index';
 import { type State as SettingsState } from '../../reducers/settings';
 import NavigatorComponent from '../../components/common/NavigatorComponent';
@@ -27,6 +26,10 @@ type Props = {
    * @desc Callback on successful passcode entering.
    */
   onSuccess: () => void,
+  /**
+   * @desc Function that is called when user press on forget password button.
+   */
+  onForget: () => void,
   /**
    * @desc Title of the screen.
    */
@@ -96,10 +99,15 @@ class EnterPasscodeContainer extends NavigatorComponent<Props & Actions & Settin
     }
   };
 
+  onForgetPasscode = () => {
+    this.props.onForget();
+  }
+
   renderPasscodeScreen() {
     const {
-      navigator, passcodeType, title, onCancel,
+      navigator, passcodeType, title, onCancel, isLoggedIn,
     } = this.props;
+    const shouldShowForget = !(isLoggedIn === false) && this.props.accountId != null;
     if (passcodeType.type === 'pinCode') {
       return (<PinCodeScreen
         navigator={navigator}
@@ -109,6 +117,8 @@ class EnterPasscodeContainer extends NavigatorComponent<Props & Actions & Settin
         shouldShowCancel
         onCancel={onCancel}
         onSubmit={this.onPasscodeEntered}
+        shouldShowForget={shouldShowForget}
+        onForget={this.onForgetPasscode}
       />);
     }
 
@@ -119,12 +129,13 @@ class EnterPasscodeContainer extends NavigatorComponent<Props & Actions & Settin
       shouldShowCancel
       onCancel={onCancel}
       onSubmit={this.onPasscodeEntered}
+      shouldShowForget={shouldShowForget}
+      onForget={this.onForgetPasscode}
     />);
   }
 
   render() {
     const { title } = this.props;
-
     return (
       <View style={styles.screenContainer}>
         <BackgroundImage />

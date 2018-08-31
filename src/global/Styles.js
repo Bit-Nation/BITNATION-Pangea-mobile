@@ -973,6 +973,10 @@ const styles = {
     backgroundColor: Colors.BitnationLinkOrangeColor,
   },
 
+  forgetButton: {
+    backgroundColor: 'transparent', alignSelf: 'stretch', borderRadius: 0,
+  },
+  forgetButtonText: { color: '#58595B', fontSize: 15, fontWeight: 'bold' },
 };
 
 styles.multilineTextInput = {
