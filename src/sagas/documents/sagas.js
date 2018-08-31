@@ -5,7 +5,6 @@ import DocumentsService from '../../services/documents';
 import { documentsFetchFailed, documentsUpdated, startDocumentsFetch } from '../../actions/documents';
 import type { Document } from '../../types/Documents';
 import type { DeleteDocumentAction } from '../../actions/documents';
-import { getDocument } from '../../reducers/documents';
 
 /**
  * @desc Fetch list of documents.
