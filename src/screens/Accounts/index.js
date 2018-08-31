@@ -59,11 +59,10 @@ class Accounts extends NavigatorComponent<Props & Actions & AccountsState> {
         onPress: async () => {
           if (Platform.OS === 'ios') {
             await navigator.dismissModal();
-            navigator.pop();
           } else {
             navigator.dismissModal();
-            navigator.pop();
           }
+          navigator.pop();
         },
       }]);
   }
@@ -95,29 +94,19 @@ class Accounts extends NavigatorComponent<Props & Actions & AccountsState> {
   static onForgetPasswordAccount = async (navigator: Navigator, currentAccountId: string) => {
     if (Platform.OS === 'ios') {
       await navigator.dismissModal();
-      navigator.push({
-        ...screen('RESTORE_KEY_SCREEN'),
-        passProps: {
-          isOnResetPassProcess: true,
-          accountId: currentAccountId,
-          onDoneEntering: () => {
-            Accounts.showCreatePasscodeContainer(navigator, currentAccountId);
-          },
-        },
-      });
     } else {
       navigator.dismissModal();
-      navigator.push({
-        ...screen('RESTORE_KEY_SCREEN'),
-        passProps: {
-          isOnResetPassProcess: true,
-          accountId: currentAccountId,
-          onDoneEntering: () => {
-            Accounts.showCreatePasscodeContainer(navigator, currentAccountId);
-          },
-        },
-      });
     }
+    navigator.push({
+      ...screen('RESTORE_KEY_SCREEN'),
+      passProps: {
+        isOnResetPassProcess: true,
+        accountId: currentAccountId,
+        onDoneEntering: () => {
+          Accounts.showCreatePasscodeContainer(navigator, currentAccountId);
+        },
+      },
+    });
   };
 
   onOpenRUrl = () => {
