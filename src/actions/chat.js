@@ -88,12 +88,12 @@ export type AddChatMessageAction = {
 export type ChangeUnreadStatusAction = {
   +type: 'CHANGE_UNREAD_STATUS',
   +recipientPublicKey: string,
-  +chats: Array<any>,
+  +hasUnreadMessages: boolean,
 }
 export type UnreadStatusChangedAction = {
   +type: 'UNREAD_STATUS_CHANGED',
   +recipientPublicKey: string,
-  +chats: Array<any>,
+  +hasUnreadMessages: boolean,
 }
 
 export type Action =
@@ -310,27 +310,27 @@ export function addChatMessage(publicKey: string, message: GiftedChatMessageType
 /**
  * @desc Action for change a conversation's new messages flag
  * @param {string} recipientPublicKey Public Key of the chat recipient
- * @param {boolean} status Status flag for new messages on chat
+ * @param {boolean} hasUnreadMessages Status flag for new messages on chat
  * @returns {ChangeUnreadStatusAction} An action
  */
-export function changeUnreadStatus(recipientPublicKey: string, status: boolean): ChangeUnreadStatusAction {
+export function changeUnreadStatus(recipientPublicKey: string, hasUnreadMessages: boolean): ChangeUnreadStatusAction {
   return {
     type: CHANGE_UNREAD_STATUS,
     recipientPublicKey,
-    status,
+    hasUnreadMessages,
   };
 }
 
 /**
  * @desc Action for change a conversation's new messages flag
  * @param {string} recipientPublicKey Public Key of the chat recipient
- * @param {boolean} status Status flag for new messages on chat
+ * @param {boolean} hasUnreadMessages Status flag for new messages on chat
  * @returns {UnreadStatusChangedAction} An action
  */
-export function unreadStatusChanged(recipientPublicKey: string, status:boolean): UnreadStatusChangedAction {
+export function unreadStatusChanged(recipientPublicKey: string, hasUnreadMessages: boolean): UnreadStatusChangedAction {
   return {
     type: UNREAD_STATUS_CHANGED,
     recipientPublicKey,
-    status,
+    hasUnreadMessages,
   };
 }
