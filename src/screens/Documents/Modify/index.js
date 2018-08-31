@@ -78,6 +78,18 @@ class DocumentsModifyScreen extends NavigatorComponent<Props & DocumentsState & 
     this.props.navigator.dismissModal();
   };
 
+  saveShouldBeEnabled = () => {
+    const { modification } = this.props;
+    if (modification == null) return false;
+    if (modification.new.name.length === 0) return false;
+
+    if (modification.initial === null) return true;
+    if (modification.new.name !== modification.initial.name) return true;
+    if (modification.new.description !== modification.initial.description) return true;
+
+    return false;
+  };
+
   render() {
     const { modification } = this.props;
     if (modification == null) return (<View />);
@@ -122,7 +134,7 @@ class DocumentsModifyScreen extends NavigatorComponent<Props & DocumentsState & 
           />
         </View>
         <Button
-          enabled
+          enabled={this.saveShouldBeEnabled()}
           style={styles.actionButton}
           title={i18n.t('screens.documentModify.save').toUpperCase()}
           onPress={this.onFinishModification}
