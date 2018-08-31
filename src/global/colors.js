@@ -175,4 +175,5 @@ export default {
   thumbTintColor: 'rgb(252, 228, 149)',
   maximumTrackTintColor: '#BBBDBF',
   minimumTrackTintColor: '#FF8B00',
+  lightFade: 'rgba(50, 50, 50, 0.5)',
 };
