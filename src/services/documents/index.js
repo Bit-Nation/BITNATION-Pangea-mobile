@@ -9,7 +9,7 @@ export default class DocumentService {
   static async getDocuments(): Promise<Array<Document>> {
     const documents = await Panthalassa.panthalassaCall('DOCUMENT:ALL');
     const parsed = JSON.parse(documents);
-    return parsed.map(convertFromPanthalassa);
+    return parsed.docs.map(convertFromPanthalassa);
   }
 
   static async saveDocument(document: Document): Promise<void> {
