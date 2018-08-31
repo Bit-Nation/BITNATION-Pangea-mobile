@@ -72,6 +72,7 @@ export default (state: State = initialState, action: Action): State => {
     case DOCUMENTS_UPDATED:
       return {
         ...state,
+        isFetching: false,
         documents: [...action.documents],
       };
     case START_DOCUMENT_CREATION:
@@ -98,11 +99,6 @@ export default (state: State = initialState, action: Action): State => {
       };
     }
     case CANCEL_DOCUMENT_MODIFICATION:
-      return {
-        ...state,
-        modification: null,
-      };
-    case FINISH_DOCUMENT_MODIFICATION:
       return {
         ...state,
         modification: null,
