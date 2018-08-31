@@ -39,8 +39,9 @@ type Actions = {
   openDocument: (id: number) => void,
   /**
    * @desc Function to initiate document creation.
+   * @param {string} data Base64 content of file to create.
    */
-  startDocumentCreation: () => void,
+  startDocumentCreation: (data: string) => void,
   /**
    * @desc Function to change field of modified document.
    * @param field Name of the field to be changed.
@@ -82,8 +83,7 @@ class DocumentsListScreen extends NavigatorComponent<Props & DocumentsState & Ac
   };
 
   onNewDocumentContentChosen = (data: string, mimeType: string) => {
-    this.props.startDocumentCreation();
-    this.props.changeDocumentField('data', data);
+    this.props.startDocumentCreation(data);
     this.props.changeDocumentField('mimeType', mimeType);
     this.props.navigator.showModal({
       ...screen('DOCUMENT_MODIFY_SCREEN'),
@@ -142,8 +142,8 @@ const mapDispatchToProps = dispatch => ({
   openDocument(id) {
     dispatch(openDocument(id));
   },
-  startDocumentCreation() {
-    dispatch(startDocumentCreation());
+  startDocumentCreation(data) {
+    dispatch(startDocumentCreation(data));
   },
   changeDocumentField(field, value) {
     dispatch(updateModifiedDocumentField(field, value));

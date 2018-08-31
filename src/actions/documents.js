@@ -16,9 +16,9 @@ export const OPEN_DOCUMENT = 'OPEN_DOCUMENT';
 export type StartDocumentsFetchAction = { +type: 'START_DOCUMENTS_FETCH' };
 export type DocumentsUpdatedAction = { +type: 'DOCUMENTS_UPDATED', documents: Array<Document> };
 export type DocumentsFetchFailedAction = { +type: 'DOCUMENTS_FETCH_FAILED', +error: Error };
-export type StartDocumentCreationAction = { +type: 'START_DOCUMENT_CREATION' };
+export type StartDocumentCreationAction = { +type: 'START_DOCUMENT_CREATION', +content: string };
 export type StartDocumentEditingAction = { +type: 'START_DOCUMENT_EDITING', documentId: number };
-export type DeleteDocumentAction  = { +type: 'DELETE_DOCUMENT', documentId: number };
+export type DeleteDocumentAction = { +type: 'DELETE_DOCUMENT', documentId: number };
 export type UpdateModifiedDocumentFieldAction = { +type: 'UPDATE_MODIFIED_DOCUMENT_FIELD', field: string, value: any };
 export type FinishDocumentModificationAction = { +type: 'FINISH_DOCUMENT_MODIFICATION' };
 export type CancelDocumentModificationAction = { +type: 'CANCEL_DOCUMENT_MODIFICATION' };
@@ -72,11 +72,13 @@ export function documentsFetchFailed(error: Error): DocumentsFetchFailedAction {
 
 /**
  * @desc Action creator for an action that initiates document creation.
+ * @param {string} content Content of file that is going to be created.
  * @returns {StartDocumentCreationAction} An action
  */
-export function startDocumentCreation(): StartDocumentCreationAction {
+export function startDocumentCreation(content: string): StartDocumentCreationAction {
   return {
     type: START_DOCUMENT_CREATION,
+    content,
   };
 }
 

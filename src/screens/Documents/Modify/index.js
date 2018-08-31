@@ -19,10 +19,11 @@ import {
   finishDocumentModification,
   updateModifiedDocumentField,
 } from '../../../actions/documents';
-import type { State as DocumentsState } from '../../../reducers/documents';
+import { type State as DocumentsState } from '../../../reducers/documents';
 import Colors from '../../../global/colors';
 import AssetsImages from '../../../global/AssetsImages';
 import { imageSource } from '../../../utils/profile';
+import { contentStorage } from '../../../services/documents';
 
 type Props = {
   /**
@@ -61,7 +62,14 @@ class DocumentsModifyScreen extends NavigatorComponent<Props & DocumentsState & 
       }],
       rightButtons: [],
     });
+
+    const { modification } = this.props;
+    if (modification != null) {
+      this.content = contentStorage.resolveContent(modification.new.dataId);
+    }
   }
+
+  content: string = '';
 
   onNavBarButtonPress(id: string) {
     switch (id) {
@@ -128,7 +136,7 @@ class DocumentsModifyScreen extends NavigatorComponent<Props & DocumentsState & 
         </View>
         <View style={styles.previewContainer}>
           <Image
-            source={imageSource(modification.new.data, modification.new.mimeType)}
+            source={imageSource(this.content, modification.new.mimeType)}
             style={styles.preview}
             resizeMode='contain'
           />
