@@ -199,7 +199,7 @@ class EnterKeyScreen extends NavigatorComponent<Actions & KeyState & Props, Stat
   }
 
   onDonePressed = () => {
-    if (this.props.isOnResetPassProcess) {
+    if (this.props.isOnResetPassProcess === true) {
       this.props.validateMnemonicWithAccount(this.props.accountId, (success) => {
         if (success) {
           this.props.onDoneEntering();
