@@ -22,7 +22,7 @@ export function convertFromPanthalassa(data: PanthalassaDocument): Document {
  */
 export function convertToPanthalassa(document: Document): PanthalassaDocument {
   return {
-    id: document.id,
+    doc_id: document.id,
     title: document.name,
     description: document.description,
     content: document.data,
