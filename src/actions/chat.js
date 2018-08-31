@@ -308,7 +308,7 @@ export function addChatMessage(publicKey: string, message: GiftedChatMessageType
 }
 
 /**
- * @desc Action for change a conversation's new messages flag
+ * @desc Action creator for an action that requests change a conversation's new messages flag
  * @param {string} recipientPublicKey Public Key of the chat recipient
  * @param {boolean} hasUnreadMessages Status flag for new messages on chat
  * @returns {ChangeUnreadStatusAction} An action
@@ -322,7 +322,7 @@ export function changeUnreadStatus(recipientPublicKey: string, hasUnreadMessages
 }
 
 /**
- * @desc Action for change a conversation's new messages flag
+ * @desc Action creator for an action that is called when conversation's new messages flag is changed
  * @param {string} recipientPublicKey Public Key of the chat recipient
  * @param {boolean} hasUnreadMessages Status flag for new messages on chat
  * @returns {UnreadStatusChangedAction} An action
