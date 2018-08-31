@@ -20,6 +20,7 @@ import AssetsImages from '../../../global/AssetsImages';
 import { imageSource } from '../../../utils/profile';
 import { getOpenedDocument } from '../../../reducers/documents';
 import MoreMenuModal from '../../../components/common/MoreMenuModal';
+import { contentStorage } from '../../../services/documents';
 
 type Props = {
   /**
@@ -64,7 +65,14 @@ class DocumentsViewScreen extends NavigatorComponent<Props & DocumentsState & Ac
     this.state = {
       moreMenuVisible: false,
     };
+
+    const openedDocument = getOpenedDocument(this.props);
+    if (openedDocument != null) {
+      this.content = contentStorage.resolveContent(openedDocument.dataId);
+    }
   }
+
+  content: string = '';
 
   onNavBarButtonPress(id: string) {
     switch (id) {
@@ -111,7 +119,7 @@ class DocumentsViewScreen extends NavigatorComponent<Props & DocumentsState & Ac
     return (
       <View style={styles.screenContainer}>
         <View style={styles.previewContainer}>
-          <Image source={imageSource(document.data, document.mimeType)} style={styles.preview} resizeMode='contain' />
+          <Image source={imageSource(this.content, document.mimeType)} style={styles.preview} resizeMode='contain' />
         </View>
         <View style={styles.metadataContainer}>
           <Text style={styles.headline}>
