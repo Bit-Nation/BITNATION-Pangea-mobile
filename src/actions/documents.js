@@ -7,6 +7,7 @@ export const DOCUMENTS_UPDATED = 'DOCUMENTS_UPDATED';
 export const DOCUMENTS_FETCH_FAILED = 'DOCUMENTS_FETCH_FAILED';
 export const START_DOCUMENT_CREATION = 'START_DOCUMENT_CREATION';
 export const START_DOCUMENT_EDITING = 'START_DOCUMENT_EDITING';
+export const DELETE_DOCUMENT = 'DELETE_DOCUMENT';
 export const UPDATE_MODIFIED_DOCUMENT_FIELD = 'UPDATE_MODIFIED_DOCUMENT_FIELD';
 export const FINISH_DOCUMENT_MODIFICATION = 'FINISH_DOCUMENT_MODIFICATION';
 export const CANCEL_DOCUMENT_MODIFICATION = 'CANCEL_DOCUMENT_MODIFICATION';
@@ -17,6 +18,7 @@ export type DocumentsUpdatedAction = { +type: 'DOCUMENTS_UPDATED', documents: Ar
 export type DocumentsFetchFailedAction = { +type: 'DOCUMENTS_FETCH_FAILED', +error: Error };
 export type StartDocumentCreationAction = { +type: 'START_DOCUMENT_CREATION' };
 export type StartDocumentEditingAction = { +type: 'START_DOCUMENT_EDITING', documentId: number };
+export type DeleteDocumentAction  = { +type: 'DELETE_DOCUMENT', documentId: number };
 export type UpdateModifiedDocumentFieldAction = { +type: 'UPDATE_MODIFIED_DOCUMENT_FIELD', field: string, value: any };
 export type FinishDocumentModificationAction = { +type: 'FINISH_DOCUMENT_MODIFICATION' };
 export type CancelDocumentModificationAction = { +type: 'CANCEL_DOCUMENT_MODIFICATION' };
@@ -28,6 +30,7 @@ export type Action =
   | DocumentsFetchFailedAction
   | StartDocumentCreationAction
   | StartDocumentEditingAction
+  | DeleteDocumentAction
   | UpdateModifiedDocumentFieldAction
   | FinishDocumentModificationAction
   | CancelDocumentModificationAction
@@ -85,6 +88,18 @@ export function startDocumentCreation(): StartDocumentCreationAction {
 export function startDocumentEditing(documentId: number): StartDocumentEditingAction {
   return {
     type: START_DOCUMENT_EDITING,
+    documentId,
+  };
+}
+
+/**
+ * @desc Action creator for an action that initiates document deleting.
+ * @param {number} documentId Id of document to delete.
+ * @returns {DeleteDocumentAction} An action
+ */
+export function deleteDocument(documentId: number): DeleteDocumentAction {
+  return {
+    type: DELETE_DOCUMENT,
     documentId,
   };
 }
