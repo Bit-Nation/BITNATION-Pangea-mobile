@@ -8,6 +8,7 @@ import {
   FETCH_ALL_CHATS,
   LOAD_CHAT_MESSAGES,
   PANTHALASSA_MESSAGE_PERSISTED,
+  CHANGE_UNREAD_STATUS,
 } from '../../actions/chat';
 import {
   getProfileActionHandler,
@@ -17,6 +18,7 @@ import {
   sendMessage,
   loadMessages,
   handlePanthalassaMessagePersisted,
+  changeUnreadStatus,
 } from './sagas';
 
 /**
@@ -32,5 +34,6 @@ export default function* rootSaga() {
     takeEvery(SEND_MESSAGE, sendMessage),
     takeEvery(LOAD_CHAT_MESSAGES, loadMessages),
     takeEvery(PANTHALASSA_MESSAGE_PERSISTED, handlePanthalassaMessagePersisted),
+    takeEvery(CHANGE_UNREAD_STATUS, changeUnreadStatus),
   ]);
 }

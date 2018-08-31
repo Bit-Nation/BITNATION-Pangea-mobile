@@ -523,7 +523,11 @@
       "confirmPrivateKey": "Private Key (confirmation required)",
       "switchAccounts": "Switch accounts",
       "connectToDAppHost": "Connect to DApp host",
-      "connectToDAppLogger": "Connect debug logger"
+      "connectToDAppLogger": "Connect debug logger",
+      "sections": {
+        "account": "Account",
+        "dApps": "DApp development"
+      }
     },
     "securitySettings": {
       "title": "Security settings",

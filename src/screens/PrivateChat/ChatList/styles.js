@@ -63,9 +63,7 @@ const styles = MediaQueryStyleSheet.create({
     marginTop: 13,
   },
 
-  profileArea: {
-
-  },
+  profileArea: {},
 
   buttonArea: {
     flexDirection: 'row',
