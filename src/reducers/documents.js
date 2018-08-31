@@ -20,7 +20,7 @@ import type { Document, EditingDocument } from '../types/Documents';
 export type State = {
   isFetching: boolean,
   documents: Array<Document>,
-  openedDocumentId: string | null,
+  openedDocumentId: number | null,
   modification: {
     initial: Document | null,
     new: EditingDocument,
@@ -37,13 +37,14 @@ export const initialState: State = {
 };
 
 const emptyDocument: EditingDocument = {
+  id: null,
   name: '',
   description: '',
   data: null,
   mimeType: '',
 };
 
-export const getDocument = (state: State, id: string) => _.find(state.documents, document => document.id === id);
+export const getDocument = (state: State, id: number) => _.find(state.documents, document => document.id === id);
 export const getOpenedDocument = (state: State) => (state.openedDocumentId === null ? null : getDocument(state, state.openedDocumentId));
 
 /**

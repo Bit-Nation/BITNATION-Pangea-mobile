@@ -16,11 +16,11 @@ export type StartDocumentsFetchAction = { +type: 'START_DOCUMENTS_FETCH' };
 export type DocumentsUpdatedAction = { +type: 'DOCUMENTS_UPDATED', documents: Array<Document> };
 export type DocumentsFetchFailedAction = { +type: 'DOCUMENTS_FETCH_FAILED', +error: Error };
 export type StartDocumentCreationAction = { +type: 'START_DOCUMENT_CREATION' };
-export type StartDocumentEditingAction = { +type: 'START_DOCUMENT_EDITING', documentId: string };
+export type StartDocumentEditingAction = { +type: 'START_DOCUMENT_EDITING', documentId: number };
 export type UpdateModifiedDocumentFieldAction = { +type: 'UPDATE_MODIFIED_DOCUMENT_FIELD', field: string, value: any };
 export type FinishDocumentModificationAction = { +type: 'FINISH_DOCUMENT_MODIFICATION' };
 export type CancelDocumentModificationAction = { +type: 'CANCEL_DOCUMENT_MODIFICATION' };
-export type OpenDocumentAction = { +type: 'OPEN_DOCUMENT', documentId: string };
+export type OpenDocumentAction = { +type: 'OPEN_DOCUMENT', documentId: number };
 
 export type Action =
   | StartDocumentsFetchAction
@@ -79,10 +79,10 @@ export function startDocumentCreation(): StartDocumentCreationAction {
 
 /**
  * @desc Action creator for an action that initiates document editing.
- * @param {string} documentId Id of document to edit.
+ * @param {number} documentId Id of document to edit.
  * @returns {StartDocumentCreationAction} An action
  */
-export function startDocumentEditing(documentId: string): StartDocumentEditingAction {
+export function startDocumentEditing(documentId: number): StartDocumentEditingAction {
   return {
     type: START_DOCUMENT_EDITING,
     documentId,
@@ -125,10 +125,10 @@ export function cancelDocumentModification(): CancelDocumentModificationAction {
 
 /**
  * @desc Action creator for an action that opens a document.
- * @param {string} documentId Id of document to be opened.
+ * @param {number} documentId Id of document to be opened.
  * @returns {OpenDocumentAction} An action
  */
-export function openDocument(documentId: string): OpenDocumentAction {
+export function openDocument(documentId: number): OpenDocumentAction {
   return {
     type: OPEN_DOCUMENT,
     documentId,

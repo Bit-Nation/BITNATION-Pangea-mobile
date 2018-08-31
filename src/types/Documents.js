@@ -1,7 +1,7 @@
 // @flow
 
 export type Document = {
-  id: string,
+  id: number,
   name: string,
   description: string,
   data: string,
@@ -9,6 +9,7 @@ export type Document = {
 }
 
 export type EditingDocument = {
+  id: number | null,
   name: string,
   description: string,
   data: string | null,

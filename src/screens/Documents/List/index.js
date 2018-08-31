@@ -37,7 +37,7 @@ type Actions = {
    * @desc Function to open a document
    * @param id Index of the document to open
    */
-  openDocument: (id: string) => void,
+  openDocument: (id: number) => void,
   /**
    * @desc Function to initiate document creation.
    */
@@ -83,7 +83,7 @@ class DocumentsListScreen extends NavigatorComponent<Props & DocumentsState & Ac
                 description={document.description}
               />);
             }}
-            keyExtractor={item => item.id}
+            keyExtractor={item => `${item.id}`}
             data={this.props.documents}
             style={styles.sectionList}
             ItemSeparatorComponent={() => (<View style={styles.itemSeparator} />)}
