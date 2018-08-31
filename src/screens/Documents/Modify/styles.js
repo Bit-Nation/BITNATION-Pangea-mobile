@@ -9,7 +9,7 @@ const styles = MediaQueryStyleSheet.create({
   ...GlobalStyles,
   previewContainer: {
     padding: 16,
-    flex: 1,
+    height: 360,
     alignItems: 'center',
     justifyContent: 'center',
   },
