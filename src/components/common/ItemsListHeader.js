@@ -12,10 +12,10 @@ type Props = {
 }
 
 /**
- * @desc Component for section header in nations list.
+ * @desc Component for section header in general items list.
  * @return {React.Component} A component.
  */
-const NationListHeader = ({ title }: Props) => {
+const ItemsListHeader = ({ title }: Props) => {
   const styles = MediaQueryStyleSheet.create({
     ...GlobalStyles,
   });
@@ -29,4 +29,4 @@ const NationListHeader = ({ title }: Props) => {
   );
 };
 
-export default NationListHeader;
+export default ItemsListHeader;

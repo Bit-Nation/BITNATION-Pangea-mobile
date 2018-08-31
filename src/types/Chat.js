@@ -36,7 +36,7 @@ export type GiftedChatMessageType = {
 
 export type ChatSessionType = {
   publicKey: string,
-  username: string,
+  profile: ProfileType,
   accountId: string,
   messages: Array<GiftedChatMessageType>,
   unreadMessages: boolean,
