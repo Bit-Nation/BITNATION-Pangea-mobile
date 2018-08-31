@@ -8,9 +8,9 @@ ShallowWrapper {
     avatar={null}
     id="Test id"
     lastMessage={undefined}
-    name=""
+    name="Test list item"
     onPress={[MockFunction]}
-    text="Test list item"
+    unreadMessages={false}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -35,7 +35,7 @@ ShallowWrapper {
         "height": 72,
       },
       "subtitle": undefined,
-      "text": "",
+      "text": "Test list item",
       "textStyle": Object {
         "color": "#58595B",
         "fontFamily": "Roboto",
@@ -66,100 +66,7 @@ ShallowWrapper {
           "height": 72,
         },
         "subtitle": undefined,
-        "text": "",
-        "textStyle": Object {
-          "color": "#58595B",
-          "fontFamily": "Roboto",
-          "fontSize": 14,
-          "fontWeight": "500",
-          "letterSpacing": 0,
-          "lineHeight": 22,
-        },
-      },
-      "ref": null,
-      "rendered": null,
-      "type": [Function],
-    },
-  ],
-  Symbol(enzyme.__options__): Object {
-    "adapter": ReactSixteenAdapter {
-      "options": Object {
-        "enableComponentDidUpdateOnSetState": true,
-      },
-    },
-  },
-}
-`;
-
-exports[`ChatListItem tests Rendering With different texts and icon 1`] = `
-ShallowWrapper {
-  "length": 1,
-  Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <ChatListItem
-    avatar={null}
-    itemIcon={1}
-    lastMessage={undefined}
-    name=""
-    onPress={[Function]}
-    participants="Text"
-    profileImage=""
-    text="Test chat list item"
-  />,
-  Symbol(enzyme.__renderer__): Object {
-    "batchedUpdates": [Function],
-    "getNode": [Function],
-    "render": [Function],
-    "simulateEvent": [Function],
-    "unmount": [Function],
-  },
-  Symbol(enzyme.__node__): Object {
-    "instance": null,
-    "key": undefined,
-    "nodeType": "function",
-    "props": Object {
-      "AdditionalLeftView": [Function],
-      "AdditionalView": [Function],
-      "disabled": false,
-      "disclosureIconVisible": true,
-      "iconSource": null,
-      "id": null,
-      "onPress": [Function],
-      "style": Object {
-        "height": 72,
-      },
-      "subtitle": undefined,
-      "text": "",
-      "textStyle": Object {
-        "color": "#58595B",
-        "fontFamily": "Roboto",
-        "fontSize": 14,
-        "fontWeight": "500",
-        "letterSpacing": 0,
-        "lineHeight": 22,
-      },
-    },
-    "ref": null,
-    "rendered": null,
-    "type": [Function],
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "function",
-      "props": Object {
-        "AdditionalLeftView": [Function],
-        "AdditionalView": [Function],
-        "disabled": false,
-        "disclosureIconVisible": true,
-        "iconSource": null,
-        "id": null,
-        "onPress": [Function],
-        "style": Object {
-          "height": 72,
-        },
-        "subtitle": undefined,
-        "text": "",
+        "text": "Test list item",
         "textStyle": Object {
           "color": "#58595B",
           "fontFamily": "Roboto",
@@ -190,10 +97,11 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <ChatListItem
     avatar={null}
-    lastMessage={undefined}
-    name=""
-    onPress={[Function]}
-    text="Test list item"
+    id="1"
+    lastMessage="Some message"
+    name="Test list item"
+    onPress={[MockFunction]}
+    unreadMessages={false}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -212,13 +120,13 @@ ShallowWrapper {
       "disabled": false,
       "disclosureIconVisible": true,
       "iconSource": null,
-      "id": null,
-      "onPress": [Function],
+      "id": "1",
+      "onPress": [MockFunction],
       "style": Object {
         "height": 72,
       },
-      "subtitle": undefined,
-      "text": "",
+      "subtitle": "Some message",
+      "text": "Test list item",
       "textStyle": Object {
         "color": "#58595B",
         "fontFamily": "Roboto",
@@ -243,13 +151,13 @@ ShallowWrapper {
         "disabled": false,
         "disclosureIconVisible": true,
         "iconSource": null,
-        "id": null,
-        "onPress": [Function],
+        "id": "1",
+        "onPress": [MockFunction],
         "style": Object {
           "height": 72,
         },
-        "subtitle": undefined,
-        "text": "",
+        "subtitle": "Some message",
+        "text": "Test list item",
         "textStyle": Object {
           "color": "#58595B",
           "fontFamily": "Roboto",
