@@ -77,13 +77,13 @@ const NationsPanel = ({
               const nation = item.item;
               return (
                 <NationListItem
-                  text={nation.nationName}
+                  nationName={nation.nationName}
                   textStyle={styles.nationsListText}
                   onPress={onSelectNation}
                   id={nation.id}
                 />);
             }}
-            ItemSeparatorComponent={() => <View style={styles.sectionListSeparator} />}
+            ItemSeparatorComponent={() => (<View style={styles.itemSeparator} />)}
             keyExtractor={item => item.id.toString()}
             data={newestNations}
           />

@@ -106,9 +106,10 @@ export function* createChatSession(action: NewChatSessionAction): Generator<*, *
   const currentAccountId = yield call(getCurrentAccountId);
   const chatSession = {
     publicKey: action.profile.identityKey,
-    username: action.profile.name,
+    profile: action.profile,
     accountId: currentAccountId,
     messages: [],
+    unreadMessages: false,
   };
   yield put(addCreatedChatSession(chatSession));
 
@@ -154,7 +155,7 @@ export function* openChatSession(action: OpenChatAction): Generator<*, *, *> {
  * @return {void}
  */
 export function* fetchAllChats(): Generator<*, *, *> {
-  const currentAccountId = yield call(getCurrentAccountId);
+  const currentAccount = yield call(getCurrentAccount);
   const chatsInfo: Array<{ chat: string, unread_messages: boolean }> = yield call(ChatService.fetchAllChats);
 
   const chats = [];
@@ -164,14 +165,14 @@ export function* fetchAllChats(): Generator<*, *, *> {
       const { chat: identityKeyBase64 } = info;
       const identityKey = Buffer.from(identityKeyBase64, 'base64').toString('hex');
       const profile = yield call(getProfile, identityKey);
+      const firstMessages = yield call(ChatService.loadMessages, currentAccount, profile, '0', 1);
       if (profile != null) {
         chats.push({
           publicKey: identityKey,
-          username: profile.name,
-          accountId: currentAccountId,
-          messages: [],
-          image: profile.image,
+          profile,
+          accountId: currentAccount.id,
           unreadMessages: info.unread_messages,
+          messages: firstMessages,
         });
       }
     } catch (error) {
@@ -200,7 +201,9 @@ export function* loadMessages(action: LoadChatMessagesAction): Generator<*, *, *
       yield put(showSpinner());
       const messages = yield call(ChatService.loadMessages, senderAccount, recipientProfile, fromMessageId, CHAT_MESSAGES_PAGE);
       yield put(chatMessagesLoaded(recipientPublicKey, messages, CHAT_MESSAGES_PAGE));
-      yield call(panthalassaMarkMessagesAsRead, recipientPublicKey);
+      if (messages.length > 0) {
+        yield call(panthalassaMarkMessagesAsRead, recipientPublicKey);
+      }
     } finally {
       yield put(hideSpinner());
     }

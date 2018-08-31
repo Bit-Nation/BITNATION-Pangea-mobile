@@ -60,6 +60,7 @@ ShallowWrapper {
             title="Accounts"
           />
           <FlatList
+            ItemSeparatorComponent={[Function]}
             data={undefined}
             disableVirtualization={false}
             horizontal={false}
@@ -174,6 +175,7 @@ ShallowWrapper {
               title="Accounts"
             />,
             <FlatList
+              ItemSeparatorComponent={[Function]}
               data={undefined}
               disableVirtualization={false}
               horizontal={false}
@@ -252,6 +254,7 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "class",
             "props": Object {
+              "ItemSeparatorComponent": [Function],
               "data": undefined,
               "disableVirtualization": false,
               "horizontal": false,
@@ -408,6 +411,7 @@ ShallowWrapper {
               title="Accounts"
             />
             <FlatList
+              ItemSeparatorComponent={[Function]}
               data={undefined}
               disableVirtualization={false}
               horizontal={false}
@@ -522,6 +526,7 @@ ShallowWrapper {
                 title="Accounts"
               />,
               <FlatList
+                ItemSeparatorComponent={[Function]}
                 data={undefined}
                 disableVirtualization={false}
                 horizontal={false}
@@ -600,6 +605,7 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "class",
               "props": Object {
+                "ItemSeparatorComponent": [Function],
                 "data": undefined,
                 "disableVirtualization": false,
                 "horizontal": false,
