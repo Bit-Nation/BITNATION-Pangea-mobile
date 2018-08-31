@@ -24,6 +24,7 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "function",
     "props": Object {
+      "AdditionalLeftView": [Function],
       "AdditionalView": [Function],
       "additionalView": [Function],
       "disabled": false,
@@ -45,6 +46,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "function",
       "props": Object {
+        "AdditionalLeftView": [Function],
         "AdditionalView": [Function],
         "additionalView": [Function],
         "disabled": false,
@@ -94,6 +96,7 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "function",
     "props": Object {
+      "AdditionalLeftView": [Function],
       "AdditionalView": [Function],
       "additionalView": [Function],
       "disabled": false,
@@ -115,6 +118,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "function",
       "props": Object {
+        "AdditionalLeftView": [Function],
         "AdditionalView": [Function],
         "additionalView": [Function],
         "disabled": false,
@@ -164,6 +168,7 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "function",
     "props": Object {
+      "AdditionalLeftView": [Function],
       "AdditionalView": [Function],
       "additionalView": [Function],
       "disabled": false,
@@ -185,6 +190,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "function",
       "props": Object {
+        "AdditionalLeftView": [Function],
         "AdditionalView": [Function],
         "additionalView": [Function],
         "disabled": false,

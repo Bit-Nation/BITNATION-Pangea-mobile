@@ -708,6 +708,12 @@ const styles = {
     height: 15,
   },
 
+  sectionListNewMessage: {
+    marginRight: 7,
+    width: 7,
+    height: 7,
+  },
+
   itemSeparator: {
     height: 1,
     backgroundColor: Colors.BitnationLightGrayColor,
@@ -740,12 +746,12 @@ const styles = {
     height: 50,
   },
 
-  settingsText:
-    {
-      color: 'white',
-      fontSize: 15,
-      fontWeight: '900',
-    },
+  settingsText: {
+    color: 'white',
+    fontSize: 15,
+    fontWeight: '900',
+  },
+
   settingsButton: {
     height: 54,
     backgroundColor: '#FF8B00',
@@ -925,6 +931,13 @@ const styles = {
 
   avatarChangeContainer: {
     alignItems: 'center',
+  },
+
+  avatarSmall: {
+    height: 35,
+    width: 35,
+    borderRadius: 18,
+    marginRight: 10,
   },
 
   avatarMedium: {

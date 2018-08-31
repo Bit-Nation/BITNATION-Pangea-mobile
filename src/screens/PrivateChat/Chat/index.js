@@ -15,7 +15,7 @@ import {
 import ActionSheet from 'react-native-actionsheet';
 
 import styles from './styles';
-import { showSpinner, hideSpinner, sendMessage, loadChatMessages } from '../../../actions/chat';
+import { showSpinner, hideSpinner, sendMessage, loadChatMessages, changeUnreadStatus } from '../../../actions/chat';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import Loading from '../../../components/common/Loading';
@@ -100,7 +100,11 @@ type Props = {
   /**
    * @desc Array of user wallets.
    */
-  wallets: Array<WalletType>
+  wallets: Array<WalletType>,
+  /**
+   * @desc Function to mark all messages as read.
+   */
+  markMessagesAsRead: (recipientPublicKey: string) => void,
 };
 
 class ChatScreen extends Component<Props, *> {
@@ -120,6 +124,11 @@ class ChatScreen extends Component<Props, *> {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    const session = getSelectedSession(this.props.sessions, this.props.recipientPublicKey);
+    if (session !== null && session.unreadMessages === true) {
+      this.props.markMessagesAsRead(this.props.recipientPublicKey);
+    }
+
     const { selectedMessage } = this.state;
     if (selectedMessage === prevState.selectedMessage) return;
     if (selectedMessage == null) return;
@@ -316,6 +325,7 @@ const mapDispatchToProps = dispatch => ({
   openDApp: dAppPublicKey => dispatch(openDApp(dAppPublicKey)),
   setDAppContext: context => dispatch(setDAppContext(context)),
   loadMessages: (publicKey, fromMessageId) => dispatch(loadChatMessages(publicKey, fromMessageId)),
+  markMessagesAsRead: publicKey => dispatch(changeUnreadStatus(publicKey, false)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChatScreen);
