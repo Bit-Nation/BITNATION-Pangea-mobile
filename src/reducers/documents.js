@@ -93,7 +93,7 @@ export default (state: State = initialState, action: Action): State => {
         ...state,
         modification: {
           initial: document,
-          new: emptyDocument,
+          new: { ...document },
         },
       };
     }
