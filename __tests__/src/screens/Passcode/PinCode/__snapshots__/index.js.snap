@@ -28,6 +28,7 @@ ShallowWrapper {
     onCancel={[MockFunction]}
     onSubmit={[MockFunction]}
     shouldShowCancel={false}
+    shouldShowForget={false}
     store={
       Object {
         "clearActions": [Function],
@@ -109,6 +110,7 @@ ShallowWrapper {
             title="OK"
           />
         </View>,
+        false,
       ],
       "style": Object {
         "alignContent": "flex-start",
@@ -214,6 +216,7 @@ ShallowWrapper {
         },
         "type": [Function],
       },
+      false,
     ],
     "type": [Function],
   },
@@ -281,6 +284,7 @@ ShallowWrapper {
               title="OK"
             />
           </View>,
+          false,
         ],
         "style": Object {
           "alignContent": "flex-start",
@@ -386,6 +390,7 @@ ShallowWrapper {
           },
           "type": [Function],
         },
+        false,
       ],
       "type": [Function],
     },
