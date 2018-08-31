@@ -9,6 +9,7 @@ import {
   ADD_CREATED_CHAT_SESSION,
   CHAT_MESSAGES_LOADED,
   ADD_CHAT_MESSAGE,
+  UNREAD_STATUS_CHANGED,
 } from '../actions/chat';
 import { SERVICES_DESTROYED } from '../actions/serviceContainer';
 import type { ChatSessionType } from '../types/Chat';
@@ -85,6 +86,23 @@ export default (state: State = initialState, action: Action): State => {
           return {
             ...chat,
             messages: mergeMessages(chat.messages, [message]),
+          };
+        }
+        return chat;
+      });
+
+      return {
+        ...state,
+        chats,
+      };
+    }
+    case UNREAD_STATUS_CHANGED: {
+      const { recipientPublicKey, hasUnreadMessages } = action;
+      const chats = state.chats.map((chat) => {
+        if (chat.publicKey === recipientPublicKey) {
+          return {
+            ...chat,
+            unreadMessages: hasUnreadMessages,
           };
         }
         return chat;
