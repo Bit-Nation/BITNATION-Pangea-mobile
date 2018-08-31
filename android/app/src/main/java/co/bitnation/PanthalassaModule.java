@@ -25,7 +25,7 @@ import panthalassa.UpStream;
  * Created by Estarrona on 19/04/18.
  */
 
-public class PanthalassaModule extends ReactContextBaseJavaModule implements UpStream {
+public class PanthalassaModule extends ReactContextBaseJavaModule {
     final String TAG = "Panthalassa";
     UpStream client, ui;
 
@@ -382,7 +382,7 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
         new Thread(new Runnable() {
             public void run() {
                 try {
-                    Panthalassa.callDAppFunction(jsonParams.getString("signingKey"),
+                    Panthalassa.callDAppFunction(jsonParams.getString("dAppId"),
                             jsonParams.getInt("id"),
                             jsonParams.getString("args"));
                     promise.resolve(true);
@@ -518,12 +518,13 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
     }
 
     @ReactMethod
-    public void PanthalassaMarkMessagesAsRead(final ReadableMap jsonParams, final Promise promise) throws JSONException {
+    public void PanthalassaCall(final ReadableMap jsonParams, final Promise promise) throws JSONException {
         new Thread(new Runnable() {
             public void run() {
                 try {
-                    Panthalassa.markMessagesAsRead(jsonParams.getString("partner"));
-                    promise.resolve(true);
+                    String response = Panthalassa.call(jsonParams.getString("command"),
+                                                        jsonParams.getString("payload"));
+                    promise.resolve(response);
                 } catch (Exception e) {
                     e.printStackTrace();
                     promise.reject("error", e.getLocalizedMessage());
@@ -532,26 +533,6 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
         }).start();
     }
     //=====
-
-    // This method should be deleted due is not the active protocol listener now
-    @Override
-    public void send(String s) {
-        Log.v("Upstream","Received from callback");
-
-        WritableMap params = Arguments.createMap();
-        params.putString("upstream", s);
-        Activity activity = getCurrentActivity();
-        if (activity != null) {
-            MainApplication application = (MainApplication) activity.getApplication();
-            ReactNativeHost reactNativeHost = application.getReactNativeHost();
-            ReactInstanceManager reactInstanceManager = reactNativeHost.getReactInstanceManager();
-            ReactContext reactContext = reactInstanceManager.getCurrentReactContext();
-
-            if (reactContext != null) {
-                sendEvent(reactContext, "PanthalassaUpStream", params);
-            }
-        }
-    }
 
     private void sendEvent(ReactContext reactContext,
                            String eventName,
