@@ -539,7 +539,8 @@
     "password": {
       "enterInstruction": "Enter password:",
       "createInstruction": "Enter new password:",
-      "verifyInstruction": "Enter password again:"
+      "verifyInstruction": "Enter password again:",
+      "forgetInstruction": "Forget Password?"
     },
     "confirmTransaction": {
       "title": "Confirm Transaction",

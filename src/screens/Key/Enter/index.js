@@ -30,7 +30,7 @@ import type { Mnemonic } from '../../../types/Mnemonic';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import AccountsService from '../../../services/accounts';
 import { errorAlert } from '../../../global/alerts';
-import { mnemonicConfirmed } from '../../../actions/accounts';
+import { mnemonicConfirmed, validMnemonicWithAccount } from '../../../actions/accounts';
 import { GeneralError } from '../../../global/errors/common';
 
 const DONE_BUTTON = 'DONE_BUTTON';
@@ -41,9 +41,13 @@ type Props = {
    */
   isVerification: boolean,
   /**
+   * @desc Id of account which mnemonic will be entered.
+   */
+  accountId: string,
+  /**
    * @desc Callback to be called when user done mnemonic entering.
    */
-  onDoneEntering: (Mnemonic) => void,
+  onDoneEntering: (mne?: Mnemonic) => void,
   /**
    * @desc Callback to be called when user cancel mnemonic entering.
    */
@@ -68,6 +72,10 @@ type Actions = {
    * @param {function} callback Function that is called when that information is recorded with flag if it was successful.
    */
   mnemonicConfirmed: (callback: (success: boolean) => void) => void,
+  /**
+   * @desc Action to perform a login.
+   */
+  validMnemonicWithAccount: (accountId: string, callback: (success: boolean) => void) => void,
 }
 
 type State = {
@@ -179,7 +187,17 @@ class EnterKeyScreen extends NavigatorComponent<Actions & KeyState & Props, Stat
   }
 
   onDonePressed = () => {
-    this.props.validateMnemonic();
+    if (_.has(this.props, 'processLogin')) {
+      this.props.validMnemonicWithAccount(this.props.accountId, (success) => {
+        if (success) {
+          this.props.onDoneEntering();
+        } else {
+          this.showIncorrectMnemonicAlert();
+        }
+      });
+    } else {
+      this.props.validateMnemonic();
+    }
   };
 
   onNextPressed = () => {
@@ -322,6 +340,9 @@ const mapDispatchToProps = dispatch => ({
   },
   mnemonicConfirmed(callback) {
     dispatch(mnemonicConfirmed(callback));
+  },
+  validMnemonicWithAccount(accountId, callback) {
+    dispatch(validMnemonicWithAccount(accountId, callback));
   },
 });
 

@@ -161,6 +161,7 @@ class CreatePasscodeContainer extends NavigatorComponent<Props & Actions & Setti
             shouldShowCancel
             onCancel={onCancel}
             onSubmit={this.onCreatePasscode}
+            onForget={onCancel}
           />);
       }
 
@@ -174,6 +175,7 @@ class CreatePasscodeContainer extends NavigatorComponent<Props & Actions & Setti
           shouldShowCancel
           onCancel={this.onCancelVerificationPasscode}
           onSubmit={this.onSubmitPasscode}
+          onForget={onCancel}
         />);
     }
 
@@ -186,6 +188,7 @@ class CreatePasscodeContainer extends NavigatorComponent<Props & Actions & Setti
           shouldShowCancel
           onCancel={onCancel}
           onSubmit={this.onCreatePasscode}
+          onForget={onCancel}
         />);
     }
 
@@ -197,6 +200,7 @@ class CreatePasscodeContainer extends NavigatorComponent<Props & Actions & Setti
         shouldShowCancel
         onCancel={this.onCancelVerificationPasscode}
         onSubmit={this.onSubmitPasscode}
+        onForget={onCancel}
       />);
   }
 }
