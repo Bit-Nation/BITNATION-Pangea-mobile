@@ -144,6 +144,11 @@
       "subtitle": "",
       "confirm": "$t(common.ok)"
     },
+    "passwordRecoveryFailed": {
+      "title": "Entered private key does not match the account.",
+      "subtitle": "",
+      "confirm": "$t(common.ok)"
+    },
     "walletRequired": {
       "title": "No wallet",
       "subtitle": "You need to setup a wallet first",

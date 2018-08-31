@@ -29,7 +29,7 @@ import type { State as KeyState } from '../../../reducers/key';
 import type { Mnemonic } from '../../../types/Mnemonic';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import AccountsService from '../../../services/accounts';
-import { errorAlert } from '../../../global/alerts';
+import { alert, errorAlert } from '../../../global/alerts';
 import { mnemonicConfirmed, validMnemonicWithAccount } from '../../../actions/accounts';
 import { GeneralError } from '../../../global/errors/common';
 
@@ -144,10 +144,16 @@ class EnterKeyScreen extends NavigatorComponent<Actions & KeyState & Props, Stat
   }
 
   showIncorrectMnemonicAlert = () => {
-    Alert.alert(
-      i18n.t('alerts.incorrectKeyEntered.title'),
-      i18n.t('alerts.incorrectKeyEntered.subtitle'),
-      [{ text: i18n.t('alerts.incorrectKeyEntered.confirm'), onPress: () => null }],
+    alert(
+      'incorrectKeyEntered',
+      [{ name: 'confirm' }],
+    );
+  };
+
+  showFailedPasswordRecoveryAlert = () => {
+    alert(
+      'passwordRecoveryFailed',
+      [{ name: 'confirm' }],
     );
   };
 
@@ -192,7 +198,7 @@ class EnterKeyScreen extends NavigatorComponent<Actions & KeyState & Props, Stat
         if (success) {
           this.props.onDoneEntering();
         } else {
-          this.showIncorrectMnemonicAlert();
+          this.showFailedPasswordRecoveryAlert();
         }
       });
     } else {
