@@ -15,3 +15,10 @@ export type EditingDocument = {
   data: string | null,
   mimeType: string,
 }
+
+export type PanthalassaDocument = {
+  id: number,
+  title: string,
+  mime_type: string,
+  content: string,
+}
