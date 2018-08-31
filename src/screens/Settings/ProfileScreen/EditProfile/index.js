@@ -183,6 +183,7 @@ class EditProfile extends NavigatorComponent<Props> {
           <PhotoActionSheet
             ref={actionSheet => (this.photoActionSheet = actionSheet)}
             onImageChosen={this.onNewAvatarChosen}
+            circleCropping
           />
         </View>
       </PanelView>

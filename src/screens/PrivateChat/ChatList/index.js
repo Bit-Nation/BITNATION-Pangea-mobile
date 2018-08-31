@@ -277,7 +277,7 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
           ItemSeparatorComponent={() => (<View style={styles.itemSeparator} />)}
         />
         <Fab
-          style={styles.fabStyle}
+          style={styles.floatingButton}
           position='bottomRight'
           onPress={this.showActionSheet}
         >

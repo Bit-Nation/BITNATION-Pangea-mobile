@@ -5,7 +5,9 @@ import { connect } from 'react-redux';
 import {
   View,
   FlatList,
+  Text,
 } from 'react-native';
+import { Fab } from 'native-base';
 
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
@@ -20,6 +22,7 @@ import Loading from '../../../components/common/Loading';
 import type { State as DocumentsState } from '../../../reducers/documents';
 import DocumentListItem from '../../../components/common/DocumentListItem';
 import { getDocument } from '../../../reducers/documents';
+import PhotoActionSheet from '../../../components/common/PhotoActionSheet';
 
 type Props = {
   /**
@@ -41,6 +44,8 @@ type Actions = {
 }
 
 class DocumentsListScreen extends NavigatorComponent<Props & DocumentsState & Actions> {
+  photoActionSheet: any;
+
   constructor(props) {
     super(props);
 
@@ -63,6 +68,16 @@ class DocumentsListScreen extends NavigatorComponent<Props & DocumentsState & Ac
         onCancel: () => this.props.navigator.dismissModal(),
       },
     });
+  };
+
+  onStartNewDocumentContent = () => {
+    if (this.photoActionSheet == null) return;
+    this.photoActionSheet.show();
+  };
+
+  onNewDocumentContentChosen = (data: string, mimeType: string) => {
+    console.log(`[NICE] Data: ${data}`);
+    console.log(`[NICE] Mime: ${mimeType}`);
   };
 
   render() {
@@ -89,6 +104,17 @@ class DocumentsListScreen extends NavigatorComponent<Props & DocumentsState & Ac
             ItemSeparatorComponent={() => (<View style={styles.itemSeparator} />)}
           />
         </View>
+        <Fab
+          style={styles.floatingButton}
+          position='bottomRight'
+          onPress={this.onStartNewDocumentContent}
+        >
+          <Text>+</Text>
+        </Fab>
+        <PhotoActionSheet
+          ref={actionSheet => (this.photoActionSheet = actionSheet)}
+          onImageChosen={this.onNewDocumentContentChosen}
+        />
         {this.props.isFetching && <Loading />}
       </View>
     );

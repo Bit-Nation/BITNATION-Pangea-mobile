@@ -14,6 +14,10 @@ type Props = {
    * @param {string} mimeType Mime type of chosen image.
    */
   onImageChosen: (base64: string, mimeType: string) => void,
+  /**
+   * @desc Flag to set if circle cropping should be enabled.
+   */
+  circleCropping: boolean,
 };
 
 /**
@@ -51,9 +55,9 @@ export default class PhotoActionSheet extends React.Component<Props> {
    */
   openPicker = async (isCamera: boolean) => {
     const options = {
-      cropping: true,
+      cropping: this.props.circleCropping,
       mediaType: 'photo',
-      cropperCircleOverlay: true,
+      cropperCircleOverlay: this.props.circleCropping,
       compressImageQuality: 0.4,
       includeBase64: true,
     };
@@ -64,8 +68,10 @@ export default class PhotoActionSheet extends React.Component<Props> {
         :
         await ImagePicker.openPicker(options);
 
+      console.log(`[NICE] result: ${JSON.stringify(result)}`);
+
       if (result.data) {
-        this.props.onImageChosen(result.data, result.mimeType);
+        this.props.onImageChosen(result.data, result.mime);
       }
     } catch (error) {
       if (error.code !== 'E_PICKER_CANCELLED') {
@@ -102,3 +108,7 @@ export default class PhotoActionSheet extends React.Component<Props> {
     );
   }
 }
+
+PhotoActionSheet.defaultProps = {
+  circleCropping: false,
+};

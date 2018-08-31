@@ -7,10 +7,6 @@ import Colors from '../../../global/colors';
 const styles = MediaQueryStyleSheet.create({
   ...GlobalStyles,
 
-  fabStyle: {
-    backgroundColor: '#FF8B00',
-  },
-
   modalContainer: {
     flex: 1,
     alignItems: 'center',
