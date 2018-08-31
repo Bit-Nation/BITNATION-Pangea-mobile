@@ -7,6 +7,7 @@ import {
   Image,
   Text,
   TextInput,
+  ScrollView,
 } from 'react-native';
 
 import type { Navigator } from '../../../types/ReactNativeNavigation';
@@ -104,43 +105,44 @@ class DocumentsModifyScreen extends NavigatorComponent<Props & DocumentsState & 
 
     return (
       <View style={styles.screenContainer}>
-        <View style={styles.metadataContainer}>
-          <View style={styles.labeledTextInputContainer}>
-            <Text style={styles.textInputLabelText}>{i18n.t('screens.documentModify.fields.title')}</Text>
-            <TextInput
-              style={[styles.textInput, styles.bodyBlack]}
-              placeholder={i18n.t('screens.documentModify.placeholder.title')}
-              placeholderTextColor={Colors.placeholderTextColor}
-              keyboardType='default'
-              autoCapitalize='sentences'
-              autoCorrect
-              onChangeText={title => this.props.changeDocumentField('name', title)}
-              value={modification.new.name}
+        <ScrollView contentContainerStyle={[styles.screenContainer, styles.noflex]}>
+          <View style={styles.metadataContainer}>
+            <View style={styles.labeledTextInputContainer}>
+              <Text style={styles.textInputLabelText}>{i18n.t('screens.documentModify.fields.title')}</Text>
+              <TextInput
+                style={[styles.textInput, styles.bodyBlack]}
+                placeholder={i18n.t('screens.documentModify.placeholder.title')}
+                placeholderTextColor={Colors.placeholderTextColor}
+                keyboardType='default'
+                autoCapitalize='sentences'
+                autoCorrect
+                onChangeText={title => this.props.changeDocumentField('name', title)}
+                value={modification.new.name}
+              />
+            </View>
+            <View style={styles.labeledTextInputContainer}>
+              <Text style={styles.textInputLabelText}>{i18n.t('screens.documentModify.fields.description')}</Text>
+              <TextInput
+                style={[styles.multilineTextInput]}
+                placeholder={i18n.t('screens.documentModify.placeholder.description')}
+                placeholderTextColor={Colors.placeholderTextColor}
+                keyboardType='default'
+                autoCapitalize='sentences'
+                autoCorrect
+                multiline
+                onChangeText={description => this.props.changeDocumentField('description', description)}
+                value={modification.new.description}
+              />
+            </View>
+          </View>
+          <View style={styles.previewContainer}>
+            <Image
+              source={imageSource(this.content, modification.new.mimeType)}
+              style={styles.preview}
+              resizeMode='contain'
             />
           </View>
-          <View style={styles.labeledTextInputContainer}>
-            <Text style={styles.textInputLabelText}>{i18n.t('screens.documentModify.fields.description')}</Text>
-            <TextInput
-              style={[styles.multilineTextInput]}
-              placeholder={i18n.t('screens.documentModify.placeholder.description')}
-              placeholderTextColor={Colors.placeholderTextColor}
-              keyboardType='default'
-              autoCapitalize='sentences'
-              autoCorrect
-              multiline
-              numberOfLines={5}
-              onChangeText={description => this.props.changeDocumentField('description', description)}
-              value={modification.new.description}
-            />
-          </View>
-        </View>
-        <View style={styles.previewContainer}>
-          <Image
-            source={imageSource(this.content, modification.new.mimeType)}
-            style={styles.preview}
-            resizeMode='contain'
-          />
-        </View>
+        </ScrollView>
         <Button
           enabled={this.saveShouldBeEnabled()}
           style={styles.actionButton}
