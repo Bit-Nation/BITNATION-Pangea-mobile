@@ -23,6 +23,11 @@ type Props = {
 export default class PhotoActionSheet extends React.Component<Props> {
   static defaultProps: Object;
 
+  /**
+   * @desc Callback when some option is selected.
+   * @param {number} index Selected index.
+   * @return {void}
+   */
   onSelectPhotoOption = (index: number) => {
     const PHOTO_LIBRARY = 0;
     const CAMERA = 1;
@@ -39,6 +44,11 @@ export default class PhotoActionSheet extends React.Component<Props> {
     }
   };
 
+  /**
+   * @desc Function to run image picker.
+   * @param {boolean} isCamera Flag if source is camera.
+   * @return {void}
+   */
   openPicker = async (isCamera: boolean) => {
     const options = {
       cropping: true,
