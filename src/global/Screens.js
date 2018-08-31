@@ -278,6 +278,11 @@ const Screens = {
     title: i18n.t('screens.documentView.title'),
     navigatorStyle: solidNavigatorStyle,
   },
+  DOCUMENT_MODIFY_SCREEN: {
+    screen: 'Pangea.DocumentModifyScreen',
+    title: i18n.t('screens.documentModify.title'),
+    navigatorStyle: solidNavigatorStyle,
+  },
 };
 
 /**

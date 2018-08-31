@@ -17,7 +17,7 @@ import styles from './styles';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import ScreenTitle from '../../../components/common/ScreenTitle';
 import i18n from '../../../global/i18n';
-import { openDocument, startDocumentCreation } from '../../../actions/documents';
+import { openDocument, startDocumentCreation, updateModifiedDocumentField } from '../../../actions/documents';
 import Loading from '../../../components/common/Loading';
 import type { State as DocumentsState } from '../../../reducers/documents';
 import DocumentListItem from '../../../components/common/DocumentListItem';
@@ -41,6 +41,12 @@ type Actions = {
    * @desc Function to initiate document creation.
    */
   startDocumentCreation: () => void,
+  /**
+   * @desc Function to change field of modified document.
+   * @param field Name of the field to be changed.
+   * @param value New value of the field.
+   */
+  changeDocumentField: (field: string, value: any) => void,
 }
 
 class DocumentsListScreen extends NavigatorComponent<Props & DocumentsState & Actions> {
@@ -76,8 +82,15 @@ class DocumentsListScreen extends NavigatorComponent<Props & DocumentsState & Ac
   };
 
   onNewDocumentContentChosen = (data: string, mimeType: string) => {
-    console.log(`[NICE] Data: ${data}`);
-    console.log(`[NICE] Mime: ${mimeType}`);
+    this.props.startDocumentCreation();
+    this.props.changeDocumentField('data', data);
+    this.props.changeDocumentField('mimeType', mimeType);
+    this.props.navigator.showModal({
+      ...screen('DOCUMENT_MODIFY_SCREEN'),
+      passProps: {
+        onCancel: () => this.props.navigator.dismissModal(),
+      },
+    });
   };
 
   render() {
@@ -131,6 +144,9 @@ const mapDispatchToProps = dispatch => ({
   },
   startDocumentCreation() {
     dispatch(startDocumentCreation());
+  },
+  changeDocumentField(field, value) {
+    dispatch(updateModifiedDocumentField(field, value));
   },
 });
 

@@ -113,7 +113,7 @@ class ProfileScreen extends NavigatorComponent<Props> {
         </View>
         <Button
           enabled
-          style={styles.settingsButton}
+          style={styles.actionButton}
           title={i18n.t('screens.profile.shareKey').toUpperCase()}
           onPress={this.sharePublicKey}
           styleTitle={styles.settingsText}
