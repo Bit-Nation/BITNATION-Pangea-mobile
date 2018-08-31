@@ -66,7 +66,7 @@ export default class AccountsService {
     return true;
   }
 
-  static async validMnemonicWithAccount(accountStore: string, profile: Profile, mne: Mnemonic): Promise<boolean> {
+  static async validateMnemonicWithAccount(accountStore: string, profile: Profile, mne: Mnemonic): Promise<boolean> {
     try {
       await panthalassaStop();
       // eslint-disable-next-line no-empty
@@ -75,7 +75,6 @@ export default class AccountsService {
     }
     const config = JSON.stringify({
       encrypted_key_manager: accountStore,
-      // signed_profile: signedProfile,
       enable_debugging: false,
       eth_ws_endpoint: 'wss://mainnet.infura.io/_ws',
       private_chat_endpoint: Config.CHAT_WSS_ENDPOINT,

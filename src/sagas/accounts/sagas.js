@@ -19,7 +19,7 @@ import type {
   CheckPasswordAction,
   CheckPinCodeAction,
   LoginAction, MnemonicConfirmedAction,
-  ValidMnemonicWithAccountAction,
+  ValidateMnemonicWithAccountAction,
   SaveCreatingAccountAction,
   SavePasswordAction,
   SavePinCodeAction,
@@ -240,11 +240,11 @@ export function* login(userInfo: ({ accountId: string, accountStore?: string }),
 
 /**
  * @desc Valid mnemonic with account choice to login
- * @param {ValidMnemonicWithAccountAction} action An action
+ * @param {ValidateMnemonicWithAccountAction} action An action
  * @return {void}
  */
-export function* validMnemonicWithAccountActionHandler(action: ValidMnemonicWithAccountAction): Generator<*, *, *> {
-  yield call(validMnemonicWithAccount, { accountId: action.accountId }, action.callback);
+export function* validateMnemonicWithAccountActionHandler(action: ValidateMnemonicWithAccountAction): Generator<*, *, *> {
+  yield call(validateMnemonicWithAccount, { accountId: action.accountId }, action.callback);
 }
 
 /**
@@ -253,14 +253,14 @@ export function* validMnemonicWithAccountActionHandler(action: ValidMnemonicWith
  * @param {function} callback Function that is called when that information is valid mnemonic.
  * @return {void}
  */
-export function* validMnemonicWithAccount(userInfo: ({ accountId: string }), callback: (success: boolean) => void): Generator<*, *, *> {
+export function* validateMnemonicWithAccount(userInfo: ({ accountId: string }), callback: (success: boolean) => void): Generator<*, *, *> {
   const { accountId } = userInfo;
   const account: DBAccount = yield call(getAccount, accountId);
   const { accountStore } = account;
   const profile = retrieveProfileFromAccount(convertFromDatabase(account));
   try {
     const { key: { enteredMnemonic } } = yield select();
-    const isValid = yield call(AccountsService.validMnemonicWithAccount, accountStore, profile, enteredMnemonic);
+    const isValid = yield call(AccountsService.validateMnemonicWithAccount, accountStore, profile, enteredMnemonic);
     yield call(callback, isValid);
   } catch (error) {
     console.log('--> ERROR Login: ', error);

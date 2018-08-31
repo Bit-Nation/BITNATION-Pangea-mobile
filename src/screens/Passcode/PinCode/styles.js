@@ -22,10 +22,7 @@ const styles = MediaQueryStyleSheet.create({
     marginRight: 30,
     textAlign: 'center',
   },
-  forgetButton: {
-    backgroundColor: 'transparent', alignSelf: 'stretch', borderRadius: 0,
-  },
-  forgetButtonText: { color: '#58595B', fontSize: 15, fontWeight: 'bold' },
+
 });
 
 export default styles;

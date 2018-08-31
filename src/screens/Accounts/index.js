@@ -16,6 +16,7 @@ import { startRestoreAccountUsingMnemonic, startAccountCreation } from '../../ac
 import { type State as AccountsState } from '../../reducers/accounts';
 import type { Mnemonic } from '../../types/Mnemonic';
 import PanelView from '../../components/common/PanelView';
+import { alert } from '../../global/alerts';
 
 type Props = {
   /**
@@ -52,13 +53,19 @@ class Accounts extends NavigatorComponent<Props & Actions & AccountsState> {
   }
 
   static showResetPasscodeSuccess = async (navigator: Navigator) => {
-    if (Platform.OS === 'ios') {
-      await navigator.dismissModal();
-      navigator.pop();
-    } else {
-      navigator.dismissModal();
-      navigator.pop();
-    }
+    alert('successResetPassword', [
+      {
+        name: 'confirm',
+        onPress: async () => {
+          if (Platform.OS === 'ios') {
+            await navigator.dismissModal();
+            navigator.pop();
+          } else {
+            navigator.dismissModal();
+            navigator.pop();
+          }
+        },
+      }]);
   }
 
   static showCreatePasscodeContainer(navigator: Navigator, id: string) {
@@ -91,7 +98,7 @@ class Accounts extends NavigatorComponent<Props & Actions & AccountsState> {
       navigator.push({
         ...screen('RESTORE_KEY_SCREEN'),
         passProps: {
-          processLogin: true,
+          isOnResetPassProcess: true,
           accountId: currentAccountId,
           onDoneEntering: () => {
             Accounts.showCreatePasscodeContainer(navigator, currentAccountId);
@@ -103,7 +110,7 @@ class Accounts extends NavigatorComponent<Props & Actions & AccountsState> {
       navigator.push({
         ...screen('RESTORE_KEY_SCREEN'),
         passProps: {
-          processLogin: true,
+          isOnResetPassProcess: true,
           accountId: currentAccountId,
           onDoneEntering: () => {
             Accounts.showCreatePasscodeContainer(navigator, currentAccountId);
