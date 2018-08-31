@@ -314,3 +314,12 @@ export async function panthalassaSetLogger(level: string): Promise<boolean> {
 export async function panthalassaStopDApp(dAppSingingKeyStr: string): Promise<boolean> {
   return Panthalassa.PanthalassaStopDApp({ dAppSingingKeyStr });
 }
+
+/**
+ * @desc Marks all messages in conversation as readed
+ * @param {string} partner Sender of the messages
+ * @returns {Promise<*>} Boolean response about operation's result
+ */
+export async function panthalassaMarkMessagesAsRead(partner: string): Promise<boolean> {
+  return Panthalassa.PanthalassaMarkMessagesAsRead({ partner });
+}

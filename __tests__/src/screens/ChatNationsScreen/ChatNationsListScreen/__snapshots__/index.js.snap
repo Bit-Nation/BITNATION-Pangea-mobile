@@ -44,6 +44,7 @@ ShallowWrapper {
           title="Chat"
         />,
         <SectionList
+          ItemSeparatorComponent={[Function]}
           data={Array []}
           disableVirtualization={false}
           horizontal={false}
@@ -126,6 +127,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
+          "ItemSeparatorComponent": [Function],
           "data": Array [],
           "disableVirtualization": false,
           "horizontal": false,
@@ -180,6 +182,7 @@ ShallowWrapper {
             title="Chat"
           />,
           <SectionList
+            ItemSeparatorComponent={[Function]}
             data={Array []}
             disableVirtualization={false}
             horizontal={false}
@@ -262,6 +265,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
+            "ItemSeparatorComponent": [Function],
             "data": Array [],
             "disableVirtualization": false,
             "horizontal": false,
