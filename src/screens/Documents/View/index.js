@@ -82,9 +82,14 @@ class DocumentsViewScreen extends NavigatorComponent<Props & DocumentsState & Ac
   onSelectEdit = () => {
     const { openedDocumentId } = this.props;
     if (openedDocumentId == null) return;
+    const document = getOpenedDocument(this.props);
+    if (document == null) return;
 
     this.props.startDocumentEditing(openedDocumentId);
-    this.props.navigator.showModal(screen('DOCUMENT_MODIFY_SCREEN'));
+    this.props.navigator.showModal({
+      ...screen('DOCUMENT_MODIFY_SCREEN'),
+      title: document.name,
+    });
   };
 
   onSelectDelete = () => {
