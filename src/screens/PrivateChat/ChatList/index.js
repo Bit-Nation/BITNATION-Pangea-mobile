@@ -28,10 +28,10 @@ import ScreenTitle from '../../../components/common/ScreenTitle';
 import NewChatModal from './NewChatModal';
 import InvalidKeyModal from './InvalidKeyModal';
 import InviteSentModal from './InviteSentModal';
-import MoreMenuModal from './MoreMenuModal';
 import { panthalassaIdentityPublicKey } from '../../../services/panthalassa';
 import { imageSource } from '../../../utils/profile';
 import AssetsImages from '../../../global/AssetsImages';
+import MoreMenuModal from '../../../components/common/MoreMenuModal';
 
 const MORE_BUTTON = 'MORE_BUTTON';
 const MORE_MODAL_KEY = 'moreMenu';
@@ -294,7 +294,10 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
         <MoreMenuModal
           visible={this.state.showModal === MORE_MODAL_KEY}
           onCancel={this.dismissModal}
-          onShareKey={this.sharePublicKey}
+          options={[{
+            text: i18n.t('screens.chat.menu.shareIdentityKey'),
+            onPress: this.sharePublicKey,
+          }]}
         />
         <NewChatModal
           profile={this.state.profile}
