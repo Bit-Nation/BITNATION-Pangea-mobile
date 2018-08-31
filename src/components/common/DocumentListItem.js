@@ -27,12 +27,12 @@ type Props = {
   /**
    * @desc Id that will be passed in onPress callback.
    */
-  id: string,
+  id: number,
   /**
    * @desc Callback on press item.
    * @param Id of item that was pressed.
    */
-  onPress: (id: string) => void,
+  onPress: (id: number) => void,
 }
 
 const DocumentListItem = ({
