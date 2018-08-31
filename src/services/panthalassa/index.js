@@ -312,3 +312,16 @@ export async function panthalassaSetLogger(level: String):Promise<boolean> {
 export async function panthalassaStopDApp(dAppSingingKeyStr: String):Promise<boolean> {
   return Panthalassa.PanthalassaStopDApp(dAppSingingKeyStr);
 }
+
+/**
+ * @desc TODO
+ * @param {string} command TODO
+ * @param {string} payload TODO
+ * @returns {string} TODO
+ */
+export async function panthalassaCall(command: String, payload: String):Promise<string> {
+  return Panthalassa.PanthalassaCall({
+    command,
+    payload,
+  });
+}
