@@ -2,7 +2,7 @@ import { all, call, takeEvery } from 'redux-saga/effects';
 import {
   listenForDatabaseUpdates,
   loginActionHandler,
-  validMnemonicWithAccountActionHandler,
+  validateMnemonicWithAccountActionHandler,
   logout,
   checkPasswordSaga,
   checkPinCodeSaga,
@@ -37,7 +37,7 @@ export default function* rootSaga() {
     takeEvery(START_ACCOUNT_CREATION, startAccountCreation),
     takeEvery(START_RESTORE_ACCOUNT_USING_MNEMONIC, startRestoreAccountUsingMnemonic),
     takeEvery(LOGIN, loginActionHandler),
-    takeEvery(VALID_MNEMONIC_WITH_ACCOUNT, validMnemonicWithAccountActionHandler),
+    takeEvery(VALID_MNEMONIC_WITH_ACCOUNT, validateMnemonicWithAccountActionHandler),
     takeEvery(LOGOUT, logout),
     takeEvery(SAVE_EDITING_ACCOUNT, saveEditingAccount),
     takeEvery(ACCOUNTS_LIST_UPDATED, updateSignedProfile),
