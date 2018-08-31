@@ -566,6 +566,25 @@ RCT_REMAP_METHOD(PanthalassaDApps,
   }
 }
 
+RCT_REMAP_METHOD(PanthalassaCall,
+                 PanthalassaCallWithResolver:(NSDictionary *)config
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject) {
+  
+  NSString *response;
+  NSError *error = nil;
+  
+  response = PanthalassaCall([RCTConvert NSString:config[@"command"]],
+                             [RCTConvert NSString:config[@"payload"]],
+                             &error);
+  
+  if (error == nil) {
+    resolve(response);
+  } else {
+    reject(@"error", error.localizedDescription, error);
+  }
+}
+
 // TEST FOR SEND  - https://facebook.github.io/react-native/docs/native-modules-ios.html#sending-events-to-javascript
 - (NSArray<NSString *> *)supportedEvents
 {
