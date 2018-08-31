@@ -327,12 +327,12 @@ export async function panthalassaMarkMessagesAsRead(partner: string): Promise<bo
 /**
  * @desc TODO
  * @param {string} command TODO
- * @param {string} payload TODO
+ * @param {Object} payload TODO
  * @returns {string} TODO
  */
-export async function panthalassaCall(command: String, payload: String):Promise<string> {
+export async function panthalassaCall(command: string, payload: Object = {}): Promise<string> {
   return Panthalassa.PanthalassaCall({
     command,
-    payload,
+    payload: JSON.stringify(payload),
   });
 }

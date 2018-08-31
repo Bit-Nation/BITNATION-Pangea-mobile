@@ -58,6 +58,16 @@ export const navigatorStyleModal = {
   tabBarHidden: true,
 };
 
+export const solidNavigatorStyle = {
+  ...navigatorStyle,
+  navBarTransparent: false,
+  navBarBlur: false,
+  drawUnderNavBar: false,
+  screenBackgroundColor: '#E8EBED',
+  tabBarHidden: true,
+  navBarBackgroundColor: Colors.white,
+};
+
 /*
   label : this text string appears in the navigation bar at the bottom of the screen
   icon  : icon for navigation bar
@@ -262,6 +272,11 @@ const Screens = {
   DOCUMENTS_LIST_SCREEN: {
     screen: 'Pangea.DocumentsListScreen',
     navigatorStyle,
+  },
+  DOCUMENT_VIEW_SCREEN: {
+    screen: 'Pangea.DocumentViewScreen',
+    title: i18n.t('screens.documentView.title'),
+    navigatorStyle: solidNavigatorStyle,
   },
 };
 
