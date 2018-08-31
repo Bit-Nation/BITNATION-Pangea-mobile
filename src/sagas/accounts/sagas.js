@@ -19,6 +19,7 @@ import type {
   CheckPasswordAction,
   CheckPinCodeAction,
   LoginAction, MnemonicConfirmedAction,
+  ValidMnemonicWithAccountAction,
   SaveCreatingAccountAction,
   SavePasswordAction,
   SavePinCodeAction,
@@ -155,7 +156,6 @@ export function* updateSignedProfile(): Generator<*, *, *> {
   }
 }
 
-
 /**
  * @desc Performs preparation for account creation, e.g. clean settings.
  * @return {void}
@@ -236,6 +236,36 @@ export function* login(userInfo: ({ accountId: string, accountStore?: string }),
   yield put(loginTaskUpdated(TaskBuilder.success()));
 
   yield put(fetchAllChats());
+}
+
+/**
+ * @desc Valid mnemonic with account choice to login
+ * @param {ValidMnemonicWithAccountAction} action An action
+ * @return {void}
+ */
+export function* validMnemonicWithAccountActionHandler(action: ValidMnemonicWithAccountAction): Generator<*, *, *> {
+  yield call(validMnemonicWithAccount, { accountId: action.accountId }, action.callback);
+}
+
+/**
+ * @desc Valid mnemonic with account choice to login
+ * @param {*} userInfo Either object containing account id or account store to log in.
+ * @param {function} callback Function that is called when that information is valid mnemonic.
+ * @return {void}
+ */
+export function* validMnemonicWithAccount(userInfo: ({ accountId: string }), callback: (success: boolean) => void): Generator<*, *, *> {
+  const { accountId } = userInfo;
+  const account: DBAccount = yield call(getAccount, accountId);
+  const { accountStore } = account;
+  const profile = retrieveProfileFromAccount(convertFromDatabase(account));
+  try {
+    const { key: { enteredMnemonic } } = yield select();
+    const isValid = yield call(AccountsService.validMnemonicWithAccount, accountStore, profile, enteredMnemonic);
+    yield call(callback, isValid);
+  } catch (error) {
+    console.log('--> ERROR Login: ', error);
+    yield call(callback, false);
+  }
 }
 
 /**

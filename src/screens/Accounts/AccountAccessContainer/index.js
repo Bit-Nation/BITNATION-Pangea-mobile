@@ -64,6 +64,7 @@ class AccountAccessContainer extends NavigatorComponent<Props & Actions & Accoun
         ...screen('ENTER_PASSCODE_SCREEN'),
         passProps: {
           accountId: id,
+          onForget: () => AccountsScreen.onForgetPasswordAccount(this.props.navigator, id),
           onCancel: () => this.props.navigator.dismissModal(),
         },
       });

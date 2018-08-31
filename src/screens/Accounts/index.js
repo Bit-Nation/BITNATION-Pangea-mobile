@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { View, Text, Image, Linking } from 'react-native';
+import { View, Text, Image, Linking, Platform } from 'react-native';
 import Images from '../../global/AssetsImages';
 import i18n from '../../global/i18n';
 import { screen } from '../../global/Screens';
@@ -51,6 +51,27 @@ class Accounts extends NavigatorComponent<Props & Actions & AccountsState> {
     });
   }
 
+  static showResetPasscodeSuccess = async (navigator: Navigator) => {
+    if (Platform.OS === 'ios') {
+      await navigator.dismissModal();
+      navigator.pop();
+    } else {
+      navigator.dismissModal();
+      navigator.pop();
+    }
+  }
+
+  static showCreatePasscodeContainer(navigator: Navigator, id: string) {
+    navigator.showModal({
+      ...screen('CREATE_PASSCODE_SCREEN'),
+      passProps: {
+        accountId: id,
+        onSuccess: () => Accounts.showResetPasscodeSuccess(navigator),
+        onCancel: () => navigator.dismissModal(),
+      },
+    });
+  }
+
   static onRestoreAccount = (navigator: Navigator, startRestore: (mnemonic: Mnemonic) => void) => {
     navigator.push({
       ...screen('RESTORE_KEY_SCREEN'),
@@ -62,6 +83,34 @@ class Accounts extends NavigatorComponent<Props & Actions & AccountsState> {
         },
       },
     });
+  };
+
+  static onForgetPasswordAccount = async (navigator: Navigator, currentAccountId: string) => {
+    if (Platform.OS === 'ios') {
+      await navigator.dismissModal();
+      navigator.push({
+        ...screen('RESTORE_KEY_SCREEN'),
+        passProps: {
+          processLogin: true,
+          accountId: currentAccountId,
+          onDoneEntering: () => {
+            Accounts.showCreatePasscodeContainer(navigator, currentAccountId);
+          },
+        },
+      });
+    } else {
+      navigator.dismissModal();
+      navigator.push({
+        ...screen('RESTORE_KEY_SCREEN'),
+        passProps: {
+          processLogin: true,
+          accountId: currentAccountId,
+          onDoneEntering: () => {
+            Accounts.showCreatePasscodeContainer(navigator, currentAccountId);
+          },
+        },
+      });
+    }
   };
 
   onOpenRUrl = () => {
@@ -103,7 +152,6 @@ class Accounts extends NavigatorComponent<Props & Actions & AccountsState> {
             title={i18n.t('screens.accounts.restoreAccount')}
             onPress={() => Accounts.onRestoreAccount(this.props.navigator, this.props.startRestoreAccountUsingMnemonic)}
           />
-
         </View>
         <Button
           id='createButton'
