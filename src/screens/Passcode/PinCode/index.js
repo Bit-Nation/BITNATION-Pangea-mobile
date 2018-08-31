@@ -28,6 +28,10 @@ export type Props = {
    */
   onSubmit: (string) => void,
   /**
+   * @desc Function that is called when user press on forget password button.
+   */
+  onForget: () => void,
+  /**
    * @desc Instruction text
    */
   instruction: string,
@@ -39,6 +43,10 @@ export type Props = {
    * @desc Whether to show cancel button on the left.
    */
   shouldShowCancel: boolean,
+  /**
+   * @desc Whether to show forget password button.
+   */
+  shouldShowForget: boolean,
 };
 
 type State = {
@@ -83,6 +91,7 @@ class PinCodeScreen extends NavigatorComponent<Props, State> {
   }
 
   render() {
+    const { shouldShowForget } = this.props;
     return (
       <View style={styles.bodyContainer}>
         <Text style={styles.headline}>
@@ -104,6 +113,14 @@ class PinCodeScreen extends NavigatorComponent<Props, State> {
             style={styles.submitButton}
           />
         </View>
+        {shouldShowForget &&
+          <Button
+            style={styles.forgetButton}
+            styleTitle={styles.forgetButtonText}
+            title={i18n.t('screens.password.forgetInstruction')}
+            onPress={() => this.props.onForget()}
+          />
+        }
       </View>
     );
   }
@@ -111,6 +128,7 @@ class PinCodeScreen extends NavigatorComponent<Props, State> {
 
 PinCodeScreen.defaultProps = {
   shouldShowCancel: false,
+  shouldShowForget: false,
 };
 
 export default PinCodeScreen;
