@@ -63,6 +63,8 @@ to use the mesh network
 
 FOUNDATION_EXPORT NSString* PanthalassaAllChats(NSError** error);
 
+FOUNDATION_EXPORT NSString* PanthalassaCall(NSString* command, NSString* payload, NSError** error);
+
 FOUNDATION_EXPORT BOOL PanthalassaCallDAppFunction(NSString* signingKey, long id_, NSString* args, NSError** error);
 
 FOUNDATION_EXPORT BOOL PanthalassaConnectLogger(NSString* address, NSError** error);

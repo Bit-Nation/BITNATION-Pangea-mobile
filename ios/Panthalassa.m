@@ -408,7 +408,7 @@ RCT_REMAP_METHOD(PanthalassaCallDAppFunction,
   
   BOOL response;
   NSError *error = nil;
-  response = PanthalassaCallDAppFunction([RCTConvert NSString:config[@"signingKey"]],
+  response = PanthalassaCallDAppFunction([RCTConvert NSString:config[@"dAppId"]],
                                          [[RCTConvert NSNumber:config[@"id"]] longValue],
                                          [RCTConvert NSString:config[@"args"]],
                                              &error);
@@ -566,19 +566,20 @@ RCT_REMAP_METHOD(PanthalassaDApps,
   }
 }
 
-RCT_REMAP_METHOD(PanthalassaMarkMessagesAsRead,
-                 PanthalassaMarkMessagesAsReadWithResolver:(NSDictionary *)config
+RCT_REMAP_METHOD(PanthalassaCall,
+                 PanthalassaCallWithResolver:(NSDictionary *)config
                  resolver:(RCTPromiseResolveBlock)resolve
                  rejecter:(RCTPromiseRejectBlock)reject) {
   
-  BOOL response;
+  NSString *response;
   NSError *error = nil;
-  response = PanthalassaMarkMessagesAsRead([RCTConvert NSString:config[@"partner"]],
-                                            &error);
-  NSNumber *val = [NSNumber numberWithBool:response];
+  
+  response = PanthalassaCall([RCTConvert NSString:config[@"command"]],
+                             [RCTConvert NSString:config[@"payload"]],
+                             &error);
   
   if (error == nil) {
-    resolve(val);
+    resolve(response);
   } else {
     reject(@"error", error.localizedDescription, error);
   }
