@@ -91,8 +91,8 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
   static navigatorButtons = {
     leftButtons: [],
     rightButtons: [{
-      title: 'More',
       id: MORE_BUTTON,
+      icon: AssetsImages.moreMenuIcon,
       buttonColor: Colors.navigationButtonColor,
     }],
   };
