@@ -13,7 +13,7 @@ import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import { screen } from '../../../global/Screens';
 import styles from './styles';
 import i18n from '../../../global/i18n';
-import { startDocumentEditing } from '../../../actions/documents';
+import { startDocumentEditing, deleteDocument } from '../../../actions/documents';
 import type { State as DocumentsState } from '../../../reducers/documents';
 import Colors from '../../../global/colors';
 import AssetsImages from '../../../global/AssetsImages';
@@ -34,6 +34,11 @@ type Actions = {
    * @param id Id of document to edit.
    */
   startDocumentEditing: (id: number) => void,
+  /**
+   * @desc Function to initiate document deleting.
+   * @param id Id of document to delete.
+   */
+  deleteDocument: (id: number) => void,
 }
 
 const MORE_MENU_BUTTON = 'MORE_MENU_BUTTON';
@@ -83,7 +88,15 @@ class DocumentsViewScreen extends NavigatorComponent<Props & DocumentsState & Ac
   };
 
   onSelectDelete = () => {
+    const { openedDocumentId } = this.props;
+    if (openedDocumentId == null) return;
 
+    this.props.deleteDocument(openedDocumentId);
+    this.setState({ moreMenuVisible: false }, () => {
+      setTimeout(() => {
+        this.props.navigator.dismissModal();
+      }, 1000);
+    });
   };
 
   render() {
@@ -127,6 +140,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   startDocumentEditing(documentId) {
     dispatch(startDocumentEditing(documentId));
+  },
+  deleteDocument(documentId) {
+    dispatch(deleteDocument(documentId));
   },
 });
 
