@@ -14,7 +14,7 @@ import GlobalStyles from '../../global/Styles';
 
 type MenuOption = {
   text: string,
-  onPress: () => ansy,
+  onPress: () => any,
 }
 
 type Props = {

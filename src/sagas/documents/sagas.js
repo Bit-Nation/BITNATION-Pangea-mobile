@@ -30,7 +30,11 @@ export function* saveDocument(): Generator<*, *, *> {
   if (document === null) return;
 
   try {
-    yield call(DocumentsService.saveDocument, document);
+    if (modification.new.id !== null) {
+      yield call(DocumentsService.updateDocument, document);
+    } else {
+      yield call(DocumentsService.saveDocument, document);
+    }
     yield put(startDocumentsFetch());
   } catch (error) {
     console.log(`[DOCUMENTS] Failed to save document: ${JSON.stringify(document)}, with error ${error.message}`);

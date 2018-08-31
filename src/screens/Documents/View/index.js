@@ -19,6 +19,7 @@ import Colors from '../../../global/colors';
 import AssetsImages from '../../../global/AssetsImages';
 import { imageSource } from '../../../utils/profile';
 import { getOpenedDocument } from '../../../reducers/documents';
+import MoreMenuModal from '../../../components/common/MoreMenuModal';
 
 type Props = {
   /**
@@ -37,7 +38,7 @@ type Actions = {
 
 const MORE_MENU_BUTTON = 'MORE_MENU_BUTTON';
 
-class DocumentsViewScreen extends NavigatorComponent<Props & DocumentsState & Actions> {
+class DocumentsViewScreen extends NavigatorComponent<Props & DocumentsState & Actions, *> {
   constructor(props) {
     super(props);
 
@@ -54,11 +55,16 @@ class DocumentsViewScreen extends NavigatorComponent<Props & DocumentsState & Ac
         buttonColor: Colors.navigationButtonColor,
       }],
     });
+
+    this.state = {
+      moreMenuVisible: false,
+    };
   }
 
   onNavBarButtonPress(id: string) {
     switch (id) {
       case MORE_MENU_BUTTON:
+        this.setState({ moreMenuVisible: true });
         break;
       case 'cancel':
         this.props.navigator.dismissModal();
@@ -73,7 +79,11 @@ class DocumentsViewScreen extends NavigatorComponent<Props & DocumentsState & Ac
     if (openedDocumentId == null) return;
 
     this.props.startDocumentEditing(openedDocumentId);
-    this.props.navigator.showModal(screen('ENTER_PASSCODE_SCREEN'));
+    this.props.navigator.showModal(screen('DOCUMENT_MODIFY_SCREEN'));
+  };
+
+  onSelectDelete = () => {
+
   };
 
   render() {
@@ -93,6 +103,18 @@ class DocumentsViewScreen extends NavigatorComponent<Props & DocumentsState & Ac
             {document.description}
           </Text>
         </View>
+        <MoreMenuModal
+          visible={this.state.moreMenuVisible === true}
+          onCancel={() => this.setState({ moreMenuVisible: false })}
+          options={[{
+            text: i18n.t('screens.documentView.actions.edit'),
+            onPress: this.onSelectEdit,
+          }, {
+            text: i18n.t('screens.documentView.actions.delete'),
+            onPress: this.onSelectDelete,
+          }]
+          }
+        />
       </View>
     );
   }
