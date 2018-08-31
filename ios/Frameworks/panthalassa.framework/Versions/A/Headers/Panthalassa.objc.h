@@ -105,6 +105,8 @@ FOUNDATION_EXPORT NSString* PanthalassaIdentityPublicKey(NSError** error);
  */
 FOUNDATION_EXPORT BOOL PanthalassaIsValidMnemonic(NSString* mne);
 
+FOUNDATION_EXPORT BOOL PanthalassaMarkMessagesAsRead(NSString* partner, NSError** error);
+
 FOUNDATION_EXPORT NSString* PanthalassaMessages(NSString* partner, NSString* startStr, long amount, NSError** error);
 
 /**

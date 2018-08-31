@@ -517,6 +517,20 @@ public class PanthalassaModule extends ReactContextBaseJavaModule implements UpS
         }).start();
     }
 
+    @ReactMethod
+    public void PanthalassaMarkMessagesAsRead(final ReadableMap jsonParams, final Promise promise) throws JSONException {
+        new Thread(new Runnable() {
+            public void run() {
+                try {
+                    Panthalassa.markMessagesAsRead(jsonParams.getString("partner"));
+                    promise.resolve(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    promise.reject("error", e.getLocalizedMessage());
+                }
+            }
+        }).start();
+    }
     //=====
 
     // This method should be deleted due is not the active protocol listener now
