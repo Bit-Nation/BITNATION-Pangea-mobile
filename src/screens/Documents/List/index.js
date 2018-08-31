@@ -12,7 +12,7 @@ import { Fab } from 'native-base';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import BackgroundImage from '../../../components/common/BackgroundImage';
-import { screen } from '../../../global/Screens';
+import { androidNavigationButtons, screen } from '../../../global/Screens';
 import styles from './styles';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import ScreenTitle from '../../../components/common/ScreenTitle';
@@ -51,16 +51,8 @@ type Actions = {
 }
 
 class DocumentsListScreen extends NavigatorComponent<Props & DocumentsState & Actions> {
+  static navigatorButtons = { ...androidNavigationButtons };
   photoActionSheet: any;
-
-  constructor(props) {
-    super(props);
-
-    this.props.navigator.setButtons({
-      leftButtons: [],
-      rightButtons: [],
-    });
-  }
 
   onSelectItem = (id) => {
     this.props.openDocument(id);
