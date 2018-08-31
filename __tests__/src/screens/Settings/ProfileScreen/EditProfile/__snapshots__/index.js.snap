@@ -265,6 +265,7 @@ ShallowWrapper {
             <PhotoActionSheet
               circleCropping={true}
               onImageChosen={[Function]}
+              title="Edit your profile picture."
             />
           </View>
         </PanelView>
@@ -471,6 +472,7 @@ ShallowWrapper {
               <PhotoActionSheet
                 circleCropping={true}
                 onImageChosen={[Function]}
+                title="Edit your profile picture."
               />
             </View>
           </PanelView>,
@@ -793,6 +795,7 @@ ShallowWrapper {
               <PhotoActionSheet
                 circleCropping={true}
                 onImageChosen={[Function]}
+                title="Edit your profile picture."
               />
             </View>,
             "childrenContainerStyle": Object {},
@@ -918,6 +921,7 @@ ShallowWrapper {
                 <PhotoActionSheet
                   circleCropping={true}
                   onImageChosen={[Function]}
+                  title="Edit your profile picture."
                 />,
               ],
               "style": Object {
@@ -1175,6 +1179,7 @@ ShallowWrapper {
                 "props": Object {
                   "circleCropping": true,
                   "onImageChosen": [Function],
+                  "title": "Edit your profile picture.",
                 },
                 "ref": [Function],
                 "rendered": null,
@@ -1395,6 +1400,7 @@ ShallowWrapper {
               <PhotoActionSheet
                 circleCropping={true}
                 onImageChosen={[Function]}
+                title="Edit your profile picture."
               />
             </View>
           </PanelView>
@@ -1601,6 +1607,7 @@ ShallowWrapper {
                 <PhotoActionSheet
                   circleCropping={true}
                   onImageChosen={[Function]}
+                  title="Edit your profile picture."
                 />
               </View>
             </PanelView>,
@@ -1923,6 +1930,7 @@ ShallowWrapper {
                 <PhotoActionSheet
                   circleCropping={true}
                   onImageChosen={[Function]}
+                  title="Edit your profile picture."
                 />
               </View>,
               "childrenContainerStyle": Object {},
@@ -2048,6 +2056,7 @@ ShallowWrapper {
                   <PhotoActionSheet
                     circleCropping={true}
                     onImageChosen={[Function]}
+                    title="Edit your profile picture."
                   />,
                 ],
                 "style": Object {
@@ -2305,6 +2314,7 @@ ShallowWrapper {
                   "props": Object {
                     "circleCropping": true,
                     "onImageChosen": [Function],
+                    "title": "Edit your profile picture.",
                   },
                   "ref": [Function],
                   "rendered": null,
