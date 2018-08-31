@@ -262,8 +262,9 @@ ShallowWrapper {
                 />
               </View>
             </View>
-            <Styled(ActionSheetContainer)
-              virtual={undefined}
+            <PhotoActionSheet
+              circleCropping={true}
+              onImageChosen={[Function]}
             />
           </View>
         </PanelView>
@@ -467,8 +468,9 @@ ShallowWrapper {
                   />
                 </View>
               </View>
-              <Styled(ActionSheetContainer)
-                virtual={undefined}
+              <PhotoActionSheet
+                circleCropping={true}
+                onImageChosen={[Function]}
               />
             </View>
           </PanelView>,
@@ -788,8 +790,9 @@ ShallowWrapper {
                   />
                 </View>
               </View>
-              <Styled(ActionSheetContainer)
-                virtual={undefined}
+              <PhotoActionSheet
+                circleCropping={true}
+                onImageChosen={[Function]}
               />
             </View>,
             "childrenContainerStyle": Object {},
@@ -912,8 +915,9 @@ ShallowWrapper {
                     />
                   </View>
                 </View>,
-                <Styled(ActionSheetContainer)
-                  virtual={undefined}
+                <PhotoActionSheet
+                  circleCropping={true}
+                  onImageChosen={[Function]}
                 />,
               ],
               "style": Object {
@@ -1169,7 +1173,8 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "class",
                 "props": Object {
-                  "virtual": undefined,
+                  "circleCropping": true,
+                  "onImageChosen": [Function],
                 },
                 "ref": [Function],
                 "rendered": null,
@@ -1387,8 +1392,9 @@ ShallowWrapper {
                   />
                 </View>
               </View>
-              <Styled(ActionSheetContainer)
-                virtual={undefined}
+              <PhotoActionSheet
+                circleCropping={true}
+                onImageChosen={[Function]}
               />
             </View>
           </PanelView>
@@ -1592,8 +1598,9 @@ ShallowWrapper {
                     />
                   </View>
                 </View>
-                <Styled(ActionSheetContainer)
-                  virtual={undefined}
+                <PhotoActionSheet
+                  circleCropping={true}
+                  onImageChosen={[Function]}
                 />
               </View>
             </PanelView>,
@@ -1913,8 +1920,9 @@ ShallowWrapper {
                     />
                   </View>
                 </View>
-                <Styled(ActionSheetContainer)
-                  virtual={undefined}
+                <PhotoActionSheet
+                  circleCropping={true}
+                  onImageChosen={[Function]}
                 />
               </View>,
               "childrenContainerStyle": Object {},
@@ -2037,8 +2045,9 @@ ShallowWrapper {
                       />
                     </View>
                   </View>,
-                  <Styled(ActionSheetContainer)
-                    virtual={undefined}
+                  <PhotoActionSheet
+                    circleCropping={true}
+                    onImageChosen={[Function]}
                   />,
                 ],
                 "style": Object {
@@ -2294,7 +2303,8 @@ ShallowWrapper {
                   "key": undefined,
                   "nodeType": "class",
                   "props": Object {
-                    "virtual": undefined,
+                    "circleCropping": true,
+                    "onImageChosen": [Function],
                   },
                   "ref": [Function],
                   "rendered": null,
