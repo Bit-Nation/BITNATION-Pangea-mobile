@@ -44,6 +44,8 @@ const signalIcon4 = require('../assets/images/signal_icon_4.png');
 const signalIcon5 = require('../assets/images/signal_icon_5.png');
 const botIconLucy = require('../assets/images/icon_chatbot.png');
 
+const chatNewMessageIcon = require('../assets/images/chat_indicator.png');
+
 const Images = {
   background,
   ethereumLogo,
@@ -84,6 +86,7 @@ const Images = {
     signal4: signalIcon4,
     signal5: signalIcon5,
     botIcon: botIconLucy,
+    newMsgIcon: chatNewMessageIcon,
   },
 };
 
