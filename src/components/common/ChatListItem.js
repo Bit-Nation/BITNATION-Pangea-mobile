@@ -1,86 +1,67 @@
 // @flow
 
 /**
- * @desc Component that renders Chat Nations list item.
+ * @desc Component that renders chat list item.
  * @type React.Component
  */
 
 import React from 'react';
-import { View, Text, TouchableOpacity, Image } from 'react-native';
-import { MediaQueryStyleSheet } from 'react-native-responsive';
+import { Image } from 'react-native';
 
+import ListItem from './ListItem';
 import GlobalStyles from '../../global/Styles';
 import AssetsImages from '../../global/AssetsImages';
-import { imageSource } from '../../utils/profile';
 
 type Props = {
   /**
-  * @desc Text to display on item
-  */
-  text: string,
-  /**
-   * @desc Number of participants in the chat to be displayed.
+   * @desc Name of chat partner.
    */
-  participants: string,
+  name: string,
+  /**
+   * @desc Last message to show on preview.
+   */
+  lastMessage?: string | null,
+  /**
+   * @desc Base64 avatar of partner.
+   */
+  avatar: Image.propTypes.source,
   /**
    * @desc Id that will be passed in onPress callback.
    */
-  id: any,
+  id: string,
   /**
    * @desc Callback on press item.
+   * @param Id of item that was pressed.
    */
-  onPress: (any) => void,
-  /**
-   * @desc Image resource to be displayed as icon.
-   */
-  itemIcon: number,
-  /**
-   * @desc Image resource for the profile Image.
-   */
-  profileImage: string,
+  onPress: (id: string) => void,
   /**
    * @desc unreadMessages indicator for new messages in Chat
    */
   unreadMessages: boolean,
 }
 
-const styles = MediaQueryStyleSheet.create({
-  ...GlobalStyles,
-});
-
 const ChatListItem = ({
-  text, participants, id, onPress, itemIcon, profileImage, unreadMessages,
+  name, id, onPress, avatar, lastMessage, unreadMessages,
 }: Props) => (
-  <View style={styles.sectionListItemContainer}>
-    <TouchableOpacity
-      testID='Touchable'
-      onPress={() => onPress(id)}
-      style={styles.sectionListTouchable}
-    >
-      <Image source={unreadMessages ? AssetsImages.ChatUI.newMsgIcon : null} style={styles.sectionListNewMessage} />
-      <Image
-        style={styles.avatarSmall}
-        source={imageSource(profileImage) || AssetsImages.avatarIcon}
-      />
-      <Text style={styles.listItemText} numberOfLines={1}>
-        {text}
-      </Text>
-      <Image source={itemIcon} style={styles.sectionListSignal} />
-      <Text style={styles.listItemTextState}>
-        {participants}
-      </Text>
-      <Image source={AssetsImages.disclosureRowIcon} style={styles.sectionListDisclosure} />
-    </TouchableOpacity>
-  </View>
+  <ListItem
+    id={id}
+    text={name}
+    textStyle={GlobalStyles.chatTitleStyle}
+    onPress={onPress}
+    iconSource={avatar}
+    style={GlobalStyles.chatListItem}
+    subtitle={lastMessage}
+    AdditionalLeftView={() =>
+      <Image source={unreadMessages ? AssetsImages.ChatUI.newMsgIcon : null} style={GlobalStyles.sectionListNewMessage} />
+    }
+  />
 );
 
 ChatListItem.defaultProps = {
-  text: '',
-  participants: '',
-  id: null,
+  name: '',
   onPress: () => null,
-  itemIcon: 0,
-  profileImage: '',
+  avatar: null,
+  lastMessage: undefined,
 };
 
 export default ChatListItem;

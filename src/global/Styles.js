@@ -602,8 +602,31 @@ const styles = {
   // e.g. NationListItem Text
   listItemText: {
     ...defaultTextStyles.body,
-    color: '#58595B',
+    color: Colors.BitnationDarkGrayColor,
     flex: 1,
+    textAlignVertical: 'center',
+  },
+
+  listItemSubtitle: {
+    ...defaultTextStyles.footnote,
+    color: Colors.BitnationDarkGrayColor,
+    flex: 1,
+    textAlignVertical: 'center',
+  },
+
+  listItemTextContainer: {
+    flex: 1,
+    alignItems: 'stretch',
+    justifyContent: 'space-between',
+    paddingBottom: 16,
+    paddingTop: 12,
+  },
+
+  chatTitleStyle: {
+    ...defaultTextStyles.body,
+    color: Colors.BitnationDarkGrayColor,
+    fontSize: 14,
+    fontWeight: '500',
   },
 
   // e.g. NationListItem Text very BOLD
@@ -638,9 +661,10 @@ const styles = {
     alignItems: 'center',
     backgroundColor: Colors.sectionListItemContainerBackground,
     marginLeft: 20,
+    marginRight: 8,
   },
 
-  // e.g. NationListHeader
+  // e.g. ItemsListHeader
   sectionListHeaderContainer: {
     flexDirection: 'row',
     height: 30,
@@ -671,6 +695,13 @@ const styles = {
     height: 15,
   },
 
+  listItemIcon: {
+    height: 40,
+    width: 40,
+    borderRadius: 20,
+    marginRight: 16,
+  },
+
   sectionListSignal: {
     marginRight: 14,
     width: 20,
@@ -681,6 +712,17 @@ const styles = {
     marginRight: 7,
     width: 7,
     height: 7,
+  },
+
+  itemSeparator: {
+    height: 1,
+    backgroundColor: Colors.BitnationLightGrayColor,
+    marginLeft: 16,
+    marginRight: 16,
+  },
+
+  chatListItem: {
+    height: 72,
   },
 
   closeIcon: {
@@ -702,16 +744,14 @@ const styles = {
 
   settingsList: {
     height: 50,
-    borderBottomWidth: 1.6,
-    borderColor: Colors.borderColor,
   },
 
-  settingsText:
-  {
+  settingsText: {
     color: 'white',
     fontSize: 15,
     fontWeight: '900',
   },
+
   settingsButton: {
     height: 54,
     backgroundColor: '#FF8B00',
