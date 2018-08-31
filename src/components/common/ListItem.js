@@ -28,6 +28,11 @@ type Props<IDType> = {
    */
   AdditionalView: React.ComponentType<any>,
   /**
+   * @desc Additional view to render on the left of the list item.
+   * @type string
+   */
+  AdditionalLeftView: React.ComponentType<any>,
+  /**
    * @desc Flag to show/hide disclosure indicator.
    */
   disclosureIconVisible: boolean,
@@ -62,7 +67,7 @@ type Props<IDType> = {
  */
 // eslint-disable-next-line arrow-parens
 const ListItem = <IDType>({
-  id, textStyle, onPress, text, AdditionalView, disclosureIconVisible, disabled, style, iconSource, subtitle,
+  id, textStyle, onPress, text, AdditionalView, AdditionalLeftView, disclosureIconVisible, disabled, style, iconSource, subtitle,
 }: Props<IDType>) => {
   const styles = MediaQueryStyleSheet.create({
     ...GlobalStyles,
@@ -82,6 +87,7 @@ const ListItem = <IDType>({
         style={styles.sectionListTouchable}
         disabled={disabled}
       >
+        <AdditionalLeftView />
         {
           iconSource != null &&
           <Image source={iconSource} style={styles.listItemIcon} />
@@ -113,6 +119,7 @@ ListItem.defaultProps = {
   onPress: () => undefined,
   disabled: false,
   AdditionalView: () => null,
+  AdditionalLeftView: () => null,
   iconSource: undefined,
   subtitle: undefined,
 };

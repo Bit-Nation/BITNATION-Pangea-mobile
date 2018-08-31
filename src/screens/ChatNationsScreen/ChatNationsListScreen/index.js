@@ -72,6 +72,7 @@ const ChatNationsListScreen = ({
               avatar={AssetsImages.ChatUI.botIcon}
               onPress={id => onSelectItem(id, true)}
               id={nation.id}
+              unreadMessages={false}
             />);
           }
             return (<ChatListItem
@@ -79,6 +80,7 @@ const ChatNationsListScreen = ({
               avatar={AssetsImages.avatarIcon}
               onPress={id => onSelectItem(id, false)}
               id={nation.id}
+              unreadMessages={false}
             />);
         }}
         keyExtractor={item => item.id}

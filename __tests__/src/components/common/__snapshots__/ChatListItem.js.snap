@@ -5,12 +5,12 @@ ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <ChatListItem
+    avatar={null}
     id="Test id"
     lastMessage={undefined}
+    name="Test list item"
     onPress={[MockFunction]}
-    partnerAvatar={null}
-    partnerName=""
-    text="Test list item"
+    unreadMessages={false}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -24,17 +24,18 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "function",
     "props": Object {
+      "AdditionalLeftView": [Function],
       "AdditionalView": [Function],
       "disabled": false,
       "disclosureIconVisible": true,
-      "iconSource": undefined,
+      "iconSource": null,
       "id": "Test id",
       "onPress": [MockFunction],
       "style": Object {
         "height": 72,
       },
       "subtitle": undefined,
-      "text": undefined,
+      "text": "Test list item",
       "textStyle": Object {
         "color": "#58595B",
         "fontFamily": "Roboto",
@@ -54,107 +55,18 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "function",
       "props": Object {
+        "AdditionalLeftView": [Function],
         "AdditionalView": [Function],
         "disabled": false,
         "disclosureIconVisible": true,
-        "iconSource": undefined,
+        "iconSource": null,
         "id": "Test id",
         "onPress": [MockFunction],
         "style": Object {
           "height": 72,
         },
         "subtitle": undefined,
-        "text": undefined,
-        "textStyle": Object {
-          "color": "#58595B",
-          "fontFamily": "Roboto",
-          "fontSize": 14,
-          "fontWeight": "500",
-          "letterSpacing": 0,
-          "lineHeight": 22,
-        },
-      },
-      "ref": null,
-      "rendered": null,
-      "type": [Function],
-    },
-  ],
-  Symbol(enzyme.__options__): Object {
-    "adapter": ReactSixteenAdapter {
-      "options": Object {
-        "enableComponentDidUpdateOnSetState": true,
-      },
-    },
-  },
-}
-`;
-
-exports[`ChatListItem tests Rendering With different texts and icon 1`] = `
-ShallowWrapper {
-  "length": 1,
-  Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <ChatListItem
-    itemIcon={1}
-    lastMessage={undefined}
-    onPress={[Function]}
-    participants="Text"
-    partnerAvatar={null}
-    partnerName=""
-    text="Test chat list item"
-  />,
-  Symbol(enzyme.__renderer__): Object {
-    "batchedUpdates": [Function],
-    "getNode": [Function],
-    "render": [Function],
-    "simulateEvent": [Function],
-    "unmount": [Function],
-  },
-  Symbol(enzyme.__node__): Object {
-    "instance": null,
-    "key": undefined,
-    "nodeType": "function",
-    "props": Object {
-      "AdditionalView": [Function],
-      "disabled": false,
-      "disclosureIconVisible": true,
-      "iconSource": undefined,
-      "id": null,
-      "onPress": [Function],
-      "style": Object {
-        "height": 72,
-      },
-      "subtitle": undefined,
-      "text": undefined,
-      "textStyle": Object {
-        "color": "#58595B",
-        "fontFamily": "Roboto",
-        "fontSize": 14,
-        "fontWeight": "500",
-        "letterSpacing": 0,
-        "lineHeight": 22,
-      },
-    },
-    "ref": null,
-    "rendered": null,
-    "type": [Function],
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "function",
-      "props": Object {
-        "AdditionalView": [Function],
-        "disabled": false,
-        "disclosureIconVisible": true,
-        "iconSource": undefined,
-        "id": null,
-        "onPress": [Function],
-        "style": Object {
-          "height": 72,
-        },
-        "subtitle": undefined,
-        "text": undefined,
+        "text": "Test list item",
         "textStyle": Object {
           "color": "#58595B",
           "fontFamily": "Roboto",
@@ -184,11 +96,12 @@ ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <ChatListItem
-    lastMessage={undefined}
-    onPress={[Function]}
-    partnerAvatar={null}
-    partnerName=""
-    text="Test list item"
+    avatar={null}
+    id="1"
+    lastMessage="Some message"
+    name="Test list item"
+    onPress={[MockFunction]}
+    unreadMessages={false}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -202,17 +115,18 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "function",
     "props": Object {
+      "AdditionalLeftView": [Function],
       "AdditionalView": [Function],
       "disabled": false,
       "disclosureIconVisible": true,
-      "iconSource": undefined,
-      "id": null,
-      "onPress": [Function],
+      "iconSource": null,
+      "id": "1",
+      "onPress": [MockFunction],
       "style": Object {
         "height": 72,
       },
-      "subtitle": undefined,
-      "text": undefined,
+      "subtitle": "Some message",
+      "text": "Test list item",
       "textStyle": Object {
         "color": "#58595B",
         "fontFamily": "Roboto",
@@ -232,17 +146,18 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "function",
       "props": Object {
+        "AdditionalLeftView": [Function],
         "AdditionalView": [Function],
         "disabled": false,
         "disclosureIconVisible": true,
-        "iconSource": undefined,
-        "id": null,
-        "onPress": [Function],
+        "iconSource": null,
+        "id": "1",
+        "onPress": [MockFunction],
         "style": Object {
           "height": 72,
         },
-        "subtitle": undefined,
-        "text": undefined,
+        "subtitle": "Some message",
+        "text": "Test list item",
         "textStyle": Object {
           "color": "#58595B",
           "fontFamily": "Roboto",

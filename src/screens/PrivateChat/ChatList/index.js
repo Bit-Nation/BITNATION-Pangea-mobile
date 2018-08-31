@@ -266,6 +266,7 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
               lastMessage={session.messages.length === 0 ? null : session.messages[session.messages.length - 1].text}
               avatar={iconSource}
               onPress={this.onChatSelect}
+              unreadMessages={session.unreadMessages}
               id={session.publicKey}
             />);
           }}
