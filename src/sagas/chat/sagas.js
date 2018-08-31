@@ -237,7 +237,9 @@ export function* handlePanthalassaMessagePersisted(action: PanthalassaMessagePer
     if (receiver) {
       const messages = createGiftedChatMessageObjects(sender, receiver, [action.payload]);
       yield put(addChatMessage(publicKey, messages[0]));
-      yield put(unreadStatusChanged(publicKey, true));
+      if (action.payload.received === true) {
+        yield put(unreadStatusChanged(publicKey, true));
+      }
     }
   } catch (error) {
     console.log(`[TEST] Handle message persisted failed: ${error.message}`);
@@ -252,7 +254,8 @@ export function* handlePanthalassaMessagePersisted(action: PanthalassaMessagePer
 export function* changeUnreadStatus(action: ChangeUnreadStatusAction): Generator<*, *, *> {
   try {
     yield call(panthalassaMarkMessagesAsRead, action.recipientPublicKey);
-  } finally {
-    yield put(unreadStatusChanged(action.recipientPublicKey, action.status));
+    yield put(unreadStatusChanged(action.recipientPublicKey, action.hasUnreadMessages));
+  } catch (error) {
+    console.log(`[CHAT] Failed to set messages as read for ${action.recipientPublicKey}`);
   }
 }
