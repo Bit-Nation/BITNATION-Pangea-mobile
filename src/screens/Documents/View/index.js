@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import {
   View,
   Image,
-  ScrollView,
   Text,
 } from 'react-native';
 

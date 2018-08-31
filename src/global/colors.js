@@ -1,7 +1,5 @@
 // @flow
 
-import { Platform } from 'react-native';
-
 // Bitnation colors
 // Grayish
 const BitnationColor = '#4A90E2'; /* rgb(74, 144, 226) */
