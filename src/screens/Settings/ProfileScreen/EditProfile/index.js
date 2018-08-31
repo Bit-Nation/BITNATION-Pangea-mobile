@@ -184,6 +184,7 @@ class EditProfile extends NavigatorComponent<Props> {
             ref={actionSheet => (this.photoActionSheet = actionSheet)}
             onImageChosen={this.onNewAvatarChosen}
             circleCropping
+            title={i18n.t('screens.profile.edit.editPhotoActionSheet.title')}
           />
         </View>
       </PanelView>
