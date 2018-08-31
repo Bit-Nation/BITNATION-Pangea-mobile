@@ -29,7 +29,7 @@ public class PanthalassaModule extends ReactContextBaseJavaModule {
     final String TAG = "Panthalassa";
     UpStream client, ui;
 
-    public PanthalassaModule (ReactApplicationContext reactContext) {
+    public PanthalassaModule(ReactApplicationContext reactContext) {
         super(reactContext);
     }
 
@@ -44,12 +44,13 @@ public class PanthalassaModule extends ReactContextBaseJavaModule {
             public void run() {
                 try {
                     String newAccount = Panthalassa.newAccountKeys(jsonParams.getString("pw"),
-                                                                jsonParams.getString("pwConfirm"));
+                            jsonParams.getString("pwConfirm"));
                     promise.resolve(newAccount);
                 } catch (Exception e) {
                     e.printStackTrace();
                     promise.reject("error", e.getLocalizedMessage());
-                }            }
+                }
+            }
         }).start();
     }
 
@@ -59,7 +60,7 @@ public class PanthalassaModule extends ReactContextBaseJavaModule {
         new Thread(new Runnable() {
             public void run() {
                 String path;
-                if (android.os.Build.VERSION.SDK_INT >=android.os.Build.VERSION_CODES.LOLLIPOP){
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
                     path = getCurrentActivity().getNoBackupFilesDir().getAbsolutePath();
                 } else {
                     path = getCurrentActivity().getFilesDir().getAbsolutePath();
@@ -93,7 +94,7 @@ public class PanthalassaModule extends ReactContextBaseJavaModule {
         new Thread(new Runnable() {
             public void run() {
                 String path;
-                if (android.os.Build.VERSION.SDK_INT >=android.os.Build.VERSION_CODES.LOLLIPOP){
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
                     path = getCurrentActivity().getNoBackupFilesDir().getAbsolutePath();
                 } else {
                     path = getCurrentActivity().getFilesDir().getAbsolutePath();
@@ -382,7 +383,7 @@ public class PanthalassaModule extends ReactContextBaseJavaModule {
         new Thread(new Runnable() {
             public void run() {
                 try {
-                    Panthalassa.callDAppFunction(jsonParams.getString("dAppId"),
+                    Panthalassa.callDAppFunction(jsonParams.getString("signingKey"),
                             jsonParams.getInt("id"),
                             jsonParams.getString("args"));
                     promise.resolve(true);
@@ -517,13 +518,28 @@ public class PanthalassaModule extends ReactContextBaseJavaModule {
         }).start();
     }
 
+    public void PanthalassaMarkMessagesAsRead(final ReadableMap jsonParams, final Promise promise) throws JSONException {
+        new Thread(new Runnable() {
+            public void run() {
+                try {
+                    Panthalassa.markMessagesAsRead(jsonParams.getString("partner"));
+                    promise.resolve(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    promise.reject("error", e.getLocalizedMessage());
+                }
+            }
+        }).start();
+    }
+
+
     @ReactMethod
     public void PanthalassaCall(final ReadableMap jsonParams, final Promise promise) throws JSONException {
         new Thread(new Runnable() {
             public void run() {
                 try {
                     String response = Panthalassa.call(jsonParams.getString("command"),
-                                                        jsonParams.getString("payload"));
+                            jsonParams.getString("payload"));
                     promise.resolve(response);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -543,7 +559,7 @@ public class PanthalassaModule extends ReactContextBaseJavaModule {
     }
 
     private void prepareEmitter(String data, String channel) {
-        Log.v("Upstream","Received from callback");
+        Log.v("Upstream", "Received from callback");
 
         WritableMap params = Arguments.createMap();
         params.putString(channel, data);
