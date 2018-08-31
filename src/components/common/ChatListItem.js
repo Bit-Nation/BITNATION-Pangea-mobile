@@ -10,11 +10,12 @@ import { Image } from 'react-native';
 
 import ListItem from './ListItem';
 import GlobalStyles from '../../global/Styles';
+import AssetsImages from '../../global/AssetsImages';
 
 type Props = {
   /**
-  * @desc Name of chat partner.
-  */
+   * @desc Name of chat partner.
+   */
   name: string,
   /**
    * @desc Last message to show on preview.
@@ -33,10 +34,14 @@ type Props = {
    * @param Id of item that was pressed.
    */
   onPress: (id: string) => void,
+  /**
+   * @desc unreadMessages indicator for new messages in Chat
+   */
+  unreadMessages: boolean,
 }
 
 const ChatListItem = ({
-  name, id, onPress, avatar, lastMessage,
+  name, id, onPress, avatar, lastMessage, unreadMessages,
 }: Props) => (
   <ListItem
     id={id}
@@ -46,6 +51,9 @@ const ChatListItem = ({
     iconSource={avatar}
     style={GlobalStyles.detailedItemContainer}
     subtitle={lastMessage}
+    AdditionalLeftView={() =>
+      <Image source={unreadMessages ? AssetsImages.ChatUI.newMsgIcon : null} style={GlobalStyles.sectionListNewMessage} />
+    }
   />
 );
 
