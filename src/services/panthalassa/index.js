@@ -55,11 +55,11 @@ export async function panthalassaNewAccountKeys(password: string): Promise<strin
 
 /**
  * @desc Creates new accounts keys (Account ConfigurationStore) from mnemonic/password as data
- * @param {string} password Account's password
  * @param {string} mnemonic Account's mnemonic
+ * @param {string} password Account's password
  * @returns {Promise<*>} {string} Account's new account ConfigurationStore
  */
-export async function panthalassaNewAccountKeysFromMnemonic(password: string, mnemonic: string): Promise<string> {
+export async function panthalassaNewAccountKeysFromMnemonic(mnemonic: string, password: string): Promise<string> {
   return Panthalassa.PanthalassaNewAccountKeysFromMnemonic({
     mne: mnemonic,
     pw: password,

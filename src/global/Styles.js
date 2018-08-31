@@ -970,6 +970,11 @@ const styles = {
     textAlign: 'center',
   },
 
+  forgetButton: {
+    backgroundColor: 'transparent', alignSelf: 'stretch', borderRadius: 0,
+  },
+  forgetButtonText: { color: '#58595B', fontSize: 15, fontWeight: 'bold' },
+
 };
 
 export default styles;
