@@ -36,7 +36,7 @@
 }
 
 RCT_EXPORT_MODULE();
-  
+
 RCT_REMAP_METHOD(PanthalassaNewAccountKeys,
                  panthalassaNewAccountKeysWithParams:(NSDictionary *)config
                  resolver:(RCTPromiseResolveBlock)resolve
@@ -63,9 +63,9 @@ RCT_REMAP_METHOD(PanthalassaNewAccountKeysFromMnemonic,
   NSString *newAccount;
   NSError *error = nil;
   newAccount = PanthalassaNewAccountKeysFromMnemonic([RCTConvert NSString:config[@"mne"]],
-                                         [RCTConvert NSString:config[@"pw"]],
-                                         [RCTConvert NSString:config[@"pwConfirm"]],
-                                         &error);
+                                                     [RCTConvert NSString:config[@"pw"]],
+                                                     [RCTConvert NSString:config[@"pwConfirm"]],
+                                                     &error);
   
   if (error == nil) {
     resolve(newAccount);
@@ -117,9 +117,9 @@ RCT_REMAP_METHOD(PanthalassaStartFromMnemonic,
                                                         YES) firstObject];
   
   response = PanthalassaStartFromMnemonic(path, [RCTConvert NSString:config[@"config"]],
-                                                   [RCTConvert NSString:config[@"mnemonic"]],
+                                          [RCTConvert NSString:config[@"mnemonic"]],
                                           upstreamClient, upstreamUI,
-                                                   &error);
+                                          &error);
   NSNumber *val = [NSNumber numberWithBool:response];
   
   if (error == nil) {
@@ -175,7 +175,7 @@ RCT_REMAP_METHOD(PanthalassaExportAccountStore,
 RCT_REMAP_METHOD(PanthalassaStop,
                  stopPanthalassaWithResolver:(RCTPromiseResolveBlock)resolve
                  rejecter:(RCTPromiseRejectBlock)reject) {
-    
+  
   BOOL response;
   NSError *error = nil;
   response = PanthalassaStop(&error);
@@ -268,10 +268,10 @@ RCT_REMAP_METHOD(PanthalassaSendResponse,
   NSError *error = nil;
   
   response = PanthalassaSendResponse([RCTConvert NSString:config[@"id"]],
-                                          [RCTConvert NSString:config[@"data"]],
-                                          [RCTConvert NSString:config[@"responseError"]],
-                                          [[RCTConvert NSNumber:config[@"timeout"]] longValue],
-                                          &error);
+                                     [RCTConvert NSString:config[@"data"]],
+                                     [RCTConvert NSString:config[@"responseError"]],
+                                     [[RCTConvert NSNumber:config[@"timeout"]] longValue],
+                                     &error);
   
   NSNumber *val = [NSNumber numberWithBool:response];
   
@@ -332,7 +332,7 @@ RCT_REMAP_METHOD(PanthalassaConnectToDAppDevHost,
   BOOL response;
   NSError *error = nil;
   response = PanthalassaConnectToDAppDevHost([RCTConvert NSString:config[@"address"]],
-                                            &error);
+                                             &error);
   
   NSNumber *val = [NSNumber numberWithBool:response];
   
@@ -390,7 +390,7 @@ RCT_REMAP_METHOD(PanthalassaStartDApp,
   
   response = PanthalassaStartDApp([RCTConvert NSString:config[@"dAppSingingKeyStr"]],
                                   [[RCTConvert NSNumber:config[@"timeout"]] longValue],
-                                 &error);
+                                  &error);
   
   NSNumber *val = [NSNumber numberWithBool:response];
   
@@ -408,10 +408,10 @@ RCT_REMAP_METHOD(PanthalassaCallDAppFunction,
   
   BOOL response;
   NSError *error = nil;
-  response = PanthalassaCallDAppFunction([RCTConvert NSString:config[@"dAppId"]],
+  response = PanthalassaCallDAppFunction([RCTConvert NSString:config[@"signingKey"]],
                                          [[RCTConvert NSNumber:config[@"id"]] longValue],
                                          [RCTConvert NSString:config[@"args"]],
-                                             &error);
+                                         &error);
   
   NSNumber *val = [NSNumber numberWithBool:response];
   
@@ -431,7 +431,7 @@ RCT_REMAP_METHOD(PanthalassaEthPubToAddress,
   NSError *error = nil;
   
   response = PanthalassaEthPubToAddress([RCTConvert NSString:config[@"pub"]],
-                                          &error);
+                                        &error);
   
   if (error == nil) {
     resolve(response);
@@ -463,7 +463,7 @@ RCT_REMAP_METHOD(PanthalassaConnectLogger,
   BOOL response;
   NSError *error = nil;
   response = PanthalassaConnectLogger([RCTConvert NSString:config[@"address"]],
-                                         &error);
+                                      &error);
   
   NSNumber *val = [NSNumber numberWithBool:response];
   
@@ -485,7 +485,7 @@ RCT_REMAP_METHOD(PanthalassaMessages,
   response = PanthalassaMessages([RCTConvert NSString:config[@"partner"]],
                                  [RCTConvert NSString:config[@"startStr"]],
                                  [[RCTConvert NSNumber:config[@"amount"]] longValue],
-                                  &error);
+                                 &error);
   
   if (error == nil) {
     resolve(response);
@@ -503,7 +503,7 @@ RCT_REMAP_METHOD(PanthalassaSendMessage,
   NSError *error = nil;
   response = PanthalassaSendMessage([RCTConvert NSString:config[@"partner"]],
                                     [RCTConvert NSString:config[@"message"]],
-                                      &error);
+                                    &error);
   
   NSNumber *val = [NSNumber numberWithBool:response];
   
@@ -522,7 +522,7 @@ RCT_REMAP_METHOD(PanthalassaSetLogger,
   BOOL response;
   NSError *error = nil;
   response = PanthalassaSetLogger([RCTConvert NSString:config[@"level"]],
-                                    &error);
+                                  &error);
   
   NSNumber *val = [NSNumber numberWithBool:response];
   
@@ -534,9 +534,9 @@ RCT_REMAP_METHOD(PanthalassaSetLogger,
 }
 
 RCT_REMAP_METHOD(PanthalassaStopDApp,
-                  PanthalassaStopDAppWithResolver:(NSDictionary *)config
-                  resolver:(RCTPromiseResolveBlock)resolve
-                  rejecter:(RCTPromiseRejectBlock)reject) {
+                 PanthalassaStopDAppWithResolver:(NSDictionary *)config
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject) {
   
   BOOL response;
   NSError *error = nil;
@@ -565,6 +565,24 @@ RCT_REMAP_METHOD(PanthalassaDApps,
     reject(@"error", error.localizedDescription, error);
   }
 }
+
+RCT_REMAP_METHOD(PanthalassaMarkMessagesAsRead,
+                 PanthalassaMarkMessagesAsReadWithResolver:(NSDictionary *)config
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject) {
+  BOOL response;
+  
+  NSError *error = nil;
+  response = PanthalassaMarkMessagesAsRead([RCTConvert NSString:config[@"partner"]], &error);
+  NSNumber *val = [NSNumber numberWithBool:response];
+  
+  if (error == nil) {
+    resolve(val);
+  } else {
+    reject(@"error", error.localizedDescription, error);
+  }
+}
+
 
 RCT_REMAP_METHOD(PanthalassaCall,
                  PanthalassaCallWithResolver:(NSDictionary *)config
