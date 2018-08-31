@@ -517,6 +517,21 @@ public class PanthalassaModule extends ReactContextBaseJavaModule {
         }).start();
     }
 
+    @ReactMethod
+    public void PanthalassaCall(final ReadableMap jsonParams, final Promise promise) throws JSONException {
+        new Thread(new Runnable() {
+            public void run() {
+                try {
+                    String response = Panthalassa.call(jsonParams.getString("command"),
+                                                        jsonParams.getString("payload"));
+                    promise.resolve(response);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    promise.reject("error", e.getLocalizedMessage());
+                }
+            }
+        }).start();
+    }
     //=====
 
     private void sendEvent(ReactContext reactContext,
