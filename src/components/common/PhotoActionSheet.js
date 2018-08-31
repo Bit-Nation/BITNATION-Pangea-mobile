@@ -18,6 +18,10 @@ type Props = {
    * @desc Flag to set if circle cropping should be enabled.
    */
   circleCropping: boolean,
+  /**
+   * @desc Title of action sheet.
+   */
+  title: string,
 };
 
 /**
@@ -68,8 +72,6 @@ export default class PhotoActionSheet extends React.Component<Props> {
         :
         await ImagePicker.openPicker(options);
 
-      console.log(`[NICE] result: ${JSON.stringify(result)}`);
-
       if (result.data) {
         this.props.onImageChosen(result.data, result.mime);
       }
@@ -100,7 +102,7 @@ export default class PhotoActionSheet extends React.Component<Props> {
         ref={(c) => {
           this.actionSheet = c;
         }}
-        title={i18n.t('screens.profile.edit.editPhotoActionSheet.title')}
+        title={this.props.title}
         options={options}
         cancelButtonIndex={options.length - 1}
         onPress={this.onSelectPhotoOption}
