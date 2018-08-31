@@ -1,7 +1,7 @@
 // @flow
 
 import * as React from 'react';
-import { View, Alert, Platform } from 'react-native';
+import { View, Platform } from 'react-native';
 import _ from 'lodash';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { connect } from 'react-redux';
