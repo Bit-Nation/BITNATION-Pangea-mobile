@@ -144,6 +144,11 @@
       "subtitle": "",
       "confirm": "$t(common.ok)"
     },
+    "passwordRecoveryFailed": {
+      "title": "Entered private key does not match the account.",
+      "subtitle": "",
+      "confirm": "$t(common.ok)"
+    },
     "walletRequired": {
       "title": "No wallet",
       "subtitle": "You need to setup a wallet first",
@@ -203,6 +208,11 @@
     "successTransaction": {
       "title": "Success",
       "subtitle": "Your transaction has been successfully sent",
+      "confirm": "$t(common.ok)"
+    },
+    "successResetPassword": {
+      "title": "Success",
+      "subtitle": "Your password has been successfully changed",
       "confirm": "$t(common.ok)"
     }
   },
@@ -543,7 +553,8 @@
     "password": {
       "enterInstruction": "Enter password:",
       "createInstruction": "Enter new password:",
-      "verifyInstruction": "Enter password again:"
+      "verifyInstruction": "Enter password again:",
+      "forgetInstruction": "Forgot Password?"
     },
     "confirmTransaction": {
       "title": "Confirm Transaction",

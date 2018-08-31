@@ -1,7 +1,7 @@
 // @flow
 
 import * as React from 'react';
-import { View, Alert, Platform } from 'react-native';
+import { View, Platform } from 'react-native';
 import _ from 'lodash';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { connect } from 'react-redux';
@@ -29,8 +29,8 @@ import type { State as KeyState } from '../../../reducers/key';
 import type { Mnemonic } from '../../../types/Mnemonic';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import AccountsService from '../../../services/accounts';
-import { errorAlert } from '../../../global/alerts';
-import { mnemonicConfirmed } from '../../../actions/accounts';
+import { alert, errorAlert } from '../../../global/alerts';
+import { mnemonicConfirmed, validateMnemonicWithAccount } from '../../../actions/accounts';
 import { GeneralError } from '../../../global/errors/common';
 
 const DONE_BUTTON = 'DONE_BUTTON';
@@ -40,10 +40,20 @@ type Props = {
    * @desc Flag that shows if user is currently verifying private key.
    */
   isVerification: boolean,
+
+  /**
+   * @desc Flag that shows if user is currently on reset pass process.
+   */
+  isOnResetPassProcess: boolean,
+
+  /**
+   * @desc Id of account which mnemonic will be entered.
+   */
+  accountId: string,
   /**
    * @desc Callback to be called when user done mnemonic entering.
    */
-  onDoneEntering: (Mnemonic) => void,
+  onDoneEntering: (mne?: Mnemonic) => void,
   /**
    * @desc Callback to be called when user cancel mnemonic entering.
    */
@@ -68,6 +78,10 @@ type Actions = {
    * @param {function} callback Function that is called when that information is recorded with flag if it was successful.
    */
   mnemonicConfirmed: (callback: (success: boolean) => void) => void,
+  /**
+   * @desc Action to perform a login.
+   */
+  validateMnemonicWithAccount: (accountId: string, callback: (success: boolean) => void) => void,
 }
 
 type State = {
@@ -136,10 +150,16 @@ class EnterKeyScreen extends NavigatorComponent<Actions & KeyState & Props, Stat
   }
 
   showIncorrectMnemonicAlert = () => {
-    Alert.alert(
-      i18n.t('alerts.incorrectKeyEntered.title'),
-      i18n.t('alerts.incorrectKeyEntered.subtitle'),
-      [{ text: i18n.t('alerts.incorrectKeyEntered.confirm'), onPress: () => null }],
+    alert(
+      'incorrectKeyEntered',
+      [{ name: 'confirm' }],
+    );
+  };
+
+  showFailedPasswordRecoveryAlert = () => {
+    alert(
+      'passwordRecoveryFailed',
+      [{ name: 'confirm' }],
     );
   };
 
@@ -179,7 +199,17 @@ class EnterKeyScreen extends NavigatorComponent<Actions & KeyState & Props, Stat
   }
 
   onDonePressed = () => {
-    this.props.validateMnemonic();
+    if (this.props.isOnResetPassProcess === true) {
+      this.props.validateMnemonicWithAccount(this.props.accountId, (success) => {
+        if (success) {
+          this.props.onDoneEntering();
+        } else {
+          this.showFailedPasswordRecoveryAlert();
+        }
+      });
+    } else {
+      this.props.validateMnemonic();
+    }
   };
 
   onNextPressed = () => {
@@ -306,6 +336,7 @@ class EnterKeyScreen extends NavigatorComponent<Actions & KeyState & Props, Stat
 
 EnterKeyScreen.defaultProps = {
   isVerification: false,
+  isOnResetPassProcess: false,
 };
 
 const mapStateToProps = state => ({
@@ -322,6 +353,9 @@ const mapDispatchToProps = dispatch => ({
   },
   mnemonicConfirmed(callback) {
     dispatch(mnemonicConfirmed(callback));
+  },
+  validateMnemonicWithAccount(accountId, callback) {
+    dispatch(validateMnemonicWithAccount(accountId, callback));
   },
 });
 
