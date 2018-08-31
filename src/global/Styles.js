@@ -518,6 +518,14 @@ const styles = {
     paddingLeft: 4,
   },
 
+  textInputLabelText: {
+    ...defaultTextStyles.caption1,
+  },
+
+  labeledTextInputContainer: {
+    minHeight: 72,
+  },
+
   // text inside of text input fields prompting user to enter information,
   // e.g. 'Name' or 'Country'
   placeHolderText: {
@@ -632,7 +640,6 @@ const styles = {
   // e.g. NationListItem Text very BOLD
   listItemTextVeryBold: {
     ...defaultTextStyles.bodyBlack,
-    color: Colors.BitnationDarkGrayColor,
     flex: 1,
   },
 
@@ -750,14 +757,6 @@ const styles = {
     color: 'white',
     fontSize: 15,
     fontWeight: '900',
-  },
-
-  settingsButton: {
-    height: 54,
-    backgroundColor: '#FF8B00',
-    alignSelf: 'stretch',
-    borderRadius: 0,
-    bottom: 0,
   },
 
   tabsContainerStyle: {
@@ -880,7 +879,7 @@ const styles = {
 
   actionButton: {
     borderRadius: 0,
-    height: 44,
+    height: 50,
     justifyContent: 'center',
     backgroundColor: Colors.BitnationActionColor,
   },
@@ -974,6 +973,11 @@ const styles = {
     backgroundColor: Colors.BitnationLinkOrangeColor,
   },
 
+};
+
+styles.multilineTextInput = {
+  ...styles.textInput,
+  flex: 0,
 };
 
 export default styles;

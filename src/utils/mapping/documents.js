@@ -9,8 +9,7 @@ export function convertFromPanthalassa(data: PanthalassaDocument): Document {
   return {
     id: data.id,
     name: data.title,
-    // @todo Add description
-    description: '',
+    description: data.description,
     data: data.content,
     mimeType: data.mime_type,
   };
@@ -25,7 +24,6 @@ export function convertToPanthalassa(document: Document): PanthalassaDocument {
   return {
     id: document.id,
     title: document.name,
-    // @todo Check description key
     description: document.description,
     content: document.data,
     mime_type: document.mimeType,

@@ -574,6 +574,18 @@
         "edit": "Edit metadata",
         "delete": "Delete document",
       }
+    },
+    "documentModify": {
+      "title": "New document",
+      "fields": {
+        "title": "Title",
+        "description": "Description"
+      },
+      "placeholder": {
+        "title": "Enter title",
+        "description": "Enter description"
+      },
+      "save": "Save document"
     }
   },
   "testingMode": {

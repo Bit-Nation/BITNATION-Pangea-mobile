@@ -33,7 +33,6 @@ import SettingsScreen from './Settings/SettingsList';
 import SecuritySettingsScreen from './Settings/Security';
 import AccountsAccess from './Accounts/AccountAccessContainer';
 import ConfirmationContainer from './ConfirmationContainer';
-import { screen } from '../global/Screens';
 import EnterPasscodeScreen from './Passcode/EnterPasscodeContainer';
 import CreatePasscodeScreen from './Passcode/CreatePasscodeContainer';
 import ChatListScreen from './PrivateChat/ChatList';
@@ -41,6 +40,8 @@ import PrivateChatScreen from './PrivateChat/Chat';
 import DAppModalScreen from './Dapp/ModalScreen';
 import DocumentsListScreen from './Documents/List';
 import DocumentViewScreen from './Documents/View';
+import DocumentModifyScreen from './Documents/Modify';
+import { screen } from '../global/Screens';
 
 /**
  * @desc Registers screens for React Native Navigation.
@@ -87,4 +88,5 @@ export default function registerScreens(store: Object, Provider: Object) {
   Navigation.registerComponent(screen('DAPP_MODAL_SCREEN').screen, () => DAppModalScreen, store, Provider);
   Navigation.registerComponent(screen('DOCUMENTS_LIST_SCREEN').screen, () => DocumentsListScreen, store, Provider);
   Navigation.registerComponent(screen('DOCUMENT_VIEW_SCREEN').screen, () => DocumentViewScreen, store, Provider);
+  Navigation.registerComponent(screen('DOCUMENT_MODIFY_SCREEN').screen, () => DocumentModifyScreen, store, Provider);
 }
