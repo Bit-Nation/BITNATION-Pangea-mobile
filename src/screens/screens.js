@@ -40,6 +40,7 @@ import ChatListScreen from './PrivateChat/ChatList';
 import PrivateChatScreen from './PrivateChat/Chat';
 import DAppModalScreen from './Dapp/ModalScreen';
 import DocumentsListScreen from './Documents/List';
+import DocumentViewScreen from './Documents/View';
 
 /**
  * @desc Registers screens for React Native Navigation.
@@ -85,4 +86,5 @@ export default function registerScreens(store: Object, Provider: Object) {
   Navigation.registerComponent(screen('PRIVATE_CHAT_SCREEN').screen, () => PrivateChatScreen, store, Provider);
   Navigation.registerComponent(screen('DAPP_MODAL_SCREEN').screen, () => DAppModalScreen, store, Provider);
   Navigation.registerComponent(screen('DOCUMENTS_LIST_SCREEN').screen, () => DocumentsListScreen, store, Provider);
+  Navigation.registerComponent(screen('DOCUMENT_VIEW_SCREEN').screen, () => DocumentViewScreen, store, Provider);
 }

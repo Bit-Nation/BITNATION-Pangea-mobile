@@ -568,6 +568,12 @@
     },
     "documentsList": {
       "title": "Documents"
+    },
+    "documentView": {
+      "actions": {
+        "edit": "Edit metadata",
+        "delete": "Delete document",
+      }
     }
   },
   "testingMode": {

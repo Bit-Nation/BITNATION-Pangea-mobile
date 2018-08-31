@@ -14,22 +14,18 @@ import { screen } from '../../../global/Screens';
 import styles from './styles';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import ScreenTitle from '../../../components/common/ScreenTitle';
-import type { Document } from '../../../types/Documents';
 import i18n from '../../../global/i18n';
 import { openDocument, startDocumentCreation } from '../../../actions/documents';
 import Loading from '../../../components/common/Loading';
 import type { State as DocumentsState } from '../../../reducers/documents';
 import DocumentListItem from '../../../components/common/DocumentListItem';
+import { getDocument } from '../../../reducers/documents';
 
 type Props = {
   /**
    * @desc React Native Navigation navigator object.
    */
   navigator: Navigator,
-  /**
-   * @desc Array of accounts to be displayed.
-   */
-  documents: Array<Document>,
 };
 
 type Actions = {
@@ -56,8 +52,12 @@ class DocumentsListScreen extends NavigatorComponent<Props & DocumentsState & Ac
 
   onSelectItem = (id) => {
     this.props.openDocument(id);
+    const document = getDocument(this.props, id);
+    if (document == null) return;
+
     this.props.navigator.showModal({
-      ...screen('ENTER_PASSCODE_SCREEN'),
+      ...screen('DOCUMENT_VIEW_SCREEN'),
+      title: document.name,
       passProps: {
         accountId: id,
         onCancel: () => this.props.navigator.dismissModal(),
