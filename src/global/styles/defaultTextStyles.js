@@ -214,7 +214,7 @@ const defaultTextStyles = {
     fontSize: 17,
     lineHeight: 22,
     letterSpacing: 0,
-    color: Colors.BitnationVeryLightColor,
+    color: Colors.BitnationDarkGrayColor,
   },
 
   callout: {

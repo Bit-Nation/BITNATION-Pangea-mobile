@@ -1,22 +1,11 @@
 // @flow
 
 import { MediaQueryStyleSheet } from 'react-native-responsive';
-import { StyleSheet } from 'react-native';
 import GlobalStyles from '../../../global/Styles';
 import Colors from '../../../global/colors';
 
 const styles = MediaQueryStyleSheet.create({
   ...GlobalStyles,
-
-  /* Example of over-writing a global style sheet value */
-  /*
-  tabTextStyle: {
-    color: Colors.Red,
-  },
-  */
-  fabStyle: {
-    backgroundColor: '#FF8B00',
-  },
 
   modalContainer: {
     flex: 1,
@@ -71,27 +60,19 @@ const styles = MediaQueryStyleSheet.create({
   },
   modalMoreContainer: {
     flex: 1,
-    backgroundColor: 'transparent',
+    backgroundColor: Colors.lightFade,
     paddingLeft: 100,
-    paddingRight: 10,
-    paddingTop: GlobalStyles.statusBar.height,
+    paddingRight: 8,
+    paddingTop: GlobalStyles.statusBar.height + 8,
   },
   modalMoreContent: {
     backgroundColor: 'white',
-    shadowColor: Colors.BitnationDarkGrayColor,
-    shadowOffset: { width: 2, height: 4 },
-    shadowOpacity: 0.8,
-    elevation: 2,
   },
   modalMenuItem: {
-    paddingVertical: 10,
+    height: 48,
     alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'space-between',
-  },
-  modalMenuItemBorderBottom: {
-    borderBottomColor: Colors.BitnationBlackAlphaColor,
-    borderBottomWidth: StyleSheet.hairlineWidth,
   },
   modalMenuText: {
     paddingLeft: 15,
