@@ -7,11 +7,8 @@ import {
   Text,
   TouchableOpacity,
   TextInput,
-  Alert,
 } from 'react-native';
-import ImagePicker from 'react-native-image-crop-picker';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { ActionSheet } from 'native-base';
 
 import NavigatorComponent from '../../../../components/common/NavigatorComponent';
 import PanelView from '../../../../components/common/PanelView';
@@ -24,6 +21,7 @@ import i18n from '../../../../global/i18n';
 import styles from './styles';
 import ScreenTitle from '../../../../components/common/ScreenTitle';
 import { androidNavigationButtons } from '../../../../global/Screens';
+import PhotoActionSheet from '../../../../components/common/PhotoActionSheet';
 
 const DONE_BUTTON = 'DONE_BUTTON';
 
@@ -61,12 +59,12 @@ export type Props = {
 };
 
 class EditProfile extends NavigatorComponent<Props> {
-  actionSheet: any;
+  photoActionSheet: any;
 
   constructor(props: Props) {
     super(props);
 
-    this.actionSheet = null;
+    this.photoActionSheet = null;
     this.setNavigationButtons(saveShouldBeEnabled(this.props.account, this.props.editingAccount));
   }
 
@@ -134,7 +132,7 @@ class EditProfile extends NavigatorComponent<Props> {
 
     return (
       <View style={styles.avatarContainerLarge}>
-        <TouchableOpacity onPress={this._onEditAvatar}>
+        <TouchableOpacity onPress={this.onEditAvatar}>
           <View style={styles.avatarChangeContainer}>
             <Image source={avatarSource} style={styles.avatarLarge} />
             <Text style={styles.editItemLabel}>
@@ -164,7 +162,7 @@ class EditProfile extends NavigatorComponent<Props> {
             <View style={styles.formRow}>
               <TextInput
                 value={this.props.editingAccount.name}
-                onChangeText={text => this._onChange('name', text)}
+                onChangeText={text => this.onChange('name', text)}
                 style={styles.textInput}
                 placeholder={i18n.t('screens.profile.edit.name')}
                 placeholderTextColor={Colors.placeholderTextColor}
@@ -174,7 +172,7 @@ class EditProfile extends NavigatorComponent<Props> {
             <View style={styles.formRow}>
               <TextInput
                 value={this.props.editingAccount.location}
-                onChangeText={text => this._onChange('location', text)}
+                onChangeText={text => this.onChange('location', text)}
                 style={styles.textInput}
                 placeholder={i18n.t('screens.profile.edit.location')}
                 placeholderTextColor={Colors.placeholderTextColor}
@@ -182,74 +180,28 @@ class EditProfile extends NavigatorComponent<Props> {
               />
             </View>
           </View>
-          <ActionSheet
-            ref={(c) => {
-              this.actionSheet = c;
-            }}
+          <PhotoActionSheet
+            ref={actionSheet => (this.photoActionSheet = actionSheet)}
+            onImageChosen={this.onNewAvatarChosen}
+            circleCropping
+            title={i18n.t('screens.profile.edit.editPhotoActionSheet.title')}
           />
-
         </View>
       </PanelView>
     );
   }
 
-  _onChange = (field, value) => {
+  onNewAvatarChosen = (data: string) => {
+    this.props.onAccountChanged('avatar', data);
+  };
+
+  onChange = (field: string, value: any) => {
     this.props.onAccountChanged(field, value);
   };
 
-  _onEditAvatar = () => {
-    const PHOTO_LIBRARY = 0;
-    const CAMERA = 1;
-
-    if (this.actionSheet !== null) {
-      this.actionSheet._root.showActionSheet(
-        {
-          options: [
-            i18n.t('screens.profile.edit.editPhotoActionSheet.photoLibrary'),
-            i18n.t('screens.profile.edit.editPhotoActionSheet.takePhoto'),
-            i18n.t('screens.profile.edit.editPhotoActionSheet.cancel'),
-          ],
-          cancelButtonIndex: 2,
-          title: i18n.t('screens.profile.edit.editPhotoActionSheet.title'),
-        },
-        (buttonIndex) => {
-          switch (buttonIndex) {
-            case PHOTO_LIBRARY:
-              this._openPicker(false);
-              break;
-            case CAMERA:
-              this._openPicker(true);
-              break;
-            default:
-              break;
-          }
-        },
-      );
-    }
-  };
-
-  _openPicker = async (isCamera) => {
-    const options = {
-      cropping: true,
-      mediaType: 'photo',
-      cropperCircleOverlay: true,
-      compressImageQuality: 0.4,
-      includeBase64: true,
-    };
-
-    try {
-      const result = isCamera ?
-        await ImagePicker.openCamera(options)
-        :
-        await ImagePicker.openPicker(options);
-
-      if (result.data) {
-        this.props.onAccountChanged('avatar', result.data);
-      }
-    } catch (error) {
-      if (error.code !== 'E_PICKER_CANCELLED') {
-        Alert.alert(i18n.t('error.noCamera'));
-      }
+  onEditAvatar = () => {
+    if (this.photoActionSheet != null) {
+      this.photoActionSheet.show();
     }
   };
 }

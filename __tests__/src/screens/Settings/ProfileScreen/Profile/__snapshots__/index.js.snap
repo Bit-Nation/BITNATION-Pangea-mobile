@@ -166,11 +166,10 @@ ShallowWrapper {
           onPress={[Function]}
           style={
             Object {
-              "alignSelf": "stretch",
-              "backgroundColor": "#FF8B00",
+              "backgroundColor": "#FB8C25",
               "borderRadius": 0,
-              "bottom": 0,
-              "height": 54,
+              "height": 50,
+              "justifyContent": "center",
             }
           }
           styleTitle={
@@ -486,11 +485,10 @@ ShallowWrapper {
           "enabled": true,
           "onPress": [Function],
           "style": Object {
-            "alignSelf": "stretch",
-            "backgroundColor": "#FF8B00",
+            "backgroundColor": "#FB8C25",
             "borderRadius": 0,
-            "bottom": 0,
-            "height": 54,
+            "height": 50,
+            "justifyContent": "center",
           },
           "styleTitle": Object {
             "color": "white",
@@ -613,11 +611,10 @@ ShallowWrapper {
             onPress={[Function]}
             style={
               Object {
-                "alignSelf": "stretch",
-                "backgroundColor": "#FF8B00",
+                "backgroundColor": "#FB8C25",
                 "borderRadius": 0,
-                "bottom": 0,
-                "height": 54,
+                "height": 50,
+                "justifyContent": "center",
               }
             }
             styleTitle={
@@ -933,11 +930,10 @@ ShallowWrapper {
             "enabled": true,
             "onPress": [Function],
             "style": Object {
-              "alignSelf": "stretch",
-              "backgroundColor": "#FF8B00",
+              "backgroundColor": "#FB8C25",
               "borderRadius": 0,
-              "bottom": 0,
-              "height": 54,
+              "height": 50,
+              "justifyContent": "center",
             },
             "styleTitle": Object {
               "color": "white",

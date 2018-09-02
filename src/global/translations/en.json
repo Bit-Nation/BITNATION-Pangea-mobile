@@ -534,9 +534,11 @@
       "switchAccounts": "Switch accounts",
       "connectToDAppHost": "Connect to DApp host",
       "connectToDAppLogger": "Connect debug logger",
+      "documents": "Documents",
       "sections": {
         "account": "Account",
-        "dApps": "DApp development"
+        "dApps": "DApp development",
+        "notary": "Notary"
       }
     },
     "securitySettings": {
@@ -574,6 +576,28 @@
       "processor": "Processor",
       "gwei": "Gwei",
       "eth": "ETH"
+    },
+    "documentsList": {
+      "title": "Documents",
+      "actionSheetTitle": "Select document to store"
+    },
+    "documentView": {
+      "actions": {
+        "edit": "Edit metadata",
+        "delete": "Delete document"
+      }
+    },
+    "documentModify": {
+      "title": "New document",
+      "fields": {
+        "title": "Title",
+        "description": "Description"
+      },
+      "placeholder": {
+        "title": "Enter title",
+        "description": "Enter description"
+      },
+      "save": "Save document"
     }
   },
   "testingMode": {
