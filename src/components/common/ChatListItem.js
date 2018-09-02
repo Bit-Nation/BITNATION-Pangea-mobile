@@ -46,10 +46,10 @@ const ChatListItem = ({
   <ListItem
     id={id}
     text={name}
-    textStyle={GlobalStyles.chatTitleStyle}
+    textStyle={GlobalStyles.detailedItemTitle}
     onPress={onPress}
     iconSource={avatar}
-    style={GlobalStyles.chatListItem}
+    style={GlobalStyles.detailedItemContainer}
     subtitle={lastMessage}
     AdditionalLeftView={() =>
       <Image source={unreadMessages ? AssetsImages.ChatUI.newMsgIcon : null} style={GlobalStyles.sectionListNewMessage} />

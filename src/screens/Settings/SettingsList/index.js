@@ -78,6 +78,9 @@ class SettingsListScreen extends NavigatorComponent<Props> {
           },
         });
         break;
+      case 'documents':
+        this.props.navigator.push(screen('DOCUMENTS_LIST_SCREEN'));
+        break;
       default:
         break;
     }
@@ -106,6 +109,12 @@ class SettingsListScreen extends NavigatorComponent<Props> {
           'connectToDAppLogger',
         ],
       },
+      {
+        title: i18n.t('screens.settings.sections.notary'),
+        data: [
+          'documents',
+        ],
+      },
     ];
 
     return (
@@ -132,7 +141,7 @@ class SettingsListScreen extends NavigatorComponent<Props> {
           styleTitle={styles.settingsText}
           title={i18n.t('screens.settings.switchAccounts').toUpperCase()}
           onPress={this.props.logout}
-          style={styles.settingsButton}
+          style={styles.actionButton}
         />
       </View>
     );

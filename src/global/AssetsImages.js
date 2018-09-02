@@ -34,6 +34,8 @@ const submitActionIcon = require('../assets/images/toolbarIconSubmit.png');
 const userCitizenIcon = require('../assets/images/avatarCitizen.png');
 
 const disclosureRowIcon = require('../assets/images/disclosure.png');
+const moreMenuIcon = require('../assets/images/moreIcon.png');
+const closeIcon = require('../assets/images/closeIcon.png');
 
 // Chat Nations UI
 const signalIcon0 = require('../assets/images/signal_icon_0.png');
@@ -60,6 +62,8 @@ const Images = {
   privateKeyDemo,
   userCitizenIcon,
   disclosureRowIcon,
+  moreMenuIcon,
+  closeIcon,
   TabIcons: {
     dashboard: dashboardTabIcon,
     chat: chatTabIcon,

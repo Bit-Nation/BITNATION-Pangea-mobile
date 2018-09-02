@@ -323,3 +323,16 @@ export async function panthalassaStopDApp(dAppSingingKeyStr: string): Promise<bo
 export async function panthalassaMarkMessagesAsRead(partner: string): Promise<boolean> {
   return Panthalassa.PanthalassaMarkMessagesAsRead({ partner });
 }
+
+/**
+ * @desc TODO
+ * @param {string} command TODO
+ * @param {Object} payload TODO
+ * @returns {string} TODO
+ */
+export async function panthalassaCall(command: string, payload: Object = {}): Promise<string> {
+  return Panthalassa.PanthalassaCall({
+    command,
+    payload: JSON.stringify(payload),
+  });
+}
