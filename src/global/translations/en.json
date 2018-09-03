@@ -322,6 +322,7 @@
       "newChat": "New Chat",
       "invalidKey": "Invalid or Missing Key",
       "inviteSent": "Invite Sent",
+      "dAppMessagePreview": "DApp message...",
       "menu": {
         "filterChatList": "Filter Chat List",
         "markAllRead": "Mark all as read",
