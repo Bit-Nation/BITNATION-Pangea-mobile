@@ -32,6 +32,7 @@ import { panthalassaIdentityPublicKey } from '../../../services/panthalassa';
 import { imageSource } from '../../../utils/profile';
 import AssetsImages from '../../../global/AssetsImages';
 import MoreMenuModal from '../../../components/common/MoreMenuModal';
+import { GiftedChatMessageType } from '../../../types/Chat';
 
 const MORE_BUTTON = 'MORE_BUTTON';
 const MORE_MODAL_KEY = 'moreMenu';
@@ -261,9 +262,16 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
           renderItem={(item) => {
             const session: ChatSessionType = item.item;
             const iconSource = imageSource(session.profile.image) || AssetsImages.avatarIcon;
+            const messagePreview = ((message: GiftedChatMessageType | null) => {
+              if (message == null) return null;
+              if (message.dAppMessage == null) return message.text;
+
+              // @todo Add preview for DApp messages.
+              return i18n.t('screens.chat.dAppMessagePreview');
+            })(session.messages.length === 0 ? null : session.messages[session.messages.length - 1]);
             return (<ChatListItem
               name={session.profile.name}
-              lastMessage={session.messages.length === 0 ? null : session.messages[session.messages.length - 1].text}
+              lastMessage={messagePreview}
               avatar={iconSource}
               onPress={this.onChatSelect}
               unreadMessages={session.unreadMessages}
