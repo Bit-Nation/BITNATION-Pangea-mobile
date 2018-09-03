@@ -6,16 +6,16 @@ export type DApp = {
 }
 
 export type PanthalassaDApp = {
-  name: { [string]: string },
-  code: string,
-  used_signing_key: string,
-  signature: string,
-  engine: {
+  Name: { [string]: string },
+  Code: string,
+  UsedSigningKey: string,
+  Signature: string,
+  Engine: {
     major: number,
     minor: number,
     patch: number,
   },
-  version: number,
+  Version: number,
 }
 
 export type DAppModalInfo = {
