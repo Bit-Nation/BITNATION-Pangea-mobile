@@ -22,7 +22,7 @@ import Loading from '../../../components/common/Loading';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import i18n from '../../../global/i18n';
 import Colors from '../../../global/colors';
-import type { ProfileType, ChatSessionType } from '../../../types/Chat';
+import type { ProfileType, ChatSessionType, GiftedChatMessageType } from '../../../types/Chat';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import ScreenTitle from '../../../components/common/ScreenTitle';
 import NewChatModal from './NewChatModal';
@@ -261,9 +261,16 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
           renderItem={(item) => {
             const session: ChatSessionType = item.item;
             const iconSource = imageSource(session.profile.image) || AssetsImages.avatarIcon;
+            const messagePreview = ((message: GiftedChatMessageType | null) => {
+              if (message == null) return null;
+              if (message.dAppMessage == null) return message.text;
+
+              // @todo Add preview for DApp messages.
+              return i18n.t('screens.chat.dAppMessagePreview');
+            })(session.messages.length === 0 ? null : session.messages[session.messages.length - 1]);
             return (<ChatListItem
               name={session.profile.name}
-              lastMessage={session.messages.length === 0 ? null : session.messages[session.messages.length - 1].text}
+              lastMessage={messagePreview}
               avatar={iconSource}
               onPress={this.onChatSelect}
               unreadMessages={session.unreadMessages}
