@@ -10,9 +10,9 @@ import type { DApp, PanthalassaDApp } from '../../types/DApp';
  * @return {Object} Converted DApp object.
  */
 export function convertFromPanthalassa(dApp: PanthalassaDApp, locale: string = 'en-us'): DApp {
-  const hexPublicKey = Buffer.from(dApp.used_signing_key, 'base64').toString('hex');
+  const hexPublicKey = Buffer.from(dApp.UsedSigningKey, 'base64').toString('hex');
   return {
-    name: dApp.name[locale] || dApp.name['en-us'],
+    name: dApp.Name[locale] || dApp.Name['en-us'],
     publicKey: hexPublicKey,
   };
 }
