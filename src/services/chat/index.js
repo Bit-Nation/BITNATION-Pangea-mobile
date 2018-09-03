@@ -4,7 +4,7 @@ import Config from 'react-native-config';
 import { Buffer } from 'buffer/index';
 import { createGiftedChatMessageObjects } from '../../utils/chat';
 import type { Account } from '../../types/Account';
-import type { ChatSessionType, GiftedChatMessageType, ProfileType } from '../../types/Chat';
+import type { GiftedChatMessageType, ProfileType } from '../../types/Chat';
 import {
   panthalassaGetIdentityPublicKey,
   panthalassaAllChats,
@@ -59,17 +59,18 @@ export default class ChatService {
     return panthalassaGetIdentityPublicKey();
   }
 
-  static async fetchAllChats(): Promise<Array<ChatSessionType>> {
+  static async fetchAllChats(): Promise<Array<{ chat: string, unread_messages: boolean }>> {
     let response = await panthalassaAllChats();
     response = JSON.parse(response);
     return response;
   }
 
-  static async loadMessages(sender: Account, receiver: ProfileType, startStr: string, amount: number): Promise<Array<GiftedChatMessageType>> {
+  static async loadMessages(sender: Account, receiver: ProfileType, startId: string, amount: number): Promise<Array<GiftedChatMessageType>> {
     let messages = [];
     try {
-      messages = await panthalassaMessages(receiver.identityKey, startStr, amount);
+      messages = await panthalassaMessages(receiver.identityKey, startId, amount);
       messages = JSON.parse(messages);
+      console.log('CHAT messages -->', messages);
       messages = createGiftedChatMessageObjects(sender, receiver, messages);
     } catch (e) {
       console.log(`[TEST] Error loading messages: ${e.message}`);

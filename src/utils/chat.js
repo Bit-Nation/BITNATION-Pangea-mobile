@@ -70,5 +70,21 @@ export function createGiftedChatMessageObjects(sender: Account, receiver: Profil
   return messages;
 }
 
-export const getSelectedSession = (sessions: Array<ChatSessionType>, recipientPublicKey: string) =>
+export const getSelectedSession: ((sessions: Array<ChatSessionType>, recipientPublicKey: string) => ChatSessionType | null) = (sessions: Array<ChatSessionType>, recipientPublicKey: string) =>
   _.find(sessions, session => session.publicKey === recipientPublicKey) || null;
+
+/**
+ * @desc Function to combine fetched older messages with existing ones
+ * @param {GiftedChatMessageType[]} oldMessages Messages that is already stored on state.
+ * @param {GiftedChatMessageType[]} comingMessages Messages that is fetched from storage.
+ * @return {GiftedChatMessageType[]} Merged array of messages.
+ */
+export function mergeMessages(oldMessages: Array<GiftedChatMessageType>, comingMessages: Array<GiftedChatMessageType>): Array<GiftedChatMessageType> {
+  const combined = [
+    ...oldMessages,
+    ...comingMessages,
+  ];
+
+  const sorted = _.sortBy(combined, message => message.createdAt);
+  return _.uniqBy(sorted, message => message._id);
+}

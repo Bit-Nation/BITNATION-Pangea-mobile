@@ -44,72 +44,60 @@ ShallowWrapper {
         <FakeNavigationBar
           navBarHidden={false}
         />,
+        <ScreenTitle
+          title="Accounts"
+        />,
+        <FlatList
+          ItemSeparatorComponent={[Function]}
+          data={undefined}
+          disableVirtualization={false}
+          horizontal={false}
+          initialNumToRender={10}
+          keyExtractor={[Function]}
+          maxToRenderPerBatch={10}
+          numColumns={1}
+          onEndReachedThreshold={2}
+          renderItem={[Function]}
+          scrollEventThrottle={50}
+          style={
+            Object {
+              "flex": 1,
+            }
+          }
+          updateCellsBatchingPeriod={50}
+          windowSize={21}
+        />,
         <View
           style={
             Object {
-              "alignContent": "flex-start",
-              "flex": 1,
-              "flexDirection": "column",
-              "justifyContent": "flex-start",
-              "marginLeft": 16,
-              "marginRight": 16,
+              "borderWidth": 0,
+              "marginBottom": 40,
+              "marginTop": 10,
             }
           }
         >
-          <ScreenTitle
-            title="Accounts"
-          />
-          <FlatList
-            data={undefined}
-            disableVirtualization={false}
-            horizontal={false}
-            initialNumToRender={10}
-            keyExtractor={[Function]}
-            maxToRenderPerBatch={10}
-            numColumns={1}
-            onEndReachedThreshold={2}
-            renderItem={[Function]}
-            scrollEventThrottle={50}
+          <Button
+            enabled={true}
+            onPress={[Function]}
             style={
               Object {
-                "flex": 1,
+                "alignSelf": "stretch",
+                "backgroundColor": "transparent",
+                "borderRadius": 0,
               }
             }
-            updateCellsBatchingPeriod={50}
-            windowSize={21}
+            styleTitle={
+              Object {
+                "color": "#58595B",
+                "fontSize": 15,
+                "fontWeight": "bold",
+              }
+            }
+            title="Restore Account"
           />
           <View
-            style={
-              Object {
-                "borderWidth": 0,
-                "marginBottom": 40,
-                "marginTop": 10,
-              }
-            }
-          >
-            <Button
-              enabled={true}
-              onPress={[Function]}
-              style={
-                Object {
-                  "alignSelf": "stretch",
-                  "backgroundColor": "transparent",
-                  "borderRadius": 0,
-                }
-              }
-              styleTitle={
-                Object {
-                  "color": "#58595B",
-                  "fontSize": 15,
-                  "fontWeight": "bold",
-                }
-              }
-              title="Restore Account"
-            />
-            <View
-              style={undefined}
-            />
-          </View>
+            style={undefined}
+          />
         </View>,
         <Button
           enabled={true}
@@ -167,71 +155,73 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "title": "Accounts",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "ItemSeparatorComponent": [Function],
+          "data": undefined,
+          "disableVirtualization": false,
+          "horizontal": false,
+          "initialNumToRender": 10,
+          "keyExtractor": [Function],
+          "maxToRenderPerBatch": 10,
+          "numColumns": 1,
+          "onEndReachedThreshold": 2,
+          "renderItem": [Function],
+          "scrollEventThrottle": 50,
+          "style": Object {
+            "flex": 1,
+          },
+          "updateCellsBatchingPeriod": 50,
+          "windowSize": 21,
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
         "nodeType": "class",
         "props": Object {
           "children": Array [
-            <ScreenTitle
-              title="Accounts"
-            />,
-            <FlatList
-              data={undefined}
-              disableVirtualization={false}
-              horizontal={false}
-              initialNumToRender={10}
-              keyExtractor={[Function]}
-              maxToRenderPerBatch={10}
-              numColumns={1}
-              onEndReachedThreshold={2}
-              renderItem={[Function]}
-              scrollEventThrottle={50}
+            <Button
+              enabled={true}
+              onPress={[Function]}
               style={
                 Object {
-                  "flex": 1,
+                  "alignSelf": "stretch",
+                  "backgroundColor": "transparent",
+                  "borderRadius": 0,
                 }
               }
-              updateCellsBatchingPeriod={50}
-              windowSize={21}
+              styleTitle={
+                Object {
+                  "color": "#58595B",
+                  "fontSize": 15,
+                  "fontWeight": "bold",
+                }
+              }
+              title="Restore Account"
             />,
             <View
-              style={
-                Object {
-                  "borderWidth": 0,
-                  "marginBottom": 40,
-                  "marginTop": 10,
-                }
-              }
-            >
-              <Button
-                enabled={true}
-                onPress={[Function]}
-                style={
-                  Object {
-                    "alignSelf": "stretch",
-                    "backgroundColor": "transparent",
-                    "borderRadius": 0,
-                  }
-                }
-                styleTitle={
-                  Object {
-                    "color": "#58595B",
-                    "fontSize": 15,
-                    "fontWeight": "bold",
-                  }
-                }
-                title="Restore Account"
-              />
-              <View
-                style={undefined}
-              />
-            </View>,
+              style={undefined}
+            />,
           ],
           "style": Object {
-            "alignContent": "flex-start",
-            "flex": 1,
-            "flexDirection": "column",
-            "justifyContent": "flex-start",
-            "marginLeft": 16,
-            "marginRight": 16,
+            "borderWidth": 0,
+            "marginBottom": 40,
+            "marginTop": 10,
           },
         },
         "ref": null,
@@ -241,7 +231,20 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "function",
             "props": Object {
-              "title": "Accounts",
+              "children": undefined,
+              "enabled": true,
+              "onPress": [Function],
+              "style": Object {
+                "alignSelf": "stretch",
+                "backgroundColor": "transparent",
+                "borderRadius": 0,
+              },
+              "styleTitle": Object {
+                "color": "#58595B",
+                "fontSize": 15,
+                "fontWeight": "bold",
+              },
+              "title": "Restore Account",
             },
             "ref": null,
             "rendered": null,
@@ -252,99 +255,10 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "class",
             "props": Object {
-              "data": undefined,
-              "disableVirtualization": false,
-              "horizontal": false,
-              "initialNumToRender": 10,
-              "keyExtractor": [Function],
-              "maxToRenderPerBatch": 10,
-              "numColumns": 1,
-              "onEndReachedThreshold": 2,
-              "renderItem": [Function],
-              "scrollEventThrottle": 50,
-              "style": Object {
-                "flex": 1,
-              },
-              "updateCellsBatchingPeriod": 50,
-              "windowSize": 21,
+              "style": undefined,
             },
             "ref": null,
             "rendered": null,
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "children": Array [
-                <Button
-                  enabled={true}
-                  onPress={[Function]}
-                  style={
-                    Object {
-                      "alignSelf": "stretch",
-                      "backgroundColor": "transparent",
-                      "borderRadius": 0,
-                    }
-                  }
-                  styleTitle={
-                    Object {
-                      "color": "#58595B",
-                      "fontSize": 15,
-                      "fontWeight": "bold",
-                    }
-                  }
-                  title="Restore Account"
-                />,
-                <View
-                  style={undefined}
-                />,
-              ],
-              "style": Object {
-                "borderWidth": 0,
-                "marginBottom": 40,
-                "marginTop": 10,
-              },
-            },
-            "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "function",
-                "props": Object {
-                  "children": undefined,
-                  "enabled": true,
-                  "onPress": [Function],
-                  "style": Object {
-                    "alignSelf": "stretch",
-                    "backgroundColor": "transparent",
-                    "borderRadius": 0,
-                  },
-                  "styleTitle": Object {
-                    "color": "#58595B",
-                    "fontSize": 15,
-                    "fontWeight": "bold",
-                  },
-                  "title": "Restore Account",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "class",
-                "props": Object {
-                  "style": undefined,
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
-            ],
             "type": [Function],
           },
         ],
@@ -392,72 +306,60 @@ ShallowWrapper {
           <FakeNavigationBar
             navBarHidden={false}
           />,
+          <ScreenTitle
+            title="Accounts"
+          />,
+          <FlatList
+            ItemSeparatorComponent={[Function]}
+            data={undefined}
+            disableVirtualization={false}
+            horizontal={false}
+            initialNumToRender={10}
+            keyExtractor={[Function]}
+            maxToRenderPerBatch={10}
+            numColumns={1}
+            onEndReachedThreshold={2}
+            renderItem={[Function]}
+            scrollEventThrottle={50}
+            style={
+              Object {
+                "flex": 1,
+              }
+            }
+            updateCellsBatchingPeriod={50}
+            windowSize={21}
+          />,
           <View
             style={
               Object {
-                "alignContent": "flex-start",
-                "flex": 1,
-                "flexDirection": "column",
-                "justifyContent": "flex-start",
-                "marginLeft": 16,
-                "marginRight": 16,
+                "borderWidth": 0,
+                "marginBottom": 40,
+                "marginTop": 10,
               }
             }
           >
-            <ScreenTitle
-              title="Accounts"
-            />
-            <FlatList
-              data={undefined}
-              disableVirtualization={false}
-              horizontal={false}
-              initialNumToRender={10}
-              keyExtractor={[Function]}
-              maxToRenderPerBatch={10}
-              numColumns={1}
-              onEndReachedThreshold={2}
-              renderItem={[Function]}
-              scrollEventThrottle={50}
+            <Button
+              enabled={true}
+              onPress={[Function]}
               style={
                 Object {
-                  "flex": 1,
+                  "alignSelf": "stretch",
+                  "backgroundColor": "transparent",
+                  "borderRadius": 0,
                 }
               }
-              updateCellsBatchingPeriod={50}
-              windowSize={21}
+              styleTitle={
+                Object {
+                  "color": "#58595B",
+                  "fontSize": 15,
+                  "fontWeight": "bold",
+                }
+              }
+              title="Restore Account"
             />
             <View
-              style={
-                Object {
-                  "borderWidth": 0,
-                  "marginBottom": 40,
-                  "marginTop": 10,
-                }
-              }
-            >
-              <Button
-                enabled={true}
-                onPress={[Function]}
-                style={
-                  Object {
-                    "alignSelf": "stretch",
-                    "backgroundColor": "transparent",
-                    "borderRadius": 0,
-                  }
-                }
-                styleTitle={
-                  Object {
-                    "color": "#58595B",
-                    "fontSize": 15,
-                    "fontWeight": "bold",
-                  }
-                }
-                title="Restore Account"
-              />
-              <View
-                style={undefined}
-              />
-            </View>
+              style={undefined}
+            />
           </View>,
           <Button
             enabled={true}
@@ -515,71 +417,73 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "title": "Accounts",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "ItemSeparatorComponent": [Function],
+            "data": undefined,
+            "disableVirtualization": false,
+            "horizontal": false,
+            "initialNumToRender": 10,
+            "keyExtractor": [Function],
+            "maxToRenderPerBatch": 10,
+            "numColumns": 1,
+            "onEndReachedThreshold": 2,
+            "renderItem": [Function],
+            "scrollEventThrottle": 50,
+            "style": Object {
+              "flex": 1,
+            },
+            "updateCellsBatchingPeriod": 50,
+            "windowSize": 21,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
           "nodeType": "class",
           "props": Object {
             "children": Array [
-              <ScreenTitle
-                title="Accounts"
-              />,
-              <FlatList
-                data={undefined}
-                disableVirtualization={false}
-                horizontal={false}
-                initialNumToRender={10}
-                keyExtractor={[Function]}
-                maxToRenderPerBatch={10}
-                numColumns={1}
-                onEndReachedThreshold={2}
-                renderItem={[Function]}
-                scrollEventThrottle={50}
+              <Button
+                enabled={true}
+                onPress={[Function]}
                 style={
                   Object {
-                    "flex": 1,
+                    "alignSelf": "stretch",
+                    "backgroundColor": "transparent",
+                    "borderRadius": 0,
                   }
                 }
-                updateCellsBatchingPeriod={50}
-                windowSize={21}
+                styleTitle={
+                  Object {
+                    "color": "#58595B",
+                    "fontSize": 15,
+                    "fontWeight": "bold",
+                  }
+                }
+                title="Restore Account"
               />,
               <View
-                style={
-                  Object {
-                    "borderWidth": 0,
-                    "marginBottom": 40,
-                    "marginTop": 10,
-                  }
-                }
-              >
-                <Button
-                  enabled={true}
-                  onPress={[Function]}
-                  style={
-                    Object {
-                      "alignSelf": "stretch",
-                      "backgroundColor": "transparent",
-                      "borderRadius": 0,
-                    }
-                  }
-                  styleTitle={
-                    Object {
-                      "color": "#58595B",
-                      "fontSize": 15,
-                      "fontWeight": "bold",
-                    }
-                  }
-                  title="Restore Account"
-                />
-                <View
-                  style={undefined}
-                />
-              </View>,
+                style={undefined}
+              />,
             ],
             "style": Object {
-              "alignContent": "flex-start",
-              "flex": 1,
-              "flexDirection": "column",
-              "justifyContent": "flex-start",
-              "marginLeft": 16,
-              "marginRight": 16,
+              "borderWidth": 0,
+              "marginBottom": 40,
+              "marginTop": 10,
             },
           },
           "ref": null,
@@ -589,7 +493,20 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "function",
               "props": Object {
-                "title": "Accounts",
+                "children": undefined,
+                "enabled": true,
+                "onPress": [Function],
+                "style": Object {
+                  "alignSelf": "stretch",
+                  "backgroundColor": "transparent",
+                  "borderRadius": 0,
+                },
+                "styleTitle": Object {
+                  "color": "#58595B",
+                  "fontSize": 15,
+                  "fontWeight": "bold",
+                },
+                "title": "Restore Account",
               },
               "ref": null,
               "rendered": null,
@@ -600,99 +517,10 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "class",
               "props": Object {
-                "data": undefined,
-                "disableVirtualization": false,
-                "horizontal": false,
-                "initialNumToRender": 10,
-                "keyExtractor": [Function],
-                "maxToRenderPerBatch": 10,
-                "numColumns": 1,
-                "onEndReachedThreshold": 2,
-                "renderItem": [Function],
-                "scrollEventThrottle": 50,
-                "style": Object {
-                  "flex": 1,
-                },
-                "updateCellsBatchingPeriod": 50,
-                "windowSize": 21,
+                "style": undefined,
               },
               "ref": null,
               "rendered": null,
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "children": Array [
-                  <Button
-                    enabled={true}
-                    onPress={[Function]}
-                    style={
-                      Object {
-                        "alignSelf": "stretch",
-                        "backgroundColor": "transparent",
-                        "borderRadius": 0,
-                      }
-                    }
-                    styleTitle={
-                      Object {
-                        "color": "#58595B",
-                        "fontSize": 15,
-                        "fontWeight": "bold",
-                      }
-                    }
-                    title="Restore Account"
-                  />,
-                  <View
-                    style={undefined}
-                  />,
-                ],
-                "style": Object {
-                  "borderWidth": 0,
-                  "marginBottom": 40,
-                  "marginTop": 10,
-                },
-              },
-              "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "function",
-                  "props": Object {
-                    "children": undefined,
-                    "enabled": true,
-                    "onPress": [Function],
-                    "style": Object {
-                      "alignSelf": "stretch",
-                      "backgroundColor": "transparent",
-                      "borderRadius": 0,
-                    },
-                    "styleTitle": Object {
-                      "color": "#58595B",
-                      "fontSize": 15,
-                      "fontWeight": "bold",
-                    },
-                    "title": "Restore Account",
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": [Function],
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "class",
-                  "props": Object {
-                    "style": undefined,
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": [Function],
-                },
-              ],
               "type": [Function],
             },
           ],

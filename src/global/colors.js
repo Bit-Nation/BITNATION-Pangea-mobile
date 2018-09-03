@@ -1,7 +1,5 @@
 // @flow
 
-import { Platform } from 'react-native';
-
 // Bitnation colors
 // Grayish
 const BitnationColor = '#4A90E2'; /* rgb(74, 144, 226) */
@@ -157,12 +155,12 @@ export default {
   navBarTextColor: BitnationDarkGrayColor,
   navBarButtonColor: BitnationLinkOrangeColor,
   navBarBackgroundColor: 'transparent',
-  navigationButtonColor: Platform.OS === 'ios' ? BitnationLinkOrangeColor : '#FFFFFF',
+  navigationButtonColor: BitnationLinkOrangeColor,
   statusBarColorOther: 'black',
   statusBarColorIOS: 'black',
 
   // PLATFORM SPECIFIC COLORS
-  androidNavigationButtons: 'white', // in Screens.js
+  androidNavigationButtons: BitnationLinkOrangeColor, // in Screens.js
 
   // Why do we have this? So we can redefine white to something just a little darker
   // because pure white can be hard...sometimes better to use 98% white.
@@ -175,4 +173,5 @@ export default {
   thumbTintColor: 'rgb(252, 228, 149)',
   maximumTrackTintColor: '#BBBDBF',
   minimumTrackTintColor: '#FF8B00',
+  lightFade: 'rgba(50, 50, 50, 0.5)',
 };

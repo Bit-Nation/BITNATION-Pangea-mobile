@@ -11,6 +11,7 @@ import testingMode, { type State as TestingModeState } from './testingMode';
 import chat, { type State as ChatState } from './chat';
 import settings, { type State as SettingsState } from './settings';
 import dApps, { type State as DAppsState } from './dApps';
+import documents, { type State as DocumentsState } from './documents';
 
 export type State = {
   accounts: AccountsState,
@@ -23,6 +24,7 @@ export type State = {
   chat: ChatState,
   settings: SettingsState,
   dApps: DAppsState,
+  documents: DocumentsState,
 }
 
 export const subReducers = {
@@ -36,6 +38,7 @@ export const subReducers = {
   chat,
   settings,
   dApps,
+  documents,
 };
 
 export default combineReducers(subReducers);

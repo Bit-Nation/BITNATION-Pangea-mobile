@@ -63,6 +63,8 @@ to use the mesh network
 
 FOUNDATION_EXPORT NSString* PanthalassaAllChats(NSError** error);
 
+FOUNDATION_EXPORT NSString* PanthalassaCall(NSString* command, NSString* payload, NSError** error);
+
 FOUNDATION_EXPORT BOOL PanthalassaCallDAppFunction(NSString* signingKey, long id_, NSString* args, NSError** error);
 
 FOUNDATION_EXPORT BOOL PanthalassaConnectLogger(NSString* address, NSError** error);
@@ -104,6 +106,8 @@ FOUNDATION_EXPORT NSString* PanthalassaIdentityPublicKey(NSError** error);
  * Check if mnemonic is valid
  */
 FOUNDATION_EXPORT BOOL PanthalassaIsValidMnemonic(NSString* mne);
+
+FOUNDATION_EXPORT BOOL PanthalassaMarkMessagesAsRead(NSString* partner, NSError** error);
 
 FOUNDATION_EXPORT NSString* PanthalassaMessages(NSString* partner, NSString* startStr, long amount, NSError** error);
 
