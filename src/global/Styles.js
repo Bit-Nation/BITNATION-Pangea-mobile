@@ -102,12 +102,14 @@ const styles = {
   // Margins position correctly INSIDE a bodyContainer View
   titleContainer: {
     marginHorizontal: 20,
+    marginBottom: 8,
   },
 
   // A block of text in the body area
   bodyParagraph: {
     paddingBottom: 16,
   },
+
 
   // A block of text in the Confirmation Screen
   bodyParagraphConfirmationRow: {
@@ -172,10 +174,8 @@ const styles = {
   // If the body has no margins (bars that go edge to edge)
   // then use the style below.
   titleBarLarge: {
-    height: fontSizeNormalizer(52),
+    height: fontSizeNormalizer(40),
     alignItems: 'flex-start',
-    // marginLeft: 8,
-    // marginRight: 8,
   },
 
   titleBarLargeNationDetail: {
@@ -518,6 +518,14 @@ const styles = {
     paddingLeft: 4,
   },
 
+  textInputLabelText: {
+    ...defaultTextStyles.caption1,
+  },
+
+  labeledTextInputContainer: {
+    minHeight: 72,
+  },
+
   // text inside of text input fields prompting user to enter information,
   // e.g. 'Name' or 'Country'
   placeHolderText: {
@@ -602,14 +610,36 @@ const styles = {
   // e.g. NationListItem Text
   listItemText: {
     ...defaultTextStyles.body,
-    color: '#58595B',
+    color: Colors.BitnationDarkGrayColor,
     flex: 1,
+    textAlignVertical: 'center',
+  },
+
+  listItemSubtitle: {
+    ...defaultTextStyles.footnote,
+    color: Colors.BitnationDarkGrayColor,
+    flex: 1,
+    textAlignVertical: 'center',
+  },
+
+  listItemTextContainer: {
+    flex: 1,
+    alignItems: 'stretch',
+    justifyContent: 'space-between',
+    paddingBottom: 16,
+    paddingTop: 12,
+  },
+
+  detailedItemTitle: {
+    ...defaultTextStyles.body,
+    color: Colors.BitnationDarkGrayColor,
+    fontSize: 14,
+    fontWeight: '500',
   },
 
   // e.g. NationListItem Text very BOLD
   listItemTextVeryBold: {
     ...defaultTextStyles.bodyBlack,
-    color: Colors.BitnationDarkGrayColor,
     flex: 1,
   },
 
@@ -638,9 +668,10 @@ const styles = {
     alignItems: 'center',
     backgroundColor: Colors.sectionListItemContainerBackground,
     marginLeft: 20,
+    marginRight: 8,
   },
 
-  // e.g. NationListHeader
+  // e.g. ItemsListHeader
   sectionListHeaderContainer: {
     flexDirection: 'row',
     height: 30,
@@ -671,10 +702,38 @@ const styles = {
     height: 15,
   },
 
+  listItemIcon: {
+    height: 40,
+    width: 40,
+    borderRadius: 20,
+    marginRight: 16,
+  },
+
   sectionListSignal: {
     marginRight: 14,
     width: 20,
     height: 15,
+  },
+
+  sectionListNewMessage: {
+    marginRight: 7,
+    width: 7,
+    height: 7,
+  },
+
+  itemSeparator: {
+    height: 1,
+    backgroundColor: Colors.BitnationLightGrayColor,
+    marginLeft: 16,
+    marginRight: 16,
+  },
+
+  detailedItemContainer: {
+    height: 72,
+  },
+
+  closeIcon: {
+    color: '#fff',
   },
 
   // ========================================
@@ -689,6 +748,17 @@ const styles = {
   segmentedControlContainerBackground: {
     backgroundColor: 'transparent',
   },
+
+  settingsList: {
+    height: 50,
+  },
+
+  settingsText: {
+    color: 'white',
+    fontSize: 15,
+    fontWeight: '900',
+  },
+
   tabsContainerStyle: {
     backgroundColor: 'transparent',
   },
@@ -781,7 +851,7 @@ const styles = {
   },
 
   arrowButtonTitle: {
-    fontSize: 15,
+    fontSize: 12,
     color: Colors.BitnationLinkOrangeColor,
     fontWeight: 'bold',
     textAlign: 'center',
@@ -809,7 +879,7 @@ const styles = {
 
   actionButton: {
     borderRadius: 0,
-    height: 44,
+    height: 50,
     justifyContent: 'center',
     backgroundColor: Colors.BitnationActionColor,
   },
@@ -820,7 +890,8 @@ const styles = {
   },
   arrowButtonContainer: {
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
+    marginLeft: 0,
   },
 
   buttonContainerMultiple: {
@@ -861,6 +932,13 @@ const styles = {
     alignItems: 'center',
   },
 
+  avatarSmall: {
+    height: 35,
+    width: 35,
+    borderRadius: 18,
+    marginRight: 10,
+  },
+
   avatarMedium: {
     height: 50,
     width: 50,
@@ -891,6 +969,19 @@ const styles = {
     textAlign: 'center',
   },
 
+  floatingButton: {
+    backgroundColor: Colors.BitnationLinkOrangeColor,
+  },
+
+  forgetButton: {
+    backgroundColor: 'transparent', alignSelf: 'stretch', borderRadius: 0,
+  },
+  forgetButtonText: { color: '#58595B', fontSize: 15, fontWeight: 'bold' },
+};
+
+styles.multilineTextInput = {
+  ...styles.textInput,
+  flex: 0,
 };
 
 export default styles;

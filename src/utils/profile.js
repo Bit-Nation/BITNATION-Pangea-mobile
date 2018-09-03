@@ -15,11 +15,12 @@ export function saveShouldBeEnabled(account: Account | PartialAccount, editingAc
 
 /**
  * @desc Return valid image source for base64 encoded image.
- * @param {?string} base64Avatar Base64 encoded image.
+ * @param {?string} base64Image Base64 encoded image.
+ * @param {string} mimeType Mime type of the image.
  * @return {Object} Source to pass into Image component or null for placeholder.
  */
-export function imageSource(base64Avatar: ?string): ?Object {
-  return base64Avatar != null && base64Avatar.length > 0
-    ? { uri: `data:image/gif;base64,${base64Avatar}` }
+export function imageSource(base64Image: ?string, mimeType: string = 'image/jpg'): ?Object {
+  return base64Image != null && base64Image.length > 0
+    ? { uri: `data:${mimeType};base64,${base64Image}` }
     : null;
 }

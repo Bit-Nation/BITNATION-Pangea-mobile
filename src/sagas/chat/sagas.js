@@ -1,7 +1,5 @@
 // @flow
 
-/* eslint-disable camelcase,no-continue */
-
 import { put, call, select } from 'redux-saga/effects';
 import { Buffer } from 'buffer/index';
 
@@ -12,20 +10,22 @@ import type {
   SendMessageAction,
   LoadChatMessagesAction,
   PanthalassaMessagePersistedAction,
+  ChangeUnreadStatusAction,
 } from '../../actions/chat';
 import {
   chatsUpdated,
   selectProfile,
   addCreatedChatSession,
-  loadChatMessages,
   chatMessagesLoaded,
-  addChatMessage, newChatSession,
+  addChatMessage, newChatSession, showSpinner, hideSpinner,
+  unreadStatusChanged,
 } from '../../actions/chat';
 import defaultDB from '../../services/database';
 import ChatService from '../../services/chat';
 import { getCurrentAccount, getCurrentAccountId } from '../accounts/sagas';
 import { createGiftedChatMessageObjects } from '../../utils/chat';
-import { panthalassaEthPubToAddress } from '../../services/panthalassa';
+import { panthalassaEthPubToAddress, panthalassaMarkMessagesAsRead } from '../../services/panthalassa';
+import { CHAT_MESSAGES_PAGE } from '../../global/Constants';
 
 /**
  * @desc Save profile into database.
@@ -106,9 +106,10 @@ export function* createChatSession(action: NewChatSessionAction): Generator<*, *
   const currentAccountId = yield call(getCurrentAccountId);
   const chatSession = {
     publicKey: action.profile.identityKey,
-    username: action.profile.name,
+    profile: action.profile,
     accountId: currentAccountId,
     messages: [],
+    unreadMessages: false,
   };
   yield put(addCreatedChatSession(chatSession));
 
@@ -136,7 +137,6 @@ export function* openChatSession(action: OpenChatAction): Generator<*, *, *> {
       return;
     }
 
-    yield put(loadChatMessages(action.publicKey));
     yield put(selectProfile(profile));
     const userPublicKey = yield call(ChatService.getPublicKey);
     yield call(action.callback, {
@@ -155,20 +155,24 @@ export function* openChatSession(action: OpenChatAction): Generator<*, *, *> {
  * @return {void}
  */
 export function* fetchAllChats(): Generator<*, *, *> {
-  const currentAccountId = yield call(getCurrentAccountId);
-  const identityKeys = yield call(ChatService.fetchAllChats);
+  const currentAccount = yield call(getCurrentAccount);
+  const chatsInfo: Array<{ chat: string, unread_messages: boolean }> = yield call(ChatService.fetchAllChats);
 
   const chats = [];
   // eslint-disable-next-line no-restricted-syntax
-  for (const identityKey of identityKeys) {
+  for (const info of chatsInfo) {
     try {
+      const { chat: identityKeyBase64 } = info;
+      const identityKey = Buffer.from(identityKeyBase64, 'base64').toString('hex');
       const profile = yield call(getProfile, identityKey);
+      const firstMessages = yield call(ChatService.loadMessages, currentAccount, profile, '0', 1);
       if (profile != null) {
         chats.push({
           publicKey: identityKey,
-          username: profile.name,
-          accountId: currentAccountId,
-          messages: [],
+          profile,
+          accountId: currentAccount.id,
+          unreadMessages: info.unread_messages,
+          messages: firstMessages,
         });
       }
     } catch (error) {
@@ -185,16 +189,24 @@ export function* fetchAllChats(): Generator<*, *, *> {
  * @return {void}
  */
 export function* loadMessages(action: LoadChatMessagesAction): Generator<*, *, *> {
+  const { recipientPublicKey, fromMessageId } = action;
   const db = yield defaultDB;
   let results = yield call([db, 'objects'], 'Profile');
-  results = yield call([results, 'filtered'], `identityKey == '${action.recipientPublicKey}'`);
+  results = yield call([results, 'filtered'], `identityKey == '${recipientPublicKey}'`);
   const recipientProfile = yield results[0] || null;
-
   const senderAccount = yield call(getCurrentAccount);
 
-  if (recipientProfile) {
-    const messages = yield call(ChatService.loadMessages, senderAccount, recipientProfile, '0', 50);
-    yield put(chatMessagesLoaded(action.recipientPublicKey, messages));
+  if (recipientProfile != null) {
+    try {
+      yield put(showSpinner());
+      const messages = yield call(ChatService.loadMessages, senderAccount, recipientProfile, fromMessageId, CHAT_MESSAGES_PAGE);
+      yield put(chatMessagesLoaded(recipientPublicKey, messages, CHAT_MESSAGES_PAGE));
+      if (messages.length > 0) {
+        yield call(panthalassaMarkMessagesAsRead, recipientPublicKey);
+      }
+    } finally {
+      yield put(hideSpinner());
+    }
   }
 }
 
@@ -228,8 +240,25 @@ export function* handlePanthalassaMessagePersisted(action: PanthalassaMessagePer
     if (receiver) {
       const messages = createGiftedChatMessageObjects(sender, receiver, [action.payload]);
       yield put(addChatMessage(publicKey, messages[0]));
+      if (action.payload.received === true) {
+        yield put(unreadStatusChanged(publicKey, true));
+      }
     }
   } catch (error) {
     console.log(`[TEST] Handle message persisted failed: ${error.message}`);
+  }
+}
+
+/**
+ * @desc Changes flag of new messages
+ * @param {ChangeUnreadStatusAction} action CHANGE_UNREAD_STATUS action
+ * @returns {void}
+ */
+export function* changeUnreadStatus(action: ChangeUnreadStatusAction): Generator<*, *, *> {
+  try {
+    yield call(panthalassaMarkMessagesAsRead, action.recipientPublicKey);
+    yield put(unreadStatusChanged(action.recipientPublicKey, action.hasUnreadMessages));
+  } catch (error) {
+    console.log(`[CHAT] Failed to set messages as read for ${action.recipientPublicKey}`);
   }
 }

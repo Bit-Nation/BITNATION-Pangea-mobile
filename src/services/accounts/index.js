@@ -8,6 +8,7 @@ import { InvalidPasswordError } from '../../global/errors/accounts';
 import ChatService from '../chat';
 import {
   panthalassaStart,
+  panthalassaStartFromMnemonic,
   panthalassaStop,
   panthalassaGetMnemonic,
   panthalassaNewAccountKeys,
@@ -65,12 +66,37 @@ export default class AccountsService {
     return true;
   }
 
+  static async validateMnemonicWithAccount(accountStore: string, profile: Profile, mne: Mnemonic): Promise<boolean> {
+    try {
+      await panthalassaStop();
+      // eslint-disable-next-line no-empty
+    } catch (e) {
+      // We ignore exception, since we just need stop it in case it was started earlier.
+    }
+    const config = JSON.stringify({
+      encrypted_key_manager: accountStore,
+      enable_debugging: false,
+      eth_ws_endpoint: 'wss://mainnet.infura.io/_ws',
+      private_chat_endpoint: Config.CHAT_WSS_ENDPOINT,
+      private_chat_bearer_token: Config.CHAT_TOKEN,
+    });
+
+    try {
+      await panthalassaStartFromMnemonic(config, compressMnemonic(mne));
+    } catch (e) {
+      console.log(`[TEST] Panthalassa start failed: ${e.message}`);
+      return false;
+    }
+
+    return true;
+  }
+
   static async createAccountStore(password: string): Promise<string> {
     return panthalassaNewAccountKeys(password);
   }
 
-  static async restoreAccountStore(mnemonic: string, password: string): Promise<string> {
-    return panthalassaNewAccountKeysFromMnemonic(mnemonic, password);
+  static async restoreAccountStore(mnemonic: Mnemonic, password: string): Promise<string> {
+    return panthalassaNewAccountKeysFromMnemonic(compressMnemonic(mnemonic), password);
   }
 
   static async exportAccountStore(password: string): Promise<string> {

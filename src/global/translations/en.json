@@ -25,6 +25,7 @@
   "common": {
     "send": "Send",
     "receive": "Receive",
+    "transactions": "Transactions",
     "ok": "OK",
     "previous": "Previous",
     "next": "Next",
@@ -143,6 +144,11 @@
       "subtitle": "",
       "confirm": "$t(common.ok)"
     },
+    "passwordRecoveryFailed": {
+      "title": "Entered private key does not match the account.",
+      "subtitle": "",
+      "confirm": "$t(common.ok)"
+    },
     "walletRequired": {
       "title": "No wallet",
       "subtitle": "You need to setup a wallet first",
@@ -202,6 +208,11 @@
     "successTransaction": {
       "title": "Success",
       "subtitle": "Your transaction has been successfully sent",
+      "confirm": "$t(common.ok)"
+    },
+    "successResetPassword": {
+      "title": "Success",
+      "subtitle": "Your password has been successfully changed",
       "confirm": "$t(common.ok)"
     }
   },
@@ -522,7 +533,13 @@
       "confirmPrivateKey": "Private Key (confirmation required)",
       "switchAccounts": "Switch accounts",
       "connectToDAppHost": "Connect to DApp host",
-      "connectToDAppLogger": "Connect debug logger"
+      "connectToDAppLogger": "Connect debug logger",
+      "documents": "Documents",
+      "sections": {
+        "account": "Account",
+        "dApps": "DApp development",
+        "notary": "Notary"
+      }
     },
     "securitySettings": {
       "title": "Security settings",
@@ -538,7 +555,8 @@
     "password": {
       "enterInstruction": "Enter password:",
       "createInstruction": "Enter new password:",
-      "verifyInstruction": "Enter password again:"
+      "verifyInstruction": "Enter password again:",
+      "forgetInstruction": "Forgot Password?"
     },
     "confirmTransaction": {
       "title": "Confirm Transaction",
@@ -558,6 +576,28 @@
       "processor": "Processor",
       "gwei": "Gwei",
       "eth": "ETH"
+    },
+    "documentsList": {
+      "title": "Documents",
+      "actionSheetTitle": "Select document to store"
+    },
+    "documentView": {
+      "actions": {
+        "edit": "Edit metadata",
+        "delete": "Delete document"
+      }
+    },
+    "documentModify": {
+      "title": "New document",
+      "fields": {
+        "title": "Title",
+        "description": "Description"
+      },
+      "placeholder": {
+        "title": "Enter title",
+        "description": "Enter description"
+      },
+      "save": "Save document"
     }
   },
   "testingMode": {

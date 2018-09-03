@@ -1,3 +1,4 @@
+import { Platform } from 'react-native';
 import Colors from '../colors';
 
 const defaultTextStyles = {
@@ -128,8 +129,8 @@ const defaultTextStyles = {
 
   largeTitle: {
     fontFamily: 'Roboto',
-    fontWeight: '900',
-    fontSize: 22,
+    fontWeight: Platform.OS === 'android' ? '500' : '900',
+    fontSize: 27,
     lineHeight: 30,
     letterSpacing: 0,
     color: Colors.BitnationDarkGrayColor,
@@ -213,7 +214,7 @@ const defaultTextStyles = {
     fontSize: 17,
     lineHeight: 22,
     letterSpacing: 0,
-    color: Colors.BitnationVeryLightColor,
+    color: Colors.BitnationDarkGrayColor,
   },
 
   callout: {
