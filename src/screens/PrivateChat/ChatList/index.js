@@ -22,7 +22,7 @@ import Loading from '../../../components/common/Loading';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import i18n from '../../../global/i18n';
 import Colors from '../../../global/colors';
-import type { ProfileType, ChatSessionType } from '../../../types/Chat';
+import type { ProfileType, ChatSessionType, GiftedChatMessageType } from '../../../types/Chat';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import ScreenTitle from '../../../components/common/ScreenTitle';
 import NewChatModal from './NewChatModal';
@@ -32,7 +32,6 @@ import { panthalassaIdentityPublicKey } from '../../../services/panthalassa';
 import { imageSource } from '../../../utils/profile';
 import AssetsImages from '../../../global/AssetsImages';
 import MoreMenuModal from '../../../components/common/MoreMenuModal';
-import { GiftedChatMessageType } from '../../../types/Chat';
 
 const MORE_BUTTON = 'MORE_BUTTON';
 const MORE_MODAL_KEY = 'moreMenu';
