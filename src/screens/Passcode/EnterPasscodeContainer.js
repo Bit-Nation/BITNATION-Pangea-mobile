@@ -107,7 +107,7 @@ class EnterPasscodeContainer extends NavigatorComponent<Props & Actions & Settin
     const {
       navigator, passcodeType, title, onCancel, isLoggedIn,
     } = this.props;
-    const shouldShowForget = !(isLoggedIn === false) && this.props.accountId != null;
+    const shouldShowForget = isLoggedIn === false;
     if (passcodeType.type === 'pinCode') {
       return (<PinCodeScreen
         navigator={navigator}
