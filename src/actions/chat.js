@@ -17,6 +17,8 @@ export const LOAD_CHAT_MESSAGES = 'LOAD_CHAT_MESSAGES';
 export const CHAT_MESSAGES_LOADED = 'CHAT_MESSAGES_LOADED';
 export const PANTHALASSA_MESSAGE_PERSISTED = 'PANTHALASSA_MESSAGE_PERSISTED';
 export const ADD_CHAT_MESSAGE = 'ADD_CHAT_MESSAGE';
+export const CHANGE_UNREAD_STATUS = 'CHANGE_UNREAD_STATUS';
+export const UNREAD_STATUS_CHANGED = 'UNREAD_STATUS_CHANGED';
 
 export type ShowSpinnerAction = { +type: 'SHOW_CHAT_SPINNER' };
 export type HideSpinnerAction = { +type: 'HIDE_CHAT_SPINNER' };
@@ -67,6 +69,7 @@ export type SaveMessageAction = {
 export type LoadChatMessagesAction = {
   +type: 'LOAD_CHAT_MESSAGES',
   +recipientPublicKey: string,
+  +fromMessageId: string,
 }
 export type ChatMessagesLoadedAction = {
   +type: 'CHAT_MESSAGES_LOADED',
@@ -81,6 +84,16 @@ export type AddChatMessageAction = {
   +type: 'ADD_CHAT_MESSAGE',
   +publicKey: string,
   +message: GiftedChatMessageType,
+}
+export type ChangeUnreadStatusAction = {
+  +type: 'CHANGE_UNREAD_STATUS',
+  +recipientPublicKey: string,
+  +hasUnreadMessages: boolean,
+}
+export type UnreadStatusChangedAction = {
+  +type: 'UNREAD_STATUS_CHANGED',
+  +recipientPublicKey: string,
+  +hasUnreadMessages: boolean,
 }
 
 export type Action =
@@ -98,7 +111,9 @@ export type Action =
   | LoadChatMessagesAction
   | ChatMessagesLoadedAction
   | PanthalassaMessagePersistedAction
-  | AddChatMessageAction;
+  | AddChatMessageAction
+  | ChangeUnreadStatusAction
+  | UnreadStatusChangedAction;
 
 /**
  * @desc Action for an action that shows spinner while processing in background
@@ -239,12 +254,14 @@ export function sendMessage(recipientPublicKey: string, message: string, callbac
 /**
  * @desc Action for loading chat messages
  * @param {string} recipientPublicKey Public Key of the chat recipient
+ * @param {string} fromMessageId Id of message to start load from
  * @returns {LoadChatMessagesAction} An action
  */
-export function loadChatMessages(recipientPublicKey: string): LoadChatMessagesAction {
+export function loadChatMessages(recipientPublicKey: string, fromMessageId: string = '0'): LoadChatMessagesAction {
   return {
     type: LOAD_CHAT_MESSAGES,
     recipientPublicKey,
+    fromMessageId,
   };
 }
 
@@ -252,13 +269,15 @@ export function loadChatMessages(recipientPublicKey: string): LoadChatMessagesAc
  * @desc Action for loaded messages
  * @param {string} recipientPublicKey The public key of the recipient
  * @param {Array<any>} messages Loaded messages
+ * @param {number} expectedCount Number of message that was requested. Used to determine if there are older messages.
  * @returns {ChatMessagesLoadedAction} An action
  */
-export function chatMessagesLoaded(recipientPublicKey: string, messages: Array<any>): ChatMessagesLoadedAction {
+export function chatMessagesLoaded(recipientPublicKey: string, messages: Array<any>, expectedCount: number): ChatMessagesLoadedAction {
   return {
     type: CHAT_MESSAGES_LOADED,
     recipientPublicKey,
     messages,
+    expectedCount,
   };
 }
 
@@ -285,5 +304,33 @@ export function addChatMessage(publicKey: string, message: GiftedChatMessageType
     type: ADD_CHAT_MESSAGE,
     publicKey,
     message,
+  };
+}
+
+/**
+ * @desc Action creator for an action that requests change a conversation's new messages flag
+ * @param {string} recipientPublicKey Public Key of the chat recipient
+ * @param {boolean} hasUnreadMessages Status flag for new messages on chat
+ * @returns {ChangeUnreadStatusAction} An action
+ */
+export function changeUnreadStatus(recipientPublicKey: string, hasUnreadMessages: boolean): ChangeUnreadStatusAction {
+  return {
+    type: CHANGE_UNREAD_STATUS,
+    recipientPublicKey,
+    hasUnreadMessages,
+  };
+}
+
+/**
+ * @desc Action creator for an action that is called when conversation's new messages flag is changed
+ * @param {string} recipientPublicKey Public Key of the chat recipient
+ * @param {boolean} hasUnreadMessages Status flag for new messages on chat
+ * @returns {UnreadStatusChangedAction} An action
+ */
+export function unreadStatusChanged(recipientPublicKey: string, hasUnreadMessages: boolean): UnreadStatusChangedAction {
+  return {
+    type: UNREAD_STATUS_CHANGED,
+    recipientPublicKey,
+    hasUnreadMessages,
   };
 }

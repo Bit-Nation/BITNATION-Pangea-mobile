@@ -22,6 +22,7 @@ const styles = MediaQueryStyleSheet.create({
     marginRight: 30,
     textAlign: 'center',
   },
+
 });
 
 export default styles;

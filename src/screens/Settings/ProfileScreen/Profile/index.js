@@ -64,7 +64,7 @@ class ProfileScreen extends NavigatorComponent<Props> {
       rightButtons: [{
         title: i18n.t('screens.profile.editButton'),
         id: EDIT_BUTTON,
-        buttonColor: Colors.navigationButtonColor,
+        buttonColor: Colors.BitnationLinkOrangeColor,
       }],
     });
   }
@@ -97,15 +97,27 @@ class ProfileScreen extends NavigatorComponent<Props> {
     Share.share({
       message: this.props.publicKey || '',
     });
-    // Clipboard.setString(this.props.publicKey);
   };
 
   render() {
+    const { publicKey } = this.props;
+
     return (
-      <View style={styles.bodyContainer}>
-        <ScreenTitle title={i18n.t('screens.profile.title')} />
-        {this._buildHeader()}
-        {this._buildPublicKey()}
+      <View style={styles.screenContainer}>
+        <View style={styles.bodyContainer}>
+          <ScreenTitle title={i18n.t('screens.profile.title')} />
+          {this._buildHeader()}
+          <View style={styles.publicKey}>
+            <Text style={styles.publicKeyText}>{publicKey && publicKey.trim()}</Text>
+          </View>
+        </View>
+        <Button
+          enabled
+          style={styles.actionButton}
+          title={i18n.t('screens.profile.shareKey').toUpperCase()}
+          onPress={this.sharePublicKey}
+          styleTitle={styles.settingsText}
+        />
       </View>
     );
   }
@@ -120,21 +132,6 @@ class ProfileScreen extends NavigatorComponent<Props> {
         <Image source={avatarSource} style={styles.avatarLarge} />
         <Text style={styles.nameText}>{account.name && account.name.trim()}</Text>
         <Text style={styles.infoText}>{account.location && account.location.trim()}</Text>
-      </View>
-    );
-  }
-
-  _buildPublicKey() {
-    const { publicKey } = this.props;
-
-    return (
-      <View style={styles.publicKey}>
-        <Text style={styles.publicKeyText}>{publicKey && publicKey.trim()}</Text>
-        <Button
-          style={styles.panelButton}
-          title={i18n.t('screens.profile.shareKey')}
-          onPress={this.sharePublicKey}
-        />
       </View>
     );
   }

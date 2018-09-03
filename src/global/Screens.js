@@ -28,7 +28,7 @@ export const androidNavigationButtons = Platform.OS === 'android' ? {
 
 export const navigatorStyle = {
   tabBarHidden: false,
-  statusBarTextColorScheme: 'light',
+  statusBarTextColorScheme: Platform.OS === 'ios' ? 'dark' : 'light',
   statusBarColor: Platform.OS === 'ios' ? Colors.statusBarColorIOS : Colors.statusBarColorOther, // Nativebase variable!
   navBarBackgroundColor: Colors.navBarBackgroundColor,
   navBarTransparent: true,
@@ -56,6 +56,16 @@ export const hiddenNavigatorStyle = {
 export const navigatorStyleModal = {
   ...navigatorStyle,
   tabBarHidden: true,
+};
+
+export const solidNavigatorStyle = {
+  ...navigatorStyle,
+  navBarTransparent: false,
+  navBarBlur: false,
+  drawUnderNavBar: false,
+  screenBackgroundColor: '#E8EBED',
+  tabBarHidden: true,
+  navBarBackgroundColor: Colors.white,
 };
 
 /*
@@ -258,6 +268,20 @@ const Screens = {
   DAPP_MODAL_SCREEN: {
     screen: 'Pangea.DAppModalScreen',
     navigatorStyle,
+  },
+  DOCUMENTS_LIST_SCREEN: {
+    screen: 'Pangea.DocumentsListScreen',
+    navigatorStyle,
+  },
+  DOCUMENT_VIEW_SCREEN: {
+    screen: 'Pangea.DocumentViewScreen',
+    title: i18n.t('screens.documentView.title'),
+    navigatorStyle: solidNavigatorStyle,
+  },
+  DOCUMENT_MODIFY_SCREEN: {
+    screen: 'Pangea.DocumentModifyScreen',
+    title: i18n.t('screens.documentModify.title'),
+    navigatorStyle: solidNavigatorStyle,
   },
 };
 

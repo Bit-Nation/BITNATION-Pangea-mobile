@@ -55,11 +55,11 @@ export async function panthalassaNewAccountKeys(password: string): Promise<strin
 
 /**
  * @desc Creates new accounts keys (Account ConfigurationStore) from mnemonic/password as data
- * @param {string} password Account's password
  * @param {string} mnemonic Account's mnemonic
+ * @param {string} password Account's password
  * @returns {Promise<*>} {string} Account's new account ConfigurationStore
  */
-export async function panthalassaNewAccountKeysFromMnemonic(password: string, mnemonic: string): Promise<string> {
+export async function panthalassaNewAccountKeysFromMnemonic(mnemonic: string, password: string): Promise<string> {
   return Panthalassa.PanthalassaNewAccountKeysFromMnemonic({
     mne: mnemonic,
     pw: password,
@@ -313,4 +313,26 @@ export async function panthalassaSetLogger(level: string): Promise<boolean> {
  */
 export async function panthalassaStopDApp(dAppSingingKeyStr: string): Promise<boolean> {
   return Panthalassa.PanthalassaStopDApp({ dAppSingingKeyStr });
+}
+
+/**
+ * @desc Marks all messages in conversation as readed
+ * @param {string} partner Sender of the messages
+ * @returns {Promise<*>} Boolean response about operation's result
+ */
+export async function panthalassaMarkMessagesAsRead(partner: string): Promise<boolean> {
+  return Panthalassa.PanthalassaMarkMessagesAsRead({ partner });
+}
+
+/**
+ * @desc TODO
+ * @param {string} command TODO
+ * @param {Object} payload TODO
+ * @returns {string} TODO
+ */
+export async function panthalassaCall(command: string, payload: Object = {}): Promise<string> {
+  return Panthalassa.PanthalassaCall({
+    command,
+    payload: JSON.stringify(payload),
+  });
 }

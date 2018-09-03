@@ -38,6 +38,7 @@ ShallowWrapper {
     "props": Object {
       "changeMnemonic": [Function],
       "enteredMnemonic": null,
+      "isOnResetPassProcess": false,
       "isVerification": false,
       "mnemonicConfirmed": [Function],
       "mnemonicValid": null,
@@ -77,6 +78,7 @@ ShallowWrapper {
       },
       "testingModeActive": false,
       "validateMnemonic": [Function],
+      "validateMnemonicWithAccount": [Function],
     },
     "ref": null,
     "rendered": null,
@@ -90,6 +92,7 @@ ShallowWrapper {
       "props": Object {
         "changeMnemonic": [Function],
         "enteredMnemonic": null,
+        "isOnResetPassProcess": false,
         "isVerification": false,
         "mnemonicConfirmed": [Function],
         "mnemonicValid": null,
@@ -129,6 +132,7 @@ ShallowWrapper {
         },
         "testingModeActive": false,
         "validateMnemonic": [Function],
+        "validateMnemonicWithAccount": [Function],
       },
       "ref": null,
       "rendered": null,
