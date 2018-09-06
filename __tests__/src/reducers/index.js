@@ -15,6 +15,7 @@ test('rootReducer contains all child reducers', () => {
     'settings',
     'dApps',
     'documents',
+    'contacts',
   ];
 
   reducerNames.forEach((reducerName) => {
