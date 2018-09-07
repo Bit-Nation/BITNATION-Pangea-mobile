@@ -102,9 +102,9 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
   }
 
   componentDidUpdate(prevProps) {
-    // @todo Select new contact
-    if (this.props.contacts.length > prevProps.contacts.length) {
-      // this.selectize._selectItem(newContact.id)
+    if (this.props.contacts.length == prevProps.contacts.length + 1) {
+      const newContact = this.props.contacts[this.props.contacts.length - 1];
+      this.selectize._selectItem(newContact.id)
     }
   }
 
@@ -170,9 +170,13 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
             chipIconStyle={styles.chipIcon}
             label='To:'
             itemId='id'
+            filterOnKey='name'
             items={this.props.contacts}
             showItems='always'
             error={this.state.addContactError}
+            listStyle={styles.list}
+            baseColor={Colors.BitnationLinkOrangeColor}
+            tintColor={Colors.BitnationLinkOrangeColor}
             middleComponent={
               <TouchableOpacity
                   activeOpacity={0.6}
@@ -238,6 +242,7 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
 const mapStateToProps = state => ({
   contacts: state.contacts.contacts.map(contact => ({
     id: contact.profile.identityKey,
+    name: contact.profile.name,
     ...contact
   })),
 });

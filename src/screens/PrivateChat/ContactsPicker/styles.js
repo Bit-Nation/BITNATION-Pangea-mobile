@@ -2,6 +2,7 @@
 
 import { MediaQueryStyleSheet } from 'react-native-responsive';
 import GlobalStyles from '../../../global/Styles';
+import { StyleSheet } from 'react-native';
 
 const styles = MediaQueryStyleSheet.create({
   ...GlobalStyles,
@@ -13,9 +14,16 @@ const styles = MediaQueryStyleSheet.create({
     height: 24,
     width: 24
   },
+  list: {
+    backgroundColor: 'transparent',
+    borderColor: 'transparent',
+    elevation: 0
+  },
   listRow: {
     paddingVertical: 8,
-    paddingHorizontal: 10
+    paddingHorizontal: 10,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderColor: '#e0e0e0'
   },
   listWrapper: {
     flexDirection: 'row'
