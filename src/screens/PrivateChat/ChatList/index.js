@@ -5,13 +5,11 @@ import { connect } from 'react-redux';
 import {
   View,
   SectionList,
-  Clipboard,
   Share,
 } from 'react-native';
 import _ from 'lodash';
 import { Fab, Text } from 'native-base';
-import ActionSheet from 'react-native-actionsheet';
-import { getProfile, newChatSession, openChat } from '../../../actions/chat';
+import { openChat } from '../../../actions/chat';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import styles from './styles';
 import { screen } from '../../../global/Screens';
@@ -25,8 +23,6 @@ import Colors from '../../../global/colors';
 import type { ProfileType, ChatSessionType, GiftedChatMessageType } from '../../../types/Chat';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import ScreenTitle from '../../../components/common/ScreenTitle';
-import NewChatModal from './NewChatModal';
-import InvalidKeyModal from './InvalidKeyModal';
 import InviteSentModal from './InviteSentModal';
 import { panthalassaIdentityPublicKey } from '../../../services/panthalassa';
 import { imageSource } from '../../../utils/profile';
@@ -35,9 +31,7 @@ import MoreMenuModal from '../../../components/common/MoreMenuModal';
 
 const MORE_BUTTON = 'MORE_BUTTON';
 const MORE_MODAL_KEY = 'moreMenu';
-const NEW_CHAT_MODAL_KEY = 'newChat';
 const INVITE_MODAL_KEY = 'invite';
-const INVALID_MODAL_KEY = 'invalidKey';
 
 type Props = {
   /**
@@ -49,23 +43,11 @@ type Props = {
    */
   chatSessions: Array<ChatSessionType>,
   /**
-   * @desc Function to get user profile
-   * @param {string} identityKey Identity key of user.
-   * @param {function} callback Callback
-   */
-  getProfile: (identityKey: string, callback: (profile: (ProfileType | null), error: (Error | null)) => void) => void,
-  /**
    * @desc Function to be called when an item is selected from the list
    * @param {string} key Public key of the chat session
    * @param {func} callback
    */
   onItemSelect: (key: string, callback: (result: Object) => void) => void,
-  /**
-   * @desc Function to initialize a new chat
-   * @param {ProfileType} profile Profile of the user
-   * @param {func} callback
-   */
-  createNewSession: (profile: ProfileType, callback: (result: Object) => void) => void,
 };
 
 type State = {
@@ -115,55 +97,6 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
     }
   }
 
-  actionSheet: any;
-
-  onChatAction = async (index) => {
-    switch (index) {
-      case 0:
-        try {
-          this.setState({ loading: true });
-          const profile = await this.getPublicKeyFromClipboard();
-          this.setState({
-            publicKey: profile.identityKey,
-            profile,
-            showModal: NEW_CHAT_MODAL_KEY,
-          });
-        } catch (error) {
-          this.setState({
-            publicKey: '',
-            profile: null,
-            showModal: INVALID_MODAL_KEY,
-          });
-        } finally {
-          this.setState({
-            loading: false,
-          });
-        }
-        break;
-      default:
-        break;
-    }
-  };
-
-  getPublicKeyFromClipboard = async () => {
-    const pubKey = await Clipboard.getString();
-    return this.getUserProfile(pubKey);
-  };
-
-  getUserProfile = async publicKey => new Promise((res, rej) => {
-    this.props.getProfile(publicKey, (profile, error) => {
-      if (profile != null) {
-        res(profile);
-        return;
-      }
-
-      if (error != null) {
-        console.log(`[TEST] Profile fetch error: ${error.message}`);
-      }
-      rej(error);
-    });
-  });
-
   startChat = async () => {
     const partnerProfile = this.state.profile;
     if (partnerProfile == null) {
@@ -180,25 +113,6 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
       });
       return;
     }
-
-    this.props.createNewSession(partnerProfile, (result) => {
-      if (result.status !== 'success') {
-        console.log('[TEST] create session error: ', result);
-        return;
-      }
-
-      this.setState({
-        showModal: '',
-      });
-
-      this.props.navigator.push({
-        ...screen('PRIVATE_CHAT_SCREEN'),
-        passProps: {
-          userPublicKey: result.userPublicKey,
-          recipientPublicKey: partnerProfile.identityKey,
-        },
-      });
-    });
   };
 
   onChatSelect = (publicKey: string) => {
@@ -246,14 +160,6 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
       data: group,
     }));
 
-    const newChatOptions = [
-      i18n.t('screens.chat.keyFromClipboard'),
-      // i18n.t('screens.chat.keyFromLibrary'),
-      // i18n.t('screens.chat.keyFromCamera'),
-      // i18n.t('screens.chat.dappChat'),
-      i18n.t('screens.chat.cancel'),
-    ];
-
     return (
       <View style={styles.nationsScreenContainer}>
         <BackgroundImage />
@@ -292,14 +198,6 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
         >
           <Text>+</Text>
         </Fab>
-        <ActionSheet
-          ref={(o) => {
-            this.actionSheet = o;
-          }}
-          options={newChatOptions}
-          cancelButtonIndex={newChatOptions.length - 1}
-          onPress={this.onChatAction}
-        />
         <MoreMenuModal
           visible={this.state.showModal === MORE_MODAL_KEY}
           onCancel={this.dismissModal}
@@ -307,16 +205,6 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
             text: i18n.t('screens.chat.menu.shareIdentityKey'),
             onPress: this.sharePublicKey,
           }]}
-        />
-        <NewChatModal
-          profile={this.state.profile}
-          visible={this.state.showModal === NEW_CHAT_MODAL_KEY}
-          onStartChat={this.startChat}
-          onCancel={this.dismissModal}
-        />
-        <InvalidKeyModal
-          done={this.dismissModal}
-          visible={this.state.showModal === INVALID_MODAL_KEY}
         />
         <InviteSentModal
           done={this.dismissModal}
@@ -333,8 +221,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getProfile: (profile, callback) => dispatch(getProfile(profile, callback)),
-  createNewSession: (profile, callback) => dispatch(newChatSession(profile, callback)),
   onItemSelect: (key, callback) => dispatch(openChat(key, callback)),
 });
 
