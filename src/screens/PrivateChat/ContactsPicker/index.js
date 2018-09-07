@@ -39,6 +39,12 @@ type Props = {
    */
   contacts: Array<Contact>,
   /**
+   * @desc Function to get user profile
+   * @param {string} identityKey Identity key of user.
+   * @param {function} callback Callback
+   */
+  getProfile: (identityKey: string, callback: (profile: (ProfileType | null), error: (Error | null)) => void) => void,
+  /**
    * @desc Function to add a new contact
    * @param {string} identityKey Identity key of user.
    * @param {function} callback Callback
@@ -218,6 +224,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  getProfile: (profile, callback) => dispatch(getProfile(profile, callback)),
   addContact: (identityKey, callback) => dispatch(addContact(identityKey, callback)),
 });
 
