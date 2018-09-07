@@ -21,26 +21,15 @@ const styles = MediaQueryStyleSheet.create({
     flexDirection: 'row'
   },
   listIcon: {
-    borderRadius: 20,
-    backgroundColor: 'rgba(0, 0, 0, 0.38)',
-    height: 40,
-    width: 40,
-    overflow: 'hidden',
     justifyContent: 'center',
-    alignItems: 'center',
-    marginRight: 10
+    alignItems: 'center'
   },
-  listInitials: {
-    fontSize: 20,
-    lineHeight: 24,
-    color: '#fff'
-  },
-  listNameText: {
+  listPrimaryText: {
     color: 'rgba(0, 0, 0, 0.87)',
     fontSize: 14,
     lineHeight: 21
   },
-  listEmailText: {
+  listSecondaryText: {
     color: 'rgba(0, 0, 0, 0.54)',
     fontSize: 14,
     lineHeight: 21
