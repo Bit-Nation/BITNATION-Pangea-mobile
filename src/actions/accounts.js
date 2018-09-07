@@ -6,7 +6,6 @@ import type { Mnemonic } from '../types/Mnemonic';
 
 export type AccountsListUpdatedAction = { +type: 'ACCOUNTS_LIST_UPDATED', accounts: Array<Account> };
 export type CurrentAccountIdChangedAction = { +type: 'CURRENT_ACCOUNT_ID_CHANGED', currentAccountId: string | null };
-export type CurrentRetainAccountIdChangedAction = { +type: 'CURRENT_RETAIN_ACCOUNT_ID_CHANGED', currentRetainAccountId: string | null };
 export type MigrateDuplicateAccountAction = { +type: 'MIGRATE_DUPLICATE_ACCOUNTS', +accounts: Array<Account>, +callback: (success: boolean) => void };
 export type LoginAction = { +type: 'LOGIN', accountId: string, password: string, deferred: boolean };
 export type ValidateMnemonicWithAccountAction = { +type: 'VALIDATE_MNEMONIC_WITH_ACCOUNT', +accountId: string, +callback: (success: boolean) => void };
@@ -43,7 +42,6 @@ export type Action =
 
 export const ACCOUNTS_LIST_UPDATED = 'ACCOUNTS_LIST_UPDATED';
 export const CURRENT_ACCOUNT_ID_CHANGED = 'CURRENT_ACCOUNT_ID_CHANGED';
-export const CURRENT_RETAIN_ACCOUNT_ID_CHANGED = 'CURRENT_RETAIN_ACCOUNT_ID_CHANGED';
 export const MIGRATE_DUPLICATE_ACCOUNTS = 'MIGRATE_DUPLICATE_ACCOUNTS';
 export const LOGIN = 'LOGIN';
 export const VALIDATE_MNEMONIC_WITH_ACCOUNT = 'VALIDATE_MNEMONIC_WITH_ACCOUNT';
@@ -84,19 +82,6 @@ export function currentAccountIdChanged(currentAccountId: string | null): Curren
   return {
     type: CURRENT_ACCOUNT_ID_CHANGED,
     currentAccountId,
-  };
-}
-
-/**
- * @desc Action creator for an action that is called when current retain account id is changed.
- * That happens on login and logout.
- * @param {string | null} currentRetainAccountId New id to be set as current or null if user logged out completely.
- * @return {CurrentRetainAccountIdChangedAction} An action.
- */
-export function currentRetainAccountIdChanged(currentRetainAccountId: string | null): CurrentRetainAccountIdChangedAction {
-  return {
-    type: CURRENT_RETAIN_ACCOUNT_ID_CHANGED,
-    currentRetainAccountId,
   };
 }
 

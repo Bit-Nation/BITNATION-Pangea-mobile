@@ -117,7 +117,7 @@ class EnterKeyScreen extends NavigatorComponent<Actions & KeyState & Props, Stat
         errorAlert(error);
       });
     }
-    this.props.changeMnemonic(['rate', 'alter', 'noodle', 'skirt', 'garage', 'hire', 'whisper', 'old', 'elevator', 'warrior', 'siege', 'chapter', 'daughter', 'want', 'hidden', 'mutual', 'grow', 'grit', 'hen', 'walk', 'doll', 'tumble', 'wisdom', 'sand']);
+    this.props.changeMnemonic(['rate', 'health', 'input', 'erode', 'depth', 'print', 'unique', 'random', 'good', 'subject', 'wrestle', 'essence', 'tackle', 'maze', 'grit', 'umbrella', 'remove', 'umbrella', 'chest', 'wisdom', 'apology', 'box', 'word', 'hurdle']);
     this.keyTextInputContainers = [];
     this.configureNavigation(this.props);
   }

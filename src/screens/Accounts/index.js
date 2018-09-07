@@ -66,8 +66,8 @@ class Accounts extends NavigatorComponent<Props & Actions & AccountsState> {
             ...screen('MIGRATION_SCREEN'),
             passProps: {
               accountsMigration: accountList,
-              onDoneEntering: () => {
-                Accounts.showCreatePasscodeContainer(navigator);
+              onDoneEntering: (accountId: string) => {
+                Accounts.showCreatePasscodeContainer(navigator, accountId);
               },
             },
           });

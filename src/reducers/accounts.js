@@ -8,7 +8,6 @@ import {
   type Action as AccountsAction,
   ACCOUNTS_LIST_UPDATED,
   CURRENT_ACCOUNT_ID_CHANGED,
-  CURRENT_RETAIN_ACCOUNT_ID_CHANGED,
   LOGIN_TASK_UPDATED,
   START_ACCOUNT_CREATION,
   CHANGE_CREATING_ACCOUNT_FIELD,
@@ -79,11 +78,6 @@ export default (state: State = initialState, action: AccountsAction | ProfileAct
       return {
         ...state,
         currentAccountId: action.currentAccountId,
-      };
-    case CURRENT_RETAIN_ACCOUNT_ID_CHANGED:
-      return {
-        ...state,
-        currentRetainAccountId: action.currentRetainAccountId,
       };
     case LOGIN_TASK_UPDATED:
       return {

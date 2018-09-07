@@ -13,7 +13,7 @@ import i18n from '../../global/i18n';
 import BackgroundImage from '../../components/common/BackgroundImage';
 import styles from './styles';
 import ScreenTitle from '../../components/common/ScreenTitle';
-import { migrateDuplicateAccounts, currentRetainAccountIdChanged } from '../../actions/accounts';
+import { migrateDuplicateAccounts } from '../../actions/accounts';
 import { startMigration } from '../../actions/migration';
 import type { AccountType as DBAccount } from '../../services/database/schemata';
 import FakeNavigationBar from '../../components/common/FakeNavigationBar';
@@ -33,11 +33,6 @@ type Actions = {
    * @param {function} callback Callback that is called with true if check is successful and false otherwise.
    */
   migrateDuplicateAccounts: (accounts: Array<DBAccount>, callback: (success: boolean) => void) => void,
-  /**
-   * @desc Function to change retain account id
-   * @param {string} currentRetainAccountId List accounts delete
-   */
-  currentRetainAccountIdChanged: (currentRetainAccountId: string) => void,
 };
 
 type Props = {
@@ -47,8 +42,9 @@ type Props = {
   accountsMigration: Array<DBAccount>,
   /**
    * @desc Callback to be called when user done mnemonic entering.
+   * @param {string | null} accountId Account id which need to be restore
    */
-  onDoneEntering: () => void,
+  onDoneEntering: (accountId?: string) => void,
 };
 
 type State = {
@@ -99,11 +95,10 @@ class MigrationScreen extends NavigatorComponent<Actions & Props, State> {
     this.props.accountsMigration.forEach((account, index) => {
       if (index !== this.state.selectedAccountIndex) accounts.push(account);
     });
-    const { id } = this.props.accountsMigration[this.state.selectedAccountIndex];
-    this.props.currentRetainAccountIdChanged(id);
+    const { id } = this.props.accountsMigration[this.state.selectedAccountIndex];// account id
     this.props.migrateDuplicateAccounts(accounts, (success) => {
       if (success) {
-        this.props.onDoneEntering();
+        this.props.onDoneEntering(id);
       } else {
         this.showFailToDeleteDuplicateAccounts();
       }
@@ -155,7 +150,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   startMigration: () => dispatch(startMigration()),
   migrateDuplicateAccounts: (accounts, callback) => dispatch(migrateDuplicateAccounts(accounts, callback)),
-  currentRetainAccountIdChanged: currentRetainAccountId => dispatch(currentRetainAccountIdChanged(currentRetainAccountId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MigrationScreen);
