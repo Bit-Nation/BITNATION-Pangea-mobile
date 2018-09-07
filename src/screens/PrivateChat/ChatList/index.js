@@ -233,7 +233,11 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
   };
 
   showActionSheet = () => {
-    this.actionSheet.show();
+    // @todo Remove unnecessary action sheet and modal code
+    this.props.navigator.push({
+      ...screen('CONTACTS_PICKER_SCREEN'),
+    });
+    // this.actionSheet.show();
   };
 
   render() {
