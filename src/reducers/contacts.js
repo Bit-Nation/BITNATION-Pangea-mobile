@@ -15,39 +15,9 @@ export type State = {
   contacts: Array<Contact>,
 };
 
-
-function makeid() {
-  var text = "";
-  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-  for (var i = 0; i < 16; i++)
-    text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-  return text;
-}
-let contacts = [];
-for (let i=0; i <= 20; i++) {
-  contacts.push({
-    profile: {
-      name: 'Tester ' + i,
-      location: '',
-      image: '',
-      identityKey: makeid(),
-      ethereumAddress: makeid(),
-      ethereumPublicKey: makeid(),
-      chatIdKey: makeid(),
-      timestamp: Date.now(),
-      version: 1,
-      identityKeySignature: makeid(),
-      ethereumKeySignature: makeid()
-    }
-  })
-}
-
 export const initialState: State = {
   isFetching: false,
-  // contacts: [],
-  contacts
+  contacts: [],
 };
 
 /**
