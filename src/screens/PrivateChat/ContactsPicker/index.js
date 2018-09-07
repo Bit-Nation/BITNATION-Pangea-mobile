@@ -19,6 +19,7 @@ import Loading from '../../../components/common/Loading';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import i18n from '../../../global/i18n';
 import Colors from '../../../global/colors';
+import type { ProfileType } from '../../../types/Chat';
 import ScreenTitle from '../../../components/common/ScreenTitle';
 import InvalidKeyModal from './InvalidKeyModal';
 import AssetsImage from '../../../global/AssetsImages';
@@ -92,6 +93,8 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
     };
   }
 
+  selectize: Selectize;
+
   onNavBarButtonPress(id) {
     if (id === DONE_BUTTON) {
       const selectedContacts = this.selectize.getSelectedItems().result;
@@ -134,7 +137,7 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
       const profile = await this.getPublicKeyFromClipboard();
       this.props.addContact(profile.identityKey, (error) => {
         if (error) {
-          this.setState({addContactError: error});
+          this.setState({addContactError: error.message});
         }
         else {
           this.setState({addContactError: ''});
