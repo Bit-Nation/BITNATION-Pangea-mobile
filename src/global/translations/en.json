@@ -332,6 +332,10 @@
         "settings": "Settings"
       }
     },
+    "contactsPicker": {
+      "title": "Manage Chat Group",
+      "newContactFromClipboard": "New Contact from Clipboard"
+    },
     "migration": {
       "title": "Migration",
       "migrateData": "Please wait, we are migrating your data"

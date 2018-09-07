@@ -265,6 +265,10 @@ const Screens = {
     title: i18n.t('screens.chat.title'),
     navigatorStyle,
   },
+  CONTACTS_PICKER_SCREEN: {
+    screen: 'Pangea.ContactsPickerScreen',
+    navigatorStyle,
+  },
   DAPP_MODAL_SCREEN: {
     screen: 'Pangea.DAppModalScreen',
     navigatorStyle,
