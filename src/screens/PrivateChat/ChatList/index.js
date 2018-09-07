@@ -232,12 +232,10 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
     });
   };
 
-  showActionSheet = () => {
-    // @todo Remove unnecessary action sheet and modal code
+  goToContactsPicker = () => {
     this.props.navigator.push({
       ...screen('CONTACTS_PICKER_SCREEN'),
     });
-    // this.actionSheet.show();
   };
 
   render() {
@@ -290,7 +288,7 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
         <Fab
           style={styles.floatingButton}
           position='bottomRight'
-          onPress={this.showActionSheet}
+          onPress={this.goToContactsPicker}
         >
           <Text>+</Text>
         </Fab>
