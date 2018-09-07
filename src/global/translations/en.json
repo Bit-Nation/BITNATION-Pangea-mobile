@@ -318,8 +318,6 @@
       "dappChat": "New Chat with DApp",
       "cancel": "$t(common.cancel)",
       "sendInvite": "Send Invite",
-      "startChat": "Begin Chat",
-      "newChat": "New Chat",
       "invalidKey": "Invalid or Missing Key",
       "inviteSent": "Invite Sent",
       "dAppMessagePreview": "DApp message...",
