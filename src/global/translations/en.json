@@ -214,6 +214,11 @@
       "title": "Success",
       "subtitle": "Your password has been successfully changed",
       "confirm": "$t(common.ok)"
+    },
+    "deleteDuplicateAccountsFail": {
+      "title": "Error",
+      "subtitle": "Please choose an account to restore!",
+      "confirm": "$t(common.ok)"
     }
   },
   "screens": {

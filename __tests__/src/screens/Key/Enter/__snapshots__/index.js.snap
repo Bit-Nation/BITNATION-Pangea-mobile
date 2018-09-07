@@ -37,8 +37,10 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "changeMnemonic": [Function],
+      "checkMnemonicWithAccountList": [Function],
       "enteredMnemonic": null,
       "isOnResetPassProcess": false,
+      "isOnRestoreProcess": false,
       "isVerification": false,
       "mnemonicConfirmed": [Function],
       "mnemonicValid": null,
@@ -91,8 +93,10 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "changeMnemonic": [Function],
+        "checkMnemonicWithAccountList": [Function],
         "enteredMnemonic": null,
         "isOnResetPassProcess": false,
+        "isOnRestoreProcess": false,
         "isVerification": false,
         "mnemonicConfirmed": [Function],
         "mnemonicValid": null,

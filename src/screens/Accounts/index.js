@@ -43,13 +43,44 @@ class Accounts extends NavigatorComponent<Props & Actions & AccountsState> {
     Accounts.showSecuritySettingsScreen(navigator);
   };
 
-  static showSecuritySettingsScreen(navigator: Navigator) {
-    navigator.push({
-      ...screen('SECURITY_SETTINGS_SCREEN'),
-      passProps: {
-        isCreating: true,
-      },
-    });
+  static showSecuritySettingsScreen(navigator: Navigator, accountList?: Array<any>) {
+    if (accountList !== undefined) {
+      const accountSize = accountList.length;
+      switch (accountSize) {
+        case 0:
+          navigator.push({
+            ...screen('SECURITY_SETTINGS_SCREEN'),
+            passProps: {
+              isCreating: true,
+            },
+          });
+          break;
+        case 1:
+        {
+          const { id } = accountList[0];
+          Accounts.showCreatePasscodeContainer(navigator, id);
+          break;
+        }
+        default:
+          navigator.push({
+            ...screen('MIGRATION_SCREEN'),
+            passProps: {
+              accountsMigration: accountList,
+              onDoneEntering: () => {
+                Accounts.showCreatePasscodeContainer(navigator);
+              },
+            },
+          });
+          break;
+      }
+    } else {
+      navigator.push({
+        ...screen('SECURITY_SETTINGS_SCREEN'),
+        passProps: {
+          isCreating: true,
+        },
+      });
+    }
   }
 
   static showResetPasscodeSuccess = async (navigator: Navigator) => {
@@ -62,12 +93,12 @@ class Accounts extends NavigatorComponent<Props & Actions & AccountsState> {
           } else {
             navigator.dismissModal();
           }
-          navigator.pop();
+          navigator.popToRoot();
         },
       }]);
   }
 
-  static showCreatePasscodeContainer(navigator: Navigator, id: string) {
+  static showCreatePasscodeContainer(navigator: Navigator, id?: string) {
     navigator.showModal({
       ...screen('CREATE_PASSCODE_SCREEN'),
       passProps: {
@@ -82,10 +113,11 @@ class Accounts extends NavigatorComponent<Props & Actions & AccountsState> {
     navigator.push({
       ...screen('RESTORE_KEY_SCREEN'),
       passProps: {
+        isOnRestoreProcess: true,
         onCancel: () => navigator.pop(),
-        onDoneEntering: (mnemonic: Mnemonic) => {
-          startRestore(mnemonic);
-          Accounts.showSecuritySettingsScreen(navigator);
+        onDoneEntering: (mnemonic: Mnemonic, accountList) => {
+          if (accountList !== undefined && accountList.length === 0) startRestore(mnemonic);
+          Accounts.showSecuritySettingsScreen(navigator, accountList);
         },
       },
     });

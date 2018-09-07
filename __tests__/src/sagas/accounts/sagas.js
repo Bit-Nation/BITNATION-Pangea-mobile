@@ -10,6 +10,8 @@ import {
   startRestoreAccountUsingMnemonic, saveCreatingAccount as saveCreatingAccountSaga, currentAccountBasedUpdate,
   startAccountUpdateListening, saveMnemonicConfirmed, getAccounts,
   validateMnemonicWithAccount as validateMnemonicWithAccountSaga, validateMnemonicWithAccountActionHandler,
+  checkMnemonicWithAccountList as checkMnemonicWithAccountListSaga, checkMnemonicWithAccountListActionHandler,
+  migrateDuplicateAccounts as migrateDuplicateAccountsSaga, migrateDuplicateAccountsHandle,
 } from '../../../../src/sagas/accounts/sagas';
 import defaultDB, { buildRandomPathDatabase } from '../../../../src/services/database';
 import { convertFromDatabase, convertToDatabase } from '../../../../src/utils/mapping/account';
@@ -22,6 +24,8 @@ import {
   currentAccountIdChanged, login,
   loginTaskUpdated, mnemonicConfirmed, PERFORM_DEFERRED_LOGIN, saveCreatingAccount, savePassword, savePinCode,
   validateMnemonicWithAccount,
+  checkMnemonicWithAccountList,
+  migrateDuplicateAccounts,
 } from '../../../../src/actions/accounts';
 import TaskBuilder from '../../../../src/utils/asyncTask';
 import AccountsService from '../../../../src/services/accounts';
@@ -212,6 +216,23 @@ test('validateMnemonicWithAccountActionHandler', () => {
   const mockCallback = jest.fn();
   const actionMock = validateMnemonicWithAccount('ID', mockCallback);
   expect(validateMnemonicWithAccountActionHandler(actionMock).next().value).toEqual(call(validateMnemonicWithAccountSaga, { accountId: 'ID' }, mockCallback));
+});
+
+test('checkMnemonicWithAccountListActionHandler', () => {
+  const mockCallback = jest.fn();
+  const actionMock = checkMnemonicWithAccountList(mockCallback);
+  expect(checkMnemonicWithAccountListActionHandler(actionMock).next().value).toEqual(call(checkMnemonicWithAccountListSaga, mockCallback));
+});
+
+test('migrateDuplicateAccountsHandle', () => {
+  const mockCallback = jest.fn();
+  const arrayAccountsMock = {
+    collection: [{
+      ...convertToDatabase(partialAccountMock, version),
+    }],
+  };
+  const actionMock = migrateDuplicateAccounts([convertFromDatabase(arrayAccountsMock.collection[0])], mockCallback);
+  expect(migrateDuplicateAccountsHandle(actionMock).next().value).toEqual(call(migrateDuplicateAccountsSaga, [convertFromDatabase(arrayAccountsMock.collection[0])], mockCallback));
 });
 
 describe('login', () => {

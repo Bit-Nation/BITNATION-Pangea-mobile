@@ -6,8 +6,11 @@ import type { Mnemonic } from '../types/Mnemonic';
 
 export type AccountsListUpdatedAction = { +type: 'ACCOUNTS_LIST_UPDATED', accounts: Array<Account> };
 export type CurrentAccountIdChangedAction = { +type: 'CURRENT_ACCOUNT_ID_CHANGED', currentAccountId: string | null };
+export type CurrentRetainAccountIdChangedAction = { +type: 'CURRENT_RETAIN_ACCOUNT_ID_CHANGED', currentRetainAccountId: string | null };
+export type MigrateDuplicateAccountAction = { +type: 'MIGRATE_DUPLICATE_ACCOUNTS', +accounts: Array<Account>, +callback: (success: boolean) => void };
 export type LoginAction = { +type: 'LOGIN', accountId: string, password: string, deferred: boolean };
 export type ValidateMnemonicWithAccountAction = { +type: 'VALIDATE_MNEMONIC_WITH_ACCOUNT', +accountId: string, +callback: (success: boolean) => void };
+export type CheckMnemonicWithAccountListAction = { +type: 'CHECK_MNEMONIC_WITH_ACCOUNT_LIST', +callback: (success: boolean) => void };
 export type PerformDeferredLoginAction = { +type: 'PERFORM_DEFERRED_LOGIN' };
 export type LoginTaskUpdatedAction = { +type: 'LOGIN_TASK_UPDATED', loginTask: AsyncTask<void> };
 export type LogoutAction = { +type: 'LOGOUT' };
@@ -40,8 +43,11 @@ export type Action =
 
 export const ACCOUNTS_LIST_UPDATED = 'ACCOUNTS_LIST_UPDATED';
 export const CURRENT_ACCOUNT_ID_CHANGED = 'CURRENT_ACCOUNT_ID_CHANGED';
+export const CURRENT_RETAIN_ACCOUNT_ID_CHANGED = 'CURRENT_RETAIN_ACCOUNT_ID_CHANGED';
+export const MIGRATE_DUPLICATE_ACCOUNTS = 'MIGRATE_DUPLICATE_ACCOUNTS';
 export const LOGIN = 'LOGIN';
 export const VALIDATE_MNEMONIC_WITH_ACCOUNT = 'VALIDATE_MNEMONIC_WITH_ACCOUNT';
+export const CHECK_MNEMONIC_WITH_ACCOUNT_LIST = 'CHECK_MNEMONIC_WITH_ACCOUNT_LIST';
 export const LOGIN_TASK_UPDATED = 'LOGIN_TASK_UPDATED';
 export const LOGOUT = 'LOGOUT';
 export const START_ACCOUNT_CREATION = 'START_ACCOUNT_CREATION';
@@ -82,6 +88,19 @@ export function currentAccountIdChanged(currentAccountId: string | null): Curren
 }
 
 /**
+ * @desc Action creator for an action that is called when current retain account id is changed.
+ * That happens on login and logout.
+ * @param {string | null} currentRetainAccountId New id to be set as current or null if user logged out completely.
+ * @return {CurrentRetainAccountIdChangedAction} An action.
+ */
+export function currentRetainAccountIdChanged(currentRetainAccountId: string | null): CurrentRetainAccountIdChangedAction {
+  return {
+    type: CURRENT_RETAIN_ACCOUNT_ID_CHANGED,
+    currentRetainAccountId,
+  };
+}
+
+/**
  * @desc Action creator for an action that is called to perform a login.
  * @param {string} accountId Id of account to login to.
  * @param {string} password Password to login.
@@ -107,6 +126,32 @@ export function validateMnemonicWithAccount(accountId: string, callback: (boolea
   return {
     type: VALIDATE_MNEMONIC_WITH_ACCOUNT,
     accountId,
+    callback,
+  };
+}
+
+/**
+ * @desc Action creator for an action that is called to perform a validate account with mnemonic.
+ * @param {function} callback Callback that is called with true if check is successful and false otherwise.
+ * @return {CheckMnemonicWithAccountListAction} An action.
+ */
+export function checkMnemonicWithAccountList(callback: (boolean) => void): CheckMnemonicWithAccountListAction {
+  return {
+    type: CHECK_MNEMONIC_WITH_ACCOUNT_LIST,
+    callback,
+  };
+}
+
+/**
+ * @desc Action creator for an action that starts the migration process.
+ * @param {Array<Account>} accounts List accounts delete
+ * @param {function} callback Callback that is called with true if check is successful and false otherwise.
+ * @returns {MigrateDuplicateAccountAction} An action.
+ */
+export function migrateDuplicateAccounts(accounts: Array<Account>, callback: (boolean) => void): MigrateDuplicateAccountAction {
+  return {
+    type: MIGRATE_DUPLICATE_ACCOUNTS,
+    accounts,
     callback,
   };
 }

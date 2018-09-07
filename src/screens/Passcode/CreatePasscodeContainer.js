@@ -27,6 +27,10 @@ type Props = {
    */
   title: string,
   /**
+   * @desc id of retain account
+   */
+  currentRetainAccountId: string | null,
+  /**
    * @desc Callback on cancellation of entering passcode.
    */
   onCancel: () => void,
@@ -109,11 +113,12 @@ class CreatePasscodeContainer extends NavigatorComponent<Props & Actions & Setti
   };
 
   onSubmitPasscode = (passcode: string) => {
+    const currentAccountId = (this.props.accountId !== undefined) ? this.props.accountId : this.props.currentRetainAccountId;
     if (this.state.enteredPasscode === passcode) {
       if (this.props.passcodeType.type === 'pinCode') {
-        this.props.savePinCode(passcode, this.props.accountId, this.onSaveFinished);
+        this.props.savePinCode(passcode, currentAccountId, this.onSaveFinished);
       } else {
-        this.props.savePassword(passcode, this.props.accountId, this.onSaveFinished);
+        this.props.savePassword(passcode, currentAccountId, this.onSaveFinished);
       }
     } else {
       this.showVerificationFailedAlert();
@@ -213,6 +218,7 @@ CreatePasscodeContainer.defaultProps = {
 
 const mapStateToProps = state => ({
   ...state.settings,
+  ...state.accounts,
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -8,6 +8,7 @@ import {
   type Action as AccountsAction,
   ACCOUNTS_LIST_UPDATED,
   CURRENT_ACCOUNT_ID_CHANGED,
+  CURRENT_RETAIN_ACCOUNT_ID_CHANGED,
   LOGIN_TASK_UPDATED,
   START_ACCOUNT_CREATION,
   CHANGE_CREATING_ACCOUNT_FIELD,
@@ -30,9 +31,10 @@ export type State = {
   +editingAccount: Account | PartialAccount | null,
   +creatingAccount: PartialAccount | null,
   +currentAccountId: string | null,
-  +login: AsyncTask<void>,
-  +logout: AsyncTask<void>,
-  +accounts: Array<Account>,
+  +currentRetainAccountId: string | null,
+  +login: AsyncTask < void>,
+  +logout: AsyncTask < void>,
+  +accounts: Array < Account >,
   +currentCreation:
     | { type: 'create' }
     | { type: 'restore', mnemonic: Mnemonic }
@@ -52,6 +54,7 @@ export const initialState: State = {
   editingAccount: null,
   creatingAccount: null,
   currentAccountId: null,
+  currentRetainAccountId: null,
   login: TaskBuilder.empty(),
   logout: TaskBuilder.empty(),
   accounts: [],
@@ -76,6 +79,11 @@ export default (state: State = initialState, action: AccountsAction | ProfileAct
       return {
         ...state,
         currentAccountId: action.currentAccountId,
+      };
+    case CURRENT_RETAIN_ACCOUNT_ID_CHANGED:
+      return {
+        ...state,
+        currentRetainAccountId: action.currentRetainAccountId,
       };
     case LOGIN_TASK_UPDATED:
       return {

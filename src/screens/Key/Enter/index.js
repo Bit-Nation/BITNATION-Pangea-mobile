@@ -30,7 +30,7 @@ import type { Mnemonic } from '../../../types/Mnemonic';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import AccountsService from '../../../services/accounts';
 import { alert, errorAlert } from '../../../global/alerts';
-import { mnemonicConfirmed, validateMnemonicWithAccount } from '../../../actions/accounts';
+import { mnemonicConfirmed, validateMnemonicWithAccount, checkMnemonicWithAccountList } from '../../../actions/accounts';
 import { GeneralError } from '../../../global/errors/common';
 
 const DONE_BUTTON = 'DONE_BUTTON';
@@ -47,13 +47,18 @@ type Props = {
   isOnResetPassProcess: boolean,
 
   /**
+   * @desc Flag that shows if user is currently on restore process.
+   */
+  isOnRestoreProcess: boolean,
+
+  /**
    * @desc Id of account which mnemonic will be entered.
    */
   accountId: string,
   /**
-   * @desc Callback to be called when user done mnemonic entering.
+   * @desc Callback to be called when user done with mnemonic entering.
    */
-  onDoneEntering: (mne?: Mnemonic) => void,
+  onDoneEntering: (mne?: Mnemonic, accountList?: Array<any>) => void,
   /**
    * @desc Callback to be called when user cancel mnemonic entering.
    */
@@ -82,6 +87,10 @@ type Actions = {
    * @desc Action to perform a login.
    */
   validateMnemonicWithAccount: (accountId: string, callback: (success: boolean) => void) => void,
+  /**
+   * @desc Action to perform a restore.
+   */
+  checkMnemonicWithAccountList: (callback: (hasAccount: Array<any>) => void) => void,
 }
 
 type State = {
@@ -108,6 +117,7 @@ class EnterKeyScreen extends NavigatorComponent<Actions & KeyState & Props, Stat
         errorAlert(error);
       });
     }
+    this.props.changeMnemonic(['rate', 'alter', 'noodle', 'skirt', 'garage', 'hire', 'whisper', 'old', 'elevator', 'warrior', 'siege', 'chapter', 'daughter', 'want', 'hidden', 'mutual', 'grow', 'grit', 'hen', 'walk', 'doll', 'tumble', 'wisdom', 'sand']);
     this.keyTextInputContainers = [];
     this.configureNavigation(this.props);
   }
@@ -191,6 +201,10 @@ class EnterKeyScreen extends NavigatorComponent<Actions & KeyState & Props, Stat
         }
 
         this.props.navigator.push(screen('VERIFY_KEY_SUCCESS_SCREEN'));
+      });
+    } else if (this.props.isOnRestoreProcess === true) {
+      this.props.checkMnemonicWithAccountList((accountList: Array<any>) => {
+        this.props.onDoneEntering(((this.props.enteredMnemonic: any): Mnemonic), accountList);
       });
     } else {
       // We are sure that mnemonic is non-null here, so we do type conversion.
@@ -337,6 +351,7 @@ class EnterKeyScreen extends NavigatorComponent<Actions & KeyState & Props, Stat
 EnterKeyScreen.defaultProps = {
   isVerification: false,
   isOnResetPassProcess: false,
+  isOnRestoreProcess: false,
 };
 
 const mapStateToProps = state => ({
@@ -356,6 +371,9 @@ const mapDispatchToProps = dispatch => ({
   },
   validateMnemonicWithAccount(accountId, callback) {
     dispatch(validateMnemonicWithAccount(accountId, callback));
+  },
+  checkMnemonicWithAccountList(callback) {
+    dispatch(checkMnemonicWithAccountList(callback));
   },
 });
 

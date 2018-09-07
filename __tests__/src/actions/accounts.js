@@ -6,6 +6,7 @@ import {
   checkPassword,
   checkPinCode,
   currentAccountIdChanged,
+  currentRetainAccountIdChanged,
   login,
   loginTaskUpdated,
   logout,
@@ -20,6 +21,7 @@ import {
   CHECK_PASSWORD,
   CHECK_PIN_CODE,
   CURRENT_ACCOUNT_ID_CHANGED,
+  CURRENT_RETAIN_ACCOUNT_ID_CHANGED,
   LOGIN,
   LOGIN_TASK_UPDATED,
   LOGOUT,
@@ -53,6 +55,13 @@ describe('accounts action creators', () => {
     expect(currentAccountIdChanged('ID')).toEqual({
       type: CURRENT_ACCOUNT_ID_CHANGED,
       currentAccountId: 'ID',
+    });
+  });
+
+  test('currentRetainAccountIdChanged', () => {
+    expect(currentRetainAccountIdChanged('ID')).toEqual({
+      type: CURRENT_RETAIN_ACCOUNT_ID_CHANGED,
+      currentRetainAccountId: 'ID',
     });
   });
 

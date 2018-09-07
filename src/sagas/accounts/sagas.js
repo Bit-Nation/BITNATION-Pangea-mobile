@@ -1,6 +1,7 @@
 /* eslint-disable no-use-before-define */
-// @flow
+/* eslint func-names: ["error", "never"] */
 
+// @flow
 import type { Realm } from 'realm';
 import { call, put, take, select, race } from 'redux-saga/effects';
 import defaultDB from '../../services/database';
@@ -20,6 +21,8 @@ import type {
   CheckPinCodeAction,
   LoginAction, MnemonicConfirmedAction,
   ValidateMnemonicWithAccountAction,
+  MigrateDuplicateAccountAction,
+  CheckMnemonicWithAccountListAction,
   SaveCreatingAccountAction,
   SavePasswordAction,
   SavePinCodeAction,
@@ -239,7 +242,7 @@ export function* login(userInfo: ({ accountId: string, accountStore?: string }),
 }
 
 /**
- * @desc Valid mnemonic with account choice to login
+ * @desc Valid mnemonic with selected account to login
  * @param {ValidateMnemonicWithAccountAction} action An action
  * @return {void}
  */
@@ -266,6 +269,74 @@ export function* validateMnemonicWithAccount(userInfo: ({ accountId: string }), 
     console.log('--> ERROR Login: ', error);
     yield call(callback, false);
   }
+}
+
+/**
+ * @desc Validate mnemonic with account list in database
+ * @param {CheckMnemonicWithAccountListAction} action An action
+ * @return {void}
+ */
+export function* checkMnemonicWithAccountListActionHandler(action: CheckMnemonicWithAccountListAction): Generator<*, *, *> {
+  yield call(checkMnemonicWithAccountList, action.callback);
+}
+
+/**
+ * @desc Validate mnemonic with account list in database
+ * @param {function} callback Function that is called when mnemonic is valid.
+ * @return {void}
+ */
+export function* checkMnemonicWithAccountList(callback: (success: boolean) => void): Generator<*, *, *> {
+  const db = yield defaultDB;
+  const accounts = db.objects('Account');
+  const keys = Object.keys(accounts);
+  try {
+    const { key: { enteredMnemonic } } = yield select();
+    const hasAccount = [];
+    for (let i = 0; i < keys.length; i += 1) {
+      const account: DBAccount = accounts[i];
+      const { accountStore } = account;
+      const profile = retrieveProfileFromAccount(convertFromDatabase(account));
+      const isValid = yield call(AccountsService.validateMnemonicWithAccount, accountStore, profile, enteredMnemonic);
+      if (isValid) {
+        hasAccount.push(account);
+      }
+    }
+    yield call(callback, hasAccount);
+  } catch (error) {
+    yield call(callback, []);
+  }
+}
+
+/**
+ * @desc Migration duplicate accounts
+ * @param {Array<DBAccount>} accounts List accounts
+ * @param {function} callback Function that is called when deleted duplicate accounts
+ * @return {void}
+ */
+export function* migrateDuplicateAccounts(accounts: Array<DBAccount>, callback: (success: boolean) => void): Generator<*, *, any> {
+  if (accounts.length === 0) return;
+  const db = yield defaultDB;
+
+  try {
+    accounts.forEach((account) => {
+      db.write(() => {
+        db.delete(account);
+      });
+    });
+    yield call(callback, true);
+  } catch (error) {
+    console.log(`ERROR WHEN MIGRATION DUPLICATE ACCOUNT: ${error}`);
+    yield call(callback, false);
+  }
+}
+
+/**
+ * @desc Migration duplicate accounts handle
+ * @param {MigrateDuplicateAccountAction} action An action
+ * @return {void}
+ */
+export function* migrateDuplicateAccountsHandle(action: MigrateDuplicateAccountAction): Generator<*, *, any> {
+  yield call(migrateDuplicateAccounts, action.accounts, action.callback);
 }
 
 /**
