@@ -29,20 +29,6 @@ export function* fetchContacts(): Generator<*, *, *> {
 }
 
 /**
- * @desc Update a contact.
- * @param {Array<Contact>} contacts Contact to be updated.
- * @return {void}
- */
-export function* updateContacts(contacts: Array<Contact>): Generator<*, *, *> {
-  try {
-    yield call(ContactsService.updateContact, contacts);
-    yield put(contactsUpdated(contacts));
-  } catch (error) {
-    console.log(`[CONTACTS] Failed to update contact with error ${error.message}`);
-  }
-}
-
-/**
  * @desc Add a new contact.
  * @param {AddContactAction} action An Action
  * @return {void}
