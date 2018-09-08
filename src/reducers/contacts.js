@@ -13,13 +13,11 @@ import type { Contact } from '../types/Contacts';
 export type State = {
   isFetching: boolean,
   contacts: Array<Contact>,
-  identityKey: string,
 };
 
 export const initialState: State = {
   isFetching: false,
   contacts: [],
-  identityKey: '',
 };
 
 /**
@@ -54,7 +52,6 @@ export default (state: State = initialState, action: Action): State => {
       return {
         ...state,
         isFetching: false,
-        identityKey: action.identityKey,
       };
     default:
       return state;
