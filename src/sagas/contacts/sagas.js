@@ -10,7 +10,6 @@ import {
   contactsFetchFailed,
   contactsUpdated,
 } from '../../actions/contacts';
-import type { Contact } from '../../types/Contacts';
 import type { AddContactAction } from '../../actions/contacts';
 
 /**
