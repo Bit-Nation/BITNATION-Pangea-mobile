@@ -51,7 +51,6 @@ export default (state: State = initialState, action: Action): State => {
     case ADD_CONTACT:
       return {
         ...state,
-        isFetching: false,
       };
     default:
       return state;
