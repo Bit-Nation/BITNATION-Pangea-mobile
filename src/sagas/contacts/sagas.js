@@ -8,8 +8,9 @@ import ContactsService from '../../services/contacts';
 import {
   startContactsFetch,
   contactsFetchFailed,
+  contactsUpdated,
 } from '../../actions/contacts';
-// import type { Contact } from '../../types/Contacts';
+import type { Contact } from '../../types/Contacts';
 import type { AddContactAction } from '../../actions/contacts';
 
 /**
@@ -19,10 +20,25 @@ import type { AddContactAction } from '../../actions/contacts';
 export function* fetchContacts(): Generator<*, *, *> {
   try {
     yield put(startContactsFetch());
-    // const contacts = yield call(ContactsService.getContacts);
+    const contacts = yield call(ContactsService.getContacts);
+    yield put(contactsUpdated(contacts));
   } catch (error) {
     console.log(`[CONTACTS] Failed to fetch contacts with error ${error.message}`);
     yield put(contactsFetchFailed(error));
+  }
+}
+
+/**
+ * @desc Update a contact.
+ * @param {Array<Contact>} contacts Contact to be updated.
+ * @return {void}
+ */
+export function* updateContacts(contacts: Array<Contact>): Generator<*, *, *> {
+  try {
+    yield call(ContactsService.updateContact, contacts);
+    yield put(contactsUpdated(contacts));
+  } catch (error) {
+    console.log(`[CONTACTS] Failed to update contact with error ${error.message}`);
   }
 }
 
