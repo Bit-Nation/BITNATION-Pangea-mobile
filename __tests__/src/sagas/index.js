@@ -18,6 +18,7 @@ import migration from '../../../src/sagas/migration';
 import dApps from '../../../src/sagas/dApps';
 import upstream from '../../../src/sagas/upstream';
 import documents from '../../../src/sagas/documents';
+import contacts from '../../../src/sagas/contacts';
 
 test('rootSaga', () => {
   const iterator = rootSaga();
@@ -38,5 +39,6 @@ test('rootSaga', () => {
     call(migration),
     call(upstream),
     call(documents),
+    call(contacts),
   ]));
 });
