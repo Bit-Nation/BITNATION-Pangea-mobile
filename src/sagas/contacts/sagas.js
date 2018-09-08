@@ -9,9 +9,8 @@ import {
   startContactsFetch,
   contactsFetchFailed,
   contactsUpdated,
-  addContact,
 } from '../../actions/contacts';
-import { getProfile } from '../../actions/chat';
+import { getProfile } from '../chat/sagas';
 import type { AddContactAction } from '../../actions/contacts';
 
 /**
@@ -35,20 +34,16 @@ export function* fetchContacts(): Generator<*, *, *> {
  * @return {void}
  */
 export function* addNewContact(action: AddContactAction): Generator<*, *, *> {
-  const { identityKey } = action;
+  const { identityKey, callback } = action;
   try {
-    yield call(getProfile(identityKey, (result, error) => {
-      if (result) {
-        ContactsService.addContact(identityKey);
-        addContact(identityKey, (err) => {
-          console.log('Error adding Contact', err);
-        });
-      } else {
-        console.log('Error fetching profile', error);
-      }
-    }));
-    yield call(fetchContacts);
+    const profile = yield call(getProfile, identityKey);
+    if (profile) {
+      yield call(ContactsService.addContact(identityKey));
+      yield call(callback, null);
+      yield put(fetchContacts);
+    }
   } catch (error) {
     console.log(`[CONTACTS] Failed to add contact with identity key ${identityKey} with error ${error.message}`);
+    yield call(callback, error);
   }
 }
