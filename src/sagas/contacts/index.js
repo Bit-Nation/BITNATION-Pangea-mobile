@@ -9,12 +9,12 @@ import {
 } from '../../actions/contacts';
 
 /**
- * @desc Root Contacts saga.
+ * @desc Root contacts saga.
  * @return {void}
  */
 export default function* rootSaga(): Generator<*, *, *> {
   yield all([
-    yield takeEvery([SERVICES_CREATED, START_CONTACTS_FETCH], fetchContacts),
-    yield takeEvery(ADD_CONTACT, addNewContact),
+    takeEvery([SERVICES_CREATED, START_CONTACTS_FETCH], fetchContacts),
+    takeEvery(ADD_CONTACT, addNewContact),
   ]);
 }
