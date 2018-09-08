@@ -3,6 +3,7 @@ import {
   startContactsFetch,
   contactsUpdated,
   addContact,
+  contactsFetchFailed,
 } from '../../../src/actions/contacts';
 import { servicesDestroyed } from '../../../src/actions/serviceContainer';
 
@@ -33,6 +34,17 @@ describe('contacts reducer action handling', () => {
       ...stateBefore,
       isFetching: true,
       fetchError: null,
+    });
+  });
+
+  test('contactsFetchFailed', () => {
+    const errorMock = new Error('MOCK: Contact fetch failed');
+    const stateBefore = initialState;
+    const stateAfter = reducer(stateBefore, contactsFetchFailed(errorMock));
+    expect(stateAfter).toEqual({
+      ...stateBefore,
+      isFetching: false,
+      fetchError: errorMock,
     });
   });
 
