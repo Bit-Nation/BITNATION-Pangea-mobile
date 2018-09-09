@@ -1,3 +1,5 @@
+// @flow
+
 import {
   START_CONTACTS_FETCH,
   CONTACTS_UPDATED,
@@ -15,12 +17,11 @@ describe('contacts action creators', () => {
   });
 
   test('contactsUpdated', () => {
-    const mockAddress = '0xtestaddress';
     const profileMock = {
       name: 'Name',
       location: 'Location',
       identityKey: 'Sample',
-      ethereumAddress: mockAddress,
+      ethereumAddress: '0xtestaddress',
       ethereumPublicKey: 'key',
       chatIdKey: 'chatKey',
       timestamp: null,
