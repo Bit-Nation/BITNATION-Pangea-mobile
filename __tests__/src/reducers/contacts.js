@@ -1,3 +1,5 @@
+// @flow
+
 import reducer, { initialState } from '../../../src/reducers/contacts';
 import {
   startContactsFetch,
@@ -8,13 +10,12 @@ import {
 import { servicesDestroyed } from '../../../src/actions/serviceContainer';
 
 describe('contacts reducer action handling', () => {
-  const mockAddress = '0xtestaddress';
   const callbackMock = jest.fn();
-  const contactsMock = {
+  const profileMock = {
     name: 'Name',
     location: 'Location',
     identityKey: 'Sample',
-    ethereumAddress: mockAddress,
+    ethereumAddress: '0xtestaddress',
     ethereumPublicKey: 'key',
     chatIdKey: 'chatKey',
     timestamp: null,
@@ -50,11 +51,11 @@ describe('contacts reducer action handling', () => {
 
   test('contactsUpdated', () => {
     const stateBefore = initialState;
-    const stateAfter = reducer(stateBefore, contactsUpdated([contactsMock]));
+    const stateAfter = reducer(stateBefore, contactsUpdated([profileMock]));
     expect(stateAfter).toEqual({
       ...stateBefore,
       isFetching: false,
-      contacts: [contactsMock],
+      contacts: [profileMock],
     });
   });
 
