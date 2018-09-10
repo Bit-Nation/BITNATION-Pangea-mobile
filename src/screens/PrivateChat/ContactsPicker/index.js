@@ -33,6 +33,7 @@ const DISABLED_RIGHT_BUTTON = {
   buttonColor: Colors.navigationButtonColor,
   disabled: true,
 };
+const ADD_CONTACT_ERROR = 'Error adding contact, please try again later.';
 
 type Props = {
   /**
@@ -162,16 +163,15 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
       this.setState({ loading: true });
       const publicKey = await Clipboard.getString();
       this.props.addContact(publicKey, (error) => {
-        const addContactError = error ? 'Error adding contact, please try again later' : '';
         this.setState({
-          addContactError,
+          addContactError: error ? ADD_CONTACT_ERROR : '',
           addedContactIdentityKey: publicKey,
           loading: false,
         });
       });
     } catch (error) {
       this.setState({
-        showModal: INVALID_MODAL_KEY,
+        addContactError: ADD_CONTACT_ERROR,
         loading: false,
       });
     }
