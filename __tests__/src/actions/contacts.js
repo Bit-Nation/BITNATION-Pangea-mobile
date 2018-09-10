@@ -18,19 +18,26 @@ describe('contacts action creators', () => {
 
   test('contactsUpdated', () => {
     const profileMock = {
-      name: 'Name',
-      location: 'Location',
-      identityKey: 'Sample',
-      ethereumAddress: '0xtestaddress',
-      ethereumPublicKey: 'key',
-      chatIdKey: 'chatKey',
-      timestamp: null,
-      version: null,
-      identityKeySignature: 'Sample Signature',
+      profile: {
+        name: 'Name',
+        location: 'Location',
+        image: 'Image',
+        identityKey: 'Sample',
+        ethereumAddress: '0xtestaddress',
+        ethereumPublicKey: 'key',
+        chatIdKey: 'chatKey',
+        timestamp: new Date(),
+        version: 1,
+        identityKeySignature: 'Sample Signature',
+        ethereumKeySignature: 'Sample Key Signature',
+      },
     };
-    expect(contactsUpdated([profileMock])).toEqual({
+
+    const contacts = [profileMock];
+
+    expect(contactsUpdated(contacts)).toEqual({
       type: CONTACTS_UPDATED,
-      contacts: [profileMock],
+      contacts,
     });
   });
 

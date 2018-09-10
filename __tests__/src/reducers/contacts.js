@@ -7,26 +7,26 @@ import {
   addContact,
   contactsFetchFailed,
 } from '../../../src/actions/contacts';
-import { servicesDestroyed } from '../../../src/actions/serviceContainer';
 
 describe('contacts reducer action handling', () => {
   const callbackMock = jest.fn();
   const profileMock = {
-    name: 'Name',
-    location: 'Location',
-    identityKey: 'Sample',
-    ethereumAddress: '0xtestaddress',
-    ethereumPublicKey: 'key',
-    chatIdKey: 'chatKey',
-    timestamp: null,
-    version: null,
-    identityKeySignature: 'Sample Signature',
+    profile: {
+      name: 'Name',
+      location: 'Location',
+      image: 'Image',
+      identityKey: 'Sample',
+      ethereumAddress: '0xtestaddress',
+      ethereumPublicKey: 'key',
+      chatIdKey: 'chatKey',
+      timestamp: new Date(),
+      version: 1,
+      identityKeySignature: 'Sample Signature',
+      ethereumKeySignature: 'Sample Key Signature',
+    },
   };
 
-  test('after service destroy returns initial state', () => {
-    const changedState = reducer(initialState, startContactsFetch());
-    expect(reducer(changedState, servicesDestroyed())).toEqual(initialState);
-  });
+  const contacts = [profileMock];
 
   test('startContactsFetch', () => {
     const stateBefore = initialState;
@@ -51,7 +51,7 @@ describe('contacts reducer action handling', () => {
 
   test('contactsUpdated', () => {
     const stateBefore = initialState;
-    const stateAfter = reducer(stateBefore, contactsUpdated([profileMock]));
+    const stateAfter = reducer(stateBefore, contactsUpdated(contacts));
     expect(stateAfter).toEqual({
       ...stateBefore,
       isFetching: false,
