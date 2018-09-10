@@ -10,7 +10,6 @@ import {
   Image,
 } from 'react-native';
 import { Text } from 'native-base';
-import { getProfile, newChatSession } from '../../../actions/chat';
 import { addContact } from '../../../actions/contacts';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import styles from './styles';
@@ -19,7 +18,6 @@ import Loading from '../../../components/common/Loading';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import i18n from '../../../global/i18n';
 import Colors from '../../../global/colors';
-import type { ProfileType } from '../../../types/Chat';
 import ScreenTitle from '../../../components/common/ScreenTitle';
 import InvalidKeyModal from './InvalidKeyModal';
 import AssetsImage from '../../../global/AssetsImages';
@@ -40,23 +38,11 @@ type Props = {
    */
   contacts: Array<*>,
   /**
-   * @desc Function to get user profile
-   * @param {string} identityKey Identity key of user.
-   * @param {function} callback Callback
-   */
-  getProfile: (identityKey: string, callback: (profile: (ProfileType | null), error: (Error | null)) => void) => void,
-  /**
    * @desc Function to add a new contact
    * @param {string} identityKey Identity key of user.
    * @param {function} callback Callback
    */
   addContact: (identityKey: string, callback: (error: Error | null) => void) => void,
-  /**
-   * @desc Function to initialize a new chat
-   * @param {ProfileType} profile Profile of the user
-   * @param {func} callback
-   */
-  createNewSession: (profile: ProfileType, callback: (result: Object) => void) => void,
 };
 
 type State = {
@@ -111,31 +97,11 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
     }
   }
 
-  getPublicKeyFromClipboard = async () => {
-    const pubKey = await Clipboard.getString();
-
-    return this.getUserProfile(pubKey);
-  };
-
-  getUserProfile = async publicKey => new Promise((res, rej) => {
-    this.props.getProfile(publicKey, (profile, error) => {
-      if (profile != null) {
-        res(profile);
-        return;
-      }
-
-      if (error != null) {
-        console.log(`[TEST] Profile fetch error: ${error.message}`);
-      }
-      rej(error);
-    });
-  });
-
   addContact = async () => {
     try {
       this.setState({ loading: true });
-      const profile = await this.getPublicKeyFromClipboard();
-      this.props.addContact(profile.identityKey, (error) => {
+      const publicKey = await Clipboard.getString();;
+      this.props.addContact(publicKey, (error) => {
         if (error) {
           this.setState({addContactError: error.message});
         }
@@ -251,9 +217,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getProfile: (profile, callback) => dispatch(getProfile(profile, callback)),
   addContact: (identityKey, callback) => dispatch(addContact(identityKey, callback)),
-  createNewSession: (profile, callback) => dispatch(newChatSession(profile, callback)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactsPickerScreen);
