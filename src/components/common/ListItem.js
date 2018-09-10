@@ -45,7 +45,7 @@ type Props<IDType> = {
    * @desc Callback on press item.
    * @param {IDType} id Id of item that was pressed
    */
-  onPress: (id: IDType) => void,
+  onPress: (id: IDType) => mixed,
   /**
    * @desc Flag to enable/disable press on item.
    */
