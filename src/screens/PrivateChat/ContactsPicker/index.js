@@ -18,6 +18,7 @@ import Loading from '../../../components/common/Loading';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import i18n from '../../../global/i18n';
 import Colors from '../../../global/colors';
+import type { Contact } from '../../../types/Contacts';
 import ScreenTitle from '../../../components/common/ScreenTitle';
 import InvalidKeyModal from './InvalidKeyModal';
 import AssetsImage from '../../../global/AssetsImages';
@@ -36,7 +37,7 @@ type Props = {
   /**
    * @desc List of all contacts
    */
-  contacts: Array<*>,
+  contacts: Array<Contact>,
   /**
    * @desc Function to add a new contact
    * @param {string} identityKey Identity key of user.
@@ -91,10 +92,10 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.contacts.length == prevProps.contacts.length + 1) {
-      const newContact = this.props.contacts[this.props.contacts.length - 1];
-      this.selectize._selectItem(newContact.id)
-    }
+    // if (this.props.contacts.length == prevProps.contacts.length + 1) {
+    //   const newContact = this.props.contacts[this.props.contacts.length - 1];
+    //   this.selectize._selectItem(newContact.id)
+    // }
   }
 
   addContact = async () => {
@@ -140,7 +141,11 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
             label='To:'
             itemId='id'
             filterOnKey='name'
-            items={this.props.contacts}
+            items={this.props.contacts.map(contact => ({
+              id: contact.profile.identityKey,
+              name: contact.profile.name,
+              ...contact
+            }))}
             showItems='always'
             error={this.state.addContactError}
             listStyle={styles.list}
@@ -209,11 +214,7 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
 }
 
 const mapStateToProps = state => ({
-  contacts: state.contacts.contacts.map(contact => ({
-    id: contact.profile.identityKey,
-    name: contact.profile.name,
-    ...contact
-  })),
+  contacts: state.contacts.contacts,
 });
 
 const mapDispatchToProps = dispatch => ({
