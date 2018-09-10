@@ -84,7 +84,7 @@ export default class EthereumService {
     const contract = new ethers.Contract(tokenAddress, abi, this.wallet);
     const formattedTokenAmount = ethers.utils.parseUnits(tokenAmount, 18);
     const overrideOptions = {
-      gasLimit: 1000000,
+      gasLimit: 100000,
     };
     const transactionHash = await contract.transfer(toAddress, formattedTokenAmount, overrideOptions);
     return transactionHash;
@@ -121,7 +121,7 @@ export default class EthereumService {
    */
   sendMoney(toAddress: string, amount: string): Promise<void> {
     const transaction = {
-      gasLimit: 21000,
+      gasLimit: '21000',
       to: toAddress,
       data: '0x',
       value: ethers.utils.parseEther(amount),

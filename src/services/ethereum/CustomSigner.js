@@ -55,6 +55,7 @@ export default function CustomSigner(privateKey: string, provider: string, app: 
             amount: transactionObject.value,
             estimate: estimate.toString(),
             app,
+            gasLimit: transactionObject.gasLimit,
           },
         });
       });
