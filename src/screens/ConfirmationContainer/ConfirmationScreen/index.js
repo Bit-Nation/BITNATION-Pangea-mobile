@@ -45,6 +45,7 @@ type Props = {
   estimate: String,
   purpose: String,
   app: String,
+  gasLimit: String,
 }
 
 type State = {
@@ -63,8 +64,9 @@ class ConfirmationScreen extends NavigatorComponent<Props, State> {
     super(props);
     this.state = {
       gasPrice: 2,
-      gasLimit: '1500000',
+      gasLimit: this.props.gasLimit === null ? '21000' : this.props.gasLimit,
     };
+    console.log('GAS PRICE LIMIT --> ', this.state.gasLimit);
 
     this.props.navigator.setButtons({
       leftButtons: [{
@@ -102,7 +104,6 @@ class ConfirmationScreen extends NavigatorComponent<Props, State> {
       </View>
     );
   }
-
 
   buildConfirmationView() {
     const amount = ethers.utils.bigNumberify(this.props.amount);
