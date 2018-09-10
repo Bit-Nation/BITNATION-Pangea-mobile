@@ -5,10 +5,7 @@ import { connect } from 'react-redux';
 import {
   View,
   ScrollView,
-  TouchableOpacity,
   Clipboard,
-  Image,
-  Text,
 } from 'react-native';
 import _ from 'lodash';
 import { addContact } from '../../../actions/contacts';
@@ -24,6 +21,7 @@ import ScreenTitle from '../../../components/common/ScreenTitle';
 import InvalidKeyModal from './InvalidKeyModal';
 import AssetsImage from '../../../global/AssetsImages';
 import { imageSource } from '../../../utils/profile';
+import ListItem from '../../../components/common/ListItem';
 
 import { Chip, Selectize } from 'react-native-material-selectize';
 
@@ -201,43 +199,21 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
             baseColor={Colors.BitnationLinkOrangeColor}
             tintColor={Colors.BitnationLinkOrangeColor}
             middleComponent={
-              <TouchableOpacity
-                  activeOpacity={0.6}
-                  onPress={this.addContact}
-                  style={styles.listRow}>
-                <View style={styles.listWrapper}>
-                  <View style={styles.listIcon}>
-                    <Image
-                      source={AssetsImage.avatarIcon}
-                      style={styles.avatarSmall}
-                    />
-                  </View>
-                  <View style={styles.listIcon}>
-                    <Text>
-                      {i18n.t('screens.contactsPicker.newContactFromClipboard')}
-                    </Text>
-                  </View>
-                </View>
-              </TouchableOpacity>
+              <ListItem
+                iconSource={AssetsImage.avatarIcon}
+                text={i18n.t('screens.contactsPicker.newContactFromClipboard')}
+                onPress={this.addContact}
+                disclosureIconVisible={false}
+              />
             }
             renderRow={(id, onPress, item) => (
-              <TouchableOpacity
-                  activeOpacity={0.6}
-                  key={id}
-                  onPress={onPress}
-                  style={styles.listRow}>
-                <View style={styles.listWrapper}>
-                  <View style={styles.listIcon}>
-                    <Image
-                      source={imageSource(item.profile.image) || AssetsImage.avatarIcon}
-                      style={styles.avatarSmall}
-                    />
-                  </View>
-                  <View style={styles.listIcon}>
-                    <Text style={styles.listPrimaryText}>{item.profile.name}</Text>
-                  </View>
-                </View>
-              </TouchableOpacity>
+              <ListItem
+                key={id}
+                iconSource={imageSource(item.profile.image) || AssetsImage.avatarIcon}
+                text={item.profile.name}
+                onPress={onPress}
+                disclosureIconVisible={false}
+              />
             )}
             renderChip={(id, onClose, item, style, iconStyle) => (
               <Chip
