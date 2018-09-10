@@ -76,6 +76,10 @@ type State = {
    * @desc Error message for adding contact failure.
    */
   addContactError: string,
+  /**
+   * @desc Flag whether done button is disabled.
+   */
+  doneBtnDisabled: boolean,
 };
 
 class ContactsPickerScreen extends NavigatorComponent<Props, State> {
@@ -95,6 +99,7 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
       showModal: '',
       loading: false,
       addContactError: '',
+      doneBtnDisabled: true,
     };
   }
 
@@ -126,21 +131,25 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
       this.selectize._selectItem(addedContact.profile.identityKey);
       this.setState({addedContactIdentityKey: ''});
       this.enableDoneButton();
-    } else if (this.selectize.getSelectedItems().result === 0) {
-      this.disableDoneButton();
     }
   }
 
   enableDoneButton = () => {
-    this.props.navigator.setButtons({
-      rightButtons: [{...DISABLED_RIGHT_BUTTON, disabled: false}]
-    });
+    if (this.state.doneBtnDisabled) {
+      this.props.navigator.setButtons({
+        rightButtons: [{...DISABLED_RIGHT_BUTTON, disabled: false}]
+      });
+      this.setState({doneBtnDisabled: false});
+    }
   }
 
   disableDoneButton = () => {
-    this.props.navigator.setButtons({
-      rightButtons: [DISABLED_RIGHT_BUTTON]
-    });
+    if (!this.state.doneBtnDisabled) {
+      this.props.navigator.setButtons({
+        rightButtons: [DISABLED_RIGHT_BUTTON]
+      });
+      this.setState({doneBtnDisabled: true});
+    }
   }
 
   addContact = async () => {
@@ -168,6 +177,18 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
     }
   }
 
+  onContactSelect = (selectContact: () => void) => {
+    selectContact();
+    this.enableDoneButton();
+  }
+
+  onChipClose = (closeChip: () => void) => {
+    closeChip();
+    if (this.selectize.getSelectedItems().result.length === 0) {
+      this.disableDoneButton();
+    }
+  }
+  
   dismissModal = () => {
     this.setState({
       showModal: '',
@@ -211,7 +232,7 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
                 key={id}
                 iconSource={imageSource(item.profile.image) || AssetsImage.avatarIcon}
                 text={item.profile.name}
-                onPress={onPress}
+                onPress={() => this.onContactSelect(onPress)}
                 disclosureIconVisible={false}
               />
             )}
@@ -219,7 +240,7 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
               <Chip
                 key={id}
                 iconStyle={iconStyle}
-                onClose={onClose}
+                onClose={() => this.onChipClose(onClose)}
                 text={item.profile.name}
                 style={style}
               />
