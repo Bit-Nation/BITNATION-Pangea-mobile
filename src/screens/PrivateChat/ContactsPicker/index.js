@@ -29,6 +29,12 @@ import { Chip, Selectize } from 'react-native-material-selectize';
 
 const DONE_BUTTON = 'DONE_BUTTON';
 const INVALID_MODAL_KEY = 'invalidKey';
+const DISABLED_RIGHT_BUTTON = {
+  title: 'Done',
+  id: DONE_BUTTON,
+  buttonColor: Colors.navigationButtonColor,
+  disabled: true
+}
 
 type Props = {
   /**
@@ -45,6 +51,10 @@ type Props = {
    * @param {function} callback Callback
    */
   addContact: (identityKey: string, callback: (error: Error | null) => void) => void,
+  /**
+   * @desc Callback function to call when submitting contact selection.
+   */
+  onContactsSelected: (selectedContacts: Array<Contact>) => void,
 };
 
 type State = {
@@ -69,11 +79,7 @@ type State = {
 class ContactsPickerScreen extends NavigatorComponent<Props, State> {
   static navigatorButtons = {
     leftButtons: [],
-    rightButtons: [{
-      title: 'Done',
-      id: DONE_BUTTON,
-      buttonColor: Colors.navigationButtonColor,
-    }],
+    rightButtons: [DISABLED_RIGHT_BUTTON],
   };
 
   constructor(props) {
@@ -91,20 +97,43 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
   onNavBarButtonPress(id) {
     if (id === DONE_BUTTON) {
       const selectedContacts = this.selectize.getSelectedItems().result;
-      if (selectedContacts.length) {
-        // @todo Create a new chat session from selected contacts
-      }
+      this.props.onContactsSelected(selectedContacts);
+    }
+  }
+
+  componentDidMount() {
+    if (this.props.contacts.length > 0) {
+      this.enableDoneButton();
     }
   }
 
   componentDidUpdate() {
-    const addedContact = _.find(this.props.contacts, contact => {
-      return contact.profile.identityKey === this.state.addedContactIdentityKey;
-    });
-    if (addedContact) {
-      this.selectize._selectItem(addedContact.profile.identityKey);
-      this.setState({addedContactIdentityKey: ''});
+    if (this.props.contacts.length === 0) {
+      this.disableDoneButton();
     }
+    else {
+      const addedContact = _.find(this.props.contacts, contact => {
+        return contact.profile.identityKey === this.state.addedContactIdentityKey;
+      });
+
+      if (addedContact) {
+        this.selectize._selectItem(addedContact.profile.identityKey);
+        this.setState({addedContactIdentityKey: ''});
+        this.enableDoneButton();
+      }
+    }
+  }
+
+  enableDoneButton = () => {
+    this.props.navigator.setButtons({
+      rightButtons: [{...DISABLED_RIGHT_BUTTON, disabled: false}]
+    });
+  }
+
+  disableDoneButton = () => {
+    this.props.navigator.setButtons({
+      rightButtons: [DISABLED_RIGHT_BUTTON]
+    });
   }
 
   addContact = async () => {
