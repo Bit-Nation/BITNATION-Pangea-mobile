@@ -35,7 +35,7 @@ type Props = {
 
 type State = {
   gasPrice: number,
-  gasLimit: number,
+  gasLimit: String,
 }
 
 class ConfirmationContainer extends Component<Props, State> {

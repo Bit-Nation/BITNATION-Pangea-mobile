@@ -45,7 +45,7 @@ type Props = {
   estimate: String,
   purpose: String,
   app: String,
-  gasLimit: String,
+  gasLimit: string,
 }
 
 type State = {
