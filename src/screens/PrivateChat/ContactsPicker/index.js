@@ -20,13 +20,11 @@ import Colors from '../../../global/colors';
 import type { Contact } from '../../../types/Contacts';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import ScreenTitle from '../../../components/common/ScreenTitle';
-import InvalidKeyModal from './InvalidKeyModal';
 import AssetsImage from '../../../global/AssetsImages';
 import { imageSource } from '../../../utils/profile';
 import ListItem from '../../../components/common/ListItem';
 
 const DONE_BUTTON = 'DONE_BUTTON';
-const INVALID_MODAL_KEY = 'invalidKey';
 const DISABLED_RIGHT_BUTTON = {
   title: 'Done',
   id: DONE_BUTTON,
@@ -66,10 +64,6 @@ type State = {
    */
   addedContactIdentityKey: string,
   /**
-   * @desc Name of the modal to be shown.
-   */
-  showModal: string,
-  /**
    * @desc Flag whether loading is in progress.
    */
   loading: boolean,
@@ -97,7 +91,6 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
     super(props);
     this.state = {
       addedContactIdentityKey: '',
-      showModal: '',
       loading: false,
       addContactError: '',
       doneBtnDisabled: true,
@@ -191,12 +184,6 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
     }
   }
 
-  dismissModal = () => {
-    this.setState({
-      showModal: '',
-    });
-  };
-
   render() {
     return (
       <View style={styles.nationsScreenContainer}>
@@ -249,11 +236,6 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
             )}
           />
         </ScrollView>
-
-        <InvalidKeyModal
-          done={this.dismissModal}
-          visible={this.state.showModal === INVALID_MODAL_KEY}
-        />
 
         {this.state.loading === true && <Loading />}
       </View>
