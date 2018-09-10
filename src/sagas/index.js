@@ -17,6 +17,7 @@ import dApps from './dApps';
 import migration from './migration';
 import upstream from './upstream';
 import documents from './documents';
+import contacts from './contacts';
 
 /**
  * @desc Root saga.
@@ -40,5 +41,6 @@ export default function* rootSaga(): Generator<*, *, *> {
     call(migration),
     call(upstream),
     call(documents),
+    call(contacts),
   ]);
 }
