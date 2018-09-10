@@ -8,9 +8,9 @@ import {
   TouchableOpacity,
   Clipboard,
   Image,
+  Text,
 } from 'react-native';
 import _ from 'lodash';
-import { Text } from 'native-base';
 import { addContact } from '../../../actions/contacts';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import styles from './styles';
