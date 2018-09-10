@@ -30,8 +30,7 @@ ShallowWrapper {
     "props": Object {
       "addContact": [Function],
       "contacts": Array [],
-      "createNewSession": [Function],
-      "getProfile": [Function],
+      "initialSelectedContacts": Array [],
       "store": Object {
         "clearActions": [Function],
         "dispatch": [Function],
@@ -72,8 +71,7 @@ ShallowWrapper {
       "props": Object {
         "addContact": [Function],
         "contacts": Array [],
-        "createNewSession": [Function],
-        "getProfile": [Function],
+        "initialSelectedContacts": Array [],
         "store": Object {
           "clearActions": [Function],
           "dispatch": [Function],
