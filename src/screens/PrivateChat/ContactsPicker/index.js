@@ -42,9 +42,13 @@ type Props = {
    */
   navigator: Navigator,
   /**
-   * @desc List of all contacts
+   * @desc List of all contacts.
    */
   contacts: Array<Contact>,
+  /**
+   * @desc List of initially selected contacts.
+   */
+  initialSelectedContacts: Array<Contact>,
   /**
    * @desc Function to add a new contact
    * @param {string} identityKey Identity key of user.
@@ -82,6 +86,10 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
     rightButtons: [DISABLED_RIGHT_BUTTON],
   };
 
+  static defaultProps = {
+    initialSelectedContacts: [],
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -102,25 +110,26 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
   }
 
   componentDidMount() {
-    if (this.props.contacts.length > 0) {
+    if (this.props.initialSelectedContacts.length > 0) {
       this.enableDoneButton();
+
+      for (const contact of this.props.initialSelectedContacts) {
+        this.selectize._selectItem(contact.profile.identityKey);
+      }
     }
   }
 
   componentDidUpdate() {
-    if (this.props.contacts.length === 0) {
-      this.disableDoneButton();
-    }
-    else {
-      const addedContact = _.find(this.props.contacts, contact => {
-        return contact.profile.identityKey === this.state.addedContactIdentityKey;
-      });
+    const addedContact = _.find(this.props.contacts, contact => {
+      return contact.profile.identityKey === this.state.addedContactIdentityKey;
+    });
 
-      if (addedContact) {
-        this.selectize._selectItem(addedContact.profile.identityKey);
-        this.setState({addedContactIdentityKey: ''});
-        this.enableDoneButton();
-      }
+    if (addedContact) {
+      this.selectize._selectItem(addedContact.profile.identityKey);
+      this.setState({addedContactIdentityKey: ''});
+      this.enableDoneButton();
+    } else if (this.selectize.getSelectedItems().result === 0) {
+      this.disableDoneButton();
     }
   }
 
@@ -143,8 +152,7 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
       this.props.addContact(publicKey, (error) => {
         if (error) {
           this.setState({addContactError: error.message});
-        }
-        else {
+        } else {
           this.setState({
             addContactError: '',
             addedContactIdentityKey: publicKey
