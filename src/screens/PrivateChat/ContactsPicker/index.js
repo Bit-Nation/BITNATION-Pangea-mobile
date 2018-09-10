@@ -8,6 +8,7 @@ import {
   Clipboard,
 } from 'react-native';
 import _ from 'lodash';
+import { Chip, Selectize } from 'react-native-material-selectize';
 import { addContact } from '../../../actions/contacts';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import styles from './styles';
@@ -17,13 +18,12 @@ import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import i18n from '../../../global/i18n';
 import Colors from '../../../global/colors';
 import type { Contact } from '../../../types/Contacts';
+import type { Navigator } from '../../../types/ReactNativeNavigation';
 import ScreenTitle from '../../../components/common/ScreenTitle';
 import InvalidKeyModal from './InvalidKeyModal';
 import AssetsImage from '../../../global/AssetsImages';
 import { imageSource } from '../../../utils/profile';
 import ListItem from '../../../components/common/ListItem';
-
-import { Chip, Selectize } from 'react-native-material-selectize';
 
 const DONE_BUTTON = 'DONE_BUTTON';
 const INVALID_MODAL_KEY = 'invalidKey';
@@ -31,8 +31,8 @@ const DISABLED_RIGHT_BUTTON = {
   title: 'Done',
   id: DONE_BUTTON,
   buttonColor: Colors.navigationButtonColor,
-  disabled: true
-}
+  disabled: true,
+};
 
 type Props = {
   /**
@@ -116,20 +116,22 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
     if (this.props.initialSelectedContacts.length > 0) {
       this.enableDoneButton();
 
-      for (const contact of this.props.initialSelectedContacts) {
+      this.props.initialSelectedContacts.forEach((contact) => {
         this.selectize._selectItem(contact.profile.identityKey);
-      }
+      });
     }
   }
 
   componentDidUpdate() {
-    const addedContact = _.find(this.props.contacts, contact => {
-      return contact.profile.identityKey === this.state.addedContactIdentityKey;
+    const addedContact = _.find(this.props.contacts, (contact) => {
+      const { identityKey } = contact.profile;
+      const { addedContactIdentityKey } = this.state;
+      return identityKey === addedContactIdentityKey;
     });
 
     if (addedContact) {
       this.selectize._selectItem(addedContact.profile.identityKey);
-      this.setState({addedContactIdentityKey: ''});
+      this.setState({ addedContactIdentityKey: '' });
       this.enableDoneButton();
     }
   }
@@ -137,32 +139,35 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
   enableDoneButton = () => {
     if (this.state.doneBtnDisabled) {
       this.props.navigator.setButtons({
-        rightButtons: [{...DISABLED_RIGHT_BUTTON, disabled: false}]
+        rightButtons: [{
+          ...DISABLED_RIGHT_BUTTON,
+          disabled: false,
+        }],
       });
-      this.setState({doneBtnDisabled: false});
+      this.setState({ doneBtnDisabled: false });
     }
   }
 
   disableDoneButton = () => {
     if (!this.state.doneBtnDisabled) {
       this.props.navigator.setButtons({
-        rightButtons: [DISABLED_RIGHT_BUTTON]
+        rightButtons: [DISABLED_RIGHT_BUTTON],
       });
-      this.setState({doneBtnDisabled: true});
+      this.setState({ doneBtnDisabled: true });
     }
   }
 
   addContact = async () => {
     try {
       this.setState({ loading: true });
-      const publicKey = await Clipboard.getString();;
+      const publicKey = await Clipboard.getString();
       this.props.addContact(publicKey, (error) => {
         if (error) {
-          this.setState({addContactError: error.message});
+          this.setState({ addContactError: error.message });
         } else {
           this.setState({
             addContactError: '',
-            addedContactIdentityKey: publicKey
+            addedContactIdentityKey: publicKey,
           });
         }
       });
@@ -188,7 +193,7 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
       this.disableDoneButton();
     }
   }
-  
+
   dismissModal = () => {
     this.setState({
       showModal: '',
@@ -203,7 +208,7 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
         <ScreenTitle title={i18n.t('screens.contactsPicker.title')} />
         <ScrollView>
           <Selectize
-            ref={selectize => this.selectize = selectize}
+            ref={(selectize) => { this.selectize = selectize; }}
             chipStyle={styles.chip}
             chipIconStyle={styles.chipIcon}
             label='To:'
@@ -212,7 +217,7 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
             items={this.props.contacts.map(contact => ({
               id: contact.profile.identityKey,
               name: contact.profile.name,
-              ...contact
+              ...contact,
             }))}
             showItems='always'
             error={this.state.addContactError}

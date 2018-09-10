@@ -1,46 +1,46 @@
 // @flow
 
+import { StyleSheet } from 'react-native';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
 import GlobalStyles from '../../../global/Styles';
-import { StyleSheet } from 'react-native';
 
 const styles = MediaQueryStyleSheet.create({
   ...GlobalStyles,
 
   chip: {
-    paddingRight: 2
+    paddingRight: 2,
   },
   chipIcon: {
     height: 24,
-    width: 24
+    width: 24,
   },
   list: {
     backgroundColor: 'transparent',
     borderColor: 'transparent',
-    elevation: 0
+    elevation: 0,
   },
   listRow: {
     paddingVertical: 8,
     paddingHorizontal: 10,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: '#e0e0e0'
+    borderColor: '#e0e0e0',
   },
   listWrapper: {
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   listIcon: {
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   listPrimaryText: {
     color: 'rgba(0, 0, 0, 0.87)',
     fontSize: 14,
-    lineHeight: 21
+    lineHeight: 21,
   },
   listSecondaryText: {
     color: 'rgba(0, 0, 0, 0.54)',
     fontSize: 14,
-    lineHeight: 21
+    lineHeight: 21,
   },
 
   modalContainer: {
