@@ -9,6 +9,7 @@ import {
   Clipboard,
   Image,
 } from 'react-native';
+import _ from 'lodash';
 import { Text } from 'native-base';
 import { addContact } from '../../../actions/contacts';
 import BackgroundImage from '../../../components/common/BackgroundImage';
@@ -48,7 +49,11 @@ type Props = {
 
 type State = {
   /**
-   * @desc Name of the modal to be shown
+   * @desc The identityKey of the added contact.
+   */
+  addedContactIdentityKey: string,
+  /**
+   * @desc Name of the modal to be shown.
    */
   showModal: string,
   /**
@@ -74,6 +79,7 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
+      addedContactIdentityKey: '',
       showModal: '',
       loading: false,
       addContactError: '',
@@ -91,11 +97,14 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
     }
   }
 
-  componentDidUpdate(prevProps) {
-    // if (this.props.contacts.length == prevProps.contacts.length + 1) {
-    //   const newContact = this.props.contacts[this.props.contacts.length - 1];
-    //   this.selectize._selectItem(newContact.id)
-    // }
+  componentDidUpdate() {
+    const addedContact = _.find(this.props.contacts, contact => {
+      return contact.profile.identityKey === this.state.addedContactIdentityKey;
+    });
+    if (addedContact) {
+      this.selectize._selectItem(addedContact.profile.identityKey);
+      this.setState({addedContactIdentityKey: ''});
+    }
   }
 
   addContact = async () => {
@@ -107,7 +116,10 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
           this.setState({addContactError: error.message});
         }
         else {
-          this.setState({addContactError: ''});
+          this.setState({
+            addContactError: '',
+            addedContactIdentityKey: publicKey
+          });
         }
       });
     } catch (error) {
