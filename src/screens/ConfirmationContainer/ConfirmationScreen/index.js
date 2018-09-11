@@ -39,12 +39,12 @@ type Props = {
   /**
    * @desc Object with the properties of the transaction
    */
-  to: String,
-  from: String,
-  amount: String,
-  estimate: String,
-  purpose: String,
-  app: String,
+  to: string,
+  from: string,
+  amount: string,
+  estimate: string,
+  purpose: string,
+  app: string,
   gasLimit: string,
 }
 

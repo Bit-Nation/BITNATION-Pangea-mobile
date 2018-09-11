@@ -24,18 +24,18 @@ type Props = {
   /**
    * @desc Properties of the transaction
    */
-  to: String,
-  from: String,
-  amount: String,
-  estimate: String,
-  purpose: String,
-  app: String,
-  gasLimit: String,
+  to: string,
+  from: string,
+  amount: string,
+  estimate: string,
+  purpose: string,
+  app: string,
+  gasLimit: string,
 }
 
 type State = {
   gasPrice: number,
-  gasLimit: String,
+  gasLimit: string,
 }
 
 class ConfirmationContainer extends Component<Props, State> {
