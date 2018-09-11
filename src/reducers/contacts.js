@@ -13,11 +13,13 @@ import type { Contact } from '../types/Contacts';
 export type State = {
   isFetching: boolean,
   contacts: Array<Contact>,
+  fetchError: ?Error,
 };
 
 export const initialState: State = {
   isFetching: false,
   contacts: [],
+  fetchError: null,
 };
 
 /**
@@ -47,6 +49,7 @@ export default (state: State = initialState, action: Action): State => {
         ...state,
         isFetching: false,
         contacts: [...action.contacts],
+        fetchError: null,
       };
     case ADD_CONTACT:
       return {
