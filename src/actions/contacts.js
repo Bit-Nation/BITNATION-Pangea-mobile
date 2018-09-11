@@ -30,7 +30,7 @@ export function startContactsFetch(): StartContactsFetchAction {
 
 /**
  * @desc Action creator for an action that is called when the whole contacts list is updated.
- * @param {Contact[]} contacts New documents list.
+ * @param {Contact[]} contacts New contacts list.
  * @returns {ContactsUpdatedAction} An action
  */
 export function contactsUpdated(contacts: Array<Contact>): ContactsUpdatedAction {
