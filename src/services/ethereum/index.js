@@ -121,7 +121,7 @@ export default class EthereumService {
    */
   sendMoney(toAddress: string, amount: string): Promise<void> {
     const transaction = {
-      gasLimit: '21000',
+      gasLimit: 21000,
       to: toAddress,
       data: '0x',
       value: ethers.utils.parseEther(amount),
