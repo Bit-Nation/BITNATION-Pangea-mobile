@@ -66,7 +66,6 @@ class ConfirmationScreen extends NavigatorComponent<Props, State> {
       gasPrice: 2,
       gasLimit: this.props.gasLimit === null ? '21000' : this.props.gasLimit,
     };
-    console.log('GAS PRICE LIMIT --> ', this.state.gasLimit);
 
     this.props.navigator.setButtons({
       leftButtons: [{
