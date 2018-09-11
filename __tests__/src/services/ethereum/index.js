@@ -15,7 +15,7 @@ describe('ethereum', () => {
     let gasEstimate;
     let response;
     try {
-      gasEstimate = await ethereum.estimateGas('2000000000', '0x0');
+      // gasEstimate = await ethereum.estimateGas('2000000000', '0x0');
       response = await ethereum.sendMoney('0x88a5C2d9919e46F883EB62F7b8Dd9d0CC45bc290', '0.00001', '2000000000');
     } catch (e) {
       throw (e);
