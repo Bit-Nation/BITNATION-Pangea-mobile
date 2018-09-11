@@ -111,7 +111,6 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
       this.setState({
         showModal: '',
       });
-      return;
     }
   };
 

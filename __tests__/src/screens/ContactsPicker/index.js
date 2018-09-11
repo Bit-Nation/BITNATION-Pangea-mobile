@@ -9,8 +9,8 @@ describe('ContactsPickerScreen', () => {
 
   const initialStateMock = {
     contacts: {
-      contacts: []
-    }
+      contacts: [],
+    },
   };
   const storeMock = configureStore([]);
   const propsMock = {
