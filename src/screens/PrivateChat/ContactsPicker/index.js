@@ -117,11 +117,10 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
   }
 
   componentDidUpdate() {
-    const addedContact = _.find(this.props.contacts, (contact) => {
-      const { identityKey } = contact.profile;
-      const { addedContactIdentityKey } = this.state;
-      return identityKey === addedContactIdentityKey;
-    });
+    const addedContact = _.find(
+      this.props.contacts,
+      contact => contact.profile.identityKey === this.state.addedContactIdentityKey,
+    );
 
     if (addedContact) {
       this.selectize._selectItem(addedContact.profile.identityKey);
