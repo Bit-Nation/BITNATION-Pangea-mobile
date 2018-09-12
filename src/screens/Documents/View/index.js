@@ -6,6 +6,7 @@ import {
   View,
   Image,
   Text,
+  Alert,
 } from 'react-native';
 
 import type { Navigator } from '../../../types/ReactNativeNavigation';
@@ -101,16 +102,27 @@ class DocumentsViewScreen extends NavigatorComponent<Props & DocumentsState & Ac
   };
 
   onSelectDelete = () => {
+    Alert.alert(
+      'Confirm Delete',
+      'Are you sure you want to delete the document?',
+      [
+        { text: 'Yes', onPress: () => this.confirmDelete() },
+        { text: 'No', onPress: () => console.log('No Pressed') },
+      ],
+      { cancelable: false },
+    );
+  };
+
+  confirmDelete = () => {
     const { openedDocumentId } = this.props;
     if (openedDocumentId == null) return;
-
     this.props.deleteDocument(openedDocumentId);
     this.setState({ moreMenuVisible: false }, () => {
       setTimeout(() => {
         this.props.navigator.dismissModal();
       }, 1000);
     });
-  };
+  }
 
   render() {
     const document = getOpenedDocument(this.props);
