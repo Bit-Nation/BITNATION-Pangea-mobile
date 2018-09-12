@@ -122,13 +122,16 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
         this.setState({ addedContactIdentityKey: '' });
       }
     }
+
+    const doneButtonDisabled = this.state.selectedContacts.length === 0;
+    this.changeDoneButtonDisabled(doneButtonDisabled);
   }
 
-  changeDoneButtonDisabled = (boolean) => {
+  changeDoneButtonDisabled = (disabled: boolean) => {
     this.props.navigator.setButtons({
       rightButtons: [{
         ...DISABLED_RIGHT_BUTTON,
-        disabled: boolean,
+        disabled,
       }],
     });
   }
@@ -174,9 +177,6 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
       selectedItems.result.includes(contact.profile.identityKey)
     ));
     this.setState({ selectedContacts });
-
-    const doneButtonDisabled = selectedContacts.length === 0;
-    this.changeDoneButtonDisabled(doneButtonDisabled);
   }
 
   render() {
