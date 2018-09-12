@@ -87,16 +87,22 @@ class DocumentsViewScreen extends NavigatorComponent<Props & DocumentsState & Ac
     }
   }
 
+  dismissModal = () => {
+    this.setState({ moreMenuVisible: false });
+  }
+
   onSelectEdit = () => {
     const { openedDocumentId } = this.props;
     if (openedDocumentId == null) return;
     const document = getOpenedDocument(this.props);
     if (document == null) return;
-
     this.props.startDocumentEditing(openedDocumentId);
     this.props.navigator.showModal({
       ...screen('DOCUMENT_MODIFY_SCREEN'),
       title: document.name,
+      passProps: {
+        onCancel: () => this.dismissModal(),
+      },
     });
   };
 
@@ -131,7 +137,7 @@ class DocumentsViewScreen extends NavigatorComponent<Props & DocumentsState & Ac
         </View>
         <MoreMenuModal
           visible={this.state.moreMenuVisible === true}
-          onCancel={() => this.setState({ moreMenuVisible: false })}
+          onCancel={this.dismissModal}
           options={[{
             text: i18n.t('screens.documentView.actions.edit'),
             onPress: this.onSelectEdit,
