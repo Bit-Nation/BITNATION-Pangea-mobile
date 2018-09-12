@@ -267,7 +267,8 @@ const Screens = {
   },
   CONTACTS_PICKER_SCREEN: {
     screen: 'Pangea.ContactsPickerScreen',
-    navigatorStyle,
+    title: i18n.t('screens.contactsPicker.title'),
+    navigatorStyle: solidNavigatorStyle,
   },
   DAPP_MODAL_SCREEN: {
     screen: 'Pangea.DAppModalScreen',

@@ -20,7 +20,7 @@ import Colors from '../../../global/colors';
 import type { Contact } from '../../../types/Contacts';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import ScreenTitle from '../../../components/common/ScreenTitle';
-import AssetsImage from '../../../global/AssetsImages';
+import AssetsImages from '../../../global/AssetsImages';
 import { imageSource } from '../../../utils/profile';
 import ListItem from '../../../components/common/ListItem';
 
@@ -79,7 +79,12 @@ type State = {
 
 class ContactsPickerScreen extends NavigatorComponent<Props, State> {
   static navigatorButtons = {
-    leftButtons: [],
+    leftButtons: [{
+      id: 'cancel',
+      icon: AssetsImages.closeIcon,
+      title: i18n.t('common.cancel'),
+      buttonColor: Colors.navigationButtonColor,
+    }],
     rightButtons: [DISABLED_RIGHT_BUTTON],
   };
 
@@ -100,8 +105,15 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
   selectize: Selectize;
 
   onNavBarButtonPress(id) {
-    if (id === DONE_BUTTON) {
-      this.props.onContactsSelected(this.state.selectedContacts);
+    switch (id) {
+      case DONE_BUTTON:
+        this.props.onContactsSelected(this.state.selectedContacts);
+        break;
+      case 'cancel':
+        this.props.navigator.dismissModal();
+        break;
+      default:
+        break;
     }
   }
 
@@ -132,7 +144,7 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
         disabled,
       }],
     });
-  }
+  };
 
   addContact = async () => {
     try {
@@ -162,7 +174,7 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
         loading: false,
       });
     }
-  }
+  };
 
   parseContacts = contacts => (
     contacts.map(contact => ({
@@ -170,24 +182,26 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
       name: contact.profile.name,
       ...contact,
     }))
-  )
+  );
 
   onChangeSelectedItems = (selectedItems) => {
     const selectedContacts = this.props.contacts.filter(contact => (
       selectedItems.result.includes(contact.profile.identityKey)
     ));
     this.setState({ selectedContacts });
-  }
+  };
 
   render() {
     return (
-      <View style={styles.nationsScreenContainer}>
-        <BackgroundImage />
-        <FakeNavigationBar />
-        <ScreenTitle title={i18n.t('screens.contactsPicker.title')} />
-        <ScrollView>
+      <View style={[styles.screenContainer, styles.modalScreenBackground]}>
+        <ScrollView
+          contentContainerStyle={[styles.bodyContainer, styles.noflex]}
+          keyboardShouldPersistTaps='handled'
+        >
           <Selectize
-            ref={(selectize) => { this.selectize = selectize; }}
+            ref={(selectize) => {
+              this.selectize = selectize;
+            }}
             chipStyle={styles.chip}
             chipIconStyle={styles.chipIcon}
             label={i18n.t('screens.contactsPicker.label')}
@@ -203,19 +217,21 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
             tintColor={Colors.BitnationLinkOrangeColor}
             middleComponent={
               <ListItem
-                iconSource={AssetsImage.avatarIcon}
+                iconSource={AssetsImages.avatarIcon}
                 text={i18n.t('screens.contactsPicker.newContactFromClipboard')}
                 onPress={this.addContact}
                 disclosureIconVisible={false}
+                style={[styles.listItem, styles.middleListItem]}
               />
             }
             renderRow={(id, onPress, item) => (
               <ListItem
                 key={id}
-                iconSource={imageSource(item.profile.image) || AssetsImage.avatarIcon}
+                iconSource={imageSource(item.profile.image) || AssetsImages.avatarIcon}
                 text={item.profile.name}
                 onPress={onPress}
                 disclosureIconVisible={false}
+                style={styles.listItem}
               />
             )}
             renderChip={(id, onClose, item, style, iconStyle) => (

@@ -17,6 +17,12 @@ const styles = MediaQueryStyleSheet.create({
     backgroundColor: 'transparent',
     borderColor: 'transparent',
   },
+  listItem: {
+    marginLeft: 0,
+  },
+  middleListItem: {
+    marginTop: 8,
+  },
 });
 
 export default styles;
