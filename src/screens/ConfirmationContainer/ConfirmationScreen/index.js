@@ -179,7 +179,7 @@ class ConfirmationScreen extends NavigatorComponent<Props, State> {
                 <TextInput
                   style={[styles.textInputConfirmation, styles.bodyBoldBlack]}
                   onChangeText={gasLimit => this.setState({ gasLimit })}
-                  value={this.state.gasLimit.toString()}
+                  value={this.state.gasLimit}
                 />
               </View>
             </View>
