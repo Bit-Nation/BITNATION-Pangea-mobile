@@ -192,7 +192,7 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
             ref={(selectize) => { this.selectize = selectize; }}
             chipStyle={styles.chip}
             chipIconStyle={styles.chipIcon}
-            label='To:'
+            label={i18n.t('screens.contactsPicker.label')}
             itemId='id'
             filterOnKey='name'
             selectedItems={this.parseContacts(this.props.initialSelectedContacts)}
