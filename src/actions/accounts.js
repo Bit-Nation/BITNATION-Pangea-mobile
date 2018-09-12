@@ -88,7 +88,7 @@ export function currentAccountIdChanged(currentAccountId: string | null): Curren
 }
 
 /**
- * @desc Action creator for an action restart
+ * @desc Action creator for an action restart Panthalassa
  * @param {string} accountId New id to be set as current
  * @param {function} callback Callback that is called with true if check is successful and false otherwise.
  * @return {RestartPanthalassaWithAccountAction} An action.

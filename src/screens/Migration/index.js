@@ -46,7 +46,7 @@ type Props = {
   accountsMigration: Array<DBAccount>,
   /**
    * @desc Callback to be called when user done mnemonic entering.
-   * @param {string | null} accountId Account id we user retain
+   * @param {string | null} accountId Account id which need to be restore
    */
   onDoneEntering: (accountId?: string) => void,
 };
