@@ -332,7 +332,9 @@
     },
     "contactsPicker": {
       "title": "Manage Chat Group",
-      "newContactFromClipboard": "New Contact from Clipboard"
+      "newContactFromClipboard": "New Contact from Clipboard",
+      "doneButton": "$t(common.done)",
+      "addContactError": "Error adding contact, please try again later."
     },
     "migration": {
       "title": "Migration",

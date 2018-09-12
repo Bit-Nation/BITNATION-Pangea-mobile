@@ -26,12 +26,12 @@ import ListItem from '../../../components/common/ListItem';
 
 const DONE_BUTTON = 'DONE_BUTTON';
 const DISABLED_RIGHT_BUTTON = {
-  title: 'Done',
+  title: i18n.t('screens.contactsPicker.doneButton'),
   id: DONE_BUTTON,
   buttonColor: Colors.navigationButtonColor,
   disabled: true,
 };
-const ADD_CONTACT_ERROR = 'Error adding contact, please try again later.';
+const ADD_CONTACT_ERROR = i18n.t('screens.contactsPicker.addContactError');
 
 type Props = {
   /**
