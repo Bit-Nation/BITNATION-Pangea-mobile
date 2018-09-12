@@ -75,10 +75,6 @@ type State = {
    * @desc Error message for adding contact failure.
    */
   addContactError: string,
-  /**
-   * @desc Flag whether done button is disabled.
-   */
-  doneBtnDisabled: boolean,
 };
 
 class ContactsPickerScreen extends NavigatorComponent<Props, State> {
@@ -98,7 +94,6 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
       addedContactIdentityKey: '',
       loading: false,
       addContactError: '',
-      doneBtnDisabled: true,
     };
   }
 
