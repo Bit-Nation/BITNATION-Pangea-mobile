@@ -334,7 +334,8 @@
       "title": "Manage Chat Group",
       "newContactFromClipboard": "New Contact from Clipboard",
       "doneButton": "$t(common.done)",
-      "addContactError": "Error adding contact, please try again later."
+      "addContactError": "Error adding contact, please try again later.",
+      "label": "$t(common.to):"
     },
     "migration": {
       "title": "Migration",
