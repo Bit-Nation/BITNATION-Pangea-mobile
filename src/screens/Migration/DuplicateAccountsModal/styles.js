@@ -1,27 +1,29 @@
 // @flow
 
+import { Dimensions } from 'react-native';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
 import GlobalStyles from '../../../global/Styles';
 import Colors from '../../../global/colors';
+
+const { width, height } = Dimensions.get('window');
 
 const styles = MediaQueryStyleSheet.create({
   ...GlobalStyles,
   modalContainer: {
     flex: 1,
+    paddingVertical: height * 0.08,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'rgba(51, 51, 51, 0.4)',
   },
-  modalContent: {
-    width: 327,
+  duplicateModal: {
+    width: width * 0.9,
+    marginVertical: 10,
     backgroundColor: 'white',
     padding: 20,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-  },
-  duplicateModal: {
-    height: 393,
   },
   modalTitle: {
     fontSize: 19,

@@ -27,10 +27,6 @@ type Props = {
    */
   title: string,
   /**
-   * @desc id of retain account
-   */
-  currentRetainAccountId: string | null,
-  /**
    * @desc Callback on cancellation of entering passcode.
    */
   onCancel: () => void,

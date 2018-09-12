@@ -13,7 +13,7 @@ import i18n from '../../global/i18n';
 import BackgroundImage from '../../components/common/BackgroundImage';
 import styles from './styles';
 import ScreenTitle from '../../components/common/ScreenTitle';
-import { migrateDuplicateAccounts } from '../../actions/accounts';
+import { migrateDuplicateAccounts, restartPanthalassaWithAccount } from '../../actions/accounts';
 import { startMigration } from '../../actions/migration';
 import type { AccountType as DBAccount } from '../../services/database/schemata';
 import FakeNavigationBar from '../../components/common/FakeNavigationBar';
@@ -33,6 +33,10 @@ type Actions = {
    * @param {function} callback Callback that is called with true if check is successful and false otherwise.
    */
   migrateDuplicateAccounts: (accounts: Array<DBAccount>, callback: (success: boolean) => void) => void,
+  /**
+   * @desc Action to perform a restart panthalassa.
+   */
+  restartPanthalassaWithAccount: (accountId: string, callback: (success: boolean) => void) => void,
 };
 
 type Props = {
@@ -42,7 +46,7 @@ type Props = {
   accountsMigration: Array<DBAccount>,
   /**
    * @desc Callback to be called when user done mnemonic entering.
-   * @param {string | null} accountId Account id which need to be restore
+   * @param {string | null} accountId Account id we user retain
    */
   onDoneEntering: (accountId?: string) => void,
 };
@@ -95,10 +99,16 @@ class MigrationScreen extends NavigatorComponent<Actions & Props, State> {
     this.props.accountsMigration.forEach((account, index) => {
       if (index !== this.state.selectedAccountIndex) accounts.push(account);
     });
-    const { id } = this.props.accountsMigration[this.state.selectedAccountIndex];// account id
+    const { id } = this.props.accountsMigration[this.state.selectedAccountIndex];
     this.props.migrateDuplicateAccounts(accounts, (success) => {
       if (success) {
-        this.props.onDoneEntering(id);
+        this.props.restartPanthalassaWithAccount(id, (done) => {
+          if (done) {
+            this.props.onDoneEntering(id);
+          } else {
+            this.showFailToDeleteDuplicateAccounts();
+          }
+        });
       } else {
         this.showFailToDeleteDuplicateAccounts();
       }
@@ -150,6 +160,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   startMigration: () => dispatch(startMigration()),
   migrateDuplicateAccounts: (accounts, callback) => dispatch(migrateDuplicateAccounts(accounts, callback)),
+  restartPanthalassaWithAccount: (accountId, callback) => dispatch(restartPanthalassaWithAccount(accountId, callback)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MigrationScreen);

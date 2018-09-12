@@ -53,7 +53,7 @@ const DuplicateAccountsModal = ({
     onDismiss={onDismiss}
   >
     <View style={styles.modalContainer}>
-      <View style={[styles.modalContent, styles.duplicateModal]}>
+      <View style={styles.duplicateModal}>
         <View style={styles.profileArea}>
           <Text style={styles.modalTitle}>Merge Duplicate Account</Text>
           <Text style={styles.modalBody}>

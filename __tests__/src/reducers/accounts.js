@@ -46,7 +46,6 @@ const stateMock = {
   ...initialState,
   accounts: [accountMock1, accountMock2],
   currentAccountId: accountMock1.id,
-  currentRetainAccountId: accountMock1.id,
 };
 
 test('getCurrentAccount', () => {

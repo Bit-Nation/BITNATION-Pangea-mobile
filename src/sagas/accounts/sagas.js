@@ -21,6 +21,7 @@ import type {
   CheckPinCodeAction,
   LoginAction, MnemonicConfirmedAction,
   ValidateMnemonicWithAccountAction,
+  RestartPanthalassaWithAccountAction,
   MigrateDuplicateAccountAction,
   CheckMnemonicWithAccountListAction,
   SaveCreatingAccountAction,
@@ -242,6 +243,45 @@ export function* login(userInfo: ({ accountId: string, accountStore?: string }),
 }
 
 /**
+ * @desc Stop and restart panthalassa with new account id handler
+ * @param {RestartPanthalassaWithAccountAction} action An action
+ * @return {void}
+ */
+export function* restartPanthalassaWithAccountHandler(action: RestartPanthalassaWithAccountAction): Generator<*, *, *> {
+  yield call(restartPanthalassaWithAccount, { accountId: action.accountId }, action.callback);
+}
+
+/**
+ * @desc Valid mnemonic with account to action
+ * @param {*} userInfo Either object containing account id or account store to log in.
+ * @param {function} callback Function that is called when that information is valid mnemonic.
+ * @return {void}
+ */
+export function* restartPanthalassaWithAccount(userInfo: ({ accountId: string }), callback: (success: boolean) => void): Generator<*, *, *> {
+  try {
+    const isValid = yield call(restartPanthalassa, userInfo);
+    yield call(callback, isValid);
+  } catch (error) {
+    yield call(callback, false);
+  }
+}
+
+/**
+ * @desc Stop and restart panthalassa with new account id
+ * @param {*} userInfo Either object containing account id or account store to log in.
+ * @return {boolean} True if panthalassa restart success
+ */
+export function* restartPanthalassa(userInfo: ({ accountId: string })): Generator<*, *, *> {
+  const { accountId } = userInfo;
+  const account: DBAccount = yield call(getAccount, accountId);
+  const { accountStore } = account;
+  const profile = retrieveProfileFromAccount(convertFromDatabase(account));
+  const { key: { enteredMnemonic } } = yield select();
+  const isSuccess = yield call(AccountsService.validateMnemonicWithAccount, accountStore, profile, enteredMnemonic);
+  return isSuccess;
+}
+
+/**
  * @desc Valid mnemonic with selected account to login
  * @param {ValidateMnemonicWithAccountAction} action An action
  * @return {void}
@@ -257,16 +297,10 @@ export function* validateMnemonicWithAccountActionHandler(action: ValidateMnemon
  * @return {void}
  */
 export function* validateMnemonicWithAccount(userInfo: ({ accountId: string }), callback: (success: boolean) => void): Generator<*, *, *> {
-  const { accountId } = userInfo;
-  const account: DBAccount = yield call(getAccount, accountId);
-  const { accountStore } = account;
-  const profile = retrieveProfileFromAccount(convertFromDatabase(account));
   try {
-    const { key: { enteredMnemonic } } = yield select();
-    const isValid = yield call(AccountsService.validateMnemonicWithAccount, accountStore, profile, enteredMnemonic);
+    const isValid = yield call(restartPanthalassa, userInfo);
     yield call(callback, isValid);
   } catch (error) {
-    console.log('--> ERROR Login: ', error);
     yield call(callback, false);
   }
 }
@@ -290,13 +324,12 @@ export function* checkMnemonicWithAccountList(callback: (success: boolean) => vo
   const accounts = db.objects('Account');
   const keys = Object.keys(accounts);
   try {
-    const { key: { enteredMnemonic } } = yield select();
     const hasAccount = [];
     for (let i = 0; i < keys.length; i += 1) {
       const account: DBAccount = accounts[i];
-      const { accountStore } = account;
-      const profile = retrieveProfileFromAccount(convertFromDatabase(account));
-      const isValid = yield call(AccountsService.validateMnemonicWithAccount, accountStore, profile, enteredMnemonic);
+      const accountId = account.id;
+      const userInfo = { accountId };
+      const isValid = yield call(restartPanthalassa, userInfo);
       if (isValid) {
         hasAccount.push(account);
       }

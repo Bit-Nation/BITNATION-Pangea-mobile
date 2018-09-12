@@ -11,6 +11,7 @@ import {
   startAccountUpdateListening, saveMnemonicConfirmed, getAccounts,
   validateMnemonicWithAccount as validateMnemonicWithAccountSaga, validateMnemonicWithAccountActionHandler,
   checkMnemonicWithAccountList as checkMnemonicWithAccountListSaga, checkMnemonicWithAccountListActionHandler,
+  restartPanthalassaWithAccount as restartPanthalassaWithAccountSaga, restartPanthalassaWithAccountHandler,
   migrateDuplicateAccounts as migrateDuplicateAccountsSaga, migrateDuplicateAccountsHandle,
 } from '../../../../src/sagas/accounts/sagas';
 import defaultDB, { buildRandomPathDatabase } from '../../../../src/services/database';
@@ -25,6 +26,7 @@ import {
   loginTaskUpdated, mnemonicConfirmed, PERFORM_DEFERRED_LOGIN, saveCreatingAccount, savePassword, savePinCode,
   validateMnemonicWithAccount,
   checkMnemonicWithAccountList,
+  restartPanthalassaWithAccount,
   migrateDuplicateAccounts,
 } from '../../../../src/actions/accounts';
 import TaskBuilder from '../../../../src/utils/asyncTask';
@@ -222,6 +224,12 @@ test('checkMnemonicWithAccountListActionHandler', () => {
   const mockCallback = jest.fn();
   const actionMock = checkMnemonicWithAccountList(mockCallback);
   expect(checkMnemonicWithAccountListActionHandler(actionMock).next().value).toEqual(call(checkMnemonicWithAccountListSaga, mockCallback));
+});
+
+test('restartPanthalassaWithAccountHandler', () => {
+  const mockCallback = jest.fn();
+  const actionMock = restartPanthalassaWithAccount('ID', mockCallback);
+  expect(restartPanthalassaWithAccountHandler(actionMock).next().value).toEqual(call(restartPanthalassaWithAccountSaga, { accountId: 'ID' }, mockCallback));
 });
 
 test('migrateDuplicateAccountsHandle', () => {

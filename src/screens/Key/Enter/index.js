@@ -30,7 +30,7 @@ import type { Mnemonic } from '../../../types/Mnemonic';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import AccountsService from '../../../services/accounts';
 import { alert, errorAlert } from '../../../global/alerts';
-import { mnemonicConfirmed, validateMnemonicWithAccount, checkMnemonicWithAccountList } from '../../../actions/accounts';
+import { mnemonicConfirmed, validateMnemonicWithAccount, checkMnemonicWithAccountList, restartPanthalassaWithAccount } from '../../../actions/accounts';
 import { GeneralError } from '../../../global/errors/common';
 
 const DONE_BUTTON = 'DONE_BUTTON';
@@ -88,6 +88,10 @@ type Actions = {
    */
   validateMnemonicWithAccount: (accountId: string, callback: (success: boolean) => void) => void,
   /**
+   * @desc Action to perform a restart panthalassa.
+   */
+  restartPanthalassaWithAccount: (accountId: string, callback: (success: boolean) => void) => void,
+  /**
    * @desc Action to perform a restore.
    */
   checkMnemonicWithAccountList: (callback: (hasAccount: Array<any>) => void) => void,
@@ -117,7 +121,6 @@ class EnterKeyScreen extends NavigatorComponent<Actions & KeyState & Props, Stat
         errorAlert(error);
       });
     }
-    this.props.changeMnemonic(['rate', 'health', 'input', 'erode', 'depth', 'print', 'unique', 'random', 'good', 'subject', 'wrestle', 'essence', 'tackle', 'maze', 'grit', 'umbrella', 'remove', 'umbrella', 'chest', 'wisdom', 'apology', 'box', 'word', 'hurdle']);
     this.keyTextInputContainers = [];
     this.configureNavigation(this.props);
   }
@@ -204,7 +207,18 @@ class EnterKeyScreen extends NavigatorComponent<Actions & KeyState & Props, Stat
       });
     } else if (this.props.isOnRestoreProcess === true) {
       this.props.checkMnemonicWithAccountList((accountList: Array<any>) => {
-        this.props.onDoneEntering(((this.props.enteredMnemonic: any): Mnemonic), accountList);
+        if (accountList.length === 1) {
+          const { id } = accountList[0];
+          this.props.restartPanthalassaWithAccount(id, (success) => {
+            if (success) {
+              this.props.onDoneEntering(((this.props.enteredMnemonic: any): Mnemonic), accountList);
+            } else {
+              this.showFailedPasswordRecoveryAlert();
+            }
+          });
+        } else {
+          this.props.onDoneEntering(((this.props.enteredMnemonic: any): Mnemonic), accountList);
+        }
       });
     } else {
       // We are sure that mnemonic is non-null here, so we do type conversion.
@@ -371,6 +385,9 @@ const mapDispatchToProps = dispatch => ({
   },
   validateMnemonicWithAccount(accountId, callback) {
     dispatch(validateMnemonicWithAccount(accountId, callback));
+  },
+  restartPanthalassaWithAccount(accountId, callback) {
+    dispatch(restartPanthalassaWithAccount(accountId, callback));
   },
   checkMnemonicWithAccountList(callback) {
     dispatch(checkMnemonicWithAccountList(callback));

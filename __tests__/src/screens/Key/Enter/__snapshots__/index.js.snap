@@ -51,6 +51,7 @@ ShallowWrapper {
         "setButtons": [MockFunction],
         "setOnNavigatorEvent": [MockFunction],
       },
+      "restartPanthalassaWithAccount": [Function],
       "store": Object {
         "clearActions": [Function],
         "dispatch": [Function],
@@ -107,6 +108,7 @@ ShallowWrapper {
           "setButtons": [MockFunction],
           "setOnNavigatorEvent": [MockFunction],
         },
+        "restartPanthalassaWithAccount": [Function],
         "store": Object {
           "clearActions": [Function],
           "dispatch": [Function],
