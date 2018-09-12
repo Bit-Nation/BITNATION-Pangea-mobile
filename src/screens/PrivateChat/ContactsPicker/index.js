@@ -189,6 +189,12 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
     this.setState({ selectedContacts });
   };
 
+  onSubmitEditing = () => (
+    // If there are no contacts then this will return `false`
+    // which prevents Selectize from creating the item.
+    this.props.contacts.length > 0
+  )
+
   render() {
     return (
       <View style={[styles.screenContainer, styles.modalScreenBackground]}>
@@ -213,6 +219,9 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
             listStyle={styles.list}
             baseColor={Colors.BitnationLinkOrangeColor}
             tintColor={Colors.BitnationLinkOrangeColor}
+            textInputProps={{
+              onSubmitEditing: this.onSubmitEditing,
+            }}
             middleComponent={
               <ListItem
                 iconSource={AssetsImages.avatarIcon}
