@@ -496,7 +496,7 @@ ShallowWrapper {
                             },
                           ]
                         }
-                        value="21000"
+                        value={21000}
                       />
                     </View>
                   </View>
@@ -1015,7 +1015,7 @@ ShallowWrapper {
                             },
                           ]
                         }
-                        value="21000"
+                        value={21000}
                       />
                     </View>
                   </View>
@@ -1499,7 +1499,7 @@ ShallowWrapper {
                               },
                             ]
                           }
-                          value="21000"
+                          value={21000}
                         />
                       </View>
                     </View>
@@ -1954,7 +1954,7 @@ ShallowWrapper {
                               },
                             ]
                           }
-                          value="21000"
+                          value={21000}
                         />
                       </View>
                     </View>
@@ -2408,7 +2408,7 @@ ShallowWrapper {
                               },
                             ]
                           }
-                          value="21000"
+                          value={21000}
                         />
                       </View>
                     </View>
@@ -2830,7 +2830,7 @@ ShallowWrapper {
                                 },
                               ]
                             }
-                            value="21000"
+                            value={21000}
                           />
                         </View>
                       </View>,
@@ -3619,7 +3619,7 @@ ShallowWrapper {
                                 },
                               ]
                             }
-                            value="21000"
+                            value={21000}
                           />
                         </View>,
                         "style": Object {
@@ -3680,7 +3680,7 @@ ShallowWrapper {
                                   },
                                 ]
                               }
-                              value="21000"
+                              value={21000}
                             />,
                           ],
                           "style": Object {
@@ -3756,7 +3756,7 @@ ShallowWrapper {
                                   "lineHeight": 22,
                                 },
                               ],
-                              "value": "21000",
+                              "value": 21000,
                             },
                             "ref": null,
                             "rendered": null,
@@ -4340,7 +4340,7 @@ ShallowWrapper {
                               },
                             ]
                           }
-                          value="21000"
+                          value={21000}
                         />
                       </View>
                     </View>
@@ -4859,7 +4859,7 @@ ShallowWrapper {
                               },
                             ]
                           }
-                          value="21000"
+                          value={21000}
                         />
                       </View>
                     </View>
@@ -5343,7 +5343,7 @@ ShallowWrapper {
                                 },
                               ]
                             }
-                            value="21000"
+                            value={21000}
                           />
                         </View>
                       </View>
@@ -5798,7 +5798,7 @@ ShallowWrapper {
                                 },
                               ]
                             }
-                            value="21000"
+                            value={21000}
                           />
                         </View>
                       </View>
@@ -6252,7 +6252,7 @@ ShallowWrapper {
                                 },
                               ]
                             }
-                            value="21000"
+                            value={21000}
                           />
                         </View>
                       </View>
@@ -6674,7 +6674,7 @@ ShallowWrapper {
                                   },
                                 ]
                               }
-                              value="21000"
+                              value={21000}
                             />
                           </View>
                         </View>,
@@ -7463,7 +7463,7 @@ ShallowWrapper {
                                   },
                                 ]
                               }
-                              value="21000"
+                              value={21000}
                             />
                           </View>,
                           "style": Object {
@@ -7524,7 +7524,7 @@ ShallowWrapper {
                                     },
                                   ]
                                 }
-                                value="21000"
+                                value={21000}
                               />,
                             ],
                             "style": Object {
@@ -7600,7 +7600,7 @@ ShallowWrapper {
                                     "lineHeight": 22,
                                   },
                                 ],
-                                "value": "21000",
+                                "value": 21000,
                               },
                               "ref": null,
                               "rendered": null,
