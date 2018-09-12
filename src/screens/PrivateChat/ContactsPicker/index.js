@@ -143,18 +143,20 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
       const publicKey = await Clipboard.getString();
 
       this.props.addContact(publicKey, (error) => {
-        if (error) {
+        if (error !== null) {
           this.setState({
             addContactError: ADD_CONTACT_ERROR,
             loading: false,
           });
-        } else {
-          this.setState({
-            addContactError: '',
-            addedContactIdentityKey: publicKey,
-            loading: false,
-          });
+
+          return;
         }
+
+        this.setState({
+          addContactError: '',
+          addedContactIdentityKey: publicKey,
+          loading: false,
+        });
       });
     } catch (error) {
       this.setState({
