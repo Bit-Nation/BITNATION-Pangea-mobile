@@ -8,6 +8,8 @@ import {
   Text,
   TextInput,
   ScrollView,
+  TouchableWithoutFeedback,
+  Keyboard,
 } from 'react-native';
 
 import type { Navigator } from '../../../types/ReactNativeNavigation';
@@ -109,30 +111,34 @@ class DocumentsModifyScreen extends NavigatorComponent<Props & DocumentsState & 
           <View style={styles.metadataContainer}>
             <View style={styles.labeledTextInputContainer}>
               <Text style={styles.textInputLabelText}>{i18n.t('screens.documentModify.fields.title')}</Text>
-              <TextInput
-                style={[styles.textInput, styles.bodyBlack]}
-                placeholder={i18n.t('screens.documentModify.placeholder.title')}
-                placeholderTextColor={Colors.placeholderTextColor}
-                keyboardType='default'
-                autoCapitalize='sentences'
-                autoCorrect
-                onChangeText={title => this.props.changeDocumentField('name', title)}
-                value={modification.new.name}
-              />
+              <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+                <TextInput
+                  style={[styles.textInput, styles.bodyBlack]}
+                  placeholder={i18n.t('screens.documentModify.placeholder.title')}
+                  placeholderTextColor={Colors.placeholderTextColor}
+                  keyboardType='default'
+                  autoCapitalize='sentences'
+                  autoCorrect
+                  onChangeText={title => this.props.changeDocumentField('name', title)}
+                  value={modification.new.name}
+                />
+              </TouchableWithoutFeedback>
             </View>
             <View style={styles.labeledTextInputContainer}>
               <Text style={styles.textInputLabelText}>{i18n.t('screens.documentModify.fields.description')}</Text>
-              <TextInput
-                style={[styles.multilineTextInput]}
-                placeholder={i18n.t('screens.documentModify.placeholder.description')}
-                placeholderTextColor={Colors.placeholderTextColor}
-                keyboardType='default'
-                autoCapitalize='sentences'
-                autoCorrect
-                multiline
-                onChangeText={description => this.props.changeDocumentField('description', description)}
-                value={modification.new.description}
-              />
+              <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+                <TextInput
+                  style={[styles.multilineTextInput]}
+                  placeholder={i18n.t('screens.documentModify.placeholder.description')}
+                  placeholderTextColor={Colors.placeholderTextColor}
+                  keyboardType='default'
+                  autoCapitalize='sentences'
+                  autoCorrect
+                  multiline
+                  onChangeText={description => this.props.changeDocumentField('description', description)}
+                  value={modification.new.description}
+                />
+              </TouchableWithoutFeedback>
             </View>
           </View>
           <View style={styles.previewContainer}>
