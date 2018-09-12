@@ -87,6 +87,7 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
 
   static defaultProps = {
     initialSelectedContacts: [],
+    onContactsSelected: () => {},
   };
 
   constructor(props) {
