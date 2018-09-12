@@ -105,11 +105,6 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
     }
   }
 
-  componentDidMount() {
-    const doneButtonDisabled = this.props.initialSelectedContacts.length === 0;
-    this.changeDoneButtonDisabled(doneButtonDisabled);
-  }
-
   componentDidUpdate() {
     if (this.state.addedContactIdentityKey !== '') {
       const addedContact = _.find(
@@ -123,7 +118,10 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
       }
     }
 
-    const doneButtonDisabled = this.state.selectedContacts.length === 0;
+    const doneButtonDisabled = (
+      this.state.selectedContacts.length === 0 ||
+      _.isEqual(this.state.selectedContacts, this.props.initialSelectedContacts)
+    );
     this.changeDoneButtonDisabled(doneButtonDisabled);
   }
 
