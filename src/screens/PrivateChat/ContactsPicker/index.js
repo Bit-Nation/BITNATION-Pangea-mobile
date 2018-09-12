@@ -60,6 +60,10 @@ type Props = {
 
 type State = {
   /**
+   * @desc The list of selected contacts.
+   */
+  selectedContacts: Array<Contact>,
+  /**
    * @desc The identityKey of the added contact.
    */
   addedContactIdentityKey: string,
@@ -90,6 +94,7 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
+      selectedContacts: [...this.props.initialSelectedContacts],
       addedContactIdentityKey: '',
       loading: false,
       addContactError: '',
@@ -101,53 +106,36 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
 
   onNavBarButtonPress(id) {
     if (id === DONE_BUTTON) {
-      const selectedContacts = this.selectize.getSelectedItems().result;
-      this.props.onContactsSelected(selectedContacts);
+      this.props.onContactsSelected(this.state.selectedContacts);
     }
   }
 
   componentDidMount() {
-    if (this.props.initialSelectedContacts.length > 0) {
-      this.enableDoneButton();
-
-      this.props.initialSelectedContacts.forEach((contact) => {
-        this.selectize._selectItem(contact.profile.identityKey);
-      });
-    }
+    const doneButtonDisabled = this.props.initialSelectedContacts.length === 0;
+    this.changeDoneButtonDisabled(doneButtonDisabled);
   }
 
   componentDidUpdate() {
-    const addedContact = _.find(
-      this.props.contacts,
-      contact => contact.profile.identityKey === this.state.addedContactIdentityKey,
-    );
+    if (this.state.addedContactIdentityKey) {
+      const addedContact = _.find(
+        this.props.contacts,
+        contact => contact.profile.identityKey === this.state.addedContactIdentityKey,
+      );
 
-    if (addedContact) {
-      this.selectize._selectItem(addedContact.profile.identityKey);
-      this.setState({ addedContactIdentityKey: '' });
-      this.enableDoneButton();
+      if (addedContact) {
+        this.selectize._selectItem(addedContact.profile.identityKey);
+        this.setState({ addedContactIdentityKey: '' });
+      }
     }
   }
 
-  enableDoneButton = () => {
-    if (this.state.doneBtnDisabled) {
-      this.props.navigator.setButtons({
-        rightButtons: [{
-          ...DISABLED_RIGHT_BUTTON,
-          disabled: false,
-        }],
-      });
-      this.setState({ doneBtnDisabled: false });
-    }
-  }
-
-  disableDoneButton = () => {
-    if (!this.state.doneBtnDisabled) {
-      this.props.navigator.setButtons({
-        rightButtons: [DISABLED_RIGHT_BUTTON],
-      });
-      this.setState({ doneBtnDisabled: true });
-    }
+  changeDoneButtonDisabled = (boolean) => {
+    this.props.navigator.setButtons({
+      rightButtons: [{
+        ...DISABLED_RIGHT_BUTTON,
+        disabled: boolean,
+      }],
+    });
   }
 
   addContact = async () => {
@@ -171,16 +159,22 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
     }
   }
 
-  onContactSelect = (selectContact: () => void) => {
-    selectContact();
-    this.enableDoneButton();
-  }
+  parseContacts = contacts => (
+    contacts.map(contact => ({
+      id: contact.profile.identityKey,
+      name: contact.profile.name,
+      ...contact,
+    }))
+  )
 
-  onChipClose = (closeChip: () => void) => {
-    closeChip();
-    if (this.selectize.getSelectedItems().result.length === 0) {
-      this.disableDoneButton();
-    }
+  onChangeSelectedItems = (selectedItems) => {
+    const selectedContacts = this.props.contacts.filter(contact => (
+      selectedItems.result.includes(contact.profile.identityKey)
+    ));
+    this.setState({ selectedContacts });
+
+    const doneButtonDisabled = selectedContacts.length === 0;
+    this.changeDoneButtonDisabled(doneButtonDisabled);
   }
 
   render() {
@@ -197,11 +191,9 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
             label='To:'
             itemId='id'
             filterOnKey='name'
-            items={this.props.contacts.map(contact => ({
-              id: contact.profile.identityKey,
-              name: contact.profile.name,
-              ...contact,
-            }))}
+            selectedItems={this.parseContacts(this.props.initialSelectedContacts)}
+            items={this.parseContacts(this.props.contacts)}
+            onChangeSelectedItems={this.onChangeSelectedItems}
             showItems='always'
             error={this.state.addContactError}
             listStyle={styles.list}
@@ -220,7 +212,7 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
                 key={id}
                 iconSource={imageSource(item.profile.image) || AssetsImage.avatarIcon}
                 text={item.profile.name}
-                onPress={() => this.onContactSelect(onPress)}
+                onPress={onPress}
                 disclosureIconVisible={false}
               />
             )}
@@ -228,7 +220,7 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
               <Chip
                 key={id}
                 iconStyle={iconStyle}
-                onClose={() => this.onChipClose(onClose)}
+                onClose={onClose}
                 text={item.profile.name}
                 style={style}
               />
