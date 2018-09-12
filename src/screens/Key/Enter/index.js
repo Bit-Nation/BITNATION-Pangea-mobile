@@ -94,7 +94,7 @@ type Actions = {
   /**
    * @desc Action to perform a restore.
    */
-  checkMnemonicWithAccountList: (callback: (hasAccount: Array<any>) => void) => void,
+  checkMnemonicWithAccountList: (callback: (duplicatedAccountList: Array<any>) => void) => void,
 }
 
 type State = {
@@ -206,18 +206,18 @@ class EnterKeyScreen extends NavigatorComponent<Actions & KeyState & Props, Stat
         this.props.navigator.push(screen('VERIFY_KEY_SUCCESS_SCREEN'));
       });
     } else if (this.props.isOnRestoreProcess === true) {
-      this.props.checkMnemonicWithAccountList((accountList: Array<any>) => {
-        if (accountList.length === 1) {
-          const { id } = accountList[0];
+      this.props.checkMnemonicWithAccountList((duplicatedAccountList: Array<any>) => {
+        if (duplicatedAccountList.length === 1) { // Navigate user to reset passcode
+          const { id } = duplicatedAccountList[0];
           this.props.restartPanthalassaWithAccount(id, (success) => {
             if (success) {
-              this.props.onDoneEntering(((this.props.enteredMnemonic: any): Mnemonic), accountList);
+              this.props.onDoneEntering(((this.props.enteredMnemonic: any): Mnemonic), duplicatedAccountList);
             } else {
               this.showFailedPasswordRecoveryAlert();
             }
           });
         } else {
-          this.props.onDoneEntering(((this.props.enteredMnemonic: any): Mnemonic), accountList);
+          this.props.onDoneEntering(((this.props.enteredMnemonic: any): Mnemonic), duplicatedAccountList);
         }
       });
     } else {

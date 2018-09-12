@@ -47,7 +47,7 @@ class Accounts extends NavigatorComponent<Props & Actions & AccountsState> {
     if (accountList !== undefined) {
       const accountSize = accountList.length;
       switch (accountSize) {
-        case 0:
+        case 0: // Don't have duplicate account, create new account
           navigator.push({
             ...screen('SECURITY_SETTINGS_SCREEN'),
             passProps: {
@@ -55,13 +55,13 @@ class Accounts extends NavigatorComponent<Props & Actions & AccountsState> {
             },
           });
           break;
-        case 1:
+        case 1: // Have one duplicated account, navigate to reset passcode
         {
           const { id } = accountList[0];
           Accounts.showCreatePasscodeContainer(navigator, id);
           break;
         }
-        default:
+        default: // Have more than one duplicated account then navigate to select one and reset passcode
           navigator.push({
             ...screen('MIGRATION_SCREEN'),
             passProps: {

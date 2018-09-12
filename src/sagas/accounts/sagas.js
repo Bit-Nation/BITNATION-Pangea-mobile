@@ -324,17 +324,17 @@ export function* checkMnemonicWithAccountList(callback: (success: boolean) => vo
   const accounts = db.objects('Account');
   const keys = Object.keys(accounts);
   try {
-    const hasAccount = [];
+    const duplicatedAccountList = [];
     for (let i = 0; i < keys.length; i += 1) {
       const account: DBAccount = accounts[i];
       const accountId = account.id;
       const userInfo = { accountId };
       const isValid = yield call(restartPanthalassa, userInfo);
       if (isValid) {
-        hasAccount.push(account);
+        duplicatedAccountList.push(account);
       }
     }
-    yield call(callback, hasAccount);
+    yield call(callback, duplicatedAccountList);
   } catch (error) {
     yield call(callback, []);
   }
