@@ -10,16 +10,13 @@ import {
 import _ from 'lodash';
 import { Chip, Selectize } from 'react-native-material-selectize';
 import { addContact } from '../../../actions/contacts';
-import BackgroundImage from '../../../components/common/BackgroundImage';
 import styles from './styles';
-import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import Loading from '../../../components/common/Loading';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import i18n from '../../../global/i18n';
 import Colors from '../../../global/colors';
 import type { Contact } from '../../../types/Contacts';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
-import ScreenTitle from '../../../components/common/ScreenTitle';
 import AssetsImages from '../../../global/AssetsImages';
 import { imageSource } from '../../../utils/profile';
 import ListItem from '../../../components/common/ListItem';
