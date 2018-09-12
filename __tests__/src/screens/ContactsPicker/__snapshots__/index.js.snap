@@ -31,6 +31,7 @@ ShallowWrapper {
       "addContact": [Function],
       "contacts": Array [],
       "initialSelectedContacts": Array [],
+      "onContactsSelected": [Function],
       "store": Object {
         "clearActions": [Function],
         "dispatch": [Function],
@@ -72,6 +73,7 @@ ShallowWrapper {
         "addContact": [Function],
         "contacts": Array [],
         "initialSelectedContacts": Array [],
+        "onContactsSelected": [Function],
         "store": Object {
           "clearActions": [Function],
           "dispatch": [Function],
