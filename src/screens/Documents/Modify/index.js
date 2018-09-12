@@ -2,13 +2,7 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import {
-  View,
-  Image,
-  Text,
-  TextInput,
-  ScrollView,
-} from 'react-native';
+import { View, Image, Text, TextInput, ScrollView } from 'react-native';
 
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
@@ -31,6 +25,10 @@ type Props = {
    * @desc React Native Navigation navigator object.
    */
   navigator: Navigator,
+  /**
+   * @desc Function to close menu modal.
+   */
+  onCancel: () => void,
 };
 
 type Actions = {
@@ -48,19 +46,23 @@ type Actions = {
    * @param value New value of the field.
    */
   changeDocumentField: (field: string, value: any) => void,
-}
+};
 
-class DocumentsModifyScreen extends NavigatorComponent<Props & DocumentsState & Actions> {
+class DocumentsModifyScreen extends NavigatorComponent<
+  Props & DocumentsState & Actions,
+> {
   constructor(props) {
     super(props);
 
     this.props.navigator.setButtons({
-      leftButtons: [{
-        id: 'cancel',
-        icon: AssetsImages.closeIcon,
-        title: i18n.t('common.cancel'),
-        buttonColor: Colors.navigationButtonColor,
-      }],
+      leftButtons: [
+        {
+          id: 'cancel',
+          icon: AssetsImages.closeIcon,
+          title: i18n.t('common.cancel'),
+          buttonColor: Colors.navigationButtonColor,
+        },
+      ],
       rightButtons: [],
     });
 
@@ -75,15 +77,21 @@ class DocumentsModifyScreen extends NavigatorComponent<Props & DocumentsState & 
   onNavBarButtonPress(id: string) {
     switch (id) {
       case 'cancel':
-        this.props.navigator.dismissModal();
+        this.closeModifyModal();
         break;
       default:
         break;
     }
   }
 
+  closeModifyModal = () => {
+    this.props.onCancel();
+    this.props.navigator.dismissModal();
+  };
+
   onFinishModification = () => {
     this.props.finishDocumentModification();
+    this.props.onCancel();
     this.props.navigator.dismissModal();
   };
 
@@ -94,21 +102,25 @@ class DocumentsModifyScreen extends NavigatorComponent<Props & DocumentsState & 
 
     if (modification.initial === null) return true;
     if (modification.new.name !== modification.initial.name) return true;
-    if (modification.new.description !== modification.initial.description) return true;
+    if (modification.new.description !== modification.initial.description) { return true; }
 
     return false;
   };
 
   render() {
     const { modification } = this.props;
-    if (modification == null) return (<View />);
+    if (modification == null) return <View />;
 
     return (
       <View style={styles.screenContainer}>
-        <ScrollView contentContainerStyle={[styles.screenContainer, styles.noflex]}>
+        <ScrollView
+          contentContainerStyle={[styles.screenContainer, styles.noflex]}
+        >
           <View style={styles.metadataContainer}>
             <View style={styles.labeledTextInputContainer}>
-              <Text style={styles.textInputLabelText}>{i18n.t('screens.documentModify.fields.title')}</Text>
+              <Text style={styles.textInputLabelText}>
+                {i18n.t('screens.documentModify.fields.title')}
+              </Text>
               <TextInput
                 style={[styles.textInput, styles.bodyBlack]}
                 placeholder={i18n.t('screens.documentModify.placeholder.title')}
@@ -116,12 +128,16 @@ class DocumentsModifyScreen extends NavigatorComponent<Props & DocumentsState & 
                 keyboardType='default'
                 autoCapitalize='sentences'
                 autoCorrect
-                onChangeText={title => this.props.changeDocumentField('name', title)}
+                onChangeText={title =>
+                  this.props.changeDocumentField('name', title)
+                }
                 value={modification.new.name}
               />
             </View>
             <View style={styles.labeledTextInputContainer}>
-              <Text style={styles.textInputLabelText}>{i18n.t('screens.documentModify.fields.description')}</Text>
+              <Text style={styles.textInputLabelText}>
+                {i18n.t('screens.documentModify.fields.description')}
+              </Text>
               <TextInput
                 style={[styles.multilineTextInput]}
                 placeholder={i18n.t('screens.documentModify.placeholder.description')}
@@ -130,7 +146,9 @@ class DocumentsModifyScreen extends NavigatorComponent<Props & DocumentsState & 
                 autoCapitalize='sentences'
                 autoCorrect
                 multiline
-                onChangeText={description => this.props.changeDocumentField('description', description)}
+                onChangeText={description =>
+                  this.props.changeDocumentField('description', description)
+                }
                 value={modification.new.description}
               />
             </View>
@@ -171,4 +189,7 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(DocumentsModifyScreen);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(DocumentsModifyScreen);
