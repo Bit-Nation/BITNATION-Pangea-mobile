@@ -111,13 +111,13 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
   }
 
   componentDidUpdate() {
-    if (this.state.addedContactIdentityKey) {
+    if (this.state.addedContactIdentityKey !== '') {
       const addedContact = _.find(
         this.props.contacts,
         contact => contact.profile.identityKey === this.state.addedContactIdentityKey,
       );
 
-      if (addedContact) {
+      if (addedContact !== undefined) {
         this.selectize._selectItem(addedContact.profile.identityKey);
         this.setState({ addedContactIdentityKey: '' });
       }
