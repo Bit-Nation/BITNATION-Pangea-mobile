@@ -1,6 +1,5 @@
 // @flow
 
-import { StyleSheet } from 'react-native';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
 import GlobalStyles from '../../../global/Styles';
 
