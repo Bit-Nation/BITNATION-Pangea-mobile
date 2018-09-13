@@ -20,6 +20,7 @@ import styles from './styles';
 import i18n from '../../../global/i18n';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import { CancelledError } from '../../../global/errors/common';
+import { DEFAULT_GAS_LIMIT } from '../../../global/Constants';
 
 type Props = {
   /**
@@ -64,7 +65,7 @@ class ConfirmationScreen extends NavigatorComponent<Props, State> {
     super(props);
     this.state = {
       gasPrice: 2,
-      gasLimit: this.props.gasLimit === null ? '21000' : this.props.gasLimit,
+      gasLimit: this.props.gasLimit === null ? DEFAULT_GAS_LIMIT : this.props.gasLimit,
     };
 
     this.props.navigator.setButtons({
