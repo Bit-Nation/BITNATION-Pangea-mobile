@@ -28,7 +28,7 @@ type Props = {
   /**
    * @desc Function to close menu modal.
    */
-  onCancel: () => void,
+  onWillClose: () => void,
 };
 
 type Actions = {
@@ -85,13 +85,13 @@ class DocumentsModifyScreen extends NavigatorComponent<
   }
 
   closeModifyModal = () => {
-    this.props.onCancel();
+    this.props.onWillClose();
     this.props.navigator.dismissModal();
   };
 
   onFinishModification = () => {
     this.props.finishDocumentModification();
-    this.props.onCancel();
+    this.props.onWillClose();
     this.props.navigator.dismissModal();
   };
 

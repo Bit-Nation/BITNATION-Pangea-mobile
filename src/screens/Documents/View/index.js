@@ -101,7 +101,7 @@ class DocumentsViewScreen extends NavigatorComponent<Props & DocumentsState & Ac
       ...screen('DOCUMENT_MODIFY_SCREEN'),
       title: document.name,
       passProps: {
-        onCancel: () => this.dismissModal(),
+        onWillClose: this.dismissModal,
       },
     });
   };
