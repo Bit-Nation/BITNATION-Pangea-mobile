@@ -8,6 +8,7 @@ import ContactsService from '../../services/contacts';
 import {
   contactsFetchFailed,
   contactsUpdated,
+  startContactsFetch,
 } from '../../actions/contacts';
 import { getProfile } from '../chat/sagas';
 import type { AddContactAction } from '../../actions/contacts';
@@ -53,7 +54,7 @@ export function* addNewContact(action: AddContactAction): Generator<*, *, *> {
     }
     yield call(ContactsService.addContact, identityKey);
     yield call(callback, null);
-    yield put(fetchContacts);
+    yield put(startContactsFetch());
   } catch (error) {
     console.log(`[CONTACTS] Failed to add contact with identity key ${identityKey} with error ${error.message}`);
     yield call(callback, error);
