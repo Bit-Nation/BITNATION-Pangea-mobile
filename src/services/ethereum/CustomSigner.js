@@ -5,6 +5,7 @@ import { Navigation } from 'react-native-navigation';
 import WebSocketProvider from './WebSocketProvider';
 import { screen } from '../../global/Screens';
 import { CancelledError } from '../../global/errors/common';
+import { DEFAULT_GAS_LIMIT } from '../../global/Constants';
 
 /**
  * @desc Custom signer for ethereum RPC
@@ -23,7 +24,7 @@ export default function CustomSigner(privateKey: string, provider: string, app: 
   this.getBalance = wallet.getBalance;
   this.estimateGas = wallet.estimateGas;
   this.getTransactionCount = wallet.getTransaction;
-  this.defaultGasLimit = '21000';
+  this.defaultGasLimit = DEFAULT_GAS_LIMIT;
   this.sign = async (transaction) => {
     const transactionObject = transaction;
     try {
