@@ -6,9 +6,7 @@ import {
   View,
   Image,
   Text,
-  Alert,
 } from 'react-native';
-
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import { screen } from '../../../global/Screens';
@@ -22,6 +20,7 @@ import { imageSource } from '../../../utils/profile';
 import { getOpenedDocument } from '../../../reducers/documents';
 import MoreMenuModal from '../../../components/common/MoreMenuModal';
 import { contentStorage } from '../../../services/documents';
+import { alert } from '../../../global/alerts';
 
 type Props = {
   /**
@@ -102,16 +101,15 @@ class DocumentsViewScreen extends NavigatorComponent<Props & DocumentsState & Ac
   };
 
   onSelectDelete = () => {
-    Alert.alert(
-      'Confirm Delete',
-      'Are you sure you want to delete the document?',
-      [
-        { text: 'Yes', onPress: () => this.confirmDelete() },
-        { text: 'No', onPress: () => console.log('No Pressed') },
-      ],
-      { cancelable: false },
-    );
-  };
+    alert('confirmdelete', [
+      {
+        name: 'yes',
+        onPress: () => this.confirmDelete(),
+      }, {
+        name: 'no',
+        onPress: () => console.log('No Pressed'),
+      }]);
+  }
 
   confirmDelete = () => {
     const { openedDocumentId } = this.props;
