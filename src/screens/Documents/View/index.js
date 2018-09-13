@@ -101,7 +101,7 @@ class DocumentsViewScreen extends NavigatorComponent<Props & DocumentsState & Ac
   };
 
   onSelectDelete = () => {
-    alert('confirmdelete', [
+    alert('confirmDelete', [
       {
         name: 'yes',
         onPress: () => this.confirmDelete(),
