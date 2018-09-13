@@ -107,8 +107,12 @@ class DocumentsViewScreen extends NavigatorComponent<Props & DocumentsState & Ac
         onPress: () => this.confirmDelete(),
       }, {
         name: 'no',
-        onPress: () => console.log('No Pressed'),
+        onPress: () => this.cancelDelete(),
       }]);
+  }
+
+  cancelDelete = () => {
+    this.setState({ moreMenuVisible: false });
   }
 
   confirmDelete = () => {
