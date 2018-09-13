@@ -56,6 +56,7 @@ describe('contacts reducer action handling', () => {
       ...stateBefore,
       isFetching: false,
       contacts: [profileMock],
+      fetchError: null,
     });
   });
 
