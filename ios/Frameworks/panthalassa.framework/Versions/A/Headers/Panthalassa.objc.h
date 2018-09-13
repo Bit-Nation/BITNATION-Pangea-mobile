@@ -124,6 +124,12 @@ FOUNDATION_EXPORT NSString* PanthalassaNewAccountKeysFromMnemonic(NSString* mne,
 
 FOUNDATION_EXPORT BOOL PanthalassaOpenDApp(NSString* id_, NSString* context, NSError** error);
 
+// skipped function RegisterContactCalls with unsupported parameter or return types
+
+
+// skipped function RegisterDocumentCalls with unsupported parameter or return types
+
+
 FOUNDATION_EXPORT NSString* PanthalassaRenderMessage(NSString* signingKey, NSString* payload, NSError** error);
 
 FOUNDATION_EXPORT BOOL PanthalassaSendMessage(NSString* partner, NSString* message, NSError** error);
