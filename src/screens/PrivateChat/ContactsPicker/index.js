@@ -189,11 +189,11 @@ class ContactsPickerScreen extends NavigatorComponent<Props, State> {
     this.setState({ selectedContacts });
   };
 
-  onSubmitEditing = () => (
+  onSubmitEditing = (text: string) => (
     // If there are no contacts then this will return `false`
     // which prevents Selectize from creating the item.
-    this.props.contacts.length > 0
-  )
+    this.props.contacts.findIndex(contact => contact.profile.identityKey === text) !== -1
+  );
 
   render() {
     return (
