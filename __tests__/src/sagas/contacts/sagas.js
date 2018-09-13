@@ -3,7 +3,7 @@
 import { call, put } from 'redux-saga/effects';
 import { cloneableGenerator } from 'redux-saga/utils';
 
-import { addContact, contactsFetchFailed, contactsUpdated } from '../../../../src/actions/contacts';
+import { addContact, contactsFetchFailed, contactsUpdated, startContactsFetch } from '../../../../src/actions/contacts';
 import { addNewContact, fetchContacts } from '../../../../src/sagas/contacts/sagas';
 import { getProfile } from '../../../../src/sagas/chat/sagas';
 import ContactsService from '../../../../src/services/contacts';
@@ -42,7 +42,7 @@ test('addNewContact', () => {
 
   expect(gen.next(mockProfile).value).toEqual(call(ContactsService.addContact, mockIdentityKey));
   expect(gen.next().value).toEqual(call(mockCallback, null));
-  expect(gen.next().value).toEqual(put(fetchContacts));
+  expect(gen.next().value).toEqual(put(startContactsFetch()));
 });
 
 test('fetchContacts', () => {
