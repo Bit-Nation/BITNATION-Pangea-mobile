@@ -185,6 +185,12 @@
       "save": "Save",
       "cancel": "$t(common.cancel)"
     },
+    "confirmDelete": {
+      "title": "Confirm Delete",
+      "subtitle": "Are you sure you want to delete the document?",
+      "yes": "Yes",
+      "no": "No"
+    },
     "error": {
       "title": "Error",
       "confirm": "$t(common.ok)"
