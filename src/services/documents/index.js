@@ -59,6 +59,16 @@ export default class DocumentService {
     const parsed = JSON.parse(documents);
     // Clean old documents because we're re-registering them all.
     contentStorage.clear();
+
+
+    // @todo FOR TESTS ONLY, REMOVE:
+    try {
+      await Panthalassa.panthalassaCall('DOCUMENT:NOTARISE', { doc_id: 1 });
+    } catch (error) {
+      console.log(`[TEST] SAVE failed: ${error}`);
+    }
+    // END REMOVE
+
     return parsed.docs.map((document: PanthalassaDocument) => convertFromPanthalassa(document, contentStorage.storeContent(document.content)));
   }
 
