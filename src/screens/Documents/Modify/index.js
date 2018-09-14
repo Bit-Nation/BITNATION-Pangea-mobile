@@ -91,7 +91,6 @@ class DocumentsModifyScreen extends NavigatorComponent<
 
   onFinishModification = () => {
     this.props.finishDocumentModification();
-    this.props.onWillClose();
     this.props.navigator.dismissModal();
   };
 
