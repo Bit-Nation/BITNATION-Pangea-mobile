@@ -228,6 +228,7 @@ describe('login', () => {
         location: null,
       },
       'PASSWORD',
+      'main',
     ));
 
     // Invalid password
@@ -270,6 +271,7 @@ describe('login', () => {
         location: null,
       },
       'PASSWORD',
+      'main',
     ));
 
     // Invalid password
@@ -363,6 +365,7 @@ test('checkPasswordSaga', () => {
         location: null,
       },
       'PASSWORD',
+      'main',
     ));
 
   // Invalid password
