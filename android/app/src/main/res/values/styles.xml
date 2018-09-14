@@ -6,6 +6,6 @@
     </style>
 
     <style name="SplashTheme" parent="AppTheme">
-        <item name="android:windowBackground">@drawable/splash</item>
+        <item name="android:windowBackground">@drawable/launch_screen</item>
     </style>
 </resources>
