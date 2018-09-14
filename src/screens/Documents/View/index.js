@@ -7,7 +7,6 @@ import {
   Image,
   Text,
 } from 'react-native';
-
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import { screen } from '../../../global/Screens';
@@ -21,6 +20,7 @@ import { imageSource } from '../../../utils/profile';
 import { getOpenedDocument } from '../../../reducers/documents';
 import MoreMenuModal from '../../../components/common/MoreMenuModal';
 import { contentStorage } from '../../../services/documents';
+import { alert } from '../../../global/alerts';
 
 type Props = {
   /**
@@ -87,30 +87,50 @@ class DocumentsViewScreen extends NavigatorComponent<Props & DocumentsState & Ac
     }
   }
 
+  dismissModal = () => {
+    this.setState({ moreMenuVisible: false });
+  }
+
   onSelectEdit = () => {
     const { openedDocumentId } = this.props;
     if (openedDocumentId == null) return;
     const document = getOpenedDocument(this.props);
     if (document == null) return;
-
     this.props.startDocumentEditing(openedDocumentId);
     this.props.navigator.showModal({
       ...screen('DOCUMENT_MODIFY_SCREEN'),
       title: document.name,
+      passProps: {
+        onWillClose: this.dismissModal,
+      },
     });
   };
 
   onSelectDelete = () => {
+    alert('confirmDelete', [
+      {
+        name: 'yes',
+        onPress: () => this.confirmDelete(),
+      }, {
+        name: 'no',
+        onPress: () => this.cancelDelete(),
+      }]);
+  }
+
+  cancelDelete = () => {
+    this.setState({ moreMenuVisible: false });
+  }
+
+  confirmDelete = () => {
     const { openedDocumentId } = this.props;
     if (openedDocumentId == null) return;
-
     this.props.deleteDocument(openedDocumentId);
     this.setState({ moreMenuVisible: false }, () => {
       setTimeout(() => {
         this.props.navigator.dismissModal();
       }, 1000);
     });
-  };
+  }
 
   render() {
     const document = getOpenedDocument(this.props);
@@ -131,7 +151,7 @@ class DocumentsViewScreen extends NavigatorComponent<Props & DocumentsState & Ac
         </View>
         <MoreMenuModal
           visible={this.state.moreMenuVisible === true}
-          onCancel={() => this.setState({ moreMenuVisible: false })}
+          onCancel={this.dismissModal}
           options={[{
             text: i18n.t('screens.documentView.actions.edit'),
             onPress: this.onSelectEdit,
