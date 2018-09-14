@@ -43,6 +43,10 @@ const styles = {
     alignItems: 'stretch',
   },
 
+  modalScreenBackground: {
+    backgroundColor: 'white',
+  },
+
   // Container for the main area, below navigation but above the bottom tab bar (if existing)
   // Used for wallet, nation create, etc.
   // This container requires the contents to add additional left/right margins!
