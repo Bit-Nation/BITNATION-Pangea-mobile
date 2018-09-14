@@ -7,7 +7,6 @@ import {
   Image,
   Text,
 } from 'react-native';
-
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import { screen } from '../../../global/Screens';
@@ -21,6 +20,7 @@ import { imageSource } from '../../../utils/profile';
 import { getOpenedDocument } from '../../../reducers/documents';
 import MoreMenuModal from '../../../components/common/MoreMenuModal';
 import { contentStorage } from '../../../services/documents';
+import { alert } from '../../../global/alerts';
 
 type Props = {
   /**
@@ -101,16 +101,30 @@ class DocumentsViewScreen extends NavigatorComponent<Props & DocumentsState & Ac
   };
 
   onSelectDelete = () => {
+    alert('confirmDelete', [
+      {
+        name: 'yes',
+        onPress: () => this.confirmDelete(),
+      }, {
+        name: 'no',
+        onPress: () => this.cancelDelete(),
+      }]);
+  }
+
+  cancelDelete = () => {
+    this.setState({ moreMenuVisible: false });
+  }
+
+  confirmDelete = () => {
     const { openedDocumentId } = this.props;
     if (openedDocumentId == null) return;
-
     this.props.deleteDocument(openedDocumentId);
     this.setState({ moreMenuVisible: false }, () => {
       setTimeout(() => {
         this.props.navigator.dismissModal();
       }, 1000);
     });
-  };
+  }
 
   render() {
     const document = getOpenedDocument(this.props);
