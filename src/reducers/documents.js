@@ -12,6 +12,7 @@ import {
   CANCEL_DOCUMENT_MODIFICATION,
   UPDATE_MODIFIED_DOCUMENT_FIELD,
   OPEN_DOCUMENT, DELETE_DOCUMENT,
+  UPLOAD_DOCUMENT,
 } from '../actions/documents';
 import { SERVICES_DESTROYED } from '../actions/serviceContainer';
 import type { Document, EditingDocument } from '../types/Documents';
@@ -19,6 +20,7 @@ import { contentStorage } from '../services/documents';
 
 export type State = {
   isFetching: boolean,
+  isUploading: boolean,
   documents: Array<Document>,
   openedDocumentId: number | null,
   modification: {
@@ -30,6 +32,7 @@ export type State = {
 
 export const initialState: State = {
   isFetching: false,
+  isUploading: false,
   documents: [],
   openedDocumentId: null,
   modification: null,
@@ -144,6 +147,12 @@ export default (state: State = initialState, action: Action): State => {
       }
 
       return state;
+    }
+    case UPLOAD_DOCUMENT: {
+      return {
+        ...state,
+        isUploading: true,
+      };
     }
     default:
       return state;
