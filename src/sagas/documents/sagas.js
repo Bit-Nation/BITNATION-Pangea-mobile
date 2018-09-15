@@ -63,7 +63,7 @@ export function* deleteDocument(action: DeleteDocumentAction): Generator<*, *, *
  * @param {UploadDocumentAction} action An action.
  * @return {void}
  */
-export function* uplaodDocument(action: UploadDocumentAction): Generator<*, *, *> {
+export function* uploadDocument(action: UploadDocumentAction): Generator<*, *, *> {
   const { documentId } = action;
 
   try {

@@ -13,6 +13,8 @@ export function convertFromPanthalassa(data: PanthalassaDocument, dataId: string
     id: data.id,
     name: data.title,
     description: data.description,
+    tx_hash: data.tx_hash,
+    signature: data.signature,
     dataId,
     mimeType: data.mime_type,
   };
@@ -29,6 +31,8 @@ export function convertToPanthalassa(document: Document, content: string): Panth
     id: document.id,
     title: document.name,
     description: document.description,
+    tx_hash: document.tx_hash,
+    signature: document.signature,
     content,
     mime_type: document.mimeType,
   };
