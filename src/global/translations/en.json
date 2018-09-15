@@ -588,6 +588,7 @@
       "actionSheetTitle": "Select document to store"
     },
     "documentView": {
+      "submitdocument": "Submit Document",
       "actions": {
         "edit": "Edit metadata",
         "delete": "Delete document"
