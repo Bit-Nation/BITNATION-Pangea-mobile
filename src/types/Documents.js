@@ -4,6 +4,8 @@ export type Document = {
   id: number,
   name: string,
   description: string,
+  tx_hash: string,
+  signature: string,
   dataId: string,
   mimeType: string,
 }
@@ -22,4 +24,6 @@ export type PanthalassaDocument = {
   mime_type: string,
   content: string,
   description: string,
+  tx_hash: string,
+  signature: string,
 }
