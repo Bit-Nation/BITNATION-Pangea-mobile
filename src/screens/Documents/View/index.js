@@ -15,6 +15,7 @@ import styles from './styles';
 import i18n from '../../../global/i18n';
 import { startDocumentEditing, deleteDocument } from '../../../actions/documents';
 import type { State as DocumentsState } from '../../../reducers/documents';
+import Button from '../../../components/common/Button';
 import Colors from '../../../global/colors';
 import AssetsImages from '../../../global/AssetsImages';
 import { imageSource } from '../../../utils/profile';
@@ -128,6 +129,12 @@ class DocumentsViewScreen extends NavigatorComponent<Props & DocumentsState & Ac
           <Text style={styles.footnote}>
             {document.description}
           </Text>
+          <Button
+            enabled
+            style={styles.actionButton}
+            title={i18n.t('screens.documentView.submitdocument').toUpperCase()}
+            styleTitle={styles.settingsText}
+          />
         </View>
         <MoreMenuModal
           visible={this.state.moreMenuVisible === true}
