@@ -138,9 +138,24 @@ class DocumentsViewScreen extends NavigatorComponent<
   }
 
   render() {
-    const documentDetail = ['Registered', 'TxHash', 'Signature', 'Document Hash'];
     const document = getOpenedDocument(this.props);
     if (document == null) return <View />;
+    const documentDetail = [
+      {
+        name: 'Registered',
+        value: document.registered,
+      },
+      {
+        name: 'TxHash',
+        value: document.tx_hash,
+      },
+      {
+        name: 'Signature',
+        value: document.signature,
+      }, {
+        name: 'Document Hash',
+        value: document.doc_hash,
+      }];
 
     return (
       <View style={styles.screenContainer}>
@@ -172,8 +187,8 @@ class DocumentsViewScreen extends NavigatorComponent<
             {documentDetail.map((index, id) => (
               <DocumentListItem
                 id={id}
-                name={index}
-                value='Value'
+                name={index.name}
+                value={index.value}
                 disclosureIconVisible={false}
                 onPress={() => this.displayDocumentValues(index)}
               />
