@@ -592,7 +592,12 @@
       "actions": {
         "edit": "Edit metadata",
         "delete": "Delete document"
-      }
+      },
+      "registered": "Registered",
+      "txhash": "Tx Hash",
+      "signature": "Signature",
+      "dochash": "Document Hash",
+      "status": "Status"
     },
     "documentModify": {
       "title": "New document",
