@@ -8,6 +8,7 @@ export type Document = {
   signature: string,
   registered?: string,
   doc_hash?: string,
+  status?: string,
   dataId: string,
   mimeType: string,
 }
