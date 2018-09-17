@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { View, Image, Text } from 'react-native';
+import { View, Image, Text, ScrollView } from 'react-native';
 
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
@@ -20,6 +20,7 @@ import Colors from '../../../global/colors';
 import AssetsImages from '../../../global/AssetsImages';
 import { imageSource } from '../../../utils/profile';
 import { getOpenedDocument } from '../../../reducers/documents';
+import DocumentListItem from '../../../components/common/DocumentListItem';
 import MoreMenuModal from '../../../components/common/MoreMenuModal';
 import { contentStorage } from '../../../services/documents';
 
@@ -132,7 +133,12 @@ class DocumentsViewScreen extends NavigatorComponent<
     this.props.uploadDocument(openedDocumentId);
   };
 
+  displayDocumentValues = (value) => {
+    console.log(value);
+  }
+
   render() {
+    const documentDetail = ['Registered', 'TxHash', 'Signature', 'Document Hash'];
     const document = getOpenedDocument(this.props);
     if (document == null) return <View />;
 
@@ -146,15 +152,33 @@ class DocumentsViewScreen extends NavigatorComponent<
           />
         </View>
         <View style={styles.metadataContainer}>
-          <Text style={styles.headline}>{document.name}</Text>
-          <Text style={styles.footnote}>{document.description}</Text>
-          <Button
-            enabled
-            style={styles.actionButton}
-            title={i18n.t('screens.documentView.submitdocument').toUpperCase()}
-            onPress={this.onDocumentSubmit}
-            styleTitle={styles.settingsText}
-          />
+          <ScrollView>
+            <Text style={styles.headline}>{document.name}</Text>
+            <Text style={styles.footnote}>{document.description}</Text>
+            <Button
+              enabled
+              style={styles.actionButton}
+              title={i18n.t('screens.documentView.submitdocument').toUpperCase()}
+              onPress={this.onDocumentSubmit}
+              styleTitle={styles.settingsText}
+            />
+            <DocumentListItem
+              id={1}
+              name='Status'
+              value='Value'
+              disclosureIconVisible={false}
+              onPress={() => console.log('hello')}
+            />
+            {documentDetail.map((index, id) => (
+              <DocumentListItem
+                id={id}
+                name={index}
+                value='Value'
+                disclosureIconVisible={false}
+                onPress={() => this.displayDocumentValues(index)}
+              />
+              ))}
+          </ScrollView>
         </View>
         <MoreMenuModal
           visible={this.state.moreMenuVisible === true}
