@@ -138,7 +138,7 @@ class DocumentsViewScreen extends NavigatorComponent<
   };
 
   displayDocumentValues = (result) => {
-    if (result.name === 'TxHash') {
+    if (result && result.name === i18n.t('screens.documentView.txhash') && result.value) {
       Alert.alert(
         'Transaction Hash', `${result.value}`,
         [
@@ -152,7 +152,7 @@ class DocumentsViewScreen extends NavigatorComponent<
           },
         ],
       );
-    } else if (result.name === 'Signature') {
+    } else if (result && result.name === i18n.t('screens.documentView.signature') && result.value) {
       Alert.alert(
         'Signature', `${result.value}`,
         [
@@ -166,9 +166,9 @@ class DocumentsViewScreen extends NavigatorComponent<
           },
         ],
       );
-    } else if (result.name === 'Document Hash') {
+    } else if (result && result.name === i18n.t('screens.documentView.dochash') && result.value) {
       Alert.alert(
-        'Document Hash', 'Hash',
+        'Document Hash', `${result.value}`,
         [
           {
             text: 'SHARE',
@@ -200,19 +200,19 @@ class DocumentsViewScreen extends NavigatorComponent<
     const { isUploading } = this.props;
     const documentDetail = [
       {
-        name: 'Registered',
+        name: i18n.t('screens.documentView.registered'),
         value: document.registered,
       },
       {
-        name: 'TxHash',
+        name: i18n.t('screens.documentView.txhash'),
         value: document.tx_hash,
       },
       {
-        name: 'Signature',
+        name: i18n.t('screens.documentView.signature'),
         value: document.signature,
       },
       {
-        name: 'Document Hash',
+        name: i18n.t('screens.documentView.dochash'),
         value: document.doc_hash,
       },
     ];
@@ -244,8 +244,8 @@ class DocumentsViewScreen extends NavigatorComponent<
             {isUploading && (
               <DocumentListItem
                 id={1}
-                name='Status'
-                value='Value'
+                name={i18n.t('screens.documentView.status')}
+                value={document.status}
                 disclosureIconVisible={false}
                 onPress={() => console.log('hello')}
               />
