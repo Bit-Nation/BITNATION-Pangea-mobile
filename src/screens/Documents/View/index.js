@@ -2,8 +2,9 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { View, Image, Text, ScrollView } from 'react-native';
-
+import { View, Image, Text, ScrollView, Clipboard, TouchableHighlight, WebView, Alert } from 'react-native';
+import Modal from 'react-native-modal';
+import { Icon } from 'native-base';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import { screen } from '../../../global/Screens';
@@ -78,6 +79,9 @@ class DocumentsViewScreen extends NavigatorComponent<
 
     this.state = {
       moreMenuVisible: false,
+      text: '',
+      txHash: '',
+      visibleTxModal: false,
     };
 
     const openedDocument = getOpenedDocument(this.props);
@@ -133,8 +137,61 @@ class DocumentsViewScreen extends NavigatorComponent<
     this.props.uploadDocument(openedDocumentId);
   };
 
-  displayDocumentValues = (value) => {
-    console.log(value);
+  displayDocumentValues = (result) => {
+    if (result.name === 'TxHash') {
+      Alert.alert(
+        'Transaction Hash', `${result.value}`,
+        [
+          {
+            text: 'COPY',
+            onPress: () => this.writeToClipboard(result.value),
+          },
+          {
+            text: 'ETHERSCAN',
+            onPress: () => this.setState({ visibleTxModal: true, txHash: result.value }),
+          },
+        ],
+      );
+    } else if (result.name === 'Signature') {
+      Alert.alert(
+        'Signature', `${result.value}`,
+        [
+          {
+            text: 'SHARE',
+            // onPress: () => this.props.navigator.dismissModal(),
+          },
+          {
+            text: 'COPY',
+            onPress: () => this.writeToClipboard(result.value),
+          },
+        ],
+      );
+    } else if (result.name === 'Document Hash') {
+      Alert.alert(
+        'Document Hash', 'Hash',
+        [
+          {
+            text: 'SHARE',
+            //  onPress: () => this.props.navigator.dismissModal(),
+          },
+          {
+            text: 'COPY',
+            onPress: () => this.writeToClipboard(result.value),
+          },
+        ],
+      );
+    } else {
+      console.log('Here');
+    }
+  };
+
+  writeToClipboard = async (value) => {
+    this.setState({ text: value });
+    await Clipboard.setString(this.state.text);
+  };
+
+  txModalClose() {
+    this.setState({ visibleTxModal: false });
   }
 
   render() {
@@ -153,10 +210,12 @@ class DocumentsViewScreen extends NavigatorComponent<
       {
         name: 'Signature',
         value: document.signature,
-      }, {
+      },
+      {
         name: 'Document Hash',
         value: document.doc_hash,
-      }];
+      },
+    ];
 
     return (
       <View style={styles.screenContainer}>
@@ -171,16 +230,18 @@ class DocumentsViewScreen extends NavigatorComponent<
           <ScrollView>
             <Text style={styles.headline}>{document.name}</Text>
             <Text style={styles.footnote}>{document.description}</Text>
-            {!isUploading &&
+            {!isUploading && (
               <Button
                 enabled
                 style={styles.actionButton}
-                title={i18n.t('screens.documentView.submitdocument').toUpperCase()}
+                title={i18n
+                  .t('screens.documentView.submitdocument')
+                  .toUpperCase()}
                 onPress={this.onDocumentSubmit}
                 styleTitle={styles.settingsText}
               />
-            }
-            {isUploading &&
+            )}
+            {isUploading && (
               <DocumentListItem
                 id={1}
                 name='Status'
@@ -188,15 +249,18 @@ class DocumentsViewScreen extends NavigatorComponent<
                 disclosureIconVisible={false}
                 onPress={() => console.log('hello')}
               />
-            }
-            {document.tx_hash && document.doc_hash && document.signature && documentDetail.map((index, id) => (
-              <DocumentListItem
-                id={id}
-                name={index.name}
-                value={index.value}
-                disclosureIconVisible={false}
-                onPress={() => this.displayDocumentValues(index)}
-              />
+            )}
+            {document.tx_hash &&
+              document.doc_hash &&
+              document.signature &&
+              documentDetail.map((index, id) => (
+                <DocumentListItem
+                  id={id}
+                  name={index.name}
+                  value={index.value}
+                  disclosureIconVisible={false}
+                  onPress={() => this.displayDocumentValues(index)}
+                />
               ))}
           </ScrollView>
         </View>
@@ -214,6 +278,26 @@ class DocumentsViewScreen extends NavigatorComponent<
             },
           ]}
         />
+        <Modal isVisible={this.state.visibleTxModal}>
+          <View>
+            <TouchableHighlight
+              onPress={() => {
+                this.txModalClose();
+              }}
+            >
+              <Icon name='ios-close' style={styles.closeIcon} />
+            </TouchableHighlight>
+          </View>
+          {this.state.txhash &&
+            <WebView
+              source={{
+                      uri: `https://etherscan.io/address/${
+                        this.state.txHash
+                      }`,
+                    }}
+            />
+            }
+        </Modal>
       </View>
     );
   }
