@@ -6,6 +6,8 @@ export type Document = {
   description: string,
   tx_hash: string,
   signature: string,
+  registered: Date,
+  doc_hash: string,
   dataId: string,
   mimeType: string,
 }
