@@ -140,6 +140,7 @@ class DocumentsViewScreen extends NavigatorComponent<
   render() {
     const document = getOpenedDocument(this.props);
     if (document == null) return <View />;
+    const { isUploading } = this.props;
     const documentDetail = [
       {
         name: 'Registered',
@@ -170,21 +171,25 @@ class DocumentsViewScreen extends NavigatorComponent<
           <ScrollView>
             <Text style={styles.headline}>{document.name}</Text>
             <Text style={styles.footnote}>{document.description}</Text>
-            <Button
-              enabled
-              style={styles.actionButton}
-              title={i18n.t('screens.documentView.submitdocument').toUpperCase()}
-              onPress={this.onDocumentSubmit}
-              styleTitle={styles.settingsText}
-            />
-            <DocumentListItem
-              id={1}
-              name='Status'
-              value='Value'
-              disclosureIconVisible={false}
-              onPress={() => console.log('hello')}
-            />
-            {documentDetail.map((index, id) => (
+            {!isUploading &&
+              <Button
+                enabled
+                style={styles.actionButton}
+                title={i18n.t('screens.documentView.submitdocument').toUpperCase()}
+                onPress={this.onDocumentSubmit}
+                styleTitle={styles.settingsText}
+              />
+            }
+            {isUploading &&
+              <DocumentListItem
+                id={1}
+                name='Status'
+                value='Value'
+                disclosureIconVisible={false}
+                onPress={() => console.log('hello')}
+              />
+            }
+            {document.tx_hash && document.doc_hash && document.signature && documentDetail.map((index, id) => (
               <DocumentListItem
                 id={id}
                 name={index.name}
@@ -216,6 +221,7 @@ class DocumentsViewScreen extends NavigatorComponent<
 
 const mapStateToProps = state => ({
   ...state.documents,
+  isUploading: state.documents.isUploading,
 });
 
 const mapDispatchToProps = dispatch => ({
