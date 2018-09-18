@@ -241,7 +241,7 @@ class DocumentsViewScreen extends NavigatorComponent<
                 styleTitle={styles.settingsText}
               />
             )}
-            {isUploading && (
+            {isUploading && document.status && (
               <DocumentListItem
                 id={1}
                 name={i18n.t('screens.documentView.status')}
