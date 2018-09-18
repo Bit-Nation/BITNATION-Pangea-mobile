@@ -19,15 +19,12 @@ import type {
   CheckPasswordAction,
   CheckPinCodeAction,
   LoginAction, MnemonicConfirmedAction,
+  ValidateMnemonicWithAccountAction,
   SaveCreatingAccountAction,
   SavePasswordAction,
   SavePinCodeAction,
 } from '../../actions/accounts';
-import {
-  startFetchMessages,
-  stopFetchMessages,
-} from '../../actions/chat';
-import { storeVersion } from '../../actions/migration';
+import { fetchAllChats } from '../../actions/chat';
 import {
   convertFromDatabase, convertToDatabase, retrieveProfileFromAccount,
   retrieveProfileFromPartialAccount,
@@ -159,7 +156,6 @@ export function* updateSignedProfile(): Generator<*, *, *> {
   }
 }
 
-
 /**
  * @desc Performs preparation for account creation, e.g. clean settings.
  * @return {void}
@@ -237,13 +233,39 @@ export function* login(userInfo: ({ accountId: string, accountStore?: string }),
 
   yield put(currentAccountIdChanged(accountId));
 
-  if (version !== null && version !== undefined) {
-    yield put(storeVersion(version));
-  }
-
   yield put(loginTaskUpdated(TaskBuilder.success()));
 
-  yield put(startFetchMessages());
+  yield put(fetchAllChats());
+}
+
+/**
+ * @desc Valid mnemonic with account choice to login
+ * @param {ValidateMnemonicWithAccountAction} action An action
+ * @return {void}
+ */
+export function* validateMnemonicWithAccountActionHandler(action: ValidateMnemonicWithAccountAction): Generator<*, *, *> {
+  yield call(validateMnemonicWithAccount, { accountId: action.accountId }, action.callback);
+}
+
+/**
+ * @desc Valid mnemonic with account choice to login
+ * @param {*} userInfo Either object containing account id or account store to log in.
+ * @param {function} callback Function that is called when that information is valid mnemonic.
+ * @return {void}
+ */
+export function* validateMnemonicWithAccount(userInfo: ({ accountId: string }), callback: (success: boolean) => void): Generator<*, *, *> {
+  const { accountId } = userInfo;
+  const account: DBAccount = yield call(getAccount, accountId);
+  const { accountStore } = account;
+  const profile = retrieveProfileFromAccount(convertFromDatabase(account));
+  try {
+    const { key: { enteredMnemonic } } = yield select();
+    const isValid = yield call(AccountsService.validateMnemonicWithAccount, accountStore, profile, enteredMnemonic);
+    yield call(callback, isValid);
+  } catch (error) {
+    console.log('--> ERROR Login: ', error);
+    yield call(callback, false);
+  }
 }
 
 /**
@@ -251,7 +273,6 @@ export function* login(userInfo: ({ accountId: string, accountStore?: string }),
  * @return {void}
  */
 export function* logout(): Generator<*, *, *> {
-  yield put(stopFetchMessages());
   yield call(AccountsService.logout);
   yield put(currentAccountIdChanged(null));
 }

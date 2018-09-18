@@ -11,7 +11,7 @@ import Button from '../../../../components/common/Button';
 import styles from './styles';
 import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
 import ScreenTitle from '../../../../components/common/ScreenTitle';
-import NationListItem from '../../../../components/common/NationListItem';
+import ListItem from '../../../../components/common/ListItem';
 import type { Account } from '../../../../types/Account';
 import i18n from '../../../../global/i18n';
 
@@ -41,37 +41,33 @@ const AccountAccessListScreen = ({
   <View style={styles.profilesScreenContainer}>
     <BackgroundImage />
     <FakeNavigationBar />
-    <View style={styles.bodyAccountContainer}>
-      <ScreenTitle title={i18n.t('screens.accounts.title')} />
-      <FlatList
-        renderItem={(item) => {
-          const account = item.item;
-          return (<NationListItem
-            text={account.name}
-            participants=''
-            itemIcon={0}
-            onPress={id => onSelectItem(id)}
-            id={account.id}
-          />);
-        }}
-        keyExtractor={item => item.id}
-        data={accounts}
-        style={styles.sectionList}
+    <ScreenTitle title={i18n.t('screens.accounts.title')} />
+    <FlatList
+      renderItem={(item) => {
+        const account = item.item;
+        return (<ListItem
+          text={account.name}
+          onPress={id => onSelectItem(id)}
+          id={account.id}
+        />);
+      }}
+      keyExtractor={item => item.id}
+      data={accounts}
+      style={styles.sectionList}
+      ItemSeparatorComponent={() => (<View style={styles.itemSeparator} />)}
+    />
+    <View style={styles.buttonListContainer}>
+      <Button
+        enabled
+        style={styles.restoreAccountButton}
+        styleTitle={styles.restoreAccountButtonText}
+        title={i18n.t('screens.accounts.restoreAccount')}
+        onPress={onRestoreAccount}
       />
-      <View style={styles.buttonListContainer}>
-        <Button
-          enabled
-          style={styles.restoreAccountButton}
-          styleTitle={styles.restoreAccountButtonText}
-          title={i18n.t('screens.accounts.restoreAccount')}
-          onPress={onRestoreAccount}
 
-        />
-
-        <View style={styles.spacer} />
-      </View>
-
+      <View style={styles.spacer} />
     </View>
+
     <Button
       enabled
       styleTitle={styles.newAccountText}

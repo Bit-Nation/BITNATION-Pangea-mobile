@@ -25,6 +25,7 @@
   "common": {
     "send": "Send",
     "receive": "Receive",
+    "transactions": "Transactions",
     "ok": "OK",
     "previous": "Previous",
     "next": "Next",
@@ -143,6 +144,11 @@
       "subtitle": "",
       "confirm": "$t(common.ok)"
     },
+    "passwordRecoveryFailed": {
+      "title": "Entered private key does not match the account.",
+      "subtitle": "",
+      "confirm": "$t(common.ok)"
+    },
     "walletRequired": {
       "title": "No wallet",
       "subtitle": "You need to setup a wallet first",
@@ -179,6 +185,12 @@
       "save": "Save",
       "cancel": "$t(common.cancel)"
     },
+    "confirmDelete": {
+      "title": "Confirm Delete",
+      "subtitle": "Are you sure you want to delete the document?",
+      "yes": "Yes",
+      "no": "No"
+    },
     "error": {
       "title": "Error",
       "confirm": "$t(common.ok)"
@@ -202,6 +214,11 @@
     "successTransaction": {
       "title": "Success",
       "subtitle": "Your transaction has been successfully sent",
+      "confirm": "$t(common.ok)"
+    },
+    "successResetPassword": {
+      "title": "Success",
+      "subtitle": "Your password has been successfully changed",
       "confirm": "$t(common.ok)"
     }
   },
@@ -301,16 +318,30 @@
       "tabTitle": "$t(tabbar.chat)",
       "allChats": "All Chats",
       "myChats": "My Chats",
-      "keyFromClipboard": "Use public key on clipboard",
-      "keyFromLibrary": "Get public key from library",
-      "keyFromCamera": "Scan public key with camera",
+      "keyFromClipboard": "Use Identity Key on clipboard",
+      "keyFromLibrary": "Get Identity Key from library",
+      "keyFromCamera": "Scan Identity Key with camera",
       "dappChat": "New Chat with DApp",
       "cancel": "$t(common.cancel)",
       "sendInvite": "Send Invite",
-      "startChat": "Begin Chat",
-      "newChat": "New Chat",
       "invalidKey": "Invalid or Missing Key",
-      "inviteSent": "Invite Sent"
+      "inviteSent": "Invite Sent",
+      "dAppMessagePreview": "DApp message...",
+      "menu": {
+        "filterChatList": "Filter Chat List",
+        "markAllRead": "Mark all as read",
+        "shareIdentityKey": "Share my Identity Key",
+        "managerChatSections": "Manager Chat Sections",
+        "restoreChat": "Restore Chat",
+        "settings": "Settings"
+      }
+    },
+    "contactsPicker": {
+      "title": "Manage Chat Group",
+      "newContactFromClipboard": "New Contact from Clipboard",
+      "doneButton": "$t(common.done)",
+      "addContactError": "Error adding contact, please try again later.",
+      "label": "$t(common.to):"
     },
     "migration": {
       "title": "Migration",
@@ -406,7 +437,7 @@
     "profile": {
       "title": "Profile",
       "tabTitle": "$t(tabbar.profile)",
-      "copyKey": "Copy Public Key",
+      "shareKey": "Share Identity Key",
       "empty": {
         "createProfilePanel": {
           "title": "Become a World Citizen",
@@ -496,8 +527,14 @@
       }
     },
     "dAppQRCodeScanner": {
-      "title": "Connect to DApp host",
-      "instruction": "Scan QR code to connect to PC"
+      "devHost": {
+        "title": "Connect to DApp host",
+        "instruction": "Scan QR code to connect to PC"
+      },
+      "logger": {
+        "title": "Connect to debug logger",
+        "instruction": "Scan QR code to connect to PC"
+      }
     },
     "settings": {
       "title": "Settings",
@@ -507,7 +544,14 @@
       "viewPrivateKey": "Private Key",
       "confirmPrivateKey": "Private Key (confirmation required)",
       "switchAccounts": "Switch accounts",
-      "connectToDAppHost": "Connect to DApp host"
+      "connectToDAppHost": "Connect to DApp host",
+      "connectToDAppLogger": "Connect debug logger",
+      "documents": "Documents",
+      "sections": {
+        "account": "Account",
+        "dApps": "DApp development",
+        "notary": "Notary"
+      }
     },
     "securitySettings": {
       "title": "Security settings",
@@ -523,7 +567,8 @@
     "password": {
       "enterInstruction": "Enter password:",
       "createInstruction": "Enter new password:",
-      "verifyInstruction": "Enter password again:"
+      "verifyInstruction": "Enter password again:",
+      "forgetInstruction": "Forgot Password?"
     },
     "confirmTransaction": {
       "title": "Confirm Transaction",
@@ -543,6 +588,28 @@
       "processor": "Processor",
       "gwei": "Gwei",
       "eth": "ETH"
+    },
+    "documentsList": {
+      "title": "Documents",
+      "actionSheetTitle": "Select document to store"
+    },
+    "documentView": {
+      "actions": {
+        "edit": "Edit metadata",
+        "delete": "Delete document"
+      }
+    },
+    "documentModify": {
+      "title": "New document",
+      "fields": {
+        "title": "Title",
+        "description": "Description"
+      },
+      "placeholder": {
+        "title": "Enter title",
+        "description": "Enter description"
+      },
+      "save": "Save document"
     }
   },
   "testingMode": {
@@ -573,17 +640,8 @@
     }
   },
   "dApps": {
-    "escrow": {
-      "requestExchange": "START EXCHANGE",
-      "sendTokens": "SEND",
-      "cancelContract": "REFUND",
-      "completeContract": "EXCHANGE",
-      "cancelConfirmationAlert": {
-        "title": "Cancel Contract",
-        "subtitle": "Are you sure that you want to terminate exchange process?",
-        "confirm": "Stop exchange",
-        "cancel": "$t(common.cancel)"
-      }
-    }
+    "unknownDAppMessage": "This message was sent from DApp that is not installed on your device. It can not be rendered.",
+    "failedDAppMessageRender": "{{dAppName}} DApp failed to render this message. It may be due to an issue in the DApp or using of an old version.",
+    "failedDAppModalRender": "{{dAppName}} DApp failed to render the modal. It may be due to an issue in the DApp or using of an old version."
   }
 }

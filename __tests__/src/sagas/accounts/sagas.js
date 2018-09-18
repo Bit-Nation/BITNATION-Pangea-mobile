@@ -9,6 +9,7 @@ import {
   saveEditingAccount as saveEditingAccountSaga, savePasswordSaga, savePinCodeSaga, startAccountCreation,
   startRestoreAccountUsingMnemonic, saveCreatingAccount as saveCreatingAccountSaga, currentAccountBasedUpdate,
   startAccountUpdateListening, saveMnemonicConfirmed, getAccounts,
+  validateMnemonicWithAccount as validateMnemonicWithAccountSaga, validateMnemonicWithAccountActionHandler,
 } from '../../../../src/sagas/accounts/sagas';
 import defaultDB, { buildRandomPathDatabase } from '../../../../src/services/database';
 import { convertFromDatabase, convertToDatabase } from '../../../../src/utils/mapping/account';
@@ -20,14 +21,14 @@ import {
   accountListUpdated, changeCreatingAccountField, checkPassword, checkPinCode, CURRENT_ACCOUNT_ID_CHANGED,
   currentAccountIdChanged, login,
   loginTaskUpdated, mnemonicConfirmed, PERFORM_DEFERRED_LOGIN, saveCreatingAccount, savePassword, savePinCode,
+  validateMnemonicWithAccount,
 } from '../../../../src/actions/accounts';
 import TaskBuilder from '../../../../src/utils/asyncTask';
 import AccountsService from '../../../../src/services/accounts';
 import ChatService from '../../../../src/services/chat';
 import { InvalidPasswordError, LoginFailedError } from '../../../../src/global/errors/accounts';
 import { cancelAccountEditing, saveEditingAccount, setPublicKey } from '../../../../src/actions/profile';
-import { startFetchMessages, stopFetchMessages } from '../../../../src/actions/chat';
-import { storeVersion } from '../../../../src/actions/migration';
+import { fetchAllChats } from '../../../../src/actions/chat';
 
 const partialAccountMock: PartialAccount = {
   ...buildEmptyAccount(),
@@ -207,6 +208,12 @@ test('loginActionHandler', () => {
   expect(loginActionHandler(actionMock).next().value).toEqual(call(loginSaga, { accountId: 'ID' }, 'PASSWORD', false));
 });
 
+test('validateMnemonicWithAccountActionHandler', () => {
+  const mockCallback = jest.fn();
+  const actionMock = validateMnemonicWithAccount('ID', mockCallback);
+  expect(validateMnemonicWithAccountActionHandler(actionMock).next().value).toEqual(call(validateMnemonicWithAccountSaga, { accountId: 'ID' }, mockCallback));
+});
+
 describe('login', () => {
   test('login to existing account using account id', () => {
     const gen = cloneableGenerator(loginSaga)({ accountId: 'ID' }, 'PASSWORD');
@@ -243,9 +250,8 @@ describe('login', () => {
     expect(gen.next(true).value).toEqual(call(ChatService.getPublicKey));
     expect(gen.next('pubkey').value).toEqual(put(setPublicKey('pubkey')));
     expect(gen.next().value).toEqual(put(currentAccountIdChanged('ID')));
-    expect(gen.next().value).toEqual(put(storeVersion('0.0.1')));
     expect(gen.next().value).toEqual(put(loginTaskUpdated(TaskBuilder.success())));
-    expect(gen.next().value).toEqual(put(startFetchMessages()));
+    expect(gen.next().value).toEqual(put(fetchAllChats()));
   });
 
   test('login to new account using account store', () => {
@@ -286,9 +292,8 @@ describe('login', () => {
     expect(gen.next(true).value).toEqual(call(ChatService.getPublicKey));
     expect(gen.next('pubkey').value).toEqual(put(setPublicKey('pubkey')));
     expect(gen.next().value).toEqual(put(currentAccountIdChanged('ID')));
-    expect(gen.next().value).toEqual(put(storeVersion('0.0.1')));
     expect(gen.next().value).toEqual(put(loginTaskUpdated(TaskBuilder.success())));
-    expect(gen.next().value).toEqual(put(startFetchMessages()));
+    expect(gen.next().value).toEqual(put(fetchAllChats()));
 
     last = gen.next();
     expect(last.value).toBeUndefined();
@@ -298,7 +303,6 @@ describe('login', () => {
 
 test('logout', () => {
   const gen = logout();
-  expect(gen.next().value).toEqual(put(stopFetchMessages()));
   expect(gen.next().value).toEqual(call(AccountsService.logout));
   expect(gen.next().value).toEqual(put(currentAccountIdChanged(null)));
 

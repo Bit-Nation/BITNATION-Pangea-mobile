@@ -1,16 +1,28 @@
 // @flow
 
-import { NativeModules } from 'react-native';
+import Config from 'react-native-config';
 import type { Mnemonic } from '../../types/Mnemonic';
 import { compressMnemonic, decompressMnemonic } from '../../utils/key';
 import type { Profile } from '../../types/Account';
 import { InvalidPasswordError } from '../../global/errors/accounts';
 import ChatService from '../chat';
+import {
+  panthalassaStart,
+  panthalassaStartFromMnemonic,
+  panthalassaStop,
+  panthalassaGetMnemonic,
+  panthalassaNewAccountKeys,
+  panthalassaNewAccountKeysFromMnemonic,
+  panthalassaExportAccountStore,
+  panthalassaIsValidMnemonic,
+  panthalassaEthPrivateKey,
+  panthalassaSignProfileStandAlone,
+  panthalassaSignProfile,
+} from '../panthalassa';
 
 export default class AccountsService {
   static async getMnemonic(): Promise<Mnemonic> {
-    const { Panthalassa } = NativeModules;
-    const mnemonicString = await Panthalassa.PanthalassaGetMnemonic();
+    const mnemonicString = await panthalassaGetMnemonic();
     return decompressMnemonic(mnemonicString);
   }
 
@@ -20,9 +32,8 @@ export default class AccountsService {
   }
 
   static async login(accountStore: string, profile: Profile, password: string): Promise<boolean> {
-    const { Panthalassa } = NativeModules;
     try {
-      await Panthalassa.PanthalassaStop();
+      await panthalassaStop();
       // eslint-disable-next-line no-empty
     } catch (e) {
       // We ignore exception, since we just need stop it in case it was started earlier.
@@ -34,73 +45,91 @@ export default class AccountsService {
       encrypted_key_manager: accountStore,
       signed_profile: signedProfile,
       enable_debugging: false,
+      eth_ws_endpoint: 'wss://mainnet.infura.io/_ws',
+      private_chat_endpoint: Config.CHAT_WSS_ENDPOINT,
+      private_chat_bearer_token: Config.CHAT_TOKEN,
     });
 
-    const success = await Panthalassa.PanthalassaStart({ config, password });
-
-    if (success === true) {
-      try {
-        await ChatService.uploadProfile(signedProfile);
-      } catch (e) {
-        console.log(`[TEST] Profile upload fail: ${e.message}`);
-      }
-      return true;
+    try {
+      await panthalassaStart(config, password);
+    } catch (e) {
+      console.log(`[TEST] Panthalassa start failed: ${e.message}`);
+      return false;
     }
-    return false;
+
+    try {
+      await ChatService.uploadProfile(signedProfile);
+    } catch (e) {
+      console.log(`[TEST] Profile upload fail: ${e.message}`);
+    }
+
+    return true;
+  }
+
+  static async validateMnemonicWithAccount(accountStore: string, profile: Profile, mne: Mnemonic): Promise<boolean> {
+    try {
+      await panthalassaStop();
+      // eslint-disable-next-line no-empty
+    } catch (e) {
+      // We ignore exception, since we just need stop it in case it was started earlier.
+    }
+    const config = JSON.stringify({
+      encrypted_key_manager: accountStore,
+      enable_debugging: false,
+      eth_ws_endpoint: 'wss://mainnet.infura.io/_ws',
+      private_chat_endpoint: Config.CHAT_WSS_ENDPOINT,
+      private_chat_bearer_token: Config.CHAT_TOKEN,
+    });
+
+    try {
+      await panthalassaStartFromMnemonic(config, compressMnemonic(mne));
+    } catch (e) {
+      console.log(`[TEST] Panthalassa start failed: ${e.message}`);
+      return false;
+    }
+
+    return true;
   }
 
   static async createAccountStore(password: string): Promise<string> {
-    const { Panthalassa } = NativeModules;
-    return Panthalassa.PanthalassaNewAccountKeys({ pw: password, pwConfirm: password });
+    return panthalassaNewAccountKeys(password);
   }
 
   static async restoreAccountStore(mnemonic: Mnemonic, password: string): Promise<string> {
-    const { Panthalassa } = NativeModules;
-    return Panthalassa.PanthalassaNewAccountKeysFromMnemonic({
-      mne: compressMnemonic(mnemonic),
-      pw: password,
-      pwConfirm: password,
-    });
+    return panthalassaNewAccountKeysFromMnemonic(compressMnemonic(mnemonic), password);
   }
 
   static async exportAccountStore(password: string): Promise<string> {
-    const { Panthalassa } = NativeModules;
-    return Panthalassa.PanthalassaExportAccountStore({ pw: password, pwConfirm: password });
+    return panthalassaExportAccountStore(password);
   }
 
-  static async logout(): Promise<void> {
-    const { Panthalassa } = NativeModules;
-    return Panthalassa.PanthalassaStop();
+  static async logout(): Promise<boolean> {
+    return panthalassaStop();
   }
 
   static async validateMnemonic(mnemonic: Mnemonic): Promise<boolean> {
-    const { Panthalassa } = NativeModules;
-    return Panthalassa.PanthalassaIsValidMnemonic(compressMnemonic(mnemonic));
+    return panthalassaIsValidMnemonic(compressMnemonic(mnemonic));
   }
 
   static async getEthPrivateKey(): Promise<string> {
-    const { Panthalassa } = NativeModules;
-    return Panthalassa.PanthalassaEthPrivateKey();
+    return panthalassaEthPrivateKey();
   }
 
   static async signProfileStandalone(profile: Profile, accountStore: string, password: string): Promise<string> {
-    const { Panthalassa } = NativeModules;
-
-    return Panthalassa.PanthalassaSignProfileStandAlone({
-      name: profile.name,
-      location: profile.location || '',
-      image: profile.avatar || '',
-      keyManagerStore: accountStore,
+    return panthalassaSignProfileStandAlone(
+      profile.name,
+      profile.location || '',
+      profile.avatar || '',
+      accountStore,
       password,
-    });
+    );
   }
 
   static async signProfile(profile: Profile): Promise<string> {
-    const { Panthalassa } = NativeModules;
-    return Panthalassa.PanthalassaSignProfile({
-      name: profile.name,
-      location: profile.location || '',
-      image: profile.avatar || '',
-    });
+    return panthalassaSignProfile(
+      profile.name,
+      profile.location || '',
+      profile.avatar || '',
+    );
   }
 }
