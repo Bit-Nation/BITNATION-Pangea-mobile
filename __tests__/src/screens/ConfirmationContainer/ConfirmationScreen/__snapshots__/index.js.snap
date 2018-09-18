@@ -7,6 +7,7 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <ConfirmationScreen
     amount="0"
     estimate="0"
+    gasLimit={21000}
     gasPrice={2}
     navigator={
       Object {
@@ -495,7 +496,7 @@ ShallowWrapper {
                             },
                           ]
                         }
-                        value="1500000"
+                        value={21000}
                       />
                     </View>
                   </View>
@@ -1014,7 +1015,7 @@ ShallowWrapper {
                             },
                           ]
                         }
-                        value="1500000"
+                        value={21000}
                       />
                     </View>
                   </View>
@@ -1498,7 +1499,7 @@ ShallowWrapper {
                               },
                             ]
                           }
-                          value="1500000"
+                          value={21000}
                         />
                       </View>
                     </View>
@@ -1953,7 +1954,7 @@ ShallowWrapper {
                               },
                             ]
                           }
-                          value="1500000"
+                          value={21000}
                         />
                       </View>
                     </View>
@@ -2407,7 +2408,7 @@ ShallowWrapper {
                               },
                             ]
                           }
-                          value="1500000"
+                          value={21000}
                         />
                       </View>
                     </View>
@@ -2829,7 +2830,7 @@ ShallowWrapper {
                                 },
                               ]
                             }
-                            value="1500000"
+                            value={21000}
                           />
                         </View>
                       </View>,
@@ -3618,7 +3619,7 @@ ShallowWrapper {
                                 },
                               ]
                             }
-                            value="1500000"
+                            value={21000}
                           />
                         </View>,
                         "style": Object {
@@ -3679,7 +3680,7 @@ ShallowWrapper {
                                   },
                                 ]
                               }
-                              value="1500000"
+                              value={21000}
                             />,
                           ],
                           "style": Object {
@@ -3755,7 +3756,7 @@ ShallowWrapper {
                                   "lineHeight": 22,
                                 },
                               ],
-                              "value": "1500000",
+                              "value": 21000,
                             },
                             "ref": null,
                             "rendered": null,
@@ -4339,7 +4340,7 @@ ShallowWrapper {
                               },
                             ]
                           }
-                          value="1500000"
+                          value={21000}
                         />
                       </View>
                     </View>
@@ -4858,7 +4859,7 @@ ShallowWrapper {
                               },
                             ]
                           }
-                          value="1500000"
+                          value={21000}
                         />
                       </View>
                     </View>
@@ -5342,7 +5343,7 @@ ShallowWrapper {
                                 },
                               ]
                             }
-                            value="1500000"
+                            value={21000}
                           />
                         </View>
                       </View>
@@ -5797,7 +5798,7 @@ ShallowWrapper {
                                 },
                               ]
                             }
-                            value="1500000"
+                            value={21000}
                           />
                         </View>
                       </View>
@@ -6251,7 +6252,7 @@ ShallowWrapper {
                                 },
                               ]
                             }
-                            value="1500000"
+                            value={21000}
                           />
                         </View>
                       </View>
@@ -6673,7 +6674,7 @@ ShallowWrapper {
                                   },
                                 ]
                               }
-                              value="1500000"
+                              value={21000}
                             />
                           </View>
                         </View>,
@@ -7462,7 +7463,7 @@ ShallowWrapper {
                                   },
                                 ]
                               }
-                              value="1500000"
+                              value={21000}
                             />
                           </View>,
                           "style": Object {
@@ -7523,7 +7524,7 @@ ShallowWrapper {
                                     },
                                   ]
                                 }
-                                value="1500000"
+                                value={21000}
                               />,
                             ],
                             "style": Object {
@@ -7599,7 +7600,7 @@ ShallowWrapper {
                                     "lineHeight": 22,
                                   },
                                 ],
-                                "value": "1500000",
+                                "value": 21000,
                               },
                               "ref": null,
                               "rendered": null,
