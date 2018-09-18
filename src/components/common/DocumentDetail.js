@@ -28,7 +28,7 @@ type Props = {
   /**
    * @desc Value of the Document List Item.
    */
-  value?: string,
+  documentListValue?: string,
   /**
    * @desc Flag to show/hide disclosure indicator.
    */
@@ -39,7 +39,7 @@ const DocumentDetail = ({
   name,
   id,
   onPress,
-  value,
+  documentListValue,
   disclosureIconVisible,
 }: Props) => {
   const styles = MediaQueryStyleSheet.create({
@@ -53,7 +53,7 @@ const DocumentDetail = ({
       onPress={onPress}
       AdditionalView={() => (
         <Text style={[styles.listItemTextState]}>
-          {value}
+          {documentListValue}
         </Text>
       )}
       disclosureIconVisible={disclosureIconVisible}

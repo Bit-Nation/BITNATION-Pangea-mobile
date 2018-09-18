@@ -59,10 +59,6 @@ type Props<IDType> = {
    * @desc Icon base64 image to be displayed on the left
    */
   iconSource?: Image.propTypes.source,
-  /**
-   * @desc Value of the Document List Item.
-   */
-  value?: string,
 };
 
 /**
@@ -75,7 +71,6 @@ const ListItem = <IDType>({
   textStyle,
   onPress,
   text,
-  value,
   AdditionalView,
   AdditionalLeftView,
   disclosureIconVisible,
@@ -129,7 +124,6 @@ const ListItem = <IDType>({
             style={styles.sectionListDisclosure}
           />
         )}
-        {value && <Text>{value}</Text>}
       </TouchableOpacity>
     </View>
   );
