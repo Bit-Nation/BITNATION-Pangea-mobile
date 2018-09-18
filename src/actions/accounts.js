@@ -7,6 +7,7 @@ import type { Mnemonic } from '../types/Mnemonic';
 export type AccountsListUpdatedAction = { +type: 'ACCOUNTS_LIST_UPDATED', accounts: Array<Account> };
 export type CurrentAccountIdChangedAction = { +type: 'CURRENT_ACCOUNT_ID_CHANGED', currentAccountId: string | null };
 export type LoginAction = { +type: 'LOGIN', accountId: string, password: string, deferred: boolean };
+export type ValidateMnemonicWithAccountAction = { +type: 'VALIDATE_MNEMONIC_WITH_ACCOUNT', +accountId: string, +callback: (success: boolean) => void };
 export type PerformDeferredLoginAction = { +type: 'PERFORM_DEFERRED_LOGIN' };
 export type LoginTaskUpdatedAction = { +type: 'LOGIN_TASK_UPDATED', loginTask: AsyncTask<void> };
 export type LogoutAction = { +type: 'LOGOUT' };
@@ -40,6 +41,7 @@ export type Action =
 export const ACCOUNTS_LIST_UPDATED = 'ACCOUNTS_LIST_UPDATED';
 export const CURRENT_ACCOUNT_ID_CHANGED = 'CURRENT_ACCOUNT_ID_CHANGED';
 export const LOGIN = 'LOGIN';
+export const VALIDATE_MNEMONIC_WITH_ACCOUNT = 'VALIDATE_MNEMONIC_WITH_ACCOUNT';
 export const LOGIN_TASK_UPDATED = 'LOGIN_TASK_UPDATED';
 export const LOGOUT = 'LOGOUT';
 export const START_ACCOUNT_CREATION = 'START_ACCOUNT_CREATION';
@@ -92,6 +94,20 @@ export function login(accountId: string, password: string, deferred: boolean = f
     accountId,
     password,
     deferred,
+  };
+}
+
+/**
+ * @desc Action creator for an action that is called to perform a validate account with mnemonic.
+ * @param {string} accountId Id of account to login to.
+ * @param {function} callback Callback that is called with true if check is successful and false otherwise.
+ * @return {ValidateMnemonicWithAccountAction} An action.
+ */
+export function validateMnemonicWithAccount(accountId: string, callback: (boolean) => void): ValidateMnemonicWithAccountAction {
+  return {
+    type: VALIDATE_MNEMONIC_WITH_ACCOUNT,
+    accountId,
+    callback,
   };
 }
 

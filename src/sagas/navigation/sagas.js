@@ -1,6 +1,5 @@
 // @flow
 /* eslint-disable no-use-before-define */
-import * as React from 'react';
 import { call } from 'redux-saga/effects';
 import { Navigation } from 'react-native-navigation';
 
@@ -74,20 +73,3 @@ export function launchLoggedOutFlow(hasAccounts: boolean) {
   });
 }
 
-/**
- * @desc Launch DApp modal screen.
- * @param {string} dAppPublicKey Identity public key of DApp.
- * @param {React.Component} rootComponent Component to be placed as root to modal.
- * @param {Object} context Context to by passed.
- * @return {void}
- */
-export function launchDAppModal(dAppPublicKey: string, rootComponent: React.Component<any>, context: Object) {
-  Navigation.showModal({
-    ...screen('DAPP_MODAL_SCREEN'),
-    passProps: {
-      ...context,
-      dAppPublicKey,
-      component: rootComponent,
-    },
-  });
-}

@@ -10,7 +10,7 @@ import _ from 'lodash';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import styles from './styles';
 import ChatListItem from '../../../components/common/ChatListItem';
-import NationListHeader from '../../../components/common/NationListHeader';
+import NationListHeader from '../../../components/common/ItemsListHeader';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import i18n from '../../../global/i18n';
 import AssetsImages from '../../../global/AssetsImages';
@@ -68,25 +68,26 @@ const ChatNationsListScreen = ({
           const nation = item.item;
           if (nation.isBot === true) {
             return (<ChatListItem
-              text={nation.name}
-              participants=''
-              itemIcon={AssetsImages.ChatUI.botIcon}
+              name={nation.name}
+              avatar={AssetsImages.ChatUI.botIcon}
               onPress={id => onSelectItem(id, true)}
               id={nation.id}
+              unreadMessages={false}
             />);
           }
             return (<ChatListItem
-              text={nation.nationName}
-              participants=''
-              itemIcon={0}
+              name={nation.nationName}
+              avatar={AssetsImages.avatarIcon}
               onPress={id => onSelectItem(id, false)}
               id={nation.id}
+              unreadMessages={false}
             />);
         }}
         keyExtractor={item => item.id}
         renderSectionHeader={({ section }) => <NationListHeader title={section.title} />}
         sections={sections}
         style={styles.sectionList}
+        ItemSeparatorComponent={() => (<View style={styles.itemSeparator} />)}
       />
     </View>
   );

@@ -1,22 +1,24 @@
-import { all, call, takeEvery } from 'redux-saga/effects';
+import { all, takeEvery } from 'redux-saga/effects';
 
 import {
-  SAVE_PROFILE,
-  SAVE_PRE_KEY_BUNDLE,
+  GET_PROFILE,
   NEW_CHAT_SESSION,
   OPEN_CHAT_SESSION,
-  FETCH_MESSAGES,
   SEND_MESSAGE,
+  FETCH_ALL_CHATS,
+  LOAD_CHAT_MESSAGES,
+  PANTHALASSA_MESSAGE_PERSISTED,
+  CHANGE_UNREAD_STATUS,
 } from '../../actions/chat';
 import {
-  startDatabaseListening,
-  saveProfileSaga,
-  savePreKeyBundle,
+  getProfileActionHandler,
   createChatSession,
   openChatSession,
-  listenMessages,
-  fetchMessages,
+  fetchAllChats,
   sendMessage,
+  loadMessages,
+  handlePanthalassaMessagePersisted,
+  changeUnreadStatus,
 } from './sagas';
 
 /**
@@ -25,13 +27,13 @@ import {
  */
 export default function* rootSaga() {
   yield all([
-    call(startDatabaseListening),
-    call(listenMessages),
-    takeEvery(SAVE_PROFILE, saveProfileSaga),
-    takeEvery(SAVE_PRE_KEY_BUNDLE, savePreKeyBundle),
+    takeEvery(FETCH_ALL_CHATS, fetchAllChats),
+    takeEvery(GET_PROFILE, getProfileActionHandler),
     takeEvery(NEW_CHAT_SESSION, createChatSession),
     takeEvery(OPEN_CHAT_SESSION, openChatSession),
-    takeEvery(FETCH_MESSAGES, fetchMessages),
     takeEvery(SEND_MESSAGE, sendMessage),
+    takeEvery(LOAD_CHAT_MESSAGES, loadMessages),
+    takeEvery(PANTHALASSA_MESSAGE_PERSISTED, handlePanthalassaMessagePersisted),
+    takeEvery(CHANGE_UNREAD_STATUS, changeUnreadStatus),
   ]);
 }

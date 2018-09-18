@@ -262,8 +262,10 @@ ShallowWrapper {
                 />
               </View>
             </View>
-            <Styled(ActionSheetContainer)
-              virtual={undefined}
+            <PhotoActionSheet
+              circleCropping={true}
+              onImageChosen={[Function]}
+              title="Edit your profile picture."
             />
           </View>
         </PanelView>
@@ -467,8 +469,10 @@ ShallowWrapper {
                   />
                 </View>
               </View>
-              <Styled(ActionSheetContainer)
-                virtual={undefined}
+              <PhotoActionSheet
+                circleCropping={true}
+                onImageChosen={[Function]}
+                title="Edit your profile picture."
               />
             </View>
           </PanelView>,
@@ -788,8 +792,10 @@ ShallowWrapper {
                   />
                 </View>
               </View>
-              <Styled(ActionSheetContainer)
-                virtual={undefined}
+              <PhotoActionSheet
+                circleCropping={true}
+                onImageChosen={[Function]}
+                title="Edit your profile picture."
               />
             </View>,
             "childrenContainerStyle": Object {},
@@ -912,8 +918,10 @@ ShallowWrapper {
                     />
                   </View>
                 </View>,
-                <Styled(ActionSheetContainer)
-                  virtual={undefined}
+                <PhotoActionSheet
+                  circleCropping={true}
+                  onImageChosen={[Function]}
+                  title="Edit your profile picture."
                 />,
               ],
               "style": Object {
@@ -1169,7 +1177,9 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "class",
                 "props": Object {
-                  "virtual": undefined,
+                  "circleCropping": true,
+                  "onImageChosen": [Function],
+                  "title": "Edit your profile picture.",
                 },
                 "ref": [Function],
                 "rendered": null,
@@ -1387,8 +1397,10 @@ ShallowWrapper {
                   />
                 </View>
               </View>
-              <Styled(ActionSheetContainer)
-                virtual={undefined}
+              <PhotoActionSheet
+                circleCropping={true}
+                onImageChosen={[Function]}
+                title="Edit your profile picture."
               />
             </View>
           </PanelView>
@@ -1592,8 +1604,10 @@ ShallowWrapper {
                     />
                   </View>
                 </View>
-                <Styled(ActionSheetContainer)
-                  virtual={undefined}
+                <PhotoActionSheet
+                  circleCropping={true}
+                  onImageChosen={[Function]}
+                  title="Edit your profile picture."
                 />
               </View>
             </PanelView>,
@@ -1913,8 +1927,10 @@ ShallowWrapper {
                     />
                   </View>
                 </View>
-                <Styled(ActionSheetContainer)
-                  virtual={undefined}
+                <PhotoActionSheet
+                  circleCropping={true}
+                  onImageChosen={[Function]}
+                  title="Edit your profile picture."
                 />
               </View>,
               "childrenContainerStyle": Object {},
@@ -2037,8 +2053,10 @@ ShallowWrapper {
                       />
                     </View>
                   </View>,
-                  <Styled(ActionSheetContainer)
-                    virtual={undefined}
+                  <PhotoActionSheet
+                    circleCropping={true}
+                    onImageChosen={[Function]}
+                    title="Edit your profile picture."
                   />,
                 ],
                 "style": Object {
@@ -2294,7 +2312,9 @@ ShallowWrapper {
                   "key": undefined,
                   "nodeType": "class",
                   "props": Object {
-                    "virtual": undefined,
+                    "circleCropping": true,
+                    "onImageChosen": [Function],
+                    "title": "Edit your profile picture.",
                   },
                   "ref": [Function],
                   "rendered": null,

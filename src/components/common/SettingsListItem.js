@@ -1,39 +1,36 @@
 // @flow
 
 import React from 'react';
-import { View, Text, TouchableOpacity, Image, Switch } from 'react-native';
+import { View, Switch } from 'react-native';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
-
 import GlobalStyles from '../../global/Styles';
-import AssetsImages from '../../global/AssetsImages';
 import Colors from '../../global/colors';
+import ListItem from './ListItem';
 
-export type AdditionalViewKind =
-  {
-    type: 'disclosure',
-  } |
-  {
-    type: 'switch',
-    value: boolean,
-    onValueChange: (boolean) => void,
-  };
+export type AdditionalViewKind = {
+  type: 'switch',
+  value: boolean,
+  onValueChange: boolean => void,
+} | {
+  type: 'none',
+};
 
 type Props = {
   /**
    * @desc Id that will be passed in onPress callback.
    * @type string
    */
-  id: any,
+  id: string,
   /**
    * @desc Text to display on item
    * @type string
    */
-  text?: string,
+  text: string,
   /**
    * @desc Callback on press item.
-   * @type string
+   * @param Id of item that was pressed.
    */
-  onPress: (any) => void,
+  onPress: (id: string) => void,
   /**
    * @desc Kind of additional view on the right.
    * disclosure - shows disclosure indicator on right side,
@@ -43,52 +40,49 @@ type Props = {
   /**
    * @desc Style to be applied on top of default.
    */
-  style?: any
-}
+  style?: View.propTypes.style,
+};
 
 /**
  * @desc Component that renders nations list item.
  * @return {React.Component} A component.
  */
 const SettingsListItem = ({
-  id, text, onPress, additionalViewKind, style,
+  id,
+  text,
+  onPress,
+  additionalViewKind,
+  style,
 }: Props) => {
   const styles = MediaQueryStyleSheet.create({
     ...GlobalStyles,
   });
 
   return (
-    <View style={[styles.sectionListItemContainer, style]}>
-      <TouchableOpacity
-        testID='Touchable'
-        onPress={() => onPress(id)}
-        style={styles.sectionListTouchable}
-        disabled={additionalViewKind.type === 'switch'}
-      >
-        <Text style={styles.listItemText} numberOfLines={1}>
-          {text}
-        </Text>
-        {
-          additionalViewKind.type === 'disclosure' &&
-          <Image source={AssetsImages.disclosureRowIcon} style={styles.sectionListDisclosure} />
-        }
-        {
-          additionalViewKind.type === 'switch' &&
+    <ListItem
+      id={id}
+      text={text}
+      onPress={onPress}
+      style={[styles.settingsList, style]}
+      disabled={additionalViewKind.type === 'switch'}
+      AdditionalView={() => (
+        additionalViewKind.type === 'switch' ? (
           <Switch
             style={styles.switchObject}
             onTintColor={Colors.BitnationHighlightColor}
             onValueChange={additionalViewKind.onValueChange}
             value={additionalViewKind.value}
           />
-        }
-      </TouchableOpacity>
-    </View>
+        ) : null
+      )}
+      disclosureIconVisible={additionalViewKind.type !== 'switch'}
+    />
   );
 };
 
 SettingsListItem.defaultProps = {
   onPress: () => undefined,
-  additionalViewKind: { type: 'disclosure' },
+  additionalViewKind: { type: 'none' },
   text: '',
   style: undefined,
 };

@@ -1,28 +1,29 @@
 // @flow
 
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, ActivityIndicator } from 'react-native';
 import { connect } from 'react-redux';
 import i18n from '../../global/i18n';
 import BackgroundImage from '../../components/common/BackgroundImage';
 import styles from './styles';
 import ScreenTitle from '../../components/common/ScreenTitle';
+import { startMigration } from '../../actions/migration';
 import FakeNavigationBar from '../../components/common/FakeNavigationBar';
 import NavigatorComponent from '../../components/common/NavigatorComponent';
-
-type Props = {
-  // @todo Props to be added later.
-}
+import Colors from '../../global/colors';
 
 type Actions = {
-  // @todo Action to be added later.
+  /**
+   * @desc Function to initiate migration
+   */
+  startMigration: () => void
 };
 
-type State = {
-  // @todo State to be added later.
-}
+class MigrationScreen extends NavigatorComponent<Actions> {
+  componentWillMount() {
+    this.props.startMigration();
+  }
 
-class MigrationScreen extends NavigatorComponent<Props & Actions, State> {
   render() {
     return (
       <View style={styles.migrationContainer}>
@@ -30,6 +31,7 @@ class MigrationScreen extends NavigatorComponent<Props & Actions, State> {
         <FakeNavigationBar />
         <ScreenTitle title={i18n.t('screens.migration.title')} />
         <View style={styles.bodyContainer}>
+          <ActivityIndicator size='small' color={Colors.textPrimary} />
           <Text style={[styles.subhead, styles.migrationText]}>{i18n.t('screens.migration.migrateData')}</Text>
         </View>
       </View>
@@ -41,8 +43,8 @@ const mapStateToProps = state => ({
   ...state.migration,
 });
 
-const mapDispatchToProps = () => ({
-  // @todo Dispatch Actions to be added later.
+const mapDispatchToProps = dispatch => ({
+  startMigration: () => dispatch(startMigration()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MigrationScreen);

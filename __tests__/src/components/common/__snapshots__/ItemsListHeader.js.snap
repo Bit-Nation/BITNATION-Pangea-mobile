@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ItemsListHeader renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#3a3a3a",
+      "flexDirection": "row",
+      "height": 30,
+      "justifyContent": "center",
+      "marginLeft": 16,
+    }
+  }
+>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "color": "white",
+        "flex": 1,
+        "fontFamily": "Roboto",
+        "fontSize": 17,
+        "fontWeight": "normal",
+        "letterSpacing": 0,
+        "lineHeight": 22,
+        "marginLeft": 16,
+      }
+    }
+  >
+    Test header title
+  </Text>
+</View>
+`;
