@@ -15,12 +15,14 @@ import {
   uploadDocument,
 } from '../../../actions/documents';
 import type { State as DocumentsState } from '../../../reducers/documents';
+import type { Account } from '../../../types/Account';
 import Button from '../../../components/common/Button';
 import Colors from '../../../global/colors';
 import AssetsImages from '../../../global/AssetsImages';
 import { imageSource } from '../../../utils/profile';
 import { getOpenedDocument } from '../../../reducers/documents';
 import DocumentListItem from '../../../components/common/DocumentListItem';
+import { getCurrentAccount } from '../../../reducers/accounts';
 import MoreMenuModal from '../../../components/common/MoreMenuModal';
 import { contentStorage } from '../../../services/documents';
 
@@ -29,6 +31,10 @@ type Props = {
    * @desc React Native Navigation navigator object.
    */
   navigator: Navigator,
+  /**
+   * @desc Current user object.
+   */
+  user: Account | null,
 };
 
 type Actions = {
@@ -193,6 +199,14 @@ class DocumentsViewScreen extends NavigatorComponent<
     this.setState({ visibleTxModal: false });
   }
 
+  etherScanURL(hash) {
+    const { user } = this.props;
+    if (user && user.networkType === 'main') {
+      return `https://etherscan.io/address/${hash}`;
+    }
+    return `https://rinkeby.etherscan.io/address/${hash}`;
+  }
+
   render() {
     const document = getOpenedDocument(this.props);
     if (document == null) return <View />;
@@ -290,9 +304,7 @@ class DocumentsViewScreen extends NavigatorComponent<
           {this.state.txhash &&
             <WebView
               source={{
-                      uri: `https://etherscan.io/address/${
-                        this.state.txHash
-                      }`,
+                      uri: this.etherScanURL(this.state.txHash),
                     }}
             />
             }
@@ -305,6 +317,7 @@ class DocumentsViewScreen extends NavigatorComponent<
 const mapStateToProps = state => ({
   ...state.documents,
   isUploading: state.documents.isUploading,
+  user: getCurrentAccount(state.accounts),
 });
 
 const mapDispatchToProps = dispatch => ({
