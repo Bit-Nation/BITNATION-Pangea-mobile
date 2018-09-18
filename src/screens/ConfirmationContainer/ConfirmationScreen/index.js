@@ -20,6 +20,7 @@ import styles from './styles';
 import i18n from '../../../global/i18n';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import { CancelledError } from '../../../global/errors/common';
+import { DEFAULT_GAS_LIMIT } from '../../../global/Constants';
 
 type Props = {
   /**
@@ -39,12 +40,13 @@ type Props = {
   /**
    * @desc Object with the properties of the transaction
    */
-  to: String,
-  from: String,
-  amount: String,
-  estimate: String,
-  purpose: String,
-  app: String,
+  to: string,
+  from: string,
+  amount: string,
+  estimate: string,
+  purpose: string,
+  app: string,
+  gasLimit: string,
 }
 
 type State = {
@@ -63,7 +65,7 @@ class ConfirmationScreen extends NavigatorComponent<Props, State> {
     super(props);
     this.state = {
       gasPrice: 2,
-      gasLimit: '1500000',
+      gasLimit: this.props.gasLimit === null ? DEFAULT_GAS_LIMIT : this.props.gasLimit,
     };
 
     this.props.navigator.setButtons({
@@ -102,7 +104,6 @@ class ConfirmationScreen extends NavigatorComponent<Props, State> {
       </View>
     );
   }
-
 
   buildConfirmationView() {
     const amount = ethers.utils.bigNumberify(this.props.amount);
