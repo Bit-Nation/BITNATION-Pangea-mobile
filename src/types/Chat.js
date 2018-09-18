@@ -4,18 +4,14 @@ export type ProfileType = {
   name: string,
   location: string,
   image: string,
-  identity_pub_key: string,
-  ethereum_pub_Key: string,
-  chat_id_key: string,
+  identityKey: string,
+  ethereumAddress: string,
+  ethereumPublicKey: string,
+  chatIdKey: string,
   timestamp: Date,
   version: number,
-  identity_key_signature: string,
-  ethereum_key_signature: string
-};
-
-export type SecretType = {
-  one_time_pre_key: string,
-  private_part: Object
+  identityKeySignature: string,
+  ethereumKeySignature: string
 };
 
 export type GiftedChatUserType = {
@@ -23,39 +19,26 @@ export type GiftedChatUserType = {
   name: string,
 };
 
+export type DAppMessageType = {
+  dAppPublicKey: string,
+  type: string,
+  params: Object,
+  shouldSend: boolean,
+};
+
 export type GiftedChatMessageType = {
   _id: string,
   text: string,
   createdAt: Date,
   user: GiftedChatUserType,
-};
-
-export type DAppMessageType = {
-  dapp_id: string,
-  type: string,
-  group_id: string,
-  params: string,
-  should_send: boolean,
-  should_render: boolean,
-};
-
-export type MessageType = {
-  type: string,
-  timestamp: Date,
-  used_secret: string,
-  additional_data: string,
-  doubleratchet_message: string,
-  signature: string,
-  id_public_key: string,
-  receiver: string,
+  dAppMessage: DAppMessageType | null,
 };
 
 export type ChatSessionType = {
-  secret: string,
   publicKey: string,
-  username: string,
+  profile: ProfileType,
   accountId: string,
-  messages: Array<MessageType>,
-  decryptedMessages: Array<GiftedChatMessageType>
+  messages: Array<GiftedChatMessageType>,
+  unreadMessages: boolean,
 };
 

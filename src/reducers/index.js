@@ -10,8 +10,9 @@ import activity, { type State as ActivityState } from './activity';
 import testingMode, { type State as TestingModeState } from './testingMode';
 import chat, { type State as ChatState } from './chat';
 import settings, { type State as SettingsState } from './settings';
-import nativeDApps, { type State as NativeDAppsState } from './nativeDApps';
-import migration, { type State as MigrationState } from './migration';
+import dApps, { type State as DAppsState } from './dApps';
+import documents, { type State as DocumentsState } from './documents';
+import contacts, { type State as ContactsState } from './contacts';
 
 export type State = {
   accounts: AccountsState,
@@ -23,8 +24,9 @@ export type State = {
   testingMode: TestingModeState,
   chat: ChatState,
   settings: SettingsState,
-  dApps: NativeDAppsState,
-  migration: MigrationState
+  dApps: DAppsState,
+  documents: DocumentsState,
+  contacts: ContactsState,
 }
 
 export const subReducers = {
@@ -37,8 +39,9 @@ export const subReducers = {
   testingMode,
   chat,
   settings,
-  dApps: nativeDApps,
-  migration,
+  dApps,
+  documents,
+  contacts,
 };
 
 export default combineReducers(subReducers);
