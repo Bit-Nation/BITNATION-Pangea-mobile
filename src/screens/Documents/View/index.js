@@ -21,7 +21,7 @@ import Colors from '../../../global/colors';
 import AssetsImages from '../../../global/AssetsImages';
 import { imageSource } from '../../../utils/profile';
 import { getOpenedDocument } from '../../../reducers/documents';
-import DocumentListItem from '../../../components/common/DocumentListItem';
+import DocumentDetail from '../../../components/common/DocumentDetail';
 import { getCurrentAccount } from '../../../reducers/accounts';
 import MoreMenuModal from '../../../components/common/MoreMenuModal';
 import { contentStorage } from '../../../services/documents';
@@ -243,7 +243,7 @@ class DocumentsViewScreen extends NavigatorComponent<
           <ScrollView>
             <Text style={styles.headline}>{document.name}</Text>
             <Text style={styles.footnote}>{document.description}</Text>
-            {!isUploading && (
+            {isUploading === false && (
               <Button
                 enabled
                 style={styles.actionButton}
@@ -255,7 +255,7 @@ class DocumentsViewScreen extends NavigatorComponent<
               />
             )}
             {isUploading === true && document.status === true && (
-              <DocumentListItem
+              <DocumentDetail
                 id={1}
                 name={i18n.t('screens.documentView.status')}
                 value={document.status}
@@ -267,7 +267,7 @@ class DocumentsViewScreen extends NavigatorComponent<
               document.doc_hash === true &&
               document.signature === true &&
               documentDetail.map((index, id) => (
-                <DocumentListItem
+                <DocumentDetail
                   id={id}
                   name={index.name}
                   value={index.value}
