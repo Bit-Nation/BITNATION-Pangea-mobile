@@ -258,7 +258,7 @@ class DocumentsViewScreen extends NavigatorComponent<
               <DocumentDetail
                 id={1}
                 name={i18n.t('screens.documentView.status')}
-                value={document.status}
+                documentListValue={document.status}
                 disclosureIconVisible={false}
                 onPress={() => console.log('hello')}
               />
@@ -270,7 +270,7 @@ class DocumentsViewScreen extends NavigatorComponent<
                 <DocumentDetail
                   id={id}
                   name={index.name}
-                  value={index.value}
+                  documentListValue={index.value}
                   disclosureIconVisible={false}
                   onPress={() => this.displayDocumentValues(index)}
                 />
