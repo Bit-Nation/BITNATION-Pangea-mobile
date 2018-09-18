@@ -241,7 +241,7 @@ class DocumentsViewScreen extends NavigatorComponent<
                 styleTitle={styles.settingsText}
               />
             )}
-            {isUploading && document.status && (
+            {isUploading === true && document.status === true && (
               <DocumentListItem
                 id={1}
                 name={i18n.t('screens.documentView.status')}
@@ -250,9 +250,9 @@ class DocumentsViewScreen extends NavigatorComponent<
                 onPress={() => console.log('hello')}
               />
             )}
-            {document.tx_hash &&
-              document.doc_hash &&
-              document.signature &&
+            {document.tx_hash === true &&
+              document.doc_hash === true &&
+              document.signature === true &&
               documentDetail.map((index, id) => (
                 <DocumentListItem
                   id={id}
