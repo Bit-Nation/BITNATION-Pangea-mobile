@@ -1,7 +1,7 @@
 // @flow
 
 /**
- * @desc Component that renders chat list item.
+ * @desc Component that renders document list item.
  * @type React.Component
  */
 
@@ -33,27 +33,17 @@ type Props = {
    * @param Id of item that was pressed.
    */
   onPress: (id: number) => void,
-  /**
-   * @desc Value of the Document List Item.
-   */
-  value?: string,
-  /**
-   * @desc Flag to show/hide disclosure indicator.
-   */
-  disclosureIconVisible?: boolean,
 }
 
 const DocumentListItem = ({
-  name, id, onPress, preview, description, value, disclosureIconVisible,
+  name, id, onPress, preview, description,
 }: Props) => (
   <ListItem
     id={id}
     text={name}
-    value={value}
     textStyle={GlobalStyles.detailedItemTitle}
     onPress={onPress}
     iconSource={preview}
-    disclosureIconVisible={disclosureIconVisible}
     style={GlobalStyles.detailedItemContainer}
     subtitle={description}
   />
