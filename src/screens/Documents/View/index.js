@@ -138,7 +138,7 @@ class DocumentsViewScreen extends NavigatorComponent<
   };
 
   displayDocumentValues = (result) => {
-    if (result && result.name === i18n.t('screens.documentView.txhash') && result.value) {
+    if (result && result.name === i18n.t('screens.documentView.txHash') && result.value) {
       Alert.alert(
         'Transaction Hash', `${result.value}`,
         [
@@ -166,7 +166,7 @@ class DocumentsViewScreen extends NavigatorComponent<
           },
         ],
       );
-    } else if (result && result.name === i18n.t('screens.documentView.dochash') && result.value) {
+    } else if (result && result.name === i18n.t('screens.documentView.docHash') && result.value) {
       Alert.alert(
         'Document Hash', `${result.value}`,
         [
@@ -204,7 +204,7 @@ class DocumentsViewScreen extends NavigatorComponent<
         value: document.registered,
       },
       {
-        name: i18n.t('screens.documentView.txhash'),
+        name: i18n.t('screens.documentView.txHash'),
         value: document.tx_hash,
       },
       {
@@ -212,7 +212,7 @@ class DocumentsViewScreen extends NavigatorComponent<
         value: document.signature,
       },
       {
-        name: i18n.t('screens.documentView.dochash'),
+        name: i18n.t('screens.documentView.docHash'),
         value: document.doc_hash,
       },
     ];
@@ -235,7 +235,7 @@ class DocumentsViewScreen extends NavigatorComponent<
                 enabled
                 style={styles.actionButton}
                 title={i18n
-                  .t('screens.documentView.submitdocument')
+                  .t('screens.documentView.submitDocument')
                   .toUpperCase()}
                 onPress={this.onDocumentSubmit}
                 styleTitle={styles.settingsText}
