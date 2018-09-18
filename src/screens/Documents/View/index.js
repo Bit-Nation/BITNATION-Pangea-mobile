@@ -4,7 +4,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { View, Image, Text, ScrollView, Clipboard, TouchableHighlight, WebView, Alert } from 'react-native';
 import Modal from 'react-native-modal';
-import { Icon } from 'native-base';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import { screen } from '../../../global/Screens';
@@ -285,7 +284,7 @@ class DocumentsViewScreen extends NavigatorComponent<
                 this.txModalClose();
               }}
             >
-              <Icon name='ios-close' style={styles.closeIcon} />
+              <Image source={AssetsImages.closeIcon} />
             </TouchableHighlight>
           </View>
           {this.state.txhash &&
