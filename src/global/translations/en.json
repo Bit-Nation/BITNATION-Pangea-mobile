@@ -588,15 +588,15 @@
       "actionSheetTitle": "Select document to store"
     },
     "documentView": {
-      "submitdocument": "Submit Document",
+      "submitDocument": "Submit Document",
       "actions": {
         "edit": "Edit metadata",
         "delete": "Delete document"
       },
       "registered": "Registered",
-      "txhash": "Tx Hash",
+      "txHash": "Tx Hash",
       "signature": "Signature",
-      "dochash": "Document Hash",
+      "docHash": "Document Hash",
       "status": "Status"
     },
     "documentModify": {
