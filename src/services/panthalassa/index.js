@@ -360,3 +360,14 @@ export async function panthalassaCreateGroupChat(users: string): Promise<number>
     users,
   });
 }
+
+/**
+ * @desc Creates a private Chat session
+ * @param {string} partnerStr Partner for the Chat
+ * @returns {Promise<*>} Number response with Chat Id
+ */
+export async function panthalassaCreatePrivateChat(partnerStr: string): Promise<number> {
+  return Panthalassa.PanthalassaCreatePrivateChat({
+    partnerStr,
+  });
+}
