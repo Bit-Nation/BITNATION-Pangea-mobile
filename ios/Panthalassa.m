@@ -688,6 +688,28 @@ RCT_REMAP_METHOD(PanthalassaCreateGroupChat,
   }];
 }
 
+RCT_REMAP_METHOD(PanthalassaCreatePrivateChat,
+                 PanthalassaCreatePrivateChatWithResolver:(NSDictionary *)config
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject) {
+  [self onNewQueue:^void() {
+    BOOL response;
+    
+    NSError *error = nil;
+    long ret;
+    response = PanthalassaCreatePrivateChat([RCTConvert NSString:config[@"partnerStr"]],
+                                          &ret,
+                                          &error);
+    NSNumber *val = [NSNumber numberWithLong:ret];
+    
+    if (error == nil && response) {
+      resolve(val);
+    } else {
+      reject(@"error", error.localizedDescription, error);
+    }
+  }];
+}
+
 // TEST FOR SEND  - https://facebook.github.io/react-native/docs/native-modules-ios.html#sending-events-to-javascript
 - (NSArray<NSString *> *)supportedEvents
 {
