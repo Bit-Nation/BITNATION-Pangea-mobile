@@ -5,6 +5,7 @@ import { Navigation } from 'react-native-navigation';
 import WebSocketProvider from './WebSocketProvider';
 import { screen } from '../../global/Screens';
 import { CancelledError } from '../../global/errors/common';
+import { normalizeHexValue } from '../../utils/key';
 
 /**
  * @desc Custom signer for ethereum RPC
@@ -103,11 +104,7 @@ export default function CustomSigner(privateKey: string, provider: string, app: 
       toPromise = Promise.resolve(undefined);
     }
 
-    let dataString = transaction.data || '0x';
-    if (dataString.startsWith('0x') === false) {
-      dataString = `0x${dataString}`;
-    }
-    const data = ethers.utils.hexlify(dataString);
+    const data = ethers.utils.hexlify(normalizeHexValue(transaction.data || ''));
     const value = ethers.utils.hexlify(transaction.value || 0);
 
     return Promise.all([gasPricePromise, noncePromise, toPromise]).then(async (results) => {
