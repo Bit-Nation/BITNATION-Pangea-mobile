@@ -271,14 +271,14 @@ export async function panthalassaIdentityPublicKey(): Promise<string> {
 
 /**
  * @desc TODO
- * @param {string} partner TODO
+ * @param {number} chatID TODO
  * @param {string} startStr TODO
  * @param {number} amount TODO
  * @returns {Promise<*>} {string} TODO
  */
-export async function panthalassaMessages(partner: string, startStr: string, amount: number): Promise<string> {
+export async function panthalassaMessages(chatID: number, startStr: string, amount: number): Promise<string> {
   return Panthalassa.PanthalassaMessages({
-    partner,
+    chatID,
     startStr,
     amount,
   });
@@ -286,13 +286,13 @@ export async function panthalassaMessages(partner: string, startStr: string, amo
 
 /**
  * @desc Sends a message to ? TODO
- * @param {string} partner Receiver of the message
+ * @param {number} chatID Receiver of the message
  * @param {string} message Message to send
  * @returns {Promise<*>} Boolean response about operation's result
  */
-export async function panthalassaSendMessage(partner: string, message: string): Promise<boolean> {
+export async function panthalassaSendMessage(chatID: number, message: string): Promise<boolean> {
   return Panthalassa.PanthalassaSendMessage({
-    partner,
+    chatID,
     message,
   });
 }
@@ -317,11 +317,11 @@ export async function panthalassaStopDApp(dAppSingingKeyStr: string): Promise<bo
 
 /**
  * @desc Marks all messages in conversation as readed
- * @param {string} partner Sender of the messages
+ * @param {number} chatID Sender of the messages
  * @returns {Promise<*>} Boolean response about operation's result
  */
-export async function panthalassaMarkMessagesAsRead(partner: string): Promise<boolean> {
-  return Panthalassa.PanthalassaMarkMessagesAsRead({ partner });
+export async function panthalassaMarkMessagesAsRead(chatID: number): Promise<boolean> {
+  return Panthalassa.PanthalassaMarkMessagesAsRead({ chatID });
 }
 
 /**
@@ -334,5 +334,31 @@ export async function panthalassaCall(command: string, payload: Object = {}): Pr
   return Panthalassa.PanthalassaCall({
     command,
     payload: JSON.stringify(payload),
+  });
+}
+
+/**
+ * @desc Add users to a Multiuser Chat
+ * @param {string} users Users for the Chat
+ * @param {number} chatID Id for the Chat
+ * @returns {Promise<*>} Boolean response about operation's result
+ */
+export async function panthalassaAddUsersToGroupChat(users: string, chatID: number): Promise<boolean> {
+  return Panthalassa.PanthalassaAddUsersToGroupChat({
+    users,
+    chatID,
+  });
+}
+
+/**
+ * @desc Creates a Multiuser Chat group
+ * @param {string} users Users for the Chat
+ * @param {number} ret0 Id for the Chat
+ * @returns {Promise<*>} Boolean response about operation's result
+ */
+export async function panthalassaCreateGroupChat(users: string, ret0: number): Promise<boolean> {
+  return Panthalassa.PanthalassaCreateGroupChat({
+    users,
+    ret0,
   });
 }
