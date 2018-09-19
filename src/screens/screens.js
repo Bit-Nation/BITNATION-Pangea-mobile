@@ -28,7 +28,6 @@ import ProfileScreen from './Settings/ProfileScreen';
 import NationDetailsScreen from './NationDetailsContainer';
 import NationCreateScreen from './NationCreateContainer';
 import ChatNationsScreen from './ChatNationsScreen';
-import NewChatScreen from './NewChatScreen';
 import SettingsScreen from './Settings/SettingsList';
 import SecuritySettingsScreen from './Settings/Security';
 import AccountsAccess from './Accounts/AccountAccessContainer';
@@ -77,7 +76,6 @@ export default function registerScreens(store: Object, Provider: Object) {
   Navigation.registerComponent(screen('QR_CODE_DAPP_SCREEN').screen, () => QRCodeDappScreen, store, Provider);
   Navigation.registerComponent(screen('NATION_CREATE_SCREEN').screen, () => NationCreateScreen, store, Provider);
   Navigation.registerComponent(screen('CHAT_NATIONS_SCREEN').screen, () => ChatNationsScreen, store, Provider);
-  Navigation.registerComponent(screen('NEW_CHAT_SCREEN').screen, () => NewChatScreen, store, Provider);
   Navigation.registerComponent(screen('SETTINGS_SCREEN').screen, () => SettingsScreen, store, Provider);
   Navigation.registerComponent(screen('SECURITY_SETTINGS_SCREEN').screen, () => SecuritySettingsScreen, store, Provider);
   Navigation.registerComponent(screen('ACCOUNTS_ACCESS_SCREEN').screen, () => AccountsAccess, store, Provider);
