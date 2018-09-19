@@ -65,14 +65,18 @@ export default function CustomSigner(privateKey: string, provider: string, app: 
     }
   };
   this.sendTransaction = (transaction) => {
-    if (!this.provider) { throw new Error('missing provider'); }
+    if (!this.provider) {
+      throw new Error('missing provider');
+    }
 
     if (!transaction || typeof (transaction) !== 'object') {
       throw new Error('invalid transaction object');
     }
 
     let { gasLimit } = transaction;
-    if (gasLimit == null) { gasLimit = this.defaultGasLimit; }
+    if (gasLimit == null) {
+      gasLimit = this.defaultGasLimit;
+    }
 
     const self = this;
 
@@ -99,7 +103,11 @@ export default function CustomSigner(privateKey: string, provider: string, app: 
       toPromise = Promise.resolve(undefined);
     }
 
-    const data = ethers.utils.hexlify(transaction.data || '0x');
+    let dataString = transaction.data || '0x';
+    if (dataString.startsWith('0x') === false) {
+      dataString = `0x${dataString}`;
+    }
+    const data = ethers.utils.hexlify(dataString);
     const value = ethers.utils.hexlify(transaction.value || 0);
 
     return Promise.all([gasPricePromise, noncePromise, toPromise]).then(async (results) => {
