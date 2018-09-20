@@ -41,6 +41,7 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
+      "cancelLogin": [Function],
       "checkPassword": [Function],
       "checkPinCode": [Function],
       "isLoggedIn": true,
@@ -99,6 +100,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
+        "cancelLogin": [Function],
         "checkPassword": [Function],
         "checkPinCode": [Function],
         "isLoggedIn": true,
