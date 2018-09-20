@@ -202,10 +202,10 @@ class ChatScreen extends Component<Props, *> {
     ];
 
     const session = getSelectedSession(this.props.sessions, this.props.recipientPublicKey);
-    if (session == null) {
-      return <View />;
-    }
-    let messages: Array<GiftedChatMessageType> = session.messages;
+    // if (session == null) {
+    //   return <View />;
+    // }
+    let messages: Array<GiftedChatMessageType> = session != null ? session.messages : [];
     messages = messages
       .map((message) => {
         if (message.dAppMessage == null) return message;

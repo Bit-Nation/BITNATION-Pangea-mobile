@@ -146,8 +146,8 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
   };
 
   goToContactsPicker = () => {
-    this.props.navigator.showModal({
-      ...screen('CONTACTS_PICKER_SCREEN'),
+    this.props.navigator.push({
+      ...screen('PRIVATE_CHAT_SCREEN'),
     });
   };
 
