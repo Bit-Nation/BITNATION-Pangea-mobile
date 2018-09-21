@@ -209,8 +209,8 @@ class DocumentsViewScreen extends NavigatorComponent<
 
   render() {
     const document = getOpenedDocument(this.props);
+    const { openedDocumentId } = this.props;
     if (document == null) return <View />;
-    const { isUploading } = this.props;
     const documentDetail = [
       {
         name: i18n.t('screens.documentView.registered'),
@@ -218,7 +218,7 @@ class DocumentsViewScreen extends NavigatorComponent<
       },
       {
         name: i18n.t('screens.documentView.txHash'),
-        value: document.tx_hash,
+        value: document.txHash,
       },
       {
         name: i18n.t('screens.documentView.signature'),
@@ -226,7 +226,7 @@ class DocumentsViewScreen extends NavigatorComponent<
       },
       {
         name: i18n.t('screens.documentView.docHash'),
-        value: document.doc_hash,
+        value: document.docHash,
       },
     ];
 
@@ -243,7 +243,7 @@ class DocumentsViewScreen extends NavigatorComponent<
           <ScrollView>
             <Text style={styles.headline}>{document.name}</Text>
             <Text style={styles.footnote}>{document.description}</Text>
-            {isUploading === false && (
+            {document.txHash === false && (
               <Button
                 enabled
                 style={styles.actionButton}
@@ -254,18 +254,19 @@ class DocumentsViewScreen extends NavigatorComponent<
                 styleTitle={styles.settingsText}
               />
             )}
-            {isUploading === true && document.status === true && (
+            {document.txHash === true && (
               <DocumentDetail
                 id={1}
                 name={i18n.t('screens.documentView.status')}
-                documentListValue={document.status}
+                documentListValue={document.tx_hash === '' ? 'Pending' : 'Submitted'}
                 disclosureIconVisible={false}
                 onPress={() => console.log('hello')}
               />
             )}
-            {document.tx_hash === true &&
-              document.doc_hash === true &&
+            {document.txHash === true &&
+              document.docHash === true &&
               document.signature === true &&
+              openedDocumentId === document.id &&
               documentDetail.map((index, id) => (
                 <DocumentDetail
                   id={id}
@@ -316,7 +317,6 @@ class DocumentsViewScreen extends NavigatorComponent<
 
 const mapStateToProps = state => ({
   ...state.documents,
-  isUploading: state.documents.isUploading,
   user: getCurrentAccount(state.accounts),
 });
 
