@@ -3,7 +3,7 @@
 import Config from 'react-native-config';
 import type { Mnemonic } from '../../types/Mnemonic';
 import { compressMnemonic, decompressMnemonic } from '../../utils/key';
-import type { Profile } from '../../types/Account';
+import type { NetworkType, Profile } from '../../types/Account';
 import { InvalidPasswordError } from '../../global/errors/accounts';
 import ChatService from '../chat';
 import {
@@ -26,12 +26,12 @@ export default class AccountsService {
     return decompressMnemonic(mnemonicString);
   }
 
-  static async checkPasscode(accountStore: string, profile: Profile, password: string): Promise<boolean> {
+  static async checkPasscode(accountStore: string, profile: Profile, password: string, networkType: NetworkType): Promise<boolean> {
     // @todo Change implementation so it do not restart Panthalassa.
-    return AccountsService.login(accountStore, profile, password);
+    return AccountsService.login(accountStore, profile, password, networkType);
   }
 
-  static async login(accountStore: string, profile: Profile, password: string): Promise<boolean> {
+  static async login(accountStore: string, profile: Profile, password: string, networkType: NetworkType): Promise<boolean> {
     try {
       await panthalassaStop();
       // eslint-disable-next-line no-empty
@@ -45,7 +45,7 @@ export default class AccountsService {
       encrypted_key_manager: accountStore,
       signed_profile: signedProfile,
       enable_debugging: false,
-      eth_ws_endpoint: 'wss://mainnet.infura.io/_ws',
+      eth_ws_endpoint: networkType === 'main' ? 'wss://mainnet.infura.io/_ws' : 'wss://rinkeby.infura.io/_ws',
       private_chat_endpoint: Config.CHAT_WSS_ENDPOINT,
       private_chat_bearer_token: Config.CHAT_TOKEN,
     });
@@ -66,7 +66,7 @@ export default class AccountsService {
     return true;
   }
 
-  static async validateMnemonicWithAccount(accountStore: string, profile: Profile, mne: Mnemonic): Promise<boolean> {
+  static async validateMnemonicWithAccount(accountStore: string, profile: Profile, mne: Mnemonic, networkType: NetworkType): Promise<boolean> {
     try {
       await panthalassaStop();
       // eslint-disable-next-line no-empty
@@ -76,7 +76,7 @@ export default class AccountsService {
     const config = JSON.stringify({
       encrypted_key_manager: accountStore,
       enable_debugging: false,
-      eth_ws_endpoint: 'wss://mainnet.infura.io/_ws',
+      eth_ws_endpoint: networkType === 'main' ? 'wss://mainnet.infura.io/_ws' : 'wss://rinkeby.infura.io/_ws',
       private_chat_endpoint: Config.CHAT_WSS_ENDPOINT,
       private_chat_bearer_token: Config.CHAT_TOKEN,
     });
