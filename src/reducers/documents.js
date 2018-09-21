@@ -20,7 +20,6 @@ import { contentStorage } from '../services/documents';
 
 export type State = {
   isFetching: boolean,
-  isUploading: boolean,
   documents: Array<Document>,
   openedDocumentId: number | null,
   modification: {
@@ -32,7 +31,6 @@ export type State = {
 
 export const initialState: State = {
   isFetching: false,
-  isUploading: false,
   documents: [],
   openedDocumentId: null,
   modification: null,
