@@ -27,6 +27,6 @@ export type PanthalassaDocument = {
   mime_type: string,
   content: string,
   description: string,
-  tx_hash: string,
+  txHash: string,
   signature: string,
 }
