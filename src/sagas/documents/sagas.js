@@ -4,6 +4,7 @@ import { call, put, select } from 'redux-saga/effects';
 import DocumentsService from '../../services/documents';
 import { documentsFetchFailed, documentsUpdated, startDocumentsFetch } from '../../actions/documents';
 import type { Document } from '../../types/Documents';
+import { errorAlert } from '../../global/alerts';
 import type { DeleteDocumentAction, UploadDocumentAction } from '../../actions/documents';
 
 /**
@@ -71,5 +72,6 @@ export function* uploadDocument(action: UploadDocumentAction): Generator<*, *, *
     yield put(startDocumentsFetch());
   } catch (error) {
     console.log(`[DOCUMENTS] Failed to upload document with id: ${documentId}, with error ${error.message}`);
+    errorAlert(error.message);
   }
 }
