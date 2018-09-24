@@ -4,7 +4,7 @@ export type Document = {
   id: number,
   name: string,
   description: string,
-  txHash: string,
+  txHash: string | null,
   signature: string,
   registered?: string,
   docHash?: string,
@@ -27,6 +27,15 @@ export type PanthalassaDocument = {
   mime_type: string,
   content: string,
   description: string,
-  txHash: string,
+  tx_hash: string,
+  hash: string,
   signature: string,
+}
+
+export type PanthalassaInputDocument = {
+  id: number,
+  title: string,
+  mime_type: string,
+  content: string,
+  description: string,
 }
