@@ -674,13 +674,35 @@ RCT_REMAP_METHOD(PanthalassaCreateGroupChat,
     BOOL response;
     
     NSError *error = nil;
-    long ret =  [[RCTConvert NSNumber:config[@"ret0"]] longValue];
+    long ret;
     response = PanthalassaCreateGroupChat([RCTConvert NSString:config[@"users"]],
                                               &ret,
                                               &error);
-    NSNumber *val = [NSNumber numberWithBool:response];
+    NSNumber *val = [NSNumber numberWithLong:ret];
     
-    if (error == nil) {
+    if (error == nil && response) {
+      resolve(val);
+    } else {
+      reject(@"error", error.localizedDescription, error);
+    }
+  }];
+}
+
+RCT_REMAP_METHOD(PanthalassaCreatePrivateChat,
+                 PanthalassaCreatePrivateChatWithResolver:(NSDictionary *)config
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject) {
+  [self onNewQueue:^void() {
+    BOOL response;
+    
+    NSError *error = nil;
+    long ret;
+    response = PanthalassaCreatePrivateChat([RCTConvert NSString:config[@"partnerStr"]],
+                                          &ret,
+                                          &error);
+    NSNumber *val = [NSNumber numberWithLong:ret];
+    
+    if (error == nil && response) {
       resolve(val);
     } else {
       reject(@"error", error.localizedDescription, error);
