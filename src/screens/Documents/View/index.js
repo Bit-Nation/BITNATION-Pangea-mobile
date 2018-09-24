@@ -143,50 +143,58 @@ class DocumentsViewScreen extends NavigatorComponent<
   };
 
   displayDocumentValues = (result) => {
-    if (result && result.name === i18n.t('screens.documentView.txHash') && result.value) {
-      Alert.alert(
-        'Transaction Hash', `${result.value}`,
-        [
-          {
-            text: 'COPY',
-            onPress: () => this.writeToClipboard(result.value),
-          },
-          {
-            text: 'ETHERSCAN',
-            onPress: () => this.setState({ visibleTxModal: true, txHash: result.value }),
-          },
-        ],
-      );
-    } else if (result && result.name === i18n.t('screens.documentView.signature') && result.value) {
-      Alert.alert(
-        'Signature', `${result.value}`,
-        [
-          {
-            text: 'SHARE',
-            // onPress: () => this.props.navigator.dismissModal(),
-          },
-          {
-            text: 'COPY',
-            onPress: () => this.writeToClipboard(result.value),
-          },
-        ],
-      );
-    } else if (result && result.name === i18n.t('screens.documentView.docHash') && result.value) {
-      Alert.alert(
-        'Document Hash', `${result.value}`,
-        [
-          {
-            text: 'SHARE',
-            //  onPress: () => this.props.navigator.dismissModal(),
-          },
-          {
-            text: 'COPY',
-            onPress: () => this.writeToClipboard(result.value),
-          },
-        ],
-      );
-    } else {
-      console.log('Here');
+    if (result == null) return;
+    const { value: valueToShor } = result;
+    if (valueToShor == null) return;
+
+    switch (result.name) {
+      case i18n.t('screens.documentView.txHash'):
+        Alert.alert(
+          'Transaction Hash', `${valueToShor}`,
+          [
+            {
+              text: 'COPY',
+              onPress: () => this.writeToClipboard(valueToShor),
+            },
+            {
+              text: 'ETHERSCAN',
+              onPress: () => this.setState({ visibleTxModal: true, txHash: valueToShor }),
+            },
+          ],
+        );
+        break;
+      case i18n.t('screens.documentView.signature'):
+        Alert.alert(
+          'Signature', `${valueToShor}`,
+          [
+            {
+              text: 'SHARE',
+              // onPress: () => this.props.navigator.dismissModal(),
+            },
+            {
+              text: 'COPY',
+              onPress: () => this.writeToClipboard(valueToShor),
+            },
+          ],
+        );
+        break;
+      case i18n.t('screens.documentView.docHash'):
+        Alert.alert(
+          'Document Hash', `${valueToShor}`,
+          [
+            {
+              text: 'SHARE',
+              //  onPress: () => this.props.navigator.dismissModal(),
+            },
+            {
+              text: 'COPY',
+              onPress: () => this.writeToClipboard(valueToShor),
+            },
+          ],
+        );
+        break;
+      default:
+        break;
     }
   };
 
@@ -243,7 +251,7 @@ class DocumentsViewScreen extends NavigatorComponent<
           <ScrollView>
             <Text style={styles.headline}>{document.name}</Text>
             <Text style={styles.footnote}>{document.description}</Text>
-            {document.txHash === false && (
+            {document.txHash == null && (
               <Button
                 enabled
                 style={styles.actionButton}
@@ -254,7 +262,7 @@ class DocumentsViewScreen extends NavigatorComponent<
                 styleTitle={styles.settingsText}
               />
             )}
-            {document.txHash === true && (
+            {document.txHash != null && (
               <DocumentDetail
                 id={1}
                 name={i18n.t('screens.documentView.status')}
@@ -263,19 +271,20 @@ class DocumentsViewScreen extends NavigatorComponent<
                 onPress={() => console.log('hello')}
               />
             )}
-            {document.txHash === true &&
-              document.docHash === true &&
-              document.signature === true &&
-              openedDocumentId === document.id &&
-              documentDetail.map((index, id) => (
-                <DocumentDetail
-                  id={id}
-                  name={index.name}
-                  documentListValue={index.value}
-                  disclosureIconVisible={false}
-                  onPress={() => this.displayDocumentValues(index)}
-                />
-              ))}
+            {document.txHash != null &&
+            document.docHash != null &&
+            document.signature != null &&
+            openedDocumentId === document.id &&
+            documentDetail.map((index, id) => (
+              index.value != null &&
+              <DocumentDetail
+                id={id}
+                name={index.name}
+                documentListValue={index.value}
+                disclosureIconVisible={false}
+                onPress={() => this.displayDocumentValues(index)}
+              />
+            ))}
           </ScrollView>
         </View>
         <MoreMenuModal
