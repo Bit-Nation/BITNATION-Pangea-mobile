@@ -571,7 +571,8 @@ public class PanthalassaModule extends ReactContextBaseJavaModule {
         new Thread(new Runnable() {
             public void run() {
                 try {
-                    long response = Panthalassa.createGroupChat(jsonParams.getString("users"));
+                    long response = Panthalassa.createGroupChat(jsonParams.getString("users"),
+                            jsonParams.getString("name"));
                     promise.resolve(response);
                 } catch (Exception e) {
                     e.printStackTrace();
