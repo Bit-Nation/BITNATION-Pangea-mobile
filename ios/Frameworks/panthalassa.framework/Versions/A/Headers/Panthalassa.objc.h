@@ -79,7 +79,7 @@ FOUNDATION_EXPORT BOOL PanthalassaConnectToDAppDevHost(NSString* address, NSErro
 /**
  * return chatID
  */
-FOUNDATION_EXPORT BOOL PanthalassaCreateGroupChat(NSString* users, long* ret0_, NSError** error);
+FOUNDATION_EXPORT BOOL PanthalassaCreateGroupChat(NSString* users, NSString* name, long* ret0_, NSError** error);
 
 FOUNDATION_EXPORT BOOL PanthalassaCreatePrivateChat(NSString* partnerStr, long* ret0_, NSError** error);
 

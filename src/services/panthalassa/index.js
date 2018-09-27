@@ -353,11 +353,13 @@ export async function panthalassaAddUsersToGroupChat(users: string, chatID: numb
 /**
  * @desc Creates a Multiuser Chat group
  * @param {string} users Users for the Chat
+ * @param {string} name TODO
  * @returns {Promise<*>} Number response with Chat Id
  */
-export async function panthalassaCreateGroupChat(users: string): Promise<number> {
+export async function panthalassaCreateGroupChat(users: string, name: string): Promise<number> {
   return Panthalassa.PanthalassaCreateGroupChat({
     users,
+    name,
   });
 }
 
