@@ -676,6 +676,7 @@ RCT_REMAP_METHOD(PanthalassaCreateGroupChat,
     NSError *error = nil;
     long ret;
     response = PanthalassaCreateGroupChat([RCTConvert NSString:config[@"users"]],
+                                          [RCTConvert NSString:config[@"name"]],
                                               &ret,
                                               &error);
     NSNumber *val = [NSNumber numberWithLong:ret];
