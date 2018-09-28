@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import _ from 'lodash';
 import { Fab, Text } from 'native-base';
-import { openChat } from '../../../actions/chat';
+import { openChat, startNewChat } from '../../../actions/chat';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import styles from './styles';
 import { screen } from '../../../global/Screens';
@@ -20,7 +20,7 @@ import Loading from '../../../components/common/Loading';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import i18n from '../../../global/i18n';
 import Colors from '../../../global/colors';
-import type { ProfileType, ChatSessionType, GiftedChatMessageType } from '../../../types/Chat';
+import type { ProfileType, ChatType, GiftedChatMessageType } from '../../../types/Chat';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import ScreenTitle from '../../../components/common/ScreenTitle';
 import InviteSentModal from './InviteSentModal';
@@ -28,6 +28,7 @@ import { panthalassaIdentityPublicKey } from '../../../services/panthalassa';
 import { imageSource } from '../../../utils/profile';
 import AssetsImages from '../../../global/AssetsImages';
 import MoreMenuModal from '../../../components/common/MoreMenuModal';
+import type { Contact } from '../../../types/Contacts';
 
 const MORE_BUTTON = 'MORE_BUTTON';
 const MORE_MODAL_KEY = 'moreMenu';
@@ -39,15 +40,26 @@ type Props = {
    */
   navigator: Navigator,
   /**
-   * @desc List of all chat sessions
+   * @desc List of all chats.
    */
-  chatSessions: Array<ChatSessionType>,
+  chats: Array<ChatType>,
   /**
-   * @desc Function to be called when an item is selected from the list
-   * @param {string} key Public key of the chat session
+   * @desc Map of partner profiles. Key is an identity key, value is a profile.
+   */
+  profiles: { [string]: ProfileType },
+  /**
+   * @desc Function to open chat from the list of chats.
+   * @param {number} chatId Id of chat to open.
    * @param {func} callback
    */
-  onItemSelect: (key: string, callback: (result: Object) => void) => void,
+  openChat: (chatId: number) => void,
+  /**
+   * @desc Function to start new chat.
+   * @param {string[]} members Array of identity keys of members.
+   * @param {string|null} chatName Chat name for group chat or null for person chat.
+   * @param {function} callback Callback that takes one boolean parameter that indicates if chat is successfully created.
+   */
+  startNewChat: (members: Array<string>, chatName: string | null, callback: (success: boolean) => void) => void,
 };
 
 type State = {
@@ -97,35 +109,9 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
     }
   }
 
-  startChat = async () => {
-    const partnerProfile = this.state.profile;
-    if (partnerProfile == null) {
-      console.log('[TEST] No partner profile selected');
-      return;
-    }
-
-    const chatSession = _.find(this.props.chatSessions, session => session.publicKey === partnerProfile.identityKey);
-
-    if (chatSession != null) {
-      this.onChatSelect(chatSession.publicKey);
-      this.setState({
-        showModal: '',
-      });
-    }
-  };
-
-  onChatSelect = (publicKey: string) => {
-    this.props.onItemSelect(publicKey, (result) => {
-      if (result.status === 'success') {
-        this.props.navigator.push({
-          ...screen('PRIVATE_CHAT_SCREEN'),
-          passProps: {
-            userPublicKey: result.userPublicKey,
-            recipientPublicKey: publicKey,
-          },
-        });
-      }
-    });
+  onChatSelected = (chatId: number) => {
+    this.props.openChat(chatId);
+    this.props.navigator.push(screen('PRIVATE_CHAT_SCREEN'));
   };
 
   dismissModal = () => {
@@ -148,12 +134,39 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
   goToContactsPicker = () => {
     this.props.navigator.showModal({
       ...screen('CONTACTS_PICKER_SCREEN'),
+      passProps: {
+        onContactsSelected: this.onSelectContacts,
+      },
     });
   };
 
+  onSelectContacts = (contacts: Array<Contact>) => {
+    this.props.navigator.dismissModal();
+    // @todo Chat name
+    this.props.startNewChat(contacts.map(contact => contact.profile.identityKey), 'Group chat', (success) => {
+      if (success === false) return;
+
+      this.props.navigator.push(screen('PRIVATE_CHAT_SCREEN'));
+    });
+  };
+
+  buildChatName = (chat: ChatType) => {
+    if (chat.name !== null) {
+      return chat.name;
+    }
+
+    const partnerNames = chat.members.map(key => this.props.profiles[key]).filter(x => x != null).map(profile => profile.name);
+    const resultedName = partnerNames.join(', ');
+    if (resultedName.length > 0) {
+      return resultedName;
+    }
+
+    return 'Unknown account';
+  };
+
   render() {
-    const sortedSessions = _.sortBy(this.props.chatSessions, session => session.profile.name);
-    const groups = _.groupBy(sortedSessions, session => session.profile.name.charAt(0));
+    const sortedChats = _.sortBy(this.props.chats, chat => this.buildChatName(chat).toUpperCase());
+    const groups = _.groupBy(sortedChats, chat => this.buildChatName(chat).toUpperCase().charAt(0));
     const sections = _.map(groups, (group, key) => ({
       title: key,
       data: group,
@@ -166,25 +179,36 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
         <ScreenTitle title={i18n.t('screens.chat.title')} />
         <SectionList
           renderItem={(item) => {
-            const session: ChatSessionType = item.item;
-            const iconSource = imageSource(session.profile.image) || AssetsImages.avatarIcon;
+            const chat: ChatType = item.item;
+            let chatImage = null;
+            if (chat.members.length === 1) {
+              const partner = this.props.profiles[chat.members[0]];
+              if (partner != null) {
+                chatImage = partner.image;
+              }
+            } else {
+              // @todo Uncomment
+              // chatImage = AssetsImages.groupChatIcon;
+            }
+
+            const iconSource = imageSource(chatImage) || AssetsImages.avatarIcon;
             const messagePreview = ((message: GiftedChatMessageType | null) => {
               if (message == null) return null;
               if (message.dAppMessage == null) return message.text;
 
               // @todo Add preview for DApp messages.
               return i18n.t('screens.chat.dAppMessagePreview');
-            })(session.messages.length === 0 ? null : session.messages[session.messages.length - 1]);
+            })(chat.messages.length === 0 ? null : chat.messages[chat.messages.length - 1]);
             return (<ChatListItem
-              name={session.profile.name}
+              name={this.buildChatName(chat)}
               lastMessage={messagePreview}
               avatar={iconSource}
-              onPress={this.onChatSelect}
-              unreadMessages={session.unreadMessages}
-              id={session.publicKey}
+              onPress={this.onChatSelected}
+              unreadMessages={chat.unreadMessages}
+              id={chat.id}
             />);
           }}
-          keyExtractor={item => item.publicKey}
+          keyExtractor={item => item.id}
           renderSectionHeader={({ section }) => <ChatListHeader title={section.title} />}
           sections={sections}
           style={styles.sectionList}
@@ -216,11 +240,13 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
 }
 
 const mapStateToProps = state => ({
-  chatSessions: state.chat.chats,
+  chats: state.chat.chats,
+  profiles: state.chat.partnerProfiles,
 });
 
 const mapDispatchToProps = dispatch => ({
-  onItemSelect: (key, callback) => dispatch(openChat(key, callback)),
+  openChat: (chatId: number) => dispatch(openChat(chatId)),
+  startNewChat: (members, chatName, callback) => dispatch(startNewChat(members, chatName, callback)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChatListScreen);
