@@ -73,6 +73,8 @@ ShallowWrapper {
           autoCapitalize="none"
           autoFocus={true}
           onChangeText={[Function]}
+          onSubmitEditing={[Function]}
+          returnKeyType="done"
           secureTextEntry={true}
           style={
             Object {
@@ -154,6 +156,8 @@ ShallowWrapper {
           "autoCapitalize": "none",
           "autoFocus": true,
           "onChangeText": [Function],
+          "onSubmitEditing": [Function],
+          "returnKeyType": "done",
           "secureTextEntry": true,
           "style": Object {
             "color": "#929497",
@@ -247,6 +251,8 @@ ShallowWrapper {
             autoCapitalize="none"
             autoFocus={true}
             onChangeText={[Function]}
+            onSubmitEditing={[Function]}
+            returnKeyType="done"
             secureTextEntry={true}
             style={
               Object {
@@ -328,6 +334,8 @@ ShallowWrapper {
             "autoCapitalize": "none",
             "autoFocus": true,
             "onChangeText": [Function],
+            "onSubmitEditing": [Function],
+            "returnKeyType": "done",
             "secureTextEntry": true,
             "style": Object {
               "color": "#929497",

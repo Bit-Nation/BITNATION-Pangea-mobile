@@ -100,6 +100,8 @@ class PasswordScreen extends NavigatorComponent<Props, State> {
           secureTextEntry
           autoFocus
           autoCapitalize='none'
+          returnKeyType='done'
+          onSubmitEditing={() => this.props.onSubmit(this.state.password)}
         />
         <View style={styles.buttonContainer}>
           <Button

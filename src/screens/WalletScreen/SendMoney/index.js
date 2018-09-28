@@ -167,7 +167,7 @@ class SendMoney extends NavigatorComponent<Props, State> {
                         placeholderTextColor={Colors.placeholderTextColor}
                         onChangeText={amountString => this.setState({ amountString })}
                         value={this.state.amountString}
-                        keyboardType='decimal-pad'
+                        keyboardType='numeric'
                       />
 
                     </View>

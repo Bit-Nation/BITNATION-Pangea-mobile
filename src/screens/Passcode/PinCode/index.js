@@ -104,6 +104,8 @@ class PinCodeScreen extends NavigatorComponent<Props, State> {
           keyboardType='numeric'
           secureTextEntry
           autoFocus
+          returnKeyType='done'
+          onSubmitEditing={() => this.props.onSubmit(this.state.pinCode)}
         />
         <View style={styles.buttonContainer}>
           <Button
