@@ -18,7 +18,7 @@ import BackgroundImage from '../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../components/common/FakeNavigationBar';
 import Loading from '../../components/common/Loading';
 import { resolveNation } from '../../utils/nations';
-import createGiftedChatMessageObject from '../../utils/chat';
+import deprecatedCreateGiftedChatMessageObject from '../../utils/chat';
 import type { NationIdType, NationType } from '../../types/Nation';
 import type { Navigator } from '../../types/ReactNativeNavigation';
 import elizabot from '../../../vendor/elizabot';
@@ -126,7 +126,7 @@ class ChatScreen extends Component<Props, State> {
         .then(response => response.json())
         .then(
           (json) => {
-            const messages = createGiftedChatMessageObject(json.reverse());
+            const messages = deprecatedCreateGiftedChatMessageObject(json.reverse());
             this.props.hideSpinner();
             this.setState(previousState => ({
               messages: GiftedChat.append(previousState.messages, messages),
@@ -142,7 +142,7 @@ class ChatScreen extends Component<Props, State> {
         if (data.nation_id >= 0) {
           this.setState({ joined: true });
           this.connection.on('msg', (messageData) => {
-            const messages = createGiftedChatMessageObject([messageData]);
+            const messages = deprecatedCreateGiftedChatMessageObject([messageData]);
             this.setState(previousState => ({
               messages: GiftedChat.append(previousState.messages, messages),
             }));
