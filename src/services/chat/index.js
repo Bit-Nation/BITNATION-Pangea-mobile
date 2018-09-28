@@ -2,14 +2,14 @@
 
 import Config from 'react-native-config';
 import { Buffer } from 'buffer/index';
-import { createGiftedChatMessageObjects } from '../../utils/chat';
-import type { Account } from '../../types/Account';
-import type { GiftedChatMessageType, ProfileType } from '../../types/Chat';
+import type { PanthalassaMessage } from '../../types/Chat';
 import {
   panthalassaGetIdentityPublicKey,
   panthalassaAllChats,
   panthalassaMessages,
   panthalassaSendMessage,
+  panthalassaCreateGroupChat,
+  panthalassaCreatePrivateChat,
 } from '../../services/panthalassa';
 
 // Javascript static code of the proto file
@@ -65,13 +65,11 @@ export default class ChatService {
     return response;
   }
 
-  static async loadMessages(sender: Account, receiver: ProfileType, startId: string, amount: number): Promise<Array<GiftedChatMessageType>> {
+  static async loadMessages(chatID: number, startId: string, amount: number): Promise<Array<PanthalassaMessage>> {
     let messages = [];
     try {
-      messages = await panthalassaMessages(receiver.identityKey, startId, amount);
-      messages = JSON.parse(messages);
-      console.log('CHAT messages -->', messages);
-      messages = createGiftedChatMessageObjects(sender, receiver, messages);
+      messages = await panthalassaMessages(chatID, startId, amount);
+      return JSON.parse(messages);
     } catch (e) {
       console.log(`[TEST] Error loading messages: ${e.message}`);
     }
@@ -79,11 +77,19 @@ export default class ChatService {
     return messages;
   }
 
-  static async sendMessage(recipientPublicKey: string, message: string): Promise<void> {
+  static async sendMessage(chatID: number, message: string): Promise<void> {
     try {
-      await panthalassaSendMessage(recipientPublicKey, message);
+      await panthalassaSendMessage(chatID, message);
     } catch (e) {
       console.log(`[TEST] Error sending messsage: ${e.message}`);
     }
+  }
+
+  static async startPrivateChat(identityKey: string): Promise<number> {
+    return panthalassaCreatePrivateChat(identityKey);
+  }
+
+  static async startGroupChat(identityKeys: Array<string>, name: string): Promise<number> {
+    return panthalassaCreateGroupChat(JSON.stringify(identityKeys), name);
   }
 }
