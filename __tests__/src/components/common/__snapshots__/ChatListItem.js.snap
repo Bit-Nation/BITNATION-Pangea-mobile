@@ -6,7 +6,7 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <ChatListItem
     avatar={null}
-    id="Test id"
+    id={1}
     lastMessage={undefined}
     name="Test list item"
     onPress={[MockFunction]}
@@ -29,7 +29,7 @@ ShallowWrapper {
       "disabled": false,
       "disclosureIconVisible": true,
       "iconSource": null,
-      "id": "Test id",
+      "id": 1,
       "onPress": [MockFunction],
       "style": Object {
         "height": 72,
@@ -60,7 +60,7 @@ ShallowWrapper {
         "disabled": false,
         "disclosureIconVisible": true,
         "iconSource": null,
-        "id": "Test id",
+        "id": 1,
         "onPress": [MockFunction],
         "style": Object {
           "height": 72,
@@ -97,7 +97,7 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <ChatListItem
     avatar={null}
-    id="1"
+    id={1}
     lastMessage="Some message"
     name="Test list item"
     onPress={[MockFunction]}
@@ -120,7 +120,7 @@ ShallowWrapper {
       "disabled": false,
       "disclosureIconVisible": true,
       "iconSource": null,
-      "id": "1",
+      "id": 1,
       "onPress": [MockFunction],
       "style": Object {
         "height": 72,
@@ -151,7 +151,7 @@ ShallowWrapper {
         "disabled": false,
         "disclosureIconVisible": true,
         "iconSource": null,
-        "id": "1",
+        "id": 1,
         "onPress": [MockFunction],
         "style": Object {
           "height": 72,
