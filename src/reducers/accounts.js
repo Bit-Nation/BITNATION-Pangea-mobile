@@ -12,7 +12,7 @@ import {
   START_ACCOUNT_CREATION,
   CHANGE_CREATING_ACCOUNT_FIELD,
   START_RESTORE_ACCOUNT_USING_MNEMONIC,
-  SAVE_CREATING_ACCOUNT,
+  SAVE_CREATING_ACCOUNT, SET_CURRENT_ACCOUNT_IDENTITY_KEY,
 } from '../actions/accounts';
 import type { Account, PartialAccount } from '../types/Account';
 import TaskBuilder, { type AsyncTask } from '../utils/asyncTask';
@@ -33,10 +33,10 @@ export type State = {
   +login: AsyncTask<void>,
   +logout: AsyncTask<void>,
   +accounts: Array<Account>,
-  +currentCreation:
-    | { type: 'create' }
+  +currentCreation: | { type: 'create' }
     | { type: 'restore', mnemonic: Mnemonic }
     | null,
+  +currentAccountIdentityKey: string | null;
 };
 
 export const buildEmptyAccount = (): PartialAccount => ({
@@ -56,7 +56,7 @@ export const initialState: State = {
   logout: TaskBuilder.empty(),
   accounts: [],
   currentCreation: null,
-  publicKey: '',
+  currentAccountIdentityKey: null,
 };
 
 /**
@@ -76,6 +76,12 @@ export default (state: State = initialState, action: AccountsAction | ProfileAct
       return {
         ...state,
         currentAccountId: action.currentAccountId,
+        currentAccountIdentityKey: action.currentAccountId === null ? null : state.currentAccountIdentityKey,
+      };
+    case SET_CURRENT_ACCOUNT_IDENTITY_KEY:
+      return {
+        ...state,
+        currentAccountIdentityKey: action.identityKey,
       };
     case LOGIN_TASK_UPDATED:
       return {
