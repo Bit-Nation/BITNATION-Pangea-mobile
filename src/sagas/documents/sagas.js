@@ -15,6 +15,7 @@ export function* fetchDocuments(): Generator<*, *, *> {
   try {
     const documents = yield call(DocumentsService.getDocuments);
     yield put(documentsUpdated(documents));
+    console.log('[DOCUMENTS] Doc:', documents);
   } catch (error) {
     console.log(`[DOCUMENTS] Failed to get documents with error ${error.message}`);
     yield put(documentsFetchFailed(error));

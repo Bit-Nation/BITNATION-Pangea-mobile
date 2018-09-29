@@ -114,14 +114,16 @@ export default class UpstreamService {
 
   handleSendEthereumTransaction = async (id: string, info: any) => {
     const { value, to, data } = info;
-
     const transaction = {
       to,
       data,
       value: ethers.utils.parseEther(value),
     };
+    console.log('[DOCUMENTS] info:', info);
+    console.log('[DOCUMENTS] value:', value);
     try {
       const txDetails = await this.ethereumService.wallet.sendTransaction(transaction);
+      console.log('[DOCUMENTS] txDetails:', txDetails);
       return this.sendSuccessResponse(id, {
         sendEthereumTransaction: {
           nonce: txDetails.nonce,
