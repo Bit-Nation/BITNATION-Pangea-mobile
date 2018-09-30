@@ -5,26 +5,27 @@ import {
   SHOW_CHAT_SPINNER,
   HIDE_CHAT_SPINNER,
   CHATS_UPDATED,
-  SELECT_PROFILE,
-  ADD_CREATED_CHAT_SESSION,
   CHAT_MESSAGES_LOADED,
   ADD_CHAT_MESSAGE,
   UNREAD_STATUS_CHANGED,
+  OPEN_CHAT, ADD_PARTNER_PROFILES,
 } from '../actions/chat';
 import { SERVICES_DESTROYED } from '../actions/serviceContainer';
-import type { ChatSessionType } from '../types/Chat';
+import type { ChatType, ProfileType } from '../types/Chat';
 import { mergeMessages } from '../utils/chat';
 
 export type State = {
   +isFetching: boolean,
-  chats: Array<ChatSessionType>,
-  chatProfile: Object,
+  +chats: Array<ChatType>,
+  +openedChatId: number | null,
+  +partnerProfiles: { [string]: ProfileType }
 };
 
 export const initialState: State = {
   isFetching: false,
   chats: [],
-  chatProfile: {},
+  openedChatId: null,
+  partnerProfiles: {},
 };
 
 /**
@@ -42,6 +43,18 @@ export default (state: State = initialState, action: Action): State => {
         ...state,
         isFetching: true,
       };
+    case ADD_PARTNER_PROFILES: {
+      const newProfiles = {};
+      action.profiles.forEach(profile => (newProfiles[profile.identityKey] = profile));
+
+      return {
+        ...state,
+        partnerProfiles: {
+          ...state.partnerProfiles,
+          ...newProfiles,
+        },
+      };
+    }
     case HIDE_CHAT_SPINNER:
       return {
         ...state,
@@ -50,22 +63,12 @@ export default (state: State = initialState, action: Action): State => {
     case CHATS_UPDATED:
       return {
         ...state,
-        chats: action.chats.slice(),
-      };
-    case ADD_CREATED_CHAT_SESSION:
-      return {
-        ...state,
-        chats: [...state.chats, action.chat],
-      };
-    case SELECT_PROFILE:
-      return {
-        ...state,
-        chatProfile: action.profile,
+        chats: [...action.chats],
       };
     case CHAT_MESSAGES_LOADED: {
-      const { recipientPublicKey, messages } = action;
+      const { chatId, messages } = action;
       const chats = state.chats.map((chat) => {
-        if (chat.publicKey === recipientPublicKey) {
+        if (chat.id === chatId) {
           return {
             ...chat,
             messages: mergeMessages(chat.messages, messages),
@@ -80,9 +83,9 @@ export default (state: State = initialState, action: Action): State => {
       };
     }
     case ADD_CHAT_MESSAGE: {
-      const { publicKey, message } = action;
+      const { chatId, message } = action;
       const chats = state.chats.map((chat) => {
-        if (chat.publicKey === publicKey) {
+        if (chat.id === chatId) {
           return {
             ...chat,
             messages: mergeMessages(chat.messages, [message]),
@@ -97,9 +100,9 @@ export default (state: State = initialState, action: Action): State => {
       };
     }
     case UNREAD_STATUS_CHANGED: {
-      const { recipientPublicKey, hasUnreadMessages } = action;
+      const { chatId, hasUnreadMessages } = action;
       const chats = state.chats.map((chat) => {
-        if (chat.publicKey === recipientPublicKey) {
+        if (chat.id === chatId) {
           return {
             ...chat,
             unreadMessages: hasUnreadMessages,
@@ -113,7 +116,15 @@ export default (state: State = initialState, action: Action): State => {
         chats,
       };
     }
+    case OPEN_CHAT:
+      return {
+        ...state,
+        openedChatId: action.chatId,
+      };
     default:
       return state;
   }
 };
+
+export const getChatById = (state: State, id: number) => state.chats.find(chat => chat.id === id) || null;
+export const getProfile = (state: State, identityKey: string) => state.partnerProfiles[identityKey] || null;
