@@ -9,6 +9,8 @@ import {
 } from 'react-native';
 import _ from 'lodash';
 import { Fab, Text } from 'native-base';
+import Dialog from 'react-native-dialog';
+
 import { openChat, startNewChat } from '../../../actions/chat';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import styles from './styles';
@@ -33,6 +35,7 @@ import type { Contact } from '../../../types/Contacts';
 const MORE_BUTTON = 'MORE_BUTTON';
 const MORE_MODAL_KEY = 'moreMenu';
 const INVITE_MODAL_KEY = 'invite';
+const CHAT_NAME_MODAL = 'CHAT_NAME_MODAL';
 
 type Props = {
   /**
@@ -79,6 +82,14 @@ type State = {
    * @desc Flag whether loading is in progress.
    */
   loading: boolean,
+  /**
+   * @desc Entered name of the creating chat.
+   */
+  chatName: string,
+  /**
+   * @desc List of contacts selected for creating chat.
+   */
+  contacts: Array<Contact>
 };
 
 class ChatListScreen extends NavigatorComponent<Props, State> {
@@ -98,6 +109,8 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
       profile: null,
       showModal: '',
       loading: false,
+      contacts: [],
+      chatName: '',
     };
   }
 
@@ -119,6 +132,8 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
       publicKey: '',
       profile: null,
       showModal: '',
+      contacts: [],
+      chatName: '',
     });
   };
 
@@ -140,14 +155,23 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
     });
   };
 
-  onSelectContacts = (contacts: Array<Contact>) => {
-    this.props.navigator.dismissModal();
-    // @todo Chat name
-    this.props.startNewChat(contacts.map(contact => contact.profile.identityKey), 'Group chat', (success) => {
+  initiateNewChat = (contacts: Array<Contact>, chatName: string) => {
+    this.props.startNewChat(contacts.map(contact => contact.profile.identityKey), chatName, (success) => {
+      this.dismissModal();
       if (success === false) return;
 
       this.props.navigator.push(screen('PRIVATE_CHAT_SCREEN'));
     });
+  };
+
+  onSelectContacts = (contacts: Array<Contact>) => {
+    this.props.navigator.dismissModal();
+
+    if (contacts.length === 1) {
+      this.initiateNewChat(contacts, '');
+    } else {
+      this.setState({ contacts, showModal: CHAT_NAME_MODAL });
+    }
   };
 
   buildChatName = (chat: ChatType) => {
@@ -233,6 +257,24 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
           done={this.dismissModal}
           visible={this.state.showModal === INVITE_MODAL_KEY}
         />
+        <Dialog.Container visible={this.state.showModal === CHAT_NAME_MODAL}>
+          <Dialog.Title>
+            {i18n.t('screens.chat.chatNameAlert.title')}
+          </Dialog.Title>
+          <Dialog.Input
+            value={this.state.chatName}
+            onChangeText={text => this.setState({ chatName: text })}
+          />
+          <Dialog.Button
+            label={i18n.t('screens.chat.chatNameAlert.confirm')}
+            disabled={this.state.chatName.length === 0}
+            onPress={() => this.initiateNewChat(this.state.contacts, this.state.chatName)}
+          />
+          <Dialog.Button
+            label={i18n.t('screens.chat.chatNameAlert.cancel')}
+            onPress={this.dismissModal}
+          />
+        </Dialog.Container>
         {this.state.loading === true && <Loading />}
       </View>
     );
