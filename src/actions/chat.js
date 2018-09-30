@@ -1,16 +1,13 @@
 // @flow
 
-import type { ProfileType, ChatSessionType, GiftedChatMessageType } from '../types/Chat';
+import type { ProfileType, ChatType, GiftedChatMessageType } from '../types/Chat';
+import { CHAT_MESSAGES_PAGE } from '../global/Constants';
 
 export const SHOW_CHAT_SPINNER = 'SHOW_CHAT_SPINNER';
 export const HIDE_CHAT_SPINNER = 'HIDE_CHAT_SPINNER';
-export const FIND_USER_BY_KEY = 'FIND_USER_BY_KEY';
-export const GET_PROFILE = 'GET_PROFILE';
-export const NEW_CHAT_SESSION = 'NEW_CHAT_SESSION';
+export const START_NEW_CHAT = 'START_NEW_CHAT';
 export const CHATS_UPDATED = 'CHATS_UPDATED';
-export const ADD_CREATED_CHAT_SESSION = 'ADD_CREATED_CHAT_SESSION';
-export const OPEN_CHAT_SESSION = 'OPEN_CHAT_SESSION';
-export const SELECT_PROFILE = 'SELECT_PROFILE';
+export const OPEN_CHAT = 'OPEN_CHAT';
 export const FETCH_ALL_CHATS = 'FETCH_ALL_CHATS';
 export const SEND_MESSAGE = 'SEND_MESSAGE';
 export const LOAD_CHAT_MESSAGES = 'LOAD_CHAT_MESSAGES';
@@ -19,101 +16,38 @@ export const PANTHALASSA_MESSAGE_PERSISTED = 'PANTHALASSA_MESSAGE_PERSISTED';
 export const ADD_CHAT_MESSAGE = 'ADD_CHAT_MESSAGE';
 export const CHANGE_UNREAD_STATUS = 'CHANGE_UNREAD_STATUS';
 export const UNREAD_STATUS_CHANGED = 'UNREAD_STATUS_CHANGED';
+export const ADD_PARTNER_PROFILES = 'ADD_PARTNER_PROFILES';
 
 export type ShowSpinnerAction = { +type: 'SHOW_CHAT_SPINNER' };
 export type HideSpinnerAction = { +type: 'HIDE_CHAT_SPINNER' };
-export type FindUserByPubKeyAction = {
-  +type: 'FIND_USER_BY_KEY',
-  +key: string
-};
-export type GetProfileAction = {
-  +type: 'GET_PROFILE',
-  +identityKey: string,
-  +callback: (profile: ProfileType | null, error: Error | null) => void,
-};
-export type NewChatSessionAction = {
-  +type: 'NEW_CHAT_SESSION',
-  +profile: ProfileType,
-  +callback: () => void,
-};
-export type AddCreatedChatSessionAction = {
-  +type: 'ADD_CREATED_CHAT_SESSION',
-  +chat: ChatSessionType,
-};
-export type UpdateChatsAction = {
-  +type: 'CHATS_UPDATED',
-  +chats: Array<any>,
-};
-export type OpenChatAction = {
-  +type: 'OPEN_CHAT_SESSION',
-  +publicKey: string,
-  +callback: () => void,
-};
-export type SelectProfileAction = {
-  +type: 'SELECT_PROFILE',
-  +profile: ProfileType,
-};
-export type FetchAllChatsAction = {
-  +type: 'FETCH_ALL_CHATS',
-}
-export type SendMessageAction = {
-  +type: 'SEND_MESSAGE',
-  +message: string,
-  +recipientPublicKey: string,
-  +callback: () => void,
-};
-export type SaveMessageAction = {
-  +type: 'SAVE_HUMAN_MESSAGE',
-  +message: string,
-};
-export type LoadChatMessagesAction = {
-  +type: 'LOAD_CHAT_MESSAGES',
-  +recipientPublicKey: string,
-  +fromMessageId: string,
-}
-export type ChatMessagesLoadedAction = {
-  +type: 'CHAT_MESSAGES_LOADED',
-  +recipientPublicKey: string,
-  +messages: Array<any>,
-}
-export type PanthalassaMessagePersistedAction = {
-  +type: 'PANTHALASSA_MESSAGE_PERSISTED',
-  +payload: Object,
-}
-export type AddChatMessageAction = {
-  +type: 'ADD_CHAT_MESSAGE',
-  +publicKey: string,
-  +message: GiftedChatMessageType,
-}
-export type ChangeUnreadStatusAction = {
-  +type: 'CHANGE_UNREAD_STATUS',
-  +recipientPublicKey: string,
-  +hasUnreadMessages: boolean,
-}
-export type UnreadStatusChangedAction = {
-  +type: 'UNREAD_STATUS_CHANGED',
-  +recipientPublicKey: string,
-  +hasUnreadMessages: boolean,
-}
+export type StartNewChatAction = { +type: 'START_NEW_CHAT', partnersIdentityKeys: Array<string>, groupChatName: string | null, +callback: (success: boolean) => void };
+export type ChatsUpdatedAction = { +type: 'CHATS_UPDATED', +chats: Array<ChatType> };
+export type OpenChatAction = { +type: 'OPEN_CHAT', +chatId: number };
+export type FetchAllChatsAction = { +type: 'FETCH_ALL_CHATS' }
+export type SendMessageAction = { +type: 'SEND_MESSAGE', +message: string, +chatId: number };
+export type LoadChatMessagesAction = { +type: 'LOAD_CHAT_MESSAGES', +chatId: number, +fromMessageId: string, +count: number }
+export type ChatMessagesLoadedAction = { +type: 'CHAT_MESSAGES_LOADED', +chatId: number, +messages: Array<GiftedChatMessageType>, +expectedCount: number }
+export type PanthalassaMessagePersistedAction = { +type: 'PANTHALASSA_MESSAGE_PERSISTED', +payload: Object }
+export type AddChatMessageAction = { +type: 'ADD_CHAT_MESSAGE', +chatId: number, +message: GiftedChatMessageType }
+export type ChangeUnreadStatusAction = { +type: 'CHANGE_UNREAD_STATUS', +chatId: number, +hasUnreadMessages: boolean }
+export type UnreadStatusChangedAction = { +type: 'UNREAD_STATUS_CHANGED', +chatId: number, +hasUnreadMessages: boolean }
+export type AddPartnerProfilesAction = { +type: 'ADD_PARTNER_PROFILES', +profiles: Array<ProfileType> }
 
 export type Action =
   | ShowSpinnerAction
   | HideSpinnerAction
-  | FindUserByPubKeyAction
-  | GetProfileAction
-  | NewChatSessionAction
-  | UpdateChatsAction
+  | StartNewChatAction
+  | ChatsUpdatedAction
   | OpenChatAction
-  | SelectProfileAction
   | FetchAllChatsAction
   | SendMessageAction
-  | SaveMessageAction
   | LoadChatMessagesAction
   | ChatMessagesLoadedAction
   | PanthalassaMessagePersistedAction
   | AddChatMessageAction
   | ChangeUnreadStatusAction
-  | UnreadStatusChangedAction;
+  | UnreadStatusChangedAction
+  | AddPartnerProfilesAction;
 
 /**
  * @desc Action for an action that shows spinner while processing in background
@@ -136,63 +70,27 @@ export function hideSpinner(): HideSpinnerAction {
 }
 
 /**
- * @desc Action for an action that find a user to chat with
- * @param {string} key Public key of the user
- * @returns {FindUserByPubKeyAction} An action.
+ * @desc Action for creating a new chat.
+ * @param {string[]} partnersIdentityKeys Identity keys of users that will be on the chat (one or more)
+ * @param {string} groupChatName Chat name for the group chat only.
+ * @param {function} callback Callback
+ * @returns {StartNewChatAction} An action.
  */
-export function findUserByPublicKey(key: string): FindUserByPubKeyAction {
+export function startNewChat(partnersIdentityKeys: Array<string>, groupChatName: string | null, callback: (success: boolean) => void): StartNewChatAction {
   return {
-    type: FIND_USER_BY_KEY,
-    key,
-  };
-}
-
-/**
- * @desc Action for retrieving profile for identity key. Takes it either from database or network.
- * @param {string} identityKey Identity key of profile to be got
- * @param {function} callback Callback to be called with result or error
- * @returns {GetProfileAction} An action
- */
-export function getProfile(identityKey: string, callback: (result: ProfileType | null, error: Error | null) => void): GetProfileAction {
-  return {
-    type: GET_PROFILE,
-    identityKey,
+    type: START_NEW_CHAT,
+    partnersIdentityKeys,
+    groupChatName,
     callback,
-  };
-}
-
-/**
- * @desc Action for creating a new chat session
- * @param {Object} profile Profile of the user
- * @param {func} callback Callback
- * @returns {NewChatSessionAction} An action.
- */
-export function newChatSession(profile: ProfileType, callback: () => void): NewChatSessionAction {
-  return {
-    type: NEW_CHAT_SESSION,
-    profile,
-    callback,
-  };
-}
-
-/**
- * @desc Action for adding a newly created chat session
- * @param {ChatSessionType} chat Created chat.
- * @returns {AddCreatedChatSessionAction} An action.
- */
-export function addCreatedChatSession(chat: ChatSessionType): AddCreatedChatSessionAction {
-  return {
-    type: ADD_CREATED_CHAT_SESSION,
-    chat,
   };
 }
 
 /**
  * @desc Action for updating chats
- * @param {Array<ChatSessionType>} chats Updated chats
- * @returns {UpdateChatsAction} An action
+ * @param {Array<ChatType>} chats Updated chats
+ * @returns {ChatsUpdatedAction} An action
  */
-export function chatsUpdated(chats: Array<ChatSessionType>): UpdateChatsAction {
+export function chatsUpdated(chats: Array<ChatType>): ChatsUpdatedAction {
   return {
     type: CHATS_UPDATED,
     chats,
@@ -200,28 +98,14 @@ export function chatsUpdated(chats: Array<ChatSessionType>): UpdateChatsAction {
 }
 
 /**
- * @desc Action for opening chat session from the list
- * @param {string} publicKey Public Key of the chat session
- * @param {func} callback Callback
+ * @desc Action creator for an action that sets currently opened chat.
+ * @param {number} chatId Id of chat to open.
  * @returns {OpenChatAction} An action
  */
-export function openChat(publicKey: string, callback: () => void): OpenChatAction {
+export function openChat(chatId: number): OpenChatAction {
   return {
-    type: OPEN_CHAT_SESSION,
-    publicKey,
-    callback,
-  };
-}
-
-/**
- * @desc Action for getting selected profile
- * @param {Object} profile Public Key of the chat session
- * @returns {SelectProfileAction} An action
- */
-export function selectProfile(profile: ProfileType): SelectProfileAction {
-  return {
-    type: SELECT_PROFILE,
-    profile,
+    type: OPEN_CHAT,
+    chatId,
   };
 }
 
@@ -236,46 +120,46 @@ export function fetchAllChats(): FetchAllChatsAction {
 }
 
 /**
- * @desc Action for sending message
- * @param {string} recipientPublicKey The recipient's public key
- * @param {string} message Message to send
- * @param {func} callback Callback
+ * @desc Action create for an action that initiates message sending.
+ * @param {number} chatId Id of chat to send message to.
+ * @param {string} message Plain message to send
  * @returns {SendMessageAction} An action
  */
-export function sendMessage(recipientPublicKey: string, message: string, callback: () => void = () => undefined): SendMessageAction {
+export function sendMessage(chatId: number, message: string): SendMessageAction {
   return {
     type: SEND_MESSAGE,
-    recipientPublicKey,
+    chatId,
     message,
-    callback,
   };
 }
 
 /**
- * @desc Action for loading chat messages
- * @param {string} recipientPublicKey Public Key of the chat recipient
+ * @desc Action creator for an action that initiates chat messages loading.
+ * @param {number} chatId Id of chat to fetch messages for.
  * @param {string} fromMessageId Id of message to start load from
+ * @param {number} count Count of messages to fetch.
  * @returns {LoadChatMessagesAction} An action
  */
-export function loadChatMessages(recipientPublicKey: string, fromMessageId: string = '0'): LoadChatMessagesAction {
+export function loadChatMessages(chatId: number, fromMessageId: string = '0', count: number = CHAT_MESSAGES_PAGE): LoadChatMessagesAction {
   return {
     type: LOAD_CHAT_MESSAGES,
-    recipientPublicKey,
+    chatId,
     fromMessageId,
+    count,
   };
 }
 
 /**
- * @desc Action for loaded messages
- * @param {string} recipientPublicKey The public key of the recipient
- * @param {Array<any>} messages Loaded messages
+ * @desc Action create for an action that is called when chat messages are loaded.
+ * @param {number} chatId Id of chat messages are loaded for.
+ * @param {GiftedChatMessageType[]} messages Loaded messages
  * @param {number} expectedCount Number of message that was requested. Used to determine if there are older messages.
  * @returns {ChatMessagesLoadedAction} An action
  */
-export function chatMessagesLoaded(recipientPublicKey: string, messages: Array<any>, expectedCount: number): ChatMessagesLoadedAction {
+export function chatMessagesLoaded(chatId: number, messages: Array<GiftedChatMessageType>, expectedCount: number): ChatMessagesLoadedAction {
   return {
     type: CHAT_MESSAGES_LOADED,
-    recipientPublicKey,
+    chatId,
     messages,
     expectedCount,
   };
@@ -294,43 +178,55 @@ export function panthalassaMessagePersisted(payload: Object): PanthalassaMessage
 }
 
 /**
- * @desc Action for adding a chat message
- * @param {string} publicKey The chat public key
+ * @desc Action creator for an action that adds new single chat message
+ * @param {number} chatId Id of chat that message should be added to.
  * @param {GiftedChatMessageType} message The chat message
  * @returns {AddChatMessageAction} An action
  */
-export function addChatMessage(publicKey: string, message: GiftedChatMessageType): AddChatMessageAction {
+export function addChatMessage(chatId: number, message: GiftedChatMessageType): AddChatMessageAction {
   return {
     type: ADD_CHAT_MESSAGE,
-    publicKey,
+    chatId,
     message,
   };
 }
 
 /**
  * @desc Action creator for an action that requests change a conversation's new messages flag
- * @param {string} recipientPublicKey Public Key of the chat recipient
+ * @param {number} chatId Id of chat to change status for.
  * @param {boolean} hasUnreadMessages Status flag for new messages on chat
  * @returns {ChangeUnreadStatusAction} An action
  */
-export function changeUnreadStatus(recipientPublicKey: string, hasUnreadMessages: boolean): ChangeUnreadStatusAction {
+export function changeUnreadStatus(chatId: number, hasUnreadMessages: boolean): ChangeUnreadStatusAction {
   return {
     type: CHANGE_UNREAD_STATUS,
-    recipientPublicKey,
+    chatId,
     hasUnreadMessages,
   };
 }
 
 /**
  * @desc Action creator for an action that is called when conversation's new messages flag is changed
- * @param {string} recipientPublicKey Public Key of the chat recipient
+ * @param {number} chatId Id of chat that status is changed for.
  * @param {boolean} hasUnreadMessages Status flag for new messages on chat
  * @returns {UnreadStatusChangedAction} An action
  */
-export function unreadStatusChanged(recipientPublicKey: string, hasUnreadMessages: boolean): UnreadStatusChangedAction {
+export function unreadStatusChanged(chatId: number, hasUnreadMessages: boolean): UnreadStatusChangedAction {
   return {
     type: UNREAD_STATUS_CHANGED,
-    recipientPublicKey,
+    chatId,
     hasUnreadMessages,
+  };
+}
+
+/**
+ * @desc Action creator for an action that is called when new partners profiles need to be saved on Redux state.
+ * @param {ProfileType[]} profiles List of profiles to add to Redux state.
+ * @returns {AddPartnerProfilesAction} An action
+ */
+export function addPartnerProfiles(profiles: Array<ProfileType>): AddPartnerProfilesAction {
+  return {
+    type: ADD_PARTNER_PROFILES,
+    profiles,
   };
 }
