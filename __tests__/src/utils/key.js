@@ -1,4 +1,4 @@
-import { compressMnemonic, decompressMnemonic, normalizeEthPrivateKey } from '../../../src/utils/key';
+import { compressMnemonic, decompressMnemonic, normalizeHexValue } from '../../../src/utils/key';
 
 test('compressMnemonic', () => {
   expect(compressMnemonic([
@@ -13,9 +13,9 @@ test('decompressMnemonic', () => {
     ]);
 });
 
-test('normalizeEthPrivateKey', () => {
-  expect(normalizeEthPrivateKey('0xefc27ba5330258fcfb75e28e4e6efd88458751086998bbfad99257035fb3e160'))
+test('normalizeHexValue', () => {
+  expect(normalizeHexValue('0xefc27ba5330258fcfb75e28e4e6efd88458751086998bbfad99257035fb3e160'))
     .toEqual('0xefc27ba5330258fcfb75e28e4e6efd88458751086998bbfad99257035fb3e160');
-  expect(normalizeEthPrivateKey('efc27ba5330258fcfb75e28e4e6efd88458751086998bbfad99257035fb3e160'))
+  expect(normalizeHexValue('efc27ba5330258fcfb75e28e4e6efd88458751086998bbfad99257035fb3e160'))
     .toEqual('0xefc27ba5330258fcfb75e28e4e6efd88458751086998bbfad99257035fb3e160');
 });

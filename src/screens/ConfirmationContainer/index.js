@@ -65,7 +65,7 @@ const mapStateToProps = () => ({});
 const mapDispatchToProps = () => ({});
 
 ConfirmationScreen.defaultProps = {
-  gasPrice: 2,
+  gasPrice: 25,
   onFail: () => null,
   onSuccess: () => null,
   to: '0x0',

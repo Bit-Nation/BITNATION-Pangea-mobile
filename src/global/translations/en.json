@@ -599,10 +599,16 @@
       "actionSheetTitle": "Select document to store"
     },
     "documentView": {
+      "submitDocument": "Submit Document",
       "actions": {
         "edit": "Edit metadata",
         "delete": "Delete document"
-      }
+      },
+      "registered": "Registered",
+      "txHash": "Tx Hash",
+      "signature": "Signature",
+      "docHash": "Document Hash",
+      "status": "Status"
     },
     "documentModify": {
       "title": "New document",
