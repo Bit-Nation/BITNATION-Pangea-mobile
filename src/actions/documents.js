@@ -12,6 +12,7 @@ export const UPDATE_MODIFIED_DOCUMENT_FIELD = 'UPDATE_MODIFIED_DOCUMENT_FIELD';
 export const FINISH_DOCUMENT_MODIFICATION = 'FINISH_DOCUMENT_MODIFICATION';
 export const CANCEL_DOCUMENT_MODIFICATION = 'CANCEL_DOCUMENT_MODIFICATION';
 export const OPEN_DOCUMENT = 'OPEN_DOCUMENT';
+export const UPLOAD_DOCUMENT = 'UPLOAD_DOCUMENT';
 
 export type StartDocumentsFetchAction = { +type: 'START_DOCUMENTS_FETCH' };
 export type DocumentsUpdatedAction = { +type: 'DOCUMENTS_UPDATED', documents: Array<Document> };
@@ -23,6 +24,7 @@ export type UpdateModifiedDocumentFieldAction = { +type: 'UPDATE_MODIFIED_DOCUME
 export type FinishDocumentModificationAction = { +type: 'FINISH_DOCUMENT_MODIFICATION' };
 export type CancelDocumentModificationAction = { +type: 'CANCEL_DOCUMENT_MODIFICATION' };
 export type OpenDocumentAction = { +type: 'OPEN_DOCUMENT', documentId: number };
+export type UploadDocumentAction = { +type: 'UPLOAD_DOCUMENT', documentId: number};
 
 export type Action =
   | StartDocumentsFetchAction
@@ -34,7 +36,8 @@ export type Action =
   | UpdateModifiedDocumentFieldAction
   | FinishDocumentModificationAction
   | CancelDocumentModificationAction
-  | OpenDocumentAction;
+  | OpenDocumentAction
+  | UploadDocumentAction;
 
 /**
  * @desc Action creator for an action that requests fetch of all documents.
@@ -148,6 +151,18 @@ export function cancelDocumentModification(): CancelDocumentModificationAction {
 export function openDocument(documentId: number): OpenDocumentAction {
   return {
     type: OPEN_DOCUMENT,
+    documentId,
+  };
+}
+
+/**
+ * @desc Action creator for an action that uploads a document.
+ * @param {number} documentId Id of document to be uploaded.
+ * @returns {UploadDocumentAction} An action
+ */
+export function uploadDocument(documentId: number): UploadDocumentAction {
+  return {
+    type: UPLOAD_DOCUMENT,
     documentId,
   };
 }
