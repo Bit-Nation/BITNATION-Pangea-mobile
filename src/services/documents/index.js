@@ -78,5 +78,9 @@ export default class DocumentService {
   static async deleteDocument(documentId: number): Promise<void> {
     await Panthalassa.panthalassaCall('DOCUMENT:DELETE', { doc_id: documentId });
   }
+
+  static async uploadDocument(documentId: number): Promise<void> {
+    await Panthalassa.panthalassaCall('DOCUMENT:NOTARISE', { doc_id: documentId });
+  }
 }
 
