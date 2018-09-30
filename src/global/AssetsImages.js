@@ -47,6 +47,7 @@ const signalIcon5 = require('../assets/images/signal_icon_5.png');
 const botIconLucy = require('../assets/images/icon_chatbot.png');
 
 const chatNewMessageIcon = require('../assets/images/chat_indicator.png');
+const groupChatIcon = require('../assets/images/groupChatIcon.png');
 
 const Images = {
   background,
@@ -91,6 +92,7 @@ const Images = {
     signal5: signalIcon5,
     botIcon: botIconLucy,
     newMsgIcon: chatNewMessageIcon,
+    groupChatIcon,
   },
 };
 

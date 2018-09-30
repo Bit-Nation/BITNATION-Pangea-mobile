@@ -515,7 +515,7 @@ RCT_REMAP_METHOD(PanthalassaMessages,
     NSString *response;
     NSError *error = nil;
     
-    response = PanthalassaMessages([RCTConvert NSString:config[@"partner"]],
+    response = PanthalassaMessages([[RCTConvert NSNumber:config[@"chatID"]] longValue],
                                    [RCTConvert NSString:config[@"startStr"]],
                                    [[RCTConvert NSNumber:config[@"amount"]] longValue],
                                    &error);
@@ -535,7 +535,7 @@ RCT_REMAP_METHOD(PanthalassaSendMessage,
   [self onNewQueue:^void() {
     BOOL response;
     NSError *error = nil;
-    response = PanthalassaSendMessage([RCTConvert NSString:config[@"partner"]],
+    response = PanthalassaSendMessage([[RCTConvert NSNumber:config[@"chatID"]] longValue],
                                       [RCTConvert NSString:config[@"message"]],
                                       &error);
     
@@ -613,7 +613,7 @@ RCT_REMAP_METHOD(PanthalassaMarkMessagesAsRead,
     BOOL response;
     
     NSError *error = nil;
-    response = PanthalassaMarkMessagesAsRead([RCTConvert NSString:config[@"partner"]], &error);
+    response = PanthalassaMarkMessagesAsRead([[RCTConvert NSNumber:config[@"chatID"]] longValue], &error);
     NSNumber *val = [NSNumber numberWithBool:response];
     
     if (error == nil) {
@@ -639,6 +639,72 @@ RCT_REMAP_METHOD(PanthalassaCall,
     
     if (error == nil) {
       resolve(response);
+    } else {
+      reject(@"error", error.localizedDescription, error);
+    }
+  }];
+}
+
+RCT_REMAP_METHOD(PanthalassaAddUsersToGroupChat,
+                 PanthalassaAddUsersToGroupChatWithResolver:(NSDictionary *)config
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject) {
+  [self onNewQueue:^void() {
+    BOOL response;
+    
+    NSError *error = nil;
+    response = PanthalassaAddUsersToGroupChat([RCTConvert NSString:config[@"users"]],
+                                              [[RCTConvert NSNumber:config[@"chatID"]] longValue],
+                                              &error);
+    NSNumber *val = [NSNumber numberWithBool:response];
+    
+    if (error == nil) {
+      resolve(val);
+    } else {
+      reject(@"error", error.localizedDescription, error);
+    }
+  }];
+}
+
+RCT_REMAP_METHOD(PanthalassaCreateGroupChat,
+                 PanthalassaCreateGroupChatWithResolver:(NSDictionary *)config
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject) {
+  [self onNewQueue:^void() {
+    BOOL response;
+    
+    NSError *error = nil;
+    long ret;
+    response = PanthalassaCreateGroupChat([RCTConvert NSString:config[@"users"]],
+                                          [RCTConvert NSString:config[@"name"]],
+                                              &ret,
+                                              &error);
+    NSNumber *val = [NSNumber numberWithLong:ret];
+    
+    if (error == nil && response) {
+      resolve(val);
+    } else {
+      reject(@"error", error.localizedDescription, error);
+    }
+  }];
+}
+
+RCT_REMAP_METHOD(PanthalassaCreatePrivateChat,
+                 PanthalassaCreatePrivateChatWithResolver:(NSDictionary *)config
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject) {
+  [self onNewQueue:^void() {
+    BOOL response;
+    
+    NSError *error = nil;
+    long ret;
+    response = PanthalassaCreatePrivateChat([RCTConvert NSString:config[@"partnerStr"]],
+                                          &ret,
+                                          &error);
+    NSNumber *val = [NSNumber numberWithLong:ret];
+    
+    if (error == nil && response) {
+      resolve(val);
     } else {
       reject(@"error", error.localizedDescription, error);
     }

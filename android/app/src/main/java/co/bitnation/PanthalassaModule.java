@@ -445,7 +445,7 @@ public class PanthalassaModule extends ReactContextBaseJavaModule {
         new Thread(new Runnable() {
             public void run() {
                 try {
-                    String response = Panthalassa.messages(jsonParams.getString("partner"),
+                    String response = Panthalassa.messages(jsonParams.getInt("chatID"),
                             jsonParams.getString("startStr"),
                             jsonParams.getInt("amount"));
                     promise.resolve(response);
@@ -462,7 +462,7 @@ public class PanthalassaModule extends ReactContextBaseJavaModule {
         new Thread(new Runnable() {
             public void run() {
                 try {
-                    Panthalassa.sendMessage(jsonParams.getString("partner"),
+                    Panthalassa.sendMessage(jsonParams.getInt("chatID"),
                             jsonParams.getString("message"));
                     promise.resolve(true);
                 } catch (Exception e) {
@@ -523,7 +523,7 @@ public class PanthalassaModule extends ReactContextBaseJavaModule {
         new Thread(new Runnable() {
             public void run() {
                 try {
-                    Panthalassa.markMessagesAsRead(jsonParams.getString("partner"));
+                    Panthalassa.markMessagesAsRead(jsonParams.getInt("chatID"));
                     promise.resolve(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -541,6 +541,53 @@ public class PanthalassaModule extends ReactContextBaseJavaModule {
                 try {
                     String response = Panthalassa.call(jsonParams.getString("command"),
                             jsonParams.getString("payload"));
+                    promise.resolve(response);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    promise.reject("error", e.getLocalizedMessage());
+                }
+            }
+        }).start();
+    }
+
+    @ReactMethod
+    public void PanthalassaAddUsersToGroupChat(final ReadableMap jsonParams, final Promise promise) throws JSONException {
+        new Thread(new Runnable() {
+            public void run() {
+                try {
+                    Panthalassa.addUsersToGroupChat(jsonParams.getString("users"),
+                            jsonParams.getInt("chatID"));
+                    promise.resolve(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    promise.reject("error", e.getLocalizedMessage());
+                }
+            }
+        }).start();
+    }
+
+    @ReactMethod
+    public void PanthalassaCreateGroupChat(final ReadableMap jsonParams, final Promise promise) throws JSONException {
+        new Thread(new Runnable() {
+            public void run() {
+                try {
+                    long response = Panthalassa.createGroupChat(jsonParams.getString("users"),
+                            jsonParams.getString("name"));
+                    promise.resolve(response);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    promise.reject("error", e.getLocalizedMessage());
+                }
+            }
+        }).start();
+    }
+
+    @ReactMethod
+    public void PanthalassaCreatePrivateChat(final ReadableMap jsonParams, final Promise promise) throws JSONException {
+        new Thread(new Runnable() {
+            public void run() {
+                try {
+                    long response = Panthalassa.createPrivateChat(jsonParams.getString("partnerStr"));
                     promise.resolve(response);
                 } catch (Exception e) {
                     e.printStackTrace();

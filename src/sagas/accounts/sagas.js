@@ -13,7 +13,7 @@ import {
   currentAccountIdChanged,
   loginTaskUpdated,
   PERFORM_DEFERRED_LOGIN,
-  savePassword,
+  savePassword, setCurrentAccountIdentityKey,
 } from '../../actions/accounts';
 import type {
   CheckPasswordAction,
@@ -25,17 +25,14 @@ import type {
   SavePinCodeAction,
 } from '../../actions/accounts';
 import { fetchAllChats } from '../../actions/chat';
-import {
-  convertFromDatabase, convertToDatabase, retrieveProfileFromAccount,
-  retrieveProfileFromPartialAccount,
-} from '../../utils/mapping/account';
+import { convertFromDatabase, convertToDatabase, retrieveProfileFromAccount, retrieveProfileFromPartialAccount } from '../../utils/mapping/account';
 import TaskBuilder from '../../utils/asyncTask';
 import AccountsService from '../../services/accounts';
 import { InvalidPasswordError, LoginFailedError } from '../../global/errors/accounts';
 import type { AccountType as DBAccount } from '../../services/database/schemata';
 import type { NetworkType, Profile } from '../../types/Account';
 import type { SaveEditingAccountAction } from '../../actions/profile';
-import { cancelAccountEditing, setPublicKey } from '../../actions/profile';
+import { cancelAccountEditing } from '../../actions/profile';
 import { resetSettings } from '../../actions/settings';
 import ChatService from '../../services/chat';
 import { version } from '../../../package.json';
@@ -137,6 +134,7 @@ export function* getCurrentAccount(): Generator<*, *, *> {
 export function* listenForDatabaseUpdates(): Generator<*, *, any> {
   const db = yield defaultDB;
   const results = yield call([db, 'objects'], 'Account');
+
   const channel = yield call(createDatabaseUpdateChannel, results);
   while (true) {
     const { collection } = yield take(channel);
@@ -231,7 +229,7 @@ export function* login(userInfo: ({ accountId: string, accountStore?: string }),
   }
 
   const publicKey = yield call(ChatService.getPublicKey);
-  yield put(setPublicKey(publicKey));
+  yield put(setCurrentAccountIdentityKey(publicKey));
 
   yield put(currentAccountIdChanged(accountId));
 
