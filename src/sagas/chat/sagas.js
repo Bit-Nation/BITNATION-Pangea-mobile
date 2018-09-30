@@ -110,6 +110,7 @@ export function* startNewChatSaga(action: StartNewChatAction): Generator<*, *, *
     } else {
       chatId = yield call(ChatService.startGroupChat, partnersIdentityKeys, groupChatName);
     }
+    yield put(fetchAllChats());
     yield put(openChat(chatId));
 
     yield call(action.callback, true);
@@ -128,7 +129,7 @@ export function* startNewChatSaga(action: StartNewChatAction): Generator<*, *, *
 export async function loadMessages(chatId: number, fromMessageId: string, count: number): Promise<Array<GiftedChatMessageType>> {
   const messages = await ChatService.loadMessages(chatId, fromMessageId, count);
 
-  return messages.map(createGiftedChatMessageObject);
+  return messages.map(createGiftedChatMessageObject).filter(message => message.text.length > 0 || message.dAppMessage != null);
 }
 
 /**
