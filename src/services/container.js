@@ -1,7 +1,7 @@
 // @flow
 
 import type { Account } from '../types/Account';
-import { normalizeEthPrivateKey } from '../utils/key';
+import { normalizeHexValue } from '../utils/key';
 import defaultDB from './database';
 import EthereumServiceFactory from './ethereum/factory';
 import EthereumService from './ethereum';
@@ -19,7 +19,7 @@ export default class ServiceContainer {
 
   initServices(account: Account, ethPrivateKey: string) {
     const { service } = EthereumServiceFactory({
-      privateKey: normalizeEthPrivateKey(ethPrivateKey),
+      privateKey: normalizeHexValue(ethPrivateKey),
       networkType: account.networkType,
       app: 'Default Application',
     });

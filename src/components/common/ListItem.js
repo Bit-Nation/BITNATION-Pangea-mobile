@@ -59,7 +59,7 @@ type Props<IDType> = {
    * @desc Icon base64 image to be displayed on the left
    */
   iconSource?: Image.propTypes.source,
-}
+};
 
 /**
  * @desc Component that renders common list item.
@@ -67,7 +67,17 @@ type Props<IDType> = {
  */
 // eslint-disable-next-line arrow-parens
 const ListItem = <IDType>({
-  id, textStyle, onPress, text, AdditionalView, AdditionalLeftView, disclosureIconVisible, disabled, style, iconSource, subtitle,
+  id,
+  textStyle,
+  onPress,
+  text,
+  AdditionalView,
+  AdditionalLeftView,
+  disclosureIconVisible,
+  disabled,
+  style,
+  iconSource,
+  subtitle,
 }: Props<IDType>) => {
   const styles = MediaQueryStyleSheet.create({
     ...GlobalStyles,
@@ -80,7 +90,13 @@ const ListItem = <IDType>({
   );
 
   return (
-    <View style={[styles.sectionListItemContainer, subtitle != null ? styles.itemWithSubtitle : null, style]}>
+    <View
+      style={[
+        styles.sectionListItemContainer,
+        subtitle != null ? styles.itemWithSubtitle : null,
+        style,
+      ]}
+    >
       <TouchableOpacity
         testID='Touchable'
         onPress={() => onPress(id)}
@@ -88,24 +104,26 @@ const ListItem = <IDType>({
         disabled={disabled}
       >
         <AdditionalLeftView />
-        {
-          iconSource != null &&
+        {iconSource != null && (
           <Image source={iconSource} style={styles.listItemIcon} />
-        }
-        {
-          subtitle == null ? title :
+        )}
+        {subtitle == null ? (
+          title
+        ) : (
           <View style={styles.listItemTextContainer}>
             {title}
             <Text style={styles.listItemSubtitle} numberOfLines={1}>
               {subtitle}
             </Text>
           </View>
-        }
+        )}
         <AdditionalView />
-        {
-          disclosureIconVisible &&
-          <Image source={AssetsImages.disclosureRowIcon} style={styles.sectionListDisclosure} />
-        }
+        {disclosureIconVisible && (
+          <Image
+            source={AssetsImages.disclosureRowIcon}
+            style={styles.sectionListDisclosure}
+          />
+        )}
       </TouchableOpacity>
     </View>
   );
@@ -122,6 +140,7 @@ ListItem.defaultProps = {
   AdditionalLeftView: () => null,
   iconSource: undefined,
   subtitle: undefined,
+  value: undefined,
 };
 
 export default ListItem;
