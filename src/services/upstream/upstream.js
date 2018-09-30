@@ -115,25 +115,17 @@ export default class UpstreamService {
 
   handleSendEthereumTransaction = async (id: string, info: any) => {
     const { value, to, data } = info;
-    console.log('[DOCUMENTS] info:', info);
-    console.log('[DOCUMENTS] value:', value);
     BigNumber.config({ DECIMAL_PLACES: 18 });
-    // const valueBn = await ethers.utils.parseUnits(value.toString(), 'wei');
     const valueBn = new BigNumber(value);
-    console.log('[DOCUMENTS] valueBn:', valueBn);
     const valueEth = valueBn.div(new BigNumber(10).pow(18)).toString(10);
-    console.log('[DOCUMENTS] valueEth:', valueEth);
     const transaction = {
       to,
       data: normalizeHexValue(data),
       value: ethers.utils.parseEther(valueEth),
-      gasLimit: 21000,
-      gasPrice: ethers.utils.parseUnits('50', 'gwei'),
     };
 
     console.log('[DOCUMENTS] transaction:', transaction);
     try {
-      // const txDetails = await ethers.Wallet.parseTransaction(transaction);
       const txDetails = await this.ethereumService.wallet.sendTransaction(transaction);
       console.log('[DOCUMENTS] txDetails:', txDetails);
       return this.sendSuccessResponse(id, {
