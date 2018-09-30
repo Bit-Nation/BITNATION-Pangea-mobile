@@ -27,7 +27,6 @@ export default function CustomSigner(privateKey: string, provider: string, app: 
   this.defaultGasLimit = wallet.defaultGasLimit;
   this.sign = async (transaction) => {
     const transactionObject = transaction;
-    console.log('[DOCUMENTS] sendTransaction-transactionObject:', transactionObject);
     try {
       let estimate;
       // If no to address is specified, like in the case of contract creation, set a default one to the wallet address
@@ -39,7 +38,6 @@ export default function CustomSigner(privateKey: string, provider: string, app: 
       } else {
         estimate = await this.estimateGas(transactionObject);
       }
-      console.log('[DOCUMENTS] Enter signedTransaction', transactionObject);
       const signedTransaction = await new Promise((resolve, reject) => {
         Navigation.showModal({
           ...screen('CONFIRMATION_SCREEN'),
@@ -51,7 +49,6 @@ export default function CustomSigner(privateKey: string, provider: string, app: 
               // Here we have gasPrice which is in wei, so we need to convert it into gwei.
               transactionObject.gasPrice = ethers.utils.parseUnits(gasPrice.toString(), 'gwei');
               transactionObject.gasLimit = ethers.utils.bigNumberify(gasLimit);
-              console.log('[DOCUMENTS] sendTransaction-transactionObject2:', transactionObject);
               resolve(wallet.sign(transactionObject));
             },
             to: transactionObject.to,
@@ -69,7 +66,6 @@ export default function CustomSigner(privateKey: string, provider: string, app: 
     }
   };
   this.sendTransaction = (transaction) => {
-    console.log('[DOCUMENTS] sendTransaction-transaction:', transaction);
     if (!this.provider) {
       throw new Error('missing provider');
     }
@@ -109,12 +105,8 @@ export default function CustomSigner(privateKey: string, provider: string, app: 
     }
 
     const data = ethers.utils.hexlify(normalizeHexValue(transaction.data || ''));
-    console.log('[DOCUMENTS] sendTransaction-data:', data);
-    // const bnValue = ethers.utils.bigNumberify(transaction.value);
     const value = ethers.utils.hexlify(transaction.value || 0);
-    console.log('[DOCUMENTS] sendTransaction-value:', value);
     return Promise.all([gasPricePromise, noncePromise, toPromise]).then(async (results) => {
-      console.log('[DOCUMENTS] sendTransaction-results:', results);
       const signedTransaction = await self.sign({
         to: results[2],
         data,
