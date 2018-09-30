@@ -204,18 +204,16 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
         <SectionList
           renderItem={(item) => {
             const chat: ChatType = item.item;
-            let chatImage = null;
+            let chatImage = AssetsImages.avatarIcon;
             if (chat.members.length === 1) {
               const partner = this.props.profiles[chat.members[0]];
               if (partner != null) {
-                chatImage = partner.image;
+                chatImage = imageSource(partner.image) || AssetsImages.avatarIcon;
               }
             } else {
-              // @todo Uncomment
-              // chatImage = AssetsImages.groupChatIcon;
+              chatImage = AssetsImages.ChatUI.groupChatIcon;
             }
 
-            const iconSource = imageSource(chatImage) || AssetsImages.avatarIcon;
             const messagePreview = ((message: GiftedChatMessageType | null) => {
               if (message == null) return null;
               if (message.dAppMessage == null) return message.text;
@@ -226,7 +224,7 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
             return (<ChatListItem
               name={this.buildChatName(chat)}
               lastMessage={messagePreview}
-              avatar={iconSource}
+              avatar={chatImage}
               onPress={this.onChatSelected}
               unreadMessages={chat.unreadMessages}
               id={chat.id}
