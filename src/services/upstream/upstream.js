@@ -4,10 +4,11 @@ import ethers from 'ethers';
 import { NativeEventEmitter, NativeModules } from 'react-native';
 // $FlowFixMe Flow doesn't want to allow import buffer for some reason.
 import { Buffer } from 'buffer';
-
+import { BigNumber } from 'bignumber.js';
 import { api_proto as apiProto } from './compiled';
 import EthereumService from '../ethereum';
 import { type DAppModalInfo } from '../../types/DApp';
+import { normalizeHexValue } from '../../utils/key';
 
 const { Panthalassa } = NativeModules;
 const { Response, Request } = apiProto;
@@ -64,7 +65,7 @@ export default class UpstreamService {
     try {
       const decoded = Request.decode(Buffer.from(data, 'base64'));
       console.log(`[PANGEA] Received request ${decoded.requestID}`);
-
+      console.log('[DOCUMENTS] decoded:', decoded);
       if (decoded.showModal != null) {
         return this.handleShowModal(decoded.requestID, decoded.showModal);
       } else if (decoded.sendEthereumTransaction != null) {
@@ -114,14 +115,25 @@ export default class UpstreamService {
 
   handleSendEthereumTransaction = async (id: string, info: any) => {
     const { value, to, data } = info;
-    const transaction = {
-      to,
-      data,
-      value: ethers.utils.parseEther(value),
-    };
     console.log('[DOCUMENTS] info:', info);
     console.log('[DOCUMENTS] value:', value);
+    BigNumber.config({ DECIMAL_PLACES: 18 });
+    // const valueBn = await ethers.utils.parseUnits(value.toString(), 'wei');
+    const valueBn = new BigNumber(value);
+    console.log('[DOCUMENTS] valueBn:', valueBn);
+    const valueEth = valueBn.div(new BigNumber(10).pow(18)).toString(10);
+    console.log('[DOCUMENTS] valueEth:', valueEth);
+    const transaction = {
+      to,
+      data: normalizeHexValue(data),
+      value: ethers.utils.parseEther(valueEth),
+      gasLimit: 21000,
+      gasPrice: ethers.utils.parseUnits('50', 'gwei'),
+    };
+
+    console.log('[DOCUMENTS] transaction:', transaction);
     try {
+      // const txDetails = await ethers.Wallet.parseTransaction(transaction);
       const txDetails = await this.ethereumService.wallet.sendTransaction(transaction);
       console.log('[DOCUMENTS] txDetails:', txDetails);
       return this.sendSuccessResponse(id, {
