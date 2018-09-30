@@ -11,6 +11,7 @@ describe('ConfirmationScreen', () => {
     navigator: navigatorMock,
     amount: '0',
     estimate: '0',
+    gasLimit: 21000,
   };
 
   beforeEach(() => {
