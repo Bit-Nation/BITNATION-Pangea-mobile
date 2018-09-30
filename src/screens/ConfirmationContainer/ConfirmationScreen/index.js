@@ -64,7 +64,7 @@ class ConfirmationScreen extends NavigatorComponent<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      gasPrice: 2,
+      gasPrice: 25,
       gasLimit: this.props.gasLimit === null ? DEFAULT_GAS_LIMIT : this.props.gasLimit,
     };
 
