@@ -25,6 +25,7 @@ import DocumentDetail from '../../../components/common/DocumentDetail';
 import { getCurrentAccount } from '../../../reducers/accounts';
 import MoreMenuModal from '../../../components/common/MoreMenuModal';
 import { contentStorage } from '../../../services/documents';
+import { alert } from '../../../global/alerts';
 
 type Props = {
   /**
@@ -110,30 +111,50 @@ class DocumentsViewScreen extends NavigatorComponent<
     }
   }
 
+  dismissModal = () => {
+    this.setState({ moreMenuVisible: false });
+  }
+
   onSelectEdit = () => {
     const { openedDocumentId } = this.props;
     if (openedDocumentId == null) return;
     const document = getOpenedDocument(this.props);
     if (document == null) return;
-
     this.props.startDocumentEditing(openedDocumentId);
     this.props.navigator.showModal({
       ...screen('DOCUMENT_MODIFY_SCREEN'),
       title: document.name,
+      passProps: {
+        onWillClose: this.dismissModal,
+      },
     });
   };
 
   onSelectDelete = () => {
+    alert('confirmDelete', [
+      {
+        name: 'yes',
+        onPress: () => this.confirmDelete(),
+      }, {
+        name: 'no',
+        onPress: () => this.cancelDelete(),
+      }]);
+  }
+
+  cancelDelete = () => {
+    this.setState({ moreMenuVisible: false });
+  }
+
+  confirmDelete = () => {
     const { openedDocumentId } = this.props;
     if (openedDocumentId == null) return;
-
     this.props.deleteDocument(openedDocumentId);
     this.setState({ moreMenuVisible: false }, () => {
       setTimeout(() => {
         this.props.navigator.dismissModal();
       }, 1000);
     });
-  };
+  }
 
   onDocumentSubmit = () => {
     const { openedDocumentId } = this.props;

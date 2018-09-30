@@ -57,3 +57,7 @@ export const NATIONS_PROD_ENDPOINT = 'https://nation-cache.herokuapp.com/nations
  * @type {number}
  */
 export const CHAT_MESSAGES_PAGE = 20;
+
+// Transaction Values
+
+export const DEFAULT_GAS_LIMIT = '21000';
