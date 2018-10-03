@@ -8,7 +8,6 @@ import { BigNumber } from 'bignumber.js';
 import { api_proto as apiProto } from './compiled';
 import EthereumService from '../ethereum';
 import { type DAppModalInfo } from '../../types/DApp';
-import { normalizeHexValue } from '../../utils/key';
 
 const { Panthalassa } = NativeModules;
 const { Response, Request } = apiProto;
