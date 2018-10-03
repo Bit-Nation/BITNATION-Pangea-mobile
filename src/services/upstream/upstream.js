@@ -120,7 +120,7 @@ export default class UpstreamService {
     const valueEth = valueBn.div(new BigNumber(10).pow(18)).toString(10);
     const transaction = {
       to,
-      data: normalizeHexValue(data),
+      data,
       value: ethers.utils.parseEther(valueEth),
     };
 
