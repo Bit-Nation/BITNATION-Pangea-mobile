@@ -327,6 +327,11 @@
       "invalidKey": "Invalid or Missing Key",
       "inviteSent": "Invite Sent",
       "dAppMessagePreview": "DApp message...",
+      "chatNameAlert": {
+        "title": "Enter chat name:",
+        "confirm": "$t(common.ok)",
+        "cancel": "$t(common.cancel)"
+      },
       "menu": {
         "filterChatList": "Filter Chat List",
         "markAllRead": "Mark all as read",
@@ -594,10 +599,16 @@
       "actionSheetTitle": "Select document to store"
     },
     "documentView": {
+      "submitDocument": "Submit Document",
       "actions": {
         "edit": "Edit metadata",
         "delete": "Delete document"
-      }
+      },
+      "registered": "Registered",
+      "txHash": "Tx Hash",
+      "signature": "Signature",
+      "docHash": "Document Hash",
+      "status": "Status"
     },
     "documentModify": {
       "title": "New document",

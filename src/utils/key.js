@@ -26,7 +26,7 @@ export function decompressMnemonic(mnemonicString: string): Mnemonic {
  * @param {string} ethPrivateKey Private key to normalize
  * @return {string} Normalized private key
  */
-export function normalizeEthPrivateKey(ethPrivateKey: string): string {
+export function normalizeHexValue(ethPrivateKey: string): string {
   if (ethPrivateKey.startsWith('0x')) {
     return ethPrivateKey;
   }

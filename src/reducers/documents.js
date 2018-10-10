@@ -12,6 +12,7 @@ import {
   CANCEL_DOCUMENT_MODIFICATION,
   UPDATE_MODIFIED_DOCUMENT_FIELD,
   OPEN_DOCUMENT, DELETE_DOCUMENT,
+  UPLOAD_DOCUMENT,
 } from '../actions/documents';
 import { SERVICES_DESTROYED } from '../actions/serviceContainer';
 import type { Document, EditingDocument } from '../types/Documents';
@@ -144,6 +145,12 @@ export default (state: State = initialState, action: Action): State => {
       }
 
       return state;
+    }
+    case UPLOAD_DOCUMENT: {
+      return {
+        ...state,
+        isUploading: true,
+      };
     }
     default:
       return state;

@@ -16,7 +16,6 @@ export type ProfileType = {
 
 export type GiftedChatUserType = {
   _id: string,
-  name: string,
 };
 
 export type DAppMessageType = {
@@ -34,11 +33,31 @@ export type GiftedChatMessageType = {
   dAppMessage: DAppMessageType | null,
 };
 
-export type ChatSessionType = {
-  publicKey: string,
-  profile: ProfileType,
+export type ChatType = {
+  id: number,
+  // Identity keys of members
+  members: Array<string>,
   accountId: string,
   messages: Array<GiftedChatMessageType>,
+  name: string | null,
   unreadMessages: boolean,
 };
 
+export type PanthalassaChatType = {
+  chat_id: number,
+  // For single partner chat
+  chat_partner: string | null,
+  // For group chat
+  partners: Array<string> | null,
+  group_chat_name: string,
+  unread_messages: boolean,
+};
+
+export type PanthalassaMessage = {
+  db_id: string,
+  received: boolean,
+  dapp: string,
+  content: string,
+  sender: string,
+  created_at: number,
+}

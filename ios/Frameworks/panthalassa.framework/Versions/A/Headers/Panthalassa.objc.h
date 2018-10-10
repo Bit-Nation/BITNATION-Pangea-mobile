@@ -61,6 +61,8 @@ to use the mesh network
 - (void)setPrivChatBearerToken:(NSString*)v;
 @end
 
+FOUNDATION_EXPORT BOOL PanthalassaAddUsersToGroupChat(NSString* users, long chatID, NSError** error);
+
 FOUNDATION_EXPORT NSString* PanthalassaAllChats(NSError** error);
 
 FOUNDATION_EXPORT NSString* PanthalassaCall(NSString* command, NSString* payload, NSError** error);
@@ -73,6 +75,13 @@ FOUNDATION_EXPORT BOOL PanthalassaConnectLogger(NSString* address, NSError** err
  * connect the host to DApp development server
  */
 FOUNDATION_EXPORT BOOL PanthalassaConnectToDAppDevHost(NSString* address, NSError** error);
+
+/**
+ * return chatID
+ */
+FOUNDATION_EXPORT BOOL PanthalassaCreateGroupChat(NSString* users, NSString* name, long* ret0_, NSError** error);
+
+FOUNDATION_EXPORT BOOL PanthalassaCreatePrivateChat(NSString* partnerStr, long* ret0_, NSError** error);
 
 FOUNDATION_EXPORT NSString* PanthalassaDApps(NSError** error);
 
@@ -107,9 +116,9 @@ FOUNDATION_EXPORT NSString* PanthalassaIdentityPublicKey(NSError** error);
  */
 FOUNDATION_EXPORT BOOL PanthalassaIsValidMnemonic(NSString* mne);
 
-FOUNDATION_EXPORT BOOL PanthalassaMarkMessagesAsRead(NSString* partner, NSError** error);
+FOUNDATION_EXPORT BOOL PanthalassaMarkMessagesAsRead(long chatID, NSError** error);
 
-FOUNDATION_EXPORT NSString* PanthalassaMessages(NSString* partner, NSString* startStr, long amount, NSError** error);
+FOUNDATION_EXPORT NSString* PanthalassaMessages(long chatID, NSString* startStr, long amount, NSError** error);
 
 /**
  * Creates an new set of encrypted account key's
@@ -132,7 +141,7 @@ FOUNDATION_EXPORT BOOL PanthalassaOpenDApp(NSString* id_, NSString* context, NSE
 
 FOUNDATION_EXPORT NSString* PanthalassaRenderMessage(NSString* signingKey, NSString* payload, NSError** error);
 
-FOUNDATION_EXPORT BOOL PanthalassaSendMessage(NSString* partner, NSString* message, NSError** error);
+FOUNDATION_EXPORT BOOL PanthalassaSendMessage(long chatID, NSString* message, NSError** error);
 
 FOUNDATION_EXPORT BOOL PanthalassaSendResponse(NSString* id_, NSString* data, NSString* responseError, long timeout, NSError** error);
 

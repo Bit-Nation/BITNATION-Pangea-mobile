@@ -14,7 +14,7 @@ import {
   loginTaskUpdated,
   PERFORM_DEFERRED_LOGIN,
   CANCEL_LOGIN,
-  savePassword,
+  savePassword, setCurrentAccountIdentityKey,
 } from '../../actions/accounts';
 import type {
   CheckPasswordAction,
@@ -26,17 +26,14 @@ import type {
   SavePinCodeAction,
 } from '../../actions/accounts';
 import { fetchAllChats } from '../../actions/chat';
-import {
-  convertFromDatabase, convertToDatabase, retrieveProfileFromAccount,
-  retrieveProfileFromPartialAccount,
-} from '../../utils/mapping/account';
+import { convertFromDatabase, convertToDatabase, retrieveProfileFromAccount, retrieveProfileFromPartialAccount } from '../../utils/mapping/account';
 import TaskBuilder from '../../utils/asyncTask';
 import AccountsService from '../../services/accounts';
 import { InvalidPasswordError, LoginFailedError } from '../../global/errors/accounts';
 import type { AccountType as DBAccount } from '../../services/database/schemata';
-import type { Profile } from '../../types/Account';
+import type { NetworkType, Profile } from '../../types/Account';
 import type { SaveEditingAccountAction } from '../../actions/profile';
-import { cancelAccountEditing, setPublicKey } from '../../actions/profile';
+import { cancelAccountEditing } from '../../actions/profile';
 import { resetSettings } from '../../actions/settings';
 import ChatService from '../../services/chat';
 import { version } from '../../../package.json';
@@ -138,6 +135,7 @@ export function* getCurrentAccount(): Generator<*, *, *> {
 export function* listenForDatabaseUpdates(): Generator<*, *, any> {
   const db = yield defaultDB;
   const results = yield call([db, 'objects'], 'Account');
+
   const channel = yield call(createDatabaseUpdateChannel, results);
   while (true) {
     const { collection } = yield take(channel);
@@ -197,10 +195,11 @@ export function* handleLoginProcess(userInfo: ({ accountId: string, accountStore
   yield put(loginTaskUpdated(TaskBuilder.pending()));
   const { accountId } = userInfo;
   let accountStore: string;
+  let networkType: NetworkType = 'main';
   let profile: Profile;
   if (userInfo.accountStore == null) {
     const account: DBAccount = yield call(getAccount, accountId);
-    ({ accountStore } = account);
+    ({ accountStore, networkType } = account);
     profile = retrieveProfileFromAccount(convertFromDatabase(account));
   } else {
     ({ accountStore } = userInfo);
@@ -211,10 +210,11 @@ export function* handleLoginProcess(userInfo: ({ accountId: string, accountStore
       return;
     }
     profile = result;
+    ({ networkType } = creatingAccount);
   }
 
   try {
-    const isValid = yield call(AccountsService.login, accountStore, profile, password);
+    const isValid = yield call(AccountsService.login, accountStore, profile, password, networkType);
     if (isValid !== true) {
       yield put(loginTaskUpdated(TaskBuilder.failure(new InvalidPasswordError())));
       return;
@@ -230,7 +230,7 @@ export function* handleLoginProcess(userInfo: ({ accountId: string, accountStore
   }
 
   const publicKey = yield call(ChatService.getPublicKey);
-  yield put(setPublicKey(publicKey));
+  yield put(setCurrentAccountIdentityKey(publicKey));
 
   yield put(currentAccountIdChanged(accountId));
 
@@ -336,9 +336,9 @@ export function* checkPinCodeSaga(action: CheckPinCodeAction): Generator<*, *, *
 export function* checkPasswordSaga(action: CheckPasswordAction): Generator<*, *, *> {
   try {
     const account: DBAccount = yield call(getAccount, action.accountId);
-    const { accountStore } = account;
+    const { accountStore, networkType } = account;
     const profile = retrieveProfileFromAccount(convertFromDatabase(account));
-    const success = yield call(AccountsService.checkPasscode, accountStore, profile, action.password);
+    const success = yield call(AccountsService.checkPasscode, accountStore, profile, action.password, networkType);
     yield call(action.callback, success);
   } catch (e) {
     yield call(action.callback, false);
