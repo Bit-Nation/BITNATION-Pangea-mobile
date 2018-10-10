@@ -21,13 +21,14 @@ import {
   accountListUpdated, changeCreatingAccountField, checkPassword, checkPinCode, CURRENT_ACCOUNT_ID_CHANGED,
   currentAccountIdChanged, login,
   loginTaskUpdated, mnemonicConfirmed, PERFORM_DEFERRED_LOGIN, saveCreatingAccount, savePassword, savePinCode,
+  setCurrentAccountIdentityKey,
   validateMnemonicWithAccount, CANCEL_LOGIN,
 } from '../../../../src/actions/accounts';
 import TaskBuilder from '../../../../src/utils/asyncTask';
 import AccountsService from '../../../../src/services/accounts';
 import ChatService from '../../../../src/services/chat';
 import { InvalidPasswordError, LoginFailedError } from '../../../../src/global/errors/accounts';
-import { cancelAccountEditing, saveEditingAccount, setPublicKey } from '../../../../src/actions/profile';
+import { cancelAccountEditing, saveEditingAccount } from '../../../../src/actions/profile';
 import { fetchAllChats } from '../../../../src/actions/chat';
 
 const partialAccountMock: PartialAccount = {
@@ -228,6 +229,7 @@ describe('login', () => {
         location: null,
       },
       'PASSWORD',
+      'main',
     ));
 
     // Invalid password
@@ -248,7 +250,7 @@ describe('login', () => {
 
     // successful path
     expect(gen.next(true).value).toEqual(call(ChatService.getPublicKey));
-    expect(gen.next('pubkey').value).toEqual(put(setPublicKey('pubkey')));
+    expect(gen.next('identityKey').value).toEqual(put(setCurrentAccountIdentityKey('identityKey')));
     expect(gen.next().value).toEqual(put(currentAccountIdChanged('ID')));
     expect(gen.next().value).toEqual(put(loginTaskUpdated(TaskBuilder.success())));
     expect(gen.next().value).toEqual(put(fetchAllChats()));
@@ -270,6 +272,7 @@ describe('login', () => {
         location: null,
       },
       'PASSWORD',
+      'main',
     ));
 
     // Invalid password
@@ -290,7 +293,7 @@ describe('login', () => {
 
     // successful path
     expect(gen.next(true).value).toEqual(call(ChatService.getPublicKey));
-    expect(gen.next('pubkey').value).toEqual(put(setPublicKey('pubkey')));
+    expect(gen.next('identityKey').value).toEqual(put(setCurrentAccountIdentityKey('identityKey')));
     expect(gen.next().value).toEqual(put(currentAccountIdChanged('ID')));
     expect(gen.next().value).toEqual(put(loginTaskUpdated(TaskBuilder.success())));
     expect(gen.next().value).toEqual(put(fetchAllChats()));
@@ -379,6 +382,7 @@ test('checkPasswordSaga', () => {
         location: null,
       },
       'PASSWORD',
+      'main',
     ));
 
   // Invalid password

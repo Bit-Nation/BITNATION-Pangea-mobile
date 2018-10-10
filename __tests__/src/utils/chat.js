@@ -1,29 +1,27 @@
 // @flow
 
-import createGiftedChatMessageObject, { mergeMessages } from '../../../src/utils/chat';
-import type { GiftedChatMessageType } from '../../../src/types/Chat';
+import { createGiftedChatMessageObject, mergeMessages } from '../../../src/utils/chat';
+import type { GiftedChatMessageType, PanthalassaMessage } from '../../../src/types/Chat';
 
 test('createGiftedChatMessageObject', () => {
-  const messageData = [
-    {
-      _id: 1,
-      msg: 'hello',
-      createdAt: '21-03-2018 18:38:34',
-      userId: 4,
-      from: 'mockUser',
+  const messageData: PanthalassaMessage = {
+    db_id: '1',
+    content: 'hello',
+    created_at: 1538166856784029150,
+    sender: 'bq0UlEg/Se2+N3Jntal5oNYVrpFjWB6Brin4NlT3/C0=',
+    dapp: '',
+    received: true,
+  };
+  const result = {
+    _id: '1',
+    text: 'hello',
+    createdAt: new Date('2018-09-28T20:34:16.784Z'),
+    dAppMessage: null,
+    user: {
+      // Converted to hex
+      _id: '6ead1494483f49edbe377267b5a979a0d615ae9163581e81ae29f83654f7fc2d',
     },
-  ];
-  const result = [
-    {
-      _id: messageData[0]._id,
-      text: messageData[0].msg,
-      createdAt: messageData[0].createdAt,
-      user: {
-        _id: messageData[0].userId,
-        name: messageData[0].from,
-      },
-    },
-  ];
+  };
   expect(createGiftedChatMessageObject(messageData)).toEqual(result);
 });
 
