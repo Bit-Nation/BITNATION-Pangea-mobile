@@ -24,17 +24,18 @@ type Props = {
   /**
    * @desc Properties of the transaction
    */
-  to: String,
-  from: String,
-  amount: String,
-  estimate: String,
-  purpose: String,
-  app: String
+  to: string,
+  from: string,
+  amount: string,
+  estimate: string,
+  purpose: string,
+  app: string,
+  gasLimit: string,
 }
 
 type State = {
   gasPrice: number,
-  gasLimit: number,
+  gasLimit: string,
 }
 
 class ConfirmationContainer extends Component<Props, State> {
@@ -64,7 +65,7 @@ const mapStateToProps = () => ({});
 const mapDispatchToProps = () => ({});
 
 ConfirmationScreen.defaultProps = {
-  gasPrice: 2,
+  gasPrice: 25,
   onFail: () => null,
   onSuccess: () => null,
   to: '0x0',
@@ -73,6 +74,7 @@ ConfirmationScreen.defaultProps = {
   estimate: '0',
   purpose: '',
   app: '',
+  gasLimit: '',
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ConfirmationContainer);

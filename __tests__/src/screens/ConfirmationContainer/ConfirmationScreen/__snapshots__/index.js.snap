@@ -7,6 +7,7 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <ConfirmationScreen
     amount="0"
     estimate="0"
+    gasLimit={21000}
     gasPrice={2}
     navigator={
       Object {
@@ -374,7 +375,7 @@ ShallowWrapper {
                         }
                       }
                       thumbTintColor="rgb(252, 228, 149)"
-                      value={2}
+                      value={25}
                     />
                     <View
                       style={
@@ -407,7 +408,7 @@ ShallowWrapper {
                           }
                         }
                       >
-                        2
+                        25
                          
                         Gwei
                       </Text>
@@ -495,7 +496,7 @@ ShallowWrapper {
                             },
                           ]
                         }
-                        value="1500000"
+                        value={21000}
                       />
                     </View>
                   </View>
@@ -893,7 +894,7 @@ ShallowWrapper {
                         }
                       }
                       thumbTintColor="rgb(252, 228, 149)"
-                      value={2}
+                      value={25}
                     />
                     <View
                       style={
@@ -926,7 +927,7 @@ ShallowWrapper {
                           }
                         }
                       >
-                        2
+                        25
                          
                         Gwei
                       </Text>
@@ -1014,7 +1015,7 @@ ShallowWrapper {
                             },
                           ]
                         }
-                        value="1500000"
+                        value={21000}
                       />
                     </View>
                   </View>
@@ -1377,7 +1378,7 @@ ShallowWrapper {
                           }
                         }
                         thumbTintColor="rgb(252, 228, 149)"
-                        value={2}
+                        value={25}
                       />
                       <View
                         style={
@@ -1410,7 +1411,7 @@ ShallowWrapper {
                             }
                           }
                         >
-                          2
+                          25
                            
                           Gwei
                         </Text>
@@ -1498,7 +1499,7 @@ ShallowWrapper {
                               },
                             ]
                           }
-                          value="1500000"
+                          value={21000}
                         />
                       </View>
                     </View>
@@ -1832,7 +1833,7 @@ ShallowWrapper {
                           }
                         }
                         thumbTintColor="rgb(252, 228, 149)"
-                        value={2}
+                        value={25}
                       />
                       <View
                         style={
@@ -1865,7 +1866,7 @@ ShallowWrapper {
                             }
                           }
                         >
-                          2
+                          25
                            
                           Gwei
                         </Text>
@@ -1953,7 +1954,7 @@ ShallowWrapper {
                               },
                             ]
                           }
-                          value="1500000"
+                          value={21000}
                         />
                       </View>
                     </View>
@@ -2286,7 +2287,7 @@ ShallowWrapper {
                           }
                         }
                         thumbTintColor="rgb(252, 228, 149)"
-                        value={2}
+                        value={25}
                       />
                       <View
                         style={
@@ -2319,7 +2320,7 @@ ShallowWrapper {
                             }
                           }
                         >
-                          2
+                          25
                            
                           Gwei
                         </Text>
@@ -2407,7 +2408,7 @@ ShallowWrapper {
                               },
                             ]
                           }
-                          value="1500000"
+                          value={21000}
                         />
                       </View>
                     </View>
@@ -2708,7 +2709,7 @@ ShallowWrapper {
                             }
                           }
                           thumbTintColor="rgb(252, 228, 149)"
-                          value={2}
+                          value={25}
                         />
                         <View
                           style={
@@ -2741,7 +2742,7 @@ ShallowWrapper {
                               }
                             }
                           >
-                            2
+                            25
                              
                             Gwei
                           </Text>
@@ -2829,7 +2830,7 @@ ShallowWrapper {
                                 },
                               ]
                             }
-                            value="1500000"
+                            value={21000}
                           />
                         </View>
                       </View>,
@@ -3347,7 +3348,7 @@ ShallowWrapper {
                               }
                             }
                             thumbTintColor="rgb(252, 228, 149)"
-                            value={2}
+                            value={25}
                           />,
                           <View
                             style={
@@ -3380,7 +3381,7 @@ ShallowWrapper {
                                 }
                               }
                             >
-                              2
+                              25
                                
                               Gwei
                             </Text>
@@ -3427,7 +3428,7 @@ ShallowWrapper {
                               "marginRight": 8,
                             },
                             "thumbTintColor": "rgb(252, 228, 149)",
-                            "value": 2,
+                            "value": 25,
                           },
                           "ref": null,
                           "rendered": null,
@@ -3461,7 +3462,7 @@ ShallowWrapper {
                                   }
                                 }
                               >
-                                2
+                                25
                                  
                                 Gwei
                               </Text>,
@@ -3511,7 +3512,7 @@ ShallowWrapper {
                                 "accessible": true,
                                 "allowFontScaling": true,
                                 "children": Array [
-                                  2,
+                                  25,
                                   " ",
                                   "Gwei",
                                 ],
@@ -3522,7 +3523,7 @@ ShallowWrapper {
                               },
                               "ref": null,
                               "rendered": Array [
-                                2,
+                                25,
                                 " ",
                                 "Gwei",
                               ],
@@ -3618,7 +3619,7 @@ ShallowWrapper {
                                 },
                               ]
                             }
-                            value="1500000"
+                            value={21000}
                           />
                         </View>,
                         "style": Object {
@@ -3679,7 +3680,7 @@ ShallowWrapper {
                                   },
                                 ]
                               }
-                              value="1500000"
+                              value={21000}
                             />,
                           ],
                           "style": Object {
@@ -3755,7 +3756,7 @@ ShallowWrapper {
                                   "lineHeight": 22,
                                 },
                               ],
-                              "value": "1500000",
+                              "value": 21000,
                             },
                             "ref": null,
                             "rendered": null,
@@ -4218,7 +4219,7 @@ ShallowWrapper {
                           }
                         }
                         thumbTintColor="rgb(252, 228, 149)"
-                        value={2}
+                        value={25}
                       />
                       <View
                         style={
@@ -4251,7 +4252,7 @@ ShallowWrapper {
                             }
                           }
                         >
-                          2
+                          25
                            
                           Gwei
                         </Text>
@@ -4339,7 +4340,7 @@ ShallowWrapper {
                               },
                             ]
                           }
-                          value="1500000"
+                          value={21000}
                         />
                       </View>
                     </View>
@@ -4737,7 +4738,7 @@ ShallowWrapper {
                           }
                         }
                         thumbTintColor="rgb(252, 228, 149)"
-                        value={2}
+                        value={25}
                       />
                       <View
                         style={
@@ -4770,7 +4771,7 @@ ShallowWrapper {
                             }
                           }
                         >
-                          2
+                          25
                            
                           Gwei
                         </Text>
@@ -4858,7 +4859,7 @@ ShallowWrapper {
                               },
                             ]
                           }
-                          value="1500000"
+                          value={21000}
                         />
                       </View>
                     </View>
@@ -5221,7 +5222,7 @@ ShallowWrapper {
                             }
                           }
                           thumbTintColor="rgb(252, 228, 149)"
-                          value={2}
+                          value={25}
                         />
                         <View
                           style={
@@ -5254,7 +5255,7 @@ ShallowWrapper {
                               }
                             }
                           >
-                            2
+                            25
                              
                             Gwei
                           </Text>
@@ -5342,7 +5343,7 @@ ShallowWrapper {
                                 },
                               ]
                             }
-                            value="1500000"
+                            value={21000}
                           />
                         </View>
                       </View>
@@ -5676,7 +5677,7 @@ ShallowWrapper {
                             }
                           }
                           thumbTintColor="rgb(252, 228, 149)"
-                          value={2}
+                          value={25}
                         />
                         <View
                           style={
@@ -5709,7 +5710,7 @@ ShallowWrapper {
                               }
                             }
                           >
-                            2
+                            25
                              
                             Gwei
                           </Text>
@@ -5797,7 +5798,7 @@ ShallowWrapper {
                                 },
                               ]
                             }
-                            value="1500000"
+                            value={21000}
                           />
                         </View>
                       </View>
@@ -6130,7 +6131,7 @@ ShallowWrapper {
                             }
                           }
                           thumbTintColor="rgb(252, 228, 149)"
-                          value={2}
+                          value={25}
                         />
                         <View
                           style={
@@ -6163,7 +6164,7 @@ ShallowWrapper {
                               }
                             }
                           >
-                            2
+                            25
                              
                             Gwei
                           </Text>
@@ -6251,7 +6252,7 @@ ShallowWrapper {
                                 },
                               ]
                             }
-                            value="1500000"
+                            value={21000}
                           />
                         </View>
                       </View>
@@ -6552,7 +6553,7 @@ ShallowWrapper {
                               }
                             }
                             thumbTintColor="rgb(252, 228, 149)"
-                            value={2}
+                            value={25}
                           />
                           <View
                             style={
@@ -6585,7 +6586,7 @@ ShallowWrapper {
                                 }
                               }
                             >
-                              2
+                              25
                                
                               Gwei
                             </Text>
@@ -6673,7 +6674,7 @@ ShallowWrapper {
                                   },
                                 ]
                               }
-                              value="1500000"
+                              value={21000}
                             />
                           </View>
                         </View>,
@@ -7191,7 +7192,7 @@ ShallowWrapper {
                                 }
                               }
                               thumbTintColor="rgb(252, 228, 149)"
-                              value={2}
+                              value={25}
                             />,
                             <View
                               style={
@@ -7224,7 +7225,7 @@ ShallowWrapper {
                                   }
                                 }
                               >
-                                2
+                                25
                                  
                                 Gwei
                               </Text>
@@ -7271,7 +7272,7 @@ ShallowWrapper {
                                 "marginRight": 8,
                               },
                               "thumbTintColor": "rgb(252, 228, 149)",
-                              "value": 2,
+                              "value": 25,
                             },
                             "ref": null,
                             "rendered": null,
@@ -7305,7 +7306,7 @@ ShallowWrapper {
                                     }
                                   }
                                 >
-                                  2
+                                  25
                                    
                                   Gwei
                                 </Text>,
@@ -7355,7 +7356,7 @@ ShallowWrapper {
                                   "accessible": true,
                                   "allowFontScaling": true,
                                   "children": Array [
-                                    2,
+                                    25,
                                     " ",
                                     "Gwei",
                                   ],
@@ -7366,7 +7367,7 @@ ShallowWrapper {
                                 },
                                 "ref": null,
                                 "rendered": Array [
-                                  2,
+                                  25,
                                   " ",
                                   "Gwei",
                                 ],
@@ -7462,7 +7463,7 @@ ShallowWrapper {
                                   },
                                 ]
                               }
-                              value="1500000"
+                              value={21000}
                             />
                           </View>,
                           "style": Object {
@@ -7523,7 +7524,7 @@ ShallowWrapper {
                                     },
                                   ]
                                 }
-                                value="1500000"
+                                value={21000}
                               />,
                             ],
                             "style": Object {
@@ -7599,7 +7600,7 @@ ShallowWrapper {
                                     "lineHeight": 22,
                                   },
                                 ],
-                                "value": "1500000",
+                                "value": 21000,
                               },
                               "ref": null,
                               "rendered": null,

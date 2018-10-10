@@ -5,6 +5,8 @@ import { Navigation } from 'react-native-navigation';
 import WebSocketProvider from './WebSocketProvider';
 import { screen } from '../../global/Screens';
 import { CancelledError } from '../../global/errors/common';
+import { normalizeHexValue } from '../../utils/key';
+import { DEFAULT_GAS_LIMIT } from '../../global/Constants';
 
 /**
  * @desc Custom signer for ethereum RPC
@@ -23,7 +25,7 @@ export default function CustomSigner(privateKey: string, provider: string, app: 
   this.getBalance = wallet.getBalance;
   this.estimateGas = wallet.estimateGas;
   this.getTransactionCount = wallet.getTransaction;
-  this.defaultGasLimit = wallet.defaultGasLimit;
+  this.defaultGasLimit = DEFAULT_GAS_LIMIT;
   this.sign = async (transaction) => {
     const transactionObject = transaction;
     try {
@@ -55,6 +57,7 @@ export default function CustomSigner(privateKey: string, provider: string, app: 
             amount: transactionObject.value,
             estimate: estimate.toString(),
             app,
+            gasLimit: transactionObject.gasLimit,
           },
         });
       });
@@ -65,14 +68,20 @@ export default function CustomSigner(privateKey: string, provider: string, app: 
     }
   };
   this.sendTransaction = (transaction) => {
-    if (!this.provider) { throw new Error('missing provider'); }
+    if (!this.provider) {
+      throw new Error('missing provider');
+    }
 
     if (!transaction || typeof (transaction) !== 'object') {
       throw new Error('invalid transaction object');
     }
 
     let { gasLimit } = transaction;
-    if (gasLimit == null) { gasLimit = this.defaultGasLimit; }
+    if (gasLimit == null) {
+      gasLimit = this.defaultGasLimit;
+    } else {
+      gasLimit = gasLimit.toString();
+    }
 
     const self = this;
 
@@ -99,9 +108,8 @@ export default function CustomSigner(privateKey: string, provider: string, app: 
       toPromise = Promise.resolve(undefined);
     }
 
-    const data = ethers.utils.hexlify(transaction.data || '0x');
+    const data = ethers.utils.hexlify(normalizeHexValue(transaction.data || ''));
     const value = ethers.utils.hexlify(transaction.value || 0);
-
     return Promise.all([gasPricePromise, noncePromise, toPromise]).then(async (results) => {
       const signedTransaction = await self.sign({
         to: results[2],

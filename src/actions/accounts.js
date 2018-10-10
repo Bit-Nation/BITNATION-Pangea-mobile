@@ -8,6 +8,7 @@ export type AccountsListUpdatedAction = { +type: 'ACCOUNTS_LIST_UPDATED', accoun
 export type CurrentAccountIdChangedAction = { +type: 'CURRENT_ACCOUNT_ID_CHANGED', currentAccountId: string | null };
 export type RestartPanthalassaWithAccountAction = { +type: 'RESTART_PANTHALASSA_WITH_ACCOUNT', +accountId: string, +callback: (success: boolean) => void };
 export type MigrateDuplicateAccountAction = { +type: 'MIGRATE_DUPLICATE_ACCOUNTS', +accounts: Array<Account>, +callback: (success: boolean) => void };
+export type SetCurrentAccountIdentityKeyAction = { +type: 'SET_CURRENT_ACCOUNT_IDENTITY_KEY', identityKey: string };
 export type LoginAction = { +type: 'LOGIN', accountId: string, password: string, deferred: boolean };
 export type ValidateMnemonicWithAccountAction = { +type: 'VALIDATE_MNEMONIC_WITH_ACCOUNT', +accountId: string, +callback: (success: boolean) => void };
 export type CheckMnemonicWithAccountListAction = { +type: 'CHECK_MNEMONIC_WITH_ACCOUNT_LIST', +callback: (success: boolean) => void };
@@ -27,6 +28,7 @@ export type MnemonicConfirmedAction = { +type: 'MNEMONIC_CONFIRMED', +callback: 
 export type Action =
   | AccountsListUpdatedAction
   | CurrentAccountIdChangedAction
+  | SetCurrentAccountIdentityKeyAction
   | LoginAction
   | PerformDeferredLoginAction
   | LoginTaskUpdatedAction
@@ -45,6 +47,7 @@ export const ACCOUNTS_LIST_UPDATED = 'ACCOUNTS_LIST_UPDATED';
 export const CURRENT_ACCOUNT_ID_CHANGED = 'CURRENT_ACCOUNT_ID_CHANGED';
 export const RESTART_PANTHALASSA_WITH_ACCOUNT = 'RESTART_PANTHALASSA_WITH_ACCOUNT';
 export const MIGRATE_DUPLICATE_ACCOUNTS = 'MIGRATE_DUPLICATE_ACCOUNTS';
+export const SET_CURRENT_ACCOUNT_IDENTITY_KEY = 'SET_CURRENT_ACCOUNT_IDENTITY_KEY';
 export const LOGIN = 'LOGIN';
 export const VALIDATE_MNEMONIC_WITH_ACCOUNT = 'VALIDATE_MNEMONIC_WITH_ACCOUNT';
 export const CHECK_MNEMONIC_WITH_ACCOUNT_LIST = 'CHECK_MNEMONIC_WITH_ACCOUNT_LIST';
@@ -98,6 +101,18 @@ export function restartPanthalassaWithAccount(accountId: string, callback: (bool
     type: RESTART_PANTHALASSA_WITH_ACCOUNT,
     accountId,
     callback,
+  };
+}
+
+/**
+ * @desc Action creator for an action that is called to set identity key.
+ * @param {string} identityKey New id to be set as current or null if user logged out completely.
+ * @return {SetCurrentAccountIdentityKeyAction} An action.
+ */
+export function setCurrentAccountIdentityKey(identityKey: string): SetCurrentAccountIdentityKeyAction {
+  return {
+    type: SET_CURRENT_ACCOUNT_IDENTITY_KEY,
+    identityKey,
   };
 }
 

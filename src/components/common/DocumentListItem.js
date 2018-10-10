@@ -1,7 +1,7 @@
 // @flow
 
 /**
- * @desc Component that renders chat list item.
+ * @desc Component that renders document list item.
  * @type React.Component
  */
 
