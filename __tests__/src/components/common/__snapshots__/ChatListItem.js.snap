@@ -6,7 +6,7 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <ChatListItem
     avatar={null}
-    id="Test id"
+    id={1}
     lastMessage={undefined}
     name="Test list item"
     onPress={[MockFunction]}
@@ -29,7 +29,7 @@ ShallowWrapper {
       "disabled": false,
       "disclosureIconVisible": true,
       "iconSource": null,
-      "id": "Test id",
+      "id": 1,
       "onPress": [MockFunction],
       "style": Object {
         "height": 72,
@@ -44,6 +44,7 @@ ShallowWrapper {
         "letterSpacing": 0,
         "lineHeight": 22,
       },
+      "value": undefined,
     },
     "ref": null,
     "rendered": null,
@@ -60,7 +61,7 @@ ShallowWrapper {
         "disabled": false,
         "disclosureIconVisible": true,
         "iconSource": null,
-        "id": "Test id",
+        "id": 1,
         "onPress": [MockFunction],
         "style": Object {
           "height": 72,
@@ -75,6 +76,7 @@ ShallowWrapper {
           "letterSpacing": 0,
           "lineHeight": 22,
         },
+        "value": undefined,
       },
       "ref": null,
       "rendered": null,
@@ -97,7 +99,7 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <ChatListItem
     avatar={null}
-    id="1"
+    id={1}
     lastMessage="Some message"
     name="Test list item"
     onPress={[MockFunction]}
@@ -120,7 +122,7 @@ ShallowWrapper {
       "disabled": false,
       "disclosureIconVisible": true,
       "iconSource": null,
-      "id": "1",
+      "id": 1,
       "onPress": [MockFunction],
       "style": Object {
         "height": 72,
@@ -135,6 +137,7 @@ ShallowWrapper {
         "letterSpacing": 0,
         "lineHeight": 22,
       },
+      "value": undefined,
     },
     "ref": null,
     "rendered": null,
@@ -151,7 +154,7 @@ ShallowWrapper {
         "disabled": false,
         "disclosureIconVisible": true,
         "iconSource": null,
-        "id": "1",
+        "id": 1,
         "onPress": [MockFunction],
         "style": Object {
           "height": 72,
@@ -166,6 +169,7 @@ ShallowWrapper {
           "letterSpacing": 0,
           "lineHeight": 22,
         },
+        "value": undefined,
       },
       "ref": null,
       "rendered": null,

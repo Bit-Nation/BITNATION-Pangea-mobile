@@ -5,6 +5,7 @@ import { Navigation } from 'react-native-navigation';
 import WebSocketProvider from './WebSocketProvider';
 import { screen } from '../../global/Screens';
 import { CancelledError } from '../../global/errors/common';
+import { normalizeHexValue } from '../../utils/key';
 import { DEFAULT_GAS_LIMIT } from '../../global/Constants';
 
 /**
@@ -67,7 +68,9 @@ export default function CustomSigner(privateKey: string, provider: string, app: 
     }
   };
   this.sendTransaction = (transaction) => {
-    if (!this.provider) { throw new Error('missing provider'); }
+    if (!this.provider) {
+      throw new Error('missing provider');
+    }
 
     if (!transaction || typeof (transaction) !== 'object') {
       throw new Error('invalid transaction object');
@@ -105,9 +108,8 @@ export default function CustomSigner(privateKey: string, provider: string, app: 
       toPromise = Promise.resolve(undefined);
     }
 
-    const data = ethers.utils.hexlify(transaction.data || '0x');
+    const data = ethers.utils.hexlify(normalizeHexValue(transaction.data || ''));
     const value = ethers.utils.hexlify(transaction.value || 0);
-
     return Promise.all([gasPricePromise, noncePromise, toPromise]).then(async (results) => {
       const signedTransaction = await self.sign({
         to: results[2],

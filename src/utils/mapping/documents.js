@@ -1,6 +1,6 @@
 // @flow
 
-import type { Document, PanthalassaDocument } from '../../types/Documents';
+import type { Document, PanthalassaDocument, PanthalassaInputDocument } from '../../types/Documents';
 
 /**
  * @desc Converts document from Panthalassa representation.
@@ -13,8 +13,11 @@ export function convertFromPanthalassa(data: PanthalassaDocument, dataId: string
     id: data.id,
     name: data.title,
     description: data.description,
+    txHash: data.tx_hash === '' ? null : data.tx_hash,
+    signature: data.signature,
     dataId,
     mimeType: data.mime_type,
+    docHash: data.hash,
   };
 }
 
@@ -22,9 +25,9 @@ export function convertFromPanthalassa(data: PanthalassaDocument, dataId: string
  * @desc Converts document to Panthalassa representation.
  * @param {Document} document Document to convert.
  * @param {string} content Base64 document content.
- * @return {PanthalassaDocument} Converted document.
+ * @return {PanthalassaInputDocument} Converted document.
  */
-export function convertToPanthalassa(document: Document, content: string): PanthalassaDocument {
+export function convertToPanthalassa(document: Document, content: string): PanthalassaInputDocument {
   return {
     id: document.id,
     title: document.name,
