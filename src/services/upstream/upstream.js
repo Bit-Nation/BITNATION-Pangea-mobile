@@ -8,7 +8,6 @@ import { BigNumber } from 'bignumber.js';
 import { api_proto as apiProto } from './compiled';
 import EthereumService from '../ethereum';
 import { type DAppModalInfo } from '../../types/DApp';
-import { normalizeHexValue } from '../../utils/key';
 
 const { Panthalassa } = NativeModules;
 const { Response, Request } = apiProto;
@@ -120,7 +119,7 @@ export default class UpstreamService {
     const valueEth = valueBn.div(new BigNumber(10).pow(18)).toString(10);
     const transaction = {
       to,
-      data: normalizeHexValue(data),
+      data,
       value: ethers.utils.parseEther(valueEth),
     };
 
