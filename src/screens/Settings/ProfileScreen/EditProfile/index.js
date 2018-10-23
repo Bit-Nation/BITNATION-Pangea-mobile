@@ -72,6 +72,7 @@ class EditProfile extends NavigatorComponent<Props> {
     const buttons = {
       leftButtons: undefined,
       rightButtons: [{
+        testID: 'setting_profile_doneButton',
         title: i18n.t('screens.profile.edit.doneButton'),
         id: DONE_BUTTON,
         disabled: !saveEnabled,
@@ -161,6 +162,7 @@ class EditProfile extends NavigatorComponent<Props> {
           <View style={styles.fieldsContainer}>
             <View style={styles.formRow}>
               <TextInput
+                testID='setting_profile_editNameInput'
                 value={this.props.editingAccount.name}
                 onChangeText={text => this.onChange('name', text)}
                 style={styles.textInput}
@@ -171,6 +173,7 @@ class EditProfile extends NavigatorComponent<Props> {
             </View>
             <View style={styles.formRow}>
               <TextInput
+                testID='setting_profile_editLocationInput'
                 value={this.props.editingAccount.location}
                 onChangeText={text => this.onChange('location', text)}
                 style={styles.textInput}

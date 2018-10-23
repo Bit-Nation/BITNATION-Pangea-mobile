@@ -57,6 +57,7 @@ const SwitchLabeled = ({
     <View style={styles.formRow}>
       <View style={switchStyle}>
         <Switch
+          testID='account_developerSetting_switchTestingAccount'
           disabled={disabled}
           style={styles.switchObject}
           onTintColor={Colors.BitnationHighlightColor}

@@ -10,6 +10,12 @@
     "test:update": "jest -u",
     "test:coverage": "flow && jest --coverage --forceExit",
     "test:coveralls": "yarn test:coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "test:e2e:ios:debug": "detox test --configuration ios.sim.debug",
+    "test:e2e:ios:debug:build": "detox build --configuration ios.sim.debug",
+    "test:e2e:android:debug": "detox test -c android.emu.debug",
+    "test:e2e:android:debug:build": "cd android && ./gradlew assembleAndroidTest",
+    "test:e2e:android:release": "detox test -c android.emu.release",
+    "test:e2e:android:release:build": "cd android && ./gradlew assembleRelease",
     "ios": "flow && node_modules/.bin/react-native run-ios",
     "android": "flow && node_modules/.bin/react-native run-android",
     "postinstall": "./node_modules/.bin/rn-nodeify --install 'stream,buffer,vm,crypto,string_decoder,events,assert' --hack",
@@ -44,7 +50,7 @@
     "react-native-camera": "1.1.4",
     "react-native-config": "^0.11.2",
     "react-native-crypto": "^2.1.2",
-    "react-native-dialog": "^5.3.0",
+    "react-native-dialog": "^5.4.0",
     "react-native-dropdownalert": "^3.1.2",
     "react-native-eth-daemon": "git+https://github.com/Bit-Nation/react-native-eth-daemon.git#development",
     "react-native-gifted-chat": "^0.3.0",
@@ -76,7 +82,6 @@
     "redux-saga": "^0.16.0",
     "redux-thunk": "^2.2.0",
     "rn-nodeify": "^8.3.0",
-    "saga-monitor": "git+https://github.com/clarketm/saga-monitor.git",
     "socket.io-client": "^2.0.4",
     "stream-browserify": "^1.0.0",
     "string_decoder": "^0.10.31",
@@ -91,6 +96,7 @@
     "babel-preset-react-native": "4.0.0",
     "color": "^3.0.0",
     "coveralls": "^3.0.0",
+    "detox": "^9.0.4",
     "documentation": "^5.3.5",
     "enzyme": "3.3.0",
     "enzyme-adapter-react-16": "1.1.1",
@@ -159,6 +165,37 @@
     "_stream_passthrough": "readable-stream/passthrough",
     "stream": "stream-browserify",
     "vm": "vm-browserify"
+  },
+  "detox": {
+    "test-runner": "jest",
+    "specs": "__e2e__",
+    "runner-config": "__e2e__/config.json",
+    "configurations": {
+      "ios.sim.debug": {
+        "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/Pangea.app",
+        "build": "xcodebuild -workspace ios/Pangea.xcworkspace -UseNewBuildSystem=NO -scheme Pangea -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
+        "type": "ios.simulator",
+        "name": "iPhone 6"
+      },
+      "ios.sim.release": {
+        "binaryPath": "ios/build/Build/Products/Release-iphonesimulator/Pangea.app",
+        "build": "xcodebuild -workspace ios/Pangea.xcworkspace -scheme Pangea -configuration Release -sdk iphonesimulator -derivedDataPath ios/build",
+        "type": "ios.simulator",
+        "name": "iPhone 6"
+      },
+      "android.emu.debug": {
+        "binaryPath": "android/app/build/outputs/apk/debug/app-debug.apk",
+        "build": "cd android && ./gradlew assembleDebug assembleAndroidTest -DtestBuildType=debug && cd ..",
+        "type": "android.emulator",
+        "name": "Galaxy_Nexus_API_27"
+      },
+      "android.emu.release": {
+        "binaryPath": "android/app/build/outputs/apk/release/app-release.apk",
+        "build": "cd android && ./gradlew assembleRelease assembleAndroidTest -DtestBuildType=release && cd ..",
+        "type": "android.emulator",
+        "name": "Galaxy_Nexus_API_27"
+      }
+    }
   },
   "rnpm": {
     "assets": [

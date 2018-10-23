@@ -89,11 +89,15 @@ class PasswordScreen extends NavigatorComponent<Props, State> {
   render() {
     const { shouldShowForget } = this.props;
     return (
-      <View style={styles.bodyContainer}>
+      <View
+        testID='password_wrapperView'
+        style={styles.bodyContainer}
+      >
         <Text style={styles.headline}>
           {this.props.instruction}
         </Text>
         <TextInput
+          testID='password_textInput'
           onChangeText={value => this.setState({ password: value })}
           value={this.state.password}
           style={styles.textInput}
@@ -103,6 +107,7 @@ class PasswordScreen extends NavigatorComponent<Props, State> {
         />
         <View style={styles.buttonContainer}>
           <Button
+            testID='password_submitButton'
             enabled={this.state.password.length > 0}
             title={i18n.t('common.ok')}
             onPress={() => this.props.onSubmit(this.state.password)}

@@ -136,7 +136,10 @@ class ProfileContainer extends Component<Props> {
     const isCreating = isCreatingAccount(this.props.accountsState);
 
     return (
-      <View style={styles.screenContainer}>
+      <View
+        testID='setting_profileView'
+        style={styles.screenContainer}
+      >
         <BackgroundImage />
         <FakeNavigationBar />
         {

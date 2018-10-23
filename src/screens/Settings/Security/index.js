@@ -200,7 +200,10 @@ class SecuritySettingsScreen extends NavigatorComponent<Props & Actions & Settin
     const isCreating = isCreatingAccount(this.props.accounts);
 
     return (
-      <View style={styles.screenContainer}>
+      <View
+        testID='security_wrapperView'
+        style={styles.screenContainer}
+      >
         <BackgroundImage />
         <FakeNavigationBar />
         <View style={styles.bodyContainer}>
@@ -267,20 +270,22 @@ class SecuritySettingsScreen extends NavigatorComponent<Props & Actions & Settin
           }
         </View>
         {isCreating &&
-        <View style={styles.bodyContainer}>
-          <View style={styles.buttonContainerMultiple}>
-            <Button
-              style={styles.buttonPrevNext}
-              title={i18n.t('screens.accounts.create.prev')}
-              onPress={this.onPreviousPressed}
-            />
-            <Button
-              style={styles.buttonPrevNext}
-              title={i18n.t('screens.accounts.create.next')}
-              onPress={this.onNextPressed}
-            />
+          <View style={styles.bodyContainer}>
+            <View style={styles.buttonContainerMultiple}>
+              <Button
+                testID='security_prevButton'
+                style={styles.buttonPrevNext}
+                title={i18n.t('screens.accounts.create.prev')}
+                onPress={this.onPreviousPressed}
+              />
+              <Button
+                testID='security_nextButton'
+                style={styles.buttonPrevNext}
+                title={i18n.t('screens.accounts.create.next')}
+                onPress={this.onNextPressed}
+              />
+            </View>
           </View>
-        </View>
         }
       </View>
     );

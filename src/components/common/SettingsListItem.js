@@ -68,6 +68,7 @@ const SettingsListItem = ({
       AdditionalView={() => (
         additionalViewKind.type === 'switch' ? (
           <Switch
+            testID='switchObject'
             style={styles.switchObject}
             onTintColor={Colors.BitnationHighlightColor}
             onValueChange={additionalViewKind.onValueChange}

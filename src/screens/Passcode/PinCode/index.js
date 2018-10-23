@@ -93,11 +93,15 @@ class PinCodeScreen extends NavigatorComponent<Props, State> {
   render() {
     const { shouldShowForget } = this.props;
     return (
-      <View style={styles.bodyContainer}>
+      <View
+        testID='pinCode_wrapperView'
+        style={styles.bodyContainer}
+      >
         <Text style={styles.headline}>
           {this.props.instruction}
         </Text>
         <TextInput
+          testID='pinCode_textInput'
           onChangeText={value => this.setState({ pinCode: value.slice(0, this.props.pinCodeLength) })}
           value={this.state.pinCode}
           style={styles.textInput}
@@ -107,6 +111,7 @@ class PinCodeScreen extends NavigatorComponent<Props, State> {
         />
         <View style={styles.buttonContainer}>
           <Button
+            testID='pinCode_submitButton'
             enabled={this.state.pinCode.length === this.props.pinCodeLength}
             title={i18n.t('common.ok')}
             onPress={() => this.props.onSubmit(this.state.pinCode)}

@@ -38,7 +38,10 @@ type Props = {
 const AccountAccessListScreen = ({
   accounts, onSelectItem, onRestoreAccount, onCreateAccount,
 }: Props) => (
-  <View style={styles.profilesScreenContainer}>
+  <View
+    testID='accountAccess_wrapperView'
+    style={styles.profilesScreenContainer}
+  >
     <BackgroundImage />
     <FakeNavigationBar />
     <ScreenTitle title={i18n.t('screens.accounts.title')} />
@@ -58,6 +61,7 @@ const AccountAccessListScreen = ({
     />
     <View style={styles.buttonListContainer}>
       <Button
+        testID='accountAccess_restoreButton'
         enabled
         style={styles.restoreAccountButton}
         styleTitle={styles.restoreAccountButtonText}
@@ -69,6 +73,7 @@ const AccountAccessListScreen = ({
     </View>
 
     <Button
+      testID='accountAccess_createButton'
       enabled
       styleTitle={styles.newAccountText}
       title={i18n.t('screens.accounts.newAccount').toUpperCase()}

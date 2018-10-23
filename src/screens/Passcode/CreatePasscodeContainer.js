@@ -134,7 +134,10 @@ class CreatePasscodeContainer extends NavigatorComponent<Props & Actions & Setti
   render() {
     const { title } = this.props;
     return (
-      <View style={styles.screenContainer}>
+      <View
+        testID='createPasscode_wrapperView'
+        style={styles.screenContainer}
+      >
         <BackgroundImage />
         <FakeNavigationBar />
         <View style={styles.bodyAccountContainer}>

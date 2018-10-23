@@ -137,7 +137,10 @@ class EnterPasscodeContainer extends NavigatorComponent<Props & Actions & Settin
   render() {
     const { title } = this.props;
     return (
-      <View style={styles.screenContainer}>
+      <View
+        testID='enterPasscode_wrapperView'
+        style={styles.screenContainer}
+      >
         <BackgroundImage />
         <FakeNavigationBar />
         <ScreenTitle title={title} />

@@ -120,7 +120,10 @@ class Accounts extends NavigatorComponent<Props & Actions & AccountsState> {
   };
   render() {
     return (
-      <View style={styles.profilesScreenContainer}>
+      <View
+        testID='account_wrapperView'
+        style={styles.profilesScreenContainer}
+      >
         <BackgroundImage />
         <FakeNavigationBar />
         <View style={styles.bodyAccountContainer}>
@@ -142,6 +145,7 @@ class Accounts extends NavigatorComponent<Props & Actions & AccountsState> {
             <Text style={styles.confirmKeyBody}>{i18n.t('screens.accounts.warningText')}</Text>
           </PanelView>
           <Button
+            testID='account_restoreButton'
             id='restoreButton'
             style={styles.restoreButton}
             styleTitle={styles.restoreButtonText}
@@ -150,6 +154,7 @@ class Accounts extends NavigatorComponent<Props & Actions & AccountsState> {
           />
         </View>
         <Button
+          testID='account_createButton'
           id='createButton'
           styleTitle={styles.newAccountText}
           style={styles.createButton}

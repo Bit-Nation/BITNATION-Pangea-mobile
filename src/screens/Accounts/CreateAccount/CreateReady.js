@@ -45,7 +45,10 @@ class AccountReady extends Component<Props & AccountsState> {
 
   render() {
     return (
-      <View style={styles.profilesScreenContainer}>
+      <View
+        testID='account_createAccountReadyView'
+        style={styles.profilesScreenContainer}
+      >
         <BackgroundImage />
         <FakeNavigationBar />
         <View style={styles.bodyContainer}>
@@ -53,6 +56,7 @@ class AccountReady extends Component<Props & AccountsState> {
           <View style={styles.bodyContainer}>
             <PanelView body={i18n.t('screens.accounts.create.readyUse')} />
             <Button
+              testID='account_createAccountReady_openDashboardButton'
               style={styles.panelButton}
               title={i18n.t('screens.accounts.create.openDashboard')}
               onPress={this.goToDashboard}

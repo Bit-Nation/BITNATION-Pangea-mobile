@@ -51,7 +51,10 @@ class DeveloperSettings extends Component<Props & Actions & AccountsState> {
     }
 
     return (
-      <View style={styles.profilesScreenContainer}>
+      <View
+        testID='account_developerSettingView'
+        style={styles.profilesScreenContainer}
+      >
         <BackgroundImage />
         <FakeNavigationBar />
         <View style={styles.bodyAccountContainer}>
@@ -105,11 +108,13 @@ class DeveloperSettings extends Component<Props & Actions & AccountsState> {
           <View style={styles.bodyContainer}>
             <View style={styles.buttonContainerMultiple}>
               <Button
+                testID='account_developerSetting_prevButton'
                 style={styles.buttonPrevNext}
                 title={i18n.t('screens.accounts.create.prev')}
                 onPress={this.previousStep}
               />
               <Button
+                testID='account_developerSetting_nextButton'
                 style={styles.buttonPrevNext}
                 title={i18n.t('screens.accounts.create.next')}
                 onPress={this.nextStep}

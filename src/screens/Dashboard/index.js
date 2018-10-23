@@ -61,7 +61,10 @@ class Dashboard extends Component<Props & Actions & State & TestingModeProps> {
     const currentAccount = getCurrentAccount(this.props.accounts);
 
     return (
-      <View style={styles.screenContainer}>
+      <View
+        testID='dashboardView'
+        style={styles.screenContainer}
+      >
         <BackgroundImage />
         <FakeNavigationBar navBarHidden />
         <View style={styles.gridContainer}>
@@ -108,7 +111,7 @@ class Dashboard extends Component<Props & Actions & State & TestingModeProps> {
             </View>
           </View>
         </View>
-      </View>
+      </View >
     );
   }
 }
