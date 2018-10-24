@@ -110,7 +110,7 @@ android {
         }
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled true
-        testBuildType System.getProperty('testBuildType', 'release')  //this will later be used to control the test apk build type
+        testBuildType System.getProperty('testBuildType', 'debug')  //this will later be used to control the test apk build type
         missingDimensionStrategy "minReactNative", "minReactNative46" //read note
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -188,6 +188,7 @@ dependencies {
     compile 'com.android.support:design:27.1.1'
     compile 'com.android.support:cardview-v7:27.1.1'
     compile 'com.facebook.react:react-native:+'
+    compile 'com.android.support:support-annotations:27.1.1'
 }
 
 

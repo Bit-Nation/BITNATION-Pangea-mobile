@@ -28,42 +28,42 @@ describe('create account and login', () => {
     await actionShowDashBoard();
   });
 
-  it('create new testing account  with password flow and login after', async () => {
-    await actionCreateAccount();
-    await actionChoicePasscodeType();
-    await actionTypePasscode();
-    await actionChoiceAccountType(true);
-    await actionTypeProfile();
-    await actionShowDashBoard();
-    await reloadApp();
-    await actionChoiceAccountInList();
-    await actionEnterPasscode();
-    await actionShowDashBoard();
-  });
+  // it('create new testing account  with password flow and login after', async () => {
+  //   await actionCreateAccount();
+  //   await actionChoicePasscodeType();
+  //   await actionTypePasscode();
+  //   await actionChoiceAccountType(true);
+  //   await actionTypeProfile();
+  //   await actionShowDashBoard();
+  //   await reloadApp();
+  //   await actionChoiceAccountInList();
+  //   await actionEnterPasscode();
+  //   await actionShowDashBoard();
+  // });
 
-  it('create new account with passcode flow and login after', async () => {
-    await actionCreateAccount();
-    await actionChoicePasscodeType(true);
-    await actionTypePasscode(true);
-    await actionChoiceAccountType();
-    await actionTypeProfile();
-    await actionShowDashBoard();
-    await reloadApp();
-    await actionChoiceAccountInList();
-    await actionEnterPasscode(true);
-    await actionShowDashBoard();
-  });
+  // it('create new account with passcode flow and login after', async () => {
+  //   await actionCreateAccount();
+  //   await actionChoicePasscodeType(true);
+  //   await actionTypePasscode(true);
+  //   await actionChoiceAccountType();
+  //   await actionTypeProfile();
+  //   await actionShowDashBoard();
+  //   await reloadApp();
+  //   await actionChoiceAccountInList();
+  //   await actionEnterPasscode(true);
+  //   await actionShowDashBoard();
+  // });
 
-  it('create new testing account  with passcode flow and login after', async () => {
-    await actionCreateAccount();
-    await actionChoicePasscodeType(true);
-    await actionTypePasscode(true);
-    await actionChoiceAccountType(true);
-    await actionTypeProfile();
-    await actionShowDashBoard();
-    await reloadApp();
-    await actionChoiceAccountInList();
-    await actionEnterPasscode(true);
-    await actionShowDashBoard();
-  });
+  // it('create new testing account  with passcode flow and login after', async () => {
+  //   await actionCreateAccount();
+  //   await actionChoicePasscodeType(true);
+  //   await actionTypePasscode(true);
+  //   await actionChoiceAccountType(true);
+  //   await actionTypeProfile();
+  //   await actionShowDashBoard();
+  //   await reloadApp();
+  //   await actionChoiceAccountInList();
+  //   await actionEnterPasscode(true);
+  //   await actionShowDashBoard();
+  // });
 });
