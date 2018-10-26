@@ -73,6 +73,9 @@ class EditProfile extends NavigatorComponent<Props> {
       leftButtons: undefined,
       rightButtons: [{
         testID: 'setting_profile_doneButton',
+        accessible: true,
+        accessibilityLabel: 'setting_profile_doneButton',
+        contentDescription: 'setting_profile_doneButton',
         title: i18n.t('screens.profile.edit.doneButton'),
         id: DONE_BUTTON,
         disabled: !saveEnabled,

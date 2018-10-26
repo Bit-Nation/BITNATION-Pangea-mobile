@@ -93,6 +93,7 @@ ShallowWrapper {
                 "fontWeight": "bold",
               }
             }
+            testID="accountAccess_restoreButton"
             title="Restore Account"
           />
           <View
@@ -117,6 +118,7 @@ ShallowWrapper {
               "fontWeight": "900",
             }
           }
+          testID="accountAccess_createButton"
           title="NEW ACCOUNT"
         />,
       ],
@@ -126,6 +128,7 @@ ShallowWrapper {
         "flexDirection": "column",
         "justifyContent": "flex-start",
       },
+      "testID": "accountAccess_wrapperView",
     },
     "ref": null,
     "rendered": Array [
@@ -212,6 +215,7 @@ ShallowWrapper {
                   "fontWeight": "bold",
                 }
               }
+              testID="accountAccess_restoreButton"
               title="Restore Account"
             />,
             <View
@@ -244,6 +248,7 @@ ShallowWrapper {
                 "fontSize": 15,
                 "fontWeight": "bold",
               },
+              "testID": "accountAccess_restoreButton",
               "title": "Restore Account",
             },
             "ref": null,
@@ -283,6 +288,7 @@ ShallowWrapper {
             "fontSize": 15,
             "fontWeight": "900",
           },
+          "testID": "accountAccess_createButton",
           "title": "NEW ACCOUNT",
         },
         "ref": null,
@@ -355,6 +361,7 @@ ShallowWrapper {
                   "fontWeight": "bold",
                 }
               }
+              testID="accountAccess_restoreButton"
               title="Restore Account"
             />
             <View
@@ -379,6 +386,7 @@ ShallowWrapper {
                 "fontWeight": "900",
               }
             }
+            testID="accountAccess_createButton"
             title="NEW ACCOUNT"
           />,
         ],
@@ -388,6 +396,7 @@ ShallowWrapper {
           "flexDirection": "column",
           "justifyContent": "flex-start",
         },
+        "testID": "accountAccess_wrapperView",
       },
       "ref": null,
       "rendered": Array [
@@ -474,6 +483,7 @@ ShallowWrapper {
                     "fontWeight": "bold",
                   }
                 }
+                testID="accountAccess_restoreButton"
                 title="Restore Account"
               />,
               <View
@@ -506,6 +516,7 @@ ShallowWrapper {
                   "fontSize": 15,
                   "fontWeight": "bold",
                 },
+                "testID": "accountAccess_restoreButton",
                 "title": "Restore Account",
               },
               "ref": null,
@@ -545,6 +556,7 @@ ShallowWrapper {
               "fontSize": 15,
               "fontWeight": "900",
             },
+            "testID": "accountAccess_createButton",
             "title": "NEW ACCOUNT",
           },
           "ref": null,

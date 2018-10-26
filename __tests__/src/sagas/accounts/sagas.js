@@ -19,9 +19,8 @@ import { resetSettings } from '../../../../src/actions/settings';
 import { createDatabaseUpdateChannel } from '../../../../src/sagas/database';
 import {
   accountListUpdated, changeCreatingAccountField, checkPassword, checkPinCode, CURRENT_ACCOUNT_ID_CHANGED,
-  currentAccountIdChanged, login,
+  currentAccountIdChanged, login, setCurrentAccountIdentityKey,
   loginTaskUpdated, mnemonicConfirmed, PERFORM_DEFERRED_LOGIN, saveCreatingAccount, savePassword, savePinCode,
-  setCurrentAccountIdentityKey,
   validateMnemonicWithAccount,
 } from '../../../../src/actions/accounts';
 import TaskBuilder from '../../../../src/utils/asyncTask';

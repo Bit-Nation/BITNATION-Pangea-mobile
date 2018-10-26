@@ -102,7 +102,7 @@ class PasswordScreen extends NavigatorComponent<Props, State> {
           value={this.state.password}
           style={styles.textInput}
           secureTextEntry
-          autoFocus
+          // autoFocus
           autoCapitalize='none'
         />
         <View style={styles.buttonContainer}>

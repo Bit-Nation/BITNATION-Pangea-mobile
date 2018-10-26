@@ -12,6 +12,8 @@
     "test:coveralls": "yarn test:coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "test:e2e:ios:debug": "detox test --configuration ios.sim.debug",
     "test:e2e:ios:debug:build": "detox build --configuration ios.sim.debug",
+    "test:e2e:ios:release": "detox test --configuration ios.sim.release --cleanup",
+    "test:e2e:ios:release:build": "detox build --configuration ios.sim.release",
     "test:e2e:android:debug": "detox test -c android.emu.debug",
     "test:e2e:android:debug:build": "cd android && ./gradlew assembleAndroidTest",
     "test:e2e:android:release": "detox test -c android.emu.release",
@@ -136,6 +138,10 @@
       "!**/coverage/**",
       "!**/vendor/**",
       "!src/services/upstream/compiled.js"
+    ],
+    "testPathIgnorePatterns": [
+      "__e2e__",
+      "node_modules"
     ],
     "globals": {
       "WebSocket": {

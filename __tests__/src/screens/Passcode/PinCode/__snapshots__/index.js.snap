@@ -87,6 +87,7 @@ ShallowWrapper {
               "textAlign": "center",
             }
           }
+          testID="pinCode_textInput"
           value=""
         />,
         <View
@@ -107,6 +108,7 @@ ShallowWrapper {
                 "width": 80,
               }
             }
+            testID="pinCode_submitButton"
             title="OK"
           />
         </View>,
@@ -120,6 +122,7 @@ ShallowWrapper {
         "marginLeft": 8,
         "marginRight": 8,
       },
+      "testID": "pinCode_wrapperView",
     },
     "ref": null,
     "rendered": Array [
@@ -166,6 +169,7 @@ ShallowWrapper {
             "paddingTop": 2,
             "textAlign": "center",
           },
+          "testID": "pinCode_textInput",
           "value": "",
         },
         "ref": null,
@@ -187,6 +191,7 @@ ShallowWrapper {
                 "width": 80,
               }
             }
+            testID="pinCode_submitButton"
             title="OK"
           />,
           "style": Object {
@@ -208,6 +213,7 @@ ShallowWrapper {
               "marginTop": 40,
               "width": 80,
             },
+            "testID": "pinCode_submitButton",
             "title": "OK",
           },
           "ref": null,
@@ -261,6 +267,7 @@ ShallowWrapper {
                 "textAlign": "center",
               }
             }
+            testID="pinCode_textInput"
             value=""
           />,
           <View
@@ -281,6 +288,7 @@ ShallowWrapper {
                   "width": 80,
                 }
               }
+              testID="pinCode_submitButton"
               title="OK"
             />
           </View>,
@@ -294,6 +302,7 @@ ShallowWrapper {
           "marginLeft": 8,
           "marginRight": 8,
         },
+        "testID": "pinCode_wrapperView",
       },
       "ref": null,
       "rendered": Array [
@@ -340,6 +349,7 @@ ShallowWrapper {
               "paddingTop": 2,
               "textAlign": "center",
             },
+            "testID": "pinCode_textInput",
             "value": "",
           },
           "ref": null,
@@ -361,6 +371,7 @@ ShallowWrapper {
                   "width": 80,
                 }
               }
+              testID="pinCode_submitButton"
               title="OK"
             />,
             "style": Object {
@@ -382,6 +393,7 @@ ShallowWrapper {
                 "marginTop": 40,
                 "width": 80,
               },
+              "testID": "pinCode_submitButton",
               "title": "OK",
             },
             "ref": null,

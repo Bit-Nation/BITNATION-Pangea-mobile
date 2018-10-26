@@ -42,6 +42,7 @@ exports[`SwitchLabeled component tests SwitchLabeled rendering SwitchLabeled ren
           },
         ]
       }
+      testID="account_developerSetting_switchTestingAccount"
       value={false}
     />
     <Text
@@ -110,6 +111,7 @@ exports[`SwitchLabeled component tests SwitchLabeled rendering SwitchLabeled ren
           },
         ]
       }
+      testID="account_developerSetting_switchTestingAccount"
       value={true}
     />
     <Text

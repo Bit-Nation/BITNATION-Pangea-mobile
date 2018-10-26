@@ -31,7 +31,7 @@ describe('ChatListItem tests', () => {
       />);
       expect(wrapper).toMatchSnapshot();
       const render = wrapper.dive();
-      const touchables = render.find('[testID="Touchable"]');
+      const touchables = render.find('[testIDJest="Touchable"]');
       expect(touchables).toHaveLength(1);
       touchables.props().onPress();
       expect(mockFunc).toHaveBeenCalledTimes(1);

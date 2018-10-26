@@ -99,6 +99,7 @@ const ListItem = <IDType>({
     >
       <TouchableOpacity
         testID={typeof text === 'string' ? `account_list_item${text}` : subtitle}
+        testIDJest='Touchable'
         onPress={() => onPress(id)}
         style={styles.sectionListTouchable}
         disabled={disabled}

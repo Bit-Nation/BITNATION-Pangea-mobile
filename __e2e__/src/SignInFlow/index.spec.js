@@ -1,4 +1,4 @@
-import { reloadApp, reloadAppWithDeleteData } from '../helpers';
+import { reloadApp } from '../helpers';
 import {
   actionCreateAccount,
   actionChoicePasscodeType,
@@ -12,7 +12,7 @@ import { actionChoiceAccountInList } from './helpers';
 
 describe('create account and login', () => {
   beforeEach(async () => {
-    await reloadAppWithDeleteData();
+    await reloadApp();
   });
 
   it('create new account with password flow and login after', async () => {
