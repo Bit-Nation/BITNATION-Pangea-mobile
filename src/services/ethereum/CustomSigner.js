@@ -57,7 +57,7 @@ export default function CustomSigner(privateKey: string, provider: string, app: 
             amount: transactionObject.value,
             estimate: estimate.toString(),
             app,
-            gasLimit: transactionObject.gasLimit,
+            gasLimit: estimate.toString(), // get gas limit from ether.js service https://github.com/ethereum/wiki/wiki/JSON-RPC#eth_estimategas
           },
         });
       });
