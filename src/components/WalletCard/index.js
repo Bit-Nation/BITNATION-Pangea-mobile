@@ -61,7 +61,7 @@ const WalletCard = ({
           <Button
             title={i18n.t('common.send')}
             onPress={onSendPress}
-            style={[styles.button, styles.leftButton]}
+            style={styles.button}
           />
           <Button
             title={i18n.t('common.receive')}
@@ -71,7 +71,7 @@ const WalletCard = ({
           <Button
             title={i18n.t('common.transactions')}
             onPress={onTransactionPress}
-            style={styles.button}
+            style={styles.transactionButton}
           />
           <View style={styles.spacer} />
         </View>
