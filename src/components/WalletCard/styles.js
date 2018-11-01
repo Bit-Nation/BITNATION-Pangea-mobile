@@ -43,24 +43,28 @@ const styles = StyleSheet.create({
     color: Colors.BitnationHighlightYellowColor,
   },
   button: {
-    height: 25,
+    height: 36,
     borderRadius: 14,
-    width: 80,
+    width: 75,
+    marginRight: 5,
+  },
+  transactionButton: {
+    height: 36,
+    width: 100,
   },
   buttonsContainer: {
     flexDirection: 'row',
-    justifyContent: 'flex-start',
+    justifyContent: 'space-between',
     marginLeft: 2,
   },
   leftButton: {
-    marginRight: 8,
+    marginRight: 4,
   },
   messageText: {
     color: Colors.BitnationLightColor,
     fontSize: 14,
     marginBottom: 10,
   },
-
 });
 
 export default styles;
