@@ -11,6 +11,7 @@ export type LoginAction = { +type: 'LOGIN', accountId: string, password: string,
 export type ValidateMnemonicWithAccountAction = { +type: 'VALIDATE_MNEMONIC_WITH_ACCOUNT', +accountId: string, +callback: (success: boolean) => void };
 export type PerformDeferredLoginAction = { +type: 'PERFORM_DEFERRED_LOGIN' };
 export type LoginTaskUpdatedAction = { +type: 'LOGIN_TASK_UPDATED', loginTask: AsyncTask<void> };
+export type CancelLoginAction = { +type: 'CANCEL_LOGIN' };
 export type LogoutAction = { +type: 'LOGOUT' };
 export type StartAccountCreationAction = { +type: 'START_ACCOUNT_CREATION' };
 export type CheckPinCodeAction = { +type: 'CHECK_PIN_CODE', +pinCode: string, +accountId: string, +callback: (success: boolean) => void };
@@ -46,6 +47,7 @@ export const SET_CURRENT_ACCOUNT_IDENTITY_KEY = 'SET_CURRENT_ACCOUNT_IDENTITY_KE
 export const LOGIN = 'LOGIN';
 export const VALIDATE_MNEMONIC_WITH_ACCOUNT = 'VALIDATE_MNEMONIC_WITH_ACCOUNT';
 export const LOGIN_TASK_UPDATED = 'LOGIN_TASK_UPDATED';
+export const CANCEL_LOGIN = 'CANCEL_LOGIN';
 export const LOGOUT = 'LOGOUT';
 export const START_ACCOUNT_CREATION = 'START_ACCOUNT_CREATION';
 export const CHECK_PIN_CODE = 'CHECK_PIN_CODE';
@@ -145,6 +147,16 @@ export function loginTaskUpdated(loginTask: AsyncTask<void>): LoginTaskUpdatedAc
   return {
     type: LOGIN_TASK_UPDATED,
     loginTask,
+  };
+}
+
+/**
+ * @desc Action creator for an action that is called when press back button android
+ * @return {CancelLoginAction} An action.
+ */
+export function cancelLogin(): CancelLoginAction {
+  return {
+    type: CANCEL_LOGIN,
   };
 }
 
