@@ -43,6 +43,11 @@ export default class NavigatorComponent<Props, State = void>
       }
     }
     switch (event.id) {
+      case 'backPress':
+        if (typeof this.onBackPress === 'function') {
+          this.onBackPress();
+        }
+        break;
       case 'willAppear':
         if (typeof this.onWillAppear === 'function') {
           this.onWillAppear();
