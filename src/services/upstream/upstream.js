@@ -177,7 +177,9 @@ export default class UpstreamService {
   };
 
   sendSuccessResponse = async (id: string, data: any) => {
-    console.log(`[PANGEA] Upstream success response: ${id}`);
+    const encodedData = Buffer.from(Response.encode(data).finish());
+    const decoded = Response.decode(encodedData);
+    console.log('[PANGEA] decodedData:', decoded);
     try {
       return Panthalassa.PanthalassaSendResponse({
         id,
