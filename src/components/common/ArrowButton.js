@@ -55,7 +55,7 @@ const Button = ({
           {title}
         </Text>
         <MaterialIcons
-          style={styles.arrowButtonIcon}
+          style={enabled ? styles.arrowButtonIcon : styles.disabledArrowButtonIcon}
           name='keyboard-arrow-right'
         />
       </TouchableOpacity>
