@@ -45,17 +45,17 @@ const styles = StyleSheet.create({
   button: {
     height: 36,
     borderRadius: 14,
-    width: 75,
-    marginRight: 5,
+    width: 70,
   },
   transactionButton: {
     height: 36,
+    marginLeft: 12,
     width: 100,
   },
   buttonsContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginLeft: 2,
+    // justifyContent: 'space-between',
+    marginLeft: 5,
   },
   leftButton: {
     marginRight: 4,

@@ -865,6 +865,11 @@ const styles = {
     color: Colors.BitnationLinkOrangeColor,
     alignSelf: 'center',
   },
+  disabledArrowButtonIcon: {
+    fontSize: 15,
+    color: Colors.BitnationLightGrayColor,
+    alignSelf: 'center',
+  },
   disabledArrowButtonTitle: {
     fontSize: 15,
     color: Colors.BitnationLightGrayColor,
@@ -896,6 +901,7 @@ const styles = {
     flexDirection: 'row',
     justifyContent: 'flex-start',
     marginLeft: 0,
+    // height: 36,
   },
 
   buttonContainerMultiple: {
