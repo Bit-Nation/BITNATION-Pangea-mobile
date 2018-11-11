@@ -67,6 +67,7 @@ class AccountAccessContainer extends NavigatorComponent<Props & Actions & Accoun
           onForget: () => AccountsScreen.onForgetPasswordAccount(this.props.navigator, id),
           onCancel: () => this.props.navigator.dismissModal(),
         },
+        overrideBackPress: true,
       });
     });
   };

@@ -3,7 +3,7 @@
 import { createStore, applyMiddleware, compose, type Store } from 'redux';
 import logger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
-import createSagaMonitor from 'saga-monitor';
+import createSagaMonitor from '@clarketm/saga-monitor';
 import reducers from '../reducers';
 import rootSaga from '../sagas';
 
