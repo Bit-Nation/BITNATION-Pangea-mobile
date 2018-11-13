@@ -54,10 +54,10 @@ const Button = ({
         <Text style={enabled ? styles.arrowButtonTitle : styles.disabledArrowButtonTitle}>
           {title}
         </Text>
-        <MaterialIcons
+        {/* <MaterialIcons
           style={styles.arrowButtonIcon}
           name='keyboard-arrow-right'
-        />
+        /> */}
       </TouchableOpacity>
     </View>
   ));

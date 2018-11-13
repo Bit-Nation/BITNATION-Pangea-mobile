@@ -71,12 +71,10 @@ const WalletCard = ({
           <Button
             title={i18n.t('common.transactions')}
             onPress={onTransactionPress}
-            style={styles.transactionButton}
+            style={styles.button}
           />
-          <View style={styles.spacer} />
         </View>
 
-        <View style={styles.spacer} />
       </View>
     </View>
   </View>

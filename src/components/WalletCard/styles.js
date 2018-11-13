@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
   },
   icon: {
     width: 55,
-    marginRight: 10,
+    marginRight: 5,
     marginTop: 36,
   },
   row: {
@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
   },
   textColumn: {
     flex: 1,
+    marginLeft: 0,
     justifyContent: 'flex-start',
   },
   spacer: {
@@ -44,18 +45,9 @@ const styles = StyleSheet.create({
   },
   button: {
     height: 36,
-    borderRadius: 14,
-    width: 75,
-    marginRight: 5,
-  },
-  transactionButton: {
-    height: 36,
-    width: 100,
   },
   buttonsContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginLeft: 2,
   },
   leftButton: {
     marginRight: 4,
