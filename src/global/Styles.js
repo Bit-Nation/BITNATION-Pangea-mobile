@@ -855,13 +855,13 @@ const styles = {
   },
 
   arrowButtonTitle: {
-    fontSize: 15,
+    fontSize: 14,
     color: Colors.BitnationLinkOrangeColor,
     fontWeight: 'bold',
     textAlign: 'center',
   },
   arrowButtonIcon: {
-    fontSize: 15,
+    fontSize: 13,
     color: Colors.BitnationLinkOrangeColor,
     alignSelf: 'center',
   },
@@ -901,7 +901,7 @@ const styles = {
     flexDirection: 'row',
     justifyContent: 'flex-start',
     marginLeft: 0,
-    // height: 36,
+    marginRight: 0,
   },
 
   buttonContainerMultiple: {
