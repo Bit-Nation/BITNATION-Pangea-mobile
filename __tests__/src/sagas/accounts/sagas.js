@@ -5,10 +5,10 @@ import { cloneableGenerator } from 'redux-saga/utils';
 
 import {
   accountsPresent, checkPasswordSaga, checkPinCodeSaga, getAccount, getCurrentAccount,
-  getCurrentAccountId, listenForDatabaseUpdates, login as loginSaga, loginActionHandler, logout,
+  getCurrentAccountId, listenForDatabaseUpdates, login as loginSaga, loginActionHandler, logout, cancelLogin,
   saveEditingAccount as saveEditingAccountSaga, savePasswordSaga, savePinCodeSaga, startAccountCreation,
   startRestoreAccountUsingMnemonic, saveCreatingAccount as saveCreatingAccountSaga, currentAccountBasedUpdate,
-  startAccountUpdateListening, saveMnemonicConfirmed, getAccounts,
+  startAccountUpdateListening, saveMnemonicConfirmed, getAccounts, handleLoginProcess,
   validateMnemonicWithAccount as validateMnemonicWithAccountSaga, validateMnemonicWithAccountActionHandler,
 } from '../../../../src/sagas/accounts/sagas';
 import defaultDB, { buildRandomPathDatabase } from '../../../../src/services/database';
@@ -22,7 +22,7 @@ import {
   currentAccountIdChanged, login,
   loginTaskUpdated, mnemonicConfirmed, PERFORM_DEFERRED_LOGIN, saveCreatingAccount, savePassword, savePinCode,
   setCurrentAccountIdentityKey,
-  validateMnemonicWithAccount,
+  validateMnemonicWithAccount, CANCEL_LOGIN,
 } from '../../../../src/actions/accounts';
 import TaskBuilder from '../../../../src/utils/asyncTask';
 import AccountsService from '../../../../src/services/accounts';
@@ -216,8 +216,8 @@ test('validateMnemonicWithAccountActionHandler', () => {
 });
 
 describe('login', () => {
-  test('login to existing account using account id', () => {
-    const gen = cloneableGenerator(loginSaga)({ accountId: 'ID' }, 'PASSWORD');
+  test('handleLoginProcess to existing account using account id', () => {
+    const gen = cloneableGenerator(handleLoginProcess)({ accountId: 'ID' }, 'PASSWORD');
     expect(gen.next().value).toEqual(put(loginTaskUpdated(TaskBuilder.pending())));
     expect(gen.next().value).toEqual(call(getAccount, 'ID'));
     expect(gen.next(accountMock).value).toEqual(call(
@@ -256,8 +256,8 @@ describe('login', () => {
     expect(gen.next().value).toEqual(put(fetchAllChats()));
   });
 
-  test('login to new account using account store', () => {
-    const gen = cloneableGenerator(loginSaga)({ accountId: 'ID', accountStore: 'ACCOUNT_STORE' }, 'PASSWORD', true);
+  test('handleLoginProcess to new account using account store', () => {
+    const gen = cloneableGenerator(handleLoginProcess)({ accountId: 'ID', accountStore: 'ACCOUNT_STORE' }, 'PASSWORD', true);
 
     expect(gen.next().value).toEqual(take(PERFORM_DEFERRED_LOGIN));
 
@@ -302,6 +302,17 @@ describe('login', () => {
     expect(last.value).toBeUndefined();
     expect(last.done).toBeTruthy();
   });
+
+  test('login', () => {
+    const userInfo = { accountId: 'ID', accountStore: 'ACCOUNT_STORE' };
+    const pass = 'PASSWORD';
+    const gen = cloneableGenerator(loginSaga)(userInfo, pass, true);
+    const expectedRace = race({
+      task: call(handleLoginProcess, userInfo, pass, true),
+      backPress: take(CANCEL_LOGIN),
+    });
+    expect(gen.next().value).toEqual(expectedRace);
+  });
 });
 
 test('logout', () => {
@@ -312,6 +323,11 @@ test('logout', () => {
   const last = gen.next();
   expect(last.value).toBeUndefined();
   expect(last.done).toBeTruthy();
+});
+
+test('cancelLogin', () => {
+  const gen = cancelLogin();
+  expect(gen.next().value).toEqual(put(loginTaskUpdated(TaskBuilder.empty())));
 });
 
 test('saveAccount', async () => {
