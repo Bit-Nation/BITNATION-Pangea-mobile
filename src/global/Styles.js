@@ -855,7 +855,7 @@ const styles = {
   },
 
   arrowButtonTitle: {
-    fontSize: 15,
+    fontSize: 14,
     color: Colors.BitnationLinkOrangeColor,
     fontWeight: 'bold',
     textAlign: 'center',
@@ -895,7 +895,7 @@ const styles = {
   arrowButtonContainer: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
-    marginLeft: 0,
+    marginLeft: 18,
   },
 
   buttonContainerMultiple: {
