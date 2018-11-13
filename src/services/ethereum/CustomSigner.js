@@ -39,6 +39,14 @@ export default function CustomSigner(privateKey: string, provider: string, app: 
       } else {
         estimate = await this.estimateGas(transactionObject);
       }
+      let { gasLimit } = transaction;
+      if (gasLimit != null) {
+        gasLimit = gasLimit.toString();// get gas limit if transaction has it
+      } else if (estimate != null) {
+        gasLimit = estimate.toString();// get gas limit from ether.js service https://github.com/ethereum/wiki/wiki/JSON-RPC#eth_estimategas
+      } else {
+        gasLimit = this.defaultGasLimit; // get gas limit from default value
+      }
       const signedTransaction = await new Promise((resolve, reject) => {
         Navigation.showModal({
           ...screen('CONFIRMATION_SCREEN'),
@@ -46,10 +54,10 @@ export default function CustomSigner(privateKey: string, provider: string, app: 
             onFail: (error) => {
               reject(error);
             },
-            onSuccess: (gasPrice, gasLimit) => {
+            onSuccess: (gasPrice, gasLimitOnSuccess) => {
               // Here we have gasPrice which is in wei, so we need to convert it into gwei.
               transactionObject.gasPrice = ethers.utils.parseUnits(gasPrice.toString(), 'gwei');
-              transactionObject.gasLimit = ethers.utils.bigNumberify(gasLimit);
+              transactionObject.gasLimit = ethers.utils.bigNumberify(gasLimitOnSuccess);
               resolve(wallet.sign(transactionObject));
             },
             to: transactionObject.to,
@@ -57,7 +65,7 @@ export default function CustomSigner(privateKey: string, provider: string, app: 
             amount: transactionObject.value,
             estimate: estimate.toString(),
             app,
-            gasLimit: transactionObject.gasLimit,
+            gasLimit,
           },
         });
       });
@@ -67,6 +75,7 @@ export default function CustomSigner(privateKey: string, provider: string, app: 
       throw e;
     }
   };
+
   this.sendTransaction = (transaction) => {
     if (!this.provider) {
       throw new Error('missing provider');
@@ -74,13 +83,6 @@ export default function CustomSigner(privateKey: string, provider: string, app: 
 
     if (!transaction || typeof (transaction) !== 'object') {
       throw new Error('invalid transaction object');
-    }
-
-    let { gasLimit } = transaction;
-    if (gasLimit == null) {
-      gasLimit = this.defaultGasLimit;
-    } else {
-      gasLimit = gasLimit.toString();
     }
 
     const self = this;
@@ -114,7 +116,7 @@ export default function CustomSigner(privateKey: string, provider: string, app: 
       const signedTransaction = await self.sign({
         to: results[2],
         data,
-        gasLimit,
+        gasLimit: transaction.gasLimit,
         gasPrice: results[0],
         nonce: results[1],
         value,

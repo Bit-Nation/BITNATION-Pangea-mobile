@@ -13,6 +13,7 @@ import {
   currentAccountIdChanged,
   loginTaskUpdated,
   PERFORM_DEFERRED_LOGIN,
+  CANCEL_LOGIN,
   savePassword, setCurrentAccountIdentityKey,
 } from '../../actions/accounts';
 import type {
@@ -186,7 +187,7 @@ export function* loginActionHandler(action: LoginAction): Generator<*, *, *> {
  * @param {boolean} deferred Flag whether login should be deferred until performDeferredLogin action is called.
  * @returns {void}
  */
-export function* login(userInfo: ({ accountId: string, accountStore?: string }), password: string, deferred: boolean = false): Generator<*, *, *> {
+export function* handleLoginProcess(userInfo: ({ accountId: string, accountStore?: string }), password: string, deferred: boolean = false): Generator<*, *, *> {
   if (deferred === true) {
     yield take(PERFORM_DEFERRED_LOGIN);
   }
@@ -239,6 +240,20 @@ export function* login(userInfo: ({ accountId: string, accountStore?: string }),
 }
 
 /**
+ * @desc Performs a login of user.
+ * @param {*} userInfo Either object containing account id or account store to log in.
+ * @param {string} password Password to use on login.
+ * @param {boolean} deferred Flag whether login should be deferred until performDeferredLogin action is called.
+ * @return {boolean} True if accounts validate success.
+ */
+export function* login(userInfo: ({ accountId: string, accountStore?: string }), password: string, deferred: boolean = false): Generator<*, *, *> {
+  yield race({
+    task: call(handleLoginProcess, userInfo, password, deferred),
+    backPress: take(CANCEL_LOGIN),
+  });
+}
+
+/**
  * @desc Valid mnemonic with account choice to login
  * @param {ValidateMnemonicWithAccountAction} action An action
  * @return {void}
@@ -275,6 +290,14 @@ export function* validateMnemonicWithAccount(userInfo: ({ accountId: string }), 
 export function* logout(): Generator<*, *, *> {
   yield call(AccountsService.logout);
   yield put(currentAccountIdChanged(null));
+}
+
+/**
+ * @desc Performs a cancel login.
+ * @return {void}
+ */
+export function* cancelLogin(): Generator<*, *, *> {
+  yield put(loginTaskUpdated(TaskBuilder.empty()));
 }
 
 /**

@@ -22,6 +22,12 @@ If you find a bug / vulnerability please DO NOT open an issue. Write to `securit
 
 ## Install
 
+__Requirements__
+
+Node 8.x - Node 10+ is [not supported by realm yet](https://github.com/realm/realm-js/issues/1857). 
+
+Currently, MacOS is the only supported operating system for building the project. We'd love to hear if you've gotten it working on other operating systems (it's likely possible, we just haven't been able to spare the time yet). 
+
 __Project setup__
 
 1. Clone the repo

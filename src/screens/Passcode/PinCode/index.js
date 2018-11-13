@@ -5,6 +5,7 @@ import {
   View,
   Text,
   TextInput,
+  Keyboard,
 } from 'react-native';
 
 import styles from './styles';
@@ -19,6 +20,10 @@ export type Props = {
    * @desc React Native Navigation navigator object.
    */
   navigator: Navigator,
+  /**
+   * @desc Function to perform cancel login.
+   */
+  cancelLogin?: () => void,
   /**
    * @desc Function that is called if pin code operation is cancelled.
    */
@@ -84,8 +89,14 @@ class PinCodeScreen extends NavigatorComponent<Props, State> {
     }
   }
 
+  onBackPress() {
+    if (this.props.cancelLogin) { this.props.cancelLogin(); }
+    this.props.onCancel();
+  }
+
   onNavBarButtonPress(id: string) {
     if (id === 'cancel') {
+      if (this.props.cancelLogin) { this.props.cancelLogin(); }
       this.props.onCancel();
     }
   }
@@ -109,7 +120,10 @@ class PinCodeScreen extends NavigatorComponent<Props, State> {
           <Button
             enabled={this.state.pinCode.length === this.props.pinCodeLength}
             title={i18n.t('common.ok')}
-            onPress={() => this.props.onSubmit(this.state.pinCode)}
+            onPress={() => {
+              Keyboard.dismiss();
+              this.props.onSubmit(this.state.pinCode);
+            }}
             style={styles.submitButton}
           />
         </View>
