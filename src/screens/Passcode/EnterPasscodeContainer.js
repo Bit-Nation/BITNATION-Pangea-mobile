@@ -7,7 +7,7 @@ import PinCodeScreen from './PinCode/index';
 import { type State as SettingsState } from '../../reducers/settings';
 import NavigatorComponent from '../../components/common/NavigatorComponent';
 import i18n from '../../global/i18n';
-import { checkPinCode, checkPassword, login } from '../../actions/accounts';
+import { checkPinCode, checkPassword, login, cancelLogin } from '../../actions/accounts';
 import { errorAlert } from '../../global/alerts';
 import PasswordScreen from './Password/index';
 import styles from './PinCode/styles';
@@ -61,6 +61,10 @@ type Actions = {
    * @desc Action to perform a login.
    */
   login: (password: string, accountId: string) => void,
+  /**
+   * @desc Action to perform cancel login.
+   */
+  cancelLogin: () => void,
 }
 
 class EnterPasscodeContainer extends NavigatorComponent<Props & Actions & SettingsState> {
@@ -119,6 +123,7 @@ class EnterPasscodeContainer extends NavigatorComponent<Props & Actions & Settin
         onSubmit={this.onPasscodeEntered}
         shouldShowForget={shouldShowForget}
         onForget={this.onForgetPasscode}
+        cancelLogin={this.props.cancelLogin}
       />);
     }
 
@@ -131,6 +136,7 @@ class EnterPasscodeContainer extends NavigatorComponent<Props & Actions & Settin
       onSubmit={this.onPasscodeEntered}
       shouldShowForget={shouldShowForget}
       onForget={this.onForgetPasscode}
+      cancelLogin={this.props.cancelLogin}
     />);
   }
 
@@ -169,6 +175,9 @@ const mapDispatchToProps = dispatch => ({
   },
   login(password, accountId) {
     dispatch(login(password, accountId));
+  },
+  cancelLogin() {
+    dispatch(cancelLogin());
   },
 });
 
