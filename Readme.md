@@ -39,11 +39,12 @@ __IOS specific__
 1. Get [cocoapods](https://cocoapods.org/)
 2. Go to the `ios` folder
 3. Run `pod install`
-4. Unpack `ios/Frameworks/panthalassa.framework/Versions/A/Panthalassa.tar.gz`
+4. Place a compiled version of https://github.com/Bit-Nation/panthalassa into ios/Frameworks/panthalassa.framework
 5. Go back to the project root and run `npm run ios`
 
 __Android specific__
-1. Run `npm run android`
+1. Place a compiled version of https://github.com/Bit-Nation/panthalassa into android/panthalassa/panthalassa.aar
+2. Run `npm run android`
 ## Usage
 
 __Git & best practice__
