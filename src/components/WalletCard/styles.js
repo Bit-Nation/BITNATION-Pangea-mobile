@@ -14,7 +14,6 @@ const styles = StyleSheet.create({
   },
   icon: {
     width: 55,
-    marginRight: 10,
     marginTop: 36,
   },
   row: {
@@ -49,16 +48,14 @@ const styles = StyleSheet.create({
   },
   transactionButton: {
     height: 36,
-    marginLeft: 12,
+    marginLeft: 8,
     width: 100,
   },
   buttonsContainer: {
     flexDirection: 'row',
-    // justifyContent: 'space-between',
-    marginLeft: 5,
   },
   leftButton: {
-    marginRight: 4,
+    marginRight: 0,
   },
   messageText: {
     color: Colors.BitnationLightColor,
