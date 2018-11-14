@@ -3,7 +3,7 @@
 [![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 [![Build Status](https://app.bitrise.io/app/be68de279aca4575/status.svg?token=pXZD3QeHe1TRK7YbQ0OnJQ&branch=develop)](https://app.bitrise.io/app/be68de279aca4575)
 
-> Bitnations Blockchain Jurisdiction
+> Bitnation's Blockchain Jurisdiction
 
 TODO: Fill out this long description.
 
@@ -24,7 +24,12 @@ If you find a bug / vulnerability please DO NOT open an issue. Write to `securit
 
 __Requirements__
 
-Node 8.x - Node 10+ is [not supported by realm yet](https://github.com/realm/realm-js/issues/1857). 
+* Node 8.x - Node 10+ is [not supported by realm yet](https://github.com/realm/realm-js/issues/1857). 
+
+* Android Studio 3.1+ (If NDK is not installed, this version requirement may be more relaxed).
+
+* [Panthalassa](https://github.com/Bit-Nation/panthalassa) binary, also covered below in instructions. Pardon our dust, we're working on better ways to make this dependency more developer-friendly. 
+
 
 Currently, MacOS is the only supported operating system for building the project. We'd love to hear if you've gotten it working on other operating systems (it's likely possible, we just haven't been able to spare the time yet). 
 

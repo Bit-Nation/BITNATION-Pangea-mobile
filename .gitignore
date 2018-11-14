@@ -65,3 +65,5 @@ docs_build
 pangea*
 *.hprof
 
+# DO NOT STORE LARGE BINARIES IN GIT. EVER!
+*panthalassa.aar
