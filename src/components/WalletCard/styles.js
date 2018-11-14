@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
   },
   icon: {
     width: 55,
-    marginRight: 10,
+    marginRight: 5,
     marginTop: 36,
   },
   row: {
@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
   },
   textColumn: {
     flex: 1,
+    marginLeft: 0,
     justifyContent: 'flex-start',
   },
   spacer: {
@@ -43,24 +44,19 @@ const styles = StyleSheet.create({
     color: Colors.BitnationHighlightYellowColor,
   },
   button: {
-    height: 25,
-    borderRadius: 14,
-    width: 80,
+    height: 36,
   },
   buttonsContainer: {
     flexDirection: 'row',
-    justifyContent: 'flex-start',
-    marginLeft: 2,
   },
   leftButton: {
-    marginRight: 8,
+    marginRight: 4,
   },
   messageText: {
     color: Colors.BitnationLightColor,
     fontSize: 14,
     marginBottom: 10,
   },
-
 });
 
 export default styles;
