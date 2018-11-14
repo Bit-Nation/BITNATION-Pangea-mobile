@@ -14,10 +14,10 @@ message Response {
         // must be base 10!
         string value = 5;
         string data = 6;
-        string v = 7;
+        uint32 v = 7;
         string r = 8;
         string s = 9;
-        uint32 chainID = 10;
+        uint32 chainId = 10;
         string from = 11;
         string hash = 12;
     }

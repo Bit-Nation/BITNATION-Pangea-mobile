@@ -1,4 +1,4 @@
-/* eslint-disable */
+/*eslint-disable block-scoped-var, id-length, no-control-regex, no-magic-numbers, no-prototype-builtins, no-redeclare, no-shadow, no-var, sort-vars*/
 "use strict";
 
 var $protobuf = require("protobufjs/minimal");
@@ -934,10 +934,10 @@ $root.api_proto = (function() {
              * @property {string|null} [to] SendEthereumTransaction to
              * @property {string|null} [value] SendEthereumTransaction value
              * @property {string|null} [data] SendEthereumTransaction data
-             * @property {string|null} [v] SendEthereumTransaction v
+             * @property {number|null} [v] SendEthereumTransaction v
              * @property {string|null} [r] SendEthereumTransaction r
              * @property {string|null} [s] SendEthereumTransaction s
-             * @property {number|null} [chainID] SendEthereumTransaction chainID
+             * @property {number|null} [chainId] SendEthereumTransaction chainId
              * @property {string|null} [from] SendEthereumTransaction from
              * @property {string|null} [hash] SendEthereumTransaction hash
              */
@@ -1007,11 +1007,11 @@ $root.api_proto = (function() {
 
             /**
              * SendEthereumTransaction v.
-             * @member {string} v
+             * @member {number} v
              * @memberof api_proto.Response.SendEthereumTransaction
              * @instance
              */
-            SendEthereumTransaction.prototype.v = "";
+            SendEthereumTransaction.prototype.v = 0;
 
             /**
              * SendEthereumTransaction r.
@@ -1030,12 +1030,12 @@ $root.api_proto = (function() {
             SendEthereumTransaction.prototype.s = "";
 
             /**
-             * SendEthereumTransaction chainID.
-             * @member {number} chainID
+             * SendEthereumTransaction chainId.
+             * @member {number} chainId
              * @memberof api_proto.Response.SendEthereumTransaction
              * @instance
              */
-            SendEthereumTransaction.prototype.chainID = 0;
+            SendEthereumTransaction.prototype.chainId = 0;
 
             /**
              * SendEthereumTransaction from.
@@ -1090,13 +1090,13 @@ $root.api_proto = (function() {
                 if (message.data != null && message.hasOwnProperty("data"))
                     writer.uint32(/* id 6, wireType 2 =*/50).string(message.data);
                 if (message.v != null && message.hasOwnProperty("v"))
-                    writer.uint32(/* id 7, wireType 2 =*/58).string(message.v);
+                    writer.uint32(/* id 7, wireType 0 =*/56).uint32(message.v);
                 if (message.r != null && message.hasOwnProperty("r"))
                     writer.uint32(/* id 8, wireType 2 =*/66).string(message.r);
                 if (message.s != null && message.hasOwnProperty("s"))
                     writer.uint32(/* id 9, wireType 2 =*/74).string(message.s);
-                if (message.chainID != null && message.hasOwnProperty("chainID"))
-                    writer.uint32(/* id 10, wireType 0 =*/80).uint32(message.chainID);
+                if (message.chainId != null && message.hasOwnProperty("chainId"))
+                    writer.uint32(/* id 10, wireType 0 =*/80).uint32(message.chainId);
                 if (message.from != null && message.hasOwnProperty("from"))
                     writer.uint32(/* id 11, wireType 2 =*/90).string(message.from);
                 if (message.hash != null && message.hasOwnProperty("hash"))
@@ -1154,7 +1154,7 @@ $root.api_proto = (function() {
                         message.data = reader.string();
                         break;
                     case 7:
-                        message.v = reader.string();
+                        message.v = reader.uint32();
                         break;
                     case 8:
                         message.r = reader.string();
@@ -1163,7 +1163,7 @@ $root.api_proto = (function() {
                         message.s = reader.string();
                         break;
                     case 10:
-                        message.chainID = reader.uint32();
+                        message.chainId = reader.uint32();
                         break;
                     case 11:
                         message.from = reader.string();
@@ -1225,17 +1225,17 @@ $root.api_proto = (function() {
                     if (!$util.isString(message.data))
                         return "data: string expected";
                 if (message.v != null && message.hasOwnProperty("v"))
-                    if (!$util.isString(message.v))
-                        return "v: string expected";
+                    if (!$util.isInteger(message.v))
+                        return "v: integer expected";
                 if (message.r != null && message.hasOwnProperty("r"))
                     if (!$util.isString(message.r))
                         return "r: string expected";
                 if (message.s != null && message.hasOwnProperty("s"))
                     if (!$util.isString(message.s))
                         return "s: string expected";
-                if (message.chainID != null && message.hasOwnProperty("chainID"))
-                    if (!$util.isInteger(message.chainID))
-                        return "chainID: integer expected";
+                if (message.chainId != null && message.hasOwnProperty("chainId"))
+                    if (!$util.isInteger(message.chainId))
+                        return "chainId: integer expected";
                 if (message.from != null && message.hasOwnProperty("from"))
                     if (!$util.isString(message.from))
                         return "from: string expected";
@@ -1270,13 +1270,13 @@ $root.api_proto = (function() {
                 if (object.data != null)
                     message.data = String(object.data);
                 if (object.v != null)
-                    message.v = String(object.v);
+                    message.v = object.v >>> 0;
                 if (object.r != null)
                     message.r = String(object.r);
                 if (object.s != null)
                     message.s = String(object.s);
-                if (object.chainID != null)
-                    message.chainID = object.chainID >>> 0;
+                if (object.chainId != null)
+                    message.chainId = object.chainId >>> 0;
                 if (object.from != null)
                     message.from = String(object.from);
                 if (object.hash != null)
@@ -1304,10 +1304,10 @@ $root.api_proto = (function() {
                     object.to = "";
                     object.value = "";
                     object.data = "";
-                    object.v = "";
+                    object.v = 0;
                     object.r = "";
                     object.s = "";
-                    object.chainID = 0;
+                    object.chainId = 0;
                     object.from = "";
                     object.hash = "";
                 }
@@ -1329,8 +1329,8 @@ $root.api_proto = (function() {
                     object.r = message.r;
                 if (message.s != null && message.hasOwnProperty("s"))
                     object.s = message.s;
-                if (message.chainID != null && message.hasOwnProperty("chainID"))
-                    object.chainID = message.chainID;
+                if (message.chainId != null && message.hasOwnProperty("chainId"))
+                    object.chainId = message.chainId;
                 if (message.from != null && message.hasOwnProperty("from"))
                     object.from = message.from;
                 if (message.hash != null && message.hasOwnProperty("hash"))
