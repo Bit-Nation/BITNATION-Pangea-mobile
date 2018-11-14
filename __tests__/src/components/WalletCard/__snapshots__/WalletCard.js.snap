@@ -41,7 +41,7 @@ ShallowWrapper {
           source={1}
           style={
             Object {
-              "marginRight": 10,
+              "marginRight": 5,
               "marginTop": 36,
               "width": 55,
             }
@@ -52,6 +52,7 @@ ShallowWrapper {
             Object {
               "flex": 1,
               "justifyContent": "flex-start",
+              "marginLeft": 0,
             }
           }
         >
@@ -101,8 +102,6 @@ ShallowWrapper {
             style={
               Object {
                 "flexDirection": "row",
-                "justifyContent": "flex-start",
-                "marginLeft": 2,
               }
             }
           >
@@ -110,16 +109,9 @@ ShallowWrapper {
               enabled={true}
               onPress={[Function]}
               style={
-                Array [
-                  Object {
-                    "borderRadius": 14,
-                    "height": 25,
-                    "width": 80,
-                  },
-                  Object {
-                    "marginRight": 8,
-                  },
-                ]
+                Object {
+                  "height": 36,
+                }
               }
               title="Send"
             />
@@ -128,9 +120,7 @@ ShallowWrapper {
               onPress={[Function]}
               style={
                 Object {
-                  "borderRadius": 14,
-                  "height": 25,
-                  "width": 80,
+                  "height": 36,
                 }
               }
               title="Receive"
@@ -140,28 +130,12 @@ ShallowWrapper {
               onPress={[Function]}
               style={
                 Object {
-                  "borderRadius": 14,
-                  "height": 25,
-                  "width": 80,
+                  "height": 36,
                 }
               }
               title="Transactions"
             />
-            <View
-              style={
-                Object {
-                  "flex": 1,
-                }
-              }
-            />
           </View>
-          <View
-            style={
-              Object {
-                "flex": 1,
-              }
-            }
-          />
         </View>
       </View>,
       "style": Object {
@@ -184,7 +158,7 @@ ShallowWrapper {
             source={1}
             style={
               Object {
-                "marginRight": 10,
+                "marginRight": 5,
                 "marginTop": 36,
                 "width": 55,
               }
@@ -195,6 +169,7 @@ ShallowWrapper {
               Object {
                 "flex": 1,
                 "justifyContent": "flex-start",
+                "marginLeft": 0,
               }
             }
           >
@@ -244,8 +219,6 @@ ShallowWrapper {
               style={
                 Object {
                   "flexDirection": "row",
-                  "justifyContent": "flex-start",
-                  "marginLeft": 2,
                 }
               }
             >
@@ -253,16 +226,9 @@ ShallowWrapper {
                 enabled={true}
                 onPress={[Function]}
                 style={
-                  Array [
-                    Object {
-                      "borderRadius": 14,
-                      "height": 25,
-                      "width": 80,
-                    },
-                    Object {
-                      "marginRight": 8,
-                    },
-                  ]
+                  Object {
+                    "height": 36,
+                  }
                 }
                 title="Send"
               />
@@ -271,9 +237,7 @@ ShallowWrapper {
                 onPress={[Function]}
                 style={
                   Object {
-                    "borderRadius": 14,
-                    "height": 25,
-                    "width": 80,
+                    "height": 36,
                   }
                 }
                 title="Receive"
@@ -283,28 +247,12 @@ ShallowWrapper {
                 onPress={[Function]}
                 style={
                   Object {
-                    "borderRadius": 14,
-                    "height": 25,
-                    "width": 80,
+                    "height": 36,
                   }
                 }
                 title="Transactions"
               />
-              <View
-                style={
-                  Object {
-                    "flex": 1,
-                  }
-                }
-              />
             </View>
-            <View
-              style={
-                Object {
-                  "flex": 1,
-                }
-              }
-            />
           </View>,
         ],
         "style": Object {
@@ -326,7 +274,7 @@ ShallowWrapper {
             "resizeMode": "contain",
             "source": 1,
             "style": Object {
-              "marginRight": 10,
+              "marginRight": 5,
               "marginTop": 36,
               "width": 55,
             },
@@ -387,8 +335,6 @@ ShallowWrapper {
                 style={
                   Object {
                     "flexDirection": "row",
-                    "justifyContent": "flex-start",
-                    "marginLeft": 2,
                   }
                 }
               >
@@ -396,16 +342,9 @@ ShallowWrapper {
                   enabled={true}
                   onPress={[Function]}
                   style={
-                    Array [
-                      Object {
-                        "borderRadius": 14,
-                        "height": 25,
-                        "width": 80,
-                      },
-                      Object {
-                        "marginRight": 8,
-                      },
-                    ]
+                    Object {
+                      "height": 36,
+                    }
                   }
                   title="Send"
                 />
@@ -414,9 +353,7 @@ ShallowWrapper {
                   onPress={[Function]}
                   style={
                     Object {
-                      "borderRadius": 14,
-                      "height": 25,
-                      "width": 80,
+                      "height": 36,
                     }
                   }
                   title="Receive"
@@ -426,32 +363,17 @@ ShallowWrapper {
                   onPress={[Function]}
                   style={
                     Object {
-                      "borderRadius": 14,
-                      "height": 25,
-                      "width": 80,
+                      "height": 36,
                     }
                   }
                   title="Transactions"
                 />
-                <View
-                  style={
-                    Object {
-                      "flex": 1,
-                    }
-                  }
-                />
               </View>,
-              <View
-                style={
-                  Object {
-                    "flex": 1,
-                  }
-                }
-              />,
             ],
             "style": Object {
               "flex": 1,
               "justifyContent": "flex-start",
+              "marginLeft": 0,
             },
           },
           "ref": null,
@@ -530,16 +452,9 @@ ShallowWrapper {
                     enabled={true}
                     onPress={[Function]}
                     style={
-                      Array [
-                        Object {
-                          "borderRadius": 14,
-                          "height": 25,
-                          "width": 80,
-                        },
-                        Object {
-                          "marginRight": 8,
-                        },
-                      ]
+                      Object {
+                        "height": 36,
+                      }
                     }
                     title="Send"
                   />,
@@ -548,9 +463,7 @@ ShallowWrapper {
                     onPress={[Function]}
                     style={
                       Object {
-                        "borderRadius": 14,
-                        "height": 25,
-                        "width": 80,
+                        "height": 36,
                       }
                     }
                     title="Receive"
@@ -560,25 +473,14 @@ ShallowWrapper {
                     onPress={[Function]}
                     style={
                       Object {
-                        "borderRadius": 14,
-                        "height": 25,
-                        "width": 80,
+                        "height": 36,
                       }
                     }
                     title="Transactions"
                   />,
-                  <View
-                    style={
-                      Object {
-                        "flex": 1,
-                      }
-                    }
-                  />,
                 ],
                 "style": Object {
                   "flexDirection": "row",
-                  "justifyContent": "flex-start",
-                  "marginLeft": 2,
                 },
               },
               "ref": null,
@@ -590,16 +492,9 @@ ShallowWrapper {
                   "props": Object {
                     "enabled": true,
                     "onPress": [Function],
-                    "style": Array [
-                      Object {
-                        "borderRadius": 14,
-                        "height": 25,
-                        "width": 80,
-                      },
-                      Object {
-                        "marginRight": 8,
-                      },
-                    ],
+                    "style": Object {
+                      "height": 36,
+                    },
                     "title": "Send",
                   },
                   "ref": null,
@@ -614,9 +509,7 @@ ShallowWrapper {
                     "enabled": true,
                     "onPress": [Function],
                     "style": Object {
-                      "borderRadius": 14,
-                      "height": 25,
-                      "width": 80,
+                      "height": 36,
                     },
                     "title": "Receive",
                   },
@@ -632,9 +525,7 @@ ShallowWrapper {
                     "enabled": true,
                     "onPress": [Function],
                     "style": Object {
-                      "borderRadius": 14,
-                      "height": 25,
-                      "width": 80,
+                      "height": 36,
                     },
                     "title": "Transactions",
                   },
@@ -642,33 +533,7 @@ ShallowWrapper {
                   "rendered": null,
                   "type": [Function],
                 },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "class",
-                  "props": Object {
-                    "style": Object {
-                      "flex": 1,
-                    },
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": [Function],
-                },
               ],
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "style": Object {
-                  "flex": 1,
-                },
-              },
-              "ref": null,
-              "rendered": null,
               "type": [Function],
             },
           ],
@@ -702,7 +567,7 @@ ShallowWrapper {
             source={1}
             style={
               Object {
-                "marginRight": 10,
+                "marginRight": 5,
                 "marginTop": 36,
                 "width": 55,
               }
@@ -713,6 +578,7 @@ ShallowWrapper {
               Object {
                 "flex": 1,
                 "justifyContent": "flex-start",
+                "marginLeft": 0,
               }
             }
           >
@@ -762,8 +628,6 @@ ShallowWrapper {
               style={
                 Object {
                   "flexDirection": "row",
-                  "justifyContent": "flex-start",
-                  "marginLeft": 2,
                 }
               }
             >
@@ -771,16 +635,9 @@ ShallowWrapper {
                 enabled={true}
                 onPress={[Function]}
                 style={
-                  Array [
-                    Object {
-                      "borderRadius": 14,
-                      "height": 25,
-                      "width": 80,
-                    },
-                    Object {
-                      "marginRight": 8,
-                    },
-                  ]
+                  Object {
+                    "height": 36,
+                  }
                 }
                 title="Send"
               />
@@ -789,9 +646,7 @@ ShallowWrapper {
                 onPress={[Function]}
                 style={
                   Object {
-                    "borderRadius": 14,
-                    "height": 25,
-                    "width": 80,
+                    "height": 36,
                   }
                 }
                 title="Receive"
@@ -801,28 +656,12 @@ ShallowWrapper {
                 onPress={[Function]}
                 style={
                   Object {
-                    "borderRadius": 14,
-                    "height": 25,
-                    "width": 80,
+                    "height": 36,
                   }
                 }
                 title="Transactions"
               />
-              <View
-                style={
-                  Object {
-                    "flex": 1,
-                  }
-                }
-              />
             </View>
-            <View
-              style={
-                Object {
-                  "flex": 1,
-                }
-              }
-            />
           </View>
         </View>,
         "style": Object {
@@ -845,7 +684,7 @@ ShallowWrapper {
               source={1}
               style={
                 Object {
-                  "marginRight": 10,
+                  "marginRight": 5,
                   "marginTop": 36,
                   "width": 55,
                 }
@@ -856,6 +695,7 @@ ShallowWrapper {
                 Object {
                   "flex": 1,
                   "justifyContent": "flex-start",
+                  "marginLeft": 0,
                 }
               }
             >
@@ -905,8 +745,6 @@ ShallowWrapper {
                 style={
                   Object {
                     "flexDirection": "row",
-                    "justifyContent": "flex-start",
-                    "marginLeft": 2,
                   }
                 }
               >
@@ -914,16 +752,9 @@ ShallowWrapper {
                   enabled={true}
                   onPress={[Function]}
                   style={
-                    Array [
-                      Object {
-                        "borderRadius": 14,
-                        "height": 25,
-                        "width": 80,
-                      },
-                      Object {
-                        "marginRight": 8,
-                      },
-                    ]
+                    Object {
+                      "height": 36,
+                    }
                   }
                   title="Send"
                 />
@@ -932,9 +763,7 @@ ShallowWrapper {
                   onPress={[Function]}
                   style={
                     Object {
-                      "borderRadius": 14,
-                      "height": 25,
-                      "width": 80,
+                      "height": 36,
                     }
                   }
                   title="Receive"
@@ -944,28 +773,12 @@ ShallowWrapper {
                   onPress={[Function]}
                   style={
                     Object {
-                      "borderRadius": 14,
-                      "height": 25,
-                      "width": 80,
+                      "height": 36,
                     }
                   }
                   title="Transactions"
                 />
-                <View
-                  style={
-                    Object {
-                      "flex": 1,
-                    }
-                  }
-                />
               </View>
-              <View
-                style={
-                  Object {
-                    "flex": 1,
-                  }
-                }
-              />
             </View>,
           ],
           "style": Object {
@@ -987,7 +800,7 @@ ShallowWrapper {
               "resizeMode": "contain",
               "source": 1,
               "style": Object {
-                "marginRight": 10,
+                "marginRight": 5,
                 "marginTop": 36,
                 "width": 55,
               },
@@ -1048,8 +861,6 @@ ShallowWrapper {
                   style={
                     Object {
                       "flexDirection": "row",
-                      "justifyContent": "flex-start",
-                      "marginLeft": 2,
                     }
                   }
                 >
@@ -1057,16 +868,9 @@ ShallowWrapper {
                     enabled={true}
                     onPress={[Function]}
                     style={
-                      Array [
-                        Object {
-                          "borderRadius": 14,
-                          "height": 25,
-                          "width": 80,
-                        },
-                        Object {
-                          "marginRight": 8,
-                        },
-                      ]
+                      Object {
+                        "height": 36,
+                      }
                     }
                     title="Send"
                   />
@@ -1075,9 +879,7 @@ ShallowWrapper {
                     onPress={[Function]}
                     style={
                       Object {
-                        "borderRadius": 14,
-                        "height": 25,
-                        "width": 80,
+                        "height": 36,
                       }
                     }
                     title="Receive"
@@ -1087,32 +889,17 @@ ShallowWrapper {
                     onPress={[Function]}
                     style={
                       Object {
-                        "borderRadius": 14,
-                        "height": 25,
-                        "width": 80,
+                        "height": 36,
                       }
                     }
                     title="Transactions"
                   />
-                  <View
-                    style={
-                      Object {
-                        "flex": 1,
-                      }
-                    }
-                  />
                 </View>,
-                <View
-                  style={
-                    Object {
-                      "flex": 1,
-                    }
-                  }
-                />,
               ],
               "style": Object {
                 "flex": 1,
                 "justifyContent": "flex-start",
+                "marginLeft": 0,
               },
             },
             "ref": null,
@@ -1191,16 +978,9 @@ ShallowWrapper {
                       enabled={true}
                       onPress={[Function]}
                       style={
-                        Array [
-                          Object {
-                            "borderRadius": 14,
-                            "height": 25,
-                            "width": 80,
-                          },
-                          Object {
-                            "marginRight": 8,
-                          },
-                        ]
+                        Object {
+                          "height": 36,
+                        }
                       }
                       title="Send"
                     />,
@@ -1209,9 +989,7 @@ ShallowWrapper {
                       onPress={[Function]}
                       style={
                         Object {
-                          "borderRadius": 14,
-                          "height": 25,
-                          "width": 80,
+                          "height": 36,
                         }
                       }
                       title="Receive"
@@ -1221,25 +999,14 @@ ShallowWrapper {
                       onPress={[Function]}
                       style={
                         Object {
-                          "borderRadius": 14,
-                          "height": 25,
-                          "width": 80,
+                          "height": 36,
                         }
                       }
                       title="Transactions"
                     />,
-                    <View
-                      style={
-                        Object {
-                          "flex": 1,
-                        }
-                      }
-                    />,
                   ],
                   "style": Object {
                     "flexDirection": "row",
-                    "justifyContent": "flex-start",
-                    "marginLeft": 2,
                   },
                 },
                 "ref": null,
@@ -1251,16 +1018,9 @@ ShallowWrapper {
                     "props": Object {
                       "enabled": true,
                       "onPress": [Function],
-                      "style": Array [
-                        Object {
-                          "borderRadius": 14,
-                          "height": 25,
-                          "width": 80,
-                        },
-                        Object {
-                          "marginRight": 8,
-                        },
-                      ],
+                      "style": Object {
+                        "height": 36,
+                      },
                       "title": "Send",
                     },
                     "ref": null,
@@ -1275,9 +1035,7 @@ ShallowWrapper {
                       "enabled": true,
                       "onPress": [Function],
                       "style": Object {
-                        "borderRadius": 14,
-                        "height": 25,
-                        "width": 80,
+                        "height": 36,
                       },
                       "title": "Receive",
                     },
@@ -1293,9 +1051,7 @@ ShallowWrapper {
                       "enabled": true,
                       "onPress": [Function],
                       "style": Object {
-                        "borderRadius": 14,
-                        "height": 25,
-                        "width": 80,
+                        "height": 36,
                       },
                       "title": "Transactions",
                     },
@@ -1303,33 +1059,7 @@ ShallowWrapper {
                     "rendered": null,
                     "type": [Function],
                   },
-                  Object {
-                    "instance": null,
-                    "key": undefined,
-                    "nodeType": "class",
-                    "props": Object {
-                      "style": Object {
-                        "flex": 1,
-                      },
-                    },
-                    "ref": null,
-                    "rendered": null,
-                    "type": [Function],
-                  },
                 ],
-                "type": [Function],
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "class",
-                "props": Object {
-                  "style": Object {
-                    "flex": 1,
-                  },
-                },
-                "ref": null,
-                "rendered": null,
                 "type": [Function],
               },
             ],
@@ -1380,7 +1110,7 @@ exports[`WalletCard component tests Rendering 1`] = `
       source={1}
       style={
         Object {
-          "marginRight": 10,
+          "marginRight": 5,
           "marginTop": 36,
           "width": 55,
         }
@@ -1391,6 +1121,7 @@ exports[`WalletCard component tests Rendering 1`] = `
         Object {
           "flex": 1,
           "justifyContent": "flex-start",
+          "marginLeft": 0,
         }
       }
     >
@@ -1440,8 +1171,6 @@ exports[`WalletCard component tests Rendering 1`] = `
         style={
           Object {
             "flexDirection": "row",
-            "justifyContent": "flex-start",
-            "marginLeft": 2,
           }
         }
       >
@@ -1453,16 +1182,9 @@ exports[`WalletCard component tests Rendering 1`] = `
                 "height": 30,
                 "justifyContent": "center",
               },
-              Array [
-                Object {
-                  "borderRadius": 14,
-                  "height": 25,
-                  "width": 80,
-                },
-                Object {
-                  "marginRight": 8,
-                },
-              ],
+              Object {
+                "height": 36,
+              },
             ]
           }
         >
@@ -1487,7 +1209,7 @@ exports[`WalletCard component tests Rendering 1`] = `
               Object {
                 "flexDirection": "row",
                 "justifyContent": "flex-start",
-                "marginLeft": 0,
+                "marginLeft": 18,
                 "opacity": 1,
               }
             }
@@ -1501,7 +1223,7 @@ exports[`WalletCard component tests Rendering 1`] = `
               style={
                 Object {
                   "color": "#FF8B00",
-                  "fontSize": 12,
+                  "fontSize": 14,
                   "fontWeight": "bold",
                   "textAlign": "center",
                 }
@@ -1509,31 +1231,6 @@ exports[`WalletCard component tests Rendering 1`] = `
             >
               Send
             </Text>
-            <Text
-              accessible={true}
-              allowFontScaling={false}
-              ellipsizeMode="tail"
-              style={
-                Array [
-                  Object {
-                    "color": undefined,
-                    "fontSize": 12,
-                  },
-                  Object {
-                    "alignSelf": "center",
-                    "color": "#FF8B00",
-                    "fontSize": 14,
-                  },
-                  Object {
-                    "fontFamily": "Material Icons",
-                    "fontStyle": "normal",
-                    "fontWeight": "normal",
-                  },
-                ]
-              }
-            >
-              
-            </Text>
           </View>
         </View>
         <View
@@ -1545,9 +1242,7 @@ exports[`WalletCard component tests Rendering 1`] = `
                 "justifyContent": "center",
               },
               Object {
-                "borderRadius": 14,
-                "height": 25,
-                "width": 80,
+                "height": 36,
               },
             ]
           }
@@ -1573,7 +1268,7 @@ exports[`WalletCard component tests Rendering 1`] = `
               Object {
                 "flexDirection": "row",
                 "justifyContent": "flex-start",
-                "marginLeft": 0,
+                "marginLeft": 18,
                 "opacity": 1,
               }
             }
@@ -1587,7 +1282,7 @@ exports[`WalletCard component tests Rendering 1`] = `
               style={
                 Object {
                   "color": "#FF8B00",
-                  "fontSize": 12,
+                  "fontSize": 14,
                   "fontWeight": "bold",
                   "textAlign": "center",
                 }
@@ -1595,31 +1290,6 @@ exports[`WalletCard component tests Rendering 1`] = `
             >
               Receive
             </Text>
-            <Text
-              accessible={true}
-              allowFontScaling={false}
-              ellipsizeMode="tail"
-              style={
-                Array [
-                  Object {
-                    "color": undefined,
-                    "fontSize": 12,
-                  },
-                  Object {
-                    "alignSelf": "center",
-                    "color": "#FF8B00",
-                    "fontSize": 14,
-                  },
-                  Object {
-                    "fontFamily": "Material Icons",
-                    "fontStyle": "normal",
-                    "fontWeight": "normal",
-                  },
-                ]
-              }
-            >
-              
-            </Text>
           </View>
         </View>
         <View
@@ -1631,9 +1301,7 @@ exports[`WalletCard component tests Rendering 1`] = `
                 "justifyContent": "center",
               },
               Object {
-                "borderRadius": 14,
-                "height": 25,
-                "width": 80,
+                "height": 36,
               },
             ]
           }
@@ -1659,7 +1327,7 @@ exports[`WalletCard component tests Rendering 1`] = `
               Object {
                 "flexDirection": "row",
                 "justifyContent": "flex-start",
-                "marginLeft": 0,
+                "marginLeft": 18,
                 "opacity": 1,
               }
             }
@@ -1673,7 +1341,7 @@ exports[`WalletCard component tests Rendering 1`] = `
               style={
                 Object {
                   "color": "#FF8B00",
-                  "fontSize": 12,
+                  "fontSize": 14,
                   "fontWeight": "bold",
                   "textAlign": "center",
                 }
@@ -1681,48 +1349,9 @@ exports[`WalletCard component tests Rendering 1`] = `
             >
               Transactions
             </Text>
-            <Text
-              accessible={true}
-              allowFontScaling={false}
-              ellipsizeMode="tail"
-              style={
-                Array [
-                  Object {
-                    "color": undefined,
-                    "fontSize": 12,
-                  },
-                  Object {
-                    "alignSelf": "center",
-                    "color": "#FF8B00",
-                    "fontSize": 14,
-                  },
-                  Object {
-                    "fontFamily": "Material Icons",
-                    "fontStyle": "normal",
-                    "fontWeight": "normal",
-                  },
-                ]
-              }
-            >
-              
-            </Text>
           </View>
         </View>
-        <View
-          style={
-            Object {
-              "flex": 1,
-            }
-          }
-        />
       </View>
-      <View
-        style={
-          Object {
-            "flex": 1,
-          }
-        }
-      />
     </View>
   </View>
 </View>
