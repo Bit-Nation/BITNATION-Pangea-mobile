@@ -6,6 +6,11 @@ import GlobalStyles from '../../global/Styles';
 
 type Props = {
   /**
+   * @desc Style to be applied on top of default.
+   * @type object
+   */
+  style?: View.propTypes.style,
+  /**
    * @desc Title of header
    */
   title: string
@@ -15,13 +20,13 @@ type Props = {
  * @desc Component for section header in general items list.
  * @return {React.Component} A component.
  */
-const ItemsListHeader = ({ title }: Props) => {
+const ItemsListHeader = ({ title, style }: Props) => {
   const styles = MediaQueryStyleSheet.create({
     ...GlobalStyles,
   });
 
   return (
-    <View style={styles.sectionListHeaderContainer}>
+    <View style={[styles.sectionListHeaderContainer, style]}>
       <Text style={styles.sectionListHeaderText}>
         {title}
       </Text>

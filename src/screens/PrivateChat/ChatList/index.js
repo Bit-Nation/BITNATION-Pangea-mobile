@@ -231,7 +231,7 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
             />);
           }}
           keyExtractor={item => item.id}
-          renderSectionHeader={({ section }) => <ChatListHeader title={section.title} />}
+          renderSectionHeader={({ section }) => <ChatListHeader title={section.title} style={styles.chatListHeaderStyle} />}
           sections={sections}
           style={styles.sectionList}
           ItemSeparatorComponent={() => (<View style={styles.itemSeparator} />)}

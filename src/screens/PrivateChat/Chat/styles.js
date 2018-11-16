@@ -13,6 +13,12 @@ const styles = MediaQueryStyleSheet.create({
     paddingLeft: 4,
     marginRight: 5,
   },
+  customView: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
+    margin: 10,
+  },
   inputToolbar: {
     backgroundColor: 'transparent',
     borderTopWidth: 0,

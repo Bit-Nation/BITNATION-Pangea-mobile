@@ -46,7 +46,7 @@ const ChatListItem = ({
   <ListItem
     id={id}
     text={name}
-    textStyle={GlobalStyles.detailedItemTitle}
+    textStyle={GlobalStyles.detailedChatNameItemTitle}
     onPress={onPress}
     iconSource={avatar}
     style={GlobalStyles.detailedItemContainer}

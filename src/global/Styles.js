@@ -641,6 +641,13 @@ const styles = {
     fontWeight: '500',
   },
 
+  detailedChatNameItemTitle: {
+    ...defaultTextStyles.body,
+    color: Colors.BitnationBlackGrayColor,
+    fontSize: 14,
+    fontWeight: '500',
+  },
+
   // e.g. NationListItem Text very BOLD
   listItemTextVeryBold: {
     ...defaultTextStyles.bodyBlack,

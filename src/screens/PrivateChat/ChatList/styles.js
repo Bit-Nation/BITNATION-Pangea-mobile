@@ -14,6 +14,14 @@ const styles = MediaQueryStyleSheet.create({
     backgroundColor: 'rgba(51, 51, 51, 0.4)',
   },
 
+  itemSeparator: {
+    height: 1,
+    backgroundColor: Colors.BitnationLightGrayColor,
+    marginLeft: 88,
+  },
+  chatListHeaderStyle: {
+    backgroundColor: '#BBBDBF',
+  },
   modalContent: {
     width: 327,
     backgroundColor: 'white',

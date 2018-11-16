@@ -278,7 +278,17 @@ class ChatScreen extends Component<Props & Actions, *> {
           renderCustomView={(props) => {
             const { currentMessage }: { currentMessage: GiftedChatMessageType } = props;
             const { dAppMessage } = currentMessage;
-            if (dAppMessage == null) return null;
+            if (dAppMessage == null) {
+              // return (
+              //   <View style={styles.customView}>
+              //     <Image
+              //       source={AssetsImages.moreMenuIcon}
+              //       style={styles.sectionListDisclosure}
+              //     />
+              //   </View>
+              // );
+              return null;
+            }
 
             return (<DAppMessage message={dAppMessage} />);
           }}
