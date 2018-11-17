@@ -114,7 +114,7 @@ android {
 
         // note: using ${applicationId} here will be exactly as above
         // and so NOT necessarily the applicationId of the generated APK
-        resValue "string" "build_config_package" "${applicationId}"
+        resValue "string", "build_config_package", "${applicationId}"
     }
     signingConfigs {
         staging {
