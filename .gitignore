@@ -67,6 +67,7 @@ pangea*
 
 # DO NOT STORE LARGE BINARIES IN GIT. EVER!
 *panthalassa.aar
+
 main.jsbundle
 main.jsbundle.meta
 .project
@@ -76,3 +77,6 @@ android/drawable-mdpi
 android/drawable-xhdpi
 android/drawable-xxhdpi
 android/app/src/main/assets/fonts/
+
+index.android.bundle.meta
+index.android.bundle
