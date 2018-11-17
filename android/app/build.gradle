@@ -117,6 +117,14 @@ android {
         resValue "string", "build_config_package", "${applicationId}"
     }
     signingConfigs {
+        garbage_key {
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+
+            // use ~/.android/debug.keystore
+            storeFile "${System.properties['user.home']}${File.separator}.android${File.separator}debug.keystore" as File
+            storePassword 'android'
+        }
         staging {
             if (project.hasProperty('MYAPP_STAGING_STORE_FILE')) {
                 storeFile file(MYAPP_STAGING_STORE_FILE)
@@ -150,6 +158,11 @@ android {
             matchingFallbacks = ['release']
             signingConfig signingConfigs.staging
         }
+        stagingLocal {
+            initWith staging
+            signingConfig signingConfigs.garbage_key
+        }
+
         release {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
