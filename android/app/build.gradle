@@ -76,7 +76,8 @@ import com.android.build.OutputFile
  */
 
 project.ext.react = [
-        entryFile: "index.js"
+        entryFile: "index.js",
+        devDisabledInStaging: true
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
@@ -110,6 +111,10 @@ android {
         }
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled true
+
+        // note: using ${applicationId} here will be exactly as above
+        // and so NOT necessarily the applicationId of the generated APK
+        resValue "string" "build_config_package" "${applicationId}"
     }
     signingConfigs {
         staging {
