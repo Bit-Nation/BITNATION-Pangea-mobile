@@ -76,6 +76,9 @@ org.eclipse.buildship.core.prefs
 android/drawable-mdpi
 android/drawable-xhdpi
 android/drawable-xxhdpi
+android/app/src/main/res/drawable-mdpi/
+android/app/src/main/res/drawable-xhdpi/
+android/app/src/main/res/drawable-xxhdpi/
 android/app/src/main/assets/fonts/
 
 index.android.bundle.meta
