@@ -279,7 +279,7 @@ class DocumentsViewScreen extends NavigatorComponent<
             <Text style={styles.footnote}>{document.description}</Text>
             {document.txHash == null && (
               <Button
-                enabled
+                enabled={!loading}
                 style={styles.actionButton}
                 title={i18n
                   .t('screens.documentView.submitDocument')
