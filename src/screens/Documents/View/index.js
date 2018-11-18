@@ -87,6 +87,7 @@ class DocumentsViewScreen extends NavigatorComponent<
       moreMenuVisible: false,
       text: '',
       txHash: '',
+      loading: false,
       visibleTxModal: false,
     };
 
@@ -159,8 +160,11 @@ class DocumentsViewScreen extends NavigatorComponent<
   onDocumentSubmit = () => {
     const { openedDocumentId } = this.props;
     if (openedDocumentId == null) return;
-
+    this.setState({ loading: true });
     this.props.uploadDocument(openedDocumentId);
+    setTimeout(() => {
+      this.setState({ loading: false });
+    }, 3000);
   };
 
   displayDocumentValues = (result) => {
@@ -239,6 +243,7 @@ class DocumentsViewScreen extends NavigatorComponent<
   render() {
     const document = getOpenedDocument(this.props);
     const { openedDocumentId } = this.props;
+    const { loading } = this.state;
     if (document == null) return <View />;
     const documentDetail = [
       {
@@ -280,6 +285,7 @@ class DocumentsViewScreen extends NavigatorComponent<
                   .t('screens.documentView.submitDocument')
                   .toUpperCase()}
                 onPress={this.onDocumentSubmit}
+                loading={loading}
                 styleTitle={styles.settingsText}
               />
             )}
