@@ -1,12 +1,16 @@
 // @flow
 
 import React from 'react';
-import { Image } from 'react-native';
+import { View, ImageBackground } from 'react-native';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
 
 import AssetsImages from '../../global/AssetsImages';
 
 type Props = {
+  /**
+   * @desc Custom color view over background
+   */
+  maskColor?: any,
   /**
    * @desc Custom style to apply to component on top of default.
    */
@@ -22,7 +26,9 @@ type Props = {
  * You should use it instead of placing background image on your own.
  * @return {React.Component} A component.
  */
-const BackgroundImage = ({ style, source, ...props }: Props) => {
+const BackgroundImage = ({
+  style, source, maskColor, ...props
+}: Props) => {
   const styles = MediaQueryStyleSheet.create({
     background: {
       position: 'absolute',
@@ -34,14 +40,27 @@ const BackgroundImage = ({ style, source, ...props }: Props) => {
       height: '100%',
       zIndex: -1,
     },
+    maskColor: {
+      width: '100%',
+      height: '100%',
+      backgroundColor: maskColor,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
   });
 
-  return (<Image
-    style={[styles.background, style]}
-    source={source}
-    resizeMode='cover'
-    {...props}
-  />);
+  return (
+    <ImageBackground
+      style={[styles.background, style]}
+      source={source}
+      resizeMode='cover'
+      {...props}
+    >
+      {
+        maskColor ?
+          <View style={styles.maskColor} /> : null
+      }
+    </ImageBackground>);
 };
 
 BackgroundImage.defaultProps = {

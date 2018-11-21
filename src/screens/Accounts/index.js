@@ -121,7 +121,7 @@ class Accounts extends NavigatorComponent<Props & Actions & AccountsState> {
   render() {
     return (
       <View style={styles.profilesScreenContainer}>
-        <BackgroundImage />
+        <BackgroundImage maskColor='rgba(239, 218, 62, 0.6)' />
         <FakeNavigationBar />
         <View style={styles.bodyAccountContainer}>
           <Image
