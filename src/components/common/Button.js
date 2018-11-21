@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   View,
   Text,
+  ActivityIndicator,
 } from 'react-native';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
 
@@ -33,6 +34,10 @@ type Props = {
    * @desc Title to show on button.
    */
   title?: string,
+  /**
+   * @desc Loading Indicator.
+   */
+  loading?: boolean,
 }
 
 /**
@@ -40,7 +45,7 @@ type Props = {
  * @return {React.Component} A component.
  */
 const Button = ({
-  style, children, onPress, enabled, styleTitle, title, ...props
+  style, children, onPress, enabled, styleTitle, title, loading, ...props
 }: Props) => {
   const styles = MediaQueryStyleSheet.create({
     ...GlobalStyles,
@@ -61,7 +66,8 @@ const Button = ({
         <Text style={[styles.buttonTitle, styleTitle, (enabled === false) && styles.disabledButtonTitle]}>
           {title}
         </Text>
-      }
+        }
+        {loading && <ActivityIndicator color='#fff' />}
       </TouchableOpacity>
     </View>
   ));
