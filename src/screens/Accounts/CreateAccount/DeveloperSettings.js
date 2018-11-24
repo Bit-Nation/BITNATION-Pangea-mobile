@@ -52,7 +52,13 @@ class DeveloperSettings extends Component<Props & Actions & AccountsState> {
 
     return (
       <View style={styles.profilesScreenContainer}>
-        <BackgroundImage />
+        <BackgroundImage
+          maskColor={creatingAccount.networkType === 'main' ? undefined : 'rgba(239, 218, 39, 0.05)'}
+        />
+        {
+          creatingAccount.networkType !== 'main' ?
+            <Text style={styles.textNetworkTypeStyle}>{i18n.t('screens.accounts.create.rinkebyNetwork')}</Text> : null
+        }
         <FakeNavigationBar />
         <View style={styles.bodyAccountContainer}>
           <ScreenTitle title={i18n.t('screens.accounts.create.title')} />

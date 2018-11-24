@@ -264,6 +264,8 @@
         "testingAccount": "Testing Account",
         "useMainNetwork": "Using main Ethereum network",
         "useRinkebyNetwork": "Using Rinkeby testing network",
+        "mainNetwork": "MAIN ETHEREUM NETWORK",
+        "rinkebyNetwork": "RINKEBY TESTING NETWORK",
         "detailLogging": "Detailed Logging",
         "debuggingTools": "Debugging Tools",
         "identityTitle": "Create Identity",
