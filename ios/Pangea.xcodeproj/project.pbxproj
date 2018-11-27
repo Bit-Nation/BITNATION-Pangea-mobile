@@ -55,6 +55,7 @@
 		606D1971B7ED4D60BF9FB420 /* SourceCodePro-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 981AA21F89254D87B1AEFADC /* SourceCodePro-ExtraLight.ttf */; };
 		662B41AE0BD345BCB14881BB /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 17F9F56F840D4E95A4064389 /* Entypo.ttf */; };
 		6C5F84D6DE684EB2BF593903 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F9423C49F9544E8AD6D62C2 /* libc++.tbd */; };
+		6DC171C721AADC14000A906D /* libRNSnackbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DC171C521AADBF8000A906D /* libRNSnackbar.a */; };
 		75B2060004FA435F84410D41 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DA624BB248114778B42274F2 /* Roboto-Italic.ttf */; };
 		789119028F1A43C89AD3782E /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 641EFC7EF0B4493FAA36FAF0 /* SimpleLineIcons.ttf */; };
 		7E9302F27F4143A0AD66FC3F /* libReactNativeNavigation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 198F613DD4A7453EA458D327 /* libReactNativeNavigation.a */; };
@@ -386,6 +387,13 @@
 			remoteGlobalIDString = 3400A8081CEB54A6008A0BC7;
 			remoteInfo = imageCropPicker;
 		};
+		6DC171C421AADBF8000A906D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6DC1719521AADBF8000A906D /* RNSnackbar.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4114DC4C1C187C3A003CD988;
+			remoteInfo = RNSnackbar;
+		};
 		78C398B81ACF4ADC00677621 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */;
@@ -486,6 +494,7 @@
 		641EFC7EF0B4493FAA36FAF0 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/native-base/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		68C2C33B1FFAD2910031480B /* QBImagePicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = QBImagePicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		68C2C3681FFAD2970031480B /* RSKImageCropper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RSKImageCropper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6DC1719521AADBF8000A906D /* RNSnackbar.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNSnackbar.xcodeproj; path = "../node_modules/react-native-snackbar/ios/RNSnackbar.xcodeproj"; sourceTree = "<group>"; };
 		70ECA807306F4EA78DCF90CA /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		715AE497A2D9493B923699B4 /* Roboto-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Black.ttf"; path = "../assets/fonts/Roboto/Roboto-Black.ttf"; sourceTree = "<group>"; };
 		775AD21554C848DFB5B0F045 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/native-base/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
@@ -547,6 +556,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DC171C721AADC14000A906D /* libRNSnackbar.a in Frameworks */,
 				D2AC16B420F01E8C0001028B /* libRNCamera.a in Frameworks */,
 				172769051FFB316400AD076B /* RSKImageCropper.framework in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
@@ -824,6 +834,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		6DC1719621AADBF8000A906D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6DC171C521AADBF8000A906D /* libRNSnackbar.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		78C398B11ACF4ADC00677621 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -881,6 +899,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				6DC1719521AADBF8000A906D /* RNSnackbar.xcodeproj */,
 				D2AC16AE20F01E810001028B /* RNCamera.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
@@ -1155,6 +1174,10 @@
 				{
 					ProductGroup = 17084FC21FF801B100CB17F5 /* Products */;
 					ProjectRef = 9B29C53248DB4D7CBB403C9B /* RNSensitiveInfo.xcodeproj */;
+				},
+				{
+					ProductGroup = 6DC1719621AADBF8000A906D /* Products */;
+					ProjectRef = 6DC1719521AADBF8000A906D /* RNSnackbar.xcodeproj */;
 				},
 				{
 					ProductGroup = 049D76241FF18AD300864A38 /* Products */;
@@ -1443,6 +1466,13 @@
 			fileType = archive.ar;
 			path = libimageCropPicker.a;
 			remoteRef = 6800DE8B1FF866370053F4FE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6DC171C521AADBF8000A906D /* libRNSnackbar.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNSnackbar.a;
+			remoteRef = 6DC171C421AADBF8000A906D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		78C398B91ACF4ADC00677621 /* libRCTLinking.a */ = {
@@ -1791,6 +1821,7 @@
 					"$(SRCROOT)/../node_modules/react-native-sensitive-info/ios/RNSensitiveInfo/**",
 					"$(SRCROOT)/../node_modules/realm/src/**",
 					"$(SRCROOT)/../node_modules/react-native-image-crop-picker/ios/**",
+					"\"$(SRCROOT)/../node_modules/react-native-snackbar/ios\"",
 				);
 				INFOPLIST_FILE = Pangea/Info.plist;
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = " -traditional";
@@ -1832,6 +1863,7 @@
 					"$(SRCROOT)/../node_modules/react-native-sensitive-info/ios/RNSensitiveInfo/**",
 					"$(SRCROOT)/../node_modules/realm/src/**",
 					"$(SRCROOT)/../node_modules/react-native-image-crop-picker/ios/**",
+					"\"$(SRCROOT)/../node_modules/react-native-snackbar/ios\"",
 				);
 				INFOPLIST_FILE = Pangea/Info.plist;
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = " -traditional";

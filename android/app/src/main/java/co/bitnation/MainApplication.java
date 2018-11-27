@@ -11,6 +11,7 @@ import java.util.List;
 
 import br.com.classapp.RNSensitiveInfo.RNSensitiveInfoPackage;
 import io.realm.react.RealmReactPackage;
+import com.azendoo.reactnativesnackbar.SnackbarPackage;
 
 public class MainApplication extends NavigationApplication {
 
@@ -28,7 +29,8 @@ public class MainApplication extends NavigationApplication {
                 new RealmReactPackage(),
                 new RNSensitiveInfoPackage(),
                 new RandomBytesPackage(),
-                new ReactNativeConfigPackage()
+                new ReactNativeConfigPackage(),
+                new SnackbarPackage()
         );
     }
 
