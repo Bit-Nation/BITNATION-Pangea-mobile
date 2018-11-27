@@ -11,7 +11,7 @@ import _ from 'lodash';
 import { Fab, Text } from 'native-base';
 import Dialog from 'react-native-dialog';
 
-import { openChat, startNewChat } from '../../../actions/chat';
+import { openChat, startNewChat, fetchAllChats } from '../../../actions/chat';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import styles from './styles';
 import { screen } from '../../../global/Screens';
@@ -63,6 +63,10 @@ type Props = {
    * @param {function} callback Callback that takes one boolean parameter that indicates if chat is successfully created.
    */
   startNewChat: (members: Array<string>, chatName: string | null, callback: (success: boolean) => void) => void,
+  /**
+   * @desc Function to fetch all chats
+   */
+  fetchAllChats: () => void,
 };
 
 type State = {
@@ -158,9 +162,11 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
   initiateNewChat = (contacts: Array<Contact>, chatName: string) => {
     this.props.startNewChat(contacts.map(contact => contact.profile.identityKey), chatName, (success) => {
       this.dismissModal();
-      if (success === false) return;
-
-      this.props.navigator.push(screen('PRIVATE_CHAT_SCREEN'));
+      if (success === false) {
+        this.props.fetchAllChats();
+      } else {
+        this.props.navigator.push(screen('PRIVATE_CHAT_SCREEN'));
+      }
     });
   };
 
@@ -287,6 +293,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   openChat: (chatId: number) => dispatch(openChat(chatId)),
   startNewChat: (members, chatName, callback) => dispatch(startNewChat(members, chatName, callback)),
+  fetchAllChats: () => dispatch(fetchAllChats()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChatListScreen);

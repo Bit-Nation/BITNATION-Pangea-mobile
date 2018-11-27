@@ -98,8 +98,8 @@ def enableSeparateBuildPerCPUArchitecture = false
 def enableProguardInReleaseBuilds = false
 
 android {
-    compileSdkVersion 28
-    buildToolsVersion '28.0.3'
+    compileSdkVersion 25
+    buildToolsVersion '25.0.1'
     defaultConfig {
         applicationId 'co.bitnation'
         minSdkVersion 16
@@ -111,10 +111,6 @@ android {
         }
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled true
-
-        // note: using ${applicationId} here will be exactly as above
-        // and so NOT necessarily the applicationId of the generated APK
-        resValue "string", "build_config_package", "${applicationId}"
     }
     signingConfigs {
         garbage_key {
@@ -153,10 +149,10 @@ android {
     buildTypes {
         staging {
             initWith release
-            applicationIdSuffix ".staging"
             debuggable false
             matchingFallbacks = ['release']
             signingConfig signingConfigs.staging
+            resValue "string", "build_config_package", "co.bitnation"
         }
         stagingLocal {
             initWith staging
@@ -164,6 +160,9 @@ android {
         }
 
         release {
+          //resValue "string", "app_name", "Bitnation"
+            resValue "string", "build_config_package", "co.bitnation"
+
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
             signingConfig signingConfigs.release
@@ -193,22 +192,22 @@ android {
 }
 
 dependencies {
-    api project(':react-native-shake')
-    api (project(':react-native-camera')) {
+    compile project(':react-native-shake')
+    compile (project(':react-native-camera')) {
       exclude group: "com.android.support", module: 'support-v4'
     }
-    api project(':react-native-image-crop-picker')
-    api project(':realm')
-    api project(':react-native-vector-icons')
-    api project(':react-native-sensitive-info')
-    api project(':react-native-randombytes')
-    api project(':react-native-navigation')
-    api project(':react-native-config')
-    implementation project(':panthalassa')
+    compile project(':react-native-image-crop-picker')
+    compile project(':realm')
+    compile project(':react-native-vector-icons')
+    compile project(':react-native-sensitive-info')
+    compile project(':react-native-randombytes')
+    compile project(':react-native-navigation')
+    compile project(':react-native-config')
+    compile project(':panthalassa')
     testCompile 'junit:junit:4.12'
     testCompile 'org.mockito:mockito-core:1.10.19'
-    api fileTree(include: ['*.jar'], dir: 'libs')
-    api 'com.android.support:appcompat-v7:25.0.1'
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:appcompat-v7:25.0.1'
     implementation 'com.facebook.react:react-native:+'
 }
 
@@ -216,6 +215,6 @@ dependencies {
 // Run this once to be able to run the application with BUCK
 // puts all compile dependencies into folder libs for BUCK to use
 task copyDownloadableDepsToLibs(type: Copy) {
-    from configurations.api
+    from configurations.compile
     into 'libs'
 }
