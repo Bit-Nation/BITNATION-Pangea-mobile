@@ -68,46 +68,36 @@ ShallowWrapper {
             }
           }
         />,
-        <TextInput
-          allowFontScaling={true}
-          autoFocus={true}
-          keyboardType="numeric"
-          onChangeText={[Function]}
-          secureTextEntry={true}
-          style={
-            Object {
-              "color": "#58595B",
-              "fontSize": 16,
-              "height": 50,
-              "marginLeft": 30,
-              "marginRight": 30,
-              "marginTop": 16,
-              "paddingBottom": 2,
-              "paddingTop": 2,
-              "textAlign": "center",
-            }
-          }
-          value=""
-        />,
         <View
           style={
             Object {
-              "marginLeft": 13,
-              "marginRight": 13,
+              "borderBottomWidth": 1,
+              "borderColor": "#F5A623",
             }
           }
         >
-          <Button
-            enabled={false}
-            onPress={[Function]}
+          <TextInput
+            allowFontScaling={true}
+            autoFocus={true}
+            keyboardType="number-pad"
+            onChangeText={[Function]}
+            onSubmitEditing={[Function]}
+            returnKeyType="done"
+            secureTextEntry={true}
             style={
               Object {
-                "alignSelf": "center",
-                "marginTop": 40,
-                "width": 80,
+                "color": "#58595B",
+                "fontSize": 16,
+                "height": 50,
+                "marginLeft": 30,
+                "marginRight": 30,
+                "marginTop": 16,
+                "paddingTop": 2,
+                "textAlign": "center",
               }
             }
-            title="OK"
+            underlineColorAndroid="transparent"
+            value=""
           />
         </View>,
         false,
@@ -150,67 +140,61 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "allowFontScaling": true,
-          "autoFocus": true,
-          "keyboardType": "numeric",
-          "onChangeText": [Function],
-          "secureTextEntry": true,
-          "style": Object {
-            "color": "#58595B",
-            "fontSize": 16,
-            "height": 50,
-            "marginLeft": 30,
-            "marginRight": 30,
-            "marginTop": 16,
-            "paddingBottom": 2,
-            "paddingTop": 2,
-            "textAlign": "center",
-          },
-          "value": "",
-        },
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
-      },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "children": <Button
-            enabled={false}
-            onPress={[Function]}
+          "children": <TextInput
+            allowFontScaling={true}
+            autoFocus={true}
+            keyboardType="number-pad"
+            onChangeText={[Function]}
+            onSubmitEditing={[Function]}
+            returnKeyType="done"
+            secureTextEntry={true}
             style={
               Object {
-                "alignSelf": "center",
-                "marginTop": 40,
-                "width": 80,
+                "color": "#58595B",
+                "fontSize": 16,
+                "height": 50,
+                "marginLeft": 30,
+                "marginRight": 30,
+                "marginTop": 16,
+                "paddingTop": 2,
+                "textAlign": "center",
               }
             }
-            title="OK"
+            underlineColorAndroid="transparent"
+            value=""
           />,
           "style": Object {
-            "marginLeft": 13,
-            "marginRight": 13,
+            "borderBottomWidth": 1,
+            "borderColor": "#F5A623",
           },
         },
         "ref": null,
         "rendered": Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "function",
+          "nodeType": "class",
           "props": Object {
-            "children": undefined,
-            "enabled": false,
-            "onPress": [Function],
+            "allowFontScaling": true,
+            "autoFocus": true,
+            "keyboardType": "number-pad",
+            "onChangeText": [Function],
+            "onSubmitEditing": [Function],
+            "returnKeyType": "done",
+            "secureTextEntry": true,
             "style": Object {
-              "alignSelf": "center",
-              "marginTop": 40,
-              "width": 80,
+              "color": "#58595B",
+              "fontSize": 16,
+              "height": 50,
+              "marginLeft": 30,
+              "marginRight": 30,
+              "marginTop": 16,
+              "paddingTop": 2,
+              "textAlign": "center",
             },
-            "title": "OK",
+            "underlineColorAndroid": "transparent",
+            "value": "",
           },
-          "ref": null,
+          "ref": [Function],
           "rendered": null,
           "type": [Function],
         },
@@ -242,46 +226,36 @@ ShallowWrapper {
               }
             }
           />,
-          <TextInput
-            allowFontScaling={true}
-            autoFocus={true}
-            keyboardType="numeric"
-            onChangeText={[Function]}
-            secureTextEntry={true}
-            style={
-              Object {
-                "color": "#58595B",
-                "fontSize": 16,
-                "height": 50,
-                "marginLeft": 30,
-                "marginRight": 30,
-                "marginTop": 16,
-                "paddingBottom": 2,
-                "paddingTop": 2,
-                "textAlign": "center",
-              }
-            }
-            value=""
-          />,
           <View
             style={
               Object {
-                "marginLeft": 13,
-                "marginRight": 13,
+                "borderBottomWidth": 1,
+                "borderColor": "#F5A623",
               }
             }
           >
-            <Button
-              enabled={false}
-              onPress={[Function]}
+            <TextInput
+              allowFontScaling={true}
+              autoFocus={true}
+              keyboardType="number-pad"
+              onChangeText={[Function]}
+              onSubmitEditing={[Function]}
+              returnKeyType="done"
+              secureTextEntry={true}
               style={
                 Object {
-                  "alignSelf": "center",
-                  "marginTop": 40,
-                  "width": 80,
+                  "color": "#58595B",
+                  "fontSize": 16,
+                  "height": 50,
+                  "marginLeft": 30,
+                  "marginRight": 30,
+                  "marginTop": 16,
+                  "paddingTop": 2,
+                  "textAlign": "center",
                 }
               }
-              title="OK"
+              underlineColorAndroid="transparent"
+              value=""
             />
           </View>,
           false,
@@ -324,67 +298,61 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "allowFontScaling": true,
-            "autoFocus": true,
-            "keyboardType": "numeric",
-            "onChangeText": [Function],
-            "secureTextEntry": true,
-            "style": Object {
-              "color": "#58595B",
-              "fontSize": 16,
-              "height": 50,
-              "marginLeft": 30,
-              "marginRight": 30,
-              "marginTop": 16,
-              "paddingBottom": 2,
-              "paddingTop": 2,
-              "textAlign": "center",
-            },
-            "value": "",
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "children": <Button
-              enabled={false}
-              onPress={[Function]}
+            "children": <TextInput
+              allowFontScaling={true}
+              autoFocus={true}
+              keyboardType="number-pad"
+              onChangeText={[Function]}
+              onSubmitEditing={[Function]}
+              returnKeyType="done"
+              secureTextEntry={true}
               style={
                 Object {
-                  "alignSelf": "center",
-                  "marginTop": 40,
-                  "width": 80,
+                  "color": "#58595B",
+                  "fontSize": 16,
+                  "height": 50,
+                  "marginLeft": 30,
+                  "marginRight": 30,
+                  "marginTop": 16,
+                  "paddingTop": 2,
+                  "textAlign": "center",
                 }
               }
-              title="OK"
+              underlineColorAndroid="transparent"
+              value=""
             />,
             "style": Object {
-              "marginLeft": 13,
-              "marginRight": 13,
+              "borderBottomWidth": 1,
+              "borderColor": "#F5A623",
             },
           },
           "ref": null,
           "rendered": Object {
             "instance": null,
             "key": undefined,
-            "nodeType": "function",
+            "nodeType": "class",
             "props": Object {
-              "children": undefined,
-              "enabled": false,
-              "onPress": [Function],
+              "allowFontScaling": true,
+              "autoFocus": true,
+              "keyboardType": "number-pad",
+              "onChangeText": [Function],
+              "onSubmitEditing": [Function],
+              "returnKeyType": "done",
+              "secureTextEntry": true,
               "style": Object {
-                "alignSelf": "center",
-                "marginTop": 40,
-                "width": 80,
+                "color": "#58595B",
+                "fontSize": 16,
+                "height": 50,
+                "marginLeft": 30,
+                "marginRight": 30,
+                "marginTop": 16,
+                "paddingTop": 2,
+                "textAlign": "center",
               },
-              "title": "OK",
+              "underlineColorAndroid": "transparent",
+              "value": "",
             },
-            "ref": null,
+            "ref": [Function],
             "rendered": null,
             "type": [Function],
           },

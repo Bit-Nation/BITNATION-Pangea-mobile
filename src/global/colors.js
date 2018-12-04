@@ -8,6 +8,7 @@ const BitnationLightColor = '#C0C0C0'; /* rgb(114, 164, 222) */
 const BitnationVeryLightColor = '#FFFFFF'; /* rgb(188, 220, 255) */
 const BitnationBackgroundColor = '#3e9eff'; /* rgb(62, 158, 255) */
 
+const BitnationBlackGrayColor = '#444444';
 const BitnationLightGrayColor = '#BBBDBF';
 const BitnationGrayColor = '#929497';
 const BitnationDarkGrayColor = '#58595B';
@@ -73,6 +74,7 @@ export default {
   BitnationHighlightColor,
   BitnationDarkGrayColor,
   BitnationLightGrayColor,
+  BitnationBlackGrayColor,
   BitnationHighlightYellowColor,
   BitnationGrayColor,
   BitnationLinkOrangeColor,

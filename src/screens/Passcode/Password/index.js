@@ -11,6 +11,7 @@ import {
 import styles from './styles';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import i18n from '../../../global/i18n';
+import { alert } from '../../../global/alerts';
 import { androidNavigationButtons } from '../../../global/Screens';
 import Button from '../../../components/common/Button';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
@@ -104,14 +105,31 @@ class PasswordScreen extends NavigatorComponent<Props, State> {
         <Text style={styles.headline}>
           {this.props.instruction}
         </Text>
-        <TextInput
-          onChangeText={value => this.setState({ password: value })}
-          value={this.state.password}
-          style={styles.textInput}
-          secureTextEntry
-          autoFocus
-          autoCapitalize='none'
-        />
+        <View style={styles.wrapperInputView}>
+          <TextInput
+            ref={textInput => (this.textInput = textInput)}
+            onChangeText={value => this.setState({ password: value })}
+            value={this.state.password}
+            style={styles.textInput}
+            secureTextEntry
+            autoFocus
+            autoCapitalize='none'
+            underlineColorAndroid='transparent'
+            onSubmitEditing={() => {
+            if (this.state.password.length > 0) {
+              this.props.onSubmit(this.state.password);
+            } else {
+              alert('errorInputPassword', [
+                {
+                  name: 'confirm',
+                  onPress: async () => {
+                    this.textInput.focus();
+                  },
+                }]);
+            }
+          }}
+          />
+        </View>
         <View style={styles.buttonContainer}>
           <Button
             enabled={this.state.password.length > 0}

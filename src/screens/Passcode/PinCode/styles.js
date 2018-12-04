@@ -15,14 +15,16 @@ const styles = MediaQueryStyleSheet.create({
     color: Colors.BitnationDarkGrayColor,
     fontSize: 16,
     paddingTop: 2,
-    paddingBottom: 2,
     height: 50,
     marginTop: 16,
     marginLeft: 30,
     marginRight: 30,
     textAlign: 'center',
   },
-
+  wrapperInputView: {
+    borderColor: Colors.BitnationHighlightColor,
+    borderBottomWidth: 1,
+  },
 });
 
 export default styles;

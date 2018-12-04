@@ -220,6 +220,14 @@
       "title": "Success",
       "subtitle": "Your password has been successfully changed",
       "confirm": "$t(common.ok)"
+    },
+    "errorInputPincode": {
+      "title": "Your pincode length is incorrect",
+      "confirm": "$t(common.ok)"
+    },
+    "errorInputPassword": {
+      "title": "Please type your password",
+      "confirm": "$t(common.ok)"
     }
   },
   "screens": {

@@ -7,7 +7,7 @@ import {
   Text,
 } from 'react-native';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+
 
 import GlobalStyles from '../../global/Styles';
 

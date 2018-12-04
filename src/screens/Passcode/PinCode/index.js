@@ -5,12 +5,13 @@ import {
   View,
   Text,
   TextInput,
-  Keyboard,
+  Platform,
 } from 'react-native';
 
 import styles from './styles';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import i18n from '../../../global/i18n';
+import { alert } from '../../../global/alerts';
 import { androidNavigationButtons } from '../../../global/Screens';
 import Button from '../../../components/common/Button';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
@@ -102,29 +103,41 @@ class PinCodeScreen extends NavigatorComponent<Props, State> {
   }
 
   render() {
-    const { shouldShowForget } = this.props;
+    const { shouldShowForget, pinCodeLength } = this.props;
     return (
       <View style={styles.bodyContainer}>
         <Text style={styles.headline}>
           {this.props.instruction}
         </Text>
-        <TextInput
-          onChangeText={value => this.setState({ pinCode: value.slice(0, this.props.pinCodeLength) })}
-          value={this.state.pinCode}
-          style={styles.textInput}
-          keyboardType='numeric'
-          secureTextEntry
-          autoFocus
-        />
-        <View style={styles.buttonContainer}>
-          <Button
-            enabled={this.state.pinCode.length === this.props.pinCodeLength}
-            title={i18n.t('common.ok')}
-            onPress={() => {
-              Keyboard.dismiss();
+        <View style={styles.wrapperInputView}>
+          <TextInput
+            ref={textInput => (this.textInput = textInput)}
+            onChangeText={(value) => {
+            if (value.length === pinCodeLength) {
+              this.props.onSubmit(value);
+            }
+            this.setState({ pinCode: value.slice(0, pinCodeLength) });
+          }}
+            value={this.state.pinCode}
+            style={styles.textInput}
+            keyboardType={Platform.OS === 'android' ? 'numeric' : 'number-pad'}
+            secureTextEntry
+            autoFocus
+            returnKeyType='done'
+            underlineColorAndroid='transparent'
+            onSubmitEditing={() => {
+            if (this.state.pinCode.length === pinCodeLength) {
               this.props.onSubmit(this.state.pinCode);
-            }}
-            style={styles.submitButton}
+            } else {
+              alert('errorInputPincode', [
+                {
+                  name: 'confirm',
+                  onPress: async () => {
+                    this.textInput.focus();
+                  },
+                }]);
+            }
+          }}
           />
         </View>
         {shouldShowForget &&

@@ -68,27 +68,37 @@ ShallowWrapper {
             }
           }
         />,
-        <TextInput
-          allowFontScaling={true}
-          autoCapitalize="none"
-          autoFocus={true}
-          onChangeText={[Function]}
-          secureTextEntry={true}
+        <View
           style={
             Object {
-              "color": "#929497",
-              "fontSize": 16,
-              "height": 50,
-              "marginLeft": 30,
-              "marginRight": 30,
-              "marginTop": 16,
-              "paddingBottom": 2,
-              "paddingTop": 2,
-              "textAlign": "center",
+              "borderBottomWidth": 1,
+              "borderColor": "#F5A623",
             }
           }
-          value=""
-        />,
+        >
+          <TextInput
+            allowFontScaling={true}
+            autoCapitalize="none"
+            autoFocus={true}
+            onChangeText={[Function]}
+            onSubmitEditing={[Function]}
+            secureTextEntry={true}
+            style={
+              Object {
+                "color": "#929497",
+                "fontSize": 16,
+                "height": 50,
+                "marginLeft": 30,
+                "marginRight": 30,
+                "marginTop": 16,
+                "paddingTop": 2,
+                "textAlign": "center",
+              }
+            }
+            underlineColorAndroid="transparent"
+            value=""
+          />
+        </View>,
         <View
           style={
             Object {
@@ -150,26 +160,62 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "allowFontScaling": true,
-          "autoCapitalize": "none",
-          "autoFocus": true,
-          "onChangeText": [Function],
-          "secureTextEntry": true,
+          "children": <TextInput
+            allowFontScaling={true}
+            autoCapitalize="none"
+            autoFocus={true}
+            onChangeText={[Function]}
+            onSubmitEditing={[Function]}
+            secureTextEntry={true}
+            style={
+              Object {
+                "color": "#929497",
+                "fontSize": 16,
+                "height": 50,
+                "marginLeft": 30,
+                "marginRight": 30,
+                "marginTop": 16,
+                "paddingTop": 2,
+                "textAlign": "center",
+              }
+            }
+            underlineColorAndroid="transparent"
+            value=""
+          />,
           "style": Object {
-            "color": "#929497",
-            "fontSize": 16,
-            "height": 50,
-            "marginLeft": 30,
-            "marginRight": 30,
-            "marginTop": 16,
-            "paddingBottom": 2,
-            "paddingTop": 2,
-            "textAlign": "center",
+            "borderBottomWidth": 1,
+            "borderColor": "#F5A623",
           },
-          "value": "",
         },
         "ref": null,
-        "rendered": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "allowFontScaling": true,
+            "autoCapitalize": "none",
+            "autoFocus": true,
+            "onChangeText": [Function],
+            "onSubmitEditing": [Function],
+            "secureTextEntry": true,
+            "style": Object {
+              "color": "#929497",
+              "fontSize": 16,
+              "height": 50,
+              "marginLeft": 30,
+              "marginRight": 30,
+              "marginTop": 16,
+              "paddingTop": 2,
+              "textAlign": "center",
+            },
+            "underlineColorAndroid": "transparent",
+            "value": "",
+          },
+          "ref": [Function],
+          "rendered": null,
+          "type": [Function],
+        },
         "type": [Function],
       },
       Object {
@@ -242,27 +288,37 @@ ShallowWrapper {
               }
             }
           />,
-          <TextInput
-            allowFontScaling={true}
-            autoCapitalize="none"
-            autoFocus={true}
-            onChangeText={[Function]}
-            secureTextEntry={true}
+          <View
             style={
               Object {
-                "color": "#929497",
-                "fontSize": 16,
-                "height": 50,
-                "marginLeft": 30,
-                "marginRight": 30,
-                "marginTop": 16,
-                "paddingBottom": 2,
-                "paddingTop": 2,
-                "textAlign": "center",
+                "borderBottomWidth": 1,
+                "borderColor": "#F5A623",
               }
             }
-            value=""
-          />,
+          >
+            <TextInput
+              allowFontScaling={true}
+              autoCapitalize="none"
+              autoFocus={true}
+              onChangeText={[Function]}
+              onSubmitEditing={[Function]}
+              secureTextEntry={true}
+              style={
+                Object {
+                  "color": "#929497",
+                  "fontSize": 16,
+                  "height": 50,
+                  "marginLeft": 30,
+                  "marginRight": 30,
+                  "marginTop": 16,
+                  "paddingTop": 2,
+                  "textAlign": "center",
+                }
+              }
+              underlineColorAndroid="transparent"
+              value=""
+            />
+          </View>,
           <View
             style={
               Object {
@@ -324,26 +380,62 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "allowFontScaling": true,
-            "autoCapitalize": "none",
-            "autoFocus": true,
-            "onChangeText": [Function],
-            "secureTextEntry": true,
+            "children": <TextInput
+              allowFontScaling={true}
+              autoCapitalize="none"
+              autoFocus={true}
+              onChangeText={[Function]}
+              onSubmitEditing={[Function]}
+              secureTextEntry={true}
+              style={
+                Object {
+                  "color": "#929497",
+                  "fontSize": 16,
+                  "height": 50,
+                  "marginLeft": 30,
+                  "marginRight": 30,
+                  "marginTop": 16,
+                  "paddingTop": 2,
+                  "textAlign": "center",
+                }
+              }
+              underlineColorAndroid="transparent"
+              value=""
+            />,
             "style": Object {
-              "color": "#929497",
-              "fontSize": 16,
-              "height": 50,
-              "marginLeft": 30,
-              "marginRight": 30,
-              "marginTop": 16,
-              "paddingBottom": 2,
-              "paddingTop": 2,
-              "textAlign": "center",
+              "borderBottomWidth": 1,
+              "borderColor": "#F5A623",
             },
-            "value": "",
           },
           "ref": null,
-          "rendered": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "allowFontScaling": true,
+              "autoCapitalize": "none",
+              "autoFocus": true,
+              "onChangeText": [Function],
+              "onSubmitEditing": [Function],
+              "secureTextEntry": true,
+              "style": Object {
+                "color": "#929497",
+                "fontSize": 16,
+                "height": 50,
+                "marginLeft": 30,
+                "marginRight": 30,
+                "marginTop": 16,
+                "paddingTop": 2,
+                "textAlign": "center",
+              },
+              "underlineColorAndroid": "transparent",
+              "value": "",
+            },
+            "ref": [Function],
+            "rendered": null,
+            "type": [Function],
+          },
           "type": [Function],
         },
         Object {
