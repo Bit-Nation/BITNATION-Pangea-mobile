@@ -32,6 +32,7 @@ import AssetsImages from '../../../global/AssetsImages';
 import MoreMenuModal from '../../../components/common/MoreMenuModal';
 import type { Contact } from '../../../types/Contacts';
 
+const MENU_BUTTON = 'MENU_BUTTON';
 const MORE_BUTTON = 'MORE_BUTTON';
 const MORE_MODAL_KEY = 'moreMenu';
 const INVITE_MODAL_KEY = 'invite';
@@ -98,7 +99,11 @@ type State = {
 
 class ChatListScreen extends NavigatorComponent<Props, State> {
   static navigatorButtons = {
-    leftButtons: [],
+    leftButtons: [{
+      id: MENU_BUTTON,
+      icon: AssetsImages.menuIcon,
+      buttonColor: Colors.navigationButtonColor,
+    }],
     rightButtons: [{
       id: MORE_BUTTON,
       icon: AssetsImages.moreMenuIcon,
@@ -122,6 +127,11 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
     if (id === MORE_BUTTON) {
       this.setState({
         showModal: MORE_MODAL_KEY,
+      });
+    } else if (id === MENU_BUTTON) {
+      this.props.navigator.toggleDrawer({
+        side: 'left',
+        animated: true,
       });
     }
   }

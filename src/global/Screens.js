@@ -68,6 +68,21 @@ export const solidNavigatorStyle = {
   navBarBackgroundColor: Colors.white,
 };
 
+export const drawerStyle = {
+  left: {
+    screen: 'Pangea.MenuScreen',
+    disableOpenGesture: true,
+  },
+  disableOpenGesture: true,
+  style: {
+    drawerShadow: false,
+    contentOverlayColor: 'rgba(0,0,0,0.25)',
+    leftDrawerWidth: 80,
+    shouldStretchDrawer: true,
+  },
+};
+
+
 /*
   label : this text string appears in the navigation bar at the bottom of the screen
   icon  : icon for navigation bar
@@ -281,6 +296,9 @@ const Screens = {
     screen: 'Pangea.DocumentModifyScreen',
     title: i18n.t('screens.documentModify.title'),
     navigatorStyle: solidNavigatorStyle,
+  },
+  MENU_SCREEN: {
+    screen: 'Pangea.MenuScreen',
   },
 };
 

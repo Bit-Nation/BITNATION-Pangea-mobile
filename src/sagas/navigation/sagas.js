@@ -3,7 +3,7 @@
 import { call } from 'redux-saga/effects';
 import { Navigation } from 'react-native-navigation';
 
-import { appStyle, screen, tabsStyle } from '../../global/Screens';
+import { appStyle, screen, tabsStyle, drawerStyle } from '../../global/Screens';
 import { accountsPresent, getCurrentAccountId } from '../accounts/sagas';
 import type { CurrentAccountIdChangedAction } from '../../actions/accounts';
 import { isMigration } from '../migration/sagas';
@@ -53,6 +53,7 @@ export function* launchLoggedInFlow(): Generator<*, *, any> {
       ],
       tabsStyle: { ...tabsStyle },
       appStyle: { ...appStyle },
+      drawer: { ...drawerStyle },
     });
   }
 }

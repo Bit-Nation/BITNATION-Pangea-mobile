@@ -15,4 +15,5 @@ export type Navigator = {
   setButtons: (?any) => void,
   switchToTab: (?any) => void,
   setOnNavigatorEvent: ((NavigatorEvent) => void) => void,
+  toggleDrawer: (?any) => void,
 }

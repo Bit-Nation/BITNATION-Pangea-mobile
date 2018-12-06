@@ -48,6 +48,7 @@ const botIconLucy = require('../assets/images/icon_chatbot.png');
 
 const chatNewMessageIcon = require('../assets/images/chat_indicator.png');
 const groupChatIcon = require('../assets/images/groupChatIcon.png');
+const menuIcon = require('../assets/images/menu.png');
 
 const Images = {
   background,
@@ -65,6 +66,7 @@ const Images = {
   disclosureRowIcon,
   moreMenuIcon,
   closeIcon,
+  menuIcon,
   TabIcons: {
     dashboard: dashboardTabIcon,
     chat: chatTabIcon,
