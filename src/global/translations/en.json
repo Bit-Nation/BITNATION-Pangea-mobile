@@ -1,9 +1,8 @@
 {
   "tabbar": {
     "nations": "NATIONS",
-    "chat": "CHAT",
-    "dashboard": "DASHBOARD",
     "wallet": "WALLET",
+    "chat": "TOWNHALL",
     "profile": "PROFILE"
   },
   "activityLog": {
@@ -545,7 +544,7 @@
     },
     "settings": {
       "title": "Settings",
-      "tabTitle": "SETTINGS",
+      "tabTitle": "SERVICES",
       "identity": "Identity",
       "security": "Security",
       "viewPrivateKey": "Private Key",

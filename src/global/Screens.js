@@ -1,11 +1,9 @@
 // @flow
 
 import { Platform } from 'react-native';
-
 import AssetsImages from './AssetsImages';
 import Colors from './colors';
 import i18n from './i18n';
-
 // Styles for Navigation Bar
 export const tabsStyle = {
   tabBarButtonColor: Colors.tabBarButtonColor,
@@ -19,17 +17,25 @@ export const appStyle = {
   ...tabsStyle,
 };
 
-export const androidNavigationButtons = Platform.OS === 'android' ? {
-  leftButtons: [{
-    id: 'back',
-    buttonColor: Colors.androidNavigationButtons,
-  }],
-} : {};
+export const androidNavigationButtons =
+  Platform.OS === 'android'
+    ? {
+      leftButtons: [
+        {
+          id: 'back',
+          buttonColor: Colors.androidNavigationButtons,
+        },
+      ],
+    }
+    : {};
 
 export const navigatorStyle = {
   tabBarHidden: false,
   statusBarTextColorScheme: Platform.OS === 'ios' ? 'dark' : 'light',
-  statusBarColor: Platform.OS === 'ios' ? Colors.statusBarColorIOS : Colors.statusBarColorOther, // Nativebase variable!
+  statusBarColor:
+    Platform.OS === 'ios'
+      ? Colors.statusBarColorIOS
+      : Colors.statusBarColorOther, // Nativebase variable!
   navBarBackgroundColor: Colors.navBarBackgroundColor,
   navBarTransparent: true,
   navBarBlur: false, // blur is too light
@@ -46,7 +52,10 @@ export const navigatorStyle = {
 
 export const hiddenNavigatorStyle = {
   statusBarTextColorScheme: 'light',
-  statusBarColor: Platform.OS === 'ios' ? Colors.statusBarColorIOS : Colors.statusBarColorOther,
+  statusBarColor:
+    Platform.OS === 'ios'
+      ? Colors.statusBarColorIOS
+      : Colors.statusBarColorOther,
   navBarHidden: true,
   drawUnderStatusBar: false, // Apple says, don't do it. So we don't.
   screenBackgroundColor: 'transparent',
@@ -239,7 +248,7 @@ const Screens = {
   SETTINGS_SCREEN: {
     screen: 'Pangea.Settings',
     title: '',
-    icon: AssetsImages.TabIcons.profile,
+    icon: AssetsImages.TabIcons.services,
     label: i18n.t('screens.settings.tabTitle'),
     navigatorStyle,
   },

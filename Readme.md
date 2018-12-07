@@ -5,7 +5,6 @@
 
 > Bitnation's Blockchain Jurisdiction
 
-TODO: Fill out this long description.
 
 ## Table of Contents
 
@@ -14,6 +13,7 @@ TODO: Fill out this long description.
 - [Usage](#usage)
 - [API](#api)
 - [Maintainers](#maintainers)
+- [Project Boards](#project-boards)
 - [Contribute](#contribute)
 - [License](#license)
 
@@ -28,10 +28,10 @@ __Requirements__
 
 * Android Studio 3.1+ (If NDK is not installed, this version requirement may be more relaxed).
 
-* [Panthalassa](https://github.com/Bit-Nation/panthalassa) binary, also covered below in instructions. Pardon our dust, we're working on better ways to make this dependency more developer-friendly. 
+* [Panthalassa](https://github.com/Bit-Nation/panthalassa) binary, also covered below in instructions.
 
-
-Currently, MacOS is the only supported operating system for building the project. We'd love to hear if you've gotten it working on other operating systems (it's likely possible, we just haven't been able to spare the time yet). 
+Supported Operating Systems: MacOS, Linux (Android only).  
+Windows is unsupported, but may work. Please open a well-documented issue anyway if you have problems building under Windows.
 
 __Project setup__
 
@@ -64,7 +64,15 @@ __Git & best practice__
 
 ## Maintainers
 
-[@seland](https://github.com/seland)
+[Susanne Tarkowski Tempelhof](https://github.com/xsttx)  
+[Mark Nuzz](https://github.com/mnuzz) (mark@bitnation.co)
+
+
+## Project Boards
+
+We use PivotalTracker for project management. As of 12/7/2018, our primary board is open to the public.  
+App - https://www.pivotaltracker.com/projects/2204148  
+Architecture - https://www.pivotaltracker.com/projects/2213396  
 
 ## Contribute
 
