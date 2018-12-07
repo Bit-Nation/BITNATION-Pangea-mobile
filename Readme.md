@@ -13,7 +13,7 @@
 - [Usage](#usage)
 - [API](#api)
 - [Maintainers](#maintainers)
-- [Project Board](#project-board)
+- [Project Boards](#project-boards)
 - [Contribute](#contribute)
 - [License](#license)
 
@@ -68,10 +68,11 @@ __Git & best practice__
 [Mark Nuzz](https://github.com/mnuzz)
 
 
-## Project Board
+## Project Boards
 
 We use PivotalTracker for project management. As of 12/7/2018, our primary board is open to the public.  
-https://www.pivotaltracker.com/projects/2204148
+App - https://www.pivotaltracker.com/projects/2204148
+Architecture - https://www.pivotaltracker.com/projects/2213396
 
 ## Contribute
 
