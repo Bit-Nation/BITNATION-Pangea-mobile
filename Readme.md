@@ -71,8 +71,8 @@ __Git & best practice__
 ## Project Boards
 
 We use PivotalTracker for project management. As of 12/7/2018, our primary board is open to the public.  
-App - https://www.pivotaltracker.com/projects/2204148
-Architecture - https://www.pivotaltracker.com/projects/2213396
+App - https://www.pivotaltracker.com/projects/2204148  
+Architecture - https://www.pivotaltracker.com/projects/2213396  
 
 ## Contribute
 
