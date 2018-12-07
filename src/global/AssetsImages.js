@@ -9,16 +9,15 @@ const build = require('../assets/images/Chrysler_Building.png');
 const monroe = require('../assets/images/monroe.png');
 const fern = require('../assets/images/fern.png');
 const moon = require('../assets/images/moon.png');
-
 const avatarIcon = require('../assets/images/avatarIcon.png');
 const privateKeyDemo = require('../assets/images/privateKeyDemo.png');
 
 // Main Navigation Icons
 const dashboardTabIcon = require('../assets/images/tabIconDashboard.png');
-const chatTabIcon = require('../assets/images/tabIconChat.png');
-const nationsTabIcon = require('../assets/images/tabIconNations.png');
+const flag = require('../assets/images/flag.png');
+const townhall = require('../assets/images/townhall.png');
+const globe = require('../assets/images/globe.png');
 const walletTabIcon = require('../assets/images/tabIconWallet.png');
-const profileTabIcon = require('../assets/images/tabIconProfile.png');
 
 // Tool Bar Icons
 const chatActionIcon = require('../assets/images/toolbarIconChat.png');
@@ -67,10 +66,10 @@ const Images = {
   closeIcon,
   TabIcons: {
     dashboard: dashboardTabIcon,
-    chat: chatTabIcon,
-    nations: nationsTabIcon,
+    chat: townhall,
+    nations: flag,
     wallet: walletTabIcon,
-    profile: profileTabIcon,
+    services: globe,
   },
   Actions: {
     chat: chatActionIcon,

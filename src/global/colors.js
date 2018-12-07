@@ -51,14 +51,15 @@ const shadeOf = (color: string, opacity: number) => convertHex(color, opacity);
  * @param {number} opacity Value of desired opacity in range from 0 to 1.
  * @return {string} Resulted rgba color string.
  */
-const shadeOfBitnationColor = (opacity: number) => convertHex(BitnationColor, opacity);
+const shadeOfBitnationColor = (opacity: number) =>
+  convertHex(BitnationColor, opacity);
 /**
  * @desc Returns a shade of Bitnation light color.
  * @param {number} opacity Value of desired opacity in range from 0 to 1.
  * @return {string} Resulted rgba color string.
  */
-const shadeOfBitnationLightColor = (opacity: number) => convertHex(BitnationLightColor, opacity);
-
+const shadeOfBitnationLightColor = (opacity: number) =>
+  convertHex(BitnationLightColor, opacity);
 
 export default {
   // Helper functions, see definitions for more details.
@@ -87,9 +88,9 @@ export default {
   placeholderTextColor: BitnationGrayColor,
 
   // Tab Bar (Navigation Bar for the app)
-  tabBarBackgroundColor: BitnationDarkGrayColor,
-  tabBarSelectedLabelColor: BitnationWhiteAlphaColor,
-  tabBarSelectedButtonColor: BitnationWhiteAlphaColor,
+  tabBarBackgroundColor: BitnationLinkOrangeColor,
+  tabBarSelectedLabelColor: BitnationActionColor,
+  tabBarSelectedButtonColor: 'white',
   tabBarLabelColor: 'white',
   tabBarButtonColor: 'white',
 
