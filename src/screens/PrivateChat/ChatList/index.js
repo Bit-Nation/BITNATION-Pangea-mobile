@@ -6,6 +6,7 @@ import {
   View,
   SectionList,
   Share,
+  Platform,
 } from 'react-native';
 import _ from 'lodash';
 import { Fab, Text } from 'native-base';
@@ -31,6 +32,7 @@ import { imageSource } from '../../../utils/profile';
 import AssetsImages from '../../../global/AssetsImages';
 import MoreMenuModal from '../../../components/common/MoreMenuModal';
 import type { Contact } from '../../../types/Contacts';
+import SnackBar from '../../../components/common/SnackBarComponent';
 
 const MORE_BUTTON = 'MORE_BUTTON';
 const MORE_MODAL_KEY = 'moreMenu';
@@ -93,7 +95,12 @@ type State = {
   /**
    * @desc List of contacts selected for creating chat.
    */
-  contacts: Array<Contact>
+  contacts: Array<Contact>,
+  /**
+   * @desc Flag whether snack bar is showing.
+   */
+  showSnackBar: boolean
+
 };
 
 class ChatListScreen extends NavigatorComponent<Props, State> {
@@ -115,6 +122,7 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
       loading: false,
       contacts: [],
       chatName: '',
+      showSnackBar: false,
     };
   }
 
@@ -170,15 +178,42 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
     });
   };
 
-  onSelectContacts = (contacts: Array<Contact>) => {
-    this.props.navigator.dismissModal();
-
+  onSelectContacts = async (contacts: Array<Contact>) => {
+    if (Platform.OS === 'ios') {
+      await this.props.navigator.dismissModal();
+    } else {
+      this.props.navigator.dismissModal();
+    }
     if (contacts.length === 1) {
-      this.initiateNewChat(contacts, '');
+      const contact: Contact = contacts[0];
+      const profiles: ProfileType = contact.profile;
+      const { identityKey } = profiles;
+      const chatSelected = this.getChatIdByIdentityKey(identityKey);
+      if (chatSelected > 0) {
+        this.setState({ showSnackBar: true });
+        setTimeout(() => {
+          this.setState({ showSnackBar: false });
+          this.onChatSelected(chatSelected);
+        }, 1000);
+      } else {
+        this.initiateNewChat(contacts, '');
+      }
     } else {
       this.setState({ contacts, showModal: CHAT_NAME_MODAL });
     }
   };
+
+  getChatIdByIdentityKey = (identityKey: string) => {
+    const { chats } = this.props;
+    let chatSelected = -1;
+    chats.forEach((chat: ChatType) => {
+      const identityKeyVal = chat.members[0];
+      if (identityKeyVal === identityKey) {
+        chatSelected = chat.id;
+      }
+    });
+    return chatSelected;
+  }
 
   buildChatName = (chat: ChatType) => {
     if (chat.name !== null) {
@@ -279,7 +314,9 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
             onPress={this.dismissModal}
           />
         </Dialog.Container>
+
         {this.state.loading === true && <Loading />}
+        <SnackBar visible={this.state.showSnackBar} textMessage={i18n.t('screens.chat.alreadyChat')} />
       </View>
     );
   }
