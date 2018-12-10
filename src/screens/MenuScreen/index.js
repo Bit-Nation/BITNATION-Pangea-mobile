@@ -1,45 +1,24 @@
 import React from 'react';
-import { StyleSheet, View, Image, Text, TouchableOpacity } from 'react-native';
+import {
+  View,
+  Image,
+  Text,
+  TouchableOpacity,
+  Share,
+} from 'react-native';
+import { connect } from 'react-redux';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+
+import { logout } from '../../actions/accounts';
+import { getCurrentAccount } from '../../reducers/accounts';
 
 import AssetsImages from '../../global/AssetsImages';
-import Colors from '../../global/colors';
+import styles from './styles';
 
+import Button from '../../components/common/Button';
 import NavigatorComponent from '../../components/common/NavigatorComponent';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: Colors.white,
-  },
-  avatarView: {
-    flex: 0.3,
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 10,
-    marginHorizontal: 20,
-    borderBottomWidth: 1,
-    borderBottomColor: Colors.BitnationDarkGrayColor,
-  },
-  avatarLarge: {
-    height: 100,
-    width: 100,
-    borderRadius: 50,
-  },
-  navigateButtonView: {
-    flex: 0.7,
-    alignItems: 'center',
-  },
-  navigateButtonStyle: {
-    paddingVertical: 10,
-  },
-  navigateTextStyle: {
-    fontFamily: 'Roboto',
-    fontSize: 25,
-    color: Colors.textPrimary,
-  },
-});
-
-class MyClass extends NavigatorComponent {
+class MenuScreen extends NavigatorComponent {
   constructor(props) {
     super(props);
     this.props.navigator.setDrawerEnabled({ side: 'left', enabled: true });
@@ -51,29 +30,126 @@ class MyClass extends NavigatorComponent {
     });
   };
 
+  sharePublicKey = () => {
+    Share.share({
+      message: this.props.publicKey || '',
+    });
+  };
+
+  onPushScreen = (screen) => {
+    this.toggleDrawer();
+    this.props.navigator.handleDeepLink({
+      link: `push/${screen}`,
+    });
+  };
+
   render() {
+    const { account, publicKey } = this.props;
+
+    const avatarSource = AssetsImages.avatarIcon;
+
     return (
-      <View style={styles.container}>
+      <View style={styles.containerMenu}>
         <View style={styles.avatarView}>
-          <Image source={AssetsImages.avatarIcon} style={styles.avatarLarge} />
+          <Image source={avatarSource} style={styles.avatarLarge} />
+          <Text style={styles.nameText}>{account && account.name && account.name.trim()}</Text>
+          <View style={styles.publicKey}>
+            <Text style={styles.publicKeyText}>{publicKey && publicKey.trim()}</Text>
+          </View>
+          <Button
+            enabled
+            style={styles.actionButton}
+            title='Copy Address'
+            onPress={this.sharePublicKey}
+            styleTitle={styles.settingsText}
+          />
         </View>
         <View style={styles.navigateButtonView}>
-          <TouchableOpacity style={styles.navigateButtonStyle}>
-            <Text style={styles.navigateTextStyle}>Update My Profile</Text>
+          <TouchableOpacity
+            style={styles.navigateButtonStyle}
+            onPress={() => this.onPushScreen('PROFILE_SCREEN')}
+          >
+            <View style={styles.wrapIconView}>
+              <MaterialCommunityIcons
+                style={styles.iconStyle}
+                name='account-circle'
+              />
+            </View>
+            <View style={styles.wrapTextView}>
+              <Text style={styles.navigateTextStyle}>MY PROFILE</Text>
+            </View>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.navigateButtonStyle}>
-            <Text style={styles.navigateTextStyle}>Wallet</Text>
+          <TouchableOpacity
+            style={styles.navigateButtonStyle}
+            onPress={() => this.onPushScreen('WALLET_SCREEN')}
+          >
+            <View style={styles.wrapIconView}>
+              <MaterialCommunityIcons
+                style={styles.iconStyle}
+                name='wallet'
+              />
+            </View>
+            <View style={styles.wrapTextView}>
+              <Text style={styles.navigateTextStyle}>WALLET</Text>
+            </View>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.navigateButtonStyle}>
-            <Text style={styles.navigateTextStyle}>Settings</Text>
+          <TouchableOpacity
+            style={styles.navigateButtonStyle}
+            onPress={() => this.onPushScreen('SETTINGS_SCREEN')}
+          >
+            <View style={styles.wrapIconView}>
+              <MaterialCommunityIcons
+                style={styles.iconStyle}
+                name='settings-outline'
+              />
+            </View>
+            <View style={styles.wrapTextView}>
+              <Text style={styles.navigateTextStyle}>SETTINGS</Text>
+            </View>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.navigateButtonStyle}>
-            <Text style={styles.navigateTextStyle}>Log out</Text>
+          <TouchableOpacity
+            style={styles.navigateButtonStyle}
+            onPress={() => this.onPushScreen('PROFILE_SCREEN')}
+          >
+            <View style={styles.wrapIconView}>
+              <MaterialCommunityIcons
+                style={styles.iconStyle}
+                name='contact-mail'
+              />
+            </View>
+            <View style={styles.wrapTextView}>
+              <Text style={styles.navigateTextStyle}>CONTACT</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.navigateButtonStyle}
+            onPress={this.props.logout}
+          >
+            <View style={styles.wrapIconView}>
+              <MaterialCommunityIcons
+                style={styles.iconStyle}
+                name='logout-variant'
+              />
+            </View>
+            <View style={styles.wrapTextView}>
+              <Text style={styles.navigateTextStyle}>LOG OUT</Text>
+            </View>
           </TouchableOpacity>
         </View>
-      </View>
+      </View >
     );
   }
 }
 
-export default MyClass;
+const mapStateToProps = state => ({
+  account: getCurrentAccount(state.accounts),
+  publicKey: state.accounts.currentAccountIdentityKey,
+});
+
+const mapDispatchToProps = dispatch => ({
+  logout() {
+    dispatch(logout());
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(MenuScreen);

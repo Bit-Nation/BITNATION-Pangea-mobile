@@ -136,6 +136,13 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
     }
   }
 
+  onHandleDeepLink(event) {
+    const parts = event.link.split('/');
+    if (parts[0] === 'push') {
+      this.props.navigator.push(screen(parts[1]));
+    }
+  }
+
   onChatSelected = (chatId: number) => {
     this.props.openChat(chatId);
     this.props.navigator.push(screen('PRIVATE_CHAT_SCREEN'));

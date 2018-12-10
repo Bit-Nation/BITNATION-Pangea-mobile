@@ -42,6 +42,11 @@ export default class NavigatorComponent<Props, State = void>
         this.onNavBarButtonPress(event.id);
       }
     }
+    if (event.type === 'DeepLink') {
+      if (typeof this.onHandleDeepLink === 'function') {
+        this.onHandleDeepLink(event);
+      }
+    }
     switch (event.id) {
       case 'backPress':
         if (typeof this.onBackPress === 'function') {
