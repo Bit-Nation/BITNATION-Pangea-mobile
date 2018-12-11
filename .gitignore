@@ -23,7 +23,7 @@ DerivedData
 *.xcuserstate
 project.xcworkspace
 ios/Frameworks/Realm*
-
+ios/Frameworks/panthalassa.framework
 ios/Pods
 
 # Android/IntelliJ

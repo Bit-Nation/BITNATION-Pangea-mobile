@@ -50,6 +50,14 @@ class MenuScreen extends NavigatorComponent {
 
     return (
       <View style={styles.containerMenu}>
+        <TouchableOpacity
+          onPress={() => this.toggleDrawer()}
+        >
+          <MaterialCommunityIcons
+            style={styles.closeButtonStyle}
+            name='close-circle-outline'
+          />
+        </TouchableOpacity>
         <View style={styles.avatarView}>
           <Image source={avatarSource} style={styles.avatarLarge} />
           <Text style={styles.nameText}>{account && account.name && account.name.trim()}</Text>

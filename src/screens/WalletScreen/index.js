@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { Icon } from 'native-base';
 import _ from 'lodash';
 import Background from '../../components/common/BackgroundImage';
-import { screen } from '../../global/Screens';
+import { screen, androidNavigationButtons } from '../../global/Screens';
 import List from './List';
 import EmptyWalletScreen from './EmptyState/index';
 import { selectWallet, updateWalletList } from '../../actions/wallet';
@@ -98,7 +98,9 @@ class WalletScreen extends NavigatorComponent<
   }
 
   updateNavigation() {
+    const { leftButtons } = androidNavigationButtons;
     this.props.navigator.setButtons({
+
       leftButtons: this.props.testingModeActive
         ? [
           {
@@ -106,7 +108,7 @@ class WalletScreen extends NavigatorComponent<
             title: i18n.t('testingMode.removeWallets'),
           },
         ]
-        : [],
+        : leftButtons,
       rightButtons: [],
     });
   }

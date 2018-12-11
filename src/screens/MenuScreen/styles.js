@@ -1,6 +1,7 @@
 // @flow
 
 import { MediaQueryStyleSheet } from 'react-native-responsive';
+import { Platform } from 'react-native';
 import Colors from '../../global/colors';
 import GlobalStyles from '../../global/Styles';
 
@@ -81,6 +82,13 @@ const styles = MediaQueryStyleSheet.create({
     fontSize: 25,
     color: Colors.white,
     paddingTop: 5,
+  },
+  closeButtonStyle: {
+    fontSize: 30,
+    color: Colors.white,
+    alignSelf: 'flex-start',
+    padding: 16,
+    marginTop: (Platform.OS === 'ios' ? 22 : 0),
   },
 });
 
