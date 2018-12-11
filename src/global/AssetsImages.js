@@ -14,9 +14,9 @@ const privateKeyDemo = require('../assets/images/privateKeyDemo.png');
 
 // Main Navigation Icons
 const dashboardTabIcon = require('../assets/images/tabIconDashboard.png');
-const flag = require('../assets/images/flag.png');
-const townhall = require('../assets/images/townhall.png');
-const globe = require('../assets/images/globe.png');
+const flag = require('../assets/images/flag-big.png');
+const townhall = require('../assets/images/city-hallbig.png');
+const globe = require('../assets/images/globe-big.png');
 const walletTabIcon = require('../assets/images/tabIconWallet.png');
 
 // Tool Bar Icons

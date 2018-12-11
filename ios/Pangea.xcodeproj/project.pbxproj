@@ -79,9 +79,7 @@
 		D2AC16B420F01E8C0001028B /* libRNCamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AC16B320F01E810001028B /* libRNCamera.a */; };
 		D2BFDCD0208D8CAF0033E539 /* PanthalassaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BFDCCF208D8CAF0033E539 /* PanthalassaTests.m */; };
 		D2BFDCD1208D8FC80033E539 /* Panthalassa.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F5E4402087BFB400A0B991 /* Panthalassa.m */; };
-		D2BFDCD2208D90440033E539 /* panthalassa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2F5E40F2087B06700A0B991 /* panthalassa.framework */; };
 		D2C287FC20ABACDA00D2B3DC /* PanthalassaUpStreamBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C287FB20ABACDA00D2B3DC /* PanthalassaUpStreamBridge.m */; };
-		D2F5E43C2087B06700A0B991 /* panthalassa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2F5E40F2087B06700A0B991 /* panthalassa.framework */; };
 		D2F5E4422087BFB400A0B991 /* Panthalassa.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F5E4402087BFB400A0B991 /* Panthalassa.m */; };
 		D4C9EDBC2CE847EE998E38B8 /* libimageCropPicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CA23D9CC370645A9AC80F60E /* libimageCropPicker.a */; };
 		D593748321234D3DBA2B980E /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 715AE497A2D9493B923699B4 /* Roboto-Black.ttf */; };
@@ -517,7 +515,6 @@
 		D2BFDCCF208D8CAF0033E539 /* PanthalassaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PanthalassaTests.m; path = PanthalassaTests/PanthalassaTests.m; sourceTree = SOURCE_ROOT; };
 		D2C287FA20ABACDA00D2B3DC /* PanthalassaUpStreamBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PanthalassaUpStreamBridge.h; sourceTree = "<group>"; };
 		D2C287FB20ABACDA00D2B3DC /* PanthalassaUpStreamBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PanthalassaUpStreamBridge.m; sourceTree = "<group>"; };
-		D2F5E40F2087B06700A0B991 /* panthalassa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = panthalassa.framework; path = Frameworks/panthalassa.framework; sourceTree = "<group>"; };
 		D2F5E4402087BFB400A0B991 /* Panthalassa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Panthalassa.m; sourceTree = "<group>"; };
 		D2F5E4412087BFB400A0B991 /* Panthalassa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Panthalassa.h; sourceTree = "<group>"; };
 		D5AE107DC4424FB28D3E84AC /* Roboto-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-BoldItalic.ttf"; path = "../assets/fonts/Roboto/Roboto-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -538,7 +535,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2BFDCD2208D90440033E539 /* panthalassa.framework in Frameworks */,
 				140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -558,7 +554,6 @@
 				00C302E81ABCBA2D00DB3ED1 /* libRCTImage.a in Frameworks */,
 				133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */,
 				00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */,
-				D2F5E43C2087B06700A0B991 /* panthalassa.framework in Frameworks */,
 				139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */,
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
@@ -772,7 +767,6 @@
 		17084F891FF8012900CB17F5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D2F5E40F2087B06700A0B991 /* panthalassa.framework */,
 				68C2C3681FFAD2970031480B /* RSKImageCropper.framework */,
 				68C2C33B1FFAD2910031480B /* QBImagePicker.framework */,
 				5F9423C49F9544E8AD6D62C2 /* libc++.tbd */,

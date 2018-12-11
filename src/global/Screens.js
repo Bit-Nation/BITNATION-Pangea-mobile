@@ -8,7 +8,7 @@ import i18n from './i18n';
 export const tabsStyle = {
   tabBarButtonColor: Colors.tabBarButtonColor,
   tabBarLabelColor: Colors.tabBarLabelColor,
-  tabBarSelectedLabelColor: Colors.tabBarSelectedLabelColor,
+  tabBarSelectedLabelColor: Colors.tabBarLabelColor,
   tabBarSelectedButtonColor: Colors.tabBarSelectedButtonColor,
   tabBarBackgroundColor: Colors.tabBarBackgroundColor,
 };
@@ -204,6 +204,10 @@ const Screens = {
     passProps: {
       isVerification: true,
     },
+  },
+  HOME_SCREEN: {
+    screen: 'Pangea.HomeScreen',
+    navigatorStyle,
   },
   RESTORE_KEY_SCREEN: {
     screen: 'Pangea.RestoreKeyProcessScreen',

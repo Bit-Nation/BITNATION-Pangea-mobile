@@ -41,6 +41,7 @@ import DocumentsListScreen from './Documents/List';
 import DocumentViewScreen from './Documents/View';
 import DocumentModifyScreen from './Documents/Modify';
 import MenuScreen from './MenuScreen';
+import HomeScreen from './Home';
 import { screen } from '../global/Screens';
 
 /**
@@ -89,4 +90,5 @@ export default function registerScreens(store: Object, Provider: Object) {
   Navigation.registerComponent(screen('DOCUMENT_VIEW_SCREEN').screen, () => DocumentViewScreen, store, Provider);
   Navigation.registerComponent(screen('DOCUMENT_MODIFY_SCREEN').screen, () => DocumentModifyScreen, store, Provider);
   Navigation.registerComponent(screen('MENU_SCREEN').screen, () => MenuScreen, store, Provider);
+  Navigation.registerComponent(screen('HOME_SCREEN').screen, () => HomeScreen, store, Provider);
 }
