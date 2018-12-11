@@ -42,6 +42,7 @@ const styles = MediaQueryStyleSheet.create({
     height: 30,
     justifyContent: 'center',
     alignItems: 'center',
+    alignSelf: 'center',
     backgroundColor: Colors.BitnationActionColor,
     marginTop: 5,
   },

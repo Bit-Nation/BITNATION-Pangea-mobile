@@ -2,11 +2,11 @@ import React from 'react';
 import {
   View,
   Image,
-  Text,
   TouchableOpacity,
   Share,
 } from 'react-native';
 import { connect } from 'react-redux';
+import { Button, Text } from 'native-base';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import { logout } from '../../actions/accounts';
@@ -15,7 +15,7 @@ import { getCurrentAccount } from '../../reducers/accounts';
 import AssetsImages from '../../global/AssetsImages';
 import styles from './styles';
 
-import Button from '../../components/common/Button';
+// import Button from '../../components/common/Button';
 import NavigatorComponent from '../../components/common/NavigatorComponent';
 
 class MenuScreen extends NavigatorComponent {
@@ -59,10 +59,11 @@ class MenuScreen extends NavigatorComponent {
           <Button
             enabled
             style={styles.actionButton}
-            title='Copy Address'
+            // title='Copy Address'
             onPress={this.sharePublicKey}
-            styleTitle={styles.settingsText}
-          />
+          >
+            <Text style={styles.settingsText}>Copy Address</Text>
+          </Button>
         </View>
         <View style={styles.navigateButtonView}>
           <TouchableOpacity
