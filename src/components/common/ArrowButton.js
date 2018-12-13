@@ -1,13 +1,9 @@
 // @flow
 
 import * as React from 'react';
-import {
-  TouchableOpacity,
-  View,
-  Text,
-} from 'react-native';
+
 import { MediaQueryStyleSheet } from 'react-native-responsive';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import { Button, Text } from 'native-base';
 
 import GlobalStyles from '../../global/Styles';
 
@@ -35,7 +31,7 @@ type Props = {
  * @desc Component that renders common button.
  * @return {React.Component} A component.
  */
-const Button = ({
+const ArrowButton = ({
   style, onPress, enabled, title, ...props
 }: Props) => {
   const styles = MediaQueryStyleSheet.create({
@@ -43,23 +39,26 @@ const Button = ({
   });
 
   return ((
-    <View
+    <Button
       style={[
-        styles.baseButton,
+
         style,
       ]}
       {...props}
+      testID='Touchable'
+      enabled
+      onPress={onPress}
     >
-      <TouchableOpacity testID='Touchable' disabled={!enabled} style={styles.arrowButtonContainer} onPress={onPress}>
-        <Text style={enabled ? styles.arrowButtonTitle : styles.disabledArrowButtonTitle}>
-          {title}
-        </Text>
-        {/* <MaterialIcons
+
+      <Text style={styles.arrowButtonTitle}>
+        {title}
+      </Text>
+      {/* <MaterialIcons
           style={styles.arrowButtonIcon}
           name='keyboard-arrow-right'
         /> */}
-      </TouchableOpacity>
-    </View>
+
+    </Button>
   ));
 };
 
@@ -70,4 +69,4 @@ Button.defaultProps = {
   title: '',
 };
 
-export default Button;
+export default ArrowButton;

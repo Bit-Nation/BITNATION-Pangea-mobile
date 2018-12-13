@@ -45,9 +45,14 @@ const styles = StyleSheet.create({
   },
   button: {
     height: 36,
+    backgroundColor: Colors.Transparent,
+    shadowOffset: { height: 0, width: 0 },
+    shadowOpacity: 0,
+    elevation: 0,
   },
   buttonsContainer: {
     flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   leftButton: {
     marginRight: 4,

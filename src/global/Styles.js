@@ -396,6 +396,8 @@ const styles = {
   // Button in Panel View
   panelButton: {
     marginTop: 13,
+    flex: 1,
+    alignSelf: 'stretch',
   },
 
   // ------------------------
@@ -763,6 +765,7 @@ const styles = {
     fontWeight: '900',
   },
 
+
   tabsContainerStyle: {
     backgroundColor: 'transparent',
   },
@@ -859,6 +862,8 @@ const styles = {
     color: Colors.BitnationLinkOrangeColor,
     fontWeight: 'bold',
     textAlign: 'center',
+    paddingLeft: 5,
+    paddingRight: 5,
   },
   arrowButtonIcon: {
     fontSize: 15,
@@ -879,6 +884,7 @@ const styles = {
     borderRadius: 15,
     height: 30,
     justifyContent: 'center',
+    backgroundColor: Colors.Transparent,
   },
 
   actionButton: {
@@ -886,6 +892,7 @@ const styles = {
     height: 50,
     justifyContent: 'center',
     backgroundColor: Colors.BitnationActionColor,
+    alignSelf: 'stretch',
   },
 
   buttonContainer: {

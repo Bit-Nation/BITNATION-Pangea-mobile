@@ -1,14 +1,9 @@
 // @flow
 
 import * as React from 'react';
-import {
-  TouchableOpacity,
-  View,
-  Text,
-  ActivityIndicator,
-} from 'react-native';
+import { ActivityIndicator } from 'react-native';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
-
+import { Button, Text } from 'native-base';
 import GlobalStyles from '../../global/Styles';
 
 type Props = {
@@ -44,7 +39,7 @@ type Props = {
  * @desc Component that renders common button.
  * @return {React.Component} A component.
  */
-const Button = ({
+const CustomButton = ({
   style, children, onPress, enabled, styleTitle, title, loading, ...props
 }: Props) => {
   const styles = MediaQueryStyleSheet.create({
@@ -52,24 +47,28 @@ const Button = ({
   });
 
   return ((
-    <View
+    <Button
+      {...props}
       style={[
           styles.baseButton,
 
           style,
         ]}
-      {...props}
+      testID='Touchable'
+      enabled
+
+      onPress={onPress}
     >
-      <TouchableOpacity testID='Touchable' disabled={!enabled} style={[styles.buttonContainer]} onPress={onPress}>
-        {
+
+      {
         children ||
         <Text style={[styles.buttonTitle, styleTitle, (enabled === false) && styles.disabledButtonTitle]}>
           {title}
         </Text>
         }
-        {loading && <ActivityIndicator color='#fff' />}
-      </TouchableOpacity>
-    </View>
+      {loading && <ActivityIndicator color='#fff' />}
+
+    </Button>
   ));
 };
 
@@ -81,4 +80,4 @@ Button.defaultProps = {
   title: '',
 };
 
-export default Button;
+export default CustomButton;
