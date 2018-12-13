@@ -885,6 +885,9 @@ const styles = {
     height: 30,
     justifyContent: 'center',
     backgroundColor: Colors.Transparent,
+    shadowOffset: { height: 0, width: 0 },
+    shadowOpacity: 0,
+    elevation: 0,
   },
 
   actionButton: {
