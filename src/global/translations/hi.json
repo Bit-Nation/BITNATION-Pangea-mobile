@@ -1,18 +1,18 @@
 {
   "tabbar": {
-    "nations": "NATIONS",
-    "wallet": "WALLET",
-    "chat": "TOWNHALL",
-    "profile": "PROFILE"
+    "nations": "देशों",
+    "wallet": "वॉलेट",
+    "chat": "बातचीत",
+    "profile": "प्रोफ़ाइल"
   },
   "sidemenu": {
-    "account": "Account",
-    "copyaddress": "COPY ADDRESS",
-    "myprofile": "MY PROFILE",
-    "wallet": "WALLET",
-    "settings": "SETTINGS",
-    "contact": "CONTACT",
-    "logout": "LOGOUT"
+    "account": "अकाउंट",
+    "copyaddress": "अड्रेस कॉपी करें",
+    "myprofile": "मेरा प्रोफाइल",
+    "wallet": "वॉलेट",
+    "settings": "सेटिंग",
+    "contact": "संपर्क करें",
+    "logout": "लोग आउट"
   },
   "activityLog": {
     "nation": {
@@ -31,14 +31,14 @@
     }
   },
   "common": {
-    "send": "Send",
-    "receive": "Receive",
-    "transactions": "Transactions",
+    "send": "भेजें",
+    "receive": "प्प्राप्त करे",
+    "transactions": "लेन-देन",
     "ok": "OK",
-    "previous": "Previous",
-    "next": "Next",
-    "cancel": "Cancel",
-    "begin": "Begin",
+    "previous": "पिछला",
+    "next": "अगला",
+    "cancel": "रद्द करें",
+    "begin": "प्रारंभ करे",
     "done": "Done",
     "edit": "Edit",
     "from": "From",
@@ -46,14 +46,14 @@
     "address": "Address",
     "amount": "Amount",
     "wallet": "Wallet",
-    "map": "Map",
+    "map": "नक्शा",
     "join": "Join",
     "leave": "Leave",
-    "new": "New",
+    "new": "नया",
     "optional": "Optional",
-    "available": "available",
+    "available": "उपलब्ध",
     "options": "Options",
-    "fees": "Fees",
+    "fees": "फीस",
     "chat": "Chat",
     "nations": "Nations",
     "governmentalStructure": "Governmental Structure",
@@ -250,16 +250,16 @@
       }
     },
     "accounts": {
-      "title": "Accounts",
+      "title": "आपके अकाउंट",
       "introduction": "Create a new account or restore an account you have backed up.",
-      "newAccount": "New Account",
-      "restoreAccount": "Restore Account",
-      "warningTitle": "Where's My Money?",
+      "newAccount": "नया अकाउंट",
+      "restoreAccount": "रिस्टोर अकाउंट",
+      "warningTitle": "मेरा पैसा कहाँ है?",
       "warningText": "This release is not compatible with prior releases of the Pangea app. Tap this button to learn how to recover the Ethereum in your wallet.",
       "checkRelease": "Open Instructions Website",
       "create": {
-        "prev": "Previous",
-        "next": "Next",
+        "prev": "पीछे",
+        "next": "आगे",
         "title": "Create Account",
         "securityTitle": "Security Settings",
         "numericCode": "Numeric Passcode (less secure)",
@@ -450,9 +450,9 @@
       }
     },
     "profile": {
-      "title": "Profile",
+      "title": "प्रोफाइल",
       "tabTitle": "$t(tabbar.profile)",
-      "shareKey": "Share Identity Key",
+      "shareKey": "आइडेंटिटी Key शेर करे",
       "empty": {
         "createProfilePanel": {
           "title": "Become a World Citizen",
@@ -552,13 +552,13 @@
       }
     },
     "settings": {
-      "title": "Settings",
-      "tabTitle": "SERVICES",
-      "identity": "Identity",
+      "title": "सेटिंग",
+      "tabTitle": "सेरविसेस",
+      "identity": "आइडेंटिटी",
       "security": "Security",
       "viewPrivateKey": "Private Key",
       "confirmPrivateKey": "Private Key (confirmation required)",
-      "switchAccounts": "Switch accounts",
+      "switchAccounts": "अकाउंट चेंज करे",
       "connectToDAppHost": "Connect to DApp host",
       "connectToDAppLogger": "Connect debug logger",
       "documents": "Documents",

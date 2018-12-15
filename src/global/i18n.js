@@ -3,9 +3,10 @@
 import i18n from 'i18next';
 
 const en = require('./translations/en');
+const hi = require('./translations/hi');
 
 i18n.init({
-  fallbackLng: 'en',
+  fallbackLng: 'hi',
   initImmediate: false,
   returnObjects: true,
   interpolation: {
@@ -14,6 +15,9 @@ i18n.init({
   resources: {
     en: {
       translation: en,
+    },
+    hi: {
+      translation: hi,
     },
   },
 });

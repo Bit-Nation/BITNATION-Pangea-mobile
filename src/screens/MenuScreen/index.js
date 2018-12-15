@@ -1,14 +1,9 @@
 import React from 'react';
-import {
-  View,
-  Image,
-  TouchableOpacity,
-  Share,
-} from 'react-native';
+import { View, Image, TouchableOpacity, Share } from 'react-native';
 import { connect } from 'react-redux';
 import { Button, Text } from 'native-base';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
+import i18n from '../../global/i18n';
 import { logout } from '../../actions/accounts';
 import { getCurrentAccount } from '../../reducers/accounts';
 
@@ -50,9 +45,7 @@ class MenuScreen extends NavigatorComponent {
 
     return (
       <View style={styles.containerMenu}>
-        <TouchableOpacity
-          onPress={() => this.toggleDrawer()}
-        >
+        <TouchableOpacity onPress={() => this.toggleDrawer()}>
           <MaterialCommunityIcons
             style={styles.closeButtonStyle}
             name='close-circle-outline'
@@ -60,17 +53,23 @@ class MenuScreen extends NavigatorComponent {
         </TouchableOpacity>
         <View style={styles.avatarView}>
           <Image source={avatarSource} style={styles.avatarLarge} />
-          <Text style={styles.nameText}>{account && account.name && account.name.trim()}</Text>
+          <Text style={styles.nameText}>
+            {account && account.name && account.name.trim()}
+          </Text>
           <View style={styles.publicKey}>
-            <Text style={styles.publicKeyText}>{publicKey && publicKey.trim()}</Text>
+            <Text style={styles.publicKeyText}>
+              {publicKey && publicKey.trim()}
+            </Text>
           </View>
           <Button
             enabled
             style={styles.actionButton}
-            // title='Copy Address'
             onPress={this.sharePublicKey}
           >
-            <Text style={styles.settingsText}>Copy Address</Text>
+            <Text style={styles.settingsText}>
+              {' '}
+              {i18n.t('sidemenu.copyaddress')}
+            </Text>
           </Button>
         </View>
         <View style={styles.navigateButtonView}>
@@ -85,7 +84,9 @@ class MenuScreen extends NavigatorComponent {
               />
             </View>
             <View style={styles.wrapTextView}>
-              <Text style={styles.navigateTextStyle}>MY PROFILE</Text>
+              <Text style={styles.navigateTextStyle}>
+                {i18n.t('sidemenu.myprofile')}
+              </Text>
             </View>
           </TouchableOpacity>
           <TouchableOpacity
@@ -93,13 +94,12 @@ class MenuScreen extends NavigatorComponent {
             onPress={() => this.onPushScreen('WALLET_SCREEN')}
           >
             <View style={styles.wrapIconView}>
-              <MaterialCommunityIcons
-                style={styles.iconStyle}
-                name='wallet'
-              />
+              <MaterialCommunityIcons style={styles.iconStyle} name='wallet' />
             </View>
             <View style={styles.wrapTextView}>
-              <Text style={styles.navigateTextStyle}>WALLET</Text>
+              <Text style={styles.navigateTextStyle}>
+                {i18n.t('sidemenu.wallet')}
+              </Text>
             </View>
           </TouchableOpacity>
           <TouchableOpacity
@@ -113,7 +113,10 @@ class MenuScreen extends NavigatorComponent {
               />
             </View>
             <View style={styles.wrapTextView}>
-              <Text style={styles.navigateTextStyle}>SETTINGS</Text>
+              <Text style={styles.navigateTextStyle}>
+                {' '}
+                {i18n.t('sidemenu.settings')}
+              </Text>
             </View>
           </TouchableOpacity>
           <TouchableOpacity
@@ -127,7 +130,10 @@ class MenuScreen extends NavigatorComponent {
               />
             </View>
             <View style={styles.wrapTextView}>
-              <Text style={styles.navigateTextStyle}>CONTACT</Text>
+              <Text style={styles.navigateTextStyle}>
+                {' '}
+                {i18n.t('sidemenu.contact')}
+              </Text>
             </View>
           </TouchableOpacity>
           <TouchableOpacity
@@ -141,11 +147,14 @@ class MenuScreen extends NavigatorComponent {
               />
             </View>
             <View style={styles.wrapTextView}>
-              <Text style={styles.navigateTextStyle}>LOG OUT</Text>
+              <Text style={styles.navigateTextStyle}>
+                {' '}
+                {i18n.t('sidemenu.logout')}
+              </Text>
             </View>
           </TouchableOpacity>
         </View>
-      </View >
+      </View>
     );
   }
 }
@@ -161,4 +170,7 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(MenuScreen);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(MenuScreen);
