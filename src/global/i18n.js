@@ -6,7 +6,7 @@ const en = require('./translations/en');
 const hi = require('./translations/hi');
 
 i18n.init({
-  fallbackLng: 'hi',
+  fallbackLng: 'en',
   initImmediate: false,
   returnObjects: true,
   interpolation: {

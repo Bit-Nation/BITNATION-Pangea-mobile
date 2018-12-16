@@ -1,8 +1,11 @@
 // @flow
 
 import { MediaQueryStyleSheet } from 'react-native-responsive';
+import { Dimensions } from 'react-native';
 
 import GlobalStyles from '../../../../global/Styles';
+
+const { width } = Dimensions.get('window');
 
 const styles = MediaQueryStyleSheet.create({
   ...GlobalStyles,
@@ -14,12 +17,27 @@ const styles = MediaQueryStyleSheet.create({
   },
   */
   restoreAccountButton: {
-    backgroundColor: 'transparent', alignSelf: 'stretch', borderRadius: 0,
+    backgroundColor: '#FF8B00',
+    alignSelf: 'center',
+    borderColor: '#FF8B00',
+    width: 300,
   },
-  restoreAccountButtonText: { color: '#58595B', fontSize: 15, fontWeight: 'bold' },
-  newAccountText: { color: '#FF8B00', fontSize: 15, fontWeight: '900' },
+  image: {
+    height: 300,
+    width,
+  },
+  restoreAccountButtonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  newAccountText: { color: '#fff', fontSize: 16, fontWeight: 'bold' },
   newAccountButton: {
-    height: 54, backgroundColor: 'white', alignSelf: 'stretch', borderRadius: 0,
+    backgroundColor: '#FF8B00',
+    width: 300,
+    alignSelf: 'center',
+    borderColor: '#FF8B00',
+    marginTop: 15,
   },
 });
 

@@ -67,7 +67,7 @@ export function launchLoggedOutFlow(hasAccounts: boolean) {
     screen:
       hasAccounts === true
         ? screen('ACCOUNTS_ACCESS_SCREEN')
-        : screen('ACCOUNTS_SCREEN'),
+        : screen('ACCOUNTS_ACCESS_SCREEN'),
     appStyle: { ...appStyle },
   });
 }

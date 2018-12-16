@@ -2,10 +2,11 @@
   "tabbar": {
     "nations": "देशों",
     "wallet": "वॉलेट",
-    "chat": "बातचीत",
+    "chat": "बातचीतीत",
     "profile": "प्रोफ़ाइल"
   },
   "sidemenu": {
+    "citizenid": "सिटिज़न ID",
     "account": "अकाउंट",
     "copyaddress": "अड्रेस कॉपी करें",
     "myprofile": "मेरा प्रोफाइल",
@@ -54,7 +55,7 @@
     "available": "उपलब्ध",
     "options": "Options",
     "fees": "फीस",
-    "chat": "Chat",
+    "chat": "बातचीत",
     "nations": "Nations",
     "governmentalStructure": "Governmental Structure",
     "updating": "Updating",
@@ -324,7 +325,7 @@
       }
     },
     "chat": {
-      "title": "$t(common.chat)",
+      "title": "बातचीत",
       "tabTitle": "$t(tabbar.chat)",
       "allChats": "All Chats",
       "myChats": "My Chats",

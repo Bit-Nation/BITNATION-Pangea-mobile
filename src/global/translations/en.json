@@ -6,6 +6,7 @@
     "profile": "PROFILE"
   },
   "sidemenu": {
+    "citizenid": "Citizen ID",
     "account": "Account",
     "copyaddress": "COPY ADDRESS",
     "myprofile": "MY PROFILE",

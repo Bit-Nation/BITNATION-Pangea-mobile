@@ -1,11 +1,14 @@
 import React from 'react';
 import { View, Image, TouchableOpacity, Share } from 'react-native';
 import { connect } from 'react-redux';
+import i18next from 'i18next';
 import { Button, Text } from 'native-base';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import i18n from '../../global/i18n';
 import { logout } from '../../actions/accounts';
 import { getCurrentAccount } from '../../reducers/accounts';
+import en from '../../global/translations/en.json';
+import hi from '../../global/translations/hi.json';
 
 import AssetsImages from '../../global/AssetsImages';
 import styles from './styles';
@@ -38,6 +41,25 @@ class MenuScreen extends NavigatorComponent {
     });
   };
 
+  changeLanguage = () => {
+    i18n.init({
+      fallbackLng: 'en',
+      initImmediate: false,
+      returnObjects: true,
+      interpolation: {
+        escapeValue: false,
+      },
+      resources: {
+        en: {
+          translation: en,
+        },
+        hi: {
+          translation: hi,
+        },
+      },
+    });
+  };
+
   render() {
     const { account, publicKey } = this.props;
 
@@ -54,7 +76,7 @@ class MenuScreen extends NavigatorComponent {
         <View style={styles.avatarView}>
           <Image source={avatarSource} style={styles.avatarLarge} />
           <Text style={styles.nameText}>
-            {account && account.name && account.name.trim()}
+            {i18n.t('sidemenu.citizenid')}
           </Text>
           <View style={styles.publicKey}>
             <Text style={styles.publicKeyText}>
@@ -121,7 +143,8 @@ class MenuScreen extends NavigatorComponent {
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.navigateButtonStyle}
-            onPress={() => this.onPushScreen('PROFILE_SCREEN')}
+            // onPress={() => this.onPushScreen('PROFILE_SCREEN')}
+            onPress={this.changeLanguage}
           >
             <View style={styles.wrapIconView}>
               <MaterialCommunityIcons
