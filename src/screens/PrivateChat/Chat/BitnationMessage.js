@@ -21,6 +21,7 @@ const styles = {
       justifyContent: 'flex-start',
       marginLeft: 8,
       marginRight: 0,
+      paddingBottom: 10,
     },
   }),
   right: StyleSheet.create({
@@ -30,8 +31,17 @@ const styles = {
       justifyContent: 'flex-end',
       marginLeft: 0,
       marginRight: 8,
+      paddingBottom: 10,
     },
   }),
+  containerDApp: {
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    justifyContent: 'flex-end',
+    paddingBottom: 10,
+    marginHorizontal: 10,
+    marginBottom: 10,
+  },
 };
 
 export default class Message extends React.Component {
@@ -74,6 +84,7 @@ export default class Message extends React.Component {
 
   render() {
     const sameUser = isSameUser(this.props.currentMessage, this.props.nextMessage);
+    const { dApp } = this.props.currentMessage.user;
 
     return (
       <View>
@@ -82,17 +93,17 @@ export default class Message extends React.Component {
           this.renderSystemMessage()
         ) : (
           <View
-            style={[
-              styles[this.props.position].container,
-              { marginBottom: sameUser ? 2 : 10 },
-              this.props.containerStyle[this.props.position],
-            ]}
+            style={dApp ? styles.containerDApp : [
+                styles[this.props.position].container,
+                { marginBottom: sameUser ? 2 : 10 },
+                this.props.containerStyle[this.props.position],
+              ]}
           >
-            {this.props.position === 'left' ? this.renderAvatar() : null}
+            {this.props.position === 'left' && !dApp ? this.renderAvatar() : null}
             {this.renderBubble()}
-            {this.props.position === 'right' ? this.renderAvatar() : null}
+            {this.props.position === 'right' && !dApp ? this.renderAvatar() : null}
           </View>
-        )}
+          )}
       </View>
     );
   }

@@ -839,6 +839,7 @@ const styles = {
     ...defaultTextStyles.headline,
     color: Colors.white,
     textAlign: 'center',
+    fontFamily: 'roboto',
   },
   disabledButtonTitle: {
     color: Colors.BitnationLightGrayColor,
@@ -891,10 +892,11 @@ const styles = {
   },
 
   actionButton: {
-    borderRadius: 0,
-    height: 50,
+    marginHorizontal: 30,
+    borderRadius: 15,
+    height: 40,
     justifyContent: 'center',
-    backgroundColor: Colors.BitnationActionColor,
+    backgroundColor: Colors.chatColor,
     alignSelf: 'stretch',
   },
 

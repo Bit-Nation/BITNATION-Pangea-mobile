@@ -150,8 +150,8 @@ export default class Bubble extends React.Component {
             {...timeProps}
             containerStyle={{ left: [styles.timeContainer] }}
             textStyle={{
-              left: [styles.headerFont, styles[this.props.position].textStyle],
-              right: [styles.headerFont, styles[this.props.position].textStyle],
+              left: [styles.headerFont, styles[this.props.position].timeStyle],
+              right: [styles.headerFont, styles[this.props.position].timeStyle],
             }}
           />
         </View>
@@ -168,14 +168,16 @@ export default class Bubble extends React.Component {
   }
 
   render() {
+    const { dApp } = this.props.currentMessage.user;
     return (
-      <View style={[styles[this.props.position].container, this.props.containerStyle[this.props.position]]}>
+      <View style={dApp ? styles.containerDApp : [styles[this.props.position].container, this.props.containerStyle[this.props.position]]}>
         <View
           style={[
             styles[this.props.position].wrapper,
             this.props.wrapperStyle[this.props.position],
             this.handleBubbleToNext(),
             this.handleBubbleToPrevious(),
+            dApp ? styles.wrapperDApp : {},
           ]}
         >
           <TouchableOpacity
@@ -184,8 +186,6 @@ export default class Bubble extends React.Component {
             {...this.props.touchableProps}
           >
             <View style={[styles.wrapper, this.props.wrapperStyle]}>
-
-              {this.renderCustomView()}
               <View style={styles.headerView}>
                 {this.renderUsername()}
                 {this.renderTime()}
@@ -193,11 +193,11 @@ export default class Bubble extends React.Component {
               </View>
               {this.renderMessageImage()}
               {this.renderMessageText()}
-
             </View>
+            {this.renderCustomView()}
           </TouchableOpacity>
         </View>
-      </View>
+      </View >
     );
   }
 }
@@ -230,6 +230,10 @@ const styles = {
       color: Colors.BitnationDarkGrayColor,
       fontFamily: 'Roboto',
     },
+    timeStyle: {
+      color: Colors.BitnationLightGrayColor,
+      fontFamily: 'Roboto',
+    },
   }),
   right: StyleSheet.create({
     container: {
@@ -258,7 +262,37 @@ const styles = {
       color: Colors.BitnationDarkGrayColor,
       fontFamily: 'Roboto',
     },
+    timeStyle: {
+      color: Colors.BitnationLightGrayColor,
+      fontFamily: 'Roboto',
+    },
   }),
+  containerDApp: {
+    width: '100%',
+    borderRadius: 15,
+    alignItems: 'flex-start',
+    ...Platform.select({
+      ios: {
+        shadowColor: Colors.chatColor,
+        shadowOffset: { height: 1, width: 1 },
+        shadowOpacity: 1,
+        shadowRadius: 3,
+        elevation: 4,
+      },
+      android: {
+        elevation: 4,
+      },
+    }),
+  },
+  wrapperDApp: {
+    width: '100%',
+    borderRadius: 15,
+    backgroundColor: Colors.white,
+    marginRight: 0,
+    marginLeft: 0,
+    minHeight: 20,
+    justifyContent: 'flex-end',
+  },
   standardFont: {
     fontSize: 15,
   },

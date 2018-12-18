@@ -270,6 +270,7 @@ class ChatScreen extends Component<Props & Actions, *> {
           user: {
             _id: dApp.publicKey,
             name: dApp.name,
+            dApp: true,
           },
         };
       });
@@ -297,7 +298,6 @@ class ChatScreen extends Component<Props & Actions, *> {
             const { currentMessage }: { currentMessage: GiftedChatMessageType } = props;
             const { dAppMessage } = currentMessage;
             if (dAppMessage == null) return null;
-
             return (<DAppMessage message={dAppMessage} />);
           }}
           onLongPress={(context, message) => {

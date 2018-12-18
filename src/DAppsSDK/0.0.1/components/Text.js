@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { Text as ReactNativeText } from 'react-native';
 
+import Colors from '../../../global/colors';
 import styles from '../../../global/Styles';
 
 type Props = {
@@ -72,10 +73,15 @@ export default class Text extends React.Component<Props> {
       console.warn(`Invalid value '${this.props.type}' for 'type' property of 'Text' component`);
     }
 
+    const baseTextStyle = {
+      color: Colors.BitnationDarkGrayColor,
+      fontFamily: 'Roboto',
+    };
+
     return (
       <ReactNativeText
         {...this.props.nativeProps}
-        style={[typeStyle, this.props.style]}
+        style={[typeStyle, this.props.style, baseTextStyle]}
       >
         {this.props.children}
       </ReactNativeText>
