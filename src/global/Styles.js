@@ -12,7 +12,6 @@ import {
 // ========================================
 
 import defaultTextStyles from './styles/defaultTextStyles';
-import colors from './colors';
 
 // ========================================
 // MAIN STYLES
@@ -897,7 +896,6 @@ const styles = {
     ...defaultTextStyles.headline,
     color: Colors.white,
     textAlign: 'center',
-    fontFamily: 'roboto',
   },
   disabledButtonTitle: {
     color: Colors.BitnationLightGrayColor,
@@ -950,6 +948,14 @@ const styles = {
   },
 
   actionButton: {
+    borderRadius: 0,
+    width: '100%',
+    height: 50,
+    justifyContent: 'center',
+    backgroundColor: Colors.BitnationActionColor,
+  },
+
+  actionButtonDApp: {
     marginHorizontal: 30,
     borderRadius: 15,
     height: 40,
