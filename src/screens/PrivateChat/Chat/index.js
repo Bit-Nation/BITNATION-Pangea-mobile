@@ -4,14 +4,7 @@
 import React, { Component } from 'react';
 import { View, Platform, Clipboard } from 'react-native';
 import { connect } from 'react-redux';
-import {
-  GiftedChat,
-  Composer,
-  InputToolbar,
-  Bubble,
-  Actions as ChatActions,
-  MessageText,
-} from 'react-native-gifted-chat';
+import { GiftedChat } from 'react-native-gifted-chat';
 import ActionSheet from 'react-native-actionsheet';
 
 import styles from './styles';

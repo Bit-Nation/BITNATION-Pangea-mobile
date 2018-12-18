@@ -184,16 +184,16 @@ export default class Bubble extends React.Component {
             {...this.props.touchableProps}
           >
             <View style={[styles.wrapper, this.props.wrapperStyle]}>
-              <View>
-                {this.renderCustomView()}
-                <View style={styles.headerView}>
-                  {this.renderUsername()}
-                  {this.renderTime()}
-                  {this.renderTicks()}
-                </View>
-                {this.renderMessageImage()}
-                {this.renderMessageText()}
+
+              {this.renderCustomView()}
+              <View style={styles.headerView}>
+                {this.renderUsername()}
+                {this.renderTime()}
+                {/* {this.renderTicks()} */}
               </View>
+              {this.renderMessageImage()}
+              {this.renderMessageText()}
+
             </View>
           </TouchableOpacity>
         </View>
@@ -209,6 +209,7 @@ const styles = {
       alignItems: 'flex-start',
     },
     wrapper: {
+      width: '90%',
       borderRadius: 15,
       backgroundColor: Colors.white,
       marginRight: 60,
@@ -236,6 +237,7 @@ const styles = {
       alignItems: 'flex-end',
     },
     wrapper: {
+      width: '90%',
       borderRadius: 15,
       backgroundColor: Colors.white,
       marginLeft: 60,
@@ -268,12 +270,14 @@ const styles = {
     marginTop: Platform.OS === 'android' ? 5 : 6,
     flexDirection: 'row',
     alignItems: 'baseline',
-    paddingHorizontal: 10,
+    paddingLeft: 10,
+    justifyContent: 'space-between',
+    width: '100%',
   },
   timeView: {
-    width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
+    // width: '100%',
+    // justifyContent: 'flex-end',
+    alignSelf: 'flex-end',
   },
   threeDotsIcon: {
     color: Colors.BitnationLinkOrangeColor,
@@ -294,6 +298,7 @@ const styles = {
     marginRight: 10,
   },
   username: {
+    fontSize: 12,
     color: '#ca9103',
   },
 };
