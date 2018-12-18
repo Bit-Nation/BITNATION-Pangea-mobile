@@ -2,13 +2,10 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import {
-  View,
-  SectionList,
-  Share,
-} from 'react-native';
+import { View, SectionList, Share } from 'react-native';
 import _ from 'lodash';
 import { Fab, Text } from 'native-base';
+
 import Dialog from 'react-native-dialog';
 
 import { openChat, startNewChat, fetchAllChats } from '../../../actions/chat';
@@ -22,7 +19,11 @@ import Loading from '../../../components/common/Loading';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import i18n from '../../../global/i18n';
 import Colors from '../../../global/colors';
-import type { ProfileType, ChatType, GiftedChatMessageType } from '../../../types/Chat';
+import type {
+  ProfileType,
+  ChatType,
+  GiftedChatMessageType,
+} from '../../../types/Chat';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import ScreenTitle from '../../../components/common/ScreenTitle';
 import InviteSentModal from './InviteSentModal';
@@ -63,7 +64,11 @@ type Props = {
    * @param {string|null} chatName Chat name for group chat or null for person chat.
    * @param {function} callback Callback that takes one boolean parameter that indicates if chat is successfully created.
    */
-  startNewChat: (members: Array<string>, chatName: string | null, callback: (success: boolean) => void) => void,
+  startNewChat: (
+    members: Array<string>,
+    chatName: string | null,
+    callback: (success: boolean) => void,
+  ) => void,
   /**
    * @desc Function to fetch all chats
    */
@@ -94,21 +99,25 @@ type State = {
   /**
    * @desc List of contacts selected for creating chat.
    */
-  contacts: Array<Contact>
+  contacts: Array<Contact>,
 };
 
 class ChatListScreen extends NavigatorComponent<Props, State> {
   static navigatorButtons = {
-    leftButtons: [{
-      id: MENU_BUTTON,
-      icon: AssetsImages.menuIcon,
-      buttonColor: Colors.navigationButtonColor,
-    }],
-    rightButtons: [{
-      id: MORE_BUTTON,
-      icon: AssetsImages.moreMenuIcon,
-      buttonColor: Colors.navigationButtonColor,
-    }],
+    leftButtons: [
+      {
+        id: MENU_BUTTON,
+        icon: AssetsImages.menuIcon,
+        buttonColor: Colors.navigationButtonColor,
+      },
+    ],
+    rightButtons: [
+      {
+        id: MORE_BUTTON,
+        icon: AssetsImages.moreMenuIcon,
+        buttonColor: Colors.navigationButtonColor,
+      },
+    ],
   };
 
   constructor(props: Props) {
@@ -177,14 +186,18 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
   };
 
   initiateNewChat = (contacts: Array<Contact>, chatName: string) => {
-    this.props.startNewChat(contacts.map(contact => contact.profile.identityKey), chatName, (success) => {
-      this.dismissModal();
-      if (success === false) {
-        this.props.fetchAllChats();
-      } else {
-        this.props.navigator.push(screen('PRIVATE_CHAT_SCREEN'));
-      }
-    });
+    this.props.startNewChat(
+      contacts.map(contact => contact.profile.identityKey),
+      chatName,
+      (success) => {
+        this.dismissModal();
+        if (success === false) {
+          this.props.fetchAllChats();
+        } else {
+          this.props.navigator.push(screen('PRIVATE_CHAT_SCREEN'));
+        }
+      },
+    );
   };
 
   onSelectContacts = (contacts: Array<Contact>) => {
@@ -202,7 +215,10 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
       return chat.name;
     }
 
-    const partnerNames = chat.members.map(key => this.props.profiles[key]).filter(x => x != null).map(profile => profile.name);
+    const partnerNames = chat.members
+      .map(key => this.props.profiles[key])
+      .filter(x => x != null)
+      .map(profile => profile.name);
     const resultedName = partnerNames.join(', ');
     if (resultedName.length > 0) {
       return resultedName;
@@ -212,8 +228,12 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
   };
 
   render() {
-    const sortedChats = _.sortBy(this.props.chats, chat => this.buildChatName(chat).toUpperCase());
-    const groups = _.groupBy(sortedChats, chat => this.buildChatName(chat).toUpperCase().charAt(0));
+    const sortedChats = _.sortBy(this.props.chats, chat =>
+      this.buildChatName(chat).toUpperCase());
+    const groups = _.groupBy(sortedChats, chat =>
+      this.buildChatName(chat)
+        .toUpperCase()
+        .charAt(0));
     const sections = _.map(groups, (group, key) => ({
       title: key,
       data: group,
@@ -223,7 +243,7 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
       <View style={styles.nationsScreenContainer}>
         <BackgroundImage />
         <FakeNavigationBar />
-        <ScreenTitle title={i18n.t('screens.chat.title')} />
+
         <SectionList
           renderItem={(item) => {
             const chat: ChatType = item.item;
@@ -231,7 +251,8 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
             if (chat.members.length === 1) {
               const partner = this.props.profiles[chat.members[0]];
               if (partner != null) {
-                chatImage = imageSource(partner.image) || AssetsImages.avatarIcon;
+                chatImage =
+                  imageSource(partner.image) || AssetsImages.avatarIcon;
               }
             } else {
               chatImage = AssetsImages.ChatUI.groupChatIcon;
@@ -243,21 +264,31 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
 
               // @todo Add preview for DApp messages.
               return i18n.t('screens.chat.dAppMessagePreview');
-            })(chat.messages.length === 0 ? null : chat.messages[chat.messages.length - 1]);
-            return (<ChatListItem
-              name={this.buildChatName(chat)}
-              lastMessage={messagePreview}
-              avatar={chatImage}
-              onPress={this.onChatSelected}
-              unreadMessages={chat.unreadMessages}
-              id={chat.id}
-            />);
+            })(chat.messages.length === 0
+                ? null
+                : chat.messages[chat.messages.length - 1]);
+
+            const lastMessage =
+              chat.messages.length === 0
+                ? {}
+                : chat.messages[chat.messages.length - 1];
+            const dateString = lastMessage.createdAt;
+            return (
+              <ChatListItem
+                name={this.buildChatName(chat)}
+                lastMessage={messagePreview}
+                dateString={dateString}
+                avatar={chatImage}
+                onPress={this.onChatSelected}
+                unreadMessages={chat.unreadMessages}
+                id={chat.id}
+              />
+            );
           }}
           keyExtractor={item => item.id}
-          renderSectionHeader={({ section }) => <ChatListHeader title={section.title} />}
           sections={sections}
           style={styles.sectionList}
-          ItemSeparatorComponent={() => (<View style={styles.itemSeparator} />)}
+          ItemSeparatorComponent={() => <View style={styles.itemSeparator} />}
         />
         <Fab
           style={styles.floatingButton}
@@ -269,10 +300,12 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
         <MoreMenuModal
           visible={this.state.showModal === MORE_MODAL_KEY}
           onCancel={this.dismissModal}
-          options={[{
-            text: i18n.t('screens.chat.menu.shareIdentityKey'),
-            onPress: this.sharePublicKey,
-          }]}
+          options={[
+            {
+              text: i18n.t('screens.chat.menu.shareIdentityKey'),
+              onPress: this.sharePublicKey,
+            },
+          ]}
         />
         <InviteSentModal
           done={this.dismissModal}
@@ -289,7 +322,9 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
           <Dialog.Button
             label={i18n.t('screens.chat.chatNameAlert.confirm')}
             disabled={this.state.chatName.length === 0}
-            onPress={() => this.initiateNewChat(this.state.contacts, this.state.chatName)}
+            onPress={() =>
+              this.initiateNewChat(this.state.contacts, this.state.chatName)
+            }
           />
           <Dialog.Button
             label={i18n.t('screens.chat.chatNameAlert.cancel')}
@@ -309,8 +344,12 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   openChat: (chatId: number) => dispatch(openChat(chatId)),
-  startNewChat: (members, chatName, callback) => dispatch(startNewChat(members, chatName, callback)),
+  startNewChat: (members, chatName, callback) =>
+    dispatch(startNewChat(members, chatName, callback)),
   fetchAllChats: () => dispatch(fetchAllChats()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ChatListScreen);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(ChatListScreen);

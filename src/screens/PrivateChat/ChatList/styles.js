@@ -79,6 +79,7 @@ const styles = MediaQueryStyleSheet.create({
     fontSize: 16,
     color: Colors.BitnationBlackAlphaColor,
   },
+  sectionList: { flex: 1 },
   iconForward: {
     fontSize: 17,
     color: Colors.BitnationBlackAlphaColor,
