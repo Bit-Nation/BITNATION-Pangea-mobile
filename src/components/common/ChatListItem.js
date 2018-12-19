@@ -166,7 +166,7 @@ const ListItem = <IDType>({
           )}
         </View>
         {subtitle == null ? (
-          title
+          'Start your first chat'
         ) : (
           <View style={styles.listItemTextContainer}>
             {title}
@@ -216,7 +216,7 @@ const ChatListItem = ({
     AdditionalLeftView={() =>
       unreadMessages && (
         <View style={GlobalStyles.chatSectionListNewMessage}>
-          <Text style={GlobalStyles.chatSectionListNewText}>1</Text>
+          <Text style={GlobalStyles.chatSectionListNewText}>!</Text>
         </View>
       )
     }
