@@ -288,6 +288,7 @@ class ChatScreen extends Component<Props & Actions, *> {
 
         <GiftedChat
           alwaysShowSend
+          showAvatarForEveryMessage
           messages={messages.reverse()}
           onSend={messagesToSend => this.onSendMessage(messagesToSend[0])}
           user={sendingUser}

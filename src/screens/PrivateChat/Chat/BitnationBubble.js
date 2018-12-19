@@ -2,7 +2,8 @@
 
 import PropTypes from 'prop-types';
 import React from 'react';
-import { MessageText, MessageImage, Time, utils } from 'react-native-gifted-chat';
+import moment from 'moment';
+import { MessageText, MessageImage, utils } from 'react-native-gifted-chat';
 import {
   Text,
   Clipboard,
@@ -140,20 +141,12 @@ export default class Bubble extends React.Component {
 
   renderTime() {
     if (this.props.currentMessage.createdAt) {
-      const { containerStyle, wrapperStyle, ...timeProps } = this.props;
-      if (this.props.renderTime) {
-        return this.props.renderTime(timeProps);
-      }
+      const { currentMessage } = this.props;
       return (
         <View style={styles.timeView}>
-          <Time
-            {...timeProps}
-            containerStyle={{ left: [styles.timeContainer] }}
-            textStyle={{
-              left: [styles.headerFont, styles[this.props.position].timeStyle],
-              right: [styles.headerFont, styles[this.props.position].timeStyle],
-            }}
-          />
+          <Text style={[styles.headerFont, styles[this.props.position].timeStyle]}>
+            {`${moment.utc(currentMessage.createdAt).format('MM/DD/YYYY')} ${moment(currentMessage.createdAt).format('hh:mm')}`}
+          </Text>
         </View>
       );
     }
@@ -175,8 +168,8 @@ export default class Bubble extends React.Component {
           style={[
             styles[this.props.position].wrapper,
             this.props.wrapperStyle[this.props.position],
-            this.handleBubbleToNext(),
-            this.handleBubbleToPrevious(),
+            // this.handleBubbleToNext(),
+            // this.handleBubbleToPrevious(),
             dApp ? styles.wrapperDApp : {},
           ]}
         >
@@ -309,8 +302,7 @@ const styles = {
     width: '100%',
   },
   timeView: {
-    // width: '100%',
-    // justifyContent: 'flex-end',
+    paddingRight: 10,
     alignSelf: 'flex-end',
   },
   threeDotsIcon: {
