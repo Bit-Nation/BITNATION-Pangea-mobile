@@ -4,14 +4,7 @@
 import React, { Component } from 'react';
 import { View, Platform, Clipboard } from 'react-native';
 import { connect } from 'react-redux';
-import {
-  GiftedChat,
-  Composer,
-  InputToolbar,
-  Bubble,
-  Actions as ChatActions,
-  MessageText,
-} from 'react-native-gifted-chat';
+import { GiftedChat } from 'react-native-gifted-chat';
 import ActionSheet from 'react-native-actionsheet';
 
 import styles from './styles';
@@ -31,7 +24,12 @@ import { getDApp } from '../../../reducers/dApps';
 import { openDApp, setDAppContext } from '../../../actions/dApps';
 import DAppMessage from '../../../components/common/DAppMessage';
 import type { Account } from '../../../types/Account';
+import Colors from '../../../global/colors';
+import AssetsImages from '../../../global/AssetsImages';
+import BitnationMessage from './BitnationMessage';
+import BitnationInputToolbar from './BitnationInputToolbar';
 
+const MORE_BUTTON = 'MORE_BUTTON';
 type Props = {
   /**
    * @desc React Native Navigation navigator object
@@ -98,6 +96,14 @@ type Actions = {
 };
 
 class ChatScreen extends Component<Props & Actions, *> {
+  static navigatorButtons = {
+    rightButtons: [{
+      id: MORE_BUTTON,
+      icon: AssetsImages.moreMenuIcon,
+      buttonColor: Colors.navigationButtonColor,
+    }],
+  };
+
   constructor(props) {
     super(props);
 
@@ -194,6 +200,21 @@ class ChatScreen extends Component<Props & Actions, *> {
   dAppsActionSheet: any;
   messageActionSheet: any;
 
+  renderMessage(props) {
+    return (
+      <BitnationMessage {...props} />
+    );
+  }
+
+  renderInputToolbar(props) {
+    return (
+      <BitnationInputToolbar
+        {...props}
+
+      />
+    );
+  }
+
   render() {
     const { chat } = this.props;
 
@@ -249,6 +270,7 @@ class ChatScreen extends Component<Props & Actions, *> {
           user: {
             _id: dApp.publicKey,
             name: dApp.name,
+            dApp: true,
           },
         };
       });
@@ -265,46 +287,25 @@ class ChatScreen extends Component<Props & Actions, *> {
         <FakeNavigationBar navBarHidden={false} />
 
         <GiftedChat
+          alwaysShowSend
           messages={messages.reverse()}
           onSend={messagesToSend => this.onSendMessage(messagesToSend[0])}
           user={sendingUser}
           bottomOffset={Platform.OS === 'ios' ? 48.5 : 0}
-          renderComposer={props => (
-            <Composer {...props} textInputStyle={styles.composer} />
-          )}
-          renderInputToolbar={props => (
-            <InputToolbar {...props} containerStyle={styles.inputToolbar} />
-          )}
+          renderInputToolbar={this.renderInputToolbar}
+          renderMessage={this.renderMessage}
           renderCustomView={(props) => {
             const { currentMessage }: { currentMessage: GiftedChatMessageType } = props;
             const { dAppMessage } = currentMessage;
             if (dAppMessage == null) return null;
-
             return (<DAppMessage message={dAppMessage} />);
           }}
-          renderMessageText={(props) => {
-            const { currentMessage } = props;
-            if (currentMessage.dAppMessage == null) {
-              return <MessageText {...props} />;
-            }
-
-            return null;
-          }}
-          renderBubble={props => (
-            <Bubble
-              {...props}
-              customTextStyle={styles.customTextStyle}
-              wrapperStyle={{ left: styles.leftBubbleWrapper, right: styles.rightBubbleWrapper }}
-              textStyle={{ left: styles.leftTextStyle, right: styles.rightTextStyle }}
-            />
-          )}
           onLongPress={(context, message) => {
             this.setState({
               selectedMessage: message,
             });
           }}
           onPressActionButton={() => this.dAppsActionSheet && this.dAppsActionSheet.show()}
-          renderActions={props => <ChatActions {...props} containerStyle={styles.actionContainerStyle} />}
           loadEarlier
           onLoadEarlier={() => this.props.loadMessages(this.props.chatId, earliestMessageId)}
         />

@@ -1,6 +1,11 @@
 import { Platform } from 'react-native';
 import Colors from './colors';
-import { fontSizeNormalizer, normalWidthMargin, isiPhoneXStatusBar, isiPhoneXTabBar } from '../utils/normalizer';
+import {
+  fontSizeNormalizer,
+  normalWidthMargin,
+  isiPhoneXStatusBar,
+  isiPhoneXTabBar,
+} from '../utils/normalizer';
 
 // ========================================
 // DEFAULT TEXT STYLES
@@ -13,7 +18,6 @@ import defaultTextStyles from './styles/defaultTextStyles';
 // ========================================
 
 const styles = {
-
   // Use the default text styles
   ...defaultTextStyles,
 
@@ -113,7 +117,6 @@ const styles = {
   bodyParagraph: {
     paddingBottom: 16,
   },
-
 
   // A block of text in the Confirmation Screen
   bodyParagraphConfirmationRow: {
@@ -327,7 +330,6 @@ const styles = {
   panelTitleContainer: {
     backgroundColor: 'transparent',
   },
-
 
   panelTitleIcon: {
     flex: 1,
@@ -587,7 +589,6 @@ const styles = {
     marginBottom: 10,
     // for testing
     borderWidth: 0,
-
   },
 
   switchObject: {
@@ -627,6 +628,11 @@ const styles = {
     flex: 1,
     textAlignVertical: 'center',
   },
+  chatListItemSubtitle: {
+    color: Colors.BitnationLightGrayColor,
+    textAlign: 'center',
+    fontSize: 10,
+  },
 
   listItemTextContainer: {
     flex: 1,
@@ -634,6 +640,12 @@ const styles = {
     justifyContent: 'space-between',
     paddingBottom: 16,
     paddingTop: 12,
+  },
+  chatListItemTextContainer: {
+    flex: 1,
+    justifyContent: 'space-between',
+    paddingBottom: 16,
+    paddingTop: 5,
   },
 
   detailedItemTitle: {
@@ -670,6 +682,15 @@ const styles = {
     flex: 1,
     flexDirection: 'row',
     height: 46,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: Colors.sectionListItemContainerBackground,
+    marginLeft: 20,
+    marginRight: 8,
+  },
+  chatSectionListItemContainer: {
+    flex: 1,
+    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: Colors.sectionListItemContainerBackground,
@@ -714,6 +735,20 @@ const styles = {
     borderRadius: 20,
     marginRight: 16,
   },
+  chatListItemContainer: {
+    flexDirection: 'column',
+    paddingTop: 10,
+    marginLeft: 5,
+    marginRight: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  chatListItemIcon: {
+    height: 40,
+    width: 40,
+    borderRadius: 20,
+    marginHorizontal: 16,
+  },
 
   sectionListSignal: {
     marginRight: 14,
@@ -726,6 +761,23 @@ const styles = {
     width: 7,
     height: 7,
   },
+  chatSectionListNewMessage: {
+    position: 'absolute',
+    top: 7,
+    right: 11,
+    width: 18,
+    height: 18,
+    borderRadius: 9,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: Colors.BitnationLinkOrangeColor,
+  },
+  chatSectionListNewText: {
+    position: 'absolute',
+    color: Colors.white,
+    fontSize: 12,
+    backgroundColor: Colors.Transparent,
+  },
 
   itemSeparator: {
     height: 1,
@@ -736,6 +788,12 @@ const styles = {
 
   detailedItemContainer: {
     height: 72,
+  },
+  chatDetailedItemContainer: {
+    backgroundColor: 'white',
+    borderRadius: 5,
+    marginBottom: 10,
+    flexGrow: 0,
   },
 
   closeIcon: {
@@ -764,7 +822,6 @@ const styles = {
     fontSize: 15,
     fontWeight: '900',
   },
-
 
   tabsContainerStyle: {
     backgroundColor: 'transparent',
@@ -885,13 +942,25 @@ const styles = {
     height: 30,
     justifyContent: 'center',
     backgroundColor: Colors.Transparent,
+    shadowOffset: { height: 0, width: 0 },
+    shadowOpacity: 0,
+    elevation: 0,
   },
 
   actionButton: {
     borderRadius: 0,
+    width: '100%',
     height: 50,
     justifyContent: 'center',
     backgroundColor: Colors.BitnationActionColor,
+  },
+
+  actionButtonDApp: {
+    marginHorizontal: 30,
+    borderRadius: 15,
+    height: 40,
+    justifyContent: 'center',
+    backgroundColor: Colors.chatColor,
     alignSelf: 'stretch',
   },
 
@@ -922,7 +991,6 @@ const styles = {
     marginBottom: 40,
     // for testing
     borderWidth: 0,
-
   },
   // ========================================
   // Profile Screen
@@ -985,7 +1053,9 @@ const styles = {
   },
 
   forgetButton: {
-    backgroundColor: 'transparent', alignSelf: 'stretch', borderRadius: 0,
+    backgroundColor: 'transparent',
+    alignSelf: 'stretch',
+    borderRadius: 0,
   },
   forgetButtonText: { color: '#58595B', fontSize: 15, fontWeight: 'bold' },
 };

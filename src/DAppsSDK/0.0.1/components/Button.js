@@ -68,7 +68,7 @@ export default class Button extends Component<Props> {
       case 'transparent':
         return styles.baseButton;
       case 'action':
-        return styles.actionButton;
+        return styles.actionButtonDApp;
       case 'custom':
         return null;
       default:

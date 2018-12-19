@@ -49,6 +49,10 @@ const chatNewMessageIcon = require('../assets/images/chat_indicator.png');
 const groupChatIcon = require('../assets/images/groupChatIcon.png');
 const menuIcon = require('../assets/images/menu.png');
 
+const sendChatActiveIcon = require('../assets/images/sendChatActive.png');
+const sendChatInActiveIcon = require('../assets/images/sendChatInActive.png');
+const actionChatIcon = require('../assets/images/actionChat.png');
+
 const Images = {
   background,
   ethereumLogo,
@@ -94,6 +98,9 @@ const Images = {
     botIcon: botIconLucy,
     newMsgIcon: chatNewMessageIcon,
     groupChatIcon,
+    sendChatActiveIcon,
+    sendChatInActiveIcon,
+    actionChatIcon,
   },
 };
 

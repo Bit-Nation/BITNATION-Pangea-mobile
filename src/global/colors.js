@@ -176,4 +176,5 @@ export default {
   minimumTrackTintColor: '#FF8B00',
   lightFade: 'rgba(50, 50, 50, 0.5)',
   gray20: '#333333',
+  chatColor: '#ffbf1d',
 };
