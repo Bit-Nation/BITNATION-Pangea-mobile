@@ -694,7 +694,7 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: Colors.sectionListItemContainerBackground,
-    marginLeft: 20,
+    marginLeft: 8,
     marginRight: 8,
   },
 
