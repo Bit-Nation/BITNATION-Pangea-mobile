@@ -29,6 +29,7 @@ import NationDetailsScreen from './NationDetailsContainer';
 import NationCreateScreen from './NationCreateContainer';
 import SettingsScreen from './Settings/SettingsList';
 import SecuritySettingsScreen from './Settings/Security';
+import ServicesScreen from './Services';
 import AccountsAccess from './Accounts/AccountAccessContainer';
 import ConfirmationContainer from './ConfirmationContainer';
 import EnterPasscodeScreen from './Passcode/EnterPasscodeContainer';
@@ -77,6 +78,7 @@ export default function registerScreens(store: Object, Provider: Object) {
   Navigation.registerComponent(screen('QR_CODE_DAPP_SCREEN').screen, () => QRCodeDappScreen, store, Provider);
   Navigation.registerComponent(screen('NATION_CREATE_SCREEN').screen, () => NationCreateScreen, store, Provider);
   Navigation.registerComponent(screen('SETTINGS_SCREEN').screen, () => SettingsScreen, store, Provider);
+  Navigation.registerComponent(screen('SERVICES_SCREEN').screen, () => ServicesScreen, store, Provider);
   Navigation.registerComponent(screen('SECURITY_SETTINGS_SCREEN').screen, () => SecuritySettingsScreen, store, Provider);
   Navigation.registerComponent(screen('ACCOUNTS_ACCESS_SCREEN').screen, () => AccountsAccess, store, Provider);
   Navigation.registerComponent(screen('ENTER_PASSCODE_SCREEN').screen, () => EnterPasscodeScreen, store, Provider);

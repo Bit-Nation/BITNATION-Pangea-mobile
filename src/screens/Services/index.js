@@ -8,8 +8,6 @@ import { Icon } from 'native-base';
 import _ from 'lodash';
 import Background from '../../components/common/BackgroundImage';
 import { screen, androidNavigationButtons } from '../../global/Screens';
-import List from './List';
-import EmptyWalletScreen from './EmptyState/index';
 import Card from '../../components/Card';
 import { selectWallet, updateWalletList } from '../../actions/wallet';
 import NavigatorComponent from '../../components/common/NavigatorComponent';
@@ -82,7 +80,7 @@ type State = {
 class ServicesScreen extends NavigatorComponent<
   Props & TestingModeProps & Actions & WalletState,
   State,
-  > {
+> {
   constructor(props) {
     super(props);
 
@@ -101,7 +99,6 @@ class ServicesScreen extends NavigatorComponent<
   updateNavigation() {
     const { leftButtons } = androidNavigationButtons;
     this.props.navigator.setButtons({
-
       leftButtons: this.props.testingModeActive
         ? [
           {
@@ -142,7 +139,7 @@ class ServicesScreen extends NavigatorComponent<
     this.props.navigator.showModal(screen('CREATE_KEY_INTRODUCTION_SCREEN'));
   };
 
-  restoreWallet = () => { };
+  restoreWallet = () => {};
 
   sendMoney = (wallet) => {
     this.props.selectWallet(wallet);
@@ -155,7 +152,9 @@ class ServicesScreen extends NavigatorComponent<
   };
 
   showTransactions = (wallet) => {
-    this.setState({ transactionModal: { visible: true, ethAddress: wallet.ethAddress } });
+    this.setState({
+      transactionModal: { visible: true, ethAddress: wallet.ethAddress },
+    });
   };
 
   onRefresh = () => {
@@ -177,10 +176,10 @@ class ServicesScreen extends NavigatorComponent<
           <ScreenTitle title={i18n.t('screens.wallet.title')} />
           <Card>
             <Card.Square
-              title='Sample'
-              uri="https://imgsv.imaging.nikon.com/lineup/lens/zoom/normalzoom/af-s_dx_18-140mmf_35-56g_ed_vr/img/sample/sample1_l.jpg"
-            // uri={index.tripImage ? index.tripImage : ''}
-            // userArray={index.members}
+              title='Notary'
+              uri='https://www.clipartmax.com/png/middle/273-2736662_stamp-of-approval-notary.png'
+              // uri={index.tripImage ? index.tripImage : ''}
+              // userArray={index.members}
             />
           </Card>
         </View>
@@ -202,7 +201,7 @@ const mapDispatchToProps = dispatch => ({
   updateWalletList() {
     dispatch(updateWalletList());
   },
-  removeWallets() { },
+  removeWallets() {},
 });
 
 export default connect(

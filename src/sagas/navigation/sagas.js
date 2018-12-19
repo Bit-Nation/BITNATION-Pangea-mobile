@@ -47,7 +47,7 @@ export function* launchLoggedInFlow(): Generator<*, *, any> {
       tabs: [
         screen('CHAT_LIST_SCREEN'),
         screen('NATIONS_SCREEN'),
-        screen('SETTINGS_SCREEN'),
+        screen('SERVICES_SCREEN'),
       ],
       tabsStyle: { ...tabsStyle },
       appStyle: { ...appStyle },

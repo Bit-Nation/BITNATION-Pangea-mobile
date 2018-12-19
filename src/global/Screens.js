@@ -256,6 +256,12 @@ const Screens = {
     label: i18n.t('screens.settings.tabTitle'),
     navigatorStyle,
   },
+  SERVICES_SCREEN: {
+    screen: 'Pangea.Services',
+    title: '',
+    label: 'SERVICES',
+    navigatorStyle,
+  },
   SECURITY_SETTINGS_SCREEN: {
     screen: 'Pangea.Settings.Security',
     title: '',
