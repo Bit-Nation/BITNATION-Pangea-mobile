@@ -1,12 +1,17 @@
 // @flow
 
-import React from 'react';
-import { Text } from 'react-native';
+import * as React from 'react';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+} from 'react-native';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
 
 import GlobalStyles from '../../global/Styles';
 import Colors from '../../global/colors';
-import ListItem from './ListItem';
+import AssetsImages from '../../global/AssetsImages';
 
 type Props = {
   /**
@@ -34,38 +39,104 @@ type Props = {
    * @param Id of item that was pressed.
    */
   onPress: (id: string) => void,
+}
+
+type PropsList<IDType> = {
   /**
-   * @desc Color Status of the Nation's label to display on item
+   * @desc Text to display on item
    * @type string
    */
-  statusColor?: string,
-}
+  text?: string,
+  /**
+   * @desc Id that will be passed in onPress callback.
+   * @type IDType
+   */
+  id: IDType,
+  /**
+   * @desc Callback on press item.
+   * @param {IDType} id Id of item that was pressed
+   */
+  onPress: (id: IDType) => any,
+  /**
+   * @desc Flag to enable/disable press on item.
+   */
+  disabled: boolean,
+  /**
+   * @desc Style to be applied on top of default.
+   * @type object
+   */
+  style?: View.propTypes.style,
+};
+
+/**
+ * @desc Component that renders common list item.
+ * @return {React.Component} A component.
+ */
+// eslint-disable-next-line arrow-parens
+const ListItem = <IDType>({
+  id,
+  onPress,
+  disabled,
+  style,
+  text,
+}: PropsList<IDType>) => {
+  const styles = MediaQueryStyleSheet.create({
+    ...GlobalStyles,
+  });
+
+  return (
+    <View
+      style={[
+        styles.nationSectionListItemContainer,
+        style,
+      ]}
+    >
+      <TouchableOpacity
+        testID='Touchable'
+        onPress={() => onPress(id)}
+        style={styles.sectionListTouchable}
+        disabled={disabled}
+      >
+        <View style={styles.nationListItemContainer}>
+          <Image source={AssetsImages.avatarIcon} style={styles.chatListItemIcon} />
+          <View>
+            <Text style={styles.nationTextTitleStyle}>{text}</Text>
+          </View>
+        </View>
+      </TouchableOpacity>
+    </View>
+  );
+};
+
+ListItem.defaultProps = {
+  text: undefined,
+  textStyle: undefined,
+  disclosureIconVisible: true,
+  id: null,
+  onPress: () => undefined,
+  disabled: false,
+  AdditionalView: () => null,
+  AdditionalLeftView: () => null,
+  iconSource: undefined,
+  subtitle: undefined,
+  value: undefined,
+};
 
 /**
  * @desc Component that renders nations list item.
  * @return {React.Component} A component.
  */
 const NationListItem = ({
-  id, textStyle, onPress, nationName, status, statusColor,
-}: Props) => {
-  const styles = MediaQueryStyleSheet.create({
-    ...GlobalStyles,
-  });
-
-  return (
-    <ListItem
-      text={nationName}
-      textStyle={textStyle}
-      id={id}
-      onPress={onPress}
-      additionalView={() => (
-        <Text style={[styles.listItemTextState, { color: statusColor }]}>
-          {status}
-        </Text>
-      )}
-    />
-  );
-};
+  id, textStyle, onPress, nationName, status,
+}: Props) => (
+  <ListItem
+    text={nationName}
+    status={status}
+    textStyle={textStyle}
+    id={id}
+    onPress={onPress}
+  />
+);
 
 NationListItem.defaultProps = {
   statusColor: Colors.listItemTextState.default,

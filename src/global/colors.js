@@ -131,8 +131,8 @@ export default {
   // Separator (thin line between rows)
   // 20% white (v0.3.2)
   sectionListSeparator: 'rgba(255,255,255,0.2)',
-  sectionListHeaderText: 'white',
-  sectionListHeaderContainer: '#3a3a3a', // 'rgba(255,255,255,0.15)',
+  sectionListHeaderText: 'gray',
+  sectionListHeaderContainer: '#e5e5e5', // 'rgba(255,255,255,0.15)',
   sectionListItemContainerBackground: 'transparent',
   // In a list of nations, default color for the far-right text near the ">"
   listItemTextState: {

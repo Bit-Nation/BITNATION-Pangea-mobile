@@ -49,16 +49,16 @@ type Props = {
 };
 
 const NationsListScreen = ({
-  selectedTab, nations, myNationIds, onSelectTab, inProgress, onSelectItem,
+  nations, myNationIds, inProgress, onSelectItem,
 }: Props) => {
-  const filteredNations = selectedTab === 'ALL_NATIONS' ?
-    nations
-    :
-    _.filter(nations, nation => _.indexOf(myNationIds, nation.id) !== -1);
-  const sortedNations = _.sortBy(filteredNations, nation => nation.nationName.toUpperCase());
-  const groups = _.groupBy(sortedNations, nation => nation.nationName.toUpperCase().charAt(0));
+  const myNations = _.filter(nations, nation => _.indexOf(myNationIds, nation.id) !== -1);
+  const sortedMyNations = _.sortBy(myNations, nation => nation.nationName.toUpperCase());
+  const browseNations = _.filter(nations, nation => _.indexOf(myNationIds, nation.id) === -1);
+  const sortedBrowseNations = _.sortBy(browseNations, nation => nation.nationName.toUpperCase());
+  const sortedNations = sortedMyNations.concat(sortedBrowseNations);
+  const groups = _.groupBy(sortedNations, nation => _.indexOf(myNationIds, nation.id) !== -1);
   const sections = _.map(groups, (group, key) => ({
-    title: key,
+    title: key === 'true' ? 'MY NATIONS' : 'BROWSE NATIONS',
     data: group,
   }));
 
@@ -67,17 +67,6 @@ const NationsListScreen = ({
       <BackgroundImage />
       <FakeNavigationBar />
       <ScreenTitle title={i18n.t('screens.nations.title')} />
-      <View style={styles.segmentedControlContainer}>
-        <SegmentedControl
-          values={[i18n.t('screens.nations.allNations'), i18n.t('screens.nations.myNations')]}
-          selectedIndex={selectedTab === 'ALL_NATIONS' ? 0 : 1}
-          onTabPress={onSelectTab}
-          tabsContainerStyle={styles.tabsContainerStyle}
-          activeTabStyle={styles.activeTabStyle}
-          tabStyle={styles.tabStyle}
-          tabTextStyle={styles.tabTextStyle}
-        />
-      </View>
       <SectionList
         renderItem={(item) => {
           const nation = item.item;
@@ -105,7 +94,6 @@ const NationsListScreen = ({
         renderSectionHeader={({ section }) => <NationListHeader title={section.title} />}
         sections={sections}
         style={styles.sectionList}
-        ItemSeparatorComponent={() => (<View style={styles.itemSeparator} />)}
       />
       {inProgress && _.isEmpty(nations) && <Loading />}
     </View>

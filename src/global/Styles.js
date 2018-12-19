@@ -688,6 +688,17 @@ const styles = {
     marginLeft: 20,
     marginRight: 8,
   },
+  nationSectionListItemContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    marginHorizontal: 20,
+    marginVertical: 10,
+    paddingVertical: 10,
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: Colors.white,
+  },
   chatSectionListItemContainer: {
     flex: 1,
     flexDirection: 'row',
@@ -701,18 +712,29 @@ const styles = {
   // e.g. ItemsListHeader
   sectionListHeaderContainer: {
     flexDirection: 'row',
-    height: 30,
+    paddingVertical: 15,
     justifyContent: 'center',
     alignItems: 'center',
-    marginLeft: 16,
     backgroundColor: Colors.sectionListHeaderContainer,
-    // opacity: 0.5,
+    ...Platform.select({
+      ios: {
+        shadowColor: Colors.BitnationDarkGrayColor,
+        shadowOffset: { height: 1, width: 0 },
+        shadowOpacity: 0.8,
+        shadowRadius: 3,
+      },
+      android: {
+        elevation: 4,
+      },
+    }),
   },
 
   sectionListHeaderText: {
     ...defaultTextStyles.body,
     flex: 1,
     marginLeft: 16,
+    fontSize: 20,
+    fontWeight: 'bold',
     color: Colors.sectionListHeaderText,
   },
 
@@ -798,6 +820,17 @@ const styles = {
 
   closeIcon: {
     color: '#fff',
+  },
+
+  nationListItemContainer: {
+    flexDirection: 'row',
+    width: '95%',
+    height: '90%',
+  },
+  nationTextTitleStyle: {
+    fontWeight: 'bold',
+    fontSize: 16,
+    color: Colors.BitnationDarkGrayColor,
   },
 
   // ========================================
