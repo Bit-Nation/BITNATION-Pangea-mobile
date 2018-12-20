@@ -35,6 +35,11 @@ type Props = {
    */
   id: string,
   /**
+   * @desc Text to display citizens
+   * @type string
+   */
+  citizens: string,
+  /**
    * @desc Callback on press item.
    * @param Id of item that was pressed.
    */
@@ -47,6 +52,11 @@ type PropsList<IDType> = {
    * @type string
    */
   text?: string,
+  /**
+   * @desc Text to display citizens
+   * @type string
+   */
+  citizens: string,
   /**
    * @desc Id that will be passed in onPress callback.
    * @type IDType
@@ -79,6 +89,7 @@ const ListItem = <IDType>({
   disabled,
   style,
   text,
+  citizens,
 }: PropsList<IDType>) => {
   const styles = MediaQueryStyleSheet.create({
     ...GlobalStyles,
@@ -99,9 +110,15 @@ const ListItem = <IDType>({
       >
         <View style={styles.nationListItemContainer}>
           <Image source={AssetsImages.avatarIcon} style={styles.chatListItemIcon} />
-          <View>
-            <Text style={styles.nationTextTitleStyle}>{text}</Text>
+          <View style={styles.nationInfoView}>
+            <View style={styles.nationTitleView}>
+              <Text style={styles.nationTextTitleStyle}>{text}</Text>
+            </View>
+            <View style={styles.nationCitizensView}>
+              <Text style={styles.nationCitizenText}>{`${citizens} citizens`}</Text>
+            </View>
           </View>
+
         </View>
       </TouchableOpacity>
     </View>
@@ -123,11 +140,11 @@ ListItem.defaultProps = {
 };
 
 /**
- * @desc Component that renders nations list item.
+   * @desc Component that renders nations list item.
  * @return {React.Component} A component.
- */
+    */
 const NationListItem = ({
-  id, textStyle, onPress, nationName, status,
+  id, textStyle, onPress, nationName, status, citizens,
 }: Props) => (
   <ListItem
     text={nationName}
@@ -135,6 +152,7 @@ const NationListItem = ({
     textStyle={textStyle}
     id={id}
     onPress={onPress}
+    citizens={citizens}
   />
 );
 

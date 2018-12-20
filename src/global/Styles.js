@@ -213,9 +213,9 @@ const styles = {
   nationsScreenContainer: {
     flex: 1,
     // justifyContent: 'center',
-    justifyContent: 'flex-start',
-    flexDirection: 'column',
-    alignItems: 'stretch',
+    // justifyContent: 'flex-start',
+    // flexDirection: 'column',
+    // alignItems: 'stretch',
   },
 
   // From Create Nations Screen:
@@ -693,10 +693,11 @@ const styles = {
     flexDirection: 'row',
     marginHorizontal: 20,
     marginVertical: 10,
-    paddingVertical: 10,
+    paddingTop: 10,
+    paddingBottom: 3,
     borderRadius: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
+    // justifyContent: 'center',
+    // alignItems: 'center',
     backgroundColor: Colors.white,
   },
   chatSectionListItemContainer: {
@@ -825,11 +826,28 @@ const styles = {
   nationListItemContainer: {
     flexDirection: 'row',
     width: '95%',
-    height: '90%',
+    height: '100%',
+    flex: 1,
   },
   nationTextTitleStyle: {
     fontWeight: 'bold',
     fontSize: 16,
+    color: Colors.BitnationDarkGrayColor,
+  },
+  nationInfoView: {
+    flex: 1,
+    paddingHorizontal: 10,
+  },
+  nationTitleView: {
+    flex: 0.7,
+  },
+  nationCitizensView: {
+    flex: 0.3,
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
+  },
+  nationCitizenText: {
+    fontSize: 13,
     color: Colors.BitnationDarkGrayColor,
   },
 

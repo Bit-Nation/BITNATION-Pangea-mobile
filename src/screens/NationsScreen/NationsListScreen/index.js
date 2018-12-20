@@ -88,6 +88,7 @@ const NationsListScreen = ({
             status={statusString}
             statusColor={statusTextColor}
             id={nation.id}
+            citizens={nation.citizens}
           />);
         }}
         keyExtractor={item => item.id}
