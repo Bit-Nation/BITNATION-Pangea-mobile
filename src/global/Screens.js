@@ -260,6 +260,7 @@ const Screens = {
     screen: 'Pangea.Services',
     title: '',
     label: 'SERVICES',
+    icon: AssetsImages.TabIcons.services,
     navigatorStyle,
   },
   SECURITY_SETTINGS_SCREEN: {
