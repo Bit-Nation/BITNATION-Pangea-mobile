@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import { View, WebView, TouchableHighlight } from 'react-native';
+import { View, WebView, TouchableHighlight, TouchableOpacity } from 'react-native';
 import Modal from 'react-native-modal';
 import { connect } from 'react-redux';
 import { Icon } from 'native-base';
@@ -12,7 +12,7 @@ import Card from '../../components/Card';
 import { selectWallet, updateWalletList } from '../../actions/wallet';
 import NavigatorComponent from '../../components/common/NavigatorComponent';
 import i18n from '../../global/i18n';
-import styles from '../NationsScreen/NationsListScreen/styles';
+import styles from './styles';
 import FakeNavigationBar from '../../components/common/FakeNavigationBar';
 import type { State as WalletState } from '../../reducers/wallet';
 import type { WalletType } from '../../types/Wallet';
@@ -173,13 +173,32 @@ class ServicesScreen extends NavigatorComponent<
         <Background />
         <FakeNavigationBar />
         <View style={styles.bodyContainer}>
-          <ScreenTitle title={i18n.t('screens.wallet.title')} />
-          <Card>
+          {/* <ScreenTitle title={i18n.t('screens.wallet.title')} /> */}
+          <ScreenTitle title='Services' />
+          <Card style={styles.card}>
+            <TouchableOpacity onPress={() => this.props.navigator.push(screen('DOCUMENTS_LIST_SCREEN'))}>
+              <Card.Square
+                title='Notary'
+                uri='https://www.clipartmax.com/png/middle/273-2736662_stamp-of-approval-notary.png'
+                style={styles.squareCard}
+              />
+            </TouchableOpacity>
             <Card.Square
-              title='Notary'
-              uri='https://www.clipartmax.com/png/middle/273-2736662_stamp-of-approval-notary.png'
-              // uri={index.tripImage ? index.tripImage : ''}
-              // userArray={index.members}
+              title='Dapps'
+              uri='https://blog.bitnation.co/wp-content/uploads/fractals_3.jpg'
+              style={styles.squareCard}
+            />
+          </Card>
+          <Card style={styles.card}>
+            <Card.Square
+              title='Contracts'
+              uri='https://apngbc.org.au/assets/default-site/_resampled/ScaleWidthWyI3OTUiXQ/Contract-Law-hero.gif'
+              style={styles.squareCard}
+            />
+            <Card.Square
+              title='Products'
+              uri='https://banner2.kisspng.com/20180202/kwe/kisspng-passport-canada-canadian-passport-icon-canadian-passport-color-of-the-material-5a74fa54d506a0.7507633215176157008726.jpg'
+              style={styles.squareCard}
             />
           </Card>
         </View>

@@ -17,6 +17,7 @@ export default {
     backgroundColor: 'white',
     overflow: 'scroll',
     marginBottom: 13,
+    marginRight: 30,
   },
   image: {
     flex: 0.66,

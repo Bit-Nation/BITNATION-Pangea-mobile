@@ -102,13 +102,13 @@ class SettingsListScreen extends NavigatorComponent<Props> {
           currentAccount.confirmedMnemonic ? 'viewPrivateKey' : 'confirmPrivateKey',
         ],
       },
-      {
-        title: i18n.t('screens.settings.sections.dApps'),
-        data: [
-          'connectToDAppHost',
-          'connectToDAppLogger',
-        ],
-      },
+      // {
+      //   title: i18n.t('screens.settings.sections.dApps'),
+      //   data: [
+      //     'connectToDAppHost',
+      //     'connectToDAppLogger',
+      //   ],
+      // },
       {
         title: i18n.t('screens.settings.sections.notary'),
         data: [
