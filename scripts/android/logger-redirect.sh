@@ -10,14 +10,20 @@
 # file (making the log data more readily accessible to any developer working 
 # with the project).
 
+# TODO: Implement in node
+
 # Usage: logger-redirect.sh [device]
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+
 echo "Redirecting log output from device."
 
-
-if [ ! $(which adb) ]; then
-    echo "adb command not found. Ensure that the Android SDK is installed and accessible via PATH."
+source $DIR/../check-env.sh
+if [ ! $(check_env single adb_present) ]; then
     exit 1
 fi
+
+
 
 adb logcat > log-device.txt
 

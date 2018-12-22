@@ -57,12 +57,35 @@ check_env_for_inner() {
             echo "[PASS] .dev.config.yaml located." > /dev/tty
             return 0
         fi
-        # TODO Check $ANDROID_HOME
-        # TODO Check .env
-        # TODO Check $(which adb)
-        # TODO Check npm
-        # TODO Check node version
-        # TODO Check yarn
+
+    elif [ $CHECK_ENV_TYPE == "adb_present" ]; then
+        if [ ! $(which adb) ]; then
+            echo "[FAIL] adb command not found. Ensure that the Android SDK is installed and accessible via PATH." > /dev/tty
+            return 1
+            #TODO add autocorrect
+        else
+            echo "[PASS] Android adb tools located." > /dev/tty
+            return 0
+        fi
+    elif [ $CHECK_ENV_TYPE == "android_home" ]; then
+        if [ -z $ANDROID_HOME ]; then
+            echo "[FAIL] \$ANDROID_HOME not set. This should be the path to your Android SDK." > /dev/tty
+            return 1
+        else
+            echo "[PASS] Android SDK located." > /dev/tty
+            return 0
+        fi
+    # TODO Check .env
+    elif [ $CHECK_ENV_TYPE == "npm_present" ]; then
+        if [ ! $(which npm) ]; then
+            echo "[FAIL] npm command not found. Ensure that NodeJS and the npm tools are installed and accessible via PATH." > /dev/tty
+            return 1
+        else
+            echo "[PASS] Node Package Manager (npm) tool located." > /dev/tty
+            return 0
+        fi
+    # TODO Check node version
+    # TODO Check yarn
     else
         echo "Error: ENV type ${CHECK_ENV_TYPE} not found." > /dev/tty
         return 1
@@ -82,6 +105,9 @@ check_env_for() {
 check_env_all() {
     ENVSTATUS=0
     check_env_for dev_config
+    check_env_for adb_present
+    check_env_for android_home
+    check_env_for npm_present
     return $ENVSTATUS
 }
 # check_env can be:
