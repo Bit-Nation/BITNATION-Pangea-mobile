@@ -999,10 +999,12 @@ const styles = {
   },
 
   actionButton: {
-    borderRadius: 0,
-    width: '100%',
+    borderRadius: 40,
+    width: '60%',
     height: 50,
+    marginBottom: 80,
     justifyContent: 'center',
+    alignSelf: 'center',
     backgroundColor: Colors.BitnationActionColor,
   },
 

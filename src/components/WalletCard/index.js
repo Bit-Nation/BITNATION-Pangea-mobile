@@ -1,11 +1,10 @@
 // @flow
 
 import React from 'react';
-import { Text, Image, View } from 'react-native';
-
+import { Image, View } from 'react-native';
+import { Button, Text } from 'native-base';
 import styles from './styles';
 import Images from '../../global/AssetsImages';
-import Button from '../common/ArrowButton';
 import i18n from '../../global/i18n';
 
 type Props = {
@@ -58,23 +57,19 @@ const WalletCard = ({
         <View style={styles.spacer} />
 
         <View style={styles.buttonsContainer}>
+          <Button onPress={onSendPress} style={styles.button}>
+            <Text>{i18n.t('common.send')}</Text>
+          </Button>
+          <Button onPress={onReceivePress} style={styles.button}>
+            <Text>{i18n.t('common.receive')}</Text>
+          </Button>
           <Button
-            title={i18n.t('common.send')}
-            onPress={onSendPress}
-            style={styles.button}
-          />
-          <Button
-            title={i18n.t('common.receive')}
-            onPress={onReceivePress}
-            style={styles.button}
-          />
-          <Button
-            title={i18n.t('common.transactions')}
             onPress={onTransactionPress}
             style={styles.button}
-          />
+          >
+            <Text>{i18n.t('common.transactions')}</Text>
+          </Button>
         </View>
-
       </View>
     </View>
   </View>

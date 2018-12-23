@@ -4,7 +4,6 @@ import { StyleSheet } from 'react-native';
 import Colors from '../../global/colors';
 
 const styles = StyleSheet.create({
-
   container: {
     marginTop: 5,
     height: 130,
@@ -44,15 +43,15 @@ const styles = StyleSheet.create({
     color: Colors.BitnationHighlightYellowColor,
   },
   button: {
-    height: 36,
-    backgroundColor: Colors.Transparent,
-    shadowOffset: { height: 0, width: 0 },
-    shadowOpacity: 0,
-    elevation: 0,
+    height: 20,
+    borderRadius: 40,
+    backgroundColor: Colors.BitnationActionColor,
   },
   buttonsContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    marginRight: 15,
+    marginBottom: 15,
   },
   leftButton: {
     marginRight: 4,

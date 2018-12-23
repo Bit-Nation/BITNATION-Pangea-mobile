@@ -1,11 +1,9 @@
 // @flow
 
 import React from 'react';
-import {
-  View,
-  SectionList,
-} from 'react-native';
+import { View, SectionList } from 'react-native';
 import { connect } from 'react-redux';
+import { Button, Text } from 'native-base';
 
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import styles from './styles';
@@ -17,9 +15,11 @@ import type { SettingsItem } from '../../../types/Settings';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import { screen } from '../../../global/Screens';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
-import Button from '../../../components/common/Button';
 import { logout } from '../../../actions/accounts';
-import { type State as AccountsState, getCurrentAccount } from '../../../reducers/accounts';
+import {
+  type State as AccountsState,
+  getCurrentAccount,
+} from '../../../reducers/accounts';
 import SettingsListHeader from '../../../components/common/ItemsListHeader';
 
 type Props = {
@@ -40,12 +40,12 @@ type Props = {
    * @desc Accounts Redux state.
    */
   accounts: AccountsState,
-}
+};
 
 type SettingsSection = {
   title: string,
-  data: Array<SettingsItem>
-}
+  data: Array<SettingsItem>,
+};
 
 class SettingsListScreen extends NavigatorComponent<Props> {
   onSelectItem = (item: string) => {
@@ -90,7 +90,7 @@ class SettingsListScreen extends NavigatorComponent<Props> {
     const currentAccount = getCurrentAccount(this.props.accounts);
 
     if (currentAccount == null) {
-      return (<View />);
+      return <View />;
     }
 
     const sections: Array<SettingsSection> = [
@@ -99,7 +99,9 @@ class SettingsListScreen extends NavigatorComponent<Props> {
         data: [
           'identity',
           'security',
-          currentAccount.confirmedMnemonic ? 'viewPrivateKey' : 'confirmPrivateKey',
+          currentAccount.confirmedMnemonic
+            ? 'viewPrivateKey'
+            : 'confirmPrivateKey',
         ],
       },
       // {
@@ -109,12 +111,12 @@ class SettingsListScreen extends NavigatorComponent<Props> {
       //     'connectToDAppLogger',
       //   ],
       // },
-      {
-        title: i18n.t('screens.settings.sections.notary'),
-        data: [
-          'documents',
-        ],
-      },
+      // {
+      //   title: i18n.t('screens.settings.sections.notary'),
+      //   data: [
+      //     'documents',
+      //   ],
+      // },
     ];
 
     return (
@@ -123,31 +125,34 @@ class SettingsListScreen extends NavigatorComponent<Props> {
         <FakeNavigationBar />
         <ScreenTitle title={i18n.t('screens.settings.title')} />
         <SectionList
-          renderItem={({ item }) => (<SettingsListItem
-            id={item}
-            onPress={this.onSelectItem}
-            text={i18n.t(`screens.settings.${item}`)}
-          />)}
+          renderItem={({ item }) => (
+            <SettingsListItem
+              id={item}
+              onPress={this.onSelectItem}
+              text={i18n.t(`screens.settings.${item}`)}
+            />
+          )}
           renderSectionHeader={({ section: { title } }) => (
             <SettingsListHeader title={title} />
           )}
           keyExtractor={item => item}
           sections={(sections: any)}
           style={styles.sectionList}
-          ItemSeparatorComponent={() => (<View style={styles.itemSeparator} />)}
+          ItemSeparatorComponent={() => <View style={styles.itemSeparator} />}
         />
         <Button
-          enabled
-          styleTitle={styles.settingsText}
-          title={i18n.t('screens.settings.switchAccounts').toUpperCase()}
-          onPress={this.props.logout}
+          rounded
           style={styles.actionButton}
-        />
+          // styleTitle={styles.restoreAccountButtonText}
+          // title={i18n.t('screens.accounts.restoreAccount')}
+          onPress={this.props.logout}
+        >
+          <Text>{i18n.t('screens.settings.switchAccounts').toUpperCase()}</Text>
+        </Button>
       </View>
     );
   }
 }
-
 
 const mapStateToProps = state => ({
   accounts: state.accounts,
@@ -159,4 +164,7 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(SettingsListScreen);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(SettingsListScreen);
