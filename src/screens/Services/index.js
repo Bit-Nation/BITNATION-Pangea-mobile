@@ -11,6 +11,9 @@ import { screen, androidNavigationButtons } from '../../global/Screens';
 import Card from '../../components/Card';
 import { selectWallet, updateWalletList } from '../../actions/wallet';
 import NavigatorComponent from '../../components/common/NavigatorComponent';
+
+import Colors from '../../global/colors';
+import AssetsImages from '../../global/AssetsImages';
 import i18n from '../../global/i18n';
 import styles from './styles';
 import FakeNavigationBar from '../../components/common/FakeNavigationBar';
@@ -21,6 +24,7 @@ import type { Navigator } from '../../types/ReactNativeNavigation';
 import { getCurrentAccount } from '../../reducers/accounts';
 import ScreenTitle from '../../components/common/ScreenTitle';
 
+const MENU_BUTTON = 'MENU_BUTTON';
 const REMOVE_WALLETS_BUTTON = 'REMOVE_WALLETS_BUTTON';
 
 type Props = {
@@ -84,6 +88,17 @@ class ServicesScreen extends NavigatorComponent<
   constructor(props) {
     super(props);
 
+    this.props.navigator.setButtons({
+      leftButtons: [
+        {
+          id: MENU_BUTTON,
+          icon: AssetsImages.menuIcon,
+          buttonColor: Colors.navigationButtonColor,
+        },
+      ],
+      rightButtons: [],
+    });
+
     this.state = {
       pullToRefreshInProgress: false,
       transactionsVisible: false,
@@ -132,6 +147,11 @@ class ServicesScreen extends NavigatorComponent<
   onNavBarButtonPress(id) {
     if (id === REMOVE_WALLETS_BUTTON) {
       this.props.removeWallets();
+    } else if (id === MENU_BUTTON) {
+      this.props.navigator.toggleDrawer({
+        side: 'left',
+        animated: true,
+      });
     }
   }
 

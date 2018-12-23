@@ -10,6 +10,7 @@ import { switchNationTab, openNation } from '../../actions/nations';
 import { screen } from '../../global/Screens';
 import { resolveNation } from '../../utils/nations';
 import Colors from '../../global/colors';
+import AssetsImages from '../../global/AssetsImages';
 import NavigatorComponent from '../../components/common/NavigatorComponent';
 import i18n from '../../global/i18n';
 import { startNationCreation } from '../../actions/modifyNation';
@@ -19,6 +20,7 @@ import { type State as WalletState } from '../../reducers/wallet';
 import type { NationIdType } from '../../types/Nation';
 import type { NationTab } from '../../actions/nations';
 
+const MENU_BUTTON = 'MENU_BUTTON';
 const NEW_BUTTON = 'NEW_BUTTON';
 
 type Props = {
@@ -50,7 +52,13 @@ class NationsScreen extends NavigatorComponent<Props &Actions & WalletState & Na
     super(props);
 
     this.props.navigator.setButtons({
-      leftButtons: [],
+      leftButtons: [
+        {
+          id: MENU_BUTTON,
+          icon: AssetsImages.menuIcon,
+          buttonColor: Colors.navigationButtonColor,
+        },
+      ],
       rightButtons: [{
         title: 'New',
         id: NEW_BUTTON,
@@ -67,6 +75,11 @@ class NationsScreen extends NavigatorComponent<Props &Actions & WalletState & Na
         this.props.startNationCreation();
         this.props.navigator.showModal(screen('NATION_CREATE_SCREEN'));
       }
+    } else if (id === MENU_BUTTON) {
+      this.props.navigator.toggleDrawer({
+        side: 'left',
+        animated: true,
+      });
     }
   }
 
