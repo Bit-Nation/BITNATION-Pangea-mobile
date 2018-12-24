@@ -1,26 +1,25 @@
 // @flow
 
 import React from 'react';
-import { View, SectionList } from 'react-native';
+import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
-import { Button, Text } from 'native-base';
-
+import { Button } from 'native-base';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import i18n from '../../../global/i18n';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import styles from './styles';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
-import i18n from '../../../global/i18n';
-import ScreenTitle from '../../../components/common/ScreenTitle';
-import SettingsListItem from '../../../components/common/SettingsListItem';
+import DropDown from '../../../components/DropDown';
+import SwitchComponent from '../../../components/SwitchComponent';
 import type { SettingsItem } from '../../../types/Settings';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
-import { screen } from '../../../global/Screens';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import { logout } from '../../../actions/accounts';
 import {
   type State as AccountsState,
   getCurrentAccount,
 } from '../../../reducers/accounts';
-import SettingsListHeader from '../../../components/common/ItemsListHeader';
+import colors from '../../../global/colors';
 
 type Props = {
   /**
@@ -42,49 +41,21 @@ type Props = {
   accounts: AccountsState,
 };
 
-type SettingsSection = {
-  title: string,
-  data: Array<SettingsItem>,
+type State = {
+  /**
+   * @desc State of switch notification
+   */
+  onNotification: boolean,
 };
 
-class SettingsListScreen extends NavigatorComponent<Props> {
-  onSelectItem = (item: string) => {
-    switch (item) {
-      case 'identity':
-        this.props.navigator.push(screen('PROFILE_SCREEN'));
-        break;
-      case 'security':
-        this.props.navigator.push(screen('SECURITY_SETTINGS_SCREEN'));
-        break;
-      case 'viewPrivateKey':
-        this.props.navigator.push(screen('VIEW_PRIVATE_KEY_SCREEN'));
-        break;
-      case 'confirmPrivateKey':
-        this.props.navigator.push(screen('CONFIRM_KEY_INSTRUCTION_SCREEN'));
-        break;
-      case 'connectToDAppHost':
-        this.props.navigator.push({
-          ...screen('QR_CODE_DAPP_SCREEN'),
-          passProps: {
-            connectionType: 'devHost',
-          },
-        });
-        break;
-      case 'connectToDAppLogger':
-        this.props.navigator.push({
-          ...screen('QR_CODE_DAPP_SCREEN'),
-          passProps: {
-            connectionType: 'logger',
-          },
-        });
-        break;
-      case 'documents':
-        this.props.navigator.push(screen('DOCUMENTS_LIST_SCREEN'));
-        break;
-      default:
-        break;
-    }
-  };
+
+class SettingsListScreen extends NavigatorComponent<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      onNotification: true,
+    };
+  }
 
   render() {
     const currentAccount = getCurrentAccount(this.props.accounts);
@@ -93,62 +64,92 @@ class SettingsListScreen extends NavigatorComponent<Props> {
       return <View />;
     }
 
-    const sections: Array<SettingsSection> = [
-      {
-        title: i18n.t('screens.settings.sections.account'),
-        data: [
-          'identity',
-          'security',
-          currentAccount.confirmedMnemonic
-            ? 'viewPrivateKey'
-            : 'confirmPrivateKey',
-        ],
-      },
-      // {
-      //   title: i18n.t('screens.settings.sections.dApps'),
-      //   data: [
-      //     'connectToDAppHost',
-      //     'connectToDAppLogger',
-      //   ],
-      // },
-      // {
-      //   title: i18n.t('screens.settings.sections.notary'),
-      //   data: [
-      //     'documents',
-      //   ],
-      // },
+    const data = [
+      <View style={styles.itemStyle}>
+        <MaterialCommunityIcons name='flag-variant' style={styles.itemIcon} />
+        <Text style={styles.itemSelectText}>English</Text>
+      </View>,
+      <View style={styles.itemStyle}>
+        <MaterialCommunityIcons name='flag-variant-outline' style={styles.itemIcon} />
+        <Text style={styles.itemSelectText}>Hindi</Text>
+      </View>,
+    ];
+
+    const dataNetwork = [
+      <View style={styles.itemStyle}>
+        <MaterialCommunityIcons name='ethereum' style={styles.itemIcon} />
+        <Text style={styles.itemSelectText}>Ethereum Main Network</Text>
+      </View>,
+      <View style={styles.itemStyle}>
+        <MaterialCommunityIcons name='ethereum' style={styles.itemIcon} />
+        <Text style={styles.itemSelectText}>Rinkeby Testing Network</Text>
+      </View>,
     ];
 
     return (
       <View style={styles.screenContainer}>
         <BackgroundImage />
         <FakeNavigationBar />
-        <ScreenTitle title={i18n.t('screens.settings.title')} />
-        <SectionList
-          renderItem={({ item }) => (
-            <SettingsListItem
-              id={item}
-              onPress={this.onSelectItem}
-              text={i18n.t(`screens.settings.${item}`)}
+        <View style={styles.contentView}>
+          <View style={styles.itemViewStyle}>
+            <DropDown
+              label='Choice your language'
+              data={data}
             />
-          )}
-          renderSectionHeader={({ section: { title } }) => (
-            <SettingsListHeader title={title} />
-          )}
-          keyExtractor={item => item}
-          sections={(sections: any)}
-          style={styles.sectionList}
-          ItemSeparatorComponent={() => <View style={styles.itemSeparator} />}
-        />
-        <Button
-          rounded
-          style={styles.actionButton}
-          // styleTitle={styles.restoreAccountButtonText}
-          // title={i18n.t('screens.accounts.restoreAccount')}
-          onPress={this.props.logout}
-        >
-          <Text>{i18n.t('screens.settings.switchAccounts').toUpperCase()}</Text>
-        </Button>
+          </View>
+          <View style={styles.itemViewStyle}>
+            <DropDown
+              label='Choice network'
+              data={dataNetwork}
+            />
+          </View>
+          <View style={styles.itemViewStyle}>
+            <Text style={styles.itemSelectText}>Notifications</Text>
+            <SwitchComponent
+              containerStyle={styles.rightViewSwitch}
+              buttons={[
+              {
+                label: 'No',
+                onPress: () => {
+                  this.setState({ onNotification: false });
+                },
+                selected: this.state.onNotification === false,
+              },
+              {
+                label: 'YES',
+                onPress: () => {
+                  this.setState({ onNotification: true });
+                },
+                selected: this.state.onNotification === true,
+              },
+            ]}
+            />
+          </View>
+          <View style={styles.itemViewStyle}>
+            <Text style={styles.itemSelectText}>Bitnation Gold</Text>
+            <View style={styles.rightView}>
+              <View style={styles.itemGoldView} />
+              <View style={[styles.itemGoldView, { backgroundColor: colors.chatColor }]} />
+              <View style={[styles.itemGoldView, { backgroundColor: colors.BitnationLinkOrangeColor }]} />
+            </View>
+          </View>
+          <View style={styles.buttonViewStyle}>
+            <Button
+              rounded
+              onPress={() => this.props.navigator.pop()}
+              style={styles.controlButton}
+            >
+              <Text style={styles.controlButtonText}>{i18n.t('screens.settings.goBack')}</Text>
+            </Button>
+            <Button
+              rounded
+              onPress={() => { }}
+              style={styles.controlButton}
+            >
+              <Text style={styles.controlButtonText}>{i18n.t('screens.settings.save')}</Text>
+            </Button>
+          </View>
+        </View>
       </View>
     );
   }

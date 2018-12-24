@@ -251,7 +251,7 @@ const Screens = {
   },
   SETTINGS_SCREEN: {
     screen: 'Pangea.Settings',
-    title: '',
+    title: i18n.t('screens.settings.title').toUpperCase(),
     icon: AssetsImages.TabIcons.services,
     label: i18n.t('screens.settings.tabTitle'),
     navigatorStyle,

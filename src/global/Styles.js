@@ -808,7 +808,10 @@ const styles = {
     marginLeft: 16,
     marginRight: 16,
   },
-
+  itemSelectText: {
+    fontSize: 16,
+    color: Colors.BitnationDarkGrayColor,
+  },
   detailedItemContainer: {
     height: 72,
   },

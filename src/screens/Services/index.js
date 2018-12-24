@@ -155,6 +155,13 @@ class ServicesScreen extends NavigatorComponent<
     }
   }
 
+  onHandleDeepLink(event) {
+    const parts = event.link.split('/');
+    if (parts[0] === 'push') {
+      this.props.navigator.push(screen(parts[1]));
+    }
+  }
+
   createWallet = () => {
     this.props.navigator.showModal(screen('CREATE_KEY_INTRODUCTION_SCREEN'));
   };

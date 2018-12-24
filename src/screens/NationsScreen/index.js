@@ -83,6 +83,13 @@ class NationsScreen extends NavigatorComponent<Props &Actions & WalletState & Na
     }
   }
 
+  onHandleDeepLink(event) {
+    const parts = event.link.split('/');
+    if (parts[0] === 'push') {
+      this.props.navigator.push(screen(parts[1]));
+    }
+  }
+
   showCreatePrivateKeyAlert() {
     Alert.alert(
       i18n.t('alerts.walletRequired.title'),

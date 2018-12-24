@@ -567,7 +567,9 @@
         "account": "Account",
         "dApps": "DApp development",
         "notary": "Notary"
-      }
+      },
+      "goBack": "Go Back",
+      "save": "Save"
     },
     "securitySettings": {
       "title": "Security settings",
