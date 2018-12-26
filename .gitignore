@@ -88,3 +88,5 @@ index.android.bundle
 .dev.config.yaml
 ios/assets/src/assets
 ios/Frameworks/panthalassa.framework
+# development app's temp data
+data

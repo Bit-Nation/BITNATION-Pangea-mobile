@@ -1,25 +1,8 @@
 #!/usr/bin/env bash
-
-# Requires BASH Version 4.3+. 
+# shellcheck disable=SC1003
 
 # Pure BASH solution for parsing YAML files.
-# https://stackoverflow.com/a/21189044/881111
-# Warning: should only be used for simple YAML files. 
-# Edge cases and certain types may not parse properly in BASH
-
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
-#source $DIR/y2s.bash
-
-#declare -a hash
-#yml2struct hash $1
-#yml2struct hash ~/dev/bitnation/BITNATION-Pangea-mobile/.dev.config.yaml
-
-#declare -a hashh
-#lookup hash hashh
-#echo `${hash[test]}`
-
-#!/usr/bin/env bash
-# shellcheck disable=SC1003
+# TODO: merge with utility script
 
 # Based on https://gist.github.com/pkuczynski/8665367
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Status: Beta (subject to breaking changese)
+# Status: Beta (subject to breaking changes)
 # Checks the development environment for validity. 
 # This script is written purely in bash to minimize dependencies
 
@@ -14,7 +14,6 @@ SETUPENABLED=1
 
 # when running check_env_all, this will be set to 1 if any of the tests fail
 ENVSTATUS=0 
-
 
 autocorrect() {
     if [ $SETUPENABLED -eq 1 ]; then
@@ -131,10 +130,9 @@ check_env() {
     fi
 }
 
-
-
 if [ ! -z $1 ] && [ $1 == "run" ]; then
-    RESULT=$(check_env $2)
+    check_env $2 $3
+    RESULT=$?
     if [ ! -z $RESULT ] && [ $RESULT == 0 ]; then 
         exit 0
     else
