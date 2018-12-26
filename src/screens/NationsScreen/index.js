@@ -47,9 +47,20 @@ type Actions = {
   startNationCreation: () => void,
 }
 
-class NationsScreen extends NavigatorComponent<Props &Actions & WalletState & NationState> {
+type State = {
+  /**
+   * @desc Check this screen appear
+   */
+  isAppear: boolean,
+}
+
+class NationsScreen extends NavigatorComponent<Props & Actions & WalletState & NationState & State> {
   constructor(props) {
     super(props);
+
+    this.state = {
+      isAppear: false,
+    };
 
     this.props.navigator.setButtons({
       leftButtons: [
@@ -65,6 +76,14 @@ class NationsScreen extends NavigatorComponent<Props &Actions & WalletState & Na
         buttonColor: Colors.navigationButtonColor,
       }],
     });
+  }
+
+  onWillAppear() {
+    this.setState({ isAppear: true });
+  }
+
+  onWillDisappear() {
+    this.setState({ isAppear: false });
   }
 
   onNavBarButtonPress(id) {
@@ -84,9 +103,11 @@ class NationsScreen extends NavigatorComponent<Props &Actions & WalletState & Na
   }
 
   onHandleDeepLink(event) {
-    const parts = event.link.split('/');
-    if (parts[0] === 'push') {
-      this.props.navigator.push(screen(parts[1]));
+    if (this.state.isAppear) {
+      const parts = event.link.split('/');
+      if (parts[0] === 'push') {
+        this.props.navigator.push(screen(parts[1]));
+      }
     }
   }
 

@@ -63,6 +63,10 @@ type Actions = {
 
 type State = {
   /**
+   * @desc Check this screen appear
+   */
+  isAppear: boolean,
+  /**
    * @desc Flag to control Refreshing on Pull to Refresh
    */
   pullToRefreshInProgress: boolean,
@@ -84,7 +88,7 @@ type State = {
 class ServicesScreen extends NavigatorComponent<
   Props & TestingModeProps & Actions & WalletState,
   State,
-> {
+  > {
   constructor(props) {
     super(props);
 
@@ -100,6 +104,7 @@ class ServicesScreen extends NavigatorComponent<
     });
 
     this.state = {
+      isAppear: false,
       pullToRefreshInProgress: false,
       transactionsVisible: false,
       ethAddress: '',
@@ -139,6 +144,14 @@ class ServicesScreen extends NavigatorComponent<
     this.updateNavigation();
   }
 
+  onWillAppear() {
+    this.setState({ isAppear: true });
+  }
+
+  onWillDisappear() {
+    this.setState({ isAppear: false });
+  }
+
   onDidAppear() {
     this.props.updateWalletList();
     this.updateNavigation();
@@ -156,9 +169,11 @@ class ServicesScreen extends NavigatorComponent<
   }
 
   onHandleDeepLink(event) {
-    const parts = event.link.split('/');
-    if (parts[0] === 'push') {
-      this.props.navigator.push(screen(parts[1]));
+    if (this.state.isAppear) {
+      const parts = event.link.split('/');
+      if (parts[0] === 'push') {
+        this.props.navigator.push(screen(parts[1]));
+      }
     }
   }
 
@@ -166,7 +181,7 @@ class ServicesScreen extends NavigatorComponent<
     this.props.navigator.showModal(screen('CREATE_KEY_INTRODUCTION_SCREEN'));
   };
 
-  restoreWallet = () => {};
+  restoreWallet = () => { };
 
   sendMoney = (wallet) => {
     this.props.selectWallet(wallet);
@@ -247,7 +262,7 @@ const mapDispatchToProps = dispatch => ({
   updateWalletList() {
     dispatch(updateWalletList());
   },
-  removeWallets() {},
+  removeWallets() { },
 });
 
 export default connect(

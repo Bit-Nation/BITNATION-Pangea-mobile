@@ -100,6 +100,10 @@ type State = {
    * @desc List of contacts selected for creating chat.
    */
   contacts: Array<Contact>,
+  /**
+   * @desc Check this screen appear
+   */
+  isAppear: boolean,
 };
 
 class ChatListScreen extends NavigatorComponent<Props, State> {
@@ -129,7 +133,16 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
       loading: false,
       contacts: [],
       chatName: '',
+      isAppear: false,
     };
+  }
+
+  onWillAppear() {
+    this.setState({ isAppear: true });
+  }
+
+  onWillDisappear() {
+    this.setState({ isAppear: false });
   }
 
   onNavBarButtonPress(id) {
@@ -146,9 +159,11 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
   }
 
   onHandleDeepLink(event) {
-    const parts = event.link.split('/');
-    if (parts[0] === 'push') {
-      this.props.navigator.push(screen(parts[1]));
+    if (this.state.isAppear) {
+      const parts = event.link.split('/');
+      if (parts[0] === 'push') {
+        this.props.navigator.push(screen(parts[1]));
+      }
     }
   }
 
@@ -265,8 +280,8 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
               // @todo Add preview for DApp messages.
               return i18n.t('screens.chat.dAppMessagePreview');
             })(chat.messages.length === 0
-                ? null
-                : chat.messages[chat.messages.length - 1]);
+              ? null
+              : chat.messages[chat.messages.length - 1]);
 
             const lastMessage =
               chat.messages.length === 0
