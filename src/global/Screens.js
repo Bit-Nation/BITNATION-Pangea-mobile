@@ -259,7 +259,7 @@ const Screens = {
   SERVICES_SCREEN: {
     screen: 'Pangea.Services',
     title: '',
-    label: 'SERVICES',
+    label: 'GOVMARKET',
     icon: AssetsImages.TabIcons.services,
     navigatorStyle,
   },
