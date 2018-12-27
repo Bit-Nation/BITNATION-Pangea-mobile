@@ -1001,6 +1001,15 @@ const styles = {
     elevation: 0,
   },
 
+  lucyButton: {
+    backgroundColor: Colors.BitnationLinkOrangeColor,
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    right: 2,
+    zIndex: 1000000,
+  },
+
   actionButton: {
     borderRadius: 40,
     width: '60%',

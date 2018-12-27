@@ -11,7 +11,7 @@ import { screen } from '../../global/Screens';
 import { resolveNation } from '../../utils/nations';
 import Colors from '../../global/colors';
 import AssetsImages from '../../global/AssetsImages';
-import NavigatorComponent from '../../components/common/NavigatorComponent';
+import BaseTabComponent from '../../components/common/BaseTabComponent';
 import i18n from '../../global/i18n';
 import { startNationCreation } from '../../actions/modifyNation';
 import type { Navigator } from '../../types/ReactNativeNavigation';
@@ -47,20 +47,9 @@ type Actions = {
   startNationCreation: () => void,
 }
 
-type State = {
-  /**
-   * @desc Check this screen appear
-   */
-  isAppear: boolean,
-}
-
-class NationsScreen extends NavigatorComponent<Props & Actions & WalletState & NationState & State> {
+class NationsScreen extends BaseTabComponent<Props & Actions & WalletState & NationState> {
   constructor(props) {
     super(props);
-
-    this.state = {
-      isAppear: false,
-    };
 
     this.props.navigator.setButtons({
       leftButtons: [
@@ -78,14 +67,6 @@ class NationsScreen extends NavigatorComponent<Props & Actions & WalletState & N
     });
   }
 
-  onWillAppear() {
-    this.setState({ isAppear: true });
-  }
-
-  onWillDisappear() {
-    this.setState({ isAppear: false });
-  }
-
   onNavBarButtonPress(id) {
     if (id === NEW_BUTTON) {
       if (_.isEmpty(this.props.wallets)) {
@@ -99,15 +80,6 @@ class NationsScreen extends NavigatorComponent<Props & Actions & WalletState & N
         side: 'left',
         animated: true,
       });
-    }
-  }
-
-  onHandleDeepLink(event) {
-    if (this.state.isAppear) {
-      const parts = event.link.split('/');
-      if (parts[0] === 'push') {
-        this.props.navigator.push(screen(parts[1]));
-      }
     }
   }
 

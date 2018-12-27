@@ -6,9 +6,9 @@ import {
   SectionList,
 } from 'react-native';
 import _ from 'lodash';
-import SegmentedControl from 'react-native-segmented-control-tab';
 
 import BackgroundImage from '../../../components/common/BackgroundImage';
+import LucyButton from '../../../components/common/LucyButton';
 import styles from './styles';
 import NationListItem from '../../../components/common/NationListItem';
 import NationListHeader from '../../../components/common/ItemsListHeader';
@@ -96,6 +96,7 @@ const NationsListScreen = ({
         sections={sections}
         style={styles.sectionList}
       />
+      <LucyButton />
       {inProgress && _.isEmpty(nations) && <Loading />}
     </View>
   );

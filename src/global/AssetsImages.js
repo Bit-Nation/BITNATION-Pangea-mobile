@@ -52,6 +52,7 @@ const menuIcon = require('../assets/images/menu.png');
 const sendChatActiveIcon = require('../assets/images/sendChatActive.png');
 const sendChatInActiveIcon = require('../assets/images/sendChatInActive.png');
 const actionChatIcon = require('../assets/images/actionChat.png');
+const lucyIcon = require('../assets/images/lucyIcon.png');
 
 const Images = {
   background,
@@ -70,6 +71,7 @@ const Images = {
   moreMenuIcon,
   closeIcon,
   menuIcon,
+  lucyIcon,
   TabIcons: {
     dashboard: dashboardTabIcon,
     chat: townhall,

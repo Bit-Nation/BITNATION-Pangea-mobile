@@ -16,7 +16,8 @@ import ChatListItem from '../../../components/common/ChatListItem';
 import ChatListHeader from '../../../components/common/ItemsListHeader';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import Loading from '../../../components/common/Loading';
-import NavigatorComponent from '../../../components/common/NavigatorComponent';
+import BaseTabComponent from '../../../components/common/BaseTabComponent';
+import LucyButton from '../../../components/common/LucyButton';
 import i18n from '../../../global/i18n';
 import Colors from '../../../global/colors';
 import type {
@@ -100,13 +101,9 @@ type State = {
    * @desc List of contacts selected for creating chat.
    */
   contacts: Array<Contact>,
-  /**
-   * @desc Check this screen appear
-   */
-  isAppear: boolean,
 };
 
-class ChatListScreen extends NavigatorComponent<Props, State> {
+class ChatListScreen extends BaseTabComponent<Props, State> {
   static navigatorButtons = {
     leftButtons: [
       {
@@ -133,16 +130,7 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
       loading: false,
       contacts: [],
       chatName: '',
-      isAppear: false,
     };
-  }
-
-  onWillAppear() {
-    this.setState({ isAppear: true });
-  }
-
-  onWillDisappear() {
-    this.setState({ isAppear: false });
   }
 
   onNavBarButtonPress(id) {
@@ -155,15 +143,6 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
         side: 'left',
         animated: true,
       });
-    }
-  }
-
-  onHandleDeepLink(event) {
-    if (this.state.isAppear) {
-      const parts = event.link.split('/');
-      if (parts[0] === 'push') {
-        this.props.navigator.push(screen(parts[1]));
-      }
     }
   }
 
@@ -305,13 +284,13 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
           style={styles.sectionList}
           ItemSeparatorComponent={() => <View style={styles.itemSeparator} />}
         />
-        <Fab
+        {/* <Fab
           style={styles.floatingButton}
           position='bottomRight'
           onPress={this.goToContactsPicker}
         >
           <Text>+</Text>
-        </Fab>
+        </Fab> */}
         <MoreMenuModal
           visible={this.state.showModal === MORE_MODAL_KEY}
           onCancel={this.dismissModal}
@@ -346,6 +325,7 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
             onPress={this.dismissModal}
           />
         </Dialog.Container>
+        <LucyButton />
         {this.state.loading === true && <Loading />}
       </View>
     );

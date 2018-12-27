@@ -10,7 +10,8 @@ import Background from '../../components/common/BackgroundImage';
 import { screen, androidNavigationButtons } from '../../global/Screens';
 import Card from '../../components/Card';
 import { selectWallet, updateWalletList } from '../../actions/wallet';
-import NavigatorComponent from '../../components/common/NavigatorComponent';
+import BaseTabComponent from '../../components/common/BaseTabComponent';
+import LucyButton from '../../components/common/LucyButton';
 
 import Colors from '../../global/colors';
 import AssetsImages from '../../global/AssetsImages';
@@ -63,10 +64,6 @@ type Actions = {
 
 type State = {
   /**
-   * @desc Check this screen appear
-   */
-  isAppear: boolean,
-  /**
    * @desc Flag to control Refreshing on Pull to Refresh
    */
   pullToRefreshInProgress: boolean,
@@ -85,7 +82,7 @@ type State = {
   },
 };
 
-class ServicesScreen extends NavigatorComponent<
+class ServicesScreen extends BaseTabComponent<
   Props & TestingModeProps & Actions & WalletState,
   State,
   > {
@@ -104,7 +101,6 @@ class ServicesScreen extends NavigatorComponent<
     });
 
     this.state = {
-      isAppear: false,
       pullToRefreshInProgress: false,
       transactionsVisible: false,
       ethAddress: '',
@@ -144,14 +140,6 @@ class ServicesScreen extends NavigatorComponent<
     this.updateNavigation();
   }
 
-  onWillAppear() {
-    this.setState({ isAppear: true });
-  }
-
-  onWillDisappear() {
-    this.setState({ isAppear: false });
-  }
-
   onDidAppear() {
     this.props.updateWalletList();
     this.updateNavigation();
@@ -165,15 +153,6 @@ class ServicesScreen extends NavigatorComponent<
         side: 'left',
         animated: true,
       });
-    }
-  }
-
-  onHandleDeepLink(event) {
-    if (this.state.isAppear) {
-      const parts = event.link.split('/');
-      if (parts[0] === 'push') {
-        this.props.navigator.push(screen(parts[1]));
-      }
     }
   }
 
@@ -244,6 +223,7 @@ class ServicesScreen extends NavigatorComponent<
             />
           </Card>
         </View>
+        <LucyButton />
       </View>
     );
   }
