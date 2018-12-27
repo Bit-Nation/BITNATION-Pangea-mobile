@@ -34,8 +34,11 @@ export default function deprecatedCreateGiftedChatMessageObject(messagesData: Ar
 export function createGiftedChatMessageObject(message: PanthalassaMessage): GiftedChatMessageType {
   const createdAt = new Date(0);
   createdAt.setUTCMilliseconds(message.created_at / 1000000);
-
-  const user = { _id: Buffer.from(message.sender, 'base64').toString('hex') };
+  let _id = -1;
+  if (message.sender !== null) { // eslint-disable-line
+    _id = Buffer.from(message.sender, 'base64').toString('hex');
+  }
+  const user = { _id };
 
   let dAppMessage: DAppMessageType | null = null;
   if (message.dapp !== '') {

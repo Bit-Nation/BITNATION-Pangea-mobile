@@ -22,7 +22,7 @@ DerivedData
 *.ipa
 *.xcuserstate
 project.xcworkspace
-ios/Frameworks/Realm*
+ios/Frameworks/
 
 ios/Pods
 
