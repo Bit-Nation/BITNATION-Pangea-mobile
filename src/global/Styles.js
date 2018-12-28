@@ -1003,9 +1003,9 @@ const styles = {
 
   lucyButton: {
     backgroundColor: Colors.BitnationLinkOrangeColor,
-    width: 100,
-    height: 100,
-    borderRadius: 50,
+    width: 60,
+    height: 60,
+    borderRadius: 30,
     right: 2,
     zIndex: 1000000,
   },
