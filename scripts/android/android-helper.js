@@ -1,4 +1,5 @@
 /* eslint-disable */
+// TODO: Convert this to typescript per Mark and launch using ts-node
 
 /* 
   
@@ -13,10 +14,12 @@
 
 const fs = require('fs');
 const os = require('os');
-const utils = require('../lib/utils');
+const nodeutil = require('util'); // prefixed with node as 'utils' is our own utils script
 const process = require('process');
 const childProcess = require('child_process');
 const sleep = require('thread-sleep');
+const utils = require('../lib/utils');
+
 const DIR = __dirname;
 
 //Sanity check
@@ -24,8 +27,17 @@ utils.RunShellScript('check-env.sh', 'run single adb_present');
 utils.RunShellScript('check-env.sh', 'run single android_home');
 utils.RunShellScript('check-env.sh', 'run single dev_config');
 
+const statusFilePath = `${utils.RepositoryRootDir}/data/android-status.json`;
+
+class StatusDoc {
+    constructor() {
+        this.timeLaunched = Date.now();
+        this.appPid = 0;
+    }
+}
 class AndroidHelper {
     constructor(device) {
+        this.statusDoc = new StatusDoc();
         this.cfg = utils.GetDevConfig().launcher;
         this.androidcfg = this.cfg.android;
         if (device === undefined) {
@@ -73,7 +85,7 @@ class AndroidHelper {
         return this.deviceAddress;
     }
     
-    /// Ensures that .dev.config.yaml is committed to the development build
+    // Ensures that .dev.config.yaml is committed to the development build
     // There are two (planned) ways that the .dev.config.yaml file are read at runtime.
     // The first way, using this method, is simpler with fewer moving parts
     // However, it only updates the config when this script is run.
@@ -97,9 +109,16 @@ class AndroidHelper {
         };
         childProcess.execSync('flow', procopts);
 
-        childProcess.execSync(`${utils.RepositoryRootDir}/node_modules/.bin/react-native run-android`, procopts);
+        childProcess.spawn(
+            `${utils.RepositoryRootDir}/node_modules/.bin/react-native`, 
+            ['run-android'], 
+            procopts
+        );
 
-      //  utils.RunShellCmd('npm', ['run', 'android']);
+        this.statusDoc.timeLaunched = Date.now();
+        // Todo: child process stdout must be monitored by this script, so its startup completion can be automatically detected
+        // If we proceed from this point too soon, we cannot get the app pid. If we proceed too late, the startup is unnecessarily delayed.
+        sleep(10000);
     }
 
    /* 
@@ -115,9 +134,38 @@ class AndroidHelper {
     redirectLog() {
         console.log(`AndroidHelper: Redirecting log output from device ${this.deviceName}.`);
         var logStream = fs.createWriteStream(utils.RepositoryRootDir + `/data/logs/${this.deviceName}.log`, {flags: 'a'});
-        let logcat = childProcess.spawn('adb', ['-s', this.deviceAddress, 'logcat']);
+        let logcat = childProcess.spawn(
+            'adb', 
+            [
+                '-s', 
+                this.deviceAddress,
+                'logcat',
+                '-v',
+                'threadtime'
+            ]
+        );
         logcat.stdout.pipe(logStream);
         logcat.stderr.pipe(logStream);
+    }
+    
+    // Portable log parser: http://lnav.org/features/
+    setupLnav() {
+        try {
+            utils.RunShellCmd('which lnav');
+        }
+        catch (err) {
+            console.log("AndroidHelper: lnav log utility not detected. Advanced log parsing is disabled. See http://lnav.org/features/ for an overview and installation instructions.");
+            return false;
+        }
+        
+        // Install the logcat specification automatically. 
+        utils.RunShellCmd(`lnav -i ${utils.RepositoryRootDir}/scripts/android/lnav-logcat.json`);
+        
+        // Get bitnation app pid. This is necessary in order to filter out irrelevant log data. 
+        // We only want log items generated from the pangea app process.
+        this.statusDoc.appPid = parseInt(utils.RunShellCmd('adb shell pidof co.bitnation'));
+        
+        // (todo) Pipe pid to lnav filter on startup
     }
 
     startEmulator() {
@@ -136,15 +184,39 @@ class AndroidHelper {
                 shell: utils.ShellLocation,
                 stdio: "inherit"
             });
+
+        // Give emulator time to launch, so it shows on avd devices list. 
+        // If this is not enough time, a configuration override can be added to .dev.config.yaml.
         sleep(1000);
     }
 
     startAll() {
+        this.statusFileRemove();
+
         this.installDevConfig();
         this.startEmulator();
         this.findDeviceAddress();
         this.redirectLog();
+
         this.launchApp();
+
+        this.setupLnav();
+        this.statusFileCommit();
+        /**
+         * TODO: 
+         * 4. Pipe pid to lnav filter on startup
+         * 5. Each distinct tag should have some code to pipe, transform, parse, or redirect the body of the corresponding log lines
+         */
+    }
+    
+    statusFileCommit() {
+        fs.writeFileSync(statusFilePath, nodeutil.inspect(this.statusDoc) , 'utf-8');
+    }
+
+    statusFileRemove() {
+        if (fs.exists(statusFilePath)) {
+            fs.unlinkSync(statusFilePath);
+        }
     }
 }
 

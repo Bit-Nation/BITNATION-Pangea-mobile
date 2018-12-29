@@ -44,17 +44,12 @@ const Utils = {
         return cfg;
     },
 
-    RunShellCmd: function(cmd, args) {
-        if (args === undefined) {
-            args = '';
-        }
-        
-        cmd = `${cmd} ${args}`
-        
+    RunShellCmd: function(cmd) {
         const output = childProcess.execSync(cmd, {
             shell: bashLoc,
-            stdio: "inherit" //ensure that /dev/tty pipes to stdout
         });
+        
+        return output.toString().trim();
     },
 
     /**
@@ -68,7 +63,12 @@ const Utils = {
         }
         
         location = path.normalize(DIR + script_relative);
-        this.RunShellCmd(location, args)
+        cmd = `${location} ${args}`;
+
+        childProcess.execSync(cmd, {
+            shell: bashLoc,
+            stdio: "inherit" //ensure that /dev/tty pipes to stdout
+        });
     }
 };
 
