@@ -14,6 +14,6 @@ if (isDevBuild()) {
     customData = require('./dev.config.json');
 
     //test
-    const foo = customData.android_emulator_name;
+    const foo = customData.launcher.android.emulator_port;
     const bar = 1;
 }

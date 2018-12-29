@@ -12,10 +12,11 @@
 */
 
 const fs = require('fs');
+const os = require('os');
 const utils = require('../lib/utils');
 const process = require('process');
 const childProcess = require('child_process');
-
+const sleep = require('thread-sleep');
 const DIR = __dirname;
 
 //Sanity check
@@ -25,12 +26,51 @@ utils.RunShellScript('check-env.sh', 'run single dev_config');
 
 class AndroidHelper {
     constructor(device) {
+        this.cfg = utils.GetDevConfig().launcher;
+        this.androidcfg = this.cfg.android;
         if (device === undefined) {
             console.log('No device name passed to AndroidHelper. Falling back to android_emulator_name in .dev.config.yaml');
-            device = utils.GetDevConfig('android_emulator_name');
+            device = this.androidcfg.emulator_name;
         }
-        this.device = device;
+        this.deviceName = device;
         console.log('Spawned AndroidHelper for device ' + device);
+    }
+
+    findDeviceAddress() {
+        function getAllDeviceAddresses() {
+            const err = new Error("Unable to find device address.");
+            const rawResult = 
+                childProcess
+                .execSync("adb devices")
+                .toString()
+                .trim()
+                .split(os.EOL);
+            if (rawResult[0] != "List of devices attached") {
+                throw err;
+            }
+            let results = [];
+            for(let i = 1; i < rawResult.length; i++) {
+                results.push(rawResult[i].split('\t')[0]);
+            }
+            return results;
+        }
+        const deviceAddresses = getAllDeviceAddresses();
+
+        function deviceIsOurDevice(deviceAddress, portCfg) { 
+            return portCfg == parseInt(deviceAddress.split('-')[1]);
+        }        
+
+        let matches = deviceAddresses.filter(addr => 
+            addr.split('-')[1] == this.androidcfg.emulator_port);
+        if (matches.length != 1) {
+            throw new Error(
+                "Unable to find avd device. If this problem persists, try " +
+                "shutting down any currently running emulators before running" +
+                " this script.");
+        }
+
+        this.deviceAddress = matches[0];
+        return this.deviceAddress;
     }
     
     /// Ensures that .dev.config.yaml is committed to the development build
@@ -40,7 +80,7 @@ class AndroidHelper {
     installDevConfig() {
         //https://stackoverflow.com/a/36974021/881111
         var inputfile = `${utils.RepositoryRootDir}/.dev.config.yaml`,
-            outputfile = `${utils.RepositoryRootDir}/src/config/.dev.config.json`,
+            outputfile = `${utils.RepositoryRootDir}/src/config/dev.config.json`,
             yaml = require('js-yaml'),
             fs = require('fs'),
             obj = yaml.load(fs.readFileSync(inputfile, {encoding: 'utf-8'}));
@@ -73,23 +113,36 @@ class AndroidHelper {
     with the project).
     */
     redirectLog() {
-        console.log(`AndroidHelper: Redirecting log output from device ${this.device}.`);
-        var logStream = fs.createWriteStream(utils.RepositoryRootDir + `/data/logs/${this.device}.log`, {flags: 'a'});
-        let logcat = childProcess.spawn('adb', ['-s', this.device, 'logcat']);
+        console.log(`AndroidHelper: Redirecting log output from device ${this.deviceName}.`);
+        var logStream = fs.createWriteStream(utils.RepositoryRootDir + `/data/logs/${this.deviceName}.log`, {flags: 'a'});
+        let logcat = childProcess.spawn('adb', ['-s', this.deviceAddress, 'logcat']);
         logcat.stdout.pipe(logStream);
         logcat.stderr.pipe(logStream);
     }
 
     startEmulator() {
-        childProcess.spawn('$ANDROID_HOME/tools/emulator', [`-avd ${this.device}`], {
-            shell: utils.ShellLocation,
-            stdio: "inherit"
-        });
+        const port = this.androidcfg.emulator_port;
+
+        console.log("AndroidHelper: Starting Android Emulator");
+        const proc = childProcess.spawn(
+            '$ANDROID_HOME/tools/emulator', 
+            [
+                '-avd',  
+                `${this.deviceName}`,
+                '-port',
+                port
+            ], 
+            {
+                shell: utils.ShellLocation,
+                stdio: "inherit"
+            });
+        sleep(1000);
     }
 
     startAll() {
         this.installDevConfig();
         this.startEmulator();
+        this.findDeviceAddress();
         this.redirectLog();
         this.launchApp();
     }

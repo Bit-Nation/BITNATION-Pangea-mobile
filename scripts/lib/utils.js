@@ -40,8 +40,8 @@ const Utils = {
     RepositoryRootDir: appRoot.toString(),
     ShellLocation: bashLoc,
 
-    GetDevConfig: function(key) {
-        return cfg[key];
+    GetDevConfig: function() {
+        return cfg;
     },
 
     RunShellCmd: function(cmd, args) {

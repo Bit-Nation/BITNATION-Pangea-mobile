@@ -112,6 +112,7 @@
     "react-native-mock": "^0.3.1",
     "react-test-renderer": "16.0.0",
     "redux-mock-store": "^1.5.1",
+    "thread-sleep": "^2.1.0",
     "websocket": "^1.0.26"
   },
   "jest": {

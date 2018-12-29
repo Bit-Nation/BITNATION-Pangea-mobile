@@ -90,3 +90,4 @@ ios/assets/src/assets
 ios/Frameworks/panthalassa.framework
 # development app's temp data
 data
+dev.config.json

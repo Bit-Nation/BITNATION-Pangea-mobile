@@ -1,1 +1,5 @@
-emulator-name: foo
+launcher:
+  android:
+    emulator_name: Development_Local_
+    emulator_port: 5561
+  fullreset: false
