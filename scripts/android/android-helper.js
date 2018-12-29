@@ -132,8 +132,9 @@ class AndroidHelper {
     with the project).
     */
     redirectLog() {
-        console.log(`AndroidHelper: Redirecting log output from device ${this.deviceName}.`);
-        var logStream = fs.createWriteStream(utils.RepositoryRootDir + `/data/logs/${this.deviceName}.log`, {flags: 'a'});
+        const logPath = utils.RepositoryRootDir + '/data/logs/pangea-android-logcat.log';
+        console.log(`AndroidHelper: Redirecting log output from device ${this.deviceName} to ${logPath}.`);
+        var logStream = fs.createWriteStream(logPath, {flags: 'a'});
         let logcat = childProcess.spawn(
             'adb', 
             [
@@ -164,8 +165,6 @@ class AndroidHelper {
         // Get bitnation app pid. This is necessary in order to filter out irrelevant log data. 
         // We only want log items generated from the pangea app process.
         this.statusDoc.appPid = parseInt(utils.RunShellCmd('adb shell pidof co.bitnation'));
-        
-        // (todo) Pipe pid to lnav filter on startup
     }
 
     startEmulator() {
@@ -204,13 +203,13 @@ class AndroidHelper {
         this.statusFileCommit();
         /**
          * TODO: 
-         * 4. Pipe pid to lnav filter on startup
          * 5. Each distinct tag should have some code to pipe, transform, parse, or redirect the body of the corresponding log lines
          */
     }
     
     statusFileCommit() {
-        fs.writeFileSync(statusFilePath, nodeutil.inspect(this.statusDoc) , 'utf-8');
+        const doc = nodeutil.inspect(this.statusDoc, )
+        fs.writeFileSync(statusFilePath, JSON.stringify(this.statusDoc) , 'utf-8');
     }
 
     statusFileRemove() {
