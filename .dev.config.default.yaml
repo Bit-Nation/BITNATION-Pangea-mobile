@@ -1,5 +1,6 @@
 launcher:
   android:
     emulator_name: Development_Local_
-    emulator_port: 5561
+    device_address: emulator-5560
+    emulator_port: 5560 # both emulator_port emulator_port+1 must be available
   fullreset: false

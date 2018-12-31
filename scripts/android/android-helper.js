@@ -17,8 +17,10 @@ const os = require('os');
 const nodeutil = require('util'); // prefixed with node as 'utils' is our own utils script
 const process = require('process');
 const childProcess = require('child_process');
-const sleep = require('thread-sleep');
+const readline = require('readline');
 const utils = require('../lib/utils');
+
+const sleep = (waitTimeInMs) => new Promise(resolve => setTimeout(resolve, waitTimeInMs));
 
 const DIR = __dirname;
 
@@ -28,6 +30,8 @@ utils.RunShellScript('check-env.sh', 'run single android_home');
 utils.RunShellScript('check-env.sh', 'run single dev_config');
 
 const statusFilePath = `${utils.RepositoryRootDir}/data/android-status.json`;
+cfg = utils.GetDevConfig().launcher;
+androidcfg = cfg.android;
 
 class StatusDoc {
     constructor() {
@@ -35,20 +39,210 @@ class StatusDoc {
         this.appPid = 0;
     }
 }
+
+
+
+// List of sub processes kept for proper cleanup
+const children = {};
+
+async function asyncPoint(ms, callback = () => {}) {
+  return await new Promise(resolve => setTimeout(() => {
+    resolve(callback());
+  }, ms));
+}
+
+async function fork(name, cmd, args, {readyRegex, timeout, echo, logStream} = {}, opts) {
+
+    return new Promise((resolve) => {
+        const close = () => {
+            delete children[name];
+            resolve(false);
+        };
+
+        if(timeout) {
+            setTimeout(() => close, timeout);
+        }
+
+        const child = childProcess.spawn(
+            cmd,
+            args,
+            opts !== undefined ? opts : {
+                silent: false,
+                stdio: [null, 'pipe', 'pipe'],
+                shell: utils.ShellLocation
+            } 
+        );
+
+        child.on('close', close);
+        child.on('exit', close);
+        child.on('error', close);
+
+        if (!logStream) {
+            logStream = fs.createWriteStream(`${utils.RepositoryRootDir}/data/logs/volatile-build-${name}.log`);
+        }
+
+        const lineCb = (line) => {
+            if (echo){ 
+                console.log(`[${name}] ${line}`);
+            }
+            logStream.write(line+os.EOL);
+            if (readyRegex && line.match(readyRegex)) {
+                resolve(true);
+            }
+        };
+
+        readline.createInterface({
+            input: child.stdout,
+        }).on('line', lineCb);
+
+        readline.createInterface({
+            input: child.stderr,
+        }).on('line', lineCb);
+
+        children[name] = child;
+        if (!readyRegex) {
+            resolve(true);
+        }
+    });
+}
+
+async function blockKeystroke() {
+    try {
+        let result = undefined;
+        readline.emitKeypressEvents(process.stdin);
+        process.stdin.setRawMode(true);
+
+        process.stdin.on('keypress', (str, key) => {
+            result = key;
+        });
+
+        while(!result) await sleep(100);
+        return result;
+    }
+    finally {
+        process.stdin.setRawMode(false);
+    }
+}
+
+async function blockReadLine() {
+    process.stdin.setRawMode(false);
+    let result = undefined;
+    var rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout,
+        terminal: false
+    });
+    rl.on('data', function(line){
+        result = line;
+    })
+    
+    while(!result) await sleep(100);
+    return result;
+}
+
+async function sighandle() {
+    console.log(os.EOL + 'Closing...');
+    Object.values(children).forEach(child => child.kill('SIGTERM'));
+    await asyncPoint(1000);
+    process.exit(0);
+}
+
+function setSigHandler() {
+    process.on('SIGINT', sighandle);
+    process.on('SIGTERM', sighandle);
+}
+
+async function forker(deviceName) {
+    setSigHandler();
+
+    const port = androidcfg.emulator_port;
+    console.log("AndroidHelper: Starting Android Emulator")
+    await fork(
+        'emulator',
+        '$ANDROID_HOME/tools/emulator', 
+        [ // args
+            '-avd',  
+            `${deviceName}`,
+            '-port',
+            port,
+            "-verbose"
+        ],
+        { // options
+            readyRegex: new RegExp(
+                "(Running multiple emulators with the same AVD is an experimental feature)" + 
+                "|(INFO: boot completed)" + 
+                "|(Adb connected, start proxing data)", 
+                'g'),
+            timeout: 60000,
+            echo: false
+        },
+        {
+            cwd: `${process.env["ANDROID_HOME"]}/emulator`,
+            silent: false,
+            stdio: [null, 'pipe', 'pipe'],
+            shell: utils.ShellLocation
+        }
+    );
+    utils.RunShellScript("android/wait-for-boot.sh", androidcfg.device_address);
+
+    //Clear logcat on device.
+    console.log("Clearing logcat logs on device. Requires an emulator with root access.")
+    try
+    {
+        utils.RunShellCmd(`adb -s ${androidcfg.device_address} root`);
+        utils.RunShellCmd(`adb -s ${androidcfg.device_address} logcat -b all -c`);
+    }
+    catch (err) { 
+        console.error(err.toString());
+    }
+
+    // Metro Bundler
+    const metroSync = fork(
+        'metro',
+        `${utils.RepositoryRootDir}/node_modules/.bin/react-native`,
+        [ // args
+            'run-android',
+        ],
+        { // options
+            readyRegex: /Loading dependency graph, done./,
+            timeout: 60000,
+            echo: true
+        }
+    );
+
+    // Build APK
+    const buildSync = fork(
+        'gradle',
+        './android/gradlew', 
+        [ // args
+            `--project-dir=${utils.RepositoryRootDir}/android`,
+            'assembleDebug',
+        ],
+        { // options
+            readyRegex: /BUILD SUCCESSFUL/,
+            timeout: 300000,
+        }
+    );
+
+    await buildSync;
+    await metroSync;
+
+    await sleep(100);
+}
+
 class AndroidHelper {
     constructor(device) {
         this.statusDoc = new StatusDoc();
-        this.cfg = utils.GetDevConfig().launcher;
-        this.androidcfg = this.cfg.android;
+
         if (device === undefined) {
             console.log('No device name passed to AndroidHelper. Falling back to android_emulator_name in .dev.config.yaml');
-            device = this.androidcfg.emulator_name;
+            device = androidcfg.emulator_name;
         }
         this.deviceName = device;
         console.log('Spawned AndroidHelper for device ' + device);
     }
-
-    findDeviceAddress() {
+    
+    assertCorrectDeviceAddress() {
         function getAllDeviceAddresses() {
             const err = new Error("Unable to find device address.");
             const rawResult = 
@@ -73,18 +267,15 @@ class AndroidHelper {
         }        
 
         let matches = deviceAddresses.filter(addr => 
-            addr.split('-')[1] == this.androidcfg.emulator_port);
+            addr.split('-')[1] == androidcfg.emulator_port);
         if (matches.length != 1) {
             throw new Error(
                 "Unable to find avd device. If this problem persists, try " +
                 "shutting down any currently running emulators before running" +
                 " this script.");
         }
-
-        this.deviceAddress = matches[0];
-        return this.deviceAddress;
     }
-    
+
     // Ensures that .dev.config.yaml is committed to the development build
     // There are two (planned) ways that the .dev.config.yaml file are read at runtime.
     // The first way, using this method, is simpler with fewer moving parts
@@ -100,7 +291,7 @@ class AndroidHelper {
         fs.writeFileSync(outputfile, JSON.stringify(obj, null, 2));
     }
 
-    launchApp() {
+    async launchApp() {
         console.log(`AndroidHelper: Launching flow.`);
         let procopts = {
             cwd: utils.RepositoryRootDir,
@@ -109,16 +300,9 @@ class AndroidHelper {
         };
         childProcess.execSync('flow', procopts);
 
-        childProcess.spawn(
-            `${utils.RepositoryRootDir}/node_modules/.bin/react-native`, 
-            ['run-android'], 
-            procopts
-        );
+        await forker(this.deviceName);
 
         this.statusDoc.timeLaunched = Date.now();
-        // Todo: child process stdout must be monitored by this script, so its startup completion can be automatically detected
-        // If we proceed from this point too soon, we cannot get the app pid. If we proceed too late, the startup is unnecessarily delayed.
-        sleep(10000);
     }
 
    /* 
@@ -131,26 +315,26 @@ class AndroidHelper {
     file (making the log data more readily accessible to any developer working
     with the project).
     */
-    redirectLog() {
+    async redirectLog() {
         const logPath = utils.RepositoryRootDir + '/data/logs/pangea-android-logcat.log';
         console.log(`AndroidHelper: Redirecting log output from device ${this.deviceName} to ${logPath}.`);
-        var logStream = fs.createWriteStream(logPath, {flags: 'a'});
-        let logcat = childProcess.spawn(
-            'adb', 
-            [
+        let logcat = await fork(
+            'logcat',
+            'adb', [
                 '-s', 
-                this.deviceAddress,
+                androidcfg.device_address,
                 'logcat',
                 '-v',
                 'threadtime'
-            ]
+            ], {
+                logStream: fs.createWriteStream(`${utils.RepositoryRootDir}/data/logs/pangea-android-logcat.log`)
+            }
         );
-        logcat.stdout.pipe(logStream);
-        logcat.stderr.pipe(logStream);
     }
     
     // Portable log parser: http://lnav.org/features/
     setupLnav() {
+        console.log("Setting up lnav");
         try {
             utils.RunShellCmd('which lnav');
         }
@@ -164,52 +348,45 @@ class AndroidHelper {
         
         // Get bitnation app pid. This is necessary in order to filter out irrelevant log data. 
         // We only want log items generated from the pangea app process.
-        this.statusDoc.appPid = parseInt(utils.RunShellCmd('adb shell pidof co.bitnation'));
+        this.statusDoc.appPid = parseInt(utils.RunShellCmd(`adb -s ${androidcfg.device_address} shell pidof co.bitnation`));
+        console.log("App pid on device is " + this.statusDoc.appPid);
     }
 
-    startEmulator() {
-        const port = this.androidcfg.emulator_port;
+    async startAll() {
+        try {
+            this.statusFileRemove();
+            this.installDevConfig();
+            await this.launchApp();
+            this.assertCorrectDeviceAddress();
+            this.setupLnav();
+            this.statusFileCommit();
+            await this.redirectLog();
+            console.log("AndroidHelper: Launch successful.");
+        }
+        catch(err) {
+            console.log("AndroidHelper crashed: " + err.toString());
+        }
+        
+        console.log("Press Ctrl+Z to stop log collection and end the session.");
+        process.stdin.setRawMode(true);
+        let key = {}
+        do {
+            key = await blockKeystroke();
+        }
+        while(!(key.ctrl && key.name == "z"));
 
-        console.log("AndroidHelper: Starting Android Emulator");
-        const proc = childProcess.spawn(
-            '$ANDROID_HOME/tools/emulator', 
-            [
-                '-avd',  
-                `${this.deviceName}`,
-                '-port',
-                port
-            ], 
-            {
-                shell: utils.ShellLocation,
-                stdio: "inherit"
-            });
-
-        // Give emulator time to launch, so it shows on avd devices list. 
-        // If this is not enough time, a configuration override can be added to .dev.config.yaml.
-        sleep(1000);
-    }
-
-    startAll() {
-        this.statusFileRemove();
-
-        this.installDevConfig();
-        this.startEmulator();
-        this.findDeviceAddress();
-        this.redirectLog();
-
-        this.launchApp();
-
-        this.setupLnav();
-        this.statusFileCommit();
+        await sighandle();
+        
         /**
          * TODO: 
          * 5. Each distinct tag should have some code to pipe, transform, parse, or redirect the body of the corresponding log lines
          */
     }
-    
+
     statusFileCommit() {
         const doc = nodeutil.inspect(this.statusDoc, )
         fs.writeFileSync(statusFilePath, JSON.stringify(this.statusDoc) , 'utf-8');
+        console.log("Committed status file to " + statusFilePath);
     }
 
     statusFileRemove() {
