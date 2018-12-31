@@ -1,5 +1,5 @@
-// @flow
 /* eslint-disable */
+// Flow is not compatible with this file due to the conditional require
 
 const fs = require('fs');
 
@@ -14,14 +14,15 @@ function isDevBuild() {
 (() => {
     if (isDevBuild()) {
         console.log('Pangea Development Build Detected.');
-        if (!fs.exists('dev.config.json')) {
+        if (!fs.existsSync('dev.config.json')) {
             console.error("dev.config.json not found. Disabling development config.");
+            
             return;
         }
-        customData = require('./dev.config.json');
-
-        //test
-        const foo = customData.launcher.android.emulator_port;
-        const bar = 1;
+        else {
+            customData = require('./dev.config.json');
+            const foo = customData.launcher.android.emulator_port;
+            const bar = 1;
+        }
     }
 })();
