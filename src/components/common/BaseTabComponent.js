@@ -47,7 +47,7 @@ class BaseTabComponent extends NavigatorComponent<Props, State> {
 
   render() {
     return (
-      <View style={{ backgroundColor: 'red' }} />
+      <View />
     );
   }
 }
