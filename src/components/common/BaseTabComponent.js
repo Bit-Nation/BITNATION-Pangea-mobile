@@ -21,7 +21,7 @@ type State = {
 };
 
 class BaseTabComponent extends NavigatorComponent<Props, State> {
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
     this.state = {
       isAppear: false,
@@ -47,7 +47,7 @@ class BaseTabComponent extends NavigatorComponent<Props, State> {
 
   render() {
     return (
-      <View style={{ backgroundColor: 'red' }} />
+      <View />
     );
   }
 }

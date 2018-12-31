@@ -82,10 +82,8 @@ ShallowWrapper {
           updateCellsBatchingPeriod={50}
           windowSize={21}
         />
-        <Button
-          enabled={true}
+        <CustomButton
           onPress={[MockFunction]}
-          style={undefined}
           title="Add dummy log"
         />
       </PanelView>,
@@ -119,10 +117,8 @@ ShallowWrapper {
             updateCellsBatchingPeriod={50}
             windowSize={21}
           />,
-          <Button
-            enabled={true}
+          <CustomButton
             onPress={[MockFunction]}
-            style={undefined}
             title="Add dummy log"
           />,
         ],
@@ -187,10 +183,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
-            "children": undefined,
-            "enabled": true,
             "onPress": [MockFunction],
-            "style": undefined,
             "title": "Add dummy log",
           },
           "ref": null,
@@ -265,10 +258,8 @@ ShallowWrapper {
             updateCellsBatchingPeriod={50}
             windowSize={21}
           />
-          <Button
-            enabled={true}
+          <CustomButton
             onPress={[MockFunction]}
-            style={undefined}
             title="Add dummy log"
           />
         </PanelView>,
@@ -302,10 +293,8 @@ ShallowWrapper {
               updateCellsBatchingPeriod={50}
               windowSize={21}
             />,
-            <Button
-              enabled={true}
+            <CustomButton
               onPress={[MockFunction]}
-              style={undefined}
               title="Add dummy log"
             />,
           ],
@@ -370,10 +359,7 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "function",
             "props": Object {
-              "children": undefined,
-              "enabled": true,
               "onPress": [MockFunction],
-              "style": undefined,
               "title": "Add dummy log",
             },
             "ref": null,

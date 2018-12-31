@@ -5,11 +5,17 @@ exports[`ItemsListHeader renders correctly 1`] = `
   style={
     Object {
       "alignItems": "center",
-      "backgroundColor": "#3a3a3a",
+      "backgroundColor": "#e5e5e5",
       "flexDirection": "row",
-      "height": 30,
       "justifyContent": "center",
-      "marginLeft": 16,
+      "paddingVertical": 15,
+      "shadowColor": "#58595B",
+      "shadowOffset": Object {
+        "height": 1,
+        "width": 0,
+      },
+      "shadowOpacity": 0.8,
+      "shadowRadius": 3,
     }
   }
 >
@@ -19,11 +25,11 @@ exports[`ItemsListHeader renders correctly 1`] = `
     ellipsizeMode="tail"
     style={
       Object {
-        "color": "white",
+        "color": "gray",
         "flex": 1,
         "fontFamily": "Roboto",
-        "fontSize": 17,
-        "fontWeight": "normal",
+        "fontSize": 20,
+        "fontWeight": "bold",
         "letterSpacing": 0,
         "lineHeight": 22,
         "marginLeft": 16,

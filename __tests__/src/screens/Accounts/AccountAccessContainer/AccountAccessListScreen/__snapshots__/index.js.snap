@@ -41,11 +41,18 @@ ShallowWrapper {
           source={1}
           style={undefined}
         />,
-        <FakeNavigationBar
-          navBarHidden={false}
-        />,
-        <ScreenTitle
-          title="Accounts"
+        <Image
+          source={
+            Object {
+              "testUri": "../../../src/assets/images/BitnationCover.jpg",
+            }
+          }
+          style={
+            Object {
+              "height": 300,
+              "width": 750,
+            }
+          }
         />,
         <FlatList
           ItemSeparatorComponent={[Function]}
@@ -76,49 +83,53 @@ ShallowWrapper {
             }
           }
         >
-          <Button
-            enabled={true}
-            onPress={[Function]}
+          <Styled(Button)
+            block={true}
+            onPress={undefined}
+            rounded={true}
             style={
               Object {
-                "alignSelf": "stretch",
-                "backgroundColor": "transparent",
-                "borderRadius": 0,
+                "alignSelf": "center",
+                "backgroundColor": "#FF8B00",
+                "borderColor": "#FF8B00",
+                "width": 300,
               }
             }
-            styleTitle={
+            virtual={undefined}
+          >
+            <Styled(Text)
+              virtual={undefined}
+            >
+              RESTORE ACCOUNT
+            </Styled(Text)>
+          </Styled(Button)>
+          <Styled(Button)
+            block={true}
+            bordered={true}
+            onPress={undefined}
+            rounded={true}
+            style={
               Object {
-                "color": "#58595B",
-                "fontSize": 15,
-                "fontWeight": "bold",
+                "alignSelf": "center",
+                "backgroundColor": "#FF8B00",
+                "borderColor": "#FF8B00",
+                "marginTop": 15,
+                "width": 300,
               }
             }
-            title="Restore Account"
-          />
+            virtual={undefined}
+            warning={true}
+          >
+            <Styled(Text)
+              virtual={undefined}
+            >
+              NEW ACCOUNT
+            </Styled(Text)>
+          </Styled(Button)>
           <View
             style={undefined}
           />
         </View>,
-        <Button
-          enabled={true}
-          onPress={[Function]}
-          style={
-            Object {
-              "alignSelf": "stretch",
-              "backgroundColor": "white",
-              "borderRadius": 0,
-              "height": 54,
-            }
-          }
-          styleTitle={
-            Object {
-              "color": "#FF8B00",
-              "fontSize": 15,
-              "fontWeight": "900",
-            }
-          }
-          title="NEW ACCOUNT"
-        />,
       ],
       "style": Object {
         "alignItems": "stretch",
@@ -144,20 +155,15 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "function",
+        "nodeType": "class",
         "props": Object {
-          "navBarHidden": false,
-        },
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
-      },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "function",
-        "props": Object {
-          "title": "Accounts",
+          "source": Object {
+            "testUri": "../../../src/assets/images/BitnationCover.jpg",
+          },
+          "style": Object {
+            "height": 300,
+            "width": 750,
+          },
         },
         "ref": null,
         "rendered": null,
@@ -195,25 +201,49 @@ ShallowWrapper {
         "nodeType": "class",
         "props": Object {
           "children": Array [
-            <Button
-              enabled={true}
-              onPress={[Function]}
+            <Styled(Button)
+              block={true}
+              onPress={undefined}
+              rounded={true}
               style={
                 Object {
-                  "alignSelf": "stretch",
-                  "backgroundColor": "transparent",
-                  "borderRadius": 0,
+                  "alignSelf": "center",
+                  "backgroundColor": "#FF8B00",
+                  "borderColor": "#FF8B00",
+                  "width": 300,
                 }
               }
-              styleTitle={
+              virtual={undefined}
+            >
+              <Styled(Text)
+                virtual={undefined}
+              >
+                RESTORE ACCOUNT
+              </Styled(Text)>
+            </Styled(Button)>,
+            <Styled(Button)
+              block={true}
+              bordered={true}
+              onPress={undefined}
+              rounded={true}
+              style={
                 Object {
-                  "color": "#58595B",
-                  "fontSize": 15,
-                  "fontWeight": "bold",
+                  "alignSelf": "center",
+                  "backgroundColor": "#FF8B00",
+                  "borderColor": "#FF8B00",
+                  "marginTop": 15,
+                  "width": 300,
                 }
               }
-              title="Restore Account"
-            />,
+              virtual={undefined}
+              warning={true}
+            >
+              <Styled(Text)
+                virtual={undefined}
+              >
+                NEW ACCOUNT
+              </Styled(Text)>
+            </Styled(Button)>,
             <View
               style={undefined}
             />,
@@ -229,25 +259,76 @@ ShallowWrapper {
           Object {
             "instance": null,
             "key": undefined,
-            "nodeType": "function",
+            "nodeType": "class",
             "props": Object {
-              "children": undefined,
-              "enabled": true,
-              "onPress": [Function],
+              "block": true,
+              "children": <Styled(Text)
+                virtual={undefined}
+              >
+                RESTORE ACCOUNT
+              </Styled(Text)>,
+              "onPress": undefined,
+              "rounded": true,
               "style": Object {
-                "alignSelf": "stretch",
-                "backgroundColor": "transparent",
-                "borderRadius": 0,
+                "alignSelf": "center",
+                "backgroundColor": "#FF8B00",
+                "borderColor": "#FF8B00",
+                "width": 300,
               },
-              "styleTitle": Object {
-                "color": "#58595B",
-                "fontSize": 15,
-                "fontWeight": "bold",
-              },
-              "title": "Restore Account",
+              "virtual": undefined,
             },
             "ref": null,
-            "rendered": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "RESTORE ACCOUNT",
+                "virtual": undefined,
+              },
+              "ref": null,
+              "rendered": "RESTORE ACCOUNT",
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "block": true,
+              "bordered": true,
+              "children": <Styled(Text)
+                virtual={undefined}
+              >
+                NEW ACCOUNT
+              </Styled(Text)>,
+              "onPress": undefined,
+              "rounded": true,
+              "style": Object {
+                "alignSelf": "center",
+                "backgroundColor": "#FF8B00",
+                "borderColor": "#FF8B00",
+                "marginTop": 15,
+                "width": 300,
+              },
+              "virtual": undefined,
+              "warning": true,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "NEW ACCOUNT",
+                "virtual": undefined,
+              },
+              "ref": null,
+              "rendered": "NEW ACCOUNT",
+              "type": [Function],
+            },
             "type": [Function],
           },
           Object {
@@ -264,31 +345,6 @@ ShallowWrapper {
         ],
         "type": [Function],
       },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "function",
-        "props": Object {
-          "children": undefined,
-          "enabled": true,
-          "onPress": [Function],
-          "style": Object {
-            "alignSelf": "stretch",
-            "backgroundColor": "white",
-            "borderRadius": 0,
-            "height": 54,
-          },
-          "styleTitle": Object {
-            "color": "#FF8B00",
-            "fontSize": 15,
-            "fontWeight": "900",
-          },
-          "title": "NEW ACCOUNT",
-        },
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
-      },
     ],
     "type": [Function],
   },
@@ -303,11 +359,18 @@ ShallowWrapper {
             source={1}
             style={undefined}
           />,
-          <FakeNavigationBar
-            navBarHidden={false}
-          />,
-          <ScreenTitle
-            title="Accounts"
+          <Image
+            source={
+              Object {
+                "testUri": "../../../src/assets/images/BitnationCover.jpg",
+              }
+            }
+            style={
+              Object {
+                "height": 300,
+                "width": 750,
+              }
+            }
           />,
           <FlatList
             ItemSeparatorComponent={[Function]}
@@ -338,49 +401,53 @@ ShallowWrapper {
               }
             }
           >
-            <Button
-              enabled={true}
-              onPress={[Function]}
+            <Styled(Button)
+              block={true}
+              onPress={undefined}
+              rounded={true}
               style={
                 Object {
-                  "alignSelf": "stretch",
-                  "backgroundColor": "transparent",
-                  "borderRadius": 0,
+                  "alignSelf": "center",
+                  "backgroundColor": "#FF8B00",
+                  "borderColor": "#FF8B00",
+                  "width": 300,
                 }
               }
-              styleTitle={
+              virtual={undefined}
+            >
+              <Styled(Text)
+                virtual={undefined}
+              >
+                RESTORE ACCOUNT
+              </Styled(Text)>
+            </Styled(Button)>
+            <Styled(Button)
+              block={true}
+              bordered={true}
+              onPress={undefined}
+              rounded={true}
+              style={
                 Object {
-                  "color": "#58595B",
-                  "fontSize": 15,
-                  "fontWeight": "bold",
+                  "alignSelf": "center",
+                  "backgroundColor": "#FF8B00",
+                  "borderColor": "#FF8B00",
+                  "marginTop": 15,
+                  "width": 300,
                 }
               }
-              title="Restore Account"
-            />
+              virtual={undefined}
+              warning={true}
+            >
+              <Styled(Text)
+                virtual={undefined}
+              >
+                NEW ACCOUNT
+              </Styled(Text)>
+            </Styled(Button)>
             <View
               style={undefined}
             />
           </View>,
-          <Button
-            enabled={true}
-            onPress={[Function]}
-            style={
-              Object {
-                "alignSelf": "stretch",
-                "backgroundColor": "white",
-                "borderRadius": 0,
-                "height": 54,
-              }
-            }
-            styleTitle={
-              Object {
-                "color": "#FF8B00",
-                "fontSize": 15,
-                "fontWeight": "900",
-              }
-            }
-            title="NEW ACCOUNT"
-          />,
         ],
         "style": Object {
           "alignItems": "stretch",
@@ -406,20 +473,15 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "function",
+          "nodeType": "class",
           "props": Object {
-            "navBarHidden": false,
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "function",
-          "props": Object {
-            "title": "Accounts",
+            "source": Object {
+              "testUri": "../../../src/assets/images/BitnationCover.jpg",
+            },
+            "style": Object {
+              "height": 300,
+              "width": 750,
+            },
           },
           "ref": null,
           "rendered": null,
@@ -457,25 +519,49 @@ ShallowWrapper {
           "nodeType": "class",
           "props": Object {
             "children": Array [
-              <Button
-                enabled={true}
-                onPress={[Function]}
+              <Styled(Button)
+                block={true}
+                onPress={undefined}
+                rounded={true}
                 style={
                   Object {
-                    "alignSelf": "stretch",
-                    "backgroundColor": "transparent",
-                    "borderRadius": 0,
+                    "alignSelf": "center",
+                    "backgroundColor": "#FF8B00",
+                    "borderColor": "#FF8B00",
+                    "width": 300,
                   }
                 }
-                styleTitle={
+                virtual={undefined}
+              >
+                <Styled(Text)
+                  virtual={undefined}
+                >
+                  RESTORE ACCOUNT
+                </Styled(Text)>
+              </Styled(Button)>,
+              <Styled(Button)
+                block={true}
+                bordered={true}
+                onPress={undefined}
+                rounded={true}
+                style={
                   Object {
-                    "color": "#58595B",
-                    "fontSize": 15,
-                    "fontWeight": "bold",
+                    "alignSelf": "center",
+                    "backgroundColor": "#FF8B00",
+                    "borderColor": "#FF8B00",
+                    "marginTop": 15,
+                    "width": 300,
                   }
                 }
-                title="Restore Account"
-              />,
+                virtual={undefined}
+                warning={true}
+              >
+                <Styled(Text)
+                  virtual={undefined}
+                >
+                  NEW ACCOUNT
+                </Styled(Text)>
+              </Styled(Button)>,
               <View
                 style={undefined}
               />,
@@ -491,25 +577,76 @@ ShallowWrapper {
             Object {
               "instance": null,
               "key": undefined,
-              "nodeType": "function",
+              "nodeType": "class",
               "props": Object {
-                "children": undefined,
-                "enabled": true,
-                "onPress": [Function],
+                "block": true,
+                "children": <Styled(Text)
+                  virtual={undefined}
+                >
+                  RESTORE ACCOUNT
+                </Styled(Text)>,
+                "onPress": undefined,
+                "rounded": true,
                 "style": Object {
-                  "alignSelf": "stretch",
-                  "backgroundColor": "transparent",
-                  "borderRadius": 0,
+                  "alignSelf": "center",
+                  "backgroundColor": "#FF8B00",
+                  "borderColor": "#FF8B00",
+                  "width": 300,
                 },
-                "styleTitle": Object {
-                  "color": "#58595B",
-                  "fontSize": 15,
-                  "fontWeight": "bold",
-                },
-                "title": "Restore Account",
+                "virtual": undefined,
               },
               "ref": null,
-              "rendered": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "RESTORE ACCOUNT",
+                  "virtual": undefined,
+                },
+                "ref": null,
+                "rendered": "RESTORE ACCOUNT",
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "block": true,
+                "bordered": true,
+                "children": <Styled(Text)
+                  virtual={undefined}
+                >
+                  NEW ACCOUNT
+                </Styled(Text)>,
+                "onPress": undefined,
+                "rounded": true,
+                "style": Object {
+                  "alignSelf": "center",
+                  "backgroundColor": "#FF8B00",
+                  "borderColor": "#FF8B00",
+                  "marginTop": 15,
+                  "width": 300,
+                },
+                "virtual": undefined,
+                "warning": true,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "NEW ACCOUNT",
+                  "virtual": undefined,
+                },
+                "ref": null,
+                "rendered": "NEW ACCOUNT",
+                "type": [Function],
+              },
               "type": [Function],
             },
             Object {
@@ -524,31 +661,6 @@ ShallowWrapper {
               "type": [Function],
             },
           ],
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "function",
-          "props": Object {
-            "children": undefined,
-            "enabled": true,
-            "onPress": [Function],
-            "style": Object {
-              "alignSelf": "stretch",
-              "backgroundColor": "white",
-              "borderRadius": 0,
-              "height": 54,
-            },
-            "styleTitle": Object {
-              "color": "#FF8B00",
-              "fontSize": 15,
-              "fontWeight": "900",
-            },
-            "title": "NEW ACCOUNT",
-          },
-          "ref": null,
-          "rendered": null,
           "type": [Function],
         },
       ],

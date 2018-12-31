@@ -4,8 +4,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { View, SectionList, Share } from 'react-native';
 import _ from 'lodash';
-import { Fab, Text } from 'native-base';
-
 import Dialog from 'react-native-dialog';
 
 import { openChat, startNewChat, fetchAllChats } from '../../../actions/chat';
@@ -13,10 +11,9 @@ import BackgroundImage from '../../../components/common/BackgroundImage';
 import styles from './styles';
 import { screen } from '../../../global/Screens';
 import ChatListItem from '../../../components/common/ChatListItem';
-import ChatListHeader from '../../../components/common/ItemsListHeader';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import Loading from '../../../components/common/Loading';
-import BaseTabComponent from '../../../components/common/BaseTabComponent';
+import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import LucyButton from '../../../components/common/LucyButton';
 import i18n from '../../../global/i18n';
 import Colors from '../../../global/colors';
@@ -26,7 +23,6 @@ import type {
   GiftedChatMessageType,
 } from '../../../types/Chat';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
-import ScreenTitle from '../../../components/common/ScreenTitle';
 import InviteSentModal from './InviteSentModal';
 import { panthalassaIdentityPublicKey } from '../../../services/panthalassa';
 import { imageSource } from '../../../utils/profile';
@@ -78,6 +74,10 @@ type Props = {
 
 type State = {
   /**
+   * @desc Flag whether screen is in appear.
+   */
+  isAppear: boolean,
+  /**
    * @desc User public key
    */
   publicKey: string,
@@ -103,7 +103,7 @@ type State = {
   contacts: Array<Contact>,
 };
 
-class ChatListScreen extends BaseTabComponent<Props, State> {
+class ChatListScreen extends NavigatorComponent<Props, State> {
   static navigatorButtons = {
     leftButtons: [
       {
@@ -124,6 +124,7 @@ class ChatListScreen extends BaseTabComponent<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
+      isAppear: false,
       publicKey: '',
       profile: null,
       showModal: '',
@@ -131,6 +132,23 @@ class ChatListScreen extends BaseTabComponent<Props, State> {
       contacts: [],
       chatName: '',
     };
+  }
+
+  onWillAppear() {
+    this.setState({ isAppear: true });
+  }
+
+  onWillDisappear() {
+    this.setState({ isAppear: false });
+  }
+
+  onHandleDeepLink(event) {
+    if (this.state.isAppear) {
+      const parts = event.link.split('/');
+      if (parts[0] === 'push') {
+        this.props.navigator.push(screen(parts[1]));
+      }
+    }
   }
 
   onNavBarButtonPress(id) {

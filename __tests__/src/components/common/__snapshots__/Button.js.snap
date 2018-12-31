@@ -4,11 +4,9 @@ exports[`Button component tests Behaviour Press does not work when button is dis
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Button
+  Symbol(enzyme.__unrendered__): <CustomButton
     enabled={false}
     onPress={[MockFunction]}
-    style={undefined}
-    title=""
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -22,24 +20,8 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "children": <TouchableOpacity
-        activeOpacity={0.2}
-        disabled={true}
-        onPress={[MockFunction]}
-        style={
-          Array [
-            Object {
-              "marginLeft": 13,
-              "marginRight": 13,
-            },
-          ]
-        }
-        testID="Touchable"
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          ellipsizeMode="tail"
+      "children": Array [
+        <Styled(Text)
           style={
             Array [
               Object {
@@ -56,31 +38,71 @@ ShallowWrapper {
               },
             ]
           }
-        >
-          
-        </Text>
-      </TouchableOpacity>,
+          virtual={undefined}
+        />,
+        undefined,
+      ],
+      "disabled": true,
+      "enabled": true,
+      "onPress": [MockFunction],
       "style": Array [
         Object {
+          "backgroundColor": "transparent",
           "borderRadius": 15,
+          "elevation": 0,
           "height": 30,
           "justifyContent": "center",
+          "shadowOffset": Object {
+            "height": 0,
+            "width": 0,
+          },
+          "shadowOpacity": 0,
         },
         undefined,
       ],
+      "testID": "Touchable",
+      "title": "",
     },
     "ref": null,
-    "rendered": Object {
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": undefined,
+          "style": Array [
+            Object {
+              "color": "#FF8B00",
+              "fontSize": 14,
+              "fontWeight": "bold",
+              "letterSpacing": -0.02,
+              "lineHeight": 19,
+              "textAlign": "center",
+            },
+            undefined,
+            Object {
+              "color": "#BBBDBF",
+            },
+          ],
+          "virtual": undefined,
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      undefined,
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
       "instance": null,
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "activeOpacity": 0.2,
         "children": Array [
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
+          <Styled(Text)
             style={
               Array [
                 Object {
@@ -97,20 +119,30 @@ ShallowWrapper {
                 },
               ]
             }
-          >
-            
-          </Text>,
+            virtual={undefined}
+          />,
           undefined,
         ],
         "disabled": true,
+        "enabled": true,
         "onPress": [MockFunction],
         "style": Array [
           Object {
-            "marginLeft": 13,
-            "marginRight": 13,
+            "backgroundColor": "transparent",
+            "borderRadius": 15,
+            "elevation": 0,
+            "height": 30,
+            "justifyContent": "center",
+            "shadowOffset": Object {
+              "height": 0,
+              "width": 0,
+            },
+            "shadowOpacity": 0,
           },
+          undefined,
         ],
         "testID": "Touchable",
+        "title": "",
       },
       "ref": null,
       "rendered": Array [
@@ -119,10 +151,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "accessible": true,
-            "allowFontScaling": true,
-            "children": "",
-            "ellipsizeMode": "tail",
+            "children": undefined,
             "style": Array [
               Object {
                 "color": "#FF8B00",
@@ -137,147 +166,14 @@ ShallowWrapper {
                 "color": "#BBBDBF",
               },
             ],
+            "virtual": undefined,
           },
           "ref": null,
-          "rendered": "",
+          "rendered": null,
           "type": [Function],
         },
         undefined,
       ],
-      "type": [Function],
-    },
-    "type": [Function],
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "class",
-      "props": Object {
-        "children": <TouchableOpacity
-          activeOpacity={0.2}
-          disabled={true}
-          onPress={[MockFunction]}
-          style={
-            Array [
-              Object {
-                "marginLeft": 13,
-                "marginRight": 13,
-              },
-            ]
-          }
-          testID="Touchable"
-        >
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
-            style={
-              Array [
-                Object {
-                  "color": "#FF8B00",
-                  "fontSize": 14,
-                  "fontWeight": "bold",
-                  "letterSpacing": -0.02,
-                  "lineHeight": 19,
-                  "textAlign": "center",
-                },
-                undefined,
-                Object {
-                  "color": "#BBBDBF",
-                },
-              ]
-            }
-          >
-            
-          </Text>
-        </TouchableOpacity>,
-        "style": Array [
-          Object {
-            "borderRadius": 15,
-            "height": 30,
-            "justifyContent": "center",
-          },
-          undefined,
-        ],
-      },
-      "ref": null,
-      "rendered": Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "activeOpacity": 0.2,
-          "children": Array [
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={
-                Array [
-                  Object {
-                    "color": "#FF8B00",
-                    "fontSize": 14,
-                    "fontWeight": "bold",
-                    "letterSpacing": -0.02,
-                    "lineHeight": 19,
-                    "textAlign": "center",
-                  },
-                  undefined,
-                  Object {
-                    "color": "#BBBDBF",
-                  },
-                ]
-              }
-            >
-              
-            </Text>,
-            undefined,
-          ],
-          "disabled": true,
-          "onPress": [MockFunction],
-          "style": Array [
-            Object {
-              "marginLeft": 13,
-              "marginRight": 13,
-            },
-          ],
-          "testID": "Touchable",
-        },
-        "ref": null,
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "accessible": true,
-              "allowFontScaling": true,
-              "children": "",
-              "ellipsizeMode": "tail",
-              "style": Array [
-                Object {
-                  "color": "#FF8B00",
-                  "fontSize": 14,
-                  "fontWeight": "bold",
-                  "letterSpacing": -0.02,
-                  "lineHeight": 19,
-                  "textAlign": "center",
-                },
-                undefined,
-                Object {
-                  "color": "#BBBDBF",
-                },
-              ],
-            },
-            "ref": null,
-            "rendered": "",
-            "type": [Function],
-          },
-          undefined,
-        ],
-        "type": [Function],
-      },
       "type": [Function],
     },
   ],
@@ -295,11 +191,9 @@ exports[`Button component tests Behaviour Press works 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Button
+  Symbol(enzyme.__unrendered__): <CustomButton
     enabled={true}
     onPress={[MockFunction]}
-    style={undefined}
-    title=""
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -313,24 +207,8 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "children": <TouchableOpacity
-        activeOpacity={0.2}
-        disabled={false}
-        onPress={[MockFunction]}
-        style={
-          Array [
-            Object {
-              "marginLeft": 13,
-              "marginRight": 13,
-            },
-          ]
-        }
-        testID="Touchable"
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          ellipsizeMode="tail"
+      "children": Array [
+        <Styled(Text)
           style={
             Array [
               Object {
@@ -345,31 +223,69 @@ ShallowWrapper {
               false,
             ]
           }
-        >
-          
-        </Text>
-      </TouchableOpacity>,
+          virtual={undefined}
+        />,
+        undefined,
+      ],
+      "disabled": false,
+      "enabled": true,
+      "onPress": [MockFunction],
       "style": Array [
         Object {
+          "backgroundColor": "transparent",
           "borderRadius": 15,
+          "elevation": 0,
           "height": 30,
           "justifyContent": "center",
+          "shadowOffset": Object {
+            "height": 0,
+            "width": 0,
+          },
+          "shadowOpacity": 0,
         },
         undefined,
       ],
+      "testID": "Touchable",
+      "title": "",
     },
     "ref": null,
-    "rendered": Object {
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": undefined,
+          "style": Array [
+            Object {
+              "color": "#FF8B00",
+              "fontSize": 14,
+              "fontWeight": "bold",
+              "letterSpacing": -0.02,
+              "lineHeight": 19,
+              "textAlign": "center",
+            },
+            undefined,
+            false,
+          ],
+          "virtual": undefined,
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      undefined,
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
       "instance": null,
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "activeOpacity": 0.2,
         "children": Array [
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
+          <Styled(Text)
             style={
               Array [
                 Object {
@@ -384,20 +300,30 @@ ShallowWrapper {
                 false,
               ]
             }
-          >
-            
-          </Text>,
+            virtual={undefined}
+          />,
           undefined,
         ],
         "disabled": false,
+        "enabled": true,
         "onPress": [MockFunction],
         "style": Array [
           Object {
-            "marginLeft": 13,
-            "marginRight": 13,
+            "backgroundColor": "transparent",
+            "borderRadius": 15,
+            "elevation": 0,
+            "height": 30,
+            "justifyContent": "center",
+            "shadowOffset": Object {
+              "height": 0,
+              "width": 0,
+            },
+            "shadowOpacity": 0,
           },
+          undefined,
         ],
         "testID": "Touchable",
+        "title": "",
       },
       "ref": null,
       "rendered": Array [
@@ -406,10 +332,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "accessible": true,
-            "allowFontScaling": true,
-            "children": "",
-            "ellipsizeMode": "tail",
+            "children": undefined,
             "style": Array [
               Object {
                 "color": "#FF8B00",
@@ -422,141 +345,14 @@ ShallowWrapper {
               undefined,
               false,
             ],
+            "virtual": undefined,
           },
           "ref": null,
-          "rendered": "",
+          "rendered": null,
           "type": [Function],
         },
         undefined,
       ],
-      "type": [Function],
-    },
-    "type": [Function],
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "class",
-      "props": Object {
-        "children": <TouchableOpacity
-          activeOpacity={0.2}
-          disabled={false}
-          onPress={[MockFunction]}
-          style={
-            Array [
-              Object {
-                "marginLeft": 13,
-                "marginRight": 13,
-              },
-            ]
-          }
-          testID="Touchable"
-        >
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
-            style={
-              Array [
-                Object {
-                  "color": "#FF8B00",
-                  "fontSize": 14,
-                  "fontWeight": "bold",
-                  "letterSpacing": -0.02,
-                  "lineHeight": 19,
-                  "textAlign": "center",
-                },
-                undefined,
-                false,
-              ]
-            }
-          >
-            
-          </Text>
-        </TouchableOpacity>,
-        "style": Array [
-          Object {
-            "borderRadius": 15,
-            "height": 30,
-            "justifyContent": "center",
-          },
-          undefined,
-        ],
-      },
-      "ref": null,
-      "rendered": Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "activeOpacity": 0.2,
-          "children": Array [
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={
-                Array [
-                  Object {
-                    "color": "#FF8B00",
-                    "fontSize": 14,
-                    "fontWeight": "bold",
-                    "letterSpacing": -0.02,
-                    "lineHeight": 19,
-                    "textAlign": "center",
-                  },
-                  undefined,
-                  false,
-                ]
-              }
-            >
-              
-            </Text>,
-            undefined,
-          ],
-          "disabled": false,
-          "onPress": [MockFunction],
-          "style": Array [
-            Object {
-              "marginLeft": 13,
-              "marginRight": 13,
-            },
-          ],
-          "testID": "Touchable",
-        },
-        "ref": null,
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "accessible": true,
-              "allowFontScaling": true,
-              "children": "",
-              "ellipsizeMode": "tail",
-              "style": Array [
-                Object {
-                  "color": "#FF8B00",
-                  "fontSize": 14,
-                  "fontWeight": "bold",
-                  "letterSpacing": -0.02,
-                  "lineHeight": 19,
-                  "textAlign": "center",
-                },
-                undefined,
-                false,
-              ],
-            },
-            "ref": null,
-            "rendered": "",
-            "type": [Function],
-          },
-          undefined,
-        ],
-        "type": [Function],
-      },
       "type": [Function],
     },
   ],
@@ -574,12 +370,7 @@ exports[`Button component tests Rendering Default 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Button
-    enabled={true}
-    onPress={[Function]}
-    style={undefined}
-    title=""
-  />,
+  Symbol(enzyme.__unrendered__): <CustomButton />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -592,24 +383,8 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "children": <TouchableOpacity
-        activeOpacity={0.2}
-        disabled={false}
-        onPress={[Function]}
-        style={
-          Array [
-            Object {
-              "marginLeft": 13,
-              "marginRight": 13,
-            },
-          ]
-        }
-        testID="Touchable"
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          ellipsizeMode="tail"
+      "children": Array [
+        <Styled(Text)
           style={
             Array [
               Object {
@@ -624,31 +399,69 @@ ShallowWrapper {
               false,
             ]
           }
-        >
-          
-        </Text>
-      </TouchableOpacity>,
+          virtual={undefined}
+        />,
+        undefined,
+      ],
+      "disabled": true,
+      "enabled": true,
+      "onPress": [Function],
       "style": Array [
         Object {
+          "backgroundColor": "transparent",
           "borderRadius": 15,
+          "elevation": 0,
           "height": 30,
           "justifyContent": "center",
+          "shadowOffset": Object {
+            "height": 0,
+            "width": 0,
+          },
+          "shadowOpacity": 0,
         },
         undefined,
       ],
+      "testID": "Touchable",
+      "title": "",
     },
     "ref": null,
-    "rendered": Object {
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": undefined,
+          "style": Array [
+            Object {
+              "color": "#FF8B00",
+              "fontSize": 14,
+              "fontWeight": "bold",
+              "letterSpacing": -0.02,
+              "lineHeight": 19,
+              "textAlign": "center",
+            },
+            undefined,
+            false,
+          ],
+          "virtual": undefined,
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      undefined,
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
       "instance": null,
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "activeOpacity": 0.2,
         "children": Array [
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
+          <Styled(Text)
             style={
               Array [
                 Object {
@@ -663,20 +476,30 @@ ShallowWrapper {
                 false,
               ]
             }
-          >
-            
-          </Text>,
+            virtual={undefined}
+          />,
           undefined,
         ],
-        "disabled": false,
+        "disabled": true,
+        "enabled": true,
         "onPress": [Function],
         "style": Array [
           Object {
-            "marginLeft": 13,
-            "marginRight": 13,
+            "backgroundColor": "transparent",
+            "borderRadius": 15,
+            "elevation": 0,
+            "height": 30,
+            "justifyContent": "center",
+            "shadowOffset": Object {
+              "height": 0,
+              "width": 0,
+            },
+            "shadowOpacity": 0,
           },
+          undefined,
         ],
         "testID": "Touchable",
+        "title": "",
       },
       "ref": null,
       "rendered": Array [
@@ -685,10 +508,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "accessible": true,
-            "allowFontScaling": true,
-            "children": "",
-            "ellipsizeMode": "tail",
+            "children": undefined,
             "style": Array [
               Object {
                 "color": "#FF8B00",
@@ -701,141 +521,14 @@ ShallowWrapper {
               undefined,
               false,
             ],
+            "virtual": undefined,
           },
           "ref": null,
-          "rendered": "",
+          "rendered": null,
           "type": [Function],
         },
         undefined,
       ],
-      "type": [Function],
-    },
-    "type": [Function],
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "class",
-      "props": Object {
-        "children": <TouchableOpacity
-          activeOpacity={0.2}
-          disabled={false}
-          onPress={[Function]}
-          style={
-            Array [
-              Object {
-                "marginLeft": 13,
-                "marginRight": 13,
-              },
-            ]
-          }
-          testID="Touchable"
-        >
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
-            style={
-              Array [
-                Object {
-                  "color": "#FF8B00",
-                  "fontSize": 14,
-                  "fontWeight": "bold",
-                  "letterSpacing": -0.02,
-                  "lineHeight": 19,
-                  "textAlign": "center",
-                },
-                undefined,
-                false,
-              ]
-            }
-          >
-            
-          </Text>
-        </TouchableOpacity>,
-        "style": Array [
-          Object {
-            "borderRadius": 15,
-            "height": 30,
-            "justifyContent": "center",
-          },
-          undefined,
-        ],
-      },
-      "ref": null,
-      "rendered": Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "activeOpacity": 0.2,
-          "children": Array [
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={
-                Array [
-                  Object {
-                    "color": "#FF8B00",
-                    "fontSize": 14,
-                    "fontWeight": "bold",
-                    "letterSpacing": -0.02,
-                    "lineHeight": 19,
-                    "textAlign": "center",
-                  },
-                  undefined,
-                  false,
-                ]
-              }
-            >
-              
-            </Text>,
-            undefined,
-          ],
-          "disabled": false,
-          "onPress": [Function],
-          "style": Array [
-            Object {
-              "marginLeft": 13,
-              "marginRight": 13,
-            },
-          ],
-          "testID": "Touchable",
-        },
-        "ref": null,
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "accessible": true,
-              "allowFontScaling": true,
-              "children": "",
-              "ellipsizeMode": "tail",
-              "style": Array [
-                Object {
-                  "color": "#FF8B00",
-                  "fontSize": 14,
-                  "fontWeight": "bold",
-                  "letterSpacing": -0.02,
-                  "lineHeight": 19,
-                  "textAlign": "center",
-                },
-                undefined,
-                false,
-              ],
-            },
-            "ref": null,
-            "rendered": "",
-            "type": [Function],
-          },
-          undefined,
-        ],
-        "type": [Function],
-      },
       "type": [Function],
     },
   ],
@@ -853,11 +546,8 @@ exports[`Button component tests Rendering Disabled 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Button
+  Symbol(enzyme.__unrendered__): <CustomButton
     enabled={false}
-    onPress={[Function]}
-    style={undefined}
-    title=""
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -871,24 +561,8 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "children": <TouchableOpacity
-        activeOpacity={0.2}
-        disabled={true}
-        onPress={[Function]}
-        style={
-          Array [
-            Object {
-              "marginLeft": 13,
-              "marginRight": 13,
-            },
-          ]
-        }
-        testID="Touchable"
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          ellipsizeMode="tail"
+      "children": Array [
+        <Styled(Text)
           style={
             Array [
               Object {
@@ -905,31 +579,71 @@ ShallowWrapper {
               },
             ]
           }
-        >
-          
-        </Text>
-      </TouchableOpacity>,
+          virtual={undefined}
+        />,
+        undefined,
+      ],
+      "disabled": true,
+      "enabled": true,
+      "onPress": [Function],
       "style": Array [
         Object {
+          "backgroundColor": "transparent",
           "borderRadius": 15,
+          "elevation": 0,
           "height": 30,
           "justifyContent": "center",
+          "shadowOffset": Object {
+            "height": 0,
+            "width": 0,
+          },
+          "shadowOpacity": 0,
         },
         undefined,
       ],
+      "testID": "Touchable",
+      "title": "",
     },
     "ref": null,
-    "rendered": Object {
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": undefined,
+          "style": Array [
+            Object {
+              "color": "#FF8B00",
+              "fontSize": 14,
+              "fontWeight": "bold",
+              "letterSpacing": -0.02,
+              "lineHeight": 19,
+              "textAlign": "center",
+            },
+            undefined,
+            Object {
+              "color": "#BBBDBF",
+            },
+          ],
+          "virtual": undefined,
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      undefined,
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
       "instance": null,
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "activeOpacity": 0.2,
         "children": Array [
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
+          <Styled(Text)
             style={
               Array [
                 Object {
@@ -946,20 +660,30 @@ ShallowWrapper {
                 },
               ]
             }
-          >
-            
-          </Text>,
+            virtual={undefined}
+          />,
           undefined,
         ],
         "disabled": true,
+        "enabled": true,
         "onPress": [Function],
         "style": Array [
           Object {
-            "marginLeft": 13,
-            "marginRight": 13,
+            "backgroundColor": "transparent",
+            "borderRadius": 15,
+            "elevation": 0,
+            "height": 30,
+            "justifyContent": "center",
+            "shadowOffset": Object {
+              "height": 0,
+              "width": 0,
+            },
+            "shadowOpacity": 0,
           },
+          undefined,
         ],
         "testID": "Touchable",
+        "title": "",
       },
       "ref": null,
       "rendered": Array [
@@ -968,10 +692,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "accessible": true,
-            "allowFontScaling": true,
-            "children": "",
-            "ellipsizeMode": "tail",
+            "children": undefined,
             "style": Array [
               Object {
                 "color": "#FF8B00",
@@ -986,147 +707,14 @@ ShallowWrapper {
                 "color": "#BBBDBF",
               },
             ],
+            "virtual": undefined,
           },
           "ref": null,
-          "rendered": "",
+          "rendered": null,
           "type": [Function],
         },
         undefined,
       ],
-      "type": [Function],
-    },
-    "type": [Function],
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "class",
-      "props": Object {
-        "children": <TouchableOpacity
-          activeOpacity={0.2}
-          disabled={true}
-          onPress={[Function]}
-          style={
-            Array [
-              Object {
-                "marginLeft": 13,
-                "marginRight": 13,
-              },
-            ]
-          }
-          testID="Touchable"
-        >
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
-            style={
-              Array [
-                Object {
-                  "color": "#FF8B00",
-                  "fontSize": 14,
-                  "fontWeight": "bold",
-                  "letterSpacing": -0.02,
-                  "lineHeight": 19,
-                  "textAlign": "center",
-                },
-                undefined,
-                Object {
-                  "color": "#BBBDBF",
-                },
-              ]
-            }
-          >
-            
-          </Text>
-        </TouchableOpacity>,
-        "style": Array [
-          Object {
-            "borderRadius": 15,
-            "height": 30,
-            "justifyContent": "center",
-          },
-          undefined,
-        ],
-      },
-      "ref": null,
-      "rendered": Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "activeOpacity": 0.2,
-          "children": Array [
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={
-                Array [
-                  Object {
-                    "color": "#FF8B00",
-                    "fontSize": 14,
-                    "fontWeight": "bold",
-                    "letterSpacing": -0.02,
-                    "lineHeight": 19,
-                    "textAlign": "center",
-                  },
-                  undefined,
-                  Object {
-                    "color": "#BBBDBF",
-                  },
-                ]
-              }
-            >
-              
-            </Text>,
-            undefined,
-          ],
-          "disabled": true,
-          "onPress": [Function],
-          "style": Array [
-            Object {
-              "marginLeft": 13,
-              "marginRight": 13,
-            },
-          ],
-          "testID": "Touchable",
-        },
-        "ref": null,
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "accessible": true,
-              "allowFontScaling": true,
-              "children": "",
-              "ellipsizeMode": "tail",
-              "style": Array [
-                Object {
-                  "color": "#FF8B00",
-                  "fontSize": 14,
-                  "fontWeight": "bold",
-                  "letterSpacing": -0.02,
-                  "lineHeight": 19,
-                  "textAlign": "center",
-                },
-                undefined,
-                Object {
-                  "color": "#BBBDBF",
-                },
-              ],
-            },
-            "ref": null,
-            "rendered": "",
-            "type": [Function],
-          },
-          undefined,
-        ],
-        "type": [Function],
-      },
       "type": [Function],
     },
   ],
@@ -1144,11 +732,8 @@ exports[`Button component tests Rendering Disabled with children 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Button
+  Symbol(enzyme.__unrendered__): <CustomButton
     enabled={false}
-    onPress={[Function]}
-    style={undefined}
-    title=""
   >
     <Text
       accessible={true}
@@ -1157,7 +742,7 @@ ShallowWrapper {
     >
       Custom text inside button
     </Text>
-  </Button>,
+  </CustomButton>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -1170,44 +755,63 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "children": <TouchableOpacity
-        activeOpacity={0.2}
-        disabled={true}
-        onPress={[Function]}
-        style={
-          Array [
-            Object {
-              "marginLeft": 13,
-              "marginRight": 13,
-            },
-          ]
-        }
-        testID="Touchable"
-      >
+      "children": Array [
         <Text
           accessible={true}
           allowFontScaling={true}
           ellipsizeMode="tail"
         >
           Custom text inside button
-        </Text>
-      </TouchableOpacity>,
+        </Text>,
+        undefined,
+      ],
+      "disabled": true,
+      "enabled": true,
+      "onPress": [Function],
       "style": Array [
         Object {
+          "backgroundColor": "transparent",
           "borderRadius": 15,
+          "elevation": 0,
           "height": 30,
           "justifyContent": "center",
+          "shadowOffset": Object {
+            "height": 0,
+            "width": 0,
+          },
+          "shadowOpacity": 0,
         },
         undefined,
       ],
+      "testID": "Touchable",
+      "title": "",
     },
     "ref": null,
-    "rendered": Object {
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "accessible": true,
+          "allowFontScaling": true,
+          "children": "Custom text inside button",
+          "ellipsizeMode": "tail",
+        },
+        "ref": null,
+        "rendered": "Custom text inside button",
+        "type": [Function],
+      },
+      undefined,
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
       "instance": null,
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "activeOpacity": 0.2,
         "children": Array [
           <Text
             accessible={true}
@@ -1219,14 +823,25 @@ ShallowWrapper {
           undefined,
         ],
         "disabled": true,
+        "enabled": true,
         "onPress": [Function],
         "style": Array [
           Object {
-            "marginLeft": 13,
-            "marginRight": 13,
+            "backgroundColor": "transparent",
+            "borderRadius": 15,
+            "elevation": 0,
+            "height": 30,
+            "justifyContent": "center",
+            "shadowOffset": Object {
+              "height": 0,
+              "width": 0,
+            },
+            "shadowOpacity": 0,
           },
+          undefined,
         ],
         "testID": "Touchable",
+        "title": "",
       },
       "ref": null,
       "rendered": Array [
@@ -1246,94 +861,6 @@ ShallowWrapper {
         },
         undefined,
       ],
-      "type": [Function],
-    },
-    "type": [Function],
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "class",
-      "props": Object {
-        "children": <TouchableOpacity
-          activeOpacity={0.2}
-          disabled={true}
-          onPress={[Function]}
-          style={
-            Array [
-              Object {
-                "marginLeft": 13,
-                "marginRight": 13,
-              },
-            ]
-          }
-          testID="Touchable"
-        >
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
-          >
-            Custom text inside button
-          </Text>
-        </TouchableOpacity>,
-        "style": Array [
-          Object {
-            "borderRadius": 15,
-            "height": 30,
-            "justifyContent": "center",
-          },
-          undefined,
-        ],
-      },
-      "ref": null,
-      "rendered": Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "activeOpacity": 0.2,
-          "children": Array [
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-            >
-              Custom text inside button
-            </Text>,
-            undefined,
-          ],
-          "disabled": true,
-          "onPress": [Function],
-          "style": Array [
-            Object {
-              "marginLeft": 13,
-              "marginRight": 13,
-            },
-          ],
-          "testID": "Touchable",
-        },
-        "ref": null,
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "accessible": true,
-              "allowFontScaling": true,
-              "children": "Custom text inside button",
-              "ellipsizeMode": "tail",
-            },
-            "ref": null,
-            "rendered": "Custom text inside button",
-            "type": [Function],
-          },
-          undefined,
-        ],
-        "type": [Function],
-      },
       "type": [Function],
     },
   ],
@@ -1351,10 +878,8 @@ exports[`Button component tests Rendering Disabled with title 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Button
+  Symbol(enzyme.__unrendered__): <CustomButton
     enabled={false}
-    onPress={[Function]}
-    style={undefined}
     title="Testing title"
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -1369,24 +894,8 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "children": <TouchableOpacity
-        activeOpacity={0.2}
-        disabled={true}
-        onPress={[Function]}
-        style={
-          Array [
-            Object {
-              "marginLeft": 13,
-              "marginRight": 13,
-            },
-          ]
-        }
-        testID="Touchable"
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          ellipsizeMode="tail"
+      "children": Array [
+        <Styled(Text)
           style={
             Array [
               Object {
@@ -1403,31 +912,73 @@ ShallowWrapper {
               },
             ]
           }
+          virtual={undefined}
         >
           Testing title
-        </Text>
-      </TouchableOpacity>,
+        </Styled(Text)>,
+        undefined,
+      ],
+      "disabled": true,
+      "enabled": true,
+      "onPress": [Function],
       "style": Array [
         Object {
+          "backgroundColor": "transparent",
           "borderRadius": 15,
+          "elevation": 0,
           "height": 30,
           "justifyContent": "center",
+          "shadowOffset": Object {
+            "height": 0,
+            "width": 0,
+          },
+          "shadowOpacity": 0,
         },
         undefined,
       ],
+      "testID": "Touchable",
+      "title": "",
     },
     "ref": null,
-    "rendered": Object {
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": "Testing title",
+          "style": Array [
+            Object {
+              "color": "#FF8B00",
+              "fontSize": 14,
+              "fontWeight": "bold",
+              "letterSpacing": -0.02,
+              "lineHeight": 19,
+              "textAlign": "center",
+            },
+            undefined,
+            Object {
+              "color": "#BBBDBF",
+            },
+          ],
+          "virtual": undefined,
+        },
+        "ref": null,
+        "rendered": "Testing title",
+        "type": [Function],
+      },
+      undefined,
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
       "instance": null,
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "activeOpacity": 0.2,
         "children": Array [
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
+          <Styled(Text)
             style={
               Array [
                 Object {
@@ -1444,20 +995,32 @@ ShallowWrapper {
                 },
               ]
             }
+            virtual={undefined}
           >
             Testing title
-          </Text>,
+          </Styled(Text)>,
           undefined,
         ],
         "disabled": true,
+        "enabled": true,
         "onPress": [Function],
         "style": Array [
           Object {
-            "marginLeft": 13,
-            "marginRight": 13,
+            "backgroundColor": "transparent",
+            "borderRadius": 15,
+            "elevation": 0,
+            "height": 30,
+            "justifyContent": "center",
+            "shadowOffset": Object {
+              "height": 0,
+              "width": 0,
+            },
+            "shadowOpacity": 0,
           },
+          undefined,
         ],
         "testID": "Touchable",
+        "title": "",
       },
       "ref": null,
       "rendered": Array [
@@ -1466,10 +1029,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "accessible": true,
-            "allowFontScaling": true,
             "children": "Testing title",
-            "ellipsizeMode": "tail",
             "style": Array [
               Object {
                 "color": "#FF8B00",
@@ -1484,6 +1044,7 @@ ShallowWrapper {
                 "color": "#BBBDBF",
               },
             ],
+            "virtual": undefined,
           },
           "ref": null,
           "rendered": "Testing title",
@@ -1491,140 +1052,6 @@ ShallowWrapper {
         },
         undefined,
       ],
-      "type": [Function],
-    },
-    "type": [Function],
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "class",
-      "props": Object {
-        "children": <TouchableOpacity
-          activeOpacity={0.2}
-          disabled={true}
-          onPress={[Function]}
-          style={
-            Array [
-              Object {
-                "marginLeft": 13,
-                "marginRight": 13,
-              },
-            ]
-          }
-          testID="Touchable"
-        >
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
-            style={
-              Array [
-                Object {
-                  "color": "#FF8B00",
-                  "fontSize": 14,
-                  "fontWeight": "bold",
-                  "letterSpacing": -0.02,
-                  "lineHeight": 19,
-                  "textAlign": "center",
-                },
-                undefined,
-                Object {
-                  "color": "#BBBDBF",
-                },
-              ]
-            }
-          >
-            Testing title
-          </Text>
-        </TouchableOpacity>,
-        "style": Array [
-          Object {
-            "borderRadius": 15,
-            "height": 30,
-            "justifyContent": "center",
-          },
-          undefined,
-        ],
-      },
-      "ref": null,
-      "rendered": Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "activeOpacity": 0.2,
-          "children": Array [
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={
-                Array [
-                  Object {
-                    "color": "#FF8B00",
-                    "fontSize": 14,
-                    "fontWeight": "bold",
-                    "letterSpacing": -0.02,
-                    "lineHeight": 19,
-                    "textAlign": "center",
-                  },
-                  undefined,
-                  Object {
-                    "color": "#BBBDBF",
-                  },
-                ]
-              }
-            >
-              Testing title
-            </Text>,
-            undefined,
-          ],
-          "disabled": true,
-          "onPress": [Function],
-          "style": Array [
-            Object {
-              "marginLeft": 13,
-              "marginRight": 13,
-            },
-          ],
-          "testID": "Touchable",
-        },
-        "ref": null,
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "accessible": true,
-              "allowFontScaling": true,
-              "children": "Testing title",
-              "ellipsizeMode": "tail",
-              "style": Array [
-                Object {
-                  "color": "#FF8B00",
-                  "fontSize": 14,
-                  "fontWeight": "bold",
-                  "letterSpacing": -0.02,
-                  "lineHeight": 19,
-                  "textAlign": "center",
-                },
-                undefined,
-                Object {
-                  "color": "#BBBDBF",
-                },
-              ],
-            },
-            "ref": null,
-            "rendered": "Testing title",
-            "type": [Function],
-          },
-          undefined,
-        ],
-        "type": [Function],
-      },
       "type": [Function],
     },
   ],
@@ -1642,11 +1069,8 @@ exports[`Button component tests Rendering Enabled 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Button
+  Symbol(enzyme.__unrendered__): <CustomButton
     enabled={true}
-    onPress={[Function]}
-    style={undefined}
-    title=""
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -1660,24 +1084,8 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "children": <TouchableOpacity
-        activeOpacity={0.2}
-        disabled={false}
-        onPress={[Function]}
-        style={
-          Array [
-            Object {
-              "marginLeft": 13,
-              "marginRight": 13,
-            },
-          ]
-        }
-        testID="Touchable"
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          ellipsizeMode="tail"
+      "children": Array [
+        <Styled(Text)
           style={
             Array [
               Object {
@@ -1692,31 +1100,69 @@ ShallowWrapper {
               false,
             ]
           }
-        >
-          
-        </Text>
-      </TouchableOpacity>,
+          virtual={undefined}
+        />,
+        undefined,
+      ],
+      "disabled": false,
+      "enabled": true,
+      "onPress": [Function],
       "style": Array [
         Object {
+          "backgroundColor": "transparent",
           "borderRadius": 15,
+          "elevation": 0,
           "height": 30,
           "justifyContent": "center",
+          "shadowOffset": Object {
+            "height": 0,
+            "width": 0,
+          },
+          "shadowOpacity": 0,
         },
         undefined,
       ],
+      "testID": "Touchable",
+      "title": "",
     },
     "ref": null,
-    "rendered": Object {
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": undefined,
+          "style": Array [
+            Object {
+              "color": "#FF8B00",
+              "fontSize": 14,
+              "fontWeight": "bold",
+              "letterSpacing": -0.02,
+              "lineHeight": 19,
+              "textAlign": "center",
+            },
+            undefined,
+            false,
+          ],
+          "virtual": undefined,
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      undefined,
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
       "instance": null,
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "activeOpacity": 0.2,
         "children": Array [
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
+          <Styled(Text)
             style={
               Array [
                 Object {
@@ -1731,20 +1177,30 @@ ShallowWrapper {
                 false,
               ]
             }
-          >
-            
-          </Text>,
+            virtual={undefined}
+          />,
           undefined,
         ],
         "disabled": false,
+        "enabled": true,
         "onPress": [Function],
         "style": Array [
           Object {
-            "marginLeft": 13,
-            "marginRight": 13,
+            "backgroundColor": "transparent",
+            "borderRadius": 15,
+            "elevation": 0,
+            "height": 30,
+            "justifyContent": "center",
+            "shadowOffset": Object {
+              "height": 0,
+              "width": 0,
+            },
+            "shadowOpacity": 0,
           },
+          undefined,
         ],
         "testID": "Touchable",
+        "title": "",
       },
       "ref": null,
       "rendered": Array [
@@ -1753,10 +1209,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "accessible": true,
-            "allowFontScaling": true,
-            "children": "",
-            "ellipsizeMode": "tail",
+            "children": undefined,
             "style": Array [
               Object {
                 "color": "#FF8B00",
@@ -1769,141 +1222,14 @@ ShallowWrapper {
               undefined,
               false,
             ],
+            "virtual": undefined,
           },
           "ref": null,
-          "rendered": "",
+          "rendered": null,
           "type": [Function],
         },
         undefined,
       ],
-      "type": [Function],
-    },
-    "type": [Function],
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "class",
-      "props": Object {
-        "children": <TouchableOpacity
-          activeOpacity={0.2}
-          disabled={false}
-          onPress={[Function]}
-          style={
-            Array [
-              Object {
-                "marginLeft": 13,
-                "marginRight": 13,
-              },
-            ]
-          }
-          testID="Touchable"
-        >
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
-            style={
-              Array [
-                Object {
-                  "color": "#FF8B00",
-                  "fontSize": 14,
-                  "fontWeight": "bold",
-                  "letterSpacing": -0.02,
-                  "lineHeight": 19,
-                  "textAlign": "center",
-                },
-                undefined,
-                false,
-              ]
-            }
-          >
-            
-          </Text>
-        </TouchableOpacity>,
-        "style": Array [
-          Object {
-            "borderRadius": 15,
-            "height": 30,
-            "justifyContent": "center",
-          },
-          undefined,
-        ],
-      },
-      "ref": null,
-      "rendered": Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "activeOpacity": 0.2,
-          "children": Array [
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={
-                Array [
-                  Object {
-                    "color": "#FF8B00",
-                    "fontSize": 14,
-                    "fontWeight": "bold",
-                    "letterSpacing": -0.02,
-                    "lineHeight": 19,
-                    "textAlign": "center",
-                  },
-                  undefined,
-                  false,
-                ]
-              }
-            >
-              
-            </Text>,
-            undefined,
-          ],
-          "disabled": false,
-          "onPress": [Function],
-          "style": Array [
-            Object {
-              "marginLeft": 13,
-              "marginRight": 13,
-            },
-          ],
-          "testID": "Touchable",
-        },
-        "ref": null,
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "accessible": true,
-              "allowFontScaling": true,
-              "children": "",
-              "ellipsizeMode": "tail",
-              "style": Array [
-                Object {
-                  "color": "#FF8B00",
-                  "fontSize": 14,
-                  "fontWeight": "bold",
-                  "letterSpacing": -0.02,
-                  "lineHeight": 19,
-                  "textAlign": "center",
-                },
-                undefined,
-                false,
-              ],
-            },
-            "ref": null,
-            "rendered": "",
-            "type": [Function],
-          },
-          undefined,
-        ],
-        "type": [Function],
-      },
       "type": [Function],
     },
   ],
@@ -1921,11 +1247,8 @@ exports[`Button component tests Rendering Enabled with children 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Button
+  Symbol(enzyme.__unrendered__): <CustomButton
     enabled={true}
-    onPress={[Function]}
-    style={undefined}
-    title=""
   >
     <Text
       accessible={true}
@@ -1934,7 +1257,7 @@ ShallowWrapper {
     >
       Custom text inside button
     </Text>
-  </Button>,
+  </CustomButton>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -1947,44 +1270,63 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "children": <TouchableOpacity
-        activeOpacity={0.2}
-        disabled={false}
-        onPress={[Function]}
-        style={
-          Array [
-            Object {
-              "marginLeft": 13,
-              "marginRight": 13,
-            },
-          ]
-        }
-        testID="Touchable"
-      >
+      "children": Array [
         <Text
           accessible={true}
           allowFontScaling={true}
           ellipsizeMode="tail"
         >
           Custom text inside button
-        </Text>
-      </TouchableOpacity>,
+        </Text>,
+        undefined,
+      ],
+      "disabled": false,
+      "enabled": true,
+      "onPress": [Function],
       "style": Array [
         Object {
+          "backgroundColor": "transparent",
           "borderRadius": 15,
+          "elevation": 0,
           "height": 30,
           "justifyContent": "center",
+          "shadowOffset": Object {
+            "height": 0,
+            "width": 0,
+          },
+          "shadowOpacity": 0,
         },
         undefined,
       ],
+      "testID": "Touchable",
+      "title": "",
     },
     "ref": null,
-    "rendered": Object {
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "accessible": true,
+          "allowFontScaling": true,
+          "children": "Custom text inside button",
+          "ellipsizeMode": "tail",
+        },
+        "ref": null,
+        "rendered": "Custom text inside button",
+        "type": [Function],
+      },
+      undefined,
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
       "instance": null,
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "activeOpacity": 0.2,
         "children": Array [
           <Text
             accessible={true}
@@ -1996,14 +1338,25 @@ ShallowWrapper {
           undefined,
         ],
         "disabled": false,
+        "enabled": true,
         "onPress": [Function],
         "style": Array [
           Object {
-            "marginLeft": 13,
-            "marginRight": 13,
+            "backgroundColor": "transparent",
+            "borderRadius": 15,
+            "elevation": 0,
+            "height": 30,
+            "justifyContent": "center",
+            "shadowOffset": Object {
+              "height": 0,
+              "width": 0,
+            },
+            "shadowOpacity": 0,
           },
+          undefined,
         ],
         "testID": "Touchable",
+        "title": "",
       },
       "ref": null,
       "rendered": Array [
@@ -2025,94 +1378,6 @@ ShallowWrapper {
       ],
       "type": [Function],
     },
-    "type": [Function],
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "class",
-      "props": Object {
-        "children": <TouchableOpacity
-          activeOpacity={0.2}
-          disabled={false}
-          onPress={[Function]}
-          style={
-            Array [
-              Object {
-                "marginLeft": 13,
-                "marginRight": 13,
-              },
-            ]
-          }
-          testID="Touchable"
-        >
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
-          >
-            Custom text inside button
-          </Text>
-        </TouchableOpacity>,
-        "style": Array [
-          Object {
-            "borderRadius": 15,
-            "height": 30,
-            "justifyContent": "center",
-          },
-          undefined,
-        ],
-      },
-      "ref": null,
-      "rendered": Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "activeOpacity": 0.2,
-          "children": Array [
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-            >
-              Custom text inside button
-            </Text>,
-            undefined,
-          ],
-          "disabled": false,
-          "onPress": [Function],
-          "style": Array [
-            Object {
-              "marginLeft": 13,
-              "marginRight": 13,
-            },
-          ],
-          "testID": "Touchable",
-        },
-        "ref": null,
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "accessible": true,
-              "allowFontScaling": true,
-              "children": "Custom text inside button",
-              "ellipsizeMode": "tail",
-            },
-            "ref": null,
-            "rendered": "Custom text inside button",
-            "type": [Function],
-          },
-          undefined,
-        ],
-        "type": [Function],
-      },
-      "type": [Function],
-    },
   ],
   Symbol(enzyme.__options__): Object {
     "adapter": ReactSixteenAdapter {
@@ -2128,10 +1393,8 @@ exports[`Button component tests Rendering Enabled with title 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Button
+  Symbol(enzyme.__unrendered__): <CustomButton
     enabled={true}
-    onPress={[Function]}
-    style={undefined}
     title="Testing title"
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -2146,24 +1409,8 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "children": <TouchableOpacity
-        activeOpacity={0.2}
-        disabled={false}
-        onPress={[Function]}
-        style={
-          Array [
-            Object {
-              "marginLeft": 13,
-              "marginRight": 13,
-            },
-          ]
-        }
-        testID="Touchable"
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          ellipsizeMode="tail"
+      "children": Array [
+        <Styled(Text)
           style={
             Array [
               Object {
@@ -2178,31 +1425,71 @@ ShallowWrapper {
               false,
             ]
           }
+          virtual={undefined}
         >
           Testing title
-        </Text>
-      </TouchableOpacity>,
+        </Styled(Text)>,
+        undefined,
+      ],
+      "disabled": false,
+      "enabled": true,
+      "onPress": [Function],
       "style": Array [
         Object {
+          "backgroundColor": "transparent",
           "borderRadius": 15,
+          "elevation": 0,
           "height": 30,
           "justifyContent": "center",
+          "shadowOffset": Object {
+            "height": 0,
+            "width": 0,
+          },
+          "shadowOpacity": 0,
         },
         undefined,
       ],
+      "testID": "Touchable",
+      "title": "",
     },
     "ref": null,
-    "rendered": Object {
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": "Testing title",
+          "style": Array [
+            Object {
+              "color": "#FF8B00",
+              "fontSize": 14,
+              "fontWeight": "bold",
+              "letterSpacing": -0.02,
+              "lineHeight": 19,
+              "textAlign": "center",
+            },
+            undefined,
+            false,
+          ],
+          "virtual": undefined,
+        },
+        "ref": null,
+        "rendered": "Testing title",
+        "type": [Function],
+      },
+      undefined,
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
       "instance": null,
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "activeOpacity": 0.2,
         "children": Array [
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
+          <Styled(Text)
             style={
               Array [
                 Object {
@@ -2217,20 +1504,32 @@ ShallowWrapper {
                 false,
               ]
             }
+            virtual={undefined}
           >
             Testing title
-          </Text>,
+          </Styled(Text)>,
           undefined,
         ],
         "disabled": false,
+        "enabled": true,
         "onPress": [Function],
         "style": Array [
           Object {
-            "marginLeft": 13,
-            "marginRight": 13,
+            "backgroundColor": "transparent",
+            "borderRadius": 15,
+            "elevation": 0,
+            "height": 30,
+            "justifyContent": "center",
+            "shadowOffset": Object {
+              "height": 0,
+              "width": 0,
+            },
+            "shadowOpacity": 0,
           },
+          undefined,
         ],
         "testID": "Touchable",
+        "title": "",
       },
       "ref": null,
       "rendered": Array [
@@ -2239,10 +1538,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "accessible": true,
-            "allowFontScaling": true,
             "children": "Testing title",
-            "ellipsizeMode": "tail",
             "style": Array [
               Object {
                 "color": "#FF8B00",
@@ -2255,6 +1551,7 @@ ShallowWrapper {
               undefined,
               false,
             ],
+            "virtual": undefined,
           },
           "ref": null,
           "rendered": "Testing title",
@@ -2262,134 +1559,6 @@ ShallowWrapper {
         },
         undefined,
       ],
-      "type": [Function],
-    },
-    "type": [Function],
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "class",
-      "props": Object {
-        "children": <TouchableOpacity
-          activeOpacity={0.2}
-          disabled={false}
-          onPress={[Function]}
-          style={
-            Array [
-              Object {
-                "marginLeft": 13,
-                "marginRight": 13,
-              },
-            ]
-          }
-          testID="Touchable"
-        >
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
-            style={
-              Array [
-                Object {
-                  "color": "#FF8B00",
-                  "fontSize": 14,
-                  "fontWeight": "bold",
-                  "letterSpacing": -0.02,
-                  "lineHeight": 19,
-                  "textAlign": "center",
-                },
-                undefined,
-                false,
-              ]
-            }
-          >
-            Testing title
-          </Text>
-        </TouchableOpacity>,
-        "style": Array [
-          Object {
-            "borderRadius": 15,
-            "height": 30,
-            "justifyContent": "center",
-          },
-          undefined,
-        ],
-      },
-      "ref": null,
-      "rendered": Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "activeOpacity": 0.2,
-          "children": Array [
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={
-                Array [
-                  Object {
-                    "color": "#FF8B00",
-                    "fontSize": 14,
-                    "fontWeight": "bold",
-                    "letterSpacing": -0.02,
-                    "lineHeight": 19,
-                    "textAlign": "center",
-                  },
-                  undefined,
-                  false,
-                ]
-              }
-            >
-              Testing title
-            </Text>,
-            undefined,
-          ],
-          "disabled": false,
-          "onPress": [Function],
-          "style": Array [
-            Object {
-              "marginLeft": 13,
-              "marginRight": 13,
-            },
-          ],
-          "testID": "Touchable",
-        },
-        "ref": null,
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "accessible": true,
-              "allowFontScaling": true,
-              "children": "Testing title",
-              "ellipsizeMode": "tail",
-              "style": Array [
-                Object {
-                  "color": "#FF8B00",
-                  "fontSize": 14,
-                  "fontWeight": "bold",
-                  "letterSpacing": -0.02,
-                  "lineHeight": 19,
-                  "textAlign": "center",
-                },
-                undefined,
-                false,
-              ],
-            },
-            "ref": null,
-            "rendered": "Testing title",
-            "type": [Function],
-          },
-          undefined,
-        ],
-        "type": [Function],
-      },
       "type": [Function],
     },
   ],

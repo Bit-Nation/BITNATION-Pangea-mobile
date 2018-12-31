@@ -97,7 +97,7 @@ ShallowWrapper {
             }
           }
         >
-          <Button
+          <CustomButton
             enabled={false}
             onPress={[Function]}
             style={
@@ -177,7 +177,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "children": <Button
+          "children": <CustomButton
             enabled={false}
             onPress={[Function]}
             style={
@@ -200,7 +200,6 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
-            "children": undefined,
             "enabled": false,
             "onPress": [Function],
             "style": Object {
@@ -271,7 +270,7 @@ ShallowWrapper {
               }
             }
           >
-            <Button
+            <CustomButton
               enabled={false}
               onPress={[Function]}
               style={
@@ -351,7 +350,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "children": <Button
+            "children": <CustomButton
               enabled={false}
               onPress={[Function]}
               style={
@@ -374,7 +373,6 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "function",
             "props": Object {
-              "children": undefined,
               "enabled": false,
               "onPress": [Function],
               "style": Object {

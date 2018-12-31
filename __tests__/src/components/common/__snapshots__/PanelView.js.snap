@@ -1341,11 +1341,12 @@ ShallowWrapper {
         <View
           style={Object {}}
         />,
-        <Button
-          enabled={true}
+        <CustomButton
           onPress={[Function]}
           style={
             Object {
+              "alignSelf": "stretch",
+              "flex": 1,
               "marginTop": 13,
             }
           }
@@ -1505,10 +1506,10 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "function",
         "props": Object {
-          "children": undefined,
-          "enabled": true,
           "onPress": [Function],
           "style": Object {
+            "alignSelf": "stretch",
+            "flex": 1,
             "marginTop": 13,
           },
           "title": "Test panel button",
@@ -1590,11 +1591,12 @@ ShallowWrapper {
           <View
             style={Object {}}
           />,
-          <Button
-            enabled={true}
+          <CustomButton
             onPress={[Function]}
             style={
               Object {
+                "alignSelf": "stretch",
+                "flex": 1,
                 "marginTop": 13,
               }
             }
@@ -1754,10 +1756,10 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
-            "children": undefined,
-            "enabled": true,
             "onPress": [Function],
             "style": Object {
+              "alignSelf": "stretch",
+              "flex": 1,
               "marginTop": 13,
             },
             "title": "Test panel button",
@@ -1927,11 +1929,12 @@ ShallowWrapper {
             ellipsizeMode="tail"
           />
         </View>,
-        <Button
-          enabled={true}
+        <CustomButton
           onPress={[Function]}
           style={
             Object {
+              "alignSelf": "stretch",
+              "flex": 1,
               "marginTop": 13,
             }
           }
@@ -2159,10 +2162,10 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "function",
         "props": Object {
-          "children": undefined,
-          "enabled": true,
           "onPress": [Function],
           "style": Object {
+            "alignSelf": "stretch",
+            "flex": 1,
             "marginTop": 13,
           },
           "title": "Test panel button",
@@ -2276,11 +2279,12 @@ ShallowWrapper {
               ellipsizeMode="tail"
             />
           </View>,
-          <Button
-            enabled={true}
+          <CustomButton
             onPress={[Function]}
             style={
               Object {
+                "alignSelf": "stretch",
+                "flex": 1,
                 "marginTop": 13,
               }
             }
@@ -2508,10 +2512,10 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
-            "children": undefined,
-            "enabled": true,
             "onPress": [Function],
             "style": Object {
+              "alignSelf": "stretch",
+              "flex": 1,
               "marginTop": 13,
             },
             "title": "Test panel button",
@@ -2675,11 +2679,12 @@ ShallowWrapper {
         <View
           style={Object {}}
         />,
-        <Button
-          enabled={true}
+        <CustomButton
           onPress={[Function]}
           style={
             Object {
+              "alignSelf": "stretch",
+              "flex": 1,
               "marginTop": 13,
             }
           }
@@ -2897,10 +2902,10 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "function",
         "props": Object {
-          "children": undefined,
-          "enabled": true,
           "onPress": [Function],
           "style": Object {
+            "alignSelf": "stretch",
+            "flex": 1,
             "marginTop": 13,
           },
           "title": "Test panel button",
@@ -3024,11 +3029,12 @@ ShallowWrapper {
           <View
             style={Object {}}
           />,
-          <Button
-            enabled={true}
+          <CustomButton
             onPress={[Function]}
             style={
               Object {
+                "alignSelf": "stretch",
+                "flex": 1,
                 "marginTop": 13,
               }
             }
@@ -3246,10 +3252,10 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
-            "children": undefined,
-            "enabled": true,
             "onPress": [Function],
             "style": Object {
+              "alignSelf": "stretch",
+              "flex": 1,
               "marginTop": 13,
             },
             "title": "Test panel button",
@@ -3429,11 +3435,12 @@ ShallowWrapper {
         <View
           style={Object {}}
         />,
-        <Button
-          enabled={true}
+        <CustomButton
           onPress={[Function]}
           style={
             Object {
+              "alignSelf": "stretch",
+              "flex": 1,
               "marginTop": 13,
             }
           }
@@ -3645,10 +3652,10 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "function",
         "props": Object {
-          "children": undefined,
-          "enabled": true,
           "onPress": [Function],
           "style": Object {
+            "alignSelf": "stretch",
+            "flex": 1,
             "marginTop": 13,
           },
           "title": "Test panel button",
@@ -3756,11 +3763,12 @@ ShallowWrapper {
           <View
             style={Object {}}
           />,
-          <Button
-            enabled={true}
+          <CustomButton
             onPress={[Function]}
             style={
               Object {
+                "alignSelf": "stretch",
+                "flex": 1,
                 "marginTop": 13,
               }
             }
@@ -3972,10 +3980,10 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
-            "children": undefined,
-            "enabled": true,
             "onPress": [Function],
             "style": Object {
+              "alignSelf": "stretch",
+              "flex": 1,
               "marginTop": 13,
             },
             "title": "Test panel button",
