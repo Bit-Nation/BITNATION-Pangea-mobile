@@ -1,12 +1,12 @@
 // @flow
 
-import React from 'react';
+import React, { Component } from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import CardSquare from './Square';
 import styles from './styles';
 
-export default class Card extends React.Component {
+export default class Card extends Component {
   static Square = CardSquare;
 
   render() {

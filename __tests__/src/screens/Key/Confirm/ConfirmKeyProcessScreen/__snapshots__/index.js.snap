@@ -154,7 +154,7 @@ ShallowWrapper {
                 }
               }
             >
-              <Button
+              <CustomButton
                 enabled={false}
                 onPress={[Function]}
                 style={
@@ -164,8 +164,7 @@ ShallowWrapper {
                 }
                 title="Previous"
               />
-              <Button
-                enabled={true}
+              <CustomButton
                 onPress={[Function]}
                 style={
                   Object {
@@ -308,7 +307,7 @@ ShallowWrapper {
                   }
                 }
               >
-                <Button
+                <CustomButton
                   enabled={false}
                   onPress={[Function]}
                   style={
@@ -318,8 +317,7 @@ ShallowWrapper {
                   }
                   title="Previous"
                 />
-                <Button
-                  enabled={true}
+                <CustomButton
                   onPress={[Function]}
                   style={
                     Object {
@@ -407,7 +405,7 @@ ShallowWrapper {
                     }
                   }
                 >
-                  <Button
+                  <CustomButton
                     enabled={false}
                     onPress={[Function]}
                     style={
@@ -417,8 +415,7 @@ ShallowWrapper {
                     }
                     title="Previous"
                   />
-                  <Button
-                    enabled={true}
+                  <CustomButton
                     onPress={[Function]}
                     style={
                       Object {
@@ -530,7 +527,7 @@ ShallowWrapper {
                 "nodeType": "class",
                 "props": Object {
                   "children": Array [
-                    <Button
+                    <CustomButton
                       enabled={false}
                       onPress={[Function]}
                       style={
@@ -540,8 +537,7 @@ ShallowWrapper {
                       }
                       title="Previous"
                     />,
-                    <Button
-                      enabled={true}
+                    <CustomButton
                       onPress={[Function]}
                       style={
                         Object {
@@ -566,7 +562,6 @@ ShallowWrapper {
                     "key": undefined,
                     "nodeType": "function",
                     "props": Object {
-                      "children": undefined,
                       "enabled": false,
                       "onPress": [Function],
                       "style": Object {
@@ -583,8 +578,6 @@ ShallowWrapper {
                     "key": undefined,
                     "nodeType": "function",
                     "props": Object {
-                      "children": undefined,
-                      "enabled": true,
                       "onPress": [Function],
                       "style": Object {
                         "width": 90,
@@ -725,7 +718,7 @@ ShallowWrapper {
                   }
                 }
               >
-                <Button
+                <CustomButton
                   enabled={false}
                   onPress={[Function]}
                   style={
@@ -735,8 +728,7 @@ ShallowWrapper {
                   }
                   title="Previous"
                 />
-                <Button
-                  enabled={true}
+                <CustomButton
                   onPress={[Function]}
                   style={
                     Object {
@@ -879,7 +871,7 @@ ShallowWrapper {
                     }
                   }
                 >
-                  <Button
+                  <CustomButton
                     enabled={false}
                     onPress={[Function]}
                     style={
@@ -889,8 +881,7 @@ ShallowWrapper {
                     }
                     title="Previous"
                   />
-                  <Button
-                    enabled={true}
+                  <CustomButton
                     onPress={[Function]}
                     style={
                       Object {
@@ -978,7 +969,7 @@ ShallowWrapper {
                       }
                     }
                   >
-                    <Button
+                    <CustomButton
                       enabled={false}
                       onPress={[Function]}
                       style={
@@ -988,8 +979,7 @@ ShallowWrapper {
                       }
                       title="Previous"
                     />
-                    <Button
-                      enabled={true}
+                    <CustomButton
                       onPress={[Function]}
                       style={
                         Object {
@@ -1101,7 +1091,7 @@ ShallowWrapper {
                   "nodeType": "class",
                   "props": Object {
                     "children": Array [
-                      <Button
+                      <CustomButton
                         enabled={false}
                         onPress={[Function]}
                         style={
@@ -1111,8 +1101,7 @@ ShallowWrapper {
                         }
                         title="Previous"
                       />,
-                      <Button
-                        enabled={true}
+                      <CustomButton
                         onPress={[Function]}
                         style={
                           Object {
@@ -1137,7 +1126,6 @@ ShallowWrapper {
                       "key": undefined,
                       "nodeType": "function",
                       "props": Object {
-                        "children": undefined,
                         "enabled": false,
                         "onPress": [Function],
                         "style": Object {
@@ -1154,8 +1142,6 @@ ShallowWrapper {
                       "key": undefined,
                       "nodeType": "function",
                       "props": Object {
-                        "children": undefined,
-                        "enabled": true,
                         "onPress": [Function],
                         "style": Object {
                           "width": 90,

@@ -161,15 +161,18 @@ ShallowWrapper {
             />
           </View>
         </View>,
-        <Button
+        <CustomButton
           enabled={true}
           onPress={[Function]}
           style={
             Object {
+              "alignSelf": "center",
               "backgroundColor": "#FB8C25",
-              "borderRadius": 0,
+              "borderRadius": 40,
               "height": 50,
               "justifyContent": "center",
+              "marginBottom": 80,
+              "width": "60%",
             }
           }
           styleTitle={
@@ -481,14 +484,16 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "function",
         "props": Object {
-          "children": undefined,
           "enabled": true,
           "onPress": [Function],
           "style": Object {
+            "alignSelf": "center",
             "backgroundColor": "#FB8C25",
-            "borderRadius": 0,
+            "borderRadius": 40,
             "height": 50,
             "justifyContent": "center",
+            "marginBottom": 80,
+            "width": "60%",
           },
           "styleTitle": Object {
             "color": "white",
@@ -606,15 +611,18 @@ ShallowWrapper {
               />
             </View>
           </View>,
-          <Button
+          <CustomButton
             enabled={true}
             onPress={[Function]}
             style={
               Object {
+                "alignSelf": "center",
                 "backgroundColor": "#FB8C25",
-                "borderRadius": 0,
+                "borderRadius": 40,
                 "height": 50,
                 "justifyContent": "center",
+                "marginBottom": 80,
+                "width": "60%",
               }
             }
             styleTitle={
@@ -926,14 +934,16 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
-            "children": undefined,
             "enabled": true,
             "onPress": [Function],
             "style": Object {
+              "alignSelf": "center",
               "backgroundColor": "#FB8C25",
-              "borderRadius": 0,
+              "borderRadius": 40,
               "height": 50,
               "justifyContent": "center",
+              "marginBottom": 80,
+              "width": "60%",
             },
             "styleTitle": Object {
               "color": "white",
