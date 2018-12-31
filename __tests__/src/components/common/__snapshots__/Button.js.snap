@@ -42,6 +42,7 @@ ShallowWrapper {
         />,
         undefined,
       ],
+      "disabled": true,
       "enabled": true,
       "onPress": [MockFunction],
       "style": Array [
@@ -122,6 +123,7 @@ ShallowWrapper {
           />,
           undefined,
         ],
+        "disabled": true,
         "enabled": true,
         "onPress": [MockFunction],
         "style": Array [
@@ -225,6 +227,7 @@ ShallowWrapper {
         />,
         undefined,
       ],
+      "disabled": false,
       "enabled": true,
       "onPress": [MockFunction],
       "style": Array [
@@ -301,6 +304,7 @@ ShallowWrapper {
           />,
           undefined,
         ],
+        "disabled": false,
         "enabled": true,
         "onPress": [MockFunction],
         "style": Array [
@@ -399,6 +403,7 @@ ShallowWrapper {
         />,
         undefined,
       ],
+      "disabled": true,
       "enabled": true,
       "onPress": [Function],
       "style": Array [
@@ -475,6 +480,7 @@ ShallowWrapper {
           />,
           undefined,
         ],
+        "disabled": true,
         "enabled": true,
         "onPress": [Function],
         "style": Array [
@@ -577,6 +583,7 @@ ShallowWrapper {
         />,
         undefined,
       ],
+      "disabled": true,
       "enabled": true,
       "onPress": [Function],
       "style": Array [
@@ -657,6 +664,7 @@ ShallowWrapper {
           />,
           undefined,
         ],
+        "disabled": true,
         "enabled": true,
         "onPress": [Function],
         "style": Array [
@@ -757,6 +765,7 @@ ShallowWrapper {
         </Text>,
         undefined,
       ],
+      "disabled": true,
       "enabled": true,
       "onPress": [Function],
       "style": Array [
@@ -813,6 +822,7 @@ ShallowWrapper {
           </Text>,
           undefined,
         ],
+        "disabled": true,
         "enabled": true,
         "onPress": [Function],
         "style": Array [
@@ -908,6 +918,7 @@ ShallowWrapper {
         </Styled(Text)>,
         undefined,
       ],
+      "disabled": true,
       "enabled": true,
       "onPress": [Function],
       "style": Array [
@@ -990,6 +1001,7 @@ ShallowWrapper {
           </Styled(Text)>,
           undefined,
         ],
+        "disabled": true,
         "enabled": true,
         "onPress": [Function],
         "style": Array [
@@ -1092,6 +1104,7 @@ ShallowWrapper {
         />,
         undefined,
       ],
+      "disabled": false,
       "enabled": true,
       "onPress": [Function],
       "style": Array [
@@ -1168,6 +1181,7 @@ ShallowWrapper {
           />,
           undefined,
         ],
+        "disabled": false,
         "enabled": true,
         "onPress": [Function],
         "style": Array [
@@ -1266,6 +1280,7 @@ ShallowWrapper {
         </Text>,
         undefined,
       ],
+      "disabled": false,
       "enabled": true,
       "onPress": [Function],
       "style": Array [
@@ -1322,6 +1337,7 @@ ShallowWrapper {
           </Text>,
           undefined,
         ],
+        "disabled": false,
         "enabled": true,
         "onPress": [Function],
         "style": Array [
@@ -1415,6 +1431,7 @@ ShallowWrapper {
         </Styled(Text)>,
         undefined,
       ],
+      "disabled": false,
       "enabled": true,
       "onPress": [Function],
       "style": Array [
@@ -1493,6 +1510,7 @@ ShallowWrapper {
           </Styled(Text)>,
           undefined,
         ],
+        "disabled": false,
         "enabled": true,
         "onPress": [Function],
         "style": Array [

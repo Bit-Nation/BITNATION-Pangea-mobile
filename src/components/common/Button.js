@@ -55,7 +55,7 @@ const CustomButton = ({
           style,
         ]}
       testID='Touchable'
-      enabled
+      disabled={!enabled}
 
       onPress={onPress}
     >
