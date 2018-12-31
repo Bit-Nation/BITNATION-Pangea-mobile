@@ -1,6 +1,8 @@
 // @flow
 /* eslint-disable */
 
+const fs = require('fs');
+
 let customData = {};
 
 function isDevBuild() {
@@ -11,6 +13,9 @@ function isDevBuild() {
 
 if (isDevBuild()) {
     console.log('Pangea Development Build Detected.');
+    if (!fs.exists('dev.config.json')) {
+        console.error("dev.config.json not found. Disabling development config.");return false;
+    }
     customData = require('./dev.config.json');
 
     //test
