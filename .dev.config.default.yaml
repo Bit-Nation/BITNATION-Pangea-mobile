@@ -1,3 +1,6 @@
+# Why is there a yaml file in addition to the .env config file?
+# This configuration file is specific to development builds, to aid in the development process, while the .env file is also shipped in production builds.
+
 launcher:
   android:
     emulator_name: Development_Local_
