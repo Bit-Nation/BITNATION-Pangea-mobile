@@ -84,3 +84,6 @@ android/app/src/main/assets/fonts/
 index.android.bundle.meta
 index.android.bundle
 .vscode
+
+ios/assets/src/assets
+ios/Frameworks/panthalassa.framework
