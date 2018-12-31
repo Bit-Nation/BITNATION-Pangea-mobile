@@ -1,9 +1,10 @@
 // @flow
 
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Alert } from 'react-native';
 import { connect } from 'react-redux';
 import { Button } from 'native-base';
+import i18next from 'i18next';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import i18n from '../../../global/i18n';
 import BackgroundImage from '../../../components/common/BackgroundImage';
@@ -48,7 +49,6 @@ type State = {
   onNotification: boolean,
 };
 
-
 class SettingsListScreen extends NavigatorComponent<Props, State> {
   constructor(props: Props) {
     super(props);
@@ -70,7 +70,10 @@ class SettingsListScreen extends NavigatorComponent<Props, State> {
         <Text style={styles.itemSelectText}>English</Text>
       </View>,
       <View style={styles.itemStyle}>
-        <MaterialCommunityIcons name='flag-variant-outline' style={styles.itemIcon} />
+        <MaterialCommunityIcons
+          name='flag-variant-outline'
+          style={styles.itemIcon}
+        />
         <Text style={styles.itemSelectText}>Hindi</Text>
       </View>,
     ];
@@ -93,44 +96,58 @@ class SettingsListScreen extends NavigatorComponent<Props, State> {
         <View style={styles.contentView}>
           <View style={styles.itemViewStyle}>
             <DropDown
-              label='Choice your language'
+              label={i18n.t('screens.settings.chooseLanguage')}
               data={data}
             />
           </View>
           <View style={styles.itemViewStyle}>
             <DropDown
-              label='Choice network'
+              label={i18n.t('screens.settings.chooseNetwork')}
               data={dataNetwork}
             />
           </View>
           <View style={styles.itemViewStyle}>
-            <Text style={styles.itemSelectText}>Notifications</Text>
+            <Text style={styles.itemSelectText}>
+              {i18n.t('screens.settings.notification')}
+            </Text>
             <SwitchComponent
               containerStyle={styles.rightViewSwitch}
               buttons={[
-              {
-                label: 'No',
-                onPress: () => {
-                  this.setState({ onNotification: false });
+                {
+                  label: 'No',
+                  onPress: () => {
+                    this.setState({ onNotification: false });
+                  },
+                  selected: this.state.onNotification === false,
                 },
-                selected: this.state.onNotification === false,
-              },
-              {
-                label: 'YES',
-                onPress: () => {
-                  this.setState({ onNotification: true });
+                {
+                  label: 'YES',
+                  onPress: () => {
+                    this.setState({ onNotification: true });
+                  },
+                  selected: this.state.onNotification === true,
                 },
-                selected: this.state.onNotification === true,
-              },
-            ]}
+              ]}
             />
           </View>
           <View style={styles.itemViewStyle}>
-            <Text style={styles.itemSelectText}>Bitnation Gold</Text>
+            <Text style={styles.itemSelectText}>
+              {i18n.t('screens.settings.bitnationGold')}
+            </Text>
             <View style={styles.rightView}>
               <View style={styles.itemGoldView} />
-              <View style={[styles.itemGoldView, { backgroundColor: colors.chatColor }]} />
-              <View style={[styles.itemGoldView, { backgroundColor: colors.BitnationLinkOrangeColor }]} />
+              <View
+                style={[
+                  styles.itemGoldView,
+                  { backgroundColor: colors.chatColor },
+                ]}
+              />
+              <View
+                style={[
+                  styles.itemGoldView,
+                  { backgroundColor: colors.BitnationLinkOrangeColor },
+                ]}
+              />
             </View>
           </View>
           <View style={styles.buttonViewStyle}>
@@ -139,14 +156,25 @@ class SettingsListScreen extends NavigatorComponent<Props, State> {
               onPress={() => this.props.navigator.pop()}
               style={styles.controlButton}
             >
-              <Text style={styles.controlButtonText}>{i18n.t('screens.settings.goBack')}</Text>
+              <Text style={styles.controlButtonText}>
+                {i18n.t('screens.settings.goBack')}
+              </Text>
             </Button>
             <Button
               rounded
-              onPress={() => { }}
+              onPress={() =>
+                i18next.changeLanguage('hi', (err, t) => {
+                  if (err) {
+                    return console.log('something went wrong loading', err);
+                  }
+                  t('hi'); // -> same as i18next.t
+                })
+              }
               style={styles.controlButton}
             >
-              <Text style={styles.controlButtonText}>{i18n.t('screens.settings.save')}</Text>
+              <Text style={styles.controlButtonText}>
+                {i18n.t('screens.settings.save')}
+              </Text>
             </Button>
           </View>
         </View>

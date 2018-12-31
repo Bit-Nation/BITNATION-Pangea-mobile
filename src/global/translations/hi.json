@@ -374,7 +374,7 @@
         "save": "SAVE",
         "leave": "LEAVE"
       },
-      "title": "$t(common.nations)",
+      "title": "देशों",
       "tabTitle": "$t(tabbar.nations)",
       "allNations": "All Nations",
       "myNations": "My Nations"
@@ -567,7 +567,17 @@
         "account": "Account",
         "dApps": "DApp development",
         "notary": "Notary"
-      }
+      },
+      "goBack": "वापस",
+      "save": "सेव करे",
+      "chooseLanguage": "भाषा चुनें",
+      "chooseNetwork": "नेटवर्क चुने",
+      "notification": "नोटिफिकेशन",
+      "bitnationGold": "बिटनेशन गोल्ड"           
+    },
+    "services": {
+      "title": "गवमार्केट",
+      "tabTitle": "गवमार्केट"
     },
     "securitySettings": {
       "title": "Security settings",

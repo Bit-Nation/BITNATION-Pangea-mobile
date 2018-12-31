@@ -23,6 +23,7 @@ i18n.init({
 });
 
 i18n.ifExists = key => (i18n.exists(key) ? i18n.t(key) : '');
+
 i18n.tf = (key, fallbackKey) => (i18n.exists(key) ? i18n.t(key) : i18n.ifExists(fallbackKey));
 
 export default i18n;
