@@ -1,17 +1,6 @@
 /* eslint-disable */
 // TODO: Convert this to typescript per Mark and launch using ts-node
 
-/* 
-  
-
-  Usage: logger-redirect.js [device(optional)]
-  When device id is specified, will redirect log for that device.
-  Otherwise, will use the devive name specified in android_emulator_name
-   (from .dev.config.yaml)
-
-  Logs will be found in $RepoRoot/data/logs/
-*/
-
 const fs = require('fs');
 const os = require('os');
 const nodeutil = require('util'); // prefixed with node as 'utils' is our own utils script
@@ -50,6 +39,19 @@ async function asyncPoint(ms, callback = () => {}) {
     resolve(callback());
   }, ms));
 }
+
+async function sighandle() {
+    console.log(os.EOL + 'Closing...');
+    Object.values(children).forEach(child => child.kill('SIGTERM'));
+    await asyncPoint(1000);
+    process.exit(0);
+}
+
+function setSigHandler() {
+    process.on('SIGINT', sighandle);
+    process.on('SIGTERM', sighandle);
+}
+setSigHandler();
 
 async function fork(name, cmd, args, {readyRegex, timeout, echo, logStream} = {}, opts) {
 
@@ -140,96 +142,6 @@ async function blockReadLine() {
     return result;
 }
 
-async function sighandle() {
-    console.log(os.EOL + 'Closing...');
-    Object.values(children).forEach(child => child.kill('SIGTERM'));
-    await asyncPoint(1000);
-    process.exit(0);
-}
-
-function setSigHandler() {
-    process.on('SIGINT', sighandle);
-    process.on('SIGTERM', sighandle);
-}
-
-async function forker(deviceName) {
-    setSigHandler();
-
-    const port = androidcfg.emulator_port;
-    console.log("AndroidHelper: Starting Android Emulator")
-    await fork(
-        'emulator',
-        '$ANDROID_HOME/tools/emulator', 
-        [ // args
-            '-avd',  
-            `${deviceName}`,
-            '-port',
-            port,
-            "-verbose"
-        ],
-        { // options
-            readyRegex: new RegExp(
-                "(Running multiple emulators with the same AVD is an experimental feature)" + 
-                "|(INFO: boot completed)" + 
-                "|(Adb connected, start proxing data)", 
-                'g'),
-            timeout: 60000,
-            echo: false
-        },
-        {
-            cwd: `${process.env["ANDROID_HOME"]}/emulator`,
-            silent: false,
-            stdio: [null, 'pipe', 'pipe'],
-            shell: utils.ShellLocation
-        }
-    );
-    utils.RunShellScript("android/wait-for-boot.sh", androidcfg.device_address);
-
-    //Clear logcat on device.
-    console.log("Clearing logcat logs on device. Requires an emulator with root access.")
-    try
-    {
-        utils.RunShellCmd(`adb -s ${androidcfg.device_address} root`);
-        utils.RunShellCmd(`adb -s ${androidcfg.device_address} logcat -b all -c`);
-    }
-    catch (err) { 
-        console.error(err.toString());
-    }
-
-    // Metro Bundler
-    const metroSync = fork(
-        'metro',
-        `${utils.RepositoryRootDir}/node_modules/.bin/react-native`,
-        [ // args
-            'run-android',
-        ],
-        { // options
-            readyRegex: /Loading dependency graph, done./,
-            timeout: 60000,
-            echo: true
-        }
-    );
-
-    // Build APK
-    const buildSync = fork(
-        'gradle',
-        './android/gradlew', 
-        [ // args
-            `--project-dir=${utils.RepositoryRootDir}/android`,
-            'assembleDebug',
-        ],
-        { // options
-            readyRegex: /BUILD SUCCESSFUL/,
-            timeout: 300000,
-        }
-    );
-
-    await buildSync;
-    await metroSync;
-
-    await sleep(100);
-}
-
 class AndroidHelper {
     constructor(device) {
         this.statusDoc = new StatusDoc();
@@ -276,6 +188,18 @@ class AndroidHelper {
         }
     }
 
+    clearLogcat() {
+        console.log("Clearing logcat logs on device. Requires an emulator with root access.")
+        try
+        {
+            utils.RunShellCmd(`adb -s ${androidcfg.device_address} root`);
+            utils.RunShellCmd(`adb -s ${androidcfg.device_address} logcat -b all -c`);
+        }
+        catch (err) { 
+            console.error(err.toString());
+        }
+    }
+
     // Ensures that .dev.config.yaml is committed to the development build
     // There are two (planned) ways that the .dev.config.yaml file are read at runtime.
     // The first way, using this method, is simpler with fewer moving parts
@@ -292,6 +216,64 @@ class AndroidHelper {
     }
 
     async launchApp() {
+        this.launchFlow();
+        await this.launchEmulator();
+        this.clearLogcat();
+        await this.launchBuild();
+        await this.launchReactNative();
+        await sleep(100);
+
+        this.statusDoc.timeLaunched = Date.now();
+    }
+
+    launchBuild() {
+        // Build APK
+        return fork(
+            'gradle',
+            './android/gradlew', 
+            [ // args
+                `--project-dir=${utils.RepositoryRootDir}/android`,
+                'assembleDebug',
+            ],
+            { // options
+                readyRegex: /BUILD SUCCESSFUL/,
+                timeout: 300000,
+            }
+        );
+    }
+
+    async launchEmulator() {
+        console.log("AndroidHelper: Starting Android Emulator")
+        await fork(
+            'emulator',
+            '$ANDROID_HOME/tools/emulator', 
+            [ // args
+                '-avd',  
+                `${this.deviceName}`,
+                '-port',
+                androidcfg.emulator_port,
+                "-verbose"
+            ],
+            { // options
+                readyRegex: new RegExp(
+                    "(Running multiple emulators with the same AVD is an experimental feature)" + 
+                    "|(INFO: boot completed)" + 
+                    "|(Adb connected, start proxing data)", 
+                    'g'),
+                timeout: 60000,
+                echo: false
+            },
+            {
+                cwd: `${process.env["ANDROID_HOME"]}/emulator`,
+                silent: false,
+                stdio: [null, 'pipe', 'pipe'],
+                shell: utils.ShellLocation
+            }
+        );
+        utils.RunShellScript("android/wait-for-boot.sh", androidcfg.device_address);
+    }
+
+    launchFlow() {
         console.log(`AndroidHelper: Launching flow.`);
         let procopts = {
             cwd: utils.RepositoryRootDir,
@@ -299,12 +281,24 @@ class AndroidHelper {
             stdio: "inherit"
         };
         childProcess.execSync('flow', procopts);
-
-        await forker(this.deviceName);
-
-        this.statusDoc.timeLaunched = Date.now();
     }
 
+    launchReactNative() {
+        // Metro Bundler
+        return fork(
+            'metro',
+            `${utils.RepositoryRootDir}/node_modules/.bin/react-native`,
+            [ // args
+                'run-android',
+            ],
+            { // options
+                readyRegex: /Loading dependency graph, done./,
+                timeout: 60000,
+                echo: true
+            }
+        );
+    }
+    
    /* 
     Redirects log output
     Original story: https://www.pivotaltracker.com/story/show/162820053
@@ -368,11 +362,8 @@ class AndroidHelper {
         }
         
         console.log("Press Ctrl+Z to stop log collection and end the session.");
-        process.stdin.setRawMode(true);
-        let key = {}
-        do {
-            key = await blockKeystroke();
-        }
+        let key = {};
+        do { key = await blockKeystroke(); }
         while(!(key.ctrl && key.name == "z"));
 
         await sighandle();
