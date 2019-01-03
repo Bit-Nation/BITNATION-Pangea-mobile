@@ -329,6 +329,7 @@
       "invalidKey": "Invalid or Missing Key",
       "inviteSent": "Invite Sent",
       "dAppMessagePreview": "DApp message...",
+      "alreadyChat": "You already have a chat with this person.",
       "chatNameAlert": {
         "title": "Enter chat name:",
         "confirm": "$t(common.ok)",
