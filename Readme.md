@@ -37,9 +37,10 @@ __Project setup__
 
 1. Clone the repo
 2. Run `npm install`
-3. Copy `.env.dev.example` to `.env`
-4. Set `PRODUCTION` to true/false.
-
+3. Copy `.env.dev.example` to `.env`. Set `PRODUCTION` to true/false.
+4. Copy `.dev.config.default.yaml` to `.dev.config.yaml`, and change any necessary values.
+5. Run `./scripts/check.env.sh` to determine if you are missing anything. This is still a new script, so there could be false negatives.
+ 
 __IOS specific__
 1. Get [cocoapods](https://cocoapods.org/)
 2. Go to the `ios` folder
@@ -50,6 +51,8 @@ __IOS specific__
 __Android specific__
 1. Place a compiled version of https://github.com/Bit-Nation/panthalassa into android/panthalassa/panthalassa.aar
 2. Run `npm run android`
+3. Run `npm run android:log` (requires lnav) to view runtime logs. 
+
 ## Usage
 
 __Git & best practice__
