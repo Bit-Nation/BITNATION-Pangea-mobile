@@ -11,7 +11,8 @@
     "test:coverage": "flow && jest --coverage --forceExit",
     "test:coveralls": "yarn test:coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "ios": "flow && node_modules/.bin/react-native run-ios",
-    "android": "flow && node_modules/.bin/react-native run-android",
+    "android": "./scripts/android-start.sh",
+    "android:log": "./scripts/android-logview.sh",
     "postinstall": "./node_modules/.bin/rn-nodeify --install 'stream,buffer,vm,crypto,string_decoder,events,assert' --hack",
     "docs": "node_modules/.bin/documentation build src/services/container.js -f md > docs/main.md",
     "build:ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/Pangea/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios'",
@@ -35,6 +36,7 @@
     "flow-bin": "^0.57.0",
     "hoist-non-react-statics": "^2.3.1",
     "i18next": "^10.3.0",
+    "js-yaml": "^3.12.0",
     "lodash": "^4.17.4",
     "moment": "^2.23.0",
     "native-base": "^2.8.1",
@@ -86,6 +88,7 @@
     "vm-browserify": "0.0.4"
   },
   "devDependencies": {
+    "app-root-path": "^2.1.0",
     "babel-eslint": "^8.2.2",
     "babel-jest": "22.0.3",
     "babel-preset-es2015": "^6.24.1",
@@ -111,6 +114,7 @@
     "react-native-mock": "^0.3.1",
     "react-test-renderer": "16.0.0",
     "redux-mock-store": "^1.5.1",
+    "sleep-promise": "^8.0.1",
     "websocket": "^1.0.26"
   },
   "jest": {

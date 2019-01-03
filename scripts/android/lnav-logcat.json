@@ -1,0 +1,41 @@
+{
+    "logcat_log" : {
+        "title" : "logcat",
+        "description" : "The system logger format found on android.",
+        "url" : "https://developer.android.com/studio/command-line/logcat.html",
+        "regex" : {
+            "std" : {
+                "pattern" : "^(?<timestamp>\\d{2}-\\d{2}\\s+\\d{2}:\\d{2}:\\d{2}.\\d{3}) (?<log_pid>\\s?\\w+) (?<log_tid>\\s?\\w+) (?<level>\\w) (?<log_tag>\\w+): (?<body>.*)$"
+            }
+        },
+        "timestamp-format" : ["%m-%d %H:%M:%S.%L"],
+        "level-field" : "level",
+        "level" : {
+            "trace" : "V",
+            "error" : "E",
+            "warning" : "W",
+            "info": "I",
+            "fatal": "F"
+        },
+        "opid-field" : "log_pid",
+        "value" : {
+            "log_pid" : {
+                "kind" : "integer",
+                "identifier" : true
+            },
+            "log_tid" : {
+                "kind" : "string",
+                "identifier" : true
+            },
+            "log_tag" : {
+                "kind" : "string",
+                "identifier" : true
+            },
+            "body" : {
+                "kind" : "string", 
+                "identifier" : false
+            }
+        },
+        "sample" : [ { "line" : "01-01 02:50:25.351  1310  1502 V WindowManager: handleMessage: exit" } ]
+    }
+}
