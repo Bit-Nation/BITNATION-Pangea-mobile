@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import { View, FlatList, Image } from 'react-native';
+import { View, FlatList, Image, Animated } from 'react-native';
 import { Button, Text } from 'native-base';
 import BackgroundImage from '../../../../components/common/BackgroundImage';
 // import Button from '../../../../components/common/Button';
@@ -12,6 +12,7 @@ import ListItem from '../../../../components/common/ListItem';
 import type { Account } from '../../../../types/Account';
 import i18n from '../../../../global/i18n';
 import BitnationCover from '../../../../assets/images/BitnationCover.jpg';
+import bitnationIntro from '../../../../assets/images/bitnationIntro.gif';
 
 type Props = {
   /**
@@ -39,11 +40,11 @@ const AccountAccessListScreen = ({
   onRestoreAccount,
   onCreateAccount,
 }: Props) => (
-  <View style={styles.profilesScreenContainer}>
+  <Animated.View style={styles.profilesScreenContainer}>
     <BackgroundImage />
     {/* <FakeNavigationBar />
     <ScreenTitle title={i18n.t('screens.accounts.title')} /> */}
-    <Image source={BitnationCover} style={styles.image} />
+    <Image source={bitnationIntro} style={styles.image} />
     <FlatList
       renderItem={(item) => {
         const account = item.item;
@@ -73,21 +74,21 @@ const AccountAccessListScreen = ({
       </Button>
 
       <Button
-      rounded
-      block
-      bordered
-      warning
+        rounded
+        block
+        bordered
+        warning
       // styleTitle={styles.newAccountText}
       // title={i18n.t('screens.accounts.newAccount').toUpperCase()}
-      onPress={onCreateAccount}
-      style={styles.newAccountButton}
-    >
-      <Text>{i18n.t('screens.accounts.newAccount').toUpperCase()}</Text>
-    </Button>
+        onPress={onCreateAccount}
+        style={styles.newAccountButton}
+      >
+        <Text>{i18n.t('screens.accounts.newAccount').toUpperCase()}</Text>
+      </Button>
       <View style={styles.spacer} />
     </View>
 
-  </View>
+  </Animated.View>
 );
 
 export default AccountAccessListScreen;

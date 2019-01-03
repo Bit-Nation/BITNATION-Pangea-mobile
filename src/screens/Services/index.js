@@ -1,16 +1,13 @@
 // @flow
 
 import React from 'react';
-import { View, WebView, TouchableHighlight, TouchableOpacity } from 'react-native';
-import Modal from 'react-native-modal';
+import { View, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
-import { Icon } from 'native-base';
-import _ from 'lodash';
 import Background from '../../components/common/BackgroundImage';
 import { screen, androidNavigationButtons } from '../../global/Screens';
 import Card from '../../components/Card';
 import { selectWallet, updateWalletList } from '../../actions/wallet';
-import BaseTabComponent from '../../components/common/BaseTabComponent';
+import NavigatorComponent from '../../components/common/NavigatorComponent';
 import LucyButton from '../../components/common/LucyButton';
 
 import Colors from '../../global/colors';
@@ -64,6 +61,10 @@ type Actions = {
 
 type State = {
   /**
+   * @desc Flag whether screen is in appear.
+   */
+  isAppear: boolean,
+  /**
    * @desc Flag to control Refreshing on Pull to Refresh
    */
   pullToRefreshInProgress: boolean,
@@ -82,7 +83,7 @@ type State = {
   },
 };
 
-class ServicesScreen extends BaseTabComponent<
+class ServicesScreen extends NavigatorComponent<
   Props & TestingModeProps & Actions & WalletState,
   State,
   > {
@@ -101,6 +102,7 @@ class ServicesScreen extends BaseTabComponent<
     });
 
     this.state = {
+      isAppear: false,
       pullToRefreshInProgress: false,
       transactionsVisible: false,
       ethAddress: '',
@@ -110,6 +112,23 @@ class ServicesScreen extends BaseTabComponent<
       },
     };
     this.props.updateWalletList();
+  }
+
+  onWillAppear() {
+    this.setState({ isAppear: true });
+  }
+
+  onWillDisappear() {
+    this.setState({ isAppear: false });
+  }
+
+  onHandleDeepLink(event) {
+    if (this.state.isAppear) {
+      const parts = event.link.split('/');
+      if (parts[0] === 'push') {
+        this.props.navigator.push(screen(parts[1]));
+      }
+    }
   }
 
   updateNavigation() {
@@ -188,7 +207,6 @@ class ServicesScreen extends BaseTabComponent<
   }
 
   render() {
-    const { user } = this.props;
     return (
       <View style={styles.screenContainer}>
         <Background />

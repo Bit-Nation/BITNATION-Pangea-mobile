@@ -258,8 +258,8 @@ const Screens = {
   },
   SERVICES_SCREEN: {
     screen: 'Pangea.Services',
-    title: '',
-    label: 'GOVMARKET',
+    title: i18n.t('screens.services.tabTitle').toUpperCase(),
+    label: i18n.t('screens.services.tabTitle'),
     icon: AssetsImages.TabIcons.services,
     navigatorStyle,
   },
