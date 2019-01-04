@@ -6,7 +6,19 @@ import PropTypes from 'prop-types';
 import CardSquare from './Square';
 import styles from './styles';
 
-export default class Card extends Component {
+type Props = {
+  /**
+   * @desc Style to be applied on top of default styles.
+   */
+  style?: any,
+
+  /**
+   * @desc Children Component to be rendered.
+   */
+  children?: any
+}
+
+export default class Card extends Component<Props> {
   static Square = CardSquare;
 
   render() {
@@ -21,9 +33,4 @@ Card.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]),
-};
-
-Card.defaultProps = {
-  style: {},
-  children: null,
 };

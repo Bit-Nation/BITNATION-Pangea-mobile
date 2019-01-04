@@ -97,22 +97,6 @@ class WalletScreen extends NavigatorComponent<
     this.props.updateWalletList();
   }
 
-  updateNavigation() {
-    const { leftButtons } = androidNavigationButtons;
-    this.props.navigator.setButtons({
-
-      leftButtons: this.props.testingModeActive
-        ? [
-          {
-            id: REMOVE_WALLETS_BUTTON,
-            title: i18n.t('testingMode.removeWallets'),
-          },
-        ]
-        : leftButtons,
-      rightButtons: [],
-    });
-  }
-
   componentWillReceiveProps(nextProps) {
     if (
       this.props.isRefreshing !== nextProps.isRefreshing &&
@@ -122,13 +106,8 @@ class WalletScreen extends NavigatorComponent<
     }
   }
 
-  componentDidUpdate() {
-    this.updateNavigation();
-  }
-
   onDidAppear() {
     this.props.updateWalletList();
-    this.updateNavigation();
   }
 
   onNavBarButtonPress(id) {
