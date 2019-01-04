@@ -1,9 +1,9 @@
 // @flow
 
 import React from 'react';
-import { Slider, Text, View, Platform } from 'react-native';
+import { Slider, View, Platform } from 'react-native';
 import { connect } from 'react-redux';
-
+import { Button, Text } from 'native-base';
 import styles from './styles';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
@@ -12,12 +12,20 @@ import { screen, androidNavigationButtons } from '../../../global/Screens';
 import ScreenTitle from '../../../components/common/ScreenTitle';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
-import Button from '../../../components/common/Button';
+// import Button from '../../../components/common/Button';
 import type { State as SettingsState } from '../../../reducers/settings';
 import SettingsListItem from '../../../components/common/SettingsListItem';
-import { changePasscodeLength, changeUseNumericPasscode, loadSettings, saveSettings } from '../../../actions/settings';
+import {
+  changePasscodeLength,
+  changeUseNumericPasscode,
+  loadSettings,
+  saveSettings,
+} from '../../../actions/settings';
 import Colors from '../../../global/colors';
-import { MAXIMAL_PIN_CODE_LENGTH, MINIMAL_PIN_CODE_LENGTH } from '../../../global/Constants';
+import {
+  MAXIMAL_PIN_CODE_LENGTH,
+  MINIMAL_PIN_CODE_LENGTH,
+} from '../../../global/Constants';
 import type { State as AccountsState } from '../../../reducers/accounts';
 import { isCreatingAccount } from '../../../reducers/accounts';
 import { alert } from '../../../global/alerts';
@@ -37,26 +45,35 @@ type Actions = {
   /**
    * @desc Action to change desired using of numeric passcode.
    */
-  changeUseNumericPasscode: (boolean) => void,
+  changeUseNumericPasscode: boolean => void,
   /**
    * @desc Action to change desired length of numeric passcode.
    */
-  changePasscodeLength: (number) => void,
+  changePasscodeLength: number => void,
   /**
    * @desc Action to save current settings.
    */
-  saveSettings: (accountId: string, callback: (success: boolean) => void) => void,
+  saveSettings: (
+    accountId: string,
+    callback: (success: boolean) => void,
+  ) => void,
   /**
    * @desc Action to load settings for account from database.
    */
-  loadSettings: (accountId: string, callback: (success: boolean) => void) => void,
+  loadSettings: (
+    accountId: string,
+    callback: (success: boolean) => void,
+  ) => void,
 };
 
 type State = {
   pinCodeLengthSliderTemporaryValue: ?number,
 };
 
-class SecuritySettingsScreen extends NavigatorComponent<Props & Actions & SettingsState, State> {
+class SecuritySettingsScreen extends NavigatorComponent<
+  Props & Actions & SettingsState,
+  State,
+> {
   static navigatorButtons = { ...androidNavigationButtons };
 
   constructor(props) {
@@ -189,10 +206,12 @@ class SecuritySettingsScreen extends NavigatorComponent<Props & Actions & Settin
           this.applySettingsChanges = null;
           this.setState({ pinCodeLengthSliderTemporaryValue: null });
         },
-      }, {
+      },
+      {
         name: 'confirm',
         onPress: this.askEnterCurrentPassword,
-      }]);
+      },
+    ]);
   };
 
   render() {
@@ -221,15 +240,15 @@ class SecuritySettingsScreen extends NavigatorComponent<Props & Actions & Settin
             style={styles.noflex}
           />
 
-          {
-            passcodeType.type === 'pinCode' &&
+          {passcodeType.type === 'pinCode' && (
             <View style={styles.passCodeLengthItemContainer}>
               <View style={styles.passCodeLengthItem}>
                 <Text style={styles.listItemText} numberOfLines={1}>
                   {i18n.t('screens.securitySettings.passcodeLength')}
                 </Text>
                 <Text style={styles.passCodeLengthNumberText} numberOfLines={1}>
-                  {this.state.pinCodeLengthSliderTemporaryValue || passcodeType.length}
+                  {this.state.pinCodeLengthSliderTemporaryValue ||
+                    passcodeType.length}
                 </Text>
               </View>
               <View style={styles.sliderContainer}>
@@ -238,50 +257,62 @@ class SecuritySettingsScreen extends NavigatorComponent<Props & Actions & Settin
                   minimumValue={MINIMAL_PIN_CODE_LENGTH}
                   maximumValue={MAXIMAL_PIN_CODE_LENGTH}
                   step={1}
-                  value={this.state.pinCodeLengthSliderTemporaryValue || passcodeType.length}
+                  value={
+                    this.state.pinCodeLengthSliderTemporaryValue ||
+                    passcodeType.length
+                  }
                   onSlidingComplete={(value) => {
                     if (passcodeType.length === value) {
                       return;
                     }
                     this.applySettingsChanges = () => {
                       this.props.changePasscodeLength(value);
-                      this.setState({ pinCodeLengthSliderTemporaryValue: null });
+                      this.setState({
+                        pinCodeLengthSliderTemporaryValue: null,
+                      });
                     };
                     this.changePasscodeType();
                   }}
-                  onValueChange={value => this.setState({ pinCodeLengthSliderTemporaryValue: value })}
+                  onValueChange={value =>
+                    this.setState({ pinCodeLengthSliderTemporaryValue: value })
+                  }
                   minimumTrackTintColor={Colors.BitnationHighlightColor}
                 />
               </View>
             </View>
-          }
+          )}
 
-          {
-            isCreating === false &&
+          {isCreating === false && (
             <SettingsListItem
               id='changePasscode'
               text={i18n.t('screens.securitySettings.changePasscode')}
               style={styles.noflex}
               onPress={this.askEnterCurrentPassword}
             />
-          }
+          )}
         </View>
-        {isCreating &&
-        <View style={styles.bodyContainer}>
-          <View style={styles.buttonContainerMultiple}>
-            <Button
-              style={styles.buttonPrevNext}
-              title={i18n.t('screens.accounts.create.prev')}
-              onPress={this.onPreviousPressed}
-            />
-            <Button
-              style={styles.buttonPrevNext}
-              title={i18n.t('screens.accounts.create.next')}
-              onPress={this.onNextPressed}
-            />
+        {isCreating && (
+          <View style={styles.bodyContainer}>
+            <View style={styles.buttonContainerMultiple}>
+              <Button
+                transparent
+                style={styles.buttonPrevNext}
+                // title={i18n.t('screens.accounts.create.prev')}
+                onPress={this.onPreviousPressed}
+              >
+                <Text style={styles.prevText}>{i18n.t('screens.accounts.create.prev')}</Text>
+              </Button>
+              <Button
+                transparent
+                style={styles.buttonPrevNext}
+                // title={i18n.t('screens.accounts.create.next')}
+                onPress={this.onNextPressed}
+              >
+                <Text style={styles.nextText}>{i18n.t('screens.accounts.create.next')}</Text>
+              </Button>
+            </View>
           </View>
-        </View>
-        }
+        )}
       </View>
     );
   }
@@ -307,5 +338,7 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(SecuritySettingsScreen);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(SecuritySettingsScreen);

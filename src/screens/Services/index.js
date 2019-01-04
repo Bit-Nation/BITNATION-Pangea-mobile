@@ -4,7 +4,7 @@ import React from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import Background from '../../components/common/BackgroundImage';
-import { screen, androidNavigationButtons } from '../../global/Screens';
+import { screen } from '../../global/Screens';
 import Card from '../../components/Card';
 import { selectWallet, updateWalletList } from '../../actions/wallet';
 import NavigatorComponent from '../../components/common/NavigatorComponent';
@@ -12,7 +12,6 @@ import LucyButton from '../../components/common/LucyButton';
 
 import Colors from '../../global/colors';
 import AssetsImages from '../../global/AssetsImages';
-import i18n from '../../global/i18n';
 import styles from './styles';
 import FakeNavigationBar from '../../components/common/FakeNavigationBar';
 import type { State as WalletState } from '../../reducers/wallet';
@@ -131,21 +130,6 @@ class ServicesScreen extends NavigatorComponent<
     }
   }
 
-  updateNavigation() {
-    const navigatorButtons = { ...androidNavigationButtons };
-    this.props.navigator.setButtons({
-      leftButtons: this.props.testingModeActive
-        ? [
-          {
-            id: REMOVE_WALLETS_BUTTON,
-            title: i18n.t('testingMode.removeWallets'),
-          },
-        ]
-        : navigatorButtons,
-      rightButtons: [],
-    });
-  }
-
   componentWillReceiveProps(nextProps) {
     if (
       this.props.isRefreshing !== nextProps.isRefreshing &&
@@ -155,13 +139,8 @@ class ServicesScreen extends NavigatorComponent<
     }
   }
 
-  componentDidUpdate() {
-    this.updateNavigation();
-  }
-
   onDidAppear() {
     this.props.updateWalletList();
-    this.updateNavigation();
   }
 
   onNavBarButtonPress(id) {

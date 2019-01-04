@@ -10,14 +10,14 @@ type Props = {
    * @desc Style to be applied on top of default styles.
    */
   style?: any,
-  children: any,
+
+  /**
+   * @desc Children Component to be rendered.
+   */
+  children?: any
 }
 
 export default class Card extends Component<Props> {
-  static defaultProps = {
-    style: {},
-    children: null,
-  }
   static Square = CardSquare;
 
   render() {

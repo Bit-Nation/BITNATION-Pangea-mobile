@@ -569,13 +569,21 @@
         "notary": "Notary"
       },
       "goBack": "Go Back",
-      "save": "Save"
+      "save": "Save",
+      "chooseLanguage": "Choose Language",
+      "chooseNetwork": "Choose Network",
+      "notification": "Notifications",
+      "bitnationGold": "Bitnation Gold"
     },
     "securitySettings": {
       "title": "Security settings",
       "useNumericPasscode": "Numeric Passcode (less secure)",
       "passcodeLength": "Passcode Length",
       "changePasscode": "Change Passcode"
+    },
+    "services": {
+      "title": "Govmarket",
+      "tabTitle": "GOVMARKET"
     },
     "pinCode": {
       "enterInstruction": "Enter PIN code:",

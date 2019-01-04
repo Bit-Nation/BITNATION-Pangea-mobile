@@ -7,8 +7,6 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import i18n from '../../global/i18n';
 import { logout } from '../../actions/accounts';
 import { getCurrentAccount } from '../../reducers/accounts';
-import en from '../../global/translations/en.json';
-import hi from '../../global/translations/hi.json';
 
 import AssetsImages from '../../global/AssetsImages';
 import styles from './styles';
@@ -38,25 +36,6 @@ class MenuScreen extends NavigatorComponent {
     this.toggleDrawer();
     this.props.navigator.handleDeepLink({
       link: `push/${screen}`,
-    });
-  };
-
-  changeLanguage = () => {
-    i18n.init({
-      fallbackLng: 'en',
-      initImmediate: false,
-      returnObjects: true,
-      interpolation: {
-        escapeValue: false,
-      },
-      resources: {
-        en: {
-          translation: en,
-        },
-        hi: {
-          translation: hi,
-        },
-      },
     });
   };
 
@@ -143,8 +122,8 @@ class MenuScreen extends NavigatorComponent {
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.navigateButtonStyle}
-            // onPress={() => this.onPushScreen('PROFILE_SCREEN')}
-            onPress={this.changeLanguage}
+            onPress={() => this.onPushScreen('PROFILE_SCREEN')}
+            // onPress={this.changeLanguage}
           >
             <View style={styles.wrapIconView}>
               <MaterialCommunityIcons

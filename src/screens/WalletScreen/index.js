@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { Icon } from 'native-base';
 import _ from 'lodash';
 import Background from '../../components/common/BackgroundImage';
-import { screen, androidNavigationButtons } from '../../global/Screens';
+import { screen } from '../../global/Screens';
 import List from './List';
 import EmptyWalletScreen from './EmptyState/index';
 import { selectWallet, updateWalletList } from '../../actions/wallet';
@@ -97,22 +97,6 @@ class WalletScreen extends NavigatorComponent<
     this.props.updateWalletList();
   }
 
-  updateNavigation() {
-    const navigatorButtons = { ...androidNavigationButtons };
-    this.props.navigator.setButtons({
-
-      leftButtons: this.props.testingModeActive
-        ? [
-          {
-            id: REMOVE_WALLETS_BUTTON,
-            title: i18n.t('testingMode.removeWallets'),
-          },
-        ]
-        : navigatorButtons,
-      rightButtons: [],
-    });
-  }
-
   componentWillReceiveProps(nextProps) {
     if (
       this.props.isRefreshing !== nextProps.isRefreshing &&
@@ -122,13 +106,8 @@ class WalletScreen extends NavigatorComponent<
     }
   }
 
-  componentDidUpdate() {
-    this.updateNavigation();
-  }
-
   onDidAppear() {
     this.props.updateWalletList();
-    this.updateNavigation();
   }
 
   onNavBarButtonPress(id) {

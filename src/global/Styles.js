@@ -345,6 +345,14 @@ const styles = {
     textAlign: 'left',
   },
 
+  prevText: {
+    color: Colors.BitnationLinkOrangeColor,
+  },
+
+  nextText: {
+    color: Colors.BitnationLinkOrangeColor,
+  },
+
   alertPanelViewTitle: {
     ...defaultTextStyles.title2,
     fontWeight: 'bold',
@@ -1048,7 +1056,7 @@ const styles = {
 
   buttonPrevNext: {
     marginTop: 13,
-    width: 90,
+    width: 120,
   },
 
   buttonListContainer: {
