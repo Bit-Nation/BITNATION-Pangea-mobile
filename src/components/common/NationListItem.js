@@ -38,7 +38,7 @@ type Props = {
    * @desc Text to display citizens
    * @type string
    */
-  citizens: string,
+  citizens?: string,
   /**
    * @desc Callback on press item.
    * @param Id of item that was pressed.
@@ -56,7 +56,7 @@ type PropsList<IDType> = {
    * @desc Text to display citizens
    * @type string
    */
-  citizens: string,
+  citizens?: string,
   /**
    * @desc Id that will be passed in onPress callback.
    * @type IDType
@@ -89,7 +89,7 @@ const ListItem = <IDType>({
   disabled,
   style,
   text,
-  citizens,
+  citizens = '0',
 }: PropsList<IDType>) => {
   const styles = MediaQueryStyleSheet.create({
     ...GlobalStyles,
@@ -137,12 +137,13 @@ ListItem.defaultProps = {
   iconSource: undefined,
   subtitle: undefined,
   value: undefined,
+  citizens: '0',
 };
 
 /**
-   * @desc Component that renders nations list item.
- * @return {React.Component} A component.
-    */
+    * @desc Component that renders nations list item.
+    * @return {React.Component} A component.
+*/
 const NationListItem = ({
   id, textStyle, onPress, nationName, status, citizens,
 }: Props) => (
@@ -161,6 +162,7 @@ NationListItem.defaultProps = {
   textStyle: undefined,
   status: undefined,
   onPress: () => undefined,
+  citizens: '0',
 };
 
 export default NationListItem;

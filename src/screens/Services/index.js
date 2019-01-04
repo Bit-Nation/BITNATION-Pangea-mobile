@@ -132,7 +132,7 @@ class ServicesScreen extends NavigatorComponent<
   }
 
   updateNavigation() {
-    const { leftButtons } = androidNavigationButtons;
+    const navigatorButtons = { ...androidNavigationButtons };
     this.props.navigator.setButtons({
       leftButtons: this.props.testingModeActive
         ? [
@@ -141,7 +141,7 @@ class ServicesScreen extends NavigatorComponent<
             title: i18n.t('testingMode.removeWallets'),
           },
         ]
-        : leftButtons,
+        : navigatorButtons,
       rightButtons: [],
     });
   }

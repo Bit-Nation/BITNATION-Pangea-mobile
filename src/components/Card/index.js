@@ -2,11 +2,22 @@
 
 import React, { Component } from 'react';
 import { View } from 'react-native';
-import PropTypes from 'prop-types';
 import CardSquare from './Square';
 import styles from './styles';
 
-export default class Card extends Component {
+type Props = {
+  /**
+   * @desc Style to be applied on top of default styles.
+   */
+  style?: any,
+  children: any,
+}
+
+export default class Card extends Component<Props> {
+  static defaultProps = {
+    style: {},
+    children: null,
+  }
   static Square = CardSquare;
 
   render() {
@@ -14,16 +25,3 @@ export default class Card extends Component {
     return <View style={[styles.card, style]}>{children}</View>;
   }
 }
-
-Card.propTypes = {
-  style: PropTypes.object,
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]),
-};
-
-Card.defaultProps = {
-  style: {},
-  children: null,
-};
