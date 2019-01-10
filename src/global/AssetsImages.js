@@ -53,6 +53,7 @@ const sendChatActiveIcon = require('../assets/images/sendChatActive.png');
 const sendChatInActiveIcon = require('../assets/images/sendChatInActive.png');
 const actionChatIcon = require('../assets/images/actionChat.png');
 const lucyIcon = require('../assets/images/lucyIcon.png');
+const searchIcon = require('../assets/images/iconSearch.png');
 
 const Images = {
   background,
@@ -72,6 +73,7 @@ const Images = {
   closeIcon,
   menuIcon,
   lucyIcon,
+  searchIcon,
   TabIcons: {
     dashboard: dashboardTabIcon,
     chat: townhall,

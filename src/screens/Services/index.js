@@ -1,14 +1,16 @@
 // @flow
 
 import React from 'react';
-import { View, TouchableOpacity } from 'react-native';
+import { View, TextInput, Image } from 'react-native';
 import { connect } from 'react-redux';
 import Background from '../../components/common/BackgroundImage';
 import { screen } from '../../global/Screens';
-import Card from '../../components/Card';
 import { selectWallet, updateWalletList } from '../../actions/wallet';
 import NavigatorComponent from '../../components/common/NavigatorComponent';
 import LucyButton from '../../components/common/LucyButton';
+import ScrollTabView, { DefaultTabBar } from '../../components/ScrollTabView';
+
+import SubTabComponent from './components/SubTabComponent';
 
 import Colors from '../../global/colors';
 import AssetsImages from '../../global/AssetsImages';
@@ -19,10 +21,35 @@ import type { WalletType } from '../../types/Wallet';
 import type { Account } from '../../types/Account';
 import type { Navigator } from '../../types/ReactNativeNavigation';
 import { getCurrentAccount } from '../../reducers/accounts';
-import ScreenTitle from '../../components/common/ScreenTitle';
 
 const MENU_BUTTON = 'MENU_BUTTON';
 const REMOVE_WALLETS_BUTTON = 'REMOVE_WALLETS_BUTTON';
+const data = [
+  {
+    uri: 'https://previews.123rf.com/images/ahasoft2000/ahasoft20001602/ahasoft2000160201444/51968468-heart-ekg-long-shadow-glyph-icon-style-is-a-flat-light-symbol-with-rounded-angles-on-a-red-square-ba.jpg',
+    description: 'LOVE4EVER MARRIAGE',
+    title: 'Producer: BITNATION Americas LTD',
+    subTitle: 'Fees: Standard ETH transaction fee',
+  },
+  {
+    uri: 'https://previews.123rf.com/images/ahasoft2000/ahasoft20001602/ahasoft2000160201444/51968468-heart-ekg-long-shadow-glyph-icon-style-is-a-flat-light-symbol-with-rounded-angles-on-a-red-square-ba.jpg',
+    description: 'LOVE4EVER MARRIAGE',
+    title: 'Producer: BITNATION Americas LTD',
+    subTitle: 'Fees: Standard ETH transaction fee',
+  },
+  {
+    uri: 'https://previews.123rf.com/images/ahasoft2000/ahasoft20001602/ahasoft2000160201444/51968468-heart-ekg-long-shadow-glyph-icon-style-is-a-flat-light-symbol-with-rounded-angles-on-a-red-square-ba.jpg',
+    description: 'LOVE4EVER MARRIAGE',
+    title: 'Producer: BITNATION Americas LTD',
+    subTitle: 'Fees: Standard ETH transaction fee',
+  },
+  {
+    uri: 'https://previews.123rf.com/images/ahasoft2000/ahasoft20001602/ahasoft2000160201444/51968468-heart-ekg-long-shadow-glyph-icon-style-is-a-flat-light-symbol-with-rounded-angles-on-a-red-square-ba.jpg',
+    description: 'LOVE4EVER MARRIAGE',
+    title: 'Producer: BITNATION Americas LTD',
+    subTitle: 'Fees: Standard ETH transaction fee',
+  },
+];
 
 type Props = {
   /**
@@ -191,34 +218,255 @@ class ServicesScreen extends NavigatorComponent<
         <Background />
         <FakeNavigationBar />
         <View style={styles.bodyContainer}>
-          {/* <ScreenTitle title={i18n.t('screens.wallet.title')} /> */}
-          <ScreenTitle title='Services' />
-          <Card style={styles.card}>
-            <TouchableOpacity onPress={() => this.props.navigator.push(screen('DOCUMENTS_LIST_SCREEN'))}>
-              <Card.Square
-                title='Notary'
-                uri='https://www.clipartmax.com/png/middle/273-2736662_stamp-of-approval-notary.png'
-                style={styles.squareCard}
+          <View style={styles.searchBarContainer}>
+            <View style={styles.inputViewContainer}>
+              <TextInput
+                style={styles.textInputStyle}
+                placeholder='Search by name, type or category...'
+                placeholderTextColor={Colors.BitnationLinkOrangeColor}
+                autoCapitalize='none'
               />
-            </TouchableOpacity>
-            <Card.Square
-              title='Dapps'
-              uri='https://blog.bitnation.co/wp-content/uploads/fractals_3.jpg'
-              style={styles.squareCard}
-            />
-          </Card>
-          <Card style={styles.card}>
-            <Card.Square
-              title='Contracts'
-              uri='https://apngbc.org.au/assets/default-site/_resampled/ScaleWidthWyI3OTUiXQ/Contract-Law-hero.gif'
-              style={styles.squareCard}
-            />
-            <Card.Square
-              title='Products'
-              uri='https://banner2.kisspng.com/20180202/kwe/kisspng-passport-canada-canadian-passport-icon-canadian-passport-color-of-the-material-5a74fa54d506a0.7507633215176157008726.jpg'
-              style={styles.squareCard}
-            />
-          </Card>
+              <Image source={AssetsImages.searchIcon} style={styles.searchIconStyle} />
+            </View>
+          </View>
+          <ScrollTabView
+            initialPage={0}
+            tabBarBackgroundColor={Colors.BitnationBlackAlphaColor}
+            tabBarActiveTextColor={Colors.BitnationLinkOrangeColor}
+            tabBarInactiveTextColor={Colors.BitnationLinkOrangeColor}
+            tabBarUnderlineStyle={styles.tabBarUnderlineStyle}
+            tabBarTextStyle={styles.tabBarTextStyle}
+            renderTabBar={() => <DefaultTabBar />}
+          >
+            <ScrollTabView
+              tabLabel='DAPPS'
+              initialPage={0}
+              tabBarBackgroundColor={Colors.lightFade}
+              tabBarActiveTextColor={Colors.white}
+              tabBarInactiveTextColor={Colors.white}
+              tabBarUnderlineStyle={styles.subTabBarUnderlineStyle}
+              tabBarTextStyle={styles.subTabBarTextStyle}
+              tabBarContainerStyle={styles.subTabBarContainerStyle}
+              renderTabBar={() => <DefaultTabBar />}
+            >
+              <View tabLabel='IDENTITY'>
+                <SubTabComponent
+                  uri='https://sfnotary.com/wp-content/uploads/2015/03/San-Franciscos-Favorite-Mobile-Notary-Public1-350x232.jpg'
+                  description='Using the BITNATION Public Notary DApp you can notarise jpeg and png versions of your agreements and other important information on the Ethereum chain'
+                  title='USE DAPPS'
+                  subTitle='SIMILAR DAPPS'
+                  list={data}
+                />
+              </View>
+              <View tabLabel='REGISTRIES'>
+                <SubTabComponent
+                  uri='https://sfnotary.com/wp-content/uploads/2015/03/San-Franciscos-Favorite-Mobile-Notary-Public1-350x232.jpg'
+                  description='Using the BITNATION Public Notary DApp you can notarise jpeg and png versions of your agreements and other important information on the Ethereum chain'
+                  title='USE DAPPS'
+                  subTitle='SIMILAR DAPPS'
+                  list={data}
+                />
+              </View>
+              <View tabLabel='EDUCATION'>
+                <SubTabComponent
+                  uri='https://sfnotary.com/wp-content/uploads/2015/03/San-Franciscos-Favorite-Mobile-Notary-Public1-350x232.jpg'
+                  description='Using the BITNATION Public Notary DApp you can notarise jpeg and png versions of your agreements and other important information on the Ethereum chain'
+                  title='USE DAPPS'
+                  subTitle='SIMILAR DAPPS'
+                  list={data}
+                />
+              </View>
+              <View tabLabel='SECURITY'>
+                <SubTabComponent
+                  uri='https://sfnotary.com/wp-content/uploads/2015/03/San-Franciscos-Favorite-Mobile-Notary-Public1-350x232.jpg'
+                  description='Using the BITNATION Public Notary DApp you can notarise jpeg and png versions of your agreements and other important information on the Ethereum chain'
+                  title='USE DAPPS'
+                  subTitle='SIMILAR DAPPS'
+                  list={data}
+                />
+              </View>
+              <View tabLabel='JUSTICE'>
+                <SubTabComponent
+                  uri='https://sfnotary.com/wp-content/uploads/2015/03/San-Franciscos-Favorite-Mobile-Notary-Public1-350x232.jpg'
+                  description='Using the BITNATION Public Notary DApp you can notarise jpeg and png versions of your agreements and other important information on the Ethereum chain'
+                  title='USE DAPPS'
+                  subTitle='SIMILAR DAPPS'
+                  list={data}
+                />
+              </View>
+            </ScrollTabView>
+            <ScrollTabView
+              tabLabel='CONTRACTS'
+              initialPage={0}
+              tabBarBackgroundColor={Colors.lightFade}
+              tabBarActiveTextColor={Colors.white}
+              tabBarInactiveTextColor={Colors.white}
+              tabBarUnderlineStyle={styles.subTabBarUnderlineStyle}
+              tabBarTextStyle={styles.subTabBarTextStyle}
+              tabBarContainerStyle={styles.subTabBarContainerStyle}
+              renderTabBar={() => <DefaultTabBar />}
+            >
+              <View tabLabel='IDENTITY'>
+                <SubTabComponent
+                  uri='https://sfnotary.com/wp-content/uploads/2015/03/San-Franciscos-Favorite-Mobile-Notary-Public1-350x232.jpg'
+                  description='Using the BITNATION Public Notary DApp you can notarise jpeg and png versions of your agreements and other important information on the Ethereum chain'
+                  title='USE DAPPS'
+                  subTitle='SIMILAR DAPPS'
+                  list={data}
+                />
+              </View>
+              <View tabLabel='REGISTRIES'>
+                <SubTabComponent
+                  uri='https://sfnotary.com/wp-content/uploads/2015/03/San-Franciscos-Favorite-Mobile-Notary-Public1-350x232.jpg'
+                  description='Using the BITNATION Public Notary DApp you can notarise jpeg and png versions of your agreements and other important information on the Ethereum chain'
+                  title='USE DAPPS'
+                  subTitle='SIMILAR DAPPS'
+                  list={data}
+                />
+              </View>
+              <View tabLabel='EDUCATION'>
+                <SubTabComponent
+                  uri='https://sfnotary.com/wp-content/uploads/2015/03/San-Franciscos-Favorite-Mobile-Notary-Public1-350x232.jpg'
+                  description='Using the BITNATION Public Notary DApp you can notarise jpeg and png versions of your agreements and other important information on the Ethereum chain'
+                  title='USE DAPPS'
+                  subTitle='SIMILAR DAPPS'
+                  list={data}
+                />
+              </View>
+              <View tabLabel='SECURITY'>
+                <SubTabComponent
+                  uri='https://sfnotary.com/wp-content/uploads/2015/03/San-Franciscos-Favorite-Mobile-Notary-Public1-350x232.jpg'
+                  description='Using the BITNATION Public Notary DApp you can notarise jpeg and png versions of your agreements and other important information on the Ethereum chain'
+                  title='USE DAPPS'
+                  subTitle='SIMILAR DAPPS'
+                  list={data}
+                />
+              </View>
+              <View tabLabel='JUSTICE'>
+                <SubTabComponent
+                  uri='https://sfnotary.com/wp-content/uploads/2015/03/San-Franciscos-Favorite-Mobile-Notary-Public1-350x232.jpg'
+                  description='Using the BITNATION Public Notary DApp you can notarise jpeg and png versions of your agreements and other important information on the Ethereum chain'
+                  title='USE DAPPS'
+                  subTitle='SIMILAR DAPPS'
+                  list={data}
+                />
+              </View>
+            </ScrollTabView>
+            <ScrollTabView
+              tabLabel='SERVICES'
+              initialPage={0}
+              tabBarBackgroundColor={Colors.lightFade}
+              tabBarActiveTextColor={Colors.white}
+              tabBarInactiveTextColor={Colors.white}
+              tabBarUnderlineStyle={styles.subTabBarUnderlineStyle}
+              tabBarTextStyle={styles.subTabBarTextStyle}
+              tabBarContainerStyle={styles.subTabBarContainerStyle}
+              renderTabBar={() => <DefaultTabBar />}
+            >
+              <View tabLabel='IDENTITY'>
+                <SubTabComponent
+                  uri='https://sfnotary.com/wp-content/uploads/2015/03/San-Franciscos-Favorite-Mobile-Notary-Public1-350x232.jpg'
+                  description='Using the BITNATION Public Notary DApp you can notarise jpeg and png versions of your agreements and other important information on the Ethereum chain'
+                  title='USE DAPPS'
+                  subTitle='SIMILAR DAPPS'
+                  list={data}
+                />
+              </View>
+              <View tabLabel='REGISTRIES'>
+                <SubTabComponent
+                  uri='https://sfnotary.com/wp-content/uploads/2015/03/San-Franciscos-Favorite-Mobile-Notary-Public1-350x232.jpg'
+                  description='Using the BITNATION Public Notary DApp you can notarise jpeg and png versions of your agreements and other important information on the Ethereum chain'
+                  title='USE DAPPS'
+                  subTitle='SIMILAR DAPPS'
+                  list={data}
+                />
+              </View>
+              <View tabLabel='EDUCATION'>
+                <SubTabComponent
+                  uri='https://sfnotary.com/wp-content/uploads/2015/03/San-Franciscos-Favorite-Mobile-Notary-Public1-350x232.jpg'
+                  description='Using the BITNATION Public Notary DApp you can notarise jpeg and png versions of your agreements and other important information on the Ethereum chain'
+                  title='USE DAPPS'
+                  subTitle='SIMILAR DAPPS'
+                  list={data}
+                />
+              </View>
+              <View tabLabel='SECURITY'>
+                <SubTabComponent
+                  uri='https://sfnotary.com/wp-content/uploads/2015/03/San-Franciscos-Favorite-Mobile-Notary-Public1-350x232.jpg'
+                  description='Using the BITNATION Public Notary DApp you can notarise jpeg and png versions of your agreements and other important information on the Ethereum chain'
+                  title='USE DAPPS'
+                  subTitle='SIMILAR DAPPS'
+                  list={data}
+                />
+              </View>
+              <View tabLabel='JUSTICE'>
+                <SubTabComponent
+                  uri='https://sfnotary.com/wp-content/uploads/2015/03/San-Franciscos-Favorite-Mobile-Notary-Public1-350x232.jpg'
+                  description='Using the BITNATION Public Notary DApp you can notarise jpeg and png versions of your agreements and other important information on the Ethereum chain'
+                  title='USE DAPPS'
+                  subTitle='SIMILAR DAPPS'
+                  list={data}
+                />
+              </View>
+            </ScrollTabView>
+            <ScrollTabView
+              tabLabel='PRODUCTS'
+              initialPage={0}
+              tabBarBackgroundColor={Colors.lightFade}
+              tabBarActiveTextColor={Colors.white}
+              tabBarInactiveTextColor={Colors.white}
+              tabBarUnderlineStyle={styles.subTabBarUnderlineStyle}
+              tabBarTextStyle={styles.subTabBarTextStyle}
+              tabBarContainerStyle={styles.subTabBarContainerStyle}
+              renderTabBar={() => <DefaultTabBar />}
+            >
+              <View tabLabel='IDENTITY'>
+                <SubTabComponent
+                  uri='https://sfnotary.com/wp-content/uploads/2015/03/San-Franciscos-Favorite-Mobile-Notary-Public1-350x232.jpg'
+                  description='Using the BITNATION Public Notary DApp you can notarise jpeg and png versions of your agreements and other important information on the Ethereum chain'
+                  title='USE DAPPS'
+                  subTitle='SIMILAR DAPPS'
+                  list={data}
+                />
+              </View>
+              <View tabLabel='REGISTRIES'>
+                <SubTabComponent
+                  uri='https://sfnotary.com/wp-content/uploads/2015/03/San-Franciscos-Favorite-Mobile-Notary-Public1-350x232.jpg'
+                  description='Using the BITNATION Public Notary DApp you can notarise jpeg and png versions of your agreements and other important information on the Ethereum chain'
+                  title='USE DAPPS'
+                  subTitle='SIMILAR DAPPS'
+                  list={data}
+                />
+              </View>
+              <View tabLabel='EDUCATION'>
+                <SubTabComponent
+                  uri='https://sfnotary.com/wp-content/uploads/2015/03/San-Franciscos-Favorite-Mobile-Notary-Public1-350x232.jpg'
+                  description='Using the BITNATION Public Notary DApp you can notarise jpeg and png versions of your agreements and other important information on the Ethereum chain'
+                  title='USE DAPPS'
+                  subTitle='SIMILAR DAPPS'
+                  list={data}
+                />
+              </View>
+              <View tabLabel='SECURITY'>
+                <SubTabComponent
+                  uri='https://sfnotary.com/wp-content/uploads/2015/03/San-Franciscos-Favorite-Mobile-Notary-Public1-350x232.jpg'
+                  description='Using the BITNATION Public Notary DApp you can notarise jpeg and png versions of your agreements and other important information on the Ethereum chain'
+                  title='USE DAPPS'
+                  subTitle='SIMILAR DAPPS'
+                  list={data}
+                />
+              </View>
+              <View tabLabel='JUSTICE'>
+                <SubTabComponent
+                  uri='https://sfnotary.com/wp-content/uploads/2015/03/San-Franciscos-Favorite-Mobile-Notary-Public1-350x232.jpg'
+                  description='Using the BITNATION Public Notary DApp you can notarise jpeg and png versions of your agreements and other important information on the Ethereum chain'
+                  title='USE DAPPS'
+                  subTitle='SIMILAR DAPPS'
+                  list={data}
+                />
+              </View>
+            </ScrollTabView>
+          </ScrollTabView>
         </View>
         <LucyButton />
       </View>
