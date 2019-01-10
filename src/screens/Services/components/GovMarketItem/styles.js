@@ -1,6 +1,11 @@
+import Colors from '../../../../global/colors';
+
 export default {
   container: {
     flexDirection: 'row',
+    backgroundColor: Colors.white,
+    paddingVertical: 5,
+    paddingHorizontal: 5,
   },
   avatarStyle: {
     width: 60,
