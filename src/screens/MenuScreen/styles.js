@@ -27,10 +27,12 @@ const styles = MediaQueryStyleSheet.create({
     fontFamily: 'Roboto',
     fontSize: 20,
     color: Colors.white,
+    alignSelf: 'center',
   },
   publicKey: {
     marginTop: 10,
     marginHorizontal: 10,
+    width: 240,
   },
   publicKeyText: {
     fontFamily: 'Roboto',

@@ -192,7 +192,6 @@ class ServicesScreen extends NavigatorComponent<
         <FakeNavigationBar />
         <View style={styles.bodyContainer}>
           {/* <ScreenTitle title={i18n.t('screens.wallet.title')} /> */}
-          <ScreenTitle title='Services' />
           <Card style={styles.card}>
             <TouchableOpacity onPress={() => this.props.navigator.push(screen('DOCUMENTS_LIST_SCREEN'))}>
               <Card.Square

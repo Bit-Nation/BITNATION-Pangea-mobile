@@ -8,8 +8,8 @@
   "sidemenu": {
     "citizenid": "Citizen ID",
     "account": "Account",
-    "copyaddress": "COPY ADDRESS",
-    "myprofile": "MY PROFILE",
+    "copyaddress": "COPY PUBLIC KEY",
+    "myprofile": "CITIZEN ID",
     "wallet": "WALLET",
     "settings": "SETTINGS",
     "contact": "CONTACT",
@@ -326,7 +326,7 @@
     },
     "chat": {
       "title": "$t(common.chat)",
-      "tabTitle": "$t(tabbar.chat)",
+      "tabTitle": "TOWNHALL",
       "allChats": "All Chats",
       "myChats": "My Chats",
       "keyFromClipboard": "Use Identity Key on clipboard",
@@ -375,7 +375,7 @@
         "leave": "LEAVE"
       },
       "title": "$t(common.nations)",
-      "tabTitle": "$t(tabbar.nations)",
+      "tabTitle": "NATIONS",
       "allNations": "All Nations",
       "myNations": "My Nations"
     },
@@ -434,7 +434,7 @@
     },
     "wallet": {
       "title": "$t(common.wallet)",
-      "tabTitle": "$t(tabbar.wallet)",
+      "tabTitle": "WALLET",
       "empty": {
         "createWallet": "Create Wallet",
         "restoreWallet": "Restore Wallet",
@@ -559,7 +559,7 @@
       "security": "Security",
       "viewPrivateKey": "Private Key",
       "confirmPrivateKey": "Private Key (confirmation required)",
-      "switchAccounts": "Switch accounts",
+      "switchAccounts": "SWITCH ACCOUNT",
       "connectToDAppHost": "Connect to DApp host",
       "connectToDAppLogger": "Connect debug logger",
       "documents": "Documents",

@@ -66,7 +66,7 @@ const NationsListScreen = ({
     <View style={styles.nationsScreenContainer}>
       <BackgroundImage />
       <FakeNavigationBar />
-      <ScreenTitle title={i18n.t('screens.nations.title')} />
+      {/* <ScreenTitle title={i18n.t('screens.nations.title')} /> */}
       <SectionList
         renderItem={(item) => {
           const nation = item.item;

@@ -54,9 +54,7 @@ class MenuScreen extends NavigatorComponent {
         </TouchableOpacity>
         <View style={styles.avatarView}>
           <Image source={avatarSource} style={styles.avatarLarge} />
-          <Text style={styles.nameText}>
-            {i18n.t('sidemenu.citizenid')}
-          </Text>
+          <Text style={styles.nameText}>{i18n.t('sidemenu.citizenid')}</Text>
           <View style={styles.publicKey}>
             <Text style={styles.publicKeyText}>
               {publicKey && publicKey.trim()}
@@ -70,6 +68,16 @@ class MenuScreen extends NavigatorComponent {
             <Text style={styles.settingsText}>
               {' '}
               {i18n.t('sidemenu.copyaddress')}
+            </Text>
+          </Button>
+          <Button
+            enabled
+            style={styles.actionButton}
+            onPress={this.props.logout}
+          >
+            <Text style={styles.settingsText}>
+              {' '}
+              {i18n.t('screens.settings.switchAccounts')}
             </Text>
           </Button>
         </View>

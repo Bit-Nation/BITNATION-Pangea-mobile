@@ -151,8 +151,8 @@ const Screens = {
   NATIONS_SCREEN: {
     screen: 'Pangea.NationsScreen',
     label: i18n.t('screens.nations.tabTitle'),
+    title: i18n.t('screens.nations.tabTitle').toUpperCase(),
     icon: AssetsImages.TabIcons.nations,
-    title: '',
     navigatorStyle,
   },
   NATION_DETAILS_SCREEN: {
@@ -286,6 +286,7 @@ const Screens = {
   CHAT_LIST_SCREEN: {
     screen: 'Pangea.ChatListScreen',
     label: i18n.t('screens.chat.tabTitle'),
+    title: i18n.t('screens.chat.tabTitle').toUpperCase(),
     icon: AssetsImages.TabIcons.chat,
     navigatorStyle,
   },
