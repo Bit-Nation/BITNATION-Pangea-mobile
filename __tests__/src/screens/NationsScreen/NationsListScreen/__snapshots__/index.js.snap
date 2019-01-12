@@ -37,16 +37,29 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "children": Array [
-        <BackgroundImage
-          source={1}
-          style={undefined}
-        />,
-        <FakeNavigationBar
-          navBarHidden={false}
-        />,
-        <ScreenTitle
-          title="Nations"
-        />,
+        <View
+          style={
+            Object {
+              "flex": 0.5,
+            }
+          }
+        >
+          <ProgressiveImage
+            source={
+              Object {
+                "uri": "https://www.ecestaticos.com/imagestatic/clipping/0df/db8/0dfdb8b1b74624f225d5b6112ade8706/jxsi-y-cup-pactan-la-ley-para-amparar-el-referendum-y-la-republica-catalana.jpg?mtime=1483018148",
+              }
+            }
+            style={
+              Object {
+                "backgroundColor": "#BBBDBF",
+                "borderRadius": 0,
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />
+        </View>,
         <SectionList
           data={Array []}
           disableVirtualization={false}
@@ -82,35 +95,47 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "function",
+        "nodeType": "class",
         "props": Object {
-          "source": 1,
-          "style": undefined,
+          "children": <ProgressiveImage
+            source={
+              Object {
+                "uri": "https://www.ecestaticos.com/imagestatic/clipping/0df/db8/0dfdb8b1b74624f225d5b6112ade8706/jxsi-y-cup-pactan-la-ley-para-amparar-el-referendum-y-la-republica-catalana.jpg?mtime=1483018148",
+              }
+            }
+            style={
+              Object {
+                "backgroundColor": "#BBBDBF",
+                "borderRadius": 0,
+                "height": "100%",
+                "width": "100%",
+              }
+            }
+          />,
+          "style": Object {
+            "flex": 0.5,
+          },
         },
         "ref": null,
-        "rendered": null,
-        "type": [Function],
-      },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "function",
-        "props": Object {
-          "navBarHidden": false,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "source": Object {
+              "uri": "https://www.ecestaticos.com/imagestatic/clipping/0df/db8/0dfdb8b1b74624f225d5b6112ade8706/jxsi-y-cup-pactan-la-ley-para-amparar-el-referendum-y-la-republica-catalana.jpg?mtime=1483018148",
+            },
+            "style": Object {
+              "backgroundColor": "#BBBDBF",
+              "borderRadius": 0,
+              "height": "100%",
+              "width": "100%",
+            },
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
         },
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
-      },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "function",
-        "props": Object {
-          "title": "Nations",
-        },
-        "ref": null,
-        "rendered": null,
         "type": [Function],
       },
       Object {
@@ -162,16 +187,29 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "children": Array [
-          <BackgroundImage
-            source={1}
-            style={undefined}
-          />,
-          <FakeNavigationBar
-            navBarHidden={false}
-          />,
-          <ScreenTitle
-            title="Nations"
-          />,
+          <View
+            style={
+              Object {
+                "flex": 0.5,
+              }
+            }
+          >
+            <ProgressiveImage
+              source={
+                Object {
+                  "uri": "https://www.ecestaticos.com/imagestatic/clipping/0df/db8/0dfdb8b1b74624f225d5b6112ade8706/jxsi-y-cup-pactan-la-ley-para-amparar-el-referendum-y-la-republica-catalana.jpg?mtime=1483018148",
+                }
+              }
+              style={
+                Object {
+                  "backgroundColor": "#BBBDBF",
+                  "borderRadius": 0,
+                  "height": "100%",
+                  "width": "100%",
+                }
+              }
+            />
+          </View>,
           <SectionList
             data={Array []}
             disableVirtualization={false}
@@ -207,35 +245,47 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "function",
+          "nodeType": "class",
           "props": Object {
-            "source": 1,
-            "style": undefined,
+            "children": <ProgressiveImage
+              source={
+                Object {
+                  "uri": "https://www.ecestaticos.com/imagestatic/clipping/0df/db8/0dfdb8b1b74624f225d5b6112ade8706/jxsi-y-cup-pactan-la-ley-para-amparar-el-referendum-y-la-republica-catalana.jpg?mtime=1483018148",
+                }
+              }
+              style={
+                Object {
+                  "backgroundColor": "#BBBDBF",
+                  "borderRadius": 0,
+                  "height": "100%",
+                  "width": "100%",
+                }
+              }
+            />,
+            "style": Object {
+              "flex": 0.5,
+            },
           },
           "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "function",
-          "props": Object {
-            "navBarHidden": false,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "source": Object {
+                "uri": "https://www.ecestaticos.com/imagestatic/clipping/0df/db8/0dfdb8b1b74624f225d5b6112ade8706/jxsi-y-cup-pactan-la-ley-para-amparar-el-referendum-y-la-republica-catalana.jpg?mtime=1483018148",
+              },
+              "style": Object {
+                "backgroundColor": "#BBBDBF",
+                "borderRadius": 0,
+                "height": "100%",
+                "width": "100%",
+              },
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
           },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "function",
-          "props": Object {
-            "title": "Nations",
-          },
-          "ref": null,
-          "rendered": null,
           "type": [Function],
         },
         Object {
