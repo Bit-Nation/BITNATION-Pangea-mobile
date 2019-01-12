@@ -53,10 +53,7 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "children": Array [
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          ellipsizeMode="tail"
+        <Styled(Text)
           style={
             Object {
               "color": "#58595B",
@@ -67,6 +64,7 @@ ShallowWrapper {
               "lineHeight": 22,
             }
           }
+          virtual={undefined}
         />,
         <TextInput
           allowFontScaling={true}
@@ -77,13 +75,13 @@ ShallowWrapper {
           style={
             Object {
               "color": "#58595B",
-              "fontSize": 16,
-              "height": 50,
+              "fontSize": 40,
+              "height": 180,
               "marginLeft": 30,
               "marginRight": 30,
-              "marginTop": 16,
-              "paddingBottom": 2,
-              "paddingTop": 2,
+              "marginTop": 36,
+              "paddingBottom": 35,
+              "paddingTop": 30,
               "textAlign": "center",
             }
           }
@@ -97,18 +95,30 @@ ShallowWrapper {
             }
           }
         >
-          <CustomButton
+          <Styled(Button)
+            block={true}
+            bordered={true}
             enabled={false}
             onPress={[Function]}
+            rounded={true}
             style={
               Object {
                 "alignSelf": "center",
-                "marginTop": 40,
-                "width": 80,
+                "backgroundColor": "#FF8B00",
+                "borderColor": "#FF8B00",
+                "marginTop": 15,
+                "width": 300,
               }
             }
-            title="OK"
-          />
+            virtual={undefined}
+            warning={true}
+          >
+            <Styled(Text)
+              virtual={undefined}
+            >
+              OK
+            </Styled(Text)>
+          </Styled(Button)>
         </View>,
         false,
       ],
@@ -128,10 +138,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "accessible": true,
-          "allowFontScaling": true,
           "children": undefined,
-          "ellipsizeMode": "tail",
           "style": Object {
             "color": "#58595B",
             "fontFamily": "Roboto",
@@ -140,6 +147,7 @@ ShallowWrapper {
             "letterSpacing": 0,
             "lineHeight": 22,
           },
+          "virtual": undefined,
         },
         "ref": null,
         "rendered": null,
@@ -157,13 +165,13 @@ ShallowWrapper {
           "secureTextEntry": true,
           "style": Object {
             "color": "#58595B",
-            "fontSize": 16,
-            "height": 50,
+            "fontSize": 40,
+            "height": 180,
             "marginLeft": 30,
             "marginRight": 30,
-            "marginTop": 16,
-            "paddingBottom": 2,
-            "paddingTop": 2,
+            "marginTop": 36,
+            "paddingBottom": 35,
+            "paddingTop": 30,
             "textAlign": "center",
           },
           "value": "",
@@ -177,18 +185,30 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "children": <CustomButton
+          "children": <Styled(Button)
+            block={true}
+            bordered={true}
             enabled={false}
             onPress={[Function]}
+            rounded={true}
             style={
               Object {
                 "alignSelf": "center",
-                "marginTop": 40,
-                "width": 80,
+                "backgroundColor": "#FF8B00",
+                "borderColor": "#FF8B00",
+                "marginTop": 15,
+                "width": 300,
               }
             }
-            title="OK"
-          />,
+            virtual={undefined}
+            warning={true}
+          >
+            <Styled(Text)
+              virtual={undefined}
+            >
+              OK
+            </Styled(Text)>
+          </Styled(Button)>,
           "style": Object {
             "marginLeft": 13,
             "marginRight": 13,
@@ -198,19 +218,41 @@ ShallowWrapper {
         "rendered": Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "function",
+          "nodeType": "class",
           "props": Object {
+            "block": true,
+            "bordered": true,
+            "children": <Styled(Text)
+              virtual={undefined}
+            >
+              OK
+            </Styled(Text)>,
             "enabled": false,
             "onPress": [Function],
+            "rounded": true,
             "style": Object {
               "alignSelf": "center",
-              "marginTop": 40,
-              "width": 80,
+              "backgroundColor": "#FF8B00",
+              "borderColor": "#FF8B00",
+              "marginTop": 15,
+              "width": 300,
             },
-            "title": "OK",
+            "virtual": undefined,
+            "warning": true,
           },
           "ref": null,
-          "rendered": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": "OK",
+              "virtual": undefined,
+            },
+            "ref": null,
+            "rendered": "OK",
+            "type": [Function],
+          },
           "type": [Function],
         },
         "type": [Function],
@@ -226,10 +268,7 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "children": Array [
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
+          <Styled(Text)
             style={
               Object {
                 "color": "#58595B",
@@ -240,6 +279,7 @@ ShallowWrapper {
                 "lineHeight": 22,
               }
             }
+            virtual={undefined}
           />,
           <TextInput
             allowFontScaling={true}
@@ -250,13 +290,13 @@ ShallowWrapper {
             style={
               Object {
                 "color": "#58595B",
-                "fontSize": 16,
-                "height": 50,
+                "fontSize": 40,
+                "height": 180,
                 "marginLeft": 30,
                 "marginRight": 30,
-                "marginTop": 16,
-                "paddingBottom": 2,
-                "paddingTop": 2,
+                "marginTop": 36,
+                "paddingBottom": 35,
+                "paddingTop": 30,
                 "textAlign": "center",
               }
             }
@@ -270,18 +310,30 @@ ShallowWrapper {
               }
             }
           >
-            <CustomButton
+            <Styled(Button)
+              block={true}
+              bordered={true}
               enabled={false}
               onPress={[Function]}
+              rounded={true}
               style={
                 Object {
                   "alignSelf": "center",
-                  "marginTop": 40,
-                  "width": 80,
+                  "backgroundColor": "#FF8B00",
+                  "borderColor": "#FF8B00",
+                  "marginTop": 15,
+                  "width": 300,
                 }
               }
-              title="OK"
-            />
+              virtual={undefined}
+              warning={true}
+            >
+              <Styled(Text)
+                virtual={undefined}
+              >
+                OK
+              </Styled(Text)>
+            </Styled(Button)>
           </View>,
           false,
         ],
@@ -301,10 +353,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "accessible": true,
-            "allowFontScaling": true,
             "children": undefined,
-            "ellipsizeMode": "tail",
             "style": Object {
               "color": "#58595B",
               "fontFamily": "Roboto",
@@ -313,6 +362,7 @@ ShallowWrapper {
               "letterSpacing": 0,
               "lineHeight": 22,
             },
+            "virtual": undefined,
           },
           "ref": null,
           "rendered": null,
@@ -330,13 +380,13 @@ ShallowWrapper {
             "secureTextEntry": true,
             "style": Object {
               "color": "#58595B",
-              "fontSize": 16,
-              "height": 50,
+              "fontSize": 40,
+              "height": 180,
               "marginLeft": 30,
               "marginRight": 30,
-              "marginTop": 16,
-              "paddingBottom": 2,
-              "paddingTop": 2,
+              "marginTop": 36,
+              "paddingBottom": 35,
+              "paddingTop": 30,
               "textAlign": "center",
             },
             "value": "",
@@ -350,18 +400,30 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "children": <CustomButton
+            "children": <Styled(Button)
+              block={true}
+              bordered={true}
               enabled={false}
               onPress={[Function]}
+              rounded={true}
               style={
                 Object {
                   "alignSelf": "center",
-                  "marginTop": 40,
-                  "width": 80,
+                  "backgroundColor": "#FF8B00",
+                  "borderColor": "#FF8B00",
+                  "marginTop": 15,
+                  "width": 300,
                 }
               }
-              title="OK"
-            />,
+              virtual={undefined}
+              warning={true}
+            >
+              <Styled(Text)
+                virtual={undefined}
+              >
+                OK
+              </Styled(Text)>
+            </Styled(Button)>,
             "style": Object {
               "marginLeft": 13,
               "marginRight": 13,
@@ -371,19 +433,41 @@ ShallowWrapper {
           "rendered": Object {
             "instance": null,
             "key": undefined,
-            "nodeType": "function",
+            "nodeType": "class",
             "props": Object {
+              "block": true,
+              "bordered": true,
+              "children": <Styled(Text)
+                virtual={undefined}
+              >
+                OK
+              </Styled(Text)>,
               "enabled": false,
               "onPress": [Function],
+              "rounded": true,
               "style": Object {
                 "alignSelf": "center",
-                "marginTop": 40,
-                "width": 80,
+                "backgroundColor": "#FF8B00",
+                "borderColor": "#FF8B00",
+                "marginTop": 15,
+                "width": 300,
               },
-              "title": "OK",
+              "virtual": undefined,
+              "warning": true,
             },
             "ref": null,
-            "rendered": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "OK",
+                "virtual": undefined,
+              },
+              "ref": null,
+              "rendered": "OK",
+              "type": [Function],
+            },
             "type": [Function],
           },
           "type": [Function],

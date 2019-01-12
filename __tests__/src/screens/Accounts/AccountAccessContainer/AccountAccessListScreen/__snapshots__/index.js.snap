@@ -42,7 +42,11 @@ ShallowWrapper {
           style={undefined}
         />,
         <Image
-          source={1}
+          source={
+            Object {
+              "testUri": "../../../src/assets/images/BitnationCover.jpg",
+            }
+          }
           style={
             Object {
               "height": 300,
@@ -153,7 +157,9 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "source": 1,
+          "source": Object {
+            "testUri": "../../../src/assets/images/BitnationCover.jpg",
+          },
           "style": Object {
             "height": 300,
             "width": 750,
@@ -354,7 +360,11 @@ ShallowWrapper {
             style={undefined}
           />,
           <Image
-            source={1}
+            source={
+              Object {
+                "testUri": "../../../src/assets/images/BitnationCover.jpg",
+              }
+            }
             style={
               Object {
                 "height": 300,
@@ -465,7 +475,9 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "source": 1,
+            "source": Object {
+              "testUri": "../../../src/assets/images/BitnationCover.jpg",
+            },
             "style": Object {
               "height": 300,
               "width": 750,

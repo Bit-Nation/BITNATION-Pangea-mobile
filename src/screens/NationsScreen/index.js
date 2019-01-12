@@ -1,17 +1,21 @@
 // @flow
 
 import React from 'react';
-import { Alert, View } from 'react-native';
+import { Alert, View, TextInput, Image } from 'react-native';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 
 import NationsListScreen from './NationsListScreen';
 import { switchNationTab, openNation } from '../../actions/nations';
+import FakeNavigationBar from '../../components/common/FakeNavigationBar';
+import BackgroundImage from '../../components/common/BackgroundImage';
 import { screen } from '../../global/Screens';
 import { resolveNation } from '../../utils/nations';
 import Colors from '../../global/colors';
 import AssetsImages from '../../global/AssetsImages';
+import styles from './styles';
 import NavigatorComponent from '../../components/common/NavigatorComponent';
+import ScrollTabView, { DefaultTabBar } from '../../components/ScrollTabView';
 import i18n from '../../global/i18n';
 import { startNationCreation } from '../../actions/modifyNation';
 import type { Navigator } from '../../types/ReactNativeNavigation';
@@ -32,24 +36,24 @@ type Props = {
    * @desc React Native Navigation navigator object.
    */
   navigator: Navigator,
-}
+};
 
 type Actions = {
   /**
    * @desc Function to select the tab on screen
    * @param index Id of the tab to appear on screen
    */
-  onSelectTab: (NationTab) => boolean,
+  onSelectTab: NationTab => boolean,
   /**
    * @desc Function to open a nation
    * @param id Index of the nation to open
    */
-  openNation: (NationIdType) => void,
+  openNation: NationIdType => void,
   /**
    * @desc Function to start the process of create a nation
    */
   startNationCreation: () => void,
-}
+};
 
 type State = {
   /**
@@ -61,7 +65,10 @@ type State = {
    */
   showModal: string,
 };
-class NationsScreen extends NavigatorComponent<Props & Actions & WalletState & NationState, State> {
+class NationsScreen extends NavigatorComponent<
+  Props & Actions & WalletState & NationState,
+  State,
+> {
   constructor(props) {
     super(props);
 
@@ -77,11 +84,13 @@ class NationsScreen extends NavigatorComponent<Props & Actions & WalletState & N
           buttonColor: Colors.navigationButtonColor,
         },
       ],
-      rightButtons: [{
-        title: 'New',
-        id: NEW_BUTTON,
-        buttonColor: Colors.navigationButtonColor,
-      }],
+      rightButtons: [
+        {
+          title: 'New',
+          id: NEW_BUTTON,
+          buttonColor: Colors.navigationButtonColor,
+        },
+      ],
     });
   }
 
@@ -124,7 +133,10 @@ class NationsScreen extends NavigatorComponent<Props & Actions & WalletState & N
       i18n.t('alerts.walletRequired.subtitle'),
       [
         { text: i18n.t('alerts.walletRequired.cancel'), style: 'cancel' },
-        { text: i18n.t('alerts.walletRequired.confirm'), onPress: () => this.props.navigator.switchToTab({ tabIndex: 3 }) },
+        {
+          text: i18n.t('alerts.walletRequired.confirm'),
+          onPress: () => this.props.navigator.switchToTab({ tabIndex: 3 }),
+        },
       ],
       { cancelable: false },
     );
@@ -138,8 +150,72 @@ class NationsScreen extends NavigatorComponent<Props & Actions & WalletState & N
 
   render() {
     return (
-      <View style={{ flex: 1 }}>
-        <NationsListScreen onSelectItem={this.onSelectItem} {...this.props} />
+      <View style={styles.nationsScreenContainer}>
+        <BackgroundImage />
+        <FakeNavigationBar />
+        <View style={styles.searchBarContainer}>
+          <View style={styles.inputViewContainer}>
+            <TextInput
+              style={styles.textInputStyle}
+              placeholder='Search by name, type or category...'
+              placeholderTextColor={Colors.BitnationLinkOrangeColor}
+              autoCapitalize='none'
+            />
+            <Image source={AssetsImages.searchIcon} style={styles.searchIconStyle} />
+          </View>
+        </View>
+        <ScrollTabView
+          initialPage={0}
+          tabBarBackgroundColor={Colors.BitnationBlackAlphaColor}
+          tabBarActiveTextColor={Colors.BitnationLinkOrangeColor}
+          tabBarInactiveTextColor={Colors.BitnationLinkOrangeColor}
+          tabBarUnderlineStyle={styles.tabBarUnderlineStyle}
+          tabBarTextStyle={styles.tabBarTextStyle}
+          renderTabBar={() => <DefaultTabBar />}
+        >
+          <ScrollTabView
+            tabLabel='NEW'
+            initialPage={0}
+            tabBarBackgroundColor={Colors.lightFade}
+            tabBarActiveTextColor={Colors.white}
+            tabBarInactiveTextColor={Colors.white}
+            tabBarUnderlineStyle={styles.subTabBarUnderlineStyle}
+            tabBarTextStyle={styles.subTabBarTextStyle}
+            tabBarContainerStyle={styles.subTabBarContainerStyle}
+            renderTabBar={() => <DefaultTabBar />}
+          >
+            <NationsListScreen
+              onSelectItem={this.onSelectItem}
+              {...this.props}
+            />
+          </ScrollTabView>
+          <ScrollTabView
+            tabLabel='FEATURED'
+            initialPage={0}
+            tabBarBackgroundColor={Colors.lightFade}
+            tabBarActiveTextColor={Colors.white}
+            tabBarInactiveTextColor={Colors.white}
+            tabBarUnderlineStyle={styles.subTabBarUnderlineStyle}
+            tabBarTextStyle={styles.subTabBarTextStyle}
+            tabBarContainerStyle={styles.subTabBarContainerStyle}
+            renderTabBar={() => <DefaultTabBar />}
+          >
+            <View />
+          </ScrollTabView>
+          <ScrollTabView
+            tabLabel='POPULAR'
+            initialPage={0}
+            tabBarBackgroundColor={Colors.lightFade}
+            tabBarActiveTextColor={Colors.white}
+            tabBarInactiveTextColor={Colors.white}
+            tabBarUnderlineStyle={styles.subTabBarUnderlineStyle}
+            tabBarTextStyle={styles.subTabBarTextStyle}
+            tabBarContainerStyle={styles.subTabBarContainerStyle}
+            renderTabBar={() => <DefaultTabBar />}
+          >
+            <View />
+          </ScrollTabView>
+        </ScrollTabView>
         <LucyButton onPress={() => this.setState({ showModal: LUCY_MODAL_KEY })} />
         <PopOverModal
           visible={this.state.showModal === LUCY_MODAL_KEY}
@@ -194,4 +270,7 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(NationsScreen);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(NationsScreen);

@@ -225,7 +225,7 @@ class ScrollTabView extends React.Component {
         {...this.props.contentProps}
       >
         {scenes}
-              </Animated.ScrollView>);
+      </Animated.ScrollView>);
     }
     const scenes = this._composeScenes();
     return (<AnimatedViewPagerAndroid
@@ -251,7 +251,7 @@ class ScrollTabView extends React.Component {
       {...this.props.contentProps}
     >
       {scenes}
-    </AnimatedViewPagerAndroid>);
+            </AnimatedViewPagerAndroid>);
   }
 
   _composeScenes() {
@@ -263,7 +263,7 @@ class ScrollTabView extends React.Component {
         style={{ width: this.state.containerWidth }}
       >
         {this._keyExists(this.state.sceneKeys, key) ? child : <View tabLabel={child.props.tabLabel} />}
-      </SceneComponent>);
+              </SceneComponent>);
     });
   }
 
