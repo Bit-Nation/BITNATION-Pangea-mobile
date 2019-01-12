@@ -30,11 +30,14 @@ import AssetsImages from '../../../global/AssetsImages';
 import MoreMenuModal from '../../../components/common/MoreMenuModal';
 import type { Contact } from '../../../types/Contacts';
 
+import PopOverModal from '../../../components/PopOverModal';
+
 const MENU_BUTTON = 'MENU_BUTTON';
 const MORE_BUTTON = 'MORE_BUTTON';
 const MORE_MODAL_KEY = 'moreMenu';
 const INVITE_MODAL_KEY = 'invite';
 const CHAT_NAME_MODAL = 'CHAT_NAME_MODAL';
+const LUCY_MODAL_KEY = 'lucyModal';
 
 type Props = {
   /**
@@ -343,7 +346,30 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
             onPress={this.dismissModal}
           />
         </Dialog.Container>
-        <LucyButton />
+        <LucyButton onPress={() => this.setState({ showModal: LUCY_MODAL_KEY })} />
+        <PopOverModal
+          visible={this.state.showModal === LUCY_MODAL_KEY}
+          onCancel={this.dismissModal}
+          desText='How can I help you with townhall?'
+          options={[
+            {
+              text: 'Start a new Chat with Citzen',
+              onPress: () => {},
+            },
+            {
+              text: 'Start new Group Chat',
+              onPress: () => {},
+            },
+            {
+              text: 'Report Citzen',
+              onPress: () => {},
+            },
+            {
+              text: 'Help with Chat',
+              onPress: () => {},
+            },
+          ]}
+        />
         {this.state.loading === true && <Loading />}
       </View>
     );

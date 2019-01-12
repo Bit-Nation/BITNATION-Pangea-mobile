@@ -1,8 +1,7 @@
 // @flow
 
 import * as React from 'react';
-import { Image } from 'react-native';
-import { Fab } from 'native-base';
+import { Image, TouchableOpacity } from 'react-native';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
 import GlobalStyles from '../../global/Styles';
 import AssetsImages from '../../global/AssetsImages';
@@ -12,6 +11,10 @@ type Props = {
    * @desc Callback to be called on button press.
    */
   onPress?: () => any,
+  /**
+   * @desc style of lucy button
+   */
+  style?: any,
 }
 
 /**
@@ -19,24 +22,29 @@ type Props = {
  * @return {React.Component} A component.
  */
 const LucyButton = ({
-  onPress,
+  onPress, style,
 }: Props) => {
   const styles = MediaQueryStyleSheet.create({
     ...GlobalStyles,
     lucyButtonImage: {
       width: 50,
       height: 50,
+      justifyContent: 'center',
+      alignItems: 'center',
+      position: 'absolute',
+      bottom: 20,
+      right: 20,
     },
   });
 
   return ((
-    <Fab
-      style={styles.lucyButton}
-      position='bottomRight'
+    <TouchableOpacity
+      activeOpacity={1}
+      style={[styles.lucyButton, style]}
       onPress={onPress}
     >
       <Image source={AssetsImages.lucyIcon} />
-    </Fab>
+    </TouchableOpacity>
   ));
 };
 

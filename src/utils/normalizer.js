@@ -77,3 +77,14 @@ export function isiPhoneXTabBar(size: number) {
   }
   return size;
 }
+
+/**
+ * Function to fix the height of Fake Tab Bar ONLY in the iPhoneX
+ * @returns {number} The correct size for the Fake Tab Bar
+ */
+export function getTabBarHeight() {
+  if (Platform.OS === 'ios') {
+    if (isiPhoneX()) { return 83; } // iPhone X tab bar height (regular title);
+    return 49; // iPhone navbar height;
+  } return 56; // android portrait tab bar height;
+}

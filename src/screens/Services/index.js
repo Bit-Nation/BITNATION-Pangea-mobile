@@ -7,7 +7,6 @@ import Background from '../../components/common/BackgroundImage';
 import { screen } from '../../global/Screens';
 import { selectWallet, updateWalletList } from '../../actions/wallet';
 import NavigatorComponent from '../../components/common/NavigatorComponent';
-import LucyButton from '../../components/common/LucyButton';
 import ScrollTabView, { DefaultTabBar } from '../../components/ScrollTabView';
 
 import SubTabComponent from './components/SubTabComponent';
@@ -22,8 +21,13 @@ import type { Account } from '../../types/Account';
 import type { Navigator } from '../../types/ReactNativeNavigation';
 import { getCurrentAccount } from '../../reducers/accounts';
 
+import LucyButton from '../../components/common/LucyButton';
+import PopOverModal from '../../components/PopOverModal';
+
 const MENU_BUTTON = 'MENU_BUTTON';
 const REMOVE_WALLETS_BUTTON = 'REMOVE_WALLETS_BUTTON';
+const LUCY_MODAL_KEY = 'lucyModal';
+
 const data = [
   {
     uri: 'https://previews.123rf.com/images/ahasoft2000/ahasoft20001602/ahasoft2000160201444/51968468-heart-ekg-long-shadow-glyph-icon-style-is-a-flat-light-symbol-with-rounded-angles-on-a-red-square-ba.jpg',
@@ -106,6 +110,10 @@ type State = {
      * @desc Stores the ETH Address
      */
     ethAddress?: string,
+    /**
+      * @desc Name of the modal to be shown
+      */
+    showModal: string,
   },
 };
 
@@ -211,6 +219,12 @@ class ServicesScreen extends NavigatorComponent<
   transactionModalClose() {
     this.setState({ transactionModal: { visible: false } });
   }
+
+  dismissModal = () => {
+    this.setState({
+      showModal: '',
+    });
+  };
 
   render() {
     return (
@@ -468,7 +482,29 @@ class ServicesScreen extends NavigatorComponent<
             </ScrollTabView>
           </ScrollTabView>
         </View>
-        <LucyButton />
+        <LucyButton onPress={() => this.setState({ showModal: LUCY_MODAL_KEY })} />
+        <PopOverModal
+          visible={this.state.showModal === LUCY_MODAL_KEY}
+          onCancel={this.dismissModal}
+          options={[
+            {
+              text: 'Start a new Chat with Citzen',
+              onPress: () => {},
+            },
+            {
+              text: 'Start new Group Chat',
+              onPress: () => {},
+            },
+            {
+              text: 'Report Citzen',
+              onPress: () => {},
+            },
+            {
+              text: 'Help with Chat',
+              onPress: () => {},
+            },
+          ]}
+        />
       </View>
     );
   }
