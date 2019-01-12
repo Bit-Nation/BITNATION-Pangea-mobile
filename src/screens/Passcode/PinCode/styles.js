@@ -13,16 +13,22 @@ const styles = MediaQueryStyleSheet.create({
   },
   textInput: {
     color: Colors.BitnationDarkGrayColor,
-    fontSize: 16,
-    paddingTop: 2,
-    paddingBottom: 2,
-    height: 50,
-    marginTop: 16,
+    fontSize: 40,
+    paddingTop: 30,
+    paddingBottom: 35,
+    height: 180,
+    marginTop: 36,
     marginLeft: 30,
     marginRight: 30,
     textAlign: 'center',
   },
-
+  pinButton: {
+    backgroundColor: '#FF8B00',
+    width: 300,
+    alignSelf: 'center',
+    borderColor: '#FF8B00',
+    marginTop: 15,
+  },
 });
 
 export default styles;

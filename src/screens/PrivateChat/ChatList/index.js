@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { View, SectionList, Share } from 'react-native';
+import { View, SectionList, Share, TextInput, Image } from 'react-native';
 import _ from 'lodash';
 import Dialog from 'react-native-dialog';
 
@@ -13,6 +13,7 @@ import { screen } from '../../../global/Screens';
 import ChatListItem from '../../../components/common/ChatListItem';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import Loading from '../../../components/common/Loading';
+import ScrollTabView, { DefaultTabBar } from '../../../components/ScrollTabView';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import LucyButton from '../../../components/common/LucyButton';
 import i18n from '../../../global/i18n';
@@ -255,96 +256,161 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
       <View style={styles.nationsScreenContainer}>
         <BackgroundImage />
         <FakeNavigationBar />
+        <View style={styles.searchBarContainer}>
+          <View style={styles.inputViewContainer}>
+            <TextInput
+              style={styles.textInputStyle}
+              placeholder='Search by name, type or category...'
+              placeholderTextColor={Colors.BitnationLinkOrangeColor}
+              autoCapitalize='none'
+            />
+            <Image
+              source={AssetsImages.searchIcon}
+              style={styles.searchIconStyle}
+            />
+          </View>
+        </View>
+        <ScrollTabView
+          initialPage={1}
+          tabBarBackgroundColor={Colors.BitnationBlackAlphaColor}
+          tabBarActiveTextColor={Colors.BitnationLinkOrangeColor}
+          tabBarInactiveTextColor={Colors.BitnationLinkOrangeColor}
+          tabBarUnderlineStyle={styles.tabBarUnderlineStyle}
+          tabBarTextStyle={styles.tabBarTextStyle}
+          renderTabBar={() => <DefaultTabBar />}
+        >
+          <ScrollTabView
+            tabLabel='FEED'
+            initialPage={0}
+            tabBarBackgroundColor={Colors.lightFade}
+            tabBarActiveTextColor={Colors.white}
+            tabBarInactiveTextColor={Colors.white}
+            tabBarUnderlineStyle={styles.subTabBarUnderlineStyle}
+            tabBarTextStyle={styles.subTabBarTextStyle}
+            tabBarContainerStyle={styles.subTabBarContainerStyle}
+            renderTabBar={() => <DefaultTabBar />}
+          >
+            <View />
+          </ScrollTabView>
+          <ScrollTabView
+            tabLabel='CHATS'
+            initialPage={0}
+            tabBarBackgroundColor={Colors.lightFade}
+            tabBarActiveTextColor={Colors.white}
+            tabBarInactiveTextColor={Colors.white}
+            tabBarUnderlineStyle={styles.subTabBarUnderlineStyle}
+            tabBarTextStyle={styles.subTabBarTextStyle}
+            tabBarContainerStyle={styles.subTabBarContainerStyle}
+            renderTabBar={() => <DefaultTabBar />}
+          >
+            <SectionList
+              renderItem={(item) => {
+                const chat: ChatType = item.item;
+                let chatImage = AssetsImages.avatarIcon;
+                if (chat.members.length === 1) {
+                  const partner = this.props.profiles[chat.members[0]];
+                  if (partner != null) {
+                    chatImage =
+                      imageSource(partner.image) || AssetsImages.avatarIcon;
+                  }
+                } else {
+                  chatImage = AssetsImages.ChatUI.groupChatIcon;
+                }
 
-        <SectionList
-          renderItem={(item) => {
-            const chat: ChatType = item.item;
-            let chatImage = AssetsImages.avatarIcon;
-            if (chat.members.length === 1) {
-              const partner = this.props.profiles[chat.members[0]];
-              if (partner != null) {
-                chatImage =
-                  imageSource(partner.image) || AssetsImages.avatarIcon;
-              }
-            } else {
-              chatImage = AssetsImages.ChatUI.groupChatIcon;
-            }
+                const messagePreview = ((message: GiftedChatMessageType | null) => {
+                  if (message == null) return null;
+                  if (message.dAppMessage == null) return message.text;
 
-            const messagePreview = ((message: GiftedChatMessageType | null) => {
-              if (message == null) return null;
-              if (message.dAppMessage == null) return message.text;
+                  // @todo Add preview for DApp messages.
+                  return i18n.t('screens.chat.dAppMessagePreview');
+                })(chat.messages.length === 0
+                    ? null
+                    : chat.messages[chat.messages.length - 1]);
 
-              // @todo Add preview for DApp messages.
-              return i18n.t('screens.chat.dAppMessagePreview');
-            })(chat.messages.length === 0
-              ? null
-              : chat.messages[chat.messages.length - 1]);
-
-            const lastMessage =
-              chat.messages.length === 0
-                ? {}
-                : chat.messages[chat.messages.length - 1];
-            const dateString = lastMessage.createdAt;
-            return (
-              <ChatListItem
-                name={this.buildChatName(chat)}
-                lastMessage={messagePreview}
-                dateString={dateString}
-                avatar={chatImage}
-                onPress={this.onChatSelected}
-                unreadMessages={chat.unreadMessages}
-                id={chat.id}
-              />
-            );
-          }}
-          keyExtractor={item => item.id}
-          sections={sections}
-          style={styles.sectionList}
-          ItemSeparatorComponent={() => <View style={styles.itemSeparator} />}
-        />
-        {/* <Fab
+                const lastMessage =
+                  chat.messages.length === 0
+                    ? {}
+                    : chat.messages[chat.messages.length - 1];
+                const dateString = lastMessage.createdAt;
+                return (
+                  <ChatListItem
+                    name={this.buildChatName(chat)}
+                    lastMessage={messagePreview}
+                    dateString={dateString}
+                    avatar={chatImage}
+                    onPress={this.onChatSelected}
+                    unreadMessages={chat.unreadMessages}
+                    id={chat.id}
+                  />
+                );
+              }}
+              keyExtractor={item => item.id}
+              sections={sections}
+              style={styles.sectionList}
+              ItemSeparatorComponent={() => (
+                <View style={styles.itemSeparator} />
+              )}
+            />
+            {/* <Fab
           style={styles.floatingButton}
           position='bottomRight'
           onPress={this.goToContactsPicker}
         >
           <Text>+</Text>
         </Fab> */}
-        <MoreMenuModal
-          visible={this.state.showModal === MORE_MODAL_KEY}
-          onCancel={this.dismissModal}
-          options={[
-            {
-              text: i18n.t('screens.chat.menu.shareIdentityKey'),
-              onPress: this.sharePublicKey,
-            },
-          ]}
-        />
-        <InviteSentModal
-          done={this.dismissModal}
-          visible={this.state.showModal === INVITE_MODAL_KEY}
-        />
-        <Dialog.Container visible={this.state.showModal === CHAT_NAME_MODAL}>
-          <Dialog.Title>
-            {i18n.t('screens.chat.chatNameAlert.title')}
-          </Dialog.Title>
-          <Dialog.Input
-            value={this.state.chatName}
-            onChangeText={text => this.setState({ chatName: text })}
-          />
-          <Dialog.Button
-            label={i18n.t('screens.chat.chatNameAlert.confirm')}
-            disabled={this.state.chatName.length === 0}
-            onPress={() =>
-              this.initiateNewChat(this.state.contacts, this.state.chatName)
-            }
-          />
-          <Dialog.Button
-            label={i18n.t('screens.chat.chatNameAlert.cancel')}
-            onPress={this.dismissModal}
-          />
-        </Dialog.Container>
-        <LucyButton />
-        {this.state.loading === true && <Loading />}
+            <MoreMenuModal
+              visible={this.state.showModal === MORE_MODAL_KEY}
+              onCancel={this.dismissModal}
+              options={[
+                {
+                  text: i18n.t('screens.chat.menu.shareIdentityKey'),
+                  onPress: this.sharePublicKey,
+                },
+              ]}
+            />
+            <InviteSentModal
+              done={this.dismissModal}
+              visible={this.state.showModal === INVITE_MODAL_KEY}
+            />
+            <Dialog.Container
+              visible={this.state.showModal === CHAT_NAME_MODAL}
+            >
+              <Dialog.Title>
+                {i18n.t('screens.chat.chatNameAlert.title')}
+              </Dialog.Title>
+              <Dialog.Input
+                value={this.state.chatName}
+                onChangeText={text => this.setState({ chatName: text })}
+              />
+              <Dialog.Button
+                label={i18n.t('screens.chat.chatNameAlert.confirm')}
+                disabled={this.state.chatName.length === 0}
+                onPress={() =>
+                  this.initiateNewChat(this.state.contacts, this.state.chatName)
+                }
+              />
+              <Dialog.Button
+                label={i18n.t('screens.chat.chatNameAlert.cancel')}
+                onPress={this.dismissModal}
+              />
+            </Dialog.Container>
+            <LucyButton />
+            {this.state.loading === true && <Loading />}
+          </ScrollTabView>
+          <ScrollTabView
+            tabLabel='GROUPS'
+            initialPage={0}
+            tabBarBackgroundColor={Colors.lightFade}
+            tabBarActiveTextColor={Colors.white}
+            tabBarInactiveTextColor={Colors.white}
+            tabBarUnderlineStyle={styles.subTabBarUnderlineStyle}
+            tabBarTextStyle={styles.subTabBarTextStyle}
+            tabBarContainerStyle={styles.subTabBarContainerStyle}
+            renderTabBar={() => <DefaultTabBar />}
+          >
+            <View />
+          </ScrollTabView>
+        </ScrollTabView>
       </View>
     );
   }

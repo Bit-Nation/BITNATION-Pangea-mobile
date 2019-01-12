@@ -204,19 +204,18 @@ class ChatScreen extends Component<Props, State> {
       <View style={styles.container}>
         <BackgroundImage />
         <FakeNavigationBar navBarHidden={false} />
-
         <GiftedChat
-          messages={this.state.messages}
-          onSend={messages => this.onSend(messages)}
-          user={sendingUser}
-          bottomOffset={Platform.OS === 'ios' ? 48.5 : 0}
-          renderComposer={props => (
+              messages={this.state.messages}
+              onSend={messages => this.onSend(messages)}
+              user={sendingUser}
+              bottomOffset={Platform.OS === 'ios' ? 48.5 : 0}
+              renderComposer={props => (
             <Composer {...props} textInputStyle={styles.composer} />
           )}
-          renderInputToolbar={props => (
+              renderInputToolbar={props => (
             <InputToolbar {...props} containerStyle={styles.inputToolbar} />
           )}
-          renderBubble={props => (
+              renderBubble={props => (
             <Bubble
               {...props}
               customTextStyle={styles.customTextStyle}
@@ -224,7 +223,7 @@ class ChatScreen extends Component<Props, State> {
               textStyle={{ left: styles.leftTextStyle, right: styles.rightTextStyle }}
             />
           )}
-        />
+            />
         {this.props.isFetching && <Loading />}
       </View>
     );

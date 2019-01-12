@@ -44,7 +44,7 @@ const AccountAccessListScreen = ({
     <BackgroundImage />
     {/* <FakeNavigationBar />
     <ScreenTitle title={i18n.t('screens.accounts.title')} /> */}
-    <Image source={bitnationIntro} style={styles.image} />
+    <Image source={BitnationCover} style={styles.image} />
     <FlatList
       renderItem={(item) => {
         const account = item.item;

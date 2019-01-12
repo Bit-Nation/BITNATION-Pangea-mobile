@@ -1,18 +1,13 @@
 // @flow
 
 import React from 'react';
-import {
-  View,
-  Text,
-  TextInput,
-  Keyboard,
-} from 'react-native';
-
+import { View, TextInput, Keyboard } from 'react-native';
+import { Button, Text } from 'native-base';
 import styles from './styles';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import i18n from '../../../global/i18n';
 import { androidNavigationButtons } from '../../../global/Screens';
-import Button from '../../../components/common/Button';
+// import Button from '../../../components/common/Button';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 
 export type Props = {
@@ -31,7 +26,7 @@ export type Props = {
   /**
    * @desc Function that is called when user enters pin code and press on submit button.
    */
-  onSubmit: (string) => void,
+  onSubmit: string => void,
   /**
    * @desc Function that is called when user press on forget password button.
    */
@@ -56,7 +51,7 @@ export type Props = {
 
 type State = {
   pinCode: string,
-}
+};
 
 class PinCodeScreen extends NavigatorComponent<Props, State> {
   static defaultProps;
@@ -78,10 +73,12 @@ class PinCodeScreen extends NavigatorComponent<Props, State> {
   updateNavigation() {
     if (this.props.shouldShowCancel === true) {
       this.props.navigator.setButtons({
-        leftButtons: [{
-          id: 'cancel',
-          title: i18n.t('common.cancel'),
-        }],
+        leftButtons: [
+          {
+            id: 'cancel',
+            title: i18n.t('common.cancel'),
+          },
+        ],
         rightButtons: [],
       });
     } else {
@@ -90,13 +87,17 @@ class PinCodeScreen extends NavigatorComponent<Props, State> {
   }
 
   onBackPress() {
-    if (this.props.cancelLogin) { this.props.cancelLogin(); }
+    if (this.props.cancelLogin) {
+      this.props.cancelLogin();
+    }
     this.props.onCancel();
   }
 
   onNavBarButtonPress(id: string) {
     if (id === 'cancel') {
-      if (this.props.cancelLogin) { this.props.cancelLogin(); }
+      if (this.props.cancelLogin) {
+        this.props.cancelLogin();
+      }
       this.props.onCancel();
     }
   }
@@ -105,11 +106,11 @@ class PinCodeScreen extends NavigatorComponent<Props, State> {
     const { shouldShowForget } = this.props;
     return (
       <View style={styles.bodyContainer}>
-        <Text style={styles.headline}>
-          {this.props.instruction}
-        </Text>
+        <Text style={styles.headline}>{this.props.instruction}</Text>
         <TextInput
-          onChangeText={value => this.setState({ pinCode: value.slice(0, this.props.pinCodeLength) })}
+          onChangeText={value =>
+            this.setState({ pinCode: value.slice(0, this.props.pinCodeLength) })
+          }
           value={this.state.pinCode}
           style={styles.textInput}
           keyboardType='numeric'
@@ -118,23 +119,32 @@ class PinCodeScreen extends NavigatorComponent<Props, State> {
         />
         <View style={styles.buttonContainer}>
           <Button
+            rounded
+            block
+            bordered
+            warning
             enabled={this.state.pinCode.length === this.props.pinCodeLength}
-            title={i18n.t('common.ok')}
             onPress={() => {
               Keyboard.dismiss();
               this.props.onSubmit(this.state.pinCode);
             }}
-            style={styles.submitButton}
-          />
+            style={styles.pinButton}
+          >
+            <Text>{i18n.t('common.ok')}</Text>
+          </Button>
         </View>
-        {shouldShowForget &&
+        {shouldShowForget && (
           <Button
-            style={styles.forgetButton}
-            styleTitle={styles.forgetButtonText}
-            title={i18n.t('screens.password.forgetInstruction')}
+            rounded
+            block
+            bordered
+            warning
+            style={styles.pinButton}
             onPress={() => this.props.onForget()}
-          />
-        }
+          >
+            <Text>{i18n.t('screens.password.forgetInstruction')}</Text>
+          </Button>
+        )}
       </View>
     );
   }
