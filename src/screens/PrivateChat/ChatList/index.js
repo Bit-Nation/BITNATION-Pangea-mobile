@@ -113,13 +113,7 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
         buttonColor: Colors.navigationButtonColor,
       },
     ],
-    rightButtons: [
-      {
-        id: MORE_BUTTON,
-        icon: AssetsImages.moreMenuIcon,
-        buttonColor: Colors.navigationButtonColor,
-      },
-    ],
+    rightButtons: [],
   };
 
   constructor(props: Props) {
@@ -394,7 +388,6 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
                 onPress={this.dismissModal}
               />
             </Dialog.Container>
-            <LucyButton />
             {this.state.loading === true && <Loading />}
           </ScrollTabView>
           <ScrollTabView
@@ -408,9 +401,10 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
             tabBarContainerStyle={styles.subTabBarContainerStyle}
             renderTabBar={() => <DefaultTabBar />}
           >
-            <View />
+            <ScrollTabView />
           </ScrollTabView>
         </ScrollTabView>
+        <LucyButton />
       </View>
     );
   }

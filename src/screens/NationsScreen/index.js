@@ -76,13 +76,7 @@ class NationsScreen extends NavigatorComponent<
           buttonColor: Colors.navigationButtonColor,
         },
       ],
-      rightButtons: [
-        {
-          title: 'New',
-          id: NEW_BUTTON,
-          buttonColor: Colors.navigationButtonColor,
-        },
-      ],
+      rightButtons: [],
     });
   }
 
