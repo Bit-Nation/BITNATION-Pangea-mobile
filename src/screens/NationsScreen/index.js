@@ -24,8 +24,12 @@ import { type State as WalletState } from '../../reducers/wallet';
 import type { NationIdType } from '../../types/Nation';
 import type { NationTab } from '../../actions/nations';
 
+import LucyButton from '../../components/common/LucyButton';
+import PopOverModal from '../../components/PopOverModal';
+
 const MENU_BUTTON = 'MENU_BUTTON';
 const NEW_BUTTON = 'NEW_BUTTON';
+const LUCY_MODAL_KEY = 'lucyModal';
 
 type Props = {
   /**
@@ -56,6 +60,10 @@ type State = {
    * @desc Flag whether screen is in appear.
    */
   isAppear: boolean,
+  /**
+   * @desc Name of the modal to be shown
+   */
+  showModal: string,
 };
 class NationsScreen extends NavigatorComponent<
   Props & Actions & WalletState & NationState,
@@ -128,6 +136,12 @@ class NationsScreen extends NavigatorComponent<
     );
   }
 
+  dismissModal = () => {
+    this.setState({
+      showModal: '',
+    });
+  };
+
   render() {
     return (
       <View style={styles.nationsScreenContainer}>
@@ -196,6 +210,26 @@ class NationsScreen extends NavigatorComponent<
             <View />
           </ScrollTabView>
         </ScrollTabView>
+        <LucyButton onPress={() => this.setState({ showModal: LUCY_MODAL_KEY })} />
+        <PopOverModal
+          visible={this.state.showModal === LUCY_MODAL_KEY}
+          onCancel={this.dismissModal}
+          desText='How can I help you with nations?'
+          options={[
+            {
+              text: 'Create a New Nation',
+              onPress: () => {},
+            },
+            {
+              text: 'Report a Nation',
+              onPress: () => {},
+            },
+            {
+              text: 'Help with Nations',
+              onPress: () => {},
+            },
+          ]}
+        />
       </View>
     );
   }

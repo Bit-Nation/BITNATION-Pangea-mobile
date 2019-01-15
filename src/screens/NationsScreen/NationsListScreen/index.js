@@ -116,7 +116,6 @@ const NationsListScreen = ({
         sections={sections}
         style={styles.sectionList}
       />
-      <LucyButton />
       {inProgress && _.isEmpty(nations) && <Loading />}
     </View>
   );
