@@ -403,6 +403,7 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
             tabBarContainerStyle={styles.subTabBarContainerStyle}
             renderTabBar={() => <DefaultTabBar />}
           >
+            <View />
             <ScrollTabView />
           </ScrollTabView>
         </ScrollTabView>
