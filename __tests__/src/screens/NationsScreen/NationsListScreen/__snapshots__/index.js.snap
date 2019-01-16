@@ -81,9 +81,6 @@ ShallowWrapper {
           updateCellsBatchingPeriod={50}
           windowSize={21}
         />,
-        <LucyButton
-          onPress={undefined}
-        />,
         undefined,
       ],
       "style": Object {
@@ -165,17 +162,6 @@ ShallowWrapper {
         "rendered": null,
         "type": [Function],
       },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "function",
-        "props": Object {
-          "onPress": undefined,
-        },
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
-      },
       undefined,
     ],
     "type": [Function],
@@ -230,9 +216,6 @@ ShallowWrapper {
             }
             updateCellsBatchingPeriod={50}
             windowSize={21}
-          />,
-          <LucyButton
-            onPress={undefined}
           />,
           undefined,
         ],
@@ -310,17 +293,6 @@ ShallowWrapper {
             },
             "updateCellsBatchingPeriod": 50,
             "windowSize": 21,
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "function",
-          "props": Object {
-            "onPress": undefined,
           },
           "ref": null,
           "rendered": null,

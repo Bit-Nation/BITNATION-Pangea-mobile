@@ -56,9 +56,10 @@ ShallowWrapper {
         <Styled(Text)
           style={
             Object {
+              "alignSelf": "center",
               "color": "#58595B",
               "fontFamily": "Roboto",
-              "fontSize": 17,
+              "fontSize": 19,
               "fontWeight": "bold",
               "letterSpacing": 0,
               "lineHeight": 22,
@@ -114,6 +115,11 @@ ShallowWrapper {
             warning={true}
           >
             <Styled(Text)
+              style={
+                Object {
+                  "fontSize": 20,
+                }
+              }
               virtual={undefined}
             >
               OK
@@ -140,9 +146,10 @@ ShallowWrapper {
         "props": Object {
           "children": undefined,
           "style": Object {
+            "alignSelf": "center",
             "color": "#58595B",
             "fontFamily": "Roboto",
-            "fontSize": 17,
+            "fontSize": 19,
             "fontWeight": "bold",
             "letterSpacing": 0,
             "lineHeight": 22,
@@ -204,6 +211,11 @@ ShallowWrapper {
             warning={true}
           >
             <Styled(Text)
+              style={
+                Object {
+                  "fontSize": 20,
+                }
+              }
               virtual={undefined}
             >
               OK
@@ -223,6 +235,11 @@ ShallowWrapper {
             "block": true,
             "bordered": true,
             "children": <Styled(Text)
+              style={
+                Object {
+                  "fontSize": 20,
+                }
+              }
               virtual={undefined}
             >
               OK
@@ -247,6 +264,9 @@ ShallowWrapper {
             "nodeType": "class",
             "props": Object {
               "children": "OK",
+              "style": Object {
+                "fontSize": 20,
+              },
               "virtual": undefined,
             },
             "ref": null,
@@ -271,9 +291,10 @@ ShallowWrapper {
           <Styled(Text)
             style={
               Object {
+                "alignSelf": "center",
                 "color": "#58595B",
                 "fontFamily": "Roboto",
-                "fontSize": 17,
+                "fontSize": 19,
                 "fontWeight": "bold",
                 "letterSpacing": 0,
                 "lineHeight": 22,
@@ -329,6 +350,11 @@ ShallowWrapper {
               warning={true}
             >
               <Styled(Text)
+                style={
+                  Object {
+                    "fontSize": 20,
+                  }
+                }
                 virtual={undefined}
               >
                 OK
@@ -355,9 +381,10 @@ ShallowWrapper {
           "props": Object {
             "children": undefined,
             "style": Object {
+              "alignSelf": "center",
               "color": "#58595B",
               "fontFamily": "Roboto",
-              "fontSize": 17,
+              "fontSize": 19,
               "fontWeight": "bold",
               "letterSpacing": 0,
               "lineHeight": 22,
@@ -419,6 +446,11 @@ ShallowWrapper {
               warning={true}
             >
               <Styled(Text)
+                style={
+                  Object {
+                    "fontSize": 20,
+                  }
+                }
                 virtual={undefined}
               >
                 OK
@@ -438,6 +470,11 @@ ShallowWrapper {
               "block": true,
               "bordered": true,
               "children": <Styled(Text)
+                style={
+                  Object {
+                    "fontSize": 20,
+                  }
+                }
                 virtual={undefined}
               >
                 OK
@@ -462,6 +499,9 @@ ShallowWrapper {
               "nodeType": "class",
               "props": Object {
                 "children": "OK",
+                "style": Object {
+                  "fontSize": 20,
+                },
                 "virtual": undefined,
               },
               "ref": null,
