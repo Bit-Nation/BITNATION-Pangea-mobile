@@ -290,7 +290,7 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
             <View />
           </ScrollTabView>
           <ScrollTabView
-            tabLabel='CHATS'
+            tabLabel='TALK'
             initialPage={0}
             tabBarBackgroundColor={Colors.lightFade}
             tabBarActiveTextColor={Colors.white}

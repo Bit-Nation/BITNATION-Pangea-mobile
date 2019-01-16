@@ -47,6 +47,10 @@ type Props = {
    * @param {any} id Id of selected item.
    */
   onSelectItem: (id: any) => void,
+  /**
+   * @desc Flag to check if tab is popular.
+   */
+  isPopular: boolean,
 };
 
 const NationsListScreen = ({
@@ -54,6 +58,7 @@ const NationsListScreen = ({
   myNationIds,
   inProgress,
   onSelectItem,
+  isPopular,
 }: Props) => {
   const myNations = _.filter(
     nations,
@@ -86,9 +91,15 @@ const NationsListScreen = ({
       <SectionList
         renderItem={(item) => {
           const nation = item.item;
+          let popularNation = '';
+          let statusString = '';
           const nationStatus = resolveStatus(nation);
 
-          let statusString = '';
+          console.log(nation.citizens, 'citizens');
+
+          if (nation.citizens > '9') {
+            popularNation = nation.citizens;
+          }
           if (nationStatus !== null) {
             statusString = i18n.t(`enums.nation.status.${nationStatus.key}`);
           }
@@ -99,14 +110,28 @@ const NationsListScreen = ({
           }
 
           return (
-            <NationListItem
-              nationName={nation.nationName}
-              onPress={onSelectItem}
-              status={statusString}
-              statusColor={statusTextColor}
-              id={nation.id}
-              citizens={nation.citizens}
-            />
+            <View>
+              {(isPopular && nation.citizens > '9') &&
+                <NationListItem
+                  nationName={nation.nationName}
+                  onPress={onSelectItem}
+                  status={statusString}
+                  statusColor={statusTextColor}
+                  id={nation.id}
+                  citizens={nation.citizens}
+                />
+              }
+              {!isPopular &&
+                <NationListItem
+                  nationName={nation.nationName}
+                  onPress={onSelectItem}
+                  status={statusString}
+                  statusColor={statusTextColor}
+                  id={nation.id}
+                  citizens={nation.citizens}
+                />
+              }
+            </View>
           );
         }}
         keyExtractor={item => item.id}

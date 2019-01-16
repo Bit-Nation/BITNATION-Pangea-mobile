@@ -3,13 +3,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { View } from 'react-native';
-
+import { Button, Text } from 'native-base';
 import i18n from '../../../global/i18n';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import PanelView from '../../../components/common/PanelView';
 import ScreenTitle from '../../../components/common/ScreenTitle';
-import Button from '../../../components/common/Button';
 import styles from '../styles';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import { performDeferredLogin } from '../../../actions/accounts';
@@ -53,10 +52,14 @@ class AccountReady extends Component<Props & AccountsState> {
           <View style={styles.bodyContainer}>
             <PanelView body={i18n.t('screens.accounts.create.readyUse')} />
             <Button
+              transparent
               style={styles.panelButton}
-              title={i18n.t('screens.accounts.create.openDashboard')}
               onPress={this.goToDashboard}
-            />
+            >
+              <Text style={styles.prevText}>
+                {i18n.t('screens.accounts.create.openDashboard')}
+              </Text>
+            </Button>
           </View>
         </View>
         {this.props.login.inProgress === true && <Loading />}
@@ -78,4 +81,7 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(AccountReady);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(AccountReady);

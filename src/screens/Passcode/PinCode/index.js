@@ -130,7 +130,7 @@ class PinCodeScreen extends NavigatorComponent<Props, State> {
             }}
             style={styles.pinButton}
           >
-            <Text>{i18n.t('common.ok')}</Text>
+            <Text style={styles.buttonText}>{i18n.t('common.ok')}</Text>
           </Button>
         </View>
         {shouldShowForget && (
@@ -142,7 +142,7 @@ class PinCodeScreen extends NavigatorComponent<Props, State> {
             style={styles.pinButton}
             onPress={() => this.props.onForget()}
           >
-            <Text>{i18n.t('screens.password.forgetInstruction')}</Text>
+            <Text style={styles.buttonText}>{i18n.t('screens.password.forgetInstruction')}</Text>
           </Button>
         )}
       </View>

@@ -6,6 +6,7 @@ import { Button, Text } from 'native-base';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import i18n from '../../global/i18n';
 import { logout } from '../../actions/accounts';
+import { imageSource } from '../../utils/profile';
 import { getCurrentAccount } from '../../reducers/accounts';
 
 import AssetsImages from '../../global/AssetsImages';
@@ -42,7 +43,7 @@ class MenuScreen extends NavigatorComponent {
   render() {
     const { account, publicKey } = this.props;
 
-    const avatarSource = AssetsImages.avatarIcon;
+    const avatarSource = imageSource(account.avatar) || AssetsImages.avatarIcon;
 
     return (
       <View style={styles.containerMenu}>
@@ -54,7 +55,9 @@ class MenuScreen extends NavigatorComponent {
         </TouchableOpacity>
         <View style={styles.avatarView}>
           <Image source={avatarSource} style={styles.avatarLarge} />
-          <Text style={styles.nameText}>{i18n.t('sidemenu.citizenid')}</Text>
+          <Text style={styles.nameText}>
+            {account.name && account.name.trim()}
+          </Text>
           <View style={styles.publicKey}>
             <Text style={styles.publicKeyText}>
               {publicKey && publicKey.trim()}

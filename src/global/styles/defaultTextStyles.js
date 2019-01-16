@@ -166,7 +166,8 @@ const defaultTextStyles = {
   headline: {
     fontFamily: 'Roboto',
     fontWeight: 'bold',
-    fontSize: 17,
+    alignSelf: 'center',
+    fontSize: 19,
     lineHeight: 22,
     letterSpacing: 0,
     color: Colors.BitnationDarkGrayColor,

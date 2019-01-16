@@ -2,14 +2,13 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View, Text } from 'react-native';
-
+import { View } from 'react-native';
+import { Button, Text } from 'native-base';
 import i18n from '../../../global/i18n';
 import { androidNavigationButtons, screen } from '../../../global/Screens';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 import ScreenTitle from '../../../components/common/ScreenTitle';
-import Button from '../../../components/common/Button';
 import SwitchLabeled from '../../../components/common/SwitchLabeled';
 import styles from '../styles';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
@@ -28,7 +27,7 @@ type Actions = {
    * @desc Action to change field of currently created account.
    */
   changeCreatingAccount: (field: string, value: any) => void,
-}
+};
 
 class DeveloperSettings extends Component<Props & Actions & AccountsState> {
   static navigatorButtons = { ...androidNavigationButtons };
@@ -45,41 +44,51 @@ class DeveloperSettings extends Component<Props & Actions & AccountsState> {
     const { creatingAccount } = this.props;
     if (creatingAccount == null) {
       this.previousStep();
-      return (
-        <View />
-      );
+      return <View />;
     }
 
     return (
       <View style={styles.profilesScreenContainer}>
         <BackgroundImage
-          maskColor={creatingAccount.networkType === 'main' ? undefined : 'rgba(239, 218, 39, 0.05)'}
+          maskColor={
+            creatingAccount.networkType === 'main'
+              ? undefined
+              : 'rgba(239, 218, 39, 0.05)'
+          }
         />
-        {
-          creatingAccount.networkType !== 'main' ?
-            <Text style={styles.textNetworkTypeStyle}>{i18n.t('screens.accounts.create.rinkebyNetwork')}</Text> : null
-        }
+        {creatingAccount.networkType !== 'main' ? (
+          <Text style={styles.textNetworkTypeStyle}>
+            {i18n.t('screens.accounts.create.rinkebyNetwork')}
+          </Text>
+        ) : null}
         <FakeNavigationBar />
         <View style={styles.bodyAccountContainer}>
           <ScreenTitle title={i18n.t('screens.accounts.create.title')} />
           <View style={styles.bodyContainer}>
-            <Text style={styles.headline}>{i18n.t('screens.accounts.create.developerTitle')}</Text>
+            <Text style={styles.headline}>
+              {i18n.t('screens.accounts.create.developerTitle')}
+            </Text>
             <View style={styles.formRow}>
               <View style={styles.fieldsContainer}>
                 <SwitchLabeled
                   label={i18n.t('screens.accounts.create.testingAccount')}
                   value={creatingAccount.networkType !== 'main'}
                   align='right'
-                  onValueChange={value => this.props.changeCreatingAccount('networkType', value ? 'dev' : 'main')}
+                  onValueChange={value =>
+                    this.props.changeCreatingAccount(
+                      'networkType',
+                      value ? 'dev' : 'main',
+                    )
+                  }
                 />
               </View>
             </View>
             <View style={styles.formRow}>
               <View style={styles.fieldsContainer}>
                 <Text style={styles.body}>
-                  {creatingAccount.networkType === 'main' ?
-                    i18n.t('screens.accounts.create.useMainNetwork') :
-                    i18n.t('screens.accounts.create.useRinkebyNetwork')}
+                  {creatingAccount.networkType === 'main'
+                    ? i18n.t('screens.accounts.create.useMainNetwork')
+                    : i18n.t('screens.accounts.create.useRinkebyNetwork')}
                 </Text>
               </View>
             </View>
@@ -111,15 +120,23 @@ class DeveloperSettings extends Component<Props & Actions & AccountsState> {
           <View style={styles.bodyContainer}>
             <View style={styles.buttonContainerMultiple}>
               <Button
+                transparent
                 style={styles.buttonPrevNext}
-                title={i18n.t('screens.accounts.create.prev')}
                 onPress={this.previousStep}
-              />
+              >
+                <Text style={styles.prevText}>
+                  {i18n.t('screens.accounts.create.prev')}
+                </Text>
+              </Button>
               <Button
+                transparent
                 style={styles.buttonPrevNext}
-                title={i18n.t('screens.accounts.create.next')}
                 onPress={this.nextStep}
-              />
+              >
+                <Text style={styles.nextText}>
+                  {i18n.t('screens.accounts.create.next')}
+                </Text>
+              </Button>
             </View>
           </View>
         </View>
@@ -138,4 +155,7 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(DeveloperSettings);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(DeveloperSettings);

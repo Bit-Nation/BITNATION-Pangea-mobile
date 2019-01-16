@@ -297,7 +297,6 @@ class SecuritySettingsScreen extends NavigatorComponent<
               <Button
                 transparent
                 style={styles.buttonPrevNext}
-                // title={i18n.t('screens.accounts.create.prev')}
                 onPress={this.onPreviousPressed}
               >
                 <Text style={styles.prevText}>{i18n.t('screens.accounts.create.prev')}</Text>
@@ -305,7 +304,6 @@ class SecuritySettingsScreen extends NavigatorComponent<
               <Button
                 transparent
                 style={styles.buttonPrevNext}
-                // title={i18n.t('screens.accounts.create.next')}
                 onPress={this.onNextPressed}
               >
                 <Text style={styles.nextText}>{i18n.t('screens.accounts.create.next')}</Text>

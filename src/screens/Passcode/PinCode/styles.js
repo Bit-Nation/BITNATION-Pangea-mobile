@@ -29,6 +29,9 @@ const styles = MediaQueryStyleSheet.create({
     borderColor: '#FF8B00',
     marginTop: 15,
   },
+  buttonText: {
+    fontSize: 20,
+  },
 });
 
 export default styles;

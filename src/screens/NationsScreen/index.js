@@ -155,7 +155,10 @@ class NationsScreen extends NavigatorComponent<
               placeholderTextColor={Colors.BitnationLinkOrangeColor}
               autoCapitalize='none'
             />
-            <Image source={AssetsImages.searchIcon} style={styles.searchIconStyle} />
+            <Image
+              source={AssetsImages.searchIcon}
+              style={styles.searchIconStyle}
+            />
           </View>
         </View>
         <ScrollTabView
@@ -207,10 +210,16 @@ class NationsScreen extends NavigatorComponent<
             tabBarContainerStyle={styles.subTabBarContainerStyle}
             renderTabBar={() => <DefaultTabBar />}
           >
-            <View />
+            <NationsListScreen
+              onSelectItem={this.onSelectItem}
+              isPopular
+              {...this.props}
+            />
           </ScrollTabView>
         </ScrollTabView>
-        <LucyButton onPress={() => this.setState({ showModal: LUCY_MODAL_KEY })} />
+        <LucyButton
+          onPress={() => this.setState({ showModal: LUCY_MODAL_KEY })}
+        />
         <PopOverModal
           visible={this.state.showModal === LUCY_MODAL_KEY}
           onCancel={this.dismissModal}
