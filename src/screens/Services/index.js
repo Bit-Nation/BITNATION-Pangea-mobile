@@ -252,7 +252,43 @@ class ServicesScreen extends NavigatorComponent<
             tabBarTextStyle={styles.tabBarTextStyle}
             renderTabBar={() => <DefaultTabBar />}
           >
-            <ScrollTabView
+            <View tabLabel='DAPPS'>
+              <SubTabComponent
+                uri='https://sfnotary.com/wp-content/uploads/2015/03/San-Franciscos-Favorite-Mobile-Notary-Public1-350x232.jpg'
+                description='Using the BITNATION Public Notary DApp you can notarise jpeg and png versions of your agreements and other important information on the Ethereum chain'
+                title='USE DAPPS'
+                subTitle='SIMILAR DAPPS'
+                list={data}
+              />
+            </View>
+            <View tabLabel='CONTRACTS'>
+              <SubTabComponent
+                uri='https://sfnotary.com/wp-content/uploads/2015/03/San-Franciscos-Favorite-Mobile-Notary-Public1-350x232.jpg'
+                description='Using the BITNATION Public Notary DApp you can notarise jpeg and png versions of your agreements and other important information on the Ethereum chain'
+                title='USE DAPPS'
+                subTitle='SIMILAR DAPPS'
+                list={data}
+              />
+            </View>
+            <View tabLabel='SERVICES'>
+              <SubTabComponent
+                uri='https://sfnotary.com/wp-content/uploads/2015/03/San-Franciscos-Favorite-Mobile-Notary-Public1-350x232.jpg'
+                description='Using the BITNATION Public Notary DApp you can notarise jpeg and png versions of your agreements and other important information on the Ethereum chain'
+                title='USE DAPPS'
+                subTitle='SIMILAR DAPPS'
+                list={data}
+              />
+            </View>
+            <View tabLabel='PRODUCTS'>
+              <SubTabComponent
+                uri='https://sfnotary.com/wp-content/uploads/2015/03/San-Franciscos-Favorite-Mobile-Notary-Public1-350x232.jpg'
+                description='Using the BITNATION Public Notary DApp you can notarise jpeg and png versions of your agreements and other important information on the Ethereum chain'
+                title='USE DAPPS'
+                subTitle='SIMILAR DAPPS'
+                list={data}
+              />
+            </View>
+            {/* <ScrollTabView
               tabLabel='DAPPS'
               initialPage={0}
               tabBarBackgroundColor={Colors.lightFade}
@@ -479,7 +515,7 @@ class ServicesScreen extends NavigatorComponent<
                   list={data}
                 />
               </View>
-            </ScrollTabView>
+            </ScrollTabView> */}
           </ScrollTabView>
         </View>
         <LucyButton onPress={() => this.setState({ showModal: LUCY_MODAL_KEY })} />
