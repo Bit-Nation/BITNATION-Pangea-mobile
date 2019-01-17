@@ -68,7 +68,7 @@ function LucyBot(noRandomFlag) {
 		     "Can you please repeat with a clear keyword ?",
 		     "That doesn't work.",
 		     "Try to narrow it down with a keyword.",
-		     "This program responds well to the following keywords: notary, blockchain, ethereum, xpat, chat, and a range of other simple terms in order to help you. The number of useful inputs are limited so try not to write as if you were talking to another person,
+		     "This program responds well to the following keywords: notary, blockchain, ethereum, xpat, chat, and a range of other simple terms in order to help you. The number of useful inputs are limited so try not to write as if you were talking to another person",
 		     "I still don't understand. "
 		  ]]
 		]],
@@ -171,7 +171,7 @@ function LucyBot(noRandomFlag) {
 		  ]]
 		["DBVN", 0, [
 		["*", [
-		"A "DBVN" is a "decentralized borderless virtual nation. Anyone can start one but it’s up to you to create a nation people want to join."
+		"A DBVN is a decentralized borderless virtual nation. Anyone can start one but it’s up to you to create a nation people want to join."
 		  ]]
 		]],
 		["features", 0, [
@@ -272,7 +272,7 @@ function LucyBot(noRandomFlag) {
 		"bitcoin and ethereum": ["ethereum and bitcoin", "ethereum or bitcoin", "bitcoin or ethereum", "bitcoin and ethereum"],
 		"Notary": ["notry", "noatry"],
 		"chat": ["messages", "messaging", "chatting", "address"],
-		"wallet": ["walet", "wallt", "wllet", "tokenwallet, "ethwallet", "xpatwallet"],
+		"wallet": ["walet", "wallt", "wllet", "tokenwallet", "ethwallet", "xpatwallet"],
 		"smart contracts": ["smartcontracts", "SCs", "contracts on ethereum"],
 		"constitution": ["creed", "core rules", "what defines you", "principles"],
 		"uninterested": ["don't care", "dont care", "w/e", "nvm", "not interested"],
