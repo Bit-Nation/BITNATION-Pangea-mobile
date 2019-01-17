@@ -170,52 +170,20 @@ class NationsScreen extends NavigatorComponent<
           tabBarTextStyle={styles.tabBarTextStyle}
           renderTabBar={() => <DefaultTabBar />}
         >
-          <ScrollTabView
-            tabLabel='NEW'
-            initialPage={0}
-            tabBarBackgroundColor={Colors.lightFade}
-            tabBarActiveTextColor={Colors.white}
-            tabBarInactiveTextColor={Colors.white}
-            tabBarUnderlineStyle={styles.subTabBarUnderlineStyle}
-            tabBarTextStyle={styles.subTabBarTextStyle}
-            tabBarContainerStyle={styles.subTabBarContainerStyle}
-            renderTabBar={() => <DefaultTabBar />}
-          >
+          <View tabLabel='NEW' style={styles.bodyContainer}>
             <NationsListScreen
               onSelectItem={this.onSelectItem}
               {...this.props}
             />
-          </ScrollTabView>
-          <ScrollTabView
-            tabLabel='FEATURED'
-            initialPage={0}
-            tabBarBackgroundColor={Colors.lightFade}
-            tabBarActiveTextColor={Colors.white}
-            tabBarInactiveTextColor={Colors.white}
-            tabBarUnderlineStyle={styles.subTabBarUnderlineStyle}
-            tabBarTextStyle={styles.subTabBarTextStyle}
-            tabBarContainerStyle={styles.subTabBarContainerStyle}
-            renderTabBar={() => <DefaultTabBar />}
-          >
-            <View />
-          </ScrollTabView>
-          <ScrollTabView
-            tabLabel='POPULAR'
-            initialPage={0}
-            tabBarBackgroundColor={Colors.lightFade}
-            tabBarActiveTextColor={Colors.white}
-            tabBarInactiveTextColor={Colors.white}
-            tabBarUnderlineStyle={styles.subTabBarUnderlineStyle}
-            tabBarTextStyle={styles.subTabBarTextStyle}
-            tabBarContainerStyle={styles.subTabBarContainerStyle}
-            renderTabBar={() => <DefaultTabBar />}
-          >
+          </View>
+          <View tabLabel='FEATURED' />
+          <View tabLabel='POPULAR' style={styles.bodyContainer}>
             <NationsListScreen
               onSelectItem={this.onSelectItem}
               isPopular
               {...this.props}
             />
-          </ScrollTabView>
+          </View>
         </ScrollTabView>
         <LucyButton
           onPress={() => this.setState({ showModal: LUCY_MODAL_KEY })}

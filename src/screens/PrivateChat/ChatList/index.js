@@ -276,30 +276,8 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
           tabBarTextStyle={styles.tabBarTextStyle}
           renderTabBar={() => <DefaultTabBar />}
         >
-          <ScrollTabView
-            tabLabel='FEED'
-            initialPage={0}
-            tabBarBackgroundColor={Colors.lightFade}
-            tabBarActiveTextColor={Colors.white}
-            tabBarInactiveTextColor={Colors.white}
-            tabBarUnderlineStyle={styles.subTabBarUnderlineStyle}
-            tabBarTextStyle={styles.subTabBarTextStyle}
-            tabBarContainerStyle={styles.subTabBarContainerStyle}
-            renderTabBar={() => <DefaultTabBar />}
-          >
-            <View />
-          </ScrollTabView>
-          <ScrollTabView
-            tabLabel='TALK'
-            initialPage={0}
-            tabBarBackgroundColor={Colors.lightFade}
-            tabBarActiveTextColor={Colors.white}
-            tabBarInactiveTextColor={Colors.white}
-            tabBarUnderlineStyle={styles.subTabBarUnderlineStyle}
-            tabBarTextStyle={styles.subTabBarTextStyle}
-            tabBarContainerStyle={styles.subTabBarContainerStyle}
-            renderTabBar={() => <DefaultTabBar />}
-          >
+          <View tabLabel='FEED' />
+          <View tabLabel='TALK' style={{ flex: 1 }}>
             <SectionList
               renderItem={(item) => {
                 const chat: ChatType = item.item;
@@ -321,8 +299,8 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
                   // @todo Add preview for DApp messages.
                   return i18n.t('screens.chat.dAppMessagePreview');
                 })(chat.messages.length === 0
-                    ? null
-                    : chat.messages[chat.messages.length - 1]);
+                  ? null
+                  : chat.messages[chat.messages.length - 1]);
 
                 const lastMessage =
                   chat.messages.length === 0
@@ -391,21 +369,8 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
                 onPress={this.dismissModal}
               />
             </Dialog.Container>
-          </ScrollTabView>
-          <ScrollTabView
-            tabLabel='GROUPS'
-            initialPage={0}
-            tabBarBackgroundColor={Colors.lightFade}
-            tabBarActiveTextColor={Colors.white}
-            tabBarInactiveTextColor={Colors.white}
-            tabBarUnderlineStyle={styles.subTabBarUnderlineStyle}
-            tabBarTextStyle={styles.subTabBarTextStyle}
-            tabBarContainerStyle={styles.subTabBarContainerStyle}
-            renderTabBar={() => <DefaultTabBar />}
-          >
-            <View />
-            <ScrollTabView />
-          </ScrollTabView>
+          </View>
+          <View tabLabel='GROUPS' />
         </ScrollTabView>
         <LucyButton onPress={() => this.setState({ showModal: LUCY_MODAL_KEY })} />
         <PopOverModal
@@ -414,19 +379,19 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
           options={[
             {
               text: 'Start a new Chat with Citzen',
-              onPress: () => {},
+              onPress: () => { },
             },
             {
               text: 'Start new Group Chat',
-              onPress: () => {},
+              onPress: () => { },
             },
             {
               text: 'Report Citzen',
-              onPress: () => {},
+              onPress: () => { },
             },
             {
               text: 'Help with Chat',
-              onPress: () => {},
+              onPress: () => { },
             },
           ]}
         />
