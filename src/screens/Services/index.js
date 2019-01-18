@@ -265,8 +265,8 @@ class ServicesScreen extends NavigatorComponent<
               <SubTabComponent
                 uri='https://sfnotary.com/wp-content/uploads/2015/03/San-Franciscos-Favorite-Mobile-Notary-Public1-350x232.jpg'
                 description='Using the BITNATION Public Notary DApp you can notarise jpeg and png versions of your agreements and other important information on the Ethereum chain'
-                title='USE DAPPS'
-                subTitle='SIMILAR DAPPS'
+                title='COPY CONTRACTS CODE'
+                subTitle='SIMILAR CONTRACTS'
                 list={data}
               />
             </View>
@@ -524,19 +524,11 @@ class ServicesScreen extends NavigatorComponent<
           onCancel={this.dismissModal}
           options={[
             {
-              text: 'Start a new Chat with Citzen',
+              text: 'Add a new Dapp, Contract, Service',
               onPress: () => {},
             },
             {
-              text: 'Start new Group Chat',
-              onPress: () => {},
-            },
-            {
-              text: 'Report Citzen',
-              onPress: () => {},
-            },
-            {
-              text: 'Help with Chat',
+              text: 'Help',
               onPress: () => {},
             },
           ]}

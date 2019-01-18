@@ -378,19 +378,15 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
           onCancel={this.dismissModal}
           options={[
             {
-              text: 'Start a new Chat with Citzen',
+              text: 'Start new conversation',
               onPress: () => { },
             },
             {
-              text: 'Start new Group Chat',
+              text: 'Start new group conversation',
               onPress: () => { },
             },
             {
-              text: 'Report Citzen',
-              onPress: () => { },
-            },
-            {
-              text: 'Help with Chat',
+              text: 'Help',
               onPress: () => { },
             },
           ]}

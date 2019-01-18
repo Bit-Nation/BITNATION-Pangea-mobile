@@ -202,7 +202,7 @@ class NationsScreen extends NavigatorComponent<
               onPress: () => {},
             },
             {
-              text: 'Help with Nations',
+              text: 'Help',
               onPress: () => {},
             },
           ]}

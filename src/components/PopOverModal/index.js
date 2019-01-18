@@ -148,7 +148,7 @@ const PopOverModal = ({
       <TouchableOpacity style={styles.modalWrapContent} activeOpacity={1}>
         <View style={styles.modalContent}>
           <View style={styles.headerView}>
-            <Text style={styles.headerText}>LUCY AI</Text>
+            <Text style={styles.headerText}>LUCY</Text>
           </View>
           {desText && <Text style={styles.descriptionText}>{desText}</Text>}
           {
@@ -166,7 +166,7 @@ const PopOverModal = ({
             style={styles.modalMenuBackItem}
             onPress={onCancel}
           >
-            <Text style={styles.modalMenuText}>GO BACK</Text>
+            <Text style={styles.modalMenuText}>Close</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.triangle} />
