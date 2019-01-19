@@ -642,6 +642,9 @@
         "description": "Enter description"
       },
       "save": "Save document"
+    },
+    "govMarket": {
+      "clipboardAlert": "Copied contract to Clipboard"
     }
   },
   "testingMode": {

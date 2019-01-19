@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 
 import styles from './styles';
 
@@ -22,6 +22,8 @@ type Props = {
    * @desc subTitle of tab
    */
   subTitle: string,
+
+  onPress: Function,
 };
 
 /**
@@ -30,16 +32,18 @@ type Props = {
  */
 
 const GovMarketItem = ({
-  uri, description, title, subTitle,
+  uri, description, title, subTitle, onPress,
 }: Props) => (
-  <View style={styles.container}>
-    <Image source={{ uri }} style={styles.avatarStyle} />
-    <View style={styles.infoStyle}>
-      <Text style={styles.descriptionText}>{description}</Text>
-      <Text>{title}</Text>
-      <Text>{subTitle}</Text>
+  <TouchableOpacity onPress={onPress}>
+    <View style={styles.container}>
+      <Image source={{ uri }} style={styles.avatarStyle} />
+      <View style={styles.infoStyle}>
+        <Text style={styles.descriptionText}>{description}</Text>
+        <Text>{title}</Text>
+        <Text>{subTitle}</Text>
+      </View>
     </View>
-  </View>
+  </TouchableOpacity>
 );
 
 export default GovMarketItem;
