@@ -1,88 +1,34 @@
-// @flow
+import { Clipboard, Alert } from 'react-native';
+import { compose, withState, withHandlers } from 'recompose';
+import { first } from 'lodash';
+import SubTabComponent from './view';
+import { errorAlert } from '../../../../global/alerts';
+import i18n from '../../../../global/i18n';
 
-import React from 'react';
-import { View, ScrollView, Text, FlatList } from 'react-native';
-import ProgressiveImage from '../../../../components/ProgressiveImage';
-import ViewMoreText from '../../../../components/ViewMoreText';
-import GovMarketItem from '../GovMarketItem';
+export default compose(
+  withState('selectedItem', 'setSelectedItem', ({ list }) => first(list) || {}),
 
-import styles from './styles';
+  withHandlers(() => {
+    let myFlatlist = null;
+    return {
+      onRef: () => ref => (myFlatlist = ref),
+      onPressItem: ({ setSelectedItem }) => (item) => {
+        setSelectedItem(item);
+        myFlatlist.scrollTo({ y: 0 });
+      },
+    };
+  }),
+  withHandlers({
+    onPressMainButton: () => async ({ uri }) => {
+      try {
+        const response = await fetch(uri);
+        const text = await response.text();
 
-type Props = {
-  /**
-   * @desc Url of Image
-   */
-  uri: string,
-  /**
-   * @desc Description to be displayed
-   */
-  description: string,
-  /**
-   * @desc Title of tab
-   */
-  title: string,
-  /**
-   * @desc subTitle of tab
-   */
-  subTitle: string,
-  /**
-   * @desc list similar
-   */
-  list: Array<any>
-};
-
-/**
- * @desc Component for rendering wallet details.
- * @return {React.Component} A component.
- */
-
-const SubTabComponent = ({
-  uri, description, title, subTitle, list,
-}: Props) => (
-  <ScrollView style={styles.container}>
-    <View style={styles.card}>
-      <ProgressiveImage
-        style={styles.headerBackground}
-        source={{ uri }}
-      />
-    </View>
-    <View style={styles.infoView}>
-      <Text style={styles.descriptionStyle}>{description}</Text>
-      <ScrollView>
-        <ViewMoreText
-          numberOfLines={3}
-        >
-          <Text style={styles.readMoreText}>
-            Lorem ipsum dolor sit amet, in quo dolorum ponderum, nam veri molestie constituto eu. Eum enim tantas sadipscing ne, ut omnes malorum nostrum cum. Errem populo qui ne, ea ipsum antiopam definitionem eos. Lorem ipsum dolor sit amet, in quo dolorum ponderum, nam veri molestie constituto eu. Eum enim tantas sadipscing ne, ut omnes malorum nostrum cum. Errem populo qui ne, ea ipsum antiopam definitionem eos. Lorem ipsum dolor sit amet, in quo dolorum ponderum, nam veri molestie constituto eu. Eum enim tantas sadipscing ne, ut omnes malorum nostrum cum. Errem populo qui ne, ea ipsum antiopam definitionem eos.
-          </Text>
-        </ViewMoreText>
-      </ScrollView>
-    </View>
-    <View style={styles.titleView}>
-      <Text style={styles.titleText}>{title}</Text>
-    </View>
-    <View style={styles.subTitleView}>
-      <Text style={styles.subTitleText}>{subTitle}</Text>
-    </View>
-    <FlatList
-      data={list}
-      ItemSeparatorComponent={() => <View style={styles.itemSeparator} />}
-      keyExtractor={(item, i) => String(i)}
-      showsVerticalScrollIndicator={false}
-      renderItem={
-        ({ item }) =>
-          (<GovMarketItem {...item} />)
+        Alert.alert(i18n.t('screens.govMarket.clipboardAlert'));
+        Clipboard.setString(text);
+      } catch (error) {
+        errorAlert(error);
       }
-    />
-  </ScrollView>
-);
-
-export default SubTabComponent;
-
-SubTabComponent.defaultProps = {
-  uri: '',
-  description: '',
-  title: '',
-  subTitle: '',
-  list: [],
-};
+    },
+  }),
+)(SubTabComponent);
