@@ -43,6 +43,8 @@ class MenuScreen extends NavigatorComponent {
   render() {
     const { account, publicKey } = this.props;
 
+    if (!account) return <View />;
+
     const avatarSource = imageSource(account.avatar) || AssetsImages.avatarIcon;
 
     return (
@@ -73,16 +75,6 @@ class MenuScreen extends NavigatorComponent {
               {i18n.t('sidemenu.copyaddress')}
             </Text>
           </Button>
-          <Button
-            enabled
-            style={styles.actionButton}
-            onPress={this.props.logout}
-          >
-            <Text style={styles.settingsText}>
-              {' '}
-              {i18n.t('screens.settings.switchAccounts')}
-            </Text>
-          </Button>
         </View>
         <View style={styles.navigateButtonView}>
           <TouchableOpacity
@@ -98,6 +90,22 @@ class MenuScreen extends NavigatorComponent {
             <View style={styles.wrapTextView}>
               <Text style={styles.navigateTextStyle}>
                 {i18n.t('sidemenu.myprofile')}
+              </Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.navigateButtonStyle}
+            onPress={() => this.props.logout()}
+          >
+            <View style={styles.wrapIconView}>
+              <MaterialCommunityIcons
+                style={styles.iconStyle}
+                name='account-switch'
+              />
+            </View>
+            <View style={styles.wrapTextView}>
+              <Text style={styles.navigateTextStyle}>
+                {i18n.t('screens.settings.switchAccounts')}
               </Text>
             </View>
           </TouchableOpacity>

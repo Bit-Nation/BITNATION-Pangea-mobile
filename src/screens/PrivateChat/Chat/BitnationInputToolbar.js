@@ -1,4 +1,4 @@
-/* eslint no-use-before-define: ["error", { "variables": false }] */
+/* eslint-disable */
 
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -93,12 +93,13 @@ export default class InputToolbar extends React.Component {
     return null;
   }
 
+  /* eslint-disable no-console */
   render() {
     return (
       <View style={[styles.container, this.props.containerStyle, { position: this.state.position }]}>
-        <View style={[styles.primary, this.props.primaryStyle]}>
+        <View style={[styles.primary, { paddingRight: this.props.onPressActionButton ? 20 : 5 }, this.props.primaryStyle]}>
           {this.renderActions()}
-          <View style={styles.wrapperInputStyle}>
+          <View style={[styles.wrapperInputStyle, { marginRight: this.props.onPressActionButton ? 20 : 10 }]}>
             {this.renderComposer()}
             {this.renderSend()}
           </View>

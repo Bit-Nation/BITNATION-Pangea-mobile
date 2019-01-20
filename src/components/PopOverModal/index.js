@@ -21,27 +21,27 @@ const { height } = Dimensions.get('window');
 const modalWrapContentHeight = height - (GlobalStyles.statusBar.height + 18 + getTabBarHeight() + 80);
 
 type MenuOption = {
-    text: string,
-    onPress: () => any,
+  text: string,
+  onPress: () => any,
 }
 
 type Props = {
-    /**
-     * @desc Function to cancel the menu
-     */
-    onCancel: () => void,
-    /**
-     * @desc Modal visibility
-     */
-    visible: boolean,
-    /**
-     * @desc Array of available options on menu.
-     */
-    options: Array<MenuOption>,
-    /**
-     * @desc Text description
-     */
-    desText?: string,
+  /**
+   * @desc Function to cancel the menu
+   */
+  onCancel: () => void,
+  /**
+   * @desc Modal visibility
+   */
+  visible: boolean,
+  /**
+   * @desc Array of available options on menu.
+   */
+  options: Array<MenuOption>,
+  /**
+   * @desc Text description
+   */
+  desText?: string,
 };
 
 const styles = MediaQueryStyleSheet.create({
@@ -152,16 +152,21 @@ const PopOverModal = ({
           </View>
           {desText && <Text style={styles.descriptionText}>{desText}</Text>}
           {
-            options.map(option => (
-              <TouchableOpacity
-                style={styles.modalMenuItem}
-                onPress={option.onPress}
-                key={option.text}
-              >
-                <Text style={styles.modalMenuText}>{option.text}</Text>
-              </TouchableOpacity>
-            ))
-          }
+              options.map(option => (
+                <TouchableOpacity
+                  style={styles.modalMenuItem}
+                  onPress={() => {
+                    // onCancel();
+                    setTimeout(() => {
+                      option.onPress();
+                    }, 200);
+                  }}
+                  key={option.text}
+                >
+                  <Text style={styles.modalMenuText}>{option.text}</Text>
+                </TouchableOpacity>
+              ))
+            }
           <TouchableOpacity
             style={styles.modalMenuBackItem}
             onPress={onCancel}

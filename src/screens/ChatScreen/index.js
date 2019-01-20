@@ -11,6 +11,9 @@ import {
   InputToolbar,
   Bubble,
 } from 'react-native-gifted-chat';
+
+import BitnationMessage from '../PrivateChat/Chat/BitnationMessage';
+import BitnationInputToolbar from '../PrivateChat/Chat/BitnationInputToolbar';
 import styles from './styles';
 
 import { showSpinner, hideSpinner } from '../../actions/chat';
@@ -71,6 +74,11 @@ type State = {
 };
 
 class ChatScreen extends Component<Props, State> {
+  static defaultProps = {
+    isBot: true,
+  };
+
+
   constructor(props: Props) {
     super(props);
 
@@ -195,6 +203,21 @@ class ChatScreen extends Component<Props, State> {
   nationId: number;
   connection: any;
 
+  renderMessage(props) {
+    return (
+      <BitnationMessage {...props} />
+    );
+  }
+
+  renderInputToolbar(props) {
+    return (
+      <BitnationInputToolbar
+        {...props}
+
+      />
+    );
+  }
+
   render() {
     const sendingUser = {
       _id: this.props.user ? this.props.user.id : 'anonymous',
@@ -205,25 +228,15 @@ class ChatScreen extends Component<Props, State> {
         <BackgroundImage />
         <FakeNavigationBar navBarHidden={false} />
         <GiftedChat
-              messages={this.state.messages}
-              onSend={messages => this.onSend(messages)}
-              user={sendingUser}
-              bottomOffset={Platform.OS === 'ios' ? 48.5 : 0}
-              renderComposer={props => (
-            <Composer {...props} textInputStyle={styles.composer} />
-          )}
-              renderInputToolbar={props => (
-            <InputToolbar {...props} containerStyle={styles.inputToolbar} />
-          )}
-              renderBubble={props => (
-            <Bubble
-              {...props}
-              customTextStyle={styles.customTextStyle}
-              wrapperStyle={{ left: styles.leftBubbleWrapper, right: styles.rightBubbleWrapper }}
-              textStyle={{ left: styles.leftTextStyle, right: styles.rightTextStyle }}
-            />
-          )}
-            />
+          alwaysShowSend
+          showAvatarForEveryMessage
+          messages={this.state.messages}
+          onSend={messages => this.onSend(messages)}
+          user={sendingUser}
+          bottomOffset={Platform.OS === 'ios' ? 48.5 : 0}
+          renderInputToolbar={this.renderInputToolbar}
+          renderMessage={this.renderMessage}
+        />
         {this.props.isFetching && <Loading />}
       </View>
     );

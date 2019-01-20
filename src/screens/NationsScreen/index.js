@@ -195,7 +195,14 @@ class NationsScreen extends NavigatorComponent<
           options={[
             {
               text: 'Create a New Nation',
-              onPress: () => {},
+              onPress: () => {
+                if (_.isEmpty(this.props.wallets)) {
+                  this.showCreatePrivateKeyAlert();
+                } else {
+                  this.props.startNationCreation();
+                  this.props.navigator.showModal(screen('NATION_CREATE_SCREEN'));
+                }
+              },
             },
             {
               text: 'Report a Nation',

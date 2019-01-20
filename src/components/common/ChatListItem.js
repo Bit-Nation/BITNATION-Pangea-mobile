@@ -165,16 +165,14 @@ const ListItem = <IDType>({
             </View>
           )}
         </View>
-        {subtitle == null ? (
-          'Start your first chat'
-        ) : (
-          <View style={styles.listItemTextContainer}>
-            {title}
-            <Text style={styles.listItemSubtitle} numberOfLines={1}>
-              {subtitle}
-            </Text>
-          </View>
-        )}
+
+        <View style={styles.listItemTextContainer}>
+          {title}
+          <Text style={styles.listItemSubtitle} numberOfLines={1}>
+            {subtitle || 'Start you first chat'}
+          </Text>
+        </View>
+
         <AdditionalView />
       </TouchableOpacity>
     </View>

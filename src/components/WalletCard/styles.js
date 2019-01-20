@@ -45,7 +45,10 @@ const styles = StyleSheet.create({
   button: {
     height: 20,
     borderRadius: 40,
-    backgroundColor: Colors.BitnationActionColor,
+    backgroundColor: Colors.Transparent,
+  },
+  buttonText: {
+    color: Colors.BitnationActionColor,
   },
   buttonsContainer: {
     flexDirection: 'row',

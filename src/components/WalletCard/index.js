@@ -58,16 +58,16 @@ const WalletCard = ({
 
         <View style={styles.buttonsContainer}>
           <Button onPress={onSendPress} style={styles.button}>
-            <Text>{i18n.t('common.send')}</Text>
+            <Text style={styles.buttonText}>{i18n.t('common.send')}</Text>
           </Button>
           <Button onPress={onReceivePress} style={styles.button}>
-            <Text>{i18n.t('common.receive')}</Text>
+            <Text style={styles.buttonText}>{i18n.t('common.receive')}</Text>
           </Button>
           <Button
             onPress={onTransactionPress}
             style={styles.button}
           >
-            <Text>{i18n.t('common.transactions')}</Text>
+            <Text style={styles.buttonText}>{i18n.t('common.transactions')}</Text>
           </Button>
         </View>
       </View>

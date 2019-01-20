@@ -163,8 +163,17 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
   }
 
   onChatSelected = (chatId: number) => {
-    this.props.openChat(chatId);
-    this.props.navigator.push(screen('PRIVATE_CHAT_SCREEN'));
+    if (chatId === '0') {
+      this.props.navigator.push({
+        ...screen('CHAT_SCREEN'),
+        passProps: {
+          isBot: true,
+        },
+      });
+    } else {
+      this.props.openChat(chatId);
+      this.props.navigator.push(screen('PRIVATE_CHAT_SCREEN'));
+    }
   };
 
   dismissModal = () => {
@@ -204,7 +213,7 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
         if (success === false) {
           this.props.fetchAllChats();
         } else {
-          this.props.navigator.push(screen('PRIVATE_CHAT_SCREEN'));
+          this.props.navigator.push(screen('CHAT_SCREEN'));
         }
       },
     );
@@ -244,7 +253,17 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
       this.buildChatName(chat)
         .toUpperCase()
         .charAt(0));
-    const sections = _.map(groups, (group, key) => ({
+    const mergerBotGroup = {
+      0: [{
+        id: '0',
+        name: 'Lucy',
+        members: [],
+        messages: [],
+        unreadMessages: null,
+      }],
+      ...groups,
+    };
+    const sections = _.map(mergerBotGroup, (group, key) => ({
       title: key,
       data: group,
     }));
@@ -277,10 +296,11 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
           renderTabBar={() => <DefaultTabBar />}
         >
           <View tabLabel='FEED' />
-          <View tabLabel='TALK' style={{ flex: 1 }}>
+          <View tabLabel='TALK' style={styles.scrollView}>
             <SectionList
               renderItem={(item) => {
                 const chat: ChatType = item.item;
+
                 let chatImage = AssetsImages.avatarIcon;
                 if (chat.members.length === 1) {
                   const partner = this.props.profiles[chat.members[0]];
@@ -292,6 +312,9 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
                   chatImage = AssetsImages.ChatUI.groupChatIcon;
                 }
 
+                if (chat.id === '0') {
+                  chatImage = AssetsImages.avatarIcon;
+                }
                 const messagePreview = ((message: GiftedChatMessageType | null) => {
                   if (message == null) return null;
                   if (message.dAppMessage == null) return message.text;
@@ -329,7 +352,7 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
             {/* <Fab
           style={styles.floatingButton}
           position='bottomRight'
-          onPress={this.goToContactsPicker}
+           onPress={this.goToContactsPicker}
         >
           <Text>+</Text>
         </Fab> */}
@@ -379,11 +402,11 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
           options={[
             {
               text: 'Start new conversation',
-              onPress: () => { },
+              onPress: this.goToContactsPicker,
             },
             {
               text: 'Start new group conversation',
-              onPress: () => { },
+              onPress: this.goToContactsPicker,
             },
             {
               text: 'Help',
