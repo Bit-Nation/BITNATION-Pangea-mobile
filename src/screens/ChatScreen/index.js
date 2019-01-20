@@ -115,7 +115,7 @@ class ChatScreen extends Component<Props, State> {
             createdAt: new Date(),
             user: {
               _id: 2,
-              name: 'Dr. FreudBot',
+              name: 'Lucy Bot',
             },
             // Any additional custom parameters are passed through
           },
@@ -175,7 +175,7 @@ class ChatScreen extends Component<Props, State> {
           createdAt: new Date(),
           user: {
             _id: 2,
-            name: 'Dr. FreudBot',
+            name: 'Lucy Bot',
           },
         },
       ];
