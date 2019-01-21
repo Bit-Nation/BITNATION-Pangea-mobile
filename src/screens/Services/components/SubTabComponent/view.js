@@ -38,8 +38,8 @@ type Props = {
 
 const SubTabComponent = ({
   selectedItem: {
-    uri, description, subTitle,
-  }, title, list, onPressItem, onRef, onPressMainButton,
+    uri, description, subTitle, title,
+  }, buttonTitle, subTitleTable, list, onPressItem, onRef, onPressMainButton,
 }: Props) => (
   <ScrollView style={styles.container} ref={onRef}>
     <View style={styles.card}>
@@ -63,13 +63,13 @@ const SubTabComponent = ({
     <TouchableOpacity
       style={styles.titleView}
       onPress={() => onPressMainButton({
-        uri, description, subTitle,
+        uri, description, subTitle, title,
       })}
     >
-      <Text style={styles.titleText}>{title}</Text>
+      <Text style={styles.titleText}>{buttonTitle}</Text>
     </TouchableOpacity>
     <View style={styles.subTitleView}>
-      <Text style={styles.subTitleText}>{subTitle}</Text>
+      <Text style={styles.subTitleText}>{subTitleTable}</Text>
     </View>
     <FlatList
       data={list}

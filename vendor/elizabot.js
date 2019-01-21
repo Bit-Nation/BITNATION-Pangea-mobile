@@ -1,3 +1,5 @@
+/*eslint-disable*/
+
 exports.reply = function (r) {
   if (this.bot == null) {
     this.bot = new ElizaBot(false);
@@ -975,7 +977,7 @@ ElizaBot.prototype._init = function () {
   }
   // check for keywords or install empty structure to prevent any errors
   if ((!this.elizaKeywords) ||
-		(typeof this.elizaKeywords.length === 'undefined')) {
+    (typeof this.elizaKeywords.length === 'undefined')) {
     this.elizaKeywords = [['###', 0, [['###', []]]]];
   }
   // 1st convert rules to regexps
@@ -1005,7 +1007,7 @@ ElizaBot.prototype._init = function () {
       while (m) {
         const sp = (synPatterns[m[1]]) ? synPatterns[m[1]] : m[1];
         r[0] = r[0].substring(0, m.index) + sp +
-					r[0].substring(m.index + m[0].length);
+          r[0].substring(m.index + m[0].length);
         m = sre.exec(r[0]);
       }
       // expand asterisk expressions (v.1.1: work around lambda function)
@@ -1069,7 +1071,7 @@ ElizaBot.prototype._init = function () {
     for (let i = 0; i < this.elizaPosts.length; i += 2) {
       a.push(this.elizaPosts[i]);
       ElizaBot.prototype.posts[this.elizaPosts[i]] = this.elizaPosts[i +
-			1];
+        1];
     }
     ElizaBot.prototype.postExp = new RegExp(`\\b(${a.join('|')})\\b`);
   } else {
@@ -1164,9 +1166,9 @@ ElizaBot.prototype._execRule = function (k) {
       const reasmbs = decomps[i][1];
       const memflag = decomps[i][2];
       let ri = (this.noRandom) ? 0 : Math.floor(Math.random() *
-				reasmbs.length);
+        reasmbs.length);
       if (((this.noRandom) && (this.lastchoice[k][i] > ri)) ||
-				(this.lastchoice[k][i] == ri)) {
+        (this.lastchoice[k][i] == ri)) {
         ri = ++this.lastchoice[k][i];
         if (ri >= reasmbs.length) {
           ri = 0;
@@ -1201,7 +1203,7 @@ ElizaBot.prototype._execRule = function (k) {
             let rp2 = param;
             while (m2) {
               lp2 += rp2.substring(0, m2.index) +
-								this.posts[m2[1]];
+                this.posts[m2[1]];
               rp2 = rp2.substring(m2.index + m2[0].length);
               m2 = this.postExp.exec(rp2);
             }
@@ -1262,9 +1264,9 @@ ElizaBot.prototype._memGet = function () {
     const n = Math.floor(Math.random() * this.mem.length);
     const rpl = this.mem[n];
     for (let i = n + 1; i < this.mem.length; i++) {
- this.mem[i -
-			1] = this.mem[i];
- }
+      this.mem[i -
+        1] = this.mem[i];
+    }
     this.mem.length--;
     return rpl;
   }
@@ -1274,13 +1276,13 @@ ElizaBot.prototype._memGet = function () {
 ElizaBot.prototype.getFinal = function () {
   if (!this.elizaFinals) return '';
   return this.elizaFinals[Math.floor(Math.random() *
-		this.elizaFinals.length)];
+    this.elizaFinals.length)];
 };
 
 ElizaBot.prototype.getInitial = function () {
   if (!this.elizaInitials) return '';
   return this.elizaInitials[Math.floor(Math.random() *
-		this.elizaInitials.length)];
+    this.elizaInitials.length)];
 };
 
 const elizaFinals = [

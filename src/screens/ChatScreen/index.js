@@ -24,7 +24,7 @@ import { resolveNation } from '../../utils/nations';
 import deprecatedCreateGiftedChatMessageObject from '../../utils/chat';
 import type { NationIdType, NationType } from '../../types/Nation';
 import type { Navigator } from '../../types/ReactNativeNavigation';
-import elizabot from '../../../vendor/elizabot';
+import LucyBot from '../../../vendor/LucyBot';
 import { getCurrentAccount } from '../../reducers/accounts';
 
 type Props = {
@@ -111,11 +111,11 @@ class ChatScreen extends Component<Props, State> {
         messages: [
           {
             _id: 1,
-            text: elizabot.start(),
+            text: LucyBot.start(),
             createdAt: new Date(),
             user: {
               _id: 2,
-              name: 'Lucy Bot',
+              name: 'Lucy 1.0',
             },
             // Any additional custom parameters are passed through
           },
@@ -171,11 +171,11 @@ class ChatScreen extends Component<Props, State> {
       const m = [
         {
           _id: this.state.messages.length + 1,
-          text: elizabot.reply(messages[0].text),
+          text: LucyBot.reply(messages[0].text),
           createdAt: new Date(),
           user: {
             _id: 2,
-            name: 'Lucy Bot',
+            name: 'Lucy 1.0',
           },
         },
       ];

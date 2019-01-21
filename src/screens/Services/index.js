@@ -9,7 +9,11 @@ import { selectWallet, updateWalletList } from '../../actions/wallet';
 import NavigatorComponent from '../../components/common/NavigatorComponent';
 import ScrollTabView, { DefaultTabBar } from '../../components/ScrollTabView';
 
-import SubTabComponent from './components/SubTabComponent';
+import ContractScreen from './subTabs/ContractScreen';
+import DappScreen from './subTabs/DappScreen';
+import ServiceScreen from './subTabs/ServiceScreen';
+import ProductScreen from './subTabs/ProductScreen';
+
 
 import Colors from '../../global/colors';
 import AssetsImages from '../../global/AssetsImages';
@@ -23,37 +27,12 @@ import { getCurrentAccount } from '../../reducers/accounts';
 
 import LucyButton from '../../components/common/LucyButton';
 import PopOverModal from '../../components/PopOverModal';
+import { contractData, dAppData, serviceData, productData } from './helper';
 
 const MENU_BUTTON = 'MENU_BUTTON';
 const REMOVE_WALLETS_BUTTON = 'REMOVE_WALLETS_BUTTON';
 const LUCY_MODAL_KEY = 'lucyModal';
 
-const data = [
-  {
-    uri: 'https://raw.githubusercontent.com/Bit-Nation/marriage-contract/master/MarriageContract.sol',
-    description: 'LOVE4EVER MARRIAGE',
-    title: 'Producer: BITNATION Americas LTD',
-    subTitle: 'Fees: Standard ETH transaction fee',
-  },
-  {
-    uri: 'https://raw.githubusercontent.com/Bit-Nation/pat-token-contract/master/src/sol/Token.sol',
-    description: 'ERC-20 Standard Token Smart Contract Interface',
-    title: 'Producer: BITNATION Americas LTD',
-    subTitle: 'Fees: Standard ETH transaction fee',
-  },
-  {
-    uri: 'https://raw.githubusercontent.com/Bit-Nation/PangeaAgreementStandard/master/PangeaAgreementStandard.sol',
-    description: 'Pangea Agreement Standard',
-    title: 'Producer: BITNATION Americas LTD',
-    subTitle: 'Fees: Standard ETH transaction fee',
-  },
-  {
-    uri: 'https://raw.githubusercontent.com/OpenZeppelin/openzeppelin-solidity/master/contracts/payment/PaymentSplitter.sol',
-    description: 'Payment Splitter',
-    title: 'Producer: OpenZeppelin',
-    subTitle: 'Fees: Standard ETH transaction fee',
-  },
-];
 
 type Props = {
   /**
@@ -253,39 +232,39 @@ class ServicesScreen extends NavigatorComponent<
             renderTabBar={() => <DefaultTabBar />}
           >
             <View tabLabel='DAPPS'>
-              <SubTabComponent
+              <DappScreen
                 uri='https://sfnotary.com/wp-content/uploads/2015/03/San-Franciscos-Favorite-Mobile-Notary-Public1-350x232.jpg'
                 description='Using the BITNATION Public Notary DApp you can notarise jpeg and png versions of your agreements and other important information on the Ethereum chain'
-                title='USE DAPPS'
-                subTitle='SIMILAR DAPPS'
-                list={data}
+                buttonTitle='USE DAPPS'
+                subTitleTable='SIMILAR DAPPS'
+                list={dAppData}
               />
             </View>
             <View tabLabel='CONTRACTS'>
-              <SubTabComponent
+              <ContractScreen
                 uri='https://sfnotary.com/wp-content/uploads/2015/03/San-Franciscos-Favorite-Mobile-Notary-Public1-350x232.jpg'
                 description='Using the BITNATION Public Notary DApp you can notarise jpeg and png versions of your agreements and other important information on the Ethereum chain'
-                title='COPY CONTRACTS CODE'
-                subTitle='SIMILAR CONTRACTS'
-                list={data}
+                buttonTitle='COPY CONTRACTS CODE'
+                subTitleTable='SIMILAR CONTRACTS'
+                list={contractData}
               />
             </View>
             <View tabLabel='SERVICES'>
-              <SubTabComponent
+              <ServiceScreen
                 uri='https://sfnotary.com/wp-content/uploads/2015/03/San-Franciscos-Favorite-Mobile-Notary-Public1-350x232.jpg'
                 description='Using the BITNATION Public Notary DApp you can notarise jpeg and png versions of your agreements and other important information on the Ethereum chain'
-                title='USE DAPPS'
-                subTitle='SIMILAR DAPPS'
-                list={data}
+                buttonTitle='USE SERVICE'
+                subTitleTable='SIMILAR SERVICES'
+                list={serviceData}
               />
             </View>
             <View tabLabel='PRODUCTS'>
-              <SubTabComponent
+              <ProductScreen
                 uri='https://sfnotary.com/wp-content/uploads/2015/03/San-Franciscos-Favorite-Mobile-Notary-Public1-350x232.jpg'
                 description='Using the BITNATION Public Notary DApp you can notarise jpeg and png versions of your agreements and other important information on the Ethereum chain'
-                title='USE DAPPS'
-                subTitle='SIMILAR DAPPS'
-                list={data}
+                buttonTitle='USE PRODUCT'
+                subTitleTable='SIMILAR PRODUCTS'
+                list={productData}
               />
             </View>
           </ScrollTabView>
