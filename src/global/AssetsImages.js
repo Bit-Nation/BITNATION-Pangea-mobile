@@ -1,4 +1,7 @@
 const background = require('../assets/images/background.png');
+const backgroundLogin = require('../assets/images/backgroundLogin.png');
+const lucyModalBackground = require('../assets/images/lucyModalBackground.png');
+const lucyModalClose = require('../assets/images/lucyModalClose.png');
 const ethereumLogo = require('../assets/images/ethereumLogo.png');
 const xpatLogo = require('../assets/images/xpatLogo.png');
 const bitLogo = require('../assets/images/bitnationLogo.png');
@@ -56,6 +59,9 @@ const searchIcon = require('../assets/images/iconSearch.png');
 
 const Images = {
   background,
+  backgroundLogin,
+  lucyModalBackground,
+  lucyModalClose,
   ethereumLogo,
   xpatLogo,
   bitLogo,

@@ -75,6 +75,7 @@ export default {
   BitnationDarkGrayColor,
   BitnationLightGrayColor,
   BitnationHighlightYellowColor,
+  BitnationWhiteAlphaColor,
   BitnationGrayColor,
   BitnationLinkOrangeColor,
   BitnationActionColor,

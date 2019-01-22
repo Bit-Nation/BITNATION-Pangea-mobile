@@ -116,7 +116,13 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
         buttonColor: Colors.navigationButtonColor,
       },
     ],
-    rightButtons: [],
+    rightButtons: [
+      {
+        id: MORE_BUTTON,
+        icon: AssetsImages.moreMenuIcon,
+        buttonColor: Colors.navigationButtonColor,
+      },
+    ],
   };
 
   constructor(props: Props) {
@@ -349,13 +355,6 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
                 <View style={styles.itemSeparator} />
               )}
             />
-            {/* <Fab
-          style={styles.floatingButton}
-          position='bottomRight'
-           onPress={this.goToContactsPicker}
-        >
-          <Text>+</Text>
-        </Fab> */}
             <MoreMenuModal
               visible={this.state.showModal === MORE_MODAL_KEY}
               onCancel={this.dismissModal}

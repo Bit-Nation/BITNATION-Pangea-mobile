@@ -4,6 +4,7 @@ import { MediaQueryStyleSheet } from 'react-native-responsive';
 import { Dimensions } from 'react-native';
 
 import GlobalStyles from '../../../../global/Styles';
+import colors from '../../../../global/colors';
 
 const { width } = Dimensions.get('window');
 
@@ -16,28 +17,38 @@ const styles = MediaQueryStyleSheet.create({
     color: Colors.Red,
   },
   */
+  buttonListContainer: {
+    marginTop: 10,
+    marginBottom: 40,
+    paddingVertical: 15,
+    backgroundColor: colors.BitnationWhiteAlphaColor,
+  },
   restoreAccountButton: {
-    backgroundColor: '#FF8B00',
+    backgroundColor: colors.Transparent,
     alignSelf: 'center',
-    borderColor: '#FF8B00',
-    width: 300,
+    borderColor: colors.white,
+    borderBottomWidth: 2,
+    width: '80%',
   },
   image: {
     height: 300,
-    width,
+    width: 300,
+    alignSelf: 'center',
+  },
+  textStyle: {
+    color: colors.BitnationActionColor,
+    fontWeight: 'bold',
   },
   restoreAccountButtonText: {
     color: '#fff',
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: 'bold',
   },
-  newAccountText: { color: '#fff', fontSize: 16, fontWeight: 'bold' },
+  newAccountText: { color: '#fff', fontSize: 20, fontWeight: 'bold' },
   newAccountButton: {
-    backgroundColor: '#FF8B00',
-    width: 300,
+    backgroundColor: colors.Transparent,
     alignSelf: 'center',
     borderColor: '#FF8B00',
-    marginTop: 15,
   },
 });
 

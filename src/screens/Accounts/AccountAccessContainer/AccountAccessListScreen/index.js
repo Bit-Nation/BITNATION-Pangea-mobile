@@ -11,8 +11,9 @@ import ScreenTitle from '../../../../components/common/ScreenTitle';
 import ListItem from '../../../../components/common/ListItem';
 import type { Account } from '../../../../types/Account';
 import i18n from '../../../../global/i18n';
-import BitnationCover from '../../../../assets/images/BitnationCover.jpg';
+import BitnationCover from '../../../../assets/images/BitnationCover.png';
 import bitnationIntro from '../../../../assets/images/bitnationIntro.gif';
+import Images from '../../../../global/AssetsImages';
 
 type Props = {
   /**
@@ -41,7 +42,7 @@ const AccountAccessListScreen = ({
   onCreateAccount,
 }: Props) => (
   <Animated.View style={styles.profilesScreenContainer}>
-    <BackgroundImage />
+    <BackgroundImage source={Images.backgroundLogin} />
     {/* <FakeNavigationBar />
     <ScreenTitle title={i18n.t('screens.accounts.title')} /> */}
     <Image source={BitnationCover} style={styles.image} />
@@ -51,6 +52,7 @@ const AccountAccessListScreen = ({
         return (
           <ListItem
             text={account.name}
+            textStyle={styles.textStyle}
             onPress={id => onSelectItem(id)}
             id={account.id}
           />
@@ -63,27 +65,19 @@ const AccountAccessListScreen = ({
     />
     <View style={styles.buttonListContainer}>
       <Button
-        rounded
         block
         style={styles.restoreAccountButton}
-        // styleTitle={styles.restoreAccountButtonText}
-        // title={i18n.t('screens.accounts.restoreAccount')}
         onPress={onRestoreAccount}
       >
-        <Text>{i18n.t('screens.accounts.restoreAccount').toUpperCase()}</Text>
+        <Text style={styles.restoreAccountButtonText}>{i18n.t('screens.accounts.restoreAccount').toUpperCase()}</Text>
       </Button>
 
       <Button
-        rounded
         block
-        bordered
-        warning
-      // styleTitle={styles.newAccountText}
-      // title={i18n.t('screens.accounts.newAccount').toUpperCase()}
         onPress={onCreateAccount}
         style={styles.newAccountButton}
       >
-        <Text>{i18n.t('screens.accounts.newAccount').toUpperCase()}</Text>
+        <Text style={styles.restoreAccountButtonText}>{i18n.t('screens.accounts.newAccount').toUpperCase()}</Text>
       </Button>
       <View style={styles.spacer} />
     </View>
