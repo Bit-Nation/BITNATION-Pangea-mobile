@@ -115,6 +115,7 @@ const styles = MediaQueryStyleSheet.create({
     fontWeight: 'bold',
     marginVertical: 20,
     textAlign: 'center',
+    marginHorizontal: 40,
   },
   modalMenuItem: {
     height: 48,

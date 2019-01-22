@@ -398,18 +398,27 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
         <PopOverModal
           visible={this.state.showModal === LUCY_MODAL_KEY}
           onCancel={this.dismissModal}
+          desText='Welcome to Townhall! What would you like to do today?'
           options={[
             {
-              text: 'Start new conversation',
+              text: 'Start a new conversation',
               onPress: this.goToContactsPicker,
             },
             {
-              text: 'Start new group conversation',
+              text: 'Start a new group conversation',
               onPress: this.goToContactsPicker,
             },
             {
               text: 'Help',
-              onPress: () => { },
+              onPress: () => {
+                this.dismissModal();
+                this.props.navigator.push({
+                  ...screen('CHAT_SCREEN'),
+                  passProps: {
+                    isBot: true,
+                  },
+                });
+              },
             },
           ]}
         />
