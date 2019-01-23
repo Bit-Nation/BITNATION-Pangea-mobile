@@ -39,9 +39,10 @@ type Props = {
 const SubTabComponent = ({
   selectedItem: {
     uri, description, subTitle, title,
-  }, buttonTitle, subTitleTable, list, onPressItem, onRef, onPressMainButton,
+  }, buttonTitle, subTitleTable, list, onPressItem, onRef, onPressMainButton, children,
 }: Props) => (
   <ScrollView style={styles.container} ref={onRef}>
+    {children}
     <View style={styles.card}>
       <ProgressiveImage
         style={styles.headerBackground}

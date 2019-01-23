@@ -233,8 +233,7 @@ class ServicesScreen extends NavigatorComponent<
           >
             <View tabLabel='DAPPS'>
               <DappScreen
-                uri='https://sfnotary.com/wp-content/uploads/2015/03/San-Franciscos-Favorite-Mobile-Notary-Public1-350x232.jpg'
-                description='Using the BITNATION Public Notary DApp you can notarise jpeg and png versions of your agreements and other important information on the Ethereum chain'
+
                 buttonTitle='USE DAPPS'
                 subTitleTable='SIMILAR DAPPS'
                 list={dAppData}
@@ -242,8 +241,7 @@ class ServicesScreen extends NavigatorComponent<
             </View>
             <View tabLabel='CONTRACTS'>
               <ContractScreen
-                uri='https://sfnotary.com/wp-content/uploads/2015/03/San-Franciscos-Favorite-Mobile-Notary-Public1-350x232.jpg'
-                description='Using the BITNATION Public Notary DApp you can notarise jpeg and png versions of your agreements and other important information on the Ethereum chain'
+
                 buttonTitle='COPY CONTRACTS CODE'
                 subTitleTable='SIMILAR CONTRACTS'
                 list={contractData}
@@ -251,8 +249,7 @@ class ServicesScreen extends NavigatorComponent<
             </View>
             <View tabLabel='SERVICES'>
               <ServiceScreen
-                uri='https://sfnotary.com/wp-content/uploads/2015/03/San-Franciscos-Favorite-Mobile-Notary-Public1-350x232.jpg'
-                description='Using the BITNATION Public Notary DApp you can notarise jpeg and png versions of your agreements and other important information on the Ethereum chain'
+
                 buttonTitle='USE SERVICE'
                 subTitleTable='SIMILAR SERVICES'
                 list={serviceData}
@@ -260,8 +257,7 @@ class ServicesScreen extends NavigatorComponent<
             </View>
             <View tabLabel='PRODUCTS'>
               <ProductScreen
-                uri='https://sfnotary.com/wp-content/uploads/2015/03/San-Franciscos-Favorite-Mobile-Notary-Public1-350x232.jpg'
-                description='Using the BITNATION Public Notary DApp you can notarise jpeg and png versions of your agreements and other important information on the Ethereum chain'
+
                 buttonTitle='USE PRODUCT'
                 subTitleTable='SIMILAR PRODUCTS'
                 list={productData}
