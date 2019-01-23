@@ -4,31 +4,36 @@ import React from 'react';
 import { View, ScrollView, Text, FlatList, TouchableOpacity } from 'react-native';
 import ProgressiveImage from '../../../../components/ProgressiveImage';
 import ViewMoreText from '../../../../components/ViewMoreText';
-import GovMarketItem from '../GovMarketItem';
+import GovMarketItem, { type GovMarketItemProps } from '../GovMarketItem';
 
 import styles from './styles';
 
 type Props = {
   /**
-   * @desc Url of Image
+   * @desc GovMarketItem
    */
-  uri: string,
+  selectedItem: GovMarketItemProps,
   /**
    * @desc Description to be displayed
    */
   description: string,
   /**
-   * @desc Title of tab
+   * @desc buttonTitle of tab
    */
-  title: string,
+  buttonTitle: string,
   /**
-   * @desc subTitle of tab
+   * @desc subTitleTable of tab
    */
-  subTitle: string,
+  subTitleTable: string,
   /**
    * @desc list similar
    */
-  list: Array<any>
+  list: Array<any>,
+
+  onPressItem: Function,
+  onPressMainButton: Function,
+  onRef: Object,
+  children: Object
 };
 
 /**
