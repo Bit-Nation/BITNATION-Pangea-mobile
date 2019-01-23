@@ -26,8 +26,8 @@ export const contractData = [
 ];
 export const dAppData = [
   {
-    uri: 'https://raw.githubusercontent.com/Bit-Nation/marriage-contract/master/MarriageContract.sol',
-    description: 'LOVE4EVER MARRIAGE',
+    uri: 'https://tse.bitnation.co',
+    description: 'NOTARY',
     title: 'Producer: BITNATION Americas LTD',
     subTitle: 'Fees: Standard ETH transaction fee',
   },

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Modal from 'react-native-modal';
 import AssetsImages from '../../../../../src/global/AssetsImages';
 
-const modal = ({ isShowWebViewModal, setIsShowWebViewModal, selectedItem: { uri } }) => (
+const modal = ({ isShowWebViewModal, setIsShowWebViewModal, selectedItem: { uri } = {} }) => (
   <Modal isVisible={isShowWebViewModal}>
     <View>
       <TouchableHighlight
