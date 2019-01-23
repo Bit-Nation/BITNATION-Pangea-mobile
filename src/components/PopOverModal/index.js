@@ -3,8 +3,10 @@
 import React from 'react';
 import {
   View,
+  ImageBackground,
   TouchableOpacity,
   Modal,
+  Image,
   Dimensions,
   Text,
 } from 'react-native';
@@ -12,13 +14,15 @@ import { MediaQueryStyleSheet } from 'react-native-responsive';
 
 import LucyButton from '../common/LucyButton';
 
+import AssetsImages from '../../global/AssetsImages';
 import Colors from '../../global/colors';
 import GlobalStyles from '../../global/Styles';
 
 import { getTabBarHeight } from '../../utils/normalizer';
+import colors from '../../global/colors';
 
 const { height } = Dimensions.get('window');
-const modalWrapContentHeight = height - (GlobalStyles.statusBar.height + 18 + getTabBarHeight() + 80);
+const modalWrapContentHeight = height - (GlobalStyles.statusBar.height + 18 + getTabBarHeight() + 40);
 
 type MenuOption = {
   text: string,
@@ -63,8 +67,8 @@ const styles = MediaQueryStyleSheet.create({
   },
   modalContent: {
     width: '100%',
-    height: '95%',
-    backgroundColor: Colors.white,
+    height: '100%',
+    backgroundColor: Colors.Transparent,
     borderRadius: 5,
   },
   triangle: {
@@ -96,38 +100,48 @@ const styles = MediaQueryStyleSheet.create({
     fontSize: 25,
     fontWeight: 'bold',
   },
+  modalBackground: {
+    width: '100%',
+    height: '100%',
+  },
+  contentViewModal: {
+    flex: 1,
+    paddingTop: 20,
+    paddingBottom: 200,
+  },
   descriptionText: {
     fontSize: 16,
-    color: Colors.BitnationBlackAlphaColor,
+    color: Colors.white,
     fontWeight: 'bold',
     marginVertical: 20,
     textAlign: 'center',
+    marginHorizontal: 40,
   },
   modalMenuItem: {
     height: 48,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: Colors.BitnationLinkOrangeColor,
-    borderRadius: 20,
-    marginHorizontal: 20,
+    marginHorizontal: 40,
     marginTop: 10,
+    borderBottomColor: Colors.white,
   },
   modalMenuBackItem: {
-    height: 48,
-    flexDirection: 'row',
+    width: 50,
+    height: 50,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: Colors.BitnationLinkOrangeColor,
-    borderRadius: 20,
-    paddingHorizontal: 20,
     position: 'absolute',
     alignSelf: 'center',
-    bottom: 10,
+    bottom: 120,
+  },
+  lucyCloseIcon: {
+    width: '100%',
+    height: '100%',
   },
   modalMenuText: {
     fontSize: 16,
-    color: Colors.white,
+    color: Colors.BitnationActionColor,
     fontWeight: 'bold',
   },
 });
@@ -147,34 +161,39 @@ const PopOverModal = ({
     <TouchableOpacity style={styles.modalMoreContainer} activeOpacity={1} onPress={onCancel}>
       <TouchableOpacity style={styles.modalWrapContent} activeOpacity={1}>
         <View style={styles.modalContent}>
-          <View style={styles.headerView}>
-            <Text style={styles.headerText}>LUCY</Text>
-          </View>
-          {desText && <Text style={styles.descriptionText}>{desText}</Text>}
-          {
-              options.map(option => (
-                <TouchableOpacity
-                  style={styles.modalMenuItem}
-                  onPress={() => {
-                    // onCancel();
-                    setTimeout(() => {
-                      option.onPress();
-                    }, 200);
-                  }}
-                  key={option.text}
-                >
-                  <Text style={styles.modalMenuText}>{option.text}</Text>
-                </TouchableOpacity>
-              ))
-            }
-          <TouchableOpacity
-            style={styles.modalMenuBackItem}
-            onPress={onCancel}
+          <ImageBackground
+            style={styles.modalBackground}
+            source={AssetsImages.lucyModalBackground}
+            resizeMode='stretch'
           >
-            <Text style={styles.modalMenuText}>Close</Text>
-          </TouchableOpacity>
+            <View style={styles.contentViewModal}>
+              {desText && <Text style={styles.descriptionText}>{desText}</Text>}
+
+              {
+                  options.map((option, index) => (
+                    <TouchableOpacity
+                      style={[styles.modalMenuItem, { borderBottomWidth: index === options.length - 1 ? 0 : 3 }]}
+                      onPress={() => {
+                        // onCancel();
+                        setTimeout(() => {
+                          option.onPress();
+                        }, 200);
+                      }}
+                      key={option.text}
+                    >
+                      <Text style={styles.modalMenuText}>{option.text}</Text>
+                    </TouchableOpacity>
+                  ))
+                }
+              <TouchableOpacity
+                style={styles.modalMenuBackItem}
+                onPress={onCancel}
+              >
+                <Image source={AssetsImages.lucyModalClose} style={styles.lucyCloseIcon} />
+              </TouchableOpacity>
+            </View>
+          </ImageBackground>
         </View>
-        <View style={styles.triangle} />
       </TouchableOpacity>
       <LucyButton style={styles.lucyButtonStyle} onPress={onCancel} />
     </TouchableOpacity>

@@ -191,10 +191,10 @@ class NationsScreen extends NavigatorComponent<
         <PopOverModal
           visible={this.state.showModal === LUCY_MODAL_KEY}
           onCancel={this.dismissModal}
-          desText='How can I help you with nations?'
+          desText='You’re in the post-Westphalian future of Nations! Here’s what you can do here!'
           options={[
             {
-              text: 'Create a New Nation',
+              text: 'Start a new Nation',
               onPress: () => {
                 if (_.isEmpty(this.props.wallets)) {
                   this.showCreatePrivateKeyAlert();
@@ -205,11 +205,11 @@ class NationsScreen extends NavigatorComponent<
               },
             },
             {
-              text: 'Report a Nation',
+              text: 'Join a Nation',
               onPress: () => {},
             },
             {
-              text: 'Help',
+              text: 'Report a Nation',
               onPress: () => {},
             },
           ]}

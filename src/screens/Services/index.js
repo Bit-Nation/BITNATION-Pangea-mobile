@@ -237,6 +237,7 @@ class ServicesScreen extends NavigatorComponent<
                 buttonTitle='USE DAPPS'
                 subTitleTable='SIMILAR DAPPS'
                 list={dAppData}
+                onPressMainButton={() => this.props.navigator.push(screen('DOCUMENTS_LIST_SCREEN'))}
               />
             </View>
             <View tabLabel='CONTRACTS'>
@@ -269,14 +270,27 @@ class ServicesScreen extends NavigatorComponent<
         <PopOverModal
           visible={this.state.showModal === LUCY_MODAL_KEY}
           onCancel={this.dismissModal}
+          desText='Tailor make your own governance system through choosing dapps, contracts, services and products!'
           options={[
             {
-              text: 'Add a new Dapp, Contract, Service',
+              text: 'Start a new Nation',
+              onPress: () => {},
+            },
+            {
+              text: 'Report a Service',
               onPress: () => {},
             },
             {
               text: 'Help',
-              onPress: () => {},
+              onPress: () => {
+                this.dismissModal();
+                this.props.navigator.push({
+                  ...screen('CHAT_SCREEN'),
+                  passProps: {
+                    isBot: true,
+                  },
+                });
+              },
             },
           ]}
         />
