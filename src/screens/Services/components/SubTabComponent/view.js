@@ -10,6 +10,30 @@ import styles from './styles';
 
 type Props = {
   /**
+   * @desc Object save item info
+   */
+  selectedItem: any,
+  /**
+   * @desc Title of button
+   */
+  buttonTitle: string,
+  /**
+   * @desc SubTitle of table
+   */
+  subTitleTable: string,
+  /**
+   * @desc Function press item
+   */
+  onPressItem: (item: any) => {},
+  /**
+   * @desc Function press main button tab
+   */
+  onPressMainButton: (obj: any) => {},
+  /**
+   * @desc Function map element
+   */
+  onRef: () => {},
+  /**
    * @desc Url of Image
    */
   uri: string,

@@ -89,11 +89,11 @@ type State = {
      * @desc Stores the ETH Address
      */
     ethAddress?: string,
-    /**
-      * @desc Name of the modal to be shown
-      */
-    showModal: string,
   },
+  /**
+  * @desc Name of the modal to be shown
+  */
+  showModal: string,
 };
 
 class ServicesScreen extends NavigatorComponent<
@@ -123,6 +123,7 @@ class ServicesScreen extends NavigatorComponent<
         visible: false,
         ethAddress: '',
       },
+      showModal: '',
     };
     this.props.updateWalletList();
   }
@@ -278,11 +279,11 @@ class ServicesScreen extends NavigatorComponent<
           options={[
             {
               text: 'Start a new Nation',
-              onPress: () => {},
+              onPress: () => { },
             },
             {
               text: 'Report a Service',
-              onPress: () => {},
+              onPress: () => { },
             },
             {
               text: 'Help',

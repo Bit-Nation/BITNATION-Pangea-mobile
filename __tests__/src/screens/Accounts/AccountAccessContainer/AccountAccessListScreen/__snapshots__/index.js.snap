@@ -42,15 +42,12 @@ ShallowWrapper {
           style={undefined}
         />,
         <Image
-          source={
-            Object {
-              "testUri": "../../../src/assets/images/BitnationCover.jpg",
-            }
-          }
+          source={1}
           style={
             Object {
+              "alignSelf": "center",
               "height": 300,
-              "width": 750,
+              "width": 300,
             }
           }
         />,
@@ -77,27 +74,35 @@ ShallowWrapper {
         <View
           style={
             Object {
-              "borderWidth": 0,
+              "backgroundColor": "rgba(255,255,255,0.45)",
               "marginBottom": 40,
               "marginTop": 10,
+              "paddingVertical": 15,
             }
           }
         >
           <Styled(Button)
             block={true}
             onPress={undefined}
-            rounded={true}
             style={
               Object {
                 "alignSelf": "center",
-                "backgroundColor": "#FF8B00",
-                "borderColor": "#FF8B00",
-                "width": 300,
+                "backgroundColor": "transparent",
+                "borderBottomWidth": 2,
+                "borderColor": "white",
+                "width": "80%",
               }
             }
             virtual={undefined}
           >
             <Styled(Text)
+              style={
+                Object {
+                  "color": "#fff",
+                  "fontSize": 20,
+                  "fontWeight": "bold",
+                }
+              }
               virtual={undefined}
             >
               RESTORE ACCOUNT
@@ -105,22 +110,24 @@ ShallowWrapper {
           </Styled(Button)>
           <Styled(Button)
             block={true}
-            bordered={true}
             onPress={undefined}
-            rounded={true}
             style={
               Object {
                 "alignSelf": "center",
-                "backgroundColor": "#FF8B00",
+                "backgroundColor": "transparent",
                 "borderColor": "#FF8B00",
-                "marginTop": 15,
-                "width": 300,
               }
             }
             virtual={undefined}
-            warning={true}
           >
             <Styled(Text)
+              style={
+                Object {
+                  "color": "#fff",
+                  "fontSize": 20,
+                  "fontWeight": "bold",
+                }
+              }
               virtual={undefined}
             >
               NEW ACCOUNT
@@ -157,12 +164,11 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "source": Object {
-            "testUri": "../../../src/assets/images/BitnationCover.jpg",
-          },
+          "source": 1,
           "style": Object {
+            "alignSelf": "center",
             "height": 300,
-            "width": 750,
+            "width": 300,
           },
         },
         "ref": null,
@@ -204,18 +210,25 @@ ShallowWrapper {
             <Styled(Button)
               block={true}
               onPress={undefined}
-              rounded={true}
               style={
                 Object {
                   "alignSelf": "center",
-                  "backgroundColor": "#FF8B00",
-                  "borderColor": "#FF8B00",
-                  "width": 300,
+                  "backgroundColor": "transparent",
+                  "borderBottomWidth": 2,
+                  "borderColor": "white",
+                  "width": "80%",
                 }
               }
               virtual={undefined}
             >
               <Styled(Text)
+                style={
+                  Object {
+                    "color": "#fff",
+                    "fontSize": 20,
+                    "fontWeight": "bold",
+                  }
+                }
                 virtual={undefined}
               >
                 RESTORE ACCOUNT
@@ -223,22 +236,24 @@ ShallowWrapper {
             </Styled(Button)>,
             <Styled(Button)
               block={true}
-              bordered={true}
               onPress={undefined}
-              rounded={true}
               style={
                 Object {
                   "alignSelf": "center",
-                  "backgroundColor": "#FF8B00",
+                  "backgroundColor": "transparent",
                   "borderColor": "#FF8B00",
-                  "marginTop": 15,
-                  "width": 300,
                 }
               }
               virtual={undefined}
-              warning={true}
             >
               <Styled(Text)
+                style={
+                  Object {
+                    "color": "#fff",
+                    "fontSize": 20,
+                    "fontWeight": "bold",
+                  }
+                }
                 virtual={undefined}
               >
                 NEW ACCOUNT
@@ -249,9 +264,10 @@ ShallowWrapper {
             />,
           ],
           "style": Object {
-            "borderWidth": 0,
+            "backgroundColor": "rgba(255,255,255,0.45)",
             "marginBottom": 40,
             "marginTop": 10,
+            "paddingVertical": 15,
           },
         },
         "ref": null,
@@ -263,17 +279,24 @@ ShallowWrapper {
             "props": Object {
               "block": true,
               "children": <Styled(Text)
+                style={
+                  Object {
+                    "color": "#fff",
+                    "fontSize": 20,
+                    "fontWeight": "bold",
+                  }
+                }
                 virtual={undefined}
               >
                 RESTORE ACCOUNT
               </Styled(Text)>,
               "onPress": undefined,
-              "rounded": true,
               "style": Object {
                 "alignSelf": "center",
-                "backgroundColor": "#FF8B00",
-                "borderColor": "#FF8B00",
-                "width": 300,
+                "backgroundColor": "transparent",
+                "borderBottomWidth": 2,
+                "borderColor": "white",
+                "width": "80%",
               },
               "virtual": undefined,
             },
@@ -284,6 +307,11 @@ ShallowWrapper {
               "nodeType": "class",
               "props": Object {
                 "children": "RESTORE ACCOUNT",
+                "style": Object {
+                  "color": "#fff",
+                  "fontSize": 20,
+                  "fontWeight": "bold",
+                },
                 "virtual": undefined,
               },
               "ref": null,
@@ -298,23 +326,25 @@ ShallowWrapper {
             "nodeType": "class",
             "props": Object {
               "block": true,
-              "bordered": true,
               "children": <Styled(Text)
+                style={
+                  Object {
+                    "color": "#fff",
+                    "fontSize": 20,
+                    "fontWeight": "bold",
+                  }
+                }
                 virtual={undefined}
               >
                 NEW ACCOUNT
               </Styled(Text)>,
               "onPress": undefined,
-              "rounded": true,
               "style": Object {
                 "alignSelf": "center",
-                "backgroundColor": "#FF8B00",
+                "backgroundColor": "transparent",
                 "borderColor": "#FF8B00",
-                "marginTop": 15,
-                "width": 300,
               },
               "virtual": undefined,
-              "warning": true,
             },
             "ref": null,
             "rendered": Object {
@@ -323,6 +353,11 @@ ShallowWrapper {
               "nodeType": "class",
               "props": Object {
                 "children": "NEW ACCOUNT",
+                "style": Object {
+                  "color": "#fff",
+                  "fontSize": 20,
+                  "fontWeight": "bold",
+                },
                 "virtual": undefined,
               },
               "ref": null,
@@ -360,15 +395,12 @@ ShallowWrapper {
             style={undefined}
           />,
           <Image
-            source={
-              Object {
-                "testUri": "../../../src/assets/images/BitnationCover.jpg",
-              }
-            }
+            source={1}
             style={
               Object {
+                "alignSelf": "center",
                 "height": 300,
-                "width": 750,
+                "width": 300,
               }
             }
           />,
@@ -395,27 +427,35 @@ ShallowWrapper {
           <View
             style={
               Object {
-                "borderWidth": 0,
+                "backgroundColor": "rgba(255,255,255,0.45)",
                 "marginBottom": 40,
                 "marginTop": 10,
+                "paddingVertical": 15,
               }
             }
           >
             <Styled(Button)
               block={true}
               onPress={undefined}
-              rounded={true}
               style={
                 Object {
                   "alignSelf": "center",
-                  "backgroundColor": "#FF8B00",
-                  "borderColor": "#FF8B00",
-                  "width": 300,
+                  "backgroundColor": "transparent",
+                  "borderBottomWidth": 2,
+                  "borderColor": "white",
+                  "width": "80%",
                 }
               }
               virtual={undefined}
             >
               <Styled(Text)
+                style={
+                  Object {
+                    "color": "#fff",
+                    "fontSize": 20,
+                    "fontWeight": "bold",
+                  }
+                }
                 virtual={undefined}
               >
                 RESTORE ACCOUNT
@@ -423,22 +463,24 @@ ShallowWrapper {
             </Styled(Button)>
             <Styled(Button)
               block={true}
-              bordered={true}
               onPress={undefined}
-              rounded={true}
               style={
                 Object {
                   "alignSelf": "center",
-                  "backgroundColor": "#FF8B00",
+                  "backgroundColor": "transparent",
                   "borderColor": "#FF8B00",
-                  "marginTop": 15,
-                  "width": 300,
                 }
               }
               virtual={undefined}
-              warning={true}
             >
               <Styled(Text)
+                style={
+                  Object {
+                    "color": "#fff",
+                    "fontSize": 20,
+                    "fontWeight": "bold",
+                  }
+                }
                 virtual={undefined}
               >
                 NEW ACCOUNT
@@ -475,12 +517,11 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "source": Object {
-              "testUri": "../../../src/assets/images/BitnationCover.jpg",
-            },
+            "source": 1,
             "style": Object {
+              "alignSelf": "center",
               "height": 300,
-              "width": 750,
+              "width": 300,
             },
           },
           "ref": null,
@@ -522,18 +563,25 @@ ShallowWrapper {
               <Styled(Button)
                 block={true}
                 onPress={undefined}
-                rounded={true}
                 style={
                   Object {
                     "alignSelf": "center",
-                    "backgroundColor": "#FF8B00",
-                    "borderColor": "#FF8B00",
-                    "width": 300,
+                    "backgroundColor": "transparent",
+                    "borderBottomWidth": 2,
+                    "borderColor": "white",
+                    "width": "80%",
                   }
                 }
                 virtual={undefined}
               >
                 <Styled(Text)
+                  style={
+                    Object {
+                      "color": "#fff",
+                      "fontSize": 20,
+                      "fontWeight": "bold",
+                    }
+                  }
                   virtual={undefined}
                 >
                   RESTORE ACCOUNT
@@ -541,22 +589,24 @@ ShallowWrapper {
               </Styled(Button)>,
               <Styled(Button)
                 block={true}
-                bordered={true}
                 onPress={undefined}
-                rounded={true}
                 style={
                   Object {
                     "alignSelf": "center",
-                    "backgroundColor": "#FF8B00",
+                    "backgroundColor": "transparent",
                     "borderColor": "#FF8B00",
-                    "marginTop": 15,
-                    "width": 300,
                   }
                 }
                 virtual={undefined}
-                warning={true}
               >
                 <Styled(Text)
+                  style={
+                    Object {
+                      "color": "#fff",
+                      "fontSize": 20,
+                      "fontWeight": "bold",
+                    }
+                  }
                   virtual={undefined}
                 >
                   NEW ACCOUNT
@@ -567,9 +617,10 @@ ShallowWrapper {
               />,
             ],
             "style": Object {
-              "borderWidth": 0,
+              "backgroundColor": "rgba(255,255,255,0.45)",
               "marginBottom": 40,
               "marginTop": 10,
+              "paddingVertical": 15,
             },
           },
           "ref": null,
@@ -581,17 +632,24 @@ ShallowWrapper {
               "props": Object {
                 "block": true,
                 "children": <Styled(Text)
+                  style={
+                    Object {
+                      "color": "#fff",
+                      "fontSize": 20,
+                      "fontWeight": "bold",
+                    }
+                  }
                   virtual={undefined}
                 >
                   RESTORE ACCOUNT
                 </Styled(Text)>,
                 "onPress": undefined,
-                "rounded": true,
                 "style": Object {
                   "alignSelf": "center",
-                  "backgroundColor": "#FF8B00",
-                  "borderColor": "#FF8B00",
-                  "width": 300,
+                  "backgroundColor": "transparent",
+                  "borderBottomWidth": 2,
+                  "borderColor": "white",
+                  "width": "80%",
                 },
                 "virtual": undefined,
               },
@@ -602,6 +660,11 @@ ShallowWrapper {
                 "nodeType": "class",
                 "props": Object {
                   "children": "RESTORE ACCOUNT",
+                  "style": Object {
+                    "color": "#fff",
+                    "fontSize": 20,
+                    "fontWeight": "bold",
+                  },
                   "virtual": undefined,
                 },
                 "ref": null,
@@ -616,23 +679,25 @@ ShallowWrapper {
               "nodeType": "class",
               "props": Object {
                 "block": true,
-                "bordered": true,
                 "children": <Styled(Text)
+                  style={
+                    Object {
+                      "color": "#fff",
+                      "fontSize": 20,
+                      "fontWeight": "bold",
+                    }
+                  }
                   virtual={undefined}
                 >
                   NEW ACCOUNT
                 </Styled(Text)>,
                 "onPress": undefined,
-                "rounded": true,
                 "style": Object {
                   "alignSelf": "center",
-                  "backgroundColor": "#FF8B00",
+                  "backgroundColor": "transparent",
                   "borderColor": "#FF8B00",
-                  "marginTop": 15,
-                  "width": 300,
                 },
                 "virtual": undefined,
-                "warning": true,
               },
               "ref": null,
               "rendered": Object {
@@ -641,6 +706,11 @@ ShallowWrapper {
                 "nodeType": "class",
                 "props": Object {
                   "children": "NEW ACCOUNT",
+                  "style": Object {
+                    "color": "#fff",
+                    "fontSize": 20,
+                    "fontWeight": "bold",
+                  },
                   "virtual": undefined,
                 },
                 "ref": null,

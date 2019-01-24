@@ -108,7 +108,7 @@ ShallowWrapper {
               onPress={[Function]}
               style={
                 Object {
-                  "backgroundColor": "#FB8C25",
+                  "backgroundColor": "transparent",
                   "borderRadius": 40,
                   "height": 20,
                 }
@@ -116,6 +116,11 @@ ShallowWrapper {
               virtual={undefined}
             >
               <Styled(Text)
+                style={
+                  Object {
+                    "color": "#FB8C25",
+                  }
+                }
                 virtual={undefined}
               >
                 Send
@@ -125,7 +130,7 @@ ShallowWrapper {
               onPress={[Function]}
               style={
                 Object {
-                  "backgroundColor": "#FB8C25",
+                  "backgroundColor": "transparent",
                   "borderRadius": 40,
                   "height": 20,
                 }
@@ -133,6 +138,11 @@ ShallowWrapper {
               virtual={undefined}
             >
               <Styled(Text)
+                style={
+                  Object {
+                    "color": "#FB8C25",
+                  }
+                }
                 virtual={undefined}
               >
                 Receive
@@ -142,7 +152,7 @@ ShallowWrapper {
               onPress={[Function]}
               style={
                 Object {
-                  "backgroundColor": "#FB8C25",
+                  "backgroundColor": "transparent",
                   "borderRadius": 40,
                   "height": 20,
                 }
@@ -150,6 +160,11 @@ ShallowWrapper {
               virtual={undefined}
             >
               <Styled(Text)
+                style={
+                  Object {
+                    "color": "#FB8C25",
+                  }
+                }
                 virtual={undefined}
               >
                 Transactions
@@ -245,7 +260,7 @@ ShallowWrapper {
                 onPress={[Function]}
                 style={
                   Object {
-                    "backgroundColor": "#FB8C25",
+                    "backgroundColor": "transparent",
                     "borderRadius": 40,
                     "height": 20,
                   }
@@ -253,6 +268,11 @@ ShallowWrapper {
                 virtual={undefined}
               >
                 <Styled(Text)
+                  style={
+                    Object {
+                      "color": "#FB8C25",
+                    }
+                  }
                   virtual={undefined}
                 >
                   Send
@@ -262,7 +282,7 @@ ShallowWrapper {
                 onPress={[Function]}
                 style={
                   Object {
-                    "backgroundColor": "#FB8C25",
+                    "backgroundColor": "transparent",
                     "borderRadius": 40,
                     "height": 20,
                   }
@@ -270,6 +290,11 @@ ShallowWrapper {
                 virtual={undefined}
               >
                 <Styled(Text)
+                  style={
+                    Object {
+                      "color": "#FB8C25",
+                    }
+                  }
                   virtual={undefined}
                 >
                   Receive
@@ -279,7 +304,7 @@ ShallowWrapper {
                 onPress={[Function]}
                 style={
                   Object {
-                    "backgroundColor": "#FB8C25",
+                    "backgroundColor": "transparent",
                     "borderRadius": 40,
                     "height": 20,
                   }
@@ -287,6 +312,11 @@ ShallowWrapper {
                 virtual={undefined}
               >
                 <Styled(Text)
+                  style={
+                    Object {
+                      "color": "#FB8C25",
+                    }
+                  }
                   virtual={undefined}
                 >
                   Transactions
@@ -381,7 +411,7 @@ ShallowWrapper {
                   onPress={[Function]}
                   style={
                     Object {
-                      "backgroundColor": "#FB8C25",
+                      "backgroundColor": "transparent",
                       "borderRadius": 40,
                       "height": 20,
                     }
@@ -389,6 +419,11 @@ ShallowWrapper {
                   virtual={undefined}
                 >
                   <Styled(Text)
+                    style={
+                      Object {
+                        "color": "#FB8C25",
+                      }
+                    }
                     virtual={undefined}
                   >
                     Send
@@ -398,7 +433,7 @@ ShallowWrapper {
                   onPress={[Function]}
                   style={
                     Object {
-                      "backgroundColor": "#FB8C25",
+                      "backgroundColor": "transparent",
                       "borderRadius": 40,
                       "height": 20,
                     }
@@ -406,6 +441,11 @@ ShallowWrapper {
                   virtual={undefined}
                 >
                   <Styled(Text)
+                    style={
+                      Object {
+                        "color": "#FB8C25",
+                      }
+                    }
                     virtual={undefined}
                   >
                     Receive
@@ -415,7 +455,7 @@ ShallowWrapper {
                   onPress={[Function]}
                   style={
                     Object {
-                      "backgroundColor": "#FB8C25",
+                      "backgroundColor": "transparent",
                       "borderRadius": 40,
                       "height": 20,
                     }
@@ -423,6 +463,11 @@ ShallowWrapper {
                   virtual={undefined}
                 >
                   <Styled(Text)
+                    style={
+                      Object {
+                        "color": "#FB8C25",
+                      }
+                    }
                     virtual={undefined}
                   >
                     Transactions
@@ -508,7 +553,7 @@ ShallowWrapper {
                     onPress={[Function]}
                     style={
                       Object {
-                        "backgroundColor": "#FB8C25",
+                        "backgroundColor": "transparent",
                         "borderRadius": 40,
                         "height": 20,
                       }
@@ -516,6 +561,11 @@ ShallowWrapper {
                     virtual={undefined}
                   >
                     <Styled(Text)
+                      style={
+                        Object {
+                          "color": "#FB8C25",
+                        }
+                      }
                       virtual={undefined}
                     >
                       Send
@@ -525,7 +575,7 @@ ShallowWrapper {
                     onPress={[Function]}
                     style={
                       Object {
-                        "backgroundColor": "#FB8C25",
+                        "backgroundColor": "transparent",
                         "borderRadius": 40,
                         "height": 20,
                       }
@@ -533,6 +583,11 @@ ShallowWrapper {
                     virtual={undefined}
                   >
                     <Styled(Text)
+                      style={
+                        Object {
+                          "color": "#FB8C25",
+                        }
+                      }
                       virtual={undefined}
                     >
                       Receive
@@ -542,7 +597,7 @@ ShallowWrapper {
                     onPress={[Function]}
                     style={
                       Object {
-                        "backgroundColor": "#FB8C25",
+                        "backgroundColor": "transparent",
                         "borderRadius": 40,
                         "height": 20,
                       }
@@ -550,6 +605,11 @@ ShallowWrapper {
                     virtual={undefined}
                   >
                     <Styled(Text)
+                      style={
+                        Object {
+                          "color": "#FB8C25",
+                        }
+                      }
                       virtual={undefined}
                     >
                       Transactions
@@ -571,13 +631,18 @@ ShallowWrapper {
                   "nodeType": "class",
                   "props": Object {
                     "children": <Styled(Text)
+                      style={
+                        Object {
+                          "color": "#FB8C25",
+                        }
+                      }
                       virtual={undefined}
                     >
                       Send
                     </Styled(Text)>,
                     "onPress": [Function],
                     "style": Object {
-                      "backgroundColor": "#FB8C25",
+                      "backgroundColor": "transparent",
                       "borderRadius": 40,
                       "height": 20,
                     },
@@ -590,6 +655,9 @@ ShallowWrapper {
                     "nodeType": "class",
                     "props": Object {
                       "children": "Send",
+                      "style": Object {
+                        "color": "#FB8C25",
+                      },
                       "virtual": undefined,
                     },
                     "ref": null,
@@ -604,13 +672,18 @@ ShallowWrapper {
                   "nodeType": "class",
                   "props": Object {
                     "children": <Styled(Text)
+                      style={
+                        Object {
+                          "color": "#FB8C25",
+                        }
+                      }
                       virtual={undefined}
                     >
                       Receive
                     </Styled(Text)>,
                     "onPress": [Function],
                     "style": Object {
-                      "backgroundColor": "#FB8C25",
+                      "backgroundColor": "transparent",
                       "borderRadius": 40,
                       "height": 20,
                     },
@@ -623,6 +696,9 @@ ShallowWrapper {
                     "nodeType": "class",
                     "props": Object {
                       "children": "Receive",
+                      "style": Object {
+                        "color": "#FB8C25",
+                      },
                       "virtual": undefined,
                     },
                     "ref": null,
@@ -637,13 +713,18 @@ ShallowWrapper {
                   "nodeType": "class",
                   "props": Object {
                     "children": <Styled(Text)
+                      style={
+                        Object {
+                          "color": "#FB8C25",
+                        }
+                      }
                       virtual={undefined}
                     >
                       Transactions
                     </Styled(Text)>,
                     "onPress": [Function],
                     "style": Object {
-                      "backgroundColor": "#FB8C25",
+                      "backgroundColor": "transparent",
                       "borderRadius": 40,
                       "height": 20,
                     },
@@ -656,6 +737,9 @@ ShallowWrapper {
                     "nodeType": "class",
                     "props": Object {
                       "children": "Transactions",
+                      "style": Object {
+                        "color": "#FB8C25",
+                      },
                       "virtual": undefined,
                     },
                     "ref": null,
@@ -765,7 +849,7 @@ ShallowWrapper {
                 onPress={[Function]}
                 style={
                   Object {
-                    "backgroundColor": "#FB8C25",
+                    "backgroundColor": "transparent",
                     "borderRadius": 40,
                     "height": 20,
                   }
@@ -773,6 +857,11 @@ ShallowWrapper {
                 virtual={undefined}
               >
                 <Styled(Text)
+                  style={
+                    Object {
+                      "color": "#FB8C25",
+                    }
+                  }
                   virtual={undefined}
                 >
                   Send
@@ -782,7 +871,7 @@ ShallowWrapper {
                 onPress={[Function]}
                 style={
                   Object {
-                    "backgroundColor": "#FB8C25",
+                    "backgroundColor": "transparent",
                     "borderRadius": 40,
                     "height": 20,
                   }
@@ -790,6 +879,11 @@ ShallowWrapper {
                 virtual={undefined}
               >
                 <Styled(Text)
+                  style={
+                    Object {
+                      "color": "#FB8C25",
+                    }
+                  }
                   virtual={undefined}
                 >
                   Receive
@@ -799,7 +893,7 @@ ShallowWrapper {
                 onPress={[Function]}
                 style={
                   Object {
-                    "backgroundColor": "#FB8C25",
+                    "backgroundColor": "transparent",
                     "borderRadius": 40,
                     "height": 20,
                   }
@@ -807,6 +901,11 @@ ShallowWrapper {
                 virtual={undefined}
               >
                 <Styled(Text)
+                  style={
+                    Object {
+                      "color": "#FB8C25",
+                    }
+                  }
                   virtual={undefined}
                 >
                   Transactions
@@ -902,7 +1001,7 @@ ShallowWrapper {
                   onPress={[Function]}
                   style={
                     Object {
-                      "backgroundColor": "#FB8C25",
+                      "backgroundColor": "transparent",
                       "borderRadius": 40,
                       "height": 20,
                     }
@@ -910,6 +1009,11 @@ ShallowWrapper {
                   virtual={undefined}
                 >
                   <Styled(Text)
+                    style={
+                      Object {
+                        "color": "#FB8C25",
+                      }
+                    }
                     virtual={undefined}
                   >
                     Send
@@ -919,7 +1023,7 @@ ShallowWrapper {
                   onPress={[Function]}
                   style={
                     Object {
-                      "backgroundColor": "#FB8C25",
+                      "backgroundColor": "transparent",
                       "borderRadius": 40,
                       "height": 20,
                     }
@@ -927,6 +1031,11 @@ ShallowWrapper {
                   virtual={undefined}
                 >
                   <Styled(Text)
+                    style={
+                      Object {
+                        "color": "#FB8C25",
+                      }
+                    }
                     virtual={undefined}
                   >
                     Receive
@@ -936,7 +1045,7 @@ ShallowWrapper {
                   onPress={[Function]}
                   style={
                     Object {
-                      "backgroundColor": "#FB8C25",
+                      "backgroundColor": "transparent",
                       "borderRadius": 40,
                       "height": 20,
                     }
@@ -944,6 +1053,11 @@ ShallowWrapper {
                   virtual={undefined}
                 >
                   <Styled(Text)
+                    style={
+                      Object {
+                        "color": "#FB8C25",
+                      }
+                    }
                     virtual={undefined}
                   >
                     Transactions
@@ -1038,7 +1152,7 @@ ShallowWrapper {
                     onPress={[Function]}
                     style={
                       Object {
-                        "backgroundColor": "#FB8C25",
+                        "backgroundColor": "transparent",
                         "borderRadius": 40,
                         "height": 20,
                       }
@@ -1046,6 +1160,11 @@ ShallowWrapper {
                     virtual={undefined}
                   >
                     <Styled(Text)
+                      style={
+                        Object {
+                          "color": "#FB8C25",
+                        }
+                      }
                       virtual={undefined}
                     >
                       Send
@@ -1055,7 +1174,7 @@ ShallowWrapper {
                     onPress={[Function]}
                     style={
                       Object {
-                        "backgroundColor": "#FB8C25",
+                        "backgroundColor": "transparent",
                         "borderRadius": 40,
                         "height": 20,
                       }
@@ -1063,6 +1182,11 @@ ShallowWrapper {
                     virtual={undefined}
                   >
                     <Styled(Text)
+                      style={
+                        Object {
+                          "color": "#FB8C25",
+                        }
+                      }
                       virtual={undefined}
                     >
                       Receive
@@ -1072,7 +1196,7 @@ ShallowWrapper {
                     onPress={[Function]}
                     style={
                       Object {
-                        "backgroundColor": "#FB8C25",
+                        "backgroundColor": "transparent",
                         "borderRadius": 40,
                         "height": 20,
                       }
@@ -1080,6 +1204,11 @@ ShallowWrapper {
                     virtual={undefined}
                   >
                     <Styled(Text)
+                      style={
+                        Object {
+                          "color": "#FB8C25",
+                        }
+                      }
                       virtual={undefined}
                     >
                       Transactions
@@ -1165,7 +1294,7 @@ ShallowWrapper {
                       onPress={[Function]}
                       style={
                         Object {
-                          "backgroundColor": "#FB8C25",
+                          "backgroundColor": "transparent",
                           "borderRadius": 40,
                           "height": 20,
                         }
@@ -1173,6 +1302,11 @@ ShallowWrapper {
                       virtual={undefined}
                     >
                       <Styled(Text)
+                        style={
+                          Object {
+                            "color": "#FB8C25",
+                          }
+                        }
                         virtual={undefined}
                       >
                         Send
@@ -1182,7 +1316,7 @@ ShallowWrapper {
                       onPress={[Function]}
                       style={
                         Object {
-                          "backgroundColor": "#FB8C25",
+                          "backgroundColor": "transparent",
                           "borderRadius": 40,
                           "height": 20,
                         }
@@ -1190,6 +1324,11 @@ ShallowWrapper {
                       virtual={undefined}
                     >
                       <Styled(Text)
+                        style={
+                          Object {
+                            "color": "#FB8C25",
+                          }
+                        }
                         virtual={undefined}
                       >
                         Receive
@@ -1199,7 +1338,7 @@ ShallowWrapper {
                       onPress={[Function]}
                       style={
                         Object {
-                          "backgroundColor": "#FB8C25",
+                          "backgroundColor": "transparent",
                           "borderRadius": 40,
                           "height": 20,
                         }
@@ -1207,6 +1346,11 @@ ShallowWrapper {
                       virtual={undefined}
                     >
                       <Styled(Text)
+                        style={
+                          Object {
+                            "color": "#FB8C25",
+                          }
+                        }
                         virtual={undefined}
                       >
                         Transactions
@@ -1228,13 +1372,18 @@ ShallowWrapper {
                     "nodeType": "class",
                     "props": Object {
                       "children": <Styled(Text)
+                        style={
+                          Object {
+                            "color": "#FB8C25",
+                          }
+                        }
                         virtual={undefined}
                       >
                         Send
                       </Styled(Text)>,
                       "onPress": [Function],
                       "style": Object {
-                        "backgroundColor": "#FB8C25",
+                        "backgroundColor": "transparent",
                         "borderRadius": 40,
                         "height": 20,
                       },
@@ -1247,6 +1396,9 @@ ShallowWrapper {
                       "nodeType": "class",
                       "props": Object {
                         "children": "Send",
+                        "style": Object {
+                          "color": "#FB8C25",
+                        },
                         "virtual": undefined,
                       },
                       "ref": null,
@@ -1261,13 +1413,18 @@ ShallowWrapper {
                     "nodeType": "class",
                     "props": Object {
                       "children": <Styled(Text)
+                        style={
+                          Object {
+                            "color": "#FB8C25",
+                          }
+                        }
                         virtual={undefined}
                       >
                         Receive
                       </Styled(Text)>,
                       "onPress": [Function],
                       "style": Object {
-                        "backgroundColor": "#FB8C25",
+                        "backgroundColor": "transparent",
                         "borderRadius": 40,
                         "height": 20,
                       },
@@ -1280,6 +1437,9 @@ ShallowWrapper {
                       "nodeType": "class",
                       "props": Object {
                         "children": "Receive",
+                        "style": Object {
+                          "color": "#FB8C25",
+                        },
                         "virtual": undefined,
                       },
                       "ref": null,
@@ -1294,13 +1454,18 @@ ShallowWrapper {
                     "nodeType": "class",
                     "props": Object {
                       "children": <Styled(Text)
+                        style={
+                          Object {
+                            "color": "#FB8C25",
+                          }
+                        }
                         virtual={undefined}
                       >
                         Transactions
                       </Styled(Text)>,
                       "onPress": [Function],
                       "style": Object {
-                        "backgroundColor": "#FB8C25",
+                        "backgroundColor": "transparent",
                         "borderRadius": 40,
                         "height": 20,
                       },
@@ -1313,6 +1478,9 @@ ShallowWrapper {
                       "nodeType": "class",
                       "props": Object {
                         "children": "Transactions",
+                        "style": Object {
+                          "color": "#FB8C25",
+                        },
                         "virtual": undefined,
                       },
                       "ref": null,
@@ -1478,7 +1646,7 @@ exports[`WalletCard component tests Rendering 1`] = `
             Object {
               "alignItems": "center",
               "alignSelf": "flex-start",
-              "backgroundColor": "#FB8C25",
+              "backgroundColor": "transparent",
               "borderBottomWidth": null,
               "borderColor": "#007aff",
               "borderLeftWidth": null,
@@ -1507,16 +1675,21 @@ exports[`WalletCard component tests Rendering 1`] = `
             allowFontScaling={true}
             ellipsizeMode="tail"
             style={
-              Object {
-                "backgroundColor": "transparent",
-                "color": "#fff",
-                "fontFamily": "System",
-                "fontSize": 16.5,
-                "marginLeft": 0,
-                "marginRight": 0,
-                "paddingLeft": 16,
-                "paddingRight": 16,
-              }
+              Array [
+                Object {
+                  "backgroundColor": "transparent",
+                  "color": "#fff",
+                  "fontFamily": "System",
+                  "fontSize": 16.5,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "paddingLeft": 16,
+                  "paddingRight": 16,
+                },
+                Object {
+                  "color": "#FB8C25",
+                },
+              ]
             }
             uppercase={false}
             virtual={undefined}
@@ -1545,7 +1718,7 @@ exports[`WalletCard component tests Rendering 1`] = `
             Object {
               "alignItems": "center",
               "alignSelf": "flex-start",
-              "backgroundColor": "#FB8C25",
+              "backgroundColor": "transparent",
               "borderBottomWidth": null,
               "borderColor": "#007aff",
               "borderLeftWidth": null,
@@ -1574,16 +1747,21 @@ exports[`WalletCard component tests Rendering 1`] = `
             allowFontScaling={true}
             ellipsizeMode="tail"
             style={
-              Object {
-                "backgroundColor": "transparent",
-                "color": "#fff",
-                "fontFamily": "System",
-                "fontSize": 16.5,
-                "marginLeft": 0,
-                "marginRight": 0,
-                "paddingLeft": 16,
-                "paddingRight": 16,
-              }
+              Array [
+                Object {
+                  "backgroundColor": "transparent",
+                  "color": "#fff",
+                  "fontFamily": "System",
+                  "fontSize": 16.5,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "paddingLeft": 16,
+                  "paddingRight": 16,
+                },
+                Object {
+                  "color": "#FB8C25",
+                },
+              ]
             }
             uppercase={false}
             virtual={undefined}
@@ -1612,7 +1790,7 @@ exports[`WalletCard component tests Rendering 1`] = `
             Object {
               "alignItems": "center",
               "alignSelf": "flex-start",
-              "backgroundColor": "#FB8C25",
+              "backgroundColor": "transparent",
               "borderBottomWidth": null,
               "borderColor": "#007aff",
               "borderLeftWidth": null,
@@ -1641,16 +1819,21 @@ exports[`WalletCard component tests Rendering 1`] = `
             allowFontScaling={true}
             ellipsizeMode="tail"
             style={
-              Object {
-                "backgroundColor": "transparent",
-                "color": "#fff",
-                "fontFamily": "System",
-                "fontSize": 16.5,
-                "marginLeft": 0,
-                "marginRight": 0,
-                "paddingLeft": 16,
-                "paddingRight": 16,
-              }
+              Array [
+                Object {
+                  "backgroundColor": "transparent",
+                  "color": "#fff",
+                  "fontFamily": "System",
+                  "fontSize": 16.5,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "paddingLeft": 16,
+                  "paddingRight": 16,
+                },
+                Object {
+                  "color": "#FB8C25",
+                },
+              ]
             }
             uppercase={false}
             virtual={undefined}

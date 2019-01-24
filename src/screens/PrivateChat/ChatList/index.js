@@ -259,14 +259,15 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
       this.buildChatName(chat)
         .toUpperCase()
         .charAt(0));
+    const lucyBot = [{
+      id: '0',
+      name: 'Lucy',
+      members: [],
+      messages: [],
+      unreadMessages: null,
+    }];
     const mergerBotGroup = {
-      0: [{
-        id: '0',
-        name: 'Lucy',
-        members: [],
-        messages: [],
-        unreadMessages: null,
-      }],
+      lucy: lucyBot,
       ...groups,
     };
     const sections = _.map(mergerBotGroup, (group, key) => ({

@@ -74,6 +74,7 @@ class NationsScreen extends NavigatorComponent<
 
     this.state = {
       isAppear: false,
+      showModal: '',
     };
 
     this.props.navigator.setButtons({
@@ -173,6 +174,7 @@ class NationsScreen extends NavigatorComponent<
           <View tabLabel='NEW' style={styles.bodyContainer}>
             <NationsListScreen
               onSelectItem={this.onSelectItem}
+              isPopular={false}
               {...this.props}
             />
           </View>
