@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, Image, TouchableOpacity, Share } from 'react-native';
 import { connect } from 'react-redux';
-import i18next from 'i18next';
 import { Button, Text } from 'native-base';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import i18n from '../../global/i18n';

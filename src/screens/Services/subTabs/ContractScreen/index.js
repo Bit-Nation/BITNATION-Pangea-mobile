@@ -1,9 +1,8 @@
-import { Clipboard, Alert } from 'react-native';
+import { Share } from 'react-native';
 import { compose, withHandlers } from 'recompose';
 import SubTabComponent from '../../components/SubTabComponent/view';
 import withSubTabHOC from '../../components/SubTabComponent/index';
 import { errorAlert } from '../../../../global/alerts';
-import i18n from '../../../../global/i18n';
 
 export default compose(
   withSubTabHOC,
@@ -12,9 +11,9 @@ export default compose(
       try {
         const response = await fetch(uri);
         const text = await response.text();
-
-        Alert.alert(i18n.t('screens.govMarket.clipboardAlert'));
-        Clipboard.setString(text);
+        Share.share({
+          message: text || '',
+        });
       } catch (error) {
         errorAlert(error);
       }

@@ -5,7 +5,7 @@ import { View, Text, Image, TouchableOpacity } from 'react-native';
 
 import styles from './styles';
 
-type Props = {
+export type GovMarketItemProps = {
   /**
    * @desc Url of Image
    */
@@ -33,7 +33,7 @@ type Props = {
 
 const GovMarketItem = ({
   uri, description, title, subTitle, onPress,
-}: Props) => (
+}: GovMarketItemProps) => (
   <TouchableOpacity onPress={onPress}>
     <View style={styles.container}>
       <Image source={{ uri }} style={styles.avatarStyle} />

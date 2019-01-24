@@ -1,23 +1,15 @@
-import { Clipboard, Alert } from 'react-native';
-import { compose, withHandlers } from 'recompose';
+
+import { compose, withHandlers, nest, withState } from 'recompose';
 import SubTabComponent from '../../components/SubTabComponent/view';
 import withSubTabHOC from '../../components/SubTabComponent/index';
-import { errorAlert } from '../../../../global/alerts';
-import i18n from '../../../../global/i18n';
+import webView from '../../components/WebViewModal/view';
 
 export default compose(
   withSubTabHOC,
+  withState('isShowWebViewModal', 'setIsShowWebViewModal', false),
   withHandlers({
-    onPressMainButton: () => async ({ uri }) => {
-      try {
-        const response = await fetch(uri);
-        const text = await response.text();
-
-        Alert.alert(i18n.t('screens.govMarket.clipboardAlert'));
-        Clipboard.setString(text);
-      } catch (error) {
-        errorAlert(error);
-      }
+    onPressMainButton: ({ setIsShowWebViewModal }) => () => {
+      setIsShowWebViewModal(true);
     },
   }),
-)(SubTabComponent);
+)(nest(SubTabComponent, webView));

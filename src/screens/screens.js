@@ -29,7 +29,7 @@ import NationDetailsScreen from './NationDetailsContainer';
 import NationCreateScreen from './NationCreateContainer';
 import SettingsScreen from './Settings/SettingsList';
 import SecuritySettingsScreen from './Settings/Security';
-import ServicesScreen from './Services';
+import ServicesScreen from './Services/index';
 import AccountsAccess from './Accounts/AccountAccessContainer';
 import ConfirmationContainer from './ConfirmationContainer';
 import EnterPasscodeScreen from './Passcode/EnterPasscodeContainer';

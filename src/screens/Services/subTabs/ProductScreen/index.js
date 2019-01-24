@@ -1,16 +1,15 @@
-import { WebView } from 'react-native';
-import { compose, withHandlers } from 'recompose';
+
+import { compose, withHandlers, nest, withState } from 'recompose';
 import SubTabComponent from '../../components/SubTabComponent/view';
 import withSubTabHOC from '../../components/SubTabComponent/index';
+import webView from '../../components/WebViewModal/view';
 
 export default compose(
   withSubTabHOC,
+  withState('isShowWebViewModal', 'setIsShowWebViewModal', false),
   withHandlers({
-    onPressMainButton: () => async ({ uri }) => {
-      <WebView
-        source={{ uri }}
-        style={{ marginTop: 20 }}
-      />;
+    onPressMainButton: ({ setIsShowWebViewModal }) => () => {
+      setIsShowWebViewModal(true);
     },
   }),
-)(SubTabComponent);
+)(nest(SubTabComponent, webView));

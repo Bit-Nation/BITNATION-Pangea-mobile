@@ -4,55 +4,36 @@ import React from 'react';
 import { View, ScrollView, Text, FlatList, TouchableOpacity } from 'react-native';
 import ProgressiveImage from '../../../../components/ProgressiveImage';
 import ViewMoreText from '../../../../components/ViewMoreText';
-import GovMarketItem from '../GovMarketItem';
+import GovMarketItem, { type GovMarketItemProps } from '../GovMarketItem';
 
 import styles from './styles';
 
 type Props = {
   /**
-   * @desc Object save item info
+   * @desc GovMarketItem
    */
-  selectedItem: any,
-  /**
-   * @desc Title of button
-   */
-  buttonTitle: string,
-  /**
-   * @desc SubTitle of table
-   */
-  subTitleTable: string,
-  /**
-   * @desc Function press item
-   */
-  onPressItem: (item: any) => {},
-  /**
-   * @desc Function press main button tab
-   */
-  onPressMainButton: (obj: any) => {},
-  /**
-   * @desc Function map element
-   */
-  onRef: () => {},
-  /**
-   * @desc Url of Image
-   */
-  uri: string,
+  selectedItem: GovMarketItemProps,
   /**
    * @desc Description to be displayed
    */
   description: string,
   /**
-   * @desc Title of tab
+   * @desc buttonTitle of tab
    */
-  title: string,
+  buttonTitle: string,
   /**
-   * @desc subTitle of tab
+   * @desc subTitleTable of tab
    */
-  subTitle: string,
+  subTitleTable: string,
   /**
    * @desc list similar
    */
-  list: Array<any>
+  list: Array<any>,
+
+  onPressItem: Function,
+  onPressMainButton: Function,
+  onRef: Object,
+  children: Object
 };
 
 /**
@@ -63,9 +44,10 @@ type Props = {
 const SubTabComponent = ({
   selectedItem: {
     uri, description, subTitle, title,
-  }, buttonTitle, subTitleTable, list, onPressItem, onRef, onPressMainButton,
+  }, buttonTitle, subTitleTable, list, onPressItem, onRef, onPressMainButton, children,
 }: Props) => (
   <ScrollView style={styles.container} ref={onRef}>
+    {children}
     <View style={styles.card}>
       <ProgressiveImage
         style={styles.headerBackground}
