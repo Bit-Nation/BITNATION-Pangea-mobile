@@ -22,7 +22,7 @@ import { getTabBarHeight } from '../../utils/normalizer';
 import colors from '../../global/colors';
 
 const { height } = Dimensions.get('window');
-const modalWrapContentHeight = height - (GlobalStyles.statusBar.height + 18 + getTabBarHeight() + 40);
+const modalWrapContentHeight = height - (GlobalStyles.statusBar.height + 18 + getTabBarHeight() + 80);
 
 type MenuOption = {
   text: string,
@@ -59,17 +59,23 @@ const styles = MediaQueryStyleSheet.create({
     backgroundColor: Colors.lightFade,
     paddingHorizontal: 10,
     paddingTop: GlobalStyles.statusBar.height + 8,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   modalWrapContent: {
     backgroundColor: Colors.Transparent,
     width: '100%',
     height: modalWrapContentHeight,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   modalContent: {
     width: '100%',
     height: '100%',
     backgroundColor: Colors.Transparent,
     borderRadius: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   triangle: {
     width: 0,
@@ -108,6 +114,8 @@ const styles = MediaQueryStyleSheet.create({
     flex: 1,
     paddingTop: 20,
     paddingBottom: 200,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   descriptionText: {
     fontSize: 16,
