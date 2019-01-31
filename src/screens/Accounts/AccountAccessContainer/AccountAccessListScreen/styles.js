@@ -29,6 +29,7 @@ const styles = MediaQueryStyleSheet.create({
     borderColor: colors.white,
     borderBottomWidth: 2,
     width: '80%',
+    elevation: 0,
   },
   image: {
     height: 300,
@@ -49,6 +50,7 @@ const styles = MediaQueryStyleSheet.create({
     backgroundColor: colors.Transparent,
     alignSelf: 'center',
     borderColor: '#FF8B00',
+    elevation: 0,
   },
 });
 

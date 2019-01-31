@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Image, TouchableOpacity, Share } from 'react-native';
+import { View, Image, ScrollView, TouchableOpacity, Share } from 'react-native';
 import { connect } from 'react-redux';
 import { Button, Text } from 'native-base';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -48,132 +48,135 @@ class MenuScreen extends NavigatorComponent {
 
     return (
       <View style={styles.containerMenu}>
-        <TouchableOpacity onPress={() => this.toggleDrawer()}>
-          <MaterialCommunityIcons
-            style={styles.closeButtonStyle}
-            name='close-circle-outline'
-          />
-        </TouchableOpacity>
-        <View style={styles.avatarView}>
-          <Image source={avatarSource} style={styles.avatarLarge} />
-          <Text style={styles.nameText}>
-            {account.name && account.name.trim()}
-          </Text>
-          <View style={styles.publicKey}>
-            <Text style={styles.publicKeyText}>
-              {publicKey && publicKey.trim()}
+        <ScrollView
+          contentContainerStyle={[styles.screenContainer, styles.noflex]}
+        >
+          <TouchableOpacity onPress={() => this.toggleDrawer()}>
+            <MaterialCommunityIcons
+              style={styles.closeButtonStyle}
+              name='close-circle-outline'
+            />
+          </TouchableOpacity>
+          <View style={styles.avatarView}>
+            <Image source={avatarSource} style={styles.avatarLarge} />
+            <Text style={styles.nameText}>
+              {account.name && account.name.trim()}
             </Text>
+            <View style={styles.publicKey}>
+              <Text style={styles.publicKeyText}>
+                {publicKey && publicKey.trim()}
+              </Text>
+            </View>
+            <Button
+              enabled
+              style={styles.actionButton}
+              onPress={this.sharePublicKey}
+            >
+              <Text style={styles.settingsText}>
+                {' '}
+                {i18n.t('sidemenu.copyaddress')}
+              </Text>
+            </Button>
           </View>
-          <Button
-            enabled
-            style={styles.actionButton}
-            onPress={this.sharePublicKey}
-          >
-            <Text style={styles.settingsText}>
-              {' '}
-              {i18n.t('sidemenu.copyaddress')}
-            </Text>
-          </Button>
-        </View>
-        <View style={styles.navigateButtonView}>
-          <TouchableOpacity
-            style={styles.navigateButtonStyle}
-            onPress={() => this.onPushScreen('PROFILE_SCREEN')}
-          >
-            <View style={styles.wrapIconView}>
-              <MaterialCommunityIcons
-                style={styles.iconStyle}
-                name='account-circle'
-              />
-            </View>
-            <View style={styles.wrapTextView}>
-              <Text style={styles.navigateTextStyle}>
-                {i18n.t('sidemenu.myprofile')}
-              </Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.navigateButtonStyle}
-            onPress={() => this.props.logout()}
-          >
-            <View style={styles.wrapIconView}>
-              <MaterialCommunityIcons
-                style={styles.iconStyle}
-                name='account-switch'
-              />
-            </View>
-            <View style={styles.wrapTextView}>
-              <Text style={styles.navigateTextStyle}>
-                {i18n.t('screens.settings.switchAccounts')}
-              </Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.navigateButtonStyle}
-            onPress={() => this.onPushScreen('WALLET_SCREEN')}
-          >
-            <View style={styles.wrapIconView}>
-              <MaterialCommunityIcons style={styles.iconStyle} name='wallet' />
-            </View>
-            <View style={styles.wrapTextView}>
-              <Text style={styles.navigateTextStyle}>
-                {i18n.t('sidemenu.wallet')}
-              </Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.navigateButtonStyle}
-            onPress={() => this.onPushScreen('SETTINGS_SCREEN')}
-          >
-            <View style={styles.wrapIconView}>
-              <MaterialCommunityIcons
-                style={styles.iconStyle}
-                name='settings-outline'
-              />
-            </View>
-            <View style={styles.wrapTextView}>
-              <Text style={styles.navigateTextStyle}>
-                {' '}
-                {i18n.t('sidemenu.settings')}
-              </Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.navigateButtonStyle}
-            onPress={() => this.onPushScreen('PROFILE_SCREEN')}
-            // onPress={this.changeLanguage}
-          >
-            <View style={styles.wrapIconView}>
-              <MaterialCommunityIcons
-                style={styles.iconStyle}
-                name='contact-mail'
-              />
-            </View>
-            <View style={styles.wrapTextView}>
-              <Text style={styles.navigateTextStyle}>
-                {' '}
-                {i18n.t('sidemenu.contact')}
-              </Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.navigateButtonStyle}
-            onPress={this.props.logout}
-          >
-            <View style={styles.wrapIconView}>
-              <MaterialCommunityIcons
-                style={styles.iconStyle}
-                name='logout-variant'
-              />
-            </View>
-            <View style={styles.wrapTextView}>
-              <Text style={styles.navigateTextStyle}>
-                {' '}
-                {i18n.t('sidemenu.logout')}
-              </Text>
-            </View>
-          </TouchableOpacity>
-        </View>
+          <View style={styles.navigateButtonView}>
+            <TouchableOpacity
+              style={styles.navigateButtonStyle}
+              onPress={() => this.onPushScreen('PROFILE_SCREEN')}
+            >
+              <View style={styles.wrapIconView}>
+                <MaterialCommunityIcons
+                  style={styles.iconStyle}
+                  name='account-circle'
+                />
+              </View>
+              <View style={styles.wrapTextView}>
+                <Text style={styles.navigateTextStyle}>
+                  {i18n.t('sidemenu.myprofile')}
+                </Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.navigateButtonStyle}
+              onPress={() => this.props.logout()}
+            >
+              <View style={styles.wrapIconView}>
+                <MaterialCommunityIcons
+                  style={styles.iconStyle}
+                  name='account-switch'
+                />
+              </View>
+              <View style={styles.wrapTextView}>
+                <Text style={styles.navigateTextStyle}>
+                  {i18n.t('screens.settings.switchAccounts')}
+                </Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.navigateButtonStyle}
+              onPress={() => this.onPushScreen('WALLET_SCREEN')}
+            >
+              <View style={styles.wrapIconView}>
+                <MaterialCommunityIcons style={styles.iconStyle} name='wallet' />
+              </View>
+              <View style={styles.wrapTextView}>
+                <Text style={styles.navigateTextStyle}>
+                  {i18n.t('sidemenu.wallet')}
+                </Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.navigateButtonStyle}
+              onPress={() => this.onPushScreen('SETTINGS_SCREEN')}
+            >
+              <View style={styles.wrapIconView}>
+                <MaterialCommunityIcons
+                  style={styles.iconStyle}
+                  name='settings-outline'
+                />
+              </View>
+              <View style={styles.wrapTextView}>
+                <Text style={styles.navigateTextStyle}>
+                  {' '}
+                  {i18n.t('sidemenu.settings')}
+                </Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.navigateButtonStyle}
+              onPress={() => this.onPushScreen('PROFILE_SCREEN')}
+            >
+              <View style={styles.wrapIconView}>
+                <MaterialCommunityIcons
+                  style={styles.iconStyle}
+                  name='contact-mail'
+                />
+              </View>
+              <View style={styles.wrapTextView}>
+                <Text style={styles.navigateTextStyle}>
+                  {' '}
+                  {i18n.t('sidemenu.contact')}
+                </Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.navigateButtonStyle}
+              onPress={this.props.logout}
+            >
+              <View style={styles.wrapIconView}>
+                <MaterialCommunityIcons
+                  style={styles.iconStyle}
+                  name='logout-variant'
+                />
+              </View>
+              <View style={styles.wrapTextView}>
+                <Text style={styles.navigateTextStyle}>
+                  {' '}
+                  {i18n.t('sidemenu.logout')}
+                </Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+        </ScrollView>
       </View>
     );
   }
