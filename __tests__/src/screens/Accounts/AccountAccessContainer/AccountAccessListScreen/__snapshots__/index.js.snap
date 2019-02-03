@@ -90,6 +90,7 @@ ShallowWrapper {
                 "backgroundColor": "transparent",
                 "borderBottomWidth": 2,
                 "borderColor": "white",
+                "elevation": 0,
                 "width": "80%",
               }
             }
@@ -116,6 +117,7 @@ ShallowWrapper {
                 "alignSelf": "center",
                 "backgroundColor": "transparent",
                 "borderColor": "#FF8B00",
+                "elevation": 0,
               }
             }
             virtual={undefined}
@@ -216,6 +218,7 @@ ShallowWrapper {
                   "backgroundColor": "transparent",
                   "borderBottomWidth": 2,
                   "borderColor": "white",
+                  "elevation": 0,
                   "width": "80%",
                 }
               }
@@ -242,6 +245,7 @@ ShallowWrapper {
                   "alignSelf": "center",
                   "backgroundColor": "transparent",
                   "borderColor": "#FF8B00",
+                  "elevation": 0,
                 }
               }
               virtual={undefined}
@@ -296,6 +300,7 @@ ShallowWrapper {
                 "backgroundColor": "transparent",
                 "borderBottomWidth": 2,
                 "borderColor": "white",
+                "elevation": 0,
                 "width": "80%",
               },
               "virtual": undefined,
@@ -343,6 +348,7 @@ ShallowWrapper {
                 "alignSelf": "center",
                 "backgroundColor": "transparent",
                 "borderColor": "#FF8B00",
+                "elevation": 0,
               },
               "virtual": undefined,
             },
@@ -443,6 +449,7 @@ ShallowWrapper {
                   "backgroundColor": "transparent",
                   "borderBottomWidth": 2,
                   "borderColor": "white",
+                  "elevation": 0,
                   "width": "80%",
                 }
               }
@@ -469,6 +476,7 @@ ShallowWrapper {
                   "alignSelf": "center",
                   "backgroundColor": "transparent",
                   "borderColor": "#FF8B00",
+                  "elevation": 0,
                 }
               }
               virtual={undefined}
@@ -569,6 +577,7 @@ ShallowWrapper {
                     "backgroundColor": "transparent",
                     "borderBottomWidth": 2,
                     "borderColor": "white",
+                    "elevation": 0,
                     "width": "80%",
                   }
                 }
@@ -595,6 +604,7 @@ ShallowWrapper {
                     "alignSelf": "center",
                     "backgroundColor": "transparent",
                     "borderColor": "#FF8B00",
+                    "elevation": 0,
                   }
                 }
                 virtual={undefined}
@@ -649,6 +659,7 @@ ShallowWrapper {
                   "backgroundColor": "transparent",
                   "borderBottomWidth": 2,
                   "borderColor": "white",
+                  "elevation": 0,
                   "width": "80%",
                 },
                 "virtual": undefined,
@@ -696,6 +707,7 @@ ShallowWrapper {
                   "alignSelf": "center",
                   "backgroundColor": "transparent",
                   "borderColor": "#FF8B00",
+                  "elevation": 0,
                 },
                 "virtual": undefined,
               },
