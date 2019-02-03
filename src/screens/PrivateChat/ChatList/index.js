@@ -116,13 +116,6 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
         buttonColor: Colors.navigationButtonColor,
       },
     ],
-    rightButtons: [
-      {
-        id: MORE_BUTTON,
-        icon: AssetsImages.moreMenuIcon,
-        buttonColor: Colors.navigationButtonColor,
-      },
-    ],
   };
 
   constructor(props: Props) {
@@ -356,16 +349,7 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
                 <View style={styles.itemSeparator} />
               )}
             />
-            <MoreMenuModal
-              visible={this.state.showModal === MORE_MODAL_KEY}
-              onCancel={this.dismissModal}
-              options={[
-                {
-                  text: i18n.t('screens.chat.menu.shareIdentityKey'),
-                  onPress: this.sharePublicKey,
-                },
-              ]}
-            />
+
             <InviteSentModal
               done={this.dismissModal}
               visible={this.state.showModal === INVITE_MODAL_KEY}
@@ -402,12 +386,12 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
           desText='Welcome to Townhall! What would you like to do today?'
           options={[
             {
-              text: 'Start a new conversation',
+              text: 'Start new conversation',
               onPress: this.goToContactsPicker,
             },
             {
-              text: 'Start a new group conversation',
-              onPress: this.goToContactsPicker,
+              text: i18n.t('screens.chat.menu.shareIdentityKey'),
+              onPress: () => { this.dismissModal(); this.sharePublicKey(); },
             },
             {
               text: 'Help',

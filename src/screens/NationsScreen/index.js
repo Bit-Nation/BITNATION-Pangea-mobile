@@ -23,7 +23,6 @@ import { type State as NationState } from '../../reducers/nations';
 import { type State as WalletState } from '../../reducers/wallet';
 import type { NationIdType } from '../../types/Nation';
 import type { NationTab } from '../../actions/nations';
-
 import LucyButton from '../../components/common/LucyButton';
 import PopOverModal from '../../components/PopOverModal';
 
@@ -68,7 +67,7 @@ type State = {
 class NationsScreen extends NavigatorComponent<
   Props & Actions & WalletState & NationState,
   State,
-> {
+  > {
   constructor(props) {
     super(props);
 
@@ -142,7 +141,7 @@ class NationsScreen extends NavigatorComponent<
       showModal: '',
     });
   };
-
+  scrollTabView: any;
   render() {
     return (
       <View style={styles.nationsScreenContainer}>
@@ -170,6 +169,9 @@ class NationsScreen extends NavigatorComponent<
           tabBarUnderlineStyle={styles.tabBarUnderlineStyle}
           tabBarTextStyle={styles.tabBarTextStyle}
           renderTabBar={() => <DefaultTabBar />}
+          ref={(c) => {
+            this.scrollTabView = c;
+          }}
         >
           <View tabLabel='NEW' style={styles.bodyContainer}>
             <NationsListScreen
@@ -208,11 +210,19 @@ class NationsScreen extends NavigatorComponent<
             },
             {
               text: 'Join a Nation',
-              onPress: () => {},
+              onPress: () => {
+                this.scrollTabView.goToPage(0);
+                this.dismissModal();
+              },
             },
             {
               text: 'Report a Nation',
-              onPress: () => {},
+              onPress: () => {
+                this.dismissModal();
+                this.props.navigator.handleDeepLink({
+                  link: 'push/PROFILE_SCREEN',
+                });
+              },
             },
           ]}
         />

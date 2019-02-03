@@ -353,7 +353,7 @@
       }
     },
     "contactsPicker": {
-      "title": "Manage Chat Group",
+      "title": "Add contacts",
       "newContactFromClipboard": "New Contact from Clipboard",
       "doneButton": "$t(common.done)",
       "addContactError": "Error adding contact, please try again later.",

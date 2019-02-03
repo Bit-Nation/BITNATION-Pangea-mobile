@@ -10,6 +10,7 @@ export type Navigator = {
   pop: (?any) => void,
   popToRoot: (?any) => void,
   showModal: (?any) => void,
+  handleDeepLink: (?any) => void,
   dismissModal: () => void,
   dismissAllModals: () => void,
   setButtons: (?any) => void,
