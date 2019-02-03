@@ -91,7 +91,6 @@ export const drawerStyle = {
   },
 };
 
-
 /*
   label : this text string appears in the navigation bar at the bottom of the screen
   icon  : icon for navigation bar
@@ -298,6 +297,11 @@ const Screens = {
   CONTACTS_PICKER_SCREEN: {
     screen: 'Pangea.ContactsPickerScreen',
     title: i18n.t('screens.contactsPicker.title'),
+    navigatorStyle: solidNavigatorStyle,
+  },
+  INFO_SCREEN: {
+    screen: 'Pangea.InfoScreen',
+    title: i18n.t('screens.info.title'),
     navigatorStyle: solidNavigatorStyle,
   },
   DAPP_MODAL_SCREEN: {

@@ -43,6 +43,7 @@ import DocumentViewScreen from './Documents/View';
 import DocumentModifyScreen from './Documents/Modify';
 import MenuScreen from './MenuScreen';
 import HomeScreen from './Home';
+import InfoScreen from './InfoScreen';
 import { screen } from '../global/Screens';
 
 /**
@@ -63,6 +64,7 @@ export default function registerScreens(store: Object, Provider: Object) {
   Navigation.registerComponent(screen('VERIFY_KEY_PROCESS_SCREEN').screen, () => EnterKeyScreen, store, Provider);
   Navigation.registerComponent(screen('VERIFY_KEY_SUCCESS_SCREEN').screen, () => VerifyKeySuccess, store, Provider);
   Navigation.registerComponent(screen('RESTORE_KEY_SCREEN').screen, () => EnterKeyScreen, store, Provider);
+  Navigation.registerComponent(screen('INFO_SCREEN').screen, () => InfoScreen, store, Provider);
   Navigation.registerComponent(screen('VIEW_PRIVATE_KEY_SCREEN').screen, () => ViewPrivateKeyScreen, store, Provider);
   Navigation.registerComponent(screen('INTRO_SCREEN').screen, () => Intro, store, Provider);
   Navigation.registerComponent(screen('DASHBOARD_SCREEN').screen, () => Dashboard, store, Provider);

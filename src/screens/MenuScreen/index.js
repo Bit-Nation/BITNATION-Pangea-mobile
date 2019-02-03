@@ -143,7 +143,7 @@ class MenuScreen extends NavigatorComponent {
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.navigateButtonStyle}
-              onPress={() => this.onPushScreen('PROFILE_SCREEN')}
+              onPress={() => this.onPushScreen('INFO_SCREEN')}
             >
               <View style={styles.wrapIconView}>
                 <MaterialCommunityIcons

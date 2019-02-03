@@ -11,16 +11,12 @@ export default {
     elevation: 3,
   },
   card: {
-    width: width * 0.4,
-    height: 180,
-    borderRadius: 8,
-    backgroundColor: 'white',
-    overflow: 'scroll',
-    marginBottom: 13,
-    marginRight: 30,
+    width: 90,
+    height: 90,
   },
   image: {
-    flex: 0.66,
+    flex: 1,
+    backgroundColor: 'transparent',
   },
   photo: {
     position: 'absolute',

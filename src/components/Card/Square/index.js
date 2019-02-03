@@ -31,33 +31,17 @@ type Props = {
 
 const CardSquare = ({
   uri,
+  file,
   userUri,
   description,
   title,
 }: Props) => (
-  <View style={styles.container}>
-    <View style={styles.card}>
-      <Image style={styles.image} source={{ uri }} />
-      {userUri ? (
-        <View style={styles.photo}>
-          <Image source={{ uri: userUri }} style={styles.userImage} />
-        </View>
-        ) : null}
-      <View style={styles.bottom}>
-        {description ? (
-          <Text
-            style={styles.description}
-            numberOfLines={1}
-            ellipsizeMode='tail'
-          >
-            {description}
-          </Text>
-          ) : null}
-        <Text numberOfLines={1} ellipsizeMode='tail' style={styles.title}>
-          {title}
-        </Text>
-      </View>
-    </View>
+  <View style={styles.card}>
+    {file !== '' ?
+        <Image style={styles.image} source={{ uri }} />
+        :
+        <Image style={styles.image} spurce={file} />
+      }
   </View>
 );
 

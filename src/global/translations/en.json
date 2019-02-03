@@ -359,6 +359,9 @@
       "addContactError": "Error adding contact, please try again later.",
       "label": "$t(common.to):"
     },
+    "info": {
+      "title": "Contact"
+    },
     "migration": {
       "title": "Migration",
       "migrateData": "Please wait, we are migrating your data"
