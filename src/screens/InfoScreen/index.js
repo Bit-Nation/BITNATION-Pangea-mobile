@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import { View, Linking, Image, Text, TouchableOpacity } from 'react-native';
-
+import ZendeskSupport from 'react-native-zendesk-support';
 import BackgroundImage from '../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../components/common/FakeNavigationBar';
 import facebook from '../../assets/images/facebook.png';
@@ -14,6 +14,21 @@ import Card from '../../components/Card';
 import styles from './styles';
 
 class InfoScreen extends Component {
+  componentDidMount() {
+    const config = {
+      appId: '73f3e05169e02c9144c2c98be63472e1b1e5123f1e696fe2',
+      zendeskUrl: 'bitnation.zendesk.com',
+      clientId: 'mobile_sdk_client_6ce9e85f75a7e5e3c348',
+    };
+    ZendeskSupport.initialize(config);
+
+    const customFields = {
+      name: 'Prameet',
+      ticket: 'Sample',
+    };
+    ZendeskSupport.callSupport(customFields);
+  }
+
   openLink = (url) => {
     Linking.openURL(url);
   };

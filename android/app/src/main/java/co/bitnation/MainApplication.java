@@ -6,6 +6,7 @@ import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 import com.reactnative.ivpusic.imagepicker.PickerPackage;
 import com.reactnativenavigation.NavigationApplication;
 import org.reactnative.camera.RNCameraPackage;
+import com.robertsheao.RNZenDeskSupport.RNZenDeskSupport;
 import java.util.Arrays;
 import java.util.List;
 
@@ -25,6 +26,7 @@ public class MainApplication extends NavigationApplication {
                 new PickerPackage(),
                 new RNCameraPackage(),
                 new PanthalassaPackage(),
+                new RNZenDeskSupport(),
                 new RealmReactPackage(),
                 new RNSensitiveInfoPackage(),
                 new RandomBytesPackage(),
