@@ -10,18 +10,6 @@ type Props = {
    * @desc Url of Image
    */
   uri: string,
-  /**
-   * @desc userImage
-   */
-  userUri: string,
-  /**
-   * @desc Description to be displayed
-   */
-  description: string,
-  /**
-   * @desc Title of card
-   */
-  title: string,
 };
 
 /**
@@ -31,17 +19,9 @@ type Props = {
 
 const CardSquare = ({
   uri,
-  file,
-  userUri,
-  description,
-  title,
 }: Props) => (
   <View style={styles.card}>
-    {file !== '' ?
-        <Image style={styles.image} source={{ uri }} />
-        :
-        <Image style={styles.image} spurce={file} />
-      }
+    <Image style={styles.image} source={{ uri }} />
   </View>
 );
 

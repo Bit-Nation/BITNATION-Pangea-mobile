@@ -13,7 +13,10 @@ import twitter from '../../assets/images/twitter.png';
 import Card from '../../components/Card';
 import styles from './styles';
 
-class InfoScreen extends Component {
+type Props = {
+}
+
+class InfoScreen extends Component<Props> {
   componentDidMount() {
     const config = {
       appId: '73f3e05169e02c9144c2c98be63472e1b1e5123f1e696fe2',
@@ -29,7 +32,7 @@ class InfoScreen extends Component {
     ZendeskSupport.callSupport(customFields);
   }
 
-  openLink = (url) => {
+  openLink = (url: any) => {
     Linking.openURL(url);
   };
 
