@@ -20,11 +20,11 @@ function WebSocketProvider(network) {
     let url;
     switch (network) {
         case 'rinkeby' : {
-            url = 'wss://rinkeby.infura.io/_ws';
+            url = 'wss://rinkeby.infura.io/ws';
             break
         }
         case 'homestead' : {
-            url = 'wss://mainnet.infura.io/_ws';
+            url = 'wss://mainnet.infura.io/ws';
             break
         }
         default : {
