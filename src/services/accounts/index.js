@@ -45,7 +45,7 @@ export default class AccountsService {
       encrypted_key_manager: accountStore,
       signed_profile: signedProfile,
       enable_debugging: false,
-      eth_ws_endpoint: networkType === 'main' ? 'wss://mainnet.infura.io/_ws' : 'wss://rinkeby.infura.io/_ws',
+      eth_ws_endpoint: networkType === 'main' ? 'wss://mainnet.infura.io/ws' : 'wss://rinkeby.infura.io/ws',
       private_chat_endpoint: Config.CHAT_WSS_ENDPOINT,
       private_chat_bearer_token: Config.CHAT_TOKEN,
     });
@@ -76,7 +76,7 @@ export default class AccountsService {
     const config = JSON.stringify({
       encrypted_key_manager: accountStore,
       enable_debugging: false,
-      eth_ws_endpoint: 'wss://mainnet.infura.io/_ws',
+      eth_ws_endpoint: 'wss://mainnet.infura.io/ws',
       private_chat_endpoint: Config.CHAT_WSS_ENDPOINT,
       private_chat_bearer_token: Config.CHAT_TOKEN,
     });
