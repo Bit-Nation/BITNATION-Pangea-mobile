@@ -12,6 +12,7 @@ export default compose(
     selectedItem: { uri: 'https://github.com/Bit-Nation/GOVMARKET/blob/master/README.md' },
   })),
   withState('showModal', 'setShowModal', ''),
+  withState('isAppear', 'setIsAppear', false),
   withState('isShowWebViewModal', 'setIsShowWebViewModal', false),
   withHandlers({
 
@@ -41,12 +42,28 @@ export default compose(
         rightButtons: [],
       });
       this.props.navigator.setOnNavigatorEvent((event) => {
+        switch (event.id) {
+          case 'willAppear':
+            this.props.setIsAppear(true);
+            break;
+          case 'willDisappear':
+            this.props.setIsAppear(false);
+            break;
+        }
         if (event.type === 'NavBarButtonPress') {
           if (event.id === MENU_BUTTON) {
             this.props.navigator.toggleDrawer({
               side: 'left',
               animated: true,
             });
+          }
+        }
+        if (event.type === 'DeepLink') {
+          if (this.props.isAppear) {
+            const parts = event.link.split('/');
+            if (parts[0] === 'push') {
+              this.props.navigator.push(screen(parts[1]));
+            }
           }
         }
       });

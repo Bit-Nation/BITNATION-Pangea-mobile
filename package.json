@@ -20,7 +20,7 @@
     "build:profile_protofile": "pbjs -t static-module -w commonjs -o src/services/chat/compiled.js src/services/chat/profile.proto"
   },
   "dependencies": {
-    "@clarketm/saga-monitor": "^1.0.6",
+    "@clarketm/saga-monitor": "^1.0.9",
     "assert": "^1.4.1",
     "async-to-generator": "^1.1.0",
     "awilix": "^3.0.1",
