@@ -49,6 +49,8 @@ export default compose(
           case 'willDisappear':
             this.props.setIsAppear(false);
             break;
+          default:
+            break;
         }
         if (event.type === 'NavBarButtonPress') {
           if (event.id === MENU_BUTTON) {
