@@ -28,15 +28,16 @@ export const initialState: State = {
  * @returns {State} Next state.
  */
 export default (state: State = initialState, action: Action): State => {
-  switch (action.type) {
+  let a:any = action;
+  switch (a.type) {
     case SERVICES_DESTROYED:
       return initialState;
     case CHANGE_ENTERED_MNEMONIC:
-      return { ...state, enteredMnemonic: action.mnemonic };
+      return { ...state, enteredMnemonic: a.mnemonic };
     case VALIDATE_ENTERED_MNEMONIC:
       return { ...state, mnemonicValid: null, mnemonicValidationInProgress: true };
     case CHANGE_MNEMONIC_VALID:
-      return { ...state, mnemonicValid: action.mnemonicValid, mnemonicValidationInProgress: false };
+      return { ...state, mnemonicValid: a.mnemonicValid, mnemonicValidationInProgress: false };
     default:
       return state;
   }

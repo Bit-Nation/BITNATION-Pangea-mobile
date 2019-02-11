@@ -44,18 +44,19 @@ export const initialState: State = {
  * @returns {State} Next state.
  */
 export default (state: State = initialState, action: Action): State => {
-  switch (action.type) {
+  let a:any = action;
+  switch (a.type) {
     case SERVICES_DESTROYED:
       return initialState;
     case SWITCH_NATIONS_TAB:
       return {
         ...state,
-        selectedTab: action.tab,
+        selectedTab: a.tab,
       };
     case OPEN_NATION:
       return {
         ...state,
-        openedNationId: action.nationId,
+        openedNationId: a.nationId,
       };
     case NATIONS_FETCH_STARTED:
       return {
@@ -63,13 +64,13 @@ export default (state: State = initialState, action: Action): State => {
         inProgress: true,
       };
     case NATIONS_UPDATED: {
-      const myNationIds = _(action.nations)
+      const myNationIds = _(a.nations)
         .filter(nation => nation.joined)
         .map(nation => nation.id)
         .value();
       return {
         ...state,
-        nations: action.nations,
+        nations: a.nations,
         myNationIds,
       };
     }

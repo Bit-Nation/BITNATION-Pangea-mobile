@@ -51,19 +51,20 @@ export const getDAppLaunchState = (state: State, publicKey: string) => state.dAp
  * @returns {State} Next state.
  */
 export default (state: State = initialState, action: Action): State => {
-  switch (action.type) {
+  let a:any = action;
+  switch (a.type) {
     case SERVICES_DESTROYED:
       return initialState;
     case DAPPS_LIST_UPDATED: {
       const newDAppsLaunchState = {};
-      action.availableDApps.forEach((dApp) => {
+      a.availableDApps.forEach((dApp) => {
         const launchState = getDAppLaunchState(state, dApp.publicKey);
         newDAppsLaunchState[dApp.publicKey] = launchState || 'off';
       });
 
       return {
         ...state,
-        availableDApps: action.availableDApps,
+        availableDApps: a.availableDApps,
         dAppsLaunchState: newDAppsLaunchState,
       };
     }
@@ -71,7 +72,7 @@ export default (state: State = initialState, action: Action): State => {
       return {
         ...state,
         context: {
-          ...action.context,
+          ...a.context,
         },
       };
     }
@@ -80,12 +81,12 @@ export default (state: State = initialState, action: Action): State => {
         ...state,
         modals: {
           ...state.modals,
-          [action.modal.modalID]: action.modal,
+          [a.modal.modalID]: a.modal,
         },
       };
     case CLEAN_DAPP_MODAL: {
       const newModals = { ...state.modals };
-      delete newModals[action.modalID];
+      delete newModals[a.modalID];
 
       return {
         ...state,
@@ -94,7 +95,7 @@ export default (state: State = initialState, action: Action): State => {
     }
 
     case DAPP_LAUNCH_STATE_CHANGED: {
-      const { dAppPublicKey, launchState } = action;
+      const { dAppPublicKey, launchState } = a;
 
       return {
         ...state,

@@ -56,7 +56,8 @@ export const initialState: State = {
  * @returns {State} Next state.
  */
 export default (state: State = initialState, action: Action): State => {
-  switch (action.type) {
+  let a:any = action;
+  switch (a.type) {
     case SERVICES_DESTROYED:
       return initialState;
     case START_NATION_CREATION:
@@ -68,8 +69,8 @@ export default (state: State = initialState, action: Action): State => {
     case START_NATION_EDITING:
       return {
         ...state,
-        initialNation: convertToEditingNation(action.nation),
-        editingNation: convertToEditingNation(action.nation),
+        initialNation: convertToEditingNation(a.nation),
+        editingNation: convertToEditingNation(a.nation),
       };
     case RESET_NATION_CREATION:
       return {
@@ -81,7 +82,7 @@ export default (state: State = initialState, action: Action): State => {
         ...state,
         editingNation: {
           ...state.editingNation,
-          [action.field]: action.payload,
+          [a.field]: a.payload,
         },
       };
     case CANCEL_NATION_CREATE:
@@ -109,19 +110,19 @@ export default (state: State = initialState, action: Action): State => {
       return {
         ...state,
         inProgress: false,
-        latestError: action.error,
+        latestError: a.error,
       };
     case NATION_DRAFT_SAVE_FINISHED:
       return {
         ...state,
         inProgress: false,
-        latestError: action.error,
+        latestError: a.error,
       };
     case NATION_DRAFT_DELETE_FINISHED:
       return {
         ...state,
         inProgress: false,
-        latestError: action.error,
+        latestError: a.error,
       };
     default:
       return state;

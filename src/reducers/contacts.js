@@ -29,7 +29,8 @@ export const initialState: State = {
  * @returns {State} Next state.
  */
 export default (state: State = initialState, action: Action): State => {
-  switch (action.type) {
+  let a:any = action;
+  switch (a.type) {
     case SERVICES_DESTROYED:
       return initialState;
     case START_CONTACTS_FETCH:
@@ -42,13 +43,13 @@ export default (state: State = initialState, action: Action): State => {
       return {
         ...state,
         isFetching: false,
-        fetchError: action.error,
+        fetchError: a.error,
       };
     case CONTACTS_UPDATED:
       return {
         ...state,
         isFetching: false,
-        contacts: [...action.contacts],
+        contacts: [...a.contacts],
         fetchError: null,
       };
     case ADD_CONTACT:

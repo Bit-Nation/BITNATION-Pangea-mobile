@@ -55,7 +55,8 @@ export const getOpenedDocument = (state: State) => (state.openedDocumentId === n
  * @returns {State} Next state.
  */
 export default (state: State = initialState, action: Action): State => {
-  switch (action.type) {
+  let a:any = action;
+  switch (a.type) {
     case SERVICES_DESTROYED:
       return initialState;
     case START_DOCUMENTS_FETCH:
@@ -68,16 +69,16 @@ export default (state: State = initialState, action: Action): State => {
       return {
         ...state,
         isFetching: false,
-        fetchError: action.error,
+        fetchError: a.error,
       };
     case DOCUMENTS_UPDATED:
       return {
         ...state,
         isFetching: false,
-        documents: [...action.documents],
+        documents: [...a.documents],
       };
     case START_DOCUMENT_CREATION: {
-      const { content } = action;
+      const { content } = a;
 
       return {
         ...state,
@@ -88,7 +89,7 @@ export default (state: State = initialState, action: Action): State => {
       };
     }
     case START_DOCUMENT_EDITING: {
-      const { documentId } = action;
+      const { documentId } = a;
       const document = getDocument(state, documentId);
       if (document == null) {
         return state;
@@ -116,7 +117,7 @@ export default (state: State = initialState, action: Action): State => {
     case OPEN_DOCUMENT:
       return {
         ...state,
-        openedDocumentId: action.documentId,
+        openedDocumentId: a.documentId,
       };
     case UPDATE_MODIFIED_DOCUMENT_FIELD: {
       const { modification } = state;
@@ -124,7 +125,7 @@ export default (state: State = initialState, action: Action): State => {
         return state;
       }
 
-      const { field, value } = action;
+      const { field, value } = a;
 
       return {
         ...state,
@@ -138,7 +139,7 @@ export default (state: State = initialState, action: Action): State => {
       };
     }
     case DELETE_DOCUMENT: {
-      const { documentId } = action;
+      const { documentId } = a;
       const document = getDocument(state, documentId);
       if (document != null) {
         contentStorage.removeContent(document.dataId);

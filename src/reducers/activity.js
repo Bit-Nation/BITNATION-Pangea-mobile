@@ -19,13 +19,14 @@ export const initialState: State = {
  * @returns {State} Next state.
  */
 export default (state: State = initialState, action: Action): State => {
-  switch (action.type) {
+  let a:any = action;
+  switch (a.type) {
     case SERVICES_DESTROYED:
       return initialState;
     case MESSAGES_UPDATED:
       return {
         ...state,
-        messages: action.messages,
+        messages: a.messages,
       };
     default:
       return state;

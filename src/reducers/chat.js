@@ -35,7 +35,8 @@ export const initialState: State = {
  * @returns {State} Next state.
  */
 export default (state: State = initialState, action: Action): State => {
-  switch (action.type) {
+  let a:any = action;
+  switch (a.type) {
     case SERVICES_DESTROYED:
       return initialState;
     case SHOW_CHAT_SPINNER:
@@ -45,7 +46,7 @@ export default (state: State = initialState, action: Action): State => {
       };
     case ADD_PARTNER_PROFILES: {
       const newProfiles = {};
-      action.profiles.forEach(profile => (newProfiles[profile.identityKey] = profile));
+      a.profiles.forEach(profile => (newProfiles[profile.identityKey] = profile));
 
       return {
         ...state,
@@ -63,10 +64,10 @@ export default (state: State = initialState, action: Action): State => {
     case CHATS_UPDATED:
       return {
         ...state,
-        chats: [...action.chats],
+        chats: [...a.chats],
       };
     case CHAT_MESSAGES_LOADED: {
-      const { chatId, messages } = action;
+      const { chatId, messages } = a;
       const chats = state.chats.map((chat) => {
         if (chat.id === chatId) {
           return {
@@ -83,7 +84,7 @@ export default (state: State = initialState, action: Action): State => {
       };
     }
     case ADD_CHAT_MESSAGE: {
-      const { chatId, message } = action;
+      const { chatId, message } = a;
       const chats = state.chats.map((chat) => {
         if (chat.id === chatId) {
           return {
@@ -100,7 +101,7 @@ export default (state: State = initialState, action: Action): State => {
       };
     }
     case UNREAD_STATUS_CHANGED: {
-      const { chatId, hasUnreadMessages } = action;
+      const { chatId, hasUnreadMessages } = a;
       const chats = state.chats.map((chat) => {
         if (chat.id === chatId) {
           return {
@@ -119,7 +120,7 @@ export default (state: State = initialState, action: Action): State => {
     case OPEN_CHAT:
       return {
         ...state,
-        openedChatId: action.chatId,
+        openedChatId: a.chatId,
       };
     default:
       return state;
