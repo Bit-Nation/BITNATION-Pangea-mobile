@@ -157,7 +157,7 @@ class NationDetailsScreen extends Component<Props & Actions & NationState> {
     );
   }
 
-  static buildStatusPanel(status) {
+  static buildStatusPanel(status: any) {
     return (
       <PanelViewAlert
         status={status}

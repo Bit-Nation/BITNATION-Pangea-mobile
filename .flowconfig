@@ -56,5 +56,8 @@ suppress_comment=\\(.\\|\n\\)*\\$FlowExpectedError
 
 unsafe.enable_getters_and_setters=true
 
+[untyped]
+.*/node_modules/react-native
+
 [version]
-^0.58.0
+^0.61.0

@@ -25,7 +25,7 @@ type Props = {
 };
 
 class ConfirmKeyInstructionScreen extends NavigatorComponent<Props> {
-  static defaultProps;
+  static defaultProps: any;
 
   constructor(props: Props & NavigatorProps) {
     super(props);

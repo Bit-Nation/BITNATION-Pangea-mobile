@@ -55,7 +55,7 @@ type State = {
 }
 
 class PasswordScreen extends NavigatorComponent<Props, State> {
-  static defaultProps;
+  static defaultProps: any;
   textInput: any;
 
   constructor(props: Props) {

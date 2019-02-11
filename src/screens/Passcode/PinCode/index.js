@@ -54,7 +54,7 @@ type State = {
 };
 
 class PinCodeScreen extends NavigatorComponent<Props, State> {
-  static defaultProps;
+  static defaultProps: any;
   textInput: any;
 
   constructor(props: Props) {
