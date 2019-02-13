@@ -5,11 +5,12 @@ import { View, Linking, Image, Text, TouchableOpacity } from 'react-native';
 import ZendeskSupport from 'react-native-zendesk-support';
 import BackgroundImage from '../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../components/common/FakeNavigationBar';
-import facebook from '../../assets/images/facebook.png';
-import steemit from '../../assets/images/steemit.png';
-import telegram from '../../assets/images/telegram.png';
-import github from '../../assets/images/github.png';
-import twitter from '../../assets/images/twitter.png';
+import facebook from '../../assets/images/icon-facebook.png';
+import steemit from '../../assets/images/icon-steemit.png';
+import telegram from '../../assets/images/icon-telegram.png';
+import github from '../../assets/images/icon-github.png';
+import twitter from '../../assets/images/icon-twitter.png';
+import discord from '../../assets/images/icon-discord.png';
 import Card from '../../components/Card';
 import styles from './styles';
 
@@ -42,32 +43,33 @@ class InfoScreen extends Component<Props> {
         <BackgroundImage />
         <FakeNavigationBar />
         <View style={styles.mainContainer}>
+          <Text style={styles.email}>info@bitnation.co</Text>
           <Card style={styles.card}>
             <TouchableOpacity
-              onPress={() => this.openLink('https://twitter.com/@MyBitnation')}
+              onPress={() => this.openLink('https://github.com/Bit-Nation')}
             >
               <Image
-                source={twitter}
+                source={github}
                 style={{ height: 80, width: 80, marginRight: 40 }}
               />
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => this.openLink('https://github.com/Bit-Nation')}
+              onPress={() => this.openLink('https://steemit.com/@bitnation')}
             >
-              <Image source={github} style={{ height: 80, width: 80 }} />
+              <Image source={steemit} style={{ height: 80, width: 80 }} />
             </TouchableOpacity>
           </Card>
           <Card style={styles.card}>
             <TouchableOpacity
               style={{ marginRight: 35 }}
-              onPress={() => this.openLink('https://angel.co/bitnation')}
-            >
-              <Card.Square uri='https://cdn.iconscout.com/icon/free/png-256/angellist-3-599132.png' />
-            </TouchableOpacity>
-            <TouchableOpacity
               onPress={() => this.openLink('https://t.me/PangeaBitnation')}
             >
               <Image source={telegram} style={{ height: 80, width: 80 }} />
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => this.openLink('https://discordapp.com/invite/whzS4Fr')}
+            >
+              <Image source={discord} style={{ height: 80, width: 80 }} />
             </TouchableOpacity>
           </Card>
           <Card style={styles.card}>
@@ -82,12 +84,11 @@ class InfoScreen extends Component<Props> {
               />
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => this.openLink('https://steemit.com/@bitnation')}
+              onPress={() => this.openLink('https://twitter.com/@MyBitnation')}
             >
-              <Image source={steemit} style={{ height: 80, width: 80 }} />
+              <Image source={twitter} style={{ height: 80, width: 80 }} />
             </TouchableOpacity>
           </Card>
-          <Text style={styles.email}>info@bitnation.co</Text>
         </View>
       </View>
     );
