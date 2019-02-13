@@ -254,7 +254,8 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
         .charAt(0));
     const lucyBot = [{
       id: '0',
-      name: 'Lucy',
+      name: 'Lucy 1.0',
+
       members: [],
       messages: [],
       unreadMessages: null,
@@ -313,15 +314,15 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
                 }
 
                 if (chat.id === '0') {
-                  chatImage = AssetsImages.avatarIcon;
+                  chatImage = AssetsImages.lucyIcon;
                 }
                 const messagePreview = ((message: GiftedChatMessageType | null) => {
                   if (message == null) return null;
                   if (message.dAppMessage == null) return message.text;
-
                   // @todo Add preview for DApp messages.
                   return i18n.t('screens.chat.dAppMessagePreview');
-                })(chat.messages.length === 0
+                }
+                )(chat.messages.length === 0
                   ? null
                   : chat.messages[chat.messages.length - 1]);
 
@@ -333,7 +334,7 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
                 return (
                   <ChatListItem
                     name={this.buildChatName(chat)}
-                    lastMessage={messagePreview}
+                    lastMessage={chat.id === '0' ? i18n.t('screens.chat.lucyInitialMessage') : messagePreview}
                     dateString={dateString}
                     avatar={chatImage}
                     onPress={this.onChatSelected}
