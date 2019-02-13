@@ -169,7 +169,7 @@ const ListItem = <IDType>({
         <View style={styles.listItemTextContainer}>
           {title}
           <Text style={styles.listItemSubtitle} numberOfLines={1}>
-            {subtitle || 'Start you first chat'}
+            {subtitle || 'Start your first chat'}
           </Text>
         </View>
 
