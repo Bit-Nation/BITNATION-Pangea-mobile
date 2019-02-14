@@ -17,6 +17,7 @@ const DIR = __dirname;
 utils.RunShellScript('check-env.sh', 'run single adb_present');
 utils.RunShellScript('check-env.sh', 'run single android_home');
 utils.RunShellScript('check-env.sh', 'run single dev_config');
+utils.RunShellScript('check-env.sh', 'run single env_config');
 
 const statusFilePath = `${utils.RepositoryRootDir}/data/android-status.json`;
 cfg = utils.GetDevConfig().launcher;

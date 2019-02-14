@@ -56,7 +56,24 @@ check_env_for_inner() {
             echo "[PASS] .dev.config.yaml located." > /dev/tty
             return 0
         fi
-
+    elif [ $CHECK_ENV_TYPE == "env_config" ]; then
+        # check if env file exists
+        CFGFILE=$DIR/../.env
+        CFGFILEDEFAULT=$DIR/../.env.prod.example
+        if [ ! -f $CFGFILE ]; then
+            echo "[FAIL] Config file ${CFGFILE} is not found." > /dev/tty
+            if autocorrect; then
+                set -x
+                cp $CFGFILEDEFAULT $CFGFILE
+                set +x
+                echo "" > /dev/tty
+                return 0
+            fi
+            return 1
+        else
+            echo "[PASS] .env located." > /dev/tty
+            return 0
+        fi
     elif [ $CHECK_ENV_TYPE == "adb_present" ]; then
         if [ ! $(which adb) ]; then
             echo "[FAIL] adb command not found. Ensure that the Android SDK is installed and accessible via PATH." > /dev/tty
@@ -104,6 +121,7 @@ check_env_for() {
 check_env_all() {
     ENVSTATUS=0
     check_env_for dev_config
+    check_env_for env_config
     check_env_for adb_present
     check_env_for android_home
     check_env_for npm_present

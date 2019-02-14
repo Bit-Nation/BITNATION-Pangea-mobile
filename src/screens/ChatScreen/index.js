@@ -11,6 +11,7 @@ import {
   InputToolbar,
   Bubble,
 } from 'react-native-gifted-chat';
+import AssetsImages from '../../global/AssetsImages';
 
 import BitnationMessage from '../PrivateChat/Chat/BitnationMessage';
 import BitnationInputToolbar from '../PrivateChat/Chat/BitnationInputToolbar';
@@ -116,6 +117,7 @@ class ChatScreen extends Component<Props, State> {
             user: {
               _id: 2,
               name: 'Lucy 1.0',
+              avatar: AssetsImages.lucyIcon,
             },
             // Any additional custom parameters are passed through
           },
@@ -176,6 +178,7 @@ class ChatScreen extends Component<Props, State> {
           user: {
             _id: 2,
             name: 'Lucy 1.0',
+            avatar: AssetsImages.lucyIcon,
           },
         },
       ];

@@ -343,6 +343,7 @@
         "confirm": "$t(common.ok)",
         "cancel": "$t(common.cancel)"
       },
+      "lucyInitialMessage": "Ask me anything",
       "menu": {
         "filterChatList": "Filter Chat List",
         "markAllRead": "Mark all as read",
