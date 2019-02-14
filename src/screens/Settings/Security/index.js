@@ -97,7 +97,9 @@ class SecuritySettingsScreen extends NavigatorComponent<
   onPasscodeCreated = () => {
     // @todo It is a hack because React Native Navigation API is not consistent between platforms.
     if (Platform.OS === 'ios') {
-      this.props.navigator.dismissModal().then(() => {
+      let nav: Navigator = this.props.navigator;
+      let mm: any = nav.dismissModal();
+      mm.then(() => {
         this.props.navigator.push(screen('ACCOUNT_CREATE_DEVELOPER_SETTINGS'));
       });
     } else {
