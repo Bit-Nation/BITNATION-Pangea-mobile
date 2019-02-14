@@ -77,7 +77,7 @@ ShallowWrapper {
             }
           }
         >
-          <ScrollViewMock
+          <ScrollView
             contentContainerStyle={
               Object {
                 "flex": 0,
@@ -556,7 +556,7 @@ ShallowWrapper {
                 </View>
               </View>
             </PanelView>
-          </ScrollViewMock>
+          </ScrollView>
         </View>,
       ],
       "style": Object {
@@ -596,7 +596,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "children": <ScrollViewMock
+          "children": <ScrollView
             contentContainerStyle={
               Object {
                 "flex": 0,
@@ -1075,7 +1075,7 @@ ShallowWrapper {
                 </View>
               </View>
             </PanelView>
-          </ScrollViewMock>,
+          </ScrollView>,
           "style": Object {
             "alignContent": "flex-start",
             "flex": 1,
@@ -3888,7 +3888,7 @@ ShallowWrapper {
               "type": [Function],
             },
           ],
-          "type": [Function],
+          "type": [MockFunction],
         },
         "type": [Function],
       },
@@ -3921,7 +3921,7 @@ ShallowWrapper {
               }
             }
           >
-            <ScrollViewMock
+            <ScrollView
               contentContainerStyle={
                 Object {
                   "flex": 0,
@@ -4400,7 +4400,7 @@ ShallowWrapper {
                   </View>
                 </View>
               </PanelView>
-            </ScrollViewMock>
+            </ScrollView>
           </View>,
         ],
         "style": Object {
@@ -4440,7 +4440,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "children": <ScrollViewMock
+            "children": <ScrollView
               contentContainerStyle={
                 Object {
                   "flex": 0,
@@ -4919,7 +4919,7 @@ ShallowWrapper {
                   </View>
                 </View>
               </PanelView>
-            </ScrollViewMock>,
+            </ScrollView>,
             "style": Object {
               "alignContent": "flex-start",
               "flex": 1,
@@ -7732,7 +7732,7 @@ ShallowWrapper {
                 "type": [Function],
               },
             ],
-            "type": [Function],
+            "type": [MockFunction],
           },
           "type": [Function],
         },

@@ -17,7 +17,7 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "children": <ScrollViewMock
+      "children": <ScrollView
         style={
           Object {
             "flex": 0,
@@ -99,7 +99,7 @@ ShallowWrapper {
             }
           }
         />
-      </ScrollViewMock>,
+      </ScrollView>,
     },
     "ref": null,
     "rendered": Object {
@@ -275,7 +275,7 @@ ShallowWrapper {
           "type": [Function],
         },
       ],
-      "type": [Function],
+      "type": [MockFunction],
     },
     "type": [Function],
   },
@@ -285,7 +285,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "children": <ScrollViewMock
+        "children": <ScrollView
           style={
             Object {
               "flex": 0,
@@ -367,7 +367,7 @@ ShallowWrapper {
               }
             }
           />
-        </ScrollViewMock>,
+        </ScrollView>,
       },
       "ref": null,
       "rendered": Object {
@@ -543,7 +543,7 @@ ShallowWrapper {
             "type": [Function],
           },
         ],
-        "type": [Function],
+        "type": [MockFunction],
       },
       "type": [Function],
     },
