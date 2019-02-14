@@ -2,7 +2,6 @@
 ; We fork some components by platform
 .*/*[.]android.js
 .*/node_modules/oboe/test
-.*/node_modules/react-native-mock/
 .*/node_modules/documentation/__tests__/fixture
 .*/node_modules/react-native-keyboard-aware-scroll-view/*
 
