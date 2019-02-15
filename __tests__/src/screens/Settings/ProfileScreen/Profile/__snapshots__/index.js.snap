@@ -66,7 +66,7 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "children": Array [
-        <View
+        <Component
           style={
             Object {
               "alignContent": "flex-start",
@@ -81,7 +81,7 @@ ShallowWrapper {
           <ScreenTitle
             title="Profile"
           />
-          <View
+          <Component
             style={
               Object {
                 "alignItems": "center",
@@ -137,8 +137,8 @@ ShallowWrapper {
             >
               NYC
             </Text>
-          </View>
-          <View
+          </Component>
+          <Component
             style={
               Object {
                 "marginLeft": 40,
@@ -159,8 +159,8 @@ ShallowWrapper {
                 }
               }
             />
-          </View>
-        </View>,
+          </Component>
+        </Component>,
         <CustomButton
           enabled={true}
           onPress={[Function]}
@@ -203,7 +203,7 @@ ShallowWrapper {
             <ScreenTitle
               title="Profile"
             />,
-            <View
+            <Component
               style={
                 Object {
                   "alignItems": "center",
@@ -259,8 +259,8 @@ ShallowWrapper {
               >
                 NYC
               </Text>
-            </View>,
-            <View
+            </Component>,
+            <Component
               style={
                 Object {
                   "marginLeft": 40,
@@ -281,7 +281,7 @@ ShallowWrapper {
                   }
                 }
               />
-            </View>,
+            </Component>,
           ],
           "style": Object {
             "alignContent": "flex-start",
@@ -516,7 +516,7 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "children": Array [
-          <View
+          <Component
             style={
               Object {
                 "alignContent": "flex-start",
@@ -531,7 +531,7 @@ ShallowWrapper {
             <ScreenTitle
               title="Profile"
             />
-            <View
+            <Component
               style={
                 Object {
                   "alignItems": "center",
@@ -587,8 +587,8 @@ ShallowWrapper {
               >
                 NYC
               </Text>
-            </View>
-            <View
+            </Component>
+            <Component
               style={
                 Object {
                   "marginLeft": 40,
@@ -609,8 +609,8 @@ ShallowWrapper {
                   }
                 }
               />
-            </View>
-          </View>,
+            </Component>
+          </Component>,
           <CustomButton
             enabled={true}
             onPress={[Function]}
@@ -653,7 +653,7 @@ ShallowWrapper {
               <ScreenTitle
                 title="Profile"
               />,
-              <View
+              <Component
                 style={
                   Object {
                     "alignItems": "center",
@@ -709,8 +709,8 @@ ShallowWrapper {
                 >
                   NYC
                 </Text>
-              </View>,
-              <View
+              </Component>,
+              <Component
                 style={
                   Object {
                     "marginLeft": 40,
@@ -731,7 +731,7 @@ ShallowWrapper {
                     }
                   }
                 />
-              </View>,
+              </Component>,
             ],
             "style": Object {
               "alignContent": "flex-start",

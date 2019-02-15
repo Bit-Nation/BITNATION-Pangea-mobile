@@ -37,7 +37,7 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "children": Array [
-        <View
+        <Component
           style={
             Object {
               "flex": 0.5,
@@ -59,7 +59,7 @@ ShallowWrapper {
               }
             }
           />
-        </View>,
+        </Component>,
         <SectionList
           data={Array []}
           disableVirtualization={false}
@@ -173,7 +173,7 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "children": Array [
-          <View
+          <Component
             style={
               Object {
                 "flex": 0.5,
@@ -195,7 +195,7 @@ ShallowWrapper {
                 }
               }
             />
-          </View>,
+          </Component>,
           <SectionList
             data={Array []}
             disableVirtualization={false}

@@ -64,7 +64,7 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "children": Array [
-        <View
+        <Component
           style={
             Object {
               "backgroundColor": "transparent",
@@ -73,7 +73,7 @@ ShallowWrapper {
             }
           }
         >
-          <View
+          <Component
             style={
               Object {
                 "backgroundColor": "transparent",
@@ -98,9 +98,9 @@ ShallowWrapper {
             >
               Test panel title
             </Text>
-          </View>
-        </View>,
-        <View
+          </Component>
+        </Component>,
+        <Component
           style={
             Array [
               Object {
@@ -120,13 +120,13 @@ ShallowWrapper {
           >
             Test children
           </Text>
-        </View>,
+        </Component>,
         undefined,
-        <View
+        <Component
           style={Object {}}
         />,
         null,
-        <View
+        <Component
           style={Object {}}
         />,
       ],
@@ -151,7 +151,7 @@ ShallowWrapper {
         "nodeType": "class",
         "props": Object {
           "children": Array [
-            <View
+            <Component
               style={
                 Object {
                   "backgroundColor": "transparent",
@@ -176,7 +176,7 @@ ShallowWrapper {
               >
                 Test panel title
               </Text>
-            </View>,
+            </Component>,
             undefined,
           ],
           "style": Object {
@@ -319,7 +319,7 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "children": Array [
-          <View
+          <Component
             style={
               Object {
                 "backgroundColor": "transparent",
@@ -328,7 +328,7 @@ ShallowWrapper {
               }
             }
           >
-            <View
+            <Component
               style={
                 Object {
                   "backgroundColor": "transparent",
@@ -353,9 +353,9 @@ ShallowWrapper {
               >
                 Test panel title
               </Text>
-            </View>
-          </View>,
-          <View
+            </Component>
+          </Component>,
+          <Component
             style={
               Array [
                 Object {
@@ -375,13 +375,13 @@ ShallowWrapper {
             >
               Test children
             </Text>
-          </View>,
+          </Component>,
           undefined,
-          <View
+          <Component
             style={Object {}}
           />,
           null,
-          <View
+          <Component
             style={Object {}}
           />,
         ],
@@ -406,7 +406,7 @@ ShallowWrapper {
           "nodeType": "class",
           "props": Object {
             "children": Array [
-              <View
+              <Component
                 style={
                   Object {
                     "backgroundColor": "transparent",
@@ -431,7 +431,7 @@ ShallowWrapper {
                 >
                   Test panel title
                 </Text>
-              </View>,
+              </Component>,
               undefined,
             ],
             "style": Object {
@@ -630,7 +630,7 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "children": Array [
-        <View
+        <Component
           style={
             Object {
               "backgroundColor": "transparent",
@@ -639,7 +639,7 @@ ShallowWrapper {
             }
           }
         >
-          <View
+          <Component
             style={
               Object {
                 "backgroundColor": "transparent",
@@ -664,9 +664,9 @@ ShallowWrapper {
             >
               Test panel title
             </Text>
-          </View>
-        </View>,
-        <View
+          </Component>
+        </Component>,
+        <Component
           style={
             Array [
               Object {
@@ -677,7 +677,7 @@ ShallowWrapper {
             ]
           }
         />,
-        <View
+        <Component
           style={
             Object {
               "flexShrink": 1,
@@ -703,12 +703,12 @@ ShallowWrapper {
           >
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
           </Text>
-        </View>,
-        <View
+        </Component>,
+        <Component
           style={Object {}}
         />,
         null,
-        <View
+        <Component
           style={Object {}}
         />,
       ],
@@ -733,7 +733,7 @@ ShallowWrapper {
         "nodeType": "class",
         "props": Object {
           "children": Array [
-            <View
+            <Component
               style={
                 Object {
                   "backgroundColor": "transparent",
@@ -758,7 +758,7 @@ ShallowWrapper {
               >
                 Test panel title
               </Text>
-            </View>,
+            </Component>,
             undefined,
           ],
           "style": Object {
@@ -932,7 +932,7 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "children": Array [
-          <View
+          <Component
             style={
               Object {
                 "backgroundColor": "transparent",
@@ -941,7 +941,7 @@ ShallowWrapper {
               }
             }
           >
-            <View
+            <Component
               style={
                 Object {
                   "backgroundColor": "transparent",
@@ -966,9 +966,9 @@ ShallowWrapper {
               >
                 Test panel title
               </Text>
-            </View>
-          </View>,
-          <View
+            </Component>
+          </Component>,
+          <Component
             style={
               Array [
                 Object {
@@ -979,7 +979,7 @@ ShallowWrapper {
               ]
             }
           />,
-          <View
+          <Component
             style={
               Object {
                 "flexShrink": 1,
@@ -1005,12 +1005,12 @@ ShallowWrapper {
             >
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
             </Text>
-          </View>,
-          <View
+          </Component>,
+          <Component
             style={Object {}}
           />,
           null,
-          <View
+          <Component
             style={Object {}}
           />,
         ],
@@ -1035,7 +1035,7 @@ ShallowWrapper {
           "nodeType": "class",
           "props": Object {
             "children": Array [
-              <View
+              <Component
                 style={
                   Object {
                     "backgroundColor": "transparent",
@@ -1060,7 +1060,7 @@ ShallowWrapper {
                 >
                   Test panel title
                 </Text>
-              </View>,
+              </Component>,
               undefined,
             ],
             "style": Object {
@@ -1290,7 +1290,7 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "children": Array [
-        <View
+        <Component
           style={
             Object {
               "backgroundColor": "transparent",
@@ -1299,7 +1299,7 @@ ShallowWrapper {
             }
           }
         >
-          <View
+          <Component
             style={
               Object {
                 "backgroundColor": "transparent",
@@ -1324,9 +1324,9 @@ ShallowWrapper {
             >
               Test panel title
             </Text>
-          </View>
-        </View>,
-        <View
+          </Component>
+        </Component>,
+        <Component
           style={
             Array [
               Object {
@@ -1338,7 +1338,7 @@ ShallowWrapper {
           }
         />,
         undefined,
-        <View
+        <Component
           style={Object {}}
         />,
         <CustomButton
@@ -1352,7 +1352,7 @@ ShallowWrapper {
           }
           title="Test panel button"
         />,
-        <View
+        <Component
           style={Object {}}
         />,
       ],
@@ -1377,7 +1377,7 @@ ShallowWrapper {
         "nodeType": "class",
         "props": Object {
           "children": Array [
-            <View
+            <Component
               style={
                 Object {
                   "backgroundColor": "transparent",
@@ -1402,7 +1402,7 @@ ShallowWrapper {
               >
                 Test panel title
               </Text>
-            </View>,
+            </Component>,
             undefined,
           ],
           "style": Object {
@@ -1540,7 +1540,7 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "children": Array [
-          <View
+          <Component
             style={
               Object {
                 "backgroundColor": "transparent",
@@ -1549,7 +1549,7 @@ ShallowWrapper {
               }
             }
           >
-            <View
+            <Component
               style={
                 Object {
                   "backgroundColor": "transparent",
@@ -1574,9 +1574,9 @@ ShallowWrapper {
               >
                 Test panel title
               </Text>
-            </View>
-          </View>,
-          <View
+            </Component>
+          </Component>,
+          <Component
             style={
               Array [
                 Object {
@@ -1588,7 +1588,7 @@ ShallowWrapper {
             }
           />,
           undefined,
-          <View
+          <Component
             style={Object {}}
           />,
           <CustomButton
@@ -1602,7 +1602,7 @@ ShallowWrapper {
             }
             title="Test panel button"
           />,
-          <View
+          <Component
             style={Object {}}
           />,
         ],
@@ -1627,7 +1627,7 @@ ShallowWrapper {
           "nodeType": "class",
           "props": Object {
             "children": Array [
-              <View
+              <Component
                 style={
                   Object {
                     "backgroundColor": "transparent",
@@ -1652,7 +1652,7 @@ ShallowWrapper {
                 >
                   Test panel title
                 </Text>
-              </View>,
+              </Component>,
               undefined,
             ],
             "style": Object {
@@ -1846,7 +1846,7 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "children": Array [
-        <View
+        <Component
           style={
             Object {
               "backgroundColor": "transparent",
@@ -1855,7 +1855,7 @@ ShallowWrapper {
             }
           }
         >
-          <View
+          <Component
             style={
               Object {
                 "backgroundColor": "transparent",
@@ -1880,9 +1880,9 @@ ShallowWrapper {
             >
               Test panel title
             </Text>
-          </View>
-        </View>,
-        <View
+          </Component>
+        </Component>,
+        <Component
           style={
             Array [
               Object {
@@ -1893,7 +1893,7 @@ ShallowWrapper {
             ]
           }
         />,
-        <View
+        <Component
           style={
             Object {
               "flexShrink": 1,
@@ -1919,8 +1919,8 @@ ShallowWrapper {
           >
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
           </Text>
-        </View>,
-        <View
+        </Component>,
+        <Component
           style={Object {}}
         >
           <Text
@@ -1928,7 +1928,7 @@ ShallowWrapper {
             allowFontScaling={true}
             ellipsizeMode="tail"
           />
-        </View>,
+        </Component>,
         <CustomButton
           onPress={[Function]}
           style={
@@ -1940,7 +1940,7 @@ ShallowWrapper {
           }
           title="Test panel button"
         />,
-        <View
+        <Component
           style={Object {}}
         />,
       ],
@@ -1965,7 +1965,7 @@ ShallowWrapper {
         "nodeType": "class",
         "props": Object {
           "children": Array [
-            <View
+            <Component
               style={
                 Object {
                   "backgroundColor": "transparent",
@@ -1990,7 +1990,7 @@ ShallowWrapper {
               >
                 Test panel title
               </Text>
-            </View>,
+            </Component>,
             undefined,
           ],
           "style": Object {
@@ -2196,7 +2196,7 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "children": Array [
-          <View
+          <Component
             style={
               Object {
                 "backgroundColor": "transparent",
@@ -2205,7 +2205,7 @@ ShallowWrapper {
               }
             }
           >
-            <View
+            <Component
               style={
                 Object {
                   "backgroundColor": "transparent",
@@ -2230,9 +2230,9 @@ ShallowWrapper {
               >
                 Test panel title
               </Text>
-            </View>
-          </View>,
-          <View
+            </Component>
+          </Component>,
+          <Component
             style={
               Array [
                 Object {
@@ -2243,7 +2243,7 @@ ShallowWrapper {
               ]
             }
           />,
-          <View
+          <Component
             style={
               Object {
                 "flexShrink": 1,
@@ -2269,8 +2269,8 @@ ShallowWrapper {
             >
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
             </Text>
-          </View>,
-          <View
+          </Component>,
+          <Component
             style={Object {}}
           >
             <Text
@@ -2278,7 +2278,7 @@ ShallowWrapper {
               allowFontScaling={true}
               ellipsizeMode="tail"
             />
-          </View>,
+          </Component>,
           <CustomButton
             onPress={[Function]}
             style={
@@ -2290,7 +2290,7 @@ ShallowWrapper {
             }
             title="Test panel button"
           />,
-          <View
+          <Component
             style={Object {}}
           />,
         ],
@@ -2315,7 +2315,7 @@ ShallowWrapper {
           "nodeType": "class",
           "props": Object {
             "children": Array [
-              <View
+              <Component
                 style={
                   Object {
                     "backgroundColor": "transparent",
@@ -2340,7 +2340,7 @@ ShallowWrapper {
                 >
                   Test panel title
                 </Text>
-              </View>,
+              </Component>,
               undefined,
             ],
             "style": Object {
@@ -2602,7 +2602,7 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "children": Array [
-        <View
+        <Component
           style={
             Object {
               "backgroundColor": "transparent",
@@ -2611,7 +2611,7 @@ ShallowWrapper {
             }
           }
         >
-          <View
+          <Component
             style={
               Object {
                 "backgroundColor": "transparent",
@@ -2636,9 +2636,9 @@ ShallowWrapper {
             >
               Test panel title
             </Text>
-          </View>
-        </View>,
-        <View
+          </Component>
+        </Component>,
+        <Component
           style={
             Array [
               Object {
@@ -2649,7 +2649,7 @@ ShallowWrapper {
             ]
           }
         />,
-        <View
+        <Component
           style={
             Object {
               "flexShrink": 1,
@@ -2675,8 +2675,8 @@ ShallowWrapper {
           >
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
           </Text>
-        </View>,
-        <View
+        </Component>,
+        <Component
           style={Object {}}
         />,
         <CustomButton
@@ -2690,7 +2690,7 @@ ShallowWrapper {
           }
           title="Test panel button"
         />,
-        <View
+        <Component
           style={Object {}}
         >
           <Text
@@ -2698,7 +2698,7 @@ ShallowWrapper {
             allowFontScaling={true}
             ellipsizeMode="tail"
           />
-        </View>,
+        </Component>,
       ],
       "style": Object {
         "backgroundColor": "white",
@@ -2721,7 +2721,7 @@ ShallowWrapper {
         "nodeType": "class",
         "props": Object {
           "children": Array [
-            <View
+            <Component
               style={
                 Object {
                   "backgroundColor": "transparent",
@@ -2746,7 +2746,7 @@ ShallowWrapper {
               >
                 Test panel title
               </Text>
-            </View>,
+            </Component>,
             undefined,
           ],
           "style": Object {
@@ -2952,7 +2952,7 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "children": Array [
-          <View
+          <Component
             style={
               Object {
                 "backgroundColor": "transparent",
@@ -2961,7 +2961,7 @@ ShallowWrapper {
               }
             }
           >
-            <View
+            <Component
               style={
                 Object {
                   "backgroundColor": "transparent",
@@ -2986,9 +2986,9 @@ ShallowWrapper {
               >
                 Test panel title
               </Text>
-            </View>
-          </View>,
-          <View
+            </Component>
+          </Component>,
+          <Component
             style={
               Array [
                 Object {
@@ -2999,7 +2999,7 @@ ShallowWrapper {
               ]
             }
           />,
-          <View
+          <Component
             style={
               Object {
                 "flexShrink": 1,
@@ -3025,8 +3025,8 @@ ShallowWrapper {
             >
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
             </Text>
-          </View>,
-          <View
+          </Component>,
+          <Component
             style={Object {}}
           />,
           <CustomButton
@@ -3040,7 +3040,7 @@ ShallowWrapper {
             }
             title="Test panel button"
           />,
-          <View
+          <Component
             style={Object {}}
           >
             <Text
@@ -3048,7 +3048,7 @@ ShallowWrapper {
               allowFontScaling={true}
               ellipsizeMode="tail"
             />
-          </View>,
+          </Component>,
         ],
         "style": Object {
           "backgroundColor": "white",
@@ -3071,7 +3071,7 @@ ShallowWrapper {
           "nodeType": "class",
           "props": Object {
             "children": Array [
-              <View
+              <Component
                 style={
                   Object {
                     "backgroundColor": "transparent",
@@ -3096,7 +3096,7 @@ ShallowWrapper {
                 >
                   Test panel title
                 </Text>
-              </View>,
+              </Component>,
               undefined,
             ],
             "style": Object {
@@ -3358,7 +3358,7 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "children": Array [
-        <View
+        <Component
           style={
             Object {
               "backgroundColor": "transparent",
@@ -3367,7 +3367,7 @@ ShallowWrapper {
             }
           }
         >
-          <View
+          <Component
             style={
               Object {
                 "backgroundColor": "transparent",
@@ -3392,9 +3392,9 @@ ShallowWrapper {
             >
               Test panel title
             </Text>
-          </View>
-        </View>,
-        <View
+          </Component>
+        </Component>,
+        <Component
           style={
             Array [
               Object {
@@ -3405,7 +3405,7 @@ ShallowWrapper {
             ]
           }
         />,
-        <View
+        <Component
           style={
             Object {
               "flexShrink": 1,
@@ -3431,8 +3431,8 @@ ShallowWrapper {
           >
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
           </Text>
-        </View>,
-        <View
+        </Component>,
+        <Component
           style={Object {}}
         />,
         <CustomButton
@@ -3446,7 +3446,7 @@ ShallowWrapper {
           }
           title="Test panel button"
         />,
-        <View
+        <Component
           style={Object {}}
         />,
       ],
@@ -3471,7 +3471,7 @@ ShallowWrapper {
         "nodeType": "class",
         "props": Object {
           "children": Array [
-            <View
+            <Component
               style={
                 Object {
                   "backgroundColor": "transparent",
@@ -3496,7 +3496,7 @@ ShallowWrapper {
               >
                 Test panel title
               </Text>
-            </View>,
+            </Component>,
             undefined,
           ],
           "style": Object {
@@ -3686,7 +3686,7 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "children": Array [
-          <View
+          <Component
             style={
               Object {
                 "backgroundColor": "transparent",
@@ -3695,7 +3695,7 @@ ShallowWrapper {
               }
             }
           >
-            <View
+            <Component
               style={
                 Object {
                   "backgroundColor": "transparent",
@@ -3720,9 +3720,9 @@ ShallowWrapper {
               >
                 Test panel title
               </Text>
-            </View>
-          </View>,
-          <View
+            </Component>
+          </Component>,
+          <Component
             style={
               Array [
                 Object {
@@ -3733,7 +3733,7 @@ ShallowWrapper {
               ]
             }
           />,
-          <View
+          <Component
             style={
               Object {
                 "flexShrink": 1,
@@ -3759,8 +3759,8 @@ ShallowWrapper {
             >
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
             </Text>
-          </View>,
-          <View
+          </Component>,
+          <Component
             style={Object {}}
           />,
           <CustomButton
@@ -3774,7 +3774,7 @@ ShallowWrapper {
             }
             title="Test panel button"
           />,
-          <View
+          <Component
             style={Object {}}
           />,
         ],
@@ -3799,7 +3799,7 @@ ShallowWrapper {
           "nodeType": "class",
           "props": Object {
             "children": Array [
-              <View
+              <Component
                 style={
                   Object {
                     "backgroundColor": "transparent",
@@ -3824,7 +3824,7 @@ ShallowWrapper {
                 >
                   Test panel title
                 </Text>
-              </View>,
+              </Component>,
               undefined,
             ],
             "style": Object {

@@ -65,7 +65,7 @@ ShallowWrapper {
         <FakeNavigationBar
           navBarHidden={false}
         />,
-        <View
+        <Component
           style={
             Object {
               "alignContent": "flex-start",
@@ -129,7 +129,7 @@ ShallowWrapper {
                 }
               }
             >
-              <View
+              <Component
                 style={
                   Object {
                     "alignItems": "center",
@@ -137,7 +137,7 @@ ShallowWrapper {
                   }
                 }
               >
-                <View
+                <Component
                   style={
                     Object {
                       "alignItems": "stretch",
@@ -145,7 +145,7 @@ ShallowWrapper {
                     }
                   }
                 >
-                  <View
+                  <Component
                     style={
                       Object {
                         "alignItems": "stretch",
@@ -195,8 +195,8 @@ ShallowWrapper {
                     >
                       Default Application
                     </Text>
-                  </View>
-                  <View
+                  </Component>
+                  <Component
                     style={
                       Object {
                         "borderBottomColor": "#929497",
@@ -240,8 +240,8 @@ ShallowWrapper {
                         }
                       }
                     />
-                  </View>
-                  <View
+                  </Component>
+                  <Component
                     style={
                       Object {
                         "alignItems": "stretch",
@@ -293,8 +293,8 @@ ShallowWrapper {
                        
                       ETH
                     </Text>
-                  </View>
-                  <View
+                  </Component>
+                  <Component
                     style={
                       Object {
                         "alignItems": "stretch",
@@ -346,8 +346,8 @@ ShallowWrapper {
                        
                       ETH
                     </Text>
-                  </View>
-                  <View
+                  </Component>
+                  <Component
                     style={
                       Object {
                         "alignItems": "stretch",
@@ -377,7 +377,7 @@ ShallowWrapper {
                       thumbTintColor="rgb(252, 228, 149)"
                       value={25}
                     />
-                    <View
+                    <Component
                       style={
                         Object {
                           "flexDirection": "row",
@@ -424,9 +424,9 @@ ShallowWrapper {
                       >
                         Fast
                       </Text>
-                    </View>
-                  </View>
-                  <View
+                    </Component>
+                  </Component>
+                  <Component
                     style={
                       Object {
                         "alignItems": "stretch",
@@ -434,7 +434,7 @@ ShallowWrapper {
                       }
                     }
                   >
-                    <View
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -498,9 +498,9 @@ ShallowWrapper {
                         }
                         value={21000}
                       />
-                    </View>
-                  </View>
-                  <View
+                    </Component>
+                  </Component>
+                  <Component
                     style={
                       Object {
                         "alignItems": "stretch",
@@ -552,12 +552,12 @@ ShallowWrapper {
                        
                       ETH
                     </Text>
-                  </View>
-                </View>
-              </View>
+                  </Component>
+                </Component>
+              </Component>
             </PanelView>
           </ScrollView>
-        </View>,
+        </Component>,
       ],
       "style": Object {
         "alignItems": "stretch",
@@ -648,7 +648,7 @@ ShallowWrapper {
                 }
               }
             >
-              <View
+              <Component
                 style={
                   Object {
                     "alignItems": "center",
@@ -656,7 +656,7 @@ ShallowWrapper {
                   }
                 }
               >
-                <View
+                <Component
                   style={
                     Object {
                       "alignItems": "stretch",
@@ -664,7 +664,7 @@ ShallowWrapper {
                     }
                   }
                 >
-                  <View
+                  <Component
                     style={
                       Object {
                         "alignItems": "stretch",
@@ -714,8 +714,8 @@ ShallowWrapper {
                     >
                       Default Application
                     </Text>
-                  </View>
-                  <View
+                  </Component>
+                  <Component
                     style={
                       Object {
                         "borderBottomColor": "#929497",
@@ -759,8 +759,8 @@ ShallowWrapper {
                         }
                       }
                     />
-                  </View>
-                  <View
+                  </Component>
+                  <Component
                     style={
                       Object {
                         "alignItems": "stretch",
@@ -812,8 +812,8 @@ ShallowWrapper {
                        
                       ETH
                     </Text>
-                  </View>
-                  <View
+                  </Component>
+                  <Component
                     style={
                       Object {
                         "alignItems": "stretch",
@@ -865,8 +865,8 @@ ShallowWrapper {
                        
                       ETH
                     </Text>
-                  </View>
-                  <View
+                  </Component>
+                  <Component
                     style={
                       Object {
                         "alignItems": "stretch",
@@ -896,7 +896,7 @@ ShallowWrapper {
                       thumbTintColor="rgb(252, 228, 149)"
                       value={25}
                     />
-                    <View
+                    <Component
                       style={
                         Object {
                           "flexDirection": "row",
@@ -943,9 +943,9 @@ ShallowWrapper {
                       >
                         Fast
                       </Text>
-                    </View>
-                  </View>
-                  <View
+                    </Component>
+                  </Component>
+                  <Component
                     style={
                       Object {
                         "alignItems": "stretch",
@@ -953,7 +953,7 @@ ShallowWrapper {
                       }
                     }
                   >
-                    <View
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -1017,9 +1017,9 @@ ShallowWrapper {
                         }
                         value={21000}
                       />
-                    </View>
-                  </View>
-                  <View
+                    </Component>
+                  </Component>
+                  <Component
                     style={
                       Object {
                         "alignItems": "stretch",
@@ -1071,9 +1071,9 @@ ShallowWrapper {
                        
                       ETH
                     </Text>
-                  </View>
-                </View>
-              </View>
+                  </Component>
+                </Component>
+              </Component>
             </PanelView>
           </ScrollView>,
           "style": Object {
@@ -1132,7 +1132,7 @@ ShallowWrapper {
                   }
                 }
               >
-                <View
+                <Component
                   style={
                     Object {
                       "alignItems": "center",
@@ -1140,7 +1140,7 @@ ShallowWrapper {
                     }
                   }
                 >
-                  <View
+                  <Component
                     style={
                       Object {
                         "alignItems": "stretch",
@@ -1148,7 +1148,7 @@ ShallowWrapper {
                       }
                     }
                   >
-                    <View
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -1198,8 +1198,8 @@ ShallowWrapper {
                       >
                         Default Application
                       </Text>
-                    </View>
-                    <View
+                    </Component>
+                    <Component
                       style={
                         Object {
                           "borderBottomColor": "#929497",
@@ -1243,8 +1243,8 @@ ShallowWrapper {
                           }
                         }
                       />
-                    </View>
-                    <View
+                    </Component>
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -1296,8 +1296,8 @@ ShallowWrapper {
                          
                         ETH
                       </Text>
-                    </View>
-                    <View
+                    </Component>
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -1349,8 +1349,8 @@ ShallowWrapper {
                          
                         ETH
                       </Text>
-                    </View>
-                    <View
+                    </Component>
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -1380,7 +1380,7 @@ ShallowWrapper {
                         thumbTintColor="rgb(252, 228, 149)"
                         value={25}
                       />
-                      <View
+                      <Component
                         style={
                           Object {
                             "flexDirection": "row",
@@ -1427,9 +1427,9 @@ ShallowWrapper {
                         >
                           Fast
                         </Text>
-                      </View>
-                    </View>
-                    <View
+                      </Component>
+                    </Component>
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -1437,7 +1437,7 @@ ShallowWrapper {
                         }
                       }
                     >
-                      <View
+                      <Component
                         style={
                           Object {
                             "alignItems": "stretch",
@@ -1501,9 +1501,9 @@ ShallowWrapper {
                           }
                           value={21000}
                         />
-                      </View>
-                    </View>
-                    <View
+                      </Component>
+                    </Component>
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -1555,9 +1555,9 @@ ShallowWrapper {
                          
                         ETH
                       </Text>
-                    </View>
-                  </View>
-                </View>
+                    </Component>
+                  </Component>
+                </Component>
               </PanelView>,
             ],
             "contentContainerStyle": Object {
@@ -1587,7 +1587,7 @@ ShallowWrapper {
               "props": Object {
                 "body": undefined,
                 "buttonTitle": "Button",
-                "children": <View
+                "children": <Component
                   style={
                     Object {
                       "alignItems": "center",
@@ -1595,7 +1595,7 @@ ShallowWrapper {
                     }
                   }
                 >
-                  <View
+                  <Component
                     style={
                       Object {
                         "alignItems": "stretch",
@@ -1603,7 +1603,7 @@ ShallowWrapper {
                       }
                     }
                   >
-                    <View
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -1653,8 +1653,8 @@ ShallowWrapper {
                       >
                         Default Application
                       </Text>
-                    </View>
-                    <View
+                    </Component>
+                    <Component
                       style={
                         Object {
                           "borderBottomColor": "#929497",
@@ -1698,8 +1698,8 @@ ShallowWrapper {
                           }
                         }
                       />
-                    </View>
-                    <View
+                    </Component>
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -1751,8 +1751,8 @@ ShallowWrapper {
                          
                         ETH
                       </Text>
-                    </View>
-                    <View
+                    </Component>
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -1804,8 +1804,8 @@ ShallowWrapper {
                          
                         ETH
                       </Text>
-                    </View>
-                    <View
+                    </Component>
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -1835,7 +1835,7 @@ ShallowWrapper {
                         thumbTintColor="rgb(252, 228, 149)"
                         value={25}
                       />
-                      <View
+                      <Component
                         style={
                           Object {
                             "flexDirection": "row",
@@ -1882,9 +1882,9 @@ ShallowWrapper {
                         >
                           Fast
                         </Text>
-                      </View>
-                    </View>
-                    <View
+                      </Component>
+                    </Component>
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -1892,7 +1892,7 @@ ShallowWrapper {
                         }
                       }
                     >
-                      <View
+                      <Component
                         style={
                           Object {
                             "alignItems": "stretch",
@@ -1956,9 +1956,9 @@ ShallowWrapper {
                           }
                           value={21000}
                         />
-                      </View>
-                    </View>
-                    <View
+                      </Component>
+                    </Component>
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -2010,9 +2010,9 @@ ShallowWrapper {
                          
                         ETH
                       </Text>
-                    </View>
-                  </View>
-                </View>,
+                    </Component>
+                  </Component>
+                </Component>,
                 "childrenContainerStyle": Object {},
                 "icon": undefined,
                 "onButtonClick": null,
@@ -2049,7 +2049,7 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "class",
                 "props": Object {
-                  "children": <View
+                  "children": <Component
                     style={
                       Object {
                         "alignItems": "stretch",
@@ -2057,7 +2057,7 @@ ShallowWrapper {
                       }
                     }
                   >
-                    <View
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -2107,8 +2107,8 @@ ShallowWrapper {
                       >
                         Default Application
                       </Text>
-                    </View>
-                    <View
+                    </Component>
+                    <Component
                       style={
                         Object {
                           "borderBottomColor": "#929497",
@@ -2152,8 +2152,8 @@ ShallowWrapper {
                           }
                         }
                       />
-                    </View>
-                    <View
+                    </Component>
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -2205,8 +2205,8 @@ ShallowWrapper {
                          
                         ETH
                       </Text>
-                    </View>
-                    <View
+                    </Component>
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -2258,8 +2258,8 @@ ShallowWrapper {
                          
                         ETH
                       </Text>
-                    </View>
-                    <View
+                    </Component>
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -2289,7 +2289,7 @@ ShallowWrapper {
                         thumbTintColor="rgb(252, 228, 149)"
                         value={25}
                       />
-                      <View
+                      <Component
                         style={
                           Object {
                             "flexDirection": "row",
@@ -2336,9 +2336,9 @@ ShallowWrapper {
                         >
                           Fast
                         </Text>
-                      </View>
-                    </View>
-                    <View
+                      </Component>
+                    </Component>
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -2346,7 +2346,7 @@ ShallowWrapper {
                         }
                       }
                     >
-                      <View
+                      <Component
                         style={
                           Object {
                             "alignItems": "stretch",
@@ -2410,9 +2410,9 @@ ShallowWrapper {
                           }
                           value={21000}
                         />
-                      </View>
-                    </View>
-                    <View
+                      </Component>
+                    </Component>
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -2464,8 +2464,8 @@ ShallowWrapper {
                          
                         ETH
                       </Text>
-                    </View>
-                  </View>,
+                    </Component>
+                  </Component>,
                   "style": Object {
                     "alignItems": "center",
                     "flexDirection": "row",
@@ -2478,7 +2478,7 @@ ShallowWrapper {
                   "nodeType": "class",
                   "props": Object {
                     "children": Array [
-                      <View
+                      <Component
                         style={
                           Object {
                             "alignItems": "stretch",
@@ -2528,8 +2528,8 @@ ShallowWrapper {
                         >
                           Default Application
                         </Text>
-                      </View>,
-                      <View
+                      </Component>,
+                      <Component
                         style={
                           Object {
                             "borderBottomColor": "#929497",
@@ -2573,8 +2573,8 @@ ShallowWrapper {
                             }
                           }
                         />
-                      </View>,
-                      <View
+                      </Component>,
+                      <Component
                         style={
                           Object {
                             "alignItems": "stretch",
@@ -2626,9 +2626,9 @@ ShallowWrapper {
                            
                           ETH
                         </Text>
-                      </View>,
+                      </Component>,
                       null,
-                      <View
+                      <Component
                         style={
                           Object {
                             "alignItems": "stretch",
@@ -2680,8 +2680,8 @@ ShallowWrapper {
                            
                           ETH
                         </Text>
-                      </View>,
-                      <View
+                      </Component>,
+                      <Component
                         style={
                           Object {
                             "alignItems": "stretch",
@@ -2711,7 +2711,7 @@ ShallowWrapper {
                           thumbTintColor="rgb(252, 228, 149)"
                           value={25}
                         />
-                        <View
+                        <Component
                           style={
                             Object {
                               "flexDirection": "row",
@@ -2758,9 +2758,9 @@ ShallowWrapper {
                           >
                             Fast
                           </Text>
-                        </View>
-                      </View>,
-                      <View
+                        </Component>
+                      </Component>,
+                      <Component
                         style={
                           Object {
                             "alignItems": "stretch",
@@ -2768,7 +2768,7 @@ ShallowWrapper {
                           }
                         }
                       >
-                        <View
+                        <Component
                           style={
                             Object {
                               "alignItems": "stretch",
@@ -2832,9 +2832,9 @@ ShallowWrapper {
                             }
                             value={21000}
                           />
-                        </View>
-                      </View>,
-                      <View
+                        </Component>
+                      </Component>,
+                      <Component
                         style={
                           Object {
                             "alignItems": "stretch",
@@ -2886,7 +2886,7 @@ ShallowWrapper {
                            
                           ETH
                         </Text>
-                      </View>,
+                      </Component>,
                     ],
                     "style": Object {
                       "alignItems": "stretch",
@@ -3350,7 +3350,7 @@ ShallowWrapper {
                             thumbTintColor="rgb(252, 228, 149)"
                             value={25}
                           />,
-                          <View
+                          <Component
                             style={
                               Object {
                                 "flexDirection": "row",
@@ -3397,7 +3397,7 @@ ShallowWrapper {
                             >
                               Fast
                             </Text>
-                          </View>,
+                          </Component>,
                         ],
                         "style": Object {
                           "alignItems": "stretch",
@@ -3557,7 +3557,7 @@ ShallowWrapper {
                       "key": undefined,
                       "nodeType": "class",
                       "props": Object {
-                        "children": <View
+                        "children": <Component
                           style={
                             Object {
                               "alignItems": "stretch",
@@ -3621,7 +3621,7 @@ ShallowWrapper {
                             }
                             value={21000}
                           />
-                        </View>,
+                        </Component>,
                         "style": Object {
                           "alignItems": "stretch",
                           "flex": 1,
@@ -3909,7 +3909,7 @@ ShallowWrapper {
           <FakeNavigationBar
             navBarHidden={false}
           />,
-          <View
+          <Component
             style={
               Object {
                 "alignContent": "flex-start",
@@ -3973,7 +3973,7 @@ ShallowWrapper {
                   }
                 }
               >
-                <View
+                <Component
                   style={
                     Object {
                       "alignItems": "center",
@@ -3981,7 +3981,7 @@ ShallowWrapper {
                     }
                   }
                 >
-                  <View
+                  <Component
                     style={
                       Object {
                         "alignItems": "stretch",
@@ -3989,7 +3989,7 @@ ShallowWrapper {
                       }
                     }
                   >
-                    <View
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -4039,8 +4039,8 @@ ShallowWrapper {
                       >
                         Default Application
                       </Text>
-                    </View>
-                    <View
+                    </Component>
+                    <Component
                       style={
                         Object {
                           "borderBottomColor": "#929497",
@@ -4084,8 +4084,8 @@ ShallowWrapper {
                           }
                         }
                       />
-                    </View>
-                    <View
+                    </Component>
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -4137,8 +4137,8 @@ ShallowWrapper {
                          
                         ETH
                       </Text>
-                    </View>
-                    <View
+                    </Component>
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -4190,8 +4190,8 @@ ShallowWrapper {
                          
                         ETH
                       </Text>
-                    </View>
-                    <View
+                    </Component>
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -4221,7 +4221,7 @@ ShallowWrapper {
                         thumbTintColor="rgb(252, 228, 149)"
                         value={25}
                       />
-                      <View
+                      <Component
                         style={
                           Object {
                             "flexDirection": "row",
@@ -4268,9 +4268,9 @@ ShallowWrapper {
                         >
                           Fast
                         </Text>
-                      </View>
-                    </View>
-                    <View
+                      </Component>
+                    </Component>
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -4278,7 +4278,7 @@ ShallowWrapper {
                         }
                       }
                     >
-                      <View
+                      <Component
                         style={
                           Object {
                             "alignItems": "stretch",
@@ -4342,9 +4342,9 @@ ShallowWrapper {
                           }
                           value={21000}
                         />
-                      </View>
-                    </View>
-                    <View
+                      </Component>
+                    </Component>
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -4396,12 +4396,12 @@ ShallowWrapper {
                          
                         ETH
                       </Text>
-                    </View>
-                  </View>
-                </View>
+                    </Component>
+                  </Component>
+                </Component>
               </PanelView>
             </ScrollView>
-          </View>,
+          </Component>,
         ],
         "style": Object {
           "alignItems": "stretch",
@@ -4492,7 +4492,7 @@ ShallowWrapper {
                   }
                 }
               >
-                <View
+                <Component
                   style={
                     Object {
                       "alignItems": "center",
@@ -4500,7 +4500,7 @@ ShallowWrapper {
                     }
                   }
                 >
-                  <View
+                  <Component
                     style={
                       Object {
                         "alignItems": "stretch",
@@ -4508,7 +4508,7 @@ ShallowWrapper {
                       }
                     }
                   >
-                    <View
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -4558,8 +4558,8 @@ ShallowWrapper {
                       >
                         Default Application
                       </Text>
-                    </View>
-                    <View
+                    </Component>
+                    <Component
                       style={
                         Object {
                           "borderBottomColor": "#929497",
@@ -4603,8 +4603,8 @@ ShallowWrapper {
                           }
                         }
                       />
-                    </View>
-                    <View
+                    </Component>
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -4656,8 +4656,8 @@ ShallowWrapper {
                          
                         ETH
                       </Text>
-                    </View>
-                    <View
+                    </Component>
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -4709,8 +4709,8 @@ ShallowWrapper {
                          
                         ETH
                       </Text>
-                    </View>
-                    <View
+                    </Component>
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -4740,7 +4740,7 @@ ShallowWrapper {
                         thumbTintColor="rgb(252, 228, 149)"
                         value={25}
                       />
-                      <View
+                      <Component
                         style={
                           Object {
                             "flexDirection": "row",
@@ -4787,9 +4787,9 @@ ShallowWrapper {
                         >
                           Fast
                         </Text>
-                      </View>
-                    </View>
-                    <View
+                      </Component>
+                    </Component>
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -4797,7 +4797,7 @@ ShallowWrapper {
                         }
                       }
                     >
-                      <View
+                      <Component
                         style={
                           Object {
                             "alignItems": "stretch",
@@ -4861,9 +4861,9 @@ ShallowWrapper {
                           }
                           value={21000}
                         />
-                      </View>
-                    </View>
-                    <View
+                      </Component>
+                    </Component>
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -4915,9 +4915,9 @@ ShallowWrapper {
                          
                         ETH
                       </Text>
-                    </View>
-                  </View>
-                </View>
+                    </Component>
+                  </Component>
+                </Component>
               </PanelView>
             </ScrollView>,
             "style": Object {
@@ -4976,7 +4976,7 @@ ShallowWrapper {
                     }
                   }
                 >
-                  <View
+                  <Component
                     style={
                       Object {
                         "alignItems": "center",
@@ -4984,7 +4984,7 @@ ShallowWrapper {
                       }
                     }
                   >
-                    <View
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -4992,7 +4992,7 @@ ShallowWrapper {
                         }
                       }
                     >
-                      <View
+                      <Component
                         style={
                           Object {
                             "alignItems": "stretch",
@@ -5042,8 +5042,8 @@ ShallowWrapper {
                         >
                           Default Application
                         </Text>
-                      </View>
-                      <View
+                      </Component>
+                      <Component
                         style={
                           Object {
                             "borderBottomColor": "#929497",
@@ -5087,8 +5087,8 @@ ShallowWrapper {
                             }
                           }
                         />
-                      </View>
-                      <View
+                      </Component>
+                      <Component
                         style={
                           Object {
                             "alignItems": "stretch",
@@ -5140,8 +5140,8 @@ ShallowWrapper {
                            
                           ETH
                         </Text>
-                      </View>
-                      <View
+                      </Component>
+                      <Component
                         style={
                           Object {
                             "alignItems": "stretch",
@@ -5193,8 +5193,8 @@ ShallowWrapper {
                            
                           ETH
                         </Text>
-                      </View>
-                      <View
+                      </Component>
+                      <Component
                         style={
                           Object {
                             "alignItems": "stretch",
@@ -5224,7 +5224,7 @@ ShallowWrapper {
                           thumbTintColor="rgb(252, 228, 149)"
                           value={25}
                         />
-                        <View
+                        <Component
                           style={
                             Object {
                               "flexDirection": "row",
@@ -5271,9 +5271,9 @@ ShallowWrapper {
                           >
                             Fast
                           </Text>
-                        </View>
-                      </View>
-                      <View
+                        </Component>
+                      </Component>
+                      <Component
                         style={
                           Object {
                             "alignItems": "stretch",
@@ -5281,7 +5281,7 @@ ShallowWrapper {
                           }
                         }
                       >
-                        <View
+                        <Component
                           style={
                             Object {
                               "alignItems": "stretch",
@@ -5345,9 +5345,9 @@ ShallowWrapper {
                             }
                             value={21000}
                           />
-                        </View>
-                      </View>
-                      <View
+                        </Component>
+                      </Component>
+                      <Component
                         style={
                           Object {
                             "alignItems": "stretch",
@@ -5399,9 +5399,9 @@ ShallowWrapper {
                            
                           ETH
                         </Text>
-                      </View>
-                    </View>
-                  </View>
+                      </Component>
+                    </Component>
+                  </Component>
                 </PanelView>,
               ],
               "contentContainerStyle": Object {
@@ -5431,7 +5431,7 @@ ShallowWrapper {
                 "props": Object {
                   "body": undefined,
                   "buttonTitle": "Button",
-                  "children": <View
+                  "children": <Component
                     style={
                       Object {
                         "alignItems": "center",
@@ -5439,7 +5439,7 @@ ShallowWrapper {
                       }
                     }
                   >
-                    <View
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -5447,7 +5447,7 @@ ShallowWrapper {
                         }
                       }
                     >
-                      <View
+                      <Component
                         style={
                           Object {
                             "alignItems": "stretch",
@@ -5497,8 +5497,8 @@ ShallowWrapper {
                         >
                           Default Application
                         </Text>
-                      </View>
-                      <View
+                      </Component>
+                      <Component
                         style={
                           Object {
                             "borderBottomColor": "#929497",
@@ -5542,8 +5542,8 @@ ShallowWrapper {
                             }
                           }
                         />
-                      </View>
-                      <View
+                      </Component>
+                      <Component
                         style={
                           Object {
                             "alignItems": "stretch",
@@ -5595,8 +5595,8 @@ ShallowWrapper {
                            
                           ETH
                         </Text>
-                      </View>
-                      <View
+                      </Component>
+                      <Component
                         style={
                           Object {
                             "alignItems": "stretch",
@@ -5648,8 +5648,8 @@ ShallowWrapper {
                            
                           ETH
                         </Text>
-                      </View>
-                      <View
+                      </Component>
+                      <Component
                         style={
                           Object {
                             "alignItems": "stretch",
@@ -5679,7 +5679,7 @@ ShallowWrapper {
                           thumbTintColor="rgb(252, 228, 149)"
                           value={25}
                         />
-                        <View
+                        <Component
                           style={
                             Object {
                               "flexDirection": "row",
@@ -5726,9 +5726,9 @@ ShallowWrapper {
                           >
                             Fast
                           </Text>
-                        </View>
-                      </View>
-                      <View
+                        </Component>
+                      </Component>
+                      <Component
                         style={
                           Object {
                             "alignItems": "stretch",
@@ -5736,7 +5736,7 @@ ShallowWrapper {
                           }
                         }
                       >
-                        <View
+                        <Component
                           style={
                             Object {
                               "alignItems": "stretch",
@@ -5800,9 +5800,9 @@ ShallowWrapper {
                             }
                             value={21000}
                           />
-                        </View>
-                      </View>
-                      <View
+                        </Component>
+                      </Component>
+                      <Component
                         style={
                           Object {
                             "alignItems": "stretch",
@@ -5854,9 +5854,9 @@ ShallowWrapper {
                            
                           ETH
                         </Text>
-                      </View>
-                    </View>
-                  </View>,
+                      </Component>
+                    </Component>
+                  </Component>,
                   "childrenContainerStyle": Object {},
                   "icon": undefined,
                   "onButtonClick": null,
@@ -5893,7 +5893,7 @@ ShallowWrapper {
                   "key": undefined,
                   "nodeType": "class",
                   "props": Object {
-                    "children": <View
+                    "children": <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -5901,7 +5901,7 @@ ShallowWrapper {
                         }
                       }
                     >
-                      <View
+                      <Component
                         style={
                           Object {
                             "alignItems": "stretch",
@@ -5951,8 +5951,8 @@ ShallowWrapper {
                         >
                           Default Application
                         </Text>
-                      </View>
-                      <View
+                      </Component>
+                      <Component
                         style={
                           Object {
                             "borderBottomColor": "#929497",
@@ -5996,8 +5996,8 @@ ShallowWrapper {
                             }
                           }
                         />
-                      </View>
-                      <View
+                      </Component>
+                      <Component
                         style={
                           Object {
                             "alignItems": "stretch",
@@ -6049,8 +6049,8 @@ ShallowWrapper {
                            
                           ETH
                         </Text>
-                      </View>
-                      <View
+                      </Component>
+                      <Component
                         style={
                           Object {
                             "alignItems": "stretch",
@@ -6102,8 +6102,8 @@ ShallowWrapper {
                            
                           ETH
                         </Text>
-                      </View>
-                      <View
+                      </Component>
+                      <Component
                         style={
                           Object {
                             "alignItems": "stretch",
@@ -6133,7 +6133,7 @@ ShallowWrapper {
                           thumbTintColor="rgb(252, 228, 149)"
                           value={25}
                         />
-                        <View
+                        <Component
                           style={
                             Object {
                               "flexDirection": "row",
@@ -6180,9 +6180,9 @@ ShallowWrapper {
                           >
                             Fast
                           </Text>
-                        </View>
-                      </View>
-                      <View
+                        </Component>
+                      </Component>
+                      <Component
                         style={
                           Object {
                             "alignItems": "stretch",
@@ -6190,7 +6190,7 @@ ShallowWrapper {
                           }
                         }
                       >
-                        <View
+                        <Component
                           style={
                             Object {
                               "alignItems": "stretch",
@@ -6254,9 +6254,9 @@ ShallowWrapper {
                             }
                             value={21000}
                           />
-                        </View>
-                      </View>
-                      <View
+                        </Component>
+                      </Component>
+                      <Component
                         style={
                           Object {
                             "alignItems": "stretch",
@@ -6308,8 +6308,8 @@ ShallowWrapper {
                            
                           ETH
                         </Text>
-                      </View>
-                    </View>,
+                      </Component>
+                    </Component>,
                     "style": Object {
                       "alignItems": "center",
                       "flexDirection": "row",
@@ -6322,7 +6322,7 @@ ShallowWrapper {
                     "nodeType": "class",
                     "props": Object {
                       "children": Array [
-                        <View
+                        <Component
                           style={
                             Object {
                               "alignItems": "stretch",
@@ -6372,8 +6372,8 @@ ShallowWrapper {
                           >
                             Default Application
                           </Text>
-                        </View>,
-                        <View
+                        </Component>,
+                        <Component
                           style={
                             Object {
                               "borderBottomColor": "#929497",
@@ -6417,8 +6417,8 @@ ShallowWrapper {
                               }
                             }
                           />
-                        </View>,
-                        <View
+                        </Component>,
+                        <Component
                           style={
                             Object {
                               "alignItems": "stretch",
@@ -6470,9 +6470,9 @@ ShallowWrapper {
                              
                             ETH
                           </Text>
-                        </View>,
+                        </Component>,
                         null,
-                        <View
+                        <Component
                           style={
                             Object {
                               "alignItems": "stretch",
@@ -6524,8 +6524,8 @@ ShallowWrapper {
                              
                             ETH
                           </Text>
-                        </View>,
-                        <View
+                        </Component>,
+                        <Component
                           style={
                             Object {
                               "alignItems": "stretch",
@@ -6555,7 +6555,7 @@ ShallowWrapper {
                             thumbTintColor="rgb(252, 228, 149)"
                             value={25}
                           />
-                          <View
+                          <Component
                             style={
                               Object {
                                 "flexDirection": "row",
@@ -6602,9 +6602,9 @@ ShallowWrapper {
                             >
                               Fast
                             </Text>
-                          </View>
-                        </View>,
-                        <View
+                          </Component>
+                        </Component>,
+                        <Component
                           style={
                             Object {
                               "alignItems": "stretch",
@@ -6612,7 +6612,7 @@ ShallowWrapper {
                             }
                           }
                         >
-                          <View
+                          <Component
                             style={
                               Object {
                                 "alignItems": "stretch",
@@ -6676,9 +6676,9 @@ ShallowWrapper {
                               }
                               value={21000}
                             />
-                          </View>
-                        </View>,
-                        <View
+                          </Component>
+                        </Component>,
+                        <Component
                           style={
                             Object {
                               "alignItems": "stretch",
@@ -6730,7 +6730,7 @@ ShallowWrapper {
                              
                             ETH
                           </Text>
-                        </View>,
+                        </Component>,
                       ],
                       "style": Object {
                         "alignItems": "stretch",
@@ -7194,7 +7194,7 @@ ShallowWrapper {
                               thumbTintColor="rgb(252, 228, 149)"
                               value={25}
                             />,
-                            <View
+                            <Component
                               style={
                                 Object {
                                   "flexDirection": "row",
@@ -7241,7 +7241,7 @@ ShallowWrapper {
                               >
                                 Fast
                               </Text>
-                            </View>,
+                            </Component>,
                           ],
                           "style": Object {
                             "alignItems": "stretch",
@@ -7401,7 +7401,7 @@ ShallowWrapper {
                         "key": undefined,
                         "nodeType": "class",
                         "props": Object {
-                          "children": <View
+                          "children": <Component
                             style={
                               Object {
                                 "alignItems": "stretch",
@@ -7465,7 +7465,7 @@ ShallowWrapper {
                               }
                               value={21000}
                             />
-                          </View>,
+                          </Component>,
                           "style": Object {
                             "alignItems": "stretch",
                             "flex": 1,

@@ -56,7 +56,7 @@ ShallowWrapper {
             }
           }
         >
-          <View
+          <Component
             style={
               Object {
                 "alignItems": "flex-end",
@@ -99,8 +99,8 @@ ShallowWrapper {
               </Text>
                in Pangea
             </Text>
-          </View>
-          <View
+          </Component>
+          <Component
             style={
               Object {
                 "alignItems": "stretch",
@@ -112,7 +112,7 @@ ShallowWrapper {
               }
             }
           >
-            <View
+            <Component
               style={
                 Object {
                   "height": 30,
@@ -138,7 +138,7 @@ ShallowWrapper {
               >
                 Newest Nations
               </Text>
-            </View>
+            </Component>
             <FlatList
               ItemSeparatorComponent={[Function]}
               data={Array []}
@@ -154,7 +154,7 @@ ShallowWrapper {
               updateCellsBatchingPeriod={50}
               windowSize={21}
             />
-          </View>
+          </Component>
         </PanelView>,
         false,
       ],
@@ -170,7 +170,7 @@ ShallowWrapper {
           "body": undefined,
           "buttonTitle": "Button",
           "children": Array [
-            <View
+            <Component
               style={
                 Object {
                   "alignItems": "flex-end",
@@ -213,8 +213,8 @@ ShallowWrapper {
                 </Text>
                  in Pangea
               </Text>
-            </View>,
-            <View
+            </Component>,
+            <Component
               style={
                 Object {
                   "alignItems": "stretch",
@@ -226,7 +226,7 @@ ShallowWrapper {
                 }
               }
             >
-              <View
+              <Component
                 style={
                   Object {
                     "height": 30,
@@ -252,7 +252,7 @@ ShallowWrapper {
                 >
                   Newest Nations
                 </Text>
-              </View>
+              </Component>
               <FlatList
                 ItemSeparatorComponent={[Function]}
                 data={Array []}
@@ -268,7 +268,7 @@ ShallowWrapper {
                 updateCellsBatchingPeriod={50}
                 windowSize={21}
               />
-            </View>,
+            </Component>,
           ],
           "childrenContainerStyle": Object {},
           "icon": undefined,
@@ -420,7 +420,7 @@ ShallowWrapper {
             "nodeType": "class",
             "props": Object {
               "children": Array [
-                <View
+                <Component
                   style={
                     Object {
                       "height": 30,
@@ -446,7 +446,7 @@ ShallowWrapper {
                   >
                     Newest Nations
                   </Text>
-                </View>,
+                </Component>,
                 <FlatList
                   ItemSeparatorComponent={[Function]}
                   data={Array []}
@@ -601,7 +601,7 @@ ShallowWrapper {
               }
             }
           >
-            <View
+            <Component
               style={
                 Object {
                   "alignItems": "flex-end",
@@ -644,8 +644,8 @@ ShallowWrapper {
                 </Text>
                  in Pangea
               </Text>
-            </View>
-            <View
+            </Component>
+            <Component
               style={
                 Object {
                   "alignItems": "stretch",
@@ -657,7 +657,7 @@ ShallowWrapper {
                 }
               }
             >
-              <View
+              <Component
                 style={
                   Object {
                     "height": 30,
@@ -683,7 +683,7 @@ ShallowWrapper {
                 >
                   Newest Nations
                 </Text>
-              </View>
+              </Component>
               <FlatList
                 ItemSeparatorComponent={[Function]}
                 data={Array []}
@@ -699,7 +699,7 @@ ShallowWrapper {
                 updateCellsBatchingPeriod={50}
                 windowSize={21}
               />
-            </View>
+            </Component>
           </PanelView>,
           false,
         ],
@@ -715,7 +715,7 @@ ShallowWrapper {
             "body": undefined,
             "buttonTitle": "Button",
             "children": Array [
-              <View
+              <Component
                 style={
                   Object {
                     "alignItems": "flex-end",
@@ -758,8 +758,8 @@ ShallowWrapper {
                   </Text>
                    in Pangea
                 </Text>
-              </View>,
-              <View
+              </Component>,
+              <Component
                 style={
                   Object {
                     "alignItems": "stretch",
@@ -771,7 +771,7 @@ ShallowWrapper {
                   }
                 }
               >
-                <View
+                <Component
                   style={
                     Object {
                       "height": 30,
@@ -797,7 +797,7 @@ ShallowWrapper {
                   >
                     Newest Nations
                   </Text>
-                </View>
+                </Component>
                 <FlatList
                   ItemSeparatorComponent={[Function]}
                   data={Array []}
@@ -813,7 +813,7 @@ ShallowWrapper {
                   updateCellsBatchingPeriod={50}
                   windowSize={21}
                 />
-              </View>,
+              </Component>,
             ],
             "childrenContainerStyle": Object {},
             "icon": undefined,
@@ -965,7 +965,7 @@ ShallowWrapper {
               "nodeType": "class",
               "props": Object {
                 "children": Array [
-                  <View
+                  <Component
                     style={
                       Object {
                         "height": 30,
@@ -991,7 +991,7 @@ ShallowWrapper {
                     >
                       Newest Nations
                     </Text>
-                  </View>,
+                  </Component>,
                   <FlatList
                     ItemSeparatorComponent={[Function]}
                     data={Array []}

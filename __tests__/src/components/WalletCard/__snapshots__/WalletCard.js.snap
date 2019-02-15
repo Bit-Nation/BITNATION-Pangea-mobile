@@ -24,7 +24,7 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "children": <View
+      "children": <Component
         style={
           Object {
             "alignItems": "stretch",
@@ -47,7 +47,7 @@ ShallowWrapper {
             }
           }
         />
-        <View
+        <Component
           style={
             Object {
               "flex": 1,
@@ -56,7 +56,7 @@ ShallowWrapper {
             }
           }
         >
-          <View
+          <Component
             style={
               Object {
                 "flex": 1,
@@ -87,14 +87,14 @@ ShallowWrapper {
           >
             Testing balance
           </Styled(Text)>
-          <View
+          <Component
             style={
               Object {
                 "flex": 1,
               }
             }
           />
-          <View
+          <Component
             style={
               Object {
                 "flexDirection": "row",
@@ -170,9 +170,9 @@ ShallowWrapper {
                 Transactions
               </Styled(Text)>
             </Styled(Button)>
-          </View>
-        </View>
-      </View>,
+          </Component>
+        </Component>
+      </Component>,
       "style": Object {
         "alignItems": "stretch",
         "backgroundColor": "transparent",
@@ -199,7 +199,7 @@ ShallowWrapper {
               }
             }
           />,
-          <View
+          <Component
             style={
               Object {
                 "flex": 1,
@@ -208,7 +208,7 @@ ShallowWrapper {
               }
             }
           >
-            <View
+            <Component
               style={
                 Object {
                   "flex": 1,
@@ -239,14 +239,14 @@ ShallowWrapper {
             >
               Testing balance
             </Styled(Text)>
-            <View
+            <Component
               style={
                 Object {
                   "flex": 1,
                 }
               }
             />
-            <View
+            <Component
               style={
                 Object {
                   "flexDirection": "row",
@@ -322,8 +322,8 @@ ShallowWrapper {
                   Transactions
                 </Styled(Text)>
               </Styled(Button)>
-            </View>
-          </View>,
+            </Component>
+          </Component>,
         ],
         "style": Object {
           "alignItems": "stretch",
@@ -359,7 +359,7 @@ ShallowWrapper {
           "nodeType": "class",
           "props": Object {
             "children": Array [
-              <View
+              <Component
                 style={
                   Object {
                     "flex": 1,
@@ -390,14 +390,14 @@ ShallowWrapper {
               >
                 Testing balance
               </Styled(Text)>,
-              <View
+              <Component
                 style={
                   Object {
                     "flex": 1,
                   }
                 }
               />,
-              <View
+              <Component
                 style={
                   Object {
                     "flexDirection": "row",
@@ -473,7 +473,7 @@ ShallowWrapper {
                     Transactions
                   </Styled(Text)>
                 </Styled(Button)>
-              </View>,
+              </Component>,
             ],
             "style": Object {
               "flex": 1,
@@ -765,7 +765,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "children": <View
+        "children": <Component
           style={
             Object {
               "alignItems": "stretch",
@@ -788,7 +788,7 @@ ShallowWrapper {
               }
             }
           />
-          <View
+          <Component
             style={
               Object {
                 "flex": 1,
@@ -797,7 +797,7 @@ ShallowWrapper {
               }
             }
           >
-            <View
+            <Component
               style={
                 Object {
                   "flex": 1,
@@ -828,14 +828,14 @@ ShallowWrapper {
             >
               Testing balance
             </Styled(Text)>
-            <View
+            <Component
               style={
                 Object {
                   "flex": 1,
                 }
               }
             />
-            <View
+            <Component
               style={
                 Object {
                   "flexDirection": "row",
@@ -911,9 +911,9 @@ ShallowWrapper {
                   Transactions
                 </Styled(Text)>
               </Styled(Button)>
-            </View>
-          </View>
-        </View>,
+            </Component>
+          </Component>
+        </Component>,
         "style": Object {
           "alignItems": "stretch",
           "backgroundColor": "transparent",
@@ -940,7 +940,7 @@ ShallowWrapper {
                 }
               }
             />,
-            <View
+            <Component
               style={
                 Object {
                   "flex": 1,
@@ -949,7 +949,7 @@ ShallowWrapper {
                 }
               }
             >
-              <View
+              <Component
                 style={
                   Object {
                     "flex": 1,
@@ -980,14 +980,14 @@ ShallowWrapper {
               >
                 Testing balance
               </Styled(Text)>
-              <View
+              <Component
                 style={
                   Object {
                     "flex": 1,
                   }
                 }
               />
-              <View
+              <Component
                 style={
                   Object {
                     "flexDirection": "row",
@@ -1063,8 +1063,8 @@ ShallowWrapper {
                     Transactions
                   </Styled(Text)>
                 </Styled(Button)>
-              </View>
-            </View>,
+              </Component>
+            </Component>,
           ],
           "style": Object {
             "alignItems": "stretch",
@@ -1100,7 +1100,7 @@ ShallowWrapper {
             "nodeType": "class",
             "props": Object {
               "children": Array [
-                <View
+                <Component
                   style={
                     Object {
                       "flex": 1,
@@ -1131,14 +1131,14 @@ ShallowWrapper {
                 >
                   Testing balance
                 </Styled(Text)>,
-                <View
+                <Component
                   style={
                     Object {
                       "flex": 1,
                     }
                   }
                 />,
-                <View
+                <Component
                   style={
                     Object {
                       "flexDirection": "row",
@@ -1214,7 +1214,7 @@ ShallowWrapper {
                       Transactions
                     </Styled(Text)>
                   </Styled(Button)>
-                </View>,
+                </Component>,
               ],
               "style": Object {
                 "flex": 1,

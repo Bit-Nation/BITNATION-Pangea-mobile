@@ -90,7 +90,7 @@ ShallowWrapper {
           }
           value=""
         />,
-        <View
+        <Component
           style={
             Object {
               "marginLeft": 13,
@@ -110,7 +110,7 @@ ShallowWrapper {
             }
             title="OK"
           />
-        </View>,
+        </Component>,
         false,
       ],
       "style": Object {
@@ -265,7 +265,7 @@ ShallowWrapper {
             }
             value=""
           />,
-          <View
+          <Component
             style={
               Object {
                 "marginLeft": 13,
@@ -285,7 +285,7 @@ ShallowWrapper {
               }
               title="OK"
             />
-          </View>,
+          </Component>,
           false,
         ],
         "style": Object {

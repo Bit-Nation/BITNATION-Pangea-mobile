@@ -50,7 +50,7 @@ ShallowWrapper {
         <FakeNavigationBar
           navBarHidden={false}
         />,
-        <View
+        <Component
           style={
             Object {
               "alignContent": "flex-start",
@@ -62,7 +62,7 @@ ShallowWrapper {
             }
           }
         >
-          <View
+          <Component
             style={
               Object {
                 "height": 18,
@@ -117,7 +117,7 @@ ShallowWrapper {
                 ]
               }
             />
-            <View
+            <Component
               style={
                 Object {
                   "backgroundColor": "rgba(27,57,92,0.7)",
@@ -142,8 +142,8 @@ ShallowWrapper {
                   }
                 }
               />
-            </View>
-            <View
+            </Component>
+            <Component
               style={
                 Object {
                   "flexDirection": "row",
@@ -173,9 +173,9 @@ ShallowWrapper {
                 }
                 title="Next"
               />
-            </View>
+            </Component>
           </PanelView>
-        </View>,
+        </Component>,
       ],
       "style": Object {
         "alignItems": "stretch",
@@ -215,7 +215,7 @@ ShallowWrapper {
         "nodeType": "class",
         "props": Object {
           "children": Array [
-            <View
+            <Component
               style={
                 Object {
                   "height": 18,
@@ -270,7 +270,7 @@ ShallowWrapper {
                   ]
                 }
               />
-              <View
+              <Component
                 style={
                   Object {
                     "backgroundColor": "rgba(27,57,92,0.7)",
@@ -295,8 +295,8 @@ ShallowWrapper {
                     }
                   }
                 />
-              </View>
-              <View
+              </Component>
+              <Component
                 style={
                   Object {
                     "flexDirection": "row",
@@ -326,7 +326,7 @@ ShallowWrapper {
                   }
                   title="Next"
                 />
-              </View>
+              </Component>
             </PanelView>,
           ],
           "style": Object {
@@ -368,7 +368,7 @@ ShallowWrapper {
                     ]
                   }
                 />,
-                <View
+                <Component
                   style={
                     Object {
                       "backgroundColor": "rgba(27,57,92,0.7)",
@@ -393,8 +393,8 @@ ShallowWrapper {
                       }
                     }
                   />
-                </View>,
-                <View
+                </Component>,
+                <Component
                   style={
                     Object {
                       "flexDirection": "row",
@@ -424,7 +424,7 @@ ShallowWrapper {
                     }
                     title="Next"
                   />
-                </View>,
+                </Component>,
               ],
               "childrenContainerStyle": Object {
                 "flex": 0,
@@ -614,7 +614,7 @@ ShallowWrapper {
           <FakeNavigationBar
             navBarHidden={false}
           />,
-          <View
+          <Component
             style={
               Object {
                 "alignContent": "flex-start",
@@ -626,7 +626,7 @@ ShallowWrapper {
               }
             }
           >
-            <View
+            <Component
               style={
                 Object {
                   "height": 18,
@@ -681,7 +681,7 @@ ShallowWrapper {
                   ]
                 }
               />
-              <View
+              <Component
                 style={
                   Object {
                     "backgroundColor": "rgba(27,57,92,0.7)",
@@ -706,8 +706,8 @@ ShallowWrapper {
                     }
                   }
                 />
-              </View>
-              <View
+              </Component>
+              <Component
                 style={
                   Object {
                     "flexDirection": "row",
@@ -737,9 +737,9 @@ ShallowWrapper {
                   }
                   title="Next"
                 />
-              </View>
+              </Component>
             </PanelView>
-          </View>,
+          </Component>,
         ],
         "style": Object {
           "alignItems": "stretch",
@@ -779,7 +779,7 @@ ShallowWrapper {
           "nodeType": "class",
           "props": Object {
             "children": Array [
-              <View
+              <Component
                 style={
                   Object {
                     "height": 18,
@@ -834,7 +834,7 @@ ShallowWrapper {
                     ]
                   }
                 />
-                <View
+                <Component
                   style={
                     Object {
                       "backgroundColor": "rgba(27,57,92,0.7)",
@@ -859,8 +859,8 @@ ShallowWrapper {
                       }
                     }
                   />
-                </View>
-                <View
+                </Component>
+                <Component
                   style={
                     Object {
                       "flexDirection": "row",
@@ -890,7 +890,7 @@ ShallowWrapper {
                     }
                     title="Next"
                   />
-                </View>
+                </Component>
               </PanelView>,
             ],
             "style": Object {
@@ -932,7 +932,7 @@ ShallowWrapper {
                       ]
                     }
                   />,
-                  <View
+                  <Component
                     style={
                       Object {
                         "backgroundColor": "rgba(27,57,92,0.7)",
@@ -957,8 +957,8 @@ ShallowWrapper {
                         }
                       }
                     />
-                  </View>,
-                  <View
+                  </Component>,
+                  <Component
                     style={
                       Object {
                         "flexDirection": "row",
@@ -988,7 +988,7 @@ ShallowWrapper {
                       }
                       title="Next"
                     />
-                  </View>,
+                  </Component>,
                 ],
                 "childrenContainerStyle": Object {
                   "flex": 0,

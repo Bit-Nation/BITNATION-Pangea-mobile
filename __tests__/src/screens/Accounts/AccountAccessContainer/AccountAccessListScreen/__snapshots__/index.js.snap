@@ -71,7 +71,7 @@ ShallowWrapper {
           updateCellsBatchingPeriod={50}
           windowSize={21}
         />,
-        <View
+        <Component
           style={
             Object {
               "backgroundColor": "rgba(255,255,255,0.45)",
@@ -135,10 +135,10 @@ ShallowWrapper {
               NEW ACCOUNT
             </Styled(Text)>
           </Styled(Button)>
-          <View
+          <Component
             style={undefined}
           />
-        </View>,
+        </Component>,
       ],
       "style": Object {
         "alignItems": "stretch",
@@ -263,7 +263,7 @@ ShallowWrapper {
                 NEW ACCOUNT
               </Styled(Text)>
             </Styled(Button)>,
-            <View
+            <Component
               style={undefined}
             />,
           ],
@@ -430,7 +430,7 @@ ShallowWrapper {
             updateCellsBatchingPeriod={50}
             windowSize={21}
           />,
-          <View
+          <Component
             style={
               Object {
                 "backgroundColor": "rgba(255,255,255,0.45)",
@@ -494,10 +494,10 @@ ShallowWrapper {
                 NEW ACCOUNT
               </Styled(Text)>
             </Styled(Button)>
-            <View
+            <Component
               style={undefined}
             />
-          </View>,
+          </Component>,
         ],
         "style": Object {
           "alignItems": "stretch",
@@ -622,7 +622,7 @@ ShallowWrapper {
                   NEW ACCOUNT
                 </Styled(Text)>
               </Styled(Button)>,
-              <View
+              <Component
                 style={undefined}
               />,
             ],

@@ -19,7 +19,7 @@ import com.reactnativenavigation.react.ReactGateway;
 public class MainApplication extends NavigationApplication {
 
     protected ReactGateway createReactGateway() {
-        ReactNativeHost host = new NavigationReactNativeHost(this, isDebug(), createAdditionalReactPackages()) {
+        NavigationReactNativeHost host = new NavigationReactNativeHost(this, isDebug(), createAdditionalReactPackages()) {
             protected String getJSMainModuleName() {
                 return "index";
             }

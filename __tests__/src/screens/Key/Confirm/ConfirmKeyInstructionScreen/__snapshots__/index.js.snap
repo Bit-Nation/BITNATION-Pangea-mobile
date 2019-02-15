@@ -59,7 +59,7 @@ ShallowWrapper {
         <FakeNavigationBar
           navBarHidden={false}
         />,
-        <View
+        <Component
           style={
             Object {
               "alignContent": "flex-start",
@@ -127,7 +127,7 @@ ShallowWrapper {
                   ]
                 }
               />
-              <View
+              <Component
                 style={
                   Object {
                     "alignItems": "center",
@@ -145,7 +145,7 @@ ShallowWrapper {
                     }
                   }
                 />
-              </View>
+              </Component>
               <BodyParagraphs
                 paragraphs={
                   Array [
@@ -155,7 +155,7 @@ ShallowWrapper {
               />
             </PanelView>
           </ScrollView>
-        </View>,
+        </Component>,
       ],
       "style": Object {
         "alignItems": "stretch",
@@ -250,7 +250,7 @@ ShallowWrapper {
                   ]
                 }
               />
-              <View
+              <Component
                 style={
                   Object {
                     "alignItems": "center",
@@ -268,7 +268,7 @@ ShallowWrapper {
                     }
                   }
                 />
-              </View>
+              </Component>
               <BodyParagraphs
                 paragraphs={
                   Array [
@@ -337,7 +337,7 @@ ShallowWrapper {
                   ]
                 }
               />
-              <View
+              <Component
                 style={
                   Object {
                     "alignItems": "center",
@@ -355,7 +355,7 @@ ShallowWrapper {
                     }
                   }
                 />
-              </View>
+              </Component>
               <BodyParagraphs
                 paragraphs={
                   Array [
@@ -387,7 +387,7 @@ ShallowWrapper {
                     ]
                   }
                 />,
-                <View
+                <Component
                   style={
                     Object {
                       "alignItems": "center",
@@ -405,7 +405,7 @@ ShallowWrapper {
                       }
                     }
                   />
-                </View>,
+                </Component>,
                 <BodyParagraphs
                   paragraphs={
                     Array [
@@ -535,7 +535,7 @@ ShallowWrapper {
           <FakeNavigationBar
             navBarHidden={false}
           />,
-          <View
+          <Component
             style={
               Object {
                 "alignContent": "flex-start",
@@ -603,7 +603,7 @@ ShallowWrapper {
                     ]
                   }
                 />
-                <View
+                <Component
                   style={
                     Object {
                       "alignItems": "center",
@@ -621,7 +621,7 @@ ShallowWrapper {
                       }
                     }
                   />
-                </View>
+                </Component>
                 <BodyParagraphs
                   paragraphs={
                     Array [
@@ -631,7 +631,7 @@ ShallowWrapper {
                 />
               </PanelView>
             </ScrollView>
-          </View>,
+          </Component>,
         ],
         "style": Object {
           "alignItems": "stretch",
@@ -726,7 +726,7 @@ ShallowWrapper {
                     ]
                   }
                 />
-                <View
+                <Component
                   style={
                     Object {
                       "alignItems": "center",
@@ -744,7 +744,7 @@ ShallowWrapper {
                       }
                     }
                   />
-                </View>
+                </Component>
                 <BodyParagraphs
                   paragraphs={
                     Array [
@@ -813,7 +813,7 @@ ShallowWrapper {
                     ]
                   }
                 />
-                <View
+                <Component
                   style={
                     Object {
                       "alignItems": "center",
@@ -831,7 +831,7 @@ ShallowWrapper {
                       }
                     }
                   />
-                </View>
+                </Component>
                 <BodyParagraphs
                   paragraphs={
                     Array [
@@ -863,7 +863,7 @@ ShallowWrapper {
                       ]
                     }
                   />,
-                  <View
+                  <Component
                     style={
                       Object {
                         "alignItems": "center",
@@ -881,7 +881,7 @@ ShallowWrapper {
                         }
                       }
                     />
-                  </View>,
+                  </Component>,
                   <BodyParagraphs
                     paragraphs={
                       Array [

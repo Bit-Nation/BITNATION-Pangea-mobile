@@ -88,7 +88,7 @@ ShallowWrapper {
           }
           value=""
         />,
-        <View
+        <Component
           style={
             Object {
               "marginLeft": 13,
@@ -125,7 +125,7 @@ ShallowWrapper {
               OK
             </Styled(Text)>
           </Styled(Button)>
-        </View>,
+        </Component>,
         false,
       ],
       "style": Object {
@@ -323,7 +323,7 @@ ShallowWrapper {
             }
             value=""
           />,
-          <View
+          <Component
             style={
               Object {
                 "marginLeft": 13,
@@ -360,7 +360,7 @@ ShallowWrapper {
                 OK
               </Styled(Text)>
             </Styled(Button)>
-          </View>,
+          </Component>,
           false,
         ],
         "style": Object {

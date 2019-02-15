@@ -50,7 +50,7 @@ ShallowWrapper {
         <FakeNavigationBar
           navBarHidden={false}
         />,
-        <View
+        <Component
           style={
             Object {
               "alignContent": "flex-start",
@@ -113,7 +113,7 @@ ShallowWrapper {
               }
             />
           </PanelView>
-        </View>,
+        </Component>,
       ],
       "style": Object {
         "alignItems": "stretch",
@@ -298,7 +298,7 @@ ShallowWrapper {
           <FakeNavigationBar
             navBarHidden={false}
           />,
-          <View
+          <Component
             style={
               Object {
                 "alignContent": "flex-start",
@@ -361,7 +361,7 @@ ShallowWrapper {
                 }
               />
             </PanelView>
-          </View>,
+          </Component>,
         ],
         "style": Object {
           "alignItems": "stretch",

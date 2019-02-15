@@ -19,7 +19,7 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "children": <View
+      "children": <Component
         style={
           Object {
             "alignItems": "flex-start",
@@ -44,7 +44,7 @@ ShallowWrapper {
         >
           Test title
         </Text>
-      </View>,
+      </Component>,
       "style": Object {
         "marginBottom": 8,
         "marginHorizontal": 20,
@@ -111,7 +111,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "children": <View
+        "children": <Component
           style={
             Object {
               "alignItems": "flex-start",
@@ -136,7 +136,7 @@ ShallowWrapper {
           >
             Test title
           </Text>
-        </View>,
+        </Component>,
         "style": Object {
           "marginBottom": 8,
           "marginHorizontal": 20,

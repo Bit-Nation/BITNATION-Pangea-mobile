@@ -60,7 +60,7 @@ ShallowWrapper {
         <FakeNavigationBar
           navBarHidden={false}
         />,
-        <View
+        <Component
           style={
             Object {
               "alignContent": "flex-start",
@@ -87,7 +87,7 @@ ShallowWrapper {
             <ScreenTitle
               title="Create A Nation"
             />
-            <View
+            <Component
               style={
                 Object {
                   "alignContent": "flex-start",
@@ -99,7 +99,7 @@ ShallowWrapper {
                 }
               }
             >
-              <View
+              <Component
                 style={
                   Object {
                     "paddingBottom": 16,
@@ -123,8 +123,8 @@ ShallowWrapper {
                 >
                   Reclaim your sovereignty by creating your own decentralized borderless voluntary nation (DBVN).
                 </Text>
-              </View>
-            </View>
+              </Component>
+            </Component>
             <PanelView
               body={undefined}
               buttonTitle="Button"
@@ -162,7 +162,7 @@ ShallowWrapper {
                 }
               }
             >
-              <View
+              <Component
                 style={
                   Object {
                     "alignItems": "center",
@@ -170,7 +170,7 @@ ShallowWrapper {
                   }
                 }
               >
-                <View
+                <Component
                   style={
                     Object {
                       "alignItems": "stretch",
@@ -178,7 +178,7 @@ ShallowWrapper {
                     }
                   }
                 >
-                  <View
+                  <Component
                     style={
                       Object {
                         "alignItems": "center",
@@ -214,8 +214,8 @@ ShallowWrapper {
                       }
                       value=""
                     />
-                  </View>
-                  <View
+                  </Component>
+                  <Component
                     style={
                       Object {
                         "alignItems": "center",
@@ -253,9 +253,9 @@ ShallowWrapper {
                       }
                       value=""
                     />
-                  </View>
-                </View>
-              </View>
+                  </Component>
+                </Component>
+              </Component>
             </PanelView>
             <PanelView
               body={undefined}
@@ -294,7 +294,7 @@ ShallowWrapper {
                 }
               }
             >
-              <View
+              <Component
                 style={
                   Object {
                     "alignItems": "center",
@@ -302,7 +302,7 @@ ShallowWrapper {
                   }
                 }
               >
-                <View
+                <Component
                   style={
                     Object {
                       "alignItems": "stretch",
@@ -354,8 +354,8 @@ ShallowWrapper {
                     textColor="#58595B"
                     uniqueKey="id"
                   />
-                </View>
-              </View>
+                </Component>
+              </Component>
               <Text
                 accessible={true}
                 allowFontScaling={true}
@@ -411,7 +411,7 @@ ShallowWrapper {
                 }
               }
             >
-              <View
+              <Component
                 style={
                   Object {
                     "alignItems": "center",
@@ -419,7 +419,7 @@ ShallowWrapper {
                   }
                 }
               >
-                <View
+                <Component
                   style={
                     Object {
                       "alignItems": "stretch",
@@ -495,9 +495,9 @@ ShallowWrapper {
                     textColor="#58595B"
                     uniqueKey="id"
                   />
-                </View>
-              </View>
-              <View
+                </Component>
+              </Component>
+              <Component
                 style={
                   Object {
                     "alignItems": "center",
@@ -505,7 +505,7 @@ ShallowWrapper {
                   }
                 }
               >
-                <View
+                <Component
                   style={
                     Object {
                       "alignItems": "stretch",
@@ -573,9 +573,9 @@ ShallowWrapper {
                     textColor="#58595B"
                     uniqueKey="id"
                   />
-                </View>
-              </View>
-              <View
+                </Component>
+              </Component>
+              <Component
                 style={
                   Object {
                     "alignItems": "center",
@@ -583,7 +583,7 @@ ShallowWrapper {
                   }
                 }
               >
-                <View
+                <Component
                   style={
                     Object {
                       "alignItems": "stretch",
@@ -655,9 +655,9 @@ ShallowWrapper {
                     textColor="#58595B"
                     uniqueKey="id"
                   />
-                </View>
-              </View>
-              <View
+                </Component>
+              </Component>
+              <Component
                 style={
                   Object {
                     "alignItems": "center",
@@ -665,7 +665,7 @@ ShallowWrapper {
                   }
                 }
               >
-                <View
+                <Component
                   style={
                     Object {
                       "alignItems": "stretch",
@@ -729,9 +729,9 @@ ShallowWrapper {
                     textColor="#58595B"
                     uniqueKey="id"
                   />
-                  <View />
-                </View>
-              </View>
+                  <Component />
+                </Component>
+              </Component>
             </PanelView>
             <PanelView
               body={undefined}
@@ -770,7 +770,7 @@ ShallowWrapper {
                 }
               }
             >
-              <View
+              <Component
                 style={
                   Object {
                     "alignItems": "center",
@@ -778,7 +778,7 @@ ShallowWrapper {
                   }
                 }
               >
-                <View
+                <Component
                   style={
                     Object {
                       "alignItems": "stretch",
@@ -793,9 +793,9 @@ ShallowWrapper {
                     onValueChange={[Function]}
                     value={false}
                   />
-                </View>
-              </View>
-              <View
+                </Component>
+              </Component>
+              <Component
                 style={
                   Object {
                     "alignItems": "center",
@@ -803,7 +803,7 @@ ShallowWrapper {
                   }
                 }
               >
-                <View
+                <Component
                   style={
                     Object {
                       "alignItems": "stretch",
@@ -818,9 +818,9 @@ ShallowWrapper {
                     onValueChange={[Function]}
                     value={false}
                   />
-                </View>
-              </View>
-              <View
+                </Component>
+              </Component>
+              <Component
                 style={
                   Object {
                     "alignItems": "center",
@@ -828,7 +828,7 @@ ShallowWrapper {
                   }
                 }
               >
-                <View
+                <Component
                   style={
                     Object {
                       "alignItems": "stretch",
@@ -843,12 +843,12 @@ ShallowWrapper {
                     onValueChange={[Function]}
                     value={false}
                   />
-                </View>
-              </View>
+                </Component>
+              </Component>
             </PanelView>
           </ScrollView>
-        </View>,
-        <View
+        </Component>,
+        <Component
           style={
             Object {
               "alignItems": "stretch",
@@ -884,7 +884,7 @@ ShallowWrapper {
             onPress={[MockFunction]}
             title="SUBMIT"
           />
-        </View>,
+        </Component>,
         null,
       ],
       "style": Object {
@@ -939,7 +939,7 @@ ShallowWrapper {
             <ScreenTitle
               title="Create A Nation"
             />
-            <View
+            <Component
               style={
                 Object {
                   "alignContent": "flex-start",
@@ -951,7 +951,7 @@ ShallowWrapper {
                 }
               }
             >
-              <View
+              <Component
                 style={
                   Object {
                     "paddingBottom": 16,
@@ -975,8 +975,8 @@ ShallowWrapper {
                 >
                   Reclaim your sovereignty by creating your own decentralized borderless voluntary nation (DBVN).
                 </Text>
-              </View>
-            </View>
+              </Component>
+            </Component>
             <PanelView
               body={undefined}
               buttonTitle="Button"
@@ -1014,7 +1014,7 @@ ShallowWrapper {
                 }
               }
             >
-              <View
+              <Component
                 style={
                   Object {
                     "alignItems": "center",
@@ -1022,7 +1022,7 @@ ShallowWrapper {
                   }
                 }
               >
-                <View
+                <Component
                   style={
                     Object {
                       "alignItems": "stretch",
@@ -1030,7 +1030,7 @@ ShallowWrapper {
                     }
                   }
                 >
-                  <View
+                  <Component
                     style={
                       Object {
                         "alignItems": "center",
@@ -1066,8 +1066,8 @@ ShallowWrapper {
                       }
                       value=""
                     />
-                  </View>
-                  <View
+                  </Component>
+                  <Component
                     style={
                       Object {
                         "alignItems": "center",
@@ -1105,9 +1105,9 @@ ShallowWrapper {
                       }
                       value=""
                     />
-                  </View>
-                </View>
-              </View>
+                  </Component>
+                </Component>
+              </Component>
             </PanelView>
             <PanelView
               body={undefined}
@@ -1146,7 +1146,7 @@ ShallowWrapper {
                 }
               }
             >
-              <View
+              <Component
                 style={
                   Object {
                     "alignItems": "center",
@@ -1154,7 +1154,7 @@ ShallowWrapper {
                   }
                 }
               >
-                <View
+                <Component
                   style={
                     Object {
                       "alignItems": "stretch",
@@ -1206,8 +1206,8 @@ ShallowWrapper {
                     textColor="#58595B"
                     uniqueKey="id"
                   />
-                </View>
-              </View>
+                </Component>
+              </Component>
               <Text
                 accessible={true}
                 allowFontScaling={true}
@@ -1263,7 +1263,7 @@ ShallowWrapper {
                 }
               }
             >
-              <View
+              <Component
                 style={
                   Object {
                     "alignItems": "center",
@@ -1271,7 +1271,7 @@ ShallowWrapper {
                   }
                 }
               >
-                <View
+                <Component
                   style={
                     Object {
                       "alignItems": "stretch",
@@ -1347,9 +1347,9 @@ ShallowWrapper {
                     textColor="#58595B"
                     uniqueKey="id"
                   />
-                </View>
-              </View>
-              <View
+                </Component>
+              </Component>
+              <Component
                 style={
                   Object {
                     "alignItems": "center",
@@ -1357,7 +1357,7 @@ ShallowWrapper {
                   }
                 }
               >
-                <View
+                <Component
                   style={
                     Object {
                       "alignItems": "stretch",
@@ -1425,9 +1425,9 @@ ShallowWrapper {
                     textColor="#58595B"
                     uniqueKey="id"
                   />
-                </View>
-              </View>
-              <View
+                </Component>
+              </Component>
+              <Component
                 style={
                   Object {
                     "alignItems": "center",
@@ -1435,7 +1435,7 @@ ShallowWrapper {
                   }
                 }
               >
-                <View
+                <Component
                   style={
                     Object {
                       "alignItems": "stretch",
@@ -1507,9 +1507,9 @@ ShallowWrapper {
                     textColor="#58595B"
                     uniqueKey="id"
                   />
-                </View>
-              </View>
-              <View
+                </Component>
+              </Component>
+              <Component
                 style={
                   Object {
                     "alignItems": "center",
@@ -1517,7 +1517,7 @@ ShallowWrapper {
                   }
                 }
               >
-                <View
+                <Component
                   style={
                     Object {
                       "alignItems": "stretch",
@@ -1581,9 +1581,9 @@ ShallowWrapper {
                     textColor="#58595B"
                     uniqueKey="id"
                   />
-                  <View />
-                </View>
-              </View>
+                  <Component />
+                </Component>
+              </Component>
             </PanelView>
             <PanelView
               body={undefined}
@@ -1622,7 +1622,7 @@ ShallowWrapper {
                 }
               }
             >
-              <View
+              <Component
                 style={
                   Object {
                     "alignItems": "center",
@@ -1630,7 +1630,7 @@ ShallowWrapper {
                   }
                 }
               >
-                <View
+                <Component
                   style={
                     Object {
                       "alignItems": "stretch",
@@ -1645,9 +1645,9 @@ ShallowWrapper {
                     onValueChange={[Function]}
                     value={false}
                   />
-                </View>
-              </View>
-              <View
+                </Component>
+              </Component>
+              <Component
                 style={
                   Object {
                     "alignItems": "center",
@@ -1655,7 +1655,7 @@ ShallowWrapper {
                   }
                 }
               >
-                <View
+                <Component
                   style={
                     Object {
                       "alignItems": "stretch",
@@ -1670,9 +1670,9 @@ ShallowWrapper {
                     onValueChange={[Function]}
                     value={false}
                   />
-                </View>
-              </View>
-              <View
+                </Component>
+              </Component>
+              <Component
                 style={
                   Object {
                     "alignItems": "center",
@@ -1680,7 +1680,7 @@ ShallowWrapper {
                   }
                 }
               >
-                <View
+                <Component
                   style={
                     Object {
                       "alignItems": "stretch",
@@ -1695,8 +1695,8 @@ ShallowWrapper {
                     onValueChange={[Function]}
                     value={false}
                   />
-                </View>
-              </View>
+                </Component>
+              </Component>
             </PanelView>
           </ScrollView>,
           "style": Object {
@@ -1718,7 +1718,7 @@ ShallowWrapper {
               <ScreenTitle
                 title="Create A Nation"
               />,
-              <View
+              <Component
                 style={
                   Object {
                     "alignContent": "flex-start",
@@ -1730,7 +1730,7 @@ ShallowWrapper {
                   }
                 }
               >
-                <View
+                <Component
                   style={
                     Object {
                       "paddingBottom": 16,
@@ -1754,8 +1754,8 @@ ShallowWrapper {
                   >
                     Reclaim your sovereignty by creating your own decentralized borderless voluntary nation (DBVN).
                   </Text>
-                </View>
-              </View>,
+                </Component>
+              </Component>,
               <PanelView
                 body={undefined}
                 buttonTitle="Button"
@@ -1793,7 +1793,7 @@ ShallowWrapper {
                   }
                 }
               >
-                <View
+                <Component
                   style={
                     Object {
                       "alignItems": "center",
@@ -1801,7 +1801,7 @@ ShallowWrapper {
                     }
                   }
                 >
-                  <View
+                  <Component
                     style={
                       Object {
                         "alignItems": "stretch",
@@ -1809,7 +1809,7 @@ ShallowWrapper {
                       }
                     }
                   >
-                    <View
+                    <Component
                       style={
                         Object {
                           "alignItems": "center",
@@ -1845,8 +1845,8 @@ ShallowWrapper {
                         }
                         value=""
                       />
-                    </View>
-                    <View
+                    </Component>
+                    <Component
                       style={
                         Object {
                           "alignItems": "center",
@@ -1884,9 +1884,9 @@ ShallowWrapper {
                         }
                         value=""
                       />
-                    </View>
-                  </View>
-                </View>
+                    </Component>
+                  </Component>
+                </Component>
               </PanelView>,
               <PanelView
                 body={undefined}
@@ -1925,7 +1925,7 @@ ShallowWrapper {
                   }
                 }
               >
-                <View
+                <Component
                   style={
                     Object {
                       "alignItems": "center",
@@ -1933,7 +1933,7 @@ ShallowWrapper {
                     }
                   }
                 >
-                  <View
+                  <Component
                     style={
                       Object {
                         "alignItems": "stretch",
@@ -1985,8 +1985,8 @@ ShallowWrapper {
                       textColor="#58595B"
                       uniqueKey="id"
                     />
-                  </View>
-                </View>
+                  </Component>
+                </Component>
                 <Text
                   accessible={true}
                   allowFontScaling={true}
@@ -2042,7 +2042,7 @@ ShallowWrapper {
                   }
                 }
               >
-                <View
+                <Component
                   style={
                     Object {
                       "alignItems": "center",
@@ -2050,7 +2050,7 @@ ShallowWrapper {
                     }
                   }
                 >
-                  <View
+                  <Component
                     style={
                       Object {
                         "alignItems": "stretch",
@@ -2126,9 +2126,9 @@ ShallowWrapper {
                       textColor="#58595B"
                       uniqueKey="id"
                     />
-                  </View>
-                </View>
-                <View
+                  </Component>
+                </Component>
+                <Component
                   style={
                     Object {
                       "alignItems": "center",
@@ -2136,7 +2136,7 @@ ShallowWrapper {
                     }
                   }
                 >
-                  <View
+                  <Component
                     style={
                       Object {
                         "alignItems": "stretch",
@@ -2204,9 +2204,9 @@ ShallowWrapper {
                       textColor="#58595B"
                       uniqueKey="id"
                     />
-                  </View>
-                </View>
-                <View
+                  </Component>
+                </Component>
+                <Component
                   style={
                     Object {
                       "alignItems": "center",
@@ -2214,7 +2214,7 @@ ShallowWrapper {
                     }
                   }
                 >
-                  <View
+                  <Component
                     style={
                       Object {
                         "alignItems": "stretch",
@@ -2286,9 +2286,9 @@ ShallowWrapper {
                       textColor="#58595B"
                       uniqueKey="id"
                     />
-                  </View>
-                </View>
-                <View
+                  </Component>
+                </Component>
+                <Component
                   style={
                     Object {
                       "alignItems": "center",
@@ -2296,7 +2296,7 @@ ShallowWrapper {
                     }
                   }
                 >
-                  <View
+                  <Component
                     style={
                       Object {
                         "alignItems": "stretch",
@@ -2360,9 +2360,9 @@ ShallowWrapper {
                       textColor="#58595B"
                       uniqueKey="id"
                     />
-                    <View />
-                  </View>
-                </View>
+                    <Component />
+                  </Component>
+                </Component>
               </PanelView>,
               <PanelView
                 body={undefined}
@@ -2401,7 +2401,7 @@ ShallowWrapper {
                   }
                 }
               >
-                <View
+                <Component
                   style={
                     Object {
                       "alignItems": "center",
@@ -2409,7 +2409,7 @@ ShallowWrapper {
                     }
                   }
                 >
-                  <View
+                  <Component
                     style={
                       Object {
                         "alignItems": "stretch",
@@ -2424,9 +2424,9 @@ ShallowWrapper {
                       onValueChange={[Function]}
                       value={false}
                     />
-                  </View>
-                </View>
-                <View
+                  </Component>
+                </Component>
+                <Component
                   style={
                     Object {
                       "alignItems": "center",
@@ -2434,7 +2434,7 @@ ShallowWrapper {
                     }
                   }
                 >
-                  <View
+                  <Component
                     style={
                       Object {
                         "alignItems": "stretch",
@@ -2449,9 +2449,9 @@ ShallowWrapper {
                       onValueChange={[Function]}
                       value={false}
                     />
-                  </View>
-                </View>
-                <View
+                  </Component>
+                </Component>
+                <Component
                   style={
                     Object {
                       "alignItems": "center",
@@ -2459,7 +2459,7 @@ ShallowWrapper {
                     }
                   }
                 >
-                  <View
+                  <Component
                     style={
                       Object {
                         "alignItems": "stretch",
@@ -2474,8 +2474,8 @@ ShallowWrapper {
                       onValueChange={[Function]}
                       value={false}
                     />
-                  </View>
-                </View>
+                  </Component>
+                </Component>
               </PanelView>,
             ],
             "contentContainerStyle": Object {
@@ -2503,7 +2503,7 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "class",
               "props": Object {
-                "children": <View
+                "children": <Component
                   style={
                     Object {
                       "paddingBottom": 16,
@@ -2527,7 +2527,7 @@ ShallowWrapper {
                   >
                     Reclaim your sovereignty by creating your own decentralized borderless voluntary nation (DBVN).
                   </Text>
-                </View>,
+                </Component>,
                 "style": Object {
                   "alignContent": "flex-start",
                   "flex": 1,
@@ -2598,7 +2598,7 @@ ShallowWrapper {
               "props": Object {
                 "body": undefined,
                 "buttonTitle": "Button",
-                "children": <View
+                "children": <Component
                   style={
                     Object {
                       "alignItems": "center",
@@ -2606,7 +2606,7 @@ ShallowWrapper {
                     }
                   }
                 >
-                  <View
+                  <Component
                     style={
                       Object {
                         "alignItems": "stretch",
@@ -2614,7 +2614,7 @@ ShallowWrapper {
                       }
                     }
                   >
-                    <View
+                    <Component
                       style={
                         Object {
                           "alignItems": "center",
@@ -2650,8 +2650,8 @@ ShallowWrapper {
                         }
                         value=""
                       />
-                    </View>
-                    <View
+                    </Component>
+                    <Component
                       style={
                         Object {
                           "alignItems": "center",
@@ -2689,9 +2689,9 @@ ShallowWrapper {
                         }
                         value=""
                       />
-                    </View>
-                  </View>
-                </View>,
+                    </Component>
+                  </Component>
+                </Component>,
                 "childrenContainerStyle": Object {},
                 "icon": undefined,
                 "onButtonClick": null,
@@ -2728,7 +2728,7 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "class",
                 "props": Object {
-                  "children": <View
+                  "children": <Component
                     style={
                       Object {
                         "alignItems": "stretch",
@@ -2736,7 +2736,7 @@ ShallowWrapper {
                       }
                     }
                   >
-                    <View
+                    <Component
                       style={
                         Object {
                           "alignItems": "center",
@@ -2772,8 +2772,8 @@ ShallowWrapper {
                         }
                         value=""
                       />
-                    </View>
-                    <View
+                    </Component>
+                    <Component
                       style={
                         Object {
                           "alignItems": "center",
@@ -2811,8 +2811,8 @@ ShallowWrapper {
                         }
                         value=""
                       />
-                    </View>
-                  </View>,
+                    </Component>
+                  </Component>,
                   "style": Object {
                     "alignItems": "center",
                     "flexDirection": "row",
@@ -2825,7 +2825,7 @@ ShallowWrapper {
                   "nodeType": "class",
                   "props": Object {
                     "children": Array [
-                      <View
+                      <Component
                         style={
                           Object {
                             "alignItems": "center",
@@ -2861,8 +2861,8 @@ ShallowWrapper {
                           }
                           value=""
                         />
-                      </View>,
-                      <View
+                      </Component>,
+                      <Component
                         style={
                           Object {
                             "alignItems": "center",
@@ -2900,7 +2900,7 @@ ShallowWrapper {
                           }
                           value=""
                         />
-                      </View>,
+                      </Component>,
                     ],
                     "style": Object {
                       "alignItems": "stretch",
@@ -3078,7 +3078,7 @@ ShallowWrapper {
                 "body": undefined,
                 "buttonTitle": "Button",
                 "children": Array [
-                  <View
+                  <Component
                     style={
                       Object {
                         "alignItems": "center",
@@ -3086,7 +3086,7 @@ ShallowWrapper {
                       }
                     }
                   >
-                    <View
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -3138,8 +3138,8 @@ ShallowWrapper {
                         textColor="#58595B"
                         uniqueKey="id"
                       />
-                    </View>
-                  </View>,
+                    </Component>
+                  </Component>,
                   false,
                   <Text
                     accessible={true}
@@ -3196,7 +3196,7 @@ ShallowWrapper {
                   "key": undefined,
                   "nodeType": "class",
                   "props": Object {
-                    "children": <View
+                    "children": <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -3248,7 +3248,7 @@ ShallowWrapper {
                         textColor="#58595B"
                         uniqueKey="id"
                       />
-                    </View>,
+                    </Component>,
                     "style": Object {
                       "alignItems": "center",
                       "flexDirection": "row",
@@ -3396,7 +3396,7 @@ ShallowWrapper {
                 "body": undefined,
                 "buttonTitle": "Button",
                 "children": Array [
-                  <View
+                  <Component
                     style={
                       Object {
                         "alignItems": "center",
@@ -3404,7 +3404,7 @@ ShallowWrapper {
                       }
                     }
                   >
-                    <View
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -3480,9 +3480,9 @@ ShallowWrapper {
                         textColor="#58595B"
                         uniqueKey="id"
                       />
-                    </View>
-                  </View>,
-                  <View
+                    </Component>
+                  </Component>,
+                  <Component
                     style={
                       Object {
                         "alignItems": "center",
@@ -3490,7 +3490,7 @@ ShallowWrapper {
                       }
                     }
                   >
-                    <View
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -3558,9 +3558,9 @@ ShallowWrapper {
                         textColor="#58595B"
                         uniqueKey="id"
                       />
-                    </View>
-                  </View>,
-                  <View
+                    </Component>
+                  </Component>,
+                  <Component
                     style={
                       Object {
                         "alignItems": "center",
@@ -3568,7 +3568,7 @@ ShallowWrapper {
                       }
                     }
                   >
-                    <View
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -3640,9 +3640,9 @@ ShallowWrapper {
                         textColor="#58595B"
                         uniqueKey="id"
                       />
-                    </View>
-                  </View>,
-                  <View
+                    </Component>
+                  </Component>,
+                  <Component
                     style={
                       Object {
                         "alignItems": "center",
@@ -3650,7 +3650,7 @@ ShallowWrapper {
                       }
                     }
                   >
-                    <View
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -3714,9 +3714,9 @@ ShallowWrapper {
                         textColor="#58595B"
                         uniqueKey="id"
                       />
-                      <View />
-                    </View>
-                  </View>,
+                      <Component />
+                    </Component>
+                  </Component>,
                 ],
                 "childrenContainerStyle": Object {},
                 "icon": " ",
@@ -3755,7 +3755,7 @@ ShallowWrapper {
                   "key": undefined,
                   "nodeType": "class",
                   "props": Object {
-                    "children": <View
+                    "children": <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -3831,7 +3831,7 @@ ShallowWrapper {
                         textColor="#58595B"
                         uniqueKey="id"
                       />
-                    </View>,
+                    </Component>,
                     "style": Object {
                       "alignItems": "center",
                       "flexDirection": "row",
@@ -3996,7 +3996,7 @@ ShallowWrapper {
                   "key": undefined,
                   "nodeType": "class",
                   "props": Object {
-                    "children": <View
+                    "children": <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -4064,7 +4064,7 @@ ShallowWrapper {
                         textColor="#58595B"
                         uniqueKey="id"
                       />
-                    </View>,
+                    </Component>,
                     "style": Object {
                       "alignItems": "center",
                       "flexDirection": "row",
@@ -4213,7 +4213,7 @@ ShallowWrapper {
                   "key": undefined,
                   "nodeType": "class",
                   "props": Object {
-                    "children": <View
+                    "children": <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -4285,7 +4285,7 @@ ShallowWrapper {
                         textColor="#58595B"
                         uniqueKey="id"
                       />
-                    </View>,
+                    </Component>,
                     "style": Object {
                       "alignItems": "center",
                       "flexDirection": "row",
@@ -4442,7 +4442,7 @@ ShallowWrapper {
                   "key": undefined,
                   "nodeType": "class",
                   "props": Object {
-                    "children": <View
+                    "children": <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -4506,8 +4506,8 @@ ShallowWrapper {
                         textColor="#58595B"
                         uniqueKey="id"
                       />
-                      <View />
-                    </View>,
+                      <Component />
+                    </Component>,
                     "style": Object {
                       "alignItems": "center",
                       "flexDirection": "row",
@@ -4576,7 +4576,7 @@ ShallowWrapper {
                           textColor="#58595B"
                           uniqueKey="id"
                         />,
-                        <View />,
+                        <Component />,
                       ],
                       "style": Object {
                         "alignItems": "stretch",
@@ -4672,7 +4672,7 @@ ShallowWrapper {
                 "body": undefined,
                 "buttonTitle": "Button",
                 "children": Array [
-                  <View
+                  <Component
                     style={
                       Object {
                         "alignItems": "center",
@@ -4680,7 +4680,7 @@ ShallowWrapper {
                       }
                     }
                   >
-                    <View
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -4695,9 +4695,9 @@ ShallowWrapper {
                         onValueChange={[Function]}
                         value={false}
                       />
-                    </View>
-                  </View>,
-                  <View
+                    </Component>
+                  </Component>,
+                  <Component
                     style={
                       Object {
                         "alignItems": "center",
@@ -4705,7 +4705,7 @@ ShallowWrapper {
                       }
                     }
                   >
-                    <View
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -4720,9 +4720,9 @@ ShallowWrapper {
                         onValueChange={[Function]}
                         value={false}
                       />
-                    </View>
-                  </View>,
-                  <View
+                    </Component>
+                  </Component>,
+                  <Component
                     style={
                       Object {
                         "alignItems": "center",
@@ -4730,7 +4730,7 @@ ShallowWrapper {
                       }
                     }
                   >
-                    <View
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -4745,8 +4745,8 @@ ShallowWrapper {
                         onValueChange={[Function]}
                         value={false}
                       />
-                    </View>
-                  </View>,
+                    </Component>
+                  </Component>,
                 ],
                 "childrenContainerStyle": Object {},
                 "icon": " ",
@@ -4785,7 +4785,7 @@ ShallowWrapper {
                   "key": undefined,
                   "nodeType": "class",
                   "props": Object {
-                    "children": <View
+                    "children": <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -4800,7 +4800,7 @@ ShallowWrapper {
                         onValueChange={[Function]}
                         value={false}
                       />
-                    </View>,
+                    </Component>,
                     "style": Object {
                       "alignItems": "center",
                       "flexDirection": "row",
@@ -4849,7 +4849,7 @@ ShallowWrapper {
                   "key": undefined,
                   "nodeType": "class",
                   "props": Object {
-                    "children": <View
+                    "children": <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -4864,7 +4864,7 @@ ShallowWrapper {
                         onValueChange={[Function]}
                         value={false}
                       />
-                    </View>,
+                    </Component>,
                     "style": Object {
                       "alignItems": "center",
                       "flexDirection": "row",
@@ -4913,7 +4913,7 @@ ShallowWrapper {
                   "key": undefined,
                   "nodeType": "class",
                   "props": Object {
-                    "children": <View
+                    "children": <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -4928,7 +4928,7 @@ ShallowWrapper {
                         onValueChange={[Function]}
                         value={false}
                       />
-                    </View>,
+                    </Component>,
                     "style": Object {
                       "alignItems": "center",
                       "flexDirection": "row",
@@ -5099,7 +5099,7 @@ ShallowWrapper {
           <FakeNavigationBar
             navBarHidden={false}
           />,
-          <View
+          <Component
             style={
               Object {
                 "alignContent": "flex-start",
@@ -5126,7 +5126,7 @@ ShallowWrapper {
               <ScreenTitle
                 title="Create A Nation"
               />
-              <View
+              <Component
                 style={
                   Object {
                     "alignContent": "flex-start",
@@ -5138,7 +5138,7 @@ ShallowWrapper {
                   }
                 }
               >
-                <View
+                <Component
                   style={
                     Object {
                       "paddingBottom": 16,
@@ -5162,8 +5162,8 @@ ShallowWrapper {
                   >
                     Reclaim your sovereignty by creating your own decentralized borderless voluntary nation (DBVN).
                   </Text>
-                </View>
-              </View>
+                </Component>
+              </Component>
               <PanelView
                 body={undefined}
                 buttonTitle="Button"
@@ -5201,7 +5201,7 @@ ShallowWrapper {
                   }
                 }
               >
-                <View
+                <Component
                   style={
                     Object {
                       "alignItems": "center",
@@ -5209,7 +5209,7 @@ ShallowWrapper {
                     }
                   }
                 >
-                  <View
+                  <Component
                     style={
                       Object {
                         "alignItems": "stretch",
@@ -5217,7 +5217,7 @@ ShallowWrapper {
                       }
                     }
                   >
-                    <View
+                    <Component
                       style={
                         Object {
                           "alignItems": "center",
@@ -5253,8 +5253,8 @@ ShallowWrapper {
                         }
                         value=""
                       />
-                    </View>
-                    <View
+                    </Component>
+                    <Component
                       style={
                         Object {
                           "alignItems": "center",
@@ -5292,9 +5292,9 @@ ShallowWrapper {
                         }
                         value=""
                       />
-                    </View>
-                  </View>
-                </View>
+                    </Component>
+                  </Component>
+                </Component>
               </PanelView>
               <PanelView
                 body={undefined}
@@ -5333,7 +5333,7 @@ ShallowWrapper {
                   }
                 }
               >
-                <View
+                <Component
                   style={
                     Object {
                       "alignItems": "center",
@@ -5341,7 +5341,7 @@ ShallowWrapper {
                     }
                   }
                 >
-                  <View
+                  <Component
                     style={
                       Object {
                         "alignItems": "stretch",
@@ -5393,8 +5393,8 @@ ShallowWrapper {
                       textColor="#58595B"
                       uniqueKey="id"
                     />
-                  </View>
-                </View>
+                  </Component>
+                </Component>
                 <Text
                   accessible={true}
                   allowFontScaling={true}
@@ -5450,7 +5450,7 @@ ShallowWrapper {
                   }
                 }
               >
-                <View
+                <Component
                   style={
                     Object {
                       "alignItems": "center",
@@ -5458,7 +5458,7 @@ ShallowWrapper {
                     }
                   }
                 >
-                  <View
+                  <Component
                     style={
                       Object {
                         "alignItems": "stretch",
@@ -5534,9 +5534,9 @@ ShallowWrapper {
                       textColor="#58595B"
                       uniqueKey="id"
                     />
-                  </View>
-                </View>
-                <View
+                  </Component>
+                </Component>
+                <Component
                   style={
                     Object {
                       "alignItems": "center",
@@ -5544,7 +5544,7 @@ ShallowWrapper {
                     }
                   }
                 >
-                  <View
+                  <Component
                     style={
                       Object {
                         "alignItems": "stretch",
@@ -5612,9 +5612,9 @@ ShallowWrapper {
                       textColor="#58595B"
                       uniqueKey="id"
                     />
-                  </View>
-                </View>
-                <View
+                  </Component>
+                </Component>
+                <Component
                   style={
                     Object {
                       "alignItems": "center",
@@ -5622,7 +5622,7 @@ ShallowWrapper {
                     }
                   }
                 >
-                  <View
+                  <Component
                     style={
                       Object {
                         "alignItems": "stretch",
@@ -5694,9 +5694,9 @@ ShallowWrapper {
                       textColor="#58595B"
                       uniqueKey="id"
                     />
-                  </View>
-                </View>
-                <View
+                  </Component>
+                </Component>
+                <Component
                   style={
                     Object {
                       "alignItems": "center",
@@ -5704,7 +5704,7 @@ ShallowWrapper {
                     }
                   }
                 >
-                  <View
+                  <Component
                     style={
                       Object {
                         "alignItems": "stretch",
@@ -5768,9 +5768,9 @@ ShallowWrapper {
                       textColor="#58595B"
                       uniqueKey="id"
                     />
-                    <View />
-                  </View>
-                </View>
+                    <Component />
+                  </Component>
+                </Component>
               </PanelView>
               <PanelView
                 body={undefined}
@@ -5809,7 +5809,7 @@ ShallowWrapper {
                   }
                 }
               >
-                <View
+                <Component
                   style={
                     Object {
                       "alignItems": "center",
@@ -5817,7 +5817,7 @@ ShallowWrapper {
                     }
                   }
                 >
-                  <View
+                  <Component
                     style={
                       Object {
                         "alignItems": "stretch",
@@ -5832,9 +5832,9 @@ ShallowWrapper {
                       onValueChange={[Function]}
                       value={false}
                     />
-                  </View>
-                </View>
-                <View
+                  </Component>
+                </Component>
+                <Component
                   style={
                     Object {
                       "alignItems": "center",
@@ -5842,7 +5842,7 @@ ShallowWrapper {
                     }
                   }
                 >
-                  <View
+                  <Component
                     style={
                       Object {
                         "alignItems": "stretch",
@@ -5857,9 +5857,9 @@ ShallowWrapper {
                       onValueChange={[Function]}
                       value={false}
                     />
-                  </View>
-                </View>
-                <View
+                  </Component>
+                </Component>
+                <Component
                   style={
                     Object {
                       "alignItems": "center",
@@ -5867,7 +5867,7 @@ ShallowWrapper {
                     }
                   }
                 >
-                  <View
+                  <Component
                     style={
                       Object {
                         "alignItems": "stretch",
@@ -5882,12 +5882,12 @@ ShallowWrapper {
                       onValueChange={[Function]}
                       value={false}
                     />
-                  </View>
-                </View>
+                  </Component>
+                </Component>
               </PanelView>
             </ScrollView>
-          </View>,
-          <View
+          </Component>,
+          <Component
             style={
               Object {
                 "alignItems": "stretch",
@@ -5923,7 +5923,7 @@ ShallowWrapper {
               onPress={[MockFunction]}
               title="SUBMIT"
             />
-          </View>,
+          </Component>,
           null,
         ],
         "style": Object {
@@ -5978,7 +5978,7 @@ ShallowWrapper {
               <ScreenTitle
                 title="Create A Nation"
               />
-              <View
+              <Component
                 style={
                   Object {
                     "alignContent": "flex-start",
@@ -5990,7 +5990,7 @@ ShallowWrapper {
                   }
                 }
               >
-                <View
+                <Component
                   style={
                     Object {
                       "paddingBottom": 16,
@@ -6014,8 +6014,8 @@ ShallowWrapper {
                   >
                     Reclaim your sovereignty by creating your own decentralized borderless voluntary nation (DBVN).
                   </Text>
-                </View>
-              </View>
+                </Component>
+              </Component>
               <PanelView
                 body={undefined}
                 buttonTitle="Button"
@@ -6053,7 +6053,7 @@ ShallowWrapper {
                   }
                 }
               >
-                <View
+                <Component
                   style={
                     Object {
                       "alignItems": "center",
@@ -6061,7 +6061,7 @@ ShallowWrapper {
                     }
                   }
                 >
-                  <View
+                  <Component
                     style={
                       Object {
                         "alignItems": "stretch",
@@ -6069,7 +6069,7 @@ ShallowWrapper {
                       }
                     }
                   >
-                    <View
+                    <Component
                       style={
                         Object {
                           "alignItems": "center",
@@ -6105,8 +6105,8 @@ ShallowWrapper {
                         }
                         value=""
                       />
-                    </View>
-                    <View
+                    </Component>
+                    <Component
                       style={
                         Object {
                           "alignItems": "center",
@@ -6144,9 +6144,9 @@ ShallowWrapper {
                         }
                         value=""
                       />
-                    </View>
-                  </View>
-                </View>
+                    </Component>
+                  </Component>
+                </Component>
               </PanelView>
               <PanelView
                 body={undefined}
@@ -6185,7 +6185,7 @@ ShallowWrapper {
                   }
                 }
               >
-                <View
+                <Component
                   style={
                     Object {
                       "alignItems": "center",
@@ -6193,7 +6193,7 @@ ShallowWrapper {
                     }
                   }
                 >
-                  <View
+                  <Component
                     style={
                       Object {
                         "alignItems": "stretch",
@@ -6245,8 +6245,8 @@ ShallowWrapper {
                       textColor="#58595B"
                       uniqueKey="id"
                     />
-                  </View>
-                </View>
+                  </Component>
+                </Component>
                 <Text
                   accessible={true}
                   allowFontScaling={true}
@@ -6302,7 +6302,7 @@ ShallowWrapper {
                   }
                 }
               >
-                <View
+                <Component
                   style={
                     Object {
                       "alignItems": "center",
@@ -6310,7 +6310,7 @@ ShallowWrapper {
                     }
                   }
                 >
-                  <View
+                  <Component
                     style={
                       Object {
                         "alignItems": "stretch",
@@ -6386,9 +6386,9 @@ ShallowWrapper {
                       textColor="#58595B"
                       uniqueKey="id"
                     />
-                  </View>
-                </View>
-                <View
+                  </Component>
+                </Component>
+                <Component
                   style={
                     Object {
                       "alignItems": "center",
@@ -6396,7 +6396,7 @@ ShallowWrapper {
                     }
                   }
                 >
-                  <View
+                  <Component
                     style={
                       Object {
                         "alignItems": "stretch",
@@ -6464,9 +6464,9 @@ ShallowWrapper {
                       textColor="#58595B"
                       uniqueKey="id"
                     />
-                  </View>
-                </View>
-                <View
+                  </Component>
+                </Component>
+                <Component
                   style={
                     Object {
                       "alignItems": "center",
@@ -6474,7 +6474,7 @@ ShallowWrapper {
                     }
                   }
                 >
-                  <View
+                  <Component
                     style={
                       Object {
                         "alignItems": "stretch",
@@ -6546,9 +6546,9 @@ ShallowWrapper {
                       textColor="#58595B"
                       uniqueKey="id"
                     />
-                  </View>
-                </View>
-                <View
+                  </Component>
+                </Component>
+                <Component
                   style={
                     Object {
                       "alignItems": "center",
@@ -6556,7 +6556,7 @@ ShallowWrapper {
                     }
                   }
                 >
-                  <View
+                  <Component
                     style={
                       Object {
                         "alignItems": "stretch",
@@ -6620,9 +6620,9 @@ ShallowWrapper {
                       textColor="#58595B"
                       uniqueKey="id"
                     />
-                    <View />
-                  </View>
-                </View>
+                    <Component />
+                  </Component>
+                </Component>
               </PanelView>
               <PanelView
                 body={undefined}
@@ -6661,7 +6661,7 @@ ShallowWrapper {
                   }
                 }
               >
-                <View
+                <Component
                   style={
                     Object {
                       "alignItems": "center",
@@ -6669,7 +6669,7 @@ ShallowWrapper {
                     }
                   }
                 >
-                  <View
+                  <Component
                     style={
                       Object {
                         "alignItems": "stretch",
@@ -6684,9 +6684,9 @@ ShallowWrapper {
                       onValueChange={[Function]}
                       value={false}
                     />
-                  </View>
-                </View>
-                <View
+                  </Component>
+                </Component>
+                <Component
                   style={
                     Object {
                       "alignItems": "center",
@@ -6694,7 +6694,7 @@ ShallowWrapper {
                     }
                   }
                 >
-                  <View
+                  <Component
                     style={
                       Object {
                         "alignItems": "stretch",
@@ -6709,9 +6709,9 @@ ShallowWrapper {
                       onValueChange={[Function]}
                       value={false}
                     />
-                  </View>
-                </View>
-                <View
+                  </Component>
+                </Component>
+                <Component
                   style={
                     Object {
                       "alignItems": "center",
@@ -6719,7 +6719,7 @@ ShallowWrapper {
                     }
                   }
                 >
-                  <View
+                  <Component
                     style={
                       Object {
                         "alignItems": "stretch",
@@ -6734,8 +6734,8 @@ ShallowWrapper {
                       onValueChange={[Function]}
                       value={false}
                     />
-                  </View>
-                </View>
+                  </Component>
+                </Component>
               </PanelView>
             </ScrollView>,
             "style": Object {
@@ -6757,7 +6757,7 @@ ShallowWrapper {
                 <ScreenTitle
                   title="Create A Nation"
                 />,
-                <View
+                <Component
                   style={
                     Object {
                       "alignContent": "flex-start",
@@ -6769,7 +6769,7 @@ ShallowWrapper {
                     }
                   }
                 >
-                  <View
+                  <Component
                     style={
                       Object {
                         "paddingBottom": 16,
@@ -6793,8 +6793,8 @@ ShallowWrapper {
                     >
                       Reclaim your sovereignty by creating your own decentralized borderless voluntary nation (DBVN).
                     </Text>
-                  </View>
-                </View>,
+                  </Component>
+                </Component>,
                 <PanelView
                   body={undefined}
                   buttonTitle="Button"
@@ -6832,7 +6832,7 @@ ShallowWrapper {
                     }
                   }
                 >
-                  <View
+                  <Component
                     style={
                       Object {
                         "alignItems": "center",
@@ -6840,7 +6840,7 @@ ShallowWrapper {
                       }
                     }
                   >
-                    <View
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -6848,7 +6848,7 @@ ShallowWrapper {
                         }
                       }
                     >
-                      <View
+                      <Component
                         style={
                           Object {
                             "alignItems": "center",
@@ -6884,8 +6884,8 @@ ShallowWrapper {
                           }
                           value=""
                         />
-                      </View>
-                      <View
+                      </Component>
+                      <Component
                         style={
                           Object {
                             "alignItems": "center",
@@ -6923,9 +6923,9 @@ ShallowWrapper {
                           }
                           value=""
                         />
-                      </View>
-                    </View>
-                  </View>
+                      </Component>
+                    </Component>
+                  </Component>
                 </PanelView>,
                 <PanelView
                   body={undefined}
@@ -6964,7 +6964,7 @@ ShallowWrapper {
                     }
                   }
                 >
-                  <View
+                  <Component
                     style={
                       Object {
                         "alignItems": "center",
@@ -6972,7 +6972,7 @@ ShallowWrapper {
                       }
                     }
                   >
-                    <View
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -7024,8 +7024,8 @@ ShallowWrapper {
                         textColor="#58595B"
                         uniqueKey="id"
                       />
-                    </View>
-                  </View>
+                    </Component>
+                  </Component>
                   <Text
                     accessible={true}
                     allowFontScaling={true}
@@ -7081,7 +7081,7 @@ ShallowWrapper {
                     }
                   }
                 >
-                  <View
+                  <Component
                     style={
                       Object {
                         "alignItems": "center",
@@ -7089,7 +7089,7 @@ ShallowWrapper {
                       }
                     }
                   >
-                    <View
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -7165,9 +7165,9 @@ ShallowWrapper {
                         textColor="#58595B"
                         uniqueKey="id"
                       />
-                    </View>
-                  </View>
-                  <View
+                    </Component>
+                  </Component>
+                  <Component
                     style={
                       Object {
                         "alignItems": "center",
@@ -7175,7 +7175,7 @@ ShallowWrapper {
                       }
                     }
                   >
-                    <View
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -7243,9 +7243,9 @@ ShallowWrapper {
                         textColor="#58595B"
                         uniqueKey="id"
                       />
-                    </View>
-                  </View>
-                  <View
+                    </Component>
+                  </Component>
+                  <Component
                     style={
                       Object {
                         "alignItems": "center",
@@ -7253,7 +7253,7 @@ ShallowWrapper {
                       }
                     }
                   >
-                    <View
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -7325,9 +7325,9 @@ ShallowWrapper {
                         textColor="#58595B"
                         uniqueKey="id"
                       />
-                    </View>
-                  </View>
-                  <View
+                    </Component>
+                  </Component>
+                  <Component
                     style={
                       Object {
                         "alignItems": "center",
@@ -7335,7 +7335,7 @@ ShallowWrapper {
                       }
                     }
                   >
-                    <View
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -7399,9 +7399,9 @@ ShallowWrapper {
                         textColor="#58595B"
                         uniqueKey="id"
                       />
-                      <View />
-                    </View>
-                  </View>
+                      <Component />
+                    </Component>
+                  </Component>
                 </PanelView>,
                 <PanelView
                   body={undefined}
@@ -7440,7 +7440,7 @@ ShallowWrapper {
                     }
                   }
                 >
-                  <View
+                  <Component
                     style={
                       Object {
                         "alignItems": "center",
@@ -7448,7 +7448,7 @@ ShallowWrapper {
                       }
                     }
                   >
-                    <View
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -7463,9 +7463,9 @@ ShallowWrapper {
                         onValueChange={[Function]}
                         value={false}
                       />
-                    </View>
-                  </View>
-                  <View
+                    </Component>
+                  </Component>
+                  <Component
                     style={
                       Object {
                         "alignItems": "center",
@@ -7473,7 +7473,7 @@ ShallowWrapper {
                       }
                     }
                   >
-                    <View
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -7488,9 +7488,9 @@ ShallowWrapper {
                         onValueChange={[Function]}
                         value={false}
                       />
-                    </View>
-                  </View>
-                  <View
+                    </Component>
+                  </Component>
+                  <Component
                     style={
                       Object {
                         "alignItems": "center",
@@ -7498,7 +7498,7 @@ ShallowWrapper {
                       }
                     }
                   >
-                    <View
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -7513,8 +7513,8 @@ ShallowWrapper {
                         onValueChange={[Function]}
                         value={false}
                       />
-                    </View>
-                  </View>
+                    </Component>
+                  </Component>
                 </PanelView>,
               ],
               "contentContainerStyle": Object {
@@ -7542,7 +7542,7 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "class",
                 "props": Object {
-                  "children": <View
+                  "children": <Component
                     style={
                       Object {
                         "paddingBottom": 16,
@@ -7566,7 +7566,7 @@ ShallowWrapper {
                     >
                       Reclaim your sovereignty by creating your own decentralized borderless voluntary nation (DBVN).
                     </Text>
-                  </View>,
+                  </Component>,
                   "style": Object {
                     "alignContent": "flex-start",
                     "flex": 1,
@@ -7637,7 +7637,7 @@ ShallowWrapper {
                 "props": Object {
                   "body": undefined,
                   "buttonTitle": "Button",
-                  "children": <View
+                  "children": <Component
                     style={
                       Object {
                         "alignItems": "center",
@@ -7645,7 +7645,7 @@ ShallowWrapper {
                       }
                     }
                   >
-                    <View
+                    <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -7653,7 +7653,7 @@ ShallowWrapper {
                         }
                       }
                     >
-                      <View
+                      <Component
                         style={
                           Object {
                             "alignItems": "center",
@@ -7689,8 +7689,8 @@ ShallowWrapper {
                           }
                           value=""
                         />
-                      </View>
-                      <View
+                      </Component>
+                      <Component
                         style={
                           Object {
                             "alignItems": "center",
@@ -7728,9 +7728,9 @@ ShallowWrapper {
                           }
                           value=""
                         />
-                      </View>
-                    </View>
-                  </View>,
+                      </Component>
+                    </Component>
+                  </Component>,
                   "childrenContainerStyle": Object {},
                   "icon": undefined,
                   "onButtonClick": null,
@@ -7767,7 +7767,7 @@ ShallowWrapper {
                   "key": undefined,
                   "nodeType": "class",
                   "props": Object {
-                    "children": <View
+                    "children": <Component
                       style={
                         Object {
                           "alignItems": "stretch",
@@ -7775,7 +7775,7 @@ ShallowWrapper {
                         }
                       }
                     >
-                      <View
+                      <Component
                         style={
                           Object {
                             "alignItems": "center",
@@ -7811,8 +7811,8 @@ ShallowWrapper {
                           }
                           value=""
                         />
-                      </View>
-                      <View
+                      </Component>
+                      <Component
                         style={
                           Object {
                             "alignItems": "center",
@@ -7850,8 +7850,8 @@ ShallowWrapper {
                           }
                           value=""
                         />
-                      </View>
-                    </View>,
+                      </Component>
+                    </Component>,
                     "style": Object {
                       "alignItems": "center",
                       "flexDirection": "row",
@@ -7864,7 +7864,7 @@ ShallowWrapper {
                     "nodeType": "class",
                     "props": Object {
                       "children": Array [
-                        <View
+                        <Component
                           style={
                             Object {
                               "alignItems": "center",
@@ -7900,8 +7900,8 @@ ShallowWrapper {
                             }
                             value=""
                           />
-                        </View>,
-                        <View
+                        </Component>,
+                        <Component
                           style={
                             Object {
                               "alignItems": "center",
@@ -7939,7 +7939,7 @@ ShallowWrapper {
                             }
                             value=""
                           />
-                        </View>,
+                        </Component>,
                       ],
                       "style": Object {
                         "alignItems": "stretch",
@@ -8117,7 +8117,7 @@ ShallowWrapper {
                   "body": undefined,
                   "buttonTitle": "Button",
                   "children": Array [
-                    <View
+                    <Component
                       style={
                         Object {
                           "alignItems": "center",
@@ -8125,7 +8125,7 @@ ShallowWrapper {
                         }
                       }
                     >
-                      <View
+                      <Component
                         style={
                           Object {
                             "alignItems": "stretch",
@@ -8177,8 +8177,8 @@ ShallowWrapper {
                           textColor="#58595B"
                           uniqueKey="id"
                         />
-                      </View>
-                    </View>,
+                      </Component>
+                    </Component>,
                     false,
                     <Text
                       accessible={true}
@@ -8235,7 +8235,7 @@ ShallowWrapper {
                     "key": undefined,
                     "nodeType": "class",
                     "props": Object {
-                      "children": <View
+                      "children": <Component
                         style={
                           Object {
                             "alignItems": "stretch",
@@ -8287,7 +8287,7 @@ ShallowWrapper {
                           textColor="#58595B"
                           uniqueKey="id"
                         />
-                      </View>,
+                      </Component>,
                       "style": Object {
                         "alignItems": "center",
                         "flexDirection": "row",
@@ -8435,7 +8435,7 @@ ShallowWrapper {
                   "body": undefined,
                   "buttonTitle": "Button",
                   "children": Array [
-                    <View
+                    <Component
                       style={
                         Object {
                           "alignItems": "center",
@@ -8443,7 +8443,7 @@ ShallowWrapper {
                         }
                       }
                     >
-                      <View
+                      <Component
                         style={
                           Object {
                             "alignItems": "stretch",
@@ -8519,9 +8519,9 @@ ShallowWrapper {
                           textColor="#58595B"
                           uniqueKey="id"
                         />
-                      </View>
-                    </View>,
-                    <View
+                      </Component>
+                    </Component>,
+                    <Component
                       style={
                         Object {
                           "alignItems": "center",
@@ -8529,7 +8529,7 @@ ShallowWrapper {
                         }
                       }
                     >
-                      <View
+                      <Component
                         style={
                           Object {
                             "alignItems": "stretch",
@@ -8597,9 +8597,9 @@ ShallowWrapper {
                           textColor="#58595B"
                           uniqueKey="id"
                         />
-                      </View>
-                    </View>,
-                    <View
+                      </Component>
+                    </Component>,
+                    <Component
                       style={
                         Object {
                           "alignItems": "center",
@@ -8607,7 +8607,7 @@ ShallowWrapper {
                         }
                       }
                     >
-                      <View
+                      <Component
                         style={
                           Object {
                             "alignItems": "stretch",
@@ -8679,9 +8679,9 @@ ShallowWrapper {
                           textColor="#58595B"
                           uniqueKey="id"
                         />
-                      </View>
-                    </View>,
-                    <View
+                      </Component>
+                    </Component>,
+                    <Component
                       style={
                         Object {
                           "alignItems": "center",
@@ -8689,7 +8689,7 @@ ShallowWrapper {
                         }
                       }
                     >
-                      <View
+                      <Component
                         style={
                           Object {
                             "alignItems": "stretch",
@@ -8753,9 +8753,9 @@ ShallowWrapper {
                           textColor="#58595B"
                           uniqueKey="id"
                         />
-                        <View />
-                      </View>
-                    </View>,
+                        <Component />
+                      </Component>
+                    </Component>,
                   ],
                   "childrenContainerStyle": Object {},
                   "icon": " ",
@@ -8794,7 +8794,7 @@ ShallowWrapper {
                     "key": undefined,
                     "nodeType": "class",
                     "props": Object {
-                      "children": <View
+                      "children": <Component
                         style={
                           Object {
                             "alignItems": "stretch",
@@ -8870,7 +8870,7 @@ ShallowWrapper {
                           textColor="#58595B"
                           uniqueKey="id"
                         />
-                      </View>,
+                      </Component>,
                       "style": Object {
                         "alignItems": "center",
                         "flexDirection": "row",
@@ -9035,7 +9035,7 @@ ShallowWrapper {
                     "key": undefined,
                     "nodeType": "class",
                     "props": Object {
-                      "children": <View
+                      "children": <Component
                         style={
                           Object {
                             "alignItems": "stretch",
@@ -9103,7 +9103,7 @@ ShallowWrapper {
                           textColor="#58595B"
                           uniqueKey="id"
                         />
-                      </View>,
+                      </Component>,
                       "style": Object {
                         "alignItems": "center",
                         "flexDirection": "row",
@@ -9252,7 +9252,7 @@ ShallowWrapper {
                     "key": undefined,
                     "nodeType": "class",
                     "props": Object {
-                      "children": <View
+                      "children": <Component
                         style={
                           Object {
                             "alignItems": "stretch",
@@ -9324,7 +9324,7 @@ ShallowWrapper {
                           textColor="#58595B"
                           uniqueKey="id"
                         />
-                      </View>,
+                      </Component>,
                       "style": Object {
                         "alignItems": "center",
                         "flexDirection": "row",
@@ -9481,7 +9481,7 @@ ShallowWrapper {
                     "key": undefined,
                     "nodeType": "class",
                     "props": Object {
-                      "children": <View
+                      "children": <Component
                         style={
                           Object {
                             "alignItems": "stretch",
@@ -9545,8 +9545,8 @@ ShallowWrapper {
                           textColor="#58595B"
                           uniqueKey="id"
                         />
-                        <View />
-                      </View>,
+                        <Component />
+                      </Component>,
                       "style": Object {
                         "alignItems": "center",
                         "flexDirection": "row",
@@ -9615,7 +9615,7 @@ ShallowWrapper {
                             textColor="#58595B"
                             uniqueKey="id"
                           />,
-                          <View />,
+                          <Component />,
                         ],
                         "style": Object {
                           "alignItems": "stretch",
@@ -9711,7 +9711,7 @@ ShallowWrapper {
                   "body": undefined,
                   "buttonTitle": "Button",
                   "children": Array [
-                    <View
+                    <Component
                       style={
                         Object {
                           "alignItems": "center",
@@ -9719,7 +9719,7 @@ ShallowWrapper {
                         }
                       }
                     >
-                      <View
+                      <Component
                         style={
                           Object {
                             "alignItems": "stretch",
@@ -9734,9 +9734,9 @@ ShallowWrapper {
                           onValueChange={[Function]}
                           value={false}
                         />
-                      </View>
-                    </View>,
-                    <View
+                      </Component>
+                    </Component>,
+                    <Component
                       style={
                         Object {
                           "alignItems": "center",
@@ -9744,7 +9744,7 @@ ShallowWrapper {
                         }
                       }
                     >
-                      <View
+                      <Component
                         style={
                           Object {
                             "alignItems": "stretch",
@@ -9759,9 +9759,9 @@ ShallowWrapper {
                           onValueChange={[Function]}
                           value={false}
                         />
-                      </View>
-                    </View>,
-                    <View
+                      </Component>
+                    </Component>,
+                    <Component
                       style={
                         Object {
                           "alignItems": "center",
@@ -9769,7 +9769,7 @@ ShallowWrapper {
                         }
                       }
                     >
-                      <View
+                      <Component
                         style={
                           Object {
                             "alignItems": "stretch",
@@ -9784,8 +9784,8 @@ ShallowWrapper {
                           onValueChange={[Function]}
                           value={false}
                         />
-                      </View>
-                    </View>,
+                      </Component>
+                    </Component>,
                   ],
                   "childrenContainerStyle": Object {},
                   "icon": " ",
@@ -9824,7 +9824,7 @@ ShallowWrapper {
                     "key": undefined,
                     "nodeType": "class",
                     "props": Object {
-                      "children": <View
+                      "children": <Component
                         style={
                           Object {
                             "alignItems": "stretch",
@@ -9839,7 +9839,7 @@ ShallowWrapper {
                           onValueChange={[Function]}
                           value={false}
                         />
-                      </View>,
+                      </Component>,
                       "style": Object {
                         "alignItems": "center",
                         "flexDirection": "row",
@@ -9888,7 +9888,7 @@ ShallowWrapper {
                     "key": undefined,
                     "nodeType": "class",
                     "props": Object {
-                      "children": <View
+                      "children": <Component
                         style={
                           Object {
                             "alignItems": "stretch",
@@ -9903,7 +9903,7 @@ ShallowWrapper {
                           onValueChange={[Function]}
                           value={false}
                         />
-                      </View>,
+                      </Component>,
                       "style": Object {
                         "alignItems": "center",
                         "flexDirection": "row",
@@ -9952,7 +9952,7 @@ ShallowWrapper {
                     "key": undefined,
                     "nodeType": "class",
                     "props": Object {
-                      "children": <View
+                      "children": <Component
                         style={
                           Object {
                             "alignItems": "stretch",
@@ -9967,7 +9967,7 @@ ShallowWrapper {
                           onValueChange={[Function]}
                           value={false}
                         />
-                      </View>,
+                      </Component>,
                       "style": Object {
                         "alignItems": "center",
                         "flexDirection": "row",
