@@ -60,7 +60,7 @@ const styles = MediaQueryStyleSheet.create({
     paddingHorizontal: 10,
     paddingTop: GlobalStyles.statusBar.height + 8,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
   },
   modalWrapContent: {
     backgroundColor: Colors.Transparent,
