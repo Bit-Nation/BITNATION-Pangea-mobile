@@ -111,7 +111,6 @@
     "jest": "22.0.3",
     "protobufjs": "^6.8.6",
     "react-dom": "^16.2.0",
-    "react-native-mock": "^0.3.1",
     "react-test-renderer": "16.0.0",
     "redux-mock-store": "^1.5.1",
     "sleep-promise": "^8.0.1",
