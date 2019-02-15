@@ -167,7 +167,6 @@ const Screens = {
   WALLET_SCREEN: {
     screen: 'Pangea.WalletScreen',
     label: i18n.t('screens.wallet.tabTitle'),
-    icon: AssetsImages.TabIcons.wallet,
     title: '', // To show, use i18n.t('screens.wallet.title'),
     navigatorStyle,
   },
@@ -251,7 +250,6 @@ const Screens = {
   SETTINGS_SCREEN: {
     screen: 'Pangea.Settings',
     title: i18n.t('screens.settings.title').toUpperCase(),
-    icon: AssetsImages.TabIcons.services,
     label: i18n.t('screens.settings.tabTitle'),
     navigatorStyle,
   },
