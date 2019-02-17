@@ -63,7 +63,7 @@ const ServicesScreen = ({
         <View tabLabel='DAPPS'>
           <DappScreen
 
-            buttonTitle='USE DAPPS'
+            buttonTitle='USE DAPP'
             subTitleTable='SIMILAR DAPPS'
             list={dAppData}
             onPressMainButton={onPressMainButtonDapp}
@@ -72,7 +72,7 @@ const ServicesScreen = ({
         <View tabLabel='CONTRACTS'>
           <ContractScreen
 
-            buttonTitle='COPY CONTRACTS CODE'
+            buttonTitle='COPY CONTRACT CODE'
             subTitleTable='SIMILAR CONTRACTS'
             list={contractData}
           />
