@@ -18,7 +18,7 @@ export default compose(
 
     onPressHelp: ({ setShowModal, navigator }) => () => {
       setShowModal('');
-      navigator.push({
+      navigator.showModal({
         ...screen('CHAT_SCREEN'),
         passProps: {
           isBot: true,
@@ -26,7 +26,7 @@ export default compose(
       });
     },
     onPressMainButtonDapp: ({ navigator }) => () => {
-      navigator.push(screen('DOCUMENTS_LIST_SCREEN'));
+      navigator.showModal(screen('DOCUMENTS_LIST_SCREEN'));
     },
   }),
   lifecycle({
