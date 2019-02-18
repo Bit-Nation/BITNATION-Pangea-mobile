@@ -31,11 +31,17 @@ export const dAppData = [
     title: 'Producer: BITNATION Americas LTD',
     subTitle: 'Fees: Standard ETH transaction fee',
   },
+  {
+    uri: 'https://refugees.bitnation.co/blockchain-emergency-id-be-id/',
+    description: 'BLOCKCHAIN EMERGENCY ID (BE-ID)',
+    title: 'Producer: BITNATION Americas LTD',
+    subTitle: 'Fees: Standard ETH transaction fee',
+  },
 
 ];
 export const serviceData = [
   {
-    uri: 'https://www.bitbcn.org/cursos-bit/?gclid=Cj0KCQiApvbhBRDXARIsALnNoK00bGdHmNdU-eroZvjh4WLuOPcjoqt6Mv0XUFz6su7OY9i8By4uUmQaArhPEALw_wcB',
+    uri: 'https://www.blintech.io/postgrados-executive-programs/',
     description: 'Blockchain Institute & Technology',
     subTitle: 'Fees: Standard ETH transaction fee',
   },

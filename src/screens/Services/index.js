@@ -25,9 +25,6 @@ export default compose(
         },
       });
     },
-    onPressMainButtonDapp: ({ navigator }) => () => {
-      navigator.push(screen('DOCUMENTS_LIST_SCREEN'));
-    },
   }),
   lifecycle({
     componentWillMount() {
