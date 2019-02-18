@@ -18,7 +18,7 @@ export default compose(
 
     onPressHelp: ({ setShowModal, navigator }) => () => {
       setShowModal('');
-      navigator.push({
+      navigator.showModal({
         ...screen('CHAT_SCREEN'),
         passProps: {
           isBot: true,

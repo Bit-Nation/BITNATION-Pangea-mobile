@@ -12,7 +12,7 @@ export default compose(
       if (uri === 'https://refugees.bitnation.co/blockchain-emergency-id-be-id/') {
         setIsShowWebViewModal(true);
       } else {
-        navigator.push(screen('DOCUMENTS_LIST_SCREEN'));
+        navigator.showModal(screen('DOCUMENTS_LIST_SCREEN'));
       }
     },
   }),
