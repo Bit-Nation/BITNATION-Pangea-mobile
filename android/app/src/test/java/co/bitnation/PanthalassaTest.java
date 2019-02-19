@@ -27,18 +27,4 @@ public class PanthalassaTest {
         assertThat(newAccount, is(notNullValue()));
     }
 
-    @Test
-    public void PanthalassaIsValidCID() {
-
-        Boolean isCid = null;
-
-        try {
-            isCid = Panthalassa.isValidCID("mAVUWIDAwU3dua7xpbnFfMuJGB3ydE8z6o/Oz8+bihw3lVhT1");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        assertThat(isCid, is(true));
-    }
-
 }
