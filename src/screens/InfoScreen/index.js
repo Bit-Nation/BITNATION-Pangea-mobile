@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import { View, Linking, Image, Text, TouchableOpacity } from 'react-native';
-import ZendeskSupport from 'react-native-zendesk-support';
+// import ZendeskSupport from 'react-native-zendesk-support';
 import BackgroundImage from '../../components/common/BackgroundImage';
 import FakeNavigationBar from '../../components/common/FakeNavigationBar';
 import facebook from '../../assets/images/icon-facebook.png';
@@ -18,20 +18,20 @@ type Props = {
 }
 
 class InfoScreen extends Component<Props> {
-  componentDidMount() {
-    const config = {
-      appId: '73f3e05169e02c9144c2c98be63472e1b1e5123f1e696fe2',
-      zendeskUrl: 'bitnation.zendesk.com',
-      clientId: 'mobile_sdk_client_6ce9e85f75a7e5e3c348',
-    };
-    ZendeskSupport.initialize(config);
+  // componentDidMount() {
+  //   const config = {
+  //     appId: '73f3e05169e02c9144c2c98be63472e1b1e5123f1e696fe2',
+  //     zendeskUrl: 'bitnation.zendesk.com',
+  //     clientId: 'mobile_sdk_client_6ce9e85f75a7e5e3c348',
+  //   };
+  //   // ZendeskSupport.initialize(config);
 
-    const customFields = {
-      name: 'Prameet',
-      ticket: 'Sample',
-    };
-    ZendeskSupport.callSupport(customFields);
-  }
+  //   const customFields = {
+  //     name: 'Prameet',
+  //     ticket: 'Sample',
+  //   };
+  //   // ZendeskSupport.callSupport(customFields);
+  // }
 
   openLink = (url: any) => {
     Linking.openURL(url);

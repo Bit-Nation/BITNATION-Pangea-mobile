@@ -9,6 +9,7 @@ import { imageSource } from '../../utils/profile';
 import { getCurrentAccount } from '../../reducers/accounts';
 
 import AssetsImages from '../../global/AssetsImages';
+import { screen } from '../../global/Screens';
 import styles from './styles';
 
 // import Button from '../../components/common/Button';
@@ -32,11 +33,12 @@ class MenuScreen extends NavigatorComponent {
     });
   };
 
-  onPushScreen = (screen) => {
+  onPushScreen = (screenX) => {
     this.toggleDrawer();
-    this.props.navigator.handleDeepLink({
-      link: `push/${screen}`,
-    });
+    // this.props.navigator.handleDeepLink({
+    //   link: `push/${screen}`,
+    // });
+    this.props.navigator.showModal(screen(screenX));
   };
 
   render() {
