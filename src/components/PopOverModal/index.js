@@ -161,7 +161,7 @@ const PopOverModal = ({
   options,
 }: Props) => (
   <Modal
-    animationType='fade'
+    animationType='slide'
     transparent
     visible={visible}
     onRequestClose={onCancel}
