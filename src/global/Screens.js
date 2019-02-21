@@ -48,6 +48,7 @@ export const navigatorStyle = {
   screenBackgroundColor: 'transparent',
   rootBackgroundImageName: 'background-gray.jpg',
   topBarElevationShadowEnabled: false,
+  navBarTitleTextCentered: true,
 };
 
 export const hiddenNavigatorStyle = {
@@ -74,7 +75,6 @@ export const solidNavigatorStyle = {
   drawUnderNavBar: false,
   screenBackgroundColor: '#E8EBED',
   tabBarHidden: true,
-  navBarBackgroundColor: Colors.white,
 };
 
 export const drawerStyle = {
