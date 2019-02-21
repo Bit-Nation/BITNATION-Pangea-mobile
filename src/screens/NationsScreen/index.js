@@ -220,7 +220,7 @@ class NationsScreen extends NavigatorComponent<
               onPress: () => {
                 this.dismissModal();
                 this.props.navigator.handleDeepLink({
-                  link: 'push/PROFILE_SCREEN',
+                  link: 'push/INFO_SCREEN',
                 });
               },
             },

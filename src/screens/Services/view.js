@@ -4,7 +4,7 @@ import React from 'react';
 import { View, TextInput, Image } from 'react-native';
 import Background from '../../components/common/BackgroundImage';
 import ScrollTabView, { DefaultTabBar } from '../../components/ScrollTabView';
-
+import type { Navigator } from '../../types/ReactNativeNavigation';
 import ContractScreen from './subTabs/ContractScreen';
 import DappScreen from './subTabs/DappScreen';
 import ServiceScreen from './subTabs/ServiceScreen';
@@ -27,13 +27,16 @@ type Props ={
   setShowModal:Function,
   setIsShowWebViewModal:Function,
 
-  onPressMainButtonDapp:Function,
   onPressHelp:Function,
   children:Object,
+  /**
+   * @desc React Native Navigation navigator object.
+   */
+  navigator: Navigator,
 }
 
 const ServicesScreen = ({
-  showModal, setShowModal, onPressMainButtonDapp, onPressHelp, children, setIsShowWebViewModal,
+  showModal, setShowModal, onPressHelp, children, setIsShowWebViewModal, navigator,
 }:Props) => (
   <View style={styles.screenContainer}>
     {children}
@@ -62,17 +65,16 @@ const ServicesScreen = ({
       >
         <View tabLabel='DAPPS'>
           <DappScreen
-
-            buttonTitle='USE DAPPS'
+            navigator={navigator}
+            buttonTitle='USE DAPP'
             subTitleTable='SIMILAR DAPPS'
             list={dAppData}
-            onPressMainButton={onPressMainButtonDapp}
           />
         </View>
         <View tabLabel='CONTRACTS'>
           <ContractScreen
 
-            buttonTitle='COPY CONTRACTS CODE'
+            buttonTitle='COPY CONTRACT CODE'
             subTitleTable='SIMILAR CONTRACTS'
             list={contractData}
           />
