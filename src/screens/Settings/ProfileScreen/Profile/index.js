@@ -105,7 +105,7 @@ class ProfileScreen extends NavigatorComponent<Props> {
     return (
       <View style={styles.screenContainer}>
         <View style={styles.bodyContainer}>
-          <ScreenTitle title={i18n.t('screens.profile.title')} />
+          {/* <ScreenTitle title={i18n.t('screens.profile.title')} /> */}
           {this._buildHeader()}
           <View style={styles.publicKey}>
             <Text style={styles.publicKeyText}>{publicKey && publicKey.trim()}</Text>

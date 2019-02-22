@@ -282,7 +282,7 @@
         "location": "Location",
         "readyUse": "Your account is ready to use.",
         "walletEmpty": "Your account is ready, but your wallet is empty. Please add ETH to your wallet so you can do stuff.",
-        "openDashboard": "Open Dashboard",
+        "openDashboard": "Next",
         "openWallet": "Open ETH Wallet"
       },
       "restore": {
@@ -562,7 +562,7 @@
       "switchAccounts": "अकाउंट चेंज करे",
       "connectToDAppHost": "Connect to DApp host",
       "connectToDAppLogger": "Connect debug logger",
-      "documents": "Documents",
+      "documents": "View or Add Documents",
       "sections": {
         "account": "Account",
         "dApps": "DApp development",
