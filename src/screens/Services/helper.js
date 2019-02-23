@@ -12,12 +12,6 @@ export const contractData = [
     subTitle: 'Fees: Standard ETH transaction fee',
   },
   {
-    uri: 'https://raw.githubusercontent.com/Bit-Nation/PangeaAgreementStandard/master/PangeaAgreementStandard.sol',
-    description: 'Pangea Agreement Standard',
-    title: 'Producer: BITNATION Americas LTD',
-    subTitle: 'Fees: Standard ETH transaction fee',
-  },
-  {
     uri: 'https://raw.githubusercontent.com/OpenZeppelin/openzeppelin-solidity/master/contracts/payment/PaymentSplitter.sol',
     description: 'Payment Splitter',
     title: 'Producer: OpenZeppelin',

@@ -1,4 +1,5 @@
 import { Dimensions, Platform } from 'react-native';
+import colors from '../../global/colors';
 
 const deviceHeight = Dimensions.get('window').height;
 
@@ -64,5 +65,18 @@ export default {
     color: 'transparent',
     textAlign: 'right',
     top: -10,
+  },
+  ticketButton: {
+    borderRadius: 10,
+    height: 30,
+    justifyContent: 'center',
+    padding: 5,
+    alignItems: 'center',
+    alignSelf: 'center',
+    backgroundColor: colors.BitnationActionColor,
+    marginTop: 5,
+  },
+  supportText: {
+    color: 'white',
   },
 };

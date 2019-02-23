@@ -620,7 +620,7 @@
       "eth": "ETH"
     },
     "documentsList": {
-      "title": "Documents",
+      "title": "View or Add Documents",
       "actionSheetTitle": "Select document to store"
     },
     "documentView": {
