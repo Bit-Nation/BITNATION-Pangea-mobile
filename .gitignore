@@ -62,7 +62,7 @@ yarn.lock
 src.zip
 docs_build
 /.eslintrc
-pangea*
+pangea*.management
 *.hprof
 
 # DO NOT STORE LARGE BINARIES IN GIT. EVER!
@@ -91,3 +91,4 @@ ios/Frameworks/panthalassa.framework
 # development app's temp data
 data
 dev.config.json
+src-old-original/

@@ -6,6 +6,7 @@
     "plugin:jest/recommended"
   ],
   "plugins": [
+    "flowtype",
     "jest",
     "react-native",
     "require-jsdoc"

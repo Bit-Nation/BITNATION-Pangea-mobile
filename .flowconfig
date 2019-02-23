@@ -1,4 +1,10 @@
 [ignore]
+; temporary ignore of migrated code
+.*/src/modules/.*
+.*/__tests__/.*
+.*/src-old-original/.*
+.*/src-old/.*
+
 ; We fork some components by platform
 .*/*[.]android.js
 .*/node_modules/oboe/test
