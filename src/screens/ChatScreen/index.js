@@ -84,7 +84,8 @@ class ChatScreen extends Component<Props, State> {
     super(props);
 
     if (props.isBot !== true) {
-      const selectedNation = resolveNation(props.nations || [], props.nationId);
+      const nationIdX = props.nationId ? props.nationId : "a8dddbe1-525e-4d5f-bc51-35a3dee84ff9"; //hardcode for bitnation chat group
+      const selectedNation = resolveNation(props.nations || [], nationIdX);
       if (selectedNation === null) {
         props.navigator.pop();
         return;
