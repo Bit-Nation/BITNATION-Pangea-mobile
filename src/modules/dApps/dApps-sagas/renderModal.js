@@ -6,9 +6,9 @@ import { Navigation } from 'react-native-navigation';
 
 import ServiceContainer from '../../../src/service-container';
 import UpstreamService from '../../services/upstream/upstream';
-import type { DAppModalInfo } from '../../types/DApp';
-import { storeDAppModal } from '../../actions/dApps';
-import { screen } from '../../global/Screens';
+import type { DAppModalInfo } from '../DApp-types';
+import { storeDAppModal } from '../dApps-actions';
+import { screen } from 'pangea-common-reactnative/Screens';
 
 /**
  * @desc Handles UI API request.

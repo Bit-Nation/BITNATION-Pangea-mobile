@@ -2,9 +2,9 @@
 
 import uuid from 'uuid4';
 
-import { convertFromPanthalassa, convertToPanthalassa } from '../../../src-old/utils/mapping/documents';
-import type { Document, PanthalassaDocument } from '../../types/Documents';
-import * as Panthalassa from '../../../src-old/services/panthalassa';
+import { convertFromPanthalassa, convertToPanthalassa } from './documents-utils';
+import type { Document, PanthalassaDocument } from './Documents-types';
+import * as Panthalassa from '@pangea/panthalassa';
 
 /**
  * @desc Class to store documents content aside from Redux state to improve performance.

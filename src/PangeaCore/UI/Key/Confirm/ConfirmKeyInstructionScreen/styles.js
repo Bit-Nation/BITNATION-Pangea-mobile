@@ -1,7 +1,7 @@
 // @flow
 
 import { StyleSheet, Dimensions } from 'react-native';
-import GlobalStyles from '../../../../global/Styles';
+import GlobalStyles from 'pangea-common-reactnative/styles';
 
 const { width } = Dimensions.get('window');
 

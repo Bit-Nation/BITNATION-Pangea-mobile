@@ -7,31 +7,31 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import { connect } from 'react-redux';
 
 import styles from './styles';
-import { androidNavigationButtons, screen } from '../../../global/Screens';
-import BackgroundImage from '../../../components/common/BackgroundImage';
-import GridView from '../../../components/GridView/index';
-import PrivateKeyTextInputContainer from '../../../components/PrivateKeyTextInputContainer/index';
-import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
-import PanelView from '../../../components/common/PanelView';
+import { androidNavigationButtons, screen } from 'pangea-common-reactnative/Screens';
+import BackgroundImage from 'pangea-common-reactnative/UI/BackgroundImage';
+import GridView from '../../components/GridView/index';
+import PrivateKeyTextInputContainer from '../../components/PrivateKeyTextInputContainer/index';
+import FakeNavigationBar from 'pangea-common-reactnative/UIFakeNavigationBar';
+import PanelView from 'pangea-common-reactnative/UI/PanelView';
 import {
   KEY_LENGTH,
   KEY_COLUMN_COUNT,
   KEY_PAGE_ROW_COUNT,
   KEY_PAGE_LENGTH,
   KEY_PAGE_COUNT,
-} from '../../../global/Constants';
-import Button from '../../../components/common/Button';
+} from 'pangea-common/Constants';
+import Button from 'pangea-common-reactnative/UI/Button';
 import { changeEnteredMnemonic, validateEnteredMnemonic } from '../../../actions/key';
-import Colors from '../../../global/colors';
-import BodyParagraphs from '../../../components/common/BodyParagraphs';
-import i18n from '../../../global/i18n';
+import Colors from 'pangea-common-reactnative/styles/colors';
+import BodyParagraphs from 'pangea-common-reactnative/UI/BodyParagraphs';
+import i18n from 'pangea-common/i18n';
 import type { State as KeyState } from '../../../reducers/key';
-import type { Mnemonic } from '../../../types/Mnemonic';
-import NavigatorComponent from '../../../components/common/NavigatorComponent';
+import type { Mnemonic } from 'pangea-common/types/Mnemonic-types';
+import NavigatorComponent from 'pangea-common-reactnative/UI/NavigatorComponent';
 import AccountsService from '../../../services/accounts';
-import { alert, errorAlert } from '../../../global/alerts';
+import { alert, errorAlert } from 'pangea-common/alerts';
 import { mnemonicConfirmed, validateMnemonicWithAccount } from '../../../actions/accounts';
-import { GeneralError } from '../../../global/errors/common';
+import { GeneralError } from 'pangea-common/errors/common';
 
 const DONE_BUTTON = 'DONE_BUTTON';
 

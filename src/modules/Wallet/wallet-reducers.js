@@ -12,8 +12,8 @@ import {
   UPDATE_WALLET_LIST,
   WALLET_SYNC_FAILED,
   WALLETS_LIST_UPDATED,
-} from '../actions/wallet';
-import type { WalletType } from '../types/Wallet';
+} from './wallet-actions';
+import type { WalletType } from './Wallet-types';
 import { getWalletIndex } from './wallet-utils';
 import { SERVICES_DESTROYED, type ServicesDestroyedAction } from '../../../src-old/actions/serviceContainer';
 

@@ -6,8 +6,8 @@ import { connect } from 'react-redux';
 
 import { type ComponentsJSON, renderJSON } from '../utils/renderer';
 
-import { performDAppCallback } from '../../../actions/dApps';
-import GlobalStyles from '../../../global/Styles';
+import { performDAppCallback } from '../../../dApps-actions';
+import GlobalStyles from 'pangea-common-reactnative/Styles';
 
 export type Props = {
   /**

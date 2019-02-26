@@ -1,5 +1,5 @@
 // @flow
-
+/*
 import { Navigation } from 'react-native-navigation';
 
 import Accounts from './Accounts';
@@ -45,13 +45,14 @@ import MenuScreen from './MenuScreen';
 import HomeScreen from './Home';
 import InfoScreen from './InfoScreen';
 import { screen } from '../global/Screens';
-
+*/
 /**
  * @desc Registers screens for React Native Navigation.
  * @param {Object} store Store to pass to screens.
  * @param {Object} Provider Provider to pass to screens.
  * @return {void}
  */
+/*
 export default function registerScreens(store: Object, Provider: Object) {
   Navigation.registerComponent(screen('ACCOUNTS_SCREEN').screen, () => Accounts, store, Provider);
   Navigation.registerComponent(screen('ACCOUNT_CREATE_DEVELOPER_SETTINGS').screen, () => DeveloperSettings, store, Provider);
@@ -96,3 +97,4 @@ export default function registerScreens(store: Object, Provider: Object) {
   Navigation.registerComponent(screen('MENU_SCREEN').screen, () => MenuScreen, store, Provider);
   Navigation.registerComponent(screen('HOME_SCREEN').screen, () => HomeScreen, store, Provider);
 }
+*/

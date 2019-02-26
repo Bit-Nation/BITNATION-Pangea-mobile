@@ -3,14 +3,14 @@
 import React from 'react';
 import { View, Text, ActivityIndicator } from 'react-native';
 import { connect } from 'react-redux';
-import i18n from '../../global/i18n';
-import BackgroundImage from '../../components/common/BackgroundImage';
+import i18n from 'pangea-common/i18n';
+import BackgroundImage from 'pangea-common-reactnative/UI/BackgroundImage';
 import styles from './styles';
-import ScreenTitle from '../../components/common/ScreenTitle';
+import ScreenTitle from 'pangea-common-reactnative/UI/ScreenTitle';
 import { startMigration } from '../../actions/migration';
-import FakeNavigationBar from '../../components/common/FakeNavigationBar';
-import NavigatorComponent from '../../components/common/NavigatorComponent';
-import Colors from '../../global/colors';
+import FakeNavigationBar from 'pangea-common-reactnative/UI/FakeNavigationBar';
+import NavigatorComponent from 'pangea-common-reactnative/UI/NavigatorComponent';
+import Colors from 'pangea-common-reactnative/styles/colors';
 
 type Actions = {
   /**

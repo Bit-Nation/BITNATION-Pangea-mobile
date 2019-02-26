@@ -1,6 +1,6 @@
 // @flow
 
-import type { Account } from '../types/Account';
+import type { Account } from 'pangea-common/types/accounts-types';
 
 export type StartAccountEditingAction = { +type: 'START_ACCOUNT_EDITING', +account: Account };
 export type ChangeEditingAccountAction = { +type: 'CHANGE_EDITING_ACCOUNT', +account: Account };

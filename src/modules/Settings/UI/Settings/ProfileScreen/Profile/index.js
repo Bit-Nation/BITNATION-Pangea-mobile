@@ -10,15 +10,15 @@ import {
 } from 'react-native';
 
 import styles from './styles';
-import AssetsImage from '../../../../global/AssetsImages';
-import NavigatorComponent from '../../../../components/common/NavigatorComponent';
-import Colors from '../../../../global/colors';
+import AssetsImage from 'pangea-common-reactnative/assets/AssetsImages';
+import NavigatorComponent from 'pangea-common-reactnative/UI/NavigatorComponent';
+import Colors from 'pangea-common-reactnative/styles/colors';
 import type { Navigator } from '../../../../types/ReactNativeNavigation';
 import type { Account } from '../../../../types/Account';
-import i18n from '../../../../global/i18n';
-import ScreenTitle from '../../../../components/common/ScreenTitle';
-import Button from '../../../../components/common/Button';
-import { androidNavigationButtons } from '../../../../global/Screens';
+import i18n from 'pangea-common/i18n';
+import ScreenTitle from 'pangea-common-reactnative/UI/ScreenTitle';
+import Button from 'pangea-common-reactnative/UI/Button';
+import { androidNavigationButtons } from 'pangea-common-reactnative/Screens';
 import { imageSource } from '../../../../utils/profile';
 
 const EDIT_BUTTON = 'EDIT_BUTTON';

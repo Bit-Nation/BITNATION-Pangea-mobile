@@ -8,7 +8,7 @@ import {
   SEND_MONEY,
   UPDATE_WALLET_BALANCE,
   UPDATE_WALLET_LIST,
-} from '../../actions/wallet';
+} from '../wallet-actions';
 import {
   updateWalletList,
   updateWalletBalance,

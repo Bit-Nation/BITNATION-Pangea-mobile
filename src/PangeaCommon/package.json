@@ -1,0 +1,11 @@
+{
+  "name": "pangea-common",
+  "version": "1.4.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bitnation",
+  "license": "MIT"
+}

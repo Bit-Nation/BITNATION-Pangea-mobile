@@ -1,7 +1,7 @@
 // @flow
 
 import _ from 'lodash';
-import type { WalletType } from '../types/Wallet';
+import type { WalletType } from './Wallet-types';
 
 /**
  * @desc Gets wallet by address from array of wallets.

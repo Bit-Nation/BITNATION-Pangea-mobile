@@ -10,19 +10,19 @@ import {
 import { Fab } from 'native-base';
 
 import type { Navigator } from '../../../types/ReactNativeNavigation';
-import NavigatorComponent from '../../../components/common/NavigatorComponent';
-import BackgroundImage from '../../../components/common/BackgroundImage';
-import { androidNavigationButtons, screen } from '../../../global/Screens';
+import NavigatorComponent from 'pangea-common-reactnative/UI/NavigatorComponent';
+import BackgroundImage from 'pangea-common-reactnative/UI/BackgroundImage';
+import { androidNavigationButtons, screen } from 'pangea-common-reactnative/Screens';
 import styles from './styles';
-import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
-import ScreenTitle from '../../../components/common/ScreenTitle';
-import i18n from '../../../global/i18n';
-import { openDocument, startDocumentCreation, updateModifiedDocumentField } from '../../../actions/documents';
-import Loading from '../../../components/common/Loading';
-import type { State as DocumentsState } from '../../../reducers/documents';
-import DocumentListItem from '../../../components/common/DocumentListItem';
-import { getDocument } from '../../../reducers/documents';
-import PhotoActionSheet from '../../../components/common/PhotoActionSheet';
+import FakeNavigationBar from 'pangea-common-reactnative/UI/FakeNavigationBar';
+import ScreenTitle from 'pangea-common-reactnative/UI/ScreenTitle';
+import i18n from 'pangea-common/i18n';
+import { openDocument, startDocumentCreation, updateModifiedDocumentField } from '../../documents-actions';
+import Loading from 'pangea-common-reactnative/UI/Loading';
+import type { State as DocumentsState } from '../../documents-reducers';
+import DocumentListItem from 'pangea-common-reactnative/UI/DocumentListItem';
+import { getDocument } from '../../documents-reducers';
+import PhotoActionSheet from 'pangea-common-reactnative/UI/PhotoActionSheet';
 
 type Props = {
   /**

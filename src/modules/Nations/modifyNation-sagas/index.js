@@ -2,7 +2,7 @@
 
 import { all, takeEvery } from 'redux-saga/effects';
 
-import { DELETE_NATION_DRAFT, SAVE_NATION_DRAFT, SUBMIT_NATION } from '../../actions/modifyNation';
+import { DELETE_NATION_DRAFT, SAVE_NATION_DRAFT, SUBMIT_NATION } from '../modifyNation-actions';
 import { deleteDraftSaga, saveDraftSaga, submitNationSaga } from './sagas';
 
 /**

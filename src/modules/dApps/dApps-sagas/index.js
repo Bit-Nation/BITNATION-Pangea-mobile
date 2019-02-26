@@ -17,7 +17,7 @@ import {
   DAPPS_LIST_UPDATED,
   STOP_DAPP,
   RENDER_DAPP_MESSAGE,
-} from '../../actions/dApps';
+} from '../dApps-actions';
 import { SERVICES_CREATED } from '../../actions/serviceContainer';
 import { subscribeToModalRender } from './renderModal';
 

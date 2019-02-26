@@ -6,32 +6,32 @@ import { View, SectionList, Share, TextInput, Image } from 'react-native';
 import _ from 'lodash';
 import Dialog from 'react-native-dialog';
 
-import { openChat, startNewChat, fetchAllChats } from '../../../actions/chat';
-import BackgroundImage from '../../../components/common/BackgroundImage';
+import { openChat, startNewChat, fetchAllChats } from '../../../chat-actions';
+import BackgroundImage from 'pangea-common-reactnative/UI/BackgroundImage';
 import styles from './styles';
-import { screen } from '../../../global/Screens';
-import ChatListItem from '../../../components/common/ChatListItem';
-import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
-import Loading from '../../../components/common/Loading';
-import ScrollTabView, { DefaultTabBar } from '../../../components/ScrollTabView';
-import NavigatorComponent from '../../../components/common/NavigatorComponent';
-import LucyButton from '../../../components/common/LucyButton';
-import i18n from '../../../global/i18n';
-import Colors from '../../../global/colors';
+import { screen } from 'pangea-common-reactnative/Screens';
+import ChatListItem from 'pangea-common-reactnative/UI/ChatListItem';
+import FakeNavigationBar from 'pangea-common-reactnative/UI/FakeNavigationBar';
+import Loading from 'pangea-common-reactnative/UI/Loading';
+import ScrollTabView, { DefaultTabBar } from 'pangea-common-reactnative/UI/ScrollTabView';
+import NavigatorComponent from 'pangea-common-reactnative/UI/NavigatorComponent';
+import LucyButton from 'pangea-common-reactnative/UI/LucyButton';
+import i18n from 'pangea-common/i18n';
+import Colors from 'pangea-common-reactnative/styles/colors';
 import type {
   ProfileType,
   ChatType,
   GiftedChatMessageType,
-} from '../../../types/Chat';
+} from '../../../Chat-types.js';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import InviteSentModal from './InviteSentModal';
-import { panthalassaIdentityPublicKey } from '../../../services/panthalassa';
+import { panthalassaIdentityPublicKey } from '@pangea/panthalassa';
 import { imageSource } from '../../../utils/profile';
-import AssetsImages from '../../../global/AssetsImages';
-import MoreMenuModal from '../../../components/common/MoreMenuModal';
+import AssetsImages from 'pangea-common-reactnative/assets/AssetsImages';
+import MoreMenuModal from 'pangea-common-reactnative/UI/MoreMenuModal';
 import type { Contact } from '../../../types/Contacts';
 
-import PopOverModal from '../../../components/PopOverModal';
+import PopOverModal from 'pangea-common-reactnative/UI/PopOverModal';
 
 const MENU_BUTTON = 'MENU_BUTTON';
 const MORE_BUTTON = 'MORE_BUTTON';

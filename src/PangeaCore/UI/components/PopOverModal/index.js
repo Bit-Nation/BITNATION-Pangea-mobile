@@ -12,14 +12,13 @@ import {
 } from 'react-native';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
 
-import LucyButton from '../common/LucyButton';
+import LucyButton from 'pangea-common-reactnative/UI/LucyButton';
 
-import AssetsImages from '../../global/AssetsImages';
-import Colors from '../../global/colors';
-import GlobalStyles from '../../global/Styles';
+import AssetsImages from 'pangea-common-reactnative/assets/AssetsImages';
+import Colors from 'pangea-common-reactnative/styles/colors';
+import GlobalStyles from 'pangea-common-reactnative/styles';
 
 import { getTabBarHeight } from '../../utils/normalizer';
-import colors from '../../global/colors';
 
 const { height } = Dimensions.get('window');
 const modalWrapContentHeight = height - (GlobalStyles.statusBar.height + 18 + getTabBarHeight() + 80);

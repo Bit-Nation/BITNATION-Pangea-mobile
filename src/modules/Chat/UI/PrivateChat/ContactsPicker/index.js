@@ -11,15 +11,15 @@ import _ from 'lodash';
 import { Chip, Selectize } from 'react-native-material-selectize';
 import { addContact } from '../../../actions/contacts';
 import styles from './styles';
-import Loading from '../../../components/common/Loading';
-import NavigatorComponent from '../../../components/common/NavigatorComponent';
-import i18n from '../../../global/i18n';
-import Colors from '../../../global/colors';
+import Loading from 'pangea-common-reactnative/UI/Loading';
+import NavigatorComponent from 'pangea-common-reactnative/UI/NavigatorComponent';
+import i18n from 'pangea-common/i18n';
+import Colors from 'pangea-common-reactnative/styles/colors';
 import type { Contact } from '../../../types/Contacts';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
-import AssetsImages from '../../../global/AssetsImages';
+import AssetsImages from 'pangea-common-reactnative/assets/AssetsImages';
 import { imageSource } from '../../../utils/profile';
-import ListItem from '../../../components/common/ListItem';
+import ListItem from 'pangea-common-reactnative/UI/ListItem';
 
 const DONE_BUTTON = 'DONE_BUTTON';
 const DISABLED_RIGHT_BUTTON = {

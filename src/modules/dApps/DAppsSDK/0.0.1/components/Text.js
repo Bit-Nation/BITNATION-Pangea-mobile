@@ -3,8 +3,8 @@
 import * as React from 'react';
 import { Text as ReactNativeText } from 'react-native';
 
-import Colors from '../../../global/colors';
-import styles from '../../../global/Styles';
+import Colors from 'pangea-common-reactnative/styles/colors';
+import styles from 'pangea-common-reactnative/styles';
 
 type Props = {
   /**

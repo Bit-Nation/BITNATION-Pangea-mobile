@@ -1,7 +1,7 @@
 // @flow
 
-import type { ProfileType, ChatType, GiftedChatMessageType } from '../types/Chat';
-import { CHAT_MESSAGES_PAGE } from '../../../src-old/global/Constants';
+import type { ProfileType, ChatType, GiftedChatMessageType } from './Chat-types';
+import { CHAT_MESSAGES_PAGE } from 'pangea-common/Constants';
 
 export const SHOW_CHAT_SPINNER = 'SHOW_CHAT_SPINNER';
 export const HIDE_CHAT_SPINNER = 'HIDE_CHAT_SPINNER';

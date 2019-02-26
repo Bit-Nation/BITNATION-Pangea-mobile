@@ -1,6 +1,6 @@
 // @flow
 
-import type { Contact } from '../types/Contacts';
+import type { Contact } from './Contacts-types';
 
 export const START_CONTACTS_FETCH = 'START_CONTACTS_FETCH';
 export const CONTACTS_UPDATED = 'CONTACTS_UPDATED';

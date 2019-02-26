@@ -7,9 +7,9 @@ import { View, Alert } from 'react-native';
 import ProfileScreen from './Profile/index';
 import EditProfile from './EditProfile/index';
 import { changeCreatingAccountField, saveCreatingAccount } from '../../../actions/accounts';
-import BackgroundImage from '../../../components/common/BackgroundImage';
+import BackgroundImage from 'pangea-common-reactnative/UI/BackgroundImage';
 import { makeStep, resetSteps } from '../../../actions/testingMode';
-import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
+import FakeNavigationBar from 'pangea-common-reactnative/UI/FakeNavigationBar';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import type { Account } from '../../../types/Account';
 import styles from './EmptyProfile/styles';
@@ -18,8 +18,8 @@ import {
   cancelAccountEditing, changeEditingAccount, doneAccountEditing,
   startAccountEditing, saveEditingAccount,
 } from '../../../actions/profile';
-import { screen } from '../../../global/Screens';
-import i18n from '../../../global/i18n';
+import { screen } from 'pangea-common-reactnative/Screens';
+import i18n from 'pangea-common/i18n';
 
 type Props = {
   /**

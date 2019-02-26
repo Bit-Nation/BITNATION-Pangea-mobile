@@ -6,9 +6,9 @@ import {
   CONTACTS_FETCH_FAILED,
   CONTACTS_UPDATED,
   ADD_CONTACT,
-} from '../actions/contacts';
+} from './contacts-actions.js';
 import { SERVICES_DESTROYED } from '../../../src-old/actions/serviceContainer';
-import type { Contact } from '../types/Contacts';
+import type { Contact } from './Contacts-types';
 
 export type State = {
   isFetching: boolean,

@@ -5,8 +5,8 @@ import {
   CHANGE_ENTERED_MNEMONIC,
   CHANGE_MNEMONIC_VALID,
   VALIDATE_ENTERED_MNEMONIC,
-} from '../../../src-old/actions/key-actions';
-import type { Mnemonic } from '../types/Mnemonic';
+} from './key-actions';
+import type { Mnemonic } from 'pangea-common/types/Mnemonic-types';
 import { SERVICES_DESTROYED } from '../../../src-old/actions/serviceContainer';
 
 export type State = {

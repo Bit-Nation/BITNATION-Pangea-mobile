@@ -8,9 +8,9 @@ import {
 } from 'react-native';
 
 import styles from './styles';
-import PanelView from '../../../components/common/PanelView';
-import i18n from '../../../global/i18n';
-import Button from '../../../components/common/Button';
+import PanelView from 'pangea-common-reactnative/UI/PanelView';
+import i18n from 'pangea-common/i18n';
+import Button from 'pangea-common-reactnative/UI/Button';
 import type { ActivityLogMessage } from '../../../types/ActivityLogMessage';
 
 type Props = {

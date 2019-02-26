@@ -3,11 +3,11 @@
 
 import { NativeModules } from 'react-native';
 import { BigNumber } from 'bignumber.js';
-import type { WalletType } from '../../types/Wallet';
+import type { WalletType } from './Wallet-types';
 import {
   PAT_DEV_ADDRESS,
   PAT_PROD_ADDRESS,
-} from '../../global/Constants';
+} from 'pangea-common/Constants';
 import EthereumService from '../ethereum';
 
 export default class WalletService {

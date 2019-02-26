@@ -1,7 +1,7 @@
 // @flow
 
-import type { ActivityLogMessage } from '../../types/ActivityLogMessage';
-import { type MessageJobType as DBMessage } from '../../services/database/schemata';
+import type { ActivityLogMessage } from 'pangea-common/types/ActivityLogMessage-type';
+import { type MessageJobType as DBMessage } from '@pangea/database/schemata';
 
 /**
  * @desc Converts Realm object to app-level plain model.

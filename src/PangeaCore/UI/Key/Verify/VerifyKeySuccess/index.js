@@ -3,12 +3,12 @@
 import React from 'react';
 import { View } from 'react-native';
 import styles from './styles';
-import BackgroundImage from '../../../../components/common/BackgroundImage';
-import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
-import BodyParagraphs from '../../../../components/common/BodyParagraphs';
-import i18n from '../../../../global/i18n';
-import PanelView from '../../../../components/common/PanelView';
-import NavigatorComponent from '../../../../components/common/NavigatorComponent';
+import BackgroundImage from 'pangea-common-reactnative/UI/BackgroundImage';
+import FakeNavigationBar from 'pangea-common-reactnative/UI/FakeNavigationBar';
+import BodyParagraphs from 'pangea-common-reactnative/UI/BodyParagraphs';
+import i18n from 'pangea-common/i18n';
+import PanelView from 'pangea-common-reactnative/UI/PanelView';
+import NavigatorComponent from 'pangea-common-reactnative/UI/NavigatorComponent';
 
 class VerifyKeySuccess extends NavigatorComponent<void> {
   static navigatorButtons = { leftButtons: [], rightButtons: [] };

@@ -2,8 +2,8 @@
 
 import { type DApp } from './DApp-types';
 import type { DAppMessageType } from '../types/Chat';
-import type { DAppLaunchState } from '../reducers/dApps';
-import type { DAppChatContext, DAppModalInfo } from '../types/DApp';
+import type { DAppLaunchState } from './dApps-reducers';
+import type { DAppChatContext, DAppModalInfo } from './DApp-types';
 
 export type DAppsListUpdatedAction = { +type: 'DAPPS_LIST_UPDATED', availableDApps: Array<DApp> };
 export type StartDAppAction = { +type: 'START_DAPP', dAppPublicKey: string };

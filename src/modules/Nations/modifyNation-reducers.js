@@ -15,9 +15,9 @@ import {
   NATION_DRAFT_SAVE_FINISHED,
   NATION_DRAFT_DELETE_FINISHED,
 } from './modifyNation-actions';
-import type { EditingNationType } from '../types/Nation';
-import type { Action } from '../actions/modifyNation';
-import { convertToEditingNation } from '../../../src-old/utils/nations';
+import type { EditingNationType } from './Nation-types';
+import type { Action } from './modifyNation-actions';
+import { convertToEditingNation } from './nations-utils';
 import { SERVICES_DESTROYED } from '../../../src-old/actions/serviceContainer';
 
 export type State = {

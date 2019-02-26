@@ -1,6 +1,6 @@
 // @flow
 
-import type { Account, PartialAccount, Profile } from '../../types/Account';
+import type { Account, PartialAccount, Profile } from 'pangea-common/types/accounts-types';
 import { type AccountType as DBAccount } from '../../../src/modules/Database/schemata';
 
 /**

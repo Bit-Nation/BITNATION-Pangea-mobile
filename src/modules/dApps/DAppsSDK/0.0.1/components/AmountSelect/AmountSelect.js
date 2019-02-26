@@ -8,10 +8,10 @@ import ActionSheet from 'react-native-actionsheet';
 import { BigNumber } from 'bignumber.js';
 import _ from 'lodash';
 
-import i18n from '../../../../global/i18n';
-import GlobalStyles from '../../../../global/Styles';
-import Colors from '../../../../global/colors';
-import type { CurrencyType, WalletType } from '../../../../types/Wallet';
+import i18n from 'pangea-common/i18n';
+import GlobalStyles from 'pangea-common-reactnative/styles';
+import Colors from 'pangea-common-reactnative/styles/colors';
+import type { CurrencyType, WalletType } from 'pangea-common/types/Wallet-types';
 
 export type InternalProps = {
   /**

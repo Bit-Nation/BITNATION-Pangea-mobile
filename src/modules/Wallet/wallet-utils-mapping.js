@@ -1,7 +1,7 @@
 // @flow
 
-import type { WalletType } from '../../types/Wallet';
-import type { WalletType as DBWallet } from '../../services/database/schemata';
+import type { WalletType } from './Wallet-types';
+import type { WalletType as DBWallet } from '@pangea/database/schemata';
 
 /**
  * @desc Converts Realm object to app-level plain model.

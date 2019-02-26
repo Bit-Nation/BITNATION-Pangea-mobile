@@ -6,11 +6,11 @@ import type { Realm } from 'realm';
 import _ from 'lodash';
 
 import { currentAccountBasedUpdate } from '../accounts/sagas';
-import type { TransactionJobType } from '../../services/database/schemata';
+import type { TransactionJobType } from '@pangea/database/schemata';
 import ServiceContainer from '../../services/container';
 import { SERVICES_CREATED } from '../../actions/serviceContainer';
-import { TX_JOB_STATUS, TX_JOB_TYPE } from '../../global/Constants';
-import defaultDB from '../../services/database';
+import { TX_JOB_STATUS, TX_JOB_TYPE } from 'pangea-common/Constants';
+import defaultDB from '@pangea/database';
 import {
   NATION_CREATE_FAILED,
   NATION_CREATE_SUCCEED, NATION_JOIN_FAILED, NATION_JOIN_SUCCEED, NATION_LEAVE_FAILED, NATION_LEAVE_SUCCEED,

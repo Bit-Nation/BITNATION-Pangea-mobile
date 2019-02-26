@@ -1,8 +1,8 @@
 // @flow
 
 import { MediaQueryStyleSheet } from 'react-native-responsive';
-import Colors from '../../../global/colors';
-import GlobalStyles from '../../../global/Styles';
+import Colors from 'pangea-common-reactnative/styles/colors';
+import GlobalStyles from 'pangea-common-reactnative/Styles';
 
 const styles = MediaQueryStyleSheet.create({
   ...GlobalStyles,

@@ -5,30 +5,30 @@ import { Slider, View, Platform } from 'react-native';
 import { connect } from 'react-redux';
 import { Button, Text } from 'native-base';
 import styles from './styles';
-import NavigatorComponent from '../../../components/common/NavigatorComponent';
+import NavigatorComponent from 'pangea-common-reactnative/UI/NavigatorComponent';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
-import i18n from '../../../global/i18n';
-import { screen, androidNavigationButtons } from '../../../global/Screens';
-import ScreenTitle from '../../../components/common/ScreenTitle';
-import BackgroundImage from '../../../components/common/BackgroundImage';
-import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
+import i18n from 'pangea-common/i18n';
+import { screen, androidNavigationButtons } from 'pangea-common-reactnative/Screens';
+import ScreenTitle from 'pangea-common-reactnative/UI/ScreenTitle';
+import BackgroundImage from 'pangea-common-reactnative/UI/BackgroundImage';
+import FakeNavigationBar from 'pangea-common-reactnative/UI/FakeNavigationBar';
 // import Button from '../../../components/common/Button';
-import type { State as SettingsState } from '../../../reducers/settings';
-import SettingsListItem from '../../../components/common/SettingsListItem';
+import type { State as SettingsState } from '../../../settings-reducers';
+import SettingsListItem from 'pangea-common-reactnative/UI/SettingsListItem';
 import {
   changePasscodeLength,
   changeUseNumericPasscode,
   loadSettings,
   saveSettings,
-} from '../../../actions/settings';
-import Colors from '../../../global/colors';
+} from '../../../settings-actions';
+import Colors from 'pangea-common-reactnative/styles/colors';
 import {
   MAXIMAL_PIN_CODE_LENGTH,
   MINIMAL_PIN_CODE_LENGTH,
-} from '../../../global/Constants';
+} from 'pangea-common/Constants';
 import type { State as AccountsState } from '../../../reducers/accounts';
 import { isCreatingAccount } from '../../../reducers/accounts';
-import { alert } from '../../../global/alerts';
+import { alert } from 'pangea-common/alerts';
 
 type Props = {
   /**

@@ -3,15 +3,15 @@
 import React, { Component } from 'react';
 import { View, Linking, Image, Text, TouchableOpacity } from 'react-native';
 // import ZendeskSupport from 'react-native-zendesk-support';
-import BackgroundImage from '../../components/common/BackgroundImage';
-import FakeNavigationBar from '../../components/common/FakeNavigationBar';
+import BackgroundImage from 'pangea-common-reactnative/UI/BackgroundImage';
+import FakeNavigationBar from 'pangea-common-reactnative/UI/FakeNavigationBar';
 import facebook from '../../assets/images/icon-facebook.png';
 import steemit from '../../assets/images/icon-steemit.png';
 import telegram from '../../assets/images/icon-telegram.png';
 import github from '../../assets/images/icon-github.png';
 import twitter from '../../assets/images/icon-twitter.png';
 import discord from '../../assets/images/icon-discord.png';
-import Card from '../../components/Card';
+import Card from '../components/Card';
 import styles from './styles';
 
 type Props = {

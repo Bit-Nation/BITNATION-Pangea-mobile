@@ -6,7 +6,7 @@ import { SERVICES_CREATED } from '../../actions/serviceContainer';
 import {
   START_CONTACTS_FETCH,
   ADD_CONTACT,
-} from '../../actions/contacts';
+} from '../contacts-actions.js';
 
 /**
  * @desc Root contacts saga.

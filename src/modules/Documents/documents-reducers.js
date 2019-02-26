@@ -13,9 +13,9 @@ import {
   UPDATE_MODIFIED_DOCUMENT_FIELD,
   OPEN_DOCUMENT, DELETE_DOCUMENT,
   UPLOAD_DOCUMENT,
-} from '../actions/documents';
+} from './documents-actions';
 import { SERVICES_DESTROYED } from '../../../src-old/actions/serviceContainer';
-import type { Document, EditingDocument } from '../types/Documents';
+import type { Document, EditingDocument } from './Documents-types';
 import { contentStorage } from './documents-service';
 
 export type State = {

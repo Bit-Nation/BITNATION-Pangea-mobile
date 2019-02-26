@@ -1,9 +1,9 @@
 // @flow
 
-import type { TransactionJobType } from '../services/database/schemata';
+import type { TransactionJobType } from '@pangea/database/schemata';
 
 // eslint-disable-next-line import/prefer-default-export
-export type { NationType as DBNationType } from '../services/database/schemata';
+export type { NationType as DBNationType } from '@pangea/database/schemata';
 
 export type NationIdType = string;
 

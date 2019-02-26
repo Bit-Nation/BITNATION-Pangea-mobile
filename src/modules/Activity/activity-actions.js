@@ -1,6 +1,6 @@
 // @flow
 
-import { type ActivityLogMessage } from '../../../src-old/types/ActivityLogMessage';
+import { type ActivityLogMessage } from 'pangea-common/types/ActivityLogMessage-type';
 
 export const MESSAGES_UPDATED = 'MESSAGES_UPDATED';
 export const ADD_NEW_MESSAGE = 'ADD_NEW_MESSAGE';

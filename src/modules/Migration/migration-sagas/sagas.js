@@ -1,7 +1,7 @@
 // @flow
 
 import { call } from 'redux-saga/effects';
-import defaultDB from '../../services/database';
+import defaultDB from '@pangea-database';
 import { getCurrentAccount } from '../accounts/sagas';
 import { launchLoggedInFlow } from '../navigation/sagas';
 

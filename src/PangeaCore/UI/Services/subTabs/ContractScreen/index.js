@@ -2,7 +2,7 @@ import { Share } from 'react-native';
 import { compose, withHandlers } from 'recompose';
 import SubTabComponent from '../../components/SubTabComponent/view';
 import withSubTabHOC from '../../components/SubTabComponent/index';
-import { errorAlert } from '../../../../global/alerts';
+import { errorAlert } from 'pangea-common/alerts';
 
 export default compose(
   withSubTabHOC,

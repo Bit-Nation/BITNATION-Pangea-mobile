@@ -3,14 +3,14 @@
 import { put, call } from 'redux-saga/effects';
 import type { Realm } from 'realm';
 
-import { messagesUpdated, type AddNewMessageAction } from '../../actions/activity';
-import defaultDB from '../../services/database';
-import type { MessageJobType as DBMessage } from '../../services/database/schemata';
+import { messagesUpdated, type AddNewMessageAction } from '../activity-actions';
+import defaultDB from '@pangea/database/database-service';
+import type { MessageJobType as DBMessage } from '@pangea/database/schemata';
 import {
   convertFromDatabase,
   convertToDatabase,
-} from '../../utils/mapping/activity';
-import type { ActivityLogMessage } from '../../types/ActivityLogMessage';
+} from '../activity-utils';
+import type { ActivityLogMessage } from 'pangea-common/types/ActivityLogMessage-type';
 import { getCurrentAccountId, currentAccountBasedUpdate } from '../accounts/sagas';
 
 /**

@@ -1,6 +1,6 @@
 // @flow
 
-import type { Document, PanthalassaDocument, PanthalassaInputDocument } from '../../types/Documents';
+import type { Document, PanthalassaDocument, PanthalassaInputDocument } from './Documents-types';
 
 /**
  * @desc Converts document from Panthalassa representation.

@@ -6,26 +6,26 @@ import { View, Image, Text, ScrollView, Clipboard, TouchableHighlight, WebView, 
 import Modal from 'react-native-modal';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
-import { screen } from '../../../global/Screens';
+import { screen } from 'pangea-common-reactnative/Screens';
 import styles from './styles';
-import i18n from '../../../global/i18n';
+import i18n from 'pangea-common/i18n';
 import {
   startDocumentEditing,
   deleteDocument,
   uploadDocument,
-} from '../../../actions/documents';
-import type { State as DocumentsState } from '../../../reducers/documents';
+} from '../../documents-actions';
+import type { State as DocumentsState } from '../../documents-reducers';
 import type { Account } from '../../../types/Account';
-import Button from '../../../components/common/Button';
-import Colors from '../../../global/colors';
-import AssetsImages from '../../../global/AssetsImages';
+import Button from 'pangea-common-reactnative/UI/Button';
+import Colors from 'pangea-common-reactnative/styles/colors';
+import AssetsImages from 'pangea-common-reactnative/assets/AssetsImages';
 import { imageSource } from '../../../utils/profile';
-import { getOpenedDocument } from '../../../reducers/documents';
-import DocumentDetail from '../../../components/common/DocumentDetail';
+import { getOpenedDocument } from '../../documents-reducers';
+import DocumentDetail from 'pangea-common-reactnative/UI/DocumentDetail';
 import { getCurrentAccount } from '../../../reducers/accounts';
-import MoreMenuModal from '../../../components/common/MoreMenuModal';
-import { contentStorage } from '../../../services/documents';
-import { alert } from '../../../global/alerts';
+import MoreMenuModal from 'pangea-common-reactnative/UI/MoreMenuModal';
+import { contentStorage } from '../../documents-service';
+import { alert } from 'pangea-common/alerts';
 
 type Props = {
   /**

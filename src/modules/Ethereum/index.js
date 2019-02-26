@@ -5,7 +5,7 @@ import { NativeModules } from 'react-native';
 
 import ERC20ABI from './ERC20ABI.json';
 import NationsABI from './NationABI.json';
-import type { NetworkType } from '../../types/Account';
+import type { NetworkType } from 'pangea-common/types/accounts-types';
 
 export default class EthereumService {
   wallet: Object;

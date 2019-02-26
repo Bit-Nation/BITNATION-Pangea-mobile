@@ -2,7 +2,7 @@
 
 import { all, takeEvery, call } from 'redux-saga/effects';
 
-import { REQUEST_JOIN_NATION, REQUEST_LEAVE_NATION } from '../../actions/nations';
+import { REQUEST_JOIN_NATION, REQUEST_LEAVE_NATION } from '../nations-actions';
 import { joinNation, leaveNation, startDatabaseListening, startNationIndexingWorker } from './sagas';
 import { SERVICES_CREATED } from '../../actions/serviceContainer';
 

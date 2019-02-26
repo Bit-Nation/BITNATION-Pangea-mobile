@@ -8,23 +8,23 @@ import {
   TextInput,
 } from 'react-native';
 
-import BackgroundImage from '../../../components/common/BackgroundImage';
-import NavigatorComponent from '../../../components/common/NavigatorComponent';
-import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
-import PanelView from '../../../components/common/PanelView';
-import SwitchLabeled from '../../../components/common/SwitchLabeled';
-import MultiSelect from '../../../components/MultiSelect';
-import Loading from '../../../components/common/Loading';
-import NationActionButton from '../../../components/common/NationActionButton';
-import Colors from '../../../global/colors';
+import BackgroundImage from 'pangea-common-reactnative/UI/BackgroundImage';
+import NavigatorComponent from 'pangea-common-reactnative/UI/NavigatorComponent';
+import FakeNavigationBar from 'pangea-common-reactnative/UI/FakeNavigationBar';
+import PanelView from 'pangea-common-reactnative/UI/PanelView';
+import SwitchLabeled from 'pangea-common-reactnative/UI/SwitchLabeled';
+import MultiSelect from 'pangea-common-reactnative/UI/MultiSelect';
+import Loading from 'pangea-common-reactnative/UI/Loading';
+import NationActionButton from 'pangea-common-reactnative/UI/NationActionButton';
+import Colors from 'pangea-common-reactnative/styles/colors';
 import styles from './styles';
-import i18n from '../../../global/i18n';
-import AssetsImage from '../../../global/AssetsImages';
-import { emptyNation, nationIsModified, type State as ModifyNationState } from '../../../reducers/modifyNation';
-import { nationIsValid } from '../../../utils/nations';
-import type { EditingNationType } from '../../../types/Nation';
+import i18n from 'pangea-common/i18n';
+import AssetsImage from 'pangea-common-reactnative/assets/AssetsImages';
+import { emptyNation, nationIsModified, type State as ModifyNationState } from '../../../modifyNation-reducers';
+import { nationIsValid } from '../../../nations-utils';
+import type { EditingNationType } from '../../../Nation-types';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
-import ScreenTitle from '../../../components/common/ScreenTitle';
+import ScreenTitle from 'pangea-common-reactnative/UI/ScreenTitle';
 
 type Props = {
   navigator: Navigator,

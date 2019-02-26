@@ -1,7 +1,7 @@
 // @flow
 
 import _ from 'lodash';
-import type { Mnemonic } from '../types/Mnemonic';
+import type { Mnemonic } from 'pangea-common/types/Mnemonic-types';
 
 /**
  * @desc Function to convert mnemonic from array to string.

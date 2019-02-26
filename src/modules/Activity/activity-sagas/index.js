@@ -2,7 +2,7 @@
 
 import { all, call, takeEvery } from 'redux-saga/effects';
 
-import { ADD_NEW_MESSAGE } from '../../actions/activity';
+import { ADD_NEW_MESSAGE } from '../activity-actions';
 import {
   addNewMessageSaga,
   startDatabaseListening,

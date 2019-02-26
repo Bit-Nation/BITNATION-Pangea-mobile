@@ -10,18 +10,18 @@ import {
 } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
-import NavigatorComponent from '../../../../components/common/NavigatorComponent';
-import PanelView from '../../../../components/common/PanelView';
+import NavigatorComponent from 'pangea-common-reactnative/UI/NavigatorComponent';
+import PanelView from 'pangea-common-reactnative/UI/PanelView';
 import { imageSource, saveShouldBeEnabled } from '../../../../utils/profile';
-import AssetsImage from '../../../../global/AssetsImages';
-import Colors from '../../../../global/colors';
+import AssetsImage from 'pangea-common-reactnative/assets/AssetsImages';
+import Colors from 'pangea-common-reactnative/styles/colors';
 import type { Navigator } from '../../../../types/ReactNativeNavigation';
 import type { Account, PartialAccount } from '../../../../types/Account';
-import i18n from '../../../../global/i18n';
+import i18n from 'pangea-common/i18n';
 import styles from './styles';
-import ScreenTitle from '../../../../components/common/ScreenTitle';
-import { androidNavigationButtons } from '../../../../global/Screens';
-import PhotoActionSheet from '../../../../components/common/PhotoActionSheet';
+import ScreenTitle from 'pangea-common-reactnative/UI/ScreenTitle';
+import { androidNavigationButtons } from 'pangea-common-reactnative/Screens';
+import PhotoActionSheet from 'pangea-common-reactnative/UI/PhotoActionSheet';
 
 const DONE_BUTTON = 'DONE_BUTTON';
 

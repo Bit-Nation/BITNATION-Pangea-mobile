@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import type { Navigator } from '../../types/ReactNativeNavigation';
 import ConfirmationScreen from './ConfirmationScreen';
-import { CancelledError } from '../../global/errors/common';
+import { CancelledError } from 'pangea-common/errors/common';
 
 type Props = {
   /**

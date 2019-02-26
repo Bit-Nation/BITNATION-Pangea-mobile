@@ -1,5 +1,5 @@
 // @flow
 
-import { PangeaCommon } from "../../common";
+import { PangeaCommon } from "pangea-common";
 
 let a = new PangeaCommon.PangeaModule();

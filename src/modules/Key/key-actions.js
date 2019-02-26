@@ -1,6 +1,6 @@
 // @flow
 
-import { type Mnemonic } from '../../../src-old/types/Mnemonic-types';
+import { type Mnemonic } from 'pangea-common/types/Mnemonic-types';
 
 type ValidateEnteredMnemonicAction = { +type: 'VALIDATE_ENTERED_MNEMONIC' };
 type ChangeMnemonicValidAction = { +type: 'CHANGE_MNEMONIC_VALID', +mnemonicValid: boolean | null };

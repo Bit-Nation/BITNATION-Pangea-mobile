@@ -1,8 +1,8 @@
 import { compose, nest, withHandlers, lifecycle, withState, withProps } from 'recompose';
 import ServiceScreen from './view';
-import Colors from '../../global/colors';
-import AssetsImages from '../../global/AssetsImages';
-import { screen } from '../../global/Screens';
+import Colors from 'pangea-common-reactnative/styles/colors';
+import AssetsImages from 'pangea-common-reactnative/assets/AssetsImages';
+import { screen } from 'pangea-common-reactnative/Screens';
 import webView from './components/WebViewModal/view';
 
 const MENU_BUTTON = 'MENU_BUTTON';

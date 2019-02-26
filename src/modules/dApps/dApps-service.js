@@ -1,9 +1,9 @@
 // @flow
 
-import { convertFromPanthalassa } from '../../../src-old/utils/mapping/dapp';
-import type { DApp } from '../../types/DApp';
+import { convertFromPanthalassa } from './dapp-utils';
+import type { DApp } from './DApp-types';
 import type { DAppMessageType } from '../../types/Chat';
-import * as Panthalassa from '../../../src-old/services/panthalassa';
+import * as Panthalassa from '@pangea/panthalassa';
 
 const DAPP_START_TIMEOUT = 30;
 

@@ -6,20 +6,20 @@ import {
   Text, ScrollView,
 } from 'react-native';
 
-import BackgroundImage from '../../../components/common/BackgroundImage';
+import BackgroundImage from 'pangea-common-reactnative/UI/BackgroundImage';
 import styles from './styles';
-import NationActionButton from '../../../components/common/NationActionButton';
-import AssetsImage from '../../../global/AssetsImages';
-import PanelView from '../../../components/common/PanelView';
-import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
-import i18n from '../../../global/i18n';
-import { openedNation, type State as NationState } from '../../../reducers/nations';
-import PanelViewAlert from '../../../components/common/PanelViewAlert';
-import PanelViewCitizen from '../../../components/common/PanelViewCitizen';
-import { nationIsValid, resolveStatus } from '../../../utils/nations';
+import NationActionButton from 'pangea-common-reactnative/UI/NationActionButton';
+import AssetsImage from 'pangea-common-reactnative/assets/AssetsImages';
+import PanelView from 'pangea-common-reactnative/UI/PanelView';
+import FakeNavigationBar from 'pangea-common-reactnative/UI/FakeNavigationBar';
+import i18n from 'pangea-common/i18n';
+import { openedNation, type State as NationState } from '../../../nations-reducers';
+import PanelViewAlert from 'pangea-common-reactnative/UI/PanelViewAlert';
+import PanelViewCitizen from 'pangea-common-reactnative/UI/PanelViewCitizen';
+import { nationIsValid, resolveStatus } from '../../../nations-utils';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
-import type { NationType } from '../../../types/Nation';
-import ScreenTitle from '../../../components/common/ScreenTitle';
+import type { NationType } from '../../../Nation-types';
+import ScreenTitle from 'pangea-common-reactnative/UI/ScreenTitle';
 
 type Props = {
   /**

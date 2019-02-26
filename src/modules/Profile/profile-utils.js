@@ -1,7 +1,7 @@
 // @flow
 
 import _ from 'lodash';
-import type { Account, PartialAccount } from '../types/Account';
+import type { Account, PartialAccount } from 'pangea-common/types/accounts-types';
 
 /**
  * @desc Function that checks for the save enabled status

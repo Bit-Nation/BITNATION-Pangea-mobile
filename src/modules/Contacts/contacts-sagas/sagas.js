@@ -4,15 +4,15 @@ import {
   call,
   put,
 } from 'redux-saga/effects';
-import ContactsService from '../../services/contacts';
+import ContactsService from '../contacts-service';
 import {
   contactsFetchFailed,
   contactsUpdated,
   startContactsFetch,
-} from '../../actions/contacts';
+} from '../contacts-actions.js';
 import { getProfile } from '../chat/sagas';
-import type { AddContactAction } from '../../actions/contacts';
-import type { Contact } from '../../types/Contacts';
+import type { AddContactAction } from '../contacts-actions';
+import type { Contact } from '../Contacts-types';
 
 /**
  * @desc Fetch list of contacts.

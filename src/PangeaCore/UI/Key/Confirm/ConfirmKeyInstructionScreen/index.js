@@ -8,17 +8,17 @@ import {
 } from 'react-native';
 
 import styles from './styles';
-import { androidNavigationButtons, screen } from '../../../../global/Screens';
-import BackgroundImage from '../../../../components/common/BackgroundImage';
-import FakeNavigationBar from '../../../../components/common/FakeNavigationBar';
-import PanelView from '../../../../components/common/PanelView';
-import { KEY_LENGTH } from '../../../../global/Constants';
-import AssetsImages from '../../../../global/AssetsImages';
-import BodyParagraphs from '../../../../components/common/BodyParagraphs';
-import i18n from '../../../../global/i18n';
-import NavigatorComponent from '../../../../components/common/NavigatorComponent';
-import type { NavigatorProps } from '../../../../components/common/NavigatorComponent';
-import Colors from '../../../../global/colors';
+import { androidNavigationButtons, screen } from 'pangea-common-reactnative/Screens';
+import BackgroundImage from 'pangea-common-reactnative/UI/BackgroundImage';
+import FakeNavigationBar from 'pangea-common-reactnative/UI/FakeNavigationBar';
+import PanelView from 'pangea-common-reactnative/UI/PanelView';
+import { KEY_LENGTH } from 'pangea-common/Constants';
+import AssetsImages from 'pangea-common-reactnative/assets/AssetsImages';
+import BodyParagraphs from 'pangea-common-reactnative/UI/BodyParagraphs';
+import i18n from 'pangea-common/i18n';
+import NavigatorComponent from 'pangea-common-reactnative/UI/NavigatorComponent';
+import type { NavigatorProps } from 'pangea-common-reactnative/UI/NavigatorComponent';
+import Colors from 'pangea-common-reactnative/styles/colors';
 
 type Props = {
   shouldShowCancel: boolean,

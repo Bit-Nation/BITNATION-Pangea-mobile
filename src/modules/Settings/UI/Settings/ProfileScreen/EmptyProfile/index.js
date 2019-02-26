@@ -5,9 +5,9 @@ import { View } from 'react-native';
 
 import styles from './styles';
 import type { Navigator } from '../../../../types/ReactNativeNavigation';
-import PanelView from '../../../../components/common/PanelView';
-import i18n from '../../../../global/i18n';
-import ScreenTitle from '../../../../components/common/ScreenTitle';
+import PanelView from 'pangea-common-reactnative/UI/PanelView';
+import i18n from 'pangea-common/i18n';
+import ScreenTitle from 'pangea-common-reactnative/UI/ScreenTitle';
 
 export type Props = {
   /**

@@ -2,12 +2,12 @@
 
 import { call, put, select } from 'redux-saga/effects';
 
-import { nationDraftSaveResult, nationDraftDeleteResult, startNationEditing, nationSubmitResult } from '../../actions/modifyNation';
-import type { SaveNationDraftAction, DeleteNationDraftAction, SubmitNationAction } from '../../actions/modifyNation';
-import { nationIsModified } from '../../reducers/modifyNation';
+import { nationDraftSaveResult, nationDraftDeleteResult, startNationEditing, nationSubmitResult } from '../modifyNation-actions';
+import type { SaveNationDraftAction, DeleteNationDraftAction, SubmitNationAction } from '../modifyNation-actions';
+import { nationIsModified } from '../modifyNation-reducers';
 import ServiceContainer from '../../services/container';
-import { NoNationsServiceError } from '../../global/errors/services';
-import { convertFromDatabase } from '../../utils/nations';
+import { NoNationsServiceError } from 'pangea-common/errors/services';
+import { convertFromDatabase } from '../nations-utils';
 
 /**
  * @desc Saves draft to database. Updates existing one if present.

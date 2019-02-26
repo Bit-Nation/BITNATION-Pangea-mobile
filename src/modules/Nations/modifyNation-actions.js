@@ -1,7 +1,7 @@
 // @flow
 
 import { type NationType, type EditingNationType } from './Nation-types';
-import type { NationIdType } from '../types/Nation';
+import type { NationIdType } from './Nation-types';
 
 export type StartNationCreationAction = { +type: 'START_NATION_CREATION' };
 export type StartNationEditingAction = { +type: 'START_NATION_EDITING', +nation: NationType };

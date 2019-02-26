@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 
 import type { InternalProps } from './AmountSelect';
 import AmountSelect from './AmountSelect';
-import type { CurrencyType } from '../../../../types/Wallet';
+import type { CurrencyType } from 'pangea-common/types/Wallet-types';
 
 export type Props = {
   /**

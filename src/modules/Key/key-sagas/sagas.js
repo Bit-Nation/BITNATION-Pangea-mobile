@@ -4,8 +4,8 @@ import { call, select, put } from 'redux-saga/effects';
 import _ from 'lodash';
 
 import AccountsService from '../../services/accounts';
-import { changeMnemonicValid } from '../../actions/key';
-import type { Mnemonic } from '../../types/Mnemonic';
+import { changeMnemonicValid } from '../key-actions';
+import type { Mnemonic } from 'pangea-common/types/Mnemonic-types';
 
 /**
  * @desc Validate if entered mnemonic is a valid one.

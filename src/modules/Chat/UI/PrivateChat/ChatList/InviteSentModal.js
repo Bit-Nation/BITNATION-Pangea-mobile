@@ -7,9 +7,9 @@ import {
 } from 'react-native';
 import { Text } from 'native-base';
 
-import Button from '../../../components/common/Button';
+import Button from 'pangea-common-reactnative/UI/Button';
 import styles from './styles';
-import i18n from '../../../global/i18n';
+import i18n from 'pangea-common/i18n';
 
 type Props = {
   /**

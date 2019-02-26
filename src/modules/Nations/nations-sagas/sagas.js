@@ -4,16 +4,16 @@ import { call, put, select } from 'redux-saga/effects';
 import { delay } from 'redux-saga';
 import { Realm } from 'realm';
 
-import { nationsUpdated, doneFetchNations, fetchNationsStarted, cancelLoading } from '../../actions/nations';
-import { openedNation } from '../../reducers/nations';
-import { convertFromDatabase } from '../../utils/nations';
-import { errorAlert } from '../../global/alerts';
+import { nationsUpdated, doneFetchNations, fetchNationsStarted, cancelLoading } from '../nations-actions';
+import { openedNation } from '../nations-reducers';
+import { convertFromDatabase } from '../nations-utils';
+import { errorAlert } from 'pangea-common/alerts';
 import ServiceContainer from '../../services/container';
-import { NoNationsServiceError } from '../../global/errors/services';
+import { NoNationsServiceError } from 'pangea-common/errors/services';
 import { currentAccountBasedUpdate } from '../accounts/sagas';
-import type { NationType as DBNationType } from '../../services/database/schemata';
-import type { State as NationsState } from '../../reducers/nations';
-import { NATION_INDEX_RECOVER_PERIOD } from '../../global/Constants';
+import type { NationType as DBNationType } from '@pangea/database/schemata';
+import type { State as NationsState } from '../nations-reducers';
+import { NATION_INDEX_RECOVER_PERIOD } from 'pangea-common/Constants';
 
 const extractMessage = (error) => {
   if (error.transKey !== undefined) {

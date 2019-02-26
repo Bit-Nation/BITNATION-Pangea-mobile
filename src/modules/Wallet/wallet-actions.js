@@ -1,6 +1,6 @@
 // @flow
 
-import type { WalletType } from '../types/Wallet';
+import type { WalletType } from 'pangea-common/types/Wallet-types';
 
 export type SelectWalletAction = { +type: 'SELECT_WALLET', +wallet: WalletType };
 export type SendMoneyAction = { +type: 'SEND_MONEY', +amount: number, +toEthAddress: string };

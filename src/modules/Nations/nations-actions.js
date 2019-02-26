@@ -1,6 +1,6 @@
 // @flow
 
-import type { NationIdType, NationType } from '../types/Nation';
+import type { NationIdType, NationType } from './Nation-types';
 
 export type NationTab = 'ALL_NATIONS' | 'MY_NATIONS';
 

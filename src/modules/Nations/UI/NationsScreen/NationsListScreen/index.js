@@ -4,19 +4,19 @@ import React from 'react';
 import { View, SectionList } from 'react-native';
 import _ from 'lodash';
 
-import BackgroundImage from '../../../components/common/BackgroundImage';
-import LucyButton from '../../../components/common/LucyButton';
+import BackgroundImage from 'pangea-common-reactnative/UI/BackgroundImage';
+import LucyButton from 'pangea-common-reactnative/UI/LucyButton';
 import styles from './styles';
-import ProgressiveImage from '../../../components/ProgressiveImage';
-import NationListItem from '../../../components/common/NationListItem';
-import NationListHeader from '../../../components/common/ItemsListHeader';
-import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
-import i18n from '../../../global/i18n';
-import { resolveStatus, statusColor } from '../../../utils/nations';
-import Loading from '../../../components/common/Loading';
-import type { NationIdType, NationType } from '../../../types/Nation';
-import type { NationTab } from '../../../actions/nations';
-import ScreenTitle from '../../../components/common/ScreenTitle';
+import ProgressiveImage from 'pangea-common-reactnative/UI/ProgressiveImage';
+import NationListItem from 'pangea-common-reactnative/UI/NationListItem';
+import NationListHeader from 'pangea-common-reactnative/UI/ItemsListHeader';
+import FakeNavigationBar from 'pangea-common-reactnative/UI/FakeNavigationBar';
+import i18n from 'pangea-common/i18n';
+import { resolveStatus, statusColor } from '../../../nations-utils';
+import Loading from 'pangea-common-reactnative/UI/Loading';
+import type { NationIdType, NationType } from '../../../Nation-types';
+import type { NationTab } from '../../../nations-actions';
+import ScreenTitle from 'pangea-common-reactnative/UI/ScreenTitle';
 
 const uri =
   'https://www.ecestaticos.com/imagestatic/clipping/0df/db8/0dfdb8b1b74624f225d5b6112ade8706/jxsi-y-cup-pactan-la-ley-para-amparar-el-referendum-y-la-republica-catalana.jpg?mtime=1483018148';

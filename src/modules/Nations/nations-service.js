@@ -4,17 +4,17 @@ import Realm from 'realm';
 import uuid from 'uuid4';
 
 import EthereumService from '../ethereum';
-import type { NationType, EditingNationType, DBNationType, NationIdType } from '../../types/Nation';
-import { convertDraftToDatabase, convertNationToBlockchain } from '../../../src-old/utils/nations';
-import { NationAlreadySubmitted, StateMutateNotPossible } from '../../global/errors/nations';
-import { DatabaseWriteFailed } from '../../global/errors/common';
+import type { NationType, EditingNationType, DBNationType, NationIdType } from './Nation-types';
+import { convertDraftToDatabase, convertNationToBlockchain } from './nations-utils';
+import { NationAlreadySubmitted, StateMutateNotPossible } from 'pangea-common/errors/nations';
+import { DatabaseWriteFailed } from 'pangea-common/errors/common';
 import { jobFactory } from '../../../src-old/services/txProcessor/txProcessor-service';
 import {
   NATIONS_DEV_ENDPOINT,
   NATIONS_PROD_ENDPOINT,
   TX_JOB_STATUS,
   TX_JOB_TYPE,
-} from '../../global/Constants';
+} from 'pangea-common/Constants';
 
 export default class NationsService {
   constructor(ethereumService: EthereumService, dbPromise: Promise<Realm>, accountId: string) {

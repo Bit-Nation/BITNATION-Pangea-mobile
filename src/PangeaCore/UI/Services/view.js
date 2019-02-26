@@ -2,8 +2,8 @@
 
 import React from 'react';
 import { View, TextInput, Image } from 'react-native';
-import Background from '../../components/common/BackgroundImage';
-import ScrollTabView, { DefaultTabBar } from '../../components/ScrollTabView';
+import Background from 'pangea-common-reactnative/UI/BackgroundImage';
+import ScrollTabView, { DefaultTabBar } from '../components/ScrollTabView';
 import type { Navigator } from '../../types/ReactNativeNavigation';
 import ContractScreen from './subTabs/ContractScreen';
 import DappScreen from './subTabs/DappScreen';
@@ -11,12 +11,12 @@ import ServiceScreen from './subTabs/ServiceScreen';
 import ProductScreen from './subTabs/ProductScreen';
 
 
-import Colors from '../../global/colors';
-import AssetsImages from '../../global/AssetsImages';
+import Colors from 'pangea-common-reactnative/styles/colors';
+import AssetsImages from 'pangea-common-reactnative/assets/AssetsImages';
 import styles from './styles';
-import FakeNavigationBar from '../../components/common/FakeNavigationBar';
-import LucyButton from '../../components/common/LucyButton';
-import PopOverModal from '../../components/PopOverModal';
+import FakeNavigationBar from 'pangea-common-reactnative/UI/FakeNavigationBar';
+import LucyButton from 'pangea-common-reactnative/UI/LucyButton';
+import PopOverModal from '../components/PopOverModal';
 import { contractData, dAppData, serviceData, productData } from './helper';
 
 

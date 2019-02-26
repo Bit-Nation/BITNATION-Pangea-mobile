@@ -2,7 +2,7 @@
 
 import _ from 'lodash';
 import { Buffer } from 'buffer/index';
-import type { DAppMessageType, GiftedChatMessageType, PanthalassaMessage } from '../types/Chat';
+import type { DAppMessageType, GiftedChatMessageType, PanthalassaMessage } from './Chat-types';
 
 /**
  * @desc Function that creates the list of messages to be consumed by GiftedChat

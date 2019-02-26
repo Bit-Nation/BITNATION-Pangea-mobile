@@ -5,20 +5,20 @@ import { connect } from 'react-redux';
 import { View, Image, Text, TextInput, ScrollView } from 'react-native';
 
 import type { Navigator } from '../../../types/ReactNativeNavigation';
-import NavigatorComponent from '../../../components/common/NavigatorComponent';
-import Button from '../../../components/common/Button';
+import NavigatorComponent from 'pangea-common-reactnative/UI/NavigatorComponent';
+import Button from 'pangea-common-reactnative/UI/Button';
 import styles from './styles';
-import i18n from '../../../global/i18n';
+import i18n from 'pangea-common/i18n';
 import {
   cancelDocumentModification,
   finishDocumentModification,
   updateModifiedDocumentField,
-} from '../../../actions/documents';
-import { type State as DocumentsState } from '../../../reducers/documents';
-import Colors from '../../../global/colors';
-import AssetsImages from '../../../global/AssetsImages';
+} from '../../documents-actions';
+import { type State as DocumentsState } from '../../documents-reducers';
+import Colors from 'pangea-common-reactnative/styles/colors';
+import AssetsImages from 'pangea-common-reactnative/assets/AssetsImages';
 import { imageSource } from '../../../utils/profile';
-import { contentStorage } from '../../../services/documents';
+import { contentStorage } from '../../documents-service';
 
 type Props = {
   /**

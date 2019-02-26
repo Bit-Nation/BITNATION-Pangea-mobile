@@ -2,8 +2,8 @@
 
 import React from 'react';
 import { View, ScrollView, Text, FlatList, TouchableOpacity } from 'react-native';
-import ProgressiveImage from '../../../../components/ProgressiveImage';
-import ViewMoreText from '../../../../components/ViewMoreText';
+import ProgressiveImage from '../../../components/ProgressiveImage';
+import ViewMoreText from '../../../components/ViewMoreText';
 import GovMarketItem, { type GovMarketItemProps } from '../GovMarketItem';
 
 import styles from './styles';

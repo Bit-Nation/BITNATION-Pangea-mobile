@@ -13,9 +13,9 @@ import {
   CHANGE_CREATING_ACCOUNT_FIELD,
   START_RESTORE_ACCOUNT_USING_MNEMONIC,
   SAVE_CREATING_ACCOUNT, SET_CURRENT_ACCOUNT_IDENTITY_KEY,
-} from '../actions/accounts';
-import type { Account, PartialAccount } from '../types/Account';
-import TaskBuilder, { type AsyncTask } from '../../../src-old/utils/asyncTask';
+} from './accounts-actions';
+import type { Account, PartialAccount } from 'pangea-common/types/accounts-types';
+import TaskBuilder, { type AsyncTask } from 'pangea-common/utils/asyncTask';
 import {
   type Action as ProfileAction,
   CANCEL_ACCOUNT_EDITING,
@@ -23,7 +23,7 @@ import {
   DONE_ACCOUNT_EDITING,
   START_ACCOUNT_EDITING,
 } from '../actions/profile';
-import type { Mnemonic } from '../types/Mnemonic';
+import type { Mnemonic } from 'pangea-common/types/Mnemonic-types';
 
 export type State = {
   +editingAccount: Account | PartialAccount | null,

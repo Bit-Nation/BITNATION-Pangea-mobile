@@ -1,7 +1,7 @@
 // @flow
-import { TX_JOB_STATUS, TX_JOB_TYPE } from '../../global/Constants';
-import { InvalidTxHash, InvalidTxType } from '../../global/errors/txQueue';
-import type { TransactionJobType } from '../database/schemata';
+import { TX_JOB_STATUS, TX_JOB_TYPE } from 'pangea-common/Constants';
+import { InvalidTxHash, InvalidTxType } from 'pangea-common/errors/txQueue';
+import type { TransactionJobType } from '@pangea/database/schemata';
 
 /**
  * @desc Factory to create a transaction job object.

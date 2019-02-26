@@ -1,7 +1,7 @@
 // @flow
 
-import GlobalStyles from '../../../global/Styles';
-import Colors from '../../../global/colors';
+import GlobalStyles from 'pangea-common-reactnative/styles';
+import Colors from 'pangea-common-reactnative/styles/colors';
 
 const styles = {
   ...GlobalStyles,

@@ -5,15 +5,15 @@ import React from 'react';
 import { Alert, Text, View } from 'react-native';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 
-import DAppsService from '../../../services/dApps';
+import DAppsService from '../../dApps-service';
 import styles from './styles';
-import NavigatorComponent from '../../../components/common/NavigatorComponent';
-import i18n from '../../../global/i18n';
-import Loading from '../../../components/common/Loading';
-import { androidNavigationButtons } from '../../../global/Screens';
-import BackgroundImage from '../../../components/common/BackgroundImage';
-import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
-import ScreenTitle from '../../../components/common/ScreenTitle';
+import NavigatorComponent from 'pangea-common-reactnative/UI/NavigatorComponent';
+import i18n from 'pangea-common/i18n';
+import Loading from 'pangea-common-reactnative/UI/Loading';
+import { androidNavigationButtons } from 'pangea-common-reactnative/Screens';
+import BackgroundImage from 'pangea-common-reactnative/UI/BackgroundImage';
+import FakeNavigationBar from 'pangea-common-reactnative/UI/FakeNavigationBar';
+import ScreenTitle from 'pangea-common-reactnative/UI/ScreenTitle';
 
 type Props = {
   /**

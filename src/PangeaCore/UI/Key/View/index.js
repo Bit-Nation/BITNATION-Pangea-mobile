@@ -5,20 +5,20 @@ import { View } from 'react-native';
 import { connect } from 'react-redux';
 
 import styles from './styles';
-import BackgroundImage from '../../../components/common/BackgroundImage';
-import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
-import PanelView from '../../../components/common/PanelView';
-import GridView from '../../../components/GridView/index';
-import Button from '../../../components/common/Button';
-import PrivateKeyTextInputContainer from '../../../components/PrivateKeyTextInputContainer/index';
-import { KEY_COLUMN_COUNT, KEY_PAGE_ROW_COUNT, KEY_PAGE_LENGTH, KEY_ROW_COUNT } from '../../../global/Constants';
-import BodyParagraphs from '../../../components/common/BodyParagraphs';
-import i18n from '../../../global/i18n';
+import BackgroundImage from 'pangea-common-reactnative/UI/BackgroundImage';
+import FakeNavigationBar from 'pangea-common-reactnative/UI/FakeNavigationBar';
+import PanelView from 'pangea-common-reactnative/UI/PanelView';
+import GridView from '../../components/GridView/index';
+import Button from 'pangea-common-reactnative/UI/Button';
+import PrivateKeyTextInputContainer from '../../components/PrivateKeyTextInputContainer/index';
+import { KEY_COLUMN_COUNT, KEY_PAGE_ROW_COUNT, KEY_PAGE_LENGTH, KEY_ROW_COUNT } from 'pangea-common/Constants';
+import BodyParagraphs from 'pangea-common-reactnative/UI/BodyParagraphs';
+import i18n from 'pangea-common/i18n';
 import type { State as KeyState } from '../../../reducers/key';
-import NavigatorComponent from '../../../components/common/NavigatorComponent';
-import type { Mnemonic } from '../../../types/Mnemonic';
+import NavigatorComponent from 'pangea-common-reactnative/UI/NavigatorComponent';
+import type { Mnemonic } from 'pangea-common/types/Mnemonic-types';
 import AccountsService from '../../../services/accounts';
-import { errorAlert } from '../../../global/alerts';
+import { errorAlert } from 'pangea-common/alerts';
 
 type State = {
   /**

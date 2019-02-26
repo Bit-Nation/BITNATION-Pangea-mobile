@@ -1,8 +1,8 @@
 // @flow
 
-import type { SettingsType } from '../../types/Settings';
-import { type AccountSettingsType as DBSettings } from '../../services/database/schemata';
-import { MINIMAL_PIN_CODE_LENGTH } from '../../global/Constants';
+import type { SettingsType } from './Settings-types';
+import { type AccountSettingsType as DBSettings } from '@pangea/database/schemata';
+import { MINIMAL_PIN_CODE_LENGTH } from 'pangea-common/Constants';
 
 /**
  * @desc Converts Realm object to app-level plain model.

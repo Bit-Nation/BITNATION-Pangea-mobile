@@ -1,11 +1,11 @@
 // @flow
 
 import { call, put, select } from 'redux-saga/effects';
-import DocumentsService from '../../services/documents';
-import { documentsFetchFailed, documentsUpdated, startDocumentsFetch } from '../../actions/documents';
-import type { Document } from '../../types/Documents';
-import { errorAlert } from '../../global/alerts';
-import type { DeleteDocumentAction, UploadDocumentAction } from '../../actions/documents';
+import DocumentsService from '../documents-service';
+import { documentsFetchFailed, documentsUpdated, startDocumentsFetch } from '../documents-actions';
+import type { Document } from '../Documents-types';
+import { errorAlert } from 'pangea-common/alerts';
+import type { DeleteDocumentAction, UploadDocumentAction } from '../documents-actions';
 
 /**
  * @desc Fetch list of documents.

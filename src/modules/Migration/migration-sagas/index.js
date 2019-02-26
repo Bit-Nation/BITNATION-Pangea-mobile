@@ -1,6 +1,6 @@
 import { takeEvery } from 'redux-saga/effects';
 import { startMigration, isMigration } from './sagas';
-import { START_MIGRATION, IS_MIGRATION } from '../../actions/migration';
+import { START_MIGRATION, IS_MIGRATION } from '../migration-actions';
 
 /**
  * @desc Root migration saga.

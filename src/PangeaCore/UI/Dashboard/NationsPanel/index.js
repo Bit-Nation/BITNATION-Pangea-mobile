@@ -9,11 +9,11 @@ import {
 import _ from 'lodash';
 
 import styles from './styles';
-import PanelView from '../../../components/common/PanelView';
-import i18n from '../../../global/i18n';
-import NationListItem from '../../../components/common/NationListItem';
+import PanelView from 'pangea-common-reactnative/UI/PanelView';
+import i18n from 'pangea-common/i18n';
+import NationListItem from 'pangea-common-reactnative/UI/NationListItem';
 import { nationIsDraft } from '../../../utils/nations';
-import Loading from '../../../components/common/Loading';
+import Loading from 'pangea-common-reactnative/UI/Loading';
 import type { NationIdType, NationType } from '../../../types/Nation';
 
 const NEWEST_NATION_COUNT = 5;

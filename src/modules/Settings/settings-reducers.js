@@ -3,8 +3,8 @@
 import {
   type Action, CHANGE_PASSCODE_LENGTH, CHANGE_USE_NUMERIC_PASSCODE, RESET_SETTINGS,
   SETTINGS_UPDATED,
-} from '../actions/settings';
-import type { SettingsType } from '../types/Settings';
+} from './settings-actions';
+import type { SettingsType } from './Settings-types';
 import { SERVICES_DESTROYED } from '../../../src-old/actions/serviceContainer';
 import type { ServicesDestroyedAction } from '../actions/serviceContainer';
 

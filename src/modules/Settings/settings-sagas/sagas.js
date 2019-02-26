@@ -3,13 +3,13 @@
 /* eslint-disable no-use-before-define */
 import { call, put, select } from 'redux-saga/effects';
 import type { Realm } from 'realm';
-import defaultDB from '../../services/database';
+import defaultDB from '@pangea/database';
 import { currentAccountBasedUpdate } from '../accounts/sagas';
-import type { AccountSettingsType as DBSettings } from '../../services/database/schemata';
-import { settingsUpdated } from '../../actions/settings';
-import { convertFromDatabase, convertToDatabase } from '../../utils/mapping/settings';
-import type { LoadSettings, SaveSettings } from '../../actions/settings';
-import type { SettingsType } from '../../types/Settings';
+import type { AccountSettingsType as DBSettings } from '@pangea/database/schemata';
+import { settingsUpdated } from '../settings-actions';
+import { convertFromDatabase, convertToDatabase } from '../settings-utils';
+import type { LoadSettings, SaveSettings } from '../settings-actions';
+import type { SettingsType } from '../Settings-types';
 
 /**
  * @desc Generator to be called on database change. Used to update settings.

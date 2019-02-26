@@ -1,6 +1,5 @@
 {
   "name": "pangea",
-  "version": "1.4.0",
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
@@ -114,6 +113,7 @@
     "ethers-cli": "^4.0.0",
     "flow-bin": "^0.57.0",
     "jest": "22.0.3",
+    "lerna": "^3.13.0",
     "protobufjs": "^6.8.6",
     "react-dom": "^16.2.0",
     "react-test-renderer": "16.0.0",

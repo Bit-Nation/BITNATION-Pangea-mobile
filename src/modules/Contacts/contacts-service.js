@@ -1,6 +1,6 @@
 // @flow
 
-import * as Panthalassa from '../../../src-old/services/panthalassa';
+import * as Panthalassa from '@pangea/panthalassa';
 
 export default class ContactService {
   static async getContacts(): Promise<Array<{ identity_key: string }>> {

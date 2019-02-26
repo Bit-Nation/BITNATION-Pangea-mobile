@@ -6,21 +6,21 @@ import { connect } from 'react-redux';
 import { Button } from 'native-base';
 import i18next from 'i18next';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import i18n from '../../../global/i18n';
-import BackgroundImage from '../../../components/common/BackgroundImage';
+import i18n from 'pangea-common/i18n';
+import BackgroundImage from 'pangea-common-reactnative/UI/BackgroundImage';
 import styles from './styles';
-import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
-import DropDown from '../../../components/DropDown';
-import SwitchComponent from '../../../components/SwitchComponent';
-import type { SettingsItem } from '../../../types/Settings';
-import NavigatorComponent from '../../../components/common/NavigatorComponent';
+import FakeNavigationBar from 'pangea-common-reactnative/UI/FakeNavigationBar';
+import DropDown from 'pangea-common-reactnative/UI/DropDown';
+import SwitchComponent from 'pangea-common-reactnative/UI/SwitchComponent';
+import type { SettingsItem } from '../../../Settings-types';
+import NavigatorComponent from 'pangea-common-reactnative/UI/NavigatorComponent';
 import type { Navigator } from '../../../types/ReactNativeNavigation';
 import { logout } from '../../../actions/accounts';
 import {
   type State as AccountsState,
   getCurrentAccount,
 } from '../../../reducers/accounts';
-import colors from '../../../global/colors';
+import colors from 'pangea-common-reactnative/styles/colors';
 
 type Props = {
   /**

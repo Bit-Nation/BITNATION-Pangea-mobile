@@ -1,0 +1,15 @@
+{
+  "name": "@pangea/profile",
+  "version": "1.4.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bitnation",
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "pangea-common": "1.4.0"
+  }
+}

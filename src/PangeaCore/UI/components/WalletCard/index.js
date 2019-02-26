@@ -4,8 +4,8 @@ import React from 'react';
 import { Image, View } from 'react-native';
 import { Button, Text } from 'native-base';
 import styles from './styles';
-import Images from '../../global/AssetsImages';
-import i18n from '../../global/i18n';
+import Images from 'pangea-common-reactnative/assets/AssetsImages';
+import i18n from 'pangea-common/i18n';
 
 type Props = {
   /**

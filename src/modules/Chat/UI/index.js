@@ -11,20 +11,20 @@ import {
   InputToolbar,
   Bubble,
 } from 'react-native-gifted-chat';
-import AssetsImages from '../../global/AssetsImages';
+import AssetsImages from 'pangea-common-reactnative/assets/AssetsImages';
 
-import BitnationMessage from '../PrivateChat/Chat/BitnationMessage';
-import BitnationInputToolbar from '../PrivateChat/Chat/BitnationInputToolbar';
+import BitnationMessage from '../UI/PrivateChat/Chat/BitnationMessage';
+import BitnationInputToolbar from '../UI/PrivateChat/Chat/BitnationInputToolbar';
 import styles from './styles';
 
-import { showSpinner, hideSpinner } from '../../actions/chat';
-import BackgroundImage from '../../components/common/BackgroundImage';
-import FakeNavigationBar from '../../components/common/FakeNavigationBar';
-import Loading from '../../components/common/Loading';
+import { showSpinner, hideSpinner } from '../chat-actions';
+import BackgroundImage from 'pangea-common-reactnative/UI/BackgroundImage';
+import FakeNavigationBar from 'pangea-common-reactnative/UI/FakeNavigationBar';
+import Loading from 'pangea-common-reactnative/UI/Loading';
 import { resolveNation } from '../../utils/nations';
-import deprecatedCreateGiftedChatMessageObject from '../../utils/chat';
+import deprecatedCreateGiftedChatMessageObject from '../chat-utils';
 import type { NationIdType, NationType } from '../../types/Nation';
-import type { Navigator } from '../../types/ReactNativeNavigation';
+import type { Navigator } from 'pangea-common-reactnative/ReactNativeNavigation-types';
 import LucyBot from '../../../vendor/LucyBot';
 import { getCurrentAccount } from '../../reducers/accounts';
 

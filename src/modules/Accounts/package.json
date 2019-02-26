@@ -1,0 +1,15 @@
+{
+  "name": "@pangea/accounts",
+  "version": "1.4.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "pangea-common": "1.4.0",
+    "@pangea/database": "1.4.0"
+  },
+  "author": "Bitnation",
+  "license": "MIT"
+}

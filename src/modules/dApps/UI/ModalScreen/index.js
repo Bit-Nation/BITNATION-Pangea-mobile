@@ -4,18 +4,18 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import { connect } from 'react-redux';
 
-import NavigatorComponent from '../../../components/common/NavigatorComponent';
-import Colors from '../../../global/colors';
-import i18n from '../../../global/i18n';
-import Root from '../../../DAppsSDK/0.0.1/components/Root';
-import GlobalStyles from '../../../global/Styles';
-import BackgroundImage from '../../../components/common/BackgroundImage';
-import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
-import Loading from '../../../components/common/Loading';
-import { dAppLaunchStateChanged, cleanDAppModal } from '../../../actions/dApps';
-import { getDAppLaunchState, type State as DAppsState } from '../../../reducers/dApps';
-import type { DAppModalInfo } from '../../../types/DApp';
-import ScreenTitle from '../../../components/common/ScreenTitle';
+import NavigatorComponent from 'pangea-common-reactnative/UI/NavigatorComponent';
+import Colors from 'pangea-common-reactnative/styles/colors';
+import i18n from 'pangea-common/i18n';
+import Root from '../../DAppsSDK/0.0.1/components/Root';
+import GlobalStyles from 'pangea-common-reactnative/styles';
+import BackgroundImage from 'pangea-common-reactnative/UI/BackgroundImage';
+import FakeNavigationBar from 'pangea-common-reactnative/UI/FakeNavigationBar';
+import Loading from 'pangea-common-reactnative/UI/Loading';
+import { dAppLaunchStateChanged, cleanDAppModal } from '../../dApps-actions';
+import { getDAppLaunchState, type State as DAppsState } from '../../dApps-reducers';
+import type { DAppModalInfo } from '../../DApp-types';
+import ScreenTitle from 'pangea-common-reactnative/UI/ScreenTitle';
 
 type Props = {
   /**

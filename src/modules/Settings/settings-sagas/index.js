@@ -2,7 +2,7 @@
 
 import { all, call, takeEvery } from 'redux-saga/effects';
 import { loadSettings, saveSettings, startDatabaseListening } from './sagas';
-import { LOAD_SETTINGS, SAVE_SETTINGS } from '../../actions/settings';
+import { LOAD_SETTINGS, SAVE_SETTINGS } from '../settings-actions';
 
 /**
  * @desc Root settings saga.

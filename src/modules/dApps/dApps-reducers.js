@@ -1,6 +1,6 @@
 // @flow
 
-import type { DApp, DAppChatContext } from '../types/DApp';
+import type { DApp, DAppChatContext } from './DApp-types';
 import {
   type Action,
   DAPP_LAUNCH_STATE_CHANGED,
@@ -8,7 +8,7 @@ import {
   STORE_DAPP_MODAL,
   CLEAN_DAPP_MODAL,
   SET_DAPP_CONTEXT,
-} from '../actions/dApps';
+} from './dApps-actions';
 import { SERVICES_DESTROYED } from '../../../src-old/actions/serviceContainer';
 import { type DAppModalInfo } from './DApp-types';
 

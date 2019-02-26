@@ -1,0 +1,20 @@
+{
+    "version": "1.4.0",
+    "npmClient": "npm",
+    "command": {
+      "publish": {
+        "ignoreChanges": ["ignored-file", "*.md"],
+        "message": "chore(release): publish"
+      },
+      "bootstrap": {
+        "ignore": "component-*",
+        "npmClientArgs": ["--no-package-lock"]
+      }
+    },
+    "packages": [
+      "src/modules/*",
+      "src/PangeaCommon",
+      "src/PangeaCommonReactNative",
+      "src/PangeaCore"
+    ]
+  }

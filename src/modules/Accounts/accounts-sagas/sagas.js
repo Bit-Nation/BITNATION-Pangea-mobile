@@ -3,8 +3,8 @@
 
 import type { Realm } from 'realm';
 import { call, put, take, select, race } from 'redux-saga/effects';
-import defaultDB from '../../../src/modules/Database/database-service';
-import { createDatabaseUpdateChannel } from '../database';
+import defaultDB from '@pangea/database/database-service';
+import { createDatabaseUpdateChannel } from '@pangea/database/database-sagas';
 import {
   accountListUpdated,
   changeCreatingAccountField,
@@ -15,7 +15,7 @@ import {
   PERFORM_DEFERRED_LOGIN,
   CANCEL_LOGIN,
   savePassword, setCurrentAccountIdentityKey,
-} from '../../actions/accounts';
+} from '../accounts-actions';
 import type {
   CheckPasswordAction,
   CheckPinCodeAction,
@@ -24,20 +24,20 @@ import type {
   SaveCreatingAccountAction,
   SavePasswordAction,
   SavePinCodeAction,
-} from '../../actions/accounts';
+} from '../accounts-actions';
 import { fetchAllChats } from '../../actions/chat';
 import { convertFromDatabase, convertToDatabase, retrieveProfileFromAccount, retrieveProfileFromPartialAccount } from '../../utils/mapping/account';
 import TaskBuilder from '../../utils/asyncTask';
-import AccountsService from '../../../src/modules/Accounts/accounts-services';
-import { InvalidPasswordError, LoginFailedError } from '../../global/errors/accounts';
-import type { AccountType as DBAccount } from '../../services/database/schemata';
-import type { NetworkType, Profile } from '../../types/Account';
+import AccountsService from '../accounts-services';
+import { InvalidPasswordError, LoginFailedError } from 'pangea-common/errors/accounts';
+import type { AccountType as DBAccount } from '@pangea/database/schemata';
+import type { NetworkType, Profile } from 'pangea-common/types/Accounts-types';
 import type { SaveEditingAccountAction } from '../../actions/profile';
 import { cancelAccountEditing } from '../../actions/profile';
 import { resetSettings } from '../../actions/settings';
 import ChatService from '../../services/chat/chat-service';
 import { version } from '../../../package.json';
-import type { State as AccountsState } from '../../reducers/accounts';
+import type { State as AccountsState } from '../accounts-reducers';
 
 export const getAccounts = (state: AccountsState) => state.accounts;
 

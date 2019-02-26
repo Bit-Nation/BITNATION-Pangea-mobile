@@ -1,8 +1,8 @@
 // @flow
 import _ from 'lodash';
-import Colors from '../global/colors';
-import type { DBNationType, NationType, EditingNationType, NationIdType } from '../types/Nation';
-import { TX_JOB_STATUS } from '../global/Constants';
+import Colors from 'pangea-common-reactnative/styles/colors';
+import type { DBNationType, NationType, EditingNationType, NationIdType } from './Nation-types';
+import { TX_JOB_STATUS } from 'pangea-common/Constants';
 
 /**
  * @desc Function to get a nation by id from array.

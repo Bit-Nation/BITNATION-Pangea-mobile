@@ -1,6 +1,6 @@
 // @flow
 
-import type { Document } from '../types/Documents';
+import type { Document } from './Documents-types';
 
 export const START_DOCUMENTS_FETCH = 'START_DOCUMENTS_FETCH';
 export const DOCUMENTS_UPDATED = 'DOCUMENTS_UPDATED';

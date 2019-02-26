@@ -1,9 +1,15 @@
 [ignore]
 ; temporary ignore of migrated code
-.*/src/modules/.*
+#.*/src/modules/Accounts/.*
+#.*/src/modules/Activity/.*
+#.*/src/modules/dApps/.*
+#.*/src/modules/Documents/.*
+#.*/src/modules/Ethereum/.*
+#.*/src/modules/Nations/.*
+#.*/src/modules/Navigation/.*
+#.*/src/modules/Settings/.*
 .*/__tests__/.*
 .*/src-old-original/.*
-.*/src-old/.*
 
 ; We fork some components by platform
 .*/*[.]android.js

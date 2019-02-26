@@ -7,7 +7,7 @@ import {
   Text,
 } from 'react-native';
 
-import styles from '../../../global/Styles';
+import styles from 'pangea-common-reactnative/Styles';
 
 type Props = {
   /**

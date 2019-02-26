@@ -1,8 +1,8 @@
 // @flow
 
-import { type Account } from './accounts-types';
-import type { AsyncTask } from '../utils/asyncTask';
-import type { Mnemonic } from '../types/Mnemonic';
+import { type Account } from 'pangea-common/types/accounts-types';
+import type { AsyncTask } from 'pangea-common/utils/asyncTask';
+import type { Mnemonic } from 'pangea-common/types/Mnemonic-types';
 
 export type AccountsListUpdatedAction = { +type: 'ACCOUNTS_LIST_UPDATED', accounts: Array<Account> };
 export type CurrentAccountIdChangedAction = { +type: 'CURRENT_ACCOUNT_ID_CHANGED', currentAccountId: string | null };

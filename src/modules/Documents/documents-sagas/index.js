@@ -3,7 +3,7 @@
 import { all, takeEvery } from 'redux-saga/effects';
 import { deleteDocument, fetchDocuments, saveDocument, uploadDocument } from './sagas';
 import { SERVICES_CREATED } from '../../actions/serviceContainer';
-import { DELETE_DOCUMENT, FINISH_DOCUMENT_MODIFICATION, START_DOCUMENTS_FETCH, UPLOAD_DOCUMENT } from '../../actions/documents';
+import { DELETE_DOCUMENT, FINISH_DOCUMENT_MODIFICATION, START_DOCUMENTS_FETCH, UPLOAD_DOCUMENT } from '../documents-actions';
 
 /**
  * @desc Root DApps saga.

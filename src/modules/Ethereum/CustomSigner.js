@@ -3,10 +3,10 @@ import ethers from 'ethers';
 import { Navigation } from 'react-native-navigation';
 
 import WebSocketProvider from './WebSocketProvider';
-import { screen } from '../../global/Screens';
-import { CancelledError } from '../../global/errors/common';
+import { screen } from 'pangea-common-reactnative/Screens';
+import { CancelledError } from 'pangea-common/errors/common';
 import { normalizeHexValue } from '../../utils/key';
-import { DEFAULT_GAS_LIMIT } from '../../global/Constants';
+import { DEFAULT_GAS_LIMIT } from 'pangea-common/Constants';
 
 /**
  * @desc Custom signer for ethereum RPC

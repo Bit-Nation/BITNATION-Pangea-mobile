@@ -3,13 +3,13 @@ import { View, Image, ScrollView, TouchableOpacity, Share } from 'react-native';
 import { connect } from 'react-redux';
 import { Button, Text } from 'native-base';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import i18n from '../../global/i18n';
+import i18n from 'pangea-common/i18n';
 import { logout } from '../../actions/accounts';
 import { imageSource } from '../../utils/profile';
 import { getCurrentAccount } from '../../reducers/accounts';
 
-import AssetsImages from '../../global/AssetsImages';
-import { screen } from '../../global/Screens';
+import AssetsImages from 'pangea-common-reactnative/assets/AssetsImages';
+import { screen } from 'pangea-common-reactnative/Screens';
 import styles from './styles';
 
 // import Button from '../../components/common/Button';

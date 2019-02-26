@@ -9,9 +9,9 @@ import {
   ADD_CHAT_MESSAGE,
   UNREAD_STATUS_CHANGED,
   OPEN_CHAT, ADD_PARTNER_PROFILES,
-} from '../actions/chat';
+} from './chat-actions';
 import { SERVICES_DESTROYED } from '../../../src-old/actions/serviceContainer';
-import type { ChatType, ProfileType } from '../types/Chat';
+import type { ChatType, ProfileType } from './Chat-types';
 import { mergeMessages } from './chat-utils';
 
 export type State = {

@@ -2,7 +2,7 @@
 
 import Config from 'react-native-config';
 import { Buffer } from 'buffer/index';
-import type { PanthalassaMessage } from '../../types/Chat';
+import type { PanthalassaMessage } from '../Chat-types';
 import {
   panthalassaGetIdentityPublicKey,
   panthalassaAllChats,
@@ -10,7 +10,7 @@ import {
   panthalassaSendMessage,
   panthalassaCreateGroupChat,
   panthalassaCreatePrivateChat,
-} from '../panthalassa';
+} from '@pangea/panthalassa';
 
 // Javascript static code of the proto file
 import { api_proto as apiProto } from './compiled';

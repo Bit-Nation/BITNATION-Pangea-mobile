@@ -7,11 +7,11 @@ import type {
   OpenDAppAction,
   PerformDAppCallbackAction, RenderDAppMessageAction,
   StartDAppAction, StopDAppAction,
-} from '../../actions/dApps';
-import { dAppLaunchStateChanged, dAppsListUpdated, startDApp } from '../../actions/dApps';
-import DAppsService from '../../services/dApps';
-import { getDApp, getDAppLaunchState } from '../../reducers/dApps';
-import type { DApp } from '../../types/DApp';
+} from '../dApps-actions.js';
+import { dAppLaunchStateChanged, dAppsListUpdated, startDApp } from '../dApps-actions';
+import DAppsService from '../dApps-service';
+import { getDApp, getDAppLaunchState } from '../dApps-reducers';
+import type { DApp } from '../DApp-types';
 
 /**
  * @desc Fetch list of DApps.
