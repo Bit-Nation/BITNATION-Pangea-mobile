@@ -100,7 +100,7 @@ class NationsScreen extends NavigatorComponent<
     if (this.state.isAppear) {
       const parts = event.link.split("/");
       if (parts[0] === "push") {
-        this.props.navigator.push(screen(parts[1]));
+        this.props.navigator.showModal(screen(parts[1]));
       }
     }
   }
@@ -247,7 +247,7 @@ class NationsScreen extends NavigatorComponent<
 
     this.props.openNation(id);
 
-    this.props.navigator.push(screen("NATION_DETAILS_SCREEN"));
+    this.props.navigator.showModal(screen("NATION_DETAILS_SCREEN"));
   };
 }
 
