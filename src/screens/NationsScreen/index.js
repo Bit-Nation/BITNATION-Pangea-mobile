@@ -1,7 +1,7 @@
 // @flow
 
 import React from "react";
-import { Alert, View, TextInput, Image } from "react-native";
+import { Alert, View, TextInput, Image, Platform } from "react-native";
 import { connect } from "react-redux";
 import _ from "lodash";
 
@@ -100,7 +100,7 @@ class NationsScreen extends NavigatorComponent<
     if (this.state.isAppear) {
       const parts = event.link.split("/");
       if (parts[0] === "push") {
-        this.props.navigator.showModal(screen(parts[1]));
+        this.props.navigator.push(screen(parts[1]));
       }
     }
   }
@@ -246,8 +246,11 @@ class NationsScreen extends NavigatorComponent<
     }
 
     this.props.openNation(id);
-
-    this.props.navigator.showModal(screen("NATION_DETAILS_SCREEN"));
+    if (Platform.OS === "android") {
+      this.props.navigator.showModal(screen("NATION_DETAILS_SCREEN"));
+    } else {
+      this.props.navigator.push(screen("NATION_DETAILS_SCREEN"));
+    }
   };
 }
 

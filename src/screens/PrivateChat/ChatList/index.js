@@ -1,6 +1,7 @@
 // @flow
 
 import React from "react";
+import { Platform } from "react-native";
 import { connect } from "react-redux";
 import { View, SectionList, Share, TextInput, Image } from "react-native";
 import _ from "lodash";
@@ -167,25 +168,45 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
     const id = "a8dddbe1-525e-4d5f-bc51-35a3dee84ff9";
     const isBot = false;
 
-    this.props.navigator.showModal({
-      ...screen("CHAT_SCREEN"),
-      passProps: { isBot, nationId: id }
-    });
+    if (Platform.OS === "android") {
+      this.props.navigator.showModal({
+        ...screen("CHAT_SCREEN"),
+        passProps: { isBot, nationId: id }
+      });
+    } else {
+      this.props.navigator.push({
+        ...screen("CHAT_SCREEN"),
+        passProps: { isBot, nationId: id }
+      });
+    }
   };
 
   onChatSelected = (chatId: number) => {
     if (chatId === "0") {
-      this.props.navigator.showModal({
-        ...screen("CHAT_SCREEN"),
-        passProps: {
-          isBot: true
-        }
-      });
+      if (Platform.OS === "android") {
+        this.props.navigator.showModal({
+          ...screen("CHAT_SCREEN"),
+          passProps: {
+            isBot: true
+          }
+        });
+      } else {
+        this.props.navigator.push({
+          ...screen("CHAT_SCREEN"),
+          passProps: {
+            isBot: true
+          }
+        });
+      }
     } else if (chatId === "bitnation") {
       this.openNationChat();
     } else {
       this.props.openChat(chatId);
-      this.props.navigator.showModal(screen("PRIVATE_CHAT_SCREEN"));
+      if (Platform.OS === "android") {
+        this.props.navigator.showModal(screen("PRIVATE_CHAT_SCREEN"));
+      } else {
+        this.props.navigator.push(screen("PRIVATE_CHAT_SCREEN"));
+      }
     }
   };
 
