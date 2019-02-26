@@ -167,7 +167,7 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
     const id = "a8dddbe1-525e-4d5f-bc51-35a3dee84ff9";
     const isBot = false;
 
-    this.props.navigator.push({
+    this.props.navigator.showModal({
       ...screen("CHAT_SCREEN"),
       passProps: { isBot, nationId: id }
     });
@@ -175,7 +175,7 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
 
   onChatSelected = (chatId: number) => {
     if (chatId === "0") {
-      this.props.navigator.push({
+      this.props.navigator.showModal({
         ...screen("CHAT_SCREEN"),
         passProps: {
           isBot: true
@@ -185,7 +185,7 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
       this.openNationChat();
     } else {
       this.props.openChat(chatId);
-      this.props.navigator.push(screen("PRIVATE_CHAT_SCREEN"));
+      this.props.navigator.showModal(screen("PRIVATE_CHAT_SCREEN"));
     }
   };
 
