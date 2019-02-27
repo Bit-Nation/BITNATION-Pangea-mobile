@@ -12,10 +12,10 @@ import {
   walletsListUpdated,
   walletSyncFailed,
 } from '../wallet-actions';
-import { getAccount, getCurrentAccountId } from '../accounts/sagas';
+import { getAccount, getCurrentAccountId } from '@pangea/accounts/accounts-sagas';
 import type { SendMoneyAction } from '../wallet-actions';
 import type { WalletType } from 'pangea-common/types/Wallet-types';
-import ServiceContainer from '../../services/container';
+import ServiceContainer from 'pangea-common/service-container';
 import { NoWalletServiceError } from 'pangea-common/errors/services';
 import defaultDB from '@pangea/database';
 import type { WalletType as DBWallet } from '@pangea/database/schemata';

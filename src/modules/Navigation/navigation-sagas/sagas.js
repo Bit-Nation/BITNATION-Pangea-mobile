@@ -6,10 +6,9 @@ import { Navigation } from 'react-native-navigation';
 import { appStyle, screen, tabsStyle, drawerStyle } from 'pangea-common-reactnative/Screens';
 import { accountsPresent, getCurrentAccountId } from '@pangea/accounts/accounts-sagas';
 import type { CurrentAccountIdChangedAction } from '@pangea/accounts/accounts-actions';
-import { isMigration } from '@pangea/migration/migration-sagas';
 import type { StartNavigationAction } from '../navigation-actions';
 import { CURRENT_ACCOUNT_ID_CHANGED } from '@pangea/accounts/accounts-actions';
-
+import { getCurrentAccount } from '@pangea/accounts/accounts-sagas';
 /**
  * @desc Launch correct flow based on current account id.
  * @param {CurrentAccountIdChangedAction} action An action.
@@ -72,3 +71,14 @@ export function launchLoggedOutFlow(hasAccounts: boolean) {
   });
 }
 
+/**
+ * @desc Check if migration is required.
+ * @return {void}
+ */
+export function* isMigration(): Generator<*, *, any> {
+  const currentAccount = yield getCurrentAccount();
+  if (currentAccount.lastMigrationVersion !== '1.1.0') {
+    return true;
+  }
+  return false;
+}
