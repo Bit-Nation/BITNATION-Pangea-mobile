@@ -1,6 +1,6 @@
 // @flow
 
-import type { WalletType } from './Wallet-types';
+import type { WalletType } from 'pangea-common/types/Wallet-types';
 import type { WalletType as DBWallet } from '@pangea/database/schemata';
 
 /**

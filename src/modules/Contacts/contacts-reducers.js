@@ -7,7 +7,7 @@ import {
   CONTACTS_UPDATED,
   ADD_CONTACT,
 } from './contacts-actions.js';
-import { SERVICES_DESTROYED } from '../../../src-old/actions/serviceContainer';
+import { SERVICES_DESTROYED } from 'pangea-common/serviceContainer-actions';
 import type { Contact } from './Contacts-types';
 
 export type State = {

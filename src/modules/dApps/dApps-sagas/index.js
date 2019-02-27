@@ -18,7 +18,7 @@ import {
   STOP_DAPP,
   RENDER_DAPP_MESSAGE,
 } from '../dApps-actions';
-import { SERVICES_CREATED } from '../../actions/serviceContainer';
+import { SERVICES_CREATED } from 'pangea-common/serviceContainer-actions';
 import { subscribeToModalRender } from './renderModal';
 
 /**

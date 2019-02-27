@@ -3,7 +3,7 @@
 
 import { NativeModules } from 'react-native';
 import { BigNumber } from 'bignumber.js';
-import type { WalletType } from './Wallet-types';
+import type { WalletType } from 'pangea-common/types/Wallet-types';
 import {
   PAT_DEV_ADDRESS,
   PAT_PROD_ADDRESS,

@@ -1,7 +1,7 @@
 // @flow
 
 import _ from 'lodash';
-import type { WalletType } from './Wallet-types';
+import type { WalletType } from 'pangea-common/types/Wallet-types';
 
 /**
  * @desc Gets wallet by address from array of wallets.

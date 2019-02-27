@@ -2,8 +2,8 @@
 
 import { BigNumber } from 'bignumber.js';
 
-import i18n from '../../PangeaCore/global/i18n';
-import type { WalletType, CurrencyType } from './Wallet-types';
+import i18n from 'pangea-common/i18n';
+import type { WalletType, CurrencyType } from 'pangea-common/types/Wallet-types';
 
 /**
  * @desc Round to 5 digits

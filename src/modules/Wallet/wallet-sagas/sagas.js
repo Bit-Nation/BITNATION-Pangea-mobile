@@ -11,16 +11,16 @@ import {
   sendMoneySuccess,
   walletsListUpdated,
   walletSyncFailed,
-} from '../../actions/wallet';
+} from '../wallet-actions';
 import { getAccount, getCurrentAccountId } from '../accounts/sagas';
-import type { SendMoneyAction } from '../../actions/wallet';
-import type { WalletType } from '../../types/Wallet';
+import type { SendMoneyAction } from '../wallet-actions';
+import type { WalletType } from 'pangea-common/types/Wallet-types';
 import ServiceContainer from '../../services/container';
-import { NoWalletServiceError } from '../../global/errors/services';
-import defaultDB from '../../services/database';
-import type { WalletType as DBWallet } from '../../services/database/schemata';
-import { convertFromDatabase, convertToDatabase } from '../../utils/mapping/wallet';
-import { resolveWallet } from '../../utils/wallet';
+import { NoWalletServiceError } from 'pangea-common/errors/services';
+import defaultDB from '@pangea/database';
+import type { WalletType as DBWallet } from '@pangea/database/schemata';
+import { convertFromDatabase, convertToDatabase } from '../wallet-utils-mapping';
+import { resolveWallet } from '../wallet-utils';
 
 /**
  * @desc Update Eth wallet balance to realm.

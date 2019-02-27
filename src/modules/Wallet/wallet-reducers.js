@@ -13,9 +13,9 @@ import {
   WALLET_SYNC_FAILED,
   WALLETS_LIST_UPDATED,
 } from './wallet-actions';
-import type { WalletType } from './Wallet-types';
+import type { WalletType } from 'pangea-common/types/Wallet-types';
 import { getWalletIndex } from './wallet-utils';
-import { SERVICES_DESTROYED, type ServicesDestroyedAction } from '../../../src-old/actions/serviceContainer';
+import { SERVICES_DESTROYED, type ServicesDestroyedAction } from 'pangea-common/serviceContainer-actions';
 
 export type State = {
   +wallets: Array<WalletType> | null,

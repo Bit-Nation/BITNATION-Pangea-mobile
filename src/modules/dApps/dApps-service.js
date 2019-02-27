@@ -2,7 +2,7 @@
 
 import { convertFromPanthalassa } from './dapp-utils';
 import type { DApp } from './DApp-types';
-import type { DAppMessageType } from '../../types/Chat';
+import type { DAppMessageType } from '@pangea/chat/chat-types';
 import * as Panthalassa from '@pangea/panthalassa';
 
 const DAPP_START_TIMEOUT = 30;

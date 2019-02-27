@@ -10,6 +10,8 @@
   "license": "MIT",
   "dependencies": {
     "@pangea/database": "1.4.0",
+    "@pangea/accounts": "1.4.0",
+    "@pangea/activity": "1.4.0",
     "pangea-common": "1.4.0",
     "pangea-common-reactnative": "1.4.0"
   }

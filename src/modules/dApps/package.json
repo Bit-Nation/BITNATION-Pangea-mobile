@@ -11,6 +11,8 @@
   "dependencies": {
     "pangea-common": "1.4.0",
     "pangea-common-reactnative": "1.4.0",
+    "@pangea/chat": "1.4.0",
+    "@pangea/ethereum": "1.4.0",
     "@pangea/panthalassa": "1.4.0"
   }
 }

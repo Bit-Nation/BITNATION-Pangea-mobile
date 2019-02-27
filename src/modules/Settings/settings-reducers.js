@@ -5,8 +5,8 @@ import {
   SETTINGS_UPDATED,
 } from './settings-actions';
 import type { SettingsType } from './Settings-types';
-import { SERVICES_DESTROYED } from '../../../src-old/actions/serviceContainer';
-import type { ServicesDestroyedAction } from '../actions/serviceContainer';
+import { SERVICES_DESTROYED } from 'pangea-common/serviceContainer-actions';
+import type { ServicesDestroyedAction } from 'pangea-common/serviceContainer-actions';
 
 export type State = SettingsType
 

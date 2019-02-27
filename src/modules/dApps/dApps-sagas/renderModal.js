@@ -4,8 +4,8 @@ import { eventChannel, type Channel } from 'redux-saga';
 import { call, fork, take, select, put } from 'redux-saga/effects';
 import { Navigation } from 'react-native-navigation';
 
-import ServiceContainer from '../../../src/service-container';
-import UpstreamService from '../../services/upstream/upstream';
+import ServiceContainer from 'pangea-common/service-container';
+import UpstreamService from '../upstream-services/upstream';
 import type { DAppModalInfo } from '../DApp-types';
 import { storeDAppModal } from '../dApps-actions';
 import { screen } from 'pangea-common-reactnative/Screens';

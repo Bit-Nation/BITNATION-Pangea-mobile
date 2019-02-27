@@ -4,11 +4,11 @@ import { call } from 'redux-saga/effects';
 import { Navigation } from 'react-native-navigation';
 
 import { appStyle, screen, tabsStyle, drawerStyle } from 'pangea-common-reactnative/Screens';
-import { accountsPresent, getCurrentAccountId } from '../accounts/sagas';
-import type { CurrentAccountIdChangedAction } from '../../actions/accounts';
-import { isMigration } from '../migration/sagas';
+import { accountsPresent, getCurrentAccountId } from '@pangea/accounts/accounts-sagas';
+import type { CurrentAccountIdChangedAction } from '@pangea/accounts/accounts-actions';
+import { isMigration } from '@pangea/migration/migration-sagas';
 import type { StartNavigationAction } from '../navigation-actions';
-import { CURRENT_ACCOUNT_ID_CHANGED } from '../../actions/accounts';
+import { CURRENT_ACCOUNT_ID_CHANGED } from '@pangea/accounts/accounts-actions';
 
 /**
  * @desc Launch correct flow based on current account id.

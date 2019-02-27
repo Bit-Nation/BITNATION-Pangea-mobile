@@ -1,7 +1,7 @@
 // @flow
 // $FlowFixMe
 import { Buffer } from 'buffer';
-import type { DApp, PanthalassaDApp } from '../../types/DApp';
+import type { DApp, PanthalassaDApp } from './DApp-types';
 
 /**
  * @desc Converts DApp from Panthalassa representation.

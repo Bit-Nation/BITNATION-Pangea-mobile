@@ -9,6 +9,8 @@
   "author": "Bitnation",
   "license": "MIT",
   "dependencies": {
+    "@pangea/accounts": "1.4.0",
+    "@pangea/migration": "1.4.0",
     "pangea-common": "1.4.0",
     "pangea-common-reactnative": "1.4.0"
   }

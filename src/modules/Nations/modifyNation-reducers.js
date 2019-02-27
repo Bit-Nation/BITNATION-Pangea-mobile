@@ -18,7 +18,7 @@ import {
 import type { EditingNationType } from './Nation-types';
 import type { Action } from './modifyNation-actions';
 import { convertToEditingNation } from './nations-utils';
-import { SERVICES_DESTROYED } from '../../../src-old/actions/serviceContainer';
+import { SERVICES_DESTROYED } from 'pangea-common/serviceContainer-actions';
 
 export type State = {
   +editingNation: EditingNationType | null,

@@ -12,10 +12,10 @@ import {
   REQUEST_JOIN_NATION,
   REQUEST_LEAVE_NATION,
   NATIONS_UPDATED,
-} from '../actions/nations';
-import type { NationType, NationIdType, EditingNationType } from '../types/Nation';
-import { resolveNation } from '../../../src-old/utils/nations';
-import { SERVICES_DESTROYED } from '../../../src-old/actions/serviceContainer';
+} from './nations-actions';
+import type { NationType, NationIdType, EditingNationType } from './Nation-types';
+import { resolveNation } from './nations-utils';
+import { SERVICES_DESTROYED } from 'pangea-common/serviceContainer-actions';
 
 export type State = {
   +nations: Array<NationType>,

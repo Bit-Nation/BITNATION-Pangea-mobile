@@ -1,8 +1,8 @@
 // @flow
 
-import { type Action, MESSAGES_UPDATED } from '../actions/activity';
+import { type Action, MESSAGES_UPDATED } from './activity-actions';
 import type { ActivityLogMessage } from 'pangea-common/types/ActivityLogMessage-type';
-import { SERVICES_DESTROYED } from '../../../src-old/actions/serviceContainer';
+import { SERVICES_DESTROYED } from 'pangea-common/serviceContainer-actions';
 
 export type State = {
   +messages: Array<ActivityLogMessage>

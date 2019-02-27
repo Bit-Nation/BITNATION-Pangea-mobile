@@ -3,7 +3,7 @@
 
 import type { Realm } from 'realm';
 import { call, put, take, select, race } from 'redux-saga/effects';
-import defaultDB from '@pangea/database/database-service';
+import defaultDB from '@pangea/database';
 import { createDatabaseUpdateChannel } from '@pangea/database/database-sagas';
 import {
   accountListUpdated,
@@ -25,18 +25,18 @@ import type {
   SavePasswordAction,
   SavePinCodeAction,
 } from '../accounts-actions';
-import { fetchAllChats } from '../../actions/chat';
-import { convertFromDatabase, convertToDatabase, retrieveProfileFromAccount, retrieveProfileFromPartialAccount } from '../../utils/mapping/account';
-import TaskBuilder from '../../utils/asyncTask';
+import { fetchAllChats } from '@pangea/chat/chat-actions';
+import { convertFromDatabase, convertToDatabase, retrieveProfileFromAccount, retrieveProfileFromPartialAccount } from '../account-utils';
+import TaskBuilder from 'pangea-common/utils/asyncTask';
 import AccountsService from '../accounts-services';
 import { InvalidPasswordError, LoginFailedError } from 'pangea-common/errors/accounts';
 import type { AccountType as DBAccount } from '@pangea/database/schemata';
 import type { NetworkType, Profile } from 'pangea-common/types/Accounts-types';
-import type { SaveEditingAccountAction } from '../../actions/profile';
-import { cancelAccountEditing } from '../../actions/profile';
-import { resetSettings } from '../../actions/settings';
-import ChatService from '../../services/chat/chat-service';
-import { version } from '../../../package.json';
+import type { SaveEditingAccountAction } from '@pangea/profile/profile-actions';
+import { cancelAccountEditing } from '@pangea/profile/profile-actions';
+import { resetSettings } from '@pangea/settings/settings-actions';
+import ChatService from '@pangea/chat/chat-service';
+import { version } from '../package.json';
 import type { State as AccountsState } from '../accounts-reducers';
 
 export const getAccounts = (state: AccountsState) => state.accounts;

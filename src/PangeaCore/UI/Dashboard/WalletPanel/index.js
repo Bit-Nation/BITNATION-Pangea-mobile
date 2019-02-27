@@ -6,8 +6,8 @@ import _ from 'lodash';
 
 import styles from './styles';
 
-import PanelView from '../../../components/common/PanelView';
-import i18n from '../../../global/i18n';
+import PanelView from 'pangea-common-reactnative/UI/PanelView';
+import i18n from 'pangea-common/i18n';
 import { prettyWalletBalance } from '../../../utils/formatters';
 import { resolveWallet } from '../../../utils/wallet';
 import type { WalletType } from '../../../types/Wallet';

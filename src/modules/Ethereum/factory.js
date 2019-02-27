@@ -2,7 +2,7 @@
 
 import EthereumService from './index';
 import CustomSigner from './CustomSigner';
-import type { NetworkType } from '../../types/Account';
+import type { NetworkType } from 'pangea-common/types/Accounts-types';
 
 /**
  * @desc Factory for the Ethereum service based on EthJS.

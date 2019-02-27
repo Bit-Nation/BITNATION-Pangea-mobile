@@ -9,7 +9,7 @@ import {
   CLEAN_DAPP_MODAL,
   SET_DAPP_CONTEXT,
 } from './dApps-actions';
-import { SERVICES_DESTROYED } from '../../../src-old/actions/serviceContainer';
+import { SERVICES_DESTROYED } from 'pangea-common/serviceContainer-actions';
 import { type DAppModalInfo } from './DApp-types';
 
 export type DAppLaunchState = 'off' | 'starting' | 'started' | 'opened' | 'working';

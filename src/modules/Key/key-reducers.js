@@ -7,7 +7,7 @@ import {
   VALIDATE_ENTERED_MNEMONIC,
 } from './key-actions';
 import type { Mnemonic } from 'pangea-common/types/Mnemonic-types';
-import { SERVICES_DESTROYED } from '../../../src-old/actions/serviceContainer';
+import { SERVICES_DESTROYED } from 'pangea-common/serviceContainer-actions';
 
 export type State = {
   +enteredMnemonic: Mnemonic | null,

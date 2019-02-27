@@ -1,11 +1,11 @@
 // @flow
 
 import Config from 'react-native-config';
-import type { Mnemonic } from '../../types/Mnemonic';
-import { compressMnemonic, decompressMnemonic } from '../../../src-old/utils/key';
-import type { NetworkType, Profile } from '../../types/Account';
-import { InvalidPasswordError } from '../../global/errors/accounts';
-import ChatService from '../../../src-old/services/chat/chat-service';
+import type { Mnemonic } from 'pangea-common/types/Mnemonic-types';
+import { compressMnemonic, decompressMnemonic } from '@pangea/key/key-utils';
+import type { NetworkType, Profile } from 'pangea-common/types/Accounts-types';
+import { InvalidPasswordError } from 'pangea-common/errors/accounts';
+import ChatService from '@pangea/chat/chat-service';
 import {
   panthalassaStart,
   panthalassaStartFromMnemonic,
@@ -18,7 +18,7 @@ import {
   panthalassaEthPrivateKey,
   panthalassaSignProfileStandAlone,
   panthalassaSignProfile,
-} from '../../../src-old/services/panthalassa';
+} from '@pangea/panthalassa';
 
 export default class AccountsService {
   static async getMnemonic(): Promise<Mnemonic> {

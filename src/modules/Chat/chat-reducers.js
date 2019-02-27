@@ -10,7 +10,7 @@ import {
   UNREAD_STATUS_CHANGED,
   OPEN_CHAT, ADD_PARTNER_PROFILES,
 } from './chat-actions';
-import { SERVICES_DESTROYED } from '../../../src-old/actions/serviceContainer';
+import { SERVICES_DESTROYED } from 'pangea-common/serviceContainer-actions';
 import type { ChatType, ProfileType } from './Chat-types';
 import { mergeMessages } from './chat-utils';
 

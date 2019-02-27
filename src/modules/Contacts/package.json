@@ -9,6 +9,7 @@
   "author": "Bitnation",
   "license": "MIT",
   "dependencies": {
+    "@pangea/chat": "1.4.0",
     "@pangea/panthalassa": "1.4.0",
     "pangea-common": "1.4.0"
   }

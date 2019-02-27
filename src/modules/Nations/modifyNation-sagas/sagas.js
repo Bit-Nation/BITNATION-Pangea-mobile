@@ -5,7 +5,7 @@ import { call, put, select } from 'redux-saga/effects';
 import { nationDraftSaveResult, nationDraftDeleteResult, startNationEditing, nationSubmitResult } from '../modifyNation-actions';
 import type { SaveNationDraftAction, DeleteNationDraftAction, SubmitNationAction } from '../modifyNation-actions';
 import { nationIsModified } from '../modifyNation-reducers';
-import ServiceContainer from '../../services/container';
+import ServiceContainer from 'pangea-common/service-container'
 import { NoNationsServiceError } from 'pangea-common/errors/services';
 import { convertFromDatabase } from '../nations-utils';
 

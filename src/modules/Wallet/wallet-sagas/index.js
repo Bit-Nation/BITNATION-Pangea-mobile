@@ -14,7 +14,7 @@ import {
   updateWalletBalance,
   sendMoneySaga,
 } from './sagas';
-import { SERVICES_CREATED, SERVICES_DESTROYED } from '../../actions/serviceContainer';
+import { SERVICES_CREATED, SERVICES_DESTROYED } from 'pangea-common/serviceContainer-actions';
 
 /**
  * @desc Root wallet saga.

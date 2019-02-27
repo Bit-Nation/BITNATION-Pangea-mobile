@@ -1,7 +1,7 @@
 // @flow
 
 import { type DApp } from './DApp-types';
-import type { DAppMessageType } from '../types/Chat';
+import type { DAppMessageType } from '@pangea/chat/chat-types';
 import type { DAppLaunchState } from './dApps-reducers';
 import type { DAppChatContext, DAppModalInfo } from './DApp-types';
 

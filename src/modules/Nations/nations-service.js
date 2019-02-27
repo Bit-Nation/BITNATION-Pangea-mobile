@@ -8,7 +8,7 @@ import type { NationType, EditingNationType, DBNationType, NationIdType } from '
 import { convertDraftToDatabase, convertNationToBlockchain } from './nations-utils';
 import { NationAlreadySubmitted, StateMutateNotPossible } from 'pangea-common/errors/nations';
 import { DatabaseWriteFailed } from 'pangea-common/errors/common';
-import { jobFactory } from '../../../src-old/services/txProcessor/txProcessor-service';
+import { jobFactory } from './txProcessor-service';
 import {
   NATIONS_DEV_ENDPOINT,
   NATIONS_PROD_ENDPOINT,

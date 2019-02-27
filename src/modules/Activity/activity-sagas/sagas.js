@@ -4,14 +4,14 @@ import { put, call } from 'redux-saga/effects';
 import type { Realm } from 'realm';
 
 import { messagesUpdated, type AddNewMessageAction } from '../activity-actions';
-import defaultDB from '@pangea/database/database-service';
+import defaultDB from '@pangea/database';
 import type { MessageJobType as DBMessage } from '@pangea/database/schemata';
 import {
   convertFromDatabase,
   convertToDatabase,
 } from '../activity-utils';
 import type { ActivityLogMessage } from 'pangea-common/types/ActivityLogMessage-type';
-import { getCurrentAccountId, currentAccountBasedUpdate } from '../accounts/sagas';
+import { getCurrentAccountId, currentAccountBasedUpdate } from '@pangea/accounts/accounts-sagas';
 
 /**
  * @desc Function that creates Realm results fetching activity logs for specific account.

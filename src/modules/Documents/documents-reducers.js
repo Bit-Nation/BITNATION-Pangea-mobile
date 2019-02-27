@@ -14,7 +14,7 @@ import {
   OPEN_DOCUMENT, DELETE_DOCUMENT,
   UPLOAD_DOCUMENT,
 } from './documents-actions';
-import { SERVICES_DESTROYED } from '../../../src-old/actions/serviceContainer';
+import { SERVICES_DESTROYED } from 'pangea-common/serviceContainer-actions';
 import type { Document, EditingDocument } from './Documents-types';
 import { contentStorage } from './documents-service';
 

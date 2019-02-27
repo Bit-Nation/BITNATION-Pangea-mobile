@@ -22,7 +22,7 @@ import {
   CHANGE_EDITING_ACCOUNT,
   DONE_ACCOUNT_EDITING,
   START_ACCOUNT_EDITING,
-} from '../actions/profile';
+} from '@pangea/profile/profile-actions';
 import type { Mnemonic } from 'pangea-common/types/Mnemonic-types';
 
 export type State = {

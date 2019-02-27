@@ -5,7 +5,7 @@ import { Navigation } from 'react-native-navigation';
 import WebSocketProvider from './WebSocketProvider';
 import { screen } from 'pangea-common-reactnative/Screens';
 import { CancelledError } from 'pangea-common/errors/common';
-import { normalizeHexValue } from '../../utils/key';
+import { normalizeHexValue } from '@pangea/key/key-utils';
 import { DEFAULT_GAS_LIMIT } from 'pangea-common/Constants';
 
 /**

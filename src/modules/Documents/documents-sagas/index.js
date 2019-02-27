@@ -2,7 +2,7 @@
 
 import { all, takeEvery } from 'redux-saga/effects';
 import { deleteDocument, fetchDocuments, saveDocument, uploadDocument } from './sagas';
-import { SERVICES_CREATED } from '../../actions/serviceContainer';
+import { SERVICES_CREATED } from 'pangea-common/serviceContainer-actions';
 import { DELETE_DOCUMENT, FINISH_DOCUMENT_MODIFICATION, START_DOCUMENTS_FETCH, UPLOAD_DOCUMENT } from '../documents-actions';
 
 /**
