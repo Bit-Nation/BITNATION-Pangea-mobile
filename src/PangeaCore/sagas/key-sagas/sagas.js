@@ -3,8 +3,8 @@
 import { call, select, put } from 'redux-saga/effects';
 import _ from 'lodash';
 
-import AccountsService from '../../services/accounts';
-import { changeMnemonicValid } from '../key-actions';
+import AccountsService from '@pangea/accounts/accounts-services';
+import { changeMnemonicValid } from '@pangea/key/key-actions';
 import type { Mnemonic } from 'pangea-common/types/Mnemonic-types';
 
 /**

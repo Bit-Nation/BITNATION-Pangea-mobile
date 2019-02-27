@@ -1,10 +1,10 @@
 // @flow
 
 import { put, call, select } from 'redux-saga/effects';
-import ServiceContainer from '../../services/container';
-import { getCurrentAccount } from '../../reducers/accounts';
-import AccountsService from '../../services/accounts';
-import { servicesCreated, servicesDestroyed } from '../../actions/serviceContainer';
+import ServiceContainer from 'pangea-common/service-container';
+import { getCurrentAccount } from '@pangea/accounts/accounts-reducers';
+import AccountsService from '@pangea/accounts/accounts-services';
+import { servicesCreated, servicesDestroyed } from 'pangea-common/serviceContainer-actions';
 
 /**
  * @desc Generator to be called when current account is changed.

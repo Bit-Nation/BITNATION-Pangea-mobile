@@ -4,12 +4,12 @@
 import { call, put, select } from 'redux-saga/effects';
 import type { Realm } from 'realm';
 import defaultDB from '@pangea/database';
-import { currentAccountBasedUpdate } from '../accounts/sagas';
+import { currentAccountBasedUpdate } from '@pangea/accounts/accounts-sagas';
 import type { AccountSettingsType as DBSettings } from '@pangea/database/schemata';
-import { settingsUpdated } from '../settings-actions';
-import { convertFromDatabase, convertToDatabase } from '../settings-utils';
-import type { LoadSettings, SaveSettings } from '../settings-actions';
-import type { SettingsType } from '../Settings-types';
+import { settingsUpdated } from '@pangea/settings/settings-actions';
+import { convertFromDatabase, convertToDatabase } from '@pangea/settings/settings-utils';
+import type { LoadSettings, SaveSettings } from '@pangea/settings/settings-actions';
+import type { SettingsType } from '@pangea/settings/Settings-types';
 
 /**
  * @desc Generator to be called on database change. Used to update settings.

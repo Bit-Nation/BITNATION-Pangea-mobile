@@ -2,7 +2,7 @@
 
 import { all, takeEvery } from 'redux-saga/effects';
 import { onCurrentAccountChange } from './sagas';
-import { CURRENT_ACCOUNT_ID_CHANGED } from '../../actions/accounts';
+import { CURRENT_ACCOUNT_ID_CHANGED } from '@pangea/accounts/accounts-actions';
 
 /**
  * @desc Root service container saga.

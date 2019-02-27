@@ -6,7 +6,7 @@ import { SERVICES_CREATED } from 'pangea-common/serviceContainer-actions';
 import {
   START_CONTACTS_FETCH,
   ADD_CONTACT,
-} from '../contacts-actions.js';
+} from '@pangea/contacts/contacts-actions.js';
 
 /**
  * @desc Root contacts saga.

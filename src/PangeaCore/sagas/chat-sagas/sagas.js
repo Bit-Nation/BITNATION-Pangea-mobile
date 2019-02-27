@@ -9,7 +9,7 @@ import type {
   LoadChatMessagesAction,
   PanthalassaMessagePersistedAction,
   ChangeUnreadStatusAction,
-} from '../chat-actions';
+} from '@pangea/chat/chat-actions';
 import {
   chatsUpdated,
   chatMessagesLoaded,
@@ -19,14 +19,14 @@ import {
   unreadStatusChanged,
   openChat,
   addPartnerProfiles, fetchAllChats,
-} from '../chat-actions';
+} from '@pangea/chat/chat-actions';
 import defaultDB from '@pangea/database';
-import ChatService from '../chat-service';
-import { getCurrentAccount } from '../accounts/sagas';
-import { createGiftedChatMessageObject } from '../chat-utils';
+import ChatService from '@pangea/chat/chat-service';
+import { getCurrentAccount } from '@pangea/accounts/accounts-sagas';
+import { createGiftedChatMessageObject } from '@pangea/chat/chat-utils';
 import { panthalassaEthPubToAddress, panthalassaMarkMessagesAsRead } from '@pangea/panthalassa';
-import type { ChatType, ProfileType, PanthalassaChatType, GiftedChatMessageType } from '../Chat-types';
-import { getChatById } from '../chat-reducers';
+import type { ChatType, ProfileType, PanthalassaChatType, GiftedChatMessageType } from '@pangea/chat/Chat-types';
+import { getChatById } from '@pangea/chat/chat-reducers';
 
 /**
  * @desc Save profile into database.
