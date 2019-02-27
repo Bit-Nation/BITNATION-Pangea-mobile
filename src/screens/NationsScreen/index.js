@@ -154,6 +154,7 @@ class NationsScreen extends NavigatorComponent<
               placeholder="Search by name, type or category..."
               placeholderTextColor={Colors.BitnationLinkOrangeColor}
               autoCapitalize="none"
+              underlineColorAndroid="transparent"
             />
             <Image
               source={AssetsImages.searchIcon}
@@ -173,7 +174,7 @@ class NationsScreen extends NavigatorComponent<
             this.scrollTabView = c;
           }}
         >
-          <View tabLabel="NEW" style={styles.bodyContainer}>
+          <View tabLabel="ALL" style={styles.bodyContainer}>
             <NationsListScreen
               onSelectItem={this.onSelectItem}
               nationType={1}

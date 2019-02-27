@@ -94,12 +94,12 @@ class SettingsListScreen extends NavigatorComponent<Props, State> {
         <BackgroundImage />
         <FakeNavigationBar />
         <View style={styles.contentView}>
-          <View style={styles.itemViewStyle}>
+          {/* <View style={styles.itemViewStyle}>
             <DropDown
               label={i18n.t('screens.settings.chooseLanguage')}
               data={data}
             />
-          </View>
+          </View> */}
           <View style={styles.itemViewStyle}>
             <DropDown
               label={i18n.t('screens.settings.chooseNetwork')}
@@ -151,7 +151,7 @@ class SettingsListScreen extends NavigatorComponent<Props, State> {
             </View>
           </View>
           <View style={styles.buttonViewStyle}>
-            <Button
+            {/* <Button
               rounded
               onPress={() => this.props.navigator.pop()}
               style={styles.controlButton}
@@ -159,7 +159,7 @@ class SettingsListScreen extends NavigatorComponent<Props, State> {
               <Text style={styles.controlButtonText}>
                 {i18n.t('screens.settings.goBack')}
               </Text>
-            </Button>
+            </Button> */}
             <Button
               rounded
               onPress={() =>

@@ -331,20 +331,21 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
       <View style={styles.nationsScreenContainer}>
         <BackgroundImage />
         <FakeNavigationBar />
-        <View style={styles.searchBarContainer}>
+        {/* <View style={styles.searchBarContainer}>
           <View style={styles.inputViewContainer}>
             <TextInput
               style={styles.textInputStyle}
               placeholder="Search by name, type or category..."
               placeholderTextColor={Colors.BitnationLinkOrangeColor}
               autoCapitalize="none"
+              underlineColorAndroid="transparent"
             />
             <Image
               source={AssetsImages.searchIcon}
               style={styles.searchIconStyle}
             />
           </View>
-        </View>
+        </View> */}
         <ScrollTabView
           initialPage={1}
           tabBarBackgroundColor={Colors.BitnationBlackAlphaColor}
