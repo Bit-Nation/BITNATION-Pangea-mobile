@@ -153,15 +153,6 @@ class SettingsListScreen extends NavigatorComponent<Props, State> {
           <View style={styles.buttonViewStyle}>
             <Button
               rounded
-              onPress={() => this.props.navigator.pop()}
-              style={styles.controlButton}
-            >
-              <Text style={styles.controlButtonText}>
-                {i18n.t('screens.settings.goBack')}
-              </Text>
-            </Button>
-            <Button
-              rounded
               onPress={() =>
                 i18next.changeLanguage('hi', (err, t) => {
                   if (err) {

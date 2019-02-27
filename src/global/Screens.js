@@ -167,13 +167,13 @@ const Screens = {
   WALLET_SCREEN: {
     screen: 'Pangea.WalletScreen',
     label: i18n.t('screens.wallet.tabTitle'),
-    title: '', // To show, use i18n.t('screens.wallet.title'),
+    title: i18n.t('screens.wallet.tabTitle').toUpperCase(),
     navigatorStyle,
   },
   PROFILE_SCREEN: {
     screen: 'Pangea.ProfileScreen',
     label: i18n.t('screens.profile.tabTitle'),
-    title: '', // i18n.t('screens.profile.title'),
+    title: i18n.t('screens.profile.tabTitle'), // i18n.t('screens.profile.title'),
     navigatorStyle,
   },
   CONFIRM_KEY_INSTRUCTION_SCREEN: {
@@ -308,11 +308,12 @@ const Screens = {
   },
   DOCUMENTS_LIST_SCREEN: {
     screen: 'Pangea.DocumentsListScreen',
+    title: i18n.t('screens.documentsList.title').toUpperCase(),
     navigatorStyle,
   },
   DOCUMENT_VIEW_SCREEN: {
     screen: 'Pangea.DocumentViewScreen',
-    title: i18n.t('screens.documentView.title'),
+    title: i18n.t('screens.documentView.title').toUpperCase(),
     navigatorStyle: solidNavigatorStyle,
   },
   DOCUMENT_MODIFY_SCREEN: {

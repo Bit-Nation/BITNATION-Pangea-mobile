@@ -152,7 +152,6 @@ class WalletScreen extends NavigatorComponent<
         <Background />
         <FakeNavigationBar />
         <View style={styles.bodyContainer}>
-          <ScreenTitle title={i18n.t('screens.wallet.title')} />
           {this.props.wallets === null || _.isEmpty(this.props.wallets) ? (
             <EmptyWalletScreen
               onCreateWallet={this.createWallet}

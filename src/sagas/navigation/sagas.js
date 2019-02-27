@@ -46,8 +46,8 @@ export function* launchLoggedInFlow(): Generator<*, *, any> {
     Navigation.startTabBasedApp({
       tabs: [
         screen('CHAT_LIST_SCREEN'),
-        screen('NATIONS_SCREEN'),
         screen('SERVICES_SCREEN'),
+        screen('NATIONS_SCREEN'),
       ],
       tabsStyle: { ...tabsStyle },
       appStyle: { ...appStyle },
