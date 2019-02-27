@@ -3,8 +3,8 @@
 import React from 'react';
 import { View, TextInput, Image } from 'react-native';
 import Background from 'pangea-common-reactnative/UI/BackgroundImage';
-import ScrollTabView, { DefaultTabBar } from '../components/ScrollTabView';
-import type { Navigator } from '../../types/ReactNativeNavigation';
+import ScrollTabView, { DefaultTabBar } from 'pangea-common-reactnative/UI/ScrollTabView';
+import type { Navigator } from 'pangea-common-reactnative/ReactNativeNavigation-types';
 import ContractScreen from './subTabs/ContractScreen';
 import DappScreen from './subTabs/DappScreen';
 import ServiceScreen from './subTabs/ServiceScreen';

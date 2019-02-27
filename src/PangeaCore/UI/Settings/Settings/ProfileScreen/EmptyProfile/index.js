@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 
 import styles from './styles';
-import type { Navigator } from '../../../../types/ReactNativeNavigation';
+import type { Navigator } from 'pangea-common-reactnative/ReactNativeNavigation-types';
 import PanelView from 'pangea-common-reactnative/UI/PanelView';
 import i18n from 'pangea-common/i18n';
 import ScreenTitle from 'pangea-common-reactnative/UI/ScreenTitle';

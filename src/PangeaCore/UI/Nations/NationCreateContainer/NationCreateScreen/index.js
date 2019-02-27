@@ -9,21 +9,21 @@ import {
 } from 'react-native';
 
 import BackgroundImage from 'pangea-common-reactnative/UI/BackgroundImage';
-import NavigatorComponent from 'pangea-common-reactnative/UI/NavigatorComponent';
+import NavigatorComponent from '../../../NavigatorComponent';
 import FakeNavigationBar from 'pangea-common-reactnative/UI/FakeNavigationBar';
 import PanelView from 'pangea-common-reactnative/UI/PanelView';
 import SwitchLabeled from 'pangea-common-reactnative/UI/SwitchLabeled';
-import MultiSelect from 'pangea-common-reactnative/UI/MultiSelect';
+import MultiSelect from '../../../components/MultiSelect';
 import Loading from 'pangea-common-reactnative/UI/Loading';
 import NationActionButton from 'pangea-common-reactnative/UI/NationActionButton';
 import Colors from 'pangea-common-reactnative/styles/colors';
 import styles from './styles';
 import i18n from 'pangea-common/i18n';
 import AssetsImage from 'pangea-common-reactnative/assets/AssetsImages';
-import { emptyNation, nationIsModified, type State as ModifyNationState } from '../../../modifyNation-reducers';
-import { nationIsValid } from '../../../nations-utils';
-import type { EditingNationType } from '../../../Nation-types';
-import type { Navigator } from '../../../types/ReactNativeNavigation';
+import { emptyNation, nationIsModified, type State as ModifyNationState } from '@pangea/nations/modifyNation-reducers';
+import { nationIsValid } from '@pangea/nations/nations-utils';
+import type { EditingNationType } from '@pangea/nations/Nation-types';
+import type { Navigator } from 'pangea-common-reactnative/ReactNativeNavigation-types';
 import ScreenTitle from 'pangea-common-reactnative/UI/ScreenTitle';
 
 type Props = {

@@ -10,13 +10,13 @@ import {
 } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
-import NavigatorComponent from 'pangea-common-reactnative/UI/NavigatorComponent';
+import NavigatorComponent from '../../../../NavigatorComponent';
 import PanelView from 'pangea-common-reactnative/UI/PanelView';
-import { imageSource, saveShouldBeEnabled } from '../../../../utils/profile';
+import { imageSource, saveShouldBeEnabled } from '@pangea/profile/profile-utils';
 import AssetsImage from 'pangea-common-reactnative/assets/AssetsImages';
 import Colors from 'pangea-common-reactnative/styles/colors';
-import type { Navigator } from '../../../../types/ReactNativeNavigation';
-import type { Account, PartialAccount } from '../../../../types/Account';
+import type { Navigator } from 'pangea-common-reactnative/ReactNativeNavigation-types';
+import type { Account, PartialAccount } from 'pangea-common/types/accounts-types';
 import i18n from 'pangea-common/i18n';
 import styles from './styles';
 import ScreenTitle from 'pangea-common-reactnative/UI/ScreenTitle';

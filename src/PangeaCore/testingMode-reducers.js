@@ -7,8 +7,8 @@ import {
   MAKE_STEP,
   RESET_STEPS,
   EMPTY_WALLET,
-} from './src-old/actions/testingMode';
-import { SERVICES_DESTROYED } from './src-old/actions/serviceContainer';
+} from '@pangea/accounts/testingMode-actions';
+import { SERVICES_DESTROYED } from 'pangea-common/serviceContainer-actions';
 
 export const stepsCountToToggle = 5;
 

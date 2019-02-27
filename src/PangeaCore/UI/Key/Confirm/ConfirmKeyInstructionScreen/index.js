@@ -16,8 +16,8 @@ import { KEY_LENGTH } from 'pangea-common/Constants';
 import AssetsImages from 'pangea-common-reactnative/assets/AssetsImages';
 import BodyParagraphs from 'pangea-common-reactnative/UI/BodyParagraphs';
 import i18n from 'pangea-common/i18n';
-import NavigatorComponent from 'pangea-common-reactnative/UI/NavigatorComponent';
-import type { NavigatorProps } from 'pangea-common-reactnative/UI/NavigatorComponent';
+import NavigatorComponent from '../../../NavigatorComponent';
+import type { NavigatorProps } from '../../../NavigatorComponent';
 import Colors from 'pangea-common-reactnative/styles/colors';
 
 type Props = {

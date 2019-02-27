@@ -6,7 +6,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import i18n from 'pangea-common/i18n';
 import { logout } from '../../actions/accounts';
 import { imageSource } from '../../utils/profile';
-import { getCurrentAccount } from '../../reducers/accounts';
+import { getCurrentAccount } from '@pangea/accounts/accounts-reducers';
 
 import AssetsImages from 'pangea-common-reactnative/assets/AssetsImages';
 import { screen } from 'pangea-common-reactnative/Screens';

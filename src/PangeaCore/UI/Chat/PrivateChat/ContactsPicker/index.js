@@ -9,16 +9,16 @@ import {
 } from 'react-native';
 import _ from 'lodash';
 import { Chip, Selectize } from 'react-native-material-selectize';
-import { addContact } from '../../../actions/contacts';
+import { addContact } from '@pangea/contacts/contacts-actions';
 import styles from './styles';
 import Loading from 'pangea-common-reactnative/UI/Loading';
-import NavigatorComponent from 'pangea-common-reactnative/UI/NavigatorComponent';
+import NavigatorComponent from '../../../NavigatorComponent';
 import i18n from 'pangea-common/i18n';
 import Colors from 'pangea-common-reactnative/styles/colors';
-import type { Contact } from '../../../types/Contacts';
-import type { Navigator } from '../../../types/ReactNativeNavigation';
+import type { Contact } from '@pangea/contacts/contacts-types';
+import type { Navigator } from 'pangea-common-reactnative/ReactNativeNavigation-types';
 import AssetsImages from 'pangea-common-reactnative/assets/AssetsImages';
-import { imageSource } from '../../../utils/profile';
+import { imageSource } from '@pangea/profile/profile-utils';
 import ListItem from 'pangea-common-reactnative/UI/ListItem';
 
 const DONE_BUTTON = 'DONE_BUTTON';

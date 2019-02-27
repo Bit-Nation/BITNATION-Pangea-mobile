@@ -4,8 +4,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { View, Image, Text, ScrollView, Clipboard, TouchableHighlight, WebView, Alert } from 'react-native';
 import Modal from 'react-native-modal';
-import type { Navigator } from '../../../types/ReactNativeNavigation';
-import NavigatorComponent from '../../../components/common/NavigatorComponent';
+import type { Navigator } from 'pangea-common-reactnative/ReactNativeNavigation-types';
+import NavigatorComponent from '../../NavigatorComponent';
 import { screen } from 'pangea-common-reactnative/Screens';
 import styles from './styles';
 import i18n from 'pangea-common/i18n';
@@ -13,18 +13,18 @@ import {
   startDocumentEditing,
   deleteDocument,
   uploadDocument,
-} from '../../documents-actions';
-import type { State as DocumentsState } from '../../documents-reducers';
-import type { Account } from '../../../types/Account';
+} from '@pangea/documents/documents-actions';
+import type { State as DocumentsState } from '@pangea/documents/documents-reducers';
+import type { Account } from 'pangea-common/types/accounts-types';
 import Button from 'pangea-common-reactnative/UI/Button';
 import Colors from 'pangea-common-reactnative/styles/colors';
 import AssetsImages from 'pangea-common-reactnative/assets/AssetsImages';
-import { imageSource } from '../../../utils/profile';
-import { getOpenedDocument } from '../../documents-reducers';
+import { imageSource } from '@pangea/profile/profile-utils';
+import { getOpenedDocument } from '@pangea/documents/documents-reducers';
 import DocumentDetail from 'pangea-common-reactnative/UI/DocumentDetail';
-import { getCurrentAccount } from '../../../reducers/accounts';
+import { getCurrentAccount } from '@pangea/accounts/accounts-reducers';
 import MoreMenuModal from 'pangea-common-reactnative/UI/MoreMenuModal';
-import { contentStorage } from '../../documents-service';
+import { contentStorage } from '@pangea/documents/documents-service';
 import { alert } from 'pangea-common/alerts';
 
 type Props = {

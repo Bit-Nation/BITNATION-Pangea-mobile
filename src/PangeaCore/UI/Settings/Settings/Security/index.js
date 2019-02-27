@@ -5,29 +5,29 @@ import { Slider, View, Platform } from 'react-native';
 import { connect } from 'react-redux';
 import { Button, Text } from 'native-base';
 import styles from './styles';
-import NavigatorComponent from 'pangea-common-reactnative/UI/NavigatorComponent';
-import type { Navigator } from '../../../types/ReactNativeNavigation';
+import NavigatorComponent from '../../../NavigatorComponent';
+import type { Navigator } from 'pangea-common-reactnative/ReactNativeNavigation-types';
 import i18n from 'pangea-common/i18n';
 import { screen, androidNavigationButtons } from 'pangea-common-reactnative/Screens';
 import ScreenTitle from 'pangea-common-reactnative/UI/ScreenTitle';
 import BackgroundImage from 'pangea-common-reactnative/UI/BackgroundImage';
 import FakeNavigationBar from 'pangea-common-reactnative/UI/FakeNavigationBar';
 // import Button from '../../../components/common/Button';
-import type { State as SettingsState } from '../../../settings-reducers';
+import type { State as SettingsState } from '@pangea/settings/settings-reducers';
 import SettingsListItem from 'pangea-common-reactnative/UI/SettingsListItem';
 import {
   changePasscodeLength,
   changeUseNumericPasscode,
   loadSettings,
   saveSettings,
-} from '../../../settings-actions';
+} from '@pangea/settings/settings-actions';
 import Colors from 'pangea-common-reactnative/styles/colors';
 import {
   MAXIMAL_PIN_CODE_LENGTH,
   MINIMAL_PIN_CODE_LENGTH,
 } from 'pangea-common/Constants';
-import type { State as AccountsState } from '../../../reducers/accounts';
-import { isCreatingAccount } from '../../../reducers/accounts';
+import type { State as AccountsState } from '@pangea/accounts/accounts-reducers';
+import { isCreatingAccount } from '@pangea/accounts/accounts-reducers';
 import { alert } from 'pangea-common/alerts';
 
 type Props = {

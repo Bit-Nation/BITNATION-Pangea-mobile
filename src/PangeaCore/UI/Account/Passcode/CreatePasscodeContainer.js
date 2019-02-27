@@ -5,13 +5,13 @@ import { connect } from 'react-redux';
 import { View } from 'react-native';
 
 import PinCodeScreen from './PinCode/index';
-import { type State as SettingsState } from '../../reducers/settings';
-import NavigatorComponent from 'pangea-common-reactnative/UI/NavigatorComponent';
+import { type State as SettingsState } from '@pangea/settings/settings-reducers';
+import NavigatorComponent from '../../NavigatorComponent';
 import i18n from 'pangea-common/i18n';
-import { savePinCode, savePassword } from '../../accounts-actions';
+import { savePinCode, savePassword } from '@pangea/accounts/accounts-actions';
 import { alert, errorAlert } from 'pangea-common/alerts';
 import PasswordScreen from './Password/index';
-import type { Navigator } from '../../types/ReactNativeNavigation';
+import type { Navigator } from 'pangea-common-reactnative/ReactNativeNavigation-types';
 import styles from './PinCode/styles';
 import BackgroundImage from 'pangea-common-reactnative/UI/BackgroundImage';
 import FakeNavigationBar from 'pangea-common-reactnative/UI/FakeNavigationBar';

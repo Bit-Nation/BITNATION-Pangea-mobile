@@ -4,8 +4,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { View, Image, Text, TextInput, ScrollView } from 'react-native';
 
-import type { Navigator } from '../../../types/ReactNativeNavigation';
-import NavigatorComponent from 'pangea-common-reactnative/UI/NavigatorComponent';
+import type { Navigator } from 'pangea-common-reactnative/ReactNativeNavigation-types';
+import NavigatorComponent from '../../NavigatorComponent';
 import Button from 'pangea-common-reactnative/UI/Button';
 import styles from './styles';
 import i18n from 'pangea-common/i18n';
@@ -13,12 +13,12 @@ import {
   cancelDocumentModification,
   finishDocumentModification,
   updateModifiedDocumentField,
-} from '../../documents-actions';
-import { type State as DocumentsState } from '../../documents-reducers';
+} from '@pangea/documents/documents-actions';
+import { type State as DocumentsState } from '@pangea/documents/documents-reducers';
 import Colors from 'pangea-common-reactnative/styles/colors';
 import AssetsImages from 'pangea-common-reactnative/assets/AssetsImages';
-import { imageSource } from '../../../utils/profile';
-import { contentStorage } from '../../documents-service';
+import { imageSource } from '@pangea/profile/profile-utils';
+import { contentStorage } from '@pangea/documents/documents-service';
 
 type Props = {
   /**

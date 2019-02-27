@@ -3,12 +3,12 @@
 import { call, take, fork, put } from 'redux-saga/effects';
 import { eventChannel, type Channel } from 'redux-saga';
 
-import ServiceContainer from '../../services/container';
+import ServiceContainer from 'pangea-common/service-container';
 import UpstreamService from '../../services/upstream/upstream';
-import { stopDApp } from '../../actions/dApps';
-import { fetchDApps, stopDAppSaga } from '../dApps/sagas';
+import { stopDApp } from '@pangea/dApps/dApps-actions';
+import { fetchDApps, stopDAppSaga } from '@pangea/dApps/dapps-sagas/sagas';
 
-import { panthalassaMessagePersisted } from '../../actions/chat';
+import { panthalassaMessagePersisted } from '@pangea/chat/chat-actions';
 
 /**
  * @desc Handles UI API request.

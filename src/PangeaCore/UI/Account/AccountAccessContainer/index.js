@@ -2,16 +2,16 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import type { Navigator } from '../../../types/ReactNativeNavigation';
-import NavigatorComponent from 'pangea-common-reactnative/UI/NavigatorComponent';
-import { openNation } from '../../../actions/nations';
+import type { Navigator } from 'pangea-common-reactnative/ReactNativeNavigation-types';
+import NavigatorComponent from '../../NavigatorComponent';
+import { openNation } from '@pangea/nations/nations-actions';
 import AccountAccessListScreen from './AccountAccessListScreen';
 import { screen } from 'pangea-common-reactnative/Screens';
-import { startAccountCreation, startRestoreAccountUsingMnemonic } from '../../accounts-actions';
-import { type State as AccountState } from '../../accounts-reducers';
+import { startAccountCreation, startRestoreAccountUsingMnemonic } from '@pangea/accounts/accounts-actions';
+import { type State as AccountState } from '@pangea/accounts/accounts-reducers';
 import type { Mnemonic } from 'pangea-common/types/Mnemonic-types';
 import AccountsScreen from '../index';
-import { loadSettings } from '../../../actions/settings';
+import { loadSettings } from '@pangea/settings/settings-actions';
 
 type Props = {
   /**

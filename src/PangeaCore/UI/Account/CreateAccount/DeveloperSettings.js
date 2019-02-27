@@ -11,9 +11,9 @@ import FakeNavigationBar from 'pangea-common-reactnative/UI/FakeNavigationBar';
 import ScreenTitle from 'pangea-common-reactnative/UI/ScreenTitle';
 import SwitchLabeled from 'pangea-common-reactnative/UI/SwitchLabeled';
 import styles from '../styles';
-import type { Navigator } from '../../../types/ReactNativeNavigation';
-import { type State as AccountsState } from '../../accounts-reducers';
-import { changeCreatingAccountField } from '../../accounts-actions';
+import type { Navigator } from 'pangea-common-reactnative/ReactNativeNavigation-types';
+import { type State as AccountsState } from '@pangea/accounts/accounts-reducers';
+import { changeCreatingAccountField } from '@pangea/accounts/accounts-actions';
 
 type Props = {
   /**

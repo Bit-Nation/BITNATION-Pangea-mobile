@@ -17,16 +17,16 @@ import BitnationMessage from '../UI/PrivateChat/Chat/BitnationMessage';
 import BitnationInputToolbar from '../UI/PrivateChat/Chat/BitnationInputToolbar';
 import styles from './styles';
 
-import { showSpinner, hideSpinner } from '../chat-actions';
+import { showSpinner, hideSpinner } from '@pangea/chat/chat-actions';
 import BackgroundImage from 'pangea-common-reactnative/UI/BackgroundImage';
 import FakeNavigationBar from 'pangea-common-reactnative/UI/FakeNavigationBar';
 import Loading from 'pangea-common-reactnative/UI/Loading';
-import { resolveNation } from '../../utils/nations';
-import deprecatedCreateGiftedChatMessageObject from '../chat-utils';
-import type { NationIdType, NationType } from '../../types/Nation';
+import { resolveNation } from '@pangea/nations/nations-utils';
+import deprecatedCreateGiftedChatMessageObject from '@pangea/chat/chat-utils';
+import type { NationIdType, NationType } from '@pangea/nations/Nation-types';
 import type { Navigator } from 'pangea-common-reactnative/ReactNativeNavigation-types';
 import LucyBot from '../../../vendor/LucyBot';
-import { getCurrentAccount } from '../../reducers/accounts';
+import { getCurrentAccount } from '@pangea/accounts/accounts-reducers';
 
 type Props = {
   /**

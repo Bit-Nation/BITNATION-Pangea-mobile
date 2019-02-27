@@ -12,13 +12,13 @@ import i18n from 'pangea-common/i18n';
 import WalletPanel from './WalletPanel';
 import ActivityPanel from './ActivityPanel';
 import NationsPanel from './NationsPanel';
-import { openNation } from '../../actions/nations';
+import { openNation } from '@pangea/nations/nations-actions';
 import { screen } from 'pangea-common-reactnative/Screens';
-import { addNewMessage } from '../../actions/activity';
-import type { NationIdType } from '../../types/Nation';
+import { addNewMessage } from '@pangea/activity/activity-actions';
+import type { NationIdType } from '@pangea/nations/nation-types';
 import type { State } from '../../reducers';
-import type { Navigator } from '../../types/ReactNativeNavigation';
-import { getCurrentAccount } from '../../reducers/accounts';
+import type { Navigator } from 'pangea-common-reactnative/ReactNativeNavigation-types';
+import { getCurrentAccount } from '@pangea/accounts/accounts-reducers';
 
 type Props = {
   /**

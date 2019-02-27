@@ -5,9 +5,9 @@ import React from 'react';
 import { Alert, Text, View } from 'react-native';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 
-import DAppsService from '../../dApps-service';
+import DAppsService from '@pangea/dApps/dApps-service';
 import styles from './styles';
-import NavigatorComponent from 'pangea-common-reactnative/UI/NavigatorComponent';
+import NavigatorComponent from '../../NavigatorComponent';
 import i18n from 'pangea-common/i18n';
 import Loading from 'pangea-common-reactnative/UI/Loading';
 import { androidNavigationButtons } from 'pangea-common-reactnative/Screens';

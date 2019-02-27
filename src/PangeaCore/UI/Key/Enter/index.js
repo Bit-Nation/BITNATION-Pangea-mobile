@@ -11,7 +11,7 @@ import { androidNavigationButtons, screen } from 'pangea-common-reactnative/Scre
 import BackgroundImage from 'pangea-common-reactnative/UI/BackgroundImage';
 import GridView from '../../components/GridView/index';
 import PrivateKeyTextInputContainer from '../../components/PrivateKeyTextInputContainer/index';
-import FakeNavigationBar from 'pangea-common-reactnative/UIFakeNavigationBar';
+import FakeNavigationBar from 'pangea-common-reactnative/UI/FakeNavigationBar';
 import PanelView from 'pangea-common-reactnative/UI/PanelView';
 import {
   KEY_LENGTH,
@@ -21,16 +21,16 @@ import {
   KEY_PAGE_COUNT,
 } from 'pangea-common/Constants';
 import Button from 'pangea-common-reactnative/UI/Button';
-import { changeEnteredMnemonic, validateEnteredMnemonic } from '../../../actions/key';
+import { changeEnteredMnemonic, validateEnteredMnemonic } from '@pangea/key/key-actions';
 import Colors from 'pangea-common-reactnative/styles/colors';
 import BodyParagraphs from 'pangea-common-reactnative/UI/BodyParagraphs';
 import i18n from 'pangea-common/i18n';
-import type { State as KeyState } from '../../../reducers/key';
+import type { State as KeyState } from '@pangea/key/key-reducers';
 import type { Mnemonic } from 'pangea-common/types/Mnemonic-types';
-import NavigatorComponent from 'pangea-common-reactnative/UI/NavigatorComponent';
-import AccountsService from '../../../services/accounts';
+import NavigatorComponent from '../../NavigatorComponent';
+import AccountsService from '@pangea/accounts/accounts-services';
 import { alert, errorAlert } from 'pangea-common/alerts';
-import { mnemonicConfirmed, validateMnemonicWithAccount } from '../../../actions/accounts';
+import { mnemonicConfirmed, validateMnemonicWithAccount } from '@pangea/accounts/accounts-actions';
 import { GeneralError } from 'pangea-common/errors/common';
 
 const DONE_BUTTON = 'DONE_BUTTON';

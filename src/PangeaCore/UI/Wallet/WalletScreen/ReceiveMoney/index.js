@@ -14,7 +14,7 @@ import BackgroundImage from 'pangea-common-reactnative/UI/BackgroundImage';
 import PanelView from 'pangea-common-reactnative/UI/PanelView';
 import { androidNavigationButtons } from 'pangea-common-reactnative/Screens';
 import i18n from 'pangea-common/i18n';
-import type { State as WalletState } from '../../../wallet-reducers';
+import type { State as WalletState } from '@pangea/wallet/wallet-reducers';
 import ScreenTitle from 'pangea-common-reactnative/UI/ScreenTitle';
 
 class ReceiveMoneyScreen extends Component<WalletState> {

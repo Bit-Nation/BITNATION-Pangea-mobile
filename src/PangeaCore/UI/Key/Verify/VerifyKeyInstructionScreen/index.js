@@ -9,10 +9,10 @@ import FakeNavigationBar from 'pangea-common-reactnative/UI/FakeNavigationBar';
 import BackgroundImage from 'pangea-common-reactnative/UI/BackgroundImage';
 import PanelView from 'pangea-common-reactnative/UI/PanelView';
 import { KEY_LENGTH } from 'pangea-common/Constants';
-import BodyParagraphs from '../../../../components/common/BodyParagraphs';
+import BodyParagraphs from 'pangea-common-reactnative/UI/BodyParagraphs';
 import i18n from 'pangea-common/i18n';
-import type { State } from '../../../../reducers/key';
-import NavigatorComponent from 'pangea-common-reactnative/UI/NavigatorComponent';
+import type { State } from '@pangea/key/key-reducers';
+import NavigatorComponent from '../../../NavigatorComponent';
 
 class VerifyKeyInstructionScreen extends NavigatorComponent<State> {
   static navigatorButtons = { ...androidNavigationButtons };

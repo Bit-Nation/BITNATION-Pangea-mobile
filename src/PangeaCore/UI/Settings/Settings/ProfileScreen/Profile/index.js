@@ -11,15 +11,15 @@ import {
 
 import styles from './styles';
 import AssetsImage from 'pangea-common-reactnative/assets/AssetsImages';
-import NavigatorComponent from 'pangea-common-reactnative/UI/NavigatorComponent';
+import NavigatorComponent from '../../../../NavigatorComponent';
 import Colors from 'pangea-common-reactnative/styles/colors';
-import type { Navigator } from '../../../../types/ReactNativeNavigation';
-import type { Account } from '../../../../types/Account';
+import type { Navigator } from 'pangea-common-reactnative/ReactNativeNavigation-types';
+import type { Account } from 'pangea-common/types/accounts-types';
 import i18n from 'pangea-common/i18n';
 import ScreenTitle from 'pangea-common-reactnative/UI/ScreenTitle';
 import Button from 'pangea-common-reactnative/UI/Button';
 import { androidNavigationButtons } from 'pangea-common-reactnative/Screens';
-import { imageSource } from '../../../../utils/profile';
+import { imageSource } from '@pangea/profile/profile-utils';
 
 const EDIT_BUTTON = 'EDIT_BUTTON';
 

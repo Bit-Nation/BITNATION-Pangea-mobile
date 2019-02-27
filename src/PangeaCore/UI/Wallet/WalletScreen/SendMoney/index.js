@@ -11,22 +11,22 @@ import {
 import { connect } from 'react-redux';
 import _ from 'lodash';
 
-import Images from '../../../global/AssetsImages';
-import Colors from '../../../global/colors';
+import Images from 'pangea-common-reactnative/assets/AssetsImages';
+import Colors from 'pangea-common-reactnative/styles/colors';
 import styles from './styles';
-import BackgroundImage from '../../../components/common/BackgroundImage';
-import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
-import { resolveWallet } from '../../../utils/wallet';
-import { sendMoney } from '../../../actions/wallet';
-import { androidNavigationButtons } from '../../../global/Screens';
-import Loading from '../../../components/common/Loading';
-import { prettyWalletBalance } from '../../../utils/formatters';
-import i18n from '../../../global/i18n';
-import { alert, errorAlert } from '../../../global/alerts';
-import PanelView from '../../../components/common/PanelView';
-import NavigatorComponent from '../../../components/common/NavigatorComponent';
-import type { State as WalletState } from '../../../reducers/wallet';
-import ScreenTitle from '../../../components/common/ScreenTitle';
+import BackgroundImage from 'pangea-common-reactnative/UI/BackgroundImage';
+import FakeNavigationBar from 'pangea-common-reactnative/UI/FakeNavigationBar';
+import { resolveWallet } from '@pangea/wallet/wallet-utils';
+import { sendMoney } from '@pangea/wallet/wallet-actions';
+import { androidNavigationButtons } from 'pangea-common-reactnative/Screens';
+import Loading from 'pangea-common-reactnative/UI/Loading';
+import { prettyWalletBalance } from '@pangea/wallet/formatters';
+import i18n from 'pangea-common/i18n';
+import { alert, errorAlert } from 'pangea-common/alerts';
+import PanelView from 'pangea-common-reactnative/UI/PanelView';
+import NavigatorComponent from '../../../NavigatorComponent';
+import type { State as WalletState } from '@pangea/wallet/wallet-reducers';
+import ScreenTitle from 'pangea-common-reactnative/UI/ScreenTitle';
 
 const SEND_BUTTON = 'SEND_BUTTON';
 

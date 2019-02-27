@@ -10,10 +10,10 @@ import FakeNavigationBar from 'pangea-common-reactnative/UI/FakeNavigationBar';
 import PanelView from 'pangea-common-reactnative/UI/PanelView';
 import ScreenTitle from 'pangea-common-reactnative/UI/ScreenTitle';
 import styles from '../styles';
-import type { Navigator } from '../../../types/ReactNativeNavigation';
-import { performDeferredLogin } from '../../accounts-actions';
-import { type State as AccountsState } from '../../accounts-reducers';
-import { saveSettings } from '../../../actions/settings';
+import type { Navigator } from 'pangea-common-reactnative/ReactNativeNavigation-types';
+import { performDeferredLogin } from '@pangea/accounts/accounts-actions';
+import { type State as AccountsState } from '@pangea/accounts/accounts-reducers';
+import { saveSettings } from '@pangea/settings/settings-actions';
 import Loading from 'pangea-common-reactnative/UI/Loading';
 
 type Props = {

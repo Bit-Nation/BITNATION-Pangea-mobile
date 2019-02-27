@@ -12,9 +12,9 @@ import styles from './styles';
 import PanelView from 'pangea-common-reactnative/UI/PanelView';
 import i18n from 'pangea-common/i18n';
 import NationListItem from 'pangea-common-reactnative/UI/NationListItem';
-import { nationIsDraft } from '../../../utils/nations';
+import { nationIsDraft } from '@pangea/nations/nations-utils';
 import Loading from 'pangea-common-reactnative/UI/Loading';
-import type { NationIdType, NationType } from '../../../types/Nation';
+import type { NationIdType, NationType } from '@pangea/nations/nation-types';
 
 const NEWEST_NATION_COUNT = 5;
 

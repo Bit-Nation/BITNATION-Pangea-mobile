@@ -2,7 +2,7 @@
 
 import { StyleSheet } from 'react-native';
 
-import GlobalStyles from '../../../global/Styles';
+import GlobalStyles from 'pangea-common-reactnative/styles';
 
 const styles = StyleSheet.create({
   ...GlobalStyles,

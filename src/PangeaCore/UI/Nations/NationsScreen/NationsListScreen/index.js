@@ -7,15 +7,15 @@ import _ from 'lodash';
 import BackgroundImage from 'pangea-common-reactnative/UI/BackgroundImage';
 import LucyButton from 'pangea-common-reactnative/UI/LucyButton';
 import styles from './styles';
-import ProgressiveImage from 'pangea-common-reactnative/UI/ProgressiveImage';
+import ProgressiveImage from '../../../components/ProgressiveImage';
 import NationListItem from 'pangea-common-reactnative/UI/NationListItem';
 import NationListHeader from 'pangea-common-reactnative/UI/ItemsListHeader';
 import FakeNavigationBar from 'pangea-common-reactnative/UI/FakeNavigationBar';
 import i18n from 'pangea-common/i18n';
-import { resolveStatus, statusColor } from '../../../nations-utils';
+import { resolveStatus, statusColor } from '@pangea/nations/nations-utils';
 import Loading from 'pangea-common-reactnative/UI/Loading';
-import type { NationIdType, NationType } from '../../../Nation-types';
-import type { NationTab } from '../../../nations-actions';
+import type { NationIdType, NationType } from '@pangea/nations/Nation-types';
+import type { NationTab } from '@pangea/nations/nations-actions';
 import ScreenTitle from 'pangea-common-reactnative/UI/ScreenTitle';
 
 const uri =

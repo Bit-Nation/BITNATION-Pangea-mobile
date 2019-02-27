@@ -9,11 +9,11 @@ import {
 } from 'react-native';
 
 import styles from './styles';
-import NavigatorComponent from 'pangea-common-reactnative/UI/NavigatorComponent';
+import NavigatorComponent from '../../../NavigatorComponent';
 import i18n from 'pangea-common/i18n';
 import { androidNavigationButtons } from 'pangea-common-reactnative/Screens';
 import Button from 'pangea-common-reactnative/UI/Button';
-import type { Navigator } from '../../../types/ReactNativeNavigation';
+import type { Navigator } from 'pangea-common-reactnative/ReactNativeNavigation-types';
 
 export type Props = {
   /**

@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { StyleSheet, View, Keyboard, ViewPropTypes, Image, TouchableOpacity } from 'react-native';
 import { Composer, Send } from 'react-native-gifted-chat';
-import Colors from '../../../global/colors';
-import AssetsImages from '../../../global/AssetsImages';
+import Colors from 'pangea-common-reactnative/styles/colors';
+import AssetsImages from 'pangea-common-reactnative/assets/AssetsImages';
 
 export default class InputToolbar extends React.Component {
   constructor(props) {

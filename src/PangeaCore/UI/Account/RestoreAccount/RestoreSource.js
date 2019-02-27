@@ -14,7 +14,7 @@ import ScreenTitle from 'pangea-common-reactnative/UI/ScreenTitle';
 import Button from 'pangea-common-reactnative/UI/Button';
 import styles from '../styles';
 
-import type { Navigator } from '../../../types/ReactNativeNavigation';
+import type { Navigator } from 'pangea-common-reactnative/ReactNativeNavigation-types';
 
 type Props = {
   /**

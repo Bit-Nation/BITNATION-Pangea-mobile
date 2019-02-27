@@ -11,14 +11,14 @@ import {
   saveNationDraft,
   deleteNationDraft,
   submitNation,
-} from '../../modifyNation-actions';
+} from '@pangea/nations/modifyNation-actions';
 import { errorAlert, alert } from 'pangea-common/alerts';
-import { nationIsModified, type State as ModifyNationState } from '../../modifyNation-reducers';
+import { nationIsModified, type State as ModifyNationState } from '@pangea/nations/modifyNation-reducers';
 import type {
   EditingNationType,
   NationIdType,
-} from '../../Nation-types.js';
-import type { Navigator } from '../../types/ReactNativeNavigation';
+} from '@pangea/nations/Nation-types.js';
+import type { Navigator } from 'pangea-common-reactnative/ReactNativeNavigation-types';
 
 type Props = {
   navigator: Navigator,

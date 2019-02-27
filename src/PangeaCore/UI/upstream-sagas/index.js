@@ -1,7 +1,7 @@
 // @flow
 
 import { all, takeEvery } from 'redux-saga/effects';
-import { SERVICES_CREATED } from '../../serviceContainer/serviceContainer-actions';
+import { SERVICES_CREATED } from 'pangea-common/serviceContainer-actions';
 import { subscribeToUIAPI } from './uiAPI';
 
 /**

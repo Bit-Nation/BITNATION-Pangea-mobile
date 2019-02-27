@@ -11,14 +11,14 @@ import {
 } from 'react-native';
 
 import BackgroundImage from 'pangea-common-reactnative/UI/BackgroundImage';
-import NavigatorComponent from 'pangea-common-reactnative/UI/NavigatorComponent';
+import NavigatorComponent from '../../../NavigatorComponent';
 import FakeNavigationBar from 'pangea-common-reactnative/UI/FakeNavigationBar';
 import ScreenTitle from 'pangea-common-reactnative/UI/ScreenTitle';
 import PanelView from 'pangea-common-reactnative/UI/PanelView';
 import Colors from 'pangea-common-reactnative/styles/colors';
 import styles from './styles';
 import i18n from 'pangea-common/i18n';
-import type { Navigator } from '../../../types/ReactNativeNavigation';
+import type { Navigator } from 'pangea-common-reactnative/ReactNativeNavigation-types';
 import { CancelledError } from 'pangea-common/errors/common';
 import { DEFAULT_GAS_LIMIT } from 'pangea-common/Constants';
 

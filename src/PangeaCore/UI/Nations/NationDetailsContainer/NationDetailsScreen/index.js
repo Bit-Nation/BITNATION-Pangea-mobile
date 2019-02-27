@@ -13,12 +13,12 @@ import AssetsImage from 'pangea-common-reactnative/assets/AssetsImages';
 import PanelView from 'pangea-common-reactnative/UI/PanelView';
 import FakeNavigationBar from 'pangea-common-reactnative/UI/FakeNavigationBar';
 import i18n from 'pangea-common/i18n';
-import { openedNation, type State as NationState } from '../../../nations-reducers';
+import { openedNation, type State as NationState } from '@pangea/nations/nations-reducers';
 import PanelViewAlert from 'pangea-common-reactnative/UI/PanelViewAlert';
 import PanelViewCitizen from 'pangea-common-reactnative/UI/PanelViewCitizen';
-import { nationIsValid, resolveStatus } from '../../../nations-utils';
-import type { Navigator } from '../../../types/ReactNativeNavigation';
-import type { NationType } from '../../../Nation-types';
+import { nationIsValid, resolveStatus } from '@pangea/nations/nations-utils';
+import type { Navigator } from 'pangea-common-reactnative/ReactNativeNavigation-types';
+import type { NationType } from '@pangea/nations/Nation-types';
 import ScreenTitle from 'pangea-common-reactnative/UI/ScreenTitle';
 
 type Props = {

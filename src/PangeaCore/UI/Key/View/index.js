@@ -14,10 +14,10 @@ import PrivateKeyTextInputContainer from '../../components/PrivateKeyTextInputCo
 import { KEY_COLUMN_COUNT, KEY_PAGE_ROW_COUNT, KEY_PAGE_LENGTH, KEY_ROW_COUNT } from 'pangea-common/Constants';
 import BodyParagraphs from 'pangea-common-reactnative/UI/BodyParagraphs';
 import i18n from 'pangea-common/i18n';
-import type { State as KeyState } from '../../../reducers/key';
-import NavigatorComponent from 'pangea-common-reactnative/UI/NavigatorComponent';
+import type { State as KeyState } from '@pangea/key/key-reducers';
+import NavigatorComponent from '../../NavigatorComponent';
 import type { Mnemonic } from 'pangea-common/types/Mnemonic-types';
-import AccountsService from '../../../services/accounts';
+import AccountsService from '@pangea/accounts/accounts-services';
 import { errorAlert } from 'pangea-common/alerts';
 
 type State = {

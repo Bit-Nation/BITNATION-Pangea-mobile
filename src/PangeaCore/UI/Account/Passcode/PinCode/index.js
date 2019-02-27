@@ -4,11 +4,11 @@ import React from 'react';
 import { View, TextInput, Keyboard } from 'react-native';
 import { Button, Text } from 'native-base';
 import styles from './styles';
-import NavigatorComponent from 'pangea-common-reactnative/UI/NavigatorComponent';
+import NavigatorComponent from '../../../NavigatorComponent';
 import i18n from 'pangea-common/i18n';
 import { androidNavigationButtons } from 'pangea-common-reactnative/Screens';
 // import Button from '../../../components/common/Button';
-import type { Navigator } from '../../../types/ReactNativeNavigation';
+import type { Navigator } from 'pangea-common-reactnative/ReactNativeNavigation-types';
 
 export type Props = {
   /**

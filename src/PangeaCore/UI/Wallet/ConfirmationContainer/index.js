@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import type { Navigator } from '../../types/ReactNativeNavigation';
+import type { Navigator } from 'pangea-common-reactnative/ReactNativeNavigation-types';
 import ConfirmationScreen from './ConfirmationScreen';
 import { CancelledError } from 'pangea-common/errors/common';
 

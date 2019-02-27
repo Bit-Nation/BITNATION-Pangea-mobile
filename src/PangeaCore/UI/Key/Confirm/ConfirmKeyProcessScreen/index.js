@@ -11,16 +11,16 @@ import { androidNavigationButtons, screen } from 'pangea-common-reactnative/Scre
 import BackgroundImage from 'pangea-common-reactnative/UI/BackgroundImage';
 import FakeNavigationBar from 'pangea-common-reactnative/UI/FakeNavigationBar';
 import PanelView from 'pangea-common-reactnative/UI/PanelView';
-import GridView from 'pangea-common-reactnative/UI/GridView';
+import GridView from '../../../components/GridView';
 import Button from 'pangea-common-reactnative/UI/Button';
 import PrivateKeyTextInputContainer from '../../../components/PrivateKeyTextInputContainer';
 import { KEY_COLUMN_COUNT, KEY_PAGE_ROW_COUNT, KEY_PAGE_LENGTH, KEY_PAGE_COUNT } from 'pangea-common/Constants';
 import BodyParagraphs from 'pangea-common-reactnative/UI/BodyParagraphs';
 import i18n from 'pangea-common/i18n';
-import NavigatorComponent from '../../../../components/common/NavigatorComponent';
+import NavigatorComponent from '../../../NavigatorComponent';
 import type { Mnemonic } from 'pangea-common/types/Mnemonic-types';
-import type { NavigatorProps } from 'pangea-common-reactnative/UI/NavigatorComponent';
-import AccountsService from '../../../../services/accounts';
+import type { NavigatorProps } from '../../../NavigatorComponent';
+import AccountsService from '@pangea/accounts/accounts-services';
 import { errorAlert } from 'pangea-common/alerts';
 
 type State = {

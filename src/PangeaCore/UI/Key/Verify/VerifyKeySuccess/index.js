@@ -8,7 +8,7 @@ import FakeNavigationBar from 'pangea-common-reactnative/UI/FakeNavigationBar';
 import BodyParagraphs from 'pangea-common-reactnative/UI/BodyParagraphs';
 import i18n from 'pangea-common/i18n';
 import PanelView from 'pangea-common-reactnative/UI/PanelView';
-import NavigatorComponent from 'pangea-common-reactnative/UI/NavigatorComponent';
+import NavigatorComponent from '../../../NavigatorComponent';
 
 class VerifyKeySuccess extends NavigatorComponent<void> {
   static navigatorButtons = { leftButtons: [], rightButtons: [] };

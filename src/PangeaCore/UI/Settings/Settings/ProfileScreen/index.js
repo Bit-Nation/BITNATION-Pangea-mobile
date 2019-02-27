@@ -6,18 +6,18 @@ import { View, Alert } from 'react-native';
 
 import ProfileScreen from './Profile/index';
 import EditProfile from './EditProfile/index';
-import { changeCreatingAccountField, saveCreatingAccount } from '../../../actions/accounts';
+import { changeCreatingAccountField, saveCreatingAccount } from '@pangea/accounts/accounts-actions';
 import BackgroundImage from 'pangea-common-reactnative/UI/BackgroundImage';
-import { makeStep, resetSteps } from '../../../actions/testingMode';
+import { makeStep, resetSteps } from '@pangea/accounts/testingMode-actions';
 import FakeNavigationBar from 'pangea-common-reactnative/UI/FakeNavigationBar';
-import type { Navigator } from '../../../types/ReactNativeNavigation';
-import type { Account } from '../../../types/Account';
+import type { Navigator } from 'pangea-common-reactnative/ReactNativeNavigation-types';
+import type { Account } from 'pangea-common/types/accounts-types';
 import styles from './EmptyProfile/styles';
-import { type State as AccountsState, getCurrentAccount, isCreatingAccount } from '../../../reducers/accounts';
+import { type State as AccountsState, getCurrentAccount, isCreatingAccount } from '@pangea/accounts/accounts-reducers';
 import {
   cancelAccountEditing, changeEditingAccount, doneAccountEditing,
   startAccountEditing, saveEditingAccount,
-} from '../../../actions/profile';
+} from '@pangea/profile/profile-actions';
 import { screen } from 'pangea-common-reactnative/Screens';
 import i18n from 'pangea-common/i18n';
 

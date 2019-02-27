@@ -10,12 +10,12 @@ import { ActivityIndicator, Text, View } from 'react-native';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
 import { connect } from 'react-redux';
 
-import Root from '../../DAppsSDK/0.0.1/components/Root';
-import type { DAppMessageType } from '../../types/Chat';
+import Root from '@pangea/dApps/DAppsSDK/0.0.1/components/Root';
+import type { DAppMessageType } from '@pangea/chat/chat-types';
 import GlobalStyles from '../../../PangeaCommonReactNative/styles';
-import { renderDAppMessage } from '../dApps-actions'
+import { renderDAppMessage } from '@pangea/dApps/dApps-actions'
 import i18n from 'pangea-common/i18n';
-import { getDApp, type State as DAppsState } from '../dApps-actions';
+import { getDApp, type State as DAppsState } from '@pangea/dApps/dApps-reducers';
 
 type Props = {
   /**

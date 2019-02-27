@@ -13,7 +13,7 @@ import {
   ViewPropTypes,
   Platform,
 } from 'react-native';
-import Colors from '../../../global/colors';
+import Colors from 'pangea-common-reactnative/styles/colors';
 
 const { isSameUser, isSameDay } = utils;
 

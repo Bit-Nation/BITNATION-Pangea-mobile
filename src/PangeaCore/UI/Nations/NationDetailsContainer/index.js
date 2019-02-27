@@ -6,7 +6,7 @@ import { Alert } from 'react-native';
 import _ from 'lodash';
 
 import NationDetailsScreen from './NationDetailsScreen';
-import { switchNationTab, joinNation, leaveNation } from '../../nations-actions';
+import { switchNationTab, joinNation, leaveNation } from '@pangea/nations/nations-actions';
 import { androidNavigationButtons, screen } from 'pangea-common-reactnative/Screens';
 import i18n from 'pangea-common/i18n';
 import Colors from 'pangea-common-reactnative/styles/colors';
@@ -14,15 +14,15 @@ import {
   deleteNationDraft,
   startNationEditing,
   submitNation,
-} from '../../modifyNation-actions';
-import { openedNation, type State as NationState } from '../../nations-reducers';
-import { type State as WalletState } from '../../reducers/wallet';
-import { type State as ModifyNationState } from '../../modifyNation-reducers';
-import NavigatorComponent from 'pangea-common-reactnative/UI/NavigatorComponent';
+} from '@pangea/nations/modifyNation-actions';
+import { openedNation, type State as NationState } from '@pangea/nations/nations-reducers';
+import { type State as WalletState } from '@pangea/wallet/wallet-reducers';
+import { type State as ModifyNationState } from '@pangea/nations/modifyNation-reducers';
+import NavigatorComponent from '../../NavigatorComponent';
 import { alert, errorAlert } from 'pangea-common/alerts';
-import { nationIsDraft } from '../../nations-utils';
-import type { Navigator } from '../../types/ReactNativeNavigation';
-import type { NationIdType, NationType } from '../../Nation-types';
+import { nationIsDraft } from '@pangea/nations/nations-utils';
+import type { Navigator } from 'pangea-common-reactnative/ReactNativeNavigation-types';
+import type { NationIdType, NationType } from '@pangea/nations/Nation-types';
 
 const EDIT_BUTTON = 'EDIT_BUTTON';
 

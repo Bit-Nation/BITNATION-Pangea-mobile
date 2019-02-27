@@ -7,9 +7,9 @@ import i18n from 'pangea-common/i18n';
 import BackgroundImage from 'pangea-common-reactnative/UI/BackgroundImage';
 import styles from './styles';
 import ScreenTitle from 'pangea-common-reactnative/UI/ScreenTitle';
-import { startMigration } from '../../actions/migration';
+import { startMigration } from '@pangea/migration/migration-actions';
 import FakeNavigationBar from 'pangea-common-reactnative/UI/FakeNavigationBar';
-import NavigatorComponent from 'pangea-common-reactnative/UI/NavigatorComponent';
+import NavigatorComponent from '../NavigatorComponent';
 import Colors from 'pangea-common-reactnative/styles/colors';
 
 type Actions = {

@@ -4,17 +4,17 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import { connect } from 'react-redux';
 
-import NavigatorComponent from 'pangea-common-reactnative/UI/NavigatorComponent';
+import NavigatorComponent from '../../NavigatorComponent';
 import Colors from 'pangea-common-reactnative/styles/colors';
 import i18n from 'pangea-common/i18n';
-import Root from '../../DAppsSDK/0.0.1/components/Root';
+import Root from '@pangea/dApps/DAppsSDK/0.0.1/components/Root';
 import GlobalStyles from 'pangea-common-reactnative/styles';
 import BackgroundImage from 'pangea-common-reactnative/UI/BackgroundImage';
 import FakeNavigationBar from 'pangea-common-reactnative/UI/FakeNavigationBar';
 import Loading from 'pangea-common-reactnative/UI/Loading';
-import { dAppLaunchStateChanged, cleanDAppModal } from '../../dApps-actions';
-import { getDAppLaunchState, type State as DAppsState } from '../../dApps-reducers';
-import type { DAppModalInfo } from '../../DApp-types';
+import { dAppLaunchStateChanged, cleanDAppModal } from '@pangea/dApps/dApps-actions';
+import { getDAppLaunchState, type State as DAppsState } from '@pangea/dApps/dApps-reducers';
+import type { DAppModalInfo } from '@pangea/dApps/DApp-types';
 import ScreenTitle from 'pangea-common-reactnative/UI/ScreenTitle';
 
 type Props = {
