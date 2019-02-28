@@ -152,7 +152,7 @@ const Screens = {
     label: i18n.t('screens.nations.tabTitle'),
     title: i18n.t('screens.nations.tabTitle').toUpperCase(),
     icon: AssetsImages.TabIcons.nations,
-    navigatorStyle,
+    navigatorStyle: hiddenNavigatorStyle,
   },
   NATION_DETAILS_SCREEN: {
     screen: 'Pangea.NationDetailsScreen',
@@ -258,7 +258,7 @@ const Screens = {
     title: i18n.t('screens.services.tabTitle').toUpperCase(),
     label: i18n.t('screens.services.tabTitle'),
     icon: AssetsImages.TabIcons.services,
-    navigatorStyle,
+    navigatorStyle: hiddenNavigatorStyle,
   },
   SECURITY_SETTINGS_SCREEN: {
     screen: 'Pangea.Settings.Security',
@@ -285,7 +285,7 @@ const Screens = {
     label: i18n.t('screens.chat.tabTitle'),
     title: i18n.t('screens.chat.tabTitle').toUpperCase(),
     icon: AssetsImages.TabIcons.chat,
-    navigatorStyle,
+    navigatorStyle: hiddenNavigatorStyle,
   },
   PRIVATE_CHAT_SCREEN: {
     screen: 'Pangea.PrivateChatScreen',

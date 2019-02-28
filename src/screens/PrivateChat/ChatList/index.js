@@ -3,7 +3,7 @@
 import React from "react";
 import { Platform } from "react-native";
 import { connect } from "react-redux";
-import { View, SectionList, Share, TextInput, Image } from "react-native";
+import { View, SectionList, Share, TextInput, Image, Text } from "react-native";
 import _ from "lodash";
 import Dialog from "react-native-dialog";
 
@@ -33,6 +33,7 @@ import { imageSource } from "../../../utils/profile";
 import AssetsImages from "../../../global/AssetsImages";
 import MoreMenuModal from "../../../components/common/MoreMenuModal";
 import type { Contact } from "../../../types/Contacts";
+import Header from "../../../components/Header";
 
 import PopOverModal from "../../../components/PopOverModal";
 
@@ -330,7 +331,17 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
     return (
       <View style={styles.nationsScreenContainer}>
         <BackgroundImage />
-        <FakeNavigationBar />
+        <Header
+          title={i18n.t("screens.chat.tabTitle").toUpperCase()}
+          leftIcon={<Image source={AssetsImages.menuIcon} />}
+          onLeftFunc={() =>
+            this.props.navigator.toggleDrawer({
+              side: "left",
+              animated: true
+            })
+          }
+        />
+        {/* <FakeNavigationBar /> */}
         {/* <View style={styles.searchBarContainer}>
           <View style={styles.inputViewContainer}>
             <TextInput

@@ -70,7 +70,7 @@ const SubTabComponent = ({
     <View style={styles.infoView}>
       <Text style={styles.descriptionStyle}>{description}</Text>
       <ScrollView>
-        <ViewMoreText numberOfLines={3}>
+        <ViewMoreText numberOfLines={6}>
           <Text style={styles.readMoreText}>
             With the BITNATION Public Notary DApp you can notarize important
             contracts, documents, certificates and more in a few seconds. Simply

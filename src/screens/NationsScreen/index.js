@@ -25,6 +25,7 @@ import type { NationIdType } from "../../types/Nation";
 import type { NationTab } from "../../actions/nations";
 import LucyButton from "../../components/common/LucyButton";
 import PopOverModal from "../../components/PopOverModal";
+import Header from "../../components/Header";
 
 const MENU_BUTTON = "MENU_BUTTON";
 const NEW_BUTTON = "NEW_BUTTON";
@@ -146,7 +147,16 @@ class NationsScreen extends NavigatorComponent<
     return (
       <View style={styles.nationsScreenContainer}>
         <BackgroundImage />
-        <FakeNavigationBar />
+        <Header
+          title={i18n.t('screens.nations.tabTitle').toUpperCase()}
+          leftIcon={<Image source={AssetsImages.menuIcon} />}
+          onLeftFunc={() =>
+            this.props.navigator.toggleDrawer({
+              side: "left",
+              animated: true
+            })
+          }
+        />
         <View style={styles.searchBarContainer}>
           <View style={styles.inputViewContainer}>
             <TextInput
