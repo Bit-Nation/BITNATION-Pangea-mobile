@@ -1,12 +1,18 @@
 // @flow
 
-import React from 'react';
-import { View, ScrollView, Text, FlatList, TouchableOpacity } from 'react-native';
-import ProgressiveImage from '../../../../components/ProgressiveImage';
-import ViewMoreText from '../../../../components/ViewMoreText';
-import GovMarketItem, { type GovMarketItemProps } from '../GovMarketItem';
+import React from "react";
+import {
+  View,
+  ScrollView,
+  Text,
+  FlatList,
+  TouchableOpacity
+} from "react-native";
+import ProgressiveImage from "../../../../components/ProgressiveImage";
+import ViewMoreText from "../../../../components/ViewMoreText";
+import GovMarketItem, { type GovMarketItemProps } from "../GovMarketItem";
 
-import styles from './styles';
+import styles from "./styles";
 
 type Props = {
   /**
@@ -26,6 +32,10 @@ type Props = {
    */
   subTitleTable: string,
   /**
+   * @desc image source of tab
+   */
+  imageProfile: string,
+  /**
    * @desc list similar
    */
   list: Array<any>,
@@ -42,35 +52,51 @@ type Props = {
  */
 
 const SubTabComponent = ({
-  selectedItem: {
-    uri, description, subTitle, title,
-  }, buttonTitle, subTitleTable, list, onPressItem, onRef, onPressMainButton, children,
+  selectedItem: { uri, description, subTitle, title },
+  buttonTitle,
+  subTitleTable,
+  list,
+  onPressItem,
+  onRef,
+  onPressMainButton,
+  children,
+  imageProfile
 }: Props) => (
   <ScrollView style={styles.container} ref={onRef}>
     {children}
     <View style={styles.card}>
-      <ProgressiveImage
-        style={styles.headerBackground}
-        source={{ uri }}
-      />
+      <ProgressiveImage style={styles.headerBackground} source={imageProfile} />
     </View>
     <View style={styles.infoView}>
       <Text style={styles.descriptionStyle}>{description}</Text>
       <ScrollView>
-        <ViewMoreText
-          numberOfLines={3}
-        >
+        <ViewMoreText numberOfLines={3}>
           <Text style={styles.readMoreText}>
-            Lorem ipsum dolor sit amet, in quo dolorum ponderum, nam veri molestie constituto eu. Eum enim tantas sadipscing ne, ut omnes malorum nostrum cum. Errem populo qui ne, ea ipsum antiopam definitionem eos. Lorem ipsum dolor sit amet, in quo dolorum ponderum, nam veri molestie constituto eu. Eum enim tantas sadipscing ne, ut omnes malorum nostrum cum. Errem populo qui ne, ea ipsum antiopam definitionem eos. Lorem ipsum dolor sit amet, in quo dolorum ponderum, nam veri molestie constituto eu. Eum enim tantas sadipscing ne, ut omnes malorum nostrum cum. Errem populo qui ne, ea ipsum antiopam definitionem eos.
+            With the BITNATION Public Notary DApp you can notarize important
+            contracts, documents, certificates and more in a few seconds. Simply
+            upload a photo of the document, or take a photo with your cell phone
+            camera of the document you wish to notarize, and click “submit”. The
+            hash of the document will be stored on the Ethereum chain forever.
+            The first version of our Public Notary was created in 2015 in
+            partnership with the Estonia e-Residency program, on the Horizon
+            chain. This is a simplified version, migrated onto the Ethereum
+            chain. Planned DApp functionalities to be added in future releases
+            includes document signing and storage. Producer: BITNATION Americas
+            LTD | Year 2018 | Audited: No | Cost: Standard Ethereum tx fees
           </Text>
         </ViewMoreText>
       </ScrollView>
     </View>
     <TouchableOpacity
       style={styles.titleView}
-      onPress={() => onPressMainButton({
-        uri, description, subTitle, title,
-      })}
+      onPress={() =>
+        onPressMainButton({
+          uri,
+          description,
+          subTitle,
+          title
+        })
+      }
     >
       <Text style={styles.titleText}>{buttonTitle}</Text>
     </TouchableOpacity>
@@ -82,10 +108,14 @@ const SubTabComponent = ({
       ItemSeparatorComponent={() => <View style={styles.itemSeparator} />}
       keyExtractor={(item, i) => String(i)}
       showsVerticalScrollIndicator={false}
-      renderItem={
-        ({ item }) =>
-          (<GovMarketItem {...item} onPress={() => { onPressItem(item); }} />)
-      }
+      renderItem={({ item }) => (
+        <GovMarketItem
+          {...item}
+          onPress={() => {
+            onPressItem(item);
+          }}
+        />
+      )}
     />
   </ScrollView>
 );
@@ -93,9 +123,9 @@ const SubTabComponent = ({
 export default SubTabComponent;
 
 SubTabComponent.defaultProps = {
-  uri: '',
-  description: '',
-  title: '',
-  subTitle: '',
-  list: [],
+  uri: "",
+  description: "",
+  title: "",
+  subTitle: "",
+  list: []
 };

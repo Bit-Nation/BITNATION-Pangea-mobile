@@ -21,7 +21,7 @@ export const contractData = [
 export const dAppData = [
   {
     uri: 'https://tse.bitnation.co',
-    description: 'NOTARY',
+    description: 'Public Notary DApp',
     title: 'Producer: BITNATION Americas LTD',
     subTitle: 'Fees: Standard ETH transaction fee',
   },
