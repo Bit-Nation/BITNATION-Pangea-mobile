@@ -6,21 +6,23 @@ import { NativeEventEmitter, NativeModules } from 'react-native';
 import { Buffer } from 'buffer';
 import { BigNumber } from 'bignumber.js';
 import { api_proto as apiProto } from './compiled';
-import EthereumService from '@pangea/ethereum';
+import { EthereumService } from '@pangea/ethereum';
 import { type DAppModalInfo } from '../DApp-types';
+import { PangeaService } from "pangea-common/service-container";
 
 const { Panthalassa } = NativeModules;
 const { Response, Request } = apiProto;
 
 const RESPONSE_TIMEOUT = 20;
 
-export default class UpstreamService {
+export class UpstreamService extends PangeaService {
   eventsSubscription: any;
   ethereumService: EthereumService;
   onUIAPIRequest: ?((data: Object) => void);
   onRenderModal: ?((data: DAppModalInfo) => void);
 
   constructor(ethereumService: EthereumService) {
+    super("upstream");
     this.ethereumService = ethereumService;
     this.startListening();
   }

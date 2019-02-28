@@ -3,8 +3,8 @@
 import { call, take, fork, put } from 'redux-saga/effects';
 import { eventChannel, type Channel } from 'redux-saga';
 
-import ServiceContainer from 'pangea-common/service-container';
-import UpstreamService from '../../services/upstream/upstream';
+import { ServiceContainer } from 'pangea-common/service-container';
+import { UpstreamService } from '@pangea/dapps/upstream-services/upstream';
 import { stopDApp } from '@pangea/dApps/dApps-actions';
 import { fetchDApps, stopDAppSaga } from '@pangea/dApps/dapps-sagas/sagas';
 
@@ -56,7 +56,7 @@ export function createUIAPIChannel(service: UpstreamService): Channel<Object> {
  * @return {void}
  */
 export function* subscribeToUIAPI(): Generator<*, *, *> {
-  const { upstreamService } = ServiceContainer.instance;
+  const upstreamService = ServiceContainer.instance.getService("upstream");
   if (upstreamService == null) {
     return;
   }

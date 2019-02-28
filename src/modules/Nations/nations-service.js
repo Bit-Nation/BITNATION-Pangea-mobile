@@ -3,12 +3,13 @@
 import Realm from 'realm';
 import uuid from 'uuid4';
 
-import EthereumService from '../ethereum';
+import { EthereumService } from '../ethereum';
 import type { NationType, EditingNationType, DBNationType, NationIdType } from './Nation-types';
 import { convertDraftToDatabase, convertNationToBlockchain } from './nations-utils';
 import { NationAlreadySubmitted, StateMutateNotPossible } from 'pangea-common/errors/nations';
 import { DatabaseWriteFailed } from 'pangea-common/errors/common';
 import { jobFactory } from './txProcessor-service';
+import { PangeaService } from 'pangea-common/service-container';
 import {
   NATIONS_DEV_ENDPOINT,
   NATIONS_PROD_ENDPOINT,
@@ -16,8 +17,9 @@ import {
   TX_JOB_TYPE,
 } from 'pangea-common/Constants';
 
-export default class NationsService {
+export class NationsService extends PangeaService {
   constructor(ethereumService: EthereumService, dbPromise: Promise<Realm>, accountId: string) {
+    super("nations");
     this.ethereumService = ethereumService;
     this.dbPromise = dbPromise;
     this.currentAccountId = accountId;

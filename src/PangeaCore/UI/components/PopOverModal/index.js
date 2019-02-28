@@ -18,7 +18,7 @@ import AssetsImages from 'pangea-common-reactnative/assets/AssetsImages';
 import Colors from 'pangea-common-reactnative/styles/colors';
 import GlobalStyles from 'pangea-common-reactnative/styles';
 
-import { getTabBarHeight } from 'pangea-common/utils/normalizer';
+import { getTabBarHeight } from 'pangea-common-reactnative/utils/normalizer';
 
 const { height } = Dimensions.get('window');
 const modalWrapContentHeight = height - (GlobalStyles.statusBar.height + 18 + getTabBarHeight() + 80);

@@ -7,7 +7,7 @@ import _ from 'lodash';
 
 import { currentAccountBasedUpdate } from '@pangea/accounts/accounts-sagas';
 import type { TransactionJobType } from '@pangea/database/schemata';
-import ServiceContainer from 'pangea-common/service-container';
+import { ServiceContainer } from 'pangea-common/service-container';
 import { SERVICES_CREATED } from 'pangea-common/serviceContainer-actions';
 import { TX_JOB_STATUS, TX_JOB_TYPE } from 'pangea-common/Constants';
 import defaultDB from '@pangea/database';
@@ -133,8 +133,8 @@ export function* processTransaction(tx: TransactionJobType): Generator<*, *, *> 
     throw new Error(`Couldn't find a processor for type: ${tx.type}`);
   }
 
-  yield call([ServiceContainer.instance.ethereumService, 'trackTransaction'], tx.txHash);
-  const receipt = yield call([ServiceContainer.instance.ethereumService, 'getTransactionReceipt'], tx.txHash);
+  yield call([ServiceContainer.instance.getService("ethereum"), 'trackTransaction'], tx.txHash);
+  const receipt = yield call([ServiceContainer.instance.getService("ethereum"), 'getTransactionReceipt'], tx.txHash);
 
   const messageAction = yield call(processor, receipt.status === 1, tx);
 
@@ -153,7 +153,7 @@ export function* onCurrentAccountChange(
   collection: Realm.Collection<TransactionJobType>,
   changes: Realm.CollectionChangeSet<TransactionJobType>,
 ): Generator<*, *, *> {
-  const { ethereumService } = ServiceContainer.instance;
+  const ethereumService = ServiceContainer.instance.getService("ethereum");
   if (ethereumService == null) {
     // Wait until services are ready to use.
     yield take(SERVICES_CREATED);

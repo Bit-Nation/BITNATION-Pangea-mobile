@@ -8,10 +8,12 @@ import {
   PAT_DEV_ADDRESS,
   PAT_PROD_ADDRESS,
 } from 'pangea-common/Constants';
-import EthereumService from '../ethereum';
+import { EthereumService } from '../ethereum';
+import { PangeaService } from 'pangea-common/service-container';
 
-export default class WalletService {
+export class WalletService extends PangeaService {
   constructor(ethereumService: EthereumService) {
+    super("wallet");
     this.ethereumService = ethereumService;
   }
 

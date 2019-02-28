@@ -16,7 +16,7 @@ export class ModuleHost {
                 this.Modules.delete(name);
             }
             catch (err) {
-                log(err);
+            //    log(err);
             }
         });
     }
@@ -53,11 +53,6 @@ class ModuleReducers {
 }
 
 class ModuleActions {
-}
-
-
-
-export class ModuleActions {
     ActionType: any
 }
 

@@ -8,7 +8,7 @@ import { nationsUpdated, doneFetchNations, fetchNationsStarted, cancelLoading } 
 import { openedNation } from '../nations-reducers';
 import { convertFromDatabase } from '../nations-utils';
 import { errorAlert } from 'pangea-common/alerts';
-import ServiceContainer from 'pangea-common/service-container';
+import { ServiceContainer } from 'pangea-common/service-container';
 import { NoNationsServiceError } from 'pangea-common/errors/services';
 import { currentAccountBasedUpdate } from '@pangea/accounts/accounts-sagas';
 import type { NationType as DBNationType } from '@pangea/database/schemata';
@@ -64,7 +64,7 @@ export function* startDatabaseListening(): Generator<*, *, *> {
  */
 export function* startNationIndexingWorker(): Generator<*, *, *> {
   try {
-    const { nationsService } = ServiceContainer.instance;
+    const nationsService = ServiceContainer.instance.getService("nations");
     if (nationsService == null) {
       throw new NoNationsServiceError();
     }
@@ -86,7 +86,7 @@ export function* startNationIndexingWorker(): Generator<*, *, *> {
  */
 export function* joinNation(): Generator<*, *, *> {
   try {
-    const { nationsService } = ServiceContainer.instance;
+    const nationsService = ServiceContainer.instance.getService("nations");
     if (nationsService == null) {
       throw new NoNationsServiceError();
     }
@@ -109,7 +109,7 @@ export function* joinNation(): Generator<*, *, *> {
  */
 export function* leaveNation(): Generator<*, *, *> {
   try {
-    const { nationsService } = ServiceContainer.instance;
+    const nationsService = ServiceContainer.instance.getService("nations");
     if (nationsService == null) {
       throw new NoNationsServiceError();
     }

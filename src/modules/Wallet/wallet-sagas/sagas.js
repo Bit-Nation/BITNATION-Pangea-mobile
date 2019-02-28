@@ -15,7 +15,7 @@ import {
 import { getAccount, getCurrentAccountId } from '@pangea/accounts/accounts-sagas';
 import type { SendMoneyAction } from '../wallet-actions';
 import type { WalletType } from 'pangea-common/types/Wallet-types';
-import ServiceContainer from 'pangea-common/service-container';
+import { ServiceContainer } from 'pangea-common/service-container';
 import { NoWalletServiceError } from 'pangea-common/errors/services';
 import defaultDB from '@pangea/database';
 import type { WalletType as DBWallet } from '@pangea/database/schemata';
@@ -57,7 +57,7 @@ export function* sendMoneySaga(action: SendMoneyAction): Generator<*, *, *> {
   const amountToSend = action.amount;
   const currentAccountId: string = yield call(getCurrentAccountId);
   const account = yield getAccount(currentAccountId);
-  const { walletService } = ServiceContainer.instance;
+  const walletService = ServiceContainer.instance.getService("wallet");
   if (walletService === null) {
     yield put(sendMoneyFailed(new NoWalletServiceError()));
     return;
@@ -139,7 +139,7 @@ export function* updateWalletsToDb(walletsArray: WalletType[]): Generator<*, *, 
 export function* updateWalletList(): Generator<*, *, *> {
   const currentAccountId: string = yield call(getCurrentAccountId);
   const account = yield getAccount(currentAccountId);
-  const { walletService } = ServiceContainer.instance;
+  const walletService = ServiceContainer.instance.getService("wallet");
   if (walletService === null) {
     yield put(walletsListUpdated([], true));
     return;
@@ -172,7 +172,7 @@ export function* updateWalletList(): Generator<*, *, *> {
  * @returns {void}
  */
 export function* updateWalletBalance(wallet: WalletType): Generator<*, *, *> {
-  const { walletService } = ServiceContainer.instance;
+  const walletService = ServiceContainer.instance.getService("wallet");
   if (walletService === null) {
     yield put(walletSyncFailed(wallet.ethAddress, wallet.currency, new NoWalletServiceError()));
     return;

@@ -1,7 +1,7 @@
 // @flow
 
 import { put, call, select } from 'redux-saga/effects';
-import ServiceContainer from 'pangea-common/service-container';
+import { ServiceContainer } from 'pangea-common/service-container';
 import { getCurrentAccount } from '@pangea/accounts/accounts-reducers';
 import AccountsService from '@pangea/accounts/accounts-services';
 import { servicesCreated, servicesDestroyed } from 'pangea-common/serviceContainer-actions';

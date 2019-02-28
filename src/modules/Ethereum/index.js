@@ -6,13 +6,15 @@ import { NativeModules } from 'react-native';
 import ERC20ABI from './ERC20ABI.json';
 import NationsABI from './NationABI.json';
 import type { NetworkType } from 'pangea-common/types/accounts-types';
+import { PangeaService } from 'pangea-common/service-container';
 
-export default class EthereumService {
+export class EthereumService extends PangeaService {
   wallet: Object;
   nations: Object;
   network: NetworkType;
 
   constructor(wallet: Object, network: NetworkType) {
+    super("ethereum");
     this.wallet = wallet;
     this.network = network;
     const abi = NationsABI;

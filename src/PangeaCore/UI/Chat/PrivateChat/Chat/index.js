@@ -22,7 +22,7 @@ import type { DAppChatContext } from '@pangea/dapps/dapp-types';
 import type { State as DAppsState } from '@pangea/dapps/dapps-reducers';
 import { getDApp } from '@pangea/dapps/dapps-reducers';
 import { openDApp, setDAppContext } from '@pangea/dapps/dapps-actions';
-import DAppMessage from '../../../../components/DAppMessage';
+import DAppMessage from '../../../dapps/DAppMessage';
 import type { Account } from 'pangea-common/types/accounts-types';
 import Colors from 'pangea-common-reactnative/styles/colors';
 import AssetsImages from 'pangea-common-reactnative/assets/AssetsImages';

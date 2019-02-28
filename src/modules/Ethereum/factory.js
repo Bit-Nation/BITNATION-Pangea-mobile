@@ -1,6 +1,6 @@
 // @flow
 
-import EthereumService from './index';
+import { EthereumService } from './index';
 import CustomSigner from './CustomSigner';
 import type { NetworkType } from 'pangea-common/types/Accounts-types';
 

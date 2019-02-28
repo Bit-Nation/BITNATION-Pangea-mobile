@@ -5,7 +5,7 @@ import { call, put, select } from 'redux-saga/effects';
 import { nationDraftSaveResult, nationDraftDeleteResult, startNationEditing, nationSubmitResult } from '../modifyNation-actions';
 import type { SaveNationDraftAction, DeleteNationDraftAction, SubmitNationAction } from '../modifyNation-actions';
 import { nationIsModified } from '../modifyNation-reducers';
-import ServiceContainer from 'pangea-common/service-container'
+import { ServiceContainer } from 'pangea-common/service-container'
 import { NoNationsServiceError } from 'pangea-common/errors/services';
 import { convertFromDatabase } from '../nations-utils';
 
@@ -16,7 +16,7 @@ import { convertFromDatabase } from '../nations-utils';
  */
 export function* saveDraftSaga(action: SaveNationDraftAction): Generator<*, *, *> {
   const nationData = action.nation;
-  const { nationsService } = ServiceContainer.instance;
+  const nationsService = ServiceContainer.instance.getService("nations");
   try {
     if (nationsService == null) {
       throw new NoNationsServiceError();
@@ -45,7 +45,7 @@ export function* saveDraftSaga(action: SaveNationDraftAction): Generator<*, *, *
  */
 export function* deleteDraftSaga(action: DeleteNationDraftAction): Generator<*, *, *> {
   const { nationId } = action;
-  const { nationsService } = ServiceContainer.instance;
+  const nationsService = ServiceContainer.instance.getService("nations");
   try {
     if (nationsService == null) {
       throw new NoNationsServiceError();
@@ -68,7 +68,7 @@ export function* deleteDraftSaga(action: DeleteNationDraftAction): Generator<*, 
  */
 export function* submitNationSaga(action: SubmitNationAction): Generator<*, *, *> {
   const nationData = action.nation;
-  const { nationsService } = ServiceContainer.instance;
+  const nationsService = ServiceContainer.instance.getService("nations");
   try {
     if (nationsService == null) {
       throw new NoNationsServiceError();

@@ -4,8 +4,8 @@ import { eventChannel, type Channel } from 'redux-saga';
 import { call, fork, take, select, put } from 'redux-saga/effects';
 import { Navigation } from 'react-native-navigation';
 
-import ServiceContainer from 'pangea-common/service-container';
-import UpstreamService from '../upstream-services/upstream';
+import { ServiceContainer } from 'pangea-common/service-container';
+import { UpstreamService } from '../upstream-services/upstream';
 import type { DAppModalInfo } from '../DApp-types';
 import { storeDAppModal } from '../dApps-actions';
 import { screen } from 'pangea-common-reactnative/Screens';
@@ -51,7 +51,7 @@ export function createModalRenderChannel(service: UpstreamService): Channel<DApp
  * @return {void}
  */
 export function* subscribeToModalRender(): Generator<*, *, *> {
-  const { upstreamService } = ServiceContainer.instance;
+  const upstreamService = ServiceContainer.instance.getService('upstream')
   if (upstreamService == null) {
     return;
   }

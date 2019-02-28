@@ -13,8 +13,8 @@ import {
 } from 'react-native-gifted-chat';
 import AssetsImages from 'pangea-common-reactnative/assets/AssetsImages';
 
-import BitnationMessage from '../UI/PrivateChat/Chat/BitnationMessage';
-import BitnationInputToolbar from '../UI/PrivateChat/Chat/BitnationInputToolbar';
+import BitnationMessage from './PrivateChat/Chat/BitnationMessage';
+import BitnationInputToolbar from './PrivateChat/Chat/BitnationInputToolbar';
 import styles from './styles';
 
 import { showSpinner, hideSpinner } from '@pangea/chat/chat-actions';
