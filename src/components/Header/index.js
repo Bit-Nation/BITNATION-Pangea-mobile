@@ -1,6 +1,6 @@
-import * as React from "react";
-import { View, TouchableOpacity, Image, Text } from "react-native";
-import styles from "./styles";
+import * as React from 'react';
+import { View, TouchableOpacity, Image, Text } from 'react-native';
+import styles from './styles';
 
 type Props = {
   leftIcon?: React.ReactNode,
@@ -9,20 +9,16 @@ type Props = {
   onRightFunc?: () => void
 };
 
-const leftIconDefault = () => {
-  return (
-    <Text style={{ color: "white", fontWeight: "bold", fontSize: 18 }}>JB</Text>
-  );
-};
+const leftIconDefault = () => (
+  <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 18 }}>JB</Text>
+);
 
-const rightIconDefault = () => {
-  return <Image source={images.GROUP_ICON} />;
-};
+const rightIconDefault = () => <Image source={images.GROUP_ICON} />;
 
 class Header extends React.Component<Props, {}> {
   static defaultProps = {
     leftIcon: null,
-    rightIcon: null
+    rightIcon: null,
   };
 
   _renderLeftIcon() {
@@ -49,11 +45,11 @@ class Header extends React.Component<Props, {}> {
     return (
       <View
         style={{
-          backgroundColor: "transparent",
+          backgroundColor: 'transparent',
           width: 50,
           height: 50,
-          alignItems: "center",
-          justifyContent: "center"
+          alignItems: 'center',
+          justifyContent: 'center',
         }}
       />
     );
@@ -64,7 +60,7 @@ class Header extends React.Component<Props, {}> {
     if (!props.title) {
       return <View style={styles.logoWrapper} />;
     }
-    if (typeof props.title === "string") {
+    if (typeof props.title === 'string') {
       return <Text style={styles.titleText}>{props.title}</Text>;
     }
     return <View>{props.title}</View>;

@@ -78,9 +78,6 @@ ShallowWrapper {
             }
           }
         >
-          <ScreenTitle
-            title="Profile"
-          />
           <View
             style={
               Object {
@@ -200,9 +197,6 @@ ShallowWrapper {
         "nodeType": "class",
         "props": Object {
           "children": Array [
-            <ScreenTitle
-              title="Profile"
-            />,
             <View
               style={
                 Object {
@@ -294,17 +288,6 @@ ShallowWrapper {
         },
         "ref": null,
         "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "title": "Profile",
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
           Object {
             "instance": null,
             "key": undefined,
@@ -528,9 +511,6 @@ ShallowWrapper {
               }
             }
           >
-            <ScreenTitle
-              title="Profile"
-            />
             <View
               style={
                 Object {
@@ -650,9 +630,6 @@ ShallowWrapper {
           "nodeType": "class",
           "props": Object {
             "children": Array [
-              <ScreenTitle
-                title="Profile"
-              />,
               <View
                 style={
                   Object {
@@ -744,17 +721,6 @@ ShallowWrapper {
           },
           "ref": null,
           "rendered": Array [
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "title": "Profile",
-              },
-              "ref": null,
-              "rendered": null,
-              "type": [Function],
-            },
             Object {
               "instance": null,
               "key": undefined,
