@@ -28,7 +28,8 @@ export type State = {
   +selectedTab: NationTab,
   +openedNationId: NationIdType | null,
   +creatingNation: EditingNationType | null,
-  +inProgress: boolean
+  +inProgress: boolean,
+  +groupNationId: string | null,
 };
 
 export const initialState: State = {
@@ -72,7 +73,7 @@ export default (state: State = initialState, action: Action): State => {
         .filter(nation => nation.joined)
         .map(nation => nation.id)
         .value();
-      const groupNationId = null;
+      let groupNationId = null;
       _.forEach(action.nations, (nation) => {
         if (nation.nationName === "BITNATION") {
           groupNationId = nation.id;

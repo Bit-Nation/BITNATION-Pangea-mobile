@@ -50,7 +50,7 @@ const ServicesScreen = ({
           title={i18n.t('screens.services.tabTitle').toUpperCase()}
           leftIcon={<Image source={AssetsImages.menuIcon} />}
           onLeftFunc={() =>
-            this.props.navigator.toggleDrawer({
+            navigator.toggleDrawer({
               side: "left",
               animated: true
             })

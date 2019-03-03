@@ -33,7 +33,11 @@ type Props = {
   /**
    * @desc React Native Navigation navigator object.
    */
-  navigator: Navigator
+  navigator: Navigator,
+  /**
+   * @desc Flag that croping image picker
+   */
+  circleCropping: boolean
 };
 
 type Actions = {
