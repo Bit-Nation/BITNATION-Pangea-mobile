@@ -1,35 +1,35 @@
 // @flow
 
-import React from "react";
-import { Alert, View, TextInput, Image, Platform } from "react-native";
-import { connect } from "react-redux";
-import _ from "lodash";
+import React from 'react';
+import { Alert, View, TextInput, Image, Platform } from 'react-native';
+import { connect } from 'react-redux';
+import _ from 'lodash';
 
-import NationsListScreen from "./NationsListScreen";
-import { switchNationTab, openNation } from "../../actions/nations";
-import FakeNavigationBar from "../../components/common/FakeNavigationBar";
-import BackgroundImage from "../../components/common/BackgroundImage";
-import { screen } from "../../global/Screens";
-import { resolveNation } from "../../utils/nations";
-import Colors from "../../global/colors";
-import AssetsImages from "../../global/AssetsImages";
-import styles from "./styles";
-import NavigatorComponent from "../../components/common/NavigatorComponent";
-import ScrollTabView, { DefaultTabBar } from "../../components/ScrollTabView";
-import i18n from "../../global/i18n";
-import { startNationCreation } from "../../actions/modifyNation";
-import type { Navigator } from "../../types/ReactNativeNavigation";
-import { type State as NationState } from "../../reducers/nations";
-import { type State as WalletState } from "../../reducers/wallet";
-import type { NationIdType } from "../../types/Nation";
-import type { NationTab } from "../../actions/nations";
-import LucyButton from "../../components/common/LucyButton";
-import PopOverModal from "../../components/PopOverModal";
-import Header from "../../components/Header";
+import NationsListScreen from './NationsListScreen';
+import { switchNationTab, openNation } from '../../actions/nations';
+import FakeNavigationBar from '../../components/common/FakeNavigationBar';
+import BackgroundImage from '../../components/common/BackgroundImage';
+import { screen } from '../../global/Screens';
+import { resolveNation } from '../../utils/nations';
+import Colors from '../../global/colors';
+import AssetsImages from '../../global/AssetsImages';
+import styles from './styles';
+import NavigatorComponent from '../../components/common/NavigatorComponent';
+import ScrollTabView, { DefaultTabBar } from '../../components/ScrollTabView';
+import i18n from '../../global/i18n';
+import { startNationCreation } from '../../actions/modifyNation';
+import type { Navigator } from '../../types/ReactNativeNavigation';
+import { type State as NationState } from '../../reducers/nations';
+import { type State as WalletState } from '../../reducers/wallet';
+import type { NationIdType } from '../../types/Nation';
+import type { NationTab } from '../../actions/nations';
+import LucyButton from '../../components/common/LucyButton';
+import PopOverModal from '../../components/PopOverModal';
+import Header from '../../components/Header';
 
-const MENU_BUTTON = "MENU_BUTTON";
-const NEW_BUTTON = "NEW_BUTTON";
-const LUCY_MODAL_KEY = "lucyModal";
+const MENU_BUTTON = 'MENU_BUTTON';
+const NEW_BUTTON = 'NEW_BUTTON';
+const LUCY_MODAL_KEY = 'lucyModal';
 
 type Props = {
   /**
@@ -74,7 +74,7 @@ class NationsScreen extends NavigatorComponent<
 
     this.state = {
       isAppear: false,
-      showModal: ""
+      showModal: '',
     };
 
     this.props.navigator.setButtons({
@@ -82,10 +82,10 @@ class NationsScreen extends NavigatorComponent<
         {
           id: MENU_BUTTON,
           icon: AssetsImages.menuIcon,
-          buttonColor: "black"
-        }
+          buttonColor: 'black',
+        },
       ],
-      rightButtons: []
+      rightButtons: [],
     });
   }
 
@@ -99,8 +99,8 @@ class NationsScreen extends NavigatorComponent<
 
   onHandleDeepLink(event) {
     if (this.state.isAppear) {
-      const parts = event.link.split("/");
-      if (parts[0] === "push") {
+      const parts = event.link.split('/');
+      if (parts[0] === 'push') {
         this.props.navigator.push(screen(parts[1]));
       }
     }
@@ -112,34 +112,34 @@ class NationsScreen extends NavigatorComponent<
         this.showCreatePrivateKeyAlert();
       } else {
         this.props.startNationCreation();
-        this.props.navigator.showModal(screen("NATION_CREATE_SCREEN"));
+        this.props.navigator.showModal(screen('NATION_CREATE_SCREEN'));
       }
     } else if (id === MENU_BUTTON) {
       this.props.navigator.toggleDrawer({
-        side: "left",
-        animated: true
+        side: 'left',
+        animated: true,
       });
     }
   }
 
   showCreatePrivateKeyAlert() {
     Alert.alert(
-      i18n.t("alerts.walletRequired.title"),
-      i18n.t("alerts.walletRequired.subtitle"),
+      i18n.t('alerts.walletRequired.title'),
+      i18n.t('alerts.walletRequired.subtitle'),
       [
-        { text: i18n.t("alerts.walletRequired.cancel"), style: "cancel" },
+        { text: i18n.t('alerts.walletRequired.cancel'), style: 'cancel' },
         {
-          text: i18n.t("alerts.walletRequired.confirm"),
-          onPress: () => this.props.navigator.switchToTab({ tabIndex: 3 })
-        }
+          text: i18n.t('alerts.walletRequired.confirm'),
+          onPress: () => this.props.navigator.switchToTab({ tabIndex: 3 }),
+        },
       ],
-      { cancelable: false }
+      { cancelable: false },
     );
   }
 
   dismissModal = () => {
     this.setState({
-      showModal: ""
+      showModal: '',
     });
   };
   scrollTabView: any;
@@ -152,12 +152,12 @@ class NationsScreen extends NavigatorComponent<
           leftIcon={<Image source={AssetsImages.menuIcon} />}
           onLeftFunc={() =>
             this.props.navigator.toggleDrawer({
-              side: "left",
-              animated: true
+              side: 'left',
+              animated: true,
             })
           }
         />
-        <View style={styles.searchBarContainer}>
+        {/* <View style={styles.searchBarContainer}>
           <View style={styles.inputViewContainer}>
             <TextInput
               style={styles.textInputStyle}
@@ -171,7 +171,7 @@ class NationsScreen extends NavigatorComponent<
               style={styles.searchIconStyle}
             />
           </View>
-        </View>
+        </View>*/}
         <ScrollTabView
           initialPage={0}
           tabBarBackgroundColor={Colors.BitnationBlackAlphaColor}
@@ -180,25 +180,25 @@ class NationsScreen extends NavigatorComponent<
           tabBarUnderlineStyle={styles.tabBarUnderlineStyle}
           tabBarTextStyle={styles.tabBarTextStyle}
           renderTabBar={() => <DefaultTabBar />}
-          ref={c => {
+          ref={(c) => {
             this.scrollTabView = c;
           }}
         >
-          <View tabLabel="ALL" style={styles.bodyContainer}>
+          <View tabLabel='ALL' style={styles.bodyContainer}>
             <NationsListScreen
               onSelectItem={this.onSelectItem}
               nationType={1}
               {...this.props}
             />
           </View>
-          <View tabLabel="FEATURED" style={styles.bodyContainer}>
+          <View tabLabel='FEATURED' style={styles.bodyContainer}>
             <NationsListScreen
               onSelectItem={this.onSelectItem}
               nationType={2}
               {...this.props}
             />
           </View>
-          <View tabLabel="POPULAR" style={styles.bodyContainer}>
+          <View tabLabel='POPULAR' style={styles.bodyContainer}>
             <NationsListScreen
               onSelectItem={this.onSelectItem}
               nationType={3}
@@ -212,44 +212,42 @@ class NationsScreen extends NavigatorComponent<
         <PopOverModal
           visible={this.state.showModal === LUCY_MODAL_KEY}
           onCancel={this.dismissModal}
-          desText="You’re in the post-Westphalian future of Nations! Here’s what you can do here!"
+          desText='You’re in the post-Westphalian future of Nations! Here’s what you can do here!'
           options={[
             {
-              text: "Start a new Nation",
+              text: 'Start a new Nation',
               onPress: () => {
                 if (_.isEmpty(this.props.wallets)) {
                   this.showCreatePrivateKeyAlert();
                 } else {
                   this.props.startNationCreation();
-                  this.props.navigator.showModal(
-                    screen("NATION_CREATE_SCREEN")
-                  );
+                  this.props.navigator.showModal(screen('NATION_CREATE_SCREEN'),);
                 }
-              }
+              },
             },
             {
-              text: "Join a Nation",
+              text: 'Join a Nation',
               onPress: () => {
                 this.scrollTabView.goToPage(0);
                 this.dismissModal();
-              }
+              },
             },
             {
-              text: "Report a Nation",
+              text: 'Report a Nation',
               onPress: () => {
                 this.dismissModal();
                 this.props.navigator.handleDeepLink({
-                  link: "push/INFO_SCREEN"
+                  link: 'push/INFO_SCREEN',
                 });
-              }
-            }
+              },
+            },
           ]}
         />
       </View>
     );
   }
 
-  onSelectItem = id => {
+  onSelectItem = (id) => {
     const nation = resolveNation(this.props.nations, id);
 
     if (!nation) {
@@ -257,32 +255,32 @@ class NationsScreen extends NavigatorComponent<
     }
 
     this.props.openNation(id);
-    if (Platform.OS === "android") {
-      this.props.navigator.showModal(screen("NATION_DETAILS_SCREEN"));
+    if (Platform.OS === 'android') {
+      this.props.navigator.showModal(screen('NATION_DETAILS_SCREEN'));
     } else {
-      this.props.navigator.push(screen("NATION_DETAILS_SCREEN"));
+      this.props.navigator.push(screen('NATION_DETAILS_SCREEN'));
     }
   };
 }
 
 const mapStateToProps = state => ({
   ...state.nations,
-  ...state.wallet
+  ...state.wallet,
 });
 
 const mapDispatchToProps = dispatch => ({
   onSelectTab(index) {
-    dispatch(switchNationTab(index === 0 ? "ALL_NATIONS" : "MY_NATIONS"));
+    dispatch(switchNationTab(index === 0 ? 'ALL_NATIONS' : 'MY_NATIONS'));
   },
   openNation(id) {
     dispatch(openNation(id));
   },
   startNationCreation() {
     dispatch(startNationCreation());
-  }
+  },
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(NationsScreen);

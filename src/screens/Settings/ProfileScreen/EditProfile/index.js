@@ -113,10 +113,6 @@ class EditProfile extends NavigatorComponent<Props> {
       <View style={styles.bodyContainer}>
         {/* SCROLLING PANELS FOR DATA ENTRY */}
         <KeyboardAwareScrollView style={styles.scrollView}>
-          <ScreenTitle title={this.props.isCreating
-            ? i18n.t('screens.accounts.create.identityTitle')
-            : i18n.t('screens.profile.edit.editPhoto')}
-          />
           {this._buildPicturePanel()}
           {this._buildProfileForm()}
         </KeyboardAwareScrollView>
