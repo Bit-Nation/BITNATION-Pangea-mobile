@@ -1,9 +1,9 @@
 // @flow
 
-import React from "react";
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import React from 'react';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 
-import styles from "./styles";
+import styles from './styles';
 
 export type GovMarketItemProps = {
   /**
@@ -27,7 +27,9 @@ export type GovMarketItemProps = {
    */
   imageUri: string,
 
-  onPress: Function
+  onPress: Function,
+
+  bannerImage: string,
 };
 
 /**
@@ -36,12 +38,11 @@ export type GovMarketItemProps = {
  */
 
 const GovMarketItem = ({
-  uri,
   imageUri,
   description,
   title,
   subTitle,
-  onPress
+  onPress,
 }: GovMarketItemProps) => (
   <TouchableOpacity onPress={onPress}>
     <View style={styles.container}>
@@ -58,8 +59,8 @@ const GovMarketItem = ({
 export default GovMarketItem;
 
 GovMarketItem.defaultProps = {
-  uri: "",
-  description: "",
-  title: "",
-  subTitle: ""
+  uri: '',
+  description: '',
+  title: '',
+  subTitle: '',
 };

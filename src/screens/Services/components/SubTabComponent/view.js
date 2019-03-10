@@ -1,18 +1,18 @@
 // @flow
 
-import React from "react";
+import React from 'react';
 import {
   View,
   ScrollView,
   Text,
   FlatList,
-  TouchableOpacity
-} from "react-native";
-import ProgressiveImage from "../../../../components/ProgressiveImage";
-import ViewMoreText from "../../../../components/ViewMoreText";
-import GovMarketItem, { type GovMarketItemProps } from "../GovMarketItem";
+  TouchableOpacity,
+} from 'react-native';
+import ProgressiveImage from '../../../../components/ProgressiveImage';
+import ViewMoreText from '../../../../components/ViewMoreText';
+import GovMarketItem, { type GovMarketItemProps } from '../GovMarketItem';
 
-import styles from "./styles";
+import styles from './styles';
 
 type Props = {
   /**
@@ -32,10 +32,6 @@ type Props = {
    */
   subTitleTable: string,
   /**
-   * @desc image source of tab
-   */
-  imageProfile: string,
-  /**
    * @desc list similar
    */
   list: Array<any>,
@@ -52,7 +48,9 @@ type Props = {
  */
 
 const SubTabComponent = ({
-  selectedItem: { uri, description, subTitle, title },
+  selectedItem: {
+    uri, description, subTitle, title, bannerImage, readmore,
+  },
   buttonTitle,
   subTitleTable,
   list,
@@ -60,29 +58,18 @@ const SubTabComponent = ({
   onRef,
   onPressMainButton,
   children,
-  imageProfile
 }: Props) => (
   <ScrollView style={styles.container} ref={onRef}>
     {children}
     <View style={styles.card}>
-      <ProgressiveImage style={styles.headerBackground} source={imageProfile} />
+      <ProgressiveImage style={styles.headerBackground} source={bannerImage} />
     </View>
     <View style={styles.infoView}>
       <Text style={styles.descriptionStyle}>{description}</Text>
       <ScrollView>
         <ViewMoreText numberOfLines={6}>
           <Text style={styles.readMoreText}>
-            With the BITNATION Public Notary DApp you can notarize important
-            contracts, documents, certificates and more in a few seconds. Simply
-            upload a photo of the document, or take a photo with your cell phone
-            camera of the document you wish to notarize, and click “submit”. The
-            hash of the document will be stored on the Ethereum chain forever.
-            The first version of our Public Notary was created in 2015 in
-            partnership with the Estonia e-Residency program, on the Horizon
-            chain. This is a simplified version, migrated onto the Ethereum
-            chain. Planned DApp functionalities to be added in future releases
-            includes document signing and storage. Producer: BITNATION Americas
-            LTD | Year 2018 | Audited: No | Cost: Standard Ethereum tx fees
+            {readmore}
           </Text>
         </ViewMoreText>
       </ScrollView>
@@ -94,7 +81,7 @@ const SubTabComponent = ({
           uri,
           description,
           subTitle,
-          title
+          title,
         })
       }
     >
@@ -123,9 +110,9 @@ const SubTabComponent = ({
 export default SubTabComponent;
 
 SubTabComponent.defaultProps = {
-  uri: "",
-  description: "",
-  title: "",
-  subTitle: "",
-  list: []
+  uri: '',
+  description: '',
+  title: '',
+  subTitle: '',
+  list: [],
 };
