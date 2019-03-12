@@ -49,7 +49,12 @@ const signalIcon5 = require('../assets/images/signal_icon_5.png');
 const botIconLucy = require('../assets/images/icon_chatbot.png');
 
 const imgDappNotary = require('../assets/images/imgDappNotary.png');
+const imgDappNotaryIcon = require('../assets/images/imgDappNotaryIcon.png');
+const imgPassportIcon = require('../assets/images/imgPassportIcon.png');
+const imgBITBARCELONAIcon = require('../assets/images/imgBITBARCELONAIcon.png');
 const imgContract = require('../assets/images/imgContract.png');
+const imgERCIcon = require('../assets/images/imgERCIcon.png');
+const imgERC = require('../assets/images/erc20Image.png');
 const imgProduct = require('../assets/images/imgProduct.png');
 const imgService = require('../assets/images/imgService.png');
 const govMarketItem1 = require('../assets/images/govMarketItem1.png');
@@ -89,8 +94,13 @@ const Images = {
   lucyIcon,
   searchIcon,
   imgDappNotary,
+  imgDappNotaryIcon,
   imgContract,
+  imgPassportIcon,
+  imgBITBARCELONAIcon,
   imgProduct,
+  imgERCIcon,
+  imgERC,
   imgService,
   govMarketItem1,
   govMarketItem2,
