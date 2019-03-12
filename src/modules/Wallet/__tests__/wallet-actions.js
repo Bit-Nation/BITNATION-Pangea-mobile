@@ -16,7 +16,7 @@ import {
   updateWalletBalance,
   updateWalletList,
   walletsListUpdated, walletSyncFailed,
-} from '../../../src/actions/wallet';
+} from '../wallet-actions';
 
 describe('wallet action creators', () => {
   const mockAddress = '0xtestaddress';

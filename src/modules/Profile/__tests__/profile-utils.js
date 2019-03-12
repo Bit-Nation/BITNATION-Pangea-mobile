@@ -1,4 +1,4 @@
-import { saveShouldBeEnabled } from '../../../src/utils/profile';
+import { saveShouldBeEnabled } from '../profile-utils';
 
 describe('saveShouldBeEnabled', () => {
   const initialProps = {

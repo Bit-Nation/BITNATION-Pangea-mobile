@@ -1,13 +1,13 @@
 // @flow
 
-import reducer, { initialState } from '../../../src/reducers/settings';
+import reducer, { initialState } from '../settings-reducers';
 import {
   changePasscodeLength,
   changeUseNumericPasscode,
   resetSettings,
   settingsUpdated,
-} from '../../../src/actions/settings';
-import { servicesDestroyed } from '../../../src/actions/serviceContainer';
+} from '../settings-actions';
+import { servicesDestroyed } from 'pangea-common/serviceContainer-actions';
 
 test('initial setting state', () => {
   expect(initialState).toEqual({ passcodeType: { type: 'password' } });

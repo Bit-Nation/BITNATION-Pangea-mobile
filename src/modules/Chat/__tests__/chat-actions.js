@@ -3,7 +3,7 @@ import {
   SHOW_CHAT_SPINNER,
   hideSpinner,
   showSpinner,
-} from '../../../src/actions/chat';
+} from '../chat-actions';
 
 describe('chat action creators', () => {
   test('showSpinner', () => {

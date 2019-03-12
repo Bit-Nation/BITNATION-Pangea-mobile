@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ScreenTitle from '../../../../src/components/common/ScreenTitle';
+import ScreenTitle from '../../UI/ScreenTitle';
 
 describe('ScreenTitle tests', () => {
   describe('Rendering', () => {

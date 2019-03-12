@@ -15,7 +15,7 @@ import PanelView from 'pangea-common-reactnative/UI/PanelView';
 import SwitchLabeled from 'pangea-common-reactnative/UI/SwitchLabeled';
 import MultiSelect from '../../../components/MultiSelect';
 import Loading from 'pangea-common-reactnative/UI/Loading';
-import NationActionButton from 'pangea-common-reactnative/UI/NationActionButton';
+import NationActionButton from '../../NationActionButton';
 import Colors from 'pangea-common-reactnative/styles/colors';
 import styles from './styles';
 import i18n from 'pangea-common/i18n';

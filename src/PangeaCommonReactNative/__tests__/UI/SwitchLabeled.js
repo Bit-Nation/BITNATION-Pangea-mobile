@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme/build/index';
-import SwitchLabeled from '../../../../src/components/common/SwitchLabeled';
+import SwitchLabeled from '../../UI/SwitchLabeled';
 
 describe('SwitchLabeled component tests', () => {
   describe('SwitchLabeled rendering', () => {

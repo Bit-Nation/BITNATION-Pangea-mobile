@@ -4,7 +4,7 @@
 import { call, put, select } from 'redux-saga/effects';
 import type { Realm } from 'realm';
 import defaultDB from '@pangea/database';
-import { currentAccountBasedUpdate } from '@pangea/accounts/accounts-sagas';
+import { currentAccountBasedUpdate } from '@pangea/accounts/accounts-sagas/sagas';
 import type { AccountSettingsType as DBSettings } from '@pangea/database/schemata';
 import { settingsUpdated } from '@pangea/settings/settings-actions';
 import { convertFromDatabase, convertToDatabase } from '@pangea/settings/settings-utils';

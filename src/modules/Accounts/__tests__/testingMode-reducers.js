@@ -1,6 +1,6 @@
-import reducer, { initialState, stepsCountToToggle } from '../../../src/reducers/testingMode';
-import { makeStep, emptyWallet, resetSteps } from '../../../src/actions/testingMode';
-import { servicesDestroyed } from '../../../src/actions/serviceContainer';
+import reducer, { initialState, stepsCountToToggle } from '../testingMode-reducers';
+import { makeStep, emptyWallet, resetSteps } from '../testingMode-actions';
+import { servicesDestroyed } from 'pangea-common/serviceContainer-actions';
 
 test('testing mode initial state contains correct number of step left', () => {
   expect(initialState).toEqual(expect.objectContaining({ stepsLeftToToggle: stepsCountToToggle }));

@@ -5,7 +5,7 @@ import { call, put, take } from 'redux-saga/effects';
 import type { Realm } from 'realm';
 import _ from 'lodash';
 
-import { currentAccountBasedUpdate } from '@pangea/accounts/accounts-sagas';
+import { currentAccountBasedUpdate } from '@pangea/accounts/accounts-sagas/sagas';
 import type { TransactionJobType } from '@pangea/database/schemata';
 import { ServiceContainer } from 'pangea-common/service-container';
 import { SERVICES_CREATED } from 'pangea-common/serviceContainer-actions';

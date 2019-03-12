@@ -1,7 +1,7 @@
 import {
   resolveWallet,
   getWalletIndex,
-} from '../../../src/utils/wallet';
+} from '../wallet-utils';
 
 describe('Wallet services', () => {
   const wallets = [

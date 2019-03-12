@@ -3,7 +3,7 @@
  * Copyright(c) 2017 Mustapha Babatunde Oluwaleke
  * MIT Licensed
  */
-import Colors from '../../global/colors';
+import Colors from 'pangea-common-reactnative/styles/colors';
 
 export const colorPack = {
   primary: Colors.BitnationHighlightColor,

@@ -2,9 +2,9 @@
 
 import { all, call, takeEvery } from 'redux-saga/effects';
 
-import rootSaga from '../../../../src/sagas/settings';
-import { loadSettings, saveSettings, startDatabaseListening } from '../../../../src/sagas/settings/sagas';
-import { LOAD_SETTINGS, SAVE_SETTINGS } from '../../../../src/actions/settings';
+import rootSaga from '../../../sagas/settings-sagas';
+import { loadSettings, saveSettings, startDatabaseListening } from '../../../sagas/settings-sagas/sagas';
+import { LOAD_SETTINGS, SAVE_SETTINGS } from '@pangea/settings/settings-actions';
 
 test('rootSaga', () => {
   const iterator = rootSaga();

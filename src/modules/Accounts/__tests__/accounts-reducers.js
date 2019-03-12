@@ -5,7 +5,7 @@ import reducer, {
   getCurrentAccount,
   isCreatingAccount,
   buildEmptyAccount,
-} from '../../../src/reducers/accounts';
+} from '../accounts-reducers';
 import {
   accountListUpdated,
   changeCreatingAccountField,
@@ -14,13 +14,13 @@ import {
   saveCreatingAccount,
   startAccountCreation,
   startRestoreAccountUsingMnemonic,
-} from '../../../src/actions/accounts';
+} from '../accounts-actions';
 import {
   cancelAccountEditing,
   changeEditingAccount,
   doneAccountEditing,
   startAccountEditing,
-} from '../../../src/actions/profile';
+} from '@pangea/profile/profile-actions';
 
 const accountMock1 = {
   id: 'Account 1',

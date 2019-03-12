@@ -2,14 +2,14 @@
 
 import { call, put, select } from 'redux-saga/effects';
 
-import defaultDB, { buildRandomPathDatabase } from '../../../../src/services/database';
+import defaultDB, { buildRandomPathDatabase } from '@pangea/database';
 import {
   buildAccountSettingsResults, loadSettings, onCurrentAccountChange, saveSettings,
   startDatabaseListening,
-} from '../../../../src/sagas/settings/sagas';
-import { settingsUpdated } from '../../../../src/actions/settings';
-import { convertFromDatabase, convertToDatabase } from '../../../../src/utils/mapping/settings';
-import { currentAccountBasedUpdate } from '../../../../src/sagas/accounts/sagas';
+} from '../../../sagas/settings-sagas/sagas';
+import { settingsUpdated } from '@pangea/settings/settings-actions';
+import { convertFromDatabase, convertToDatabase } from '@pangea/settings/settings-utils';
+import { currentAccountBasedUpdate } from '@pangea/accounts/accounts-sagas/sagas';
 
 describe('onCurrentAccountChange', () => {
   test('empty results', () => {

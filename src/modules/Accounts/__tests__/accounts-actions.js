@@ -29,7 +29,7 @@ import {
   SAVE_PIN_CODE,
   START_ACCOUNT_CREATION,
   START_RESTORE_ACCOUNT_USING_MNEMONIC, mnemonicConfirmed, MNEMONIC_CONFIRMED,
-} from '../../../src/actions/accounts';
+} from '../accounts-actions';
 
 describe('accounts action creators', () => {
   test('accountListUpdated', () => {

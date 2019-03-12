@@ -1,6 +1,6 @@
 import Color from 'color';
 
-import Colors, { convertHex } from '../../../src/global/colors';
+import Colors, { convertHex } from '../styles/colors';
 
 const expectColorsEquality = (lhs, rhs) => {
   expect(Color(lhs).rgb()).toEqual(Color(rhs).rgb());

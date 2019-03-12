@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import { MediaQueryStyleSheet } from 'react-native-responsive';
 
-import GlobalStyles from '../../global/Styles';
+import GlobalStyles from 'pangea-common-reactnative/styles';
 
 type Props = {
   /**

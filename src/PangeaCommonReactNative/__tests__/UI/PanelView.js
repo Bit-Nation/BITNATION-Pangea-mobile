@@ -4,8 +4,8 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { Text } from 'react-native';
 
-import PanelView from '../../../../src/components/common/PanelView';
-import Button from '../../../../src/components/common/Button';
+import PanelView from '../../UI/PanelView';
+import Button from '../../UI/Button';
 
 describe('PanelView tests', () => {
   describe('Rendering', () => {

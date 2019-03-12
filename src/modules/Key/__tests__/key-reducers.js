@@ -1,11 +1,11 @@
-import reducer, { initialState } from '../../../src/reducers/key';
+import reducer, { initialState } from '../key-reducers';
 import {
   changeEnteredMnemonic,
   changeMnemonicValid,
   validateEnteredMnemonic,
-} from '../../../src/actions/key';
-import { KEY_LENGTH } from '../../../src/global/Constants';
-import { servicesDestroyed } from '../../../src/actions/serviceContainer';
+} from '../key-actions';
+import { KEY_LENGTH } from 'pangea-common/Constants';
+import { servicesDestroyed } from 'pangea-common/serviceContainer-actions';
 
 describe('key reducer action handling', () => {
   const mockMnemonic = new Array(KEY_LENGTH).fill('abc');

@@ -1,5 +1,3 @@
 {
-  "presets": ["@babel/preset-env", "@babel/preset-flow", "react-native"],
-  "sourceMaps": "inline",
-  "retainLines": true
+  "presets": ["react-native"]
 }

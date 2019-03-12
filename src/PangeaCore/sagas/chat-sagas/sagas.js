@@ -22,7 +22,7 @@ import {
 } from '@pangea/chat/chat-actions';
 import defaultDB from '@pangea/database';
 import ChatService from '@pangea/chat/chat-service';
-import { getCurrentAccount } from '@pangea/accounts/accounts-sagas';
+import { getCurrentAccount } from '@pangea/accounts/accounts-sagas/sagas';
 import { createGiftedChatMessageObject } from '@pangea/chat/chat-utils';
 import { panthalassaEthPubToAddress, panthalassaMarkMessagesAsRead } from '@pangea/panthalassa';
 import type { ChatType, ProfileType, PanthalassaChatType, GiftedChatMessageType } from '@pangea/chat/Chat-types';

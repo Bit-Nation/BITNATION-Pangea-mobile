@@ -1,7 +1,7 @@
 import { Buffer } from 'buffer';
 
-import UpstreamService from '../../../../src/services/upstream/upstream';
-import { api_proto as apiProto } from '../../../../src/services/upstream/compiled';
+import { UpstreamService } from '../../upstream-services/upstream';
+import { api_proto as apiProto } from '../../upstream-services/compiled';
 
 jest.mock('NativeModules', () => ({
   Panthalassa: {

@@ -1,4 +1,4 @@
-import { prettyWalletBalance, roundEth, shortEthAddress } from '@pangea/wallet/formatters';
+import { prettyWalletBalance, roundEth, shortEthAddress } from '../formatters';
 
 describe('roundEth', () => {
   test('random', () => {

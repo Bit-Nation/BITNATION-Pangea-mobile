@@ -8,7 +8,7 @@ import BackgroundImage from 'pangea-common-reactnative/UI/BackgroundImage';
 import LucyButton from 'pangea-common-reactnative/UI/LucyButton';
 import styles from './styles';
 import ProgressiveImage from '../../../components/ProgressiveImage';
-import NationListItem from 'pangea-common-reactnative/UI/NationListItem';
+import NationListItem from '../../NationListItem';
 import NationListHeader from 'pangea-common-reactnative/UI/ItemsListHeader';
 import FakeNavigationBar from 'pangea-common-reactnative/UI/FakeNavigationBar';
 import i18n from 'pangea-common/i18n';

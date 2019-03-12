@@ -1,6 +1,6 @@
-import reducer, { initialState } from '../../../src/reducers/chat';
-import { hideSpinner, showSpinner } from '../../../src/actions/chat';
-import { servicesDestroyed } from '../../../src/actions/serviceContainer';
+import reducer, { initialState } from '../chat-reducers';
+import { hideSpinner, showSpinner } from '../chat-actions';
+import { servicesDestroyed } from 'pangea-common/serviceContainer-actions';
 
 describe('chat reducer action handling', () => {
   test('default returns the same state', () => {

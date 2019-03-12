@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import BodyParagraphs from '../../../../src/components/common/BodyParagraphs';
+import BodyParagraphs from '../../UI/BodyParagraphs';
 
 describe('BodyParagraphs rendering', () => {
   test('Empty', () => {

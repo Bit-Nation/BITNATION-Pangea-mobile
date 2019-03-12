@@ -1,9 +1,9 @@
 import {
   switchNationTab, openNation, joinNation, leaveNation,
   nationsUpdated, doneFetchNations, fetchNationsStarted,
-} from '../../../src/actions/nations';
-import reducer, { initialState, openedNation } from '../../../src/reducers/nations';
-import { servicesDestroyed } from '../../../src/actions/serviceContainer';
+} from '../nations-actions';
+import reducer, { initialState, openedNation } from '../nations-reducers';
+import { servicesDestroyed } from 'pangea-common/serviceContainer-actions';
 
 const mockNations = [
   {

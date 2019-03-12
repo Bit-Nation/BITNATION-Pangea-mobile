@@ -2,8 +2,8 @@
 
 import { END } from 'redux-saga';
 
-import { buildRandomPathDatabase } from '../../../../src/services/database';
-import { createDatabaseUpdateChannel } from '../../../../src/sagas/database';
+import { buildRandomPathDatabase } from '@pangea/database';
+import { createDatabaseUpdateChannel } from '@pangea/database/database-sagas';
 
 test('createDatabaseUpdateChannel', async () => {
   expect.assertions(7);

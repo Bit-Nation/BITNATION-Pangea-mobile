@@ -1,4 +1,4 @@
-import { compressMnemonic, decompressMnemonic, normalizeHexValue } from '../../../src/utils/key';
+import { compressMnemonic, decompressMnemonic, normalizeHexValue } from '../key-utils';
 
 test('compressMnemonic', () => {
   expect(compressMnemonic([

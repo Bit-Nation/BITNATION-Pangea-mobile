@@ -7,7 +7,7 @@ import modifyNation, { type State as ModifyNationState } from '@pangea/nations/m
 import wallet, { type State as WalletState } from '@pangea/wallet/wallet-reducers';
 import key, { type State as KeyState } from '@pangea/key/key-reducers';
 import activity, { type State as ActivityState } from '@pangea/activity/activity-reducers';
-import testingMode, { type State as TestingModeState } from './testingMode-reducers';
+import testingMode, { type State as TestingModeState } from '@pangea/accounts/testingMode-reducers';
 import chat, { type State as ChatState } from '@pangea/chat/chat-reducers';
 import settings, { type State as SettingsState } from '@pangea/settings/settings-reducers';
 import dApps, { type State as DAppsState } from '@pangea/dApps/dApps-reducers';

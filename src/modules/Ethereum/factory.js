@@ -14,8 +14,12 @@ export default function factory(config: {privateKey: string, networkType: Networ
   const { networkType } = config;
 
   const serviceBuilder = (application: string): EthereumService => {
+    let networkType2 : NetworkType = networkType;
+    if (networkType2 === undefined) {
+      networkType2 = 'main';
+    }
     const customSigner = new CustomSigner(privateKey, networkType === 'dev' ? 'rinkeby' : 'homestead', application);
-    return new EthereumService(customSigner, networkType);
+    return new EthereumService(customSigner, networkType2);
   };
 
   let { app } = config;
@@ -23,8 +27,9 @@ export default function factory(config: {privateKey: string, networkType: Networ
     app = 'Bitnation Application';
   }
 
+  let service = serviceBuilder(app);
   return {
-    service: serviceBuilder(app),
+    service,
     serviceBuilder,
   };
 }

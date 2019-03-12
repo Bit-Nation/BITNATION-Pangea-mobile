@@ -1,7 +1,7 @@
 // @flow
 
-import { createGiftedChatMessageObject, mergeMessages } from '../../../src/utils/chat';
-import type { GiftedChatMessageType, PanthalassaMessage } from '../../../src/types/Chat';
+import { createGiftedChatMessageObject, mergeMessages } from '../chat-utils';
+import type { GiftedChatMessageType, PanthalassaMessage } from '../chat-types';
 
 test('createGiftedChatMessageObject', () => {
   const messageData: PanthalassaMessage = {

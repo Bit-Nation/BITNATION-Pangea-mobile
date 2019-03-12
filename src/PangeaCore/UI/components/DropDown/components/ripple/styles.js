@@ -1,5 +1,7 @@
+// @flow
+
 import { StyleSheet } from 'react-native';
-import Colors from '../../../../global/colors';
+import Colors from 'pangea-common-reactnative/styles/colors';
 
 const radius = 10;
 const styles = StyleSheet.create({

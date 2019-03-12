@@ -3,7 +3,7 @@ import {
   IS_MIGRATION,
   startMigration,
   isMigration,
-} from '../../../src/actions/migration';
+} from '../migration-actions.js';
 
 describe('migration action creators', () => {
   test('startMigration', () => {

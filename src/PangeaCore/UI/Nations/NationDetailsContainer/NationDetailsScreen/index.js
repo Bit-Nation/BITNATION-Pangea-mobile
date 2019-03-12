@@ -8,7 +8,7 @@ import {
 
 import BackgroundImage from 'pangea-common-reactnative/UI/BackgroundImage';
 import styles from './styles';
-import NationActionButton from 'pangea-common-reactnative/UI/NationActionButton';
+import NationActionButton from '../../NationActionButton';
 import AssetsImage from 'pangea-common-reactnative/assets/AssetsImages';
 import PanelView from 'pangea-common-reactnative/UI/PanelView';
 import FakeNavigationBar from 'pangea-common-reactnative/UI/FakeNavigationBar';

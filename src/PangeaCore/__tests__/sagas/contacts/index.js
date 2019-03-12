@@ -2,10 +2,10 @@
 
 import { takeEvery, all } from 'redux-saga/effects';
 
-import rootSaga from '../../../../src/sagas/contacts';
-import { ADD_CONTACT, START_CONTACTS_FETCH } from '../../../../src/actions/contacts';
-import { SERVICES_CREATED } from '../../../../src/actions/serviceContainer';
-import { addNewContact, fetchContacts } from '../../../../src/sagas/contacts/sagas';
+import rootSaga from '../../../sagas/contacts-sagas';
+import { ADD_CONTACT, START_CONTACTS_FETCH } from '@pangea/contacts/contacts-actions';
+import { SERVICES_CREATED } from 'pangea-common/serviceContainer-actions';
+import { addNewContact, fetchContacts } from '../../../sagas/contacts-sagas/sagas';
 
 test('rootSaga', () => {
   const iterator = rootSaga();

@@ -4,7 +4,7 @@ import {
   emptyCallback,
   addNewMessage,
   messagesUpdated,
-} from '../../../src/actions/activity';
+} from '../activity-actions';
 
 describe('activity action creators', () => {
   const messageMock = {

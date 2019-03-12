@@ -3,9 +3,9 @@
 import { select, call, put } from 'redux-saga/effects';
 import { cloneableGenerator } from 'redux-saga/utils';
 
-import { validateEnteredMnemonic } from '../../../../src/sagas/key/sagas';
-import AccountsService from '../../../../src/services/accounts';
-import { changeMnemonicValid } from '../../../../src/actions/key';
+import { validateEnteredMnemonic } from '../../../sagas/key-sagas/sagas';
+import AccountsService from '@pangea/accounts/accounts-services';
+import { changeMnemonicValid } from '@pangea/key/key-actions';
 
 describe('validateEnteredMnemonic', () => {
   test('not logged in', () => {

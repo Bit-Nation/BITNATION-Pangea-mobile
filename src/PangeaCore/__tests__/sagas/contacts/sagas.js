@@ -3,11 +3,11 @@
 import { call, put } from 'redux-saga/effects';
 import { cloneableGenerator } from 'redux-saga/utils';
 
-import { addContact, contactsFetchFailed, contactsUpdated, startContactsFetch } from '../../../../src/actions/contacts';
-import { addNewContact, fetchContacts } from '../../../../src/sagas/contacts/sagas';
-import { getProfile } from '../../../../src/sagas/chat/sagas';
-import ContactsService from '../../../../src/services/contacts';
-import type { ProfileType } from '../../../../src/types/Chat';
+import { addContact, contactsFetchFailed, contactsUpdated, startContactsFetch } from '@pangea/contacts/contacts-actions';
+import { addNewContact, fetchContacts } from '../../../sagas/contacts-sagas/sagas';
+import { getProfile } from '../../../sagas/chat-sagas/sagas';
+import ContactsService from '@pangea/contacts/contacts-service';
+import type { ProfileType } from '@pangea/chat/chat-types';
 
 const mockIdentityKey = 'MOCK_IDENTITY_KEY';
 const mockProfile: ProfileType = {

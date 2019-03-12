@@ -1,6 +1,6 @@
-import reducer, { initialState } from '../../../src/reducers/activity';
-import { messagesUpdated } from '../../../src/actions/activity';
-import { servicesDestroyed } from '../../../src/actions/serviceContainer';
+import reducer, { initialState } from '../activity-reducers';
+import { messagesUpdated } from '../activity-actions';
+import { servicesDestroyed } from 'pangea-common/serviceContainer-actions';
 
 const message = {
   id: 0,

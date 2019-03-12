@@ -11,7 +11,7 @@ import {
   convertToDatabase,
 } from '../activity-utils';
 import type { ActivityLogMessage } from 'pangea-common/types/ActivityLogMessage-type';
-import { getCurrentAccountId, currentAccountBasedUpdate } from '@pangea/accounts/accounts-sagas';
+import { getCurrentAccountId, currentAccountBasedUpdate } from '@pangea/accounts/accounts-sagas/sagas';
 
 /**
  * @desc Function that creates Realm results fetching activity logs for specific account.

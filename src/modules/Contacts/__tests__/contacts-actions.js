@@ -7,7 +7,7 @@ import {
   startContactsFetch,
   contactsUpdated,
   addContact,
-} from '../../../src/actions/contacts';
+} from '../contacts-actions';
 
 describe('contacts action creators', () => {
   test('startContactsFetch', () => {

@@ -1,0 +1,233 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NationListItem tests Behaviour Press 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <NationListItem
+    citizens="0"
+    id="Test id"
+    onPress={[MockFunction]}
+    status={undefined}
+    statusColor="gray"
+    text="Test list item"
+    textStyle={undefined}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "function",
+    "props": Object {
+      "AdditionalLeftView": [Function],
+      "AdditionalView": [Function],
+      "citizens": "0",
+      "disabled": false,
+      "disclosureIconVisible": true,
+      "iconSource": undefined,
+      "id": "Test id",
+      "onPress": [MockFunction],
+      "status": undefined,
+      "subtitle": undefined,
+      "text": undefined,
+      "textStyle": undefined,
+      "value": undefined,
+    },
+    "ref": null,
+    "rendered": null,
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "AdditionalLeftView": [Function],
+        "AdditionalView": [Function],
+        "citizens": "0",
+        "disabled": false,
+        "disclosureIconVisible": true,
+        "iconSource": undefined,
+        "id": "Test id",
+        "onPress": [MockFunction],
+        "status": undefined,
+        "subtitle": undefined,
+        "text": undefined,
+        "textStyle": undefined,
+        "value": undefined,
+      },
+      "ref": null,
+      "rendered": null,
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`NationListItem tests Rendering With text 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <NationListItem
+    citizens="0"
+    onPress={[Function]}
+    status={undefined}
+    statusColor="gray"
+    text="Test list item"
+    textStyle={undefined}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "function",
+    "props": Object {
+      "AdditionalLeftView": [Function],
+      "AdditionalView": [Function],
+      "citizens": "0",
+      "disabled": false,
+      "disclosureIconVisible": true,
+      "iconSource": undefined,
+      "id": null,
+      "onPress": [Function],
+      "status": undefined,
+      "subtitle": undefined,
+      "text": undefined,
+      "textStyle": undefined,
+      "value": undefined,
+    },
+    "ref": null,
+    "rendered": null,
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "AdditionalLeftView": [Function],
+        "AdditionalView": [Function],
+        "citizens": "0",
+        "disabled": false,
+        "disclosureIconVisible": true,
+        "iconSource": undefined,
+        "id": null,
+        "onPress": [Function],
+        "status": undefined,
+        "subtitle": undefined,
+        "text": undefined,
+        "textStyle": undefined,
+        "value": undefined,
+      },
+      "ref": null,
+      "rendered": null,
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`NationListItem tests Rendering With text colors 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <NationListItem
+    citizens="0"
+    onPress={[Function]}
+    status={undefined}
+    statusColor="gray"
+    text="Test list item"
+    textStyle={undefined}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "function",
+    "props": Object {
+      "AdditionalLeftView": [Function],
+      "AdditionalView": [Function],
+      "citizens": "0",
+      "disabled": false,
+      "disclosureIconVisible": true,
+      "iconSource": undefined,
+      "id": null,
+      "onPress": [Function],
+      "status": undefined,
+      "subtitle": undefined,
+      "text": undefined,
+      "textStyle": undefined,
+      "value": undefined,
+    },
+    "ref": null,
+    "rendered": null,
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "AdditionalLeftView": [Function],
+        "AdditionalView": [Function],
+        "citizens": "0",
+        "disabled": false,
+        "disclosureIconVisible": true,
+        "iconSource": undefined,
+        "id": null,
+        "onPress": [Function],
+        "status": undefined,
+        "subtitle": undefined,
+        "text": undefined,
+        "textStyle": undefined,
+        "value": undefined,
+      },
+      "ref": null,
+      "rendered": null,
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

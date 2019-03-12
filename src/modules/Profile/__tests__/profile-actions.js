@@ -11,7 +11,7 @@ import {
   CANCEL_ACCOUNT_EDITING,
   DONE_ACCOUNT_EDITING,
   SAVE_EDITING_ACCOUNT,
-} from '../../../src/actions/profile';
+} from '../profile-actions';
 
 describe('profile action creators', () => {
   const accountMock = {

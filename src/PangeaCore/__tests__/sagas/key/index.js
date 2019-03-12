@@ -2,9 +2,9 @@
 
 import { takeEvery } from 'redux-saga/effects';
 
-import rootSaga from '../../../../src/sagas/key';
-import { VALIDATE_ENTERED_MNEMONIC } from '../../../../src/actions/key';
-import { validateEnteredMnemonic } from '../../../../src/sagas/key/sagas';
+import rootSaga from '../../../sagas/key-sagas';
+import { VALIDATE_ENTERED_MNEMONIC } from '@pangea/key/key-actions';
+import { validateEnteredMnemonic } from '../../../sagas/key-sagas/sagas';
 
 test('rootSaga', () => {
   const iterator = rootSaga();

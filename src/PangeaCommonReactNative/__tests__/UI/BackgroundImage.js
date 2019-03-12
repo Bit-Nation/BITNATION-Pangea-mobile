@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import BackgroundImage from '../../../../src/components/common/BackgroundImage';
+import BackgroundImage from '../../UI/BackgroundImage';
 
 test('BackgroundImage renders correctly', () => {
   const tree = renderer

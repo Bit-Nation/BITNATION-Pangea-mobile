@@ -15,7 +15,7 @@ import {
   CANCEL_LOADING,
   NATIONS_UPDATED,
   DONE_FETCH_NATIONS,
-} from '../../../src/actions/nations';
+} from '../nations-actions';
 
 test('actions - switchNationTab', () => {
   const tab = 1;

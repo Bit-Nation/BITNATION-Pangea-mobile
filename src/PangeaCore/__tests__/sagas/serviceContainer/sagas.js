@@ -1,10 +1,12 @@
+// @flow
+
 import { select, call, put } from 'redux-saga/effects';
 import { cloneableGenerator } from 'redux-saga/utils';
-import { onCurrentAccountChange } from '../../../../src/sagas/serviceContainer/sagas';
-import { buildEmptyAccount } from '../../../../src/reducers/accounts';
-import ServiceContainer from '../../../../src/services/container';
-import AccountsService from '../../../../src/services/accounts';
-import { servicesCreated, servicesDestroyed } from '../../../../src/actions/serviceContainer';
+import { onCurrentAccountChange } from '../../../sagas/serviceContainer-sagas/sagas';
+import { buildEmptyAccount } from '@pangea/accounts/accounts-reducers';
+import { ServiceContainer } from 'pangea-common/service-container';
+import AccountsService from '@pangea/accounts/accounts-services';
+import { servicesCreated, servicesDestroyed } from 'pangea-common/serviceContainer-actions';
 
 describe('onCurrentAccountChange', () => {
   const gen = cloneableGenerator(onCurrentAccountChange)();

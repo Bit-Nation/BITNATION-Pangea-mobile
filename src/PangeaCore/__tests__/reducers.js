@@ -1,6 +1,6 @@
 // @flow
 
-import rootReducer, { subReducers } from '../../../src/reducers';
+import rootReducer, { subReducers } from '../reducers';
 
 test('rootReducer contains all child reducers', () => {
   const reducerNames = [

@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import BodyParagraph from '../../../../src/components/common/BodyParagraph';
+import BodyParagraph from '../../UI/BodyParagraph';
 
 test('BodyParagraph renders correctly', () => {
   const tree = renderer

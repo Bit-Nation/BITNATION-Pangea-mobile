@@ -1,7 +1,7 @@
 import {
   convertToDatabase,
   convertFromDatabase,
-} from '../../../../src/utils/mapping/account';
+} from '../account-utils.js';
 
 describe('convert account to database', () => {
   test('without required params', () => {

@@ -7,7 +7,7 @@ import {
   LOAD_CHAT_MESSAGES,
   PANTHALASSA_MESSAGE_PERSISTED,
   CHANGE_UNREAD_STATUS,
-} from '../../actions/chat';
+} from '@pangea/chat/chat-actions';
 import {
   startNewChatSaga,
   fetchAllChatsSaga,

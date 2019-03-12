@@ -1,7 +1,7 @@
 // @flow
 
-import ContactsService from '../../../../src/services/contacts';
-import * as Panthalassa from '../../../../src/services/panthalassa';
+import ContactsService from '../contacts-service';
+import * as Panthalassa from '@pangea/panthalassa';
 
 const mockIdentityKey = 'MOCK_IDENTITY_KEY';
 const mockIdentityKey2 = 'MOCK_IDENTITY_KEY_2';

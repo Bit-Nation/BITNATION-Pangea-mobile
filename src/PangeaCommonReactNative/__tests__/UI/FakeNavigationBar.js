@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import FakeNavigationBar from '../../../../src/components/common/FakeNavigationBar';
+import FakeNavigationBar from '../../UI/FakeNavigationBar';
 
 test('FakeNavigationBar renders correctly', () => {
   const tree = renderer

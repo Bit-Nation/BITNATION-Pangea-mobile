@@ -1,6 +1,6 @@
 // @flow
 
-import reducer, { initialState } from '../../../src/reducers/wallet';
+import reducer, { initialState } from '../wallet-reducers';
 import {
   selectWallet,
   sendMoney,
@@ -10,9 +10,9 @@ import {
   updateWalletList,
   walletsListUpdated,
   walletSyncFailed,
-} from '../../../src/actions/wallet';
-import { servicesDestroyed } from '../../../src/actions/serviceContainer';
-import type { WalletType } from '../../../src/types/Wallet';
+} from '../wallet-actions';
+import { servicesDestroyed } from 'pangea-common/serviceContainer-actions';
+import type { WalletType } from 'pangea-common/types/wallet-types';
 
 const mockWallet: WalletType = {
   ethAddress: '0xtestAddress',

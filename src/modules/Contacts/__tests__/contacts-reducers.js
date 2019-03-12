@@ -1,12 +1,12 @@
 // @flow
 
-import reducer, { initialState } from '../../../src/reducers/contacts';
+import reducer, { initialState } from '../contacts-reducers';
 import {
   startContactsFetch,
   contactsUpdated,
   addContact,
   contactsFetchFailed,
-} from '../../../src/actions/contacts';
+} from '../contacts-actions';
 
 describe('contacts reducer action handling', () => {
   const callbackMock = jest.fn();

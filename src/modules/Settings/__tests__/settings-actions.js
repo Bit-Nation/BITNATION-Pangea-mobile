@@ -13,7 +13,7 @@ import {
   RESET_SETTINGS,
   SAVE_SETTINGS,
   SETTINGS_UPDATED,
-} from '../../../src/actions/settings';
+} from '../settings-actions';
 
 describe('settings action creators', () => {
   test('changeUseNumericPasscode', () => {

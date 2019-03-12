@@ -2,11 +2,11 @@
 
 import { put, call } from 'redux-saga/effects';
 
-import defaultDB, { buildRandomPathDatabase } from '../../../../src/services/database';
-import { buildMessagesResults, onCurrentAccountChange, addNewMessageSaga, startDatabaseListening, buildMessageObject } from '../../../../src/sagas/activity/sagas';
-import { messagesUpdated, ADD_NEW_MESSAGE } from '../../../../src/actions/activity';
-import { convertFromDatabase, convertToDatabase } from '../../../../src/utils/mapping/activity';
-import { getCurrentAccountId, currentAccountBasedUpdate } from '../../../../src/sagas/accounts/sagas';
+import defaultDB, { buildRandomPathDatabase } from '@pangea/database';
+import { buildMessagesResults, onCurrentAccountChange, addNewMessageSaga, startDatabaseListening, buildMessageObject } from '@pangea/activity/activity-sagas/sagas';
+import { messagesUpdated, ADD_NEW_MESSAGE } from '@pangea/activity/activity-actions';
+import { convertFromDatabase, convertToDatabase } from '@pangea/activity/activity-utils';
+import { getCurrentAccountId, currentAccountBasedUpdate } from '@pangea/accounts/accounts-sagas/sagas';
 
 describe('onCurrentAccountChange', () => {
   test('empty results', () => {

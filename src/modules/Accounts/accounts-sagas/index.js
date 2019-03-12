@@ -26,8 +26,8 @@ import {
   SAVE_CREATING_ACCOUNT,
   START_ACCOUNT_CREATION,
   START_RESTORE_ACCOUNT_USING_MNEMONIC, MNEMONIC_CONFIRMED, ACCOUNTS_LIST_UPDATED,
-} from '../../actions/accounts';
-import { SAVE_EDITING_ACCOUNT } from '../../actions/profile';
+} from '../accounts-actions';
+import { SAVE_EDITING_ACCOUNT } from '@pangea/profile/profile-actions';
 
 /**
  * @desc Root accounts saga.

@@ -3,7 +3,7 @@
 import {
   START_NAVIGATION,
   startNavigation,
-} from '../../../src/actions/navigation';
+} from '../navigation-actions';
 
 describe('navigation action creators', () => {
   test('makeStep', () => {

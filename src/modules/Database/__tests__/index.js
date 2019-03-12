@@ -1,5 +1,5 @@
 import Realm from 'realm';
-import db, { factory, buildRandomPathDatabase } from '../../../../src/services/database';
+import db, { factory, buildRandomPathDatabase } from '../index';
 
 const randomDbPath = () => `database/${Math.random()}`;
 

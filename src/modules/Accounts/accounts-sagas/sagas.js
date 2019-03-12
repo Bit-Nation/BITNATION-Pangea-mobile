@@ -147,7 +147,7 @@ export function* listenForDatabaseUpdates(): Generator<*, *, any> {
  * @desc Updates signed profile in Panthalassa.
  * @returns {void}
  */
-export function* updateSignedProfile(): Generator<*, *, *> {
+export function* updateSignedProfile():                           Generator<*, *, *> {
   const dbAccount: DBAccount = yield call(getCurrentAccount);
   if (dbAccount != null) {
     const account = convertFromDatabase(dbAccount);

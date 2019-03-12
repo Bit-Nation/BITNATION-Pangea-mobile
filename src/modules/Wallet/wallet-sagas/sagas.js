@@ -12,7 +12,7 @@ import {
   walletsListUpdated,
   walletSyncFailed,
 } from '../wallet-actions';
-import { getAccount, getCurrentAccountId } from '@pangea/accounts/accounts-sagas';
+import { getAccount, getCurrentAccountId } from '@pangea/accounts/accounts-sagas/sagas';
 import type { SendMoneyAction } from '../wallet-actions';
 import type { WalletType } from 'pangea-common/types/Wallet-types';
 import { ServiceContainer } from 'pangea-common/service-container';

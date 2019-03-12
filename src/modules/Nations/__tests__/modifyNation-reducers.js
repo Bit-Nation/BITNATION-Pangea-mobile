@@ -1,4 +1,4 @@
-import reducer, { emptyNation, initialState } from '../../../src/reducers/modifyNation';
+import reducer, { emptyNation, initialState } from '../modifyNation-reducers';
 import {
   cancelNationCreation,
   deleteNationDraft,
@@ -10,8 +10,8 @@ import {
   saveNationDraft,
   startNationCreation,
   startNationEditing, submitNation,
-} from '../../../src/actions/modifyNation';
-import { servicesDestroyed } from '../../../src/actions/serviceContainer';
+} from '../modifyNation-actions';
+import { servicesDestroyed } from 'pangea-common/serviceContainer-actions';
 
 describe('modify nation reducer action handling', () => {
   const mockNation = {

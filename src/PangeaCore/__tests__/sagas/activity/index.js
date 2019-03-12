@@ -2,9 +2,9 @@
 
 import { all, call, takeEvery } from 'redux-saga/effects';
 
-import rootSaga from '../../../../src/sagas/activity';
-import { addNewMessageSaga, startDatabaseListening } from '../../../../src/sagas/activity/sagas';
-import { ADD_NEW_MESSAGE } from '../../../../src/actions/activity';
+import rootSaga from '@pangea/activity/activity-sagas';
+import { addNewMessageSaga, startDatabaseListening } from '@pangea/activity/activity-sagas/sagas';
+import { ADD_NEW_MESSAGE } from '@pangea/activity/activity-actions';
 
 test('rootSaga', () => {
   const iterator = rootSaga();

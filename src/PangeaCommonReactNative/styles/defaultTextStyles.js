@@ -1,5 +1,5 @@
 import { Platform } from 'react-native';
-import Colors from '../colors';
+import Colors from './colors';
 
 const defaultTextStyles = {
 

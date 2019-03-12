@@ -1,8 +1,8 @@
 import {
   convertToDatabase,
   convertFromDatabase,
-} from '../../../../src/utils/mapping/settings';
-import { PasscodeTypeValues } from '../../../../src/reducers/settings';
+} from '../settings-utils.js';
+import { PasscodeTypeValues } from '../settings-reducers';
 
 describe('convert setting to database', () => {
   test('password', () => {

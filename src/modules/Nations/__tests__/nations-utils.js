@@ -3,8 +3,8 @@ import {
   convertToDatabase,
   convertFromDatabase,
   statusColor,
-} from '../../../src/utils/nations';
-import { TX_JOB_STATUS } from '../../../src/global/Constants';
+} from '../nations-utils';
+import { TX_JOB_STATUS } from 'pangea-common/Constants';
 
 test('resolveNation works', () => {
   const expectedNation = {

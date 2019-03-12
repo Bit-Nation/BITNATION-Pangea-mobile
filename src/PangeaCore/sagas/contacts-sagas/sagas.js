@@ -10,7 +10,7 @@ import {
   contactsUpdated,
   startContactsFetch,
 } from '@pangea/contacts/contacts-actions.js';
-import { getProfile } from '../chat-sagas';
+import { getProfile } from '../chat-sagas/sagas';
 import type { AddContactAction } from '@pangea/contacts/contacts-actions';
 import type { Contact } from '@pangea/contacts/Contacts-types';
 

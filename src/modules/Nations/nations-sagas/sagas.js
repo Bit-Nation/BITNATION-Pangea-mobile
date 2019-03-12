@@ -10,7 +10,7 @@ import { convertFromDatabase } from '../nations-utils';
 import { errorAlert } from 'pangea-common/alerts';
 import { ServiceContainer } from 'pangea-common/service-container';
 import { NoNationsServiceError } from 'pangea-common/errors/services';
-import { currentAccountBasedUpdate } from '@pangea/accounts/accounts-sagas';
+import { currentAccountBasedUpdate } from '@pangea/accounts/accounts-sagas/sagas';
 import type { NationType as DBNationType } from '@pangea/database/schemata';
 import type { State as NationsState } from '../nations-reducers';
 import { NATION_INDEX_RECOVER_PERIOD } from 'pangea-common/Constants';

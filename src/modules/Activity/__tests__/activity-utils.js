@@ -1,7 +1,7 @@
 import {
   convertToDatabase,
   convertFromDatabase,
-} from '../../../../src/utils/mapping/activity';
+} from '../activity-utils';
 
 describe('convert message to database', () => {
   test('required params only', () => {

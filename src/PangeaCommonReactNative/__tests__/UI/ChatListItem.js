@@ -3,7 +3,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import ChatListItem from '../../../../src/components/common/ChatListItem';
+import ChatListItem from '../../UI/ChatListItem';
 
 describe('ChatListItem tests', () => {
   describe('Rendering', () => {

@@ -21,7 +21,7 @@ import {
   startNationCreation,
   startNationEditing,
   submitNation,
-} from '../../../src/actions/modifyNation';
+} from '../modifyNation-actions';
 
 describe('modify nation action creators', () => {
   const mockNation = {

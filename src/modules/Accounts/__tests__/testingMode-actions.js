@@ -5,7 +5,7 @@ import {
   emptyWallet,
   makeStep,
   resetSteps,
-} from '../../../src/actions/testingMode';
+} from '../testingMode-actions.js';
 
 describe('testing mode action creators', () => {
   test('makeStep', () => {

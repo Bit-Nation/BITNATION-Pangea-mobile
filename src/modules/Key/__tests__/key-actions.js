@@ -5,8 +5,8 @@ import {
   changeEnteredMnemonic,
   changeMnemonicValid,
   validateEnteredMnemonic,
-} from '../../../src/actions/key';
-import { KEY_LENGTH } from '../../../src/global/Constants';
+} from '../key-actions';
+import { KEY_LENGTH } from 'pangea-common/Constants';
 
 describe('key action creators', () => {
   const mockMnemonic = new Array(KEY_LENGTH).fill('abc');

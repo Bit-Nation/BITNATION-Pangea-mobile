@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import PanelViewCitizen from '../../../../src/components/common/PanelViewCitizen';
+import PanelViewCitizen from '../../UI/PanelViewCitizen';
 
 describe('PanelViewCitizen tests', () => {
   describe('Rendering', () => {
