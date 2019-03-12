@@ -7,5 +7,7 @@ target 'Pangea' do
 
   pod 'react-native-zendesk-support', :path => '../node_modules/@synapsestudios/react-native-zendesk-support'
 
+  pod 'CodePush', :path => '../node_modules/react-native-code-push'
+
 end
 
