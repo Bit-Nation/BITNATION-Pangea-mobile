@@ -42,7 +42,6 @@ export function configureStore(): Store {
 export class PangeaLoader {
   static instance: PangeaLoader = new PangeaLoader();
   
-
   initServices(account: Account, ethPrivateKey: string) {
     let serviceFactory = () => {
       let services: Map<string, PangeaService> = new Map();

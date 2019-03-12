@@ -50,6 +50,7 @@ export class ServiceContainer {
     });
     this.services = new Map();
   }
+  
 /*
   ethereumService: EthereumService | null = null;
   walletService: WalletService | null = null;
