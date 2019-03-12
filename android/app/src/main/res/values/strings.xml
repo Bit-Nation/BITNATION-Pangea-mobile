@@ -1,3 +1,4 @@
 <resources>
+    <string moduleConfig="true" name="reactNativeCodePush_androidDeploymentKey">KsuHmxGtkGpaHlUsCK2XqFofUyB722b7123f-a2b7-4356-8a3a-dc49d74c4dac</string>
     <string name="app_name">Bitnation</string>
 </resources>

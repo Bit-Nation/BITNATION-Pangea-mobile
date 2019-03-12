@@ -77,10 +77,14 @@ import com.android.build.OutputFile
 
 project.ext.react = [
         entryFile: "index.js",
-        devDisabledInStaging: true
+        devDisabledInStaging: true,
+        jsBundleDirDebug: "$buildDir/intermediates/merged_assets/debug/mergeDebugAssets/out",
+        jsBundleDirRelease: "$buildDir/intermediates/merged_assets/release/mergeReleaseAssets/out"
+
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
+apply from: "../../node_modules/react-native-code-push/android/codepush.gradle"
 
 /**
  * Set this to true to create two separate APKs instead of one:
@@ -192,6 +196,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-code-push')
     compile project(':react-native-zendesk-support')
     compile project(':react-native-shake')
     compile (project(':react-native-camera')) {
