@@ -108,7 +108,7 @@ const NationsListScreen = ({
     sortedNationsNew,
     nation =>
       nation.nationName === 'BITNATION' ||
-      nation.nationName === 'Catalunya' ||
+      nation.nationName === 'República Catalana' ||
       nation.nationName === 'Digital Nomads' ||
       nation.nationName === 'De Pijp Nation' ||
       nation.nationName === 'Ideais Radicais' ||
