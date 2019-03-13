@@ -4,7 +4,7 @@ export default {
   'Digital Nomads': require('../../assets/images/nations/digital-nomad-nation.png'),
   'De Pijp Nation': require('../../assets/images/nations/de-pijp-nation.png'),
   Liberland: require('../../assets/images/nations/liberland.png'),
-  TEDx: require('../../assets/images/nations/TEDx-Nation.png'),
+  'TEDx ': require('../../assets/images/nations/TEDx-Nation.png'),
   'TAZ Nation': require('../../assets/images/nations/TAZ-Nation.png'),
   'Serenissima Republic of Venice': require('../../assets/images/nations/erinissima-republic-of-Venice.png'),
   WeedNation: require('../../assets/images/nations/weednation.png'),
@@ -16,6 +16,6 @@ export default {
   default: require('../../assets/images/nations/default.png'),
   '1-Blockchain world': require('../../assets/images/nations/1-BlockChain-world.png'),
   'Network Society': require('../../assets/images/nations/Network-Society.png'),
-  'Ideais Radicais': require('../../assets/images/nations/Ideais-Radicais.png'),
+  'Ideias Radicais': require('../../assets/images/nations/Ideais-Radicais.png'),
   'República Catalana': require('../../assets/images/nations/Catalunya.png'),
 };
