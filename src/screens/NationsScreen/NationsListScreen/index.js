@@ -1,25 +1,24 @@
 // @flow
 
-import React from "react";
-import { View, SectionList } from "react-native";
-import _ from "lodash";
+import React from 'react';
+import { View, SectionList } from 'react-native';
+import _ from 'lodash';
 
-import BackgroundImage from "../../../components/common/BackgroundImage";
-import LucyButton from "../../../components/common/LucyButton";
-import styles from "./styles";
-import ProgressiveImage from "../../../components/ProgressiveImage";
-import NationListItem from "../../../components/common/NationListItem";
-import NationListHeader from "../../../components/common/ItemsListHeader";
-import FakeNavigationBar from "../../../components/common/FakeNavigationBar";
-import i18n from "../../../global/i18n";
-import { resolveStatus, statusColor } from "../../../utils/nations";
-import Loading from "../../../components/common/Loading";
-import type { NationIdType, NationType } from "../../../types/Nation";
-import type { NationTab } from "../../../actions/nations";
-import ScreenTitle from "../../../components/common/ScreenTitle";
+
+import styles from './styles';
+import featuredNationsObject from '../nationImageshelper';
+import NationListItem from '../../../components/common/NationListItem';
+import NationListHeader from '../../../components/common/ItemsListHeader';
+import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
+import i18n from '../../../global/i18n';
+import { resolveStatus, statusColor } from '../../../utils/nations';
+import Loading from '../../../components/common/Loading';
+import type { NationIdType, NationType } from '../../../types/Nation';
+import type { NationTab } from '../../../actions/nations';
+import ScreenTitle from '../../../components/common/ScreenTitle';
 
 const uri =
-  "https://www.ecestaticos.com/imagestatic/clipping/0df/db8/0dfdb8b1b74624f225d5b6112ade8706/jxsi-y-cup-pactan-la-ley-para-amparar-el-referendum-y-la-republica-catalana.jpg?mtime=1483018148";
+  'https://www.ecestaticos.com/imagestatic/clipping/0df/db8/0dfdb8b1b74624f225d5b6112ade8706/jxsi-y-cup-pactan-la-ley-para-amparar-el-referendum-y-la-republica-catalana.jpg?mtime=1483018148';
 
 type Props = {
   /**
@@ -53,83 +52,81 @@ type Props = {
   nationType: any
 };
 
+
 const NationsListScreen = ({
   nations,
   myNationIds,
   inProgress,
   onSelectItem,
-  nationType
+  nationType,
 }: Props) => {
   const myNations = _.filter(
     nations,
-    nation => _.indexOf(myNationIds, nation.id) !== -1
+    nation => _.indexOf(myNationIds, nation.id) !== -1,
   );
   const sortedMyNationsName = _.sortBy(myNations, nation =>
-    nation.nationName.toUpperCase()
-  );
+    nation.nationName.toUpperCase());
 
   const sortedMyNationsCitizens = _.sortBy(myNations, nation =>
-    Number(nation.citizens)
-  );
+    Number(nation.citizens));
 
   const browseNations = _.filter(
     nations,
-    nation => _.indexOf(myNationIds, nation.id) === -1
+    nation => _.indexOf(myNationIds, nation.id) === -1,
   );
   const sortedBrowseNationsName = _.sortBy(browseNations, nation =>
-    nation.nationName.toUpperCase()
-  );
+    nation.nationName.toUpperCase());
 
   const sortedBrowseNationsCitizens = _.sortBy(browseNations, nation =>
-    Number(nation.citizens)
-  );
-  //popular list
+    Number(nation.citizens));
+  // popular list
   const sortedNationsPopular = sortedMyNationsCitizens
     .concat(sortedBrowseNationsCitizens)
     .reverse()
     .slice(0, 10);
   const groupsPopular = _.groupBy(
     sortedNationsPopular,
-    nation => _.indexOf(myNationIds, nation.id) !== -1
+    nation => _.indexOf(myNationIds, nation.id) !== -1,
   );
   const sectionsPopular = _.map(groupsPopular, (group, key) => ({
-    title: key === "true" ? "MY NATIONS" : "BROWSE NATIONS",
-    data: group
+    title: key === 'true' ? 'MY NATIONS' : 'BROWSE NATIONS',
+    data: group,
   }));
-  //new list
+  // new list
   const sortedNationsNew = sortedMyNationsName.concat(sortedBrowseNationsName);
   const groupsNew = _.groupBy(
     sortedNationsNew,
-    nation => _.indexOf(myNationIds, nation.id) !== -1
+    nation => _.indexOf(myNationIds, nation.id) !== -1,
   );
   const sectionsNew = _.map(groupsNew, (group, key) => ({
-    title: key === "true" ? "MY NATIONS" : "BROWSE NATIONS",
-    data: group
+    title: key === 'true' ? 'MY NATIONS' : 'BROWSE NATIONS',
+    data: group,
   }));
 
-  //feature list
+  // feature list
   const featureNations = _.filter(
     sortedNationsNew,
     nation =>
-      nation.nationName === "BITNATION" ||
-      nation.nationName === "Catalunya" ||
-      nation.nationName === "Digital Nomads" ||
-      nation.nationName === "De Pijp Nation" ||
-      nation.nationName === "Ideais Radicais" ||
-      nation.nationName === "Liberland" ||
-      nation.nationName === "TEDx" ||
-      nation.nationName === "Network Society" ||
-      nation.nationName === "TAZ Nation" ||
-      nation.nationName === "Serenissima Republic of Venice"
+      nation.nationName === 'BITNATION' ||
+      nation.nationName === 'Catalunya' ||
+      nation.nationName === 'Digital Nomads' ||
+      nation.nationName === 'De Pijp Nation' ||
+      nation.nationName === 'Ideais Radicais' ||
+      nation.nationName === 'Liberland' ||
+      nation.nationName === 'TEDx' ||
+      nation.nationName === 'Network Society' ||
+      nation.nationName === 'TAZ Nation' ||
+      nation.nationName === 'Serenissima Republic of Venice',
   );
+
 
   const groupsFeature = _.groupBy(
     featureNations,
-    nation => _.indexOf(myNationIds, nation.id) !== -1
+    nation => _.indexOf(myNationIds, nation.id) !== -1,
   );
   const sectionsFeature = _.map(groupsFeature, (group, key) => ({
-    title: key === "true" ? "MY NATIONS" : "BROWSE NATIONS",
-    data: group
+    title: key === 'true' ? 'MY NATIONS' : 'BROWSE NATIONS',
+    data: group,
   }));
 
   let sections = sectionsNew;
@@ -151,15 +148,15 @@ const NationsListScreen = ({
       </View> */}
       {/* <ScreenTitle title={i18n.t('screens.nations.title')} /> */}
       <SectionList
-        renderItem={item => {
+        renderItem={(item) => {
           const nation = item.item;
-          let popularNation = "";
-          let statusString = "";
+          let popularNation = '';
+          let statusString = '';
           const nationStatus = resolveStatus(nation);
 
-          console.log(nation.citizens, "citizens");
+          console.log(nation.citizens, 'citizens');
 
-          if (nation.citizens > "9") {
+          if (nation.citizens > '9') {
             popularNation = nation.citizens;
           }
           if (nationStatus !== null) {
@@ -170,7 +167,7 @@ const NationsListScreen = ({
           if (nationStatus !== null) {
             statusTextColor = statusColor(nationStatus.code);
           }
-
+          const iconSource = featuredNationsObject[nation.nationName];
           return (
             <View>
               <NationListItem
@@ -180,6 +177,7 @@ const NationsListScreen = ({
                 statusColor={statusTextColor}
                 id={nation.id}
                 citizens={nation.citizens}
+                iconSource={iconSource || featuredNationsObject.default}
               />
             </View>
           );
