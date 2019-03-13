@@ -9,7 +9,7 @@ import ContractScreen from './subTabs/ContractScreen';
 import DappScreen from './subTabs/DappScreen';
 import ServiceScreen from './subTabs/ServiceScreen';
 import ProductScreen from './subTabs/ProductScreen';
-
+import { screen } from "../../global/Screens";
 import Colors from '../../global/colors';
 import AssetsImages from '../../global/AssetsImages';
 import styles from './styles';
@@ -132,7 +132,10 @@ const ServicesScreen = ({
         },
         {
           text: 'Report a Service',
-          onPress: () => {},
+          onPress: () => {
+            setShowModal('');
+            navigator.push(screen('INFO_SCREEN'));
+          },
         },
         {
           text: 'Help',
