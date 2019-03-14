@@ -11,7 +11,6 @@ import { MediaQueryStyleSheet } from 'react-native-responsive';
 
 import GlobalStyles from '../../global/Styles';
 import Colors from '../../global/colors';
-import AssetsImages from '../../global/AssetsImages';
 
 type Props = {
   /**
@@ -44,6 +43,10 @@ type Props = {
    * @param Id of item that was pressed.
    */
   onPress: (id: string) => void,
+   /**
+   * @desc Resource to be rendered as icon with the button.
+   */
+  iconSource?: number,
 }
 
 type PropsList<IDType> = {
