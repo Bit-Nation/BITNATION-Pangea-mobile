@@ -2,6 +2,7 @@ package co.bitnation;
 
 import com.bitgo.randombytes.RandomBytesPackage;
 import com.facebook.react.ReactPackage;
+import com.microsoft.codepush.react.CodePush;
 import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 import com.reactnative.ivpusic.imagepicker.PickerPackage;
 import com.reactnativenavigation.NavigationApplication;
@@ -24,6 +25,7 @@ public class MainApplication extends NavigationApplication {
     protected List<ReactPackage> getPackages() {
         return Arrays.<ReactPackage>asList(
                 new PickerPackage(),
+                new CodePush(getResources().getString(R.string.reactNativeCodePush_androidDeploymentKey), getApplicationContext(), BuildConfig.DEBUG),
                 new RNCameraPackage(),
                 new PanthalassaPackage(),
                 new RNZenDeskSupport(),
