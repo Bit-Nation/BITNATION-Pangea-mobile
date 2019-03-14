@@ -1342,6 +1342,7 @@ ShallowWrapper {
           style={Object {}}
         />,
         <CustomButton
+          enabled={true}
           onPress={[Function]}
           style={
             Object {
@@ -1506,6 +1507,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "function",
         "props": Object {
+          "enabled": true,
           "onPress": [Function],
           "style": Object {
             "alignSelf": "stretch",
@@ -1592,6 +1594,7 @@ ShallowWrapper {
             style={Object {}}
           />,
           <CustomButton
+            enabled={true}
             onPress={[Function]}
             style={
               Object {
@@ -1756,6 +1759,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
+            "enabled": true,
             "onPress": [Function],
             "style": Object {
               "alignSelf": "stretch",
@@ -1930,6 +1934,7 @@ ShallowWrapper {
           />
         </View>,
         <CustomButton
+          enabled={true}
           onPress={[Function]}
           style={
             Object {
@@ -2162,6 +2167,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "function",
         "props": Object {
+          "enabled": true,
           "onPress": [Function],
           "style": Object {
             "alignSelf": "stretch",
@@ -2280,6 +2286,7 @@ ShallowWrapper {
             />
           </View>,
           <CustomButton
+            enabled={true}
             onPress={[Function]}
             style={
               Object {
@@ -2512,6 +2519,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
+            "enabled": true,
             "onPress": [Function],
             "style": Object {
               "alignSelf": "stretch",
@@ -2680,6 +2688,7 @@ ShallowWrapper {
           style={Object {}}
         />,
         <CustomButton
+          enabled={true}
           onPress={[Function]}
           style={
             Object {
@@ -2902,6 +2911,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "function",
         "props": Object {
+          "enabled": true,
           "onPress": [Function],
           "style": Object {
             "alignSelf": "stretch",
@@ -3030,6 +3040,7 @@ ShallowWrapper {
             style={Object {}}
           />,
           <CustomButton
+            enabled={true}
             onPress={[Function]}
             style={
               Object {
@@ -3252,6 +3263,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
+            "enabled": true,
             "onPress": [Function],
             "style": Object {
               "alignSelf": "stretch",
@@ -3436,6 +3448,7 @@ ShallowWrapper {
           style={Object {}}
         />,
         <CustomButton
+          enabled={true}
           onPress={[Function]}
           style={
             Object {
@@ -3652,6 +3665,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "function",
         "props": Object {
+          "enabled": true,
           "onPress": [Function],
           "style": Object {
             "alignSelf": "stretch",
@@ -3764,6 +3778,7 @@ ShallowWrapper {
             style={Object {}}
           />,
           <CustomButton
+            enabled={true}
             onPress={[Function]}
             style={
               Object {
@@ -3980,6 +3995,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "function",
           "props": Object {
+            "enabled": true,
             "onPress": [Function],
             "style": Object {
               "alignSelf": "stretch",

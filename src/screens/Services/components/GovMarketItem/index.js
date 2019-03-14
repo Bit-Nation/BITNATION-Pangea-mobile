@@ -30,6 +30,8 @@ export type GovMarketItemProps = {
   onPress: Function,
 
   bannerImage: string,
+  readmore: string,
+
 };
 
 /**

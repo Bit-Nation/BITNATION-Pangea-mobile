@@ -1,12 +1,13 @@
 // @flow
 
 import React from 'react';
-import { View, Text, Alert } from 'react-native';
+import { View, Text, TouchableOpacity, Platform } from 'react-native';
 import { connect } from 'react-redux';
 import { Button } from 'native-base';
 import i18next from 'i18next';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import i18n from '../../../global/i18n';
+import { screen } from '../../../global/Screens';
 import BackgroundImage from '../../../components/common/BackgroundImage';
 import styles from './styles';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
@@ -150,16 +151,34 @@ class SettingsListScreen extends NavigatorComponent<Props, State> {
               />
             </View>
           </View>
+          <TouchableOpacity
+            style={styles.itemViewStyle}
+            onPress={() => { this.props.navigator.push(screen('CONFIRM_KEY_INSTRUCTION_SCREEN')); }
+        }
+          >
+            <Text style={styles.itemSelectText}>
+              {i18n.t('screens.settings.confirmPrivateKey')}
+            </Text>
+
+          </TouchableOpacity>
           <View style={styles.buttonViewStyle}>
             <Button
               rounded
-              onPress={() =>
-                i18next.changeLanguage('hi', (err, t) => {
-                  if (err) {
-                    return console.log('something went wrong loading', err);
+              onPress={() => {
+                i18next.changeLanguage('en', (err, t) => {
+                    if (err) {
+                      return console.log('something went wrong loading', err);
+                    }
+                    t('en'); // -> same as i18next.t
+                  });
+
+                  // Todo: need to export this method
+                  if (Platform.OS === 'ios') {
+                    this.props.navigator.pop();
+                  } else {
+                    this.props.navigator.dismissModal();
                   }
-                  t('hi'); // -> same as i18next.t
-                })
+                }
               }
               style={styles.controlButton}
             >
