@@ -17,6 +17,11 @@ import io.realm.react.RealmReactPackage;
 public class MainApplication extends NavigationApplication {
 
     @Override
+    protected String getJSBundleFile() {
+      return CodePush.getJSBundleFile();
+    }
+
+    @Override
     public boolean isDebug() {
         // Make sure you are using BuildConfig from your own application
         return BuildConfig.DEBUG;
