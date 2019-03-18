@@ -1,8 +1,9 @@
 // @flow
 
 import React, { Component } from 'react';
-import { View, Linking, Image, Text, TouchableOpacity } from 'react-native';
-// import ZendeskSupport from 'react-native-zendesk-support';
+import { View, Linking, Image, Text, TouchableOpacity, ScrollView } from 'react-native';
+import ZendeskSupport from 'react-native-zendesk-support';
+import { Button } from 'native-base';
 import BackgroundImage from 'pangea-common-reactnative/UI/BackgroundImage';
 import FakeNavigationBar from 'pangea-common-reactnative/UI/FakeNavigationBar';
 import facebook from '../../assets/images/icon-facebook.png';
@@ -18,31 +19,31 @@ type Props = {
 }
 
 class InfoScreen extends Component<Props> {
-  // componentDidMount() {
-  //   const config = {
-  //     appId: '73f3e05169e02c9144c2c98be63472e1b1e5123f1e696fe2',
-  //     zendeskUrl: 'bitnation.zendesk.com',
-  //     clientId: 'mobile_sdk_client_6ce9e85f75a7e5e3c348',
-  //   };
-  //   // ZendeskSupport.initialize(config);
+ componentDidMount() {
+    const config = {
+      appId: '73f3e05169e02c9144c2c98be63472e1b1e5123f1e696fe2',
+      zendeskUrl: 'https://bitnation.zendesk.com',
+      clientId: 'mobile_sdk_client_6ce9e85f75a7e5e3c348',
+    };
+    ZendeskSupport.initialize(config);
 
-  //   const customFields = {
-  //     name: 'Prameet',
-  //     ticket: 'Sample',
-  //   };
-  //   // ZendeskSupport.callSupport(customFields);
-  // }
+    ZendeskSupport.setupIdentity(null);
+  }
 
   openLink = (url: any) => {
     Linking.openURL(url);
   };
 
+  submitIssue = () => {
+    ZendeskSupport.supportHistory();
+  }
+
   render() {
     return (
       <View style={styles.screenContainer}>
         <BackgroundImage />
-        <FakeNavigationBar />
         <View style={styles.mainContainer}>
+          <Button style={styles.ticketButton} onPress={() => this.submitIssue()}><Text style={styles.supportText}>View Support Tickets</Text></Button>
           <Text style={styles.email}>info@bitnation.co</Text>
           <Card style={styles.card}>
             <TouchableOpacity
