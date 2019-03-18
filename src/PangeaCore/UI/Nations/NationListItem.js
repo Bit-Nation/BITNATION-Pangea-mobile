@@ -11,7 +11,6 @@ import { MediaQueryStyleSheet } from 'react-native-responsive';
 
 import GlobalStyles from 'pangea-common-reactnative/styles';
 import Colors from 'pangea-common-reactnative/styles/colors';
-import AssetsImages from 'pangea-common-reactnative/assets/AssetsImages';
 
 type Props = {
   /**
@@ -44,6 +43,10 @@ type Props = {
    * @param Id of item that was pressed.
    */
   onPress: (id: string) => void,
+  /**
+   * @desc Resource to be rendered as icon with the button.
+   */
+  iconSource?: number,
 }
 
 type PropsList<IDType> = {
