@@ -84,9 +84,9 @@ const NationsListScreen = ({
 
   return (
     <View style={styles.nationsScreenContainer}>
-      <View style={styles.card}>
+      {/* <View style={styles.card}>
         <ProgressiveImage style={styles.headerBackground} source={{ uri }} />
-      </View>
+      </View> */}
       {/* <ScreenTitle title={i18n.t('screens.nations.title')} /> */}
       <SectionList
         renderItem={(item) => {
