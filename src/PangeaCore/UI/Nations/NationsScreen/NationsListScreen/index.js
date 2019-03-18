@@ -109,12 +109,12 @@ const NationsListScreen = ({
     sortedNationsNew,
     nation =>
       nation.nationName === 'BITNATION' ||
-      nation.nationName === 'Republica Catalana' ||
+      nation.nationName === 'República Catalana' ||
       nation.nationName === 'Digital Nomads' ||
       nation.nationName === 'De Pijp Nation' ||
-      nation.nationName === 'Ideais Radicais' ||
+      nation.nationName === 'Ideias Radicais' ||
       nation.nationName === 'Liberland' ||
-      nation.nationName === 'TEDx' ||
+      nation.nationName === 'TEDx ' ||
       nation.nationName === 'Network Society' ||
       nation.nationName === 'TAZ Nation' ||
       nation.nationName === 'Serenissima Republic of Venice',
