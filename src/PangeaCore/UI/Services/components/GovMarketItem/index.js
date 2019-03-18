@@ -30,6 +30,8 @@ export type GovMarketItemProps = {
   imageUri: string,
 
   onPress: Function,
+
+  bannerImage: string
 };
 
 /**
@@ -38,7 +40,7 @@ export type GovMarketItemProps = {
  */
 
 const GovMarketItem = ({
-  uri, imageUri, description, title, subTitle, onPress,
+  imageUri, description, title, subTitle, onPress,
 }: GovMarketItemProps) => (
   <TouchableOpacity onPress={onPress}>
     <View style={styles.container}>

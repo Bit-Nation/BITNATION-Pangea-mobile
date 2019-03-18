@@ -72,229 +72,7 @@ const ServicesScreen = ({
           />
         </View> */}
       </View>
-      {/* <ScrollTabView
-        initialPage={0}
-        tabBarBackgroundColor={Colors.BitnationBlackAlphaColor}
-        tabBarActiveTextColor={Colors.BitnationLinkOrangeColor}
-        tabBarInactiveTextColor={Colors.BitnationLinkOrangeColor}
-        tabBarUnderlineStyle={styles.tabBarUnderlineStyle}
-        tabBarTextStyle={styles.tabBarTextStyle}
-        renderTabBar={() => <DefaultTabBar />}
-      >
-        <ScrollTabView
-          tabLabel="DAPPS"
-          initialPage={0}
-          tabBarBackgroundColor={Colors.lightFade}
-          tabBarActiveTextColor={Colors.white}
-          tabBarInactiveTextColor={Colors.white}
-          tabBarUnderlineStyle={styles.subTabBarUnderlineStyle}
-          tabBarTextStyle={styles.subTabBarTextStyle}
-          tabBarContainerStyle={styles.subTabBarContainerStyle}
-          renderTabBar={() => <DefaultTabBar />}
-        >
-          <View tabLabel="IDENTITY">
-            <DappScreen
-              navigator={navigator}
-              buttonTitle="USE DAPP"
-              subTitleTable="SIMILAR DAPPS"
-              list={dAppData}
-              imageProfile={AssetsImages.imgDapp}
-            />
-          </View>
-          <View tabLabel="REGISTRIES">
-            <DappScreen
-              navigator={navigator}
-              buttonTitle="USE DAPP"
-              subTitleTable="SIMILAR DAPPS"
-              list={dAppData}
-              imageProfile={AssetsImages.imgDapp}
-            />
-          </View>
-          <View tabLabel="EDUCATION">
-            <DappScreen
-              navigator={navigator}
-              buttonTitle="USE DAPP"
-              subTitleTable="SIMILAR DAPPS"
-              list={dAppData}
-              imageProfile={AssetsImages.imgDapp}
-            />
-          </View>
-          <View tabLabel="SECURITY">
-            <DappScreen
-              navigator={navigator}
-              buttonTitle="USE DAPP"
-              subTitleTable="SIMILAR DAPPS"
-              list={dAppData}
-              imageProfile={AssetsImages.imgDapp}
-            />
-          </View>
-          <View tabLabel="JUSTICE">
-            <DappScreen
-              navigator={navigator}
-              buttonTitle="USE DAPP"
-              subTitleTable="SIMILAR DAPPS"
-              list={dAppData}
-              imageProfile={AssetsImages.imgDapp}
-            />
-          </View>
-        </ScrollTabView>
-        <ScrollTabView
-          tabLabel="CONTRACTS"
-          initialPage={0}
-          tabBarBackgroundColor={Colors.lightFade}
-          tabBarActiveTextColor={Colors.white}
-          tabBarInactiveTextColor={Colors.white}
-          tabBarUnderlineStyle={styles.subTabBarUnderlineStyle}
-          tabBarTextStyle={styles.subTabBarTextStyle}
-          tabBarContainerStyle={styles.subTabBarContainerStyle}
-          renderTabBar={() => <DefaultTabBar />}
-        >
-          <View tabLabel="IDENTITY">
-            <ContractScreen
-              buttonTitle="COPY CONTRACT CODE"
-              subTitleTable="SIMILAR CONTRACTS"
-              list={contractData}
-              imageProfile={AssetsImages.imgContract}
-            />
-          </View>
-          <View tabLabel="REGISTRIES">
-            <ContractScreen
-              buttonTitle="COPY CONTRACT CODE"
-              subTitleTable="SIMILAR CONTRACTS"
-              list={contractData}
-              imageProfile={AssetsImages.imgContract}
-            />
-          </View>
-          <View tabLabel="EDUCATION">
-            <ContractScreen
-              buttonTitle="COPY CONTRACT CODE"
-              subTitleTable="SIMILAR CONTRACTS"
-              list={contractData}
-              imageProfile={AssetsImages.imgContract}
-            />
-          </View>
-          <View tabLabel="SECURITY">
-            <ContractScreen
-              buttonTitle="COPY CONTRACT CODE"
-              subTitleTable="SIMILAR CONTRACTS"
-              list={contractData}
-              imageProfile={AssetsImages.imgContract}
-            />
-          </View>
-          <View tabLabel="JUSTICE">
-            <ContractScreen
-              buttonTitle="COPY CONTRACT CODE"
-              subTitleTable="SIMILAR CONTRACTS"
-              list={contractData}
-              imageProfile={AssetsImages.imgContract}
-            />
-          </View>
-        </ScrollTabView>
-        <ScrollTabView
-          tabLabel="SERVICES"
-          initialPage={0}
-          tabBarBackgroundColor={Colors.lightFade}
-          tabBarActiveTextColor={Colors.white}
-          tabBarInactiveTextColor={Colors.white}
-          tabBarUnderlineStyle={styles.subTabBarUnderlineStyle}
-          tabBarTextStyle={styles.subTabBarTextStyle}
-          tabBarContainerStyle={styles.subTabBarContainerStyle}
-          renderTabBar={() => <DefaultTabBar />}
-        >
-          <View tabLabel="IDENTITY">
-            <ServiceScreen
-              buttonTitle="USE SERVICE"
-              subTitleTable="SIMILAR SERVICES"
-              list={serviceData}
-              imageProfile={AssetsImages.imgService}
-            />
-          </View>
-          <View tabLabel="REGISTRIES">
-            <ServiceScreen
-              buttonTitle="USE SERVICE"
-              subTitleTable="SIMILAR SERVICES"
-              list={serviceData}
-              imageProfile={AssetsImages.imgService}
-            />
-          </View>
-          <View tabLabel="EDUCATION">
-            <ServiceScreen
-              buttonTitle="USE SERVICE"
-              subTitleTable="SIMILAR SERVICES"
-              list={serviceData}
-              imageProfile={AssetsImages.imgService}
-            />
-          </View>
-          <View tabLabel="SECURITY">
-            <ServiceScreen
-              buttonTitle="USE SERVICE"
-              subTitleTable="SIMILAR SERVICES"
-              list={serviceData}
-              imageProfile={AssetsImages.imgService}
-            />
-          </View>
-          <View tabLabel="JUSTICE">
-            <ServiceScreen
-              buttonTitle="USE SERVICE"
-              subTitleTable="SIMILAR SERVICES"
-              list={serviceData}
-              imageProfile={AssetsImages.imgService}
-            />
-          </View>
-        </ScrollTabView>
-        <ScrollTabView
-          tabLabel="PRODUCTS"
-          initialPage={0}
-          tabBarBackgroundColor={Colors.lightFade}
-          tabBarActiveTextColor={Colors.white}
-          tabBarInactiveTextColor={Colors.white}
-          tabBarUnderlineStyle={styles.subTabBarUnderlineStyle}
-          tabBarTextStyle={styles.subTabBarTextStyle}
-          tabBarContainerStyle={styles.subTabBarContainerStyle}
-          renderTabBar={() => <DefaultTabBar />}
-        >
-          <View tabLabel="IDENTITY">
-            <ProductScreen
-              buttonTitle="USE PRODUCT"
-              subTitleTable="SIMILAR PRODUCTS"
-              list={productData}
-              imageProfile={AssetsImages.imgProduct}
-            />
-          </View>
-          <View tabLabel="REGISTRIES">
-            <ProductScreen
-              buttonTitle="USE PRODUCT"
-              subTitleTable="SIMILAR PRODUCTS"
-              list={productData}
-              imageProfile={AssetsImages.imgProduct}
-            />
-          </View>
-          <View tabLabel="EDUCATION">
-            <ProductScreen
-              buttonTitle="USE PRODUCT"
-              subTitleTable="SIMILAR PRODUCTS"
-              list={productData}
-              imageProfile={AssetsImages.imgProduct}
-            />
-          </View>
-          <View tabLabel="SECURITY">
-            <ProductScreen
-              buttonTitle="USE PRODUCT"
-              subTitleTable="SIMILAR PRODUCTS"
-              list={productData}
-              imageProfile={AssetsImages.imgProduct}
-            />
-          </View>
-          <View tabLabel="JUSTICE">
-            <ProductScreen
-              buttonTitle="USE PRODUCT"
-              subTitleTable="SIMILAR PRODUCTS"
-              list={productData}
-              imageProfile={AssetsImages.imgProduct}
-            />
-          </View>
-        </ScrollTabView>
-      </ScrollTabView> */}
+
       <ScrollTabView
         initialPage={0}
         tabBarBackgroundColor={Colors.BitnationBlackAlphaColor}
@@ -310,7 +88,7 @@ const ServicesScreen = ({
             buttonTitle='USE DAPP'
             subTitleTable='SIMILAR DAPPS'
             list={dAppData}
-            imageProfile={AssetsImages.imgDapp}
+
           />
         </View>
         <View tabLabel='CONTRACTS'>
@@ -318,7 +96,7 @@ const ServicesScreen = ({
             buttonTitle='COPY CONTRACT CODE'
             subTitleTable='SIMILAR CONTRACTS'
             list={contractData}
-            imageProfile={AssetsImages.imgContract}
+
           />
         </View>
         <View tabLabel='SERVICES'>
@@ -326,7 +104,7 @@ const ServicesScreen = ({
             buttonTitle='USE SERVICE'
             subTitleTable='SIMILAR SERVICES'
             list={serviceData}
-            imageProfile={AssetsImages.imgService}
+
           />
         </View>
         <View tabLabel='PRODUCTS'>
@@ -334,7 +112,7 @@ const ServicesScreen = ({
             buttonTitle='USE PRODUCT'
             subTitleTable='SIMILAR PRODUCTS'
             list={productData}
-            imageProfile={AssetsImages.imgProduct}
+
           />
         </View>
       </ScrollTabView>
