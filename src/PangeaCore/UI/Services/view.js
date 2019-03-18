@@ -41,24 +41,24 @@ const ServicesScreen = ({
   onPressHelp,
   children,
   setIsShowWebViewModal,
-  navigator
+  navigator,
 }: Props) => (
   <View style={styles.screenContainer}>
     {children}
     <Background />
     <Header
-          title={i18n.t('screens.services.tabTitle').toUpperCase()}
-          leftIcon={<Image source={AssetsImages.menuIcon} />}
-          onLeftFunc={() =>
+      title={i18n.t('screens.services.tabTitle').toUpperCase()}
+      leftIcon={<Image source={AssetsImages.menuIcon} />}
+      onLeftFunc={() =>
             navigator.toggleDrawer({
-              side: "left",
-              animated: true
+              side: 'left',
+              animated: true,
             })
           }
-        />
+    />
     <View style={styles.bodyContainer}>
-      <View style={styles.searchBarContainer}>
-        <View style={styles.inputViewContainer}>
+      <View>
+        {/* <View style={styles.inputViewContainer}>
           <TextInput
             style={styles.textInputStyle}
             placeholder="Search by name, type or category..."
@@ -70,7 +70,7 @@ const ServicesScreen = ({
             source={AssetsImages.searchIcon}
             style={styles.searchIconStyle}
           />
-        </View>
+        </View> */}
       </View>
       {/* <ScrollTabView
         initialPage={0}
@@ -304,35 +304,35 @@ const ServicesScreen = ({
         tabBarTextStyle={styles.tabBarTextStyle}
         renderTabBar={() => <DefaultTabBar />}
       >
-        <View tabLabel="DAPPS">
+        <View tabLabel='DAPPS'>
           <DappScreen
             navigator={navigator}
-            buttonTitle="USE DAPP"
-            subTitleTable="SIMILAR DAPPS"
+            buttonTitle='USE DAPP'
+            subTitleTable='SIMILAR DAPPS'
             list={dAppData}
             imageProfile={AssetsImages.imgDapp}
           />
         </View>
-        <View tabLabel="CONTRACTS">
+        <View tabLabel='CONTRACTS'>
           <ContractScreen
-            buttonTitle="COPY CONTRACT CODE"
-            subTitleTable="SIMILAR CONTRACTS"
+            buttonTitle='COPY CONTRACT CODE'
+            subTitleTable='SIMILAR CONTRACTS'
             list={contractData}
             imageProfile={AssetsImages.imgContract}
           />
         </View>
-        <View tabLabel="SERVICES">
+        <View tabLabel='SERVICES'>
           <ServiceScreen
-            buttonTitle="USE SERVICE"
-            subTitleTable="SIMILAR SERVICES"
+            buttonTitle='USE SERVICE'
+            subTitleTable='SIMILAR SERVICES'
             list={serviceData}
             imageProfile={AssetsImages.imgService}
           />
         </View>
-        <View tabLabel="PRODUCTS">
+        <View tabLabel='PRODUCTS'>
           <ProductScreen
-            buttonTitle="USE PRODUCT"
-            subTitleTable="SIMILAR PRODUCTS"
+            buttonTitle='USE PRODUCT'
+            subTitleTable='SIMILAR PRODUCTS'
             list={productData}
             imageProfile={AssetsImages.imgProduct}
           />
@@ -342,24 +342,24 @@ const ServicesScreen = ({
     <LucyButton onPress={() => setShowModal(LUCY_MODAL_KEY)} />
     <PopOverModal
       visible={showModal === LUCY_MODAL_KEY}
-      onCancel={() => setShowModal("")}
-      desText="Tailor make your own governance system through choosing dapps, contracts, services and products!"
+      onCancel={() => setShowModal('')}
+      desText='Tailor make your own governance system through choosing dapps, contracts, services and products!'
       options={[
         {
-          text: "Start a new Service",
+          text: 'Start a new Service',
           onPress: () => {
-            setShowModal("");
+            setShowModal('');
             setIsShowWebViewModal(true);
-          }
+          },
         },
         {
-          text: "Report a Service",
-          onPress: () => {}
+          text: 'Report a Service',
+          onPress: () => {},
         },
         {
-          text: "Help",
-          onPress: onPressHelp
-        }
+          text: 'Help',
+          onPress: onPressHelp,
+        },
       ]}
     />
   </View>
