@@ -1,10 +1,10 @@
 // @flow
 
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Platform } from 'react-native';
 import { connect } from 'react-redux';
 import { Button } from 'native-base';
-
+import i18next from 'i18next';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import i18n from 'pangea-common/i18n';
 import { screen } from 'pangea-common-reactnative/Screens';
@@ -164,7 +164,22 @@ class SettingsListScreen extends NavigatorComponent<Props, State> {
           <View style={styles.buttonViewStyle}>
             <Button
               rounded
-              onPress={() => { this.props.navigator.pop(); }}
+              onPress={() => {
+                i18next.changeLanguage('en', (err, t) => {
+                    if (err) {
+                      return console.log('something went wrong loading', err);
+                    }
+                    t('en'); // -> same as i18next.t
+                  });
+ 
+                  // Todo: need to export this method
+                  if (Platform.OS === 'ios') {
+                    this.props.navigator.pop();
+                  } else {
+                    this.props.navigator.dismissModal();
+                  }
+                }
+              }
 
               style={styles.controlButton}
             >
