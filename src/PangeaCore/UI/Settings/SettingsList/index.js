@@ -1,12 +1,13 @@
 // @flow
 
 import React from 'react';
-import { View, Text, Alert } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { Button } from 'native-base';
-import i18next from 'i18next';
+
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import i18n from 'pangea-common/i18n';
+import { screen } from 'pangea-common-reactnative/Screens';
 import BackgroundImage from 'pangea-common-reactnative/UI/BackgroundImage';
 import styles from './styles';
 import FakeNavigationBar from 'pangea-common-reactnative/UI/FakeNavigationBar';
@@ -94,12 +95,12 @@ class SettingsListScreen extends NavigatorComponent<Props, State> {
         <BackgroundImage />
         <FakeNavigationBar />
         <View style={styles.contentView}>
-          {/*<View style={styles.itemViewStyle}>
+          {/* <View style={styles.itemViewStyle}>
             <DropDown
               label={i18n.t('screens.settings.chooseLanguage')}
               data={data}
             />
-          </View>*/}
+          </View> */}
           <View style={styles.itemViewStyle}>
             <DropDown
               label={i18n.t('screens.settings.chooseNetwork')}
@@ -150,17 +151,21 @@ class SettingsListScreen extends NavigatorComponent<Props, State> {
               />
             </View>
           </View>
+          <TouchableOpacity
+            style={styles.itemViewStyle}
+            onPress={() => { this.props.navigator.push(screen('CONFIRM_KEY_INSTRUCTION_SCREEN')); }
+        }
+          >
+            <Text style={styles.itemSelectText}>
+              {i18n.t('screens.settings.confirmPrivateKey')}
+            </Text>
+
+          </TouchableOpacity>
           <View style={styles.buttonViewStyle}>
             <Button
               rounded
-              onPress={() =>
-                i18next.changeLanguage('hi', (err, t) => {
-                  if (err) {
-                    return console.log('something went wrong loading', err);
-                  }
-                  t('hi'); // -> same as i18next.t
-                })
-              }
+              onPress={() => { this.props.navigator.pop(); }}
+
               style={styles.controlButton}
             >
               <Text style={styles.controlButtonText}>
