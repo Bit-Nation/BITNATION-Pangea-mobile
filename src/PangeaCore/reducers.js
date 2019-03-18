@@ -10,7 +10,7 @@ import activity, { type State as ActivityState } from '@pangea/activity/activity
 import testingMode, { type State as TestingModeState } from '@pangea/accounts/testingMode-reducers';
 import chat, { type State as ChatState } from '@pangea/chat/chat-reducers';
 import settings, { type State as SettingsState } from '@pangea/settings/settings-reducers';
-import dApps, { type State as DAppsState } from '@pangea/dApps/dApps-reducers';
+import dApps, { type State as DAppsState } from '@pangea/dapps/dapps-reducers';
 import documents, { type State as DocumentsState } from '@pangea/documents/documents-reducers';
 import contacts, { type State as ContactsState } from '@pangea/contacts/contacts-reducers';
 

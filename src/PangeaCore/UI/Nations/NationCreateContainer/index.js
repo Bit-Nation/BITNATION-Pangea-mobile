@@ -17,7 +17,7 @@ import { nationIsModified, type State as ModifyNationState } from '@pangea/natio
 import type {
   EditingNationType,
   NationIdType,
-} from '@pangea/nations/Nation-types.js';
+} from '@pangea/nations/nation-types.js';
 import type { Navigator } from 'pangea-common-reactnative/ReactNativeNavigation-types';
 
 type Props = {

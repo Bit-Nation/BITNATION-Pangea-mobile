@@ -23,7 +23,7 @@ import FakeNavigationBar from 'pangea-common-reactnative/UI/FakeNavigationBar';
 import Loading from 'pangea-common-reactnative/UI/Loading';
 import { resolveNation } from '@pangea/nations/nations-utils';
 import deprecatedCreateGiftedChatMessageObject from '@pangea/chat/chat-utils';
-import type { NationIdType, NationType } from '@pangea/nations/Nation-types';
+import type { NationIdType, NationType } from '@pangea/nations/nation-types';
 import type { Navigator } from 'pangea-common-reactnative/ReactNativeNavigation-types';
 import LucyBot from '../../../vendor/LucyBot';
 import { getCurrentAccount } from '@pangea/accounts/accounts-reducers';

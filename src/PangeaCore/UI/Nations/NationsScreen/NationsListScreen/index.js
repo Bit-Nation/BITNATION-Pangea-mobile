@@ -14,7 +14,7 @@ import FakeNavigationBar from 'pangea-common-reactnative/UI/FakeNavigationBar';
 import i18n from 'pangea-common/i18n';
 import { resolveStatus, statusColor } from '@pangea/nations/nations-utils';
 import Loading from 'pangea-common-reactnative/UI/Loading';
-import type { NationIdType, NationType } from '@pangea/nations/Nation-types';
+import type { NationIdType, NationType } from '@pangea/nations/nation-types';
 import type { NationTab } from '@pangea/nations/nations-actions';
 import ScreenTitle from 'pangea-common-reactnative/UI/ScreenTitle';
 

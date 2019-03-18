@@ -10,7 +10,7 @@ import PanelView from 'pangea-common-reactnative/UI/PanelView';
 import i18n from 'pangea-common/i18n';
 import { prettyWalletBalance } from '@pangea/wallet/formatters';
 import { resolveWallet } from '@pangea/wallet/wallet-utils';
-import type { WalletType } from 'pangea-common/types/Wallet-types';
+import type { WalletType } from 'pangea-common/types/wallet-types';
 
 type Props = {
   /**

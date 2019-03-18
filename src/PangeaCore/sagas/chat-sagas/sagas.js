@@ -25,7 +25,7 @@ import ChatService from '@pangea/chat/chat-service';
 import { getCurrentAccount } from '@pangea/accounts/accounts-sagas/sagas';
 import { createGiftedChatMessageObject } from '@pangea/chat/chat-utils';
 import { panthalassaEthPubToAddress, panthalassaMarkMessagesAsRead } from '@pangea/panthalassa';
-import type { ChatType, ProfileType, PanthalassaChatType, GiftedChatMessageType } from '@pangea/chat/Chat-types';
+import type { ChatType, ProfileType, PanthalassaChatType, GiftedChatMessageType } from '@pangea/chat/chat-types';
 import { getChatById } from '@pangea/chat/chat-reducers';
 
 /**

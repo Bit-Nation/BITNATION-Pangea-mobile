@@ -16,7 +16,7 @@ import i18n from 'pangea-common/i18n';
 import styles from '../../Nations/NationsScreen/NationsListScreen/styles';
 import FakeNavigationBar from 'pangea-common-reactnative/UI/FakeNavigationBar';
 import type { State as WalletState } from '@pangea/wallet/wallet-reducers';
-import type { WalletType } from 'pangea-common/types/Wallet-types';
+import type { WalletType } from 'pangea-common/types/wallet-types';
 import type { Account } from 'pangea-common/types/accounts-types';
 import type { Navigator } from 'pangea-common-reactnative/ReactNativeNavigation-types';
 import { getCurrentAccount } from '@pangea/accounts/accounts-reducers';

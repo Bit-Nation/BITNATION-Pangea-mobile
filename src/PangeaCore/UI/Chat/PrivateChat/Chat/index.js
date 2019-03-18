@@ -15,14 +15,14 @@ import type { Navigator } from 'pangea-common-reactnative/ReactNativeNavigation-
 import { getCurrentAccount } from '@pangea/accounts/accounts-reducers';
 import { sendMessage, loadChatMessages, changeUnreadStatus } from '@pangea/chat/chat-actions';
 import { getChatById } from '@pangea/chat/chat-reducers';
-import type { ChatType, GiftedChatMessageType, ProfileType } from '@pangea/chat/Chat-types';
+import type { ChatType, GiftedChatMessageType, ProfileType } from '@pangea/chat/chat-types';
 import type { WalletType } from 'pangea-common/types/wallet-types';
 import i18n from 'pangea-common/i18n';
 import type { DAppChatContext } from '@pangea/dapps/dapp-types';
 import type { State as DAppsState } from '@pangea/dapps/dapps-reducers';
 import { getDApp } from '@pangea/dapps/dapps-reducers';
 import { openDApp, setDAppContext } from '@pangea/dapps/dapps-actions';
-import DAppMessage from '../../../dapps/DAppMessage';
+import DAppMessage from '../../../Dapps/DAppMessage';
 import type { Account } from 'pangea-common/types/accounts-types';
 import Colors from 'pangea-common-reactnative/styles/colors';
 import AssetsImages from 'pangea-common-reactnative/assets/AssetsImages';

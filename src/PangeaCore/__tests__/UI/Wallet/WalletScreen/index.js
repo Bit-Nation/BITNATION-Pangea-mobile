@@ -4,7 +4,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
 
-import { initialState } from '@pangea/Wallet/wallet-reducers';
+import { initialState } from '@pangea/wallet/wallet-reducers';
 import WalletScreen from '../../../../UI/Wallet/WalletScreen';
 import navigatorMock from '../../../../__mocks__/Navigator';
 

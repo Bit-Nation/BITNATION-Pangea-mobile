@@ -18,7 +18,7 @@ import PanelViewAlert from 'pangea-common-reactnative/UI/PanelViewAlert';
 import PanelViewCitizen from 'pangea-common-reactnative/UI/PanelViewCitizen';
 import { nationIsValid, resolveStatus } from '@pangea/nations/nations-utils';
 import type { Navigator } from 'pangea-common-reactnative/ReactNativeNavigation-types';
-import type { NationType } from '@pangea/nations/Nation-types';
+import type { NationType } from '@pangea/nations/nation-types';
 import ScreenTitle from 'pangea-common-reactnative/UI/ScreenTitle';
 
 type Props = {

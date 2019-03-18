@@ -11,7 +11,7 @@ import styles from './styles';
 import Images from 'pangea-common-reactnative/assets/AssetsImages';
 import WalletCard from '../../../components/WalletCard';
 import { prettyWalletBalance } from '@pangea/wallet/formatters';
-import type { WalletType } from 'pangea-common/types/Wallet-types';
+import type { WalletType } from 'pangea-common/types/wallet-types';
 
 type Props = {
   wallets: Array<WalletType>,

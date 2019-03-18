@@ -13,7 +13,7 @@
     "ios": "flow && node_modules/.bin/react-native run-ios",
     "android": "./scripts/android-start.sh",
     "android:log": "./scripts/android-logview.sh",
-    "postinstall": "./node_modules/.bin/rn-nodeify --install 'stream,buffer,vm,crypto,string_decoder,events,assert' --hack",
+    "postinstall": "./node_modules/.bin/rn-nodeify --install 'stream,buffer,vm,crypto,string_decoder,events,assert' --hack && node_modules/.bin/lerna bootstrap",
     "docs": "node_modules/.bin/documentation build src/services/container.js -f md > docs/main.md",
     "build:ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/Pangea/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios'"
   },

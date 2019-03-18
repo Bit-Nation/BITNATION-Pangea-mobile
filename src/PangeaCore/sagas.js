@@ -14,7 +14,7 @@ import serviceContainer from './sagas/serviceContainer-sagas';
 import modifyNation from '@pangea/nations/modifyNation-sagas';
 import nations from '@pangea/nations/nations-sagas';
 import txProcessor from '@pangea/nations/txProcessor-sagas';
-import dApps from '@pangea/dApps/dApps-sagas';
+import dApps from '@pangea/dapps/dapps-sagas';
 import migration from '@pangea/migration/migration-sagas';
 import upstream from './sagas/upstream-sagas';
 import documents from '@pangea/documents/documents-sagas';

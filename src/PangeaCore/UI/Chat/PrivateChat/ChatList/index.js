@@ -22,7 +22,7 @@ import type {
   ProfileType,
   ChatType,
   GiftedChatMessageType,
-} from '@pangea/chat/Chat-types';
+} from '@pangea/chat/chat-types';
 import type { Navigator } from 'pangea-common-reactnative/ReactNativeNavigation-types';
 import InviteSentModal from './InviteSentModal';
 import { panthalassaIdentityPublicKey } from '@pangea/panthalassa';

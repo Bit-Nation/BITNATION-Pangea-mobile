@@ -2,7 +2,7 @@
 
 import { MediaQueryStyleSheet } from 'react-native-responsive';
 import Colors from 'pangea-common-reactnative/styles/colors';
-import GlobalStyles from 'pangea-common-reactnative/Styles';
+import GlobalStyles from 'pangea-common-reactnative/styles';
 
 const styles = MediaQueryStyleSheet.create({
   ...GlobalStyles,

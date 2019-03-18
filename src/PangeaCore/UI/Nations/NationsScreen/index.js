@@ -21,7 +21,7 @@ import { startNationCreation } from '@pangea/nations/modifyNation-actions';
 import type { Navigator } from 'pangea-common-reactnative/ReactNativeNavigation-types';
 import { type State as NationState } from '@pangea/nations/nations-reducers';
 import { type State as WalletState } from '@pangea/wallet/wallet-reducers';
-import type { NationIdType } from '@pangea/nations/Nation-types';
+import type { NationIdType } from '@pangea/nations/nation-types';
 import type { NationTab } from '@pangea/nations/nations-actions';
 import LucyButton from 'pangea-common-reactnative/UI/LucyButton';
 import PopOverModal from '../../components/PopOverModal';

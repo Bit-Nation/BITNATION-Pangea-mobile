@@ -9,7 +9,7 @@ import type { AccountSettingsType as DBSettings } from '@pangea/database/schemat
 import { settingsUpdated } from '@pangea/settings/settings-actions';
 import { convertFromDatabase, convertToDatabase } from '@pangea/settings/settings-utils';
 import type { LoadSettings, SaveSettings } from '@pangea/settings/settings-actions';
-import type { SettingsType } from '@pangea/settings/Settings-types';
+import type { SettingsType } from '@pangea/settings/settings-types';
 
 /**
  * @desc Generator to be called on database change. Used to update settings.

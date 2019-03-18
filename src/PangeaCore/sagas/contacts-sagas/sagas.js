@@ -12,7 +12,7 @@ import {
 } from '@pangea/contacts/contacts-actions.js';
 import { getProfile } from '../chat-sagas/sagas';
 import type { AddContactAction } from '@pangea/contacts/contacts-actions';
-import type { Contact } from '@pangea/contacts/Contacts-types';
+import type { Contact } from '@pangea/contacts/contacts-types';
 
 /**
  * @desc Fetch list of contacts.

@@ -22,7 +22,7 @@ import i18n from 'pangea-common/i18n';
 import AssetsImage from 'pangea-common-reactnative/assets/AssetsImages';
 import { emptyNation, nationIsModified, type State as ModifyNationState } from '@pangea/nations/modifyNation-reducers';
 import { nationIsValid } from '@pangea/nations/nations-utils';
-import type { EditingNationType } from '@pangea/nations/Nation-types';
+import type { EditingNationType } from '@pangea/nations/nation-types';
 import type { Navigator } from 'pangea-common-reactnative/ReactNativeNavigation-types';
 import ScreenTitle from 'pangea-common-reactnative/UI/ScreenTitle';
 

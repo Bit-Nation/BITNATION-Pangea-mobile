@@ -22,7 +22,7 @@ import NavigatorComponent from '../../NavigatorComponent';
 import { alert, errorAlert } from 'pangea-common/alerts';
 import { nationIsDraft } from '@pangea/nations/nations-utils';
 import type { Navigator } from 'pangea-common-reactnative/ReactNativeNavigation-types';
-import type { NationIdType, NationType } from '@pangea/nations/Nation-types';
+import type { NationIdType, NationType } from '@pangea/nations/nation-types';
 
 const EDIT_BUTTON = 'EDIT_BUTTON';
 

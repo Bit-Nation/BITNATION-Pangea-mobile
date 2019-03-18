@@ -5,8 +5,8 @@ import { eventChannel, type Channel } from 'redux-saga';
 
 import { ServiceContainer } from 'pangea-common/service-container';
 import { UpstreamService } from '@pangea/dapps/upstream-services/upstream';
-import { stopDApp } from '@pangea/dApps/dApps-actions';
-import { fetchDApps, stopDAppSaga } from '@pangea/dApps/dapps-sagas/sagas';
+import { stopDApp } from '@pangea/dapps/dapps-actions';
+import { fetchDApps, stopDAppSaga } from '@pangea/dapps/dapps-sagas/sagas';
 
 import { panthalassaMessagePersisted } from '@pangea/chat/chat-actions';
 

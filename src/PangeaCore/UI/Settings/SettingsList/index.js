@@ -12,7 +12,7 @@ import styles from './styles';
 import FakeNavigationBar from 'pangea-common-reactnative/UI/FakeNavigationBar';
 import DropDown from '../../components/DropDown';
 import SwitchComponent from '../../components/SwitchComponent';
-import type { SettingsItem } from '@pangea/settings/Settings-types';
+import type { SettingsItem } from '@pangea/settings/settings-types';
 import NavigatorComponent from '../../NavigatorComponent';
 import type { Navigator } from 'pangea-common-reactnative/ReactNativeNavigation-types';
 import { logout } from '@pangea/accounts/accounts-actions';

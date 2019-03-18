@@ -9,7 +9,7 @@ import styles from './styles';
 import FakeNavigationBar from 'pangea-common-reactnative/UI/FakeNavigationBar';
 import ScreenTitle from 'pangea-common-reactnative/UI/ScreenTitle';
 import ListItem from 'pangea-common-reactnative/UI/ListItem';
-import type { Account } from 'pangea-common/types/Accounts-types';
+import type { Account } from 'pangea-common/types/accounts-types';
 import i18n from 'pangea-common/i18n';
 import BitnationCover from 'pangea-common-reactnative/assets/images/BitnationCover.png';
 import bitnationIntro from 'pangea-common-reactnative/UI/assets/images/bitnationIntro.gif';
