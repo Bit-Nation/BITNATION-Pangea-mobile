@@ -1,5 +1,5 @@
 import { Platform } from "react-native";
-import { isiPhoneX } from "../../normalizer";
+import { isiPhoneX } from "../../utils/normalizer";
 import Colors from "../../styles/colors";
 
 export default {

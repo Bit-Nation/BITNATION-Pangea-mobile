@@ -4,10 +4,8 @@ import React from "react";
 import { View, SectionList } from "react-native";
 import _ from "lodash";
 
-import BackgroundImage from "pangea-common-reactnative/UI/BackgroundImage";
-import LucyButton from "pangea-common-reactnative/UI/LucyButton";
 import styles from "./styles";
-import ProgressiveImage from "../../../components/ProgressiveImage";
+import featuredNationsObject from '../nationImageshelper';
 import NationListItem from "../../NationListItem";
 import NationListHeader from "pangea-common-reactnative/UI/ItemsListHeader";
 import FakeNavigationBar from "pangea-common-reactnative/UI/FakeNavigationBar";

@@ -25,6 +25,7 @@ import type { NationIdType } from "@pangea/nations/nation-types";
 import type { NationTab } from "@pangea/nations/nations-actions";
 import LucyButton from "pangea-common-reactnative/UI/LucyButton";
 import PopOverModal from "../../components/PopOverModal";
+import Header from 'pangea-common-reactnative/UI/Header';
 
 const MENU_BUTTON = 'MENU_BUTTON';
 const NEW_BUTTON = 'NEW_BUTTON';

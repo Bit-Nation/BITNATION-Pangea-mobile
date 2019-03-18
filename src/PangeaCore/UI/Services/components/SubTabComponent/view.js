@@ -42,7 +42,7 @@ type Props = {
  */
 
 const SubTabComponent = ({
-  selectedItem: { uri, description, subTitle, title, readmore },
+  selectedItem: { uri, description, subTitle, title, bannerImage, readmore },
   buttonTitle,
   subTitleTable,
   list,

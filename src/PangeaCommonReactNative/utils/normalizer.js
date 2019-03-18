@@ -6,7 +6,7 @@ import {
   FOUR_DOT_SEVEN_INCHES,
   FIVE_DOT_FIVE_INCHES,
   FIVE_DOT_EIGHT_INCHES,
-} from '../global/Constants';
+} from 'pangea-common/Constants';
 
 const {
   Dimensions, Platform,
