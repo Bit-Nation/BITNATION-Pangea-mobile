@@ -73,26 +73,26 @@ const styles = MediaQueryStyleSheet.create({
     height: '75%',
     backgroundColor: Colors.white,
     opacity: 0.85,
-    borderRadius: 14,
+    borderRadius: 5,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  // triangle: {
-  //   width: 0,
-  //   height: 0,
-  //   backgroundColor: 'transparent',
-  //   borderStyle: 'solid',
-  //   // borderRightWidth: modalWrapContentHeight * 0.05,
-  //   borderTopWidth: 30,
-  //   borderRightColor: 'transparent',
-  //   borderTopColor: Colors.white,
-  //   position: 'absolute',
-  //   bottom: 0,
-  //   right: 40,
-  //   transform: [
-  //     { rotate: '90deg' },
-  //   ],
-  // },
+  triangle: {
+    width: 0,
+    height: 0,
+    backgroundColor: 'transparent',
+    borderStyle: 'solid',
+    borderRightWidth: modalWrapContentHeight * 0.05,
+    borderTopWidth: 30,
+    borderRightColor: 'transparent',
+    borderTopColor: Colors.white,
+    position: 'absolute',
+    bottom: 0,
+    right: 40,
+    transform: [
+      { rotate: '90deg' },
+    ],
+  },
   headerView: {
     backgroundColor: Colors.BitnationLinkOrangeColor,
     height: 40,
@@ -102,7 +102,7 @@ const styles = MediaQueryStyleSheet.create({
     borderTopLeftRadius: 5,
   },
   headerText: {
-    color: Colors.BitnationDarkGrayColor,
+    color: Colors.white,
     fontSize: 25,
     fontWeight: 'bold',
   },
@@ -112,6 +112,7 @@ const styles = MediaQueryStyleSheet.create({
   },
   contentViewModal: {
     flex: 1,
+    paddingTop: 20,
     paddingBottom: 20,
     alignItems: 'center',
     justifyContent: 'center',
@@ -160,7 +161,7 @@ const PopOverModal = ({
   options,
 }: Props) => (
   <Modal
-    animationType='slide'
+    animationType='fade'
     transparent
     visible={visible}
     onRequestClose={onCancel}
@@ -169,9 +170,9 @@ const PopOverModal = ({
       <TouchableOpacity style={styles.modalWrapContent} activeOpacity={1}>
         <View style={styles.modalContent}>
           <View style={styles.contentViewModal}>
-            {desText && <Text style={styles.descriptionText}>{desText}</Text>}
+              {desText && <Text style={styles.descriptionText}>{desText}</Text>}
 
-            {
+              {
                   options.map((option, index) => (
                     <TouchableOpacity
                       style={[styles.modalMenuItem, { borderBottomWidth: index === options.length - 1 ? 0 : 3 }]}
@@ -187,13 +188,7 @@ const PopOverModal = ({
                     </TouchableOpacity>
                   ))
                 }
-            {/* <TouchableOpacity
-                style={styles.modalMenuBackItem}
-                onPress={onCancel}
-              >
-                <Image source={AssetsImages.lucyModalClose} style={styles.lucyCloseIcon} />
-              </TouchableOpacity> */}
-          </View>
+            </View>
         </View>
       </TouchableOpacity>
       <LucyButton style={styles.lucyButtonStyle} onPress={onCancel} />
