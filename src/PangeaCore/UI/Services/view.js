@@ -10,6 +10,7 @@ import DappScreen from "./subTabs/DappScreen";
 import ServiceScreen from "./subTabs/ServiceScreen";
 import ProductScreen from "./subTabs/ProductScreen";
  
+import { screen } from "pangea-common-reactnative/Screens";
 import Colors from "pangea-common-reactnative/styles/colors";
 import AssetsImages from "pangea-common-reactnative/assets/AssetsImages";
 import styles from "./styles";
@@ -132,7 +133,10 @@ const ServicesScreen = ({
         },
         {
           text: 'Report a Service',
-          onPress: () => {},
+          onPress: () => {
+            setShowModal('');
+            navigator.push(screen('INFO_SCREEN'));
+          },
         },
         {
           text: 'Help',
