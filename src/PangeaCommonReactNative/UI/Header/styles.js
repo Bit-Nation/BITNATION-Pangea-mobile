@@ -9,7 +9,7 @@ export default {
         paddingTop: isiPhoneX() ? 35 : 20
       },
       android: {
-        paddingTop: 20
+        paddingTop: 0
       }
     }),
     width: "100%",

@@ -37,6 +37,7 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "creatingNation": null,
+      "groupNationId": null,
       "inProgress": false,
       "myNationIds": Array [],
       "nations": Array [],
@@ -91,6 +92,7 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "creatingNation": null,
+        "groupNationId": null,
         "inProgress": false,
         "myNationIds": Array [],
         "nations": Array [],

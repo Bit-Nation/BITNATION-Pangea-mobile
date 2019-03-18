@@ -37,29 +37,6 @@ ShallowWrapper {
     "nodeType": "class",
     "props": Object {
       "children": Array [
-        <View
-          style={
-            Object {
-              "flex": 0.5,
-            }
-          }
-        >
-          <ProgressiveImage
-            source={
-              Object {
-                "uri": "https://www.ecestaticos.com/imagestatic/clipping/0df/db8/0dfdb8b1b74624f225d5b6112ade8706/jxsi-y-cup-pactan-la-ley-para-amparar-el-referendum-y-la-republica-catalana.jpg?mtime=1483018148",
-              }
-            }
-            style={
-              Object {
-                "backgroundColor": "#BBBDBF",
-                "borderRadius": 0,
-                "height": "100%",
-                "width": "100%",
-              }
-            }
-          />
-        </View>,
         <SectionList
           data={Array []}
           disableVirtualization={false}
@@ -89,52 +66,6 @@ ShallowWrapper {
     },
     "ref": null,
     "rendered": Array [
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "children": <ProgressiveImage
-            source={
-              Object {
-                "uri": "https://www.ecestaticos.com/imagestatic/clipping/0df/db8/0dfdb8b1b74624f225d5b6112ade8706/jxsi-y-cup-pactan-la-ley-para-amparar-el-referendum-y-la-republica-catalana.jpg?mtime=1483018148",
-              }
-            }
-            style={
-              Object {
-                "backgroundColor": "#BBBDBF",
-                "borderRadius": 0,
-                "height": "100%",
-                "width": "100%",
-              }
-            }
-          />,
-          "style": Object {
-            "flex": 0.5,
-          },
-        },
-        "ref": null,
-        "rendered": Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "source": Object {
-              "uri": "https://www.ecestaticos.com/imagestatic/clipping/0df/db8/0dfdb8b1b74624f225d5b6112ade8706/jxsi-y-cup-pactan-la-ley-para-amparar-el-referendum-y-la-republica-catalana.jpg?mtime=1483018148",
-            },
-            "style": Object {
-              "backgroundColor": "#BBBDBF",
-              "borderRadius": 0,
-              "height": "100%",
-              "width": "100%",
-            },
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-        "type": [Function],
-      },
       Object {
         "instance": null,
         "key": undefined,
@@ -173,29 +104,6 @@ ShallowWrapper {
       "nodeType": "class",
       "props": Object {
         "children": Array [
-          <View
-            style={
-              Object {
-                "flex": 0.5,
-              }
-            }
-          >
-            <ProgressiveImage
-              source={
-                Object {
-                  "uri": "https://www.ecestaticos.com/imagestatic/clipping/0df/db8/0dfdb8b1b74624f225d5b6112ade8706/jxsi-y-cup-pactan-la-ley-para-amparar-el-referendum-y-la-republica-catalana.jpg?mtime=1483018148",
-                }
-              }
-              style={
-                Object {
-                  "backgroundColor": "#BBBDBF",
-                  "borderRadius": 0,
-                  "height": "100%",
-                  "width": "100%",
-                }
-              }
-            />
-          </View>,
           <SectionList
             data={Array []}
             disableVirtualization={false}
@@ -225,52 +133,6 @@ ShallowWrapper {
       },
       "ref": null,
       "rendered": Array [
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "children": <ProgressiveImage
-              source={
-                Object {
-                  "uri": "https://www.ecestaticos.com/imagestatic/clipping/0df/db8/0dfdb8b1b74624f225d5b6112ade8706/jxsi-y-cup-pactan-la-ley-para-amparar-el-referendum-y-la-republica-catalana.jpg?mtime=1483018148",
-                }
-              }
-              style={
-                Object {
-                  "backgroundColor": "#BBBDBF",
-                  "borderRadius": 0,
-                  "height": "100%",
-                  "width": "100%",
-                }
-              }
-            />,
-            "style": Object {
-              "flex": 0.5,
-            },
-          },
-          "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "source": Object {
-                "uri": "https://www.ecestaticos.com/imagestatic/clipping/0df/db8/0dfdb8b1b74624f225d5b6112ade8706/jxsi-y-cup-pactan-la-ley-para-amparar-el-referendum-y-la-republica-catalana.jpg?mtime=1483018148",
-              },
-              "style": Object {
-                "backgroundColor": "#BBBDBF",
-                "borderRadius": 0,
-                "height": "100%",
-                "width": "100%",
-              },
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
-          "type": [Function],
-        },
         Object {
           "instance": null,
           "key": undefined,

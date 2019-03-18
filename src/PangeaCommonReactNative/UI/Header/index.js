@@ -9,11 +9,10 @@ type Props = {
   onRightFunc?: () => void
 };
 
-const leftIconDefault = () => {
-  return (
-    <Text style={{ color: "white", fontWeight: "bold", fontSize: 18 }}>JB</Text>
-  );
-};
+const leftIconDefault = () => (
+  <Text style={{ color: "white", fontWeight: "bold", fontSize: 18 }}>JB</Text>
+);
+
 
 const rightIconDefault = () => {
   return <Image source={images.GROUP_ICON} />;
