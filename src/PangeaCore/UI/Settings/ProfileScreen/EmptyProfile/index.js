@@ -24,7 +24,7 @@ class EmptyProfileScreen extends Component<Props> {
   render() {
     return (
       <View style={styles.bodyContainer}>
-        <ScreenTitle title={i18n.t('screens.profile.title')} />
+        {/* <ScreenTitle title={i18n.t('screens.profile.title')} /> */}
 
         <PanelView
           title={i18n.t('screens.profile.empty.createProfilePanel.title')}
