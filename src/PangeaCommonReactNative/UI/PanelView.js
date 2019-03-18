@@ -126,6 +126,7 @@ export default class PanelView extends React.Component<Props> {
             style={styles.panelButton}
             title={buttonTitle}
             onPress={onButtonClick}
+            enabled
           />
         )}
 

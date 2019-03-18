@@ -164,6 +164,7 @@ class ConfirmKeyProcessScreen extends NavigatorComponent<void, State> {
                 title={i18n.t('screens.confirmKey.process.nextButton')}
                 onPress={this.onNextPressed}
                 style={styles.button}
+                enabled
               />
             </View>
 

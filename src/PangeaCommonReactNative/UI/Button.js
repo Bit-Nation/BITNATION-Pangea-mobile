@@ -40,7 +40,7 @@ type Props = {
  * @return {React.Component} A component.
  */
 const CustomButton = ({
-  style, children, onPress, enabled, styleTitle, title, loading, ...props
+  style, children, onPress, enabled = true, styleTitle, title, loading, ...props
 }: Props) => {
   const styles = MediaQueryStyleSheet.create({
     ...GlobalStyles,
