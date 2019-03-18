@@ -1,44 +1,54 @@
-import React from 'react';
-import { View, Image, ScrollView, TouchableOpacity, Share } from 'react-native';
-import { connect } from 'react-redux';
-import { Button, Text } from 'native-base';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import i18n from 'pangea-common/i18n';
-import { logout } from '../../actions/accounts';
-import { imageSource } from '../../utils/profile';
-import { getCurrentAccount } from '@pangea/accounts/accounts-reducers';
+import React from "react";
+import {
+  View,
+  Image,
+  ScrollView,
+  TouchableOpacity,
+  Share,
+  Platform
+} from "react-native";
+import { connect } from "react-redux";
+import { Button, Text } from "native-base";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import i18n from "pangea-common/i18n";
+import { logout } from "../../actions/accounts";
+import { imageSource } from "../../utils/profile";
+import { getCurrentAccount } from "@pangea/accounts/accounts-reducers";
 
-import AssetsImages from 'pangea-common-reactnative/assets/AssetsImages';
-import { screen } from 'pangea-common-reactnative/Screens';
-import styles from './styles';
+import AssetsImages from "pangea-common-reactnative/assets/AssetsImages";
+import { screen } from "pangea-common-reactnative/Screens";
+import styles from "./styles";
 
 // import Button from '../../components/common/Button';
-import NavigatorComponent from '../../components/common/NavigatorComponent';
+import NavigatorComponent from "../../components/common/NavigatorComponent";
 
 class MenuScreen extends NavigatorComponent {
   constructor(props) {
     super(props);
-    this.props.navigator.setDrawerEnabled({ side: 'left', enabled: true });
+    this.props.navigator.setDrawerEnabled({ side: "left", enabled: true });
   }
 
   toggleDrawer = () => {
     this.props.navigator.toggleDrawer({
-      side: 'left',
+      side: "left"
     });
   };
 
   sharePublicKey = () => {
     Share.share({
-      message: this.props.publicKey || '',
+      message: this.props.publicKey || "",
     });
   };
 
-  onPushScreen = (screenX) => {
+  onPushScreen = screenX => {
     this.toggleDrawer();
-    // this.props.navigator.handleDeepLink({
-    //   link: `push/${screen}`,
-    // });
-    this.props.navigator.showModal(screen(screenX));
+    if (Platform.OS === "ios") {
+      this.props.navigator.handleDeepLink({
+        link: `push/${screenX}`,
+      });
+    } else {
+      this.props.navigator.showModal(screen(screenX));
+    }
   };
 
   render() {
@@ -56,7 +66,7 @@ class MenuScreen extends NavigatorComponent {
           <TouchableOpacity onPress={() => this.toggleDrawer()}>
             <MaterialCommunityIcons
               style={styles.closeButtonStyle}
-              name='close-circle-outline'
+              name="close-circle-outline"
             />
           </TouchableOpacity>
           <View style={styles.avatarView}>
@@ -75,25 +85,25 @@ class MenuScreen extends NavigatorComponent {
               onPress={this.sharePublicKey}
             >
               <Text style={styles.settingsText}>
-                {' '}
-                {i18n.t('sidemenu.copyaddress')}
+                {" "}
+                {i18n.t("sidemenu.copyaddress")}
               </Text>
             </Button>
           </View>
           <View style={styles.navigateButtonView}>
             <TouchableOpacity
               style={styles.navigateButtonStyle}
-              onPress={() => this.onPushScreen('PROFILE_SCREEN')}
+              onPress={() => this.onPushScreen("PROFILE_SCREEN")}
             >
               <View style={styles.wrapIconView}>
                 <MaterialCommunityIcons
                   style={styles.iconStyle}
-                  name='account-circle'
+                  name="account-circle"
                 />
               </View>
               <View style={styles.wrapTextView}>
                 <Text style={styles.navigateTextStyle}>
-                  {i18n.t('sidemenu.myprofile')}
+                  {i18n.t("sidemenu.myprofile")}
                 </Text>
               </View>
             </TouchableOpacity>
@@ -104,59 +114,62 @@ class MenuScreen extends NavigatorComponent {
               <View style={styles.wrapIconView}>
                 <MaterialCommunityIcons
                   style={styles.iconStyle}
-                  name='account-switch'
+                  name="account-switch"
                 />
               </View>
               <View style={styles.wrapTextView}>
                 <Text style={styles.navigateTextStyle}>
-                  {i18n.t('screens.settings.switchAccounts')}
+                  {i18n.t("screens.settings.switchAccounts")}
                 </Text>
               </View>
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.navigateButtonStyle}
-              onPress={() => this.onPushScreen('WALLET_SCREEN')}
+              onPress={() => this.onPushScreen("WALLET_SCREEN")}
             >
               <View style={styles.wrapIconView}>
-                <MaterialCommunityIcons style={styles.iconStyle} name='wallet' />
-              </View>
-              <View style={styles.wrapTextView}>
-                <Text style={styles.navigateTextStyle}>
-                  {i18n.t('sidemenu.wallet')}
-                </Text>
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.navigateButtonStyle}
-              onPress={() => this.onPushScreen('SETTINGS_SCREEN')}
-            >
-              <View style={styles.wrapIconView}>
-                <MaterialCommunityIcons
-                  style={styles.iconStyle}
-                  name='settings-outline'
+                <MaterialCommunityIcons 
+                  style={styles.iconStyle} 
+                  name="wallet" 
                 />
               </View>
               <View style={styles.wrapTextView}>
                 <Text style={styles.navigateTextStyle}>
-                  {' '}
-                  {i18n.t('sidemenu.settings')}
+                  {i18n.t("sidemenu.wallet")}
                 </Text>
               </View>
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.navigateButtonStyle}
-              onPress={() => this.onPushScreen('INFO_SCREEN')}
+              onPress={() => this.onPushScreen("SETTINGS_SCREEN")}
             >
               <View style={styles.wrapIconView}>
                 <MaterialCommunityIcons
                   style={styles.iconStyle}
-                  name='contact-mail'
+                  name="settings-outline"
                 />
               </View>
               <View style={styles.wrapTextView}>
                 <Text style={styles.navigateTextStyle}>
-                  {' '}
-                  {i18n.t('sidemenu.contact')}
+                  {" "}
+                  {i18n.t("sidemenu.settings")}
+                </Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.navigateButtonStyle}
+              onPress={() => this.onPushScreen("INFO_SCREEN")}
+            >
+              <View style={styles.wrapIconView}>
+                <MaterialCommunityIcons
+                  style={styles.iconStyle}
+                  name="contact-mail"
+                />
+              </View>
+              <View style={styles.wrapTextView}>
+                <Text style={styles.navigateTextStyle}>
+                  {" "}
+                  {i18n.t("sidemenu.contact")}
                 </Text>
               </View>
             </TouchableOpacity>
@@ -167,13 +180,13 @@ class MenuScreen extends NavigatorComponent {
               <View style={styles.wrapIconView}>
                 <MaterialCommunityIcons
                   style={styles.iconStyle}
-                  name='logout-variant'
+                  name="logout-variant"
                 />
               </View>
               <View style={styles.wrapTextView}>
                 <Text style={styles.navigateTextStyle}>
-                  {' '}
-                  {i18n.t('sidemenu.logout')}
+                  {" "}
+                  {i18n.t("sidemenu.logout")}
                 </Text>
               </View>
             </TouchableOpacity>
@@ -186,16 +199,16 @@ class MenuScreen extends NavigatorComponent {
 
 const mapStateToProps = state => ({
   account: getCurrentAccount(state.accounts),
-  publicKey: state.accounts.currentAccountIdentityKey,
+  publicKey: state.accounts.currentAccountIdentityKey
 });
 
 const mapDispatchToProps = dispatch => ({
   logout() {
     dispatch(logout());
-  },
+  }
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(MenuScreen);

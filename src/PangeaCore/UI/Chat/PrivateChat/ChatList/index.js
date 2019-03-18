@@ -1,44 +1,49 @@
 // @flow
 
-import React from 'react';
-import { connect } from 'react-redux';
-import { View, SectionList, Share, TextInput, Image } from 'react-native';
-import _ from 'lodash';
-import Dialog from 'react-native-dialog';
+import React from "react";
+import { Platform } from "react-native";
+import { connect } from "react-redux";
+import { View, SectionList, Share, TextInput, Image } from "react-native";
+import _ from "lodash";
+import Dialog from "react-native-dialog";
 
-import { openChat, startNewChat, fetchAllChats } from '@pangea/chat/chat-actions';
-import BackgroundImage from 'pangea-common-reactnative/UI/BackgroundImage';
-import styles from './styles';
-import { screen } from 'pangea-common-reactnative/Screens';
-import ChatListItem from 'pangea-common-reactnative/UI/ChatListItem';
-import FakeNavigationBar from 'pangea-common-reactnative/UI/FakeNavigationBar';
-import Loading from 'pangea-common-reactnative/UI/Loading';
-import ScrollTabView, { DefaultTabBar } from 'pangea-common-reactnative/UI/ScrollTabView';
-import NavigatorComponent from '../../../NavigatorComponent';
-import LucyButton from 'pangea-common-reactnative/UI/LucyButton';
-import i18n from 'pangea-common/i18n';
-import Colors from 'pangea-common-reactnative/styles/colors';
+import { openChat, startNewChat, fetchAllChats } from "@pangea/chat/chat-actions";
+import BackgroundImage from "pangea-common-reactnative/UI/BackgroundImage";
+import styles from "./styles";
+import { screen } from "pangea-common-reactnative/Screens";
+import ChatListItem from "pangea-common-reactnative/UI/ChatListItem";
+import FakeNavigationBar from "pangea-common-reactnative/UI/FakeNavigationBar";
+import Loading from "pangea-common-reactnative/UI/Loading";
+import ScrollTabView, {
+  DefaultTabBar
+} from "pangea-common-reactnative/UI/ScrollTabView";
+import NavigatorComponent from "../../../NavigatorComponent";
+import LucyButton from "pangea-common-reactnative/UI/LucyButton";
+import i18n from "pangea-common/i18n";
+import Colors from "pangea-common-reactnative/styles/colors";
+
+
 import type {
   ProfileType,
   ChatType,
-  GiftedChatMessageType,
-} from '@pangea/chat/chat-types';
-import type { Navigator } from 'pangea-common-reactnative/ReactNativeNavigation-types';
-import InviteSentModal from './InviteSentModal';
-import { panthalassaIdentityPublicKey } from '@pangea/panthalassa';
-import { imageSource } from '@pangea/profile/profile-utils';
-import AssetsImages from 'pangea-common-reactnative/assets/AssetsImages';
-import MoreMenuModal from 'pangea-common-reactnative/UI/MoreMenuModal';
-import type { Contact } from '@pangea/contacts/contacts-types';
+  GiftedChatMessageType
+} from "@pangea/chat/chat-types";
+import type { Navigator } from "pangea-common-reactnative/ReactNativeNavigation-types";
+import InviteSentModal from "./InviteSentModal";
+import { panthalassaIdentityPublicKey } from "@pangea/panthalassa";
+import { imageSource } from "@pangea/profile/profile-utils";
+import AssetsImages from "pangea-common-reactnative/assets/AssetsImages";
+import MoreMenuModal from "pangea-common-reactnative/UI/MoreMenuModal";
+import type { Contact } from "@pangea/contacts/contacts-types";
 
-import PopOverModal from '../../../components/PopOverModal';
+import PopOverModal from "../../../components/PopOverModal";
 
-const MENU_BUTTON = 'MENU_BUTTON';
-const MORE_BUTTON = 'MORE_BUTTON';
-const MORE_MODAL_KEY = 'moreMenu';
-const INVITE_MODAL_KEY = 'invite';
-const CHAT_NAME_MODAL = 'CHAT_NAME_MODAL';
-const LUCY_MODAL_KEY = 'lucyModal';
+const MENU_BUTTON = "MENU_BUTTON";
+const MORE_BUTTON = "MORE_BUTTON";
+const MORE_MODAL_KEY = "moreMenu";
+const INVITE_MODAL_KEY = "invite";
+const CHAT_NAME_MODAL = "CHAT_NAME_MODAL";
+const LUCY_MODAL_KEY = "lucyModal";
 
 type Props = {
   /**
@@ -68,12 +73,12 @@ type Props = {
   startNewChat: (
     members: Array<string>,
     chatName: string | null,
-    callback: (success: boolean) => void,
+    callback: (success: boolean) => void
   ) => void,
   /**
    * @desc Function to fetch all chats
    */
-  fetchAllChats: () => void,
+  fetchAllChats: () => void
 };
 
 type State = {
@@ -104,7 +109,7 @@ type State = {
   /**
    * @desc List of contacts selected for creating chat.
    */
-  contacts: Array<Contact>,
+  contacts: Array<Contact>
 };
 
 class ChatListScreen extends NavigatorComponent<Props, State> {
@@ -113,21 +118,21 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
       {
         id: MENU_BUTTON,
         icon: AssetsImages.menuIcon,
-        buttonColor: Colors.navigationButtonColor,
-      },
-    ],
+        buttonColor: Colors.navigationButtonColor
+      }
+    ]
   };
 
   constructor(props: Props) {
     super(props);
     this.state = {
       isAppear: false,
-      publicKey: '',
+      publicKey: "",
       profile: null,
-      showModal: '',
+      showModal: "",
       loading: false,
       contacts: [],
-      chatName: '',
+      chatName: "",
     };
   }
 
@@ -141,54 +146,72 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
 
   onHandleDeepLink(event) {
     if (this.state.isAppear) {
-      const parts = event.link.split('/');
-      if (parts[0] === 'push') {
+      const parts = event.link.split("/");
+      if (parts[0] === "push") {
         this.props.navigator.push(screen(parts[1]));
       }
     }
   }
 
-  onNavBarButtonPress(id) {
-    if (id === MORE_BUTTON) {
-      this.setState({
-        showModal: MORE_MODAL_KEY,
-      });
-    } else if (id === MENU_BUTTON) {
-      this.props.navigator.toggleDrawer({
-        side: 'left',
-        animated: true,
-      });
-    }
-  }
+  openNationChat = () => {
+    const isBot = false;
 
-  onChatSelected = (chatId: number) => {
-    if (chatId === '0') {
-      this.props.navigator.push({
-        ...screen('CHAT_SCREEN'),
-        passProps: {
-          isBot: true,
-        },
+    if (Platform.OS === "android") {
+      this.props.navigator.showModal({
+        ...screen("CHAT_SCREEN"),
+        passProps: { isBot, groupDefault: true }
       });
     } else {
+      this.props.navigator.push({
+        ...screen("CHAT_SCREEN"),
+        passProps: { isBot, groupDefault: true }
+      });
+    }
+  };
+
+  onChatSelected = (chatId: number) => {
+    if (chatId === "0") {
+      if (Platform.OS === "android") {
+        this.props.navigator.showModal({
+          ...screen("CHAT_SCREEN"),
+          passProps: {
+            isBot: true
+          }
+        });
+      } else {
+        this.props.navigator.push({
+          ...screen("CHAT_SCREEN"),
+          passProps: {
+            isBot: true
+          }
+        });
+      }
+    } else if (chatId === "bitnation") {
+      this.openNationChat();
+    } else {
       this.props.openChat(chatId);
-      this.props.navigator.push(screen('PRIVATE_CHAT_SCREEN'));
+      if (Platform.OS === "android") {
+        this.props.navigator.showModal(screen("PRIVATE_CHAT_SCREEN"));
+      } else {
+        this.props.navigator.push(screen("PRIVATE_CHAT_SCREEN"));
+      }
     }
   };
 
   dismissModal = () => {
     this.setState({
-      publicKey: '',
+      publicKey: "",
       profile: null,
-      showModal: '',
+      showModal: "",
       contacts: [],
-      chatName: '',
+      chatName: ""
     });
   };
 
   sharePublicKey = async () => {
     const pubKey = await panthalassaIdentityPublicKey();
     Share.share({
-      message: pubKey || '',
+      message: pubKey || ""
     }).then(() => {
       this.dismissModal();
     });
@@ -196,10 +219,10 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
 
   goToContactsPicker = () => {
     this.props.navigator.showModal({
-      ...screen('CONTACTS_PICKER_SCREEN'),
+      ...screen("CONTACTS_PICKER_SCREEN"),
       passProps: {
-        onContactsSelected: this.onSelectContacts,
-      },
+        onContactsSelected: this.onSelectContacts
+      }
     });
   };
 
@@ -207,14 +230,14 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
     this.props.startNewChat(
       contacts.map(contact => contact.profile.identityKey),
       chatName,
-      (success) => {
+      success => {
         this.dismissModal();
         if (success === false) {
           this.props.fetchAllChats();
         } else {
-          this.props.navigator.push(screen('CHAT_SCREEN'));
+          this.props.navigator.push(screen("CHAT_SCREEN"));
         }
-      },
+      }
     );
   };
 
@@ -222,7 +245,7 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
     this.props.navigator.dismissModal();
 
     if (contacts.length === 1) {
-      this.initiateNewChat(contacts, '');
+      this.initiateNewChat(contacts, "");
     } else {
       this.setState({ contacts, showModal: CHAT_NAME_MODAL });
     }
@@ -237,56 +260,81 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
       .map(key => this.props.profiles[key])
       .filter(x => x != null)
       .map(profile => profile.name);
-    const resultedName = partnerNames.join(', ');
+    const resultedName = partnerNames.join(", ");
     if (resultedName.length > 0) {
       return resultedName;
     }
 
-    return 'Unknown account';
+    return "Unknown account";
   };
 
   render() {
     const sortedChats = _.sortBy(this.props.chats, chat =>
-      this.buildChatName(chat).toUpperCase());
+      this.buildChatName(chat).toUpperCase()
+    );
     const groups = _.groupBy(sortedChats, chat =>
       this.buildChatName(chat)
         .toUpperCase()
-        .charAt(0));
-    const lucyBot = [{
-      id: '0',
-      name: 'Lucy 1.0',
+        .charAt(0)
+    );
+    const lucyBot = [
+      {
+        id: "0",
+        name: "Lucy 1.0",
 
-      members: [],
-      messages: [],
-      unreadMessages: null,
-    }];
+        members: [],
+        messages: [],
+        unreadMessages: null
+      }
+    ];
     const mergerBotGroup = {
       lucy: lucyBot,
-      ...groups,
+      ...groups
     };
     const sections = _.map(mergerBotGroup, (group, key) => ({
       title: key,
-      data: group,
+      data: group
+    }));
+
+    const bitnationGroup = [
+      {
+        id: "bitnation",
+        name: "BITNATION",
+
+        members: [],
+        messages: [],
+        unreadMessages: null
+      }
+    ];
+
+    const mergerBinationGroup = {
+      bitnation: bitnationGroup
+    };
+
+    const sectionsGroup = _.map(mergerBinationGroup, (group, key) => ({
+      title: key,
+      data: group
     }));
 
     return (
       <View style={styles.nationsScreenContainer}>
         <BackgroundImage />
         <FakeNavigationBar />
-        <View style={styles.searchBarContainer}>
+        {/* <View style={styles.searchBarContainer}>
           <View style={styles.inputViewContainer}>
             <TextInput
               style={styles.textInputStyle}
-              placeholder='Search by name, type or category...'
+              placeholder="Search by name, type or category..."
               placeholderTextColor={Colors.BitnationLinkOrangeColor}
-              autoCapitalize='none'
+              autoCapitalize="none"
+              underlineColorAndroid="transparent"
             />
             <Image
               source={AssetsImages.searchIcon}
               style={styles.searchIconStyle}
             />
           </View>
-        </View>
+        </View> */}
         <ScrollTabView
           initialPage={1}
           tabBarBackgroundColor={Colors.BitnationBlackAlphaColor}
@@ -296,10 +344,10 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
           tabBarTextStyle={styles.tabBarTextStyle}
           renderTabBar={() => <DefaultTabBar />}
         >
-          <View tabLabel='FEED' />
-          <View tabLabel='TALK' style={styles.scrollView}>
+          <View tabLabel="FEED" />
+          <View tabLabel="TALK" style={styles.scrollView}>
             <SectionList
-              renderItem={(item) => {
+              renderItem={item => {
                 const chat: ChatType = item.item;
 
                 let chatImage = AssetsImages.avatarIcon;
@@ -313,18 +361,21 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
                   chatImage = AssetsImages.ChatUI.groupChatIcon;
                 }
 
-                if (chat.id === '0') {
+                if (chat.id === "0") {
                   chatImage = AssetsImages.lucyIcon;
                 }
-                const messagePreview = ((message: GiftedChatMessageType | null) => {
+                const messagePreview = ((
+                  message: GiftedChatMessageType | null
+                ) => {
                   if (message == null) return null;
                   if (message.dAppMessage == null) return message.text;
                   // @todo Add preview for DApp messages.
-                  return i18n.t('screens.chat.dAppMessagePreview');
-                }
-                )(chat.messages.length === 0
-                  ? null
-                  : chat.messages[chat.messages.length - 1]);
+                  return i18n.t("screens.chat.dAppMessagePreview");
+                })(
+                  chat.messages.length === 0
+                    ? null
+                    : chat.messages[chat.messages.length - 1]
+                );
 
                 const lastMessage =
                   chat.messages.length === 0
@@ -334,7 +385,11 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
                 return (
                   <ChatListItem
                     name={this.buildChatName(chat)}
-                    lastMessage={chat.id === '0' ? i18n.t('screens.chat.lucyInitialMessage') : messagePreview}
+                    lastMessage={
+                      chat.id === "0"
+                        ? i18n.t("screens.chat.lucyInitialMessage")
+                        : messagePreview
+                    }
                     dateString={dateString}
                     avatar={chatImage}
                     onPress={this.onChatSelected}
@@ -359,53 +414,145 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
               visible={this.state.showModal === CHAT_NAME_MODAL}
             >
               <Dialog.Title>
-                {i18n.t('screens.chat.chatNameAlert.title')}
+                {i18n.t("screens.chat.chatNameAlert.title")}
               </Dialog.Title>
               <Dialog.Input
                 value={this.state.chatName}
                 onChangeText={text => this.setState({ chatName: text })}
               />
               <Dialog.Button
-                label={i18n.t('screens.chat.chatNameAlert.confirm')}
+                label={i18n.t("screens.chat.chatNameAlert.confirm")}
                 disabled={this.state.chatName.length === 0}
                 onPress={() =>
                   this.initiateNewChat(this.state.contacts, this.state.chatName)
                 }
               />
               <Dialog.Button
-                label={i18n.t('screens.chat.chatNameAlert.cancel')}
+                label={i18n.t("screens.chat.chatNameAlert.cancel")}
                 onPress={this.dismissModal}
               />
             </Dialog.Container>
           </View>
-          <View tabLabel='GROUPS' />
+          <View tabLabel="GROUPS" style={styles.scrollView}>
+            <SectionList
+              renderItem={item => {
+                const chat: ChatType = item.item;
+
+                let chatImage = AssetsImages.avatarIcon;
+                if (chat.members.length === 1) {
+                  const partner = this.props.profiles[chat.members[0]];
+                  if (partner != null) {
+                    chatImage =
+                      imageSource(partner.image) || AssetsImages.avatarIcon;
+                  }
+                } else {
+                  chatImage = AssetsImages.ChatUI.groupChatIcon;
+                }
+
+                if (chat.id === "0") {
+                  chatImage = AssetsImages.lucyIcon;
+                }
+                const messagePreview = ((
+                  message: GiftedChatMessageType | null
+                ) => {
+                  if (message == null) return null;
+                  if (message.dAppMessage == null) return message.text;
+                  // @todo Add preview for DApp messages.
+                  return i18n.t("screens.chat.dAppMessagePreview");
+                })(
+                  chat.messages.length === 0
+                    ? null
+                    : chat.messages[chat.messages.length - 1]
+                );
+
+                const lastMessage =
+                  chat.messages.length === 0
+                    ? {}
+                    : chat.messages[chat.messages.length - 1];
+                const dateString = lastMessage.createdAt;
+                return (
+                  <ChatListItem
+                    name={this.buildChatName(chat)}
+                    lastMessage={
+                      chat.id === "0"
+                        ? i18n.t("screens.chat.lucyInitialMessage")
+                        : messagePreview
+                    }
+                    dateString={dateString}
+                    avatar={chatImage}
+                    onPress={this.onChatSelected}
+                    unreadMessages={chat.unreadMessages}
+                    id={chat.id}
+                  />
+                );
+              }}
+              keyExtractor={item => item.id}
+              sections={sectionsGroup}
+              style={styles.sectionList}
+              ItemSeparatorComponent={() => (
+                <View style={styles.itemSeparator} />
+              )}
+            />
+
+            <InviteSentModal
+              done={this.dismissModal}
+              visible={this.state.showModal === INVITE_MODAL_KEY}
+            />
+            <Dialog.Container
+              visible={this.state.showModal === CHAT_NAME_MODAL}
+            >
+              <Dialog.Title>
+                {i18n.t("screens.chat.chatNameAlert.title")}
+              </Dialog.Title>
+              <Dialog.Input
+                value={this.state.chatName}
+                onChangeText={text => this.setState({ chatName: text })}
+              />
+              <Dialog.Button
+                label={i18n.t("screens.chat.chatNameAlert.confirm")}
+                disabled={this.state.chatName.length === 0}
+                onPress={() =>
+                  this.initiateNewChat(this.state.contacts, this.state.chatName)
+                }
+              />
+              <Dialog.Button
+                label={i18n.t("screens.chat.chatNameAlert.cancel")}
+                onPress={this.dismissModal}
+              />
+            </Dialog.Container>
+          </View>
         </ScrollTabView>
-        <LucyButton onPress={() => this.setState({ showModal: LUCY_MODAL_KEY })} />
+        <LucyButton
+          onPress={() => this.setState({ showModal: LUCY_MODAL_KEY })}
+        />
         <PopOverModal
           visible={this.state.showModal === LUCY_MODAL_KEY}
           onCancel={this.dismissModal}
-          desText='Welcome to Townhall! What would you like to do today?'
+          desText="Welcome to Townhall! What would you like to do today?"
           options={[
             {
-              text: 'Start new conversation',
-              onPress: this.goToContactsPicker,
+              text: "Start new conversation",
+              onPress: this.goToContactsPicker
             },
             {
-              text: i18n.t('screens.chat.menu.shareIdentityKey'),
-              onPress: () => { this.dismissModal(); this.sharePublicKey(); },
+              text: i18n.t("screens.chat.menu.shareIdentityKey"),
+              onPress: () => {
+                this.dismissModal();
+                this.sharePublicKey();
+              }
             },
             {
-              text: 'Help',
+              text: "Help",
               onPress: () => {
                 this.dismissModal();
                 this.props.navigator.push({
-                  ...screen('CHAT_SCREEN'),
+                  ...screen("CHAT_SCREEN"),
                   passProps: {
-                    isBot: true,
-                  },
+                    isBot: true
+                  }
                 });
-              },
-            },
+              }
+            }
           ]}
         />
         {this.state.loading === true && <Loading />}
@@ -416,17 +563,17 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
 
 const mapStateToProps = state => ({
   chats: state.chat.chats,
-  profiles: state.chat.partnerProfiles,
+  profiles: state.chat.partnerProfiles
 });
 
 const mapDispatchToProps = dispatch => ({
   openChat: (chatId: number) => dispatch(openChat(chatId)),
   startNewChat: (members, chatName, callback) =>
     dispatch(startNewChat(members, chatName, callback)),
-  fetchAllChats: () => dispatch(fetchAllChats()),
+  fetchAllChats: () => dispatch(fetchAllChats())
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(ChatListScreen);

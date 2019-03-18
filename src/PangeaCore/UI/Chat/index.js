@@ -1,32 +1,32 @@
 // @flow
 
-import React, { Component } from 'react';
-import { View, Platform } from 'react-native';
-import { connect } from 'react-redux';
-import config from 'react-native-config';
-import SocketIOClient from 'socket.io-client';
+import React, { Component } from "react";
+import { View, Platform } from "react-native";
+import { connect } from "react-redux";
+import config from "react-native-config";
+import SocketIOClient from "socket.io-client";
 import {
   GiftedChat,
   Composer,
   InputToolbar,
   Bubble,
-} from 'react-native-gifted-chat';
-import AssetsImages from 'pangea-common-reactnative/assets/AssetsImages';
+} from "react-native-gifted-chat";
+import AssetsImages from "pangea-common-reactnative/assets/AssetsImages";
 
-import BitnationMessage from './PrivateChat/Chat/BitnationMessage';
-import BitnationInputToolbar from './PrivateChat/Chat/BitnationInputToolbar';
-import styles from './styles';
+import BitnationMessage from "./PrivateChat/Chat/BitnationMessage";
+import BitnationInputToolbar from "./PrivateChat/Chat/BitnationInputToolbar";
+import styles from "./styles";
 
-import { showSpinner, hideSpinner } from '@pangea/chat/chat-actions';
-import BackgroundImage from 'pangea-common-reactnative/UI/BackgroundImage';
-import FakeNavigationBar from 'pangea-common-reactnative/UI/FakeNavigationBar';
-import Loading from 'pangea-common-reactnative/UI/Loading';
-import { resolveNation } from '@pangea/nations/nations-utils';
-import deprecatedCreateGiftedChatMessageObject from '@pangea/chat/chat-utils';
-import type { NationIdType, NationType } from '@pangea/nations/nation-types';
-import type { Navigator } from 'pangea-common-reactnative/ReactNativeNavigation-types';
-import LucyBot from '../../../vendor/LucyBot';
-import { getCurrentAccount } from '@pangea/accounts/accounts-reducers';
+import { showSpinner, hideSpinner } from "@pangea/chat/chat-actions";
+import BackgroundImage from "pangea-common-reactnative/UI/BackgroundImage";
+import FakeNavigationBar from "pangea-common-reactnative/UI/FakeNavigationBar";
+import Loading from "pangea-common-reactnative/UI/Loading";
+import { resolveNation } from "@pangea/nations/nations-utils";
+import deprecatedCreateGiftedChatMessageObject from "@pangea/chat/chat-utils";
+import type { NationIdType, NationType } from "@pangea/nations/nation-types";
+import type { Navigator } from "pangea-common-reactnative/ReactNativeNavigation-types";
+import LucyBot from "../../../vendor/LucyBot";
+import { getCurrentAccount } from "@pangea/accounts/accounts-reducers";
 
 type Props = {
   /**
@@ -54,6 +54,10 @@ type Props = {
    */
   isFetching: boolean,
   /**
+   * @desc Flag that open screen from group tab
+   */
+  groupDefault: boolean,
+  /**
    * @desc Function to show spinner
    */
   showSpinner: () => void,
@@ -77,34 +81,41 @@ type State = {
 class ChatScreen extends Component<Props, State> {
   static defaultProps = {
     isBot: true,
+    groupDefault: false
   };
-
 
   constructor(props: Props) {
     super(props);
 
     if (props.isBot !== true) {
-      const selectedNation = resolveNation(props.nations || [], props.nationId);
-      if (selectedNation === null) {
-        props.navigator.pop();
+      const nationIdX = props.groupDefault
+        ? props.groupNationId
+        : props.nationId; // hardcode for bitnation chat group
+      const selectedNation = resolveNation(props.nations || [], nationIdX);
+      if (!selectedNation) {
+        if (Platform.OS === "ios") {
+          props.navigator.pop();
+        } else {
+          props.navigator.dismissModal();
+        }
         return;
       }
       this.nationId = selectedNation.idInSmartContract;
       // Creating the socket-client instance will automatically connect to the server.
       this.connection = SocketIOClient(config.CHAT_URL, {
-        transports: ['websocket'],
+        transports: ["websocket"],
         upgrade: false,
-        query: `token=${config.AUTH_TOKEN}`,
+        query: `token=${config.AUTH_TOKEN}`
       });
-      this.connection.on('connect', () => {
-        this.connection.emit('room:join', {
+      this.connection.on("connect", () => {
+        this.connection.emit("room:join", {
           nation_id: this.nationId,
         });
       });
 
       this.state = {
         messages: [],
-        joined: false,
+        joined: false
       };
     } else {
       // add initial bot message
@@ -116,13 +127,13 @@ class ChatScreen extends Component<Props, State> {
             createdAt: new Date(),
             user: {
               _id: 2,
-              name: 'Lucy 1.0',
+              name: "Lucy 1.0",
               avatar: AssetsImages.lucyIcon,
             },
             // Any additional custom parameters are passed through
           },
         ],
-        joined: false,
+        joined: false
       };
     }
   }
@@ -131,30 +142,36 @@ class ChatScreen extends Component<Props, State> {
     if (this.props.isBot !== true && this.connection) {
       this.props.showSpinner();
       // load initial messages
-      const URL = `${config.CHAT_URL}/messages/${this.nationId}?auth_token=${config.AUTH_TOKEN}`;
+      const URL = `${config.CHAT_URL}/messages/${this.nationId}?auth_token=${
+        config.AUTH_TOKEN
+      }`;
       fetch(URL)
         .then(response => response.json())
         .then(
-          (json) => {
-            const messages = deprecatedCreateGiftedChatMessageObject(json.reverse());
+          json => {
+            const messages = deprecatedCreateGiftedChatMessageObject(
+              json.reverse()
+            );
             this.props.hideSpinner();
             this.setState(previousState => ({
-              messages: GiftedChat.append(previousState.messages, messages),
+              messages: GiftedChat.append(previousState.messages, messages)
             }));
           },
           () => {
             this.props.hideSpinner();
-          },
+          }
         );
 
       // add socket listener
-      this.connection.on('room:joined', (data) => {
+      this.connection.on("room:joined", data => {
         if (data.nation_id >= 0) {
           this.setState({ joined: true });
-          this.connection.on('msg', (messageData) => {
-            const messages = deprecatedCreateGiftedChatMessageObject([messageData]);
+          this.connection.on("msg", messageData => {
+            const messages = deprecatedCreateGiftedChatMessageObject([
+              messageData
+            ]);
             this.setState(previousState => ({
-              messages: GiftedChat.append(previousState.messages, messages),
+              messages: GiftedChat.append(previousState.messages, messages)
             }));
           });
         }
@@ -177,29 +194,29 @@ class ChatScreen extends Component<Props, State> {
           createdAt: new Date(),
           user: {
             _id: 2,
-            name: 'Lucy 1.0',
-            avatar: AssetsImages.lucyIcon,
-          },
-        },
+            name: "Lucy 1.0",
+            avatar: AssetsImages.lucyIcon
+          }
+        }
       ];
 
       // Add user's message
       this.setState(previousState => ({
-        messages: GiftedChat.append(previousState.messages, messages),
+        messages: GiftedChat.append(previousState.messages, messages)
       }));
 
       // Add Eliza's response
       this.setState(previousState => ({
-        messages: GiftedChat.append(previousState.messages, m),
+        messages: GiftedChat.append(previousState.messages, m)
       }));
     } else if (this.state.joined === true) {
       const newMessage = {
         nation_id: this.nationId,
         msg: messages[0].text,
-        from: this.props.user ? this.props.user.name : 'anonymous',
-        userId: this.props.user ? this.props.user.id : 'anonymous',
+        from: this.props.user ? this.props.user.name : "anonymous",
+        userId: this.props.user ? this.props.user.id : "anonymous",
       };
-      this.connection.emit('room:msg', newMessage);
+      this.connection.emit("room:msg", newMessage);
     }
   }
 
@@ -207,24 +224,17 @@ class ChatScreen extends Component<Props, State> {
   connection: any;
 
   renderMessage(props) {
-    return (
-      <BitnationMessage {...props} />
-    );
+    return <BitnationMessage {...props} />;
   }
 
   renderInputToolbar(props) {
-    return (
-      <BitnationInputToolbar
-        {...props}
-
-      />
-    );
+    return <BitnationInputToolbar {...props} />;
   }
 
   render() {
     const sendingUser = {
-      _id: this.props.user ? this.props.user.id : 'anonymous',
-      name: this.props.user ? this.props.user.name : 'anonymous',
+      _id: this.props.user ? this.props.user.id : "anonymous",
+      name: this.props.user ? this.props.user.name : "anonymous",
     };
     return (
       <View style={styles.container}>
@@ -233,10 +243,10 @@ class ChatScreen extends Component<Props, State> {
         <GiftedChat
           alwaysShowSend
           showAvatarForEveryMessage
-          messages={this.state.messages}
+          messages={this.state ? this.state.messages : []}
           onSend={messages => this.onSend(messages)}
           user={sendingUser}
-          bottomOffset={Platform.OS === 'ios' ? 48.5 : 0}
+          bottomOffset={Platform.OS === "ios" ? 48.5 : 0}
           renderInputToolbar={this.renderInputToolbar}
           renderMessage={this.renderMessage}
         />
@@ -249,13 +259,17 @@ class ChatScreen extends Component<Props, State> {
 const mapStateToProps = state => ({
   nations: state.nations.nations,
   nationId: state.nations.openedNationId,
+  groupNationId: state.nations.groupNationId,
   user: getCurrentAccount(state.accounts),
-  isFetching: state.chat.isFetching,
+  isFetching: state.chat.isFetching
 });
 
 const mapDispatchToProps = dispatch => ({
   showSpinner: () => dispatch(showSpinner()),
-  hideSpinner: () => dispatch(hideSpinner()),
+  hideSpinner: () => dispatch(hideSpinner())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ChatScreen);
+export default connect(
+  mapStateToProps, 
+  mapDispatchToProps
+)(ChatScreen);
