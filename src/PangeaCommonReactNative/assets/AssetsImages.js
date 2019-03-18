@@ -48,6 +48,12 @@ const signalIcon4 = require('../assets/images/signal_icon_4.png');
 const signalIcon5 = require('../assets/images/signal_icon_5.png');
 const botIconLucy = require('../assets/images/icon_chatbot.png');
 
+const imgDapp = require('../assets/images/imgDapp.png');
+const imgContract = require('../assets/images/imgContract.png');
+const imgProduct = require('../assets/images/imgProduct.png');
+const imgService = require('../assets/images/imgService.png');govMarketItem
+const govMarketItem = require('../assets/images/govMarketItem.png');
+
 const chatNewMessageIcon = require('../assets/images/chat_indicator.png');
 const groupChatIcon = require('../assets/images/groupChatIcon.png');
 const menuIcon = require('../assets/images/hamburgerlogo.png');
@@ -79,6 +85,11 @@ const Images = {
   menuIcon,
   lucyIcon,
   searchIcon,
+  imgDapp,
+  imgContract,
+  imgProduct,
+  imgService,
+  govMarketItem,
   TabIcons: {
     dashboard: dashboardTabIcon,
     chat: townhall,

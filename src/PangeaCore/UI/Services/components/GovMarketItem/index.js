@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
+import AssetsImages from "pangea-common-reactnative/assets/AssetsImages";
 
 import styles from './styles';
 
@@ -36,9 +37,9 @@ const GovMarketItem = ({
 }: GovMarketItemProps) => (
   <TouchableOpacity onPress={onPress}>
     <View style={styles.container}>
-      <Image source={{ uri }} style={styles.avatarStyle} />
+      <Image source={{AssetsImages.govMarketItem}} style={styles.avatarStyle} />
       <View style={styles.infoStyle}>
-        <Text style={styles.descriptionText}>{description}</Text>
+        <Text style={styles.descriptionText}>{description.toUpperCase()}</Text>
         <Text>{title}</Text>
         <Text>{subTitle}</Text>
       </View>

@@ -51,7 +51,7 @@ export default compose(
           {
             id: MENU_BUTTON,
             icon: AssetsImages.menuIcon,
-            buttonColor: Colors.navigationButtonColor
+            buttonColor: "black"
           }
         ],
         rightButtons: []
