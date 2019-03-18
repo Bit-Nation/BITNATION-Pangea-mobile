@@ -403,7 +403,7 @@ ShallowWrapper {
         />,
         undefined,
       ],
-      "disabled": true,
+      "disabled": false,
       "enabled": true,
       "onPress": [Function],
       "style": Array [
@@ -480,7 +480,7 @@ ShallowWrapper {
           />,
           undefined,
         ],
-        "disabled": true,
+        "disabled": false,
         "enabled": true,
         "onPress": [Function],
         "style": Array [

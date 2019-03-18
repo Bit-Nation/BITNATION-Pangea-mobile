@@ -165,6 +165,7 @@ ShallowWrapper {
                 title="Previous"
               />
               <CustomButton
+                enabled={true}
                 onPress={[Function]}
                 style={
                   Object {
@@ -318,6 +319,7 @@ ShallowWrapper {
                   title="Previous"
                 />
                 <CustomButton
+                  enabled={true}
                   onPress={[Function]}
                   style={
                     Object {
@@ -416,6 +418,7 @@ ShallowWrapper {
                     title="Previous"
                   />
                   <CustomButton
+                    enabled={true}
                     onPress={[Function]}
                     style={
                       Object {
@@ -538,6 +541,7 @@ ShallowWrapper {
                       title="Previous"
                     />,
                     <CustomButton
+                      enabled={true}
                       onPress={[Function]}
                       style={
                         Object {
@@ -578,6 +582,7 @@ ShallowWrapper {
                     "key": undefined,
                     "nodeType": "function",
                     "props": Object {
+                      "enabled": true,
                       "onPress": [Function],
                       "style": Object {
                         "width": 90,
@@ -729,6 +734,7 @@ ShallowWrapper {
                   title="Previous"
                 />
                 <CustomButton
+                  enabled={true}
                   onPress={[Function]}
                   style={
                     Object {
@@ -882,6 +888,7 @@ ShallowWrapper {
                     title="Previous"
                   />
                   <CustomButton
+                    enabled={true}
                     onPress={[Function]}
                     style={
                       Object {
@@ -980,6 +987,7 @@ ShallowWrapper {
                       title="Previous"
                     />
                     <CustomButton
+                      enabled={true}
                       onPress={[Function]}
                       style={
                         Object {
@@ -1102,6 +1110,7 @@ ShallowWrapper {
                         title="Previous"
                       />,
                       <CustomButton
+                        enabled={true}
                         onPress={[Function]}
                         style={
                           Object {
@@ -1142,6 +1151,7 @@ ShallowWrapper {
                       "key": undefined,
                       "nodeType": "function",
                       "props": Object {
+                        "enabled": true,
                         "onPress": [Function],
                         "style": Object {
                           "width": 90,
