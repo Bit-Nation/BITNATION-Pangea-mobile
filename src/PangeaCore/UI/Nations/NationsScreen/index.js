@@ -146,7 +146,16 @@ class NationsScreen extends NavigatorComponent<
     return (
       <View style={styles.nationsScreenContainer}>
         <BackgroundImage />
-        <FakeNavigationBar />
+        <Header
+          title={i18n.t('screens.nations.tabTitle').toUpperCase()}
+          leftIcon={<Image source={AssetsImages.menuIcon} />}
+          onLeftFunc={() =>
+            this.props.navigator.toggleDrawer({
+              side: "left",
+              animated: true
+            })
+          }
+        />
         <View style={styles.searchBarContainer}>
           <View style={styles.inputViewContainer}>
             <TextInput

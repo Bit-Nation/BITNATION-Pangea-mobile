@@ -33,11 +33,11 @@ export type GovMarketItemProps = {
  */
 
 const GovMarketItem = ({
-  uri, description, title, subTitle, onPress,
+  uri, imageUri, description, title, subTitle, onPress,
 }: GovMarketItemProps) => (
   <TouchableOpacity onPress={onPress}>
     <View style={styles.container}>
-      <Image source={{AssetsImages.govMarketItem}} style={styles.avatarStyle} />
+      <Image source={{imageUri}} style={styles.avatarStyle} />
       <View style={styles.infoStyle}>
         <Text style={styles.descriptionText}>{description.toUpperCase()}</Text>
         <Text>{title}</Text>

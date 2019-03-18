@@ -17,6 +17,8 @@ import FakeNavigationBar from "pangea-common-reactnative/UI/FakeNavigationBar";
 import LucyButton from "pangea-common-reactnative/UI/LucyButton";
 import PopOverModal from "../components/PopOverModal";
 import { contractData, dAppData, serviceData, productData } from "./helper";
+import Header from "pangea-common-reactnative/UI/Header";
+import i18n from "pangea-common/i18n";
 
 const LUCY_MODAL_KEY = "lucyModal";
 
@@ -44,7 +46,16 @@ const ServicesScreen = ({
   <View style={styles.screenContainer}>
     {children}
     <Background />
-    <FakeNavigationBar />
+    <Header
+          title={i18n.t('screens.services.tabTitle').toUpperCase()}
+          leftIcon={<Image source={AssetsImages.menuIcon} />}
+          onLeftFunc={() =>
+            this.props.navigator.toggleDrawer({
+              side: "left",
+              animated: true
+            })
+          }
+        />
     <View style={styles.bodyContainer}>
       <View style={styles.searchBarContainer}>
         <View style={styles.inputViewContainer}>
@@ -61,7 +72,7 @@ const ServicesScreen = ({
           />
         </View>
       </View>
-      <ScrollTabView
+      {/* <ScrollTabView
         initialPage={0}
         tabBarBackgroundColor={Colors.BitnationBlackAlphaColor}
         tabBarActiveTextColor={Colors.BitnationLinkOrangeColor}
@@ -283,8 +294,8 @@ const ServicesScreen = ({
             />
           </View>
         </ScrollTabView>
-      </ScrollTabView>
-      {/* <ScrollTabView
+      </ScrollTabView> */}
+      <ScrollTabView
         initialPage={0}
         tabBarBackgroundColor={Colors.BitnationBlackAlphaColor}
         tabBarActiveTextColor={Colors.BitnationLinkOrangeColor}
@@ -299,6 +310,7 @@ const ServicesScreen = ({
             buttonTitle="USE DAPP"
             subTitleTable="SIMILAR DAPPS"
             list={dAppData}
+            imageProfile={AssetsImages.imgDapp}
           />
         </View>
         <View tabLabel="CONTRACTS">
@@ -306,6 +318,7 @@ const ServicesScreen = ({
             buttonTitle="COPY CONTRACT CODE"
             subTitleTable="SIMILAR CONTRACTS"
             list={contractData}
+            imageProfile={AssetsImages.imgContract}
           />
         </View>
         <View tabLabel="SERVICES">
@@ -313,6 +326,7 @@ const ServicesScreen = ({
             buttonTitle="USE SERVICE"
             subTitleTable="SIMILAR SERVICES"
             list={serviceData}
+            imageProfile={AssetsImages.imgService}
           />
         </View>
         <View tabLabel="PRODUCTS">
@@ -320,9 +334,10 @@ const ServicesScreen = ({
             buttonTitle="USE PRODUCT"
             subTitleTable="SIMILAR PRODUCTS"
             list={productData}
+            imageProfile={AssetsImages.imgProduct}
           />
         </View>
-      </ScrollTabView> */}
+      </ScrollTabView>
     </View>
     <LucyButton onPress={() => setShowModal(LUCY_MODAL_KEY)} />
     <PopOverModal

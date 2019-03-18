@@ -3,7 +3,7 @@
 import React from "react";
 import { Platform } from "react-native";
 import { connect } from "react-redux";
-import { View, SectionList, Share, TextInput, Image } from "react-native";
+import { View, SectionList, Share, TextInput, Image, Text } from "react-native";
 import _ from "lodash";
 import Dialog from "react-native-dialog";
 
@@ -35,6 +35,7 @@ import { imageSource } from "@pangea/profile/profile-utils";
 import AssetsImages from "pangea-common-reactnative/assets/AssetsImages";
 import MoreMenuModal from "pangea-common-reactnative/UI/MoreMenuModal";
 import type { Contact } from "@pangea/contacts/contacts-types";
+import Header from "pangea-common-reactnative/UI/Header"
 
 import PopOverModal from "../../../components/PopOverModal";
 
@@ -319,22 +320,17 @@ class ChatListScreen extends NavigatorComponent<Props, State> {
     return (
       <View style={styles.nationsScreenContainer}>
         <BackgroundImage />
-        <FakeNavigationBar />
-        {/* <View style={styles.searchBarContainer}>
-          <View style={styles.inputViewContainer}>
-            <TextInput
-              style={styles.textInputStyle}
-              placeholder="Search by name, type or category..."
-              placeholderTextColor={Colors.BitnationLinkOrangeColor}
-              autoCapitalize="none"
-              underlineColorAndroid="transparent"
-            />
-            <Image
-              source={AssetsImages.searchIcon}
-              style={styles.searchIconStyle}
-            />
-          </View>
-        </View> */}
+        <Header
+          title={i18n.t("screens.chat.tabTitle").toUpperCase()}
+          leftIcon={<Image source={AssetsImages.menuIcon} />}
+          onLeftFunc={() =>
+            this.props.navigator.toggleDrawer({
+              side: "left",
+              animated: true
+            })
+          }
+        />
+        {/* <FakeNavigationBar /> */}
         <ScrollTabView
           initialPage={1}
           tabBarBackgroundColor={Colors.BitnationBlackAlphaColor}

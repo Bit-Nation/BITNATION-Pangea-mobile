@@ -6,7 +6,7 @@ import {
   FOUR_DOT_SEVEN_INCHES,
   FIVE_DOT_FIVE_INCHES,
   FIVE_DOT_EIGHT_INCHES,
-} from 'pangea-common/Constants';
+} from '../global/Constants';
 
 const {
   Dimensions, Platform,
@@ -47,7 +47,7 @@ export function normalWidthMargin() {
  * Function to check if the device it's an iPhone X
  * @returns {boolean} True if it is
  */
-function isiPhoneX() {
+export function isiPhoneX() {
   if (Platform.OS === 'ios' && (deviceHeight === FIVE_DOT_EIGHT_INCHES || deviceWidth === FIVE_DOT_EIGHT_INCHES)) {
     return true;
   }
