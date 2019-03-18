@@ -23,32 +23,22 @@ exports.bye = function() {
 
 function LucyBot(noRandomFlag) {
   this.lucyInitials = [
-    'Welcome, world citizen, to Bitnation.',
+    'Welcome to Bitnation world citizen!',
     'Hello there world citizen, how can I be of assistance today?',
     "I'm here to help if you need anything.",
-    'Hello there! My name is Lucy... How can I be of assistance?',
+    'Hello there! My name is Lucy. How can I be of assistance?',
     "Citizen, hello, I'm Lucy and I'm here if you need anything.",
-    "Hi, I'm Lucy, are any of the following topics on your mind?",
-    'Hi there, do you requre any help world citizen?',
+    "Hi I'm Lucy! Do you have any questions that I may assist you?",
+    'Hi there, do you require any help world citizen?',
     'Lucy here, how can I help you?',
     "Let me introduce myself: I am Lucy, Bitnation's friendly chatterbot. What can I do for you today?",
     'How can I help today?',
     'What can I do for you today?',
-    'Do you need help, traveller?',
-    'Stay a while and question.',
     'Welcome, world citizen.',
     'World Citizen, hello, I am Lucy. How can I be of assistance today?',
-    'What can I do for you?',
-    'What can I do for you today?',
-    'Hi.',
-    'Hi!',
     'Hello. I am Lucy.',
     'I am Lucy. What can I do for you?',
     'Lucy here. What can I do for you citizen?',
-    'Wonderful, yes, hi. Whay can I do for you?',
-    'Nice to see you again world citizen.',
-    'Welcome!',
-    "What's up? How can I help?",
     'Hello there world citizen. What brings you here today?',
   ];
 
@@ -69,12 +59,7 @@ function LucyBot(noRandomFlag) {
         [
           '*',
           [
-            "I'm not sure I understand you fully.",
-            'Can you please repeat with a clear keyword ?',
-            "That doesn't work.",
-            'Try to narrow it down with a keyword.',
-            'This program responds well to the following keywords: notary, blockchain, ethereum, xpat, chat, and a range of other simple terms in order to help you. The number of useful inputs are limited so try not to write as if you were talking to another person',
-            "I still don't understand. ",
+            'I did not recognize any keyword in your sentence. This chat program works with the following keywords: blockchain, ethereum, bitnation, constitution, cryptocurrency, notary, lucy, DBVN, features, chat, wallet and first time.',
           ],
         ],
       ],
@@ -86,10 +71,7 @@ function LucyBot(noRandomFlag) {
         [
           '*',
           [
-            "Listen, I'm not here to make you angry. I'm sorry if you are angry, please e-mail info@bitnation.co",
-            'Making you angry is the least of our intentions. Please e-mail us info@bitnation.co at if you need assistance.',
-            'We appreciate that you are angry and apologize. If you need to contact us directly please e-mail us at info@bitnation.co.',
-            "This program has four pre-set responses to tell-tale signs of anger. It isn't sophisticated enough to help relieve you of your anger. But if you need to talk to one of us please e-mail us at info@bitnation.co.",
+            'We apologize if we caused you any trouble. If you prefer please contact us directly at info@bitnation.co.',
           ],
         ],
       ],
@@ -101,11 +83,7 @@ function LucyBot(noRandomFlag) {
         [
           '*',
           [
-            'No worries friend, Bitnaton is a free nation of nations.',
-            "Honestly, it's fine, we're all free here.",
-            'I get it.',
-            'Sorry? No one needs to be sorry here.',
-            "It's alright.",
+            'No worries citzen! Bitnaton is here to assist you on creating your own nation.',
             'There is nothing to be sorry about.',
           ],
         ],
@@ -118,7 +96,7 @@ function LucyBot(noRandomFlag) {
         [
           '*',
           [
-            "It's not my intention to cause a problem - I'm here to help. If you've got a problem please contact info@bitnation.co",
+            "It's not my intention to cause a problem - I'm here to help. If you still have a problem please contact info@bitnation.co and the team will assit you.",
           ],
         ],
       ],
@@ -130,10 +108,10 @@ function LucyBot(noRandomFlag) {
         [
           '*',
           [
-            'Although we aim to be blockchain agnostic, our blockchain supports our Xpat ERC20 token.',
-            "Blockchain technology is the foundation for Bitcoin. An advanced version of this technology established Ethereum, the so-called 'Blockchain 2.0.' We seek to be part of the 'blockchain 3.0' revolution which comes next, providing governance software solutions through blockchain technology.",
+            'Although we aim to be blockchain agnostic, we are currently working with ethereum and ECR20 tokens.',
+            'Blockchain technology is the foundation for Bitcoin. An advanced version of this technology established Ethereum. We seek to be part of the revolution which comes next, providing governance software solutions through blockchain technology.',
             'Learn more about blockchain technology here: https://www.coursera.org/learn/blockchain-basics',
-            'The �blockchain revolution� � most popularized by Bitcoin � took the world by storm.  A blockchain can either be �permissioned� � some user picks which nodes posses the blockchain � or otherwise, permissionless. Permissionless blockchains usually allow any number of users to join the network. The network itself is an association of all these programs checking each-other for consensus about the details about the program.',
+            'The blockchain revolution most popularized by Bitcoin took the world by storm. Permissionless blockchains usually allow any number of users to join the network. The network itself is an association of all these programs checking each-other for consensus about the details about the program.',
           ],
         ],
         [
@@ -142,7 +120,7 @@ function LucyBot(noRandomFlag) {
             'Learn more about blockchain technology here: https://www.coursera.org/learn/blockchain-basics',
             "Blockchain technology is the foundation for Bitcoin. An advanced version of this technology established Ethereum, the so-called 'Blockchain 2.0.' We seek to be part of the 'blockchain 3.0' revolution which comes next, providing governance software solutions through blockchain technology.",
             'Read more about blockchain here: https://cryptobriefing.com/explain-blockchain-parents/',
-            '  A block chain is a computer program which relies on a chain of equations one-after-another in as discreet �blocks� in which some functions might be added. When distributed between numerous computers, often to mine the blocks, each version of the program talks back and forth to one-another and confirms the authenticity of the other. When �fake� nodes try to connect to the network the errors in their ledger will force them to be treated as an edited �fork� of the main network. As such it is useful for the instantiation and verification of coins, tokens, smart contracts and all sorts of decentralized applications.',
+            'A blockchain is a computer program which relies on a chain of equations one-after-another in as discreet �blocks� in which some functions might be added. When distributed between numerous computers, often to mine the blocks, each version of the program talks back and forth to one-another and confirms the authenticity of the other. When �fake� nodes try to connect to the network the errors in their ledger will force them to be treated as an edited �fork� of the main network. As such it is useful for the instantiation and verification of coins, tokens, smart contracts and all sorts of decentralized applications.',
           ],
         ],
       ],
@@ -174,7 +152,6 @@ function LucyBot(noRandomFlag) {
         [
           '*',
           [
-            "A Bitnation is a nation running on the Bitnation architecture. Anyone can launch their own Bitnation with its own political principles, laws and raison d'�tre. Joining a Bitnation will be as simple as clicking �join� and leaving a nation as easy as clicking �leave.�",
             "Bitnation is an application which allows people to found 'Bitnations' without regulation on our part and for their own purposes.",
             'Bitnation is a voluntary nation without laws or regulation which allows people to found and regulate their own nations for their own reasons.',
             "We are the world's first and original decentralized borderless virtual nation.",
@@ -218,7 +195,7 @@ function LucyBot(noRandomFlag) {
           [
             "Cryptocurrencies are produced within certian blockchains when peoples' computers perform mining tasks on the equations forming the blocks in the chain.",
             'Cryptocurrencies range from Bitcoin, Ethereum, Monero, and thousands of others including our Xpat.',
-            '  When a block is mined, it is possible for a �proof of work� token to be instantiated. Since the details of the block, its mining and the token itself are each possessed by every member of the 		network it is possible for there to be an accurate ledger for these units of currency and the history of their trading and possession.',
+            'When a block is mined, it is possible for a �proof of work� token to be instantiated. Since the details of the block, its mining and the token itself are each possessed by every member of the 		network it is possible for there to be an accurate ledger for these units of currency and the history of their trading and possession.',
             'In fact, every time a cryptocurrency is traded that transaction history can be tracked. Unfortunately, every time something is changed in the network it comes with a tiny �gas� cost, the equivalent of 		the electricity expended by the system. The proof of work itself is eventually derived from something such as a proof-of-computation of a block and the electrical cost of the computations performed 		by the computer. This kind of work is referred to as �mining.',
           ],
         ],
@@ -231,10 +208,7 @@ function LucyBot(noRandomFlag) {
         [
           '*',
           [
-            'You can access our notary service by swiping from the left side of the screen.',
-            'You can use our notary service to permenantly upload your docucments to the blockchain.',
-            "When you click Notary you will be able to select what file you'd like to upload, name it, describe it and then upload it. You will have to pay the gas cost for using the network and viola - you have 		notarized your document!",
-            'Now you can swipe from the left to access our notary. Tap the notary button and tap the plus icon in the bottom right corner. Select the kind of file you want to upload. Give the file a name, scroll 			down and tap submit. The file is not on the blockchain yet! Now select your file in your Notary list and click �Submit Document.� Pay the fee for using the Ethereum network and click �confirm.�',
+            'Now you can swipe from the left to access our notary. Tap the notary button and tap the plus icon in the bottom right corner. Select the kind of file you want to upload. Give the file a name, scroll down and tap submit. Now select your file in your Notary list and click Submit Document. Remember the file is not uploaded to the blockchain, just the hash that verifies it. So keep you file on a backup if you need it on the future.',
           ],
         ],
       ],
@@ -246,9 +220,7 @@ function LucyBot(noRandomFlag) {
         [
           '*',
           [
-            'Bitnation aspires to have an AI agent named Lucy which monitors the network in order to sercurely and blindly compile the reputation profiles of our users. This application does not exist but I am 			the help chatterbot who bears that symbol of our future software!',
-            'I am a helpful chatterbot here to help guide you to general knowledge to help you understand and use this application.',
-            "I am the face of Bitnation, Lucy and I'm here to help.",
+            'Bitnation is developing an AI agent named Lucy that will be responsible to reward Xpat and reputation tokens. Currently Lucy is limited to this chatbot to assist you.',
           ],
         ],
         [
@@ -258,7 +230,7 @@ function LucyBot(noRandomFlag) {
             [
               '*',
               [
-                "A 'DBVN' is a 'decentralized borderless virtual nation. Anyone can start one but it�s up to you to create a nation people want to join.",
+                "A 'DBVN' is a 'decentralized borderless virtual nation. Anyone can start one but it's up to you to create a nation people want to join.",
               ],
             ],
           ],
@@ -270,8 +242,7 @@ function LucyBot(noRandomFlag) {
             [
               '*',
               [
-                'The current set of features are: notarizing documents on the blockchain, creating nations, chatting, the ability to add decentralized applications to the network and the use of Ethereum and Xpat 			wallets. ?',
-                'At the moment you can create a new account, trade Xpat and ETH from your Bitnation wallet, notarize documents using our notary service, chat and launch some limited decentralized application. In 			the future there will be numerous decentralized applications, you will be able to create and join nations, you will be able to manage your reputation settings and depending on those settings you will 			receive Xpat as a re-enforcer for good behavior.',
+                'The current set of features are: notarizing documents on the blockchain, creating nations, chatting, the ability to add decentralized applications to the network and the use of Ether and Xpat tokens.',
               ],
             ],
           ],
@@ -283,7 +254,7 @@ function LucyBot(noRandomFlag) {
             [
               '*',
               [
-                ' Swipe out from the left to open the side menu and tap chat. Click the plus sign in the bottom right corner. Enter the address of the person you want to chat with in the �to� section or click �New 			Contact from Clipboard� and add that person to your chat list and click done.',
+                ' Swipe out from the left to open the side menu and tap chat. Click the plus sign in the bottom right corner. Enter the address of the person you want to chat with and click done.',
               ],
             ],
           ],
@@ -295,19 +266,7 @@ function LucyBot(noRandomFlag) {
             [
               '*',
               [
-                'Bitnation hosts an Xpat and ETH wallet for all users. In the future we hope to have many cryptocurrencies available through our wallet!',
-              ],
-            ],
-          ],
-        ],
-        [
-          'first time',
-          0,
-          [
-            [
-              '*',
-              [
-                'No problem! This application is our working beta so it doesn�t have all the functionality we intend for it to eventually have. Bitnation aspires to use blockchain technology to allow people to join or 		instantiate their own nations free from external regulation � even from us. This only reflects a fraction of our over-all vision Bitnation will track reputation, incentivize good behavior and hardwire the 			right of a user to join or leave a nation. As for myself, I respond to the following keywords well: features, notary, chat, blockchain, bitnation, constitution, ethereum.',
+                'Each profile is directly attached to an Ethereum wallet that currently can hold ether and Xpat toekns.',
               ],
             ],
           ],
@@ -484,6 +443,7 @@ function LucyBot(noRandomFlag) {
       'fucking',
       'fuk u',
       'fuk',
+      'fuck',
       'fukkin',
       'fuckin',
       'sucks',

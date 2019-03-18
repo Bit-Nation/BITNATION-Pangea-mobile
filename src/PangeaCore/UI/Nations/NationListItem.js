@@ -76,6 +76,11 @@ type PropsList<IDType> = {
    * @type object
    */
   style?: View.propTypes.style,
+
+  /**
+   * @desc Resource to be rendered as icon with the button.
+   */
+  iconSource?: number,
 };
 
 /**
@@ -89,6 +94,7 @@ const ListItem = <IDType>({
   disabled,
   style,
   text,
+  iconSource,
   citizens = '0',
 }: PropsList<IDType>) => {
   const styles = MediaQueryStyleSheet.create({
@@ -109,7 +115,7 @@ const ListItem = <IDType>({
         disabled={disabled}
       >
         <View style={styles.nationListItemContainer}>
-          <Image source={AssetsImages.avatarIcon} style={styles.chatListItemIcon} />
+          <Image source={iconSource} style={styles.chatListItemIcon} />
           <View style={styles.nationInfoView}>
             <View style={styles.nationTitleView}>
               <Text style={styles.nationTextTitleStyle}>{text}</Text>
@@ -145,7 +151,7 @@ ListItem.defaultProps = {
     * @return {React.Component} A component.
 */
 const NationListItem = ({
-  id, textStyle, onPress, nationName, status, citizens,
+  id, textStyle, onPress, nationName, status, citizens, iconSource,
 }: Props) => (
   <ListItem
     text={nationName}
@@ -154,6 +160,7 @@ const NationListItem = ({
     id={id}
     onPress={onPress}
     citizens={citizens}
+    iconSource={iconSource}
   />
 );
 
