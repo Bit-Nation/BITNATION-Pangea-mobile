@@ -50,7 +50,7 @@ type Props = {
   /**
    * @desc Flag to check if tab is popular.
    */
-  nationType: Number,
+  nationType: any,
 };
 
 const NationsListScreen = ({

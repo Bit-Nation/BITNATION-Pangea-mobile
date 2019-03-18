@@ -64,7 +64,11 @@ type Props = {
   /**
    * @desc Function to hide spinner
    */
-  hideSpinner: () => void
+  hideSpinner: () => void,
+  /**
+   * @desc Id of bination nation
+   */
+  groupNationId: any
 };
 
 type State = {

@@ -24,6 +24,11 @@ export type GovMarketItemProps = {
    */
   subTitle: string,
 
+  /**
+   * @desc Url of item
+   */
+  imageUri: string,
+
   onPress: Function,
 };
 
