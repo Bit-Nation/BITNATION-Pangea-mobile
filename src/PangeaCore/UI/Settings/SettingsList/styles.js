@@ -56,6 +56,8 @@ const styles = MediaQueryStyleSheet.create({
     paddingHorizontal: 10,
     width: '100%',
     justifyContent: 'space-between',
+    alignSelf: 'center',
+    alignItems: 'center',
   },
   controlButton: {
     borderRadius: 40,

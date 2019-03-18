@@ -152,7 +152,6 @@ class DocumentsListScreen extends NavigatorComponent<
         <BackgroundImage />
         <FakeNavigationBar />
         <View style={styles.bodyContainer}>
-          <ScreenTitle title={i18n.t("screens.documentsList.title")} />
           <FlatList
             renderItem={item => {
               const document = item.item;

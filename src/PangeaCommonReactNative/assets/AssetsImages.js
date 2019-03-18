@@ -50,7 +50,7 @@ const botIconLucy = require('../assets/images/icon_chatbot.png');
 
 const chatNewMessageIcon = require('../assets/images/chat_indicator.png');
 const groupChatIcon = require('../assets/images/groupChatIcon.png');
-const menuIcon = require('../assets/images/menu.png');
+const menuIcon = require('../assets/images/hamburgerlogo.png');
 const sendChatActiveIcon = require('../assets/images/sendChatActive.png');
 const sendChatInActiveIcon = require('../assets/images/sendChatInActive.png');
 const actionChatIcon = require('../assets/images/actionChat.png');
