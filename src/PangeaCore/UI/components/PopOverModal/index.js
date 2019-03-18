@@ -69,29 +69,30 @@ const styles = MediaQueryStyleSheet.create({
     justifyContent: 'center',
   },
   modalContent: {
-    width: '100%',
-    height: '100%',
-    backgroundColor: Colors.Transparent,
-    borderRadius: 5,
+    width: '75%',
+    height: '75%',
+    backgroundColor: Colors.white,
+    opacity: 0.85,
+    borderRadius: 14,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  triangle: {
-    width: 0,
-    height: 0,
-    backgroundColor: 'transparent',
-    borderStyle: 'solid',
-    borderRightWidth: modalWrapContentHeight * 0.05,
-    borderTopWidth: 30,
-    borderRightColor: 'transparent',
-    borderTopColor: Colors.white,
-    position: 'absolute',
-    bottom: 0,
-    right: 40,
-    transform: [
-      { rotate: '90deg' },
-    ],
-  },
+  // triangle: {
+  //   width: 0,
+  //   height: 0,
+  //   backgroundColor: 'transparent',
+  //   borderStyle: 'solid',
+  //   // borderRightWidth: modalWrapContentHeight * 0.05,
+  //   borderTopWidth: 30,
+  //   borderRightColor: 'transparent',
+  //   borderTopColor: Colors.white,
+  //   position: 'absolute',
+  //   bottom: 0,
+  //   right: 40,
+  //   transform: [
+  //     { rotate: '90deg' },
+  //   ],
+  // },
   headerView: {
     backgroundColor: Colors.BitnationLinkOrangeColor,
     height: 40,
@@ -101,7 +102,7 @@ const styles = MediaQueryStyleSheet.create({
     borderTopLeftRadius: 5,
   },
   headerText: {
-    color: Colors.white,
+    color: Colors.BitnationDarkGrayColor,
     fontSize: 25,
     fontWeight: 'bold',
   },
@@ -111,14 +112,13 @@ const styles = MediaQueryStyleSheet.create({
   },
   contentViewModal: {
     flex: 1,
-    paddingTop: 20,
-    paddingBottom: 200,
+    paddingBottom: 20,
     alignItems: 'center',
     justifyContent: 'center',
   },
   descriptionText: {
     fontSize: 16,
-    color: Colors.white,
+    color: Colors.BitnationDarkGrayColor,
     fontWeight: 'bold',
     marginVertical: 20,
     textAlign: 'center',
@@ -168,15 +168,10 @@ const PopOverModal = ({
     <TouchableOpacity style={styles.modalMoreContainer} activeOpacity={1} onPress={onCancel}>
       <TouchableOpacity style={styles.modalWrapContent} activeOpacity={1}>
         <View style={styles.modalContent}>
-          <ImageBackground
-            style={styles.modalBackground}
-            source={AssetsImages.lucyModalBackground}
-            resizeMode='stretch'
-          >
-            <View style={styles.contentViewModal}>
-              {desText && <Text style={styles.descriptionText}>{desText}</Text>}
+          <View style={styles.contentViewModal}>
+            {desText && <Text style={styles.descriptionText}>{desText}</Text>}
 
-              {
+            {
                   options.map((option, index) => (
                     <TouchableOpacity
                       style={[styles.modalMenuItem, { borderBottomWidth: index === options.length - 1 ? 0 : 3 }]}
@@ -192,14 +187,13 @@ const PopOverModal = ({
                     </TouchableOpacity>
                   ))
                 }
-              <TouchableOpacity
+            {/* <TouchableOpacity
                 style={styles.modalMenuBackItem}
                 onPress={onCancel}
               >
                 <Image source={AssetsImages.lucyModalClose} style={styles.lucyCloseIcon} />
-              </TouchableOpacity>
-            </View>
-          </ImageBackground>
+              </TouchableOpacity> */}
+          </View>
         </View>
       </TouchableOpacity>
       <LucyButton style={styles.lucyButtonStyle} onPress={onCancel} />
