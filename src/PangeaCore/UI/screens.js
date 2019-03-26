@@ -20,7 +20,9 @@ import Intro from './Intro/RNSwiper';
 import SendMoney from './Wallet/WalletScreen/SendMoney';
 import ReceiveMoneyScreen from './Wallet/WalletScreen/ReceiveMoney';
 // eslint-disable-next-line import/no-unresolved,import/extensions
-// import ChatScreen from './ChatScreen';
+import QRCodeScannerScreen from './Wallet/WalletScreen/QRCodeScanner';
+import QRCodeDappScreen from './Dapp/QRCodeScanner';
+import ChatScreen from './Chat';
 import NationsScreen from './Nations/NationsScreen';
 import ProfileScreen from './Settings/ProfileScreen';
 import NationDetailsScreen from './Nations/NationDetailsContainer';
@@ -29,7 +31,7 @@ import SettingsScreen from './Settings/SettingsList';
 import SecuritySettingsScreen from './Settings/Security';
 import ServicesScreen from './Services/index';
 import AccountsAccess from './Accounts/AccountAccessContainer';
-// import ConfirmationContainer from './ConfirmationContainer';
+import ConfirmationContainer from './Wallet/ConfirmationContainer';
 import EnterPasscodeScreen from './Accounts/Passcode/EnterPasscodeContainer';
 import CreatePasscodeScreen from './Accounts/Passcode/CreatePasscodeContainer';
 import ChatListScreen from './Chat/PrivateChat/ChatList';
@@ -67,7 +69,7 @@ export default function registerScreens(store: Object, Provider: Object) {
   Navigation.registerComponent(screen('VIEW_PRIVATE_KEY_SCREEN').screen, () => ViewPrivateKeyScreen, store, Provider);
   Navigation.registerComponent(screen('INTRO_SCREEN').screen, () => Intro, store, Provider);
   Navigation.registerComponent(screen('DASHBOARD_SCREEN').screen, () => Dashboard, store, Provider);
-  // Navigation.registerComponent(screen('CHAT_SCREEN').screen, () => ChatScreen, store, Provider);
+  Navigation.registerComponent(screen('CHAT_SCREEN').screen, () => ChatScreen, store, Provider);
   Navigation.registerComponent(screen('MIGRATION_SCREEN').screen, () => MigrationScreen, store, Provider);
   Navigation.registerComponent(screen('NATIONS_SCREEN').screen, () => NationsScreen, store, Provider);
   Navigation.registerComponent(screen('NATION_DETAILS_SCREEN').screen, () => NationDetailsScreen, store, Provider);
@@ -75,8 +77,8 @@ export default function registerScreens(store: Object, Provider: Object) {
   Navigation.registerComponent(screen('PROFILE_SCREEN').screen, () => ProfileScreen, store, Provider);
   Navigation.registerComponent(screen('RECEIVE_MONEY_SCREEN').screen, () => ReceiveMoneyScreen, store, Provider);
   Navigation.registerComponent(screen('SEND_MONEY_SCREEN').screen, () => SendMoney, store, Provider);
-  // Navigation.registerComponent(screen('QR_CODE_SCANNER_SCREEN').screen, () => QRCodeScannerScreen, store, Provider);
-  // Navigation.registerComponent(screen('QR_CODE_DAPP_SCREEN').screen, () => QRCodeDappScreen, store, Provider);
+  Navigation.registerComponent(screen('QR_CODE_SCANNER_SCREEN').screen, () => QRCodeScannerScreen, store, Provider);
+  Navigation.registerComponent(screen('QR_CODE_DAPP_SCREEN').screen, () => QRCodeDappScreen, store, Provider);
   Navigation.registerComponent(screen('NATION_CREATE_SCREEN').screen, () => NationCreateScreen, store, Provider);
   Navigation.registerComponent(screen('SETTINGS_SCREEN').screen, () => SettingsScreen, store, Provider);
   Navigation.registerComponent(screen('SERVICES_SCREEN').screen, () => ServicesScreen, store, Provider);
@@ -84,7 +86,7 @@ export default function registerScreens(store: Object, Provider: Object) {
   Navigation.registerComponent(screen('ACCOUNTS_ACCESS_SCREEN').screen, () => AccountsAccess, store, Provider);
   Navigation.registerComponent(screen('ENTER_PASSCODE_SCREEN').screen, () => EnterPasscodeScreen, store, Provider);
   Navigation.registerComponent(screen('CREATE_PASSCODE_SCREEN').screen, () => CreatePasscodeScreen, store, Provider);
-  // Navigation.registerComponent(screen('CONFIRMATION_SCREEN').screen, () => ConfirmationContainer, store, Provider);
+  Navigation.registerComponent(screen('CONFIRMATION_SCREEN').screen, () => ConfirmationContainer, store, Provider);
   Navigation.registerComponent(screen('CHAT_LIST_SCREEN').screen, () => ChatListScreen, store, Provider);
   Navigation.registerComponent(screen('PRIVATE_CHAT_SCREEN').screen, () => PrivateChatScreen, store, Provider);
   Navigation.registerComponent(screen('CONTACTS_PICKER_SCREEN').screen, () => ContactsPickerScreen, store, Provider);

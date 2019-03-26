@@ -8,8 +8,8 @@ import {
 } from 'react-native';
 
 import Colors from 'pangea-common-reactnative/styles/colors';
-import NavigatorComponent from '../../../components/common/NavigatorComponent';
-import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
+import NavigatorComponent from '../../../NavigatorComponent';
+import FakeNavigationBar from 'pangea-common-reactnative/UI/FakeNavigationBar';
 
 export default class QRCodeScannerScreen extends NavigatorComponent {
   static navigatorButtons = {
