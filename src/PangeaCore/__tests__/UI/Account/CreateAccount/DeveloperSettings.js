@@ -4,7 +4,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
 
-import DeveloperSettings from '../../../../UI/Account/CreateAccount/DeveloperSettings';
+import DeveloperSettings from '../../../../UI/Accounts/CreateAccount/DeveloperSettings';
 import navigatorMock from '../../../../__mocks__/Navigator';
 
 describe('DeveloperSettings', () => {

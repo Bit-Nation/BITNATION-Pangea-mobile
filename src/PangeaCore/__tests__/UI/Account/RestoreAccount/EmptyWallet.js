@@ -4,7 +4,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
 
-import EmptyWallet from '../../../../UI/Account/RestoreAccount/EmptyWallet';
+import EmptyWallet from '../../../../UI/Accounts/RestoreAccount/EmptyWallet';
 
 describe('EmptyWallet', () => {
   let emptyWalletScreen;

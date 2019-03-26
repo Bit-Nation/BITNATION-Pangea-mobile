@@ -1,4 +1,4 @@
-import Colors from '../../../../global/colors';
+import Colors from 'pangea-common-reactnative/styles/colors';
 
 export default {
   container: {

@@ -11,8 +11,8 @@ import { connect } from "react-redux";
 import { Button, Text } from "native-base";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import i18n from "pangea-common/i18n";
-import { logout } from "../../actions/accounts";
-import { imageSource } from "../../utils/profile";
+import { logout } from "@pangea/accounts/accounts-actions";
+import { imageSource } from "@pangea/profile/profile-utils";
 import { getCurrentAccount } from "@pangea/accounts/accounts-reducers";
 
 import AssetsImages from "pangea-common-reactnative/assets/AssetsImages";
@@ -20,7 +20,7 @@ import { screen } from "pangea-common-reactnative/Screens";
 import styles from "./styles";
 
 // import Button from '../../components/common/Button';
-import NavigatorComponent from "../../components/common/NavigatorComponent";
+import NavigatorComponent from "../NavigatorComponent";
 
 class MenuScreen extends NavigatorComponent {
   constructor(props) {

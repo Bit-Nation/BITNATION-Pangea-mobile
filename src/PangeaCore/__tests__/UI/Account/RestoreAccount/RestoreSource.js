@@ -4,7 +4,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
 
-import RestoreSource from '../../../../UI/Account/RestoreAccount/RestoreSource';
+import RestoreSource from '../../../../UI/Accounts/RestoreAccount/RestoreSource';
 import navigatorMock from '../../../../__mocks__/Navigator';
 
 describe('RestoreSource', () => {

@@ -6,4 +6,5 @@ launcher:
     emulator_name: Development_Local_
     device_address: emulator-5560
     emulator_port: 5560 # both emulator_port emulator_port+1 must be available
+    emulator_auto_launch: false # Set to true to attempt to launch automatically during npm run android. May cause issues. 
   fullreset: false

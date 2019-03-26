@@ -54,16 +54,35 @@ function setSigHandler() {
 }
 setSigHandler();
 
-async function fork(name, cmd, args, {readyRegex, timeout, echo, logStream} = {}, opts) {
-
+async function fork(name, cmd, args, {readyRegex, failedRegex, timeout, echo, logStream} = {}, opts) {
+    cmdfull = cmd + " " + args.join(' ');
+    result = {
+        command: cmdfull,
+        success: false
+    };
+    console.log(cmdfull);
+    
     return new Promise((resolve) => {
-        const close = () => {
+        const finishedWithError = () => {
+            //console.debug('fork close: ' + name)
             delete children[name];
-            resolve(false);
+            result.success = false;
+            resolve(result);
         };
 
+        finishedSuccessfully = () => {
+            delete children[name];
+            result.success = true;
+            resolve(result);
+        }
+
         if(timeout) {
-            setTimeout(() => close, timeout);
+            setTimeout(() => {
+                if (children[name] === undefined)
+                    return;
+                console.log("Timed out waiting for command " + name + " to finish.");
+                finishedWithError();
+            }, timeout);
         }
 
         const child = childProcess.spawn(
@@ -76,9 +95,19 @@ async function fork(name, cmd, args, {readyRegex, timeout, echo, logStream} = {}
             } 
         );
 
-        child.on('close', close);
-        child.on('exit', close);
-        child.on('error', close);
+        handleClose = (proc) => {
+            // Warning: react-native process doesn't seem to return correct exit code
+            if (proc.exitCode == 0) {
+                finishedSuccessfully();
+            }
+            else {
+                console.log("Exit code = " + proc.exitCode);
+                finishedWithError();
+            }
+        }
+        child.on('close', () => handleClose(child));
+        child.on('exit', () => handleClose(child));
+        child.on('error', finishedWithError);
 
         if (!logStream) {
             logStream = fs.createWriteStream(`${utils.RepositoryRootDir}/data/logs/volatile-build-${name}.log`);
@@ -89,8 +118,11 @@ async function fork(name, cmd, args, {readyRegex, timeout, echo, logStream} = {}
                 console.log(`[${name}] ${line}`);
             }
             logStream.write(line+os.EOL);
+            if (failedRegex && line.match(failedRegex)) {
+                finishedWithError();
+            }
             if (readyRegex && line.match(readyRegex)) {
-                resolve(true);
+                finishedSuccessfully();
             }
         };
 
@@ -103,8 +135,8 @@ async function fork(name, cmd, args, {readyRegex, timeout, echo, logStream} = {}
         }).on('line', lineCb);
 
         children[name] = child;
-        if (!readyRegex) {
-            resolve(true);
+        if (!readyRegex && !timeout) {
+            finishedSuccessfully();
         }
     });
 }
@@ -189,7 +221,7 @@ class AndroidHelper {
         }
     }
 
-    clearLogcat() {
+    async clearLogcat() {
         console.log("Clearing logcat logs on device. Requires an emulator with root access.")
         try
         {
@@ -198,7 +230,9 @@ class AndroidHelper {
         }
         catch (err) { 
             console.error(err.toString());
+            return false;
         }
+        return true;
     }
 
     // Ensures that .dev.config.yaml is committed to the development build
@@ -215,21 +249,39 @@ class AndroidHelper {
         console.log(`AndroidHelper: Copying ${inputfile} to ${outputfile}`);
         fs.writeFileSync(outputfile, JSON.stringify(obj, null, 2));
     }
+    async launchAppItem(func) {
+        let result = await func();
+        if (result == false) 
+            return false;
+        if (result.success == false) {
+            console.error("Command failed: " + result.command);
+            return false;
+        }
+        return true;
+    }
 
     async launchApp() {
-        this.launchFlow();
-        await this.launchEmulator();
-        this.clearLogcat();
-        await this.launchBuild();
-        await this.launchReactNative();
+        let result = 
+            await this.launchAppItem(this.launchFlow) &&
+            await this.launchAppItem(this.launchEmulator) && 
+            await this.launchAppItem(this.launchBuild) &&
+            await this.launchAppItem(this.clearLogcat) &&
+     //       await this.launchAppItem(this.launchRNLink) &&
+            await this.launchAppItem(this.launchReactNative)
+
         await sleep(100);
 
         this.statusDoc.timeLaunched = Date.now();
+
+        return result;
     }
 
-    launchBuild() {
+    async launchBuild() {
+        return true; // react-native run-android already does this
+        /*
         // Build APK
-        return fork(
+        console.log("Starting gradle build.")
+        return await fork(
             'gradle',
             './android/gradlew', 
             [ // args
@@ -239,13 +291,19 @@ class AndroidHelper {
             { // options
                 readyRegex: /BUILD SUCCESSFUL/,
                 timeout: 300000,
+                echo: true
             }
         );
+        */
     }
 
     async launchEmulator() {
+        if (androidcfg.emulator_auto_launch != true) {
+            console.log("AndroidHelper: Auto-launch of emulator not enabled (can change via .dev.config.yaml)");
+            return true;
+        }
         console.log("AndroidHelper: Starting Android Emulator")
-        await fork(
+        if (false == await fork(
             'emulator',
             '$ANDROID_HOME/tools/emulator', 
             [ // args
@@ -262,7 +320,7 @@ class AndroidHelper {
                     "|(Adb connected, start proxing data)", 
                     'g'),
                 timeout: 60000,
-                echo: false
+                echo: true
             },
             {
                 cwd: `${process.env["ANDROID_HOME"]}/emulator`,
@@ -270,11 +328,13 @@ class AndroidHelper {
                 stdio: [null, 'pipe', 'pipe'],
                 shell: utils.ShellLocation
             }
-        );
+        )) {
+            return false;
+        }
         utils.RunShellScript("android/wait-for-boot.sh", androidcfg.device_address);
     }
 
-    launchFlow() {
+    async launchFlow() {
         console.log(`AndroidHelper: Launching flow.`);
         let procopts = {
             cwd: utils.RepositoryRootDir,
@@ -282,11 +342,12 @@ class AndroidHelper {
             stdio: "inherit"
         };
         childProcess.execSync('flow', procopts);
+        return true;
     }
 
-    launchReactNative() {
+    async launchReactNative() {
         // Metro Bundler
-        return fork(
+        return await fork(
             'metro',
             `${utils.RepositoryRootDir}/node_modules/.bin/react-native`,
             [ // args
@@ -294,12 +355,27 @@ class AndroidHelper {
             ],
             { // options
                 readyRegex: /Loading dependency graph, done./,
+                failedRegex: /BUILD FAILED/,
                 timeout: 60000,
                 echo: true
             }
         );
     }
     
+    async launchRNLink() { // react-native link seems to be a bad idea due to some things being linked that we don't want?
+        return await fork(
+            'RNLink',
+            `${utils.RepositoryRootDir}/node_modules/.bin/react-native`,
+            [ // args
+                'link',
+            ],
+            { // options
+                //readyRegex: /Loading dependency graph, done./,
+                timeout: 60000,
+                echo: true
+            }
+        );
+    }
    /* 
     Redirects log output
     Original story: https://www.pivotaltracker.com/story/show/162820053
@@ -351,7 +427,11 @@ class AndroidHelper {
         try {
             this.statusFileRemove();
             this.installDevConfig();
-            await this.launchApp();
+            if (await this.launchApp() == false) {
+                console.log("Launch not successful. Check error messages for possible cause.")
+                await sighandle();
+                return;
+            }
             this.assertCorrectDeviceAddress();
             this.setupLnav();
             this.statusFileCommit();
@@ -360,6 +440,8 @@ class AndroidHelper {
         }
         catch(err) {
             console.log("AndroidHelper crashed: " + err.toString());
+            await sighandle();
+            return;
         }
         
         console.log("Press Ctrl+Z to stop log collection and end the session.");

@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 import PropTypes from 'prop-types';
-import Colors from '../../global/colors';
+import Colors from 'pangea-common-reactnative/styles/colors';
 
 const styles = StyleSheet.create({
   fullTextWrapper: {

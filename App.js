@@ -2,8 +2,8 @@ import { Provider } from 'react-redux';
 import asyncToGenerator from 'async-to-generator';
 
 import configureStore from './src/config/configureStore';
-import registerScreens from './src/screens/screens';
-import { startNavigation } from './src/actions/navigation';
+import registerScreens from './src/PangeaCore/UI/screens';
+import { startNavigation } from './src/modules/navigation/navigation-actions';
 
 // Fix for https://github.com/Bit-Nation/BITNATION-Pangea-mobile/issues/166
 // Related with https://github.com/facebook/react-native/issues/4844

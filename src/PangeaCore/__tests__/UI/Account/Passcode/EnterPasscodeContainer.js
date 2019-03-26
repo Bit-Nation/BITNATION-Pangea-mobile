@@ -4,7 +4,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
 
-import EnterPasscodeContainer from '../../../../UI/Account/Passcode/EnterPasscodeContainer';
+import EnterPasscodeContainer from '../../../../UI/Accounts/Passcode/EnterPasscodeContainer';
 import navigatorMock from '../../../../__mocks__/Navigator';
 
 describe('EnterPasscodeContainer', () => {

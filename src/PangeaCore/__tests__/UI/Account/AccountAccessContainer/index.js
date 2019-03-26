@@ -4,7 +4,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
 
-import AccountAccessContainer from '../../../../UI/Account/AccountAccessContainer';
+import AccountAccessContainer from '../../../../UI/Accounts/AccountAccessContainer';
 import navigatorMock from '../../../../__mocks__/Navigator';
 
 describe('AccountAccessContainer', () => {

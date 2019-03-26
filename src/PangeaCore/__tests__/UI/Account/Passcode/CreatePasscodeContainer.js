@@ -4,7 +4,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
 
-import CreatePasscodeContainer from '../../../../UI/Account/Passcode/CreatePasscodeContainer';
+import CreatePasscodeContainer from '../../../../UI/Accounts/Passcode/CreatePasscodeContainer';
 import navigatorMock from '../../../../__mocks__/Navigator';
 
 describe('CreatePasscodeContainer', () => {
