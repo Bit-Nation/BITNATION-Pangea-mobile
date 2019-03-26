@@ -12,7 +12,7 @@ import ListItem from 'pangea-common-reactnative/UI/ListItem';
 import type { Account } from 'pangea-common/types/accounts-types';
 import i18n from 'pangea-common/i18n';
 import BitnationCover from 'pangea-common-reactnative/assets/images/BitnationCover.png';
-import bitnationIntro from 'pangea-common-reactnative/UI/assets/images/bitnationIntro.gif';
+import bitnationIntro from 'pangea-common-reactnative/assets/images/bitnationIntro.gif';
 import Images from 'pangea-common-reactnative/assets/AssetsImages';
 
 type Props = {

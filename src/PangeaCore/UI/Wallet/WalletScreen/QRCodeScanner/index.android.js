@@ -7,7 +7,7 @@ import {
   View,
 } from 'react-native';
 
-import Colors from '../../../global/colors';
+import Colors from 'pangea-common-reactnative/styles/colors';
 import NavigatorComponent from '../../../components/common/NavigatorComponent';
 import FakeNavigationBar from '../../../components/common/FakeNavigationBar';
 

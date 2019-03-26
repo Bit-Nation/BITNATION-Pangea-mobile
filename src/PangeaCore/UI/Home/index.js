@@ -13,11 +13,11 @@ import {
 } from 'native-base';
 // import { Field, reduxForm } from 'redux-form';
 import styles from './styles';
-import Colors from '../../global/colors';
+import Colors from 'pangea-common-reactnative/styles/colors';
 
 // const commonColor = require('../../theme/variables/commonColor');
-const backgroundImage = require('../../assets/images/glow2.png');
-const logo = require('../../assets/images/logo.png');
+const backgroundImage = require('pangea-common-reactnative/assets/images/glow2.png');
+const logo = require('pangea-common-reactnative/assets/images/logo.png');
 
 // const required = value => (value ? undefined : 'Required');
 // const maxLength = max => value =>

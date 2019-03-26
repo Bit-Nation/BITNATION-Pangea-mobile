@@ -4,7 +4,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
 
-import CreateReady from '../../../../UI/Account/CreateAccount/CreateReady';
+import CreateReady from '../../../../UI/Accounts/CreateAccount/CreateReady';
 
 describe('CreateReady', () => {
   let createReadyScreen;

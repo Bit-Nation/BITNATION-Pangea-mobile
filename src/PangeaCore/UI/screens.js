@@ -1,8 +1,8 @@
-@flow
+// @flow
 
 import { Navigation } from 'react-native-navigation';
 
-// import Accounts from './Accounts';
+import Accounts from './Accounts';
 import DeveloperSettings from './Accounts/CreateAccount/DeveloperSettings';
 import CreateReady from './Accounts/CreateAccount/CreateReady';
 import RestoreSource from './Accounts/RestoreAccount/RestoreSource';
@@ -32,9 +32,9 @@ import AccountsAccess from './Accounts/AccountAccessContainer';
 // import ConfirmationContainer from './ConfirmationContainer';
 import EnterPasscodeScreen from './Accounts/Passcode/EnterPasscodeContainer';
 import CreatePasscodeScreen from './Accounts/Passcode/CreatePasscodeContainer';
-import ChatListScreen from './PrivateChat/ChatList';
-import PrivateChatScreen from './PrivateChat/Chat';
-import ContactsPickerScreen from './PrivateChat/ContactsPicker';
+import ChatListScreen from './Chat/PrivateChat/ChatList';
+import PrivateChatScreen from './Chat/PrivateChat/Chat';
+import ContactsPickerScreen from './Chat/PrivateChat/ContactsPicker';
 import DAppModalScreen from './Dapp/ModalScreen';
 import DocumentsListScreen from './Documents/List';
 import DocumentViewScreen from './Documents/View';
@@ -42,7 +42,7 @@ import DocumentModifyScreen from './Documents/Modify';
 import MenuScreen from './MenuScreen';
 import HomeScreen from './Home';
 import InfoScreen from './InfoScreen';
-import { screen } from '../global/Screens';
+import { screen } from 'pangea-common-reactnative/Screens';
 
 /**
  * @desc Registers screens for React Native Navigation.

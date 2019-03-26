@@ -1,5 +1,5 @@
 import { MediaQueryStyleSheet } from 'react-native-responsive'
-import Colors from '../../../global/colors'
+import Colors from 'pangea-common-reactnative/styles/colors'
 
 const styles = MediaQueryStyleSheet.create({
 	container: {

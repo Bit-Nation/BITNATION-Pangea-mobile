@@ -6,9 +6,9 @@ import {
   Image
 } from 'react-native'
 import Swiper from 'react-native-swiper'
-import Images from '../../global/AssetsImages';
-import Colors from '../../global/colors';
-import i18n from '../../global/i18n';
+import Images from 'pangea-common-reactnative/assets/AssetsImages';
+import Colors from 'pangea-common-reactnative/styles/colors';
+import i18n from 'pangea-common/i18n';
 
 var styles = {
   wrapper: {

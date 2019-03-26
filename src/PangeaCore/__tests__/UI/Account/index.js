@@ -4,7 +4,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
 
-import Accounts from '../../../UI/Account';
+import Accounts from '../../../UI/Accounts';
 import navigatorMock from '../../../__mocks__/Navigator';
 
 describe('Accounts', () => {
