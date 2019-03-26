@@ -124,7 +124,7 @@ const ServicesScreen = ({
       desText='Tailor make your own governance system through choosing dapps, contracts, services and products!'
       options={[
         {
-          text: 'Start a new Service',
+          text: 'Start a New Service',
           onPress: () => {
             setShowModal('');
             setIsShowWebViewModal(true);
