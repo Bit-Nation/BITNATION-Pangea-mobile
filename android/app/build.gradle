@@ -102,8 +102,8 @@ def enableSeparateBuildPerCPUArchitecture = false
 def enableProguardInReleaseBuilds = false
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion '28.0.2'
+    compileSdkVersion 26
+    buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId 'co.bitnation'
         minSdkVersion 16
