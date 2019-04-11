@@ -79,9 +79,16 @@ Architecture - https://www.pivotaltracker.com/projects/2213396
 
 ## Contribute
 
-PRs are accepted.
+The Bitnation Pangea Jurisdiction is a **free** and **open source project**
+
+Pull requests are accepted.
 
 Small note: If editing the README, please conform to the [standard-readme](https://github.com/RichardLitt/standard-readme) specification.
+
+**Support our work** with **ETH** and **XPAT**:
+
+ETH: 0xBB1fA4FdEB3459733bF67EbC6f893003fA976a82
+XPAT: 0xBB1fA4FdEB3459733bF67EbC6f893003fA976a82
 
 ## License
 
