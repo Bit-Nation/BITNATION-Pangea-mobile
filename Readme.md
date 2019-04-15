@@ -1,4 +1,7 @@
-# pangea
+![bnlogo](https://user-images.githubusercontent.com/17184469/56120692-f43a1800-5f6e-11e9-84c1-28de2a9c086b.png)
+
+
+# The BITNATION Pangea Blockchain Jurisdiction 
 
 [![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 [![Build Status](https://app.bitrise.io/app/be68de279aca4575/status.svg?token=pXZD3QeHe1TRK7YbQ0OnJQ&branch=develop)](https://app.bitrise.io/app/be68de279aca4575)
