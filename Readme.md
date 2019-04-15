@@ -3,6 +3,8 @@
 
 # The BITNATION Pangea Blockchain Jurisdiction - Android and iOS repository
 
+A decentralized marketplace for peer-to-peer governance services.
+
 [![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 [![Build Status](https://app.bitrise.io/app/be68de279aca4575/status.svg?token=pXZD3QeHe1TRK7YbQ0OnJQ&branch=develop)](https://app.bitrise.io/app/be68de279aca4575)
 
