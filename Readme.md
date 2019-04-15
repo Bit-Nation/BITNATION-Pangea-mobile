@@ -93,9 +93,9 @@ Small note: If editing the README, please conform to the [standard-readme](https
 
 **Support our work** with **ETH** and **XPAT**:
 
-ETH address: 0xBB1fA4FdEB3459733bF67EbC6f893003fA976a82
+ETH address: 0xCDE042543307966bc16Eff3cDca4d32B23408C4c
 
-XPAT address: 0xBB1fA4FdEB3459733bF67EbC6f893003fA976a82
+XPAT address: 0xCDE042543307966bc16Eff3cDca4d32B23408C4c
 
 ## License
 
