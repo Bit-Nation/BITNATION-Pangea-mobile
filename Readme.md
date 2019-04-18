@@ -6,7 +6,7 @@
 A decentralized marketplace for peer-to-peer governance services.
 
 [![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
-[![Build Status](https://app.bitrise.io/app/be68de279aca4575/status.svg?token=pXZD3QeHe1TRK7YbQ0OnJQ&branch=develop)](https://app.bitrise.io/app/be68de279aca4575)
+[![Build Status](https://app.bitrise.io/app/6902c0cb8904f70e/status.svg?token=bWiliDDZJ3pDax2f4zA0Sg&branch=develop)
 
 > Bitnation's Blockchain Jurisdiction
 
