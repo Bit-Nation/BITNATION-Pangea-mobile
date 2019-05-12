@@ -3,7 +3,7 @@
 
 # The BITNATION Pangea Blockchain Jurisdiction - Android and iOS repository
 
-A decentralized marketplace for peer-to-peer governance services.
+On Bitnation’s Blockchain Jurisdiction you can: * create smart contract agreements through an end-to-end encrypted chat interfce * join, leave and create opt-in nations and communities * buy and sell governance services or products peer-to-peer. Our core technology principles are: * open-source software * blockchain agnostic backend * end-to-end encrypted communications.
 
 [![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 [![Build Status](https://app.bitrise.io/app/6902c0cb8904f70e/status.svg?token=bWiliDDZJ3pDax2f4zA0Sg&branch=develop)
