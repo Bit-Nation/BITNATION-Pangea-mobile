@@ -59,6 +59,9 @@ __Android specific__
 2. Run `npm run android`
 3. Run `npm run android:log` (requires lnav) to view runtime logs. 
 
+__Desktop client (internal/ community testing pase)__
+The Linux, Windows and Mac desktop client is a different piece of software than the mobile app, currently. It's still in early development, worth checking out for comparison. You can install it from the [website](http://bitnationapi.azurewebsites.net/downloads/).
+
 ## Usage
 
 __Git & best practice__
