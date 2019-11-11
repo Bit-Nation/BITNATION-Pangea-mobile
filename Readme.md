@@ -77,7 +77,7 @@ __Git & best practice__
 ## Maintainers
 
 [Susanne Tarkowski Tempelhof](https://github.com/xsttx)  
-[Mark Nuzz](https://github.com/mnuzz) (mark@bitnation.co)
+[Thiago Souza](https://github.com/ThiagoVSouza)
 
 
 ## Project Boards
